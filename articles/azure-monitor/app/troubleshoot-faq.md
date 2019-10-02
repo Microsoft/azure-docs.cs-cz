@@ -10,16 +10,16 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875379"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802292"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: nejčastější dotazy
 
 ## <a name="configuration-problems"></a>Problémy s konfigurací
 *Mám potíže s nastavením mých:*
@@ -59,7 +59,7 @@ Plán organizace se zaúčtuje za každý den, kdy každý uzel webového server
 
 [Přečtěte si Cenový tarif](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Kolik stojí?
+## <a name="how-much-does-it-cost"></a>Kolik to stojí?
 
 * Otevřete **stránku využití a odhadované náklady** v prostředku Application Insights. K dispozici je graf nedávného využití. Pokud chcete, můžete nastavit limit datového svazku.
 * Otevřete okno [fakturace Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) , ve kterém se zobrazí vaše účty napříč všemi prostředky.
@@ -69,8 +69,8 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
 
 * Přidá tyto soubory do projektu:
 
-  * ApplicationInsights.config.
-  * ai.js
+  * ApplicationInsights. config.
+  * AI. js
 * Nainstaluje tyto balíčky NuGet:
 
   * *Rozhraní API pro Application Insights* – základní rozhraní API
@@ -78,19 +78,19 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
   * *Rozhraní API pro Application Insights pro aplikace JavaScriptu* – používá se k posílání telemetrie z klienta
 
     Balíčky zahrnují tato sestavení:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. Platform
 * Vloží položky do:
 
-  * Web.config
-  * packages.config
+  * Soubor web.config
+  * soubor Packages. config
 * (Jenom nové projekty – Pokud [přidáte Application Insights do existujícího projektu][start], musíte to provést ručně.) Vloží fragmenty kódu do klienta a kód serveru pro inicializaci s ID prostředku Application Insights. Například v aplikaci MVC je kód vložen do zobrazení Master Page/Shared/_Layout. cshtml
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Návody upgradovat ze starších verzí sady SDK?
 Přečtěte si [poznámky k verzi](release-notes.md) pro sadu SDK odpovídající vašemu typu aplikace.
 
 ## <a name="update"></a>Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?
-V Průzkumník řešení klikněte pravým tlačítkem `ApplicationInsights.config` myši a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
+V Průzkumník řešení klikněte pravým tlačítkem na `ApplicationInsights.config` a vyberte **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
 
 ## <a name="what-is-status-monitor"></a>Co je Monitorování stavu?
 
@@ -103,7 +103,7 @@ Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a
 Z webových aplikací serveru:
 
 * Požadavky HTTP
-* [Závislosti](asp-net-dependencies.md). Volání na: Databáze SQL; Volání HTTP do externích služeb; Azure Cosmos DB, tabulka, úložiště objektů BLOB a fronta. 
+* [Závislosti](asp-net-dependencies.md). Volání: databáze SQL; Volání HTTP do externích služeb; Azure Cosmos DB, tabulka, úložiště objektů BLOB a fronta. 
 * [Výjimky](asp-net-exceptions.md) a trasování zásobníku.
 * [Čítače výkonu](performance-counters.md) – pokud používáte [monitorování stavu](monitor-performance-live-website-now.md), [monitorování Azure pro App Services](azure-web-apps.md), [monitorování Azure pro virtuální počítače nebo sadu škálování virtuálního počítače](azure-vm-vmss-apps.md)nebo [Application Insights shromážděného zapisovače](java-collectd.md).
 * [Vlastní události a metriky](api-custom-events-metrics.md) , které kódujete.
@@ -137,10 +137,12 @@ Další informace najdete v [ASP.NET](api-filtering-sampling.md) nebo [Java](jav
 
 IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Telemetrie prohlížeče: Shromažďujeme IP adresu odesílatele.
-* Telemetrie serveru: Modul Application Insights shromažďuje IP adresu klienta. Není shromažďována, pokud `X-Forwarded-For` je nastavena.
+* Telemetrie prohlížeče: shromažďujeme IP adresu odesílatele.
+* Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Pokud je nastavená hodnota `X-Forwarded-For`, není shromažďována.
+* Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+
+@No__t-0 můžete nastavit tak, aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesune server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN do `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 [Pomocí Power BI](export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -163,7 +165,7 @@ Po vyhledání atributů geografického umístění jsou **všechny** oktety kli
 
 Můžete:
 
-* Pro data klienta a serveru použijte dva samostatné klíče instrumentace (samostatné Application Insights prostředky). Nebo
+* Pro data klienta a serveru použijte dva samostatné klíče instrumentace (samostatné Application Insights prostředky). nebo
 * Napíšete proxy server, který běží na serveru, a webový klient bude odesílat data prostřednictvím tohoto proxy serveru.
 
 ## <a name="post"></a>Návody najdete v tématu vystavování dat v diagnostickém vyhledávání?
@@ -197,14 +199,14 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 | Získat trasování zásobníku z výjimek |[Vložení volání TrackException do kódu](asp-net-exceptions.md) (ale některé jsou hlášeny automaticky) |Detekovat a diagnostikovat výjimky |
 | Hledat trasování protokolu |[Přidat adaptér protokolování](asp-net-trace-logs.md) |Diagnostikujte výjimky, problémy s výkonem |
 | Základy použití klientů: zobrazení stránky, relace,... |[Inicializátor JavaScriptu na webových stránkách](javascript.md) |Analýza využití |
-| Vlastní metriky klienta |[Sledování hovorů na webových stránkách](api-custom-events-metrics.md) |Vylepšení uživatelského prostředí |
-| Vlastní metriky serveru |[Sledování hovorů na serveru](api-custom-events-metrics.md) |Business intelligence |
+| Vlastní metriky klienta |[Sledování hovorů na webových stránkách](api-custom-events-metrics.md) |Zlepšování zkušeností uživatelů |
+| Vlastní metriky serveru |[Sledování hovorů na serveru](api-custom-events-metrics.md) |Business Intelligence |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Proč se počty v grafech hledání a metrik nerovnají?
 
 [Vzorkování](sampling.md) snižuje počet položek telemetrie (požadavky, vlastní události atd.), které jsou ve skutečnosti odesílány z vaší aplikace na portál. V části Hledat se zobrazí počet položek, které byly skutečně přijaty. V grafech metrik, které zobrazují počet událostí, se zobrazí počet původních událostí, ke kterým došlo. 
 
-Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik původních událostí položka představuje. Pokud chcete sledovat vzorkování v provozu, můžete spustit tento dotaz v Analytics:
+Každé přenesené položce se přenáší vlastnost @no__t 0, která ukazuje, kolik původních událostí položka představuje. Pokud chcete sledovat vzorkování v provozu, můžete spustit tento dotaz v Analytics:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -227,7 +229,7 @@ Nemůžete nastavit sestavu Průzkumníka metrik ani nastavit průběžný expor
 
 ### <a name="querying-the-telemetry"></a>Dotazování telemetrie
 
-Pro spouštění analytických dotazů [](analytics.md) použijte [REST API](https://dev.applicationinsights.io/) .
+Pro spouštění [analytických](analytics.md) dotazů použijte [REST API](https://dev.applicationinsights.io/) .
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>Jak můžu nastavit upozornění na událost?
 
@@ -247,9 +249,9 @@ Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](api-cus
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Můžu monitorovat intranetový webový server?
 
 Ano, ale budete muset pro naše služby povolený provoz buď pomocí výjimek brány firewall, nebo přesměrování proxy.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 [Tady si můžete](../../azure-monitor/app/ip-addresses.md)projít úplný seznam služeb a IP adres.
@@ -263,7 +265,7 @@ Umožněte webovému serveru odesílat telemetrii do našich koncových bodů.
 Přesměrujte provoz z vašeho serveru do brány v intranetu přepsáním koncových bodů ve vaší konfiguraci.
 Pokud tyto vlastnosti Endpoint nejsou v konfiguraci k dispozici, budou tyto třídy používat výchozí hodnoty uvedené níže v příkladu ApplicationInsights. config. 
 
-Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty `http://<your.gateway.address>/<relative path>`hodnotou.
+Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty hodnotou `http://<your.gateway.address>/<relative path>`.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad ApplicationInsights. config s výchozími koncovými body:
@@ -308,7 +310,7 @@ Další informace najdete v článku dotnet na [defaultProxy](https://docs.micro
 
 Naše [webové testy](monitor-web-app-availability.md) jsou spouštěny v bodech přítomnosti, které jsou distribuovány po celém světě. Existují dvě řešení:
 
-* Dvířka brány firewall – umožňují žádosti na server z dlouhého a nepřípustného [seznamu webových testovacích agentů](ip-addresses.md).
+* Dvířka brány firewall – umožňují žádosti na server z [dlouhého a nepřípustného seznamu webových testovacích agentů](ip-addresses.md).
 * Napište svůj vlastní kód pro posílání pravidelných požadavků na server v rámci intranetu. Pro tento účel můžete spustit webové testy sady Visual Studio. Tester by mohl odeslat výsledky do Application Insights pomocí rozhraní API TrackAvailability ().
 
 ## <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Jak dlouho trvá shromažďování telemetrie?

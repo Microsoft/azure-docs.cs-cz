@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, Java (Android) – Speech Service'
+title: 'Rychlý Start: rozpoznávání řeči, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Naučte se rozpoznávat řeč v Java v Androidu pomocí sady Speech SDK
 services: cognitive-services
@@ -10,27 +10,29 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559504"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803319"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Java v Androidu pomocí sady Speech SDK
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Javě na Androidu s využitím sady Speech SDK
+
+K dispozici jsou také rychlé starty pro [syntézu řeči a funkce](quickstart-text-to-speech-java-android.md) pro [virtuální asistenty hlasu First](quickstart-virtual-assistant-java-android.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se naučíte vyvíjet aplikace Java pro Android pomocí sady Cognitive Services Speech SDK pro přepisovat řeči na text.
-Aplikace je založena na balíčku sady Speech SDK Maven, verze 1.6.0 a Android Studio 3,3.
+Aplikace je založena na balíčku sady Speech SDK Maven a Android Studio 3,3.
 Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která používají 32bitové nebo 64bitové procesory ARM a kompatibilní procesory Intel x86 nebo x64.
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o [bezplatném pokusu o hlasové služby](get-started.md) .
 
 ## <a name="create-and-configure-a-project"></a>Vytvoření a konfigurace projektu
 
@@ -86,12 +88,12 @@ Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Do služby Sp
 
 ![Snímek obrazovky aplikace pro Android](media/sdk/qs-java-android-13-gui-on-device.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

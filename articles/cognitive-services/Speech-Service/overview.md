@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068847"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803352"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -26,13 +26,13 @@ Služba Speech Services představuje sjednocení převodu řeči na text, převo
 
 Tyto funkce tvoří službu Azure Speech Services. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
 
-| Služba | Funkce | Popis | Sada SDK | REST |
+| Služba | Funkce | Popis | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Speech-to-Text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Převod řeči na text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Přepis Batch](batch-transcription.md) | Batch přepis umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Jedná se o službu založenou na REST, která používá stejný koncový bod jako přizpůsobení a Správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
 | | [Přepis konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | Ne |
 | | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](text-to-speech.md#speech-synthesis-markup-language-ssml). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Převod textu na řeč](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](text-to-speech.md#speech-synthesis-markup-language-ssml). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Ne |
 | [Virtuální asistenti prvního hlasu](voice-first-virtual-assistants.md) | Virtuální asistenti prvního hlasu | Vlastní virtuální asistenti využívající Azure Speech Services umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Kanál pro přímý přenos řeči platformy robota tyto možnosti vylepšuje tím, že poskytuje koordinovaný a orchestrující vstupní bod na kompatibilním robotovi, který umožňuje hlas v, komunikaci hlasu s nízkou latencí a vysokou spolehlivostí. | [Ano](voice-first-virtual-assistants.md) | Ne |
@@ -41,15 +41,17 @@ Tyto funkce tvoří službu Azure Speech Services. Pomocí odkazů v této tabul
 
 Zjistěte, co je nového ve službě Azure Speech Services.
 
+* Září 2019
+  * Vydaná sada Speech SDK 1.7.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
 * Srpen 2019
-  * **Nový kurz**: [Hlasová podpora robota s využitím Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-  * Byl přidán nový styl [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)mluveného slova `en-US-JessaNeural` pro hlasový vstup. 
+  * **Nový kurz**: [hlas povolte robotovi pomocí sady Speech SDK, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Byl přidán nový styl mluveného slova [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)pro hlas `en-US-JessaNeural`. 
 * Červeně 2019
-  * Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
+  * Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
 * Květen 2019 – dokumentace je nyní k dispozici pro [přepis konverzace](conversation-transcription-service.md), [přepisy centra volání](call-center-transcription.md)a pro [virtuální asistenty hlasu First](voice-first-virtual-assistants.md).
 * Květen 2019
-  * Vydaná sada Speech SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
-  * Vydaná sada Speech SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v poznámkách k [verzi](releasenotes.md).
+  * Vydaná sada Speech SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
+  * Vydaná sada Speech SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
 
 ## <a name="try-speech-services"></a>Vyzkoušejte hlasové služby
 
@@ -59,7 +61,7 @@ Nabízíme rychlé zprovoznění v nejoblíbenějších programovacích jazycíc
 |----------------------|----------------------|-------------------|
 | [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#, .NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) |
 | [JavaScript (prohlížeč)](quickstart-js-browser.md) | [C++Systému](quickstart-text-to-speech-cpp-windows.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
-| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) | [C#, .NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
+| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C++Linux](quickstart-text-to-speech-cpp-linux.md) | [C#, .NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
 | [Java (Windows, Linux)](quickstart-java-jre.md) | | [C++Systému](quickstart-translate-speech-cpp-windows.md) |
 
 > [!NOTE]
@@ -67,9 +69,9 @@ Nabízíme rychlé zprovoznění v nejoblíbenějších programovacích jazycíc
 
 Až budete mít možnost používat služby pro rozpoznávání řeči, vyzkoušejte náš kurz, který vás učí, jak rozpoznávat záměry pomocí sady Speech SDK a LUIS.
 
-* [Kurz: Rozpoznávání záměrů od řeči pomocí sady Speech SDK a LUIS,C#](how-to-recognize-intents-from-speech-csharp.md)
-* [Kurz: Hlasový vstup vám umožní pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Kurz: Sestavte aplikaci v baňce pro překlad textu, analyzujte mínění a syntetizujte přeložený text na řeč, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+* [Kurz: rozpoznávání záměrů z řeči pomocí sady Speech SDK a LUISC#](how-to-recognize-intents-from-speech-csharp.md)
+* [Kurz: hlasový vstup pro robota pomocí sady Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Kurz: sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace přeloženého textu na řeč, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Získání vzorového kódu
 
@@ -87,17 +89,17 @@ Služba Azure Speech Services dobře funguje s integrovanými modely, ale možn�
 | Speech Service | Platforma | Popis |
 |----------------|-------------|-------------|
 | Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání bariér při rozpoznání řeči, jako jsou mluvený styl, slovník a šum na pozadí |
-| Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný hlas pro aplikace pro převod textu na řeč s dostupnými daty o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
+| Text na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný hlas pro aplikace pro převod textu na řeč s dostupnými daty o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
 * [Speech SDK](speech-sdk-reference.md)
 * [Sada Speech Devices SDK](speech-devices-sdk.md)
 * [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: Převod textu na řeč](rest-text-to-speech.md)
-* [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+* [REST API: převod textu na řeč](rest-text-to-speech.md)
+* [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Získat klíč předplatného služby Speech Services zdarma](get-started.md)

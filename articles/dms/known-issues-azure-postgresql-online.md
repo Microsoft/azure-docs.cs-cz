@@ -1,6 +1,6 @@
 ---
-title: Článek o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL | Microsoft Docs
-description: Přečtěte si o známých problémech nebo omezeních migrace pro online migrace do Azure Database for MySQL.
+title: Článek o známých problémech nebo omezeních migrace s online migracemi z PostgreSQL do Azure Database for PostgreSQL – jeden server | Microsoft Docs
+description: Přečtěte si o známých problémech nebo omezeních migrace s online migracemi z PostgreSQL na Azure Database for PostgreSQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,17 +10,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743538"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802590"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace do Azure DB pro PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Známé problémy/omezení migrace pro online migrace z PostgreSQL do Azure DB pro PostgreSQL-Single server
 
-Známé problémy a omezení související s online migracemi z PostgreSQL do Azure Database for PostgreSQL jsou popsány v následujících částech.
+Známé problémy a omezení související s online migracemi z PostgreSQL do Azure Database for PostgreSQL-Single server jsou popsány v následujících částech.
 
 ## <a name="online-migration-configuration"></a>Konfigurace online migrace
 
@@ -32,7 +32,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
 - Pokud chcete povolit logickou replikaci ve **zdrojovém souboru PostgreSQL PostgreSQL. conf** , nastavte následující parametry:
   - **wal_level** = logická
-  - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat 4 databáze, nastavte hodnotu na 4.
+  - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat čtyři databáze, nastavte tuto hodnotu na 4.
   - **max_wal_senders** = [počet databází, které jsou spuštěny souběžně]; Doporučená hodnota je 10.
 - Přidejte IP adresu agenta DMS do zdrojového PostgreSQL pg_hba. conf.
   1. Po dokončení zřizování instance DMS si poznamenejte IP adresu DMS.
@@ -42,7 +42,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
 - Uživatel musí mít oprávnění superuživatele na serveru, který je hostitelem zdrojové databáze.
 - Kromě toho, že se má výčet ve schématu zdrojové databáze vyhodnotit, se musí shodovat schémata zdrojové a cílové databáze.
-- Schéma v cílovém Azure Database for PostgreSQL nesmí obsahovat cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
+- Schéma v cílovém Azure Database for PostgreSQL-jednom serveru nesmí mít cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
-- Schéma v cílovém Azure Database for PostgreSQL nesmí obsahovat žádné triggery. K zakázání triggerů v cílové databázi použijte následující postup:
+- Schéma v cílovém Azure Database for PostgreSQL – jeden server nesmí obsahovat žádné triggery. K zakázání triggerů v cílové databázi použijte následující postup:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -81,25 +81,25 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
 ## <a name="datatype-limitations"></a>Omezení datového typu
 
-- **Omezení**: Pokud ve zdrojové databázi PostgreSQL existuje datový typ ENUM, migrace během nepřetržité synchronizace selže.
+- **Omezení**: Pokud ve zdrojové databázi PostgreSQL existuje datový typ Enum, migrace během nepřetržité synchronizace selže.
 
-    **Alternativní řešení**: Upravte datový typ výčtu na znak, který je v Azure Database for PostgreSQL proměnlivý.
+    **Alternativní řešení**: Změňte typ výčtu enum na znak proměnlivý v Azure Database for PostgreSQL.
 
 - **Omezení**: Pokud v tabulkách není žádný primární klíč, průběžná synchronizace se nezdaří.
 
-    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
+    **Alternativní řešení**: dočasně nastavte primární klíč pro tabulku, aby migrace pokračovala. Po dokončení migrace dat můžete primární klíč odebrat.
 
-- **Omezení**: Datový typ JSONB se pro migraci nepodporuje.
+- **Omezení**: datový typ JSONB není pro migraci podporován.
 
 ## <a name="lob-limitations"></a>Omezení LOB
 
 Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout většího množství. Pro PostgreSQL příklady datových typů LOB zahrnuje XML, JSON, IMAGE, TEXT atd.
 
-- **Omezení**: Pokud se jako primární klíče používají datové typy LOB, migrace se nezdaří.
+- **Omezení**: Pokud jsou datové typy LOB používány jako primární klíče, migrace se nezdaří.
 
     **Alternativní řešení**: Nahraďte primární klíč jinými typy nebo sloupci, které nejsou typu LOB.
 
-- **Omezení**: Pokud je délka sloupce Large Object (LOB) větší než 32 KB, mohou být data v cíli zkrácena. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
+- **Omezení**: Pokud je délka sloupce large object (LOB) větší než 32 KB, data můžou být v cíli zkrácená. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
@@ -107,9 +107,9 @@ Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout většího mno�
 
     **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 32 KB, kontaktujte technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
-- **Omezení**: Pokud tabulka obsahuje sloupce LOB a pro tabulku není nastaven primární klíč, data nemusí být pro tuto tabulku migrována.
+- **Omezení**: Pokud jsou v tabulce sloupce LOB a pro tabulku není nastaven žádný primární klíč, data nemusí být pro tuto tabulku migrována.
 
-    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
+    **Alternativní řešení**: dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 řešení
 
@@ -157,24 +157,24 @@ COMMIT;
 
 Při pokusu o provedení online migrace z AWS VP PostgreSQL pro Azure Database for PostgreSQL se může vyskytnout následující chyby.
 
-- **Chyba:** Výchozí hodnota sloupce {column} v tabulce {table} v databázi {database} se na zdrojovém a cílovém serveru liší. Hodnota na zdrojovém serveru: {value on source}. Hodnota na cílovém serveru: {value on target}.
+- **Chyba**: výchozí hodnota sloupce {Column} v tabulce {table} v databázi {Database} je odlišná na zdrojovém a cílovém serveru. Hodnota na zdrojovém serveru: {value on source}. Hodnota na cílovém serveru: {value on target}.
 
-  **Omezení**: K této chybě dochází, pokud je výchozí hodnota schématu sloupce odlišná mezi zdrojovou a cílovou databází.
+  **Omezení**: k této chybě dochází, pokud je výchozí hodnota ve schématu sloupce odlišná mezi zdrojovou a cílovou databází.
   **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
-- **Chyba:** Cílová databáze {database} obsahuje {number of tables} tabulek, ale zdrojová databáze {database} obsahuje {number of tables} tabulek. Počet tabulek ve zdrojové i cílové databázi musí být stejný.
+- **Chyba**: v cílové databázi {Database} je {Number of Tables} tabulek, ve kterých má zdrojová databáze {Database} tabulky {Number of Tables}. Počet tabulek ve zdrojové i cílové databázi musí být stejný.
 
-  **Omezení**: K této chybě dochází, pokud se počet tabulek liší od zdrojové a cílové databáze.
+  **Omezení**: k této chybě dochází, pokud se počet tabulek liší od zdrojové a cílové databáze.
   **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 - **Chyba:** Zdrojová databáze {Database} je prázdná.
 
-  **Omezení**: K této chybě dojde, pokud je zdrojová databáze prázdná. Nejčastější příčinou je výběr nesprávné zdrojové databáze.
-  **Alternativní řešení**: Zkontrolujte zdrojovou databázi, kterou jste vybrali pro migraci, a pak to zkuste znovu.
+  **Omezení**: k této chybě dochází, když je zdrojová databáze prázdná. Nejčastější příčinou je výběr nesprávné zdrojové databáze.
+  **Alternativní řešení**: poklikejte na zdrojovou databázi, kterou jste vybrali pro migraci, a pak to zkuste znovu.
 
 - **Chyba:** Cílová databáze {Database} je prázdná. Proveďte migraci schématu.
 
-  **Omezení**: K této chybě dojde, pokud není v cílové databázi žádné schéma. Ujistěte se, že schéma na cíli odpovídá schématu na zdroji.
+  **Omezení**: k této chybě dochází, pokud není v cílové databázi žádné schéma. Ujistěte se, že schéma na cíli odpovídá schématu na zdroji.
   **Alternativní řešení**: Zajistěte, aby schéma na cíli odpovídalo schématu na zdroji. Podrobnosti o migraci schématu najdete v [online dokumentaci k migraci pro Azure PostgreSQL](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
 
 ## <a name="other-limitations"></a>Další omezení

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2096b6c5ddb72c8ab5c5d3203a05c94db51f6c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444335"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802318"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
-Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služeb a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služby a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců služeb a jak zobrazit správce účtu.
 
@@ -34,17 +34,17 @@ Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce služby.
 
-1. Otevřete [předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
+1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
     Spolusprávci lze přiřadit pouze v oboru předplatného.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **Classic Administrators** .
 
     ![Snímek obrazovky, který otevírá klasické správce](./media/classic-administrators/classic-administrators.png)
 
-1. Kliknutím na **Přidat** > **Přidat spolusprávce** otevřete podokno přidat spolusprávce.
+1. Kliknutím na **přidat** > **Přidat spolusprávce** otevřete podokno přidat spolusprávce.
 
     Pokud je možnost Přidat spolusprávce zakázaná, nemáte oprávnění.
 
@@ -56,12 +56,14 @@ Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců
 
 [Uživatelům typu Host](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) , kterým byla přiřazena role spolusprávce, se může u role spolusprávce zobrazit několik rozdílů ve srovnání s členskými uživateli. Vezměte v úvahu následující scénář:
 
-- Uživatel A s pracovním nebo školním účtem Azure AD je správce služby pro předplatné Azure.
+- Uživatel A s účtem Azure AD (pracovní nebo školní účet) je správce služby pro předplatné Azure.
 - Uživatel B účet Microsoft.
 - Uživatel A přiřadí roli spolusprávce k uživateli B.
 - Uživatel B může dělat skoro všechno, ale nemůže registrovat aplikace ani vyhledávat uživatele v adresáři Azure AD.
 
-Očekáváte, že uživatel B může spravovat všechno. Důvodem tohoto rozdílu je to, že se účet Microsoft do předplatného přidal jako uživatel typu Host, a ne jako uživatel s členem. Uživatelé typu Host mají ve srovnání s členskými uživateli různá výchozí oprávnění ve službě Azure AD. Například členské uživatelé mohou číst jiné uživatele v Azure AD a uživatelé typu Host nemůžou. Členové členů můžou registrovat nové instanční objekty ve službě Azure AD a uživatelé typu Host nemůžou. Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role správce služby Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Očekáváte, že uživatel B může spravovat všechno. Důvodem tohoto rozdílu je to, že se účet Microsoft do předplatného přidal jako uživatel typu Host, a ne jako uživatel s členem. Uživatelé typu Host mají ve srovnání s členskými uživateli různá výchozí oprávnění ve službě Azure AD. Například členské uživatelé mohou číst jiné uživatele v Azure AD a uživatelé typu Host nemůžou. Členové členů můžou registrovat nové instanční objekty ve službě Azure AD a uživatelé typu Host nemůžou.
+
+Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role správce služby Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
 Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md) se liší od [rolí správce Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Předdefinované role neudělují žádnému přístupu ke službě Azure AD. Další informace najdete v tématu [pochopení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -69,9 +71,9 @@ Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-a
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce služby.
 
-1. Otevřete [předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
+1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **Classic Administrators** .
 
@@ -89,13 +91,13 @@ Správce služby pro předplatné může změnit jenom správce účtu. Ve vých
 
 Správce služeb je možné změnit dvěma způsoby. Můžete změnit v centru **Azure Portal** nebo **account**.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 1. Ujistěte se, že je váš scénář podporovaný, kontrolou omezení pro změnu správců služeb.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce účtu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
 
-1. Otevřete [předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
+1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
 1. Klikněte na **Vlastnosti**.
 
@@ -115,7 +117,7 @@ Správce služeb je možné změnit dvěma způsoby. Můžete změnit v centru *
 
 1. Klikněte na předplatné.
 
-1. Na pravé straně klikněte na **Upravit podrobnosti**předplatného.
+1. Na pravé straně klikněte na **Upravit podrobnosti předplatného**.
 
     ![Snímek obrazovky s tlačítkem upravit předplatné v centru účtů](./media/classic-administrators/editsub.png)
 
@@ -127,14 +129,16 @@ Správce služeb je možné změnit dvěma způsoby. Můžete změnit v centru *
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>Omezení pro změnu Správce služby
 
-Každé předplatné je přidruženo k adresáři služby Azure AD. Pokud chcete najít adresář, ke kterému je předplatné přidruženo  , otevřete odběry v Azure Portal a pak vyberte předplatné, které se zobrazí v adresáři.
+V každém předplatném Azure může být jen jeden správce služby. Změna správce služby se bude chovat různě v závislosti na tom, jestli je správce účtu účet Microsoft nebo jestli se jedná o účet Azure AD (pracovní nebo školní účet).
 
-Pokud jste přihlášeni pomocí pracovního nebo školního účtu, můžete do vaší organizace přidat další účty jako správce služeb. abby@contoso.com Můžete například přidat bob@contoso.com jako správce služeb, ale nemůžete ho john@notcontoso.com přidat john@notcontoso.com , pokud nemá přítomnost v adresáři contoso.com. Uživatelé přihlášení pomocí pracovních nebo školních účtů můžou dál přidávat uživatele účet Microsoft jako správce služeb. V každém předplatném Azure může být jen jeden správce služby.
+| Účet správce účtu | Může změnit správce služby na jiný účet Microsoft? | Můžete změnit správce služby na účet Azure AD ve stejném adresáři? | Může změnit správce služby na účet Azure AD v jiném adresáři? |
+| --- | --- | --- | --- |
+| Účet Microsoft | Ano | Ne | Ne |
+| Účet Azure AD | Ano | Ano | Ne |
 
-  | Metoda přihlašování | Přidat účet Microsoft uživatele jako správce služby? | Přidat pracovní nebo školní účet ve stejné organizaci jako správce služeb? | Přidat pracovní nebo školní účet v jiné organizaci jako správce služby? |
-  | --- | --- | --- | --- |
-  |  Účet Microsoft |Ano |Ne |Ne |
-  |  Pracovní nebo školní účet |Ano |Ano |Ne |
+Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com, ale nemůže změnit správce služby na john@notcontoso.com, pokud john@notcontoso.com nemá v adresáři contoso.com přítomnost.
+
+Další informace o účtech Microsoft a účtech Azure AD najdete v tématu [co je Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 ## <a name="view-the-account-administrator"></a>Zobrazit správce účtu
 
@@ -142,9 +146,9 @@ Správce účtu je uživatel, který původně zaregistroval předplatné Azure,
 
 Pomocí těchto kroků zobrazíte správce účtu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. Otevřete [předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
+1. Otevřete [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
 1. Klikněte na **Vlastnosti**.
 
@@ -152,7 +156,7 @@ Pomocí těchto kroků zobrazíte správce účtu.
 
     ![Snímek obrazovky zobrazující správce účtu](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení různých rolí v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md)

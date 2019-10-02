@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, Java (Windows, Linux) – služba pro rozpoznávání řeči'
+title: 'Rychlý Start: rozpoznávání řeči, Java (Windows, Linux, macOS) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se naučíte vytvořit jednoduchou aplikaci Java, která zachytává a transcribes uživatele z mikrofonu vašeho počítače.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554104"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802468"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči pomocí sady Speech SDK pro Java
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý Start: rozpoznávání řeči pomocí sady Speech SDK pro jazyk Java
 
-K dispozici jsou také rychlé starty pro [Převod řeči](quickstart-translate-speech-java-jre.md) a pro cloudového [prvního virtuálního pomocníka](quickstart-virtual-assistant-java-jre.md).
+K dispozici jsou také rychlé starty pro [Převod řeči na řeč](quickstart-translate-speech-java-jre.md), pro [hlasový vstup](quickstart-virtual-assistant-java-jre.md)a na řeč a pro [syntézu řeči](quickstart-text-to-speech-java-jre.md).
 
 V případě potřeby vyberte jiný programovací jazyk nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -29,7 +29,7 @@ V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
@@ -86,15 +86,16 @@ Následujících 15 sekund hlasového vstupu z mikrofonu se rozpozná a zaprotok
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-java-jre-07-console-output.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další ukázky, například jak číst řeč ze zvukového souboru, jsou k dispozici na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlé zprovoznění: Převod řeči, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Rychlý Start: překlad řeči, Java (Windows, Linux, macOS)](quickstart-translate-speech-java-jre.md)
+- [Rychlý Start: syntetizace řeči, Java (Windows, Linux, macOS)](quickstart-text-to-speech-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

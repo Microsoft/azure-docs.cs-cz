@@ -1,5 +1,5 @@
 ---
-title: Pro přístup k Azure Key Vault použijte spravovanou identitu App Service aplikace přiřazenou systémem.
+title: Pro přístup k Azure Key Vault použít spravovanou identitu přiřazenou systémem
 description: Naučte se vytvořit spravovanou identitu pro App Service aplikací a jak ji použít pro přístup k Azure Key Vault
 services: key-vault
 author: msmbaldwin
@@ -9,22 +9,23 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ac6f9be80d31804089ae2589998079dc7df66b3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004303"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720253"
 ---
-# <a name="use-an-app-service-managed-identity-to-access-azure-key-vault"></a>Použití spravované identity App Service pro přístup k Azure Key Vault 
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Zajištění Key Vault ověřování pomocí spravované identity
 
-V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikace App Service a použít ji pro přístup k Azure Key Vault. Pro aplikace hostované ve virtuálních počítačích Azure najdete informace v tématu [použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md). 
+Spravovaná identita z Azure Active Directory umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným službou Azure AD. Identita je spravovaná platformou Azure a nevyžaduje zřízení ani otočení jakýchkoli tajných klíčů. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). 
 
-Spravovaná identita z Azure Active Directory umožňuje vaší aplikaci snadný přístup k dalším prostředkům chráněným službou Azure AD. Identita je spravovaná platformou Azure a nevyžaduje zřízení ani otočení jakýchkoli tajných klíčů. Další informace o spravovaných identitách v Azure AD najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). 
+V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci App Service a použít ji pro přístup k Azure Key Vault. Pro aplikace hostované ve virtuálních počítačích Azure najdete informace v tématu [použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K dokončení této příručky musíte mít následující prostředky. 
 
@@ -32,14 +33,15 @@ K dokončení této příručky musíte mít následující prostředky.
    - [Vytvoření trezoru klíčů pomocí Azure CLI](quick-create-cli.md)
    - [Vytvoření trezoru klíčů pomocí Azure PowerShell](quick-create-powershell.md)
    - [Vytvořte Trezor klíčů pomocí Azure Portal](quick-create-portal.md).
-- Stávající aplikace App Service, pro kterou má být udělen přístup k trezoru klíčů. Můžete ho rychle vytvořit podle kroků v [dokumentaci k App Service](../app-service/overview.md) ./
+- Stávající aplikace App Service, pro kterou má být udělen přístup k trezoru klíčů. Můžete ho rychle vytvořit podle kroků v [dokumentaci App Service](../app-service/overview.md).
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview). Alternativně můžete použít [Azure Portal](http://portal.azure.com).
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Přidání identity přiřazené systémem 
 
 Nejdřív musíte do aplikace přidat identitu přiřazenou systémem. 
  
-### <a name="azure-portal"></a>portál Azure 
+### <a name="azure-portal"></a>Portál Azure 
 
 Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte aplikaci jako normální a pak tuto funkci povolte. 
 
@@ -74,7 +76,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Poznamenejte `PrincipalId`si, který bude potřeba v další části.
+Poznamenejte si `PrincipalId`, který budete potřebovat v další části.
 
 ```json
 {
@@ -85,7 +87,7 @@ Poznamenejte `PrincipalId`si, který bude potřeba v další části.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Udělit aplikaci přístup k Key Vault 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 1.  Přejděte na prostředek Key Vault. 
 
@@ -101,15 +103,17 @@ Poznamenejte `PrincipalId`si, který bude potřeba v další části.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud chcete vaší aplikaci udělit přístup k vašemu trezoru klíčů, použijte příkaz Azure CLI [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) a zadejte parametr **objectID** s **principalId* , které jste si poznamenali výše.
+Pokud chcete vaší aplikaci udělit přístup k vašemu trezoru klíčů, použijte příkaz Azure CLI [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) a zadejte parametr **objectID** s **principalId** , které jste si poznamenali výše.
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
-- Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .
-- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault zabezpečení: Správa identit a přístupu](overview-security.md#identity-and-access-management)
+- [Zajištění Key Vault ověřování pomocí zásad řízení přístupu](key-vault-group-permissions-for-apps.md)
+- [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
+- [Zabezpečte svůj Trezor klíčů](key-vault-secure-your-key-vault.md).
+- [Azure Key Vault příručka pro vývojáře](key-vault-developers-guide.md)
 - Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)

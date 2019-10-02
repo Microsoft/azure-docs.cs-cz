@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 06454798deb4a5bc5064e28535a837f73c083e1c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671304"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803386"
 ---
 # <a name="list-blob-containers-with-net"></a>Výpis kontejnerů objektů BLOB pomocí .NET
 
@@ -30,21 +30,21 @@ Přetížení pro tyto metody poskytují další možnosti pro správu způsobu,
 
 ### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte při volání jedné z metod `maxresults` **ListContainerSegmented** nenulovou hodnotu parametru.
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte nenulovou hodnotu parametru `maxresults` při volání jedné z metod **ListContainerSegmented** .
 
-Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu `maxresults` , kterou operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí token pro *pokračování* s Seznam kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` tak, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí *token pro pokračování* se seznamem kontejnery. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
 
 V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, zavolejte znovu **ListContainersSegmented** nebo **ListContainersSegmentedAsync** , předejte do tokenu pro pokračování, aby se načetla další sada výsledků, dokud token pro pokračování nemá hodnotu null.
 
 ### <a name="filter-results-with-a-prefix"></a>Filtrovat výsledky s předponou
 
-Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro `prefix` parametr. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze kontejnery, jejichž názvy začínají předponou.
+Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro parametr `prefix`. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze kontejnery, jejichž názvy začínají předponou.
 
 ### <a name="return-container-metadata"></a>Vrátit metadata kontejneru
 
 Chcete-li vrátit metadata kontejneru s výsledky, zadejte hodnotu **metadat** pro výčet [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Azure Storage zahrnuje metadata s každým vráceným kontejnerem, takže nemusíte také volat jednu z metod **FetchAttributes** k načtení metadat kontejneru.
 
-## <a name="example-list-containers"></a>Příklad: Výpis kontejnerů
+## <a name="example-list-containers"></a>Příklad: Seznam kontejnerů
 
 Následující příklad asynchronně vypíše kontejnery v účtu úložiště, který začíná zadanou předponou. Příklad vypíše kontejnery v přírůstcích po 5 výsledků a pomocí tokenu pro pokračování získá další segment výsledků. Příklad také vrátí metadata kontejneru s výsledky.
 
@@ -97,7 +97,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Vypsat kontejnery](/rest/api/storageservices/list-containers2)
 [vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

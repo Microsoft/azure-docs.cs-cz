@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558864"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799946"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -55,7 +55,7 @@ Všechny textové vstupy odesílané službě převod textu na řeč musí být 
 Při použití služby převod textu na řeč se vám bude účtovat každý znak, který se převede na řeč, včetně interpunkce. I když samotný dokument SSML není fakturovatelný, volitelné prvky, které slouží k úpravě způsobu převodu textu na řeč, jako je fonémy a rozteč, se počítají jako Fakturovatelné znaky. Tady je seznam toho, co je Fakturovatelné:
 
 * Text předaný do služby převodu textu na řeč v SSML textu žádosti
-* Všechny značky v textovém poli textu žádosti ve formátu SSML, s výjimkou `<speak>` značek a `<voice>`
+* Všechny značky v textovém poli textu žádosti ve formátu SSML s výjimkou značek `<speak>` a `<voice>`
 * Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
 * Každý bod kódu definovaný v kódování Unicode
 
@@ -68,16 +68,16 @@ Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing
 
 Tato tabulka uvádí základní funkce pro převod textu na řeč:
 
-| Případ použití | Sada SDK | REST |
+| Případ použití | SDK | REST |
 |----------|-----|------|
 | Převod textu na řeč | Ano | Ano |
-| Nahrajte datové sady pro přizpůsobení hlasu. | Ne | Ano\* |
-| Vytvářejte a spravujte modely hlasových písem. | Ne | Ano\* |
-| Vytváření a Správa nasazení hlasových písem | Ne | Ano\* |
-| Vytvářejte a spravujte testy hlasových písem. | Ne | Ano\* |
-| Správa předplatných. | Ne | Ano\* |
+| Nahrajte datové sady pro přizpůsobení hlasu. | Ne | Ano @ no__t-0 |
+| Vytvářejte a spravujte modely hlasových písem. | Ne | Ano @ no__t-0 |
+| Vytváření a Správa nasazení hlasových písem | Ne | Ano @ no__t-0 |
+| Vytvářejte a spravujte testy hlasových písem. | Ne | Ano @ no__t-0 |
+| Správa předplatných. | Ne | Ano @ no__t-0 |
 
-\**Tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index). Tato vlastní rozhraní API pro školení a správu hlasu implementují omezení, které omezuje požadavky na 25 za 5 sekund, zatímco rozhraní API pro syntézu řeči sám implementuje omezení, které umožňuje 200 požadavků za sekundu jako nejvyšší. Když dojde k omezení, budete upozorněni prostřednictvím záhlaví zpráv.*
+@no__t – 0 *tyto služby jsou k dispozici pomocí koncového bodu CRIS.AI. Viz [odkaz Swagger](https://westus.cris.ai/swagger/ui/index). Tato vlastní rozhraní API pro školení a správu hlasu implementují omezení, které omezuje požadavky na 25 za 5 sekund, zatímco rozhraní API pro syntézu řeči sám implementuje omezení, které umožňuje 200 požadavků za sekundu jako nejvyšší. Když dojde k omezení, budete upozorněni prostřednictvím záhlaví zpráv.*
 
 ## <a name="get-started-with-text-to-speech"></a>Začínáme s převodem textu na řeč
 
@@ -85,22 +85,29 @@ Nabízíme rychlé starty, které jsou navržené tak, aby běžely kód za mén
 
 ### <a name="sdk-quickstarts"></a>Rychlé starty sady SDK
 
-| Rychlý Start (SDK) | Platforma | API – referenční informace |
+| Rychlý Start (SDK) | Platforma | Referenční materiály k rozhraním API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Procházet](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Procházet](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Procházet](https://aka.ms/csspeech/cppref) |
+| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C#.NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Hlíží](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Hlíží](https://aka.ms/csspeech/cppref) |
+| [Java](quickstart-text-to-speech-java-jre.md) | Windows, Linux, macOS | [Hlíží](https://aka.ms/csspeech/javaref) |
+| [Java](quickstart-text-to-speech-java-android.md) | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-macos.md) | macOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
+| [Swift](quickstart-text-to-speech-swift-ios.md) | iOS | [Hlíží](https://aka.ms/csspeech/objectivecref) |
+| [Python](quickstart-text-to-speech-python.md) | Window, Linux, macOS | [Hlíží](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>Rychlé starty REST
 
-| Rychlý Start (REST) | Platforma | API – referenční informace |
+| Rychlý Start (REST) | Platforma | Referenční materiály k rozhraním API |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Okno, macOS, Linux | [Procházet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Okno, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Okno, macOS, Linux | [Hlíží](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -114,10 +121,10 @@ Vzorový kód pro převod textu na řeč je k dispozici na GitHubu. Tyto ukázky
 * [Speech SDK](speech-sdk-reference.md)
 * [Sada Speech Devices SDK](speech-devices-sdk.md)
 * [REST API: Převod řeči na text](rest-speech-to-text.md)
-* [REST API: Převod textu na řeč](rest-text-to-speech.md)
-* [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+* [REST API: převod textu na řeč](rest-text-to-speech.md)
+* [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Získání bezplatného předplatného služby Speech Services](get-started.md)
-* [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)
+* [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)

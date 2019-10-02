@@ -7,24 +7,30 @@ ms.date: 06/20/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234890"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802670"
 ---
 # <a name="classic-deployment-model"></a>Model nasazení Classic
 
-Model nasazení Classic je virtuálním režimem nasazení Azure, který vychází z limitu globální kvóty vCPU pro virtuální počítače a sady škálování virtuálních počítačů. Model nasazení Classic již není doporučován a je nyní nahrazen modelem Správce prostředků. Další informace o těchto dvou modelech nasazení a výhodách Správce prostředků najdete na stránce model nasazení Správce prostředků. Když se vytvoří nové předplatné, přiřadí se mu výchozí kvóta vCPU. Kdykoli je možné nasadit nový virtuální počítač pomocí modelu nasazení Classic, součet nového a stávajícího Vcpuho využití ve všech oblastech nesmí překročit kvótu vCPU schválenou pro model nasazení Classic. Další informace o kvótách na [stránce omezení předplatného a služeb Azure](https://aka.ms/quotalimits)
+Model nasazení Classic je model nasazení Azure starší generace. Vynutila globální limit vCPU kvóty pro virtuální počítače a služby Virtual Machine Scale Sets. Model nasazení Classic již není doporučen a je nyní nahrazen modelem Správce prostředků. 
 
-Můžete požádat o zvýšení limitu vCPU pro model nasazení Classic prostřednictvím okna pro nápovědu a podporu nebo pomocí okna používání a kvót na portálu.
+Další informace o těchto dvou modelech nasazení a výhodách použití Správce prostředků najdete na stránce věnované [nasazení Správce prostředků a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md) .
+ 
+Když se vytvoří nové předplatné, přiřadí se mu výchozí kvóta vCPU. I když je nový virtuální počítač nasazený pomocí modelu nasazení Classic, součet nového a stávajícího vCPUho využití ve všech oblastech nesmí překročit kvótu vCPU schválenou pro model nasazení Classic.
+ 
+Přečtěte si další informace o kvótách na stránce [omezení předplatného a služeb Azure](https://aka.ms/quotalimits) .
+
+Můžete požádat o zvýšení limitu kvóty vCPU pro model nasazení Classic prostřednictvím okna Help + support nebo pomocí okna využití + kvóta na portálu.
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Požadavek na zvýšení kvóty vCPU řady virtuálních počítačů na úrovni předplatného pomocí okna pro **pomoc a podporu**
 
 Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal. 
 
-1. V https://portal.azure.com klikněte na tlačítko **help + podpora**.
+1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
    ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -40,7 +46,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
    ![Vybrat příspěvek odběru](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Vyberte **COMPUTE – virtuální počítač (jádra – vCPU) zvýšení limitu** předplatného v rozevíracím seznamu **typ kvóty** . 
+5. Vyberte **COMPUTE – virtuální počítač (jádra – vCPU) zvýšení limitu předplatného** v rozevíracím seznamu **typ kvóty** . 
 
    ![Vybrat typ kvóty](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -64,7 +70,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal. 
 
-1. V https://portal.azure.com vyberte **odběry**.
+1. Z https://portal.azure.com vyberte **odběry**.
 
    ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -80,7 +86,7 @@ Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřed
 
    ![Zvýšení žádosti](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5. Vyberte **COMPUTE-VM (cores-vCPU) limit** předplatného, který se zvyšuje jako typ citace. 
+5. Vyberte **COMPUTE-VM (cores-vCPU) limit předplatného** , který se zvyšuje jako typ citace. 
 
    ![Vyplnit formulář](./media/resource-manager-core-quotas-request/select-quota-type.png)
    

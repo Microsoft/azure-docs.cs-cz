@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna QnA Maker pro .NET'
+title: 'Rychlý Start: Klientská knihovna QnA Maker pro .NET'
 titleSuffix: Azure Cognitive Services
 description: Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8e52a37376e91e5c529cddd9b211d81c4b2fa442
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 31bd85ca9b106758dbb7bfd399b7a493ea7fea9f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203840"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803093"
 ---
-# <a name="quickstart-qna-maker-client-library-for-net"></a>Rychlý start: Klientská knihovna QnA Maker pro .NET
+# <a name="quickstart-qna-maker-client-library-for-net"></a>Rychlý Start: Klientská knihovna QnA Maker pro .NET
 
 Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. 
 
@@ -28,9 +28,11 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 * Publikování znalostní báze
 * Vygenerovat odpověď ze znalostní báze Knowledge Base
 
-[Ukázky dokumentace k](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | knihovny Referenční dokumentace[ C# ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/)  | 
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [ C# ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | 
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -41,13 +43,13 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. 
 
-Po získání klíče z prostředku [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `QNAMAKER_SUBSCRIPTION_KEY`.
+Po získání klíče a koncového bodu pro váš prostředek [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `QNAMAKER_SUBSCRIPTION_KEY`. Název prostředku se používá jako součást adresy URL koncového bodu.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
 Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte pomocí příkazu dotnet `new` novou konzolovou aplikaci s názvem. `qna-maker-quickstart` Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
+V okně konzoly (například cmd, PowerShell nebo bash) pomocí příkazu dotnet `new` vytvořte novou konzolovou aplikaci s názvem `qna-maker-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
 
 ```console
 dotnet new console -n qna-maker-quickstart
@@ -103,7 +105,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující kód `using` následujícími direktivami `using`:
 
 [!code-csharp[Using statements](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Dependencies)]
 
@@ -113,13 +115,16 @@ V metodě **Main** Vytvořte proměnnou pro klíč Azure prostředku načtenou z
 
 Potom vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) .
 
-Pokud váš klíč není v `westus` oblasti, jak ukazuje tento ukázkový kód, změňte umístění pro proměnnou **koncového bodu** . Toto umístění najdete na stránce **Přehled** pro prostředek QnA Maker v Azure Portal.
+Změňte proměnnou **koncového bodu** `<your-custom-domain>` na název vaší vlastní domény. Toto umístění najdete na stránce **Přehled** pro prostředek QnA Maker v Azure Portal.
 
-[!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
+```csharp
+var subscriptionKey = Environment.GetEnvironmentVariable("QNAMAKER_SUBSCRIPTION_KEY");
+var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionKey)) { Endpoint = "https://<your-custom-domain>.api.cognitive.microsoft.com" };
+```
 
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>Ověření modulu runtime pro vygenerování odpovědi
 
-V metodě **Main** Vytvořte proměnnou pro klíč Azure prostředku načtenou z proměnných prostředí s názvem `QNAMAKER_ENDPOINT_HOSTNAME` a. `QNAMAKER_ENDPOINT_KEY` Když publikujete znalostní bázi, vrátí se tyto hodnoty. Po publikování můžete tato nastavení najít na stránce **Nastavení** na portálu QnA maker. 
+V metodě **Main** Vytvořte proměnnou pro ověřování prostředku z proměnných prostředí s názvem `QNAMAKER_ENDPOINT_HOSTNAME` a `QNAMAKER_ENDPOINT_KEY`. Když publikujete znalostní bázi, vrátí se tyto hodnoty. Po publikování můžete tato nastavení najít na stránce **Nastavení** na portálu QnA maker. 
 
 Vytvořte [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) pro dotazování znalostní báze a vygenerujte odpověď nebo vlak z aktivního učení.
 
@@ -139,7 +144,7 @@ Poslední řádek následujícího kódu vrátí ID znalostní báze z odpovědi
 
 [!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=29,30)]
 
-Aby bylo možné úspěšně vytvořit [`MonitorOperation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že je zahrnutá funkce, na kterou se odkazuje v kódu výše. 
+Aby bylo možné úspěšně vytvořit znalostní bázi, zajistěte, aby funkce include [`MonitorOperation`](#get-status-of-an-operation) odkazovala na výše uvedený kód. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
 
@@ -147,7 +152,7 @@ Znalostní bázi můžete aktualizovat tak, že předáte ID znalostní báze a 
 
 [!code-csharp[Update a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=UpdateKB&highlight=4,13)]
 
-Aby bylo možné úspěšně aktualizovat [`MonitorOperation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že obsahuje funkci, na kterou se odkazuje ve výše uvedeném kódu. 
+Aby bylo možné úspěšně aktualizovat znalostní bázi, zajistěte, aby zahrnovalo funkci [`MonitorOperation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu. 
 
 ## <a name="download-a-knowledge-base"></a>Stáhnout znalostní bázi
 
@@ -204,7 +209,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: Vytvoření a odpověď na KB](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

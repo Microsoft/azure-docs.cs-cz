@@ -10,14 +10,14 @@ ms.topic: quickstart
 description: Vývoj týmu Kubernetes pomocí kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842587"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815795"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj pro tým v Kubernetes pomocí Azure Dev Spaces
+# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: vývoj týmu v Kubernetes pomocí Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
@@ -27,7 +27,7 @@ V tomto průvodci se naučíte:
 
 ![Azure Dev Spaces vývoj týmu](media/azure-dev-spaces/collaborate-graphic.gif)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -46,7 +46,10 @@ Cluster *MyAKS* se také vytvoří s jedním uzlem, který používá velikost *
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
-`use-dev-spaces` Pomocí příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří vývojové místo s názvem *dev*.
+Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří vývojové místo s názvem *dev*.
+
+> [!NOTE]
+> Příkaz `use-dev-spaces` nainstaluje také Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
@@ -65,7 +68,7 @@ cd dev-spaces/samples/BikeSharingApp/
 
 ## <a name="retrieve-the-hostsuffix-for-dev"></a>Načtení HostSuffix pro *vývoj*
 
-Pomocí příkazu můžete zobrazit HostSuffix pro vývoj. `azds show-context`
+Pomocí příkazu `azds show-context` Zobrazte HostSuffix pro *vývoj*.
 
 ```cmd
 $ azds show-context
@@ -77,7 +80,7 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 ## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Aktualizace grafu Helm pomocí HostSuffix
 
-Otevřete [grafy/hodnoty. yaml](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) a nahraďte všechny výskyty `<REPLACE_ME_WITH_HOST_SUFFIX>` hodnotou HostSuffix, kterou jste získali dříve. Uložte změny a zavřete soubor.
+Otevřete [grafy/hodnoty. yaml](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) a nahraďte všechny výskyty `<REPLACE_ME_WITH_HOST_SUFFIX>` hodnotou HostSuffix, kterou jste dříve načetli. Uložte změny a zavřete soubor.
 
 ## <a name="run-the-sample-application-in-kubernetes"></a>Spuštění ukázkové aplikace v Kubernetes
 
@@ -85,7 +88,7 @@ Příkazy pro spuštění ukázkové aplikace v Kubernetes jsou součástí stá
 
 Po spuštění aplikace v clusteru můžete použít Azure Dev Spaces pro týmový vývoj, a to bez ohledu na to, který nástroj používá k jeho nasazení.
 
-Pomocí příkazů `helm install` a nastavte a nainstalujte ukázkovou aplikaci do clusteru. `helm init`
+K nastavení a instalaci ukázkové aplikace do clusteru použijte příkazy `helm init` a `helm install`.
 
 ```cmd
 cd charts/
@@ -93,9 +96,9 @@ helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
-> **Pokud používáte cluster s podporou RBAC**, ujistěte se, že jste nakonfigurovali [účet služby pro pokladnu](https://helm.sh/docs/using_helm/#role-based-access-control). V opačném případě se příkazynezdařily.`helm`
+> **Pokud používáte cluster s podporou RBAC**, ujistěte se, že jste nakonfigurovali [účet služby pro pokladnu](https://helm.sh/docs/using_helm/#role-based-access-control). V opačném případě se příkazy `helm` nezdaří.
 
-Dokončení `helm install` příkazu může trvat několik minut. Výstup příkazu zobrazuje stav všech služeb, které se v clusteru nasadily po dokončení:
+Dokončení příkazu `helm install` může trvat několik minut. Výstup příkazu zobrazuje stav všech služeb, které se v clusteru nasadily po dokončení:
 
 ```cmd
 $ cd charts/
@@ -117,7 +120,7 @@ reservationengine  1/1    1           1          4m32s
 users              1/1    1           1          4m32s
 ```
 
-Po instalaci ukázkové aplikace do clusteru a vzhledem k tomu, že máte v clusteru povolené vývojářské prostory, použijte `azds list-uris` příkaz k zobrazení adres URL pro ukázkovou aplikaci v aktuálně vybraném *vývojovém* prostředí.
+Po instalaci ukázkové aplikace do clusteru a vzhledem k tomu, že máte v clusteru povolené vývojové prostory, použijte příkaz `azds list-uris` a zobrazte tak adresy URL ukázkové aplikace v aktuálně vybraném *vývojovém* prostředí.
 
 ```cmd
 $ azds list-uris
@@ -127,13 +130,13 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Přejděte do služby *bikesharingweb* otevřením veřejné adresy URL z `azds list-uris` příkazu. Ve výše uvedeném příkladu je `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`veřejná adresa URL pro službu *bikesharingweb* . Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se zobrazí text *dobrý Aurelia Briggs | Odhlaste* se v horní části.
+Přejděte do služby *bikesharingweb* tak, že otevřete veřejnou adresu URL z příkazu `azds list-uris`. Ve výše uvedeném příkladu je veřejná adresa URL pro službu *bikesharingweb* `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se zobrazí text *dobrý Aurelia Briggs | Odhlaste* se v horní části.
 
 ![Ukázková aplikace pro sdílení kol Azure Dev Spaces](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Vytvoření podřízených vývojových prostorů
 
-Pomocí příkazu vytvořte dva podřízené prostory v části *dev:* `azds space select`
+Pomocí příkazu `azds space select` vytvořte dva podřízené prostory v části *dev*:
 
 ```cmd
 azds space select -n dev/azureuser1 -y
@@ -142,7 +145,7 @@ azds space select -n dev/azureuser2 -y
 
 Výše uvedené příkazy vytvářejí dva podřízené prostory ve *vývojech* s názvem *azureuser1* a *azureuser2*. Tyto dva podřízené prostory reprezentují samostatné vývojové prostory pro vývojáře *azureuser1* a *azureuser2* , které se používají k provádění změn v ukázkové aplikaci.
 
-Pomocí příkazu vypište všechny vývojové prostory a potvrďte možnost *dev/azureuser2.* `azds space list`
+K vypsání všech vývojových prostorů použijte příkaz `azds space list` a potvrďte možnost *dev/azureuser2* .
 
 ```cmd
 $ azds space list
@@ -154,7 +157,7 @@ $ azds space list
 *  dev/azureuser2  True
 ```
 
-Použijte k zobrazení adres URL pro ukázkovou aplikaci v aktuálně vybraném prostoru, který je určen pro *vývoj/azureuser2.* `azds list-uris`
+K zobrazení adres URL pro ukázkovou aplikaci v aktuálně vybraném prostoru, který je určen pro *vývoj/azureuser2*, použijte `azds list-uris`.
 
 ```cmd
 $ azds list-uris
@@ -164,13 +167,13 @@ http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Potvrďte, že adresy URL zobrazované `azds list-uris` příkazem mají předponu *azureuser2. s. dev* . Tato předpona potvrdí, že aktuální vybraný prostor je *azureuser2*, což je podřízený objekt pro *vývoj*.
+Potvrďte, že adresy URL zobrazované příkazem `azds list-uris` mají předponu *azureuser2. s. dev* . Tato předpona potvrdí, že aktuální vybraný prostor je *azureuser2*, což je podřízený objekt pro *vývoj*.
 
-Přejděte ke službě *bikesharingweb* pro vývojové místo pro *vývoj/azureuser2* . Otevřete veřejnou `azds list-uris` adresu URL z příkazu. Ve výše uvedeném příkladu je `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`veřejná adresa URL pro službu *bikesharingweb* . Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se zobrazí text *dobrý Aurelia Briggs | Odhlaste* se v horní části.
+Přejděte ke službě *bikesharingweb* pro vývojové místo pro *vývoj/azureuser2* . Otevřete veřejnou adresu URL z příkazu `azds list-uris`. Ve výše uvedeném příkladu je veřejná adresa URL pro službu *bikesharingweb* `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se zobrazí text *dobrý Aurelia Briggs | Odhlaste* se v horní části.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Otevřete *BikeSharingWeb/Components/Header. js* pomocí textového editoru a změňte text v [elementu span `userSignOut` pomocí ClassName](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
+Otevřete *BikeSharingWeb/Components/Header. js* pomocí textového editoru a změňte text v [elementu span pomocí ClassName `userSignOut`](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
 
 ```html
 <span className="userSignOut">
@@ -182,7 +185,7 @@ Uložte změny a zavřete soubor.
 
 ## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>Sestavení a spuštění aktualizované služby bikesharingweb v prostoru pro vývoj */azureuser2* vývoj
 
-Přejděte do složky *BikeSharingWeb/* Directory a spusťte `azds up` příkaz.
+Přejděte do složky *BikeSharingWeb/* Directory a spusťte příkaz `azds up`.
 
 ```cmd
 $ cd ../BikeSharingWeb/
@@ -198,16 +201,16 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 Tento příkaz sestaví a spustí službu *bikesharingweb* ve vývojovém prostoru *vývoj/azureuser2* . Tato služba běží kromě služby *bikesharingweb* spuštěné v *dev* a používá se pouze pro požadavky s předponou adresy URL *azureuser2. s* . Další informace o tom, jak funguje směrování mezi nadřazeným a podřízeným vývojovým prostorem, najdete v tématu [jak Azure dev Spaces fungují a jsou nakonfigurované](how-dev-spaces-works.md).
 
-Přejděte ke službě *bikesharingweb* pro vývojové místo pro *vývoj/azureuser2* otevřením veřejné adresy URL zobrazené ve `azds up` výstupu příkazu. Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se v pravém horním rohu zobrazil aktualizovaný text. Je možné, že budete muset aktualizovat stránku nebo vymazat mezipaměť prohlížeče, pokud tuto změnu neuvidíte okamžitě.
+Přejděte ke službě *bikesharingweb* pro vývojové místo pro *vývoj/azureuser2* otevřením veřejné adresy URL zobrazené ve výstupu příkazu `azds up`. Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se v pravém horním rohu zobrazil aktualizovaný text. Je možné, že budete muset aktualizovat stránku nebo vymazat mezipaměť prohlížeče, pokud tuto změnu neuvidíte okamžitě.
 
 ![Byla aktualizována ukázková aplikace Azure Dev Spaces sdílení kol.](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Když při spuštění `azds up`přejdete ke službě, ve výstupu `azds up` příkazu se zobrazí také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` aplikace při spuštění. `azds up`
+> Když při spuštění `azds up` přejdete do vaší služby, zobrazí se ve výstupu příkazu `azds up` také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` při spuštění `azds up`.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Ověřit, jestli nejsou jiné vývojové prostory beze změny
 
-Pokud je příkaz stále spuštěný, stiskněte klávesy *Ctrl + c.* `azds up`
+Pokud je stále spuštěn příkaz `azds up`, stiskněte klávesy *Ctrl + c*.
 
 ```cmd
 $ azds list-uris --all

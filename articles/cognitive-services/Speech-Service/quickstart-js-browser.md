@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, JavaScript (prohlížeč) – služba Speech'
+title: 'Rychlý Start: rozpoznávání řeči, JavaScript (prohlížeč) – služba pro rozpoznávání řeči'
 titleSuffix: Azure Cognitive Services
 description: Naučte se rozpoznávat řeč v JavaScriptu v prohlížeči pomocí sady Speech SDK
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 7c1c616ec6ce36ee58f32dbcada8ead6fc339f2e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 77afdb491e4a6cee0a3d6861ea76f57502e56278
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306974"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802438"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči pomocí sady Speech SDK
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v JavaScriptu v prohlížeči pomocí sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Aplikace je založena na sadě Speech SDK for JavaScript ([Stáhnout verzi 1.6.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založená na sadě [Speech SDK pro JavaScript](https://aka.ms/csspeech/jsbrowserpackage)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klíč předplatného pro službu Speech. Další informace najdete v článku [o bezplatné rozpoznávání hlasových služeb](get-started.md).
 * PC nebo Mac s funkčním mikrofonem
@@ -40,7 +40,7 @@ Vytvořte novou prázdnou složku. Pokud chcete ukázku hostovat na webovém ser
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je, `microsoft.cognitiveservices.speech.sdk.bundle.js` že se dva soubory rozbalí a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je, že se dva soubory rozbalí, `microsoft.cognitiveservices.speech.sdk.bundle.js` a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
 Druhý soubor je nepovinný a je vhodný pro ladění kódu SDK.
 
 ## <a name="create-an-indexhtml-page"></a>Vytvoření stránky index.html

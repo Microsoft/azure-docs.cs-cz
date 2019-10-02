@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195674"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802451"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
 
@@ -23,26 +23,30 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
+## <a name="prerequisites"></a>Předpoklady
+
+Aby bylo možné tyto ukázky spustit, musíte mít zřízenou Data Science Virtual Machine. Podívejte se na rychlé starty pro [Windows](./provision-vm.md) a [Ubuntu](./dsvm-ubuntu-intro.md).
+
 ## <a name="available-samples"></a>Dostupné ukázky
-| Ukázky kategorie | Popis | Umístění |
+| Kategorie ukázek | Popis | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| Jazyk Python  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Python](#python-language) | <br/>`~notebooks` <br/><br/>|
-| Jazyk Julia  | Poskytuje podrobný popis vykreslování a hloubkového učení v Helena. Vysvětluje také, jak volat C a Python z Helena. <br/> [Jazyk Julia](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
-| Azure Machine Learning  | Ukazuje, jak sestavovat modely strojového učení a hloubkového učení pomocí Machine Learning. Nasazení modelů kdekoli. Využijte automatické strojové učení a inteligentní hyperparametrů. Také pomocí správy modelů a distribuované trénování. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
-| Poznámkové bloky PyTorch  | Ukázky pro hloubkové učení, které používají sítě neuronové založené na PyTorch Poznámkové bloky v rozsahu od Začátečník až po pokročilé scénáře.  <br/> [Poznámkové bloky PyTorch](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
+| Jazyk Pythonu  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Pythonu](#python-language) | <br/>`~notebooks` <br/><br/>|
+| Jazyk Helena  | Poskytuje podrobný popis vykreslování a hloubkového učení v Helena. Vysvětluje také, jak volat C a Python z Helena. <br/> [Jazyk Helena](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
+| Azure Machine Learning  | Ukazuje, jak sestavovat modely strojového učení a hloubkového učení pomocí Machine Learning. Nasaďte modely kdekoli. Použití automatizovaného strojového učení a inteligentního ladění parametrů Také používejte správu modelů a distribuované školení. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
+| PyTorch poznámkové bloky  | Ukázky pro hloubkové učení, které používají sítě neuronové založené na PyTorch Poznámkové bloky od začátečníka až po pokročilé scénáře.  <br/> [PyTorch poznámkové bloky](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  Celá řada neuronovéch síťových ukázek a techniků implementovaných pomocí architektury TensorFlow. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Cognitive Toolkit <br/>   | Ukázky hloubkového učení publikované týmem Cognitive Toolkit v Microsoftu.  <br/> [Sada cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
+| Microsoft Cognitive Toolkit <br/>   | Ukázky hloubkového učení publikované týmem Cognitive Toolkit v Microsoftu.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
 | Caffe2 | Ukázky pro hloubkové učení, které používají sítě neuronové založené na Caffe2 Několik poznámkových bloků seznámí uživatele s Caffe2 a jeho efektivním využitím. Mezi příklady patří předzpracování obrázku a vytváření datových sad. Zahrnují také regresi a používání předpoužívaných modelů. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | Ukázky založené na Pythonu, které využívají nerealizovanou situaci v reálných scénářích. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| Ve SparkML jazyka  | Ukázky, které používají funkce Apache Spark MLLib Toolkit prostřednictvím pySpark a MMLSpark: Microsoft Machine Learning pro Apache Spark na Apache Spark 2. x.  <br/> [Ve SparkML jazyka](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| SparkML jazyk  | Ukázky, které používají funkce Apache Spark MLLib Toolkit prostřednictvím pySpark a MMLSpark: Microsoft Machine Learning pro Apache Spark na Apache Spark 2. x.  <br/> [SparkML jazyk](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
 | XGBoost | Standardní ukázky strojového učení v XGBoost pro scénáře, jako je klasifikace a regrese. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
-## <a name="access-jupyter"></a>Přístup Jupyter 
+## <a name="access-jupyter"></a>Přístup k Jupyter 
 
-Pro přístup k Jupyter vyberte v nabídce plocha nebo aplikace ikonu **Jupyter** . Můžete také přistupovat k Jupyter na edici DSVM systému Linux. Pokud chcete vzdáleně přistupovat z webového prohlížeče, přejděte na `https://<Full Domain Name or IP Address of the DSVM>:8000` web na webu Ubuntu.
+Pro přístup k Jupyter vyberte v nabídce plocha nebo aplikace ikonu **Jupyter** . Můžete také přistupovat k Jupyter na edici DSVM systému Linux. Pokud chcete vzdáleně přistupovat z webového prohlížeče, přejděte na `https://<Full Domain Name or IP Address of the DSVM>:8000` v Ubuntu.
 
 Chcete-li přidat výjimky a zpřístupnit Jupyter k dispozici prostřednictvím prohlížeče, použijte následující pokyny:
 
@@ -53,17 +57,17 @@ Chcete-li přidat výjimky a zpřístupnit Jupyter k dispozici prostřednictvím
 Přihlaste se se stejným heslem, které používáte k přihlášení do Data Science Virtual Machine.
 <br/>
 
-**Domácí Jupyter**
-<br/>![Domácí Jupyter](./media/jupyter-home.png)<br/>
+**Domovská stránka Jupyter**
+<br/>@no__t – 0Jupyter Home @ no__t-1<br/>
 
 ## <a name="r-language"></a>Jazyk R 
-<br/>![Ukázky jazyka R](./media/r-language-samples.png)<br/>
+<br/>![Ukázky R](./media/r-language-samples.png)<br/>
 
-## <a name="python-language"></a>Jazyk Python
+## <a name="python-language"></a>Jazyk Pythonu
 <br/>![Ukázky Pythonu](./media/python-language-samples.png)<br/>
 
-## <a name="julia-language"></a>Jazyk Julia 
-<br/>![Helena ukázky](./media/julia-samples.png)<br/>
+## <a name="julia-language"></a>Jazyk Helena 
+<br/>![Ukázky Helena](./media/julia-samples.png)<br/>
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning 
 <br/>![Ukázky Azure Machine Learning](./media/azureml-samples.png)<br/>
@@ -83,10 +87,10 @@ Přihlaste se se stejným heslem, které používáte k přihlášení do Data S
 <br/>![Ukázky caffe2](./media/caffe2-samples.png)<br/>
 
 ## <a name="h2o"></a>H2O 
-<br/>![Ukázky H2O](./media/h2o-samples.png)<br/>
+<br/>![Vzorky vzorku](./media/h2o-samples.png)<br/>
 
-## <a name="sparkml"></a>Ve SparkML 
-<br/>![Ukázky ve SparkML](./media/sparkml-samples.png)<br/>
+## <a name="sparkml"></a>SparkML 
+<br/>![Ukázky SparkML](./media/sparkml-samples.png)<br/>
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![Ukázky XGBoost](./media/xgboost-samples.png)<br/>

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna QnA Maker pro Python'
+title: 'Rychlý Start: QnA Maker klientskou knihovnu pro Python'
 titleSuffix: Azure Cognitive Services
 description: Začněte s knihovnou klienta QnA Maker pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 90712012f904f7b098af01433fee4a97ee8f2160
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 81e5ac5e5017330d2c5ea8bf5b269c4ce70b495b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203774"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802842"
 ---
-# <a name="quickstart-qna-maker-client-library-for-python"></a>Rychlý start: Klientská knihovna QnA Maker pro Python
+# <a name="quickstart-qna-maker-client-library-for-python"></a>Rychlý Start: QnA Maker klientskou knihovnu pro Python
 
 Začněte s knihovnou klienta QnA Maker pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. 
 
@@ -27,12 +27,14 @@ Použití klientské knihovny QnA Maker pro Python pro:
 * Správa znalostní báze
 * Publikování znalostní báze
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | knihovny dokumentace[(PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | v[Pythonu](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [ukázky Pythonu](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -40,7 +42,7 @@ Použití klientské knihovny QnA Maker pro Python pro:
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. 
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_KEY` a. `QNAMAKER_HOST` Použijte hodnoty klíče a hostitele, které se nacházejí v Azure Portal.
+Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_KEY` a `QNAMAKER_HOST`. Použijte hodnoty klíč a koncový bod nalezené v Azure Portal.
 
 ### <a name="install-the-python-library-for-qna-maker"></a>Nainstalujte knihovnu Pythonu pro QnA Maker
 
@@ -79,10 +81,10 @@ Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovan
 Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
 
 
-|Proměnná prostředí|Proměnná Pythonu|Příklad|
+|Proměnná prostředí|Proměnná Pythonu|Příklad:|
 |--|--|--|
 |`QNAMAKER_KEY`|`subscription_key`|identifikátor GUID znaku 32|
-|`QNAMAKER_HOST`|`host`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`host`|`https://your-resource-name.api.cognitive.microsoft.com` – Změna `your-resource-name` na vlastní název prostředku|
 ||||
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]
@@ -108,7 +110,7 @@ Zavolejte metodu [Create](https://docs.microsoft.com/python/api/azure-cognitives
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
-Aby bylo možné úspěšně vytvořit [`_monitor_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že je zahrnutá funkce, na kterou se odkazuje v kódu výše. 
+Aby bylo možné úspěšně vytvořit znalostní bázi, zajistěte, aby funkce include [`_monitor_operation`](#get-status-of-an-operation) odkazovala na výše uvedený kód. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
 
@@ -116,7 +118,7 @@ Znalostní bázi můžete aktualizovat tak, že do metody [aktualizace](https://
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
-Aby bylo možné úspěšně aktualizovat [`_monitor_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že obsahuje funkci, na kterou se odkazuje ve výše uvedeném kódu. 
+Aby bylo možné úspěšně aktualizovat znalostní bázi, zajistěte, aby zahrnovalo funkci [`_monitor_operation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
@@ -146,7 +148,7 @@ Volání _setTimeout_ v následujícím bloku kódu slouží k simulaci asynchro
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `python knowledgebase_quickstart.py` příkazu z adresáře aplikace.
+Spusťte aplikaci s příkazem `python knowledgebase_quickstart.py` z adresáře aplikace.
 
 Všechny fragmenty kódu v tomto článku jsou [k dispozici](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) a lze je spustit jako jeden soubor. 
 
@@ -164,7 +166,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: Vytvoření a odpověď na KB](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

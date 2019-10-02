@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241007"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799559"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
@@ -28,7 +28,7 @@ Microsoft a Oracle mají partnerství, aby poskytovaly nízkou latenci a vysokou
 Pomocí tohoto připojení mezi cloudy můžete rozdělit vícevrstvou aplikaci tak, aby běžela vaše databázová vrstva na platformě Oracle Cloud Infrastructure (OCI), a na Microsoft Azure aplikace a další vrstvy. Prostředí je podobné jako spuštění celého zásobníku řešení v jednom cloudu. 
 
 > [!IMPORTANT]
-> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí pro ně omezení](#preview-limitations). Pokud chcete povolit připojení s nízkou latencí mezi Azure a OCI, vaše předplatné Azure musí být pro tuto funkci nejdřív uvedené bíle. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí pro ně omezení](#preview-limitations). Aby bylo možné vytvořit připojení s nízkou latencí mezi Azure a OCI, musí být vaše předplatné Azure nejdřív pro tuto funkci povolené. K provedení tohoto krátkého [formuláře průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)se musíte zaregistrovat ve verzi Preview. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Přístup k funkci verze Preview podléhá dostupnosti a omezení Microsoftu, a to pouze podle svého uvážení. Dokončení průzkumu nezaručuje přístup. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
 
 Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azure, přečtěte si téma [image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure](oracle-vm-solutions.md).
 
@@ -39,12 +39,12 @@ Připojení mezi cloudy poskytuje řešení pro spouštění špičkových aplik
 Mezi aplikace, které můžete spustit v konfiguraci mezi cloudy patří:
 
 * Sada E-Business
-* JD Edwards EnterpriseOne
-* PeopleSoft
+* ŘEŠENÍ JD Edwards EnterpriseOne
+* PeopleSoft spouštěných místně
 * Maloobchodní aplikace Oracle
 * Hyperion finanční správa Oracle
 
-Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následující části.
+Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následujících oddílech.
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 

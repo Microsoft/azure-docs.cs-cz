@@ -1,0 +1,96 @@
+---
+title: 'Rychlý Start: syntetizace řeči, Java (Windows, Linux, macOS) – Speech Service'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu se naučíte vytvořit jednoduchou aplikaci Java, která zachycuje a syntetizuje řeč z textu a hraje ho s výchozím mluvčím.
+services: cognitive-services
+author: yulin-li
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: quickstart
+ms.date: 09/19/2019
+ms.author: yulili
+ms.openlocfilehash: 832525ae1441fca85f8df661b4a187c0be8d91dc
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803982"
+---
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>Rychlý Start: syntetizace řeči pomocí sady Speech SDK for Java
+
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-java-jre.md), [Převod řeči na řeč](quickstart-translate-speech-java-jre.md)a pro [virtuální asistenty prvního hlasu](quickstart-virtual-assistant-java-jre.md).
+
+V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). Z textu se budete mluvit z textu a přehrát ho pomocí výchozího mluvčího počítače. Aplikace se sestavuje pomocí balíčku Maven sady Speech SDK a Java IDE zatmění (v 4.8) na 64 Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) nebo v macOS 10,13 nebo novějším. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+
+> [!NOTE]
+> Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
+
+## <a name="prerequisites"></a>Předpoklady
+
+K tomuto rychlému startu potřebujete:
+
+* Operační systém: 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9) nebo macOS 10,13 nebo novější
+* [Java IDE zatmění](https://www.eclipse.org/downloads/)
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
+
+Pokud používáte systém Linux, ujistěte se, že jsou tyto závislosti nainstalovány před spuštěním služby zatmění.
+
+* V Ubuntu:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
+
+* V Debian 9:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
+
+Pokud používáte Windows (64-bit), ujistěte se, že máte nainstalovanou aplikaci C++ Microsoft Visual Redistributable pro vaši platformu.
+* [Stažení sady Microsoft C++ Visual Redistributable pro visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
+## <a name="create-and-configure-project"></a>Vytvoření a konfigurace projektu
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
+
+## <a name="add-sample-code"></a>Přidání ukázkového kódu
+
+1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
+
+1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
+
+   ![Snímek obrazovky s oknem New Java Class (Nová třída Javy)](media/sdk/qs-java-jre-06-create-main-java.png)
+
+1. Veškerý kód v `Main.java` nahraďte následujícím fragmentem kódu:
+
+   [!code-java[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/java-jre/src/speechsdk/quickstart/Main.java#code)]
+
+1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
+
+1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+
+1. Uložte změny do projektu.
+
+## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+
+Stiskněte F11 nebo vyberte **Run** (Spustit)  >  **Debug** (Ladit).
+Po zvýšení úrovně zadejte text a v takovém případě se zobrazí syntetizované zvuky z výchozího mluvčího.
+
+## <a name="next-steps"></a>Další kroky
+
+Další ukázky, například jak číst řeč ze zvukového souboru, jsou k dispozici na GitHubu.
+
+> [!div class="nextstepaction"]
+> [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+- [Rychlý Start: rozpoznávání řeči, Java (Windows, Linux, macOS)](quickstart-java-jre.md)
+- [Rychlý Start: překlad řeči, Java (Windows, Linux, macOS)](quickstart-translate-speech-java-jre.md)
+- [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
+- [Záznam ukázek hlasu](record-custom-voice-samples.md)

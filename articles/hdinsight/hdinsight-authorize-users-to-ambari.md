@@ -2,18 +2,18 @@
 title: Autorizace uživatelů pro zobrazení Ambari – Azure HDInsight
 description: Jak spravovat oprávnění uživatelů a skupin Ambari pro clustery HDInsight s povoleným ESP.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/26/2017
-ms.author: hrasheed
-ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 09/30/2019
+ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076689"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720017"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -28,9 +28,142 @@ Pokud jste to ještě neudělali, postupujte podle [těchto pokynů](./domain-jo
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
-Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** na adresu. Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
+Pokud se chcete dostat na **stránku správy Ambari** ve [webovém uživatelském rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte na **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Zadejte uživatelské jméno a heslo správce clusteru, které jste definovali při vytváření clusteru. Pak z řídicího panelu Ambari vyberte **Spravovat Ambari** pod nabídkou **správce** :
 
 ![Správa řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+
+## <a name="add-users"></a>Přidání uživatelů
+
+### <a name="add-users-through-the-portal"></a>Přidávání uživatelů prostřednictvím portálu
+
+1. Na stránce Správa vyberte možnost **Uživatelé**.
+
+    ![Uživatelé stránky správy Apache Ambari](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
+
+1. Vyberte **+ vytvořit místního uživatele**.
+
+1. Zadejte **uživatelské jméno** a **heslo**. Vyberte **Uložit**.
+
+### <a name="add-users-through-powershell"></a>Přidávání uživatelů přes PowerShell
+
+Níže uvedené proměnné upravte tak, že nahradíte `CLUSTERNAME`, `NEWUSER` a `PASSWORD` odpovídajícími hodnotami.
+
+```powershell
+# Set-ExecutionPolicy Unrestricted
+
+# Begin user input; update values
+$clusterName="CLUSTERNAME"
+$user="NEWUSER"
+$userpass='PASSWORD'
+# End user input
+
+$adminCredentials = Get-Credential -UserName "admin" -Message "Enter admin password"
+
+$clusterName = $clusterName.ToLower()
+$createUserUrl="https://$($clusterName).azurehdinsight.net/api/v1/users"
+
+$createUserBody=@{
+    "Users/user_name" = "$user"
+    "Users/password" = "$userpass"
+    "Users/active" = "$true"
+    "Users/admin" = "$false"
+} | ConvertTo-Json
+
+# Create user
+$statusCode =
+Invoke-WebRequest `
+    -Uri $createUserUrl `
+    -Credential $adminCredentials `
+    -Method POST `
+    -Headers @{"X-Requested-By" = "ambari"} `
+    -Body $createUserBody | Select-Object -Expand StatusCode
+
+if ($statusCode -eq 201) {
+    Write-Output "User is created: $user"
+}
+else
+{
+    Write-Output 'User is not created'
+    Exit
+}
+
+$grantPrivilegeUrl="https://$($clusterName).azurehdinsight.net/api/v1/clusters/$($clusterName)/privileges"
+
+$grantPrivilegeBody=@{
+    "PrivilegeInfo" = @{
+        "permission_name" = "CLUSTER.USER"
+        "principal_name" = "$user"
+        "principal_type" = "USER"
+    }
+} | ConvertTo-Json
+
+# Grant privileges
+$statusCode =
+Invoke-WebRequest `
+    -Uri $grantPrivilegeUrl `
+    -Credential $adminCredentials `
+    -Method POST `
+    -Headers @{"X-Requested-By" = "ambari"} `
+    -Body $grantPrivilegeBody | Select-Object -Expand StatusCode
+
+if ($statusCode -eq 201) {
+    Write-Output 'Privilege is granted'
+}
+else
+{
+    Write-Output 'Privilege is not granted'
+    Exit
+}
+
+Write-Host "Pausing for 100 seconds"
+Start-Sleep -s 100
+
+$userCredentials = "$($user):$($userpass)"
+$encodedUserCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($userCredentials))
+$zookeeperUrlHeaders = @{ Authorization = "Basic $encodedUserCredentials" }
+$getZookeeperurl="https://$($clusterName).azurehdinsight.net/api/v1/clusters/$($clusterName)/services/ZOOKEEPER/components/ZOOKEEPER_SERVER"
+
+# Perform query with new user
+$zookeeperHosts =
+Invoke-WebRequest `
+    -Uri $getZookeeperurl `
+    -Method Get `
+    -Headers $zookeeperUrlHeaders
+
+Write-Output $zookeeperHosts
+```
+
+### <a name="add-users-through-curl"></a>Přidat uživatele prostřednictvím oblé
+
+Níže uvedené proměnné upravte tak, že nahradíte `CLUSTERNAME`, `ADMINPASSWORD`, `NEWUSER` a `USERPASSWORD` odpovídajícími hodnotami. Skript je navržený tak, aby se spustil s bash. Pro příkazový řádek systému Windows by byly potřeba drobné úpravy.
+
+```bash
+export clusterName="CLUSTERNAME"
+export adminPassword='ADMINPASSWORD'
+export user="NEWUSER"
+export userPassword='USERPASSWORD'
+
+# create user
+curl -k -u admin:$adminPassword -H "X-Requested-By: ambari" -X POST \
+-d "{\"Users/user_name\":\"$user\",\"Users/password\":\"$userPassword\",\"Users/active\":\"true\",\"Users/admin\":\"false\"}" \
+https://$clusterName.azurehdinsight.net/api/v1/users
+
+echo "user created: $user"
+
+# grant permissions
+curl -k -u admin:$adminPassword -H "X-Requested-By: ambari" -X POST \
+-d '[{"PrivilegeInfo":{"permission_name":"CLUSTER.USER","principal_name":"'$user'","principal_type":"USER"}}]' \
+https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/privileges
+
+echo "Privilege is granted"
+
+echo "Pausing for 100 seconds"
+sleep 10s
+
+# perform query using new user account
+curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
+-X GET "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER"
+```
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Udělení oprávnění Apache Hive zobrazení
 
@@ -46,9 +179,9 @@ Ambari obsahuje instance zobrazení pro [Apache Hive](https://hive.apache.org/) 
 
 3. Posuňte se k dolnímu okraji stránky zobrazení. V části *oprávnění* máte dvě možnosti, jak udělit uživatelům domény oprávnění k zobrazení:
 
-**Udělení oprávnění těmto uživatelům** ![Udělení oprávnění těmto uživatelům](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Udělit oprávnění těmto** uživatelům ![Grant oprávnění pro tyto uživatele @ no__t-2
 
-**Udělit oprávnění těmto skupinám** ![Udělit oprávnění těmto skupinám](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Udělit oprávnění těmto skupinám** ![Grant oprávnění k těmto skupinám @ no__t-2
 
 1. Chcete-li přidat uživatele, vyberte tlačítko **Přidat uživatele** .
 
@@ -97,9 +230,9 @@ Pokud chcete spravovat role, přejděte na **stránku Správa Ambari**a pak vybe
 
 Pokud chcete zobrazit seznam oprávnění udělených jednotlivým rolím, klikněte na modré otazník vedle záhlaví tabulky **role** na stránce role.
 
-![Oprávnění pro odkazy na nabídku rolí Apache Ambari](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Oprávnění pro odkazy na nabídku rolí Apache Ambari")
+![Odkazy v nabídce role Apache Ambari oprávnění]odkaz na(./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "nabídku role Apache Ambari")
 
-Na této stránce jsou k dispozici dvě různá zobrazení, která můžete použít ke správě rolí pro uživatele a skupiny: Zablokování a výpis.
+Na této stránce jsou k dispozici dvě různá zobrazení, která můžete použít ke správě rolí pro uživatele a skupiny: blokování a seznam.
 
 ### <a name="block-view"></a>Zobrazení blokování
 
@@ -109,7 +242,7 @@ Zobrazení blokování zobrazuje jednotlivé role ve vlastním řádku a poskytu
 
 ### <a name="list-view"></a>Zobrazení seznamu
 
-Zobrazení seznamu poskytuje možnosti rychlého úprav ve dvou kategoriích: Uživatelé a skupiny.
+Zobrazení seznamu poskytuje možnosti rychlého úprav ve dvou kategoriích: uživatelé a skupiny.
 
 * Kategorie uživatelé v zobrazení seznamu zobrazuje seznam všech uživatelů, což vám umožní vybrat roli pro každého uživatele v rozevíracím seznamu.
 
@@ -133,9 +266,10 @@ K roli *uživatele clusteru* jsme přiřadili uživatele domény služby Azure A
 
 ![Zobrazení řídicího panelu Apache Ambari](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace zásad Apache Hive ve službě HDInsight pomocí protokolu ESP](./domain-joined/apache-domain-joined-run-hive.md)
 * [Správa clusterů s protokolem ESP HDInsight](./domain-joined/apache-domain-joined-manage.md)
 * [Použití zobrazení Apache Hive s Apache Hadoop ve službě HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizace uživatelů Azure AD s clusterem](hdinsight-sync-aad-users-to-cluster.md)
+* [Správa clusterů HDInsight pomocí REST API Apache Ambari](./hdinsight-hadoop-manage-ambari-rest-api.md)

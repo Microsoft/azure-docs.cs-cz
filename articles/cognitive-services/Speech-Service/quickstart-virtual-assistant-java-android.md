@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vlastní hlas – první virtuální asistent (Preview), Java (Android) – Speech Service'
+title: 'Rychlý Start: vlastní hlas – první virtuální asistent (Preview), Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvořit aplikaci pro virtuální asistenty s prvním hlasem v jazyce Java v Androidu pomocí sady Speech SDK
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f5b8623c835b4188d098ab2acf842abef30138e9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559214"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800056"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Vytvoření virtuálního pomocníka pro hlasový vstup v jazyce Java v Androidu pomocí sady Speech SDK
+# <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý Start: Vytvoření virtuálního asistenta prvního hlasu v jazyce Java v Androidu pomocí sady Speech SDK
 
-K dispozici je také rychlý Start pro [Převod řeči na text](quickstart-java-android.md).
+K dispozici je také rychlý Start pro [Převod řeči na text](quickstart-java-android.md) a [Převod textu na řeč](quickstart-text-to-speech-java-android.md).
 
 V tomto článku vytvoříte pomocí [sady Speech SDK](speech-sdk.md)virtuální asistenta hlasu s Java pro Android. Tato aplikace se připojí ke robotu, kterou už máte vytvořenou a nakonfigurovanou pomocí [kanálu Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech). Pak pošle hlasovou žádost na robota a nabídne aktivitu odezvy s povoleným hlasem.
 
@@ -28,10 +28,10 @@ Tato aplikace je sestavená pomocí balíčku sady Speech SDK Maven a Android St
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
-* Dřív vytvořený robot nakonfigurovaný s kanálem [Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+* Dřív vytvořený robot nakonfigurovaný s [kanálem Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 * [Android Studio](https://developer.android.com/studio/) v 3.3 nebo novějších
 
     > [!NOTE]
@@ -43,7 +43,7 @@ Tato aplikace je sestavená pomocí balíčku sady Speech SDK Maven a Android St
 
 ## <a name="create-user-interface"></a>Vytvoření uživatelského rozhraní
 
-V této části vytvoříme pro aplikaci základní uživatelské rozhraní (UI). Pojďme začít otevřením hlavní aktivity: `activity_main.xml`. Základní šablona obsahuje záhlaví s názvem aplikace a `TextView` zprávu "Hello World!".
+V této části vytvoříme pro aplikaci základní uživatelské rozhraní (UI). Pojďme začít otevřením hlavní aktivity: `activity_main.xml`. Základní šablona obsahuje záhlaví s názvem aplikace a `TextView` se zprávou "Hello World!".
 
 Dále nahraďte obsah `activity_main.xml` následujícím kódem:
 
@@ -96,9 +96,9 @@ Dále nahraďte obsah `activity_main.xml` následujícím kódem:
 
 Tento kód XML definuje jednoduché uživatelské rozhraní pro interakci s robotem.
 
-* Element zahájí interakci a při kliknutí vyvolá `onBotButtonClicked` metodu. `button`
-* `recoText` Element zobrazí výsledky převodu řeči na text při komunikaci s robotem.
-* `activityText` Element zobrazí datovou část JSON pro nejnovější aktivitu rozhraní robota z vaší robota.
+* Prvek `button` zahájí interakci a při kliknutí vyvolá metodu `onBotButtonClicked`.
+* Element `recoText` zobrazí při komunikaci s robotem výsledky řeči na text.
+* Element `activityText` zobrazí datovou část JSON pro nejnovější aktivitu rozhraní robota z vaší robota.
 
 Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vypadat takto:
 
@@ -106,7 +106,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Otevřete `MainActivity.java`a nahraďte obsah následujícím kódem:
+1. Otevřete `MainActivity.java` a nahraďte obsah následujícím kódem:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -250,19 +250,19 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
     }
    ```
 
-   * `onCreate` Metoda zahrnuje kód, který žádá o přístup přes mikrofon a Internet.
+   * Metoda `onCreate` zahrnuje kód, který žádá o přístup přes mikrofon a Internet.
 
    * Metoda `onBotButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka aktivuje jednu interakci ("turn") s robotem.
 
-   * Metoda ukazuje události, které používá `DialogServiceConnector` a základní zpracování příchozích aktivit. `registerEventListeners`
+   * Metoda `registerEventListeners` ukazuje události, které používá `DialogServiceConnector` a základní zpracování příchozích aktivit.
 
 1. Ve stejném souboru nahraďte konfigurační řetězce odpovídajícími prostředky:
 
-    * Nahraďte `YourChannelSecret` tajným kódem kanálu pro roboty s přímým řádkem.
+    * Nahraďte `YourChannelSecret` klíčem pro robota s přímým řádkem řeči.
 
     * Místo `YourSpeechSubscriptionKey` použijte váš klíč předplatného.
 
-    * Nahraďte `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému. funkce Direct line Speech v současné době podporuje jenom podmnožinu oblastí služby Speech Services. Další informace najdete v tématu [oblasti](regions.md#voice-first-virtual-assistants).
+    * Nahraďte `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému, který je v současné době podporován pomocí funkce Direct line Speech. Další informace najdete v tématu [oblasti](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
@@ -280,12 +280,12 @@ Jakmile se aplikace a její činnost spustí, klikněte na tlačítko a začnět
 
 ![Snímek obrazovky aplikace pro Android](media/sdk/qs-java-android-assistant-completed-turn.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 - [O virtuálních asistentech pro hlasové telefony](voice-first-virtual-assistants.md)
 - [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
 - [Vlastní slova probuzení](speech-devices-sdk-create-kws.md)

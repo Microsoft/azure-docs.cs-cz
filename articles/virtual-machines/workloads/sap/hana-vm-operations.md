@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceefb565a82301d2ddedf70d12c0fc564b801229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d3c810746218e9761ae4c821dc22fef921e62a60
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101209"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719068"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačních SAP HANA systémů, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA škálování pro SKU virtuálního počítače M128s. Tento dokument nemá za cíl nahradit standardní dokumentaci SAP, která zahrnuje následující obsah:
@@ -29,7 +29,7 @@ Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačn�
 - [Instalační příručky SAP](https://service.sap.com/instguides)
 - [Poznámky SAP](https://sservice.sap.com/notes)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
@@ -67,7 +67,7 @@ Virtuální počítače v Azure nasadíte pomocí:
 Můžete také nasadit kompletní nainstalovanou SAP HANA platformu na Azure VM Services přes [cloudovou platformu SAP](https://cal.sap.com/). Proces instalace je popsaný v tématu [nasazení SAP S/4HANA nebo černobíle/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) nebo pomocí služby Automation vydanou [zde](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 >[!IMPORTANT]
-> Aby bylo možné používat virtuální počítače s M208xx_v2, je třeba pečlivě vybrat bitovou kopii systému SUSE Linux z Galerie imagí virtuálních počítačů Azure. Pokud si chcete přečíst podrobnosti, přečtěte si článek [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). Red Hat ještě není podporovaný pro použití HANA na virtuálních počítačích Mv2 Family. V rámci aktuálního plánování je poskytnutí podpory pro verze Red Hat běžící na virtuálním počítači Mv2 ve službě Q4/CY2019. 
+> Aby bylo možné používat virtuální počítače s M208xx_v2, je třeba pečlivě vybrat image pro Linux z Galerie imagí virtuálních počítačů Azure. Pokud si chcete přečíst podrobnosti, přečtěte si článek [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). 
 > 
 
 
@@ -83,7 +83,7 @@ Když máte připojení typu Site-to-site k Azure prostřednictvím sítě VPN n
 > 
 
 > [!IMPORTANT]
-> Jiný návrh, který není podporován, je oddělení aplikační vrstvy SAP a vrstvy DBMS do různých virtuálních sítí Azure, které nejsou navzájem partnerského [vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi sebou. Doporučuje se oddělit vrstvu aplikace SAP a DBMS pomocí podsítí v rámci služby Azure Virtual Network místo používání různých virtuálních sítí Azure. Pokud se rozhodnete nepostupovat podle doporučení a místo toho tyto dvě vrstvy oddělit do jiné virtuální sítě, musí být tyto dvě virtuální sítě [partnerské](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Uvědomte si, že síťový provoz [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi dvěma partnerskými virtuálními sítěmi Azure podléhá nákladům na přenos. Velký objem dat v mnoha terabajtech vyměňovaných mezi aplikační vrstvou SAP a systémy DBMS může být shromážděn, pokud je vrstva aplikace SAP a vrstva DBMS oddělená mezi dvěma partnerskými virtuálními sítěmi Azure. 
+> Jiný návrh, který **není podporován,** je oddělení aplikační vrstvy SAP a vrstvy DBMS do různých virtuálních sítí Azure, které nejsou navzájem [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi sebou. Doporučuje se oddělit vrstvu aplikace SAP a DBMS pomocí podsítí v rámci služby Azure Virtual Network místo používání různých virtuálních sítí Azure. Pokud se rozhodnete nepostupovat podle doporučení a místo toho tyto dvě vrstvy oddělit do jiné virtuální sítě, musí být tyto dvě virtuální sítě [partnerské](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Uvědomte si, že síťový provoz mezi dvěma [partnerskými](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálními sítěmi Azure podléhá nákladům na přenos. Velký objem dat v mnoha terabajtech vyměňovaných mezi aplikační vrstvou SAP a systémy DBMS může být shromážděn, pokud je vrstva aplikace SAP a vrstva DBMS oddělená mezi dvěma partnerskými virtuálními sítěmi Azure. 
 
 Při instalaci virtuálních počítačů pro spuštění SAP HANA musí virtuální počítače:
 
@@ -97,7 +97,7 @@ Při instalaci virtuálních počítačů pro spuštění SAP HANA musí virtuá
 
 Pro nasazení, která jsou dlouhodobá, je ale potřeba vytvořit v Azure architekturu sítě Virtual datacentra. Tato architektura doporučuje oddělení virtuální sítě Azure, které se připojuje k místní síti Azure, do samostatné virtuální sítě Azure. Tato samostatná virtuální síť by měla hostovat všechny přenosy, které opustí místní počítač nebo na Internet. Tento přístup umožňuje nasadit software pro auditování a protokolování provozu, který vstoupí do virtuálního datového centra v Azure v této samostatné virtuální síti centra. Takže máte jednu virtuální síť, která je hostitelem veškerého softwaru a konfigurací, které se vztahují k místnímu a odchozímu provozu do nasazení Azure.
 
-Články [ve virtuálním datovém centru Azure: V rámci perspektivy](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) sítě a [virtuálního datového centra Azure a roviny řízení podniku](https://docs.microsoft.com/azure/architecture/vdc/) získáte další informace o přístupu k virtuálnímu datovému centru a souvisejícím návrhu virtuální sítě Azure.
+Články [Azure Virtual Datacenter: Perspektiva sítě](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) a [virtuální datové centrum Azure a rovina řízení podniku](https://docs.microsoft.com/azure/architecture/vdc/) poskytují více informací o přístupu k virtuálnímu datovému centru a souvisejícím návrhu virtuální sítě Azure.
 
 
 >[!NOTE]
@@ -139,10 +139,8 @@ O certifikaci se škálováním na 16 uzlů
 >V nasazeních se škálováním na víc virtuálních počítačů Azure není možné používat pohotovostní uzel.
 >
 
-Důvod, proč není možné konfigurovat pohotovostní uzel, je dvojí:
+I když má Azure nativní službu systému souborů NFS s [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), Služba NFS, i když je podporovaná pro aplikační vrstvu SAP, ještě není certifikována pro SAP HANA. V důsledku toho je potřeba nakonfigurovat sdílené složky systému souborů NFS s podporou funkcí třetích stran. 
 
-- Azure v tomto okamžiku nemá žádnou nativní službu NFS. V důsledku toho je potřeba nakonfigurovat sdílené složky systému souborů NFS s podporou funkcí třetích stran.
-- Žádná z konfigurací NFS třetí strany nedokáže splnit kritéria latence úložiště pro SAP HANA s jejich řešeními nasazenými v Azure.
 
 V důsledku toho se svazky **/Hana/data** a **/Hana/log** nedají sdílet. Bez sdílení těchto svazků s jedním uzlem nebrání použití SAP HANAho pohotovostního uzlu v konfiguraci s možností horizontálního navýšení kapacity.
 
@@ -152,17 +150,21 @@ Výsledkem je, že základní návrh pro jeden uzel v konfiguraci s možností h
 
 Základní konfigurace uzlu virtuálního počítače pro SAP HANA škálování na více instancí vypadá takto:
 
-- V případě **/Hana/Shared**vytvoříte cluster systému souborů NFS s vysokou dostupností založený na SUSE Linux 12 SP3. Tento cluster hostuje sdílené složky systému souborů NFS **/Hana/Shared** s konfigurací škálování na více systémů a SAP NETWEAVER nebo 4HANA centrální služby. Dokumentace k sestavení takové konfigurace je k dispozici v článku [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- Všechny ostatní svazky disku nejsou sdíleny mezi různými uzly a nejsou založené na systému souborů NFS. V tomto dokumentu najdete další podrobnosti o konfiguracích a krocích instalace pro škálování na více systémů, které se nesdílí s **/Hana/data** a **/Hana/log** .
+- Pro **/Hana/Shared**musíte vytvořit sdílenou složku systému souborů NFS s vysokou dostupností. V důsledku toho existují různé možnosti, jak se dostat do této vysoce dostupné sdílené složky. Jsou popsány v kombinaci s SAP NetWeaver:
+    - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+    - [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+    - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+    - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+- Všechny ostatní svazky disku nejsou **sdíleny** mezi různými uzly a **nejsou založené na** systému souborů NFS. V tomto dokumentu najdete další podrobnosti o konfiguracích a krocích instalace pro škálování na více systémů, které se nesdílí s **/Hana/data** a **/Hana/log** .
 
 >[!NOTE]
->Cluster systému souborů NFS s vysokou dostupností, jak je znázorněno na obrázku, je podporován pouze v systému SUSE Linux. Řešení NFS s vysokou dostupností založené na Red Hat bude později doporučeno.
+>Cluster systému souborů NFS s vysokou dostupností, jak je zobrazený v grafickém rozhraní, je popsán ve [vysoké dostupnosti pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Další možnosti jsou popsány v seznamu výše.
 
 Velikost svazků pro uzly je stejná jako pro horizontální navýšení kapacity, s výjimkou **/Hana/Shared**. V případě SKU virtuálních počítačů M128s vypadají navržené velikosti a typy jako:
 
-| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Max. VM I/O<br /> Propustnost | /hana/data | /hana/log | Rozsah/root | /usr/sap | Hana a zálohování |
+| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | /hana/log | Rozsah/root | /usr/sap | Hana a zálohování |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 × P20 | 1 × P6 | 1 × P6 | 2 × P40 |
 
 
 Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure. Také použijte Azure Akcelerátor zápisu na disky, které tvoří svazek **/Hana/log** .
@@ -292,8 +294,8 @@ Instalace DT 2,0 na vyhrazeném virtuálním počítači vyžaduje propustnost s
 
 V souladu s pokyny 2,0 pro osvědčené postupy v/v platí, že propustnost vstupně-výstupních operací disku by měla být minimálně 50 MB/s na fyzickou jader. Podívejte se na specifikaci pro dva typy virtuálních počítačů Azure, které jsou podporované pro DT 2,0. maximální propustnost vstupně-výstupních operací disku pro virtuální počítač vypadá takto:
 
-- E32sv3 :   768 MB/s (neuložené do mezipaměti) to znamená, že poměr 48 MB/s na fyzický jádro
-- M64-32ms :  1000 MB/s (neuložené do mezipaměti) to znamená, že poměr 62,5 MB/s na fyzický jádro
+- E32sv3:768 MB/s (neuložené do mezipaměti) znamená poměr 48 MB/s na fyzický jádro
+- M64-32ms: 1000 MB/s (neuložené do mezipaměti) znamená poměr 62,5 MB/s na fyzický jádro
 
 Aby bylo dosaženo maximálního počtu propustnosti disku na jeden virtuální počítač, je nutné připojit více disků Azure k virtuálnímu počítači DT 2,0 a vytvořit softwarové pole RAID (prokládání) na úrovni operačního systému. Jeden disk Azure nemůže poskytnout propustnost pro dosažení maximálního limitu virtuálních počítačů v tomto ohledu. Služba Azure Premium Storage je povinná pro spuštění DT 2,0. 
 
@@ -307,8 +309,8 @@ V případě, že virtuální počítač M64-32ms má mnoho paměti, zatížení
 
 | SKU VIRTUÁLNÍHO POČÍTAČE | Konfigurace disku 1 | Konfigurace disku 2 | Konfigurace disku 3 | Konfigurace disku 4 | Konfigurace disku 5 | 
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| M64-32ms | 4 x P50 -> 16 TB | 4 x P40 -> 8 TB | 5 x P30 -> 5 TB | 7 x P20-> 3,5 TB | 8 x P15-> 2 TB | 
-| E32sv3 | 3 x P50 -> 12 TB | 3 x P40 -> 6 TB | 4 x P30 -> 4 TB | 5 x P20-> 2,5 TB | 6 x P15-> 1,5 TB | 
+| M64-32ms | 4 x P50-> 16 TB | 4 x P40-> 8 TB | 5 x P30-> 5 TB | 7 x P20-> 3,5 TB | 8 x P15-> 2 TB | 
+| E32sv3 | 3 x P50-> 12 TB | 3 x P40-> 6 TB | 4 x P30-> 4 TB | 5 x P20-> 2,5 TB | 6 x P15-> 1,5 TB | 
 
 
 Zvláště pro případ, že je zatížení náročné na čtení, může zvýšit výkon v/v, aby se zapnula mezipaměť hostitele Azure jen pro čtení, jak se doporučuje pro datové svazky databázového softwaru. Vzhledem k tomu, že mezipaměť disku hostitele Azure musí být v transakčním protokolu "none". 
@@ -320,8 +322,8 @@ Tady je několik příkladů velikosti svazku protokolu:
 
 | velikost objemů dat a typ disku | svazek protokolu a typ disku konfigurace 1 | svazek protokolu a typ disku konfigurace 2 |
 | --- | --- | --- |
-| 4 x P50 -> 16 TB | 5 x P20-> 2,5 TB | 3 x P30 -> 3 TB |
-| 6 x P15-> 1,5 TB | 4 x P6 -> 256 GB | 1 x P15-> 256 GB |
+| 4 x P50-> 16 TB | 5 x P20-> 2,5 TB | 3 x P30-> 3 TB |
+| 6 x P15-> 1,5 TB | 4 x P6-> 256 GB | 1 x P15-> 256 GB |
 
 
 Podobně jako u SAP HANA horizontálního navýšení kapacity musí být adresář/Hana/Shared sdílený mezi SAP HANAm virtuálním počítačem a virtuálním počítačem DT 2,0. Stejná architektura jako pro SAP HANA škálování na více instancí pomocí vyhrazených virtuálních počítačů, které fungují jako vysoce dostupný server NFS, se doporučuje. Aby bylo možné poskytnout sdílený svazek zálohy, lze použít stejný návrh. Ale zákazník je až na to, pokud by to bylo nutné, nebo pokud je dostačující jenom pro použití vyhrazeného virtuálního počítače s dostatečnou kapacitou úložiště k tomu, aby fungoval jako záložní server.

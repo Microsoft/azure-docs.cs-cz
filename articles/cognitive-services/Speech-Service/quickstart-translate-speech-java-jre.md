@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Převod řeči, Java (Windows, Linux) – Speech Service'
+title: 'Rychlý Start: Převod řeči, Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte jednoduchou aplikaci v jazyce Java, která bude zachytávání uživatelského rozpoznávání řeči, jeho překladu do jiného jazyka a výstup textu do příkazového řádku. Tato příručka je určená pro uživatele systému Windows a Linux.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553392"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802019"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Překlad řeči se sadou SDK pro řeč pro Javu
+# <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Rychlý Start: Převod řeči pomocí sady Speech SDK for Java
 
-K dispozici jsou také rychlé starty pro [virtuální asistenty](quickstart-virtual-assistant-java-jre.md) [pro převod řeči na text](quickstart-java-jre.md) a hlas.
+K dispozici jsou také rychlé starty pro [Převod řeči na text](quickstart-java-jre.md), pro [Převod textu na řeč](quickstart-text-to-speech-java-jre.md)a [hlas](quickstart-virtual-assistant-java-jre.md).
 
 V tomto rychlém startu vytvoříte jednoduchou aplikaci v jazyce Java, která zachycuje řeč uživatele z mikrofonu vašeho počítače, převede řeč a transcribes přeložený text do příkazového řádku v reálném čase. Tato aplikace je navržená tak, aby běžela na 64 Windows nebo 64 systému Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9), nebo v macOS 10,13 nebo novějším. Je sestavená pomocí balíčku Maven sady Speech SDK a Java IDE zatmění.
 
 Úplný seznam jazyků dostupných pro překlad řeči najdete v tématu [Podpora jazyků](language-support.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
@@ -83,15 +83,15 @@ Vstup z mluveného slova z vašeho mikrofonu se přepisu do němčiny a přihlá
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-translate-java-jre-output.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Na GitHubu jsou k dispozici další ukázky, jako je například čtení řeči ze zvukového souboru a výstup přeloženého textu jako syntetizované řeči.
 
 > [!div class="nextstepaction"]
 > [Zkoumání ukázek Java na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Rychlé zprovoznění: Rozpoznávání řeči, Java (Windows, Linux)](quickstart-java-jre.md)
+- [Rychlý Start: rozpoznávání řeči, Java (Windows, Linux)](quickstart-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

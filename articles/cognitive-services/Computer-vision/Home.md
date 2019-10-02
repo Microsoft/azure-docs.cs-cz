@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967056"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719543"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
-Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace. Když chcete analyzovat obrázek, můžete ho nahrát nebo zadat jeho adresu URL. Algoritmy pro zpracování obrázků mohou analyzovat obsah několika různými způsoby, v závislosti na vizuálních funkcích, které vás zajímají. Počítačové zpracování obrazu například může určit, jestli obrázek obsahuje obsah pro dospělé nebo pikantní, nebo najít všechny lidské obličeje v obrázku.
+Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace. Když chcete analyzovat obrázek, můžete ho nahrát nebo zadat jeho adresu URL. Algoritmy pro zpracování obrázků mohou analyzovat obsah několika různými způsoby, v závislosti na vizuálních funkcích, které vás zajímají. Počítačové zpracování obrazu například může určit, zda obrázek obsahuje obsah pro dospělé, nebo může najít všechny lidské obličeje v obrázku.
 
 Počítačové zpracování obrazu můžete v aplikaci použít buď pomocí nativní sady SDK, nebo vyvoláním REST API přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
 
@@ -28,7 +28,7 @@ Počítačové zpracování obrazu můžete v aplikaci použít buď pomocí nat
 
 Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 
-| Action | Popis |
+| Akce | Popis |
 | ------ | ----------- |
 |**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikujte a označte vizuální funkce na obrázku ze sady tisíců rozpoznatelných objektů, živých věcí, krajin a akcí. Pokud jsou značky dvojznačné nebo nejsou běžné znalosti, poskytuje odpověď rozhraní API nápovědu k objasnění kontextu značky. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
 |**[Detekovat objekty](concept-object-detection.md)**| Detekce objektu je podobná označování, ale rozhraní API vrací souřadnice ohraničujícího pole pro každou použitou značku. Pokud například obrázek obsahuje pes, Cat a osobu, operace zjišťování zobrazí tyto objekty spolu s jejich souřadnicemi v obrázku. Tuto funkci můžete použít ke zpracování dalších vztahů mezi objekty v imagi. Také vám umožní zjistit, že je v obrázku více instancí stejné značky.|
@@ -52,7 +52,7 @@ Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](
 
 ## <a name="moderate-content-in-images"></a>Střední obsah v obrázcích
 
-Počítačové zpracování obrazu můžete použít k [detekci obsahu pro dospělé a pikantní](concept-detecting-adult-content.md) v imagi a vracet hodnocení spolehlivosti pro obojí. Filtr pro pikantní pro dospělé a rozpoznávání obsahu můžete nastavit na klouzavé škále tak, aby vyhovoval vašim potřebám.
+Počítačové zpracování obrazu můžete použít ke [zjištění obsahu pro dospělé](concept-detecting-adult-content.md) v imagi a vracet hodnocení spolehlivosti pro různé klasifikace. Prahová hodnota pro obsah pro označování obsahu se dá nastavit na klouzavé stupnici, aby vyhovovala vašim potřebám.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
@@ -71,10 +71,10 @@ Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňuj�
 
 Stejně jako u všech Cognitive Services by měli vývojáři, kteří používají Počítačové zpracování obrazu službu, znát zásady Microsoftu pro zákaznická data. Další informace najdete na [stránce Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) v centru zabezpečení Microsoftu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte s Počítačové zpracování obrazu pomocí příručky pro rychlý Start:
 
-- [Rychlé zprovoznění: Sada Počítačové zpracování obrazu .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [Rychlé zprovoznění: Počítačové zpracování obrazu Python SDK](quickstarts-sdk/python-sdk.md)
-- [Rychlé zprovoznění: Počítačové zpracování obrazu Java SDK](quickstarts-sdk/java-sdk.md)
+- [Rychlý Start: Počítačové zpracování obrazu .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Rychlý Start: Počítačové zpracování obrazu Python SDK](quickstarts-sdk/python-sdk.md)
+- [Rychlý Start: Počítačové zpracování obrazu Java SDK](quickstarts-sdk/java-sdk.md)

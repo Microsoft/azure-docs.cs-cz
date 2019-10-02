@@ -1,6 +1,6 @@
 ---
-title: Konfigurace virtuální sítě pro Azure úrovně Premium pro Redis Cache | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet a spravovat podpory služby Virtual Network vaší úrovně Premium mezipaměti Azure pro instance Redis
+title: Konfigurace Virtual Network pro mezipaměť Azure úrovně Premium pro Redis | Microsoft Docs
+description: Naučte se vytvářet a spravovat podporu Virtual Network pro Azure cache úrovně Premium pro instance Redis.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074213"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815669"
 ---
-# <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
-Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
+# <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
+Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
 
 > [!NOTE]
-> Mezipaměti Redis Azure podporuje obě classic a virtuálních sítí správce prostředků.
+> Mezipaměť Azure pro Redis podporuje klasické i Správce prostředků virtuální sítě.
 > 
 > 
 
-Informace o dalších prémiových funkcí mezipaměti, naleznete v tématu [Úvod do mezipaměti Azure Redis na úrovni Premium](cache-premium-tier-intro.md).
+Informace o dalších funkcích mezipaměti Premium najdete v tématu [Úvod do mezipaměti Azure pro Redis úrovně Premium](cache-premium-tier-intro.md).
 
-## <a name="why-vnet"></a>Proč virtuální síť?
-[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) nasazení nabízí vyšší míru zabezpečení a izolaci pro mezipaměť Azure Redis, stejně jako podsítě, zásady řízení přístupu a jiné funkce pro další omezení přístupu.
+## <a name="why-vnet"></a>Proč VNet?
+Nasazení [azure Virtual Network (VNET)](https://azure.microsoft.com/services/virtual-network/) poskytuje rozšířené zabezpečení a izolaci pro mezipaměť Azure pro Redis a podsítě, zásady řízení přístupu a další funkce pro další omezení přístupu.
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
-Podpora služby Virtual Network (VNet) je nakonfigurován na **nové mezipaměti Redis Azure** okno během vytváření mezipaměti. 
+Podpora Virtual Network (VNet) je nakonfigurovaná v **novém okně Azure cache pro Redis** během vytváření mezipaměti. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Po výběru cenové úrovně premium můžete nakonfigurovat integrace Redis virtuální sítě tak, že vyberete virtuální síť, která je ve stejném předplatném a umístění jako mezipaměť. Použít novou virtuální síť, vytvořte ho nejprve podle postupu v [vytvořit virtuální síť pomocí webu Azure portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvoření virtuální sítě (classic) pomocí webu Azure portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte **Nové mezipaměti Redis Azure** okno vytvořit a nakonfigurovat mezipaměť premium.
+Po výběru cenové úrovně Premium můžete nakonfigurovat integraci virtuální sítě Redis tak, že vyberete virtuální síť, která se nachází ve stejném předplatném a umístění jako vaše mezipaměť. Pokud chcete použít novou virtuální síť, vytvořte ji jako první pomocí postupu v části [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvořte virtuální síť (classic) pomocí Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) a pak se vraťte do **nového okna Azure cache pro Redis** a vytvořte a Nakonfigurujte mezipaměť Premium.
 
-Ke konfiguraci virtuální sítě pro nové mezipaměti, klikněte na tlačítko **virtuální sítě** na **nové mezipaměti Redis Azure** okna a vyberte požadovanou virtuální síť v rozevíracím seznamu.
+Pokud chcete pro novou mezipaměť nakonfigurovat virtuální síť, klikněte na **Virtual Network** v **novém okně Azure cache pro Redis** a v rozevíracím seznamu vyberte požadovanou virtuální síť.
 
 ![Virtuální síť][redis-cache-vnet]
 
-Vyberte požadované podsítě z **podsítě** rozevíracího seznamu a zadejte požadovaný **statická IP adresa**. Pokud používáte klasickou virtuální síť **statickou IP adresu** pole je volitelné, a pokud není zadaný žádný, jeden je vybrán z vybrané podsítě.
+V rozevíracím seznamu **podsíť** vyberte požadovanou podsíť a zadejte požadovanou **statickou IP adresu**. Pokud používáte klasickou virtuální síť, pole **statické IP adresy** je volitelné a pokud není zadané, vybere se jedna z vybraných podsítí.
 
 > [!IMPORTANT]
-> Při použití mezipaměti Azure Redis k virtuální síti správce prostředků, do mezipaměti musí být ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou mezipaměti Azure pro instance Redis. Pokud je proveden pokus o nasazení Azure Cache pro Redis k virtuální síti správce prostředků k podsíti, která obsahuje další prostředky, nasazení se nezdaří.
+> Při nasazování mezipaměti Azure pro Redis do virtuální sítě Správce prostředků se mezipaměť musí nacházet ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou mezipaměti Azure pro instance Redis. Pokud se provede pokus o nasazení mezipaměti Azure pro Redis do virtuální sítě Správce prostředků do podsítě, která obsahuje další prostředky, nasazení se nezdaří.
 > 
 > 
 
 ![Virtuální síť][redis-cache-vnet-ip]
 
 > [!IMPORTANT]
-> Některé IP adresy v rámci každé podsítě vyhrazuje Azure a tyto adresy nelze použít. První a poslední IP adresy podsítí jsou vyhrazené pro udržování souladu s protokoly, spolu s tři další adresy používané pro služby Azure. Další informace najdete v tématu [existují nějaká omezení týkající se použití IP adresy v rámci těchto podsítí?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+> Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
 > 
-> Kromě IP adresy používané službou infrastruktury virtuální sítě Azure každý Redis instance v podsíti využívá dvě IP adresy za horizontální oddíl a jeden další IP adresy nástroje pro vyrovnávání zatížení. Mezipaměť neclusterovaný je považován za mít jeden horizontální oddíl.
+> Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance Redis v podsíti používá dvě IP adresy na horizontálních oddílů a jednu další IP adresu pro nástroj pro vyrovnávání zatížení. Mezipaměť, která není Clusterová, se považuje za jednu horizontálních oddílů.
 > 
 > 
 
-Po vytvoření mezipaměti konfiguraci pro virtuální síť můžete zobrazit kliknutím **virtuální sítě** z **nabídce prostředků**.
+Po vytvoření mezipaměti můžete kliknutím na **Virtual Network** v **nabídce prostředků**zobrazit konfiguraci virtuální sítě.
 
 ![Virtuální síť][redis-cache-vnet-info]
 
-Pro připojení k mezipaměti Azure pro instanci Redis při používání virtuální sítě, zadejte název hostitele vaší mezipaměti v připojovacím řetězci, jak je znázorněno v následujícím příkladu:
+Pokud se chcete připojit ke službě Azure cache pro instanci Redis při použití virtuální sítě, zadejte název hostitele vaší mezipaměti do připojovacího řetězce, jak je znázorněno v následujícím příkladu:
 
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -80,168 +80,172 @@ Pro připojení k mezipaměti Azure pro instanci Redis při používání virtu�
         }
     }
 
-## <a name="azure-cache-for-redis-vnet-faq"></a>Mezipaměť Azure pro virtuální síť Redis – nejčastější dotazy
-Následující seznam obsahuje odpovědi na nejčastější dotazy o ukládání do mezipaměti Azure Redis škálování.
+## <a name="azure-cache-for-redis-vnet-faq"></a>Nejčastější dotazy k Azure cache pro virtuální sítě Redis
+Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se škálování Azure cache pro Redis.
 
-* Jaké jsou některé běžné chybné konfigurace problémy s mezipamětí Azure Redis a virtuální sítě?
+* Jaké jsou některé běžné problémy s chybou konfigurace Azure cache pro Redis a virtuální sítě?
 * [Jak ověřit, že mezipaměť funguje ve virtuální síti?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* Při pokusu o připojení pro mezipaměť Azure redis Cache ve virtuální síti, proč se zobrazuje chyba oznamující, že vzdálený certifikát není platná?
-* [Můžete použít virtuální sítě s mezipamětí standard nebo basic?](#can-i-use-vnets-with-a-standard-or-basic-cache)
-* Proč vytvoření Azure Cache pro Redis selže v některých podsítě, ale ne pro jiné?
-* [Jaké jsou požadavky na místo adres podsítě?](#what-are-the-subnet-address-space-requirements)
+* Proč se při pokusu o připojení k mezipaměti Azure pro Redis ve virtuální síti zobrazuje chyba s oznámením, že vzdálený certifikát je neplatný?
+* [Můžu použít virtuální sítě se standardní nebo základní mezipamětí?](#can-i-use-vnets-with-a-standard-or-basic-cache)
+* Proč v některých podsítích selže vytváření mezipaměti Azure pro Redis, ale ne jiné?
+* [Jaké jsou požadavky na adresní prostor podsítě?](#what-are-the-subnet-address-space-requirements)
 * [Fungují všechny funkce mezipaměti při hostování mezipaměti ve virtuální síti?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
-### <a name="what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets"></a>Jaké jsou některé běžné chybné konfigurace problémy s mezipamětí Azure Redis a virtuální sítě?
-Pokud Azure mezipaměti Redis je hostovaný ve virtuální síti, se používají porty v následujících tabulkách. 
+### <a name="what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets"></a>Jaké jsou některé běžné problémy s chybou konfigurace Azure cache pro Redis a virtuální sítě?
+Když je Azure cache for Redis hostovaný ve virtuální síti, použijí se porty v následujících tabulkách. 
 
 >[!IMPORTANT]
->Pokud porty v následujících tabulkách jsou blokovány, mezipaměti nemusí fungovat správně. Jeden nebo více z těchto portů blokované je nejběžnějším problémem chybnou konfiguraci při použití mezipaměti Azure pro Redis ve virtuální síti.
+>Pokud jsou porty v následujících tabulkách blokované, mezipaměť nemusí správně fungovat. Pokud používáte službu Azure cache pro Redis ve virtuální síti, je jeden nebo více těchto portů v neblokovaném problému s konfigurací.
 > 
 > 
 
-- [Požadavky na odchozích portů](#outbound-port-requirements)
-- [Příchozí požadavky na porty](#inbound-port-requirements)
+- [Požadavky na Odchozí porty](#outbound-port-requirements)
+- [Požadavky na porty pro příchozí spojení](#inbound-port-requirements)
 
-#### <a name="outbound-port-requirements"></a>Požadavky na odchozích portů
+#### <a name="outbound-port-requirements"></a>Požadavky na Odchozí porty
 
-Existuj sedm požadavků odchozí port.
+K dispozici jsou sedm požadavků na Odchozí porty.
 
-- Všechny odchozí připojení k Internetu, lze provést prostřednictvím klienta na auditování v místním zařízení.
-- Tři porty směrování provozu do koncových bodů Azure údržby služby Azure Storage a Azure DNS.
-- Zbývající rozsahy portů a pro interní komunikaci podsítě Redis. Žádná pravidla NSG podsítě jsou požadovány pro interní komunikaci podsítě Redis.
+- Všechna odchozí připojení k Internetu je možné provést prostřednictvím místního zařízení auditu klienta.
+- Tři z portů směrují provoz do Azure Endpoints Servicing Azure Storage a Azure DNS.
+- Zbývající rozsahy portů a interní komunikace podsítě Redis. Pro interní komunikaci mezi podsítěmi Redis se nevyžadují žádná NSG pravidla podsítě.
 
-| Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
+| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage a infrastruktury veřejných KLÍČŮ (Internet) | (Redis podsítě) |* |
-| 53 |Odchozí |TCP/UDP |Redis závislostí na DNS (Internet/virtuální sítě) | (Redis podsítě) | 168.63.129.16 a 169.254.169.254 <sup>1</sup> a jakékoli vlastní server DNS pro podsíť <sup>3</sup> |
-| 8443 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) | (Redis podsítě) |
-| 10221-10231 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) | (Redis podsítě) |
-| 20226 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
-| 13000-13999 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
-| 15000-15999 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
-| 6379-6380 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
+| 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage/PKI (Internet) | (Podsíť Redis) |* |
+| 53 |Odchozí |TCP/UDP |Redis závislosti na DNS (Internet/VNet) | (Podsíť Redis) | 168.63.129.16 a 169.254.169.254 <sup>1</sup> a jakýkoli vlastní server DNS pro podsíť <sup>3</sup> |
+| 8443 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
+| 10221-10231 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
+| 20226 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
+| 13000-13999 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
+| 15000-15999 |Odchozí |TCP |Interní komunikace pro Redis a geografickou replikaci | (Podsíť Redis) |(Podsíť Redis) (Geografická podsíť pro rovnocenné repliky) |
+| 6379-6380 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
-<sup>1</sup> vlastnictví společnosti Microsoft tyto IP adresy se používají k adresa hostitele virtuálního počítače, které poskytuje Azure DNS.
+<sup>1</sup> tyto IP adresy vlastněné Microsoftem slouží k adresování HOSTITELSKÉHO virtuálního počítače, který slouží Azure DNS.
 
-<sup>3</sup> není potřebná pro mezipaměti, které ignorovat vlastní DNS redis podsítě bez vlastního serveru DNS, nebo novější.
+<sup>3</sup> není potřeba pro podsítě bez vlastního serveru DNS ani novějších mezipamětí Redis, které ignorují vlastní DNS.
 
-#### <a name="inbound-port-requirements"></a>Příchozí požadavky na porty
+#### <a name="geo-replication-peer-port-requirements"></a>Požadavky na partnerský port geografické replikace
 
-Nejsou k dispozici osm požadavky rozsah portu pro příchozí spojení. Příchozí požadavky do tohoto rozsahu jsou příchozí z jiných služeb hostovaných ve stejné virtuální síti nebo interní podsítě komunikace Redis.
+Pokud používáte mezi mezipamětí v Azure Virtual Networkch replikaci mezi mezipamětí, pamatujte na to, že doporučená konfigurace odblokuje porty 15000-15999 pro celou podsíť v příchozím i odchozím směru do mezipaměti, takže všechny součásti repliky v podsíti může vzájemně komunikovat přímo, a to i v případě budoucí geografické převzetí služeb při selhání.
 
-| Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
+#### <a name="inbound-port-requirements"></a>Požadavky na porty pro příchozí spojení
+
+Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky v těchto rozsahech jsou buď příchozí z jiných služeb hostovaných ve stejné virtuální síti, nebo interní pro komunikaci podsítě Redis.
+
+| Port (y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Příchozí |TCP |Komunikace klientů Redis, Vyrovnávání zatížení Azure | (Redis podsítě) | (Redis podsítě), virtuální síť, nástroj pro vyrovnávání zatížení Azure <sup>2</sup> |
-| 8443 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
-| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Redis podsítě) |Nástroj pro vyrovnávání zatížení Azure |
-| 10221-10231 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě), nástroje pro vyrovnávání zatížení Azure |
-| 13000-13999 |Příchozí |TCP |Komunikace klientů Redis clustery Vyrovnávání zatížení Azure | (Redis podsítě) |Virtuální síť, nástroj pro vyrovnávání zatížení Azure |
-| 15000-15999 |Příchozí |TCP |Komunikace klienta s redis cache, Azure načíst vyrovnávání | (Redis podsítě) |Virtuální síť, nástroj pro vyrovnávání zatížení Azure |
-| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Redis podsítě) |Nástroj pro vyrovnávání zatížení Azure |
-| 20226 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
+| 6379, 6380 |Příchozí |TCP |Komunikace klienta s Redis, Vyrovnávání zatížení Azure | (Podsíť Redis) | (Redis podsíť), Virtual Network Azure Load Balancer <sup>2</sup> |
+| 8443 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
+| 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
+| 10221-10231 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Redis podsíť), Azure Load Balancer |
+| 13000-13999 |Příchozí |TCP |Komunikace klienta s Redis clustery, Vyrovnávání zatížení Azure | (Podsíť Redis) |Virtual Network Azure Load Balancer |
+| 15000-15999 |Příchozí |TCP |Komunikace klientů s Redis clustery, vyrovnáváním zatížení Azure a geografickou replikací | (Podsíť Redis) |Virtual Network, Azure Load Balancer (geografická podsíť druhé repliky) |
+| 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Podsíť Redis) |Nástroj pro vyrovnávání zatížení Azure |
+| 20226 |Příchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
-<sup>2</sup> značku služby můžete použít k vytváření pravidel NSG "AzureLoadBalancer" (Resource Manager) (nebo "AZURE_LOADBALANCER' v případě klasického modelu).
+<sup>2</sup> můžete použít značku služby ' AzureLoadBalancer ' (Správce prostředků) (nebo ' AZURE_LOADBALANCER ' pro klasický) pro vytváření pravidel NSG.
 
-#### <a name="additional-vnet-network-connectivity-requirements"></a>Další požadavky síťového připojení virtuální sítě
+#### <a name="additional-vnet-network-connectivity-requirements"></a>Další požadavky na připojení k síti virtuální sítě
 
-Existují požadavky síťového připojení pro Azure Cache pro Redis, který nemusí být splněny zpočátku ve virtuální síti. Azure mezipaměti Redis vyžaduje následující položky fungovat správně při použití v rámci virtuální sítě.
+Existují požadavky na připojení k síti pro službu Azure cache pro Redis, které nemusí být zpočátku splněné ve virtuální síti. Azure cache pro Redis vyžaduje, aby při použití v rámci virtuální sítě správně fungovaly všechny následující položky.
 
-* Odchozí síťové připojení ke koncovým bodům služby Azure Storage po celém světě. Jedná se o koncové body, které jsou umístěné ve stejné oblasti jako ukládání do mezipaměti Azure pro instanci Redis, stejně jako koncové body úložiště nachází v **jiných** oblastí Azure. Koncové body služby Azure Storage vyřešit podle následujících domén DNS: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net*a *file.core.windows.net*. 
-* Odchozího síťového připojení k *ocsp.msocsp.com*, *mscrl.microsoft.com*, a *crl.microsoft.com*. Toto připojení je potřeba k podpoře funkce SSL.
-* Konfigurace DNS pro virtuální síť musí být schopné řeší všechny koncové body a domén, které jsou uvedené v předchozích bodů. Mohou být splněny tyto požadavky na DNS tím, že zajišťuje platný infrastruktury služby DNS je konfiguraci a údržbu pro virtuální síť.
-* Odchozího síťového připojení na následující Azure Monitoring koncové body, které se přeloží podle následujících domén DNS: Severní prod2.prod2.metrics.nsatc.net shoebox2-black.shoebox2.metrics.nsatc.net azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net – východ – prod2.prod2.metrics.nsatc.net azglobal-red.azglobal.metrics.nsatc.net.
+* Odchozí připojení k síti Azure Storage koncovým bodům po celém světě. To zahrnuje koncové body umístěné ve stejné oblasti jako Azure cache for Redis instance a koncové body úložiště umístěné v **jiných** oblastech Azure. Azure Storage koncových bodů se vyhodnotí v následujících doménách DNS: *Table.Core.Windows.NET*, *BLOB.Core.Windows.NET*, *Queue.Core.Windows.NET*a *File.Core.Windows.NET*. 
+* Odchozí připojení k síti pro *OCSP.msocsp.com*, *mscrl.Microsoft.com*a *CRL.Microsoft.com*. Toto připojení je potřeba k podpoře funkcí SSL.
+* Konfigurace DNS pro virtuální síť musí umožňovat překlad všech koncových bodů a domén uvedených v předchozích bodech. Tyto požadavky DNS můžou být splněné tím, že zajistí konfiguraci a údržbu platné infrastruktury DNS pro virtuální síť.
+* Odchozí síťové připojení k následujícím koncovým bodům monitorování Azure, které se řeší v následujících doménách DNS: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak ověřit, že mezipaměť funguje ve virtuální síti?
 
 >[!IMPORTANT]
->Při připojování k Azure Cache pro instanci Redis, která je hostována ve virtuální síti, vaši klienti mezipaměti musí být ve stejné virtuální síti nebo ve virtuální síti s povoleným partnerským vztahem virtuální sítě. To zahrnuje všechny testovací aplikace nebo diagnostické nástroje příkaz ping. Bez ohledu na to, kde se hostuje klientské aplikace skupiny zabezpečení sítě musí být nakonfigurovaný tak, že je povolený provoz sítě klienta k dosažení Redis instance.
+>Při připojování k Azure cache pro instanci Redis, která je hostována ve virtuální síti, musí být klienti mezipaměti ve stejné virtuální síti nebo ve virtuální síti s povoleným partnerským vztahem virtuálních sítí. To zahrnuje všechny testovací aplikace nebo nástroje pro testování testů a diagnostiky. Bez ohledu na to, kde je klientská aplikace hostovaná, je nutné nakonfigurovat skupiny zabezpečení sítě tak, aby síťový provoz klienta měl přístup k instanci Redis.
 >
 >
 
-Jakmile požadavky na porty jsou nastavená způsobem popsaným v předchozí části, můžete ověřit, že mezipaměť pracuje podle následujících kroků.
+Po nakonfigurování požadavků na porty, jak je popsáno v předchozí části, můžete ověřit, že mezipaměť funguje, provedením následujících kroků.
 
-- [Restartovat](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud všechny závislosti požadované mezipaměti není dostupný (jak je uvedeno v [příchozí požadavky na porty](cache-how-to-premium-vnet.md#inbound-port-requirements) a [požadavky na odchozích portů](cache-how-to-premium-vnet.md#outbound-port-requirements)), mezipaměť nebude možné úspěšně spustit.
-- Po restartování uzly mezipaměti (jak je hlásí stav mezipaměti na webu Azure Portal), můžete provést následující testy:
-  - Odešlete zprávu ping koncový bod mezipaměti (pomocí portu 6380) z počítače, který je v rámci stejné virtuální síti jako mezipaměť, pomocí [použít příkaz tcping](https://www.elifulkerson.com/projects/tcping.php). Příklad:
+- [Restartujte](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud není dostupný žádný z požadovaných závislostí mezipaměti (jak je uvedeno v [požadavcích na příchozí porty](cache-how-to-premium-vnet.md#inbound-port-requirements) a [odchozí požadavky na porty](cache-how-to-premium-vnet.md#outbound-port-requirements)), mezipaměť nebude možné úspěšně restartovat.
+- Po restartování uzlů mezipaměti (jak je uvedeno v Azure Portal stavu mezipaměti) můžete provádět následující testy:
+  - Otestujte koncový bod mezipaměti (pomocí portu 6380) z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Například:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
-    Pokud `tcping` nástroj hlásí, že je otevřený port, mezipaměť je dostupná pro připojení z klientů ve virtuální síti.
+    Pokud nástroj `tcping` hlásí, že je port otevřený, je mezipaměť k dispozici pro připojení od klientů ve virtuální síti.
 
-  - Jiný způsob, jak otestovat je vytvoření testovacího klienta mezipaměti (které by mohly být jednoduchou konzolovou aplikaci v jazyce StackExchange.Redis), který se připojí k mezipaměti a přidá a načte některé položky z mezipaměti. Nainstalujte ukázkovou aplikaci klienta na virtuální počítač, který je ve stejné virtuální síti jako mezipaměť a spustíme ji k ověření připojení k mezipaměti.
+  - Další možností testování je vytvořit klienta testovací mezipaměti (což může být jednoduchá Konzolová aplikace s použitím StackExchange. Redis), která se připojuje k mezipaměti a přidává a načítá některé položky z mezipaměti. Nainstalujte ukázkovou klientskou aplikaci do virtuálního počítače, který je ve stejné virtuální síti jako mezipaměť, a spusťte ho, abyste ověřili připojení k mezipaměti.
 
 
-### <a name="when-trying-to-connect-to-my-azure-cache-for-redis-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>Při pokusu o připojení pro mezipaměť Azure redis Cache ve virtuální síti, proč se zobrazuje chyba oznamující, že vzdálený certifikát není platná?
+### <a name="when-trying-to-connect-to-my-azure-cache-for-redis-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>Proč se při pokusu o připojení k mezipaměti Azure pro Redis ve virtuální síti zobrazuje chyba s oznámením, že vzdálený certifikát je neplatný?
 
-Při pokusu o připojení k Azure Cache pro Redis ve virtuální síti, se zobrazí chyba ověření certifikátu takovou situaci:
+Při pokusu o připojení k mezipaměti Azure pro Redis ve virtuální síti se zobrazí chyba ověření certifikátu, například:
 
 `{"No connection is available to service this operation: SET mykey; The remote certificate is invalid according to the validation procedure.; …"}`
 
-Příčinou může být, že se připojujete k hostiteli podle IP adresy. Doporučujeme použít název hostitele. Jinými slovy použijte následující:     
+Příčinou může být to, že se k hostiteli připojujete prostřednictvím IP adresy. Doporučujeme použít název hostitele. Jinými slovy, použijte následující:     
 
 `[mycachename].redis.windows.net:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Nepoužívejte IP adresu, podobně jako následující připojovací řetězec:
+Vyhněte se použití IP adresy, která je podobná následujícímu připojovacímu řetězci:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Pokud nelze přeložit název DNS, některé klientské knihovny zahrnují možnosti konfigurace, jako je `sslHost` poskytnutá klient StackExchange.Redis. To umožňuje změnit název hostitele pro ověření certifikátu. Příklad:
+Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace, jako je `sslHost`, které poskytuje klient StackExchange. Redis. To vám umožní přepsat název hostitele, který se používá k ověření certifikátu. Například:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
-### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Můžete použít virtuální sítě s mezipamětí standard nebo basic?
-Virtuálními sítěmi jde použít jenom u prémiových mezipamětí.
+### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Můžu použít virtuální sítě se standardní nebo základní mezipamětí?
+Virtuální sítě se dá použít jenom s mezipamětí úrovně Premium.
 
-### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>Proč vytvoření Azure Cache pro Redis selže v některých podsítě, ale ne pro jiné?
-Pokud provádíte nasazení Azure Cache pro Redis k virtuální síti správce prostředků, do mezipaměti musí být ve vyhrazené podsíti, která obsahuje žádný jiný typ prostředku. Pokud je proveden pokus o nasazení Azure Cache pro Redis k podsíti virtuální sítě Resource Manageru, která obsahuje další prostředky, nasazení se nezdaří. Než budete moct vytvořit novou mezipaměť Azure pro Redis, musíte odstranit stávající prostředky v podsíti.
+### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>Proč v některých podsítích selže vytváření mezipaměti Azure pro Redis, ale ne jiné?
+Pokud nasazujete mezipaměť Azure pro Redis do virtuální sítě Správce prostředků, musí být mezipaměť ve vyhrazené podsíti, která neobsahuje žádný jiný typ prostředku. Pokud se provede pokus o nasazení mezipaměti Azure pro Redis do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří. Aby bylo možné vytvořit novou mezipaměť Azure pro Redis, musíte odstranit stávající prostředky v podsíti.
 
-Více typů prostředků můžete nasadit do klasické virtuální sítě, za předpokladu, máte k dispozici dostatek IP adres.
+Na klasickou virtuální síť můžete nasadit více typů prostředků, pokud máte k dispozici dostatek IP adres.
 
-### <a name="what-are-the-subnet-address-space-requirements"></a>Jaké jsou požadavky na místo adres podsítě?
-Některé IP adresy v rámci každé podsítě vyhrazuje Azure a tyto adresy nelze použít. První a poslední IP adresy podsítí jsou vyhrazené pro udržování souladu s protokoly, spolu s tři další adresy používané pro služby Azure. Další informace najdete v tématu [existují nějaká omezení týkající se použití IP adresy v rámci těchto podsítí?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+### <a name="what-are-the-subnet-address-space-requirements"></a>Jaké jsou požadavky na adresní prostor podsítě?
+Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
 
-Kromě IP adresy používané službou infrastruktury virtuální sítě Azure každý Redis instance v podsíti využívá dvě IP adresy za horizontální oddíl a jeden další IP adresy nástroje pro vyrovnávání zatížení. Mezipaměť neclusterovaný je považován za mít jeden horizontální oddíl.
+Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance Redis v podsíti používá dvě IP adresy na horizontálních oddílů a jednu další IP adresu pro nástroj pro vyrovnávání zatížení. Mezipaměť, která není Clusterová, se považuje za jednu horizontálních oddílů.
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>Fungují všechny funkce mezipaměti při hostování mezipaměti ve virtuální síti?
-Pokud vaše mezipaměť je součástí virtuální sítě, pouze klienti ve virtuální síti mají přístup k mezipaměti. V důsledku toho následující funkce správy mezipaměti nefungují v tuto chvíli.
+Když je mezipaměť součástí virtuální sítě, budou mít přístup k mezipaměti jenom klienti ve virtuální síti. V důsledku toho tyto funkce správy mezipaměti v tuto chvíli nefungují.
 
-* Konzola redis – protože se spouští konzola Redis v prohlížeči místní, což je mimo virtuální síť, se nemůže připojit k vaší mezipaměti.
+* Konzola Redis – protože konzola Redis běží v místním prohlížeči, který je mimo virtuální síť, nemůže se připojit ke svojí mezipaměti.
 
 
-## <a name="use-expressroute-with-azure-cache-for-redis"></a>Pomocí ExpressRoute s mezipaměti Azure redis Cache
+## <a name="use-expressroute-with-azure-cache-for-redis"></a>Použití ExpressRoute s Azure cache pro Redis
 
-Zákazníci mohou připojit [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) okruh ke své virtuální síťové infrastruktury, tak rozšířit jejich místní síť do Azure. 
+Zákazníci můžou připojit okruh [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) ke své infrastruktuře virtuální sítě, a tak rozšířit svou místní síť do Azure. 
 
-Ve výchozím nastavení, nově vytvořený okruh ExpressRoute neprovádí vynucené tunelování (inzerování výchozí trasy 0.0.0.0/0) ve virtuální síti. V důsledku toho je povolen odchozí připojení k Internetu přímo z virtuální sítě a klientské aplikace se může připojit k jiné koncové body Azure, včetně Azure mezipaměti Redis.
+Ve výchozím nastavení nově vytvořený okruh ExpressRoute neprovádí vynucené tunelování (inzerování výchozí trasy 0.0.0.0/0) ve virtuální síti. V důsledku toho je odchozí připojení k Internetu povoleno přímo z virtuální sítě a klientské aplikace se mohou připojit k jiným koncovým bodům Azure, včetně mezipaměti Azure pro Redis.
 
-Ale zákazníků běžnou konfigurací je použití vynuceného tunelování (Inzerovat výchozí cestu) která vynutí odchozí internetový provoz místo toho tok místní. Tento tok provozu pro Redis přestane fungovat připojení k mezipaměti Azure, pokud je odchozí provoz pak zablokuje v místním tak, že ukládání do mezipaměti Azure pro instanci Redis není schopen komunikovat s jeho závislosti.
+Běžnou zákaznickou konfigurací ale je použití vynuceného tunelování (inzerování výchozí trasy), která vynucuje odchozí internetový provoz místo toho, aby se směrovala místně. Tento tok přenosů přeruší připojení ke službě Azure cache pro Redis, pokud je odchozí přenosy blokované místně, takže instance Azure cache for Redis nemůže komunikovat s jejími závislostmi.
 
-Toto řešení je definování (nejméně) trasy definované uživatelem (udr) na podsíť, která obsahuje ukládání do mezipaměti Azure Redis. Trasu UDR definuje konkrétní podsítě tras, které bude použito místo výchozí trasu.
+Řešením je definovat jednu (nebo více) uživatelem definovaných tras (udr) v podsíti, která obsahuje mezipaměť Azure pro Redis. UDR definuje trasy specifické pro podsíť, které se budou respektovat místo výchozí trasy.
 
-Pokud je to možné doporučuje se použijte následující konfiguraci:
+Pokud je to možné, doporučuje se použít následující konfiguraci:
 
-* Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a ve výchozím nastavení vynucené tunelů všechny odchozí provoz do místní.
-* Uživatelem definovaná TRASA použitá na podsíť obsahující ukládání do mezipaměti Azure Redis definuje 0.0.0.0/0 pracovního postupu pro přenosy protokolu TCP/IP do veřejného Internetu. například nastavením dalšímu typu přechodu "Internet".
+* Konfigurace ExpressRoute inzeruje v síti 0.0.0.0/0 a ve výchozím nastavení vynutí tunelové propojení veškerého odchozího provozu v místním prostředí.
+* UDR, který se použije pro podsíť obsahující mezipaměť Azure pro Redis, definuje 0.0.0.0/0 s pracovní trasou pro provoz TCP/IP na veřejný Internet. například nastavením typu dalšího segmentu směrování na "Internet".
 
-Celkové požadavky z těchto kroků je, že úrovni podsítě uživatelem definovaná TRASA má přednost před ExpressRoute vynucené tunelování, čímž zajišťuje odchozí internetový přístup z mezipaměti Azure pro Redis.
+Kombinovaný efekt těchto kroků je, že UDR úrovně podsítě má přednost před vynuceným tunelovým propojením ExpressRoute, čímž zajišťuje odchozí internetový přístup z mezipaměti Azure pro Redis.
 
-Připojení k Azure pro instanci Redis Cache z místní aplikaci pomocí ExpressRoute není typickému využití z důvodů výkonu (pro zajištění nejlepšího výkonu mezipaměti Azure Redis klientů musí být ve stejné oblasti jako mezipaměť Azure Redis) .
+Připojení k Azure cache pro instanci Redis z místní aplikace pomocí ExpressRoute není Typický scénář použití z důvodů výkonu (pro nejvyšší výkon Azure cache pro klienty Redis by mělo být ve stejné oblasti jako mezipaměť Azure pro Redis). .
 
 >[!IMPORTANT] 
->Trasy definované v trase UDR **musí** být dost konkrétní, aby přednost před všemi trasami inzerovanými konfigurací ExpressRoute. Následující příklad používá široký rozsah adres 0.0.0.0/0 a proto může nechtěně dojít k jeho podle inzerování tras pomocí konkrétnější rozsahy adres.
+>Trasy definované v UDR **musí** být dostatečně specifické, aby měly přednost před všemi trasami inzerovanou konfigurací ExpressRoute. Následující příklad používá širokou škálu adres 0.0.0.0/0 a jako takový může být potenciálně omylem přepsán inzerováním směrování s použitím více konkrétních rozsahů adres.
 
 >[!WARNING]  
->Mezipaměť Azure pro Redis není podporované v konfiguracích ExpressRoute, který **nesprávně inzerování tras z cesty veřejného partnerského vztahu do cestou soukromého partnerského vztahu mezi**. Konfigurace ExpressRoute s nakonfigurovanými, veřejnými partnerskými uzly přijímají inzerci tras od Microsoftu pro velkou sadu rozsahů adres IP adres Microsoft Azure. Pokud tyto rozsahy adres nesprávně křížová inzerce na cestou soukromého partnerského vztahu, výsledkem je, že všechny odchozí síťové pakety z mezipaměti Azure pro instanci Redis podsítě jsou správně vynucuje tunelové propojení pro zákazníka v místní síti infrastruktura. Tento tok sítí konců mezipaměti Azure Redis. Řešení tohoto problému je ukončit křížovou inzerci tras z cesty veřejného partnerského vztahu pro cestou soukromého partnerského vztahu.
+>Mezipaměť Azure pro Redis se nepodporuje u konfigurací ExpressRoute, které **nesprávně přecházejí trasy z cesty veřejného partnerského vztahu na cestu privátního partnerského vztahu**. Konfigurace ExpressRoute s nakonfigurovaným veřejným partnerským vztahem, obdrží od Microsoftu inzerci tras od Microsoftu pro velkou sadu Microsoft Azure rozsahů IP adres. Pokud jsou tyto rozsahy adres nesprávně přeložené na cestě privátního partnerského vztahu, je výsledkem to, že všechny odchozí síťové pakety z mezipaměti Azure pro instanci instance Redis jsou nesprávně vynucené tunelování do místní sítě zákazníka. infrastrukturu. Tento tok sítě přeruší službu Azure cache pro Redis. Řešením tohoto problému je zastavit trasy mezi reklamními partnery z cesty veřejného partnerského vztahu k cestě soukromého partnerského vztahu.
 
 
-Základní informace o trasách definovaných uživatelem je k dispozici v tomto [přehled](../virtual-network/virtual-networks-udr-overview.md).
+V tomto [přehledu](../virtual-network/virtual-networks-udr-overview.md)jsou k dispozici základní informace o trasách definovaných uživatelem.
 
-Další informace o ExpressRoute najdete v tématu [technický přehled ExpressRoute](../expressroute/expressroute-introduction.md).
+Další informace o ExpressRoute najdete v [technickém přehledu ExpressRoute](../expressroute/expressroute-introduction.md).
 
-## <a name="next-steps"></a>Další postup
-Další informace o použití další prémiových funkcí mezipaměti.
+## <a name="next-steps"></a>Další kroky
+Naučte se používat víc funkcí mezipaměti Premium.
 
-* [Úvod do mezipaměti Azure Redis na úrovni Premium](cache-premium-tier-intro.md)
+* [Seznámení s mezipamětí Azure pro Redis úrovně Premium](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

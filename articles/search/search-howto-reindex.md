@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647691"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719851"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovného sestavení indexu Azure Search
 
@@ -31,14 +31,14 @@ Na rozdíl od opětovného sestavení, které přebírají index v režimu offli
 | Změna definice pole | Kontrola názvu pole, datového typu nebo konkrétních [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, plošky) vyžadují úplné opětovné sestavení. |
 | Přiřazení analyzátoru k poli | [Analyzátory](search-analyzers.md) se definují v indexu a pak se přiřazují k polím. Novou definici analyzátoru můžete kdykoli přidat do indexu, ale když je pole Vytvořeno, můžete k němu *přiřadit* pouze analyzátor. To platí jak pro vlastnosti **analyzátoru** , tak pro **indexAnalyzer** . Vlastnost **searchAnalyzer** je výjimka (tuto vlastnost můžete přiřadit existujícímu poli). |
 | Aktualizace nebo odstranění definice analyzátoru v indexu | Existující konfiguraci analyzátoru (Analyzer, provádějících tokenizaci, filtr tokenu nebo filtr znaků) v indexu nelze odstranit, pokud znovu nevytvoříte celý index. |
-| Přidání pole do modulu pro návrhy | Pokud pole již existuje a chcete ho přidat do konstrukce tvůrců, [](index-add-suggesters.md) je nutné index znovu sestavit. |
+| Přidání pole do modulu pro návrhy | Pokud pole již existuje a chcete ho přidat [do konstrukce](index-add-suggesters.md) tvůrců, je nutné index znovu sestavit. |
 | Odstranění pole | Aby bylo možné fyzicky odebrat všechna trasování v poli, je nutné index znovu sestavit. Pokud okamžité opětovné sestavení není praktické, můžete upravit kód aplikace a zakázat tak přístup k poli Deleted (odstraněno). Fyzicky, definice pole a obsah zůstanou v indexu až do dalšího sestavení, když použijete schéma, které vynechá příslušné pole. |
-| Přepínací vrstvy | Pokud požadujete větší kapacitu, žádný místní upgrade není k dispozici. Nová služba se vytvoří v novém bodu kapacity a indexy musí být od začátku nové služby sestavené. |
+| Přepínací vrstvy | Pokud požadujete větší kapacitu, není Azure Portal žádný místní upgrade. Je nutné vytvořit novou službu a indexy musí být od začátku nové služby sestaveny. K automatizaci tohoto procesu můžete použít vzorový kód **index-Backup-Restore** v tomto [Azure Search ukázkové úložiště .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples). Tato aplikace bude index zálohovat na řadu souborů JSON a pak znovu vytvořit index ve vyhledávací službě, kterou zadáte.|
 
-Jakékoli další úpravy lze provádět bez vlivu na existující fyzické struktury. Konkrétně následující změny nevyžadují opětovné sestavení indexu:
+Jakékoli další úpravy lze provádět bez vlivu na existující fyzické struktury. Konkrétně následující změny *nevyžadují opětovné* sestavení indexu:
 
 + Přidat nové pole
-+ Nastavení navýšení atributu v existujícím poli
++ Nastavení navýšení **atributu v** existujícím poli
 + Nastavení **searchAnalyzer** pro existující pole
 + Přidání nové definice analyzátoru v indexu
 + Přidávání, aktualizace a odstraňování profilů vyhodnocování
@@ -57,7 +57,7 @@ To, co můžete dělat snadno, ale *aktualizuje dokumenty* v indexu. Pro mnoho �
 
 [Indexery](search-indexer-overview.md) zjednodušují úlohu aktualizace dat. Indexer může indexovat pouze jednu tabulku nebo zobrazení v externím zdroji dat. Chcete-li indexovat více tabulek, nejjednodušší způsob je vytvořit zobrazení, které spojuje tabulky a projekty sloupce, které chcete indexovat. 
 
-Pokud používáte indexery, které procházejí externími zdroji dat, vyhledejte ve zdrojových datech sloupec horní mez. Pokud existuje, můžete ho použít pro detekci přírůstkových změn, a to tak, že vybíráte pouze ty řádky, které obsahují nový nebo revidovaný obsah. `lastModified` Pro [úložiště objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)se používá pole. `timestamp` V [úložišti tabulek Azure](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)slouží ke stejnému účelu. Podobně obě [Azure SQL Database indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) i [Azure Cosmos DB indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) mají pole pro označení aktualizací řádků. 
+Pokud používáte indexery, které procházejí externími zdroji dat, vyhledejte ve zdrojových datech sloupec horní mez. Pokud existuje, můžete ho použít pro detekci přírůstkových změn, a to tak, že vybíráte pouze ty řádky, které obsahují nový nebo revidovaný obsah. V případě služby [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)se používá pole `lastModified`. V [úložišti tabulek Azure](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)`timestamp` slouží ke stejnému účelu. Podobně obě [Azure SQL Database indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) i [Azure Cosmos DB indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) mají pole pro označení aktualizací řádků. 
 
 Další informace o indexerech najdete v tématu [Přehled indexeru](search-indexer-overview.md) a [resetování indexeru REST API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer).
 
@@ -94,7 +94,7 @@ Při načtení indexu se převedený index každého pole vyplní všemi jedine�
 
 Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Indexování velkých datových sad ve velkém měřítku](search-howto-large-index.md)

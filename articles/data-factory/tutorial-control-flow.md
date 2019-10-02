@@ -10,21 +10,23 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 02/20/2019
-ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 9/27/2019
+ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140736"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815882"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
-V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
+V tomto kurzu vytvoříte kanál Data Factory, který prezentuje některé funkce toku ovládacích prvků. Tento kanál kopíruje z kontejneru v Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud je aktivita kopírování úspěšná, kanál pošle podrobnosti o úspěšné operaci kopírování v e-mailu. Tyto informace mohou zahrnovat množství zapsaných dat. Pokud aktivita kopírování selže, pošle vám podrobnosti o selhání kopírování, jako je například chybová zpráva, v e-mailu. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Podrobný přehled scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
+Tento obrázek nabízí přehled scénáře:
 
-V tomto kurzu provedete následující kroky:
+![Přehled](media/tutorial-control-flow/overview.png)
+
+V tomto kurzu se dozvíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
@@ -32,186 +34,184 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření datové sady Azure Blob
 > * Vytvoření kanálu, který obsahuje aktivitu kopírování a aktivitu webu
 > * Odeslání výstupů aktivit následným aktivitám
-> * Využití předávání parametrů a systémových proměnných
+> * Použití předávání parametrů a systémových proměnných
 > * Spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
-Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít další mechanismy – podívejte se v obsahu na téma Šablony Rychlý start.
+Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Účet služby Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
-* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Visual Studio** 2013, 2015 nebo 2017. Názorný postup v tomto článku využívá Visual Studio 2017.
-* **Stáhněte a nainstalujte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
+* Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
+* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md).
+* Visual Studio. Tento článek používá Visual Studio 2019.
+* Sada Azure .NET SDK. Stáhněte a nainstalujte si [sadu Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
-### <a name="create-blob-table"></a>Vytvoření tabulky objektů blob
+Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat a výpočetní prostředky můžou být v jiných oblastech. Mezi obchody patří Azure Storage a Azure SQL Database. K výpočtům patří HDInsight, který Data Factory používá.
 
-1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte ho na disk jako soubor **input.txt**.
+Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Přiřaďte aplikaci roli **Přispěvatel** podle pokynů ve stejném článku. Pro pozdější části tohoto kurzu budete potřebovat několik hodnot, jako je například **ID aplikace (klienta)** a **ID adresáře (tenant)** .
 
-    ```
-    John|Doe
-    Jane|Doe
-    ```
+### <a name="create-a-blob-table"></a>Vytvoření tabulky objektů BLOB
 
-2. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/), vytvořte kontejner **adfv2branch** a odešlete soubor **input.txt** do tohoto kontejneru.
+1. Otevřete textový editor. Zkopírujte následující text a uložte ho místně jako *input. txt*.
 
-## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
+   ```
+   Ethel|Berg
+   Tamika|Walsh
+   ```
 
-Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
+1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a vyberte **vytvořit kontejner objektů BLOB**.
+1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte do kontejneru *vstupní soubor. txt* .
 
-1. Spusťte **Visual Studio**.
-2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**. Vyžaduje se .NET verze 4.5.2 nebo novější.
-3. V seznamu typů projektů napravo vyberte **Visual C#**  -> **Aplikace konzoly (.NET Framework)** .
-4. Jako název zadejte **ADFv2BranchTutorial**.
-5. Projekt vytvoříte kliknutím na **OK**.
+## Vytvořit projekt sady Visual Studio<a name="create-visual-studio-project"></a>
 
-## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
+Vytvořit konzolovou aplikaci C# .NET:
 
-1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
-2. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
+1. Spusťte aplikaci Visual Studio a vyberte možnost **vytvořit nový projekt**.
+1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. Pojmenujte projekt *ADFv2BranchTutorial*.
+1. Vyberte **.NET verze 4.5.2** nebo vyšší a pak vyberte **vytvořit**.
 
-    ```powershell
-    Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
-    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-    ```
+### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-## <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
+1. Vyberte **nástroje** > **správce balíčků NuGet** > **Konzola správce balíčků**.
+1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
-1. Otevřete soubor **Program.cs** a vložte do něj následující příkazy. Přidáte tak odkazy na obory názvů.
+   ```powershell
+   Install-Package Microsoft.Azure.Management.DataFactory
+   Install-Package Microsoft.Azure.Management.ResourceManager -IncludePrerelease
+   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+   ```
 
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Rest;
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.DataFactory;
-    using Microsoft.Azure.Management.DataFactory.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    ```
+### <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
 
-2. Do **třídy Program** přidejte tyto statické proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+1. Otevřete *program.cs* a přidejte následující příkazy:
 
-    ```csharp
-        // Set variables
-        static string tenantID = "<tenant ID>";
-        static string applicationId = "<application ID>";
-        static string authenticationKey = "<Authentication key for your application>";
-        static string subscriptionId = "<Azure subscription ID>";
-        static string resourceGroup = "<Azure resource group name>";
+   ```csharp
+   using System;
+   using System.Collections.Generic;
+   using System.Linq;
+   using Microsoft.Rest;
+   using Microsoft.Azure.Management.ResourceManager;
+   using Microsoft.Azure.Management.DataFactory;
+   using Microsoft.Azure.Management.DataFactory.Models;
+   using Microsoft.IdentityModel.Clients.ActiveDirectory;
+   ```
 
-        static string region = "East US";
-        static string dataFactoryName = "<Data factory name>";
+1. Přidejte tyto statické proměnné do třídy `Program`. Zástupné znaky nahraďte vlastními hodnotami.
 
-        // Specify the source Azure Blob information
-        static string storageAccount = "<Azure Storage account name>";
-        static string storageKey = "<Azure Storage account key>";
-        // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
-        static string inputBlobPath = "adfv2branch/input";
-        static string inputBlobName = "input.txt";
-        static string outputBlobPath = "adfv2branch/output";
-        static string emailReceiver = "<specify email address of the receiver>";
+   ```csharp
+   // Set variables
+   static string tenantID = "<tenant ID>";
+   static string applicationId = "<application ID>";
+   static string authenticationKey = "<Authentication key for your application>";
+   static string subscriptionId = "<Azure subscription ID>";
+   static string resourceGroup = "<Azure resource group name>";
 
-        static string storageLinkedServiceName = "AzureStorageLinkedService";
-        static string blobSourceDatasetName = "SourceStorageDataset";
-        static string blobSinkDatasetName = "SinkStorageDataset";
-        static string pipelineName = "Adfv2TutorialBranchCopy";
+   static string region = "East US";
+   static string dataFactoryName = "<Data factory name>";
 
-        static string copyBlobActivity = "CopyBlobtoBlob";
-        static string sendFailEmailActivity = "SendFailEmailActivity";
-        static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
-    
-    ```
+   // Specify the source Azure Blob information
+   static string storageAccount = "<Azure Storage account name>";
+   static string storageKey = "<Azure Storage account key>";
+   // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
+   static string inputBlobPath = "adfv2branch/input";
+   static string inputBlobName = "input.txt";
+   static string outputBlobPath = "adfv2branch/output";
+   static string emailReceiver = "<specify email address of the receiver>";
 
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy **DataFactoryManagementClient**. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
+   static string storageLinkedServiceName = "AzureStorageLinkedService";
+   static string blobSourceDatasetName = "SourceStorageDataset";
+   static string blobSinkDatasetName = "SinkStorageDataset";
+   static string pipelineName = "Adfv2TutorialBranchCopy";
 
-    ```csharp
-    // Authenticate and create a data factory management client
-    var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
-    ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
-    ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
-    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
-    ```
+   static string copyBlobActivity = "CopyBlobtoBlob";
+   static string sendFailEmailActivity = "SendFailEmailActivity";
+   static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
+   ```
 
-## <a name="create-a-data-factory"></a>Vytvoření datové továrny
+1. Do metody `Main` přidejte následující kód. Tento kód vytvoří instanci třídy `DataFactoryManagementClient`. Pak tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Tento objekt můžete také použít k monitorování podrobností o spuštění kanálu.
 
-V souboru Program.cs vytvořte funkci CreateOrUpdateDataFactory:
+   ```csharp
+   // Authenticate and create a data factory management client
+   var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
+   ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
+   AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+   ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
+   var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
+   ```
 
-```csharp
-static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating data factory " + dataFactoryName + "...");
-    Factory resource = new Factory
-    {
-        Location = region
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-    Factory response;
-    {
-        response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
-    }
+1. Do souboru *program.cs* přidejte metodu `CreateOrUpdateDataFactory`:
 
-    while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
-    {
-        System.Threading.Thread.Sleep(1000);
-    }
-    return response;
-}
-```
+   ```csharp
+   static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating data factory " + dataFactoryName + "...");
+       Factory resource = new Factory
+       {
+           Location = region
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
 
+       Factory response;
+       {
+           response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
+       }
 
+       while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+       {
+           System.Threading.Thread.Sleep(1000);
+       }
+       return response;
+   }
+   ```
 
-Do metody **Main** přidejte následující kód, který vytvoří **datovou továrnu**. 
+1. Přidejte následující řádek do metody `Main`, která vytvoří datovou továrnu:
 
-```csharp
-Factory df = CreateOrUpdateDataFactory(client);
-```
+   ```csharp
+   Factory df = CreateOrUpdateDataFactory(client);
+   ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 
-V souboru Program.cs vytvořte funkci StorageLinkedServiceDefinition:
+1. Do souboru *program.cs* přidejte metodu `StorageLinkedServiceDefinition`:
 
-```csharp
-static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
-    AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
-    {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
-    LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
-    return linkedService;
-}
-```
+   ```csharp
+   static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
+   {
+      Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
+      AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
+      {
+          ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+      };
+      Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+      LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
+      return linkedService;
+   }
+   ```
 
-Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure Storage**. V tématu věnovaném [vlastnostem propojených služeb Azure Blob](connector-azure-blob-storage.md#linked-service-properties) se o podporovaných vlastnostech dozvíte víc.
+1. Přidejte následující řádek do metody `Main` vytvářející Azure Storage propojenou službu:
 
-```csharp
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
-```
+   ```csharp
+   client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
+   ```
+
+Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu věnovaném [vlastnostem propojených služeb](connector-azure-blob-storage.md#linked-service-properties).
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 
-V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jímku. 
+V této části vytvoříte dvě datové sady, jednu pro zdroj a jednu pro jímku.
 
-### <a name="create-a-dataset-for-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
+### <a name="create-a-dataset-for-a-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
 
-Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**. V tématu věnovaném [vlastnostem datových sad objektů blob Azure](connector-azure-blob-storage.md#dataset-properties) se o podporovaných vlastnostech dozvíte víc.
+Přidejte metodu, která vytvoří *datovou sadu objektů BLOB v Azure*. Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
-
-- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **filename**;
-- Všimněte si použití parametrů pro FolderPath. sourceBlobContainer je název parametru a výraz se nahradí hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
-
-V souboru Program.cs vytvořte funkci SourceBlobDatasetDefinition:
+Do souboru *program.cs* přidejte metodu `SourceBlobDatasetDefinition`:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -232,44 +232,48 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro Azure Blob jímky
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
 
-V souboru Program.cs vytvořte funkci SourceBlobDatasetDefinition:
+Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
-```csharp
-static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
-    AzureBlobDataset blobDataset = new AzureBlobDataset
-    {
-        FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
-        LinkedServiceName = new LinkedServiceReference
-        {
-            ReferenceName = storageLinkedServiceName
-        }
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
-    DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
-    return dataset;
-}
-```
+### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 
-Do metody **Main** přidejte následující kód, který vytvoří datovou sadu Azure Blob zdroje i jímky. 
+1. Do souboru *program.cs* přidejte metodu `SourceBlobDatasetDefinition`:
 
-```csharp
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
+   ```csharp
+   static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
+       AzureBlobDataset blobDataset = new AzureBlobDataset
+       {
+           FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
+           LinkedServiceName = new LinkedServiceReference
+           {
+               ReferenceName = storageLinkedServiceName
+           }
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+       DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
+       return dataset;
+   }
+   ```
 
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
-```
+1. Do metody `Main` přidejte následující kód, který vytvoří datovou sadu Azure Blob source i jímky.
 
-## <a name="create-a-c-class-emailrequest"></a>Vytvořte C# třídu: EmailRequest
+   ```csharp
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
 
-V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vlastnosti kanál posílá v těle požadavku při odesílání e-mailu. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
+   ```
 
-- **Message**: Text e-mailu. V případě úspěšného kopírování tato vlastnost obsahuje podrobnosti o spuštění (počet zapsaných dat). V případě neúspěšného kopírování tato vlastnost obsahuje podrobnosti o chybě.
-- **DataFactoryName**: Název datové továrny.
-- **PipelineName**: Název kanálu.
-- **Přijímač**: Parametr, který se předává. Tato vlastnost určuje příjemce e-mailu.
+## <a name="create-a-c-class-emailrequest"></a>Vytvoření třídy EmailRequest v C#
+
+V C# projektu vytvořte třídu s názvem `EmailRequest`. Tato třída definuje, jaké vlastnosti kanál posílá v žádosti o tělo při odesílání e-mailů. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
+
+* Zpráva. Text e-mailu Pro úspěšnou kopii Tato vlastnost obsahuje množství zapsaných dat. Pro neúspěšnou kopii Tato vlastnost obsahuje podrobnosti o chybě.
+* Název datové továrny. Název datové továrny.
+* Název kanálu Název kanálu.
+* Pozorování. Parametr, který projde. Tato vlastnost určuje příjemce e-mailu.
 
 ```csharp
     class EmailRequest
@@ -298,15 +302,11 @@ V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vla
 
 ## <a name="create-email-workflow-endpoints"></a>Vytvoření koncových bodů pracovního postupu pro e-maily
 
-K aktivaci odesílání e-mailů použijete [Logic Apps](../logic-apps/logic-apps-overview.md) pro definování pracovního postupu. Podrobnosti o vytvoření pracovního postupu Logic Apps najdete v tématu věnovaném [postupu vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+K aktivaci odesílání e-mailů použijete [Logic Apps](../logic-apps/logic-apps-overview.md) pro definování pracovního postupu. Podrobnosti o vytvoření pracovního postupu Logic Apps najdete v tématu [jak vytvořit aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-### <a name="success-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu 
+### <a name="success-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-Vytvořte pracovní postup aplikace logiky s názvem `CopySuccessEmail`. Jako trigger tohoto pracovního postupu definujte `When an HTTP request is received` a potom přidejte akci `Office 365 Outlook – Send an email`.
-
-![Pracovní postup pro e-maily s informací o úspěchu](media/tutorial-control-flow/success-email-workflow.png)
-
-Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
+V [Azure Portal](https://portal.azure.com)vytvořte pracovní postup Logic Apps s názvem *CopySuccessEmail*. Definujte Trigger pracovního postupu jako `When an HTTP request is received`. Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
 
 ```json
 {
@@ -328,39 +328,29 @@ Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON
 }
 ```
 
-To odpovídá třídě **EmailRequest**, kterou jste vytvořili v předcházející části. 
+Váš pracovní postup vypadá podobně jako v následujícím příkladu:
 
-Váš požadavek by měl v návrháři aplikace logiky vypadat takto:
+![Pracovní postup pro e-maily s informací o úspěchu](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-![Návrhář aplikace logiky – požadavek](media/tutorial-control-flow/logic-app-designer-request.png)
+Tento obsah JSON se zarovnává se třídou `EmailRequest`, kterou jste vytvořili v předchozí části.
 
-Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Zde naleznete příklad:
+Přidejte akci `Office 365 Outlook – Send an email`. V případě akce **Odeslat e-mail** upravte způsob, jakým chcete e-maily naformátovat, pomocí vlastností předaných v rámci schématu JSON pro **tělo** požadavku. Tady je příklad:
 
-![Návrhář aplikace logiky – akce odeslání e-mailu](media/tutorial-control-flow/send-email-action.png)
+![Návrhář aplikace logiky – akce Odeslat e-mail](media/tutorial-control-flow/customize-send-email-action.png)
 
-Poznamenejte si adresu URL žádosti HTTP Post pro pracovní postup pro e-maily s informací o neúspěchu:
+Po uložení pracovního postupu zkopírujte a uložte hodnotu **adresy URL post protokolu HTTP** z aktivační události.
 
-```
-//Success Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
+## <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-## <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu 
+Naklonujte **CopySuccessEmail** jako jiný pracovní postup Logic Apps s názvem *CopyFailEmail*. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
 
-Naklonujte **CopySuccessEmail** a vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Stačí změnit formát e-mailu, například změnit `Subject` tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
+![Návrhář aplikace logiky – pracovní postup selhání e-mailu](media/tutorial-control-flow/fail-email-workflow.png)
 
-![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow/fail-email-workflow.png)
+Po uložení pracovního postupu zkopírujte a uložte hodnotu **adresy URL post protokolu HTTP** z aktivační události.
 
-Poznamenejte si adresu URL žádosti HTTP Post pro pracovní postup pro e-maily s informací o neúspěchu:
+Nyní byste měli mít dvě adresy URL pracovního postupu, například následující příklady:
 
-```
-//Fail Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
-
-Teď byste měli mít dvě adresy URL pracovního postupu:
-
-```
+```csharp
 //Success Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 
@@ -370,104 +360,102 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Do metody Main přidejte následující kód, který vytvoří kanál s aktivitou kopírování a vlastností dependsOn. V tomto kurzu kanál obsahuje jednu aktivitu: aktivitu kopírování, která jako zdroj používá datovou sadu Blob jako zdroj a jako jímku používá jinou datovou sadu Blob. Na základě úspěchu nebo neúspěchu aktivity kopírování potom volá různé e-mailové úlohy.
+Vraťte se do projektu v aplikaci Visual Studio. Nyní přidáme kód, který vytvoří kanál s aktivitou kopírování a vlastností `DependsOn`. V tomto kurzu kanál obsahuje jednu aktivitu, aktivitu kopírování, která přebírá datovou sadu objektů BLOB jako zdroj a jinou datovou sadu objektů BLOB jako jímku. Pokud je aktivita kopírování úspěšná nebo selže, volá různé e-mailové úkoly.
 
 V tomto kanálu použijete následující funkce:
 
-- Parametry
-- Aktivita webu
-- Závislost aktivit
-- Použití výstupu aktivity jako vstupu pro další aktivitu
+* Parametry
+* Aktivita webu
+* Závislost aktivit
+* Použití výstupu z aktivity jako vstupu jiné aktivitě
 
-Teď se na jednotlivé části kanálu podívejme podrobněji:
+1. Přidejte tuto metodu do projektu. Následující části obsahují další podrobnosti.
 
-```csharp
-
-static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
-        {
-            Console.WriteLine("Creating pipeline " + pipelineName + "...");
-            PipelineResource resource = new PipelineResource
+    ```csharp
+    static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             {
-                Parameters = new Dictionary<string, ParameterSpecification>
+                Console.WriteLine("Creating pipeline " + pipelineName + "...");
+                PipelineResource resource = new PipelineResource
                 {
-                    { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "receiver", new ParameterSpecification { Type = ParameterType.String } }
+                    Parameters = new Dictionary<string, ParameterSpecification>
+                    {
+                        { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "receiver", new ParameterSpecification { Type = ParameterType.String } }
 
-                },
-                Activities = new List<Activity>
-                {
-                    new CopyActivity
+                    },
+                    Activities = new List<Activity>
                     {
-                        Name = copyBlobActivity,
-                        Inputs = new List<DatasetReference>
+                        new CopyActivity
                         {
-                            new DatasetReference
+                            Name = copyBlobActivity,
+                            Inputs = new List<DatasetReference>
                             {
-                                ReferenceName = blobSourceDatasetName
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSourceDatasetName
+                                }
+                            },
+                            Outputs = new List<DatasetReference>
+                            {
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSinkDatasetName
+                                }
+                            },
+                            Source = new BlobSource { },
+                            Sink = new BlobSink { }
+                        },
+                        new WebActivity
+                        {
+                            Name = sendSuccessEmailActivity,
+                            Method = WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
+                            {
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Succeeded" }
+                                }
                             }
                         },
-                        Outputs = new List<DatasetReference>
+                        new WebActivity
                         {
-                            new DatasetReference
+                            Name = sendFailEmailActivity,
+                            Method =WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
                             {
-                                ReferenceName = blobSinkDatasetName
-                            }
-                        },
-                        Source = new BlobSource { },
-                        Sink = new BlobSink { }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendSuccessEmailActivity,
-                        Method = WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Succeeded" }
-                            }
-                        }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendFailEmailActivity,
-                        Method =WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Failed" }
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Failed" }
+                                }
                             }
                         }
                     }
-                }
-            };
-            Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
-            return resource;
-        }
-```
+                };
+                Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+                return resource;
+            }
+    ```
 
-Do metody **Main** přidejte následující kód, který vytvoří kanál:
+1. Přidejte následující řádek do metody `Main`, která vytvoří kanál:
 
-```
-client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
-```
+   ```csharp
+   client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
+   ```
 
 ### <a name="parameters"></a>Parametry
 
-První část našeho kanálu definuje parametry. 
+První část našeho kódu kanálu definuje parametry.
 
-- sourceBlobContainer – parametr kanálu využívaný zdrojovou datovou sadou objektů blob
-- sinkBlobContainer – parametr kanálu využívaný datovou sadou objektů blob pro jímku
-- receiver – tento parametr používají dvě aktivity webu v kanálu, které odesílají e-maily s oznámením o úspěchu nebo selhání příjemci, jehož e-mailová adresa je zadána tímto parametrem.
-
+* `sourceBlobContainer`. Zdrojová datová sada objektů BLOB využívá tento parametr v kanálu.
+* `sinkBlobContainer`. Datová sada objektu BLOB jímky používá tento parametr v kanálu.
+* `receiver`. Tento parametr používají dvě aktivity webu v kanálu, které odesílají e-maily o úspěchu nebo neúspěchu příjemci.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -480,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Aktivita webu
 
-Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o této aktivitě najdete v tématu věnovaném [aktivitě webu](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu pro e-maily Logic Apps. Vytvořili jste dvě aktivity webu, jednu, která volá pracovní postup **CopySuccessEmail**, a druhou, která volá **CopyFailWorkFlow**.
+Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o aktivitě najdete v tématu [Webová aktivita v Azure Data Factory](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu Logic Appsho e-mailu. Vytvoříte dvě webové aktivity: jednu, která volá pracovní postup `CopySuccessEmail` a jednu, která volá `CopyFailWorkFlow`.
 
 ```csharp
         new WebActivity
@@ -500,18 +488,18 @@ Aktivita webu umožňuje volání libovolného koncového bodu REST. Další inf
         }
 ```
 
-Do vlastnosti Url vložte koncové body adres URL požadavku z pracovního postupu Logic Apps. Ve vlastnosti Body předejte instanci třídy EmailRequest. Obsahuje následující vlastnosti:
+Do vlastnosti `Url` vložte koncové body **adresy http post** z vašich Logic Apps pracovních postupů. Ve vlastnosti `Body` předejte instanci třídy `EmailRequest`. Obsahuje následující vlastnosti:
 
-- Message – Předání hodnoty `@{activity('CopyBlobtoBlob').output.dataWritten`. Má přístup k vlastnosti předchozí aktivity kopírování a předává hodnotu dataWritten. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
-- DataFactoryName – Předání hodnoty `@{pipeline().DataFactory}`. Toto je systémová proměnná, která umožňuje přístup k názvu odpovídající datové továrny. Seznam systémových proměnných najdete v článku [Systémové proměnné](control-flow-system-variables.md).
-- PipelineName – Předání hodnoty `@{pipeline().Pipeline}`. Toto je také systémová proměnná, která umožňuje přístup k názvu odpovídajícího kanálu. 
-- Receiver – Předání hodnoty \@pipeline().parameters.receiver. Má přístup k parametrům kanálu.
- 
-Tento kód vytvoří novou závislost aktivit, a to v závislosti na předchozí aktivitě kopírování, která je úspěšná.
+* Zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten`. Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten`. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
+* Název Data Factory Předává hodnotu `@{pipeline().DataFactory}`. Tato systémová proměnná vám umožní přístup k odpovídajícímu názvu datové továrny. Seznam systémových proměnných najdete v tématu [systémové proměnné](control-flow-system-variables.md).
+* Název kanálu Předává hodnotu `@{pipeline().Pipeline}`. Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu kanálu.
+* Pozorování. Předává hodnotu `"@pipeline().parameters.receiver"`. Přistupuje k parametrům kanálu.
+
+Tento kód vytvoří novou závislost aktivity, která závisí na předchozí aktivitě kopírování.
 
 ## <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
 
-Do metody **Main** přidejte následující kód, který **aktivuje spuštění kanálu**.
+Do metody `Main` přidejte následující kód, který spustí spuštění kanálu.
 
 ```csharp
 // Create a pipeline run
@@ -527,9 +515,9 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
-## <a name="main-class"></a>Hlavní třída 
+## <a name="main-class"></a>Hlavní třída
 
-Finální metoda Main by měla vypadat takto. Sestavte a spusťte program pro aktivaci spuštění kanálu!
+Konečná metoda `Main` by měla vypadat takto.
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -559,9 +547,11 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
+Sestavte a spusťte program pro aktivaci spuštění kanálu!
+
 ## <a name="monitor-a-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Do metody **Main** přidejte následující kód, který nepřetržitě kontroluje stav spuštění kanálu, dokud se kopírování dat nedokončí.
+1. Do metody `Main` přidejte následující kód:
 
     ```csharp
     // Monitor the pipeline run
@@ -578,7 +568,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. Do metody **Main** přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat.
+    Tento kód průběžně kontroluje stav spuštění, dokud nedokončí kopírování dat.
+
+1. Do metody `Main` přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat:
 
     ```csharp
     // Check the copy activity run details
@@ -602,9 +594,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ## <a name="run-the-code"></a>Spuštění kódu
 
 Sestavte a spusťte aplikaci a potom ověřte spuštění kanálu.
-Konzola vytiskne průběh vytváření datové továrny, propojených služeb, datových sad, kanálu a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Potom použijte nástroj, jako je průzkumník služby Azure Storage, a zkontrolujte, že se objekty blob zkopírovaly z inputBlobPath do outputBlobPath, jak jste zadali v proměnných.
 
-**Ukázkový výstup:**
+Aplikace zobrazuje průběh vytváření datové továrny, propojené služby, datových sad, kanálu a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud aktivita kopírování nezobrazí údaje o velikosti načtených/zapsaných dat. Pak pomocí nástrojů, jako je Průzkumník služby Azure Storage, zkontrolujte, že se objekt BLOB zkopíroval do *outputBlobPath* z *inputBlobPath* , jak jste určili v proměnných.
+
+Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```json
 Creating data factory DFTutorialTest...
@@ -756,9 +749,9 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli následující kroky: 
+V tomto kurzu jste provedli následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny
@@ -766,10 +759,10 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření datové sady Azure Blob
 > * Vytvoření kanálu, který obsahuje aktivitu kopírování a aktivitu webu
 > * Odeslání výstupů aktivit následným aktivitám
-> * Využití předávání parametrů a systémových proměnných
+> * Použití předávání parametrů a systémových proměnných
 > * Spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
-Teď můžete přejít k části Koncepty, která obsahuje další informace o Azure Data Factory.
+Teď můžete pokračovat v části koncepty, kde najdete další informace o Azure Data Factory.
 > [!div class="nextstepaction"]
 >[Kanály a aktivity](concepts-pipelines-activities.md)

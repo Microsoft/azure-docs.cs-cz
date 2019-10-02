@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 41fbebcf4b85f6e48babba30c2d05fedb3e7a5c7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985295"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802572"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -29,7 +29,7 @@ Při vytváření seřazené instrukce Azure SQL Data Warehouse modul seřadí d
 Chcete-li kontrolovat rozsahy segmentů pro sloupec, spusťte tento příkaz s názvem tabulky a názvem sloupce:
 
 ```sql
-SELECT o.name, pnp.index_id, pnp.rows, pnp.data_compression_desc, pnp.pdw_node_id, 
+SELECT o.name, pnp.index_id, cls.row_count, pnp.data_compression_desc, pnp.pdw_node_id, 
 pnp.distribution_id, cls.segment_id, cls.column_id, cls.min_data_id, cls.max_data_id, cls.max_data_id-cls.min_data_id as difference
 FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_tables AS Ntables ON pnp.object_id = NTables.object_id AND pnp.pdw_node_id = NTables.pdw_node_id
@@ -37,8 +37,9 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.objects AS o ON TMap.object_id = o.object_id
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
    JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
-WHERE o.name = '<table_name>' and c.name = '<column_name>'
+WHERE o.name = '<Table_Name>' and cols.name = '<Column_Name>' 
 ORDER BY o.name, pnp.distribution_id, cls.min_data_id
+
 ```
 
 ## <a name="data-loading-performance"></a>Výkon načítání dat
@@ -47,7 +48,7 @@ Výkon načítání dat do seřazené tabulky Ski je podobný načtení dat do d
 Načítání dat do seřazené tabulky INSTRUKCí může trvat déle než načítání dat do neuspořádané tabulky INSTRUKCí z důvodu řazení dat.  
 
 Zde je příklad porovnání výkonu načítání dat do tabulek s různými schématy.
-![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+@no__t – 0Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Zmenšení překrývajících se segmentů
 Níže jsou uvedeny možnosti pro další omezení překrývání při vytváření uspořádané konzulární instrukce pro novou tabulku prostřednictvím CTAS nebo v existující tabulce s daty:
@@ -69,7 +70,7 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 
 ## <a name="examples"></a>Příklady
 
-**A. Chcete-li kontrolovat seřazené sloupce a pořadí pořadí:**
+**A. pro kontrolu seřazených sloupců a pořadí pořadí:**
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -77,12 +78,12 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. Změna pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo změna z instrukce na seřazenou INSTRUKCi:**
+**B. pro změnu pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo pro změnu z instrukce na seřazenou INSTRUKCi:**
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)
 WITH (DROP_EXISTING = ON)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

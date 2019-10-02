@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získat odpověď z znalostní báze – REST, Python-QnA Maker'
+title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Python-QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Tento rychlý Start založený na REST Python vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
 services: cognitive-services
@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 34c85de456e7ec96f3244d327fd53c91ed90d109
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f7bf73561cadab866c08ae279d18bc1bd4655983
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306916"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802979"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Rychlý start: Získání odpovědí na otázku ze znalostní báze pomocí Pythonu
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3,6 nebo vyšší](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Chcete-li načíst kód Product key, vyberte **klíče** pod **správy prostředků** v řídicím panelu Azure pro prostředek nástroje QnA Maker. 
+* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč, na řídicím panelu Azure pro prostředek QnA Maker vyberte **klíče** pod **správou prostředků** . 
 * **Publikování** nastavení stránky. Pokud nemáte publikovanou znalostní bázi, vytvořte prázdnou znalostní bázi a pak importujte znalostní bázi na stránce **Nastavení** a pak klikněte na publikovat. [Tuto základní znalostní bázi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)si můžete stáhnout a použít. 
 
     Nastavení stránky publikovat zahrnuje hodnotu POST Route, hodnotu Host a hodnotu EndpointKey. 
 
     ![Nastavení publikování](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Kód pro tento rychlý Start je v [https://github.com/Azure-Samples/cognitive-services-qnamaker-python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/get-answer) úložišti. 
+Kód pro tento rychlý Start je v úložišti [https://github.com/Azure-Samples/cognitive-services-qnamaker-python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/get-answer) . 
 
 ## <a name="create-a-python-file"></a>Vytvoření souboru Pythonu
 
 Otevřete VSCode a vytvořte nový soubor s názvem `get-answer-3x.py`.
 
-## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
+## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
 
-V horní `get-answer-3x.py` části souboru přidejte nezbytné závislosti do projektu:
+V horní části souboru `get-answer-3x.py` přidejte do projektu nezbytné závislosti:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
 
+<!--TBD - reword this following paragraph -->
+
 Hostitel a trasa se liší od toho, jak se zobrazují na stránce **publikování** . Důvodem je to, že knihovna Pythonu nepovoluje žádné směrování v hostiteli. Směrování, které se zobrazí na stránce **publikovat** jako součást hostitele, se přesunulo do trasy.
 
-## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
+## <a name="add-the-required-constants"></a>Přidejte požadované konstanty
 
 Přidejte požadované konstanty pro přístup k QnA Maker. Tyto hodnoty jsou po publikování znalostní báze na stránce **publikovat** . 
 
@@ -58,11 +60,11 @@ Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker 
 
 [!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
 
-Hodnota hlavičky obsahuje řetězec `EndpointKey`. `Authorization` 
+Hodnota hlavičky `Authorization` zahrnuje řetězec `EndpointKey`. 
 
 ## <a name="run-the-program"></a>Spuštění programu
 
-Spusťte program z příkazového řádku. Automaticky se odešle požadavek rozhraní API nástroje QnA Maker a vytiskne se do okna konzoly.
+Spusťte program z příkazového řádku. Požadavek bude automaticky odesílat do rozhraní API služby QnA Maker a pak bude vytištěn v okně konzoly.
 
 Spusťte soubor:
 

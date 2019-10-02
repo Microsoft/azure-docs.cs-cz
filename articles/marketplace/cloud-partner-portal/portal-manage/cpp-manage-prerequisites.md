@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087462"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720072"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Předpoklady pro správu účtů na portál partnerů cloudu 
 
@@ -28,22 +28,21 @@ Pečlivě vyberte název účtu.  Představuje vaši organizaci, takže by nemě
 
 ## <a name="registration-steps"></a>Postup registrace
 
-V následující tabulce jsou uvedeny kroky nutné k úplné registraci jako Microsoft Cloud Publisher.  Úplné pokyny najdete v tématu [se stala vydavatelem](https://docs.microsoft.com/azure/marketplace/become-publisher
-)cloudového Marketplace. 
+V následující tabulce jsou uvedeny kroky nutné k úplné registraci jako Microsoft Cloud Publisher.  Úplné pokyny najdete v tématu [se stala vydavatelem cloudového Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
 
 |                   Krok                   |  Výsledná registrace nebo prostředek                     |
 |                  ------                  |  -----------------------------------                    |
-| 1. Zaregistrovat v Microsoft Partner Network |  ID Microsoft Partner Network pro vaši organizaci |
-| 2. Vytvořit účet Microsoft *           |  Ověřený účet Microsoft, končící @outlook.comna, @live.comatd. |
-| 3. Odeslat registrační formulář Marketplace | Účet vydavatele na portál partnerů cloudu      |
-| 4. Přihlaste se portál partnerů cloudu        | Oprávnění vytvářet a publikovat nabídky, spravovat uživatele, shromažďovat metriky Marketplace atd. |
-| 5. Zaregistrovat v centru pro vývojáře Microsoftu * | Ověřený účet centra vývojářů; oprávnění k provádění transakcí Marketplace  |
+| 1. Zaregistrujte se do Microsoft Partner Network |  ID Microsoft Partner Network pro vaši organizaci |
+| 2. Vytvořte účet Microsoft *           |  Ověřený účet Microsoft, končící @outlook.com, @live.com atd. |
+| 3. Odeslání registračního formuláře webu Marketplace | Účet vydavatele na portál partnerů cloudu      |
+| 4. Přihlaste se k portál partnerů cloudu        | Oprávnění vytvářet a publikovat nabídky, spravovat uživatele, shromažďovat metriky Marketplace atd. |
+| 5. Zaregistrujte se do centra pro vývojáře Microsoftu * | Ověřený účet centra vývojářů; oprávnění k provádění transakcí Marketplace  |
 |   |   |
 
-\*Tyto kroky jsou nezbytné pro Azure Marketplace nabídky Transact, ale velmi doporučené pro všechny nabídky.  Jakmile vytvoříte účet Microsoft a zaregistrujete se jako vývojář Microsoftu, budete mít přístup k dalším prostředkům Microsoftu a vývojářům Microsoftu a také k volitelným partnerským nabídkám.  
+\* tyto kroky jsou nezbytné pro Azure Marketplace nabídky Transact, ale důrazně doporučujeme pro všechny nabídky.  Jakmile vytvoříte účet Microsoft a zaregistrujete se jako vývojář Microsoftu, budete mít přístup k dalším prostředkům Microsoftu a vývojářům Microsoftu a také k volitelným partnerským nabídkám.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po dokončení postupu registrace byste měli být schopni se přihlásit [portál partnerů cloudu](https://cloudpartner.azure.com/).  Pomocí tohoto portálu můžete spravovat profily vydavatelů a spravovat uživatelské účty.

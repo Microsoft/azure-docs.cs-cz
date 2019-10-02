@@ -1,68 +1,68 @@
 ---
-title: Služba LUIS a QnA maker – integrace robota
+title: Integrace LUIS a Qnamakerem – bot
 titleSuffix: Azure Cognitive Services
-description: Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
+description: Vzhledem k tomu, že váš QnA Maker znalostní báze roste, je obtížné ji udržovat jako jednu monolitické sadu a je potřeba rozdělit znalostní bázi do menších logických bloků dat.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272422"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802797"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Použití robota s QnA Maker a LUIS k distribuci znalostní báze
-Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
+Vzhledem k tomu, že váš QnA Maker znalostní báze roste, je obtížné ji udržovat jako jednu monolitické sadu a je potřeba rozdělit znalostní bázi do menších logických bloků dat.
 
-I když je jednoduché vytvářet více znalostních bází v nástroje QnA Maker, budete potřebovat nějaké logiky směrovat příchozí dotaz do odpovídající znalostní báze. Můžete to provést s využitím služby LUIS.
+I když je jednoduché vytvořit v QnA Maker více znalostní báze, budete potřebovat určitou logiku pro směrování příchozí otázky do příslušné znalostní báze. To můžete provést pomocí LUIS.
 
-Tento článek používá sadu SDK v3 Bot Framework. Přečtěte si tento [Bot Framework článku](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp), pokud vás zajímá verze sady SDK rozhraní Bot Framework v4 těchto informací.
+Tento článek používá sadu robot Framework V3 SDK. Pokud vás zajímá verze sady bot Framework v4 SDK této informace, podívejte se prosím na tento [článek o rozhraní bot Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp).
 
 ## <a name="architecture"></a>Architektura
 
 ![QnA Maker s architekturou Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dotaz z modelu LUIS a použije ji směrovat do znalostní báze správný nástroj QnA Maker.
+Ve výše uvedeném scénáři QnA Maker nejprve získá záměr příchozí otázky z modelu LUIS a pak ji použije ke směrování do správné QnA Maker znalostní báze.
 
-## <a name="create-a-luis-app"></a>Vytvoření aplikace LUIS
+## <a name="create-a-luis-app"></a>Vytvoření aplikace v LUIS
 
-1. Přihlaste se k [LUIS](https://www.luis.ai/) portálu.
-1. [Vytvoření aplikace](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
-1. [Přidat záměru](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) pro každý nástroj QnA Maker znalostní báze. Příklad projevy, musí odpovídat na otázky v znalostních bází QnA Maker.
-1. [Trénování aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikovat aplikaci LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) aplikace LUIS.
-1. V **spravovat** části, poznamenejte si vaše LUIS ID aplikace, klíč koncového bodu služby LUIS a hostujte oblasti. Tyto hodnoty budete potřebovat později. 
+1. Přihlaste se k portálu [Luis](https://www.luis.ai/) .
+1. [Vytvořte aplikaci](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
+1. [Přidejte záměr](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) pro každou QnA maker znalostní bázi Knowledge Base. Vzorový projevy by měl odpovídat otázkám v QnA Maker znalostní báze.
+1. [Školení aplikace Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikování aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) vaše aplikace Luis
+1. V části **Správa** si poznamenejte ID aplikace Luis, klíč koncového bodu Luis a [název vlastní domény](../../cognitive-services-custom-subdomains.md). Tyto hodnoty budete potřebovat později. 
 
-## <a name="create-qna-maker-knowledge-bases"></a>Vytváření znalostních bází QnA Maker
+## <a name="create-qna-maker-knowledge-bases"></a>Vytváření QnA Maker báze znalostí
 
-1. Přihlaste se k [QnA Maker](https://qnamaker.ai).
-1. [Vytvoření](https://www.qnamaker.ai/Create) znalostních bází pro každý záměr v aplikaci LUIS.
-1. Otestujeme a publikujeme a znalostních bází. Když budete publikovat každý KB, poznamenejte si ID znalostní BÁZE, hostování (subdoména před _.azurewebsites.net/qnamaker_) a klíče koncového bodu autorizace. Tyto hodnoty budete potřebovat později. 
+1. Přihlaste se k [QnA maker](https://qnamaker.ai).
+1. Pro každý záměr v aplikaci LUIS [vytvořte](https://www.qnamaker.ai/Create) základy znalostní báze.
+1. Testování a publikování znalostní báze. Při publikování jednotlivých KB si poznamenejte ID KB, název prostředku (vlastní subdoménu před _. azurewebsites.NET/qnamaker_) a klíč koncového bodu autorizace. Tyto hodnoty budete potřebovat později. 
 
-    Tento článek předpokládá, že že znalostní báze se vytvoří ve stejném předplatném Azure QnA Maker.
+    Tento článek předpokládá, že aktualizací KB jsou všechny vytvořené ve stejném předplatném Azure QnA Maker.
 
-    ![Požadavek QnA Maker HTTP](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
+    ![QnA Maker požadavek HTTP](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
-## <a name="web-app-bot"></a>Web app Bot
+## <a name="web-app-bot"></a>Robot webové aplikace
 
 1. [Vytvořte robot "základní" Web App](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) , který automaticky obsahuje aplikaci Luis. Vyberte C# programovací jazyk.
 
-1. Po vytvoření použijete web app bot, na webu Azure Portal, vyberte použijete web app bot.
-1. Vyberte **nastavení aplikace** v navigačním služby Web app bot, poté přejděte dolů k **nastavení aplikace** část dostupných nastaveních.
-1. Změnit **LuisAppId** hodnotu LUIS aplikaci vytvořenou v předchozí části pak vyberte **Uložit**.
+1. Po vytvoření bot webové aplikace v Azure Portal vyberte bot webové aplikace.
+1. V navigaci služby webové aplikace bot vyberte **nastavení aplikace** a pak přejděte dolů k části **nastavení aplikace** v části dostupná nastavení.
+1. Změňte **LuisAppId** na hodnotu aplikace Luis vytvořené v předchozí části a pak vyberte **Uložit**.
 
 
 ## <a name="change-code-in-basicluisdialogcs"></a>Změna kódu v BasicLuisDialog.cs
-1. Z **Bot správu** části navigační web app bot na webu Azure Portal, vyberte **sestavení**.
-2. Vyberte **otevřít online editor kódu**. Otevře se nová karta prohlížeče s online prostředí pro úpravy. 
-3. V **WWWROOT** vyberte **dialogová okna** adresář a potom otevřete **BasicLuisDialog.cs**.
-4. Přidat závislosti do horní části **BasicLuisDialog.cs** souboru:
+1. V části **Správa bot** v navigaci bot webové aplikace v Azure Portal vyberte **sestavení**.
+2. Vyberte **otevřít online editor kódu**. Otevře se nová karta prohlížeče s online editačním prostředím. 
+3. V části **WWWROOT** vyberte adresář **dialogy** a pak otevřete **BasicLuisDialog.cs**.
+4. Přidejte závislosti na začátek souboru **BasicLuisDialog.cs** :
 
     ```csharp
     using System;
@@ -76,7 +76,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
     using System.Text;
     ```
 
-5. Přidat následující třídy k deserializaci odpovědí nástroje QnA Maker:
+5. Přidejte následující třídy k deserializaci QnA Maker odpovědi:
 
     ```csharp
     public class Metadata
@@ -103,19 +103,19 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
     ```
 
 
-6. Přidejte následující třídu tak, aby služba QnA Maker požadavek HTTP. Všimněte si, že **autorizace** hodnotu hlavičky obsahuje slovo, `EndpointKey` mezerou následující slovo. Výsledek JSON je deserializovat do tříd předchozí a vrátil první odpovědi.
+6. Přidejte následující třídu, která provede požadavek HTTP na službu QnA Maker. Všimněte si, že hodnota **autorizační** hlavičky obsahuje slovo, `EndpointKey` mezerou za slovem. Výsledek JSON je deserializovaný na předchozí třídy a vrátí se první odpověď.
 
     ```csharp
     [Serializable]
     public class QnAMakerService
     {
-        private string qnaServiceHostName;
+        private string qnaServiceResourceName;
         private string knowledgeBaseId;
         private string endpointKey;
 
-        public QnAMakerService(string hostName, string kbId, string endpointkey)
+        public QnAMakerService(string resourceName, string kbId, string endpointkey)
         {
-            qnaServiceHostName = hostName;
+            qnaServiceResourceName = resourceName;
             knowledgeBaseId = kbId;
             endpointKey = endpointkey;
 
@@ -136,7 +136,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
         }
         public async Task<string> GetAnswer(string question)
         {
-            string uri = qnaServiceHostName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
+            string uri = qnaServiceResourceName + "/qnamaker/knowledgebases/" + knowledgeBaseId + "/generateAnswer";
             string questionJSON = "{\"question\": \"" + question.Replace("\"","'") +  "\"}";
 
             var response = await Post(uri, questionJSON);
@@ -155,7 +155,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
     ```
 
 
-7. Změna BasicLuisDialog třídy. Každá služba LUIS záměr by měl mít metody upravené pomocí **LuisIntent**. Parametr dekorativní je skutečný název služby LUIS záměru. Název metody, která je upravena _by měl_ LUIS záměru název pro lepší čitelnost a udržovatelnosti, ale nemusí být stejná na návrh nebo běhu.  
+7. Upravte třídu BasicLuisDialog. Každý záměr LUIS by měl mít metodu dekorované pomocí **LuisIntent**. Parametr dekorace je skutečný název záměru LUIS. Název metody, který je upravený, _by měl_ být Luis názvem záměru pro čitelnost a udržovatelnost, ale nemusí být stejný v návrhu nebo v době běhu.  
 
     ```csharp
     [Serializable]
@@ -169,7 +169,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
         // QnA Maker global settings
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
-        static string qnamaker_endpointDomain = "my-qnamaker-s0-s";
+        static string qnamaker_resourceName = "my-qnamaker-s0-s";
         
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
@@ -178,8 +178,8 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
         static string Finance_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
         // Instantiate the knowledge bases
-        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
-        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_endpointDomain + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
+        public QnAMakerService hrQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", HR_kbID, qnamaker_endpointKey);
+        public QnAMakerService financeQnAService = new QnAMakerService("https://" + qnamaker_resourceName + ".azurewebsites.net", Finance_kbID, qnamaker_endpointKey);
 
         public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(
             LUIS_appId,
@@ -223,21 +223,21 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
     ```
 
 
-## <a name="build-the-bot"></a>Sestavit robota
-1. V editoru kódu, klikněte pravým tlačítkem na `build.cmd` a vyberte **spustit z konzoly**.
+## <a name="build-the-bot"></a>Sestavte robota
+1. V editoru kódu klikněte pravým tlačítkem na `build.cmd` a vyberte **Spustit z konzoly**.
 
     ![spustit z konzoly](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. Zobrazení kódu se nahradí okno terminálu znázorňující průběh a výsledky sestavení.
+2. Zobrazení kódu je nahrazeno oknem terminálu zobrazujícím průběh a výsledky sestavení.
 
     ![sestavení konzoly](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>Testování robota
-Na webu Azure Portal, vyberte **testování ve Web Chat** otestovat robota. Typ zprávy z různých záměrů pro získání odpovědi z odpovídající znalostní báze.
+## <a name="test-the-bot"></a>Test robota
+V Azure Portal pro otestování robotu vyberte **test na webovém chatu** . Zadejte zprávy z různých záměrů, abyste získali odpověď od příslušné znalostní báze.
 
-![Webový test chatu](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
+![Test webového chatu](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvořit plán obchodní kontinuity podnikových procesů pro nástroj QnA Maker](../How-To/business-continuity-plan.md)
+> [Vytvoření plánu provozní kontinuity pro QnA Maker](../How-To/business-continuity-plan.md)

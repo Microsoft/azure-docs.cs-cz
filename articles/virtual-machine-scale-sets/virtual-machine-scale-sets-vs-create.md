@@ -1,6 +1,6 @@
 ---
-title: Nasazení Škálovací sady virtuálních počítačů pomocí sady Visual Studio | Dokumentace Microsoftu
-description: Nasazení Škálovací sady virtuálních počítačů pomocí sady Visual Studio a šablonu Resource Manageru
+title: Nasazení sady škálování virtuálních počítačů pomocí sady Visual Studio | Microsoft Docs
+description: Nasazení Virtual Machine Scale Sets pomocí sady Visual Studio a šablony Správce prostředků
 services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
 ms.workload: na
@@ -14,96 +14,91 @@ ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204723"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802257"
 ---
-# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Vytvoření Škálovací sady virtuálních počítačů pomocí sady Visual Studio
-V tomto článku se dozvíte, jak nasadit Azure Virtual Machine Scale Sets s použitím nasazení skupiny prostředků Visual Studio.
+# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
 
-[Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) je prostředek Azure Compute k nasazení a správu kolekcí podobných virtuálních počítačů pomocí automatického škálování a vyrovnávání zatížení. Můžete zřídit a nasadit Škálovací sady virtuálních počítačů pomocí [šablon Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates). Šablony Azure Resource Manageru můžete nasadit s využitím rozhraní příkazového řádku Azure, PowerShell, REST a také přímo ze sady Visual Studio. Visual Studio poskytuje sadu ukázkových šablon, které můžete nasadit jako součást projekt nasazení skupiny prostředků Azure.
+V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních počítačů Azure pomocí nasazení skupiny prostředků sady Visual Studio.
 
-Nasazení skupiny prostředků Azure představují způsob, jak seskupit a publikovat sady souvisejících prostředků Azure v rámci operace jedno nasazení. Další informace o nich zde: [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+[Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) je výpočetní prostředek Azure pro nasazení a správu kolekce podobných virtuálních počítačů s využitím automatického škálování a vyrovnávání zatížení. Pomocí [šablon Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates)můžete zřídit a nasadit Virtual Machine Scale Sets. Šablony Azure Resource Manager můžete nasadit pomocí Azure CLI, PowerShellu, REST a také přímo ze sady Visual Studio. Sada Visual Studio poskytuje sadu ukázkových šablon, které můžete nasadit v rámci projektu nasazení skupiny prostředků Azure.
 
-## <a name="pre-requisites"></a>Požadavky
-Abyste mohli začít nasazení Škálovací sady virtuálních počítačů v sadě Visual Studio, budete potřebovat následující:
+Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+
+## <a name="prerequisites"></a>Předpoklady
+
+Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio, potřebujete následující požadavky:
 
 * Visual Studio 2013 nebo novější
-* Azure SDK 2.7, 2.8 nebo 2.9
+* Azure SDK 2,7, 2,8 nebo 2,9
 
 >[!NOTE]
->Tyto pokyny předpokládají, že používáte Visual Studio s [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
+>Tento článek používá sadu Visual Studio 2019 se sadou [Azure SDK 2,8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
 
-## <a name="creating-a-project"></a>Vytvoření projektu
-1. Vytvoření nového projektu v sadě Visual Studio výběrem **soubor | Nové | Projekt**.
-   
-    ![Nový soubor][file_new]
+## Vytvořit projekt<a name="creating-a-project"></a> 
 
-2. V části **Visual C# | Cloud**, zvolte **Azure Resource Manageru** vytvoření projektu pro nasazení šablony Azure Resource Manageru.
-   
-    ![Vytvoření projektu][create_project]
+1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
-3. V seznamu šablon vyberte Linuxu nebo Windows nastavte šablony škálování virtuálního počítače.
-   
-   ![Vybrat šablonu][select_Template]
+1. V možnosti **vytvořit nový projekt**vyberte **skupinu prostředků Azure** pro C# a pak vyberte **Další**.
 
-4. Po vytvoření projektu zobrazí nasazení skriptů prostředí PowerShell, šablony Azure Resource Manageru a soubor parametrů pro Škálovací sady virtuálních počítačů.
-   
-    ![Průzkumník řešení][solution_explorer]
+1. V **konfiguraci nového projektu**zadejte název a vyberte **vytvořit**.
 
-## <a name="customize-your-project"></a>Přizpůsobení vašeho projektu
-Nyní můžete upravit šablonu, kterou chcete přizpůsobit pro potřeby vaší aplikace, jako je například přidávání vlastností rozšíření virtuálního počítače nebo úpravě pravidel Vyrovnávání zatížení. Ve výchozím nastavení jsou šablony sad škálování virtuálních počítačů nakonfigurovat pro nasazení AzureDiagnostics rozšíření, které umožňuje snadno přidat pravidla automatického škálování. Kromě toho nasadí nástroj pro vyrovnávání zatížení s použitím veřejné IP adresy, nakonfigurovanou pravidla příchozího překladu adres. 
+    ![Název a vytvoření projektu](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
-Nástroje pro vyrovnávání zatížení vám umožní připojit se k instancím virtuálních počítačů s SSH (Linux) nebo protokol RDP (Windows). Rozsah front-endových portů začíná 50000. Pro linux, to znamená, že pokud je SSH na port 50000 vám jsou směrovány na portu 22 první virtuální počítač ve Škálovací sadě. Připojení k portu 50001 je směrován na port 22 druhý virtuální počítač a tak dále.
+1. V seznamu šablon vyberte šablonu **Windows Virtual Machine Scale set** nebo **Linux Virtual Machine Scale set** . Vyberte **OK**.
 
- Dobrým způsobem, jak upravit šablony pomocí sady Visual Studio je použití osnovy JSON pro uspořádání parametrů, proměnné a prostředky. Potom co porozumíte schématu sady Visual Studio může odkazovat si chyby ve vaší šabloně před jejím nasazením.
+   ![Vybrat šablonu virtuálního počítače](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
-![Průzkumník JSON][json_explorer]
+Po vytvoření projektu **Průzkumník řešení** obsahuje skript nasazení prostředí PowerShell, šablonu Azure Resource Manager a soubor parametrů pro sadu škálování virtuálního počítače.
 
-## <a name="deploy-the-project"></a>Nasazení projektu
-1. Nasazení šablony Azure Resource Manageru k vytvoření prostředku Škálovací sady virtuálních počítačů. Klikněte pravým tlačítkem na uzel projektu a zvolte **nasadit | Nové nasazení**.
-   
-    ![Nasazení šablony][5deploy_Template]
-    
-2. V dialogovém okně "Nasazení do skupiny prostředků" vyberte své předplatné.
-   
-    ![Nasazení šablony][6deploy_Template]
+## <a name="customize-your-project"></a>Přizpůsobení projektu
 
-3. Z tohoto místa můžete vytvořit skupinu prostředků Azure k nasazení šablony.
-   
-    ![Nová skupina prostředků][new_resource]
+Nyní můžete šablonu upravit, abyste ji mohli přizpůsobit potřebám vaší aplikace. Můžete přidat vlastnosti rozšíření virtuálního počítače nebo upravit pravidla vyrovnávání zatížení. Ve výchozím nastavení jsou šablony sady škálování virtuálních počítačů nakonfigurované pro nasazení rozšíření **AzureDiagnostics** , což usnadňuje přidávání pravidel automatického škálování. Šablony také nasazují Nástroj pro vyrovnávání zatížení s veřejnou IP adresou nakonfigurovanou s pravidly příchozího překladu adres (NAT).
 
-4. Klepnutím na tlačítko **upravit parametry** zadat parametry, které jsou předány do šablony. Zadejte uživatelské jméno a heslo pro operační systém, který je potřebný k vytvoření nasazení. Pokud nemáte k dispozici nástroje PowerShell Tools pro Visual Studio nainstalovali, se doporučuje zkontrolovat **ukládat hesla** k zamezení skryté příkazového řádku Powershellu nebo pomocí [keyvault podporu](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/).
-   
-    ![Upravit parametry][edit_parameters]
+Nástroj pro vyrovnávání zatížení umožňuje připojit se k instancím virtuálních počítačů pomocí SSH (Linux) nebo RDP (Windows). Rozsah portů front-endu začíná na 50000. Pro Linux se při vyrovnávání zatížení na portu 50000 vyrovnávání zatížení směruje na port 22 prvního virtuálního počítače v sadě škálování. Připojení k portu 50001 se směruje na port 22 druhého virtuálního počítače atd.
 
-5. Nyní klikejte na příkaz **nasadit**. **Výstup** okno zobrazuje průběh nasazení. Všimněte si, že akce se provádí **nasadit AzureResourceGroup.ps1** skriptu.
-   
-   ![Okno Výstup][output_window]
+ Dobrým způsobem, jak upravit šablony pomocí sady Visual Studio, je použít **osnovu JSON**. Můžete uspořádat parametry, proměnné a prostředky. Díky porozumění schématu může Visual Studio nahlásit chyby ve vaší šabloně ještě před tím, než je nasadíte.
 
-## <a name="exploring-your-virtual-machine-scale-set"></a>Zkoumání Škálovací sadu virtuálních počítačů
-Po dokončení nasazení můžete zobrazit novou Škálovací sadu virtuálních počítačů v sadě Visual Studio **Průzkumníka cloudu** (aktualizace seznamu). Průzkumník cloudu umožňuje spravovat prostředky Azure v sadě Visual Studio při vývoji aplikace. Můžete také zobrazit, vaše Škálovací sada virtuálních počítačů v [webu Azure portal](https://portal.azure.com) a [Azure Resource Exploreru](https://resources.azure.com/).
+![Průzkumník JSON](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
-![Průzkumník cloudu][cloud_explorer]
+## <a name="deploy-the-project"></a>Nasadit projekt
 
- Portál poskytuje nejlepší způsob, jak vizuálně spravovat infrastrukturu Azure s webovým prohlížečem, zatímco Azure Resource Exploreru poskytuje snadný způsob, jak zkoumat a ladit prostředky Azure, poskytuje okno do "zobrazení instance" a také zobrazuje příkazy prostředí PowerShell pro prostředky máte před sebou.
+Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálování virtuálního počítače:
 
-## <a name="next-steps"></a>Další postup
-Po úspěšném nasazení Škálovací sady virtuálních počítačů pomocí sady Visual Studio, můžete dále přizpůsobit váš projekt tak, aby vyhovoval vašim požadavkům aplikace. Třeba konfigurace automatického škálování tak, že přidáte **Insights** prostředků infrastruktury přidání do šablony (jako je samostatných virtuálních počítačů), nebo nasazování aplikací pomocí rozšíření vlastních skriptů. Dobrým příkladem šablony lze nalézt v [šablony pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates) úložiště GitHub (vyhledejte "vmss").
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **nasadit** > **nové**.
 
-[file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png
-[create_project]: ./media/virtual-machine-scale-sets-vs-create/2-CreateProject.png
-[select_Template]: ./media/virtual-machine-scale-sets-vs-create/3b-SelectTemplateLin.png
-[solution_explorer]: ./media/virtual-machine-scale-sets-vs-create/4-SolutionExplorer.png
-[json_explorer]: ./media/virtual-machine-scale-sets-vs-create/10-JsonExplorer.png
-[5deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/5-DeployTemplate.png
-[6deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/6-DeployTemplate.png
-[new_resource]: ./media/virtual-machine-scale-sets-vs-create/7-NewResourceGroup.png
-[edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
-[output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
-[cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
+    ![Nasazení projektu](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
+
+1. V možnosti **nasadit do skupiny prostředků**vyberte předplatné, které chcete použít, a vyberte skupinu prostředků. V případě potřeby můžete vytvořit skupinu prostředků.
+
+1. V dalším kroku vyberte **Upravit parametry** a zadejte parametry, které se předávají do šablony.
+
+   ![Zadejte předplatné a skupinu prostředků.](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
+
+1. Zadejte uživatelské jméno a heslo pro operační systém. Tyto hodnoty jsou nutné k vytvoření nasazení. Pokud nemáte nainstalované PowerShell Tools for Visual Studio, vyberte **Uložit hesla** , abyste se vyhnuli skrytému příkazovému řádku PowerShellu, nebo použijte [podporu Key Vault](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/). Pokračujte výběrem **Uložit** .
+
+    ![Upravit parametry nasazení](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
+
+1. V v **nasazení do skupiny prostředků**vyberte **nasadit**. Akce spustí skript **Deploy-AzureResourceGroup. ps1** . V okně **výstup** se zobrazí průběh nasazení.
+
+   ![Výstup zobrazuje výsledky](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
+
+## Prozkoumejte sadu škálování virtuálního počítače<a name="exploring-your-virtual-machine-scale-set"></a>
+
+Pokud chcete zobrazit novou sadu škálování virtuálního počítače, vyberte možnost **zobrazit** > **Cloud Explorer** . V případě potřeby použijte **Aktualizovat vše**.
+
+![Průzkumník cloudu](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
+
+**Průzkumník cloudu** umožňuje spravovat prostředky Azure v nástroji Visual Studio při vývoji aplikací. Můžete si také zobrazit sadu škálování virtuálního počítače v [Azure Portal](https://portal.azure.com) a [Azure Resource Explorer](https://resources.azure.com/).
+
+ Portál nabízí nejlepší způsob, jak spravovat infrastrukturu Azure pomocí webového prohlížeče. Azure Resource Explorer poskytuje snadný způsob, jak prozkoumat a ladit prostředky Azure. Azure Resource Explorer nabízí zobrazení instance a také zobrazí příkazy PowerShellu pro prostředky, na které se díváte.
+
+## <a name="next-steps"></a>Další kroky
+
+Po úspěšném nasazení Virtual Machine Scale Sets prostřednictvím sady Visual Studio můžete projekt dále přizpůsobit tak, aby vyhovoval vašim požadavkům vaší aplikace. Například můžete nakonfigurovat automatické škálování přidáním prostředku **Insights** . Do šablony můžete přidat infrastrukturu, jako jsou například samostatné virtuální počítače, nebo nasadit aplikace pomocí rozšíření vlastních skriptů. Dobré příklady šablon najdete v úložišti GitHub [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates) . Vyhledejte `vmss`.

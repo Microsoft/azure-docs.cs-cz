@@ -10,20 +10,20 @@ ms.topic: quickstart
 description: Nasazení mikroslužeb v AKS s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842518"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815826"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj aplikace v Kubernetes pomocí Azure Dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Rychlý Start: vývoj aplikace v Kubernetes pomocí Azure Dev Spaces
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
 - Vývoj a spouštění kódu v kontejnerech pomocí příkazového řádku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -39,7 +39,10 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
-`use-dev-spaces` Pomocí příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
+Pomocí příkazu `use-dev-spaces` povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
+
+> [!NOTE]
+> Příkaz `use-dev-spaces` nainstaluje také Azure Dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -74,17 +77,17 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 Aby bylo možné spustit aplikaci na Azure Dev Spaces, potřebujete graf souboru Dockerfile a Helm. Pro některé jazyky, jako jsou [Java][java-quickstart], [.NET Core][netcore-quickstart]a [Node. js][nodejs-quickstart], můžou Azure dev Spaces nástroje klienta vygenerovat všechny potřebné prostředky. Pro mnoho dalších jazyků, jako je například jít, PHP nebo Python, mohou nástroje klienta generovat graf Helm, pokud můžete zadat platné souboru Dockerfile.
 
-Vygenerujte prostředky Docker a Helm Chart pro spuštění aplikace v Kubernetes pomocí `azds prep` příkazu:
+Vygenerujte prostředky Docker a Helm Chart pro spuštění aplikace v Kubernetes pomocí příkazu `azds prep`:
 
 ```cmd
 azds prep --public
 ```
 
-Aby bylo možné správně `prep` vygenerovat prostředky Docker a Helm, musíte spustit příkaz z adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webendu* .
+Aby bylo možné správně vygenerovat prostředky Docker a Helm Chart, je nutné spustit příkaz `prep` z adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webfront-Endu* .
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 
-Sestavte a spusťte kód v AKS pomocí `azds up` příkazu:
+Sestavte a spusťte kód v AKS pomocí příkazu `azds up`:
 
 ```cmd
 $ azds up
@@ -108,26 +111,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která se zobrazí ve výstupu `azds up` příkazu. V tomto příkladu je *http://webfrontend.1234567890abcdef1234.eus.azds.io/* veřejná adresa URL.
+Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která se zobrazí ve výstupu příkazu `azds up`. V tomto příkladu je veřejná adresa URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 > [!NOTE]
-> Když při spuštění `azds up`přejdete ke službě, ve výstupu `azds up` příkazu se zobrazí také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` aplikace při spuštění. `azds up`
+> Když při spuštění `azds up` přejdete do vaší služby, zobrazí se ve výstupu příkazu `azds up` také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` při spuštění `azds up`.
 
-Pokud `azds up` příkaz zastavíte stisknutím *kombinace kláves Ctrl + c*, služba bude nadále běžet v AKS a veřejná adresa URL zůstane dostupná.
+Pokud ukončíte příkaz `azds up` pomocí *kombinace kláves Ctrl + c*, služba bude nadále běžet v AKS a veřejná adresa URL zůstane k dispozici.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit `azds up` příkaz. Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Například:
 
-1. Pokud `azds up` je pořád spuštěný, stiskněte klávesy *Ctrl + c*.
-1. Aktualizujte [řádek 13 `server.js` v](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
+1. Pokud je stále spuštěná `azds up`, stiskněte klávesy *Ctrl + c*.
+1. Aktualizujte [řádek 13 v `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Uložte provedené změny.
-1. Znovu spusťte `azds up` příkaz:
+1. Znovu spusťte příkaz `azds up`:
 
     ```cmd
     $ azds up
@@ -139,7 +142,7 @@ Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný
     ```
 
 1. Přejděte do spuštěné služby a sledujte své změny.
-1. Stisknutím *kombinace kláves Ctrl + c* zastavte `azds up` příkaz.
+1. Stisknutím *kombinace kláves Ctrl + c* zastavte příkaz `azds up`.
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 
@@ -147,7 +150,7 @@ Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 

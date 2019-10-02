@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129712"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720113"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravného prostředí v Azure App Service
 <a name="Overview"></a>
@@ -90,7 +90,7 @@ Když provedete prohozením dvou slotů (obvykle z přípravného slotu do produ
 
 1. Pokud je [Automatické prohození](#Auto-Swap) povoleno s [vlastním zahříváním](#Warm-up), spusťte spuštění [aplikace](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) spuštěním požadavku HTTP do kořenového adresáře aplikace ("/") v každé instanci zdrojové patice.
 
-    Pokud `applicationInitialization` není zadaný, spusťte požadavek HTTP do kořenového adresáře aplikace zdrojové patice každé instance. 
+    Pokud není zadaný parametr `applicationInitialization`, aktivujte v každé instanci požadavek HTTP do kořenového adresáře aplikace zdrojové patice. 
     
     Pokud instance vrátí odpověď HTTP, je považována za zahřívání.
 
@@ -140,9 +140,6 @@ Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zah
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Prohodit ve verzi Preview (vícenásobné swapy)
 
-> [!NOTE]
-> Ve službě Web Apps v systému Linux není podporováno prohození s náhledem.
-
 Před přepnutím do produkčního prostředí jako cílového slotu ověřte, že aplikace běží s vyměněným nastavením. Zdrojové sloty se také zahřeje před dokončením swapu, což je žádoucí pro klíčové aplikace.
 
 Když provedete prohození s náhledem, App Service provede stejnou [operaci přepnutí](#AboutConfiguration) , ale po prvním kroku se pozastaví. Před dokončením prohození pak můžete ověřit výsledek na přípravném slotu. 
@@ -151,7 +148,7 @@ Pokud zrušíte prohození, App Service znovu aplikuje prvky konfigurace na zdro
 
 Pro prohození s náhledem:
 
-1. postupujte podle kroků v části prohození [slotů nasazení](#Swap) , ale vyberte **provést prohození s náhledem**.
+1. Postupujte podle kroků v části [prohození slotů nasazení](#Swap) , ale vyberte **provést prohození s náhledem**.
 
     ![Prohodit s náhledem](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
@@ -159,7 +156,7 @@ Pro prohození s náhledem:
 
 2. Až budete připraveni zahájit prohození, vyberte možnost **Spustit prohození**.
 
-    Po dokončení fáze 1 se zobrazí upozornění v dialogovém okně. Zobrazte náhled swapu ve zdrojovém slotu tak `https://<app_name>-<source-slot-name>.azurewebsites.net`, že na. 
+    Po dokončení fáze 1 se zobrazí upozornění v dialogovém okně. Zobrazte náhled swapu ve zdrojovém slotu přechodem na `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
 3. Až budete připraveni dokončit vyřazení, vyberte **Dokončit prohození** v **akci prohození** a vyberte **Dokončit prohození**.
 
@@ -191,7 +188,7 @@ Automatické prohození zjednodušuje scénáře Azure DevOps, ve kterých chcet
 
 Konfigurace automatického prohození:
 
-1. Přejít na stránku prostředků vaší aplikace. Vyberte **nasazovací sloty** >  >  > požadovaný zdrojovou patici > Konfigurace Obecné nastavení. *\<*
+1. Přejít na stránku prostředků vaší aplikace. Vyberte **nasazovací sloty** >  *\<desired source slot >*  > **Konfigurace** > **Obecné nastavení**.
    
 2. Pro **Automatické prohození**vyberte **zapnuto**. Pak vyberte požadovanou cílovou patici pro **slot nasazení automatického prohození**a na panelu příkazů vyberte **Uložit** . 
    
@@ -204,7 +201,8 @@ Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zah
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Zadat vlastní zahřívání
-Pokud používáte [Automatické prohození](#Auto-Swap), některé aplikace můžou před zahozením vyžadovat vlastní akce. `applicationInitialization` Konfigurační prvek v souboru Web. config umožňuje určit vlastní inicializační akce. [Operace prohození](#AboutConfiguration) počká na dokončení tohoto vlastního zahřívání a teprve potom bude prohozena s cílovou paticí. Zde je ukázkový fragment souboru Web. config.
+
+Některé aplikace mohou před zahozením vyžadovat vlastní akce. Konfigurační prvek `applicationInitialization` v souboru Web. config umožňuje zadat vlastní inicializační akce. [Operace prohození](#AboutConfiguration) počká na dokončení tohoto vlastního zahřívání a teprve potom bude prohozena s cílovou paticí. Zde je ukázkový fragment souboru Web. config.
 
     <system.webServer>
         <applicationInitialization>
@@ -213,15 +211,15 @@ Pokud používáte [Automatické prohození](#Auto-Swap), některé aplikace mů
         </applicationInitialization>
     </system.webServer>
 
-Další informace o přizpůsobení `applicationInitialization` prvku najdete v části Nejčastější [selhání přepnutí slotu nasazení a jejich](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)řešení.
+Další informace o přizpůsobení prvku `applicationInitialization` najdete v části Nejčastější [chyby při zahození slotu nasazení a](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)jejich řešení.
 
 Můžete také přizpůsobit chování zahřívání pomocí jednoho nebo obou následujících [nastavení aplikace](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k nástroji test pro zahřívání webu. Toto nastavení aplikace přidejte zadáním vlastní cesty, která začíná lomítkem jako hodnotou. Příklad: `/statuscheck`. Výchozí hodnota je `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platné kódy odpovědí HTTP pro operaci zahřívání. Přidejte toto nastavení aplikace s čárkami odděleným seznamem kódů HTTP. Příklad je `200,202` . Pokud vrácený stavový kód není v seznamu, operace zahřívání a swap se zastaví. Ve výchozím nastavení jsou všechny kódy odpovědí platné.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: cesta k nástroji příkazového testu pro zahřívání webu. Toto nastavení aplikace přidejte zadáním vlastní cesty, která začíná lomítkem jako hodnotou. Příklad: `/statuscheck`. Výchozí hodnota je `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: platné kódy odpovědí HTTP pro operaci zahřívání. Přidejte toto nastavení aplikace s čárkami odděleným seznamem kódů HTTP. Příklad je `200,202`. Pokud vrácený stavový kód není v seznamu, operace zahřívání a swap se zastaví. Ve výchozím nastavení jsou všechny kódy odpovědí platné.
 
 > [!NOTE]
-> `<applicationInitialization>`je součástí každé spuštění aplikace, kde se tato dvě nastavení aplikace vztahují jenom na zahození slotu.
+> @no__t – 0 je součástí spuštění každé aplikace, kde se tato dvě nastavení aplikace vztahují jenom na zahození slotu.
 
 Pokud máte nějaké problémy, přečtěte si téma [řešení potíží se zahozením](#troubleshoot-swaps).
 
@@ -231,11 +229,11 @@ Pokud se [operace prohození](#AboutConfiguration) trvá příliš dlouho, můž
 
 Na stránce prostředků vaší aplikace na portálu v levém podokně vyberte **Protokol aktivit**.
 
-Operace swap se v dotazu protokolu zobrazí jako `Swap Web App Slots`. Můžete ho rozbalit a vybrat jednu z dílčích operací nebo chyb a zobrazit podrobnosti.
+Operace prohození se zobrazí v dotazu protokolu jako `Swap Web App Slots`. Můžete ho rozbalit a vybrat jednu z dílčích operací nebo chyb a zobrazit podrobnosti.
 
 ## <a name="route-traffic"></a>Směrování provozu
 
-Ve výchozím nastavení se všechny požadavky klientů na produkční adresu URL (`http://<app_name>.azurewebsites.net`) aplikace směrují do produkčního slotu. Část provozu můžete směrovat do jiné patice. Tato funkce je užitečná v případě, že potřebujete zpětnou vazbu od uživatele k nové aktualizaci, ale nejste připraveni ho uvolnit do produkčního prostředí.
+Ve výchozím nastavení jsou všechny požadavky klientů na produkční adresu URL aplikace (`http://<app_name>.azurewebsites.net`) směrovány do produkčního slotu. Část provozu můžete směrovat do jiné patice. Tato funkce je užitečná v případě, že potřebujete zpětnou vazbu od uživatele k nové aktualizaci, ale nejste připraveni ho uvolnit do produkčního prostředí.
 
 ### <a name="route-production-traffic-automatically"></a>Směrovat provozní provoz automaticky
 
@@ -243,17 +241,17 @@ Postup automatického směrování provozních přenosů:
 
 1. Přejít na stránku prostředků vaší aplikace a vyberte **sloty nasazení**.
 
-2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Uložit**.
+2. Ve sloupci **provoz%** slotu, na který chcete směrovat, zadejte procento (mezi 0 a 100), které bude představovat objem celkového provozu, který chcete směrovat. Vyberte **Save** (Uložit).
 
     ![Nastavení procenta provozu](./media/web-sites-staged-publishing/RouteTraffic.png)
 
 Po uložení nastavení se zadané procento klientů náhodně směruje do neprodukčního slotu. 
 
-Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V klientském prohlížeči uvidíte, ke kterému slotu je vaše relace připnuté, a prohlédněte `x-ms-routing-name` si soubor cookie v hlavičkách protokolu HTTP. Požadavek, který je směrován do "přípravného" slotu, má `x-ms-routing-name=staging`soubor cookie. Požadavek, který je směrován do produkčního slotu, má `x-ms-routing-name=self`soubor cookie.
+Po automatickém směrování klienta na konkrétní slot je tento slot "připnuté" do této patice po celou dobu trvání této klientské relace. V prohlížeči klienta vidíte, na které pozici je vaše relace připnuté, a Prohlédněte si soubor cookie `x-ms-routing-name` v hlavičkách protokolu HTTP. Požadavek, který je směrován do "přípravného" slotu, má soubor cookie `x-ms-routing-name=staging`. Požadavek, který je směrován do produkčního slotu, má soubor cookie `x-ms-routing-name=self`.
 
 ### <a name="route-production-traffic-manually"></a>Ruční směrování provozní provozu
 
-Kromě automatického směrování provozu můžou App Service směrovat požadavky do konkrétního slotu. To je užitečné, když chcete, aby se vaši uživatelé mohli vyjádřit nebo odhlásit z vaší beta aplikace. Chcete-li směrovat provozní provoz ručně, použijte `x-ms-routing-name` parametr dotazu.
+Kromě automatického směrování provozu můžou App Service směrovat požadavky do konkrétního slotu. To je užitečné, když chcete, aby se vaši uživatelé mohli vyjádřit nebo odhlásit z vaší beta aplikace. Chcete-li směrovat provozní provoz ručně, použijte parametr dotazu `x-ms-routing-name`.
 
 Pokud chcete uživatelům umožnit, aby si z aplikace nahlásili svůj souhlas, můžete tento odkaz umístit na svou webovou stránku:
 
@@ -261,7 +259,7 @@ Pokud chcete uživatelům umožnit, aby si z aplikace nahlásili svůj souhlas, 
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-Řetězec `x-ms-routing-name=self` určuje produkční slot. Po přístupu klientského prohlížeče k odkazu se přesměruje na produkční slot. Každý další požadavek obsahuje `x-ms-routing-name=self` soubor cookie, který zakládá relaci do produkčního slotu.
+Řetězec `x-ms-routing-name=self` určuje výrobní slot. Po přístupu klientského prohlížeče k odkazu se přesměruje na produkční slot. Každý další požadavek obsahuje soubor cookie `x-ms-routing-name=self`, který zakládá relaci do produkčního slotu.
 
 Pokud chcete uživatelům umožnit, aby se do aplikace beta přihlášeni, nastavte stejný parametr dotazu na název neprodukčního slotu. Tady je příklad:
 
@@ -269,13 +267,13 @@ Pokud chcete uživatelům umožnit, aby se do aplikace beta přihlášeni, nasta
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Ve výchozím nastavení mají nové sloty pravidlo `0%`směrování, zobrazené v šedé. Když explicitně nastavíte tuto hodnotu na `0%` (zobrazený černý text), můžou uživatelé přistupovat k pracovnímu slotu ručně `x-ms-routing-name` pomocí parametru dotazu. Nebudou ale směrovány do slotu automaticky, protože procento směrování je nastaveno na 0. Toto je pokročilý scénář, ve kterém můžete "svůj pracovní slot" Skrýt z veřejného a zároveň umožnit interním týmům testování změn na slotu.
+Ve výchozím nastavení mají nové sloty pravidlo směrování `0%`, zobrazené šedě. Když explicitně nastavíte tuto hodnotu na `0%` (zobrazenou v černém textu), uživatelé budou mít přístup k pracovnímu slotu ručně pomocí parametru dotazu `x-ms-routing-name`. Nebudou ale směrovány do slotu automaticky, protože procento směrování je nastaveno na 0. Toto je pokročilý scénář, ve kterém můžete "svůj pracovní slot" Skrýt z veřejného a zároveň umožnit interním týmům testování změn na slotu.
 
 <a name="Delete"></a>
 
 ## <a name="delete-a-slot"></a>Odstranění slotu
 
-Přejít na stránku prostředků vaší aplikace. Vyberte >  > *slot pro nasazení a odstraňte > Přehled.\<* Na panelu příkazů vyberte **Odstranit** .  
+Přejít na stránku prostředků vaší aplikace. Vyberte **sloty nasazení** >  *\<slot k odstranění >*  > **Přehled**. Na panelu příkazů vyberte **Odstranit** .  
 
 ![Odstranění slotu nasazení](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -292,7 +290,7 @@ Azure PowerShell je modul, který poskytuje rutiny pro správu Azure prostředni
 Informace o instalaci a konfiguraci Azure PowerShell a o ověřování Azure PowerShell pomocí předplatného Azure najdete v tématu [Jak nainstalovat a nakonfigurovat Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
@@ -317,7 +315,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Prohodit sloty nasazení
+### <a name="swap-deployment-slots"></a>Prohození slotů nasazení
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>Automatizace pomocí šablon ARM
+
+[Šablony ARM](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) jsou DEKLARATIVNÍ soubory JSON, které slouží k automatizaci nasazení a konfigurace prostředků Azure. Chcete-li vyměnit sloty pomocí šablon ARM, nastavte dvě vlastnosti v prostředcích *Microsoft. Web/Web/sloty* a *Microsoft. Web/Sites* :
+
+- `buildVersion`: Jedná se o řetězcovou vlastnost, která představuje aktuální verzi aplikace nasazené ve slotu. Například: "v1", "1.0.0.1" nebo "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: Jedná se o řetězcovou vlastnost, která určuje, co má `buildVersion` slot. Pokud se targetBuildVersion nerovná aktuálnímu `buildVersion`, aktivuje se operace přepnutí tím, že najde slot, který má zadanou `buildVersion`.
+
+### <a name="example-arm-template"></a>Příklad šablony ARM
+
+Následující šablona ARM aktualizuje `buildVersion` přípravného slotu a nastaví `targetBuildVersion` na produkčním slotu. Tím se tyto dva sloty zahodí. Šablona předpokládá, že už máte vytvořenou WebApp s slotem s názvem "fázování".
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Tato šablona ARM je idempotentní, což znamená, že je možné ji provést opakovaně a získat stejný stav slotů. Po prvním spuštění bude `targetBuildVersion` odpovídat aktuálnímu `buildVersion`, takže prohození nebude aktivováno.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
@@ -370,9 +422,9 @@ Zde jsou některé běžné chyby swapu:
       ...
     </conditions>
     ```
-- Některá [pravidla omezení IP adres](app-service-ip-restrictions.md) můžou zabránit operaci přepnutí z odesílání požadavků HTTP do vaší aplikace. Rozsahy IPv4 adres, které `10.` začínají `100.` na a jsou interní pro vaše nasazení. Měli byste jim dovolit, aby se připojili k vaší aplikaci.
+- Některá [pravidla omezení IP adres](app-service-ip-restrictions.md) můžou zabránit operaci přepnutí z odesílání požadavků HTTP do vaší aplikace. Rozsahy IPv4 adres, které začínají na `10.` a `100.`, jsou interní pro vaše nasazení. Měli byste jim dovolit, aby se připojili k vaší aplikaci.
 
-- Po prohození slotu může aplikace zaznamenat neočekávané restartování. Důvodem je to, že po prohození není konfigurace vazeb názvů hostitelů synchronizovaná, což sám o sobě nezpůsobí restart. Některé zdrojové události úložiště (například převzetí služeb při selhání svazku úložiště) ale můžou detekovat rozdíly a vynutit restartování všech pracovních procesů. K minimalizaci těchto typů restartování nastavte [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` nastavení aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *všech slotech*. Toto nastavení *aplikace ale nefunguje s* aplikacemi Windows Communication Foundation (WCF).
+- Po prohození slotu může aplikace zaznamenat neočekávané restartování. Důvodem je to, že po prohození není konfigurace vazeb názvů hostitelů synchronizovaná, což sám o sobě nezpůsobí restart. Některé zdrojové události úložiště (například převzetí služeb při selhání svazku úložiště) ale můžou detekovat rozdíly a vynutit restartování všech pracovních procesů. Pro minimalizaci těchto typů restartování nastavte [nastavení aplikace `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *všech slotech*. Toto nastavení *aplikace ale nefunguje s* aplikacemi Windows Communication Foundation (WCF).
 
 ## <a name="next-steps"></a>Další kroky
 [Blokovat přístup k neprodukčním slotům](app-service-ip-restrictions.md)

@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304697"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718912"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
-Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí dotazovacího [jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
+Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
 
 Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Azure Monitor, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
 
-## <a name="events"></a>Duration
+## <a name="events"></a>Akce
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Prohledat události na úrovni aplikace popsané jako "kryptografické"
-Tento příklad prohledá tabulku **události** a bude hledat záznamy, ve kterých **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy za posledních 24 hodin.
+Tento příklad vyhledá v tabulce **událostí** záznamy, ve kterých je protokol **událostí** _aplikace_ a **RenderedDescription** obsahuje _kryptografii_. Obsahuje záznamy za posledních 24 hodin.
 
 ```Kusto
 Event
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Hledat události související s zařazováním
-**Události** a **SecurityEvents** vyhledávacích tabulek pro záznamy, které zmiňují zařazování.
+**Události** a **SecurityEvents** vyhledávacích tabulek pro záznamy, které zmiňují _zařazování_.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -79,7 +79,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Vyhledání chráněných záznamů o stavu pomocí záznamů prezenčního signálu
 
 Tento příklad najde související záznamy stavu ochrany a záznamy prezenčního signálu, které odpovídají v počítači i v čase.
-Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu `round_time=bin(TimeGenerated, 1m)`, aby:.
+Všimněte si, že pole čas se zaokrouhluje na nejbližší minutu. Použili jsme výpočet běhového přihrádky k tomu, že: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Stav ochrany
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Počítače s dobou trvání stavu ochrany bez sestav
-Tento příklad zobrazí seznam počítačů, které měly stav ochrany _Not Reporting_ a doby, po které byly v tomto stavu.
+Tento příklad obsahuje seznam počítačů, které mají stav ochrany _bez sestav_ , a dobu, po kterou byly v tomto stavu.
 
 ```Kusto
 ProtectionStatus
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Počet událostí zabezpečení podle ID aktivity
 
 
-Tento příklad spoléhá na pevnou strukturu sloupce **aktivita** : \<Název\>-ID\<.\>
+Tento příklad spoléhá na pevnou strukturu sloupce **Activity** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5.
 Analyzuje hodnotu **aktivity** na dva nové sloupce a spočítá výskyt jednotlivých **ActivityId**.
 
 ```Kusto
@@ -249,7 +249,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Spočítat události zabezpečení související s oprávněními
-Tento příklad ukazuje počet záznamů **securityEvent**, ve kterých sloupec **Activity** sloupec obsahuje celé období _Permissions_. Dotaz se vztahuje na záznamy vytvořené za posledních 30 minut.
+Tento příklad ukazuje počet záznamů **securityEvent** , ve kterých sloupec **Activity** obsahuje veškerá _oprávnění_. Dotaz se vztahuje na záznamy vytvořené za posledních 30 minut.
 
 ```Kusto
 SecurityEvent
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Název a ID aktivity analýzy
-Následující dva příklady jsou závislé na pevné struktuře sloupce **aktivita** : \<Název\>-ID\<.\> První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
+Následující dva příklady jsou závislé na pevné struktuře sloupce **Activity** : \<ID @ no__t-2 @ no__t-3 @ No__t-4Name @ no__t-5. První příklad používá operátor **Parse** k přiřazení hodnot dvěma novým sloupcům: **ActivityId** a **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -381,7 +381,7 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>Použití
+## <a name="usage"></a>Využití
 
 ### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>Vypočítat průměrnou velikost sestav využití výkonu na počítač
 
@@ -425,19 +425,18 @@ V tomto příkladu se zobrazí seznam počítačů, ve kterých chybí jedna neb
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobnosti o jazyku najdete v referenčních informacích k [jazyku Kusto](/azure/kusto/query) .
 - Projděte si [lekci o zápisu dotazů protokolu v Azure monitor](get-started-queries.md).

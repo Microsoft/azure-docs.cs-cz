@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702810"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802115"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -112,10 +112,7 @@ Postupujte podle těchto kroků, zaregistrujte aplikaci, udělte jí požadovan�
 
 ### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
 
-1. V části **přístup k rozhraní API**vyberte **klíče**.
-1. Do pole **Popis klíče** zadejte popis klíče. Například *klíč protokolu auditu*.
-1. Vyberte **dobu**platnosti a pak vyberte **Uložit**.
-1. Poznamenejte si **hodnotu**klíče. Tuto hodnotu budete potřebovat pro ověřování ve skriptech služby Automation, jako je například ukázkový skript PowerShellu, který je zobrazený v pozdější části.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Nyní máte aplikaci s požadovaným přístupem k rozhraní API, ID aplikace a klíč, který můžete použít ve svých skriptech automatizace. Příklad toho, jak můžete získat události aktivity pomocí skriptu, najdete v části PowerShellový skript níže v tomto článku.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067040"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812213"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -29,9 +29,9 @@ Testy dostupnosti můžete nastavit pro libovolný koncový bod HTTP nebo HTTPS,
 
 Existují tři typy testů dostupnosti:
 
-* [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure.
-* [Webový test s více kroky](availability-multistep.md): Záznam posloupnosti webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
-* [Testy dostupnosti vlastních stop](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): `TrackAvailability()` Metodu lze použít k vytvoření vlastních testů dostupnosti.
+* [Testování ping adresy URL](#create-a-url-ping-test): jednoduchý test, který můžete vytvořit na portálu Azure Portal.
+* [Webový test s více kroky](availability-multistep.md): záznam sekvence webových požadavků, které je možné přehrát zpětně testovat složitější scénáře. Webové testy s více kroky jsou vytvořeny v Visual Studio Enterprise a nahrány na portál pro provádění.
+* [Testy dostupnosti vlastních stop](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Pokud se rozhodnete vytvořit vlastní aplikaci pro spuštění testů dostupnosti, můžete použít metodu `TrackAvailability()` k odeslání výsledků do Application Insights.
 
 **Pro každý prostředek Application Insights můžete vytvořit testy dostupnosti až 100.**
 
@@ -64,7 +64,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 > [!NOTE]
 > Důrazně doporučujeme testování z více umístění s **minimálně pěti umístěními**. K tomu je potřeba zabránit falešným poplachům, které mohou být způsobeny přechodnými problémy s konkrétním umístěním. Kromě toho jsme zjistili, že optimální konfigurace má mít **počet testovacích umístění stejný jako prahová hodnota umístění výstrahy + 2**.
 
-### <a name="success-criteria"></a>Kritéria pro úspěch
+### <a name="success-criteria"></a>Kritéria úspěchu
 
 |Nastavení| Vysvětlení
 |----|----|----|
@@ -72,13 +72,13 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 | **Odpověď HTTP** | Vrácený stavový kód, který se počítá jako úspěch. 200 je kód, který označuje, že byla vrácena normální webová stránka.|
 | **Shoda obsahu** | Řetězec, například "Welcome!" U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat. **U shody obsahu se podporují jenom anglické znaky.** |
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
 |**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota** = pro umístění upozornění v umístění**testovacích umístění – 2, minimálně pět umístění testu.**|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy** = **počet umístění testu – 2, minimálně pět umístění testu.**|
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 
@@ -123,8 +123,8 @@ Kliknutím na řádek výjimky zobrazíte podrobnosti o výjimce na straně serv
 
 Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metriky dostupnosti v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started):
 
-1. Dostupnosti Procento testů, které byly úspěšné, ve všech provedeních testu.
-2. Doba trvání testu: Průměrná doba trvání testu napříč všemi spuštěními testů.
+1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu.
+2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
 
 ## <a name="automation"></a>Automation
 
@@ -135,7 +135,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Výstrahy dostupnosti](availability-alerts.md)
 * [Webové testy s více kroky](availability-multistep.md)

@@ -5,32 +5,35 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/01/2019
 ms.author: helohr
-ms.openlocfilehash: 1a88cfb2fcd5f0b607e7a2b43ae833789a584e34
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 8352858b9fd6059257b5ba7637822f85c56eb070
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695308"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802615"
 ---
 # <a name="bandwidth-recommendations-for-remote-sessions"></a>Doporučení šířky pásma pro vzdálené relace
 
-Při použití vzdálené relace Windows má dostupná šířka pásma vaší sítě výrazně dopad na kvalitu prostředí. Různé aplikace a rozlišení zobrazení vyžadují různé konfigurace sítě, proto je důležité zajistit, aby vaše síť byla nakonfigurovaná tak, aby vyhovovala vašim potřebám. Tento článek popisuje doporučené šířky pásma pro jednotlivé úlohy.
+Při použití vzdálené relace Windows má dostupná šířka pásma vaší sítě výrazně dopad na kvalitu prostředí. Různé aplikace a rozlišení zobrazení vyžadují různé konfigurace sítě, proto je důležité zajistit, aby vaše síť byla nakonfigurovaná tak, aby vyhovovala vašim potřebám.
 
 >[!NOTE]
 >Následující doporučení platí pro sítě s méně než 0,1% ztrátou.
 
 ## <a name="applications"></a>Aplikace
 
-V následující tabulce jsou uvedeny minimální požadavky pro hladké uživatelské prostředí. 
+V následující tabulce jsou uvedeny minimální Doporučené šířky pásma pro hladké uživatelské prostředí. 
 
 |Úloha        |Ukázkové aplikace                                                                                           |Doporučená šířka pásma|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Pracovníci zpracovávající úkoly     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5 @ no__t – 0Mbps             |
-|Pracovní proces Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3 @ no__t – 0Mbps               |
-|Pracovní proces znalostí|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5 @ no__t – 0Mbps               |
-|Power Worker    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/VAČKa, ilustrace/publikování|15 @ no__t – 0Mbps              |
+|Pracovníci zpracovávající úkoly     |Microsoft Word, Outlook, Excel, Adobe Reader                                                                  |1,5 @ no__t – 0Mbps        |
+|Pracovní proces Office   |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer                                        |3 @ no__t – 0Mbps          |
+|Pracovní proces znalostí|Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java                                  |5 @ no__t – 0Mbps          |
+|Power Worker    |Microsoft Word, Outlook, Excel, Adobe Reader, PowerPoint, Photo Viewer, Java, CAD/VAČKa, ilustrace/publikování|15 @ no__t – 0Mbps         |
+
+>[!NOTE]
+>Tato doporučení platí bez ohledu na to, kolik uživatelů se v relaci nachází.
 
 Mějte na paměti, že zátěže, která je umístěna v síti, závisí na četnosti výstupních snímků úloh aplikace a na rozlišení obrazovky. Pokud se zvýší kmitočet snímků nebo rozlišení obrazovky, bude potřeba taky vyvolávat požadavek na šířku pásma. Například světlá úloha s vysokým rozlišením vyžaduje více dostupné šířky pásma než lehké úlohy s pravidelným nebo nízkým rozlišením.
 
@@ -44,7 +47,7 @@ Nezapomeňte načíst testy těchto scénářů v nasazení pomocí nástrojů s
 
 ## <a name="display-resolutions"></a>Rozlišení zobrazení
 
-Různá rozlišení zobrazení vyžadují různé dostupné šířky pásma. V následující tabulce jsou uvedeny šířky pásma, které doporučujeme pro hladké uživatelské prostředí při typických rozlišeních obrazovky a snímková frekvence 30 snímků za sekundu (FPS). Pamatujte na to, že scénáře zahrnující kmitočet snímků za 30 fps, jako je například čtení statického textu, vyžadují menší dostupnou šířku pásma. 
+Různá rozlišení zobrazení vyžadují různé dostupné šířky pásma. V následující tabulce jsou uvedeny šířky pásma, které doporučujeme pro hladké uživatelské prostředí při typických rozlišeních obrazovky a snímková frekvence 30 snímků za sekundu (FPS). Tato doporučení platí pro scénáře s jedním a více uživateli. Pamatujte na to, že scénáře zahrnující kmitočet snímků za 30 fps, jako je například čtení statického textu, vyžadují menší dostupnou šířku pásma. 
 
 |Typická rozlišení zobrazení při 30 fps    |Doporučená šířka pásma|
 |-----------------------------------------|---------------------|
@@ -52,3 +55,10 @@ Různá rozlišení zobrazení vyžadují různé dostupné šířky pásma. V n
 |Přibližně 1280 × 720 px                      |3 MB/s               |
 |Přibližně 1920 × 1080 px                     |5 MB/s               |
 |Přibližně 3840 × 2160 px (4K)                |15 MB/s              |
+
+>[!NOTE]
+>Tato doporučení platí bez ohledu na to, kolik uživatelů se v relaci nachází.
+
+## <a name="additional-resources"></a>Další zdroje informací:
+
+Oblast Azure, ve které se nacházíte, může ovlivnit uživatelské prostředí, a to až do stavu sítě. Další informace najdete v části [prostředí pro virtuální počítače s Windows Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/) .

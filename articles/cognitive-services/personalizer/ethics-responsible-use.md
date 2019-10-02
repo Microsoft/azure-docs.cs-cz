@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662790"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720235"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro odpovědnou implementaci přizpůsobeného přizpůsobování
 
@@ -25,7 +25,7 @@ Tyto pokyny nejsou určené jako právní rady a měli byste samostatně zajisti
 
 V návrhu aplikace pomocí přizpůsobení byste také měli vzít v úvahu širokou škálu odpovědností, které máte při vývoji jakéhokoli systému souborů AI zaměřeného na data, včetně etiky, ochrany osobních údajů, zabezpečení, bezpečnosti, zahrnutí, transparentnosti a zodpovědnosti. Další informace o těchto možnostech najdete v části [Doporučené čtení](#recommended-reading) .
 
-Následující obsah můžete použít jako kontrolní seznam Starter a přizpůsobit ho a Upřesnit ve svém scénáři. Tento dokument má dvě hlavní části: První je vyhrazená pro zdůraznění zodpovědnosti za použití při výběru scénářů, funkcí a odměny pro přizpůsobování. Druhý při sestavování systémů AI by měl brát v úvahu sadu hodnot, které Microsoft považuje za vhodné a poskytuje užitečné návrhy a rizika týkající se toho, jak se jejich používání dá přizpůsobit. 
+Následující obsah můžete použít jako kontrolní seznam Starter a přizpůsobit ho a Upřesnit ve svém scénáři. Tento dokument má dvě hlavní části: první je vyhrazený pro zdůraznění zodpovědnosti za použití při výběru scénářů, funkcí a odměny pro přizpůsobování. Druhý při sestavování systémů AI by měl brát v úvahu sadu hodnot, které Microsoft považuje za vhodné a poskytuje užitečné návrhy a rizika týkající se toho, jak se jejich používání dá přizpůsobit. 
 
 
 ## <a name="your-responsibility"></a>Vaše zodpovědnost
@@ -50,20 +50,21 @@ Implementací přizpůsobené aplikace může být pro uživatele i vaše podnik
 
 Používání služby, která se učí přizpůsobení obsahu a uživatelských rozhraní, je užitečné. Může být také nepoužit, pokud způsob přizpůsobení vytvoří negativní vedlejší účinky v reálném světě, včetně toho, pokud uživatelé nevědí o přizpůsobení obsahu. 
 
-Příklady použití přizpůsobeného přizpůsobeného doplňku s vyšším možným dopadem na negativní vedlejší účinky nebo nedostatek transparentnosti jsou scénáře, kdy "odměňování" závisí na mnoha dlouhodobých složitých faktorech, které mohou být při převzetí služeb při selhání na okamžitou odměnu v nepříznivou. Výsledky pro jednotlivce Ty se obvykle považují za "následné" možnosti nebo volby, které zahrnují riziko poškození. Příklad: 
+Příklady použití přizpůsobeného přizpůsobeného doplňku s vyšším možným dopadem na negativní vedlejší účinky nebo nedostatek transparentnosti jsou scénáře, kdy "odměňování" závisí na mnoha dlouhodobých složitých faktorech, které mohou být při převzetí služeb při selhání na okamžitou odměnu v nepříznivou. Výsledky pro jednotlivce Ty se obvykle považují za "následné" možnosti nebo volby, které zahrnují riziko poškození. Například: 
 
 
-* **Finance**: Přizpůsobení nabídek pro úvěrové, finanční a pojišťovací produkty, kde jsou rizikové faktory založené na datech, o kterých jednotliví uživatelé neznají, nemůžou získat ani nesporit. 
-* **Vzdělávání**: Přizpůsobení pořadí pro školní kurzy a vzdělávací instituce, kde doporučení můžou šířit bias a snižovat povědomí uživatelů o dalších možnostech.
-* **Demokracie a Civicá účast**: Přizpůsobení obsahu pro uživatele s cílem vzájemných stanovisek je následné a manipulace.
-* **Vyhodnocení záměna třetí strany**: Přizpůsobením položek, kde je tato odměna založena na vyzkoušení uživatele třetí strany, místo toho, aby se vygenerovalo vlastní chování uživatele.
-* **Netolerance pro zkoumání**: Případná situace, kdy chování přizpůsobení může způsobit poškození.
+* **Finance**: individuální nastavení nabízí úvěrové, finanční a pojišťovací produkty, kde jsou rizikové faktory založené na datech, o kterých jednotliví uživatelé neznají, nemůžou získat ani nesporit. 
+* **Vzdělávání**: přizpůsobení pořadí pro školní kurzy a vzdělávací instituce, kde doporučení můžou šířit bias a snižovat povědomí uživatelů o dalších možnostech.
+* **Demokracie a Civic zapojení**: přizpůsobení obsahu pro uživatele s cílem vzájemně se ovlivňujících stanovisek je následné a manipulace.
+* **Vyhodnocení odměňování na základě třetí strany**: přizpůsobení položek, kde je odměna založená na hodnocení uživatele třetí strany, namísto toho, aby se nemuselo vygenerovat vlastní chování uživatele.
+* **Netolerance pro zkoumání**: jakákoli situace, kdy chování při průzkumu přizpůsobeného může způsobit škodu.
 
 Při volbě možnosti použít případy pro přizpůsobování:
 
 * Spusťte proces návrhu, který zvažuje způsob, jakým přizpůsobení pomáhá uživatelům.
 * Zvažte negativní následky v reálném světě, pokud se některé položky neberou v úvahu pro uživatele z důvodu způsobů přizpůsobení nebo průzkumu.
-* Zvažte, jestli splňujete Prophecy smyčky. K tomu může dojít, pokud přizpůsobení neplatí pro určitý model, takže potom může další vyloučení demografické skupiny z přístupu k relevantnímu obsahu. Například většina lidí v okolních rozkladech nezískala prémiovou nabídku Premium a pomalu nikdo z okolního dobývá, že tuto nabídku uvidí vůbec.
+* Zvažte, zda váš případ použití představuje automatizované zpracování, které významně ovlivňuje předměty údajů, které jsou regulovány v [GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) článku 22 nebo jinými zákony.
+* Zvažte, jestli splňujete Prophecy smyčky. K tomu může dojít, pokud přizpůsobení neplatí pro určitý model, takže potom může další vyloučení demografické skupiny z přístupu k relevantnímu obsahu. Například většina lidí v okolních rozkladech nezískala prémiovou nabídku Premium a pomalu nikdo z okolního dobývá v případě, že není k dispozici dostatek průzkumu.
 * Uložení kopií modelů a zásad učení v případě, že je potřeba reprodukování přizpůsobeného přizpůsobování v budoucnu. To můžete provést pravidelně nebo v každé době aktualizace modelu.
 * Vezměte v úvahu úroveň průzkumu, která je vhodná pro prostor a jak ji používat jako nástroj ke zmírnění efektů "echo komory".
 
@@ -74,16 +75,16 @@ Přizpůsobení obsahu závisí na tom, jaké jsou informace o obsahu a uživate
 
 Vezměte v úvahu účinek těchto funkcí:
 
-* **Demografické údaje uživatele**: Funkce týkající se pohlaví, pohlaví, stáří, rasy, náboženství: Tyto funkce nemusí být v některých aplikacích v důsledku regulativních důvodů povolené a nemusí být etické, protože přizpůsobení by rozšířilo generalizace a posun. Příkladem tohoto rozšíření bias je odeslání úlohy pro inženýry, které se nezobrazují na starší skupiny nebo cílové skupiny na základě pohlaví.
-* **Informace o národním prostředí**: Na mnoha místech světa může být informace o poloze (například PSČ, poštovní směrovací číslo nebo název okolí) vysoce korelujá s příjmy, rasy a náboženství.
-* **Vnímání uživatelů**při spravedlivosti: I v případech, kdy vaše aplikace provádí zvuková rozhodnutí, je vhodné zvážit účinek uživatelů, kteří si vybrali, že obsah zobrazený ve vaší aplikaci se změní způsobem, který se zdá být koreluje s funkcemi, které by mohly být diskriminační.
-* **Nezamýšlené posunutí ve funkcích**:  Existují typy posunů, které mohou být zavedeny pomocí funkcí, které ovlivňují pouze podmnožinu populace. To vyžaduje další pozornost při generování funkcí algorithmically, například při použití analýzy obrázků k extrakci položek v obrázku nebo v analýze textu pro zjišťování entit v textu. Zajistěte si informace o vlastnostech služeb, které používáte k vytváření těchto funkcí.
+* **Demografické údaje uživatele**: funkce týkající se pohlaví, pohlaví, stáří, rasy, náboženství: tyto funkce nemusí být v určitých aplikacích povoleny, a proto není možné je přizpůsobovat, protože by se mohlo toto přizpůsobení rozšířit generalizace a posun. Příkladem tohoto rozšíření bias je odeslání úlohy pro inženýry, které se nezobrazují na starší skupiny nebo cílové skupiny na základě pohlaví.
+* **Informace o národním prostředí**: na mnoha místech světa může být informace o poloze (například PSČ, poštovní směrovací číslo nebo název okolí) vysoce korelační s příjmy, rasy a náboženství.
+* **Povědomí uživatelů o spravedlivosti**: dokonce i v případech, kdy vaše aplikace provádí zvuková rozhodnutí, je vhodné vzít v úvahu, že se tento obsah zobrazený v aplikaci změní způsobem, který se zdá být koreluje s funkcemi, které by byly diskriminační.
+* **Nezamýšlené posunutí funkcí**: existují typy posunů, které mohou být zavedeny pomocí funkcí, které ovlivňují pouze podmnožinu populace. To vyžaduje další pozornost při generování funkcí algorithmically, například při použití analýzy obrázků k extrakci položek v obrázku nebo v analýze textu pro zjišťování entit v textu. Zajistěte si informace o vlastnostech služeb, které používáte k vytváření těchto funkcí.
 
 Při volbě funkcí pro odeslání v kontextech a akcích k přizpůsobování použijte následující postupy:
 
 * Vezměte v úvahu právní a etické používání určitých funkcí u některých aplikací a to, jestli Innocent funkce můžou být proxy pro jiné, na které chcete nebo se chcete vyhnout,
 * Být transparentní pro uživatele, kteří používají algoritmy a analýzu dat k přizpůsobení možností, které vidí.
-* Položte si otázku: Mají moji uživatelé starosti a budou spokojeni, pokud jste použili tyto informace k přizpůsobení obsahu pro ně? Jsem si spokojeni s tím, jak se rozhodnutí provedlo k zvýraznění nebo skrytí určitých položek?
+* Zeptejte se sami: mají moji uživatelé starosti a budou spokojeni, pokud jste použili tyto informace k přizpůsobení obsahu pro ně? Jsem si spokojeni s tím, jak se rozhodnutí provedlo k zvýraznění nebo skrytí určitých položek?
 * Použijte chování namísto klasifikace nebo dat segmentace na základě jiných vlastností. Demografické údaje tradičně použily maloobchodníci z historických důvodů – demografické atributy se nedají shromáždit a jednat před digitálním obdobím, – ale dotaz, jak relevantní demografické údaje jsou, když máte skutečnou interakci, Kontextová a historická data, která se podrobněji vztahují na preference a identitu uživatelů.
 * Zvažte, jak zabránit tomu, aby se funkce zfalšovaným uživatelům, kteří by využili ve velkých číslech, mohly vyškolit přizpůsobeným způsobem, aby záměrně narušení, embarrass a obtěžování určitých tříd uživatelů. 
 * Pokud je to vhodné a proveditelné, navrhněte svou aplikaci tak, aby uživatelům umožnila výslovný souhlas nebo odsouhlasení se používáním určitých osobních funkcí. Ty by mohly být seskupené, například "informace o umístění", "informace o zařízení", "historie minulých nákupů" atd.
@@ -116,11 +117,11 @@ Implementujte tyto osvědčené postupy:
 
 ## <a name="responsible-design-considerations"></a>Zodpovědné požadavky na návrh
 
-Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další informace sousedit s tuto architekturu [](https://news.microsoft.com/futurecomputed/)v budoucím vypočítaném.
+Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další informace sousedit s tuto architekturu v [budoucím vypočítaném](https://news.microsoft.com/futurecomputed/).
 
 ![Hodnoty AI z budoucího vypočítaného](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>Odpovědnosti
+### <a name="accountability"></a>Přiřazení
 *Lidé, kteří navrhují a nasazují systémy AI, musí být pro fungování svých systémů vhodné*. 
 
 * Vytvořte interní pokyny pro implementaci přizpůsobeného, dokumentování a předávání IT týmu, vedoucím pracovníkům a dodavatelům.
@@ -131,7 +132,7 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 ### <a name="transparency"></a>Transparentnost
 *Systémy AI by se měly porozumět*. Pomocí přizpůsobení:
 
-* *Poskytněte uživatelům informace o tom, jak byl obsah přizpůsobován.* Uživatelům můžete například zobrazit tlačítko s popiskem `Why These Suggestions?` ukazující, které hlavní funkce uživatele a akce přehrály roli ve výsledcích přizpůsobeného modulu.
+* *Poskytněte uživatelům informace o tom, jak byl obsah přizpůsobován.* Uživatelům můžete například zobrazit tlačítko s popiskem `Why These Suggestions?` ukazující, které hlavní funkce uživatele a akcí přehrály roli ve výsledcích přizpůsobeného modulu.
 * Ujistěte se, že vám podmínky použití znamenají, že k přizpůsobení prostředí budete používat informace o uživatelích a jejich chování.
 
 ### <a name="fairness"></a>Spravedlnosti
@@ -153,7 +154,7 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 ### <a name="security-and-privacy"></a>Zabezpečení a soukromí
 *Systémy AI by měly být zabezpečené a respektovat soukromí*. Při použití přizpůsobeného přizpůsobování:
 
-* *Informujte uživatele o shromažďovaných datech a způsobu jejich používání a předem*si vyžádejte svůj souhlas, a to podle místních a průmyslových předpisů.
+* *Informujte uživatele o shromažďovaných datech a způsobu jejich používání a předem si vyžádejte svůj souhlas, a*to podle místních a průmyslových předpisů.
 * *Poskytněte ochranu osobních údajů a zabezpečte uživatelské ovládací prvky.* Pro aplikace, které ukládají osobní údaje, zvažte poskytnutí snadno najítelné tlačítko pro funkce, jako například: 
    * `Show me all you know about me`    
    * `Forget my last interaction` 
@@ -200,6 +201,6 @@ Microsoft nepřetržitě zapisuje úsilí do nástrojů a dokumentů, které vá
 * [FATML principy pro algoritmy s ohledem na účty](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Funkce: akce a kontext](concepts-features.md).

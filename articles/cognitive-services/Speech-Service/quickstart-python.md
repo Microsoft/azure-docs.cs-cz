@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, Python-Speech Service'
+title: 'Rychlý Start: rozpoznávání rozpoznávání řeči, Python-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Pomocí tohoto průvodce můžete vytvořit konzolovou aplikaci v jazyce Speech, která používá sadu Speech SDK for Python. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
 services: cognitive-services
@@ -10,20 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3f473e8ad15d3df053cca100580574b1b115f492
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559288"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803264"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý start: Rozpoznávání řeči pomocí sady Speech SDK for Python
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Rychlý Start: rozpoznávání řeči pomocí sady Speech SDK for Python
+
+K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-text-to-speech-python.md) .
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Tento článek ukazuje, jak používat hlasové služby prostřednictvím sady Speech SDK pro Python. Ukazuje, jak rozpoznávat řeč ze vstupu přes mikrofon.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klíč předplatného Azure pro hlasové služby. [Získejte je zdarma](get-started.md).
 * [Python 3,5 nebo novější](https://www.python.org/downloads/).
@@ -61,9 +63,9 @@ pip install azure-cognitiveservices-speech
 
 ## <a name="support-and-updates"></a>Podpora a aktualizace
 
-Aktualizace balíčku Python sady Speech SDK jsou distribuovány prostřednictvím PyPI a oznámeny v poznámkách k [verzi](./releasenotes.md).
-Pokud je k dispozici nová verze, můžete na ni pomocí příkazu `pip install --upgrade azure-cognitiveservices-speech`aktualizovat.
-Zkontrolováním `azure.cognitiveservices.speech.__version__` proměnné zkontrolujte, kterou verzi aktuálně máte nainstalovanou.
+Aktualizace balíčku Python sady Speech SDK jsou distribuovány prostřednictvím PyPI a oznámeny v [poznámkách k verzi](./releasenotes.md).
+Pokud je k dispozici nová verze, můžete na ni aktualizovat příkazem `pip install --upgrade azure-cognitiveservices-speech`.
+Kontrolou proměnné `azure.cognitiveservices.speech.__version__` Zkontrolujte, kterou verzi aktuálně máte nainstalovanou.
 
 Pokud máte problém nebo nemáte funkci, přečtěte si téma [Podpora a možnosti pomoci](./support.md).
 
@@ -71,7 +73,7 @@ Pokud máte problém nebo nemáte funkci, přečtěte si téma [Podpora a možno
 
 ### <a name="run-the-sample"></a>Spuštění ukázky
 
-[Vzorový kód](#sample-code) můžete zkopírovat z tohoto rychlého startu do zdrojového souboru `quickstart.py` a spustit ho v integrovaném vývojovém prostředí nebo v konzole:
+[Vzorový kód](#sample-code) z tohoto rychlého startu můžete zkopírovat do zdrojového souboru `quickstart.py` a spustit ho v integrovaném vývojovém prostředí (IDE) nebo v konzole:
 
 ```sh
 python quickstart.py
@@ -85,9 +87,9 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-1. V počítači stáhněte a nainstalujte 64 verze Pythonu [](https://www.python.org/downloads/), 3,5 nebo novější.
+1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 nebo novější.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. V nabídce vyberte**rozšíření** **předvoleb** >  **souborů** > . Vyhledejte **Python**.
+1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. Z nabídky vyberte **soubor** > **Předvolby** > **rozšíření** . Vyhledejte **Python**.
 
    ![Instalace rozšíření Python](media/sdk/qs-python-vscode-python-extension.png)
 
@@ -96,16 +98,16 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
 
    ![Otevření složky](media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Vytvořte nový zdrojový soubor `speechsdk.py`Pythonu tak, že vyberete ikonu Nový soubor.
+1. Vytvořte nový zdrojový soubor Pythonu `speechsdk.py`, a to tak, že vyberete ikonu Nový soubor.
 
    ![Vytvoření souboru](media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Zkopírujte, vložte a uložte [kód Pythonu](#sample-code) do nově vytvořeného souboru.
 1. Vložte informace o předplatném služby Speech Services.
 1. Pokud je tato možnost vybrána, na levé straně stavového řádku v dolní části okna se zobrazí interpret Pythonu.
-   V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **Python: Vyberte Interpret**. Vyberte vhodný.
+   V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (CTRL + SHIFT + P) a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
 1. Balíček python sady Speech SDK můžete nainstalovat v rámci Visual Studio Code. Pokud není ještě nainstalována pro překladač Pythonu, který jste vybrali.
-   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Znovu zaveďte paletu příkazů (CTRL + SHIFT + P) a zadejte **terminál: Vytvořte nový integrovaný terminál**.
+   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Znovu vyvolejte paletu příkazů (CTRL + SHIFT + P) a zadejte **terminál: vytvořit nový integrovaný terminál**.
    V terminálu, který se otevře, zadejte příkaz `python -m pip install azure-cognitiveservices-speech` nebo příslušný příkaz pro váš systém.
 1. Chcete-li spustit vzorový kód, klikněte pravým tlačítkem někam do editoru. Vyberte možnost **Spustit soubor Pythonu v terminálu**.
    Až budete vyzváni, mluvte několik slov. Text přepisu se za chvíli zobrazuje.
@@ -114,7 +116,7 @@ Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyt
 
 Pokud máte problémy podle těchto pokynů, přečtěte si podrobný [kurz Visual Studio Code Pythonu](https://code.visualstudio.com/docs/python/python-tutorial).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky Pythonu na GitHubu](https://aka.ms/csspeech/samples)

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro přizpůsobování pro Python | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna pro přizpůsobování pro Python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Začínáme s klientskou knihovnou přizpůsobování pro Python pomocí výukové smyčky.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345336"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802536"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Rychlý start: Přizpůsobení klientské knihovny pro Python
+# <a name="quickstart-personalize-client-library-for-python"></a>Rychlý Start: přizpůsobení klientské knihovny pro Python
 
 Zobrazit přizpůsobený obsah v tomto rychlém startu Pythonu pomocí služby pro přizpůsobování
 
@@ -26,12 +26,12 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Ukázky balíčku (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="using-this-quickstart"></a>V tomto rychlém startu
 
@@ -54,8 +54,8 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY`pro klíč prostředku.
-* `PERSONALIZER_ENDPOINT`pro koncový bod prostředku.
+* pro klíč prostředku `PERSONALIZER_KEY`.
+* pro koncový bod prostředku `PERSONALIZER_ENDPOINT`.
 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
@@ -67,8 +67,6 @@ Nainstalujte klientskou knihovnu pro přizpůsobování pro Python pomocí násl
 ```console
 pip install azure-cognitiveservices-personalizer
 ```
-
-Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
 
 ## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
@@ -98,7 +96,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte novou aplikaci Python v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE) s názvem `sample.py`. 
+Vytvořte novou aplikaci v Pythonu v preferovaném editoru nebo integrovaném vývojovém prostředí s názvem `sample.py`. 
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
@@ -108,19 +106,21 @@ V adresáři projektu otevřete soubor **Sample.py** v preferovaném editoru neb
 
 ## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
 
-Ve třídě **program** vytvořte proměnné pro klíč Azure prostředku a koncový bod získaný z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a. `PERSONALIZER_RESOURCE_ENDPOINT` Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
+Vytvořte proměnné pro klíč Azure prostředku a koncový bod, který se načte z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a `PERSONALIZER_RESOURCE_ENDPOINT`. Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
+
+Název prostředku je součástí adresy URL koncového bodu: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Vytvoření klienta přizpůsobeného pro přizpůsobování
 
-Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey `PERSONALIZER_RESOURCE_KEY`je.
+Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey je `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
 ## <a name="get-content-choices-represented-as-actions"></a>Získat možnosti obsahu reprezentované jako akce
 
-Akce reprezentují volby obsahu, které má přizpůsobené přizpůsobovat. Přidejte následující metody do třídy program pro získání vstupu uživatele z příkazového řádku pro denní a aktuální preference v potravinách.
+Akce reprezentují volby obsahu, které má přizpůsobené přizpůsobovat. Přidejte následující metody pro získání vstupu uživatele z příkazového řádku pro denní a aktuální preference v potravinách.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -132,7 +132,7 @@ Akce reprezentují volby obsahu, které má přizpůsobené přizpůsobovat. Př
 
 Výuková smyčka pro přizpůsobování je cyklem volání [pořadí](#request-a-rank) a [odměňování](#send-a-reward) . V tomto rychlém startu každé volání pořadí, pro přizpůsobení obsahu, je následováno volání odměna, které přizpůsobuje, jak dobře se služba přiřadí k obsahu. 
 
-Následující kód v `main` metodě programu se cyklicky vychází z cyklu dotazování na předvolby uživatele na příkazovém řádku, který odešle tyto informace do přizpůsobeného pořadí a prezentuje vybranému výběru zákazníkovi, aby si mohl vybrat z Seznamte se s tím, že do přizpůsobeného signálu přizpůsobíte, jak dobře služba provedla řazení výběru.
+Následující smyčka kódu projde cyklem, který uživateli požádá o své předvolby na příkazovém řádku, aby si tyto informace přihlásili k zařazení, a prezentuje seřazený výběr zákazníkovi, který si vybírá ze seznamu, a pak posílá odměnu přizpůsobenému nástroji. signalizace, jak dobře služba provedla řazení výběru.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
@@ -146,7 +146,7 @@ Přidejte následující metody, které [získají volby obsahu](#get-content-ch
 
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
-Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby `currentContent` vytvořil výběr obsahu. Proces může vytvořit obsah, který se má vyloučit z pořadí, zobrazené `excludeActions`jako. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
+Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil @no__t 0 možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.  
 
@@ -184,5 +184,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 * [Co je přizpůsobování?](what-is-personalizer.md)
 * [Kde můžete použít přizpůsobování?](where-can-you-use-personalizer.md)
-* [Odstraňování potíží](troubleshooting.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+* [Řešení potíží](troubleshooting.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).

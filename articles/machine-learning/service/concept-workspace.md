@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269210"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720165"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -26,7 +26,7 @@ Jakmile máte model, který chcete, zaregistrujete ho v pracovním prostoru. Pak
 
 Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
 
-[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[taxonomie @no__t – 1Workspace](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Diagram znázorňuje následující komponenty pracovního prostoru:
 
@@ -66,21 +66,18 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 + Zobrazit artefakty strojového učení, jako jsou experimenty, kanály, modely a nasazení.
 + Sledujte a monitorujte modely.
 
-
-
-
 ## <a name="workspace-management"></a>Správa pracovního prostoru
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Úloha správy pracovního prostoru   | Portál              | Sada SDK        | Rozhraní příkazového řádku        |
+| Úloha správy pracovního prostoru   | Portál              | SDK        | Rozhraní příkazového řádku        |
 |---------------------------|------------------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | **&check;** | **&check;** |
 | Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** |  **&check;**   |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   | |  **&check;**    |
 | Vytvoření virtuálního počítače s poznámkovým blokem | **&check;**   | |     |
 
-### <a name='create-workspace'></a>Vytvořit pracovní prostor
+## <a name='create-workspace'></a>Vytvořit pracovní prostor
 
 Existuje několik způsobů, jak vytvořit pracovní prostor.
 
@@ -91,12 +88,12 @@ Existuje několik způsobů, jak vytvořit pracovní prostor.
 
 ## <a name="resources"></a>Přidružené prostředky
 
-Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prostředků Azure, které se používají v pracovním prostoru:
+Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik prostředků Azure, které pracovní prostor používá:
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
-+ [Účet Azure Storage](https://azure.microsoft.com/services/storage/): Slouží jako výchozí úložiště dat pro pracovní prostor.  Poznámkové bloky Jupyter, které se používají s vašimi virtuálními počítači poznámkových bloků, se také ukládají.
-+ [Application Insights Azure](https://azure.microsoft.com/services/application-insights/): Ukládá informace o monitorování vašich modelů.
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Ukládá tajné kódy používané výpočetními cíli a dalšími citlivými informacemi, které pracovní prostor potřebuje.
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
++ [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Poznámkové bloky Jupyter, které se používají s vašimi virtuálními počítači poznámkových bloků, se také ukládají.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): ukládá informace o monitorování vašich modelů.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): ukládá tajné kódy používané výpočetními cíli a dalšími citlivými informacemi, které pracovní prostor potřebuje.
 
 > [!NOTE]
 > Kromě vytváření nových verzí můžete používat i existující služby Azure.
@@ -108,4 +105,4 @@ Pokud chcete začít s Azure Machine Learning, přečtěte si:
 + [Přehled Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Vytvoření pracovního prostoru](how-to-manage-workspace.md)
 + [Správa pracovního prostoru](how-to-manage-workspace.md)
-+ [Kurz: Výuka modelu](tutorial-train-models-with-aml.md)
++ [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)

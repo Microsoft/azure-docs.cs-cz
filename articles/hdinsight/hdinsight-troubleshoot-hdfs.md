@@ -6,24 +6,24 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/14/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5dcd7d2204e7ec03bf6b11bce9be20870cb3054
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076468"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718334"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop HDFS pomocí Azure HDInsight
 
-Přečtěte si o hlavních problémech a jejich řešeních při práci s datovými částmi Hadoop systém souborů DFS (Distributed File System) (HDFS) v Apache Ambari.
+Přečtěte si o hlavních problémech a jejich řešeních při práci s datovými částmi Hadoop systém souborů DFS (Distributed File System) (HDFS) v Apache Ambari. Úplný seznam příkazů najdete v [příručce k příkazům HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) a v příručce k [prostředí systému souborů](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
 ## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Návody se k místnímu HDFS přistupují v rámci clusteru?
 
 ### <a name="issue"></a>Problém
 
-Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pomocí Azure Blob Storage nebo Azure Data Lake Storage zevnitř v clusteru HDInsight.   
+Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pomocí Azure Blob Storage nebo Azure Data Lake Storage zevnitř v clusteru HDInsight.
 
 ### <a name="resolution-steps"></a>Postup řešení
 
@@ -37,7 +37,7 @@ Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pom
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Ze zdrojového kódu, použijte identifikátor URI `hdfs://mycluster/` doslova, jako v následující ukázkové aplikaci:
+2. Ze zdrojového kódu použijte identifikátor URI `hdfs://mycluster/` doslova, jako v následující ukázkové aplikaci:
 
     ```Java
     import java.io.IOException;
@@ -72,12 +72,36 @@ Přístup k místnímu HDFS z příkazového řádku a kódu aplikace místo pom
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
+## <a name="du"></a>du
+
+Příkaz [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) zobrazuje velikosti souborů a adresářů obsažených v daném adresáři nebo délku souboru v případě, že se jedná jenom o soubor.
+
+Možnost `-s` vytvoří agregovaný souhrn délek souborů, které se zobrazují.  
+Možnost `-h` formátuje velikosti souborů.
+
+Příklad:
+
+```bash
+hdfs dfs -du -s -h hdfs://mycluster/
+hdfs dfs -du -s -h hdfs://mycluster/tmp
+```
+
+## <a name="rm"></a>cílem
+
+Příkaz [-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) odstraní soubory zadané jako argumenty.
+
+Příklad:
+
+```bash
+hdfs dfs -rm hdfs://mycluster/tmp/testfile
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) -oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

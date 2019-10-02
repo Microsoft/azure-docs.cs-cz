@@ -2,18 +2,18 @@
 title: Monitorování a Správa Hadoop pomocí Ambari REST API – Azure HDInsight
 description: Naučte se používat Ambari k monitorování a správě clusterů Hadoop ve službě Azure HDInsight. V tomto dokumentu se dozvíte, jak používat REST API Ambari, která je součástí clusterů HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5836dda186c7bd9baeafa193052b0b75d63e291b
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 146aaa8b1b69c29e22f39d48883f604098b8e348
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019605"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718401"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí REST API Apache Ambari
 
@@ -25,7 +25,7 @@ Naučte se používat REST API Apache Ambari ke správě a monitorování cluste
 
 [Apache Ambari](https://ambari.apache.org) zjednodušuje správu a monitorování clusterů Hadoop tím, že poskytuje jednoduché webové uživatelské rozhraní, které je zajištěno pomocí [rozhraní REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari se ve výchozím nastavení poskytuje u clusterů HDInsight se systémem Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -37,21 +37,21 @@ Naučte se používat REST API Apache Ambari ke správě a monitorování cluste
 
 ## <a name="base-uri-for-ambari-rest-api"></a>Základní identifikátor URI pro rozhraní Ambari REST API
 
- Základní identifikátor URI (Uniform Resource Identifier) pro Ambari REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI`CLUSTERNAME.azurehdinsight.net`() rozlišuje velká a malá písmena, jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
+ Základní identifikátor URI (Uniform Resource Identifier) pro Ambari REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  Název clusteru v rámci plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI (`CLUSTERNAME.azurehdinsight.net`) nerozlišuje velká a malá písmena. jiné výskyty v identifikátoru URI rozlišují malá a velká písmena.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověření
 
 Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí nastavení je **admin**) a heslo, které jste zadali při vytváření clusteru.
 
-V případě balíček zabezpečení podniku clusterů místo `admin`použijte plně kvalifikované uživatelské jméno, jako `username@domain.onmicrosoft.com`je.
+U Balíček zabezpečení podniku clusterů místo `admin` použijte plně kvalifikované uživatelské jméno, jako je například `username@domain.onmicrosoft.com`.
 
 ## <a name="examples"></a>Příklady
 
 ### <a name="setup-preserve-credentials"></a>Nastavení (zachovat přihlašovací údaje)
 Zachovejte přihlašovací údaje, abyste je nemuseli znovu zadávat pro každý příklad.  Název clusteru se zachová v samostatném kroku.
 
-**A. Bash**  
-Následující skript upravte tak, že `PASSWORD` nahradíte vlastní heslo.  Pak zadejte příkaz.
+**A. bash**  
+Následující skript upravte tak, že nahradíte `PASSWORD` skutečným heslem.  Pak zadejte příkaz.
 
 ```bash
 export password='PASSWORD'
@@ -66,7 +66,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ### <a name="identify-correctly-cased-cluster-name"></a>Identifikace správného názvu clusteru použita
 V závislosti na tom, jak byl cluster vytvořen, může být skutečná velikost názvu clusteru odlišná, než očekáváte.  V následujících krocích se zobrazí skutečná velikost písmen a pak se uloží do proměnné pro všechny následující příklady.
 
-Úpravou následujících skriptů nahraďte `CLUSTERNAME` název vašeho clusteru. Pak zadejte příkaz. (Název clusteru pro plně kvalifikovaný název domény nerozlišuje velká a malá písmena.)
+Úpravou následujících skriptů nahraďte `CLUSTERNAME` názvem vašeho clusteru. Pak zadejte příkaz. (Název clusteru pro plně kvalifikovaný název domény nerozlišuje velká a malá písmena.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -85,7 +85,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>Analýza dat JSON
 
-Následující příklad používá [JQ](https://stedolan.github.io/jq/) nebo [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) k analýze dokumentu odpovědi JSON a `health_report` zobrazení pouze informací z výsledků.
+Následující příklad používá [JQ](https://stedolan.github.io/jq/) nebo [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) k analýze dokumentu odpovědi JSON a zobrazení pouze informací o `health_report` z výsledků.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -208,15 +208,15 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]  
-> Tyto příklady vrátí první konfiguraci použitou pro server (`service_config_version=1`), který obsahuje tyto informace. Pokud načtete hodnotu, která byla upravena po vytvoření clusteru, bude pravděpodobně nutné zobrazit seznam verzí konfigurace a načíst nejnovější z nich.
+> Tyto příklady vrátí první konfiguraci použitou pro server (`service_config_version=1`), která obsahuje tyto informace. Pokud načtete hodnotu, která byla upravena po vytvoření clusteru, bude pravděpodobně nutné zobrazit seznam verzí konfigurace a načíst nejnovější z nich.
 
 Vrácená hodnota je podobná jednomu z následujících příkladů:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Tato hodnota označuje, že cluster používá pro výchozí úložiště účet Azure Storage. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů BLOB v účtu úložiště. Kontejner je kořenem úložiště kompatibilního se systémem HDFS pro daný cluster.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – tato hodnota označuje, že cluster používá pro výchozí úložiště účet Azure Storage. Hodnota `ACCOUNTNAME` je název účtu úložiště. Část `CONTAINER` je název kontejneru objektů BLOB v účtu úložiště. Kontejner je kořenem úložiště kompatibilního se systémem HDFS pro daný cluster.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`– Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen2 pro výchozí úložiště. Hodnoty `ACCOUNTNAME` a`CONTAINER` mají stejný význam jako Azure Storage výše zmíněné.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` – tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen2 výchozí úložiště. Hodnoty `ACCOUNTNAME` a `CONTAINER` mají stejný význam jako u Azure Storage uvedených výše.
 
-* `adl://home`– Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen1 pro výchozí úložiště.
+* `adl://home` – tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen1 výchozí úložiště.
 
     Chcete-li najít Data Lake Storage název účtu, použijte následující příklady:
 
@@ -298,24 +298,24 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
 $resp.Content
 ```
 
-Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci pro `livy2-conf` komponentu.
+Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci pro komponentu `livy2-conf`.
 
 ### <a name="update-configuration"></a>Aktualizovat konfiguraci
 
-1. Vytvořit `newconfig.json`.  
+1. Vytvořte `newconfig.json`.  
    Upravte a potom zadejte následující příkazy:
 
    * Nahraďte `livy2-conf` požadovanou komponentou.
-   * Nahraďte `INITIAL` skutečnou hodnotou získanou `tag` pro [získání všech konfigurací](#get-all-configurations).
+   * Nahraďte `INITIAL` skutečnou hodnotou získanou pro `tag` ze [získání všech konfigurací](#get-all-configurations).
 
-     **A. Bash**  
+     **A. bash**  
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
      **B. PowerShell**  
-     PowerShellový skript používá [JQ](https://stedolan.github.io/jq/).  Níže `C:\HD\jq\jq-win64` upravte, aby odrážela vaši skutečnou cestu a verzi [JQ](https://stedolan.github.io/jq/).
+     PowerShellový skript používá [JQ](https://stedolan.github.io/jq/).  Upravte `C:\HD\jq\jq-win64` níže, aby odrážela vaši skutečnou cestu a verzi [JQ](https://stedolan.github.io/jq/).
 
      ```powershell
      $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
@@ -332,13 +332,13 @@ Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci pro `l
 
    * Vytvoří kořenový dokument pro novou požadovanou konfiguraci.
 
-   * Načte obsah `.items[]` pole a přidá ho pod element **desired_config** .
+   * Načte obsah pole `.items[]` a přidá ho pod element **desired_config** .
 
-   * Odstraní prvky `href`, `version` a`Config` , protože tyto prvky nejsou nutné k odeslání nové konfigurace.
+   * Odstraní prvky `href`, `version` a `Config`, protože tyto prvky nejsou nutné k odeslání nové konfigurace.
 
-   * Přidá prvek s hodnotou `version#################`. `tag` Číselná část je založena na aktuálním datu. Každá konfigurace musí mít jedinečnou značku.
+   * Přidá prvek `tag` s hodnotou `version#################`. Číselná část je založena na aktuálním datu. Každá konfigurace musí mít jedinečnou značku.
 
-     Nakonec se data uloží do `newconfig.json` dokumentu. Struktura dokumentu by měla vypadat podobně jako v následujícím příkladu:
+     Nakonec se data uloží do dokumentu `newconfig.json`. Struktura dokumentu by měla vypadat podobně jako v následujícím příkladu:
 
      ```json
      {
@@ -359,13 +359,13 @@ Tento příklad vrátí dokument JSON obsahující aktuální konfiguraci pro `l
      ```
 
 2. Upravit `newconfig.json`.  
-   Otevřete dokument a upravte nebo přidejte hodnoty `properties` v objektu. `newconfig.json` Následující příklad změní hodnotu `"livy.server.csrf_protection.enabled"` z `"true"` na `"false"`.
+   Otevřete dokument `newconfig.json` a upravte nebo přidejte hodnoty v objektu `properties`. Následující příklad změní hodnotu `"livy.server.csrf_protection.enabled"` z `"true"` na `"false"`.
 
         "livy.server.csrf_protection.enabled": "false",
 
     Až provedete úpravy, soubor uložte.
 
-3. Odeslat `newconfig.json`.  
+3. Odeslat @no__t – 0.  
    K odeslání aktualizované konfigurace do Ambari použijte následující příkazy.
 
     ```bash
@@ -453,10 +453,10 @@ Pokud se v tomto okamžiku podíváte na webové uživatelské rozhraní Ambari,
     ```
 
     > [!IMPORTANT]  
-    > `href` Hodnota vrácená tímto identifikátorem URI používá interní IP adresu uzlu clusteru. Pokud ho chcete použít mimo cluster, nahraďte `10.0.0.18:8080` jeho část plně kvalifikovaným názvem domény clusteru.  
+    > Hodnota `href` vrácená tímto identifikátorem URI používá interní IP adresu uzlu clusteru. Pokud ho chcete použít mimo cluster, nahraďte `10.0.0.18:8080` část s plně kvalifikovaným názvem domény clusteru.  
 
 4. Ověřte požadavek.  
-    Níže uvedený příkaz upravte nahrazením `29` skutečnou `id` hodnotou vrácenou z předchozího kroku.  Následující příkazy načtou stav žádosti:
+    Níže uvedený příkaz upravte tak, že nahradíte `29` skutečnou hodnotou `id` vrácenou z předchozího kroku.  Následující příkazy načtou stav žádosti:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -471,7 +471,7 @@ Pokud se v tomto okamžiku podíváte na webové uživatelské rozhraní Ambari,
     $respObj.Requests.request_status
     ```
 
-    Odpověď `COMPLETED` indikuje, že žádost byla dokončena.
+    Odpověď `COMPLETED` znamená, že žádost byla dokončena.
 
 5. Po dokončení předchozí žádosti použijte následující příkaz a spusťte službu Spark2.
 
@@ -510,4 +510,4 @@ Pokud se v tomto okamžiku podíváte na webové uživatelské rozhraní Ambari,
 
 ## <a name="next-steps"></a>Další kroky
 
-Úplný odkaz na REST API najdete v tématu [rozhraní Apache Ambari API reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Úplný odkaz na REST API najdete v tématu [rozhraní Apache Ambari API reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Viz také, [autorizace uživatelů pro zobrazení Apache Ambari](./hdinsight-authorize-users-to-ambari.md)

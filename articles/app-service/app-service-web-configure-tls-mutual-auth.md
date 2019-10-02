@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088170"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811632"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
 
@@ -31,19 +31,28 @@ Přístup k aplikaci Azure App Service můžete omezit povolením různých typ�
 
 ## <a name="enable-client-certificates"></a>Povolit klientské certifikáty
 
-Pokud chcete nastavit aplikaci tak, aby vyžadovala klientské certifikáty, musíte nastavit `clientCertEnabled` nastavení aplikace na. `true` Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
+Chcete-li nastavit aplikaci tak, aby vyžadovala klientské certifikáty, je třeba nastavit nastavení `clientCertEnabled` pro vaši aplikaci na `true`. Nastavení nastavíte spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
+## <a name="exclude-paths-from-requiring-authentication"></a>Vyloučit cesty z vyžadování ověřování
+
+Pokud povolíte vzájemné ověřování pro vaši aplikaci, všechny cesty pod kořenem vaší aplikace budou vyžadovat klientský certifikát pro přístup. Pokud chcete, aby některé cesty zůstaly otevřené pro anonymní přístup, můžete v rámci konfigurace aplikace definovat cesty vyloučení.
+
+Cesty vyloučení lze nakonfigurovat výběrem možnosti **konfigurace** > **Obecné nastavení** a definováním cesty vyloučení. V tomto příkladu cokoli pod cestou `/public` pro vaši aplikaci nepožadují klientský certifikát.
+
+![Cesty vyloučení certifikátu][exclusion-paths]
+
+
 ## <a name="access-client-certificate"></a>Přístup k klientskému certifikátu
 
-V App Service probíhá ukončení žádosti SSL na front-endu Load Balancer. Při předávání žádosti do kódu aplikace s povolenými [klientskými certifikáty](#enable-client-certificates)App Service vloží `X-ARR-ClientCert` hlavičku žádosti s klientským certifikátem. App Service s tímto klientským certifikátem nedělá něco jiného než předání do aplikace. Kód vaší aplikace zodpovídá za ověřování klientského certifikátu.
+V App Service probíhá ukončení žádosti SSL na front-endu Load Balancer. Při předávání žádosti do kódu aplikace s [povolenými klientskými certifikáty](#enable-client-certificates)App Service vloží hlavičku žádosti `X-ARR-ClientCert` s klientským certifikátem. App Service s tímto klientským certifikátem nedělá něco jiného než předání do aplikace. Kód vaší aplikace zodpovídá za ověřování klientského certifikátu.
 
 V případě ASP.NET je certifikát klienta k dispozici prostřednictvím vlastnosti **HttpRequest. ClientCertificate** .
 
-Pro ostatní zásobníky aplikací (Node. js, php atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v `X-ARR-ClientCert` hlavičce požadavku.
+Pro ostatní zásobníky aplikací (Node. js, PHP atd.) je certifikát klienta k dispozici ve vaší aplikaci prostřednictvím hodnoty kódované v kódování Base64 v hlavičce žádosti `X-ARR-ClientCert`.
 
 ## <a name="aspnet-sample"></a>Ukázka ASP.NET
 
@@ -171,7 +180,7 @@ Pro ostatní zásobníky aplikací (Node. js, php atd.) je certifikát klienta k
 
 ## <a name="nodejs-sample"></a>Ukázka Node. js
 
-Následující ukázkový kód Node. js získá `X-ARR-ClientCert` hlavičku a použije [Node-zfalšovat](https://github.com/digitalbazaar/forge) k převodu řetězce PEM kódovaného ve formátu base64 na objekt certifikátu a jeho ověření:
+Následující ukázkový kód Node. js získá hlavičku `X-ARR-ClientCert` a pomocí [Node-zfalšovat](https://github.com/digitalbazaar/forge) PŘEVEDE řetězec PEM s kódováním base64 na objekt certifikátu a ověří ho:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

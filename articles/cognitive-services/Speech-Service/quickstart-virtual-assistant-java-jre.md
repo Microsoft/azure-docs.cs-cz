@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vlastní hlas – první virtuální asistent (Preview), Java (Windows, Linux) – služba pro rozpoznávání řeči'
+title: 'Rychlý Start: vlastní hlas – první virtuální asistent (Preview), Java (Windows, Linux) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se naučíte používat sadu Cognitive Services Speech Software Development Kit (SDK) v konzolové aplikaci Java. Naučíte se, jak připojit klientskou aplikaci k dříve vytvořenému robotu robot Framework, který je nakonfigurovaný tak, aby používal kanál Direct line Speech a umožnil prostředí pro virtuální asistenty hlasu.
 services: cognitive-services
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553263"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800040"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Rychlý start: Vytvoření virtuálního pomocníka pro hlasový vstup se sadou Speech SDK, Java
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Rychlý Start: Vytvoření virtuálního asistenta prvního hlasu pomocí sady Speech SDK, Java
 
-K dispozici jsou také rychlé starty pro převod [řeči na text](quickstart-java-jre.md) a [rozpoznávání řeči](quickstart-translate-speech-java-jre.md).
+K dispozici jsou také rychlé starty pro převod [řeči na text](quickstart-java-jre.md), převod [textu na řeč](quickstart-text-to-speech-java-jre.md)a [Převod řeči](quickstart-translate-speech-java-jre.md).
 
 V tomto článku vytvoříte konzolovou aplikaci Java pomocí [sady Cognitive Services Speech SDK](speech-sdk.md). Aplikace se připojí k dřív vytvořenému robotovi, který je nakonfigurovaný tak, aby používal kanál Direct line Speech, pošle hlasovou žádost a vrátil aktivitu odezvy na hlas (Pokud je nakonfigurovaná). Aplikace je sestavená pomocí balíčku Maven sady Speech SDK a Java IDE zatmění ve Windows, Ubuntu Linux nebo na macOS. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K tomuto rychlému startu potřebujete:
 
-* Operační systém: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64), nebo macOS 10,13 nebo novější
+* Operační systém: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit), nebo macOS 10,13 nebo novější
 * [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
@@ -46,9 +46,9 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 Pokud používáte systém Windows (64 bitů), ujistěte se, že jste nainstalovali Microsoft Visual C++ Redistributable pro vaši platformu:
 * [Stažení sady Microsoft C++ Visual Redistributable pro visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
-## <a name="optional-get-started-fast"></a>Volitelné: Začínáme rychle
+## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
 
-V tomto rychlém startu se dozvíte, jak vytvořit jednoduchou klientskou aplikaci pro připojení ke robotu s povoleným rozpoznáváním řeči. Pokud upřednostňujete podrobně přímo v, je kompletní zdrojový kód připravený k zkompilování použitý v tomto rychlém startu k dispozici v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples) ve `quickstart` složce.
+V tomto rychlém startu se dozvíte, jak vytvořit jednoduchou klientskou aplikaci pro připojení ke robotu s povoleným rozpoznáváním řeči. Pokud upřednostňujete podrobně přímo v, je kompletní zdrojový kód připravený k zkompilování použitý v tomto rychlém startu k dispozici v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples) ve složce `quickstart`.
 
 ## <a name="create-and-configure-project"></a>Vytvoření a konfigurace projektu
 
@@ -72,7 +72,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
 
    ![Snímek obrazovky s oknem New Java Class (Nová třída Javy)](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Otevřete nově vytvořenou **Hlavní** třídu a nahraďte obsah `Main.java` souboru následujícím počátečním kódem.
+1. Otevřete nově vytvořenou **Hlavní** třídu a nahraďte obsah souboru `Main.java` následujícím počátečním kódem.
 
     ```java
     package speechsdk.quickstart;
@@ -139,11 +139,11 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
     }
     ```
 
-1. V metodě **Main (Hlavní** ) nakonfigurujete svou `DialogServiceConfig` `DialogServiceConnector` instanci a použijete ji k vytvoření instance. Tím se připojíte k přímému line kanálu pro práci s robotem. `AudioConfig` Instance se také používá k určení zdroje zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s nástrojem `AudioConfig.fromDefaultMicrophoneInput()`.
+1. V metodě **Main** napřed nakonfigurujete `DialogServiceConfig` a použijete ji k vytvoření instance `DialogServiceConnector`. Tím se připojíte k přímému line kanálu pro práci s robotem. Instance `AudioConfig` slouží také k určení zdroje zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Nahraďte řetězec `YourSubscriptionKey` vaším klíčem předplatného, který můžete získat odsud [.](get-started.md)
+    * Nahraďte řetězec `YourSubscriptionKey` klíčem předplatného, který můžete získat [odsud.](get-started.md)
     * Nahraďte řetězec `YourServiceRegion` [oblastí](regions.md) , která je přidružená k vašemu předplatnému.
-    * Nahraďte řetězec `YourChannelSecret` klíčem k přímému line Speech.
+    * Nahraďte řetězec `YourChannelSecret` přímým klíčem pro hlasový vstup pomocí kanálu.
 
     > [!NOTE]
     > Přímý line Speech (Preview) je aktuálně k dispozici v podmnožině oblastí služby Speech Services. Další informace najdete v [seznamu podporovaných oblastí pro virtuální asistenty pro hlasové](regions.md#voice-first-virtual-assistants) služby a zajistěte, aby byly vaše prostředky nasazeny v jedné z těchto oblastí.
@@ -161,7 +161,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector`spoléhá na několik událostí a sdělí své aktivity robota, výsledky rozpoznávání řeči a další informace. Přidejte následující naslouchací procesy událostí.
+1. @no__t – 0 spoléhá na několik událostí a sdělí své aktivity robota, výsledky rozpoznávání řeči a další informace. Přidejte následující naslouchací procesy událostí.
 
     ```java
     // Recognizing will provide the intermediate recognized text while an audio stream is being processed
@@ -200,7 +200,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
         });
     ```
 
-1. Připojte se `DialogServiceConnector` k přímému vysměrování řeči `connectAsync()` vyvoláním metody. K otestování robota můžete vyvolat `listenOnceAsync` metodu pro odesílání zvukového vstupu z mikrofonu. Kromě toho můžete také použít `sendActivityAsync` metodu k odeslání vlastní aktivity jako serializovaného řetězce. Tyto vlastní aktivity můžou poskytovat další data, která bude robot používat v konverzaci.
+1. Připojte `DialogServiceConnector` k přímému nasměrování řeči vyvoláním metody `connectAsync()`. K otestování robota můžete vyvolat metodu `listenOnceAsync` pro odeslání zvukového vstupu z mikrofonu. Kromě toho můžete také použít metodu `sendActivityAsync` k odeslání vlastní aktivity jako serializovaného řetězce. Tyto vlastní aktivity můžou poskytovat další data, která bude robot používat v konverzaci.
 
     ```java
     connector.connectAsync();
@@ -211,9 +211,9 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
     // connector.sendActivityAsync(...)
     ```
 
-1. Uložte změny do `Main` souboru.
+1. Uložte změny do souboru `Main`.
 
-1. Pro podporu přehrávání odpovědí přidáte další třídu, která převede objekt PullAudioOutputStream vrácený z rozhraní getaudio () API na InputStream Java pro usnadnění manipulace. Toto ActivityAudioStream je specializovaná třída, která zpracuje zvukovou odpověď z "přímého line Speech Channel". Poskytne přístup k načtení informací o formátu zvuku, které jsou požadovány pro zpracování přehrávání: Pro tuto položku vyberte **soubor** > **Nová** > **Třída**.
+1. Pro podporu přehrávání odpovědí přidáte další třídu, která převede objekt PullAudioOutputStream vrácený z rozhraní getaudio () API na InputStream Java pro usnadnění manipulace. Toto ActivityAudioStream je specializovaná třída, která zpracuje zvukovou odpověď z "přímého line Speech Channel". Poskytne přístup k načtení informací o formátu zvuku vyžadovaných pro zpracování přehrávání: pro tento výběrový **soubor** > **novou** **třídu** > .
 
 1. V okně **Nová třída Java** zadejte **speechsdk. Start** do pole **Package** a do pole **název** **ActivityAudioStream** .
 
@@ -459,23 +459,23 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor **pom. XM
 
     ```
 
-1. Uložte změny do `ActivityAudioStream` souboru.
+1. Uložte změny do souboru `ActivityAudioStream`.
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
 Stiskněte F11 nebo vyberte **Run** (Spustit)  >  **Debug** (Ladit).
-V konzole se v této chvíli zobrazí zpráva "říká se něco", můžete si přečíst anglickou frázi nebo větu, kterou vám vaše robot bude rozumět. Vaše řeč se přenáší na robota prostřednictvím kanálu Direct line Speech, kde se bude rozpoznat, zpracuje ho robot a odpověď se vrátí jako aktivita. Pokud robot vrátí hlas jako odpověď, zvuk se přehraje zpětně pomocí `AudioPlayer` třídy.
+V konzole se v této chvíli zobrazí zpráva "říká se něco", můžete si přečíst anglickou frázi nebo větu, kterou vám vaše robot bude rozumět. Vaše řeč se přenáší na robota prostřednictvím kanálu Direct line Speech, kde se bude rozpoznat, zpracuje ho robot a odpověď se vrátí jako aktivita. Pokud robot vrátí hlas jako odpověď, zvuk se přehraje pomocí třídy `AudioPlayer`.
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-java-jre-08-console-output.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další ukázky, například jak číst řeč ze zvukového souboru, jsou k dispozici na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [O virtuálních asistentech pro hlasové telefony](voice-first-virtual-assistants.md)
 - [Získat klíč předplatného služby Speech Services zdarma](get-started.md)

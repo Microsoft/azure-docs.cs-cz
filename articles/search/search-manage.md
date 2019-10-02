@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647676"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719865"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Správa služeb pro Azure Search v Azure Portal
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ V řídicím panelu je monitorování prostředků omezené na informace zobraze
 
 Pomocí REST API Search Service můžete získat počet dokumentů a indexů programově: 
 
-* [Získání statistik indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Získat statistiku indexu](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Počet dokumentů](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Zotavení po havárii a výpadky služeb
@@ -73,20 +73,19 @@ I když můžeme data vymezit, Azure Search neposkytuje okamžité převzetí sl
 
 Pokud se v případě závažných selhání mimo kontrolu Microsoftu vyžaduje nepřetržitá služba, můžete [zřídit další službu](search-create-service-portal.md) v jiné oblasti a implementovat strategii geografické replikace, aby bylo zajištěno, že indexy budou plně redundantní. napříč všemi službami.
 
-Zákazníci, kteří [](search-indexer-overview.md) používají indexery k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou také geograficky redundantní, uvědomte si, že Azure Search indexery mohou provádět pouze přírůstkové indexování z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
+Zákazníci, kteří používají [indexery](search-indexer-overview.md) k naplnění a aktualizaci indexů, mohou zvládnout zotavení po havárii pomocí geograficky specifických indexerů využívajících stejný zdroj dat. Dvě služby v různých oblastech, z nichž každý spouští indexer, můžou indexovat stejný zdroj dat, aby bylo možné geografickou redundanci. Pokud provádíte indexování ze zdrojů dat, které jsou také geograficky redundantní, uvědomte si, že Azure Search indexery mohou provádět pouze přírůstkové indexování z primárních replik. V případě události převzetí služeb při selhání nezapomeňte indexer znovu nasměrovat na novou primární repliku. 
 
 Pokud nepoužíváte indexery, použijete kód aplikace k paralelnímu nabízení objektů a dat do různých vyhledávacích služeb. Další informace najdete v tématu o [výkonu a optimalizaci v Azure Search](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 
-Vzhledem k tomu, že Azure Search není primární řešení úložiště dat, neposkytujeme formální mechanismus pro samoobslužné zálohování a obnovu. Kód vaší aplikace použitý k vytvoření a naplnění indexu je možnost de facto Restore, pokud index omylem odstraníte. 
+Vzhledem k tomu, že Azure Search není primární řešení úložiště dat, neposkytujeme formální mechanismus pro samoobslužné zálohování a obnovu. K zálohování definice a snímku indexu do řady souborů JSON ale můžete použít ukázkový kód **index-Backup-Restore** v tomto [úložišti ukázkových Azure Search .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples) a pak tyto soubory použít k obnovení indexu v případě potřeby. Tento nástroj může také přesouvat indexy mezi úrovněmi služeb.
 
-Pokud chcete index znovu sestavit, odstraňte ho (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu ho načtěte z primárního úložiště dat.
-
+V opačném případě váš kód aplikace použitý k vytvoření a naplnění indexu je možnost de facto Restore, pokud index omylem odstraníte. Pokud chcete index znovu sestavit, odstraňte ho (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu ho načtěte z primárního úložiště dat.
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Vertikální navýšení nebo snížení kapacity
+## <a name="scale-up-or-down"></a>Vertikálně navýšit nebo snížit kapacitu
 Každá vyhledávací služba začíná minimálně jednou replikou a jedním oddílem. Pokud jste se zaregistrovali do [úrovně, která poskytuje vyhrazené prostředky](search-limits-quotas-capacity.md), klikněte na dlaždici **škálování** na řídicím panelu služby a upravte využití prostředků.
 
 Když přidáváte kapacitu prostřednictvím kteréhokoli prostředku, služba je automaticky používá. V této části se nevyžaduje žádná další akce, ale dojde k mírnému zpoždění před tím, než se dopustí dopad nového prostředku. Zřizování dalších prostředků může trvat 15 minut nebo déle.
@@ -126,7 +125,7 @@ Toto 30 minutové recenze videí nabízí osvědčené postupy pro pokročilé s
 
 <a id="next-steps"></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Jakmile porozumíte konceptům za správu služeb, zvažte použití [prostředí PowerShell](search-manage-powershell.md) pro automatizaci úloh.
 
 Doporučujeme také zkontrolovat článek o [výkonu a optimalizaci](search-performance-optimization.md).

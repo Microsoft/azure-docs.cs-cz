@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: bd85353aa37cf182a807d99cdc9fb63ead00edeb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fa638a00e0d35e1d48bc3205ce2a77e7faf5d22e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232433"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718385"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid schéma událostí pro úložiště objektů BLOB
 
@@ -26,11 +26,11 @@ Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní obj
 
  |Název události |Popis|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |Aktivováno, když je objekt BLOB vytvořen nebo nahrazen. <br>Konkrétně se tato událost aktivuje `PutBlob`, když klienti použijí operace, `PutBlockList`nebo `CopyBlob` , které jsou k dispozici v objektu BLOB REST API.   |
- |**Microsoft.Storage.BlobDeleted** |Aktivuje se při odstranění objektu BLOB. <br>Konkrétně se tato událost aktivuje, když klienti volají `DeleteBlob` operaci, která je k dispozici v objektu BLOB REST API. |
+ |**Microsoft. Storage. BlobCreated** |Aktivováno, když je objekt BLOB vytvořen nebo nahrazen. <br>Konkrétně se tato událost aktivuje, když klienti použijí operace `PutBlob`, `PutBlockList` nebo `CopyBlob`, které jsou k dispozici v REST API objektů BLOB.   |
+ |**Microsoft. Storage. BlobDeleted** |Aktivuje se při odstranění objektu BLOB. <br>Konkrétně se tato událost aktivuje, když klienti volají operaci `DeleteBlob`, která je k dispozici v REST API objektů BLOB. |
 
 > [!NOTE]
-> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte `CopyBlob`událost `PutBlob`pro volání `PutBlockList` , a REST API. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro REST API volání `CopyBlob`, `PutBlob` a `PutBlockList`. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Seznam událostí pro rozhraní REST API pro Azure Data Lake Storage Gen 2
 
@@ -41,15 +41,15 @@ Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu
 
  |Název události|Popis|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** | Aktivováno, když je objekt BLOB vytvořen nebo nahrazen. <br>Konkrétně se tato událost aktivuje, když klienti použijí `CreateFile` operace a `FlushWithClose` , které jsou k dispozici v REST API Azure Data Lake Storage Gen2. |
- |**Microsoft.Storage.BlobDeleted** |Aktivuje se při odstranění objektu BLOB. <br>Konkrétně se tato událost aktivuje také v případě, že klienti `DeleteFile` volají operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2. |
- |**Microsoft.Storage.BlobRenamed**|Aktivuje se při přejmenování objektu BLOB. <br>Konkrétně se tato událost aktivuje, když klienti použijí `RenameFile` operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2.|
- |**Microsoft.Storage.DirectoryCreated**|Aktivuje se při vytvoření adresáře. <br>Konkrétně se tato událost aktivuje, když klienti použijí `CreateDirectory` operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2.|
- |**Microsoft.Storage.DirectoryRenamed**|Aktivuje se při přejmenování adresáře. <br>Konkrétně se tato událost aktivuje, když klienti použijí `RenameDirectory` operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2.|
- |**Microsoft.Storage.DirectoryDeleted**|Aktivuje se, když se odstraní adresář. <br>Konkrétně se tato událost aktivuje, když klienti použijí `DeleteDirectory` operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2.|
+ |**Microsoft. Storage. BlobCreated** | Aktivováno, když je objekt BLOB vytvořen nebo nahrazen. <br>Konkrétně se tato událost aktivuje, když klienti použijí operace `CreateFile` a `FlushWithClose`, které jsou k dispozici v REST API Azure Data Lake Storage Gen2. |
+ |**Microsoft. Storage. BlobDeleted** |Aktivuje se při odstranění objektu BLOB. <br>Konkrétně se tato událost aktivuje také v případě, že klienti volají operaci `DeleteFile`, která je k dispozici ve Azure Data Lake Storage Gen2 REST API. |
+ |**Microsoft. Storage. BlobRenamed**|Aktivuje se při přejmenování objektu BLOB. <br>Konkrétně se tato událost aktivuje, když klienti použijí operaci `RenameFile`, která je k dispozici ve Azure Data Lake Storage Gen2 REST API.|
+ |**Microsoft. Storage. DirectoryCreated**|Aktivuje se při vytvoření adresáře. <br>Konkrétně se tato událost aktivuje, když klienti použijí operaci `CreateDirectory`, která je k dispozici ve Azure Data Lake Storage Gen2 REST API.|
+ |**Microsoft. Storage. DirectoryRenamed**|Aktivuje se při přejmenování adresáře. <br>Konkrétně se tato událost aktivuje, když klienti použijí operaci `RenameDirectory`, která je k dispozici ve Azure Data Lake Storage Gen2 REST API.|
+ |**Microsoft. Storage. DirectoryDeleted**|Aktivuje se, když se odstraní adresář. <br>Konkrétně se tato událost aktivuje, když klienti použijí operaci `DeleteDirectory`, která je k dispozici ve Azure Data Lake Storage Gen2 REST API.|
 
 > [!NOTE]
-> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte `FlushWithClose` událost pro volání REST API. Toto volání rozhraní API aktivuje událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro volání REST API `FlushWithClose`. Toto volání rozhraní API aktivuje událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 <a id="example-event" />
 
@@ -91,14 +91,14 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 Pokud má účet Blob Storage hierarchický obor názvů, data budou vypadat podobně jako v předchozím příkladu s výjimkou těchto změn:
 
-* Klíč je nastaven na `2`hodnotu. `dataVersion`
+* Klíč `dataVersion` je nastaven na hodnotu `2`.
 
-* Klíč je nastaven na řetězec `CreateFile` nebo `FlushWithClose`. `data.api`
+* Klíč `data.api` je nastaven na řetězec `CreateFile` nebo `FlushWithClose`.
 
-* `contentOffset` Klíč je součástí datové sady.
+* Do sady dat je zahrnut klíč `contentOffset`.
 
 > [!NOTE]
-> Pokud aplikace používají `PutBlockList` operaci k nahrání nového objektu blob do účtu, data tyto změny neobsahují.
+> Pokud aplikace používá k nahrání nového objektu BLOB na účet operaci `PutBlockList`, data tyto změny neobsahují.
 
 ```json
 [{
@@ -156,14 +156,14 @@ Pokud má účet Blob Storage hierarchický obor názvů, data budou vypadat pod
 
 Pokud má účet Blob Storage hierarchický obor názvů, data budou vypadat podobně jako v předchozím příkladu s výjimkou těchto změn:
 
-* Klíč je nastaven na `2`hodnotu. `dataVersion`
+* Klíč `dataVersion` je nastaven na hodnotu `2`.
 
-* Klíč je nastaven na řetězec `DeleteFile`. `data.api`
+* Klíč `data.api` je nastaven na řetězec `DeleteFile`.
 
-* Klíč obsahuje cestu `dfs.core.windows.net`. `url`
+* Klíč `url` obsahuje cestu `dfs.core.windows.net`.
 
 > [!NOTE]
-> Pokud aplikace pomocí `DeleteBlob` operace odstraní objekt BLOB z účtu, data tyto změny neobsahují.
+> Pokud aplikace používají k odstranění objektu BLOB z účtu operaci `DeleteBlob`, data tyto změny nebudou obsahovat.
 
 ```json
 [{
@@ -294,37 +294,35 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| subject | string | Cesta definovaná vydavatelem k předmětu události |
-| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| téma | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Závislosti | string | Cesta definovaná vydavatelem k předmětu události |
+| Typ | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| Čas události | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor události |
-| data | object | Data události služby Blob Storage. |
-| dataVersion | string | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| Údajů | object | Data události služby Blob Storage. |
+| dataverze | string | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| Verze metadataversion | string | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| api | řetězec | Operace, která aktivovala událost. |
-| clientRequestId | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| eTag | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
-| contentType | řetězec | Typ obsahu zadaný pro objekt BLOB. |
-| contentLength | integer | Velikost objektu BLOB v bajtech |
-| blobType | řetězec | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
-| contentOffset | number | Posun v bajtech operace zápisu provedené v místě, kde aplikace aktivující události dokončila zápis do souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
-| destinationUrl |řetězec | Adresa URL souboru, který bude existovat po dokončení operace. Například pokud je soubor přejmenován, `destinationUrl` vlastnost obsahuje adresu URL nového názvu souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
-| sourceUrl |řetězec | Adresa URL souboru, který existuje před operací. Například pokud je soubor přejmenován, `sourceUrl` obsahuje adresu URL původního názvu souboru před operací přejmenování. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
-| url | řetězec | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu:  *\<úložiště-účet-název\>. blob.Core.Windows.NET/\<kontejner\>–/\<název souboru.\>* . <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu:  *\<\>Storage-Account-Name. DFS.Core.Windows.NET/\<File-System-Name\>/\<-Name. \>* . |
-| recursive | řetězec | `True`k provedení operace ve všech podřízených adresářích; v `False`opačném případě. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
-| sequencer | řetězec | Neprůhledná řetězcová hodnota představující logickou posloupnost událostí pro jakýkoliv konkrétní název objektu BLOB.  Uživatelé mohou použít standardní porovnání řetězců k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB. |
+| rozhraní api | string | Operace, která aktivovala událost. |
+| ID žádosti klienta | string | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| Identifikátor | string | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| značk | string | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
+| Třída | string | Typ obsahu zadaný pro objekt BLOB. |
+| contentLength | celé číslo | Velikost objektu BLOB v bajtech |
+| BlobType | string | Typ objektu BLOB Platné hodnoty jsou buď "BlockBlob" nebo "PageBlob". |
+| contentOffset | číslo | Posun v bajtech operace zápisu provedené v místě, kde aplikace aktivující události dokončila zápis do souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
+| destinationUrl |string | Adresa URL souboru, který bude existovat po dokončení operace. Například pokud je soubor přejmenován, vlastnost `destinationUrl` obsahuje adresu URL nového názvu souboru. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů.|
+| sourceUrl |string | Adresa URL souboru, který existuje před operací. Například pokud je soubor přejmenován, `sourceUrl` obsahuje adresu URL původního názvu souboru před operací přejmenování. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
+| url | string | Cesta k objektu BLOB <br>Pokud klient používá REST API objektů blob, pak adresa URL má tuto strukturu: *@no__t -1storage-Account-Name\>.blob.core.windows.net/\<container-Name @ no__t-4 @ no__t-5 @ no__t-6file-Name @ no__t-7*. <br>Pokud klient používá REST API Data Lake Storage, pak adresa URL má tuto strukturu: *@no__t -1storage-Account-Name\>.dfs.core.windows.net/\<file-System-Name @ no__t-4 @ no__t-5 @ no__t-6file-Name @ no__t-7*. |
+| zahrnout | string | `True` pro provedení operace ve všech podřízených adresářích; jinak `False`. <br>Zobrazí se jenom pro události aktivované v účtech BLOB Storage, které mají hierarchický obor názvů. |
+| Sequencer | string | Neprůhledná řetězcová hodnota představující logickou posloupnost událostí pro jakýkoliv konkrétní název objektu BLOB.  Uživatelé mohou použít standardní porovnání řetězců k pochopení relativní posloupnosti dvou událostí u stejného názvu objektu BLOB. |
 | storageDiagnostics | object | Diagnostická data jsou občas součástí služby Azure Storage. V případě, že je k dispozici, by se měly ignorovat příjemci událostí. |
-|Vlastnost|Typ|Popis|
-|-------------------|------------------------|-----------------------------------------------------------------------|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
 * Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

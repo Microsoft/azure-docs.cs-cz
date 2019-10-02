@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338554"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720136"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -29,8 +29,8 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 
 Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Pokud chcete ohlásit problém nebo položit otázky, odešlete příspěvek na [Azure Media Services Fórum MSDN]. 
 
-## <a name="a-idissuesknown-issues"></a><a id="issues"/>Známé problémy
-### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services Obecné problémy
+## <a name="a-idissuesknown-issues"></a>problémy s @no__t 0Known
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a>Obecné problémy s @no__t 0Media Services
 
 | Problém | Popis |
 | --- | --- |
@@ -43,16 +43,16 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 | Objekty sady .NET SDK Media Services nejde serializovat a v důsledku toho nefungují s Azure cache pro Redis. |Pokud se pokusíte serializovat objekt sady SDK Assetcollection a přidat ho do mezipaměti Azure pro Redis, je vyvolána výjimka. |
 |REST API odpoví chybovou zprávou, že při pokusu o získání filtru na úrovni prostředku nebo účtu není v této verzi rozhraní REST API přístup k filtru.|Filtr byl vytvořen nebo upraven novější verzí rozhraní API, než se používá k pokusu o získání filtru. K tomu může dojít, pokud jsou dvě verze rozhraní API používány kódem nebo nástroji používanými zákazníkem.  Nejlepším řešením je upgradovat kód nebo nástroje na použití novějších nebo těchto dvou verzí rozhraní API.|
 
-## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Historie verze REST API
+## <a name="a-idrest_version_historyrest-api-version-history"></a>Historie verzí rozhraní API pro @no__t 0REST
 Informace o historii verze REST API Media Services najdete v části [Odkaz na Azure Media Services REST API].
 
 ## <a name="september-2019"></a>Září 2019
 
 ### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer v1* a *Azure Media Indexer v2 Preview*. Procesor médií [Azure Media Indexer v1](media-services-index-content.md) bude vyřazení od 1. října 2020. Od 1. ledna 2020 se vyřadí procesory médií [Azure Media Indexer V2 verze Preview](media-services-process-content-with-indexer2.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Procesor [Azure Media Indexer](media-services-index-content.md) médií bude vyřazení od 1. října 2020. Od 1. ledna 2020 budou zpracovatelské procesory [Azure Media Indexer 2 ve verzi Preview](media-services-process-content-with-indexer2.md) vyřazené. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
 
-Další informace najdete v tématu [migrace z Azure Media Indexer V1 a Azure Media Indexer v2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
+Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>Srpen 2019
 
@@ -126,7 +126,7 @@ Media Services teď podporuje [ověřování pomocí Azure AD](media-services-us
 
 ## <a name="march-2017-release"></a>Verze z března 2017
 
-Nyní můžete použít standardní kodér k automatickému [generování žebříku přenosové rychlosti](media-services-autogen-bitrate-ladder-with-mes.md) zadáním přednastaveného řetězce "adaptivního streamování" při vytváření úlohy kódování. Pokud chcete zakódovat video pro streamování s Media Services, použijte přednastavení adaptivního streamování. K přizpůsobení předvolby kódování pro konkrétní scénář můžete začít s [těmito přednastaveními](media-services-mes-presets-overview.md).
+Nyní můžete použít standardní kodér k [automatickému generování žebříku přenosové rychlosti](media-services-autogen-bitrate-ladder-with-mes.md) zadáním přednastaveného řetězce "adaptivního streamování" při vytváření úlohy kódování. Pokud chcete zakódovat video pro streamování s Media Services, použijte přednastavení adaptivního streamování. K přizpůsobení předvolby kódování pro konkrétní scénář můžete začít s [těmito přednastaveními](media-services-mes-presets-overview.md).
 
 Nyní můžete pomocí Media Encoder Standard nebo Media Encoder Premium Workflow [vytvořit úlohu kódování, která generuje bloky dat fMP4](media-services-generate-fmp4-chunks.md). 
 
@@ -153,7 +153,7 @@ Další informace o těchto vlastnostech naleznete v tématu [StreamingEndpoint]
 
  Nyní můžete použít Media Services pro přístup k datům telemetrie/metrik pro své služby. Pomocí aktuální verze Media Services můžete shromažďovat data telemetrie pro entity streamování, streamování a archivace za provozu. Další informace najdete v tématu [Media Services telemetrie](media-services-telemetry-overview.md).
 
-## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Verze z července 2016
+## <a name="a-idjuly_changes16july-2016-release"></a>@no__t – 0July 2016 verze
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Aktualizuje soubor manifestu (*. ISM) generovaných úlohami kódování
 Když je odeslána úloha kódování do Media Encoder Standard nebo kodéru Media Encoder Premium, úloha kódování vygeneruje [soubor manifestu streamování](media-services-deliver-content-overview.md) (*. ISM) ve výstupním prostředku. V nejnovější verzi služby se aktualizovala syntaxe tohoto souboru manifestu streamování.
 
@@ -206,12 +206,12 @@ Jednotky rezervované pro kódování Basic, Standard a Premium se přejmenovaly
 ### <a name="azure-sdk-for-php"></a>Sada Azure SDK for PHP
 Tým Azure SDK publikoval novou verzi balíčku [Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) , který obsahuje aktualizace a nové funkce pro Media Services. Konkrétně sada Media Services SDK for PHP nyní podporuje nejnovější funkce [ochrany obsahu](media-services-content-protection-overview.md) . Tyto funkce jsou dynamické šifrování pomocí AES a DRM (PlayReady a Widevine) s omezeními tokenu a bez něj. Podporuje také škálování [jednotek kódování](media-services-dotnet-encoding-units.md).
 
-Další informace naleznete v tématu:
+Další informace:
 
 * Následující [ukázky kódu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) vám pomůžou rychle začít:
-  * **vodworkflow_aes.php**: Tento soubor PHP ukazuje, jak používat dynamické šifrování AES-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: Tento soubor PHP ukazuje, jak používat dynamické šifrování PlayReady a službu doručování licencí. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického společného šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: Tento soubor PHP ukazuje, jak škálovat jednotky rezervované pro kódování.
+  * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování aes-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování PlayReady a službu doručování licencí. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického společného šifrování PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units. php**: Tento soubor php ukazuje, jak škálovat rezervované jednotky kódování.
 
 ## <a id="nov_changes_15"></a>Verze z listopadu 2015
  Media Services teď nabízí službu pro doručování licencí Widevine v cloudu. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Podívejte se také na [Tento kurz](media-services-protect-with-playready-widevine.md) a [úložiště GitHub](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
@@ -219,10 +219,10 @@ Další informace naleznete v tématu:
 Služby Widevine License Delivery Services, které poskytuje Media Services, jsou ve verzi Preview. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
 
 ## <a id="oct_changes_15"></a>Verze z října 2015
-Media Services je teď živý v následujících datových centrech: Brazílie – jih, Indie – západ, Indie – jih a Indie – střed Nyní můžete použít Azure Portal k [Vytvoření účtů mediálních služeb](media-services-portal-create-account.md) a provádění různých úloh popsaných na [webové stránce dokumentace Media Services](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding v těchto datových centrech není povolená. Dále nejsou v těchto datových centrech k dispozici všechny typy jednotek rezervovaných pro kódování.
+Media Services je teď živý v následujících datových centrech: Brazílie – jih, Indie – západ, Indie – jih a Indie – střed. Nyní můžete použít Azure Portal k [Vytvoření účtů mediálních služeb](media-services-portal-create-account.md) a provádění různých úloh popsaných na [webové stránce dokumentace Media Services](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding v těchto datových centrech není povolená. Dále nejsou v těchto datových centrech k dispozici všechny typy jednotek rezervovaných pro kódování.
 
-* Brazílie – jih:                                          K dispozici jsou jenom jednotky rezervované pro kódování úrovně Standard a Basic.
-* Indie – západ, Indie – jih a Indie – střed:             K dispozici jsou jenom základní jednotky rezervované pro kódování.
+* Brazílie – jih: k dispozici jsou jenom jednotky rezervované pro kódování úrovně Standard a Basic.
+* Indie – západ, Indie – jih a Indie – střed: k dispozici jsou jenom základní jednotky rezervované pro kódování.
 
 ## <a id="september_changes_15"></a>Verze září 2015
 Media Services teď nabízí možnost chránit jak video na vyžádání, tak živé streamy pomocí modulární technologie DRM pro Widevine. Pomocí následujících partnerů pro doručování služeb vám pomůžete doručovat licence Widevine:
@@ -245,7 +245,7 @@ Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Wide
 Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>Verze z srpna 2015
-* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématu:
+* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace:
     
 * Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
@@ -294,7 +294,7 @@ Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/2015/
 ### <a name="media-services-net-sdk-updates"></a>Aktualizace Media Services .NET SDK
 Sada Media Services .NET SDK je teď verze 3.2.0.0. Byly provedeny následující aktualizace:
 
-* Změna způsobující chybu: TokenRestrictionTemplate. Issuer a TokenRestrictionTemplate. cílová skupina byla změněna tak, aby byla typu String.
+* Zásadní změna: TokenRestrictionTemplate. Issuer a TokenRestrictionTemplate. cílová skupina byla změněna tak, aby byla typu String.
 * V souvislosti s vytvářením vlastních zásad opakování byly provedeny aktualizace.
 * Byly provedeny opravy chyb související s nahráváním a stahováním souborů.
 * Třída MediaServicesCredentials nyní přijímá primární a sekundární koncové body řízení přístupu k ověřování proti.
@@ -322,7 +322,7 @@ Tato verze označila výchozí konstruktor Microsoft. WindowsAzure. MediaService
 
 ## <a id="december_changes_14"></a>Verze z prosince 2014
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
-* Některé aktualizace a nové funkce byly přidány do Media Indexer. Další informace najdete v poznámkách k [verzi Azure Media Indexer verze 1.1.6.7](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
+* Některé aktualizace a nové funkce byly přidány do Media Indexer. Další informace najdete v [poznámkách k verzi Azure Media Indexer verze 1.1.6.7](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
 * Byl přidán nový REST API, který můžete použít k aktualizaci jednotek rezervovaných pro kódování. Další informace najdete v tématu [EncodingReservedUnitType with REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype).
 * Byla přidána podpora CORS pro službu doručování klíčů.
 * Bylo provedeno vylepšení výkonu pro dotazování na možnosti zásad autorizace.
@@ -354,7 +354,7 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.8. Byly provedeny následuj
 * Nastavení ověřování bylo přidáno pro čas, kdy se kanál a konec aktualizace streamování ukončí.
 
 ### <a name="new-github-repository-to-host-media-services-samples"></a>Nové úložiště GitHubu pro hostování ukázek Media Services
-Ukázky jsou k disMedia Services v [úložišti GitHub Samples](https://github.com/Azure/Azure-Media-Services-Samples).
+Ukázky jsou k [disMedia Services v úložišti GitHub Samples](https://github.com/Azure/Azure-Media-Services-Samples).
 
 ## <a id="september_changes_14"></a>Verze září 2014
 Metadata Media Services REST jsou nyní verze 2,7. Další informace o nejnovějších aktualizacích REST najdete v referenčních informacích k [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
@@ -386,7 +386,7 @@ Sada Media Services SDK pro .NET je teď verze 3.0.0.7
 * Služba pro doručování licencí PlayReady. 
 * Dynamické šifrování PlayReady 
 * Media Services šablonou licence PlayReady. Další informace najdete v tématu [Přehled šablon licencování Media Services PlayReady].
-* Streamování – šifrované prostředky Další informace najdete v článku o [obsahu](https://msdn.microsoft.com/library/azure/dn783451.aspx)zašifrovaném úložištěm streamování.
+* Streamování – šifrované prostředky Další informace najdete v článku o [obsahu zašifrovaném úložištěm streamování](https://msdn.microsoft.com/library/azure/dn783451.aspx).
 
 ## <a id="august_changes_14"></a>Verze z srpna 2014
 Při kódování assetu se vytvoří výstupní Asset, když se úloha kódování dokončí. Do této verze Media Services kodér vytvořil metadata o výstupních prostředcích. Od této verze kodér také generuje metadata o vstupních prostředcích. Další informace najdete v tématu [vstupní metadata] a [výstupní metadata].
@@ -394,8 +394,8 @@ Při kódování assetu se vytvoří výstupní Asset, když se úloha kódován
 ## <a id="july_changes_14"></a>Verze z července 2014
 Pro balíček Azure Media Services a modul pro šifrování byly provedeny následující opravy chyb:
 
-* Když se do HLS přenáší živý archiv assetu, přehraje se jenom zvuk. Tento problém byl opraven a zvuk i video lze nyní přehrát.
-* Když se Asset zabalí do HLS a AES 128-bit obálky, nezabalené proudy se na zařízeních s Androidem Nepřehrávat: Tato chyba byla opravena a zabalený datový proud přehrává zpátky na zařízení s Androidem, která podporují HLS.
+* Po přenosu živého archivu do HLS se přehrává jenom zvuk: Tento problém byl opravený a zvuk i video můžou přehrát.
+* Když se Asset zabalí do HLS a AES 128-bit obálky, nezabalené proudy se na zařízení s Androidem Nepřehrávat: Tato chyba byla opravena a zabalený datový proud přehrává na zařízeních s Androidem, která podporují HLS.
 
 ## <a id="may_changes_14"></a>Vydání verze květen 2014
 ### <a id="may_14_changes"></a>Obecné aktualizace Media Services
@@ -435,7 +435,7 @@ Ve verzi 3.0.0.3 byly provedeny následující změny:
 > 
 > 
 
-Nejnovější verze sady Media Services SDK je teď 3.0.0.0. Nejnovější balíček si můžete stáhnout z NuGet nebo získat bity z GitHubu [].
+Nejnovější verze sady Media Services SDK je teď 3.0.0.0. Nejnovější balíček si můžete stáhnout z NuGet nebo získat bity z [GitHub].
 
 Počínaje verzí Media Services SDK 3.0.0.0 můžete znovu použít tokeny [Access Control Service Azure AD](https://msdn.microsoft.com/library/hh147631.aspx) . Další informace najdete v části "opakované použití Access Control Service tokeny" v tématu [připojení k Media Services pomocí sady Media Services SDK pro .NET](https://msdn.microsoft.com/library/azure/jj129571.aspx).
 
@@ -475,7 +475,7 @@ V této části jsou uvedené aktualizace, které jsou zahrnuté v 2013 Media Se
     * JobNotificationSubscription
     * NotificationEndPoint
     * Úloha
-* Asset.Uri 
+* Asset. URI 
 * Locator.Name 
 
 ### <a name="june_13_dotnet_changes"></a>Změny Media Services .NET SDK
@@ -484,7 +484,7 @@ V červnu 2013 Media Services vydání sady SDK jsou zahrnuty následující zm�
 * Počínaje verzí 2.3.0.0 podporuje Media Services SDK propojení několika účtů úložiště k účtu Media Services. Tuto funkci podporují následující rozhraní API:
   
     * Typ IStorageAccount
-    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
+    * Vlastnost Microsoft. WindowsAzure. MediaServices. Client. CloudMediaContext. StorageAccounts
     * Vlastnost StorageAccount
     * Vlastnost StorageAccountName
   
@@ -492,31 +492,31 @@ V červnu 2013 Media Services vydání sady SDK jsou zahrnuty následující zm�
 * Rozhraní API související s oznámeními. Počínaje verzí 2.2.0.0 můžete naslouchat oznámením ve službě Azure Queue Storage. Další informace najdete v tématu [zpracování oznámení úloh Media Services](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Vlastnost Microsoft. WindowsAzure. MediaServices. Client. IJob. JobNotificationSubscriptions
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
+    * Typ Microsoft. WindowsAzure. MediaServices. Client. INotificationEndPoint
     * Typ Microsoft. WindowsAzure. MediaServices. Client. IJobNotificationSubscription
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
+    * Typ Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointCollection
+    * Typ Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointType
 * Závislost na sadě SDK klienta úložiště 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
 * Závislost na OData 5,5 (Microsoft. data. OData. dll)
 
 ## <a id="december_changes_12"></a>Verze z prosince 2012
 ### <a name="dec_12_dotnet_changes"></a>Změny Media Services .NET SDK
-* IntelliSense Nebyla přidána dokumentace technologie IntelliSense pro mnoho typů.
-* Microsoft.Practices.TransientFaultHandling.Core: Byl opraven problém, kde sada SDK stále měla závislost na starou verzi tohoto sestavení. SDK teď odkazuje na verzi 5.1.1209.1 tohoto sestavení.
+* IntelliSense: nebyla přidána dokumentace technologie IntelliSense pro mnoho typů.
+* Microsoft. Practices. TransientFaultHandling. Core: byl opraven problém, kde sada SDK stále obsahuje závislost na starou verzi tohoto sestavení. SDK teď odkazuje na verzi 5.1.1209.1 tohoto sestavení.
 
 Opravy pro problémy nalezené v listopadu 2012 SDK:
 
-* IAsset. lokátory. počet: Tento počet se teď na nových rozhraních IAsset správně nahlásí po odstranění všech lokátorů.
-* IAssetFile.ContentFileSize: Tato hodnota je nyní správně nastavena po odeslání pomocí IAssetFile. upload (FilePath).
-* IAssetFile.ContentFileSize: Tato vlastnost se teď dá nastavit při vytváření souboru prostředků. Bylo dřív jen pro čtení.
-* IAssetFile.Upload(filepath): Byl opraven problém, kdy při této metodě synchronního nahrání došlo k následující chybě při nahrávání více souborů do assetu. Došlo k chybě: Server nemohl ověřit požadavek. Ujistěte se, že hodnota hlavičky autorizace je správně vytvořená, včetně signatury. "
-* IAssetFile.UploadAsync: Byl opraven problém, který omezil současné nahrávání souborů na pět souborů.
-* IAssetFile.UploadProgressChanged: Tuto událost teď poskytuje sada SDK.
+* IAsset. Locators. Count: Tento počet je nyní správně nahlášen na nových rozhraních IAsset po odstranění všech lokátorů.
+* IAssetFile. ContentFileSize: Tato hodnota je nyní správně nastavena po odeslání pomocí IAssetFile. upload (FilePath).
+* IAssetFile. ContentFileSize: Tato vlastnost se teď dá nastavit při vytváření souboru prostředků. Bylo dřív jen pro čtení.
+* IAssetFile. upload (FilePath): byl opraven problém, kdy byla tato synchronní metoda nahrána při odeslání více souborů do assetu aktivována následující chyba. Došlo k chybě: Server nemohl ověřit požadavek. Ujistěte se, že hodnota hlavičky autorizace je správně vytvořená, včetně signatury. "
+* IAssetFile. UploadAsync: byl opraven problém, který omezil současné nahrávání souborů na pět souborů.
+* IAssetFile. UploadProgressChanged: tuto událost teď poskytuje sada SDK.
 * IAssetFile. DownloadAsync (String, BlobTransferClient, ILocator, CancellationToken): Toto přetížení metody je nyní k dispozici.
-* IAssetFile.DownloadAsync: Byl opraven problém, který omezil současné stahování souborů na pět souborů.
-* IAssetFile.Delete(): Byl opraven problém, kde volání Delete může vyvolat výjimku, pokud nebyl nahrán žádný soubor pro IAssetFile.
-* Úlohy Byl opraven problém, kdy řetězení úlohy MP4 k vyhlazení datových proudů pomocí úlohy aplikace PlayReady Protection pomocí šablony úlohy nevytvořila žádné úkoly.
-* EncryptionUtils.GetCertificateFromStore(): Tato metoda již nevyvolává výjimku odkazu s hodnotou null z důvodu chyby při hledání certifikátu na základě potíží s konfigurací certifikátů.
+* IAssetFile. DownloadAsync: byl opraven problém, který omezil současné stahování souborů na pět souborů.
+* IAssetFile. Delete (): byl opraven problém, kde volání Delete může vyvolat výjimku, pokud nebyl nahrán žádný soubor pro IAssetFile.
+* Úlohy: byl opraven problém, který řetězuje úlohu MP4 k vyhlazení datových proudů s "úlohou ochrany pomocí úlohy PlayReady" pomocí šablony úlohy, ve které se nevytvořily žádné úkoly.
+* EncryptionUtils. GetCertificateFromStore (): Tato metoda již nevyvolává výjimku odkazu s hodnotou null z důvodu chyby při hledání certifikátu na základě potíží s konfigurací certifikátů.
 
 ## <a id="november_changes_12"></a>Verze z listopadu 2012
 Změny uvedené v této části byly aktualizace obsažené v sadě SDK listopadu 2012 (verze 2.0.0.0). Tyto změny mohou vyžadovat úpravu nebo přepsání verze napsané pro vydání sady SDK z června 2012 Preview.
@@ -533,7 +533,7 @@ Změny uvedené v této části byly aktualizace obsažené v sadě SDK listopad
   
     * IAssetFile nahrazuje FileInfo a má jiné chování. Pokud ho chcete použít, vytvořte instanci objektu IAssetFiles následovaný nahráním souboru, a to pomocí sady SDK Media Services nebo sady SDK pro úložiště. Je možné použít následující přetížení IAssetFile. upload:
   
-        * IAssetFile.Upload(filePath): Tato synchronní metoda blokuje vlákno a doporučujeme ho použít, pouze když nahrajete jeden soubor.
+        * IAssetFile. upload (filePath): Tato synchronní metoda blokuje vlákno a doporučujeme ji použít pouze při nahrávání jediného souboru.
         * IAssetFile. UploadAsync (filePath, blobTransferClient, lokátor, cancellationToken): Tato asynchronní metoda je preferovaným mechanismem nahrávání. 
     
             Známá chyba: Pokud použijete token zrušení, nahrávání se zruší. Úlohy mohou mít mnoho stavů zrušení. Je nutné správně zachytit a zpracovat výjimky.
@@ -555,7 +555,7 @@ Následující funkce byly v listopadu vydání sady SDK nové:
   
     * Do všech metod se přidala asynchronní podpora.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

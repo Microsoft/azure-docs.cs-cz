@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Syntetizace řeči, C++ (Linux) – služba Speech'
+title: 'Rychlý Start: syntetizace řeči C++ , (Linux) – služba Speech'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak pomocí sady C++ Speech SDK syntetizovat řeč v systému Linux.
 services: cognitive-services
@@ -10,28 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: dbc9c2adc2663d3ba0ec3f9ea17b758ca2723441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0846af20a2ee993742f648840bcbe49e187f6db9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553696"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803176"
 ---
-# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ systému Linux pomocí sady Speech SDK
+# <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči C++ v systému Linux pomocí sady Speech SDK
 
 K dispozici jsou také rychlé starty pro [rozpoznávání řeči](quickstart-cpp-linux.md).
 
 V tomto článku vytvoříte C++ konzolovou aplikaci pro Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). [Sada Cognitive Services Speech SDK](speech-sdk.md) slouží k syntetizování řeči z textu v reálném čase a přehrávání řeči v mluvčím počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o bezplatném pokusu o [hlasové služby](get-started.md) .
+K dokončení tohoto rychlého startu budete potřebovat klíč předplatného služby Speech Services. Můžete ho získat zdarma. Další informace najdete v tématu o [bezplatném pokusu o hlasové služby](get-started.md) .
 
 ## <a name="install-speech-sdk"></a>Instalace sady Speech SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Aktuální verze sady Cognitive Services Speech SDK je `1.6.0`.
 
 Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a hlavičkové soubory lze stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
 
@@ -109,7 +107,13 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>Spuštění aplikace
+* V systému **ARM64** (64) spusťte následující příkaz, který sestaví aplikaci.
+
+  ```sh
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
+  ```
+
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 1. Nakonfigurujte cestu ke knihovně zavaděče, aby odkazovala na knihovnu sady Speech SDK.
 
@@ -123,6 +127,12 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
+
+   * V systému **ARM64** (64 bitů) zadejte následující příkaz.
+
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
      ```
 
 1. Spusťte aplikaci.
@@ -145,7 +155,7 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 > [!div class="nextstepaction"]
 > [Prozkoumejte C++ ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Přizpůsobení hlasových písem](how-to-customize-voice-font.md)
 - [Záznam ukázek hlasu](record-custom-voice-samples.md)

@@ -1,48 +1,48 @@
 ---
-title: 'Rychlý start: Používáme nástroj cURL k získání odpovědí ze znalostní báze – QnA Maker'
+title: 'Rychlý Start: použití třídy kudrlinkou k získání odpovědi z znalostní báze Knowledge Base – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start vás provede získat odpověď ze znalostní báze pomocí příkazu cURL.
+description: V tomto rychlém startu se dozvíte, jak získat odpověď ze znalostní báze pomocí technologie kudrlinkou.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: bb33e829853e1f9a975d29c7a80298b9033f0748
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b698b40546ee1655ebbef3980692ede6b51fc7f1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249647"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803031"
 ---
-# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Rychlý start: Získání odpovědí ze znalostní báze pomocí cURL
+# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Rychlý Start: získání odpovědi od znalostní báze pomocí třídy kudrlinkou
 
-Tento rychlý start na základě cURL provede získat odpověď ze znalostní báze.
+Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nejnovější [ **cURL**](https://curl.haxx.se/).
-* Musíte mít [služba QnA Maker](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní báze knowledge base s otázkami a odpověďmi](../Tutorials/create-publish-query-in-portal.md).
+* Poslední [**kudrlinkou**](https://curl.haxx.se/)
+* Musíte mít [QnA maker službu](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní bázi s dotazy a odpověďmi](../Tutorials/create-publish-query-in-portal.md).
 
-## <a name="publish-to-get-endpoint"></a>Publikování na získání koncového bodu
+## <a name="publish-to-get-endpoint"></a>Publikování pro získání koncového bodu
 
-Až budete připravení ke generování odpověď na dotaz zadaný ze znalostní báze [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní báze.
+Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, [publikujte](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi.
 
-## <a name="use-production-endpoint-with-curl"></a>Produkční koncový bod pomocí cURL
+## <a name="use-production-endpoint-with-curl"></a>Použití výrobního koncového bodu s kudrlinkou
 
-Při publikování znalostní báze **publikovat** zobrazí se stránka nastavení požadavku HTTP ke generování odpovědi. **CURL** karta zobrazuje nastavení vyžadovaných ke generování odpověď z nástroje příkazového řádku [CURL](https://www.getpostman.com).
+Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Karta **kudrlinkou** zobrazuje nastavení požadovaná pro vygenerování odpovědi z nástroje příkazového řádku, [kudrlinkou](https://www.getpostman.com).
 
-[![Publikování výsledků](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[výsledky @no__t – 1Publish](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
-Ke generování odpovědi pomocí CURL, proveďte následující kroky:
+Pokud chcete vygenerovat odpověď s KUDRLINKOU, proveďte následující kroky:
 
-1. Zkopírujte text v kartě CURL. 
-1. Otevřete příkazový řádek nebo terminálu a vložit text.
-1. Upravte dotaz a byly relevantní pro znalostní báze. Dejte pozor, abyste odebrat obsahující JSON okolní otázku.
+1. Zkopírujte text na kartě KUDRLINKOU. 
+1. Otevřete příkazový řádek nebo terminál a vložte text.
+1. Upravte otázku, která bude relevantní pro vaši znalostní bázi. Dejte pozor, abyste neodebrali obsahující kód JSON, který tuto otázku obklopuje.
 1. Zadejte příkaz. 
-1. Odpověď obsahuje důležité informace o odpovědi. 
+1. Odpověď obsahuje relevantní informace o odpovědi. 
 
     ```bash
     > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
@@ -67,17 +67,17 @@ Ke generování odpovědi pomocí CURL, proveďte následující kroky:
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Použít pracovní koncový bod pomocí cURL
+## <a name="use-staging-endpoint-with-curl"></a>Použití pracovního koncového bodu s kudrlinkou
 
-Pokud chcete získat odpověď z pracovní koncového bodu, použijte `isTest` vlastnost body.
+Pokud chcete získat odpověď z pracovního koncového bodu, použijte vlastnost těla `isTest`.
 
 ```json
 isTest:true
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Stránka publikovat také obsahuje informace, které [generovat odpověď](get-answer-from-kb-using-postman.md) pomocí nástroje Postman. 
+Stránka publikování také poskytuje informace pro [vygenerování odpovědi](get-answer-from-kb-using-postman.md) s použitím metody post. 
 
 > [!div class="nextstepaction"]
-> [Metadata použít při generování odpověď.](../How-to/metadata-generateanswer-usage.md)
+> [Použití metadat při generování odpovědi](../How-to/metadata-generateanswer-usage.md)

@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 943cad871330e2f3b6e13b33dca582ab545fe4be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726563"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720059"
 ---
-# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí pomocí partnerského vztahu virtuálních sítí pomocí webu Azure portal
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
 Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Tyto virtuální sítě můžou být ve stejné oblasti nebo v různých oblastech (označuje se také jako globální partnerský vztah). Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto kurzu se naučíte:
 
@@ -38,7 +38,7 @@ Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-c
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure 
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -50,11 +50,11 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVirtualNetwork1|
+    |Name (Název)|myVirtualNetwork1|
     |Adresní prostor|10.0.0.0/16|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-    |Location| Vyberte **USA – východ**.|
+    |Umístění| Vyberte **USA – východ**.|
     |Název podsítě|Podsíť Subnet1|
     |Rozsah adres podsítě|10.0.0.0/24|
 
@@ -64,7 +64,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVirtualNetwork2|
+    |Name (Název)|myVirtualNetwork2|
     |Adresní prostor|10.1.0.0/16|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
     |Rozsah adres podsítě|10.1.0.0/24|
@@ -80,27 +80,18 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVirtualNetwork1-myVirtualNetwork2|
+    |Název partnerského vztahu z myVirtualNetwork1 do vzdálené virtuální sítě|myVirtualNetwork1-myVirtualNetwork2 – při prvním načtení stránky se tady zobrazí fráze "Vzdálená virtuální síť". Po výběru vzdálené virtuální sítě se fráze "Vzdálená virtuální síť" nahradí názvem vzdálené virtuální sítě.|
     |Předplatné| Vyberte své předplatné.|
-    |Virtuální síť|myVirtualNetwork2 – Virtuální síť *myVirtualNetwork2*, vyberete tak, že vyberete **Virtuální síť** a pak **myVirtualNetwork2**. Můžete vybrat virtuální síť ve stejné oblasti nebo v jiné oblasti.|
+    |Virtuální síť|myVirtualNetwork2 – Pokud chcete vybrat virtuální síť *myVirtualNetwork2* , vyberte **virtuální síť**a pak vyberte **myVirtualNetwork2 (myResourceGroup)** . Můžete vybrat virtuální síť ve stejné oblasti nebo v jiné oblasti.|
+    |Název partnerského vztahu z myVirtualNetwork2 do myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
-    ![Nastavení partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
+    ![Nastavení partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    **STAV PARTNERSKÉHO VZTAHU** je *Zahájeno*, jak je znázorněno na následujícím obrázku:
+    **Stav partnerského vztahu** je *připojeno*, jak je znázorněno na následujícím obrázku:
 
-    ![Stav partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-status.png)
+    ![Stav partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
     Pokud se stav nezobrazí, aktualizujte svůj prohlížeč.
-
-4. Do pole **Hledat** v horní části webu Azure Portal začněte zadávat *MyVirtualNetwork2*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork2**, vyberte ji.
-5. Zopakujte kroky 2 až 3 s následujícími změnami a pak vyberte **OK**:
-
-    |Nastavení|Hodnota|
-    |---|---|
-    |Název|myVirtualNetwork2-myVirtualNetwork1|
-    |Virtuální síť|myVirtualNetwork1|
-
-    **STAV PARTNERSKÉHO VZTAHU** je *Připojeno*. Azure také změnilo stav partnerského vztahu *myVirtualNetwork2-myVirtualNetwork1* ze *Zahájeno* na *Připojeno*. Partnerský vztah virtuálních sítí není úplně navázaný, dokud stav partnerského vztahu pro obě virtuální sítě není *Připojeno*. 
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -114,11 +105,11 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVm1|
+    |Name (Název)|myVm1|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Location| Vyberte **USA – východ**.|
+    |Umístění| Vyberte **USA – východ**.|
 4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
 5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
 
@@ -137,7 +128,7 @@ Zopakujte kroky 1 až 6 s následujícími změnami:
 
 |Nastavení|Hodnota|
 |---|---|
-|Název | myVm2|
+|Name (Název) | myVm2|
 |Virtuální síť | myVirtualNetwork2|
 
 Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
@@ -182,7 +173,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak propojit dvě virtuální sítě ve stejné oblasti Azure s využitím partnerského vztahu virtuálních sítí. Můžete vytvářet také partnerské vztahy virtuálních sítí v různých [podporovaných oblastech](virtual-network-manage-peering.md#cross-region) a [různých předplatných Azure](create-peering-different-subscriptions.md#portal), stejně jako vytvářet [návrhy hvězdicovitých sítí](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerskými vztahy. Další informace o partnerských vztazích virtuálních sítí najdete v tématech [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) a [Správa partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md).
 

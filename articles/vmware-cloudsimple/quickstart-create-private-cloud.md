@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845490"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816135"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
 V tomto článku se dozvíte, jak vytvořit privátní cloud CloudSimple a nastavit své prostředí privátního cloudu.
+
+## <a name="before-you-begin"></a>Než začnete
+
+Kontrola [požadavků na síť](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -43,7 +47,7 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 
     ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
 
-9. Klikněte **na další: Rozšířené možnosti**.
+9. Klikněte na **Další: Upřesnit možnosti**.
 10. Zadejte rozsah CIDR pro podsítě vSphere/síti vSAN. Ujistěte se, že se rozsah CIDR nepřekrývá s žádnou místní nebo jinou podsítí Azure (virtuální sítě) nebo s podsítí brány.
 
     **Možnosti rozsahu CIDR:** /24,/23,/22 nebo/21. Rozsah CIDR a/24 podporuje až 26 uzlů, a/23 rozsah CIDR podporuje až 58 uzlů, a/22 a/21 rozsah CIDR podporuje 64 uzlů (maximální počet uzlů v privátním cloudu).  Další informace a sítě VLAN a podsítě najdete v tématu [Přehled sítí VLAN a podsítí](cloudsimple-vlans-subnets.md).
@@ -51,9 +55,9 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
       > [!IMPORTANT]
       > IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
-11. Klikněte **na další: Zkontrolujte a vytvořte**.
+11. Klikněte na **Další: zkontrolovat a vytvořit**.
 12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
-13. Klikněte na možnost **Vytvořit**.
+13. Klikněte na **Vytvořit**.
 
 Spustí se proces zřizování privátního cloudu.  Zřízení privátního cloudu může trvat až dvě hodiny.
 
@@ -112,7 +116,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 4. Vyberte možnost **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN**.
 
-    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
+    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
 
 6. Naimportujte konfiguraci do svého klienta VPN.
 
@@ -135,7 +139,7 @@ Po vytvoření privátního cloudu Vytvořte síť VLAN, do které budete nasazo
 5. Ze seznamu vyberte ID sítě VLAN.  
 6. Zadejte název podsítě pro identifikaci podsítě.
 7. Zadejte rozsah a masku směrování mezi podsítěmi.  Tento rozsah se nesmí překrývat s žádnými stávajícími podsítěmi.
-8. Klikněte na **Submit** (Odeslat).
+8. Klikněte na **Odeslat**.
 
     ![Vytvořit podrobnosti o síti VLAN nebo podsíti](media/create-new-vlan-subnet-details.png)
 
@@ -155,7 +159,7 @@ Nyní se můžete přihlásit k vCenter a nastavit virtuální počítače a zá
 
 2. Vyberte preferovaného klienta vSphere pro přístup k serveru vCenter a přihlaste se pomocí uživatelského jména a hesla.  Výchozí hodnoty jsou:
     * Uživatelské jméno: **CloudOwner@cloudsimple.local**
-    * Zadáno **CloudSimple123!**  
+    * Heslo: **CloudSimple123!**  
 
 Obrazovky vCenter v následujících postupech jsou od klienta vSphere (HTML5).
 
@@ -164,15 +168,15 @@ Obrazovky vCenter v následujících postupech jsou od klienta vSphere (HTML5).
 CloudSimple doporučuje změnit heslo při prvním přihlášení do vCenter.  
 Heslo, které jste nastavili, musí splňovat následující požadavky:
 
-* Maximální doba života: Heslo je třeba změnit každých 365 dní.
-* Omezit opakované použití: Uživatelé nemůžou znovu použít žádné z předchozích pěti hesel.
+* Maximální doba života: heslo se musí změnit každých 365 dní.
+* Omezit opakované použití: uživatelé nemůžou znovu použít žádné z předchozích pěti hesel.
 * Délka: 8-20 znaků
-* Speciální znak: Aspoň jeden speciální znak
-* Abecední znaky: Aspoň jedno velké písmeno, A-Z a aspoň jedno malé písmeno, a-z
-* Hodnoty Aspoň jeden numerický znak, 0-9
-* Maximální počet identických sousedících znaků: Tři
+* Speciální znak: aspoň jeden speciální znak
+* Abecední znaky: aspoň jedno velké písmeno, A-Z a aspoň jedno malé písmeno, a-z
+* Numbers: alespoň jeden numerický znak, 0-9
+* Maximální počet identických sousedících znaků: 3
 
-    Příklad: KOPIE nebo CCC jsou přijatelné jako součást hesla, ale CCCC ne.
+    Příklad: CC nebo CCC je přijatelné jako součást hesla, ale CCCC ne.
 
 Pokud nastavíte heslo, které nesplňuje požadavky:
 
@@ -184,7 +188,7 @@ Pokud nastavíte heslo, které nesplňuje požadavky:
 NSX Manager je nasazen s výchozím heslem.  Po vytvoření privátního cloudu doporučujeme změnit heslo.
 
 * Uživatelské jméno: **správce**
-* Zadáno **CloudSimple123!**
+* Heslo: **CloudSimple123!**
 
 Plně kvalifikovaný název domény (FQDN) a IP adresa NSX Manageru najdete na portálu CloudSimple.
 
@@ -204,7 +208,7 @@ Postup vytvoření distribuované skupiny portů v vSphere:
 1. Postupujte podle pokynů v části "Přidání distribuované skupiny portů" v tématu [Průvodce sítí vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf).
 2. Při nastavování distribuované skupiny portů zadejte ID sítě VLAN vytvořené v části [vytvoření sítě VLAN pro vaše virtuální počítače s úlohami](#create-a-vlan-for-your-workload-vms).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
 * [Připojení k místní síti pomocí Azure ExpressRoute](on-premises-connection.md)

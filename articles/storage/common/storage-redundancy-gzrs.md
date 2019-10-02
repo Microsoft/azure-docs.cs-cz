@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673073"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720363"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -21,7 +21,7 @@ Geograficky redundantní úložiště (GZRS) (Preview) manželství vysoké dost
 
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku. GZRS také nabízí stejné [cíle škálovatelnosti](storage-scalability-targets.md) jako LRS, ZRS, GRS nebo RA-GRS. Volitelně můžete povolit přístup pro čtení k datům v sekundární oblasti pomocí geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS), pokud vaše aplikace musí být schopné číst data v případě havárie v primární oblasti.
 
-Microsoft doporučuje používat GZRS pro aplikace, které vyžadují konzistenci, odolnost, vysokou dostupnost, vynikající výkon a odolnost pro obnovení diaster. Pro zvýšení zabezpečení přístupu pro čtení do sekundární oblasti v případě regionální havárie povolte RA-GZRS pro váš účet úložiště.
+Microsoft doporučuje používat GZRS pro aplikace, které vyžadují konzistenci, odolnost, vysokou dostupnost, vynikající výkon a odolnost proti zotavení po havárii. Pro zvýšení zabezpečení přístupu pro čtení do sekundární oblasti v případě regionální havárie povolte RA-GZRS pro váš účet úložiště.
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
@@ -35,7 +35,7 @@ GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících 
 - USA – východ 2
 - USA – střed
 
-Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Informace o podporovaných oblastech najdete na stránce  [aktualizace služby Azure](https://azure.microsoft.com/updates/).
+Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Další informace o podporovaných oblastech najdete v části [aktualizace služby Azure](https://azure.microsoft.com/updates/)@no__t – 1page.
 
 Informace o cenách verze Preview najdete v tématu ceny GZRS ve verzi Preview pro [objekty blob](https://azure.microsoft.com/pricing/details/storage/blobs), [soubory](https://azure.microsoft.com/pricing/details/storage/files/), [fronty](https://azure.microsoft.com/pricing/details/storage/queues/)a [tabulky](https://azure.microsoft.com/pricing/details/storage/tables/).
 
@@ -49,11 +49,11 @@ Když se data zapisují do účtu úložiště s povoleným GZRS nebo RA-GZRS, b
 > [!IMPORTANT]
 > Asynchronní replikace zahrnuje zpoždění mezi časem zápisu dat do primární oblasti a při replikaci do sekundární oblasti. V případě regionálních havárií může dojít ke ztrátě změn, které ještě nebyly replikovány do sekundární oblasti, pokud tato data nebude možné obnovit z primární oblasti.
 
-Při vytváření účtu úložiště určíte, jak budou data v tomto účtu replikována, a také určíte primární oblast pro tento účet. Spárovaná sekundární oblast pro geograficky replikovaný účet je určena v závislosti na primární oblasti a nelze ji změnit. Aktuální informace o oblastech podporovaných službou Azure najdete v tématech [provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)Azure. Informace o vytvoření účtu úložiště pomocí GZRS nebo RA-GZRS najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+Při vytváření účtu úložiště určíte, jak budou data v tomto účtu replikována, a také určíte primární oblast pro tento účet. Spárovaná sekundární oblast pro geograficky replikovaný účet je určena v závislosti na primární oblasti a nelze ji změnit. Aktuální informace o oblastech podporovaných v Azure najdete v tématu [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Informace o vytvoření účtu úložiště pomocí GZRS nebo RA-GZRS najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Použití RA-GZRS pro vysokou dostupnost
 
-Když pro svůj účet úložiště povolíte RA-GZRS, můžete data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je `myaccount.blob.core.windows.net`například primárním koncovým bodem pro BLOB Service, pak je `myaccount-secondary.blob.core.windows.net`sekundárním koncovým bodem. Přístupové klíče pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
+Když pro svůj účet úložiště povolíte RA-GZRS, můžete data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární*@no__t – 1To název účtu. Pokud je například primárním koncovým bodem pro Blob service hodnota @ no__t-0, pak je sekundární koncový bod @ no__t-1. Přístupové klíče pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
 Pokud chcete využít výhod RA-GZRS v případě regionálního výpadku, musíte aplikaci navrhnout předem, abyste mohli tento scénář zpracovat. Vaše aplikace by měla číst a zapisovat do primárního koncového bodu, ale v případě, že primární oblast nebude k dispozici, přepnout na použití sekundárního koncového bodu. Pokyny k navrhování vysoké dostupnosti pomocí RA-GZRS najdete v tématu [navrhování vysoce dostupných aplikací pomocí RA-GZRS nebo RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -115,7 +115,7 @@ Ruční migrace může vést k výpadkům aplikací. Pokud vaše aplikace vyžad
 
 Během migrace za provozu můžete použít svůj účet úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým účtem úložiště. Během procesu migrace za provozu váš účet stále splňuje podmínky smlouvy SLA pro zajištění odolnosti a dostupnosti. Nedochází k výpadkům nebo ztrátě dat způsobené migrací za provozu.
 
-Jenom účty pro obecné účely v2 podporují GZRS/RA-GZRS, takže před odesláním žádosti o migraci za provozu do GZRS/RA-GZRS je potřeba upgradovat svůj účet na obecné účely v2. Další informace najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview)a [upgrade na účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+Jenom účty pro obecné účely v2 podporují GZRS/RA-GZRS, takže před odesláním žádosti o migraci za provozu do GZRS/RA-GZRS je potřeba upgradovat svůj účet na obecné účely v2. Další informace najdete v tématu [Přehled účtu Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview)@no__t 1and [upgrade na účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
 Po dokončení migrace se nastavení replikace účtu úložiště aktualizuje na **geograficky redundantní úložiště (GZRS)** nebo **geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)** . Koncové body služby, přístupové klíče, sdílené přístupové podpisy (SAS) a jakékoli další možnosti konfigurace účtu zůstávají beze změny a nedotčeny.
 
@@ -134,22 +134,22 @@ Při migraci za provozu Pamatujte na následující omezení:
 K vyžádání migrace za provozu použijte [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Na portálu vyberte účet úložiště, který se má migrovat na GZRS nebo RA-GZRS, a postupujte podle těchto pokynů:
 
 1. Vyberte **novou žádost o podporu**.
-2. Dokončete **základy** na základě informací o účtu. V části **Služba** vyberte  **Správa účtu úložiště**a zadejte účet, který se má migrovat.
+2. Dokončete **základní**@no__t – 1based informace o svém účtu. Ve **službě** Section vyberte **správa účtů úložiště** and zadejte účet, který se má migrovat.
 3. Vyberte **Další**.
-4. V části **problém** zadejte následující hodnoty:
-    - **Závažnost**: Ponechte výchozí hodnotu tak, jak je.
-    - **Typ problému**: Vyberte **migrace dat**.
-    - **Kategorie**:  **V oblasti vyberte migrovat do (RA-) GZRS**.
-    - **Název**: Zadejte popisný název, například **(RA-) GZRS účet migrace**.
-    - **Podrobnosti**: Zadejte další podrobnosti v **podrobnostech**@no__t – 1box, například "Chci MIGROVAT na GZRS z [LRS, GRS] v oblasti \_ @ no__t-3." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_ @ no__t-1."
+4. Zadejte následující hodnoty **problém**@no__t – 1SECTION:
+    - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
+    - **Typ problému**: vyberte **migrace dat**.
+    - **Kategorie**: vyberte **MIGROVAT do (RA-) GZRS v rámci oblasti**.
+    - **Title**: zadejte popisný název, například **(RA-) GZRS Account Migration**.
+    - **Podrobnosti**: zadejte další podrobnosti v **podrobnostech**@no__t – 2box, například "Chci migrovat na GZRS z [LRS, GRS] v oblasti \_ @ no__t-4." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_ @ no__t-1."
 5. Vyberte **Další**.
-6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
+6. Ověřte, zda jsou kontaktní informace správné pro **kontaktní údaje** blade.
 7. Vyberte **vytvořit**.
 
 Zástupce podpory vás bude kontaktovat, abyste mohli poskytnout pomoc.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Účet replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Místně redundantní úložiště (LRS): Redundance dat pro Azure Storage s nízkou cenou](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-- [Redundantní úložiště zóny (ZRS): Vysoce dostupné Azure Storage aplikace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Místně redundantní úložiště (LRS): redundance dat s nízkými náklady pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+- [Zóna – redundantní úložiště (ZRS): vysoce dostupné aplikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

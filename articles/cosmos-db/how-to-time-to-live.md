@@ -4,14 +4,14 @@ description: Naučte se konfigurovat a spravovat dobu v provozu v Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104872"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815910"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontej
 
 Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez vypršení platnosti. Tuto možnost povolte, pokud chcete, aby hodnota TTL mohla být přepsána na úrovni položky. Hodnotu TTL můžete nastavit také zadáním nenulové hodnoty pro sekundy.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -36,10 +36,16 @@ Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez 
 
    ![Konfigurace času na živé v Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* Pokud má DefaultTimeToLive hodnotu null, váš čas do živého provozu je vypnutý.
+* Pokud je DefaultTimeToLive-1, je nastavení Time to Live zapnuté (žádné výchozí).
+* Pokud má DefaultTimeToLive jinou hodnotu typu int (s výjimkou 0), je zapnutá možnost čas do živého nastavení.
 
-- Pokud má DefaultTimeToLive hodnotu null, váš čas do živého provozu je vypnutý.
-- Pokud je DefaultTimeToLive-1, je nastavení Time to Live zapnuté (žádné výchozí).
-- Pokud má DefaultTimeToLive jinou hodnotu typu int (s výjimkou 0), je zapnutá možnost čas do živého nastavení.
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Povolení doby provozu na kontejneru pomocí Azure CLI nebo PowerShellu
+
+Pokud chcete vytvořit nebo povolit hodnotu TTL u kontejneru, přečtěte si téma.
+
+* [Vytvoření kontejneru s hodnotou TTL pomocí Azure CLI](manage-with-cli.md#create-a-container-with-ttl)
+* [Vytvoření kontejneru s hodnotou TTL pomocí PowerShellu](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Povolení doby provozu na kontejneru pomocí sady SDK
 
@@ -71,7 +77,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Nastavení TTL (Time to Live) na kontejneru pomocí sady SDK
 
-Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě nastavené hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts` .
+Chcete-li nastavit hodnotu TTL (Time to Live) na kontejneru, je nutné zadat nenulové kladné číslo, které určuje časové období v sekundách. Na základě nastavené hodnoty TTL se odstraní všechny položky v kontejneru po posledním změněném časovém razítku položky `_ts`.
 
 ### <a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -117,7 +123,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete nastavit hodnotu TTL (Time to Live) pro položku. Nastavením hodnoty doba na živý na úrovni položky se přepíše výchozí hodnota TTL položky v tomto kontejneru.
 
-* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které určuje dobu, po kterou má být položka po posledním změněném časovém razítku položky `_ts`vypršet.
+* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které určuje dobu, po kterou má být položka po posledním změněném časovém razítku položky `_ts`.
 
 * Pokud položka nemá pole TTL, bude ve výchozím nastavení pro položku platit hodnota TTL nastavená na kontejner.
 
@@ -127,7 +133,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -140,7 +146,7 @@ Chcete-li povolit dobu provozu na položce, použijte následující postup:
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL. 
    * Kliknutím na **Uložit** uložte změny.
 
-5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live `ttl` ), přidejte vlastnost a vyberte **aktualizovat**. 
+5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte vlastnost `ttl` a vyberte **aktualizovat**. 
 
    ```json
    {
@@ -185,15 +191,14 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
 
-
 ## <a name="reset-time-to-live"></a>Resetovat čas na Live
 
-Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví `_ts` na aktuální čas a hodnota TTL pro položku, jejíž platnost vyprší, bude zahájena znovu. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
+Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví `_ts` na aktuální čas a zahájí se znovu hodnota TTL pro položku, jejíž platnost vyprší. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
 
 ### <a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -252,7 +257,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 
 ## <a name="disable-time-to-live"></a>Zakázat dobu do provozu
 
-Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby kontroloval položky, jejichž platnost `DefaultTimeToLive` vypršela, měla by být vlastnost kontejneru odstraněna. Odstranění této vlastnosti se liší od nastavení na hodnotu-1. Když nastavíte hodnotu-1, nové položky přidané do kontejneru budou trvale živé, ale tuto hodnotu můžete přepsat pro konkrétní položky v kontejneru. Po odebrání vlastnosti TTL z kontejneru nebudou položky nikdy vypršet, a to ani v případě, že jste explicitně přepsali předchozí výchozí hodnotu TTL.
+Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby kontroloval položky, jejichž platnost vypršela, měla by být odstraněna vlastnost `DefaultTimeToLive` v kontejneru. Odstranění této vlastnosti se liší od nastavení na hodnotu-1. Když nastavíte hodnotu-1, nové položky přidané do kontejneru budou trvale živé, ale tuto hodnotu můžete přepsat pro konkrétní položky v kontejneru. Po odebrání vlastnosti TTL z kontejneru nebudou položky nikdy vypršet, a to ani v případě, že jste explicitně přepsali předchozí výchozí hodnotu TTL.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK v2 (Microsoft. Azure. DocumentDB)
 
@@ -274,7 +279,7 @@ containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Time to Live v následujícím článku:
 

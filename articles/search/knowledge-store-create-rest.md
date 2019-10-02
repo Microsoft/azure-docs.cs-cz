@@ -6,14 +6,14 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703574"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719940"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Vytvoření Azure Search Knowledge Store pomocí REST
 
@@ -29,7 +29,7 @@ Po vytvoření znalostní báze můžete získat informace o přístupu k tomuto
 
 + [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Váš účet úložiště musí pro službu Azure Search používat stejné umístění (například USA – západ). *Druh účtu* musí být *StorageV2 (pro obecné účely v2)* (výchozí) nebo *Storage (pro obecné účely V1)* .
 
-+ Doporučeno: [aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem schopným pracovat s požadavky HTTP a odpověďmi. Pro prozkoumávání rozhraní REST je vhodná volba, která se používá v tomto článku. Kromě toho [zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) tohoto článku obsahuje kolekci žádostí post. 
++ Doporučeno: [aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem schopným pracovat s požadavky HTTP a odpověďmi. Pro prozkoumávání rozhraní REST je vhodná volba, která se používá v tomto článku. Kromě toho [zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) tohoto článku obsahuje kolekci žádostí post. 
 
 ## <a name="2---store-the-data"></a>2\. uložení dat
 
@@ -53,7 +53,7 @@ Načtěte soubor. CSV pro kontrolu hotelu do úložiště objektů BLOB v Azure,
 
 ## <a name="3---configure-postman"></a>3\. konfigurace pro post
 
-Stáhnout [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) importu a importovat ho do metody post pomocí **souboru, importovat...** . Přepněte na kartu **kolekce** a klikněte na tlačítko **...** a vyberte **Upravit**. 
+Stáhnout [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) importu a importovat ho do metody post pomocí **souboru, importovat...** . Přepněte na kartu **kolekce** a klikněte na tlačítko **...** a vyberte **Upravit**. 
 
 ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "navigovat do nabídky upravit v příspěvku")
 
@@ -88,7 +88,7 @@ Vytvoření úložiště znalostí vyžaduje, abyste nastavili čtyři požadavk
 1. Požadavek PUT na vytvoření dovednosti. Dovednosti určuje rozšíření aplikovaná na vaše data a strukturu úložiště znalostí.
 1. Požadavek PUT vytvořit indexer Spuštění indexeru čte data, používá dovednosti a ukládá výsledky. Tuto žádost musíte spustit jako poslední.
 
-[Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) obsahuje kolekci post u těchto čtyř požadavků. Pokud chcete tyto požadavky vydat, přepněte na kartě žádosti na kartu žádosti a přidejte `api-key` a `Content-Type` hlavičky žádosti. Nastavte hodnotu `api-key` na `{{admin-key}}`. Nastavte hodnotu `Content-type` na `application/json`. 
+[Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) obsahuje kolekci post u těchto čtyř požadavků. Pokud chcete tyto požadavky vydat, přepněte na kartě žádosti na kartu žádosti a přidejte `api-key` a `Content-Type` hlavičky žádosti. Nastavte hodnotu `api-key` na `{{admin-key}}`. Nastavte hodnotu `Content-type` na `application/json`. 
 
 > [!div class="mx-imgBorder"]
 > @no__t – 0Screenshot znázorňující rozhraní Poster pro záhlaví @ no__t-1

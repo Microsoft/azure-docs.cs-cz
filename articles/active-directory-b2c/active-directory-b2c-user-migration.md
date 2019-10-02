@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702169"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802105"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 
@@ -59,22 +59,13 @@ Nejdřív Zaregistrujte aplikaci, kterou můžete použít pro úlohy správy, j
 
 V dalším kroku udělte aplikaci potřebná oprávnění Graph API služby Azure AD pro zápis do adresáře.
 
-1. V nabídce **Nastavení** vyberte **požadovaná oprávnění**.
-1. Vyberte **Windows Azure Active Directory**.
-1. V podokně **Povolit přístup** vyberte v části **oprávnění aplikace**možnost **číst a zapsat data adresáře**a pak vyberte **Uložit**.
-1. V podokně **požadovaná oprávnění** vyberte **udělit oprávnění**a pak vyberte **Ano**.
-
-   ![Zaškrtávací políčko pro čtení a zápis adresáře, oprávnění Uložit a udělit zvýrazněná oprávnění](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="step-13-create-the-application-secret"></a>Krok 1,3: vytvoření tajného klíče aplikace
 
 Vytvořte tajný klíč klienta (klíč), který bude používat aplikace pro migraci uživatelů, kterou nakonfigurujete v pozdějším kroku.
 
-1. Na stránce **registrovaná aplikace** vyberte **Nastavení**.
-1. Vyberte **Klíče**.
-1. V části **hesla**přidejte nový klíč (také označovaný jako tajný klíč klienta) s názvem *MyClientSecret* nebo jiný název, vyberte okno pro vypršení platnosti, vyberte **Uložit**a potom zkopírujte hodnotu klíče pro pozdější použití.
-
-    ![Položka nabídky s hodnotou ID aplikace a klíči zvýrazněnou v Azure Portal](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Nyní máte aplikaci s oprávněními k vytváření, čtení a aktualizaci uživatelů ve vašem tenantovi Azure AD B2C.
 

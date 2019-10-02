@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701899"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802058"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: použití Graph API Azure AD
 
@@ -49,19 +49,11 @@ Pokud chcete používat Graph API Azure AD s vaším klientem B2C, musíte aplik
 
 ### <a name="assign-api-access-permissions"></a>Přiřazení přístupových oprávnění k rozhraní API
 
-1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
-1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
-1. Vyberte **Windows Azure Active Directory**.
-1. V části **oprávnění aplikace**vyberte **číst a zapsat data adresáře**.
-1. Vyberte **Save** (Uložit).
-1. Vyberte **udělit oprávnění**a pak vyberte **Ano**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
 
-1. V části **přístup k rozhraní API**vyberte **klíče**.
-1. Do pole **Popis klíče** zadejte popis klíče. Například *klíč správy*.
-1. Vyberte **dobu** platnosti a pak vyberte **Uložit**.
-1. Poznamenejte si **hodnotu**klíče. Tuto hodnotu můžete použít pro konfiguraci v pozdějším kroku.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Nyní máte aplikaci, která má oprávnění k *vytváření*, *čtení*a *aktualizaci* uživatelů ve vašem tenantovi Azure AD B2C. Přejděte k další části a přidejte oprávnění k *odstranění* a *aktualizaci hesla* uživatele.
 

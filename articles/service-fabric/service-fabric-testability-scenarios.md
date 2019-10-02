@@ -1,6 +1,6 @@
 ---
-title: Vytvořit testy chaos a převzetí služeb při selhání pro Azure Service Fabric | Dokumentace Microsoftu
-description: Pomocí Service Fabric chaos testování a převzetí služeb při selhání otestování scénářů vyvolat chyby a ověření spolehlivost vašich služeb.
+title: Vytvoření chaos a testů převzetí služeb při selhání pro Azure Service Fabric | Microsoft Docs
+description: Pomocí scénářů Service Fabric chaos test a převzetí služeb při selhání můžete navolávat chyby a ověřit spolehlivost vašich služeb.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -12,50 +12,50 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865004"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718233"
 ---
-# <a name="testability-scenarios"></a>Scénářů testovatelnosti
-Velkých distribuovaných systémech jako cloudových infrastruktur jsou ze své podstaty nespolehlivé. Azure Service Fabric umožňuje vývojářům zápis služeb pro spuštění nad rámec nespolehlivé infrastruktury. Chcete-li vysoké kvality služeb, vývojáři musí mít možnost vyvolat takovou nespolehlivé infrastrukturu k testování stability svých služeb.
+# <a name="testability-scenarios"></a>Scénáře testování
+Velké distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric poskytuje vývojářům možnost psát služby, které se spouštějí na nespolehlivých infrastrukturách. Aby bylo možné zapisovat vysoce kvalitní služby, vývojáři musí být schopni tuto nespolehlivou infrastrukturu vyvolávat, aby otestovali stabilitu svých služeb.
 
-Fault Analysis Service umožňuje vývojářům způsobit selhání akce k testování služeb v případě chyb. Ale cílové simulované chyby přináší pouze zatím. Provádět testování další, můžete použít v Service Fabric scénáře testování: chaos testu a testovací převzetí služeb při selhání. Tyto scénáře simulace průběžné prokládané chyb, bezproblémové a vynuceném v rámci clusteru za dlouhou dobu. Test se nakonfigurují frekvence a typ chyby, umožní spuštění prostřednictvím ke generování chyb v clusteru a vaše služba API jazyka C# nebo prostředí PowerShell.
+Služba analýzy chyb dává vývojářům možnost přimět akce při selhání do testovacích služeb v případě výskytu selhání. Cílené simulované chyby ale budou mít jenom to daleko. Chcete-li provést testování dále, můžete použít testovací scénáře v Service Fabric: test chaos a test převzetí služeb při selhání. Tyto scénáře simulují průběžné i nedarované chyby v celém clusteru po delší dobu. Jakmile se test nakonfiguruje s četností a typem chyb, dá se spustit buď C# prostřednictvím rozhraní API, nebo pomocí PowerShellu, aby se generovaly chyby v clusteru a službě.
 
 > [!WARNING]
-> Teď nahrazuje ChaosTestScenario odolnější, založené na službě Chaos. Nové článku [řízený Chaos](service-fabric-controlled-chaos.md) další podrobnosti.
+> ChaosTestScenario se nahrazuje pružnou Chaosou založenou na službách. Další podrobnosti najdete v novém článku s [chaos řízeným](service-fabric-controlled-chaos.md) článkem.
 > 
 > 
 
-## <a name="chaos-test"></a>Chaos testu
-Scénář chaos generuje chyby napříč celý cluster Service Fabric. Scénář komprimuje chyby obvykle vidět měsíců nebo let na několik hodin. Kombinace prokládané chyb s vysokou odolnost rychlost vyhledá krajní případy, které jsou jinak provedena. To vede k významné zvýšení kvality kódu služby.
+## <a name="chaos-test"></a>Chaos test
+Scénář chaos generuje chyby napříč celým clusterem Service Fabric. Scénář komprimuje chyby obecně v měsících nebo rocích až na pár hodin. Kombinace vzájemně vykládaných chyb s vysokou mírou chyb vyhledá rohové případy, které se jinak neobjeví. To vede k výraznému zlepšení kvality kódu služby.
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Simulovat v testu chaos chyb
-* Restartovat uzel
-* Restartujte balíček nasazenému kódu
-* Odstranění repliky
-* Restartujte na repliku
+### <a name="faults-simulated-in-the-chaos-test"></a>Chyby simulované v testu chaos
+* Restartování uzlu
+* Restartování nasazeného balíčku kódu
+* Odebrání repliky
+* Restartování repliky
 * Přesunutí primární repliky (volitelné)
-* Přesunout na sekundární repliku (volitelné)
+* Přesunutí sekundární repliky (volitelné)
 
-Chaos testovací běhy více iterací chyb a cluster ověření pro zadané časové období. Čas strávený clusteru stabilizovat a pro ověření úspěšné je také možné konfigurovat. Scénář selže, pokud dosáhnete jednoho selhání ověření clusteru.
+Test chaos spustí v zadaném časovém období několik iterací chyb a ověření clusteru. Je možné nastavit i čas strávený při stabilizaci clusteru a pro úspěšné ověření. Scénář selže, když dojde k jedné chybě při ověřování clusteru.
 
-Představte si třeba test nastavena pro spuštění na jednu hodinu s délkou maximálně tři souběžných chyb. Test bude zahájit tři chyby a potom ověřte stav clusteru. Test bude iteraci v rámci předchozího kroku do clusteru nebude v pořádku nebo předá jednu hodinu. Pokud cluster nebude v pořádku v kteroukoli iteraci, tedy ne stabilizaci v nakonfigurovaném čase, test se nezdaří s výjimkou. Tato výjimka označuje, že něco se pokazilo a vyžaduje další šetření.
+Představte si třeba, že sada testů bude běžet po dobu jedné hodiny s maximálně třemi souběžnými chybami. Test provede tři chyby a potom ověří stav clusteru. Test projde předchozí krok do chvíle, kdy se cluster přestane nacházet v pořádku nebo v průběhu jedné hodiny. Pokud cluster v jakékoli iteraci přestane být v pořádku, to znamená, že se nestabilizovat v nakonfigurovaném čase, test se nezdaří s výjimkou. Tato výjimka znamená, že se něco pokazilo a potřebuje další šetření.
 
-V současné podobě modul pro generování selhání při testu chaos indukuje pouze bezpečné chyb. To znamená, že chybí externí chyb, ke ztrátě kvora nebo data nikdy nedojde.
+V jeho současné podobě modul generování chyb v testu chaos vystavuje jenom bezpečné chyby. To znamená, že při absenci externích chyb nedojde k žádnému kvoru nebo ztrátě dat.
 
-### <a name="important-configuration-options"></a>Důležité konfigurační možnosti
-* **TimeToRun**: Celkový čas, který test bude spuštěn před dokončením s úspěchem. Test můžete dokončit dříve namísto selhání ověření.
-* **MaxClusterStabilizationTimeout**: Maximální doba čekání cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda stav clusteru je v pořádku, stav služby je v pořádku, velikost cílové sady replik je dosaženo oddílu služby a neexistuje žádná replik InBuild.
-* **MaxConcurrentFaults**: Maximální počet souběžných chyb vyvolaných v každé iteraci. Větší číslo, mnohem vyššími testu, takže výsledkem je složitější převzetí služeb při selhání a přechod kombinace. Test zaručuje, že v absence externí chyb, nebude existovat kvora nebo ztrátu, bez ohledu na to, jak vysoká je tato konfigurace.
-* **EnableMoveReplicaFaults**: Povolí nebo zakáže chyb, které jsou příčinou přesunu primární nebo sekundární repliky. Tyto chyby jsou ve výchozím nastavení zakázané.
-* **WaitTimeBetweenIterations**: Množství času čekat mezi iteracemi, např. po kruhové chyb a odpovídající ověření.
+### <a name="important-configuration-options"></a>Důležité možnosti konfigurace
+* **TimeToRun**: celková doba, kterou test spustí před dokončením s úspěchem. Test může skončit dříve než selhání ověření.
+* **MaxClusterStabilizationTimeout**: maximální doba, po kterou se má čekat, než se cluster před selháním testu stane v pořádku. Provedené kontroly jsou bez ohledu na to, zda je stav clusteru OK, stav služby je v pořádku, je dosaženo cílové velikosti sady replik pro oddíl služby a žádné repliky inbuildu neexistují.
+* **MaxConcurrentFaults**: maximální počet souběžných chyb vyvolaných v každé iteraci. Čím vyšší je číslo, tím lépe agresivní test, což vede k složitějším převzetí služeb při selhání a přechodům. Test zaručuje, že v případě nepřítomnosti externích chyb nebude k dispozici kvorum ani ztráta dat bez ohledu na to, jak vysoká je tato konfigurace.
+* **EnableMoveReplicaFaults**: povolí nebo zakáže chyby, které způsobují přesunutí primárních nebo sekundárních replik. Ve výchozím nastavení jsou tyto chyby zakázané.
+* **WaitTimeBetweenIterations**: množství času, které se má čekat mezi iteracemi, tj. po zaokrouhlení chyb a odpovídajícím ověření.
 
-### <a name="how-to-run-the-chaos-test"></a>Jak spustit testovací chaosu
+### <a name="how-to-run-the-chaos-test"></a>Jak spustit test chaos
 Ukázka v jazyce C#
 
 ```csharp
@@ -133,6 +133,8 @@ class Test
 
 PowerShell
 
+Modul Service Fabric PowerShell obsahuje dva způsoby, jak začít scénář chaos. @no__t – 0 je založený na klientech a pokud se klientský počítač vypne prostřednictvím testu, nebudou zavedeny žádné další chyby. Alternativně je k dispozici sada příkazů, které mají za následek, že je test spuštěn v případě vypnutí počítače. `Start-ServiceFabricChaos` používá stavovou a spolehlivou systémovou službu nazvanou FaultAnalysisService. aby se zajistilo, že chyby zůstanou zavedeny, dokud se TimeToRun neuvolní. `Stop-ServiceFabricChaos` se dá použít k ručnímu zastavení scénáře a `Get-ServiceFabricChaosReport` obdrží sestavu. Další informace najdete v tématu [Reference k Azure Service Fabric PowerShellu](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) a vystavování [chaos řízených v clusterech Service Fabric](service-fabric-controlled-chaos.md).
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -146,26 +148,26 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 ```
 
 
-## <a name="failover-test"></a>Testovací převzetí služeb při selhání
-Scénáře testovacího převzetí služeb při selhání je verze chaos testovací scénář, který cílí na konkrétní službu oddílu. Ověřuje vliv převzetí služeb při selhání na oddíl konkrétní službu a ponechání ostatním službám to neovlivní. Jakmile se nakonfigurují informace o cílovém oddílu a dalších parametrů, poběží brána jako nástroj na straně klienta, který používá rozhraní API jazyka C# nebo prostředí PowerShell k vygenerování chyby pro oddíl služby. Scénář prochází posloupnost simulované chyb a ověření služby průběhu obchodní logiky na straně poskytnout úlohy. Chyba při ověřování služby naznačuje problém, který vyžaduje další šetření.
+## <a name="failover-test"></a>Test převzetí služeb při selhání
+Scénář testu převzetí služeb při selhání je verze scénáře testu chaos, který cílí na konkrétní oddíl služby. Testuje účinek převzetí služeb při selhání u konkrétního oddílu služby, zatímco ostatní služby zůstanou beze změn. Po nakonfigurování s informacemi o cílovém oddílu a dalších parametrech se spustí jako nástroj na straně klienta, který k vygenerování C# chyb pro oddíl služby používá rozhraní API nebo PowerShell. Scénář projde sekvencí simulovaných chyb a ověření služby, zatímco vaše obchodní logika běží na straně, aby poskytovala úlohu. Selhání při ověřování služby indikuje problém, který potřebuje další šetření.
 
-### <a name="faults-simulated-in-the-failover-test"></a>Chyby s Simulovaná v testu převzetí služeb při selhání
-* Restartujte nasazenému kódu balíček, který je hostitelem oddílu
-* Odebrání primární nebo sekundární repliky nebo bezstavových instance
-* Restartujte primární sekundární repliky (je-li trvalé služby)
-* Přesunutí primární repliky
-* Přesunout na sekundární repliku
-* Restartujte oddíl
+### <a name="faults-simulated-in-the-failover-test"></a>Chyby simulované v rámci testu převzetí služeb při selhání
+* Restartujte nasazený balíček kódu, kde je oddíl hostovaný.
+* Odebrat primární nebo sekundární repliku nebo bezstavovou instanci
+* Restartování primární sekundární repliky (Pokud trvalá služba)
+* Přesunout primární repliku
+* Přesunutí sekundární repliky
+* Restartovat oddíl
 
-Testovací převzetí služeb při selhání indukuje zvolené chybu a pak spustí ověření ve službě k zajištění jeho stabilitu. Testovací převzetí služeb při selhání indukuje jenom jedna chyba najednou, možná na rozdíl od více chyb v testu chaos. Pokud oddíl služby není stabilizaci v nakonfigurovaném časovém limitu po každé chyby, test se nezdaří. Test indukuje pouze bezpečné chyb. To znamená, neexistence externí selhání nedojde ke ztrátě kvora nebo data.
+Test převzetí služeb při selhání vyzkouší zvolenou chybu a potom spustí ověření služby, aby se zajistila její stabilita. Test převzetí služeb při selhání vyzkouší jenom jednu chybu v jednom okamžiku, a to na rozdíl od možného více chyb v testu chaos. Pokud oddíl služby není stabilizován v nakonfigurovaném časovém limitu po každé chybě, test se nezdařil. Test vyzkouší pouze bezpečné chyby. To znamená, že při neexistenci externích selhání nedojde k kvoru nebo ztrátě dat.
 
-### <a name="important-configuration-options"></a>Důležité konfigurační možnosti
-* **PartitionSelector**: Výběr objektu, který určuje oddíl, který je potřeba cílit.
-* **TimeToRun**: Celkový čas, který test bude spuštěn před dokončením.
-* **MaxServiceStabilizationTimeout**: Maximální doba čekání cluster tak, aby se obnoví dobrý stav před selháním testu. Provádí kontroly se určuje, zda je v pořádku stav služby, velikost cílové sady replik je dosaženo pro všechny oddíly a neexistují žádné replik InBuild.
-* **WaitTimeBetweenFaults**: Dobu čekání mezi každý cyklus selhání a ověření.
+### <a name="important-configuration-options"></a>Důležité možnosti konfigurace
+* **PartitionSelector**: objekt Selector určující oddíl, který je třeba cílit.
+* **TimeToRun**: celková doba, kterou test spustí před dokončením.
+* **MaxServiceStabilizationTimeout**: maximální doba, po kterou se má čekat, než se cluster před selháním testu stane v pořádku. Provedené kontroly jsou bez ohledu na to, jestli je stav služby v pořádku, velikost cílové sady repliky se dosáhne pro všechny oddíly a žádné repliky inbuildu neexistují.
+* **WaitTimeBetweenFaults**: doba čekání mezi každým selháním a cyklem ověřování.
 
-### <a name="how-to-run-the-failover-test"></a>Jak spustit testovací převzetí služeb při selhání
+### <a name="how-to-run-the-failover-test"></a>Jak spustit test převzetí služeb při selhání
 **C#**
 
 ```csharp

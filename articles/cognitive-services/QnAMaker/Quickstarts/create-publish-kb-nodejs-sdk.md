@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: QnA Maker klientskou knihovnu pro Node. js'
+title: 'Rychlý Start: QnA Maker klientskou knihovnu pro Node. js'
 titleSuffix: Azure Cognitive Services
 description: Začněte s klientskou knihovnou QnA Maker pro Node. js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203219"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802988"
 ---
-# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Rychlý start: QnA Maker klientskou knihovnu pro Node. js
+# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Rychlý Start: QnA Maker klientskou knihovnu pro Node. js
 
 Začněte s klientskou knihovnou QnA Maker pro Node. js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. 
 
@@ -27,9 +27,11 @@ Pomocí klientské knihovny QnA Maker pro Node. js:
 * Správa znalostní báze
 * Publikování znalostní báze
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | knihovny dokumentace[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [ukázky Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Node. js](https://nodejs.org).
@@ -40,7 +42,7 @@ Pomocí klientské knihovny QnA Maker pro Node. js:
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. 
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_SUBSCRIPTION_KEY` a. `QNAMAKER_HOST` Použijte hodnoty klíče a hostitele, které se nacházejí v **klíčích** prostředku a na stránkách **přehledu** v Azure Portal.
+Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_SUBSCRIPTION_KEY` a `QNAMAKER_HOST`. Použijte hodnoty klíč a koncový bod nalezené v **klíčích** prostředku a stránkách **přehledu** v Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -50,7 +52,7 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-Spuštěním příkazu vytvořte aplikaci uzlu `package.json` se souborem. `npm init -y` 
+Spuštěním příkazu `npm init -y` vytvořte aplikaci uzlu se souborem `package.json`. 
 
 ```console
 npm init -y
@@ -58,13 +60,13 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Nainstalujte balíčky `azure-cognitiveservices-qnamaker`anpm: `ms-rest-azure`
+Nainstalujte NPM balíčky `ms-rest-azure` a `azure-cognitiveservices-qnamaker`:
 
 ```console
 npm install azure-cognitiveservices--qnamaker ms-rest-azure --save
 ```
 
-`package.json` Soubor vaší aplikace je aktualizovaný pomocí závislostí.
+Soubor `package.json` vaší aplikace se aktualizuje pomocí závislostí.
 
 
 ## <a name="object-model"></a>Objektový model
@@ -94,11 +96,10 @@ Vytvořte soubor s názvem `index.js`. Do souboru přidejte knihovnu QnA Maker a
 
 Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné.
 
-
-|Proměnná prostředí|Proměnná Node. js|Příklad|
+|Proměnná prostředí|Proměnná Node. js|Příklad:|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|identifikátor GUID znaku 32|
-|`QNAMAKER_HOST`|`endpoint`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com` – nahradí subdoménu `your-resource-name` hodnotou názvu vašeho prostředku.|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -122,7 +123,7 @@ Zavolejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/cogni
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-Aby bylo možné úspěšně vytvořit [`wait_for_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že je zahrnutá funkce, na kterou se odkazuje v kódu výše. 
+Aby bylo možné úspěšně vytvořit znalostní bázi, zajistěte, aby funkce include [`wait_for_operation`](#get-status-of-an-operation) odkazovala na výše uvedený kód. 
 
 ## <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
 
@@ -130,7 +131,7 @@ Znalostní bázi můžete aktualizovat tak, že do metody [aktualizace](https://
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Aby bylo možné úspěšně aktualizovat [`wait_for_operation`](#get-status-of-an-operation) znalostní bázi, ujistěte se, že obsahuje funkci, na kterou se odkazuje ve výše uvedeném kódu. 
+Aby bylo možné úspěšně aktualizovat znalostní bázi, zajistěte, aby zahrnovalo funkci [`wait_for_operation`](#get-status-of-an-operation) , na kterou se odkazuje ve výše uvedeném kódu. 
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
@@ -154,7 +155,7 @@ Volání _setTimeout_ v následujícím bloku kódu slouží k simulaci asynchro
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `node index.js` příkazu z adresáře aplikace.
+Spusťte aplikaci s příkazem `node index.js` z adresáře aplikace.
 
 
 Všechny fragmenty kódu v tomto článku jsou [k dispozici](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) a lze je spustit jako jeden soubor.
@@ -173,7 +174,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Kurz: Vytvoření a odpověď na KB](../tutorials/create-publish-query-in-portal.md)
+>[Kurz: vytvoření a odpověď na databázi znalostí](../tutorials/create-publish-query-in-portal.md)
 
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)

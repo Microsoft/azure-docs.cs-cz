@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytváření, výuka a publikování znalostní báze Knowledge Base – QnA Maker'
+title: 'Rychlý Start: vytvoření, výuka a publikování znalostní báze Knowledge Base – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Znalostní báze QnA Maker Knowledge Base v tomto příkladu se vytváří na základě jednoduchých webových stránek s nejčastějšími dotazy pro odpovědi na otázky týkající se obnovení klíče BitLockeru.
 author: diberry
@@ -8,18 +8,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: cafc1e2f3f195301a6c0f9485ebaa10111b08c7d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376368"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803051"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý start: Vytvoření, trénování a publikování znalostní báze služby QnA Maker
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
 Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Tento článek obsahuje příklad vytvoření QnA Maker znalostní báze na jednoduché webové stránce s nejčastějšími dotazy a odpovědí na otázky týkající se obnovení klíče BitLockeru.
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -54,7 +56,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 ## <a name="edit-the-knowledge-base"></a>Upravit znalostní bázi
 
-1. Na portálu QnA Maker v části **Upravit** vyberte **Přidat dvojici QnA** a přidejte do znalostní báze nový řádek. V části **Question** (Otázka) zadejte **Hi** (Dobrý den). V části **Answer** (Odpověď) zadejte **Hello. Zeptejte se mě na otázky nástroje BitLocker.**
+1. Na portálu QnA Maker v části **Upravit** vyberte **Přidat dvojici QnA** a přidejte do znalostní báze nový řádek. V části **Question** (Otázka) zadejte **Hi** (Dobrý den). V části **odpověď**zadejte **Hello. Zeptejte se mě na otázky nástroje BitLocker.**
 
     ![Snímek obrazovky QnA Makerového portálu](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
@@ -62,7 +64,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 ## <a name="test-the-knowledge-base"></a>Testování znalostní báze
 
-1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily. Do `hi there` pole zadejte a vyberte Enter. Jako odpověď by se měla zobrazit odpověď, kterou jste vytvořili.
+1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily. Do pole zadejte `hi there` a vyberte Enter. Jako odpověď by se měla zobrazit odpověď, kterou jste vytvořili.
 
 1. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Testovací okno slouží k otestování změn ve znalostní bázi před jejich publikováním.
 
@@ -104,7 +106,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
     * Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** musí být jiný než název aplikace, který jste použili při vytváření služby QnA maker. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření znalostní báze](../How-To/create-knowledge-base.md)
