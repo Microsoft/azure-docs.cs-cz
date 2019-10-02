@@ -2,49 +2,49 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Database Migration Service (DMS)?
+    - name: Co je Azure Database Migration Service?
       href: dms-overview.md
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření služby – Portál
+    - name: Vytvoření služby – portál
       href: quickstart-create-data-migration-service-portal.md
 - name: Kurzy
   items:
-    - name: Offline migrace SQL Serveru do Azure SQL DB
+    - name: Offline migrace SQL Serveru do izolované databáze Azure SQL DB
       href: tutorial-sql-server-to-azure-sql.md
-    - name: Online migrace SQL Serveru do Azure SQL DB
+    - name: Online migrace SQL Serveru do izolované databáze Azure SQL DB
       href: tutorial-sql-server-azure-sql-online.md
-    - name: Offline migrace SQL Serveru do Azure SQL DB MI
+    - name: Offline migrace SQL Serveru do spravované instance Azure SQL DB
       href: tutorial-sql-server-to-managed-instance.md
-    - name: Online migrace SQL Serveru do Azure SQL DB MI
+    - name: Online migrace SQL Serveru do spravované instance Azure SQL DB
       href: tutorial-sql-server-managed-instance-online.md
-    - name: Online migrace SQL Serveru RDS do Azure SQL DB nebo Azure SQL DB MI
+    - name: Online migrace RDS SQL Serveru do izolované databáze Azure SQL DB nebo spravované instance Azure SQL DB
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: Online migrace MySQL do Azure DB for MySQL
       href: tutorial-mysql-azure-mysql-online.md
     - name: Online migrace RDS MySQL do Azure DB for MySQL
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: Online migrace PostgreSQL do Azure DB for PostgreSQL
+    - name: Online migrace PostgreSQL do Azure DB for PostgreSQL – Single server
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: Online migrace RDS PostgreSQL do Azure DB for PostgreSQL
+    - name: Online migrace RDS PostgreSQL do Azure DB for PostgreSQL – Single server
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: Offline migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
       href: tutorial-mongodb-cosmos-db.md
     - name: Online migrace MongoDB do rozhraní Mongo API služby Azure Cosmos DB
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Online migrace Oracle do Azure Database for PostgreSQL
+    - name: Online migrace Oraclu do Azure Database for PostgreSQL – Single server
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Návody
   items:
-    - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB
+    - name: Použití PowerShellu k migraci SQL Serveru do izolované databáze Azure SQL DB
       href: howto-sql-server-to-azure-sql-powershell.md
-    - name: Použití PowerShellu k migraci SQL Serveru do Azure SQL DB MI
+    - name: Použití PowerShellu k migraci SQL Serveru do spravované instance Azure SQL DB
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Monitorování aktivit migrace
       href: how-to-monitor-migration-activity.md
-    - name: Migrace balíčků SSIS do Azure SQL Database
+    - name: Znovunasazení balíčků SSIS do izolované databáze Azure SQL DB
       href: how-to-migrate-ssis-packages.md
-    - name: Migrace balíčků SSIS do spravované instance Azure SQL Database
+    - name: Znovunasazení balíčků SSIS do spravované instance Azure SQL Database
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Zdroje a prostředky
   expanded: true
@@ -53,7 +53,7 @@
       href: resource-scenario-status.md
     - name: Přehled požadavků
       href: pre-reqs.md
-    - name: Síťové topologie pro migrace Azure SQL DB MI
+    - name: Síťové topologie pro migrace spravované instance Azure SQL DB
       href: resource-network-topologies.md
     - name: Řešení potíží a známé problémy
       items:
@@ -61,11 +61,11 @@
           href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Řešení běžných potíží a chyb
           href: known-issues-troubleshooting-dms.md
-        - name: Známé problémy – online migrace do Azure SQL DB
+        - name: Známé problémy – online migrace do izolované databáze Azure SQL DB
           href: known-issues-azure-sql-online.md
         - name: Známé problémy – online migrace do Azure DB for MySQL
           href: known-issues-azure-mysql-online.md
-        - name: Známé problémy – online migrace do Azure DB for PostgreSQL
+        - name: Známé problémy – online migrace do Azure DB for PostgreSQL – Single server
           href: known-issues-azure-postgresql-online.md
     - name: Videa
       items:
@@ -89,7 +89,7 @@
       items:
         - name: Dostupné služby a nástroje pro scénáře migrace dat
           href: dms-tools-matrix.md
-        - name: Průvodce migrací databází
+        - name: Průvodce migrací databází do Azure
           href: 'https://aka.ms/datamigration'
         - name: Data Migration Assistant
           href: 'https://aka.ms/dma'
@@ -97,6 +97,8 @@
           href: 'https://aka.ms/ssma'
         - name: Pomocník pro experimentování s databázemi
           href: 'https://aka.ms/dea-docs'
+        - name: Data Access Migration Toolkit
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: Nejčastější dotazy
       href: faq.md
     - name: Zpětná vazba na webu User Voice

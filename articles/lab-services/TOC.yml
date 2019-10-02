@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: Návody
   items:
+    - name: Testovací prostředí v učebnách – typy tříd
+      items:
+        - name: Typy tříd
+          href: classroom-labs/class-types.md
+        - name: Hluboké učení v přirozeném zpracování
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Skriptování Shellu v Linuxu
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: Testovací prostředí v učebnách
       items:
         - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)

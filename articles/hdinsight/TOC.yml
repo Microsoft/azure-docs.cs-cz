@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: Správa clusterů HDInsight – PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Vytvoření kanálu ETL
+          href: ./hdinsight-sales-insights-etl.md
     - name: Ukázky
       items:
         - name: Ukázky Azure CLI

@@ -21,17 +21,17 @@
       items:
         - name: Použití Draftu
           href: kubernetes-draft.md
-        - name: Použití jazyka Java (VS Code a CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: Použití .NET Core (VS Code a CLI)
+        - name: Použití editoru Visual Studio Code a služby Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: Použití .NET Core (Visual Studio 2017)
+        - name: Použití sady Visual Studio a služby Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Použití Node.js (VS Code a CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: Použití CLI a služby Azure Dev Spaces
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Použití Azure Dev Spaces pro týmový vývoj
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Kurzy
   items:

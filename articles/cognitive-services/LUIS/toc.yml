@@ -19,6 +19,8 @@
         - name: 2. Nasazení aplikace
           href: get-started-portal-deploy-app.md
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
+    - name: Použití prohlížeče
+      href: luis-get-started-get-intent-from-browser.md
     - name: Použití sady .NET SDK
       items:
         - name: Vytvoření a správa aplikace
@@ -32,17 +34,7 @@
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-get-intent.md
-            - name: Přejít
-              href: luis-get-started-go-get-intent.md
-            - name: Java
-              href: luis-get-started-java-get-intent.md
-            - name: Node.js
-              href: luis-get-started-node-get-intent.md
-            - name: Python
-              href: luis-get-started-python-get-intent.md
+          href: luis-get-started-get-intent-from-rest.md
         - name: Změna modelu
           items:
             - name: 'C#'
@@ -403,8 +395,6 @@
   items:
     - name: Azure Bot Service
       href: 'https://dev.botframework.com/'
-    - name: 'Bot Builder 3.x SDK C#'
-      href: 'https://github.com/Microsoft/BotBuilder'
     - name: 'Bot Builder 4.x SDK C#'
       href: 'https://github.com/Microsoft/botbuilder-dotnet'
     - name: QnA Maker
