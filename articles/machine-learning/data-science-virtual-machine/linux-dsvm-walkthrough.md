@@ -58,8 +58,8 @@ Pak zřetězení dvou souborů dohromady:
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **\_wordové\_frekvence * Word*** označují procento slov v e-mailu, která odpovídají *Wordu*. Pokud je například **\_slovo frekvence\_** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
-* Sloupce jako **char\_frekvence\_* char*** označují procento všech znaků v e-mailu, které jsou typu *char*.
+* Sloupce jako **\_wordové\_frekvence *Word*** označují procento slov v e-mailu, která odpovídají *Wordu*. Pokud je například **\_slovo frekvence\_** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
+* Sloupce jako **char\_frekvence\_*char*** označují procento všech znaků v e-mailu, které jsou typu *char*.
 * **velké\_spustit\_délka\_nejdelší** představuje nejdelší doba posloupnost velká písmena.
 * **velké\_spustit\_délka\_průměrné** je průměrná délka všech pořadí velká písmena.
 * **velké\_spustit\_délka\_celkový** je celková délka všech pořadí velká písmena.

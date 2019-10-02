@@ -68,7 +68,7 @@ Na počítači brány spusťte **Správa dat Configuration Manager brány** a po
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Řešení Vstupní řezy jsou napořád ve stavu Čekání.
 Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true**. Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
 
-Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData***, pokud nastavíte možnost externí na hodnotu true.
+Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData** *, pokud nastavíte možnost externí na hodnotu true.
 
 Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-factory-create-datasets.md).
 

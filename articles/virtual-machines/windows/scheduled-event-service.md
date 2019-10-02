@@ -164,7 +164,7 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
 1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
 1. Do **název skupiny akcí**zadejte *myActionGroup*.
 1. Do textu **krátký název**zadejte **myActionGroup**.
-1. V **skupiny prostředků**vyberte * myResourceGroupAvailability * *.
+1. V **skupiny prostředků**vyberte *myResourceGroupAvailability* *.
 1. V části Akce zadejte do pole **název akce** **e-mail**a pak vyberte **e-mail/SMS/Push/Voice**. Otevře se stránka **e-mail/SMS/Push/Voice** .
 1. Vyberte **e-mail**, zadejte e-mailovou adresu a pak vyberte **OK**.
 1. Na stránce **Přidat skupinu akcí** vyberte **OK**. 

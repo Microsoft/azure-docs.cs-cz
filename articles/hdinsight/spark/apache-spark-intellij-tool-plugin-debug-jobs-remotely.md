@@ -59,7 +59,7 @@ Doporučujeme také vytvořit cluster Apache Spark ve službě Azure HDInsight, 
 
     ![Výběr hostitelů v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Zobrazí se seznam hlavních uzlů, pracovních uzlů a uzlů Zookeeper. Hlavní uzly mají předponu **HN***. Vyberte první hlavní uzel.
+1. Zobrazí se seznam hlavních uzlů, pracovních uzlů a uzlů Zookeeper. Hlavní uzly mají předponu **HN**\*. Vyberte první hlavní uzel.
 
     ![Najděte hlavní uzel v Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 

@@ -129,7 +129,7 @@ V SAP HANA studiu klikněte pravým tlačítkem na kartě **Systémové informac
 
 Vyberte soubor. zip s příkazy jazyka SQL uložený místně a složka s odpovídajícími příkazy SQL se naimportuje. V tomto okamžiku lze pomocí těchto příkazů SQL spustit i mnoho různých diagnostických kontrol.
 
-Pokud třeba chcete vyzkoušet SAP HANA požadavky na šířku pásma replikace systému, klikněte pravým tlačítkem na příkaz  ****Šířka pásma** v části replikace: Šířka** pásma a vyberte **otevřít** v konzole SQL.
+Pokud třeba chcete vyzkoušet SAP HANA požadavky na šířku pásma replikace systému, klikněte pravým tlačítkem na příkaz **Šířka pásma** v části **replikace: Šířka** pásma a vyberte **otevřít** v konzole SQL.
 
 Úplný příkaz SQL otevře a pak provede změnu vstupních parametrů (oddíl úprav).
 
