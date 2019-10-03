@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962528"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827878"
 ---
 # <a name="personalizer-settings"></a>Nastavení přizpůsobení
 
@@ -31,7 +31,7 @@ Vytvořte prostředek pro přizpůsobení pro každou smyčku zpětné vazby.
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Konfigurace nastavení služby v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+1. Přihlaste se na web [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
 1. Najděte prostředek pro přizpůsobování. 
 1. V části **Správa prostředků** vyberte **Nastavení**.
 
@@ -45,7 +45,7 @@ Nakonfigurujte nastavení služby pro použití smyčky zpětné vazby. Změny n
 
 |Nastavení|Účel|
 |--|--|
-|Doba čekání na odměnu|Nastaví dobu, během které bude přizpůsobené aplikace shromažďovat hodnoty pro volání pořadí od okamžiku, kdy dojde k volání pořadí. Tato hodnota se nastaví podle dotazu: Jak dlouho by měl přizpůsobovat čekání na neprospěch hovorů? " Jakékoli odměny, které přicházejí do tohoto okna, se budou protokolovat, ale nepoužijí se ke učení.|
+|Doba čekání na odměnu|Nastaví dobu, během které bude přizpůsobené aplikace shromažďovat hodnoty pro volání pořadí od okamžiku, kdy dojde k volání pořadí. Tato hodnota je nastavená dotazem: jak dlouho by měl přizpůsobený systém čekat na neprospěch volání? Jakékoli odměny, které přicházejí do tohoto okna, se budou protokolovat, ale nepoužijí se ke učení.|
 |Výchozí odměna|Pokud přizpůsobené není žádné volání na základě odměny během časového intervalu čekání na odměnu přidruženého k volání pořadí, přizpůsobování přiřadí výchozí odměnu. Ve výchozím nastavení a ve většině scénářů je výchozí odměna nula.|
 |Agregace odměňování|Pokud se pro stejné volání rozhraní API pořadí přijímá více než jeden případ, použije se tato agregační metoda: **Sum** nebo **nejstarší**. Nejstarší vybere nejstarší skóre, které zbytek přijal a zahodí. To je užitečné, pokud chcete jedinečnou měnu mezi potenciálně duplicitními voláními. |
 
@@ -71,7 +71,7 @@ Vysoké frekvence aktualizací modelu jsou užitečné v situacích, kdy chcete 
 
 Po změně tohoto nastavení nezapomeňte vybrat **Uložit**.
 
-### <a name="data-retention"></a>Uchovávání dat
+### <a name="data-retention"></a>Uchování dat
 
 **Doba uchovávání dat** určuje, kolik dnů přizpůsobování udržuje protokoly dat. Minulé datové protokoly se vyžadují k provedení [hodnocení offline](concepts-offline-evaluation.md), které slouží k měření efektivity přizpůsobování a optimalizace výukových zásad.
 
@@ -88,7 +88,22 @@ Z oddílu správy prostředků pro **model a zásady**zkontrolujte vytváření 
 V části Správa prostředků pro **model a zásady**importujte nové zásady učení nebo exportujte aktuální zásady učení.
 Můžete získat soubory zásad učení z předchozích exportů nebo stáhnout optimalizované zásady zjištěné při offline hodnocení. Ruční změny těchto souborů budou mít vliv na výkon strojového učení a přesnost offline vyhodnocení a společnost Microsoft nebude moci získat informace o přesnosti strojového učení a hodnocení nebo o výjimkách služby vyplývajících z ručně upravených zásad.
 
-## <a name="next-steps"></a>Další postup
+## <a name="clear-data-for-your-learning-loop"></a>Vymazat data pro studijní smyčku
+
+1. V Azure Portal pro prostředek přizpůsobeného pro přizpůsobování vyberte na stránce **model a zásady** možnost **Vymazat data**.
+1. Pokud chcete vymazat všechna data a resetovat smyčku učení do původního stavu, zaškrtněte políčko všechna 3 zaškrtávací políčka.
+
+    ![V Azure Portal vymažte data z prostředku pro přizpůsobování.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Nastavení|Účel|
+    |--|--|
+    |Zaprotokolované individuální přizpůsobení a data odměna.|Tato data protokolování se používají při offline hodnocení. Vymažte data při resetování prostředku.|
+    |Resetujte model přizpůsobeného přizpůsobování.|Tento model se při každém přeškolení mění. Tato frekvence školení je určena v **frekvence nahrávání modelu** na stránce **Nastavení** . |
+    |Nastavte zásady učení na výchozí.|Pokud jste zásady učení změnili jako součást testování offline, tato zásada obnoví původní zásady učení.|
+
+1. Zaškrtnutím **políčka vymazat vybraná data** zahajte proces mazání. Stav je hlášen v oznámeních Azure v pravém horním navigačním panelu. 
+
+## <a name="next-steps"></a>Další kroky
 
 <!--
 [How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)

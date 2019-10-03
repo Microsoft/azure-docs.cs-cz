@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516377"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827903"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Povolení protokolování diagnostiky pro Azure Cognitive Services
 
 Tato příručka poskytuje podrobné pokyny, jak povolit diagnostické protokolování pro službu rozpoznávání Azure. Tyto protokoly poskytují bohatá a často používaná data o provozu prostředku, který se používá k identifikaci a ladění problémů. Než budete pokračovat, musíte mít účet Azure s předplatným alespoň pro jednu službu pro rozpoznávání, například [vyhledávání na webu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/overview), [Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)nebo [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete povolit protokolování diagnostiky, budete muset někam ukládat data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
@@ -35,13 +35,13 @@ Pokud chcete povolit protokolování diagnostiky, budete muset někam ukládat d
 Pojďme začít tím, že povolíte protokolování diagnostiky pomocí Azure Portal.
 
 > [!NOTE]
-> Pokud chcete tuto funkci povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů uvedených v tématu [shromáždění a využití dat protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
+> Pokud chcete tuto funkci povolit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, postupujte podle pokynů uvedených v tématu [shromáždění a využití dat protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 1. Přejděte na Azure Portal. Pak vyhledejte a vyberte prostředek Cognitive Services. Například vaše předplatné Vyhledávání na webu Bingu.   
 2. Dále v navigační nabídce vlevo vyhledejte **monitorování** a vyberte **nastavení diagnostiky**. Tato obrazovka obsahuje všechna dříve vytvořená nastavení diagnostiky pro tento prostředek.
 3. Pokud existuje dříve vytvořený prostředek, který byste chtěli použít, můžete ho teď vybrat. V opačném případě vyberte **+ Přidat nastavení diagnostiky**.
 4. Zadejte název nastavení. Pak vyberte možnost **archivovat do účtu úložiště** a **Odeslat do Log Analytics**.
-5. Po zobrazení výzvy ke konfiguraci vyberte účet úložiště a pracovní prostor OMS, který chcete použít k ukládání diagnostických protokolů. **Poznámka:** Pokud nemáte účet úložiště nebo pracovní prostor OMS, vytvořte ho podle pokynů.
+5. Po zobrazení výzvy ke konfiguraci vyberte účet úložiště a pracovní prostor OMS, který chcete použít k ukládání diagnostických protokolů. **Poznámka**: Pokud nemáte účet úložiště nebo pracovní prostor OMS, vytvořte ho podle pokynů.
 6. Vyberte **audit**, **operace RequestResponse**a **AllMetrics**. Pak nastavte dobu uchování dat diagnostického protokolu. Pokud jsou zásady uchovávání informací nastavené na hodnotu nula, ukládají se události pro tuto kategorii protokolu po neomezenou dobu.
 7. Klikněte na **Uložit**.
 
@@ -111,11 +111,11 @@ by bin(TimeGenerated, 10s), OperationName
 | render areachart kind=unstacked
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete pochopit, jak povolit protokolování, a také kategorie metrik a protokolů, které jsou podporované různými službami Azure, přečtěte si [Přehled metrik](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) v tématu Microsoft Azure a [Přehled článků o diagnostických protokolech Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) .
-* Přečtěte si tyto články Další informace o službě event hubs:
+* Přečtěte si tyto články, abyste se seznámili s centry událostí:
   * [Co je Azure Event Hubs?](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs)
   * [Začínáme s Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-csharp-ephcs-getstarted)
-* Čtení [stáhnout metrik a diagnostických protokolů ze služby Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs).
+* Přečtěte si téma [stažení metrik a diagnostické protokoly z Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#download-blobs).
 * Přečtěte si [vysvětlení hledání v protokolu v](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-new)protokolech Azure monitor.

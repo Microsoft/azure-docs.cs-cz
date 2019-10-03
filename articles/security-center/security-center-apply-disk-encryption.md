@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202489"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822276"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Použít šifrování disku v Azure Security Center
 Azure Security Center doporučuje použít šifrování disku, pokud máte disky virtuálních počítačů se systémem Windows nebo Linux, které nejsou šifrovány pomocí Azure Disk Encryption. Šifrování disku umožňuje šifrovat disky virtuálních počítačů s Windows a Linux IaaS.  Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.
@@ -43,14 +43,14 @@ K šifrování Azure Virtual Machines identifikovaných Security Center podle po
 * Získejte a spusťte Azure Disk Encryption předpoklady Azure PowerShell skriptu.
 * Zašifrujte své virtuální počítače.
 
-[Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md) vás provede těmito kroky. V tomto tématu se předpokládá, že používáte klientský počítač Windows, ze kterého konfigurujete šifrování disku.
+[Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) vás provede těmito kroky. V tomto tématu se předpokládá, že používáte klientský počítač Windows, ze kterého konfigurujete šifrování disku.
 
 K dispozici je mnoho přístupů, které lze použít pro Azure Virtual Machines. Pokud jste už s Azure PowerShellem nebo rozhraním příkazového řádku Azure CLI dobře obeznámeni, dáte možná přednost alternativním přístupům. Další informace o těchto dalších přístupech najdete v tématu [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste si ukázali, jak implementovat Security Center doporučení použít šifrování disku. Další informace o šifrování disku najdete v následujících tématech:
 
-* [Šifrování a Správa klíčů pomocí Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec) – Naučte se používat správu šifrování disku pro virtuální počítače s IaaS a Azure Key Vault, které vám pomůžou ochránit a chránit vaše data.
+* [Šifrování a Správa klíčů pomocí Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec) – Naučte se používat správu šifrování disku pro virtuální počítače s IaaS a Azure Key Vault k zajištění ochrany a ochrany vašich dat.
 * [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) (dokument) – Zjistěte, jak povolit šifrování disku pro virtuální počítače se systémem Windows a Linux.
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: fc06d5d36cb6004c79bec79838c8f0d51961d560
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720156"
+ms.locfileid: "71815989"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Použití spravovaných identit Azure k nasazení prostředí v testovacím prostředí 
 Jako vlastník testovacího prostředí můžete pomocí spravované identity nasadit prostředí v testovacím prostředí. Tato funkce je užitečná ve scénářích, kde prostředí obsahuje nebo obsahuje odkazy na prostředky Azure, jako jsou například trezory klíčů, Galerie sdílených imagí a sítě, které jsou pro skupinu prostředků tohoto prostředí externí. Umožňuje vytváření prostředí izolovaného prostoru, které není omezené na skupinu prostředků tohoto prostředí.
@@ -54,7 +54,7 @@ Pokud chcete změnit uživatelsky spravovanou identitu přiřazenou k testovací
 1. Po vytvoření identity si poznamenejte ID prostředku této identity. Měl by vypadat jako v následující ukázce: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. Pomocí **Fiddler**spusťte příkaz Put podobný následujícímu příkladu. Pro název spouštěče služby doporučujeme použít název identity, i když můžete zadat libovolný název, který chcete. 
+1. Proveďte metodu PUT protokolu HTTPS pro přidání nového prostředku @no__t 0 do testovacího prostředí podobně jako v následujícím příkladu. Prostředek spouštěče služeb je prostředek proxy serveru pro správu a řízení spravovaných identit v DevTest Labs. Název spouštěče služeb může být libovolný platný název, ale doporučujeme použít název spravovaného prostředku identity. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
