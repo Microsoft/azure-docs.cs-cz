@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7f47798ec3d0be8885853454ced8c1ea4c2a268c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 94e9a484afe42f8621380fa685f8bc9faeb894d3
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720390"
+ms.locfileid: "71816043"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -544,7 +544,15 @@ Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispoz
 
 ## <a name="Issues"></a>Známé problémy
 
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Obnovení databáze ongioing blokuje změny úrovně služeb a operací vytváření instancí.
+### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
+
+**Datum:** Říjen 2019
+
+SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database.md#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí příkazu `ALTER DATABASE REMOVE FILE`, chyba `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` se okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace se po 30min s `Internal server error` nezdaří.
+
+**Alternativní řešení**: Odeberte obsah souboru pomocí příkazu `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`. Pokud se jedná o jediný soubor ve skupině souborů, musíte před zmenšením souboru odstranit data z tabulky nebo oddílu přidruženého k této skupině souborů a případně tato data načíst do jiné tabulky nebo oddílu.
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Probíhající obnovení databáze blokuje změnu úrovně služby a operací vytváření instancí.
 
 **Datum:** SEP 2019
 

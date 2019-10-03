@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ceeacf216b1d3258aa73d86c613d28e00e9480bb
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68610136"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718619"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Vysvětlení faktury za Microsoft Azure
 Pokud chcete porozumět faktuře za Azure, porovnejte svou fakturu se souborem s podrobným denním využitím a sestavami řízení nákladů na webu Azure Portal.
@@ -42,10 +42,10 @@ Poplatky za využití se zobrazují na úrovni měřiče. Následující výrazy
  | Faktura (PDF) | Podrobné využití (CSV)|
  | --- | --- |
 |Fakturační cyklus | Fakturační období |
- |Název |Kategorie měřiče |
+ |Název |Kategorie měření |
  |Typ |Podkategorie měřiče |
- |Prostředek |Název měřiče |
- |Oblast |Oblast měřiče |
+ |Prostředek |Název měření |
+ |Oblast |Oblast měření |
  |Spotřebované |Spotřebované množství |
  |Zahrnuje |Zahrnuté množství |
  |Fakturovatelné |Překročené množství |

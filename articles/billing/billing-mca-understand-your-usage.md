@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c0c43c779affb4edca78def95906f5adfcc6fac4
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490629"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709469"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Výrazy v souboru s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu
 
@@ -128,4 +128,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 ## <a name="next-steps"></a>Další kroky
 
 - [Zobrazení a stažení faktury za Microsoft Azure](billing-download-azure-invoice.md)
-- [Zobrazení a stažení informací o využití Microsoft Azure a poplatcích](billing-download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](billing-download-azure-daily-usage.md)

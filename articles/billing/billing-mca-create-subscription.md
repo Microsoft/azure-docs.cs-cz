@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 558410d980d261780f7287d1e27ed704b356fc2b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e1fafafe5f67d1775ca80a1f7c2aff4dec9e0bc4
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490951"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709575"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Vytvoření dalšího předplatného Azure pro smlouvu se zákazníkem Microsoftu
 
