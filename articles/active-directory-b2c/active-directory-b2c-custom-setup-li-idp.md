@@ -12,7 +12,7 @@ ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
 ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/26/2019
 ms.locfileid: "71315182"
