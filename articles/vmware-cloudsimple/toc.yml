@@ -10,6 +10,8 @@
     - name: Rychlý start
       expanded: true
       items:
+        - name: Plánování sítě
+          href: cloudsimple-network-checklist.md
         - name: Inicializace a zřizování kapacity
           href: quickstart-create-cloudsimple-service.md
         - name: Konfigurace prostředí privátního cloudu
@@ -144,6 +146,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: Migrace virtuálních počítačů úloh do privátního cloudu
               href: migrate-workloads.md
+            - name: Migrace s využitím Azure Data Boxu
+              href: migration-using-azure-data-box.md
             - name: Zajištění vysoké dostupnosti aplikace ve VMware v Azure
               href: ensuring-high-availability.md
             - name: Volba metody vyrovnávání zatížení

@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: výraz pracovního prostoru
                   href: log-query/workspace-expression.md
+                - name: výraz prostředku
+                  href: log-query/resource-expression.md
                 - name: Sjednocení prostředků dat aplikací
                   href: log-query/unify-app-resource-data.md
             - name: Příklady a pokyny

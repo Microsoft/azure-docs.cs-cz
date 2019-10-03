@@ -4,10 +4,12 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je Data Science Virtual Machine?
+    - name: Co je Data Science Virtual Machine (DVSM)?
       href: overview.md
     - name: Co je DSVM s Geo AI?
       href: geo-ai-dsvm-overview.md
+    - name: Nástroje zahrnuté do DSVM
+      href: tools-included.md
 - name: Šablony Rychlý start
   expanded: true
   items:

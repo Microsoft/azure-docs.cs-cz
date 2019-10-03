@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Rozpoznávání tištěného a ručně psaného textu
       href: concept-recognizing-text.md
-    - name: Rozpoznávání obsahu pro dospělé a nevhodného obsahu
+    - name: Detekce obsahu pro dospělé
       href: concept-detecting-adult-content.md
 - name: Návody
   items:

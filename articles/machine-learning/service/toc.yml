@@ -261,6 +261,8 @@
       items:
         - name: Vytváření kanálů ML v Pythonu
           href: how-to-create-your-first-pipeline.md
+        - name: Ladění a řešení potíží s kanály ML
+          href: how-to-debug-pipelines.md
         - name: Azure Pipelines pro CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

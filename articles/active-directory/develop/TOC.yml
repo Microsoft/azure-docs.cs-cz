@@ -276,6 +276,12 @@
               href: authentication-national-cloud.md
             - name: Authentication
               href: msal-national-cloud.md
+        - name: Automatické zřizování uživatelů (SCIM)
+          items:
+            - name: Co je automatické zřizování uživatelů?
+              href: /azure/active-directory/manage-apps/user-provisioning
+            - name: Sestavení a integrace koncového bodu SCIM
+              href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
     - name: Návody
       items:
         - name: Authentication

@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure DB for MariaDB?
       href: overview.md
+    - name: Kterou možnost MariaDB mám zvolit?
+      href: select-right-deployment-type.md
 - name: Šablony Rychlý start
   expanded: true
   items:

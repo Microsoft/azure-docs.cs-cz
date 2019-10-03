@@ -11,12 +11,12 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 894ba48c0bc9d080b7e68ff722afe3a658bef5f7
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71170708"
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802345"
 landingContent:
 - title: Začínáme s DSVM
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: overview.md
     - text: Co je DSVM s Geo AI?
       url: geo-ai-dsvm-overview.md
+    - text: Nástroje zahrnuté do DSVM
+      url: tools-included.md
   - linkListType: get-started
     links:
     - text: Vytvoření DSVM s Windows

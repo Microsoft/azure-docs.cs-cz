@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/14/2019
+  ms.date: 09/30/2019
   ms.author: terrylan
 abstract:
   description: 'Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.'
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Webová aplikace v linuxovém kontejneru</a>
+          - html: <a href="/azure/security/develop/secure-aad-app">Webová aplikace s Azure Active Directory</a>
           - html: <a href="/azure/security/develop/secure-pci-web-app">Odvětví platebních karet</a>
   - title: Koncepty
     items:

@@ -66,12 +66,12 @@
       items:
         - name: Přehled zabezpečení
           href: overview-security.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: key-vault-security-controls.md
         - name: Světy zabezpečení
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpečení trezoru klíčů
           href: key-vault-secure-your-key-vault.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: key-vault-security-controls.md
     - name: Obnovitelné odstranění
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -98,8 +98,12 @@
       items:
         - name: Doporučení
           href: security-recommendations.md
-    - name: Použití spravované identity služby App Service
-      href: managed-identity.md
+    - name: Authentication
+      items:
+        - name: Použití spravované identity služby App Service
+          href: managed-identity.md
+        - name: Použití zásad řízení přístupu
+          href: key-vault-group-permissions-for-apps.md
     - name: Protokolování v Azure Key Vaultu
       href: key-vault-logging.md
     - name: Přístup přes bránu firewall
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Použití obnovitelného odstranění Key Vaultu s využitím Azure PowerShellu
       href: key-vault-soft-delete-powershell.md
-    - name: Použití skupin pro udělení přístupu
-      href: key-vault-group-permissions-for-apps.md
     - name: Konfigurace bran firewall a virtuálních sítí
       href: key-vault-network-security.md
     - name: Vývoj v Javě

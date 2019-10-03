@@ -7,6 +7,12 @@
       items:
         - name: Webová aplikace v linuxovém kontejneru
           href: secure-web-app.md
+        - name: Webová aplikace s Azure Active Directory
+          href: secure-aad-app.md
+    - name: Řešení dodržující oborové předpisy
+      items:
+        - name: Odvětví platebních karet
+          href: secure-pci-web-app.md
 - name: Koncepty
   expanded: true
   items:
