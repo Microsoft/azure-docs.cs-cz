@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: Konfigurace testovacích prostředí s vnořenými šablonami
               href: deploy-nested-template-environments.md
+            - name: Použití spravovaných identit Azure k nasazení prostředí
+              href: use-managed-identities-environments.md
         - name: Správa opětovně využitelných šablon
           items:
             - name: Vlastní image versus vzorce
