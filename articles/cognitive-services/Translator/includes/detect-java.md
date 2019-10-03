@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f118f27d870f4c69a3bf568bacb3765fefee34c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907120"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837548"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir detect-sample
 cd detect-sample
 ```
 
-Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`a který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
+Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, nejdůležitější `build.gradle.kts`, který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
@@ -34,7 +34,7 @@ Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
 
 ## <a name="configure-the-build-file"></a>Konfigurovat soubor sestavení
 
-Vyhledejte `build.gradle.kts` ho a otevřete ho pomocí svého oblíbeného integrovaného vývojového prostředí nebo textového editoru. Pak zkopírujte do této konfigurace sestavení:
+Vyhledejte `build.gradle.kts` a otevřete ji pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do této konfigurace sestavení:
 
 ```
 plugins {
@@ -55,7 +55,7 @@ dependencies {
 
 Všimněte si, že tato ukázka obsahuje závislosti na OkHttp pro požadavky HTTP a gson pro zpracování a analýzu JSON. Pokud se chcete dozvědět více o konfiguracích sestavení, přečtěte si téma [vytváření nových Gradle sestavení](https://guides.gradle.org/creating-new-gradle-builds/).
 
-## <a name="create-a-java-file"></a>Vytvořte soubor Java
+## <a name="create-a-java-file"></a>Vytvoření souboru Java
 
 Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spusťte:
 
@@ -67,7 +67,7 @@ Potom v této složce vytvořte soubor s názvem `Detect.java`.
 
 ## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
-Otevřete `Detect.java` a přidejte tyto příkazy pro import:
+Otevřete `Detect.java` a přidejte tyto příkazy importu:
 
 ```java
 import java.io.*;
@@ -88,7 +88,7 @@ public class Detect {
 }
 ```
 
-Přidejte tyto řádky do `Detect` třídy. Všimněte si, že klíč předplatného a koncový bod se čtou z proměnných prostředí:
+Přidejte tyto řádky do třídy `Detect`. Všimněte si, že klíč předplatného a koncový bod se čtou z proměnných prostředí:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,11 +96,11 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/detect?api-version=3.0";
 ```
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do parametrů žádosti. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Pokud používáte Cognitive Services předplatné s více službami, musíte do parametrů žádosti zahrnout taky `Ocp-Apim-Subscription-Region`. [Přečtěte si další informace o ověřování pomocí předplatného s více službami](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento řádek `Detect` do třídy pro vytvoření instance `OkHttpClient`:
+Přidejte tento řádek do třídy `Detect` pro vytvoření instance `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -170,7 +170,10 @@ gradle run
 
 ## <a name="sample-response"></a>Ukázková odpověď
 
-V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
+Po spuštění ukázky by se měla zobrazit následující tištěná do terminálu:
+
+> [!NOTE]
+> V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)Najděte zkratku země/oblasti.
 
 ```json
 [
@@ -202,4 +205,4 @@ V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/tr
 Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
 
 > [!div class="nextstepaction"]
-> [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [Referenční informace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

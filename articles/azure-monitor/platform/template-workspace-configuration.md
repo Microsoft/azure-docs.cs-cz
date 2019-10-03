@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147332"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840904"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -29,14 +29,14 @@ ms.locfileid: "70147332"
 * Vytvoření pracovního prostoru včetně nastavení cenové úrovně 
 * Přidání řešení
 * Vytvořit uložená hledání
-* Vytvořit skupinu počítačů
-* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows
-* Shromáždit čítače výkonu z počítačů se systémy Linux a Windows
-* Shromažďování událostí z protokolu syslog pro počítače s Linuxem 
-* Shromažďovat události z protokolů událostí Windows
+* Vytvoření skupiny počítačů
+* Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+* Shromažďování čítačů výkonu z počítačů se systémy Linux a Windows
+* Shromažďování událostí z protokolu syslog v počítačích se systémem Linux 
+* Shromažďovat události z protokolů událostí systému Windows
 * Shromažďování vlastních protokolů z počítače se systémem Windows
-* Přidat agenta log analytics na virtuálním počítači Azure
-* Nakonfigurujte log analytics a index data shromážděná pomocí diagnostiky Azure
+* Přidání agenta Log Analytics do virtuálního počítače Azure
+* Konfigurace Log Analytics na indexovaná data shromážděná pomocí diagnostiky Azure
 
 Tento článek poskytuje ukázky šablon, které ilustrují některé konfigurace, které můžete s šablonami provádět.
 
@@ -44,12 +44,12 @@ Tento článek poskytuje ukázky šablon, které ilustrují některé konfigurac
 
 Následující tabulka uvádí verzi rozhraní API pro prostředky použité v tomto příkladu.
 
-| Resource | Typ prostředku | Verze API |
+| Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor   | workspaces    | 2017-03-15 – Preview |
+| Pracovní prostor   | Pracovní prostory    | 2017-03-15 – Preview |
 | Hledat      | savedSearches | 2015-03-20 |
-| Zdroj dat | zdroje dat   | 2015-11-01-preview |
-| Řešení    | solutions     | 2015-11-01-preview |
+| Zdroj dat | zdroje dat   | 2015-11-01 – Preview |
+| Řešení    | Řešení     | 2015-11-01 – Preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 
@@ -119,9 +119,9 @@ Následující příklad vytvoří pracovní prostor pomocí šablony z místní
     }
     ```
 
-2. Upravte šablonu podle svých požadavků. Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
-3. Uložte soubor jako **deploylaworkspacetemplate.json** do místní složky.
-4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru pomocí PowerShellu nebo příkazového řádku zadejte název pracovního prostoru a umístění jako součást příkazu.
+2. Upravte šablonu tak, aby splňovala vaše požadavky. Informace o podporovaných vlastnostech a hodnotách najdete v referenčních informacích k [šabloně Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) . 
+3. Uložte tento soubor jako **deploylaworkspacetemplate. JSON** do místní složky.
+4. Jste připraveni k nasazení této šablony. K vytvoření pracovního prostoru pomocí PowerShellu nebo příkazového řádku zadejte název pracovního prostoru a umístění jako součást příkazu. Název pracovního prostoru musí být globálně jedinečný v rámci všech předplatných Azure.
 
    * Pro PowerShell použijte následující příkazy ze složky, která obsahuje tuto šablonu:
    
@@ -136,7 +136,7 @@ Následující příklad vytvoří pracovní prostor pomocí šablony z místní
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:<br><br> ![Příklad výsledků po dokončení nasazení](./media/template-workspace-configuration/template-output-01.png)
+Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která obsahuje výsledek:<br><br> ![Příklad výsledku po dokončení nasazení](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Konfigurace pracovního prostoru Log Analytics
 
@@ -144,12 +144,12 @@ Následující ukázka šablony ukazuje, jak:
 
 1. Přidání řešení do pracovního prostoru
 2. Vytvořit uložená hledání
-3. Vytvořit skupinu počítačů
-4. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows
-5. Shromáždit čítače výkonu logický Disk z počítačů s Linuxem (% volných uzlů Inode; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
-6. Shromažďovat události procesu syslog z počítačů s Linuxem
-7. Shromáždit události chyby a upozornění z protokolu událostí aplikace z počítačů s Windows
-8. Shromažďovat čítač výkonu paměť v MB k dispozici z počítačů s Windows
+3. Vytvoření skupiny počítačů
+4. Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+5. Shromáždit čítače výkonu logických disků z počítačů se systémem Linux (% využitých uzlů inode; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení z disku/s; Zápisy na disk/s)
+6. Shromažďovat události syslogu z počítačů se systémem Linux
+7. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítačů se systémem Windows
+8. Shromažďovat čítač výkonu MB dostupné paměti z počítačů s Windows
 9. Shromažďování protokolů IIS a protokolů událostí Windows zapsaných diagnostikou Azure do účtu úložiště
 10. Shromažďování vlastních protokolů z počítače se systémem Windows
 
@@ -596,7 +596,7 @@ Následující ukázka šablony ukazuje, jak:
 
 Postup nasazení ukázkové šablony:
 
-1. Uložte si připojenou ukázku do souboru, například`azuredeploy.json` 
+1. Uložte ukázku připojenou do souboru, například `azuredeploy.json`. 
 2. Upravte šablonu na požadovanou konfiguraci.
 3. Nasazení šablony pomocí PowerShellu nebo příkazového řádku
 
@@ -623,7 +623,7 @@ Galerie šablon pro rychlý Start Azure obsahuje několik šablon pro Log Analyt
 * [Monitorování Web Apps Azure pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Přidat existující účet úložiště do Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasaďte agenta Windows do virtuálních počítačů Azure pomocí šablony Správce prostředků](../../virtual-machines/extensions/oms-windows.md).
 

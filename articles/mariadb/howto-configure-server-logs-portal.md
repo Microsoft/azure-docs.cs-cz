@@ -1,25 +1,24 @@
 ---
-title: Konfigurace a přístup k protokolům serveru pro Azure Database for MariaDB v Azure Portal
+title: Konfigurace a přístup k protokolům serveru v Azure Database for MariaDB z Azure Portal
 description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru v Azure Database for MariaDB z Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: c7e95521e503ad2d92bf13ae7e410b71ed6dfcd3
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703497"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844690"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k protokolům serveru v Azure Portal
+# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům serveru z Azure Portal
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MariaDB](concepts-server-logs.md) .
 
 ## <a name="prerequisites"></a>Předpoklady
-Pokud chcete projít tento průvodce, budete potřebovat:
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
+Postup v tomto článku vyžaduje, abyste měli [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalých dotazů. 
@@ -29,53 +28,53 @@ Nakonfigurujte přístup k protokolu pomalých dotazů.
 2. Vyberte server Azure Database for MariaDB.
 
 3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
-   @no__t – protokoly serveru 0Select kliknutím nakonfigurujete @ no__t-1.
+   @no__t – 0Screenshot možností protokolu serveru @ no__t-1
 
-4. Vyberte záhlaví **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu** pro zobrazení parametrů serveru.
+4. Pokud chcete zobrazit parametry serveru, vyberte **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu**.
 
-5. Změňte parametry, které je potřeba upravit, včetně zapnutí "slow_query_log" na "ON". Všechny změny, které provedete v této relaci, jsou zvýrazněné fialově. 
+5. Změňte parametry, které je potřeba upravit, včetně zapnutí **slow_query_log** na **zapnuto**. Všechny změny, které provedete v této relaci, jsou zvýrazněné fialově. 
 
-   Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
+   Po změně parametrů vyberte **Save (Uložit**). Nebo můžete změny zrušit.
 
-   ![Klikněte na Uložit nebo zahodit.](./media/howto-configure-server-logs-portal/3-save-discard.png)
+   ![Snímek obrazovky s možnostmi parametrů serveru](./media/howto-configure-server-logs-portal/3-save-discard.png)
 
-6. Vraťte se do seznamu protokolů kliknutím na **tlačítko Zavřít** (ikona X) na stránce **parametry serveru** .
+Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím, že stránku zavřete.
 
 ## <a name="view-list-and-download-logs"></a>Zobrazit seznam a stáhnout protokoly
-Po zahájení protokolování můžete zobrazit seznam dostupných protokolů pomalých dotazů a stahovat jednotlivé soubory protokolů v podokně protokoly serveru. 
+Po zahájení protokolování můžete zobrazit seznam dostupných protokolů pomalých dotazů a stahovat jednotlivé soubory protokolů. 
 
 1. Otevřete web Azure Portal.
 
 2. Vyberte server Azure Database for MariaDB.
 
-3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka obsahuje seznam souborů protokolu, jak je znázorněno níže:
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka zobrazuje seznam souborů protokolu.
 
-   ![Seznam protokolů](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
+   ![Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Konvence pojmenování protokolu je **MySQL-pomalé – < názvu serveru >-yyyymmddhh. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolů se otočí každých 24 hodin nebo 7,5 GB, podle toho, co nastane dřív.
+   > Konvence pojmenování protokolu je **MySQL-pomalé – < názvu serveru >-yyyymmddhh. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otočí každých 24 hodin nebo 7,5 GB, podle toho, co nastane dřív.
 
-4. V případě potřeby pomocí **vyhledávacího pole** rychle upřesněte konkrétní protokol na základě data a času. Hledání je na názvu protokolu.
+4. V případě potřeby se pomocí vyhledávacího pole rychle zúží na konkrétní protokol, a to na základě data a času. Hledání je na názvu protokolu.
 
-5. Jednotlivé soubory protokolu si můžete stáhnout pomocí tlačítka **Stáhnout** (ikona šipky dolů) vedle každého souboru protokolu v řádku tabulky, jak je znázorněno níže:
+5. Chcete-li stáhnout jednotlivé soubory protokolu, vyberte ikonu šipky vedle každého souboru protokolu v řádku tabulky.
 
-   ![Klikněte na ikonu stáhnout.](./media/howto-configure-server-logs-portal/5-download.png)
+   ![Snímek obrazovky se stránkou protokolů serveru s zvýrazněnou ikonou šipky](./media/howto-configure-server-logs-portal/5-download.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Nastavení diagnostických protokolů
 
-1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
+1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky** > **Přidat nastavení diagnostiky**.
 
-1. Klikněte na + Přidat nastavení diagnostiky ![Add nastavení diagnostiky @ no__t-1.
+   ![Snímek obrazovky s možnostmi nastavení diagnostiky](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
 
 1. Zadejte název nastavení diagnostiky.
 
-1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
+1. Určete, které datové jímky mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
 
-1. Jako typ protokolu vyberte "MySqlSlowLogs".
-![Configure nastavení diagnostiky @ no__t-1
+1. Jako typ protokolu vyberte **MySqlSlowLogs** .
+@no__t 0Screenshot možností konfigurace nastavení diagnostiky @ no__t-1
 
-1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na můžete kliknout na **Uložit**.
-![Save nastavení diagnostiky @ no__t-1
+1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
+@no__t 0Screenshot možností konfigurace nastavení diagnostiky s zvýrazněným parametrem @ no__t-1
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

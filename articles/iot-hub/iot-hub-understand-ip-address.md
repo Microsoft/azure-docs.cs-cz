@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9c9d02eeead4ccbed372e9a55d9b551da83caa39
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642290"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841538"
 ---
 # <a name="understanding-the-ip-address-of-your-iot-hub"></a>Porozumění IP adrese vašeho centra IoT Hub
 
@@ -34,3 +34,6 @@ Tato IP adresa se může změnit bez předchozího upozornění. Ve scénáři p
 
 Pokuste se vytvořit pravidla a filtrování brány firewall na základě názvu hostitele nebo domény hostitele centra IoT. Pokud povolíte odchozí přenosy jenom na konkrétní adresy, můžete pravidelně dotazovat IP adresy služby IoT Hub a aktualizovat pravidla brány firewall.
 
+## <a name="support-for-ipv6"></a>Podpora protokolu IPv6 
+
+Protokol IPv6 se v této IoT Hub v tuto chvíli nepodporuje.

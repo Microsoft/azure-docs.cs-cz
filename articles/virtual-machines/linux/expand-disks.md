@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f892857d74150ee42cc2ea4b5c996feac3d1cfa2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695619"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828412"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
@@ -35,7 +35,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
     ```
 
     > [!NOTE]
-    > Aby se virtuální pevný disk mohl rozšířit, musí se virtuální počítač uvolnit. Při zastavení virtuálního počítače `az vm stop` se neuvolní výpočetní prostředky. K uvolnění výpočetních prostředků použijte `az vm deallocate`.
+    > Aby se virtuální pevný disk mohl rozšířit, musí se virtuální počítač uvolnit. Zastavení virtuálního počítače pomocí `az vm stop` neuvolní výpočetní prostředky. K uvolnění výpočetních prostředků použijte `az vm deallocate`.
 
 1. Zobrazte seznam spravovaných disků ve skupině prostředků pomocí [seznamu AZ disk list](/cli/azure/disk#az-disk-list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
 
@@ -82,13 +82,13 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo umount /dev/sdc1
     ```
 
-    b. Použijte `parted` k zobrazení informací o disku a změně velikosti oddílu:
+    b. K zobrazení informací o disku a změně velikosti oddílu použijte `parted`:
 
     ```bash
     sudo parted /dev/sdc
     ```
 
-    Zobrazit informace o existujícím rozložení oddílu pomocí `print`. Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
+    Zobrazí informace o existujícím rozložení oddílu pomocí `print`. Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -113,7 +113,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     End?  [107GB]? 215GB
     ```
 
-    d. Chcete-li skončit `quit`, zadejte.
+    d. Pokud chcete skončit, zadejte `quit`.
 
 1. Při změně velikosti oddílu Ověřte konzistenci oddílu pomocí `e2fsck`:
 
@@ -121,7 +121,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Změnit velikost systému souborů `resize2fs`na:
+1. Změňte velikost systému souborů pomocí `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -133,13 +133,13 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Chcete-li ověřit, zda došlo ke změně velikosti datového disku `df -h`, použijte. Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
+1. Chcete-li ověřit velikost datového disku, použijte `df -h`. Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Pokud potřebujete další úložiště, můžete také [přidat datové disky do virtuálního počítače se systémem Linux](add-disk.md). 
-* Další informace o šifrování disku najdete v tématu [šifrování disků na virtuálním počítači se systémem Linux pomocí Azure CLI](encrypt-disks.md).
+* Další informace o šifrování disku najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md).

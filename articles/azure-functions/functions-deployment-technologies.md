@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650459"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838883"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -35,12 +35,12 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Adresa URL externího balíčku<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
-| Kontejner Dockeru | | | | |✔|✔|
-| Web Deploy |✔|✔|✔| | | |
-| Správy zdrojového kódu |✔|✔|✔| |✔|✔|
+| Kontejner Docker | | | | |✔|✔|
+| Nasazení webu |✔|✔|✔| | | |
+| Správa zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
-| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Úpravy portálu |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> technologie nasazení, která vyžaduje [synchronizaci ručních triggerů](#trigger-syncing).  
@@ -55,8 +55,8 @@ Některé klíčové koncepty jsou zásadní pro porozumění způsobu, jakým n
 Při změně jakékoli aktivační události musí infrastruktura funkcí znát změny. K synchronizaci dochází automaticky pro mnoho technologií nasazení. V některých případech je však nutné triggery ručně synchronizovat. Když nasadíte aktualizace odkazem na adresu URL externího balíčku, místní Git, synchronizace cloudu nebo FTP, musíte triggery ručně synchronizovat. Triggery můžete synchronizovat jedním ze tří způsobů:
 
 * Restartujte aplikaci Function App v Azure Portal
-* Odešlete požadavek HTTP POST na `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` použití [hlavního klíče](functions-bindings-http-webhook.md#authorization-keys).
-* Odeslat požadavek HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zástupné symboly nahraďte ID předplatného, názvem skupiny prostředků a názvem vaší aplikace Function App.
+* Odešle požadavek HTTP POST do `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavního klíče](functions-bindings-http-webhook.md#authorization-keys).
+* Odešle požadavek HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zástupné symboly nahraďte ID předplatného, názvem skupiny prostředků a názvem vaší aplikace Function App.
 
 ### <a name="remote-build"></a>Vzdálené sestavení
 
@@ -99,7 +99,7 @@ V Azure Functions jsou k dispozici následující metody nasazení.
 
 Adresu URL externího balíčku můžete použít k odkazování na vzdálený soubor balíčku (. zip), který obsahuje vaši aplikaci Function App. Soubor se stáhne ze zadané adresy URL a aplikace se spustí v režimu [spuštění z balíčku](run-functions-from-deployment-package.md) .
 
->__Jak ji použít:__ Přidejte `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Jak ji použít:__ Přidejte do nastavení aplikace `WEBSITE_RUN_FROM_PACKAGE`. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
 >
 >Pokud používáte službu Azure Blob Storage, pomocí privátního kontejneru se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) udělte funkce přístup k balíčku. Pokaždé, když se aplikace restartuje, načte kopii obsahu. Váš odkaz musí být platný po dobu života aplikace.
 
@@ -109,9 +109,9 @@ Adresu URL externího balíčku můžete použít k odkazování na vzdálený s
 
 Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikaci Function App do Azure. Volitelně můžete nastavit, aby se aplikace spouštěla [z balíčku](run-functions-from-deployment-package.md), nebo určit, že dojde ke [vzdálenému sestavení](#remote-build) .
 
->__Jak ji použít:__ Nasazení pomocí vašeho oblíbeného klientského nástroje: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Jak ji použít:__ Nasazení pomocí oblíbeného klientského nástroje: [vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Chcete-li provést nasazení souboru ZIP [](#remote-build)se vzdáleným sestavením, použijte následující příkaz pro [základní nástroje](functions-run-local.md) :
+Chcete-li provést nasazení souboru zip se [vzdáleným sestavením](#remote-build), použijte následující příkaz pro [základní nástroje](functions-run-local.md) :
 
 ```bash
 func azure functionapp publish <app name> --build remote
@@ -119,20 +119,20 @@ func azure functionapp publish <app name> --build remote
 
 Alternativně můžete VS Code provést vzdálené sestavení při nasazení přidáním příznaku ' ' azureFunctions. scmDoBuildDuringDeployment '. Pokud se chcete dozvědět, jak VS Code přidat příznak, přečtěte si pokyny na [wikiwebu rozšíření Azure Functions](https://github.com/microsoft/vscode-azurefunctions/wiki).
 
->Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pro spuštění z balíčku nastavte `WEBSITE_RUN_FROM_PACKAGE` hodnotu nastavení aplikace na. `1` Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI. 
+>Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pokud chcete spustit z balíčku, nastavte hodnotu nastavení aplikace `WEBSITE_RUN_FROM_PACKAGE` na hodnotu `1`. Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI. 
 
 >__Kdy ji použít:__ Nasazení zip je doporučená technologie nasazení pro Azure Functions.
 
-### <a name="docker-container"></a>Kontejner Dockeru
+### <a name="docker-container"></a>Kontejner Docker
 
 Můžete nasadit image kontejneru pro Linux, která obsahuje vaši aplikaci Function App.
 
 >__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. Můžete to provést dvěma způsoby:
 >
 >* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat**vyberte **Image Docker**a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
->* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image).
+>* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-a-premium-plan).
 >
->Pokud chcete nasadit do existující aplikace pomocí vlastního kontejneru, v [Azure Functions Core Tools](functions-run-local.md)použijte [`func deploy`](functions-run-local.md#publish) příkaz.
+>Pokud chcete nasadit do existující aplikace pomocí vlastního kontejneru, v [Azure Functions Core Tools](functions-run-local.md)použijte příkaz [`func deploy`](functions-run-local.md#publish) .
 
 >__Kdy ji použít:__ Možnost kontejneru Docker použijte, když potřebujete větší kontrolu nad prostředím Linux, ve kterém běží aplikace Function App. Tento mechanismus nasazení je k dispozici pouze pro funkce spuštěné v systému Linux.
 
@@ -142,11 +142,11 @@ Nasazení webu balíčky a nasadí aplikace Windows na libovolný server služby
 
 >__Jak ji použít:__ Použijte [Visual Studio Tools for Azure Functions](functions-create-your-first-function-visual-studio.md). Zrušte zaškrtnutí políčka **Spustit ze souboru balíčku (doporučeno)** .
 >
->Můžete si také stáhnout [nasazení webu 3,6](https://www.iis.net/downloads/microsoft/web-deploy) a zavolat `MSDeploy.exe` přímo.
+>Můžete si také stáhnout [Nasazení webu 3,6](https://www.iis.net/downloads/microsoft/web-deploy) a přímo volat `MSDeploy.exe`.
 
 >__Kdy ji použít:__ Nasazení webu se podporuje a nemá žádné problémy, ale upřednostňovaným mechanismem je [nasazení zip s povoleným spuštěním z balíčku](#zip-deploy). Další informace najdete v příručce pro [vývoj sady Visual Studio](functions-develop-vs.md#publish-to-azure).
 
-### <a name="source-control"></a>Správy zdrojového kódu
+### <a name="source-control"></a>Správa zdrojového kódu
 
 Použijte správu zdrojového kódu k připojení aplikace Function App k úložišti Git. Aktualizace kódu v tomto úložišti aktivuje nasazení. Další informace najdete na [wikiwebu Kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 
@@ -182,7 +182,7 @@ Protokol FTP můžete použít k přímému přenosu souborů do Azure Functions
 
 V editoru založeném na portálu můžete přímo upravovat soubory, které jsou ve vaší aplikaci Function App (v podstatě se nasazují při každém uložení změn).
 
->__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpátky `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE`). 
+>__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete soubory upravovat v Azure Portal, můžete ručně zapnout režim úprav zpět na `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE`). 
 
 >__Kdy ji použít:__ Portál je dobrým způsobem, jak začít s Azure Functions. Pro přesnější vývojovou práci doporučujeme použít jeden z následujících nástrojů klienta:
 >
@@ -201,15 +201,15 @@ V následující tabulce jsou uvedeny operační systémy a jazyky, které podpo
 | JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Preview) | | | | | | |
 | PowerShell (Preview) |✔|✔|✔| | | |
-| TypeScript (Node.js) | | | | | | |
+| TypeScript (Node. js) | | | | | | |
 
-<sup>*</sup>Úpravy portálu jsou povolené jenom pro aktivační události HTTP a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
+<sup>*</sup> Úpravy portálu jsou povolené jenom pro aktivační události HTTP a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
 
 ## <a name="deployment-slots"></a>Nasazovací sloty
 
 Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](../app-service/deploy-staging-slots.md) – další podrobnosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o nasazení aplikací Function App najdete v těchto článcích: 
 

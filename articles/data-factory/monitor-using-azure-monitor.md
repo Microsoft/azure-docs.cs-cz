@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815948"
+ms.locfileid: "71827808"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitor
 
@@ -472,7 +472,7 @@ Po chvíli se nové nastavení zobrazí v seznamu nastavení pro tuto datovou to
 * V režimu _diagnostiky Azure_ jsou protokoly diagnostiky toku do tabulky _AzureDiagnostics_ .
 
 > [!NOTE]
-> Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, důrazně doporučujeme vybrat režim specifický pro daný prostředek. Další informace najdete v tématu [Log Analytics známá omezení](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
+> Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, důrazně doporučujeme vybrat režim specifický pro daný prostředek. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Instalace Azure Data Factory Analytics z Azure Marketplace
 

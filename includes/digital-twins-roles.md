@@ -5,22 +5,22 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 10161d6b1d944857aa45d5152c77e107a208d98d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f9b9341be32e5707ef646bd6d08d9d7ec92a8575
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012083"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827682"
 ---
 Následující tabulka popisuje role, které jsou k dispozici v rámci digitálních vláken Azure:
 
 | **Role** | **Popis** | **RID** |
 | --- | --- | --- |
 | Správce místa | Oprávnění *vytvořit*, *číst*, *aktualizovat*a *Odstranit* pro zadaný prostor a všechny uzly pod. Globální oprávnění | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
-| Správce uživatelů| Oprávnění k *vytváření*, *čtení*, *aktualizaci*a *odstraňování* uživatelů a objektů souvisejících s uživateli. Oprávnění *číst* pro mezery | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
+| Správce uživatele| Oprávnění k *vytváření*, *čtení*, *aktualizaci*a *odstraňování* uživatelů a objektů souvisejících s uživateli. Oprávnění *číst* pro mezery | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
 | Správce zařízení | Oprávnění k *vytváření*, *čtení*, *aktualizaci*a *odstraňování* pro zařízení a objekty související se zařízením. Oprávnění *číst* pro mezery | 3cdfde07-bc16-40d9-bed3-66d49a8f52ae |
 | Správce klíčů | Oprávnění k *vytváření*, *čtení*, *aktualizaci*a *odstraňování* přístupových klíčů. Oprávnění *číst* pro mezery | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
 | Správce tokenů |  Oprávnění ke *čtení* a *aktualizaci* přístupových klíčů. Oprávnění *číst* pro mezery | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |

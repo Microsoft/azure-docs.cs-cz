@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877701"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845549"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple uzly – přehled
 
@@ -36,19 +36,20 @@ Koupené uzly poskytují kapacitu s průběžnými platbami. Nákupy uzlů vám 
 
 Pro nákup nebo rezervaci jsou k dispozici následující typy uzlů.
 
-| SKU | CS28 – uzel | CS36 – uzel |
-|-----|-------------|-------------|
-| Procesor | 2x 2,2 GHz, 28 jader (56 HT) | 2x 2,3 GHz, 36 jader (72 HT) |
-| Paměť RAM | 256 GB | 512 GB |
-| Disk mezipaměti |  1,6 – TB NVMe | 3,2 – TB NVMe |
-| Disk kapacity | 5,625 TB Raw | 11,25 TB Raw |
-| Typ úložiště | Všechny flash | Všechny flash |
+| Skladová položka           | CS28 – uzel                 | CS36 – uzel                 | CS36m – uzel                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| Oblast        | Východní USA Západní USA            | Východní USA Západní USA            | Západní Evropa                 |
+| Procesor           | 2x 2,2 GHz, 28 jader (56 HT) | 2x 2,3 GHz, 36 jader (72 HT) | 2x 2,3 GHz, 36 jader (72 HT) |
+| Paměť RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| Disk mezipaměti    | 1,6 – TB NVMe                 | 3,2 – TB NVMe                 | 3,2 – TB NVMe                 |
+| Disk kapacity | 5,625 TB Raw                | 11,25 TB Raw                | 15,36 TB Raw                |
+| Typ úložiště  | Všechny flash                   | Všechny flash                   | Všechny flash                   |
 
 ## <a name="limits"></a>Omezení
 
 Následující omezení uzlů platí pro privátní cloudy.
 
-| Resource | Omezení |
+| Prostředek | škálování |
 |----------|-------|
 | Minimální počet uzlů pro vytvoření privátního cloudu | 3 |
 | Maximální počet uzlů v clusteru v privátním cloudu | 16 |

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803421"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844506"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -122,7 +122,8 @@ Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil 
    [@no__t – 1Content typ multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializace jiných než textových dat do souborů. Data JSON by se uložila jako soubor JSON.
-1. Na kartě **tělo** přidejte každý soubor tak, že mu přiřadíte název **klíče** a vyberete `file` nebo `text`.
+1. Na kartě **tělo** vyberte `form-data`. 
+1. Přidejte každý soubor tak, že mu přiřadíte název **klíče** a vyberete `file`.
 1. Pak vyberte jednotlivé soubory pomocí tlačítka **zvolit soubor** .
 
    [Příklad klienta @no__t – 1Postman](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

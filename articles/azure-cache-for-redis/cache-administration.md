@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687007"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827589"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -83,7 +83,7 @@ Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azur
 K dispozici je restartování pro všechny cenové úrovně.
 
 ## <a name="schedule-updates"></a>Aktualizace plánu
-Okno **naplánovat aktualizace** umožňuje určit časové období údržby pro mezipaměť úrovně Premium. Po zadání časového období údržby se v průběhu tohoto okna provedou všechny aktualizace Redis serveru. 
+Okno **naplánovat aktualizace** umožňuje určit časové období údržby pro instanci mezipaměti. Po zadání časového období údržby se v průběhu tohoto okna provedou všechny aktualizace Redis serveru. 
 
 > [!NOTE] 
 > Časové období údržby se vztahuje jenom na aktualizace serveru Redis a ne na aktualizace nebo aktualizace Azure v operačním systému virtuálních počítačů, které hostují mezipaměť.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300121"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844406"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 
@@ -24,7 +24,7 @@ Kontejnery, které nejsou rozdělené do oddílů, jsou starší a měli byste m
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrace kontejneru pomocí klíče oddílu definovaného systémem
 
-Pro podporu migrace Azure Cosmos DB poskytuje klíč oddílu definovaný systémem, který je pojmenovaný `/_partitionkey` na všech kontejnerech, které nemají klíč oddílu. Po migraci kontejnerů nelze definici klíče oddílu změnit. Například definice kontejneru, který je migrován do děleného kontejneru, bude následující:
+Pro podporu migrace Azure Cosmos DB poskytne klíč oddílu definovaného systémem s názvem `/_partitionkey` u všech kontejnerů, které nemají klíč oddílu. Po migraci kontejnerů nelze definici klíče oddílu změnit. Například definice kontejneru, který je migrován do děleného kontejneru, bude následující:
 
 ```json
 {
@@ -38,7 +38,7 @@ Pro podporu migrace Azure Cosmos DB poskytuje klíč oddílu definovaný systém
 }
 ```
 
-Po migraci kontejneru můžete vytvořit dokumenty naplněním `_partitionKey` vlastnosti spolu s dalšími vlastnostmi dokumentu. `_partitionKey` Vlastnost představuje klíč oddílu vašich dokumentů.
+Po migraci kontejneru můžete vytvořit dokumenty naplněním vlastnosti `_partitionKey` spolu s dalšími vlastnostmi dokumentu. Vlastnost `_partitionKey` představuje klíč oddílu vašich dokumentů.
 
 Výběr správného klíče oddílu je důležitý pro optimální využití zajištěné propustnosti. Další informace najdete v článku [Jak zvolit klíč oddílu](partitioning-overview.md) .
 
@@ -95,11 +95,11 @@ ItemResponse<DeviceInformationItem> readResponse =
                       
 ## <a name="migrate-the-documents"></a>Migrace dokumentů
 
-I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že cesta k vlastnosti `/_partitionKey` klíče systémového oddílu není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a pak je v dokumentech znovu napíšete pomocí `_partitionKey` vlastnosti.
+I když je definice kontejneru Vylepšená pomocí vlastnosti klíče oddílu, dokumenty v kontejneru se automaticky nemigrují. To znamená, že vlastnost klíče systémového oddílu `/_partitionKey` cesta není automaticky přidána do stávajících dokumentů. Existující dokumenty je potřeba znovu rozdělit na oddíly, které se vytvořily bez klíče oddílu, a znovu je přepsat pomocí vlastnosti `_partitionKey` v dokumentech.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Přístup k dokumentům, které nemají klíč oddílu
 
-Aplikace mají přístup k existujícím dokumentům, které nemají klíč oddílu, pomocí speciální systémové vlastnosti s názvem "CosmosContainerSettings. NonePartitionKeyValue", jedná se o hodnotu nemigrovaných dokumentů. Tuto vlastnost můžete použít ve všech operacích CRUD a dotazování. Následující příklad ukazuje ukázku pro čtení jednoho dokumentu z NonePartitionKey. 
+Aplikace mají přístup k existujícím dokumentům, které nemají klíč oddílu, pomocí speciální systémové vlastnosti s názvem "PartitionKey. None", jedná se o hodnotu nemigrovaných dokumentů. Tuto vlastnost můžete použít ve všech operacích CRUD a dotazování. Následující příklad ukazuje ukázku pro čtení jednoho dokumentu z NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 

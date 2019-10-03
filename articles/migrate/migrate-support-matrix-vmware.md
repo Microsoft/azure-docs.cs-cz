@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1aa87caf6a25ce1a446ec9abd1f250132c3b94bb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067755"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841228"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
@@ -27,7 +27,7 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 **Nasazení** | **Podrobnosti**
 --- | ---
 **Posouzení místních virtuálních počítačů VMware** | [Nastavte](tutorial-prepare-vmware.md) své první posouzení.<br/><br/> [Spusťte](scale-vmware-assessment.md) hodnocení ve velkém měřítku.
-**Migrace virtuálních počítačů VMware** | Můžete migrovat pomocí migrace bez agenta nebo pomocí migrace založené na agentech. [Víc se uč](server-migrate-overview.md)
+**Migrace virtuálních počítačů VMware** | Můžete migrovat pomocí migrace bez agenta nebo pomocí migrace založené na agentech. [Další informace](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projekty
@@ -40,7 +40,7 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
-Azure Government | USA (Gov) – Virginia
+Azure Government | USA – Virginie
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
 Brazílie | Brazílie – jih
@@ -49,7 +49,7 @@ Evropa | Severní Evropa nebo Západní Evropa
 Francie | Francie – střed
 Indie | Střed Indie nebo Jižní Indie
 Japonsko |  Japonsko – východ nebo Japonsko – západ
-Korejská republika | Korea – střed nebo Korea – jih
+Korea | Korea – střed nebo Korea – jih
 Spojené království | Velká Británie – jih nebo Velká Británie – západ
 Spojené státy | Střed USA nebo Západní USA 2
 
@@ -94,7 +94,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 --- | --- |
 *.portal.azure.com  | V Azure Portal přejděte na Azure Migrate.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
+*.microsoftonline.com <br/> *. microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 management.azure.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
@@ -105,9 +105,9 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 ## <a name="assessment-port-requirements"></a>Posouzení – požadavky na port
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
-Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
+Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
 
 ## <a name="migration---limitations"></a>Migrace – omezení
@@ -181,7 +181,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 --- | ---
 *.portal.azure.com | V Azure Portal přejděte na Azure Migrate.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
+*.microsoftonline.com <br/> *. microsoftonline-p.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 management.azure.com | Vytvořte pro zařízení služby Active Directory, které budou komunikovat se službou Azure Migrate.
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
@@ -193,9 +193,9 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 ## <a name="agentless-migration-port-requirements"></a>Migrace bez agentů – požadavky na porty
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
-Zařízení | Odchozí připojení na portu 443 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate službami orchestrace replikace a migrace.
+Náplně | Odchozí připojení na portu 443 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate službami orchestrace replikace a migrace.
 Server vCenter | Příchozí připojení na portu 443, aby zařízení mohla orchestrovat replikaci – vytvářet snímky, kopírovat data, snímky verzí
 Hostitel vSphere/EXSI | Příchozí na portu TCP 902, aby zařízení mohl replikovat data ze snímků.
 
@@ -224,27 +224,27 @@ V tabulce jsou shrnuty požadavky na [zařízení replikace](migrate-replication
 
 **Komponenta** | **Požadavek**
 --- | ---
- | **Nastavení VMware** (Zařízení VMware VM)
+ | **Nastavení VMware** (zařízení VMware VM)
 PowerCLI | Pokud je na virtuálním počítači VMware spuštěno zařízení replikace, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
 Typ síťové karty | VMXNET3 (Pokud je zařízení virtuálním počítačem VMware)
  | **Nastavení hardwaru**
 Procesorová jádra | 8
 Paměť RAM | 16 GB
-Počet disků | 3 Disk s operačním systémem, disk mezipaměti procesového serveru a jednotka pro uchovávání dat.
+Počet disků | Tři: disk s operačním systémem, disk mezipaměti procesového serveru a jednotka pro uchovávání.
 Volné místo na disku (mezipaměť) | 600 GB
 Volné místo na disku (disk pro uchovávání) | 600 GB
 **Nastavení softwaru** |
 Operační systém | Windows Server 2016 nebo Windows Server 2012 R2
 Národní prostředí operačního systému | Angličtina (en-us)
-TLS | Je třeba povolit protokol TLS 1,2.
+PROTOKOLY | Je třeba povolit protokol TLS 1,2.
 .NET Framework | Na počítači by se měla nainstalovat .NET Framework 4,6 nebo novější (se zapnutým silným kryptografií.
 MySQL | Na zařízení by měl být nainstalován MySQL.<br/> Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování zařízení.
-Jiné aplikace | Na zařízení replikace nespouštějte jiné aplikace.
+Další aplikace | Na zařízení replikace nespouštějte jiné aplikace.
 Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V
-Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Víc se uč](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
 **Nastavení sítě** |
-Typ IP adresy | Static
+Typ IP adresy | Statický
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
 Typ síťové karty | VMXNET3
 
@@ -262,15 +262,15 @@ https:\//management.azure.com | Slouží k operacím správy replikace a jejich 
 *.services.visualstudio.com | Používá se pro účely telemetrie (je volitelné).
 time.nist.gov | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
 time.windows.com | Používá se ke kontrole synchronizace mezi systémovým a globálním časem.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Instalační program OVF potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory
-https:\//dev.MySQL.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.7.20.0.msi | Dokončení stažení MySQL
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \//Login. Live. com <br/> https: \//Graph. Windows. NET <br/> https:\//login.windows.net <br/> https: \//www. Live. com <br/> https: \//www. Microsoft. com  | Instalační program OVF potřebuje přístup k těmto adresám URL. Používají se k řízení přístupu a správě identit pomocí Azure Active Directory
+https: \//dev. MySQL. com/get/Download/MySQLInstaller/MySQL-Installer-Community-5.7.20.0. msi | Dokončení stažení MySQL
 
 
 #### <a name="mysql-installation-options"></a>Možnosti instalace MySQL
 
 MySQL se dá nainstalovat na zařízení replikace pomocí jedné z těchto metod.
 
-**– Metoda** | **Podrobnosti**
+**Metoda** | **Podrobnosti**
 --- | ---
 Stáhnout a nainstalovat ručně | Stáhněte si aplikaci MySQL & umístěte ji do složky C:\Temp\ASRSetup a pak ji nainstalujte ručně.<br/> Když nastavíte zařízení MySQL, bude se zobrazovat jako již nainstalované.
 Bez online stažení | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a kliknete na stažení a instalaci MySQL, instalační program použije instalační program, který jste přidali.
@@ -327,11 +327,11 @@ dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro in
 
 ## <a name="agent-based-migration-port-requirements"></a>Migrace založená na agentech – požadavky na port
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
-virtuálních počítačů | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
+Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
-Procesový server | Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.<br/> Ve výchozím nastavení běží na zařízení replikace procesový Server.
+Procesový Server | Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.<br/> Ve výchozím nastavení běží na zařízení replikace procesový Server.
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítače Azure
 
@@ -342,7 +342,7 @@ Všechny místní virtuální počítače replikované do Azure musí splňovat 
 Hostovaný operační systém | Ověřte podporované operační systémy pro [virtuální počítače VMware pomocí replikace bez agentů](#agentless-migration-vmware-vm-requirements)a pro [virtuální počítače VMware pomocí replikace založené na agentech](#agent-based-migration-vmware-vm-requirements).<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Počet disků operačního systému | 1\. místo | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
@@ -350,7 +350,7 @@ Sdílený virtuální pevný disk | Nepodporuje se. | Pokud je tato operace Nepo
 Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). |
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a povolte RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](preserve-drive-letter-protected-virtual-machines-failed-migrated-azure.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 

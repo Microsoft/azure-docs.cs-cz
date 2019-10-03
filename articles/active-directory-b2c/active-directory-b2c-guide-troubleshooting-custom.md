@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963741"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826902"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s Azure AD B2C vlastní zásady a architektura prostředí identit
 
@@ -39,34 +39,32 @@ Ověření souboru zásad XML se provádí automaticky při nahrání. Většina
 
 K běžným chybám ověření patří následující:
 
-> Fragment chyby:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Fragment chyby: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * Hodnota ClaimType může být nesprávně napsaná nebo ve schématu neexistuje.
 * Hodnoty ClaimType musí být definovány alespoň v jednom ze souborů v zásadě.
     Příklad: `<ClaimType Id="issuerUserId">`
 * Pokud je v souboru rozšíření definována deklarace ClaimType, ale používá se také v hodnotě TechnicalProfile základního souboru, výsledkem odeslání základního souboru je chyba.
 
-> Fragment chyby:`...makes a reference to a ClaimsTransformation with id...`
+> Fragment chyby: `...makes a reference to a ClaimsTransformation with id...`
 
 * Příčiny této chyby mohou být stejné jako u chyby ClaimType.
 
-> Fragment chyby:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Fragment chyby: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* Ověřte, že hodnota TenantId v `<TrustFrameworkPolicy\>` elementech a `<BasePolicy\>` odpovídá cílovému tenantovi Azure AD B2C.
+* Ověřte, že hodnota TenantId v prvcích `<TrustFrameworkPolicy\>` a `<BasePolicy\>` odpovídá cílovému tenantovi Azure AD B2C.
 
 ## <a name="troubleshoot-the-runtime"></a>Řešení potíží s modulem runtime
 
-* Pomocí rutiny **Spustit nyní** a `https://jwt.ms` otestujte zásady nezávisle na vaší webové nebo mobilní aplikaci. Tento web funguje jako aplikace předávající strany. Zobrazuje obsah JSON Web Token (JWT) generovaných vašimi zásadami Azure AD B2C. Chcete-li vytvořit testovací aplikaci, přejděte do Azure Portal **aplikace** **Azure AD B2C** \> v a přidejte aplikaci s následujícími hodnotami:
+* Pomocí rutiny **Spustit nyní** a `https://jwt.ms` můžete zásady testovat nezávisle na vaší webové nebo mobilní aplikaci. Tento web funguje jako aplikace předávající strany. Zobrazuje obsah tokenu JWT (JSON web token), který vygenerovala vaše zásada Azure AD B2C.
 
-  * **Název**: TestApp
-  * **Webová aplikace/webové rozhraní API**: Ne
-  * **Nativní klient**: Ne
+    Chcete-li vytvořit testovací aplikaci, která se může přesměrovat na `https://jwt.ms` pro kontrolu tokenu:
 
-  Pak přidejte `https://jwt.ms` jako **adresu URL odpovědi**.
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * Chcete-li trasovat výměnu zpráv mezi prohlížečem klienta a Azure AD B2C, použijte [Fiddler](https://www.telerik.com/fiddler). Může vám získat informace o tom, kde se v krocích orchestrace vaše uživatelská cesta nedaří.
 
-* V **režimu vývoje**použijte [Application Insights](active-directory-b2c-troubleshoot-custom.md) ke sledování aktivity cesty uživatele architektury identity Experience Framework. V **režimu vývoje**můžete sledovat výměnu deklarací identity mezi architekturou prostředí identit a různými poskytovateli deklarací identity, které jsou definovány technickými profily, jako jsou poskytovatelé identity, služby založené na rozhraní API, Azure AD B2C uživatel. Adresář a další služby, jako je Azure Multi-Factor Authentication.
+* V **režimu vývoje**použijte [Application Insights](active-directory-b2c-troubleshoot-custom.md) ke sledování aktivity cesty uživatele architektury identity Experience Framework. V **režimu vývoje**můžete sledovat výměnu deklarací identity mezi architekturou prostředí identit a různými poskytovateli deklarací identity, které jsou definovány technickými profily, jako jsou poskytovatelé identity, služby založené na rozhraní API, Azure AD B2C uživatel. Adresář a další služby, jako je například Azure Multi-Factor Authentication.
 
 ## <a name="recommended-practices"></a>Doporučené postupy
 
@@ -76,7 +74,7 @@ K běžným chybám ověření patří následující:
 
 **Vývoj a testování cest uživatelů pomocí testovaných technických profilů.** Přírůstkové změny kroků orchestrace cesty uživatele Postupně Sestavte zamýšlené scénáře.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 K dispozici na GitHubu, Stáhněte si archiv [Active-Directory-B2C-Custom-Policy-starterpack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) . zip. Můžete také klonovat úložiště:
 

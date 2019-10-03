@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získat seznam podporovaných jazyků – Translator Text API'
+title: 'Rychlý Start: získání seznamu podporovaných jazyků – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí Translator Text API.
 services: cognitive-services
@@ -11,18 +11,16 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e1d31aab9c113a421fda2f6de96ee25b44bba8d1
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 18eb9f2e1c509cbefef2cab59c82317b927ef060
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393818"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827832"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Rychlý start: Seznam podporovaných jazyků získáte pomocí Translator Text API.
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Rychlý Start: pomocí Translator Text API získat seznam podporovaných jazyků
 
 V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí Translator Text API.
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 
@@ -54,7 +52,7 @@ V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro p
 
 ::: zone-end
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Překlad textu](quickstart-translate.md)
 * [Transliterace textu](quickstart-transliterate.md)

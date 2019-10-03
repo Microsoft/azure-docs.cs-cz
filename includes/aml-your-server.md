@@ -8,20 +8,15 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: 6c93d1243db1b3c4277a54cf71e10f6bbc648d26
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/26/2019
+ms.openlocfilehash: 85d1c1cd294bfc02a2e0e327073bb6a80366548b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846018"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841107"
 ---
-- Sada Azure Machine Learning SDK pro Python je nainstalována. Pokyny v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) použijte k následujícím akcím:
-
-
-1. Pokyny v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) použijte k následujícím akcím:
-    * Vytvoření prostředí Miniconda [vytváření a Správa pracovních prostorů služby Azure Machine Learning]
-    * Instalace sady Azure Machine Learning SDK pro Python
+1. Pomocí pokynů v [sadě Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) nainstalujte sadu Azure Machine Learning SDK pro Python.
 
 1. Vytvořte [pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/how-to-manage-workspace.md).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091832"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828401"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT\<Random Number >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
+V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT @ no__t-1random number >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, a to pomocí `$RANDOM` připojuje číslo k elementu end, aby bylo možné ho označit jako jedinečný.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -99,7 +99,7 @@ Připojte sdílenou složku Azure k místnímu adresáři.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Výše uvedený příkaz používá příkaz [Mount](https://linux.die.net/man/8/mount) k připojení sdílené složky Azure a možností specifických pro [CIFS](https://linux.die.net/man/8/mount.cifs). Konkrétně možnosti file_mode a dir_mode nastaví soubory a adresáře na oprávnění `0777`. `0777` Oprávnění poskytuje oprávnění ke čtení, zápisu a spouštění pro všechny uživatele. Tato oprávnění můžete změnit nahrazením hodnot pomocí dalších [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod). Můžete také použít další možnosti [CIFS](https://linux.die.net/man/8/mount.cifs) , například GID nebo UID. 
+Výše uvedený příkaz používá příkaz [Mount](https://linux.die.net/man/8/mount) k připojení sdílené složky Azure a možností specifických pro [CIFS](https://linux.die.net/man/8/mount.cifs). Konkrétně možnosti file_mode a dir_mode nastaví soubory a adresáře na oprávnění `0777`. Oprávnění `0777` poskytuje všem uživatelům oprávnění ke čtení, zápisu a spouštění. Tato oprávnění můžete změnit nahrazením hodnot pomocí dalších [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod). Můžete také použít další možnosti [CIFS](https://linux.die.net/man/8/mount.cifs) , například GID nebo UID. 
 
 
 ## <a name="persist-the-mount"></a>Zachovat připojení
@@ -115,5 +115,5 @@ Pro zvýšení zabezpečení v produkčních prostředích byste měli přihlaš
 
 - [Přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Cloud-init](using-cloud-init.md)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
-- [Šifrování disků na virtuálním počítači se systémem Linux pomocí Azure CLI](encrypt-disks.md)
+- [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md)
 

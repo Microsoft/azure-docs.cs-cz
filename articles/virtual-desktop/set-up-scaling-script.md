@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676494"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842774"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relací
+# <a name="scale-session-hosts-dynamically"></a>Dynamické škálování hostitelů relací
 
 Pro mnoho nasazení virtuálních klientských počítačů s Windows v Azure představuje náklady na virtuální počítač významnou část celkových nákladů na nasazení virtuálních počítačů s Windows. Aby se snížily náklady, je nejlepší vypnout a uvolnit virtuální počítače hostitele relace v době mimo špičku a pak je restartovat během špičky využití.
 
 V tomto článku se používá jednoduchý skript pro škálování pro automatické škálování virtuálních počítačů hostitele relací v prostředí virtuálních počítačů s Windows. Další informace o tom, jak skript škálování funguje, najdete v části [Jak funguje skript pro škálování](#how-the-scaling-script-works) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prostředí, ve kterém spouštíte skript, musí mít následující věci:
 
@@ -90,7 +90,7 @@ Zadejte příslušné hodnoty do následujících polí pro aktualizaci nastaven
 | tenantName                    | Název tenanta virtuálních klientů Windows                                                    |
 | hostPoolName                  | Název fondu hostitelů virtuálních počítačů s Windows                                                 |
 | RDBroker                      | Adresa URL služby WVD, výchozí hodnota https: \//rdbroker. WVD. Microsoft. com             |
-| Jmen                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
+| Uživatelské jméno                      | ID aplikace instančního objektu (je možné, že má stejný instanční objekt jako v AADApplicationId) nebo standardní uživatel bez služby Multi-Factor Authentication |
 | isServicePrincipal            | Přijaté hodnoty jsou **true** nebo **false**. Určuje, jestli druhá sada přihlašovacích údajů používá instanční objekt nebo standardní účet. |
 | BeginPeakTime                 | Čas zahájení špičky využití                                                            |
 | EndPeakTime                   | Doba špičky využití na konci                                                              |

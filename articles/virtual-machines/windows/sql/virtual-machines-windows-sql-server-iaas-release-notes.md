@@ -1,5 +1,5 @@
 ---
-title: Poznámky k verzi pro SQL Server v Azure Virtual Machines | Microsoft Docs
+title: Změny v dokumentaci pro SQL Server v Azure Virtual Machines | Microsoft Docs
 description: Přečtěte si o nových funkcích a vylepšeních SQL Server na virtuálním počítači Azure.
 services: virtual-machines-windows
 author: MashaMSFT
@@ -12,22 +12,28 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 759bec280b40973cf651dec3741a71d67c01fe04
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200164"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828598"
 ---
-# <a name="release-notes-for-sql-server-on-azure-virtual-machines"></a>Poznámky k verzi pro SQL Server v Azure Virtual Machines
+# <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 
-Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [SQL Server v Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). V tomto článku jsou uvedeny také významné aktualizace obsahu, které přímo nesouvisejí s vydáním, ale publikované ve stejném časovém rámci. Vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
+Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou. Tento článek shrnuje změny v dokumentaci spojené s novými funkcemi a vylepšeními v posledních verzích [SQL Server v Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
+
+
+## <a name="october-2019"></a>Říjen 2019
+
+| Provedeny | Podrobnosti |
+| --- | --- |
+| **Konfigurace optimalizovaného úložiště výkonu** | Při vytváření nového virtuálního počítače SQL Server teď můžete [svoji konfiguraci úložiště plně přizpůsobit](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) . |
+| &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>Srpen 2019
 
-### <a name="service-improvements"></a>Vylepšení služby
-
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Vyhrazený hostitel Azure** | Virtuální počítač s SQL Server můžete spustit na [vyhrazeném hostiteli Azure](virtual-machines-windows-sql-dedicated-host.md). |
 | &nbsp; | &nbsp; |
@@ -35,18 +41,16 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 ## <a name="july-2019"></a>Červenec 2019
 
-### <a name="documentation-improvements"></a>Vylepšení dokumentace
 
-| Dokumentace | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Přesunout virtuální počítač SQL do jiné oblasti** | Pomocí Azure Site Recovery [migrujte virtuální počítač s SQL Server z jedné oblasti do druhé](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>Červeně 2019
 
-### <a name="service-improvements"></a>Vylepšení služby
 
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Nové režimy instalace SQL IaaS** | Nyní je možné nainstalovat rozšíření SQL Server IaaS v [režimu prostého režimu](virtual-machines-windows-sql-server-agent-extension.md) , abyste se vyhnuli restartování služby SQL Server.  |
 | **Úpravy edice SQL Server** | Nyní můžete změnit [vlastnost edice](virtual-machines-windows-sql-change-edition.md) pro váš virtuální počítač s SQL Server. |
@@ -57,28 +61,16 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 ## <a name="may-2019"></a>Květen 2019
 
-### <a name="service-improvements"></a>Vylepšení služby
-
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Nová SQL Server Správa virtuálních počítačů v Azure Portal** | Nyní je možné spravovat SQL Server virtuální počítač v Azure Portal. Další informace najdete v tématu [Správa virtuálních počítačů s SQL Server v Azure Portal](virtual-machines-windows-sql-manage-portal.md).  | 
 | &nbsp; | &nbsp; |
-
-### <a name="documentation-improvements"></a>Vylepšení dokumentace
-
-| Dokumentace | Podrobnosti |
-| --- | --- |
-| **Nový portál pro správu virtuálních počítačů SQL Server** | O desítkových článcích bylo aktualizováno na nové prostředí portálu pro správu virtuálních počítačů SQL Server. | 
-| &nbsp; | &nbsp; |
-
 
 
 
 ## <a name="april-2019"></a>Duben 2019
 
-### <a name="service-improvements"></a>Vylepšení služby
-
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Rozšířená podpora pro SQL Server 2008/2008 R2** | [Podporu](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server 2008 a SQL Server 2008 R2 můžete podpořit tak, že migrujete *jako* na virtuální počítač Azure. | 
 | &nbsp; | &nbsp; |
@@ -86,7 +78,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 ## <a name="march-2019"></a>Březen 2019
 
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Podpora vlastních imagí** | Teď můžete nainstalovat [rozšíření SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) na vlastní image OS a SQL, což nabízí omezené funkce [flexibilního licencování](virtual-machines-windows-sql-ahb.md). Při registraci vlastní image pomocí poskytovatele prostředků SQL zadejte typ licence jako "AHUB". V opačném případě se registrace nezdaří. | 
 | **Podpora pojmenovaných instancí** | Nyní můžete použít [rozšíření SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md#installation) s pojmenovanou instancí, pokud byla výchozí instance správně odinstalována. | 
@@ -96,16 +88,18 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 ## <a name="february-2019"></a>Únor 2019
 
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Vylepšení portálu** | Je teď možné změnit licenční model pro SQL Server virtuální počítač z průběžných plateb na vlastní licenci pomocí [Azure Portalu](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider).|
 |**Zjednodušení nasazení skupiny dostupnosti pomocí Azure SQL Server VM CLI** | Nasazení skupiny dostupnosti do virtuálního počítače s SQL Server v Azure je teď snazší než dřív. Pomocí [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) můžete z příkazového řádku vytvořit cluster s podporou převzetí služeb při selhání systému Windows, interní nástroj pro vyrovnávání zatížení a skupiny dostupnosti. Další informace najdete v tématu [použití rozhraní příkazového řádku azure SQL Server ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
+## <a name="2018"></a>2018
 
-## <a name="december-2018"></a>Prosinec 2018
 
-| Vylepšení služby | Podrobnosti |
+### <a name="december-2018"></a>Prosinec 2018
+
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Nový poskytovatel prostředků pro cluster SQL Server** | Nový poskytovatel prostředků (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups) definuje metadata clusteru s podporou převzetí služeb při selhání systému Windows. Když se připojíte k SQL Server virtuálního počítače *SqlVirtualMachineGroups* , služba Windows Server failover cluster (WSFC) se připojí k tomuto virtuálnímu počítači a připojí ho ke clusteru.  |
 |**Automatizované nastavení nasazení skupiny dostupnosti pomocí šablon Azure pro rychlý Start** |Nyní je možné vytvořit cluster s podporou převzetí služeb při selhání Windows, připojit SQL Server k virtuálním počítačům, vytvořit naslouchací proces a nakonfigurovat interní nástroj pro vyrovnávání zatížení pomocí dvou šablon Azure pro rychlý Start. Další informace najdete v tématu [použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
@@ -113,16 +107,16 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | &nbsp; | &nbsp; |
 
 
-## <a name="november-2018"></a>Listopadu 2018
+### <a name="november-2018"></a>Listopadu 2018
 
-| Vylepšení služby | Podrobnosti |
+| Provedeny | Podrobnosti |
 | --- | --- |
 | **Nový poskytovatel prostředků virtuálního počítače SQL** |  Nový poskytovatel prostředků (Microsoft. SqlVirtualMachine) poskytuje lepší správu vašich SQL Serverch virtuálních počítačů. Další informace o registraci virtuálních počítačů najdete v tématu [registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL](virtual-machines-windows-sql-register-with-resource-provider.md). |
 |**Přepnutí modelu licencování** | Pomocí Azure CLI nebo PowerShellu se teď můžete přepínat mezi modely s platbami za využití a vlastní licence pro váš SQL Server virtuální počítač. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač v Azure](virtual-machines-windows-sql-ahb.md). | 
 | &nbsp; | &nbsp; |
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 **Virtuální počítače s Windows**:
 

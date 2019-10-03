@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 08/16/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: ef6b395aeff18a63f52f58e2477679b48a19b002
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: fcb4b3d54e1e62a7f197f2f499e2b176bb707fd8
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624746"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843833"
 ---
 1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v levém podokně a otevřete podokno **vlastnosti** . Do dočasného souboru zkopírujte **ID adresáře**. Tuto hodnotu použijete ke konfiguraci ukázkové aplikace v další části.
 
-    ![ID adresáře Azure Active Directory](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)
+    [ID adresáře služby Active Directory @no__t 1Azure](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png#lightbox)
 
 1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v levém podokně a otevřete podokno **Registrace aplikací (starší verze)** . Klikněte na tlačítko **Registrace nové aplikace** .
 
-1. Zadejte popisný název pro registraci této aplikace v poli **název** . Vyberte **Typ aplikace** jako **nativní**a **identifikátor URI** pro přesměrování `https://microsoft.com`jako. Vyberte **Vytvořit**.
+1. Zadejte popisný název pro registraci této aplikace v poli **název** . Vyberte **Typ aplikace** jako **nativní**a **identifikátor URI pro přesměrování** jako `https://microsoft.com`. Vyberte **Create** (Vytvořit).
 
-    ![Vytvořit podokno](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)
+    [@no__t – podokno 1Create](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)](./media/digital-twins-permissions-legacy/aad-app-reg-create.png#lightbox)
 
 1.  Otevřete registrovanou aplikaci a zkopírujte hodnotu pole **ID aplikace** do dočasného souboru. Tato hodnota identifikuje vaši aplikaci Azure Active Directory. Pomocí ID aplikace můžete nakonfigurovat ukázkovou aplikaci v následujících oddílech.
 
-    ![ID aplikace Azure Active Directory](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)
+    [@no__t – ID aplikace služby Active Directory pro 1Azure](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png)](./media/digital-twins-permissions-legacy/aad-app-reg-app-id.png#lightbox)
 
-1. Otevřete podokno registrace aplikace. Vyberte **Nastavení** > **požadovaná oprávnění**a potom:
+1. Otevřete podokno registrace aplikace. Vyberte **nastavení** > **požadovaná oprávnění**a potom:
 
    a. V levém horním rohu vyberte **Přidat** a otevřete podokno **Přidat přístup k rozhraní API** .
 
@@ -43,6 +43,6 @@ ms.locfileid: "69624746"
 
    f. V podokně **požadovaná oprávnění** vyberte tlačítko **udělit oprávnění** a přijměte potvrzení, které se zobrazí. Pokud oprávnění není pro toto rozhraní API uděleno, obraťte se na správce.
 
-      ![Podokno požadovaná oprávnění](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
+      [@no__t – podokno oprávnění 1Required](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png#lightbox)
 
  

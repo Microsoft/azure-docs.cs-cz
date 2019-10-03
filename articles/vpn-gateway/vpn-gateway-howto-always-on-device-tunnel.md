@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295471"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841142"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurace tunelu zařízení VPN AlwaysOn
 
@@ -32,12 +32,7 @@ Tunelové propojení zařízení i tunelové propojení uživatelů fungují nez
 
 Nakonfigurujte bránu VPN na používání protokolu IKEv2 a ověřování založeného na certifikátech pomocí tohoto [článku Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="2-configure-the-user-tunnel"></a>2. Konfigurace tunelového propojení uživatelů
-
-1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát musí být v úložišti aktuálního uživatele.
-2. Pomocí [těchto pokynů](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)NAKONFIGURUJTE klienta VPN Always On prostřednictvím PowerShellu, SCCM nebo Intune.
-
-## <a name="3-configure-the-device-tunnel"></a>3. Konfigurace tunelového připojení zařízení
+## <a name="2-configure-the-device-tunnel"></a>2. konfigurace tunelového připojení zařízení
 
 Aby bylo možné úspěšně vytvořit tunelové zařízení, musí být splněny následující požadavky:
 
@@ -160,7 +155,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ![Firma](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Vyhledejte položku **MachineCertTest** a klikněte na **připojit**.
 
-   ![Připojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Propojení](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Pokud je připojení úspěšné, restartujte počítač. Tunel se automaticky připojí.
 
 ## <a name="cleanup"></a>Vyčištění
@@ -169,6 +164,6 @@ Chcete-li odebrat profil, spusťte následující příkaz:
 
 ![Vyčištění](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Řešení potíží najdete v tématu [problémy s připojením Point-to-site v Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) .

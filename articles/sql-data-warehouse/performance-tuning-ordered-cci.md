@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802572"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845713"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
 Když uživatelé dotazují tabulku columnstore v Azure SQL Data Warehouse, Optimalizátor zkontroluje minimální a maximální hodnoty uložené v jednotlivých segmentech.  Segmenty mimo hranice predikátu dotazu se nečtou z disku do paměti.  Dotaz může dosáhnout rychlejšího výkonu, pokud je počet čtených segmentů a jejich celková velikost malá.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Seřazený a neuspořádaný clusterovaný index columnstore 
-Ve výchozím nastavení se pro každou tabulku Azure Data Warehouse vytvořenou bez možnosti indexu vytvoří interní komponenta (Tvůrce indexů) neuspořádaný clusterovaný index columnstore (Ski).  Data v jednotlivých sloupcích jsou komprimována do samostatného segmentu skupiny řádků Ski.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se při provádění dotazu nečtou z disku.  Ski nabízí nejvyšší úroveň komprese dat a snižuje velikost segmentů ke čtení, aby dotazy mohly běžet rychleji. Vzhledem k tomu, že tvůrce indexů neřadí data před komprimací do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobí, že dotazy budou číst více segmentů z disku a trvá déle.  
+Ve výchozím nastavení se pro každou tabulku Azure Data Warehouse vytvořenou bez možnosti indexu vytvoří interní komponenta (Tvůrce indexů) neuspořádaný clusterovaný index columnstore (Ski).  Data v jednotlivých sloupcích jsou komprimována do samostatného segmentu skupiny řádků Ski.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se při provádění dotazu nečtou z disku.  Ski nabízí nejvyšší úroveň komprese dat a snižuje velikost segmentů ke čtení, aby dotazy mohly běžet rychleji. Vzhledem k tomu, že tvůrce indexů neřadí data před jejich komprimací do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobilo, že dotazy budou číst více segmentů z disku a trvá déle.  
 
-Při vytváření seřazené instrukce Azure SQL Data Warehouse modul seřadí data v paměti pomocí klíčů pořadí, než je tvůrce indexů komprimuje do segmentů indexu.  U seřazených dat je segment překrývající se snížen, takže dotazy mají efektivnější odstraňování segmentů, což znamená rychlejší výkon, protože počet segmentů ke čtení z disku je menší.  Pokud se všechna data dají řadit v paměti najednou, můžete se vyhnout překrývání segmentu.  V případě velké velikosti dat v tabulkách datového skladu k tomuto scénáři nedochází často.  
+Při vytváření seřazené instrukce Azure SQL Data Warehouse modul seřadí existující data z paměti pomocí klíčů, než je tvůrce indexů komprimuje do segmentů indexu.  U seřazených dat je segment překrývající se snížen, takže dotazy mají efektivnější odstraňování segmentů, což znamená rychlejší výkon, protože počet segmentů ke čtení z disku je menší.  Pokud se všechna data dají řadit v paměti najednou, můžete se vyhnout překrývání segmentu.  V případě velké velikosti dat v tabulkách datového skladu k tomuto scénáři nedochází často.  
 
 Chcete-li kontrolovat rozsahy segmentů pro sloupec, spusťte tento příkaz s názvem tabulky a názvem sloupce:
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> V seřazené tabulce Ski je nová data, která jsou výsledkem operací DML nebo načítání dat, automaticky řazena.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  
+
 ## <a name="data-loading-performance"></a>Výkon načítání dat
 
 Výkon načítání dat do seřazené tabulky Ski je podobný načtení dat do dělené tabulky.  
@@ -51,12 +54,24 @@ Zde je příklad porovnání výkonu načítání dat do tabulek s různými sch
 @no__t – 0Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Zmenšení překrývajících se segmentů
-Níže jsou uvedeny možnosti pro další omezení překrývání při vytváření uspořádané konzulární instrukce pro novou tabulku prostřednictvím CTAS nebo v existující tabulce s daty:
 
-- Použijte větší třídu prostředků, abyste umožnili řazení více dat v paměti předtím, než je tvůrce indexů komprimuje do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistují žádné řazení dat v rámci segmentu nebo napříč segmenty.  
+Počet překrývajících se segmentů závisí na velikosti dat, která se mají seřadit, dostupné paměti a nastavení maximálního stupně paralelismu (MAXDOP) během vytváření řazené Ski. Níže jsou uvedeny možnosti, jak omezit segment překrývající se při vytváření uspořádané konzulární instrukce.
 
-- Použijte nižší stupeň paralelismu (například DOP = 1).  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna. 
+- Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistují žádné řazení dat v rámci segmentu nebo napříč segmenty.  
+
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - Před jejich nařazením do Azure SQL Data Warehouse tabulek předem Seřaďte data pomocí klíčů řazení.
+
+
+Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segment překrývající se nad doporučeními. Seřazená tabulka Ski je vytvořená v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB pomocí MAXDOP 1 a xlargerc.  INSTRUKCE je seřazená na sloupec typu BIGINT bez duplicit.  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Vytváření uspořádané konzulární instrukce pro velké tabulky
 Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, které neobsahují oddíly, data nebudou k dispozici uživatelům, dokud se nedokončí proces vytváření řazené Ski.   Pro dělené tabulky, protože modul vytváří seřazený oddíl s pokyny podle oddílu, uživatelé budou mít stále přístup k datům v oddílech, kde se vytváření řazené konzulárních instrukcí nezpracovává.   Tuto možnost můžete použít k minimalizaci výpadku během uspořádaného vytváření Ski v rozsáhlých tabulkách: 

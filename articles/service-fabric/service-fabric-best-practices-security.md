@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780345"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828510"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -79,7 +79,7 @@ Pokud chcete použít seznam řízení přístupu pro vaše certifikáty pro pro
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Zabezpečení certifikátu Service Fabric clusteru podle běžného názvu
 
-K zabezpečení Service Fabric clusteru pomocí certifikátu `Common Name`použijte vlastnost správce prostředků šablony [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)následujícím způsobem:
+Pokud chcete svůj Cluster Service Fabric zabezpečit pomocí certifikátu `Common Name`, použijte vlastnost šablony Správce prostředků [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)následujícím způsobem:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ K zabezpečení Service Fabric clusteru pomocí certifikátu `Common Name`použi
 > [!NOTE]
 > Clustery Service Fabric budou používat první platný certifikát, který nalezne v úložišti certifikátů hostitele. Ve Windows se jedná o certifikát s nejpozdějším datem vypršení platnosti, který odpovídá vašemu společnému názvu a kryptografickému otisku vystavitele.
 
-Domény Azure\<, například * vaše subdomény\>. cloudapp.Azure.com nebo \<subdoméne\>. trafficmanager.NET, jsou vlastněny společností Microsoft. Certifikační autority nebudou vydávat certifikáty pro domény neautorizovaným uživatelům. Většina uživatelů bude muset koupit doménu od registrátora nebo mít oprávnění správce domény, aby certifikační autorita mohla vydat certifikát s tímto běžným názvem.
+Domény Azure, jako je například * \<YOUR SUBDOMAIN\>.cloudapp.azure.com nebo \<YOUR SUBDOMAIN\>.trafficmanager.net, jsou vlastněny společností Microsoft. Certifikační autority nebudou vydávat certifikáty pro domény neautorizovaným uživatelům. Většina uživatelů bude muset koupit doménu od registrátora nebo mít oprávnění správce domény, aby certifikační autorita mohla vydat certifikát s tímto běžným názvem.
 
 Další podrobnosti o tom, jak nakonfigurovat službu DNS k překladu vaší domény na IP adresu Microsoftu, najdete v tématu Jak nakonfigurovat [Azure DNS pro hostování vaší domény](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
 
 > [!NOTE]
 > Po delegování vašich názvových serverů domén na servery Azure DNS zóny přidejte do zóny DNS tyto dva záznamy:
-> - Záznam A pro vrchol domény, který není `Alias record set` na všech IP adresách, které vaše vlastní doména vyřeší.
-> - Záznam C pro poddomény Microsoftu, které jste zřídili, které `Alias record set`nejsou. Můžete například použít Traffic Manager nebo název DNS Load Balancer.
+> - Záznam A pro vrchol domény, který není `Alias record set` pro všechny IP adresy, které vaše vlastní doména vyřeší.
+> - Záznam C pro poddomény Microsoftu, které jste zřídili, nejsou `Alias record set`. Můžete například použít Traffic Manager nebo název DNS Load Balancer.
 
-Chcete-li aktualizovat portál tak, aby pro Service Fabric clusteru `"managementEndpoint"`zobrazoval vlastní název DNS, aktualizujte následující vlastnosti šablony Správce prostředků Service Fabric clusteru:
+Chcete-li aktualizovat portál tak, aby zobrazoval vlastní název DNS pro Service Fabric clusteru `"managementEndpoint"`, aktualizujte následující vlastnosti šablony Správce prostředků Service Fabric clusteru:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -150,8 +150,20 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-Po zašifrování chráněných hodnot [Zadejte šifrované tajné klíče v aplikaci Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)a dešifrujte [šifrované tajné kódy z kódu služby](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
+Po zašifrování chráněných hodnot [Zadejte šifrované tajné klíče v aplikaci Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)a [dešifrujte šifrované tajné kódy z kódu služby](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
 
+## <a name="include-certificate-in-service-fabric-applications"></a>Zahrnout certifikát do aplikací Service Fabric
+
+Chcete-li dát vaší aplikaci přístup k tajným klíčům, zahrňte certifikát přidáním elementu **SecretsCertificate** do manifestu aplikace.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Ověřování aplikací Service Fabric k prostředkům Azure pomocí Identita spravované služby (MSI)
 
 Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work).
@@ -159,7 +171,7 @@ Clustery Azure Service Fabric se hostují v Virtual Machine Scale Sets, které p
 Seznam služeb, které se dají použít k ověřování pomocí MSI, najdete v tématu [služby Azure, které podporují ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
 
-Pokud chcete povolit spravovanou identitu přiřazenou systémem během vytváření sady škálování virtuálních počítačů nebo existující sady škálování virtuálních počítačů, deklarujte `"Microsoft.Compute/virtualMachinesScaleSets"` tuto vlastnost:
+Pokud chcete povolit spravovanou identitu přiřazenou systémem během vytváření sady škálování virtuálních počítačů nebo existující sady škálování virtuálních počítačů, deklarujte následující vlastnost `"Microsoft.Compute/virtualMachinesScaleSets"`:
 
 ```json
 "identity": { 
@@ -204,16 +216,16 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 ## <a name="windows-security-baselines"></a>Základní hodnoty zabezpečení systému Windows
 Doporučujeme [, abyste implementovali standardní standardní konfiguraci, která je široce známá a dobře testována, jako jsou například standardní hodnoty zabezpečení společnosti Microsoft, a to na rozdíl od vytvoření směrného plánu](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines). možnost, kterou si můžete zřídit v Virtual Machine Scale Sets, je použít obslužnou rutinu rozšíření DSC (Konfigurace požadovaného stavu) Azure ke konfiguraci virtuálních počítačů při jejich práci online, takže běží produkční software.
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
-[Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu. ](https://docs.microsoft.com/azure/firewall/overview). to umožňuje omezit odchozí přenosy HTTP/S na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu SSL. Doporučuje se využít [Azure firewall značek plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags) pro aktualizace systému Windows a povolit směrování síťového provozu do Microsoft Web Windows Update koncových bodů prostřednictvím brány firewall. [Nasazení Azure firewall pomocí šablony](https://docs.microsoft.com/azure/firewall/deploy-template) poskytuje ukázku pro definici šablony prostředků Microsoft. Network/azureFirewalls. Mezi pravidla brány firewall společná pro Service Fabric aplikací je umožněno, aby pro virtuální síť clusterů byly následující:
+## <a name="azure-firewall"></a>Azure Firewall
+[Azure firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu.](https://docs.microsoft.com/azure/firewall/overview) Díky tomu je možné omezit odchozí přenosy HTTP/S na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu SSL. Doporučuje se využít [Azure firewall značek plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags) pro aktualizace systému Windows a povolit směrování síťového provozu do Microsoft Web Windows Update koncových bodů prostřednictvím brány firewall. [Nasazení Azure firewall pomocí šablony](https://docs.microsoft.com/azure/firewall/deploy-template) poskytuje ukázku pro definici šablony prostředků Microsoft. Network/azureFirewalls. Mezi pravidla brány firewall společná pro Service Fabric aplikací je umožněno, aby pro virtuální síť clusterů byly následující:
 
-- *download.microsoft.com
-- *servicefabric.azure.com
-- *.core.windows.net
+- \* download.microsoft.com
+- \* servicefabric.azure.com
+- *. core.windows.net
 
 Tato pravidla brány firewall doplňují vaše povolené odchozí skupiny zabezpečení sítě, které by zahrnovaly ServiceFabric a úložiště jako povolené cíle z vaší virtuální sítě.
 
-## <a name="tls-12"></a>TLS 1.2
+## <a name="tls-12"></a>TLS 1,2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
@@ -262,10 +274,10 @@ Ve výchozím nastavení mají Service Fabric aplikacím udělen přístup k sam
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vytvořte cluster na virtuálních počítačích nebo počítačích s Windows serverem: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-cluster-creation-for-windows-server.md).
-* Vytvořte cluster na virtuálních počítačích nebo počítačích se systémem Linux: [Vytvořte cluster se systémem Linux](service-fabric-cluster-creation-via-portal.md).
+* Vytvořte cluster na virtuálních počítačích nebo počítačích se systémem Linux: [vytvořte cluster se systémem Linux](service-fabric-cluster-creation-via-portal.md).
 * Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

@@ -1,20 +1,20 @@
 ---
-title: Vytváření a správa přiřazení rolí v Azure Digital provlákna | Microsoft Docs
-description: Umožňuje vytvářet a spravovat přiřazení rolí v digitálních prozdvojeních Azure.
+title: Vytváření a správa přiřazení rolí – digitální vlákna Azure | Microsoft Docs
+description: Seznamte se s vytvářením a správou přiřazení rolí v digitálních autovlákenách Azure.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703357"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827691"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
@@ -165,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
 | YOUR_PATH | True | Řetězec |   Vybraná cesta pro kontrolu přístupu. |
-| YOUR_ACCESS_TYPE |  True | Řetězec |   Typ přístupu, který se má ověřit |
-| YOUR_RESOURCE_TYPE | True | Řetězec |  Prostředek, který se má ověřit |
+| YOUR_ACCESS_TYPE |  True | Řetězec |   *Číst*, *vytvořit*, *aktualizovat*nebo *Odstranit* |
+| YOUR_RESOURCE_TYPE | True | Řetězec |  *Zařízení*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *koncový bod*, *úložiště klíčů*, *Shoda*, *Ontology*, *Sestava*,  *Rutiny roledefinition*, *snímač*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systém* , *UerDefinedFunction*, *User*, *UserBlobMetadata*nebo *UserExtendedProperty* |
 
 Úspěšný požadavek vrátí logickou hodnotu `true` nebo `false` k označení, zda byl k dané cestě a prostředku přiřazen daný typ přístupu uživateli.
 

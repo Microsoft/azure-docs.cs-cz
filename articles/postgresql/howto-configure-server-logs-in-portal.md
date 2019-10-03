@@ -1,71 +1,70 @@
 ---
-title: Konfigurace a získat přístup k protokolům serveru pro službu Azure Database for PostgreSQL – jeden Server na webu Azure Portal
-description: Tento článek popisuje, jak nakonfigurovat a přístup k protokolům serveru ve službě Azure Database for PostgreSQL – jeden Server z webu Azure Portal.
+title: Konfigurace a přístup k protokolům serveru Azure Database for PostgreSQL – jeden server z Azure Portal
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru Azure Database for PostgreSQL-Single server z Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c77e708e14d34545754ca38095aedb63ff0172a1
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067454"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841508"
 ---
-# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k Azure Database for PostgreSQL – protokoly jednoho serveru na webu Azure Portal
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům Azure Database for PostgreSQL-Single server z Azure Portal
 
-Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for postgresql – protokoly](concepts-server-logs.md) z portálu Azure portal.
+V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly Azure Database for PostgreSQL](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Azure Database for PostgreSQL server](quickstart-create-server-database-portal.md)
+## <a name="prerequisites"></a>Předpoklady
+Postup v tomto článku vyžaduje, abyste měli [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md).
 
-## <a name="configure-logging"></a>Konfigurace protokolování
-Konfigurace přístupu k dotazu protokoly a protokoly chyb. 
+## <a name="configure-logging"></a>Konfigurovat protokolování
+Nakonfigurujte přístup k protokolům dotazů a protokolům chyb. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte svůj server Azure Database for PostgreSQL.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. 
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. 
 
-   ![Vyberte protokoly serveru a vyberte možnost "Klikněte zde pro povolení..."](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   ![Snímek obrazovky s možnostmi protokolu serveru](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. Vyberte záhlaví **kliknutím sem můžete povolit protokoly a nakonfigurovat parametry protokolů** zobrazíte parametry serveru.
+4. Pokud chcete zobrazit parametry serveru, vyberte **kliknutím sem povolíte protokoly a nakonfigurujete parametry protokolu**.
 
-5. Změníte parametry, které je potřeba upravit. Všechny změny provedené v této relaci jsou zvýrazněny znázorněný fialovou barvou.
+5. Změňte parametry, které je třeba upravit. Všechny změny, které provedete v této relaci, jsou zvýrazněné fialově.
 
-   Jakmile změníte parametry, můžete kliknout na **Uložit**. Nebo můžete **zahodit** provedené změny. 
+   Po změně parametrů vyberte **Save (Uložit**). Nebo můžete změny zrušit. 
 
-   ![Dlouhý seznam parametrů k ukládání nebo zahazování změn](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![Snímek obrazovky s možnostmi parametrů serveru](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. Přejděte zpět na seznam protokolů po kliknutí **tlačítko Zavřít** (X ikonu) na **parametry serveru** stránky.
+Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím, že stránku zavřete.
 
-## <a name="view-list-and-download-logs"></a>Zobrazení seznamu a stáhnout protokoly
-Po zahájení protokolování, můžete zobrazit seznam dostupných protokolů a stažení jednotlivých souborů protokolu v podokně protokolů serveru. 
+## <a name="view-list-and-download-logs"></a>Zobrazit seznam a stáhnout protokoly
+Po zahájení protokolování můžete zobrazit seznam dostupných protokolů a stáhnout jednotlivé soubory protokolů. 
 
 1. Otevřete web Azure Portal.
 
 2. Vyberte svůj server Azure Database for PostgreSQL.
 
-3. V části **monitorování** části na bočním panelu, vyberte **protokoly serveru**. Na stránce se zobrazí seznam souborů protokolu, jak je znázorněno:
+3. V části **monitorování** na bočním panelu vyberte **protokoly serveru**. Stránka zobrazuje seznam souborů protokolu.
 
-   ![Seznam serverů protokoly](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   ![Snímek obrazovky se stránkou protokolů serveru se zvýrazněným seznamem protokolů](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > Zásady vytváření názvů protokolu je **postgresql rrrr mm-dd_hh0000.log**. Datum a čas, použít v názvu souboru je čas je v případě protokolu byl vydán. Soubory protokolů otočit každou hodinu nebo velikost 100 MB, podle toho, co nastane dřív.
+   > Konvence pojmenování protokolu je **PostgreSQL-yyyy-mm-dd_hh0000. log**. Datum a čas použití v názvu souboru je čas, kdy byl protokol vydán. Soubory protokolu se otáčejí každou hodinu nebo 100 MB, podle toho, co nastane dřív.
 
-4. V případě potřeby použijte **vyhledávacího pole** můžete rychle omezit na konkrétní protokol podle data a času. Hledání je na název protokolu.
+4. V případě potřeby se pomocí vyhledávacího pole rychle zúží na konkrétní protokol, a to na základě data a času. Hledání je na názvu protokolu.
 
-   ![Příklad prohledávání protokolu názvů](./media/howto-configure-server-logs-in-portal/5-search.png)
+   ![Snímek obrazovky se stránkou protokolů serveru s vybraným vyhledávacím polem a výsledky](./media/howto-configure-server-logs-in-portal/5-search.png)
 
-5. Stáhněte si pomocí jednotlivých protokolových souborů **Stáhnout** tlačítko (ikona šipky pro sestupné) vedle každého souboru protokolu v řádku, jak je znázorněno:
+5. Chcete-li stáhnout jednotlivé soubory protokolu, vyberte ikonu šipky vedle každého souboru protokolu v řádku tabulky.
 
-   ![Klikněte na ikonu stažení](./media/howto-configure-server-logs-in-portal/6-download.png)
+   ![Snímek obrazovky se stránkou protokolů serveru s zvýrazněnou ikonou šipky](./media/howto-configure-server-logs-in-portal/6-download.png)
 
-## <a name="next-steps"></a>Další postup
-- Zobrazit [přístup k protokolům serveru v rozhraní příkazového řádku](howto-configure-server-logs-using-cli.md) Další informace o stažení protokolů prostřednictvím kódu programu.
-- Další informace o [protokoly serveru](concepts-server-logs.md) ve službě Azure DB for PostgreSQL. 
-- Další informace o protokolování PostgreSQL a definicemi parametrů najdete v dokumentaci PostgreSQL na [zpráv o chybách a protokolování](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
+## <a name="next-steps"></a>Další kroky
+- Informace o tom, jak programově stahovat protokoly, najdete [v tématu Access Server Logs v](howto-configure-server-logs-using-cli.md) rozhraní příkazového řádku.
+- Přečtěte si další informace o [protokolech serveru](concepts-server-logs.md) v Azure Database for PostgreSQL. 
+- Další informace o definicích parametrů a protokolování PostgreSQL najdete v dokumentaci k PostgreSQL v tématu [zasílání zpráv o chybách a protokolování](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
 

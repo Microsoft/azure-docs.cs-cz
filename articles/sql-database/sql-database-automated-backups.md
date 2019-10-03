@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: cc6041a228545ffef158e3d627de983a154513a5
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350941"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843303"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
-SQL Database automaticky vytvoří zálohy databáze udržované mezi 7 a 35 dny a pomocí geograficky redundantního [úložiště Azure s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) zajistí, že jsou zachovány i v případě, že datové centrum není k dispozici. Tyto zálohy jsou vytvořeny automaticky. Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Pokud vaše pravidla zabezpečení vyžadují, aby byly zálohy dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md) pro databáze typu Singleton a elastické fondy.
+SQL Database automaticky vytvoří zálohy databáze udržované mezi 7 a 35 dny a pomocí [geograficky redundantního úložiště Azure s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) zajistí, že jsou zachovány i v případě, že datové centrum není k dispozici. Tyto zálohy jsou vytvořeny automaticky. Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Pokud vaše pravidla zabezpečení vyžadují, aby byly zálohy dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md) pro databáze typu Singleton a elastické fondy.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -49,7 +49,7 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 | Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md#managed-instance-database) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Spravovaná instance – není k dispozici  |
 | Obnovit databázi z bodu v čase | [Samostatná databáze](sql-database-recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md#deleted-database-restore-using-azure-portal) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Obnovení odstraněné databáze | [Samostatná databáze](sql-database-recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Obnovení databáze z Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho jsou zálohy uchovávány
@@ -81,7 +81,7 @@ Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azu
 
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 U izolovaných databází se minimální hodnota záložního úložiště rovná 100% velikosti databáze je k dispozici bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
@@ -94,7 +94,7 @@ Pokud je vaše databáze zašifrovaná pomocí TDE, zálohy se automaticky zaši
 
 V nepřetržitém případě Azure SQL Database technický tým automaticky testuje obnovení automatizovaných záloh databáze databází umístěných na logických serverech a elastických fondech (není k dispozici ve spravované instanci). Při obnovení k bodu v čase získávají databáze také kontroly integrity pomocí příkazu DBCC CHECKDB.
 
-Spravovaná instance provede automatické prvotní zálohování s `CHECKSUM` databázemi obnovenými pomocí nativního `RESTORE` příkazu nebo služby migrace dat po dokončení migrace.
+Spravovaná instance provádí automatické počáteční zálohování s `CHECKSUM` databází obnovených pomocí nativního příkazu `RESTORE` nebo služby migrace dat po dokončení migrace.
 
 Všechny problémy zjištěné během kontroly integrity budou mít za následek upozornění technickému týmu. Další informace o integritě dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
@@ -142,7 +142,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změna doby uchování PITR pomocí REST API
 
-#### <a name="sample-request"></a>Ukázkový požadavek
+#### <a name="sample-request"></a>Ukázková žádost
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

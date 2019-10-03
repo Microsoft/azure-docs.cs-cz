@@ -1,24 +1,24 @@
 ---
-title: Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows – Azure
-description: Jak vyřešit problémy při konfiguraci virtuálního počítače hostitele a hostitele relace v prostředí virtuálních počítačů s Windows
+title: Konfigurace virtuálního počítače hostitele relace – Azure
+description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů s Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: d163bbf50193743b6602bc9ec3d330df4c14ebcc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676426"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841296"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Vytvoření fondu tenanta a hostitele
+# <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -335,7 +335,7 @@ Upgrade na Windows 10 verze 1903:
     
     ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Vyberte **použít**.
+7. Vyberte **Použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 
@@ -347,7 +347,7 @@ Postup opětovného nasazení fondu hostitelů s nejnovější imagí:
 4. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
 5. Vyberte **nastavit režim licencování vzdálené plochy**.
 6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro hostitel relace VP server pro **jednotlivé uživatele**.
-7. Vyberte **použít**.
+7. Vyberte **Použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 
@@ -363,7 +363,7 @@ Pokud číslo vaší verze říká "1903", postupujte podle těchto pokynů:
     
     ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
 
-7. Vyberte **použít**.
+7. Vyberte **Použít**.
 8. Vyberte **OK**.
 9.  Restartujte počítač.
 

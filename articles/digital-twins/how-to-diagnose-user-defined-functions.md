@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260858"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843867"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -43,7 +43,7 @@ Po nakonfigurování budete moct vybrat všechny kategorie protokolů, metriky a
 
 Chcete-li trasovat telemetrii senzorů, ověřte, zda jsou pro instanci digitálního vlákna Azure povoleny nastavení diagnostiky. Pak se ujistěte, že jsou vybrané všechny požadované kategorie protokolu. Nakonec potvrďte, že jsou odesílány požadované protokoly do protokolů Azure Monitor.
 
-Pokud chcete, aby se zpráva telemetrie senzorů shodovala s příslušnými protokoly, můžete pro odesílaná data události zadat ID korelace. Provedete to tak, `x-ms-client-request-id` že nastavíte vlastnost na identifikátor GUID.
+Pokud chcete, aby se zpráva telemetrie senzorů shodovala s příslušnými protokoly, můžete pro odesílaná data události zadat ID korelace. Provedete to tak, že nastavíte vlastnost `x-ms-client-request-id` na identifikátor GUID.
 
 Po odeslání telemetrie otevřete Azure Monitor Log Analytics a Dotazujte se na protokoly pomocí nastavení ID korelace:
 
@@ -55,6 +55,13 @@ AzureDiagnostics
 | Hodnota dotazu | Nahradit hodnotou |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | ID korelace, které bylo zadáno pro data události |
+
+Chcete-li zobrazit všechny nedávné dotazy o protokolech telemetrie:
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
 
 Pokud povolíte protokolování pro uživatelsky definovanou funkci, zobrazí se tyto protokoly v instanci Log Analytics s kategorií `UserDefinedFunction`. Pokud je chcete načíst, zadejte do Log Analytics následující podmínku dotazu:
 
@@ -166,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-K tomuto scénáři dojde, protože použitý identifikátor odkazuje na senzor, zatímco je `Space`zadaný typ objektu topologie.
+K tomuto scénáři dojde, protože použitý identifikátor odkazuje na senzor, zatímco zadaný typ objektu topologie je `Space`.
 
 **Správné** Případě
 
@@ -178,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Nejjednodušší způsob, jak tento problém vyřešit, je použití `Notify` metody v objektu metadat.
+Nejjednodušší způsob, jak tento problém vyřešit, je použít metodu `Notify` u objektu metadat.
 
 Příklad:
 
@@ -201,9 +208,9 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat s těmito častými v
 
 1. **Omezování**: Pokud vaše uživatelsky definovaná funkce překročí omezení přenosové rychlosti uvedené v článku [omezení služby](./concepts-service-limits.md) , bude omezena. Žádné další operace se úspěšně provedly až do vypršení limitu omezení.
 
-1. **Data**nenalezena: Pokud se vaše uživatelsky definovaná funkce pokusí získat přístup k metadatům, které neexistují, operace se nezdařila.
+1. **Data nenalezena**: Pokud se vaše uživatelsky definovaná funkce pokusí získat přístup k metadatům, které neexistují, operace se nezdařila.
 
-1. Neautorizováno: Pokud vaše uživatelsky definovaná funkce nemá nastavené přiřazení role nebo nemá dostatečná oprávnění pro přístup k určitým metadatům z topologie, operace se nezdařila.
+1. **Neautorizováno**: Pokud vaše uživatelsky definovaná funkce nemá nastavené přiřazení role nebo nemá dostatečná oprávnění pro přístup k určitým metadatům z topologie, operace se nezdařila.
 
 ## <a name="next-steps"></a>Další kroky
 
