@@ -87,9 +87,9 @@ V tomto článku jsme probrali, jak navrhnout vysokou dostupnost připojení okr
 Pokyny k návrhu pro sestavení geograficky redundantního síťového připojení k páteřní síti Microsoftu, která může odolat závažným chybám, které ovlivňují celou oblast, najdete v tématu [navrhování pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR].
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Doporučený způsob připojení pomocí ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png .  "Neoptimální připojení poslední míle"
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png .  "Možnosti NAT"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Doporučený způsob připojení pomocí ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Neoptimální připojení poslední míle"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "Možnosti NAT"
 
 
 <!--Link References-->
