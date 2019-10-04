@@ -1,28 +1,26 @@
 ---
 title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure CLI
-description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure CLI.
+description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Toto je podrobný Průvodce vytvořením a správou první privátní zóny DNS a záznamu pomocí Azure CLI.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 8aee640d8648abb623fe5ead0b21e3ae3084424a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 6f5f2263736e1317ca40e6c27a909be2aa106270
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162143"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960432"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
 
 Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure CLI.
 
-K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Pokud chcete začít hostovat vaši doménu v Azure DNS, musíte pro tento název domény vytvořit zónu DNS. Každý záznam DNS pro vaši doménu se pak vytvoří v této zóně DNS. Pokud chcete publikovat privátní zónu DNS do vaší virtuální sítě, zadáte seznam virtuálních sítí, které mají povolené řešení záznamů v rámci zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-V tomto rychlém startu se naučíte:
+V tomto rychlém startu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Vytvoření privátní zóny DNS
@@ -64,20 +62,20 @@ az network private-dns link vnet create -g MyAzureResourceGroup -n MyDNSLink \
    -z private.contoso.com -v myAzureVNet -e true
 ```
 
-Pokud chcete vytvořit zónu jenom pro překlad názvů (bez automatické registrace názvu hostitele), můžete použít `-e false` parametr.
+Pokud chcete vytvořit zónu jenom pro překlad IP adres (bez automatické registrace názvu hostitele), můžete použít parametr `-e false`.
 
 ### <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
 
-Pokud chcete zobrazit výčet zón DNS, použijte příkaz `az network private-dns zone list`. Nápovědu získáte příkazem `az network dns zone list --help`.
+Chcete-li vytvořit výčet zón DNS, použijte `az network private-dns zone list`. Nápovědu najdete v tématu `az network dns zone list --help`.
 
-Zadáním skupiny prostředků můžete vypsat pouze zóny v rámci této skupiny prostředků:
+Zadáním skupiny prostředků vypíšete jenom zóny v rámci skupiny prostředků:
 
 ```azurecli
 az network private-dns zone list \
   -g MyAzureResourceGroup
 ```
 
-Pokud skupinu prostředků vynecháte, vypíší se všechny zóny v předplatném:
+Vynechání skupiny prostředků vypíše seznam všech zón v předplatném:
 
 ```azurecli
 az network private-dns zone list 
@@ -85,7 +83,7 @@ az network private-dns zone list
 
 ## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
 
-Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS otestovat:
+Teď vytvořte dva virtuální počítače, abyste mohli testovat svoji privátní zónu DNS:
 
 ```azurecli
 az vm create \
@@ -111,13 +109,13 @@ az vm create \
  --image win2016datacenter
 ```
 
-Dokončení tohoto procesu může několik minut trvat.
+Dokončení této akce bude trvat několik minut.
 
 ## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
 
-K vytvoření záznamu DNS použijte příkaz `az network private-dns record-set [record type] add-record`. Například nápovědu k přidání záznamů A získáte příkazem `az network private-dns record-set A add-record --help`.
+K vytvoření záznamu DNS použijte příkaz `az network private-dns record-set [record type] add-record`. Nápovědu k přidávání záznamů najdete například v tématu `az network private-dns record-set A add-record --help`.
 
- Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com**ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A a IP adresa je 10.2.0.4.
+ Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com**ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A s IP adresou "10.2.0.4".
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -129,7 +127,7 @@ az network private-dns record-set a add-record \
 
 ### <a name="view-dns-records"></a>Zobrazení záznamů DNS
 
-K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
+Chcete-li zobrazit seznam záznamů DNS v zóně, spusťte příkaz:
 
 ```azurecli
 az network private-dns record-set list \
@@ -141,28 +139,28 @@ az network private-dns record-set list \
 
 Teď můžete testovat překlad IP adres pro privátní zónu **Private.contoso.com** .
 
-### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
+### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozího protokolu ICMP
 
-Překlad adres můžete otestovat pomocí příkazu ping. Za tím účelem nakonfigurujte bránu firewall na obou virtuálních počítačích tak, aby povolovala příchozí pakety ICMP.
+K otestování překladu názvů můžete použít příkaz příkazu. Proto nakonfigurujte bránu firewall na obou virtuálních počítačích tak, aby povolovala příchozí pakety protokolu ICMP.
 
-1. Připojte se k počítači myVM01 a otevřete okno Windows PowerShellu s oprávněními správce.
+1. Připojte se k myVM01 a otevřete okno Windows PowerShellu s oprávněními správce.
 2. Spusťte následující příkaz:
 
    ```powershell
    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
    ```
 
-Totéž zopakujte pro virtuální počítač myVM02.
+Opakujte pro myVM02.
 
-### <a name="ping-the-vms-by-name"></a>Odeslání příkazu ping na virtuální počítače podle názvu
+### <a name="ping-the-vms-by-name"></a>Pomocí příkazů otestujete virtuální počítače podle názvu
 
-1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
+1. Z příkazového řádku myVM02 prostředí Windows PowerShell otestujte pomocí automaticky registrovaného názvu hostitele příkaz myVM01.
 
    ```
    ping myVM01.private.contoso.com
    ```
 
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Měl by se zobrazit výstup, který vypadá nějak takto:
 
    ```
    PS C:\> ping myvm01.private.contoso.com
@@ -180,13 +178,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
    PS C:\>
    ```
 
-2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
+2. Nyní otestujte název **databáze** , který jste vytvořili dříve:
 
    ```
    ping db.private.contoso.com
    ```
 
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Měl by se zobrazit výstup, který vypadá nějak takto:
 
    ```
    PS C:\> ping db.private.contoso.com
@@ -204,7 +202,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Odstranění všech prostředků
+## <a name="delete-all-resources"></a>Odstranit všechny prostředky
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 

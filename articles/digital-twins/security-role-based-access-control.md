@@ -1,19 +1,19 @@
 ---
 title: Pochopení řízení přístupu na základě rolí – digitální vlákna Azure | Microsoft Docs
 description: Přečtěte si o řízení přístupu na základě role a o správě oprávnění v digitálních prostředníkech Azure.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827036"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949033"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu na základě role v digitálních Vlákenách Azure
 

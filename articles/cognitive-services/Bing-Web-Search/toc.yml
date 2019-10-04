@@ -54,7 +54,7 @@
     - name: Zpracování zvýrazňování nalezených položek
       href: hit-highlighting.md
     - name: Procházení výsledků
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Změna velikosti a oříznutí miniatur
       href: resize-and-crop-thumbnails.md
     - name: Upgrade z v5 na v7

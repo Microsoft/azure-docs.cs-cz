@@ -1,32 +1,32 @@
 ---
-title: Nejčastější dotazy k Azure Private DNS
+title: Nejčastější dotazy k Azure Privátní DNS
 description: Nejčastější dotazy k Azure Privátní DNS
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: fca7359f9fa54899bb72be3b939e1a1839dbfbd1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: cb0cc5e99cc07728d475a9f9e54c7eb6a8c7554e
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155709"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959934"
 ---
-# <a name="azure-private-dns-faq"></a>Nejčastější dotazy k Azure Private DNS
+# <a name="azure-private-dns-faq"></a>Nejčastější dotazy k Azure Privátní DNS
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Následují Nejčastější dotazy týkající se privátního DNS Azure.
 
 ## <a name="does-azure-dns-support-private-domains"></a>Podporuje Azure DNS privátní domény?
 
-Podpora privátních domén je podporovaná pomocí funkce zóny Azure Privátní DNS. Privátní DNS zóny se spravují pomocí stejných nástrojů, jako internetové Azure DNS zóny. Dají se přeložit jenom v zadaných virtuálních sítích. Další informace najdete v tématu [Přehled](private-dns-overview.md).
+Privátní domény se podporují pomocí funkce zóny Azure Privátní DNS. Zóny Privátní DNS lze přeložit pouze v rámci zadaných virtuálních sítí. Další informace najdete v tématu [Přehled](private-dns-overview.md).
 
 Informace o dalších interních možnostech DNS v Azure najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Bude Azure DNS Private Zones fungovat napříč oblastmi Azure?
+## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Budou zóny Azure Privátní DNS fungovat napříč oblastmi Azure?
 
-Ano. Privátní zóny se podporují pro překlad DNS mezi virtuálními sítěmi napříč oblastmi Azure. Soukromé zóny fungují i bez explicitního vytvoření partnerského vztahu virtuálních sítí. Všechny virtuální sítě musí být zadány jako virtuální sítě pro překlad pro privátní zónu. Možná budete potřebovat, aby virtuální sítě byly partnerského vztahu pro provoz TCP/HTTP, aby bylo možné tok z jedné oblasti do druhé.
+Ano. Privátní zóny se podporují pro překlad DNS mezi virtuálními sítěmi napříč oblastmi Azure. Soukromé zóny fungují i bez explicitního vytvoření partnerského vztahu virtuálních sítí. Všechny virtuální sítě musí být propojeny s privátní zónou DNS.
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Je připojení k Internetu z virtuálních sítí nezbytných pro privátní zóny?
 
@@ -34,11 +34,11 @@ Ne. Soukromé zóny fungují společně s virtuálními sítěmi. Můžete je po
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Může být stejná privátní zóna použita pro více virtuálních sítí pro řešení?
 
-Ano. K jedné privátní zóně můžete přidružit až 1000 virtuálních sítí.
+Ano. Můžete propojit privátní zónu DNS s tisíci virtuálních sítí. Další informace najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) .
 
-## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-linked-virtual-network-to-a-private-zone"></a>Může být virtuální síť, která patří do jiného předplatného, přidaná jako propojená virtuální síť k privátní zóně?
+## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Může být virtuální síť, která patří do jiného předplatného, propojená s privátní zónou?
 
-Ano. U virtuálních sítí a privátní zóny DNS musíte mít oprávnění k operaci zápisu. Oprávnění k zápisu lze udělit několika rolím RBAC. Například role RBAC přispěvatele klasické sítě má oprávnění k zápisu do virtuálních sítí. Další informace o rolích RBAC najdete v tématu [řízení přístupu na základě role](../role-based-access-control/overview.md).
+Ano. U virtuálních sítí a privátní zóny DNS musíte mít oprávnění k operaci zápisu. Oprávnění k zápisu lze udělit několika rolím RBAC. Například role RBAC přispěvatele klasických sítí má oprávnění k zápisu do virtuálních sítí a role přispěvatele Privátní DNS zóny má oprávnění k zápisu do privátních zón DNS. Další informace o rolích RBAC najdete v tématu [řízení přístupu na základě role](../role-based-access-control/overview.md).
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Budou automaticky při odstranění virtuálního počítače automaticky odstraněny záznamy DNS virtuálního počítače v privátní zóně?
 
@@ -58,40 +58,28 @@ Ano. Pokud chcete odpojit propojenou virtuální síť od privátní zóny, aktu
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>Co se stane, když odstraníme propojenou virtuální síť, která je propojená s privátní zónou? Musíme privátní zónu ručně aktualizovat, aby se virtuální síť odpojí jako propojená virtuální síť z zóny?
 
-Ano. Při odstranění propojené virtuální sítě bez předchozího odpojení od privátní zóny bude operace odstranění úspěšná. Virtuální síť ale není automaticky odpojování od privátní zóny, pokud existuje. Je nutné ručně zrušit propojení virtuální sítě z privátní zóny. Z tohoto důvodu odpojte svoji virtuální síť od privátní zóny, než ji odstraníte.
+Ne. Když odstraníte propojenou virtuální síť bez předchozího odpojení od privátní zóny, operace odstranění proběhne úspěšně a odkazy na zónu DNS se automaticky vymažou.
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Bude překlad DNS pomocí výchozího plně kvalifikovaného názvu domény (internal.cloudapp.net) stále fungovat i v případě, že privátní zóna (například private.contoso.com) je propojena s virtuální sítí?
 
-Ano. Privátní zóny nenahrazují výchozí rozlišení DNS pomocí zóny internal.cloudapp.net poskytované službou Azure. Nabízí se jako další funkce nebo vylepšení. Bez ohledu na to, jestli jste spoléhat na internal.cloudapp.net poskytované Azure nebo ve vaší vlastní privátní zóně, použijte plně kvalifikovaný název domény zóny, se kterou chcete řešení vyřešit.
+Ano. Soukromé zóny nenahrazují výchozí zónu internal.cloudapp.net poskytovanou službou Azure. Bez ohledu na to, jestli jste spoléhat na internal.cloudapp.net poskytované Azure nebo ve vaší vlastní privátní zóně, použijte plně kvalifikovaný název domény zóny, se kterou chcete řešení vyřešit.
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Bude přípona DNS na virtuálních počítačích v propojené virtuální síti změněna na síť privátní zóny?
 
 Ne. Přípona DNS na virtuálních počítačích v propojené virtuální síti zůstane jako výchozí přípona poskytnutá pro Azure (*. internal.cloudapp.net). Tuto příponu DNS můžete na virtuálních počítačích ručně změnit na adresu privátní zóny.
+Pokyny ke změně této přípony najdete [v tématu Použití dynamického DNS k registraci názvů hostitelů ve vlastním serveru DNS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients) .
 
-## <a name="what-are-the-usage-limits-for-azure-private-dns"></a>Jaká jsou omezení využití pro Azure Privátní DNS?
+## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Jaká jsou omezení využití Azure DNS privátních zón?
 
-Následující výchozí omezení platí při použití Azure Privátní DNS.
-
-| Resource | Výchozí limit |
-| --- | --- |
-|Privátní DNS zóny na předplatné|1000|
-|Sady záznamů na zónu Privátní DNS|25,000|
-|Počet záznamů na sadu záznamů|20|
-|Virtual Network odkazy na privátní zónu DNS|1000|
-|Odkazy na virtuální sítě podle privátních zón DNS s povolenou automatickou registrací|100|
-|Počet privátních zón DNS, na které může virtuální síť připojit s povolenou automatickou registrací|1|
-|Počet privátních zón DNS, které může virtuální síť připojit|1000|
-
-## <a name="is-there-portal-support-for-private-zones"></a>Je na portálu podporovaná podpora privátních zón?
-
-Ano a privátní zóny, které už jsou vytvořené prostřednictvím rozhraní API, PowerShellu, rozhraní příkazového řádku a sad SDK, jsou na Azure Portal viditelné.
+Podrobnosti o limitech použití Azure DNSch privátních zón najdete v [Azure DNS omezeních](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) .
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Proč se moje existující privátní zóny DNS zobrazují v novém prostředí portálu?
 
-V rámci aktualizace verze Preview jsme dodali nový model prostředků pro privátní zóny DNS. Vaše stávající privátní zóny DNS se budou muset migrovat do nového modelu prostředků, aby se mohly zobrazit v novém prostředí portálu. Pokyny k migraci na nový model prostředků najdete níže.
+Pokud se vaše stávající privátní zóna DNS vytvořila pomocí rozhraní API pro verzi Preview, musíte tyto zóny migrovat do nového modelu prostředků. Privátní DNS zóny vytvořené pomocí rozhraní API verze Preview se v novém prostředí portálu nezobrazí. Pokyny k migraci na nový model prostředků najdete níže.
 
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Návody migrovat existující privátní zóny DNS do nového modelu?
-Důrazně doporučujeme migrovat na nový model prostředků co nejdříve. Starší verze modelu prostředků bude ale podporována, ale další funkce nebudou vyvinuty nad tímto modelem. V budoucnu máme v úmyslu tuto společnost zařadit jako místo nového modelu prostředků. Pokyny k migraci stávajících privátních zón DNS do nového modelu prostředků najdete v[Průvodci migrací pro Azure DNS privátní zóny](private-dns-migration-guide.md).
+
+Důrazně doporučujeme migrovat na nový model prostředků co nejdříve. Starší verze modelu prostředků bude ale podporována, ale další funkce nebudou vyvinuty nad tímto modelem. V budoucnu máme v úmyslu zařadit IT se stejným modelem jako nový model prostředků. Pokyny k migraci stávajících privátních zón DNS do nového modelu prostředků najdete v[Průvodci migrací pro Azure DNS privátní zóny](private-dns-migration-guide.md).
 
 ## <a name="next-steps"></a>Další kroky
 

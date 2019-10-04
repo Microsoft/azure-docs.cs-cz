@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612679"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958547"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure AD Domain Services
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nainstalovat nástroje pro správu Zásady sku
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -37,7 +37,10 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
     * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby dokončete kurz a [vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně][create-join-windows-vm].
-* Uživatelský účet, který je členem skupiny správců *řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+
+> [!NOTE]
+> Protože [v Azure služba AD DS nemáte přístup k řadičům domény](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), nemůžete vytvořit a použít centrální úložiště pro šablony pro správu zásad skupiny ve spravované doméně. [Adresář SYSVOL není zahrnutý v místní synchronizaci Azure AD Connect](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), takže nemůžete vytvořit místní centrální úložiště a synchronizovat ho do Azure služba AD DS prostřednictvím Azure AD.
 
 ## <a name="install-group-policy-management-tools"></a>Instalace nástrojů pro správu Zásady skupiny
 

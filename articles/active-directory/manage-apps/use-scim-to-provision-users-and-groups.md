@@ -1,6 +1,6 @@
 ---
-title: Automatizace zřizování aplikací pomocí SCIM v Azure Active Directory | Microsoft Docs
-description: Azure Active Directory může automaticky zřídit uživatele a skupiny do jakékoli aplikace nebo úložiště identit, které je frontou webové služby s rozhraním definovaným ve specifikaci protokolu SCIM.
+title: SCIM zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs
+description: Naučte se vytvářet SCIM koncový bod, integrovat rozhraní SCIM API pomocí Azure Active Directory a začít automatizovat uživatele a skupiny provisoning do svých aplikací.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802356"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949633"
 ---
-# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)
+# <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM zřizování uživatelů pomocí Azure Active Directory
 
-SCIM je standardizovaný protokol a schéma, které se zaměřuje na zajištění větší konzistence v tom, jak jsou identity spravované napříč systémy. Když aplikace podporuje koncový bod SCIM pro správu uživatelů, služba zřizování uživatelů Azure AD může posílat žádosti o vytvoření, úpravu nebo odstranění přiřazených uživatelů a skupin do tohoto koncového bodu.
+Systém pro správu identit napříč doménami (SCIM) je standardizovaný protokol a schéma, které se zaměřuje na zajištění větší konzistence v tom, jak jsou identity spravované napříč systémy. Když aplikace podporuje koncový bod SCIM pro správu uživatelů, služba zřizování uživatelů Azure AD může posílat žádosti o vytvoření, úpravu nebo odstranění přiřazených uživatelů a skupin do tohoto koncového bodu.
 
 Mnohé z aplikací, pro které Azure AD podporuje [předem integrované Automatické zřizování uživatelů](../saas-apps/tutorial-list.md) , implementují SCIM jako způsob přijímání oznámení o změnách uživatelů.  Kromě toho můžou zákazníci připojit aplikace, které podporují konkrétní profil [specifikace protokolu SCIM 2,0](https://tools.ietf.org/html/rfc7644) , pomocí Obecné možnosti integrace "mimo Galerie" v Azure Portal.
 
@@ -151,48 +151,48 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 - [Uživatelské operace](#user-operations)
   - [Vytvořit uživatele](#create-user)
-    - [Požadavek](#request)
-    - [Odpověď](#response)
+    - [Request](#request)
+    - [Základě](#response)
   - [Získat uživatele](#get-user)
-    - [Požadavek](#request-1)
-    - [Odpověď](#response-1)
+    - [Request](#request-1)
+    - [Základě](#response-1)
   - [Získat uživatele podle dotazu](#get-user-by-query)
-    - [Požadavek](#request-2)
-    - [Odpověď](#response-2)
+    - [Request](#request-2)
+    - [Základě](#response-2)
   - [Získat uživatele podle dotazů – žádné výsledky](#get-user-by-query---zero-results)
-    - [Požadavek](#request-3)
-    - [Odpověď](#response-3)
+    - [Request](#request-3)
+    - [Základě](#response-3)
   - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties)
-    - [Požadavek](#request-4)
-    - [Odpověď](#response-4)
+    - [Request](#request-4)
+    - [Základě](#response-4)
   - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties)
-    - [Požadavek](#request-5)
-    - [Odpověď](#response-5)
+    - [Request](#request-5)
+    - [Základě](#response-5)
   - [Odstranit uživatele](#delete-user)
-    - [Požadavek](#request-6)
-    - [Odpověď](#response-6)
+    - [Request](#request-6)
+    - [Základě](#response-6)
 - [Operace skupiny](#group-operations)
   - [Vytvořit skupinu](#create-group)
-    - [Požadavek](#request-7)
-    - [Odpověď](#response-7)
+    - [Request](#request-7)
+    - [Základě](#response-7)
   - [Získat skupinu](#get-group)
-    - [Požadavek](#request-8)
-    - [Odpověď](#response-8)
+    - [Request](#request-8)
+    - [Základě](#response-8)
   - [Získat Group by DisplayName](#get-group-by-displayname)
-    - [Požadavek](#request-9)
-    - [Odpověď](#response-9)
+    - [Request](#request-9)
+    - [Základě](#response-9)
   - [Aktualizovat skupinu [atributy nečlenské]](#update-group-non-member-attributes)
-    - [Požadavek](#request-10)
-    - [Odpověď](#response-10)
+    - [Request](#request-10)
+    - [Základě](#response-10)
   - [Aktualizace skupiny [přidat členy]](#update-group-add-members)
-    - [Požadavek](#request-11)
-    - [Odpověď](#response-11)
+    - [Request](#request-11)
+    - [Základě](#response-11)
   - [Skupina aktualizací [odebrat členy]](#update-group-remove-members)
-    - [Požadavek](#request-12)
-    - [Odpověď](#response-12)
+    - [Request](#request-12)
+    - [Základě](#response-12)
   - [Odstranit skupinu](#delete-group)
-    - [Požadavek](#request-13)
-    - [Odpověď](#response-13)
+    - [Request](#request-13)
+    - [Základě](#response-13)
 
 ### <a name="user-operations"></a>Uživatelské operace
 
@@ -200,7 +200,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
-###### <a name="request"></a>Žádost
+###### <a name="request"></a>Request
 
 *PO/Users*
 ```json
@@ -228,7 +228,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a>Odpověď
+##### <a name="response"></a>Základě
 
 *HTTP/1.1 201 vytvořeno*
 ```json
@@ -445,7 +445,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-#### <a name="delete-user"></a>Odstranění uživatele
+#### <a name="delete-user"></a>Odstranit uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -462,7 +462,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvoření skupiny
+#### <a name="create-group"></a>Vytvořit skupinu
 
 ##### <a name="request-7"></a>Request
 
@@ -615,7 +615,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranění skupiny
+#### <a name="delete-group"></a>Odstranit skupinu
 
 ##### <a name="request-13"></a>Request
 
@@ -640,7 +640,7 @@ Jak to funguje:
 
 Pro snazší provádění tohoto procesu jsou k dispozici [ukázky kódu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) , které vytvářejí koncový bod webové služby SCIM a předvádějí Automatické zřizování. Vzorek je poskytovatel, který uchovává soubor s řádky hodnot oddělených čárkou, které představují uživatele a skupiny.
 
-**Požadavky**
+**Požadovaný**
 
 * Visual Studio 2013 nebo novější
 * [Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
@@ -1337,21 +1337,21 @@ Prostředky skupiny jsou identifikovány identifikátorem schématu `urn:ietf:pa
 
 | Azure Active Directory uživatel | "urn: IETF: param: SCIM: schemas: rozšíření: Enterprise: 2.0: User" |
 | --- | --- |
-| IsSoftDeleted |Aktivně |
+| IsSoftDeleted |aktivní |
 | displayName |displayName |
 | Faxu – TelephoneNumber |phoneNumbers [typ EQ "fax"]. hodnota |
 | givenName |název. křestní jméno |
-| jobTitle |Hlava |
-| modul |e-maily [typ EQ "Work"]. Value |
+| jobTitle |hlava |
+| pošta |e-maily [typ EQ "Work"]. Value |
 | mailNickname |externalId |
 | programu |programu |
-| Telefon |phoneNumbers [Type EQ "mobilní"]. Value |
+| telefon |phoneNumbers [Type EQ "mobilní"]. Value |
 | Objektu |ID |
 | Ovládacím |adresy [typ EQ "Work"]. postalCode |
 | proxy – adresy |e-maily [Type EQ "other"]. Osa |
 | fyzické doručování – Office |adresy [Type EQ "other"]. Formátu |
 | streetAddress |adresy [Type EQ "]. streetAddress |
-| Příjmení |název. rodina |
+| příjmení |název. rodina |
 | telefonní číslo |phoneNumbers [typ EQ "Work"]. Value |
 | uživatel – hlavní |Jmen |
 
@@ -1360,9 +1360,9 @@ Prostředky skupiny jsou identifikovány identifikátorem schématu `urn:ietf:pa
 | Skupina Azure Active Directory | urn: IETF: parametry: SCIM: schemas: Core: 2.0: Group |
 | --- | --- |
 | displayName |externalId |
-| modul |e-maily [typ EQ "Work"]. Value |
+| pošta |e-maily [typ EQ "Work"]. Value |
 | mailNickname |displayName |
-| Pedagog |Pedagog |
+| členy |členy |
 | Objektu |ID |
 | proxyAddresses |e-maily [Type EQ "other"]. Osa |
 

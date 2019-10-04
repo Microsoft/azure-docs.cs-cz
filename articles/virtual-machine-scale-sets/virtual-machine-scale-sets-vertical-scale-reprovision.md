@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035758"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958147"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
 
-Tento článek popisuje, jak vertikálně škálovat [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) Azure s přezřizováním nebo bez něj. Pro vertikální škálování virtuálních počítačů, které nejsou v sadě škálování, najdete informace v tématu vertikální [škálování virtuálního počítače Azure pomocí Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Tento článek popisuje, jak vertikálně škálovat [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) Azure s přezřizováním nebo bez něj. 
 
-Vertikální škálování, označované také jako *horizontální navýšení kapacity* , znamená zvýšení nebo snížení velikosti virtuálních počítačů v reakci na zatížení. Porovnejte toto chování [](virtual-machine-scale-sets-autoscale-overview.md)s horizontálním škálováním, které se také označuje jako horizontální navýšení *kapacity* a *horizontální*navýšení kapacity, kde se počet virtuálních počítačů mění v závislosti na zatížení.
+Vertikální škálování, označované také jako *horizontální navýšení kapacity* *, znamená*zvýšení nebo snížení velikosti virtuálních počítačů v reakci na zatížení. Porovnejte toto chování s [horizontálním škálováním](virtual-machine-scale-sets-autoscale-overview.md), které se také označuje jako horizontální navýšení *kapacity* a *horizontální*navýšení kapacity, kde se počet virtuálních počítačů mění v závislosti na zatížení.
 
 Opětovné zřízení znamená odebrání existujícího virtuálního počítače a jeho nahrazení novým. Když zvětšíte nebo zmenšíte velikost virtuálních počítačů ve službě Virtual Machine Scale set, v některých případech budete chtít změnit velikost stávajících virtuálních počítačů a zachovat data, zatímco v jiných případech potřebujete nasadit nové virtuální počítače nové velikosti. Tento dokument popisuje oba případy.
 
@@ -93,9 +93,9 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématu:
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématu:
 
-* [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
+* [Ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import Azure Automationch sad Runbook se vertikálním škálováním do předplatného
 

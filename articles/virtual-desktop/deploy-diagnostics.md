@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839635"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947605"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
 
@@ -51,14 +51,22 @@ V této části se dozvíte, jak pomocí PowerShellu vytvořit aplikaci Azure Ac
 >Oprávnění rozhraní API jsou virtuální počítače s Windows, Log Analytics a Microsoft Graph rozhraní API se do aplikace Azure Active Directory přidala oprávnění.
 
 1. Otevřete PowerShell jako správce.
-2. Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a v PowerShellu spusťte příkaz **vytvořit registraci aplikace AD pro skript Diagnostics. ps1** .
-3.  Když se skript zeptá, že chcete aplikaci pojmenovat, zadejte jedinečný název aplikace.
-4.  Skript vás pak vyzve, abyste se přihlásili pomocí účtu správce. Zadejte přihlašovací údaje uživatele, který má [přístup k delegovanému správci](delegated-access-virtual-desktop.md). Správce by měl mít oprávnění vlastníka vzdálené plochy nebo přispěvatele.
+2. Přihlaste se k Azure pomocí účtu, který má oprávnění vlastníka nebo přispěvatele v předplatném Azure, které byste chtěli použít pro nástroj pro diagnostiku:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Přihlaste se k Azure AD pomocí stejného účtu:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spusťte v PowerShellu skript **CreateADAppRegistrationforDiagnostics. ps1** .
+5.  Když se skript zeptá, že chcete aplikaci pojmenovat, zadejte jedinečný název aplikace.
+
 
 Po úspěšném spuštění skriptu by se měl ve svém výstupu zobrazit následující věci:
 
 -  Zpráva s potvrzením, že vaše aplikace teď má přiřazení role instančního objektu.
--  Vaše ID tiskového klienta a tajný klíč klienta, které budete potřebovat při nasazení nástroje diagnostiky.
+-  ID klienta a tajný klíč klienta, které budete potřebovat při nasazení nástroje diagnostiky.
 
 Teď, když jste zaregistrovali aplikaci, je čas nakonfigurovat Log Analytics pracovní prostor.
 
@@ -76,7 +84,7 @@ Spuštěním skriptu PowerShellu můžete vytvořit pracovní prostor Log Analyt
 Spuštění skriptu prostředí PowerShell:
 
 1.  Otevřete PowerShell jako správce.
-2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a v PowerShellu spusťte skript **Create LogAnalyticsWorkspace for Diagnostics. ps1** .
+2.  Přejít do [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) a spusťte v PowerShellu skript **CreateLogAnalyticsWorkspaceforDiagnostics. ps1** .
 3. Zadejte následující hodnoty parametrů:
 
     - Pro **ResourceGroupName**zadejte název skupiny prostředků.

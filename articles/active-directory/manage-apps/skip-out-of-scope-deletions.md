@@ -1,6 +1,6 @@
 ---
 title: Přeskočit odstranění mimo obor uživatelů | Microsoft Docs
-description: Přečtěte si, jak potlačit výchozí chování při odstraňování z oboru uživatelů.
+description: Přečtěte si, jak potlačit výchozí chování při zrušení zřizování z oboru uživatelů.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 10/03/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a753d8cce3f3b610abab2f78d54d76a05d8bc5cb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815992"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958637"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 
-Ve výchozím nastavení modul zřizování Azure AD odstraní nebo zakáže uživatele, kteří se dostanou mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatelů v rámci služby Active Directory, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
+Ve výchozím nastavení modul zřizování Azure AD Soft odstraní nebo zakáže uživatele, kteří se nacházejí mimo rozsah. U některých scénářů, jako je například Workday pro příchozí zřizování uživatelů v rámci služby Active Directory, nemusí být toto chování očekávané a pravděpodobně budete chtít přepsat toto výchozí chování.  
 
 V této příručce se dozvíte, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph Průzkumníku API nastavit příznak ***SkipOutOfScopeDeletions*** , který řídí zpracování účtů, které se nacházejí mimo rozsah. 
 * Pokud je ***SkipOutOfScopeDeletions*** nastavené na 0 (NEPRAVDA), pak se účty, které se přestanou z oboru, budou v cíli zakázané.
@@ -32,7 +32,7 @@ V této příručce se dozvíte, jak pomocí rozhraní Microsoft Graph API a Mic
 
 Vzhledem k tomu, že se tato konfigurace v tuto konfiguraci používá v rámci *služby Active Directory pro zřizování uživatelů* , následující kroky zahrnují snímky obrazovky aplikace v Workday. Tato možnost se ale dá použít i u jiných zřizovacích aplikací.
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: Načtení ID objektu zabezpečení zřizování App Service (ID objektu)
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 
 1. Spusťte [Azure Portal](https://portal.azure.com)a přejděte do části vlastnosti vaší aplikace zřizování. Například pokud chcete exportovat pracovní *postup do mapování aplikace pro zřizování uživatelů služby AD* , přejděte do části vlastnosti této aplikace. 
 1. V části vlastnosti vaší aplikace pro zřizování Zkopírujte hodnotu identifikátoru GUID přidruženou k poli *ID objektu* . Tato hodnota se také označuje jako **ServicePrincipalId** vaší aplikace a bude se používat v rámci operací Graph Exploreru.
@@ -48,12 +48,12 @@ Vzhledem k tomu, že se tato konfigurace v tuto konfiguraci používá v rámci 
 
 1. Po úspěšném přihlášení se zobrazí podrobnosti o uživatelském účtu v levém podokně.
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Krok 3: Získat přihlašovací údaje pro existující aplikace a podrobnosti o připojení
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Krok 3: získání přihlašovacích údajů pro existující aplikace a podrobnosti o připojení
 
 V Průzkumníku Microsoft Graph spusťte následující příkaz GET Query, který nahradí [servicePrincipalId] **servicePrincipalId** extrahováným z [kroku 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id).
 
 ```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
+   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
    ![ZÍSKAT dotaz na úlohu](./media/skip-out-of-scope-deletions/skip-03.png)
@@ -71,7 +71,7 @@ Tady je blok JSON, který se má přidat do mapování.
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4: Aktualizace koncového bodu tajných kódů pomocí příznaku SkipOutOfScopeDeletions
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Krok 4: aktualizace koncového bodu tajných kódů pomocí příznaku SkipOutOfScopeDeletions
 
 V Průzkumníku grafů spusťte následující příkaz, který aktualizuje koncový bod tajných kódů pomocí příznaku ***SkipOutOfScopeDeletions*** . 
 
@@ -90,7 +90,7 @@ Výstup byste měli získat jako "úspěch – stavový kód 204".
 
    ![Odpověď PUT](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Krok 5: Ověřte, že uživatelé oboru nemůžou být zakázaní.
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Krok 5: ověření, jestli nechcete, aby uživatelé měli zakázaný rozsah
 
 Pomocí aktualizace pravidel oboru pro přeskočení konkrétního uživatele můžete otestovat tento příznak výsledky při očekávaném chování. V následujícím příkladu vyloučíme zaměstnance s ID 21173 (který byl dříve v oboru) přidáním nového pravidla oboru: 
 

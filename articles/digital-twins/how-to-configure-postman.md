@@ -1,19 +1,19 @@
 ---
 title: Jak nakonfigurovat metodu post pro digitální vlákna Azure | Microsoft Docs
 description: Jak nakonfigurovat metodu post pro digitální vlákna Azure.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844506"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949214"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -52,11 +52,11 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
 
 1. Vybrané rozhraní API se zobrazí jako **digitální vlákna Azure** ve stejném PODOKNĚ **oprávnění API pro žádosti** . Vyberte rozevírací seznam **načíst (1)** a potom zaškrtněte políčko **číst. zapsat** . Klikněte na tlačítko **Přidat oprávnění** .
 
-    [![Přidání oprávnění rozhraní API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [@no__t – oprávnění rozhraní API pro 1Add](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce se sloupec **požadováno souhlasu správce** v podokně **oprávnění API** zobrazí jako pro vaše rozhraní API podobně jako u následujících:
 
-    [![Přidání oprávnění rozhraní API](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [@no__t – oprávnění rozhraní API pro 1Add](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
 1. Vyberte **manifest** pro otevření manifestu aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* na `true`.
@@ -85,7 +85,7 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name (Název)  | Nahradit hodnotou | Příklad: |
+    | Name  | Nahradit | Příklad |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace | `microsoft` |
 
@@ -97,8 +97,8 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
     | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
-    | Rozsah | Ponechte prázdné |
-    | Stav | Ponechte prázdné |
+    | Rozsah | Ponechat prázdné |
+    | Stav | Ponechat prázdné |
     | Ověřování klienta | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:

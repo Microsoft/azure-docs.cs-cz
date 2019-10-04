@@ -1,20 +1,20 @@
 ---
-title: Jak přidat objekty blob do objektů v Azure Digital provlákna | Microsoft Docs
+title: Jak přidat objekty blob do objektů – digitální vlákna Azure | Microsoft Docs
 description: Naučte se přidávat objekty blob do objektů v digitálních proobjektech Azure.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 35bc5a4532f040aeb464a91b14adcb540ccc113a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845498"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949151"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidávání objektů blob do objektů v digitálních proobjektech Azure
 
@@ -53,14 +53,14 @@ Metadata objektu BLOB JSON odpovídají následujícímu modelu:
 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
-| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
-| **Jméno** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
-| **type** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **parentId** | String | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **Jméno** |String | Uživatelsky přívětivý název objektu BLOB |
+| **textový** | String | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
 | **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
-| **podtyp** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **podtyp** | String | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít *podtype* a *subtypeId* . |
-| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
-| **sdílení** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
+| **název** | String | Přizpůsobený popis objektu BLOB |
+| **sdílení** | String | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
 
 Metadata objektů BLOB se vždycky dodávají jako první blok s **typem obsahu** `application/json` nebo jako soubor `.json`. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
@@ -108,18 +108,18 @@ Objekty blob vrácené jednotlivě v souladu s následujícím schématem JSON:
 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
-| **účet** | Řetězec | Jedinečný identifikátor objektu BLOB |
-| **Jméno** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
-| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
-| **type** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **id** | String | Jedinečný identifikátor objektu BLOB |
+| **Jméno** |String | Uživatelsky přívětivý název objektu BLOB |
+| **parentId** | String | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **textový** | String | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
 | **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
-| **podtyp** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **podtyp** | String | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít *podtype* a *subtypeId* . |
-| **sdílení** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
-| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
-| **contentInfos** | Pole | Určuje informace o nestrukturovaných metadatech včetně verze |
-| **fullName** | Řetězec | Úplný název objektu BLOB |
-| **spacePaths** | Řetězec | Cesta k prostoru |
+| **sdílení** | String | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
+| **název** | String | Přizpůsobený popis objektu BLOB |
+| **contentInfos** | Skupin | Určuje informace o nestrukturovaných metadatech včetně verze |
+| **fullName** | String | Úplný název objektu BLOB |
+| **spacePaths** | String | Cesta k prostoru |
 
 Metadata objektů BLOB se vždycky dodávají jako první blok s **typem obsahu** `application/json` nebo jako soubor `.json`. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
@@ -157,7 +157,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Název hranice obsahu s více částmi |
 
@@ -192,7 +192,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | YOUR_TOKEN | Váš platný token OAuth 2,0 |
 | YOUR_SPACE_ID | ID prostoru, ke kterému se má objekt BLOB přidružit |
@@ -204,7 +204,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 
 Následující části popisují základní koncové body rozhraní API související s objekty BLOB a jejich funkce.
 
-### <a name="devices"></a>Zařízení
+### <a name="devices"></a>Signalizac
 
 Objekty blob můžete připojit k zařízením. Následující obrázek ukazuje referenční dokumentaci Swagger pro vaše rozhraní API pro správu. Určuje koncové body rozhraní API týkající se zařízení pro využití objektů BLOB a všechny požadované parametry cesty, které se jim budou předávat.
 
@@ -216,7 +216,7 @@ Pokud třeba chcete aktualizovat nebo vytvořit objekt BLOB a připojit objekt B
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 
@@ -234,7 +234,7 @@ Pokud například chcete vrátit objekt BLOB připojený k prostoru, proveďte o
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 
@@ -242,7 +242,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 Požadavek PATCH na stejný koncový bod aktualizuje popisy metadat a vytvoří verze objektu BLOB. Požadavek HTTP se provede prostřednictvím metody PATCH, spolu s potřebnými daty meta a formuláře.
 
-### <a name="users"></a>Uživatelé
+### <a name="users"></a>Mohou
 
 Objekty blob můžete připojit k uživatelským modelům (například k přidružení obrázku profilu). Následující obrázek ukazuje relevantní koncové body rozhraní API pro uživatele a všechny požadované parametry cesty, například `id`:
 
@@ -254,7 +254,7 @@ Pokud například chcete načíst objekt BLOB připojený k uživateli, vytvořt
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_BLOB_ID* | Požadované ID objektu BLOB |
 

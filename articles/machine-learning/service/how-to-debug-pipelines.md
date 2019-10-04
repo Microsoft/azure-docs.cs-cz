@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813805"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959661"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění a řešení potíží s kanály strojového učení
 
@@ -27,7 +27,7 @@ Následující části poskytují přehled běžných nástrah při vytváření
 
 Jedním z nejběžnějších chyb v kanálu je to, že připojený skript (skript pro čištění dat, hodnoticí skript atd.) neběží tak, jak je zamýšlený, nebo obsahuje běhové chyby ve vzdáleném výpočetním kontextu, které se obtížně ladí ve vašem pracovním prostoru v Azure Portal. 
 
-Samotné kanály se nedají spouštět místně, ale testování částí vaše základní skripty představuje snadný způsob, jak zajistit, aby se skripty prováděly tak, co očekáváte v izolaci, aniž byste čekali na celou dobu trvání spuštění kanálu. K tomu je potřeba nějaká vývojová práce:
+Samotné kanály se nedají spouštět místně, ale spuštěné skripty v izolaci na místním počítači vám umožní ladit rychleji, protože nemusíte čekat na proces sestavení výpočtů a prostředí. K tomu je potřeba nějaká vývojová práce:
 
 * Pokud jsou vaše data v cloudovém úložišti dat, budete muset stáhnout data a zpřístupnit je vašemu skriptu. Použití malého vzorku vašich dat je dobrým způsobem, jak vyjímat modul runtime a rychle získat zpětnou vazbu k chování skriptu.
 * Pokud se pokoušíte simulovat krok zprostředkujícího kanálu, možná budete muset ručně vytvořit typy objektů, které konkrétní skript očekává od předchozího kroku.
@@ -38,6 +38,9 @@ Jakmile budete mít Instalační program skriptu spuštěný v místním prostř
 * Připojení vlastní konfigurace ladění
 * Pozastavení provádění a kontrola stavu objektu
 * Zachycení typu nebo logických chyb, které se nezveřejňují do doby běhu
+
+> [!TIP] 
+> Jakmile ověříte, že je váš skript spuštěný podle očekávání, dobrým dalším krokem je spuštění skriptu v kanálu s jedním krokem předtím, než se pokusíte spustit v kanálu s více kroky.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
@@ -67,7 +70,7 @@ Přejděte na kartu **protokoly** . Další protokoly obsahují informace o proc
 > [!TIP]
 > Spuštění *publikovaných kanálů* najdete na kartě **kanály** v pracovním prostoru na portálu. Spuštění pro *nepublikované kanály* se dá najít v **experimentech**.
 
-## <a name="troubleshooting-tips"></a>Tipy poradce při potížích
+## <a name="troubleshooting-tips"></a>Tipy pro řešení potíží
 
 Následující tabulka obsahuje běžné problémy při vývoji kanálů s potenciálními řešeními.
 

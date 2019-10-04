@@ -1,6 +1,7 @@
 ---
 title: Vyhledání dostupných místností – digitální vlákna Azure | Microsoft Docs
-description: V tomto rychlém startu spustíte dvě ukázkové aplikace .NET Core, které budou do prostoru ve službě Azure Digital Twins odesílat simulovaná telemetrická data o pohybu a úrovni oxidu uhličitého. Cílem je najít dostupné místnosti s čerstvým vzduchem pomocí rozhraní API pro správu po výpočetním zpracování v cloudu.
+description: V tomto rychlém startu spustíte dvě ukázkové aplikace .NET Core k odeslání simulace simulovaného pohybu a oxidu uhličitého do prostoru v oblasti digitálních vláken Azure. Cílem je najít dostupné místnosti s čerstvým vzduchem z rozhraní API pro správu po vypočítaném zpracování v cloudu.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
@@ -8,60 +9,59 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 10/03/2019
+ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640287"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958911"
 ---
-# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Rychlý start: Vyhledání dostupných místností pomocí digitálních vláken Azure
+# <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Rychlý Start: vyhledání dostupných místností pomocí digitálních vláken Azure
 
-Služba Azure digitální dvojče umožňuje znovu vytvořit digitální obrázek vašemu fyzickému prostředí. Následně můžete dostávat oznámení od událostí ve vašem prostředí a přizpůsobovat své reakce na tato oznámení.
+Služba digitálních vláken Azure umožňuje znovu vytvořit digitální image vašeho fyzického prostředí. Pak můžete dostávat oznámení o událostech ve vašem prostředí a přizpůsobit své odpovědi.
 
-Tento rychlý start využívá [pár ukázek .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp) digitalizaci imaginární kancelářskou budovu. To se dozvíte, jak se mají najít místnosti k dispozici v budovy. S digitální dvojče můžete přidružit mnoho senzorů s vaším prostředím. Také můžete zjistit při optimální pomocí simulovaných senzorů k oxidu uhličitého air kvalitu dostupné místo. Jednu z ukázkových aplikací generuje náhodné senzor data pro lepší vizualizaci v tomto scénáři.
+V tomto rychlém startu se používá [pár ukázek .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp) k digitalizaci imaginární části kancelářské budovy. Ukazuje, jak najít dostupné místnosti v tomto sestavení. V případě digitálních vláken můžete k vašemu prostředí přidružit mnoho senzorů. Můžete také zjistit, jestli je optimální kvalita ovzduší dostupné místnosti s využitím simulovaného senzoru pro oxid uhličitý. Jedna z ukázkových aplikací generuje data náhodného senzoru, která vám pomůžou s vizualizací tohoto scénáře.
 
-Následující video shrnuje nastavení pro rychlý start:
+Následující video shrnuje nastavení rychlého startu:
 
 >[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Pokud nemáte účet Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+1. Pokud ještě nemáte účet Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Dvě konzolové aplikace v tomto rychlém startu spustíte jsou zapsány pomocí C#. Nainstalujte [.NET Core SDK verze 2.1.403 nebo vyšší](https://www.microsoft.com/net/download) na vývojovém počítači. Pokud je nainstalovaná sada .NET Core SDK, zkontrolujte aktuální verzi C# na vývojovém počítači. Spustit `dotnet --version` v příkazovém řádku.
+1. Dvě konzolové aplikace, které spouštíte v rámci tohoto rychlého startu C#, jsou zapsány pomocí. Ve vývojovém počítači nainstalujte [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) . Pokud máte nainstalované .NET Core SDK, ověřte aktuální verzi nástroje C# ve vývojovém počítači. V příkazovém řádku spusťte `dotnet --version`.
 
-1. Stáhněte si [ukázka C# projektu](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip). Extrahujte archiv digitální twins-samples-csharp-master.zip.
+1. Stáhněte si [ukázkový C# projekt](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip). Extrahujte archiv Digital-Twins-Samples-CSharp-Master. zip.
 
-## <a name="create-a-digital-twins-instance"></a>Vytvoření instance služby Digital Twins
+## <a name="create-a-digital-twins-instance"></a>Vytvoření instance digitálního vlákna
 
-Vytvořit novou instanci třídy digitální Dvojčat ve [portál](https://portal.azure.com) pomocí následujících kroků v této části.
+Pomocí kroků v této části vytvořte novou instanci digitálních vláken na [portálu](https://portal.azure.com) .
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
-## <a name="set-permissions-for-your-app"></a>Nastavení oprávnění pro aplikaci
+## <a name="set-permissions-for-your-app"></a>Nastavení oprávnění pro vaši aplikaci
 
-Tento oddíl registruje ukázkovou aplikaci do služby Azure Active Directory (Azure AD), tak, aby měl přístup k vaší instanci digitální dvojče. Pokud už máte registrace aplikace Azure AD, znovu použijte pro vaši ukázku. Ujistěte se, jestli je nastavená způsobem popsaným v této části.
+V této části najdete ukázkovou aplikaci pro Azure Active Directory (Azure AD), aby měla přístup k instanci digitálního vlákna. Pokud už máte registraci aplikace Azure AD, znovu ji použijte pro ukázku. Ujistěte se, že je nakonfigurované jak je popsáno v této části.
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
 
-## <a name="build-application"></a>Sestavení aplikace
+## <a name="build-application"></a>Sestavit aplikaci
 
 Pomocí následujících kroků sestavte aplikaci obsazení.
 
-1. Otevřete příkazový řádek. Přejít do složky, kde `digital-twins-samples-csharp-master.zip` byly extrahovány soubory.
+1. Otevřete příkazový řádek. Přejít do složky, ve které byly extrahovány soubory `digital-twins-samples-csharp-master.zip`.
 1. Spusťte `cd occupancy-quickstart/src`.
 1. Spusťte `dotnet restore`.
-1. Upravte soubor [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) a aktualizujte následující proměnné:
-    - **ClientID**: Zadejte ID aplikace pro registraci vaší aplikace Azure AD, kterou jste si poznamenali v předchozí části.
-    - **Tenant**: Zadejte ID adresáře vašeho tenanta Azure AD, které jste si poznamenali také v předchozí části.
-    - **BaseUrl**: Adresa URL rozhraní API pro správu vaší instance digitálního vlákna je ve formátu `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Nahraďte zástupné symboly v této adrese URL hodnotami pro vaši instanci v předchozí části.
+1. Upravte [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) a aktualizujte následující proměnné:
+    - **ClientID**: Zadejte ID aplikace pro vaši registraci aplikace služby Azure AD, kterou jste si poznamenali v předchozí části.
+    - **Tenant**: Zadejte ID adresáře vašeho TENANTA Azure AD, který jste si také poznamenali v předchozí části.
+    - **Baseurl**: adresa URL rozhraní API pro správu vaší instance digitálního vlákna je ve formátu `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Nahraďte zástupné symboly v této adrese URL hodnotami pro vaši instanci z předchozí části.
 
-## <a name="provision-graph"></a>Zřízení grafu
+## <a name="provision-graph"></a>Zřídit graf
 
-Tento krok zřídí digitální dvojče prostorových grafu s:
+Tento krok zajišťuje, aby se prostor digitálních vláken v grafu:
 
 - Několik mezer.
 - Jedno zařízení.
@@ -69,95 +69,95 @@ Tento krok zřídí digitální dvojče prostorových grafu s:
 - Vlastní funkce.
 - Jedno přiřazení role.
 
-Prostorový graf zřizován s použitím [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) souboru.
+Prostorový graf se zřídí pomocí souboru [provisionSample. yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) .
 
 1. Spusťte `dotnet run ProvisionSample`.
 
     >[!NOTE]
-    >Nástroj příkazového řádku Azure přihlášení zařízení se používá k ověření uživatele do služby Azure AD. Uživatel musí zadat daný kód pro ověření pomocí [přihlášení Microsoft](https://microsoft.com/devicelogin) stránky. Po zadání kódu, postupujte podle kroků k ověření. Uživatel musí ověřit, když je nástroj spuštěný.
+    >K ověření uživatele do Azure AD se používá nástroj příkazového řádku Azure CLI přihlášení k zařízení. Uživatel musí zadat daný kód k ověření pomocí [přihlašovací stránky Microsoftu](https://microsoft.com/devicelogin) . Po zadání kódu postupujte podle pokynů k ověření. Uživatel se musí ověřit, když je nástroj spuštěný.
 
     >[!TIP]
-    > Při spuštění tohoto kroku zkontrolujte, zda že proměnných byly zkopírovány správně, pokud se zobrazí následující chybová zpráva: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
+    > Po spuštění tohoto kroku se ujistěte, že byly proměnné správně zkopírovány, pokud se zobrazí následující chybová zpráva: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
 
-1. Zřizování krok může trvat několik minut. Také zřídí služby IoT Hub v rámci vaší digitální dvojče instance. Cyklicky projde až do služby IoT Hub se zobrazuje stav =`Running`.
+1. Krok zřizování může trvat několik minut. Také zřídí IoT Hub v rámci vaší instance digitálního vlákna. Cyklicky projde, dokud IoT Hub nezobrazuje stav = `Running`.
 
-    [![Zřídit ukázku](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
+    [Ukázka @no__t – 1Provision](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
 
-1. Na konci provádění, zkopírujte `ConnectionString` zařízení pro použití v ukázkovém simulátor zařízení. Zkopírujte pouze řetězec uvedených v tomto obrázku.
+1. Na konci spuštění zkopírujte `ConnectionString` zařízení, které se má použít v ukázce simulátoru zařízení. Zkopírujte pouze řetězec, který je popsaný v tomto obrázku.
 
-    [![Zkopírování připojovacího řetězce](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [@no__t – 1Copy připojovací řetězec](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
     >[!TIP]
-    > Můžete zobrazit a upravit pomocí vaší prostorový graf [prohlížeč Azure digitální dvojče grafu](https://github.com/Azure/azure-digital-twins-graph-viewer).
+    > Prostorový graf můžete zobrazit a upravit pomocí [prohlížeče grafu digitálních vláken Azure](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
-## <a name="send-sensor-data"></a>Odeslání dat ze senzorů
+## <a name="send-sensor-data"></a>Odeslat data snímače
 
-Sestavte a spusťte simulátor aplikace ze senzorů pomocí následujících kroků.
+Pomocí následujících kroků Sestavte a spusťte aplikaci simulátoru senzorů.
 
-1. Otevřete nový příkazový řádek. Přejdete na projekt, který jste si stáhli v složce digitální twins ukázky csharp-master.
+1. Otevřete nový příkazový řádek. Přejít na projekt, který jste stáhli, do složky Digital-zdvojené-Samples-Samples-CSharp-Master.
 1. Spusťte `cd device-connectivity`.
 1. Spusťte `dotnet restore`.
-1. Upravit [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) aktualizovat **DeviceConnectionString** s předchozím `ConnectionString`.
-1. Spustit `dotnet run` aby začalo odesílat data ze senzorů. Uvidíte, že ho odesílat digitální dvojče, jak je znázorněno na následujícím obrázku.
+1. Pokud chcete aktualizovat **DeviceConnectionString** s předchozí `ConnectionString`, upravte [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) .
+1. Pokud chcete začít odesílat data ze senzorů, spusťte `dotnet run`. Uvidíte, že se poslal do digitálních vláken, jak je znázorněno na následujícím obrázku.
 
-     [![Připojení zařízení](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [Připojení @no__t – 1Device](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
-1. Umožní simulátor spustit tak, abyste mohli zobrazit výsledky souběžně s akce dalšího kroku. Toto okno zobrazuje simulovaných senzorů data odeslaná do digitální dvojče. Další krok dotazy v reálném čase, které se mají najít místnosti k dispozici s novou vzduchu.
+1. Nechte tento simulátor spuštěný, abyste mohli výsledky zobrazit vedle sebe pomocí akce další krok. V tomto okně se zobrazí Simulovaná data senzorů odesílaná do digitálních vláken. Další krok se dotazuje v reálném čase na vyhledání dostupných místností s čerstvým vzduchem.
 
     >[!TIP]
-    > Při spuštění tohoto kroku, ujistěte se, že `DeviceConnectionString` zkopíroval správně, pokud se zobrazí následující chybová zpráva: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`
+    > Po spuštění tohoto kroku se ujistěte, že `DeviceConnectionString` se správně zkopíroval, pokud se zobrazí následující chybová zpráva: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`.
 
-## <a name="find-available-spaces-with-fresh-air"></a>Zjištění dostupných prostorů s čerstvým vzduchem
+## <a name="find-available-spaces-with-fresh-air"></a>Vyhledání dostupných mezer s čerstvým vzduchem
 
-Ukázka senzor simuluje hodnoty náhodných dat pro dvě senzory. Jsou to pohybu a k oxidu uhličitého. K dispozici prostorů s novou air jsou definovány v ukázce žádné přítomnost v místnosti. Také budete definovat podle úrovně oxidu uhličitého v části 1 000 správy portfolia projektů. Pokud podmínka není splněna, není k dispozici místa nebo je špatná kvalita air.
+Ukázka senzoru simuluje hodnoty náhodných dat pro dva senzory. Jedná se o pohyb a oxid uhličitý. Dostupné prostory s čerstvým vzduchem jsou v této ukázce definovány, a to v místnosti bez přítomnosti. Jsou definovány také na úrovni oxidu uhličit v 1 000 ppm. Pokud podmínka není splněná, není místo dostupné nebo je kvalita vzduchu nízká.
 
 1. Otevřete příkazový řádek, který jste použili ke spuštění předchozího kroku zřizování.
 1. Spusťte `dotnet run GetAvailableAndFreshSpaces`.
-1. Podívejte se na tento příkazový řádek a příkazového řádku data ze senzorů vedle sebe.
+1. Podívejte se na Tento příkazový řádek a na příkazovém řádku data snímače vedle sebe.
 
-    Jeden příkazový řádek odesílá Simulovaná data pohybu a k oxidu uhličitého do digitální dvojče každých pět sekund. Další příkaz přečte grafů v reálném čase, které chcete zjistit, k dispozici místnosti s novou air založeny na náhodných Simulovaná data. Zobrazí jedno z těchto podmínek téměř v reálném čase na základě dat ze senzorů, odeslání poslední:
+    Jedna z příkazového řádku odesílá Simulovaná data o vznesených pohybech a oxidech uhličitých dat do digitálních vláken každých pět sekund. Druhý příkaz přečte graf v reálném čase a zjistí dostupné místnosti s čerstvým vzduchem na základě náhodných simulovaných dat. Zobrazuje jednu z těchto podmínek téměř v reálném čase na základě dat ze senzorů, která byla odeslána naposledy:
    - Dostupné místnosti s čerstvým vzduchem
-   - Obsazené místnosti nebo místnosti se špatnou kvalitou vzduchu
+   - Obsazená nebo špatná kvalita místnosti.
 
-     [![Získejte dostupné prostory s čerstvým vzduchem](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [@no__t – 1Get dostupné mezery s čerstvým vzduchem](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
-Chcete-li pochopit, co se stalo v rámci tohoto rychlého startu a jaké byly volány rozhraní API, otevřete [Visual Studio Code](https://code.visualstudio.com/Download) s pracovního prostoru projektu s kódem nalezen v digitální twins ukázky csharp. Použijte následující příkaz:
+Aby bylo možné pochopit, co se stalo v tomto rychlém startu a jaká rozhraní API byla volána, otevřete [Visual Studio Code](https://code.visualstudio.com/Download) s projektem s kódem v pracovním prostoru kód, který najdete v části Digital-zdvojené-Samples Použijte následující příkaz:
 
 ```plaintext
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
 ```
 
-V kurzech zanořovat hluboko do kódu. Že vás naučí, jak změnit konfigurační data a co se volá rozhraní API. Další informace o rozhraní API pro správu přejděte na stránku digitální dvojče Swagger:
+Kurzy se přejdou do kódu. Naučíte se, jak upravit konfigurační data a jaká rozhraní API jsou volána. Další informace o rozhraních API pro správu najdete na stránce digitálních vláken Swagger:
 
 ```plaintext
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Název | Nahradit hodnotou |
+| Name | Nahradit |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Název instance digitální dvojče |
-| YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |
+| YOUR_INSTANCE_NAME | Název instance digitálního vlákna |
+| YOUR_LOCATION | Které oblasti serveru vaše instance hostuje |
 
-Nebo můžete pro usnadnění práce, procházet a [digitální dvojče Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
+Nebo pro usnadnění práce přejděte na [digitální vlákna Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V kurzech najdete podrobnosti o tom, jak:
+V kurzech najdete podrobné informace o tom, jak:
 
-- Vytvoření aplikace pro zařízení správci zvýšit produktivitu cestujícího.
-- Provoz budovy efektivněji.
+- Sestavte aplikaci pro správce zařízení, aby zvýšila produktivitu uživatelů.
+- Účinnější provozování sestavení
 
-A pokračujte v kurzech, není nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, odstraňte všechny prostředky vytvořené tímto rychlým startem.
+Pokud chcete pokračovat v kurzech, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
-1. Odstraňte složku, která byla vytvořena, když jste si stáhli ukázkové úložiště.
-1. V nabídce na levé straně v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**. Pak vyberte prostředek digitální dvojče. V horní části **všechny prostředky** vyberte **odstranit**.
+1. Odstraňte složku, která byla vytvořena při stažení ukázkového úložiště.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**. Pak vyberte svůj prostředek digitálního vlákna. V horní části podokna **všechny prostředky** vyberte **Odstranit**.
 
     > [!TIP]
-    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
+    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu umožňuje jednoduchého scénáře ukazují, jak se mají najít místnosti s dobrým pracovních podmínek. Podrobná analýza tohoto scénáře najdete v článku v tomto kurzu:
+V tomto rychlém startu jsme použili jednoduchý scénář, který ukazuje, jak najít místnosti s dobrými provozními podmínkami. Podrobné analýzy tohoto scénáře najdete v tomto kurzu:
 
 >[!div class="nextstepaction"]
->[Kurz: Nasazení digitálních vláken Azure a konfigurace prostorového grafu](tutorial-facilities-setup.md)
+>[Kurz: nasazení digitálních vláken Azure a konfigurace prostorového grafu](tutorial-facilities-setup.md)

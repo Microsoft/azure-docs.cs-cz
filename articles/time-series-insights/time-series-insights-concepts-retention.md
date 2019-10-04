@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5388b157ebea78a69355eb745492910f260be3ad
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823640"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948212"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
 Tento článek popisuje dvě nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 
-## <a name="video"></a>Video
+## <a name="video"></a>Obrazový
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Následující video shrnuje Time Series Insights uchovávání dat a jejich plánování.</br>
 
@@ -32,11 +32,11 @@ Každé prostředí Azure Time Series má nastavení, které řídí **dobu ucho
 
 Kromě toho má prostředí Azure Time Series nastavení **chování při překročení limitu úložiště** . Řídí chování vstupu a vyprázdnění při dosažení maximální kapacity prostředí. Při konfiguraci si můžete vybrat ze dvou příznaků:
 
-- **Vyprázdnit stará data** výchozí  
+- **Vyprázdnit stará data** (výchozí)  
 - **Pozastavit příchozí přenos dat**
 
 > [!NOTE]
-> Ve výchozím nastavení platí, že při vytváření nového prostředí se uchování nakonfiguruje tak, aby vymazala **stará data**. Toto nastavení se dá po vytvoření pomocí Azure Portal přepínat podle potřeby, a to na stránce **konfigurace** Time Series Insights prostředí.
+> Ve výchozím nastavení platí, že při vytváření nového prostředí se uchování nakonfiguruje tak, aby **vymazala stará data**. Toto nastavení se dá po vytvoření pomocí Azure Portal přepínat podle potřeby, a to na stránce **konfigurace** Time Series Insights prostředí.
 
 Informace o přepnutí chování uchovávání najdete [v Time Series Insights konfigurace uchovávání v](time-series-insights-how-to-configure-retention.md)nástroji.
 
@@ -53,7 +53,7 @@ Porovnání chování uchovávání dat:
 
 Vezměte v úvahu ukázkové prostředí s chováním uchovávání **a vyprázdnit stará data**:
 
-**Doba uchovávání dat** je nastavená na 400 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity.   Vybereme, že příchozí data se za průměrně nashromáždí do 500 MB každého dne. Toto prostředí může uchovávat jenom 60 dní, které mají za sekundu množství příchozích dat, protože maximální kapacita dosáhne 60 dnů. Příchozí data se shromáždí jako: 500 MB každý den × 60 dní = 30 GB.
+**Doba uchovávání dat** je nastavená na 400 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity.   Vybereme, že příchozí data se za průměrně nashromáždí do 500 MB každého dne. Toto prostředí může uchovávat jenom 60 dní, které mají za sekundu množství příchozích dat, protože maximální kapacita dosáhne 60 dnů. Příchozí data se sčítají takto: 500 MB každý den × 60 dní = 30 GB.
 
 V 61stém dni se v prostředí zobrazují data o aktuálnosti, ale vyprázdní nejstarší data starší než 60 dní. Vyprázdnit vytvoří místo pro nové streamování dat v, aby se nová data mohla dál prozkoumat. Pokud si uživatel přeje zachovat data déle, může zvětšit velikost prostředí přidáním dalších jednotek nebo může doručovat méně dat.  
 
@@ -85,16 +85,16 @@ Po obnovení příchozího přenosu dat:
 - Události jsou indexovány na základě časového razítka, pokud jste nepřekročili zásady uchovávání informací ve zdroji událostí. Další informace o konfiguraci uchovávání informací o zdrojích událostí [Event Hubs Nejčastější dotazy](../event-hubs/event-hubs-faq.md)
 
 > [!IMPORTANT]
-> Měli byste nastavit výstrahy, které vám poskytnou informace, které vám pomůžou zabránit pozastavenému přenosu. Může dojít ke ztrátě dat, protože výchozí doba uchování je 1 den pro zdroje událostí Azure. Proto když je příchozí příjem pozastaven, pravděpodobně ztratíte nejaktuálnější data, pokud se neprovede žádná další akce. Abyste se vyhnuli potenciálním ztrátám dat, je nutné zvýšit kapacitu nebo přepnout chování, aby se vymazala **stará data** .
+> Měli byste nastavit výstrahy, které vám poskytnou informace, které vám pomůžou zabránit pozastavenému přenosu. Může dojít ke ztrátě dat, protože výchozí doba uchování je 1 den pro zdroje událostí Azure. Proto když je příchozí příjem pozastaven, pravděpodobně ztratíte nejaktuálnější data, pokud se neprovede žádná další akce. Abyste se vyhnuli potenciálním ztrátám dat, je nutné zvýšit kapacitu nebo přepnout chování, aby se **vymazala stará data** .
 
-V ovlivněných Event Hubs zvažte úpravu vlastnosti uchovávání **zpráv** , aby se minimalizovala ztráta dat, když dojde k pozastavení vstupu v Time Series Insights.
+V ovlivněných Event Hubs zvažte úpravu vlastnosti **uchovávání zpráv** , aby se minimalizovala ztráta dat, když dojde k pozastavení vstupu v Time Series Insights.
 
-[![Uchovávání zpráv centra událostí](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[@no__t – uchovávání zpráv centra 1Event.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Pokud ve zdroji událostí (`timeStampPropertyName`) nejsou nakonfigurované žádné vlastnosti, Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud `timeStampPropertyName` je nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá `timeStampPropertyName` při analýze událostí nakonfigurovanou v datovém paketu.
+Pokud nejsou u zdroje událostí nakonfigurované žádné vlastnosti (`timeStampPropertyName`), Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud je `timeStampPropertyName` nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá nakonfigurované `timeStampPropertyName` v datovém paketu, když se události analyzují.
 
 Pokud potřebujete škálovat prostředí tak, aby vyhovovalo další kapacitě nebo aby se zvýšila doba uchovávání, přečtěte si téma [Jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md) , kde najdete další informace.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o konfiguraci a změně nastavení uchovávání dat najdete [v Time Series Insights konfigurace uchovávání v](time-series-insights-how-to-configure-retention.md)nástroji.

@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845713"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948166"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -45,6 +45,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 > [!NOTE] 
 > V seřazené tabulce Ski je nová data, která jsou výsledkem operací DML nebo načítání dat, automaticky řazena.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  
 
+## <a name="query-performance"></a>Výkon dotazů
+
+Nárůst výkonu dotazu od seřazené instrukce závisí na vzorech dotazů, velikosti dat, jak dobře jsou data seřazená, na fyzické struktuře segmentů a na třídě DWU a prostředku zvolené pro provedení dotazu.  Před výběrem sloupců řazení při návrhu seřazené tabulky s INSTRUKCEmi musí uživatelé zkontrolovat všechny tyto faktory.
+
+Dotazy se všemi těmito vzory obvykle fungují rychleji s uspořádanou konzulární instrukcí.  
+1. Dotazy mají predikáty rovnosti, nerovnosti nebo rozsahu.
+1. Sloupce predikátu a seřazené sloupce s INSTRUKCEmi jsou stejné.  
+1. Sloupce predikátu se používají ve stejném pořadí jako pořadí sloupců uspořádaných sloupců s konzulárními instrukcemi.  
+ 
+V tomto příkladu má tabulka T1 clusterovaný index columnstore seřazený v sekvenci Col_C, Col_B a Col_A.
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+Výkon dotazů 1 může využít více než jedna z řazené Ski, než ostatní 3 dotazy. 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
+
 ## <a name="data-loading-performance"></a>Výkon načítání dat
 
 Výkon načítání dat do seřazené tabulky Ski je podobný načtení dat do dělené tabulky.  
@@ -59,7 +96,7 @@ Počet překrývajících se segmentů závisí na velikosti dat, která se maj�
 
 - Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistují žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
-- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -101,4 +138,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

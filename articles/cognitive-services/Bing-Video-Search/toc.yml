@@ -50,7 +50,8 @@
     - name: 'Získání videí, která jsou v kurzu'
       href: trending-videos.md
     - name: Stránkování videí
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Změna velikosti a oříznutí miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

@@ -49,8 +49,8 @@
     - name: Zpracování zvýrazňování nalezených položek
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Stránkování novinek
-      href: paging-news.md
+    - name: Procházet stránky výsledků hledání
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Změna velikosti a oříznutí miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

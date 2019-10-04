@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874674"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949529"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -72,19 +72,17 @@ Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit násl
 
 **Technické požadavky**
 
-Hlavní technické požadavky pro modul IoT Edge, aby bylo možné získat certifikaci a publikovat ho v Azure Marketplace, je podrobně popsáno v technickém assetu [příprava IoT Edge modulu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
+Hlavní technické požadavky pro modul IoT Edge, aby bylo možné získat certifikaci a publikovat ho v Azure Marketplace, je podrobně popsáno v [technickém assetu příprava IoT Edge modulu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
 
 ## <a name="documentation-and-resources"></a>Dokumentace a prostředky
 
 [Vytvoření nabídky modulu IoT Edge](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – postup publikování nové nabídky modulu IoT Edge pomocí portálu pro publikování v cloudu
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste to ještě neudělali,
 
-- Zaregistrujte se do [Microsoft Partner Network](https://partner.microsoft.com/membership).
-- Vytvořte [účet Microsoft](https://account.microsoft.com/account/) (vyžaduje se pro Azure Marketplace nabídky Transact; doporučeno pro ostatní).
-- Odešlete [registrační formulář Marketplace](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Další informace najdete v tématu [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) se na webu Marketplace.
 
 Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávajícím typu,
 

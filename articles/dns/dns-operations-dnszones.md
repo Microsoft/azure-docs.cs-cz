@@ -1,6 +1,6 @@
 ---
-title: Správa zón DNS v Azure DNS – PowerShell | Dokumentace Microsoftu
-description: Můžete spravovat zóny DNS pomocí Azure Powershellu. Tento článek popisuje, jak aktualizovat, odstranit a vytvářet zóny DNS v Azure DNS
+title: Správa zón DNS v Azure DNS – PowerShell | Microsoft Docs
+description: Zóny DNS můžete spravovat pomocí Azure PowerShellu. Tento článek popisuje, jak aktualizovat, odstranit a vytvořit zóny DNS na Azure DNS
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 1ef44c16a8ae3b6254a6cea252501b72ddb24a5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd238be6dbfcd14480b2c0cf03236902ef39e722
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293618"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959409"
 ---
-# <a name="how-to-manage-dns-zones-using-powershell"></a>Správa zón DNS pomocí Powershellu
+# <a name="how-to-manage-dns-zones-using-powershell"></a>Správa Zóny DNS pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-dnszones-portal.md)
-> * [PowerShell](dns-operations-dnszones.md)
-> * [Azure Classic CLI](dns-operations-dnszones-cli-nodejs.md)
-> * [Azure CLI](dns-operations-dnszones-cli.md)
+> * [Bran](dns-operations-dnszones-portal.md)
+> * [Prostředí](dns-operations-dnszones.md)
+> * [Rozhraní příkazového řádku Azure Classic](dns-operations-dnszones-cli-nodejs.md)
+> * [Rozhraní příkazového řádku Azure](dns-operations-dnszones-cli.md)
 
-V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure Powershellu. Můžete také spravovat zóny DNS pomocí napříč platformami [rozhraní příkazového řádku Azure](dns-operations-dnszones-cli.md) nebo na webu Azure portal.
+V tomto článku se dozvíte, jak spravovat zóny DNS pomocí Azure PowerShell. Zóny DNS můžete spravovat i pomocí [Azure CLI](dns-operations-dnszones-cli.md) pro různé platformy nebo Azure Portal.
 
-Tato příručka konkrétně zabývá veřejných zón DNS. Informace o použití Azure Powershellu ke správě privátní zóny v Azure DNS najdete v tématu [Začínáme s Azure DNS Private Zones pomocí Azure Powershellu](private-dns-getstarted-powershell.md).
+V této příručce se konkrétně zabývá veřejné zóny DNS. Informace o použití Azure PowerShell ke správě privátních zón v Azure DNS najdete v tématu Začínáme [s Azure DNS Private Zones pomocí Azure PowerShell](private-dns-getstarted-powershell.md).
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -47,17 +47,17 @@ Následující příklad vytvoří zónu DNS s názvem *contoso.com* ve skupině
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [značky Azure Resource Manageru](dns-zones-records.md#tags), *project = demo* a *env = test*:
+Následující příklad ukazuje, jak vytvořit zónu DNS se dvěma [Azure Resource Manager značkami](dns-zones-records.md#tags) *Project = demo* a *ENV = test*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS teď podporuje také privátní zóny DNS (aktuálně ve verzi Public Preview).  Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md). Příklad vytvoření privátní zóny DNS najdete v tématu [Začínáme s privátními zónami Azure DNS pomocí PowerShellu](./private-dns-getstarted-powershell.md).
+Azure DNS podporuje i privátní zóny DNS.  Další informace o privátních zónách DNS najdete v tématu [použití Azure DNS u privátních domén](private-dns-overview.md). Příklad vytvoření privátní zóny DNS najdete v tématu Začínáme [s Azure DNS privátní zóny pomocí prostředí PowerShell](./private-dns-getstarted-powershell.md).
 
-## <a name="get-a-dns-zone"></a>Získat zóny DNS
+## <a name="get-a-dns-zone"></a>Získání zóny DNS
 
-Pokud chcete načíst zónu DNS, použijte `Get-AzureRmDnsZone` rutiny. Tato operace vrátí objekt zóny DNS odpovídá existující zónu v Azure DNS. Objekt obsahuje údaje o zóně (jako je počet sad záznamů), ale neobsahuje sady záznamů, sami (viz `Get-AzureRmDnsRecordSet`).
+K načtení zóny DNS použijte rutinu `Get-AzureRmDnsZone`. Tato operace vrátí objekt zóny DNS odpovídající existující zóně v Azure DNS. Objekt obsahuje data o zóně (například počet sad záznamů), ale neobsahuje samotné sady záznamů (viz `Get-AzureRmDnsRecordSet`).
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
@@ -74,13 +74,13 @@ MaxNumberOfRecordSets : 5000
 
 ## <a name="list-dns-zones"></a>Výpis zón DNS
 
-Vynecháním názvu zóny v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
+Vynecháte-li název zóny z `Get-AzureRmDnsZone`, můžete vytvořit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zóny.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
+Vynecháním názvu zóny a názvu skupiny prostředků z `Get-AzureRmDnsZone` můžete vytvořit výčet všech zón v rámci předplatného Azure.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
@@ -88,13 +88,13 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>Aktualizace zóny DNS
 
-Změny prostředku zóny DNS je možné provádět pomocí rutiny `Set-AzureRmDnsZone`. Tato rutina neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. Vlastnosti zóny s možností zápisu jsou aktuálně omezené na [Azure Resource Manageru 'značky' pro prostředek zóny](dns-zones-records.md#tags).
+Změny prostředku zóny DNS je možné provádět pomocí `Set-AzureRmDnsZone`. Tato rutina neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. Vlastnosti zóny s možností zápisu jsou v současné době omezeny na [Azure Resource Manager značky pro prostředek zóny](dns-zones-records.md#tags).
 
-Použijte jednu z následujících dvou způsobů, jak aktualizace zóny DNS:
+K aktualizaci zóny DNS použijte jeden z následujících dvou způsobů:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Určení zóny pomocí zóny a skupinou prostředků
+### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Zadejte zónu pomocí názvu zóny a skupiny prostředků.
 
-Tento přístup nahradí existující zónu značky zadané hodnoty.
+Tento přístup nahradí existující značky zóny zadanými hodnotami.
 
 ```powershell
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -102,7 +102,7 @@ Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>Určení zóny pomocí objektu $zone
 
-Tento přístup zkopíruje existující objekt zóny, upravit značky a pak potvrdí změny. Tímto způsobem je možné zachovat existující značky.
+Tento přístup načte existující objekt zóny, upraví značky a pak změny potvrdí. Tímto způsobem lze zachovat existující značky.
 
 ```powershell
 # Get the zone object
@@ -118,21 +118,21 @@ $zone.Tags.Add("status","approved")
 Set-AzureRmDnsZone -Zone $zone
 ```
 
-Při použití `Set-AzureRmDnsZone` pomocí objektu $zone [Etag kontroluje](dns-zones-records.md#etags) se používají k zajištění souběžných změn se nepřepíšou. Můžete použít nepovinnou `-Overwrite` přepínač tak, aby potlačit tyto kontroly.
+Při použití `Set-AzureRmDnsZone` s objektem $zone se pro zajištění, že se nepřepisují souběžné změny, použijí [kontroly ETag](dns-zones-records.md#etags) . Pomocí volitelného přepínače `-Overwrite` můžete tyto kontroly potlačit.
 
 ## <a name="delete-a-dns-zone"></a>Odstranění zóny DNS
 
-Zóny DNS je možné odstranit pomocí `Remove-AzureRmDnsZone` rutiny.
+Zóny DNS je možné odstranit pomocí rutiny `Remove-AzureRmDnsZone`.
 
 > [!NOTE]
-> Odstraněním zóny DNS dojde také k odstranění všech záznamů DNS v rámci dané zóny. Tato operace se nedá vrátit zpět. Pokud se zóna DNS používá, služby využívající tuto zónu při jejím odstranění selžou.
+> Odstraněním zóny DNS dojde také k odstranění všech záznamů DNS v rámci zóny. Tuto operaci nelze vrátit zpět. Pokud se zóna DNS používá, služby, které používají zónu, se při odstranění zóny nezdaří.
 >
->Informace o ochraně před náhodným odstraněním zóny najdete v tématu [Ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md).
+>Informace o ochraně před náhodným odstraněním zóny najdete v tématu [jak chránit zóny a záznamy DNS](dns-protect-zones-recordsets.md).
 
 
-Zónu DNS můžete odstranit některým z následujících dvou způsobů:
+K odstranění zóny DNS použijte jeden z následujících dvou způsobů:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Určení zóny pomocí názvu zóny a názvu skupiny prostředků
+### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Zadejte zónu pomocí názvu zóny a názvu skupiny prostředků.
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -140,39 +140,39 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>Určení zóny pomocí objektu $zone
 
-Zónu k odstranění můžete určit pomocí objektu `$zone` vráceného rutinou `Get-AzureRmDnsZone`.
+Můžete určit zónu, která se má odstranit, pomocí objektu `$zone` vráceného `Get-AzureRmDnsZone`.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-Místo předání jako parametru je možné objekt zóny předat také rourou:
+Místo předávání jako parametru je možné objekt zóny také přesměrovat:
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
 
 ```
 
-Stejně jako u `Set-AzureRmDnsZone`, určení zóny pomocí `$zone` objektu umožňuje Značka Etag kontroly pro zajištění souběžných změny nebudou odstraněny. Použití `-Overwrite` přepínač tak, aby potlačit tyto kontroly.
+Stejně jako u `Set-AzureRmDnsZone`, určení zóny pomocí objektu `$zone` umožňuje kontrolám značek ETag zajistit, aby se neodstranily souběžné změny. Pro potlačení těchto kontrol použijte přepínač `-Overwrite`.
 
 ## <a name="confirmation-prompts"></a>Výzvy k potvrzení
 
-Všechny rutiny `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` a `Remove-AzureRmDnsZone` podporují výzvy k potvrzení.
+Rutiny `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` a `Remove-AzureRmDnsZone` všechny podporují výzvy k potvrzení.
 
-Rutiny `New-AzureRmDnsZone` a `Set-AzureRmDnsZone` zobrazí výzvu k potvrzení v případě, že má proměnná předvolby PowerShellu `$ConfirmPreference` hodnotu `Medium` nebo nižší. Kvůli potenciálně velkému dopadu odstranění zóny DNS zobrazí rutina `Remove-AzureRmDnsZone` výzvu k potvrzení v případě, že má proměnná PowerShellu `$ConfirmPreference` jinou hodnotu než `None`.
+@No__t-0 a `Set-AzureRmDnsZone` se zobrazí výzva k potvrzení, pokud proměnná předvolby PowerShellu `$ConfirmPreference` má hodnotu `Medium` nebo nižší. Kvůli potenciálně vysokému dopadu odstranění zóny DNS se rutina `Remove-AzureRmDnsZone` vyzve k potvrzení, jestli má proměnná prostředí PowerShell `$ConfirmPreference` jinou hodnotu než `None`.
 
-Vzhledem k tomu, že výchozí hodnota proměnné `$ConfirmPreference` je `High`, ve výchozím nastavení zobrazí výzvu k potvrzení pouze rutina `Remove-AzureRmDnsZone`.
+Vzhledem k tomu, že výchozí hodnota `$ConfirmPreference` je `High`, ve výchozím nastavení se zobrazí pouze @no__t – 2 pro potvrzení.
 
-Aktuální nastavení `$ConfirmPreference` můžete přepsat pomocí parametru `-Confirm`. Pokud zadáte `-Confirm` nebo `-Confirm:$True`, rutina před spuštěním zobrazí výzvu k potvrzení. Pokud zadáte `-Confirm:$False`, rutina výzvu k potvrzení nezobrazí.
+Aktuální nastavení `$ConfirmPreference` můžete přepsat pomocí parametru `-Confirm`. Pokud zadáte `-Confirm` nebo `-Confirm:$True`, rutina vás před spuštěním vyzve k potvrzení. Pokud zadáte `-Confirm:$False`, rutina vás nevyzve k potvrzení.
 
-Další informace o `-Confirm` a `$ConfirmPreference` najdete v tématu [Informace o proměnných předvoleb](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
+Další informace o `-Confirm` a `$ConfirmPreference` naleznete v tématu [o proměnných předvoleb](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [spravovat sady záznamů a záznamy](dns-operations-recordsets.md) ve vaší zóně DNS.
+Naučte se [Spravovat sady záznamů a záznamy](dns-operations-recordsets.md) v zóně DNS.
 <br>
-Zjistěte, jak [delegování domény do Azure DNS](dns-domain-delegation.md).
+Přečtěte si, jak [delegovat doménu na Azure DNS](dns-domain-delegation.md).
 <br>
-Zkontrolujte [referenční dokumentace k Azure DNS Powershellu](/powershell/module/azurerm.dns).
+Přečtěte si [referenční dokumentaci k Azure DNS PowerShellu](/powershell/module/azurerm.dns).
 

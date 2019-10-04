@@ -3,7 +3,7 @@ title: Dokumentace ke službě Personalizace
 summary: Naučte se využívat službu Personalizace k tomu, abyste vaší aplikaci umožnili volbu nejvhodnějšího prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/10/2019
+  ms.date: 10/03/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Personalizace
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
-  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
+  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70882895"
+  ms.lasthandoff: 10/04/2019
+  ms.locfileid: "71950044"
 landingContent:
 - title: Informace o službě Personalizace
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: Co je služba Personalizace?
       url: what-is-personalizer.md
+  - linkListType: whats-new
+    links:
+    - text: Co je nového
+      url: whats-new.md
   - linkListType: concept
     links:
     - text: Jak služba Personalizace funguje

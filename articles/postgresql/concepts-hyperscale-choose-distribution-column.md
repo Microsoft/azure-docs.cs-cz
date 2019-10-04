@@ -1,18 +1,18 @@
 ---
 title: Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
-description: Dobré možnosti pro distribuční sloupce v běžných scénářích s škálovatelným škálováním
+description: Naučte se, jak vybrat distribuční sloupce v běžných scénářích Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998193"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947597"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -22,24 +22,24 @@ Správné skupiny voleb vztahující se k datům společně na stejných fyzick�
 
 Tento článek obsahuje popisy pro distribuční sloupce dvou nejběžnějších scénářů Citus (s větším měřítkem).
 
-### <a name="multi-tenant-apps"></a>Aplikace s více tenanty
+### <a name="multi-tenant-apps"></a>Víceklientské aplikace
 
 Architektura s více klienty používá formu hierarchického modelování databáze pro distribuci dotazů mezi uzly ve skupině serverů. Horní část hierarchie dat se označuje jako *ID tenanta* a musí se ukládat do sloupce v každé tabulce.
 
 Citus () kontroluje dotazy, aby se zobrazilo, které ID tenanta zahrnuje a vyhledá vyhovující tabulku horizontálních oddílů. Směruje dotaz na jeden pracovní uzel, který obsahuje horizontálních oddílů. Spuštění dotazu se všemi relevantními daty umístěnými na stejném uzlu se nazývá společné umístění.
 
-Následující diagram znázorňuje společné umístění v datovém modelu s více klienty. Obsahuje dvě tabulky, účty a kampaně, z `account_id`nichž každý distribuuje. Šedivá pole reprezentují horizontálních oddílů. Zelený horizontálních oddílů je uložen společně na jednom pracovním uzlu a modrý horizontálních oddílů je uložený na jiném pracovním uzlu. Všimněte si, jak dotaz spojení mezi účty a kampaněmi obsahuje všechna data potřebná na jednom uzlu, pokud jsou obě tabulky omezené na stejné ID\_účtu.
+Následující diagram znázorňuje společné umístění v datovém modelu s více klienty. Obsahuje dvě tabulky, účty a kampaně, z nichž každý distribuuje `account_id`. Šedivá pole reprezentují horizontálních oddílů. Zelený horizontálních oddílů je uložen společně na jednom pracovním uzlu a modrý horizontálních oddílů je uložený na jiném pracovním uzlu. Všimněte si, jak dotaz spojení mezi účty a kampaněmi zahrnuje všechna data potřebná v jednom uzlu, pokud jsou obě tabulky omezené na stejný účet @ no__t-0id.
 
 ![Souběžné umístění pro více tenantů](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Chcete-li tento návrh použít ve vašem vlastním schématu, určete, co v aplikaci znamená klienta. Mezi běžné instance patří společnost, účet, organizace nebo zákazník. Název sloupce bude něco podobného `company_id` nebo. `customer_id` Prověřte jednotlivé dotazy a položte si je, kdyby fungovaly, pokud měly další klauzule WHERE k omezení všech tabulek zahrnutých do řádků se stejným ID tenanta?
+Chcete-li tento návrh použít ve vašem vlastním schématu, určete, co v aplikaci znamená klienta. Mezi běžné instance patří společnost, účet, organizace nebo zákazník. Název sloupce bude něco podobného jako `company_id` nebo `customer_id`. Prověřte jednotlivé dotazy a položte si je, kdyby fungovaly, pokud měly další klauzule WHERE k omezení všech tabulek zahrnutých do řádků se stejným ID tenanta?
 Dotazy v modelu víceklientské architektury jsou vymezeny na tenanta. Například dotazy na prodej nebo inventář jsou vymezeny v rámci určitého úložiště.
 
 #### <a name="best-practices"></a>Osvědčené postupy
 
--   **Rozdělení distribuovaných tabulek pomocí společného sloupce\_ID tenanta** Například v aplikaci SaaS, kde jsou vzdálení klienti, se ID tenanta\_pravděpodobně považuje za ID společnosti.\_
+-   **Rozdělit distribuované tabulky společným tenantem na sloupec @ no__t-1id.** Například v aplikaci SaaS, kde jsou vzdálení klienti, je pravděpodobně tenant @ no__t-0id společnost @ no__t-1id.
 -   **Převod malých tabulek pro více tenantů na referenční tabulky.** Pokud více klientů sdílí malou tabulku informací, distribuujte ji jako referenční tabulku.
--   **Omezí filtrování všech dotazů aplikace podle ID\_tenanta.** Každý dotaz by měl požadovat informace pro jednoho klienta v jednom okamžiku.
+-   **Omezte filtrování všech dotazů aplikace podle tenanta @ no__t-1id.** Každý dotaz by měl požadovat informace pro jednoho klienta v jednom okamžiku.
 
 Příklad, jak tento druh aplikace sestavit, najdete v [kurzu pro více tenantů](./tutorial-design-database-hyperscale-multi-tenant.md) .
 
@@ -74,5 +74,5 @@ Nejběžnější Chyba při modelování informací o datové řadě v Citus () 
 
 Příklad vytvoření tohoto typu aplikace najdete v [kurzu pro časovou řadu](https://aka.ms/hyperscale-tutorial-timeseries) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak společné [umístění](concepts-hyperscale-colocation.md) mezi distribuovanými daty pomáhá rychle spustit dotazy.

@@ -10,14 +10,14 @@ ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b9bd4b3516ee03ce78fcf255eba011f86f9c29c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883941"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958041"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 
@@ -29,18 +29,18 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
 1. [Vytvořte referenční datovou sadu](time-series-insights-add-reference-data-set.md).
 
-1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v `Authorization` hlavičce každé žádosti rozhraní API pro dotazy.
+1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v hlavičce `Authorization` každého požadavku rozhraní API pro dotazování.
 
    Informace o tom, jak nastavit neinteraktivní aplikace, najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
 1. Upravte vzorový kód, který nahradí ukázkové konstanty určené v **#DUMMY #** , poblíž začátku kódu.
 
 > [!NOTE]
-> Podívejte se na vzorový kód GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)na adrese.
+> Podívejte se na vzorový kód GA na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Přidejte balíčky `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet a `Newtonsoft.Json` pro tento příklad.
+Pro tento příklad přidejte balíčky NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json`.
 
 ## <a name="c-sample-code"></a>C#vzorový kód
 
@@ -245,6 +245,6 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [rozhraní API pro referenční data](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).

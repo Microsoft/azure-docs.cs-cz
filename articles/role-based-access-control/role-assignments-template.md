@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178109"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950062"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager
 
@@ -26,14 +26,14 @@ ms.locfileid: "71178109"
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Vytvoření přiřazení role v oboru skupiny prostředků (bez parametrů)
 
-V RBAC se přístup uděluje vytvořením přiřazení role. Následující šablona ukazuje základní způsob, jak vytvořit přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
+Pokud chcete udělit přístup, vytvořte v nástroji RBAC přiřazení role. Následující šablona ukazuje základní způsob, jak vytvořit přiřazení role. Některé hodnoty jsou zadány v rámci šablony. Následující šablona znázorňuje:
 
 -  Přiřazení role [čtenáře](built-in-roles.md#reader) k uživateli, skupině nebo aplikaci v oboru skupiny prostředků
 
 Chcete-li použít šablonu, je nutné provést následující akce:
 
 - Vytvořit nový soubor JSON a zkopírovat šablonu
-- Nahraďte `<your-principal-id>` jedinečným identifikátorem uživatele, skupiny nebo aplikace, ke které se role přiřadí. Identifikátor má formát:`11111111-1111-1111-1111-111111111111`
+- Nahraďte `<your-principal-id>` jedinečným identifikátorem uživatele, skupiny nebo aplikace, ke které se role přiřadí. Identifikátor má formát: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> Tato šablona není idempotentní, pokud není stejná hodnota `roleNameGuid` uvedena jako parametr pro každé nasazení šablony. Pokud není k dispozici žádná `roleNameGuid`, ve výchozím nastavení se v každém nasazení vygeneruje nový identifikátor GUID a následná nasazení selžou s chybou `Conflict: RoleAssignmentExists`.
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Vytvoření přiřazení role v oboru prostředků
 
 Pokud potřebujete vytvořit přiřazení role na úrovni prostředku, formát přiřazení role se liší. Zadejte obor názvů poskytovatele prostředků a typ prostředku, ke kterému chcete přiřadit roli. Do názvu přiřazení role zadáte také název prostředku.
@@ -172,7 +175,7 @@ Pro typ a název přiřazení role použijte následující formát:
 
 Následující šablona znázorňuje:
 
-- Vytvoření nového účtu úložiště
+- Jak vytvořit nový účet úložiště
 - Přiřazení role uživateli, skupině nebo aplikaci v oboru účtu úložiště
 - Jak zadat role vlastníka, přispěvatele a čtenáře jako parametr
 
@@ -180,8 +183,6 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 
 - Jedinečný identifikátor uživatele, skupiny nebo aplikace, ke které se role přiřadí
 - Role, která se má přiřadit
-- Jedinečný identifikátor, který se použije pro přiřazení role, nebo můžete použít výchozí identifikátor.
-
 
 ```json
 {
@@ -203,13 +204,6 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -267,12 +261,12 @@ Níže vidíte příklad přiřazení role přispěvatele uživateli pro účet 
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Vytvoření přiřazení role pro nový instanční objekt
 
-Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například vytvoříte novou spravovanou identitu a pak se pokusíte přiřadit roli k tomuto instančnímu objektu ve stejné šabloně Azure Resource Manager, přiřazení role může selhat. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Pro vyřešení tohoto scénáře byste měli nastavit `principalType` vlastnost na `ServicePrincipal` při vytváření přiřazení role.
+Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například vytvoříte novou spravovanou identitu a pak se pokusíte přiřadit roli k tomuto instančnímu objektu ve stejné šabloně Azure Resource Manager, přiřazení role může selhat. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Chcete-li tento scénář vyřešit, nastavte vlastnost `principalType` na hodnotu `ServicePrincipal` při vytváření přiřazení role.
 
 Následující šablona znázorňuje:
 
 - Postup vytvoření nového objektu spravované služby identity
-- Jak zadat`principalType`
+- Určení `principalType`
 - Přiřazení role Přispěvatel k tomuto instančnímu objektu v oboru skupiny prostředků
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
@@ -335,7 +329,7 @@ Následuje příklad přiřazení role přispěvatele k novému instančnímu ob
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlé zprovoznění: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Struktura a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Rychlý Start: vytvoření a nasazení šablon Azure Resource Manager pomocí Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/deploy-to-subscription.md)
-- [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

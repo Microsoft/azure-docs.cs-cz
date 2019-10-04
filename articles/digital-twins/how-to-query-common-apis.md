@@ -1,19 +1,19 @@
 ---
 title: Běžné vzory dotazů v Azure – digitální vlákna | Microsoft Docs
 description: Seznamte se s běžnými způsoby dotazování rozhraní API pro správu digitálních vláken Azure.
-author: kingdomofends
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: v-adgera
-ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1d1c0e2f12d5a971cf08933e5d469093eb1f6d52
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172797"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949870"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Dotazování rozhraní API digitálních vláken Azure na běžné úlohy
 
@@ -56,7 +56,7 @@ V této části najdete Ukázkové dotazy, které vám pomohou získat další i
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Získá mezery s klíčem vlastnosti s názvem *AreaInSqMeters* a jeho hodnota je 30. Můžete také provádět operace s `name = X contains Y`řetězci, například získat mezery obsahující klíč vlastnosti.
+- Získá mezery s klíčem vlastnosti s názvem *AreaInSqMeters* a jeho hodnota je 30. Můžete také provádět operace s řetězci, například získat mezery obsahující klíč vlastnosti `name = X contains Y`.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
@@ -234,7 +234,7 @@ V této části najdete několik ukázkových dotazů k rozhraní API pro správ
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak ověřit pomocí rozhraní API pro správu, přečtěte si [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
 

@@ -1,21 +1,21 @@
 ---
-title: Připojení zařízení a příjem telemetrie pomocí digitálních vláken Azure | Microsoft Docs
+title: Připojení zařízení a nepříjem telemetrie – digitální vlákna Azure Microsoft Docs
 description: Přehled toho, jak přenést zařízení do zprovoznění pomocí digitálních vláken Azure
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177101"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950020"
 ---
-# <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
+# <a name="device-connectivity-and-telemetry-ingress"></a>Připojení zařízení a příchozí telemetrie
 
 Data telemetrie odesílaná zařízeními a snímači tvoří páteřní síť řešení IoT. Způsob reprezentace těchto různých prostředků a jejich správa v kontextu umístění jsou hlavními aspekty vývoje aplikací pro IoT. Funkce digitálních vláken Azure zjednodušuje proces vývoje řešení IoT pomocí jednotkových zařízení a senzorů pomocí grafu prostorových informací.
 
@@ -39,13 +39,13 @@ V následujících částech se dozvíte, jak získat připojovací řetězec Io
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Pokud chcete získat připojovací řetězec IoT Hub zařízení, proveďte v `includes=ConnectionString` rozhraní API zařízení volání Get s parametrem. Pokud chcete najít dané zařízení, vyfiltrujte ho podle identifikátoru GUID zařízení nebo ID hardwaru.
+Pokud chcete získat připojovací řetězec IoT Hub zařízení, proveďte v rozhraní API zařízení volání GET s parametrem `includes=ConnectionString`. Pokud chcete najít dané zařízení, vyfiltrujte ho podle identifikátoru GUID zařízení nebo ID hardwaru.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_DEVICE_GUID* | ID zařízení |
 
@@ -53,7 +53,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Hodnota parametru | Nahradit hodnotou |
+| Hodnota parametru | Nahradit |
 | --- | --- |
 | *YOUR_DEVICE_HARDWARE_ID* | ID hardwaru zařízení |
 
@@ -65,14 +65,14 @@ Formát a datovou část svého zařízení můžete přizpůsobit tak, aby vyho
 
 ### <a name="telemetry-properties"></a>Vlastnosti telemetrie
 
- Obsah datové části **zprávy** může být libovolná data o velikosti až 256 KB. Pro vlastnosti [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) typu je očekáváno několik požadavků. V tabulce jsou uvedeny požadované a volitelné vlastnosti, které systém podporuje.
+ Obsah datové části **zprávy** může být libovolná data o velikosti až 256 KB. Pro vlastnosti typu [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) se očekává několik požadavků. V tabulce jsou uvedeny požadované a volitelné vlastnosti, které systém podporuje.
 
-| Název vlastnosti | Value | Požadováno | Popis |
+| Název vlastnosti | Hodnota | Požadováno | Popis |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu pro systém. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. Například, `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. Například, `2018-09-20T07:35:00.8587882-07:00`. |
-| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. Například, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **DigitalTwins – telemetrie** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu pro systém. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. Například `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. Například `2018-09-20T07:35:00.8587882-07:00`. |
+| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. Například `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Odeslání zprávy do digitálních vláken
 

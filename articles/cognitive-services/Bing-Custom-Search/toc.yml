@@ -60,8 +60,9 @@
     - name: Zpracování zvýrazňování nalezených položek
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Procházení webových stránek
-      href: page-webpages.md
+    - name: Procházet stránky výsledků hledání
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API pro vlastní automatické návrhy Bingu

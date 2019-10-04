@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084724"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960409"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Požadovaná konfigurace stavu (DSC) je platforma pro správu, která umožňuje spravovat infrastrukturu IT a vývoj s konfigurací jako kód.
+
+> ! Všimněte si, že rozšíření DSC pro Linux a [rozšíření Azure monitor virtuálního počítače pro Linux](/virtual-machines/extensions/oms-linux) aktuálně prezentují konflikt a nejsou podporovaná v konfiguraci vedle sebe.  To znamená, že tato dvě řešení byste neměli používat společně na jednom virtuálním počítači.
 
 Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta OMI a DSC na virtuální počítače Azure. Rozšíření DSC může také provádět následující akce.
 
@@ -39,14 +41,14 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
+Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
 
-| Distribuce | Version |
+| Šíření | Version |
 |---|---|
 | Debian | všechny verze |
 | Ubuntu| 18,04 |
  
-### <a name="internet-connectivity"></a>Připojení k internetu
+### <a name="internet-connectivity"></a>Připojení k Internetu
 
 Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. Například registrovat rozšíření vyžaduje připojení ke službě Automation. Pro jiné akce, jako je například vyžádání, vyžádání, instalace vyžaduje připojení ke službě Azure Storage nebo GitHub. Závisí na nastaveních poskytovaných zákazníkem.
 
@@ -56,13 +58,13 @@ Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač př
 
 Tady jsou všechny podporované parametry veřejné konfigurace:
 
-* `FileUri`: (volitelné, String) identifikátor URI souboru MOF/souboru meta MOF nebo souboru ZIP vlastního prostředku.
-* `ResourceName`: (volitelné, String) název vlastního modulu prostředků
-* `ExtensionAction`: (volitelné, String) určuje, co rozšíření dělá. platné hodnoty: Registrace, vložení, stažení, instalace, odebrání. Pokud není zadaný, považuje se ve výchozím nastavení za nabízenou akci.
-* `NodeConfigurationName`: (volitelné, String) název konfigurace uzlu, která se má použít.
+* `FileUri`: (nepovinný řetězec) identifikátor URI souboru MOF/souboru meta MOF/souboru ZIP vlastního prostředku.
+* `ResourceName`: (nepovinný, řetězec) název vlastního modulu prostředků
+* `ExtensionAction`: (nepovinný řetězec) určuje, co rozšíření dělá. platné hodnoty: registrace, vložení, stažení, instalace, odebrání. Pokud není zadaný, považuje se ve výchozím nastavení za nabízenou akci.
+* `NodeConfigurationName`: (volitelné, řetězec) název konfigurace uzlu, která se má použít.
 * `RefreshFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) se DSC pokusí získat konfiguraci ze serveru vyžádané replikace. 
        Pokud se konfigurace na serveru pro vyžádání liší od aktuální položky na cílovém uzlu, zkopíruje se do úložiště čeká na vyřízení a použije se.
-* `ConfigurationMode`: (volitelné, řetězec) určuje, jak má DSC použít konfiguraci. Platné hodnoty jsou: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationMode`: (nepovinný řetězec) určuje, jak má DSC použít konfiguraci. Platné hodnoty jsou: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) DSC ověří, jestli je konfigurace v požadovaném stavu.
 
 > [!NOTE]
@@ -73,16 +75,16 @@ Tady jsou všechny podporované parametry veřejné konfigurace:
 
 Tady jsou všechny podporované parametry chráněné konfigurace:
 
-* `StorageAccountName`: (volitelné, řetězec) název účtu úložiště, který obsahuje soubor.
-* `StorageAccountKey`: (volitelné, String) klíč účtu úložiště, který obsahuje soubor
-* `RegistrationUrl`: (volitelné, String) adresa URL účtu Azure Automation
-* `RegistrationKey`: (volitelné, String) přístupový klíč účtu Azure Automation
+* `StorageAccountName`: (nepovinný, řetězec) název účtu úložiště, který obsahuje soubor.
+* `StorageAccountKey`: (nepovinný, řetězec) klíč účtu úložiště, který obsahuje soubor.
+* `RegistrationUrl`: (nepovinný, řetězec) adresa URL účtu Azure Automation
+* `RegistrationKey`: (nepovinný, řetězec) přístupový klíč účtu Azure Automation
 
 
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="register-to-azure-automation-account"></a>Zaregistrujte se do Azure Automation účtu.
-protected.json
+Protected. JSON
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
@@ -118,7 +120,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru MOF (v Azure Storage účtu) k virtuálnímu počítači
 
-protected.json
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -166,7 +168,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru meta MOF (v Azure Storage účtu) k virtuálnímu počítači
 
-protected.json
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -212,7 +214,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Instalace vlastního modulu prostředků (soubor ZIP v Azure Storage účtu) do virtuálního počítače
-protected.json
+Protected. JSON
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -272,21 +274,21 @@ $publicConfig = '{
 }'
 ```
 
-## <a name="template-deployment"></a>Nasazení šablon
+## <a name="template-deployment"></a>Template deployment
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojování k Azure Automation. 
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojování k Azure Automation. 
 
 Vzorová Správce prostředků šablona je [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) a [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
 Další informace o šabloně Azure Resource Manager najdete v [Azure Resource Manager vytváření šablon](../../azure-resource-manager/resource-group-authoring-templates.md).
 
 
-## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. Použití [**Azure CLI**] [Azure-CLI]
-Před nasazením rozšíření DSCForLinux byste měli nakonfigurovat `public.json` a `protected.json`, podle různých scénářů v oddílu 3.
+### <a name="21-using-azure-cliazure-cli"></a>2,1. Použití [**Azure CLI**] [Azure-CLI]
+Před nasazením rozšíření DSCForLinux byste měli nakonfigurovat `public.json` a `protected.json`, a to podle různých scénářů v oddílu 3.
 
-#### <a name="211-classic"></a>2.1.1. Classic
+#### <a name="211-classic"></a>bodů. Klasický
 Klasický režim se taky označuje jako režim správy služeb Azure. Můžete na něj přejít spuštěním:
 ```
 $ azure config mode asm
@@ -303,7 +305,7 @@ Pokud se chcete dozvědět, jak nejnovější dostupná verze rozšíření, spu
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2. Resource Manager
+#### <a name="212-resource-manager"></a>2.1.2. Správce prostředků
 Můžete přepnout na režim Azure Resource Manager spuštěním:
 ```
 $ azure config mode arm
@@ -316,10 +318,10 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> V režimu `azure vm extension list` Azure Resource Manager není nyní k dispozici.
+> V režimu Azure Resource Manager není nyní k dispozici `azure vm extension list`.
 >
 
-### <a name="22-using-azure-powershellazure-powershell"></a>2.2. Použití [**Azure PowerShell**] [Azure-PowerShell]
+### <a name="22-using-azure-powershellazure-powershell"></a>2,2. Použití [**Azure PowerShell**] [Azure-PowerShell]
 
 #### <a name="221-classic"></a>2.2.1 – klasický
 
@@ -406,26 +408,26 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Rozšíření provádění výstup je zaznamenán do následujícího souboru:
+Výstup spuštění rozšíření se zaznamená do následujícího souboru:
 
 ```
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
 Kód chyby: 51 představuje nepodporovanou akci distribuce nebo nepodporovanou příponu.
-V některých případech se rozšíření DSC pro Linux nedokáže nainstalovat OMI, pokud už v počítači existuje vyšší verze OMI. [chybová odpověď: (000003) Downgrading není povolený]
+V některých případech se rozšíření DSC pro Linux nedokáže nainstalovat OMI, pokud už v počítači existuje vyšší verze OMI. [chybová odpověď: (000003) downgrade není povolená.]
 
 
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/community/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).

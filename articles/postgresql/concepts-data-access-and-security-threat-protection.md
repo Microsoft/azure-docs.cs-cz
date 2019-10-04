@@ -1,46 +1,46 @@
 ---
-title: Advanced Threat Protection – Azure Database for PostgreSQL – jeden Server
-description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze.
+title: Koncepce rozšířené ochrany před internetovými útoky – Azure Database for PostgreSQL – jeden server
+description: Přečtěte si, jak používat rozšířenou ochranu před internetovými útoky k detekci neobvyklé databázových aktivit, které označují potenciální bezpečnostní hrozby databáze
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 81f42183276f95ddfb24fbdc388fef59acbe680e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c0e666458018d4e03d5560e417d28d0efadb27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073525"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950080"
 ---
-# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Pokročilou ochranu před hrozbami ve službě Azure Database for PostgreSQL – jeden Server
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky v Azure Database for PostgreSQL – jeden server
 
-Služba Advanced Threat Protection pro Azure Database for PostgreSQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
-
-> [!NOTE]
-> Rozšířená ochrana před internetovými útoky je ve verzi public preview.
-
-Ochrana před internetovými útoky je součástí nabídky rozšířené ochrany před internetovými útoky (ATP), která je jednotný balíček pro pokročilé možnosti zabezpečení. Rozšířená ochrana před internetovými útoky jde přistupovat a spravovat přes [webu Azure portal](https://portal.azure.com) nebo pomocí [rozhraní REST API](/rest/api/postgresql/serversecurityalertpolicies). Tato funkce je dostupná pro servery pro obecné účely a optimalizovaný pro paměť.
+Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
 > [!NOTE]
-> Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a Azure government pro následující: (Gov) – Iowa, USA, Arizona, USA (gov) US Gov Texas, USA (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
+> Rozšířená ochrana před internetovými útoky je ve verzi Public Preview.
 
-## <a name="what-is-advanced-threat-protection"></a>Co je Advanced Threat Protection?
+Ochrana před hrozbami je součástí nabídky rozšířené ochrany před internetovými útoky (ATP), což je jednotný balíček pro pokročilé funkce zabezpečení. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí [REST API](/rest/api/postgresql/serversecurityalertpolicies). Tato funkce je k dispozici pro Pro obecné účely a paměťově optimalizované servery.
 
-Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat a reagovat na potenciální hrozby, jak se objeví díky poskytování upozornění zabezpečení na neobvyklé aktivity. Uživatelé obdrží upozornění při podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení, i neobvyklé databázové vzory přístupu a dotazy. Rozšířená ochrana před internetovými útoky pro databázi Azure pro PostgreSQL integruje výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/), který obsahuje podrobnosti o podezřelé aktivitě a doporučuje akce na tom, jak zkoumat a zmírnit hrozby. Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborné zabezpečení nebo spravovat pokročilé zabezpečení systémy pro monitorování. 
+> [!NOTE]
+> Funkce rozšířené ochrany před internetovými **útoky není k dispozici v** následujících oblastech cloudu Azure a svrchovaného cloudu: US Gov – Texas, US Gov – Arizona, US gov – Iowa, US, gov) – virginia, US DoD – východ, US DoD – střed, Německo Central, Německo – sever, Čína – východ, Čína – východ 2. Pokud chcete získat obecnou dostupnost produktu, navštivte prosím [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) .
 
-![Koncept Advanced Threat Protection](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+## <a name="what-is-advanced-threat-protection"></a>Co je rozšířená ochrana před internetovými útoky?
 
-## <a name="advanced-threat-protection-alerts"></a>Upozornění rozšířené ochrany před internetovými útoky 
-Rozšířená ochrana před internetovými útoky pro Azure Database for postgresql – detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití a ji můžete spustit následující upozornění:
-- **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Azure Database for PostgreSQL server, když někdo přihlásil k Azure Database for PostgreSQL server z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Azure Database for PostgreSQL server, když někdo přihlásil k serveru z neobvyklého datového centra Azure, která už na tomto serveru se v poslední době. V některých případech výstraha detekuje legitimní akci (nová aplikace v Azure, Power BI, Azure Database v editoru dotazů PostgreSQL). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
-- **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Azure Database for PostgreSQL server, když někdo přihlásil k serveru pomocí neobvyklého objektu zabezpečení (– Azure Database for PostgreSQL uživatele). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z potenciálně škodlivé aplikace**: Tato výstraha se aktivuje, když se potenciálně škodlivé aplikace používá pro přístup k databázi. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
-- **Hrubou vynutit – Azure Database for postgresql – přihlašovací údaje**: Tato výstraha se aktivuje po neobvykle vysoký počet neúspěšných přihlášení s jinými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
+Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje rozpoznávat a reagovat na potenciální hrozby při jejich výskytu tím, že poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé dostanou upozornění na podezřelé databázové aktivity a potenciální ohrožení zabezpečení a také neobvyklé přístup k databázi a vzor dotazů. Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), což zahrnuje podrobnosti o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit. Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL usnadňuje řešení potenciálních hrozeb pro databázi, aniž by musel být odborníkem na zabezpečení nebo spravovali pokročilé systémy monitorování zabezpečení. 
 
-## <a name="next-steps"></a>Další postup
+![Koncept rozšířené ochrany před internetovými útoky](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+
+## <a name="advanced-threat-protection-alerts"></a>Výstrahy rozšířené ochrany před internetovými útoky 
+Rozšířená ochrana před internetovými útoky pro Azure Database for PostgreSQL detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
+- **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for PostgreSQL, kde se někdo přihlásil k serveru Azure Database for PostgreSQL z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba pro vývojáře). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for PostgreSQL, kde se někdo přihlásil k serveru z neobvyklého datového centra Azure, které bylo vidět na tomto serveru. během posledního období. V některých případech výstraha detekuje legitimní akci (novou aplikaci v Azure, Power BI Azure Database for PostgreSQL editoru dotazů). V jiných případech výstraha detekuje škodlivou akci z prostředku nebo služby Azure (bývalý zaměstnanec, externí útočník).
+- **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for PostgreSQL, kde se někdo přihlásil k serveru pomocí neobvyklého objektu zabezpečení (Azure Database for PostgreSQL uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba vývojářů). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z potenciálně škodlivé aplikace**: Tato výstraha se aktivuje, když se pro přístup k databázi používá potenciálně škodlivá aplikace. V některých případech výstraha detekuje testování průniku v akci. V jiných případech výstraha detekuje útok pomocí běžných nástrojů pro útoky.
+- **Azure Database for PostgreSQL přihlašovací údaje hrubou silou**: Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje testování průniku v akci. V jiných případech výstraha detekuje útok hrubou silou.
+
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete v tématu [– Azure Database for PostgreSQL ceník](https://azure.microsoft.com/pricing/details/postgresql/) 
-* Konfigurace [– Azure Database for PostgreSQL Advanced Threat Protection](howto-database-threat-protection-portal.md) pomocí webu Azure portal  
+* Další informace o cenách najdete na stránce s [cenami Azure Database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) . 
+* Konfigurace [Azure Database for PostgreSQL rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal  

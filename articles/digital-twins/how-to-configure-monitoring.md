@@ -1,20 +1,20 @@
 ---
-title: Jak nakonfigurovat monitorování v Azure Digital revláken | Microsoft Docs
+title: Jak nakonfigurovat monitorování – digitální vlákna Azure | Microsoft Docs
 description: Jak nakonfigurovat monitorování v digitálních Vlákenách Azure.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3fb00977a2e1dba5cf9627b8081aee2f76bc8bd4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845463"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950000"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v digitálních prozdvojeních Azure
 

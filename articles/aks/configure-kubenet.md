@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615765"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950341"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -26,9 +26,9 @@ V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít 
 > [!WARNING]
 > Pokud chcete používat fondy uzlů Windows serveru (v současnosti ve verzi Preview v AKS), musíte použít Azure CNI. Použití kubenet jako síťového modelu není k dispozici pro kontejnery Windows serveru.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Přehled sítě kubenet s vlastní podsítí
 
@@ -38,9 +38,9 @@ V případě *kubenet*obdrží jenom uzly IP adresu v podsíti virtuální sít�
 
 ![Model sítě Kubenet s clusterem AKS](media/use-kubenet/kubenet-overview.png)
 
-Azure podporuje maximálně 400 tras v UDR, takže nemůžete mít cluster AKS větší než 400 uzlů. AKS funkce, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě, se s *kubenet*nepodporují.
+Azure podporuje maximálně 400 tras v UDR, takže nemůžete mít cluster AKS větší než 400 uzlů. [Virtuální uzly][virtual-nodes] AKS a zásady sítě Azure nejsou podporované s *kubenet*.  Můžete použít [zásady sítě Calico][calico-network-policies], protože jsou podporované v kubenet.
 
-V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu IP a může přímo komunikovat s dalšími lusky a službami. Clustery můžou být tak velké jako rozsah IP adres, který zadáte. Rozsah IP adres se ale musí naplánovat předem a všechny IP adresy se spotřebovávají AKS uzly na základě maximálního počtu lusků, které můžou podporovat. *Azure CNI*podporuje pokročilé síťové funkce a scénáře, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě.
+V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu IP a může přímo komunikovat s dalšími lusky a službami. Clustery můžou být tak velké jako rozsah IP adres, který zadáte. Rozsah IP adres se ale musí naplánovat předem a všechny IP adresy se spotřebovávají AKS uzly na základě maximálního počtu lusků, které můžou podporovat. *Azure CNI*podporuje pokročilé síťové funkce a scénáře, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě (buď Azure nebo Calico).
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Dostupnost a vyčerpání IP adres
 
@@ -72,23 +72,20 @@ Volba síťového modulu plug-in, který se má použít pro cluster AKS, je obv
 
 - Máte omezený adresní prostor IP adres.
 - Většina komunikace pod clusterem je v clusteru.
-- Nepotřebujete pokročilé funkce, jako jsou virtuální uzly nebo síťové zásady.
+- Nepotřebujete rozšířené funkce AKS, jako jsou virtuální uzly nebo zásady sítě Azure.  Použijte [zásady sítě Calico][calico-network-policies].
 
 *CNI Azure* použijte v těchto případech:
 
 - Máte k dispozici adresní prostor IP adres.
 - Většina komunikace pod je na prostředky mimo cluster.
 - Nechcete spravovat udr.
-- Budete potřebovat pokročilé funkce, jako jsou virtuální uzly nebo síťové zásady.
+- Potřebujete AKS pokročilé funkce, jako jsou virtuální uzly nebo zásady sítě Azure.  Použijte [zásady sítě Calico][calico-network-policies].
 
 Další informace, které vám pomůžou určit, který model sítě se má použít, najdete v tématu [porovnání síťových modelů a jejich oboru podpory][network-comparisons].
 
-> [!NOTE]
-> Kuberouter umožňuje povolit síťové zásady při použití kubenet a je možné ji nainstalovat jako daemonset v clusteru AKS. Upozorňujeme na to, že Kube je stále ve verzi beta a Microsoft pro projekt nenabízí žádnou podporu.
-
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Pokud chcete začít používat *kubenet* a vlastní podsíť virtuální sítě, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
+Pokud chcete začít používat *kubenet* a vlastní podsíť virtuální sítě, vytvořte nejprve skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -107,7 +104,7 @@ az network vnet create \
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Vytvoření instančního objektu a přiřazení oprávnění
 
-Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Instanční objekt musí mít oprávnění ke správě virtuální sítě a podsítě, kterou používají uzly AKS. Objekt služby vytvoříte pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] :
+Pokud chcete, aby cluster AKS spolupracoval s dalšími prostředky Azure, použije se Azure Active Directory instanční objekt. Instanční objekt musí mít oprávnění ke správě virtuální sítě a podsítě, kterou používají uzly AKS. Objekt služby vytvoříte pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] :
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -134,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Nyní přiřaďte instančnímu objektu oprávnění přispěvatele clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní  *\<appId >* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
+Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *> @no__t 1appId* , jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -142,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní  *\<identifikátor appId >* a  *\<heslo >* , jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu.
+Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní instanční objekt *\<appId >* a *> \<password*, jak je znázorněno na výstupu z předchozího příkazu k vytvoření instančního objektu.
 
 V rámci procesu vytváření clusteru se definují taky tyto rozsahy IP adres:
 
@@ -172,16 +169,35 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> Pokud chcete povolit, aby cluster AKS zahrnoval [zásady sítě Calico][calico-network-policies] , můžete použít následující příkaz.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 Při vytváření clusteru AKS se vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto síťové prostředky se spravují pomocí roviny ovládacího prvku AKS. Skupina zabezpečení sítě je automaticky přidružená k virtuálním síťovým kartám na vašich uzlech. Tabulka směrování je automaticky přidružena k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky a se automaticky aktualizují při vytváření a vystavování služeb.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Když je cluster AKS nasazený do stávající podsítě virtuální sítě, můžete teď cluster používat jako normální. Začněte sestavovat [aplikace pomocí Azure dev Spaces][dev-spaces] nebo [pomocí konceptu][use-draft]nebo [Nasaďte aplikace pomocí Helm][use-helm].
+Když je cluster AKS nasazený do stávající podsítě virtuální sítě, můžete teď cluster používat jako normální. Začněte [sestavovat aplikace pomocí Azure dev Spaces][dev-spaces] nebo [pomocí konceptu][use-draft]nebo [Nasaďte aplikace pomocí Helm][use-helm].
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

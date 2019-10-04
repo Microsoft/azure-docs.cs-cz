@@ -1,26 +1,26 @@
 ---
 title: Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift | Microsoft Docs
-description: Správce clusteru Azure Red Hat OpenShift Správa omezení kontextu zabezpečení
+description: Omezení kontextu zabezpečení pro správce clusteru Azure Red Hat OpenShift
 services: container-service
 author: troy0820
 ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 8e85ac98683487c6b18be7f502f28cad9a0c2251
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709936"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937424"
 ---
-# <a name="overview"></a>Přehled 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift 
 
-Omezení kontextu zabezpečení umožňují správcům řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v dokumentaci k architektuře [omezení kontextu zabezpečení](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) (SCCs). V rámci své instance můžete spravovat SCCs jako normální objekty rozhraní API pomocí rozhraní příkazového řádku.
+Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
 
-## <a name="listing-security-context-constraints"></a>Výpis omezení kontextu zabezpečení
+## <a name="list-security-context-constraints"></a>Vypsat omezení kontextu zabezpečení
 
-Získání aktuálního seznamu SCCs 
+Pokud chcete získat aktuální seznam SCCs, použijte tento příkaz: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examining-a-security-context-constraints-object"></a>Zkoumání objektu omezení kontextu zabezpečení
+## <a name="examine-an-object-for-security-context-constraints"></a>Kontrola objektu pro omezení kontextu zabezpečení
 
-K prohlédnutí konkrétního SCCu použijte `oc get`, `oc describe` nebo `oc edit`.  Například pro kontrolu **omezeného** SCC:
+K prohlédnutí konkrétního SCCu použijte `oc get`, `oc describe` nebo `oc edit`.  Chcete-li například prostudovat **omezené** SCC, použijte tento příkaz:
 ```bash
 $ oc describe scc restricted
 Name:                   restricted
@@ -72,6 +72,5 @@ Settings:
     Ranges:             <none>
 ```
 ## <a name="next-steps"></a>Další kroky
-Postup konfigurace role osa-zákazník-správce:
 > [!div class="nextstepaction"]
-> [Integrace Azure Active Directory pro Azure Red Hat OpenShift](howto-aad-app-configuration.md) 
+> [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) 

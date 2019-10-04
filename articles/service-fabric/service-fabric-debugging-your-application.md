@@ -15,17 +15,17 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300683"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947904"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí sady Visual Studio
 > [!div class="op_single_selector"]
 > * [Visual Studio/CSharp](service-fabric-debugging-your-application.md) 
-> * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
+> * [Zatmění/Java](service-fabric-debugging-your-application-java.md)
 >
 
 
@@ -76,14 +76,10 @@ Pokud vaše aplikace Service Fabric běží na clusteru Service Fabric v Azure, 
 
 > [!NOTE]
 > Tato funkce vyžaduje [sadu Service Fabric sdk 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sadu Azure sdk pro .NET 2,9](https://azure.microsoft.com/downloads/).    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Vzdálené ladění je určeno pro scénáře vývoje a testování a nepoužívá se v produkčních prostředích z důvodu dopadu na běžící aplikace.
-> 
-> 
 
 1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit ladění** .
    
@@ -128,8 +124,6 @@ Je také možné streamovat trasování přímo ze vzdáleného uzlu clusteru do
 > [!WARNING]
 > Trasování streamování je určené pro scénáře pro vývoj a testování a ne pro použití v produkčních prostředích z důvodu dopadu na běžící aplikace.
 > V produkčním scénáři byste měli spoléhat na události předávání pomocí Azure Diagnostics.
-> 
-> 
 
 1. V **Průzkumníku cloudu**přejděte do clusteru. Klikněte pravým tlačítkem a vyberte **Povolit trasování streamování** .
    

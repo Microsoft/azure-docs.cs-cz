@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936776"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949363"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -83,6 +83,20 @@ Vyberte požadovaný zdroj pro deklaraci identity `NameIdentifier` (nebo NameID)
 | Atributy rozšíření 1-15 | Atributy místních rozšíření používaných k rozšíření schématu Azure AD |
 
 Další informace naleznete v [tabulce 3: platné hodnoty ID na zdroj](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+
+Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakoukoli konstantní (statickou) hodnotu. Použijte následující postup k přiřazení konstantní hodnoty:
+
+1. V [Azure Portal](https://portal.azure.com/)v části **atributy uživatele & deklaracemi** klikněte na ikonu **Upravit** a upravte deklarace.
+
+1. Klikněte na požadovanou deklaraci identity, kterou chcete upravit.
+
+1. Zadejte hodnotu konstanty ve **zdrojovém atributu** dle vaší organizace a klikněte na **Uložit**.
+
+    ![V Azure Portal otevřete část atributy uživatele & deklarace identity.](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. Hodnota konstanty se zobrazí, jak je uvedeno níže.
+
+    ![V Azure Portal otevřete část atributy uživatele & deklarace identity.](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciální deklarace – transformace
 

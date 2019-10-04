@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266904"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949715"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
 Podívejme se na některé výhody, které získáte pomocí spravovaných disků.
 
-### <a name="highly-durable-and-available"></a>Vysoká odolnost a dostupnost
+### <a name="highly-durable-and-available"></a>Vysoce odolné a dostupné
 
-Spravované disky jsou navržené pro 99,999% dostupnost. Služba Managed disks dosahuje tím, že poskytuje tři repliky vašich dat, což umožňuje vysokou odolnost. Pokud se u jedné nebo dokonce u dvou replik objeví problémy, zbývající repliky pomohou zajistit trvalost vašich dat a vysokou odolnost proti chybám. Tato architektura pomáhá Azure konzistentně zajistit odolnost na podnikové úrovni pro disky infrastruktury jako služby (IaaS), a to s špičkovou neplatnou roční mírou selhání v oboru.
+Spravované disky jsou navržené pro 99,999% dostupnost. Služba Managed disks dosahuje tím, že poskytuje tři repliky vašich dat, což umožňuje vysokou odolnost. Pokud u jedné nebo i dvou replik dochází k problémům, zbývající repliky pomůžou zajistit trvalost vašich dat a vysokou odolnost proti chybám. Tato architektura pomáhá Azure konzistentně zajistit odolnost na podnikové úrovni pro disky infrastruktury jako služby (IaaS), a to s špičkovou neplatnou roční mírou selhání v oboru.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Jednoduché a škálovatelné nasazení virtuálních počítačů
 
-Pomocí spravovaných disků můžete vytvořit až 50 000 **disků** virtuálního počítače typu v rámci předplatného na oblast, což vám umožní vytvořit v jednom předplatném tisíce **virtuálních počítačů** . Tato funkce také dále zvyšuje škálovatelnost [virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) s měřítkem, protože vám umožní vytvořit v sadě škálování virtuálního počítače až 1 000 virtuálních počítačů pomocí Image Marketplace.
+Pomocí spravovaných disků můžete vytvořit až 50 000 **disků** virtuálního počítače typu v rámci předplatného na oblast, což vám umožní vytvořit v jednom předplatném tisíce **virtuálních počítačů** . Tato funkce také dále zvyšuje škálovatelnost [virtuálních počítačů s měřítkem](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) , protože vám umožní vytvořit v sadě škálování virtuálního počítače až 1 000 virtuálních počítačů pomocí Image Marketplace.
 
 ### <a name="integration-with-availability-sets"></a>Integrace se skupinami dostupnosti
 
@@ -33,7 +33,7 @@ Spravované disky jsou integrované se skupinami dostupnosti, aby se zajistilo, 
 
 ### <a name="integration-with-availability-zones"></a>Integrace s Zóny dostupnosti
 
-Managed disks podporuje [zóny dostupnosti](../articles/availability-zones/az-overview.md), což je nabídka s vysokou dostupností, která chrání vaše aplikace před selháními datových center. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače.
+Managed disks podporuje [zóny dostupnosti](../articles/availability-zones/az-overview.md), což je nabídka s vysokou dostupností, která chrání vaše aplikace před selháními datových center. Zóny dostupnosti jsou jedinečná fyzická umístění v oblasti Azure. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače.
 
 ### <a name="azure-backup-support"></a>Podpora Azure Backup
 
@@ -41,7 +41,7 @@ K ochraně před místními haváriemi se [Azure Backup](../articles/backup/back
 
 ### <a name="granular-access-control"></a>Podrobné řízení přístupu
 
-[Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) můžete použít k přiřazení konkrétních oprávnění ke spravovanému disku jednomu nebo více uživatelům. Managed disks zveřejňuje nejrůznější operace, včetně čtení, zápisu (vytvoření a aktualizace), odstranění a načtení identifikátoru [URI sdíleného přístupového podpisu (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) pro disk. Můžete udělit přístup pouze k operacím, které osoba potřebuje k provedení svých úloh. Například pokud nechcete, aby osoba kopírovala spravovaný disk do účtu úložiště, můžete se rozhodnout neudělit přístup k exportní akci pro tento spravovaný disk. Podobně pokud nechcete, aby uživatel k kopírování spravovaného disku používal identifikátor URI SAS, můžete se rozhodnout, že toto oprávnění neudělíte spravovanému disku.
+[Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) můžete použít k přiřazení konkrétních oprávnění ke spravovanému disku jednomu nebo více uživatelům. Managed disks zveřejňuje nejrůznější operace, včetně čtení, zápisu (vytvoření a aktualizace), odstranění a načtení [identifikátoru URI sdíleného přístupového podpisu (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) pro disk. Můžete udělit přístup pouze k operacím, které osoba potřebuje k provedení svých úloh. Například pokud nechcete, aby osoba kopírovala spravovaný disk do účtu úložiště, můžete se rozhodnout neudělit přístup k exportní akci pro tento spravovaný disk. Podobně pokud nechcete, aby uživatel k kopírování spravovaného disku používal identifikátor URI SAS, můžete se rozhodnout, že toto oprávnění neudělíte spravovanému disku.
 
 ### <a name="upload-your-vhd"></a>Nahrání virtuálního pevného disku
 
@@ -49,7 +49,7 @@ K ochraně před místními haváriemi se [Azure Backup](../articles/backup/back
 
  Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v článcích [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) nebo [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) .
 
-## <a name="encryption"></a>Šifrování
+## <a name="encryption"></a>Šifr
 
 Managed disks nabízí dva různé druhy šifrování. První je Šifrování služby Storage (SSE), kterou provádí služba úložiště. Druhá je Azure Disk Encryption (ADE), kterou můžete povolit na discích s operačním systémem a datových discích pro vaše virtuální počítače.
 
@@ -59,7 +59,7 @@ Managed disks nabízí dva různé druhy šifrování. První je Šifrování sl
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální počítače s IaaS](../articles/security/azure-security-disk-encryption-overview.md).
+Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, aby bylo možné řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální počítače s IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Diskové role
 
@@ -73,7 +73,7 @@ Datový disk je spravovaný disk, který je připojený k virtuálnímu počíta
 
 ### <a name="os-disk"></a>Disk s operačním systémem
 
-Každý virtuální počítač má jeden připojený disk s operačním systémem. Tento disk s operačním systémem má předem instalovaný operační systém, který byl vybrán při vytvoření virtuálního počítače.
+Každý virtuální počítač má jeden připojený disk s operačním systémem. Tento disk s operačním systémem má předem instalovaný operační systém, který byl vybrán při vytvoření virtuálního počítače. Tento disk obsahuje spouštěcí svazek.
 
 Tento disk má maximální kapacitu 2 048 GiB.
 
@@ -90,7 +90,7 @@ Snímky se účtují na základě použité velikosti. Pokud třeba vytvoříte 
 Další informace o tom, jak vytvářet snímky se službou Managed disks, najdete v následujících zdrojích informací:
 
 * [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků v Linuxu](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků v systému Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Obrázky
 
@@ -99,7 +99,7 @@ Spravované disky také podporují vytváření spravované vlastní image. Mů�
 Informace o vytváření imagí najdete v následujících článcích:
 
 * [Postup zachycení spravované image zobecněného virtuálního počítače v Azure](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Jak generalizovat a zachytit linuxový virtuální počítač s využitím Azure CLI](../articles/virtual-machines/linux/capture-image.md)
+* [Postup generalizace a zachycení virtuálního počítače se systémem Linux pomocí rozhraní příkazového řádku Azure](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Obrázky oproti snímkům
 

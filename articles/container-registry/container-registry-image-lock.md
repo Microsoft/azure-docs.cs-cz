@@ -6,20 +6,23 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 09/30/2019
 ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310646"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949519"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Uzamknutí image kontejneru ve službě Azure Container Registry
 
 Ve službě Azure Container Registry můžete zamknout verzi Image nebo úložiště, aby se nemohlo odstranit ani aktualizovat. Pokud chcete zamknout Image nebo úložiště, aktualizujte jeho atributy pomocí příkazu Azure CLI [AZ ACR úložiště Update][az-acr-repository-update]. 
 
-Tento článek vyžaduje, abyste spustili Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+Tento článek vyžaduje, abyste spouštěli Azure CLI v Azure Cloud Shell nebo lokálně (doporučuje se verze 2.0.55 nebo novější). Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][azure-cli].
+
+> [!IMPORTANT]
+> Tento článek se nevztahuje na uzamykání celého registru, například pomocí **nastavení > zámky** v Azure Portal nebo v příkazech `az lock` v rozhraní příkazového řádku Azure CLI. Uzamykání prostředku registru nebrání v vytváření, aktualizaci nebo odstraňování dat v úložištích. Uzamknutí registru má vliv jenom na operace správy, jako je přidání nebo odstranění replikace nebo odstranění samotného registru. Další informace o [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -67,7 +70,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Uzamknutí obrázku pomocí výtahu manifestu
 
-K uzamknutí image *myrepo/MyImage* identifikované hodnotou Digest manifestu (SHA-256 hash, reprezentovaná `sha256:...`jako) spusťte následující příkaz. (Chcete-li zjistit, který výtah manifestu je přidružen k jedné nebo více značkám obrázku, spusťte příkaz [AZ ACR úložištì show-Manifests][az-acr-repository-show-manifests] .)
+Chcete-li uzamknout image *myrepo/MyImage* identifikovanou algoritmem Digest (SHA-256 hash, reprezentovanou jako `sha256:...`), spusťte následující příkaz. (Chcete-li zjistit, který výtah manifestu je přidružen k jedné nebo více značkám obrázku, spusťte příkaz [AZ ACR úložištì show-Manifests][az-acr-repository-show-manifests] .)
 
 ```azurecli
 az acr repository update \
@@ -143,7 +146,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se dozvěděli o použití příkazu [AZ ACR úložištì Update][az-acr-repository-update] , který zabraňuje odstranění nebo aktualizaci verzí imagí v úložišti. Informace o nastavení dalších atributů najdete v referenčních informacích k příkazu [AZ ACR úložiště Update][az-acr-repository-update] .
 

@@ -1,19 +1,19 @@
 ---
-title: Směrování událostí a zpráv pomocí digitálních vláken Azure | Microsoft Docs
+title: Směrování událostí a zpráv – digitální vlákna Azure | Microsoft Docs
 description: Přehled událostí a zpráv o směrování do koncových bodů služby pomocí digitálních vláken Azure
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177080"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949255"
 ---
 # <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
 
@@ -23,13 +23,13 @@ ms.locfileid: "71177080"
 
 Funkce digitálních vláken Azure nabízí dva způsoby, jak propojit události IoT s jinými službami nebo obchodními aplikacemi Azure:
 
-* **Směrování událostí digitálních vláken Azure**: Objekt v prostorovém grafu, který změní, získaná data telemetrie nebo uživatelsky definovanou funkci, která vytvoří oznámení na základě předdefinovaných podmínek, může aktivovat události digitálních vláken Azure. Uživatelé můžou tyto události poslat do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus témata](https://azure.microsoft.com/services/service-bus/)nebo [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro další zpracování.
+* **Směrování událostí digitálních vláken Azure**: objekt v prostorovém grafu, který se změní, získaná data telemetrie nebo uživatelsky definovaná funkce, která vytvoří oznámení na základě předdefinovaných podmínek, může aktivovat události digitálních vláken Azure. Uživatelé můžou tyto události poslat do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus témata](https://azure.microsoft.com/services/service-bus/)nebo [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro další zpracování.
 
-* **Telemetrii směrování zařízení**: Kromě událostí směrování můžou digitální vlákna Azure také směrovat zprávy telemetrie nezpracovaného zařízení na Event Hubs pro další poznatky a analýzy. Tyto typy zpráv nejsou zpracovávány pomocí digitálních vláken Azure. A přenáší se pouze do centra událostí.
+* **Směrování telemetrie zařízení**: kromě událostí směrování můžou digitální vlákna Azure také směrovat zprávy telemetrie nezpracovaných zařízení do Event Hubs za účelem dalších přehledů a analýz. Tyto typy zpráv nejsou zpracovávány pomocí digitálních vláken Azure. A přenáší se pouze do centra událostí.
 
 Uživatelé mohou zadat jeden nebo více koncových bodů odchozích zpráv pro odeslání událostí nebo přeposílat zprávy. Události a zprávy budou odesílány do koncových bodů podle těchto předdefinovaných předvoleb směrování. Jinými slovy uživatelé můžou určit určitý koncový bod pro příjem událostí operací grafu, další pro příjem událostí telemetrie zařízení a tak dále.
 
-[![Směrování událostí digitálních vláken Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[Směrování událostí digitálních vláken @no__t 1Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Směrování do Event Hubs udržuje pořadí, ve kterém se odesílají zprávy telemetrie. Proto dorazí na koncový bod ve stejném pořadí, ve kterém byly původně přijaty. Event Grid a Service Bus nezaručují, že koncové body budou přijímat události ve stejném pořadí, ve kterém se objevily. Schéma událostí však zahrnuje časové razítko, které lze použít k identifikaci pořadí po doručení událostí do koncového bodu.
 
@@ -55,7 +55,7 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
-| Centrum událostí|     X          |         X         |     X       |      X       |   X       |
+| EventHub|     X          |         X         |     X       |      X       |   X       |
 | ServiceBus|              |         X         |     X       |      X       |   X       |
 | EventGrid|               |         X         |     X       |      X       |   X       |
 

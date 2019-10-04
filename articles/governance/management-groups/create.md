@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1b53d8a15e6ca1d4fc5a8ed6d58e526fadd12466
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337787"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949004"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
@@ -29,11 +29,15 @@ Skupinu pro správu můžete vytvořit pomocí portálu, PowerShellu nebo rozhra
 
 ### <a name="create-in-portal"></a>Vytvořit na portálu
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny služby** > **Správa a zásady správného řízení**.
 
-1. Na hlavní stránce vyberte **Nová skupina pro správu**.
+1. Vybrat **cost management + fakturace**
+
+1. Na stránce Cost Management + fakturace – skupiny pro správu vyberte **skupiny pro správu**
+
+1. Vyberte **+ Přidat skupinu pro správu**.
 
    ![Stránka pro práci se skupinami pro správu](./media/main.png)
 
@@ -93,10 +97,10 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešeních pro správu najdete v následujících tématech:
+Další informace o skupinách pro správu najdete v těchto tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
-- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](/powershell/module/az.resources#resources)
-- [Kontrola skupin pro správu v rozhraní REST API](/rest/api/resources/managementgroups)
+- [Vytvoření skupin pro správu pro uspořádání prostředků Azure](create.md)
+- [Jak změnit, odstranit nebo spravovat skupiny pro správu](manage.md)
+- [Kontrola skupin pro správu v modulu Azure PowerShellch prostředků](/powershell/module/az.resources#resources)
+- [Kontrola skupin pro správu v REST API](/rest/api/resources/managementgroups)
 - [Kontrola skupin pro správu v Azure CLI](/cli/azure/account/management-group)

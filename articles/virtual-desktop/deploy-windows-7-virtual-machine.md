@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679916"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947567"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows
 
@@ -43,9 +43,15 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
      shutdown /r /t 0
      ```
     
+11. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) .
+12. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+13. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+14. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 11.
+15. Spusťte instalační program virtuálních klientů Windows a postupujte podle pokynů.
+16. Volitelně můžete port TCP/3389 zablokovat, aby se odebral přímý protokol RDP (Remote Desktop Protocol) přístup k virtuálnímu počítači.
+
 ## <a name="next-steps"></a>Další kroky
 
-Váš virtuální počítač s Windows 7 je teď připravený k nasazení na virtuálním počítači s Windows. Dokončete nasazení podle pokynů v tématu [Příprava virtuálních počítačů na instalace agenta virtuálních](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations) počítačů s Windows.
+Nasazení virtuálního počítače s Windows je teď připravené k použití. Abyste mohli začít, [Stáhněte si nejnovější verzi klienta virtuální plochy Windows](https://aka.ms/wvd/clients/windows) .
 
 Seznam známých problémů a pokyny k řešení potíží pro Windows 7 na virtuálním počítači s Windows najdete v našem článku věnovaném řešení potíží při [řešení potíží s virtuálními počítači s Windows 7 ve virtuálním počítači](troubleshoot-windows-7-vm.md)s Windows.
-

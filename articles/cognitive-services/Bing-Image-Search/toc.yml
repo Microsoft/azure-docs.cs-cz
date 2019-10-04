@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: 'Získání obrázků, které jsou v kurzu'
       href: trending-images.md
-    - name: Procházení obrázků
-      href: paging-images.md
+    - name: Procházet stránky výsledků hledání
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Změna velikosti a oříznutí miniatur
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

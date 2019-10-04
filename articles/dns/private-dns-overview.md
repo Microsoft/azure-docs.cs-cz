@@ -1,5 +1,5 @@
 ---
-title: Co je Privátní DNS v Azure?
+title: Co je Azure Privátní DNS?
 description: Přehled privátní služby hostování DNS v Microsoft Azure.
 services: dns
 author: vhorne
@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774608"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959353"
 ---
-# <a name="what-is-azure-private-dns"></a>Co je Privátní DNS v Azure?
-
-> [!IMPORTANT]
-> Služba Azure Privátní DNS je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="what-is-azure-private-dns"></a>Co je Azure Privátní DNS?
 
 Název domény systému nebo DNS zodpovídá za překlad (neboli překladu) názvu služby na jeho IP adresu.  Azure DNS je hostingová služba pro domény DNS a zajišťuje překlad adres IP pomocí Microsoft Azure infrastruktury. Kromě podpory internetových domén DNS Azure DNS podporuje i privátní zóny DNS.
 
@@ -46,11 +41,11 @@ Azure Privátní DNS přináší následující výhody:
 
 * **Známé nástroje a uživatelské prostředí**. K omezení výukové křivky používá tato služba dobře zřízené Azure DNS nástroje (Azure Portal, Azure PowerShell, Azure CLI, šablony Azure Resource Manager a REST API).
 
-* **Podpora DNS pro dělené**Časové horizonty. Pomocí Azure DNS můžete vytvořit zóny se stejným názvem, které se překládají na různé odpovědi z virtuální sítě a z veřejného Internetu. Typickým scénářem pro DNS s odděleným horizontem je poskytnutí vyhrazené verze služby pro použití v rámci vaší virtuální sítě.
+* **Podpora DNS pro dělené Časové horizonty**. Pomocí Azure DNS můžete vytvořit zóny se stejným názvem, které se překládají na různé odpovědi z virtuální sítě a z veřejného Internetu. Typickým scénářem pro DNS s odděleným horizontem je poskytnutí vyhrazené verze služby pro použití v rámci vaší virtuální sítě.
 
 * **K dispozici ve všech oblastech Azure**. Funkce privátních zón Azure DNS je dostupná ve všech oblastech Azure ve veřejném cloudu Azure.
 
-## <a name="capabilities"></a>Možnosti
+## <a name="capabilities"></a>Vestavěn
 
 Azure DNS poskytuje následující možnosti:
 
@@ -60,28 +55,20 @@ Azure DNS poskytuje následující možnosti:
 
 * **Zpětné vyhledávání DNS je podporované v rámci oboru virtuální sítě**. Zpětné vyhledávání DNS pro soukromou IP adresu v rámci virtuální sítě přiřazené k privátní zóně vrátí plně kvalifikovaný název domény, který obsahuje název hostitele nebo záznamu a název zóny jako příponu.
 
-## <a name="known-issues"></a>Známé problémy
-Následující položky jsou známé chyby a problémy v rámci verze Preview:
-* Odstraníte-li virtuální síť propojenou s privátní zónou DNS, nebudou odstraněny odkazy na privátní zónu DNS. Odkaz se nezdařil, pokud znovu vytvoříte virtuální síť se stejným názvem a skupinou prostředků a pokusíte se ji propojit znovu se všemi privátními zónami DNS. Pokud chcete tento problém obejít, vytvořte virtuální síť v jiné skupině prostředků nebo s jiným názvem ve stejné skupině prostředků.
-* Když přesunete virtuální síť do jiné skupiny prostředků nebo předplatného, neaktualizují se odkazy na privátní zónu DNS. Překlad IP adres pro přesunutou virtuální síť bude i nadále fungovat, ale při prohlížení odkazů na virtuální síť v privátní zóně DNS se zobrazí stará ID ARM virtuální sítě.
-* Aktuálně propojené virtuální sítě hostované v Spojené arabské emiráty sever, Spojené arabské emiráty Central, Jižní Afrika – západ, Jižní Afrika – sever, Kanada – východ, Francie – jih může selhat a může se zobrazit občasné problémy s rozlišením DNS. 
-
-
-## <a name="other-considerations"></a>Další důležité informace
+## <a name="other-considerations"></a>Další požadavky
 
 Azure DNS má následující omezení:
 
 * Pokud je povolená Automatická registrace záznamů DNS virtuálních počítačů, může být konkrétní virtuální síť propojená jenom s jednou privátní zónou. Můžete však propojit více virtuálních sítí s jednou zónou DNS.
 * Reverzní DNS funguje jenom pro privátní IP místo v propojené virtuální síti.
-* Reverzní DNS pro soukromou IP adresu pro propojenou virtuální síť vrátí "internal.cloudapp.net" jako výchozí příponu pro virtuální počítač. U virtuálních sítí, které jsou propojeny se soukromou zónou s povolenou autoregistrací, vrátí služba DNS pro privátní IP adresu 2 plně kvalifikované názvy domény, jednu s výchozí příponou *internal.cloudapp.NET* a jinou s příponou privátní zóny.
-* Podmíněné předávání není v současnosti podporováno. Pokud chcete povolit řešení mezi Azure a místními sítěmi, přečtěte si téma [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-
+* Reverzní DNS pro soukromou IP adresu pro propojenou virtuální síť vrátí jako výchozí příponu pro virtuální počítač *internal.cloudapp.NET* . U virtuálních sítí, které jsou propojeny se soukromou zónou s povolenou autoregistrací, vrátí reverzní DNS pro privátní IP adresu dva plně kvalifikované názvy domén (FQDN): jeden s výchozí příponou *internal.cloudapp.NET* a druhý s příponou privátní zóny.
+* Podmíněné předávání není aktuálně podporováno nativně. Aby bylo možné povolit řešení mezi Azure a místními sítěmi. Viz [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>Ceny
 
 Informace o cenách najdete v tématu [Azure DNS ceny](https://azure.microsoft.com/pricing/details/dns/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Naučte se, jak vytvořit privátní zónu v Azure DNS pomocí [Azure PowerShell](./private-dns-getstarted-powershell.md) nebo [Azure CLI](./private-dns-getstarted-cli.md).
 
@@ -91,4 +78,4 @@ Informace o cenách najdete v tématu [Azure DNS ceny](https://azure.microsoft.c
 
 * Seznamte se s informacemi o zónách a záznamech DNS návštěvou [přehledu zón a záznamů DNS](dns-zones-records.md).
 
-* Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
+* Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.

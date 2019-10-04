@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: a83e2163c9aa970932f2eea8e2e04a715107ac7f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937405"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950252"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z centra událostí do Azure Průzkumník dat
 
@@ -56,7 +56,7 @@ V tomto článku vygenerujete ukázková data a odešlete je do centra událost�
 
     **Nastavením** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | formě | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro centrum událostí.|
+    | Formě | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro centrum událostí.|
     | Skupina prostředků | *test – centrum – RG* | Vytvořte novou skupinu prostředků. |
     | Umístění | *Západní USA* | Pro tento článek vyberte *západní USA* . V případě produkčního systému vyberte oblast, která nejlépe vyhovuje vašim potřebám. Vytvořte obor názvů centra událostí ve stejném umístění jako cluster Kusto pro nejlepší výkon (nejdůležitější pro obory názvů centra událostí s vysokou propustností).
     | Název oboru názvů | Jedinečný název oboru názvů | Vyberte jedinečný název, který identifikuje váš obor názvů. Například *mytestnamespace*. Název domény *ServiceBus.Windows.NET* je připojen k názvu, který zadáte. Název může obsahovat jenom písmena, číslice a spojovníky. Název musí začínat písmenem a musí končit písmenem nebo číslicí. Hodnota musí mít délku 6 až 50 znaků.
@@ -114,6 +114,7 @@ Nyní se připojíte k centru událostí z Azure Průzkumník dat. Když je toto
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve, který identifikuje váš obor názvů. |
     | Centrum událostí | *Centrum testování* | Centrum událostí, které jste vytvořili. |
     | Skupina uživatelů | *Skupina testů* | Skupina uživatelů definovaná v centru událostí, které jste vytvořili. |
+    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) |
     | | |
 
     Cílová tabulka:
@@ -124,7 +125,7 @@ Nyní se připojíte k centru událostí z Azure Průzkumník dat. Když je toto
      **Nastavením** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Tabulka | *Testovací navýšení* | Tabulka, kterou jste vytvořili v **TestDatabase**. |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOH, SCSV, TSV a TXT. Podporované možnosti komprese: GZip |
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. Podporované možnosti komprese: GZip |
     | Mapování sloupce | *TestMapping* | Mapování, které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
     | | |
 

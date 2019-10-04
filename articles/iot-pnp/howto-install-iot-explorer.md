@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932475"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960577"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak:
 K použití nástroje Azure IoT Explorer potřebujete:
 
 - Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure CLI. Nezapomeňte nahradit `{YourIoTHubName}` zástupné symboly `{YourDeviceID}` a pomocí vašich hodnot:
+- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure CLI. Nezapomeňte nahradit zástupné symboly `{YourIoTHubName}` a `{YourDeviceID}` hodnotami:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -51,13 +51,13 @@ Definice modelu pro zařízení IoT technologie Plug and Play je uložená ve ve
 
 Přidání zdroje:
 
-1. Přejděte na **nastavení**.
+1. Přejít na **Nastavení**.
 1. Vyberte **Nový** a zvolte svůj zdroj.
 1. Pokud přidáváte úložiště modelu společnosti, zadejte připojovací řetězec.
 
 Postup odebrání zdroje:
 
-1. Přejděte na **nastavení**.
+1. Přejít na **Nastavení**.
 1. Vyhledejte zdroj, který chcete odebrat.
 1. Vyberte **X** a odeberte je. Úložiště veřejného modelu nejde odebrat, protože definice společných rozhraní pocházejí z tohoto úložiště.
 
@@ -65,29 +65,27 @@ Změnit zdrojové priority:
 
 Jeden ze zdrojů definice modelu můžete přetáhnout do jiného hodnocení v seznamu. Pokud dojde ke konfliktu, potlačí zdroje definic s vyšším pořadím zdroje s nižším hodnocením.
 
-### <a name="overview-page"></a>Stránka Přehled
+### <a name="view-devices"></a>Zobrazit zařízení
 
-#### <a name="device-overview"></a>Přehled zařízení
+Po připojení nástroje k centru IoT se zobrazí stránka seznam **zařízení** se seznamem identit zařízení zaregistrovaných ve službě IoT Hub. Pokud chcete zobrazit další informace, můžete rozbalit libovolnou položku v seznamu.
 
-Po připojení nástroje k vašemu centru IoT se zobrazí stránka s přehledem se seznamem všech identit zařízení zaregistrovaných ve službě Azure IoT Hub. Kliknutím na zařízení zobrazíte další podrobnosti.
+Na stránce seznam **zařízení** můžete:
 
-#### <a name="device-management"></a>Správa zařízení
-
-- Pokud chcete zaregistrovat nové zařízení v centru, vyberte **Přidat**. Zadejte ID zařízení. Pomocí výchozího nastavení můžete vygenerovat ověřovací klíče a povolit připojení k rozbočovači.
-- Chcete-li odstranit identitu zařízení, vyberte možnost **Odstranit**. Před dokončením této akce zkontrolujte podrobnosti o zařízení, abyste měli jistotu, že odstraňujete správnou identitu zařízení.
-- Nástroj podporuje dotazování pomocí `capabilityID` a. `interfaceID` Přidejte svůj `capabilityID` parametr nebo `interfaceID` jako parametr pro dotazování zařízení.
+- Vyberte **Přidat** a zaregistrujte nové zařízení v centru. Pak zadejte ID zařízení. Pomocí výchozího nastavení můžete automaticky generovat ověřovací klíče a povolit připojení k rozbočovači.
+- Vyberte zařízení a pak vyberte **Odstranit** a odstraňte identitu zařízení. Před dokončením této akce zkontrolujte podrobnosti o zařízení, abyste měli jistotu, že odstraňujete správnou identitu zařízení.
+- Dotaz na `capabilityID` a `interfaceID`. Přidejte buď `capabilityID`, nebo `interfaceID` jako parametr pro dotazování zařízení.
 
 ## <a name="interact-with-a-device"></a>Interakce se zařízením
 
-Dvojitým kliknutím na zařízení na stránce Přehled zobrazíte další úroveň podrobností. Existují dva oddíly: **Zařízení** a **digitální vlákna**.
+Na stránce seznam **zařízení** výběrem hodnoty ve sloupci **ID zařízení** zobrazíte stránku podrobností registrovaného zařízení. Pro zařízení jsou dvě části: **zařízení** a **digitální dvojitá**dvojice.
 
 ### <a name="device"></a>Zařízení
 
-Tato část obsahuje karty **Identita zařízení**, **telemetrie**a **vyzdvojené zařízení** .
+Tato část obsahuje karty **Identita zařízení**, **vyzdvojené zařízení**a **telemetrie** .
 
-- Informace o identitě zařízení můžete zobrazit a aktualizovat na kartě **Identita zařízení** .
-- Pokud je zařízení připojené a aktivně odesílá data, můžete zobrazit telemetrii na kartě **telemetrie** .
-- Na kartě **zařízení** , na které se nachází, můžete získat přístup k dvojitým informacím o zařízení.
+- Informace o [identitě zařízení](../iot-hub/iot-hub-devguide-identity-registry.md) můžete zobrazit a aktualizovat na kartě **Identita zařízení** .
+- Na kartě **zařízení** , na které se nachází, můžete získat přístup k [dvojitým](../iot-hub/iot-hub-devguide-device-twins.md) informacím o zařízení.
+- Pokud je zařízení připojené a aktivně odesílá data, můžete zobrazit [telemetrii](../iot-hub/iot-hub-devguide-messages-read-builtin.md) na kartě **telemetrie** .
 
 ### <a name="digital-twin"></a>Digitální vlákna
 

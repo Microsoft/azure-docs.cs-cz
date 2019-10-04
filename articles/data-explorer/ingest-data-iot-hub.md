@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937392"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947853"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat (Preview)
 
@@ -76,11 +76,11 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
     **Nastavením** | **Popis pole**
     |---|---|
-    | Název datového připojení | Název připojení, které chcete vytvořit v Azure Průzkumník dat.
+    | Název datového připojení | Název připojení, které chcete vytvořit v Azure Průzkumník dat
     | IoT Hub | Název IoT Hub |
     | Zásady sdíleného přístupu | Název zásad sdíleného přístupu. Musí mít oprávnění ke čtení. |
-    | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub. |
-    | Vlastnosti systému událostí | Vlastnosti systému událostí IoT Hub. V případě, že existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. |
+    | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub |
+    | Vlastnosti systému událostí | [IoT Hub vlastností systému událostí](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) , pokud existuje více záznamů na událost, budou do prvního z nich přidány vlastnosti systému.|
     | | 
 
     > [!NOTE]
@@ -94,7 +94,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
      **Nastavením** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Tabulka | *Testovací navýšení* | Tabulka, kterou jste vytvořili v **TestDB**. |
-    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOH, SCSV, TSV a TXT. |
+    | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. |
     | Mapování sloupce | *TestMapping* | Mapování, které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
     | | |
 

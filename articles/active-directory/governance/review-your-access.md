@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499677"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958573"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Kontrola přístupu pro vlastní skupiny nebo aplikace v prohlídekch služby Azure AD
 
 Azure Active Directory (Azure AD) zjednodušuje způsob, jakým podniky spravují přístup ke skupinám nebo aplikacím v Azure AD a dalších online službách Microsoftu s funkcí nazvanou kontroly přístupu Azure AD.
 
 Tento článek popisuje, jak zkontrolovat vlastní přístup ke skupině nebo aplikaci.
-
-## <a name="prerequisites"></a>Požadavky
-
-- Azure AD Premium P2
-
-Další informace najdete v tématu o uživatelích, [kteří musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otevřít kontrolu přístupu
 
@@ -46,15 +40,15 @@ Prvním krokem k provedení kontroly přístupu je vyhledání a otevření kont
 
 Pokud e-maily nemáte, můžete najít své nedokončené kontroly přístupu pomocí následujících kroků.
 
-1. Přihlaste se k portálu Mojeapl na [https://myapps.microsoft.com](https://myapps.microsoft.com)adrese.
+1. Přihlaste se k portálu MyApp na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
     ![Seznam aplikací v portálu Mojeapl, pro které máte oprávnění](./media/review-your-access/myapps-access-panel.png)
 
-1. V pravém horním rohu stránky klikněte na symbol uživatele. Zobrazí se vaše jméno a výchozí organizace. Pokud se zobrazí více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
+1. V pravém horním rohu stránky klikněte na symbol uživatele, který zobrazí vaše jméno a výchozí organizaci. Pokud je v seznamu uvedeno více než jedna organizace, vyberte organizaci, která požádala o kontrolu přístupu.
 
 1. Na pravé straně stránky klikněte na dlaždici kontroly **přístupu** , abyste viděli seznam nedokončených kontrol přístupu.
 
-    Pokud se dlaždice nezobrazí, pro danou organizaci není potřeba provést žádné kontroly přístupu a v tuto chvíli se nevyžaduje žádná akce.
+    Pokud dlaždice není viditelná, neexistují žádné kontroly přístupu, které by se daly v této organizaci provádět, a v tuto chvíli není potřeba žádná akce.
 
     ![Seznam nevyřízených kontrol přístupu pro vaše aplikace a skupiny](./media/review-your-access/access-reviews-list.png)
 
@@ -76,7 +70,7 @@ Po otevření kontroly přístupu uvidíte svůj přístup.
 
     ![Dokončila se kontrola přístupu s dotazem, jestli stále potřebujete přístup ke skupině.](./media/review-your-access/perform-access-review-submit.png)
 
-1. Klikněte na **Submit** (Odeslat).
+1. Klikněte na **Odeslat**.
 
     Váš výběr se odešle a vrátíte se na portál MyApp.
 
@@ -85,6 +79,6 @@ Po otevření kontroly přístupu uvidíte svůj přístup.
     > [!NOTE]
     > Pokud jste označili, že už nepotřebujete přístup, neodebere se okamžitě. Po ukončení recenze dojde k odebrání nebo když správce zastaví kontrolu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Dokončení kontroly přístupu skupin nebo aplikací](complete-access-review.md)

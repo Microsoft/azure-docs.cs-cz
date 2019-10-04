@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114466"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950313"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -20,9 +20,9 @@ Když v Kubernetes spustíte moderní aplikace založené na mikroslužbách, č
 
 V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvořit zásady sítě Kubernetes pro řízení toku provozu mezi lusky v AKS. Zásady sítě by se měly používat jenom pro uzly se systémem Linux a lusky v AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Pokud jste ve verzi Preview použili funkci síťové zásady, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
@@ -50,21 +50,16 @@ Azure poskytuje dva způsoby, jak implementovat zásady sítě. Při vytvářen�
 
 Obě implementace používají Linux *softwaru iptables* k vykonání zadaných zásad. Zásady jsou přeloženy do sad povolených a nepovolených párů IP adres. Tyto páry se pak naprogramují jako pravidla filtru IPTable.
 
-Zásada sítě funguje jenom s možností Azure CNI (rozšířené). Implementace se liší pro tyto dvě možnosti:
-
-* *Zásady sítě Azure* – Azure CNI nastaví most v hostiteli virtuálního počítače pro síť v rámci uzlů. Pravidla filtrování se používají, pokud pakety procházejí přes most.
-* *Zásady sítě Calico* – Azure CNI nastavuje místní trasy jádra pro provoz uvnitř uzlu. Zásady jsou aplikovány na síťové rozhraní pod.
-
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi zásadami Azure a Calico a jejich funkcemi
 
 | Funkce                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Podporované platformy                      | Linux                      | Linux                       |
-| Podporované síťové možnosti             | Azure CNI                  | Azure CNI                   |
+| Podporované síťové možnosti             | CNI Azure                  | Azure CNI a kubenet       |
 | Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
-| Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní `calicoctl` příkazového řádku ke správě těchto rozšířených funkcí naleznete v tématu [calicoctl User reference][calicoctl]. |
+| Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového řádku `calicoctl` ke správě těchto rozšířených funkcí najdete v tématu [reference uživatele calicoctl][calicoctl]. |
 | Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
-| Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
+| protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení zásad sítě
 
@@ -76,7 +71,7 @@ Pokud chcete zobrazit zásady sítě v akci, vytvoříme a pak rozbalíme zásad
 
 Nejdřív vytvořte cluster AKS, který podporuje zásady sítě. Funkce zásady sítě se dá povolit, jenom když je cluster vytvořený. V existujícím clusteru AKS nemůžete povolit síťové zásady.
 
-Pokud chcete používat zásady sítě s clusterem AKS, musíte použít [modul plug-in Azure CNI][azure-cni] a definovat vlastní virtuální síť a podsítě. Podrobnější informace o tom, jak naplánovat požadované rozsahy podsítí, najdete v tématu [Konfigurace pokročilých sítí][use-advanced-networking].
+Pokud chcete používat zásady sítě Azure, musíte použít [modul plug-in Azure CNI][azure-cni] a definovat vlastní virtuální síť a podsítě. Podrobnější informace o tom, jak naplánovat požadované rozsahy podsítí, najdete v tématu [Konfigurace pokročilých sítí][use-advanced-networking]. Zásady sítě Calico se daly použít buď s tímto stejným modulem plug-in Azure CNI, nebo s modulem plug-in Kubenet CNI.
 
 Následující vzorový skript:
 
@@ -84,7 +79,7 @@ Následující vzorový skript:
 * Vytvoří instanční objekt služby Azure Active Directory (Azure AD) pro použití s clusterem AKS.
 * Přiřadí oprávnění *přispěvatele* pro objekt služby Cluster AKS ve virtuální síti.
 * Vytvoří v definované virtuální síti cluster AKS a povolí zásady sítě.
-    * Použije se možnost Zásady sítě *Azure* . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte `--network-policy calico` parametr.
+    * Použije se možnost Zásady sítě *Azure* . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte parametr `--network-policy calico`. Poznámka: Calico lze použít buď s `--network-plugin azure`, nebo `--network-plugin kubenet`.
 
 Poskytněte vlastní zabezpečení *sp_password*. Proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* můžete nahradit:
 
@@ -139,7 +134,7 @@ az aks create \
     --network-policy azure
 ```
 
-Vytvoření clusteru bude trvat několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
+Vytvoření clusteru trvá několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -168,7 +163,7 @@ Vytvořte další pod a připojte relaci terminálu k otestování, jestli můž
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce Nginx:
+Na příkazovém řádku prostředí pomocí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
@@ -192,7 +187,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Vytvoření a použití zásad sítě
 
-Teď, když jste se potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endu pod, vytvořit zásadu sítě, která zamítne veškerý provoz. Vytvořte soubor s názvem `backend-policy.yaml` a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady k luskům, které mají *aplikaci: WebApp, role: back-end* , jako je ukázka Nginx pod. V rámci příchozího přenosunejsou definována žádná pravidla, takže veškerý příchozí provoz do uzlu pod je odepřen:
+Teď, když jste se potvrdili, že můžete použít základní webovou stránku NGINX na ukázkovém back-endu pod, vytvořit zásadu sítě, která zamítne veškerý provoz. Vytvořte soubor s názvem `backend-policy.yaml` a vložte následující manifest YAML. Tento manifest používá *podSelector* k připojení zásady k luskům, které mají *aplikaci: WebApp, role: back-end* , jako je ukázka Nginx pod. V rámci příchozího přenosu nejsou definována žádná pravidla, takže veškerý příchozí provoz do *uzlu pod je*odepřen:
 
 ```yaml
 kind: NetworkPolicy
@@ -223,7 +218,7 @@ Pojďme se podívat, jestli můžete použít webovou stránku NGINX v back-endu
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
+Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -264,7 +259,7 @@ spec:
 ```
 
 > [!NOTE]
-> Tato zásada sítě používá *namespaceSelector* a element *podSelector* pro pravidlo příchozího přenosu dat. Syntaxe YAML je důležitá pro doplňková pravidla příchozího přenosu dat. V tomto příkladu musí oba elementy odpovídat pro použití pravidla příchozího přenosu dat. Verze Kubernetes starší než *1,12* nemusí tyto prvky správně interpretovat a omezit síťový provoz podle očekávání. Další informace o tomto chování najdete v tématu [chování a od][policy-rules]selektorů.
+> Tato zásada sítě používá *namespaceSelector* a element *podSelector* pro pravidlo příchozího přenosu dat. Syntaxe YAML je důležitá pro doplňková pravidla příchozího přenosu dat. V tomto příkladu musí oba elementy odpovídat pro použití pravidla příchozího přenosu dat. Verze Kubernetes starší než *1,12* nemusí tyto prvky správně interpretovat a omezit síťový provoz podle očekávání. Další informace o tomto chování najdete v tématu [chování a od selektorů][policy-rules].
 
 Použijte aktualizované zásady sítě pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
 
@@ -278,7 +273,7 @@ Naplánujte pod označený jako *App = WebApp, role = front-end* a připojte rel
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx:
+Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
@@ -308,7 +303,7 @@ Zásady sítě umožňují provoz z lusků s označením *aplikace: WebApp, role
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k zobrazení, zda máte přístup k výchozí webové stránce Nginx. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
+Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -339,7 +334,7 @@ Naplánujte test pod v *produkčním* oboru názvů, který je označený jako *
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce Nginx:
+Na příkazovém řádku prostředí pomocí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend.development
@@ -397,13 +392,13 @@ kubectl apply -f backend-policy.yaml
 
 ### <a name="test-the-updated-network-policy"></a>Otestování aktualizovaných síťových zásad
 
-Naplánujte další pod v produkčním oboru názvů a připojte relaci terminálu:
+Naplánujte další pod v *produkčním* oboru názvů a připojte relaci terminálu:
 
 ```console
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k zobrazení, že síťové zásady nyní zakazuje provoz:
+Na příkazovém řádku prostředí použijte `wget`, abyste viděli, že síťové zásady nyní zakazuje provoz:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -423,7 +418,7 @@ Když se provoz zamítl z *produkčního* oboru názvů, naplánujte ho zpátky 
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget` k tomu, abyste viděli, že síťové zásady povolují přenosy:
+Na příkazovém řádku prostředí použijte `wget`, abyste viděli, že síťové zásady povolují přenos:
 
 ```console
 wget -qO- http://backend
@@ -468,9 +463,9 @@ Další informace o zásadách najdete v tématu [zásady sítě Kubernetes][kub
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

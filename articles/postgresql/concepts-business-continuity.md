@@ -1,17 +1,17 @@
 ---
 title: Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
-description: Přehled provozní kontinuity s Azure Database for PostgreSQL.
+description: Tento článek popisuje provozní kontinuitu (obnovení včas v čase, výpadek datového centra, geografické obnovení) při použití Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907504"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950100"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -23,10 +23,10 @@ Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které 
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Podporu** | **Basic** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
+| **Podporu** | **Základy** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
-| Geografické obnovení ze geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Obnovení bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
+| Geografické obnovení ze geograficky replikovaných záloh | Není podporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/resource-group-lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
@@ -39,7 +39,7 @@ Můžete provést obnovení k určitému **bodu v čase** a vytvořit tak kopii 
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Zotavení z výpadku datového centra Azure
 
-Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Pokud dojde k výpadku, způsobí to narušení podniku, které může trvat jenom několik minut, ale může to trvat i hodinu.
+I když může být datové centrum Azure nepravděpodobné, výpadky. Pokud dojde k výpadku, způsobí to narušení podniku, které může trvat jenom několik minut, ale může to trvat i hodinu.
 
 Jednou z možností je počkat, až se váš server vrátí zpátky do režimu online, když dojde k výpadku datového centra. To funguje u aplikací, které můžou umožnit, aby byl server v určitou dobu offline, například vývojové prostředí. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že server ještě nepotřebujete.
 
@@ -53,7 +53,7 @@ Funkce geografického obnovení obnoví Server pomocí geograficky redundantníc
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [automatizovaných zálohách v Azure Database for PostgreSQL](concepts-backup.md). 
 - Naučte se, jak obnovit pomocí [Azure Portal](howto-restore-server-portal.md) nebo rozhraní příkazového [řádku Azure](howto-restore-server-cli.md).
 - Přečtěte si o [replikách pro čtení v Azure Database for PostgreSQL](concepts-read-replicas.md).

@@ -1,19 +1,19 @@
 ---
 title: Odchozí a koncové body v Azure Digital provlákna | Microsoft Docs
 description: Pokyny pro vytváření koncových bodů pomocí digitálních vláken Azure
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013944"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959120"
 ---
 # <a name="egress-and-endpoints"></a>Odchozí a koncové body
 
@@ -23,9 +23,9 @@ Události jsou směrovány do koncových bodů podle předdefinovaných předvol
 
 Další informace o událostech, směrování a typech událostí najdete [v tématu Směrování událostí a zpráv v Azure Digital revláken](./concepts-events-routing.md).
 
-## <a name="events"></a>Duration
+## <a name="events"></a>Události
 
-Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) pro zpracování pomocí zpráv a zprostředkovatelů událostí Azure. Události jsou definovány následujícím odkazem [schématu události Azure Event Grid](../event-grid/event-schema.md).
+Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) pro zpracování pomocí zpráv a zprostředkovatelů událostí Azure. Události jsou definovány následujícím [odkazem schématu události Azure Event Grid](../event-grid/event-schema.md).
 
 ```JSON
 {
@@ -47,16 +47,16 @@ Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) 
 }
 ```
 
-| Atribut | type | Popis |
+| Atribut | Typ | Popis |
 | --- | --- | --- |
-| id | string | Jedinečný identifikátor události |
-| subject | string | Cesta definovaná vydavatelem k předmětu události |
-| data | object | Data události specifická pro poskytovatele prostředků. |
-| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel definuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
-| topic | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| id | odkazy řetězců | Jedinečný identifikátor události |
+| závislosti | odkazy řetězců | Cesta definovaná vydavatelem k předmětu události |
+| data | odkazy objektů | Data události specifická pro poskytovatele prostředků. |
+| Typ | odkazy řetězců | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| Čas události | odkazy řetězců | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| dataverze | odkazy řetězců | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| Verze metadataversion | odkazy řetězců | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| výklad | odkazy řetězců | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o schématu Event Grid události:
 
@@ -84,13 +84,13 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 - DeviceExtendedProperty
 - ExtendedPropertyKey
 - ExtendedType
-- KeyStore
-- Zpráva
+- Úložiště klíčů
+- Sestava
 - Rutiny roledefinition
-- Senzor
+- Elektrické
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Mezera
+- Místo
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 }
 ```
 
-| Value | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | YOUR_TOPIC_NAME | Název vlastního tématu |
 
@@ -153,7 +153,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 }
 ```
 
-| Value | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | YOUR_TOPIC_NAME | Název vlastního tématu |
 
@@ -188,7 +188,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 }
 ```
 
-| Value | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | YOUR_TOPIC_NAME | Název vlastního tématu |
 
@@ -223,7 +223,7 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 }
 ```
 
-| Value | Nahradit hodnotou |
+| Hodnota | Nahradit |
 | --- | --- |
 | YOUR_TOPIC_NAME | Název vlastního tématu |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Nahradit hodnotou |
+    | Hodnota | Nahradit |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Nahradit hodnotou |
+    | Hodnota | Nahradit |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření|
     | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Nahradit hodnotou |
+    | Hodnota | Nahradit |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Nahradit hodnotou |
+    | Hodnota | Nahradit |
     | --- | --- |
     | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
     | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |

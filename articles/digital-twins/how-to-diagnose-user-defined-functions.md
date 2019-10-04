@@ -1,20 +1,20 @@
 ---
 title: Jak ladit UDF v Azure Digital provlákna | Microsoft Docs
 description: Základní informace o tom, jak ladit UDF v digitálních prozdvojeních Azure.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843867"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949887"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -52,7 +52,7 @@ AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Hodnota dotazu | Nahradit hodnotou |
+| Hodnota dotazu | Nahradit |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | ID korelace, které bylo zadáno pro data události |
 
@@ -88,7 +88,7 @@ Ověřte, jestli pro vaši uživatelsky definovanou funkci prostřednictvím roz
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Hodnota parametru | Nahradit hodnotou |
+| Hodnota parametru | Nahradit |
 | --- | --- |
 | YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelsky definované funkce, pro kterou se mají načíst přiřazení rolí|
 
@@ -102,12 +102,12 @@ S následujícím voláním rozhraní API pro správu instancí digitálních vl
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_MATCHER_IDENTIFIER* | ID shody, kterou chcete vyhodnotit |
 | *YOUR_SENSOR_IDENTIFIER* | ID senzoru, který chcete vyhodnotit |
 
-Odpověď:
+Základě
 
 ```JavaScript
 {
@@ -126,11 +126,11 @@ S následujícím voláním rozhraní API pro správu digitálních vláken Azur
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Parametr | Nahradit hodnotou |
+| Parametr | Nahradit |
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | ID snímače, který má být odeslán telemetrie |
 
-Odpověď:
+Základě
 
 ```JavaScript
 [

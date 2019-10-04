@@ -4,14 +4,14 @@ description: Popisuje, jak vyřešit chybu s více než 800 nasazeními v histor
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5bbb686597850aaceff3d3b5c142b0cb1fb0eefd
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827017"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959640"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud je počet nasazení vyšší než 800
 
@@ -31,6 +31,18 @@ Pomocí příkazu [AZ Group Deployment Delete](/cli/azure/group/deployment#az-gr
 az group deployment delete --resource-group exampleGroup --name deploymentName
 ```
 
+Pokud chcete odstranit všechna nasazení starší než pět dnů, použijte:
+
+```azurecli-interactive
+startdate=$(date +%F -d "-5days")
+deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp>'$startdate'].name" --output tsv)
+
+for deployment in $deployments
+do
+  az group deployment delete --resource-group exampleGroup --name $deployment
+done
+```
+
 Aktuální počet můžete v historii nasazení získat pomocí následujícího příkazu:
 
 ```azurecli-interactive
@@ -43,6 +55,16 @@ Pomocí příkazu [Remove-AzResourceGroupDeployment](/powershell/module/az.resou
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
+```
+
+Pokud chcete odstranit všechna nasazení starší než pět dnů, použijte:
+
+```azurepowershell-interactive
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -gt ((Get-Date).AddDays(-5))
+
+foreach ($deployment in $deployments) {
+  Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
+}
 ```
 
 Aktuální počet můžete v historii nasazení získat pomocí následujícího příkazu:

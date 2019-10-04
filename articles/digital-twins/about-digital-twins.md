@@ -1,22 +1,22 @@
 ---
-title: Přehled služby Azure Digital Twins | Microsoft Docs
-description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
-author: julieseto
-ms.author: jseto
+title: Přehled digitálních vláken Azure | Microsoft Docs
+description: Přečtěte si další informace o digitálních prostředcích Azure, řešení Azure IoT pro prostorové analýzy.
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
-manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 2194afe4784d1b59dc5fd5628e3a9223d13f92be
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178289"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949291"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
+# <a name="overview-of-azure-digital-twins"></a>Přehled digitálních vláken Azure
 
 Azure Digital Preview je služba Azure IoT, která vytváří komplexní modely fyzického prostředí. Může vytvořit grafy prostorových informací pro modelování vztahů a interakcí mezi lidmi, mezerami a zařízeními.
 
@@ -43,19 +43,19 @@ Následující video se podrobněji podíváte na digitální vlákna Azure.
 
 Digitální vlákna Azure mají následující klíčové funkce.
 
-### <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
+### <a name="spatial-intelligence-graph"></a>Graf prostorové Intelligence
 
 [*Graf prostorových informací*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)nebo *prostorový graf*je virtuální reprezentace fyzického prostředí. Můžete ji použít k modelování vztahů mezi lidmi, místy a zařízeními.
 
 Vezměte v úvahu aplikaci inteligentního nástroje, která zahrnuje několik měřičů spotřeby elektřiny připojených přes okolí. Společnost inteligentního nástroje musí přesně monitorovat a předpovědět využití elektřiny a fakturace. Každé zařízení a senzor musí být modelovány s využitím kontextu umístění a zákazníka, kterému se má fakturovat. Graf prostorových informací můžete použít k modelování těchto typů komplexních vztahů.
 
-### <a name="digital-twin-object-models"></a>Objektové modely služby Digital Twins
+### <a name="digital-twin-object-models"></a>Digitální typy vláken objektů
 
-[Digitální objekty](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) s dvojitým datovým modelem jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
+[Digitální objekty s dvojitým datovým modelem](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
 
 Například aplikace pro obsazení místnosti může používat předdefinované typy prostorů, jako jsou areály, budovy, Podlahová plocha a místnost.
 
-### <a name="multiple-and-nested-tenants"></a>Více tenantů a vnoření tenanti
+### <a name="multiple-and-nested-tenants"></a>Víc a vnoření klienti
 
 Můžete vytvářet řešení, která se budou bezpečně škálovat a je možné je znovu použít pro více tenantů. Můžete také vytvořit více tenantů, které jsou k dispozici a používány izolovaně a zabezpečeným způsobem.
 
@@ -79,7 +79,7 @@ Instanci digitálních vláken Azure můžete připojit k mnoha výkonným služ
 
 Příkladem je aplikace pro vytváření inteligentních aplikací pro Office, která používá digitální vlákna Azure k reprezentaci týmů a zařízení umístěných v mnoha podlahách. Zařízení streamují živá data do zřízené digitálního vlákna, Stream Analytics zpracovává Tato data, aby poskytovala užitečné klíčové přehledy. Data jsou uložena v Azure Storage a převedena do formátu sdíleného souboru. Soubor se distribuuje napříč celou organizací pomocí Office 365.
 
-## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Řešení, kterým služba Azure Digital Twins přináší výhody
+## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Řešení, která využívají výhody digitálních vláken Azure
 
 Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a jeho mnoha vztahů. Zjednodušuje modelování IoT, zpracování dat, zpracování událostí a sledování zařízení. V různých oborech zvažte jenom několik následujících scénářů. Využívají k tomu tyto výhody:
 
@@ -91,9 +91,9 @@ Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a je
 
 ## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Digitální vlákna Azure v kontextu jiných služeb IoT
 
-Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
+Azure Digital revláken využívá Azure IoT Hub k propojení zařízení IoT a senzorů, které udržují všechno aktuální s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
 
-[![Digitální vlákna Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
+[@no__t – digitální vlákna 1Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
 Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
@@ -102,14 +102,14 @@ Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](..
 Přejít na krátkou ukázku o digitálních Zdvojeních Azure:
 
 >[!div class="nextstepaction"]
->[Rychlé zprovoznění: Vyhledání dostupných místností pomocí digitálních vláken Azure](./quickstart-view-occupancy-dotnet.md)
+>[Rychlý Start: vyhledání dostupných místností pomocí digitálních vláken Azure](./quickstart-view-occupancy-dotnet.md)
 
 Prohlédněte si úzce v aplikaci pro správu zařízení pomocí digitálních vláken Azure:
 
 >[!div class="nextstepaction"]
->[Kurz: Nasazení digitálních vláken Azure a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
+>[Kurz: nasazení digitálních vláken Azure a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
 
-Seznamte se se základními koncepty služby Azure Digital Twins:
+Přečtěte si o základních konceptech digitálních vláken Azure:
 
 >[!div class="nextstepaction"]
 >[Seznamte se s digitálními objekty a graf prostorové logiky](./concepts-objectmodel-spatialgraph.md)
