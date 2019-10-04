@@ -12,15 +12,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242336"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828249"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
-Máte otázky? Další informace najdete v následujících nejčastějších dotazech.
+Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
 
 ## <a name="general-faq"></a>Obecné Nejčastější dotazy
 
@@ -30,7 +30,7 @@ Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
-Podle potřeby. Závisí na typu analytického nástroje. Zdrojový kód může být jen to, co je potřeba, nebo se může vyžadovat výstup sestavení.
+Možná. Závisí na typu analytického nástroje. Zdrojový kód může být jen to, co je potřeba, nebo se může vyžadovat výstup sestavení.
 
 Například kontrola přihlašovacích údajů (CredScan) analyzuje soubory v rámci struktury složek v úložišti kódu. Z důvodu této analýzy můžete k získání výsledků spustit úlohy CredScan a publikovat protokoly analýzy zabezpečení v samostatném sestavení.
 
@@ -48,7 +48,7 @@ Ve většině případů jsou úkoly sestavení Azure DevOps přímými obálkam
 
 Patrné rozdíly:
 
-- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent\_work\1\s.
+- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent @ no__t-0work\1\s.
 - Cesty v argumentech mohou být relativní ke kořenu výše uvedeného zdrojového adresáře. Cesty mohou být také absolutní. Absolutní cesty můžete získat buď pomocí proměnných sestavení Azure DevOps, nebo spuštěním místního agenta se známými umístěními nasazení místních prostředků.
 - Nástroje automaticky poskytují cestu k výstupnímu souboru nebo složku. Pokud zadáte umístění výstupu pro úlohu sestavení, bude toto umístění nahrazeno cestou k našemu dobře známému umístění protokolů agenta sestavení.
 - Některé další argumenty příkazového řádku se u některých nástrojů změnily. Jedním z příkladů je přidání nebo odebrání možností, které zajistí, že se nespustí žádné grafické rozhraní (GUI).
@@ -63,7 +63,7 @@ Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Kde jsou výstupní soubory generované nástroji uložené? 
 
-Úlohy sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory)\_sdt\logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
+Úkoly sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory) \_sdt \ Logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
@@ -123,7 +123,7 @@ Klíč hash tajného kódu z výstupního souboru CredScan je vyžadován, jak j
 
 Výrazem souboru může být název souboru. Může to být i část úplné cesty k souboru nebo názvu souboru. Zástupné znaky se nepodporují.
 
-Následující příklady ukazují, jak potlačit soubor \<inputPath > \src\JS\lib\angular.js
+Následující příklady ukazují, jak potlačit soubor \<InputPath > \src\JS\lib\angular.js
 
 Příklady platných pravidel potlačení:
 
@@ -152,12 +152,6 @@ Příklady platných pravidel potlačení:
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Jaké jsou doporučené pokyny pro správu tajných kódů?
 
-Je užitečné snadno detekovat pevně kódované tajné klíče a zmírnit rizika. Ale ochrana tajných klíčů u všech rezervací je ještě lepší.
-
-V rámci tohoto hlediska vám společnost Microsoft vydala jako součást [rozšíření Microsoft DevLabs Extension](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) pro Visual Studio předběžnou verzi analyzátoru kódu pro kontrolu přihlašovacích údajů. Analyzátorem je vydaná verze ve starší verzi Preview. Poskytuje vývojářům vložené prostředí pro zjišťování možných tajných kódů ve svém kódu. Díky tomu analyzátor také dává vývojářům možnost opravit tyto problémy v reálném čase.
-
-Další informace najdete v blogovém příspěvku, který je [bezpečný pro správu tajných kódů v cloudu](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
-
 Následující zdroje vám pomůžou bezpečně spravovat tajné klíče a přistupovat k citlivým informacím v rámci svých aplikací:
 
  - [Azure Key Vault](../../key-vault/index.yml)
@@ -167,23 +161,26 @@ Následující zdroje vám pomůžou bezpečně spravovat tajné klíče a přis
  - [Spravované identity v Azure App Service a Azure Functions](../../app-service/overview-managed-identity.md)
  - [Knihovna AppAuthentication](../../key-vault/service-to-service-authentication.md)
 
+
+Další informace najdete v blogovém příspěvku, který je [bezpečný pro správu tajných kódů v cloudu](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
+
 #### <a name="can-i-write-my-own-custom-searchers"></a>Můžu psát vlastní vyhledávací vlastníky?
 
 Pro kontrolu přihlašovacích údajů se spoléhá na sadu vyhledávačů obsahu, které jsou běžně definované v souboru buildsearchers. XML. Soubor obsahuje pole serializovaných objektů XML, které reprezentují objekt **ContentSearcher** . Program se distribuuje se sadou dobře testovaných vyhledávacích programů. Můžete ale taky implementovat vlastní vyhledávací služby.
 
 Hledání obsahu je definováno následujícím způsobem:
 
-- **Název**: Popisný název vyhledávacího programu, který se má použít ve výstupních souborech pro kontrolu přihlašovacích údajů. Doporučujeme používat ve stylu CamelCase konvence pojmenovávání pro názvy vyhledávacích jmen.
-- **RuleId**: Stabilní neprůhledné ID vyhledávacího pole:
+- **Název**: popisný název vyhledávacího programu, který se má použít ve výstupních souborech pro kontrolu přihlašovacích údajů. Doporučujeme používat ve stylu CamelCase konvence pojmenovávání pro názvy vyhledávacích jmen.
+- **RuleId**: stabilní neprůhledné ID vyhledávacího pole:
     - Výchozímu vyhledávacímu skeneru přihlašovacích údajů se přiřadí hodnota **RuleId** , jako je CSCAN0010, CSCAN0020 nebo CSCAN0030. Poslední číslice je vyhrazena pro potenciálně slučování nebo rozdělování skupin hledání prostřednictvím regulárních výrazů (Regex).
-    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 a CSCAN-\<Namespace\>0030.
+    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 a CSCAN-\<Namespace @ no__t-50030.
     - Plně kvalifikovaný název hledání je kombinací hodnoty **RuleId** a názvu vyhledávacího pole. Příklady zahrnují CSCAN0010. KeyStoreFiles a CSCAN0020. Base64EncodedCertificate.
-- **ResourceMatchPattern**: Regulární výraz přípon souborů, které se mají kontrolovat u hledání
-- **ContentSearchPatterns**: Pole řetězců obsahující příkazy regulárního výrazu, které mají být shodné. Pokud nejsou definovány žádné vzory hledání, vrátí se všechny soubory, které odpovídají hodnotě **ResourceMatchPattern** .
-- **ContentSearchFilters**: Pole řetězců obsahující příkazy Regex pro filtrování falešně specifických hodnot specifických pro hledání.
-- **MatchDetails**: Popisná zpráva, pokyny pro zmírnění rizik nebo obojí, které mají být přidány pro každou shodu hledání.
-- **Doporučení**: Obsah pole návrhy pro shodu s použitím formátu předrychlých sestav.
-- **Závažnost**: Celé číslo, které odráží úroveň závažnosti problému. Nejvyšší úroveň závažnosti má hodnotu 1.
+- **ResourceMatchPattern**: Regex pro přípony souborů, které se mají kontrolovat u hledání.
+- **ContentSearchPatterns**: pole řetězců obsahující příkazy Regex, které mají být shodné. Pokud nejsou definovány žádné vzory hledání, vrátí se všechny soubory, které odpovídají hodnotě **ResourceMatchPattern** .
+- **ContentSearchFilters**: pole řetězců obsahující příkazy Regex pro filtrování falešně specifických hodnot specifických pro hledání.
+- **MatchDetails**: Popisná zpráva, pokyny pro zmírnění nebo obojí, které se mají přidat pro každou shodu hledání.
+- **Doporučení**: návrhy – obsah pole pro porovnávání pomocí formátu předrychlých sestav.
+- **Závažnost**: celé číslo, které odráží úroveň závažnosti problému. Nejvyšší úroveň závažnosti má hodnotu 1.
 
   ![XML znázorňující instalaci skeneru přihlašovacích údajů](./media/security-tools/6-credscan-customsearchers.png)
 
@@ -195,7 +192,7 @@ Hledání obsahu je definováno následujícím způsobem:
 
 Úplná chybová zpráva:
 
-Chyba Projekt se obnovil pomocí Microsoft. NETCore. app verze *x. x. x*, ale s aktuálním nastavením se místo toho použije verze *y. y. y* . Chcete-li tento problém vyřešit, zajistěte, aby se pro obnovení používalo stejné nastavení a pro následné operace, jako je například sestavení nebo publikování. K tomuto problému obvykle dochází, pokud je vlastnost RuntimeIdentifier nastavena během sestavování nebo publikování, ale nikoli během obnovení. "
+"Chyba: projekt se obnovil pomocí Microsoft. NETCore. app verze *x. x. x*, ale s aktuálním nastavením se místo toho použije verze *y. y. y* . Chcete-li tento problém vyřešit, zajistěte, aby se pro obnovení používalo stejné nastavení a pro následné operace, jako je například sestavení nebo publikování. K tomuto problému obvykle dochází, pokud je vlastnost RuntimeIdentifier nastavena během sestavování nebo publikování, ale nikoli během obnovení. "
 
 Vzhledem k tomu, že se úlohy analyzátorů Roslyn spouštějí jako součást kompilace, musí být zdrojový strom na sestavovacím počítači ve stavu pro sestavení.
 
@@ -205,13 +202,13 @@ Krok do hlavního postupu sestavení a analyzátoru Roslyn může vést k tomu, 
 
 Úplná chybová zpráva:
 
-soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C:\\*bbbb*. dll: Nepovedlo se načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Systém nemůže najít zadaný soubor."
+soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C: \\*bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x*. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' nebo jedna z jeho závislostí. Systém nemůže najít zadaný soubor.
 
 Ujistěte se, že kompilátor podporuje analyzátory Roslyn. Spuštěním příkazu **CSc. exe/Version** by měla být nahlášena hodnota verze 2,6 nebo novější.
 
 V některých případech může soubor. csproj přepsat instalaci sady Visual Studio sestavení počítače tím, že odkazuje na balíček z Microsoft.Net. compilers. Pokud nechcete použít konkrétní verzi kompilátoru, odeberte odkazy na Microsoft.Net. compilers. V opačném případě se ujistěte, že verze odkazovaného balíčku je také 2,6 nebo novější.
 
-Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: f:\ts-Services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Verze C# kompilátoru není dost nedávného.
 
@@ -221,13 +218,13 @@ Chcete-li získat nejnovější verze C# kompilátoru, přejít na [Microsoft.NE
 
 Úloha sestavení analyzátorů Roslyn musí zadat dotaz na Azure DevOps pro protokol MSBuild z úlohy sestavení MSBuild. Pokud se úloha analyzátoru spustí hned po úloze MSBuild, protokol ještě nebude k dispozici. Umístěte další úkoly mezi úlohu MSBuild a úlohu analyzátorů Roslyn. Mezi příklady dalších úloh patří BinSkim a skener proti malwaru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud potřebujete další pomoc, podpora analýzy kódu zabezpečení společnosti Microsoft je k dispozici od pondělí do pátku od 9:00 do 5:00 odp. tichomořského (běžný čas).
 
-  - Registrace Pokud chcete začít, obraťte se na správce technického účtu.
+  - Připojování: obraťte se na správce technického účtu a začněte.
   
-  - Pracovníky Pošlete nám e-mail na tým [Microsoft Security Code Analysis](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+  - Podpora: pošlete nám E-mail naší týmu na [podporu analýzy kódu zabezpečení Microsoftu](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
 
   >[!NOTE] 
   >Je možné, že nebudete mít placeného vztahu podpory od Microsoftu. Nebo můžete mít nabídku podpory, která vám zabrání v nákupu služeb z katalogu v Phoenixu. Pokud platí některá z těchto podmínek, navštivte prosím naši [domovskou stránku služeb podpory](https://www.microsoft.com/enterprise/services/support) , kde najdete další informace.

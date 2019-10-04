@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210112"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827580"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
-Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (Virtuální sítě) vám umožní umístit spoustu prostředků Azure do sítě směrovatelné do jiné než internetové sítě.  
+Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (virtuální sítě) umožňují umístit spoustu vašich prostředků Azure do sítě směrovatelné do jiné sítě.  
 
 Azure App Service má dvě variace. 
 
@@ -59,8 +59,8 @@ Funkce integrace virtuální sítě:
 Integrace virtuální sítě nepodporuje zahrnutí následujících věcí:
 
 * připojení jednotky
-* Integrace služby AD 
-* NetBIOS
+* Integrace AD 
+* Názv
 
 ## <a name="regional-vnet-integration"></a>Místní integrace virtuální sítě 
 
@@ -112,7 +112,7 @@ Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím d
 
 Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě.
 
-### <a name="service-endpoints"></a>Koncové body služeb
+### <a name="service-endpoints"></a>Koncové body služby
 
 Nová funkce integrace virtuální sítě umožňuje používat koncové body služby.  Pokud chcete pro vaši aplikaci používat koncové body služby, připojte se k vybrané virtuální síti pomocí nové integrace virtuální sítě a potom nakonfigurujte koncové body služby v podsíti, kterou jste použili pro integraci. 
 
@@ -171,13 +171,13 @@ Pokud jenom vytváříte bránu pro použití s App Service integrací virtuáln
 Povolení integrace virtuální sítě ve vaší aplikaci: 
 
 1. V Azure Portal otevřete nastavení aplikace a vyberte síť > integraci virtuální sítě. Vaše ASP musí být ve standardní SKU nebo lepší používat funkci Integrace virtuální sítě. 
- ![Uživatelské rozhraní integrace virtuální sítě][1]
+ @no__t 0VNet Integration UI @ no__t-1
 
 1. Vyberte **Přidat virtuální síť**. 
- ![Přidat integraci virtuální sítě][2]
+ ![Add VNet Integration @ no__t-1
 
 1. Vyberte svou virtuální síť. 
-  ![Výběr virtuální sítě][8]
+  @no__t 0Select vaší virtuální sítě @ no__t-1
   
 Vaše aplikace se po tomto posledním kroku restartuje.  
 
@@ -240,17 +240,17 @@ Pokud používáte bránu, která vyžaduje integraci virtuální sítě s partn
 1. Na portálu přejdete na App Service plán > síťové rozhraní integrace virtuální sítě >.  Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.  
 
 
-## <a name="pricing-details"></a>Detaily cen
+## <a name="pricing-details"></a>Podrobnosti o cenách
 Funkce regionální integrace virtuální sítě nemá žádné další poplatky za použití nad rámec cen na cenové úrovni ASP.
 
 Existují tři související poplatky za použití funkce integrace virtuální sítě VNet vyžadované bránou:
 
-* Poplatky za cenové úrovně ASP – vaše aplikace musí být ve schématu Standard, Premium nebo PremiumV2 App Service. Další podrobnosti o těchto nákladech můžete zobrazit tady: [App Service ceny][ASPricing]. 
+* Poplatky za cenové úrovně ASP – vaše aplikace musí být ve schématu Standard, Premium nebo PremiumV2 App Service. Další podrobnosti o těchto nákladech najdete tady: [App Service ceny][ASPricing]. 
 * Náklady na přenos dat – odchozí data se účtují i v případě, že virtuální síť je ve stejném datovém centru. Tyto poplatky jsou popsané v [podrobnostech o cenách přenos dat][DataPricing]. 
 * VPN Gateway náklady – pro bránu virtuální sítě, která je vyžadována pro síť VPN typu Point-to-site, se účtují náklady. Podrobnosti najdete na stránce s [cenami VPN Gateway][VNETPricing] .
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
 
 #### <a name="tools"></a>Nástroje
@@ -277,13 +277,13 @@ Pokud tyto položky neodpovídají na vaše problémy, podívejte se na první v
 **Místní integrace virtuální sítě**
 * je vaším cílem adresa RFC 1918.
 * Existuje NSG blokující výstup z podsítě integrace
-* Pokud přecházíte mezi ExpressRoute nebo VPN, je místní brána nakonfigurovaná pro směrování provozu do Azure? Pokud se můžete dostat ke koncovým bodům ve vaší virtuální síti, ale ne místně, je vhodné kontrolu.
+* Pokud budete předávat napříč ExpressRoute nebo VPN, je místní brána nakonfigurovaná pro směrování provozu zpět do Azure? Pokud se můžete dostat ke koncovým bodům ve vaší virtuální síti, ale ne místně, je vhodné kontrolu.
 
 **požadovaná brána Integration VNet**
 * je rozsah adres Point-to-site v rozsahu RFC 1918 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
 * Zobrazuje se brána na portálu? Pokud vaše brána nefunguje, přeneste ji do záložního prostředí.
 * Zobrazují se certifikáty jako synchronizované nebo se domníváte, že se změnila konfigurace sítě?  Pokud vaše certifikáty nejsou synchronizované nebo máte podezření, že došlo ke změně konfigurace vaší virtuální sítě, která nebyla synchronizovaná s vaší ASP, přejděte na "synchronizovat síť".
-* Pokud přecházíte mezi ExpressRoute nebo VPN, je místní brána nakonfigurovaná pro směrování provozu do Azure? Pokud se můžete dostat ke koncovým bodům ve vaší virtuální síti, ale ne místně, je vhodné kontrolu.
+* Pokud budete předávat napříč ExpressRoute nebo VPN, je místní brána nakonfigurovaná pro směrování provozu zpět do Azure? Pokud se můžete dostat ke koncovým bodům ve vaší virtuální síti, ale ne místně, je vhodné kontrolu.
 
 Ladění problémů se sítí je problém, protože nemůžete zjistit, co blokuje přístup ke konkrétnímu hostiteli: kombinace portů. Mezi tyto příčiny patří:
 
@@ -343,6 +343,6 @@ App Service můžete integrovat s Azure Virtual Network pomocí prostředí Powe
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

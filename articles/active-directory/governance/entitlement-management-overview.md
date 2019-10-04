@@ -1,5 +1,5 @@
 ---
-title: Co je správa nároků Azure AD? (Preview) – Azure Active Directory
+title: Co je Správa nároků Azure AD? (Preview) – Azure Active Directory
 description: Získejte přehled o Azure Active Directory správě nároků a o tom, jak ho můžete používat ke správě přístupu ke skupinám, aplikacím a webům SharePointu Online pro interní a externí uživatele.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,19 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241695"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827144"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je správa nároků Azure AD? (Preview)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa nároků Azure AD? Tisk
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
+> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Zaměstnanci v organizacích potřebují k provádění svých úloh přístup k různým skupinám, aplikacím a webům. Správa tohoto přístupu je náročná. Ve většině případů není k dispozici žádný uspořádaný seznam všech prostředků, které uživatel pro projekt potřebuje. Vedoucí projektu má dobrý přehled o potřebných materiálech, zúčastněných jednotlivcůch a o tom, jak dlouho projekt bude trvat. Vedoucí projektu ale obvykle nemá oprávnění ke schválení nebo udělení přístupu jiným uživatelům. Tento scénář je složitější při pokusu o spolupráci s externími osobami nebo společnostmi.
 
@@ -92,7 +92,7 @@ Balíčky pro přístup také obsahují jednu nebo více *zásad*. Zásady defin
 
 Pomocí balíčku pro přístup a jeho zásad definuje správce balíčků přístup:
 
-- Zdroje a prostředky
+- Prostředky
 - Role, které uživatelé potřebují pro prostředky
 - Interní uživatelé a partnerské organizace externích uživatelů, kteří mají nárok na přístup
 - Proces schvalování a uživatelé, kteří můžou schválit nebo odepřít přístup
@@ -119,20 +119,20 @@ Vzhledem k tomu, že nechcete, aby byl externí uživatel přístupný k posledn
 
 Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít následující výrazy.
 
-| Ukončení nebo koncept | Popis |
+| Termín nebo koncept | Popis |
 | --- | --- |
 | Správa nároků | Služba, která přiřazuje, odvolává a spravuje balíčky přístupu. |
-| přístup k balíčku | Kolekce oprávnění a zásad pro prostředky, které si uživatelé můžou vyžádat. Přístupový balíček je vždycky obsažený v katalogu. |
-| žádost o přístup | Žádost o přístup k balíčku přístupu Požadavek obvykle projde pracovním postupem. |
-| zásada | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
-| catalog | Kontejner souvisejících prostředků a přístupových balíčků. |
+| přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. |
+| žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle projde pracovním postupem. |
+| politických | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
+| katalog | Kontejner souvisejících prostředků a přístupových balíčků. |
 | Katalog pro obecné | Integrovaný katalog, který je vždy k dispozici. Pokud chcete přidat prostředky do katalogu obecné, vyžaduje určitá oprávnění. |
-| resource | Prostředek nebo služba (například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online), ke kterým může uživateli být uděleno oprávnění. |
+| prostředek | Prostředek nebo služba (například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online), ke kterým může uživateli být uděleno oprávnění. |
 | typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
 | role prostředku | Kolekce oprávnění přidružených k prostředku |
 | Adresář prostředků | Adresář, který obsahuje jeden nebo více prostředků ke sdílení. |
 | přiřazení uživatelé | Přiřazení balíčku přístupu uživateli, aby měl uživatel všechny role prostředků tohoto balíčku přístupu. |
-| povolit | Proces zpřístupnění balíčku přístupu uživatelům pro vyžádání. |
+| aby | Proces zpřístupnění balíčku přístupu uživatelům pro vyžádání. |
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
@@ -152,7 +152,7 @@ V rámci licencí pro členské uživatele můžete také uživatelům dovolit, 
 
 Informace o tom, jak přiřadit licence uživatelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření prvního přístupového balíčku](entitlement-management-access-package-first.md)
-- [Obvyklé scénáře](entitlement-management-scenarios.md)
+- [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
+- [Běžné scénáře](entitlement-management-scenarios.md)

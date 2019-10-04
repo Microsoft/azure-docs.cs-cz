@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676638"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840132"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Identifikace problémů s diagnostickou funkcí
+# <a name="identify-and-diagnose-issues"></a>Identifikace a Diagnostika problémů
 
 Virtuální plocha Windows nabízí diagnostické funkce, které správci umožňují identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
 

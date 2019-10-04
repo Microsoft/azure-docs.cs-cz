@@ -8,24 +8,24 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972873"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828183"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Zřízení uzlů pro řešení Azure VMware podle CloudSimple
 
 Zřídí uzly v Azure Portal. Pak můžete pro prostředí privátního cloudu CloudSimple nastavit kapacitu průběžných plateb.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Přidání uzlu do privátního cloudu CloudSimple
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **uzly CloudSimple**.
 
    ![Hledat uzly CloudSimple](media/create-cloudsimple-node-search.png)
@@ -40,12 +40,12 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 7. Zadejte předponu pro identifikaci uzlů.
 8. Vyberte umístění pro prostředky uzlu.
 9. Vyberte vyhrazené umístění pro hostování prostředků uzlu.
-10. Vyberte typ uzlu. Můžete zvolit [možnost CS28 nebo CS36](cloudsimple-node.md). Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
+10. Vyberte [typ uzlu](cloudsimple-node.md).
 11. Vyberte počet uzlů, které se mají zřídit.
 12. Vyberte **zkontrolovat + vytvořit**.
 13. Zkontrolujte nastavení. Chcete-li změnit nastavení, klikněte na tlačítko **Předchozí**.
-14. Vyberte **Vytvořit**.
+14. Vyberte **vytvořit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření privátního cloudu](create-private-cloud.md)

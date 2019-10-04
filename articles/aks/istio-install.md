@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9344d2832c37c34d5690dc8f3aae7394ca644276
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542883"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827322"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalace a použití Istio ve službě Azure Kubernetes Service (AKS)
 
 [Istio][istio-github] je open source síť, která poskytuje klíčovou sadu funkcí napříč mikroslužbami v clusteru Kubernetes. Mezi tyto funkce patří Správa provozu, identita služby a zabezpečení, vynucování zásad a jejich pozorování. Další informace o Istio najdete v dokumentaci oficiální dokumentace k [Istio?][istio-docs-concepts] .
 
-V tomto článku se dozvíte, jak nainstalovat Istio. Binární soubor `istioctl` klienta Istio se nainstaluje do klientského počítače a součásti Istio se nainstalují do clusteru Kubernetes v AKS.
+V tomto článku se dozvíte, jak nainstalovat Istio. V klientském počítači je nainstalován binární soubor klienta Istio `istioctl` a součásti Istio jsou nainstalovány do clusteru Kubernetes v AKS.
 
 > [!NOTE]
-> Tyto pokyny odkazují na verzi `1.1.3`Istio.
+> Tyto pokyny odkazují na verzi Istio `1.1.3`.
 >
-> Istio `1.1.x` vydané verze byly testovány týmem Istio proti verzím `1.11`Kubernetes, `1.12`, `1.13`. Další verze Istio najdete na webu [GitHub-Istio releases][istio-github-releases] a v informacích o všech vydáních v poznámkách k [verzi Istio][istio-release-notes].
+> Verze Istio `1.1.x` byly testovány týmem Istio proti verzím Kubernetes `1.11` `1.12`, `1.13`. Další verze Istio najdete na webu [GitHub-Istio releases][istio-github-releases] a v informacích o každé z těchto verzí na adrese [Istio News][istio-release-notes].
 
-V tomto článku získáte informace o těchto tématech:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Stáhnout Istio
@@ -36,11 +36,11 @@ V tomto článku získáte informace o těchto tématech:
 > * Přístup k doplňkům
 > * Odinstalace Istio z AKS
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.11` a vyšší s povoleným RBAC) a `kubectl` navázali jste připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
+Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.11` a vyšší s povoleným RBAC) a navázali jste připojení `kubectl` ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
 
-K provedení těchto pokynů budete potřebovat [Helm][helm] a nainstalujete Istio. Doporučuje se, aby byla verze `2.12.2` nebo novější správně nainstalovaná a nakonfigurovaná v clusteru. Pokud potřebujete pomoc s instalací Helm, přečtěte si [pokyny k instalaci AKS Helm][helm-install]. Všechny lusky Istio musí být také naplánované pro spouštění na uzlech se systémem Linux.
+K provedení těchto pokynů budete potřebovat [Helm][helm] a nainstalujete Istio. Doporučuje se, abyste měli verzi `2.12.2` nebo novější správně nainstalovanou a nakonfigurovanou v clusteru. Pokud potřebujete pomoc s instalací Helm, přečtěte si [pokyny k instalaci AKS Helm][helm-install]. Všechny lusky Istio musí být také naplánované pro spouštění na uzlech se systémem Linux.
 
 Ujistěte se, že jste si přečetli dokumentaci [výkon a škálovatelnost Istio](https://istio.io/docs/concepts/performance-and-scalability/) , abyste pochopili další požadavky na prostředky pro spuštění Istio v clusteru AKS. Požadavky na základní a paměť se budou lišit v závislosti na konkrétním zatížení. Pro instalaci vyberte příslušný počet uzlů a velikost virtuálního počítače.
 
@@ -51,11 +51,11 @@ Tento článek odděluje pokyny k instalaci Istio do několika diskrétních kro
 Nejdřív Stáhněte a extrahujte nejnovější verzi Istio. Postup je trochu jiný pro prostředí bash v MacOS, Linux nebo v subsystému Windows pro Linux a prostředí PowerShell. Vyberte jeden z následujících kroků instalace, které odpovídají vašemu preferovanému prostředí:
 
 * [Bash v subsystému MacOS, Linux nebo Windows pro Linux](#bash)
-* [PowerShell](#powershell)
+* [Prostředí](#powershell)
 
 ### <a name="bash"></a>Bash
 
-Na MacOS použijte `curl` ke stažení nejnovější verze Istio a pak extrakci pomocí `tar` následujícího postupu:
+Na MacOS použijte `curl` ke stažení nejnovější verze Istio a pak se extrahujte pomocí `tar` následujícím způsobem:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -65,7 +65,7 @@ ISTIO_VERSION=1.1.3
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-V systému Linux nebo subsystém Windows pro Linux použijte `curl` ke stažení nejnovější verze Istio a pak extrakci pomocí `tar` následujícího postupu:
+V systému Linux nebo subsystém Windows pro Linux použijte `curl` ke stažení nejnovější verze Istio a pak je extrahujte pomocí `tar` následujícím způsobem:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -78,7 +78,7 @@ Nyní přejděte do oddílu a [nainstalujte binární soubor klienta Istio istio
 
 ### <a name="powershell"></a>PowerShell
 
-V PowerShellu použijte `Invoke-WebRequest` ke stažení nejnovější verze Istio a pak extrakci pomocí `Expand-Archive` následujícího postupu:
+V PowerShellu použijte `Invoke-WebRequest` ke stažení nejnovější verze Istio a pak ji extrahujte pomocí `Expand-Archive` následujícím způsobem:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -98,7 +98,7 @@ Nyní přejděte do oddílu a [nainstalujte binární soubor klienta Istio istio
 > [!IMPORTANT]
 > Ujistěte se, že jste spustili kroky v této části, ze složky na nejvyšší úrovni verze Istio, kterou jste stáhli a extrahovali.
 
-Binární `istioctl` soubor klienta běží na klientském počítači a umožňuje interakci s sítí služby Istio. Tyto kroky instalace se mezi klientskými operačními systémy trochu liší. Vyberte jeden z následujících kroků instalace, které odpovídají vašemu preferovanému prostředí:
+Binární soubor klienta `istioctl` se spouští na klientském počítači a umožňuje interakci s sítí služby Istio. Tyto kroky instalace se mezi klientskými operačními systémy trochu liší. Vyberte jeden z následujících kroků instalace, které odpovídají vašemu preferovanému prostředí:
 
 * [MacOS](#macos)
 * [Linux nebo subsystém Windows pro Linux](#linux-or-windows-subsystem-for-linux)
@@ -106,7 +106,7 @@ Binární `istioctl` soubor klienta běží na klientském počítači a umožň
 
 ### <a name="macos"></a>MacOS
 
-Pro instalaci binárního `istioctl` souboru klienta Istio do prostředí založeného na bash na MacOS použijte následující příkazy. Tyto příkazy kopírují `istioctl` binární soubor klienta do umístění standardního uživatelského programu `PATH`v.
+Pro instalaci binárního souboru klienta Istio `istioctl` do prostředí založeného na bash na MacOS použijte následující příkazy. Tyto příkazy kopírují binární soubor klienta `istioctl` do umístění standardního uživatelského programu v `PATH`.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -114,7 +114,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Pokud chcete dokončit příkazový řádek pro binární soubor klienta Istio `istioctl` , nastavte ho následujícím způsobem:
+Pokud chcete dokončit příkazový řádek pro binární soubor klienta Istio `istioctl`, nastavte ho následujícím způsobem:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -130,7 +130,7 @@ Nyní přejděte k další části a [nainstalujte Istio CRDs na AKS](#install-t
 
 ### <a name="linux-or-windows-subsystem-for-linux"></a>Linux nebo subsystém Windows pro Linux
 
-Pomocí následujících příkazů nainstalujte binární soubor klienta Istio `istioctl` do prostředí založeného na bash na Linux nebo v subsystému [Windows pro Linux][install-wsl]. Tyto příkazy kopírují `istioctl` binární soubor klienta do umístění standardního uživatelského programu `PATH`v.
+Pomocí následujících příkazů nainstalujte binární soubor klienta Istio `istioctl` do prostředí založeného na bash na Linux nebo v subsystému [Windows pro Linux][install-wsl]. Tyto příkazy kopírují binární soubor klienta `istioctl` do umístění standardního uživatelského programu v `PATH`.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -138,7 +138,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Pokud chcete dokončit příkazový řádek pro binární soubor klienta Istio `istioctl` , nastavte ho následujícím způsobem:
+Pokud chcete dokončit příkazový řádek pro binární soubor klienta Istio `istioctl`, nastavte ho následujícím způsobem:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -154,7 +154,7 @@ Nyní přejděte k další části a [nainstalujte Istio CRDs na AKS](#install-t
 
 ### <a name="windows"></a>Windows
 
-Pokud chcete nainstalovat binární `istioctl` soubor klienta Istio do prostředí založeného na **prostředí PowerShell**ve Windows, použijte následující příkazy. Tyto příkazy kopírují `istioctl` binární soubor klienta do složky Istio a pak ho hned hned (v aktuálním prostředí) a trvale (v rámci restartování prostředí). `PATH` Ke spuštění těchto příkazů nepotřebujete oprávnění vyšší úrovně (správce) a nemusíte restartovat prostředí.
+Pokud chcete nainstalovat binární soubor klienta Istio `istioctl` do prostředí založeného na **prostředí PowerShell**ve Windows, použijte následující příkazy. Tyto příkazy kopírují binární soubor klienta `istioctl` do složky Istio a pak ho hned (v současném prostředí) zpřístupní hned (v aktuálním prostředí) a trvale (v rámci restartování prostředí) prostřednictvím `PATH`. Ke spuštění těchto příkazů nepotřebujete oprávnění vyšší úrovně (správce) a nemusíte restartovat prostředí.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
@@ -176,13 +176,13 @@ Nyní přejděte k další části a [nainstalujte Istio CRDs na AKS](#install-t
 > [!IMPORTANT]
 > Ujistěte se, že jste spustili kroky v této části, ze složky na nejvyšší úrovni verze Istio, kterou jste stáhli a extrahovali.
 
-Istio používá ke správě konfigurace modulu runtime [vlastní definice prostředků (CRDs)][kubernetes-crd] . Nejdřív musíme nainstalovat Istio CRDs, protože komponenty Istio na nich závisí. Pomocí Helm a `istio-init` grafu nainstalujte Istio CRDs `istio-system` do oboru názvů v clusteru AKS:
+Istio používá ke správě konfigurace modulu runtime [vlastní definice prostředků (CRDs)][kubernetes-crd] . Nejdřív musíme nainstalovat Istio CRDs, protože komponenty Istio na nich závisí. Pomocí Helm a grafu `istio-init` nainstalujte Istio CRDs do oboru názvů `istio-system` v clusteru AKS:
 
 ```azurecli
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 ```
 
-[Úlohy][kubernetes-jobs] se nasazují jako součást `istio-init` grafu Helm, aby se nainstalovala CRDs. Dokončení těchto úloh by mělo trvat 1 až 2 minuty v závislosti na prostředí clusteru. Úspěšné dokončení úloh můžete ověřit následujícím způsobem:
+[Úlohy][kubernetes-jobs] se nasazují jako součást Helm grafu `istio-init` pro instalaci CRDs. Dokončení těchto úloh by mělo trvat 1 až 2 minuty v závislosti na prostředí clusteru. Úspěšné dokončení úloh můžete ověřit následujícím způsobem:
 
 ```azurecli
 kubectl get jobs -n istio-system
@@ -196,7 +196,7 @@ istio-init-crd-10   1/1           16s        18s
 istio-init-crd-11   1/1           15s        18s
 ```
 
-Teď, když jsme potvrdili úspěšné dokončení úloh, ověříme, že máte nainstalovaný správný počet Istio CRDs. Spuštěním příslušného příkazu pro vaše prostředí můžete ověřit, že jste nainstalovali všechny 53 Istio CRDs. Příkaz by měl vrátit číslo `53`.
+Teď, když jsme potvrdili úspěšné dokončení úloh, ověříme, že máte nainstalovaný správný počet Istio CRDs. Spuštěním příslušného příkazu pro vaše prostředí můžete ověřit, že jste nainstalovali všechny 53 Istio CRDs. Příkaz by měl vracet číslo `53`.
 
 Bash
 
@@ -204,7 +204,7 @@ Bash
 kubectl get crds | grep 'istio.io' | wc -l
 ```
 
-Prostředí PowerShell
+Prostředí
 
 ```powershell
 (kubectl get crds | Select-String -Pattern 'istio.io').Count
@@ -223,7 +223,7 @@ Než budeme moct nainstalovat komponenty Istio, je potřeba vytvořit tajné kl�
 
 ### <a name="add-grafana-secret"></a>Přidat tajný klíč Grafana
 
-Nahraďte `REPLACE_WITH_YOUR_SECURE_PASSWORD` token heslem a spusťte následující příkazy:
+Nahraďte token `REPLACE_WITH_YOUR_SECURE_PASSWORD` vaším heslem a spusťte následující příkazy:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -267,7 +267,7 @@ data:
 
 ### <a name="add-kiali-secret"></a>Přidat tajný klíč Kiali
 
-Nahraďte `REPLACE_WITH_YOUR_SECURE_PASSWORD` token heslem a spusťte následující příkazy:
+Nahraďte token `REPLACE_WITH_YOUR_SECURE_PASSWORD` vaším heslem a spusťte následující příkazy:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -311,16 +311,16 @@ data:
 
 ### <a name="install-istio-components"></a>Nainstalovat komponenty Istio
 
-Teď, když jsme úspěšně vytvořili tajné kódy Grafana a Kiali v našem clusteru AKS, je čas nainstalovat komponenty Istio. Pomocí Helm a `istio` grafu nainstalujte komponenty Istio `istio-system` do oboru názvů v clusteru AKS. Použijte příslušné příkazy pro vaše prostředí.
+Teď, když jsme úspěšně vytvořili tajné kódy Grafana a Kiali v našem clusteru AKS, je čas nainstalovat komponenty Istio. Pomocí Helm a grafu `istio` nainstalujete součásti Istio do oboru názvů `istio-system` v clusteru AKS. Použijte příslušné příkazy pro vaše prostředí.
 
 > [!NOTE]
 > V rámci naší instalace používáme následující možnosti:
-> - `global.controlPlaneSecurityEnabled=true`– oboustranný protokol TLS povolený pro rovinu ovládacího prvku
-> - `mixer.adapters.useAdapterCRDs=false`– Odebere hodinky na CRDs adaptéru mixer, protože budou zastaralé a tím se zvýší výkon.
-> - `grafana.enabled=true`– povolit nasazení Grafana pro analýzy a monitorování řídicích panelů
-> - `grafana.security.enabled=true`– Povolit ověřování pro Grafana
-> - `tracing.enabled=true`– povolení Jaeger nasazení pro trasování
-> - `kiali.enabled=true`– povolení nasazení Kiali pro řídicí panel pro pozorování z sítě služby
+> - `global.controlPlaneSecurityEnabled=true` – oboustranný protokol TLS povolený pro rovinu ovládacího prvku
+> - `mixer.adapters.useAdapterCRDs=false` – odebere hodinky CRDs adaptéru mixer, protože budou zastaralé a tím se zvýší výkon.
+> - `grafana.enabled=true` – povolení nasazení Grafana pro řídicí panely pro analýzu a monitorování
+> - `grafana.security.enabled=true` – povolení ověřování pro Grafana
+> - `tracing.enabled=true` – povolení Jaeger nasazení pro trasování
+> - `kiali.enabled=true` – povolení Kiali nasazení pro řídicí panel pro pozorování pro síť služby
 
 Bash
 
@@ -333,7 +333,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set kiali.enabled=true
 ```
 
-Prostředí PowerShell
+Prostředí
 
 ```powershell
 helm install install/kubernetes/helm/istio --name istio --namespace istio-system `
@@ -344,7 +344,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set kiali.enabled=true
 ```
 
-Graf `istio` Helm nasadí velký počet objektů. Seznam můžete zobrazit z výstupu `helm install` příkazu výše. Dokončení nasazení součástí Istio může trvat 4 až 5 minut, a to v závislosti na prostředí clusteru.
+Helm graf s `istio` nasadí velký počet objektů. Seznam můžete zobrazit z výstupu příkazu `helm install` výše. Dokončení nasazení součástí Istio může trvat 4 až 5 minut, a to v závislosti na prostředí clusteru.
 
 > [!NOTE]
 > Všechny lusky Istio musí být naplánované na spouštění na uzlech systému Linux. Pokud ve vašem clusteru kromě fondů uzlů pro Linux máte fondy uzlů Windows serveru, ověřte, že všechny Istio lusky mají naplánované spuštění na uzlech se systémem Linux.
@@ -353,7 +353,7 @@ V tomto okamžiku jste nasadili Istio do svého clusteru AKS. Abychom zajistili 
 
 ## <a name="validate-the-istio-installation"></a>Ověření instalace Istio
 
-Nejprve potvrďte, že byly vytvořeny očekávané služby. K zobrazení spuštěných služeb použijte příkaz [kubectl Get svc][kubectl-get] . Dotaz na `istio-system` obor názvů, ve kterém byly nainstalovány Istio a součásti doplňku `istio` pomocí grafu Helm:
+Nejprve potvrďte, že byly vytvořeny očekávané služby. K zobrazení spuštěných služeb použijte příkaz [kubectl Get svc][kubectl-get] . Zadejte dotaz na obor názvů `istio-system`, kde byly nainstalovány komponenty Istio a Add-Helm pomocí grafu `istio`:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -361,13 +361,13 @@ kubectl get svc --namespace istio-system --output wide
 
 Následující příklad výstupu ukazuje služby, které by nyní měly být spuštěny:
 
-- `istio-*`orgány
-- `jaeger-*`služby `tracing`trasování, `zipkin` a doplňku
-- `prometheus`doplňková služba metrik
-- `grafana`Služba řídicího panelu pro analýzu a monitorování doplňků
-- `kiali`Služba doplňku sítě pro mřížku služby
+- @no__t – 0 služeb
+- trasovací služby `jaeger-*`, `tracing` a `zipkin`
+- `prometheus` – služba metriky pro Doplňky
+- Služba řídicího panelu pro analýzu a monitorování `grafana` pro Doplňky
+- Služba řídicího panelu mřížky služby doplňku `kiali`
 
-Pokud se `istio-ingressgateway` zobrazí externí `<pending>`IP adresa, počkejte několik minut, než se IP adresa přiřadí pomocí sítě Azure.
+Pokud `istio-ingressgateway` zobrazí externí IP adresu `<pending>`, počkejte několik minut, než se IP adresa přiřadí pomocí sítě Azure.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                                                                                                                                      AGE       SELECTOR
@@ -388,7 +388,7 @@ tracing                  ClusterIP      10.0.165.210   <none>          80/TCP   
 zipkin                   ClusterIP      10.0.126.211   <none>          9411/TCP                                                                                                                                     118s      app=jaeger
 ```
 
-Pak potvrďte, že byly vytvořeny požadované lusky. Použijte příkaz [kubectl Get lusks][kubectl-get] a znovu se Dotazujte `istio-system` na obor názvů:
+Pak potvrďte, že byly vytvořeny požadované lusky. Použijte příkaz [kubectl Get lusks][kubectl-get] a znovu spusťte dotaz na obor názvů `istio-system`:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -396,10 +396,10 @@ kubectl get pods --namespace istio-system
 
 Následující příklad výstupu ukazuje, kde jsou spuštěny tyto lusky:
 
-- `istio-*` lusky
-- Metrika `prometheus-*` doplňku pod
-- řídicí panel analýza a monitorování doplňkupod`grafana-*`
-- řídicí `kiali` panel pro mřížku služby doplňku pod
+- @no__t – 0 lusky
+- metriky `prometheus-*` pod
+- řídicí panel pro analýzu a monitorování `grafana-*` pod
+- řídicí panel mřížky služby doplňku `kiali` pod
 
 ```console
 NAME                                     READY     STATUS      RESTARTS   AGE
@@ -418,7 +418,7 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-Musí existovat dvě `istio-init-crd-*` lusky `Completed` se stavem. Tyto lusky byly zodpovědné za spouštění úloh, které CRDs vytvořili v předchozím kroku. Všechny ostatní lusky by měly zobrazit stav `Running`. Pokud vaše lusky nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělá. Pokud jakékoli lusky nahlásí problém, zkontrolujte výstup a stav pomocí příkazu [kubectl popsat pod][kubectl-describe] .
+Měli byste mít dvě `istio-init-crd-*` lusků se stavem `Completed`. Tyto lusky byly zodpovědné za spouštění úloh, které CRDs vytvořili v předchozím kroku. Všechny ostatní lusky by měly zobrazit stav `Running`. Pokud vaše lusky nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělá. Pokud jakékoli lusky nahlásí problém, zkontrolujte výstup a stav pomocí příkazu [kubectl popsat pod][kubectl-describe] .
 
 ## <a name="accessing-the-add-ons"></a>Přístup k doplňkům
 
@@ -428,7 +428,7 @@ Přidali jsme další vrstvu zabezpečení pro Grafana a Kiali, a to zadáním p
 
 ### <a name="grafana"></a>Grafana
 
-Řídicí panely pro analýzu a monitorování pro Istio poskytuje [Grafana][grafana]. Předejte místní port `3000` na klientském počítači na port `3000` pod, na kterém běží Grafana v clusteru AKS:
+Řídicí panely pro analýzu a monitorování pro Istio poskytuje [Grafana][grafana]. Předejte místní port `3000` na klientském počítači na adresu `3000` na počítači pod systémem Grafana v clusteru AKS:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
@@ -441,11 +441,11 @@ Forwarding from 127.0.0.1:3000 -> 3000
 Forwarding from [::1]:3000 -> 3000
 ```
 
-Na klientském počítači [http://localhost:3000](http://localhost:3000)teď můžete na adrese Grafana přejít na následující adresu URL. Nezapomeňte použít přihlašovací údaje, které jste po zobrazení výzvy vytvořili prostřednictvím tajného klíče Grafana.
+Na klientském počítači teď můžete Grafana na následující adrese URL – [http://localhost:3000](http://localhost:3000). Nezapomeňte použít přihlašovací údaje, které jste po zobrazení výzvy vytvořili prostřednictvím tajného klíče Grafana.
 
 ### <a name="prometheus"></a>Prometheus
 
-Metriky pro Istio poskytuje [Prometheus][prometheus]. Předejte místní port `9090` na klientském počítači na port `9090` pod, na kterém běží Prometheus v clusteru AKS:
+Metriky pro Istio poskytuje [Prometheus][prometheus]. Předejte místní port `9090` na klientském počítači na adresu `9090` na počítači pod systémem Prometheus v clusteru AKS:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9090:9090
@@ -458,11 +458,11 @@ Forwarding from 127.0.0.1:9090 -> 9090
 Forwarding from [::1]:9090 -> 9090
 ```
 
-Nyní se můžete dostat do prohlížeče výrazů Prometheus na následující adrese URL na klientském počítači [http://localhost:9090](http://localhost:9090).
+Nyní se můžete dostat k prohlížeči výrazů Prometheus na následující adrese URL na klientském počítači – [http://localhost:9090](http://localhost:9090).
 
 ### <a name="jaeger"></a>Jaeger
 
-Trasování v rámci Istio zajišťuje [Jaeger][jaeger]. Předejte místní port `16686` na klientském počítači na port `16686` pod, na kterém běží Jaeger v clusteru AKS:
+Trasování v rámci Istio zajišťuje [Jaeger][jaeger]. Předejte místní port `16686` na klientském počítači na adresu `16686` na počítači pod systémem Jaeger v clusteru AKS:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686
@@ -475,11 +475,11 @@ Forwarding from 127.0.0.1:16686 -> 16686
 Forwarding from [::1]:16686 -> 16686
 ```
 
-Nyní se můžete dostat na uživatelské rozhraní trasování Jaeger na následující adrese URL na klientském počítači [http://localhost:16686](http://localhost:16686).
+Nyní se můžete dostat na uživatelské rozhraní pro trasování Jaeger na následující adrese URL na klientském počítači – [http://localhost:16686](http://localhost:16686).
 
 ### <a name="kiali"></a>Kiali
 
-Řídicí panel pro pozorování sítě služby poskytuje [Kiali][kiali]. Předejte místní port `20001` na klientském počítači na port `20001` pod, na kterém běží Kiali v clusteru AKS:
+Řídicí panel pro pozorování sítě služby poskytuje [Kiali][kiali]. Předejte místní port `20001` na klientském počítači na adresu `20001` na počítači pod systémem Kiali v clusteru AKS:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
@@ -492,7 +492,7 @@ Forwarding from 127.0.0.1:20001 -> 20001
 Forwarding from [::1]:20001 -> 20001
 ```
 
-Nyní se můžete dostat na řídicí panel s možností zobrazení sítě služby Kiali na následující adrese URL v klientském [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/)počítači. Nezapomeňte použít přihlašovací údaje, které jste po zobrazení výzvy vytvořili prostřednictvím tajného klíče Kiali.
+Nyní se můžete dostat na řídicí panel zobrazení sítě služby Kiali na následující adrese URL na klientském počítači – [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/). Nezapomeňte použít přihlašovací údaje, které jste po zobrazení výzvy vytvořili prostřednictvím tajného klíče Kiali.
 
 ## <a name="uninstall-istio-from-aks"></a>Odinstalace Istio z AKS
 
@@ -501,7 +501,7 @@ Nyní se můžete dostat na řídicí panel s možností zobrazení sítě služ
 
 ### <a name="remove-istio-components-and-namespace"></a>Odebrat součásti a obor názvů Istio
 
-K odebrání Istio z clusteru AKS použijte následující příkazy. `helm delete` Příkazy odstraní`istio-init` grafy aapříkazodstraníobornázvů.`istio` `kubectl delete ns` `istio-system`
+K odebrání Istio z clusteru AKS použijte následující příkazy. Příkazy `helm delete` odstraní grafy `istio` a `istio-init` a příkaz `kubectl delete ns` odebere obor názvů `istio-system`.
 
 ```azurecli
 helm delete --purge istio
@@ -526,12 +526,12 @@ Bash
 kubectl get crds -o name | grep 'istio.io' | xargs -n1 kubectl delete
 ```
 
-Prostředí PowerShell
+Prostředí
 ```powershell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Následující dokumentace popisuje, jak můžete použít Istio k poskytování inteligentního směrování k zavedení testovací verze:
 
@@ -555,7 +555,7 @@ Informace o tom, jak monitorovat aplikaci AKS pomocí Application Insights a Ist
 [istio-docs-concepts]: https://istio.io/docs/concepts/what-is-istio/
 [istio-github]: https://github.com/istio/istio
 [istio-github-releases]: https://github.com/istio/istio/releases
-[istio-release-notes]: https://istio.io/about/notes/
+[istio-release-notes]: https://istio.io/news/
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-helm]: https://istio.io/docs/setup/kubernetes/install/helm/
 [istio-install-helm-options]: https://istio.io/docs/reference/config/installation-options/

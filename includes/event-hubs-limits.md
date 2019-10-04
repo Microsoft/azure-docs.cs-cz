@@ -8,50 +8,52 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68912331"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830060"
 ---
-V následující tabulce je uveden seznam kvót a omezení určených pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
+Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-| Omezení | Scope | Poznámky | Value |
+Následující omezení jsou společná pro základní, standardní a vyhrazené úrovně. 
+
+| Počtu | Rozsah | Poznámky | Hodnota |
 | --- | --- | --- | --- |
-| Počet Event Hubs oborů názvů na předplatné |Subscription |- |100 |
-| Počet Center událostí na obor názvů |Obor názvů |Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10 |
-| Počet oddílů na centrum událostí |Entita |- |32 |
-| Maximální velikost události Event Hubs|Entita |- |1 MB |
-| Maximální velikost názvu centra událostí |Entita |- |50 znaků |
-| Počet neepochach přijímačů na skupinu uživatelů |Entita |- |5 |
-| Maximální počet jednotek propustnosti |Obor názvů |Překročení limitu jednotek propustnosti způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 |
-| Počet autorizačních pravidel na obor názvů |Obor názvů|Následné žádosti o vytvoření autorizačního pravidla jsou odmítnuté.|12 |
-| Počet volání metody Getruntimeinformation – | Entita | - | 50 za sekundu | 
-| Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | Entita | - | 128 | 
+| Počet Event Hubs oborů názvů na předplatné |Formě |- |100 |
+| Počet Center událostí na obor názvů |Obor názvů |Následné žádosti o vytvoření nového centra událostí budou odmítnuty. |10pruhový |
+| Počet oddílů na centrum událostí |Entity |- |32 |
+| Maximální velikost názvu centra událostí |Entity |- |50 znaků |
+| Počet neepochach přijímačů na skupinu uživatelů |Entity |- |5 |
+| Maximální počet jednotek propustnosti |Obor názvů |Překročení limitu jednotek propustnosti způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20o |
+| Počet autorizačních pravidel na obor názvů |Obor názvů|Následné žádosti o vytvoření autorizačního pravidla jsou odmítnuté.|12,5 |
+| Počet volání metody Getruntimeinformation – | Entity | - | 50 za sekundu | 
+| Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | Entity | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs úrovně Basic a Standard-kvóty a omezení
-| Omezení | Scope | Poznámky | Basic | Standard |
+| Počtu | Rozsah | Poznámky | Základní | Standardní |
 | --- | --- | --- | -- | --- |
-| Počet skupin uživatelů na centrum událostí |Entita | - |1 |20 |
-| Počet připojení AMQP na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5,000|
-| Maximální doba uchování dat události |Entita | - |1 den |1-7 dní |
+| Maximální velikost události Event Hubs|Entity | &nbsp; | 256 KB | 1 MB |
+| Počet skupin uživatelů na centrum událostí |Entity | &nbsp; |první |20o |
+| Počet připojení AMQP na obor názvů |Obor názvů |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5 000|
+| Maximální doba uchování dat události |Entity | &nbsp; |1 den |1-7 dní |
 |Apache Kafka povolený obor názvů|Obor názvů |Event Hubs aplikace streamování v oboru názvů pomocí protokolu Kafka |Ne | Ano |
-|Zachycování |Entita | Když je tato možnost povolená, mikrodávky na stejném datovém proudu |Ne |Ano |
+|Snímky |Entity | Když je tato možnost povolená, mikrodávky na stejném datovém proudu |Ne |Ano |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs úrovně Dedicated – kvóty a omezení
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Funkce | Omezení |
+| Funkce | Lhůty |
 | --- | ---|
-| Šířka pásma |  20 kapacitní jednotky |
-| Názvové prostory | 50 za CU |
+| Připojení |  20 kapacitní jednotky |
+| Jmenné prostory | 50 za CU |
 | Event Hubs |  1000 na obor názvů |
-| Události příchozího přenosu dat | Zahrnuje |
-| Velikost zprávy | 1 000 000 bajtů |
-| Oddíly | 2000 za CU |
-| Skupiny příjemců | Bez omezení na CU, 1000 na každé centrum událostí |
-| Zprostředkovaná připojení | 100 tisíc v základu |
-| Uchovávání zpráv | Až 7 dní (90 dní již brzy přijde), za 10 TB zahrnuté na CU |
-| Zachycování | Zahrnuje |
+| Události příchozího přenosu dat | Obsaženy |
+| Velikost zprávy | 1 MB |
+| Disk | 2000 za CU |
+| Skupiny uživatelů | Bez omezení na CU, 1000 na každé centrum událostí |
+| Zprostředkovaná připojení | zahrnuto 100 K |
+| Uchovávání zpráv | Až 7 dní, zahrnuto 10 TB za CU |
+| Snímky | Obsaženy |

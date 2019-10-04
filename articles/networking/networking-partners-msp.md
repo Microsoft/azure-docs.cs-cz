@@ -1,5 +1,5 @@
 ---
-title: 'Partneři sítě: Sítě Azure | Microsoft Docs'
+title: 'Partneři sítě: sítě Azure | Microsoft Docs'
 description: Tento článek poskytuje seznam partnerských síťových partnerů MSP.
 services: networking
 author: skishen525
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 8d71863406eb6e8b032a78f65ab5be97cca91bd7
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212887"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828188"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -26,7 +26,7 @@ Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo p
 
 ## <a name="msp"></a>Partneři Azure Networking MSP
 
-Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.comna adresu. 
+Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.com. 
 
 [Skupina ANS UK](https://www.ans.co.uk/)
 
@@ -46,6 +46,8 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 
 [ixreach](https://www.ixreach.com/)
 
+[KINX](https://www.kinx.net/service/cloud/?lang=en)
+
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
 [Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)
@@ -54,7 +56,9 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 
 [Tata komunikace](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
 
-[Vandis](https://www.vandis.com/services/azure-migration/)
+[Vandis](https://www.vandis.com/microsoft-azure-practice/)
+
+[Ostražití](https://vigilant.it/manage-cloud-service/)
 
 ## <a name="expressroute"></a>Partneři ExpressRoute
 

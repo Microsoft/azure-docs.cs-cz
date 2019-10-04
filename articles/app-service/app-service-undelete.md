@@ -6,18 +6,18 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: a766f7ed7a82874df8ef7506226de0d6f38a5847
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 7b3a21f3cfee806dc94353e0bc6c11e88641ea34
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219535"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827525"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Obnovení odstraněných App Service aplikace pomocí PowerShellu
 
 Pokud jste nastali omylem odstranit aplikaci v Azure App Service, můžete ji obnovit pomocí příkazů z [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0).
 
-## <a name="list-deleted-apps"></a>Výpis odstraněných aplikací
+## <a name="list-deleted-apps"></a>Vypsat odstraněné aplikace
 
 Pokud chcete získat kolekci odstraněných aplikací, můžete použít `Get-AzDeletedWebApp`.
 
@@ -29,13 +29,13 @@ Get-AzDeletedWebApp -Name <your_deleted_app>
 
 Podrobné informace zahrnují:
 
-- **DeletedSiteId**: Jedinečný identifikátor pro aplikaci, který se používá pro scénáře, ve kterých se odstranilo víc aplikací se stejným názvem.
-- **SubscriptionId**: Předplatné obsahující odstraněný prostředek
-- **Umístění**: Umístění původní aplikace
-- **ResourceGroupName**: Název původní skupiny prostředků
-- **Název**: Název původní aplikace
+- **DeletedSiteId**: jedinečný identifikátor pro aplikaci, který se používá pro scénáře, ve kterých se odstranilo víc aplikací se stejným názvem.
+- **SubscriptionId**: předplatné obsahující odstraněný prostředek
+- **Umístění**: umístění původní aplikace
+- **ResourceGroupName**: název původní skupiny prostředků
+- **Name**: název původní aplikace.
 - **Slot**: název slotu.
-- **Čas odstranění**: Kdy byla aplikace odstraněna  
+- **Čas odstranění**: kdy se aplikace odstranila  
 
 ## <a name="restore-deleted-app"></a>Obnovit odstraněnou aplikaci
 
@@ -47,8 +47,10 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 Vstupy pro příkaz jsou:
 
-- **Skupina prostředků**: Cílová skupina prostředků, do které se aplikace obnoví
-- **Název**: Název aplikace by měl být globálně jedinečný.
+- **Skupina prostředků**: cílová skupina prostředků, do které se aplikace obnoví
+- **Název**: název aplikace by měl být globálně jedinečný.
 - **TargetAppServicePlanName**: App Service plán propojený s aplikací
 
-Ve výchozím `Restore-AzDeletedWebApp` nastavení se obnoví i konfigurace aplikace i obsah. Chcete-li obnovit pouze obsah, použijte `-RestoreContentOnly` příznak s tímto rutiny.
+Ve výchozím nastavení je `Restore-AzDeletedWebApp` obnovit jak konfiguraci aplikace, tak i obsah. Chcete-li obnovit pouze obsah, použijte příznak `-RestoreContentOnly` s tímto rutiny.
+
+Úplný odkaz na rutiny najdete tady: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

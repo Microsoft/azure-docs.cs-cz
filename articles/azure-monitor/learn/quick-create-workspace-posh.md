@@ -1,6 +1,6 @@
 ---
-title: Vytvoření pracovního prostoru Log Analytics pomocí Azure Powershellu | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit pracovní prostor Log Analytics umožňuje správu řešení a shromažďování dat z vašich cloudových a místních prostředích pomocí Azure Powershellu.
+title: Vytvoření pracovního prostoru Log Analytics pomocí Azure PowerShell | Microsoft Docs
+description: Naučte se, jak vytvořit pracovní prostor Log Analytics, který umožňuje řešení pro správu a shromažďování dat z vašich cloudových a místních prostředí pomocí Azure PowerShell.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -13,48 +13,48 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 6f27aeb65cb9077011e662c165ca26202546db26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b81495f19ce596d689778e6ab75512d744ae4588
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130424"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836571"
 ---
-# <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
+# <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure PowerShell
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak použít modul Azure PowerShell k nasazení pracovního prostoru Log Analytics ve službě Azure Monitor. Pracovní prostor Log Analytics je jedinečný prostředí pro data protokolů Azure Monitor. Každý pracovní prostor má své vlastní úložiště dat a konfigurace a konfigurace zdroje dat a řešení pro ukládání dat v konkrétním pracovním prostoru. Budete potřebovat pracovní prostor Log Analytics, pokud máte v úmyslu na shromažďování dat z těchto zdrojů:
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak použít modul Azure PowerShell k nasazení pracovního prostoru Log Analytics v Azure Monitor. Log Analytics pracovní prostor je jedinečné prostředí pro Azure Monitor data protokolu. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru. Pokud máte v úmyslu shromažďovat data z následujících zdrojů, potřebujete Log Analytics pracovní prostor:
 
-* Prostředky ve vašem předplatném Azure  
-* Místní služba System Center Operations Manager monitorovat počítače  
-* Kolekce zařízení ze System Center Configuration Manager  
-* Diagnostika nebo protokolování dat z úložiště Azure  
+* Prostředky Azure ve vašem předplatném  
+* Místní počítače monitorované nástrojem System Center Operations Manager  
+* Kolekce zařízení z System Center Configuration Manager  
+* Data diagnostiky nebo protokolu z Azure Storage  
  
-U jiných zdrojů, jako jsou virtuální počítače Azure a Windows nebo virtuální počítače s Linuxem ve vašem prostředí naleznete v následujících tématech:
+Další zdroje, jako jsou virtuální počítače Azure a virtuální počítače s Windows nebo Linux ve vašem prostředí, najdete v následujících tématech:
 
 * [Shromažďování dat z virtuálních počítačů Azure](../learn/quick-collect-azurevm.md)
-* [Shromažďování dat z počítače s Linuxem hybridní](../learn/quick-collect-linux-computer.md)
-* [Shromažďování dat z počítače Windows hybridní](quick-collect-windows-computer.md)
+* [Shromažďování dat z hybridního počítače se systémem Linux](../learn/quick-collect-linux-computer.md)
+* [Shromažďování dat z hybridního počítače s Windows](quick-collect-windows-computer.md)
 
-Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell Az. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz Azure PowerShell AZ Module. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable Az`. Pokud potřebujete provést upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Connect-AzAccount` a vytvořit připojení k Azure.
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
-Vytvoření pracovního prostoru s [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Následující příklad vytvoří pracovní prostor s názvem *TestWorkspace* ve skupině prostředků *Lab* v *eastus* pomocí šablony Resource Manageru z vašeho místního umístění počítač. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí. 
+## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
+Vytvořte pracovní prostor pomocí [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). Následující příklad vytvoří pracovní prostor v umístění *eastus* pomocí šablony Správce prostředků z místního počítače. Šablona JSON je nakonfigurovaná tak, aby se zobrazila výzva k zadání názvu pracovního prostoru, a určuje výchozí hodnotu pro ostatní parametry, které by se ve vašem prostředí pravděpodobně používaly jako standardní konfigurace. 
 
-Informace o oblasti, které podporuje, najdete v části [Log Analytics je dostupná v oblastech](https://azure.microsoft.com/regions/services/) a vyhledejte Azure monitoru a z **hledání produktu** pole. 
+Informace o podporovaných oblastech najdete v tématu [oblasti Log Analytics jsou k dispozici v](https://azure.microsoft.com/regions/services/) a vyhledejte Azure monitor z **hledání pole produkt** . 
 
-Následující parametry nastavení výchozí hodnoty:
+Výchozí hodnotu nastavíte pomocí následujících parametrů:
 
-* umístění – výchozí hodnota je USA – východ
-* Skladová položka – výchozí hodnota je novou cenovou úroveň Per GB vydáno v dubnu 2018 cenový model
+* umístění – výchozí nastavení Východní USA
+* SKU – výchozí hodnota pro novou cenovou úroveň za GB vydanou v cenovém modelu z dubna 2018
 
 >[!WARNING]
->Pokud vytváříte nebo konfigurace pracovního prostoru Log Analytics v rámci předplatného, který je zapojen do nové platný od dubna 2018 cenový model, platné pouze v Log Analytics cenová úroveň je **PerGB2018**. 
+>Pokud vytváříte nebo konfigurujete pracovní prostor Log Analytics v předplatném, které se přihlásilo k novému cenovému modelu od dubna 2018, bude jediná platná Log Analytics cenová úroveň **PerGB2018**. 
 >
 
 ### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
@@ -115,22 +115,22 @@ Následující parametry nastavení výchozí hodnoty:
     }
     ```
 
-2. Upravte šablonu podle svých požadavků. Kontrola [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referenční dokumentace se dozvíte, jaké vlastnosti a hodnoty jsou podporovány. 
-3. Uložte soubor jako **deploylaworkspacetemplate.json** do místní složky.   
-4. Jste připraveni k nasazení této šablony. Ze složky obsahující šablonu použijte následující příkazy:
+2. Upravte šablonu tak, aby splňovala vaše požadavky. Informace o podporovaných vlastnostech a hodnotách najdete v referenčních informacích k [šabloně Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) . 
+3. Uložte tento soubor jako **deploylaworkspacetemplate. JSON** do místní složky.   
+4. Jste připraveni tuto šablonu nasadit. Použijte následující příkazy ze složky obsahující šablonu. Po zobrazení výzvy k zadání názvu pracovního prostoru zadejte název, který je globálně jedinečný v rámci všech předplatných Azure.
 
     ```powershell
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
     ```
 
-Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:
+Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která obsahuje výsledek:
 
-![Příklad výsledků po dokončení nasazení](media/quick-create-workspace-posh/template-output-01.png)
+![Příklad výsledku po dokončení nasazení](media/quick-create-workspace-posh/template-output-01.png)
 
-## <a name="next-steps"></a>Další postup
-Teď, když máte k dispozici pracovní prostor, konfigurace shromažďování dat monitorování telemetrických dat a spustit prohledávání protokolů pro analýzu těchto dat přidat řešení správy, které poskytují další data a analytické přehledy.  
+## <a name="next-steps"></a>Další kroky
+Teď, když máte dostupný pracovní prostor, můžete nakonfigurovat shromažďování telemetrie monitorování, spustit prohledávání protokolů a tato data analyzovat a přidat řešení pro správu, která poskytují další data a analytické přehledy.  
 
-* Pokud chcete povolit shromažďování dat z prostředků Azure pomocí diagnostiky Azure nebo do úložiště Azure, najdete v článku [protokoly služby Azure shromažďovat metriky pro použití ve službě Azure Monitor a](../platform/collect-azure-metrics-logs.md).  
-* Přidat [System Center Operations Manager jako zdroj dat](../platform/om-agents.md) shromažďovat data z agenty posílající sestavy skupině pro správu nástroje Operations Manager a uloží je v pracovním prostoru Log Analytics.  
-* Připojit [nástroje Configuration Manager](../platform/collect-sccm.md) importovat počítače, které jsou členy kolekce v hierarchii.  
-* Zkontrolujte [řešení monitorování](../insights/solutions.md) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.
+* Pokud chcete povolit shromažďování dat z prostředků Azure pomocí Azure Diagnostics nebo úložiště Azure, přečtěte si téma [shromáždění protokolů služby Azure a metrik pro použití v Azure monitor](../platform/collect-azure-metrics-logs.md).  
+* Přidejte [System Center Operations Manager jako zdroj dat](../platform/om-agents.md) , abyste mohli shromažďovat data z agentů, kteří hlásí skupinu pro správu Operations Manager, a uložit je do pracovního prostoru Log Analytics.  
+* Připojte [Configuration Manager](../platform/collect-sccm.md) k importu počítačů, které jsou členy kolekcí v hierarchii.  
+* Projděte si dostupná [řešení pro monitorování](../insights/solutions.md) a postup přidání nebo odebrání řešení z pracovního prostoru.

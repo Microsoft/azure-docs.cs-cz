@@ -6,14 +6,14 @@ author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241785"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827359"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -59,7 +59,9 @@ V případě uzlů Windows serveru (aktuálně ve verzi Preview v AKS) web Windo
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?
 
-Každé nasazení AKS zahrnuje dvě skupiny prostředků:
+AKS se sestavuje na několika prostředcích infrastruktury Azure, včetně služby Virtual Machine Scale Sets, virtuálních sítí a spravovaných disků. Díky tomu můžete využívat spoustu základních funkcí platformy Azure v rámci spravovaného prostředí Kubernetes, které poskytuje AKS. Například většina typů virtuálních počítačů Azure se dá použít přímo s AKS a Azure Reservations se dá použít k automatickému přijetí slev na tyto prostředky.
+
+Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny prostředků:
 
 1. Vytvoříte první skupinu prostředků. Tato skupina obsahuje pouze prostředek služby Kubernetes. Poskytovatel prostředků AKS během nasazování automaticky vytvoří druhou skupinu prostředků. Příkladem druhé skupiny prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupiny prostředků, najdete v další části.
 1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako je *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
@@ -120,16 +122,16 @@ Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje 
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nemohu nastavit maxPods nižší než 30?
 
-V AKS můžete nastavit `maxPods` hodnotu při vytváření clusteru pomocí Azure CLI a Azure Resource Manager šablon. Kubenet i Azure CNI ale vyžadují *minimální hodnotu* (v době vytváření ověřený čas):
+V AKS můžete nastavit hodnotu `maxPods` při vytváření clusteru pomocí Azure CLI a Azure Resource Manager šablon. Kubenet i Azure CNI ale vyžadují *minimální hodnotu* (v době vytváření ověřený čas):
 
-| Sítě | Minimální | Maximum |
+| Síťové služby | Minimální | Maximum |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
+| CNI Azure | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat `maxPods` hodnotu nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > minimálního spravovaného doplňku.
+Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat hodnotu `maxPods` nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > minimálního spravovaného doplňku.
 
-Uživatelé nemohou přepsat minimální `maxPods` ověření.
+Uživatelé nemohou přepsat minimální `maxPods` ověřování.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžu u svých uzlů agentů AKS uplatnit slevy na rezervované platformy Azure?
 
@@ -137,7 +139,7 @@ Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, tak
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Můžu svůj cluster přesunout nebo migrovat mezi klienty Azure?
 
-`az aks update-credentials` Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+Pomocí příkazu `az aks update-credentials` můžete přesunout cluster AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
 
@@ -159,17 +161,17 @@ To platí, ale AKS to nedoporučuje. Upgrady by se měly provádět v ideálním
 
 Ne, odstraňte nebo odeberte všechny uzly ve stavu selhání nebo jinak odeberte z clusteru před upgradem.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Spustil (a) jsem cluster s odstraněním, ale zobrazí se chyba `[Errno 11001] getaddrinfo failed` 
 
 Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo více skupin zabezpečení sítě (skupin zabezpečení sítě) stále používány a jsou přidruženi ke clusteru.  Odeberte je prosím a pokuste se o odstranění znovu.
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Spustil (a) jsem upgrade, ale teď jsou moje lusky v cyklech havárií a testy připravenosti selžou?
 
-Potvrďte prosím, že váš instanční objekt nevypršel.  Podívejte se prosím na: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle neumožňuje zřídit LoadBalancers, připojení PVC atd.? 
 
-Potvrďte prosím, že váš instanční objekt nevypršel.  Podívejte se prosím na: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Můžu použít rozhraní API sady škálování pro virtuální počítače k ručnímu škálování?
 

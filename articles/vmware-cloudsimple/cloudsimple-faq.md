@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972858"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828922"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware podle CloudSimple
 
@@ -29,11 +29,11 @@ Privátní cloud CloudSimple je privátní vyhrazený Cloud, který se skládá 
 
 **Kde je služba CloudSimple k dispozici?**
 
-CloudSimple je k dispozici ve Východní USA a Západní USA oblasti s dalšími oblastmi již brzy.
+CloudSimple je k dispozici v oblastech Východní USA, Západní USA a Západní Evropa s dalšími oblastmi, které už brzy připravujeme.
 
 **Návody povolit předplatné pro CloudSimple?**
 
-Pokud chcete povolit službu CloudSimple, obraťte [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) se na svého zástupce účet Microsoft. Zadejte ID předplatného v e-mailu, pro který chcete povolit službu CloudSimple.  
+Můžete se obrátit na zástupce účet Microsoft na [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) a povolit tak předplatné služby CloudSimple. Zadejte ID předplatného v e-mailu, pro který chcete povolit službu CloudSimple.  
 
 **Návody přístup k portálu CloudSimple?**
 
@@ -72,7 +72,7 @@ Okruh Azure ExpressRoute je vysokorychlostní a s nízkou latencí a zabezpečen
 
 Za odchozí přenosy z sítě se neúčtují žádné CloudSimple poplatky.  Standardní sazby za Azure se vztahují na jakýkoliv výstupní provoz z vaší virtuální sítě nebo z místního okruhu ExpressRoute.
 
-## <a name="networking"></a>Sítě
+## <a name="networking"></a>Síťové služby
 
 **Jaké síťové funkce jsou k dispozici pro můj privátní cloud?**
 
@@ -100,20 +100,21 @@ CloudSimple poskytuje následující funkce zabezpečení pro zabezpečení vaš
 * **Zabezpečení sítě**. Řízení toku provozu sítě pomocí pravidel brány firewall, která platí mezi Vaším privátním cloudem a internetem, Vaším privátním cloudem a místním prostředím nebo v podsítích vašeho privátního cloudu.
 * **Zabezpečené, soukromé připojení**. Mezi vaší místní sítí a vaším předplatným Azure je navázáno zabezpečené privátní připojení.
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní
 
 **Jaký druh hostitelů je k dispozici?**
 
 CloudSimple nabízí tyto typy hostitelů:
 
-* **Uzel CS28:** Procesor: 2x 2,2 GHz, celkem 28 jader, 48 HT.  Paměť RAM: 256 GB.  Storage: 1600 GB NVMe cache, 5760 GB dat (all-Flash). Sítě 2x25Gbe NIC
-* **Uzel CS36:** PROCESOR 2x 2,3 GHz, celkem 36 jader, 72 HT.  Paměť RAM: 512 GB.  Storage: 3200 GB NVMe cache 11520 GB dat (vše-bliknutí).  Sítě 2x25Gbe NIC
+* **Uzel CS28:** Procesor: 2x 2,2 GHz, celkem 28 jader, 48 HT.  PAMĚŤ RAM: 256 GB.  Úložiště: 1600 GB NVMe cache, 5760 GB dat (all-Flash). Síť: 4x25Gbe NIC
+* **Uzel CS36:** PROCESOR 2x 2,3 GHz, celkem 36 jader, 72 HT.  PAMĚŤ RAM: 512 GB.  Úložiště: 3200 GB NVMe cache 11520 GB data (vše-bliknutí).  Síť: 4x25Gbe NIC
+* **Uzel CS36m:** PROCESOR 2x 2,3 GHz, celkem 36 jader, 72 HT.  PAMĚŤ RAM: 576 GB.  Úložiště: 3200 GB NVMe cache 13360 GB data (vše-bliknutí).  Síť: 4x25Gbe NIC
 
 **Jak se zpracovávají chyby hardwaru?**
 
 Všechny infrastruktury CloudSimple jsou nepřetržitě monitorovány platformou CloudSimple a týmy provozu služeb.  Pokud dojde k selhání hardwaru, do privátního cloudu se přidá nový uzel a neúspěšný uzel se odebere.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 **Jaký typ úložiště podporuje privátní cloud?**
 
@@ -126,11 +127,11 @@ Ano.  Úložiště síti vSAN můžete nastavit v privátním cloudu, abyste moh
 
 CloudSimple nepřetržitě monitoruje všechny hardwarové součásti privátního cloudu.  Pokud se zjistilo selhání disku nebo je disk označený jako neúspěšný (založený na heuristikách), do privátního cloudu se automaticky přidá nový uzel.  Uzel s neúspěšným nebo neúspěšným diskem se odebere z privátního cloudu.
 
-## <a name="vmware"></a>VMware
+## <a name="vmware"></a>Hostiteli
 
 **Návody provádět rozsáhlé nahrávání nebo migraci aplikací a dat z místního prostředí?**
 
-CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Vaše možnosti jsou:
+CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Mezi možnosti patří:
 
 * HCX VMware pro hromadnou migraci dat.
 * Studená migrace dat pomocí úložiště vMotion z místního prostředí do CloudSimple.
@@ -149,7 +150,7 @@ CloudSimple neprovede upgrady ani aktualizace aplikací nainstalovaných v priv�
 
 **Které služby Azure jsou podporovány?**
 
-CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Příklady obsahují:
+CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Příklady:
 
 * **Azure Active Directory** jako zdroj identity pro CloudSimple vCenter.
 * **Úložiště Azure** pro ukládání záloh, obrázků a dalších dat z vašeho privátního cloudu.

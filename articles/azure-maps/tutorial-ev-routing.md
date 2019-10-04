@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803926"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836381"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Směrování elektrického vozidla pomocí Azure Notebooks (Python)
 
-Azure Maps je portfolio rozhraní API geoprostorové služby nativně integrovaných do Azure, které umožňuje vývojářům, podnikům a nezávislým výrobcům softwaru vytvářet aplikace s podporou polohy a řešení IoT, mobility, logistiky a sledování prostředků. Rozhraní REST API Azure Maps můžete volat z jazyků, jako je Python a R, a umožnit tak scénáře geoprostorového testování dat a strojového učení. Azure Maps nabízí robustní sadu [rozhraní API pro směrování]([https://docs.microsoft.com/rest/api/maps/route) , která umožňuje uživatelům vypočítat trasy mezi několika datovými body na základě různých podmínek, jako je typ vozidla nebo dosažitelná oblast. V tomto kurzu Vás provedeme scénářem, který vám pomůže s řidičem elektrického vozidla, u kterého je nedostatek energie na baterii, aby bylo možné najít nejbližší možnou zpoplatněnou stanici s ohledem na dobu trvání jednotky.
+Azure Maps je portfolio rozhraní API geoprostorové služby nativně integrovaných do Azure, které umožňuje vývojářům, podnikům a nezávislým výrobcům softwaru vytvářet aplikace s podporou polohy a řešení IoT, mobility, logistiky a sledování prostředků. Rozhraní REST API Azure Maps můžete volat z jazyků, jako je Python a R, a umožnit tak scénáře geoprostorového testování dat a strojového učení. Azure Maps nabízí robustní sadu [rozhraní API pro směrování](https://docs.microsoft.com/rest/api/maps/route) , která umožňuje uživatelům vypočítat trasy mezi několika datovými body na základě různých podmínek, jako je typ vozidla nebo dosažitelná oblast. V tomto kurzu Vás provedeme scénářem, který vám pomůže s řidičem elektrického vozidla, u kterého je nedostatek energie na baterii, aby bylo možné najít nejbližší možnou zpoplatněnou stanici s ohledem na dobu trvání jednotky.
 
 V tomto kurzu provedete tyto kroky:
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete tyto kroky:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění vozidel na základě času.
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Podle pokynů v části [Správa účtu](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) Vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](./tutorial-search-location.md#getkey) Získejte primární klíč předplatného pro váš účet.
 
@@ -52,7 +52,7 @@ Aby bylo možné postupovat spolu s tímto kurzem, budete muset vytvořit projek
     * Název projektu
     * ID projektu
  
-    ![Vytvořit projekt](./media/tutorial-ev-routing/create-project-window.png)
+    ![vytvořit projekt](./media/tutorial-ev-routing/create-project-window.png)
 
 5. Po vytvoření projektu si stáhněte [soubor dokumentu poznámkového bloku Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [úložiště Jupyter notebook Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
 
@@ -64,7 +64,7 @@ Aby bylo možné postupovat spolu s tímto kurzem, budete muset vytvořit projek
 
 Abyste lépe pochopili funkčnost implementovaná v souboru poznámkového bloku, doporučujeme, abyste spustili kód v poznámkovém bloku vždy po jedné buňce. Můžete spustit kód v každé buňce kliknutím na tlačítko **Spustit** v horní části aplikace poznámkového bloku.
 
-  ![Spouštěl](./media/tutorial-ev-routing/run.png)
+  ![spouštěl](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
 
@@ -77,9 +77,9 @@ Aby bylo možné spustit kód v poznámkovém bloku, budete muset nainstalovat b
     * V prvním rozevíracím seznamu vyberte možnost **požadavky. txt**.
     * V druhém ovládacím prvku rozevírací seznam vyberte soubor "požadavky. txt".
     * V třetím ovládacím prvku rozevírací seznam vyberte Python verze 3,6 jako verzi Pythonu.
-7. Vyberte **Save** (Uložit).
+7. Vyberte **Uložit**.
 
-    ![Nainstalovat balíčky](./media/tutorial-ev-routing/install-packages.png)
+    ![instalovat balíčky](./media/tutorial-ev-routing/install-packages.png)
 
 ## <a name="load-required-modules-and-frameworks"></a>Načíst požadované moduly a architektury
 
@@ -367,7 +367,7 @@ await session.close()
 display(Image(staticMapImage))
 ```
 
-![trasa](./media/tutorial-ev-routing/route.png)
+![cestě](./media/tutorial-ev-routing/route.png)
 
 ## <a name="next-steps"></a>Další kroky
 

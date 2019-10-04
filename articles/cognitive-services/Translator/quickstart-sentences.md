@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získat délku věty – Translator Text API'
+title: 'Rychlý Start: získání délek vět – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak určit délku věty pomocí Translator Text API.
 services: cognitive-services
@@ -11,20 +11,18 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 97db9e145c290e97dbda63a6207f5101a80d67ec
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: fc2d75c47cb9a1f4011e6147f46ec2df31216482
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393934"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827447"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Rychlý start: K určení délky věty použijte Translator Text API.
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Rychlý Start: použití Translator Text API k určení délky věty
 
 V tomto rychlém startu se dozvíte, jak určit délku vět pomocí Translator Text API.
 
-K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
+Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem Translator text. Pokud účet nemáte, můžete si pomocí [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/) získat klíč předplatného.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -58,8 +56,8 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 
 ## <a name="see-also"></a>Viz také:
 
-* [Překlad textu](quickstart-translate.md)
-* [Transliterace textu](quickstart-transliterate.md)
-* [Identifikace jazyka podle vstupu](quickstart-detect.md)
-* [Získání alternativních překladů](quickstart-dictionary.md)
-* [Získání seznamu podporovaných jazyků](quickstart-languages.md)
+* [Přeložit text](quickstart-translate.md)
+* [Přepisovat text](quickstart-transliterate.md)
+* [Identifikujte jazyk podle vstupu](quickstart-detect.md)
+* [Získat alternativní překlady](quickstart-dictionary.md)
+* [Získat seznam podporovaných jazyků](quickstart-languages.md)

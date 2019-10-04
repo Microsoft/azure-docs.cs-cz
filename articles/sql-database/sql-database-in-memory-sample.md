@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567989"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828215"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -24,8 +24,8 @@ Technologie v paměti v Azure SQL Database umožňují zvýšit výkon aplikace 
 
 V tomto článku se zobrazí dvě ukázky, které ilustrují použití OLTP v paměti a také indexy columnstore v Azure SQL Database.
 
-Další informace naleznete v tématu:
-- [OLTP v paměti – přehled a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (obsahuje odkazy na Zákaznické případové studie a informace pro začátek)
+Další informace naleznete v tématu:
+- [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
 - [Dokumentace k OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Průvodce indexy columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hybridní transakční/analytické zpracování (HTAP), označované také jako [provozní analýza v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
@@ -34,7 +34,7 @@ Další informace naleznete v tématu:
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Instalace ukázky OLTP v paměti
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. instalace ukázky OLTP v paměti
 
 Ukázkovou databázi AdventureWorksLT můžete vytvořit několika kliknutími v [Azure Portal](https://portal.azure.com/). Pak kroky v této části vysvětlují, jak můžete rozšířit vaši databázi AdventureWorksLT pomocí objektů OLTP v paměti a předvést výkonnostní výhody.
 
@@ -49,9 +49,9 @@ Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, na
 
 2. Připojte se k databázi pomocí SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
+3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
-4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON` Klauzule CREATE TABLE příkazy jsou klíčové. Příklad:
+4. Vložte skript T-SQL do SSMS a potom spusťte skript. Klauzule `MEMORY_OPTIMIZED = ON` CREATE TABLE příkazy jsou zásadní. Příklad:
 
 
 ```sql
@@ -78,16 +78,16 @@ Výsledkem je **0** znamená, že v paměti není podporována, a hodnota **1** 
 
 #### <a name="about-the-created-memory-optimized-items"></a>O vytvořených paměťově optimalizovaných položkách
 
-**Tabulky**: Ukázka obsahuje následující paměťově optimalizované tabulky:
+**Tabulky**: ukázka obsahuje následující paměťově optimalizované tabulky:
 
-- SalesLT.Product_inmem
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
+- Tabulky SalesLT. Product_inmem
+- Tabulky SalesLT. SalesOrderHeader_inmem
+- Tabulky SalesLT. SalesOrderDetail_inmem
 - Demo. DemoSalesOrderHeaderSeed
 - Demo. DemoSalesOrderDetailSeed
 
 
-Paměťově optimalizované tabulky můžete kontrolovat pomocí **Průzkumník objektů** v SSMS. V případě, že kliknete pravým tlačítkem myši na **tabulka** > ,**Nastavení** > filtru**filtru** > **je optimalizován** Hodnota se rovná 1.
+Paměťově optimalizované tabulky můžete kontrolovat pomocí **Průzkumník objektů** v SSMS. Klikněte pravým tlačítkem na **tabulky** > **Filtr** > **nastavení filtru** > **je paměťově optimalizovaná**. Hodnota se rovná 1.
 
 
 Nebo můžete zadat dotaz na zobrazení katalogu, například:
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Nativně kompilovaná uložená procedura**: Pomocí dotazu zobrazení katalogu můžete zkontrolovat tabulky SalesLT. USP _InsertSalesOrder_inmem:
+**Nativně kompilovaná uložená procedura**: pomocí dotazu zobrazení katalogu můžete zkontrolovat tabulky SalesLT. USP _insertsalesorder_inmem:
 
 
 ```sql
@@ -116,8 +116,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Jediným rozdílem mezi těmito dvěma *uloženými postupy* je, že první postup používá paměťově optimalizované verze tabulek, zatímco druhý postup používá běžné tabulky na disku:
 
-- SalesLT **.** usp_InsertSalesOrder **_inmem**
-- SalesLT **.** usp_InsertSalesOrder **_ondisk**
+- Tabulky SalesLT **.** usp_InsertSalesOrder **_inmem**
+- Tabulky SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 V této části se naučíte, jak pomocí praktického nástroje **OSTRESS. exe** spouštět dva uložené procedury na úrovních stresující. Můžete porovnat, jak dlouho trvá dokončení dvou zátěžových testů.
@@ -140,8 +140,8 @@ V této části se zobrazuje skript T-SQL, který je vložený v našem příkaz
 
 Následující skript vloží ukázkovou prodejní objednávku s pěti položkami řádků do následujících paměťově optimalizovaných *tabulek*:
 
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
+- Tabulky SalesLT. SalesOrderHeader_inmem
+- Tabulky SalesLT. SalesOrderDetail_inmem
 
 
 ```sql
@@ -171,7 +171,7 @@ end
 Chcete-li nastavit verzi *_ondisk* předchozího skriptu T-SQL pro OSTRESS. exe, nahraďte oba výskyty podřetězce *_inmem* parametrem *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>Instalace RML nástrojů a`ostress`
+### <a name="install-rml-utilities-and-ostress"></a>Instalace nástrojů RML a `ostress`
 
 
 V ideálním případě byste měli v úmyslu spustit OSTRESS. exe na virtuálním počítači Azure (VM). Vytvořili jste [virtuální počítač Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) ve stejné geografické oblasti Azure, kde se nachází vaše databáze AdventureWorksLT. Místo toho ale můžete spustit OSTRESS. exe na svém přenosném počítači.
@@ -179,7 +179,7 @@ V ideálním případě byste měli v úmyslu spustit OSTRESS. exe na virtuáln�
 
 Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte nástroje RML (replay Markup Language). Mezi tyto nástroje patří OSTRESS. exe.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématu:
 - Diskuze OSTRESS. exe v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx)
 - [Blog pro instalaci OSTRESS. exe](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
@@ -198,10 +198,10 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Nejdřív spusťte úlohu *_inmem* zátěže.
+### <a name="run-the-_inmem-stress-workload-first"></a>Nejdřív spusťte úlohu *_inmem* zátěže.
 
 
-Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazový řádek OSTRESS. exe. Parametry příkazového řádku přímo `ostress` na:
+Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazový řádek OSTRESS. exe. Parametry příkazového řádku Direct `ostress` do:
 
 - Spouštějte připojení 100 souběžně (-N100).
 - U každého připojení spusťte skript T-SQL 50 časy (-R50).
@@ -223,7 +223,7 @@ Spuštění předchozího příkazového řádku OSTRESS. exe:
 
 2. Zkopírujte text předchozího příkazového řádku OSTRESS. exe do schránky.
 
-3. `<placeholders>` Nahraďte parametrem-S-U-P-d správnými skutečnými hodnotami.
+3. Nahraďte `<placeholders>` pro parametry-S-U-P-d správnými skutečnými hodnotami.
 
 4. Spusťte upravený příkazový řádek v okně RML cmd.
 
@@ -231,12 +231,12 @@ Spuštění předchozího příkazového řádku OSTRESS. exe:
 #### <a name="result-is-a-duration"></a>Výsledkem je doba trvání
 
 
-Po `ostress.exe` dokončení zapíše dobu běhu jako poslední řádek výstupu v okně RML cmd. Například kratší testovací běh uplynul přibližně 1,5 minut:
+Po dokončení `ostress.exe` zapíše dobu běhu jako poslední řádek výstupu v okně RML cmd. Například kratší testovací běh uplynul přibližně 1,5 minut:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Resetovat, upravit pro *_ondisk*a pak znovu spustit
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Resetovat, upravit pro *_ondisk*a pak znovu spustit
 
 
 Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky pro spuštění *_ondisk* :
@@ -247,7 +247,7 @@ Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Úpravou příkazového řádku OSTRESS. exe nahraďte všechny _inmemy *_ondisk*.
+2. Úpravou příkazového řádku OSTRESS. exe nahraďte všechny *_inmemy* *_ondisk*.
 
 3. Spusťte OSTRESS. exe podruhé a zachyťte výsledek trvání.
 
@@ -256,13 +256,13 @@ Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky
 
 #### <a name="expected-comparison-results"></a>Očekávané výsledky porovnání
 
-Naše testy v paměti ukázaly, že výkon pro tuto úlohu zjednodušený je po **devíti časech** vylepšený `ostress` a běží na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
+Naše testy v paměti ukázaly, že výkon u této zjednodušený úlohy byl během **devíti dob** vylepšený, a `ostress` spuštěná na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Nainstalovat ukázku analýzy v paměti
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. Nainstalujte ukázku analýzy v paměti.
 
 
 V této části porovnáte výsledky IO a STATISTICS, když používáte index columnstore oproti tradičnímu indexu b-Tree.
@@ -279,7 +279,7 @@ Pro analýzy v reálném čase pro OLTP úlohy je často vhodné použít neclus
    - Použijte tento přesný název.
    - Vyberte libovolnou úroveň služby Premium.
 
-2. Zkopírujte [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) do schránky.
+2. Zkopírujte [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) do schránky.
    - Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
    - Skript vytvoří tabulku dimenzí a dvě tabulky faktů. Do tabulek faktů se naplní 3 500 000 řádků.
    - Dokončení skriptu může trvat 15 minut.
@@ -302,14 +302,14 @@ Pro analýzy v reálném čase pro OLTP úlohy je často vhodné použít neclus
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Klíčové dotazy pro porovnání indexu columnstore
 
 
-Existuje [několik typů dotazů T-SQL, které můžete spustit,](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) abyste viděli zvýšení výkonu. V kroku 2 ve skriptu T-SQL věnujte pozornost tomuto páru dotazů. Liší se pouze na jednom řádku:
+Existuje [několik typů dotazů T-SQL, které můžete spustit,](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) abyste viděli zvýšení výkonu. V kroku 2 ve skriptu T-SQL věnujte pozornost tomuto páru dotazů. Liší se pouze na jednom řádku:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Clusterovaný index columnstore se nachází v tabulce FactResellerSalesXL\_Ski.
+Clusterovaný index columnstore je v tabulce FactResellerSalesXL @ no__t-0CCI.
 
 Následující výpis skriptu T-SQL vytiskne statistiku pro vstupně-výstupní operace a čas pro dotaz každé tabulky.
 
@@ -380,9 +380,9 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start 1: Technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Rychlý Start 1: technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](sql-database-in-memory-oltp-migration.md)
 
@@ -405,7 +405,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - Podívejte se [na téma běžné vzorce úloh a důležité informace k migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisují vzorce úloh, které OLTP v paměti často přináší výrazné zvýšení výkonu).
 
-#### <a name="application-design"></a>Návrh aplikací
+#### <a name="application-design"></a>Návrh aplikace
 
 - [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 
@@ -417,4 +417,4 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Nástroje pro SQL Server data (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

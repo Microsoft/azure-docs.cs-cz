@@ -1,0 +1,82 @@
+---
+title: Řešení potíží s přihlašováním v Azure AD Domain Services | Microsoft Docs
+description: Naučte se řešit běžné problémy s přihlašováním uživatelů a chyby v Azure Active Directory Domain Services.
+services: active-directory-ds
+author: iainfoulds
+manager: daveba
+ms.service: active-directory
+ms.subservice: domain-services
+ms.workload: identity
+ms.topic: troubleshooting
+ms.date: 10/02/2019
+ms.author: iainfou
+ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827050"
+---
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure AD Domain Services
+
+Nejběžnějšími důvody pro uživatelský účet, který se nemůže přihlásit ke spravované doméně Azure služba AD DS, jsou tyto scénáře:
+
+* [Účet zatím není synchronizovaný do Azure služba AD DS.](#account-isnt-synchronized-into-azure-ad-ds-yet)
+* [Azure služba AD DS nemá hodnoty hash hesla, aby se mohl přihlásit k účtu.](#azure-ad-ds-doesnt-have-the-password-hashes)
+* [Účet je uzamčený.](#the-account-is-locked-out)
+
+> [!TIP]
+> Azure služba AD DS se nemůže synchronizovat s přihlašovacími údaji pro účty, které jsou externí pro tenanta Azure AD. Externí uživatelé se nemůžou přihlásit ke spravované doméně Azure služba AD DS.
+
+## <a name="account-isnt-synchronized-into-azure-ad-ds-yet"></a>Účet se zatím nesynchronizoval do Azure služba AD DS
+
+V závislosti na velikosti adresáře může trvat nějakou dobu, než jsou uživatelské účty a hodnoty hash přihlašovacích údajů dostupné v Azure služba AD DS. U rozsáhlých adresářů může tato počáteční synchronizace z Azure AD trvat několik hodin a až jeden den nebo dvě. Před opakovaným pokusem o ověření se ujistěte, že jste čekali dostatečně dlouho.
+
+Pro hybridní prostředí, která uživatel Azure AD Connect k synchronizaci místních adresářových dat do služby Azure AD, se ujistěte, že používáte nejnovější verzi Azure AD Connect a že jste [nakonfigurovali Azure AD Connect k provedení úplné synchronizace po povolení Azure. služba AD DS][azure-ad-connect-phs]. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
+
+Pokud budete mít nadále problémy s účty, které se nesynchronizují prostřednictvím Azure AD Connect, restartujte službu Azure AD Sync. Z počítače s nainstalovanou Azure AD Connect otevřete okno příkazového řádku a spusťte následující příkazy:
+
+```console
+net stop 'Microsoft Azure AD Sync'
+net start 'Microsoft Azure AD Sync'
+```
+
+## <a name="azure-ad-ds-doesnt-have-the-password-hashes"></a>Azure služba AD DS nemá hodnoty hash hesel.
+
+Azure AD negeneruje nebo ukládá hodnoty hash hesel ve formátu, který je vyžadován pro ověřování protokolem NTLM nebo Kerberos, dokud nepovolíte služba AD DS Azure pro vašeho tenanta. Z bezpečnostních důvodů Azure AD také neukládá přihlašovací údaje hesla ve formě nešifrovaných textů. Proto služba Azure AD nemůže automaticky generovat tyto hodnoty hash hesla NTLM nebo Kerberos na základě stávajících přihlašovacích údajů uživatelů.
+
+### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybridní prostředí s místní synchronizací
+
+Pro hybridní prostředí, která používají Azure AD Connect k synchronizaci z místního prostředí služba AD DS můžete v Azure AD místně vygenerovat a synchronizovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Po vytvoření spravované domény Azure služba AD DS [Povolte synchronizaci hodnot hash hesel pro Azure Active Directory Domain Services][azure-ad-connect-phs]. Bez dokončení kroku synchronizace hodnoty hash hesla se nemůžete přihlásit k účtu pomocí Azure služba AD DS. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
+
+Další informace najdete v tématu [Jak funguje synchronizace hodnot hash hesel pro Azure služba AD DS][phs-process].
+
+### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Pouze cloudová prostředí bez místní synchronizace
+
+Azure služba AD DS spravované domény, které nemají místní synchronizaci, jenom účty ve službě Azure AD, musí také vygenerovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Pokud se účet jenom pro Cloud nemůže přihlásit, má po povolení Azure služba AD DS úspěšné dokončení procesu změny hesla pro účet?
+
+* **Ne, heslo se nezměnilo.**
+    * [Změňte heslo pro účet][enable-user-accounts] , abyste vygenerovali požadované hodnoty hash hesla, a pak počkejte 15 minut, než se znovu pokusíte o přihlášení.
+    * Pokud zakážete Azure služba AD DS a pak znovu povolíte, každý účet musí znovu postupovat podle kroků a změnit heslo a vygenerovat požadované hodnoty hash hesla.
+* **Ano, heslo bylo změněno.**
+    * Pokuste se přihlásit pomocí *hlavního názvu uživatele (UPN)* , jako je například `driley@contoso.com`, místo formátu *sAMAccountName* jako `CONTOSO\deeriley`.
+    * *SAMAccountName* se může automaticky vygenerovat pro uživatele, jejichž předpona hlavního názvu uživatele je příliš dlouhá nebo je stejná jako jiný uživatel ve spravované doméně. Formát *UPN* je v rámci TENANTA Azure AD zaručený jako jedinečný.
+
+## <a name="the-account-is-locked-out"></a>Účet je uzamčený.
+
+Uživatelský účet v Azure služba AD DS je uzamčený, když byla splněna definovaná prahová hodnota pro neúspěšné pokusy o přihlášení. Toto chování uzamčení účtu je navrženo tak, aby vás chránilo před opakovanými pokusy o přihlašování hrubou silou, které můžou znamenat automatizovaný digitální útok.
+
+Ve výchozím nastavení platí, že pokud se v 2 minutách vyskytne 5 špatný počet pokusů o zadání hesla, účet se zablokuje na 30 minut.
+
+Další informace a řešení problémů s uzamčením účtu najdete v tématu [řešení problémů s uzamčením účtu v Azure služba AD DS][troubleshoot-account-lockout].
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači do spravované domény Azure služba AD DS, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
+
+<!-- INTERNAL LINKS -->
+[troubleshoot-account-lockout]: troubleshoot-account-lockout.md
+[azure-ad-connect-phs]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[enable-user-accounts]:  tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds
+[phs-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[azure-ad-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

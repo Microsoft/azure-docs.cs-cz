@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39395c9d082bc40836c14ee4c0d328341f96edca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816120"
+ms.locfileid: "71828908"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Rychlý Start – vytvoření řešení Azure VMware pomocí služby CloudSimple
 
@@ -31,13 +31,13 @@ Přidělte bloku CIDR/28 pro podsíť brány.  Pro každou službu CloudSimple s
 
 Kontrola [požadavků na síť](cloudsimple-network-checklist.md). 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Vytvoření služby
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **službu CloudSimple**.
 
     ![Hledat službu CloudSimple](media/create-cloudsimple-service-search.png)
@@ -54,7 +54,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
     ![Vytvoření služby CloudSimple](media/create-cloudsimple-service.png)
 
-9. Klikněte na **OK**.
+9. Klikněte na tlačítko **OK**.
 
 Služba je vytvořena a přidána do seznamu služeb.
 
@@ -62,7 +62,7 @@ Služba je vytvořena a přidána do seznamu služeb.
 
 Pokud chcete nastavit kapacitu s průběžnými platbami pro prostředí privátního cloudu CloudSimple, nejdřív zřiďte uzly v Azure Portal.
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **uzly CloudSimple**.
 
     ![Hledat uzly CloudSimple](media/create-cloudsimple-node-search.png)
@@ -77,11 +77,11 @@ Pokud chcete nastavit kapacitu s průběžnými platbami pro prostředí privát
 7. Zadejte předponu pro identifikaci uzlů.
 8. Vyberte umístění pro prostředky uzlu.
 9. Vyberte vyhrazené umístění pro hostování prostředků uzlu.
-10. Vyberte typ uzlu. Můžete zvolit [možnost CS28 nebo CS36](cloudsimple-node.md). Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
+10. Vyberte [typ uzlu](cloudsimple-node.md).
 11. Vyberte počet uzlů, které se mají zřídit.
 12. Vyberte **zkontrolovat + vytvořit**.
 13. Zkontrolujte nastavení. Chcete-li změnit nastavení, klikněte na tlačítko **Předchozí**.
-14. Vyberte **Create** (Vytvořit).
+14. Vyberte **vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

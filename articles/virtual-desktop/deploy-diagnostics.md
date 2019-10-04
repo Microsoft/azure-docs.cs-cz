@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676658"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839635"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
 
@@ -203,7 +203,7 @@ Po přihlášení k účtu s použitím informací, které jste obdrželi z vaš
 
 ### <a name="how-to-read-activity-search-results"></a>Čtení výsledků hledání aktivit
 
-Aktivity jsou seřazené podle časového razítka nejdříve s poslední aktivitou. Pokud výsledky vrátí chybu, nejprve zkontrolujte, zda se jedná o chybu služby. V případě chyb služby vytvořte lístek podpory s informacemi o aktivitě, které nám pomůžou problém ladit. Všechny ostatní typy chyb obvykle mohou vyřešit uživatel nebo správce. Seznam nejběžnějších scénářů chyb a jejich řešení najdete v tématu [Identifikace problémů s diagnostickou funkcí](diagnostics-role-service.md#common-error-scenarios).
+Aktivity jsou seřazené podle časového razítka nejdříve s poslední aktivitou. Pokud výsledky vrátí chybu, nejprve zkontrolujte, zda se jedná o chybu služby. V případě chyb služby vytvořte lístek podpory s informacemi o aktivitě, které nám pomůžou problém ladit. Všechny ostatní typy chyb obvykle mohou vyřešit uživatel nebo správce. Seznam nejběžnějších scénářů chyb a jejich řešení najdete v tématu [identifikace a Diagnostika problémů](diagnostics-role-service.md#common-error-scenarios).
 
 >[!NOTE]
 >Chyby služby se nazývají "externí chyby" v odkazované dokumentaci. Tato akce se změní při aktualizaci Reference prostředí PowerShell.

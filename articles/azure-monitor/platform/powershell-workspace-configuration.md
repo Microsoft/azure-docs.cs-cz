@@ -1,6 +1,6 @@
 ---
-title: Použití Powershellu k vytvoření a konfigurace pracovního prostoru Log Analytics | Dokumentace Microsoftu
-description: Log Analytics pracovní prostory v Azure Monitor ukládají data ze serverů ve vaší místní nebo cloudové infrastruktuře. Shromažďovat počítačových dat z Azure storage generování diagnostiky Azure.
+title: Použití PowerShellu k vytvoření a konfiguraci pracovního prostoru Log Analytics | Microsoft Docs
+description: Log Analytics pracovní prostory v Azure Monitor ukládají data ze serverů ve vaší místní nebo cloudové infrastruktuře. Při generování diagnostikou Azure můžete shromažďovat data počítače z úložiště Azure.
 services: log-analytics
 author: bwren
 ms.service: log-analytics
@@ -8,33 +8,33 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
-ms.openlocfilehash: ec72b0b9f2cdc932c7fb0c8a6fd8daecbc470c09
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 16cad34290ecc518e95ec1a0ce0950722cfe0780
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779958"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836148"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
 
-[Rutiny Log Analytics PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) můžete použít k provádění různých funkcí v pracovním prostoru Log Analytics v Azure monitor z příkazového řádku nebo jako součást skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
+[Rutiny Log Analytics PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) můžete použít k provádění různých funkcí v pracovním prostoru Log Analytics v Azure monitor z příkazového řádku nebo jako součást skriptu.  Mezi příklady úloh, které můžete provádět pomocí PowerShellu, patří:
 
-* Vytvoření pracovního prostoru
-* Přidat nebo odebrat řešení
+* Vytvořit pracovní prostor
+* Přidání nebo odebrání řešení
 * Import a export uložených hledání
-* Vytvořit skupinu počítačů
-* Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows
-* Shromáždit čítače výkonu z počítačů se systémy Linux a Windows
-* Shromažďování událostí z protokolu syslog pro počítače s Linuxem
-* Shromažďovat události z protokolů událostí Windows
-* Shromažďovat vlastní protokoly událostí
-* Přidat agenta log analytics na virtuálním počítači Azure
-* Nakonfigurujte log analytics a index data shromážděná pomocí diagnostiky Azure
+* Vytvoření skupiny počítačů
+* Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+* Shromažďování čítačů výkonu z počítačů se systémy Linux a Windows
+* Shromažďování událostí z protokolu syslog v počítačích se systémem Linux
+* Shromažďovat události z protokolů událostí systému Windows
+* Shromažďování vlastních protokolů událostí
+* Přidání agenta Log Analytics do virtuálního počítače Azure
+* Konfigurace Log Analytics na indexovaná data shromážděná pomocí diagnostiky Azure
 
-Tento článek obsahuje dva příklady, které znázorňují některé z funkcí, které můžete provádět z prostředí PowerShell.  Můžete se podívat do [Reference k rutinám Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) pro jiné funkce.
+Tento článek poskytuje dva ukázky kódu, které ilustrují některé z funkcí, které můžete provádět z PowerShellu.  Další funkce najdete v [referenčních informacích k rutině prostředí PowerShell pro Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 
 > [!NOTE]
-> Log Analytics se dříve nazývala Operational Insights, což je důvod, proč je název používaný v rutinách.
+> Log Analytics se dřív volala Operational Insights, což znamená, proč se jedná o název, který se používá v rutinách.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,25 +43,25 @@ Tyto příklady pracují s verzí 1.0.0 nebo novějším v modulu AZ. Operationa
 
 
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvoření a konfigurace pracovního prostoru Log Analytics
-Následující ukázkový skript ukazuje, jak:
+Následující ukázka skriptu ukazuje, jak:
 
-1. Vytvoření pracovního prostoru
+1. Vytvořit pracovní prostor
 2. Seznam dostupných řešení
 3. Přidání řešení do pracovního prostoru
-4. Importovat uložené hledání
-5. Export uložit hledání
-6. Vytvořit skupinu počítačů
-7. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem Windows
-8. Shromáždit čítače výkonu logický Disk z počítačů s Linuxem (% volných uzlů Inode; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
-9. Shromažďovat události procesu syslog z počítačů s Linuxem
-10. Shromáždit události chyby a upozornění z protokolu událostí aplikace z počítačů s Windows
-11. Shromažďovat čítač výkonu paměť v MB k dispozici z počítačů s Windows
-12. Shromažďovat vlastní protokol
+4. Import uložených hledání
+5. Export uložených hledání
+6. Vytvoření skupiny počítačů
+7. Povolit shromažďování protokolů IIS z počítačů s nainstalovaným agentem Windows
+8. Shromáždit čítače výkonu logických disků z počítačů se systémem Linux (% využitých uzlů inode; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení z disku/s; Zápisy na disk/s)
+9. Shromažďovat události syslogu z počítačů se systémem Linux
+10. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítačů se systémem Windows
+11. Shromažďovat čítač výkonu MB dostupné paměti z počítačů s Windows
+12. Shromáždění vlastního protokolu
 
 ```powershell
 
 $ResourceGroup = "oms-example"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
 $Location = "westeurope"
 
 # List of solutions to enable
@@ -178,9 +178,9 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
-Ve výše uvedeném příkladu byl regexDelimiter definován jako\\n pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
+Ve výše uvedeném příkladu byl regexDelimiter definován jako "\\n" pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
 
-| Formát | Formát regulárního výrazu JSON \\ používá dvě pro každý \ ve standardním regulárním výrazu, takže pokud se testování \\ v aplikaci Regex sníží na \ | | |
+| Formát | Formát regulárního výrazu JSON používá ke každému regulárnímu regulárnímu výrazu dva \\, takže pokud testování v aplikaci RegEx snižuje \\ na \ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -195,32 +195,32 @@ Ve výše uvedeném příkladu byl regexDelimiter definován jako\\n pro nový �
 | `yyyy-MM-ddTHH:mm:ss` <br> T je literální písmeno T. | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurace Log Analytics pro odeslání diagnostiky Azure
-Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagnostiky Azure povolené a nakonfigurované pro zápis do pracovního prostoru Log Analytics. Tento přístup odesílá data přímo do pracovního prostoru a nevyžaduje zápis dat do účtu úložiště. Podporované prostředky zahrnují:
+Pro monitorování prostředků Azure bez agentů musí mít prostředky povolenu diagnostiku Azure a nakonfigurované pro zápis do Log Analyticsho pracovního prostoru. Tento přístup odesílá data přímo do pracovního prostoru a nevyžaduje zápis dat do účtu úložiště. Mezi podporované prostředky patří:
 
-| Typ prostředku | Logs | Metriky |
+| Typ prostředku | Protokolování | Metriky |
 | --- | --- | --- |
-| Brány Application Gateway    | Ano | Ano |
-| Účty Automation     | Ano | |
+| Aplikační brány    | Ano | Ano |
+| Účty služby Automation     | Ano | |
 | Účty Batch          | Ano | Ano |
-| Data Lake analytics     | Ano | |
-| Data Lake store         | Ano | |
-| Fond elastické SQL        |     | Ano |
+| Analýzy Data Lake     | Ano | |
+| Data Lake Store         | Ano | |
+| Elastický fond SQL        |     | Ano |
 | Obor názvů centra událostí     |     | Ano |
-| IoT Huby                |     | Ano |
+| Centra IoT                |     | Ano |
 | Key Vault               | Ano | |
 | Nástroje pro vyrovnávání zatížení          | Ano | |
 | Logic Apps              | Ano | Ano |
-| Network Security Groups (Skupiny zabezpečení sítě) | Ano | |
-| Azure Cache for Redis             |     | Ano |
-| Služby hledání         | Ano | Ano |
-| Obor názvů služby Service Bus   |     | Ano |
-| SQL (v12)               |     | Ano |
+| Skupiny zabezpečení sítě | Ano | |
+| Mezipaměť Azure pro Redis             |     | Ano |
+| Hledat služby         | Ano | Ano |
+| Obor názvů Service Bus   |     | Ano |
+| SQL (V12)               |     | Ano |
 | Weby               |     | Ano |
-| Farmy webových serverů        |     | Ano |
+| Webové serverové farmy        |     | Ano |
 
-Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
+Podrobnosti o dostupných metrikách najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/platform/metrics-supported.md).
 
-Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-schema.md).
+Podrobnosti o dostupných protokolech najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -230,21 +230,21 @@ $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/D
 Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
-Můžete také použít rutinu předchozí shromažďování protokolů z prostředků, které jsou v různých předplatných. Rutina může pracovat napříč předplatnými, protože poskytujete ID pro vytváření protokolů a pracovní prostor, do kterého jsou protokoly odesílány.
+Pomocí předchozí rutiny můžete také shromažďovat protokoly z prostředků, které jsou v různých předplatných. Rutina může pracovat napříč předplatnými, protože poskytujete ID pro vytváření protokolů a pracovní prostor, do kterého jsou protokoly odesílány.
 
 
 ## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurace pracovního prostoru Log Analytics ke shromáždění diagnostiky Azure z úložiště
-Shromažďovat data protokolu z v rámci běžící instance cloudovou službou modelu classic nebo clusteru service fabric, budete muset nejprve zapisovat data do služby Azure storage. Log Analytics pracovní prostor je pak nakonfigurovaný tak, aby shromáždil protokoly z účtu úložiště. Podporované prostředky zahrnují:
+Abyste mohli shromažďovat data protokolu z běžící instance klasické cloudové služby nebo clusteru Service Fabric, musíte nejdřív zapsat data do služby Azure Storage. Log Analytics pracovní prostor je pak nakonfigurovaný tak, aby shromáždil protokoly z účtu úložiště. Mezi podporované prostředky patří:
 
 * Klasické cloudové služby (webové a pracovní role)
-* Clustery Service fabric
+* Clustery Service Fabric
 
-Následující příklad ukazuje postup:
+Následující příklad ukazuje, jak:
 
 1. Zobrazí seznam existujících účtů a umístění úložiště, ze kterých bude pracovní prostor indexovat data.
-2. Vytvořit konfiguraci, kterou chcete číst z účtu úložiště
-3. Aktualizace nově vytvořeného konfigurace na index data z dalších umístěních
-4. Odstranit nově vytvořený konfiguraci
+2. Vytvoření konfigurace pro čtení z účtu úložiště
+3. Aktualizovat nově vytvořenou konfiguraci na indexovaná data z dalších umístění
+4. Odstraní nově vytvořenou konfiguraci.
 
 ```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
@@ -268,9 +268,9 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 ```
 
-Můžete také použít předchozí skript shromažďování protokolů z účtů úložiště v různých předplatných. Skript může pracovat mezi předplatnými, protože poskytujete ID prostředku účtu úložiště a odpovídající přístupový klíč. Při změně přístupového klíče, je potřeba aktualizovat úložiště přehled o nový klíč.
+Pomocí předchozího skriptu můžete také shromažďovat protokoly z účtů úložiště v různých předplatných. Skript může pracovat mezi předplatnými, protože poskytujete ID prostředku účtu úložiště a odpovídající přístupový klíč. Když změníte přístupovou klávesu, musíte aktualizovat Přehled úložiště, aby měl nový klíč.
 
 
-## <a name="next-steps"></a>Další postup
-* [Zkontrolujte rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) Další informace o použití prostředí PowerShell pro konfiguraci služby Log Analytics.
+## <a name="next-steps"></a>Další kroky
+* Další informace o používání PowerShellu pro konfiguraci Log Analytics [najdete v Log Analytics rutinách PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aacdb57c312946a9ec2b17a8d41aa9150efc277d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640976"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828160"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Vytvoření privátního cloudu CloudSimple
 
@@ -37,7 +37,7 @@ Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 ## <a name="create-a-new-private-cloud"></a>Vytvoření nového privátního cloudu
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. V **přehledu**klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál. Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.
@@ -46,12 +46,12 @@ Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
 5. Na portálu CloudSimple zadejte název vašeho privátního cloudu.
 6. Vyberte **umístění** privátního cloudu.
-7. Vyberte **typ uzlu**, který se shoduje s tím, co jste zakoupili v Azure.  Můžete zvolit [možnost CS28 nebo CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
+7. Vyberte **typ uzlu**, který se shoduje s tím, co jste zakoupili v Azure.
 8. Zadejte **počet uzlů**.  K vytvoření privátního cloudu se vyžadují aspoň tři uzly.
 
     ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
 
-9. Klikněte **na další: Rozšířené možnosti**.
+9. Klikněte na **Další: Upřesnit možnosti**.
 10. Zadejte rozsah CIDR pro podsítě vSphere/síti vSAN. Ujistěte se, že se rozsah CIDR nepřekrývá s žádnou místní nebo jinou podsítí Azure (virtuální sítě) nebo s podsítí brány.
 
     **Možnosti rozsahu CIDR:** /24,/23,/22 nebo/21. Rozsah CIDR/24 v rozsahu podporuje až devět uzlů, rozsah CIDR/23 podporuje až 41 uzlů a rozsah CIDR/22 a/21 podporuje až 64 uzlů (maximální počet uzlů v privátním cloudu).
@@ -59,9 +59,9 @@ Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
     > [!IMPORTANT]
     > IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
-11. Klikněte **na další: Zkontrolujte a vytvořte**.
+11. Klikněte na **Další: zkontrolovat a vytvořit**.
 12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
-13. Klikněte na možnost **Vytvořit**.
+13. Klikněte na **vytvořit**.
 
 Spustí se proces zřizování privátního cloudu. Zřízení privátního cloudu může trvat až dvě hodiny.
 

@@ -4,14 +4,14 @@ description: Popisuje, jak vyřešit chybu s více než 800 nasazeními v histor
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/01/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: f06aff74e2cf800d44115f34921825122b09a9e7
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719432"
+ms.locfileid: "71827017"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud je počet nasazení vyšší než 800
 
@@ -23,7 +23,7 @@ Během nasazování se zobrazí chyba s oznámením, že aktuální nasazení p�
 
 ## <a name="solution"></a>Řešení
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
 
 Pomocí příkazu [AZ Group Deployment Delete](/cli/azure/group/deployment#az-group-deployment-delete) odstraňte nasazení z historie.
 
@@ -51,3 +51,9 @@ Aktuální počet můžete v historii nasazení získat pomocí následujícího
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
+## <a name="third-party-solutions"></a>Řešení třetích stran
+
+Následující externí řešení řeší konkrétní scénáře:
+
+* [Řešení Azure Logic Apps a PowerShellu](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [Rozšíření AzDevOps](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

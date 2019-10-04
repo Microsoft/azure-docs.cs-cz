@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
-ms.translationtype: MT
+ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336737"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827036"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu na základě role v digitálních Vlákenách Azure
 
@@ -32,7 +32,7 @@ Stupeň přístupu lze také doladit.
 
 RBAC je jedinečný v tom, že jsou tato oprávnění zděděná v prostorovém grafu.
 
-## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
+## <a name="what-can-i-do-with-rbac"></a>Co můžu dělat s RBAC?
 
 Vývojář může použít RBAC k těmto akcím:
 
@@ -66,7 +66,7 @@ Definice role je kolekce oprávnění a dalších atributů, které tvoří roli
 
 V následujících tématech najdete popis těchto článků dokumentace:
 
-- Dotazování [nebo ID objektu pro uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
+- [Dotazování nebo ID objektu pro uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
 - Jak [získat ID objektu pro instanční](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)objekt.
 - Jak [Načíst ID objektu pro tenanta Azure AD](../active-directory/develop/quickstart-create-new-tenant.md).
 

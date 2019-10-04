@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984936"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828827"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
 *Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikaci. které se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se nevztahuje na nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [koncovým bodem služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, na které se má odkazovat.
 
@@ -53,8 +53,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý Azure SQL Database Serv
 
 V rámci správy koncových bodů služby Virtual Network je oddělení rolí zabezpečení. Pro každou z následujících rolí se vyžaduje akce:
 
-- **Správce sítě:** &nbsp;Zapněte koncový bod.
-- **Správce databáze:** &nbsp;Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru SQL Database.
+- **Správce sítě:** &nbsp; zapnout koncový bod.
+- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě do serveru SQL Database.
 
 *Alternativa RBAC:*
 
@@ -89,11 +89,11 @@ Pro Azure SQL Database funkce pravidla virtuální sítě má následující ome
 
 Při použití koncových bodů služby pro Azure SQL Database se podívejte na následující skutečnosti:
 
-- **Odchozí Azure SQL Database veřejné IP adresy jsou povinné**: Aby bylo možné Azure SQL Database IP adresy, je nutné otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě), aby bylo možné připojení. To můžete provést pomocí [značek služby](../virtual-network/security-overview.md#service-tags) NSG pro Azure SQL Database.
+- **Odchozí IP adresa pro Azure SQL Database veřejné IP adresy se vyžadují**: aby se Azure SQL Database IP adres umožňovalo připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí [značek služby](../virtual-network/security-overview.md#service-tags) NSG pro Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
-Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
+Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. U veřejného partnerského vztahu každý okruh ExpressRoute ve výchozím nastavení používá dvě IP adresy NAT, které se použijí na provoz služeb Azure, když přenos vstoupí do sítě Microsoft Azure páteřní síť. V případě partnerského vztahu Microsoftu se používají IP adresy NAT, které jsou k dispozici pro zákazníka nebo poskytované poskytovatelem služeb. Pokud chcete mít přístup k prostředkům služby, musíte tyto veřejné IP adresy v nastavení brány firewall protokolu IP pro prostředek dovolit. Pokud chcete zjistit IP adresy okruhu veřejných partnerských vztahů ExpressRoute, [otevřete lístek podpory s ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) prostřednictvím Azure Portal. Přečtěte si další informace o [překladu adres (NAT) pro veřejný partnerský vztah ExpressRoute a Microsoft.](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)
   
 Aby bylo možné Azure SQL Database komunikaci z okruhu, musíte vytvořit pravidla sítě IP pro veřejné IP adresy vašeho překladu adres (NAT).
 
@@ -123,7 +123,7 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
 2.  Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)upgradovat na obecné účely v2.
 3.  Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
  
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Uvedené
 1. V PowerShellu **Zaregistrujte Azure SQL Server** hostování vaší instance Azure SQL Data Warehouse pomocí Azure Active Directory (AAD):
 
    ```powershell
@@ -138,7 +138,7 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
    > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu Azure SQL Server hostování Azure SQL Data Warehouse, které jste zaregistrovali v Azure Active DIRECOTORY (AAD) jako v kroku č. 1.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu Azure SQL Server hostování Azure SQL Data Warehouse, které jste zaregistrovali v Azure Active Directory (AAD) jako v kroku č. 1.
 
    > [!NOTE] 
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
@@ -197,9 +197,9 @@ Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě*, jak je uv
 
 ### <a name="error-40615"></a>Chyba 40615
 
-*Text zprávy:* Server ' ' požadovaný{0}přihlášením ' ' nelze otevřít. Klient s IP adresou{1}nemá povolený přístup k serveru.
+*Text zprávy:* Nelze otevřít server ' {0} ' požadovaný přihlášením. Klient s IP adresou {1} nemá povolený přístup k serveru.
 
-*Popis chyby:* Klient se pokouší připojit z IP adresy, která nemá autorizaci pro připojení k serveru Azure SQL Database. Brána firewall serveru neobsahuje žádné pravidlo IP adres, které by klientovi umožňovalo komunikovat se službou SQL Database z dané IP adresy.
+*Popis chyby:* Klient se pokouší připojit z IP adresy, která nemá autorizaci pro připojení k serveru Azure SQL Database. Brána firewall serveru nemá žádné pravidlo IP adresy, které klientovi umožňuje komunikovat z dané IP adresy do SQL Database.
 
 *Řešení chyb:* Zadejte IP adresu klienta jako pravidlo protokolu IP. Použijte k tomu podokno brána firewall v Azure Portal.
 
@@ -224,7 +224,7 @@ PowerShellový skript může také vytvořit pravidla virtuální sítě. Rozhod
 
 Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání rozhraní REST API. Rozhraní REST API můžete volat přímo.
 
-- [Pravidla Virtual Network: Operations][rest-api-virtual-network-rules-operations-862r]
+- [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -237,9 +237,9 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se k [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Pak přejděte na portál k **SQL Server** &gt; **firewall/virtuální sítě**.
+2. Pak přejděte na portál k **serverům SQL** &gt; **Brána firewall/virtuální sítě**.
 
 3. Nastavte řízení **Povolení přístupu ke službám Azure** na vypnuto.
 
@@ -254,7 +254,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
     > [!TIP]
     > Je nutné zadat správnou **předponu adresy** pro vaši podsíť. Tuto hodnotu můžete najít na portálu.
-    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuálních sítí**. Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě**. Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
+    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuální sítě**. Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě**. Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
 
     ![Vyplňte pole pro nové pravidlo.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -266,10 +266,10 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 > [!NOTE]
 > Následující stavy nebo stavy se vztahují na pravidla:
-> - **K** Označuje, že operace, kterou jste iniciovali, byla úspěšná.
-> - **Nepovedlo se** Indikuje, že operace, kterou jste iniciovali, se nezdařila.
-> - **Odstraňování** Platí pouze pro operaci odstranění a označuje, že pravidlo bylo odstraněno a již není použito.
-> - **InProgress** Indikuje, že operace probíhá. Původní pravidlo se použije, pokud je operace v tomto stavu.
+> - **Připraveno:** Označuje, že operace, kterou jste iniciovali, byla úspěšná.
+> - **Selhalo:** Indikuje, že operace, kterou jste iniciovali, se nezdařila.
+> - **Odstraněno:** Platí pouze pro operaci odstranění a označuje, že pravidlo bylo odstraněno a již není použito.
+> - **Probíhá zpracování:** Indikuje, že operace probíhá. Původní pravidlo se použije, pokud je operace v tomto stavu.
 
 <a name="anchor-how-to-links-60h" />
 
@@ -280,10 +280,10 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 Funkce pravidla virtuální sítě pro Azure SQL Database se stala k dispozici v 2017. září.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Pomocí PowerShellu vytvořte koncový bod služby virtuální sítě a potom pravidlo virtuální sítě pro Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Pravidla Virtual Network: Operace][rest-api-virtual-network-rules-operations-862r] s rozhraními REST API
+- [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r] s rozhraními REST API
 
 <!-- Link references, to images. -->
 

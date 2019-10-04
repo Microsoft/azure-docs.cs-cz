@@ -1,6 +1,6 @@
 ---
-title: Správa tajných klíčů aplikací Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak zabezpečit hodnoty tajných kódů v aplikaci Service Fabric (nezávislý na platformě).
+title: Správa tajných klíčů pro Azure Service Fabric aplikace | Microsoft Docs
+description: Naučte se zabezpečit tajné hodnoty v Service Fabric aplikaci (Platform-nezávislá).
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614483"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828838"
 ---
-# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Spravovat šifrované tajné kódy aplikace Service Fabric
-Tento průvodce vás provede kroky pro správu tajných kódů v aplikaci Service Fabric. Tajné klíče může být žádné citlivé údaje, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovat ve formátu prostého textu.
+# <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
+Tento průvodce vás provede jednotlivými kroky správy tajných kódů v aplikaci Service Fabric. Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
 
-Použití šifrované tajné klíče v aplikaci Service Fabric zahrnuje tři kroky:
-* Nastavit šifrovací certifikát a šifrování tajných kódů.
+Použití šifrovaných tajných klíčů v Service Fabric aplikaci zahrnuje tři kroky:
+* Nastavte šifrovací certifikát a Šifrujte tajné klíče.
 * Zadejte šifrované tajné klíče v aplikaci.
-* Dešifrujte šifrované tajné klíče z kódu služby.
+* Dešifrování šifrovaných tajných klíčů z kódu služby.
 
-## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Nastavit šifrovací certifikát a šifrování tajných kódů
-Nastavení šifrovací certifikát a jeho použití k šifrování tajných kódů se pohybuje mezi Windows a Linux.
-* [Nastavit šifrovací certifikát a šifrování tajných kódů v clusterech Windows.][secret-management-windows-specific-link]
-* [Nastavit šifrovací certifikát a šifrování tajných kódů na clusterech s Linuxem.][secret-management-linux-specific-link]
+## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů
+Nastavení šifrovacího certifikátu a jeho použití k šifrování tajných kódů se liší mezi systémy Windows a Linux.
+* [Nastavte šifrovací certifikát a Šifrujte tajné klíče v clusterech Windows.][secret-management-windows-specific-link]
+* [Nastavte šifrovací certifikát a Šifrujte tajné klíče v clusterech se systémem Linux.][secret-management-linux-specific-link]
 
-## <a name="specify-encrypted-secrets-in-an-application"></a>Zadejte šifrované tajné klíče v aplikaci
-Předchozí krok popisuje, jak k šifrování tajného kódu s certifikátem a vytvořit kódovaný řetězec base64 pro použití v aplikaci. Tento řetězec s kódováním base-64 lze zadat jako šifrované [parametr] [ parameters-link] Settings.xml služby, nebo jako šifrované [proměnnou prostředí] [ environment-variables-link] v souboru ServiceManifest.xml služby.
+## <a name="specify-encrypted-secrets-in-an-application"></a>Určení šifrovaných tajných klíčů v aplikaci
+Předchozí krok popisuje, jak šifrovat tajný klíč pomocí certifikátu a vytvořit řetězec s kódováním Base-64 pro použití v aplikaci. Tento řetězec zakódovaný v základní-64 se dá zadat jako zašifrovaný [parametr][parameters-link] v nastavení služby. XML nebo jako zašifrovaná [Proměnná prostředí][environment-variables-link] v souboru ServiceManifest. XML služby.
 
-Zadejte šifrované [parametr] [ parameters-link] v konfiguračním souboru Settings.xml vaše služba se `IsEncrypted` atribut nastaven na `true`:
+Zadejte zašifrovaný [parametr][parameters-link] do konfiguračního souboru Settings. XML vaší služby s atributem `IsEncrypted` nastaveným na `true`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -47,7 +47,7 @@ Zadejte šifrované [parametr] [ parameters-link] v konfiguračním souboru Sett
   </Section>
 </Settings>
 ```
-Zadejte šifrované [proměnnou prostředí] [ environment-variables-link] v souboru ServiceManifest.xml vaše služba se `Type` atribut nastaven na `Encrypted`:
+V souboru ServiceManifest. XML vaší služby zadejte šifrovanou [proměnnou prostředí][environment-variables-link] s atributem `Type` nastaveným na `Encrypted`:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -56,11 +56,22 @@ Zadejte šifrované [proměnnou prostředí] [ environment-variables-link] v sou
 </CodePackage>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>Vložit do instance aplikace tajných klíčů aplikací
-V ideálním případě by měl být nasazení do různých prostředí jako automatizované co nejvíc. To lze provést pomocí provádí šifrování tajných kódů v prostředí sestavení a poskytuje šifrované tajné kódy jako parametry při vytváření instance aplikace.
+Tajné kódy je také možné do aplikace Service Fabric zahrnout zadáním certifikátu v manifestu aplikace. Přidejte do **souboru souboru ApplicationManifest. XML** element **SecretsCertificate** a zahrňte do něj kryptografický otisk požadovaného certifikátu.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Použití přepsatelnými parametry v Settings.xml
-Konfigurace souboru Settings.xml umožňuje přepsatelnými parametry, které mohou být poskytnuty v okamžiku vytváření aplikace. Použití `MustOverride` atribut namísto zadávání hodnoty parametru:
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+
+### <a name="inject-application-secrets-into-application-instances"></a>Vložení tajných kódů aplikace do instancí aplikace
+V ideálním případě by mělo být nasazení do různých prostředí co nejlépe automatizovaně. To lze provést provedením tajného šifrování v prostředí sestavení a zadáním šifrovaných tajných klíčů jako parametrů při vytváření instancí aplikace.
+
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Použití přepisovatelných parametrů v Settings. XML
+Konfigurační soubor Settings. XML umožňuje přepsatelné parametry, které lze zadat v době vytváření aplikace. Místo zadání hodnoty parametru použijte atribut `MustOverride`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,7 +82,7 @@ Konfigurace souboru Settings.xml umožňuje přepsatelnými parametry, které mo
 </Settings>
 ```
 
-Chcete-li přepsat hodnoty v Settings.xml, deklarujte parametr přepsání pro služby v souboru ApplicationManifest.xml:
+Chcete-li přepsat hodnoty v souboru Settings. XML, deklarujte parametr přepsání pro službu v souboru ApplicationManifest. XML:
 
 ```xml
 <ApplicationManifest ... >
@@ -92,15 +103,15 @@ Chcete-li přepsat hodnoty v Settings.xml, deklarujte parametr přepsání pro s
   </ServiceManifestImport>
  ```
 
-Nyní lze upravit hodnotu jako *parametr aplikace* při vytváření instance aplikace. Vytvoření instance aplikace možnost využívat skripty prostředí PowerShell nebo napsaných v C#, pro snadnou integraci v procesu sestavení.
+Nyní je možné při vytváření instance aplikace zadat hodnotu jako *parametr aplikace* . Vytvoření instance aplikace může být skriptem pomocí PowerShellu nebo napsaného C#v systému pro jednoduchou integraci v procesu sestavení.
 
-Pomocí Powershellu, tento parametr je zadaný pro `New-ServiceFabricApplication` příkaz jako [zatřiďovací tabulku](https://technet.microsoft.com/library/ee692803.aspx):
+Pomocí PowerShellu se parametr doplní příkazem `New-ServiceFabricApplication` jako [zatřiďovací tabulka](https://technet.microsoft.com/library/ee692803.aspx):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-Pomocí C#, parametry aplikace jsou určené v `ApplicationDescription` jako `NameValueCollection`:
+Použití C#, parametry aplikace jsou zadány v `ApplicationDescription` jako `NameValueCollection`:
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -118,8 +129,8 @@ ApplicationDescription applicationDescription = new ApplicationDescription(
 await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescription);
 ```
 
-## <a name="decrypt-encrypted-secrets-from-service-code"></a>Dešifrovat šifrované tajné klíče z kódu služby
-Rozhraní API pro přístup k [parametry] [ parameters-link] a [proměnné prostředí] [ environment-variables-link] umožňují snadno dešifrování šifrovaných hodnot. Protože zašifrovaný řetězec obsahuje informace o certifikát použitý k šifrování, není nutné ručně zadat certifikát. Právě musí být nainstalovaný na uzlu, na kterém služba běží na certifikátu.
+## <a name="decrypt-encrypted-secrets-from-service-code"></a>Dešifrování šifrovaných tajných klíčů z kódu služby
+Rozhraní API pro přístup k [parametrům][parameters-link] a [proměnným prostředí][environment-variables-link] umožňují snadné dešifrování šifrovaných hodnot. Vzhledem k tomu, že zašifrovaný řetězec obsahuje informace o certifikátu, který se používá k šifrování, nemusíte ručně zadávat certifikát. Certifikát stačí nainstalovat jenom na uzel, na kterém je služba spuštěná.
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -135,8 +146,8 @@ if (MySecretIsEncrypted)
 string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
-## <a name="next-steps"></a>Další postup
-Další informace o [aplikace a služby zabezpečení](service-fabric-application-and-service-security.md)
+## <a name="next-steps"></a>Další kroky
+Další informace o [zabezpečení aplikací a služeb](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

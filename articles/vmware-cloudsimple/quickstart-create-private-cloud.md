@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816135"
+ms.locfileid: "71828934"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
@@ -23,9 +23,9 @@ V tomto článku se dozvíte, jak vytvořit privátní cloud CloudSimple a nasta
 
 Kontrola [požadavků na síť](cloudsimple-network-checklist.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
@@ -33,7 +33,7 @@ Privátní cloud je izolovaný zásobník VMware, který podporuje hostitele ESX
 
 Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají svůj vlastní Server vCenter ve své vlastní doméně pro správu. Zásobník běží na vyhrazených uzlech a v izolovaných hardwarových uzlech.
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. V **přehledu**klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
@@ -42,7 +42,7 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 
 5. Na portálu CloudSimple zadejte název vašeho privátního cloudu.
 6. Vyberte **umístění** vašeho privátního cloudu.
-7. Vyberte **typ uzlu**, který se shoduje s tím, co jste zakoupili v Azure. Můžete zvolit [možnost CS28 nebo CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
+7. Vyberte **typ uzlu**, který se shoduje s tím, co jste zakoupili v Azure.
 8. Zadejte **počet uzlů**.  K vytvoření privátního cloudu se vyžadují aspoň tři uzly.
 
     ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
@@ -57,7 +57,7 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 
 11. Klikněte na **Další: zkontrolovat a vytvořit**.
 12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
-13. Klikněte na **Vytvořit**.
+13. Klikněte na **vytvořit**.
 
 Spustí se proces zřizování privátního cloudu.  Zřízení privátního cloudu může trvat až dvě hodiny.
 
@@ -65,7 +65,7 @@ Spustí se proces zřizování privátního cloudu.  Zřízení privátního clo
 
 K portálu CloudSimple můžete přistupovat z Azure Portal.  Portál CloudSimple se spustí s přihlašovacími údaji pro přihlášení k Azure pomocí jednotného přihlašování (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizační aplikace služby CloudSimple** .  Další informace o udělení oprávnění najdete v tématu [souhlasu s aplikací autorizace služby CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
-1. Vyberte **Všechny služby**.
+1. Vyberte **všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. Z přehledu klikněte na **Přejít na portál CloudSimple** a otevřete novou kartu prohlížeče pro portál CloudSimple.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
@@ -82,7 +82,7 @@ Připojení VPN typu Point-to-site je nejjednodušší způsob, jak se připojit
 2. Vyberte **VPN Gateway**.
 3. Klikněte na **nový VPN Gateway**.
 
-    ![Vytvoření brány VPN](media/create-vpn-gateway.png)
+    ![Vytvořit bránu VPN](media/create-vpn-gateway.png)
 
 4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
 
@@ -116,7 +116,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 4. Vyberte možnost **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN**.
 
-    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
+    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
 
 6. Naimportujte konfiguraci do svého klienta VPN.
 
