@@ -448,8 +448,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Konfigurace zabezpečení pro geografické repliky
           href: sql-database-geo-replication-security-config.md
-        - name: Konfigurace skupiny převzetí služeb při selhání
-          href: sql-database-configure-failover-group.md
         - name: Vyzkoušení funkcí v paměti
           href: sql-database-in-memory-sample.md
         - name: Povolení automatického ladění
@@ -588,6 +586,8 @@
               href: sql-database-xevent-code-ring-buffer.md
     - name: Konfigurace funkcí
       items:
+        - name: Konfigurace skupiny převzetí služeb při selhání
+          href: sql-database-configure-failover-group.md
         - name: Konfigurace ověřování Azure AD
           href: sql-database-aad-authentication-configure.md
         - name: Podmíněný přístup
