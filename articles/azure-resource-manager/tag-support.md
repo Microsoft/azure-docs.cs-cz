@@ -4,14 +4,14 @@ description: Zobrazuje, které typy prostředků Azure podporují značky. Posky
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 06028224379bd42e1e0ea21b684ce443abd5992a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996828"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937019"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -20,156 +20,156 @@ Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, St�
 
 Přejít na obor názvů poskytovatele prostředků:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
+> - [Microsoft. AAD](#microsoftaad)
 > - [Microsoft. addons](#microsoftaddons)
 > - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft. Advisor](#microsoftadvisor)
-> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
-> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
-> - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft. AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft. ApiManagement](#microsoftapimanagement)
+> - [Microsoft. AppConfiguration](#microsoftappconfiguration)
 > - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. Attestation](#microsoftattestation)
-> - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft. Authorization](#microsoftauthorization)
+> - [Microsoft. Automation](#microsoftautomation)
 > - [Microsoft. Azconfig](#microsoftazconfig)
 > - [Microsoft. Azure. Ženeva](#microsoftazuregeneva)
-> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft. Azureactivedirectory selhala](#microsoftazureactivedirectory)
 > - [Microsoft. AzureData](#microsoftazuredata)
-> - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft. AzureStack](#microsoftazurestack)
+> - [Microsoft. Batch](#microsoftbatch)
 > - [Microsoft. fakturace](#microsoftbilling)
-> - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
-> - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
-> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft. BingMaps](#microsoftbingmaps)
+> - [Microsoft. blockchain](#microsoftblockchain)
+> - [Microsoft. detail](#microsoftblueprint)
+> - [Microsoft. BotService](#microsoftbotservice)
+> - [Microsoft. cache](#microsoftcache)
 > - [Microsoft. Capacity](#microsoftcapacity)
-> - [Microsoft.Cdn](#microsoftcdn)
-> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft. CDN](#microsoftcdn)
+> - [Microsoft. CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft. ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft. ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft. Cognitiveservices Account](#microsoftcognitiveservices)
 > - [Microsoft. Commerce](#microsoftcommerce)
-> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft. COMPUTE](#microsoftcompute)
 > - [Microsoft. spotřeba](#microsoftconsumption)
-> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
-> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
-> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft. ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft. ContainerService](#microsoftcontainerservice)
+> - [Microsoft. ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft. CostManagement](#microsoftcostmanagement)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
-> - [Microsoft.DataBox](#microsoftdatabox)
-> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
-> - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft. DataBox](#microsoftdatabox)
+> - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
+> - [Cihly Microsoft.](#microsoftdatabricks)
+> - [Microsoft. datacatalog](#microsoftdatacatalog)
+> - [Microsoft. DataFactory](#microsoftdatafactory)
+> - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft. DataLakeStore](#microsoftdatalakestore)
+> - [Migrace Microsoft.](#microsoftdatamigration)
 > - [Microsoft. datashare](#microsoftdatashare)
-> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
-> - [Microsoft.DBforMySQL](#microsoftdbformysql)
-> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft. DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft. DBforMySQL](#microsoftdbformysql)
+> - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft. Devices](#microsoftdevices)
 > - [Microsoft. DevOps](#microsoftdevops)
-> - [Microsoft.DevSpaces](#microsoftdevspaces)
-> - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [Microsoft.DocumentDB](#microsoftdocumentdb)
-> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft. DevSpaces](#microsoftdevspaces)
+> - [Microsoft. DevTestLab](#microsoftdevtestlab)
+> - [Microsoft. DocumentDB](#microsoftdocumentdb)
+> - [Microsoft. DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft. DynamicsLcs](#microsoftdynamicslcs)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
-> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft. EventGrid](#microsofteventgrid)
+> - [Microsoft. EventHub](#microsofteventhub)
 > - [Microsoft. Features](#microsoftfeatures)
 > - [Microsoft. Gallery](#microsoftgallery)
 > - [Microsoft. genomika](#microsoftgenomics)
 > - [Microsoft. GuestConfiguration](#microsoftguestconfiguration)
-> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft. HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
-> - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft. HDInsight](#microsofthdinsight)
+> - [Microsoft. HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridData](#microsofthybriddata)
 > - [Microsoft. Hydra](#microsofthydra)
-> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft. ImportExport](#microsoftimportexport)
 > - [Microsoft. Intune](#microsoftintune)
-> - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
-> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft. IoTCentral](#microsoftiotcentral)
+> - [Microsoft. IoTSpaces](#microsoftiotspaces)
+> - [Trezor Microsoft.](#microsoftkeyvault)
+> - [Microsoft. Kusto](#microsoftkusto)
+> - [Microsoft. LabServices](#microsoftlabservices)
+> - [Microsoft. Logic](#microsoftlogic)
+> - [Microsoft. MachineLearning](#microsoftmachinelearning)
+> - [Microsoft. MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft. ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft. ManagedServices](#microsoftmanagedservices)
 > - [Microsoft. Management](#microsoftmanagement)
-> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft. Maps](#microsoftmaps)
 > - [Microsoft. Marketplace](#microsoftmarketplace)
-> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft. MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft. MarketplaceOrdering](#microsoftmarketplaceordering)
-> - [Microsoft.Media](#microsoftmedia)
+> - [Microsoft. Media](#microsoftmedia)
 > - [Microsoft. Microservices4Spring](#microsoftmicroservices4spring)
-> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft. migruje](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
-> - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft. NetApp](#microsoftnetapp)
+> - [Microsoft. Network](#microsoftnetwork)
+> - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft. ObjectStore](#microsoftobjectstore)
 > - [Microsoft. OffAzure](#microsoftoffazure)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
-> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
-> - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
-> - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft. peering](#microsoftpeering)
+> - [Microsoft. PolicyInsights](#microsoftpolicyinsights)
+> - [Microsoft. Portal](#microsoftportal)
+> - [Microsoft. PowerBI](#microsoftpowerbi)
+> - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft. Relay](#microsoftrelay)
 > - [Microsoft. RemoteApp](#microsoftremoteapp)
 > - [Microsoft. ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft. ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft. Resources](#microsoftresources)
-> - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
-> - [Microsoft.Search](#microsoftsearch)
-> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft. SaaS](#microsoftsaas)
+> - [Microsoft. Scheduler](#microsoftscheduler)
+> - [Microsoft. Search](#microsoftsearch)
+> - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
 > - [Microsoft. SecurityInsights](#microsoftsecurityinsights)
-> - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Microsoft.ServiceFabric](#microsoftservicefabric)
-> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft. ServiceBus](#microsoftservicebus)
+> - [Microsoft. ServiceFabric](#microsoftservicefabric)
+> - [Microsoft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. Services](#microsoftservices)
 > - [Microsoft. SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Microsoft. SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
-> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft. Solutions](#microsoftsolutions)
 > - [Microsoft. SQL](#microsoftsql)
-> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft. Storage](#microsoftstorage)
+> - [Microsoft. StorageCache](#microsoftstoragecache)
 > - [Microsoft. StorageReplication](#microsoftstoragereplication)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
-> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
-> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
-> - [Microsoft.StorSimple](#microsoftstorsimple)
-> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft. StorageSync](#microsoftstoragesync)
+> - [Microsoft. StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft. StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft. StorSimple](#microsoftstorsimple)
+> - [Microsoft. StreamAnalytics](#microsoftstreamanalytics)
 > - [Microsoft. Subscription](#microsoftsubscription)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft. Web](#microsoftweb)
 > - [Microsoft. WindowsDefenderATP](#microsoftwindowsdefenderatp)
-> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft. WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft. monitor zátěže byl](#microsoftworkloadmonitor)
 
-## <a name="microsoftaad"></a>Microsoft.AAD
+## <a name="microsoftaad"></a>Microsoft. AAD
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -178,63 +178,63 @@ Přejít na obor názvů poskytovatele prostředků:
 > | DomainServices/oucontainer | Ne |Ne |
 > | DomainServices/ReplicaSets | Ano |Ano |
 
-## <a name="microsoftaddons"></a>Microsoft.Addons
+## <a name="microsoftaddons"></a>Microsoft. addons
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | supportProviders | Ne |Ne |
 
-## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
+## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | aadsupportcases | Ne |Ne |
 > | addsservices | Ne |Ne |
-> | Technici | Ne |Ne |
+> | agenti | Ne |Ne |
 > | anonymousapiusers | Ne |Ne |
 > | konfigurace | Ne |Ne |
-> | logs | Ne |Ne |
+> | protokoly | Ne |Ne |
 > | sestavy | Ne |Ne |
 > | servicehealthmetrics | Ne |Ne |
-> | services | Ne |Ne |
+> | služby | Ne |Ne |
 
-## <a name="microsoftadvisor"></a>Microsoft.Advisor
+## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Konfiguračních | Ne |Ne |
+> | konfigurace | Ne |Ne |
 > | generateRecommendations | Ne |Ne |
-> | zprostředkovatele identity | Ne |Ne |
-> | Doporučení | Ne |Ne |
+> | metadata | Ne |Ne |
+> | Doporučit | Ne |Ne |
 > | potlačení | Ne |Ne |
 
-## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | actionRules | Ano |Ano |
-> | výstrahy | Ne |Ne |
+> | Generoval | Ne |Ne |
 > | alertsList | Ne |Ne |
 > | alertsMetaData | Ne |Ne |
 > | alertsSummary | Ne |Ne |
 > | alertsSummaryList | Ne |Ne |
-> | Od | Ne |Ne |
+> | zpětná vazba | Ne |Ne |
 > | smartDetectorAlertRules | Ano |Ano |
 > | smartDetectorRuntimeEnvironments | Ne |Ne |
 > | smartGroups | Ne |Ne |
 
-## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
+## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | servers | Ano |Ano |
+> | servery | Ano |Ano |
 
-## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -243,7 +243,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | service | Ano |Ano |
 > | validateServiceName | Ne |Ne |
 
-## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
+## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -256,16 +256,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Jaro | Ano |Ano |
+> | Návratu | Ano |Ano |
 
-## <a name="microsoftattestation"></a>Microsoft.Attestation
+## <a name="microsoftattestation"></a>Microsoft. Attestation
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | attestationProviders | Ne |Ne |
 
-## <a name="microsoftauthorization"></a>Microsoft.Authorization
+## <a name="microsoftauthorization"></a>Microsoft. Authorization
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -274,7 +274,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | dataaliasy | Ne |Ne |
 > | denyAssignments | Ne |Ne |
 > | elevateAccess | Ne |Ne |
-> | Počtu | Ne |Ne |
+> | zámky | Ne |Ne |
 > | oprávnění | Ne |Ne |
 > | policyAssignments | Ne |Ne |
 > | policyDefinitions | Ne |Ne |
@@ -283,17 +283,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > | roleAssignments | Ne |Ne |
 > | roleDefinitions | Ne |Ne |
 
-## <a name="microsoftautomation"></a>Microsoft.Automation
+## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | automationAccounts | Ano |Ano |
 > | automationAccounts/konfigurace | Ano |Ano |
-> | automationAccounts/jobs | Ne |Ne |
-> | automationAccounts/runbooks | Ano |Ano |
+> | automationAccounts/úlohy | Ne |Ne |
+> | automationAccounts/Runbooky | Ano |Ano |
 > | automationAccounts/softwareUpdateConfigurations | Ne |Ne |
-> | automationAccounts/webhooks | Ne |Ne |
+> | automationAccounts nebo Webhooky | Ne |Ne |
 
 ## <a name="microsoftazconfig"></a>Microsoft. Azconfig
 
@@ -303,17 +303,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > | configurationStores | Ano |Ano |
 > | configurationStores/eventGridFilters | Ne |Ne |
 
-## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
+## <a name="microsoftazuregeneva"></a>Microsoft. Azure. Ženeva
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | environments | Ne |Ne |
+> | prostředí | Ne |Ne |
 > | prostředí/účty | Ne |Ne |
 > | prostředí/účty/obory názvů | Ne |Ne |
 > | prostředí/účty/obory názvů/konfigurace | Ne |Ne |
 
-## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
+## <a name="microsoftazureactivedirectory"></a>Microsoft. Azureactivedirectory selhala
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -333,16 +333,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > | sqlServerRegistrations | Ano |Ano |
 > | sqlServerRegistrations/sqlServers | Ne |Ne |
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | registrations | Ano |Ano |
+> | rozpoznávání | Ano |Ano |
 > | registrace/customerSubscriptions | Ne |Ne |
 > | registrace/produkty | Ne |Ne |
 
-## <a name="microsoftbatch"></a>Microsoft.Batch
+## <a name="microsoftbatch"></a>Microsoft. Batch
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -365,7 +365,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingAccounts/billingProfiles/createBillingRoleAssignment | Ne |Ne |
 > | billingAccounts/billingProfiles/zákazníci | Ne |Ne |
 > | billingAccounts/billingProfiles/faktury | Ne |Ne |
-> | billingAccounts/billingProfiles/invoices/pricesheet | Ne |Ne |
+> | billingAccounts/billingProfiles/faktury/pricesheet | Ne |Ne |
 > | billingAccounts/billingProfiles/invoiceSections | Ne |Ne |
 > | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Ne |Ne |
 > | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Ne |Ne |
@@ -384,7 +384,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingAccounts/billingProfiles/pricesheet | Ne |Ne |
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | Ne |Ne |
 > | billingAccounts/billingProfiles/produkty | Ne |Ne |
-> | billingAccounts/billingProfiles/transactions | Ne |Ne |
+> | billingAccounts/billingProfiles/transakcí | Ne |Ne |
 > | billingAccounts/billingRoleAssignments | Ne |Ne |
 > | billingAccounts/billingRoleDefinitions | Ne |Ne |
 > | billingAccounts/billingSubscriptions | Ne |Ne |
@@ -393,6 +393,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingAccounts/zákazníci | Ne |Ne |
 > | billingAccounts/Customers/billingSubscriptions | Ne |Ne |
 > | billingAccounts/Customers/initiateTransfer | Ne |Ne |
+> | billingAccounts/Customers/policies | Ne |Ne |
 > | billingAccounts/zákazníci/produkty | Ne |Ne |
 > | billingAccounts/zákazníci/transakce | Ne |Ne |
 > | billingAccounts/zákazníci/přenosy | Ne |Ne |
@@ -402,7 +403,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | billingAccounts/invoiceSections | Ne |Ne |
 > | billingAccounts/invoiceSections/billingSubscriptionMoveOperations | Ne |Ne |
 > | billingAccounts/invoiceSections/billingSubscriptions | Ne |Ne |
-> | billingAccounts/invoiceSections/billingSubscriptions/transfer | Ne |Ne |
+> | billingAccounts/invoiceSections/billingSubscriptions/Transfer | Ne |Ne |
 > | billingAccounts/invoiceSections/zvýšení oprávnění | Ne |Ne |
 > | billingAccounts/invoiceSections/initiateTransfer | Ne |Ne |
 > | billingAccounts/invoiceSections/patchOperations | Ne |Ne |
@@ -429,11 +430,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Převede | Ne |Ne |
 > | přenosy/acceptTransfer | Ne |Ne |
 > | přenosy/declineTransfer | Ne |Ne |
-> | transfers/operationStatus | Ne |Ne |
+> | přenosy/stav operationstatus | Ne |Ne |
 > | přenosy/validateTransfer | Ne |Ne |
 > | validateAddress | Ne |Ne |
 
-## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
+## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -441,22 +442,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > | mapApis | Ano |Ano |
 > | updateCommunicationPreference | Ne |Ne |
 
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
-> | ------------- | ----------- | ----------- |
-> | BizTalk | Ano |Ano |
-
-## <a name="microsoftblockchain"></a>Microsoft.Blockchain
+## <a name="microsoftblockchain"></a>Microsoft. blockchain
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | blockchainMembers | Ano |Ano |
-> | diváků | Ano |Ano |
+> | sledovacích procesů | Ano |Ano |
 
-## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+## <a name="microsoftblueprint"></a>Microsoft. detail
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -469,7 +463,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | plány/verze | Ne |Ne |
 > | modrotisky/verze/artefakty | Ne |Ne |
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -477,10 +471,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | botServices | Ano |Ano |
 > | botServices/kanály | Ne |Ne |
 > | botServices/připojení | Ne |Ne |
-> | Jazyky | Ne |Ne |
+> | jazyky | Ne |Ne |
 > | šablony | Ne |Ne |
 
-## <a name="microsoftcache"></a>Microsoft.Cache
+## <a name="microsoftcache"></a>Microsoft. cache
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -488,7 +482,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Redis | Ano |Ano |
 > | RedisConfigDefinition | Ne |Ne |
 
-## <a name="microsoftcapacity"></a>Microsoft.Capacity
+## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -497,9 +491,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | calculateExchange | Ne |Ne |
 > | calculatePrice | Ne |Ne |
 > | calculatePurchasePrice | Ne |Ne |
-> | catalogs | Ne |Ne |
+> | spustí | Ne |Ne |
 > | commercialReservationOrders | Ne |Ne |
-> | exchange | Ne |Ne |
+> | Výměn | Ne |Ne |
 > | placePurchaseOrder | Ne |Ne |
 > | reservationOrders | Ne |Ne |
 > | reservationOrders/calculateRefund | Ne |Ne |
@@ -513,7 +507,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | prostředky | Ne |Ne |
 > | validateReservationOrder | Ne |Ne |
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -521,13 +515,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | CdnWebApplicationFirewallManagedRuleSets | Ne |Ne |
 > | CdnWebApplicationFirewallPolicies | Ano |Ano |
 > | edgenodes | Ne |Ne |
-> | profiles | Ano |Ano |
-> | profiles/endpoints | Ano |Ano |
+> | profily | Ano |Ano |
+> | profily/koncové body | Ano |Ano |
 > | profily/koncové body/customdomains | Ne |Ne |
 > | profily/koncové body/zdroje | Ne |Ne |
 > | validateProbe | Ne |Ne |
 
-## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
+## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -536,13 +530,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | certificateOrders/certifikáty | Ne |Ne |
 > | validateCertificateRegistrationInformation | Ne |Ne |
 
-## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
+## <a name="microsoftclassiccompute"></a>Microsoft. ClassicCompute
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | vestavěn | Ne |Ne |
-> | domainNames | Ano |Ano |
+> | domainNames | Ne |Ne |
 > | domainNames/možnosti | Ne |Ne |
 > | domainNames/internalLoadBalancers | Ne |Ne |
 > | domainNames/serviceCertificates | Ne |Ne |
@@ -553,50 +547,50 @@ Přejít na obor názvů poskytovatele prostředků:
 > | moveSubscriptionResources | Ne |Ne |
 > | operatingSystemFamilies | Ne |Ne |
 > | operatingSystems | Ne |Ne |
-> | quotas | Ne |Ne |
+> | kvóty | Ne |Ne |
 > | Typ prostředků | Ne |Ne |
 > | validateSubscriptionMoveAvailability | Ne |Ne |
-> | virtualMachines | Ano |Ano |
+> | virtualMachines | Ne |Ne |
 > | virtualMachines/diagnosticSettings | Ne |Ne |
 > | virtualMachines/metricDefinitions | Ne |Ne |
 > | virtualMachines/metriky | Ne |Ne |
 
-## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | classicInfrastructureResources | Ne |Ne |
 
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | vestavěn | Ne |Ne |
 > | expressRouteCrossConnections | Ne |Ne |
-> | expressRouteCrossConnections/peerings | Ne |Ne |
+> | expressRouteCrossConnections/partnerské vztahy | Ne |Ne |
 > | gatewaySupportedDevices | Ne |Ne |
-> | networkSecurityGroups | Ano |Ano |
-> | quotas | Ne |Ne |
-> | reservedIps | Ano |Ano |
-> | virtualNetworks | Ano |Ano |
+> | networkSecurityGroups | Ne |Ne |
+> | kvóty | Ne |Ne |
+> | reservedIps | Ne |Ne |
+> | virtualNetworks | Ne |Ne |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | Ne |Ne |
 > | virtualNetworks/virtualNetworkPeerings | Ne |Ne |
 
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | vestavěn | Ne |Ne |
-> | disks | Ne |Ne |
-> | image | Ne |Ne |
+> | Disků | Ne |Ne |
+> | obrázky | Ne |Ne |
 > | OSImage | Ne |Ne |
 > | osPlatformImages | Ne |Ne |
 > | publicImages | Ne |Ne |
-> | quotas | Ne |Ne |
-> | storageAccounts | Ano |Ano |
+> | kvóty | Ne |Ne |
+> | storageAccounts | Ne |Ne |
 > | storageAccounts/blobServices | Ne |Ne |
 > | storageAccounts/služby | Ne |Ne |
 > | storageAccounts/metricDefinitions | Ne |Ne |
@@ -610,14 +604,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | storageAccounts/vmImages | Ne |Ne |
 > | vmImages | Ne |Ne |
 
-## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+## <a name="microsoftcognitiveservices"></a>Microsoft. Cognitiveservices Account
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | účty | Ano |Ano |
 
-## <a name="microsoftcommerce"></a>Microsoft.Commerce
+## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -625,49 +619,47 @@ Přejít na obor názvů poskytovatele prostředků:
 > | RateCard | Ne |Ne |
 > | UsageAggregates | Ne |Ne |
 
-## <a name="microsoftcompute"></a>Microsoft.Compute
+## <a name="microsoftcompute"></a>Microsoft. COMPUTE
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | Ano |Ano |
 > | diskEncryptionSets | Ano |Ano |
-> | disks | Ano |Ano |
-> | galleries | Ano |Ano |
-> | Galerie/aplikace | Ano |Ano |
-> | Galerie/aplikace/verze | Ano |Ano |
-> | galleries/images | Ano |Ano |
-> | galleries/images/versions | Ano |Ano |
+> | Disků | Ano |Ano |
+> | Galerie | Ano |Ano |
+> | Galerie/aplikace | Ne |Ne |
+> | Galerie/aplikace/verze | Ne |Ne |
+> | Galerie/image | Ne |Ne |
+> | Galerie/image/verze | Ne |Ne |
 > | hostGroups | Ano |Ano |
 > | hostGroups/hostitelé | Ano |Ano |
-> | image | Ano |Ano |
+> | obrázky | Ano |Ano |
 > | proximityPlacementGroups | Ano |Ano |
 > | restorePointCollections | Ano |Ano |
 > | restorePointCollections/restorePoints | Ne |Ne |
 > | sharedVMImages | Ano |Ano |
-> | sharedVMImages/verze | Ano |Ano |
-> | snapshots | Ano |Ano |
+> | sharedVMImages/verze | Ne |Ne |
+> | snímky | Ano |Ano |
 > | virtualMachines | Ano |Ano |
-> | virtualMachines/extensions | Ano |Ano |
+> | virtualMachines/rozšíření | Ano |Ano |
 > | virtualMachines/metricDefinitions | Ne |Ne |
-> | virtualMachines/scriptJobs | Ne |Ne |
-> | virtualMachines/softwareUpdateDeployments | Ne |Ne |
 > | virtualMachineScaleSets | Ano |Ano |
-> | virtualMachineScaleSets/extensions | Ne |Ne |
+> | virtualMachineScaleSets/rozšíření | Ne |Ne |
 > | virtualMachineScaleSets/networkInterfaces | Ne |Ne |
 > | virtualMachineScaleSets/publicIPAddresses | Ne |Ne |
 > | virtualMachineScaleSets/virtualMachines | Ne |Ne |
 > | virtualMachineScaleSets/virtualMachines/networkInterfaces | Ne |Ne |
 
-## <a name="microsoftconsumption"></a>Microsoft.Consumption
+## <a name="microsoftconsumption"></a>Microsoft. spotřeba
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | AggregatedCost | Ne |Ne |
-> | Zůstatky | Ne |Ne |
-> | Rozpočty | Ne |Ne |
-> | Poplatky | Ne |Ne |
+> | Přesun | Ne |Ne |
+> | Projektů | Ne |Ne |
+> | Poplatky za | Ne |Ne |
 > | CostTags | Ne |Ne |
 > | Dobropis | Ne |Ne |
 > | události | Ne |Ne |
@@ -675,17 +667,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ŠARŽ | Ne |Ne |
 > | Tržišť | Ne |Ne |
 > | Pricesheets | Ne |Ne |
-> | produkty | Ne |Ne |
+> | Produktech | Ne |Ne |
 > | ReservationDetails | Ne |Ne |
 > | ReservationRecommendations | Ne |Ne |
 > | ReservationSummaries | Ne |Ne |
 > | ReservationTransactions | Ne |Ne |
-> | Tags | Ne |Ne |
+> | Značky | Ne |Ne |
 > | tenantů | Ne |Ne |
-> | Podmínky | Ne |Ne |
+> | Uvedenými | Ne |Ne |
 > | UsageDetails | Ne |Ne |
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -693,35 +685,35 @@ Přejít na obor názvů poskytovatele prostředků:
 > | containerGroups | Ano |Ano |
 > | serviceAssociationLinks | Ne |Ne |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | registries | Ano |Ano |
+> | registr | Ano |Ano |
 > | Registry a sestavení | Ne |Ne |
 > | Registry/buildy/zrušit | Ne |Ne |
 > | Registry/buildy/getLogLink | Ne |Ne |
 > | Registry/buildTasks | Ano |Ano |
 > | Registry/buildTasks/kroky | Ne |Ne |
-> | registries/eventGridFilters | Ne |Ne |
-> | registries/getBuildSourceUploadUrl | Ne |Ne |
+> | Registry/eventGridFilters | Ne |Ne |
+> | Registry/getBuildSourceUploadUrl | Ne |Ne |
 > | Registry/getpřihlašovací údaje | Ne |Ne |
 > | Registry/importImage | Ne |Ne |
 > | Registry/queueBuild | Ne |Ne |
 > | Registry/regenerateCredential | Ne |Ne |
 > | Registry/regenerateCredentials | Ne |Ne |
-> | registries/replications | Ano |Ano |
+> | Registry/replikace | Ano |Ano |
 > | Registry/běhy | Ne |Ne |
 > | Registry/spuštění/zrušit | Ne |Ne |
 > | Registry/scheduleRun | Ne |Ne |
-> | registries/tasks | Ano |Ano |
+> | Registry/úlohy | Ano |Ano |
 > | Registry/updatePolicies | Ne |Ne |
-> | registries/webhooks | Ano |Ano |
-> | registries/webhooks/getCallbackConfig | Ne |Ne |
+> | Registry a Webhooky | Ano |Ano |
+> | Registry/Webhooky/getCallbackConfig | Ne |Ne |
 > | Registry/Webhooky/příkazy k odeslání | Ne |Ne |
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -730,35 +722,35 @@ Přejít na obor názvů poskytovatele prostředků:
 > | managedClusters | Ano |Ano |
 > | openShiftManagedClusters | Ano |Ano |
 
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
+## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | applications | Ano |Ano |
+> | aplikace | Ano |Ano |
 > | updateCommunicationPreference | Ne |Ne |
 
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
+## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | účty | Ano |Ano |
 
-## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
+## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | Upozornění | Ne |Ne |
 > | billingAccounts | Ne |Ne |
-> | Rozpočty | Ne |Ne |
+> | Projektů | Ne |Ne |
 > | CloudConnectors | Ne |Ne |
-> | Konektory | Ano |Ano |
-> | Oddělení | Ne |Ne |
-> | Dimenze | Ne |Ne |
+> | spolu | Ano |Ano |
+> | oddělení | Ne |Ne |
+> | Použijí | Ne |Ne |
 > | enrollmentAccounts | Ne |Ne |
-> | Exporty | Ne |Ne |
+> | Vývozních | Ne |Ne |
 > | ExternalBillingAccounts | Ne |Ne |
 > | ExternalBillingAccounts/výstrahy | Ne |Ne |
 > | ExternalBillingAccounts/dimenzí | Ne |Ne |
@@ -769,23 +761,23 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ExternalSubscriptions/dimenzí | Ne |Ne |
 > | ExternalSubscriptions/prognóza | Ne |Ne |
 > | ExternalSubscriptions/dotaz | Ne |Ne |
-> | Prognóza | Ne |Ne |
-> | Dotaz | Ne |Ne |
-> | Registrace | Ne |Ne |
+> | Prognózy | Ne |Ne |
+> | Dotazy | Ne |Ne |
+> | register | Ne |Ne |
 > | Reportconfigs | Ne |Ne |
 > | Sestavy | Ne |Ne |
 > | Nastavení | Ne |Ne |
 > | showbackRules | Ne |Ne |
 > | Zobrazení | Ne |Ne |
 
-## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
+## <a name="microsoftcustomerlockbox"></a>Microsoft. CustomerLockbox
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | požadavků | Ne |Ne |
+> | požadavky | Ne |Ne |
 
-## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
+## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -793,34 +785,34 @@ Přejít na obor názvů poskytovatele prostředků:
 > | přidružení | Ne |Ne |
 > | resourceProviders | Ano |Ano |
 
-## <a name="microsoftdatabox"></a>Microsoft.DataBox
+## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | jobs | Ano |Ano |
+> | Úlohy | Ano |Ano |
 
-## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
+## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | DataBoxEdgeDevices | Ano |Ano |
 
-## <a name="microsoftdatabricks"></a>Microsoft.Databricks
+## <a name="microsoftdatabricks"></a>Cihly Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | workspaces | Ano |Ne |
+> | pracovní prostory | Ano |Ne |
 > | pracovní prostory/virtualNetworkPeerings | Ne |Ne |
 
-## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
+## <a name="microsoftdatacatalog"></a>Microsoft. datacatalog
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | catalogs | Ano |Ano |
+> | spustí | Ano |Ano |
 > | datacatalogs | Ano |Ano |
 > | datacatalogs/zdroje dat | Ne |Ne |
 > | datacatalogs/zdroje dat/kontroly | Ne |Ne |
@@ -829,7 +821,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | datacatalogs/scantargets | Ne |Ne |
 > | datové katalogy/scantargets/datové sady | Ne |Ne |
 
-## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -838,21 +830,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > | DataFactory/diagnosticSettings | Ne |Ne |
 > | DataFactory/metricDefinitions | Ne |Ne |
 > | dataFactorySchema | Ne |Ne |
-> | factories | Ano |Ne |
+> | továrny | Ano |Ne |
 > | továrny/integrationRuntimes | Ne |Ne |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | účty | Ano |Ano |
-> | accounts/dataLakeStoreAccounts | Ne |Ne |
+> | účty/dataLakeStoreAccounts | Ne |Ne |
 > | účty/storageAccounts | Ne |Ne |
 > | účty/storageAccounts/kontejnery | Ne |Ne |
 > | účty/transferAnalyticsUnits | Ne |Ne |
 
-## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -861,13 +853,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > | účty/eventGridFilters | Ne |Ne |
 > | účty/firewallRules | Ne |Ne |
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
+## <a name="microsoftdatamigration"></a>Migrace Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | services | Ne |Ne |
-> | services/projects | Ne |Ne |
+> | služby | Ne |Ne |
+> | služby a projekty | Ne |Ne |
 
 ## <a name="microsoftdatashare"></a>Microsoft. datashare
 
@@ -885,58 +877,61 @@ Přejít na obor názvů poskytovatele prostředků:
 > | účty/sharesubscriptions/datasetmappings | Ne |Ne |
 > | účty/sharesubscriptions/triggery | Ne |Ne |
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | servers | Ano |Ano |
+> | servery | Ano |Ano |
 > | servery/poradci | Ne |Ne |
-> | servers/queryTexts | Ne |Ne |
+> | servery/queryTexts | Ne |Ne |
 > | servery/recoverableServers | Ne |Ne |
-> | servers/topQueryStatistics | Ne |Ne |
+> | servery/topQueryStatistics | Ne |Ne |
 > | servery/virtualNetworkRules | Ne |Ne |
 > | servery/waitStatistics | Ne |Ne |
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | servers | Ano |Ano |
+> | servery | Ano |Ano |
 > | servery/poradci | Ne |Ne |
-> | servers/queryTexts | Ne |Ne |
+> | servery/queryTexts | Ne |Ne |
 > | servery/recoverableServers | Ne |Ne |
-> | servers/topQueryStatistics | Ne |Ne |
+> | servery/topQueryStatistics | Ne |Ne |
 > | servery/virtualNetworkRules | Ne |Ne |
 > | servery/waitStatistics | Ne |Ne |
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | serverGroups | Ano |Ano |
-> | servers | Ano |Ano |
+> | servery | Ano |Ano |
 > | servery/poradci | Ne |Ne |
-> | servers/queryTexts | Ne |Ne |
+> | servery/privateEndpointConnectionProxies | Ne |Ne |
+> | servery/privateEndpointConnections | Ne |Ne |
+> | servery/privateLinkResources | Ne |Ne |
+> | servery/queryTexts | Ne |Ne |
 > | servery/recoverableServers | Ne |Ne |
-> | servers/topQueryStatistics | Ne |Ne |
+> | servery/topQueryStatistics | Ne |Ne |
 > | servery/virtualNetworkRules | Ne |Ne |
 > | servery/waitStatistics | Ne |Ne |
 > | serversv2 | Ano |Ano |
 
-## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | artifactSources | Ano |Ano |
-> | rollouts | Ano |Ano |
+> | Uvádění | Ano |Ano |
 > | serviceTopologies | Ano |Ano |
 > | serviceTopologies/služby | Ano |Ano |
 > | serviceTopologies/služby/serviceUnits | Ano |Ano |
-> | kroky | Ano |Ano |
+> | Uvedené | Ano |Ano |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
@@ -950,9 +945,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | hostpools/sessionhosts | Ne |Ne |
 > | hostpools/sessionhosts/usersessions | Ne |Ne |
 > | hostpools/usersessions | Ne |Ne |
-> | workspaces | Ano |Ano |
+> | pracovní prostory | Ano |Ano |
 
-## <a name="microsoftdevices"></a>Microsoft.Devices
+## <a name="microsoftdevices"></a>Microsoft. Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -969,16 +964,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | kanály | Ano |Ano |
+> | Kanály | Ano |Ano |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Kontrolou | Ano |Ano |
+> | kontrolery | Ano |Ano |
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -988,9 +983,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | laboratoře/prostředí | Ano |Ano |
 > | Labs/serviceRunners | Ano |Ano |
 > | Labs/virtualMachines | Ano |Ano |
-> | schedules | Ano |Ano |
+> | Časových | Ano |Ano |
 
-## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -998,18 +993,18 @@ Přejít na obor názvů poskytovatele prostředků:
 > | databaseAccountNames | Ne |Ne |
 > | databaseAccounts | Ano |Ano |
 
-## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | domains | Ano |Ano |
+> | domény | Ano |Ano |
 > | domény/domainOwnershipIdentifiers | Ne |Ne |
 > | generateSsoRequest | Ne |Ne |
 > | topLevelDomains | Ne |Ne |
 > | validateDomainRegistrationInformation | Ne |Ne |
 
-## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
+## <a name="microsoftdynamicslcs"></a>Microsoft. DynamicsLcs
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1018,32 +1013,32 @@ Přejít na obor názvů poskytovatele prostředků:
 > | lcsprojects/clouddeployments | Ne |Ne |
 > | lcsprojects/konektory | Ne |Ne |
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | services | Ano |Ano |
+> | služby | Ano |Ano |
 
-## <a name="microsofteventgrid"></a>Microsoft.EventGrid
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | domains | Ano |Ano |
+> | domény | Ano |Ano |
 > | domény a témata | Ne |Ne |
 > | eventSubscriptions | Ne |Ne |
 > | extensionTopics | Ne |Ne |
-> | topics | Ano |Ano |
+> | popisující | Ano |Ano |
 > | topicTypes | Ne |Ne |
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | clusters | Ano |Ano |
-> | namespaces | Ano |Ano |
+> | existující | Ano |Ano |
+> | obory názvů | Ano |Ano |
 > | obory názvů/autorizačních pravidel | Ne |Ne |
 > | obory názvů/disasterrecoveryconfigs | Ne |Ne |
 > | obory názvů/eventhubs | Ne |Ne |
@@ -1051,15 +1046,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > | obory názvů/eventhubs/consumergroups | Ne |Ne |
 > | obory názvů/networkrulesets | Ne |Ne |
 
-## <a name="microsoftfeatures"></a>Microsoft.Features
+## <a name="microsoftfeatures"></a>Microsoft. Features
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Database | Ne |Ne |
-> | Zprostředkovatelé | Ne |Ne |
+> | funkce | Ne |Ne |
+> | zprostředkovatelé | Ne |Ne |
 
-## <a name="microsoftgallery"></a>Microsoft.Gallery
+## <a name="microsoftgallery"></a>Microsoft. Gallery
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1073,7 +1068,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | myareas/oblasti/oblasti/galleryitems | Ne |Ne |
 > | myareas/oblasti/galleryitems | Ne |Ne |
 > | myareas/galleryitems | Ne |Ne |
-> | Registrace | Ne |Ne |
+> | register | Ne |Ne |
 > | prostředky | Ne |Ne |
 > | retrieveresourcesbyid | Ne |Ne |
 
@@ -1084,7 +1079,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | účty | Ano |Ano |
 
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1095,7 +1090,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | softwareUpdateProfile | Ne |Ne |
 > | softwareUpdates | Ne |Ne |
 
-## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
+## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1103,36 +1098,36 @@ Přejít na obor názvů poskytovatele prostředků:
 > | hanaInstances | Ano |Ano |
 > | sapMonitors | Ano |Ano |
 
-## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
+## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | dedicatedHSMs | Ano |Ano |
 
-## <a name="microsofthdinsight"></a>Microsoft.HDInsight
+## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | clusters | Ano |Ano |
+> | existující | Ano |Ano |
 > | clustery/aplikace | Ne |Ne |
 
-## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
+## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | services | Ano |Ano |
+> | služby | Ano |Ano |
 
-## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | počítače | Ano |Ano |
+> | virtuální | Ano |Ano |
 
-## <a name="microsofthybriddata"></a>Microsoft.HybridData
+## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1144,17 +1139,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | components | Ano |Ano |
+> | komponenty | Ano |Ano |
 > | networkScopes | Ano |Ano |
 
-## <a name="microsoftimportexport"></a>Microsoft.ImportExport
+## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | jobs | Ano |Ano |
+> | Úlohy | Ano |Ano |
 
-## <a name="microsoftintune"></a>Microsoft.Intune
+## <a name="microsoftintune"></a>Microsoft. Intune
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1162,7 +1157,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | diagnosticSettings | Ne |Ne |
 > | diagnosticSettingsCategories | Ne |Ne |
 
-## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
+## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1175,40 +1170,41 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Graph | Ano |Ano |
+> | zapisovací | Ano |Ano |
 
-## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+## <a name="microsoftkeyvault"></a>Trezor Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | deletedVaults | Ne |Ne |
 > | hsmPools | Ano |Ano |
-> | vaults | Ano |Ano |
+> | trezory | Ano |Ano |
 > | trezory/accessPolicies | Ne |Ne |
 > | trezory/eventGridFilters | Ne |Ne |
 > | trezory/tajné klíče | Ne |Ne |
 
-## <a name="microsoftkusto"></a>Microsoft.Kusto
+## <a name="microsoftkusto"></a>Microsoft. Kusto
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | clusters | Ano |Ano |
+> | existující | Ano |Ano |
 > | clustery/attacheddatabaseconfigurations | Ne |Ne |
 > | clustery/databáze | Ne |Ne |
 > | clustery, databáze/datapřipojení | Ne |Ne |
 > | clustery/databáze/eventhubconnections | Ne |Ne |
+> | clustery/sharedidentities | Ne |Ne |
 
-## <a name="microsoftlabservices"></a>Microsoft.LabServices
+## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | labaccounts | Ano |Ano |
-> | uživatelů | Ne |Ne |
+> | uživatelé | Ne |Ne |
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1218,9 +1214,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | integrationServiceEnvironments | Ano |Ano |
 > | integrationServiceEnvironments/Inspirujte | Ano |Ano |
 > | isolatedEnvironments | Ano |Ano |
-> | workflows | Ano |Ano |
+> | pracovní postupy | Ano |Ano |
 
-## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1229,20 +1225,20 @@ Přejít na obor názvů poskytovatele prostředků:
 > | webServices | Ano |Ano |
 > | Pracovní prostory | Ano |Ano |
 
-## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+## <a name="microsoftmachinelearningservices"></a>Microsoft. MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | workspaces | Ano |Ano |
+> | pracovní prostory | Ano |Ano |
 > | pracovní prostory a výpočetní prostředky | Ne |Ne |
 
-## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
+## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Identity | Ne |Ne |
+> | Nebyly | Ne |Ne |
 > | userAssignedIdentities | Ano |Ano |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
@@ -1254,7 +1250,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | registrationAssignments | Ne |Ne |
 > | registrationDefinitions | Ne |Ne |
 
-## <a name="microsoftmanagement"></a>Microsoft.Management
+## <a name="microsoftmanagement"></a>Microsoft. Management
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1265,7 +1261,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | startTenantBackfill | Ne |Ne |
 > | tenantBackfillStatus | Ne |Ne |
 
-## <a name="microsoftmaps"></a>Microsoft.Maps
+## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1273,7 +1269,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | účty | Ano |Ano |
 > | účty/eventGridFilters | Ne |Ne |
 
-## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
+## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1284,15 +1280,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > | offerTypes/vydavatelé/nabídky | Ne |Ne |
 > | offerTypes/vydavatelé/nabídky/plány | Ne |Ne |
 > | offerTypes/vydavatelé/nabídky/plány/smlouvy | Ne |Ne |
-> | offerTypes/publishers/offers/plans/configs | Ne |Ne |
-> | offerTypes/publishers/offers/plans/configs/importImage | Ne |Ne |
+> | offerTypes/vydavatelé/nabídky/plány/konfigurace | Ne |Ne |
+> | offerTypes/vydavatelé/nabídky/plány/konfigurace/importImage | Ne |Ne |
 > | privategalleryitems | Ne |Ne |
-> | produkty | Ne |Ne |
-> | Vydavatelé | Ne |Ne |
+> | Produktech | Ne |Ne |
+> | Zdrojů | Ne |Ne |
 > | Vydavatelé/nabídky | Ne |Ne |
 > | Vydavatelé/nabídky/změny | Ne |Ne |
 
-## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
+## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1300,7 +1296,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | classicDevServices | Ano |Ano |
 > | updateCommunicationPreference | Ne |Ne |
 
-## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
+## <a name="microsoftmarketplaceordering"></a>Microsoft. MarketplaceOrdering
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1308,21 +1304,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > | o | Ne |Ne |
 > | offertypes | Ne |Ne |
 
-## <a name="microsoftmedia"></a>Microsoft.Media
+## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | MediaServices | Ano |Ano |
-> | mediaservices/accountFilters | Ne |Ne |
+> | MediaServices/accountFilters | Ne |Ne |
 > | MediaServices/assety | Ne |Ne |
-> | mediaservices/assets/assetFilters | Ne |Ne |
-> | mediaservices/contentKeyPolicies | Ne |Ne |
-> | mediaservices/eventGridFilters | Ne |Ne |
+> | MediaServices/assety/assetFilters | Ne |Ne |
+> | MediaServices/contentKeyPolicies | Ne |Ne |
+> | MediaServices/eventGridFilters | Ne |Ne |
 > | MediaServices/liveEventOperations | Ne |Ne |
 > | MediaServices/liveEvents | Ano |Ano |
 > | MediaServices/liveEvents/liveOutputs | Ne |Ne |
-> | mediaservices/liveOutputOperations | Ne |Ne |
+> | MediaServices/liveOutputOperations | Ne |Ne |
 > | MediaServices/streamingEndpointOperations | Ne |Ne |
 > | MediaServices/starají | Ano |Ano |
 > | MediaServices/streamingLocators | Ne |Ne |
@@ -1337,14 +1333,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | appClusters | Ano |Ano |
 
-## <a name="microsoftmigrate"></a>Microsoft.Migrate
+## <a name="microsoftmigrate"></a>Microsoft. migruje
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | assessmentProjects | Ano |Ano |
 > | migrateprojects | Ano |Ano |
-> | projects | Ano |Ano |
+> | projekty | Ano |Ano |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
@@ -1357,18 +1353,20 @@ Přejít na obor názvů poskytovatele prostředků:
 > | spatialAnchorsAccounts | Ano |Ano |
 > | surfaceReconstructionAccounts | Ano |Ano |
 
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | Ano |Ano |
+> | netAppAccounts/backupPolicies | Ano |Ano |
 > | netAppAccounts/capacityPools | Ano |Ano |
 > | netAppAccounts/capacityPools/svazky | Ano |Ano |
+> | netAppAccounts/capacityPools/svazky/zálohy | Ne |Ne |
 > | netAppAccounts/capacityPools/svazky/mountTargets | Ano |Ano |
 > | netAppAccounts/capacityPools/svazky/snímky | Ano |Ano |
-
-## <a name="microsoftnetwork"></a>Microsoft.Network
+> | netAppAccounts nebo trezory | Ne |Ne |
+## <a name="microsoftnetwork"></a>Microsoft. Network
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1380,7 +1378,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | azureFirewalls | Ano |Ano |
 > | bastionHosts | Ano |Ano |
 > | bgpServiceCommunities | Ne |Ne |
-> | connections | Ano |Ano |
+> | připojení | Ano |Ano |
 > | ddosCustomPolicies | Ano |Ano |
 > | ddosProtectionPlans | Ano |Ano |
 > | dnsOperationStatuses | Ne |Ne |
@@ -1403,7 +1401,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | expressRoutePorts | Ano |Ano |
 > | expressRouteServiceProviders | Ne |Ne |
 > | firewallPolicies | Ano |Ano |
-> | frontdoory | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) |Ano |
+> | frontdoors | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) |Ano |
 > | frontdoorWebApplicationFirewallManagedRuleSets | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) |Ne |
 > | frontdoorWebApplicationFirewallPolicies | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) |Ano |
 > | getDnsResourceReference | Ne |Ne |
@@ -1442,7 +1440,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | serviceEndpointPolicies | Ano |Ano |
 > | trafficManagerGeographicHierarchies | Ne |Ne |
 > | trafficmanagerprofiles | Ano |Ano |
-> | trafficmanagerprofiles/heatMaps | Ne |Ne |
+> | trafficmanagerprofiles/Heat mapy | Ne |Ne |
 > | trafficManagerUserMetricsKeys | Ne |Ne |
 > | virtualHubs | Ano |Ano |
 > | virtualNetworkGateways | Ano |Ano |
@@ -1458,15 +1456,23 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!NOTE]
 > U služby front-dveří pro Azure můžete při vytváření prostředku použít značky, ale aktualizace nebo přidávání značek se momentálně nepodporuje.
 
-## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
+
+## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | namespaces | Ano |Ne |
+> | obory názvů | Ano |Ne |
 > | obory názvů/notificationHubs | Ano |Ne |
 
-## <a name="microsoftoffazure"></a>Microsoft.OffAzure
+## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
+> | ------------- | ----------- | ----------- |
+> | osNamespaces | Ano |Ano |
+
+## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1476,42 +1482,42 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ServerSites | Ano |Ano |
 > | VMwareSites | Ano |Ano |
 
-## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
+## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | clusters | Ano |Ano |
-> | zařízení | Ne |Ne |
+> | existující | Ano |Ano |
+> | signalizac | Ne |Ne |
 > | linkTargets | Ne |Ne |
 > | storageInsightConfigs | Ne |Ne |
-> | workspaces | Ano |Ano |
+> | pracovní prostory | Ano |Ano |
 > | pracovní prostory/zdroje dat | Ne |Ne |
 > | pracovní prostory/linkedServices | Ne |Ne |
 > | pracovní prostory a dotazy | Ne |Ne |
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | managementassociations | Ne |Ne |
 > | managementconfigurations | Ano |Ano |
-> | solutions | Ano |Ano |
-> | views | Ano |Ano |
+> | řešení | Ano |Ano |
+> | zobrazení | Ano |Ano |
 
-## <a name="microsoftpeering"></a>Microsoft.Peering
+## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | legacyPeerings | Ne |Ne |
 > | peerAsns | Ne |Ne |
-> | peeringy | Ano |Ano |
+> | Partnerské vztahy | Ano |Ano |
 > | peeringServiceProviders | Ne |Ne |
 > | peeringServices | Ano |Ano |
 
-## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1521,43 +1527,43 @@ Přejít na obor názvů poskytovatele prostředků:
 > | policyTrackedResources | Ne |Ne |
 > | nápravy | Ne |Ne |
 
-## <a name="microsoftportal"></a>Microsoft.Portal
+## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | Console | Ne |Ne |
-> | dashboards | Ano |Ano |
+> | řídicí panely | Ano |Ano |
 > | userSettings | Ne |Ne |
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | workspaceCollections | Ano |Ano |
 
-## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | capacities | Ano |Ano |
+> | kapacity | Ano |Ano |
 
-## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
+## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | backupProtectedItems | Ne |Ne |
-> | vaults | Ano |Ano |
+> | trezory | Ano |Ano |
 
-## <a name="microsoftrelay"></a>Microsoft.Relay
+## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | namespaces | Ano |Ano |
+> | obory názvů | Ano |Ano |
 > | obory názvů/autorizačních pravidel | Ne |Ne |
 > | obory názvů/hybridconnections | Ne |Ne |
 > | obory názvů/hybridconnections/autorizačních pravidel | Ne |Ne |
@@ -1570,12 +1576,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | účty | Ne |Ne |
-> | Sbírk | Ano |Ano |
+> | – kolekce | Ano |Ano |
 > | Kolekce/aplikace | Ne |Ne |
 > | kolekce/securityprincipals | Ne |Ne |
 > | templateImages | Ne |Ne |
 
-## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
+## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1587,7 +1593,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | resourcesHistory | Ne |Ne |
 > | subscriptionsStatus | Ne |Ne |
 
-## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
+## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1597,7 +1603,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | childResources | Ne |Ne |
 > | události | Ne |Ne |
 > | impactedResources | Ne |Ne |
-> | zprostředkovatele identity | Ne |Ne |
+> | metadata | Ne |Ne |
 > | oznámení | Ne |Ne |
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
@@ -1605,36 +1611,38 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | nasazení | Ano |Ne |
+> | Nasazení | Ano |Ne |
 > | nasazení/operace | Ne |Ne |
-> | Odkazy | Ne |Ne |
+> | propojení | Ne |Ne |
 > | notifyResourceJobs | Ne |Ne |
-> | Zprostředkovatelé | Ne |Ne |
+> | zprostředkovatelé | Ne |Ne |
 > | resourceGroups | Ano |Ne |
 > | prostředky | Ne |Ne |
-> | předplatná | Ne |Ne |
+> | Odběru | Ne |Ne |
 > | předplatná/poskytovatelé | Ne |Ne |
+> | předplatná/resourceGroups | Ne |Ne |
+> | předplatná/ResourceGroups/prostředky | Ne |Ne |
 > | předplatná/prostředky | Ne |Ne |
 > | předplatná/TagNames | Ne |Ne |
-> | subscriptions/tagNames/tagValues | Ne |Ne |
+> | předplatná/tagNames/tagValues | Ne |Ne |
 > | tenantů | Ne |Ne |
 
-## <a name="microsoftsaas"></a>Microsoft.SaaS
+## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | applications | Ano |Ano |
+> | aplikace | Ano |Ano |
 > | saasresources | Ne |Ne |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
+## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | jobcollections | Ano |Ano |
 
-## <a name="microsoftsearch"></a>Microsoft.Search
+## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1649,7 +1657,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | adaptiveNetworkHardenings | Ne |Ne |
 > | advancedThreatProtectionSettings | Ne |Ne |
-> | výstrahy | Ne |Ne |
+> | Generoval | Ne |Ne |
 > | allowedConnections | Ne |Ne |
 > | applicationWhitelistings | Ne |Ne |
 > | assessmentMetadata | Ne |Ne |
@@ -1668,7 +1676,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | jitNetworkAccessPolicies | Ne |Ne |
 > | networkData | Ne |Ne |
 > | playbookConfigurations | Ano |Ano |
-> | zásady | Ne |Ne |
+> | Zásady | Ne |Ne |
 > | ceny | Ne |Ne |
 > | regulatoryComplianceStandards | Ne |Ne |
 > | regulatoryComplianceStandards/regulatoryComplianceControls | Ne |Ne |
@@ -1680,11 +1688,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > | securityStatusesSummaries | Ne |Ne |
 > | serverVulnerabilityAssessments | Ne |Ne |
 > | nastavení | Ne |Ne |
+> | podhodnocení | Ne |Ne |
 > | úlohy | Ne |Ne |
 > | topologie | Ne |Ne |
 > | workspaceSettings | Ne |Ne |
 
-## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
+## <a name="microsoftsecuritygraph"></a>Microsoft. SecurityGraph
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1700,7 +1709,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | agregace | Ne |Ne |
 > | alertRules | Ne |Ne |
 > | alertRuleTemplates | Ne |Ne |
-> | Záložky | Ne |Ne |
+> | záložky | Ne |Ne |
 > | Věcech | Ne |Ne |
 > | dataconnects | Ne |Ne |
 > | entity | Ne |Ne |
@@ -1708,12 +1717,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > | officeConsents | Ne |Ne |
 > | nastavení | Ne |Ne |
 
-## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+## <a name="microsoftservicebus"></a>Microsoft. ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | namespaces | Ano |Ne |
+> | obory názvů | Ano |Ne |
 > | obory názvů/autorizačních pravidel | Ne |Ne |
 > | obory názvů/disasterrecoveryconfigs | Ne |Ne |
 > | obory názvů/eventgridfilters | Ne |Ne |
@@ -1726,35 +1735,35 @@ Přejít na obor názvů poskytovatele prostředků:
 > | obory názvů/témata/předplatná/pravidla | Ne |Ne |
 > | premiumMessagingRegions | Ne |Ne |
 
-## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
+## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | applications | Ano |Ano |
-> | clusters | Ano |Ano |
+> | aplikace | Ano |Ano |
+> | existující | Ano |Ano |
 > | clustery/aplikace | Ne |Ne |
 > | containerGroups | Ano |Ano |
 > | containerGroupSets | Ano |Ano |
 > | edgeclusters | Ano |Ano |
 > | edgeclusters/aplikace | Ne |Ne |
-> | networks | Ano |Ano |
+> | sítě | Ano |Ano |
 > | secretstores | Ano |Ano |
 > | secretstores/certifikáty | Ne |Ne |
 > | secretstores/tajné kódy | Ne |Ne |
-> | svazky | Ano |Ano |
+> | svazků | Ano |Ano |
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | applications | Ano |Ano |
+> | aplikace | Ano |Ano |
 > | containerGroups | Ano |Ano |
 > | brány | Ano |Ano |
-> | networks | Ano |Ano |
-> | tajné kódy | Ano |Ano |
-> | svazky | Ano |Ano |
+> | sítě | Ano |Ano |
+> | záleží | Ano |Ano |
+> | svazků | Ano |Ano |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -1763,7 +1772,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | providerRegistrations | Ne |Ne |
 > | providerRegistrations/resourceTypeRegistrations | Ne |Ne |
-> | rollouts | Ano |Ano |
+> | Uvádění | Ano |Ano |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
@@ -1773,7 +1782,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | SignalR | Ano |Ano |
 > | Signál/eventGridFilters | Ne |Ne |
 
-## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
+## <a name="microsoftsiterecovery"></a>Microsoft. SiteRecovery
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1787,34 +1796,34 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | hybridUseBenefits | Ne |Ne |
 
-## <a name="microsoftsolutions"></a>Microsoft.Solutions
+## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | applicationDefinitions | Ano |Ano |
-> | applications | Ano |Ano |
+> | aplikace | Ano |Ano |
 > | jitRequests | Ano |Ano |
 
-## <a name="microsoftsql"></a>Microsoft.SQL
+## <a name="microsoftsql"></a>Microsoft. SQL
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Ano | Ano |
 > | managedInstances/databáze | Ano (viz [Poznámka níže](#sqlnote)) | Ano |
-> | managedInstances/databases/backupShortTermRetentionPolicies | Ne | Ne |
-> | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Ne | Ne |
+> | managedInstances/databáze/backupShortTermRetentionPolicies | Ne | Ne |
+> | managedInstances/databáze/schémata/tabulky/sloupce/sensitivityLabels | Ne | Ne |
 > | managedInstances/databáze/vulnerabilityAssessments | Ne | Ne |
-> | managedInstances/databases/vulnerabilityAssessments/rules/baselines | Ne | Ne |
+> | managedInstances/databáze/vulnerabilityAssessments/Rules/směrné plány | Ne | Ne |
 > | managedInstances/encryptionProtector | Ne | Ne |
 > | managedInstances/klíče | Ne | Ne |
 > | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Ne | Ne |
 > | managedInstances/vulnerabilityAssessments | Ne | Ne |
-> | servers | Ano | Ano |
+> | servery | Ano | Ano |
 > | servery/správci | Ne | Ne |
 > | servery/communicationLinks | Ne | Ne |
-> | servers/databases | Ano (viz [Poznámka níže](#sqlnote)) | Ano |
+> | servery/databáze | Ano (viz [Poznámka níže](#sqlnote)) | Ano |
 > | servery/encryptionProtector | Ne | Ne |
 > | servery/firewallRules | Ne | Ne |
 > | servery/klíče | Ne | Ne |
@@ -1828,7 +1837,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!NOTE]
 > Hlavní databáze nepodporuje značky, ale další databáze, včetně Azure SQL Data Warehousech databází, podporuje značky. Azure SQL Data Warehouse databáze musí být ve stavu aktivní (není pozastaveno).
 
-## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1837,7 +1846,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | SqlVirtualMachineGroups/AvailabilityGroupListeners | Ne |Ne |
 > | SqlVirtualMachines | Ano |Ano |
 
-## <a name="microsoftstorage"></a>Microsoft.Storage
+## <a name="microsoftstorage"></a>Microsoft. Storage
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1851,7 +1860,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | storageAccounts/tableServices | Ne |Ne |
 > | použití | Ne |Ne |
 
-## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
+## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1867,7 +1876,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | replicationGroups | Ne |Ne |
 
-## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1879,7 +1888,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | storageSyncServices/syncGroups/serverEndpoints | Ne |Ne |
 > | storageSyncServices/pracovní postupy | Ne |Ne |
 
-## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
+## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1891,7 +1900,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | storageSyncServices/syncGroups/serverEndpoints | Ne |Ne |
 > | storageSyncServices/pracovní postupy | Ne |Ne |
 
-## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
+## <a name="microsoftstoragesyncint"></a>Microsoft. StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1903,14 +1912,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | storageSyncServices/syncGroups/serverEndpoints | Ne |Ne |
 > | storageSyncServices/pracovní postupy | Ne |Ne |
 
-## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
+## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | managers | Ano |Ano |
+> | jednatel | Ano |Ano |
 
-## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1925,24 +1934,24 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | storno | Ne |Ne |
+> | Operaci | Ne |Ne |
 > | CreateSubscription | Ne |Ne |
-> | povolit | Ne |Ne |
-> | Přejmenovat | Ne |Ne |
+> | Aby | Ne |Ne |
+> | rename | Ne |Ne |
 > | SubscriptionDefinitions | Ne |Ne |
 > | SubscriptionOperations | Ne |Ne |
 
-## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | environments | Ano |Ne |
+> | prostředí | Ano |Ne |
 > | prostředí/accessPolicies | Ne |Ne |
-> | environments/eventsources | Ano |Ne |
+> | prostředí/EventSources | Ano |Ne |
 > | prostředí/referenceDataSets | Ano |Ne |
 
-## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1951,7 +1960,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | dedicatedCloudServices | Ano |Ano |
 > | virtualMachines | Ano |Ano |
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -1967,9 +1976,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | apiManagementAccounts/connectionAcls | Ne |Ne |
 > | apiManagementAccounts/připojení | Ne |Ne |
 > | billingMeters | Ne |Ne |
-> | certificates | Ano |Ano |
+> | certifikáty | Ano |Ano |
 > | connectionGateways | Ano |Ano |
-> | connections | Ano |Ano |
+> | připojení | Ano |Ano |
 > | customApis | Ano |Ano |
 > | deletedSites | Ne |Ne |
 > | – funkce | Ne |Ne |
@@ -1977,26 +1986,26 @@ Přejít na obor názvů poskytovatele prostředků:
 > | hostingEnvironments/multiRolePools | Ne |Ne |
 > | hostingEnvironments/workerPools | Ne |Ne |
 > | publishingUsers | Ne |Ne |
-> | Doporučení | Ne |Ne |
+> | Doporučit | Ne |Ne |
 > | resourceHealthMetadata | Ne |Ne |
 > | moduly runtime | Ne |Ne |
-> | serverFarms | Ano |Ano |
+> | Serverových farem | Ano |Ano |
 > | Serverových farem/eventGridFilters | Ne |Ne |
-> | sites | Ano |Ano |
+> | místa | Ano |Ano |
 > | lokality/konfigurace  | Ne | Ne |
 > | lokality/eventGridFilters | Ne |Ne |
-> | sites/hostNameBindings | Ne |Ne |
+> | lokality/hostNameBindings | Ne |Ne |
 > | lokality/networkConfig | Ne |Ne |
-> | sites/premieraddons | Ano |Ano |
-> | sites/slots | Ano |Ano |
+> | lokality/premieraddons | Ano |Ano |
+> | lokality/sloty | Ano |Ano |
 > | lokality/sloty/eventGridFilters | Ne |Ne |
-> | sites/slots/hostNameBindings | Ne |Ne |
+> | lokality/sloty/hostNameBindings | Ne |Ne |
 > | lokality/sloty/networkConfig | Ne |Ne |
 > | sourceControls | Ne |Ne |
 > | Oproti | Ne |Ne |
 > | verifyHostingEnvironmentVnet | Ne |Ne |
 
-## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
+## <a name="microsoftwindowsdefenderatp"></a>Microsoft. WindowsDefenderATP
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -2004,7 +2013,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | diagnosticSettings | Ne |Ne |
 > | diagnosticSettingsCategories | Ne |Ne |
 
-## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
+## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
@@ -2016,11 +2025,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | components | Ne |Ne |
+> | komponenty | Ne |Ne |
 > | componentsSummary | Ne |Ne |
 > | monitorInstances | Ne |Ne |
 > | monitorInstancesSummary | Ne |Ne |
-> | Monitor | Ne |Ne |
+> | monitory | Ne |Ne |
 > | notificationSettings | Ne |Ne |
 
 ## <a name="next-steps"></a>Další kroky

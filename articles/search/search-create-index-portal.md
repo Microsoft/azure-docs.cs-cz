@@ -1,85 +1,87 @@
 ---
 title: Vytvoření indexu Azure Search v Azure Portal-Azure Search
-description: Naučte se vytvořit index pro Azure Search pomocí vestavěných návrhářů indexů portálu.
+description: Naučte se vytvořit index pro Azure Search s použitím integrovaného návrháře indexů portálu.
 manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 10/02/2019
 ms.author: heidist
-ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638811"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937269"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Vytvoření indexu Azure Search na portálu
 
-Azure Search obsahuje integrovaného návrháře indexů na portálu, který je užitečný pro vytváření prototypů nebo vytvoření [indexu vyhledávání](search-what-is-an-index.md) hostovaného v rámci služby Azure Search. Nástroj se používá pro konstrukci schématu. Když definici uložíte, prázdný index se v Azure Search plně vyjádří. Jak si ji nahráváte, budete mít k i data, která lze prohledávat.
+Azure Search obsahuje integrovaného návrháře indexů na portálu, který je užitečný pro vytváření prototypů nebo vytvoření [indexu vyhledávání](search-what-is-an-index.md) hostovaného v rámci služby Azure Search. Nástroj se používá pro konstrukci schématu. Když definici uložíte, prázdný index se v Azure Search plně vyjádří. Způsob, jakým se dá s prohledávatelným obsahem načítat, je až na vás.
 
-Návrhář indexů je pouze jeden přístup pro vytvoření indexu. Prostřednictvím kódu programu můžete vytvořit index prostřednictvím rozhraní [.NET](search-create-index-dotnet.md) nebo rozhraní [REST](search-create-index-rest-api.md) API.
+Návrhář indexů je pouze jeden přístup pro vytvoření indexu. Případně můžete index vytvořit a načíst pomocí [Průvodce importem dat](search-get-started-portal.md). Průvodce funguje pouze s indexy, které vytváří sám sebe. Prostřednictvím kódu programu můžete vytvořit index prostřednictvím rozhraní [.NET](search-create-index-dotnet.md) nebo rozhraní [REST](search-create-index-rest-api.md) API.
 
 ## <a name="start-index-designer"></a>Spustit návrháře indexů
 
-1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) a otevřete řídicí panel služby. Kliknutím na **Všechny služby** na panelu odkazů můžete vyhledávat stávající „vyhledávací služby“ v rámci aktuálního předplatného. 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete řídicí panel služby. Kliknutím na **všechny služby** na panelu odkazů můžete vyhledat existující "vyhledávací služby" v aktuálním předplatném. 
 
 2. Klikněte na odkaz **Přidat index** na panelu příkazů v horní části stránky.
 
    ![Přidat odkaz na index na panelu příkazů](media/search-create-index-portal/add-index.png "Přidat odkaz na index na panelu příkazů")
 
-3. Pojmenujte si index Azure Search. Na názvy indexů se odkazuje při operacích indexování a dotazování. Název indexu se stane součástí adresy URL koncového bodu u připojení k indexu a pro posílání žádostí HTTP v rozhraní REST API služby Azure Search.
+3. Pojmenujte index Azure Search. Na názvy indexů se odkazuje při operacích indexování a dotazování. Název indexu se bude součástí adresy URL koncového bodu používaného pro připojení k indexu a odeslání požadavků HTTP v REST API Azure Search.
 
    * Začněte písmenem.
-   * Název může obsahovat jenom malá písmena, číslice nebo pomlčky (-).
-   * Délka je omezená na 60 znaků.
+   * Používejte jenom malá písmena, číslice nebo pomlčky ("-").
+   * Omezte název na 60 znaků.
 
 ## <a name="add-fields"></a>Přidat pole
 
-Kompozice indexu obsahuje *kolekci Pole*, která definuje prohledávatelná data v indexu. Kolekce pole zcela určuje strukturu dokumentů, které odesíláte samostatně. Kolekce polí obsahuje povinná a volitelná pole s názvem a typem s atributy indexu, které určují, jak lze pole použít.
+Složení indexů zahrnuje *kolekci polí* definující hledaná data v indexu. Kolekce pole zcela určuje strukturu dokumentů, které odesíláte samostatně. Kolekce polí obsahuje povinná a volitelná pole s názvem a typem s atributy indexu, které určují, jak lze pole použít.
 
-1. Přidejte pole pro úplné zadání dokumentů, které nahrajete, a nastavte [datový typ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) pro každé z nich. Například pokud se dokumenty skládají z *hotelu-ID*, hotelového *názvu*, *adresy*, *města*a *oblasti*, vytvořte odpovídající pole pro každou z nich v indexu. Nápovědu k nastavení atributů najdete [v části Průvodce návrhem v níže uvedené části](#design) .
+1. Přidejte pole pro úplné zadání dokumentů, které nahrajete, a nastavte [datový typ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) pro každé z nich. Například pokud se dokumenty skládají z *hotelu-ID*, *hotelového názvu*, *adresy*, *města*a *oblasti*, vytvořte odpovídající pole pro každou z nich v indexu. Nápovědu k nastavení atributů najdete [v části Průvodce návrhem v níže uvedené části](#design) .
 
-2. Zadejte *klíčové* pole typu EDM. String. Hodnoty pro toto pole musí jednoznačně identifikovat každý dokument. Ve výchozím nastavení se pole jmenuje *id*, ale můžete ho přejmenovat, pokud bude řetězec splňovat [pravidla pojmenování](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Například pokud vaše pole kolekce obsahují *hotely-ID*, je vhodné si pro svůj klíč vybrat. Pole key je povinné pro každý index Azure Search a musí jít o řetězec.
+1. Pokud jsou příchozí data hierarchicky uspořádaná, vaše schéma by mělo zahrnovat [komplexní typy](search-howto-complex-data-types.md) , které reprezentují vnořené struktury. Integrovaná Ukázková sada dat, hotely, znázorňuje komplexní typy pomocí adresy (obsahuje několik dílčích polí), které mají vztah 1:1 s každým hotelem, a prostorově komplexní kolekci, kde je k jednotlivým hotelům přidruženo více místností. 
 
-3. Nastavte atributy pro každé pole. Návrhář indexu vylučuje všechny atributy, které jsou pro datový typ neplatné, ale nenavrhuje, co zahrnout. Přečtěte si pokyny v následující části, abyste zjistili, jaké jsou atributy pro.
+1. Zadejte *klíčové* pole typu EDM. String. Klíčové pole je povinné pro každý index Azure Search a musí to být řetězec. Hodnoty pro toto pole musí jednoznačně identifikovat každý dokument. Ve výchozím nastavení se pole nazývá *ID* , ale můžete ho přejmenovat, pokud řetězec splňuje [pravidla pojmenování](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Například pokud vaše pole kolekce obsahují *hotely-ID*, je vhodné si pro svůj klíč vybrat. 
 
-    Dokumentace k rozhraní API služby Azure Search obsahuje příklady kódu s jednoduchým indexem *hotels* (hotely). Na následujícím snímku obrazovky vidíte definici indexu včetně analyzátoru francouzského jazyka zadaného během definice indexu, který můžete znovu vytvořit jako cvičení na portálu.
+1. Nastavte atributy pro každé pole. Návrhář indexu vylučuje všechny atributy, které jsou pro datový typ neplatné, ale nenavrhuje, co zahrnout. Přečtěte si pokyny v následující části, abyste zjistili, jaké jsou atributy pro.
 
-    ![Ukázkový index hotelů](media/search-create-index-portal/field-definitions.png "Ukázkový index hotelů")
+    Dokumentace k rozhraní Azure Search API obsahuje příklady kódu, které obsahují jednoduchý index *hotelů* . Na následujícím snímku obrazovky vidíte definici indexu včetně analyzátoru francouzského jazyka zadaného během definice indexu, který můžete znovu vytvořit jako cvičení na portálu.
 
-4. Po dokončení klikněte na **vytvořit** , aby se tento index uložil a vytvořil.
+    ![](media/search-create-index-portal/field-definitions.png "Ukázka ukázkového indexu hotelů") v hotely
+
+1. Po dokončení klikněte na **vytvořit** , aby se tento index uložil a vytvořil.
 
 <a name="design"></a>
 
 ## <a name="set-attributes"></a>Nastavit atributy
 
-I když můžete nová pole přidat kdykoliv, jsou existující definice polí zamknuté v indexu po dobu jeho existence. Z tohoto důvodu vývojáři obvykle používají portál k vytváření jednoduchých indexů, testování nápadů nebo k vyhledání nastavení pomocí stránek portálu. Časté změny návrhu indexu jsou efektivnější, pokud budete postupovat pomocí kódu, aby bylo možné index snadno znovu sestavit.
+I když můžete kdykoli přidat nová pole, existující definice polí jsou v době životnosti indexu zamčené. Z tohoto důvodu vývojáři obvykle používají portál pro vytváření jednoduchých indexů, testování nápadů nebo použití stránek portálu k vyhledání nastavení. Častější iterace při návrhu indexu je efektivnější, pokud budete postupovat podle přístupu založeného na kódu, abyste mohli index snadno sestavit.
 
-Analyzátory a moduly pro návrhy jsou přidružené k polím před uložením indexu. Nezapomeňte přidat analyzátory jazyka nebo moduly pro návrhy do definice indexu při jejím vytváření.
+Analyzátory a moduly pro návrhy jsou přidruženy k polím před uložením indexu. Nezapomeňte přidat analyzátory jazyka nebo moduly pro návrhy do definice indexu při jejím vytváření.
 
-Pole řetězců jsou často označená jako  **Searchable** a **Retrievable**. Pole použitá k zúžení výsledků hledání obsahují **Sortable** (Jde řadit), **Filterable** (Filtrovatelné) a **Facetable** (Kategorizovatelné).
+Pole řetězců jsou často označena jako **prohledávatelné** **a**získatelné. Mezi pole, která se používají k zúžení výsledků hledání, patří **seřaditelné**, **filtrovatelné**a **plošky**.
 
-Atributy polí určují, jak se pole používá, například jestli se používá ve fulltextovém vyhledávání, fasetové navigaci, operacích řazení a tak dále. Následující tabulka popisuje každý atribut.
+Atributy pole určují, jak se pole používá, například to, jestli se používá při fulltextovém vyhledávání, omezující navigaci, operacích řazení a tak dále. V následující tabulce jsou popsány jednotlivé atributy.
 
 |Atribut|Popis|  
 |---------------|-----------------|  
-|**searchable**|Fulltextově prohledávatelné, lze provést lexikální analýzu, jako je dělení slov během indexování. Pokud nastavíte prohledávatelné pole na hodnotu jako „slunečný den“, interně se rozdělí na jednotlivé tokeny „slunečný“ a „den“. Podrobnosti najdete v článku [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md).|  
-|**filterable**|Odkazované v dotazech **$filter**. Ve filtrovatelných polích typu `Edm.String` nebo `Collection(Edm.String)` nejdou dělit slova, takže se dají porovnávat jenom na přesné shody. Pokud například nastavíte takové pole f na „sunny day“, `$filter=f eq 'sunny'` nenajde žádné shody, ale `$filter=f eq 'sunny day'` ano. |  
-|**sortable**|Ve výchozím nastavení systém řadí výsledky podle skóre (bodů), můžete ale nakonfigurovat řazení na základě polí v dokumentech. Pole typu `Collection(Edm.String)` nejdou nastavit na **sortable**. |  
-|**facetable**|Obvykle se používá v prezentaci výsledků hledání, která obsahuje počet nalezených položek podle kategorie (například hotely v konkrétním městě). Tuto možnost nejde použít s poli typu `Edm.GeographyPoint`. Pole typu `Edm.String`, která jsou **filterable**, **sortable** nebo **facetable**, můžou být dlouhé maximálně 32 kilobajtů. Podrobnosti najdete v článku [Vytvoření indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
-|**key**|Jedinečný identifikátor pro dokumenty v indexu. Jako pole key se musí zvolit právě jedno pole a musí být typu `Edm.String`.|  
-|**retrievable**|Určuje, jestli může být pole vrácené ve výsledku hledání. To je užitečné, když chcete použít pole (například *zisková marže*) jako filtrovací, řadicí a bodovací mechanismus, ale nechcete, aby pole bylo viditelné pro koncového uživatele. Tento atribut musí být `true` pro pole typu `key`.|  
+|**prohledávatelná**|Fulltextově prohledávatelné, podléhající lexikální analýze, jako je dělení slov při indexování. Pokud nastavíte prohledávatelné pole na hodnotu, třeba "Slunečné Day", interně se rozdělí na jednotlivé tokeny "Slunečné" a "Day". Podrobnosti najdete v tématu [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md).|  
+|**Filterable**|Odkazováno v **$filterch** dotazech. Filtrovatelné pole typu `Edm.String` nebo `Collection(Edm.String)` nezpůsobují zalamování slov, takže porovnání jsou pouze pro přesné shody. Pokud například nastavíte takové pole f na "Slunečné Day", `$filter=f eq 'sunny'` nenajde žádné shody, ale `$filter=f eq 'sunny day'` bude. |  
+|**seřaditelné**|Ve výchozím nastavení systém seřadí výsledky podle skóre, ale můžete nakonfigurovat řazení na základě polí v dokumentech. Pole typu `Collection(Edm.String)` nelze **Seřadit**. |  
+|**kategorizovatelné**|Obvykle se používá v prezentaci výsledků hledání, která obsahuje počet přístupů podle kategorie (například hotely v určitém městě). Tuto možnost nelze použít s poli typu `Edm.GeographyPoint`. Pole typu `Edm.String`, která lze **filtrovat**, **seřaditelné**nebo **plošky** , mohou mít délku maximálně 32 kilobajtů. Podrobnosti najdete v tématu [vytvoření indexu (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
+|**zkrat**|Jedinečný identifikátor dokumentů v indexu. Jako klíčové pole musí být zvolené přesně jedno pole a musí být typu `Edm.String`.|  
+|**Retrievable**|Určuje, zda může být pole vráceno ve výsledku hledání. To je užitečné v případě, že chcete použít pole (například *ziskové marže*) jako filtr, řazení nebo mechanismus bodování, ale nechcete, aby bylo pole viditelné pro koncového uživatele. Tento atribut musí být `true` pro pole `key`.|  
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření indexu Azure Search můžete přejít na další krok: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
+Po vytvoření indexu Azure Search můžete přejít k dalšímu kroku: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
 
-Alternativně můžete také pořizovat [hlubší pohled na indexy](search-what-is-an-index.md). Kromě kolekce Pole index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování (bodovací profily) a nastavení CORS. Portál poskytuje stránky se záložkami pro definování nejběžnějších prvků: Pole, analyzátory a moduly pro návrhy. K vytvoření nebo úpravě jiných elementů můžete použít rozhraní REST API nebo .NET SDK.
+Alternativně můžete také pořizovat [hlubší pohled na indexy](search-what-is-an-index.md). Kromě kolekce polí index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování a nastavení CORS. Portál poskytuje stránky s kartami k definování nejběžnějších prvků: pole, analyzátory a moduly pro návrhy. Chcete-li vytvořit nebo upravit jiné prvky, můžete použít sadu REST API nebo .NET SDK.
 
 ## <a name="see-also"></a>Viz také:
 
- [Jak funguje fulltextové vyhledávání](search-lucene-query-architecture.md)  
- [Rozhraní REST API služby Search](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [Jak funguje úplné hledání textu](search-lucene-query-architecture.md)  
+ [Služba Search REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
 

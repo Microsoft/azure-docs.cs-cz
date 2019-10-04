@@ -1,35 +1,34 @@
 ---
 title: C#Kurz pro volání rozhraní API služeb Cognitive Services v kanálu indexování – Azure Search
-description: Tento kurz vás krok za krokem provede ukázkovou extrakcí dat a zpracováním přirozeného jazyka a obrázků pomocí umělé inteligence v indexování Azure Search s cílem extrahovat a transformovat data.
+description: V tomto kurzu si Projděte příklad extrakce dat, přirozeného jazyka a zpracování AI v Azure Search indexování pro extrakci a transformaci dat.
 manager: nitinme
 author: MarkHeff
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b40cd63062e961848eb1ab6b956e63a83a634817
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744756"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936942"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Návodu Volání rozhraní API služeb Cognitive Services v kanálu indexování Azure Search
+# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Kurz: volání rozhraní API služeb Cognitive Services v kanálu indexování Azure Search
 
-V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Dovednosti jsou zajištěny při zpracování přirozeného jazyka (NLP) a možností analýzy obrázků v Cognitive Services. Prostřednictvím složení a konfigurace dovednosti můžete extrahovat text a text reprezentace obrázku nebo naskenovaného souboru dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečný výsledek je bohatě doplňující obsah v indexu Azure Search vytvořeným kanálem indexování s použitím AI.
+V tomto kurzu se seznámíte s příznámkou rozšíření programovacích dat v Azure Search s využitím *dovedností rozpoznávání*. Dovednosti jsou zajištěny při zpracování přirozeného jazyka (NLP) a možností analýzy obrázků v Cognitive Services. Prostřednictvím složení a konfigurace dovednosti můžete extrahovat text a text reprezentace obrázku nebo naskenovaného souboru dokumentu. Můžete také zjistit jazyk, entity, klíčové fráze a další. Konečný výsledek je bohatě doplňující obsah v indexu Azure Search vytvořeným kanálem indexování s použitím AI.
 
 V tomto kurzu použijete sadu .NET SDK k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Vytvoření kanálu indexace, který rozšiřuje ukázková data na cestě k indexu
+> * Vytvoření kanálu indexování, který rozšiřuje ukázková data v cestě do indexu
 > * Použití integrovaných dovedností: optické rozpoznávání znaků, fúze textu, detekce jazyka, rozdělení textu, rozpoznávání entit, extrakce klíčových frází
-> * Zjištění, jak mapováním vstupů na výstupy v sadě dovedností řetězit dovednosti za sebe
-> * Spouštění požadavků a kontrola výsledků
+> * Naučte se, jak pomocí mapování vstupů na výstupy v dovednosti zřetězit dovednosti společně.
+> * Provádění požadavků a kontrola výsledků
 > * Resetování indexu a indexerů pro další vývoj
 
-Výstup indexu v Azure Search, který se dá prohledávat fulltextově Index můžete rozšířit pomocí dalších standardních funkcí, jako jsou [synonyma](search-synonyms.md), [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analyzátory](search-analyzers.md) a [filtry](search-filters.md).
+Výstupem je fulltextově prohledávatelný index na Azure Search. Index můžete vylepšit dalšími standardními možnostmi, jako jsou [synonyma](search-synonyms.md), [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analyzátory](search-analyzers.md)a [filtry](search-filters.md).
 
 Tento kurz běží na bezplatné službě, ale počet bezplatných transakcí je omezený na 20 dokumentů za den. Pokud chcete spustit tento kurz ve stejný den více než jednou, použijte menší sadu souborů, abyste se mohli přizpůsobit více spuštění.
 
@@ -54,19 +53,19 @@ V tomto kurzu se používají následující služby, nástroje a data.
 
 ## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Abyste mohli komunikovat se službou Azure Search, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
+Abyste mohli komunikovat se službou Azure Search, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste přidali Azure Search k vašemu předplatnému, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Vzorový koncový bod může vypadat jako `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V **nastavení**@no__t**klíčů**– 1 Získejte klíč správce s úplnými právy ke službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   ![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+   ![Získání koncového bodu http a přístupového klíče]k(media/search-get-started-postman/get-url-key.png "získání koncového bodu http a přístupového klíče")
 
-Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
-Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová data musí pocházet z podporovaného typu zdroje dat [indexeru Azure Search](search-indexer-overview.md). Při tomto cvičení použijeme službu Blob Storage, na které ukážeme několik typů obsahu.
+Kanál rozšíření vyžádá ze zdrojů dat Azure. Zdrojová data musí pocházet z podporovaného typu zdroje dat [Azure Search indexer](search-indexer-overview.md). Pro toto cvičení používáme úložiště objektů BLOB k předvedení více typů obsahu.
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
@@ -74,17 +73,17 @@ Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová d
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** a nahrajte [vzorová data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4).
 
-   ![Zdrojové soubory ve službě Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Zdrojové soubory v úložišti objektů BLOB v Azure](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. Až se ukázkové soubory nahrají, získejte název kontejneru a připojovací řetězec vaší služby Blob Storage. To můžete udělat tak, že přejdete na svůj účet úložiště v Azure Portal vyberete **přístupové klíče**a potom zkopírujete pole **připojovací řetězec** .
+1. Po načtení ukázkových souborů Získejte název kontejneru a připojovací řetězec pro úložiště objektů BLOB. To můžete udělat tak, že přejdete na svůj účet úložiště v Azure Portal vyberete **přístupové klíče**a potom zkopírujete pole **připojovací řetězec** .
 
-   Připojovací řetězec by měl být adresa URL, která vypadá nějak takto:
+   Připojovací řetězec by měl být adresa URL podobná následujícímu příkladu:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-Existují i jiné způsoby, jak zadat připojovací řetězec, například poskytnutím sdíleného přístupového podpisu. Další informace o přihlašovacích údajích ke zdroji dat najdete v článku o [indexování služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
+Existují i jiné způsoby, jak zadat připojovací řetězec, například poskytnutí sdíleného přístupového podpisu. Další informace o přihlašovacích údajích ke zdroji dat najdete v tématu [indexování služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
@@ -94,17 +93,17 @@ Začněte otevřením sady Visual Studio a vytvořením nového projektu konzolo
 
 [Sada Azure Search .NET SDK](https://aka.ms/search-sdk) se skládá z několika klientských knihoven, které umožňují spravovat vaše indexy, zdroje dat, indexery a dovednosti a také nahrávat a spravovat dokumenty a provádět dotazy, a to vše bez nutnosti zabývat se podrobnostmi o http a JSON. . Tyto klientské knihovny jsou distribuovány jako balíčky NuGet.
 
-Pro tento projekt budete muset nainstalovat verzi 9 `Microsoft.Azure.Search` balíčku NuGet a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
+Pro tento projekt bude nutné nainstalovat verzi 9 balíčku NuGet `Microsoft.Azure.Search` a nejnovější balíček NuGet `Microsoft.Extensions.Configuration.Json`.
 
-Nainstalujte balíček `Microsoft.Azure.Search` NuGet pomocí konzoly Správce balíčků v aplikaci Visual Studio. Chcete-li otevřít konzolu Správce balíčků, vyberte **nástroje** > správce**balíčků** > NuGet**Konzola správce balíčků**. Pokud chcete spustit příkaz, přejděte na [stránku balíčku NuGet Microsoft. Azure. Search](https://www.nuget.org/packages/Microsoft.Azure.Search), vyberte verze 9 a zkopírujte příkaz Správce balíčků. V konzole správce balíčků spusťte tento příkaz.
+Nainstalujte balíček NuGet `Microsoft.Azure.Search` pomocí konzoly Správce balíčků v aplikaci Visual Studio. Konzolu Správce balíčků otevřete výběrem **nástrojů** > **správce balíčků NuGet** > **Konzola správce balíčků**. Pokud chcete spustit příkaz, přejděte na [stránku balíčku NuGet Microsoft. Azure. Search](https://www.nuget.org/packages/Microsoft.Azure.Search), vyberte verze 9 a zkopírujte příkaz Správce balíčků. V konzole správce balíčků spusťte tento příkaz.
 
-Chcete-li `Microsoft.Extensions.Configuration.Json` nainstalovat balíček NuGet v aplikaci Visual Studio, vyberte **nástroje** >  > **Správce balíčků NuGet** **Spravovat balíčky NuGet pro řešení...** . Vyberte Procházet a vyhledejte `Microsoft.Extensions.Configuration.Json` balíček NuGet. Po nalezení vyberte balíček, vyberte projekt, potvrďte, že verze je nejnovější stabilní verze, a pak vyberte nainstalovat.
+Chcete-li nainstalovat balíček NuGet `Microsoft.Extensions.Configuration.Json` v aplikaci Visual Studio, vyberte **nástroje** **správce balíčků NuGet** >  –  > **Spravovat balíčky NuGet pro řešení...** . Vyberte Procházet a vyhledejte balíček NuGet `Microsoft.Extensions.Configuration.Json`. Po nalezení vyberte balíček, vyberte projekt, potvrďte, že verze je nejnovější stabilní verze, a pak vyberte nainstalovat.
 
 ## <a name="add-azure-search-service-information"></a>Přidat informace o Azure Search službě
 
-Aby bylo možné se připojit ke službě Azure Search, budete muset do svého projektu přidat informace o vyhledávací službě. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Přidat** > **novou položku...** Zadejte název souboru `appsettings.json` a vyberte **Přidat**. 
+Aby bylo možné se připojit ke službě Azure Search, budete muset do svého projektu přidat informace o vyhledávací službě. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **přidat** > **novou položku...** . Pojmenujte soubor `appsettings.json` a vyberte **Přidat**. 
 
-Tento soubor bude nutné zahrnout do výstupního adresáře. Provedete to tak, že `appsettings.json` kliknete pravým tlačítkem na a vyberete **vlastnosti**. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat novější**.
+Tento soubor bude nutné zahrnout do výstupního adresáře. Uděláte to tak, že kliknete pravým tlačítkem na `appsettings.json` a vyberete **vlastnosti**. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat novější**.
 
 Zkopírujte následující kód JSON do nového souboru JSON.
 
@@ -125,7 +124,7 @@ Připojovací řetězec objektu blob můžete získat tak, že přejdete na úč
 
 ## <a name="add-namespaces"></a>Přidat obory názvů
 
-Tento kurz používá mnoho různých typů z různých oborů názvů. Aby bylo možné tyto typy použít, přidejte následující do `Program.cs`.
+Tento kurz používá mnoho různých typů z různých oborů názvů. Aby bylo možné tyto typy použít, přidejte následující pro `Program.cs`.
 
 ```csharp
 using System;
@@ -137,7 +136,7 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="create-a-client"></a>Vytvoření klienta
 
-Vytvořte instanci `SearchServiceClient` třídy.
+Vytvořit instanci `SearchServiceClient` třídy.
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -145,7 +144,7 @@ IConfigurationRoot configuration = builder.Build();
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 ```
 
-`CreateSearchServiceClient`Vytvoří nový `SearchServiceClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON).
+`CreateSearchServiceClient` vytvoří nové `SearchServiceClient` s použitím hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON).
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -159,15 +158,15 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 ```
 
 > [!NOTE]
-> Třída `SearchServiceClient` spravuje připojení k vyhledávací službě. Aby se zabránilo otevírání příliš mnoha připojení, měli byste se pokusit sdílet jednu instanci třídy `SearchServiceClient` v rámci aplikace, pokud je to možné. Její metody jsou bezpečné pro přístup z více vláken a takové sdílení umožňují.
+> Třída `SearchServiceClient` spravuje připojení k vaší vyhledávací službě. Aby nedocházelo k otevření příliš velkého počtu připojení, měli byste zkusit sdílet jednu instanci `SearchServiceClient` v aplikaci, pokud je to možné. Jeho metody jsou bezpečné pro přístup z více vláken, které umožňují takové sdílení.
 > 
 > 
 
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-Vytvořte novou `DataSource` instanci voláním `DataSource.AzureBlobStorage`. `DataSource.AzureBlobStorage`vyžaduje, abyste zadali název zdroje dat, připojovací řetězec a název kontejneru objektů BLOB.
+Vytvořte novou instanci `DataSource` voláním `DataSource.AzureBlobStorage`. `DataSource.AzureBlobStorage` vyžaduje, abyste zadali název zdroje dat, připojovací řetězec a název kontejneru objektů BLOB.
 
-I když se v tomto kurzu nepoužívá, je definovaná taky zásada podmíněného odstranění, která se používá k identifikaci odstraněných objektů blob na základě hodnoty sloupce obnovitelného odstranění. Následující zásady považují objekt blob, který se má odstranit, pokud má vlastnost `IsDeleted` metadata s hodnotou `true`.
+I když se v tomto kurzu nepoužívá, je definovaná taky zásada podmíněného odstranění, která se používá k identifikaci odstraněných objektů blob na základě hodnoty sloupce obnovitelného odstranění. Následující zásady považují objekt blob, který se má odstranit, pokud má vlastnost metadata `IsDeleted` s hodnotou `true`.
 
 ```csharp
 DataSource dataSource = DataSource.AzureBlobStorage(
@@ -180,7 +179,7 @@ DataSource dataSource = DataSource.AzureBlobStorage(
     description: "Demo files to demonstrate cognitive search capabilities.");
 ```
 
-Teď, když jste `DataSource` objekt inicializoval, vytvořte zdroj dat. `SearchServiceClient` obsahuje vlastnost `DataSources`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění zdrojů dat Azure Search.
+Nyní, když jste inicializoval objekt `DataSource`, vytvořte zdroj dat. `SearchServiceClient` má vlastnost `DataSources`. Tato vlastnost poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění zdrojů dat Azure Search.
 
 V případě úspěšné žádosti vrátí metoda zdroj dat, který byl vytvořen. Pokud dojde k potížím s požadavkem, například s neplatným parametrem, metoda vyvolá výjimku.
 
@@ -195,35 +194,35 @@ catch (Exception e)
 }
 ```
 
-Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azure Portal a potvrďte, že se zdroj dat vytvořil ve službě Azure Search. Na stránce řídicího panelu vyhledávací služby ověřte, že dlaždice Zdroje dat má novou položku. Možná bude nutné několik minut počkat, než se stránka portálu aktualizuje.
+Vzhledem k tomu, že se jedná o váš první požadavek, zkontrolujte Azure Portal a potvrďte, že byl zdroj dat vytvořen v Azure Search. Na stránce řídicí panel služby vyhledávání ověřte, zda dlaždice zdroje dat obsahuje novou položku. Je možné, že budete muset několik minut počkat, než se stránka portálu aktualizuje.
 
-  ![Dlaždice Zdroje dat na portálu](./media/cognitive-search-tutorial-blob/data-source-tile.png "Dlaždice Zdroje dat na portálu")
+  ![Dlaždice zdroje dat]na(./media/cognitive-search-tutorial-blob/data-source-tile.png "dlaždici zdroje dat") na portálu na portálu
 
-## <a name="create-a-skillset"></a>Vytvoření sady dovedností
+## <a name="create-a-skillset"></a>Vytvoření dovednosti
 
-V této části definujete sadu kroků obohacení, které chcete použít pro vaše data. Každý krok obohacení se nazývá *dovednost* a sada kroků obohacení o *dovednosti*. V tomto kurzu se pro sadu dovedností používají [předdefinované kognitivní dovednosti](cognitive-search-predefined-skills.md):
+V této části definujete sadu kroků obohacení, které chcete použít pro vaše data. Každý krok obohacení se nazývá *dovednost* a sada kroků obohacení o *dovednosti*. V tomto kurzu se používá [předdefinovaná znalost vnímání](cognitive-search-predefined-skills.md) pro dovednosti:
 
 + [Optické rozpoznávání znaků](cognitive-search-skill-ocr.md) pro rozpoznávání vytištěného a rukopisného textu v souborech obrázků.
 
 + [Sloučení textu](cognitive-search-skill-textmerger.md) pro konsolidaci textu z kolekce polí do jednoho pole.
 
-+ [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md), které identifikuje jazyk obsahu
++ [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md) k identifikaci jazyka obsahu.
 
-+ [Rozdělení textu](cognitive-search-skill-textsplit.md) pro rozdělení velkého obsahu do menších bloků před voláním dovednosti pro extrakci klíčových frází a dovedností pro rozpoznávání entit. Extrakce klíčových frází a rozpoznávání entit přijímají vstupy o 50 000 nebo méně znaků. Některé ze zdrojových souborů je nutné rozdělit, aby se do tohoto limitu vešly.
++ [Rozdělení textu](cognitive-search-skill-textsplit.md) pro rozdělení velkého obsahu do menších bloků před voláním dovednosti pro extrakci klíčových frází a dovedností pro rozpoznávání entit. Extrakce klíčových frází a rozpoznávání entit přijímají vstupy o 50 000 nebo méně znaků. Některé z ukázkových souborů je třeba rozdělit, aby se do tohoto limitu vešly.
 
 + [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizací z obsahu v kontejneru objektů BLOB.
 
-+ [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze
++ [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md) vyžádat horní klíčové fráze.
 
-Při počátečním zpracování Azure Search napraskliny každý dokument, aby bylo možné číst obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, se umístí do vygenerovaného pole ```content```, jednoho pro každý dokument. V takovém případě nastavte vstup pro jako ```"/document/content"``` pro použití tohoto textu. 
+Při počátečním zpracování Azure Search napraskliny každý dokument, aby bylo možné číst obsah z různých formátů souborů. Nalezený text, který pochází ze zdrojového souboru, je umístěn do generovaného pole ```content```, jednu pro každý dokument. V takovém případě nastavte zadání jako ```"/document/content"``` pro použití tohoto textu. 
 
-Výstupy se dají namapovat na index, použít jako vstup do podřízené dovednosti, nebo využít oběma způsoby tak, jak se to dělá s kódem jazyka. V indexu je kód jazyka užitečný při filtrování. Jako vstup se kód jazyka používá v dovednostech analýzy textu, čímž se jazykovým pravidlům poskytne informace o dělení slov.
+Výstupy mohou být mapovány na index, který slouží jako vstup pro podřízenou dovednost, nebo v obou případech s kódem jazyka. V indexu je kód jazyka užitečný pro filtrování. V podobě vstupu je kód jazyka používán dovednostmi analýzy textu k informování lingvistických pravidel kolem dělení slov.
 
-Další informace o základních principech sady dovedností najdete v článku o [definování sady dovedností](cognitive-search-defining-skillset.md).
+Další informace o základech dovednosti naleznete v tématu [How to define a dovednosti](cognitive-search-defining-skillset.md).
 
 ### <a name="ocr-skill"></a>Dovednost OCR
 
-Dovednost **optického rozpoznávání znaků** extrahuje text z obrázků. Tato dovednost předpokládá, že existuje pole normalized_images. K vygenerování tohoto pole později v tomto kurzu nastavíme ```"imageAction"``` konfiguraci v definici indexeru na. ```"generateNormalizedImages"```
+Dovednost **optického rozpoznávání znaků** extrahuje text z obrázků. Tato dovednost předpokládá, že existuje pole normalized_images. K vygenerování tohoto pole později v tomto kurzu nastavíme konfiguraci ```"imageAction"``` v definici indexeru na ```"generateNormalizedImages"```.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -299,7 +298,7 @@ LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
 
 ### <a name="text-split-skill"></a>Dovednost rozdělení textu
 
-Níže uvedená **rozdělená** dovednost rozdělí text na stránky a omezí délku stránky na 4 000 znaků měřených podle `String.Length`. Algoritmus se pokusí rozdělit text na bloky, které mají největší `maximumPageLength` velikost. V takovém případě algoritmus provede svůj nejlepší postup pro rozdělení věty na hranici věty, takže velikost bloku dat může být menší než `maximumPageLength`.
+Níže uvedená **rozdělená** dovednost rozdělí text na stránky a omezí délku stránky na 4 000 znaků, jak je měřené `String.Length`. Algoritmus se pokusí rozdělit text na bloky, které mají velikost maximálně `maximumPageLength`. V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než `maximumPageLength`.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -326,9 +325,9 @@ SplitSkill splitSkill = new SplitSkill(
 
 ### <a name="entity-recognition-skill"></a>Dovednost pro rozpoznávání entit
 
-Tato `EntityRecognitionSkill` instance je nastavena na hodnotu rozpoznat typ `organization`kategorie. Dovednosti v **rozpoznávání entit** můžou také rozpoznat typy `person` kategorií a. `location`
+Tato instance `EntityRecognitionSkill` je nastavena na hodnotu rozpoznat typ kategorie `organization`. Dovednosti v **rozpoznávání entit** můžou také rozpoznat typy kategorií `person` a `location`.
 
-Všimněte si, že pole "Context" je nastaveno ```"/document/pages/*"``` na hvězdičku, což znamená, že krok rozšíření je volán pro každou stránku ```"/document/pages"```v rámci.
+Všimněte si, že pole "Context" je nastaveno na hodnotu ```"/document/pages/*"``` s hvězdičkou, což znamená, že krok rozšíření je volán pro každou stránku v rámci ```"/document/pages"```.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -355,7 +354,7 @@ EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
 
 ### <a name="key-phrase-extraction-skill"></a>Dovednost pro extrakci klíčových frází
 
-Stejně jako instance, kterou jste právě vytvořili, je pro každou stránku dokumentu volána extrakce klíčových frází dovednost. `EntityRecognitionSkill`
+Stejně jako instance `EntityRecognitionSkill`, kterou jste právě vytvořili, je pro každou stránku dokumentu volána **extrakce klíčových frází** dovednost.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -380,7 +379,7 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 
 ### <a name="build-and-create-the-skillset"></a>Sestavení a vytvoření dovednosti
 
-Sestavte se `Skillset` s využitím dovedností, které jste vytvořili.
+Sestavte `Skillset` pomocí dovedností, které jste vytvořili.
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -412,22 +411,22 @@ catch (Exception e)
 
 ## <a name="create-an-index"></a>Vytvoření indexu
 
-V tomto oddílu definujete schéma indexu, a to tak, že zadáte, která pole se mají zahrnout do prohledávatelného indexu, a pro jednotlivá pole poskytnete atributy vyhledávání. Pole mají typ a můžou přijímat argumenty, které určují, jak se pole používá (prohledávatelné, seřaditelné apod.). K vyhledání přesné shody s názvy polí ve zdroji není nutné, aby index tyto názvy polí obsahoval. V pozdějším kroku přidáte v indexeru mapování polí, pomocí kterých propojíte zdrojová a cílová pole. Pro tento krok definujte index pomocí konvencí pojmenování relevantních pro vaši vyhledávací aplikaci.
+V této části definujete schéma indexu zadáním polí, která se mají zahrnout do prohledávatelný index, a atributů hledání pro každé pole. Pole mají typ a mohou přebírat atributy, které určují, jak se pole používá (prohledávatelné, seřaditelné a tak dále). Názvy polí v indexu nejsou nutné přesně odpovídat názvům polí ve zdroji. V pozdějším kroku přidáte mapování polí v indexeru pro připojení polí zdroj-cíl. Pro tento krok definujte index pomocí konvence pojmenování polí, které se vztahují k vaší vyhledávací aplikaci.
 
-V tomto cvičení použijeme následující pole a jejich typy:
+Toto cvičení používá následující pole a typy polí:
 
-| Názvy polí: | `id`       | content   | languageCode | keyPhrases         | organizations     |
+| názvy polí: | `id`       | obsah   | languageCode | keyPhrases         | subjekt     |
 |--------------|----------|-------|----------|--------------------|-------------------|
-| Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
+| typy polí: | EDM. String|EDM. String| EDM. String| List < EDM. > řetězců  | List < EDM. > řetězců  |
 
 
 ### <a name="create-demoindex-class"></a>Vytvoření třídy DemoIndex
 
-Pole pro tento index jsou definována pomocí třídy modelu. Každá vlastnost třídy modelu má atributy, které určují chování odpovídajícího pole indexu při vyhledávání. 
+Pole pro tento index jsou definována pomocí třídy modelu. Každá vlastnost třídy modelu má atributy, které určují chování odpovídajícího pole indexu v souvislosti s vyhledáváním. 
 
-Přidáme třídu modelu do nového C# souboru. Klikněte pravým tlačítkem na projekt a vyberte **Přidat** > **novou položku...** , vyberte "třídu" a pojmenujte soubor `DemoIndex.cs`a pak vyberte **Přidat**.
+Přidáme třídu modelu do nového C# souboru. Klikněte pravým tlačítkem na projekt a vyberte **přidat** > **novou položku...** , vyberte "třídu" a pojmenujte soubor `DemoIndex.cs` a pak vyberte **Přidat**.
 
-Nezapomeňte určit, že chcete použít typy z `Microsoft.Azure.Search` oboru názvů a. `Microsoft.Azure.Search.Models`
+Nezapomeňte určit, že chcete použít typy z oborů názvů `Microsoft.Azure.Search` a `Microsoft.Azure.Search.Models`.
 
 ```csharp
 using Microsoft.Azure.Search;
@@ -461,7 +460,7 @@ public class DemoIndex
 }
 ```
 
-Teď, když jste definovali třídu modelu, `Program.cs` můžete vytvořit definici indexu poměrně snadno. Název tohoto indexu bude "demoindex".
+Teď, když jste definovali třídu modelu, zpátky `Program.cs` můžete vytvořit definici indexu poměrně snadno. Název tohoto indexu bude "demoindex".
 
 ```csharp
 var index = new Index()
@@ -491,11 +490,11 @@ catch (Exception e)
 }
 ```
 
-Další informace o definování indexu najdete v článku o [vytvoření indexu (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Další informace o definování indexu najdete v tématu [vytvoření indexu (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Vytvoření indexeru, mapování polí a spouštění transformací
+## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Vytvoření indexeru, mapování polí a provádění transformací
 
-Do této chvíle jste vytvořili zdroj dat, sadu dovedností a index. Tyto tři komponenty se stanou součástí [indexeru](search-indexer-overview.md), který jednotlivé části sestaví do jediné operace s více fázemi. Pokud je chcete sloučit do indexeru, musíte nadefinovat mapování polí.
+Zatím jste vytvořili zdroj dat, dovednosti a index. Tyto tři komponenty se stanou součástí [indexeru](search-indexer-overview.md) , který každou část spojí do jedné dvoufázové operace. Chcete-li spojit tyto dohromady v indexeru, je nutné definovat mapování polí.
 
 + FieldMappings se zpracovávají před dovednosti a mapuje zdrojová pole ze zdroje dat na cílová pole v indexu. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 
@@ -563,22 +562,22 @@ catch (Exception e)
 }
 ```
 
-Očekává se, že dokončení vytváření indexeru bude trvat trochu dlouho. I když je sada dat malá, analytické dovednosti jsou výpočetně náročné. Některé dovednosti, třeba analýza obrazu, trvají dlouho.
+Očekává se, že dokončení vytváření indexeru bude trvat trochu dlouho. I když je datová sada malá, analytické dovednosti jsou náročné na výpočetní výkon. Některé dovednosti, jako je například analýza obrázků, jsou dlouhotrvající.
 
 > [!TIP]
-> Vytvoření indexeru vyvolá kanál. Pokud dojde k nějakému problému při komunikaci s daty, při mapování vstupů a výstupů nebo s pořadím operací, zobrazí se v této fázi.
+> Vytvoření indexeru vyvolá kanál. Pokud dojde k problémům s navázáním dat, mapování vstupů a výstupů nebo pořadí operací se zobrazí v této fázi.
 
 ### <a name="explore-creating-the-indexer"></a>Prozkoumat vytváření indexeru
 
-Kód nastaví ```"maxFailedItems"``` na-1, který dává modulu indexování pokyn, aby při importu dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je velmi málo dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
+Kód nastaví ```"maxFailedItems"``` na-1, což dává modulu indexování pokyn, aby při importu dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je několik dokumentů. U většího zdroje dat byste měli nastavit hodnotu větší než 0.
 
-Všimněte si také ```"dataToExtract"``` , že je ```"contentAndMetadata"```nastavena na. Tento příkaz dává indexeru pokyn, aby automaticky extrahoval obsah z různých formátů souborů, stejně jako metadata, která s jednotlivými soubory souvisí.
+Všimněte si také, že hodnota ```"dataToExtract"``` je nastavená na ```"contentAndMetadata"```. Tento příkaz říká indexeru, aby automaticky rozbalí obsah z různých formátů souborů a také metadata týkající se jednotlivých souborů.
 
-Když se extrahuje obsah, můžete nastavit `imageAction`, aby se z obrázků nalezených ve zdroji dat extrahoval text. V ```"imageAction"```kombinaci s dovedností rozpoznávání textu a dovedností a sloučení textu říká indexeru, aby vyextrahovali text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vloží ho jako součást pole Content. ```"generateNormalizedImages"``` Toto chování platí jak pro obrázky vložené do dokumentů (třeba obrázek v souboru PDF), tak pro obrázky nalezené ve zdroji dat, např. soubor JPG.
+Po extrahování obsahu můžete nastavit `imageAction` pro extrakci textu z obrázků nalezených ve zdroji dat. Sada ```"imageAction"``` nastavená na konfiguraci ```"generateNormalizedImages"```, v kombinaci s dovedností OPTICKÉho textu a nástrojem pro sloučení textu, říká indexeru, aby vybalily text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vložil jej jako součást pole Content. Toto chování platí pro obrázky vložené do dokumentů (můžete si představit obrázek v PDF) a také obrázky nalezené ve zdroji dat, například soubor. JPG.
 
-## <a name="check-indexer-status"></a>Kontrola stavu indexeru
+## <a name="check-indexer-status"></a>Kontrolovat stav indexeru
 
-Až se indexer nadefinuje, automaticky se spustí, až se odešle požadavek. Podle kognitivních dovedností, které jste definovali, může indexování trvat déle, než jste čekali. Chcete-li zjistit, zda indexer stále běží, použijte `GetStatus` metodu.
+Po definování indexeru se spustí automaticky při odeslání žádosti. V závislosti na tom, jaké dovednosti rozpoznávání jste definovali, indexování může trvat déle, než očekáváte. Chcete-li zjistit, zda indexer stále běží, použijte metodu `GetStatus`.
 
 ```csharp
 try
@@ -607,15 +606,15 @@ catch (Exception e)
 }
 ```
 
-`IndexerExecutionInfo`představuje aktuální stav a historii provádění indexeru.
+`IndexerExecutionInfo` představuje aktuální stav a historii spouštění indexeru.
 
-Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. V tomto kurzu jsou upozornění neškodná (např. v souboru JPEG nejsou žádné textové vstupy).
+Upozornění jsou společná s některými zdrojovými soubory a kombinacemi dovedností a neznamenají vždy problém. V tomto kurzu jsou upozornění neškodné (například žádné textové vstupy ze souborů JPEG).
  
-## <a name="query-your-index"></a>Dotázání indexu
+## <a name="query-your-index"></a>Dotazování indexu
 
-Po dokončení indexování můžete spustit dotazy, které vracejí obsah jednotlivých polí. Standardně služba Azure Search vrací prvních 50 výsledků. Ukázková data jsou malá, takže výchozí nastavení stačí. Až ale budete pracovat s většími sadami dat, budete možná potřebovat přidat do řetězce dotazu nějaké parametry, aby se výsledků vrátilo více. Pokyny najdete v článku [Jak v Azure Search stránkovat výsledky hledání](search-pagination-page-layout.md).
+Po dokončení indexování můžete spustit dotazy, které vracejí obsah jednotlivých polí. Ve výchozím nastavení Azure Search vrátí prvních 50 výsledků. Vzorová data jsou malá, takže výchozí funkce funguje správně. Pokud ale pracujete s většími datovými sadami, možná budete muset zahrnout parametry do řetězce dotazu, abyste vrátili více výsledků. Pokyny najdete v tématu [Azure Search výsledků na stránce](search-pagination-page-layout.md).
 
-Pro ověření pošlete indexu dotaz na všechna pole.
+Jako ověřovací krok můžete zadat dotaz na index všech polí.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -632,7 +631,7 @@ catch (Exception e)
 }
 ```
 
-`CreateSearchIndexClient`Vytvoří nový `SearchIndexClient` pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON). Všimněte si, že se používá klíč rozhraní API vyhledávací služby, a ne klíč správce.
+`CreateSearchIndexClient` vytvoří nové `SearchIndexClient` s použitím hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON). Všimněte si, že se používá klíč rozhraní API vyhledávací služby, a ne klíč správce.
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -645,9 +644,9 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Výstupem je schéma indexu s názvem, typem a atributy všech jednotlivých polí.
+Výstupem je schéma indexu s názvem, typem a atributy každého pole.
 
-Pošlete druhý dotaz pro `"*"`, aby se vrátil všechen obsah jednoho pole, třeba `organizations`.
+Odešlete druhý dotaz na `"*"`, který vrátí všechny obsahy jednoho pole, například `organizations`.
 
 ```csharp
 SearchParameters parameters =
@@ -666,35 +665,35 @@ catch (Exception e)
 }
 ```
 
-Opakujte pro další pole: obsah, languageCode, klíčová fráze a organizace v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
+Opakujte pro další pole: obsah, languageCode, klíčová fráze a organizace v tomto cvičení. Pomocí čárkami odděleného seznamu můžete vracet více polí pomocí `$select`.
 
 <a name="reset"></a>
 
-## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
+## <a name="reset-and-rerun"></a>Resetovat a znovu spustit
 
-Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem pro iterace návrhu odstranění objektů z Azure Search a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem pro iterace návrhu odstranění objektů z Azure Search a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Odstranění objektu vám umožní ho znovu vytvořit pomocí stejného názvu.
 
 V tomto kurzu se postará o kontrolu stávajících indexerů a indexů a jejich odstranění, pokud už existovaly, abyste mohli znovu spustit kód.
 
 Portál můžete také použít k odstranění indexů, indexerů a dovednosti.
 
-Až se váš kód bude blížit dokončení, možná budete chtít zdokonalit strategii opětovného sestavování. Další informace najdete v článku o tom, [jak znovu sestavit index](search-howto-reindex.md).
+V případě, že je váš kód vyzrálější, možná budete chtít upravit strategii opětovného sestavení. Další informace najdete v tématu [Postup opětovného sestavení indexu](search-howto-reindex.md).
 
-## <a name="takeaways"></a>Shrnutí
+## <a name="takeaways"></a>Poznatky
 
 V tomto kurzu jste provedli základní kroky pro vytvoření obohaceného kanálu indexování prostřednictvím vytváření součástí komponenty: zdroj dat, dovednosti, index a indexer.
 
-Představili jsme si [předdefinované dovednosti](cognitive-search-predefined-skills.md), definice sad dovedností a mechanismy, jak pomocí vstupů a výstupů řetězit dovednosti za sebe. Naučili jste se, že `outputFieldMappings` v definici indexu umožňuje směrovat rozšířené hodnoty z kanálu do prohledávatelného indexu ve službě Azure Search.
+Byly představeny [předdefinované dovednosti](cognitive-search-predefined-skills.md) společně s definicí dovednosti a mechanismy zřetězení dovedností prostřednictvím vstupů a výstupů. Zjistili jste taky, že `outputFieldMappings` v definici indexeru je potřeba pro směrování hodnot obohacených z kanálu do indexu s možností vyhledávání v Azure Search službě.
 
-Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. K tomu všemu jste se naučili, jak zkontrolovat stav indexeru a které objekty se mají před opětovným spuštěním kanálu odstranit.
+Nakonec jste zjistili, jak testovat výsledky a obnovit systém pro další iterace. Zjistili jste, že vydávání dotazů proti indexu vrátí výstup vytvořený obohaceným kanálem indexování. Zjistili jste také, jak kontrolovat stav indexeru a které objekty odstranit před opakovaným spuštěním kanálu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search a službu Azure Blob. Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste v tomto kurzu vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
+Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků obsahující službu Azure Search a Azure Blob service. Za předpokladu, že jste obě služby umístili do stejné skupiny, odstraňte nyní skupinu prostředků, abyste trvale odstranili vše, včetně služeb a veškerého uloženého obsahu, který jste pro tento kurz vytvořili. Na portálu je název skupiny prostředků na stránce Přehled každé služby.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete.
+Přizpůsobte nebo rozšíříte kanál s vlastními dovednostmi. Když vytvoříte vlastní dovednost a přidáte ji do dovednosti, budete moct připojit text nebo obrázek k analýze, kterou sami píšete.
 
 > [!div class="nextstepaction"]
 > [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)

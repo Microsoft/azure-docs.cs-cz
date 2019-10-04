@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: af775a57356af304aa27453baffa518788d0f5e7
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326549"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937135"
 ---
 # <a name="send-security-messages-sdk"></a>Odeslat sadu SDK pro zprávy zabezpečení
 
 Tato příručka vysvětluje Azure Security Center možnosti služby IoT, když se rozhodnete shromažďovat a odesílat zprávy o zabezpečení zařízení bez použití Azure Security Center pro agenta IoT a vysvětluje, jak to udělat.  
 
-V této příručce se naučíte: 
+V této příručce se dozvíte, jak: 
 > [!div class="checklist"]
 > * Posílání zpráv o zabezpečení pomocí sady Azure IoT C SDK
 > * Posílání zpráv o zabezpečení pomocí sady C# Azure IoT SDK
@@ -46,7 +46,7 @@ Azure Security Center pro IoT definuje bezpečnostní zprávu pomocí následuj�
 - Pokud zpráva odpovídá [schématu zprávy zabezpečení](https://aka.ms/iot-security-schemas)
 - Pokud byla zpráva před odesláním nastavena jako bezpečnostní zpráva
 
-Každá zpráva zabezpečení obsahuje metadata odesílatele `AgentId`, jako je, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
+Každá zpráva zabezpečení obsahuje metadata odesílatele, například `AgentId`, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
 Schéma definuje platné a požadované vlastnosti zprávy zabezpečení, včetně typů událostí.
 
 >[!Note]
@@ -57,7 +57,7 @@ Schéma definuje platné a požadované vlastnosti zprávy zabezpečení, včetn
 
 ## <a name="valid-message-example"></a>Příklad platné zprávy
 
-Následující příklad ukazuje platný objekt zprávy zabezpečení. Příklad obsahuje metadata zprávy a jednu `ProcessCreate` událost zabezpečení.
+Následující příklad ukazuje platný objekt zprávy zabezpečení. Příklad obsahuje metadata zprávy a jednu událost zabezpečení `ProcessCreate`.
 
 Po nastavení zprávy o zabezpečení a odeslání bude tato zpráva zpracována Azure Security Center pro IoT.
 
@@ -101,7 +101,7 @@ Všechna data, která jsou odeslána, i když jsou označena správnou hlavičko
 
 Rozhraní API pro **posílání zpráv zabezpečení** je aktuálně k dispozici v jazycích C a C#, Python, Node. js a Java.  
 
-#### <a name="c-api"></a>C API
+#### <a name="c-api"></a>ROZHRANÍ API JAZYKA C
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -145,7 +145,7 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
     }
 }
 ```
-#### <a name="c-api"></a>Rozhraní API C#
+#### <a name="c-api"></a>C#API
 
 ```cs
 
@@ -190,7 +190,7 @@ function SendSecurityMessage(messageContent)
 }
 ```
 
-#### <a name="python-api"></a>Rozhraní API pro Python
+#### <a name="python-api"></a>Rozhraní Python API
 
 ```python
 async def send_security_message_async(message_content):
@@ -203,6 +203,19 @@ async def send_security_message_async(message_content):
     await device_client.disconnect()
 ```
 
+#### <a name="java-api"></a>Rozhraní Java API
+
+```java
+public void SendSecurityMessage(string message)
+{
+    ModuleClient client = new ModuleClient("<connection_string>", IotHubClientProtocol.MQTT);
+    Message msg = new Message(message);
+    msg.setAsSecurityMessage();
+    EventCallback callback = new EventCallback();
+    string context = "<user_context>";
+    client.sendEventAsync(msg, callback, context);
+}
+```
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -210,6 +223,6 @@ async def send_security_message_async(message_content):
 - Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
 - Povolení [služby](quickstart-onboard-iot-hub.md)
 - Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) .
-- Přečtěte si, jak získat přístup k nezpracovaným [datům zabezpečení](how-to-security-data-access.md)
+- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
 - Vysvětlení [doporučení](concept-recommendations.md)
 - Vysvětlení [výstrah](concept-security-alerts.md)

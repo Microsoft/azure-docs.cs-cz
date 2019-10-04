@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882886"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840223"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postup: Použití rozhraní API pro detekci anomálií v datech časových řad  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postupy: použití rozhraní API pro detekci anomálií v datech časových řad  
 
 [Rozhraní API detektoru anomálií](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) nabízí dvě metody detekce anomálií. Anomálie můžete detekovat jako dávku v rámci celé řady, nebo když data vygenerujete zjištěním stavu anomálií nejnovějšího datového bodu. Model detekce vrátí výsledky anomálií spolu s očekávanou hodnotou jednotlivých datových bodů a horní a dolní hranice detekce anomálií. Tyto hodnoty můžete použít k vizualizaci rozsahu běžných hodnot a anomálií v datech.
 
@@ -26,7 +26,7 @@ ms.locfileid: "68882886"
 Rozhraní API detektoru anomálií poskytuje režimy detekce: Batch a streamování.
 
 > [!NOTE]
-> Následující adresy URL musí být kombinovány s příslušným koncovým bodem pro vaše předplatné. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Následující adresy URL musí být kombinovány s příslušným koncovým bodem pro vaše předplatné. Například: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Zjišťování dávky
@@ -47,9 +47,9 @@ Odesláním nových datových bodů při jejich generování můžete monitorova
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Úprava hranic detekce dolních a horních anomálií
 
-Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají `expectedValue`pomocí `upperMargin`, a `lowerMargin`. Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo `lowerMargin`. Hranice by se vypočítaly takto:
+Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají pomocí `expectedValue`, `upperMargin` a `lowerMargin`. Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo `lowerMargin`. Hranice by se vypočítaly takto:
 
-|Překračuje  |Výpočet  |
+|Překračuje  |Kalkulační  |
 |---------|---------|
 |`upperBoundary` | `expectedValue + (100 - marginScale) * upperMargin`        |
 |`lowerBoundary` | `expectedValue - (100 - marginScale) * lowerMargin`        |
@@ -71,4 +71,4 @@ Následující příklady znázorňují výsledek rozhraní API detektoru anomá
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je rozhraní API pro detekci anomálií?](../overview.md)
-* [Rychlé zprovoznění: Detekci anomálií v datech časových řad pomocí REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)
+* [Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií](../quickstarts/detect-data-anomalies-csharp.md)

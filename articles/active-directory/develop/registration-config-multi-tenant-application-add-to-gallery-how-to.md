@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8024130b986d111abe3b470d6b06e86ed6419dc4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: def5dc82f8cbda93f6ac18f8a2af41d5c82ce5da
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320920"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936752"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání víceklientské aplikace do Galerie aplikací Azure AD
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) je cloudová služba identit. [Galerie aplikac
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
 Pokud máte víceklientské aplikace, kterou chcete uvést v galerii aplikací Azure AD, musíte nejdřív zajistit, aby vaše aplikace podporovala jednu z následujících technologií jednotného přihlašování:
 
-- **OpenID Connect**: Pokud chcete svou aplikaci zobrazit, vytvořte víceklientské aplikace v Azure AD a implementujte rozhraní pro [vyjádření souhlasu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pro vaši aplikaci. Odešle žádost o přihlášení ke společnému koncovému bodu, aby mohl každý zákazník poskytnout souhlas aplikaci. Přístup uživatele můžete řídit na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu. Odešlete aplikaci pomocí procesu popsanýho v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: Pokud chcete svou aplikaci zobrazit, vytvořte víceklientské aplikace v Azure AD a implementujte rozhraní pro [vyjádření souhlasu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) pro vaši aplikaci. Odešle žádost o přihlášení ke společnému koncovému bodu, aby mohl každý zákazník poskytnout souhlas aplikaci. Přístup uživatele můžete řídit na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu. Odešlete aplikaci pomocí procesu popsanýho v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 - **SAML**: Pokud vaše aplikace podporuje SAML 2,0, může být aplikace uvedená v galerii. Postupujte podle pokynů v [části výpis vaší aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
@@ -50,5 +50,5 @@ Pokud chcete zobrazit seznam aplikací pomocí této technologie:
 
 Pro všechny eskalace odešlete e-mail do [týmového týmu jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) a my se vám pošle zpět na co možná nejdříve.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Naučte se, jak [Zobrazit seznam aplikací v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).

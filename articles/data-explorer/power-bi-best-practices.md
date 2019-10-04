@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349009"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937322"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Osvědčené postupy pro použití Power BI k dotazování a vizualizaci dat Azure Průzkumník dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. [Power BI](https://docs.microsoft.com/power-bi/) je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky napříč vaší organizací. Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI. Použijte [integrovaný konektor](power-bi-connector.md), [importujte dotaz z Azure Průzkumník dat do Power BI](power-bi-imported-query.md)nebo použijte [dotaz SQL](power-bi-sql-query.md). Tento článek poskytuje tipy pro dotazování a vizualizaci dat Průzkumník dat Azure pomocí Power BI. 
+Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat pro data protokolů a telemetrie. [Power BI](https://docs.microsoft.com/power-bi/) je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky napříč vaší organizací. Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI. Použijte [integrovaný konektor](power-bi-connector.md), [importujte dotaz z Azure Průzkumník dat do Power BI](power-bi-imported-query.md)nebo použijte [dotaz SQL](power-bi-sql-query.md). Tento článek poskytuje tipy pro dotazování a vizualizaci dat Průzkumník dat Azure pomocí Power BI. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Osvědčené postupy pro používání Power BI 
 
@@ -28,13 +28,13 @@ Když pracujete s terabajty čerstvých nezpracovaných dat, postupujte podle t�
 
 * **Režim importu versus režim DirectQuery** – pro interakci menších datových sad použijte režim **importu** . Pro velké, často aktualizované datové sady použijte režim **DirectQuery** . Například Vytvářejte tabulky dimenzí pomocí režimu **importu** , protože jsou malé a často se nemění. Nastavte interval aktualizace podle očekávané míry aktualizace dat. Vytvářejte tabulky faktů pomocí režimu **DirectQuery** , protože tyto tabulky jsou velké a obsahují nezpracovaná data. Pomocí těchto tabulek můžete prezentovat filtrovaná data pomocí Power BI [podrobné analýzy](https://docs.microsoft.com/power-bi/desktop-drillthrough).
 
-* **Paralelismus** – Azure Data Explorer je lineární škálovatelná datová platforma, takže můžete zlepšit výkon vykreslování řídicích panelů, a to tak, že zvýšíte paralelismuy v rámci koncového toku, a to následujícím způsobem:
+* **Paralelismus** – Azure Průzkumník dat je lineární škálovatelná datová platforma, takže můžete zlepšit výkon vykreslování řídicích panelů, a to tak, že zvýšíte paralelismus v rámci koncového toku následujícím způsobem:
 
    * Zvyšte počet [souběžných připojení v DirectQuery v Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
    * [Pro zlepšení paralelismu používejte slabou konzistenci](/azure/kusto/concepts/queryconsistency). To může mít dopad na aktuálnost dat.
 
-* **Efektivní průřezy** – můžete použít [synchronizaci průřezů](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) a zabránit tak tomu, aby sestavy načetly data předtím, než budete připraveni. Po vytvoření struktury datové sady, umístění všech vizuálů a označení všech průřezů můžete vybrat synchronizaci průřezu a načíst jenom data, která potřebujete.
+* **Efektivní průřezy** – pomocí [synchronizace průřezů](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) zabráníte načítání dat, než budete připraveni. Po vytvoření struktury datové sady, umístění všech vizuálů a označení všech průřezů můžete vybrat synchronizaci průřezu a načíst jenom data, která potřebujete.
 
 * **Použití filtrů** – můžete použít tolik Power BI filtrů, aby bylo možné zaměřit se na Azure Průzkumník dat hledání relevantních horizontálních oddílů dat.
 
@@ -46,7 +46,7 @@ V následující části najdete tipy a triky pro používání dotazovacího ja
 
 ### <a name="complex-queries-in-power-bi"></a>Složité dotazy v Power BI
 
-Složité dotazy jsou snadněji vyjádřené v Kusto než v Power Query. Měly by být implementovány jako [Kusto funkce](/azure/kusto/query/functions)a vyvolány v Power BI. Tato metoda je vyžadována při použití **DirectQuery** s příkazy `let` v dotazu Kusto. Vzhledem k tomu, že Power BI spojí dva dotazy a příkazy `let` nelze použít s operátorem `join`, může dojít k chybám syntaxe. Proto každou část JOIN uložte jako funkci Kusto a umožněte Power BI připojit tyto dvě funkce dohromady.
+Složité dotazy jsou snadněji vyjádřené v Kusto než v Power Query. Měly by být implementovány jako [Kusto funkce](/azure/kusto/query/functions)a vyvolány v Power BI. Tato metoda je vyžadována při použití **DirectQuery** s příkazy `let` v dotazu Kusto. Protože Power BI spojí dva dotazy a příkazy `let` nelze použít s operátorem `join`, může dojít k chybám syntaxe. Proto každou část JOIN uložte jako funkci Kusto a umožněte Power BI připojit tyto dvě funkce dohromady.
 
 ### <a name="how-to-simulate-a-relative-data-time-operator"></a>Postup simulace relativního operátoru data a času
 
@@ -104,7 +104,7 @@ V okně **Upravit dotazy** **Domů** > **Rozšířený editor**
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Nahraďte příslušnou část dotazu parametrem. Rozdělení dotazu na více částí a jeho zřetězení pomocí &ho znaménka spolu s parametrem.
+1. Nahraďte příslušnou část dotazu parametrem. Rozdělit dotaz na více částí a zřetězit je zpět pomocí ampersandu (&) spolu s parametrem.
 
    Například v dotazu výše pobereme část `State == 'ALABAMA'` a rozdělíme ji na: `State == '` a `'` a do tohoto parametru zařadíme parametr `State` mezi ně:
    
@@ -138,11 +138,11 @@ Parametr dotazu můžete použít v jakémkoli kroku dotazu, který ho podporuje
 
 ### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>Nepoužívejte Power BI Plánovač aktualizace dat k vydávání řídicích příkazů do Kusto
 
-Power BI obsahuje Plánovač aktualizace dat, který může pravidelně vydávat dotazy na zdroj dat. Tento mechanismus by neměl být použit k naplánování řídicích příkazů Kusto, protože Power BI předpokládá, že všechny dotazy jsou jen pro čtení.
+Power BI obsahuje Plánovač aktualizace dat, který může pravidelně vydávat dotazy na zdroj dat. Tento mechanismus by neměl být použit k naplánování řídicích příkazů pro Kusto, protože Power BI předpokládá, že všechny dotazy jsou jen pro čtení.
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI může odesílat pouze krátké (&lt;2000) dotazy do Kusto
 
-Při spuštění dotazu v Power BI dojde k následující chybě: Zdroj dat _. Chyba: Webu. Contents se nepodařilo získat obsah z... "_ dotaz je pravděpodobně delší než 2000 znaků. Power BI používá **PowerQuery** k dotazování Kusto vyvoláním požadavku HTTP GET, který tento dotaz zakóduje jako součást NAČTENého identifikátoru URI. Proto jsou dotazy Kusto vydané Power BI omezeny na maximální délku identifikátoru URI požadavku (2000 znaků, mínus malý posun). Jako alternativní řešení můžete definovat [uloženou funkci](/azure/kusto/query/schema-entities/stored-functions) v Kusto a nechat ji Power BI použít v dotazu.
+Při spuštění dotazu v Power BI dojde k následující chybě: _"DataSource. Error: Web. Contents se nepodařilo získat obsah z..."_ dotaz je pravděpodobně delší než 2000 znaků. Power BI používá **PowerQuery** k dotazování Kusto vyvoláním požadavku HTTP GET, který tento dotaz zakóduje jako součást NAČTENého identifikátoru URI. Proto jsou dotazy Kusto vydané Power BI omezeny na maximální délku identifikátoru URI požadavku (2000 znaků, mínus malý posun). Jako alternativní řešení můžete definovat [uloženou funkci](/azure/kusto/query/schema-entities/stored-functions) v Kusto a nechat ji Power BI použít v dotazu.
 
 ## <a name="next-steps"></a>Další kroky
 

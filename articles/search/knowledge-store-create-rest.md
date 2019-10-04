@@ -4,16 +4,15 @@ description: Pomocí REST API a post můžete vytvořit Azure Search znalostní 
 author: lobrien
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 26dc66474eecffd7f5a34bcfcaf93fd49f59606c
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719940"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936497"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>Vytvoření Azure Search Knowledge Store pomocí REST
 
@@ -348,6 +347,6 @@ Další informace o tom, jak prozkoumat toto úložiště znalostí pomocí Prů
 Další informace o tom, jak připojit toto úložiště znalostní báze k Power BI, najdete v následujícím návodu.
 
 > [!div class="nextstepaction"]
-> [Propojení s Power BI](knowledge-store-connect-power-bi.md)
+> [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md)
 
 Pokud chcete tento cvičení opakovat nebo si vyzkoušet jiný návod k rozšíření AI, odstraňte indexer *idxr hotelového přezkoumání* . Odstranění indexeru obnoví čítač bezplatných denních transakcí zpátky na nulu.

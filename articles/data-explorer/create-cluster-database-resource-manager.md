@@ -7,28 +7,28 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329432"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936899"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cluster-database-portal.md)
-> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Bran](create-cluster-database-portal.md)
+> * [CLI](create-cluster-database-cli.md)
+> * [Prostředí](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. 
+Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat pro data protokolů a telemetrie. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. 
 
-V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí [šablony Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Tento článek ukazuje, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v tématu [typy prostředků Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
+V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí [šablony Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Tento článek ukazuje, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji přizpůsobit tak, aby splňovala vaše požadavky. Informace o vytváření šablon najdete v tématu [vytváření šablon Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates). Informace o syntaxi a vlastnostech JSON pro použití v šabloně najdete v tématu [typy prostředků Microsoft. Kusto](/azure/templates/microsoft.kusto/allversions).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Šablona Azure Resource Manager pro vytváření clusterů a databází
 
@@ -104,13 +104,13 @@ Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](htt
 
 1. Chcete-li vytvořit cluster a databázi, použijte následující tlačítko ke spuštění nasazení. Klikněte pravým tlačítkem myši a vyberte **otevřít v novém okně**, abyste mohli postupovat podle zbývajících kroků v tomto článku.
 
-    [![Nasazení do Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [@no__t – 1Deploy do Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
 
-    Výběrem tlačítka **Deploy to Azure** (Nasadit do Azure) přejdete na web Azure Portal, kde vyplníte formulář nasazení.
+    Tlačítkem **nasadit do Azure** přejdete na Azure Portal a vyplníte formulář nasazení.
 
     ![Nasazení do Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-Šablonu můžete [v Azure Portal upravit a nasadit](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
+    Šablonu můžete [v Azure Portal upravit a nasadit](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) pomocí formuláře.
 
 1. Dokončete **základní** oddíly a **Nastavení** . Vyberte jedinečné názvy clusterů a databází.
 Vytvoření clusteru a databáze služby Azure Průzkumník dat trvá několik minut.
@@ -136,13 +136,13 @@ Vytvoření clusteru a databáze služby Azure Průzkumník dat trvá několik m
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Vyberte **kopírování** zkopírujte skript prostředí PowerShell.
+1. Vyberte **Kopírovat** a zkopírujte skript prostředí PowerShell.
 1. Klikněte pravým tlačítkem na konzolu prostředí a pak vyberte **Vložit**.
 Vytvoření clusteru a databáze služby Azure Průzkumník dat trvá několik minut.
 
 #### <a name="verify-the-deployment-using-powershell"></a>Ověření nasazení pomocí PowerShellu
 
-Chcete-li ověřit nasazení, použijte následující skript Azure PowerShell.  Pokud je Cloud Shell stále otevřený, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel). Další informace týkající se správy prostředků Azure Průzkumník dat v prostředí PowerShell najdete v článku [AZ. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). Provést relevantní změny
+Chcete-li ověřit nasazení, použijte následující skript Azure PowerShell.  Pokud je Cloud Shell stále otevřené, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel). Další informace týkající se správy prostředků Azure Průzkumník dat v prostředí PowerShell najdete v článku [AZ. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -157,7 +157,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. 
+Pokud už prostředky Azure nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků. 
 
 ### <a name="clean-up-resources-using-the-azure-portal"></a>Vyčištění prostředků pomocí Azure Portal
 
@@ -165,7 +165,7 @@ Odstraňte prostředky v Azure Portal podle kroků v části [vyčištění pros
 
 ### <a name="clean-up-resources-using-powershell"></a>Vyčištění prostředků pomocí PowerShellu
 
-Pokud je Cloud Shell stále otevřený, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel).
+Pokud je Cloud Shell stále otevřené, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

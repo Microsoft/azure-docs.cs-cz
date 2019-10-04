@@ -6,42 +6,42 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194772"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937025"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězcové funkce pro šablony Azure Resource Manager
 
 Správce prostředků poskytuje následující funkce pro práci s řetězci:
 
-* [base64](#base64)
+* [Base](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [concat](#concat)
-* [contains](#contains)
+* [spojuje](#concat)
+* [zobrazí](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [empty](#empty)
+* [obsahovat](#empty)
 * [endsWith](#endswith)
-* [first](#first)
-* [format](#format)
-* [guid](#guid)
+* [první](#first)
+* [formátovat](#format)
+* [hlavních](#guid)
 * [indexOf](#indexof)
 * [posledního](#last)
 * [lastIndexOf](#lastindexof)
-* [length](#length)
+* [časový](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
-* [replace](#replace)
-* [skip](#skip)
-* [split](#split)
+* [náhrady](#replace)
+* [přímo](#skip)
+* [rozdělení](#split)
 * [startsWith](#startswith)
 * [string](#string)
-* [substring](#substring)
-* [take](#take)
+* [podřetězec](#substring)
+* [nezbytná](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [sklon](#trim)
@@ -59,9 +59,9 @@ Vrátí reprezentaci se vstupním řetězcem ve formátu base64.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Hodnota, která se má vrátit jako reprezentace v kódování Base64. |
+| inputString |Ano |odkazy řetězců |Hodnota, která se má vrátit jako reprezentace v kódování Base64. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -110,11 +110,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
-| toJsonOutput | Object | {"One": "a", "Two": "b"} |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
+| toJsonOutput | Objekt | {"One": "a", "Two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -124,9 +124,9 @@ Převede reprezentaci Base64 na objekt JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace Base64 pro převod na objekt JSON. |
+| base64Value |Ano |odkazy řetězců |Reprezentace Base64 pro převod na objekt JSON. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -175,11 +175,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
-| toJsonOutput | Object | {"One": "a", "Two": "b"} |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
+| toJsonOutput | Objekt | {"One": "a", "Two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -189,9 +189,9 @@ Převede reprezentaci Base64 na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace Base64 pro převod na řetězec. |
+| base64Value |Ano |odkazy řetězců |Reprezentace Base64 pro převod na řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -240,13 +240,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Řetězec | Jedna dva tři |
-| toJsonOutput | Object | {"One": "a", "Two": "b"} |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Jedna dva tři |
+| toJsonOutput | Objekt | {"One": "a", "Two": "b"} |
 
-## <a name="concat"></a>spojuje
+## <a name="concat"></a>concat
 
 `concat (arg1, arg2, arg3, ...)`
 
@@ -254,10 +254,10 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec nebo zkom
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |řetězec nebo pole |První hodnota pro zřetězení |
-| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení. |
+| Další argumenty |Ne |odkazy řetězců |Další hodnoty v sekvenčním pořadí pro zřetězení. |
 
 ### <a name="return-value"></a>Návratová hodnota
 Řetězec nebo pole zřetězených hodnot.
@@ -288,9 +288,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| concatOutput | Řetězec | prefix – 5yj4yjf5mbg72 |
+| concatOutput | String | prefix – 5yj4yjf5mbg72 |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) ukazuje, jak kombinovat dvě pole.
 
@@ -329,11 +329,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| vrátit | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | Skupin | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>Obsahuje
+## <a name="contains"></a>obsahuje
 
 `contains (container, itemToFind)`
 
@@ -341,9 +341,9 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| container |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
+| Vnitřního |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
 | itemToFind |Ano |řetězec nebo int |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -405,16 +405,16 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Pravda |
-| stringFalse | Bool | False |
-| objectTrue | Bool | Pravda |
-| objectFalse | Bool | False |
-| arrayTrue | Bool | Pravda |
-| arrayFalse | Bool | False |
+| stringTrue | Logick | Podmínka |
+| stringFalse | Logick | False |
+| objectTrue | Logick | Podmínka |
+| objectFalse | Logick | False |
+| arrayTrue | Logick | Podmínka |
+| arrayFalse | Logick | False |
 
-## <a name="datauri"></a>dataUri
+## <a name="datauri"></a>DataUri
 
 `dataUri(stringToConvert)`
 
@@ -422,9 +422,9 @@ Převede hodnotu na identifikátor URI dat.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ano |řetězec |Hodnota, která má být převedena na identifikátor URI dat. |
+| stringToConvert |Ano |odkazy řetězců |Hodnota, která má být převedena na identifikátor URI dat. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -464,10 +464,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | Řetězec | Ahoj světe! |
+| dataUriOutput | String | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
+| toStringOutput | String | Ahoj světe! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -477,9 +477,9 @@ Převede hodnotu v identifikátoru URI dat na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ano |řetězec |Hodnota identifikátoru URI dat, která se má převést. |
+| dataUriToConvert |Ano |odkazy řetězců |Hodnota identifikátoru URI dat, která se má převést. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -519,12 +519,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| dataUriOutput | Řetězec | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | Řetězec | Ahoj světe! |
+| dataUriOutput | String | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
+| toStringOutput | String | Ahoj světe! |
 
-## <a name="empty"></a>Prázdná
+## <a name="empty"></a>empty
 
 `empty(itemToTest)`
 
@@ -532,7 +532,7 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ano |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
@@ -583,11 +583,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Pravda |
-| objectEmpty | Bool | Pravda |
-| stringEmpty | Bool | Pravda |
+| arrayEmpty | Logick | Podmínka |
+| objectEmpty | Logick | Podmínka |
+| stringEmpty | Logick | Podmínka |
 
 ## <a name="endswith"></a>endsWith
 
@@ -597,10 +597,10 @@ Určuje, zda řetězec končí hodnotou. V porovnání se nerozlišují malá a 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Ano |odkazy řetězců |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Ano |odkazy řetězců |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -646,16 +646,16 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Bool | Pravda |
-| startsCapTrue | Bool | Pravda |
-| startsFalse | Bool | False |
-| endsTrue | Bool | Pravda |
-| endsCapTrue | Bool | Pravda |
-| endsFalse | Bool | False |
+| startsTrue | Logick | Podmínka |
+| startsCapTrue | Logick | Podmínka |
+| startsFalse | Logick | False |
+| endsTrue | Logick | Podmínka |
+| endsCapTrue | Logick | Podmínka |
+| endsFalse | Logick | False |
 
-## <a name="first"></a>první
+## <a name="first"></a>První
 
 `first(arg1)`
 
@@ -663,7 +663,7 @@ Vrátí první znak řetězce nebo první prvek pole.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |pole nebo řetězec |Hodnota pro načtení prvního prvku nebo znaku. |
 
@@ -702,12 +702,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Řetězec | jeden |
-| stringOutput | Řetězec | O |
+| arrayOutput | String | jeden |
+| stringOutput | String | O |
 
-## <a name="format"></a>format
+## <a name="format"></a>formát
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -715,9 +715,9 @@ Vytvoří formátovaný řetězec ze vstupních hodnot.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formatString | Ano | řetězec | Složený řetězec formátu. |
+| formatString | Ano | odkazy řetězců | Složený řetězec formátu. |
 | arg1 | Ano | řetězec, celé číslo nebo logická hodnota | Hodnota, která má být zahrnuta do formátovaného řetězce. |
 | Další argumenty | Ne | řetězec, celé číslo nebo logická hodnota | Další hodnoty, které mají být zahrnuty do formátovaného řetězce. |
 
@@ -760,11 +760,11 @@ Následující příklad šablony ukazuje, jak použít funkci Format.
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| formatTest | Řetězec | Hello, User. Formátované číslo: 8 175 133 |
+| formatTest | String | Hello, User. Naformátované číslo: 8 175 133 |
 
-## <a name="guid"></a>guid
+## <a name="guid"></a>hlavních
 
 `guid(baseString, ...)`
 
@@ -772,10 +772,10 @@ Vytvoří hodnotu ve formátu globálně jedinečného identifikátoru na zákla
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota použitá ve funkci hash k vytvoření GUID. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
+| baseString |Ano |odkazy řetězců |Hodnota použitá ve funkci hash k vytvoření GUID. |
+| Další parametry podle potřeby |Ne |odkazy řetězců |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -843,10 +843,10 @@ Vrátí první pozici hodnoty v rámci řetězce. V porovnání se nerozlišují
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Ano |odkazy řetězců |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Ano |odkazy řetězců |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -888,15 +888,15 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| první | Int | 0 |
-| Poslední | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| notFound | Int | -1 |
+| první | hmot | 0,8 |
+| Poslední | hmot | 3 |
+| firstString | hmot | odst |
+| lastString | hmot | 0,8 |
+| notFound | hmot | – 1 |
 
-## <a name="last"></a>posledního
+## <a name="last"></a>poslední
 
 `last (arg1)`
 
@@ -904,7 +904,7 @@ Vrátí poslední znak řetězce nebo poslední prvek pole.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |pole nebo řetězec |Hodnota, která načte poslední prvek nebo znak. |
 
@@ -943,10 +943,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Řetězec | tři |
-| stringOutput | Řetězec | cerebrální |
+| arrayOutput | String | 3 |
+| stringOutput | String | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -956,10 +956,10 @@ Vrátí poslední pozici hodnoty v rámci řetězce. V porovnání se nerozlišu
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Ano |odkazy řetězců |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Ano |odkazy řetězců |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1001,13 +1001,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| první | Int | 0 |
-| Poslední | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| notFound | Int | -1 |
+| první | hmot | 0,8 |
+| Poslední | hmot | 3 |
+| firstString | hmot | odst |
+| lastString | hmot | 0,8 |
+| notFound | hmot | – 1 |
 
 ## <a name="length"></a>length
 
@@ -1017,7 +1017,7 @@ Vrátí počet znaků v řetězci, prvky v poli nebo vlastnosti na úrovni root 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ano |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
@@ -1079,11 +1079,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | hmot | 3 |
+| stringLength | hmot | 13,5 |
+| objectLength | hmot | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1134,9 +1134,9 @@ Následující příklad šablony ukazuje parametr s novým identifikátorem.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| guidOutput | řetězec | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | odkazy řetězců | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 Následující příklad používá funkci newGuid k vytvoření jedinečného názvu pro účet úložiště. Tato šablona může fungovat pro testovací prostředí, ve kterém existuje účet úložiště po krátkou dobu a který se znovu neimplementuje.
 
@@ -1177,9 +1177,9 @@ Následující příklad používá funkci newGuid k vytvoření jedinečného n
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| nameOutput | řetězec | storagenziwvyru7uxie |
+| nameOutput | odkazy řetězců | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
@@ -1190,7 +1190,7 @@ Vrátí řetězec zarovnaný doprava přidáním znaků vlevo, dokud nedosáhnet
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ano |řetězec nebo int |Hodnota, která se má zarovnat vpravo |
 | totalLength |Ano |int |Celkový počet znaků ve vráceném řetězci. |
@@ -1228,11 +1228,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | 0000000123 |
+| stringOutput | String | 0000000123 |
 
-## <a name="replace"></a>náhrady
+## <a name="replace"></a>replace
 
 `replace(originalString, oldString, newString)`
 
@@ -1240,11 +1240,11 @@ Vrátí nový řetězec se všemi instancemi jednoho řetězce nahrazeného jin�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| originalString |Ano |řetězec |Hodnota, která má všechny instance jednoho řetězce nahrazena jiným řetězcem. |
-| Starý řetězec |Ano |řetězec |Řetězec, který má být odebrán z původního řetězce. |
-| Nový řetězec |Ano |řetězec |Řetězec, který má být přidán místo odebraného řetězce. |
+| originalString |Ano |odkazy řetězců |Hodnota, která má všechny instance jednoho řetězce nahrazena jiným řetězcem. |
+| Starý řetězec |Ano |odkazy řetězců |Řetězec, který má být odebrán z původního řetězce. |
+| Nový řetězec |Ano |odkazy řetězců |Řetězec, který má být přidán místo odebraného řetězce. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1280,12 +1280,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| firstOutput | Řetězec | 1231231234 |
-| secondOutput | Řetězec | 123-123-xxxx |
+| firstOutput | String | 1231231234 |
+| secondOutput | String | 123-123 – xxxx |
 
-## <a name="skip"></a>přeskočit
+## <a name="skip"></a>Přeskočit
 
 `skip(originalValue, numberToSkip)`
 
@@ -1293,7 +1293,7 @@ Vrátí řetězec se všemi znaky po zadaném počtu znaků nebo pole se všemi 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | Původní |Ano |pole nebo řetězec |Pole nebo řetězec, který se má použít pro přeskočení. |
 | numberToSkip |Ano |int |Počet prvků nebo znaků, které mají být přeskočeny. Pokud je tato hodnota 0 nebo méně, vrátí se všechny prvky nebo znaky v hodnotě. Pokud je větší než délka pole nebo řetězce, je vráceno prázdné pole nebo řetězec. |
@@ -1348,12 +1348,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["tři"] |
-| stringOutput | Řetězec | 2 3 |
+| arrayOutput | Skupin | ["tři"] |
+| stringOutput | String | 2 3 |
 
-## <a name="split"></a>split
+## <a name="split"></a>rozdělení
 
 `split(inputString, delimiter)`
 
@@ -1361,9 +1361,9 @@ Vrátí pole řetězců, které obsahují podřetězce vstupního řetězce, kte
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Řetězec, který má být rozdělen. |
+| inputString |Ano |odkazy řetězců |Řetězec, který má být rozdělen. |
 | oddělovač |Ano |řetězec nebo pole řetězců |Oddělovač, který se má použít pro rozdělení řetězce. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -1407,10 +1407,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| firstOutput | Array | ["One"; "Two"; "tři"] |
-| secondOutput | Array | ["One"; "Two"; "tři"] |
+| firstOutput | Skupin | ["One"; "Two"; "tři"] |
+| secondOutput | Skupin | ["One"; "Two"; "tři"] |
 
 ## <a name="startswith"></a>startsWith
 
@@ -1420,10 +1420,10 @@ Určuje, zda řetězec začíná hodnotou. V porovnání se nerozlišují malá 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Ano |odkazy řetězců |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Ano |odkazy řetězců |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1469,16 +1469,16 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Bool | Pravda |
-| startsCapTrue | Bool | Pravda |
-| startsFalse | Bool | False |
-| endsTrue | Bool | Pravda |
-| endsCapTrue | Bool | Pravda |
-| endsFalse | Bool | False |
+| startsTrue | Logick | Podmínka |
+| startsCapTrue | Logick | Podmínka |
+| startsFalse | Logick | False |
+| endsTrue | Logick | Podmínka |
+| endsCapTrue | Logick | Podmínka |
+| endsFalse | Logick | False |
 
-## <a name="string"></a>řetězec
+## <a name="string"></a>odkazy řetězců
 
 `string(valueToConvert)`
 
@@ -1486,9 +1486,9 @@ Převede zadanou hodnotu na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano | Any |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
+| valueToConvert |Ano | Jakýmikoli |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1543,13 +1543,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| objectOutput | Řetězec | {"valuet": 10, "Hodnotab": "example text"} |
-| arrayOutput | Řetězec | ["a","b","c"] |
-| intOutput | Řetězec | 5 |
+| objectOutput | String | {"valuet": 10, "Hodnotab": "example text"} |
+| arrayOutput | String | ["a", "b", "c"] |
+| intOutput | String | 5 |
 
-## <a name="substring"></a>substring
+## <a name="substring"></a>podřetězec
 
 `substring(stringToParse, startIndex, length)`
 
@@ -1557,10 +1557,10 @@ Vrátí podřetězec, který začíná na zadané pozici znaku a obsahuje zadan�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ano |řetězec |Původní řetězec, ze kterého je dílčí řetězec extrahován. |
-| Počáteční index |Ne |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
+| stringToParse |Ano |odkazy řetězců |Původní řetězec, ze kterého je dílčí řetězec extrahován. |
+| Indexu |Ne |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
 | length |Ne |int |Počet znaků podřetězce. Musí odkazovat na umístění v rámci řetězce. Musí být nula nebo větší. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -1569,7 +1569,7 @@ Podřetězec. Nebo prázdný řetězec, pokud je délka nula.
 
 ### <a name="remarks"></a>Poznámky
 
-Tato funkce se nezdařila, pokud podřetězec překračuje konec řetězce, nebo pokud je délka menší než nula. Následující příklad se nezdařil s chybou "parametry index a Length musí odkazovat na umístění v rámci řetězce. Parametr index: ' 0 ', parametr length: ' 11 ', délka řetězcového parametru: ' 10 '.
+Tato funkce se nezdařila, pokud podřetězec překračuje konec řetězce, nebo pokud je délka menší než nula. Následující příklad se nezdařil s chybou "parametry index a Length musí odkazovat na umístění v rámci řetězce. Parametr indexu: ' 0 ', parametr length: ' 11 ', délka řetězcového parametru: ' 10 '.
 
 ```json
 "parameters": {
@@ -1606,9 +1606,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| substringOutput | Řetězec | dva |
+| substringOutput | String | Druhá |
 
 ## <a name="take"></a>nezbytná
 
@@ -1618,7 +1618,7 @@ Vrátí řetězec, který má zadaný počet znaků od začátku řetězce, nebo
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | Původní |Ano |pole nebo řetězec |Pole nebo řetězec, ze kterého mají být přebírat prvky. |
 | numberToTake |Ano |int |Počet prvků nebo znaků, které mají být přebírat. Pokud je tato hodnota 0 nebo méně, vrátí se prázdné pole nebo řetězec. Pokud je větší než délka daného pole nebo řetězce, vrátí se všechny prvky v poli nebo řetězci. |
@@ -1673,10 +1673,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["One"; "Two"] |
-| stringOutput | Řetězec | zapnuté |
+| arrayOutput | Skupin | ["One"; "Two"] |
+| stringOutput | String | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1686,9 +1686,9 @@ Převede zadaný řetězec na malá písmena.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota, která se má převést na malá písmena. |
+| stringToChange |Ano |odkazy řetězců |Hodnota, která se má převést na malá písmena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1724,10 +1724,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| toLowerOutput | Řetězec | Jedna dva tři |
-| toUpperOutput | Řetězec | JEDNA DVA TŘI |
+| toLowerOutput | String | Jedna dva tři |
+| toUpperOutput | String | Jedna dva tři |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1737,9 +1737,9 @@ Převede zadaný řetězec na velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota, která má být převedena na velká písmena. |
+| stringToChange |Ano |odkazy řetězců |Hodnota, která má být převedena na velká písmena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1775,10 +1775,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| toLowerOutput | Řetězec | Jedna dva tři |
-| toUpperOutput | Řetězec | JEDNA DVA TŘI |
+| toLowerOutput | String | Jedna dva tři |
+| toUpperOutput | String | Jedna dva tři |
 
 ## <a name="trim"></a>sklon
 
@@ -1788,9 +1788,9 @@ Odebere všechny úvodní a koncové prázdné znaky ze zadaného řetězce.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ano |řetězec |Hodnota, která má být oříznuta. |
+| stringToTrim |Ano |odkazy řetězců |Hodnota, která má být oříznuta. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1822,9 +1822,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| vrátit | Řetězec | Jedna dva tři |
+| return | String | Jedna dva tři |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1834,10 +1834,10 @@ Vytvoří deterministický řetězec hash založený na hodnotách poskytnutých
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota použitá ve funkci hash k vytvoření jedinečného řetězce. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
+| baseString |Ano |odkazy řetězců |Hodnota použitá ve funkci hash k vytvoření jedinečného řetězce. |
+| Další parametry podle potřeby |Ne |odkazy řetězců |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -1904,7 +1904,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-## <a name="uri"></a>uri
+## <a name="uri"></a>identifikátor URI
 
 `uri (baseUri, relativeUri)`
 
@@ -1912,12 +1912,28 @@ Vytvoří absolutní identifikátor URI kombinováním řetězce baseUri a relat
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ano |řetězec |Základní řetězec identifikátoru URI. |
-| relativeUri |Ano |řetězec |Relativní řetězec identifikátoru URI, který se má přidat do základního řetězce identifikátoru URI. |
+| Identifikátor |Ano |odkazy řetězců |Základní řetězec identifikátoru URI. Pečlivě Sledujte chování týkající se zpracování koncového lomítka ('/'), jak je popsáno v následující tabulce.  |
+| relativeUri |Ano |odkazy řetězců |Relativní řetězec identifikátoru URI, který se má přidat do základního řetězce identifikátoru URI. |
 
-Hodnota parametru **BaseUri** může zahrnovat konkrétní soubor, ale při vytváření identifikátoru URI se používá jenom základní cesta. Například předání `http://contoso.com/resources/azuredeploy.json` jako parametr BaseUri vede k základnímu `http://contoso.com/resources/`identifikátoru URI.
+* Pokud **BaseUri** končí na koncovém lomítku, výsledek je jednoduše **BaseUri** následovaný **relativeUri**.
+
+* Pokud **BaseUri** nekončí na koncovém lomítku, stane se jedna z těchto dvou věcí.  
+
+   * Pokud **BaseUri** nemá žádné lomítko (kromě znaku "//" poblíž začátku), výsledek je jednoduše **BaseUri** následovaný **relativeUri**.
+
+   * Pokud má **BaseUri** lomítka, ale nemá na konci lomítka, vše od posledního lomítka kromě je odebráno z **BaseUri** a výsledek je **BaseUri** , za nímž následuje **relativeUri**.
+     
+Následuje několik příkladů:
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+Pro úplné podrobnosti se přeloží parametry **BaseUri** a **relativeUri** , jak je uvedeno v [dokumentu RFC 3986, oddíle 5](https://tools.ietf.org/html/rfc3986#section-5).
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1962,11 +1978,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1976,9 +1992,9 @@ Zakóduje identifikátor URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ano |řetězec |Hodnota, která se má zakódovat |
+| stringToEncode |Ano |odkazy řetězců |Hodnota, která se má zakódovat |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2017,11 +2033,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2031,9 +2047,9 @@ Vrátí řetězec hodnoty kódované identifikátorem URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ano |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. |
+| uriEncodedString |Ano |odkazy řetězců |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2072,11 +2088,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| uriOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Řetězec | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Řetězec | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 
@@ -2086,9 +2102,9 @@ Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadá
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| format |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |Ne |odkazy řetězců |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -2145,11 +2161,11 @@ Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Value |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| utcOutput | řetězec | 20190305T175318Z |
-| utcShortOutput | řetězec | 03/05/2019 |
-| utcCustomOutput | řetězec | 3 5 |
+| utcOutput | odkazy řetězců | 20190305T175318Z |
+| utcShortOutput | odkazy řetězců | 03/05/2019 |
+| utcCustomOutput | odkazy řetězců | 3 5 |
 
 Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty značky.
 
@@ -2188,8 +2204,8 @@ Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
-* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
-* K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Chcete-li sloučit více šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md).
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
 

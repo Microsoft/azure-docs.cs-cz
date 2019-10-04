@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716621"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937466"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Vlastní pravidla pro webový Application firewall v2
 
@@ -37,7 +37,7 @@ Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně ja
 
 Povolení a blokování provozu je jednoduché s vlastními pravidly. Můžete například blokovat veškerý provoz přicházející z rozsahu IP adres. Pokud požadavek pochází z konkrétního prohlížeče, můžete nastavit jiné pravidlo, které povolí provoz.
 
-Pokud chcete něco dovolit, zajistěte `-Action` , aby byl parametr nastavený na hodnotu **povoleno**. Chcete-li něco zablokovat `-Action` , zajistěte, aby byl parametr nastaven na hodnotu **blokovat**.
+Chcete-li něco připustit, zajistěte, aby byl parametr `-Action` nastaven na hodnotu **Allow**. Chcete-li něco zablokovat, zajistěte, aby byl parametr `-Action` nastaven na hodnotu **blokovat**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Předchozí `$BlockRule` mapování na následující vlastní pravidlo v Azure Resource Manager:
+Předchozí `$BlockRule` se mapuje na následující vlastní pravidlo v Azure Resource Manager:
 
 ```json
 "customRules": [
@@ -96,8 +96,8 @@ Toto je název pravidla. Tento název se zobrazí v protokolech.
 
 ### <a name="priority-required"></a>Priorita [povinné]
 
-- Určuje pořadí, ve kterém jsou pravidla vyhodnocována. Čím nižší hodnota, tím výše se vyhodnocuje pravidlo.
--Musí být jedinečné mezi všemi vlastními pravidly. Pravidlo s prioritou 100 bude vyhodnoceno dříve než pravidlo s prioritou 200.
+- Určuje pořadí, ve kterém jsou pravidla vyhodnocována. Čím nižší hodnota, tím výše se vyhodnocuje pravidlo. Povolený rozsah je od 1-100. 
+- Musí být jedinečné mezi všemi vlastními pravidly. Pravidlo s prioritou 40 bude vyhodnoceno dříve než pravidlo s prioritou 80.
 
 ### <a name="rule-type-required"></a>Typ pravidla [povinné]
 
@@ -132,8 +132,8 @@ Musí být jedním z následujících operátorů:
 - LessThanOrEqual
 - GreaterThanOrEqual
 - Filtr začíná na
-- EndsWith
-- Regulární
+- endsWith
+- Regulární výraz
 
 ### <a name="negate-condition-optional"></a>Podmínka negace [nepovinné]
 
@@ -144,7 +144,7 @@ Negace aktuální podmínky.
 Seznam řetězců s názvy transformací, které se mají provést před pokusem o shodu. Můžou to být následující transformace:
 
 - Malá
-- Oříznout
+- sklon
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -160,6 +160,6 @@ Seznam hodnot, které mají být porovnány, což může být považováno za "j
 - Block – zablokuje transakci na základě *SecDefaultAction* (režim detekce nebo prevence). Stejně jako u akce Allow se po vyhodnocení žádosti a přidání do seznamu blokovaných hodnot zastaví a zablokuje se požadavek. Všechny žádosti, které splňují stejné podmínky, se nevyhodnotí a budou jenom blokované. 
 - Log – umožňuje zapsání pravidla do protokolu, ale umožňuje, aby zbytek pravidel běžel pro vyhodnocení. Následná vlastní pravidla se vyhodnocují v pořadí podle priority, za kterými následuje spravovaná pravidla.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Jakmile se seznámíte s vlastními pravidly, [vytvořte vlastní pravidla](create-custom-waf-rules.md).

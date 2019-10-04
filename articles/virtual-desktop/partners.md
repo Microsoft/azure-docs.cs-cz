@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673009"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937508"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
 V tomto článku jsou uvedeni partneři virtuálního klienta Windows.
 
-## <a name="citrix"></a>Citrix
+## <a name="citrix"></a>požádat
 
 ![Logo Citrix](./media/partners/citrix.png)
 
@@ -29,13 +29,13 @@ Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnik
 - [Přejít na web partnera](https://more.citrix.com/wvd).
 
 
-## <a name="vmware"></a>VMware
+## <a name="vmware"></a>Hostiteli
 
 ![Logo VMware](./media/partners/vmware.png)
 
-VMware Horizon Cloud v Microsoft Azure poskytuje organizacím možnost připojit svou vlastní instanci Microsoft Azure k jednoduché a intuitivní rovině řídicího cloudového řízení a vytvořit zabezpečené a komplexní řešení hostované v cloudu pro zajištění virtualizovaného prostředí. Aplikace a plochy systému Windows. S vydáním virtuálního počítače s Windows se společnost VMware spolupracuje s Microsoftem, aby rozšířila funkce virtuálních klientů Windows na zákazníky využívajících Horizontal Cloud v Microsoft Azure.
-
-V rámci schváleného poskytovatele VMware Horizon Cloud on Microsoft Azure zákazníci získají všechny výhody virtuálního klienta Windows, jako je Windows 10 Enterprise pro více relací, Windows 7 s bezplatné rozšířené aktualizace zabezpečení až na tři roky a FSLogix možnosti kromě všech moderních funkcí cloudového cloudu, jako je podpora širokého koncového bodu; globální, cloudově optimalizované zprostředkovatele, flexibilní možnosti pracovní plochy a konfigurace, Správa uživatelského prostředí a podpora hybridních prostředí. 
+VMware Horizon Cloud v Microsoft Azure poskytuje organizacím možnost připojit svou vlastní instanci Microsoft Azure k jednoduché a intuitivní rovině řídicího cloudového řízení a vytvořit zabezpečené a komplexní řešení hostované v cloudu pro zajištění virtualizovaného prostředí. Aplikace a plochy systému Windows. S vydáním virtuálního počítače s Windows se společnost VMware spolupracuje s Microsoftem, aby rozšířila funkce virtuálních klientů Windows na zákazníky využívajících Horizontal Cloud v Microsoft Azure. Tato funkce bude k dispozici ve verzi Tech Preview po konci 2019.
+ 
+V rámci schváleného poskytovatele se výhody virtuálního klienta Windows rozšíří na Cloud VMware Horizon na Microsoft Azure zákazníky, včetně Windows 10 Enterprise pro více relací, Windows 7 s bezplatné rozšířené aktualizace zabezpečení až pro tři roky a FSLogix. Kromě toho zákazníci získají funkce cloudového cloudu na podnikové úrovni, jako je široká podpora koncových bodů. globální cloudově optimalizované zprostředkovatele; flexibilní možnosti a konfigurace desktopu; Správa uživatelského prostředí; a podpora hybridních prostředí.
 
 - [Zaregistrujte se na verzi pro cloudovou verzi Horizontal Preview na Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Přejít na web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ Nerdio je platforma pro automatizaci IT v Azure, která usnadňuje nasazování 
 Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje zřizování prostředků Azure a zjednodušení nasazení. S Nerdio pro Azure může v průběhu dvou hodin automaticky nasadit a spravovat kompletní prostředí Azure, včetně virtuálního klienta Windows.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Přejít na web partnera](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [Přejít na web partnera](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 

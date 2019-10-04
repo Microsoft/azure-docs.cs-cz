@@ -1,6 +1,6 @@
 ---
-title: Automatizace Azure Application Insights pomocí Powershellu | Dokumentace Microsoftu
-description: Automatizace vytváření prostředků, upozornění a dostupnost testů v prostředí PowerShell pomocí šablony Azure Resource Manageru.
+title: Automatizace Azure Application Insights s využitím PowerShellu | Microsoft Docs
+description: Automatizujte vytváření testů prostředků, výstrah a dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,31 +12,31 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 07d52544b584adb02cc60790b7cb63c8aee1e366
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4f3d2eba70be39b23e86ebde3c71dfc7c19a374
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514478"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936708"
 ---
-#  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
+#  <a name="create-application-insights-resources-using-powershell"></a>Vytvoření prostředků Application Insights pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](../../azure-monitor/app/app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavte [cenové schéma](pricing.md)a vytvořit další prostředky Azure .
+V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](../../azure-monitor/app/app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
 
-Klíčem k vytvoření těchto prostředků je šablony JSON pro [Azure Resource Manageru](../../azure-resource-manager/manage-resources-powershell.md). Řečeno v kostce, postup je: stáhnout definice JSON z existujících prostředků; parametrizovat určité hodnoty jako jsou názvy; a spusťte šablonu pokaždé, když chcete vytvořit nový prostředek. Několik prostředků můžete zabalit dohromady, k jejich vytvoření všechno v jednom přejděte – například monitorování aplikace s testy dostupnosti, upozornění a úložiště pro průběžný export. Existují některé odlišnosti k některým parameterizations, které vám objasníme tady.
+Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). V kostce je postup: Stáhněte si definice JSON existujících prostředků; parametrizovat určité hodnoty, jako jsou názvy; a pak šablonu spusťte vždy, když chcete vytvořit nový prostředek. Můžete zabalit několik prostředků dohromady a vytvořit je vše v jednom z nich – například monitorování aplikací s testy dostupnosti, výstrahy a úložiště pro průběžný export. Existují některé odlišností k některým z parameterizations, které tady vysvětlíme.
 
-## <a name="one-time-setup"></a>Jednorázová nastavení
-Pokud jste ještě nepoužívali prostředí PowerShell ve vašem předplatném Azure před:
+## <a name="one-time-setup"></a>Nastavení jednorázového času
+Pokud jste ještě nepoužili prostředí PowerShell s předplatným Azure, postupujte takto:
 
-Instalace modulu Azure Powershellu na počítači, ve kterém chcete spustit skripty:
+Na počítač, na který chcete spouštět skripty, nainstalujte modul Azure PowerShell:
 
-1. Nainstalujte [instalačního programu webové platformy (verze 5 nebo vyšší)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Jeho použití k instalaci prostředí Azure Powershell.
+1. Nainstalujte [Instalace webové platformy Microsoft (verze 5 nebo novější)](https://www.microsoft.com/web/downloads/platform.aspx).
+2. Použijte ji k instalaci Microsoft Azure PowerShellu.
 
-## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
-Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto příkladu. Zkopírujte do něj tento obsah:
+## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
+Vytvoření nového souboru. JSON – Pojďme ho volat `template1.json` v tomto příkladu. Kopírovat tento obsah do tohoto obsahu:
 
 ```JSON
     {
@@ -46,7 +46,7 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter the application name."
+                    "description": "Enter the name of your Application Insights resource."
                 }
             },
             "appType": {
@@ -58,20 +58,39 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter the application type."
+                    "description": "Enter the type of the monitored application."
                 }
             },
             "appLocation": {
                 "type": "string",
-                "defaultValue": "East US",
+                "defaultValue": "eastus",
+                "metadata": {
+                    "description": "Enter the location of your Application Insights resource."
+                }
+            },
+            "retentionInDays": {
+                "type": "int",
+                "defaultValue": 90,
                 "allowedValues": [
-                    "South Central US",
-                    "West Europe",
-                    "East US",
-                    "North Europe"
+                    30,
+                    60,
+                    90,
+                    120,
+                    180,
+                    270,
+                    365,
+                    550,
+                    730
                 ],
                 "metadata": {
-                    "description": "Enter the application location."
+                    "description": "Data retention in days"
+                }
+            },
+            "ImmediatePurgeDataOn30Days": {
+                "type": "bool",
+                "defaultValue": false,
+                "metadata": {
+                    "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
                 }
             },
             "priceCode": {
@@ -82,7 +101,7 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Per GB (Basic), 2 = Per Node (Enterprise)"
+                    "description": "Pricing plan: 1 = Per GB (or legacy Basic plan), 2 = Per Node (legacy Enterprise plan)"
                 }
             },
             "dailyQuota": {
@@ -141,6 +160,7 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
+                    "retentionInDays": "[variables('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -155,10 +175,10 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
 
 
 ## <a name="create-application-insights-resources"></a>Vytvoření prostředků Application Insights
-1. V prostředí PowerShell Přihlaste se k Azure:
+1. V PowerShellu se přihlaste k Azure:
    
     `Connect-AzAccount`
-2. Spusťte příkaz takto:
+2. Spusťte příkaz podobný tomuto:
    
     ```PS
    
@@ -168,14 +188,14 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
 
     ``` 
    
-   * `-ResourceGroupName` je skupina, ve které chcete vytvářet nové prostředky.
-   * `-TemplateFile` musí vyskytovat před vlastní parametry.
-   * `-appName` Název prostředku, který chcete vytvořit.
+   * `-ResourceGroupName` je skupina, ve které chcete vytvořit nové prostředky.
+   * `-TemplateFile` se musí vyskytovat před vlastními parametry.
+   * `-appName` název prostředku, který chcete vytvořit.
 
-Můžete přidat další parametry - jejich popis najdete v sekci parametrů šablony.
+Můžete přidat další parametry – jejich popisy najdete v části Parameters (parametry) v šabloně.
 
-## <a name="to-get-the-instrumentation-key"></a>Chcete-li získat klíč instrumentace
-Po vytvoření prostředek aplikace, je vhodné Instrumentační klíč: 
+## <a name="to-get-the-instrumentation-key"></a>Získání klíče instrumentace
+Po vytvoření prostředku aplikace budete chtít klíč instrumentace: 
 
 ```PS
     $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
@@ -185,11 +205,11 @@ Po vytvoření prostředek aplikace, je vhodné Instrumentační klíč:
 
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>Nastavit cenový plán
+## <a name="set-the-price-plan"></a>Nastavení cenového plánu
 
 Můžete nastavit [cenový plán](pricing.md).
 
-Vytvořte prostředek aplikace s cenový plán Enterprise, pomocí výše uvedené šablony:
+Pokud chcete vytvořit prostředek aplikace s plánem ceny Enterprise, použijte šablonu výše:
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -198,21 +218,21 @@ Vytvořte prostředek aplikace s cenový plán Enterprise, pomocí výše uveden
                -appName myNewApp
 ```
 
-|priceCode|plán|
+|priceCode|Rozhraní|
 |---|---|
-|1|Basic|
-|2|Enterprise|
+|první|Základní|
+|odst|Enterprise|
 
-* Pokud chcete použít výchozí základní cenový plán, můžete vynechat CurrentBillingFeatures prostředků ze šablony.
-* Pokud chcete změnit cenový plán po vytvoření prostředku komponenty, můžete použít šablonu, která vynechává prostředku "microsoft.insights/components". Navíc vynechat, nechte `dependsOn` uzlu z účtování prostředku. 
+* Pokud chcete použít výchozí cenový plán Basic, můžete prostředek CurrentBillingFeatures vynechat ze šablony.
+* Pokud chcete změnit plán cen po vytvoření prostředku komponenty, můžete použít šablonu, která vynechá prostředek "Microsoft. Insights/Components". Vynechejte také uzel `dependsOn` z fakturačního prostředku. 
 
-Pokud chcete ověřit aktualizovanou cenový plán, podívejte se na **využití a odhadované náklady na stránce** okna v prohlížeči. **Aktualizujte zobrazení prohlížeče** k Ujistěte se, že vidíte nejnovější stav.
+Aktualizovaný cenový plán ověříte tak, že se v prohlížeči zobrazí okno **Stránka využití a odhadované náklady** . **Aktualizujte zobrazení prohlížeče** a ujistěte se, že vidíte nejnovější stav.
 
 
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
-Nastavení upozornění na metriku ve stejnou dobu jako prostředek vaší aplikace, sloučit kód do souboru šablony:
+Chcete-li nastavit výstrahu metriky ve stejnou dobu jako prostředek aplikace, slučte kód podobný tomuto souboru šablony:
 
 ```JSON
 {
@@ -274,22 +294,22 @@ Nastavení upozornění na metriku ve stejnou dobu jako prostředek vaší aplik
 }
 ```
 
-Při vyvolání šablony, můžete volitelně přidat tento parametr:
+Pokud vyvoláte šablonu, můžete volitelně přidat tento parametr:
 
     `-responseTime 2`
 
-Samozřejmě můžete parametrizovat ostatní pole. 
+Můžete samozřejmě použít i další pole. 
 
-Můžete zjistit názvy typů a podrobnosti o konfiguraci dalších pravidel upozornění, ručně vytvořit pravidlo a poté zkontrolujte v [Azure Resource Manageru](https://resources.azure.com/). 
+Chcete-li zjistit názvy typů a podrobnosti o konfiguraci jiných pravidel upozornění, vytvořte pravidlo ručně a pak ho zkontrolujte v [Azure Resource Manager](https://resources.azure.com/). 
 
 
 ## <a name="add-an-availability-test"></a>Přidat test dostupnosti
 
-V tomto příkladu je otestovat příkazem ping (Chcete-li otestovat jediné stránce).  
+Tento příklad slouží pro test testu a testování jedné stránky.  
 
-**Existují dvě části** v testu dostupnosti: samotný test a příslušnou výstrahu, která upozorní na selhání.
+V testu dostupnosti **jsou dvě části** : samotný test a výstraha upozorňující na selhání.
 
-Slučte následující kód do souboru šablony, který vytváří aplikaci.
+Sloučí následující kód do souboru šablony, který vytváří aplikaci.
 
 ```JSON
 {
@@ -386,41 +406,41 @@ Slučte následující kód do souboru šablony, který vytváří aplikaci.
 }
 ```
 
-Ke zjištění kódy pro jiné umístění testu, nebo k automatizaci vytváření složitějších webové testy, vytvořte příklad ručně a pak parametrizovat kód z [Azure Resource Manageru](https://resources.azure.com/).
+Chcete-li zjistit kódy pro jiná testovací umístění nebo automatizovat vytváření složitějších webových testů, vytvořte příklad ručně a potom tento kód z [Azure Resource Manager](https://resources.azure.com/).
 
-## <a name="add-more-resources"></a>Přidat další prostředky
+## <a name="add-more-resources"></a>Přidat další zdroje
 
-Automatizace vytváření jiný prostředek jakéhokoli druhu, vytvořit příklad ručně a pak zkopírujte a parametrizovat jeho kód z [Azure Resource Manageru](https://resources.azure.com/). 
+Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhokoliv druhu, vytvořte příklad ručně a potom zkopírujte a parametrizovat svůj kód z [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Otevřít [Azure Resource Manageru](https://resources.azure.com/). Procházejte dolů `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, na prostředek vaší aplikace. 
+1. Otevřete [Azure Resource Manager](https://resources.azure.com/). Přejděte dolů do prostředku aplikace pomocí `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`. 
    
-    ![Navigace v Průzkumníku prostředků Azure](./media/powershell/01.png)
+    ![Navigace v Azure Resource Explorer](./media/powershell/01.png)
    
-    *Součásti* jsou základní prostředky Application Insights pro zobrazení aplikace. Existují samostatné prostředky pro přidružená pravidla upozornění a webové testy dostupnosti.
-2. Zkopírujte do příslušného místa v JSON komponenty `template1.json`.
-3. Odstraňte tyto vlastnosti:
+    *Komponenty* jsou základní Application Insights prostředky pro zobrazování aplikací. Pro přidružená pravidla výstrah a webové testy dostupnosti jsou k dispozici samostatné prostředky.
+2. Zkopírujte kód JSON součásti na příslušné místo v `template1.json`.
+3. Odstranit tyto vlastnosti:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Otevřete webové testy a alertrules části a zkopírujte JSON pro jednotlivé položky do šablony. (Nekopírujte z uzlů webové testy nebo alertrules: přejděte na položky pod nimi.)
+4. Otevřete oddíly webtests a alertrules a zkopírujte kód JSON pro jednotlivé položky do šablony. (Nekopírovat z webtests nebo uzlů alertrules: přejít do položek pod nimi.)
    
-    Každý webový test má přidružené pravidlo upozornění, proto musíte zkopírovat obou z nich.
+    Každý webový test má přidružené pravidlo výstrahy, takže je nutné oba zkopírovat.
    
-    Můžete použít také výstrahy týkající se metrik. [Názvy metrik](powershell-alerts.md#metric-names).
-5. Vložte tento řádek do každého prostředku:
+    Můžete také zahrnout výstrahy na metriky. [Názvy metrik](powershell-alerts.md#metric-names).
+5. Vložit tento řádek do každého prostředku:
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-the-template"></a>Parametrizaci šablony
-Teď je potřeba nahradit konkrétní názvy parametrů. K [parametrizaci šablony](../../azure-resource-manager/resource-group-authoring-templates.md), psaní výrazů pomocí [sadu pomocných funkcí](../../azure-resource-manager/resource-group-template-functions.md). 
+### <a name="parameterize-the-template"></a>Parametrizovat šablonu
+Nyní musíte nahradit konkrétní názvy parametry. Chcete-li [parametrizovat šablonu](../../azure-resource-manager/resource-group-authoring-templates.md), zapište výrazy pomocí [sady pomocných funkcí](../../azure-resource-manager/resource-group-template-functions.md). 
 
-Nelze parametrizovat jenom část řetězce, proto použijte `concat()` k vytvoření řetězce.
+Nemůžete parametrizovat pouze část řetězce, takže použijte `concat()` k sestavení řetězců.
 
-Tady jsou příklady nahrazení, který budete chtít provést. Existuje několik výskytů každé nahrazení. Může být nutné ostatní ve vaší šabloně. Tyto příklady používají parametry a proměnné, které jsme definovali v horní části šablony.
+Tady jsou příklady náhrad, které chcete udělat. Existuje několik výskytů každé náhrady. V šabloně budete možná potřebovat jiné. V těchto příkladech se používají parametry a proměnné, které jsme definovali v horní části šablony.
 
-| find | Nahraďte |
+| find | nahradit |
 | --- | --- |
 | `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
@@ -428,27 +448,27 @@ Tady jsou příklady nahrazení, který budete chtít provést. Existuje několi
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"` (malá písmena) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Odstraní identifikátor Guid a ID. |
+| `"myappname"` (malý případ) |`"[toLower(parameters('appName'))]"` |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Odstraňte identifikátor GUID a ID. |
 
-### <a name="set-dependencies-between-the-resources"></a>Nastavte závislosti mezi prostředky
-Azure by měl nastavit prostředky v přísného pořadí. Pokud chcete mít jistotu, že jeden instalační program dokončí před začátkem další, přidejte závislosti řádky:
+### <a name="set-dependencies-between-the-resources"></a>Nastavení závislostí mezi prostředky
+Azure by měl nastavit prostředky v přísném pořadí. Chcete-li zajistit, aby bylo jedno nastavení dokončeno před dalším začátkem, přidejte řádky závislosti:
 
-* V prostředku testů dostupnosti:
+* V prostředku testu dostupnosti:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* V prostředku upozornění pro test dostupnosti:
+* V prostředku výstrahy pro test dostupnosti:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
 
 
-## <a name="next-steps"></a>Další postup
-Další články automation:
+## <a name="next-steps"></a>Další kroky
+Další články o automatizaci:
 
-* [Vytvořte prostředek Application Insights](powershell-script-create-resource.md) – rychlé metody bez použití šablony.
+* [Vytvořte rychlou metodu Application Insights prostředků](powershell-script-create-resource.md) bez použití šablony.
 * [Nastavení výstrah](powershell-alerts.md)
-* [Vytvářejte webové testy](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Odesílání Diagnostiky Azure do Application Insights](powershell-azure-diagnostics.md)
-* [Nasazení do Azure z Githubu](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
-* [Vytvoření poznámek](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Vytváření webových testů](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [Odeslat Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)
+* [Nasazení do Azure z GitHubu](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Vytvořit poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

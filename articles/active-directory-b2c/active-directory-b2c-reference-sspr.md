@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné resetování hesla ve Azure Active Directory B2C | Dokumentace Microsoftu
-description: Ukazuje, jak nastavit samoobslužné resetování hesla pro vaše zákazníky v Azure Active Directory B2C
+title: Samoobslužné resetování hesla v Azure Active Directory B2C | Microsoft Docs
+description: Ukazuje, jak nastavit Samoobslužné resetování hesla pro vaše zákazníky v rámci služby Azure Active Directory B2C
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,33 +10,34 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8137bc0e75595b5f548584bb2d1644de2e0fecd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7903ec669772c3a3858a9c1d514ab3e6de6a2bd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508923"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936831"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Nastavení samoobslužného resetování hesla pro vaše zákazníky
 
-Díky funkci resetování hesla pomocí samoobslužné služby mohou vaši zákazníci, kteří si zaregistrovali pro místní účty resetování hesel na své vlastní. To významně snižuje zatížení pracovníkům podpory, zejména v případě, že má vaše aplikace miliony zákazníci, kteří používají v pravidelných intervalech. V současné době pomocí ověřený e-mailová adresa je metoda pouze podporované obnovení.
+Díky funkci samoobslužného resetování hesla si vaši zákazníci, kteří si zaregistrovali místní účty, můžou svá hesla resetovat sami. To významně snižuje zatížení pracovníků podpory, zejména v případě, že vaše aplikace má v pravidelných intervalech miliony zákazníků. V současné době je jako jediná podporovaná metoda obnovení použita ověřená e-mailová adresa.
 
 > [!NOTE]
-> Tento článek se týká hesla pomocí samoobslužné služby použít v kontextu rozhraní V1 resetování **přihlášení** tok uživatele, který používá **přihlášení místním účtem** jako zprostředkovatele identity. Pokud potřebujete toky uživatelů pro resetování plně přizpůsobitelná hesla vyvolané z vaší aplikace, přečtěte si [v tomto článku](active-directory-b2c-reference-policies.md).
+> Tento článek se týká samoobslužného resetování hesla, které se používá v souvislosti s uživatelským tokem **přihlášení** V1, který jako zprostředkovatele identity používá **přihlášení pomocí místního účtu** . Pokud potřebujete plně přizpůsobitelné uživatelské toky pro resetování hesla vyvolané z vaší aplikace, přečtěte si [Tento článek](active-directory-b2c-reference-policies.md).
 > 
 > 
 
-Ve výchozím adresáři nemá hesla pomocí samoobslužné služby resetování zapnuté. Ho Pokud chcete zapnout, postupujte následovně:
+Ve výchozím nastavení nemá váš adresář zapnuté Samoobslužné resetování hesla. K jeho zapnutí použijte následující postup:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako správce předplatného. Toto je stejný pracovní nebo školní účet nebo stejný účet Microsoft, který jste použili k vytvoření adresáře.
-2. Otevřít **Azure Active Directory** (na navigačním panelu na levé straně).
-4. Nastavte **samoobslužné resetování hesla povoleno** k **všechny**. 
-5. Klikněte na **Uložit** v horní části stránky. Je to!
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce předplatného. Jedná se o stejný pracovní nebo školní účet nebo stejný účet Microsoft, který jste použili k vytvoření adresáře.
+2. Otevřete **Azure Active Directory** (v navigačním panelu na levé straně).
+3. V okně Možnosti přejděte dolů a vyberte **resetování hesla**.
+4. Nastavte **Samoobslužné resetování hesla povolené** na **vše**. 
+5. V horní části stránky klikněte na **Uložit** . Už jste hotovi!
 
-Pokud chcete otestovat, pomocí funkce "Spustit nyní" na přihlášení uživatele tok, který má místní účty jako zprostředkovatele identity. Na přihlášení místním účtem stránce (Pokud zadáte e-mailovou adresu a heslo, nebo uživatelské jméno a heslo), klikněte na **nemá přístup k účtu?** ověřit uživatelské prostředí.
+K otestování použijte funkci spustit nyní na jakémkoli uživatelském přihlašovacím toku, který má místní účty jako zprostředkovatele identity. Na přihlašovací stránce místního účtu (kde zadáváte e-mailovou adresu a heslo nebo uživatelské jméno a heslo), klikněte na **nepřístup k vašemu účtu** a ověřte si prostředí pro zákazníky.
 
 > [!NOTE]
-> Na stránkách resetování hesla pomocí samoobslužné služby lze přizpůsobit pomocí [firemní branding funkce](../active-directory/fundamentals/customize-branding.md).
+> Stránky samoobslužného resetování hesla je možné přizpůsobit pomocí [funkce Branding společnosti](../active-directory/fundamentals/customize-branding.md).
 > 
 > 
 

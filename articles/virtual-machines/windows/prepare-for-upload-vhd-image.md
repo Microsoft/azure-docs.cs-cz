@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: MT
+ms.openlocfilehash: 3922388aaa7dd244b74404e50001e9c87870728d
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695382"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937497"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava virtuálního pevného disku (VHD) nebo VHDX systému Windows pro nahrání do Azure
 
@@ -58,7 +58,7 @@ Po převedení disku vytvořte virtuální počítač, který používá disk. Z
 4. Pokud potřebujete převod z VHDX, vyberte **VHD** >  Next (**Další**).
 5. Pokud potřebujete převod z dynamicky se zvětšující disk, vyberte možnost **Pevná velikost** > **Další**.
 6. Vyhledejte a vyberte cestu, do které chcete uložit nový soubor VHD.
-7. Vyberte **Finish** (Dokončit).
+7. Vyberte **Dokončit**.
 
 > [!NOTE]
 > Pomocí relace PowerShellu se zvýšenými oprávněními spusťte příkazy v tomto článku.
@@ -207,13 +207,16 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 8. Odebrání všech certifikátů podepsaných svým držitelem vázaných na naslouchací proces protokolu RDP:
     
     ```PowerShell
-    Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
+    if ((Get-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp').Property -contains "SSLCertificateSHA1Hash")
+    {
+        Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "SSLCertificateSHA1Hash" -Force
+    }
     ```
     Tento kód zajišťuje, že se můžete připojit na začátku při nasazení virtuálního počítače. Pokud to budete potřebovat později, můžete tak učinit až po nasazení virtuálního počítače v Azure.
 
 9. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení nebudou obnovená. 
     
-    | Cíl                                     | Zásady                                                                                                                                                       | Hodnota                                                                                    |
+    | Cílový                                     | Politických                                                                                                                                                       | Hodnota                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Protokol RDP je povolený.                           | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.                                  |
     | NLA – zásady skupiny                         | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -247,7 +250,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
    ``` 
 5. Pokud bude virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovená. 
 
-    | Cíl                                 | Zásady                                                                                                                                                  | Hodnota                                   |
+    | Cílový                                 | Politických                                                                                                                                                  | Hodnota                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -342,9 +345,9 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 
    - Operátoři zálohování
 
-   - Všemi
+   - Everyone
 
-   - Uživatelé
+   - mohou
 
 10. Restartujte virtuální počítač, abyste se ujistili, že je systém Windows stále v pořádku a že je možné ho spojit s připojením RDP. V tuto chvíli můžete chtít vytvořit virtuální počítač v místní technologii Hyper-V, abyste se ujistili, že se virtuální počítač spustí úplně. Pak se otestujte a ujistěte se, že máte přístup k virtuálnímu počítači přes RDP.
 
@@ -355,7 +358,7 @@ Ujistěte se, že je virtuální počítač v pořádku, zabezpečený a dostupn
 ### <a name="install-windows-updates"></a>Nainstalovat aktualizace Windows
 V ideálním případě byste měli udržovat počítač aktualizovaný na *úrovni opravy*. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
 
-| Součást               | Tvaru         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Součást               | binární         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Úložiště                 | disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | ovladač Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -372,7 +375,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 |                         | vmstorfl. sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
 |                         | Fveapi. dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | Fveapibase. dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Síť                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+| Sítě                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | Mrxsmb10. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | Mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | Mrxsmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
@@ -380,7 +383,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 |                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | VMSwitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Jádro                    | Ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| Vzdálená plocha | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+| Služba Vzdálená plocha | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 – KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | TermDD. sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | souborem     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
@@ -415,8 +418,8 @@ Ne každá role nebo aplikace, která je nainstalovaná na počítači se systé
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
 1. Spusťte **příkazový řádek** jako správce. 
-1. Změňte adresář na `%windir%\system32\sysprep`. Potom spusťte `sysprep.exe`.
-1. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
+1. Změňte adresář na `%windir%\system32\sysprep`. Pak spusťte `sysprep.exe`.
+1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
 1. V **Možnosti vypnutí**vyberte **vypnout**.

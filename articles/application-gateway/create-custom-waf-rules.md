@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058315"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937187"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a použití vlastních pravidel pro webové aplikace firewall v2
 
@@ -145,7 +145,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
@@ -159,7 +159,7 @@ Tady je odpovídající kód JSON:
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "Block",
         "matchConditions": [
           {
@@ -175,7 +175,7 @@ Tady je odpovídající kód JSON:
   }
 ```
 
-Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Příslušné pravidlo pro počítačový počítač: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Příklad 3
 
@@ -206,7 +206,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
  $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1, $condition2 `
    -Action Block
@@ -221,7 +221,7 @@ Tady je odpovídající kód JSON:
       { 
         "name": "myrule", 
         "ruleType": "MatchRule", 
-        "priority": 100, 
+        "priority": 10, 
         "action": "block", 
         "matchConditions": [ 
             { 
@@ -249,7 +249,7 @@ Tady je odpovídající kód JSON:
   } 
 ```
 
-## <a name="example-4"></a>Příklad 4:
+## <a name="example-4"></a>Příklad 4
 
 V tomto příkladu chcete blokovat, pokud je požadavek mimo rozsah IP adres *192.168.5.0/24*, nebo pokud řetězec uživatelského agenta není *Chrome* (znamená to, že uživatel nepoužívá prohlížeč Chrome). Vzhledem k tomu, že tato logika používá **nebo**, jsou tyto dvě podmínky v samostatných pravidlech, jak je vidět v následujícím příkladu. *myrule1* a *myrule2* musí odpovídat na blokování provozu.
 
@@ -278,14 +278,14 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -299,7 +299,7 @@ A odpovídající kód JSON:
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -315,7 +315,7 @@ A odpovídající kód JSON:
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 200,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -398,7 +398,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
 -Action Block
@@ -414,7 +414,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -430,7 +430,7 @@ $condition3 = New-AzApplicationGatewayFirewallCondition `
 
 $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule3 `
-   -Priority 300 `
+   -Priority 30 `
    -RuleType MatchRule `
    -MatchCondition $condition3 `
    -Action Block
@@ -444,7 +444,7 @@ Odpovídající kód JSON:
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -459,7 +459,7 @@ Odpovídající kód JSON:
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -477,7 +477,7 @@ Odpovídající kód JSON:
       {
         "name": "myrule3",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 30,
         "action": "block",
         "matchConditions": [
           {

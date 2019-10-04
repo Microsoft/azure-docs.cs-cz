@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124067"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842580"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpečení kontejneru Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Hostitel by měl povolený seznam **port 443** a následující domény:
 
 #### <a name="disable-deep-packet-inspection"></a>Zakázat hloubkovou kontrolu paketů
 
-> [Hloubková kontrola paketů](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) je typ zpracování dat, který podrobněji kontroluje data odesílaná přes počítačovou síť a obvykle provádí akci blokováním, opětovného směrování nebo jeho přihlašování.
+> [Hloubková kontrola paketů](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) je typ zpracování dat, který podrobněji kontroluje data odesílaná přes počítačovou síť a obvykle provádí akci blokováním, opětovného směrování nebo jeho přihlašování.
 
 Zakáže DPI u zabezpečených kanálů, které kontejnery Cognitive Services vytvoří na servery Microsoftu. V takovém případě se zabrání správnému fungování kontejneru.
 

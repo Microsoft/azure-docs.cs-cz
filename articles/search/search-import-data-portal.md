@@ -6,129 +6,132 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e784cbf351bd062712e0fd66332799907a3bcae8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648252"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936913"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Průvodce importem dat pro Azure Search
 
-Azure Portal poskytuje v řídicím panelu služby Azure Search průvodce **Importem dat** pro načítání dat do indexu. Na pozadí Průvodce nakonfiguruje a vyvolá *zdroj dat*, *index*a *indexer* – automatizují několik kroků procesu indexování: 
+Azure Portal poskytuje průvodce **importem dat** na řídicím panelu Azure Search pro vytváření prototypů a načítání indexu. Tento článek se věnuje výhodám a omezením při používání průvodce, vstupů a výstupů a některých informací o využití. Praktické pokyny k procházení průvodce pomocí integrovaných ukázkových dat najdete v tématu [vytvoření Azure Search indexu pomocí Azure Portal](search-get-started-portal.md) rychlého startu.
 
-* Připojí se k externímu zdroji dat ve stejném předplatném Azure.
-* Volitelně integruje optické rozpoznávání znaků nebo zpracování přirozeného jazyka pro extrakci textu z nestrukturovaných dat.
-* Vygeneruje index na základě vzorkování dat a metadat externího zdroje dat.
-* Prochází zdroj dat pro prohledávatelný obsah, serializaci a načítání dokumentů JSON do indexu.
+Operace, které tento průvodce provede, zahrnují:
 
-Průvodce se nemůže připojit k předdefinovanému indexu nebo spustit existujícího indexeru, ale v průvodci můžete nakonfigurovat nový index nebo indexer pro podporu struktury a chování, které potřebujete.
+1 – Připojte se k podporovanému zdroji dat Azure.
 
-Jste nováčky ve službě Azure Search? Krok v [rychlém startu: Import, indexování a dotazování pomocí nástrojů portálu](search-get-started-portal.md) k otestování importu a indexování pomocí nástroje pro **Import dat** a integrované sady ukázkových dat v reálném čase.
+2 – Vytvořte schéma indexu odvozeného ze zdrojových dat vzorkování.
 
-## <a name="start-importing-data"></a>Spustit import dat
+3 – Volitelně můžete přidat rozšíření AI pro extrakci nebo generování obsahu a struktury.
 
-Tato část vysvětluje, jak spustit průvodce a poskytuje podrobný přehled jednotlivých kroků.
+4 – spusťte Průvodce pro vytváření objektů, import dat, nastavení plánu a další možnosti konfigurace.
+
+Průvodce vypíše počet objektů, které jsou uloženy do vaší vyhledávací služby, ke kterým máte přístup programově nebo v jiných nástrojích.
+
+## <a name="advantages-and-limitations"></a>Výhody a omezení
+
+Než začnete psát kód, můžete použít Průvodce pro testování prototypů a testování konceptu. Průvodce se připojuje k externím zdrojům dat, vzorkuje data pro vytvoření počátečního indexu a pak data importuje jako dokumenty JSON do indexu v Azure Search. 
+
+Vzorkování je proces, při kterém je schéma indexu odvozeno a má určitá omezení. Když se vytvoří zdroj dat, Průvodce vybere ukázku dokumentů a určí, které sloupce jsou součástí zdroje dat. Ne všechny soubory jsou čteny, protože by to mohlo trvat i hodiny u velmi rozsáhlých zdrojů dat. Při výběru dokumentů se zdrojová metadata, jako je název pole nebo typ, používají k vytvoření kolekce polí ve schématu indexu. V závislosti na složitosti zdrojových dat může být nutné upravit počáteční schéma pro přesnost nebo ho pro úplnosti zvětšit. Změny můžete provést na stránce definice indexu.
+
+Obecně platí, že výhody použití Průvodce jsou jasné: Pokud jsou splněné požadavky, můžete prototypovat index Queryable během několika minut. Některé ze složitých indexů, jako jsou například poskytování dat jako dokumentů JSON, jsou zpracovávány průvodcem.
+
+Známá omezení jsou shrnuta takto:
+
++ Průvodce nepodporuje iteraci ani opakované použití. Každý průchod průvodcem vytvoří nový index, dovednosti a konfiguraci indexeru. V průvodci můžete zachovat a znovu použít jenom zdroje dat. Chcete-li upravit nebo Upřesnit další objekty, je nutné použít rozhraní REST API nebo sadu .NET SDK pro načtení a úpravu struktury.
+
++ Zdrojový obsah se musí nacházet v podporovaném zdroji dat Azure v rámci služby ve stejném předplatném.
+
++ Vzorkování je nad podmnožinou zdrojových dat. U rozsáhlých zdrojů dat je možné, že Průvodce neobdrží pole. Pokud vzorkování nestačí, možná budete muset schéma zvětšit nebo opravit odvozené datové typy.
+
++ Rozšíření AI, jak je zveřejněné na portálu, je omezené na několik integrovaných dovedností. 
+
++ [Znalostní báze](knowledge-store-concept-intro.md), který může průvodce vytvořit, je omezen na několik výchozích projekce. Pokud chcete uložit obohacené dokumenty vytvořené průvodcem, jsou v kontejneru objektů BLOB a v tabulkách výchozí názvy a struktura.
+
+<a name="data-source-inputs"></a>
+
+## <a name="data-source-input"></a>Vstup zdroje dat
+
+Průvodce **importem dat** se připojí k externímu zdroji dat pomocí interní logiky poskytnuté Azure Search indexery, které jsou vybavené pro ukázku zdroje, čtení metadat, vylomení dokumentů pro čtení obsahu a struktury a serializace obsahu jako JSON pro následná import do Azure Search.
+
+Importovat můžete pouze z jedné tabulky, zobrazení databáze nebo ekvivalentní datové struktury, ale struktura může zahrnovat hierarchické nebo vnořené podstruktury. Další informace najdete v tématu [modelování komplexních typů](search-howto-complex-data-types.md).
+
+Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním průvodce a musí obsahovat obsah. Z zjevné důvodů nemá smysl spustit průvodce **importem dat** v prázdném zdroji dat.
+
+|  Výběr | Popis |
+| ---------- | ----------- |
+| **Existující zdroj dat** |Pokud ve vyhledávací službě již máte definovány indexery, můžete mít existující definici zdroje dat, kterou můžete znovu použít. V Azure Search objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** a podle potřeby je znovu použít.|
+| **Ukázky**| Azure Search poskytuje dva předdefinované ukázkové zdroje dat, které se používají v kurzech a rychlých startech: v reálném čase databáze SQL a databáze hotelů hostované na Cosmos DB. Návod na základě ukázky hotelů najdete v tématu [vytvoření indexu v Azure Portal](search-get-started-portal.md) rychlý Start. |
+| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, pověření pro uživatele databáze s oprávněním ke čtení a název databáze lze zadat buď na stránce, nebo prostřednictvím připojovacího řetězce ADO.NET. Chcete-li zobrazit nebo upravit vlastnosti, vyberte možnost připojovací řetězec. <br/><br/>Na stránce musí být určena tabulka nebo zobrazení, které poskytuje sadu řádků. Tato možnost se zobrazí po úspěšném připojení a zadání rozevíracího seznamu, aby bylo možné provést výběr.|
+| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Chcete-li použít tento zdroj dat, musíte mít dříve nainstalovaný certifikát v místním úložišti, které šifruje připojení. Pokyny najdete v tématu [připojení k virtuálnímu počítači SQL pro Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na stránce musí být určena tabulka nebo zobrazení, které poskytuje sadu řádků. Tato možnost se zobrazí po úspěšném připojení a zadání rozevíracího seznamu, aby bylo možné provést výběr. |
+| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Do indexu budou zahrnuty všechny dokumenty v kolekci. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
+| [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se v případě názvů objektů BLOB řídí konvence pro účely seskupení, můžete zadat část názvu jako složku v kontejneru. Další informace najdete v tématu [indexování BLOB Storage](search-howto-indexing-azure-blob-storage.md) . |
+| [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [indexování Table Storage](search-howto-indexing-azure-tables.md) . |
+
+## <a name="wizard-output"></a>Výstup Průvodce
+
+Na pozadí Průvodce vytvoří, nakonfiguruje a vyvolá následující objekty. Po spuštění Průvodce můžete jeho výstup najít na stránkách portálu. Stránka přehled vaší služby obsahuje seznam indexů, indexerů, zdrojů dat a dovednosti. Definice indexů se dají zobrazit v plném formátu JSON na portálu. Pro jiné definice můžete použít [REST API](https://docs.microsoft.com/rest/api/searchservice/) k získání konkrétních objektů.
+
+| Objekt | Popis | 
+|--------|-------------|
+| [Zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Uchovává informace o připojení ke zdrojovým datům, včetně přihlašovacích údajů. Objekt zdroje dat se používá výhradně s indexery. | 
+| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Fyzická datová struktura, která se používá pro fulltextové vyhledávání a další dotazy. | 
+| [Dovednosti](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Kompletní sada instrukcí pro práci, transformaci a tvarování obsahu, včetně analýzy a extrakce informací ze souborů obrázků. S výjimkou jednoduchých a omezených struktur obsahuje odkaz na prostředek Cognitive Services, který poskytuje obohacení. Volitelně může také obsahovat definici znalostní báze Knowledge Store.  | 
+| [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Objekt konfigurace určující zdroj dat, cílový index, volitelný dovednosti, volitelný plán a volitelná nastavení konfigurace pro chyby a kódování Base-64. |
+
+
+## <a name="how-to-start-the-wizard"></a>Jak spustit Průvodce
+
+Průvodce importem dat je spuštěn z panelu příkazů na stránce Přehled služby.
 
 1. V [Azure Portal](https://portal.azure.com)otevřete stránku vyhledávací služby z řídicího panelu nebo [vyhledejte službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v seznamu služby.
 
 2. Na stránce Přehled služby v horní části klikněte na **importovat data**.
 
-   ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
+   ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spustit Průvodce importem dat")
 
-   > [!NOTE]
-   > Můžete spouštět **importovaná data** z jiných služeb Azure, včetně Azure Cosmos DB, Azure SQL Database a Azure Blob Storage. Vyhledejte **přidat Azure Search** v levém navigačním podokně na stránce Přehled služby.
-
-3. Průvodce se otevře pro **připojení k vašim datům**, kde můžete zvolit externí zdroj dat, který chcete pro tento import použít. O tomto kroku se dozvíte několik věcí, proto si přečtěte část [vstupy zdroje dat](#data-source-inputs) , kde najdete další podrobnosti.
-
-   ![Průvodce importem dat na portálu](./media/search-import-data-portal/import-data-wizard-startup.png "Průvodce importem dat pro Azure Search")
-
-4. Dále **přidejte hledání rozpoznávání**, pokud chcete zahrnout optické rozpoznávání znaků (OCR) textu v souborech obrázků nebo analýzu textu přes nestrukturovaná data. Pro tuto úlohu jsou načteny algoritmy AI z Cognitive Services. Tento krok obsahuje dvě části:
-  
-   Nejprve [připojte prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md) k Azure Search dovednosti.
-  
-   Potom vyberte, která rozšíření AI se mají zahrnout do dovednosti. Návod k ukázce najdete v tomto [rychlém](cognitive-search-quickstart-blob.md)startu.
-
-   Pokud chcete jenom importovat data, přeskočte tento krok a přejděte přímo do definice indexu.
-
-5. Dále je možné **přizpůsobit cílový index**, kde můžete přijmout nebo upravit schéma indexu uvedené v průvodci. Průvodce odvodí pole a datové typy pomocí vzorkování dat a čtení metadat z externího zdroje dat.
-
-   U každého pole [zaškrtněte atributy indexu](#index-definition) , aby se povolilo konkrétní chování. Pokud nevyberete žádné atributy, váš index nebude možné použít. 
-
-6. Dále je **vytvořen indexer**, který je produktem tohoto průvodce. Indexer je prohledávací modul, který extrahuje hledaná data a metadata z externího zdroje dat Azure. Když vyberete zdroj dat a připojíte dovednosti (volitelné) a index, nakonfigurujete indexer při procházení jednotlivých kroků průvodce.
-
-   Dejte indexeru název a kliknutím na **Odeslat** zahajte proces importu. 
-
-Indexování můžete na portálu sledovat kliknutím na indexer v seznamu **indexery** . S načítáním dokumentů se bude zvyšovat počet dokumentů u indexu, který jste nadefinovali. Stránce portálu někdy trvá několik minut, než získá nejnovější aktualizace.
-
-Index je připravený k dotazování ihned po načtení prvního dokumentu. Pro tuto úlohu můžete použít [Průzkumníka služby Search](search-explorer.md) .
-
-<a name="data-source-inputs"></a>
-
-## <a name="data-source-inputs"></a>Vstupy zdroje dat
-
-Průvodce **importem dat** vytvoří trvalý objekt zdroje dat, který určuje informace o připojení k externímu zdroji dat. Objekt zdroje dat se používá výhradně s [indexery](search-indexer-overview.md) a je možné ho vytvořit pro následující zdroje dat: 
-
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Table Storage Azure](search-howto-indexing-azure-tables.md) (není podporováno pro kanály [hledání rozpoznávání](cognitive-search-concept-intro.md) )
-
-Importovat můžete pouze z jedné tabulky, zobrazení databáze nebo ekvivalentní datové struktury, ale struktura může zahrnovat hierarchické nebo vnořené podstruktury. Další informace najdete v tématu [modelování komplexních typů](search-howto-complex-data-types.md).
-
-Tuto strukturu dat byste měli vytvořit před spuštěním průvodce a musí obsahovat obsah. Nespouštějte Průvodce **importem dat** v prázdném zdroji dat.
-
-|  Výběr | Popis |
-| ---------- | ----------- |
-| **Stávající zdroj dat** |Pokud již ve vyhledávací službě máte definované indexery, můžete pro další import vybrat stávající definici zdroje dat. V Azure Search objekty zdroje dat používají pouze indexery. Objekt zdroje dat můžete vytvořit programově nebo prostřednictvím průvodce **importem dat** .|
-| **Ukázky**| Azure Search hostuje bezplatnou globální databázi SQL Azure, kterou můžete použít k získání informací o importu a dotazování požadavků v Azure Search. Další [informace najdete v tématu rychlý Start: Import, indexování a dotazování pomocí nástrojů](search-get-started-portal.md) portálu pro návod |
-| **Azure SQL Database** |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
-| **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [Připojení virtuálního počítače SQL ke službě Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
-| **Databáze Cosmos** |Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
-| **Azure Blob Storage** |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
-| **Azure Table Storage** |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
-
+Můžete také spustit **Import dat** z jiných služeb Azure, včetně Azure Cosmos DB, Azure SQL Database a úložiště objektů BLOB v Azure. Vyhledejte **přidat Azure Search** v levém navigačním podokně na stránce Přehled služby.
 
 <a name="index-definition"></a>
 
-## <a name="index-attributes"></a>Atributy indexu
+## <a name="how-to-edit-or-finish-an-index-schema-in-the-wizard"></a>Postup úpravy nebo dokončení schématu indexu v Průvodci
 
-Průvodce **importem dat** vygeneruje index, který se naplní dokumenty získanými ze vstupního zdroje dat. 
+Průvodce vygeneruje nekompletní index, který se naplní dokumenty získanými ze vstupního zdroje dat. Pro funkční index se ujistěte, že máte definovány následující prvky.
 
-Pro funkční index se ujistěte, že máte definovány následující prvky.
+1. Je seznam polí dokončený? Přidejte nová pole, která vzorkování nenalezlo, a odeberte všechny, které neumožňují přidat hodnotu do vyhledávacího prostředí, nebo které nebudou použity ve [výrazu filtru](search-query-odata-filter.md) nebo [profilu bodování](index-add-scoring-profiles.md).
 
-1. Jedno pole musí být označeno jako **klíč**, který slouží k jednoznačné identifikaci každého dokumentu. **Klíč** musí být *EDM. String*. 
+1. Je datový typ vhodný pro příchozí data? Azure Search podporuje [datové typy EDM (Entity Data Model)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Pro data SQL Azure je k dispozici [mapování grafu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types) , které stanovuje ekvivalentní hodnoty. Další informace najdete v tématu [mapování polí a transformace](search-indexer-field-mappings.md).
 
-   Pokud hodnoty polí obsahují mezery nebo pomlčky, je nutné nastavit možnost **klíč kódování Base-64** v kroku **Vytvoření indexeru** v části **Upřesnit možnosti**pro potlačení kontroly ověření pro tyto znaky.
+1. Máte jedno pole, které může sloužit jako *klíč*? Toto pole musí být EDM. String a musí jednoznačně identifikovat dokument. V případě relačních dat může být namapována na primární klíč. U objektů BLOB se může jednat o `metadata-storage-path`. Pokud hodnoty polí obsahují mezery nebo pomlčky, je nutné nastavit možnost **klíč kódování Base-64** v kroku **Vytvoření indexeru** v části **Upřesnit možnosti**pro potlačení kontroly ověření pro tyto znaky.
 
-1. Nastavte atributy indexu pro každé pole. Pokud nevyberete žádné atributy, index je v podstatě prázdný, s výjimkou požadovaného pole klíče. Vyberte alespoň jeden z těchto atributů pro každé pole.
+1. Nastavte atributy pro určení způsobu použití tohoto pole v indexu. 
+
+   Využijte tento krok v čase, protože atributy určují fyzický výraz polí v indexu. Pokud chcete změnit atributy později, dokonce i programově, je nutné index vyřadit a znovu sestavit. Základní atributy, jako **prohledávatelné** **a** získatelné, mají [zanedbatelný dopad na úložiště](search-what-is-an-index.md#storage-implications). Povolení filtrů a použití modulu pro návrhy zvyšují požadavky na úložiště. 
    
-   + K disvratně se vrátí pole ve výsledcích hledání. Každé pole, které poskytuje obsah pro výsledky hledání, musí mít tento atribut. Nastavení tohoto pole nemá výrazný vliv na velikost indexu.
-   + **Filtrovatelné** umožňuje, aby pole bylo odkazováno ve výrazech filtru. Každé pole, které je použito ve výrazu **$Filter** , musí mít tento atribut. Výrazy filtru jsou pro přesné shody. Vzhledem k tomu, že textové řetězce zůstávají beze změny, je nutné pro přizpůsobení doslovného obsahu vyžadovat další úložiště.
    + **Prohledávání** umožňuje fulltextové vyhledávání. Každé pole, které se používá v bezplatných dotazech formuláře nebo ve výrazech dotazů, musí mít tento atribut. Obrácené indexy se vytvoří pro každé pole, které označíte jako **prohledávatelné**.
 
-1. Volitelně můžete nastavit tento atribut podle potřeby:
+   + K **disvratně** se vrátí pole ve výsledcích hledání. Každé pole, které poskytuje obsah pro výsledky hledání, musí mít tento atribut. Nastavení tohoto pole nemá výrazný vliv na velikost indexu.
 
-   + Možnost řazení umožňuje, aby pole bylo použito při řazení. Každé pole, které je použito ve výrazu **$OrderBy** , musí mít tento atribut.
-   + **Ploška** umožňuje pole pro omezující navigaci. Pouze pole označená jako **filtrovaná** mohou být označenajako ploška.
+   + **Filtrovatelné** umožňuje, aby pole bylo odkazováno ve výrazech filtru. Každé pole, které je použito ve výrazu **$Filter** , musí mít tento atribut. Výrazy filtru jsou pro přesné shody. Vzhledem k tomu, že textové řetězce zůstávají beze změny, je nutné pro přizpůsobení doslovného obsahu vyžadovat další úložiště.
 
-1. Nastavte **analyzátor** , pokud chcete jazykově rozšířené indexování a dotazování. Výchozí hodnota je *standardní Lucene* , ale pokud jste chtěli použít analyzátor od Microsoftu pro rozšířené lexikální zpracování, jako je například řešení nepravidelných podstatných jmen a operací, můžete zvolit *Microsoft English* .
+   + **Ploška** umožňuje pole pro omezující navigaci. Pouze pole označená jako **filtrovaná** mohou být označena jako **ploška**.
 
-   + Vyberte možnost prohledatelné, pokud chcete povolit seznam **analyzátorů** .
-   + Vyberte analyzátor uvedený v seznamu. 
-   
-   V této chvíli lze určit pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako například analyzátoru klíčových slov, vzoru a dalších, bude vyžadovat psaní kódu. Další informace o analyzátorech najdete v tématu [vytvoření indexu pro dokumenty v několika jazycích](search-language-support.md).
+   + Možnost **řazení umožňuje,** aby pole bylo použito při řazení. Každé pole, které je použito ve výrazu **$OrderBy** , musí mít tento atribut.
 
-1. Zaškrtněte políčko , pokud chcete pro vybraná pole Povolit návrhy dotazů typu dopředu.
+1. Potřebujete [lexikální analýzu](search-lucene-query-architecture.md#stage-2-lexical-analysis)? U polí s řetězci EDM. String, která lze **Prohledávat**, můžete nastavit **analyzátor** , pokud chcete jazykově rozšířené indexování a dotazování. 
+
+   Výchozí hodnota je *standardní Lucene* , ale pokud jste chtěli použít analyzátor od Microsoftu pro rozšířené lexikální zpracování, jako je například řešení nepravidelných podstatných jmen a operací, můžete zvolit *Microsoft English* . Na portálu lze zadat pouze analyzátory jazyka. Použití vlastního analyzátoru nebo nejazykového analyzátoru, jako je klíčové slovo, vzor a tak dále, musí být provedeno programově. Další informace o analyzátorech najdete v tématu [Přidání analyzátorů jazyka](search-language-support.md).
+
+1. Potřebujete funkci typeahead ve formě automatického dokončování nebo navrhovaných výsledků? Zaškrtněte políčko **pro povolení** [návrhů dotazů typeahead a automatické dokončování](index-add-suggesters.md) pro vybraná pole. Moduly pro návrhy se přidávají do počtu vydaných tokenů v indexu, a proto spotřebovávají větší úložiště.
 
 
-## <a name="next-steps"></a>Další postup
-Další informace o indexerech najdete na těchto odkazech:
+## <a name="next-steps"></a>Další kroky
 
-* [Indexování služby Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Indexování služby Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Indexování služby Table Storage](search-howto-indexing-azure-tables.md)
+Nejlepším způsobem, jak porozumět výhodám a omezením průvodce, je projít si ho. Následující rychlý Start vás provede jednotlivými kroky.
+
+> [!div class="nextstepaction"]
+> [Vytvoření indexu Azure Search pomocí Azure Portal](search-get-started-portal.md)

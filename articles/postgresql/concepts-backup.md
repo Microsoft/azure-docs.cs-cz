@@ -6,22 +6,22 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bf2e289ad12f459c37a93ad3936c30339ecf663d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a4d8cd9f8198002b0b9ade8fe5058de1fcacc68f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907539"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937357"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
-Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for PostgreSQL automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru k určitému bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
 
-## <a name="backups"></a>Zálohování
+## <a name="backups"></a>Vytvářet
 
 Azure Database for PostgreSQL zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
 
-### <a name="backup-frequency"></a>Frekvence zálohování
+### <a name="backup-frequency"></a>Četnost zálohování
 
 Obecně platí, že k úplnému zálohování dochází týdně, rozdílové zálohování probíhá dvakrát denně a k zálohování protokolu transakcí dochází každých pět minut. První úplné zálohování je naplánováno ihned po vytvoření serveru. Prvotní zálohování může trvat déle na velkém obnoveném serveru. Nejdřívějším bodem v čase, kdy je možné obnovit nový server, je čas, kdy bylo dokončeno prvotní úplné zálohování.
 
@@ -38,7 +38,7 @@ Azure Database for PostgreSQL poskytuje úložiště zřízeného serveru jako �
 
 Pokud jste například zřídili Server s 250 GB, máte k dispozici až 250 GB úložiště zálohování bez dalších poplatků. Účtují se za úložiště převyšující 250 GB.
 
-## <a name="restore"></a>Obnovit
+## <a name="restore"></a>Obnovil
 
 Při obnovení se v Azure Database for PostgreSQL vytvoří nový server ze zálohy původního serveru.
 
@@ -52,7 +52,7 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
+### <a name="point-in-time-restore"></a>Obnovení k bodu v čase
 
 Nezávisle na možnosti redundance záloh můžete provést obnovení do libovolného bodu v čase v rámci doby uchovávání záloh. Nový server se vytvoří ve stejné oblasti Azure jako původní server. Vytvoří se s konfigurací původního serveru pro cenovou úroveň, generování výpočtů, počet virtuální jádra, velikost úložiště, dobu uchování zálohy a možnost redundance zálohy.
 
@@ -73,9 +73,9 @@ Po obnovení z některého mechanismu obnovení byste měli provést následují
 - Pokud má nový server nahradit původní server, přesměrujte klienty a klientské aplikace na nový server.
 - Zajistěte, aby se pro uživatele připojovala odpovídající pravidla brány firewall na úrovni serveru.
 - Zajistěte, aby byla zajištěna příslušná přihlášení a oprávnění na úrovni databáze.
-- Podle potřeby nakonfigurujte výstrahy.
+- Podle potřeby nakonfigurujte výstrahy
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se, jak obnovit pomocí [Azure Portal](howto-restore-server-portal.md).
 - Naučte se, jak obnovit pomocí [Azure CLI](howto-restore-server-cli.md).
