@@ -1,5 +1,5 @@
 ---
-title: Co je slovník? – Vlastní Translator
+title: Co je slovník? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Slovník je zarovnaný dokument, který určuje seznam frází nebo vět (a jejich překlady), který má aplikace Microsoft Translator vždycky přeložit stejným způsobem. Slovníky se někdy také označují jako Glossaries nebo pojem základ.
 author: swmachan
@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595382"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947686"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
-Slovník je zarovnaný pár dokumentů, které určují seznam frází nebo vět a jejich odpovídající překlady. Použijte slovník ve školicím programu, pokud chcete, aby Microsoft Translator vždy přeložil všechny instance zdrojové fráze nebo věty pomocí překladu, který jste zadali ve slovníku. Slovníky jsou někdy označovány jako Glossaries nebo pojem základ. Slovník si můžete představit jako hrubou silou "zkopírovat a nahradit" pro všechny uvedené výrazy.
+Slovník je zarovnaný pár dokumentů, které určují seznam frází nebo vět a jejich odpovídající překlady. Použijte slovník ve školicím programu, pokud chcete, aby Microsoft Translator vždy přeložil všechny instance zdrojové fráze nebo věty pomocí překladu, který jste zadali ve slovníku. Slovníky jsou někdy označovány jako Glossaries nebo pojem základ. Slovník si můžete představit jako hrubou silou "zkopírovat a nahradit" pro všechny uvedené výrazy. Kromě toho služba vlastní překladatele Microsoftu sestaví a využívá vlastní slovníky pro obecné účely ke zlepšení kvality jeho překladu. Slovník poskytnutý zákazníkem má ale stejný předchůdce a bude prohledán jako první hledaná slova nebo věty.
 
-Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný systém Microsoft neuronové Machine Translation (NMT). [Zobrazte úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný model Microsoft General neuronové Network. [Zobrazte úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Slovník frází
 Když zahrnete Frázový slovník do školicího modelu, všechna slova nebo fráze uvedená v seznamu se budou přeložit způsobem, který jste zadali. Zbytek věty je přeložen běžným způsobem. Pomocí slovníku frází můžete určit fráze, které by se neměly překládat, zadáním stejné nepřeložené fráze ve zdrojovém a cílovém souboru ve slovníku.
@@ -34,14 +34,14 @@ Model můžete vytvořit pouze pomocí dat ze slovníku. Pokud to chcete provés
 >[!Note]
 >Vlastní Překladatel nemění větu soubory slovníku, takže je důležité, aby se v dokumentech slovníku rovnal stejný počet zdrojových a cílových frází a vět a aby byly přesně zarovnané.
 
-## <a name="recommendations"></a>Doporučení
+## <a name="recommendations"></a>Doporučit
 
-- Slovníky nejsou náhradou za školený model se školicími daty.  Slovníky v podstatě hledají a nahrazují slova nebo věty.  Díky tomu, aby se systém seznámil z školicího materiálu v plných větách, je všeobecně lepší volbou než použití slovníku.
-- Slovník frází by měl být používán zřídka. Při nahrazení fráze ve větě je kontext v této větě ztracený nebo omezený pro překlad zbytku věty. Výsledkem je, že zatímco fráze nebo Word ve větě budou přeloženy podle slovníku frází, bude celková kvalita překladu ve větě často poškozena.
-- Slovník frází dobře funguje pro složená podstatná jména, jako jsou názvy produktů ("Microsoft SQL Server"), správné názvy ("město Hamburg") nebo funkce produktu ("kontingenční tabulka"). Nefunguje stejně dobře pro příkazy nebo přídavné jména, protože jsou obvykle vysoce inflected ve zdroji nebo v cílovém jazyce. Nepoužívejte položky slovníku frází pro cokoli, ale pro složená podstatná jména.
-- Při použití slovníku jsou velká a interpunkční znaménka v rámci vašich překladů odrážet velká a malá písmena, která jsou k dispozici v cílovém souboru. Při pokusu o identifikaci shody mezi vstupní větou a zdrojovými větami v souboru slovníku jsou malá a velká písmena a interpunkční znaménka ignorována. Řekněme například, že jsme provedli angličtinu k španělštině systému, který použil slovník, který ve zdrojovém souboru určil město Hamburg, a v cílovém souboru "Ciudad de Hamburg". Pokud jsem požadoval překlad věty, která obsahovala frázi "City of Hamburg", pak se "město Hamburg" shoduje se souborem slovníku pro položku "City of Hamburg" a má v konečném překladu mapovat na "Ciudad de Hamburg".
-- Pokud se slovo v souboru slovníku vyskytuje více než jednou, bude systém vždycky používat poslední poskytnutou položku. Slovník by neměl obsahovat více překladů stejného slova.
+- Slovníky nejsou náhradou za školení modelu pomocí školicích dat. Doporučuje se, abyste se vyhnuli a aby se systém dozvěděl od vašich školicích dat. Nicméně pokud je nutné vykreslit věty nebo složená podstatná jména, použijte slovník.
+- Slovník frází by měl být používán zřídka. Počítejte s tím, že při nahrazení fráze ve větě je kontext v této větě ztracený nebo omezený pro překlad zbytku věty. Výsledkem je, že zatímco fráze nebo slovo v rámci věty budou přeloženy podle poskytnutého slovníku, bude celková kvalita překladu věty často zadarmo.
+- Slovník frází dobře funguje pro složená podstatná jména, jako jsou názvy produktů ("Microsoft SQL Server"), správné názvy ("město Hamburg") nebo funkce produktu ("kontingenční tabulka"). Nefunguje stejně dobře pro příkazy nebo přídavné jména, protože jsou obvykle vysoce inflected ve zdroji nebo v cílovém jazyce. Osvědčenými postupy je vyhnout se záznamům slovníku frází pro cokoli, ale pro složená podstatná jména.
+- Při použití slovníku je důležité použít velká a interpunkční znaménka. Položky slovníku budou odpovídat pouze slovům a frázím, které mají stejné kapitalizace a interpunkční znaménka jako položka nalezená ve slovníku. Vaše překlady odrážejí velká a interpunkční znaménka, která jsou k dispozici na cílové straně souboru slovníku. Jako příklad jste proložili model z angličtiny do španělštiny pomocí slovníku, který ve zdrojovém souboru zadal text "Hello", který se má přeložit na "Buenos Dias" v cílovém souboru. Když vyžádáte překlad věty, která obsahuje text "Hello", systém nejprve vyhledá slovník a nalezne shodu ("Hello") a vrátí "Buenos Dias" v konečném překladu.
+- Pokud se slovo v souboru slovníku vyskytuje více než jednou, bude systém vždycky používat poslední poskytnutou položku. Proto by váš slovník neměl obsahovat více překladů stejného slova.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [pokynech pro formáty dokumentů](document-formats-naming-convention.md).
