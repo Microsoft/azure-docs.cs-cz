@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877462"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973771"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI
 
@@ -31,16 +31,23 @@ K vytvoření výkonného řídicího panelu Power BI pro monitorování výkonu
 
 Toto řešení nastaví kanál, který převezme data z účtu služby Azure Blob Storage ze [souvislého exportu dat](howto-export-data.md). Tato data se převedou do Azure Functions, Azure Data Factory a Azure SQL Database pro zpracování a transformaci dat. Výstup se dá vizuálně analyzovat a analyzovat v sestavě Power BI, kterou si můžete stáhnout jako soubor PBIX. Všechny tyto prostředky se vytvoří ve vašem předplatném Azure, takže můžete jednotlivé komponenty přizpůsobit tak, aby vyhovovaly vašim potřebám.
 
+> [!Note] 
+> Řešení Power BI pro Azure IoT Central funguje s IoT Central aplikacemi, které nepodporují IoT technologie Plug and Play (Preview apps dnes).
+
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Získejte [řešení Power BI pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Nastavení řešení vyžaduje následující:
 - Přístup k předplatnému Azure
-- Exportovaná data pomocí [průběžného exportu dat](howto-export-data.md) z aplikace IoT Central. Pro maximum na Power BI řídicím panelu doporučujeme zapnout měření, zařízení a datové proudy šablon zařízení.
+- IoT Central aplikace, které nepodporují IoT technologie Plug and Play (Preview aplikací dnes)
+- Nastavení průběžného exportu dat do Azure Blob Storage z aplikace IoT Central
+    - Ujistěte se, že je formát dat Avro
+    - Pro maximum na Power BI řídicím panelu doporučujeme zapnout měření, zařízení a datové proudy šablon zařízení.
+    - Přečtěte si [, jak nastavit průběžný export dat](howto-export-data-blob-storage.md)
 - Power BI Desktop (nejnovější verze)
 - Power BI Pro (Pokud chcete řídicí panel sdílet s ostatními)
 
-## <a name="reports"></a>Sestavy
+## <a name="reports"></a>Reports
 
 Dvě sestavy se generují automaticky. 
 
@@ -59,7 +66,7 @@ Všechny prostředky, které byly vytvořeny, mohou být k dispozici v Azure Por
 
 Konkrétní informace o jednotlivých prostředcích a způsobu jejich použití jsou popsány níže.
 
-### <a name="azure-functions"></a>Azure Functions
+### <a name="azure-functions"></a>Funkce Azure
 Aplikace Azure Functions se aktivuje při každém zápisu nového souboru do úložiště objektů BLOB. Funkce rozbalí pole v rámci jednotlivých měření, zařízení a souborů šablon zařízení a naplní několik mezilehlých tabulek SQL, které bude Azure Data Factory používat.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
@@ -74,28 +81,28 @@ Tyto tabulky jsou automaticky vytvořeny pro naplnění výchozích sestav. Proz
 |[analýza]. Zprávy|
 |[fáze]. Jednotek|
 |[analýza]. Vlastnosti|
-|[analytics].[PropertyDefinitions]|
+|[analýza]. [PropertyDefinitions]|
 |[analýza]. [MeasurementDefinitions]|
 |[analýza]. Signalizac|
 |[analýza]. [DeviceTemplates]|
-|[dbo].[date]|
-|[dbo].[ChangeTracking]|
+|[dbo]. Datum|
+|[dbo]. Sledování změn ve|
 
 ## <a name="estimated-costs"></a>Odhadované náklady
 
 Tady je odhad nákladů na Azure (Azure Functions, Data Factory, Azure SQL). Všechny ceny jsou v USD. Mějte na paměti, že ceny se liší podle oblastí, takže byste měli vždycky vyhledat nejnovější ceny jednotlivých služeb, abyste získali skutečné ceny.
 Následující výchozí hodnoty jsou nastaveny pro vás v šabloně (některé z těchto možností můžete po nastavení upravit):
 
-- Azure Functions: App Service plán S1, $74.40/měsíc
+- Azure Functions: App Service Plan S1, $74.40/month
 - Azure SQL S1, ~ $30/měsíc
 
 Doporučujeme, abyste se seznámili s různými cenovými možnostmi a vylepšit je podle vašich potřeb.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Materiály
 
 Navštivte AppSource a získejte [řešení Power BI pro Azure IoT Central](https://aka.ms/iotcentralpowerbisolutiontemplate).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak vizualizovat data v Power BI, je tady doporučený další krok:
 

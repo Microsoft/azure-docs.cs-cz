@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259441"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972769"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Protokolování diagnostiky pro skupinu zabezpečení sítě
 
 Skupina zabezpečení sítě (NSG) obsahuje pravidla, která povolují nebo zakazují provoz do podsítě virtuální sítě, síťového rozhraní nebo obojího. Když povolíte protokolování diagnostiky pro NSG, můžete protokolovat následující kategorie informací:
 
-* **Událostí** Zaznamenávají se záznamy, pro které se pravidla NSG aplikují na virtuální počítače na základě adresy MAC. Stav těchto pravidel se shromáždí každých 60 sekund.
-* **Čítač pravidla:** Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu.
+* **Událost:** Zaznamenávají se záznamy, pro které se pravidla NSG aplikují na virtuální počítače na základě adresy MAC.
+* **Čítač pravidla:** Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu. Stav těchto pravidel se shromáždí každých 60 sekund.
 
 Diagnostické protokoly jsou k dispozici pouze pro skupin zabezpečení sítě nasazené prostřednictvím modelu nasazení Azure Resource Manager. Nemůžete povolit diagnostické protokolování pro skupin zabezpečení sítě nasazené prostřednictvím modelu nasazení Classic. Lepší porozumění těmto dvěma modelům najdete v tématu [Principy modelů nasazení Azure](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -33,9 +33,9 @@ Protokolování diagnostiky je povoleno samostatně pro *každý* NSG, pro kter�
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
-Pomocí webu [Azure Portal](#azure-portal), PowerShellu [](#powershell)nebo rozhraní příkazového [řádku Azure](#azure-cli) můžete povolit protokolování diagnostiky.
+Pomocí webu [Azure Portal](#azure-portal), [PowerShellu](#powershell)nebo rozhraní příkazového [řádku Azure](#azure-cli) můžete povolit protokolování diagnostiky.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Web Azure Portal
 
 1. Přihlaste se k [portálu](https://portal.azure.com).
 2. Vyberte **všechny služby**a pak zadejte *skupiny zabezpečení sítě*. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
@@ -46,18 +46,18 @@ Pomocí webu [Azure Portal](#azure-portal), PowerShellu [](#powershell)nebo rozh
 
 5. V části **nastavení diagnostiky**zadejte nebo vyberte následující informace a pak vyberte **Uložit**:
 
-    | Nastavení                                                                                     | Value                                                          |
+    | Nastavení                                                                                     | Hodnota                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name                                                                                        | Název, který zvolíte.  Příklad: *myNsgDiagnostics*      |
+    | Name (Název)                                                                                        | Název, který zvolíte.  Příklad: *myNsgDiagnostics*      |
     | **Archivace do účtu úložiště**, **streamování do centra událostí**a **odeslání do Log Analytics** | Můžete vybrat tolik míst, kolik si zvolíte. Další informace o každé z nich najdete v tématu [cíle protokolu](#log-destinations).                                                                                                                                           |
-    | PROTOKOLU                                                                                         | Vyberte jednu nebo obě kategorie protokolu. Další informace o datech protokolovaných pro jednotlivé kategorie najdete v tématu [Kategorie protokolů](#log-categories).                                                                                                                                             |
+    | LOG                                                                                         | Vyberte jednu nebo obě kategorie protokolu. Další informace o datech protokolovaných pro jednotlivé kategorie najdete v tématu [Kategorie protokolů](#log-categories).                                                                                                                                             |
 6. Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení a analýza protokolů](#view-and-analyze-logs).
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, verze 1.0.0 nebo novější. Pokud `Get-Module -ListAvailable Az` chcete najít nainstalovanou verzi, spusťte v počítači. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte prostředí PowerShell místně, je také třeba spustit `Connect-AzAccount` pro přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/powershell), nebo spuštěním PowerShellu z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spustíte PowerShell z počítače, budete potřebovat modul Azure PowerShell, verze 1.0.0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte v počítači `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit `Connect-AzAccount` pro přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 
 Chcete-li povolit protokolování diagnostiky, potřebujete ID existující NSG. Pokud nemáte existující NSG, můžete ho vytvořit pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
@@ -88,13 +88,13 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, nikoli pro obě, přidejte `-Categories` možnost do předchozího příkazu následovaný *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, nikoli pro obě, přidejte do předchozího příkazu možnost `-Categories` následovaný *NetworkSecurityGroupEvent* nebo *NetworkSecurityGroupRuleCounter*. Pokud se chcete přihlásit do jiného [cílového umístění](#log-destinations) než do Log Analytics pracovního prostoru, použijte příslušné parametry pro účet služby Azure [Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [centrum událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení a analýza protokolů](#view-and-analyze-logs).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spustit Azure CLI z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spouštíte rozhraní příkazového řádku z počítače, budete potřebovat verzi 2.0.38 nebo novější. Pokud `az --version` chcete najít nainstalovanou verzi, spusťte v počítači. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud spouštíte rozhraní příkazového řádku místně, musíte také spustit `az login` pro přihlášení k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
+Můžete spustit příkazy, které následují v [Azure Cloud Shell](https://shell.azure.com/bash), nebo spustit Azure CLI z počítače. Azure Cloud Shell je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Pokud spouštíte rozhraní příkazového řádku z počítače, budete potřebovat verzi 2.0.38 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte v počítači `az --version`. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud spouštíte rozhraní příkazového řádku místně, musíte spustit `az login` a přihlásit se k Azure pomocí účtu, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 
 Chcete-li povolit protokolování diagnostiky, potřebujete ID existující NSG. Pokud nemáte existující NSG, můžete ho vytvořit pomocí [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create).
 
@@ -127,14 +127,14 @@ Pokud chcete pouze protokolovat data pro jednu kategorii nebo druhou, odeberte k
 
 Zobrazit a analyzovat protokoly. Další informace najdete v tématu [zobrazení a analýza protokolů](#view-and-analyze-logs).
 
-## <a name="log-destinations"></a>Log cílů
+## <a name="log-destinations"></a>Cíle protokolu
 
 Diagnostická data můžou být:
 - [Zápis na účet Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)pro auditování nebo ruční kontrolu. Dobu uchování (ve dnech) můžete určit pomocí nastavení diagnostiky prostředků.
 - [Streamování do centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro ingestování prostřednictvím služby třetí strany nebo řešení pro vlastní analýzu, jako je PowerBI.
 - [Zapsáno do protokolu Azure monitor](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="log-categories"></a>Kategorie protokolu
+## <a name="log-categories"></a>Kategorie protokolů
 
 Data ve formátu JSON se napíší pro následující kategorie protokolů:
 
@@ -199,17 +199,17 @@ Protokol čítače pravidla obsahuje informace o každém pravidle použitém u 
 ## <a name="view-and-analyze-logs"></a>Zobrazení a analýza protokolů
 
 Informace o tom, jak zobrazit data diagnostického protokolu, najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud odešlete diagnostická data do:
-- **Protokoly Azure monitor**: Pro rozšířené přehledy [můžete využít řešení Analytics](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
-) pro skupinu zabezpečení sítě. Řešení poskytuje vizualizace pro pravidla NSG, která povolují nebo zakazují provoz síťového rozhraní ve virtuálním počítači na adrese MAC.
-- **Účet Azure Storage**: Data jsou zapsána do souboru PT1H. JSON. Můžete najít:
-  - Protokol událostí v následující cestě:`insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Protokol čítače pravidla v následující cestě:`insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+- **Protokoly Azure monitor**: pro rozšířené přehledy můžete využít řešení pro [analýzu skupin zabezpečení sítě](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
+) . Řešení poskytuje vizualizace pro pravidla NSG, která povolují nebo zakazují provoz síťového rozhraní ve virtuálním počítači na adrese MAC.
+- **Azure Storage účet**: data jsou zapsána do souboru PT1H. JSON. Můžete najít:
+  - Protokol událostí v následující cestě: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Protokol čítače pravidla se přihlašuje k následující cestě: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [protokolování aktivit](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), dříve označovaném jako audit nebo provozní protokoly. Protokolování aktivit je ve výchozím nastavení povolené pro skupin zabezpečení sítě vytvořené prostřednictvím modelu nasazení Azure. Pokud chcete zjistit, které operace byly dokončeny v skupin zabezpečení sítě v protokolu aktivit, hledejte položky, které obsahují následující typy prostředků:
-  - Microsoft.ClassicNetwork/networkSecurityGroups
-  - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+  - Microsoft. ClassicNetwork/networkSecurityGroups
+  - Microsoft. ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
-  - Microsoft.Network/networkSecurityGroups/securityRules
+  - Microsoft. Network/networkSecurityGroups/securityRules
 - Informace o tom, jak protokolovat diagnostické informace, aby zahrnovaly zdrojovou IP adresu pro každý tok, najdete v tématu [protokolování toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

@@ -1,82 +1,81 @@
 ---
-title: Import a export dat s projekty s poznámkovými bloky Azure
-description: Jak přenést data do projektu aplikace poznámkových bloků Azure z externích zdrojů a jak exportovat data z projektu.
+title: Import a export dat s projekty pomocí Azure Notebooks
+description: Jak přenést data do Azure Notebooks projektu z externích zdrojů a jak exportovat data z projektu.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240440"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970201"
 ---
-# <a name="work-with-data-files-in-azure-notebook-projects"></a>Práce s datovými soubory v projektech poznámkového bloku v Azure
+# <a name="work-with-data-files-in-azure-notebook-projects"></a>Práce s datovými soubory v projektech Azure notebook
 
-Data jsou lifeblood mnoho poznámkové bloky Jupyter, zejména poznámkových bloků se používá pro datové vědy. Pomocí poznámkových bloků Azure můžete snadno importovat z mnoha zdrojů do projektu a pak použijte tato data z poznámkových bloků. Je také možné poznámkových bloků, které generují data, která je uložena v projektu, kterou si pak můžete stáhnout pro použití na jiném místě.
+Data jsou Lifeblood mnoha poznámkových bloků Jupyter, zejména poznámkových blocích používaných pro datové vědy. Pomocí Azure Notebooks můžete snadno importovat z různých zdrojů do projektu a pak tato data použít z poznámkových bloků. Poznámkové bloky můžete také vygenerovat data uložená v projektu, které pak můžete stáhnout pro použití jinde.
 
-**Data** nabídky v rámci poznámkového bloku spuštěné také poskytuje **nahrát** a **Stáhnout** příkazy, které pracují se soubory v projektu, jakož i dočasné soubory pro aktuální relace poznámkového bloku.
+Nabídka **data** v běžícím poznámkovém bloku taky nabízí příkazy pro **nahrávání** a **stahování** , které pracují se soubory v projektu, i dočasné soubory pro aktuální relaci poznámkového bloku.
 
-Kód v rámci poznámkového bloku můžete také použít pro přístup k řadě zdrojů dat. přímo, včetně souborů v rámci projektu. Můžete také přistupovat libovolná data pomocí příkazů do buňky kódu. Protože tato data jsou uložena v proměnné v rámci relace Poznámkový blok, nebude být uložena v projektu, pokud nechcete použít kód a konkrétně Vygenerujte soubory projektu.
+Můžete také použít kód v rámci poznámkového bloku pro přístup k nejrůznějším zdrojům dat přímo, včetně souborů v rámci projektu. K libovolným datům můžete také přistupovat pomocí příkazů v buňce kódu. Vzhledem k tomu, že tato data jsou uložena v proměnných v rámci relace poznámkového bloku, nebudou uložena do projektu, pokud nepoužijete kód pro specifickou generaci souborů projektu.
 
-Práce s kódem v datech je nejpohodlnější v rámci spuštěné Poznámkový blok, samotný: pro tento účel, najdete [získávání ke svým datům v poznámkovém bloku ukázkové poznámkové bloky Azure](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb).
+Práce s kódem v datech se nejlépe používá v samotném běžícím poznámkovém bloku: pro účely tohoto účelu si přečtěte [téma Jak získat data v Azure Notebooks ukázkovém poznámkovém bloku](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb).
 
-Zbývající část tohoto článku poskytuje podrobné informace o operací se soubory projektu.
+Zbývající část tohoto článku poskytuje podrobné informace o operacích se soubory na úrovni projektu.
 
 ## <a name="import-data"></a>Import dat
 
-Soubory můžete zahrnout do projektu z řídicího panelu Projekt, nebo v rámci spuštění poznámkového bloku pomocí **Data** nabídky nebo příkazy jako `curl`.
+Soubory můžete přenést do projektu z řídicího panelu projekt nebo do běžícího poznámkového bloku pomocí nabídky **data** nebo příkazu, jako je například `curl`.
 
-### <a name="import-files-from-the-project-dashboard"></a>Import souborů z řídicího panelu Projekt
+### <a name="import-files-from-the-project-dashboard"></a>Importovat soubory z řídicího panelu projekt
 
-1. V projektu přejděte do složky, ve které chcete importovat soubory.
+1. V projektu přejděte do složky, do které chcete soubory importovat.
 
-1. Vyberte **nahrát** příkaz a pak buď **z adresy URL** nebo **z počítače** a nezbytné podrobnosti o, pro kterou chcete importovat data projektu:
+1. Vyberte příkaz **Odeslat** a potom buď **z adresy URL** , nebo **z počítače** a projektu potřebné podrobnosti pro data, která chcete importovat:
 
-   - **Z adresy URL**: Zadejte adresu zdroje **adresa URL souboru** pole a název souboru přiřadit do poznámkového bloku v projektu v **název_souboru** pole. Potom vyberte **+ přidat soubor** přidejte adresu URL do seznamu nahrávání. Postup opakujte pro všechny další adresy URL a pak vyberte **provádí**.
+   - **Z adresy URL**: Zadejte zdrojovou adresu do pole **Adresa URL souboru** a název souboru, který chcete přiřadit k poznámkovému bloku v projektu v poli **název souboru** . Pak vyberte **+ Přidat soubor** a přidejte tak adresu URL do seznamu nahrávání. Opakujte tento postup pro všechny další adresy URL a potom vyberte **Hotovo**.
 
-     ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
+     ![Místní nabídka nahrát z adresy URL](media/quickstarts/upload-from-url-popup.png)
 
-   - **Z počítače**: Přetáhněte soubory do automaticky otevíraného okna nebo vyberte **vybrat soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, z libovolného typu a formátu, protože je na kódu v poznámkovém bloku otevřete soubor a analyzovat svá data.
+   - **Z počítače**: Přetáhněte soubory do místní nabídky nebo vyberte **zvolit soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, libovolný typ a formát, protože je až do kódu v poznámkovém bloku k otevření souboru a k analýze jeho dat.
 
-     ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
+     ![Místní nabídka nahrát z počítače](media/quickstarts/upload-from-computer-popup.png)
 
-1. Po importu, soubory se zobrazí na řídicím panelu Projekt a je přístupná v rámci poznámkového bloku kódu pomocí relativní cesty ke složce obsahující.
+1. Po importu se soubory zobrazí na řídicím panelu projekt a v rámci kódu poznámkového bloku jsou k dispozici pomocí relativních cest k obsaženým složkám.
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Import souborů z nabídky soubor v poznámkovém bloku
 
-1. V rámci spuštěné Poznámkový blok, vyberte **souboru** > **nahrát** příkaz:
+1. V běžícím poznámkovém bloku vyberte **soubor** > **odeslání** příkazu:
 
-    ![Soubor odeslání příkazu nabídky v rámci poznámkového bloku](media/file-menu-upload.png)
+    ![Příkaz nabídky pro nahrání souboru v rámci poznámkového bloku](media/file-menu-upload.png)
 
-1. V dialogovém okně, které se otevře přejděte a vyberte soubory, které chcete nahrát. Můžete vybrat libovolný počet souborů všech typů. Vyberte **otevřít** až budete hotovi.
+1. V dialogovém okně, které se otevře, přejděte na seznam a vyberte soubory, které chcete nahrát. Můžete vybrat libovolný počet souborů libovolného typu. Po dokončení vyberte **otevřít** .
 
-1. V **stav nahrávání** automaticky otevírané okno, které se zobrazí, vyberte **cílovou složku** z rozevíracího seznamu:
+1. V místní nabídce **stav nahrávání** , která se zobrazí, vyberte v rozevíracím seznamu **cílovou složku** :
 
-    - Relace složky ( *~/* ): Nahrání souborů do aktuální relace Poznámkový blok, ale nevytváří soubory v projektu. Složka relace je partnerské zařízení do složky projektu, ale nebude zachována po ukončení relace. Pro přístup k souborům relace v kódu, předpona názvy souborů s relativní cestou *... /* .
+    - Složka relace ( *~/* ): nahraje soubory do aktuální relace poznámkového bloku, ale v projektu nevytvoří soubory. Složka relace je rovnocenná složce projektu, ale po ukončení relace nebude zachována. Chcete-li získat přístup k souborům relace v kódu, použijte předponu názvů souborů s relativní cestou *.. /* .
 
-        Pomocí složky relace je užitečné pro experimentování ve službě a nebudou zbytečně zabírat projektu se soubory může nebo nemusí potřebovat dlouhodobě se vyhnete. Mohou také nahrávat soubory do složky relace, která mají stejné názvy souborů v projektu, aniž by vznikly konflikty a bez nutnosti přejmenujte soubory. Například Řekněme, že máme jednu verzi *data.csv* v projektu již, ale chcete experimentovat s jinou verzi *data.csv*. Tím, že nahrajete soubor do složky relace, můžete spustit Poznámkový blok, který používá data v nahraného souboru (na ni následně odkazuje v kódu pomocí *... /data.csv*) namísto data v souboru projektu.
+        Použití složky Session je užitečné pro experimentování a vyhnout se zbytečnému projektu se soubory, které mohou nebo nemusí být potřeba na dlouhodobé bázi. Soubory můžete také odeslat do složky relace, která má identické názvy souborů v projektu, aniž by docházelo ke konfliktům a bez nutnosti přejmenovat soubory. Řekněme například, že máte v projektu jednu verzi souboru *data. csv* , ale chcete experimentovat s jinou verzí souboru *data. csv*. Nahráním souboru do složky relace můžete spustit Poznámkový blok pomocí dat v nahraném souboru (odkazující na něj v kódu pomocí *.. /data.csv*) a ne data v souboru projektu.
 
-    - Složky projektu ( */project*): nahrání souborů do projektu, kde je lze přistupovat pomocí relativní cesty v kódu. Po nahrání souboru do této složky je stejný jako nahrání souboru na řídicí panel Projekt. Soubor je uložen s projektem a je k dispozici v novějším relace.
+    - Složka projektu ( */Project*): nahraje soubory do projektu, kde k nim lze přihlédnout pomocí relativních cest v kódu. Nahrání souboru do této složky je stejné jako nahrávání souboru na řídicím panelu projektu. Soubor se uloží spolu s projektem a je dostupný v pozdějších relacích.
 
-        Nahrávání se nezdaří při pokusu nahrát soubor se stejným názvem jako ten, který již v projektu existuje. K přepsání souboru, nahrajte nový soubor z řídicího panelu Projekt místo toho, která nabízí možnost přepsat.
+        Nahrávání se nepovede, pokud se pokusíte nahrát soubor se stejným názvem, který už v projektu existuje. Chcete-li přepsat soubor, nahrajte na řídicím panelu projektu nový soubor, který vám nabídne možnost přepsat.
 
-1. Vyberte **spustit nahrávání** proces dokončete.
+1. Chcete-li dokončit proces, vyberte možnost **Spustit nahrávání** .
 
 ### <a name="create-or-import-files-using-commands"></a>Vytvoření nebo import souborů pomocí příkazů
 
-Příkazy, v terminálu nebo v rámci buňky kódu Python slouží k vytvoření souborů v rámci složky projektu a relace. Například příkazy jako `curl` a `wget` přímo stahovat soubory z Internetu.
+Pomocí příkazů v terminálu nebo v rámci buňky kódu Pythonu můžete vytvářet soubory v rámci složky projektu i relace. Například příkazy jako `curl` a `wget` stahují soubory přímo z Internetu.
 
-Ke stažení souborů, v terminálu, vyberte **terminálu** příkazu na řídicím panelu Projekt, a pak zadejte vhodný příkazy:
+Chcete-li stáhnout soubory v terminálu, vyberte příkaz **terminálu** na řídicím panelu projektu a zadejte vhodné příkazy:
 
 ```bash
 curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
@@ -84,42 +83,42 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Při použití buňky v poznámkovém bloku kódu Python, předpona příkazy `!`.
+Při použití buňky kódu Pythonu v poznámkovém bloku použijte předponu příkazů `!`.
 
-Složka projektu je výchozí složce, takže zadáním názvu cílového souboru jako *oil_price.csv* vytvoří soubor v projektu. Chcete-li vytvořit soubor relace, zadejte před název *... /* stejně jako v *... /oil_price.csv*.
+Složka projektu je výchozí složka, takže zadáním názvu cílového souboru jako *oil_price. csv* se vytvoří soubor v projektu. Chcete-li vytvořit soubor relace, předponu názvu nahraďte *.. jako v* *.. /oil_price.csv*.
 
-### <a name="create-files-in-code"></a>Vytvoření souborů v kódu
+### <a name="create-files-in-code"></a>Vytváření souborů v kódu
 
-Při použití kódu, který vytvoří soubor, jako je například pandas `write_csv` funkce, cesty jsou vždy relativní ke složce projektu. Pomocí *... /* vytvoří relaci soubor, který při zastavení a zavření poznámkového bloku.
+Při použití kódu, který vytváří soubor, například funkce PANDAS `write_csv`, jsou cesty vždy relativní ke složce projektu. Pomocí *.. Vytvoří soubor* relace, který se zahodí při zastavení a zavření poznámkového bloku.
 
 ## <a name="export-files"></a>Exportovat soubory
 
-Data můžete exportovat z řídicího panelu Projekt nebo z poznámkového bloku.
+Data můžete exportovat z řídicího panelu projektu nebo v rámci poznámkového bloku.
 
-## <a name="export-files-from-the-project-dashboard"></a>Exportovat soubory z řídicího panelu Projekt
+## <a name="export-files-from-the-project-dashboard"></a>Exportovat soubory z řídicího panelu projekt
 
-Na řídicím panelu projektu klikněte pravým tlačítkem na soubor a vyberte **Stáhnout**:
+Na řídicím panelu Projekt klikněte pravým tlačítkem na soubor a vyberte **Stáhnout**:
 
-![Stáhněte si příkazu v kontextové nabídce položky projektu](media/download-command.png)
+![Příkaz ke stažení v kontextové nabídce položky projektu](media/download-command.png)
 
-Můžete také vybrat soubor a použít **Stáhnout** příkazu (Klávesová zkratka: d) na řídicím panelu:
+Můžete také vybrat soubor a použít příkaz **ke stažení** (Klávesová zkratka: d) na řídicím panelu:
 
-![Stáhněte si příkazu panelu nástrojů na řídicím panelu Projekt](media/download-command-toolbar.png)
+![Stáhnout příkaz panelu nástrojů na řídicím panelu projekt](media/download-command-toolbar.png)
 
-## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Exportovat soubory v nabídce Data v poznámkovém bloku
+## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Export souborů z nabídky data v poznámkovém bloku
 
-1. Vyberte **souboru** > **Stáhnout** příkazu nabídky:
+1. Vyberte **soubor** >  příkaz nabídky**ke stažení** :
 
-    ![Příkaz nabídky stahování dat v rámci poznámkového bloku](media/file-menu-download.png)
+    ![Příkaz nabídky pro stažení dat v rámci poznámkového bloku](media/file-menu-download.png)
 
-1. Automaticky otevíraného okna se zobrazí, který zobrazuje složky v relaci. *projektu* složka obsahuje soubory projektu:
+1. Zobrazí se automaticky otevírané okno, které zobrazuje složky v relaci. Složka *projektu* obsahuje soubory projektu:
 
-    ![Data ke stažení příkaz místní nabídky ve kterém můžete vybrat soubory a složky](media/file-menu-download-popup.png)
+    ![Místní nabídka příkazu ke stažení dat, ve kterém vyberete soubory a složky](media/file-menu-download-popup.png)
 
-1. Zaškrtněte políčka nalevo souborů a složek, kterou chcete stáhnout, potom vyberte **stáhnout vybrané**.
+1. Zaškrtněte políčka nalevo od souborů a složek, které chcete stáhnout, a pak vyberte **Stáhnout vybrané**.
 
-1. Poznámkový blok připraví jeden *ZIP* soubor, který obsahuje vybrané soubory, které pak uložíte jako budete obvykle provádět z prohlížeče. Vytvoří poznámkový blok *ZIP* soubor i v případě, že stahujete jediný soubor.
+1. Poznámkový blok připraví jeden soubor *. zip* obsahující vybrané soubory, které pak uložíte jako normálně z prohlížeče. Poznámkový blok vytvoří soubor *. zip* i v případě, že stahujete jeden soubor.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Přístup k datům cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)
+- [Přístup k datům v cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)

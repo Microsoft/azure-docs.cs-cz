@@ -1,18 +1,18 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-site: Portál | Microsoft Docs'
+title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site: Portál | Dokumentace Microsoftu'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí portálu.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266559"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970793"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 
@@ -30,7 +30,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -44,22 +44,21 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 
 * **Název virtuální sítě:** VNet1
 * **Adresní prostor:** 10.1.0.0/16
-* **Formě** Předplatné, které chcete použít
+* **Předplatné:** Vyberte předplatné, které chcete použít.
 * **Skupina prostředků:** TestRG1
-* **Location:** East US
-* **Podsíť** Endy 10.1.0.0/24, back-end: 10.1.1.0/24 (volitelné pro toto cvičení)
-* **Název podsítě brány:** GatewaySubnet (automaticky se vyplní portál)
+* **Oblast:** Východní USA
+* **Podsíť:** Front-end: 10.1.0.0/24, Back-end: 10.1.1.0/24 (volitelné pro toto cvičení)
 * **Rozsah adres podsítě brány:** 10.1.255.0/27
-* **Název Virtual Network brány:** VNet1GW
-* **Veřejná IP adresa:** VNet1GWIP
-* **Typ sítě VPN:** Trasové
+* **Název brány virtuální sítě:** VNet1GW
+* **Název veřejné IP adresy:** VNet1GWIP
+* **Typ sítě VPN:** Založená na trasách
 * **Typ připojení:** Síť Site-to-Site (IPsec)
 * **Typ brány:** Síť VPN
 * **Název brány místní sítě:** Site1
 * **Název připojení:** VNet1toSite1
-* **Sdílený klíč:** V tomto příkladu používáme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
+* **Sdílený klíč:** V tomto příkladu použijeme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
 
-## <a name="CreatVNet"></a>1. Vytvoření virtuální sítě
+## <a name="CreatVNet"></a>1. vytvoření virtuální sítě
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
@@ -68,6 +67,16 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
+
+### <a name="example-settings"></a>Příklad nastavení
+
+* **Podrobnosti Instance > oblasti:** Východní USA
+* **Virtuální síť Virtual Network >:** VNet1
+* **Podrobnosti Instance > název:** VNet1GW
+* **Podrobnosti Instance > typ brány:** S2S
+* **Podrobnosti Instance > typ sítě VPN:** Založené na trasách
+* **Rozsah adres podsítě Virtual Network > brány:** 10.1.255.0/27
+* **Veřejná IP adresa > název veřejné IP adresy:** VNet1GWIP
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -78,9 +87,16 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 
 Brána místní sítě obvykle odkazuje na vaše místní umístění. Pro toto umístění určíte název, podle kterého na něj bude Azure odkazovat, a pak zadáte IP adresu místního zařízení VPN, ke kterému vytvoříte připojení. Zadáte také předpony IP adres, které se budou přes bránu VPN směrovat do zařízení VPN. Předpony adres, které zadáte, jsou předpony ve vaší místní síti. Pokud se změní vaše místní síť nebo potřebujete změnit veřejnou IP adresu pro zařízení VPN, můžete hodnoty snadno aktualizovat později.
 
+**Příklady hodnot**
+
+* **Název:** Site1
+* **Skupina prostředků:** TestRG1
+* **Umístění:** Východní USA
+
+
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>4. Konfigurace zařízení VPN
+## <a name="VPNDevice"></a>4. konfigurace zařízení VPN
 
 Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kroku nakonfigurujete zařízení VPN. Při konfiguraci zařízení VPN potřebujete následující:
 
@@ -89,13 +105,13 @@ Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kr
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>5. Vytvoření připojení VPN
+## <a name="CreateConnection"></a>5. vytvoření připojení k síti VPN
 
 Vytvořte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a místním zařízením VPN.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>6. Ověření připojení VPN
+## <a name="VerifyConnection"></a>6. Ověřte připojení VPN.
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 

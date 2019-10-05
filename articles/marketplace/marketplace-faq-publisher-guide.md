@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827993"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969582"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy týkající se komerčního tržiště Microsoftu
 
@@ -171,7 +171,7 @@ Ano, pro zákazníky smlouva Enterprise (EA) může správce registrace vypnout 
 
 **Jaké způsoby platby se podporují pro nákupy na komerčním webu Marketplace?**
 
-Zákazníci si můžou koupit nabídky z Azure Marketplace a Microsoft AppSource pomocí kreditních karet. Pokud máte existující předplatné Azure, nákupy z Azure Marketplace použijí metodu platby nakonfigurovanou v účtu a budou se zobrazovat na stejné faktuře jako položka samostatného řádku. Některé nabídky využívají peněžní závazek Azure, ale většina nákupů na webu Marketplace ommercial nevykreslí smlouva Enterprise závazky, i když se spotřeba infrastruktury Azure.
+Zákazníci si můžou koupit nabídky z Azure Marketplace a Microsoft AppSource pomocí kreditních karet. Pokud máte existující předplatné Azure, nákupy z Azure Marketplace použijí metodu platby nakonfigurovanou v účtu a budou se zobrazovat na stejné faktuře jako položka samostatného řádku. Některé nabídky využívají peněžní závazek Azure, ale většina nákupů z komerčního obchodu na webu Marketplace nevykreslí smlouva Enterprise závazky, i když se spotřeba infrastruktury Azure.
 
 **Můžu ve svém účtu použít prostředky peněžních závazků nebo kredity předplatného Azure k dispozici pro Azure Marketplace nabídky?**
 
@@ -381,9 +381,9 @@ Další informace najdete v tématu [odstranění nabídky](./cloud-partner-port
     > [!NOTE]
     > Aplikace zmizí ze stávajícího výpisu po 90 dnech.
 
-*Power BI aplikace:*
+**Proč se moje změny neprojevily v nabídce?**
 
-Kontakt: [Anjana Sompur (slalom konzultační LLC)](mailto:v-ansomp@microsoft.com).
+Změny provedené v partnerském centru se v systému aktualizují až po opětovném publikování této nabídky. Ujistěte se prosím, že jste po změnách odeslali nabídku k publikování.
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>Výhody a prostředky pro uvedení na trh (GTM)
 
@@ -463,6 +463,16 @@ Transakce se dají provádět v následujících 17 měnách: AUD, BRL, CAD, CHF
 **Jaký je rozdíl mezi úrovní Free a bezplatnou zkušební verzí softwaru?**
 
 Nabídka předplatného úrovně Free je trvale zadarmo.  Bezplatná zkušební verze softwaru (vyzkoušejte si ji teď) je placené předplatné, zdarma jenom po omezené časové období.
+
+**Jaký je proces ověření koncového nákupu a toku zřizování?**
+
+Během procesu publikování budete mít k dispozici přístup k verzi Preview vaší nabídky. Přístup je omezen na uživatele, které jste zadali na kartě Preview, a jedná se o živou nabídku, která není viditelná pro někoho jiného. Můžete si tento proces koupit a otestovat. bude se vám ale účtovat celá částka podle konfigurace vaší nabídky.
+
+Aby bylo možné dokončit nákup za velmi nízkou cenu, Microsoft navrhne publikování privátního plánu, který nastaví za cenu, kterou můžete přijmout jako náklady na testování. Je podporována nula, ale neodráží celé prostředí, jako je placené předplatné.
+
+**Bude společnost Microsoft poskytovat refundaci mimo standardní zásady?**
+
+Ano, na základě žádosti prostřednictvím lístku podpory Microsoft zpracuje kredity pro zákazníka, pokud to považujete za vhodné.
 
 ## <a name="next-steps"></a>Další kroky
 

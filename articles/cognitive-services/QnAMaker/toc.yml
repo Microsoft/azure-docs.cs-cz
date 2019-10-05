@@ -4,10 +4,12 @@
   items:
     - name: Co je QnA Maker?
       href: Overview/overview.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření nové znalostní báze
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: Přidání otázek s metadaty
       href: quickstarts/add-question-metadata-portal.md
     - name: Získání odpovědi

@@ -1,28 +1,28 @@
 ---
-title: Řešení potíží s navrácení služeb po obnovení do místní během zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje způsoby řešení potíží navrácení služeb po obnovení a opětovného nastavování ochrany při zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
-author: vDonGlover
-manager: JarrettRenshaw
+title: Řešení potíží s navrácením služeb po havárii v místním prostředí během zotavení virtuálního počítače VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: V tomto článku se dozvíte, jak řešit problémy navrácení služeb po obnovení a zotavení po havárii virtuálního počítače VMware do Azure pomocí Azure Site Recovery.
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: raynew
+ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565187"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970857"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter
 
-Tento článek pomůže při řešení problémů, ke kterým dochází z důvodu selhání rozpoznávání VMware vCenter.
+Tento článek vám pomůže při řešení problémů, ke kterým dochází kvůli selháním zjišťování VMware vCenter.
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Jiné než číselné hodnoty ve vlastnosti maxSnapShots
 
-Ve verzích před 9,20 vCenter odpojí při načtení jiné než číselné hodnoty pro vlastnost `snapshot.maxSnapShots` vlastnost na virtuálním počítači.
+Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu vlastnosti @no__t vlastnost-0 na virtuálním počítači.
 
-ID chyby 95126 je identifikován tento problém.
+Tento problém je identifikovaný ID chyby 95126.
 
     ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
     System.FormatException: Input string was not in a correct format.
@@ -30,53 +30,53 @@ ID chyby 95126 je identifikován tento problém.
        at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
        at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
     
-Řešení tohoto problému:
+Problém vyřešíte takto:
 
-- Identifikujte virtuální počítač a nastavte hodnotu na číselnou hodnotu (virtuálního počítače upravit nastavení v systému vCenter).
+- Identifikujte virtuální počítač a nastavte hodnotu na číselnou hodnotu (upravit nastavení virtuálního počítače v vCenter).
 
-Nebo
+nebo
 
-- Upgradujte konfigurační server na verzi 9.20 nebo novější.
+- Upgradujte konfigurační server na verzi 9,20 nebo novější.
 
-## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problémy s konfigurací serveru proxy pro připojení k serveru vCenter
+## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>Problémy s konfigurací proxy serveru pro připojení vCenter
 
-vCenter zjišťování respektuje systému výchozí nastavení proxy serveru nakonfigurovaná uživatelem systému. Služba DRA respektuje uživatelem zadané během instalace konfiguračního serveru pomocí sjednocené instalace Instalační služby systému nebo šablona OVA nastavení proxy serveru. 
+Zjišťování vCenter dodržuje výchozí nastavení proxy serveru, které nakonfiguroval uživatel systému. Služba DRA během instalace konfiguračního serveru respektuje nastavení proxy poskytnuté uživatelem při instalaci konfiguračního serveru pomocí instalačního programu sjednocené instalace nebo šablony pro VAJÍČKy. 
 
-Obecně platí proxy server slouží ke komunikaci k veřejným sítím; jako je například komunikace s Azure. Pokud je nakonfigurován server proxy a vCenter je v místním prostředí, nebude moci komunikovat s DRA.
+Obecně platí, že se proxy server používá ke komunikaci s veřejnými sítěmi; například komunikace s Azure. Pokud je proxy server nakonfigurovaný a vCenter je v místním prostředí, nebude moct komunikovat s agentem DRA.
 
-Při výskytu tohoto problému se dojít k následující situace:
+Při výskytu tohoto problému dojde k následujícím situacím:
 
-- VCenter server \<vCenter > není dosažitelný kvůli chybě: Vzdálený server vrátil chybu: (503) server není k dispozici
-- VCenter server \<vCenter > není dosažitelný kvůli chybě: Vzdálený server vrátil chybu: Nelze se připojit ke vzdálenému serveru.
-- Nelze se připojit k serveru vCenter/ESXi.
+- > VCenter serveru \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: (503) Server není k dispozici.
+- > VCenter serveru \<vCenter není dosažitelný kvůli chybě: vzdálený server vrátil chybu: Nepodařilo se připojit ke vzdálenému serveru.
+- Nepovedlo se připojit k serveru vCenter/ESXi.
 
-Řešení tohoto problému:
+Problém vyřešíte takto:
 
-Stáhněte si [nástroj PsExec](https://aka.ms/PsExec). 
+Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec). 
 
-Pomocí nástroje PsExec pro přístup k systému uživatelský kontext a určit, jestli je nakonfigurovaná adresa proxy serveru. Pak může přidání vCenter do seznamu obcházení pomocí následujících postupů.
+Použijte nástroj PsExec pro přístup k systémovému kontextu uživatele a určete, jestli je adresa proxy serveru nakonfigurovaná. Pak můžete přidat vCenter do seznamu pro obejití pomocí následujících postupů.
 
 Pro konfiguraci zjišťování proxy serveru:
 
-1. Otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
+1. Pomocí nástroje PsExec otevřete IE v uživatelském kontextu systému.
     
-    psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+    PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 
-2. Upravte nastavení proxy serveru v aplikaci Internet Explorer obejít IP adresa serveru vCenter.
+2. Upravte nastavení proxy serveru v Internet Exploreru, aby se nepoužívala IP adresa vCenter.
 3. Restartujte službu tmanssvc.
 
-DRA konfiguraci proxy serveru:
+Pro konfiguraci proxy serveru DRA:
 
-1. Otevřete příkazový řádek a otevřete složku Microsoft Azure Site Recovery Provider.
+1. Otevřete příkazový řádek a otevřete složku Microsoft Azure Site Recovery poskytovatele.
  
-    **CD C:\Program Files\Microsoft Azure Site Recovery Provider**
+    **CD C:\Program Files\Microsoft Azure Site Recovery poskytovatel**
 
 3. Z příkazového řádku spusťte následující příkaz.
    
-   **DRCONFIGURATOR. Soubor EXE / configure /AddBypassUrls [IP adresa nebo plně kvalifikovaný název domény systému vCenter Server k dispozici v době přidání vCenter]**
+   **DRCONFIGURATOR. EXE/Configure/AddBypassUrls [IP adresa/plně kvalifikovaný název domény vCenter Server poskytované v době přidání vCenter]**
 
-4. Restartujte službu Zprostředkovatel DRA.
+4. Restartujte službu zprostředkovatele DRA.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 

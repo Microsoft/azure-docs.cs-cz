@@ -1,77 +1,76 @@
 ---
-title: Přihlaste se k Azure poznámkové bloky
-description: Konfigurace uživatelského účtu pro poznámkových bloků Azure pomocí účtu Microsoft nebo pracovní nebo školní účet.
+title: Přihlaste se Azure Notebooks
+description: Nakonfigurujte svůj uživatelský účet pro Azure Notebooks pomocí účet Microsoft nebo pracovního/školního účtu.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc93f55a3349498fa82095c2bc2b3178e234c107
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632050"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973139"
 ---
-# <a name="your-user-account-for-azure-notebooks"></a>Váš uživatelský účet pro poznámkové bloky Azure
+# <a name="your-user-account-for-azure-notebooks"></a>Váš uživatelský účet pro Azure Notebooks
 
-Poznámkových bloků Azure můžete použít i bez přihlášení pomocí uživatelského účtu:
+Můžete použít Azure Notebooks s přihlášením pomocí uživatelského účtu nebo bez něj:
 
-- Bez přihlášení, můžete vytvořit a možnost spouštět poznámkové bloky, ale nemůžete ukládat poznámkových bloků nebo datové soubory projektů v rámci. Uživatelé, kteří přijímají odkaz poznámkovému bloku Azure, například televizního Poznámkový blok bez nutnosti přihlášení.
-- Po přihlášení si poznámkových bloků Azure uchovává všechny projekty s vaším účtem. Přihlášených uživatelů také mít uživatelské ID, která umožňuje sdílet svoje projekty a poznámkové bloky s ostatními.
-  - Když má účet používaný pro poznámkových bloků Azure je také spojen s s předplatným Azure, získáte další výhody, jako je například spouštění poznámkových bloků na výkonnější serverech vytváří privátní poznámkových bloků a udělení oprávnění pro poznámkové bloky pro jednotlivé uživatele.
+- Bez přihlášení můžete vytvářet a spouštět poznámkové bloky, ale nemůžou uchovávat poznámkové bloky nebo datové soubory jako součást projektů. Uživatel, který obdrží odkaz na notebook Azure, může Poznámkový blok využít, aniž by se musel přihlašovat.
+- Když se přihlásíte, Azure Notebooks uchová všechny vaše projekty s vaším účtem. Přihlášení uživatelé mají také ID uživatele, které jim umožní sdílet své projekty a poznámkové bloky s ostatními.
+  - Když se účet používaný pro Azure Notebooks taky přidruží k předplatnému Azure, získáte další výhody, jako je spuštění poznámkových bloků na výkonnějších serverech, vytváření privátních poznámkových bloků a udělení oprávnění pro poznámkové bloky jednotlivým uživatelům.
 
-Přihlašování do poznámkových bloků Azure vyžaduje Account Microsoft nebo účet "Pracovní nebo školní". Zobrazí se výzva k účtu při výběru **Sign In** příkazů v horní pravé části stránky poznámkových bloků:
+Přihlášení do Azure Notebooks vyžaduje buď účet Microsoft, nebo pracovní nebo školní účet. Při výběru příkazu pro **přihlášení** v pravé horní části stránky s poznámkovými bloky se zobrazí výzva k zadání účtu:
 
-![V příkazu zaregistrujte poznámkových bloků Azure](media/accounts/sign-in-command.png)
+![Příkaz pro přihlášení pro Azure Notebooks](media/accounts/sign-in-command.png)
 
-Veškerou práci, kterou provedete v poznámkových bloků Azure je přidružená k účtu, který používáte k přihlášení. Každý účet musí mít rovněž jedinečné ID uživatele ve vaší [profilu uživatele](azure-notebooks-user-profile.md). V důsledku toho se můžete přihlásit do poznámkových bloků Azure s různými účty Pokud je potřeba udržovat samostatnou sadu projektů a samostatné identity. Pro každý člen týmu data science může mít například oba jednotlivé účty spolu s jako sdílené skupinového účtu, které používají, zobrazíte jejich práce lidem mimo jejich společnost. Podobně, školitelů, může udržovat pro jejich roli výuky, která se liší od účtu používanému v externí konzultační nebo open source pracovní účet.
+Veškerá práce, kterou provedete v Azure Notebooks, je přidružená k účtu, který používáte k přihlášení. Každý účet musí mít také jedinečné ID uživatele v [profilu uživatele](azure-notebooks-user-profile.md). V důsledku toho se můžete přihlásit k Azure Notebooks s různými účty, pokud potřebujete zachovat samostatné sady projektů a samostatné identity. Každý člen týmu pro datové vědy může například mít jednotlivé účty společně jako účet sdílené skupiny, který používají k tomu, aby svou práci mohli prezentovat lidem mimo jejich společnost. Instruktoři, podobně, můžou udržovat účet pro svou vzdělávací roli, který se liší od účtu používaného v externí poradenské nebo open source práci.
 
 ## <a name="microsoft-accounts"></a>Účty Microsoft
 
-Účty Microsoft se používají k přihlašování do libovolného počtu svých produktů a služeb, jako je Windows, Azure, outlook.com, OneDrive, XBox Live. Pokud použijete některou z těchto služeb, je pravděpodobné, že už máte Account Microsoft, který vám pomůže s poznámkovými bloky Azure.
+Účty Microsoft se používají k přihlášení k libovolnému počtu produktů a služeb od Microsoftu, jako jsou Windows, Azure, outlook.com, OneDrive a XBox Live. Pokud používáte některou z těchto služeb, je možné, že už máte účet Microsoft, který můžete používat s Azure Notebooks.
 
-Pokud si nejste jistí, vyberte **vytvořit jeden** příkazu v příkazovém řádku účtu. Můžete vytvořit nový účet Microsoft pomocí libovolné e-mailovou adresu z libovolného poskytovatele.
+Pokud si nejste jistí, na příkazovém řádku účtu vyberte příkaz **vytvořit jeden** . Novou účet Microsoft můžete vytvořit pomocí libovolné e-mailové adresy libovolného poskytovatele.
 
-![Příkaz pro vytvoření nového účtu Microsoft](media/accounts/create-new-microsoft-account.png)
+![Příkaz pro vytvoření nového účet Microsoft](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
-> Pokud se pokusíte vytvořit nový účet s e-mailovou adresu, která už má účet s ním spojená, může se zobrazit zpráva "nelze zde zaregistrovat pomocí pracovního nebo školního e-mailovou adresu. Použijte osobní e-mail, třeba z Gmailu nebo Yahoo!, nebo zřiďte nový Outlookový e-mail." V takovém případě zkuste se přihlásit pracovní e-mailovou adresu bez vytvoření nového účtu.
+> Pokud se pokusíte vytvořit nový účet s e-mailovou adresou, na které už je přidružený účet, může se vám zobrazit zpráva "nemůžete se zaregistrovat tady pomocí pracovní nebo školní e-mailové adresy. Použijte osobní e-mail, jako je například Gmail nebo Yahoo!, nebo Získejte nový Outlookový e-mail. V takovém případě se zkuste přihlásit pomocí pracovní e-mailové adresy, aniž byste museli vytvořit nový účet.
 
-Pro dětské účty blokovaný přístup k poznámkových bloků Azure ve výchozím nastavení. Přihlašování pomocí účtu podřízený se zobrazí chyba je uvedeno níže:
+V případě podřízených účtů je přístup k Azure Notebooks ve výchozím nastavení blokován. Přihlášení pomocí podřízeného účtu zobrazuje níže uvedenou chybu:
 
-![Chyba při pokusu přihlásit pomocí účtu podřízených: došlo k nějaké chybě, zablokoval přístup](media/accounts/child-account-error.png)
+![Při pokusu o přihlášení pomocí podřízeného účtu došlo k chybě: něco se nepovedlo, váš nadřazený přístup zablokoval.](media/accounts/child-account-error.png)
 
-Pokud chcete povolit přístup, musí nadřazený proveďte následující kroky:
+Aby bylo možné povolit přístup, musí nadřazený prvek provést následující kroky:
 
-1. Navštivte `https://account.live.com/mk` a přihlaste se pomocí účtu nadřazené.
-1. V části pro dítě dotyčný vybrat **spravovat přístup tohoto dítěte k aplikacím třetích stran**.
-1. Na další stránce vyberte **povolení přístupu**.
-1. Když se účet dítěte dále používá k přihlášení do poznámkových bloků Azure, vyberte **Ano** v příkazovém řádku oprávnění, která se zobrazí.
+1. Navštivte @no__t – 0 a přihlaste se pomocí nadřazeného účtu.
+1. V části pro příslušnou podřízenou položku vyberte **spravovat přístup tohoto dítěte k aplikacím třetích stran**.
+1. Na další stránce vyberte **Povolit přístup**.
+1. Když se k přihlášení k Azure Notebooks použije podřízený účet, vyberte v zobrazeném okně oprávnění **Ano** .
 
 > [!Warning]
-> Povolení přístupu k aplikacím třetích stran pro Azure poznámkových bloků také umožňuje přístup pro všechny ostatní aplikace třetích stran. Doporučujeme použít podle vlastního uvážení při povolování rodiče přístup a může být vhodné lépe sledovat jejich podřízené aktivity.
+> Povolení přístupu k aplikacím třetích stran pro Azure Notebooks taky umožňuje přístup ke všem ostatním aplikacím třetích stran. U rodičů doporučujeme při povolování přístupu použít volitelné a může chtít monitorovat aktivitu dítěte podrobněji.
 
 ## <a name="work-or-school-accounts"></a>Pracovní nebo školní účty
 
-Pracovní nebo školní účet je vytvořen správcem v organizaci, který členovi organizace na přístup ke cloudovým službám Microsoftu, jako je Office 365 a také jako účet pro přihlášení do Windows na počítači připojeném k doméně. Pracovní nebo školní účet, jako obvykle používá organizace e-mailovou adresu, any-user@contoso.com.
+Správce organizace vytvoří pracovní nebo školní účet, který členům organizace umožní přístup ke cloudovým službám Microsoftu, jako je například Office 365, a také jako účet pro přihlášení do systému Windows na počítači připojeném k doméně. Pracovní nebo školní účet obvykle používá e-mailovou adresu organizace, například any-user@contoso.com.
 
-Přihlášení do poznámkových bloků Azure pomocí pracovního nebo školního účtu může vyžadovat souhlas správce, protože poznámkových bloků Azure shromažďuje a používá (ale nesmí vyzradit) informace, jako jsou e-mailovou adresu účtu a informace o prohlížeči uživatele. (Data prohlížeče se používá pro optimalizaci funkcí z podle oblíbených využití.)
+Přihlášení k Azure Notebooks pomocí pracovního nebo školního účtu může vyžadovat souhlas správce, protože Azure Notebooks shromažďuje nebo používá (ale nezveřejňuje) informace, jako je e-mailová adresa účtu a informace o prohlížeči uživatele. (Data prohlížeče se používají k optimalizaci funkcí v souladu s oblíbeným využitím.)
 
-Správce účtu organizace musíte zadat souhlas jménem uživatelů, pokud uživatelé omezuje od vyjádření souhlasu jednotlivě. V takovém případě uživatelům zobrazí zpráva "Nelze přístup této aplikaci":
+Správce účtu organizace musí poskytnout souhlas jménem uživatele, pokud jsou uživatelé omezeni individuálně. V takovém případě se uživatelům zobrazí zpráva "nemůžete získat přístup k této aplikaci":
 
-![Zpráva "Nelze přístup této aplikaci" při použití pracovního nebo školního účtu](media/accounts/consent-permissions-denied.png)
+![Při použití pracovního nebo školního účtu nejde získat přístup k této aplikaci.](media/accounts/consent-permissions-denied.png)
 
-Chcete-li poskytnout souhlas správce, použijte [stránka pro odsouhlasení podmínek správce](https://notebooks.azure.com/account/adminConsent), které vás provede procesem.
+K poskytnutí souhlasu s oprávněními správce použijte [stránku souhlasu správce](https://notebooks.azure.com/account/adminConsent), která vás provede procesem.
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 > [!div class="nextstepaction"]
-> [Upravit profil a uživatelské ID](azure-notebooks-user-profile.md)
+> [Upravit svůj profil a ID uživatele](azure-notebooks-user-profile.md)

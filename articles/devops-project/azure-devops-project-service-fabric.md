@@ -1,177 +1,177 @@
 ---
-title: 'Kurz: Nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí projektů Azure DevOps'
-description: Azure DevOps Projects umožňuje snadno začít používat Azure. S projekty DevOps můžete nasadit aplikaci ASP.NET Core do Azure Service Fabric v několika rychlých krocích.
+title: 'Kurz: nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí Azure DevOps Projects'
+description: Azure DevOps Projects usnadňuje začátek práce s Azure. Pomocí DevOps Projects můžete v několika rychlých krocích nasadit ASP.NET Core aplikaci do Azure Service Fabric.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554896"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969476"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Kurz: Nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí projektů Azure DevOps
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Kurz: nasazení aplikace ASP.NET Core do Azure Service Fabric pomocí Azure DevOps Projects
 
-Projekty Azure DevOps představuje zjednodušené prostředí, ve kterém můžete přenést váš stávající kód a úložiště Git nebo jej vybrat ukázkovou aplikaci k vytvoření kanálu průběžného doručování (CD) do Azure a kontinuální integrace (CI). 
+Azure DevOps Projects představuje zjednodušené prostředí, ve kterém můžete přenášet existující kód a úložiště Git nebo zvolit ukázkovou aplikaci pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure. 
 
-Projekty DevOps také:
-* Automaticky vytváří prostředky Azure, jako je Azure Service Fabric.
-* Vytvoří a nakonfiguruje kanál pro vydávání verzí v Azure DevOps, který nastaví kolekci kanálu CI/CD.
-* Vytvoří prostředek služby Azure Application Insights pro monitorování.
+DevOps Projects také:
+* Automaticky vytvoří prostředky Azure, jako je například Azure Service Fabric.
+* Vytvoří a nakonfiguruje kanál verze ve službě Azure DevOps, který nastaví kanál CI/CD.
+* Vytvoří prostředek Azure Application Insights pro monitorování.
 
 V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvoření aplikace ASP.NET Core a nasaďte ji do Service Fabric pomocí projekty DevOps
-> * Konfigurace Azure DevOps a předplatné Azure 
+> * Pomocí DevOps Projects vytvořit aplikaci ASP.NET Core a nasadit ji do Service Fabric
+> * Konfigurace Azure DevOps a předplatného Azure 
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD
 > * Potvrzení změn do Gitu a automatické nasazení do Azure
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Vytvoření aplikace ASP.NET Core a nasaďte ji do Service Fabric pomocí projekty DevOps
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Pomocí DevOps Projects vytvořit aplikaci ASP.NET Core a nasadit ji do Service Fabric
 
-Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit novou organizaci Azure DevOps nebo použít existující organizace. Projekty DevOps prostředků Azure, jako je cluster Service Fabric také vytvoří v rámci předplatného Azure podle vašeho výběru.
+DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects také vytvoří prostředky Azure, jako je Cluster Service Fabric, v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **vytvořit prostředek**.
 
 1. Do vyhledávacího pole zadejte **DevOps Projects**a pak vyberte **vytvořit**.
 
-    ![Řídicí panel projekty DevOps](_img/azure-devops-project-github/fullbrowser.png)
+    ![Řídicí panel DevOps Projects](_img/azure-devops-project-github/fullbrowser.png)
 
 1. Vyberte **.NET**a pak vyberte **Další**.
 
-1. V části **zvolte aplikační architekturu**vyberte **ASP.NET Core**a pak vyberte **Další**.
+1. V části **zvolte Aplikační architekturu**vyberte **ASP.NET Core**a pak vyberte **Další**.
 
-1. Vyberte **Service Fabric Cluster**a pak vyberte **Další**. 
+1. Vyberte možnost **Cluster Service Fabric**a pak vyberte **Další**. 
 
-## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatné Azure
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurace Azure DevOps a předplatného Azure
 
-1. Vytvořte novou organizaci Azure DevOps, nebo vyberte existující organizace. 
+1. Vytvořte novou organizaci Azure DevOps nebo vyberte existující organizaci. 
 
-1. Zadejte název pro váš projekt Azure DevOps. 
+1. Zadejte název projektu Azure DevOps. 
 
 1. Vyberte své předplatné Azure.
 
-1. Chcete-li zobrazit další Azure nastavení konfigurace a k identifikaci operačního systému pro cluster Service Fabric a velikosti virtuálního počítače uzlu, vyberte **změnu**.  
-    V tomto podokně se zobrazí různé možnosti pro konfiguraci typu a umístění služby Azure.
+1. Pokud chcete zobrazit další nastavení konfigurace Azure a identifikovat velikost virtuálního počítače uzlu a operační systém pro cluster Service Fabric, vyberte **změnit**.  
+    V tomto podokně se zobrazují různé možnosti konfigurace typu a umístění služeb Azure.
  
-1. Ukončete oblasti konfigurace Azure a pak vyberte **provádí**.  
-    Po několika minutách po dokončení. Ukázkové aplikace v ASP.NET Core je nastavený v úložišti Git ve vaší organizaci Azure DevOps, vytvoření clusteru Service Fabric, je proveden kanálu CI/CD a aplikace je nasazená do Azure. 
+1. Ukončete oblast konfigurace Azure a potom vyberte **Hotovo**.  
+    Po několika minutách se proces dokončí. Ukázková ASP.NET Core aplikace je nastavená v úložišti Git ve vaší organizaci Azure DevOps, vytvoří se cluster pro Service Fabric, provedený kanál CI/CD a vaše aplikace se nasadí do Azure. 
 
-    Po dokončení všech to řídicího panelu DevOps Projects se zobrazí na webu Azure Portal. Můžete také přejít na řídicí panel DevOps Projects přímo z **všechny prostředky** na webu Azure Portal. 
+    Po dokončení všech těchto DevOps Projects se řídicí panel zobrazí v Azure Portal. Můžete také přejít na DevOps Projects řídicí panel přímo ze **všech prostředků** v Azure Portal. 
 
-    Tento řídicí panel poskytuje přehled o Azure DevOps úložiště kódu, váš kanál CI/CD a vašeho clusteru Service Fabric. Konfigurace dalších možností pro svůj kanál CI/CD v úložišti Azure. Na pravé straně vyberte **Procházet** zobrazíte běžící aplikaci.
+    Tento řídicí panel poskytuje přehled o vašem úložišti kódu Azure DevOps, kanálu CI/CD a vašem Service Fabricovém clusteru. Můžete nakonfigurovat další možnosti pro kanál CI/CD v Azure Repos. Na pravé straně vyberte **Procházet** a zobrazte si spuštěnou aplikaci.
 
 ## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
 
-Projekty DevOps automaticky nakonfiguruje kanál CI/CD v kanálech Azure. Kanál můžete prozkoumat a upravit. Seznamte se s ním, postupujte takto:
+DevOps Projects automaticky konfiguruje kanál CI/CD v Azure Pipelines. Kanál můžete prozkoumat a upravit. Pokud se k němu chcete seznámit, udělejte toto:
 
-1. Přejdete na řídicí panel Projekt DevOps.
+1. Přejít na řídicí panel projektu DevOps.
 
-1. V horní části řídicího panelu DevOps Projects, vyberte **vytvářet kanály**.  
-    Na kartě prohlížeče zobrazí kanálu sestavení pro nový projekt.
+1. V horní části řídicího panelu DevOps Projects vyberte **vytvořit kanály**.  
+    Karta prohlížeč zobrazuje kanál sestavení pro váš nový projekt.
 
-1. Přejděte **stav** pole a pak vyberte tři tečky (...).  
-    Nabídka obsahuje několik možností, jako je například přidávání nové sestavení, přerušení sestavení a úpravy kanálu sestavení do fronty.
+1. Přejděte na pole **stav** a potom vyberte tři tečky (...).  
+    V nabídce se zobrazí několik možností, jako je například zařazení nového sestavení do fronty, pozastavení sestavení a úprava kanálu sestavení.
 
 1. Vyberte **Upravit**.
 
-1. V tomto podokně můžete prozkoumat různé úlohy pro vašeho kanálu sestavení.  
-    Sestavení provádí různé úlohy, jako je načítání zdroje z Gitu výstupy úložiště, obnovení závislostí a publikování použít pro nasazení.
+1. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení.  
+    Sestavení provádí různé úkoly, jako je například načítání zdrojů z úložiště Git, obnovování závislostí a publikování výstupů používaných pro nasazení.
 
 1. V horní části kanálu sestavení vyberte název kanálu sestavení. 
 
-1. Pod názvem kanálu buildu vyberte **Historie**.  
-    V tomto podokně se zobrazí záznam auditovaných nedávné změny pro sestavení. Azure DevOps sleduje změny provedené do kanálu sestavení, a umožňuje porovnání verzí.
+1. Pod názvem vašeho kanálu buildu vyberte **Historie**.  
+    V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
 1. Vyberte **Triggery**.  
-    Projekty DevOps automaticky vytvoří aktivační událost CI, a každé potvrzení do úložiště spustí nové sestavení. Volitelně můžete zahrnout nebo vyloučit větve z položek konfigurace procesu.
+    DevOps Projects automaticky vytvoří Trigger CI a každé potvrzení do úložiště spustí nové sestavení. Volitelně můžete zvolit zahrnutí nebo vyloučení větví z procesu CI.
 
 1. Vyberte **Uchování**.  
-    V závislosti na vašem scénáři můžete zadat zásady, které chcete zachovat nebo odebrat počet sestavení.
+    V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
 ## <a name="examine-the-cd-pipeline"></a>Prozkoumání kanálu CD
 
-Projekty DevOps automaticky vytvoří a nakonfiguruje nezbytné kroky k nasazení z vaší organizace Azure DevOps se svým předplatným Azure. Tyto kroky zahrnují konfigurace připojení služby Azure k ověřování Azure DevOps se svým předplatným Azure. Automatizace také vytvoří kanál pro vydávání verzí, který poskytuje CD do Azure. Další informace o kanál pro vydávání verzí, postupujte takto:
+DevOps Projects automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazení z vaší organizace Azure DevOps do svého předplatného Azure. Tyto kroky zahrnují konfiguraci připojení služby Azure pro ověřování Azure DevOps k vašemu předplatnému Azure. Automatizace také vytvoří kanál pro vydávání verzí, který poskytuje disk CD do Azure. Pokud se chcete dozvědět víc o kanálu vydávání, udělejte toto:
 
-1. Vyberte **sestavení a vydání**a pak vyberte **vydání**.  
-    Projekty DevOps vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
+1. Vyberte **sestavení a vydání**a pak vyberte **vydané verze**.  
+    DevOps Projects vytvoří kanál pro vydávání verzí pro správu nasazení do Azure.
 
-1. Vyberte tři tečky (...) vedle kanálu pro vydávání verzí a pak vyberte **upravit**.  
+1. Vyberte tři tečky (...) vedle vašeho kanálu pro vydání a pak vyberte **Upravit**.  
     Kanál verze obsahuje *kanál*, který definuje proces vydání.
 
 1. V části **Artefakty** vyberte **Zahodit**.  
-    Kanál sestavení, kterou můžete prozkoumat dříve vytvoří výstup, který se používá pro artefakt. 
+    Kanál sestavení, který jste prozkoumali dříve, vytváří výstup, který se používá pro artefakt. 
 
-1. V pravém rohu **vyřadit** ikonu, vyberte **trigger průběžného nasazování**.  
-    Tento kanál pro vydávání verzí obsahuje aktivační událost CD povolené, která spustí nasazení pokaždé, když je k dispozici nové artefakt sestavení. Volitelně můžete zakázat aktivační událost tak, aby vaše nasazení vyžaduje ruční spuštění. 
+1. Napravo od ikony **drop** vyberte **Trigger průběžného nasazování**.  
+    Tento kanál verze má povolený Trigger CD, který spustí nasazení pokaždé, když je k dispozici nový artefakt sestavení. Volitelně můžete aktivační událost zakázat, aby vaše nasazení vyžadovalo ruční spuštění. 
 
-1. Na pravé straně vyberte **zobrazit verze** zobrazíte historii verzí.
+1. Na pravé straně vyberte **Zobrazit vydané verze** , aby se zobrazila Historie verzí.
 
 1. Vyberte tři tečky (...) vedle vydané verze a pak vyberte **otevřít**.  
-    Můžete si projít několik nabídek, jako je například souhrnu vydané verze, přidružené pracovní položky a testy.
+    Můžete prozkoumat několik nabídek, například souhrn vydaných verzí, přidružené pracovní položky a testy.
 
 1. Vyberte **Potvrzení**.  
-    Toto zobrazení ukazuje potvrzení změn kódu, které jsou spojeny s tímto nasazením. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
+    Toto zobrazení ukazuje potvrzení kódu, která jsou přidružena k tomuto nasazení. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
 
 1. Vyberte **Protokoly**.  
-    Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobrazit během a po nasazení.
+    Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobrazit během i po nasazení.
 
-## <a name="commit-changes-to-git-and-automatically-deploy-them-to-azure"></a>Potvrzení změn v Gitu a automaticky nasadit do Azure 
+## <a name="commit-changes-to-git-and-automatically-deploy-them-to-azure"></a>Potvrďte změny v Gitu a automaticky je nasaďte do Azure. 
 
  > [!NOTE]
- > Následující postup testuje kanálu CI/CD změnou prostého textu.
+ > Následující postup testuje kanál CI/CD tím, že provede jednoduchou změnu textu.
 
-Teď jste připraveni spolupracovat s týmem ve vaší aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na váš web. Jednotlivé změny do úložiště Git spustí sestavení a vydání nasadí změny do Azure. Postupujte podle pokynů v této části, nebo použít jiné techniky se zapsat změny do úložiště. Například můžete klonovat úložiště Git v oblíbených nástrojů nebo integrovaného vývojového prostředí a pak doručit změny do tohoto úložiště.
+Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci na web. Při každé změně úložiště Git se spustí sestavení a vydaná verze nasadí vaše změny do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Úložiště Git můžete například klonovat v oblíbených nástrojích nebo v integrovaném vývojovém prostředí (IDE) a pak doručovat změny do tohoto úložiště.
 
-1. V nabídce Azure DevOps, vyberte **kód** > **soubory**a potom přejděte do úložiště.
+1. V nabídce Azure DevOps vyberte **kód** > **soubory**a pak přejděte do svého úložiště.
 
-1. Přejděte na *Views\Home* adresář, vyberte tři tečky (...) vedle položky *Index.cshtml* souboru a pak vyberte **upravit**.
+1. V adresáři *Views\Home* vyberte tři tečky (...) vedle souboru *index. cshtml* a pak vyberte **Upravit**.
 
-1. Proveďte změnu souboru, např. přidejte nějaký text v rámci jedné značky div. 
+1. Proveďte v souboru změny, jako je například přidání textu do jedné z značek DIV. 
 
-1. V pravém horním rohu, vyberte **potvrzení**a pak vyberte **potvrzení** znovu, aby push změny.  
-    Po chvíli se spustí sestavení a poté spustí vydání k nasazení změny. Můžete monitorovat stav sestavení na řídicím panelu projekty DevOps nebo v prohlížeči s Azure DevOps protokolování v reálném čase.
+1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.  
+    Po chvíli se spustí sestavení a následně se spustí vydání pro nasazení změn. Stav sestavení můžete monitorovat na řídicím panelu DevOps Projects nebo v prohlížeči pomocí protokolování v reálném čase v Azure DevOps.
 
-1. Po dokončení vydání aktualizujte své aplikace a zkontrolujte provedené změny.
+1. Až se vydaná verze dokončí, aktualizujte svou aplikaci, aby se ověřily vaše změny.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud testujete, vyhnete se účtují poplatky podle údržbě vašich prostředků. Pokud už je nepotřebujete, můžete odstranit cluster Azure Service Fabric a související prostředky, které jste vytvořili v tomto kurzu. Chcete-li tak učinit, použijte **odstranit** funkce na řídicím panelu projekty DevOps.
+Pokud testujete, můžete se vyhnout nabíhání poplatků za účtování pomocí vyčištění prostředků. Pokud už je nepotřebujete, můžete cluster Azure Service Fabric a související prostředky, které jste vytvořili v tomto kurzu, odstranit. K tomu použijte funkci **Odstranit** na řídicím panelu DevOps Projects.
 
 > [!IMPORTANT]
-> Následující postup se trvale odstraní prostředky. *Odstranit* funkcí zničí data, která se vytvoří v projektu v projektech pro DevOps v Azure i Azure DevOps a nebude možné ho načíst. Pomocí tohoto postupu, až poté, co jste pečlivě přečtěte si zobrazených výzev.
+> Následující postup trvale odstraní prostředky. Funkce *odstranění* zničí data vytvořená projektem v DevOps Projects v Azure i ve službě Azure DevOps a nebude možné ji načíst. Tento postup použijte až po pečlivém čtení výzev.
 
-1. Na webu Azure Portal přejděte do řídicího panelu DevOps Projects.
-1. V pravém horním rohu, vyberte **odstranit**. 
-1. Do příkazového řádku vyberte **Ano** k *trvale odstranit* prostředky.
+1. V Azure Portal přejdete na řídicí panel DevOps Projects.
+1. V pravém horním rohu vyberte **Odstranit**. 
+1. Po zobrazení výzvy vyberte **Ano** , pokud chcete prostředky *trvale odstranit* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Volitelně můžete kanál Azure CI/CD přizpůsobit potřebám svého týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další kanály. V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření aplikace ASP.NET Core a nasaďte ji do Service Fabric pomocí projekty DevOps
-> * Konfigurace Azure DevOps a předplatné Azure 
+> * Pomocí DevOps Projects vytvořit aplikaci ASP.NET Core a nasadit ji do Service Fabric
+> * Konfigurace Azure DevOps a předplatného Azure 
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD
-> * Potvrzení změn v Gitu a automaticky nasadit do Azure
+> * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-Další informace o Service Fabric a mikroslužeb, naleznete v tématu:
+Další informace o Service Fabric a mikroslužbách najdete v tématech:
 
 > [!div class="nextstepaction"]
 > [Použití přístupu založeného na mikroslužbách při vytváření aplikací](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

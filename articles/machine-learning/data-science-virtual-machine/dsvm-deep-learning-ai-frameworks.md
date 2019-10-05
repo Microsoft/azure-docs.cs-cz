@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/1/2019
-ms.openlocfilehash: fd38bf1f7741c4d610ef43a12d90533d4ac7b703
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: db95788b0f2c041157bdc16000d0328c042e86d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802417"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973691"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -83,6 +83,33 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované edice DSVM      | Windows a Linux   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | CNTK je nainstalovaný v Pythonu 3,6 ve [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) a v Pythonu pro [Linux](./dsvm-languages.md#python-linux-edition)3,5.) |
 | Jak ji spustit      | Terminál: Aktivujte správné prostředí a spusťte Python. <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a potom otevřete adresář CNTK pro ukázky. |
+
+## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+|    |           |
+| ------------- | ------------- |
+| Podporované verze | 1.3.0 |
+| Podporované edice DSVM      | Windows a Linux   |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | MXNet se instaluje do `C:\dsvm\tools\mxnet` ve Windows a `/dsvm/tools/mxnet` na Ubuntu. Vazby Pythonu jsou nainstalované v Pythonu 3,6 ve [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) a Python 3,5 on [Linux](./dsvm-languages.md#python-linux-edition)) vazby R jsou taky součástí Ubuntu DSVM. |
+| Jak ji spustit      | Terminál: Aktivujte správné prostředí conda a pak spusťte `import mxnet`. <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md#access-the-dsvm) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a otevřete adresář `mxnet` pro ukázky. |
+
+## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[Server MXNet modelů](https://github.com/awslabs/mxnet-model-server#quick-start)
+
+|    |           |
+| ------------- | ------------- |
+| Podporované verze | 1.0.1 |
+| Podporované edice DSVM      | Windows a Linux   |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | MXNet model Server je nainstalovaný v Pythonu 3,6 ve [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) a v Pythonu pro [Linux](./dsvm-languages.md#python-linux-edition)3,5.) |
+| Jak ji spustit      | Terminál: Spusťte `sudo systemctl stop jupyterhub`, aby se služba JupyterHub nejdřív zastavila, protože naslouchá na stejném portu. Pak aktivujte správné prostředí conda a spusťte `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar`. |
+
+## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[Rozhraní NVIDIA – SMI (System Management Interface)](https://developer.nvidia.com/nvidia-system-management-interface)
+
+|    |           |
+| ------------- | ------------- |
+| Podporované verze |  |
+| Podporované edice DSVM      | Windows a Linux   |
+| K čemu slouží? | Nástroj NVIDIA pro dotazování aktivity GPU |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | hodnota `nvidia-smi` je v systémové cestě. |
+| Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem**otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte `nvidia-smi`. |
 
 ## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
 

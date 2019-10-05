@@ -1,18 +1,18 @@
 ---
 title: Přehled služby relačních databází Azure Database for MariaDB
-description: Přehled služby relačních databází Azure Database for MariaDB
+description: Přečtěte si o službě Azure Database for MariaDB, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 08/13/2019
-ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 2a23cf4edef268c4690806117b3dac588848a420
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013615"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973482"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměť optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
+Služba Azure Database for MariaDB nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
@@ -51,11 +51,11 @@ Jak se rozhodnout, kdy vertikálně navýšit nebo snížit kapacitu? Můžete v
 
 Smlouva SLA o špičkové 99,99% dostupnosti v oboru Azure využívá globální síť datacenter spravovaných Microsoftem. Tato síť pomáhá udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S Azure Database for MariaDB získáte výhody integrovaného zabezpečení, odolnosti proti chybám a ochrany dat. S Azure Database for MariaDB můžete využít obnovení serveru do určitého bodu v čase, a to až 35 dnů zpět.
 
-## <a name="secure-your-data"></a>Zabezpečení dat
+## <a name="secure-your-data"></a>Zabezpečte svoje data
 
 Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for MariaDB zachovává. Azure Database for MariaDB nabízí funkce, které omezují přístup, chrání přenášená i neaktivní uložená data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
-Služba Azure Database for MariaDB používá šifrování úložiště pro data v klidovém provozu a je kompatibilní se standardem FIPS 140-2. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory vytvořené databázovým strojem při spouštění dotazů se na disku nešifrují.) Služba používá 256bitové šifrování AES, které je součástí šifrování služby Azure Storage. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Služba Azure Database for MariaDB používá šifrování úložiště pro data v klidovém provozu a je kompatibilní se standardem FIPS 140-2. Data včetně zálohovaných dat se šifrují na disku. (Dočasné soubory, které modul vytvoří při spuštění dotazů, se na disku nešifrují.) Služba používá AES 256-bit šifry, která je součástí Azure Storage šifrování. Klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 Ve výchozím nastavení je ve službě Azure Database for MariaDB nakonfigurované vyžadování [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 

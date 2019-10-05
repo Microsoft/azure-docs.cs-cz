@@ -1,159 +1,158 @@
 ---
-title: Konfigurovat a spravovat projekty Azure poznámkového bloku
-description: Jak spravovat metadat projektu, soubory projektu, projektu prostředí a kroky instalace přes uživatelské rozhraní služby Azure poznámkových bloků a přímý přístup terminálu.
+title: Konfigurace a správa projektů notebooků Azure
+description: Jak spravovat metadata projektu, soubory projektu, prostředí projektu a kroky nastavení prostřednictvím uživatelského rozhraní Azure Notebooks a přímého přístupu terminálu.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596739"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973128"
 ---
 # <a name="manage-and-configure-projects"></a>Správa a konfigurace projektů
 
-Projekt v poznámkových bloků Azure je v podstatě konfiguraci základní virtuální počítač s Linuxem ve kterém je spuštěný poznámkové bloky Jupyter, spolu s složku souborů a popisnými metadaty. Řídicí panel projekt v poznámkových bloků Azure umožňuje spravovat soubory a jinak konfigurovat vlastnosti projektu:
+Projekt v Azure Notebooks je v podstatě konfigurací základního virtuálního počítače se systémem Linux, ve kterém se spouští poznámkové bloky Jupyter spolu se složkou souborů a popisnými metadaty. Řídicí panel projekt v Azure Notebooks umožňuje spravovat soubory a jinak konfigurovat vlastnosti projektu:
 
-- Úrovně výpočetních na kterém běží projekt, který může být na úrovni free nebo virtuálním počítači Azure.
-- Projekt metadat, která obsahuje název, popis, identifikátor, který se používá při sdílení projektu a zda je projekt veřejné nebo soukromé.
-- Poznámkový blok v projektu, dat a další soubory, které můžete spravovat jako jakéhokoli souborové systému.
-- Prostředí projektu, které lze spravovat prostřednictvím spouštění skriptů nebo přímo přes terminál.
-- Protokoly, které přistupujete prostřednictvím terminálu.
+- Výpočetní vrstva, na které se projekt spouští, což může být úroveň Free nebo virtuální počítač Azure.
+- Metadata projektu, která obsahují název, popis, identifikátor, který se používá při sdílení projektu a zda je projekt veřejný nebo soukromý.
+- Poznámkový blok, data a další soubory projektu, které můžete spravovat stejně jako jakýkoli jiný systém souborů.
+- Prostředí projektu, které spravujete prostřednictvím spouštěcích skriptů nebo přímo prostřednictvím terminálu.
+- Protokoly, ke kterým přistupujete prostřednictvím terminálu.
 
 > [!Note]
-> Správa a konfigurace funkcí je zde popsáno, jsou k dispozici pouze vlastník projektu, který původně vytvořil projektu. Klonování projektu z do vlastního účtu může, ale v takovém případě stát vlastníkem a můžete podle potřeby nakonfigurujte projekt.
+> Níže popsané funkce pro správu a konfiguraci jsou k dispozici pouze pro vlastníka projektu, který původně vytvořil projekt. Projekt můžete ale klonovat na vlastní účet. v takovém případě se stanete vlastníkem a můžete projekt nakonfigurovat podle potřeby.
 
-Poznámkových bloků Azure spustí základní virtuální počítač se při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí po 60 minutách nečinnosti. Taky můžete zastavit server kdykoli s **vypnutí** příkazu (Klávesová zkratka: h).
+Azure Notebooks spustí základní virtuální počítač při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí se po 60 minutách nečinnosti. Server můžete také kdykoli zastavit pomocí příkazu pro **vypnutí** (Klávesová zkratka: h).
 
-## <a name="compute-tier"></a>Služba COMPUTE úrovně
+## <a name="compute-tier"></a>Výpočetní vrstva
 
-Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Můžete obejít tato omezení a zvýšit výkon pomocí jiný virtuální počítač, který zřídíte v předplatném Azure. Další informace najdete v tématu [jak používat virtuální počítače pro datové vědy](use-data-science-virtual-machine.md).
+Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní** úrovni, což je omezeno na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Tato omezení můžete obejít a zvýšit výpočetní výkon pomocí jiného virtuálního počítače, který jste zřídili v rámci předplatného Azure. Další informace najdete v tématu [použití Virtual Machines pro datové vědy](use-data-science-virtual-machine.md).
 
-## <a name="edit-project-metadata"></a>Úprava metadat projektu
+## <a name="edit-project-metadata"></a>Upravit metadata projektu
 
-Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **informace** karta, který obsahuje metadata projektu, jak je popsáno v následující tabulce. Metadata projektu můžete změnit kdykoli.
+Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu **informace** , která obsahuje metadata projektu, jak je popsáno v následující tabulce. Metadata projektu můžete kdykoli změnit.
 
 | Nastavení | Popis |
 | --- | --- |
-| Název projektu | Popisný název pro váš projekt, který poznámkových bloků Azure používá pro účely zobrazení. Například "Hello World v Pythonu". |
-| ID projektu | Vlastní identifikátor, který se stane součástí adresy URL použijete sdílet projekt. Toto ID můžete použít jenom písmena, číslice a spojovníky, je omezená na 30 znaků a nesmí být [rezervované ID projektu](create-clone-jupyter-notebooks.md#reserved-project-ids). Pokud si nejste jisti, co se má použít, je běžné konvence používat malá písmena verzi název vašeho projektu, kde jsou mezery převedena na rozdělovníků, například "my-poznámkového bloku – projekt" (zkráceno, aby odpovídala délkový limit). |
-| Veřejného projektu | Pokud nastavíte, může prakticky kdokoli s odkazem na přístup k projektu. Při vytváření projektu privátní, zrušte zaškrtnutí tohoto políčka. |
-| Skrýt klony | Pokud je nastaveno, ostatní uživatelé neuvidí seznamu duplicity, které mají za cíl pro tento projekt. Skrytí duplicit je užitečné pro projekty, které jsou sdíleny s mnoha lidmi, kteří nejsou součástí stejné organizaci, jako například při použití poznámkového bloku pro vyučují třídu. |
+| Název projektu | Popisný název projektu, který Azure Notebooks používá pro účely zobrazení. Například "Hello World v Pythonu". |
+| ID projektu | Vlastní identifikátor, který se stal součástí adresy URL, kterou používáte pro sdílení projektu. Toto ID může obsahovat pouze písmena, číslice a spojovníky, které jsou omezeny na 30 znaků a nesmí se jednat o [REZERVOVANÉ ID projektu](create-clone-jupyter-notebooks.md#reserved-project-ids). Pokud si nejste jistí, co použít, obvyklá konvence je použití malé verze názvu projektu, kde jsou mezery převedeny na spojovníky, například "My-Poznámkový projekt" (zkráceně, pokud je to nutné pro přizpůsobení limitu délky). |
+| Veřejný projekt | Pokud je nastaveno, umožňuje komukoli s odkazem přístup k projektu. Při vytváření privátního projektu zrušte zaškrtnutí tohoto políčka. |
+| Skrýt klony | Pokud je nastaveno, ostatní uživatelé neuvidí seznam klonů, které byly vytvořeny pro tento projekt. Skrývání klonů je užitečné pro projekty, které jsou sdíleny s mnoha lidmi, kteří nejsou součástí stejné organizace, například při použití poznámkového bloku pro výuku třídy. |
 
 > [!Important]
 >
-> Změna ID projektu zruší platnost odkazy na projekt, který jste pravděpodobně dříve sdíleli.
+> Změna ID projektu zruší platnost všech odkazů na projekt, které jste mohli dříve sdílet.
 
 ## <a name="manage-project-files"></a>Spravovat soubory projektu
 
-Řídicí panel Projekt zobrazuje obsah složky systému projektu. Můžete použít různé příkazy ke správě těchto souborů.
+Řídicí panel projekt zobrazuje obsah systému složek projektu. Ke správě těchto souborů můžete použít různé příkazy.
 
-### <a name="create-new-files-and-folders"></a>Vytvoření nových souborů a složek
+### <a name="create-new-files-and-folders"></a>Vytvořit nové soubory a složky
 
-**+ Nová** příkazu (Klávesová zkratka: n) vytvoří nové soubory nebo složky. Při použití příkazu, nejprve vyberte typ položky vytvořit:
+Příkaz **+ New** (Klávesová zkratka: n) vytvoří nové soubory nebo složky. Při použití příkazu nejdřív vyberte typ položky, kterou chcete vytvořit:
 
 | Typ položky | Popis | Chování příkazu |
 | --- | --- | --- |
-| **Poznámkový blok** | Poznámkový blok Jupyter | Zobrazí automaticky otevírané okno, ve kterém můžete zadat název souboru a jazyk poznámkového bloku. |
-| **Složka** | Podsložky | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název složky. |
-| **Prázdný soubor** | Soubor, do kterého můžete ukládat jakýkoli obsah, jako je text, data atd. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
-| **Markdown** | Soubor Markdown. | Vytvoří pole v seznamu souboru projektu, ve kterém zadáte název souboru. |
+| **Poznámkového bloku** | Jupyter Poznámkový blok | Zobrazí místní nabídku, ve které zadáte název souboru a jazyk poznámkového bloku. |
+| **Složka** | Podsložka | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název složky. |
+| **Prázdný soubor** | Soubor, do kterého můžete ukládat obsah, jako je text, data atd. | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název souboru. |
+| **Markdownu** | Markdownu soubor. | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název souboru. |
 
-### <a name="upload-files"></a>Nahrání souborů
+### <a name="upload-files"></a>Nahrávání souborů
 
-**Nahrát** příkaz poskytuje dvě možnosti, jak importovat data z jiných míst: **Z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech poznámkového bloku Azure](work-with-project-data-files.md).
+Příkaz **nahrát** nabízí dvě možnosti, jak importovat data z jiných umístění: **z adresy URL** a **z počítače**. Další informace najdete v tématu [práce s datovými soubory v projektech Azure notebook](work-with-project-data-files.md).
 
-### <a name="select-file-specific-commands"></a>Vyberte soubor konkrétní příkazy
+### <a name="select-file-specific-commands"></a>Výběr příkazů specifických pro soubor
 
-Každá položka v seznamu souborů v projektu poskytuje příkazů pomocí místní nabídky klikněte pravým tlačítkem na:
+Jednotlivé položky v seznamu souborů projektu poskytují příkazy prostřednictvím místní nabídky po kliknutí pravým tlačítkem myši:
 
-![Příkazy v místní nabídce Soubor](media/project-file-commands.png)
+![Příkazy v místní nabídce souboru](media/project-file-commands.png)
 
 | Příkaz | Klávesová zkratka | Akce |
 | --- | --- | --- |
-| Spusťte | r (nebo klikněte na tlačítko) | Spustí soubor poznámkového bloku. Jiné typy souborů jsou otevřené pro zobrazení.  |
-| Kopírovat odkaz | Y | Odkaz se zkopíruje do souboru do schránky. |
-| Spustit v testovacím prostředí Jupyter | j | Spuštění poznámkového bloku v JupyterLab, což je více vývojářů objektově orientovaného rozhraní než Jupyter obvykle poskytuje. |
-| Preview | p | Otevře se v HTML verzi preview souboru. verze preview pro poznámkové bloky, je jen pro čtení vykreslování poznámkového bloku. Další informace najdete v tématu [ve verzi Preview](#preview) oddílu. |
-| Upravte soubor | Můžu | Otevře soubor pro úpravy. |
-| Ke stažení | d | Stáhne soubor zip, který obsahuje soubor nebo obsah složky. |
-| Přejmenovat | a | Výzvy k zadání nového názvu souboru nebo složky. |
-| Odstranění | x | Zobrazí výzvu k potvrzení a pak soubor trvale odebere z projektu. Odstranění se nedá vrátit zpět. |
+| Spuštění | r (nebo klikněte na) | Spustí soubor poznámkového bloku. Další typy souborů jsou otevřeny k zobrazení.  |
+| Kopírovat odkaz | požadované | Zkopíruje odkaz na soubor do schránky. |
+| Spuštění v Jupyter Lab | j | Spustí Poznámkový blok v JupyterLab, což je více než Jupyter normálně poskytované rozhraní orientované na vývojáře. |
+| Preview | trub | Otevře náhled souboru HTML. pro poznámkové bloky je náhled vykreslování poznámkového bloku jen pro čtení. Další informace najdete v části [Preview](#preview) . |
+| Upravit soubor | došlo | Otevře soubor pro úpravy. |
+| Ke stažení | trojrozměrné | Stáhne soubor zip, který obsahuje soubor nebo obsah složky. |
+| Přejmenovat | a | Zobrazí výzvu k zadání nového názvu souboru nebo složky. |
+| Odstranit | x | Vyzve k potvrzení a pak trvale odstraní soubor z projektu. Odstranění nelze vrátit zpět. |
 | Přesunout | min. | Přesune soubor do jiné složky ve stejném projektu. |
 
 #### <a name="preview"></a>Preview
 
-Náhled souboru nebo Poznámkový blok je zobrazení jen pro čtení obsahu; spuštění poznámkového bloku buněk je zakázaná. Ve verzi preview se zobrazí všem uživatelům, který obsahuje odkaz na soubor nebo Poznámkový blok ale neuzavřela do poznámkových bloků Azure. Po přihlášení uživatele můžete naklonovat ho na svůj vlastní účet, nebo ho můžou stahovat do místního počítače.
+Náhled souboru nebo poznámkového bloku je zobrazení obsahu jen pro čtení. spuštěné buňky poznámkového bloku jsou zakázané. Verze Preview je zobrazená komukoli, který má odkaz na soubor nebo Poznámkový blok, ale přihlásil se k Azure Notebooks. Jakmile se uživatel přihlásí, může Poznámkový blok klonovat na svůj vlastní účet nebo si ho může stáhnout do svého místního počítače.
 
-Na stránce ve verzi preview podporuje několik nástrojů příkazů s klávesovými zkratkami:
+Stránka Preview podporuje několik příkazů panelu nástrojů s klávesovými zkratkami:
 
 | Příkaz | Klávesová zkratka | Akce |
 | --- | --- | --- |
-| Sdílení | s | Zobrazí sdílení překryvné okno, ze kterého lze získat odkaz, sdílení na sociálních médií, získat HTML pro vkládání a odeslat e-mailu. |
-| Klon | c  | Naklonujte ho na svůj účet. |
-| Spusťte | r | Pokud máte oprávnění k tomu, spustí Poznámkový blok. |
-| Ke stažení | d | Stáhne kopii poznámkového bloku. |
+| Sdílení | s | Zobrazí místní nabídku sdílení, ze které můžete získat odkaz, sdílet na sociálních médiích, získat kód HTML pro vložení a poslat e-mail. |
+| Klon | r  | Naklonujte Poznámkový blok na svůj účet. |
+| Spuštění | í | Spustí Poznámkový blok, pokud je povolený. |
+| Ke stažení | trojrozměrné | Stáhne kopii poznámkového bloku. |
 
 ## <a name="configure-the-project-environment"></a>Konfigurace prostředí projektu
 
-Existují tři způsoby, jak nakonfigurovat prostředí základní virtuální počítač, ve kterém je spuštěný vašich poznámkových bloků:
+Existují tři způsoby, jak nakonfigurovat prostředí základního virtuálního počítače, ve kterém jsou poznámkové bloky spuštěny:
 
-- Zahrnují skript jednorázová inicializace
-- Nastavení prostředí projektu použijte k určení pokynů k instalaci
+- Zahrnutí jednorázového inicializačního skriptu
+- Nastavení prostředí projektu použijte k zadání kroků instalace
 - Přístup k virtuálnímu počítači pomocí terminálu.
 
-Všechny formy projektové konfigurace se použijí pokaždé, když se virtuální počítač se spustí a proto má vliv na všech poznámkových bloků v rámci projektu.
+Všechny formy konfigurace projektu jsou aplikovány při každém spuštění virtuálního počítače, a tak ovlivní všechny poznámkové bloky v rámci projektu.
 
-### <a name="one-time-initialization-script"></a>Jednorázová inicializace skriptu
+### <a name="one-time-initialization-script"></a>Jednorázový skript pro inicializaci
 
-Vytvoří poznámkových bloků Azure první server pro projekt, hledá soubor v projektu volá *aznbsetup.sh*. Pokud tento soubor je k dispozici, poznámkových bloků Azure ho spustí. Výstup skriptu je uložen ve složce projektu jako *. aznbsetup.log*.
+První Azure Notebooks vytvoří server pro projekt, vyhledá soubor v projektu s názvem *aznbsetup.sh*. Pokud je tento soubor k dispozici, Azure Notebooks ho spustí. Výstup skriptu je uložen ve složce projektu jako *. aznbsetup. log*.
 
-### <a name="environment-setup-steps"></a>Kroky nastavení prostředí
+### <a name="environment-setup-steps"></a>Kroky pro nastavení prostředí
 
-Nastavení prostředí projektu slouží k vytvoření jednotlivé kroky, které nakonfigurují prostředí.
+Nastavení prostředí projektu můžete použít k vytvoření jednotlivých kroků, které konfigurují prostředí.
 
-Na řídicím panelu Projekt, vyberte **nastavení projektu**a pak **prostředí** kartu, ve kterém přidat, odebrat a upravit kroky nastavení projektu:
+Na řídicím panelu projekt vyberte možnost **nastavení projektu**, pak vyberte kartu **prostředí** , ve které chcete přidat, odebrat a změnit instalační kroky pro projekt:
 
-![Místní nastavení projektu s vybraná karta prostředí](media/project-settings-environment-steps.png)
+![Místní nabídka nastavení projektu s vybranou kartou prostředí](media/project-settings-environment-steps.png)
 
-Chcete-li přidat, vyberte nejdřív **+ přidat**, vyberte odpovídající typ v **operace** rozevíracího seznamu:
+Pokud chcete přidat krok, nejdřív vyberte **+ Přidat**a pak v rozevíracím seznamu **operace** vyberte typ kroku:
 
-![Selektor operace pro nový krok nastavení prostředí](media/project-settings-environment-details.png)
+![Výběr operace pro nový krok nastavení prostředí](media/project-settings-environment-details.png)
 
-Informace, které pak projektu závisí na typu operace, kterou jste zvolili:
+Informace, které pak provedete, závisí na zvoleném typu operace:
 
-- **Soubor Requirements.txt**: Ve druhém seznamu, rozevíracího seznamu vyberte *souboru requirements.txt* soubor, který je již v projektu. Vyberte ze seznamu třetí rozevíracího seznamu, který se zobrazí verze Pythonu. Pomocí *souboru requirements.txt* souborů, spuštění poznámkových bloků Azure `pip install -r` s *souboru requirements.txt* souboru při spuštění serveru poznámkového bloku. Není nutné explicitně instalace balíčků z v rámci samotného poznámkového bloku.
+- **Požadavky. txt**: v druhém rozevíracím seznamu vyberte soubor *. txt s požadavky* , který je již v projektu. Pak vyberte verzi Pythonu z třetího rozevíracího seznamu, který se zobrazí. Když použijete soubor *. txt s požadavky* , Azure Notebooks se při spuštění serveru poznámkového bloku spustí `pip install -r` se souborem *. txt* . Nemusíte explicitně instalovat balíčky přímo do samotného poznámkového bloku.
 
-- **Skript prostředí**: Ve druhém seznamu, rozevíracího seznamu vyberte skript prostředí bash v projektu (obvykle soubor s *.sh* rozšíření), která obsahuje všechny příkazy, které chcete spustit inicializace prostředí.
+- **Skript prostředí**: v druhém rozevíracím seznamu Vyberte skript prostředí bash shell (obvykle soubor s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí.
 
-- **Environment.yml**: Ve druhém seznamu, rozevíracího seznamu vyberte *environments.yml* souborů pro projekty v Pythonu pomocí prostředí conda.
+- **Environment. yml**: v druhém rozevíracím seznamu vyberte soubor Environments *. yml* pro projekty Pythonu s použitím prostředí conda.
 
-Až dokončíte přidávání kroků, vyberte **Uložit**.
+Až skončíte s přidáváním kroků, vyberte **Uložit**.
 
 ### <a name="use-the-terminal"></a>Použití terminálu
 
-Na řídicím panelu Projekt **terminálu** příkaz otevře terminálu Linuxu, která poskytuje přímý přístup k serveru. V terminálu můžete stáhnout data, upravit nebo spravovat soubory, zkontrolujte procesy a dokonce i pomocí nástrojů, jako je editoru vi nebo nano.
+Na řídicím panelu projekt otevře příkaz **terminálu** terminál pro Linux, který vám poskytne přímý přístup k serveru. V rámci terminálu můžete stahovat data, upravovat a spravovat soubory, kontrolovat procesy a dokonce používat nástroje jako VI a nano.
 
 > [!Note]
-> Pokud máte spouštění skriptů v prostředí vašeho projektu, otevřete terminál může zobrazit zpráva oznamující, že tento instalační program je stále probíhá.
+> Pokud máte spouštěcí skripty v prostředí projektu, otevření terminálu může zobrazit zprávu oznamující, že instalace stále probíhá.
 
-Můžete použít všechny standardní Linuxové příkazy, v terminálu. Můžete také použít `ls` v domovskou složku zobrazíte různá prostředí, které existují na virtuálním počítači, jako například *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*, a *R*, spolu s *projektu* složku obsahující projekt:
+V terminálu můžete vydat všechny standardní příkazy systému Linux. Můžete také použít `ls` v domovské složce pro zobrazení různých prostředí, která existují na virtuálním počítači, jako jsou *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*a *R*, společně s *projektem* složka, která obsahuje projekt:
 
-![Projekt terminálu v poznámkových bloků Azure](media/project-terminal.png)
+![Terminál projektu v Azure Notebooks](media/project-terminal.png)
 
-Pokud chcete mít vliv na konkrétní prostředí, změňte adresáře nejprve do této složky prostředí.
+Chcete-li ovlivnit konkrétní prostředí, změňte nejprve adresáře do této složky prostředí.
 
-Prostředí Pythonu můžete najít `pip` a `conda` v *bin* složky každého prostředí. Můžete také použít předdefinované aliasy prostředí:
+V prostředích Pythonu můžete najít `pip` a `conda` ve složce *bin* každého prostředí. Pro prostředí můžete také použít předdefinované aliasy:
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -166,30 +165,30 @@ python35 -m pip install <package>
 python36 -m pip install <package>
 ```
 
-Změny provedené na server použít pouze s aktuální relací, s výjimkou souborů a složek, které vytvoříte v *projektu* samotné složce. Například úpravě souboru ve složce projektu je mezi relacemi trvalé, ale balíčků s `pip install` nejsou.
+Změny provedené na serveru platí pouze pro aktuální relaci s výjimkou souborů a složek, které vytvoříte ve složce *projektu* samotné. Například úprava souboru ve složce projektu je trvalá mezi relacemi, ale balíčky s `pip install` nejsou.
 
 > [!Note]
-> Pokud používáte `python` nebo `python3`, vyvoláte systému nainstalovaná verze jazyka Python, který se používá pro poznámkové bloky. Nemáte oprávnění. pro operace, jako jsou `pip install` buď, takže nezapomeňte použít konkrétní verzi aliasy.
+> Použijete-li `python` nebo `python3`, vyvoláte systémovou verzi Pythonu, která se pro poznámkové bloky nepoužívá. Nemáte oprávnění pro operace, jako je například `pip install`, takže je nutné použít aliasy specifické pro danou verzi.
 
-## <a name="access-notebook-logs"></a>Přístup k protokolům poznámkového bloku
+## <a name="access-notebook-logs"></a>Přístup k protokolům poznámkových bloků
 
-Pokud narazíte na problémy při spuštění poznámkového bloku, ve složce s názvem se ukládá výstup z Jupyter *. nb.log*. Mohou přistupovat k těmto protokolům prostřednictvím **terminálu** příkaz nebo řídicí panel Projekt.
+Pokud při spuštění poznámkového bloku narazíte na problémy, uloží se výstup z Jupyter do složky s názvem *. NB. log*. K těmto protokolům můžete přistupovat pomocí příkazu **terminálu** nebo řídicího panelu projekt.
 
-Většinou když používáte Jupyter místně může po spuštění v okně terminálu. V okně terminálu zobrazí výstup, jako je stav jádra.
+Obvykle když spouštíte Jupyter místně, je možné, že jste ho spustili z okna terminálu. V okně terminálu se zobrazí výstup, jako je například stav jádra.
 
-Pokud chcete zobrazit protokoly, použijte následující příkaz, v terminálu:
+Pokud chcete zobrazit protokoly, použijte následující příkaz v terminálu:
 
 ```bash
 cat .nb.log
 ```
 
-Můžete také použít příkaz z buňky kódu do poznámkového bloku Python:
+Příkaz můžete použít také z buňky kódu v poznámkovém bloku Python:
 
 ```bash
 !cat .nb.log
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Postup: Práce s datovými soubory projektu](work-with-project-data-files.md)
-- [Přístup k datům cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)
+- [Postupy: práce s datovými soubory projektu](work-with-project-data-files.md)
+- [Přístup k datům v cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)

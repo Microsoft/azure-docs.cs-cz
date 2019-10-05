@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932833"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973299"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -63,9 +63,9 @@ Proces migrace můžete odložit zrušením z okna. Pravidelně budete požádá
 
 * **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
 * **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. Tento e-mailový seznam se poskytuje jako součást procesu migrace.
-* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití Luis ale můžete použít cenovou`F0`úroveň Free (). 
+* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití LUIS ale můžete použít cenovou úroveň Free (`F0`). 
 
-**Vytváření aplikací Luis je zadarmo**, které uvádí `F0` vrstva. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
+**Vytváření aplikací Luis je zadarmo**, které uvádí vrstva `F0`. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
 
 Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se. 
 
@@ -100,6 +100,10 @@ Vlastník aplikace musí [Přidat váš e-mail do prostředku pro tvorbu Azure j
 
 Po dokončení procesu migrace budou všechny aplikace, které vlastníte, k dispozici na stránce **Moje aplikace** na portálu Luis.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="troubleshooting"></a>Řešení potíží
+
+Klíče pro vytváření LUIS se po dokončení procesu migrace zobrazují jenom na portálu LUIS. Pokud vytváříte klíče pro vytváření obsahu, například s rozhraním příkazového řádku LUIS, uživatel pořád potřebuje dokončit proces migrace. 
+
+## <a name="next-steps"></a>Další kroky
 
 * [Postup migrace aplikace do prostředku pro vytváření](luis-migration-authoring-steps.md)

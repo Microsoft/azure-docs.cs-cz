@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: Chyba nasazení, nasazení Azure, nasazení do Azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 08/30/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: ac700592a63e88936593c24f8f7ce06a08e289ce
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718942"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972695"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager
 
 Tento článek popisuje některé běžné chyby při nasazení Azure a poskytuje informace pro řešení chyb. Pokud nemůžete najít kód chyby pro vaši chybu nasazení, přečtěte si téma [Hledání kódu chyby](#find-error-code).
 
-Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku k dispozici, dejte nám prosím na starosti. V dolní části této stránky můžete nechat svůj názor. Zpětná vazba je sledována s problémy GitHubu. 
+Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku k dispozici, dejte nám prosím na starosti. V dolní části této stránky můžete nechat svůj názor. Zpětná vazba je sledována s problémy GitHubu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,9 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Access Control na základě rolí Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](resource-manager-register-provider-errors.md) |
 | Důvodu chybného požadavku | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
 | Došlo | Požadujete operaci, která není v aktuálním stavu prostředku povolena. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při uvolnění virtuálního počítače. | |
-| DeploymentActive | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
+| DeploymentActiveAndUneditable | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
+| DeploymentNameInvalidCharacters | Název nasazení může obsahovat jenom písmena, číslice, znak "-", "." nebo "_". | |
+| DeploymentNameLengthLimitExceeded | Názvy nasazení jsou omezené na 64 znaků.  | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
 | DeploymentQuotaExceeded | Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. | [Vyřešit chybu, pokud je počet nasazení vyšší než 800](deployment-quota-exceeded.md) |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Zadejte jiný název. | |
@@ -90,7 +92,7 @@ K chybám ověření dochází ve scénářích, které je možné určit před 
 
 Oba typy chyb vrací kód chyby, který můžete použít při řešení potíží s nasazením. Oba typy chyb se zobrazí v [protokolu aktivit](resource-group-audit.md). Chyby ověření se ale nezobrazí v historii nasazení, protože vůbec nedojde k zahájení nasazení.
 
-### <a name="validation-errors"></a>chyby ověřování
+### <a name="validation-errors"></a>Chyby ověřování
 
 Při nasazování pomocí portálu se po odeslání hodnot zobrazí chyba ověření.
 
@@ -100,7 +102,7 @@ Výběrem zprávy zobrazíte další podrobnosti. Na následujícím obrázku se
 
 ![Zobrazit podrobnosti ověření](./media/resource-manager-common-deployment-errors/validation-details.png)
 
-### <a name="deployment-errors"></a>chyby nasazení
+### <a name="deployment-errors"></a>Chyby nasazení
 
 Pokud operace projde ověřením, ale během nasazování selže, zobrazí se chyba nasazení.
 
@@ -124,13 +126,13 @@ Zobrazí se další podrobnosti o nasazení. Výběrem možnosti zobrazíte dal�
 
 ![nasazení selhalo.](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Zobrazí se chybová zpráva a kódy chyb. Všimněte si, že se zobrazí dva kódy chyb. První kód chyby (**DeploymentFailed**) značí obecnou chybu a neposkytuje podrobnosti potřebné k vyřešení této chyby. Druhý kód chyby (**StorageAccountNotFound**) poskytuje potřebné podrobnosti. 
+Zobrazí se chybová zpráva a kódy chyb. Všimněte si, že se zobrazí dva kódy chyb. První kód chyby (**DeploymentFailed**) značí obecnou chybu a neposkytuje podrobnosti potřebné k vyřešení této chyby. Druhý kód chyby (**StorageAccountNotFound**) poskytuje potřebné podrobnosti.
 
 ![Podrobnosti o chybě](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Povolit protokolování ladění
 
-Někdy potřebujete další informace o žádosti a odpovědi, abyste se dozvěděli, co se nepovedlo. Během nasazení si můžete vyžádat, aby se během nasazení do protokolu zaznamenaly Další informace. 
+Někdy potřebujete další informace o žádosti a odpovědi, abyste se dozvěděli, co se nepovedlo. Během nasazení si můžete vyžádat, aby se během nasazení do protokolu zaznamenaly Další informace.
 
 ### <a name="powershell"></a>PowerShell
 

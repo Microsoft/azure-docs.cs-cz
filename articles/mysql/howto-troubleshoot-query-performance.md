@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží s výkonem dotazů ve službě Azure Database for MySQL
-description: Tento článek popisuje postup řešení potíží s výkonem dotazů ve službě Azure Database for MySQL pomocí VYSVĚTLIT.
+title: Řešení potíží s výkonem dotazů v Azure Database for MySQL
+description: Naučte se používat vysvětlení pro řešení potíží s výkonem dotazů v Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/28/2018
-ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720208"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972856"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak používat VYSVĚTLIT profil výkonu dotazů ve službě Azure Database for MySQL
-**VYSVĚTLUJÍ** je užitečný nástroj pro optimalizaci dotazů. VYSVĚTLUJE, že příkaz je možné získat informace o tom, jak jsou spouštěny příkazy SQL. Následující výstup je příkladem spuštění příkazu VYSVĚTLIT.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MySQL
+**Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Jak je vidět v tomto příkladu, hodnota proměnné *klíč* má hodnotu NULL. Tento výstup znamená, že MySQL nelze najít žádné indexy optimalizované pro dotaz a provede ke skenování celé tabulky. Pojďme optimalizovat tak, že přidáte indexu na tento dotaz **ID** sloupce.
+Jak je vidět v tomto příkladu, hodnota *klíče* je null. Tento výstup znamená, že MySQL nemůže najít žádné indexy optimalizované pro dotaz a provede úplnou kontrolu tabulky. Pojďme tento dotaz optimalizovat přidáním indexu do sloupce **ID** .
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Nové VYSVĚTLIT ukazuje, že MySQL nyní používá index omezit počet řádků, které mají 1, což zase výrazně zkrátit čas hledání.
+Nový VYSVĚTLUJE, že MySQL nyní používá index k omezení počtu řádků na 1, což výrazně zkracuje dobu hledání.
  
-## <a name="covering-index"></a>Pokrývající indexu
-Pokrytí indexu se skládá z dotazu v indexu ke snížení načtení hodnoty z tabulky dat všechny sloupce. Tady je v následující ilustraci **Group** příkazu.
+## <a name="covering-index"></a>Index pokrytí
+Index pokrývání se skládá ze všech sloupců dotazu v indexu, aby se snížilo načítání hodnot z tabulek dat. Tady je ilustrace v následujícím příkazu **Group by** .
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Jak je vidět z výstupu, není použít MySQL žádné indexy, protože nejsou k dispozici žádné indexy správné. Profil také ukazuje *pomocí dočasného; Pomocí souboru řazení*, což znamená, že MySQL vytvoří dočasnou tabulku tím se uspokojí **Group** klauzuli.
+Jak je vidět ve výstupu, MySQL nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů*, což znamená, že MySQL vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
  
-Vytvoření indexu pro sloupec **c2** samostatně neposkytuje žádný rozdíl a MySQL je stále potřeba vytvořit dočasnou tabulku:
+Vytvoření indexu na samostatném sloupci **C2** neposkytuje žádný rozdíl a MySQL stále potřebuje vytvořit dočasnou tabulku:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-V tomto případě **zahrnuté index** u obou **c1** a **c2** mohou být vytvořeny, kterým přidáte hodnotu **c2**"přímo v indexu s Eliminujte další data vyhledávání.
+V tomto případě je možné vytvořit **zahrnutý index** v **C1** i **C2** , přičemž při přidání hodnoty **C2**přímo v indexu se eliminuje další vyhledávání dat.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Jak ukazuje výše VYSVĚTLIT, MySQL nyní používá zahrnuté index a vyhněte se vytváření dočasné tabulky. 
+Jak je VYSVĚTLENo výše, MySQL nyní používá zahrnutý index a nevytváří dočasnou tabulku. 
 
-## <a name="combined-index"></a>Kombinované indexu
-Kombinované indexu obsahuje hodnoty z více sloupců a lze považovat za pole řádků, které jsou seřazené zřetězením hodnoty sloupce s fulltextovými indexy. Tato metoda může být užitečné při **Group** příkazu.
+## <a name="combined-index"></a>Kombinovaný index
+Kombinovaný index obsahuje hodnoty z více sloupců a lze jej považovat za pole řádků, které jsou seřazeny podle zřetězení hodnot indexovaných sloupců. Tato metoda může být užitečná v příkazu **Group by** .
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-Provádí MySQL *řazení souborů* operace, která je velmi pomalé, zejména když má řazení mnoho řádků. Pokud chcete optimalizovat tento dotaz, lze vytvořit kombinované index na oba sloupce, které jsou právě seřazeny.
+MySQL provádí operaci *řazení souborů* , která je poměrně pomalá, zejména v případě, že je potřeba seřadit mnoho řádků. Pro optimalizaci tohoto dotazu lze vytvořit kombinovaný index v obou sloupcích, které jsou seřazeny.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,12 +159,12 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-VYSVĚTLIT teď zobrazuje, je možné použít kombinované index další řazení, protože index je už seřazený, aby MySQL.
+VYSVĚTLENÍ teď ukazuje, že MySQL dokáže pomocí kombinovaného indexu zabránit dalšímu řazení, protože index je už seřazený.
  
 ## <a name="conclusion"></a>Závěr
  
-Pomocí VYSVĚTLIT a jiný typ indexy zvýšit výkon výrazně. Pouze z důvodu máte indexu v tabulce neznamená nutně, že MySQL bude moct používat pro své dotazy. Vždy ověření předpokladů pomocí VYSVĚTLIT a optimalizaci dotazů pomocí indexů.
+Použití vysvětlení a různých typů indexů může výrazně zvýšit výkon. Použití indexu v tabulce nutně neznamená, že MySQL by ho mohl použít pro vaše dotazy. Vysvětlete a Optimalizujte své dotazy pomocí indexů.
 
 
-## <a name="next-steps"></a>Další postup
-- Najít partnera odpovědi na své otázky oblasti vašeho zájmu nebo odeslat nové otázek a odpovědí, najdete v tématu [fórum na webu MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+## <a name="next-steps"></a>Další kroky
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, navštivte [Fórum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

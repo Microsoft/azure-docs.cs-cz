@@ -1,6 +1,6 @@
 ---
-title: Použijte virtuální počítače pro Azure datové vědy
-description: Připojení do Azure Data virtuálního počítače VĚDY můžete rozšířit do poznámkových bloků Azure k dispozici výpočetní výkon.
+title: Použití Virtual Machines pro datové vědy v Azure
+description: Připojte se k Azure Data Science Virtual Machine (DSVM), abyste rozšířili výpočetní výkon, který je k dispozici pro Azure Notebooks.
 services: app-service
 documentationcenter: ''
 author: getroyer
@@ -9,65 +9,64 @@ ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441209"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970105"
 ---
-# <a name="use-azure-data-science-virtual-machines"></a>Použijte virtuální počítače pro Azure datové vědy
+# <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
 
-Ve výchozím nastavení, spouštět projekty **bezplatné Compute** úroveň, která je omezena na 4 GB paměti a 1 GB dat, aby se zabránilo zneužití. Tato omezení můžete obejít a použít jiný virtuální počítač, který zřídíte v předplatném Azure. Pro tento účel, nejlepší volbou je Azure Data virtuálního počítače VĚDY pomocí **virtuální počítač pro datové vědy pro Linux (Ubuntu)** bitové kopie. Takové DSVM vybavená předem nakonfigurovaným rozhraním všechno, co potřebujete pro Azure poznámkových bloků a zobrazí se automaticky on **spustit** rozevíracího seznamu v poznámkových bloků Azure.
+Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní** úrovni, což je omezeno na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Tato omezení můžete obejít tak, že použijete jiný virtuální počítač, který jste zřídili v rámci předplatného Azure. Pro tento účel je nejlepší volbou Azure Data Science Virtual Machine (DSVM) pomocí Image **Data Science Virtual Machine pro Linux (Ubuntu)** . Takový DSVM je předem nakonfigurovaný se všemi potřebnými pro Azure Notebooks a automaticky se zobrazuje v rozevíracím seznamu **Spustit** v Azure Notebooks.
 
 > [!Note]
-> Poznámkových bloků Azure je podporována pouze na datové vytvořené pomocí na image Linux Ubuntu. Poznámkové bloky nejsou podporovány na imagích Windows 2012, Windows 2016 nebo Linux CentOS.
+> Azure Notebooks se podporuje jenom v DSVMs vytvořených pomocí Image Ubuntu pro Linux. Poznámkové bloky nejsou podporované v imagí Windows 2012, Windows 2016 nebo Linux CentOS.
 
-## <a name="create-a-dsvm-instance"></a>Vytvoření DSVM instance
+## <a name="create-a-dsvm-instance"></a>Vytvoření instance DSVM
 
-Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů [vytvoření virtuálního počítače s Ubuntu Data Science](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Další informace, včetně informace o cenách najdete v tématu [virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Pokud chcete vytvořit novou instanci DSVM, postupujte podle pokynů v tématu [Vytvoření Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Další informace, včetně podrobností o cenách, najdete v článku [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="connect-to-the-dsvm"></a>Připojte se k datové VĚDY
+## <a name="connect-to-the-dsvm"></a>Připojení k DSVM
 
-Po jejich vytvoření datové VĚDY, vyberte **spustit** rozevíracího seznamu v poznámkových blocích Azure řídicího panelu Projekt a vyberte příslušnou instanci DSVM. Rozevíracím seznamu zobrazuje DSVM instance, pokud jsou splněny následující podmínky:
+Po vytvoření DSVM vyberte rozevírací seznam **Spustit** na řídicím panelu projektu Azure Notebooks a vyberte příslušnou instanci DSVM. V rozevíracím seznamu se zobrazí instance DSVM, pokud jsou splněné následující podmínky:
 
-- Jste se přihlásili do poznámkových bloků Azure pomocí účtu, který používá Azure Active Directory (AAD), jako je například účet společnosti.
-- Váš účet připojený k předplatnému Azure.
-- Máte jeden nebo více virtuálních počítačů v tomto předplatném s alespoň čtečky přístup, který používá virtuální počítač pro datové vědy pro Linux (Ubuntu) image.)
+- Jste přihlášení k Azure Notebooks pomocí účtu, který používá Azure Active Directory (AAD), jako je například účet společnosti.
+- Váš účet je připojený k předplatnému Azure.
+- Máte jeden nebo více virtuálních počítačů v tomto předplatném, s alespoň přístupem Čtenář, který používá Image Data Science Virtual Machine pro Linux (Ubuntu).)
 
-![Instance data Science virtuálních počítačů v rozevíracím seznamu v řídicím panelu Projekt](media/project-compute-tier-dsvm.png)
+![Instance Data Science Virtual Machine v rozevíracím seznamu na řídicím panelu projekt](media/project-compute-tier-dsvm.png)
 
-Při výběru DSVM instance poznámkových bloků Azure může výzvu pro konkrétní počítač pověření použitá při vytváření virtuálního počítače.
+Když vyberete instanci DSVM, může Azure Notebooks zobrazit výzvu k zadání přihlašovacích údajů pro konkrétní počítač, které jste použili při vytváření virtuálního počítače.
 
-Pokud se některá z podmínek nesplní, můžete se připojit k datové VĚDY. V rozevíracím seznamu vyberte **přímé Compute** možnost, která vás vyzve k zadání názvu (Chcete-li zobrazit v seznamu), IP adresu Virtuálního počítače a port (obvykle 8000, výchozí port, na které naslouchá JupyterHub) a přihlašovací údaje virtuálního počítače:
+Pokud se některá z podmínek nesplní, můžete se ke službě DSVM připojit i nadále. V rozevíracím seznamu vyberte možnost **přímé výpočty** , která vás vyzve k zadání názvu (k zobrazení v seznamu), IP adresy a portu virtuálního počítače (obvykle 8000, výchozího portu, na který JupyterHub naslouchá), a přihlašovacích údajů k virtuálnímu počítači:
 
-![Výzva ke shromažďování informací serveru pro možnost přímého Compute](media/project-compute-tier-direct.png)
+![Dotázat se na shromažďování informací o serveru pro možnost přímé COMPUTE](media/project-compute-tier-direct.png)
 
-Tyto hodnoty získat z DSVM stránky na webu Azure Portal.
+Tyto hodnoty získáte ze stránky DSVM v Azure Portal.
 
-## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Přístup k souborům poznámkových bloků Azure z datové VĚDY
+## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Přístup k souborům Azure Notebooks z DSVM
 
-Přístupu k systému souborů je podporována verze DSVM 19.06.15 nebo novější. Pokud chcete zkontrolovat verzi, nejdřív připojit k vaší DSVM přes protokol SSH a pak spuštěním následujícího příkazu: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (je nutné použít přesnou adresu IP je vidět tady). Číslo verze se zobrazí ve výstupu "verze".
+Přístup k systému souborů je podporován pro DSVM verze 19.06.15 nebo novější. Pokud chcete zjistit verzi, nejdřív se připojte k DSVM přes SSH a pak spusťte následující příkaz: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (musíte použít přesnou IP adresu uvedenou tady). Číslo verze se zobrazí ve výstupu pro "Version".
 
-Chcete-li zachovat parity cesty k souborům s **– Compute úrovně Free** úroveň, budete moci otevřít pouze jeden projekt současně v DSVM. Chcete-li otevřít nový projekt, je nutné vypnout otevřít projekt nejprve.
+Aby se zachovala parita cest k souborům s **bezplatnou výpočetní** vrstvou, můžete na DSVM otevřít jenom jeden projekt. Chcete-li otevřít nový projekt, je třeba nejprve ukončit otevřený projekt.
 
-Při spuštění projektu na virtuálním počítači jsou připojené soubory na kořenovém adresáři serveru Jupyter (adresář ukazuje JupyterHub), nahradí výchozí soubory poznámkových bloků Azure. Když vypnete virtuální počítač pomocí **vypnutí** tlačítko v poznámkovém bloku uživatelského rozhraní, poznámkových bloků Azure obnoví výchozí soubory.
+Když je projekt spuštěn na virtuálním počítači, soubory jsou připojeny do kořenového adresáře serveru Jupyter (adresář zobrazený v JupyterHub) a nahradí výchozí Azure Notebooks soubory. Když virtuální počítač vypnete pomocí tlačítka **vypnout** v uživatelském rozhraní poznámkového bloku, Azure Notebooks obnoví výchozí soubory.
 
-![Tlačítko vypnutí v poznámkových bloků Azure](media/shutdown.png)
+![Tlačítko vypnout v Azure Notebooks](media/shutdown.png)
 
 ## <a name="create-new-dsvm-users"></a>Vytvoření nových uživatelů DSVM
 
-Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování vzájemně vytvořením a použitím uživatel DSVM pro každého uživatele Poznámkový blok:
+Pokud DSVM sdílí více uživatelů, můžete se vyhnout blokování tím, že vytvoříte a použijete uživatele DSVM pro každého uživatele poznámkového bloku:
 
-1. Na [webu Azure Portal](https://portal.azure.com), přejděte ke svému virtuálnímu počítači.
-1. V části **podpora a řešení potíží** do levého okraje vyberte **resetovat heslo**.
-1. Zadejte nové uživatelské jméno a heslo a vyberte **aktualizace**. (Existující uživatelská jména nejsou ovlivněny.)
-1. Předchozí krok opakujte pro všechny další uživatele.
+1. Na webu [Azure Portal](https://portal.azure.com)přejděte do svého virtuálního počítače.
+1. V části **Podpora a řešení potíží** na levém okraji vyberte **resetovat heslo**.
+1. Zadejte nové uživatelské jméno a heslo a pak vyberte **aktualizovat**. (Stávající uživatelská jména nejsou ovlivněna.)
+1. Opakujte předchozí krok pro všechny další uživatele.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o datové na [Úvod k Azure virtuální počítače pro datové vědy](/azure/machine-learning/data-science-virtual-machine/overview).
+Přečtěte si další informace o DSVMs o [Seznámení s Azure Data věda Virtual Machines](/azure/machine-learning/data-science-virtual-machine/overview).

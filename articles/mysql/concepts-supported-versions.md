@@ -1,17 +1,17 @@
 ---
-title: Podporované verze v Azure Database for MySQL
-description: V této části najdete popis podporovaných verzí v Azure Database for MySQL.
+title: Podporované verze – Azure Database for MySQL
+description: Zjistěte, které verze MySQL serveru jsou podporované ve službě Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962591"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970533"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
@@ -48,7 +48,7 @@ Další informace o vylepšeních a opravách v této verzi najdete v [poznámk�
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 Služba automaticky spravuje opravy pro aktualizace verze opravy chyb. Například 5.7.20 na 5.7.21.  
 
-V současné době se nepodporují upgrady Poda hlavních verzí. Například upgrade z MySQL 5,6 na MySQL 5,7 není podporován. Pokud chcete upgradovat z 5,6 na 5,7, proveďte [Výpis paměti a obnovte](./concepts-migrate-dump-restore.md) na server, který byl vytvořen s novou verzí modulu.
+Upgrady dílčích a hlavních verzí se v současné době nepodporují. Například upgrade z MySQL 5.6 na MySQL 5.7 se nepodporuje. Pokud chcete upgradovat z verze 5.6 na verzi 5.7, pořiďte [výpis paměti a obnovte](./concepts-migrate-dump-restore.md) ji na serveru vytvořeném s novou verzí jádra.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,7 +2,7 @@
 title: Nástroje zahrnuté do DSVM
 titleSuffix: Azure Data Science Virtual Machine tools
 description: Seznam nástrojů, které jsou součástí imagí Windows a Ubuntu DSVM
-keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, nástroje pro datové vědy, datové vědy pro Linux
+keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,27 +10,27 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: e8f0eeabd4e869b3812f2d690d2665a8ec31cd14
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950151"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973677"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Jaké nástroje jsou součástí Azure Data Science Virtual Machine?
 
 Níže jsme zahrnuli aktuální seznam nástrojů, které jsou součástí Data Science Virtual Machine, spolu s odkazy na informace o tom, jak je každý nástroj nakonfigurovaný.
 
 
-| **Štětec**                                                           | **DSVM Windows** | **Linux DSVM** | **Poznámky k použití** |
+| **Nástroj**                                                           | **DSVM s Windows** | **Linux DSVM** | **Poznámky k použití** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|:------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) s předinstalovanými oblíbenými balíčky   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [R na DSVM](./dsvm-languages.md#r)           |
 | [Microsoft Machine Learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Edice Developer Edition zahrnuje: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) Parallel and Distributed High Performance Framework (R a Python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), nové nejmodernější algoritmy strojového učení od Microsoftu <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R a Operations Python](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |<span class='green-check'>&#9989;</span>  </br> (9.3.0)                 |<span class='green-check'>&#9989;</span> | |
 | [Systém Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) ProPlus se sdílenou aktivací: Excel, Word a PowerPoint   |<span class='green-check'>&#9989;</span>                       |<span class='red-x'>&#10060;</span>              | |
 | [Anaconda Python](https://www.continuum.io/) 2,7 a 3,5 s předinstalovanými oblíbenými balíčky    |<span class='green-check'>&#9989;</span>                       |<span class='green-check'>&#9989;</span></br> (4,2)        | |
-| [JuliaPro](https://juliacomputing.com/products/juliapro.html) s oblíbenými balíčky pro předinstalované jazyky Helena                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [Helena na DSVM](./dsvm-languages.md#julia) |
+| [JuliaPro](https://juliacomputing.com/products/juliapro.html) s předinstalovanými oblíbenými balíčky pro jazyk Julia                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [Helena na DSVM](./dsvm-languages.md#julia) |
 | Relační databáze                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) | [SQL Server na DSVM](./dsvm-data-platforms.md#sql-server-2017-developer-edition) |
-| Databázové nástroje                                                       |  SQL Server Management Studio <br/> služba SSIS (SQL Server Integration Services)<br/> [BCP, Sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  Ovladače ODBC/JDBC|  [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/) (Nástroj pro dotazování), <br />  BCP, Sqlcmd <br />  Ovladače ODBC/JDBC| |
+| Databázové nástroje                                                       |  SQL Server Management Studio <br/> Služba SSIS (SQL Server Integration Services)<br/> [BCP, Sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  Ovladače ODBC/JDBC|  [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/) (Nástroj pro dotazování), <br />  BCP, Sqlcmd <br />  Ovladače ODBC/JDBC| |
 | Škálovatelná analýza v databázi pomocí služby SQL Server Machine Learning Services (R, Python) |<span class='green-check'>&#9989;</span>    | <span class='red-x'>&#10060;</span>                | |
 | [Jupyter notebook Server](https://jupyter.org/) s následujícími jádry:                                  |<span class='green-check'>&#9989;</span></br> 5\.5.0   |<span class='green-check'>&#9989;</span> | [Ukázky Jupyter Notebook](./dsvm-samples-and-walkthroughs.md) | 
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 R |<span class='green-check'>&#9989;</span></br> 3\.4.3 |<span class='green-check'>&#9989;</span></br> 3\.4.3 | [Ukázky R Jupyter](./dsvm-samples-and-walkthroughs.md#r-language) |
@@ -55,7 +55,7 @@ Níže jsme zahrnuli aktuální seznam nástrojů, které jsou součástí Data 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [OpenJDK](https://openjdk.java.net) |<span class='green-check'>&#9989;</span></br> (1.8.0_201) |<span class='green-check'>&#9989;</span></br> (1.8.0_222) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET Framework |<span class='green-check'>&#9989;</span></br> 4\.7.2 |<span class='red-x'>&#10060;</span>   | |
 | [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
-| Sady SDK pro přístup k Azure a Cortana Intelligence Suite služeb |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [Power BI plochu na DSVM](./dsvm-tools-development.md#power-bi-desktop) |
+| Sady SDK pro přístup ke službám Azure a Cortana Intelligence Suite |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [Power BI plochu na DSVM](./dsvm-tools-development.md#power-bi-desktop) |
 | Nástroje pro přesun a správu dat: | | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Průzkumník služby Azure Storage](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.6.2 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure CLI](https://docs.microsoft.com/cli/azure) |<span class='green-check'>&#9989;</span></br> (2.0.56) |<span class='green-check'>&#9989;</span></br> (2.0.58) | |
@@ -81,6 +81,9 @@ Níže jsme zahrnuli aktuální seznam nástrojů, které jsou součástí Data 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Horovod](https://github.com/horovod/horovod) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (0.16.1) | [Horovod na DSVM](./dsvm-deep-learning-ai-frameworks.md#horovod) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Keras](https://keras.io) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 2\.2.4 | [Keras na DSVM](./dsvm-deep-learning-ai-frameworks.md#keras) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/en-us/cognitive-toolkit/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 2\.5.1 | [CNTK na DSVM](./dsvm-deep-learning-ai-frameworks.md#microsoft-cognitive-toolkit-cntk) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet](https://mxnet.apache.org/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.3.0) | [MXNet na DSVM](./dsvm-deep-learning-ai-frameworks.md#mxnet) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MXNet Server modelu](https://github.com/awslabs/mxnet-model-server#quick-start) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 1\.0.1 | [MXNet model Server na DSVM](./dsvm-deep-learning-ai-frameworks.md#mxnet-model-server) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [NVIDIA System Management Interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br>| [NVIDIA-SMI na DSVM](./dsvm-deep-learning-ai-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [PyTorch](https://pytorch.org) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.2.0 | [PyTorch na DSVM](./dsvm-deep-learning-ai-frameworks.md#pytorch) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow](https://www.tensorflow.org) |<span class='green-check'>&#9989;</span></br> (1,13) |<span class='green-check'>&#9989;</span></br> (1,13) | [TensorFlow na DSVM](./dsvm-deep-learning-ai-frameworks.md#tensorflow) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow obsluhující](https://www.tensorflow.org/tfx/guide/serving) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (1.12.0) | [TensorFlow obsluhující DSVM](./dsvm-deep-learning-ai-frameworks.md#tensorflow-serving) |

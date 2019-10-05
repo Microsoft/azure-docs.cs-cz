@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695117"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973808"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze v QnA Maker
 QnA Maker se nejlépe učí v iterativním koloběhu změn modelu, příkladů utterance, publikování a shromažďování dat z dotazů na koncové body. 
@@ -24,7 +24,7 @@ QnA Maker se nejlépe učí v iterativním koloběhu změn modelu, příkladů u
 ![Cyklus vytváření](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>Vytváření QnA Maker znalostní báze
-QnA Maker koncový bod znalostní báze (KB) poskytuje nejvhodnější odpověď na dotaz na uživatele na základě obsahu KB. Vytvoření znalostní báze je jednorázová akce pro nastavení úložiště obsahu otázek, odpovědí a přidružených metadat. Znalostní bázi se dá vytvořit procházením již existujícího obsahu, jako jsou nejčastější dotazy, příručky k produktům nebo strukturované páry Q-A. Přečtěte si, jak [vytvořit znalostní bázi](../How-To/create-knowledge-base.md).
+QnA Maker koncový bod znalostní báze (KB) poskytuje nejvhodnější odpověď na dotaz na uživatele na základě obsahu KB. Vytvoření znalostní báze je jednorázová akce pro nastavení úložiště obsahu otázek, odpovědí a přidružených metadat. Znalostní bázi se dá vytvořit procházením již existujícího obsahu, jako jsou nejčastější dotazy, příručky k produktům nebo strukturované páry Q-A. Přečtěte si, jak [vytvořit znalostní bázi](../quickstarts/create-publish-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testování a aktualizace znalostní báze
 
@@ -74,8 +74,3 @@ Pokud se potřebujete vrátit ke konkrétní verzi, budete muset tento soubor na
 
 > [!div class="nextstepaction"]
 > [Hodnocení spolehlivosti](./confidence-score.md)
-
-## <a name="see-also"></a>Viz také: 
-
-[Znalostní báze](./knowledge-base.md)
-[QnA maker přehled](../Overview/overview.md)

@@ -1,27 +1,27 @@
 ---
-title: Replikovat data do Azure Database for MariaDB.
-description: Tento článek popisuje replikaci dat v Azure Database for MariaDB.
+title: Replikovat data do Azure Database for MariaDB
+description: Přečtěte si informace o použití replikace dat k synchronizaci z externího serveru do služby Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 826a6db289bf8b938e85d270f91836b3d8790206
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993030"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973639"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikovat data do Azure Database for MariaDB
 
 Replikace vstupních dat umožňuje synchronizovat data ze serveru MariaDB spuštěného v místním prostředí, na virtuálních počítačích nebo v databázových službách hostovaných jinými poskytovateli cloudových služeb do služby Azure Database for MariaDB. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MariaDB. Další informace o replikaci binlog najdete v tématu [Přehled replikace binlog](https://mariadb.com/kb/en/library/replication-overview/).
 
-## <a name="when-to-use-data-in-replication"></a>Kdy použít replikaci dat
-V hlavních scénářích, které je potřeba zvážit při replikaci dat, jsou tyto:
+## <a name="when-to-use-data-in-replication"></a>Kdy použít Replikace vstupních dat
+V hlavních scénářích, které je potřeba zvážit, je použití Replikace vstupních dat:
 
-- **Synchronizace hybridních dat:** Díky replikaci dat můžete udržovat data synchronizovaná mezi místními servery a Azure Database for MariaDB. Tato synchronizace je užitečná pro vytváření hybridních aplikací. Tato metoda je odvolání, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
-- **Synchronizace více cloudů:** V případě komplexních cloudových řešení můžete pomocí replikace dat synchronizovat data mezi Azure Database for MariaDB a různými poskytovateli cloudu, včetně virtuálních počítačů a databázových služeb hostovaných v těchto cloudech.
+- **Synchronizace hybridních dat:** Pomocí Replikace vstupních dat můžete udržovat data synchronizovaná mezi místními servery a Azure Database for MariaDB. Tato synchronizace je užitečná pro vytváření hybridních aplikací. Tato metoda je odvolání, pokud máte existující místní databázový server, ale chcete přesunout data do oblasti blíže koncovým uživatelům.
+- **Synchronizace více cloudů:** Pro komplexní cloudová řešení použijte Replikace vstupních dat k synchronizaci dat mezi Azure Database for MariaDB a různými poskytovateli cloudu, včetně virtuálních počítačů a databázových služeb hostovaných v těchto cloudech.
 
 ## <a name="limitations-and-considerations"></a>Omezení a požadavky
 
@@ -31,16 +31,16 @@ V hlavních scénářích, které je potřeba zvážit při replikaci dat, jsou 
 ### <a name="requirements"></a>Požadavky
 - Verze hlavního serveru musí být minimálně MariaDB verze 10,2.
 - Verze hlavního serveru a serveru repliky musí být stejné. Oba typy musí být například MariaDB verze 10,2.
-- Každá tabulka musí obsahovat primární klíč.
+- Každá tabulka musí mít primární klíč.
 - Hlavní server by měl používat modul InnoDB.
 - Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na hlavním serveru.
-- Pokud má hlavní server povolený protokol SSL, ujistěte se, že je v `mariadb.az_replication_change_master` uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu. Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
+- Pokud má hlavní server povolený protokol SSL, ujistěte se, že certifikát certifikační autority SSL zadaný pro doménu byl zahrnutý v uložené proceduře `mariadb.az_replication_change_master`. Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) a parametr `master_ssl_ca`.
 - Ujistěte se, že se IP adresa hlavního serveru přidala do pravidel brány firewall serveru repliky Azure Database for MariaDB. Pomocí webu [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) nebo [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který je hostitelem hlavního serveru, umožňuje příchozí i odchozí provoz na portu 3306.
 - Ujistěte se, že hlavní server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak [nastavit replikaci dat](howto-data-in-replication.md).

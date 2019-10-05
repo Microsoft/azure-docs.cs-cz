@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží s výkonem dotazů ve službě Azure Database pro MariaDB
-description: Tento článek popisuje postup řešení potíží s výkonem dotazů ve službě Azure Database pro MariaDB pomocí VYSVĚTLIT.
+title: Řešení potíží s výkonem dotazů v Azure Database for MariaDB
+description: Naučte se používat vysvětlení pro řešení potíží s výkonem dotazů v Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745158"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973511"
 ---
-# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat VYSVĚTLIT profil výkonu dotazů ve službě Azure Database pro MariaDB
-**VYSVĚTLUJÍ** je užitečný nástroj pro optimalizaci dotazů. VYSVĚTLUJE, že příkaz je možné získat informace o tom, jak jsou spouštěny příkazy SQL. Následující výstup je příkladem spuštění příkazu VYSVĚTLIT.
+# <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MariaDB
+**Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-Jak je vidět v tomto příkladu, hodnota proměnné *klíč* má hodnotu NULL. Tento výstup znamená, že MariaDB nelze najít žádné indexy optimalizované pro dotaz a provede ke skenování celé tabulky. Pojďme optimalizovat tak, že přidáte indexu na tento dotaz **ID** sloupce.
+Jak je vidět v tomto příkladu, hodnota *klíče* je null. Tento výstup znamená, že MariaDB nemůže najít žádné indexy optimalizované pro dotaz a provede úplnou kontrolu tabulky. Pojďme tento dotaz optimalizovat přidáním indexu do sloupce **ID** .
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -53,10 +53,10 @@ possible_keys: id
         Extra: NULL
 ```
 
-Nové VYSVĚTLIT ukazuje, že MariaDB nyní používá index omezit počet řádků, které mají 1, což zase výrazně zkrátit čas hledání.
+Nový VYSVĚTLUJE, že MariaDB nyní používá index k omezení počtu řádků na 1, což výrazně zkracuje dobu hledání.
  
-## <a name="covering-index"></a>Pokrývající indexu
-Pokrytí indexu se skládá z dotazu v indexu ke snížení načtení hodnoty z tabulky dat všechny sloupce. Tady je v následující ilustraci **Group** příkazu.
+## <a name="covering-index"></a>Index pokrytí
+Index pokrývání se skládá ze všech sloupců dotazu v indexu, aby se snížilo načítání hodnot z tabulek dat. Tady je ilustrace v následujícím příkazu **Group by** .
  
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
@@ -75,9 +75,9 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Jak je vidět z výstupu, není použít MariaDB žádné indexy, protože nejsou k dispozici žádné správné indexy. Profil také ukazuje *pomocí dočasného; Pomocí souboru řazení*, což znamená, že MariaDB vytvoří dočasnou tabulku tím se uspokojí **Group** klauzuli.
+Jak je vidět ve výstupu, MariaDB nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů*, což znamená, že MariaDB vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
  
-Vytvoření indexu pro sloupec **c2** samostatně neposkytuje žádný rozdíl a MariaDB stále potřebuje k vytvoření dočasné tabulky:
+Vytvoření indexu na samostatném sloupci **C2** nijak neumožňuje žádný rozdíl a MariaDB ještě potřebuje vytvořit dočasnou tabulku:
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY (c2);
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-V tomto případě **zahrnuté index** u obou **c1** a **c2** mohou být vytvořeny, kterým přidáte hodnotu **c2**"přímo v indexu s Eliminujte další data vyhledávání.
+V tomto případě je možné vytvořit **zahrnutý index** v **C1** i **C2** , přičemž při přidání hodnoty **C2**přímo v indexu se eliminuje další vyhledávání dat.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
@@ -117,10 +117,10 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-Jak ukazuje výše VYSVĚTLIT, MariaDB nyní používá zahrnuté index a vyhněte se vytváření dočasné tabulky. 
+Jak je VYSVĚTLENo výše, MariaDB nyní používá zahrnutý index a vyhněte se vytváření dočasné tabulky. 
 
-## <a name="combined-index"></a>Kombinované indexu
-Kombinované indexu obsahuje hodnoty z více sloupců a lze považovat za pole řádků, které jsou seřazené zřetězením hodnoty sloupce s fulltextovými indexy. Tato metoda může být užitečné při **Group** příkazu.
+## <a name="combined-index"></a>Kombinovaný index
+Kombinovaný index obsahuje hodnoty z více sloupců a lze jej považovat za pole řádků, které jsou seřazeny podle zřetězení hodnot indexovaných sloupců. Tato metoda může být užitečná v příkazu **Group by** .
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-Provádí MariaDB *řazení souborů* operace, která je velmi pomalé, zejména když má řazení mnoho řádků. Pokud chcete optimalizovat tento dotaz, lze vytvořit kombinované index na oba sloupce, které jsou právě seřazeny.
+MariaDB provádí operaci *řazení souborů* , která je poměrně pomalá, zejména v případě, že je potřeba seřadit mnoho řádků. Pro optimalizaci tohoto dotazu lze vytvořit kombinovaný index v obou sloupcích, které jsou seřazeny.
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -159,11 +159,11 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-VYSVĚTLIT teď zobrazuje, že je možné použít kombinované index další řazení, protože index je už seřazený, aby MariaDB.
+VYSVĚTLUJE nyní ukazuje, že MariaDB může použít kombinovaný index, aby se zabránilo dalšímu řazení, protože index je již seřazen.
  
 ## <a name="conclusion"></a>Závěr
  
-Pomocí VYSVĚTLIT a jiný typ indexy zvýšit výkon výrazně. Pouze z důvodu máte indexu v tabulce neznamená, že MariaDB bylo by možné ho použít pro vaše dotazy. Vždy ověření předpokladů pomocí VYSVĚTLIT a optimalizaci dotazů pomocí indexů.
+Použití vysvětlení a různých typů indexů může výrazně zvýšit výkon. Index v tabulce nemusí nutně znamenat, že by MariaDB mohl použít pro vaše dotazy. Vysvětlete a Optimalizujte své dotazy pomocí indexů.
 
-## <a name="next-steps"></a>Další postup
-- Najít partnera odpovědi na své otázky oblasti vašeho zájmu nebo odeslat nové otázek a odpovědí, najdete v tématu [fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+## <a name="next-steps"></a>Další kroky
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, navštivte [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

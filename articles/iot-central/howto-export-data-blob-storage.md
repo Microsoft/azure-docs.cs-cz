@@ -4,30 +4,30 @@ description: Jak exportovat data z aplikace Azure IoT Central do Azure Blob Stor
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 7ee9d2bf32fcec5f5f4435fe09916f437d6323ee
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876050"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971670"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportujte data do Azure Blob Storage
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *Toto téma se týká správců.*
 
-Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Azure IoT Central pravidelně exportovat data do svého **účtu služby Azure Blob Storage**. **Měření**, **zařízení**a **šablony zařízení** můžete exportovat do souborů ve formátu Apache Avro. Exportovaná data je možné použít pro analýzu studených cest, jako jsou školicí modely v Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
+Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Azure IoT Central pravidelně exportovat data do **účtu služby Azure Blob Storage** nebo do **účtu úložiště Azure Data Lake Storage Gen2**. **Měření**, **zařízení**a **šablony zařízení** můžete exportovat do souborů ve formátu JSON nebo Apache Avro. Exportovaná data je možné použít pro analýzu studených cest, jako jsou školicí modely v Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
 
 > [!Note]
-> Po opětovném zapnutí průběžného exportu dat získáte od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
+> Když zapnete export průběžných dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí průběžného exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte průběžný export dat.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být správcem aplikace IoT Central.
 
@@ -36,17 +36,15 @@ Tento článek popisuje, jak pomocí funkce pro export nepřetržitých dat v Az
 
 Pokud nemáte existující úložiště pro export do, postupujte takto:
 
-## <a name="create-storage-account"></a>Vytvořit účet úložiště
-
-1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace najdete v [dokumentaci Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
-2. Jako typ účtu vyberte **obecné účely** nebo **úložiště objektů BLOB**.
-3. Vyberte předplatné. 
+1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů úložiště Azure Blob](https://aka.ms/blobdocscreatestorageaccount) nebo [Azure Data Lake Storagech účtů úložiště v2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account).
 
     > [!Note] 
-    > Teď můžete exportovat data do jiných předplatných, která se neshodují s touto aplikací pro IoT Central s průběžnými platbami. V tomto případě se připojíte pomocí připojovacího řetězce.
+    > Pokud se rozhodnete exportovat data do účtu úložiště ADLS v2, musíte zvolit **druh účtu** jako **BlobStorage**. 
 
-4. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. Vybrat **+ kontejner** v horní části a vytvořit nový kontejner
+    > [!Note] 
+    > Data můžete exportovat do účtů úložiště v předplatných, která jsou odlišná než ta pro vaši průběžné platby IoT Central. V tomto případě se připojíte pomocí připojovacího řetězce.
 
+2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
 
 ## <a name="set-up-continuous-data-export"></a>Nastavení exportu průběžných dat
 
@@ -54,19 +52,17 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
 
 1. Přihlaste se k aplikaci IoT Central.
 
-2. V nabídce vlevo vyberte průběžný **Export dat**.
+2. V nabídce vlevo vyberte **exportovat data**.
 
     > [!Note]
-    > Pokud v levé nabídce nevidíte průběžný export dat, nejste správcem vaší aplikace. Pokud chcete nastavit export dat, obraťte se na správce.
-
-    ![Vytvořit nové centrum událostí CDE](media/howto-export-data/export_menu1.png)
+    > Pokud v nabídce vlevo nevidíte exportovat data, nejste správcem vaší aplikace. Pokud chcete nastavit export dat, obraťte se na správce.
 
 3. V pravém horním rohu vyberte tlačítko **+ Nový** . Jako cíl exportu vyberte **Azure Blob Storage** . 
 
     > [!NOTE] 
     > Maximální počet exportů na aplikaci je pět. 
 
-    ![Vytvořit nový export průběžných dat](media/howto-export-data/export_new1.png)
+    ![Vytvořit nový export průběžných dat](media/howto-export-data/export-new2.png)
 
 4. V rozevíracím seznamu vyberte svůj **obor názvů účtu úložiště**. Můžete také vybrat poslední možnost v seznamu a **zadat připojovací řetězec**. 
 
@@ -76,34 +72,41 @@ Teď, když máte cíl úložiště pro export dat, postupujte podle těchto kro
     > [!NOTE] 
     > U 7 dní zkušebních aplikací je jediným způsobem konfigurace průběžného exportu dat prostřednictvím připojovacího řetězce. Důvodem je to, že 7 dní zkušebních aplikací nemá přidružené předplatné Azure.
 
-    ![Vytvořit nové centrum událostí CDE](media/howto-export-data/export-create-blob.png)
+    ![Vytvořit nový export do objektu BLOB](media/howto-export-data/export-create-blob2.png)
 
-5. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Získání připojovacího řetězce pro:
-    - Účet úložiště, v Azure Portal přejít na účet úložiště.
-        - V části **Nastavení**vyberte **přístupové klíče** .
-        - Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
+5. Volitelné Pokud jste zvolili **zadat připojovací řetězec**, zobrazí se nové okno pro vložení připojovacího řetězce. Pokud chcete získat připojovací řetězec pro váš účet úložiště, přejděte do účtu úložiště v Azure Portal:-v části **Nastavení**vyberte **přístupové klíče** . Zkopírujte buď připojovací řetězec klíč1, nebo připojovací řetězec key2.
  
-6. V rozevíracím seznamu vyberte kontejner.
+6. V rozevíracím seznamu vyberte kontejner. Pokud nemáte kontejner, v Azure Portal přejít na svůj účet úložiště:
+    - V části **BLOB Service**vyberte **objekty blob**. Klikněte na **+ kontejner** a zadejte název svého kontejneru. Vyberte úroveň veřejného přístupu pro vaše data (všechny budou fungovat s průběžným exportem dat). Další informace najdete v [dokumentaci Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
 
-7. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
+7. Vyberte **Formát dat** , který dáváte přednost: formát JSON nebo [Apache Avro](https://avro.apache.org/docs/current/index.html) .
 
-6. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se,že je **Export dat** zapnutý. Vyberte **Uložit**.
+8. V části **data, která chcete exportovat**, určete každý typ dat k exportu nastavením typ na **zapnuto**.
 
-   ![Konfigurace průběžného exportu dat](media/howto-export-data/export-list-blob.png)
+9. Pokud chcete zapnout funkci průběžného exportu dat, ujistěte se, že je **zapnutý přepínač pro** **Export dat** . Vyberte **Save** (Uložit).
 
-7. Po několika minutách se vaše data zobrazí ve zvoleném cíli.
+   ![Konfigurace průběžného exportu dat](media/howto-export-data/export-list-blob2.png)
+
+10. Po několika minutách se vaše data zobrazí ve vašem účtu úložiště.
 
 
-## <a name="export-to-azure-blob-storage"></a>Exportovat do Azure Blob Storage
+## <a name="path-structure"></a>Struktura cesty
 
-Data o měřeních, zařízeních a šablonách zařízení se exportují na účet úložiště jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou ve formátu [Apache Avro](https://avro.apache.org/docs/current/index.html) a budou exportována do tří složek. Výchozí cesty v účtu úložiště jsou:
-- Zprávy: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Zařízení: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Šablony zařízení: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Data o měřeních, zařízeních a šablonách zařízení se exportují na účet úložiště jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou umístěna ve třech složkách ve formátu JSON nebo Avro. Výchozí cesty v účtu úložiště jsou:
+- Zprávy: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Zařízení: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Šablony zařízení: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+
+Exportované soubory můžete procházet v Azure Portal tak, že přejdete do souboru a kliknete na kartu **Upravit objekt BLOB** .
+
+## <a name="data-format"></a>Formát dat 
 
 ### <a name="measurements"></a>Měření
 
 Data exportovaných měření mají všechny nové zprávy přijaté IoT Central ze všech zařízení během této doby. Exportované soubory používají stejný formát jako soubory zpráv exportované [IoT Hub směrováním zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů BLOB.
+
+> [!NOTE]
+> Ujistěte se, že vaše zařízení odesílají zprávy, které mají `contentType: application/JSON` a `contentEncoding:utf-8` (nebo `utf-16`, `utf-32`). Příklad najdete v [dokumentaci k IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body) .
 
 > [!NOTE]
 > Zařízení, která odesílají měření, jsou představována ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Proveďte korelaci každého záznamu zprávy pomocí **connectionDeviceId** , který odpovídá poli **deviceId** záznamu zařízení.
@@ -111,25 +114,25 @@ Data exportovaných měření mají všechny nové zprávy přijaté IoT Central
 Následující příklad ukazuje záznam v Dekódovatelné Avro souboru:
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-06-11T00:00:08.2250000Z",
+  "Properties":{},
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceId>",
+    "connectionAuthMethod":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"<generationId>",
+    "enqueuedTime":"2019-06-11T00:00:08.2250000Z"
+  },
+  "Body":"{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
 }
 ```
 
 ### <a name="devices"></a>Zařízení
 
 Pokud je nejprve zapnutý průběžný export dat, je exportován jeden snímek se všemi zařízeními. Každé zařízení zahrnuje:
-- `id`zařízení v IoT Central
-- `name`zařízení
-- `deviceId`ze [služby Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- `id` zařízení v IoT Central
+- `name` zařízení
+- @no__t – 0 ze [služby Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
 - Informace o šabloně zařízení
 - Hodnoty vlastností
 - Nastavení hodnot
@@ -144,42 +147,42 @@ Nový snímek se zapisuje jednou za minutu. Snímek obsahuje:
 >
 > Šablona zařízení, do které patří každé zařízení, je reprezentovaná ID šablony zařízení. Pokud chcete získat název šablony zařízení, exportujte snímky šablony zařízení.
 
-Záznam v Dekódovatelné Avro souboru může vypadat takto:
+Exportované soubory obsahují jeden řádek na záznam. Následující příklad ukazuje záznam ve formátu Avro Dekódovatelné:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "id":"<id>",
+  "name":"Refrigerator 2",
+  "simulated":true,
+  "deviceId":"<deviceId>",
+  "deviceTemplate":{ 
+    "id":"<template id>",
+    "version":"1.0.0"
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":"New York",
+      "maintCon":true,
+      "tempThresh":20
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
+    "device":{ 
+      "lastReboot":"2018-02-09T22:22:47.156Z"
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":0
+    }
+  }
 }
 ```
 
 ### <a name="device-templates"></a>Šablony zařízení
 
 Pokud je nejprve zapnutý průběžný export dat, je exportován jeden snímek se všemi šablonami zařízení. Každá šablona zařízení zahrnuje:
-- `id`šablony zařízení
-- `name`šablony zařízení
-- `version`šablony zařízení
+- `id` šablony zařízení
+- `name` šablony zařízení
+- `version` šablony zařízení
 - Měření datových typů a minimální/maximální hodnoty.
 - Datové typy a výchozí hodnoty vlastností.
 - Nastavení datových typů a výchozích hodnot.
@@ -192,79 +195,79 @@ Nový snímek se zapisuje jednou za minutu. Snímek obsahuje:
 > [!NOTE]
 > Šablony zařízení odstraněné od posledního snímku se neexportují. V současné době snímky nemají indikátory pro odstraněné šablony zařízení.
 
-Záznam v Dekódovatelné Avro souboru může vypadat takto:
+Exportované soubory obsahují jeden řádek na záznam. Následující příklad ukazuje záznam ve formátu Avro Dekódovatelné:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
+{ 
+  "id":"<id>",
+  "name":"Refrigerated Vending Machine",
+  "version":"1.0.0",
+  "measurements":{ 
+    "telemetry":{ 
+      "humidity":{ 
+        "dataType":"double",
+        "name":"Humidity"
+      },
+      "magnetometerX":{ 
+        "dataType":"double",
+        "name":"Magnetometer X"
+      },
+      "magnetometerY":{ 
+        "dataType":"double",
+        "name":"Magnetometer Y"
+      },
+      "magnetometerZ":{ 
+        "dataType":"double",
+        "name":"Magnetometer Z"
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
+    "states":{ 
+      "connectivity":{ 
+        "dataType":"enum",
+        "name":"Connectivity"
+      }
     },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
+    "events":{ 
+      "opened":{ 
+        "name":"Door Opened",
+        "category":"informational"
+      }
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":{ 
+        "dataType":"double",
+        "name":"Fan Speed",
+        "initialValue":0
+      }
+    }
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":{ 
+        "dataType":"string",
+        "name":"Location",
+        "initialValue":"Seattle"
+      },
+      "maintCon":{ 
+        "dataType":"boolean",
+        "name":"Maintenance Contract",
+        "initialValue":true
+      },
+      "tempThresh":{ 
+        "dataType":"double",
+        "name":"Temperature Alert Threshold",
+        "initialValue":30
+      }
+    },
+    "device":{ 
+      "lastReboot":{ 
+        "dataType":"dateTime",
+        "name":"Last Reboot"
+      }
+    }
+  }
 }
 ```
 
@@ -642,7 +645,7 @@ function load(filePath) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak exportovat data, pokračujte k dalšímu kroku:
 

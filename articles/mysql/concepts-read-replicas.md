@@ -1,17 +1,17 @@
 ---
 title: Čtení replik v Azure Database for MySQL.
-description: Tento článek popisuje repliky pro čtení pro Azure Database for MySQL.
+description: 'Přečtěte si o replikách pro čtení v Azure Database for MySQL: výběr oblastí, vytváření replik, připojení k replikám, monitorování replikace a zastavení replikace.'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: cdcb4832408b9e26e692a055e06bfb55e2fdfe96
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993104"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970387"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -36,10 +36,10 @@ Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Repl
 
 Hlavní server můžete mít v libovolné [Azure Database for MySQL oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na vaší hlavní oblasti.
 
-[![Čtení oblastí repliky](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[@no__t – oblasti repliky 1Read](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
-Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Jedná se o oblasti univerzální repliky:
+Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
 
 Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2.
 
@@ -51,9 +51,9 @@ Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotaven�
 
 Je však třeba vzít v úvahu omezení: 
 
-* Dostupnost podle oblastí: Azure Database for MySQL je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
+* Regionální dostupnost: Azure Database for MySQL je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
-* Jednosměrné páry: Některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
+* Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
    To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
 
 
@@ -63,7 +63,7 @@ Pokud hlavní server nemá žádné existující servery repliky, hlavní server
 
 Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for MySQL server. Nový server je vyplněn daty, která byla na hlavním serveru. Čas vytvoření závisí na množství dat v hlavní databázi a na čase od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin.
 
-U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace způsobené chybou úložiště.
+U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace v důsledku chyb způsobených nedostatkem úložiště.
 
 Naučte se [vytvořit repliku pro čtení v Azure Portal](howto-read-replicas-portal.md).
 
@@ -85,11 +85,11 @@ Na příkazovém řádku zadejte heslo pro uživatelský účet.
 
 Azure Database for MySQL poskytuje metriku **prodlevy replikace v sekundách** v Azure monitor. Tato metrika je k dispozici pouze pro repliky.
 
-Tato metrika se počítá pomocí `seconds_behind_master` metriky dostupné v `SHOW SLAVE STATUS` příkazu MySQL.
+Tato metrika se počítá pomocí metriky `seconds_behind_master` dostupné v příkazu `SHOW SLAVE STATUS` MySQL.
 
 Nastavte výstrahu, která vás informuje, když prodleva replikace dosáhne hodnoty, která není pro vaše zatížení přijatelná.
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 
 Replikaci mezi hlavní a replikou můžete zastavit. Po zastavení replikace mezi hlavním serverem a replikou pro čtení se replika samostatného serveru. Data na samostatném serveru jsou data, která byla v replice k dispozici v době spuštění příkazu pro zastavení replikace. Samostatný server není zachytávání s hlavním serverem.
 
@@ -109,7 +109,7 @@ Repliky čtení jsou v tuto chvíli dostupné jenom v Pro obecné účely a pam�
 
 ### <a name="master-server-restart"></a>Restartování hlavního serveru
 
-Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Věnujte prosím tuto pozornost a udělejte tyto operace v době mimo špičku.
+Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
 
 ### <a name="new-replicas"></a>Nové repliky
 
@@ -136,15 +136,15 @@ Uživatelé na hlavním serveru se replikují do replik pro čtení. K replice p
 
 ### <a name="server-parameters"></a>Parametry serveru
 
-Aby nedocházelo k nedostatku synchronizace dat a aby se předešlo potenciálním ztrátám nebo poškození dat, některé parametry serveru jsou při použití replik čtení zamčené.
+Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci.
 
 Následující parametry serveru jsou uzamčené na hlavním serveru i na serverech repliky:
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametr je uzamčen na serverech repliky. 
+Parametr [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) je na serverech repliky uzamčen. 
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 - Vytvoření repliky repliky není podporováno.
@@ -152,7 +152,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 - Zajistěte, aby tabulky hlavního serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi hlavními a replikami.
 - Úplný seznam omezení replikace MySQL najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure Portal](howto-read-replicas-portal.md)
 - Naučte se [vytvářet a spravovat repliky pro čtení pomocí Azure CLI a REST API](howto-read-replicas-cli.md)

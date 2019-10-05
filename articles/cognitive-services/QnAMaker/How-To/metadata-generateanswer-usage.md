@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300249"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971811"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -48,7 +48,7 @@ Po publikování znalostní báze z [QnA Makerového portálu](https://www.qnama
 Jak získat podrobnosti o koncovém bodu:
 1. Přihlaste se k webu [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. V **seznamu Moje znalostní**báze vyberte možnost **Zobrazit kód** pro znalostní bázi.
-    ![Snímek obrazovky se základy naší znalostní báze](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+    @no__t – 0Screenshot základů znalostní báze @ no__t-1
 1. Získejte podrobnosti o GenerateAnswer koncového bodu.
 
     ![Snímek obrazovky s podrobnostmi koncového bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -64,7 +64,7 @@ GenerateAnswer zavoláte s požadavkem HTTP POST. Vzorový kód, který ukazuje,
 Požadavek POST používá:
 
 * Požadované [parametry identifikátoru URI](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* `Authorization`Požadovaná [vlastnost hlavičky](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), pro zabezpečení
+* Pro zabezpečení je vyžadována [vlastnost hlavičky](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization`.
 * Požadované [vlastnosti těla](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
 
 Adresa URL GenerateAnswer má následující formát: 
@@ -73,7 +73,7 @@ Adresa URL GenerateAnswer má následující formát:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Nezapomeňte nastavit vlastnost `Authorization` hlaviček protokolu HTTP s hodnotou řetězce `EndpointKey` s koncovým místem, na které se nachází klíč koncového bodu na stránce **Nastavení** .
+Nezapomeňte nastavit vlastnost hlaviček protokolu HTTP `Authorization` s hodnotou řetězce `EndpointKey` s koncovým místem, na které se nachází klíč koncového bodu na stránce **Nastavení** .
 
 Ukázkový text JSON vypadá takto:
 
@@ -161,7 +161,7 @@ Robot podpory obsahuje [příklad](https://github.com/microsoft/BotBuilder-Sampl
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Filtrování odpovědí podle vlastních značek metadat pomocí metadat
 
-Přidání metadat umožňuje filtrovat odpovědi pomocí těchto značek metadat. Přidejte sloupec metadata z nabídky **Možnosti zobrazení** . Přidejte metadata do znalostní báze tak, že vyberete ikonu **+** metadat a přidáte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
+Přidání metadat umožňuje filtrovat odpovědi pomocí těchto značek metadat. Přidejte sloupec metadata z nabídky **Možnosti zobrazení** . Přidejte metadata do znalostní báze tak, že vyberete ikonu metadata **+** a přidáte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
 ![Snímek obrazovky s přidáním metadat](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -219,9 +219,9 @@ Odpověď na GenerateAnswer obsahuje odpovídající informace metadat pro sadu 
 
 ## <a name="match-questions-only-by-text"></a>Odpovídá jenom na otázky, podle textu
 
-Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vygenerovat odpověď pouze `RankerType=QuestionOnly` v rámci otázek, použijte v těle žádosti GenerateAnswer v části post.
+Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vyhledávat pouze otázky, vygenerujte odpověď pomocí `RankerType=QuestionOnly` v těle žádosti GenerateAnswer.
 
-Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo v testu kB pomocí. `isTest=true`
+Můžete hledat v publikovaném článku KB, pomocí `isTest=false` nebo v testu kB pomocí `isTest=true`.
 
 ```json
 {
@@ -237,10 +237,10 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo 
 |Kód|Vysvětlení|
 |:--|--|
 |2xx|Úspěch|
-|400|Parametry žádosti jsou nesprávné, což znamená, že požadované parametry jsou chybí, je poškozený nebo je příliš velký|
-|400|tělo žádosti je nesprávná, což znamená, že je ve formátu JSON chybí, je poškozený nebo je příliš velký|
+|400|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozené nebo jsou moc velké.|
+|400|Tělo žádosti není správné, což znamená, že JSON chybí, má špatný nebo je moc velký.|
 |401|Neplatný klíč|
-|403|Je zakázané - nemáte správná oprávnění|
+|403|Zakázáno – nemáte správná oprávnění.|
 |404|KB neexistuje|
 |410|Toto rozhraní API je zastaralé a už není dostupné.|
 
@@ -249,4 +249,4 @@ Můžete prohledat publikované znalostní báze KB, pomocí `isTest=false`nebo 
 Stránka **publikování** také poskytuje informace pro vygenerování odpovědi s použitím [metody post](../Quickstarts/get-answer-from-kb-using-postman.md) a [kudrlinkou](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
-> [Vytvoření znalostní báze](./create-knowledge-base.md)
+> [Vytvoření robota znalostní báze](../tutorials/integrate-qnamaker-luis.md)

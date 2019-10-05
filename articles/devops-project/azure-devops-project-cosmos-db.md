@@ -1,20 +1,20 @@
 ---
-title: 'Kurz: Nasazení aplikací Node. js využívajících Azure Cosmos DB s Azure DevOps Projects'
-description: Azure DevOps Projects umožňuje snadno začít používat Azure. Pomocí DevOps Projects můžete nasadit aplikaci Node. js, která využívá Azure Cosmos DB do webové aplikace Windows, a to v několika rychlých krocích.
+title: 'Kurz: nasazení aplikací Node. js využívajících Azure Cosmos DB s využitím Azure DevOps Projects'
+description: Azure DevOps Projects usnadňuje začátek práce s Azure. Pomocí DevOps Projects můžete nasadit aplikaci Node. js, která využívá Azure Cosmos DB do webové aplikace Windows, a to v několika rychlých krocích.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884421"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969667"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Nasazení aplikací Node. js využívajících Azure Cosmos DB s DevOps Projects
 
@@ -30,14 +30,14 @@ V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Použití DevOps Projects k nasazení aplikace Node. js, která využívá Azure Cosmos DB
-> * Konfigurace Azure DevOps a předplatné Azure
+> * Konfigurace Azure DevOps a předplatného Azure
 > * Kontrola Azure Cosmos DB
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD
 > * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete předplatné Azure, které můžete získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) .
 
@@ -45,7 +45,7 @@ Potřebujete předplatné Azure, které můžete získat zdarma prostřednictví
 
 DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects také vytvoří prostředky Azure, jako jsou plány Azure Cosmos DB, Application Insights, App Service a App Service, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **vytvořit prostředek**.
 
@@ -73,7 +73,7 @@ DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvořit nov
 
 1. Pokud chcete zobrazit další nastavení konfigurace Azure nebo určit cenovou úroveň a umístění, vyberte **Další nastavení**. V tomto podokně se zobrazují různé možnosti konfigurace cenové úrovně a umístění služeb Azure.
 
-1. Ukončete oblast konfigurace Azure a potom vyberte Hotovo.
+1. Ukončete oblast konfigurace Azure a potom vyberte **Hotovo**.
 
 1. Proces se dokončí po několika minutách. Ukázková aplikace Node. js je nastavená v úložišti Git ve vaší organizaci Azure DevOps. Pak se vytvoří Azure Cosmos DB, App Service, App Service plán a prostředky Application Insights a také kanál CI/CD. Vaše aplikace se pak nasadí do Azure.
 
@@ -103,17 +103,17 @@ DevOps Projects automaticky nakonfiguruje kanál CI/CD ve vaší organizaci Azur
 
     ![Podokno sestavení](_img/azure-devops-project-cosmos-db/build.png)
 
-1. Vyberte **Upravit**. V tomto podokně můžete prozkoumat různé úlohy pro vašeho kanálu sestavení. Sestavení provádí různé úkoly, jako je například načítání zdrojového kódu z úložiště Git, sestavování aplikace, spuštění testů jednotek a publikování výstupů, které se používají pro nasazení.
+1. Vyberte **Upravit**. V tomto podokně můžete prozkoumávat různé úlohy pro svůj kanál sestavení. Sestavení provádí různé úkoly, jako je například načítání zdrojového kódu z úložiště Git, sestavování aplikace, spuštění testů jednotek a publikování výstupů, které se používají pro nasazení.
 
 1. Vyberte **Triggery**. DevOps Projects automaticky vytvoří Trigger CI a každé potvrzení do úložiště spustí nové sestavení. Můžete vybrat zahrnutí nebo vyloučení větví z procesu CI.
 
-1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete zadat zásady, které chcete zachovat nebo odebrat počet sestavení.
+1. Vyberte **Uchování**. V závislosti na vašem scénáři můžete určit zásady, které zachovají nebo odeberou určitý počet sestavení.
 
 1. V horní části kanálu sestavení vyberte název kanálu sestavení.
 
 1. Změňte název vašeho kanálu sestavení na výstižnější a pak v rozevíracím seznamu **uložit & fronty** vyberte **Uložit** .
 
-1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
+1. Pod názvem vašeho kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
 ## <a name="examine-the-cd-release-pipeline"></a>Kontrola kanálu pro vydání CD
 
@@ -142,7 +142,7 @@ DevOps Projects automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasaze
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který nasadí vaši poslední práci do vašeho App Service. Každá změna úložiště Git spustí sestavení ve službě Azure DevOps a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Úložiště Git můžete například klonovat v oblíbených nástrojích nebo v integrovaném vývojovém prostředí (IDE) a pak doručovat změny do tohoto úložiště.
 
-1. V nabídce Azure DevOps vyberte úložiště a pak **soubory**. Pak přejdete do svého úložiště.
+1. V nabídce Azure **DevOps vyberte úložiště** a pak **soubory**. Pak přejdete do svého úložiště.
 
 1. Úložiště již obsahuje kód na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete soubor **Application/views/index. pug** .
 
@@ -154,15 +154,15 @@ Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte související prostředky, které jste vytvořili, když už je nepotřebujete. Použití **odstranit** funkce na řídicím panelu projekty DevOps.
+Odstraňte související prostředky, které jste vytvořili, když už je nepotřebujete. Použijte funkci **Odstranit** na řídicím panelu DevOps Projects.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Tento vzor CI/CD můžete také použít jako šablonu pro své další kanály. V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Použití DevOps Projects k nasazení aplikace Node. js, která využívá Azure Cosmos DB
-> * Konfigurace Azure DevOps a předplatné Azure 
+> * Konfigurace Azure DevOps a předplatného Azure 
 > * Kontrola Azure Cosmos DB
 > * Prozkoumání kanálu CI
 > * Prozkoumání kanálu CD

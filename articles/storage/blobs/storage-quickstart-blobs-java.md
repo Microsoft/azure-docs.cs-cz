@@ -1,33 +1,37 @@
 ---
-title: Vytvoření objektu BLOB v Azure Storage pomocí klientské knihovny pro Java v7 | Microsoft Docs
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijte Azure Storage klientské knihovny pro Java v7 k nahrání objektu blob do Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
+title: 'Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Java SDK V8'
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak pomocí Azure Storage klientské knihovny pro Java SDK V8 nahrajte objekt blob, který se Azure Storage, stáhne objekt BLOB a vypíše objekty BLOB v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390319"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971994"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak nahrávat, stahovat a vypisovat objekty BLOB pomocí klientské knihovny pro Java v7
+# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Java SDK V8
 
-V této příručce se dozvíte, jak pomocí klientské knihovny pro Java v7 nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure.
+Začněte s klientskou knihovnou Azure Blob Storage pro Java. Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
-## <a name="prerequisites"></a>Požadavky
+Pomocí klientské knihovny Azure Blob Storage pro jazyk Java:
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Vytvoření kontejneru
+* Nastavení oprávnění pro kontejner
+* Vytvoření objektu BLOB v Azure Storage
+* Stažení objektu blob do místního počítače
+* Výpis všech objektů BLOB v kontejneru
+* Odstranění kontejneru
 
-Vytvořte také účet úložiště Azure v [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+## <a name="prerequisites"></a>Předpoklady
 
-Ujistěte se, že máte následující požadavky:
-
-* Nainstalovat integrované vývojové prostředí (IDE) s integrovaným Mavenem.
-
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Účet Azure Storage – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Integrované vývojové prostředí (IDE), které má integraci Maven.
 * Případně můžete nainstalovat a nakonfigurovat Maven pro práci z příkazového řádku.
 
 Tato příručka používá [zatmění](https://www.eclipse.org/downloads/) s konfigurací "zatmění IDE pro vývojáře v jazyce Java".
@@ -42,7 +46,7 @@ Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojo
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **Detect and configure project natures** (Detekovat a nakonfigurovat povahu projektu). Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku**blobAzureApp**. Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **detekovat a konfigurovat povahy projektu** . Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku**blobAzureApp**. Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
 
 Po dokončení importování projektu otevřete soubor **AzureApp.java** (umístěný ve složce **blobQuickstart.blobAzureApp** v adresáři **src/main/java**) a nahraďte `accountname` a `accountkey` uvnitř řetězce `storageConnectionString`. Pak aplikaci spusťte. Konkrétní pokyny k dokončení těchto úloh jsou popsané v následujících částech.
 
@@ -200,11 +204,10 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů BLOB v Azure pomocí jazyka Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu Microsoft Azure Storage SDK v10 za účelem pro Java](https://github.com/azure/azure-storage-java) 
-> [Java API](https://docs.microsoft.com/java/azure/)
-> [pro](../common/storage-samples-java.md) Java
+> [Referenční informace k rozhraní Java API](https://docs.microsoft.com/java/azure/)
+> [ukázky kódu pro Java](../common/storage-samples-java.md)

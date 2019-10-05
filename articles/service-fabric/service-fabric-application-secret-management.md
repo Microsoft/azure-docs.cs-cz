@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828838"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973437"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
 Tento průvodce vás provede jednotlivými kroky správy tajných kódů v aplikaci Service Fabric. Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
@@ -56,7 +56,7 @@ V souboru ServiceManifest. XML vaší služby zadejte šifrovanou [proměnnou pr
 </CodePackage>
 ```
 
-Tajné kódy je také možné do aplikace Service Fabric zahrnout zadáním certifikátu v manifestu aplikace. Přidejte do **souboru souboru ApplicationManifest. XML** element **SecretsCertificate** a zahrňte do něj kryptografický otisk požadovaného certifikátu.
+Tajné kódy by měly být zahrnuté i do vaší aplikace Service Fabric zadáním certifikátu v manifestu aplikace. Přidejte do **souboru souboru ApplicationManifest. XML** element **SecretsCertificate** a zahrňte do něj kryptografický otisk požadovaného certifikátu.
 
 ```xml
 <ApplicationManifest … >

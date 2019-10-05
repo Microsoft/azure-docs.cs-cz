@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815485"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973787"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Co je služba QnA Maker?
 
@@ -38,7 +38,7 @@ Po publikování QnA Maker znalostní báze pošle klientská aplikace dotaz do 
 
 |Krok|Akce|
 |:--|:--|
-|1|Klientská aplikace pošle _dotaz_ uživatele (text vlastními slovy), "návody programově aktualizovat moji znalostní bázi?" do koncového bodu znalostní báze.|
+|1\. místo|Klientská aplikace pošle _dotaz_ uživatele (text vlastními slovy), "návody programově aktualizovat moji znalostní bázi?" do koncového bodu znalostní báze.|
 |2|QnA Maker využívá školenou znalostní bázi k poskytnutí správné odpovědi a dalších výzev, které lze použít k upřesnění hledání nejlepší odpovědi. QnA Maker vrátí odpověď ve formátu JSON.|
 |3|Klientská aplikace používá odpověď JSON k rozhodování o tom, jak pokračovat v konverzaci. Mezi tato rozhodnutí patří například zobrazení horní odpovědi nebo předvádění dalších možností pro upřesnění vyhledávání pro nejlepší odpověď. |
 |||
@@ -77,29 +77,16 @@ QnA Maker poskytuje vytváření, školení a publikování společně s oprávn
 
 ## <a name="how-do-i-start"></a>Jak začít?
 
-**Krok 1**: Vytvoří prostředek QnA Maker v [Azure Portal](https://portal.azure.com). 
+**Krok 1**: vytvoření prostředku QnA Maker v [Azure Portal](https://portal.azure.com). 
 
-**Krok 2**: Vytvořte znalostní bázi na portálu [QnA maker](https://www.qnamaker.ai) . Přidejte [soubory a adresy URL](../concepts/data-sources-supported.md) pro vytvoření znalostní báze.  
+**Krok 2**: vytvoření znalostní báze na portálu [QnA maker](https://www.qnamaker.ai) . Přidejte [soubory a adresy URL](../concepts/data-sources-supported.md) pro vytvoření znalostní báze.  
 
-**Krok 3**: Publikování znalostní báze a testování z vlastního koncového bodu pomocí [oblé](../quickstarts/get-answer-from-kb-using-curl.md) nebo [post](../quickstarts/get-answer-from-kb-using-postman.md). 
+**Krok 3**: publikování znalostní báze a testování z vlastního koncového bodu pomocí [oblé](../quickstarts/get-answer-from-kb-using-curl.md) nebo [post](../quickstarts/get-answer-from-kb-using-postman.md). 
 
-**Krok 4**: Z klientské aplikace programově zavolejte koncový bod znalostní báze a přečtěte si odpověď JSON. zobrazí se nejlepší odpověď pro uživatele.  
+**Krok 4**: z klientské aplikace programově zavolejte koncový bod znalostní báze a přečtěte si odpověď JSON. zobrazí se nejlepší odpověď pro uživatele.  
 
-## <a name="news-and-updates"></a>Novinky a aktualizace
-
-Přečtěte si, co je nového v QnA Maker.
-
-* Červeně 2019
-    * Vylepšený model hodnocení pro francouzštinu, italštinu, němčinu, španělštinu, portugalštinu
-* Duben 2019
-    * Podpora extrakce obsahu webu
-    * Podpora dokumentů SharePointu
-* Březen 2019
-    * Aktivní učení 
-    * Vylepšený model "NLP Rank" pro angličtinu, 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 QnA Maker poskytuje vše, co potřebujete k sestavování, správě a nasazení vlastní znalostní báze. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření služby QnA Maker](../how-to/set-up-qnamaker-service-azure.md)
+> [Projděte si nejnovější změny.](../whats-new.md)

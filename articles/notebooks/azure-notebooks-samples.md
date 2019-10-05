@@ -1,47 +1,46 @@
 ---
-title: Ukázkové poznámkové bloky Jupyter pro poznámkové bloky Azure
-description: Ukázky jsou skvělý způsob, jak prostředí poznámkové bloky Jupyter používané bezplatné poznámkových bloků Azure cloud services.
+title: Ukázky Jupyter poznámkových bloků pro Azure Notebooks
+description: Ukázky představují skvělý způsob, jak vyzkoušet Jupyter poznámkové bloky běžící v bezplatné Azure Notebooks cloudové služby.
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 50e24ce29b5378b3aa930c54824fd444cd823b46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631798"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970027"
 ---
-# <a name="discover-and-use-sample-notebooks"></a>Zjistit a použít ukázkové poznámkové bloky
+# <a name="discover-and-use-sample-notebooks"></a>Zjišťování a používání ukázkových poznámkových bloků
 
-Internet má mnoho kolekcí zajímavé a užitečné poznámkové bloky Jupyter, které lze snadno přenést do poznámkových bloků Azure. Tento článek obsahuje seznam významné ukázky.
+Internet má mnoho kolekcí zajímavých a užitečných poznámkových bloků Jupyter, které můžete snadno uvést do Azure Notebooks. Tento článek poskytuje seznam důležitých ukázek.
 
-Jakmile identifikujete Poznámkový blok, který chcete prozkoumat, tady je několik podrobností, které je vhodné pochopit:
+Po identifikaci poznámkového bloku, který byste chtěli prozkoumat, tady najdete několik podrobností, které byste měli pochopit:
 
-- Pokud poznámkového bloku již poznámkových bloků Azure, použijte **klonování** tlačítko na jeho řídicí panel projektu vytvořit kopii projektu do vlastního účtu.
-- Některé poznámkových bloků vyžadují konkrétní balíčky ke spuštění. I když používáte `!pip install` (Python) nebo `install.packages` (R) k instalaci balíčků z Poznámkový blok, můžete také [projekt poznámkových bloků Azure nakonfigurovat odpovídající prostředí](configure-manage-azure-notebooks-projects.md).
+- Pokud je Poznámkový blok již v Azure Notebooks, použijte tlačítko **klonovat** na řídicím panelu projektu a vytvořte kopii projektu ve vlastním účtu.
+- Některé poznámkové bloky vyžadují ke spuštění konkrétní balíčky. I když můžete použít `!pip install` (Python) nebo `install.packages` (R) k instalaci balíčků z samotného poznámkového bloku, můžete také [nakonfigurovat Azure Notebooks projekt pomocí vhodného prostředí](configure-manage-azure-notebooks-projects.md).
 
 ## <a name="great-sample-notebooks"></a>Skvělé ukázkové poznámkové bloky
 
-- [Sady starter Azure poznámkových bloků](https://notebooks.azure.com/#sample-redirect) obsahuje úvodní informace k Pythonu, R, a F#, spolu s představením toho, přístup k datům, Azure Machine Learning Services a několik data science cvičení poznámkových bloků.
-- [Úvod do poznámkových bloků Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Úvod do datových věd](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) podle Jake Vanderplas.
-- [Galerie zajímavé poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projektu na Githubu)
+- [Azure Notebooks Starter sada](https://notebooks.azure.com/#sample-redirect) obsahuje úvod do Pythonu, R a F#společně s poznámkami, které demonstrují přístup k datům, Azure Machine Learning služby a několik cvičení pro datové vědy.
+- [Úvod do notebooků Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (Jupyter.org)
+- [Seznámení s datovou vědy](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) podle Jake Vanderplas.
+- [Galerie zajímavých poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (projekt Jupyter na GitHubu)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
-- Fyzika instrukce z [fyzika oddělení ve britských College London](https://notebooks.azure.com/cvanbreu/libraries)
-- [Azure Machine Learning úvodní ukázky služby](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
+- Pokyny k fyzikě z oblasti [fyziky na britské škole v Londýně](https://notebooks.azure.com/cvanbreu/libraries)
+- [Úvodní ukázky Azure Machine Learning](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
-- [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postup: Práce s datovými soubory](work-with-project-data-files.md)
-- [Postup: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
-- [Postup: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Postupy: konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Postupy: práce s datovými soubory](work-with-project-data-files.md)
+- [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
+- [Postupy: použití služeb Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

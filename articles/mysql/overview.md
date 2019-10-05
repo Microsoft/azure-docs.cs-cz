@@ -1,18 +1,18 @@
 ---
 title: Přehled služby Azure Database for MySQL relačních databází
-description: Přehled služby Azure Database for MySQL relačních databází.
-ms.service: mysql
+description: Přečtěte si o službě Azure Database for MySQL, službě relačních databází v cloudu Microsoftu na základě verze MySQL Community Edition.
 author: ajlam
+ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 1299f82c28181d1c24f68a0d36ba13c6b40d21ee
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013408"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970379"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 
@@ -39,7 +39,7 @@ Tento článek představuje úvod do Azure Database for MySQL základních konce
 - [Ukázky v Azure CLI pro Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
-Služba Azure Database for MySQL nabízí několik úrovní služeb: Basic, Pro obecné účely a paměť optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-service-tiers.md) .
+Služba Azure Database for MySQL nabízí několik úrovní služeb: Basic, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-service-tiers.md) .
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete využít integrované funkce monitorování výkonu a upozorňování v kombinaci s hodnocením výkonu na základě virtuálních jader. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity virtuálních jader v závislosti na stávajících nebo předpokládaných požadavcích. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).
@@ -47,7 +47,7 @@ Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete využít integrova
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
 Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. U každého serveru Azure Database for MySQL můžete využít integrované zabezpečení, odolnost proti chybám a ochranu dat, které byste jinak museli kupovat nebo navrhovat, sestavovat a spravovat. V Azure Database for MySQL můžete použít obnovení k určitému bodu v čase k obnovení serveru do dřívějšího stavu, a to až 35 dní.
 
-## <a name="secure-your-data"></a>Zabezpečení dat
+## <a name="secure-your-data"></a>Zabezpečte svoje data
 Služba Azure Database Services má tradici zabezpečení dat, která Azure Database for MySQL zachovává, s funkcemi, které omezují přístup, chrání neaktivní a nepohybovaná data a umožňuje sledovat aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
 Služba Azure Database for MySQL používá šifrování úložiště pro data v klidovém provozu a je kompatibilní se standardem FIPS 140-2. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
@@ -55,7 +55,7 @@ Služba Azure Database for MySQL používá šifrování úložiště pro data v
 Ve výchozím nastavení je služba Azure Database for MySQL nakonfigurovaná tak, aby vyžadovala [zabezpečení připojení SSL](./concepts-ssl-connection-security.md) pro pohyb dat napříč sítí. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 
 ## <a name="contacts"></a>Kontakty
-Pokud máte jakékoli dotazy nebo návrhy, které byste mohli potřebovat při práci s Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Poznámka: Tento alias neslouží k poskytování technické podpory.
+Pokud máte jakékoli dotazy nebo návrhy, které byste mohli potřebovat při práci s Azure Database for MySQL, odešlete e-mail týmu Azure Database for MySQL ([@Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.
 
 Můžete také využít tyto komunikační kanály:
 
@@ -64,8 +64,8 @@ Můžete také využít tyto komunikační kanály:
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste si přečetli Úvod k Azure Database for MySQL a odpověděli na otázku "Co je Azure Database for MySQL?, jste připraveni na:
+Teď, když jste si přečetli Úvod k Azure Database for MySQL a odpověděli na otázku "Co je Azure Database for MySQL?" jste připraveni:
 
 - Na stránce s cenami najdete porovnání nákladů a kalkulačky. [Ceny](https://azure.microsoft.com/pricing/details/mysql/)
 - Začněte vytvářet první server. [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Sestavte svou první aplikaci pomocí preferovaného jazyka: [Python](./connect-python.md)[Node. js](./connect-nodejs.md)[](./connect-java.md)[](./connect-go.md) [](./connect-php.md)[Java Ruby](./connect-ruby.md)php[.NET (C#](./connect-csharp.md))– | přejít |  |  |  |  | 
+- Sestavte svou první aplikaci pomocí preferovaného jazyka: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.NETC#()](./connect-csharp.md)2[Přejít](./connect-go.md)

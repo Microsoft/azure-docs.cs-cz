@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266870"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973003"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 
@@ -85,9 +85,9 @@ Nastavíte privátní účet úložiště pro diagnostiku virtuálních počíta
 
 Managed Disks podporuje tři výchozí role klíče:
 
-* Owner Může spravovat všechno, včetně přístupu.
-* Skupinou Může spravovat všechno kromě přístupu.
-* Modulu Může zobrazit vše, ale nemůže provádět změny.
+* Vlastník: může spravovat všechno, včetně přístupu.
+* Přispěvatel: může spravovat všechno kromě přístupu.
+* Čtecí modul: může zobrazit vše, ale nemůže provádět změny.
 
 **Existuje způsob, jak mohu zkopírovat nebo exportovat spravovaný disk do účtu privátního úložiště?**
 
@@ -148,7 +148,7 @@ Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto 
 ## <a name="ultra-disks"></a>Disky Ultra
 
 **Jaké oblasti v současné době podporují Ultra disks?**
-- Východní USA 2
+- Východ USA 2
 - Jihovýchodní Asie
 - Severní Evropa
 
@@ -157,7 +157,7 @@ Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto 
 - DSv3
 
 **Jak mám nastavit propustnost Ultra disk na?**
-Pokud si nejste jistí, co nastavit propustnost disku, doporučujeme začít tím, že zadáte velikost vstupně-výstupní operace 16 KiB a upravíte výkon při monitorování aplikace. Vzorec je: Propustnost v MB/s = # z IOPS * 16/1000.
+Pokud si nejste jistí, co nastavit propustnost disku, doporučujeme začít tím, že zadáte velikost vstupně-výstupní operace 16 KiB a upravíte výkon při monitorování aplikace. Vzorec je: propustnost v MB/s = # IOPS * 16/1000.
 
 **Nakonfigurovali jsem disk na 40000 IOPS, ale zobrazuje se pouze 12800 IOPS, proč mi nevidím výkon disku?**
 Kromě omezení disku existuje omezení vstupně-výstupní operace, která je uložena na úrovni virtuálního počítače. Ujistěte se prosím, že velikost virtuálního počítače, kterou používáte, může podporovat úrovně, které jsou nakonfigurované na vašich discích. Podrobnosti týkající se omezení v/v, které ukládá váš virtuální počítač, najdete v tématu [velikosti pro virtuální počítače s Windows v Azure](../articles/virtual-machines/windows/sizes.md).
@@ -218,8 +218,8 @@ Ano, Azure Backup je teď k dispozici.
 **Návody vytvořit SSD úrovně Standard disky?**
 SSD úrovně Standard disky můžete vytvořit pomocí šablon Azure Resource Manager, sady SDK, PowerShellu nebo rozhraní příkazového řádku. Níže jsou uvedeny parametry, které jsou potřeba v šabloně Správce prostředků k vytvoření SSD úrovně Standard disků:
 
-* *apiVersion* pro Microsoft. COMPUTE musí být nastavené jako `2018-04-01` (nebo novější).
-* Zadejte *managedDisk. storageAccountType* jako`StandardSSD_LRS`
+* *apiVersion* pro Microsoft. COMPUTE musí být nastavená na `2018-04-01` (nebo novější).
+* Zadejte *managedDisk. storageAccountType* jako `StandardSSD_LRS`.
 
 Následující příklad ukazuje oddíl *Properties. storageProfile. osDisk* pro virtuální počítač, který používá SSD úrovně Standard disky:
 
@@ -239,7 +239,7 @@ Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony na
 
 **Můžu převést existující disky na SSD úrovně Standard?**
 Ano, je to možné. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
--AccountType StandardSSD_LRS
+– AccountType StandardSSD_LRS
 
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
 SSD úrovně Standard disky dodávají lepší latenci, konzistenci, dostupnost a spolehlivost v porovnání s disky HDD. Úlohy aplikací běží na SSD úrovně Standard mnohem plynule. Upozorňujeme, že SSD úrovně Premium disky jsou doporučeným řešením pro většinu produkčních úloh náročných na vstupně-výstupní operace.
@@ -250,7 +250,7 @@ Ne, standardní disky SSD jsou k dispozici pouze jako Managed Disks.
 **Podporuje SSD úrovně Standard disky smlouvu SLA pro virtuální počítače s jednou instancí?**
 Ne, standardní SSD nemají smlouvu SLA pro virtuální počítače s jednou instancí. Pro smlouvu SLA pro virtuální počítače s jednou instancí použijte SSD úrovně Premium disky.
 
-## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
+## <a name="migrate-to-managed-disks"></a>Migrace na Spravované disky
 
 **Existuje dopad migrace na Managed Disks výkon?**
 
@@ -294,6 +294,10 @@ Ano
 
 Ano.
 
+**Je spouštěcí svazek ve výchozím nastavení zašifrovaný na spravovaném disku?**
+
+Ano. Ve výchozím nastavení jsou všechny spravované disky zašifrované, včetně disku s operačním systémem.
+
 **Kdo spravuje šifrovací klíče?**
 
 Microsoft spravuje šifrovací klíče.
@@ -329,7 +333,7 @@ Ano
 
 Ne. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Prémiové disky: Spravované a nespravované
+## <a name="premium-disks-managed-and-unmanaged"></a>Disky úrovně Premium: spravované a nespravované
 
 **Pokud virtuální počítač používá řadu velikostí, která podporuje SSD úrovně Premium disky, jako je DSv2, můžu připojit datové disky Premium i Standard?** 
 
@@ -359,7 +363,7 @@ Místní jednotka SSD je dočasné úložiště, které je součástí Managed D
 
 K použití OŘEZÁVÁNÍ na discích Azure na discích úrovně Premium nebo Standard neexistuje žádný nevýhodou.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: Spravované a nespravované
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: spravované a nespravované
 
 **Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky?**
 
@@ -379,10 +383,10 @@ Nemusíte upgradovat stávající nástroje Azure pro vytváření, připojován
 
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Číslo verze 4.1.0: Verze z června 2017 nebo novější|
-|Azure CLI v1     | Číslo verze 0.10.13: Verze květen 2017 nebo novější|
-|Azure CLI v2     | Číslo verze 2.0.12: Verze z července 2017 nebo novější|
-|AzCopy           | Číslo verze 6.1.0: Verze z června 2017 nebo novější|
+|Azure PowerShell | Číslo verze 4.1.0: verze z června 2017 nebo novější|
+|Azure CLI v1     | Číslo verze 0.10.13: může 2017 verze nebo novější.|
+|Azure CLI v2     | Číslo verze 2.0.12: červenec 2017 nebo novější verze|
+|AzCopy           | Číslo verze 6.1.0: verze z června 2017 nebo novější|
 
 **Jsou podporovány velikosti P4 a P6 disků pro nespravované disky nebo objekty blob stránky?**
 
@@ -406,7 +410,7 @@ Největší velikost disku podporovaná službou Azure Backup a službou Azure S
 
 **Jaké jsou doporučené velikosti virtuálních počítačů pro větší velikosti disků (> 4 TiB), SSD úrovně Standard a HDD úrovně Standard disků pro dosažení optimalizovaného diskového IOPS a šířky pásma?**
 
-K dosažení propustnosti disku SSD úrovně Standard a HDD úrovně Standard velkých velikostí disků (> 4 TiB) překračuje 500 IOPS a 60 MiB/s, doporučujeme nasadit nový virtuální počítač z jedné z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: Virtuální počítače řady B-Series, DSv2-Series, Dsv3-Series, ESv3-Series, řady FS-Series, Fsv2-Series, řady M-Series, GS-Series, NCv2-Series, NCv3-Series nebo ls-series. Připojení velkých disků ke stávajícím virtuálním počítačům nebo virtuálním počítačům, které nepoužívají výše uvedené doporučené velikosti, se může vyskytnout i u nižšího výkonu.
+K dosažení propustnosti disku SSD úrovně Standard a HDD úrovně Standard velkých velikostí disků (> 4 TiB) překračuje 500 IOPS a 60 MiB/s, doporučujeme nasadit nový virtuální počítač z jedné z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-Series, DSv2-Series, Dsv3-Series, ESv3-Series. , Řady FS-Series, Fsv2-Series, řady M-Series, GS-Series, NCv2-Series, NCv3-Series nebo ls-series. Připojení velkých disků ke stávajícím virtuálním počítačům nebo virtuálním počítačům, které nepoužívají výše uvedené doporučené velikosti, se může vyskytnout i u nižšího výkonu.
 
 **Jak můžu upgradovat svoje disky (> 4 TiB), které se nasadily během verze Preview větších velikostí disků, abyste dosáhli vyššího počtu IOPS & šířku pásma na GA?**
 

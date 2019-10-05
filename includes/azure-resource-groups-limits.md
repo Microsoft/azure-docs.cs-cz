@@ -4,14 +4,14 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626314"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975287"
 ---
-| Resource | Výchozí omezení | Maximální omezení |
+| Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Prostředky na [skupinu prostředků](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), podle typu prostředku |800 |Některé typy prostředků mohou překročit limit 800. Viz [zdroje, které nejsou omezeny na 800 instancí na skupinu prostředků](../articles/azure-resource-manager/resources-without-rg-limit.md). |
 | Nasazení na skupinu prostředků v historii nasazení |800<sup>1</sup> |800 |
@@ -21,11 +21,11 @@ ms.locfileid: "69626314"
 | Délka klíče značky |512 |512 |
 | Délka hodnoty značky |256 |256 |
 
-<sup>1</sup> Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. Odstranění položky z historie nasazení nemá vliv na nasazené prostředky. Položky z historie můžete odstranit pomocí [AZ Group Deployment Delete](/cli/azure/group/deployment) pro Azure CLI nebo rutinu [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) v prostředí PowerShell.  Skript PowerShellu, který automatizuje odstraňování nasazení ve scénáři průběžná integrace a průběžného doručování (CI/CD), najdete v tématu [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. Odstranění položky z historie nasazení nemá vliv na nasazené prostředky. Další informace najdete v tématu [řešení chyb při překročení počtu nasazení na 800](../articles/azure-resource-manager/deployment-quota-exceeded.md).
 
 #### <a name="template-limits"></a>Omezení šablon
 
-| Value | Výchozí omezení | Maximální omezení |
+| Hodnota | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Proměnné |256 |256 |

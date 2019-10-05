@@ -1,17 +1,18 @@
 ---
 title: Řešení potíží s Azure Migrate | Microsoft Docs
 description: Poskytuje přehled známých problémů služby Azure Migrate a také tipy pro řešení běžných chyb.
-author: rayne-wiselman
+author: musa-57
+ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: raynew
-ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.author: hamusa
+ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067814"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970640"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -87,8 +88,8 @@ Odstranění projektu ve starší verzi Azure Migrate:
 ### <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
 Přejděte do pracovního prostoru Log Analytics připojeného k projektu.
-* Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v rámci**posouzení serveru** **Essentials** > .
-       ![Pracovní prostor LA](./media/troubleshooting-general/loganalytics-workspace.png)
+* Pokud jste neodstranili Azure Migrate projekt, můžete najít odkaz na pracovní prostor v **Essentials** > **Server Assessment**.
+       @no__t – pracovní prostor 0LA @ no__t-1
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -105,13 +106,13 @@ Při vytváření projektu může tato chyba znamenat, že nemáte přístup k t
 
 ## <a name="error-invalid-ovf-manifest-entry"></a>Chyba: neplatný záznam manifestu OVF
 
-Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatný záznam manifestu OVF, udělejte toto:
+Pokud se zobrazí chyba "zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF", udělejte toto:
 
 1. Zkontrolujte jeho hodnotu hash tak, že zkontrolujete, jestli se soubor vajíček Azure Migrate zařízení správně stáhl. [Další informace](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Pokud hodnota hash neodpovídá, Stáhněte si znovu soubor vajíček a spusťte nasazení znovu.
 2. Pokud se nasazení stále nedaří a k nasazení souboru OVF používáte klienta VMware vSphere, zkuste ho nasadit prostřednictvím webového klienta vSphere. Pokud nasazení ještě neproběhne úspěšně, zkuste použít jiný webový prohlížeč.
 3. Pokud používáte webového klienta vSphere a pokusíte se ho nasadit na vCenter Server 6,5 nebo 6,7, zkuste nasadit VAJÍČKu přímo na hostiteli ESXi:
    - Připojte se k hostiteli ESXi přímo (místo vCenter Server) pomocí webového klienta (https://<*IP adresa hostitele*>/UI).
-   - V **domovském** > **inventáři**vyberte **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
+   - V @no__t**inventáře** **domácích**-1 vyberte **soubor** > **nasadit šablonu OVF**. Přejděte k VAJÍČKám a dokončete nasazení.
 4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Zařízení se nemůže připojit k Internetu.
@@ -151,7 +152,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
     4. Ověřte, že je vCenter Server v provozu.
 
 
-## <a name="error-appliance-might-not-be-registered"></a>Chyba: Zařízení možná není zaregistrované.
+## <a name="error-appliance-might-not-be-registered"></a>Chyba: zařízení pravděpodobně není zaregistrováno.
 
 - Chyba 60052: Pokud účet Azure, který se používá k registraci zařízení, nemá dostatečná oprávnění, "zařízení se nemusí úspěšně zaregistrovat do Azure Migrate projektu".
     - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
@@ -160,7 +161,7 @@ Pokud se zobrazí tato chyba připojení, možná se nebudete moci připojit k v
     - V Azure Portal a ověřte, zda projekt existuje ve skupině prostředků.
     - Pokud projekt neexistuje, vytvořte ve skupině prostředků nový Azure Migrate projekt a znovu zaregistrujte zařízení. [Přečtěte si, jak](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) vytvořit nový projekt.
 
-## <a name="error-key-vault-management-operation-failed"></a>Chyba: Operace správy Key Vault se nezdařila.
+## <a name="error-key-vault-management-operation-failed"></a>Chyba: operace správy Key Vault nebyla úspěšná.
 
 Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyla úspěšná", udělejte toto:
 - Ujistěte se, že uživatelský účet Azure použitý k registraci zařízení má alespoň oprávnění přispěvatele k tomuto předplatnému.
@@ -168,16 +169,16 @@ Pokud se zobrazí chyba 60030 nebo 60031, "operace správy Azure Key Vault nebyl
 - Pokud se problém nevyřeší, obraťte se na podporu Microsoftu.
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) o požadovaných rolích a oprávněních Azure.
 
-## <a name="fix-discovery-couldnt-be-initiated"></a>Opravit Zjišťování se nepodařilo inicializovat.
+## <a name="fix-discovery-couldnt-be-initiated"></a>Oprava: zjišťování se nepovedlo inicializovat.
 
-Chyba 60028: Zjišťování se nepodařilo iniciovat z důvodu chyby. Operace se pro zadaný seznam hostitelů nebo clusterů nezdařila. znamená to, že zjišťování nebylo možné spustit na hostitelích uvedených v této chybě z důvodu problému s přístupem nebo načítáním informací o virtuálním počítači. Zbytek hostitelů byl úspěšně přidán.
+Chyba 60028: zjišťování nelze iniciovat z důvodu chyby. Operace se pro zadaný seznam hostitelů nebo clusterů nezdařila. znamená to, že zjišťování nebylo možné spustit na hostitelích uvedených v této chybě z důvodu problému s přístupem nebo načítáním informací o virtuálním počítači. Zbytek hostitelů byl úspěšně přidán.
 
 - Přidejte hostitele uvedené v této chybě znovu pomocí možnosti **Přidat hostitele** .
 - Pokud dojde k chybě ověřování, přečtěte si pokyny k nápravě a opravte chyby a potom zkuste znovu **spustit možnost Uložit a spustit zjišťování** .
 
-## <a name="fix-azure-ad-operation-failed-60025"></a>Opravit Operace Azure AD se nezdařila (60025)
+## <a name="fix-azure-ad-operation-failed-60025"></a>Oprava: operace Azure AD se nezdařila (60025)
 
-Chyba 60025: Operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Udělejte jednu z těchto věcí:
+Chyba 60025: operace Azure AD se nezdařila. K chybě při vytváření nebo aktualizaci aplikace Azure AD dojde v případě, že se uživatelský účet Azure, který se používá k zahájení zjišťování, liší od účtu použitého k registraci zařízení. Proveďte jednu z následujících akcí:
 
 - Ujistěte se, že uživatelský účet, který spouští zjišťování, je stejný jako ten, který se používá k registraci zařízení.
 - Zadejte Azure Active Directory oprávnění k přístupu k aplikacím pro uživatelský účet, pro který se operace zjišťování nedaří.
@@ -200,7 +201,7 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 - Data zjišťování shromážděná zařízením zabírají až 30 minut, než se na portálu projeví.
 - Pokud nevidíte aktuální informace po 30 minutách, aktualizujte data pomocí následujících kroků:
 
-    1. V Azure Migrate **servery** > **vyhodnocování serveru**vyberte **Přehled**.
+    1. Na **serverech** > **Azure Migrate posouzení serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
     3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
@@ -210,22 +211,22 @@ Pokud jste nasadili zařízení, které nepřetržitě hledá vaše místní pro
 - Data zjišťování shromážděná zařízením zabírají až 30 minut, než se na portálu projeví.
 - Pokud nevidíte aktuální informace po 30 minutách, aktualizujte data pomocí následujících kroků:
 
-    1. V Azure Migrate **servery** > **vyhodnocování serveru**vyberte **Přehled**.
+    1. Na **serverech** > **Azure Migrate posouzení serveru**vyberte **Přehled**.
     2. V části **Spravovat**vyberte **Agent Health**
     3. Vyberte **aktualizovat agenta**.
     1. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
 
 
-## <a name="fix-cant-connect-to-host-or-cluster"></a>Opravit Nejde se připojit k hostiteli nebo clusteru.
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Oprava: nejde se připojit k hostiteli nebo clusteru.
 
-Chyba 50004: "Nelze se připojit k hostiteli nebo clusteru, protože název serveru nelze přeložit. Kód chyby WinRM: 0x803381B9 se může vyskytnout, pokud služba Azure DNS pro zařízení nemůže vyřešit zadaný název clusteru nebo hostitele.
+Chyba 50004: Nelze se připojit k hostiteli nebo clusteru, protože název serveru nelze přeložit. Kód chyby WinRM: 0x803381B9 se může vyskytnout, pokud služba Azure DNS pro zařízení nemůže vyřešit zadaný název clusteru nebo hostitele.
 
 - Pokud se tato chyba zobrazuje v clusteru, plně kvalifikovaný název domény clusteru.
 - Tato chyba se může zobrazit také pro hostitele v clusteru. To znamená, že zařízení se může připojit ke clusteru, ale cluster vrátí názvy hostitelů, které nejsou plně kvalifikované názvy domén. Chcete-li tuto chybu vyřešit, aktualizujte soubor hostitelů na zařízení přidáním mapování IP adresy a názvů hostitelů:
     1. Otevřete Poznámkový blok jako správce.
     2. Otevřete soubor C:\Windows\System32\Drivers\etc\hosts.
     3. Přidejte IP adresu a název hostitele do řádku. Opakujte pro každého hostitele nebo cluster, kde se zobrazí tato chyba.
-    4. Uložte a zavřete soubor hostitelů.
+    4. Uložte a zavřete soubor Hosts.
     5. Ověřte, jestli se zařízení může připojit k hostitelům pomocí aplikace pro správu zařízení. Po 30 minutách byste měli vidět nejnovější informace pro tyto hostitele v Azure Portal.
 
 
@@ -239,7 +240,7 @@ Opravte problémy připravenosti vyhodnocování následujícím způsobem:
 Nepodporovaný typ spuštění | Azure nepodporuje virtuální počítače s typem spouštění EFI. Před spuštěním migrace doporučujeme převést typ spouštění na systém BIOS. <br/><br/>K obsluze migrace takových virtuálních počítačů můžete použít migraci Azure Migrate serveru. Při migraci převede typ spouštění virtuálního počítače na systém BIOS.
 Podmíněně podporované operační systémy Windows | Operační systém předal své datum ukončení podpory a pro [podporu v Azure](https://aka.ms/WSosstatement)potřebuje vlastní smlouvu o podpoře (CSA). Před migrací do Azure zvažte možnost upgradovat.
 Nepodporovaný operační systém Windows | Azure podporuje jenom [vybrané verze operačního systému Windows](https://aka.ms/WSosstatement). Před migrací do Azure zvažte možnost upgradovat počítač.
-Podmíněně schválený operační systém Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). Před migrací do Azure zvažte možnost upgradovat počítač.
+Podmíněně schválené operační systémy Linux | Azure schválí jenom [vybrané verze operačního systému Linux](../virtual-machines/linux/endorsed-distros.md). Před migrací do Azure zvažte možnost upgradovat počítač.
 Neschválený operační systém Linux | Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. Před migrací do Azure zvažte možnost upgradovat na [schválenou verzi systému Linux](../virtual-machines/linux/endorsed-distros.md) .
 Neznámý operační systém | Operační systém virtuálního počítače byl ve vCenter Server zadán jako jiný. Toto chování blokuje Azure Migrate Ověření připravenosti na Azure pro virtuální počítač. Než počítač migrujete, ujistěte se, že Azure [podporuje](https://aka.ms/azureoslist) operační systém.
 Nepodporovaná bitová verze | Virtuální počítače s 32 operačním systémem se můžou spouštět v Azure, ale před migrací do Azure doporučujeme upgradovat na 64.
@@ -247,10 +248,10 @@ Vyžaduje předplatné Microsoft Visual Studio. | Počítač používá klientsk
 Pro požadovaný výkon úložiště se nenašel virtuální počítač. | Výkon úložiště (vstupně-výstupní operace za sekundu [IOPS] a propustnost) požadovaná pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
 Pro požadovaný výkon sítě se nenašel virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
 Virtuální počítač se nenašel v zadaném umístění. | Před migrací použijte jiné cílové umístění.
-Minimálně jeden nevhodný disk | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. Určitého<br/><br/> Azure Migrate: Posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disku pro spravované disky úrovně Premium (32 TB).<br/><br/> U každého disku připojeného k virtuálnímu počítači se ujistěte, že je velikost disku < 64 TB (podporuje disky SSD úrovně Ultra).<br/><br/> Pokud ne, snižte velikost disku před migrací na Azure nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště. Ujistěte se, že [disky virtuálních počítačů spravované](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)službou Azure podporují výkon (IOPS a propustnost), které potřebuje každý disk.
+Jeden nebo více nevhodných disků | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. Určitého<br/><br/> Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disku pro spravované disky úrovně Premium (32 TB).<br/><br/> U každého disku připojeného k virtuálnímu počítači se ujistěte, že je velikost disku < 64 TB (podporuje disky SSD úrovně Ultra).<br/><br/> Pokud ne, snižte velikost disku před migrací na Azure nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště. Ujistěte se, že [disky virtuálních počítačů spravované](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)službou Azure podporují výkon (IOPS a propustnost), které potřebuje každý disk.
 Jeden nebo více nevhodných síťových adaptérů. | Před migrací odeberte nepoužívané síťové adaptéry z počítače.
 Počet disků překračuje limit. | Před migrací z počítače odeberte nepoužívané disky.
-Velikost disku překračuje limit. | Azure Migrate: Posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disků Premium (32 TB).<br/><br/> Azure ale podporuje disky s velikostí až 64 TB (Podporované disky SSD úrovně Ultra). Zmenšete disky na méně než 64 TB před migrací nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště.
+Velikost disku překračuje limit. | Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disků Premium (32 TB).<br/><br/> Azure ale podporuje disky s velikostí až 64 TB (Podporované disky SSD úrovně Ultra). Zmenšete disky na méně než 64 TB před migrací nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště.
 Disk není v zadaném umístění k dispozici. | Před migrací zajistěte, aby byl disk v cílovém umístění.
 Disk není pro zadanou redundanci k dispozici. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
 Nebylo možné určit vhodnost disku z důvodu vnitřní chyby. | Zkuste vytvořit nové vyhodnocení pro skupinu.
@@ -275,7 +276,7 @@ Posouzení serveru Azure Migrate může doporučit skladové položky Azure s v�
 
 
 - Doporučení SKU virtuálního počítače závisí na vlastnostech posouzení.
-- To je ovlivněno typem posouzení, které jste provedli při vyhodnocování serveru: *Založené na výkonu*nebo *jako místní*.
+- To je ovlivněno typem posouzení, které provádíte při posuzování serveru: na *základě výkonu*nebo *jako v*místním prostředí.
 - U posouzení na základě výkonu považuje server hodnocení za využití dat z místních virtuálních počítačů (CPU, paměti, disku a sítě) k určení správné cílové SKU virtuálního počítače pro vaše místní virtuální počítače. Také přináší faktor pohodlí při určování efektivního využití.
 - Pro místní velikost se data o výkonu neberou v úvahu a cílová skladová jednotka se doporučuje na základě místního přidělení.
 
@@ -296,7 +297,7 @@ Posouzení serveru Azure Migrate může doporučit větší disk na základě ty
 
 Příklad: Pokud máte místní disk s 32 GB paměti, ale agregované vstupně-výstupní operace čtení a zápisu pro disk je 800 IOPS, vyhodnocování serveru doporučuje prémiový disk (kvůli vyššímu počtu požadavků IOPS) a potom doporučuje SKU disku, které může podporovat r. ezdrátovou IOPS a velikost. Nejbližší shodou by v tomto případě byla skladová položka P15 (256 GB, 1 100 IOPS). I když velikost požadovaná místním diskem byla 32 GB, vyhodnocování serveru doporučuje větší disk kvůli vysokému počtu požadavků na požadavky na místní disk.
 
-## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Opravit Procento využitého jádra nebo paměti nebylo nalezeno.
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Oprava: chybějící procento využitého jádra nebo paměti
 
 Sestavy posouzení serveru "PercentageOfCoresUtilizedMissing" nebo "PercentageOfMemoryUtilizedMissing", když Azure Migrate zařízení nemůžou shromažďovat údaje o výkonu pro příslušné místní virtuální počítače.
 
@@ -332,7 +333,7 @@ Po instalaci agentů Vizualizace závislostí na místní virtuální počítač
 
 Pro virtuální počítače s Windows:
 1. V Ovládacích panelech spusťte MMA.
-2. V **Microsoft Monitoring Agent vlastnosti** > **Azure Log Analytics (OMS)** zkontrolujte, že je **stav** pracovního prostoru zelený.
+2. Ve **vlastnostech Microsoft Monitoring Agent** > **Azure Log Analytics (OMS)** zkontrolujte, zda je **stav** pracovního prostoru zelený.
 3. Pokud stav není zelený, zkuste odebrat pracovní prostor a znovu ho přidat do MMA.
 
       ![Dialogové okno Vlastnosti MMA](./media/troubleshooting-general/mma-status.png)
@@ -353,7 +354,7 @@ I když Azure Migrate umožňuje přejít zpět k určitému datu za poslední m
 
 Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v jednom hodinovém období.
 
-Můžete ale použít protokoly Azure Monitor k dotazování [dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+Můžete ale použít protokoly Azure Monitor k [dotazování dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
 
 ## <a name="i-cant-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nejde vizualizovat závislosti pro skupiny s více než 10 virtuálními počítači.
 
@@ -374,7 +375,7 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 
 Shromážděte protokoly následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971016"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973395"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -31,7 +31,7 @@ Pokud ho chcete nasadit do **skupiny prostředků**, použijte příkaz [AZ Grou
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-K nasazení do předplatného použijte [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+K nasazení do **předplatného**použijte [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
@@ -39,7 +39,7 @@ az deployment create --location <location> --template-file <path-to-template>
 
 V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](resource-group-template-deploy-rest.md).
 
-Příklady v tomto článku používají nasazení skupin prostředků. Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni](deploy-to-subscription.md)předplatného.
+Příklady v tomto článku používají nasazení skupin prostředků. Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="deploy-local-template"></a>Nasadit místní šablonu
 
@@ -96,48 +96,13 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="redeploy-when-deployment-fails"></a>Znovu nasadit v případě neúspěchu nasazení
-
-Tato funkce se také označuje jako *vrácení zpět s chybou*. V případě neúspěchu nasazení můžete z historie nasazení automaticky znovu nasadit předchozí úspěšné nasazení. Chcete-li určit opětovné nasazení, `--rollback-on-error` použijte parametr v příkazu nasazení. Tato funkce je užitečná v případě, že máte známý dobrý stav pro nasazení infrastruktury a chcete se vrátit k tomuto stavu. Existuje několik aspektů a omezení:
-
-- Opětovné nasazení se spouští přesně tak, jak bylo dříve spuštěno se stejnými parametry. Nemůžete změnit parametry.
-- Předchozí nasazení se spouští v [režimu úplného](./deployment-modes.md#complete-mode)použití. Všechny prostředky, které nejsou součástí předchozího nasazení, se odstraní a všechny konfigurace prostředků se nastavují do jejich předchozího stavu. Ujistěte se, že plně rozumíte [režimům nasazení](./deployment-modes.md).
-- Opětovné nasazení má vliv pouze na prostředky, změny dat nejsou ovlivněny.
-- Tato funkce je podporována pouze v nasazeních skupiny prostředků, nikoli v nasazeních na úrovni předplatného. Další informace o nasazení na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni](./deploy-to-subscription.md)předplatného.
-
-Chcete-li použít tuto možnost, musí mít vaše nasazení jedinečné názvy, aby je bylo možné identifikovat v historii. Pokud nemáte jedinečné názvy, může aktuální nasazení v historii přepsat dříve úspěšné nasazení. Tuto možnost můžete použít jenom u nasazení na kořenové úrovni. Nasazení z vnořené šablony nejsou k dispozici pro opětovné nasazení.
-
-Chcete-li znovu nasadit poslední úspěšné nasazení, přidejte `--rollback-on-error` parametr jako příznak.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error
-```
-
-Chcete-li znovu nasadit konkrétní nasazení, použijte `--rollback-on-error` parametr a zadejte název nasazení.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment02 \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error ExampleDeployment01
-```
-
-Zadané nasazení musí být úspěšné.
-
 ## <a name="parameters"></a>Parametry
 
 K předání hodnot parametrů můžete použít buď vložené parametry, nebo soubor parametrů.
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Chcete-li předat vložené parametry, zadejte hodnoty `parameters`v. Například pro předání řetězce a pole do šablony je bash shell, použijte:
+Chcete-li předat vložené parametry, zadejte hodnoty v `parameters`. Například pro předání řetězce a pole do šablony je bash shell, použijte:
 
 ```azurecli
 az group deployment create \
@@ -146,7 +111,7 @@ az group deployment create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Pokud používáte Azure CLI s příkazovým řádkem (CMD) nebo prostředím PowerShell pro Windows, předejte pole ve `exampleArray="['value1','value2']"`formátu:.
+Pokud používáte Azure CLI s příkazovým řádkem (CMD) nebo PowerShellem pro Windows, předejte pole ve formátu: `exampleArray="['value1','value2']"`.
 
 Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 
@@ -174,7 +139,7 @@ Místo předání parametrů jako vložených hodnot do skriptu může být snaz
 
 Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](resource-manager-parameter-files.md).
 
-Chcete-li předat místní soubor parametrů, `@` použijte k určení místního souboru s názvem Storage. Parameters. JSON.
+Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem Storage. Parameters. JSON.
 
 ```azurecli-interactive
 az group deployment create \
@@ -235,9 +200,9 @@ Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Příklady v tomto článku nasazují prostředky do skupiny prostředků ve vašem výchozím předplatném. Pokud chcete použít jiné předplatné, přečtěte si téma [Správa několika předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
 - Pokud chcete určit, jak se mají zpracovávat prostředky, které existují ve skupině prostředků, ale nejsou definované v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manager](deployment-modes.md).
 - Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
 - Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).

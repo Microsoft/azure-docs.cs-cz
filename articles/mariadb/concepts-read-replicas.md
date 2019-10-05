@@ -1,17 +1,17 @@
 ---
 title: Čtení replik v Azure Database for MariaDB
-description: Tento článek popisuje repliky pro čtení pro Azure Database for MariaDB.
+description: 'Přečtěte si o replikách pro čtení v Azure Database for MariaDB: výběr oblastí, vytváření replik, připojení k replikám, monitorování replikace a zastavení replikace.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123230"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973594"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Čtení replik v Azure Database for MariaDB
 
@@ -40,10 +40,10 @@ Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Repl
 
 Hlavní server můžete mít v libovolné [Azure Database for MariaDB oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky. Následující obrázek ukazuje, které oblasti repliky jsou k dispozici v závislosti na vaší hlavní oblasti.
 
-[![Čtení oblastí repliky](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[@no__t – oblasti repliky 1Read](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
-Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Jedná se o oblasti univerzální repliky:
+Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází váš hlavní server. Mezi podporované oblasti univerzální repliky patří:
 
 Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2.
 
@@ -55,9 +55,9 @@ Pokud používáte repliky mezi jednotlivými oblastmi pro plánování zotaven�
 
 Je však třeba vzít v úvahu omezení: 
 
-* Dostupnost podle oblastí: Azure Database for MariaDB je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
+* Regionální dostupnost: Azure Database for MariaDB je k dispozici v Západní USA 2, Francii Central, Spojené arabské emiráty Severní a Německo – střed. Nicméně jejich spárované oblasti nejsou k dispozici.
     
-* Jednosměrné páry: Některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
+* Jednosměrné páry: některé oblasti Azure jsou spárovány pouze v jednom směru. Mezi tyto oblasti patří Západní Indie, Brazílie – jih a US Gov – Virginie. 
    To znamená, že hlavní server v Západní Indie může vytvořit repliku v Jižní Indie. Hlavní server v Jižní Indie ale nemůže vytvořit repliku v Západní Indie. Důvodem je to, že sekundární oblast Západní Indie je Jižní Indie, ale sekundární oblast Jižní Indie není Západní Indie.
 
 
@@ -90,11 +90,11 @@ Na příkazovém řádku zadejte heslo pro uživatelský účet.
 
 Azure Database for MariaDB poskytuje metriku **prodlevy replikace v sekundách** v Azure monitor. Tato metrika je k dispozici pouze pro repliky.
 
-Tato metrika se počítá pomocí `seconds_behind_master` metriky dostupné v `SHOW SLAVE STATUS` příkazu MariaDB.
+Tato metrika se počítá pomocí `seconds_behind_master` metriky dostupné v příkazu `SHOW SLAVE STATUS` MariaDB.
 
 Nastavte výstrahu, která vás informuje, když prodleva replikace dosáhne hodnoty, která není pro vaše zatížení přijatelná.
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 
 Replikaci mezi hlavní a replikou můžete zastavit. Po zastavení replikace mezi hlavním serverem a replikou pro čtení se replika samostatného serveru. Data na samostatném serveru jsou data, která byla v replice k dispozici v době spuštění příkazu pro zastavení replikace. Samostatný server není zachytávání s hlavním serverem.
 
@@ -114,7 +114,7 @@ Repliky čtení jsou v tuto chvíli dostupné jenom v Pro obecné účely a pam�
 
 ### <a name="master-server-restart"></a>Restartování hlavního serveru
 
-Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Věnujte prosím tuto pozornost a udělejte tyto operace v době mimo špičku.
+Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
 
 ### <a name="new-replicas"></a>Nové repliky
 
@@ -141,15 +141,15 @@ Uživatelé na hlavním serveru se replikují do replik pro čtení. K replice p
 
 ### <a name="server-parameters"></a>Parametry serveru
 
-Aby nedocházelo k nedostatku synchronizace dat a aby se předešlo potenciálním ztrátám nebo poškození dat, některé parametry serveru jsou při použití replik čtení zamčené.
+Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci.
 
 Následující parametry serveru jsou uzamčené na hlavním serveru i na serverech repliky:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) Parametr je uzamčen na serverech repliky.
+Parametr [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) je na serverech repliky uzamčen.
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.

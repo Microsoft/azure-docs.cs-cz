@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1a9f3eb0ea79a0cd79850e721d081b00dc582a31
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695278"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972053"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro QnA Maker obsah
 
@@ -30,13 +30,13 @@ Následující tabulka shrnuje typy obsahu a formátů souborů, které jsou pod
 |Typ zdroje|Typ obsahu| Příklady|
 |--|--|--|
 |Adresa URL|Nejčastější dotazy<br> (Plochý, s oddíly nebo s domovskou stránkou témat)<br>Stránky podpory <br> (Články s návody na jednu stranu, články týkající se řešení potíží atd.)|[Jednoduché Nejčastější dotazy](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs) <br>[Nejčastější dotazy s odkazy](https://www.microsoft.com/software-download/faq)<br> [Nejčastější dotazy s domovskou stránkou s tématy](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Článek podpory](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF/DOC|Nejčastější<br> Ruční produkt,<br> brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> Atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Ukázka multi-Turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|PDF/DOC|Nejčastější<br> Ruční produkt,<br> Brožury,<br> Formátech<br> Zásady oznámení<br> Průvodce podporou,<br> Strukturované QnA,<br> atd.|[Strukturované QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka ručního produktu. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Ukázka semi-Structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Ukázka dokumentu White Paper. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Ukázka multi-Turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|Strukturovaný soubor QnA<br> (včetně formátu RTF, HTML support)|[Ukázka nejčastějších dotazů QnA. xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Strukturovaný soubor QnA|[Ukázka Chit-Chat. TSV](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
-**Soubory TSV a XLS**z exportovaných základů znalostní báze lze použít pouze importem souborů ze stránky **nastavení** na portálu QnA maker. Nelze je použít jako zdroje dat během vytváření znalostní báze nebo pomocí funkce Přidat soubor nebo adresu URL na stránce **Nastavení** . 
+### <a name="import-and-export-knowledge-base"></a>Import a export znalostní báze Knowledge Base
 
-Přečtěte si další informace o používání [multi-Turn docs](). 
+**Soubory TSV a XLS**z exportovaných základů znalostní báze lze použít pouze importem souborů ze stránky **nastavení** na portálu QnA maker. Nelze je použít jako zdroje dat během vytváření znalostní báze nebo na stránce **+ Přidat soubor** nebo **+ Přidat adresu URL** na stránce **Nastavení** . 
 
 ## <a name="data-source-locations"></a>Umístění zdrojů dat
 
@@ -144,7 +144,7 @@ Níže je uveden příklad strukturovaného dokumentu aplikace QnA:
 
 QnAs ve formě strukturovaných souborů *. txt*, *. TSV* nebo *. xls* je také možné odeslat QnA maker k vytvoření nebo rozšíření znalostní báze.  Může se jednat o prostý text nebo může mít obsah ve formátu RTF nebo HTML. 
 
-| Daná  | Zodpovědět  | Metadata (1 klíč: 1 hodnota) |
+| Otázka  | Odpověď  | Metadata (1 klíč: 1 hodnota) |
 |-----------|---------|-------------------------|
 | Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 |      `Key:Value`           |
@@ -171,7 +171,7 @@ Po importu souboru se dvojice otázka a odpověď nachází ve znalostní bázi,
 
 Import znalostní báze nahrazuje obsah stávající znalostní báze. Import vyžaduje strukturovaný soubor. TSV, který obsahuje informace o zdroji dat. Tyto informace pomáhají QnA Maker seskupovat páry dotazů a jejich atributy na konkrétní zdroj dat.
 
-| Daná  | Zodpovědět  | Zdroj| Metadata (1 klíč: 1 hodnota) |          
+| Otázka  | Odpověď  | Zdroj| Metadata (1 klíč: 1 hodnota) |          
 |-----------|---------|----|---------------------|
 | Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Question2 | Answer2 | Redakční|    `Key:Value`       |
@@ -190,7 +190,7 @@ Pokud přidáte nebo upravíte svůj obsah přímo ve znalostní bázi, použijt
 
 Následuje seznam formátů Markdownu, které můžete použít v QnA Maker: 
 
-|Účel|Formát|Příklad Markdownu|vykreslování<br>Jak se zobrazuje v robotovi pro chat|
+|Účel|Formát|Příklad Markdownu|Vykreslování<br>Jak se zobrazuje v robotovi pro chat|
 |--|--|--|--|
 Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![naformátovat nový řádek mezi dvěma větami](../media/qnamaker-concepts-datasources/format-newline.png)|
 |Hlavičky z H1 do h6, počet `#` značí, které záhlaví. 1 `#` je H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátování pomocí hlaviček Markdownu](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátování pomocí hlaviček Markdownu H1 na H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -204,7 +204,7 @@ Nový řádek mezi 2 větami.|`\n\n`|`How can I create a bot with \n\n QnA Maker
 |Adresa URL pro odkaz na kurzívu|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![formát pro adresu URL kurzívou](../media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Řídicí symboly Markdownu|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![formát pro adresu URL kurzívou](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Seřazený seznam|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Předchozí příklad používá automatické číslování integrovaný do Markdownu.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Předchozí příklad používá explicitní číslování.|![formát pro uspořádaný seznam](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|Neuspořádaný seznam|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Neuspořádaný seznam|`\n * item1 \n * item2`<br>nebo<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![formát pro neuspořádaný seznam](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Vnořené seznamy|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Můžete vnořit seřazené a neuspořádané seznamy dohromady. Karta `\t` označuje úroveň odsazení podřízeného prvku.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![formát pro vnořený seznam neuspořádaných](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![formát pro vnořený uspořádaný seznam](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker nezpracovává bitovou kopii jakýmkoli způsobem. Je to role klientské aplikace pro vykreslení image. 
@@ -239,6 +239,6 @@ Správa verzí pro data je k dispozici prostřednictvím [funkce importu/exportu
 > [!div class="nextstepaction"]
 > [Nastavení služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled QnA Maker](../Overview/overview.md)
+[Přehled služby QnA Maker](../Overview/overview.md)

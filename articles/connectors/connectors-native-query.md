@@ -1,6 +1,6 @@
 ---
-title: Přidání akce dotazu ve službě logic apps | Dokumentace Microsoftu
-description: Přehled akce dotazu pro provádění akcí, jako je filtrování pole.
+title: Přidat akci dotazu do aplikace Logic Apps | Microsoft Docs
+description: Přehled akce dotazu pro provádění akcí, jako je pole filtru.
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -9,78 +9,77 @@ editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60538214"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973752"
 ---
-# <a name="get-started-with-the-query-action"></a>Začínáme s akce dotazu
-Pomocí akce dotazu můžete pracovat s listy a pole k provedení pracovní postupy pro:
+# <a name="get-started-with-the-query-action"></a>Začněte s akcí dotazu
+Pomocí akce dotazu můžete pracovat s dávkami a poli a provádět pracovní postupy:
 
-* Vytvořte úlohu pro všechny záznamy s vysokou prioritou z databáze.
-* Uloží všechny přílohy PDF pro e-mailů do objektu blob Azure.
+* Vytvoří úkol pro všechny záznamy s vysokou prioritou z databáze.
+* Uložte všechny přílohy PDF pro e-maily do objektu blob Azure.
 
-Abyste mohli začít používat akce dotazu v aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Chcete-li začít používat akci dotazu v aplikaci logiky, přečtěte si téma [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="use-the-query-action"></a>Pomocí akce dotazu
-Akce je operace, která provádí pracovní postup, který je definován v aplikaci logiky. 
-[Další informace o akcích](../connectors/apis-list.md).  
+## <a name="use-the-query-action"></a>Použít akci dotazu
+Akce je operace, kterou provede pracovní postup, který je definovaný v aplikaci logiky. 
+[Přečtěte si další informace o akcích](../connectors/apis-list.md).  
 
-Akce dotazu právě jedna operace, s názvem filtrování pole, která je vystavena v návrháři. To umožňuje zadat dotaz na pole a vrátí sadu filtrované výsledky.
+Akce dotazu nyní obsahuje jednu operaci s názvem pole filtru, která je vystavena v návrháři. To vám umožní zadat dotaz na pole a vrátit sadu filtrovaných výsledků.
 
-Zde je, jak můžete přidat v aplikaci logiky:
+Tady je postup, jak ho můžete přidat do aplikace logiky:
 
-1. Vyberte **nový krok** tlačítko.
-2. Zvolte **přidat akci**.
-3. Zadejte do vyhledávacího pole Akce **filtr** do seznamu **filtrování pole** akce.
+1. Vyberte tlačítko **Nový krok** .
+2. Vyberte **přidat akci**.
+3. Do vyhledávacího pole Akce zadejte **Filter** a vypište akci **filtru pole** .
    
-    ![Výběr akce dotazu](./media/connectors-native-query/using-action-1.png)
-4. Vyberte pole pro filtrování. (Na následujícím snímku obrazovky se zobrazí pole výsledky vyhledávání na Twitteru.)
-5. Vytvořte podmínku, která chcete vyhodnotit pro každou položku. (Na následujícím snímku obrazovky filtry tweety od uživatelů, kteří mají více než 100 sledujícími.)
+    ![Vyberte akci dotazu.](./media/connectors-native-query/using-action-1.png)
+4. Vyberte pole, které chcete filtrovat. (Na následujícím snímku obrazovky vidíte pole výsledků hledání v Twitteru.)
+5. Vytvořte podmínku pro vyhodnocení každé položky. (Následující filtry snímků obrazovky se tweety na uživatele, kteří mají více než 100 sledujících.)
    
     ![Dokončení akce dotazu](./media/connectors-native-query/using-action-2.png)
    
-    Nové pole obsahující pouze výsledky, které splňuje požadavky filtru bude výstup akce.
-6. Klikněte levém horním rohu panelu nástrojů uložte a vaše aplikace logiky se jak uložit a publikovat (aktivovat).
+    Akce vytvoří výstup nového pole, které obsahuje pouze výsledky, které splňují požadavky filtru.
+6. Kliknutím na levý horní roh panelu nástrojů ho uložíte a vaše aplikace logiky bude ukládat i publikovat (aktivovat).
 
-\* Pokud jste volání koncového bodu HTTP a příjem odpovědi JSON, použijte _Parsovat JSON_ akce parsovat JSON odpovědi. Bez provedení tohoto kroku _filtrování pole_ zobrazit pouze text, který se není srozumitelný struktura datovou část JSON.
+\* Pokud voláte koncový bod HTTP a dostanete odpověď JSON, použijte akci _analyzovat JSON_ pro analýzu odpovědi JSON. Bez provedení tohoto kroku uvidí _pole Filter_ pouze tělo a nebude rozumět struktuře datové části JSON.
 
 ## <a name="query-action"></a>Akce dotazu
-Tady jsou uvedené podrobnosti pro akci, která podporuje tento konektor. Konektor má jednu akci je to možné.
+Zde jsou uvedeny podrobnosti o akci, kterou tento konektor podporuje. Konektor má jednu možnou akci.
 
 | Akce | Popis |
 | --- | --- |
-| Filtrování pole |Vyhodnocuje podmínku pro každou položku v poli a vrátí výsledky |
+| Filtrovat pole |Vyhodnotí podmínku pro každou položku v poli a vrátí výsledky. |
 
 ## <a name="action-details"></a>Podrobnosti akce
-Akce dotazu obsahuje jednu akci je to možné. Následující tabulky popisují požadované a volitelné vstupní pole pro akce a odpovídající podrobnosti výstupu, které jsou spojené s použitím akce.
+Akce dotazu se nachází v jedné možné akci. Následující tabulky popisují požadovaná a volitelná vstupní pole pro akci a odpovídající výstupy, které jsou přidruženy k použití akce.
 
-### <a name="filter-array"></a>Filtrování pole
-Níže jsou vstupní pole pro akce, která umožňuje odchozí požadavek HTTP.
-A * znamená, že je povinné pole.
+### <a name="filter-array"></a>Filtrovat pole
+Níže jsou vstupní pole pro akci, která vytváří odchozí požadavek HTTP.
+Znak * znamená, že se jedná o povinné pole.
 
-| Display name | Název vlastnosti | Popis |
+| Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Z * |from |Pole k filtrování |
-| Podmínka * |kde |Podmínku, která má vyhodnotit pro každou položku |
+| Výsledkem |Výsledkem |Pole, které se má filtrovat |
+| Pomocné |, |Podmínka, která se má vyhodnotit pro každou položku |
 
 <br>
 
 ### <a name="output-details"></a>Podrobnosti výstupu
-Toto jsou podrobnosti výstupu pro odpověď HTTP.
+Níže jsou uvedeny podrobnosti výstupu pro odpověď HTTP.
 
-| Název vlastnosti | Typ dat | Popis |
+| Název vlastnosti | Data type | Popis |
 | --- | --- | --- |
-| Filtrované pole |pole |Pole, které obsahuje objekt pro každý filtrovaných výsledků |
+| Filtrované pole |pole |Pole, které obsahuje objekt pro každý filtrovaný výsledek |
 
-## <a name="next-steps"></a>Další postup
-Nyní, vyzkoušejte si platformu a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další dostupné konektory v logic apps můžete prozkoumat podle našich [rozhraní API seznamu](apis-list.md).
+## <a name="next-steps"></a>Další kroky
+Teď si vyzkoušejte platformu a [vytvořte aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další dostupné konektory můžete prozkoumat v části Logic Apps, a to tak, že si prohlédněte náš [seznam rozhraní API](apis-list.md).
 

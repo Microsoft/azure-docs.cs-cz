@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057650"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972665"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Serv
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Platné předplatné Azure – [Vytvořte si ho](https://azure.microsoft.com/free/) zdarma.
 * [Rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -60,7 +60,7 @@ az account list-locations \
 
 Po umístění Azure vytvořte novou skupinu prostředků v rozhraní příkazového řádku Azure pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
 
-V následujícím příkladu nahraďte umístění `westus2` Azure jedním z umístění Azure dostupných pro vaše předplatné.
+V následujícím příkladu nahraďte umístění Azure `westus2` jedním z umístění Azure dostupných pro vaše předplatné.
 
 ```azurecli-interactive
 az group create \
@@ -75,39 +75,39 @@ az group create \
 Při vytváření nového prostředku budete muset znát "druh" služby, kterou chcete použít, spolu s [cenovou úrovní](https://azure.microsoft.com/pricing/details/cognitive-services/) (nebo SKU), kterou chcete. Při vytváření prostředku budete používat tuto a další informace jako parametry.
 
 > [!NOTE]
-> Řada poruchových služeb má bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
+> Řada poruchových služeb má bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte jako SKU pro prostředek `F0`.
 
-### <a name="vision"></a>Obraz
+### <a name="vision"></a>Vidění
 
-| Služba                    | Typ                      |
+| Služba                    | Plnění                      |
 |----------------------------|---------------------------|
-| Počítačové zpracování obrazu            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
-| Rozhraní API pro rozpoznávání tváře                   | `Face`                    |
+| Rozhraní Face API                   | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
 ### <a name="search"></a>Hledat
 
-| Služba            | Typ                  |
+| Služba            | Plnění                  |
 |--------------------|-----------------------|
 | Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
 | Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
 | Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Hledání Bingem        | `Bing.Search.v7`      |
+| Vyhledávání Bingu        | `Bing.Search.v7`      |
 | Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Řeč
 
-| Služba            | Typ                 |
+| Služba            | Plnění                 |
 |--------------------|----------------------|
 | Hlasové služby    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk
 
-| Služba            | Typ                |
+| Služba            | Plnění                |
 |--------------------|---------------------|
 | Porozumění formuláři | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -117,7 +117,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="decision"></a>Rozhodnutí
 
-| Služba           | Typ               |
+| Služba           | Plnění               |
 |-------------------|--------------------|
 | Detektor anomálií  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
@@ -170,6 +170,16 @@ Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z po
 * funkce služby povolené v rámci cenové úrovně.
 * Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
 
+## <a name="get-current-quota-usage-for-your-resource"></a>Získat aktuální využití kvóty pro váš prostředek
+
+Pomocí příkazu [AZ cognitiveservices Account Account list-Usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) Získejte využití prostředku služby vnímání.
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -181,7 +191,7 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, pou
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Ověřování požadavků do Azure Cognitive Services](authentication.md)
 * [Co je Azure Cognitive Services?](Welcome.md)

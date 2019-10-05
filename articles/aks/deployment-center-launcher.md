@@ -2,19 +2,18 @@
 title: Centrum nasazení pro Azure Kubernetes
 description: Centrum nasazení v Azure DevOps zjednodušuje nastavení robustního kanálu Azure DevOps pro vaši aplikaci.
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618721"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972981"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
 
@@ -28,7 +27,7 @@ V tomto kurzu provedete následující:
 > * Projděte si kanál průběžného doručování (CD).
 > * Vyčistěte prostředky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -58,19 +57,19 @@ V tomto kurzu provedete následující:
 
 1. Vyberte cluster AKS a v levém okně vyberte **centrum nasazení (Preview)** . Vyberte **Začínáme**.
 
-   ![nastavení](media/deployment-center-launcher/settings.png)
+   ![settings](media/deployment-center-launcher/settings.png)
 
 1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
 
     Azure Repos je sada nástrojů pro správu verzí, které vám pomůžou spravovat kód. Bez ohledu na to, jestli je váš softwarový projekt velký nebo malý, je dobrý nápad pomocí správy verzí co nejdříve.
 
-    - **Azure Repos**: Vyberte úložiště z existujícího projektu a organizace.
+    - **Azure Repos**: vyberte úložiště ze stávajícího projektu a organizace.
 
         ![Azure Repos](media/deployment-center-launcher/azure-repos.gif)
 
-    - **GitHub**: Autorizovat a vyberte úložiště pro váš účet GitHub.
+    - **GitHub**: autorizovat a vyberte úložiště pro váš účet GitHub.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![GitHubu](media/deployment-center-launcher/github.gif)
 
 
 1. Centrum nasazení analyzuje úložiště a detekuje vaše souboru Dockerfile. Pokud chcete aktualizovat souboru Dockerfile, můžete označené číslo portu upravit.
@@ -79,7 +78,7 @@ V tomto kurzu provedete následující:
 
     Pokud úložiště neobsahuje souboru Dockerfile, zobrazí systém zprávu pro potvrzení jednoho.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Souboru Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
 1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
 
@@ -91,7 +90,7 @@ V tomto kurzu provedete následující:
 
 1. Po dokončení nasazení se zobrazí úspěšné protokoly.
 
-    ![Logs](media/deployment-center-launcher/logs.png)
+    ![Protokoly](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
 
@@ -123,11 +122,11 @@ Centrum nasazení automaticky vytvoří a nakonfiguruje vztah mezi vaší organi
 
 1. Chcete-li upravit kanál verze, vyberte možnost **Upravit**.
 
-1. V seznamu artefaktů  vyberte možnost **drop** . V předchozích krocích vytváří kanál konstrukce, který jste prozkoumali, výstup použitý pro artefakt. 
+1. V seznamu **artefaktů** vyberte možnost **drop** . V předchozích krocích vytváří kanál konstrukce, který jste prozkoumali, výstup použitý pro artefakt. 
 
 1. Na pravé straně možnosti **drop** vyberte Trigger **průběžného nasazování** . Tento kanál verze má povolený Trigger CD, který spouští nasazení, kdykoli je k dispozici nový artefakt sestavení. Aktivační událost taky můžete zakázat, aby se vyžadovalo ruční spuštění nasazení.
 
-1. Pokud chcete kontrolovat všechny úlohy vašeho kanálu, vyberte **úlohy**. Vydaná verze nastaví prostředí do, nakonfiguruje `imagePullSecrets` parametr, nainstaluje nástroje Helm a nasadí grafy Helm do clusteru Kubernetes.
+1. Pokud chcete kontrolovat všechny úlohy vašeho kanálu, vyberte **úlohy**. Vydaná verze nastaví prostředí do, nakonfiguruje parametr `imagePullSecrets`, nainstaluje nástroje Helm a nasadí grafy Helm do clusteru Kubernetes.
 
 1. Chcete-li zobrazit historii vydání, vyberte možnost **Zobrazit vydané verze**.
 
@@ -141,6 +140,6 @@ Centrum nasazení automaticky vytvoří a nakonfiguruje vztah mezi vaší organi
 
 Související prostředky, které jste vytvořili, můžete odstranit, když už je nepotřebujete. Použijte funkci Odstranit na řídicím panelu DevOps Projects.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Nebo můžete použít tento model CI/CD jako šablonu pro vaše jiné kanály.

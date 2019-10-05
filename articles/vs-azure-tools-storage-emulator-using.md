@@ -1,9 +1,9 @@
 ---
-title: Konfigurace a použití emulátoru úložiště pomocí sady Visual Studio | Dokumentace Microsoftu
-description: Konfigurace a použití emulátoru úložiště pomocí sady Visual Studio
+title: Konfigurace a použití emulátoru úložiště se sadou Visual Studio | Microsoft Docs
+description: Konfigurace a použití emulátoru úložiště se sadou Visual Studio
 services: visual-studio-online
 author: ghogen
-manager: douge
+manager: jillfra
 assetId: c8e7996f-6027-4762-806e-614b93131867
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,46 +12,46 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: 39e2071a62d6a1f6ee050f862856815048e50430
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08e3f5d5bb32d15b9d8d164c898d2b8d7a90108c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128292"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969716"
 ---
-# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurace a použití emulátoru úložiště pomocí sady Visual Studio
+# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurace a použití emulátoru úložiště se sadou Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Přehled
-Vývojové prostředí sady Azure SDK zahrnuje emulátor úložiště, nástroj, který simuluje objektů Blob, Queue a Table storage služeb dostupných v Azure na svém místním vývojovém počítači. Pokud jste vytváření cloudové služby, která využívá služby Azure storage nebo zápis všechny externí aplikaci, která volá služby úložiště, můžete otestovat kódu místně v emulátoru úložiště. Nástroje Azure pro sadu Microsoft Visual Studio integrovat správu emulátoru úložiště do sady Visual Studio. Nástroje Azure inicializovat emulátor databáze úložiště při prvním použití spuštění emulátoru služby storage při spouštění nebo ladění vašeho kódu ze sady Visual Studio a poskytuje přístup jen pro čtení k datům emulátor úložiště přes Průzkumníka služby Azure Storage.
+Vývojové prostředí Azure SDK zahrnuje emulátor úložiště, což je nástroj, který simuluje služby objektů blob, front a úložiště, které jsou k dispozici v Azure na místním vývojovém počítači. Pokud vytváříte cloudovou službu, která využívá služby úložiště Azure, nebo napíšete jakoukoli externí aplikaci, která volá služby úložiště, můžete svůj kód místně otestovat proti emulátoru úložiště. Nástroje Azure pro Microsoft Visual Studio integrují správu emulátoru úložiště do sady Visual Studio. Nástroje Azure inicializují databázi emulátoru úložiště při prvním použití, spustí službu emulátoru úložiště při spuštění nebo ladění kódu ze sady Visual Studio a poskytuje přístup k datům emulátoru úložiště jen pro čtení prostřednictvím Průzkumník služby Azure Storage.
 
-Podrobné informace na emulátor úložiště, včetně požadavky na systém a vlastní konfigurace pokyny najdete v tématu [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
-
-> [!NOTE]
-> Existují určité rozdíly ve funkcích mezi simulace emulátoru úložiště a služby Azure storage. Zobrazit [rozdíly mezi emulátoru úložiště a služby Azure Storage](storage/common/storage-use-emulator.md) v dokumentaci k sadě Azure SDK pro informace o konkrétních rozdílech.
-> 
-> 
-
-## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovací řetězec pro emulátor úložiště
-Pro přístup k emulátoru úložiště z kódu v rámci role, můžete nakonfigurovat připojovací řetězec, který odkazuje na emulátor úložiště a, který lze později změnit tak, aby odkazoval na účet úložiště Azure. Připojovací řetězec je nastavení konfigurace, který může číst vaši roli v době běhu pro připojení k účtu úložiště. Další informace o tom, jak vytvořit připojovací řetězce, naleznete v tématu [připojovacích řetězců Azure Storage konfigurace](/azure/storage/common/storage-configure-connection-string).
+Podrobné informace o emulátoru úložiště, včetně požadavků na systém a vlastních pokynů ke konfiguraci, najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](storage/common/storage-use-emulator.md).
 
 > [!NOTE]
-> Může vrátit odkaz na účet emulátoru úložiště v kódu s použitím **DevelopmentStorageAccount** vlastnost. Tento přístup funguje správně, pokud chcete získat přístup z vašeho kódu na emulátor úložiště, ale pokud máte v plánu můžete publikovat svoji aplikaci do Azure, budete muset vytvořit připojovací řetězec pro přístup k účtu služby Azure storage a upravte kód Refaktorovat pro použití tohoto připojení řetězec před publikováním. Pokud chcete přepnout mezi emulátor účet úložiště a účtu služby Azure storage často, bude tento proces zjednodušit připojovací řetězec.
+> Mezi simulací emulátoru úložiště a službami úložiště Azure je několik rozdílů. Informace o konkrétních rozdílech najdete v tématu [rozdíly mezi emulátorem úložiště a Azure Storage službami](storage/common/storage-use-emulator.md) v dokumentaci k sadě Azure SDK.
 > 
 > 
 
-## <a name="initializing-and-running-the-storage-emulator"></a>Inicializace a spouštění v emulátoru úložiště
-Můžete určit, že při spuštění nebo ladění služby v sadě Visual Studio, Visual Studio automaticky spustí emulátoru úložiště. V Průzkumníku řešení otevřete místní nabídku pro váš **Azure** projekt a zvolte **vlastnosti**. Na **vývoj** kartě **spustit emulátor úložiště Azure** klikněte na položku **True** (Pokud již není nastavena tato hodnota).
-
-Při prvním spuštění nebo ladění služby ze sady Visual Studio, emulátor úložiště spustí inicializace procesu. Tento proces rezervuje místní porty pro emulátor úložiště a vytvoří databázi emulátoru úložiště. Jakmile budete hotovi, není potřeba tento proces spustit znovu, dokud je neodstraní databázi emulátoru úložiště.
+## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovacího řetězce pro emulátor úložiště
+Pro přístup k emulátoru úložiště z kódu v rámci role budete chtít nakonfigurovat připojovací řetězec, který odkazuje na emulátor úložiště a později se dá změnit tak, aby odkazoval na účet služby Azure Storage. Připojovací řetězec je konfigurační nastavení, které vaše role může číst za běhu, aby se mohla připojit k účtu úložiště. Další informace o tom, jak vytvořit připojovací řetězce, najdete v tématu [konfigurace Azure Storage připojovacích řetězců](/azure/storage/common/storage-configure-connection-string).
 
 > [!NOTE]
-> Od verze z června 2012 nástrojů Azure, emulátor úložiště, ve výchozím nastavení spustí, v SQL serveru Express LocalDB. V dřívějších verzích nástrojů Azure, emulátor úložiště spouští pro výchozí instanci systému SQL Express 2005 nebo 2008, který je nutno nainstalovat před instalací Azure SDK. Můžete také spustit emulátor úložiště pro pojmenovaná instance SQL Express nebo pojmenovaná nebo výchozí instance systému Microsoft SQL Server. Pokud je nutné nakonfigurovat na emulátor úložiště, chcete-li spustit jinou než výchozí instanci, naleznete v tématu [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
+> Odkaz na účet emulátoru úložiště můžete vrátit z kódu pomocí vlastnosti **DevelopmentStorageAccount** . Tento přístup funguje správně, pokud chcete k emulátoru úložiště získat přístup z kódu, ale pokud plánujete publikování aplikace v Azure, budete muset vytvořit připojovací řetězec pro přístup k účtu služby Azure Storage a úpravou kódu pro použití tohoto připojení. před publikováním řetězec. Pokud přepínáte mezi účtem emulátoru úložiště a účtem Azure Storage často, připojovací řetězec zjednodušuje tento proces.
 > 
 > 
 
-Emulátor úložiště poskytuje uživatelské rozhraní pro zobrazení stavu služby místní úložiště a chcete spustit, zastavit a obnovit je. Po zahájení službu emulátor úložiště můžete zobrazit uživatelské rozhraní nebo spuštění nebo zastavení služby kliknutím pravým tlačítkem myši ikonu v oznamovací oblasti pro Microsoft Azure Emulator na hlavním panelu Windows.
+## <a name="initializing-and-running-the-storage-emulator"></a>Inicializace a spuštění emulátoru úložiště
+Můžete určit, že při spuštění nebo ladění služby v aplikaci Visual Studio aplikace Visual Studio automaticky spustí emulátor úložiště. V Průzkumník řešení otevřete místní nabídku pro projekt **Azure** a vyberte **vlastnosti**. Na kartě **vývoj** v seznamu **emulátor Start Azure Storage** vyberte **hodnotu true** (Pokud již tato hodnota není nastavená).
 
-## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Zobrazení dat emulátoru úložiště v Průzkumníku serveru
-Uzel Azure Storage v Průzkumníku serveru umožňuje zobrazení dat a změnit nastavení pro data objektů blob a tabulky v rámci účtů úložiště, včetně emulátoru úložiště. Zobrazit [prostředků Správa služby Azure Blob Storage pomocí Storage Exploreru](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) Další informace.
+Při prvním spuštění nebo ladění služby ze sady Visual Studio emulátor úložiště spustí proces inicializace. Tento proces rezervuje místní porty pro emulátor úložiště a vytvoří databázi emulátoru úložiště. Po dokončení tohoto procesu není potřeba ho spouštět znovu, dokud neodstraníte databázi emulátoru úložiště.
+
+> [!NOTE]
+> Od vydání verze Azure Tools od června 2012 se emulátor úložiště ve výchozím nastavení spouští ve službě SQL Express LocalDB. V dřívějších verzích nástrojů Azure se emulátor úložiště spouští na výchozí instanci SQL Express 2005 nebo 2008, kterou musíte nainstalovat, než budete moct nainstalovat sadu Azure SDK. Emulátor úložiště můžete také spustit s pojmenovanou instancí SQL Express nebo s pojmenovanou nebo výchozí instancí Microsoft SQL Server. Pokud potřebujete nakonfigurovat emulátor úložiště tak, aby běžel s instancí jinou než výchozí instance, přečtěte si téma [použití emulátoru Azure Storage pro vývoj a testování](storage/common/storage-use-emulator.md).
+> 
+> 
+
+Emulátor úložiště poskytuje uživatelské rozhraní pro zobrazení stavu místních služeb úložiště a pro jeho spuštění, zastavení a resetování. Po spuštění služby emulátoru úložiště můžete zobrazit uživatelské rozhraní nebo spustit nebo zastavit službu kliknutím pravým tlačítkem myši na ikonu oznamovací oblasti pro Microsoft Azure Emulator na hlavním panelu systému Windows.
+
+## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Zobrazení dat emulátoru úložiště v Průzkumník serveru
+Uzel Azure Storage v Průzkumník serveru umožňuje zobrazit data a změnit nastavení pro data objektů BLOB a tabulek v účtech úložiště, včetně emulátoru úložiště. Další informace najdete v tématu [Správa prostředků Azure Blob Storage pomocí Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs) .
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947686"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970727"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
@@ -34,12 +34,12 @@ Model můžete vytvořit pouze pomocí dat ze slovníku. Pokud to chcete provés
 >[!Note]
 >Vlastní Překladatel nemění větu soubory slovníku, takže je důležité, aby se v dokumentech slovníku rovnal stejný počet zdrojových a cílových frází a vět a aby byly přesně zarovnané.
 
-## <a name="recommendations"></a>Doporučit
+## <a name="recommendations"></a>Doporučení
 
 - Slovníky nejsou náhradou za školení modelu pomocí školicích dat. Doporučuje se, abyste se vyhnuli a aby se systém dozvěděl od vašich školicích dat. Nicméně pokud je nutné vykreslit věty nebo složená podstatná jména, použijte slovník.
 - Slovník frází by měl být používán zřídka. Počítejte s tím, že při nahrazení fráze ve větě je kontext v této větě ztracený nebo omezený pro překlad zbytku věty. Výsledkem je, že zatímco fráze nebo slovo v rámci věty budou přeloženy podle poskytnutého slovníku, bude celková kvalita překladu věty často zadarmo.
 - Slovník frází dobře funguje pro složená podstatná jména, jako jsou názvy produktů ("Microsoft SQL Server"), správné názvy ("město Hamburg") nebo funkce produktu ("kontingenční tabulka"). Nefunguje stejně dobře pro příkazy nebo přídavné jména, protože jsou obvykle vysoce inflected ve zdroji nebo v cílovém jazyce. Osvědčenými postupy je vyhnout se záznamům slovníku frází pro cokoli, ale pro složená podstatná jména.
-- Při použití slovníku je důležité použít velká a interpunkční znaménka. Položky slovníku budou odpovídat pouze slovům a frázím, které mají stejné kapitalizace a interpunkční znaménka jako položka nalezená ve slovníku. Vaše překlady odrážejí velká a interpunkční znaménka, která jsou k dispozici na cílové straně souboru slovníku. Jako příklad jste proložili model z angličtiny do španělštiny pomocí slovníku, který ve zdrojovém souboru zadal text "Hello", který se má přeložit na "Buenos Dias" v cílovém souboru. Když vyžádáte překlad věty, která obsahuje text "Hello", systém nejprve vyhledá slovník a nalezne shodu ("Hello") a vrátí "Buenos Dias" v konečném překladu.
+- Při použití slovníku frází jsou důležité kapitalizace a interpunkční znaménka. Položky slovníku budou odpovídat pouze slovům a frázím ve vstupní větě, které používají přesně stejnou velikost písmen a interpunkční znaménka, jak je uvedeno v souboru zdrojového slovníku. Také překlady budou odrážet velká a malá písmena, která jsou uvedena v souboru cílového slovníku. Například pokud jste si vyškole systém z angličtiny do španělštiny, který používá slovník frází, který určuje "US" ve zdrojovém souboru a "EE". UU. " v cílovém souboru. Když vyžádáte překlad věty, která obsahuje slovo "US" (bez velkých písmen), neshoduje se s slovníkem. Nicméně pokud požadujete překlad věty, která obsahuje slovo "US" (velkými písmeny), bude odpovídat slovníku a překlad by obsahoval "EE". UU. " Všimněte si, že velká a interpunkční znaménka v překladu se mohou lišit od zadání v souboru cílového slovníku a může se lišit od velkých a malých písmen ve zdroji. Řídí se pravidly cílového jazyka.
 - Pokud se slovo v souboru slovníku vyskytuje více než jednou, bude systém vždycky používat poslední poskytnutou položku. Proto by váš slovník neměl obsahovat více překladů stejného slova.
 
 ## <a name="next-steps"></a>Další kroky

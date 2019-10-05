@@ -3,8 +3,8 @@ title: Vytvoření aplikace v Pythonu na platformě Linux-Azure App Service | Mi
 description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071004"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972096"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux (Preview)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto rychlém startu se dozvíte, jak nasadit aplikaci v Pythonu nad integrovanou image Pythonu (Preview) v App Service v systému Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
-
-Postup v tomto článku můžete použít v případě počítačů se systémem Mac, Windows nebo Linux.
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto rychlém startu se dozvíte, jak nasadit aplikaci v Pythonu nad integrovanou image Pythonu v App Service v systému Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -59,7 +57,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Vytvoření webové aplikace
+## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
 
@@ -124,7 +122,7 @@ Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovan
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
-V Cloud Shell zadejte `code application.py` , aby se otevřel Editor Cloud Shell.
+V Cloud Shell otevřete Editor Cloud Shell zadáním `code application.py`.
 
 ![Application.py kódu](media/quickstart-python/code-applicationpy.png)
 
@@ -136,7 +134,7 @@ return "Hello Azure!"
 
 Uložte změny a ukončete Editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
 
-Teď můžete aplikaci opětovně nasadit. Nahraďte `<app_name>` svou aplikací.
+Teď můžete aplikaci opětovně nasadit. Nahraďte `<app_name>` vaší aplikací.
 
 ```bash
 az webapp up -n <app_name>
@@ -162,15 +160,13 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
-
-Integrovaná image v jazyce Python v App Service v systému Linux je aktuálně ve verzi Preview a můžete přizpůsobit příkaz, který je použit ke spuštění aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Aplikace Python s PostgreSQL](tutorial-python-postgresql-app.md)
+> [Kurz: aplikace v Pythonu s PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace v Pythonu](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
+> [Kurz: nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
