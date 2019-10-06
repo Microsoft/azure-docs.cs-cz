@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e16c40c6a4f3539aa286c4c2d0859459ca18a91c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338371"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981445"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Vysvětlení Azure Policy pro službu Azure Kubernetes
 
@@ -51,7 +50,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
   1. V horní části seznamu předplatných vyberte tlačítko pro **výslovný souhlas** .
 
-- Azure CLI:
+- Rozhraní příkazového řádku Azure:
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -80,7 +79,7 @@ _Doplněk Azure Policy_ pro Kubernetes připojuje službu Azure Policy k řadič
 
 ### <a name="installing-the-add-on"></a>Instalace doplňku
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Preview. Tento krok se provádí pomocí Azure CLI:
 
@@ -114,7 +113,7 @@ Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Pr
 
 Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- portál Azure
+- Portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -194,7 +193,7 @@ Pokud chcete zobrazit protokoly z kontejnerů GateKeeper, postupujte podle krok�
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- portál Azure
+- Portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 

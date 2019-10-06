@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98ade4e5c8a14c2d4f5c2a22c2c973fac844861f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802555"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981693"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Nasazení rozhraní Microsoft Cloud pro přijetí v ukázce pro Azure Foundation podrobný plán
 
@@ -38,10 +37,10 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Název**podrobného plánu: Zadejte název vaší kopie ukázky podrobného plánu CAF Foundation.
-   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu, do které chcete kopii ukázky Uložit.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázky CAF Foundation details.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
-1. Vyberte kartu _artefakty_ v horní části stránky nebo **další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
 1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
@@ -67,16 +66,16 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základní informace
-       - **Předplatná:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: Název je předem vyplněný pro vás na základě názvu podrobného plánu.
+   - Základy
+       - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit.
      - Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu.
        Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: Vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Uzamknout přiřazení
+   - Zamknout přiřazení
 
      Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
@@ -88,11 +87,11 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
      Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-     - **Organizace**: Zadejte název vaší organizace, například contoso, musí být jedinečný.
+     - **Organizace**: zadejte název vaší organizace, například contoso, musí být jedinečný.
      - **Oblast Azure**: Vyberte oblast Azure pro nasazení.
-     - **Povolená umístění**: Které oblasti Azure umožníte sestavení prostředků?
+     - **Povolená umístění**: u kterých oblastí Azure povolíte sestavení prostředků?
      
-   - Parametry artefaktů
+   - Parametry artefaktu
 
      Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
@@ -108,14 +107,14 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Povolené skladové položky účtu úložiště|Přiřazení zásad|Policy_Allowed-StorageAccount-SKU|SKU používané v účtech úložiště diagnostického protokolu|
-|Povolené skladové položky virtuálních počítačů|Přiřazení zásad|Policy_Allowed-VM – SKU|Povolené skladové položky virtuálních počítačů|
+|Povolené SKU virtuálních počítačů|Přiřazení zásad|Policy_Allowed-VM – SKU|Povolené SKU virtuálních počítačů|
 |Přidat značku CostCenter do skupin prostředků|Přiřazení zásad|Policy_CostCenter_Tag|Připojit značku CostCenter a její hodnotu ze skupiny prostředků|
 |Typy prostředků, které nechcete ve svém prostředí povolit|Přiřazení zásad|_Allowed zásad – typy prostředků|Které prostředky Azure mají být ve vašem prostředí povolené|
-|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel <Object ID> Azure AD, kterým chcete udělit oprávnění v Key Vault|
+|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|**Uzamčené** – skupina nebo uživatel Azure AD <Object ID> pro udělení oprávnění v Key Vault|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_DataRetention|**Uzamčený** počet dní, po které se budou uchovávat data v Log Analytics|
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste si prohlédli postup nasazení ukázky podrobného plánu CAF Foundation, najdete v následujícím článku informace o architektuře:
 

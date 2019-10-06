@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264515"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981160"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
 
@@ -30,7 +30,7 @@ Konkrétně tento článek obsahuje odpovědi na následující otázky:
 
 Přehled těchto scénářů použití je popsaný v následujících částech.
 
-## <a name="introduction"></a>Úvod
+## <a name="introduction"></a>Představení
 
 Azure Time Series Insights je ucelená nabídka typu platforma jako služba. Používá se ke shromažďování, zpracování, ukládání, analýze a dotazování vysoce kontextových dat IoT škály, které jsou optimalizované pro časovou řadu. Time Series Insights je ideální pro zkoumání a provozní analýzu dat ad hoc. Time Series Insights je jedinečná rozšiřitelná a přizpůsobená nabídka služeb, která splňuje široké požadavky na nasazení v průmyslu IoT.
 
@@ -38,7 +38,7 @@ Azure Time Series Insights je ucelená nabídka typu platforma jako služba. Pou
 
 Detekujte anomálie a odhalujte skryté trendy ve vašich datech díky okamžitému zkoumání a analýze miliard událostí. Time Series Insights poskytuje výkon pro zpracování vašich analytických úloh IoT a DevOps téměř v reálném čase.
 
-[![Průzkumník dat](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
+[@no__t – Průzkumník 1Data](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
 Většina zákazníků souhlasí s tím, že minimální doba potřebná k získání přehledu je jednou z největší funkcí Time Series Insights:
 
@@ -56,17 +56,17 @@ Existují tři základní způsoby, jak pracovat s daty uloženými v Time Serie
 
 - Druhým způsobem, jak začít, je použít sadu JavaScript SDK k rychlému vkládání výkonných grafů a grafů do vaší webové aplikace. Pouze pár řádků kódu vám umožní vytvářet výkonné dotazy. Slouží k naplnění spojnicových grafů, výsečových grafů, pruhových grafů, Heat mapy, datových mřížek a dalších. Všechny tyto prvky existují předem v dialogovém okně pomocí sady SDK. Sada SDK také abstrakce Time Series Insights rozhraní API pro dotazy. Můžete je použít k vytváření predikátů podobných SQL k dotazování na data, která chcete zobrazit na řídicím panelu. Pro hybridní řešení prezentační vrstvy nabízí Time Series Insights jako parametrizované adresy URL. Poskytují hladce spojovací body pomocí Průzkumníka Time Series Insights Preview pro rozsáhlou komentářei dat.
 
-    * Další informace o sadě JavaScript SDK najdete v [klientské knihovně Time Series Insights js](tutorial-explore-js-client-lib.md) a v dokumentaci pro [Time Series Insights klienta](https://github.com/Microsoft/tsiclient) .
+    * Přečtěte si o [klientské knihovně Time Series Insights js](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) a dokumentaci pro [Time Series Insights klienta](https://github.com/Microsoft/tsiclient) , kde najdete další informace o sadě JavaScript SDK.
 
     * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Průzkumníkovi ve službě Azure Time Series Insights Preview](time-series-insights-update-explorer.md).
 
-- Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory `from`, jako například, `first` `to`, `last`a. Obsahuje agregace `average`a transformace `min` `order by` `split by`, jako jsou, `DateHistogram`,,, a. `max` `has`Má také operátory filtrování `greater than` `or` `in`, jako jsou,, `REGEX`,, a. `and` Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění barev vypěstovaných v balení, které odhalí anomálie.
+- Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory jako `from`, `to`, `first` a `last`. Obsahuje agregace a transformace, například `average`, `min`, `max`, `split by`, `order by` a `DateHistogram`. Má také operátory filtrování, například `has`, `in`, `and`, `or`, `greater than` a `REGEX`. Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění barev vypěstovaných v balení, které odhalí anomálie.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Provozní analýzy a zvýšení efektivity procesů
 
 Pomocí Time Series Insights můžete monitorovat stav, využití a výkon zařízení ve velkém měřítku. Time Series Insights poskytuje snadný způsob, jak změřit provozní efektivitu. Time Series Insights pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
 
-[![Přehled](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
+[@no__t – 1Overview](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
 
 Streamování a průběžné zpracování dat přicházejících z provozních procesů může úspěšně transformovat libovolnou firmu, pokud je v kombinaci s pravou technologií nebo řešením. Tato řešení jsou často kombinací více systémů. Umožňují prozkoumání a analýzu dat, která se průběžně mění, zejména ve sféře IoT, a sdílí společný vzor.
 
@@ -82,11 +82,11 @@ Architekturu řešení lze dosáhnout následujícím způsobem:
 
 Time Series Insights nabízí zkoumání dat v reálném čase a přehledy založené na prostředcích nad historickými daty. V závislosti na potřebách vaší firmy můžete úlohy MapReduce a podregistru spouštět na datech uložených v Time Series Insights připojením Time Series Insights k Azure HDInsight. Data uložená v Time Series Insights jsou k dispozici pro Power BI a další zákaznické aplikace prostřednictvím rozhraní API pro dotazy na veřejné ploše Time Series Insights. Tato data je možné využít ve scénářích obsáhlé podnikání a provozní logiky.
 
-## <a name="advanced-analytics"></a>Pokročilé analýzy
+## <a name="advanced-analytics"></a>Pokročilá analýza
 
 Integrujte s pokročilými analytickými službami, jako jsou Machine Learning a Azure Databricks. Time Series Insights příchozí data z milionů zařízení. Přidává kontextová data, která lze hladce spotřebovat sadou služeb Azure Analytics.
 
-[![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[@no__t – 1Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
 Pokročilé analýzy a strojové učení využívají a zpracovávají velké objemy dat. Tato data se používají k provádění rozhodnutí řízených daty a k provádění prediktivní analýzy. V případech použití v IoT se algoritmy pro pokročilou analýzu učí od dat shromážděných z milionů zařízení. Tato zařízení odesílají data vícekrát každou sekundu. Data shromážděná ze zařízení IoT jsou nepracovaná. Chybí kontextové informace, jako je umístění zařízení a jednotka, ve které se senzor čte. V důsledku toho je nezpracovaných dat obtížné spotřebovat přímo pro pokročilé analýzy.
 

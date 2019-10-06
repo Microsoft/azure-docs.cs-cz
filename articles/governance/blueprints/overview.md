@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146102"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981715"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure modrotisky
 
@@ -52,16 +51,16 @@ V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _
 
 Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako artefakty podporují tyto prostředky:
 
-|Resource  | Možnosti hierarchie| Popis  |
+|Prostředek  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
-|Skupiny prostředků | Subscription | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
+|Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
 |Šablona Azure Resource Manageru | Předplatné, skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
-|Přiřazení zásady | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásada nebo iniciativa musí být v rozsahu umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
+|Přiřazení zásad | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásada nebo iniciativa musí být v rozsahu umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
 |Přiřazení role | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
 
 ### <a name="blueprint-definition-locations"></a>Umístění definic podrobného plánu
 
-Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. Plány lze uložit do [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ke kterému máte přístup přispěvatele. Pokud se jedná o skupinu pro správu, je plán k dispozici pro přiřazení k libovolnému podřízenému předplatnému této skupiny pro správu.
+Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. Plány lze uložit do [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ke kterému máte přístup **přispěvatele** . Pokud se jedná o skupinu pro správu, je plán k dispozici pro přiřazení k libovolnému podřízenému předplatnému této skupiny pro správu.
 
 ### <a name="blueprint-parameters"></a>Parametry podrobného plánu
 
@@ -124,12 +123,12 @@ Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečen�
 
 Pro určitá pole existují následující omezení:
 
-|Object|Pole|Povolené znaky|Max. Délka|
+|Objekt|Pole|Povolené znaky|Nejvýše k Délka|
 |-|-|-|-|
-|Podrobný plán|Name|písmena, číslice, spojovníky a tečky|48|
-|Podrobný plán|Version|písmena, číslice, spojovníky a tečky|20|
-|Přiřazení podrobného plánu|Name|písmena, číslice, spojovníky a tečky|90|
-|Artefakt podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Version|písmena, číslice, spojovníky a tečky|20|
+|Přiřazení podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|48|
 
 ## <a name="video-overview"></a>Video – přehled
 

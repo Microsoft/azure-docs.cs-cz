@@ -1,52 +1,51 @@
 ---
 title: Získání změn prostředků
-description: Pochopit postup k zjištění, kdy se prostředek změnil a získat seznam vlastností, které se změnily.
+description: Zjistěte, jak najít, kdy byl prostředek změněn, a získejte seznam vlastností, které se změnily.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236506"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980275"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
-Získejte prostředky změnit prostřednictvím kurzu denním, konfigurace a dokonce i opakované nasazení.
-Změna mohou pocházet od jednotlivce nebo pomocí automatizovaného procesu. Většina změnit chování je záměrné, ale v některých případech tomu tak není. Posledních 14 dní historie změn Graph prostředků Azure umožňují:
+Prostředky se v průběhu každodenního použití, změny konfigurace a dokonce opětovného nasazení mění.
+Změna může pocházet z individuálního nebo automatizovaného procesu. Většina změn je záměrné, ale někdy ne. V posledních 14 dnech historie změn vám Azure Resource Graph umožní:
 
 - Zjistit, kdy byly změny detekovány vlastností Azure Resource Manageru.
 - Podívat se, které vlastnosti se v rámci této změnové události změnily.
 
-Detekce změn a podrobnosti jsou důležité pro následující ukázkové scénáře:
+Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkových scénářích:
 
-- Během správy incidentů pochopit _potenciálně_ jim podobných změn. Dotazování pro události změny během na konkrétní časové okno a vyhodnotit podrobnosti o změnách.
-- Zachování databáze správy konfigurace, se označuje jako CMDB aktuální. Místo aktualizace všechny prostředky a jejich celou vlastnost nastaví na frekvenci naplánované pouze najdete, co se změnilo.
-- Vysvětlení, jaké vlastnosti mohou být změněna při změně stavu dodržování předpisů prostředkem. Hodnocení produktu tyto další vlastnosti může poskytnout přehled o dalších vlastností, které možná bude nutné ke správě prostřednictvím Azure Policy definition.
+- Během správy incidentů získat informace o _potenciálně_ souvisejících změnách. Dotaz na události změny během konkrétního časového období a vyhodnocení podrobností o změně.
+- Udržování databáze správy konfigurace označované jako CMDB, aktuální. Místo aktualizace všech prostředků a jejich úplných vlastností u naplánované četnosti Získejte jenom to, co se změnilo.
+- Informace o tom, jaké další vlastnosti se mohly změnit, když prostředek změnil stav dodržování předpisů. Vyhodnocení těchto dalších vlastností může poskytnout přehled o dalších vlastnostech, které mohou být nutné ke správě pomocí definice Azure Policy.
 
-Tento článek ukazuje, jak shromažďování těchto informací prostřednictvím grafu prostředků sady SDK. Tyto informace na webu Azure Portal najdete v tématu Azure Policy [historii změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) nebo protokol aktivit Azure [historii změn](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure.
 
 > [!NOTE]
-> Podrobnosti o změnách v grafu prostředků jsou vlastností Resource Manageru. Sledování změn uvnitř virtuálního počítače, naleznete v tématu Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) nebo Azure Policy [konfigurace hosta pro virtuální počítače](../../policy/concepts/guest-configuration.md).
+> Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/automation-change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.
 
 > [!IMPORTANT]
-> Historie změn v grafu prostředků Azure je ve verzi Public Preview.
+> Historie změn v grafu prostředků Azure je Public Preview.
 
-## <a name="find-when-changes-were-detected"></a>Najít, když byly zjištěny změny
+## <a name="find-when-changes-were-detected"></a>Najít, kdy byly zjištěny změny
 
-Prvním krokem vidět, co se změnilo na prostředek je najít události změn souvisejících s tímto prostředkem v rámci časové okno. Tento krok se provádí prostřednictvím **resourceChanges** koncového bodu REST.
+Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít události změny týkající se tohoto prostředku v časovém intervalu. Tento krok se provádí prostřednictvím koncového bodu **resourceChanges** REST.
 
-**ResourceChanges** koncového bodu vyžaduje dva parametry v textu požadavku:
+Koncový bod **resourceChanges** vyžaduje v textu žádosti dva parametry:
 
-- **resourceId**: Prostředek Azure podívat změny.
-- **interval**: Vlastnost s _start_ a _end_ data, kdy se mají kontrolovat změny události používal **Zulu časové pásmo (Z)** .
+- **ResourceID**: prostředek Azure, na kterém se mají hledat změny.
+- **interval**: vlastnost s _počátečním_ a _koncovým_ datem, kdy se má kontrolovat událost změny pomocí **časového pásma Zulu (Z)** .
 
-Text požadavku příkladu:
+Příklad textu žádosti:
 
 ```json
 {
@@ -58,13 +57,13 @@ Text požadavku příkladu:
 }
 ```
 
-Pomocí výše uvedených tělo požadavku, identifikátor URI rozhraní API REST pro **resourceChanges** je:
+S výše uvedeným textem žádosti je REST API identifikátor URI pro **resourceChanges** :
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-Odpověď bude vypadat nějak takto:
+Odpověď vypadá podobně jako v tomto příkladu:
 
 ```json
 {
@@ -90,19 +89,19 @@ Odpověď bude vypadat nějak takto:
 }
 ```
 
-Každou zjištěnou změnu událost pro **resourceId** má **changeId** , které jsou jedinečné pro daný prostředek. Zatímco **changeId** řetězec může někdy obsahovat další vlastnosti, ji má pouze musí být jedinečný. Obsahuje záznam změn časy, který před a po pořízení snímků.
-Došlo k události změny v určitém okamžiku v tomto okně.
+Každá zjištěná událost změny pro **ResourceID** má **changeId** , který je pro tento prostředek jedinečný. I když řetězec **changeId** může někdy obsahovat jiné vlastnosti, je zaručený pouze jedinečný. Záznam změny zahrnuje časy, ve kterých byly provedeny snímky před a po.
+K události změny došlo v určitém okamžiku v tomto časovém intervalu.
 
-## <a name="see-what-properties-changed"></a>Zjistit, co změnil vlastnosti
+## <a name="see-what-properties-changed"></a>Zobrazit změněné vlastnosti
 
-S **changeId** z **resourceChanges** koncového bodu, **resourceChangeDetails** koncový bod REST se pak použije k získání podrobností o události změny.
+Pomocí **changeId** z koncového bodu **resourceChanges** se pak koncový bod **resourceChangeDetails** REST používá k získání specifických změn události změny.
 
-**ResourceChangeDetails** koncového bodu vyžaduje dva parametry v textu požadavku:
+Koncový bod **resourceChangeDetails** vyžaduje v textu žádosti dva parametry:
 
-- **resourceId**: Prostředek Azure podívat změny.
-- **changeId**: Událost jedinečné změny pro **resourceId** shromážděných z **resourceChanges**.
+- **ResourceID**: prostředek Azure, na kterém se mají hledat změny.
+- **changeId**: jedinečná událost změny pro ID služby **ResourceID** shromážděná z **resourceChanges**.
 
-Text požadavku příkladu:
+Příklad textu žádosti:
 
 ```json
 {
@@ -111,13 +110,13 @@ Text požadavku příkladu:
 }
 ```
 
-Pomocí výše uvedených tělo požadavku, identifikátor URI rozhraní API REST pro **resourceChangeDetails** je:
+S výše uvedeným textem žádosti je REST API identifikátor URI pro **resourceChangeDetails** :
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-Odpověď bude vypadat nějak takto:
+Odpověď vypadá podobně jako v tomto příkladu:
 
 ```json
 {
@@ -219,12 +218,12 @@ Odpověď bude vypadat nějak takto:
 }
 ```
 
-**beforeSnapshot** a **afterSnapshot** každá v daném čase poskytnou čas pořízení snímku a vlastnosti. Tato změna se stalo v určitém okamžiku mezi tyto snímky. Výše uvedený příklad podíváme, vidíme, že byla vlastnost, která se změnila **supportsHttpsTrafficOnly**.
+**beforeSnapshot** a **afterSnapshot** každý z nich poskytují čas pořízení snímku a vlastnosti v daném čase. Změna nastala v určitém bodě mezi těmito snímky. V předchozím příkladu vidíte, že vlastnost, která se změnila, byla **supportsHttpsTrafficOnly**.
 
-Chcete-li porovnat výsledky prostřednictvím kódu programu, porovnejte **obsah** část jednotlivých snímků k určení rozdílu. Pokud srovnáte celý snímek **časové razítko** vždy zobrazovat jako rozdíl bez ohledu na se očekává.
+Chcete-li porovnat výsledky prostřednictvím kódu programu, porovnejte část **obsahu** každého snímku a určete tak rozdíl. Pokud porovnáte celý snímek, **časové razítko** se vždycky zobrazí jako rozdíl, i když se očekává.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md).
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md).
-- Zjistěte, jak [materiály](../concepts/explore-resources.md).
+- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
+- Naučte se [prozkoumat prostředky](../concepts/explore-resources.md).

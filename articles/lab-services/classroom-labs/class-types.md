@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: c6a424ed6036016839f03f50f90ad5d911b05fad
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0e8b203240b4b2d6b67534ab52a7cd4ccf5df571
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710006"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976588"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Přehled typů tříd – Azure Lab Services
 Azure Lab Services vám umožní rychle nastavit prostředí pro laboratorní prostředí učebny v cloudu. Články v této části poskytují pokyny k nastavení několika typů učebn Labs pomocí Azure Lab Services.
@@ -34,6 +34,13 @@ Můžete nastavit laboratorní prostředí pro učení skriptování prostředí
 Studenti, kteří přebírají tyto třídy skriptování, získají virtuální počítač se systémem Linux, aby se seznámili se základy systému Linux, a také se seznámili s skriptováním prostředí bash. Virtuální počítač se systémem Linux přichází s povoleným přístupem ke vzdálené ploše a s nainstalovanými [gedit](https://help.gnome.org/users/gedit/stable/) a [Visual Studio Codemi](https://code.visualstudio.com/) textovými editory.
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [skriptování prostředí v systému Linux](class-type-shell-scripting-linux.md).
+
+## <a name="ethical-hacking"></a>Etické útoky 
+Můžete nastavit testovací prostředí pro třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
+
+V etických třídách útoku Students se můžou seznámit s moderními technikami, které chrání před ohrožením zabezpečení. Každý Student získá virtuální počítač hostitele Windows serveru, který má dva vnořené virtuální počítače – jeden virtuální počítač s imagí **Metaspoiltable** a další počítač s imagí [Kali Linux](https://www.kali.org/) . Virtuální počítač Metasploitable se používá pro zneužití účely a virtuální počítač Kali poskytuje přístup k nástrojům potřebným ke spouštění úloh forenzní.
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro výuku etické třídy hackerů](class-type-ethical-hacking.md).
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články: 

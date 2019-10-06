@@ -1,27 +1,26 @@
 ---
-title: Ukázkový – Audit, pokud nejsou nainstalovány aplikace uvnitř virtuálních počítačů s Linuxem
-description: Tato ukázka konfigurace zásad hosta iniciativy a definice auditovat, jestli nejsou určené aplikace nainstalované uvnitř virtuálních počítačů s Linuxem.
+title: Ukázka – audit, pokud se aplikace neinstalují do virtuálních počítačů se systémem Linux
+description: Tento ukázkový konfigurační iniciativu a definice hosta zásad, pokud zadané aplikace nejsou nainstalovány v rámci virtuálních počítačů se systémem Linux.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204018"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977040"
 ---
-# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Ukázkový – Audit, pokud nejsou určené aplikace nainstalované uvnitř virtuálních počítačů s Linuxem
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Ukázka – audit, pokud zadané aplikace nejsou nainstalované v rámci virtuálních počítačů se systémem Linux
 
-Této iniciativy konfigurace zásad hosta, vytváří událost auditu při určitých aplikací nejsou nainstalovány uvnitř virtuálních počítačů s Linuxem. ID této integrované iniciativy je `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Tato iniciativa konfigurace hosta zásady vytvoří událost auditu, když zadané aplikace nejsou nainstalovány v rámci virtuálních počítačů se systémem Linux. ID této integrované iniciativy je `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
-> Všechny konfigurace hostovaného iniciativy se skládají z **auditu** a **deployIfNotExists** definic zásad. Přiřazuje se jen jednu z definic zásad způsobit, že konfigurace hostovaného nefunguje správně.
+> Všechny iniciativy konfigurace hosta se skládají z definic zásad **auditu** a **deployIfNotExists** . Když se přiřadí jenom jedna z definic zásad, nefunguje správně konfigurace hostů.
 
-Můžete přiřadit tato ukázka pomocí:
+Tuto ukázku můžete přiřadit pomocí:
 
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
@@ -30,29 +29,29 @@ Můžete přiřadit tato ukázka pomocí:
 
 ## <a name="components-of-the-initiative"></a>Součásti iniciativy
 
-To [hosta konfigurace](../concepts/guest-configuration.md) iniciativy se skládá z následujících zásad:
+Tato iniciativa [Konfigurace hosta](../concepts/guest-configuration.md) se skládá z následujících zásad:
 
-- [auditovat](#audit-definition) – Audit, když nejsou nainstalované aplikace uvnitř virtuálních počítačů s Linuxem
+- [audit](#audit-definition) -audit při instalaci aplikací do virtuálních počítačů se systémem Linux
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) – rozšíření nasazení virtuálního počítače pro audit, když nejsou nainstalované aplikace uvnitř virtuálních počítačů s Linuxem
+- [deployIfNotExists](#deployIfNotExists-definition) – nasazení rozšíření virtuálního počítače pro audit, pokud se aplikace neinstalují do virtuálních počítačů se systémem Linux
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Definice iniciativy
 
-Iniciativy je vytvořený spojením **auditu** a **deployIfNotExists** definice společně a [parametry iniciativy](#initiative-parameters). Toto je ve formátu JSON definice.
+Iniciativa je vytvořena připojením k definicím **audit** a **DeployIfNotExists** společně a [parametry iniciativy](#initiative-parameters). Toto je JSON definice.
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
-### <a name="initiative-parameters"></a>Parametry iniciativy
+### <a name="initiative-parameters"></a>Parametry iniciativ
 
-|Název |Typ |Popis |
+|Name (Název) |Typ |Popis |
 |---|---|---|
-|applicationName |String |Názvy aplikací. Příklad: "python", "powershell" nebo čárkami oddělený seznam, jako je například "python, prostředí powershell". Použití \* pro porovnávání se zástupnými znaky, jako je třeba "power\*". |
+|applicationName |Řetězec |Názvy aplikací. Příklad: "Python", "PowerShell" nebo čárkami oddělený seznam, jako je například Python, PowerShell. Pro spárování se zástupnými znaky použijte \*, jako je Power @ no__t-1. |
 
 Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
 PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
 
-V tomto příkladu parametru, instalaci aplikací _python_ a _powershellu_ se Audituje.
+V tomto příkladu parametru je instalace aplikací _Python_ a _PowerShell_ auditována.
 
 ```json
 {
@@ -62,64 +61,64 @@ V tomto příkladu parametru, instalaci aplikací _python_ a _powershellu_ se Au
 }
 ```
 
-Pouze **deployIfNotExists** definice zásady používá parametry iniciativy.
+Jenom definice zásad **deployIfNotExists** využívá parametry iniciativy.
 
-### <a name="audit-definition"></a>definici audit
+### <a name="audit-definition"></a>definice auditu
 
-JSON definování pravidel **auditu** definice zásady.
+JSON definující pravidla definice zásad **auditu** .
 
 [!code-json[audit-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/audit/azurepolicy.rules.json "audit policy rules (JSON)")]
 
 ### <a name="deployifnotexists-definition"></a>definice deployIfNotExists
 
-JSON definování pravidel **deployIfNotExists** definice zásady.
+JSON definující pravidla definice zásad **deployIfNotExists**
 
 [!code-json[deployIfNotExists-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/deployIfNotExists/azurepolicy.rules.json "deployIfNotExists policy rules (JSON)")]
 
-**DeployIfNotExists** definice zásady definuje zásady byl ověřen v imagích Azure:
+Definice zásad **deployIfNotExists** definuje image Azure, na kterých byla zásada ověřena:
 
-|Vydavatel |Nabídka |Skladová jednotka |
+|Vydavatel |Nabídka |Skladová položka |
 |-|-|-|
-|OpenLogic |CentOS\* |Všechny s výjimkou 6\* |
-|RedHat |RHEL |Všechny s výjimkou 6\* |
-|RedHat |osa | Všechny |
-|credativ |Debian | Všechny s výjimkou 7\* |
-|SuSE |SLES\* |Všechny s výjimkou 11\* |
-|Canonical| UbuntuServer |Všechny s výjimkou 12\* |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Všechny |
-|microsoft-dsvm |azureml |Všechny |
-|cloudera |cloudera-centos-os |Všechny s výjimkou 6\* |
-|cloudera |cloudera-altus-centos-os |Všechny |
-|microsoft-ads |linux\* |Všechny |
-|microsoft-aks |Všechny |Všechny |
-|AzureDatabricks |Všechny |Všechny |
-|qubole-inc |Všechny |Všechny |
-|datastax |Všechny |Všechny |
-|Couchbase |Všechny |Všechny |
-|scalegrid |Všechny |Všechny |
-|Kontrolní bod |Všechny |Všechny |
-|paloaltonetworks |Všechny |Všechny |
+|OpenLogic |CentOS @ no__t-0 |Vše kromě 6 @ no__t-0 |
+|RedHat |RHEL |Vše kromě 6 @ no__t-0 |
+|RedHat |osa | Všechno |
+|credativ |Debian | Vše kromě 7 @ no__t-0 |
+|SUSE |SLES @ no__t-0 |Vše kromě 11 @ no__t-0 |
+|Canonical| UbuntuServer |Vše kromě 12 @ no__t-0 |
+|Microsoft-dsvm |Linux – data-věda-VM-Ubuntu |Všechno |
+|Microsoft-dsvm |AzureML |Všechno |
+|Cloudera |Cloudera-CentOS – OS |Vše kromě 6 @ no__t-0 |
+|Cloudera |Cloudera-Altus-CentOS-OS |Všechno |
+|Microsoft-ADS |Linux @ no__t-0 |Všechno |
+|Microsoft-AKS |Všechno |Všechno |
+|AzureDatabricks |Všechno |Všechno |
+|qubole – Inc |Všechno |Všechno |
+|DataStax |Všechno |Všechno |
+|Couchbase |Všechno |Všechno |
+|scalegrid |Všechno |Všechno |
+|kontrolní bod |Všechno |Všechno |
+|paloaltonetworks |Všechno |Všechno |
 
-**Nasazení** předá část pravidla _installedApplication_ parametr konfigurace hostovaného agenta na virtuálním počítači. Tato konfigurace umožňuje agenta k provedení ověření a sestavu dodržování předpisů zpět **auditu** definice zásady.
+Část **nasazení** pravidla předá parametr _installedApplication_ k agentovi konfigurace hosta na virtuálním počítači. Tato konfigurace umožňuje agentovi provádět ověřování a nahlásit dodržování předpisů zpět pomocí definice zásad **auditu** .
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-Po **auditu** a **deployIfNotExists** definice jsou vytvořené na portálu, doporučuje se seskupit do [iniciativy](../concepts/definition-structure.md#initiatives) pro přiřazení.
+Po vytvoření **auditu** a definice **deployIfNotExists** na portálu je doporučujeme seskupit je do [iniciativy](../concepts/definition-structure.md#initiatives) pro přiřazení.
 
-### <a name="create-copy-of-audit-definition"></a>Vytvořit kopii definici audit
+### <a name="create-copy-of-audit-definition"></a>Vytvořit kopii definice auditu
 
-[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[@no__t – 1Deploy vzor zásady do azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Deploy vzor zásady do Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
-Pomocí těchto tlačítek pro nasazení přes portál vytvoří kopii **auditu** definice zásady.
-Bez spárovaném **deployIfNotExists** definice zásady, konfigurace hostovaného nebude fungovat správně.
+Použití těchto tlačítek k nasazení prostřednictvím portálu vytvoří kopii definice zásad **auditu** .
+Bez párové definice zásad **deployIfNotExists** nebude konfigurace hostů správně fungovat.
 
-### <a name="create-copy-of-deployifnotexists-definition"></a>Vytvoření kopie deployIfNotExists definice
+### <a name="create-copy-of-deployifnotexists-definition"></a>Vytvořit kopii definice deployIfNotExists
 
-[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[@no__t – 1Deploy vzor zásady do azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Deploy vzor zásady do Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
-Pomocí těchto tlačítek pro nasazení přes portál vytvoří kopii **deployIfNotExists** definice zásady. Bez spárovaném **auditu** definice zásady, konfigurace hostovaného nebude fungovat správně.
+Použití těchto tlačítek k nasazení prostřednictvím portálu vytvoří kopii definice zásady **deployIfNotExists** . Bez definice spárované zásady **auditu** nebude konfigurace hostů správně fungovat.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -127,9 +126,9 @@ Pomocí těchto tlačítek pro nasazení přes portál vytvoří kopii **deployI
 
 ### <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShellu
 
-#### <a name="copy-and-assign-the-initiative"></a>Kopírování a přiřazení iniciativy
+#### <a name="copy-and-assign-the-initiative"></a>Kopírovat a přiřadit iniciativu
 
-Tyto kroky vytvoří kopii k iniciativě, která zahrnuje integrované zásady pro oba **auditu** a **deployIfNotExists** a přiřadí iniciativa zaměřená na skupinu prostředků.
+Tyto kroky vytvoří kopii iniciativy zahrnující předdefinované zásady pro **audit** i **deployIfNotExists** a přiřadí iniciativu ke skupině prostředků.
 
 ```azurepowershell-interactive
 # Create the policy initiative (Subscription scope)
@@ -164,9 +163,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicySetDefinition -Id $initDef
 ```
 
-#### <a name="copy-and-assign-the-audit-definition"></a>Zkopírujte a přiřadíte definici audit
+#### <a name="copy-and-assign-the-audit-definition"></a>Zkopírování a přiřazení definice auditu
 
-Tyto kroky vytvoří kopii **auditu** definice a přiřaďte ho ke skupině prostředků. Tato definice nebude správně fungovat bez spárovaném **deployIfNotExists** definice také přiřazení.
+Tyto kroky vytvoří kopii definice **auditu** a přiřadí ji do skupiny prostředků. Tato definice nebude správně fungovat, aniž by se přidělila i spárovaná definice **deployIfNotExists** .
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -189,10 +188,10 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Kopírování a přiřazení definice deployIfNotExists
+#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Zkopírování a přiřazení definice deployIfNotExists
 
-Tyto kroky vytvoří kopii **deployIfNotExists** definice a přiřaďte ho ke skupině prostředků.
-Tato definice nebude správně fungovat bez spárovaném **auditu** definice také přiřazení.
+Tyto kroky vytvoří kopii definice **deployIfNotExists** a přiřadí ji do skupiny prostředků.
+Tato definice nebude fungovat správně, aniž by se přidělila i spárovaná definice **auditu** .
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -233,17 +232,17 @@ Ve skriptech nasazení a odebrání se používají následující příkazy. Ka
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Vytvoří Azure Policy iniciativy. |
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Vytvoří definici zásady Azure. |
+| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Vytvoří Azure Policy iniciativu. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Vytvoří definici Azure Policy. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Získá jednu skupinu prostředků. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Vytvoří nové přiřazení zásady Azure Policy pro iniciativy nebo definice. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Poskytuje existujícím přiřazení role na konkrétní instanční objekt. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Vytvoří nové přiřazení Azure Policy pro podnět nebo definici. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Poskytuje existující přiřazení role ke konkrétnímu objektu zabezpečení. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Odebere stávající přiřazení Azure Policy. |
-| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Odebere iniciativy. |
-| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Odstraní definici. |
+| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Odstraní iniciativu. |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Odebere definici. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zkontrolujte další [ukázek Azure Policy](index.md).
-- Další informace o [konfigurace hostovaného zásad Azure](../concepts/guest-configuration.md).
-- Kontrola [struktura definic Azure Policy](../concepts/definition-structure.md).
+- Přečtěte si další [ukázky Azure Policy](index.md).
+- Přečtěte si další informace o [Azure Policy konfiguraci hostů](../concepts/guest-configuration.md).
+- Kontrola [Azure Policy struktury definice](../concepts/definition-structure.md).

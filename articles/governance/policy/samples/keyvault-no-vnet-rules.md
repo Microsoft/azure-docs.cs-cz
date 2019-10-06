@@ -1,22 +1,21 @@
 ---
-title: Ukázkový – trezory klíčů auditu pro koncové body žádné virtuální sítě
-description: Tato ukázková definice zásady auditují trezory služby Key Vault ke zjišťování instancí, které mají žádné koncové body služby virtuální sítě.
+title: Ukázka – audit trezorů klíčů pro žádné koncové body virtuální sítě
+description: Tato ukázková definice zásad Audituje Key Vault trezory k detekci instancí, které nemají žádné koncové body služby virtuální sítě.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506990"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976964"
 ---
-# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Ukázkový – trezory služby Key Vault s koncovými body žádné virtuální sítě
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Ukázky Key Vault trezorů bez koncových bodů virtuální sítě
 
-Tato zásada Audituje pro trezory služby Key Vault, které mají žádné koncové body virtuální sítě. Slouží k vynucení požadavků na zabezpečení. Další informace najdete v tématu [koncové body služeb virtuální sítě ve službě Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
+Tato zásada Audituje Key Vault trezory, které nemají žádné koncové body virtuální sítě. Použijte k vymáhání požadavků zabezpečení. Další informace najdete v tématu [koncové body služby virtuální sítě v Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md) .
 
 K nasazení této ukázkové zásady můžete použít:
 
@@ -46,12 +45,12 @@ Kód JSON definující pravidla zásady, který se používá v Azure CLI a Azur
 
 ### <a name="policy-parameters"></a>Parametry zásad
 
-Tato ukázková definice zásady nemá definované žádné parametry.
+V této definici ukázkové zásady nejsou definovány žádné parametry.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
-[![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[@no__t – 1Deploy vzor zásady do azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Deploy vzor zásady do Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -98,7 +97,7 @@ Ve skriptech nasazení a odebrání se používají následující příkazy. Ka
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -133,11 +132,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 | [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Odebere stávající přiřazení Azure Policy. |
 | [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Odebere stávající definici Azure Policy. |
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Při práci s rozhraním REST API Resource Manageru můžete použít několik nástrojů, jako je [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell.
 
-### <a name="deploy-with-rest-api"></a>Nasazení pomocí rozhraní REST API
+### <a name="deploy-with-rest-api"></a>Nasazení pomocí REST API
 
 - Vytvořte definici zásady (v oboru předplatného). Jako text požadavku použijte JSON s [definicí zásady](#policy-definition).
 
@@ -180,12 +179,12 @@ Při práci s rozhraním REST API Resource Manageru můžete použít několik n
 
 | Služba | Skupina | Operace | Poznámky |
 |---|---|---|---|
-| Správa prostředků | Definice zásad | [Vytvoření](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří v předplatném novou definici Azure Policy. Ve zkratce: [Vytvořit ve skupině pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Správa prostředků | Definice zásad | [Vytvoření](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří v předplatném novou definici Azure Policy. Alternativa: [Vytvoření skupiny pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Správa prostředků | Přiřazení zásad | [Vytvoření](/rest/api/resources/policyassignments/create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu zadáme definici, příkaz ale může převzít také iniciativu. |
 | Správa prostředků | Přiřazení zásad | [Odstranění](/rest/api/resources/policyassignments/delete) | Odebere stávající přiřazení Azure Policy. |
-| Správa prostředků | Definice zásad | [Odstranění](/rest/api/resources/policydefinitions/delete) | Odebere stávající definici Azure Policy. Ve zkratce: [Odstranit ve skupině pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Správa prostředků | Definice zásad | [Odstranění](/rest/api/resources/policydefinitions/delete) | Odebere stávající definici Azure Policy. Alternativa: [Odstranění skupiny pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Prohlédněte si další [ukázky pro Azure Policy](index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).

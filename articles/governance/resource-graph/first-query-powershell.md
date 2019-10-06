@@ -1,36 +1,35 @@
 ---
 title: Spuštění prvního dotazu pomocí Azure PowerShell
-description: Tento článek vás provede kroky pro povolení modulu Resource Graph pro prostředí Azure PowerShell a spusťte svůj první dotaz.
+description: Tento článek vás provede kroky k povolení modulu Resource Graph pro Azure PowerShell a spuštění prvního dotazu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241110"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976777"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 
-Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je nainstalovaný modul pro Azure PowerShell. Tento rychlý start vás provede procesem přidání modulu do instalace Azure PowerShell.
+Prvním krokem při použití Azure Resource graphu je ověření, že je nainstalovaný modul pro Azure PowerShell. Tento rychlý Start vás provede procesem přidání modulu do instalace Azure PowerShell.
 
-Na konci tohoto procesu budete mít za sebou přidání modulu k vybrané instalaci Azure PowerShellu a spuštění prvního dotazu na službu Resource Graph.
+Na konci tohoto procesu jste přidali modul do Azure PowerShell instalace volby a spustíte svůj první dotaz na graf prostředku.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="add-the-resource-graph-module"></a>Přidat modul k Resource Graph
+## <a name="add-the-resource-graph-module"></a>Přidat modul grafu prostředků
 
-Chcete-li pro Azure PowerShell povolit dotaz na Azure Resource Graph, musí být modul přidán. Tento modul se dá použít s místně nainstalovaným prostředím PowerShell, s [Azure Cloud Shell](https://shell.azure.com)nebo s [imagí Docker prostředí PowerShell](https://hub.docker.com/_/microsoft-powershell).
+Pokud chcete povolit Azure PowerShell dotazování na Azure Resource Graph, modul musí být přidaný. Tento modul se dá použít s místně nainstalovaným prostředím PowerShell, s [Azure Cloud Shell](https://shell.azure.com)nebo s [imagí Docker prostředí PowerShell](https://hub.docker.com/_/microsoft-powershell).
 
 ### <a name="base-requirements"></a>Základní požadavky
 
 Modul Azure Resource Graph vyžaduje následující software:
 
-- Azure PowerShell 1.0.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.0.0 nebo vyšší. Pokud ještě není nainstalovaná, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
 
 - PowerShellGet 2.0.1 nebo novější. Pokud není nainstalovaný nebo aktualizovaný, postupujte podle [těchto pokynů](/powershell/gallery/installing-psget).
 
@@ -52,11 +51,11 @@ Modul Resource Graph pro PowerShell je **AZ. ResourceGraph**.
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
-## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
+## <a name="run-your-first-resource-graph-query"></a>Spustit váš první dotaz na diagram prostředku
 
-Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí **Názvem** a **Typem zdroje** každého zdroje.
+Když je modul Azure PowerShell přidaný do vašeho prostředí dle vašeho výběru, je čas si vyzkoušet jednoduchý dotaz na graf prostředků. Dotaz vrátí prvních pět prostředků Azure s **názvem** a **typem prostředku** každého prostředku.
 
-1. Spusťte první dotaz Azure Resource Graph použitím `Search-AzGraph` cmdlet:
+1. Spusťte svůj první dotaz na Azure Resource Graph pomocí rutiny `Search-AzGraph`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -66,9 +65,9 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
    ```
 
    > [!NOTE]
-   > Na tento dotaz příklad neposkytuje modifikátor řazení jako `order by`, opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost.
+   > Vzhledem k tomu, že tento příklad dotazu neposkytuje modifikátor řazení, jako je například `order by`, spuštění tohoto dotazu bude pravděpodobně zajišťovat jinou sadu prostředků na žádost.
 
-1. Aktualizuje dotaz pro `order by` **Název** vlastnosti:
+1. Aktualizujte dotaz tak, aby `order by` vlastnost **Name** :
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -76,23 +75,23 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
    ```
 
    > [!NOTE]
-   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
+   > Stejně jako u prvního dotazu může spuštění tohoto dotazu několikrát vyvolat jinou sadu prostředků na žádost. Pořadí příkazů dotazu je důležité. V tomto příkladu `order by` přichází za `limit`. Tím se nejdřív omezí výsledky dotazu a pak se seřadí.
 
-1. Aktualizujte dotaz tak, aby se nejprve výsledky seřadily podle názvu (nastavte `order by` na **Name**) a pak nastavte omezení (`limit`) na prvních pět výsledků:
+1. Aktualizujte dotaz na první @no__t hodnotu vlastnosti **Name** a pak `limit` na prvních 5 výsledků:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
-Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
+Když se konečný dotaz několikrát spustí, za předpokladu, že se nic ve vašem prostředí nemění, vrácené výsledky budou konzistentní a podle očekávání – seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si `Search-AzGraph` Všimněte, že se výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte `(Get-AzContext).Account.ExtendedProperties.Subscriptions` tuto možnost, pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z `Search-AzGraph` nich může nastavit PSDefaultParameterValues pro rutinu spuštěním.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že rutina `Search-AzGraph` je standardně předplatná ve výchozím kontextu. Pokud chcete zobrazit seznam ID předplatných, které jsou součástí výchozího kontextu, spusťte tuto `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, ke kterým máte přístup, jedna může nastavit rutinu PSDefaultParameterValues pro `Search-AzGraph` spuštěním `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`.
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat modul Resource Graph z prostředí Azure PowerShell, můžete tak provést pomocí následujícího příkazu:
+Pokud chcete odebrat modul grafu prostředků z prostředí Azure PowerShell, můžete k tomu použít následující příkaz:
 
 ```azurepowershell-interactive
 # Remove the Resource Graph module from the current session
@@ -103,13 +102,13 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
-> Tím se neodstraní dříve stažený soubor s modulem. Pouze ho odebere ze spuštěného relace PowerShell.
+> Tímto se neodstraní dříve stažený soubor modulu. Odebere ho jenom z běžící relace PowerShellu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
-- Naučte se [prozkoumat zdroje](./concepts/explore-resources.md)
-- Spusťte svůj první dotaz prostřednictvím [Azure CLI](first-query-azurecli.md)
-- Zobrazit ukázky [Starter dotazy](./samples/starter.md)
-- Zobrazit ukázky [Pokročilé dotazy](./samples/advanced.md)
-- Váš názor na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Získat další informace o [dotazovacím jazyku](./concepts/query-language.md)
+- Naučte se [prozkoumat prostředky](./concepts/explore-resources.md) .
+- Spuštění prvního dotazu pomocí [Azure CLI](first-query-azurecli.md)
+- Zobrazit ukázky [počátečních dotazů](./samples/starter.md)
+- Zobrazit ukázky [pokročilých dotazů](./samples/advanced.md)
+- Poskytnutí zpětné vazby na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)

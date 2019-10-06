@@ -6,21 +6,20 @@ ms.author: dacoulte
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 8b765f0b7a8e3e610f849ebe92a14f1498c4b959
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208476"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981252"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý start: Spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
 Výkon Azure Resource graphu je k dispozici přímo v Azure Portal prostřednictvím Průzkumníka Azure Resource graphu. Průzkumník prostředků Resource Explorer poskytuje procházetelné informace o Azure Resource Manager typech prostředků a vlastnostech, které se dají dotazovat. Průzkumník diagramů prostředků také poskytuje čisté rozhraní pro práci s více dotazy, vyhodnocení výsledků a dokonce i převod výsledků některých dotazů do grafu, který je možné připnout na řídicí panel Azure.
 
 Na konci tohoto rychlého startu použijete Azure Portal a Průzkumník diagramů prostředků ke spuštění prvního dotazu grafu prostředku a připnuté výsledky na řídicí panel.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
@@ -31,22 +30,22 @@ Otevřete [Azure Portal](https://portal.azure.com) pro vyhledání a použití P
 1. V části **dotazu 1** v okně zadejte dotaz `project name, type | limit 5` a vyberte **Spustit dotaz**.
 
    > [!NOTE]
-   > Jelikož tento příklad dotazu neposkytuje modifikátor `order by`řazení, jako je spuštění tohoto dotazu vícekrát, je pravděpodobně výsledkem jiné sady prostředků na žádost.
+   > Jelikož tento příklad dotazu neposkytuje modifikátor řazení, jako je například `order by`, spuštění tohoto dotazu bude pravděpodobně zajišťovat jinou sadu prostředků na žádost.
 
-1. Přečtěte si odpověď na dotaz na kartě **výsledky** . Výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
+1. Zkontrolujte odpověď na dotaz na kartě **výsledky** . výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
 
-1. Aktualizujte dotaz na `order by` vlastnost **Name** : `project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz tak, aby `order by` vlastnost **Name** : `project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
 
    > [!NOTE]
    > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
 
-1. Aktualizujte dotaz na první `order by` vlastnost **Name** a pak `limit` na horních pět výsledků: `project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz na první @no__t hodnotu vlastnosti **Name** a pak `limit` na prvních 5 výsledků: `project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
 
 Pokud se konečný dotaz několikrát spustí, za předpokladu, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a podle očekávání – seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 ### <a name="schema-browser"></a>Prohlížeč schémat
 
-Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku. Výběr typu prostředku umístí `where type =="<resource type>"` do pole dotazu. Výběrem jedné z podřízených vlastností přidáte `where <propertyName> == "INSERT_VALUE_HERE"` do pole dotazu. Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit vloženou _\_hodnotu\__ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
+Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku. V poli dotaz vyberte umístění pro typ prostředku `where type =="<resource type>"`. Výběrem jedné z podřízených vlastností přidáte do pole dotazu `where <propertyName> == "INSERT_VALUE_HERE"`. Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit příkaz _INSERT @ no__t-1VALUE @ no__t-2HERE_ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
@@ -88,11 +87,11 @@ Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít
 
 - [Průzkumník grafu prostředků – ukázkový #1 řídicího panelu](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Příklad obrázku pro ukázkový řídicí panel #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [Obrázek @no__t 1Example pro ukázkový řídicí panel #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Průzkumník grafu prostředků – ukázkový #2 řídicího panelu](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Příklad obrázku pro ukázkový řídicí panel #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [Obrázek @no__t 1Example pro ukázkový řídicí panel #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Počty a grafy ve výše uvedených ukázkových snímcích obrazovky řídicího panelu se budou lišit v závislosti na prostředí Azure.
@@ -115,10 +114,10 @@ Pokud chcete odebrat ukázkové řídicí panely grafu prostředků z prostřed�
 
 1. V nabídce řídicího panelu v horní části řídicího panelu vyberte **Odstranit** a potvrďte ji kliknutím na **OK** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
-- Naučte se [prozkoumat zdroje](./concepts/explore-resources.md)
+- Naučte se [prozkoumat prostředky](./concepts/explore-resources.md)
 - Spusťte svůj první dotaz prostřednictvím [Azure CLI](first-query-azurecli.md)
 - Zobrazit ukázky [Starter dotazy](./samples/starter.md)
 - Zobrazit ukázky [Pokročilé dotazy](./samples/advanced.md)

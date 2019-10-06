@@ -1,18 +1,17 @@
 ---
-title: Rozšířené Ukázky dotazů
+title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé pokročilé dotazy, včetně kapacity sady virtuálních počítačů škálovat, výpisu všech používaných značek a porovnání virtuálních počítačů s regulárními výrazy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 668dfc908418792c1258d112fbdfb640e85abbe2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239018"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980337"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -70,7 +69,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Virtuální počítače odpovídající regulárnímu výrazu
 
-Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_). **Výraz\@ Matchers** umožňuje definovat regulární výraz, který se má shodovat, což `^Contoso(.*)[0-9]+$`je.
+Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_). **Výraz matchers \@** umožňuje definovat regulární výraz, který se má shodovat, což je `^Contoso(.*)[0-9]+$`.
 Tato definice regulárního výrazu je vysvětlena jako:
 
 - `^` – Porovnání musí začít na začátku řetězce.
@@ -114,7 +113,7 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 > Pokud dotaz nepoužívá **aplikaci Project** k určení vrácených vlastností, jsou do výsledků automaticky zahrnuty **subscriptionDisplayName** a **tenantDisplayName** .
 > Pokud dotaz používá **aplikaci Project**, musí být každé pole _DisplayName_ explicitně zahrnuto v **projektu** nebo nebude vráceno ve výsledcích, i když je použit parametr **include** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Zobrazit ukázky [Starter dotazy](starter.md)
 - Další informace o [dotazovacím jazyku](../concepts/query-language.md)

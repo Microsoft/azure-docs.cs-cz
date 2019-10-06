@@ -1,33 +1,32 @@
 ---
 title: Práce s rozsáhlými datovými sadami
-description: Pochopit, jak získat a řídit velkých datových sad při práci s Azure Resource Graph.
+description: Naučte se, jak získat a řídit velké datové sady při práci s Azure Resource graphem.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786539"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980332"
 ---
-# <a name="working-with-large-azure-resource-data-sets"></a>Práce s datovými sadami velkých prostředků Azure
+# <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
-Azure Graph prostředků je určená pro práci s a získávání informací o prostředcích v prostředí Azure. Prostředek grafu díky zrychlujeme tato data, i v případě, že dotazování tisíc záznamů. Zdroj grafu obsahuje celou řadu možností pro práci s těmito velkými datovými sadami.
+Azure Resource Graph je navržený pro práci s a získávání informací o prostředcích v prostředí Azure. Graf prostředků usnadňuje získávání těchto dat, i když se dotazuje na tisíce záznamů. Graf prostředků má několik možností pro práci s těmito velkými datovými sadami.
 
-Informace o práci s dotazy s vysokou frekvencí najdete v tématu [pokyny pro omezené požadavky](./guidance-for-throttled-requests.md).
+Pokyny k práci s dotazy s vysokou frekvencí najdete v tématu [doprovodné materiály k omezením požadavků](./guidance-for-throttled-requests.md).
 
-## <a name="data-set-result-size"></a>Velikost datové sady výsledků
+## <a name="data-set-result-size"></a>Velikost výsledku sady dat
 
-Ve výchozím omezení prostředků grafu jakýkoli dotaz vrací pouze **100** záznamy. Tento ovládací prvek chrání před neúmyslným dotazy, které by mělo za následek velkých datových sad uživatele a služby. Nejčastěji dochází k tomu jako zákazník je experimentování s dotazy k hledání a filtrování zdrojů způsobem, který vyhovuje jejich potřebám. Tento ovládací prvek se liší od používání [horní](/azure/kusto/query/topoperator) nebo [limit](/azure/kusto/query/limitoperator) operátory jazyka Průzkumníka služby Azure Data omezit rozsah výsledků.
+Ve výchozím nastavení graf prostředků omezuje všechny dotazy na vrácení pouze **100** záznamů. Tento ovládací prvek chrání uživatele i službu před neúmyslnými dotazy, které by mohly vést k rozsáhlým datovým sadám. K této události nejčastěji dochází, když zákazník experimentuje s dotazy, aby vyhledal a vyfiltroval prostředky způsobem, který vyhovuje jejich konkrétním potřebám. Tento ovládací prvek se liší od použití [horních](/azure/kusto/query/topoperator) nebo [Omezení](/azure/kusto/query/limitoperator) operátorů jazyka Azure Průzkumník dat k omezení výsledků.
 
 > [!NOTE]
-> Při použití **první**, se doporučuje řazení výsledků podle alespoň jeden sloupec s `asc` nebo `desc`. Bez řazení, jsou výsledky vrácené náhodné a repeatable nejsou.
+> Při použití **prvního**se doporučuje seřadit výsledky alespoň v jednom sloupci pomocí `asc` nebo `desc`. Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
 
-Přes všechny metody interakci s grafem prostředků lze přepsat výchozí omezení. Následující příklady ukazují, jak chcete-li změnit omezení velikosti datové sady do _200_:
+Výchozí omezení lze přepsat všemi metodami interakce s diagramem prostředků. Následující příklady ukazují, jak změnit omezení velikosti datové sady na _200_:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --first 200 --output table
@@ -37,20 +36,20 @@ az graph query -q "project name | order by name asc" --first 200 --output table
 Search-AzGraph -Query "project name | order by name asc" -First 200
 ```
 
-V [rozhraní REST API](/rest/api/azureresourcegraph/resources/resources), je ovládací prvek **$top** a je součástí **QueryRequestOptions**.
+V [REST API](/rest/api/azureresourcegraph/resources/resources)je ovládací prvek **$Top** a je součástí **QueryRequestOptionsu**.
 
-Ovládací prvek, který je _nejvíce omezující_ vyhraje. Například, pokud váš dotaz využívá **horní** nebo **limit** operátory a bude mít za následek více záznamů, než **první**, maximální počet záznamů, vrátila by byla stejná **První**. Podobně pokud **horní** nebo **limit** je menší než **první**, sady vrácené záznamů bude menší hodnotu nakonfiguroval **horní** nebo **limit**.
+Ovládací prvek, který je _nejvíce omezující_ , se podaří. Pokud Váš dotaz například používá operátory **Top** nebo **limit** a výsledkem by bylo více záznamů než **první**, maximální počet vrácených záznamů bude stejný jako **první**. Podobně, pokud je **horní** nebo **limit** menší než **první**, vrácená sada záznamů bude menší hodnota nakonfigurovaná funkcí **Top** nebo **limit**.
 
-**První** maximální povolenou hodnotu, která má v současné době _5000_.
+**Aktuálně má** maximální povolenou hodnotu _5000_.
 
-## <a name="skipping-records"></a>Přeskakuje záznamy
+## <a name="skipping-records"></a>Vynechávání záznamů
 
-Další možnost pro práci s velkými datovými sadami **přeskočit** ovládacího prvku. Tento ovládací prvek umožňuje tak přeskočím nebo přeskočit definovaný počet záznamů před vrácením výsledky dotazu. **Přeskočit** je užitečné pro dotazy, které řazení výsledků srozumitelným způsobem kde je cílem získat na záznamy někde uprostřed sadu výsledků dotazu. Pokud jsou na konci sady dat vrácené výsledky potřebné, je efektivnější použít konfiguraci jinou řazení a místo toho načtěte výsledky z horní části datové sady.
+Další možností pro práci s velkými sadami dat je ovládací prvek **Skip** . Tento ovládací prvek umožňuje vašemu dotazu přeskočit nebo přeskočit definovaný počet záznamů před vrácením výsledků. Funkce **Skip** je užitečná pro dotazy, které seřadí výsledky smysluplně, kde je záměrem získat záznamy někam uprostřed sady výsledků dotazu. Pokud jsou požadované výsledky na konci vrácené datové sady, je efektivnější použít jinou konfiguraci řazení a načíst výsledky z horní části sady dat.
 
 > [!NOTE]
-> Při použití **přeskočit**, se doporučuje řazení výsledků podle alespoň jeden sloupec s `asc` nebo `desc`. Bez řazení, jsou výsledky vrácené náhodné a repeatable nejsou.
+> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc`. Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
 
-Následující příklady ukazují, jak chcete-li přeskočit první _10_ záznamy dotazu by výsledkem, místo toho počínaje vrácený výsledek nastavit s 11 záznam:
+Následující příklady ukazují, jak přeskočit prvních _10_ záznamů, které dotaz by měl mít za následek, že se místo toho spustí vrácená sada výsledků s jedenáctým záznamem:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --skip 10 --output table
@@ -60,16 +59,16 @@ az graph query -q "project name | order by name asc" --skip 10 --output table
 Search-AzGraph -Query "project name | order by name asc" -Skip 10
 ```
 
-V [rozhraní REST API](/rest/api/azureresourcegraph/resources/resources), je ovládací prvek **$skip** a je součástí **QueryRequestOptions**.
+V [REST API](/rest/api/azureresourcegraph/resources/resources)je ovládací prvek **$Skip** a je součástí **QueryRequestOptionsu**.
 
 ## <a name="paging-results"></a>Výsledky stránkování
 
-V případě potřeby rozdělit do menších sad záznamů pro zpracování sady výsledků, nebo protože je sada výsledků dotazu by překročil maximální povolenou hodnotu, která _1000_ vrácené záznamy, použít stránkování. [Rozhraní REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** poskytuje hodnoty k označení výsledků bylo přerušeno set up: **resultTruncated** a **$skipToken** .
-**resultTruncated** je logická hodnota, která informuje příjemce, pokud existují další záznamy se ne vrátila v odpovědi. K tomuto stavu může být také identifikovat, kdy **počet** vlastnost je menší než **totalRecords** vlastnost. **totalRecords** definuje, kolik záznamů, které odpovídají dotazu.
+Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**.
+**resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
-Když **resultTruncated** je **true**, **$skipToken** je nastavena v odpovědi. Tato hodnota se používá se stejnými hodnotami dotazu a předplatného můžete získat další sady záznamů, které odpovídají dotazu.
+Pokud má resultTruncated **hodnotu true**, v odpovědi se nastaví vlastnost **$skipToken** . Tato hodnota se používá se stejnými hodnotami dotazů a předplatného k získání další sady záznamů, které odpovídají dotazu.
 
-Následující příklady ukazují postupy **přeskočit** první 3000 záznamy a vraťte se **první** 1000 záznamů po těch přeskočeno pomocí rozhraní příkazového řádku Azure a Azure Powershellu:
+Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po vynechání pomocí Azure CLI a Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,12 +79,12 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 ```
 
 > [!IMPORTANT]
-> Dotaz musí **projektu** **id** pole v pořadí pro stránkování pro práci. Pokud je v dotazu nebyl nalezen, nebude obsahovat odpovědi **$skipToken**.
+> Aby bylo možné stránkování fungovat, dotaz musí **projektovat** pole **ID** . Pokud v dotazu chybí, nebude odpověď zahrnovat **$skipToken**.
 
-Příklad najdete v tématu [další stránky dotaz](/rest/api/azureresourcegraph/resources/resources#next-page-query) v dokumentaci rozhraní REST API.
+Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resources/resources#next-page-query) v dokumentaci REST API.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md).
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md).
-- Zjistěte, jak [materiály](explore-resources.md).
+- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
+- Naučte se [prozkoumat prostředky](explore-resources.md).

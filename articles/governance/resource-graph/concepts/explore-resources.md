@@ -1,18 +1,17 @@
 ---
-title: Prozkoumejte prostředky Azure
+title: Procházení prostředků Azure
 description: Naučte se používat jazyk dotazů grafu prostředků k prozkoumání vašich prostředků a zjištění způsobu jejich připojení.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: e6a43db764a3dbc001e132ef5e321f20aa36041f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241130"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981273"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -40,7 +39,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, `ConvertTo-Json` použije se rutina. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
+> Rutina Azure PowerShell `Search-AzGraph` ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, použije se rutina `ConvertTo-Json`. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
 
 Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
@@ -304,7 +303,7 @@ az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where i
 Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [dotazovacím jazyku](query-language.md)
 - Zobrazit jazyk používaný v [počátečních dotazech](../samples/starter.md)

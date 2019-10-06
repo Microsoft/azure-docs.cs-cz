@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000524"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976609"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 
@@ -24,7 +23,7 @@ Většina chyb je výsledkem problému při spouštění dotazu pomocí grafu pr
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="toomanysubscription"></a>Případě Příliš mnoho předplatných
+### <a name="toomanysubscription"></a>Scénář: moc velký počet předplatných
 
 #### <a name="issue"></a>Problém
 
@@ -34,7 +33,7 @@ Zákazníci, kteří mají přístup k více než 1000 předplatným, včetně p
 
 Azure CLI a PowerShell předávají jenom prvních 1000 předplatných do Azure Resource graphu. REST API pro Azure Resource Graph přijímá maximální počet odběrů, na kterých se má dotaz provést.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Dávkové zpracování požadavků pro dotaz s podmnožinou předplatných, které mají zůstat v rámci limitu předplatného 1000. Řešení používá parametr **předplatného** v prostředí PowerShell.
 
@@ -61,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Případě Nepodporovaná hlavička REST typu obsahu
+### <a name="rest-contenttype"></a>Scénář: Nepodporovaná hlavička REST typu obsahu
 
 #### <a name="issue"></a>Problém
 
@@ -69,12 +68,12 @@ Zákazníci, kteří se dotazují do grafu prostředků Azure REST API obdrží 
 
 #### <a name="cause"></a>Příčina
 
-Graf Azure Resource REST API podporuje `Content-Type` jenom **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
+Graf prostředků Azure REST API podporuje jenom `Content-Type` **aplikace nebo JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má `Content-Type` záhlaví REST API nakonfigurované pro **Application/JSON**.
-### <a name="rest-403"></a>Případě Žádná oprávnění ke čtení pro všechna předplatná v seznamu
+Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má hlavičku REST API `Content-Type` nakonfigurovaná pro **Application/JSON**.
+### <a name="rest-403"></a>Scénář: žádné oprávnění ke čtení pro všechna předplatná v seznamu
 
 #### <a name="issue"></a>Problém
 
@@ -84,11 +83,11 @@ Zákazníci, kteří explicitně předají seznam předplatných s dotazem na Az
 
 Pokud zákazník nemá oprávnění ke čtení pro všechna poskytnutá předplatná, je žádost zamítnuta z důvodu nedostatku příslušných zabezpečovacích práv.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 V seznamu předplatných uveďte aspoň jedno předplatné, ke kterému má zákazník, který dotaz spouští, oprávnění ke čtení. Další informace najdete v tématu [oprávnění v Azure Resource graphu](../overview.md#permissions-in-azure-resource-graph).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

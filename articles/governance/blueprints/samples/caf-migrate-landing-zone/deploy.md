@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802580"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981670"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Ukázková ukázka podrobného plánu cílové zóny pro migraci do Azure – nasazení rozhraní Microsoft Cloud
 
@@ -43,7 +42,7 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
    - **Název** podrobného plánu Zadejte název vaší kopie ukázky pro CAF cílovou zónu migrace za provozu.
    - **Umístění definice** Použijte tři tečky a vyberte skupinu pro správu, do které chcete kopii ukázky Uložit.
 
-1. Vyberte kartu _artefakty_ v horní části stránky nebo **další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
 1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
@@ -69,16 +68,16 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základní informace
-     - **Předplatná:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: Název je předem vyplněný pro vás na základě názvu podrobného plánu.
+   - Základy
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit.
      - Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu.
        Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: Vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
     
-   - Uzamknout přiřazení
+   - Zamknout přiřazení
 
      Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
@@ -90,10 +89,10 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
      Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-       - **Organizace**: Zadejte název vaší organizace, například contoso nebo Fabrikam, musí být jedinečný.
-       - **A**: Vyberte jednu oblast Azure pro nasazení.
+       - **Organizace**: zadejte název vaší organizace, například contoso nebo Fabrikam, musí být jedinečný.
+       - **A**: vyberte jednu oblast Azure pro nasazení.
        
-   - Parametry artefaktů
+   - Parametry artefaktu
 
      Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
@@ -114,7 +113,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
 |Nasazení Azure Migrate|Šablona Resource Manageru|Azure_Migrate_Location|**Uzamčené** – vyberte oblast, která se má nasadit Azure Migrate|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zkontrolovali postup nasazení ukázky podrobného plánu CAF pro migraci cílové zóny, najdete informace o architektuře v následujících článcích:
 

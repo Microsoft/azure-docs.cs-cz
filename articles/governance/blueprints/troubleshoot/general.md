@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257177"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978229"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -34,7 +33,7 @@ Je běžné, že chyba je způsobena artefaktem a nikoli úplným plánem. Pokud
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="policy-violation"></a>Případě Porušení zásad
+### <a name="policy-violation"></a>Scénář: porušení zásad
 
 #### <a name="issue"></a>Problém
 
@@ -47,11 +46,11 @@ Zásada může být v konfliktu s nasazením z několika důvodů:
 - Vytvářený prostředek je omezený zásadami (obvykle se jedná o omezení umístění SKU nebo místa).
 - Nasazení je nastavené pole, která jsou nakonfigurovaná pomocí zásad (společné pomocí značek).
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
 Změňte podrobný plán tak, aby nedošlo ke konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu nemůžete udělat, je alternativním parametrem, že se změní rozsah přiřazení zásady, takže podrobný plán už není v konfliktu se zásadami.
 
-### <a name="escape-function-parameter"></a>Případě Parametr podrobného plánu je funkce.
+### <a name="escape-function-parameter"></a>Scénář: parametr podrobného plánu je funkce
 
 #### <a name="issue"></a>Problém
 
@@ -59,13 +58,13 @@ Parametry podrobného plánu, které jsou funkce, jsou zpracovány před předá
 
 #### <a name="cause"></a>Příčina
 
-Předání parametru podrobného plánu, který používá funkci, jako `[resourceGroup().tags.myTag]`je například, na výsledek artefaktu v důsledku zpracování funkce, která je nastavena na artefaktu namísto dynamické funkce.
+Předáním parametru podrobného plánu, který používá funkci, jako je například `[resourceGroup().tags.myTag]`, do výsledku artefaktu dojde ke zpracování výsledku funkce, která je nastavena na artefaktu namísto dynamické funkce.
 
-#### <a name="resolution"></a>Řešení
+#### <a name="resolution"></a>Rozlišení
 
-Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu `[[resourceGroup().tags.myTag]`vypadal. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

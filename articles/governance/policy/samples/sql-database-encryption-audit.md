@@ -1,22 +1,19 @@
 ---
-title: Ukázkový – Audit transparentní šifrování dat pro službu SQL Database
-description: Tato definice zásady ukázka Audituje SQL database nemá transparentní šifrování dat povolené.
-services: azure-policy
+title: Ukázka – audit transparentního šifrování dat pro SQL Database
+description: Tato ukázková definice zásad Audituje, jestli v SQL Database není povolené transparentní šifrování dat.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-origin.date: 04/27/2018
-ms.date: 03/11/2019
-ms.author: v-biyu
-ms.openlocfilehash: e8ee800ff9f286f901a84a039e3c433442ae11b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2019
+ms.author: dacoulte
+ms.openlocfilehash: de7819f43b2d0ce4d6d047b324db94d3e5f85eec
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60923284"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981327"
 ---
-# <a name="sample---audit-sql-database-encryption"></a>Ukázkový – auditovat šifrování databáze SQL
+# <a name="sample---audit-sql-database-encryption"></a>Ukázka – auditovat šifrování databáze SQL
 
 Tyto integrované zásady JSON auditují, jestli databáze SQL nemá povolené transparentní šifrování dat.
 
@@ -24,58 +21,7 @@ Tyto integrované zásady JSON auditují, jestli databáze SQL nemá povolené t
 
 ## <a name="sample-template"></a>Ukázková šablona
 
-```json
-{
-   "properties": {
-      "displayName": "Audit transparent data encryption status",
-      "description": "Audit transparent data encryption status for SQL databases",
-      "mode": "Indexed",
-      "parameters": {
-         "effect": {
-            "type": "string",
-            "defaultValue": "AuditIfNotExists",
-            "allowedValues": [
-               "AuditIfNotExists",
-               "Disabled"
-            ],
-            "metadata": {
-               "displayName": "Effect",
-               "description": "Enable or disable the execution of the policy"
-            }
-         }
-      },
-      "policyRule": {
-         "if": {
-            "allOf": [
-               {
-                  "field": "type",
-                  "equals": "Microsoft.Sql/servers/databases"
-               },
-               {
-                  "field": "name",
-                  "notEquals": "master"
-               }
-            ]
-         },
-         "then": {
-            "effect": "[parameters('effect')]",
-            "details": {
-               "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-               "name": "current",
-               "existenceCondition": {
-                  "allOf": [
-                     {
-                        "field": "Microsoft.Sql/transparentDataEncryption.status",
-                        "equals": "enabled"
-                     }
-                  ]
-               }
-            }
-         }
-      }
-   }
-}
-```
+[!code-json[main](../../../../policy-templates/samples/SQL/audit-sql-db-tde-status/azurepolicy.json "Audit TDE for SQL Database")]
 
 K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli). K získání integrovaných zásad použijte ID `17k78e20-9358-41c9-923c-fb736d382a12`.
 
@@ -83,11 +29,11 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 Při přiřazování zásad vyberte z dostupných integrovaných definic **Auditování stavu transparentního šifrování dat**.
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-```powershell
+```azurepowershell-interactive
 $definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12
 
 New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
@@ -97,26 +43,26 @@ New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scop
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-```cli
+```azurecli-interactive
 az policy assignment create --scope <scope> --name "SQL TDE Audit" --policy 17k78e20-9358-41c9-923c-fb736d382a12
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
 Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 
-```cli
+```azurecli-interactive
 az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

@@ -1,20 +1,19 @@
 ---
-title: Ukázkový – Audit žádný správce Azure AD
-description: Tuto ukázkovou definici zásad audity, pokud neexistuje žádný správce Azure Active Directory přiřazené k SQL serveru.
+title: Ukázka – audit bez správce Azure AD
+description: Tato ukázková definice zásad Audituje, když není k SQL serveru přiřazený žádný správce Azure Active Directory.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 769d860195df5d681d7426d33d70adf8851eed3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35f4497b3797b65aa7d4eff232e43d6af52dedae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545214"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977394"
 ---
-# <a name="sample---audit-no-azure-active-directory-administrator"></a>Ukázkový – Audit žádný správce Azure Active Directory
+# <a name="sample---audit-no-azure-active-directory-administrator"></a>Ukázka – audit bez Azure Active Directory správce
 
 Provedete audit v situaci, kdy k SQL serveru není přiřazený žádný správce Azure Active Directory.
 
@@ -28,9 +27,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-active-directory-admin%2Fazurepolicy.json)
+[@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-active-directory-admin%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -49,7 +48,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -67,6 +66,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918607"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981491"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Mapování ovládacích prvků pro ukázka PCI-DSS v 3.2.1 podrobný plán
 
 Následující článek podrobně popisuje, jak ukázka pro Azure modrotisky PCI-DSS v 3.2.1 podrobný plán mapuje na ovládací prvky PCI-DSS v 3.2.1. Další informace o ovládacích prvcích najdete v tématu [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Následující mapování jsou pro ovládací prvky **PCI-DSS v 3.2.1:2018** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost  **\[verze Preview\] audit PCI v 3.2.1:2018 řídí ovládací prvky a nasazují specifická rozšíření virtuálního počítače pro podporu požadavků na audit** integrovaných iniciativ zásad.
+Následující mapování jsou pro ovládací prvky **PCI-DSS v 3.2.1:2018** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview @ no__t-2 audit PCI v 3.2.1:2018 ovládací prvky a nasaďte specifická rozšíření virtuálního počítače pro podporu požadavků na** integrovanou iniciativu zásad pro audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md).
@@ -35,8 +34,8 @@ Tento podrobný plán vám pomůže se správou a řízením sítí tím, že p�
 
 Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvků cryptograph přiřazením definicí [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého kryptografického nastavení. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně zásady přiřazené tímto plánem vyžadují transparentní šifrování dat v databázích SQL. Auditovat chybějící šifrování u účtů úložiště a proměnných účtu Automation. K dispozici jsou také zásady, které řeší nezabezpečená připojení k účtům úložiště, aplikacím funkcí, WebApp, API Apps a Redis Cache a auditují nešifrované Service Fabric komunikace.
 
-- Funkce aplikace by měla být přístupná jen přes HTTPS
-- Webová aplikace by měla být přístupná jen přes HTTPS
+- Function App by měl být přístupný jenom přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Je třeba povolit transparentní šifrování dat databází SQL.
 - Na virtuálních počítačích by se mělo použít šifrování disku
@@ -49,7 +48,7 @@ Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvk
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 a 11.2.1, kontrola ohrožení zabezpečení a aktualizace systému
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí [](../../../policy/overview.md) přiřazení Azure Policych definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure. Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure. Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
 
 - Monitorovat chybějící Endpoint Protection v Azure Security Center
 - Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
@@ -69,7 +68,7 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a a 8.3.1. b Správa privilegovaných přístupových práv
 
 Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněním vlastníka, zápisu a čtení a účtů zaměstnanců s oprávněním vlastníka nebo zápisu, které nemají. ověřování Multi-Factor Authentication je povolené. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL. Použití ověřování Azure Active Directory zjednodušuje správu oprávnění a centralizaci správy identit uživatelů databáze a dalších společností Microsoft.  
-Orgány.
+orgány.
  
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
@@ -101,12 +100,12 @@ Azure implementuje řízení přístupu na základě role (RBAC), které vám um
 
 Tento podrobný plán vám pomůže vymáhat silná hesla přiřazením [Azure Policy](../../../policy/overview.md) definic, které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Dostupnost virtuálních počítačů v rozporu s zásadami síly hesla vám pomůže provést nápravné akce, které zajistí, že hesla pro všechny uživatelské účty virtuálních počítačů jsou kompatibilní se zásadami.
 
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
-- \[Verze\]Preview: Nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dnů.
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
-- \[Verze\]Preview: Nasaďte požadavky na auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků.
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
-- \[Verze\]Preview: Nasaďte požadavky na audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní.
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 a 10.5.4 pro generování auditu
 
@@ -116,7 +115,7 @@ Diagnostické protokoly poskytují přehled o operacích, které byly provedeny 
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
-- Nasazení auditování na serverech SQL
+- Nasazení auditování na SQL serverech
 - Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
 - Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
 
@@ -124,7 +123,7 @@ Diagnostické protokoly poskytují přehled o operacích, které byly provedeny 
 
 Tento podrobný plán vám pomůže se správou a řízením sítě pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují přijatelná síťová umístění a schválené podnikové produkty povolené pro dané prostředí. Jednotlivé společnosti přizpůsobují přizpůsobení prostřednictvím parametrů zásad v rámci každé z těchto zásad.
 
-- Povolené lokality
+- Povolená umístění
 - Povolená umístění pro skupiny prostředků
 
 ## <a name="next-steps"></a>Další kroky

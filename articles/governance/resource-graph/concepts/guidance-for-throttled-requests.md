@@ -1,51 +1,50 @@
 ---
-title: Pokyny pro omezené požadavky
-description: Zjistěte, jak vytvořit lepší dotazy, aby se zabránilo požadavky do grafu prostředků Azure z omezené.
+title: Pokyny pro omezované požadavky
+description: Naučte se vytvářet lepší dotazy, abyste se vyhnuli omezení požadavků do grafu prostředků Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276896"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980311"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Pokyny pro omezené požadavky v grafu prostředků Azure
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
-Při vytváření, programování a časté používání dat grafu prostředků Azure, posouzení třeba jak omezování dopad výsledky dotazů. Změna dat způsob, jak je požadováno, vám může pomoct a vaše organizace vyhnout omezené a spravovat tok včas dat o vašich prostředků Azure.
+Při vytváření programového a častého využívání dat grafu prostředků Azure by se mělo zvážit, jak omezování ovlivňuje výsledky dotazů. Změnou způsobu, jakým se vyžadují data, může vám a vaší organizaci zabránit omezení a udržování toku včasných dat o vašich prostředcích Azure.
 
-Tento článek popisuje čtyři oblasti a vzory související s vytváření dotazů v grafu prostředků Azure:
+Tento článek se věnuje čtyřem oblastem a vzorům, které souvisejí s vytvářením dotazů v Azure Resource graphu:
 
-- Principy omezení záhlaví
-- Dávkové zpracování dotazů
-- Odstupňování dotazy
+- Vysvětlení hlaviček omezování
+- Dávkové dotazy
+- Rozložit dotazy
 - Dopad stránkování
 
-## <a name="understand-throttling-headers"></a>Principy omezení záhlaví
+## <a name="understand-throttling-headers"></a>Vysvětlení hlaviček omezování
 
-Azure Graph prostředků přiděluje číslo kvóty pro každého uživatele, založené na časový interval. Například můžete uživateli odeslat maximálně 15 dotazů okna každých 5 sekund bez omezení. Hodnoty kvóty na závisí celá řada faktorů a může se změnit.
+Azure Resource Graph přiděluje číslo kvóty pro každého uživatele na základě časového okna. Uživatel může například odeslat maximálně 15 dotazů v rámci každého 5 sekundového okna bez omezení. Hodnota kvóty je určena mnoha faktory a může se změnit.
 
-V každé odpovědi na dotaz Azure Graph prostředků přidá dvě omezení záhlaví:
+V každé odpovědi na dotaz přidává Azure Resource Graph dvě hlavičky omezení:
 
-- `x-ms-user-quota-remaining` (int): Zbývající kvóta zdrojů pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after` (hh:mm:ss): Doba trvání, dokud se resetuje využití kvóty uživatele.
+- `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
 
-Pro ilustraci, jak fungují záhlaví, Podívejme se na odpověď na dotaz, který má hlavičky a hodnoty `x-ms-user-quota-remaining: 10` a `x-ms-user-quota-resets-after: 00:00:03`.
+Pro ilustraci, jak fungují hlavičky, se podívejme na odpověď na dotaz, která má hlavičku a hodnoty `x-ms-user-quota-remaining: 10` a `x-ms-user-quota-resets-after: 00:00:03`.
 
-- V rámci další 3 sekundy může být maximálně 10 dotazy předložena bez omezení.
-- V 3 sekundy, hodnoty `x-ms-user-quota-remaining` a `x-ms-user-quota-resets-after` se resetuje na `15` a `00:00:05` v uvedeném pořadí.
+- Během příštích 3 sekund se dá odeslat maximálně 10 dotazů bez omezení.
+- Za 3 sekundy se hodnoty `x-ms-user-quota-remaining` a `x-ms-user-quota-resets-after` resetují na `15` a `00:00:05`.
 
-Chcete-li zobrazit příklad použití hlavičky pro _omezení rychlosti_ na požadavků na dotazy, najdete v ukázce v [paralelní dotazování](#query-in-parallel).
+Pokud chcete zobrazit příklad použití hlaviček k _omezení rychlostií_ dotazů na dotazy, přečtěte si ukázku v [dotazu paralelně](#query-in-parallel).
 
-## <a name="batching-queries"></a>Dávkové zpracování dotazů
+## <a name="batching-queries"></a>Dávkové dotazy
 
-Dávkování dotazy podle předplatné, skupinu prostředků nebo samostatný prostředek je efektivnější než paralelní provádění dotazů. Kvóta náklady na větší dotazu jsou často nižší než náklady kvóty mnoho dotazů na malé a cílové. Velikost dávky, doporučuje se mít méně než _300_.
+Dávkování dotazů podle předplatného, skupiny prostředků nebo jednotlivého prostředku je efektivnější než dotazy virtuálního. Náklady na kvótu většího dotazu jsou často nižší než náklady na kvótu pro velký počet malých a cílových dotazů. Velikost dávky se doporučuje být menší než _300_.
 
-- Ukázka špatně optimalizované přístupu
+- Příklad nedostatečně optimalizovaného přístupu
 
   ```csharp
   // NOT RECOMMENDED
@@ -66,7 +65,7 @@ Dávkování dotazy podle předplatné, skupinu prostředků nebo samostatný pr
   }
   ```
 
-- Příklad #1 optimalizované dávkování přístupu
+- Příklad #1 optimalizovaného přístupu k dávkám
 
   ```csharp
   // RECOMMENDED
@@ -89,7 +88,7 @@ Dávkování dotazy podle předplatné, skupinu prostředků nebo samostatný pr
   }
   ```
 
-- Příklad #2 optimalizované dávkování přístupu
+- Příklad #2 optimalizovaného přístupu k dávkám
 
   ```csharp
   // RECOMMENDED
@@ -113,23 +112,23 @@ Dávkování dotazy podle předplatné, skupinu prostředků nebo samostatný pr
   }
   ```
 
-## <a name="staggering-queries"></a>Odstupňování dotazy
+## <a name="staggering-queries"></a>Rozložit dotazy
 
-Vzhledem ke způsobu omezení se vynucují, doporučujeme dotazy v zájmu. To znamená místo abyste odesílali 60 dotazy ve stejnou dobu, odstupňování dotazy do čtyř 5 sekundách windows:
+Kvůli způsobu, jakým se vynutilo omezování, doporučujeme dotazy, které se mají rozložit. To znamená, že místo odesílání dotazů 60 se budou tyto dotazy rozložit na čtyři 5 – sekundová okna:
 
-- Plán dotazu bez rozloženo
+- Plán dotazu bez rovnoměrného rozřazení
 
   | Počet dotazů         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | Časový Interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Časový interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- Rozloženo plánu dotazu
+- Plán rozloženého dotazu
 
   | Počet dotazů         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
-  | Časový Interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Časový interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Níže je příklad při dotazování grafu prostředků Azure, ale současně zachovává omezení hlavičky:
+Níže je uveden příklad respektování hlaviček omezení při dotazování na graf prostředků Azure:
 
 ```csharp
 while (/* Need to query more? */)
@@ -153,7 +152,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralelní dotazování
 
-I když dávkování se doporučuje přes paralelizace, existují situace, kdy nelze snadno sjednotit dotazy. V těchto případech můžete chtít odesláním více dotazů paralelní způsobem dotazování grafu prostředků Azure. Tady je příklad toho, jak _omezení rychlosti_ podle omezení záhlaví v těchto scénářích:
+I když se dávkové zpracování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno dávkovat. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Níže je uveden příklad, jak _omezení rychlosti_ na základě hlaviček omezení v takových scénářích:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
@@ -187,11 +186,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>Stránkování
 
-Protože Azure Graph prostředků vrátí maximálně 1 000 položek v jednom dotazu odpovědi, možná budete muset [stránkování](./work-with-data.md#paging-results) dotazy získat úplnou datovou sadu, kterou hledáte. Ale někteří klienti Azure Graph prostředků zpracování stránkování jinak než ostatní.
+Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v jediné odpovědi na dotaz, možná budete muset vytvořit [stránkování](./work-with-data.md#paging-results) dotazů a získat tak úplnou datovou sadu, kterou hledáte. Někteří klienti Azure Resource graphu ale nezpracovávají stránkování jinak než jiné.
 
 - C# SDK
 
-  Při používání sady SDK ResourceGraph potřebujete zpracovávat stránkování předáním vynechávaný token se vrací z předchozí odpověď na dotaz na další stránkovaných dotazů. Tento návrh znamená, že je potřeba shromáždit výsledky ze všech volání stránkované a kombinovat společně na konci. V takovém případě jednotlivých stránkovaných dotazů, které odesíláte přijímá jeden dotaz kvóta:
+  Při použití sady ResourceGraph SDK je nutné zpracovávat stránkování předáním tokenu Skip vráceného z předchozí odpovědi na dotaz na další stránkovaný dotaz. Tento návrh znamená, že potřebujete shromáždit výsledky ze všech stránkovaných volání a spojit je dohromady na konci. V takovém případě každý stránkovaný dotaz, který odešlete, provede jednu kvótu dotazu:
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +213,9 @@ Protože Azure Graph prostředků vrátí maximálně 1 000 položek v jednom do
   }
   ```
 
-- Rozhraní příkazového řádku Azure / Azure Powershellu
+- Azure CLI/Azure PowerShell
 
-  Při použití Azure CLI nebo Azure Powershellu, jsou k načtení maximálně 5 000 položek automaticky stránkovaných dotazů do grafu prostředků Azure. Výsledky dotazu vrátit kombinovaný seznam položek ze všech stránkované volání. V závislosti na počet položek ve výsledku dotazu. v takovém případě pomocí jediného dotazu stránkované může využívat více než jeden dotaz kvóty. Například v následujícím příkladu najednou dotazu může využívat až pět dotazů kvóta:
+  Při použití rozhraní příkazového řádku Azure CLI nebo Azure PowerShell jsou dotazy do Azure Resource graphu automaticky zastránkováním, aby se načetly maximálně 5000 položek. Výsledky dotazu vrátí kombinovaný seznam záznamů ze všech stránkovaných volání. V takovém případě může jeden stránkovaný dotaz využívat více než jednu kvótu dotazu v závislosti na počtu položek ve výsledku dotazu. Například v příkladu níže může jedno spuštění dotazu spotřebovat až pět kvót dotazu:
 
   ```azurecli-interactive
   az graph query -q 'project id, name, type' -top 5000
@@ -226,19 +225,19 @@ Protože Azure Graph prostředků vrátí maximálně 1 000 položek v jednom do
   Search-AzGraph -Query 'project id, name, type' -Top 5000
   ```
 
-## <a name="still-get-throttled"></a>Získat i nadále omezený?
+## <a name="still-get-throttled"></a>Pořád se omezuje?
 
-Pokud jste omezovaní po práv vyplývajících z výše uvedených doporučení, kontaktujte tým na adrese [ resourcegraphsupport@microsoft.com ](mailto:resourcegraphsupport@microsoft.com).
+Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na adrese [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com).
 
-Uveďte následující údaje:
+Zadejte tyto podrobnosti:
 
-- Specifický ovladač případu použití a obchodní potřeby vyšší limit omezení.
-- Kolik prostředků máte přístup k? Kolik jsou vráceny z jednoho dotazu?
-- Jaké jsou typy prostředků máte zájem?
-- Jaký je váš vzorec dotazu? X dotazy za sekundu Y atd.
+- Vaše specifické požadavky na použití a obchodní ovladače se vyžadují pro vyšší limit omezení.
+- K kolika prostředkům máte přístup? Kolik z je vráceno jedním dotazem?
+- Jaké typy prostředků máte zajímat?
+- Co je to váš vzor dotazu? Počet dotazů X za sekundu atd.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md).
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md).
-- Zjistěte, jak [materiály](explore-resources.md).
+- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
+- Naučte se [prozkoumat prostředky](explore-resources.md).

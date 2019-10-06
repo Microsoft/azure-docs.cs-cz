@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231516"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976766"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -25,17 +24,17 @@ Nejlepším způsobem, jak získat informace o dotazovacím jazyku, který použ
 Tady je seznam podporovaných tabulkových operátorů v grafu prostředků:
 
 - [count](/azure/kusto/query/countoperator)
-- [distinct](/azure/kusto/query/distinctoperator)
+- [znak](/azure/kusto/query/distinctoperator)
 - [zvětšení](/azure/kusto/query/extendoperator)
 - [počtu](/azure/kusto/query/limitoperator)
 - [Řadit podle](/azure/kusto/query/orderoperator)
-- [project](/azure/kusto/query/projectoperator)
-- [project-away](/azure/kusto/query/projectawayoperator)
+- [projektem](/azure/kusto/query/projectoperator)
+- [projekt – pryč](/azure/kusto/query/projectawayoperator)
 - [vzorku](/azure/kusto/query/sampleoperator)
-- [sample-distinct](/azure/kusto/query/sampledistinctoperator)
+- [Ukázka – DISTINCT](/azure/kusto/query/sampledistinctoperator)
 - [Seřadit podle](/azure/kusto/query/sortoperator)
 - [Souhrn](/azure/kusto/query/summarizeoperator)
-- [take](/azure/kusto/query/takeoperator)
+- [nezbytná](/azure/kusto/query/takeoperator)
 - [vrchol](/azure/kusto/query/topoperator)
 - [horní – vnořený](/azure/kusto/query/topnestedoperator)
 - [horní – hitters](/azure/kusto/query/tophittersoperator)
@@ -45,18 +44,18 @@ Tady je seznam podporovaných tabulkových operátorů v grafu prostředků:
 
 Tady je seznam podporovaných funkcí v grafu prostředků:
 
-- [ago()](/azure/kusto/query/agofunction)
+- [před ()](/azure/kusto/query/agofunction)
 - [buildschema()](/azure/kusto/query/buildschema-aggfunction)
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
-- [tostring()](/azure/kusto/query/tostringfunction)
-- [zip()](/azure/kusto/query/zipfunction)
+- [ToString ()](/azure/kusto/query/tostringfunction)
+- [zip ()](/azure/kusto/query/zipfunction)
 
 ## <a name="escape-characters"></a>Řídicí znaky
 
-Některé názvy vlastností, jako jsou například ty, které `.` obsahují `$`nebo, musí být zabaleny nebo uvozeny v dotazu nebo musí být název vlastnosti interpretován nesprávně a neposkytují očekávané výsledky.
+Některé názvy vlastností, například ty, které zahrnují `.` nebo `$`, musí být zabaleny nebo uvozeny v dotazu, nebo je název vlastnosti interpretován nesprávně a neposkytuje očekávané výsledky.
 
-- `.`– Název vlastnosti zabalíte takto:`['propertyname.withaperiod']`
+- `.` – název vlastnosti se zabalí jako: `['propertyname.withaperiod']`.
   
   Příklad dotazu, který zabalí vlastnost _OData. Type_:
 
@@ -64,28 +63,28 @@ Některé názvy vlastností, jako jsou například ty, které `.` obsahují `$`
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-Řídí znak v názvu vlastnosti. Použitý řídicí znak závisí na grafu prostředků prostředí, ze kterého se spouští.
+- `$`-řídí znak v názvu vlastnosti. Použitý řídicí znak závisí na grafu prostředků prostředí, ze kterého se spouští.
 
-  - **bash** - `\`
+  - **bash** -  @ no__t – 2
 
-    Příklad dotazu, který řídí  _\$typ_ vlastnosti v bash:
+    Příklad dotazu, který řídí vlastnost _\$type_ v bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** – neřídí `$` znak.
+  - **cmd** – neřídí znak `$`.
 
-  - **PowerShell** - ``` ` ```
+  - **PowerShell** -  @ no__t-2
 
-    Příklad dotazu, který řídí  _\$typ_ vlastnosti v PowerShellu:
+    Příklad dotazu, který řídí vlastnost _\$type_ v prostředí PowerShell:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit jazyk používaný v počátečních [dotazech](../samples/starter.md)
+- Zobrazit jazyk používaný v [počátečních dotazech](../samples/starter.md)
 - Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md)
-- Naučte se [prozkoumat zdroje](explore-resources.md)
+- Naučte se [prozkoumat prostředky](explore-resources.md)

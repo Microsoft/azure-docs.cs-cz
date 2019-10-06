@@ -1,20 +1,19 @@
 ---
-title: Ukázkový – žádné uživatelsky definované tabulce směrování
-description: Tato ukázková definice zásady zakazuje virtuálních sítí se nasazuje s tabulkou trasy definované uživatelem.
+title: Ukázka-není uživatelem definovaná tabulka směrování.
+description: Tato ukázková definice zásad zakáže nasazení virtuálních sítí s uživatelem definovanou směrovací tabulkou.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 330ffc8451f538e5765425522b37f83231d782c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 783ee6916b4ecfb792a7b86cdd84aee08de223f5
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510169"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976921"
 ---
-# <a name="sample---no-user-defined-route-table"></a>Ukázkový – žádné uživatelsky definované tabulce směrování
+# <a name="sample---no-user-defined-route-table"></a>Ukázka-není uživatelem definovaná tabulka směrování.
 
 Tato zásada zakazuje nasazení virtuálních sítí s tabulkou směrování definovanou uživatelem.
 
@@ -28,9 +27,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-route-table-in-ER-Network%2Fazurepolicy.json)
+[@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-route-table-in-ER-Network%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -49,7 +48,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -67,6 +66,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

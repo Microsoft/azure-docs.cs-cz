@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 654ae2da9bcdb6d73de47730aff6870c2e3dfaeb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001523"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980885"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
 Následující článek podrobně popisuje, jak jsou vzorky ÚŘEDNÍch a NHS podrobných plánů pro Spojené království mapovány na oficiální a britský NHS ovládací prvky. Další informace o ovládacích prvcích najdete v článku [úředník pro Spojené království](https://www.gov.uk/government/publications/government-security-classifications).
 
-Následující mapování jsou pro **oficiální** a britský ovládací prvky **NHS** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost  **\[Preview\] auditovat oficiální a britský NHS ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit** integrovaných iniciativ zásad.
+Následující mapování jsou pro **oficiální** a britský ovládací prvky **NHS** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview @ no__t-2 auditovat oficiální a britský NHS ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky** na integrovanou iniciativu zásad pro audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
@@ -49,7 +48,7 @@ Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptogr
 
 ## <a name="52-vulnerability-management"></a>Správa ohrožení zabezpečení 5,2
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí [](../../../policy/overview.md) přiřazení Azure Policych definic, které monitorují chybějící službu Endpoint Protection, chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a virtuální. ohrožení zabezpečení počítače. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policych](../../../policy/overview.md) definic, které monitorují chybějící službu Endpoint Protection, chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a virtuální. ohrožení zabezpečení počítače. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
 
 - Monitorovat chybějící Endpoint Protection v Azure Security Center
 - Do vašich počítačů by se měly nainstalovat aktualizace systému
@@ -91,27 +90,27 @@ Tento podrobný plán také přiřadí Azure Policy definice k auditu účtů, k
 
 Tento podrobný plán také přiřadí definici Azure Policy, která Audituje oprávnění souboru s heslem pro virtuální počítače Linux, pokud jsou nesprávně nastavena. Tento návrh vám umožní podniknout nápravná opatření, aby nedošlo k ohrožení ověřovatelů.
 
-- \[Verze\]Preview: Oprávnění k souboru auditu pro virtuální počítače Linux/etc/passwd jsou nastavená na 0644.
+- \[Preview @ no__t-1: oprávnění k souboru auditu pro virtuální počítače Linux jsou nastavena na 0644.
 
 Tento podrobný plán vám pomůže vymáhat silná hesla přiřazením Azure Policy definic, které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Dostupnost virtuálních počítačů v rozporu s zásadami síly hesla vám pomůže provést nápravné akce, které zajistí, že hesla pro všechny uživatelské účty virtuálních počítačů jsou kompatibilní se zásadami.
 
-- \[Verze\]Preview: Nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Verze\]Preview: Nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dnů.
-- \[Verze\]Preview: Nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den.
-- \[Verze\]Preview: Nasaďte požadavky na auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků.
-- \[Verze\]Preview: Nasaďte požadavky na audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla.
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní.
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den.
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Preview @ no__t-1: nasaďte požadavky na auditování virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel.
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
+- \[Preview @ no__t-1: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
 
 Tento podrobný plán vám také pomůže řídit přístup k prostředkům Azure přiřazením Azure Policy definice. Tyto zásady auditují použití typů prostředků a konfigurací, které by mohly umožňovat více opravňující přístup k prostředkům. Principy prostředků, které jsou v rozporu s těmito zásadami, vám pomůžou podniknout nápravné akce, které zajistí, že přístup k prostředkům Azure bude omezený na autorizované uživatele.
 
-- \[Verze\]Preview: Nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
-- \[Verze\]Preview: Nasazení požadavků pro audit virtuálních počítačů Linux, které umožňují vzdálená připojení z účtů bez hesel
-- \[Verze\]Preview: Auditovat virtuální počítače Linux s účty bez hesel
-- \[Verze\]Preview: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
+- \[Preview @ no__t-1: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
+- \[Preview @ no__t-1: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
+- \[Preview @ no__t-1: Auditovat virtuální počítače Linux s účty bez hesla
+- \[Preview @ no__t-1: Auditovat virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
 - Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
 - Auditovat virtuální počítače, které nepoužívají spravované disky
@@ -148,7 +147,7 @@ Tento podrobný plán také přiřadí Azure Policy definice pro audit účtů, 
 
 Tento podrobný plán také přiřadí definici Azure Policy, která Audituje oprávnění souboru s heslem pro virtuální počítače Linux, pokud jsou nesprávně nastavena. Tento návrh vám umožní podniknout nápravná opatření, aby nedošlo k ohrožení ověřovatelů.
 
-- \[Verze\]Preview: Oprávnění k souboru auditu pro virtuální počítače Linux/etc/passwd jsou nastavená na 0644.
+- \[Preview @ no__t-1: oprávnění k souboru auditu pro virtuální počítače Linux jsou nastavena na 0644.
 
 ## <a name="13-audit-information-for-users"></a>13 informací o auditu pro uživatele
 
@@ -157,8 +156,8 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Auditování nastavení diagnostiky
 - Auditovat nastavení auditování na úrovni SQL serveru
-- \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows
+- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Při vytváření virtuálních sítí nasadit sledovací proces sítě
 
 ## <a name="next-steps"></a>Další kroky
@@ -166,8 +165,8 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 Teď, když jste zkontrolovali mapování ovládacího prvku OFICIÁLNÍch a NHSch plánů UK, najdete v následujících článcích informace o přehledu a způsobu nasazení této ukázky:
 
 > [!div class="nextstepaction"]
-> [Oficiální a NHS plány Spojené království – přehled](./index.md)
-> [oficiálních a britských NHS modrotisky – postup nasazení](./deploy.md)
+> [Oficiální a NHS modrotisky pro Spojené království – přehledy](./index.md)
+> [UK oficiální a Velká Británie NHS modrotisky – postup nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

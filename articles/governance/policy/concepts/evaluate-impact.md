@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b24a0e9f3f557ea2ac425db7caeed63959d18dd8
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181402"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980766"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Vyhodnocení dopadu nové zásady Azure
 
@@ -37,8 +36,8 @@ Z tohoto důvodu by měly být definice zásad pevně definované a zaměřené 
 
 ## <a name="audit-existing-resources"></a>Auditovat stávající prostředky
 
-Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení zásad použijte
- [režim vynucení](./assignment-structure.md#enforcement-mode)_disabled_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam z protokolu aktivit.
+Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení zásad použijte [režim vynucení](./assignment-structure.md#enforcement-mode)
+_zakázaný_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam v protokolu aktivit.
 
 Tento krok vám umožní vyhodnotit výsledky dodržování předpisů pro nové zásady u existujících prostředků, aniž by to ovlivnilo pracovní tok. Ověřte, že žádné kompatibilní prostředky nejsou označené jako nevyhovující (_falešně pozitivní_) a že všechny prostředky, které očekáváte nedodržující předpisy, jsou správně označeny.
 Po počáteční podmnožině prostředků se ověří podle očekávání, pomalu Rozšiřte vyhodnocení na všechny stávající prostředky.

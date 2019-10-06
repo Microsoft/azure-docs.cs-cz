@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004078"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981061"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -33,7 +32,7 @@ Prostřednictvím REST API lze parametry vytvořit přímo v podrobném plánu. 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Použití parametrů secureString a secureObject
 
 I když _artefakt_ šablony Správce prostředků podporuje parametry typů **secureString** a **secureObject** , musí být každý z nich spojen s Azure Key Vault.
-Tato míra zabezpečení zabraňuje nebezpečným postupům ukládání tajných kódů spolu s podrobným plánem a podporuje práci se zabezpečenými vzory. Azure modrotisky podporují toto opatření zabezpečení a zjišťují zahrnutí buď zabezpečeného parametru v artefaktu šablony Správce prostředků. Služba pak vyzve během přiřazování pro následující Key Vault vlastnosti podle zjištěného zabezpečeného parametru:
+Tato míra zabezpečení zabraňuje nebezpečným postupům ukládání tajných kódů spolu s podrobným plánem a podporuje práci se zabezpečenými vzory. Azure modrotisky podporují toto opatření zabezpečení a zjišťují zahrnutí buď zabezpečeného parametru v _artefaktu_šablony Správce prostředků. Služba pak vyzve během přiřazování pro následující Key Vault vlastnosti podle zjištěného zabezpečeného parametru:
 
 - ID prostředku Key Vault
 - Key Vault název tajného klíče
@@ -44,7 +43,7 @@ Pokud přiřazení podrobného plánu používá **spravovanou identitu přiřaz
 Pokud přiřazení podrobného plánu používá **uživatelem přiřazenou spravovanou identitu**, odkazovaná Key Vault _mohou_ existovat v centralizovaném předplatném. Spravované identitě musí být před přiřazením podrobného plánu udělena příslušná práva k Key Vault.
 
 > [!IMPORTANT]
-> V obou případech musí Key Vault mít povolený **přístup k Azure Resource Manager nasazení šablony** nakonfigurované na stránce **zásady přístupu** . Pokyny k povolení této funkce naleznete v tématu [Key Vault-Enable Template Deployment](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> V obou případech musí Key Vault mít **povolený přístup k Azure Resource Manager nasazení šablony** nakonfigurované na stránce **zásady přístupu** . Pokyny k povolení této funkce naleznete v tématu [Key Vault-Enable Template Deployment](../../../managed-applications/key-vault-access.md#enable-template-deployment).
 
 Další informace o Azure Key Vault najdete v tématu [Key Vault Overview](../../../key-vault/key-vault-overview.md).
 
@@ -62,9 +61,9 @@ Hodnota parametru definovaná v definici podrobného plánu se nazývá **static
 
 1. Klikněte na existující podrobný plán, klikněte na **Upravit** podrobný plán nebo klikněte na **+ vytvořit podrobný plán** a vyplňte informace na kartě **základy** .
 
-1. Klikněte **na další: Artefakty** nebo klikněte na kartu **artefakty.**
+1. Klikněte na **Další: artefakty** nebo klikněte na kartu **artefakty** .
 
-1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y** naplněné ve sloupci **Parameters** . Pro úpravu parametrů artefaktů klikněte na řádek artefaktu.
+1. Artefakty přidané do podrobného plánu, které mají možnosti parametrů, zobrazují **X z parametrů Y naplněné** ve sloupci **Parameters** . Pro úpravu parametrů artefaktů klikněte na řádek artefaktu.
 
    ![Parametry podrobného plánu v definici podrobného plánu](../media/parameters/parameter-column.png)
 
@@ -135,11 +134,11 @@ Následující REST API příklad vytvoří artefakt přiřazení role v podrobn
   }
   ```
 
-V tomto příkladu vlastnost **principalIds** používá parametr na úrovni podrobného plánu Owners pomocí hodnoty `[parameters('owners')]`. Nastavení parametru pro artefakt pomocí parametru úrovně podrobného plánu je stále příkladem **statického parametru**. Parametr úrovně podrobného plánu nelze nastavit během přiřazení podrobného plánu a bude mít stejnou hodnotu u každého přiřazení.
+V tomto příkladu vlastnost **principalIds** používá parametr na úrovni podrobného plánu **Owners** pomocí hodnoty `[parameters('owners')]`. Nastavení parametru pro artefakt pomocí parametru úrovně podrobného plánu je stále příkladem **statického parametru**. Parametr úrovně podrobného plánu nelze nastavit během přiřazení podrobného plánu a bude mít stejnou hodnotu u každého přiřazení.
 
 ##### <a name="artifact-level-parameter"></a>Parametr úrovně artefaktu
 
-Vytváření **statických parametrů** na artefaktu je podobné, ale přebírá rovnou hodnotu namísto použití `parameters()` funkce. Následující příklad vytvoří dva statické parametry, **TagName** a **tagValue**. Hodnota u každého je poskytnuta přímo a nepoužívá volání funkce.
+Vytváření **statických parametrů** na artefaktu je podobné, ale přebírá rovnou hodnotu namísto použití funkce `parameters()`. Následující příklad vytvoří dva statické parametry, **TagName** a **tagValue**. Hodnota u každého je poskytnuta přímo a nepoužívá volání funkce.
 
 - Identifikátor URI v REST API
 
@@ -185,7 +184,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z REST API
 
-Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v části **parametry** s **\<\>** dvojicí klíče název a **hodnota** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
+Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v rámci **parametrů** s dvojicí **\<name @ no__t-3** a klíčovou **hodnotou** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
 
 - Identifikátor URI v REST API
 

@@ -1,6 +1,6 @@
 ---
-title: Spuštění aktivity toku dat ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Jak provádět datové toky z uvnitř kanál datové továrny.
+title: Aktivita toku dat v Azure Data Factory | Microsoft Docs
+description: Jak spouštět toky dat z kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,17 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 10/07/2019
 ms.author: makromer
-ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7db410e97046b6d251eb73e754e40eab09a2ee64
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471661"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981809"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
-Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
+# <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
+
+Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostřednictvím mapování toků dat. Pokud s toky dat začínáte, přečtěte si téma [mapování toku dat – přehled](concepts-data-flow-overview.md)
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -30,75 +31,84 @@ Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění 
     "type": "ExecuteDataFlow",
     "typeProperties": {
       "dataflow": {
-         "referenceName": "dataflow1",
+         "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
       },
-        "compute": {
-          "computeType": "General",
-          "coreCount": 8,
+      "staging": {
+          "linkedService": {
+              "referenceName": "MyStagingLinkedService",
+              "type": "LinkedServiceReference"
+          },
+          "folderPath": "my-container/my-folder"
+      },
+      "integrationRuntime": {
+          "referenceName": "MyDataFlowIntegrationRuntime",
+          "type": "IntegrationRuntimeReference"
       }
 }
 
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-* ```dataflow``` je název entity toku dat, kterou chcete provést
-* ```compute``` Popisuje spuštění prostředí Spark
-* ```coreCount``` počet jader pro přiřazení k provádění této aktivity vašeho toku dat
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
+-------- | ----------- | -------------- | --------
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští | IntegrationRuntimeReference | Ano
+Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
+Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 
-![Spuštění toku dat](media/data-flow/activity-data-flow.png "provedení toku dat.")
+![Spuštění](media/data-flow/activity-data-flow.png "toku dat spuštění") toku dat
 
-### <a name="debugging-pipelines-with-data-flows"></a>Ladění kanálů s toky dat
+### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
-![Ladění tlačítko](media/data-flow/debugbutton.png "tlačítko ladit.")
+Vyberte, který Integration Runtime se má použít pro spuštění aktivity toku dat. Ve výchozím nastavení Data Factory používat prostředí Azure Integration runtime se čtyřmi jádry a bez TTL (Time to Live). Tento IR má pro výpočetní typ pro obecné účely a běží ve stejné oblasti jako vaše továrna. Můžete vytvářet vlastní prostředí Azure Integration runtime, která definují konkrétní oblasti, výpočetní typ, počty jader a hodnotu TTL pro spuštění aktivity toku dat.
 
-Použijte na datový tok ladění využívat topným zařízením clusteru pro interaktivní testování datové toky v kanálu ladění spustit. Použijte možnost kanálu ladění k testování vašich toků dat v kanálu.
+V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
-### <a name="run-on"></a>Spusťte
-
-Toto je povinné pole, která definuje, které prostředí IR pro váš tok dat provádění aktivity. Ve výchozím nastavení bude služba Data Factory používat výchozí prostředí Azure Integration runtime automaticky vyřešit. Můžete však vytvořit vlastní Azure prostředí Integration runtime, který definovat konkrétní oblasti, výpočetní typu, počty jader a hodnota TTL pro provádění aktivity toku vaše data.
-
-Výchozí nastavení pro spuštění toku dat je 8jádrový obecné výpočetní s hodnotou TTL 60 minut.
-
-Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodnota je výchozí prostředí IR Azure automaticky vyřešit. Tato volba spustí tok dat v prostředí Spark ve stejné oblasti jako svou datovou továrnu. Typ výpočtu bude clusteru úloh, což znamená, že prostředí compute bude trvat několik minut na spuštění.
-
-Pro vaše aktivity toku dat máte kontrolu nad spouštěcí prostředí Spark. V [prostředí Azure integration runtime](concepts-integration-runtime.md) jsou nastavení typ výpočtu (obecné účely, paměťově optimalizované a optimalizováno pro výpočty), počet jader pro pracovníka a time-to-live tak, aby odpovídaly prováděcí modul s výpočetní toku dat požadavky. Také nastavení TTL umožňuje udržovat teplé clusteru, který je hned dostupný pro spuštění úlohy.
-
-![Prostředí Azure Integration Runtime](media/data-flow/ir-new.png "prostředí Azure Integration Runtime")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration runtime")
 
 > [!NOTE]
-> Výběr prostředí Integration Runtime v rámci aktivity toku dat platí jenom pro *aktivuje spuštění* vašeho kanálu. Ladění svůj kanál s toky dat ladicí program se spustí v clusteru Spark 8jádrový výchozí.
+> Výběr Integration Runtime v aktivitě toku dat se vztahuje pouze na *aktivované spouštění* vašeho kanálu. Ladění kanálu pomocí datových toků běží v clusteru zadaném v relaci ladění.
 
-### <a name="staging-area"></a>Pracovní oblasti
+### <a name="polybase"></a>PolyBase
 
-Pokud vaše data jsou vnořování do služby Azure Data Warehouse, je třeba zvolit pracovní umístění pro Polybase zatížení služby batch. Pracovní nastavení platí jenom pro úlohy Azure Data Warehouse.
+Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvolit pracovní umístění pro zatížení základní dávky. Základem je hromadné načtení dávkového načítání namísto načítání datových řádků po řádku. Základce výrazně zkracuje dobu načítání do SQL datového skladu.
 
-## <a name="parameterized-datasets"></a>Parametry datové sady
+## <a name="parameterizing-data-flows"></a>Toky dat Parametrizace
 
-Pokud použijete parametry datové sady, nezapomeňte nastavit hodnoty parametrů.
+### <a name="parameterized-datasets"></a>Parametrizované datové sady
 
-![Spustit parametry toku dat](media/data-flow/params.png "parametry")
+Pokud datový tok používá parametrizované datové sady, nastavte hodnoty parametrů na kartě **Nastavení** .
 
-## <a name="parameterized-data-flows"></a>Parametry datové toky
+![Spustit parametry toku dat](media/data-flow/params.png "")
 
-Pokud máte parametry vašeho toku dat, nastavíte dynamické hodnoty tady parametry toku dat v sekci parametrů spuštění toku dat aktivit. Jazyk výrazů kanálu ADF (pouze pro typy parametrů řetězce) nebo jazyk výrazů tok dat můžete použít k nastavení hodnoty parametrů s výrazy dynamické nebo statické hodnoty literálu.
+### <a name="parameterized-data-flows"></a>Parametrizované toky dat
 
-![Spusťte příklad parametr toku dat](media/data-flow/parameter-example.png "parametr příklad")
+Pokud je tok dat parametrizovaný, nastavte dynamické hodnoty parametrů toku dat na kartě **parametry** . K přiřazení hodnot parametrů Dynamic nebo Literal můžete použít jazyk výrazu kanálu ADF (jenom pro řetězcové typy) nebo jazyk výrazu toku dat. Další informace najdete v tématu [parametry toku dat](parameters-data-flow.md).
 
-### <a name="debugging-data-flows-with-parameters"></a>Ladění datové toky s parametry
+(media/data-flow/parameter-example.png "Příklad") spuštění ukázkového parametru ![toku dat]
 
-V tuto chvíli aktuální můžete ladit pouze datové toky s parametry z kanálu ladění spuštěn pomocí aktivity toku dat spouštět. Interaktivní ladicích relací v ADF toku dat je již brzy. Spuštění kanálu a spuštění ladění, ale bude fungovat s parametry.
+## <a name="pipeline-debug-of-data-flow-activity"></a>Ladění kanálu aktivity toku dat
 
-Dobrým postupem je vytvoření toku dat s statický obsah, abyste měli k dispozici šíření sloupce – plná metadata v době návrhu pro odstraňování poruch. Potom nahraďte statické datové sady s datovou sadou dynamické parametry při zprovoznění vašeho kanálu toku dat
+Chcete-li spustit ladicí kanál spuštěný s aktivitou toku dat, je nutné přepnout na režim ladění toku dat prostřednictvím posuvníku **ladění toku dat** na horním panelu. Režim ladění umožňuje spustit tok dat proti aktivnímu clusteru Spark. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
+Tlačítko ![ladit tlačítko ladit](media/data-flow/debugbutton.png "")
+
+Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Integration runtime zadaném v nastavení aktivity toku dat. Můžete zvolit prostředí ladění COMPUTE při spuštění režimu ladění.
+
+## <a name="monitoring-the-data-flow-activity"></a>Monitorování aktivity toku dat
+
+Aktivita toku dat má speciální prostředí pro monitorování, ve kterém můžete zobrazit oddíly, čas fáze a informace o datových řádcích. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce**. Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Viz aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

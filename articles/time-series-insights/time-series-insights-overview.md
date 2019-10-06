@@ -1,5 +1,5 @@
 ---
-title: 'Přehled: Co je Azure Time Series Insights? | Dokumenty Microsoft'
+title: 'Přehled: co je Azure Time Series Insights? | Microsoft Docs'
 description: Seznámení s Azure Time Series Insights, novou službou pro analýzu dat časových řad a řešení IoT
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264501"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981199"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -31,7 +31,7 @@ Služba Time Series Insights má čtyři klíčové úlohy:
 - Time Series Insights poskytuje okamžitou vizualizaci pomocí Time Series Insights Exploreru. 
 - Time Series Insights poskytuje dotazovací službu v Průzkumníkovi Time Series Insights a pomocí rozhraní API, která se dají snadno integrovat pro vložení dat časových řad do vlastních aplikací.
 
-Pokud sestavíte aplikaci pro interní spotřebu nebo externím zákazníkům, abyste je mohli použít, můžete jako back-end použít Time Series Insights. Můžete ji použít k indexování, ukládání a agregaci dat časových řad. Chcete-li vytvořit vlastní vizualizaci a činnost koncového uživatele, použijte [klientskou sadu SDK](tutorial-explore-js-client-lib.md). Time Series Insights je také vybaven několika [rozhraními API dotazů](how-to-shape-query-json.md) , aby bylo možné tyto vlastní scénáře povolit.
+Pokud sestavíte aplikaci pro interní spotřebu nebo externím zákazníkům, abyste je mohli použít, můžete jako back-end použít Time Series Insights. Můžete ji použít k indexování, ukládání a agregaci dat časových řad. Chcete-li vytvořit vlastní vizualizaci a činnost koncového uživatele, použijte [klientskou sadu SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Time Series Insights je také vybaven několika [rozhraními API dotazů](how-to-shape-query-json.md) , aby bylo možné tyto vlastní scénáře povolit.
 
 Data časových řad představují změnu prostředku nebo procesu v průběhu času. Data časové řady jsou indexována pomocí časových razítek a časová osa, podél které jsou taková data uspořádána. Data časové řady obvykle přicházejí v sekvenčním pořadí, takže se považuje za vložené místo aktualizace databáze.
 
@@ -42,7 +42,7 @@ Azure Time Series Insights zachycuje a ukládá každou novou událost jako řá
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Přečtěte si další informace o Azure Time Series Insights, cloudové platformě IoT Analytics.</br>
 
-[![OBRAZOVÝ](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[@no__t – 1VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Primární scénáře
 
@@ -68,15 +68,15 @@ Azure Time Series Insights zachycuje a ukládá každou novou událost jako řá
 
 ## <a name="capabilities"></a>Možnosti
 
-- Začněte **rychle**: Azure Time Series Insights nevyžaduje přípravu předem na data, takže se můžete rychle připojit k miliónům událostí ve službě IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat a interagovat s daty ze senzorů, abyste mohli rychle ověřit vaše řešení IoT. S daty můžete pracovat, aniž byste museli psát kód a nemusíte se učit nový jazyk. Time Series Insights poskytuje detailní a volné plochy pro dotazování pro pokročilé uživatele, a to tak, že vyhledáme a kliknete na průzkum.
+- **Rychlé zahájení**: Azure Time Series Insights nevyžaduje přípravu dat předem, takže se můžete rychle připojit k miliónům událostí ve službě IoT Hub nebo v centru událostí. Po připojení můžete vizualizovat a interagovat s daty ze senzorů, abyste mohli rychle ověřit vaše řešení IoT. S daty můžete pracovat, aniž byste museli psát kód a nemusíte se učit nový jazyk. Time Series Insights poskytuje detailní a volné plochy pro dotazování pro pokročilé uživatele, a to tak, že vyhledáme a kliknete na průzkum.
 
-- **Přehledy téměř v reálném čase**: Time Series Insights může ingestovat miliony událostí senzorů za den a latence v minutách. Time Series Insights vám pomůže získat přehled o datech ze senzorů. Využijte ji k vyřízení trendů a anomálií, provádění analýz hlavní příčiny a zamezení nákladnému výpadku. Křížové korelace mezi daty v reálném čase a historická data vám pomůžou najít skryté trendy v datech.
+- **Přehledy téměř v reálném**čase: Time Series Insights můžou ingestovat miliony událostí senzorů za den a latence v minutách. Time Series Insights vám pomůže získat přehled o datech ze senzorů. Využijte ji k vyřízení trendů a anomálií, provádění analýz hlavní příčiny a zamezení nákladnému výpadku. Křížové korelace mezi daty v reálném čase a historická data vám pomůžou najít skryté trendy v datech.
 
-- **Sestavujte vlastní řešení**: Vkládat data Azure Time Series Insights do stávajících aplikací. Můžete také vytvořit nová vlastní řešení s rozhraními REST API pro Time Series Insights. Můžete vytvářet přizpůsobená zobrazení a sdílet je s ostatními, aby i oni mohli zkoumat přehledy.
+- **Sestavování vlastních řešení**: vkládání Azure Time Series Insights dat do stávajících aplikací. Můžete také vytvořit nová vlastní řešení s rozhraními REST API pro Time Series Insights. Můžete vytvářet přizpůsobená zobrazení a sdílet je s ostatními, aby i oni mohli zkoumat přehledy.
 
-- **Škálovatelnost**: Time Series Insights je navržená tak, aby podporovala škálování IoT. Může ingestovat 1 až 100 milionů událostí za den při výchozím rozsahu uchování 31 dnů. Společně s historickými daty můžete vizualizovat a analyzovat živé datové proudy téměř v reálném čase.
+- **Škálovatelnost:** Služba Time Series Insights je navržena tak, aby podporovala škálování IoT. Může ingestovat 1 až 100 milionů událostí za den při výchozím rozsahu uchování 31 dnů. Společně s historickými daty můžete vizualizovat a analyzovat živé datové proudy téměř v reálném čase.
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 Chcete-li začít, postupujte podle těchto kroků.
 

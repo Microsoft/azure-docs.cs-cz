@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231934"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978483"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -65,9 +64,9 @@ Neexistuje žádné omezení počtu, kolikrát může být přiřazení aktualiz
 - Již existující objekt
 - Změna není podporována nástrojem Azure Resource Manager
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o [životním cyklu](../concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)

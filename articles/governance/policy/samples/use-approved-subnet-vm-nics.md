@@ -1,20 +1,19 @@
 ---
-title: Ukázkový – použití schváleno podsíť pro síťová rozhraní virtuálního počítače
-description: Tato definice zásady ukázka vyžaduje, aby používal síťová rozhraní schválené podsítě.
+title: Ukázka-použití schválené podsítě pro síťová rozhraní virtuálních počítačů
+description: Tato ukázková definice zásad vyžaduje, aby síťová rozhraní používala schválenou podsíť.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: b4b6b2293952103bdcaccf11e8f7d528b33cbc46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3f7b6cf54665157bc13ea7e86b384647da44be4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641258"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981309"
 ---
-# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Ukázkový – použití schváleno podsíť pro síťová rozhraní virtuálního počítače
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Ukázka-použití schválené podsítě pro síťová rozhraní virtuálních počítačů
 
 Tato zásada vyžaduje, aby síťová rozhraní používala schválenou podsíť. Zadejte ID schválené podsítě.
 
@@ -28,9 +27,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
+[@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -49,7 +48,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -67,6 +66,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

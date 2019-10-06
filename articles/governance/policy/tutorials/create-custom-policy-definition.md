@@ -1,78 +1,77 @@
 ---
 title: Vytvoření vlastní definice zásad
-description: Vytvoření vlastní definice zásady Azure Policy pro vynucení vlastních obchodních pravidel.
+description: Vytvořte vlastní definici zásad pro Azure Policy pro zajištění vlastních obchodních pravidel.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979668"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980358"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásad
+# <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
-Vlastní definice zásady umožňuje zákazníkům definovat vlastní pravidla pro používání Azure. Často tato pravidla vynucují:
+Vlastní definice zásad umožňuje zákazníkům definovat vlastní pravidla pro používání Azure. Tato pravidla se často vysazují:
 
 - Postupy zabezpečení
 - Správa nákladů
-- Pravidla specifická pro organizaci (například názvy nebo umístění)
+- Pravidla specifická pro organizaci (například pojmenování nebo umístění)
 
-Bez ohledu obchodní ovladače pro vytvoření vlastní zásady, postup je stejný pro definování nových vlastních zásad.
+Bez ohledu na to, jaký má obchodní ovladač pro vytváření vlastních zásad, jsou tyto kroky stejné jako při definování nových vlastních zásad.
 
-Před vytvořením vlastní zásadu, zkontrolujte [ukázky zásad](../samples/index.md) jestli zásadu, která odpovídá vašim potřebám již existuje.
+Než vytvoříte vlastní zásadu, podívejte se do [ukázek zásad](../samples/index.md) a podívejte se, jestli už existuje zásada, která vyhovuje vašim potřebám.
 
-Přístup k vytváření vlastních zásad zahrnuje následující kroky:
+Přístup k vytváření vlastních zásad se řídí těmito kroky:
 
 > [!div class="checklist"]
-> - Určete vaše podnikové požadavky
-> - Mapování každý požadavek na vlastnost prostředku Azure
-> - Mapování vlastnosti, která má alias
-> - Určit, které účinek použití
-> - Vytvořit definici zásad
+> - Určení podnikových požadavků
+> - Namapujte všechny požadavky na vlastnost prostředku Azure.
+> - Namapujte vlastnost na alias.
+> - Určení, který efekt použít
+> - Vytvoření definice zásady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="identify-requirements"></a>Identifikace požadavků
 
-Před vytvořením definice zásady, je důležité k porozumění záměru zásad. V tomto kurzu použijeme běžné požadavky zabezpečení organizace jako cíl pro ilustraci potřebnými kroky:
+Před vytvořením definice zásady je důležité pochopit záměr této zásady. V tomto kurzu použijeme běžný požadavek na podnikový zabezpečení jako cíl k ilustraci kroků, které jsou k diskrokování:
 
-- Každý účet úložiště musí být povolené pro protokol HTTPS
-- Každý účet úložiště, musí se zakázat pro protokol HTTP
+- U každého účtu úložiště musí být povolený protokol HTTPS.
+- Každý účet úložiště musí být pro protokol HTTP zakázaný.
 
-Vaše požadavky by se tak jasně identifikovat i "na" a stavy prostředku "nechcete mít".
+Vaše požadavky by měly jasně identifikovat jak "tak jak", tak do stavů prostředků "nebude být".
 
-Když jsme nadefinovali očekávaný stav prostředku, jsme ještě není definované, co chceme, aby provedli s předpisy. Zásady Azure podporuje řadu [účinky](../concepts/effects.md). V tomto kurzu definujeme požadavek jako brání vytváření prostředků, pokud nejsou kompatibilní se obchodní pravidla. Aby splnila tento cíl, použijeme [Odepřít](../concepts/effects.md#deny) vliv. Chceme také mít možnost dočasně pozastavit zásady pro konkrétní úlohy. V důsledku toho použijeme [zakázané](../concepts/effects.md#disabled) projeví a ujistěte se, vliv [parametr](../concepts/definition-structure.md#parameters) v definici zásad.
+I když jsme definovali očekávaný stav tohoto prostředku, ještě jsme nedefinovali, co chceme udělat s nekompatibilními prostředky. Azure Policy podporuje několik [efektů](../concepts/effects.md). Pro účely tohoto kurzu definujeme obchodní požadavek, který znemožní vytváření prostředků, pokud nevyhovují obchodním pravidlům. Pro splnění tohoto cíle použijeme účinek [zamítnout](../concepts/effects.md#deny) . Chceme také možnost pozastavit zásadu pro konkrétní přiřazení. V takovém případě použijeme efekt [disabled](../concepts/effects.md#disabled) a v definici [zásad se uplatní](../concepts/definition-structure.md#parameters) efekt.
 
 ## <a name="determine-resource-properties"></a>Určení vlastností prostředku
 
-Založené na požadavcích, prostředků Azure k auditu službou Azure Policy je účet úložiště. Ale nevíme, vlastnosti, které chcete použít v definici zásad. Služba Azure Policy vyhodnocuje proti JSON reprezentaci prostředku, proto budeme potřebovat k pochopení vlastností dostupných na tento prostředek.
+Na základě obchodních požadavků je prostředek Azure, který se bude auditovat pomocí Azure Policy účet úložiště. Nevím ale vlastnosti, které se mají použít v definici zásady. Azure Policy vyhodnocuje na základě reprezentace prostředku ve formátu JSON, takže musíme pochopit vlastnosti, které jsou k dispozici na tomto prostředku.
 
-Existuje mnoho způsobů, jak určit vlastnosti pro prostředek Azure. Podíváme se na každý pro účely tohoto kurzu:
+Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se na každou z těchto kurzů:
 
-- Šablony Resource Manageru
+- Šablony Správce prostředků
   - Exportovat existující prostředek
-  - Vytvoření prostředí
-  - Šablony pro rychlý start (GitHub)
-  - Referenční dokumentace šablony
+  - Prostředí pro vytváření
+  - Šablony pro rychlý Start (GitHub)
+  - Referenční dokumentace k šablonám
 - Průzkumník prostředků Azure
 
-### <a name="resource-manager-templates"></a>Šablony Resource Manageru
+### <a name="resource-manager-templates"></a>Šablony Správce prostředků
 
-Podívejte se na několika způsoby [šablony Resource Manageru](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) , který obsahuje vlastnosti, které pokud chcete spravovat.
+Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) , která obsahuje vlastnost, kterou chcete spravovat.
 
 #### <a name="existing-resource-in-the-portal"></a>Existující prostředek na portálu
 
-Nejjednodušší způsob, jak najít vlastnosti je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurovaná s nastavením, které chcete vynutit poskytují také hodnota pro porovnání.
-Podívejte se na **exportovat šablonu** stránky (v části **nastavení**) na webu Azure Portal pro tento konkrétní prostředek.
+Nejjednodušší způsob, jak najít vlastnosti, je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurované s nastavením, které chcete vyhodnotit, taky poskytují hodnotu pro porovnání.
+Podívejte se na stránku **Exportovat šablonu** (v části **nastavení**) v Azure Portal pro tento konkrétní prostředek.
 
-![Exportovat stránku šablony na existující prostředek](../media/create-custom-policy-definition/export-template.png)
+![Stránka pro export šablony na stávajícím prostředku](../media/create-custom-policy-definition/export-template.png)
 
-Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
+Když to uděláte, účet úložiště odhalí šablonu podobnou tomuto příkladu:
 
 ```json
 ...
@@ -116,13 +115,13 @@ Tím pro účet úložiště zobrazí šablonu podobný tomuto příkladu:
 ...
 ```
 
-V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavena na **false**. Tato vlastnost pravděpodobně může být vlastnost, která hledáme. Také **typ** prostředku **Microsoft.Storage/storageAccounts**. Typ umožňuje nám zásadu omezit na jedinou prostředky tohoto typu.
+V části **vlastnosti** je hodnota s názvem **supportsHttpsTrafficOnly** nastavená na **hodnotu false**. Tato vlastnost vypadá jako vlastnost, kterou hledáte. Také **typ** prostředku je **Microsoft. Storage/storageAccounts**. Typ nám umožňuje omezit zásady jenom na prostředky tohoto typu.
 
-#### <a name="create-a-resource-in-the-portal"></a>Vytvořit prostředek na portálu
+#### <a name="create-a-resource-in-the-portal"></a>Vytvoření prostředku na portálu
 
-Jiný způsob, jak na portálu je prostředí pro vytváření prostředků. Při vytváření účtu úložiště pomocí portálu, existuje možnost **Upřesnit** karta je **zabezpečení přenosu**. Tato vlastnost má _zakázané_ a _povoleno_ možnosti. Na informační ikonu má další text, který potvrzuje, že tato možnost je pravděpodobně vlastnost, kterou chceme. Ale na portálu nebude Řekněte nám, název vlastnosti na této obrazovce.
+Dalším způsobem prostřednictvím portálu je prostředí pro vytváření prostředků. Při vytváření účtu úložiště prostřednictvím portálu je u možnosti na kartě **Upřesnit** možnost **migrace zabezpečení vyžadována**. Tato vlastnost má _zakázané_ a _povolené_ možnosti. Ikona informace obsahuje další text, který potvrzuje, že je pravděpodobná vlastnost, kterou chceme. Portál ale na této obrazovce nám neřekne název vlastnosti.
 
-Na **revize + vytvořit** karta, odkaz je v dolní části stránky a **stáhnout šablonu pro automatizaci**. Vyberete odkaz otevře šablonu, která se vytvoří prostředek, který jsme nakonfigurovali. V tomto případě vidíme dvou důležitých informací:
+Na kartě **Revize + vytvořit** je odkaz na konci stránky a **stáhne šablonu pro automatizaci**. Když vyberete odkaz, otevře se šablona vytvářející prostředek, který jsme nakonfigurovali. V tomto případě se zobrazí dvě klíčové informace:
 
 ```json
 ...
@@ -137,36 +136,36 @@ Na **revize + vytvořit** karta, odkaz je v dolní části stránky a **stáhnou
 ...
 ```
 
-Tyto informace nám řekne, typ vlastnosti a také potvrdí **supportsHttpsTrafficOnly** je vlastnost hledáme.
+Tyto informace nám sdělí typ vlastnosti a také potvrdí, že **supportsHttpsTrafficOnly** je vlastnost, kterou hledáte.
 
-#### <a name="quickstart-templates-on-github"></a>Šablony QuickStart na Githubu
+#### <a name="quickstart-templates-on-github"></a>Šablony pro rychlý Start na GitHubu
 
-[Šablony rychlý start Azure](https://github.com/Azure/azure-quickstart-templates) na Githubu má stovky šablon Resource Manageru vytvořené pro různé prostředky. Šablony můžou být skvělý způsob, jak najít vlastnost prostředku, který hledáte. Některé vlastnosti může zdá se, co hledáte, ale řídí něco jiného.
+[Šablony pro rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates) na GitHubu obsahují stovky správce prostředků šablon sestavených pro různé prostředky. Tyto šablony můžou být skvělým způsobem, jak najít vlastnost prostředku, kterou hledáte. Některé vlastnosti se můžou zdát, co hledáte, ale ovládají něco jiného.
 
-#### <a name="resource-reference-docs"></a>Prostředek referenční dokumenty
+#### <a name="resource-reference-docs"></a>Dokumentace k odkazům na prostředky
 
-K ověření **supportsHttpsTrafficOnly** je vlastnost opravit, zkontrolujte odkaz šablony Resource Manageru pro [prostředek účtu úložiště](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) na poskytovateli úložiště.
-Objekt vlastností má seznam platných parametrů. Výběr [StorageAccountPropertiesCreateParameters objekt](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) odkazu zobrazuje tabulku přijatelné vlastností. **supportsHttpsTrafficOnly** je k dispozici a popis odpovídá co hledáme plnění obchodních požadavků.
+Pokud chcete ověřit vlastnost **supportsHttpsTrafficOnly** je správná, zkontrolujte odkaz na šablonu správce prostředků [prostředku účtu úložiště](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) ve zprostředkovateli úložiště.
+Objekt Properties obsahuje seznam platných parametrů. Výběr odkazu [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) zobrazí tabulku přijatelných vlastností. k dispozici je **supportsHttpsTrafficOnly** a popis odpovídá tomu, co hledáte pro splnění obchodních požadavků.
 
 ### <a name="azure-resource-explorer"></a>Průzkumník prostředků Azure
 
-Je další způsob, jak prozkoumat prostředky Azure prostřednictvím [Azure Resource Exploreru](https://resources.azure.com) (Preview). Tento nástroj používá kontext předplatného, takže je potřeba se přihlásit k webu pomocí přihlašovacích údajů Azure. Po ověření můžete procházet podle poskytovatelů, předplatná, skupiny prostředků a prostředky.
+Dalším způsobem, jak prozkoumat prostředky Azure, je prostřednictvím [Azure Resource Explorer](https://resources.azure.com) (Preview). Tento nástroj používá kontext předplatného, takže se na webu musíte ověřit pomocí vašich přihlašovacích údajů Azure. Po ověření můžete procházet podle zprostředkovatelů, předplatných, skupin prostředků a prostředků.
 
-Vyhledejte prostředek účtu úložiště a podívejte se na vlastnosti. Vidíme **supportsHttpsTrafficOnly** vlastnost i zde. Výběr **dokumentaci** kartu, vidíme, že vlastnost description odpovídá naše poznatky zjištěné v referenční dokumentaci dříve.
+Vyhledejte prostředek účtu úložiště a podívejte se na vlastnosti. Tady se zobrazuje i vlastnost **supportsHttpsTrafficOnly** . Když vyberete kartu **dokumentace** , uvidíme, že popis vlastnosti se shoduje s tím, co jsme našli v referenční dokumentaci dříve.
 
-## <a name="find-the-property-alias"></a>Najít vlastnost alias
+## <a name="find-the-property-alias"></a>Najít alias vlastnosti
 
-Zjistili jsme vlastnost prostředku, ale potřebujeme k mapování na tuto vlastnost [alias](../concepts/definition-structure.md#aliases).
+Identifikovali jsme vlastnost prostředku, ale musíme tuto vlastnost namapovat na [alias](../concepts/definition-structure.md#aliases).
 
-Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme se na každý pro účely tohoto kurzu:
+Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme se na každou z těchto kurzů:
 
 - Azure CLI
 - Azure PowerShell
-- Azure Resource Graph
+- Graf prostředků Azure
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V rozhraní příkazového řádku Azure `az provider` skupinu příkazů se používá k vyhledání prostředků aliasy. Budeme filtrovat pro **Microsoft.Storage** oboru názvů na základě informací jsme získali dříve o prostředků Azure.
+V Azure CLI se ke hledání aliasů prostředků používá skupina příkazů `az provider`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -175,11 +174,11 @@ V rozhraní příkazového řádku Azure `az provider` skupinu příkazů se pou
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-Ve výsledcích zobrazí alias nepodporuje účty úložiště s názvem **supportsHttpsTrafficOnly**. Tato existenci tento alias znamená, že napíšeme zásadu vynucující naše obchodní požadavky!
+Ve výsledcích se zobrazí alias podporovaný účty úložiště s názvem **supportsHttpsTrafficOnly**. Tento alias znamená, že můžeme napsat zásadu, abychom vynutili naše obchodní požadavky.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-V prostředí Azure PowerShell `Get-AzPolicyAlias` rutina se používá k vyhledání prostředků aliasy. Budeme filtrovat pro **Microsoft.Storage** oboru názvů na základě informací jsme získali dříve o prostředků Azure.
+V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-AzPolicyAlias`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -188,11 +187,11 @@ V prostředí Azure PowerShell `Get-AzPolicyAlias` rutina se používá k vyhled
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Stejně jako Azure CLI ve výsledcích zobrazí alias nepodporuje účty úložiště s názvem **supportsHttpsTrafficOnly**.
+Podobně jako Azure CLI zobrazuje výsledky aliasy podporované účty úložiště s názvem **supportsHttpsTrafficOnly**.
 
-### <a name="azure-resource-graph"></a>Azure Resource Graph
+### <a name="azure-resource-graph"></a>Graf prostředků Azure
 
-[Azure Graph prostředků](../../resource-graph/overview.md) je nová služba ve verzi Preview. Umožňuje jiné metody k vyhledání vlastnosti prostředků Azure. Tady je ukázkový dotaz pro vyhledávání na jeden účet úložiště s grafem prostředků:
+[Azure Resource Graph](../../resource-graph/overview.md) je nová služba ve verzi Preview. Umožňuje další metodu hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -207,7 +206,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Výsledky vypadat podobně jako My, co uvidí v šablonách Resource Manageru a pomocí Průzkumníka prostředků Azure. Však mohou také obsahovat výsledky grafu prostředků Azure [alias](../concepts/definition-structure.md#aliases) podrobnosti podle _projekci_ _aliasy_ pole:
+Výsledky vypadají podobně jako v šablonách Správce prostředků a prostřednictvím Azure Resource Explorer. Výsledky grafu prostředků Azure ale můžou taky zahrnovat podrobnosti o [aliasu](../concepts/definition-structure.md#aliases) tím, že projedná _projekt_ s polem _aliasy_ :
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -305,18 +304,18 @@ Tady je příklad výstupu z účtu úložiště pro aliasy:
 }
 ```
 
-Graf prostředků Azure (Preview) umožňuje použít [Cloud Shell](https://shell.azure.com), díky tomu je rychlý a snadný způsob, jak prozkoumat vlastnosti prostředků.
+Azure Resource Graph (Preview) je možné použít prostřednictvím [Cloud Shell](https://shell.azure.com)a díky tomu je rychlý a snadný způsob, jak prozkoumat vlastnosti vašich prostředků.
 
-## <a name="determine-the-effect-to-use"></a>Ověření účinnosti zásad k použití
+## <a name="determine-the-effect-to-use"></a>Určení efektu, který se má použít
 
-Rozhodování o tom, co dělat s nekompatibilní prostředky je skoro tak důležité jako rozhodování o tom, co se má vyhodnocovat na prvním místě. Každé možné odpovědi neodpovídajících prostředků je volána [efekt](../concepts/effects.md).
-Ovládací prvky vliv, pokud přihlášení zdrojů nekompatibilní blokovaný, má data připojí, nebo má nasazení přidružený k uvedení prostředku zpět do vyhovujícího stavu.
+Rozhodnutí o tom, co dělat s prostředky, které nedodržují předpisy, je skoro stejně důležité jako rozhodování, co vyhodnotit na prvním místě. Každá možná odpověď na prostředek, který nedodržuje předpisy, se nazývá [efekt](../concepts/effects.md).
+Tento efekt řídí, jestli je prostředek, který nedodržuje předpisy, přihlášen, je blokovaný, má připojená data, nebo má přidružené nasazení pro uvedení prostředku zpátky do stavu kompatibility.
 
-V našem příkladu je odepřít účinek, který chceme, aby jako tudy nekompatibilní prostředky vytvořené v našem prostředí Azure. Auditování je první vhodná pro účinku zásad k určení vlivu zásad je před nastavením na odepřít. Jedním ze způsobů, aby se změna vliv jednotlivé přiřazení jednodušší je parametrizovat účinek. Zobrazit [parametry](#parameters) níže podrobnosti o tom.
+V našem příkladu je odepřený efekt, protože nepotřebujeme nekompatibilní prostředky vytvořené v našem prostředí Azure. Audit je vhodný první volbou pro účinek zásad, která určuje, jaký dopad zásad je před tím, než je nastavování zamítnuto. Jedním ze způsobů, jak změnit účinek na přiřazení, je parametrizovat efekt. Podrobnosti o tom, jak najdete v níže uvedených [parametrech](#parameters) .
 
 ## <a name="compose-the-definition"></a>Vytvoření definice
 
-Teď máme vlastnost podrobností a alias pro plánujeme ke správě. V dalším kroku jsme budete vytvořit pravidlo zásad samotný. Pokud ještě nejsou obeznámeni s jazyk zásad, odkazovat [struktura definic zásad](../concepts/definition-structure.md) informace o struktuře definice zásad. Tady je prázdnou šablonu z definic zásad, která bude vypadat jako:
+Teď máme podrobnosti o vlastnosti a alias pro to, co plánujeme spravovat. V dalším kroku vytvoříte samotné pravidlo zásad. Pokud ještě neznáte jazyk zásad, [strukturu definice](../concepts/definition-structure.md) referenčních zásad pro strukturu definice zásad. Tady je prázdná šablona toho, co definice zásad vypadá takto:
 
 ```json
 {
@@ -341,7 +340,7 @@ Teď máme vlastnost podrobností a alias pro plánujeme ke správě. V dalším
 
 ### <a name="metadata"></a>Metadata
 
-První tři součásti jsou metadata zásad. Tyto součásti jsou snadno zadat hodnoty, protože budeme vědět, co vytváříme pravidlo pro. [Režim](../concepts/definition-structure.md#mode) je především o značky a umístění prostředků. Protože jsme se nemusíte omezit na prostředky, které podporují značky vyhodnocení, použijeme _všechny_ hodnota **režimu**.
+První tři komponenty jsou metadata zásad. Tyto komponenty se dají snadno zadat, protože víme, pro které pravidlo vytváříme. [Režim](../concepts/definition-structure.md#mode) je primárně o značkách a umístění prostředků. Vzhledem k tomu, že nepotřebujeme omezit vyhodnocení na prostředky, které podporují značky, použijeme pro **režim**hodnotu _All_ .
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -351,7 +350,7 @@ První tři součásti jsou metadata zásad. Tyto součásti jsou snadno zadat h
 
 ### <a name="parameters"></a>Parametry
 
-Když jsme nepoužili parametr pro změnu hodnocení, chceme použít parametr umožnit změnu **efekt** pro řešení potíží. Budeme definovat **effectType** parametr a omezit na jedinou **Odepřít** a **zakázané**. Tyto dvě možnosti odpovídají naše obchodní požadavky. Blok dokončení parametry vypadá jako v tomto příkladu:
+Přestože jsme nepoužili parametr pro změnu hodnocení, chceme použít parametr a povolit změnu **efektu** pro řešení potíží. Definujeme parametr **effectType** a omezíme ho jenom na **Deny** a **disabled**. Tyto dvě možnosti odpovídají našim obchodním požadavkům. Blok dokončených parametrů vypadá jako v tomto příkladu:
 
 ```json
 "parameters": {
@@ -372,12 +371,12 @@ Když jsme nepoužili parametr pro změnu hodnocení, chceme použít parametr u
 
 ### <a name="policy-rule"></a>Pravidlo zásad
 
-Sestavování [pravidlo zásad](../concepts/definition-structure.md#policy-rule) je posledním krokem při sestavování našich vlastních zásad pro definici. Zjistili jsme dva příkazy pro testování:
+Sestavování [pravidla zásad](../concepts/definition-structure.md#policy-rule) je posledním krokem při sestavování vlastní definice zásad. Identifikovali jsme dva příkazy, které se mají testovat:
 
-- Že účet úložiště **typ** je **Microsoft.Storage/storageAccounts.**
-- Že účet úložiště **supportsHttpsTrafficOnly** není **true**
+- Tento **typ** účtu úložiště je **Microsoft. Storage/storageAccounts**
+- To, že účet úložiště **supportsHttpsTrafficOnly** nemá **hodnotu true**
 
-Protože potřebujeme oba z těchto příkazů na hodnotu true, použijeme **allOf** [logického operátoru](../concepts/definition-structure.md#logical-operators). Budete předáme **effectType** parametr vliv místo provedení statických deklarací. Naše dokončení pravidlo bude vypadat jako v tomto příkladu:
+Protože potřebujeme, aby oba tyto příkazy byly pravdivé, použijeme [logický operátor](../concepts/definition-structure.md#logical-operators) **allOf** . Parametr **effectType** předáte k tomuto efektu namísto provedení statické deklarace. Naše dokončené pravidlo vypadá jako v tomto příkladu:
 
 ```json
 "if": {
@@ -397,9 +396,9 @@ Protože potřebujeme oba z těchto příkazů na hodnotu true, použijeme **all
 }
 ```
 
-### <a name="completed-definition"></a>Dokončené definice
+### <a name="completed-definition"></a>Definice dokončena
 
-S všechny tři části zásady definované tady je naše definice dokončení:
+Tady je naše dokončená definice se všemi třemi částmi definovaných zásad:
 
 ```json
 {
@@ -442,22 +441,22 @@ S všechny tři části zásady definované tady je naše definice dokončení:
 }
 ```
 
-Dokončené definice slouží k vytvoření nové zásady. Portál a jednotlivých sadách SDK (rozhraní příkazového řádku Azure, Azure Powershellu a rozhraní REST API) přijměte definici různými způsoby, proto zkontrolujte příkazy pro každý z nich mohl ověřit správné použití. Pak přiřaďte, pomocí parametrizovaných efekt příslušných prostředků ke správě zabezpečení vašich účtů úložiště.
+K vytvoření nové zásady se dá použít dokončená definice. Portál a každá sada SDK (Azure CLI, Azure PowerShell a REST API) přijímají definici různými způsoby, proto si Projděte příkazy pro každý, abyste ověřili správné využití. Pak ji přiřaďte pomocí parametrizovaného efektu k odpovídajícím prostředkům pro správu zabezpečení účtů úložiště.
 
-## <a name="review"></a>Zkontrolovat
+## <a name="review"></a>Revize
 
 V tomto kurzu jste úspěšně provedli následující úlohy:
 
 > [!div class="checklist"]
-> - Identifikuje vaše obchodní požadavky
-> - Každý požadavek namapován na vlastnost prostředku Azure
-> - Vlastnost namapované na alias
-> - Určuje efekt použití
-> - Složený definici zásad
+> - Identifikujte vaše podnikové požadavky.
+> - Namapovaný každý požadavek na vlastnost prostředku Azure
+> - Namapována vlastnost na alias.
+> - Zjistili efekt, který se má použít
+> - Složená definice zásad
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pak pomocí definice vlastních zásad pro vytvoření a přiřazení zásad:
+V dalším kroku vytvořte a přiřaďte zásadu pomocí vlastní definice zásad:
 
 > [!div class="nextstepaction"]
 > [Vytvoření a přiřazení definice zásady](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)

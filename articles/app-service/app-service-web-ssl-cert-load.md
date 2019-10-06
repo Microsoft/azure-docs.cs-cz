@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066994"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981120"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použijte certifikát SSL v kódu aplikace v Azure App Service
 
@@ -44,7 +44,7 @@ Zkopírujte kryptografický otisk certifikátu a podívejte [se na zpřístupně
 
 Veřejné certifikáty jsou podporovány ve formátu *. cer* . Pokud chcete nahrát veřejný certifikát, <a href="https://portal.azure.com" target="_blank">Azure Portal</a>a přejděte do aplikace.
 
-Klikněte na **Nastavení** > SSL**veřejné certifikáty (. cer)**  > **nahrát veřejný certifikát** z levé navigační části aplikace.
+Klikněte na **Nastavení SSL** > **veřejné certifikáty (. cer)**  > **nahrát veřejný certifikát** z levé navigační části aplikace.
 
 Do pole **název**zadejte název certifikátu. V **souboru certifikátu CER**vyberte svůj soubor CER.
 
@@ -62,7 +62,7 @@ Po importu certifikátu zkopírujte kryptografický otisk certifikátu a podíve
 
 ## <a name="make-the-certificate-accessible"></a>Zpřístupněte certifikát jako přístupný.
 
-Pokud chcete ve svém kódu aplikace použít nahraný nebo importovaný certifikát, zpřístupněte jeho kryptografický otisk pomocí `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Pokud chcete ve svém kódu aplikace použít nahraný nebo importovaný certifikát, zpřístupněte jeho kryptografický otisk pomocí nastavení aplikace `WEBSITE_LOAD_CERTIFICATES` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -71,7 +71,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Pro zpřístupnění všech certifikátů nastavte hodnotu na `*`.
 
 > [!NOTE]
-> Toto nastavení umístí zadané certifikáty do aktuálního úložiště [User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) pro většinu cenových úrovní, ale v **izolované** úrovni (tj. aplikace běží v [App Service Environment](environment/intro.md)) umístí certifikáty do [místních Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) . uchovávat.
+> Toto nastavení umístí zadané certifikáty do aktuálního úložiště [User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) pro většinu cenových úrovní, ale pokud vaše aplikace běží na **izolované** úrovni (tj. aplikace běží v [App Service Environment](environment/intro.md)), možná budete muset zaškrtnout [místní. ](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)Místo toho Machine\My Store.
 >
 
 ![Konfigurovat nastavení aplikace](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
@@ -112,13 +112,13 @@ certStore.Close();
 
 Pokud potřebujete načíst soubor certifikátu z adresáře aplikace, je vhodnější ho nahrát pomocí [FTPS](deploy-ftp.md) namísto [Gitu](deploy-local-git.md), například. Měli byste chránit citlivá data, jako je soukromý certifikát, ze správy zdrojového kódu.
 
-I když soubor načítáte přímo do kódu .NET, knihovna stále ověřuje, zda je aktuální profil uživatele načten. Chcete-li načíst aktuální profil uživatele, nastavte `WEBSITE_LOAD_USER_PROFILE` nastavení aplikace pomocí následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+I když soubor načítáte přímo do kódu .NET, knihovna stále ověřuje, zda je aktuální profil uživatele načten. Pokud chcete načíst aktuální profil uživatele, nastavte v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>nastavení aplikace `WEBSITE_LOAD_USER_PROFILE` pomocí následujícího příkazu.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 ```
 
-Po nastavení tohoto nastavení následující C# příklad načte certifikát s názvem `mycert.pfx` z `certs` adresáře úložiště vaší aplikace.
+Po nastavení tohoto nastavení následující C# příklad načte certifikát s názvem `mycert.pfx` z adresáře `certs` úložiště vaší aplikace.
 
 ```csharp
 using System;

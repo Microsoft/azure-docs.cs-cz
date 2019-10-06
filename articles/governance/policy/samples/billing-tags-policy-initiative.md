@@ -1,20 +1,19 @@
 ---
-title: Ukázkový – iniciativa zásad fakturačních značek
-description: Tato ukázková sada definic zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu.
+title: Ukázka – iniciativa zásad fakturačních značek
+description: Tato ukázková sada definic zásad vyžaduje zadané hodnoty značek pro nákladové středisko a název produktu.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 5b084bd5a1b34dc2ce8ac8abb2a4af03a22262d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f2190b5759c53d645c1d0150004271ba04669c94
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787332"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981402"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Ukázkový – iniciativa zásad fakturačních značek
+# <a name="sample---billing-tags-policy-initiative"></a>Ukázka – iniciativa zásad fakturačních značek
 
 Tato sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.
 
@@ -24,9 +23,9 @@ Tato sada zásad vyžaduje zadání hodnot značek pro nákladové středisko a 
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-Pomocí této šablony můžete nasadit [Powershellu](#deploy-with-powershell).
+Tuto šablonu můžete nasadit pomocí [PowerShellu](#deploy-with-powershell).
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -64,6 +63,6 @@ foreach ($r in $resources) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

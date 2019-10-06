@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3814b5169a687a854cb977eee90fbf6c3fd45afe
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918693"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980982"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
 Následující článek podrobně popisuje, jak se vzorový test služby Azure modrotisky Microsoft Azure Foundation Maps mapuje na referenční doporučení pro CIS Microsoft Azure Foundation. Další informace o doporučeních najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
 
 Následující mapování jsou uvedená v doporučeních **1.1.0 Foundation v rámci testu služby Microsoft Azure CI v** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování doporučení.
-Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost  **\[\] auditovat audit CIS Microsoft Azure Foundation srovnávací testy v 1.1.0 a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit na** integrovanou iniciativu zásad.
+Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview @ no__t-2 audit pro 1.1.0 doporučení modelu ci Microsoft Azure Foundation a nasaďte specifická rozšíření virtuálního počítače pro podporu požadavků** na integrovanou iniciativu zásad pro audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -201,20 +200,20 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která se zarovnává s tímto doporučením CIS.
 
-- \[Verze\]Preview: Pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC).
+- \[Preview @ no__t-1: na Kubernetes služby by měla být použita Access Control na základě rolí (RBAC).
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Ujistěte se, že webová aplikace přesměruje veškerý provoz HTTP na HTTPS v Azure App Service
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která se zarovnává s tímto doporučením CIS.
 
-- Webová aplikace by měla být přístupná jen přes HTTPS
+- Webová aplikace by měla být přístupná jen přes protokol HTTPS
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plán služby CIS Microsoft Azure Foundation, přečtěte si následující článek, kde najdete informace o podrobném plánu nebo návštěvě Azure Policy v Azure Portal k přiřazení iniciativy:
 
 > [!div class="nextstepaction"]
-> [Ci Microsoft Azure Foundation – přehled srovnávacích testů – přehled](./index.md)
+> [Ci Microsoft Azure Foundation – přehled srovnávacích testů](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
 Další články věnované podrobným plánům a postupu jejich využití:

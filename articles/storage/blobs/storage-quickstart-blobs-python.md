@@ -7,20 +7,20 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203964"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981211"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Pythonu
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
 V tomto rychlém startu pomocí Pythonu nahráváte, stahujete a vypíšete objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Objekty BLOB v Azure Storage se liší od sdílených složek, tabulek bez schématu a front zpráv.  Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -50,7 +50,7 @@ V aplikaci zadejte název účtu úložiště a klíč účtu pro vytvoření ob
 
 1. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor *example.py*.
 
-1. `accountname` Hodnoty a `accountkey` nahraďte názvem svého účtu úložiště a klíčem:
+1. Nahraďte hodnoty `accountname` a `accountkey` názvem svého účtu úložiště a klíčem:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -96,8 +96,8 @@ Vzorový program vytvoří testovací soubor ve složce *dokumenty* , nahraje so
 
 1. Než budete pokračovat, přejděte do složky *dokumenty* a vyhledejte dva soubory.
 
-    * *QuickStart_\<Universal-Unique-Identifier\>*
-    * *QuickStart_\<Universal-Unique-Identifier\>_DOWNLOADED*
+    * *QuickStart_ @ no__t-1universally-Unique-identifikátor @ no__t-2*
+    * *QuickStart_ @ no__t-1universally-Unique-identifikátor @ no__t-2_DOWNLOADED*
 
 1. Můžete je otevřít a podívat se, že jsou stejné.
 
@@ -169,7 +169,7 @@ V případě úložiště objektů blob můžete k nahrání použít několik m
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Následující kód vytvoří `generator` `list_blobs` pro metodu. Kód projde seznam objektů BLOB v kontejneru a vytiskne jejich názvy do konzoly.
+Následující kód vytvoří `generator` pro metodu `list_blobs`. Kód projde seznam objektů BLOB v kontejneru a vytiskne jejich názvy do konzoly.
 
 ```python
 # List the blobs in the container.
@@ -182,8 +182,8 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>Stažení objektů blob
 
 
-Stáhněte objekty blob na místní disk pomocí `get_blob_to_path` metody.
-Následující kód stáhne objekt blob, který jste nahráli dříve. Systém připojí *_DOWNLOADED* k názvu objektu blob, takže na místním disku uvidíte oba soubory. "
+Stáhněte objekty blob na místní disk pomocí metody `get_blob_to_path`.
+Následující kód stáhne objekt blob, který jste nahráli dříve. Systém připojí *_DOWNLOADED* k názvu objektu blob, takže na místním disku uvidíte oba soubory.
 
 ```python
 # Download the blob(s).

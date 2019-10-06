@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231921"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981016"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 
@@ -48,7 +47,7 @@ V rámci každého artefaktu **skupiny prostředků** se pro artefakty, které s
 
 Při sestavování velkých podrobných definic podrobného plánu může být potřeba, aby se prostředky vytvořily v určitém pořadí. Nejběžnějším vzorem použití tohoto scénáře je, že definice podrobného plánu obsahuje několik šablon Azure Resource Manager. Modrotisky zpracovává tento model tím, že umožňuje definovat pořadí sekvencování.
 
-Řazení je provedeno definováním `dependsOn` vlastnosti ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn`je pole řetězců názvů artefaktů, které musí být před vytvořením vytvořen konkrétní artefakt.
+Řazení je provedeno definováním vlastnosti `dependsOn` ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn` je pole řetězců názvů artefaktů, které musí před vytvořením vytvořit příslušný artefakt.
 
 > [!NOTE]
 > Při vytváření objektů podrobného plánu získá každý prostředek artefaktu svůj název z názvu souboru, pokud používáte [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact), nebo koncový bod adresy URL, pokud se používá [REST API](/rest/api/blueprints/artifacts/createorupdate).
@@ -56,7 +55,7 @@ Při sestavování velkých podrobných definic podrobného plánu může být p
 
 ### <a name="example---ordered-resource-group"></a>Příklad – seřazená skupina prostředků
 
-Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty `dependsOn`pro, společně se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před seřazenou skupinou prostředků **RG** .
+Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty pro `dependsOn` spolu se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před **seřazenou** skupinou prostředků RG.
 **Standard-RG** se zpracuje podle výchozího pořadí sekvencování.
 
 ```json
@@ -141,11 +140,11 @@ Artefakt šablony na úrovni předplatného v závislosti na skupině prostředk
 
 Během procesu vytváření se k vytvoření grafu závislostí artefaktů modrotisky používá topologické řazení. Tato kontrolu zajišťuje, aby se podporovaly jednotlivé úrovně závislostí mezi skupinami prostředků a artefakty.
 
-Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna. Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` se nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
+Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna. Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o [životním cyklu](lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
 - Principy použití [statických a dynamických parametrů](parameters.md)
 - Použití [zamykání prostředků podrobného plánu](resource-locking.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)

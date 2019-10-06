@@ -1,20 +1,19 @@
 ---
-title: Ukázka - žádná síť partnerské vztahy pro Express Route sítě
-description: Tato ukázková definice zásady zakazuje sítě partnerských vztahů ze přidružovaného k síti v zadané skupině prostředků.
+title: Ukázka-bez síťového partnerského vztahu k síti Express Route
+description: Tato ukázková definice zásad zakáže, aby se partnerský vztah k síti přidružil k síti v zadané skupině prostředků.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d9376a3f241cfd43d8e9a8d4ed3d18de31f997b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21149cb1dce03b358d4fc36e0038ea8c5267b3d1
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60509628"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980450"
 ---
-# <a name="sample---no-network-peering-to-express-route-network"></a>Ukázka - žádná síť partnerské vztahy pro Express Route sítě
+# <a name="sample---no-network-peering-to-express-route-network"></a>Ukázka-bez síťového partnerského vztahu k síti Express Route
 
 Tato zásada zakáže přidružení partnerských vztahů k síti v zadané skupině prostředků. Tuto možnost využijete, pokud chcete zabránit připojení k centrálně spravované síťové infrastruktuře. Zadejte název skupiny prostředků, aby se zabránilo přidružení.
 
@@ -28,9 +27,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-network-peerings-to-er-network%2Fazurepolicy.json)
+[@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-network-peerings-to-er-network%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -49,7 +48,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -67,6 +66,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

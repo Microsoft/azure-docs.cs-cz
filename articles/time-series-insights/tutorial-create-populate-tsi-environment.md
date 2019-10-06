@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841857"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981240"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -196,4 +196,4 @@ V tomto kurzu jste se naučili:
 Teď, když víte, jak vytvořit vlastní prostředí Time Series Insights, se naučíte, jak vytvořit webovou aplikaci, která využívá data z prostředí Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednostránkové webové aplikace Azure Time Series Insights](tutorial-create-tsi-sample-spa.md)
+> [Viz Ukázky vizualizace hostovaných klientských SDK](https://tsiclientsample.azurewebsites.net/)

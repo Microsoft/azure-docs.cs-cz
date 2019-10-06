@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161986"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978113"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -22,7 +21,7 @@ Pokud je u prostředku Azure zjištěno, že není kompatibilní s pravidlem zá
 > - [Podrobnosti o kompatibilitě](#compliance-details)
 > - [Historie změn (Preview)](#change-history)
 
-## <a name="compliance-details"></a>Podrobnosti dodržování předpisů
+## <a name="compliance-details"></a>Podrobnosti o kompatibilitě
 
 Pokud prostředek nedodržuje předpisy, podrobnosti o kompatibilitě tohoto prostředku jsou k dispozici na stránce **dodržování zásad** . Podokno Podrobnosti o dodržování předpisů obsahuje následující informace:
 
@@ -31,15 +30,15 @@ Pokud prostředek nedodržuje předpisy, podrobnosti o kompatibilitě tohoto pro
 - Seznam _důvodů_ neshody prostředků
 
 > [!IMPORTANT]
-> Vzhledem k podrobnostem dodržování předpisů pro prostředek, který nedodržuje _předpisy_ , se zobrazuje aktuální hodnota vlastností na daném prostředku, uživatel musí mít v **typu** prostředku operaci **čtení** . Například pokud je prostředek, _který nedodržuje předpisy_ , **Microsoft. COMPUTE/virtualMachines** , musí mít uživatel operaci **Microsoft. COMPUTE/virtualMachines/Read** . Pokud uživatel nemá potřebnou operaci, zobrazí se chyba přístupu.
+> Vzhledem k podrobnostem dodržování předpisů pro prostředek, který _nedodržuje předpisy_ , se zobrazuje aktuální hodnota vlastností na daném prostředku, uživatel musí mít v **typu** prostředku operaci **čtení** . Například pokud je prostředek, _který nedodržuje předpisy_ , **Microsoft. COMPUTE/virtualMachines** , musí mít uživatel operaci **Microsoft. COMPUTE/virtualMachines/Read** . Pokud uživatel nemá potřebnou operaci, zobrazí se chyba přístupu.
 
 Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu ve **stavu dodržování předpisů** , který nedodržuje _předpisy_.
+1. Na stránce **Přehled** nebo **dodržování předpisů** vyberte zásadu ve **stavu dodržování předpisů** , který _nedodržuje předpisy_.
 
-1. Na kartě **Kompatibilita prostředků** na stránce **dodržování zásad** klikněte pravým tlačítkem myši nebo vyberte tři tečky prostředku ve **stavu dodržování předpisů** , který nedodržuje _předpisy_. Pak vyberte **Zobrazit podrobnosti o kompatibilitě**.
+1. Na kartě **Kompatibilita prostředků** na stránce **dodržování zásad** klikněte pravým tlačítkem myši nebo vyberte tři tečky prostředku ve **stavu dodržování předpisů** , který _nedodržuje předpisy_. Pak vyberte **Zobrazit podrobnosti o kompatibilitě**.
 
    ![Zobrazit podrobnosti kompatibility – možnost](../media/determine-non-compliance/view-compliance-details.png)
 
@@ -85,7 +84,7 @@ Tyto podrobnosti vysvětlují, proč je prostředek aktuálně nekompatibilní, 
 
 V následující matrici je možné podle příslušné [podmínky](../concepts/definition-structure.md#conditions) v definici zásady mapovat tyto _důvody_ :
 
-|Reason | Podmínka |
+|Důvod | Podmínka |
 |-|-|
 |Aktuální hodnota musí obsahovat cílovou hodnotu jako klíč. |ContainsKey – nebo **ne** notContainsKey |
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
@@ -101,8 +100,8 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 |Aktuální hodnota musí rozlišovat velikost písmen, která neodpovídá cílové hodnotě. |matchInsensitively nebo **ne** notMatchInsensitively |
 |Aktuální hodnota nesmí obsahovat cílovou hodnotu jako klíč. |notContainsKey nebo **ne** ContainsKey –|
 |Aktuální hodnota nesmí obsahovat cílovou hodnotu. |notContains nebo **Not** Contains |
-|Aktuální hodnota nesmí být rovna cílové hodnotě. |notEquals nebo nerovná se |
-|Aktuální hodnota nesmí existovat. |neexistuje  |
+|Aktuální hodnota nesmí být rovna cílové hodnotě. |notEquals nebo **nerovná se** |
+|Aktuální hodnota nesmí existovat. |**neexistuje**  |
 |Aktuální hodnota nesmí být v cílové hodnotě. |notIn nebo **ne** v |
 |Aktuální hodnota nesmí být stejná jako cílová hodnota. |notLike nebo **Not** like |
 |Aktuální hodnota nesmí rozlišovat velká a malá písmena pro cílovou hodnotu. |notMatch nebo **neodpovídá** |
@@ -115,7 +114,7 @@ U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ se ve virtuálním p
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 Začněte podle stejných kroků v části výše pro zobrazení podrobností o dodržování zásad.
 
@@ -125,7 +124,7 @@ V zobrazení podokna **podrobností o dodržování předpisů** klikněte na od
 
 Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o dodržování předpisů. Každý řádek v zobrazení představuje hodnocení, které bylo provedeno uvnitř počítače. Ve sloupci **důvod** je uvedena fráze popisující, proč není přiřazování hostů _nekompatibilní_ . Pokud například provádíte audit zásad hesel, sloupec **důvod** by zobrazil text, včetně aktuální hodnoty pro každé nastavení.
 
-![Podívejte se na podrobnosti dodržování zásad.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Zobrazit podrobnosti o kompatibilitě](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -192,7 +191,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Historie změn (Preview)
+## <a name="a-namechange-historychange-history-preview"></a>@no__t – historie 0Change (Preview)
 
 V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Správce prostředků.
 
@@ -206,7 +205,7 @@ V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k d
 
    ![Karta historie změn Azure Policy na stránce dodržování předpisů prostředků](../media/determine-non-compliance/change-history-tab.png)
 
-1. Vyberte jednu z zjištěných změn. _Rozdíly_ ve vizuálním zdroji se zobrazí na stránce **historie změn** .
+1. Vyberte jednu z zjištěných změn. _Rozdíly ve vizuálním_ zdroji se zobrazí na stránce **historie změn** .
 
    ![Změna vizuálního rozdílu ve Azure Policy historii změn na stránce Historie změn](../media/determine-non-compliance/change-history-visual-diff.png)
 

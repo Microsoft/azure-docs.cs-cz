@@ -1,6 +1,6 @@
 ---
-title: Podniková integrace s Azure Logic Apps
-description: Přehled o vytváření podnikových integračních řešení díky automatizaci a orchestraci úloh, pracovních postupů a obchodních procesů, které integrují aplikace, data, služby a systémy napříč podniky a organizacemi. Vytvořte řešení pro scénáře integrace dat, systémové integrace, integrace podnikových aplikací (EAI) a orchestrace.
+title: Integrace dat a automatizace pracovních postupů – Azure Logic Apps
+description: Vytvářejte řešení pro integraci dat a automatizaci úloh, pracovních postupů a procesů napříč podnikem nebo organizací pro scénáře integrace systému, integrace podnikových aplikací (EAI) a orchestrace.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,26 +10,29 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/29/2018
-ms.openlocfilehash: f25ade0e984c98b9cbc8c4efa93f300c3ed93b14
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.date: 06/29/2018
+ms.openlocfilehash: fdcf3d7bc0111530307a4bf30a437ab70c71bf83
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385479"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981749"
 ---
-# <a name="what-is-azure-logic-apps"></a>Co je Azure Logic Apps?
+# <a name="overview---what-is-azure-logic-apps"></a>Přehled – co je Azure Logic Apps?
 
 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) je cloudová služba usnadňující plánování, automatizaci a orchestraci úkolů, obchodních procesů a [pracovních postupů](#logic-app-concepts) , pokud potřebujete integrovat aplikace, data, systémy a služby v rámci podniků nebo organizací. Logic Apps zjednodušuje návrh a vytváření škálovatelných řešení pro [integraci](https://azure.microsoft.com/product-categories/integration/)aplikací, integraci dat, integraci systémů, integraci podnikových aplikací (EAI) a komunikaci B2B (Business-to-Business), ať už v cloudu, místně i v místním prostředí. nebo obojí.
 
 Tady je například pouze několik úloh, které můžete pomocí aplikací logiky automatizovat:
 
 * Objednávky procesů a tras napříč místními systémy a cloudovými službami.
+
 * Odesílání e-mailových oznámení pomocí Office 365 v reakci na události v různých systémech, aplikacích a službách.
-* Přesun nahraných souborů ze serveru SFTP nebo FTP do služby Azure Storage. 
+
+* Přesun nahraných souborů ze serveru SFTP nebo FTP do služby Azure Storage.
+
 * Monitorování výskytu konkrétního tématu ve tweetech, analýza mínění a vytváření upozornění na položky, které vyžadují kontrolu.
 
-Pokud chcete vytvořit podniková podniková řešení pomocí Azure Logic Apps, můžete si vybrat z rostoucí galerie se [stovkami konektorů připravených k použití](../connectors/apis-list.md), které zahrnují služby jako Azure Service Bus, funkce a úložiště. SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, sdílené složky a další. [Konektory](#logic-app-concepts) poskytují [triggery](#logic-app-concepts), [akce](#logic-app-concepts) nebo obojí pro vytváření aplikací logiky, které bezpečně přistupují k datům a zpracovávají je v reálném čase.
+Pokud chcete vytvořit podniková podniková řešení pomocí Azure Logic Apps, můžete si vybrat z rostoucí galerie se [stovkami připravených konektorů](../connectors/apis-list.md), které zahrnují služby jako Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, sdílené složky a další. [Konektory](#logic-app-concepts) poskytují [triggery](#logic-app-concepts), [akce](#logic-app-concepts) nebo obojí pro vytváření aplikací logiky, které bezpečně přistupují k datům a zpracovávají je v reálném čase.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -39,17 +42,17 @@ Každý pracovní postup aplikace logiky se spouští triggerem, který se aktiv
 
 Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky, ve které se spustí akce v pracovním postupu. Tyto akce můžou zahrnovat také konverze dat a ovládací prvky toků, jako jsou podmíněné příkazy, příkazy přepínače, smyčky a větvení. Například tato aplikace logiky se spouští triggerem Dynamics 365 s integrovaným kritériem Při aktualizaci záznamu. Pokud trigger rozpozná událost, která splňuje toto kritérium, aktivuje se a spustí akce pracovního postupu. V tomto případě mezi tyto akce patří transformace XML, aktualizace dat, větvení rozhodování a e-mailová oznámení.
 
-![Návrhář pro Logic Apps – příklad aplikace logiky](./media/logic-apps-overview/overview.png)
+![Návrhář pro Logic Apps – příklad aplikace logiky](./media/logic-apps-overview/azure-logic-apps-overview.png)
 
-Aplikace logiky můžete vytvářet vizuálně pomocí Návrháře pro Logic Apps, který je k dispozici v prohlížeči na webu Azure Portal a v sadě Visual Studio. V případě dalších vlastních aplikací logiky můžete vytvářet nebo upravovat definice aplikací logiky ve formátu JSON (JavaScript Object Notation) při práci v editoru v režimu Zobrazení kódu. Pro vybrané úlohy můžete použít také příkazy Azure PowerShellu a šablony Azure Resource Manageru. Aplikace logiky se nasazují a spouštějí v cloudu Azure. Podrobnější informace najdete v tomto videu: [Používání služeb Azure Podniková integrace ke škálování cloudových aplikací ve velkém měřítku](https://channel9.msdn.com/Events/Connect/2017/T119/)
+Aplikace logiky můžete vytvářet vizuálně pomocí Návrháře pro Logic Apps, který je k dispozici v prohlížeči na webu Azure Portal a v sadě Visual Studio. V případě dalších vlastních aplikací logiky můžete vytvářet nebo upravovat definice aplikací logiky ve formátu JSON (JavaScript Object Notation) při práci v editoru v režimu Zobrazení kódu. Pro vybrané úlohy můžete použít také příkazy Azure PowerShellu a šablony Azure Resource Manageru. Aplikace logiky se nasazují a spouštějí v cloudu Azure. Podrobnější informace najdete v tomto videu: [Použití služeb Azure pro podnikovou integraci k provozu cloudových aplikací ve velkém měřítku](https://channel9.msdn.com/Events/Connect/2017/T119/).
 
 ## <a name="why-use-logic-apps"></a>Proč používat Azure Logic Apps?
 
-S tím, jak se firmy přesouvají směrem k digitalizaci, pomáhají aplikace logiky snadněji a rychleji propojovat starší, moderní i ty nejmodernější systémy díky tomu, že poskytují předem připravená rozhraní API v podobě konektorů spravovaných Microsoftem. Díky tomu se můžete zaměřit na obchodní logiku a funkce vašich aplikací. Nemusíte se starat o vytváření, hostování, škálování, správu, údržbu ani monitorování svých aplikací. Logic Apps se o to postará za vás. Navíc platíte jenom za to, co využijete, podle [cenového modelu](../logic-apps/logic-apps-pricing.md) založeného na spotřebě. 
+S tím, jak se firmy přesouvají směrem k digitalizaci, pomáhají aplikace logiky snadněji a rychleji propojovat starší, moderní i ty nejmodernější systémy díky tomu, že poskytují předem připravená rozhraní API v podobě konektorů spravovaných Microsoftem. Díky tomu se můžete zaměřit na obchodní logiku a funkce vašich aplikací. Nemusíte se starat o vytváření, hostování, škálování, správu, údržbu ani monitorování svých aplikací. Logic Apps se o to postará za vás. Navíc platíte jenom za to, co využijete, podle [cenového modelu](../logic-apps/logic-apps-pricing.md) založeného na spotřebě.
 
 V řadě případů nebudete muset psát žádný kód. Pokud však nějaký kód napsat musíte, pomocí [Azure Functions](../azure-functions/functions-overview.md) můžete vytvářet fragmenty kódu a v aplikacích logiky spouštět tento kód na vyžádání. Navíc pokud vaše aplikace logiky potřebují interagovat s událostmi ze služeb Azure, vlastních aplikací nebo jiných řešení, můžete ve svých aplikacích logiky použít [Azure Event Grid](../event-grid/overview.md) zajišťující monitorování, směrování a publikování událostí.
 
-Logic Apps, Functions a Event Grid jsou plně spravované Microsoft Azure, takže nemusíte mít obavy o vytváření, hostování, škálování, správu, monitorování ani údržbu svých řešení. Díky možnosti vytvářet [aplikace a řešení bez serveru](../logic-apps/logic-apps-serverless-overview.md) se můžete zaměřit pouze na obchodní logiku. Tyto služby se automaticky škálují s ohledem na vaše požadavky, zrychlují integrace a pomáhají vytvářet robustní cloudové aplikace s minimem kódu. Navíc platíte jenom za to, co využijete, podle [cenového modelu](../logic-apps/logic-apps-pricing.md) založeného na spotřebě. 
+Logic Apps, Functions a Event Grid jsou plně spravované Microsoft Azure, takže nemusíte mít obavy o vytváření, hostování, škálování, správu, monitorování ani údržbu svých řešení. Díky možnosti vytvářet [aplikace a řešení bez serveru](../logic-apps/logic-apps-serverless-overview.md) se můžete zaměřit pouze na obchodní logiku. Tyto služby se automaticky škálují s ohledem na vaše požadavky, zrychlují integrace a pomáhají vytvářet robustní cloudové aplikace s minimem kódu. Navíc platíte jenom za to, co využijete, podle [cenového modelu](../logic-apps/logic-apps-pricing.md) založeného na spotřebě.
 
 Pokud chcete zjistit, jak společnosti díky kombinaci Logic Apps s dalšími službami Azure a produkty Microsoftu zlepšily svou flexibilitu a zvýšili zaměření na hlavní obchodní aktivity, přečtěte si tyto [příběhy zákazníků](https://aka.ms/logic-apps-customer-stories).
 
@@ -81,16 +84,19 @@ Začněte v malém se svými stávajícími systémy a službami a rozšiřujte 
   * [Azure API Management](../api-management/api-management-key-concepts.md)
 
 * Zpracování [zpráv XML](../logic-apps/logic-apps-enterprise-integration-xml.md)
+
 * Zpracování [plochých souborů](../logic-apps/logic-apps-enterprise-integration-flatfile.md)
+
 * Výměna zpráv s využitím protokolů [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md), [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md) a [X12](../logic-apps/logic-apps-enterprise-integration-x12.md)
+
 * Ukládání a správa těchto artefaktů B2B a dalších na jednom místě díky [účtům integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md):
 
   * [Partneři](../logic-apps/logic-apps-enterprise-integration-partners.md)
   * [Smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
   * [Mapy transformace XML](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [Schémata ověření XML](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-   
-Pokud například používáte Microsoft BizTalk Server, můžou s ním aplikace logiky komunikovat pomocí [konektoru BizTalk Server](../connectors/apis-list.md#on-premises-connectors). Do aplikací logiky pak můžete zahrnout [konektory účtu integrace](../connectors/apis-list.md#integration-account-connectors), které jsou součástí sady Enterprise Integration Pack, a rozšířit nebo provádět operace jako BizTalk. 
+
+Pokud například používáte Microsoft BizTalk Server, můžou s ním aplikace logiky komunikovat pomocí [konektoru BizTalk Server](../connectors/apis-list.md#on-premises-connectors). Do aplikací logiky pak můžete zahrnout [konektory účtu integrace](../connectors/apis-list.md#integration-account-connectors), které jsou součástí sady Enterprise Integration Pack, a rozšířit nebo provádět operace jako BizTalk.
 
 A naopak, BizTalk Server se může připojit k aplikacím logiky a komunikovat s nimi pomocí [adaptéru Microsoft BizTalk Serveru pro Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287). Zjistěte, jak na svém BizTalk Serveru [nastavit a používat adaptér BizTalk Serveru](https://docs.microsoft.com/biztalk/core/logic-app-adapter).
 
@@ -100,9 +106,9 @@ Vytvářejte aplikace logiky jako šablony Azure Resource Manager, abyste mohli 
 
 ### <a name="built-in-extensibility"></a>Integrovaná rozšiřitelnost
 
-Pokud nenajdete požadovaný konektor nebo potřebujete spouštět vlastní kód, můžete aplikace logiky rozšířit vytvořením a voláním vlastních fragmentů kódu na vyžádání prostřednictvím služby [Azure Functions](../azure-functions/functions-overview.md). Vytvářejte vlastní rozhraní [API](../logic-apps/logic-apps-create-api-app.md) a [vlastní konektory](../logic-apps/custom-connector-overview.md), které můžete volat z aplikací logiky.
+Pokud nenajdete konektor, ve kterém chcete spustit vlastní kód, můžete aplikace logiky zvětšovat vytvořením a voláním vlastních fragmentů kódu na vyžádání prostřednictvím [Azure Functions](../azure-functions/functions-overview.md). Vytvářejte vlastní rozhraní [API](../logic-apps/logic-apps-create-api-app.md) a [vlastní konektory](../logic-apps/custom-connector-overview.md), které můžete volat z aplikací logiky.
 
-### <a name="pay-only-for-what-you-use"></a>Platíte jenom za to, co využijete
+### <a name="pay-only-for-what-you-use"></a>Platíte jenom za to, co používáte
   
 Pokud nemáte aplikace logiky vytvořené dříve s plány služby App Service, Logic Apps používá [ceny a měření](../logic-apps/logic-apps-pricing.md) založené na spotřebě.
 
@@ -116,23 +122,23 @@ Další informace o Logic Apps najdete v těchto úvodních videích:
 
 ## <a name="key-terms"></a>Klíčové pojmy
 
-* **Pracovní postup**: Vizualizace, návrh, sestavování, automatizaci a nasazování obchodních procesů jako série kroků.
+* **Pracovní postup:** Vizualizace, návrh, tvorba, automatizace a nasazování obchodních procesů jako série kroků.
 
-* **Spravované konektory**: Vaše aplikace logiky potřebují přístup k datům, službám a systémům. Můžete použít předem připravené konektory spravované Microsoftem, které jsou navržení pro připojení, přístup a práci s vašimi daty. Viz [Konektory pro Azure Logic Apps](../connectors/apis-list.md)
+* **Spravované konektory:** Aplikace logiky potřebují přístup k datům, službám a systémům. Můžete použít předem připravené konektory spravované Microsoftem, které jsou navržení pro připojení, přístup a práci s vašimi daty. Viz [konektory pro Azure Logic Apps](../connectors/apis-list.md).
 
-* **Aktivační události**: Spousta konektorů spravovaných Microsoftem poskytuje triggery, které se aktivují, když události nebo nová data splňují zadané podmínky. Událostí může být například přijetí e-mailu nebo detekce změn v účtu služby Azure Storage. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps novou instanci aplikace logiky, ve které se spustí pracovní postup.
+* **Triggery:** Řada konektorů spravovaných Microsoftem poskytuje triggery, které se aktivují, když událost nebo nová data splní zadané podmínky. Událostí může být například přijetí e-mailu nebo detekce změn v účtu služby Azure Storage. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps novou instanci aplikace logiky, ve které se spustí pracovní postup.
 
-* **Akce**: Akce jsou všechny kroky, ke kterým dochází po triggeru. Každá akce se obvykle mapuje na operaci definovanou spravovaným konektorem, vlastním rozhraním API nebo vlastním konektorem.
+* **Akce:** Akce jsou všechny kroky, které se stanou po aktivaci triggeru. Každá akce se obvykle mapuje na operaci definovanou spravovaným konektorem, vlastním rozhraním API nebo vlastním konektorem.
 
-* **Enterprise Integration Pack**: V případě pokročilejších scénářů integrace Logic Apps zahrnuje funkce z BizTalk Server. Enterprise Integration Pack poskytuje konektory, které aplikacím logiky pomáhají snadno provádět ověřování, transformaci a další operace.
+* **Enterprise Integration Pack:** Logic Apps zahrnuje možnosti z BizTalk Serveru a nabízí tak pokročilejší scénáře integrace. Enterprise Integration Pack poskytuje konektory, které aplikacím logiky pomáhají snadno provádět ověřování, transformaci a další operace.
 
 ## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Jak se liší Logic Apps od Functions, WebJobs a Flow?
 
 Všechny tyto služby pomáhají spojit a vzájemně propojit různorodé systémy. Každá služba má své výhody, takže nejlepším způsobem, jak rychle vytvořit škálovatelný a plně vybavený systém integrace, je kombinace jejich schopnosti. Další informace najdete v tématu [Výběr mezi službami Flow, Logic Apps, Functions a WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="get-started"></a>Začínáme 
+## <a name="get-started"></a>Začít
 
-Logic Apps je jednou z mnoha služeb hostovaných v Microsoft Azure. Takže než začnete, potřebujete předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
+Logic Apps je jednou z mnoha služeb hostovaných v Microsoft Azure. Takže než začnete, potřebujete předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 Pokud máte předplatné Azure, vyzkoušejte tento [rychlý start k vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md), která prostřednictvím informačního kanálu RSS monitoruje nový obsah na webu a odesílá e-mail, když se objeví nový obsah.
 

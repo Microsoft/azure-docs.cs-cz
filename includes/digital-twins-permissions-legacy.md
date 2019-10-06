@@ -7,22 +7,24 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/16/2019
+ms.date: 10/03/2019
 ms.custom: include file
-ms.openlocfilehash: 690ff402c632bfc28f1a9a218677e9772f5a3200
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 7e0396c032a9f3dc26b82648604624446d6ad191
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949950"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978638"
 ---
-1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v levém podokně a otevřete podokno **vlastnosti** . Zkopírujte **ID adresáře** do dočasného souboru. Tuto hodnotu použijete ke konfiguraci ukázkové aplikace v další části.
+## <a name="azure-active-directory-legacy-registration"></a>Registrace starší verze Azure Active Directory
+
+1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v levém podokně a otevřete podokno **vlastnosti** . Do dočasného souboru zkopírujte **ID adresáře**. Tuto hodnotu použijete ke konfiguraci ukázkové aplikace v další části.
 
     [ID adresáře služby Active Directory @no__t 1Azure](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png)](./media/digital-twins-permissions-legacy/aad-app-reg-tenant.png#lightbox)
 
 1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v levém podokně a otevřete podokno **Registrace aplikací (starší verze)** . Klikněte na tlačítko **Registrace nové aplikace** .
 
-1. Zadejte popisný název pro registraci této aplikace v poli **název** . Vyberte **Typ aplikace** jako **nativní**a **identifikátor URI pro přesměrování** jako `https://microsoft.com`. Vyberte **vytvořit**.
+1. Zadejte popisný název pro registraci této aplikace v poli **název** . Vyberte **Typ aplikace** jako **nativní**a **identifikátor URI pro přesměrování** jako `https://microsoft.com`. Vyberte **Create** (Vytvořit).
 
     [@no__t – podokno 1Create](./media/digital-twins-permissions-legacy/aad-app-reg-create.png)](./media/digital-twins-permissions-legacy/aad-app-reg-create.png#lightbox)
 
@@ -34,15 +36,15 @@ ms.locfileid: "71949950"
 
    a. V levém horním rohu vyberte **Přidat** a otevřete podokno **Přidat přístup k rozhraní API** .
 
-   b. Vyberte **Vybrat rozhraní API** a vyhledejte **digitální vlákna Azure**. Pokud vaše hledání nenajde rozhraní API, místo toho vyhledejte **inteligentní prostory Azure** .
+   b. Vyberte **Vybrat rozhraní API** a vyhledejte **digitální vlákna Azure**. Pokud se vám toto rozhraní API nepodaří najít, vyhledejte místo toho **Azure Smart Spaces**.
 
-   r. Vyberte možnost **digitální vlákna Azure (služba inteligentních prostorů Azure)** a zvolte **Vybrat**.
+   c. Vyberte možnost **digitální vlákna Azure (služba inteligentních prostorů Azure)** a zvolte **Vybrat**.
 
-   trojrozměrné. Zvolte **možnost vybrat oprávnění**. Zaškrtněte políčko delegovaná oprávnění **přístup pro čtení a zápis** a zvolte **Vybrat**.
+   d. Zvolte **možnost vybrat oprávnění**. Zaškrtněte políčko delegovaná oprávnění **přístup pro čtení a zápis** a zvolte **Vybrat**.
 
-   cerebrální. Vyberte **Hotovo** v podokně **Přidat přístup přes rozhraní API** .
+   e. Vyberte **Hotovo** v podokně **Přidat přístup přes rozhraní API** .
 
-   FJ. V podokně **požadovaná oprávnění** vyberte tlačítko **udělit oprávnění** a přijměte potvrzení, které se zobrazí. Pokud oprávnění není pro toto rozhraní API uděleno, obraťte se na správce.
+   f. V podokně **požadovaná oprávnění** vyberte tlačítko **udělit oprávnění** a přijměte potvrzení, které se zobrazí. Pokud oprávnění není pro toto rozhraní API uděleno, obraťte se na správce.
 
       [@no__t – podokno oprávnění 1Required](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png#lightbox)
 

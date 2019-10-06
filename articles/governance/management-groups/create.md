@@ -2,17 +2,16 @@
 title: Vytvoření skupin pro správu pro uspořádání prostředků Azure – zásady správného řízení Azure
 description: Naučte se vytvářet skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShell a Azure CLI.
 author: rthorn17
-manager: rithorn
 ms.service: governance
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 4489086fcab32230b991a8007a8d9922fd0ddd43
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971549"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980799"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 

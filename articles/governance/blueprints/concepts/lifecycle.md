@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 154e66366d4a687e60d7bddd28278414e3a4ccd7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678989"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981032"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure Blueprint
 
@@ -33,31 +32,31 @@ Pokud chcete plně porozumět podrobným plánům a fázím, pokryjeme standardn
 
 Při vytváření podrobného plánu přidejte do něj artefakty, uložte ho do skupiny pro správu nebo předplatného a zadejte jedinečný název a jedinečnou verzi. Podrobný plán je nyní v režimu **konceptu** a nelze jej ještě přiřadit. V režimu **konceptu** se může i nadále aktualizovat a měnit.
 
-Nepublikovaný podrobný plán v režimu konceptu zobrazuje na stránce **definice** podrobného plánu jinou ikonu než ty, kterébyly publikovány. **Nejnovější verze** se zobrazuje jako **koncept** pro tyto dosud publikované plány.
+Nepublikovaný podrobný plán v režimu **konceptu** zobrazuje na stránce **definice** podrobného plánu jinou ikonu než ty, které byly **publikovány**. **Nejnovější verze** se zobrazuje jako **koncept** pro tyto dosud publikované plány.
 
 Vytvořte a upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
 ## <a name="publishing-a-blueprint"></a>Publikování podrobného plánu
 
-Jakmile provedete všechny plánované změny podrobného plánu v režimu konceptu, je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit.
+Jakmile provedete všechny plánované změny podrobného plánu v režimu **konceptu** , je možné je **publikovat** a zpřístupnit pro přiřazení. **Publikovanou** verzi podrobného plánu nelze změnit.
 Po **publikování**se v podrobném plánu zobrazí s jinou ikonou než s **Koncepty** a ve sloupci **nejnovější verze** se zobrazí zadané číslo verze.
 
 Publikovat podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) nebo [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Vytvoření a úprava nové verze podrobného plánu
 
-**Publikovanou** verzi podrobného plánu nelze změnit. Novou verzi podrobného plánu je však možné do stávajícího podrobného plánu přidat a upravit podle potřeby. Změny v existujícím podrobném plánu proveďte úpravou. Když se nové změny uloží, plán nyní obsahuje nepublikované **změny**. Tyto změny představují novou **Konceptovou** verzi podrobného plánu.
+**Publikovanou** verzi podrobného plánu nelze změnit. Novou verzi podrobného plánu je však možné do stávajícího podrobného plánu přidat a upravit podle potřeby. Změny v existujícím podrobném plánu proveďte úpravou. Když se nové změny uloží, plán nyní obsahuje **nepublikované změny**. Tyto změny představují novou **Konceptovou** verzi podrobného plánu.
 
 Upravte podrobný plán pomocí [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>Publikování nové verze podrobného plánu
 
-Každá upravená verze podrobného plánu musí být publikována před tím, než bude možné ji přiřadit. Pokud byly provedené **nepublikované změny** v podrobném plánu, alene publikovány, je na stránce Upravit podrobný plán k dispozici tlačítko **publikovat plán** . Pokud tlačítko není viditelné, podrobný plán již byl **publikován** a neobsahuje žádné nepublikované **změny**.
+Každá upravená verze podrobného plánu musí být **publikována** před tím, než bude možné ji přiřadit. Pokud byly provedené **nepublikované změny** v podrobném plánu, ale ne **publikovány**, je na stránce Upravit podrobný plán k dispozici tlačítko **publikovat plán** . Pokud tlačítko není viditelné, podrobný plán již byl **publikován** a neobsahuje žádné **nepublikované změny**.
 
 > [!NOTE]
 > Jeden podrobný plán může mít několik **publikovaných** verzí, které je možné přiřadit k předplatným.
 
-Pokud chcete publikovat podrobný plán s nepublikovanými **změnami**, použijte stejný postup pro publikování nového podrobného plánu.
+Pokud chcete publikovat podrobný plán s **nepublikovanými změnami**, použijte stejný postup pro publikování nového podrobného plánu.
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Odstranění konkrétní verze podrobného plánu
 
@@ -76,7 +75,7 @@ Každá verze podrobného plánu je jedinečný objekt a lze jej **publikovat**j
 
 ## <a name="deleting-the-blueprint"></a>Odstraňuje se podrobný plán
 
-Základní plán bude také možné odstranit. Odstraněním základního plánu se odstraní také všechny verze podrobného plánu tohoto podrobného plánu, včetně konceptu a **publikovaných** modrotisky. Stejně jako u odstranění verze podrobného plánu neodstraní základní plán obnovení stávající přiřazení žádné z verzí podrobného plánu.
+Základní plán bude také možné odstranit. Odstraněním základního plánu se odstraní také všechny verze podrobného plánu tohoto podrobného plánu, včetně **konceptu** a **publikovaných** modrotisky. Stejně jako u odstranění verze podrobného plánu neodstraní základní plán obnovení stávající přiřazení žádné z verzí podrobného plánu.
 
 > [!NOTE]
 > Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verzi, kterou chcete odebrat.
@@ -110,7 +109,7 @@ Pokud již podrobný plán není potřebný, může být nepřiřazený ze skupi
 > [!NOTE]
 > Všechny prostředky nasazené přiřazením podrobného plánu zůstávají v platnosti, ale již nejsou chráněny plány Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Principy použití [statických a dynamických parametrů](parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)

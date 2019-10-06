@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338198"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978558"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý start: Definování a přiřazení podrobného plánu na portálu
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
 Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat běžné vzory pro vývoj opakovaně použitelných a rychle nasazujíných konfigurací na základě Azure Resource Manager šablon, zásad, zabezpečení a dalších. V tomto kurzu se naučíte používat Azure modrotisky k provádění některých běžných úkolů souvisejících s vytvářením, publikováním a přiřazováním podrobného plánu v rámci vaší organizace. Mezi tyto úlohy patří:
 
@@ -28,7 +27,7 @@ Když se naučíte vytvářet a přiřazovat modrotisky, můžete definovat bě�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-a-blueprint"></a>Vytvořit podrobný plán
+## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu vytvořte nový podrobný plán s názvem **MyBlueprint** , ve kterém nakonfigurujete přiřazení rolí a zásad pro předplatné. Pak přidejte novou skupinu prostředků a vytvořte Správce prostředků šablonu a přiřazení role pro novou skupinu prostředků.
 
@@ -44,7 +43,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 1. V poli **umístění definice** vyberte tři tečky na pravé straně, vyberte [skupinu pro správu](../management-groups/overview.md) nebo předplatné, kam chcete uložit podrobný plán, a zvolte **Vybrat**.
 
-1. Ověřte, zda jsou informace správné. Pole **název** a **umístění definice** podrobného plánu nelze později změnit. Pak vyberte **další: Artefakty v dolní části stránky nebo na kartě artefakty v horní části stránky.**
+1. Ověřte, zda jsou informace správné. Pole **název** a **umístění definice** podrobného plánu nelze později změnit. Pak vyberte **Další: artefakty** ve spodní části stránky nebo na kartě **artefakty** v horní části stránky.
 
 1. Přidejte přiřazení role na úrovni předplatného:
 
@@ -83,7 +82,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Vyberte **skupinu prostředků** pro **Typ artefaktu**.
 
-   1. Zobrazované **názvy artefaktů**, **název skupiny prostředků**a pole **umístění** nechte prázdné, ale ujistěte se, že je zaškrtnuté políčko pro všechny vlastnosti parametrů, aby byly dynamické parametry.
+   1. **Zobrazované názvy artefaktů**, **název skupiny prostředků**a pole **umístění** nechte prázdné, ale ujistěte se, že je zaškrtnuté políčko pro všechny vlastnosti parametrů, aby byly dynamické parametry.
 
    1. Vyberte **Přidat** a přidejte tento artefakt do podrobného plánu.
 
@@ -97,7 +96,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
       Po vložení šablony vyberte kartu **parametry** a Všimněte si, že byly zjištěny parametry šablony **storageAccountType** a **Location** . Každý parametr byl automaticky zjištěn a vyplněn, ale nakonfigurován jako dynamický parametr.
 
       > [!IMPORTANT]
-      > Pokud importujete šablonu, ujistěte se, že je soubor pouze JSON a neobsahuje kód HTML. Když odkazujete na adresu URL na GitHubu, ujistěte se, že jste si vybrali nezpracované soubory JSON, a ne ta, která je zabalená do HTML pro zobrazení na GitHubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
+      > Pokud importujete šablonu, ujistěte se, že je soubor pouze JSON a neobsahuje kód HTML. Když odkazujete na adresu URL na GitHubu, ujistěte se, že jste si vybrali **nezpracované** soubory JSON, a ne ta, která je zabalená do HTML pro zobrazení na GitHubu. Pokud importovaná šablona není čistě JSON, dojde k chybě.
 
       ```json
       {
@@ -154,7 +153,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Šablona Správce prostředků pro artefakt podrobného plánu](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** naplněný **parametr _y_** . Dynamické parametry jsou nastaveny během každého přiřazení podrobného plánu.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má ve sloupci **Parameters** **naplněný parametr _y_** . Dynamické parametry jsou nastaveny během každého přiřazení podrobného plánu.
 
    ![Dokončena definice podrobného plánu](./media/create-blueprint-portal/completed-blueprint.png)
 
@@ -168,9 +167,9 @@ V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis ne
 
 1. V seznamu modrotisky klikněte pravým tlačítkem na ten, který jste vytvořili dříve, a vyberte **Upravit podrobný plán**.
 
-1. V **popisu**podrobného plánu zadejte nějaké informace o podrobném plánu a artefaktech, které ho tvoří. V takovém případě zadejte něco jako: **Tento plán nastaví přiřazení zásad značek a rolí v předplatném, vytvoří zdroj skupiny a nasadí šablonu prostředků a přiřazení role do této skupiny prostředků.**
+1. V **popisu**podrobného plánu zadejte nějaké informace o podrobném plánu a artefaktech, které ho tvoří. V takovém případě zadejte něco podobného: **Tento plán nastaví u předplatného zásadu značky a přiřazení role, vytvoří zdroj skupiny a nasadí šablonu prostředků a přiřazení role do této skupiny prostředků.**
 
-1. Vyberte **další: Artefakty v dolní části stránky nebo na kartě artefakty v horní části stránky.**
+1. Vyberte **Další: artefakty** ve spodní části stránky nebo na kartě **artefakty** v horní části stránky.
 
 1. Přidejte přiřazení role pod skupinu prostředků:
 
@@ -186,7 +185,7 @@ V části [vytvořit podrobný plán](#create-a-blueprint)jste nezadali popis ne
 
    ![Přiřazení druhé role pro artefakt podrobného plánu](./media/create-blueprint-portal/add-role-assignment-2.png)
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že nově přidané přiřazení role zobrazuje naplněný **1 z 1 parametrů**. To znamená, že se jedná o statický parametr.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že nově přidané přiřazení role zobrazuje **naplněný 1 z 1 parametrů**. To znamená, že se jedná o statický parametr.
 
    ![Druhá definice pro dokončený podrobný plán](./media/create-blueprint-portal/completed-blueprint-2.png)
 
@@ -247,7 +246,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. V části **spravovaná identita**ponechte výchozí hodnotu **přiřazenou systému**.
 
-1. Pro přiřazení role na úrovni předplatného  **[skupina uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikaci nebo skupinu.
+1. Pro přiřazení role na úrovni předplatného **[skupiny uživatelů nebo název aplikace]: Přispěvatel**, vyhledejte a vyberte uživatele, aplikace nebo skupinu.
 
 1. U přiřazení zásady na úrovni předplatného nastavte **název značky** na **CostCenter** a **hodnotu značky** na **ContosoIT**.
 
@@ -278,7 +277,7 @@ Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
 1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
+## <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
 
 Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předplatného. Podrobný plán mohl být nahrazen novějším plánem s aktualizovanými vzorci, zásadami a návrhy. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Pokud chcete odebrat přiřazení podrobného plánu, postupujte následovně:
 
@@ -288,7 +287,7 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 
 1. Přečtěte si potvrzovací zprávu a pak vyberte **OK**.
 
-## <a name="delete-a-blueprint"></a>Smazání podrobného plánu
+## <a name="delete-a-blueprint"></a>Odstranění podrobného plánu
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 

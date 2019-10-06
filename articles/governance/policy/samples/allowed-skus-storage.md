@@ -1,20 +1,19 @@
 ---
-title: Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
-description: Tuto ukázkovou definici zásad vyžaduje, že účty úložiště a virtuální počítače používat schválené SKU.
+title: Ukázka – povoluje se skladové položky pro účty úložiště a virtuální počítače.
+description: Tato ukázková definice zásad vyžaduje, aby účty úložiště a virtuální počítače používaly schválené SKU.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333219"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980608"
 ---
-# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Ukázka – povoluje se skladové položky pro účty úložiště a virtuální počítače.
 
 Tato zásada vyžaduje, aby účty úložišť a virtuální počítače používaly schválené skladové položky. K ověření schválených skladových položek slouží integrované zásady. Pole schválených skladových položek virtuálních počítačů a pole schválených skladových položek účtů úložišť zadáváte vy.
 
@@ -28,9 +27,9 @@ K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-por
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
-[![Nasazení ukázkové zásady do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
-## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -52,7 +51,7 @@ Remove-AzPolicyAssignment -Name <assignmentName>
 Remove-AzPolicySetDefinitions -Name "skus-for-multiple-types"
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -71,6 +70,6 @@ az policy assignment delete --name <assignmentName>
 az policy set-definition delete --name "skus-for-multiple-types"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).
+- Další ukázky najdete v [ukázkách zásad Azure](index.md).

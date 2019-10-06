@@ -1,22 +1,21 @@
 ---
-title: Ukázkový – povolená umístění
-description: Tuto ukázkovou definici zásad vyžaduje, aby všechny prostředky se nasadí do schválených umístění.
+title: Ukázka – povolená umístění
+description: Tato definice ukázkové zásady vyžaduje, aby všechny prostředky byly nasazeny do schválených umístění.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2823cee863941926fffe332295328d6ecfb54001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c4a23b355a4d7841c42d03042399635a55bac03
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546365"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980641"
 ---
-# <a name="sample---allowed-region-locations"></a>Ukázkový – povolená umístění oblasti
+# <a name="sample---allowed-region-locations"></a>Ukázka – povolená umístění oblastí
 
-Tato zásada umožňuje omezit umístění, které může vaše organizace zadat při nasazování prostředků. Slouží k vynucení požadavků na dodržování geografických předpisů. Nezahrnuje skupiny prostředků, Microsoft.AzureActiveDirectory/b2cDirectories a prostředky, které používají "globální" oblasti. Zadáte pole povolených umístění.
+Tato zásada vám umožní omezit umístění, která může vaše organizace zadat při nasazování prostředků. Použijte k vymáhání vašich požadavků na geografické dodržování předpisů. Vyloučí skupiny prostředků, Microsoft. Azureactivedirectory selhala/b2cDirectories a prostředky, které používají oblast Global. Určíte pole povolených umístění.
 
 K nasazení této ukázkové zásady můžete použít:
 
@@ -52,14 +51,14 @@ Kód JSON definující parametry zásady, který se používá Azure CLI a Azure
 
 ## <a name="parameters"></a>Parametry
 
-|Název |Type |Pole |Popis |
+|Name (Název) |Typ |Pole |Popis |
 |---|---|---|---|
-|listOfAllowedLocations |Pole |umístění |Seznam povolených umístění|
+|listOfAllowedLocations |Pole |polohy |Seznam povolených umístění|
 
 Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
 PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
 
-V tomto příkladu parametru pouze _eastus2_ nebo _westus_ umístění bude možné.
+V tomto příkladu parametru se povolí jenom umístění _eastus2_ nebo _westus_ .
 
 ```json
 {
@@ -72,10 +71,10 @@ V tomto příkladu parametru pouze _eastus2_ nebo _westus_ umístění bude mož
 }
 ```
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
-[![Nasazení ukázkové zásady Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![nasazení ukázkové zásady pro Azure Government](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[@no__t – 1Deploy vzor zásady do azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Deploy vzor zásady do Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -125,7 +124,7 @@ Ve skriptech nasazení a odebrání se používají následující příkazy. Ka
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -163,11 +162,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 | [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Odebere stávající přiřazení Azure Policy. |
 | [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Odebere stávající definici Azure Policy. |
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Při práci s rozhraním REST API Resource Manageru můžete použít několik nástrojů, jako je [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell.
 
-### <a name="deploy-with-rest-api"></a>Nasazení pomocí rozhraní REST API
+### <a name="deploy-with-rest-api"></a>Nasazení pomocí REST API
 
 - Vytvořte definici zásady (v oboru předplatného). Jako text požadavku použijte JSON s [definicí zásady](#policy-definition).
 
@@ -218,12 +217,12 @@ Při práci s rozhraním REST API Resource Manageru můžete použít několik n
 
 | Služba | Skupina | Operace | Poznámky |
 |---|---|---|---|
-| Správa prostředků | Definice zásad | [Vytvoření](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří v předplatném novou definici Azure Policy. Ve zkratce: [Vytvořit ve skupině pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Správa prostředků | Definice zásad | [Vytvoření](/rest/api/resources/policydefinitions/createorupdate) | Vytvoří v předplatném novou definici Azure Policy. Alternativa: [Vytvoření skupiny pro správu](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Správa prostředků | Přiřazení zásad | [Vytvoření](/rest/api/resources/policyassignments/create) | Vytvoří nové přiřazení Azure Policy. V tomto příkladu zadáme definici, příkaz ale může převzít také iniciativu. |
 | Správa prostředků | Přiřazení zásad | [Odstranění](/rest/api/resources/policyassignments/delete) | Odebere stávající přiřazení Azure Policy. |
-| Správa prostředků | Definice zásad | [Odstranění](/rest/api/resources/policydefinitions/delete) | Odebere stávající definici Azure Policy. Ve zkratce: [Odstranit ve skupině pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Správa prostředků | Definice zásad | [Odstranění](/rest/api/resources/policydefinitions/delete) | Odebere stávající definici Azure Policy. Alternativa: [Odstranění skupiny pro správu](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Prohlédněte si další [ukázky pro Azure Policy](index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
