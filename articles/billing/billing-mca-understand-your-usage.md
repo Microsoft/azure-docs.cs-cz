@@ -35,7 +35,7 @@ Pokud jste byli zákazníkem se smlouvou Enterprise, zjistíte, že se výrazy v
 | Soubor CSV s informacemi o využití Azure pro smlouvu Enterprise | Soubor CSV s informacemi o využití Azure a poplatcích pro smlouvu se zákazníkem Microsoftu |
 | --- | --- |
 | Datum | date |
-| ***Month| date |
+| Month| date |
 | Day | date |
 | Year | date |
 | Produkt | product |

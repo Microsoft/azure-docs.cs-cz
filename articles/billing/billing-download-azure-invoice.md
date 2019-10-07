@@ -93,7 +93,7 @@ Můžete se přihlásit k zasílání a nakonfigurovat další příjemce, kteř
 
     ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
-2. Klikněte na *****Přihlásit** a přijměte podmínky.
+2. Klikněte na **Přihlásit** a přijměte podmínky.
 
     ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
 
@@ -121,7 +121,7 @@ Pokud máte smlouvu se zákazníkem Microsoftu, můžete se přihlásit k zasíl
 
     ![Snímek obrazovky ukazující vlastnosti zasílání faktur e-mailem](./media/billing-download-azure-invoice/billingprofile-email.png)
 
-1. Vyberte *****Přihlásit**.
+1. Vyberte **Přihlásit**.
 1. Klikněte na **Aktualizovat**.
 
 ### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Odhlášení ze zasílání faktur pro smlouvu se zákazníkem Microsoftu e-mailem
