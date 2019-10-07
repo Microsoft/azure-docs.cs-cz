@@ -241,6 +241,8 @@
           items:
             - name: Řešení potíží se zřizováním uživatelů
               href: application-provisioning-config-problem.md
+            - name: Stav karantény
+              href: application-provisioning-quarantine-status.md
             - name: Protokoly zřizování
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Synchronizace atributu pro mapování – aplikace v galerii
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: Proxy aplikací pro místní aplikace
       items:
+        - name: Nejčastější dotazy k proxy aplikací
+          href: application-proxy-faq.md
         - name: Historie verzí Proxy aplikací
           href: application-proxy-release-version-history.md
 - name: Zdroje a prostředky

@@ -6,52 +6,73 @@
       href: resource-group-overview.md
     - name: Přehled šablon
       href: template-deployment-overview.md
-- name: Šablony Rychlý start
-  expanded: true
-  items:
-    - name: Vytváření šablon – portál
-      href: resource-manager-quickstart-create-templates-use-the-portal.md
-    - name: Vytváření šablon – VS Code
-      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - name: Vytváření šablon – Visual Studio
-      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
-    - name: Vytváření šablon – IntelliJ IDEA
-      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Kurzy
   items:
-    - name: Využití referenčních informací k šablonám
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: Vytvoření několika instancí
-      displayName: 'iteration,copy'
-      href: resource-manager-tutorial-create-multiple-instances.md
-    - name: Nastavení pořadí nasazování prostředků
-      displayName: 'dependent resources, dependency'
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - name: Použití podmínek
-      href: resource-manager-tutorial-use-conditions.md
-    - name: Integrace trezoru klíčů
-      displayName: secrets
-      href: resource-manager-tutorial-use-key-vault.md
-    - name: Vytvoření propojených šablon
-      href: resource-manager-tutorial-create-linked-templates.md
-    - name: Nasazení rozšíření virtuálních počítačů
-      displayName: virtual machine extensions
-      href: resource-manager-tutorial-deploy-vm-extensions.md
-    - name: Nasazení rozšíření SQL
-      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-    - name: Zabezpečené artefakty
-      href: resource-manager-tutorial-secure-artifacts.md
-    - name: Průběžná integrace s využitím Azure Pipelines
-      displayName: DevOps
-      href: resource-manager-tutorial-use-azure-pipelines.md
-    - name: Použití postupů bezpečného nasazení
-      displayName: adm
-      href: deployment-manager-tutorial.md
-    - name: Použití kontroly stavu v Deployment Manageru
-      displayName: adm
-      href: deployment-manager-tutorial-health-check.md
-    - name: Řešení potíže s nasazováním šablon
-      href: resource-manager-tutorial-troubleshoot.md
+    - name: Začátečník
+      items:
+        - name: 1. Vytvoření první šablony
+          href: template-tutorial-create-first-template.md
+        - name: 2. Přidání prostředku
+          href: template-tutorial-add-resource.md
+        - name: 3. Přidání parametrů
+          href: template-tutorial-add-parameters.md
+        - name: 4. Přidání funkcí šablon
+          href: template-tutorial-add-functions.md
+        - name: 5. Přidání proměnných
+          href: template-tutorial-add-variables.md
+        - name: 6. Přidání výstupu
+          href: template-tutorial-add-outputs.md
+        - name: 7. Použití vyexportované šablony
+          href: template-tutorial-export-template.md
+        - name: 8. Použití šablony pro rychlý start
+          href: template-tutorial-quickstart-template.md
+        - name: 9. Přidání značek
+          href: template-tutorial-add-tags.md
+        - name: 10. Použití souboru parametrů
+          href: template-tutorial-use-parameter-file.md
+    - name: Upřesňující
+      items:
+        - name: Vytváření šablon – portál
+          href: resource-manager-quickstart-create-templates-use-the-portal.md
+        - name: Vytváření šablon – VS Code
+          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+        - name: Vytváření šablon – Visual Studio
+          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+        - name: Vytváření šablon – IntelliJ IDEA
+          href: resource-manager-quickstart-create-templates-use-intellij.md
+        - name: Využití referenčních informací k šablonám
+          href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+        - name: Vytvoření několika instancí
+          displayName: 'iteration,copy'
+          href: resource-manager-tutorial-create-multiple-instances.md
+        - name: Nastavení pořadí nasazování prostředků
+          displayName: 'dependent resources, dependency'
+          href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+        - name: Použití podmínek
+          href: resource-manager-tutorial-use-conditions.md
+        - name: Integrace trezoru klíčů
+          displayName: secrets
+          href: resource-manager-tutorial-use-key-vault.md
+        - name: Vytvoření propojených šablon
+          href: resource-manager-tutorial-create-linked-templates.md
+        - name: Nasazení rozšíření virtuálních počítačů
+          displayName: virtual machine extensions
+          href: resource-manager-tutorial-deploy-vm-extensions.md
+        - name: Nasazení rozšíření SQL
+          href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Zabezpečené artefakty
+          href: resource-manager-tutorial-secure-artifacts.md
+        - name: Průběžná integrace s využitím Azure Pipelines
+          displayName: DevOps
+          href: resource-manager-tutorial-use-azure-pipelines.md
+        - name: Použití postupů bezpečného nasazení
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Použití kontroly stavu v Deployment Manageru
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: Řešení potíže s nasazováním šablon
+          href: resource-manager-tutorial-troubleshoot.md
 - name: Ukázky
   items:
     - name: Šablony Resource Manageru
@@ -76,8 +97,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager a klasické nasazení
       href: resource-manager-deployment-model.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: azure-resource-manager-security-controls.md
+    - name: Běžné atributy zabezpečení Azure
+      href: azure-resource-manager-security-attributes.md
 - name: Postup
   items:
     - name: Vytváření šablon
@@ -221,8 +242,6 @@
           href: resource-manager-common-deployment-errors.md
         - name: AccountNameInvalid
           href: resource-manager-storage-account-name-errors.md
-        - name: DeploymentQuotaExceeded
-          href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: resource-manager-invalid-template-errors.md
         - name: Potíže s linuxovým nasazením

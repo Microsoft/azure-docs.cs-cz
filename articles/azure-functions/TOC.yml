@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Události a zasílání zpráv
       items:
+        - name: Spolehlivé zpracování událostí.
+          href: functions-reliable-event-processing.md
         - name: Návrh pro stejný vstup
           href: functions-idempotent.md
     - name: Triggery a vazby

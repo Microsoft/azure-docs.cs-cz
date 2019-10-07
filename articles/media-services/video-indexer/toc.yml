@@ -9,6 +9,8 @@
   items:
     - name: Začínáme
       href: video-indexer-get-started.md
+    - name: Pozvání uživatelů
+      href: invite-users.md
 - name: Kurzy
   items:
     - name: Použití rozhraní API Video Indexeru

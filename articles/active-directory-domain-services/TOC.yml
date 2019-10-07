@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Nasazení aplikací do Azure AD DS
+    - name: Nasazení aplikací
       items:
         - name: Nasazení proxy aplikace služby Azure AD
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Běžné chyby
           href: troubleshoot.md
-        - name: Chyb neshod tenantů
+        - name: Problémy s připojením k doméně
+          href: troubleshoot-domain-join.md
+        - name: Uzamčení účtů
+          href: troubleshoot-account-lockout.md
+        - name: Potíže s přihlášením
+          href: troubleshoot-sign-in.md
+        - name: Řešení chyb neshod tenantů
           href: mismatched-tenant-error.md
         - name: Pozastavené domény
           href: suspension.md
-        - name: Protokol Secure LDAP
+        - name: Problémy s protokolem Secure LDAP
           href: tshoot-ldaps.md
         - name: Známé problémy
           items:

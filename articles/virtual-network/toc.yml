@@ -230,6 +230,8 @@
           items:
             - name: Podsítě
               href: virtual-network-manage-subnet.md
+            - name: Delegování podsítě
+              href: manage-subnet-delegation.md
             - name: Partnerské vztahy
               href: virtual-network-manage-peering.md
             - name: Ochrana před útoky DDoS

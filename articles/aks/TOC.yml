@@ -191,6 +191,8 @@
       items:
         - name: Vytvoření instančního objektu
           href: kubernetes-service-principal.md
+        - name: Použití spravovaných identit (Preview)
+          href: use-managed-identity.md
         - name: Omezení přístupu ke konfiguračnímu souboru clusteru
           href: control-kubeconfig-access.md
         - name: Zabezpečení provozu podů s využitím zásad sítě

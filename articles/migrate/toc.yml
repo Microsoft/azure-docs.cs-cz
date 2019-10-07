@@ -77,20 +77,22 @@
     - name: Vytvoření posouzení
       href: how-to-create-assessment.md
     - name: Posouzení databáze SQL Serveru
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Přizpůsobení posouzení
       href: how-to-modify-assessment.md
     - name: Přidání nástrojů pro migraci
       href: how-to-migrate.md
-    - name: Vyhodnocení a migrace ve velkém měřítku
-      items:
-        - name: Přístup k velkému počtu virtuálních počítačů VMware
-          href: scale-vmware-assessment.md
-        - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
-          href: scale-hyper-v-assessment.md
-        - name: Automatizace migrace velkého počtu virtuálních počítačů
-          href: how-to-migrate-at-scale.md
-    - name: Příklady migrace – série Contoso
+    - name: Příprava počítačů na migraci
+      href: prepare-for-migration.md
+- name: Vyhodnocení a migrace ve velkém měřítku
+  items:
+    - name: Přístup k velkému počtu virtuálních počítačů VMware
+      href: scale-vmware-assessment.md
+    - name: Přístup k velkému počtu virtuálních počítačů Hyper-V
+      href: scale-hyper-v-assessment.md
+    - name: Automatizace migrace velkého počtu virtuálních počítačů
+      href: how-to-migrate-at-scale.md
+    - name: 'Příklady migrace, série Contoso'
       href: contoso-migration-overview.md
 - name: Řešení potíží
   items:

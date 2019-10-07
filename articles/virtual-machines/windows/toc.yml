@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: Kvóty virtuálních procesorů
           href: quotas.md
+        - name: Rezervované instance
+          items:
+            - name: Předplacení pro virtuální počítače
+              href: prepay-reserved-vm-instances.md
+            - name: Co jsou rezervace Azure?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibilita velikosti instance virtuálního počítače
+              href: reserved-vm-instance-size-flexibility.md
     - name: Vyhrazení hostitelé
       href: dedicated-hosts.md
     - name: Údržba a aktualizace
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Vytvoření upozornění protokolu
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Správa nákladů
-      items:
-        - name: Předplacení virtuálních počítačů – rezervace Azure
-          href: prepay-reserved-vm-instances.md
-        - name: Co jsou rezervace Azure?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibilita velikosti instance virtuálního počítače
-          href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
         - name: Sdílené image
@@ -422,8 +422,6 @@
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
           href: proximity-placement-groups.md
         - name: Vertikální škálování
-          href: vertical-scaling-automation.md
-        - name: Vytvoření virtuálního počítače v zóně dostupnosti
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

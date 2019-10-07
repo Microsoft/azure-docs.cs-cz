@@ -36,22 +36,30 @@
       items:
         - name: Obvyklé scénáře
           href: entitlement-management-scenarios.md
-        - name: Vytvoření nového přístupového balíčku
-          href: entitlement-management-access-package-create.md
-        - name: Úprava přístupového balíčku
-          href: entitlement-management-access-package-edit.md
-        - name: Vytvoření katalogu
-          href: entitlement-management-catalog-create.md
-        - name: Vyžádání přístup
-          href: entitlement-management-request-access.md
-        - name: Schvalování žádostí
-          href: entitlement-management-request-approve.md
-        - name: Delegování úloh
-          href: entitlement-management-delegate.md
-        - name: Zobrazení sestav a protokolů
-          href: entitlement-management-reports.md
-        - name: Řešení potíží
-          href: entitlement-management-troubleshoot.md
+        - name: Správci a manažeři oddělení
+          items:
+            - name: Delegování úloh
+              href: entitlement-management-delegate.md
+            - name: Vytvoření katalogu prostředků
+              href: entitlement-management-catalog-create.md
+            - name: Zobrazení sestav a protokolů
+              href: entitlement-management-reports.md
+            - name: Řešení potíží
+              href: entitlement-management-troubleshoot.md
+        - name: Projektoví manažeři
+          items:
+            - name: Vytvoření nového přístupového balíčku
+              href: entitlement-management-access-package-create.md
+            - name: Úprava přístupového balíčku
+              href: entitlement-management-access-package-edit.md
+        - name: Schvalovatelé
+          items:
+            - name: Schvalování žádostí
+              href: entitlement-management-request-approve.md
+        - name: Žadatelé
+          items:
+            - name: Vyžádání přístup
+              href: entitlement-management-request-access.md
     - name: Kontroly přístupu
       items:
         - name: Skupiny a aplikace

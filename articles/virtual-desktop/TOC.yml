@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: Konfigurace GPU pro Windows Virtual Desktop
       href: configure-vm-gpu.md
-    - name: Automatické škálování hostitelů relace
+    - name: Dynamické škálování hostitelů relace
       href: set-up-scaling-script.md
     - name: Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: 'Přehled řešení potíží, zpětná vazba a podpora'
       href: troubleshoot-set-up-overview.md
-    - name: Identifikace problémů pomocí diagnostické funkce
+    - name: Identifikace a diagnostika problémů
       href: diagnostics-role-service.md
     - name: Vytvoření tenanta a fondu hostitelů
       href: troubleshoot-set-up-issues.md
