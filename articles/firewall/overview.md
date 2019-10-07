@@ -1,30 +1,30 @@
 ---
-title: Co je brána Azure Firewall?
-description: Přečtěte si více o vlastnostech brány Azure Firewall.
+title: Co je Azure Firewall?
+description: Přečtěte si o funkcích Azure Firewall.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/4/2019
+ms.date: 10/08/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241179"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001328"
 ---
-# <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
+# <a name="what-is-azure-firewall"></a>Co je Azure Firewall?
 
-Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu.
+Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu.
 
 ![Přehled brány firewall](media/overview/firewall-threat.png)
 
-Můžete centrálně vytvářet, vynucovat a protokolovat zásady připojení k aplikacím a sítím napříč různými předplatnými a virtuálními sítěmi. Brána Azure Firewall používá statickou veřejnou IP adresu pro prostředky virtuální sítě a díky tomu umožňuje venkovním bránám firewall identifikovat provoz pocházející z vaší virtuální sítě.  Služba je plně integrovaná se službou Azure Monitor zajišťující protokolování a analýzy.
+Můžete centrálně vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi. Azure Firewall používá ke zjištění provozu z vaší virtuální sítě statickou veřejnou IP adresu pro prostředky virtuální sítě, což umožňuje mimo brány firewall.  Služba je plně integrovaná s Azure Monitor pro protokolování a analýzu.
 
-Brána Azure Firewall nabízí následující funkce:
+Azure Firewall nabízí následující funkce:
 
 ## <a name="built-in-high-availability"></a>Integrovaná vysoká dostupnost
 
@@ -45,43 +45,39 @@ Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují
 
 Další informace o Zóny dostupnosti najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md)
 
-## <a name="unrestricted-cloud-scalability"></a>Neomezená cloudová škálovatelnost
+## <a name="unrestricted-cloud-scalability"></a>Neomezená škálovatelnost cloudu
 
-Bránu Azure Firewall můžete vertikálně škálovat tak, jak to vyžadují změny v síťovém provozu, takže nemusíte platit za dimenzování podle špiček v datovém toku.
+Azure Firewall se může škálovat až do té míry, co potřebujete pro změnu toků síťových přenosů, takže nemusíte pro svůj špičkový provoz potřebovat rozpočet.
 
-## <a name="application-fqdn-filtering-rules"></a>Pravidla filtrování plně kvalifikovaných názvů domén aplikací
+## <a name="application-fqdn-filtering-rules"></a>Pravidla filtrování plně kvalifikovaného názvu domény aplikace
 
 Můžete omezit odchozí provoz HTTP/S nebo Azure SQL provoz (Preview) na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu SSL.
 
 ## <a name="network-traffic-filtering-rules"></a>Pravidla filtrování síťového provozu
 
-Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
+Můžete centrálně *vytvořit pravidla* *filtrování sítě pomocí* zdrojové a cílové IP adresy, portu a protokolu. Azure Firewall je plně stavová, takže může rozlišovat legitimní pakety pro různé typy připojení. Pravidla se vysazují a protokolují napříč několika předplatnými a virtuálními sítěmi.
 
-## <a name="fqdn-tags"></a>Značky plně kvalifikovaného názvu domény
+## <a name="fqdn-tags"></a>FQDN – značky
 
-Značky plně kvalifikovaných názvů domén usnadňují povolení přenosů z dobře známé služby Azure prostřednictvím brány firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
+Plně kvalifikovaný název domény usnadňuje povolení známého síťového provozu služby Azure přes bránu firewall. Řekněme například, že chcete v bráně firewall umožňovat web Windows Update síťový provoz. Vytvoříte pravidlo aplikace a zahrnete značku web Windows Update. Síťový provoz z web Windows Update teď může procházet bránou firewall.
 
 ## <a name="service-tags"></a>Značky služeb
 
-Značka služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou zahrnuty v rámci značky. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje.
+Značka služby představuje skupinu předpon IP adres, které vám pomůžou minimalizovat složitost vytváření pravidel zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou zahrnuty v rámci značky. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby na změny adres.
 
 ## <a name="threat-intelligence"></a>Analýza hrozeb
 
-Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které bude upozorňovat na provoz směřující z nebo do známých škodlivých IP adres nebo domén a odepírat takový provoz. Tyto IP adresy a domény se přebírají z informačního kanálu analýzy hrozeb Microsoftu.
+Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
 
-## <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
+## <a name="outbound-snat-support"></a>Podpora odchozích SNAT
 
-Veškeré IP adresy pro odchozí provoz z virtuálních sítí se překládají na veřejnou IP adresu brány Azure Firewall na základě zdroje (SNAT). Můžete identifikovat a povolit provoz pocházející z vaší virtuální sítě do vzdálených internetových cílů. Azure Firewall nesnat, pokud je cílová IP adresa privátního rozsahu IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall na jednu z privátních IP adres firewallu v AzureFirewallSubnet.
+Všechny IP adresy odchozího provozu virtuální sítě se přeloží do Azure Firewall veřejné IP adresy (překlad zdrojové sítě). Můžete identifikovat a dovolit provoz pocházející z vaší virtuální sítě do vzdálených internetových míst. Azure Firewall nesnat, pokud je cílová IP adresa privátního rozsahu IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall na jednu z privátních IP adres firewallu v AzureFirewallSubnet.
 
-## <a name="inbound-dnat-support"></a>Podpora DNAT u příchozích přenosů
+## <a name="inbound-dnat-support"></a>Podpora příchozích DNAT
 
-Příchozí síťový provoz na veřejnou IP adresu vaší brány firewall se překládá (překlad cílových adres) a filtruje na privátní IP adresy ve vašich virtuálních sítích.
+Příchozí síťový provoz do veřejné IP adresy brány firewall se přeloží (překlad cílové síťové adresy) a filtruje na privátní IP adresy ve virtuálních sítích.
 
 ## <a name="multiple-public-ip-addresses"></a>Několik veřejných IP adres
-
-> [!IMPORTANT]
-> Azure Firewall s více veřejnými IP adresami jsou k dispozici prostřednictvím Azure Portal, Azure PowerShell, Azure CLI, REST a šablon.
-
 
 Pomocí brány firewall můžete přidružit několik veřejných IP adres (až 100).
 
@@ -102,26 +98,26 @@ Další informace najdete v tématu [Průvodce dodržováním předpisů Microso
 
 ## <a name="known-issues"></a>Známé problémy
 
-Brána Azure Firewall má následující známé problémy:
+Azure Firewall má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Popis  |Zmírnění  |
 |---------|---------|---------|
-Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla síťového filtrování pro jiné protokoly než TCP/UDP nefungují s překladem SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
-|Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a rozhraní příkazového řádku nepodporují ICMP jako platný protokol v pravidlech sítě.|Protokol ICMP je stále možné používat prostřednictvím portálu a REST API. Pracujeme na přidání protokolu ICMP v PowerShellu a rozhraní příkazového řádku brzy.|
-|Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikací s značkami plně kvalifikovaného názvu domény vyžadují port: definice protokolu.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo volitelné při použití značek FQDN.|
+Pravidla filtrování sítě pro protokoly jiných než TCP/UDP (například ICMP) nefungují pro přenosy internetového připojení.|Pravidla filtrování sítě pro protokoly jiné než TCP/UDP nefungují s SNAT na veřejnou IP adresu. Mezi podsítěmi a virtuální sítě jsou podporovány protokoly jiného typu než TCP/UDP.|Azure Firewall používá Standard Load Balancer, [což v současnosti nepodporuje SNAT pro protokoly IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Zkoumáme možnosti podpory tohoto scénáře v budoucí verzi.|
+|Chybí podpora prostředí PowerShell a rozhraní příkazového řádku pro protokol ICMP.|Azure PowerShell a CLI v síťových pravidlech nepodporují protokol ICMP jako platný protokol.|Protokol ICMP je stále možné používat prostřednictvím portálu a REST API. Pracujeme na přidání protokolu ICMP v PowerShellu a rozhraní příkazového řádku brzy.|
+|Značky plně kvalifikovaného názvu domény vyžadují protokol: port, který se má nastavit.|Pravidla aplikací s značkami plně kvalifikovaného názvu domény vyžadují port: definice protokolu.|**Protokol HTTPS** můžete použít jako port: hodnota protokolu. Pracujeme na tom, aby toto pole bylo volitelné při použití značek FQDN.|
 |Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného se nepodporuje.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného se nepodporuje.|Podpora této funkce je naše mapa cest. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
 |Rozsah portů v pravidlech sítě a aplikace|Porty jsou omezené na 64 000, protože pro sondy pro správu a stav jsou vyhrazené vysoké porty. |Pracujeme na zmírnit toto omezení.|
 |Výstrahy analýzy hrozeb se můžou maskovat.|Pravidla sítě s cílem 80/443 pro filtry odchozího filtrování upozorňující výstrahy, když jsou nakonfigurovaná jenom na režim výstrahy.|Vytvořte filtrování odchozího připojení pro 80/443 pomocí pravidel aplikací. Nebo změňte režim analýzy hrozeb na **Alert a Deny**.|
 |Azure Firewall používá Azure DNS jenom pro překlad názvů.|Azure Firewall řeší plně kvalifikované názvy domény pouze pomocí Azure DNS. Vlastní server DNS není podporovaný. V ostatních podsítích není nijak ovlivněn překlad DNS.|Pracujeme na zmírnit toto omezení.|
 |Azure Firewall SNAT/DNAT nefunguje pro cíle privátních IP adres|Azure Firewall podpora SNAT/DNAT je omezená na internetovou komunikaci a příchozí přenos dat. SNAT/DNAT aktuálně nefunguje pro cíle privátních IP adres. Například paprskový na paprskový.|Toto je aktuální omezení.|
-|První konfiguraci veřejné IP adresy nejde odebrat.|Každá Azure Firewall veřejná IP adresa je přiřazena ke *konfiguraci protokolu IP*.  Při nasazení brány firewall se přiřadí první konfigurace IP adresy a obvykle obsahuje odkaz na podsíť brány firewall (Pokud není explicitně nakonfigurovaný přes nasazení šablony). Tuto konfiguraci protokolu IP nemůžete odstranit, protože by to vedlo ke zrušení přidělení brány firewall. Pokud má brána firewall k dispozici alespoň jednu jinou veřejnou IP adresu, můžete i nadále změnit nebo odebrat veřejnou IP adresu přidruženou k této konfiguraci protokolu IP.|Jedná se o účel.|
-|Zóny dostupnosti se dají konfigurovat jenom během nasazování.|Zóny dostupnosti se dají konfigurovat jenom během nasazování. Po nasazení brány firewall nemůžete Zóny dostupnosti nakonfigurovat.|Jedná se o účel.|
+|První konfiguraci veřejné IP adresy nejde odebrat.|Každá Azure Firewall veřejná IP adresa je přiřazena ke *konfiguraci protokolu IP*.  Při nasazení brány firewall se přiřadí první konfigurace IP adresy a obvykle obsahuje odkaz na podsíť brány firewall (Pokud není explicitně nakonfigurovaný přes nasazení šablony). Tuto konfiguraci protokolu IP nemůžete odstranit, protože by to vedlo ke zrušení přidělení brány firewall. Pokud má brána firewall k dispozici alespoň jednu jinou veřejnou IP adresu, můžete i nadále změnit nebo odebrat veřejnou IP adresu přidruženou k této konfiguraci protokolu IP.|To je záměrné.|
+|Zóny dostupnosti se dají konfigurovat jenom během nasazování.|Zóny dostupnosti se dají konfigurovat jenom během nasazování. Po nasazení brány firewall nemůžete Zóny dostupnosti nakonfigurovat.|To je záměrné.|
 |SNAT při příchozích připojeních|Kromě DNAT jsou připojení přes veřejnou IP adresu (příchozí) brány firewall před jejich vstupem na jednu z privátních IP adres brány firewall. Tento požadavek dnes (také pro aktivní/aktivní síťová virtuální zařízení) zajistíte tak, aby se zajistilo symetrické směrování.|Pokud chcete zachovat původní zdroj pro HTTP/S, zvažte použití hlaviček [xff](https://en.wikipedia.org/wiki/X-Forwarded-For) . Například před bránou firewall použijte službu, jako je například [přední vrátka Azure](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) . WAF můžete také přidat jako součást služby Azure front-dveří a řetězit k bráně firewall.
 |Podpora filtrování plně kvalifikovaného názvu domény SQL pouze v režimu proxy (port 1433)|Pro Azure SQL Database, Azure SQL Data Warehouse a Azure SQL Managed instance:<br><br>V průběhu verze Preview se filtrování plně kvalifikovaného názvu domény SQL podporuje jenom v režimu proxy serveru (port 1433).<br><br>Pro Azure SQL IaaS:<br><br>Pokud používáte nestandardní porty, můžete tyto porty zadat v pravidlech aplikací.|V případě SQL v režimu přesměrování, který je ve výchozím nastavení při připojování z Azure, můžete místo toho použít filtr přístupu pomocí značky služby SQL jako součást Azure Firewallch síťových pravidel.
 |Odchozí provoz na portu TCP 25 není povolený.| Odchozí připojení SMTP, která používají port TCP 25, jsou blokovaná. Port 25 se primárně používá pro neověřené doručování e-mailů. Toto je výchozí chování platformy pro virtuální počítače. Další informace najdete v tématu řešení potíží s [odchozím připojením SMTP v Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Na rozdíl od virtuálních počítačů ale tuto funkci v tuto chvíli nemůžete povolit na Azure Firewall.|Použijte doporučený postup k odeslání e-mailu, jak je uvedeno v článku věnovaném odstraňování potíží SMTP. Případně vylučte virtuální počítač, který potřebuje odchozí přístup SMTP z výchozí trasy k bráně firewall, a místo toho nakonfigurujte odchozí přístup přímo na Internet.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Nasazení a konfigurace Azure Firewall pomocí Azure Portal](tutorial-firewall-deploy-portal.md)
-- [Nasazení brány Azure Firewall pomocí šablony](deploy-template.md)
-- [Vytvoření testovacího prostředí brány Azure Firewall](scripts/sample-create-firewall-test.md)
+- [Kurz: nasazení a konfigurace Azure Firewall pomocí Azure Portal](tutorial-firewall-deploy-portal.md)
+- [Nasazení Azure Firewall pomocí šablony](deploy-template.md)
+- [Vytvoření testovacího prostředí Azure Firewall](scripts/sample-create-firewall-test.md)

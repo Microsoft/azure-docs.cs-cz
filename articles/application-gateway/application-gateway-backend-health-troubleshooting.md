@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 8f90cc3b41eab1847b0d4483b92a282d46af765b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309310"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001666"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -36,7 +36,7 @@ Stav načtený některou z těchto metod může být kterýkoli z následující
 
 Pokud je stav back-endu serveru pro server v pořádku, znamená to, že Application Gateway přepošle žádosti na tento server. Pokud ale stav back-endu pro všechny servery v back-end fondu není v pořádku nebo není známý, může dojít k problémům při pokusu o přístup k aplikacím. Tento článek popisuje příznaky, příčinu a řešení jednotlivých zobrazených chyb.
 
-<a name="backend-health-status-unhealthy"></a>Stav back-endu: Není v pořádku
+<a name="backend-health-status-unhealthy"></a>Stav back-endu: špatný stav
 -------------------------------
 
 Pokud stav back-endu není v pořádku, zobrazení portálu bude vypadat jako na následujícím snímku obrazovky:
@@ -81,15 +81,15 @@ Až obdržíte stav back-end serveru pro všechny servery ve fondu back-end, po�
 Zpráva zobrazená ve sloupci **Podrobnosti** poskytuje podrobnější přehled o problému a na základě těchto informací můžete začít s řešením tohoto problému.
 
 > [!NOTE]
-> Výchozí požadavek testu se odešle ve \<formátu protokol\>://127.0.0.1:\<port\>/. Například http://127.0.0.1:80 pro test paměti http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
+> Výchozí žádost sondy se pošle ve formátu \<protocol @ no__t-1://127.0.0.1: \<port @ no__t-3/. Například http://127.0.0.1:80 pro test http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
 
 <a name="error-messages"></a>Chybové zprávy
 ------------------------
 #### <a name="backend-server-timeout"></a>Časový limit back-endu serveru
 
-**Zpráva** Doba, kterou back-end má reagovat na test\'stavu služby Application Gateway s, je větší než prahová hodnota časového limitu v nastavení sondy.
+**Zpráva:** Doba, kterou back-end zabere na reakci na odezvu služby Application Gateway @ no__t-1, je nad prahovou hodnotou časového limitu v nastavení sondy vyšší než mezní hodnota.
 
-**Způsobit** Po Application Gateway odešle back-end serveru požadavek na test HTTP (S), čeká na odpověď serveru back-end po nakonfigurované období. Pokud back-end server nereaguje v rámci nakonfigurovaného období (hodnota časového limitu), označí se jako špatný, dokud znovu nezačne reagovat v nakonfigurovaném časovém limitu.
+**Příčina:** Po Application Gateway odešle back-end serveru požadavek na test HTTP (S), čeká na odpověď serveru back-end po nakonfigurované období. Pokud back-end server nereaguje v rámci nakonfigurovaného období (hodnota časového limitu), označí se jako špatný, dokud znovu nezačne reagovat v nakonfigurovaném časovém limitu.
 
 **Řešení:** Ověřte, proč back-end Server nebo aplikace nereaguje v nakonfigurovaném časovém limitu, a také ověřte závislosti aplikací. Například ověřte, zda má databáze nějaké problémy, které mohou aktivovat zpoždění v reakci. Pokud víte o chování aplikace a chcete odpovědět jenom po hodnotě časového limitu, zvyšte hodnotu časového limitu z nastavení vlastního testu paměti. Pokud chcete změnit hodnotu časového limitu, musíte mít vlastní test. Informace o tom, jak nakonfigurovat vlastní test paměti, [najdete na stránce s dokumentací](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
 
@@ -105,11 +105,11 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 #### <a name="dns-resolution-error"></a>Chyba rozlišení DNS
 
-**Zpráva** Application Gateway nemohl pro tento back-end vytvořit test paměti. K tomu obvykle dochází v případě, že plně kvalifikovaný název domény back-endu nebyl zadán správně. 
+**Zpráva:** Application Gateway nemohl pro tento back-end vytvořit test paměti. K tomu obvykle dochází v případě, že plně kvalifikovaný název domény back-endu nebyl zadán správně. 
 
-**Způsobit** Pokud je back-end fond typu IP adresa nebo plně kvalifikovaný název domény nebo App Service, Application Gateway se přeloží na IP adresu plně kvalifikovaného názvu domény zadaného pomocí DNS (Domain Name System) (vlastní nebo výchozí Azure) a pokusí se připojit k serveru na portu TCP uvedeném v nastavení HTTP. Pokud se ale zobrazí tato zpráva, je navržena tak, že Application Gateway nedokázala úspěšně přeložit IP adresu zadaného plně kvalifikovaného názvu domény.
+**Příčina:** Pokud je back-end fond typu IP adresa nebo plně kvalifikovaný název domény nebo App Service, Application Gateway se přeloží na IP adresu plně kvalifikovaného názvu domény zadaného pomocí DNS (Domain Name System) (vlastní nebo výchozí Azure) a pokusí se připojit k serveru na portu TCP uvedeném v nastavení HTTP. Pokud se ale zobrazí tato zpráva, je navržena tak, že Application Gateway nedokázala úspěšně přeložit IP adresu zadaného plně kvalifikovaného názvu domény.
 
-**Řešení:**
+**Rozhodnutí**
 
 1.  Ověřte, že plně kvalifikovaný název domény zadaný ve fondu back-end je správný a že se jedná o veřejnou doménu, a zkuste ho vyřešit z místního počítače.
 
@@ -123,15 +123,15 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 #### <a name="tcp-connect-error"></a>Chyba připojení TCP
 
-**Zpráva** Application Gateway se nepovedlo připojit k back-endu.
+**Zpráva:** Application Gateway se nepovedlo připojit k back-endu.
 Zkontrolujte prosím, že back-end reaguje na port použitý pro test paměti.
 Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a portu tohoto back-endu.
 
-**Způsobit** Po fázi překladu DNS se Application Gateway pokusí připojit k back-end serveru na portu TCP, který je nakonfigurovaný v nastavení HTTP. Pokud Application Gateway nemůže na zadaném portu vytvořit relaci TCP, sonda je označena jako poškozená s touto zprávou.
+**Příčina:** Po fázi překladu DNS se Application Gateway pokusí připojit k back-end serveru na portu TCP, který je nakonfigurovaný v nastavení HTTP. Pokud Application Gateway nemůže na zadaném portu vytvořit relaci TCP, sonda je označena jako poškozená s touto zprávou.
 
 **Řešení:** Pokud se zobrazí tato chyba, postupujte následovně:
 
-1.  Ověřte, jestli se můžete připojit k back-end serveru na portu uvedeném v nastavení HTTP pomocí prohlížeče nebo PowerShellu. Například spusťte následující příkaz:`Test-NetConnection -ComputerName
+1.  Ověřte, jestli se můžete připojit k back-end serveru na portu uvedeném v nastavení HTTP pomocí prohlížeče nebo PowerShellu. Například spusťte následující příkaz: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Pokud uvedený port není požadovaným portem, zadejte správné číslo portu pro Application Gateway připojení k back-endu serveru.
@@ -146,42 +146,42 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
             Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
     ```
 
-    c.  Ověřte nastavení trasy definované uživatelem (UDR) Application Gateway a podsíť back-end serveru pro všechny anomálie směrování. Ujistěte se, že UDR nesměruje provoz mimo podsíť back-endu. Můžete třeba vyhledat trasy k síťovým virtuálním zařízením nebo výchozí trasy inzerované do Application Gateway podsítě prostřednictvím Azure ExpressRoute a/nebo VPN.
+    r.  Ověřte nastavení trasy definované uživatelem (UDR) Application Gateway a podsíť back-end serveru pro všechny anomálie směrování. Ujistěte se, že UDR nesměruje provoz mimo podsíť back-endu. Můžete třeba vyhledat trasy k síťovým virtuálním zařízením nebo výchozí trasy inzerované do Application Gateway podsítě prostřednictvím Azure ExpressRoute a/nebo VPN.
 
-    d.  K ověření efektivních tras a pravidel pro síťový adaptér můžete použít následující příkazy PowerShellu:
+    trojrozměrné.  K ověření efektivních tras a pravidel pro síťový adaptér můžete použít následující příkazy PowerShellu:
     ```azurepowershell
             Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "nic1" -ResourceGroupName "testrg"
             Get-AzEffectiveRouteTable -NetworkInterfaceName "nic1" -ResourceGroupName "testrg"
     ```
 1.  Pokud nenajdete žádné problémy s NSG nebo UDR, Projděte si back-end Server pro problémy související s aplikacemi, které brání klientům v navázání relace TCP na portech nakonfigurovaných. Můžete kontrolovat několik věcí:
 
-    a.  Otevřete příkazový řádek (Win + R-\> cmd), zadejte `netstat`a vyberte Enter.
+    a.  Otevřete příkazový řádek (Win + R-\> cmd), zadejte `netstat` a vyberte Enter.
 
     b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
     ```
-    c.  Pokud nenaslouchá na konfigurovaném portu, ověřte nastavení svého webového serveru. Například: vazby webu ve službě IIS, server Block v NGINX a Virtual Host v Apache.
+    r.  Pokud nenaslouchá na konfigurovaném portu, ověřte nastavení svého webového serveru. Například: vazby webu ve službě IIS, server Block v NGINX a Virtual Host v Apache.
 
-    d.  Zkontrolujte nastavení brány firewall pro operační systém a ujistěte se, že je příchozí provoz na port povolen.
+    trojrozměrné.  Zkontrolujte nastavení brány firewall pro operační systém a ujistěte se, že je příchozí provoz na port povolen.
 
 #### <a name="http-status-code-mismatch"></a>Neshoda stavového kódu HTTP
 
-**Zpráva** Stavový kód odpovědi HTTP\'back-end se neshoduje s nastavením testu paměti. Očekávalo se: {HTTPStatusCode0} přijatých: {HTTPStatusCode1}.
+**Zpráva:** Stavový kód pro back-end @ no__t-1 odpovědi HTTP se neshodoval s nastavením testu paměti. Očekávalo se: {HTTPStatusCode0} přijatých: {HTTPStatusCode1}.
 
-**Způsobit** Po navázání připojení TCP a provedení metody handshake SSL (Pokud je povolený protokol SSL) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, \<výchozí sonda bude protokol\>://127.0.0.1:\<port\>/a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399 jako v pořádku. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
+**Příčina:** Po navázání připojení TCP a provedení metody handshake SSL (Pokud je povolený protokol SSL) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, výchozí sonda bude \<protocol @ no__t-1://127.0.0.1: \<port @ no__t-3/a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
 
 **Řešení:** V závislosti na kódu odpovědi back-end serveru můžete provést následující kroky. Tady jsou uvedené některé běžné stavové kódy:
 
-| **Chyba** | **Akce** |
+| **Chyba** | **Činností** |
 | --- | --- |
-| Neshoda stavového kódu testu: Přijato 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže v tomto okamžiku předat přihlašovací údaje pro ověření. Buď povolte \"protokol HTTP\" 401 ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
-| Neshoda stavového kódu testu: Přijato 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. | |
-| Neshoda stavového kódu testu: Přijato 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. | |
-| Neshoda stavového kódu testu: Přijato 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. | |
-| Neshoda stavového kódu testu: Přijato 500 | Došlo k vnitřní chybě serveru. Ověřte stav serveru back-end a zda jsou služby spuštěny. | |
-| Neshoda stavového kódu testu: Přijato 503 | Služba není k dispozici. Ověřte stav serveru back-end a zda jsou služby spuštěny. | |
+| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže v tomto okamžiku předat přihlašovací údaje pro ověření. Buď povolte \"HTTP 401 @ no__t-1 v kódu stavu sondy, nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
+| Neshoda stavového kódu testu: přijata 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. | |
+| Neshoda stavového kódu testu: přijata 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. | |
+| Neshoda stavového kódu testu: přijata 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. | |
+| Neshoda stavového kódu testu: přijata 500 | Došlo k vnitřní chybě serveru. Ověřte stav serveru back-end a zda jsou služby spuštěny. | |
+| Neshoda stavového kódu testu: přijata 503 | Služba není k dispozici. Ověřte stav serveru back-end a zda jsou služby spuštěny. | |
 
 Pokud si myslíte, že odpověď je legitimní a chcete, aby Application Gateway přijímala další stavové kódy jako v pořádku, můžete vytvořit vlastní test. Tento přístup je užitečný v situacích, kdy back-end web potřebuje ověřování. Vzhledem k tomu, že požadavky sondy neobsahují žádné přihlašovací údaje uživatele, selžou, že back-end server vrátí stavový kód HTTP 401.
 
@@ -189,11 +189,11 @@ Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](
 
 #### <a name="http-response-body-mismatch"></a>Neshoda textu odpovědi HTTP
 
-**Zpráva** Tělo odpovědi HTTP back\'-end s neodpovídá nastavení testu paměti. Přijatý text odpovědi neobsahuje {String}.
+**Zpráva:** Tělo back-endu @ no__t-1 odpovědi HTTP se neshoduje s nastavením testu paměti. Přijatý text odpovědi neobsahuje {String}.
 
-**Způsobit** Když vytvoříte vlastní test, budete mít možnost označit back-end Server jako zdravý v závislosti na řetězci z těla odpovědi. Můžete například nakonfigurovat Application Gateway pro přijetí "neautorizovaného" jako řetězce, který se má shodovat. Pokud odpověď serveru back-end pro požadavek sondy obsahuje **neoprávněný**řetězec, bude označena jako v pořádku. V opačném případě bude tato zpráva označena jako poškozená.
+**Příčina:** Když vytvoříte vlastní test, budete mít možnost označit back-end Server jako zdravý v závislosti na řetězci z těla odpovědi. Můžete například nakonfigurovat Application Gateway pro přijetí "neautorizovaného" jako řetězce, který se má shodovat. Pokud odpověď serveru back-end pro požadavek sondy obsahuje **neoprávněný**řetězec, bude označena jako v pořádku. V opačném případě bude tato zpráva označena jako poškozená.
 
-**Řešení:** Pokud chcete tento problém vyřešit, postupujte následovně:
+**Řešení:** Chcete-li tento problém vyřešit, postupujte podle následujících kroků:
 
 1.  Přihlaste se k serveru back-end místně nebo z klientského počítače v cestě testu a ověřte tělo odpovědi.
 
@@ -205,9 +205,9 @@ Přečtěte si další informace o [Application Gateway shodě](https://docs.mic
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Neplatná CA certifikátu back-end serveru
 
-**Zpráva** Certifikát serveru používaný back-end není podepsán známou certifikační autoritou (CA). Seznam povolených back-endu na Application Gateway nahrajte tak, že nahrajete kořenový certifikát certifikátu serveru používaného back-endu.
+**Zpráva:** Certifikát serveru používaný back-end není podepsán známou certifikační autoritou (CA). Seznam povolených back-endu na Application Gateway nahrajte tak, že nahrajete kořenový certifikát certifikátu serveru používaného back-endu.
 
-**Způsobit** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
+**Příčina:** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
 Aby byl certifikát SSL důvěryhodný, musí být certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například při použití certifikátu podepsaného svým držitelem), musí uživatelé odeslat certifikát vystavitele do Application Gateway.
 
 **Řešení:** Pomocí těchto kroků exportujte důvěryhodný kořenový certifikát a nahrajte ho do Application Gateway. (Tyto kroky jsou pro klienty Windows.)
@@ -218,7 +218,7 @@ Aby byl certifikát SSL důvěryhodný, musí být certifikát serveru back-end 
 
 1.  Zadejte `certmgr.msc` a vyberte Enter. Správce certifikátů můžete také vyhledat v nabídce **Start** .
 
-1.  Vyhledejte certifikát, obvykle v `\Certificates - Current User\\Personal\\Certificates\`a otevřete ho.
+1.  Vyhledejte certifikát, obvykle v `\Certificates - Current User\\Personal\\Certificates\` a otevřete ho.
 
 1.  Vyberte kořenový certifikát a pak vyberte **Zobrazit certifikát**.
 
@@ -238,9 +238,9 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 
 #### <a name="trusted-root-certificate-mismatch"></a>Neshoda důvěryhodného kořenového certifikátu
 
-**Zpráva** Kořenový certifikát serveru, který používá back-end, se neshoduje s důvěryhodným kořenovým certifikátem přidaným do aplikační brány. Ujistěte se, že jste přidali správný kořenový certifikát pro přidání do seznamu povolených back-endu.
+**Zpráva:** Kořenový certifikát serveru, který používá back-end, se neshoduje s důvěryhodným kořenovým certifikátem přidaným do aplikační brány. Ujistěte se, že jste přidali správný kořenový certifikát pro přidání do seznamu povolených back-endu.
 
-**Způsobit** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
+**Příčina:** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
 Aby byl certifikát SSL důvěryhodný, musí být certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například byl použit certifikát podepsaný svým držitelem), musí uživatelé odeslat certifikát vystavitele do Application Gateway.
 
 Certifikát, který byl nahrán do Application Gateway nastavení HTTP, se musí shodovat s kořenovým certifikátem certifikátu back-end serveru.
@@ -259,26 +259,28 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
 Pokud výstup nezobrazuje úplný řetěz vráceného certifikátu, exportujte certifikát znovu s úplným řetězcem, včetně kořenového certifikátu. Nakonfigurujte tento certifikát na back-end serveru. 
 
-PŘIPOJENO (00000188) \
-Hloubka = 0 ou = ověřený ovládací prvek domény, CN \*=. example.com \
-ověřit chybu: číslo = 20: nejde získat certifikát místního vystavitele \.
-ověření vrácení: 1 \
-Hloubka = 0 ou = ověřený ovládací prvek domény, CN \*=. example.com \
-ověřit chybu: číslo = 21: nelze ověřit první certifikát \
-ověření vrácení: 1 \
-\-\-\-\
-Řetěz certifikátů \
- 0 s:/OU = ověřený ovládací prvek domény/CN = *. example. com \
-   i:/C = US/St = Arizona/L = Scottsdale/O = GoDaddy. com, Inc./ou =http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority-G2 \
-\-----ZAČÍT CERTIFIKÁT-----\
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
-\-----UKONČIT-----CERTIFIKÁTU
+```
+  CONNECTED(00000188)\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=20:unable to get local issuer certificate\
+  verify return:1\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=21:unable to verify the first certificate\
+  verify return:1\
+  \-\-\-\
+  Certificate chain\
+   0 s:/OU=Domain Control Validated/CN=*.example.com\
+     i:/C=US/ST=Arizona/L=Scottsdale/O=GoDaddy.com, Inc./OU=http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority - G2\
+  \-----BEGIN CERTIFICATE-----\
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+  \-----END CERTIFICATE-----
+```
 
 #### <a name="backend-certificate-invalid-common-name-cn"></a>Neplatný běžný název certifikátu back-endu (CN)
 
-**Zpráva** Běžný název (CN) certifikátu back-endu se neshoduje s hlavičkou hostitele sondy.
+**Zpráva:** Běžný název (CN) certifikátu back-endu se neshoduje s hlavičkou hostitele sondy.
 
-**Způsobit** Application Gateway ověří, jestli název hostitele zadaný v nastavení HTTP back-endu odpovídá hodnotě CN, kterou prezentuje certifikát SSL serveru back-end. Toto je chování Standard_v2 a WAF_v2 SKU. Indikace názvu serveru (SNI) standard a WAF SKU se nastaví jako plně kvalifikovaný název domény v adrese back-end fondu.
+**Příčina:** Application Gateway ověří, jestli název hostitele zadaný v nastavení HTTP back-endu odpovídá hodnotě CN, kterou prezentuje certifikát SSL serveru back-end. Toto je chování Standard_v2 a WAF_v2 SKU. Indikace názvu serveru (SNI) standard a WAF SKU se nastaví jako plně kvalifikovaný název domény v adrese back-end fondu.
 
 Pokud ve skladové položce v2 existuje výchozí sonda (není nakonfigurovaný a přidružený žádný vlastní test paměti), SNI se nastaví z názvu hostitele uvedeného v nastavení HTTP. Nebo, pokud je v nastavení HTTP uveden příkaz "vybrat název hostitele z back-endové adresy", bude použito toto nastavení.
 
@@ -288,11 +290,11 @@ Pokud je v nastavení HTTP nastavená možnost **Vybrat název hostitele z back-
 
 Pokud se zobrazí tato chybová zpráva, CN certifikátu back-end se neshoduje s názvem hostitele nakonfigurovaným ve vlastním testu nebo v nastavení HTTP (Pokud je vybraná možnost **Vybrat název hostitele z back-endu http** ). Pokud používáte výchozí test, název hostitele se nastaví jako **127.0.0.1**. Pokud to není požadovaná hodnota, měli byste vytvořit vlastní test a přidružit ho k nastavení HTTP.
 
-**Řešení:**
+**Řešení**
 
-Pokud chcete tento problém vyřešit, použijte následující postup.
+Chcete-li tento problém vyřešit, postupujte podle následujících kroků.
 
-Ve Windows:
+Pro Windows:
 
 1.  Přihlaste se k počítači, ve kterém je vaše aplikace hostovaná.
 
@@ -300,7 +302,7 @@ Ve Windows:
 
 1.  Zadejte **certmgr. msc** a vyberte Enter. Správce certifikátů můžete také vyhledat v nabídce **Start** .
 
-1.  Vyhledejte certifikát (obvykle v `\Certificates - Current User\\Personal\\Certificates`části) a otevřete certifikát.
+1.  Vyhledejte certifikát (obvykle v `\Certificates - Current User\\Personal\\Certificates`) a otevřete certifikát.
 
 1.  Na kartě **Podrobnosti** se podívejte na **Předmět**certifikátu.
 
@@ -317,11 +319,11 @@ Pro Linux pomocí OpenSSL:
 
 #### <a name="backend-certificate-is-invalid"></a>Certifikát back-endu je neplatný.
 
-**Zpráva** Certifikát back-endu je neplatný. \"Aktuální datum není v rozsahu platné od\" do a \"platnost do\" data v rámci certifikátu.
+**Zpráva:** Certifikát back-endu je neplatný. Aktuální datum není v rámci \"Valid z @ no__t-1 a \"Valid do rozsahu dat @ no__t-3 v certifikátu.
 
-**Způsobit** Každý certifikát se dodává s rozsahem platnosti a připojení HTTPS nebude zabezpečené, pokud není certifikát SSL serveru platný. Aktuální data musí být v rozmezí od do rozsahu **platný od** **do** . Pokud není, certifikát se považuje za neplatný a vytvoří problémy se zabezpečením, které Application Gateway označí back-end Server jako špatný.
+**Příčina:** Každý certifikát se dodává s rozsahem platnosti a připojení HTTPS nebude zabezpečené, pokud není certifikát SSL serveru platný. Aktuální data musí být v rozmezí od do rozsahu **platný od** **do** . Pokud není, certifikát se považuje za neplatný a vytvoří problémy se zabezpečením, které Application Gateway označí back-end Server jako špatný.
 
-**Řešení:** Pokud vypršela platnost certifikátu protokolu SSL, obnovte certifikát u svého dodavatele a aktualizujte nastavení serveru pomocí nového certifikátu. Pokud se jedná o certifikát podepsaný svým držitelem, musíte vygenerovat platný certifikát a nahrajte kořenový certifikát do nastavení Application Gateway HTTP. Provedete to podle těchto kroků:
+**Řešení:** Pokud vypršela platnost certifikátu protokolu SSL, obnovte certifikát u svého dodavatele a aktualizujte nastavení serveru pomocí nového certifikátu. Pokud se jedná o certifikát podepsaný svým držitelem, musíte vygenerovat platný certifikát a nahrajte kořenový certifikát do nastavení Application Gateway HTTP. Uděláte to takto:
 
 1.  Otevřete nastavení Application Gateway HTTP na portálu.
 
@@ -331,9 +333,9 @@ Pro Linux pomocí OpenSSL:
 
 #### <a name="certificate-verification-failed"></a>Certifikát se nepovedlo ověřit.
 
-**Zpráva** Platnost certifikátu back-endu nelze ověřit. Pokud chcete zjistit příčinu, podívejte se na otevřít diagnostiku SSL pro zprávu přidruženou k kódu chyby {errorCode}.
+**Zpráva:** Platnost certifikátu back-endu nelze ověřit. Pokud chcete zjistit příčinu, podívejte se na otevřít diagnostiku SSL pro zprávu přidruženou k kódu chyby {errorCode}.
 
-**Způsobit** K této chybě dochází, když Application Gateway nemůže ověřit platnost certifikátu.
+**Příčina:** K této chybě dochází, když Application Gateway nemůže ověřit platnost certifikátu.
 
 **Řešení:** Chcete-li tento problém vyřešit, ověřte, zda byl certifikát na serveru správně vytvořen. Můžete například použít [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) k ověření certifikátu a jeho vlastností a pak zkuste znovu odeslat certifikát do nastavení Application Gateway http.
 
@@ -351,7 +353,7 @@ K tomuto chování může dojít z některého z následujících důvodů:
 1.  Vlastní server DNS je nakonfigurovaný ve virtuální síti, která nemůže přeložit názvy veřejných domén.
 1.  Application Gateway je ve stavu není v pořádku.
 
-**Řešení:**
+**Řešení**
 
 1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu**:
 
@@ -359,13 +361,13 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
     b.  Na kartě **podsítě** ve vaší virtuální síti vyberte podsíť, ve které Application Gateway nasazená.
 
-    c.  Ověřte, jestli je nakonfigurované nějaké NSG.
+    r.  Ověřte, jestli je nakonfigurované nějaké NSG.
 
-    d.  Pokud je NSG nakonfigurovaný, vyhledejte tento prostředek NSG na kartě **Hledat** nebo v části **všechny prostředky**.
+    trojrozměrné.  Pokud je NSG nakonfigurovaný, vyhledejte tento prostředek NSG na kartě **Hledat** nebo v části **všechny prostředky**.
 
-    e.  V části **příchozí pravidla** přidejte příchozí pravidlo, které povoluje rozsah cílových portů 65503-65534 pro SKU v1 nebo 65200-65535 v2 SKU se **zdrojovou** sadou jako **libovolný** nebo **internetový**.
+    Cerebrální.  V části **příchozí pravidla** přidejte příchozí pravidlo, které povoluje rozsah cílových portů 65503-65534 pro SKU v1 nebo 65200-65535 v2 SKU se **zdrojovou** sadou jako **libovolný** nebo **internetový**.
 
-    f.  Vyberte **Uložit** a ověřte, zda můžete zobrazit back-end jako v pořádku. Případně to můžete provést prostřednictvím [PowerShellu nebo](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)rozhraní příkazového řádku.
+    FJ.  Vyberte **Uložit** a ověřte, zda můžete zobrazit back-end jako v pořádku. Případně to můžete provést prostřednictvím [PowerShellu nebo](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)rozhraní příkazového řádku.
 
 1.  Ověřte, jestli váš UDR má výchozí trasu (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**:
     
@@ -373,9 +375,9 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
     b.  Ověřte, jestli je nakonfigurované nějaké UDR. Pokud je, vyhledejte prostředek na panelu hledání nebo v části **všechny prostředky**.
 
-    c.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network**, musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
+    r.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network**, musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
 
-    d.  V opačném případě změňte další směrování na **Internet**, vyberte **Uložit**a ověřte stav back-endu.
+    trojrozměrné.  V opačném případě změňte další směrování na **Internet**, vyberte **Uložit**a ověřte stav back-endu.
 
 1.  Výchozí trasa inzerovaná připojením ExpressRoute/VPN k virtuální síti prostřednictvím protokolu BGP:
 
@@ -383,7 +385,7 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
     b.  Cíl vyberte ručně jako libovolnou IP adresu pro směrování přes Internet, jako je 1.1.1.1. Nastavte cílový port jako cokoli a ověřte připojení.
 
-    c.  Pokud je další segment směrování bránou virtuální sítě, může se jednat o výchozí trasu inzerovanou přes ExpressRoute nebo VPN.
+    r.  Pokud je další segment směrování bránou virtuální sítě, může se jednat o výchozí trasu inzerovanou přes ExpressRoute nebo VPN.
 
 1.  Pokud je ve virtuální síti nakonfigurovaný vlastní server DNS, ověřte, že server (nebo servery) dokáže vyřešit veřejné domény. Ve scénářích, kdy se Application Gateway musí dostat k externím doménám, jako jsou servery OCSP, nebo zjistit stav odvolání certifikátu, může být vyžadováno řešení názvů veřejných domén.
 

@@ -16,12 +16,12 @@ ms.date: 09/08/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e6356b4f72f08afc2c5b3e5570086fd166a75216
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268627"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982769"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
 
@@ -39,18 +39,18 @@ Během tichého nebo interaktivního získání tokenu můžou být aplikace bě
 
 Úplný seznam chyb je uveden v seznamu [MSALError enum](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128).
 
-Všechny chyby MSAL jsou vráceny s `MSALErrorDomain` doménou. 
+Všechny MSAL chyby jsou vráceny s doménou `MSALErrorDomain`. 
 
-V případě systémových chyb vrátí MSAL originál `NSError` z rozhraní API systému. Pokud se například získání tokenu nezdařilo z důvodu nedostatku síťového připojení, MSAL vrátí chybu s `NSURLErrorDomain` doménou `NSURLErrorNotConnectedToInternet` a kódem.
+V případě systémových chyb vrátí MSAL původní `NSError` ze systémového rozhraní API. Například pokud se získání tokenu nepovede z důvodu nedostatku k síti, vrátí MSAL chybu s doménou `NSURLErrorDomain` a kódem `NSURLErrorNotConnectedToInternet`.
 
 Na straně klienta doporučujeme zpracovat alespoň následující dvě chyby MSAL:
 
-- `MSALErrorInteractionRequired`: Uživatel musí provést interaktivní požadavek. Existuje mnoho podmínek, které mohou vést k této chybě, jako je například relace ověřování s vypršenou platností nebo nutnost dalších požadavků na ověření. Pro obnovení zavolejte rozhraní API pro získání interaktivního tokenu MSAL. 
+- `MSALErrorInteractionRequired`: uživatel musí provést interaktivní požadavek. Existuje mnoho podmínek, které mohou vést k této chybě, jako je například relace ověřování s vypršenou platností nebo nutnost dalších požadavků na ověření. Pro obnovení zavolejte rozhraní API pro získání interaktivního tokenu MSAL. 
 
-- `MSALErrorServerDeclinedScopes`: Některé nebo všechny obory byly odmítnuty. Rozhodněte, zda chcete pokračovat pouze s udělenými obory, nebo Zastavte proces přihlášení.
+- `MSALErrorServerDeclinedScopes`: některé nebo všechny obory byly odmítnuty. Rozhodněte, zda chcete pokračovat pouze s udělenými obory, nebo Zastavte proces přihlášení.
 
 > [!NOTE]
-> `MSALInternalError` Výčet by měl být použit pouze pro referenci a ladění. Nepokoušejte se tyto chyby automaticky zpracovat za běhu. Pokud vaše aplikace narazí na jakékoli chyby, ke kterým `MSALInternalError`došlo, můžete zobrazit obecné informace o uživateli, které objasňují, co se stalo.
+> Výčet `MSALInternalError` by měl být použit pouze pro referenci a ladění. Nepokoušejte se tyto chyby automaticky zpracovat za běhu. Pokud v aplikaci dojde k jakékoli chybě, která se nachází v rámci `MSALInternalError`, možná budete chtít zobrazit obecné informace o uživateli, které objasňují, co se stalo.
 
 Například `MSALInternalErrorBrokerResponseNotReceived` znamená, že uživatel nedokončil ověřování a ručně se vrátil do aplikace. V takovém případě by se měla v aplikaci zobrazit obecná chybová zpráva s vysvětlením, že ověřování nebylo dokončeno a navrhuje, aby se znovu pokusila o ověření.
 
@@ -162,7 +162,7 @@ Objective-C
                              completionBlock:completionBlock];
 ```
 
-Kód SWIFT
+SWIFT
 ```swift
     let interactiveParameters: MSALInteractiveTokenParameters = ...
     let silentParameters: MSALSilentTokenParameters = ...
@@ -243,7 +243,7 @@ Kód SWIFT
 
 ## <a name="net-exceptions"></a>Výjimky rozhraní .NET
 
-Při zpracování výjimek můžete použít samotný typ výjimky a `ErrorCode` člen k rozlišení mezi výjimkami. `ErrorCode`hodnoty jsou konstanty typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
+Při zpracování výjimek můžete použít samotný typ výjimky a člena `ErrorCode` pro rozlišení mezi výjimkami. hodnoty `ErrorCode` jsou konstantami typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
 Můžete se také podívat na pole [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
@@ -253,28 +253,28 @@ Pokud je vyvolána výjimka [MsalServiceException](/dotnet/api/microsoft.identit
 
 Zde jsou uvedeny běžné výjimky, které mohou být vyvolány, a některé možné zmírnění:  
 
-| Výjimka | Kód chyby | Omezení rizik|
+| Výjimka | Kód chyby | Zmírnění|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív musíte získat souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive`. Pokud používáte .NET Core nebo ho nechcete provést `AcquireTokenInteractive`, uživatel může přejít na adresu URL, aby mohl udělit souhlas:. https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read Pro volání `AcquireTokenInteractive`:`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Uživatel musí používat službu Multi-Factor Authentication (MFA).| Nedochází k žádnému zmírnění. Pokud je pro vašeho tenanta nakonfigurované vícefaktorové ověřování a Azure Active Directory (AAD) se rozhodne ho vyhovět, musíte přejít na interaktivní tok, například `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode`.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: Typ grant není podporován v koncových bodech */běžné* nebo */consumers* . Použijte */Organizations* nebo koncový bod pro konkrétního tenanta. Použili jste */běžné*.| Jak je vysvětleno ve zprávě z Azure AD, autorita musí mít tenanta nebo jinak */Organizations*.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: Tělo žádosti musí obsahovat následující parametr: `client_secret or client_assertion`.| Tato výjimka může být vyvolána, pokud vaše aplikace nebyla registrována jako veřejná klientská aplikace v Azure AD. V Azure Portal upravte manifest aplikace a nastavte `allowPublicClient` na. `true` |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Nepovedlo se identifikovat přihlášeného uživatele.| Knihovna se nemohla dotázat na aktuálně přihlášeného uživatele Windows nebo tento uživatel není připojený k AD ani AAD (uživatelé připojení k pracovišti nejsou podporováni). Zmírnění 1: na UWP ověřte, že aplikace má následující funkce: Podnikové ověřování, privátní sítě (klient a Server), informace o uživatelském účtu. Zmírnění 2: Implementujte vlastní logiku pro načtení uživatelského jména (například john@contoso.com) a `AcquireTokenByIntegratedWindowsAuth` použijte formulář, který převezme uživatelské jméno.|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Tato metoda spoléhá na protokol vystavený službou Active Directory (AD). Pokud byl uživatel vytvořen v Azure Active Directory bez služby AD ("spravovaný" uživatel), tato metoda se nezdaří. Uživatelům vytvořeným ve službě AD a zálohovaným pomocí AAD ("federované" uživatelé) může tato neinteraktivní metoda ověřování těžit z výhod. Zmírnění Použijte interaktivní ověřování.|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív musíte získat souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive`. Pokud používáte .NET Core nebo nechcete provádět `AcquireTokenInteractive`, uživatel může přejít na adresu URL a udělit souhlas: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read. volání `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: uživatel musí používat službu Multi-Factor Authentication (MFA).| Nedochází k žádnému zmírnění. Pokud je pro vašeho tenanta nakonfigurované vícefaktorové ověřování a Azure Active Directory (AAD) se rozhodne ho vyhovět, musíte přejít na interaktivní tok, jako je například `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode`.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: typ grantu se nepodporuje přes koncové body */běžné* nebo */consumers* . Použijte */Organizations* nebo koncový bod pro konkrétního tenanta. Použili jste */běžné*.| Jak je vysvětleno ve zprávě z Azure AD, autorita musí mít tenanta nebo jinak */Organizations*.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: tělo žádosti musí obsahovat následující parametr: `client_secret or client_assertion`.| Tato výjimka může být vyvolána, pokud vaše aplikace nebyla registrována jako veřejná klientská aplikace v Azure AD. V Azure Portal upravte manifest pro vaši aplikaci a nastavte `allowPublicClient` na `true`. |
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Nepodařilo se identifikovat přihlášeného uživatele.| Knihovna se nemohla dotázat na aktuálně přihlášeného uživatele Windows nebo tento uživatel není připojený k AD ani AAD (uživatelé připojení k pracovišti nejsou podporováni). Zmírnění 1: na UWP ověřte, že má aplikace následující možnosti: podnikové ověřování, privátní sítě (klient a Server), informace o uživatelském účtu. Zmírnění 2: Implementujte vlastní logiku pro načtení uživatelského jména (například john@contoso.com) a použijte formulář `AcquireTokenByIntegratedWindowsAuth`, který přebírá uživatelské jméno.|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Tato metoda spoléhá na protokol vystavený službou Active Directory (AD). Pokud byl uživatel vytvořen v Azure Active Directory bez služby AD ("spravovaný" uživatel), tato metoda se nezdaří. Uživatelům vytvořeným ve službě AD a zálohovaným pomocí AAD ("federované" uživatelé) může tato neinteraktivní metoda ověřování těžit z výhod. Zmírnění: použijte interaktivní ověřování.|
 
 ### `MsalUiRequiredException`
 
-Jeden z běžných stavových kódů vrácených z MSAL.NET `AcquireTokenSilent()` při `MsalError.InvalidGrantError`volání je. Tento stavový kód znamená, že aplikace by měla znovu zavolat knihovnu ověřování, ale v interaktivním režimu (AcquireTokenInteractive nebo AcquireTokenByDeviceCodeFlow pro veřejné klientské aplikace a dělat výzvy ve službě Web Apps). Důvodem je to, že před vydáním ověřovacího tokenu je nutné provést další zásahy uživatele.
+Jeden z běžných stavových kódů vrácených z MSAL.NET při volání `AcquireTokenSilent()` je `MsalError.InvalidGrantError`. Tento stavový kód znamená, že aplikace by měla znovu zavolat knihovnu ověřování, ale v interaktivním režimu (AcquireTokenInteractive nebo AcquireTokenByDeviceCodeFlow pro veřejné klientské aplikace a dělat výzvy ve službě Web Apps). Důvodem je to, že před vydáním ověřovacího tokenu je nutné provést další zásahy uživatele.
 
-Většinou v době, kdy `AcquireTokenSilent` se chyba nezdařila, je důvodem to, že mezipaměť tokenů nemá tokeny vyhovující vaší žádosti. Přístupové tokeny vyprší za 1 hodinu a `AcquireTokenSilent` pokusí se načíst nový na základě aktualizačního tokenu (v OAuth2 podmínek se jedná o tok "Refresh token"). Tento tok může také selhat z různých důvodů, například pokud správce tenanta nakonfiguruje přísnější zásady přihlašování. 
+Ve většině případů, kdy `AcquireTokenSilent` selhává, je to proto, že mezipaměť tokenu nemá tokeny, které by odpovídaly vaší žádosti. Přístupové tokeny vyprší za 1 hodinu a `AcquireTokenSilent` se pokusí načíst nový na základě aktualizačního tokenu (v OAuth2ch případech se jedná o tok "Refresh token"). Tento tok může také selhat z různých důvodů, například pokud správce tenanta nakonfiguruje přísnější zásady přihlašování. 
 
 Interakce se zaměřuje na to, že uživatel provede akci. Některé z těchto podmínek můžou uživatelé snadno vyřešit (například přijmout podmínky použití jediným kliknutím) a některé se nedají vyřešit pomocí aktuální konfigurace (třeba aby se počítač mohl připojit ke konkrétní podnikové síti). Některé vám pomůžou s nastavením vícefaktorového ověřování pro uživatele nebo na zařízení nainstalovat Microsoft Authenticator.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`výčet klasifikace
+### <a name="msaluirequiredexception-classification-enumeration"></a>výčet klasifikací `MsalUiRequiredException`
 
-MSAL zpřístupňuje `Classification` pole, které si můžete přečíst a zajistit tak lepší činnost koncového uživatele, třeba sdělit uživateli, že jeho heslo vypršelo nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí `UiRequiredExceptionClassification` výčtu:
+MSAL zpřístupňuje pole `Classification`, které si můžete přečíst a zajistit tak lepší uživatelské prostředí, například oznámit uživateli, že platnost hesla vypršela nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí výčtu `UiRequiredExceptionClassification`:
 
-| Klasifikace    | Význam           | Doporučené zpracování |
+| Mazal    | Význam           | Doporučené zpracování |
 |-------------------|-------------------|----------------------|
 | BasicAction | Podmínku lze vyřešit interakcí uživatele během interaktivního toku ověřování. | Zavolejte AcquireTokenInteractively (). |
 | AdditionalAction | Podmínku lze vyřešit pomocí další nápravné interakce se systémem, mimo tok interaktivního ověřování. | Zavolejte AcquireTokenInteractively (), aby se zobrazila zpráva s vysvětlením nápravné akce. Volání aplikace se může rozhodnout pro skrytí toků vyžadujících additional_action, pokud uživatel pravděpodobně nedokončí akci nápravy. |
@@ -371,17 +371,17 @@ Rozšířením třídy Error máte přístup k následujícím vlastnostem:
 
 K dispozici jsou následující typy chyb:
 
-- `AuthError`: Základní třída Error pro knihovnu MSAL. js, která se používá také pro neočekávané chyby.
+- `AuthError`: základní třída Error pro knihovnu MSAL. js, která se používá také pro neočekávané chyby.
 
-- `ClientAuthError`: Třída Error, která označuje problém s ověřením klienta. Většina chyb, které pocházejí z knihovny, bude ClientAuthErrors. Tyto chyby jsou výsledkem akcí, jako je volání metody Login v případě, že přihlášení již probíhá, uživatel zruší přihlášení atd.
+- `ClientAuthError`: Error – třída, která označuje problém s ověřením klienta. Většina chyb, které pocházejí z knihovny, bude ClientAuthErrors. Tyto chyby jsou výsledkem akcí, jako je volání metody Login v případě, že přihlášení již probíhá, uživatel zruší přihlášení atd.
 
-- `ClientConfigurationError`: Třída Error rozšiřuje `ClientAuthError` počet vyvolaných před vyvoláním, když jsou zadané parametry konfigurace uživatele poškozené nebo chybí.
+- `ClientConfigurationError`: Error Class, rozšiřuje `ClientAuthError`, které byly vyvolány před provedením požadavků v případě, že zadané parametry konfigurace uživatele jsou poškozené nebo chybí.
 
-- `ServerError`: Třída Error představuje chybové řetězce odesílané ověřovacím serverem. Můžou to být chyby, jako jsou neplatné formáty nebo parametry požadavků nebo jakékoli jiné chyby, které brání serveru v ověřování nebo autorizaci uživatele.
+- `ServerError`: Error Class představuje chybové řetězce odeslané ověřovacím serverem. Můžou to být chyby, jako jsou neplatné formáty nebo parametry požadavků nebo jakékoli jiné chyby, které brání serveru v ověřování nebo autorizaci uživatele.
 
-- `InteractionRequiredAuthError`: Error Class rozšiřuje `ServerError` , aby představovala chyby serveru, které vyžadují interaktivní volání. Tato chyba je vyvolána, `acquireTokenSilent` Pokud je uživatel nutný k interakci se serverem za účelem poskytnutí pověření nebo souhlasu pro ověřování/autorizaci. Kódy chyb zahrnují `"interaction_required"`, `"login_required"`a `"consent_required"`.
+- `InteractionRequiredAuthError`: Error Class, rozšiřuje `ServerError`, aby představovala chyby serveru, které vyžadují interaktivní volání. Tato chyba je vyvolána `acquireTokenSilent`, pokud je uživatel vyzván k interakci se serverem za účelem poskytnutí pověření nebo souhlasu pro ověřování/autorizaci. Kódy chyb zahrnují `"interaction_required"`, `"login_required"` a `"consent_required"`.
 
-Pro zpracování chyb v tokůch ověřování pomocí metod přesměrování`loginRedirect`( `acquireTokenRedirect`,) bude nutné zaregistrovat zpětné volání, které je voláno s funkcí úspěch nebo neúspěch po přesměrování pomocí `handleRedirectCallback()` metody, následovně:
+Pro zpracování chyb v tokůch ověřování s metodami přesměrování (`loginRedirect`, `acquireTokenRedirect`) budete muset zaregistrovat zpětné volání, které je voláno s funkcí úspěch nebo neúspěch po přesměrování pomocí metody `handleRedirectCallback()` následujícím způsobem:
 
 ```javascript
 function authCallback(error, response) {
@@ -395,7 +395,7 @@ myMSALObj.handleRedirectCallback(authCallback);
 myMSALObj.acquireTokenRedirect(request);
 ```
 
-Metody pro místní prostředí (`loginPopup`, `acquireTokenPopup`) vracejí příslibů, takže můžete použít vzor Promise (. then a. catch) k jejich zpracování, jak je znázorněno níže:
+Metody pro Automatické zobrazování (`loginPopup`, `acquireTokenPopup`) vrátí příslibů, takže můžete použít vzor Promise (. then a. catch) k jejich zpracování, jak je znázorněno níže:
 
 ```javascript
 myMSALObj.acquireTokenPopup(request).then(
@@ -408,7 +408,7 @@ myMSALObj.acquireTokenPopup(request).then(
 
 ### <a name="interaction-required-errors"></a>Požadovaná interakce, chyby
 
-Při pokusu o použití neinteraktivní metody získání tokenu `acquireTokenSilent`, jako je například, ale MSAL by nedokázala tuto chybu provést v tichém režimu, se vrátí chyba.
+Při pokusu o použití neinteraktivní metody získání tokenu, jako je například `acquireTokenSilent`, se vrátí chyba, ale MSAL ho nedokázal v tichém režimu.
 
 Možné důvody:
 
@@ -416,7 +416,7 @@ Možné důvody:
 - musíte souhlasit.
 - musíte projít prostředím Multi-Factor Authentication.
 
-Nápravou je zavolat interaktivní metodu, například `acquireTokenPopup` nebo: `acquireTokenRedirect`
+Nápravou je zavolat interaktivní metodu, například `acquireTokenPopup` nebo `acquireTokenRedirect`:
 
 ```javascript
 // Request for Access Token
@@ -442,23 +442,21 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 
 Při tichém získávání tokenů může vaše aplikace obdržet chyby, když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
 
-Při tichém získávání tokenů může vaše aplikace obdržet chyby, když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
-
 Vzor pro zpracování této chyby je interaktivní získání tokenu pomocí MSAL. Při interaktivním získání tokenu se uživateli zobrazí výzva, aby si vyžádali splnění požadovaných zásad podmíněného přístupu.
 
-V některých případech při volání rozhraní API, které vyžaduje podmíněný přístup, můžete z rozhraní API obdržet výzvu s deklarací identity. Pokud má například zásada podmíněného přístupu spravované zařízení (Intune), bude chyba něco jako [AADSTS53000: Vaše zařízení musí být spravované pro přístup k tomuto prostředku](reference-aadsts-error-codes.md) nebo něco podobného. V takovém případě můžete deklarace identity předat voláním metody získat token, aby se uživateli zobrazila výzva, aby splnila příslušné zásady.
+V některých případech při volání rozhraní API, které vyžaduje podmíněný přístup, můžete z rozhraní API obdržet výzvu s deklarací identity. Pokud má například zásada podmíněného přístupu spravované zařízení (Intune), bude mít tato chyba něco jako [AADSTS53000: vaše zařízení musí být spravované pro přístup k tomuto prostředku](reference-aadsts-error-codes.md) nebo podobným způsobem. V takovém případě můžete deklarace identity předat voláním metody získat token, aby se uživateli zobrazila výzva, aby splnila příslušné zásady.
 
 ### <a name="net"></a>.NET
 
 Při volání rozhraní API, které vyžaduje podmíněný přístup ze MSAL.NET, bude vaše aplikace muset zpracovat výjimky pro výzvy k deklaracím identity. Tato vlastnost se zobrazí jako [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) , kde vlastnost [deklarací](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) nebude prázdná.
 
-Pro zpracování výzvy deklarací identity budete muset použít `.WithClaim()` metodu `PublicClientApplicationBuilder` třídy.
+Pro zpracování výzvy deklarací identity budete muset použít metodu `.WithClaim()` třídy `PublicClientApplicationBuilder`.
 
 ### <a name="javascript"></a>JavaScript
 
-Při tichém získávání tokenů ( `acquireTokenSilent`pomocí) pomocí MSAL. js může vaše aplikace obdržet chyby, když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásady MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
+Při tichém získávání tokenů (pomocí `acquireTokenSilent`) pomocí MSAL. js může vaše aplikace obdržet [chyby, když](conditional-access-dev-guide.md) rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásadu MFA.
 
-Vzor pro zpracování této chyby je provést interaktivní volání metody získání tokenu v MSAL. js, `acquireTokenPopup` jako je například nebo `acquireTokenRedirect` jako v následujícím příkladu:
+Vzor pro zpracování této chyby je provést interaktivní volání metody získání tokenu v MSAL. js, jako je například `acquireTokenPopup` nebo `acquireTokenRedirect` jako v následujícím příkladu:
 
 ```javascript
 myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
@@ -479,7 +477,7 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 
 K interaktivnímu získání tokenu se uživateli zobrazí výzva a dává jim možnost splnit požadované zásady podmíněného přístupu.
 
-Při volání rozhraní API, které vyžaduje podmíněný přístup, můžete z rozhraní API obdržet výzvu s deklarací identity. V takovém případě můžete předat deklarace vracené v chybě do `claimsRequest` pole `AuthenticationParameters.ts` třídy, aby splňovala příslušné zásady. 
+Při volání rozhraní API, které vyžaduje podmíněný přístup, můžete z rozhraní API obdržet výzvu s deklarací identity. V takovém případě můžete předat deklarace vracené při chybě do pole `claimsRequest` třídy `AuthenticationParameters.ts`, aby splňovala příslušné zásady. 
 
 Další informace najdete v tématu [vyžádání dalších deklarací identity](active-directory-optional-claims.md) .
 
@@ -487,7 +485,7 @@ Další informace najdete v tématu [vyžádání dalších deklarací identity]
 
 MSAL pro iOS a macOS umožňuje žádat o konkrétní deklarace ve scénářích interaktivního i tichého získání tokenu.
 
-Chcete-li požádat o vlastní `claimsRequest` deklarace `MSALSilentTokenParameters` identity `MSALInteractiveTokenParameters`, zadejte v nebo.
+Pokud chcete požádat o vlastní deklarace identity, zadejte `claimsRequest` v `MSALSilentTokenParameters` nebo `MSALInteractiveTokenParameters`.
 
 Další informace najdete v tématu [žádosti o vlastní deklarace identity pomocí MSAL pro iOS a MacOS](request-custom-claims.md) .
 
@@ -501,11 +499,11 @@ MSAL.NET implementuje jednoduchý mechanismus opakovaného pokusu o chyby s kód
 
 ### <a name="http-429"></a>HTTP 429
 
-Pokud je server tokenu služby (STS) přetížený s příliš velkým počtem požadavků, vrátí chybu HTTP 429 s pomocným parametrem o tom, jak dlouho se můžete pokusit znovu v `Retry-After` poli Response.
+Pokud je server tokenu služby (STS) přetížený s příliš velkým počtem požadavků, vrátí chybu HTTP 429 s pomocným parametrem o tom, jak dlouho se můžete pokusit znovu v poli odpovědi `Retry-After`.
 
 ### <a name="net"></a>.NET
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) povrchy `System.Net.Http.Headers.HttpResponseHeaders` jako vlastnost `namedHeaders`. Pomocí dalších informací z kódu chyby můžete zlepšit spolehlivost svých aplikací. V případě popsaného případu můžete použít `RetryAfterproperty` (typ `RetryConditionHeaderValue`) a výpočetní čas, kdy se to opakuje.
+[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) povrchy `System.Net.Http.Headers.HttpResponseHeaders` jako vlastnost `namedHeaders`. Pomocí dalších informací z kódu chyby můžete zlepšit spolehlivost svých aplikací. V případě popsaného případu můžete použít `RetryAfterproperty` (typu `RetryConditionHeaderValue`) a výpočet, kdy se to opakuje.
 
 Tady je příklad pro aplikaci démona, která používá tok přihlašovacích údajů klienta. Tuto možnost můžete přizpůsobit libovolné metodě pro získání tokenu.
 

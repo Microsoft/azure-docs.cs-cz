@@ -114,22 +114,34 @@
           href: sisense.md
     - name: Spravovat
       items:
-        - name: Kontrola stavu clusteru
-          href: check-cluster-health.md
-        - name: Výběr SKU clusterového virtuálního počítače
-          href: manage-cluster-choose-sku.md
-        - name: Správa horizontálního škálování clusteru
-          href: manage-cluster-horizontal-scaling.md
-        - name: Správa vertikálního škálování clusteru
-          href: manage-cluster-vertical-scaling.md
-        - name: Správa zabezpečení clusteru
-          href: manage-cluster-security.md
-        - name: Správa databázových oprávnění
-          href: manage-database-permissions.md
-        - name: Odstranění dat
-          href: delete-data.md
-        - name: Řešení duplicitních dat
-          href: dealing-with-duplicates.md
+        - name: Cluster
+          items:
+            - name: Výběr SKU clusterového virtuálního počítače
+              href: manage-cluster-choose-sku.md
+            - name: Správa horizontálního škálování clusteru
+              href: manage-cluster-horizontal-scaling.md
+            - name: Správa vertikálního škálování clusteru
+              href: manage-cluster-vertical-scaling.md
+            - name: Správa zabezpečení clusteru
+              href: manage-cluster-security.md
+            - name: Kontrola stavu clusteru
+              href: check-cluster-health.md
+        - name: Databáze
+          items:
+            - name: Správa databázových oprávnění
+              href: manage-database-permissions.md
+            - name: Zásady
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Data
+          items:
+            - name: Odstranění dat
+              href: delete-data.md
+            - name: Řešení duplicitních dat
+              href: dealing-with-duplicates.md
     - name: Monitorování
       items:
         - name: Použití diagnostických protokolů k monitorování příjmu dat

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e78a6ffd269b7a93c1d224fd4afe580cf0b31b06
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 59c83cb1becf8869d0e8710121816d1bb75e621e
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972722"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001565"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure PowerShell
 
@@ -26,9 +26,9 @@ Další články o správě skupin prostředků:
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně můžete přidat prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze prostředky, které chcete spravovat jako skupinu. Rozhodnete se, jak chcete přidělit prostředky skupinám prostředků na základě toho, co je pro vaši organizaci nejvhodnější. Obecně můžete přidat prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, abyste je mohli snadno nasadit, aktualizovat a odstranit jako skupinu.
 
-Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
+Skupina prostředků ukládá metadata o prostředcích. Proto když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená. Z důvodu dodržování předpisů možná budete muset zajistit, aby vaše data byla uložená v konkrétní oblasti.
 
 Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená.
 
@@ -81,7 +81,7 @@ Pokud chcete ověřit nasazení skupiny prostředků, přečtěte si téma [test
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Nasazení skupiny prostředků a prostředků
 
-Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny pomocí šablony Správce prostředků. Další informace najdete v tématu [Vytvoření skupiny prostředků a nasazení prostředků](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny pomocí šablony Správce prostředků. Další informace najdete v tématu [Vytvoření skupiny prostředků a nasazení prostředků](./deploy-to-subscription.md#resource-group-and-resources).
 
 ## <a name="redeploy-when-deployment-fails"></a>Znovu nasadit v případě neúspěchu nasazení
 
@@ -89,7 +89,7 @@ Tato funkce se také označuje jako *vrácení zpět s chybou*. Další informac
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Přesunout do jiné skupiny prostředků nebo předplatného
 
-Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](./resource-group-move-resources.md).
+Prostředky ve skupině můžete přesunout do jiné skupiny prostředků. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](./resource-group-move-resources.md).
 
 ## <a name="lock-resource-groups"></a>Uzamčení skupin prostředků
 
@@ -111,7 +111,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName 
 ```
 
-Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
+Další informace najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](resource-group-lock-resources.md).
 
 ## <a name="tag-resource-groups"></a>Označení skupin prostředků
 
@@ -216,7 +216,7 @@ Další informace najdete v tématu [Export jednoho a více prostředků do šab
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je způsob správy přístupu k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+[Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

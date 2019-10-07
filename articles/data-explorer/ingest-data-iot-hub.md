@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947853"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996756"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat (Preview)
 
@@ -80,8 +80,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
     | IoT Hub | Název IoT Hub |
     | Zásady sdíleného přístupu | Název zásad sdíleného přístupu. Musí mít oprávnění ke čtení. |
     | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub |
-    | Vlastnosti systému událostí | [IoT Hub vlastností systému událostí](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) , pokud existuje více záznamů na událost, budou do prvního z nich přidány vlastnosti systému.|
-    | | 
+    | Vlastnosti systému událostí | [Vlastnosti systému událostí IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. | | | 
 
     > [!NOTE]
     > V případě [ručního převzetí služeb při selhání](/azure/iot-hub/iot-hub-ha-dr#manual-failover)je nutné datové připojení znovu vytvořit.
@@ -95,7 +94,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
     |---|---|---|
     | Tabulka | *Testovací navýšení* | Tabulka, kterou jste vytvořili v **TestDB**. |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. |
-    | Mapování sloupce | *TestMapping* | Mapování, které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
+    | Mapování sloupce | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
     | | |
 
     > [!NOTE]

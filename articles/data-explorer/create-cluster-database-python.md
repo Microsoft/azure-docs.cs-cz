@@ -7,82 +7,87 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326625"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996229"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cluster-database-portal.md)
-> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Bran](create-cluster-database-portal.md)
+> * [CLI](create-cluster-database-cli.md)
+> * [Prostředí](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
+Azure Průzkumník dat je rychlá a plně spravovaná služba analýzy dat pro analýzu velkých objemů datových proudů z aplikací, webů, zařízení IoT a dalších prostředků v reálném čase. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="install-python-package"></a>Instalovat balíček Pythonu
+## <a name="install-python-package"></a>Nainstalovat balíček Pythonu
 
 Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete příkazový řádek, který má v cestě Python. Spusťte tento příkaz:
 
 ```
+pip install azure-common
 pip install azure-mgmt-kusto
-pip install adal
-pip install msrestazure
 ```
+## <a name="authentication"></a>Ověřování
+Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID` a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
 
 1. Vytvořte cluster pomocí následujícího příkazu:
 
     ```Python
-    from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
+    from azure.mgmt.kusto import KustoManagementClient
     from azure.mgmt.kusto.models import Cluster, AzureSku
-    from adal import AuthenticationContext
-    from msrestazure.azure_active_directory import AdalAuthentication
+    from azure.common.credentials import ServicePrincipalCredentials
 
+    #Directory (tenant) ID
     tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
     client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
     client_secret = "xxxxxxxxxxxxxx"
     subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-    context = AuthenticationContext('https://login.microsoftonline.com/{}'.format(tenant_id))
-    credentials = AdalAuthentication(context.acquire_token_with_client_credentials,
-                                         resource="https://management.core.windows.net/",
-                                         client_id=client_id,
-                                         client_secret=client_secret)
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
 
     location = 'Central US'
-    sku = 'D13_v2'
+    sku_name = 'Standard_D13_v2'
     capacity = 5
+    tier = "Standard"
     resource_group_name = 'testrg'
     cluster_name = 'mykustocluster'
-    cluster = Cluster(location=location, sku=AzureSku(name=sku, capacity=capacity))
+    cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
     
     kustoManagementClient = KustoManagementClient(credentials, subscription_id)
     
     cluster_operations = kustoManagementClient.clusters
     
-    cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
-   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Požadovaný název clusteru.|
-   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | sku_name | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
+   | vrstva | *Standardní* | Úroveň SKU. |
+   | klíčivost | *Automatické* | Počet instancí clusteru |
    | resource_group_name | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
-    Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
-    
-1. Nastavení [ *přihlašovacích údajů*](/azure/python/python-sdk-azure-authenticate)
+    > [!NOTE]
+    > **Vytvoření clusteru** je dlouhodobá operace. Metoda **create_or_update** vrací instanci LROPoller, viz [Třída LROPoller](/python/api/msrest/msrest.polling.lropoller?view=azure-python) pro získání dalších informací.
 
 1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
 
@@ -90,7 +95,7 @@ pip install msrestazure
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
+Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster byl úspěšně vytvořen.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
@@ -109,10 +114,11 @@ Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se ús
                         soft_delete_period=softDeletePeriod,
                         hot_cache_period=hotCachePeriod)
     
-    database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+    poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
    | název_databáze | *mykustodatabase* | Název vaší databáze.|

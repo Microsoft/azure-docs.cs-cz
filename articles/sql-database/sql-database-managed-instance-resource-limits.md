@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935627"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982791"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -58,12 +58,15 @@ Velikost OLTP prostoru v paměti v [pro důležité obchodní informace](sql-dat
 
 ## <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
 
-Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-service-tier-general-purpose.md) a [pro důležité obchodní informace](sql-database-service-tier-business-critical.md). Tyto úrovně poskytují [různé možnosti](sql-database-service-tiers-general-purpose-business-critical.md), jak je popsáno v následující tabulce:
+Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-service-tier-general-purpose.md) a [pro důležité obchodní informace](sql-database-service-tier-business-critical.md). Tyto úrovně poskytují [různé možnosti](sql-database-service-tiers-general-purpose-business-critical.md), jak je popsáno v následující tabulce.
+
+> [!Important]
+> Pro důležité obchodní informace úroveň služby poskytuje další integrovanou kopii instance (sekundární repliky), která se dá použít pro úlohu určenou jen pro čtení. Pokud můžete oddělit dotazy pro čtení a zápis a dotazy jen pro čtení a analýzu nebo vytváření sestav, dostanete za stejnou cenu dvojnásobnou virtuální jádra a paměť. Sekundární replika může u primární instance prodlevu pár sekund provést, aby bylo možné přesměrovat úlohy vytváření sestav a analýzy, které nepotřebují přesný aktuální stav dat. V následující tabulce jsou **dotazy jen pro čtení** . Jedná se o dotazy, které se spouštějí u sekundární repliky.
 
 | **Zapnut** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
-| Počet virtuální jádra @ no__t-0 | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 |
-| Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
+| Počet virtuální jádra @ no__t-0 | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>@no__t – 0Same počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
+| Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore) pro dotazy pro čtení i zápis<br/>+ dalších 20,4 GB až 408 GB (5.1 GB/vCore) pro dotazy jen pro čtení.<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální velikost úložiště instancí (rezervované) | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 –: 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost databáze | Až v aktuálně dostupné velikosti instance (max. 2 TB až 8 TB v závislosti na počtu virtuální jádra). | Až v aktuálně dostupné velikosti instance (max. 1 TB-4 TB v závislosti na počtu virtuální jádra). |
 | Maximální velikost databáze tempDB | Omezeno na 24 GB/vCore (96 – 1 920 GB) a aktuálně dostupná velikost úložiště instance.<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Až do aktuálně dostupné velikosti úložiště instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
@@ -75,7 +78,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
-| OLTP v paměti | Není podporováno | K dispozici |
+| OLTP v paměti | Není podporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0,8 | 1 (zahrnuto do ceny) |
 
@@ -95,7 +98,7 @@ Na úrovni služby Pro obecné účely každý databázový soubor získává vy
 
 | Velikost souboru           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
+| Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
 | Propustnost na jeden soubor | soubory MiB 100/s | soubory MiB 125/s | soubory MiB 150/s | soubory MiB 200/s | soubory MiB 250/s | soubory MiB 250/s | soubory MiB 480/s | 
 
 Pokud si všimnete vysoké latence v/v některých databázových souborů nebo zjistíte, že počet IOPS/propustnost dosáhne limitu, můžete zvýšit výkon [zvýšením velikosti souboru](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).

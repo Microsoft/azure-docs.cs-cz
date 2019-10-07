@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218258"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982827"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
 > [!NOTE]
->Některé funkce jsou dostupné jenom na úrovni Standard. Pokud jste se ještě nezaregistrovali do úrovně Standard Security Center, k dispozici je bezplatné zkušební období. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+>Některé funkce jsou dostupné jenom na úrovni Standard. Pokud jste se ještě nezaregistrovali do úrovně Standard Security Center, k dispozici je bezplatné zkušební období. Další informace najdete na [stránce s cenami Security Center](https://azure.microsoft.com/pricing/details/security-center/) .
 
 V následujících částech jsou uvedeny Security Center funkce, které jsou k dispozici pro [podporované platformy](security-center-os-coverage.md).
 
@@ -35,27 +35,28 @@ V následujících částech jsou uvedeny Security Center funkce, které jsou k 
 
 > [!div class="mx-tableFixed"]
 
-|Server|Windows|||Linux|||Ceny|
+|WebServer|Windows|||Linux|||Ceny|
 |----|----|----|----|----|----|----|----|
-|**Prostředí**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
+|**Prostředí**|**Azure**||**Mimo Azure**|**Azure**||**Mimo Azure**||
 ||**Virtuální počítač**|**Sada škálování virtuálních počítačů**||**Virtuální počítač**|**Sada škálování virtuálních počítačů**|
-|Výstrahy detekce hrozeb VMBA|✔|✔|✔|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
-|Výstrahy detekce hrozeb založené na síti|✔|✔|X|✔|✔|X|Standard|
-|Integrace ATP v programu Microsoft Defender|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standard|
-|Chybějící opravy|✔|✔|✔|✔|✔|✔|Zdarma|
-|Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Zdarma|
-|Posouzení služby Endpoint Protection|✔|✔|✔|X|X|X|Zdarma|
-|Přístup k virtuálnímu počítači podle potřeby|✔|X|X|✔|X|X|Standard|
-|Adaptivní řízení aplikací|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
-|Vyhodnocení šifrování disku|✔|✔|X|✔|✔|X|Zdarma|
-|Nasazení třetí strany|✔|X|X|✔|X|X|Zdarma|
-|Posouzení NSG|✔|✔|X|✔|✔|X|Zdarma|
-|Detekce hrozeb v bezsouborovém formátu|✔|✔|✔|X|X|X|Standard|
-|Mapa sítě|✔|✔|X|✔|✔|X|Standard|
-|Adaptivní ovládací prvky sítě|✔|✔|X|✔|✔|X|Standard|
-|Řídicí panel dodržování předpisů & sestavy|✔|✔|✔|✔|✔|✔|Standard|
-|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|X|X|X|✔|✔|✔|Standard|
+|Výstrahy detekce hrozeb při analýze chování virtuálních počítačů|✔|✔|✔|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
+|Výstrahy detekce hrozeb založené na síti|✔|✔|X|✔|✔|X|Standardní|
+|Integrace ATP v programu Microsoft Defender|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standardní|
+|Chybějící opravy|✔|✔|✔|✔|✔|✔|Dost|
+|Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Dost|
+|Posouzení služby Endpoint Protection|✔|✔|✔|X|X|X|Dost|
+|Přístup k virtuálnímu počítači za běhu|✔|X|X|✔|X|X|Standardní|
+|Adaptivní řízení aplikací|✔|X|✔|✔|X|✔|Standardní|
+|Monitorování integrity souborů|✔|✔|✔|✔|✔|✔|Standardní|
+|Vyhodnocení šifrování disku|✔|✔|X|✔|✔|X|Dost|
+|Nasazení třetí strany|✔|X|X|✔|X|X|Dost|
+|Posouzení NSG|✔|✔|X|✔|✔|X|Dost|
+|Detekce hrozeb v bezsouborovém formátu|✔|✔|✔|X|X|X|Standardní|
+|Mapa sítě|✔|✔|X|✔|✔|X|Standardní|
+|Adaptivní posílení zabezpečení sítě|✔|X|X|✔|X|X|Standardní|
+|Adaptivní ovládací prvky sítě|✔|✔|X|✔|✔|X|Standardní|
+|Řídicí panel dodržování předpisů & sestavy|✔|✔|✔|✔|✔|✔|Standardní|
+|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|X|X|X|✔|✔|✔|Standardní|
 
 ### Podporovaná řešení ochrany koncových bodů<a name="endpoint-supported"></a>
 
@@ -68,12 +69,12 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – všechny verze * | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
+| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, integrováno s operačním systémem| Ano |
+| System Center Endpoint Protection (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Přes rozšíření | Ano |
+| Trend Micro – všechny verze * | Řada Windows serveru  | Ne | Ano |
+| Symantec v 12.1.1100 +| Řada Windows serveru  | Ne | Ano |
+| McAfee v10 za účelem + | Řada Windows serveru  | Ne | Ano |
+| McAfee v10 za účelem + | Řada Linux serverů  | Ne | Ano **\*** |
 | Sophos v9 +| Řada Linux serverů  | Ne | Ano **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou aktuálně k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným a nereflektují se na portálu Azure Security Center.
@@ -91,36 +92,36 @@ Azure Security Center podporuje následující prostředky PaaS:
 |Služba|Doporučení (zdarma)|Detekce hrozeb (Standard)|
 |----|----|----|
 |SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
+|PostGreSQL|✔| ✔|
+|MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Blob Storage|✔| ✔|
-|Účet úložiště|✔| Není k dispozici|
+|Účet úložiště|✔| NÁ|
 |App Service|✔| ✔|
 |Funkce|✔| X|
 |Cloudová služba|✔| X|
-|Virtuální síť|✔| Není k dispozici|
-|Subnet|✔| Není k dispozici|
-|NIC|✔| Není k dispozici|
-|NSG|✔| Není k dispozici|
-|Subscription|✔ **| ✔|
+|Sítě|✔| NÁ|
+|Podsíť|✔| NÁ|
+|SÍŤOVÝCH|✔| NÁ|
+|NSG|✔| NÁ|
+|Formě|✔ * *| ✔|
 |Účet Batch|✔| X|
 |Účet Service Fabric|✔| X|
 |Účet služby Automation|✔| X|
-|Nástroj pro vyrovnávání zatížení|✔| X|
-|Search|✔| X|
-|Názvový prostor služby Service Bus|✔| X|
+|Load Balancer|✔| X|
+|Hledat|✔| X|
+|Obor názvů služby Service Bus|✔| X|
 |Stream Analytics|✔| X|
 |Obor názvů centra událostí|✔| X|
-|Aplikace logiky|✔| X|
-|Redis|✔| Není k dispozici|
+|Logic Apps|✔| X|
+|Redis|✔| NÁ|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Trezor klíčů|✔| X|
 
-\*Tyto funkce jsou aktuálně podporované ve verzi Public Preview.
+\* tyto funkce jsou aktuálně podporované ve verzi Public Preview.
 
-\*\*Doporučení pro Azure Active Directory (Azure AD) jsou dostupná jenom pro standardní odběry.
+doporučení \* @ no__t-1 Azure Active Directory (Azure AD) jsou dostupná jenom pro standardní odběry.
 
 ## <a name="next-steps"></a>Další kroky
 

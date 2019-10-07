@@ -113,7 +113,7 @@
           href: security-center-identity-access.md
     - name: Použití cloudové ochrany
       items:
-        - name: Správa přístupu právě včas
+        - name: Správa přístupu za běhu
           href: security-center-just-in-time.md
         - name: Adaptivní řízení aplikací
           href: security-center-adaptive-application.md
@@ -147,6 +147,8 @@
   items:
     - name: Rozhraní REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: "Poznámky k\_verzi"
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyřazení funkcí a rozhraní API (červenec 2019)
       href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení

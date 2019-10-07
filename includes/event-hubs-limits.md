@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830060"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996892"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -55,5 +55,5 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 | Disk | 2000 za CU |
 | Skupiny uživatelů | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | zahrnuto 100 K |
-| Uchovávání zpráv | Až 7 dní, zahrnuto 10 TB za CU |
+| Uchovávání zpráv | 90 dní, zahrnutých 10 TB za CU |
 | Snímky | Obsaženy |

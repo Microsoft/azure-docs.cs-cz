@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: a83e2163c9aa970932f2eea8e2e04a715107ac7f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a0568d3c3258fe082fe8451820fe7a25390cfe78
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950252"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996767"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z centra událostí do Azure Průzkumník dat
 
@@ -114,7 +114,7 @@ Nyní se připojíte k centru událostí z Azure Průzkumník dat. Když je toto
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve, který identifikuje váš obor názvů. |
     | Centrum událostí | *Centrum testování* | Centrum událostí, které jste vytvořili. |
     | Skupina uživatelů | *Skupina testů* | Skupina uživatelů definovaná v centru událostí, které jste vytvořili. |
-    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) |
+    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Pokud existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. |
     | | |
 
     Cílová tabulka:
@@ -126,7 +126,7 @@ Nyní se připojíte k centru událostí z Azure Průzkumník dat. Když je toto
     |---|---|---|
     | Tabulka | *Testovací navýšení* | Tabulka, kterou jste vytvořili v **TestDatabase**. |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. Podporované možnosti komprese: GZip |
-    | Mapování sloupce | *TestMapping* | Mapování, které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
+    | Mapování sloupce | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON nebo AVRO a volitelné pro jiné formáty.|
     | | |
 
     > [!NOTE]

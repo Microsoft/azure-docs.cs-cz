@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202762"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996721"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Azure Security Center.
@@ -33,17 +33,17 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
 ![zobrazení posílení zabezpečení sítě](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 > [!NOTE]
-> Doporučení adaptivního posílení zabezpečení sítě jsou podporovaná na následujících portech: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
+> Doporučení adaptivního posílení zabezpečení sítě jsou podporovaná na následujících portech: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128.
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Zobrazit výstrahy a pravidla adaptivního posílení zabezpečení sítě
 
 1. V Security Center vyberte **síť** -> **adaptivní posílení zabezpečení sítě**. Síťové virtuální počítače jsou uvedené v části tři samostatné karty:
-   * **Zdroje**, které nejsou v pořádku: Virtuální počítače, které mají v současné době doporučení a výstrahy aktivované spuštěním algoritmu adaptivního posílení sítě. 
-   * **Zdroje v pořádku**: Virtuální počítače bez výstrah a doporučení.
-   * **Nekontrolované prostředky**: Virtuální počítače, na kterých se algoritmus adaptivního posílení sítě nedá spustit kvůli jednomu z následujících důvodů:
-      * **Virtuální počítače jsou klasické virtuální počítače**: Podporují se jenom Azure Resource Manager virtuální počítače.
-      * **Není k dispozici dostatek dat**: Aby se vygenerovala přesná doporučení pro posílení provozu, Security Center vyžaduje aspoň 30 dní dat provozu.
-      * **Virtuální počítač není chráněný pomocí ASC Standard**: Pro tuto funkci mají nárok jenom virtuální počítače, které jsou nastavené na cenovou úroveň Standard Security Center.
+   * **Zdroje**, které nejsou v pořádku: virtuální počítače, které mají aktuálně spuštěné doporučení a výstrahy, se spouštějí pomocí algoritmu adaptivního posílení sítě. 
+   * **Dobré prostředky**: virtuální počítače bez výstrah a doporučení.
+   * **Nekontrolované prostředky**: virtuální počítače, na kterých se algoritmus adaptivního posílení sítě nedá spustit kvůli jednomu z následujících důvodů:
+      * **Virtuální počítače jsou klasickými virtuálními**počítači: podporují se jenom Azure Resource Manager virtuální počítače.
+      * **Není k dispozici dostatek dat**: aby bylo možné vygenerovat přesná doporučení pro posílení provozu, Security Center vyžaduje alespoň 30 dnů přenosu dat.
+      * **Virtuální počítač není chráněný pomocí ASC Standard**: pro tuto funkci mají nárok jenom virtuální počítače, které jsou nastavené na cenovou úroveň Standard Security Center.
 
      ![zdroje, které nejsou v pořádku](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -65,7 +65,7 @@ Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu po
    > [!NOTE]
    > Můžete také [Odstranit](#delete-rule) nebo [Přidat](#add-rule) pravidlo.
 
-3. Vyberte pravidla, která chcete použít na NSG, a klikněte na vykonat.
+3. Vyberte pravidla, která chcete použít na NSG, a klikněte na **vykonat**.
 
       > [!NOTE]
       > Vynutilná pravidla se přidají do NSG ochrany virtuálního počítače. (Virtuální počítač může být chráněný NSG, který je přidružený k jeho síťovému rozhraní, nebo podsíti, ve které se virtuální počítač nachází, nebo obojí)
@@ -98,7 +98,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 1. V okně **Upravit pravidlo** aktualizujte podrobnosti, které chcete změnit, a klikněte na **Uložit**.
 
    > [!NOTE]
-   > Po kliknutí na **Uložit**jste úspěšně změnili pravidlo. *Nepoužíváte ho však pro NSG.* Pokud ho chcete použít, musíte vybrat pravidlo v seznamu a kliknout na vykonat (jak je vysvětleno v dalším kroku).
+   > Po kliknutí na **Uložit**jste úspěšně změnili pravidlo. *Nepoužíváte ho však pro NSG.* Pokud ho chcete použít, musíte vybrat pravidlo v seznamu a kliknout na **vykonat** (jak je vysvětleno v dalším kroku).
 
    ![Upravit pravidlo](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
@@ -131,9 +131,9 @@ Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
 ### Odstranění pravidla <a name ="delete-rule"></a>
 
-V případě potřeby můžete Doporučené pravidlo odstranit. Můžete například určit, že použití navrhovaného pravidla může blokovat legitimní provoz.
+V případě potřeby můžete odstranit Doporučené pravidlo pro aktuální relaci. Můžete například určit, že použití navrhovaného pravidla může blokovat legitimní provoz.
 
-*Postup odstranění pravidla posílení adaptivní sítě:*
+*Postup odstranění pravidla posílení adaptivní sítě pro aktuální relaci:*
 
 1. Na kartě **pravidla** klikněte na tři tečky (...) na konci řádku pravidla a klikněte na **Odstranit**.  
 

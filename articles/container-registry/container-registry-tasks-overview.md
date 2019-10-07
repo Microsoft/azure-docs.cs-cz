@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: c62987031a73aa4840c1d036689a3c52fb4dc4a0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914666"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001401"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -27,7 +27,7 @@ Kontejnery poskytují nové úrovně virtualizace a izolují závislosti aplikac
 
 Úlohy ACR podporují několik scénářů pro sestavování a správu imagí kontejneru a další artefakty. Podrobnosti najdete v následujících částech tohoto článku.
 
-* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. V cloudu si myslíte `docker build`. `docker push`
+* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. Vezměte v úvahu `docker build`, `docker push` v cloudu.
 * **Automaticky aktivované úlohy** – povolením jedné nebo více *triggerů* sestavíte Image:
   * **[Aktivovat při aktualizaci zdrojového kódu](#trigger-task-on-source-code-update)** 
   * **[Aktivovat aktualizaci základní image](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ Cyklus vývoje vnitřních smyček, iterativní proces psaní kódu, sestavován
 
 Než začnete s prvním řádkem kódu, funkce [Rychlé úlohy](container-registry-tutorial-quick-task.md) ACR úkoly může poskytovat integrované vývojové prostředí tím, že převede přesměrování sestavení imagí kontejneru do Azure. Pomocí rychlých úloh můžete ověřit své automatizované definice sestavení a zachytit potenciální problémy před potvrzením kódu.
 
-Pomocí známého `docker build` formátu převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odešle IT úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
+Pomocí známého formátu @no__t 0 převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odešle úlohy ACR IT a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
 
 Úvod najdete v tématu rychlý Start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) v Azure Container Registry.  
 
@@ -61,9 +61,9 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když se kód p
 
 Úlohy ACR podporují následující triggery při nastavení úložiště Git jako kontextu úkolu:
 
-| Trigger | Ve výchozím nastavení povoleno |
+| Signálu | Ve výchozím nastavení povoleno |
 | ------- | ------------------ |
-| Potvrdit | Ano |
+| Potvrzuj | Ano |
 | Žádost o získání dat | Ne |
 
 Pokud chcete aktivační událost nakonfigurovat, poskytněte úlohu token (PAT) pro nastavení Webhooku v úložišti GitHubu nebo Azure DevOps.
@@ -74,7 +74,7 @@ Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém ku
 
 Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci základní image. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
 
-Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle založeny na veřejných nadřazených obrázcích, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
+Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle na základě veřejných nadřazených imagí, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
 
 Pokud je v případě, že je nadřazeným nástrojem pro správu a údržbu image architektury operačního systému nebo aplikace, třeba s kritickou opravou zabezpečení operačního systému, je potřeba aktualizovat také základní image, aby zahrnovaly kritickou opravu. Každý obrázek aplikace musí být pak znovu sestaven, aby zahrnoval tyto opravy pro odesílání dat, které jsou nyní součástí základní image.
 
@@ -99,7 +99,7 @@ Volitelně můžete naplánovat úlohu nastavením jedné nebo více *triggerů 
 
 ## <a name="multi-step-tasks"></a>Úlohy s více kroky
 
-Úlohy s více kroky poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definované v [souboru YAML](container-registry-tasks-reference-yaml.md) určují jednotlivé operace sestavení a nabízených oznámení pro Image kontejneru nebo jiné artefakty. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
+Úlohy s více kroky poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definované v [souboru YAML](container-registry-tasks-reference-yaml.md) určují jednotlivé operace sestavení a nabízených oznámení pro Image kontejneru nebo jiné artefakty. Mohou také definovat provedení jednoho nebo více kontejnerů, přičemž každý krok používá kontejner jako své spouštěcí prostředí.
 
 Můžete například vytvořit úlohu s více kroky, která automatizuje následující:
 
@@ -108,7 +108,7 @@ Můžete například vytvořit úlohu s více kroky, která automatizuje násled
 1. Sestavení image testu webové aplikace
 1. Spusťte testovací kontejner webové aplikace, který provádí testy proti běžícímu kontejneru aplikace.
 1. Pokud testy projde, sestavte balíček pro archivaci grafu Helm.
-1. `helm upgrade` Provedení použití nového balíčku pro archivaci grafu Helm
+1. Provedení `helm upgrade` pomocí nového balíčku pro archivaci grafu Helm
 
 Úlohy s více kroky umožňují rozdělit sestavování, spouštění a testování obrázku do více sestavených kroků s podporou mezikrokových závislostí. Díky úlohám s více kroky v ACR úlohám máte podrobnější kontrolu nad vytvářením, testováním a pracovními postupy při opravách imagí.
 
@@ -124,16 +124,17 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 | Větev hlavní větve GitHubu | Soubory v hlavní větvi úložiště GitHub (nebo jiné výchozí).  | `https://github.com/gituser/myapp-repo.git` |
 | Větev GitHubu | Konkrétní větev úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podsložka GitHubu | Soubory v podsložce v úložišti GitHubu. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Podsložka Azure DevOps | Soubory v podsložce v úložišti Azure. Příklad ukazuje kombinaci specifikace větve a podsložek. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
 
 ## <a name="image-platforms"></a>Image – platformy
 
-Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. `--platform` Zadejte značku pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). V případě architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
+Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadejte značku `--platform` pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). U architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
 
-| OS | Architektura|
+| JINÉHO | Architektura|
 | --- | ------- | 
-| Linux | AMD<br/>ARM<br/>arm64<br/>386 |
-| Windows | AMD |
+| Linux | amd64<br/>ARM<br/>arm64<br/>386 |
+| Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Zobrazit protokoly úloh
 

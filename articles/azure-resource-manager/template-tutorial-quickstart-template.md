@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1ef6dd913958f963cb62b4014c09a47903831aa
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963846"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001481"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Kurz: použití šablon Azure pro rychlý Start
 
@@ -31,7 +31,7 @@ Na konci předchozího kurzu má vaše šablona následující JSON:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
 
-Tato šablona funguje pro nasazení účtů úložiště a plánů služby App Service, ale můžete chtít přidat web do něj. Předem připravené šablony můžete použít k rychlému zjištění formátu JSON, který je potřeba k nasazení prostředku.
+Tato šablona funguje pro nasazení účtů úložiště a plánů služby App Service, ale můžete chtít do ní přidat web. Předem připravené šablony můžete použít k rychlému zjištění formátu JSON, který je potřeba k nasazení prostředku.
 
 ## <a name="find-a-template"></a>Najít šablonu
 

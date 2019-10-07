@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac78029ba2d1f45ef67ef0d858fdd2917bd4a97a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033337"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001710"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory
 
@@ -56,18 +56,15 @@ Mezi běžné motivace pro použití této funkce patří:
 
 **Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k koncovým bodům rozhraní API pro správu uživatelů poskytovanými jednotlivými dodavateli aplikací. Tyto koncové body rozhraní API správy uživatelů umožňují službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role.
 
-![Obrázek služby](./media/user-provisioning/provisioning0.PNG)
-*zřizování Azure AD 1: Služba zřizování Azure AD*
+@no__t 0Azure AD Provisioning Service @ no__t-1*Obrázek 1: služba zřizování Azure AD*
 
-![Obrázek pracovní postup](./media/user-provisioning/provisioning1.PNG)
-*odchozího zřizování uživatelů 2: Odchozí pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
+![Outbound pracovní postup zřizování uživatelů @ no__t-1*Obrázek 2: "odchozí" pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
 
-![Obrázek pracovního postupu](./media/user-provisioning/provisioning2.PNG)
-*příchozího zřizování uživatelů 3: "Příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací pro správu lidského kapitálu (HCM) pro Azure Active Directory a Windows Server Active Directory*
+![Inbound pracovní postup zřizování uživatelů @ no__t-1*Obrázek 3: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací HCM (Human investice Management) do Azure Active Directory a Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy je možné používat s automatickým zřizováním uživatelů Azure AD?
 
-Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikací SaaS a systémů lidských zdrojů a obecnou podporu pro aplikace, které implementují určité části standardu SCIM 2,0.
+Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikací SaaS a systémů lidských zdrojů a obecnou podporu pro aplikace, které implementují určité části [standardu SCIM 2,0](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010).
 
 ### <a name="pre-integrated-applications"></a>Předem integrované aplikace
 
@@ -93,7 +90,7 @@ Pomocí portálu Azure Active Directory můžete nakonfigurovat službu zřizov�
 1. Pro přidání aplikace vyberte **+ Nová aplikace** . V závislosti na scénáři přidejte jednu z následujících možností:
 
    - Možnost **Přidat vlastní aplikaci** podporuje SCIM integrace s vlastním vývojem.
-   - Všechny aplikace v části **Přidat z Galerie** > **vybrané aplikace** podporují Automatické zřizování. Další informace najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../saas-apps/tutorial-list.md) .
+   - Všechny aplikace v části **Přidat z galerie**@no__t – 1**vybrané aplikace** podporují Automatické zřizování. Další informace najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../saas-apps/tutorial-list.md) .
 
 1. Zadejte všechny podrobnosti a vyberte **Přidat**. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
 1. Vyberte **zřizování** pro správu nastavení zřizování uživatelských účtů pro aplikaci.
@@ -105,11 +102,11 @@ Pomocí portálu Azure Active Directory můžete nakonfigurovat službu zřizov�
    - Rozbalte **přihlašovací údaje správce** a zadejte přihlašovací údaje požadované pro Azure AD pro připojení k rozhraní API pro správu uživatelů aplikace. Tato část také umožňuje povolit e-mailová oznámení v případě, že přihlašovací údaje selžou nebo pokud úloha zřizování přejde do [karantény](#quarantine).
    - Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které se při zřizování nebo aktualizaci uživatelských účtů flowují mezi službou Azure AD a cílovou aplikací. Pokud cílová aplikace tuto aplikaci podporuje, Tato část vám umožní volitelně nakonfigurovat zřizování skupin a uživatelských účtů. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde můžete zobrazit a přizpůsobit atributy uživatele.
 
-     **Filtry oborů** oznamují službě zřizování, které uživatele a skupiny ve zdrojovém systému mají být zřízené nebo zrušené pro cílový systém. V podokně **mapování atributů** vyberte **obor zdrojového objektu** , chcete-li filtrovat konkrétní hodnoty atributu. Můžete například určit, že v oboru pro zřízení mají být pouze uživatelé s atributem Department (Oddělení) s hodnotou Sales (Prodej). Další informace najdete v tématu [Používání filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
+     **Filtry oborů** oznamují službě zřizování, které uživatele a skupiny ve zdrojovém systému mají být zřízené nebo zrušené pro cílový systém. V podokně **mapování atributů** vyberte **obor zdrojového objektu** , chcete-li filtrovat konkrétní hodnoty atributu. Můžete například určit, že pro zřizování by měl být v oboru pouze uživatelé s atributem "Department" (prodej). Další informace najdete v tématu [použití filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
      Další informace najdete v tématu [Přizpůsobení mapování atributů](customize-application-attributes.md).
 
-   - **Nastavení** řídí operaci služby zřizování pro aplikaci, včetně toho, jestli je aktuálně spuštěná. Nabídka **obor** vám umožní určit, jestli se má v oboru pro zřizování zadat jenom přiřazení uživatelé a skupiny, nebo jestli se má zřídit všichni uživatelé v adresáři Azure AD. Informace o přiřazování uživatelů a skupin najdete v tématu [Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
+   - **Nastavení** řídí operaci služby zřizování pro aplikaci, včetně toho, jestli je aktuálně spuštěná. Nabídka **obor** vám umožní určit, jestli se má v oboru pro zřizování zadat jenom přiřazení uživatelé a skupiny, nebo jestli se má zřídit všichni uživatelé v adresáři Azure AD. Informace o přiřazování uživatelů a skupin najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
 
 Na obrazovce Správa aplikací vyberte **zřizovací protokoly (Preview)** a zobrazte záznamy všech operací spuštěných službou zřizování Azure AD. Další informace najdete v [průvodci zřizováním sestav](check-status-user-account-provisioning.md).
 
@@ -128,7 +125,7 @@ Po spuštění služby zřizování se první synchronizace spustí:
 
 1. Dotazujte všechny uživatele a skupiny ze zdrojového systému a načtěte všechny atributy definované v [mapování atributů](customize-application-attributes.md).
 1. Filtrování vrácených uživatelů a skupin pomocí všech nakonfigurovaných [přiřazení](assign-user-or-group-access-portal.md) nebo [filtrů rozsahů založených na atributech](define-conditional-rules-for-provisioning-user-accounts.md).
-1. Když je uživatel přiřazen nebo je v oboru pro zřizování, služba se dotazuje cílového systému pro odpovídajícího uživatele pomocí zadaných [atributů odpovídajícího atributu](customize-application-attributes.md#understanding-attribute-mapping-properties). Příklad: Pokud je název userPrincipal ve zdrojovém systému odpovídajícím atributem a mapuje se na uživatelské jméno v cílovém systému, pak služba zřizování dotazuje cílový systém pro uživatelská jména, která se shodují s hodnotami userPrincipal názvů ve zdrojovém systému.
+1. Když je uživatel přiřazen nebo je v oboru pro zřizování, služba se dotazuje cílového systému pro odpovídajícího uživatele pomocí zadaných [atributů odpovídajícího atributu](customize-application-attributes.md#understanding-attribute-mapping-properties). Příklad: Pokud je název userPrincipal ve zdrojovém systému odpovídajícím atributem a mapuje se na uživatelské jméno v cílovém systému, pak služba zřizování dotazuje cílový systém pro uživatelská jména, která se shodují s hodnotami userPrincipal názvu ve zdrojovém systému.
 1. Pokud se v cílovém systému nenajde shodný uživatel, bude vytvořen pomocí atributů vrácených ze zdrojového systému. Po vytvoření uživatelského účtu služba zřizování detekuje a ukládá do mezipaměti ID cílového systému pro nového uživatele, který se používá ke spuštění všech budoucích operací s tímto uživatelem.
 1. Pokud se najde shodný uživatel, aktualizuje se pomocí atributů poskytovaných zdrojovým systémem. Po porovnání uživatelského účtu služba zřizování detekuje a ukládá do mezipaměti ID cílového systému pro nového uživatele, který se používá ke spuštění všech budoucích operací s tímto uživatelem.
 1. Pokud mapování atributů obsahuje "referenční" atributy, služba provede další aktualizace v cílovém systému pro vytvoření a propojení odkazovaných objektů. Uživatel může například mít v cílovém systému atribut "nadřízený", který je propojený s jiným uživatelem vytvořeným v cílovém systému.
@@ -170,7 +167,7 @@ Pokud se jednotliví uživatelé v cílovém systému nedají přidat, aktualizo
 
 Tyto chyby lze vyřešit úpravou hodnot atributů pro ovlivněného uživatele ve zdrojovém systému nebo úpravou mapování atributů na nezpůsobující konflikty.
 
-### <a name="quarantine"></a>Karanténa
+### <a name="quarantine"></a>Umístit
 
 Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nedaří kvůli chybě (například pro neplatná pověření správce), úloha zřizování přejde do stavu "karanténa". Tento stav je uveden v [sestavě souhrn zřizování](check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud byly e-mailová oznámení konfigurována v Azure Portal.
 

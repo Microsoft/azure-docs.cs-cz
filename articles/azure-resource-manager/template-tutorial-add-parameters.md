@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 407148dadb774c72ef252ba0044655c2e219985f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963748"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001496"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Kurz: Přidání parametrů do šablony Správce prostředků
 
@@ -33,7 +33,7 @@ Na konci předchozího kurzu má vaše šablona následující JSON:
 
 Možná jste si všimli, že došlo k potížím s touto šablonou. Název účtu úložiště je pevně kódovaný. Tuto šablonu můžete použít jenom k nasazení stejného účtu úložiště pokaždé, když. Chcete-li nasadit účet úložiště s jiným názvem, bude nutné vytvořit novou šablonu, což zjevně není praktický způsob, jak automatizovat nasazení.
 
-## <a name="make-template-reusable"></a>Nastavit šablonu jako znovu
+## <a name="make-your-template-reusable"></a>Nastavení šablony k opakovanému použití
 
 Aby bylo možné šablonu znovu použít, přidejte parametr, který můžete použít k předání názvu účtu úložiště. Zvýrazněný kód JSON v následujícím příkladu ukazuje, co se změnilo ve vaší šabloně. Parametr **úložiště** je identifikován jako řetězec. Maximální délka je nastavená na 24 znaků, aby nedocházelo k příliš dlouhým názvům.
 
@@ -41,7 +41,7 @@ Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Pojďme šablonu nasadit. Následující příklad nasadí šablonu pomocí Azure CLI nebo PowerShellu. Všimněte si, že jako jednu z hodnot v příkazu nasazení zadáte název účtu úložiště. Jako název účtu úložiště zadejte stejný název, který jste použili v předchozím kurzu.
 
@@ -87,7 +87,7 @@ Předchozí šablona vždycky nasadila účet úložiště Standard_LRS. Možná
 
 Parametr **storageSKU** má výchozí hodnotu. Tato hodnota se používá v případě, že při nasazení není zadána hodnota. Obsahuje také seznam povolených hodnot. Tyto hodnoty odpovídají hodnotám, které jsou potřeba k vytvoření účtu úložiště. Nechcete, aby uživatelé šablony předávali do SKU, které nefungují.
 
-## <a name="redeploy-template"></a>Znovu nasadit šablonu
+## <a name="redeploy-the-template"></a>Opětovné nasazení šablony
 
 Jste připraveni znovu nasadit. Vzhledem k tomu, že výchozí SKU je nastavená na **Standard_LRS**, nemusíte zadávat hodnotu pro tento parametr.
 

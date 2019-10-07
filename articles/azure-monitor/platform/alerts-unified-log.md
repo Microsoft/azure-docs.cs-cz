@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677752"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001616"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -127,16 +127,25 @@ Vzhledem k tomu, že výstraha je nakonfigurovaná tak, aby se aktivovala v záv
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Pravidlo upozornění prohledávání protokolu – spuštění a stav
 
-Pravidlo upozornění prohledávání protokolu funguje na Logic predikátd uživatelem podle konfigurace a použitém dotazu vlastního analýzy. Vzhledem k tomu, že logika monitorování zahrnuje přesný stav nebo důvod, proč by pravidlo upozornění mělo být triggerem, je zapouzdřeno v analytickém dotazu, které se může lišit v každém pravidlu výstrahy protokolu. Výstrahy Azure mají omezených informace o konkrétním scénáři základní hlavní příčiny (nebo), který se vyhodnocuje při splnění nebo překročení prahové hodnoty pravidla výstrahy prohledávání protokolu. Proto se výstrahy protokolu označují jako stav bez. A pravidla upozornění protokolů se budou udržovat, pokud je podmínka výstrahy splněna výsledkem poskytnutého vlastního analytického dotazu. Bez upozornění, když se každý problém vyřeší, je logika přesného selhání monitorování v rámci analytického dotazu, který poskytuje uživatel, maskována. V současné době není k dispozici žádný mechanismus pro Azure Monitor výstrahy, aby bylo možné nedostatečně odvodit vystavení původní příčiny.
+Pravidla upozornění na prohledávání protokolu fungují pouze v logice, kterou sestavíte do dotazu. Systém výstrah nemá žádný jiný kontext stavu systému, záměr nebo hlavní příčiny odvozené dotazem. V takovém případě se výstrahy protokolu označují jako stav bez. Podmínky jsou vyhodnoceny jako "TRUE" nebo "FALSE" při každém spuštění.  Výstraha se aktivuje pokaždé, když je vyhodnocení podmínky výstrahy "TRUE", bez ohledu na to, že je aktivována dříve.    
 
-V takovém případě se vám zobrazí totéž jako s praktickým příkladem. Předpokládejme, že máme pravidlo výstrahy protokolu nazývané *Contoso-log-Alert*, a to v příkladu, který je k [dispozici pro počet výsledků výstrah protokolu typu výsledky](#example-of-number-of-records-type-log-alert) – kde je vlastní dotaz výstrahy navržený tak, aby v protokolech vyhledal kód výsledku 500.
+Pojďme se tomuto chování podívat v praxi s praktickým příkladem. Předpokládejme, že máme pravidlo výstrahy protokolu s názvem *Contoso-log-Alert*, které je nakonfigurované tak, jak je uvedeno v příkladu, který je uvedený v poli [počet výsledků výstrah protokolu typu výsledky](#example-of-number-of-records-type-log-alert). Podmínka je vlastní dotaz výstrahy navržený tak, aby v protokolech hledal kód výsledku 500. Pokud se v protokolech najde jeden další kód výsledku pro 500, bude podmínka výstrahy pravdivá. 
 
-- V 1:05 PM, když se v programu contoso-log-Alert spustila upozornění Azure, výsledkem hledání protokolu jsou nulové záznamy s kódem výsledku, který má 500. Vzhledem k tomu, že nula je pod prahovou hodnotou a výstraha není aktivována.
-- U další iterace v 1:10. odp. při spuštění výstrahy Azure pomocí výstrah Azure se ve výsledku hledání protokolu poskytlo pět záznamů s kódem výsledku jako 500. Vzhledem k tomu, že pět překročilo prahovou hodnotu a aktivuje se související akce, zobrazí se.
-- V 1:15 PM, když se v programu contoso-log-Alert spustila upozornění Azure, výsledkem hledání protokolu jsou dva záznamy s 500 kódem výsledku. Vzhledem k tomu, že druhá hodnota překračuje prahovou hodnotu a je aktivována výstraha, zobrazí se související akce.
-- Nyní v další iteraci v 1:20. odp. když se spustí výstraha Azure pomocí protokolu contoso-log-Alert, výsledek hledání protokolu znovu zadal žádné záznamy s 500 kódem výsledku. Vzhledem k tomu, že nula je pod prahovou hodnotou a výstraha není aktivována.
+V každém intervalu níže systém výstrah Azure vyhodnotí podmínku pro *protokol contoso-log-Alert*.
 
-Ve výše uvedeném případě se ale v 1:15 PM – výstrahy Azure nemůžou zjistit, jestli se základní problémy zjištěné v 1:10 trvaly a jestli dojde k čistým novým chybám. Protože dotaz poskytnutý uživatelem může přihlédnout k dřívějším záznamům – výstrahy Azure si můžou být. Vzhledem k tomu, že logika výstrahy je zapouzdřovaná v dotazu výstrahy – tyto dva záznamy s 500 kódem výsledku zobrazeným na 1:15 1:10 odp. Proto pokud se při spuštění protokolu contoso-log-Alert spustí v 1:15 PM, nakonfigurované akce se znovu aktivuje, aby se chyba nacházela na straně upozornění. Nyní v 1:20. odp. když se zobrazí nulový počet záznamů s kódem výsledku 500 – výstrahy Azure nemůžou být jisté, že se teď vyřeší příčina 500 kód výsledku na 1:10 PM a 1:15 PM, a Azure Monitor výstrahy můžou bez obav odvodit problémy s chybami 500, ke kterým dochází znovu. Proto se společnost Contoso-log-Alert nezměnila na Vyřešeno v řídicím panelu upozornění Azure a/nebo v oznámeních oznamujících vyřešení výstrahy. Místo toho uživatel, který rozumí přesné podmínky nebo důvod pro logiku vloženou v analytickém dotazu, může [výstrahu označit podle potřeby jako uzavřenou](alerts-managing-alert-states.md) .
+
+| Interval    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
+| ------- | ----------| ----------| ------- 
+| 1:05 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce.
+| 1:10 ODP. | 2 záznamy | 2 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.
+| 1:15 ODP. | 5 záznamů | 5 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.
+| 1:20 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce. Stav výstrahy zůstane aktivní.
+
+Předchozí případ použijte jako příklad:
+
+Výstrahy Azure na adrese 1:15 PM nemůžou určit, jestli se podkladové problémy v 1:10 trvají a jestli jsou v záznamech čisté nové chyby nebo se opakují starší chyby v 1:10PM. Dotaz poskytnutý uživatelem může nebo nemusí být přihlédnuto k dřívějším záznamům a systém není známý. Systém upozornění Azure je na straně velmi nejenom na sobě a aktivuje výstrahu a související akce v 1:15./odp. 
+
+V 1:20. odp. když se v 500 kódu výsledku zobrazí nula záznamů, upozornění Azure nemůže být jisté, že se teď vyřeší kód výsledku 500, který se zobrazuje na 1:10 PM a 1:15 ODP. Neví se, jestli problémy s chybou 500 proběhne ze stejných důvodů znovu. Proto se *Společnost Contoso-log-Alert* nemění na **vyřešených** řídicích panelech Azure Alert a oznámení se neodesílají, protože upozornění je vyřešené. Pouze vy, který zná přesnou podmínku nebo důvod pro logiku vloženou v analytickém dotazu, může [výstrahu označit jako uzavřenou](alerts-managing-alert-states.md) podle potřeby.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace výstrah protokolu
 

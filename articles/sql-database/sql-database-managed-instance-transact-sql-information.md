@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959941"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000493"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -110,7 +110,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 
 Viz [Vytvoření certifikátu](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Alternativní řešení**: skript pro certifikát nebo privátní klíč, Uložit jako soubor. SQL a vytvořit z binárního souboru:
+**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -118,7 +118,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Pověřovací
+### <a name="credential"></a>pověřovací
 
 Jsou podporovány pouze identity Azure Key Vault a `SHARED ACCESS SIGNATURE`. Uživatelé systému Windows nejsou podporováni.
 

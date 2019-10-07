@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: beb2e6a16a303f633b36709fee2a60cca160d1b6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963804"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001535"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Kurz: Přidání výstupů do šablony Správce prostředků
 
@@ -49,7 +49,7 @@ Pomocí [referenční](resource-group-template-functions-resource.md#reference) 
 
 Nakonec vrátí vlastnost **primaryEndpoints** z účtu úložiště.
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Jste připraveni šablonu nasadit a podívat se na vrácenou hodnotu.
 
@@ -93,7 +93,7 @@ Ve výstupu příkazu pro nasazení se zobrazí objekt podobný tomuto:
 
 ## <a name="review-your-work"></a>Kontrola práce
 
-Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co jste provedli. Vytvořili jste šablonu s parametry, které lze snadno poskytnout. Šablona se opakovaně používá v různých prostředích, protože umožňuje přizpůsobení a dynamicky vytváří potřebné hodnoty. Vrátí informace o účtu úložiště, který můžete ve svém skriptu použít.
+Za posledních šest kurzů jste provedli spoustu. Pojďme se podívat na to, co jste provedli. Vytvořili jste šablonu s parametry, které lze snadno poskytnout. Šablona se opakovaně používá v různých prostředích, protože umožňuje přizpůsobení a dynamicky vytváří potřebné hodnoty. Vrátí taky informace o účtu úložiště, který můžete ve svém skriptu použít.
 
 Teď se podívejme na skupinu prostředků a historii nasazení.
 

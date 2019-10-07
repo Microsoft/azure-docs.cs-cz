@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9fc6e57a7e002cd4ffcf62c7779fb2626ce9c839
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963797"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001465"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Kurz: Přidání proměnných do šablony Správce prostředků
 
@@ -53,7 +53,7 @@ Parametr **storagePrefix** vám umožní předat předponu, která vám pomůže
 
 Nakonec si všimněte, že název úložiště je nyní nastaven na proměnnou namísto parametru.
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Pojďme šablonu nasadit. Nasazení této šablony je snazší než u předchozích šablon, protože zadáváte pouze předponu názvu úložiště.
 

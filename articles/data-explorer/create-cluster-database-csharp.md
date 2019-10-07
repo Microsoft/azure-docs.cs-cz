@@ -7,28 +7,28 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4a3f37c232fcd7a0fcbdac051ed36916ef5c2868
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326670"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996243"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocíC#
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cluster-database-portal.md)
-> * [Rozhraní příkazového řádku](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Bran](create-cluster-database-portal.md)
+> * [CLI](create-cluster-database-cli.md)
+> * [Prostředí](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
+Azure Průzkumník dat je rychlá a plně spravovaná služba analýzy dat pro analýzu velkých objemů datových proudů z aplikací, webů, zařízení IoT a dalších prostředků v reálném čase. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí nástroje C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit **vývoj pro Azure** .
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -38,40 +38,50 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
 
 1. Nainstalujte [balíček NuGet Microsoft. IdentityModel. clients. Active](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pro ověřování.
 
+## <a name="authentication"></a>Ověřování
+Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID` a `Client Secret`.
+
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
 
 1. Vytvořte cluster pomocí následujícího kódu:
 
     ```csharp
-    var resourceGroupName = "testrg";
-    var clusterName = "mykustocluster";
-    var location = "Central US";
-    var sku = new AzureSku("D13_v2", 5);
-    var cluster = new Cluster(location, sku);
-
-    var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantName}");
-    var credential = new ClientCredential(clientId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", clientSecret: "xxxxxxxxxxxxxx");
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
     var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
     var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
 
     var kustoManagementClient = new KustoManagementClient(credentials)
     {
-        SubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+        SubscriptionId = subscriptionId
     };
 
-    kustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
+    var resourceGroupName = "testrg";
+    var clusterName = "mykustocluster";
+    var location = "Central US";
+    var skuName = "Standard_D13_v2";
+    var tier = "Standard";
+    var capacity = 5;
+    var sku = new AzureSku(skuName, tier, capacity);
+    var cluster = new Cluster(location, sku);
+    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
-   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Požadovaný název clusteru.|
-   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | skuName | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
+   | vrstva | *Standardní* | Úroveň SKU. |
+   | klíčivost | *Automatické* | Počet instancí clusteru |
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
-    Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
-
-1. Nastavení [přihlašovacích údajů](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+    > [!NOTE]
+    > **Vytvoření clusteru** je dlouhodobá operace, takže se doporučujeme místo CreateOrUpdate použít CreateOrUpdateAsync. 
 
 1. Spusťte následující příkaz a ověřte, zda byl cluster úspěšně vytvořen:
 
@@ -79,7 +89,7 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-Pokud výsledek obsahuje `ProvisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
+Pokud výsledek obsahuje `ProvisioningState` s hodnotou `Succeeded`, cluster byl úspěšně vytvořen.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 
@@ -91,13 +101,13 @@ Pokud výsledek obsahuje `ProvisioningState` `Succeeded` hodnotu, cluster se ús
     var databaseName = "mykustodatabase";
     var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
-    kustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
+    await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
-   |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+   |**Nastavením** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | databaseName | *mykustodatabase* | Název vaší databáze.|
+   | Databáze | *mykustodatabase* | Název vaší databáze.|
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
    | softDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
    | hotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |

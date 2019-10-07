@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949633"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001724"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM zřizování uživatelů pomocí Azure Active Directory
 
-Systém pro správu identit napříč doménami (SCIM) je standardizovaný protokol a schéma, které se zaměřuje na zajištění větší konzistence v tom, jak jsou identity spravované napříč systémy. Když aplikace podporuje koncový bod SCIM pro správu uživatelů, služba zřizování uživatelů Azure AD může posílat žádosti o vytvoření, úpravu nebo odstranění přiřazených uživatelů a skupin do tohoto koncového bodu.
+Systém pro správu identit napříč doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) je standardizovaný protokol a schéma, které se zaměřuje na zajištění větší konzistence v tom, jak jsou identity spravované napříč systémy. Když aplikace podporuje koncový bod SCIM pro správu uživatelů, služba zřizování uživatelů Azure AD může posílat žádosti o vytvoření, úpravu nebo odstranění přiřazených uživatelů a skupin do tohoto koncového bodu.
 
 Mnohé z aplikací, pro které Azure AD podporuje [předem integrované Automatické zřizování uživatelů](../saas-apps/tutorial-list.md) , implementují SCIM jako způsob přijímání oznámení o změnách uživatelů.  Kromě toho můžou zákazníci připojit aplikace, které podporují konkrétní profil [specifikace protokolu SCIM 2,0](https://tools.ietf.org/html/rfc7644) , pomocí Obecné možnosti integrace "mimo Galerie" v Azure Portal.
 
@@ -1338,20 +1338,20 @@ Prostředky skupiny jsou identifikovány identifikátorem schématu `urn:ietf:pa
 | Azure Active Directory uživatel | "urn: IETF: param: SCIM: schemas: rozšíření: Enterprise: 2.0: User" |
 | --- | --- |
 | IsSoftDeleted |aktivní |
-| displayName |displayName |
+| DisplayName |DisplayName |
 | Faxu – TelephoneNumber |phoneNumbers [typ EQ "fax"]. hodnota |
-| givenName |název. křestní jméno |
-| jobTitle |hlava |
+| GivenName |název. křestní jméno |
+| JobTitle |hlava |
 | pošta |e-maily [typ EQ "Work"]. Value |
-| mailNickname |externalId |
-| programu |programu |
+| MailNickname |externalId |
+| Programu |Programu |
 | telefon |phoneNumbers [Type EQ "mobilní"]. Value |
 | Objektu |ID |
 | Ovládacím |adresy [typ EQ "Work"]. postalCode |
 | proxy – adresy |e-maily [Type EQ "other"]. Osa |
 | fyzické doručování – Office |adresy [Type EQ "other"]. Formátu |
 | streetAddress |adresy [Type EQ "]. streetAddress |
-| příjmení |název. rodina |
+| Příjmení |název. rodina |
 | telefonní číslo |phoneNumbers [typ EQ "Work"]. Value |
 | uživatel – hlavní |Jmen |
 
@@ -1359,9 +1359,9 @@ Prostředky skupiny jsou identifikovány identifikátorem schématu `urn:ietf:pa
 
 | Skupina Azure Active Directory | urn: IETF: parametry: SCIM: schemas: Core: 2.0: Group |
 | --- | --- |
-| displayName |externalId |
+| DisplayName |externalId |
 | pošta |e-maily [typ EQ "Work"]. Value |
-| mailNickname |displayName |
+| MailNickname |DisplayName |
 | členy |členy |
 | Objektu |ID |
 | proxyAddresses |e-maily [Type EQ "other"]. Osa |

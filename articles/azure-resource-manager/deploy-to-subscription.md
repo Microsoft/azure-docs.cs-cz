@@ -1,35 +1,52 @@
 ---
-title: Vytvoření skupiny prostředků a prostředků v předplatném – šablona Azure Resource Manager
+title: Vytvoření skupin prostředků a prostředků v předplatném – šablona Azure Resource Manager
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 37f2b04a62d94cce42b095540380460c38bc5b79
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 913014a9b7e24345cd21979ba20ea1a1a938d022
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772939"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001603"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
-Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Můžete ale také vytvořit skupiny prostředků Azure a vytvořit prostředky Azure na úrovni předplatného. Pokud chcete nasadit šablony na úrovni předplatného, použijte Azure CLI a Azure PowerShell. Azure Portal nepodporuje nasazení na úrovni předplatného.
+Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Můžete ale také vytvořit prostředky na úrovni předplatného. Nasazení na úrovni předplatného můžete použít k provádění akcí, které na této úrovni mají smysl, jako je třeba vytváření skupin prostředků nebo přiřazování [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
-Pokud chcete vytvořit skupinu prostředků v Azure Resource Manager šabloně, definujte prostředek [Microsoft. Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) s názvem a umístěním pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasadit prostředky do této skupiny prostředků ve stejné šabloně. Mezi prostředky, které můžete nasadit na úrovni předplatného, patří: [Zásady](../governance/policy/overview.md)a [řízení přístupu na základě role](../role-based-access-control/overview.md).
+Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API. Azure Portal nepodporuje nasazení na úrovni předplatného.
 
-## <a name="deployment-considerations"></a>Aspekty nasazování
+## <a name="supported-resources"></a>Podporované prostředky
 
-Nasazení na úrovni předplatného se liší od nasazení skupiny prostředků v následujících aspektech:
+Na úrovni předplatného můžete nasadit následující typy prostředků:
 
-### <a name="schema-and-commands"></a>Schéma a příkazy
+* [nasazení](/azure/templates/microsoft.resources/deployments) 
+* [peerAsns](/azure/templates/microsoft.peering/peerasns)
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
+* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
+* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
-Schéma a příkazy, které používáte pro nasazení na úrovni předplatného, se liší od nasazení skupin prostředků. 
+### <a name="schema"></a>Schéma
 
-Pro schéma použijte `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`.
+Schéma, které používáte pro nasazení na úrovni předplatného, se liší od schématu pro nasazení skupin prostředků.
 
-Pro příkaz Azure CLI Deployment použijte [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Například následující příkaz rozhraní příkazového řádku nasadí šablonu pro vytvoření skupiny prostředků:
+Pro schéma použijte:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+## <a name="deployment-commands"></a>Příkazy nasazení
+
+Příkazy pro nasazení na úrovni předplatného se liší od příkazů pro nasazení skupin prostředků.
+
+Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Následující příklad nasadí šablonu pro vytvoření skupiny prostředků:
 
 ```azurecli-interactive
 az deployment create \
@@ -39,7 +56,8 @@ az deployment create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-Pro příkaz nasazení prostředí PowerShell použijte rutinu [New-AzDeployment](/powershell/module/az.resources/new-azdeployment). Například následující příkaz prostředí PowerShell nasadí šablonu pro vytvoření skupiny prostředků:
+
+Pro příkaz nasazení prostředí PowerShell použijte rutinu [New-AzDeployment](/powershell/module/az.resources/new-azdeployment). Následující příklad nasadí šablonu pro vytvoření skupiny prostředků:
 
 ```azurepowershell-interactive
 New-AzDeployment `
@@ -50,21 +68,27 @@ New-AzDeployment `
   -rgLocation centralus
 ```
 
-### <a name="deployment-name-and-location"></a>Název a umístění nasazení
+V případě REST API použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
 
-Při nasazování do svého předplatného musíte zadat umístění pro nasazení. Můžete také zadat název nasazení. Pokud název nasazení nezadáte, použije se jako název nasazení název šablony. Například nasazení šablony s názvem **azuredeploy. JSON** vytvoří výchozí název nasazení **azuredeploy**.
+## <a name="deployment-location-and-name"></a>Umístění a název nasazení
 
-Umístění nasazení na úrovni předplatného je neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem, ale s jiným umístěním. Pokud se zobrazí kód `InvalidDeploymentLocation`chyby, použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
+Pro nasazení na úrovni předplatného musíte zadat umístění pro nasazení. Umístění nasazení je oddělené od umístění prostředků, které nasazujete. Umístění nasazení určuje, kam se mají ukládat data nasazení.
 
-### <a name="use-template-functions"></a>Použití funkcí šablon
+Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy. JSON** vytvoří výchozí název nasazení **azuredeploy**.
+
+Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem, ale s jiným umístěním. Pokud se zobrazí kód chyby `InvalidDeploymentLocation`, buď použijte jiný název nebo stejné umístění jako předchozí nasazení pro daný název.
+
+## <a name="use-template-functions"></a>Použití funkcí šablon
 
 U nasazení na úrovni předplatného se při používání funkcí šablon vyskytly důležité předpoklady:
 
 * Funkce [Resource ()](resource-group-template-functions-resource.md#resourcegroup) **není podporována.**
-* Funkce [ResourceID ()](resource-group-template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Například Získejte ID prostředku pro definici zásady s`resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
+* Funkce [ResourceID ()](resource-group-template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Můžete například získat ID prostředku pro definici zásady s `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`.
 * Funkce [Reference ()](resource-group-template-functions-resource.md#reference) a [list ()](resource-group-template-functions-resource.md#list) jsou podporovány.
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
+
+Pokud chcete vytvořit skupinu prostředků v Azure Resource Manager šabloně, definujte prostředek [Microsoft. Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) s názvem a umístěním pro skupinu prostředků. Můžete vytvořit skupinu prostředků a nasadit prostředky do této skupiny prostředků ve stejné šabloně.
 
 Následující šablona vytvoří prázdnou skupinu prostředků.
 
@@ -93,10 +117,6 @@ Následující šablona vytvoří prázdnou skupinu prostředků.
     "outputs": {}
 }
 ```
-
-Schéma šablony lze nalézt [zde](/azure/templates/microsoft.resources/allversions). Podobné šablony najdete na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-
-## <a name="create-multiple-resource-groups"></a>Vytvoření více skupin prostředků
 
 Pomocí [elementu Copy](resource-group-create-multiple.md) se skupinami prostředků vytvořte více než jednu skupinu prostředků. 
 
@@ -133,9 +153,9 @@ Pomocí [elementu Copy](resource-group-create-multiple.md) se skupinami prostře
 }
 ```
 
-Informace o iteraci prostředků najdete v tématu [nasazení více než jedné instance prostředku nebo vlastnosti v šablonách Azure Resource Manager](./resource-group-create-multiple.md)a [v kurzu: Vytvořte více instancí prostředků pomocí šablon](./resource-manager-tutorial-create-multiple-instances.md)správce prostředků.
+Informace o iteraci prostředků najdete v tématu [nasazení více než jedné instance prostředku nebo vlastnosti v šablonách Azure Resource Manager](./resource-group-create-multiple.md)a [kurzu: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 
-## <a name="create-resource-group-and-deploy-resources"></a>Vytvoření skupiny prostředků a nasazení prostředků
+## <a name="resource-group-and-resources"></a>Skupina prostředků a prostředky
 
 Pokud chcete vytvořit skupinu prostředků a nasadit do ní prostředky, použijte vnořenou šablonu. Vnořená Šablona definuje prostředky pro nasazení do skupiny prostředků. Nastavte vnořenou šablonu jako závislou na skupině prostředků, abyste před nasazením prostředků zajistili, že skupina prostředků existuje.
 
@@ -335,9 +355,10 @@ New-AzDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../role-based-access-control/role-assignments-template.md).
 * Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v tématu [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Ukázkové šablony najdete na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
 * Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](resource-group-authoring-templates.md). 
 * Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](resource-group-template-functions.md).

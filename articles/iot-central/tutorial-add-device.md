@@ -9,26 +9,23 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960529"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001350"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání reálného zařízení do aplikace Azure IoT Central
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-V tomto kurzu se dozvíte, jak do IoT Central aplikace Microsoft Azure přidat a nakonfigurovat reálné zařízení. 
-_* K dokončení tohoto kurzu nepotřebujete své vlastní externí zařízení. Reálné zařízení bude sestaveno jako kódovaná aplikace spuštěná v prostředí příkazového řádku._ 
+V tomto kurzu se dozvíte, jak do IoT Central aplikace Microsoft Azure přidat a nakonfigurovat *reálné zařízení* . V tomto kurzu navedete kód reálného zařízení pomocí Node. js a spustíte kód na stolním počítači. K dokončení tohoto kurzu nepotřebujete samostatné zařízení IoT, jako je například zařízení malin PI nebo MXChip IoT DevKit.
 
 Tento kurz se skládá ze dvou částí:
 
 * Nejdřív se naučíte, jak v aplikaci Azure IoT Central přidat a nakonfigurovat reálné zařízení. Na konci této části načtěte připojovací řetězec, který se použije ve druhé části.
 * Jako vývojář zařízení si pak přečtěte informace o kódu na skutečném zařízení. Do vzorového kódu přidáte připojovací řetězec z první části.
-
-
 
 V tomto kurzu se naučíte:
 
@@ -99,7 +96,7 @@ Následující kroky ukazují, jak připravit ukázku [Node. js](https://nodejs.
 
    ![Stránka zařízení, na které se zobrazuje odkaz zobrazit informace o připojení](media/tutorial-add-device/connectionlink.png)
 
-1. Na stránce **připojení zařízení** si poznamenejte **ID oboru**, **ID zařízení** a hodnoty **primárního klíče** . Tyto hodnoty použijete později v tomto kurzu.
+1. Na stránce **připojení zařízení** si poznamenejte **ID oboru**, **ID zařízení**a hodnoty **primárního klíče** . Tyto hodnoty použijete později v tomto kurzu.
 
    ![Podrobnosti připojení](media/tutorial-add-device/device-connect.png)
 

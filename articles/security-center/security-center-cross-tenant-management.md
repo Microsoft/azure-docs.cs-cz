@@ -1,6 +1,6 @@
 ---
 title: Správa více tenantů v Azure Security Center | Microsoft Docs
-description: " Informace o povolení shromažďování dat ve službě Azure Security Center. "
+description: " Naučte se, jak povolit shromažďování dat v Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 178911390a4cb694171adf6c807369cab0c0499a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202367"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996941"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Správa mezi klienty v Security Center
 
@@ -45,15 +45,16 @@ V horním řádku nabídek klikněte na ikonu filtru a vyberte odběry z adresá
 
 Zobrazení a akce jsou v podstatě stejné. Následuje několik příkladů:
 
-- **Spravovat zásady zabezpečení**: Z jednoho zobrazení spravujte stav zabezpečení mnoha prostředků pomocí [zásad](tutorial-security-policy.md), provedete akce s doporučeními zabezpečení a shromáždíte a spravujete data související se zabezpečením.
-- **Vylepšete zabezpečené skóre a stav dodržování předpisů**: Díky viditelnosti mezi klienty můžete zobrazit celkové stav zabezpečení všech vašich klientů a tam, kde a jak nejlépe vylepšit [bezpečné skóre](security-center-secure-score.md) a [dodržování předpisů stav](security-center-compliance-dashboard.md) pro každé z nich.
-- **Opravit doporučení**: Monitorujte a opravte [doporučení](security-center-recommendations.md) pro mnoho prostředků z různých tenantů najednou. Pak můžete okamžitě řešit ohrožení zabezpečení, která představují nejvyšší riziko ve všech klientech.
-- **Spravovat výstrahy**: Zjišťuje [výstrahy](security-center-alerts-overview.md) v různých klientech. Proveďte akci s prostředky, které nedodržují předpisy pro [nápravné kroky](security-center-managing-and-responding-alerts.md).
+- **Správa zásad zabezpečení**: z jednoho zobrazení spravujte stav zabezpečení mnoha prostředků pomocí [zásad](tutorial-security-policy.md), provedete akce s doporučeními zabezpečení a shromáždíte a spravujete data související se zabezpečením.
+- **Vylepšení zabezpečeného skóre a stav dodržování předpisů**: Díky viditelnosti mezi klienty můžete zobrazit celkové stav zabezpečení všech vašich klientů a kde a jak nejlépe vylepšit zabezpečení [skóre](security-center-secure-score.md) a [dodržování předpisů stav](security-center-compliance-dashboard.md) pro každé z nich.
+- **Opravit doporučení**: Sledujte a opravte [doporučení](security-center-recommendations.md) pro mnoho prostředků od různých tenantů najednou. Pak můžete okamžitě řešit ohrožení zabezpečení, která představují nejvyšší riziko ve všech klientech.
+- **Spravovat výstrahy**: zjišťovat [výstrahy](security-center-alerts-overview.md) v různých klientech. Proveďte akci s prostředky, které nedodržují předpisy pro [nápravné kroky](security-center-managing-and-responding-alerts.md).
 
-- **Spravujte pokročilé funkce ochrany cloudu a další možnosti**: Spravujte různé služby zjišťování a ochrany před hrozbami, jako je například [přístup k virtuálnímu počítači JIT (just-in-time)](security-center-just-in-time.md), [adaptivní posílení sítě](security-center-adaptive-network-hardening.md), [Adaptivní řízení aplikací](security-center-adaptive-application.md)a další.
+- **Spravujte pokročilé funkce ochrany cloudu a další informace**: Spravujte různé služby zjišťování a ochrany před hrozbami, jako je například [přístup k virtuálnímu počítači JIT (just-in-time)](security-center-just-in-time.md), [adaptivní posílení sítě](security-center-adaptive-network-hardening.md), [Adaptivní řízení aplikací](security-center-adaptive-application.md)a další.
  
 ## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+Tento článek vysvětluje, jak funguje Správa mezi klienty v Security Center. Další informace o Security Center najdete v následujících tématech:
 
-* [Posílení zabezpečení stav pomocí Azure Security Center](security-center-monitoring.md)– Naučte se monitorovat stav svých prostředků Azure.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
+* [Posílit stav zabezpečení pomocí Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
+* [Nejčastější](security-center-faq.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.
+* [Přečtěte si o Azure Lighthouse v podnikových scénářích](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) – Zjistěte, jak může Azure Lighthouse zjednodušit správu mezi klienty v rámci podniku, který používá víc TENANTŮ Azure AD.
