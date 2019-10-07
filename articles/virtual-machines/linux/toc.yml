@@ -111,6 +111,14 @@
           href: acu.md
         - name: Kvóty virtuálních procesorů
           href: quotas.md
+        - name: Rezervované instance
+          items:
+            - name: Předplacení pro virtuální počítače
+              href: prepay-reserved-vm-instances.md
+            - name: Co jsou rezervace Azure?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibilita velikosti instance virtuálního počítače
+              href: reserved-vm-instance-size-flexibility.md
         - name: Výsledky srovnávacích testů
           href: compute-benchmark-scores.md
     - name: Schválené distribuce
@@ -302,16 +310,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Vytvoření upozornění protokolu
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Správa nákladů
-      items:
-        - name: Předplacení virtuálních počítačů – rezervace Azure
-          href: prepay-reserved-vm-instances.md
-        - name: Předplacení softwarových plánů Azure
-          href: prepay-suse-software-charges.md
-        - name: Co jsou rezervace Azure?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibilita velikosti instance virtuálního počítače
-          href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
         - name: Galerie sdílených imagí
@@ -378,8 +376,6 @@
           href: manage-availability.md
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
           href: proximity-placement-groups.md
-        - name: Vertikální škálování
-          href: vertical-scaling-automation.md
         - name: Vytvoření virtuálního počítače v zóně dostupnosti
           href: create-cli-availability-zone.md
     - name: Použití nástrojů automatizace
