@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ef060127840838778a00fdabd2d56b2ef23d6f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082695"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035018"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux
 
-1. Aktualizujte jádro (doporučeno). Pokud se rozhodnete neaktualizovat jádro, ujistěte se, že verze `kernel-devel` nástroje a `dkms` jsou vhodné pro vaše jádro.
+1. Aktualizujte jádro (doporučeno). Pokud se rozhodnete jádro neaktualizovat, zajistěte, aby byly verze `kernel-devel` a `dkms` pro vaše jádro vhodné.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -190,7 +190,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    
    sudo apt-get install linux-azure -y
    ```
-3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
+3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -223,14 +223,14 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Přidejte následující `/etc/nvidia/gridd.conf`:
+8. Do `/etc/nvidia/gridd.conf` přidejte následující:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+9. Z `/etc/nvidia/gridd.conf` odeberte následující z, pokud je k dispozici:
  
    ```
    FeatureType=0
@@ -240,7 +240,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS nebo Red Hat Enterprise Linux 
 
-1. Aktualizujte jádro a DKMS (doporučeno). Pokud se rozhodnete neaktualizovat jádro, ujistěte se, že verze `kernel-devel` nástroje a `dkms` jsou vhodné pro vaše jádro.
+1. Aktualizujte jádro a DKMS (doporučeno). Pokud se rozhodnete jádro neaktualizovat, zajistěte, aby byly verze `kernel-devel` a `dkms` pro vaše jádro vhodné.
  
    ```bash  
    sudo yum update
@@ -254,7 +254,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo yum install hyperv-daemons
    ```
 
-2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
+2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor v `/etc/modprobe.d` s názvem `nouveau.conf` s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -277,7 +277,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
    ```
  
-4. Znovu se připojte k virtuálnímu počítači a `lspci` spusťte příkaz. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
+4. Znovu se připojte k virtuálnímu počítači a spusťte příkaz `lspci`. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
  
 5. Stažení a instalace ovladače mřížky:
 
@@ -296,13 +296,13 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Přidejte následující `/etc/nvidia/gridd.conf`:
+8. Do `/etc/nvidia/gridd.conf` přidejte následující:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+9. Z `/etc/nvidia/gridd.conf` odeberte následující z, pokud je k dispozici:
  
    ```
    FeatureType=0
@@ -321,7 +321,7 @@ Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu.
  
 
 ### <a name="x11-server"></a>Server X11
-Pokud potřebujete server X11 pro vzdálené připojení k virtuálnímu počítači NV nebo NVv2, doporučuje se [x11vnc](http://www.karlrunge.com/x11vnc/) , protože umožňuje hardwarovou akceleraci grafiky. BusID zařízení M60 musí být ručně přidáno do konfiguračního souboru X11 (obvykle `etc/X11/xorg.conf`). `"Device"` Přidejte oddíl podobný následujícímu:
+Pokud potřebujete server X11 pro vzdálené připojení k virtuálnímu počítači NV nebo NVv2, doporučuje se [x11vnc](http://www.karlrunge.com/x11vnc/) , protože umožňuje hardwarovou akceleraci grafiky. BusID zařízení M60 musí být ručně přidáno do konfiguračního souboru X11 (obvykle `etc/X11/xorg.conf`). Přidejte část `"Device"` podobnou této:
  
 ```
 Section "Device"
@@ -333,7 +333,7 @@ Section "Device"
 EndSection
 ```
  
-Dále aktualizujte `"Screen"` oddíl, aby používal toto zařízení.
+Kromě toho aktualizujte `"Screen"`, aby se toto zařízení používalo.
  
 Desítkové BusID lze najít spuštěním
 
@@ -357,11 +357,12 @@ else
 fi
 ```
 
-Pak vytvořte záznam pro skript pro aktualizaci v `/etc/rc.d/rc3.d` nástroji, aby se skript vyvolal jako kořenový při spuštění.
+Pak vytvořte záznam pro skript pro aktualizaci v `/etc/rc.d/rc3.d`, takže se skript vyvolá jako kořenový při spuštění.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
-* Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte `nvidia-smi -pm 1`příkaz. Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
+* Můžete nastavit režim trvalosti pomocí `nvidia-smi`, takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte `nvidia-smi -pm 1`. Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
+* Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a hledání RDMA connectivcity už nefunguje, [přeinstalujte ovladače RDMA](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) , aby reistablish toto připojení. 
 
 ## <a name="next-steps"></a>Další kroky
 

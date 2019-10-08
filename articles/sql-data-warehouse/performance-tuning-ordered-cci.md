@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948166"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035095"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> V seřazené tabulce Ski je nová data, která jsou výsledkem operací DML nebo načítání dat, automaticky řazena.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  
+> V seřazené tabulce Ski je nová data, která jsou výsledkem operací DML nebo načítání dat, automaticky řazena.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V Azure SQL Data Warehouse je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
 
 ## <a name="query-performance"></a>Výkon dotazů
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Výkon načítání dat
 
-Výkon načítání dat do seřazené tabulky Ski je podobný načtení dat do dělené tabulky.  
-Načítání dat do seřazené tabulky INSTRUKCí může trvat déle než načítání dat do neuspořádané tabulky INSTRUKCí z důvodu řazení dat.  
+Výkon načítání dat do seřazené tabulky Ski je podobný tabulce děleno.  Načítání dat do seřazené tabulky s INSTRUKCEmi může v důsledku operace řazení dat trvat déle než neuspořádaná tabulka INSTRUKCí. dotazy ale můžou běžet rychleji, ale s uspořádanou konzulární rutinou.  
 
 Zde je příklad porovnání výkonu načítání dat do tabulek s různými schématy.
-@no__t – 0Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+Tady je příklad porovnání výkonu dotazů mezi Ski a seřazenou konzulární instrukcí.
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>Zmenšení překrývajících se segmentů
 
@@ -116,7 +122,7 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 1.  Vytvořte oddíly pro cílovou rozsáhlou tabulku (nazvanou tabulka A).
 2.  Vytvoří prázdnou seřazenou tabulku Ski (s názvem tabulka B) se stejným schématem Table a partition jako tabulka a.
 3.  Umožňuje přepnout jeden oddíl z tabulky A na tabulku B.
-4.  Spuštěním příkazu ALTER INDEX < Ordered_CCI_Index > znovu sestavte v tabulce B a znovu sestavte přepínací oddíl.  
+4.  Spuštěním příkazu ALTER INDEX < Ordered_CCI_Index > znovu sestavte oddíl = < Partition_ID > v tabulce B pro opětovné sestavení přepnutého oddílu.  
 5.  Zopakujte kroky 3 a 4 pro každý oddíl v tabulce A.
 6.  Jakmile jsou všechny oddíly přepnuty z tabulky A na tabulku B a znovu sestaveny, odřaďte tabulku A a přejmenujte tabulku B na tabulku A. 
 

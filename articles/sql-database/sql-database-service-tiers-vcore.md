@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 10/01/2019
+ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164343"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034997"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Výběr mezi úrovněmi služby vCore a migrace z úrovní služeb DTU
 
 Nákupní model založený na Virtual Core (vCore) umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. Umožňuje vám také zvolit generaci hardwaru:
 
-- **COMPUTE GEN4 –** : Až 24 logických procesorů založených na procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzický jádro), 7 GB na vCore, připojená jednotka SSD
-- **Gen5**: Až 80 logických procesorů založených na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz, vCore = 1 LP (Hyper-thread), 5,1 GB za vCore pro zřízené výpočetní prostředky a až 24 GB na vCore pro výpočetní prostředky, Fast eNVM SSD
+- **COMPUTE GEN4 –** : až 24 logických procesorů založených na procesorech Intel E5-2673 V3 (Haswell) 2,4, Vcore = 1 PP (fyzický jádro), 7 GB na Vcore, připojený SSD
+- **Gen5**: až 80 logických procesorů založených na procesorech Intel E5-2673 v4 (Broadwell) 2,3, Vcore = 1 LP (Hyper-thread), 5,1 GB na Vcore pro zřízené výpočetní prostředky a až 24 GB na Vcore pro výpočetní prostředky, Fast eNVM SSD
 
 COMPUTE GEN4 – hardware nabízí podstatně větší množství paměti na vCore. Gen5 hardware ale umožňuje škálovat výpočetní prostředky mnohem vyšší.
 
@@ -36,20 +36,20 @@ COMPUTE GEN4 – hardware nabízí podstatně větší množství paměti na vCo
 
 Nákupní model založený na vCore poskytuje tři úrovně služeb: obecné účely, škálování a důležité pro podnikání. Tyto úrovně služeb jsou rozlišené škálou výpočetních velikostí, návrhů s vysokou dostupností, metod pro izolaci chyb, typů a velikostí úložiště a vstupně-výstupními rozsahy.
 
-Je nutné samostatně nakonfigurovat požadované úložiště a dobu uchovávání záloh. Pokud chcete nastavit dobu uchování zálohy, otevřete Azure Portal, přejděte na server (ne na databázi) a pak přejděte na **Správa zálohování** > **Konfigurovat bod zásad** > **v čase obnovení konfigurace** > **7 – 35 dní**.
+Je nutné samostatně nakonfigurovat požadované úložiště a dobu uchovávání záloh. Pokud chcete nastavit dobu uchování zálohy, otevřete Azure Portal, přejděte na server (ne na databázi) a potom přejděte na **Správa záloh** > **Konfigurace zásad** > **bod v čase obnovení konfigurace** > **7-35 dní**.
 
 Následující tabulka vysvětluje rozdíly mezi těmito třemi úrovněmi:
 
 ||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálovatelný**|
 |---|---|---|---|
-|Nejlepší pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště.|Podnikové aplikace s požadavky vysokého vstupu a výstupu. Nabízí nejvyšší odolnost proti chybám pomocí několika izolovaných replik.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.|
-|Compute|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5 0,5 – 16 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|
-|Memory (Paměť)|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5 Až 24 GB na vCore|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore |**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore|
-|Storage|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB - 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
-|Propustnost vstupně-výstupních operací (přibližná)|Izolovaná **databáze a elastický fond**: 500 vstupně-výstupních operací na vCore až 40000 maximálního počtu IOPS.<br/>**Spravovaná instance**: Závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS za jádro až 200 000 maximální IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|
+|Nejlepší pro|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze.|
+|Výpočetní|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5:0,5-16 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 1 až 24 virtuální jádra<br/>Gen5:2 až 80 virtuální jádra|
+|Rezident|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5: až 24 GB na vCore|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore |**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 –: 7 GB na vCore<br/>Gen5:5,1 GB na vCore|
+|Úložiště|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|Propustnost vstupně-výstupních operací (přibližná)|Izolovaná **databáze a elastický fond**: 500 vstupně-výstupních operací na vCore až 40000 maximálních IOPS.<br/>**Spravovaná instance**: závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS za jádro až 200 000 maximální IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](sql-database-read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](sql-database-read-scale-out.md)|
-|Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Nepodporuje se|Podporováno|Nepodporuje se|
+|Vytvářet|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
+|V paměti|Není podporováno|Podporováno|Není podporováno|
 |||
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Následující tabulka vysvětluje rozdíly mezi těmito třemi úrovněmi:
 
 V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožní ušetřit až 30 procent na Azure SQL Database pomocí místních licencí SQL Server se Software Assurance.
 
-![Ceny](./media/sql-database-service-tiers/pricing.png)
+![stanov](./media/sql-database-service-tiers/pricing.png)
 
 Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure pomocí vaší stávající licence SQL Server pro samotný stroj SQL Database (základní výpočetní ceny), nebo můžete platit jak z základní infrastruktury, tak i SQL Server licence (ceny včetně licencí).
 
@@ -78,8 +78,8 @@ Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí 
 
 - Nastavení nebo aktualizace typu licence pomocí Azure CLI:
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
+  - [AZ SQL DB Create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [AZ SQL DB Update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
   - [AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
@@ -109,17 +109,17 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 
 |Aktuální úroveň služby|Cílová úroveň služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
-|Standard|Pro obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Premium|Pro důležité obchodní informace|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
-|Standard|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
-|Pro důležité obchodní informace|Standard|Downgradovat|Nejprve je třeba migrovat primární|
-|Premium|Pro obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
-|Pro obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
-|Pro důležité obchodní informace|Pro obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
-|Pro obecné účely|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
+|Standardní|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
+|Nárok|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore *|
+|Standardní|Důležité pro podnikání|Přejít|Nejprve je třeba migrovat sekundární|
+|Důležité pro podnikání|Standardní|Downgradovat|Nejprve je třeba migrovat primární|
+|Nárok|Obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
+|Obecné účely|Nárok|Přejít|Nejprve je třeba migrovat sekundární|
+|Důležité pro podnikání|Obecné účely|Downgradovat|Nejprve je třeba migrovat primární|
+|Obecné účely|Důležité pro podnikání|Přejít|Nejprve je třeba migrovat sekundární|
 ||||
 
-\*Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore a každé 125 DTU úrovně Premium vyžaduje aspoň 1 vCore.
+\* každých 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore a každé 125 DTU úrovně Premium vyžaduje aspoň 1 vCore.
 
 ### <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání
 
@@ -129,7 +129,7 @@ Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje s
 
 Sekundární databázi geografické replikace můžete vytvořit pouze pomocí stejné úrovně služby, jakou jste použili pro primární databázi. Pro databáze s vysokou rychlostí generování protokolů doporučujeme vytvořit geografickou sekundární stejnou velikost služby COMPUTE jako primární.
 
-Pokud vytváříte geograficky sekundární v elastickém fondu pro jednu primární databázi, ujistěte se `maxVCore` , že nastavení fondu odpovídá výpočetní velikosti primární databáze. Pokud vytváříte geografickou sekundární hodnotu pro primární objekt v jiném elastickém fondu, doporučujeme, aby fondy měly stejné `maxVCore` nastavení.
+Pokud vytváříte geograficky sekundární v elastickém fondu pro jednu primární databázi, ujistěte se, že nastavení `maxVCore` pro fond odpovídá výpočetní velikosti primární databáze. Pokud vytváříte geografickou sekundární hodnotu pro primární objekt v jiném elastickém fondu, doporučujeme, aby fondy měly stejné nastavení `maxVCore`.
 
 ### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Použití kopie databáze k převedení databáze založené na DTU na databázi založenou na vCore
 

@@ -3,26 +3,26 @@ title: Přehled Azure SQL Databaseho škálování | Microsoft Docs
 description: Tento článek popisuje úroveň služby vCore v modelu nakupování na základě základů v nástroji Azure SQL Database a vysvětluje, jak se liší od úrovní služeb Pro obecné účely a Pro důležité obchodní informace.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/01/2019
+ms.openlocfilehash: dc9acd4fc45de2599ac71427ec2676506071894b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845633"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035060"
 ---
-# <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Úroveň služby s škálovatelným škálováním na až 100 TB
+# <a name="hyperscale-service-tier"></a>Úroveň služby s škálovatelným škálováním
 
 Azure SQL Database vychází z architektury SQL Server databázového stroje, která je upravena pro cloudové prostředí s cílem zajistit 99,99% dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají v Azure SQL Database:
 - Pro obecné účely/Standard 
--  Hyperškálování
+-  Hyperškálovatelný
 -  Pro důležité obchodní informace/Premium
 
 Úroveň služby pro škálování na úrovni služeb v Azure SQL Database je nejnovější úrovní služeb v rámci nákupního modelu založeného na vCore. Tato úroveň služby je vysoce škálovatelná úroveň výkonu úložiště a výpočetní prostředí, která využívá architekturu Azure k horizontálnímu navýšení kapacity úložiště a výpočetních prostředků pro Azure SQL Database, a to nad rámec limitů, které jsou k dispozici pro Pro obecné účely a firmy. Kritické úrovně služeb.
@@ -51,9 +51,13 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Kdo by měl uvažovat o úrovni služby škálování na úrovni služeb
 
-Úroveň služby pro škálování na úrovni služeb je primárně určena pro zákazníky, kteří mají velké databáze v místním prostředí, a chtějí modernizovat své aplikace tak, že se přesunou do cloudu nebo pro zákazníky, kteří jsou již v cloudu, a jsou omezeny maximální velikostí databáze. omezení (1-4 TB). Je také určená pro zákazníky, kteří hledají vysoký výkon a vysokou škálovatelnost pro úložiště a výpočetní prostředky.
+Úroveň služby technologie webscale je určena pro většinu obchodních úloh, protože poskytuje skvělou flexibilitu a vysoký výkon díky nezávisle škálovatelným výpočetním a úložným prostředkům. Díky možnosti automatického škálování úložiště o velikosti až 100 TB je vhodným způsobem pro zákazníky, kteří:
 
-Úroveň služby pro škálování na úrovni služeb podporuje všechny SQL Server úlohy, ale je primárně optimalizovaná pro OLTP. Úroveň služby s technologií webscale podporuje také hybridní a analytické úlohy (datové tržiště).
+- Mít velké databáze v místním prostředí a chtějí modernizovat své aplikace tím, že se přesunou do cloudu
+- Jsou již v cloudu a jsou omezeny omezením maximální velikosti databáze na jiné úrovně služby (1-4 TB).
+- Mít menší databáze, ale vyžadují rychlé vertikální a horizontální výpočetní škálování, vysoký výkon, okamžité zálohování a rychlé obnovení databáze.
+
+Úroveň služby s technologií OLTP podporuje širokou škálu SQL Server úloh, od čistě k čistě analýzám, ale je primárně optimalizovaná pro úlohy OLTP a hybridní transakce a zpracování HTAP (Analytical Processing).
 
 > [!IMPORTANT]
 > Elastické fondy nepodporují úroveň služby škálování na úrovni služeb.
@@ -68,7 +72,7 @@ Další informace o velikostech výpočtů pro úroveň služby technologie šk�
 
 - **Úložiště**:
 
-  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. Ve vrstvě s hyperškálováním se účtuje úložiště pro databázi podle skutečného využití. Úložiště se automaticky přiděluje mezi 10 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB.  
+  Při konfiguraci databáze v rámci škálování není nutné zadávat maximální velikost dat. V úrovni škálování se vám bude účtovat úložiště databáze na základě skutečného využití. Úložiště se automaticky přiděluje mezi 10 GB a 100 TB, v přírůstcích, které se dynamicky upravují mezi 10 GB a 40 GB.  
 
 Další informace o cenách na úrovni služby najdete v tématu [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
@@ -78,29 +82,29 @@ Na rozdíl od tradičních databázových strojů, které mají centralizované 
 
 Následující diagram znázorňuje různé typy uzlů v databázi s škálovatelným škálováním:
 
-![Architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architektura](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-Databáze s škálováním na více verzí obsahuje následující různé typy uzlů:
+Databáze v rámci škálování obsahuje následující různé typy komponent:
 
-### <a name="compute-node"></a>Výpočetní uzel
+### <a name="compute"></a>Výpočetní
 
 Výpočetní uzel je místo, kde se nachází relační modul, takže se objeví všechny jazykové prvky, zpracování dotazů a tak dále. Všechny interakce uživatelů s databází škálování na úrovni služeb probíhají prostřednictvím těchto výpočetních uzlů. Výpočetní uzly mají mezipaměti založené na SSD (s RBPEXm rozšířením fondu vyrovnávací paměti v předchozím diagramu) k minimalizaci počtu síťových přenosů, které jsou nutné k načtení stránky dat. Je k dispozici jeden primární výpočetní uzel, ve kterém jsou zpracovávány všechny úlohy a zápisy čtení a transakcí. K dispozici je jeden nebo více sekundárních výpočetních uzlů, které fungují jako aktivní pohotovostní uzly pro účely převzetí služeb při selhání, a také fungovat jako výpočetní uzly jen pro čtení pro přesměrování zpracování úloh čtení (Pokud je tato funkce požadovaná).
 
-### <a name="page-server-node"></a>Uzel stránkového serveru
+### <a name="page-server"></a>Server stránky
 
 Stránkové servery jsou systémy, které představují modul úložiště s horizontálním škálováním na víc systémů.  Každý server stránky je zodpovědný za podmnožinu stránek v databázi.  U každého stránkového serveru ovládací prvky mezi 128 GB a 1 TB dat. Na více než jednom serveru stránky nejsou sdílena žádná data (mimo repliky, které jsou uchovávány pro redundanci a dostupnost). Úkolem serverového serveru je obsloužit stránky databáze pro výpočetní uzly na vyžádání a udržovat stránky aktualizované jako transakce aktualizace dat. Stránky serverů jsou stále aktuální díky přehrání záznamů protokolu z protokolovací služby. Stránky serverů také udržují mezipaměti založené na SSD za účelem zvýšení výkonu. Dlouhodobé uchovávání datových stránek je v Azure Storage pro další spolehlivost.
 
-### <a name="log-service-node"></a>Uzel služby protokolu
+### <a name="log-service"></a>Protokolová služba
 
-Uzel protokolová služba přijímá záznamy protokolu z primárního výpočetního uzlu, uchovává je v odolné mezipaměti a předávají záznamy protokolu na zbytek výpočetních uzlů (takže může aktualizovat jejich mezipaměti) i na relevantní stránky, aby se data mohla aktualizovat t. Tady. Tímto způsobem jsou všechny změny dat z primárního výpočetního uzlu šířeny prostřednictvím služby Log Service do všech sekundárních výpočetních uzlů a stránkovacích serverů. Nakonec jsou záznamy protokolu odesílány do dlouhodobého úložiště v Azure Storage, což je nekonečné úložiště úložiště. Tento mechanismus odebere nutnost častého zkracování protokolů. Protokolová služba má také místní mezipaměť pro urychlení přístupu.
+Protokolová služba přijímá záznamy protokolu z primární repliky služby COMPUTE, uchovává je v odolné mezipaměti a předávají záznamy protokolu na zbytek výpočetních replik (takže může aktualizovat jejich mezipaměti) i na relevantní stránky, aby se data mohla aktualizovat. Některé. Tímto způsobem se všechny změny dat z primární repliky COMPUTE šíří prostřednictvím služby protokolování na všechny sekundární výpočetní repliky a servery stránky. Nakonec jsou záznamy protokolu odesílány do dlouhodobého úložiště v Azure Storage, což je prakticky nekonečné úložiště úložiště. Tento mechanismus odebere nutnost častého zkracování protokolů. Protokolová služba má také místní mezipaměť pro urychlení přístupu k záznamům protokolu.
 
-### <a name="azure-storage-node"></a>Uzel úložiště Azure
+### <a name="azure-storage"></a>Úložiště Azure
 
-Uzel úložiště Azure je konečným cílem dat ze stránkových serverů. Toto úložiště se používá pro účely zálohování a pro replikaci mezi oblastmi Azure. Zálohy se skládají z snímků datových souborů. Operace obnovení jsou z těchto snímků rychlé a data lze obnovit do libovolného bodu v čase.
+Azure Storage obsahuje všechny datové soubory v databázi. Stránky serverů udržují datové soubory v Azure Storage aktuálním stavu. Toto úložiště se používá pro účely zálohování a také pro replikaci mezi oblastmi Azure. Zálohy jsou implementovány pomocí snímků úložiště datových souborů. Operace obnovení využívající snímky jsou rychlé bez ohledu na velikost dat. Data je možné obnovit do libovolného bodu v čase v rámci doby uchovávání záloh databáze.
 
-## <a name="backup-and-restore"></a>Zálohování a obnovení
+## <a name="backup-and-restore"></a>Zálohování a obnovení
 
-Zálohy jsou základem souborů a snímků, takže jsou skoro okamžité. Oddělení úložiště a výpočtů umožňuje přesunout operaci zálohování/obnovení do vrstvy úložiště, aby se snížilo zatížení na primárním výpočetním uzlu. V důsledku toho zálohování velkých databází nemá vliv na výkon primárního výpočetního uzlu. Podobně se obnovení provádí zkopírováním snímku souboru a nejedná se o velikost datové operace. Pro obnovení v rámci stejného účtu úložiště je operace obnovení rychlá.
+Zálohy jsou založené na snímku souborů, takže jsou skoro okamžité. Oddělení úložiště a výpočtů umožňuje přesunout operaci zálohování/obnovení do vrstvy úložiště, aby se snížilo zatížení primární repliky služby Compute. V důsledku toho zálohování databáze nemá vliv na výkon primárního výpočetního uzlu; Podobně se obnovení provádí vrácením do snímků souborů a jako taková není velikost datové operace. Obnovení je operace s konstantním časem a dokonce i více než terabajt databází může být obnoveno v řádu minut, nikoli hodin nebo dnů. Vytvoření nových databází obnovením existující zálohy také využívá tuto funkci: vytváření kopií databáze pro účely vývoje nebo testování, dokonce i z databází s velikostí terabajtu, je doable během několika minut.
 
 ## <a name="scale-and-performance-advantages"></a>Výhody škálování a výkonu
 
@@ -110,7 +114,7 @@ Díky možnosti rychlého zprovoznění dalších výpočetních uzlů jen pro �
 
 Databázi škálování na více systému je možné vytvořit pomocí [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Databáze s škálovatelným škálováním jsou dostupné jenom pomocí [nákupního modelu založeného na Vcore](sql-database-service-tiers-vcore.md).
 
-Následující příkaz T-SQL vytvoří databázi s měřítkem. V `CREATE DATABASE` příkazu je nutné zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
+Následující příkaz T-SQL vytvoří databázi s měřítkem. V příkazu `CREATE DATABASE` musíte zadat jak edici, tak i cíl služby. Seznam platných cílů služeb najdete v tématu [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) .
 
 ```sql
 -- Create a HyperScale Database
@@ -121,9 +125,9 @@ Tím se vytvoří databáze Gen5 s využitím hardwaru s 4 jádry.
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrace existujícího Azure SQL Database na úroveň služby technologie škálování na úrovni služeb
 
-Stávající databáze SQL Azure můžete přesunout do škálování pomocí [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), PowerShellu nebo rozhraní [](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) příkazového [řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Tato možnost je v současnosti jednosměrnou migrací. Databáze nemůžete přesouvat z velkého měřítka do jiné úrovně služeb. Doporučujeme vytvořit kopii produkčních databází a migrovat ji do škálování pro účely POCsí konceptů.
+Stávající databáze SQL Azure můžete přesunout do škálování pomocí [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Tato možnost je v současnosti jednosměrnou migrací. Databáze nemůžete přesouvat z škálování na jinou úroveň služby, a to i z exportu a importu dat. V případě potřeby konceptu (POCs) doporučujeme vytvořit kopii produkčních databází a migrovat kopii do škálování na velká. Migrace stávající databáze SQL Azure do vrstvy škálování je velikost datové operace.
 
-Následující příkaz T-SQL přesune databázi do vrstvy služby s škálováním na úrovni služeb. V `ALTER DATABASE` příkazu je nutné zadat jak edici, tak i cíl služby.
+Následující příkaz T-SQL přesune databázi do vrstvy služby s škálováním na úrovni služeb. V příkazu `ALTER DATABASE` musíte zadat jak edici, tak i cíl služby.
 
 ```sql
 -- Alter a database to make it a HyperScale Database
@@ -133,13 +137,23 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Připojení k replice v databázi s škálováním na úrovni čtení
 
-V databázích s škálovatelnou `ApplicationIntent` velikostí argument v připojovacím řetězci, který poskytuje klient, určuje, zda je připojení směrováno do repliky zápisu nebo do sekundární repliky jen pro čtení. Pokud nastavení pro `READONLY` a databáze nemají sekundární repliku, připojení se přesměruje na `ReadWrite` primární repliku a výchozí chování. `ApplicationIntent`
+V databázích s škálovatelným škálováním argument `ApplicationIntent` v připojovacím řetězci, který poskytuje klient, určí, jestli je připojení směrované do repliky zápisu nebo do sekundární repliky jen pro čtení. Pokud je `ApplicationIntent` nastavená na `READONLY` a databáze nemá sekundární repliku, připojení se směruje do primární repliky a použije se výchozí chování `ReadWrite`.
 
 ```cmd
 -- Connection string with application intent
 Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
+
+Sekundární repliky s škálovatelným škálováním jsou všechny identické a používají stejný cíl na úrovni služby jako primární replika. Pokud je k dispozici více než jedna sekundární replika, bude zatížení distribuováno napříč všemi dostupnými sekundárními. Jednotlivé sekundární repliky se aktualizují nezávisle, takže různé repliky by mohly mít v souvislosti s primární replikou odlišnou latenci dat.
+
+## <a name="database-high-availability-in-hyperscale"></a>Vysoká dostupnost databáze v měřítku
+
+Stejně jako u všech ostatních úrovní služeb zajišťuje ochranná škála odolnost dat pro potvrzené transakce bez ohledu na dostupnost repliky Compute. Rozsah výpadku, který se stane nedostupnou primární replikou, závisí na typu převzetí služeb při selhání (plánované vs. neplánované) a na přítomnosti aspoň jedné sekundární repliky. V plánovaném převzetí služeb při selhání (tj. události údržby) systém vytvoří novou primární repliku před spuštěním převzetí služeb při selhání nebo použije existující sekundární repliku jako cíl převzetí služeb při selhání. V neplánovaném převzetí služeb při selhání (tj. selhání hardwaru primární repliky) systém používá sekundární repliku jako cíl převzetí služeb při selhání, pokud existuje, nebo vytvoří novou primární repliku z fondu dostupné výpočetní kapacity. V druhém případě je doba výpadku delší než v důsledku dalších kroků potřebných k vytvoření nové primární repliky.
+
+Informace o smlouvě SLA pro škálování na úrovni najdete v tématu [SLA pro Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/).
+
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Zotavení po havárii pro databáze s škálovatelným škálováním
+
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Obnovení databáze v rámci škálování na jiné geografické úrovni
 Pokud potřebujete obnovit Azure SQL Database DB škálování do jiné oblasti, než na kterou je aktuálně hostovaná, jako součást operace zotavení po havárii nebo v podrobnostech, přemístění nebo z jiného důvodu, je primární metodou provést geografickou obnovu databáze.  To zahrnuje přesně stejný postup jako u toho, co byste použili k obnovení jakékoli jiné databáze SQL AZURE do jiné oblasti:
 1. Pokud ještě nemáte příslušný server, vytvořte SQL Database Server v cílové oblasti.  Tento server by měl vlastnit stejné předplatné jako původní (zdrojový) Server.
@@ -160,23 +174,23 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- East US
+- Východní USA
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ
 - Japonsko – západ
-- Jižní Korea – střed
-- Jižní Korea – jih
+- Korea – střed
+- Korea – jih
 - Střed USA – sever
 - Severní Evropa
 - Jižní Afrika – sever
 - Střed USA – jih
 - Jihovýchodní Asie
 - Velká Británie – jih
-- Spojené království – západ
+- Velká Británie – západ
 - Západní Evropa
 - Západní USA
-- USA – západ 2
+- Západní USA 2
 
 Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pracujeme na rozbalení seznamu podporovaných oblastí, takže se prosím vraťte k seznamu nejnovější oblasti.
 
@@ -194,17 +208,17 @@ Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v ob
 
 5. Jako **typ kvóty**vyberte **SQL Database** .
 
-6. Klikněte **na další: Určená**
+6. Klikněte na **Další: řešení**
 
 1. Klikněte na **zadat podrobnosti** .
 
     ![Podrobnosti o problému](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Vyberte **typ kvóty SQL Database**: **Jiná žádost o kvótu**
+8. Vyberte **typ kvóty SQL Database**: **Další žádost o kvótu** .
 
 9. Vyplňte následující šablonu:
 
-    ![Podrobnosti o kvótě](media/sql-database-service-tier-hyperscale/request-screen-3.png)
+    ![Podrobnosti kvóty](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     V šabloně zadejte tyto informace:
 
@@ -213,7 +227,7 @@ Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v ob
     > Odhadované množství TB 
     >
 
-10. Zvolte **Severity C** (Závažnost C).
+10. Zvolit **závažnost C**
 
 11. Vyberte odpovídající způsob kontaktu a vyplňte podrobnosti.
 
@@ -225,19 +239,17 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Problém | Popis |
 | :---- | :--------- |
 | Podokno Správa zálohování na logickém serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat z SQL serveru.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a nastavení uchovávání záloh v čase se nevztahují nebo neověřují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování. |
-| Obnovení k určitému bodu v čase | Jakmile se databáze migruje do vrstvy služby s vlastním škálováním, obnovení k určitému bodu v čase před migrací se nepodporuje.|
+| Obnovení k bodu v čase | Jakmile se databáze migruje do vrstvy služby s vlastním škálováním, obnovení k určitému bodu v čase před migrací se nepodporuje.|
 | Obnovení databáze bez škálování na Hypserscale a naopak | Nemůžete obnovit databázi škálování v databázi s neškálovatelnými škálováními, ani nemůžete obnovit databázi s neškálovatelným škálováním do databáze v rámci škálování na více databází.|
-| Pokud soubor databáze během migrace roste kvůli aktivnímu zatížení a překračuje 1 TB na hranici souboru, migrace se nezdařila. | Hrozeb <br> – Pokud je to možné, migrujte databázi, pokud není spuštěná žádná úloha aktualizace.<br> -Zkuste migraci opakovat, pokud hranice 1 TB nebude během migrace překročena.|
-| MI | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
+| Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. @no__t – 0;|
+| Spravovaná instance | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
-| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je export a import pomocí souboru BACPAC.|
+| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BACPAC nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.).|
 | Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
 | Sledování změn | Nebudete moci používat Change Tracking s databázemi v rámci škálování. |
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci.  Můžete provést geografickou obnovu (obnovení databáze v jiném geografickém umístění, pro DR nebo jiné účely) |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |
-|Funkce inteligentní databáze | 1. Vytvoření indexu, vyřazení modelů pro poradce při vytváření indexů není školené pro Databázeu s měřítkem. <br/>2. Problém s schématem, DbParameterization nedávno přidané poradci nejsou pro databázi s podporou škálování podporovány.|
-
-
+|Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
 
 ## <a name="next-steps"></a>Další kroky
 

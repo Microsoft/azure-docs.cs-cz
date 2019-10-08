@@ -248,14 +248,14 @@
     - name: Fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
     - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+      href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+      href: 'https://azure.microsoft.com/updates/?product=iot-edge'
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: Technické případové studie
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-edge'

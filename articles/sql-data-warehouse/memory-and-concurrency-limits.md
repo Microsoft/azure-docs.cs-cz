@@ -1,120 +1,92 @@
 ---
-title: Omezení paměti a souběžnosti ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse.
+title: Omezení paměti a souběžnosti v Azure SQL Data Warehouse | Microsoft Docs
+description: Zobrazte limity paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/15/2019
+ms.date: 10/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a92c032027e772020eda0b626a6dc6db024bf57
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 73bb5b75a440755e088a4d9a294b5b97b0b7199e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595562"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035129"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
-Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
-
-Aktuálně nejsou k dispozici s využitím SQL Data Warehouse – Gen1 a Gen2 dvou generací. Doporučujeme že využít Gen2 služby SQL Data Warehouse na co nejlepšího výkonu pro vaše úlohy datového skladu. Gen2 zavádí novou mezipaměť disku NVMe SSD, která udržuje nejčastěji používaná data blízko procesorům. Tato operace odebere vzdálené vstupy/výstupy pro největší náročné a náročných úloh. Kromě výkonu Gen2 nabízí nejvyšší úroveň škálování umožňuje škálovat až 30 000 jednotek datového skladu a poskytnutím neomezené sloupcové úložiště. Budeme dál podporovat předchozí generace (Gen1) služby SQL Data Warehouse a zachovat stejné funkce; ale doporučujeme vám [upgradovat na Gen2](upgrade-to-latest-generation.md) nejdříve. 
+# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro Azure SQL Data Warehouse
+Zobrazte limity paměti a souběžnosti přidělené různým úrovním výkonu a třídám prostředků v Azure SQL Data Warehouse. Další informace a použití těchto možností pro plán správy úloh najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
 
 ## <a name="data-warehouse-capacity-settings"></a>Nastavení kapacity datového skladu
-Maximální kapacita pro datový sklad na různé úrovně výkonu v následujících tabulkách. Chcete-li změnit úroveň výkonu, [škálování výpočetních - portálu](quickstart-scale-compute-portal.md).
+V následujících tabulkách jsou uvedeny maximální kapacity datového skladu na různých úrovních výkonu. Postup změny úrovně výkonu najdete v tématu [škálování COMPUTE COMPUTE – portál](quickstart-scale-compute-portal.md).
 
-### <a name="gen2"></a>Gen2
+### <a name="service-levels"></a>Úrovně služeb
 
-Gen2 poskytuje 2,5 × více paměti na dotazu než Gen1. Tuto paměť navíc pomáhá Gen2 jeho rychlý výkon.  Úrovně výkonu na Gen2 oblast z DW100c DW30000c. 
+Rozsah úrovní služeb od DW100c do DW30000c.
 
-| Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
+| Úroveň výkonu | Výpočetní uzly | Distribuce na výpočetní uzel | Paměť na datový sklad (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100c            | 1             | 60                             |    60                          |
-| DW200c            | 1             | 60                             |   120                          |
-| DW300c            | 1             | 60                             |   180                          |
-| DW400c            | 1             | 60                             |   240                          |
-| DW500c            | 1             | 60                             |   300                          |
+| DW100c            | 1\. místo             | 60                             |    60                          |
+| DW200c            | 1\. místo             | 60                             |   120                          |
+| DW300c            | 1\. místo             | 60                             |   180                          |
+| DW400c            | 1\. místo             | 60                             |   240                          |
+| DW500c            | 1\. místo             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
-| DW2500c           | 5             | 12                             |  1500                          |
+| DW2500c           | 5             | 12                             |  1 500                          |
 | DW3000c           | 6             | 10                             |  1800                          |
 | DW5000c           | 10            | 6                              |  3000                          |
 | DW6000c           | 12            | 5                              |  3600                          |
 | DW7500c           | 15            | 4                              |  4500                          |
 | DW10000c          | 20            | 3                              |  6000                          |
 | DW15000c          | 30            | 2                              |  9000                          |
-| DW30000c          | 60            | 1                              | 18000                          |
+| DW30000c          | 60            | 1\. místo                              | 18000                          |
 
-Maximální DWU Gen2 je DW30000c, který má 60 výpočetních uzlů a k jednomu distribučnímu na výpočetním uzlu. Například datový sklad 600 TB na DW30000c zpracovává přibližně 10 TB na výpočetním uzlu.
+Maximální úroveň služby je DW30000c, která má 60 výpočetních uzlů a jednu distribuci na výpočetní uzel. Například datový sklad 600 TB v DW30000c zpracovává přibližně 10 TB na výpočetní uzel.
 
-### <a name="gen1"></a>Gen1
+## <a name="concurrency-maximums"></a>Maximum souběžnosti
+Aby každý dotaz měl dostatek prostředků pro efektivní spuštění, SQL Data Warehouse sleduje využití prostředků přiřazením slotů souběžnosti k jednotlivým dotazům. Systém převede dotazy do fronty na základě důležitosti a slotů souběžnosti. Dotazy čekají ve frontě, dokud nebudou k dispozici dostatečné sloty souběžnosti. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a sloty souběžnosti určují stanovení priorit procesoru. Další informace najdete v tématu [Analýza úloh](analyze-your-workload.md) .
 
-Úrovně služeb pro Gen1 v rozmezí od DW100 až DW6000. 
+**Třídy statických prostředků**
 
-| Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
-|:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100             | 1             | 60                             |  24                            |
-| DW200             | 2             | 30                             |  48                            |
-| DW300             | 3             | 20                             |  72                            |
-| DW400             | 4             | 15                             |  96                            |
-| DW500             | 5             | 12                             | 120                            |
-| DW600             | 6             | 10                             | 144                            |
-| DW1000            | 10            | 6                              | 240                            |
-| DW1200            | 12            | 5                              | 288                            |
-| DW1500            | 15            | 4                              | 360                            |
-| DW2000            | 20            | 3                              | 480                            |
-| DW3000            | 30            | 2                              | 720                            |
-| DW6000            | 60            | 1                              | 1440                           |
+V následující tabulce je uveden maximální počet souběžných dotazů a slotů souběžnosti pro každou [třídu statických prostředků](resource-classes-for-workload-management.md).  
 
-## <a name="concurrency-maximums"></a>Maximální hodnoty souběžnosti
-Zajistit, že každý dotaz nemá dostatek prostředků k úspěšnému provedení SQL datový sklad sleduje využití prostředků přiřazením slotů souběžnosti každý dotaz. Systém zařadí do fronty na základě důležitosti a slotů souběžnosti dotazy. Dotazy čekat ve frontě, dokud nejsou k dispozici dostatek slotů souběžnosti. [Důležitost](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) a slotů souběžnosti určit priority procesoru. Další informace najdete v tématu [analýza úloh](analyze-your-workload.md)
-
-### <a name="gen2"></a>Gen2
- 
-**Statických tříd prostředků**
-
-Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md).  
-
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v staticrc10 | Sloty používané v staticrc20 | Sloty používané v staticrc30 | Sloty používané v staticrc40 | Sloty používané v staticrc50 | Sloty používané v staticrc60 | Sloty používané v staticrc70 | Sloty používané v staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
-| DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
-| DW300c        | 12                         |   12                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400c        | 16                         |   16                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW10000c      | 128                        |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW100c        |  4                         |    4                        | 1\. místo         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
+| DW200c        |  8                         |    8                        | 1\. místo         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
+| DW300c        | 12                         |   12                        | 1\. místo         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW400c        | 16                         |   16                        | 1\. místo         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW500c        | 20                         |   20                        | 1\. místo         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
+| DW1000c       | 32                         |   40                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW1500c       | 32                         |   60                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW2000c       | 48                         |   80                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW2500c       | 48                         |  100                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW3000c       | 64                         |  120                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW5000c       | 64                         |  200                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW6000c       | 128                        |  240                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW7500c       | 128                        |  300                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW10000c      | 128                        |  400                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW15000c      | 128                        |  600                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW30000c      | 128                        | 1200                        | 1\. místo         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
-**Dynamický prostředek třídy**
+**Dynamické třídy prostředků**
 
-> [!NOTE]
-> Třída prostředků smallrc na Gen2 paměti dynamicky přidá zvyšuje úroveň služby a podporuje pouze maximální 32 souběžných dotazů na DW1000c a 4 a DW100c.  Jakmile je instance škálování nad rámec DW1500c slotů souběžnosti a paměť používanou smallrc se zvyšuje s rostoucím zvýšení úrovně služby. 
->
->
+Následující tabulka ukazuje maximální počet souběžných dotazů a slotů souběžnosti pro každou [třídu dynamického prostředku](resource-classes-for-workload-management.md). Dynamické třídy prostředků používají Přidělení procentuálních hodnot paměti 3-10-22-70 pro třídy prostředků malé střední a velké XLarge napříč všemi úrovněmi služeb.
 
-Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md). Na rozdíl od Gen1 jsou skutečně dynamické dynamický prostředek třídy na Gen2.  Gen2 používá 3-10-22-70 procento přidělení paměti pro třídy prostředků (krátkodobé používání) – střední velké xlarge ve všech úrovní služeb.
-
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
+| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžného zpracování | Sloty používané v smallrc | Sloty používané v mediumrc | Sloty používané v largerc | Sloty používané v xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
-| DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
-| DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
-| DW300c        | 12                         |   12                        | 1                     |  1                     |  2                    |   8                    |
-| DW400c        | 16                         |   16                        | 1                     |  1                     |  3                    |  11                    |
-| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
-| DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
-| DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
+| DW100c        |  4                         |    4                        | 1\. místo                     |  1\. místo                     |  1\. místo                    |   2                    |
+| DW200c        |  8                         |    8                        | 1\. místo                     |  1\. místo                     |  1\. místo                    |   5                    |
+| DW300c        | 12                         |   12                        | 1\. místo                     |  1\. místo                     |  2                    |   8                    |
+| DW400c        | 16                         |   16                        | 1\. místo                     |  1\. místo                     |  3                    |  11                    |
+| DW500c        | 20                         |   20                        | 1\. místo                     |  2                     |  4                    |  14                    |
+| DW1000c       | 32                         |   40                        | 1\. místo                     |  4                     |  8                    |  28                    |
+| DW1500c       | 32                         |   60                        | 1\. místo                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |
 | DW2500c       | 32                         |  100                        | 3                     | 10                     |  22                   |  70                    |
 | DW3000c       | 32                         |  120                        | 3                     | 12                     |  26                   |  84                    |
@@ -126,57 +98,10 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
 
+Pokud není k dispozici dostatek slotů souběžnosti ke spuštění provádění dotazů, dotazy jsou zařazeny do fronty a provedeny na základě důležitosti.  Pokud je stejná důležitost, dotazy se spouštějí v prvním, prvním.  Až se dokončí dotazy a počet dotazů a slotů klesne pod limity, SQL Data Warehouse uvolní dotazy ve frontě. 
 
-#### <a name="gen1"></a>Gen1
+## <a name="next-steps"></a>Další kroky
 
-Statických tříd prostředků
-
-Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md) na **Gen1**.
-
-| Úrovně služeb | Maximální počet souběžných dotazů | Sloty souběžnosti maximální | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
-|:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000        | 48                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-
-Dynamický prostředek třídy
-> [!NOTE]
-> Třída prostředků smallrc na Gen1 přidělí pevnou velikost paměti na dotazu, podobně jako v podobě staticrc10 třídy statických prostředků.  Protože smallrc je statická, má schopnost škálovat na 128 souběžných dotazů. 
->
->
-
-Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md) na **Gen1**.
-
-| Úrovně služeb | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
-|:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
-| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
-| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
-| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
-| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
-| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
-| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
-| DW2000        | 48                         |  80                         | 1       | 16       | 32      |  64      |
-| DW3000        | 64                         | 120                         | 1       | 16       | 32      |  64      |
-| DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
-
-
-Když je splněna jedna z těchto prahových hodnot, nové dotazy jsou ve frontě a spuštěn na základě FIFO first-in.  Dotazy dokončení a počtu dotazů a slotů klesnou pod mezní hodnoty, SQL Data Warehouse verze ve frontě dotazů. 
-
-## <a name="next-steps"></a>Další postup
-
-Další informace o tom, jak využít třídy prostředků pro optimalizaci vašich úloh další prosím najdete v následujících článcích:
+Další informace o tom, jak využít třídy prostředků k optimalizaci úlohy, najdete v následujících článcích:
 * [Třídy prostředků pro správu úloh](resource-classes-for-workload-management.md)
 * [Analýza úloh](analyze-your-workload.md)
-

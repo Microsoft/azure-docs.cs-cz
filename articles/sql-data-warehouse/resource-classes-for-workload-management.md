@@ -1,59 +1,48 @@
 ---
-title: Třídy prostředků pro úlohy správy ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Pokyny k používání třídy prostředků ke správě souběžnosti a výpočetní prostředky pro dotazy ve službě Azure SQL Data Warehouse.
+title: Třídy prostředků pro správu úloh v Azure SQL Data Warehouse | Microsoft Docs
+description: Pokyny pro použití tříd prostředků ke správě souběžných a výpočetních prostředků pro dotazy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 06/20/2019
+ms.date: 10/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 548271e888344eeb0d111c074153ef7492af5b33
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595537"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035080"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků ve službě Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
 
-Pokyny k používání třídy prostředků ke správě paměti a souběžnosti pro dotazy ve službě Azure SQL Data Warehouse.  
-
-## <a name="what-is-workload-management"></a>Co je Správa úloh
-
-Úlohy správy poskytuje možnost optimalizovat výkon všech dotazů. Dobře zapíná se úloha spouští dotazy a operace načítání efektivně, ať už jsou náročné na výpočetní nebo vstupně-výstupní operace náročné na prostředky. SQL Data Warehouse nabízí možnosti správy úloh pro prostředí více uživatelů. Datový sklad není určena pro úlohy s více tenanty.
-
-Kapacita výkonu služby data warehouse je určena [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md).
-
-- Omezení paměti a souběžnosti pro všechny profily výkonu, naleznete v tématu [omezení paměti a souběžnosti](memory-and-concurrency-limits.md).
-- Chcete-li upravit kapacitu výkonu, můžete [vertikálně navyšovat nebo snižovat](quickstart-scale-compute-portal.md).
-
-Kapacita výkon dotazu je určena třída prostředku v dotazu. Zbývající část tohoto článku vysvětluje co jsou třídy prostředků a jak upravovat.
+Doprovodné materiály k používání tříd prostředků ke správě paměti a souběžnosti dotazů v Azure SQL Data Warehouse.  
 
 ## <a name="what-are-resource-classes"></a>Co jsou třídy prostředků
 
-Kapacita výkon dotazu je určena třída prostředků uživatele.  Třídy prostředků se předem určit omezení prostředků ve službě Azure SQL Data Warehouse, kterými se řídí výpočetních prostředků a souběžnost pro provedení dotazu. Třídy prostředků vám umožňují spravovat vaše úlohy nastavením limitů počtu dotazů, které běží souběžně a na výpočetní prostředky každého dotazu Query přiřazena.  Se o kompromis mezi pamětí a souběžnosti.
+Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro provádění dotazů. Třídy prostředků vám pomohou spravovat vaše zatížení nastavením limitů počtu dotazů, které jsou souběžně spuštěny, a výpočetních prostředků přiřazených k jednotlivým dotazům.  Existuje kompromis mezi pamětí a souběžně.
 
-- Menší třídy prostředků snížit maximální paměť na dotazu, ale zvýšit souběžnost.
-- Větší třídy prostředků zvýšit maximální paměť na dotazu, ale snížit souběžnost.
+- Menší třídy prostředků omezují maximální velikost paměti na jeden dotaz, ale zvyšují souběžnost.
+- Větší třídy prostředků zvyšují maximální velikost paměti na jeden dotaz, ale omezují souběžnost.
 
 Existují dva typy tříd prostředků:
 
-- Třídy statických prostředků, které jsou vhodné pro vyšší souběžnosti na velikost datové sady, který je vyřešit.
-- Dynamický prostředek třídy, které jsou vhodné pro datové sady, které jsou stále se rozšiřující velikost a potřebovat vyšší výkon, jako je škálovat na úrovni služby.
+- Třídy statických prostředků, které jsou vhodné pro zvýšení souběžnosti na velikost sady dat, která je pevná.
+- Dynamické třídy prostředků, které jsou vhodné pro sady dat, které mají větší velikost a vyžadují zvýšený výkon, protože úroveň služby se škáluje.
 
-Třídy prostředků měření využití prostředků pomocí slotů souběžnosti.  [Sloty souběžnosti](#concurrency-slots) jsou vysvětleny dále v tomto článku.
+Třídy prostředků používají pro měření spotřeby prostředků sloty souběžnosti.  [Sloty souběžnosti](#concurrency-slots) jsou vysvětleny dále v tomto článku.
 
-- Chcete-li zobrazit využití prostředků pro třídy prostředků, najdete v článku [omezení paměti a souběžnosti](memory-and-concurrency-limits.md#concurrency-maximums).
-- Chcete-li upravit třídy prostředků, můžete spustit dotaz pod jiným uživatelským nebo [změnit třídu prostředků aktuálního uživatele](#change-a-users-resource-class) členství.
+- Chcete-li zobrazit využití prostředků pro třídy prostředků, přečtěte si téma [limity paměti a souběžnosti](memory-and-concurrency-limits.md#concurrency-maximums).
+- Chcete-li upravit třídu prostředků, můžete spustit dotaz pod jiným uživatelem nebo změnit členství ve [třídě prostředku aktuálního uživatele](#change-a-users-resource-class) .
 
-### <a name="static-resource-classes"></a>Statických tříd prostředků
+### <a name="static-resource-classes"></a>Třídy statických prostředků
 
-Statických tříd prostředků přidělit stejné množství paměti bez ohledu na aktuální úroveň výkonu, který se měří v [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Protože dotazů získat stejné přidělení paměti bez ohledu na úroveň výkonu [horizontální navýšení kapacity datového skladu](quickstart-scale-compute-portal.md) umožňuje více dotazů ke spuštění v rámci třídy prostředků.  Statický prostředek třídy jsou ideální, pokud se označuje datový svazek a konstantní.
+Statické třídy prostředků přidělují stejnou velikost paměti bez ohledu na aktuální úroveň výkonu, která se měří v [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Vzhledem k tomu, že dotazy získají stejné přidělení paměti bez ohledu na úroveň výkonu, [škálování datového skladu](quickstart-scale-compute-portal.md) umožňuje spuštění více dotazů v rámci třídy prostředků.  Statické třídy prostředků jsou ideální, pokud je datový svazek známý a konstantní.
 
-Tyto předdefinované databázové role jsou implementovány statických tříd prostředků:
+Třídy statických prostředků jsou implementovány s těmito předem definovanými databázovými rolemi:
 
 - staticrc10
 - staticrc20
@@ -64,88 +53,79 @@ Tyto předdefinované databázové role jsou implementovány statických tříd 
 - staticrc70
 - staticrc80
 
-### <a name="dynamic-resource-classes"></a>Dynamický prostředek třídy
+### <a name="dynamic-resource-classes"></a>Dynamické třídy prostředků
 
-Dynamické třídy prostředků přidělit variabilní velikost paměti v závislosti na aktuální úrovni služby. Statických tříd prostředků jsou užitečné pro vyšší souběžnosti a statické datové svazky, dynamický prostředek třídy se lépe hodí pro množství dat rostoucí nebo proměnné.  Když vertikálně navýšit kapacitu na vyšší úroveň služby, dotazy, automaticky získá větší množství paměti.  
+Dynamické třídy prostředků přidělují proměnlivou velikost paměti v závislosti na aktuální úrovni služby. I když jsou statické třídy prostředků užitečné pro vyšší souběžné a statické objemy dat, jsou dynamické třídy prostředků lépe vhodné pro rostoucí nebo proměnlivé množství dat.  Při horizontálním navýšení kapacity na větší úroveň služby budou dotazy automaticky mít více paměti.  
 
-Dynamický prostředek třídy jsou implementovány pomocí tyto předdefinované databázové role:
+Dynamické třídy prostředků jsou implementovány s těmito předem definovanými databázovými rolemi:
 
 - smallrc
 - mediumrc
 - largerc
 - xlargerc
 
-### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>Dynamický prostředek třídy Gen2 jsou skutečně dynamické
+Přidělení paměti pro jednotlivé třídy prostředků je následující, **bez ohledu na úroveň služby**.  V seznamu jsou uvedeny také minimální souběžné dotazy.  U některých úrovní služeb je možné dosáhnout více než minimální souběžnosti.
 
-Při digging do podrobností třídy dynamické prostředků na Gen1, existuje několik podrobností, které přidávají další složitosti k pochopení jejich chování:
-
-**Na Gen1**
-- Třída prostředků smallrc funguje s modelem pevné paměti jako statický prostředek třídy.  Dotazy Smallrc dynamicky nelze získat větší množství paměti, jako je vyšší úroveň služby. 
-- Měnit úrovně služeb, k dispozici dotazu souběžnosti Přejít nahoru nebo dolů.
-- Škálování úrovně služeb neposkytuje proporční změna je paměť přidělená pro stejné třídy prostředků.
-
-**Při Gen2**, dynamický prostředek třídy jsou skutečně dynamické adresy bodů uvedených výše.  Nové pravidlo je 3-10-22-70 pro procento přidělení paměti pro třídy prostředků (krátkodobé používání) – střední velké xlarge **bez ohledu na úroveň služeb**.  Níže uvedená tabulka obsahuje konsolidované podrobné informace o procenta přidělení paměti a minimální počet souběžných dotazů, na kterých běží, bez ohledu na úrovni služby.
-
-| Třída prostředku | Procento paměti | Minimální počet souběžných dotazů |
+| Třída prostředků | Procentuální hodnota paměti | Minimální počet souběžných dotazů |
 |:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
-| mediumrc       | 10 %               | 10                     |
-| largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| smallrc        | 1                | 32                     |
+| mediumrc       | 10pruhový               | 10pruhový                     |
+| largerc        | 22               | 4                      |
+| xlargerc       | 70%               | první                      |
 
-### <a name="default-resource-class"></a>Výchozí třídy prostředků
+### <a name="default-resource-class"></a>Výchozí třída prostředků
 
-Ve výchozím nastavení, každý uživatel je členem třídy dynamický prostředek **smallrc**.
+Ve výchozím nastavení je každý uživatel členem dynamické třídy prostředků **smallrc**.
 
-Třída prostředků Správce služeb je stanoveno v smallrc a nedá se změnit.  Správce služeb je uživatelem vytvořené během procesu zřizování.  Správce služeb v tomto kontextu je přihlašovací údaje zadané pro "přihlášení pro správce serveru" při vytváření nové instance SQL Data Warehouse pomocí nového serveru.
+Třída prostředků správce služby je pevně nastavená na smallrc a nedá se změnit.  Správce služby je uživatel vytvořený během procesu zřizování.  Správce služby v tomto kontextu je přihlašovací jméno zadané pro přihlašovací jméno správce serveru při vytváření nové instance SQL Data Warehouse s novým serverem.
 
 > [!NOTE]
-> Uživatele nebo skupiny, které jsou definované jako správce Active Directory jsou také správci služeb.
+> Uživatelé nebo skupiny, kteří jsou definováni jako správce služby Active Directory, jsou také správci služeb.
 >
 >
 
-## <a name="resource-class-operations"></a>Operace prostředků třídy
+## <a name="resource-class-operations"></a>Operace třídy prostředku
 
-Třídy prostředků slouží pro zvýšení výkonu pro aktivity správy a manipulace dat. Komplexní dotazy mohou také těžit z spuštění pod velké třídy prostředků. Například dotazování výkonu pro velká spojení a vylepšit řazení při dostatečně velký, aby dotaz v paměti spouštět třídy prostředků.
+Třídy prostředků jsou navržené tak, aby vylepšily výkon pro aktivity správy a manipulace s daty. Ke složitým dotazům může také doběžet v rámci velké třídy prostředků. Například výkon dotazů pro velké spojení a seřazení může zlepšit, pokud je třída prostředků dostatečně velká, aby mohl dotaz provádět v paměti.
 
-### <a name="operations-governed-by-resource-classes"></a>Operace řídí třídy prostředků
+### <a name="operations-governed-by-resource-classes"></a>Operace, které se řídí třídami prostředků
 
-Tyto operace se řídí třídy prostředků:
+Tyto operace se řídí třídami prostředků:
 
-- VÝBĚR INSERT, UPDATE, DELETE
-- Vyberte (při dotazování tabulky uživatelů)
-- Příkaz ALTER INDEX - znovu SESTAVIT nebo REORGANIZOVAT
-- PŘÍKAZ ALTER TABLE OPĚTOVNÉ SESTAVENÍ
-- CREATE INDEX
+- VLOŽIT – VYBRAT, AKTUALIZOVAT, ODSTRANIT
+- VYBRAT (při dotazování na tabulky uživatelů)
+- ZMĚNIT INDEX – znovu sestavit nebo reorganizovat
+- ZMĚNIT OPĚTOVNÉ SESTAVENÍ TABULKY
+- VYTVOŘIT INDEX
 - VYTVOŘIT CLUSTEROVANÝ INDEX COLUMNSTORE
-- VYTVOŘENÍ TABLE AS SELECT (CTAS)
+- CREATE TABLE JAKO SELECT (CTAS)
 - Načítání dat
-- Operace přesunu dat, které podle dat přesun Service (DMS)
+- Operace přesunu dat prováděné službou pro přesun dat (DMS)
 
 > [!NOTE]  
-> Vyberte příkazy na zobrazení dynamické správy (DMV) nebo jiný systém, které zobrazení se řídí podle těchto limitů souběžnosti. Systém bez ohledu na počet dotazů provádění na něm můžete monitorovat.
+> Příkazy SELECT pro zobrazení dynamické správy (zobrazení dynamické správy) nebo jiná systémová zobrazení se neřídí žádnou z omezení souběžnosti. Systém můžete monitorovat bez ohledu na počet prováděných dotazů.
 
-### <a name="operations-not-governed-by-resource-classes"></a>Operace není řídí třídy prostředků
+### <a name="operations-not-governed-by-resource-classes"></a>Operace, na které se neřídí třídy prostředků
 
-Některé dotazy se vždy spustit ve třídě prostředků smallrc i v případě, že uživatel je členem větší třídu prostředků. Tyto dotazy vyloučení nepočítá směrem k omezení souběžnosti. Například pokud omezení souběžnosti je 16, mnoho uživatelů můžete budete vybírat ze zobrazení systému bez dopadu na slotů souběžnosti k dispozici.
+Některé dotazy se vždy spouštějí ve třídě prostředků smallrc, i když je uživatel členem větší třídy prostředků. Tyto vyloučené dotazy nepočítají do limitu souběžnosti. Například pokud je limit souběžnosti 16, mnoho uživatelů může vybírat ze systémových zobrazení, aniž by to ovlivnilo dostupné sloty souběžnosti.
 
-Následující příkazy jsou vyloučené z třídy prostředků a vždy spouštějí v smallrc:
+Následující příkazy jsou vyjmuty z tříd prostředků a vždy se spouštějí v smallrc:
 
-- Vytvořit nebo DROP TABLE
-- PŘÍKAZ ALTER TABLE... PŘEPÍNAČE, ROZDĚLIT nebo sloučit oddíl
-- PŘÍKAZ ALTER INDEX DISABLE
+- VYTVOŘIT nebo vyřadit tabulku
+- ZMĚNIT TABULKU... PŘEPNOUT, rozdělit nebo sloučit oddíl
+- ALTER INDEX DISABLE
 - DROP INDEX
-- Vytvoření, aktualizace nebo použít příkaz DROP STATISTICS
+- Vytvoření, aktualizace nebo vyřazení statistiky
 - TRUNCATE TABLE
-- PŘÍKAZ ALTER AUTORIZACE
-- VYTVOŘTE PŘIHLAŠOVACÍ ÚDAJE
-- CREATE, ALTER nebo DROP USER
-- CREATE, ALTER nebo VYŘADIT PROCEDURY
-- Vytvořit nebo VYŘADIT zobrazení
-- VLOŽENÍ HODNOT
-- Vyberte z systémová zobrazení a zobrazení dynamické správy
-- VYSVĚTLUJÍ
-- DBCC
+- ZMĚNIT AUTORIZACI
+- VYTVOŘIT PŘIHLAŠOVACÍ ÚDAJE
+- Vytvoření, změna nebo vyřazení uživatele
+- VYTVOŘIT, změnit nebo odstranit PROCEDURu
+- VYTVOŘIT nebo vyřadit zobrazení
+- VLOŽIT HODNOTY
+- VYBRAT ze systémových zobrazení a zobrazení dynamické správy
+- ČÁSTECH
+- NÁSTROJI
 
 <!--
 Removed as these two are not confirmed / supported under SQL DW
@@ -156,16 +136,16 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>Sloty souběžnosti
 
-Sloty souběžnosti jsou pohodlný způsob, jak sledovat prostředky dostupné pro spuštění dotazu. Jsou to například lístků, které jste zakoupili k rezervaci míst v shodě, protože sedadel je omezen. Celkový počet slotů souběžnosti na datový sklad se určuje podle úrovně služby. Předtím, než dotaz můžete spustit provádění, musí být schopni rezervovat dostatek slotů souběžnosti. Po dokončení dotazu uvolní jeho slotů souběžnosti.  
+Sloty souběžnosti představují pohodlný způsob, jak sledovat prostředky dostupné pro provádění dotazů. Jsou to jako lístky, které jste si koupili při vzájemné rezervaci míst, protože je k dispozici pouze pracovní postup. Celkový počet slotů souběžnosti na datový sklad závisí na úrovni služby. Než bude možné spustit dotaz, musí být schopen vyhradit dostatek slotů souběžnosti. Po dokončení dotazu uvolňuje své sloty souběžnosti.  
 
-- Dotaz s 10 slotů souběžnosti můžete přistupovat 5krát další výpočetní prostředky než dotazu s 2 slotů souběžnosti.
-- Pokud každý dotaz vyžaduje 10 slotů souběžnosti a existují 40 slotů souběžnosti, pak pouze 4 dotazy můžou běžet souběžně.
+- Dotaz, který běží s 10 sloty souběžnosti, může mít za přístup k většímu počtu výpočetních prostředků než dotaz spuštěný se 2 sloty souběžnosti.
+- Pokud každý dotaz vyžaduje 10 slotů souběžnosti a máte 40 slotů souběžnosti, může být souběžně spuštěno pouze 4 dotazy.
 
-Pouze dotazy netrvá využívat slotů souběžnosti. Dotazy systému a některé jednoduché nekladou nadměrné nároky žádné sloty. Třídy prostředků tohoto dotazu je určeno přesný počet spotřebovaných slotů souběžnosti.
+Jenom dotazy s řízenou prostředky spotřebovávají sloty souběžnosti. Systémové dotazy a některé triviální dotazy nevyužívají žádné sloty. Přesný počet spotřebovaných slotů souběžnosti je určen třídou prostředku dotazu.
 
 ## <a name="view-the-resource-classes"></a>Zobrazení tříd prostředků
 
-Třídy prostředků se implementují jako předem definované databázové role. Existují dva typy třídy prostředků: dynamická a statická. Chcete-li zobrazit seznam tříd prostředků, použijte následující dotaz:
+Třídy prostředků jsou implementovány jako předem definované databázové role. Existují dva typy tříd prostředků: dynamická a statická. Chcete-li zobrazit seznam tříd prostředků, použijte následující dotaz:
 
 ```sql
 SELECT name
@@ -173,17 +153,17 @@ FROM   sys.database_principals
 WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 ```
 
-## <a name="change-a-users-resource-class"></a>Změnit třídy prostředků tohoto uživatele
+## <a name="change-a-users-resource-class"></a>Změna třídy prostředků uživatele
 
-Třídy prostředků se implementují prostřednictvím přiřazování uživatelů do databázových rolí. Když uživatel spustí dotaz, spustí se dotaz s třídy prostředků tohoto uživatele. Například pokud je uživatel členem role databáze staticrc10, jejich dotazů pomocí malé množství paměti. Pokud je uživatel databáze se členem rolí databáze xlargerc nebo staticrc80, jejich dotazy se spustí s velkými objemy paměti.
+Třídy prostředků jsou implementovány přiřazením uživatelů k databázovým rolím. Když uživatel spustí dotaz, dotaz se spustí s třídou prostředků uživatele. Například pokud je uživatel členem role databáze staticrc10, jejich dotazy se spouštějí s malým množstvím paměti. Pokud je uživatel databáze členem rolí databáze xlargerc nebo staticrc80, jejich dotazy se spouštějí s velkým množstvím paměti.
 
-Chcete-li zvýšit třídy prostředků tohoto uživatele, použijte [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) přidejte uživatele k roli databáze velké třídy prostředků.  Níže uvedeného kódu přidá uživatele k roli largerc databáze.  Každý požadavek získá 22 % systémové paměti.
+Chcete-li zvýšit třídu prostředků uživatele, použijte [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) k přidání uživatele do databázové role velké třídy prostředků.  Níže uvedený kód přidá uživatele do role databáze largerc.  Každý požadavek získá 22% systémové paměti.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Chcete-li snížit třídy prostředků, použijte [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  Pokud "loaduser" není členem nebo jiné třídy prostředků, přejdou do výchozí třídu prostředků smallrc s přidělení paměti 3 %.  
+Chcete-li snížit třídu prostředků, použijte [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  Pokud ' loaduser ' není člen nebo žádné jiné třídy prostředků, přejde do výchozí třídy prostředků smallrc s přidělením 3% paměti.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -191,400 +171,85 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 ## <a name="resource-class-precedence"></a>Priorita třídy prostředků
 
-Uživatelé můžou být členy více tříd prostředků. Pokud uživatel patří do více než jeden prostředek třídy:
+Uživatelé můžou být členy více tříd prostředků. Když uživatel patří do více než jedné třídy prostředku:
 
-- Dynamický prostředek třídy má přednost před statických tříd prostředků. Například pokud je uživatel členem mediumrc(dynamic) a staticrc80 (statické), dotazy spustit s mediumrc.
-- Větší třídy prostředků má přednost před menší třídy prostředků. Například pokud je uživatel členem mediumrc a largerc, dotazy spustit s largerc. Podobně pokud je uživatel členem staticrc20 a statirc80, dotazy se spustí s staticrc80 přidělení prostředků.
+- Třídy dynamických prostředků mají přednost před třídami statických prostředků. Například pokud je uživatel členem obou mediumrc (Dynamic) i staticrc80 (static), dotazy se spouštějí s mediumrc.
+- Větší třídy prostředků mají přednost před menšími třídami prostředků. Například pokud je uživatel členem služby mediumrc a largerc, dotazy se spouštějí s largerc. Podobně platí, že pokud je uživatel členem obou staticrc20 i statirc80, dotazy se spouštějí s přidělením prostředků staticrc80.
 
-## <a name="recommendations"></a>Doporučení
+## <a name="recommendations"></a>Doporučit
 
-Doporučujeme vytvořit jako uživatel, který je vyhrazený ke spouštění určitého typu dotazu nebo operace načtení. Dát takovému uživateli trvalý prostředek třídy místo změny třídy prostředků často. Statických tříd prostředků poskytují větší kontrolu celkové na pracovním vytížení, proto doporučujeme použití statických tříd prostředků předtím, než dynamický prostředek třídy.
+Doporučujeme vytvořit uživatele, který je vyhrazený pro spuštění konkrétního typu dotazu nebo operace načtení. Poskytněte tomuto uživateli trvalou třídu prostředků namísto časté změny třídy prostředků. Statické třídy prostředků poskytují větší celkovou kontrolu nad úlohou, takže před zvážením dynamických tříd prostředků doporučujeme použít statické třídy prostředků.
 
-### <a name="resource-classes-for-load-users"></a>Třídy prostředků pro zatížení uživatele
+### <a name="resource-classes-for-load-users"></a>Třídy prostředků pro načtení uživatelů
 
-`CREATE TABLE` použití Clusterované indexy columnstore ve výchozím nastavení. Komprese dat do columnstore index je operace s vysokými nároky na paměť a přetížení paměti může snížit kvalitu indexu. Přetížení paměti může vést k nutnosti vyšší třídě prostředků při načítání dat. K zajištění, že zatížení k dispozici dostatek paměti, můžete vytvořit uživatele, který je určený pro spouštění načítání a přiřaďte ho k vyšší třídě prostředků.
+`CREATE TABLE` používá ve výchozím nastavení clusterované indexy columnstore. Komprimace dat do indexu columnstore je operace náročná na paměť a zatížení paměti může snížit kvalitu indexu. Tlak paměti může vést k nutnosti větší třídy prostředků při načítání dat. Aby bylo zajištěno, že zatížení bude mít dostatek paměti, můžete vytvořit uživatele, který je určen ke spouštění zátěže, a přiřadit tohoto uživatele k vyšší třídě prostředků.
 
-Paměť potřebná ke zpracování zátěže efektivně závisí na povaze tabulce načten a velikosti dat. Další informace o požadavky na paměť, naleznete v tématu [maximalizuje rowgroup kvality](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Paměť potřebná ke zpracování zatížení efektivně závisí na povaze načtené tabulky a velikosti dat. Další informace o požadavcích na paměť najdete v tématu [maximalizace kvality skupiny řádků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
-Po určení požadavek na paměť, zvolte, jestli se má přiřadit uživatele načítání pro třídu prostředků se statickou nebo dynamickou.
+Jakmile určíte požadavek na paměť, určete, jestli se má uživatel pro načtení přiřadit ke statické nebo dynamické třídě prostředků.
 
-- Používejte třídu prostředků se statické požadavky na paměť tabulky spadá do určitého rozsahu. Načítání spuštění s odpovídající paměti. Když horizontálně snížíte kapacitu datového skladu, nemusí se zatížení více paměti. Pomocí třídy statických prostředků, přidělení paměti zůstanou konstantní. Taková konzistence šetří paměť a umožňuje jak souběžně spustit více dotazů. Doporučujeme použít nová řešení statických tříd prostředků nejdřív tyto poskytují větší kontrolu.
-- Používejte dynamickou třídu prostředků tabulce požadavky na paměť se výrazně lišit. Zatížení může vyžadovat více paměti než aktuální DWU nebo cDWU úroveň poskytuje. Škálování datového skladu přidá větší množství paměti zatížení operací, což umožňuje rychlejší načítání.
+- Použijte statickou třídu prostředků, pokud požadavky na paměť tabulky spadají do určitého rozsahu. Zatížení se spouští s vhodnou pamětí. Při škálování datového skladu nemusí zatížení potřebovat více paměti. Když použijete statickou třídu prostředků, přidělení paměti zůstane konstantní. Tato konzistence zachovává paměť a umožňuje souběžné spouštění dalších dotazů. Doporučujeme, aby nová řešení používala statické třídy prostředků nejprve, protože poskytují větší kontrolu.
+- Použijte dynamickou třídu prostředků, pokud se požadavky na paměť v tabulce značně liší. Načtení může vyžadovat více paměti, než je aktuální úroveň DWU nebo cDWU. Škálování datového skladu přičítá více paměti pro operace načítání, což umožňuje rychlejší provádění zátěže.
 
 ### <a name="resource-classes-for-queries"></a>Třídy prostředků pro dotazy
 
-Některé dotazy jsou náročné na výpočetní a jiné nikoli.  
+Některé dotazy jsou náročné na výpočetní výkon a některé ne.  
 
-- Zvolte dynamickou třídu prostředků, pokud jsou komplexní dotazy, ale není třeba vysokou souběžnosti.  Generování sestav denní nebo týdenní je například občasné potřebu prostředky. Pokud zprávy zpracovávají velké objemy dat, škálování datový sklad poskytuje více paměti pro existující třídy prostředků tohoto uživatele.
-- Zvolte třídu statických prostředků při očekávání prostředků se liší v průběhu dne. Například třída statických prostředků funguje dobře, pokud datový sklad je dotazován mnoho uživatelů. Při horizontálním škálování datového skladu, nedojde ke změně množství paměti přidělené pro uživatele. V důsledku toho mohou být provedeny více dotazů paralelně v systému.
+- Vyberte dynamickou třídu prostředků, když jsou dotazy složité, ale nepotřebují vysokou souběžnost.  Například generování denních nebo týdenních sestav je příležitostná nutnost pro prostředky. Pokud sestavy zpracovávají velké objemy dat, škálování datového skladu poskytuje větší množství paměti pro stávající třídu prostředků uživatele.
+- Vyberte statickou třídu prostředků, pokud se očekávání prostředků mění v průběhu dne. Například třída statických prostředků funguje dobře, když je datový sklad dotazován mnoha lidmi. Při škálování datového skladu se množství paměti přidělené uživateli nezmění. V důsledku toho je možné spustit více dotazů paralelně na systému.
 
-Udělí správná paměti závisí na mnoha faktorech, jako je množství dat získaných, povaze schémata tabulek a různých spojení, vybrat a skupině predikáty. Obecně platí přidělení více paměti umožňuje vytvářet dotazy rychleji, ale snižuje celkový souběžnosti. Pokud souběžnost není problém, over-pass-the přidělování paměti nepoškodí propustnost.
+Náležité nároky na paměť jsou závislé na mnoha faktorech, například na množství dotazovaných dat, na povaze schémat tabulek a v různých predikátech spojení, Select a Group. Obecně platí, že přidělování více paměti umožňuje rychlejší dokončení dotazů, ale snižuje celkovou souběžnost. Pokud souběžnost není problém, přetížení paměti nepoškozuje propustnost.
 
-Pro optimalizaci výkonu, použijte jiný prostředek třídy. Další část poskytuje uloženou proceduru, která vám pomůže zjistit nejlepší třídy prostředků.
+Pro optimalizaci výkonu použijte různé třídy prostředků. Další část poskytuje uloženou proceduru, která vám pomůže zjistit nejlepší třídu prostředků.
 
-## <a name="example-code-for-finding-the-best-resource-class"></a>Ukázkový kód pro vyhledání nejlepších třídy prostředků
+## <a name="example-code-for-finding-the-best-resource-class"></a>Ukázkový kód pro vyhledání nejlepší třídy prostředku
 
-Můžete použít následující zadané uložené procedury pro [Gen1](#stored-procedure-definition-for-gen1) nebo [Gen2](#stored-procedure-definition-for-gen2)– zjistěte souběžnosti a paměti udělit na třídu prostředků na daný objekt SLO a nejlepší třídy prostředků pro paměťově náročné CCI operace se bez oddílů CCI tabulkou ve třídě daný prostředek:
+Následující uloženou proceduru můžete použít k určení souběžnosti a přidělení paměti na třídu prostředků v dané třídě SLO a nejlepší třídy prostředků pro operace v rámci Ski v nerozdělené paměti v dané třídě prostředků:
 
-Tady je účelem tuto uloženou proceduru:
+Tady je účel této uložené procedury:
 
-1. Zobrazíte souběžnosti a za třídu prostředků na daný objekt SLO přidělení paměti. Uživatel musí poskytnout hodnotu NULL pro schéma a tablename, jak je znázorněno v tomto příkladu.  
-2. Chcete-li zobrazit nejlepší třídy prostředků pro operace CCI vysokými nároky na paměť (zatížení, zkopírujte tabulku, opětovné sestavení indexu atd.) v tabulce CCI bez oddílů ve třídě daný prostředek. Uložené procedury používá k nalezení limitu přidělení paměti požadované schéma tabulky.
+1. Zobrazení souběžnosti a přidělení paměti na třídu prostředků na daném objektu SLO. Uživatel musí zadat hodnotu NULL pro schéma i TableName, jak je znázorněno v tomto příkladu.  
+2. Chcete-li zobrazit nejlepší třídu prostředků pro operace KONZULÁRNÍch operací náročné na paměť (načítání, kopírování tabulky, index opětovného sestavení atd.) v nerozdělené tabulce INSTRUKCí v dané třídě prostředků. Uložená procedura používá schéma tabulky k zjištění požadovaného přidělení paměti.
 
-### <a name="dependencies--restrictions"></a>Závislosti a omezení
+### <a name="dependencies--restrictions"></a>Závislosti & omezení
 
-- Tato uložená procedura není určená k výpočtu požadavek na paměť pro cci dělenou tabulku.
-- Tuto uloženou proceduru nepřijímá požadavky na paměť v úvahu pro výběr součástí CTAS nebo INSERT-SELECT a předpokládá, že se že jedná s výběrem.
-- Tuto uloženou proceduru používá dočasnou tabulku, která je k dispozici v relaci, kde byl vytvořen tuto uloženou proceduru.
-- Tuto uloženou proceduru závisí na aktuálně dostupných nabídek (třeba konfigurace hardwaru, konfigurace DMS), a pokud se změní některý, který pak tato uložená procedura nebude fungovat správně.  
-- Tuto uloženou proceduru závisí na stávající nabídky limit souběžnosti a pokud se tato změna pak tuto uloženou proceduru nebude fungovat správně.  
-- Tuto uloženou proceduru závisí na stávající nabídky třídy prostředků a pokud se tato změna pak tuto uloženou proceduru nebude fungovat správně.  
+- Tato uložená procedura není navržená tak, aby počítala požadavky na paměť pro dělenou tabulku instrukcí.
+- Tato uložená procedura nebere v úvahu požadavky na paměť pro vybranou část CTAS/INSERT-SELECT a předpokládá, že se jedná o výběr.
+- Tato uložená procedura používá dočasnou tabulku, která je k dispozici v relaci, kde byla tato uložená procedura vytvořena.
+- Tato uložená procedura závisí na aktuálních nabídkách (například hardwarová konfigurace, DMS config) a pokud nějaká z nich se změní, tato uložená procedura nebude správně fungovat.  
+- Tato uložená procedura závisí na existující nabídce omezení souběžnosti a pokud se tyto změny změní, tato uložená procedura nebude fungovat správně.  
+- Tato uložená procedura závisí na existující nabídce tříd prostředků a pokud se tyto změny změní, tato uložená procedura nebude fungovat správně.  
 
 >[!NOTE]  
->Pokud nedostáváte výstup po spuštění uložené procedury s parametry poskytnutými, pak může existovat dva možné případy.
+>Pokud nezískáváte výstup po provedení uložené procedury se zadanými parametry, mohou být dva případy.
 >
->1. Buď parametr datový Sklad obsahuje neplatnou hodnotu SLO
->2. Nebo, neexistuje žádná odpovídající Třída prostředků pro operaci CCI v tabulce.
+>1. Buď parametr DW obsahuje neplatnou hodnotu SLO.
+>2. Nebo neexistuje žádná vyhovující Třída prostředků pro operaci Ski v tabulce.
 >
->Například v DW100, nejvyšší přidělení paměti, která je k dispozici je 400 MB, a pokud schéma tabulky je dost široký, vývoj pro různé požadavky na 400 MB.
+>Například na adrese DW100c je k dispozici nejvyšší povolená velikost paměti 1 GB, a pokud je schéma tabulky dostačující pro více požadavků 1 GB.
 
 ### <a name="usage-example"></a>Příklad použití
 
-Syntaxe:  
+Syntaktick  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: Buď zadejte parametr NULL extrahovat aktuální DWU z databáze datového skladu, nebo všechny podporované DWU ve formě "DW100.
-2. @SCHEMA_NAME: Zadejte název schématu tabulky
-3. @TABLE_NAME: Zadejte název tabulky zájmu
+1. @DWU: buď zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
+2. @SCHEMA_NAME: zadejte název schématu pro tabulku.
+3. @TABLE_NAME: zadejte název tabulky zájmu.
 
-Příklady provádění této uložené procedury:
+Příklady spouštění této uložené procedury:
 
 ```sql
-EXEC dbo.prc_workload_management_by_DWU 'DW2000', 'dbo', 'Table1';  
+EXEC dbo.prc_workload_management_by_DWU 'DW2000c', 'dbo', 'Table1';  
 EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';  
-EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
+EXEC dbo.prc_workload_management_by_DWU 'DW6000c', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
 
-Následující příkaz vytvoří Table1, který se používá v předchozích příkladech.
+Následující příkaz vytvoří Tabulka1, který je použit v předchozích příkladech.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition-for-gen1"></a>Uložená procedura definice Gen1
-
-```sql  
--------------------------------------------------------------------------------
--- Dropping prc_workload_management_by_DWU procedure if it exists.
--------------------------------------------------------------------------------
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
-DROP PROCEDURE dbo.prc_workload_management_by_DWU
-GO
-
--------------------------------------------------------------------------------
--- Creating prc_workload_management_by_DWU.
--------------------------------------------------------------------------------
-CREATE PROCEDURE dbo.prc_workload_management_by_DWU
-(@DWU VARCHAR(7),
- @SCHEMA_NAME VARCHAR(128),
- @TABLE_NAME VARCHAR(128)
-)
-AS
-IF @DWU IS NULL
-BEGIN
--- Selecting proper DWU for the current DB if not specified.
-SET @DWU = (
-  SELECT 'DW'+CAST(COUNT(*)*100 AS VARCHAR(10))
-  FROM sys.dm_pdw_nodes
-  WHERE type = 'COMPUTE')
-END
-
-DECLARE @DWU_NUM INT
-SET @DWU_NUM = CAST (SUBSTRING(@DWU, 3, LEN(@DWU)-2) AS INT)
-
--- Raise error if either schema name or table name is supplied but not both them supplied
---IF ((@SCHEMA_NAME IS NOT NULL AND @TABLE_NAME IS NULL) OR (@TABLE_NAME IS NULL AND @SCHEMA_NAME IS NOT NULL))
---     RAISEERROR('User need to supply either both Schema Name and Table Name or none of them')
-
--- Dropping temp table if exists.
-IF OBJECT_ID('tempdb..#ref') IS NOT NULL
-BEGIN
-  DROP TABLE #ref;
-END
-
--- Creating ref. temp table (CTAS) to hold mapping info.
--- CREATE TABLE #ref
-CREATE TABLE #ref
-WITH (DISTRIBUTION = ROUND_ROBIN)
-AS
-WITH
--- Creating concurrency slots mapping for various DWUs.
-alloc
-AS
-(
-  SELECT 'DW100' AS DWU, 4 AS max_queries, 4 AS max_slots, 1 AS slots_used_smallrc, 1 AS slots_used_mediumrc,
-        2 AS slots_used_largerc, 4 AS slots_used_xlargerc, 1 AS slots_used_staticrc10, 2 AS slots_used_staticrc20,
-        4 AS slots_used_staticrc30, 4 AS slots_used_staticrc40, 4 AS slots_used_staticrc50,
-        4 AS slots_used_staticrc60, 4 AS slots_used_staticrc70, 4 AS slots_used_staticrc80
-  UNION ALL
-    SELECT 'DW200', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW300', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW1000', 32, 40, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1200', 32, 48, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500', 32, 60, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
-)
--- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
-AS
-(
-  SELECT 'SloDWGroupC00' AS wg_name,1 AS slots_used,100 AS tgt_mem_grant_MB
-  UNION ALL
-    SELECT 'SloDWGroupC01',2,200
-  UNION ALL
-    SELECT 'SloDWGroupC02',4,400
-  UNION ALL
-    SELECT 'SloDWGroupC03',8,800
-  UNION ALL
-    SELECT 'SloDWGroupC04',16,1600
-  UNION ALL
-    SELECT 'SloDWGroupC05',32,3200
-  UNION ALL
-    SELECT 'SloDWGroupC06',64,6400
-  UNION ALL
-    SELECT 'SloDWGroupC07',128,12800
-)
--- Creating ref based on current / asked DWU.
-, ref
-AS
-(
-  SELECT  a1.*
-  ,       m1.wg_name          AS wg_name_smallrc
-  ,       m1.tgt_mem_grant_MB AS tgt_mem_grant_MB_smallrc
-  ,       m2.wg_name          AS wg_name_mediumrc
-  ,       m2.tgt_mem_grant_MB AS tgt_mem_grant_MB_mediumrc
-  ,       m3.wg_name          AS wg_name_largerc
-  ,       m3.tgt_mem_grant_MB AS tgt_mem_grant_MB_largerc
-  ,       m4.wg_name          AS wg_name_xlargerc
-  ,       m4.tgt_mem_grant_MB AS tgt_mem_grant_MB_xlargerc
-  ,       m5.wg_name          AS wg_name_staticrc10
-  ,       m5.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc10
-  ,       m6.wg_name          AS wg_name_staticrc20
-  ,       m6.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc20
-  ,       m7.wg_name          AS wg_name_staticrc30
-  ,       m7.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc30
-  ,       m8.wg_name          AS wg_name_staticrc40
-  ,       m8.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc40
-  ,       m9.wg_name          AS wg_name_staticrc50
-  ,       m9.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc50
-  ,       m10.wg_name          AS wg_name_staticrc60
-  ,       m10.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc60
-  ,       m11.wg_name          AS wg_name_staticrc70
-  ,       m11.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc70
-  ,       m12.wg_name          AS wg_name_staticrc80
-  ,       m12.tgt_mem_grant_MB AS tgt_mem_grant_MB_staticrc80
-  FROM alloc a1
-  JOIN map   m1  ON a1.slots_used_smallrc     = m1.slots_used
-  JOIN map   m2  ON a1.slots_used_mediumrc    = m2.slots_used
-  JOIN map   m3  ON a1.slots_used_largerc     = m3.slots_used
-  JOIN map   m4  ON a1.slots_used_xlargerc    = m4.slots_used
-  JOIN map   m5  ON a1.slots_used_staticrc10    = m5.slots_used
-  JOIN map   m6  ON a1.slots_used_staticrc20    = m6.slots_used
-  JOIN map   m7  ON a1.slots_used_staticrc30    = m7.slots_used
-  JOIN map   m8  ON a1.slots_used_staticrc40    = m8.slots_used
-  JOIN map   m9  ON a1.slots_used_staticrc50    = m9.slots_used
-  JOIN map   m10  ON a1.slots_used_staticrc60    = m10.slots_used
-  JOIN map   m11  ON a1.slots_used_staticrc70    = m11.slots_used
-  JOIN map   m12  ON a1.slots_used_staticrc80    = m12.slots_used
--- WHERE   a1.DWU = @DWU
-  WHERE   a1.DWU = UPPER(@DWU)
-)
-SELECT  DWU
-,       max_queries
-,       max_slots
-,       slots_used
-,       wg_name
-,       tgt_mem_grant_MB
-,       up1 as rc
-,       (ROW_NUMBER() OVER(PARTITION BY DWU ORDER BY DWU)) as rc_id
-FROM
-(
-    SELECT  DWU
-    ,       max_queries
-    ,       max_slots
-    ,       slots_used
-    ,       wg_name
-    ,       tgt_mem_grant_MB
-    ,       REVERSE(SUBSTRING(REVERSE(wg_names),1,CHARINDEX('_',REVERSE(wg_names),1)-1)) as up1
-    ,       REVERSE(SUBSTRING(REVERSE(tgt_mem_grant_MBs),1,CHARINDEX('_',REVERSE(tgt_mem_grant_MBs),1)-1)) as up2
-    ,       REVERSE(SUBSTRING(REVERSE(slots_used_all),1,CHARINDEX('_',REVERSE(slots_used_all),1)-1)) as up3
-    FROM    ref AS r1
-    UNPIVOT
-    (
-        wg_name FOR wg_names IN (wg_name_smallrc,wg_name_mediumrc,wg_name_largerc,wg_name_xlargerc,
-        wg_name_staticrc10, wg_name_staticrc20, wg_name_staticrc30, wg_name_staticrc40, wg_name_staticrc50,
-        wg_name_staticrc60, wg_name_staticrc70, wg_name_staticrc80)
-    ) AS r2
-    UNPIVOT
-    (
-        tgt_mem_grant_MB FOR tgt_mem_grant_MBs IN (tgt_mem_grant_MB_smallrc,tgt_mem_grant_MB_mediumrc,
-        tgt_mem_grant_MB_largerc,tgt_mem_grant_MB_xlargerc, tgt_mem_grant_MB_staticrc10, tgt_mem_grant_MB_staticrc20,
-        tgt_mem_grant_MB_staticrc30, tgt_mem_grant_MB_staticrc40, tgt_mem_grant_MB_staticrc50,
-        tgt_mem_grant_MB_staticrc60, tgt_mem_grant_MB_staticrc70, tgt_mem_grant_MB_staticrc80)
-    ) AS r3
-    UNPIVOT
-    (
-        slots_used FOR slots_used_all IN (slots_used_smallrc,slots_used_mediumrc,slots_used_largerc,
-        slots_used_xlargerc, slots_used_staticrc10, slots_used_staticrc20, slots_used_staticrc30,
-        slots_used_staticrc40, slots_used_staticrc50, slots_used_staticrc60, slots_used_staticrc70,
-        slots_used_staticrc80)
-    ) AS r4
-) a
-WHERE   up1 = up2
-AND     up1 = up3
-;
--- Getting current info about workload groups.
-WITH  
-dmv  
-AS  
-(
-  SELECT
-          rp.name                                           AS rp_name
-  ,       rp.max_memory_kb*1.0/1048576                      AS rp_max_mem_GB
-  ,       (rp.max_memory_kb*1.0/1024)
-          *(request_max_memory_grant_percent/100)           AS max_memory_grant_MB
-  ,       (rp.max_memory_kb*1.0/1048576)
-          *(request_max_memory_grant_percent/100)           AS max_memory_grant_GB
-  ,       wg.name                                           AS wg_name
-  ,       wg.importance                                     AS importance
-  ,       wg.request_max_memory_grant_percent               AS request_max_memory_grant_percent
-  FROM    sys.dm_pdw_nodes_resource_governor_workload_groups wg
-  JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools rp    ON  wg.pdw_node_id  = rp.pdw_node_id
-                                                                  AND wg.pool_id      = rp.pool_id
-  WHERE   rp.name = 'SloDWPool'
-  GROUP BY
-          rp.name
-  ,       rp.max_memory_kb
-  ,       wg.name
-  ,       wg.importance
-  ,       wg.request_max_memory_grant_percent
-)
--- Creating resource class name mapping.
-,names
-AS
-(
-  SELECT 'smallrc' as resource_class, 1 as rc_id
-  UNION ALL
-    SELECT 'mediumrc', 2
-  UNION ALL
-    SELECT 'largerc', 3
-  UNION ALL
-    SELECT 'xlargerc', 4
-  UNION ALL
-    SELECT 'staticrc10', 5
-  UNION ALL
-    SELECT 'staticrc20', 6
-  UNION ALL
-    SELECT 'staticrc30', 7
-  UNION ALL
-    SELECT 'staticrc40', 8
-  UNION ALL
-    SELECT 'staticrc50', 9
-  UNION ALL
-    SELECT 'staticrc60', 10
-  UNION ALL
-    SELECT 'staticrc70', 11
-  UNION ALL
-    SELECT 'staticrc80', 12
-)
-,base AS
-(   SELECT  schema_name
-    ,       table_name
-    ,       SUM(column_count)                   AS column_count
-    ,       ISNULL(SUM(short_string_column_count),0)   AS short_string_column_count
-    ,       ISNULL(SUM(long_string_column_count),0)    AS long_string_column_count
-    FROM    (   SELECT  sm.name                                             AS schema_name
-                ,       tb.name                                             AS table_name
-                ,       COUNT(co.column_id)                                 AS column_count
-                           ,       CASE    WHEN co.system_type_id IN (36,43,106,108,165,167,173,175,231,239)
-                                AND  co.max_length <= 32
-                                THEN COUNT(co.column_id)
-                        END                                                 AS short_string_column_count
-                ,       CASE    WHEN co.system_type_id IN (165,167,173,175,231,239)
-                                AND  co.max_length > 32 and co.max_length <=8000
-                                THEN COUNT(co.column_id)
-                        END                                                 AS long_string_column_count
-                FROM    sys.schemas AS sm
-                JOIN    sys.tables  AS tb   on sm.[schema_id] = tb.[schema_id]
-                JOIN    sys.columns AS co   ON tb.[object_id] = co.[object_id]
-                           WHERE tb.name = @TABLE_NAME AND sm.name = @SCHEMA_NAME
-                GROUP BY sm.name
-                ,        tb.name
-                ,        co.system_type_id
-                ,        co.max_length            ) a
-GROUP BY schema_name
-,        table_name
-)
-, size AS
-(
-SELECT  schema_name
-,       table_name
-,       75497472                                            AS table_overhead
-
-,       column_count*1048576*8                              AS column_size
-,       short_string_column_count*1048576*32                       AS short_string_size,       (long_string_column_count*16777216) AS long_string_size
-FROM    base
-UNION
-SELECT CASE WHEN COUNT(*) = 0 THEN 'EMPTY' END as schema_name
-         ,CASE WHEN COUNT(*) = 0 THEN 'EMPTY' END as table_name
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as table_overhead
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as column_size
-         ,CASE WHEN COUNT(*) = 0 THEN 0 END as short_string_size
-
-,CASE WHEN COUNT(*) = 0 THEN 0 END as long_string_size
-FROM   base
-)
-, load_multiplier as
-(
-SELECT  CASE
-                     WHEN FLOOR(8 -(CAST (@DWU_NUM AS FLOAT)/6000)) > 0 THEN FLOOR(8 -(CAST (@DWU_NUM AS FLOAT)/6000))
-                     ELSE 1
-              END AS multiplication_factor
-)
-       SELECT  r1.DWU
-       , schema_name
-       , table_name
-       , rc.resource_class as closest_rc_in_increasing_order
-       , max_queries_at_this_rc = CASE
-             WHEN (r1.max_slots / r1.slots_used > r1.max_queries)
-                  THEN r1.max_queries
-             ELSE r1.max_slots / r1.slots_used
-                  END
-       , r1.max_slots as max_concurrency_slots
-       , r1.slots_used as required_slots_for_the_rc
-       , r1.tgt_mem_grant_MB  as rc_mem_grant_MB
-       , CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) AS est_mem_grant_required_for_cci_operation_MB
-       FROM    size, load_multiplier, #ref r1, names  rc
-       WHERE r1.rc_id=rc.rc_id
-                     AND CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) < r1.tgt_mem_grant_MB
-       ORDER BY ABS(CAST((table_overhead*1.0+column_size+short_string_size+long_string_size)*multiplication_factor/1048576    AS DECIMAL(18,2)) - r1.tgt_mem_grant_MB)
-GO
-```
-
-### <a name="stored-procedure-definition-for-gen2"></a>Uložená procedura definice Gen2
+### <a name="stored-procedure-definition"></a>Definice uložené procedury
 
 ```sql
 -------------------------------------------------------------------------------
@@ -607,13 +272,15 @@ AS
 IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
-  SELECT @DWU = 'DW'+CAST(Nodes*CASE WHEN CPUVer>6 THEN 500 ELSE 100 END AS VARCHAR(10))+CASE WHEN CPUVer>6 THEN 'c' ELSE '' END
+
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
+  ELSE Mem*100 
+  END AS VARCHAR(10)) +'c'
     FROM (
-      SELECT Nodes=count(distinct n.pdw_node_id), CPUVer=max(i.cpu_count)
+      SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
         FROM sys.dm_pdw_nodes n
         CROSS APPLY sys.dm_pdw_nodes_os_sys_info i
-        WHERE type = 'COMPUTE'
-         )A
+        WHERE type = 'COMPUTE')A
 END
 
 -- Dropping temp table if exists.
@@ -631,54 +298,37 @@ WITH
 alloc
 AS
 (
-  SELECT 'DW100' AS DWU, 4 AS max_queries, 4 AS max_slots, 1 AS slots_used_smallrc, 1 AS slots_used_mediumrc,
-        2 AS slots_used_largerc, 4 AS slots_used_xlargerc, 1 AS slots_used_staticrc10, 2 AS slots_used_staticrc20,
-        4 AS slots_used_staticrc30, 4 AS slots_used_staticrc40, 4 AS slots_used_staticrc50,
-        4 AS slots_used_staticrc60, 4 AS slots_used_staticrc70, 4 AS slots_used_staticrc80
-  UNION ALL
-    SELECT 'DW200', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW300', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
-  UNION ALL
-    SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
-  UNION ALL
-    SELECT 'DW1000', 32, 40, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1200', 32, 48, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500', 32, 60, 1, 8, 16, 32, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW1000c', 32, 40, 1, 4, 8, 28, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW1500c', 32, 60, 1, 6, 13, 42, 1, 2, 4, 8, 16, 32, 32, 32
-  UNION ALL
-    SELECT 'DW2000c', 48, 80, 2, 8, 17, 56, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW2500c', 48, 100, 3, 10, 22, 70, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW3000c', 64, 120, 3, 12, 26, 84, 1, 2, 4, 8, 16, 32, 64, 64
-  UNION ALL
-    SELECT 'DW5000c', 64, 200, 6, 20, 44, 140, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW6000c', 128, 240, 7, 24, 52, 168, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW7500c', 128, 300, 9, 30, 66, 210, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW10000c', 128, 400, 12, 40, 88, 280, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW15000c', 128, 600, 18, 60, 132, 420, 1, 2, 4, 8, 16, 32, 64, 128
-  UNION ALL
-    SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128
+SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_smallrc,1 AS slots_used_mediumrc,2 AS slots_used_largerc,4 AS slots_used_xlargerc,1 AS slots_used_staticrc10,2 AS slots_used_staticrc20,4 AS slots_used_staticrc30,4 AS slots_used_staticrc40,4 AS slots_used_staticrc50,4 AS slots_used_staticrc60,4 AS slots_used_staticrc70,4 AS slots_used_staticrc80
+  UNION ALL
+    SELECT 'DW200c', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+  UNION ALL
+    SELECT 'DW300c', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+  UNION ALL
+    SELECT 'DW400c', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+  UNION ALL
+    SELECT 'DW500c', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+  UNION ALL
+    SELECT 'DW1000c', 32, 40, 1, 4, 8, 28, 1, 2, 4, 8, 16, 32, 32, 32
+  UNION ALL
+    SELECT 'DW1500c', 32, 60, 1, 6, 13, 42, 1, 2, 4, 8, 16, 32, 32, 32
+  UNION ALL
+    SELECT 'DW2000c', 48, 80, 2, 8, 17, 56, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW2500c', 48, 100, 3, 10, 22, 70, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW3000c', 64, 120, 3, 12, 26, 84, 1, 2, 4, 8, 16, 32, 64, 64
+  UNION ALL
+    SELECT 'DW5000c', 64, 200, 6, 20, 44, 140, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW6000c', 128, 240, 7, 24, 52, 168, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW7500c', 128, 300, 9, 30, 66, 210, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW10000c', 128, 400, 12, 40, 88, 280, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW15000c', 128, 600, 18, 60, 132, 420, 1, 2, 4, 8, 16, 32, 64, 128
+  UNION ALL
+    SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
 ,map
@@ -715,29 +365,29 @@ AS
 (
   SELECT  a1.*
   ,       m1.wg_name          AS wg_name_smallrc
-  ,       m1.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_smallrc
+  ,       m1.slots_used * 250 AS tgt_mem_grant_MB_smallrc
   ,       m2.wg_name          AS wg_name_mediumrc
-  ,       m2.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_mediumrc
+  ,       m2.slots_used * 250 AS tgt_mem_grant_MB_mediumrc
   ,       m3.wg_name          AS wg_name_largerc
-  ,       m3.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_largerc
+  ,       m3.slots_used * 250 AS tgt_mem_grant_MB_largerc
   ,       m4.wg_name          AS wg_name_xlargerc
-  ,       m4.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_xlargerc
+  ,       m4.slots_used * 250 AS tgt_mem_grant_MB_xlargerc
   ,       m5.wg_name          AS wg_name_staticrc10
-  ,       m5.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc10
+  ,       m5.slots_used * 250 AS tgt_mem_grant_MB_staticrc10
   ,       m6.wg_name          AS wg_name_staticrc20
-  ,       m6.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc20
+  ,       m6.slots_used * 250 AS tgt_mem_grant_MB_staticrc20
   ,       m7.wg_name          AS wg_name_staticrc30
-  ,       m7.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc30
+  ,       m7.slots_used * 250 AS tgt_mem_grant_MB_staticrc30
   ,       m8.wg_name          AS wg_name_staticrc40
-  ,       m8.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc40
+  ,       m8.slots_used * 250 AS tgt_mem_grant_MB_staticrc40
   ,       m9.wg_name          AS wg_name_staticrc50
-  ,       m9.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc50
+  ,       m9.slots_used * 250 AS tgt_mem_grant_MB_staticrc50
   ,       m10.wg_name          AS wg_name_staticrc60
-  ,       m10.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc60
+  ,       m10.slots_used * 250 AS tgt_mem_grant_MB_staticrc60
   ,       m11.wg_name          AS wg_name_staticrc70
-  ,       m11.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc70
+  ,       m11.slots_used * 250 AS tgt_mem_grant_MB_staticrc70
   ,       m12.wg_name          AS wg_name_staticrc80
-  ,       m12.slots_used * CASE WHEN RIGHT(@DWU,1)='c' THEN 250 ELSE 200 END AS tgt_mem_grant_MB_staticrc80
+  ,       m12.slots_used * 250 AS tgt_mem_grant_MB_staticrc80
   FROM alloc a1
   JOIN map   m1  ON a1.slots_used_smallrc     = m1.slots_used and m1.wg_name = 'SloDWGroupSmall'
   JOIN map   m2  ON a1.slots_used_mediumrc    = m2.slots_used and m2.wg_name = 'SloDWGroupMedium'
@@ -932,7 +582,7 @@ GO
 
 ## <a name="next-step"></a>Další krok
 
-Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečit databázi ve službě SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu columnstore clusteru, najdete v části [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 <!--Image references-->
 

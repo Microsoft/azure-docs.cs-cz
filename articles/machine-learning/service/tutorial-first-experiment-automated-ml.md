@@ -1,5 +1,5 @@
 ---
-title: Vytvoření prvního automatizovaného experimentu machine learningu
+title: Vytvořte si první automatizovaný experiment klasifikace ML.
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí automatizovaného strojového učení na úvodní stránce pracovního prostoru Azure Machine Learning vytvořit klasifikační model a nasadit model klasifikace (Preview).
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350499"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035681"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 
 V tomto kurzu se naučíte, jak vytvořit první automatizovaný experiment strojového učení prostřednictvím cílové stránky pracovního prostoru (Preview) bez psaní jediného řádku kódu. Tento příklad vytvoří model klasifikace, který předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
@@ -26,12 +26,12 @@ Pomocí automatizovaného strojového učení můžete automatizovat časově n�
 V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Vytvoření pracovního prostoru Azure Machine Learning.
+> * Vytvořte pracovní prostor Azure Machine Learning.
 > * Spusťte automatizovaný experiment strojového učení.
 > * Zobrazit podrobnosti experimentu.
-> * Nasazení modelu.
+> * Nasaďte model.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -66,14 +66,14 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
 
 1. Vyberte **vytvořit experiment**. 
 
-1. Zadejte tento název experimentu:`my-1st-automl-experiment`
+1. Zadejte tento název experimentu: `my-1st-automl-experiment`
 
 1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Cíl výpočetní služby je místní nebo cloudové prostředí prostředků, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. V tomto experimentu používáme cloudový výpočetní výkon. 
 
    Pole | Popis | Hodnota pro kurz
    ----|---|---
-   Název Compute |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
-   Velikost&nbsp;virtuálního&nbsp;počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
+   Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
+   Virtual @ no__t-0machine @ no__t-1size| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
    Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
 
    >[!NOTE]
@@ -101,10 +101,10 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
         
         Pole|Popis| Hodnota pro kurz
         ---|---|---
-        Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělené
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi @ no__t-0 samostatné, nezávislé oblasti v prostém textu nebo jinými datovými proudy. |Čárka
-        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
-        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví
+        Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi @ no__t-0 samostatné, nezávislé oblasti v prostém textu nebo jinými datovými proudy. |Tečkou
+        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
     
         ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
@@ -118,10 +118,10 @@ Na úvodní stránce pracovního prostoru jste dokončili následující kroky e
    >[!NOTE]
    > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
    
-   Rozšířená&nbsp;nastavení|Popis|Hodnota&nbsp;pro&nbsp;kurz
+   Advanced @ no__t-0settings|Popis|Hodnota @ no__t-0for @ no__t-1tutorial
    ------|---------|---
    Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
-   Výstupní kritéria| Pokud je splněno kritérium, úloha školení se zastaví. |Čas&nbsp;úlohy&nbsp;školení: 5 <br> <br> &nbsp;Maximumiterací#&#58;10&nbsp;&nbsp;
+   Výstupní kritéria| Pokud je splněno kritérium, úloha školení se zastaví. |Školení @ no__t-0job @ no__t-1time: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-3iterations&#58;10
    Předzpracování| Umožňuje předzpracování pomocí automatizovaného strojového učení. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
    Typ ověření | Vyberte typ křížového ověření.|K skládání křížového ověřování
    Počet ověření | Počet testů. | 2 křížová ověření 
@@ -156,7 +156,7 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
 
 1. Nasaďte **nejvhodnější podokno model nasazení** následujícím způsobem:
 
-    Pole| Value
+    Pole| Hodnota
     ----|----
     Název nasazení| Moje automl – nasazení
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
@@ -200,5 +200,5 @@ V tomto kurzu automatizovaného strojového učení jste pomocí cílové strán
 + Další informace o metrikách a grafech klasifikace najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
-> Tato datová sada bank je dostupná v rámci [Creative navýšení (CCO: Veřejná doména)](https://creativecommons.org/publicdomain/zero/1.0/). Všechna práva k individuálnímu obsahu databáze jsou licencovaná v rámci [licence k obsahu databáze](https://creativecommons.org/publicdomain/zero/1.0/) a dostupná na [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Tato datová sada byla původně k dispozici v rámci [databáze UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
+> Tato datová sada bank je k dispozici v rámci [licence Creative-@ (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Všechna práva k individuálnímu obsahu databáze jsou licencovaná v rámci [licence k obsahu databáze](https://creativecommons.org/publicdomain/zero/1.0/) a dostupná na [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Tato datová sada byla původně k dispozici v rámci [databáze UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez a P. Rita. Přístup na základě dat, který vám umožní předpovědět úspěšnost bankového uvádění na trh. Systémy podpory pro rozhodování, Elsevier, 62:22-31, červen 2014.

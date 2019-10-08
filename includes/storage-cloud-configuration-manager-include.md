@@ -4,16 +4,16 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 11626dd95064cf972a845e5c37f930b9e49c57e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5102866cdda51ef545fd95b32946cb17c6e40a3c
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077038"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038165"
 ---
-[Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analyzuje nastavení konfigurace bez ohledu na to, jestli klientská aplikace běží na počítači, na mobilním zařízení, na virtuálním počítači Azure nebo v cloudové službě Azure.
+[Knihovna správce konfigurace Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) poskytuje třídu pro potřeby analýzy připojovacího řetězce z konfiguračního souboru. Třída [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) analyzuje nastavení konfigurace. Analyzuje nastavení pro klientské aplikace, které běží na ploše, na mobilním zařízení, na virtuálním počítači Azure nebo v cloudové službě Azure.
 
-Pokud chcete odkázat na balíček CloudConfigurationManager, přidejte tento příkaz `using`:
+Chcete-li odkazovat na balíček `CloudConfigurationManager`, přidejte následující direktivy `using`:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
@@ -28,4 +28,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Použití nástroje Azure Configuration Manager není povinné. Můžete také použít rozhraní API, jako třeba třídu [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) rozhraní .NET Framework.
+Použití nástroje Azure Configuration Manager není povinné. Můžete také použít rozhraní API, například [třídu ConfigurationManager](/dotnet/api/system.configuration.configurationmanager).NET Framework.

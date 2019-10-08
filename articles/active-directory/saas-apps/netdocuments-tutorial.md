@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s NetDocuments | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s NetDocuments | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a NetDocuments.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf25ce318415a8aa36bca8d4cd7380e4e8e67ca
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743462"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035705"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s NetDocuments
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s NetDocuments
 
 V tomto kurzu se dozvíte, jak integrovat NetDocuments s Azure Active Directory (Azure AD). Když integrujete NetDocuments s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat NetDocuments s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -82,9 +82,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`.
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`.
+    
+    c. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `http://netdocuments.com/VAULT`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. ID úložiště je hodnota začínající na **CA** a za 8 kódem znaku, který je přidružený k vašemu úložišti NetDocuments. Další informace najdete v [dokumentu podpory federovaných identit v NetDocuments](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) . Případně můžete kontaktovat [tým podpory klienta NetDocuments](https://support.netdocuments.com/hc/) a získat tyto hodnoty, pokud máte potíže s konfigurací výše uvedených informací. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -95,25 +97,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **Nastavení NetDocuments** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k NetDocuments.
 
@@ -121,7 +123,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **NetDocuments**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -139,15 +141,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Klikněte na **Přidat a odebrat uživatele a skupiny**.
    
-    ![Úložiště](./media/netdocuments-tutorial/ic795047.png "Úložiště")
+    ![](./media/netdocuments-tutorial/ic795047.png "Úložiště") úložiště
 
 4. Klikněte na **Konfigurovat rozšířené možnosti ověřování**.
     
-    ![Konfigurace rozšířených možností ověřování](./media/netdocuments-tutorial/ic795048.png "Konfigurace rozšířených možností ověřování")
+    ![Konfigurace rozšířených možností ověřování](./media/netdocuments-tutorial/ic795048.png "Konfigurace možností pokročilého ověřování")
 
 5. V dialogu **federované identity** proveďte následující kroky:
    
-    ![Federované identity](./media/netdocuments-tutorial/ic795049.png "Federované identity")
+    (./media/netdocuments-tutorial/ic795049.png "Federované identity") ![federované identity]
    
     a. Jako **Typ serveru federované identity**vyberte **Active Directory Federation Services (AD FS)** .
    
@@ -166,26 +168,26 @@ V případě NetDocuments je zřizování ručním úkolem.
 
 2. V nabídce v horní části klikněte na **správce**.
    
-    ![Správce](./media/netdocuments-tutorial/ic795051.png "Správce")
+    ![](./media/netdocuments-tutorial/ic795051.png "Správce") správy
 
 3. Klikněte na **Přidat a odebrat uživatele a skupiny**.
    
-    ![Úložiště](./media/netdocuments-tutorial/ic795047.png "Úložiště")
+    ![](./media/netdocuments-tutorial/ic795047.png "Úložiště") úložiště
 
 4. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu platného Azure Active Directory účtu, který chcete zřídit, a pak klikněte na **Přidat uživatele**.
    
-    ![E-mailová adresa](./media/netdocuments-tutorial/ic795053.png "E-mailová adresa")
+    (./media/netdocuments-tutorial/ic795053.png "E") -mailová adresa ![e-mailové adresy]
    
     >[!NOTE]
     >Držitel účtu Azure Active Directory získá e-mail s odkazem na potvrzení účtu, než se aktivuje. K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů NetDocuments nebo rozhraní API poskytovaná NetDocuments.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici NetDocuments, měli byste se automaticky přihlásit k NetDocuments, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
