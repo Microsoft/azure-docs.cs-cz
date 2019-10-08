@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710027"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024555"
 ---
-# <a name="add-storage-targets"></a>Přidat cíle úložiště
+# <a name="add-storage-targets"></a>Přidání cílů úložiště
 
 *Cíle úložiště* jsou back-endové úložiště pro soubory, které jsou dostupné prostřednictvím instance mezipaměti HPC Azure. Můžete přidat úložiště NFS (jako je místní hardwarový systém) nebo ukládat data do objektu blob Azure.
 
@@ -37,13 +37,16 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 
 ![snímek obrazovky s cílovou stránkou pro přidání cílení úložiště s informacemi o novém cíli úložiště Azure Blob Storage](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Název cíle úložiště** – nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 * **Cílový typ** – vyberte **objekt BLOB**.
 * **Účet úložiště** – vyberte účet s kontejnerem, na který se má odkazovat.
 
   Pro přístup k účtu úložiště bude nutné autorizovat instanci mezipaměti, jak je popsáno v tématu [Přidání rolí přístupu](#add-the-access-control-roles-to-your-account).
+
+  Informace o druhu účtu úložiště, který můžete použít, najdete v článku [požadavky na úložiště objektů BLOB](hpc-cache-prereqs.md#blob-storage-requirements).
+
 * **Kontejner úložiště** – vyberte kontejner objektů BLOB pro tento cíl.
 
 * **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
@@ -54,7 +57,7 @@ Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci aplikace mezipaměti pro přístup k vašemu účtu úložiště pro cíle služby Azure Blob Storage.
 
-Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "StorageCache Resource Provider".
+Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
 
 Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB.
 
@@ -68,7 +71,10 @@ Postup přidání rolí RBAC:
 
 1. V poli **přiřadit přístup k** ponechte vybranou výchozí hodnotu ("uživatel služby Azure AD, skupina nebo instanční objekt").  
 
-1. V poli **Vybrat** vyhledejte "storagecache".  Tento řetězec by měl odpovídat jednomu objektu zabezpečení s názvem "poskytovatel prostředků mezipaměti HPC". Kliknutím vyberte objekt zabezpečení.
+1. V poli **Vybrat** vyhledejte "HPC".  Tento řetězec by měl odpovídat jednomu instančnímu objektu s názvem "poskytovatel prostředků mezipaměti HPC". Kliknutím vyberte objekt zabezpečení.
+
+   > [!NOTE]
+   > Pokud hledání "HPC" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelům, kteří se k verzi Preview připojili včas, může být nutné použít starší název instančního objektu.
 
 1. Kliknutím na tlačítko **Uložit** přidejte přiřazení role do účtu úložiště.
 

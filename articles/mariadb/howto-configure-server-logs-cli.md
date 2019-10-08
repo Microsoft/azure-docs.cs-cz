@@ -1,35 +1,35 @@
 ---
-title: Přístup protokolů serveru ve službě Azure Database pro MariaDB s použitím rozhraní příkazového řádku Azure
-description: Tento článek popisuje, jak získat přístup k protokolům serveru ve službě Azure Database pro MariaDB s použitím nástroje příkazového řádku Azure CLI.
+title: Přístup k protokolům serveru v Azure Database for MariaDB pomocí Azure CLI
+description: Tento článek popisuje, jak získat přístup k protokolům serveru v Azure Database for MariaDB pomocí nástroje příkazového řádku Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fff9f13e5ce6bf8a7805f7794d3e71eb4030104
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065683"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023608"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
-Azure Database pro MariaDB serverové protokoly můžete stáhnout pomocí příkazového řádku Azure, nástroje příkazového řádku Azure.
+# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
+Protokoly Azure Database for MariaDB serveru můžete stáhnout pomocí Azure CLI, nástroje příkazového řádku Azure.
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Azure Database pro MariaDB server](quickstart-create-mariadb-server-database-using-azure-cli.md)
-- [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete projít tento průvodce, budete potřebovat:
+- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
 
-## <a name="configure-logging-for-azure-database-for-mariadb"></a>Nakonfigurujte si protokolování pro službu Azure Database pro MariaDB
-Můžete nakonfigurovat server pro přístup k protokolu pomalých dotazů MariaDB podle následujících kroků:
-1. Zapnutí protokolování tak, že nastavíte **pomalé\_dotazu\_protokolu** parametr ON.
-2. Upravit další parametry, jako například **dlouhé\_dotazu\_čas** a **protokolu\_pomalé\_správce\_příkazy**.
+## <a name="configure-logging-for-azure-database-for-mariadb"></a>Konfigurovat protokolování pro Azure Database for MariaDB
+Server můžete nakonfigurovat tak, aby se přihlásil k protokolu MariaDB pomalých dotazů, a to provedením následujících kroků:
+1. Zapněte protokolování nastavením **pomalého parametru @ no__t-1query @ no__t-2log** na hodnotu on.
+2. Upravte jiné parametry, například **Long @ no__t-1query @ no__t-2time** a **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
 
-Zjistěte, jak nastavit hodnoty těchto parametrů pomocí Azure CLI, najdete v článku [konfigurace parametrů serveru](howto-configure-server-parameters-cli.md).
+Informace o tom, jak nastavit hodnotu těchto parametrů prostřednictvím rozhraní příkazového řádku Azure CLI, najdete v tématu [Postup konfigurace parametrů serveru](howto-configure-server-parameters-cli.md).
 
-Například následující příkaz rozhraní příkazového řádku zapne protokolu pomalých dotazů, nastaví doba dlouhého dotazu na 10 sekund a pak ji vypne protokolování pomalých správce příkazu. Nakonec se zobrazí možnosti konfigurace pro kontrolu.
+Například následující příkaz CLI zapíná protokol pomalých dotazů, nastavuje dlouhou dobu dotazování na 10 sekund a pak vypne protokolování pomalého příkazu správce. Nakonec zobrazí seznam možností konfigurace pro vaši kontrolu.
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 az mariadb server configuration set --name long_query_time --resource-group myresourcegroup --server mydemoserver --value 10
@@ -37,20 +37,20 @@ az mariadb server configuration set --name log_slow_admin_statements --resource-
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Seznam protokolů pro službu Azure Database pro MariaDB server
-Chcete-li seznam souborů protokolu pomalých dotazů k dispozici pro váš server, spusťte [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) příkazu.
+## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Vypsat protokoly pro Azure Database for MariaDB Server
+Chcete-li zobrazit seznam dostupných souborů protokolu pomalých dotazů pro váš server, spusťte příkaz [AZ MariaDB Server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) .
 
-Můžete zobrazit seznam souborů protokolu pro server **mydemoserver.mariadb.database.azure.com** ve skupině prostředků **myresourcegroup**. Potom směrovat seznam souborů protokolů do textového souboru s názvem **protokolu\_soubory\_seznam.txt**.
+Soubory protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log @ no__t-1files\_list.txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Stáhnout protokoly ze serveru
-S [az mariadb server-logs Stáhnout](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) příkazu si můžete stáhnout jednotlivých protokolových souborů pro váš server.
+Pomocí příkazu [AZ MariaDB Server-logs Download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) si můžete stáhnout jednotlivé soubory protokolu pro váš server.
 
-Použijte následující příklad ke stažení souboru protokolu specifické pro server **mydemoserver.mariadb.database.azure.com** ve skupině prostředků **myresourcegroup** do vašeho místního prostředí.
+Použijte následující příklad ke stažení konkrétního souboru protokolu pro server **mydemoserver.MariaDB.Database.Azure.com** ve skupině prostředků **myresourcegroup** do svého místního prostředí.
 ```azurecli-interactive
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [protokoly pomalých dotazů ve službě Azure Database pro MariaDB](concepts-server-logs.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si o [protokolech pomalých dotazů v Azure Database for MariaDB](concepts-server-logs.md).

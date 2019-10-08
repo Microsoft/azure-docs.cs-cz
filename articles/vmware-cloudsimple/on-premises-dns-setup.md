@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845312"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030412"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -23,7 +23,7 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu CloudSimpl
 
 1. Přihlaste se k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Přejděte na **prostředky** > **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
+2. Přejděte k **prostředkům**@no__t**privátním cloudům** – 1 a vyberte privátní cloud, ke kterému se chcete připojit.
 
 3. Na stránce **Souhrn** v privátním cloudu v části **základní informace**ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
 
@@ -65,7 +65,7 @@ zone “cloudsimple.io”
 3. V závislosti na vašem prostředí vyberte příslušnou možnost a klikněte na **Další**.
 
     ![Nová zóna](media/DNS03.png)
-4.  Vyberte **zónu dopředného vyhledávání**a klikněte na **Další**.
+4. Vyberte **zónu dopředného vyhledávání** a klikněte na **Další**.
 
     ![Nová zóna](media/DNS01.png)
 5. Zadejte název zóny a klikněte na **Další**.

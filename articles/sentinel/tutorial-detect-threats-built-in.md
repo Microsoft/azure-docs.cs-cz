@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240106"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024459"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: Vyhledá hrozby předem.
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: okamžité zjištění hrozeb
 
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "71240106"
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám poskytne předem připravené předdefinované šablony. Tyto šablony byly navržené týmem společnosti Microsoft pro odborníky na zabezpečení a analytikům na základě známých hrozeb, běžných vektorů útoku a řetězů eskalace útoků na podezřelé aktivity. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele napříč vaším prostředím. Mnohé z šablon můžete přizpůsobit tak, aby vyhledaly nebo odfiltroval aktivity podle vašich potřeb. Výstrahy vygenerované pomocí těchto šablon vytvoří incidenty, které můžete přiřadit a prozkoumat ve svém prostředí.
+Po [připojení ke zdrojům dat](quickstart-onboard.md) To Azure Sentinel budete chtít dostávat oznámení, když dojde k nějakému podezřelému. Pokud to chcete povolit, Azure Sentinel vám poskytne předem připravené předdefinované šablony. Tyto šablony byly navržené týmem společnosti Microsoft pro odborníky na zabezpečení a analytikům na základě známých hrozeb, běžných vektorů útoku a řetězů eskalace útoků na podezřelé aktivity. Po povolení těchto šablon budou automaticky vyhledávat všechny aktivity, které vypadají podezřele napříč vaším prostředím. Mnohé z šablon můžete přizpůsobit tak, aby vyhledaly nebo odfiltroval aktivity podle vašich potřeb. Výstrahy vygenerované pomocí těchto šablon vytvoří incidenty, které můžete přiřadit a prozkoumat ve svém prostředí.
 
 Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel:
 
@@ -39,7 +39,7 @@ Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel:
 
 ## <a name="about-out-of-the-box-detections"></a>O dopředných detekcích box
 
-Pokud chcete zobrazit všechna připravená zjišťování, pokračujte na **analýzy** a pak na **šablony pravidel**. Tato karta obsahuje všechna předdefinovaná pravidla Azure Sentinel.
+Pokud chcete zobrazit všechna připravená zjišťování, pokračujte na **analýzy** a pak na **šablony pravidel**. Tato karta obsahuje všechna předdefinovaná pravidla Azure Sentinel.
 
    ![Použití vestavěných detekcí k nalezení hrozeb pomocí Sentinel Azure](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -58,7 +58,7 @@ K dispozici jsou následující typy šablon:
  
 1. Otevře se Průvodce vytvořením pravidla v závislosti na vybrané šabloně. Všechny podrobnosti jsou vyplněné a pro **plánovaná pravidla** nebo **pravidla zabezpečení Microsoftu**můžete logiku přizpůsobit tak, aby lépe vyhovovala vaší organizaci, nebo vytvořit další pravidla založená na předdefinované šabloně. Po provedení kroků v Průvodci vytvořením pravidla a dokončení vytvoření pravidla na základě šablony se nové pravidlo zobrazí na kartě **aktivní pravidla** .
 
-Další informace o polích v průvodci najdete v tématu [kurz: Vytvořte vlastní analytická pravidla pro detekci](tutorial-detect-threats-custom.md)podezřelých hrozeb.
+Další informace o polích v průvodci najdete v tématu [kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb](tutorial-detect-threats-custom.md).
 
 
 

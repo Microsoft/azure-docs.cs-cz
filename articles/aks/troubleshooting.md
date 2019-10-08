@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932662"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025483"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -23,16 +23,16 @@ Když vytváříte nebo spravujete clustery Azure Kubernetes Service (AKS), mů�
 Vyzkoušejte si [oficiální Průvodce odstraňováním potíží s clustery Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md), který publikoval pracovník Microsoftu pro řešení potíží s lusky, uzly, clustery a dalšími funkcemi.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co bych měl/a dělat? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co mám dělat? 
 
 Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Jaké je nastavení maximálního počtu lusků na uzel pro AKS?
 
 Pokud nasadíte cluster AKS do Azure Portal, je nastavení maximálního počtu lusků na jeden uzel ve výchozím nastavení 30.
-Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto výchozí nastavení lze změnit pomocí `–-max-pods` příznaku `az aks create` v příkazu.
+Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto výchozí nastavení lze změnit pomocí příznaku `–-max-pods` v příkazu `az aks create`.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co mám dělat?
 
 Pokud se používá Azure CNI (pokročilé sítě), AKS předem přidělí IP adresu, která je určená na základě "Max-lusků" na uzel nakonfigurovaný. Počet uzlů v clusteru AKS může být kdekoli v rozmezí od 1 do 110. V závislosti na nastaveném maximálním počtu lusků na uzel by velikost podsítě měla být větší než "součin počtu uzlů a maximum pod na uzel". Následující základní rovnice popisuje toto:
 
@@ -40,7 +40,7 @@ Velikost podsítě > počet uzlů v clusteru (berou v úvahu budoucí požadavky
 
 Další informace najdete v tématu [plánování adresování IP adres pro váš cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co bych měl/a dělat?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co mám dělat?
 
 V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé důvody. Můžete se podívat na:
 
@@ -53,21 +53,21 @@ Další informace o řešení problémů v nástroji najdete v tématu [ladění
 
 V současné době bohužel není podporováno povolení řízení přístupu na základě role (RBAC) u existujících clusterů. Je nutné explicitně vytvořit nové clustery. Pokud použijete rozhraní příkazového řádku, bude ve výchozím nastavení povolena možnost RBAC. Pokud použijete portál AKS, je k dispozici přepínací tlačítko pro povolení RBAC v pracovním postupu vytváření.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co mám dělat?
 
 Důvodem upozornění na řídicím panelu je to, že cluster je teď povolený pomocí RBAC a přístup k němu je ve výchozím nastavení zakázaný. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co bych měl/a dělat?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co mám dělat?
 
-Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy`, které požadavky proxy odeslaly na port místního hostitele 8001 na server rozhraní Kubernetes API. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spuštění `kubectl proxy`, které požadavky proxy odesílají na port místního hostitele 8001 na server rozhraní Kubernetes API. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli `kube-proxy` je pod `kube-system` oborem názvů spuštěný. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
+Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli `kube-proxy` pod běží v oboru názvů `kube-system`. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co mám dělat?
 
-Ujistěte se, že výchozí skupina zabezpečení sítě není upravená a že jsou pro připojení k serveru rozhraní API otevřené porty 22 a 9000. `tunnelfront` Pomocí`kubectl get pods --namespace kube-system` příkazu ověřte, zda je pod spuštěným v oboru názvů *Kube-System* . Pokud ne, vynutí odstranění položky pod a restartuje se.
+Ujistěte se, že výchozí skupina zabezpečení sítě není upravená a že jsou pro připojení k serveru rozhraní API otevřené porty 22 a 9000. Pomocí příkazu `kubectl get pods --namespace kube-system` Ověřte, zda `tunnelfront` pod běží v oboru názvů *Kube-System* . Pokud ne, vynutí odstranění položky pod a restartuje se.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Snažím se upgradovat nebo škálovat a připravuje se zpráva: Změna vlastnosti ' element imagereference ' není povolena, chyba. Návody tento problém vyřešit?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Snažím se upgradovat nebo škálovat a připravuje se zpráva "zpráva: Změna vlastnosti element imagereference není povolená". Návody tento problém vyřešit?
 
 K této chybě může dojít, protože jste změnili značky v uzlech agentů v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Změna prostředků v rámci skupiny MC_ * v clusteru AKS přerušuje cíl na úrovni služby (SLO).
 
@@ -77,7 +77,7 @@ K této chybě může dojít, protože jste změnili značky v uzlech agentů v 
 
 K této chybě dojde v případě, že clustery vstupují do neúspěšného stavu z více důvodů. Použijte následující postup, chcete-li vyřešit neúspěšný stav clusteru před opakováním dříve nezdařené operace:
 
-1. Dokud nebude cluster mimo `failed` `upgrade` stav a `scale` operace nebudou úspěšné. Mezi běžné kořenové problémy a jejich řešení patří:
+1. Dokud nebude cluster ne@no__t stavem 0, operace `upgrade` a `scale` nebudou úspěšné. Mezi běžné kořenové problémy a jejich řešení patří:
     * Škálování s **nedostatečnou výpočetní (CRP) kvótou**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle těchto [kroků a vyžádejte si zvýšení kvóty výpočetních](../azure-supportability/resource-manager-core-quotas-request.md) prostředků předtím, než se pokusíte o horizontální navýšení limitu kvóty.
     * Škálování clusteru pomocí pokročilých síťových a **nedostatečných podsítí (síťových) prostředků**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle [těchto kroků a vyžádejte si zvýšení kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) , než se pokusíte o horizontální navýšení kapacity nad rámec počáteční kvóty.
 2. Jakmile se podkladová příčina selhání upgradu vyřeší, cluster by měl být v úspěšném stavu. Po ověření stavu úspěšného dokončení zopakujte původní operaci.
@@ -88,7 +88,7 @@ K této chybě dojde v případě, že clustery vstupují do neúspěšného sta
 
 Operace upgradu a škálování v clusteru s jedním fondem uzlů nebo clusterem s [více fondy uzlů](use-multiple-node-pools.md) se vzájemně vylučují. Cluster ani fond uzlů nemůžete současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. V důsledku toho jsou operace omezené, když dojde k aktivnímu upgradu nebo operacím škálování a následně došlo k selhání. 
 
-Aby bylo možné diagnostikovat potíže `az aks show -g myResourceGroup -n myAKSCluster -o table` s tím, že se v clusteru načtou podrobné informace o stavu. Na základě výsledku:
+Pro usnadnění diagnostiky problému spusťte `az aks show -g myResourceGroup -n myAKSCluster -o table` a načtěte podrobný stav clusteru. Na základě výsledku:
 
 * Pokud se cluster aktivně upgraduje, počkejte, až se operace ukončí. Pokud byla úspěšná, zkuste znovu provést dříve neúspěšnou operaci.
 * Pokud se upgrade clusteru nezdařil, postupujte podle kroků uvedených v předchozí části.
@@ -105,9 +105,9 @@ Může dojít k chybám, které naznačují, že váš cluster AKS není na sad�
 
 **Neznámá ' Neznámá ' má nastaveno automatické škálování jako povolené, ale není na Virtual Machine Scale Sets**
 
-Pokud chcete používat funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, je nutné vytvořit clustery AKS, které používají Virtual Machine Scale Sets. Pokud se pokusíte použít funkce, které závisí na virtuálních počítačích služby Virtual Machine Scale Sets, a zacílíte na běžný cluster AKS s nevirtuálními počítači, budou se vám vracet chyby. Podpora sady škálování virtuálních počítačů je v současné době ve verzi Preview v AKS.
+Pokud chcete používat funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, je nutné vytvořit clustery AKS, které používají Virtual Machine Scale Sets. Pokud se pokusíte použít funkce, které závisí na virtuálních počítačích služby Virtual Machine Scale Sets, a zacílíte na běžný cluster AKS s nevirtuálními počítači, budou se vám vracet chyby.
 
-Postupujte podle *pokynů v* příslušném dokumentu, aby se správně zaregistrovala funkce Virtual Machine Scale set Preview a vytvořil se cluster AKS:
+Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v příslušném dokumentu:
 
 * [Použití automatického škálování clusteru](cluster-autoscaler.md)
 * [Vytvoření a použití více fondů uzlů](use-multiple-node-pools.md)
@@ -125,7 +125,7 @@ Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název
 
 *Tato pomoc při řešení potíží je směrována z aka.ms/aks-pending-operation*
 
-Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chcete-li získat podrobný stav clusteru, použijte `az aks show -g myResourceGroup -n myAKSCluster -o table` příkaz. Podle potřeby použijte vlastní skupinu prostředků a název clusteru AKS.
+Operace clusteru jsou omezené, když stále probíhá předchozí operace. Pokud chcete načíst podrobný stav clusteru, použijte příkaz `az aks show -g myResourceGroup -n myAKSCluster -o table`. Podle potřeby použijte vlastní skupinu prostředků a název clusteru AKS.
 
 Na základě výstupu stavu clusteru:
 
@@ -144,6 +144,6 @@ Použijte následující alternativní řešení:
 
 ## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
 
-Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, možná nebudete moci spustit určité `kubectl` příkazy. Při vytváření clusteru AKS můžete také zobrazit chyby.
+Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, možná nebudete moci spustit určité příkazy `kubectl`. Při vytváření clusteru AKS můžete také zobrazit chyby.
 
 Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.

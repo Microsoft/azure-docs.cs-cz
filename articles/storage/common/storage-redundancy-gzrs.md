@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720363"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028130"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -53,7 +53,7 @@ Při vytváření účtu úložiště určíte, jak budou data v tomto účtu re
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Použití RA-GZRS pro vysokou dostupnost
 
-Když pro svůj účet úložiště povolíte RA-GZRS, můžete data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární*@no__t – 1To název účtu. Pokud je například primárním koncovým bodem pro Blob service hodnota @ no__t-0, pak je sekundární koncový bod @ no__t-1. Přístupové klíče pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
+Když pro svůj účet úložiště povolíte RA-GZRS, můžete data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je například primárním koncovým bodem pro Blob service hodnota @ no__t-0, pak je sekundární koncový bod @ no__t-1. Přístupové klíče pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
 Pokud chcete využít výhod RA-GZRS v případě regionálního výpadku, musíte aplikaci navrhnout předem, abyste mohli tento scénář zpracovat. Vaše aplikace by měla číst a zapisovat do primárního koncového bodu, ale v případě, že primární oblast nebude k dispozici, přepnout na použití sekundárního koncového bodu. Pokyny k navrhování vysoké dostupnosti pomocí RA-GZRS najdete v tématu [navrhování vysoce dostupných aplikací pomocí RA-GZRS nebo RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -133,18 +133,18 @@ Při migraci za provozu Pamatujte na následující omezení:
 
 K vyžádání migrace za provozu použijte [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Na portálu vyberte účet úložiště, který se má migrovat na GZRS nebo RA-GZRS, a postupujte podle těchto pokynů:
 
-1. Vyberte **novou žádost o podporu**.
-2. Dokončete **základní**@no__t – 1based informace o svém účtu. Ve **službě** Section vyberte **správa účtů úložiště** and zadejte účet, který se má migrovat.
-3. Vyberte **Další**.
-4. Zadejte následující hodnoty **problém**@no__t – 1SECTION:
+1. Vyberte **novou žádost o podporu**.
+2. Dokončete **základy** na základě informací o účtu. V části **Služba** vyberte **Správa účtu úložiště** a zadejte účet, který se má migrovat.
+3. Vyberte **Další**.
+4. V části **problém** zadejte následující hodnoty:
     - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
-    - **Typ problému**: vyberte **migrace dat**.
-    - **Kategorie**: vyberte **MIGROVAT do (RA-) GZRS v rámci oblasti**.
-    - **Title**: zadejte popisný název, například **(RA-) GZRS Account Migration**.
-    - **Podrobnosti**: zadejte další podrobnosti v **podrobnostech**@no__t – 2box, například "Chci migrovat na GZRS z [LRS, GRS] v oblasti \_ @ no__t-4." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_ @ no__t-1."
-5. Vyberte **Další**.
-6. Ověřte, zda jsou kontaktní informace správné pro **kontaktní údaje** blade.
-7. Vyberte **vytvořit**.
+    - **Typ problému**: vyberte **migrace dat**.
+    - **Kategorie**: vyberte **MIGROVAT do (RA-) GZRS v rámci oblasti**.
+    - **Title**: zadejte popisný název, například **(RA-) GZRS Account Migration**.
+    - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například "Chci migrovat na GZRS z [LRS, GRS] v oblasti \_ @ no__t-3." nebo "Chci migrovat na RA-GZRS z [LRS, RA-GRS] v oblasti \_ @ no__t-1."
+5. Vyberte **Další**.
+6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
+7. Vyberte **Create** (Vytvořit).
 
 Zástupce podpory vás bude kontaktovat, abyste mohli poskytnout pomoc.
 

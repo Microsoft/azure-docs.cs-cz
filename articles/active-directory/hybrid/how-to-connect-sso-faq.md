@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960204"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025671"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
@@ -54,7 +54,7 @@ Kromě toho uživatelé získají tiché přihlašování, pokud aplikace odesí
 | Název aplikace | Adresa URL aplikace, která se má použít |
 | -- | -- |
 | SharePoint Online | https: \//contoso. SharePoint. com |
-| Azure Portal | https: \//portál. Azure. com/contoso. com |
+| Portál Azure | https: \//portál. Azure. com/contoso. com |
 
 Ve výše uvedených tabulkách nahraďte "contoso.com" názvem domény, aby se získaly správné adresy URL aplikací pro vašeho tenanta.
 
@@ -96,7 +96,10 @@ Na místním serveru, na kterém běží Azure AD Connect, postupujte podle těc
    1. Zavolejte `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro zamýšlenou doménovou strukturu služby AD.
 
    > [!NOTE]
-   > K vyhledání zamýšlené doménové struktury služby AD používáme uživatelské jméno správce domény poskytované ve formátu hlavní názvy uživatelů (UPN) (johndoe@contoso.com) nebo ve formátu doména s názvem Sam-účet (contoso\johndoe nebo contoso. com\johndoe). Použijete-li kvalifikovaný název domény pro doménu Sam-účet, použijeme část Doména uživatelského jména a [vyhledáte řadič domény správce domény pomocí DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použijete hlavní název uživatele (UPN), před vyhledáním příslušného řadiče domény [ho převedeme na název domény s kvalifikovaným účtem Sam](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
+   >Uživatelské jméno pověření správce domény musí být zadáno ve formátu názvu účtu SAM (contoso\johndoe nebo contoso. com\johndoe). Část Doména uživatelského jména používáme k vyhledání řadiče domény správce domény pomocí DNS.
+
+   >[!NOTE]
+   >Použitý účet správce domény nesmí být členem skupiny Protected Users. V takovém případě se operace nezdaří.
 
    2. Zavolejte `Update-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz aktualizuje dešifrovací klíč protokolu Kerberos pro účet počítače `AZUREADSSOACC` v této konkrétní doménové struktuře služby AD a aktualizuje ho v Azure AD.
    3. Předchozí kroky opakujte pro každou doménovou strukturu služby AD, na které jste tuto funkci nastavili.

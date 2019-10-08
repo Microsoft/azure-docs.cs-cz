@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s CakeHR | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s CakeHR | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a CakeHR.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174579"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026436"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s CakeHR
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CakeHR
 
 V tomto kurzu se dozvíte, jak integrovat CakeHR s Azure Active Directory (Azure AD). Když integrujete CakeHR s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat CakeHR s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -85,9 +85,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<yourcakedomain>.cake.hr/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<yourcakedomain>.cake.hr/`.
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<yourcakedomain>.cake.hr/services/saml/consume`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<yourcakedomain>.cake.hr/services/saml/consume`.
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta CakeHR](mailto:info@cake.hr) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
@@ -103,19 +103,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k CakeHR.
 
@@ -123,7 +123,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **CakeHR**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -137,11 +137,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu CakeHR společnosti jako správce.
 
-2. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení**.
+2. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení**.
 
     ![Konfigurace CakeHR](./media/cakehr-tutorial/config01.png)
 
-3. Na levé straně řádku nabídek klikněte na **integrace** >s protokolem **SAML SSO** a proveďte následující kroky:
+3. Na levé straně řádku nabídek klikněte na **integrace** > **jednotné přihlašování SAML** a proveďte následující kroky:
 
      ![Konfigurace CakeHR](./media/cakehr-tutorial/config02.png)
 
@@ -163,7 +163,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k CakeHR, musí se zřídit v Ca
 
 1. Přihlaste se k CakeHR jako správce zabezpečení.
 
-2. Na levé straně řádku nabídek klikněte na **Přidat**do **společnosti** >.
+2. Na levé straně řádku nabídek klikněte na **společnost** > **Přidat**.
 
     ![Konfigurace CakeHR](./media/cakehr-tutorial/config03.png)
 
@@ -173,17 +173,17 @@ Aby se uživatelé Azure AD mohli přihlašovat k CakeHR, musí se zřídit v Ca
 
     a. Do textového pole jméno a **příjmení** zadejte jméno uživatele jako B. Simon.
 
-    b. Do textového pole **pracovní e-mail** zadejte e-mail uživatele, jako je například `B.Simon@contoso.com`.
+    b. Do textového pole **pracovní e-mail** zadejte e-maily uživatele, jako `B.Simon@contoso.com`.
 
     c. Klikněte na **vytvořit účet**.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici CakeHR, měli byste se automaticky přihlásit k CakeHR, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

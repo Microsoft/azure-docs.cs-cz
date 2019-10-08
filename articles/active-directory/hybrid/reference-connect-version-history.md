@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827103"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025830"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -45,6 +45,8 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>Stav verze
 9/28/2019: vydaná pro automatický upgrade pro výběr klientů. Není k dispozici ke stažení.
 
@@ -56,12 +58,15 @@ Za určitých okolností servery, které byly automaticky upgradovány na verzi 
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>Zkoumáme incident, ve kterém někteří zákazníci nastávají problém se stávajícími zařízeními připojenými k hybridní službě Azure AD po upgradu na tuto verzi Azure AD Connect. Zákazníkům, kteří si nasadili hybridní službu Azure AD JOIN, doporučujeme, aby odložili upgrade na tuto verzi, dokud se hlavní příčina těchto problémů plně nerozumí a nesnižuje. Další informace budou k dispozici, jakmile to bude možné.
+
 >[!IMPORTANT]
 >V této verzi Azure AD Connect můžou někteří zákazníci vidět, že některá nebo všechna zařízení s Windows zmizí z Azure AD. Nejedná se o příčinu obav, protože tyto identity zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Další informace najdete v tématu [principy Azure AD Connect 1.4. xx. x disappearnce zařízení](reference-connect-device-disappearance.md) .
 
 
 ### <a name="release-status"></a>Stav verze
-9/25/2019: vydáno pro automatický upgrade a stažení
+9/25/2019: bylo odebráno z ručního stažení až do dokončení šetření incidentu.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 - Nové nástroje pro řešení potíží pomáhají při řešení potíží s scénáři "uživatel neprobíhá synchronizace", "seskupení není synchronizovaný" nebo "nesynchronizované členství ve skupině".
@@ -800,7 +805,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|Certifikát|
-    |CertFriendlyName|CertThumbprint|CertExtensionOids|
+    |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Vyberte|

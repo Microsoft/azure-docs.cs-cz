@@ -1,57 +1,57 @@
 ---
-title: Transformace toku dat mapování Azure Data Factory převést na řádky
-description: Transformace toku dat mapování Azure Data Factory převést na řádky
+title: Azure Data Factory transformace Unpivot toku dat
+description: Azure Data Factory transformace Unpivot toku dat
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28fedf96ec178aae0615129421bdae7721a66105
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348151"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029941"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory převést řádky transformace
+# <a name="azure-data-factory-unpivot-transformation"></a>Transformace Unpivot Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Použijte Unpivot v ADF mapování toku dat jako způsob, jak proměnit Nenormalizovaná datová sada více normalizované verzi tak, že rozbalíte hodnoty z více sloupců v jednom záznamu do více záznamy pomocí stejných hodnot v jednom sloupci.
 
-![Převést na řádky transformace](media/data-flow/unpivot1.png "převést řádky možnosti 1")
+Použijte Unpivot v toku dat mapování ADF jako způsob, jak změnit nenormalizovanou datovou sadu na podrobnější verzi tím, že rozbalíte hodnoty z více sloupců v jednom záznamu do několika záznamů se stejnými hodnotami v jednom sloupci.
 
-## <a name="ungroup-by"></a>Oddělit pomocí
+![Unpivot transformace](media/data-flow/unpivot1.png "Unpivot možnosti 1")
 
-![Převést na řádky transformace](media/data-flow/unpivot5.png "převést řádky možnosti 2")
+## <a name="ungroup-by"></a>Oddělit podle
 
-Nejprve nastavte sloupce, které chcete seskupit podle vaší pivot agregace. Nastavit jeden nebo více sloupců pro oddělení s + znaménko vedle seznamu sloupců.
+![Unpivot transformace](media/data-flow/unpivot5.png "Unpivot možnosti 2")
 
-## <a name="unpivot-key"></a>Převést na řádky klíč
+Nejprve nastavte sloupce, které chcete seskupit podle pro agregaci pivotu. Nastavte jeden nebo více sloupců pro odseskupení pomocí znaku + vedle seznamu sloupců.
 
-![Převést na řádky transformace](media/data-flow/unpivot6.png "převést řádky možnosti 3")
+## <a name="unpivot-key"></a>Unpivot klíč
 
-Klíče kontingenční tabulky je sloupec, který bude ADF otáčení z řádku na sloupec. Ve výchozím nastavení bude otáčení každou jedinečnou hodnotu v datové sadě pro toto pole na sloupec. Však můžete volitelně zadat hodnoty z datové sady, kterou chcete přenechte obranu hodnot sloupců.
+![Unpivot transformace](media/data-flow/unpivot6.png "Unpivot možnosti 3")
 
-## <a name="unpivoted-columns"></a>Sloupce převedené na řádky
+Kontingenční klíč je sloupec, který bude ADF od řádku po sloupec. Ve výchozím nastavení se všechny jedinečné hodnoty v datové sadě pro toto pole Překlopí do sloupce. Volitelně můžete zadat hodnoty z datové sady, které chcete překlopit do hodnot sloupců.
 
-![Převést na řádky transformace](media/data-flow//unpivot7.png "převést možnosti 4 řádky")
+## <a name="unpivoted-columns"></a>Sloupce s nekontingenčními tabulkami
 
-A konečně zvolte agregaci, kterou chcete použít pro pivotovaná hodnoty a jak byste chtěli sloupce, který se má zobrazit v nové projekce výstup z transformace.
+![Unpivot transformace](media/data-flow//unpivot7.png "Unpivot možnosti 4")
 
-(Volitelné) Můžete nastavit vzoru pro pojmenovávání s předponou, střední a příponu je třeba přidat do každého nový název sloupce z hodnoty řádků.
+Nakonec vyberte agregaci, kterou chcete použít pro transformované hodnoty, a určete, jak chcete, aby se sloupce zobrazovaly v nové výstupní projekci z transformace.
 
-Například přesouvání "prodeje" "Oblasti" by jednoduše získáte hodnoty nového sloupce od každé hodnoty prodeje. Příklad: "25", "50", "1000", ... Ale pokud nastavíte hodnotu předpony "Prodeje", pak "Prodeje" bude začínat na hodnoty.
+Volitelné Můžete nastavit vzor pojmenování s předponou, střední a příponou, která se má přidat do každého nového názvu sloupce z hodnot řádků.
+
+Například při překlopení "prodej" podle "oblasti" jednoduše získáte nové hodnoty sloupce z každé hodnoty Sales. Například: "25", "50", "1000",... Pokud ale nastavíte hodnotu předpony Sales (prodej), bude hodnota Sales pro hodnoty předem pevně daná.
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
-Nastavení uspořádání sloupců "Normální" seskupí dohromady pivotovaná sloupce s jejich agregované hodnoty. Mezi sloupci a hodnota se alternativní nastavení uspořádání sloupců na "Laterální".
+Když nastavíte uspořádání sloupců na "normální", budou se seskupovat všechny kontingenční sloupce s agregovanými hodnotami. Nastavení uspořádání sloupců na stranu "bočního" se bude střídat mezi sloupcem a hodnotou.
 
-![Převést na řádky transformace](media/data-flow//unpivot7.png "převést řádky možnosti 5")
+![Unpivot transformace](media/data-flow//unpivot7.png "Unpivot – možnosti 5")
 
-Převedené na řádky dat výsledek sady zobrazí sloupec součtů nyní převedené na řádky na samostatném řádku hodnoty.
+Poslední nepivotovaná sada výsledků dat zobrazuje celkový počet sloupců, které se teď nepivotují na samostatné hodnoty řádků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Použití [otáčení transformace](data-flow-pivot.md) na pivot řádky na sloupce.
+K pivotování řádků na sloupce použijte [transformaci pivotu](data-flow-pivot.md) .

@@ -13,57 +13,57 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42ec213a191ff460b05f94dff401fbed1a3bd510
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446322"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025061"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 V tomto kurzu se dozvíte, jak přidat cloudovou službu back-end do mobilní aplikace na platformě Xamarin.Forms pomocí funkce Mobile Apps služby Azure App Service jako back-endu. Vytvoříte jak nový back-end Mobile Apps, tak jednoduchou aplikaci Xamarin.Forms, která bude představovat seznam úkolů a ukládat data do Azure.
 
 Ve všech dalších kurzech k Mobile Apps týkajících se Xamarin.Forms se předpokládá dokončení tohoto kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Další informace najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* Visual Studio Tools for Xamarin, v sadě Visual Studio 2017 nebo později, nebo Visual Studio pro Mac. Zobrazit [stránky instalace Xamarin][Install Xamarin] pokyny.
+* Visual Studio Tools pro Xamarin, Visual Studio 2017 nebo novější nebo Visual Studio pro Mac. Pokyny najdete na [stránce instalace Xamarin][Install Xamarin] .
 
-* (Volitelné) K sestavení aplikace pro iOS se vyžaduje Mac s prostředím Xcode 9.0 nebo novějším. Visual Studio for Mac slouží k vývoji aplikací pro iOS nebo Visual Studio 2017 nebo je později použít (Pokud je Mac dostupný v síti).
+* (Volitelné) K sestavení aplikace pro iOS se vyžaduje Mac s prostředím Xcode 9.0 nebo novějším. Visual Studio pro Mac lze použít k vývoji aplikací pro iOS, nebo můžete použít Visual Studio 2017 nebo novější (Pokud je počítač Mac k dispozici v síti).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Vytvoření nového back-endu Mobile Apps
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Vytvoření připojení k databázi a konfigurace projektu klienta a serveru
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Vytvoření připojení k databázi a konfigurace klientského a serverového projektu
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinforms-solution"></a>Spuštění řešení Xamarin.Forms
+## <a name="run-the-xamarinforms-solution"></a>Spuštění řešení Xamarin. Forms
 
-Visual Studio Tools pro Xamarin se vyžadují k otevření řešení, najdete v článku [pokyny k instalaci Xamarin][Install Xamarin]. Pokud jsou tyto nástroje už nainstalované, použijte ke stažení a otevření tohoto řešení následující postup:
+K otevření řešení se vyžaduje Visual Studio Tools pro Xamarin. Projděte si [pokyny k instalaci Xamarin][Install Xamarin]. Pokud jsou tyto nástroje už nainstalované, použijte ke stažení a otevření tohoto řešení následující postup:
 
 ### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows a Mac)
 
-1. Přejděte [webu Azure portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. Na `Overview` okno Vyhledat adresu URL, které je veřejný koncový bod pro mobilní aplikace. Například - sitename pro Moje aplikace název "test123" bude https://test123.azurewebsites.net.
+1. Přejděte na [Azure Portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. V okně `Overview` vyhledejte adresu URL, která je pro vaši mobilní aplikaci veřejným koncovým bodem. Příklad – název webu pro název aplikace "test123" bude https://test123.azurewebsites.net.
 
-2. Otevřete soubor `Constants.cs` v této složce - xamarin.forms/ZUMOAPPNAME. Název aplikace je `ZUMOAPPNAME`.
+2. Otevřete soubor `Constants.cs` v této složce – Xamarin. Forms/ZUMOAPPNAME. Název aplikace je `ZUMOAPPNAME`.
 
-3. V `Constants.cs` třídy, nahraďte `ZUMOAPPURL` proměnné s veřejným koncovým bodem výše.
+3. Ve třídě `Constants.cs` nahraďte proměnnou `ZUMOAPPURL` s veřejným koncovým bodem výše.
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-    změní
+    stane
 
     `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
     

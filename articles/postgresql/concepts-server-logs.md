@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091121"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029988"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Protokoly serveru v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL generuje protokoly dotazů a chyb. Dotazy a protokoly chyb lze použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k optimalizaci výkonu. (Přístup k protokolům transakcí není zahrnutý). 
@@ -24,7 +24,7 @@ Protokolování můžete nakonfigurovat na serveru pomocí parametrů protokolov
 Další informace o těchto parametrech najdete v tématu [zasílání zpráv o chybách PostgreSQL a](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) v dokumentaci k protokolování. Informace o tom, jak nakonfigurovat parametry Azure Database for PostgreSQL, najdete v [dokumentaci k portálu](howto-configure-server-parameters-using-portal.md) nebo v dokumentaci k rozhraní příkazového [řádku](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Přístup k protokolům serveru prostřednictvím portálu nebo rozhraní příkazového řádku
-Pokud jste povolili protokoly, můžete k nim přistupovat z úložiště protokolu Azure Database for PostgreSQL pomocí [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLI](howto-configure-server-logs-using-cli.md)a rozhraní Azure REST API. Soubory protokolu se obměňují každou hodinu nebo po dosažení velikosti 100 MB (podle toho, co nastane dříve). Dobu uchování tohoto úložiště protokolu můžete nastavit pomocí parametru  **období uchování\_\_protokolu**přidruženého k vašemu serveru. Výchozí hodnota je 3 dny; maximální hodnota je 7 dní. Server musí mít dostatek přiděleného úložiště pro ukládání souborů protokolu. (Tento parametr uchování neřídí diagnostické protokoly Azure.)
+Pokud jste povolili protokoly, můžete k nim přistupovat z úložiště protokolu Azure Database for PostgreSQL pomocí [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLI](howto-configure-server-logs-using-cli.md)a rozhraní Azure REST API. Soubory protokolu se obměňují každou hodinu nebo po dosažení velikosti 100 MB (podle toho, co nastane dříve). Dobu uchování tohoto úložiště protokolu můžete nastavit pomocí parametru **log @ no__t-1retention @ no__t-2period** přidruženého k vašemu serveru. Výchozí hodnota je 3 dny; maximální hodnota je 7 dní. Server musí mít dostatek přiděleného úložiště pro ukládání souborů protokolu. (Tento parametr uchování neřídí diagnostické protokoly Azure.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
@@ -49,28 +49,28 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na zv
 | TenantId | ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
-| Type | Typ protokolu Vždy `AzureDiagnostics` |
+| Typ | Typ protokolu Always `AzureDiagnostics` |
 | SubscriptionId | Identifikátor GUID předplatného, ke kterému server patří |
 | ResourceGroup | Název skupiny prostředků, do které server patří |
-| ResourceProvider | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Název poskytovatele prostředků Always `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identifikátor URI prostředku |
-| Resource | Název serveru |
+| Prostředek | Název serveru |
 | Kategorie | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | Úroveň protokolování, příklad: PROTOKOL, CHYBA, OZNÁMENÍ |
-| Message | Zpráva primárního protokolu | 
-| Doména | Verze serveru, například: Postgres-10 |
-| Podrobnosti | Sekundární zpráva protokolu (Pokud je k dispozici) |
-| Název sloupce | Název sloupce (Pokud je k dispozici) |
+| errorLevel | Úroveň protokolování, příklad: protokol, chyba, upozornění |
+| Zpráva | Zpráva primárního protokolu | 
+| Domain (Doména) | Verze serveru, například: Postgres-10 |
+| Detaily | Sekundární zpráva protokolu (Pokud je k dispozici) |
+| ColumnName | Název sloupce (Pokud je k dispozici) |
 | SchemaName | Název schématu (Pokud je k dispozici) |
-| DatatypeName | Název datového typu (Pokud je k dispozici) |
+| Typ DataType | Název datového typu (Pokud je k dispozici) |
 | LogicalServerName | Název serveru | 
 | _ResourceId | Identifikátor URI prostředku |
-| Předpona | Předpona řádku protokolu |
+| Předvolba | Předpona řádku protokolu |
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o přístupu k protokolům z [Azure Portal](howto-configure-server-logs-in-portal.md) nebo pomocí [Azure CLI](howto-configure-server-logs-using-cli.md).
 - Přečtěte si další informace o [cenách Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).

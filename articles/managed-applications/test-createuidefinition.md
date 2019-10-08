@@ -6,18 +6,18 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 5a28acfeeda12ab999b16f71cbe789fefcea736f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575662"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028360"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
 Po [Vytvoření souboru createUiDefinition. JSON](create-uidefinition-overview.md) pro spravovanou aplikaci je nutné otestovat činnost koncového uživatele. Pro zjednodušení testování použijte prostředí izolovaného prostoru (sandbox), které načte váš soubor na portálu. Nemusíte ve skutečnosti nasazovat spravovanou aplikaci. Sandbox prezentuje vaše uživatelské rozhraní v aktuálním, samoobslužném portálu pro celou obrazovku. Nebo můžete použít skript pro otestování rozhraní. Oba přístupy jsou uvedené v tomto článku. Izolovaný prostor (sandbox) je doporučený způsob, jak zobrazit náhled rozhraní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Soubor **createUiDefinition. JSON** . Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
@@ -101,7 +101,7 @@ Pokud portál přestane reagovat na obrazovku souhrnu, může se jednat o chybu 
 
 ## <a name="test-your-solution-files"></a>Testování souborů řešení
 
-Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očekávání, je čas ověřit, jestli je váš soubor createUiDefinition správně integrovaný do souboru mainTemplate. JSON. Můžete spustit test ověřovacího skriptu a otestovat obsah souborů řešení, včetně souboru createUiDefinition. Skript ověřuje syntaxi JSON, kontroluje výrazy regulárních výrazů u textových polí a zajišťuje, aby výstupní hodnoty rozhraní portálu odpovídaly parametrům vaší šablony. Informace o spuštění tohoto skriptu najdete v tématu [spuštění kontroly statického ověřování pro šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/test/template-validation-tests).
+Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očekávání, je čas ověřit, jestli je váš soubor createUiDefinition správně integrovaný do souboru mainTemplate. JSON. Můžete spustit test ověřovacího skriptu a otestovat obsah souborů řešení, včetně souboru createUiDefinition. Skript ověřuje syntaxi JSON, kontroluje výrazy regulárních výrazů u textových polí a zajišťuje, aby výstupní hodnoty rozhraní portálu odpovídaly parametrům vaší šablony. Informace o spuštění tohoto skriptu najdete v tématu [spuštění kontroly statického ověřování pro šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>Další kroky
 

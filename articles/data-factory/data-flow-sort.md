@@ -1,38 +1,38 @@
 ---
-title: Azure Data Factory mapování transformace řazení toku dat
-description: Azure Data Factory mapování řazení transformace dat
+title: Azure Data Factory transformace řazení toku dat při mapování
+description: Azure Data Factory transformace řazení dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: d0482d1081c16dc89e7371c4c33de9b2bb4e4c2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9d2699c870de21daea9ce421c79f089c04b99fa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348247"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029119"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory datového toku řazení transformace
+# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory transformace řazení toku dat
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Nastavení řazení](media/data-flow/sort.png "řazení")
 
-Transformace řazení umožňuje řazení příchozí řádků na aktuální datový proud. Odchozí řádky z transformace řazení se následně postupujte podle vámi nastavených pravidel řazení. Můžete vybrat jednotlivé sloupce a nebo je můžete seřadit ASC DEC, pomocí indikátorů šipky vedle jednotlivých polí. Pokud potřebujete změnit sloupec před použitím řazení, klikněte na "Vypočítaného sloupce", které chcete spustit editor výrazů. To poskytne příležitost k sestavení výrazu pro operace řazení namísto pouze implementovány sloupec pro řazení.
+![](media/data-flow/sort.png "Seřadit") nastavení řazení
+
+Transformace řazení umožňuje řadit příchozí řádky v aktuálním datovém proudu. Odchozí řádky z transformace řazení budou následně následovat pravidla řazení, která jste nastavili. Můžete zvolit jednotlivé sloupce a seřadit je ASC nebo DEC pomocí indikátoru šipky vedle jednotlivých polí. Pokud před použitím řazení potřebujete změnit sloupec, klikněte na vypočítané sloupce a spusťte Editor výrazů. To vám poskytne příležitost vytvořit výraz pro operaci řazení místo pouhým použitím sloupce pro řazení.
 
 ## <a name="case-insensitive"></a>Malá a velká písmena se nerozlišují.
-Můžete zapnout "Písmen" Pokud chcete ignorovat velikost písmen při řazení pole řetězce nebo text.
+Pokud chcete ignorovat velikost písmen při řazení řetězce nebo textových polí, můžete zapnout rozlišování velkých a malých písmen.
 
-"Řazení pouze v rámci oddílů" využívá, dělení dat Spark. Seřazením příchozí data pouze v rámci každého oddílu, můžete Data proudí seřadit dělená data místo řazení celého datového proudu.
+"Seřadit pouze v rámci oddílů" využívá vytváření oddílů dat Spark. Pomocí řazení příchozích dat v jednotlivých oddílech můžou toky dat řadit dělená data namísto řazení celého datového proudu.
 
-Jednotlivé podmínky řazení v transformaci řazení lze vyjádřit. Proto pokud potřebujete přesunout sloupec vyšší prioritu řazení, řádku myší vzít a přesunout ho vyšší nebo nižší řazení seznamu.
+Každé z podmínek řazení v transformaci řazení lze změnit jejich uspořádání. Takže pokud potřebujete přesunout sloupec v prioritě řazení vyšší, přejeďte tento řádek myší a v seznamu řazení ho přesuňte nahoru nebo dolů.
 
-Dělení dopady na řazení
+Dělení efektů při řazení
 
-Tok dat ADF provádí se ve velké objemy dat clustery Spark s daty distribuovanými napříč několika uzly a oddíly. Je důležité to vzít v úvahu při navrhování toku dat, pokud jsou v závislosti na řazení transformace uchovávat data v tomto stejné pořadí. Pokud budete chtít změnit rozdělení dat v následné transformace, můžete ztratit řazení kvůli této promísení data.
+Tok dat ADF se spouští na clusterech s velkým objemem dat s daty distribuovanými napříč více uzly a oddíly. Je důležité mít na paměti, že při navrhování toku dat, pokud v závislosti na transformaci řazení chcete zachovat data ve stejném pořadí, je důležité mít na paměti. Pokud se rozhodnete znovu rozdělit data v následné transformaci, může dojít ke ztrátě řazení z důvodu tohoto přerozdělování dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po seřazení, můžete chtít použít [agregační transformace](data-flow-aggregate.md)
+Po řazení možná budete chtít použít [agregační transformaci](data-flow-aggregate.md) .

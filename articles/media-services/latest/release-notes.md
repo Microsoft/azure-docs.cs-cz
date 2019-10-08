@@ -11,18 +11,18 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801385"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030527"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
-Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
+V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
-* Nejnovější vydané verzi
+* Nejnovější verze
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
@@ -153,31 +153,31 @@ Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](https://docs.mi
 
 #### <a name="asset-commands"></a>Příkazy assetu
 
-- ```--storage-account```a ```--container``` přidané argumenty.
-- Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) ```az ams asset get-sas-url``` v příkazu byl přidán.
+- byly přidány argumenty ```--storage-account``` a ```--container```.
+- Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) příkazu ```az ams asset get-sas-url``` přidáno.
 
 #### <a name="job-commands"></a>Příkazy úlohy
 
-- ```--correlation-data```a ```--label``` přidané argumenty
-- ```--output-asset-names```přejmenování na ```--output-assets```. Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
+- přidané argumenty ```--correlation-data``` a ```--label```
+- ```--output-asset-names``` přejmenováno na ```--output-assets```. Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
 
 #### <a name="streaming-locator-commands"></a>Příkazy lokátoru streamování
 
-- ```az ams streaming locator```základní příkaz nahrazen ```az ams streaming-locator```.
-- ```--streaming-locator-id```a ```--alternative-media-id support``` přidané argumenty.
-- ```--content-keys argument```argument se aktualizoval.
-- ```--content-policy-name```přejmenování na ```--content-key-policy-name```.
+- základní příkaz ```az ams streaming locator``` nahrazen ```az ams streaming-locator```.
+- byly přidány argumenty ```--streaming-locator-id``` a ```--alternative-media-id support```.
+- Argument ```--content-keys argument``` se aktualizoval.
+- ```--content-policy-name``` přejmenováno na ```--content-key-policy-name```.
 
 #### <a name="streaming-policy-commands"></a>Příkazy zásad streamování
 
-- ```az ams streaming policy```základní příkaz nahrazen ```az ams streaming-policy```.
-- Podporuje parametry šifrování v ```az ams streaming-policy create``` přidaných.
+- základní příkaz ```az ams streaming policy``` nahrazen ```az ams streaming-policy```.
+- Parametry šifrování podporují ```az ams streaming-policy create``` přidané.
 
 #### <a name="transform-commands"></a>Příkazy transformace
 
-- ```--preset-names```Argument byl nahrazen ```--preset```parametrem. Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add```). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
-- ```az ams transform output remove```dá se provést předáním výstupního indexu, který se má odebrat.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenty přidané v ```az ams transform create``` příkazech a ```az ams transform output add``` .
+- Argument ```--preset-names``` nahrazen ```--preset```. Teď můžete nastavit jenom 1 výstup/přednastavení najednou (abyste mohli přidat víc, musíte spustit ```az ams transform output add```). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
+- ```az ams transform output remove``` se dá provést předáním výstupního indexu, který se má odebrat.
+- v příkazech ```az ams transform create``` a ```az ams transform output add``` byly přidány argumenty ```--relative-priority, --on-error, --audio-language and --insights-to-extract```.
 
 ## <a name="october-2018---ga"></a>Říjen 2018 – GA
 
@@ -240,7 +240,7 @@ CMAF a podpora šifrování "cbcs" pro Apple HLS (iOS 11 +) a přehrávače MPEG
 
 Vydání Video Indexer GA bylo oznámeno v srpnu. Nové informace o aktuálně podporovaných funkcích najdete v tématu [co je video indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Plány pro změny
+### <a name="plans-for-changes"></a>Plánuje změny
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
@@ -275,4 +275,5 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled](media-services-overview.md)
+- [Přehled](media-services-overview.md)
+- [Poznámky k verzi Media Services V2](../previous/media-services-release-notes.md)

@@ -119,7 +119,7 @@ Ověřte, že jste připraveni, provedením následujících kroků:
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například *`SocialAndLocalAccounts/`*****.`TrustFrameworkBase.xml` Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například *`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**.* Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.

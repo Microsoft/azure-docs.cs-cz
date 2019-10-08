@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – importovat do Azure App Configuration Store | Dokumentace Microsoftu
-description: Poskytuje informace a ukázky skriptů pro import do úložiště Azure konfigurace aplikace
+title: Ukázkový skript Azure CLI – import do úložiště konfigurace aplikace Azure | Microsoft Docs
+description: Poskytuje informace a ukázkové skripty pro import do úložiště konfigurace aplikace Azure.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,24 +14,24 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0df8e19d3c6f0680f1eb1b0157c3bee5c9841e4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd1e54fc6cfbf254da010c03dfaa859a0ee8213c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234406"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029811"
 ---
-# <a name="import-to-an-azure-app-configuration-store"></a>Importovat do úložiště Azure konfigurace aplikace
+# <a name="import-to-an-azure-app-configuration-store"></a>Import do úložiště konfigurace aplikace Azure
 
-Tento ukázkový skript importuje hodnoty klíče k úložišti konfigurace aplikace pro Azure.
+Tento ukázkový skript importuje klíčové hodnoty do úložiště konfigurace aplikace Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní příkazového řádku spuštěním následujícího příkazu:
+Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
 
         az extension add -n appconfig
 
@@ -41,21 +41,21 @@ Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní př
 #!/bin/bash
 
 # Import key-values from a file
-az appconfig kv import --name myTestAppConfigStore --file ~/Import.json
+az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import.json
 ```
 
 [!INCLUDE [cli-script-cleanup](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy pro import konfigurace app storu. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy pro import úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na dokumentaci konkrétního příkazu.
 
 | Příkaz | Poznámky |
 |---|---|
-| [AZ appconfig import](/cli/azure/ext/appconfig/appconfig) | Importy do konfigurace aplikace ukládání prostředků. |
+| [AZ appconfig import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do prostředku úložiště konfigurace aplikace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
+Další informace o Azure CLI najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku konfiguraci aplikace najdete v [dokumentaci Azure aplikace konfigurační](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v [dokumentaci ke konfiguraci aplikace Azure](../cli-samples.md).

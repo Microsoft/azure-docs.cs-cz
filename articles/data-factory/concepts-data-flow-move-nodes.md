@@ -1,36 +1,36 @@
 ---
-title: Azure Data Factory Data toku přesunout uzly
-description: Jak přesouvat uzly v Azure Data Factory mapování Diagram toku dat
+title: Azure Data Factory přesouvání uzlů toku dat
+description: Postup přesunutí uzlů v diagramu Azure Data Factory mapování toku dat
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519956"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030183"
 ---
-# <a name="mapping-data-flow-move-nodes"></a>Mapování datového toku přesunutí uzlu
+# <a name="mapping-data-flow-move-nodes"></a>Mapování toku dat přesunutí uzlů
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Možnosti transformace agregace](media/data-flow/agghead.png "agregátoru záhlaví")
 
-Na návrhovou plochu toku dat objekt pro vytváření dat Azure je surface "vytváření", kde sestavení data toky shora dolů, zleva doprava. Je nástrojů připojené k každý transformace ve formě znaménka plus (+) symbol. Soustředit na obchodní logiku namísto spojující uzly prostřednictvím hrany v prostředí DAG volného tvaru.
+![Agregovaná hlavička možností transformace](media/data-flow/agghead.png "")
 
-Ano bez paradigma přetažení myší, způsob, jak "přesunout" uzlu transformace se změnit příchozího datového proudu. Místo toho bude pohybu transformace tak, že změníte "příchozího datového proudu".
+Azure Data Factory plocha pro návrh toku dat je "stavební" plocha, kde můžete vytvářet toky dat shora dolů, zleva doprava. Pro každou transformaci se symbolem plus (+) je připojena sada nástrojů. Soustřeďte se na obchodní logiku místo propojení uzlů pomocí okrajů v DAG prostředí s bezplatným formulářem.
+
+Takže bez možnosti přetahování přetahováním je možné změnit příchozí datový proud tak, aby "přesunul" transformační uzel. Místo toho převedete transformované transformace změnou "příchozího datového proudu".
 
 ## <a name="streams-of-data-inside-of-data-flow"></a>Datové proudy dat v toku dat
 
-Ve službě Azure Data Factory Data Flow datové proudy představují datový tok. V podokně nastavení transformace uvidíte polem "Příchozí datový proud". To zjistíte, které příchozí datový proud je předáte transformace. Fyzické umístění uzlu transformace v grafu můžete změnit kliknutím na název příchozí Stream a výběrem jiného datového proudu. Aktuální transformace spolu s všechny následné transformace v tomto datovém proudu se přesuňte do nového umístění.
+V Azure Data Factory tok dat prezentují toky dat. V podokně nastavení transformace se zobrazí pole "příchozí pára". Tím se dozvíte, který příchozí datový proud dodává tuto transformaci. Fyzické umístění svého transformačního uzlu můžete změnit v grafu kliknutím na název příchozího datového proudu a výběrem jiného datového proudu. Aktuální transformace spolu se všemi následnými transformacemi v tomto datovém proudu se pak přesune na nové místo.
 
-Pokud přesouváte transformace s využitím jedné nebo více transformací po ní, se na nové místo v toku dat připojené přes novou větev.
+Pokud přesouváte transformaci s jednou nebo více transformacemi po ní, bude nové umístění v toku dat připojeno prostřednictvím nové větve.
 
-Pokud budete mít bez dalších transformací po uzlu, na který jste vybrali, se přesune pouze této transformace do nového umístění.
+Pokud po zvoleném uzlu nemáte žádné následné transformace, pak se pouze tato transformace přesune do nového umístění.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po dokončení návrhu toku dat, zapněte tlačítko ladění a otestování out v režimu ladění buď přímo v [návrháře toku dat](concepts-data-flow-debug-mode.md) nebo [kanálu ladění](control-flow-execute-data-flow-activity.md).
+Po dokončení návrhu toku dat zapněte tlačítko ladění a otestujte ho v režimu ladění buď přímo v [Návrháři toku dat](concepts-data-flow-debug-mode.md) , nebo v [ladění kanálu](control-flow-execute-data-flow-activity.md).

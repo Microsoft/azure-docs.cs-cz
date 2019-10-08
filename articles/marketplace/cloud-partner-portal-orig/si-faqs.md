@@ -1,101 +1,101 @@
 ---
-title: Prodejce Insights – nejčastější dotazy
-description: Nejčastější dotazy o funkci prodejce Insights portál partnerů cloudu.
+title: Nejčastější dotazy k prodejci Insights
+description: Nejčastější dotazy týkající se funkce prodávající přehledy portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943087"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030453"
 ---
-<a name="seller-insights-faq"></a>Prodejce Insights – nejčastější dotazy
+<a name="seller-insights-faq"></a>Nejčastější dotazy k prodejci Insights
 ===================
 
-Tento článek obsahuje pokyny pro běžné postupy uživatele v rámci a dotazy týkající se Insights prodejce.
+Tento článek poskytuje pokyny pro běžné uživatelské postupy v rámci a otázky k přehledům prodejců.
 
 
-<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Najít definice pro hodnoty v souboru staženého transakcí
+<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>Najít definice pro hodnoty ve staženém souboru transakcí
 ------------------------------------------------------------------
 
-Definice metriky hodnot v souboru transakcí najdete v článku [definice Insights prodejce](./si-insights-definitions-v4.md).
+Definice hodnot metrik v transakčním souboru najdete v článku [definice přehledů prodejců](./si-insights-definitions-v4.md).
 
 
-<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Viz podrobnosti o zákazníkovi transakcí, pro které jste byla zaplacena mi
+<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Podívejte se na podrobnosti o transakcích, pro které jsem zaplatil
 -------------------------------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Paid na více instancí." Tyto sloupce se zobrazí podrobnosti o zákazníkovi obsahující: **Název společnosti**, **zákaznických e-mailů**, **zemi zákazníka**, **stav odběratele**, a **poštovní směrovací číslo zákazníka**.
+Po stažení transakcí z modulu výběr vyhledejte sloupec s popiskem **stav**vypsání a použijte filtr tak, aby zobrazil pouze hodnotu "vyplaceno". Zobrazí se následující sloupce obsahující údaje o zákaznících: **název společnosti**, **E-mail zákazníka**, **země zákazníka**, **zákaznická**adresa a **PSČ zákazníka**.
 
 
-<a name="calculate-my-open-accounts-receivable"></a>Vypočítat Moje otevřít pohledávek
+<a name="calculate-my-open-accounts-receivable"></a>Vypočítat moje otevřené účty pohledávky
 -------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **výběr stav**a použijte filtr, aby se zobrazily pouze hodnotu "Nadcházející výběr" a "Není připraven pro výběr." Pak provede součet sloupec s názvem **výběr částka (PC)** .
+Po stažení transakcí z modulu výběr vyhledejte sloupec s popiskem **stav**vypsání a použijte filtr tak, aby zobrazil pouze hodnotu nadcházející výběr a možnost není připravena na výběr. Pak načtěte součet sloupce s popiskem **množství (PC)** .
 
 
-<a name="calculate-revenue-by-customer-usage-period"></a>Vypočítat výnosy podle: období využití zákazníka
+<a name="calculate-revenue-by-customer-usage-period"></a>Vypočítat Tržby podle období využití zákazníků
 ------------------------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **stav transakce**a hodnota "Paid" filtru.   Pro každou transakci uvedený, sloupec s názvem **výběr částka (PC)**  představuje velikost byly placené.  Pro odhad doby využití asociovaný s transakcí, použít sloupec **datum poplatku**, což je aproximace posledního dne spotřeby pro období, na kterou se vztahuje transakci.
+Po stažení transakcí z modulu výběr vyhledejte sloupec označený **stav transakce**a vyfiltrujte hodnotu placená.   U každé uvedené transakce představuje sloupec s popisem **(PC)** částku, kterou jste zaplatili.  Chcete-li odhadnout dobu využití spojenou s transakcí, použijte **Datum poplatku**za sloupec, což je přibližná aproximace posledního dne využití v období, na které se transakce vztahuje.
 
 
-<a name="calculate-your-bad-debt"></a>Vypočítat nedobytné pohledávky
+<a name="calculate-your-bad-debt"></a>Výpočet špatného dluhu
 ---------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr jenom zobrazit hodnota "odepsat." Pak provede součet sloupec s názvem **výběr částka (PC)** .
+Po stažení transakcí z modulu výběru Najděte sloupec označený jako **konečný stav kolekce**a použijte filtr pro zobrazení pouze hodnoty "zapisovat". Pak načtěte součet sloupce s popiskem **množství (PC)** .
 
 
-<a name="view-payout-or-customer-contact-information"></a>Zobrazit výběr nebo zákazník kontaktní informace
+<a name="view-payout-or-customer-contact-information"></a>Zobrazit výběr nebo kontaktní údaje zákazníka
 -------------------------------------------
 
-Přihlaste se jako uživatel s rolí "vlastník" a ne na roli "Přispěvatel". Pouze vlastník role se zobrazí informace o výplata a zákazníků. Můžete najít další informace o uživatelských rolích na článek [spravovat uživatele](./cloud-partner-portal-manage-users.md).
+Přihlaste se jako uživatel s rolí vlastník a nikoli s rolí Přispěvatel. Jenom role vlastníka uvidí informace o vydaných a zákaznických údajích. Další informace o uživatelských rolích najdete v článku [Správa uživatelů](./cloud-partner-portal-manage-users.md).
 
 
-<a name="calculate-my-advance-payouts"></a>Vypočítat Moje zálohy výplaty
+<a name="calculate-my-advance-payouts"></a>Vypočítat výběry pro upřesnění
 ----------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **typ transakce**a použijte filtr, aby se zobrazily pouze hodnotu "Poplatek." Dále vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr, aby se zobrazily pouze hodnotu "Probíhá". Nakonec součet **výběr částka (PC)** sloupec pro výpočet všech záloh placené před kolekce od zákazníka.
+Po stažení transakcí z modulu výběr vyhledejte sloupec označený **Typ transakce**a použijte filtr tak, aby zobrazil pouze hodnotu "poplatek". Potom vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr, aby se zobrazila pouze hodnota probíhá. Nakonec sestavte sloupec počet vydaných hodnot **(PC)** a vypočítejte všechny zálohy placené před kolekcí od zákazníka.
 
 
-<a name="calculate-customer-refunds"></a>Výpočet náhrad zákazníka
+<a name="calculate-customer-refunds"></a>Vypočítat refundace zákazníků
 --------------------------
 
-Po stažení transakcí z modulu výběr, vyhledejte sloupec s názvem **konečný stav kolekce**a použijte filtr, aby se zobrazily pouze hodnotu "Refundaci." Součet **částka poplatků (PC)** zpracovat sloupec pro výpočet všechny finanční prostředky pro vaše zákazníky.
+Po stažení transakcí z modulu výběru Najděte sloupec označený jako **konečný stav kolekce**a použijte filtr pro zobrazení pouze hodnoty refundace. Chcete-li vypočítat všechny refundace pro zákazníky, sečtěte sloupec **množství poplatků (PC)** .
 
 
-<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Identifikujte transakce, které se podílejí kanál partnera společnosti Microsoft
+<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>Určit, které transakce se účastní partnera kanálu Microsoftu
 ----------------------------------------------------------------
 
-Všechny transakce ve sloupci **typ licence Azure** , které jsou filtrovány k zobrazení hodnot "Enterprise přes prodejce" a "Cloud Solution Provider" zahrnují kanál partnera společnosti Microsoft. Podrobné informace o partnerovi najdete jejich **jméno prodejce** a **e-mailu prodejce** stažení modulu výběr a stáhnout modul zákazníka.
+Všechny transakce ve sloupci **typu licence Azure** , které jsou filtrovány tak, aby zobrazovaly hodnoty "Enterprise přes prodejce" a "poskytovatel řešení cloudu", zahrnují partnera kanálů Microsoftu. Další podrobnosti o partnerovi najdete v části o svém **názvu prodejce** a **e-mailu prodejce** ve stažení modulu výběr a stažení modulu zákazníka.
 
 
-<a name="identify-trial-usage-and-trial-conversions"></a>Identifikujte zkušební použití a zkušební verze převody
+<a name="identify-trial-usage-and-trial-conversions"></a>Identifikace využití zkušební verze a převodů zkušební verze
 ------------------------------------------
 
-Pořadí, použití a výběr modulu soubory ke stažení je teď obsahují **zkušební koncové datum** vám pomohou pochopit, zkušební období ukončení pro tento konkrétní pořadí, kde je to možné. Zkušební použití a objednávky najdete vyhledejte **fakturace typ SKU** sloupce v souborech ke stažení a použijte filtr, aby se zobrazily pouze hodnotu "Zkušební verzi." Zobrazíte zkušební převody, vyhledejte **zkušební koncové datum** sloupce v souborech ke stažení a použijte filtr, aby se zobrazily pouze objednávky, kdy **zkušební koncové datum** je dnešní datum a **zrušit datum** sloupec je prázdný nebo vyšší než **datum ukončení zkušební verze**.
+Položky pořadí, využití a výběr modul pro stažení teď obsahují **zkušební datum ukončení zkušební verze** , které vám pomůže pochopit, kdy zkušební období skončilo pro příslušné pořadí, kde je to možné. Chcete-li zobrazit zkušební využití a objednávky, vyhledejte ve stažení sloupec **typ fakturace SKU** a použijte filtr pro zobrazení pouze hodnoty "zkušební verze". Chcete-li zobrazit převody zkušební verze, vyhledejte sloupec **Datum ukončení zkušební verze** ve stažení a použijte filtr tak, aby zobrazoval pouze objednávky, pokud je **Datum ukončení zkušební verze** dřívější než dnešní datum a sloupec **Datum zrušení** je prázdný nebo je pozdější než **Datum ukončení zkušební verze**.
 
 
-<a name="when-is-my-monthly-payout-calculated"></a>Když se počítá Můj měsíční výběr
+<a name="when-is-my-monthly-payout-calculated"></a>Kdy se počítá můj měsíční výběr
 ------------------------------------
 
-Vaše výplaty jsou vydané, 15. dne každého měsíce pro všechny částky připravené pro výběr, poslední kalendáři den předchozího měsíce. Na třetí den v měsíci, bude Microsoft vypočítat velikost výběr na předchozí měsíc a aktualizovat všechny příslušné poplatek za transakce v stahování s "Nadcházející výběr" v **výběr stav** sloupce. Tyto transakce zůstane v tomto stavu, dokud nebude odeslána žádost o platbu na bankovním účtu, po kterém jejich **výběr stav** se aktualizují na "Placené Out" a "Výběr datum" zaktualizuje a zobrazí datum jsme odeslané žádost o platbu se svou bankou.
+Vaše výběry vám vydávají 15. až 15 měsíců pro všechny částky připravené na výběr podle posledního kalendářního dne v předchozím měsíci. Třetí den v měsíci vypočítá společnost Microsoft hodnotu výběr v předchozím měsíci a aktualizuje všechny příslušné transakce poplatků ve vašem stažení se sloupcem výběr "nadcházející výběr" ve sloupci **stav** výpočtu. Tyto transakce zůstanou v tomto stavu, dokud se žádost o platbu nepošle na bankovní účet, ve kterém se **stav jeho výběrů** aktualizuje na "placené", a "datum vyčerpání" se aktualizuje tak, aby zobrazovalo datum odeslání žádosti o platbu vašemu splatná.
 
 
-<a name="calculate-customer-acquisition-and-loss"></a>Výpočet zákazníků a ke ztrátě
+<a name="calculate-customer-acquisition-and-loss"></a>Vypočítat pořízení a ztrátu zákazníků
 ---------------------------------------
 
-Můžete zobrazit datum, kdy zákazník nejprve koupil jednu z vašich nabídek vyhledáním **získat datum** sloupec downloadu zákazníka. Podobně můžete zobrazit datum, po kterém už měli všechny nabídky někým jiným než vámi vyhledáním **ztráty datum** sloupec downloadu zákazníka.
+Datum, kdy zákazník poprvé koupil jednu z vašich nabídek, si můžete prohlédnout tak, že ve staženém zákazníkovi vyhledáte sloupec **Datum získání** . Podobně vidíte datum, po jehož uplynutí již žádná nabídka nebyla publikována, a to tak, že na stažení zákazníka vyhledáte sloupec **ztráty data** .
 
 
-<a name="finding-more-help"></a>Hledání další nápovědy
+<a name="finding-more-help"></a>Hledání další nápovědě
 -----------------
 
-- [Definice Insights prodejce](./si-insights-definitions-v4.md) -najít definice pro metriky a data
+- [Definice přehledů prodejců](./si-insights-definitions-v4.md) – vyhledání metrik a dat
 
-- [Začínáme s prodejce Insights](./si-getting-started.md) – Úvod do funkce prodejce přehledů.
+- [Začínáme s prodávajícími přehledy](./si-getting-started.md) – Úvod k funkci prodejce Insights.
 

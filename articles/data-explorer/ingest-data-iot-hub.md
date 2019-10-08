@@ -7,18 +7,23 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996756"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028470"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat (Preview)
 
-Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat pro data protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
+> [!div class="op_single_selector"]
+> * [Azure Portal](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
 
-## <a name="prerequisites"></a>Požadavky
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -36,7 +41,7 @@ Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-target-table-in-azure-data-explorer"></a>Vytvoření cílové tabulky v Azure Průzkumník dat
+## <a name="create-a-target-table-in-azure-data-explorer"></a>Vytvoření cílové tabulky v Azure Data Exploreru
 
 Nyní vytvoříte tabulku v Azure Průzkumník dat, do které budou centra IoT odesílat data. Vytvoříte tabulku v clusteru a databázi zřízené v části [**požadavky**](#prerequisites).
 
@@ -50,7 +55,7 @@ Nyní vytvoříte tabulku v Azure Průzkumník dat, do které budou centra IoT o
     .create table TestTable (temperature: real, humidity: real)
     ```
     
-    ![Spustit dotaz Create](media/ingest-data-iot-hub/run-create-query.png)
+    ![Spuštění vytvářecího dotazu](media/ingest-data-iot-hub/run-create-query.png)
 
 1. Zkopírujte do okna následující příkaz a vyberte možnost **Spustit** pro mapování příchozích dat JSON na názvy sloupců a datové typy tabulky (tabulka).
 
@@ -66,7 +71,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
 1. V clusteru, který jste vytvořili, **Vyberte databáze a potom vyberte** databázi, kterou jste vytvořili **TestDB**.
     
-    ![Vybrat testovací databázi](media/ingest-data-iot-hub/select-database.png)
+    ![Výběr testovací databáze](media/ingest-data-iot-hub/select-database.png)
 
 1. Vyberte **přijímání dat** a **přidejte datové připojení**. Pak vyplňte formulář následujícími informacemi. Až budete hotovi, vyberte **vytvořit** .
 
@@ -74,10 +79,10 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
     **Zdroj dat**:
 
-    **Nastavením** | **Popis pole**
+    **Nastavení** | **Popis pole**
     |---|---|
     | Název datového připojení | Název připojení, které chcete vytvořit v Azure Průzkumník dat
-    | IoT Hub | Název IoT Hub |
+    | Centrum IoT | Název IoT Hub |
     | Zásady sdíleného přístupu | Název zásad sdíleného přístupu. Musí mít oprávnění ke čtení. |
     | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub |
     | Vlastnosti systému událostí | [Vlastnosti systému událostí IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. | | | 
@@ -90,11 +95,11 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
     K dispozici jsou dvě možnosti směrování přijatých dat: *statické* a *dynamické*. 
     V tomto článku použijete statické směrování, kde zadáte název tabulky, formát dat a mapování. Proto nechte **moje data zahrnovat informace o směrování** bez výběru.
 
-     **Nastavením** | **Navrhovaná hodnota** | **Popis pole**
+     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Tabulka | *Testovací navýšení* | Tabulka, kterou jste vytvořili v **TestDB**. |
+    | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v **TestDB**. |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. |
-    | Mapování sloupce | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
+    | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
     | | |
 
     > [!NOTE]
@@ -103,29 +108,29 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
 ## <a name="generate-sample-data-for-testing"></a>Generovat ukázková data pro testování
 
-Aplikace simulovaného zařízení se připojí ke koncovému bodu specifickému pro zařízení ve službě IoT Hub a odešle simulaci simulované teploty a vlhkosti.
+Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
-1. Stáhněte si ukázkový C# projekt z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a Extrahujte archiv zip.
+1. Stáhněte si ukázkový projekt C# z https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip a extrahujte archiv ZIP.
 
-1. V místním okně terminálu přejděte do kořenové složky ukázkového C# projektu. Pak přejděte do složky **IoT-hub\Quickstarts\simulated-Device** .
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
-1. Otevřete soubor **SimulatedDevice.cs** v textovém editoru podle vašeho výběru.
+1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-    Nahraďte hodnotu proměnné `s_connectionString` připojovacím řetězcem zařízení a [Zaregistrujte zařízení do IoT Hub](#register-a-device-to-the-iot-hub). Potom uložte změny do souboru **SimulatedDevice.cs** .
+    Nahraďte hodnotu proměnné `s_connectionString` připojovacím řetězcem zařízení a [Zaregistrujte zařízení do IoT Hub](#register-a-device-to-the-iot-hub). Změny pak uložte do souboru **SimulatedDevice.cs**.
 
-1. V okně místního terminálu spuštěním následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
+1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. V okně místního terminálu spusťte následující příkaz, který sestaví a spustí aplikaci simulovaného zařízení:
+1. Spuštěním následujícího příkazu v okně místního terminálu sestavte a spusťte aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet run
     ```
 
-    Následující snímek obrazovky ukazuje výstup jako aplikace simulovaného zařízení odesílá telemetrii do služby IoT Hub:
+    Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
     ![Spuštění simulovaného zařízení](media/ingest-data-iot-hub/simulated-device.png)
 
@@ -137,7 +142,7 @@ Aplikace, která generuje data, teď může zobrazit tok dat ze služby IoT Hub 
 
     ![IoT Hub metriky](media/ingest-data-iot-hub/iot-hub-metrics.png)
 
-1. Chcete-li zkontrolovat, kolik zpráv bylo v databázi zatím provedeno, spusťte v testovací databázi následující dotaz.
+1. Pokud chcete zkontrolovat, kolik zpráv se zatím dostalo do databáze, spusťte v testovací databázi následující dotaz.
 
     ```Kusto
     TestTable
@@ -162,15 +167,15 @@ Aplikace, která generuje data, teď může zobrazit tok dat ze služby IoT Hub 
 
 Pokud neplánujete znovu použít IoT Hub, vyčistěte **test-hub-RG**, abyste se vyhnuli nákladům.
 
-1. V Azure Portal vyberte **skupiny prostředků** na zcela vlevo a pak vyberte skupinu prostředků, kterou jste vytvořili.  
+1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** a pak vyberte skupinu prostředků, kterou jste vytvořili.  
 
-    Pokud je levá nabídka sbalená, vyberte ![Tlačítko Rozbalit](media/ingest-data-event-hub/expand.png) a rozbalte ji.
+    Pokud je nabídka vlevo sbalená, výběrem ![tlačítko Rozbalit](media/ingest-data-event-hub/expand.png) ji rozbalte.
 
-   ![Vyberte skupinu prostředků, kterou chcete odstranit.](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Výběr skupiny prostředků k odstranění](media/ingest-data-event-hub/delete-resources-select.png)
 
-1. V části **test-Resource-Group**vyberte **Odstranit skupinu prostředků**.
+1. Ve skupině prostředků **test-resource-group** vyberte **Odstranit skupinu prostředků**.
 
-1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-hub-RG*), a pak vyberte **Odstranit**.
+1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-resource-group*), a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

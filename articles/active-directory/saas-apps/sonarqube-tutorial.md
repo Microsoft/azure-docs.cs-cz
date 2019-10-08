@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s SonarQube | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s SonarQube | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SonarQube.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174642"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026685"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s SonarQube
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SonarQube
 
 V tomto kurzu se dozvíte, jak integrovat SonarQube s Azure Active Directory (Azure AD). Když integrujete SonarQube s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat SonarQube s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -97,25 +97,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení SonarQube** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SonarQube.
 
@@ -123,7 +123,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **SonarQube**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -139,7 +139,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Nainstalujte modul plug-in SAML z místa na SonarQube trhu.
 
-3. V levém horním rohu stránky klikněte na **správce** a pak přejděte na **SAML**.
+3. V levém horním rohu stránky klikněte na **správce** a pak přejděte na **SAML**.
 
 4. Na stránce **SAML** proveďte následující kroky:
 
@@ -161,21 +161,21 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     h. Do textového pole **atribut uživatelského jména SAML** zadejte hodnotu `http://schemas.microsoft.com/identity/claims/displayname`.
 
-    i. Do textového pole **atribut e-mailu uživatele SAML** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`hodnotu.
+    i. Do textového pole **atribut e-mailu uživatele SAML** zadejte hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     j. Klikněte na **Uložit**.
 
 ### <a name="create-sonarqube-test-user"></a>Vytvořit testovacího uživatele SonarQube
 
-V této části vytvoříte uživatele s názvem B. Simon v SonarQube. Pokud chcete přidat uživatele na platformě SonarQube, pracujte s [týmem podpory klienta SonarQube](https://www.sonarsource.com/support/) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele s názvem B. Simon v SonarQube. Pokud chcete přidat uživatele na platformě SonarQube, pracujte s [týmem podpory klienta SonarQube](https://www.sonarsource.com/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici SonarQube, měli byste se automaticky přihlásit k SonarQube, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

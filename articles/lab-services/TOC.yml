@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Připojení nebo odpojení sdílené galerie imagí
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
           items:
             - name: Vytváření a správa testovacích prostředí v učebnách
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Nastavení nebo resetování hesel pro virtuální počítače
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
           items:
             - name: Přístup k testovacím prostředím v učebnách

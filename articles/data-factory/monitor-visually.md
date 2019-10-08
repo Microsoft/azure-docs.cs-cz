@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141100"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029138"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorujte datové továrny Azure.
 Azure Data Factory je cloudová služba pro integraci dat. Můžete ho použít k vytvoření pracovních postupů řízených daty v cloudu pro orchestraci a automatizaci přesunu dat a transformaci dat. Pomocí Azure Data Factory můžete:
@@ -45,8 +45,8 @@ V zobrazení seznamu se zobrazí všechny spuštěné kanály pro Data Factory k
 | Název kanálu | Název kanálu |
 | Akce | Jedna akce dostupná pro zobrazení spuštění aktivit |
 | Spustit spuštění | Počáteční datum a čas pro spuštění kanálu (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Trvání | Doba trvání běhu (HH: MM: SS) |
-| Inicializoval | Manuální aktivační událost nebo naplánovaná aktivační událost |
+| Délka | Doba trvání běhu (HH: MM: SS) |
+| Aktivoval | Manuální aktivační událost nebo naplánovaná aktivační událost |
 | Stav | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
 | Parametry | Parametry pro spuštění kanálu (páry název/hodnota) |
 | Chyba | Chyba spuštění kanálu (pokud existuje) |
@@ -62,7 +62,7 @@ V zobrazení seznamu se zobrazí spuštění aktivit, která odpovídají každ�
 | Název aktivity | Název aktivity uvnitř kanálu |
 | Typ aktivity | Typ aktivity, například **copy**, **HDInsightSpark**nebo **HDInsightHive** |
 | Spustit spuštění | Počáteční datum a čas pro spuštění aktivit (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Trvání | Doba trvání běhu (HH: MM: SS) |
+| Délka | Doba trvání běhu (HH: MM: SS) |
 | Stav | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
 | Vstup | Pole JSON, které popisuje vstupy aktivity |
 | Výstup | Pole JSON, které popisuje výstupy aktivity |
@@ -90,7 +90,7 @@ Pořadí kanálu se spouští v příkazu DESC/ASC podle počátečního času s
 | --- | --- |
 | Název kanálu | Název kanálu. Mezi možnosti patří rychlé filtry za **posledních 24 hodin**, **minulý týden**a **posledních 30 dnů**. Nebo vyberte vlastní datum a čas. |
 | Spustit spuštění | Počáteční datum a čas pro spuštění kanálu. |
-| Stav spuštění | Filtrovat běhy podle stavu: **Bylo úspěšné**, **neúspěšné**nebo **probíhající**. |
+| Stav spuštění | Spuštění filtru podle stavu: **úspěšné**, **neúspěšné**nebo **probíhá**. |
 
 ![Možnosti pro filtrování](media/monitor-visually/filter.png)
 
@@ -154,14 +154,14 @@ Vyberte ikonu **informace** v levém dolním rohu. Pak vyberte **prohlídky s as
 
 ![Řízená prohlídky](media/monitor-visually/guided-tours.png)
 
-## <a name="feedback"></a>Zpětná vazba
+## <a name="feedback"></a>Váš názor
 Vyberte ikonu **zpětné vazby** a poskytněte nám zpětnou vazbu k různým funkcím nebo jakýmkoli problémům, se kterými se můžete setkat.
 
-![Zpětná vazba](media/monitor-visually/feedback.png)
+![Váš názor](media/monitor-visually/feedback.png)
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
-Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte > tím, že vyberete monitorovat**výstrahy & metriky** na stránce monitorování Data Factory.
+Upozornění na podporované metriky můžete vyvolávat v Data Factory. Pokud chcete začít, vyberte **monitorovat**výstrahy  >  **& metriky** na stránce monitorování Data Factory.
 
 ![Stránka monitorování objektu pro vytváření dat](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
 
 ### <a name="create-alerts"></a>Vytváření upozornění
 
-1.  Vyberte **nové pravidlo** výstrahy a vytvořte novou výstrahu.
+1.  Vyberte **nové pravidlo výstrahy** a vytvořte novou výstrahu.
 
     ![Tlačítko nové pravidlo upozornění](media/monitor-visually/alerts02.png)
 
@@ -199,6 +199,6 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
 
     ![Možnosti pro vytvoření pravidla výstrahy](media/monitor-visually/alerts09.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o monitorování a správě kanálů najdete v článku o sledování [a správě kanálů programově](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) .

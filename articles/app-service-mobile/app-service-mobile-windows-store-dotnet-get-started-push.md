@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e3e82c971fee7f7dd95e6f9ef72631e8e82ebe7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851126"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025261"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center je investována v nových a integrovaných službách z centrálního vývoje mobilních aplikací. Vývojáři mohou pomocísestavování, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a diagnostických služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu. Podívejte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
@@ -43,12 +43,12 @@ Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete po
 
 Musíte odeslat aplikaci do Microsoft Store a potom nakonfigurovat projekt serveru pro integraci se službou [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) , abyste mohli odeslat nabízení.
 
-1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace UWP a klikněte na **Store** > **přidružit aplikaci k obchodu...** .
+1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace UWP, klikněte na **uložit** > **přidružit aplikaci k obchodu...** .
 
     ![Přidružit aplikaci k Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
 2. V průvodci klikněte na **Další**, přihlaste se pomocí svého účet Microsoft, zadejte název vaší aplikace do pole **rezervovat nový název aplikace**a pak klikněte na **rezervovat**.
-3. Po úspěšném vytvoření registrace aplikace vyberte název nové aplikace, klikněte na **Další**a pak klikněte na přidružit. Tím se do manifestu aplikace přidá požadované registrační informace Microsoft Store.
+3. Po úspěšném vytvoření registrace aplikace vyberte název nové aplikace, klikněte na **Další**a pak klikněte na **přidružit**. Tím se do manifestu aplikace přidá požadované registrační informace Microsoft Store.
 4. Přejděte na [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a přihlaste se pomocí svého účet Microsoft. Klikněte na aplikaci pro Windows Store, kterou jste přidružili v předchozím kroku.
 5. Na stránce registrace si poznamenejte hodnotu v části **tajné klíče aplikace** a **identifikátor SID balíčku**, který budete dál používat ke konfiguraci back-endu mobilní aplikace.
 
@@ -65,7 +65,7 @@ Musíte odeslat aplikaci do Microsoft Store a potom nakonfigurovat projekt serve
 
 ## <a id="update-service"></a>Aktualizace serveru pro odesílání nabízených oznámení
 
-Použijte níže uvedený postup, který odpovídá vašemu typu&mdash;back-endu, back- [Endu .NET](#dotnet) nebo [back-end Node. js](#nodejs).
+Použijte níže uvedený postup, který odpovídá vašemu typu back-endu @ no__t-0either [.NET back-end](#dotnet) nebo [Node. js back-end](#nodejs).
 
 ### <a name="dotnet"></a>Projekt back-endu .NET
 
@@ -171,7 +171,7 @@ Použijte níže uvedený postup, který odpovídá vašemu typu&mdash;back-endu
 ## <a id="update-app"></a>Přidání nabízených oznámení do aplikace
 V dalším kroku se musí vaše aplikace při spuštění zaregistrovat pro nabízená oznámení. Pokud jste již povolili ověřování, ujistěte se, že se uživatel přihlásí před pokusem o registraci nabízených oznámení.
 
-1. Otevřete soubor projektu **App.XAML.cs** a přidejte následující `using` příkazy:
+1. Otevřete soubor projektu **App.XAML.cs** a přidejte následující příkazy `using`:
 
     ```csharp
     using System.Threading.Tasks;

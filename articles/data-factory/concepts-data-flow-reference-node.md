@@ -1,29 +1,29 @@
 ---
-title: Azure Data Factory mapování uzel odkazu toku dat
-description: Tok dat data Factory se přidat uzel odkazu pro spojení, vyhledávání, sjednocení
+title: Uzel odkazu na datový tok Azure Data Factory mapování
+description: Data Factory tok dat přidá referenční uzel pro spojení, vyhledávání, sjednocení
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 626943143e8fa193f143e66d856d9b00e3589fb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed17114cc0ce586c68c5b3e087acffdb82ea96c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262660"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030493"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Mapování uzel odkazu toku dat
+# <a name="mapping-data-flow-reference-node"></a>Uzel odkazu na tok dat mapování
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Referenční uzel](media/data-flow/referencenode.png "uzel odkazu")
 
-Uzel odkazu je automaticky přidána do plátna označuje, že uzel, který je připojen k odkazuje na jiný uzel existující na plátně. Uzel odkazu jako ukazatel nebo odkaz na jiný transformace toku dat představte.
+(media/data-flow/referencenode.png "Uzel odkazu") na ![uzel odkazu]
 
-Příklad: Když se do programu nebo sjednocení více než jeden datový proud s daty, plátna toku dat může přidat uzel odkazu, který odráží název a nastavení jiné než primární příchozího datového proudu.
+Do plátna se automaticky přidá uzel odkazu, který označuje, že uzel, který je připojen, odkazuje na jiný existující uzel na plátně. Uzel odkazu si můžete představit jako ukazatel nebo odkaz na jinou transformaci toku dat.
 
-Referenční uzel nelze přesunout nebo odstranit. Však můžete kliknout na uzel, který má-li upravit výchozí nastavení transformace.
+Například: Když spojíte nebo Sjednotete více než jeden datový proud dat, plátno toku dat může přidat referenční uzel, který odráží název a nastavení neprimárního příchozího datového proudu.
 
-Uživatelské rozhraní pravidla, která řídí, když tok dat přidá uzel odkazu jsou založeny na dostupné místo a svislé mezery mezi řádky.
+Uzel odkazu nejde přesunout ani odstranit. Můžete však kliknout na uzel a upravit tak původní nastavení transformace.
+
+Pravidla uživatelského rozhraní, která určují, kdy tok dat přidává referenční uzel, vycházejí z dostupného místa a svislé mezery mezi řádky.

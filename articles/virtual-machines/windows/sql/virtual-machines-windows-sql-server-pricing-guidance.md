@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280172"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028622"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Doprovodné materiály k ceníkům pro SQL Server virtuálních počítačů Azure
 
@@ -54,17 +54,17 @@ Pokud chcete vytvořit virtuální počítač s SQL Server 2017 Azure s jednou z
 
 Pokud máte neodlehčené provozní úlohy, použijte jednu z následujících edic SQL Server:
 
-| SQL Server Edition | Úloha |
+| Edice SQL Server | Úloha |
 |-----|-----|
 | Web | Malé weby |
-| Standard | Malá a středně velká zatížení |
+| Úroveň Standard | Malá a středně velká zatížení |
 | Enterprise | Velké nebo důležité úlohy|
 
 Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *Plaťte za použití* nebo *využijte vlastní licenci (BYOL)* .
 
 ## <a name="pay-per-usage"></a>Platit podle využití
 
-**Platba SQL Server licence na použití** znamená, že za sekundu náklady na spuštění virtuálního počítače Azure zahrnuje náklady na SQL Server licenci. Ceny pro různé SQL Server edice (web, Standard, Enterprise) najdete na stránce s cenami virtuálních počítačů Azure pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+**Platba SQL Server licence na použití** (označované také jako **průběžné platby**) znamená, že cena za sekundu po spuštění virtuálního počítače Azure zahrnuje náklady na SQL Server licenci. Ceny pro různé SQL Server edice (web, Standard, Enterprise) najdete na stránce s cenami virtuálních počítačů Azure pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
 Náklady jsou stejné pro všechny verze SQL Server (2012 SP3 až 2017). Náklady na licencování za sekundu závisí na počtu vCPU virtuálních počítačů.
 
@@ -74,7 +74,7 @@ Platba SQL Server licencování na použití se doporučuje pro:
 
 - **Úlohy s neznámou životností nebo škálováním**. Například aplikace, které nemusí být potřeba během několika měsíců nebo které můžou vyžadovat více nebo méně výpočetní výkon, v závislosti na poptávce.
 
-Pokud chcete vytvořit virtuální počítač s SQL Server 2017 s jedním z těchto imagí pro použití s platbami podle využití, přečtěte si následující odkazy:
+Pokud chcete vytvořit virtuální počítač s SQL Server 2017 Azure s jedním z těchto imagí s průběžnými platbami, přečtěte si následující odkazy:
 
 | Platforma | Licencované image |
 |---|---|
@@ -139,7 +139,7 @@ Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte ve
 
 Existují nové velikosti počítačů, které dobře fungují s určitými typy SQL Server úloh. Tyto počítače mají na paměti udržování vysoké úrovně paměti, úložiště a vstupně-výstupních propustností, ale mají nižší virtualizovaný počet jader. Zvažte například následující příklad:
 
-| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
+| Velikost virtuálního počítače | vCPU | Paměť | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (COMPUTE a licencování) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | 75% nižší | 57% nižší |
@@ -164,7 +164,7 @@ Pro jiné pracovní postupy zvažte automatické vypínání a restartování vi
 > [!IMPORTANT]
 > Jediným způsobem, jak se vyhnout poplatkům, je vypnutí a zrušení přidělení virtuálního počítače. Pouhým zastavením nebo použitím možností napájení pro vypnutí virtuálního počítače se stále účtují poplatky za využití.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Obecné doprovodné materiály pro Azure najdete v tématu [Ochrana před neočekávanými náklady pomocí fakturace a správy nákladů Azure](../../../billing/billing-getting-started.md). Nejnovější ceny Virtual Machines včetně SQL Server najdete na stránce s cenami virtuálních počítačů Azure pro virtuální počítače s [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)se systémem Linux.
 

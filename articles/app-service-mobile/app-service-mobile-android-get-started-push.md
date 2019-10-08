@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace pro Android s funkcí Mobile Apps | Dokumentace Microsoftu
-description: Naučte se využívat Mobile Apps k odesílání nabízených oznámení do aplikace pro Android.
+title: Přidání nabízených oznámení do aplikace pro Android s Mobile Apps | Microsoft Docs
+description: Naučte se používat Mobile Apps k odesílání nabízených oznámení do vaší aplikace pro Android.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
@@ -14,37 +14,37 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 529aa8327d31cdda044178b6d03035b602744db2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3185447e4e465fe49849bb4280f2af9bbe852e19
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443656"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027699"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Přidání nabízených oznámení do aplikace pro Android
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [Rychlý start pro Android] projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do projektu s [Rychlý Start pro Android] , takže nabízené oznámení se pošle do zařízení pokaždé, když se záznam vloží.
 
-Pokud použijete serverový projekt stažené rychlý start, je nutné balíček rozšíření nabízené oznámení. Další informace najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Budete potřebovat následující:
+Potřebujete následující:
 
-* Integrované vývojové prostředí, v závislosti na back-endu vašeho projektu:
+* Integrované vývojové prostředí (IDE) v závislosti na back-endu vašeho projektu:
 
-  * [Android Studio](https://developer.android.com/sdk/index.html) Pokud tato aplikace má back-end Node.js.
-  * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) nebo novější, pokud tato aplikace má back-end Microsoft .NET.
-* Android 2.3 nebo novější, úložiště Google verze 27 nebo novější a služby Google Play 9.0.2 nebo novější pro službu Firebase Cloud Messaging.
-* Dokončení [Rychlý start pro Android].
+  * [Android Studio](https://developer.android.com/sdk/index.html) , jestli má tato aplikace back-end Node. js.
+  * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) nebo novější, pokud má tato aplikace back-end Microsoft .NET.
+* Android 2,3 nebo novější, Revize úložiště Google 27 nebo novější a Služby Google Play 9.0.2 nebo novější pro zasílání zpráv Firebase do cloudu.
+* Dokončete [Rychlý Start pro Android].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Vytvoření projektu, který podporuje službu Firebase Cloud Messaging
 
@@ -54,47 +54,47 @@ Budete potřebovat následující:
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure k odesílání nabízených oznámení
+## <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="enable-push-notifications-for-the-server-project"></a>Povolte nabízená oznámení pro server project
+## <a name="enable-push-notifications-for-the-server-project"></a>Povolit nabízená oznámení pro serverový projekt
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Přidání nabízených oznámení do aplikace
 
-V této části aktualizujete Android klientské aplikace pro zpracování nabízených oznámení.
+V této části aktualizujete klientskou aplikaci pro Android tak, aby zpracovávala nabízená oznámení.
 
-### <a name="verify-android-sdk-version"></a>Ověřit verzi sady SDK pro Android
+### <a name="verify-android-sdk-version"></a>Ověřit verzi Android SDK
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-Dalším krokem je instalace služby Google Play. Firebase Cloud Messaging některé minimální API požadavky na úroveň pro vývoj a testování, který má **minSdkVersion** musí odpovídat vlastnosti v manifestu.
+Dalším krokem je instalace služby Google Play Services. Firebase Cloud Messaging má některé minimální požadavky na úroveň rozhraní API pro vývoj a testování, které musí splňovat vlastnost **hodnotu minsdkversion** v manifestu.
 
-Pokud testujete s starší zařízení, projděte si [Přidání Firebase do vašeho projektu Android] určíte, jak nízké může nastavte tuto hodnotu a odpovídajícím způsobem nastavit.
+Pokud testujete pomocí staršího zařízení, přečtěte si článek [Přidání Firebase do projektu pro Android] , kde zjistíte, jak nízká hodnota se dá nastavit, a nastavte ji odpovídajícím způsobem.
 
-### <a name="add-firebase-cloud-messaging-to-the-project"></a>Přidejte do projektu Firebase Cloud Messaging
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Přidání Firebase cloudového zasílání zpráv do projektu
 
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
-### <a name="add-code"></a>Přidejte kód
+### <a name="add-code"></a>Přidat kód
 
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
-## <a name="test-the-app-against-the-published-mobile-service"></a>Testování aplikací proti publikované mobilní služby
+## <a name="test-the-app-against-the-published-mobile-service"></a>Testování aplikace proti publikované mobilní službě
 
-Aplikaci můžete otestovat přímo připojením telefon s Androidem pomocí kabelu USB, nebo pomocí virtuálního zařízení se spustila v emulátoru.
+Aplikaci můžete otestovat tak, že přímo připojíte telefon s Androidem pomocí kabelu USB, nebo pomocí virtuálního zařízení v emulátoru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste dokončili tento kurz, vezměte v úvahu pokračováním jednu z následujících kurzů:
+Nyní, když jste dokončili tento kurz, zvažte pokračování v jednom z následujících kurzů:
 
-* [Přidání ověřování do aplikace pro Android](app-service-mobile-android-get-started-users.md).
-  Zjistěte, jak přidat ověřování do seznamu úkolů projektu na Android pomocí zprostředkovatele identity podporovaná.
-* [Povolení offline synchronizace u aplikace pro Android](app-service-mobile-android-get-started-offline-data.md).
-  Zjistěte, jak přidat do aplikace podporu offline režimu pomocí back-end Mobile Apps. Offline synchronizace, mohou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není žádné síťové připojení.
+* [Přidejte do svojí aplikace pro Android ověřování](app-service-mobile-android-get-started-users.md).
+  Naučte se, jak přidat ověřování do projektu rychlého startu ToDoList v Androidu s použitím podporovaného zprostředkovatele identity.
+* [Povolte offline synchronizaci vaší aplikace pro Android](app-service-mobile-android-get-started-offline-data.md).
+  Naučte se přidat do aplikace podporu offline pomocí Mobile Apps back-endu. Při offline synchronizaci můžou uživatelé interaktivně pracovat s mobilní aplikací @ no__t-0viewing, přidávat nebo upravovat data @ no__t-1even, když není k dispozici žádné síťové připojení.
 
 <!-- URLs -->
-[Rychlý start pro Android]: app-service-mobile-android-get-started.md
-[Přidání Firebase do vašeho projektu Android]: https://firebase.google.com/docs/android/setup
+[Rychlý Start pro Android]: app-service-mobile-android-get-started.md
+[Přidání Firebase do projektu pro Android]: https://firebase.google.com/docs/android/setup

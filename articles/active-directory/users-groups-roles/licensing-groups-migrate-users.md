@@ -1,6 +1,6 @@
 ---
-title: Přidejte jednotlivě licencovaných uživatelů na licencování na základě skupin – Azure Active Directory | Dokumentace Microsoftu
-description: Jak migrovat z jednotlivých uživatelských licencí pro licencování na základě skupiny pomocí služby Azure Active Directory
+title: Přidat uživatele s licencí na základě skupin – Azure Active Directory | Microsoft Docs
+description: Postup migrace z individuálních uživatelských licencí na licencování na základě skupin pomocí Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
@@ -11,83 +11,79 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 09/26/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192460"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034755"
 ---
-# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Migrace uživatelů s licencemi na jednotlivé do skupin pro licencování
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Postup migrace uživatelů s jednotlivými licencemi do skupin pro licencování
 
-Máte stávající licence k nasazení uživatelům v organizacích prostřednictvím "přímého přiřazení"; To znamená pomocí skriptů Powershellu nebo jiných nástrojů k přiřazení licencí jednotlivým uživatelům. Než začnete používat licencování na základě skupiny pro správu licencí ve vaší organizaci, můžete tento plán migrace bez problému nahradit stávající řešení s licencováním na základě skupin.
+Mohli jste mít k uživatelům v organizacích nasazené stávající licence prostřednictvím "přímého přiřazení"; To znamená, že pomocí skriptů PowerShellu nebo jiných nástrojů přiřadíte jednotlivé uživatelské licence. Než začnete používat licencování na základě skupin pro správu licencí ve vaší organizaci, můžete tento plán migrace použít k bezproblémovému nahrazení stávajících řešení pomocí licencování na základě skupin.
 
-Nejdůležitějším principem brát v úvahu je, že byste se měli vyhnout situace, kdy migrace na licencování na základě skupiny způsobí uživatele dočasně ztráty aktuálně přiřazené licence. Chcete-li odebrat riziko ztráty přístupu ke službám a jejich data uživatelů, mělo by se vyhnout jakýkoli proces, který může mít za následek odebrání licencí.
+Je důležité si uvědomit, že byste se měli vyhnout situaci, kdy se migrace na licencování na základě skupin bude povést k tomu, že uživatelé dočasně ztratí své aktuálně přiřazené licence. Jakýkoli proces, který by mohl způsobit odebrání licencí, by se zabránilo odebrání rizika, že uživatelé ztratili přístup ke službám a jejich datům.
 
-## <a name="recommended-migration-process"></a>Proces migrace doporučené
+## <a name="recommended-migration-process"></a>Doporučený proces migrace
 
-1. Máte existující automatizace (například prostředí PowerShell) Správa licencí přiřazení a odebrání pro uživatele. Necháte spuštěné, jak je.
+1. Máte existující automatizaci (například PowerShell) pro správu přiřazení licencí a odebírání uživatelů. Ponechte ho spuštěný tak, jak je.
 
-2. Vytvoření nové skupiny licencí (nebo rozhodnout, které existující skupiny, pro použití) a ujistěte se, že všechny požadované uživatelé přidávají jako členové.
+1. Vytvořte novou skupinu licencí (nebo se rozhodněte, které existující skupiny se mají použít) a ujistěte se, že jsou všichni povinní Uživatelé přidáni jako členové.
 
-3. Přiřadit požadované licence, které na tyto skupiny. vaším cílem mělo být tak, aby odrážely stejné licencování stavu, ve kterém se těmto uživatelům použití existující automatizace (například prostředí PowerShell).
+1. Přiřaďte těmto skupinám požadované licence. Váš cíl by měl odpovídat stejnému stavu licencování, že se pro tyto uživatele používá vaše stávající automatizace (například PowerShell).
 
-4. Ověřte, že licence byla použita pro všechny uživatele v těchto skupinách. Tuto aplikaci můžete udělat tak, že zkontrolujete stav zpracování pro každou skupinu a kontrolou protokolů auditu.
+1. Ověřte, zda byly licence aplikovány na všechny uživatele v těchto skupinách. Tato aplikace se dá udělat tak, že zkontrolujete stav zpracování v každé skupině a zkontrolujete protokoly auditu.
 
-   - Můžete místo zaškrtnutí jednotlivých uživatelů podle jejich podrobnosti licence. Uvidíte, že mají stejné licence přiřazené "přímo" a "dědí" ze skupin.
+   - Kontrolu jednotlivých uživatelů si můžete prohlédnout na základě jejich licenčních podrobností. Uvidíte, že mají stejné licence přiřazené přímo a zděděné ze skupin.
 
-   - Můžete spustit skript prostředí PowerShell, který [ověřte přiřazení licencí uživatelům](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Můžete spustit skript prostředí PowerShell a ověřit tak, [jak jsou licence přiřazeny uživatelům](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-   - Pokud licenci na stejný produkt je přiřazená uživateli i přímo nebo prostřednictvím skupiny, pouze jedna licence se spotřebovává uživatelem. Proto žádné další licence jsou potřebná k provedení migrace.
+   - Pokud k uživateli přiřadíte stejnou licenci k produktu přímo i prostřednictvím skupiny, bude uživatel používat jenom jednu licenci. Proto pro provádění migrace nejsou potřeba žádné další licence.
 
-5. Ověřte, že se žádná přiřazení licencí se nezdařilo kontrolou každé skupiny uživatelů v chybovém stavu. Další informace najdete v tématu [určení a řešení problémů pro skupinu](licensing-groups-resolve-problems.md).
+1. Ověřte, že se nezdařila žádná přiřazení licencí, a to zaškrtnutím každé skupiny pro uživatele v chybovém stavu. Další informace najdete v tématu [identifikace a řešení problémů s licencí pro skupinu](licensing-groups-resolve-problems.md).
 
-6. Zvažte odebrání původní přímého přiřazení můžete chtít provést postupně, "vlny", nejprve sledovat výsledek na určitou podskupinu uživatelů.
-
-   Původní přímých přiřazení by mohl nechat na uživatele, ale při jejich licencované skupiny nechte uživatele, zůstanou původní licence, který může být nechcete.
+Zvažte odebrání původních přímých přiřazení. Doporučujeme vám postupovat postupně a monitorovat výsledek u podmnožiny uživatelů jako první. Pokud byste mohli ponechat původní Přímá přiřazení pro uživatele, ale když uživatelé odejdou z licencovaných skupin, uchovávají jim přímo přiřazené licence, které nemusí být vhodné.
 
 ## <a name="an-example"></a>Příklad
 
-Organizace má 1000 uživateli současně. Všichni uživatelé potřebovat licencí Enterprise Mobility + Security (EMS). 200 uživatelů jsou z finančního oddělení a vyžadují licence Office 365 Enterprise E3. Organizace má momentálně Powershellový skript spuštěn v místním prostředí, přidávání a odebírání licence od uživatelů, dokud budou pocházet a přejít. Organizace potřebuje licencování založené na skupině, tak licence je možné spravovat pomocí služby Azure AD automaticky nahradit skriptu.
+Organizace má 1 000 uživatelů. Všichni uživatelé vyžadují licence Office 365 Enterprise E3. V současné době má organizace spuštěný skript PowerShellu v místním prostředí a při přidávání a odebírání licencí od uživatelů po jejich uvedení na adresu. Organizace ale chce nahradit skript licencováním na základě skupin, aby bylo možné licence spravovat automaticky pomocí Azure AD.
 
-Tady je proces migrace by mohla vypadat:
+Postup migrace by měl vypadat takto:
 
-1. Pomocí webu Azure portal, přiřadit licence EMS pro **všichni uživatelé** skupiny ve službě Azure AD. Přiřadit licenci E3, abyste **finančního oddělení** skupinu, která obsahuje všechny požadované uživatele.
+1. Pomocí Azure Portal přiřaďte licenci Office 365 E3 skupině **Všichni uživatelé** ve službě Azure AD.
 
-2. Pro každou skupinu potvrďte, že byla dokončena přiřazení licencí pro všechny uživatele. Přejděte do okna pro každou skupinu, vyberte **licence**a zjistit stav zpracování v horní části **licence** okno.
+1. Potvrďte, že přiřazení licence bylo dokončeno pro všechny uživatele. Pro skupinu klikněte na stránku Přehled, vyberte **licence**a v horní části okna **licence** zaškrtněte stav zpracování.
 
-   - Vyhledejte "Licence nejnovější změny se použily pro všechny uživatele" potvrďte zpracování bylo dokončeno.
+   - Vyhledejte "poslední změny licencí byly aplikovány na všechny uživatele" pro potvrzení dokončení zpracování.
 
-   - Hledejte v horní části o všichni uživatelé, pro které licence možná nebyl přiřazen úspěšně oznámení. Jsme dostatek licencí pro některé uživatele? Mají někteří uživatelé konfliktní licence skladových položek, které jim zabránit dědění licencí skupiny?
+   - Vyhledejte oznámení v horní části o všech uživatelích, pro které se licence pravděpodobně úspěšně nepřiřadily. Vyčerpali jsme licence pro některé uživatele? Mají někteří uživatelé konfliktní licenční plány, které jim brání v dědění skupinových licencí?
 
-3. Přímé zkontrolujte někteří uživatelé ověřit, že mají obě s přímým přístupem a skupinových licence použít. Přejděte do okna pro uživatele, vyberte **licence**a zkontrolovat stav licencí.
+1. Pokud si chcete ověřit, že se používají přímé i skupinové licence, zkontrolujte, jestli někteří uživatelé mají. Přejít na stránku profil pro uživatele, vyberte **licence**a prověřte stav licencí.
 
-   - Tento stav byl očekáván typ user je během migrace:
+   - Toto je očekávaný stav uživatele při migraci:
 
-      ![byl očekáván typ user stavu během migrace](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![očekávaný stav uživatele během migrace](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-   Tím potvrdíte, že uživatel má licence s přímým přístupem a zděděná. Vidíme, že oba **EMS** a **E3** jsou přiřazeny.
+     Tím se potvrdí, že uživatel má přímé i zděděné licence. Vidíte, že je přiřazená sada Office 365 E3.
 
-   - Vyberte každou licenci k zobrazení podrobností o povolené služby. To lze použít ke kontrole, pokud licence s přímým přístupem a skupinových povolit přesně stejné plánů služeb pro uživatele.
+   - Vyberte jednotlivé licence, abyste viděli, které služby jsou povolené. Chcete-li ověřit, že licence Direct a Group pro uživatele umožňují přesně stejné služby, vyberte možnost **přiřazení**.
 
-      ![Zkontrolujte plány služeb pro uživatele](./media/licensing-groups-migrate-users/check-service-plans.png)
+1. Po potvrzení, že jsou přímé i skupinové licence rovnocenné, můžete začít s odebráním přímých licencí od uživatelů. Můžete to otestovat tak, že je odeberete pro jednotlivé uživatele na portálu a potom spustíte skripty pro automatizaci, aby se odebraly hromadně. Tady je příklad stejného uživatele s přímými licencemi odebranými prostřednictvím portálu. Všimněte si, že stav licence zůstane beze změny, ale už nevidíme Přímá přiřazení.
 
-4. Po potvrzení, zda jsou ekvivalentní s přímým přístupem a skupiny licencí, můžete začít odebrání přímé licencí od uživatelů. Můžete otestovat tak, že odeberete pro jednotlivé uživatele na portálu a potom spustit skripty pro automatizaci nechat na nich odebrat hromadně. Tady je příklad stejného uživatele s licencí s přímým přístupem odebrat na portálu. Všimněte si, že stav licence zůstane beze změny, ale už vidíme přímých přiřazení.
+   ![potvrzení odebrání přímých licencí](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
-   ![Potvrďte, že se odeberou přímé licence](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
+Další informace o dalších scénářích pro správu licencí skupin:
 
-Další informace o další scénáře pro správu licencí pomocí skupin najdete v článku
-
-* [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
-* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
-* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)
+- [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+- [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+- [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+- [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](licensing-groups-change-licenses.md)
+- [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
+- [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](licensing-ps-examples.md)

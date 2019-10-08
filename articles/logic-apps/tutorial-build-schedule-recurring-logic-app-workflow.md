@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172175"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034654"
 ---
-# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: Vytváření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
+# <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Kurz: vytvoření automatizovaných pracovních postupů založených na plánech pomocí Azure Logic Apps
 
 V tomto kurzu se dozvíte, jak vytvořit [aplikaci logiky](../logic-apps/logic-apps-overview.md) a automatizovat opakovaný pracovní postup, který běží podle plánu. Konkrétně se tato ukázková aplikace logiky spouští každý den v týdnu ráno a kontroluje dobu trvání cesty, včetně provozu, mezi dvěma místy. Pokud doba překročí určitou hranici, odešle aplikace logiky e-mail s dobou cesty a časem navíc potřebným k dosažení cíle cesty.
 
@@ -34,9 +34,9 @@ V tomto kurzu se naučíte:
 
 Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
 
-![Aplikace logiky na základní úrovni](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![Přehled pracovního postupu vysoké úrovně aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -50,26 +50,26 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **integrace** **Aplikace logiky** > .
 
-   ![Vytvoření aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
+   ![Vytvoření prostředku aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky podle následujícího obrázku a popisu. Až to budete mít, vyberte **Vytvořit**.
 
-   ![Zadání informací o aplikaci logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![Zadání informací o vaší aplikaci logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Vlastnost | Value | Popis |
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky`(`( `)`,) a tečky`.`(). V tomto příkladu se používá "LA-Dobacesty". |
-   | **Předplatné** | <*your-Azure-subscription-name*> | Název vašeho předplatného Azure |
+   | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). V tomto příkladu se používá "LA-Dobacesty". |
+   | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md), která se používá k uspořádání souvisejících prostředků. V tomto příkladu se používá "LA-Dobacesty-RG". |
-   | **Location** | USA – západ | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Umístění** | Západ USA | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
+1. Jakmile Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure **oznámení** > **Přejít k prostředku** pro vaši nasazenou aplikaci logiky.
 
-   ![Přejít k prostředku](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
+   ![Přejít na nový prostředek aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
 
@@ -87,15 +87,15 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 1. Na obrazci **opakování** vyberte tlačítko se **třemi tečkami** ( **...** ) a pak vyberte **Přejmenovat**. Přejmenujte trigger s tímto popisem: `Check travel time every weekday morning`
 
-   ![Přejmenování triggeru](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![Přejmenování popisu triggeru opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
 1. V triggeru změňte tyto vlastnosti.
 
-   ![Změna intervalu a frekvence](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![Změna intervalu a četnosti triggeru opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Interval** | Ano | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Interval** | Ano | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Ano | Týden | Jednotka času pro opakování |
    |||||
 
@@ -105,13 +105,13 @@ Dále přidejte [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    * **V těchto hodinách**
    * **V těchto minutách**
 
-   ![Přidat vlastnosti triggeru](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![Přidat vlastnosti pro aktivační událost opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
 1. Nyní nastavte hodnoty pro další vlastnosti, jak je znázorněno zde.
 
    ![Zadání podrobností o plánu a opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | Vlastnost | Value | Popis |
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **V tyto dny** | Pondělí, úterý, středa, čtvrtek, pátek | Dostupné, pouze pokud je **Frekvence** nastavená na Týden. |
    | **V těchto hodinách** | 7,8,9 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte hodiny, kdy se v průběhu dne spustí toto opakování. Tento příklad se spustí v celou 7., 8. a 9. hodinu. |
@@ -140,9 +140,9 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. Pokud nemáte připojení k Mapám Bing, budete vyzváni k jeho vytvoření. Zadejte tyto podrobnosti o připojení a vyberte **vytvořit**.
 
-   ![Vytvořit připojení ke službě Bing Maps](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![Vytvořit připojení k rozhraní API služby Bing Maps](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název připojení** | Ano | PřipojeníMapyBing | Zadejte název připojení. V tomto příkladu se používá "BingMapsConnection". |
    | **Klíč rozhraní API** | Ano | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -162,7 +162,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
    ![Zadejte podrobnosti pro akci získat trasu.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Bod na trase 1** | Ano | <*start*> | Počátek vaší cesty |
    | **Bod na trase 2** | Ano | <*cíl*> | Cíl vaší trasy |
@@ -193,7 +193,7 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
 1. Zadejte podrobnosti pro danou proměnnou tohoto popisu:
 
-   | Vlastnost | Požadováno | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název** | Ano | dobacesty | Název proměnné. V tomto příkladu se používá "Dobacesty". |
    | **Typ** | Ano | Integer | Datový typ proměnné |
@@ -221,11 +221,11 @@ Ve výchozím nastavení vrátí předchozí akce **získat trasu** aktuální d
 
    1. Po vyřešení hodnoty vlastnosti uvnitř výrazu vyberte **OK**.
 
-      ![Vyberte OK.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![Pokud chcete dokončit vytváření výrazu, vyberte OK.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
       Vlastnost **Value** se teď zobrazuje tak, jak je znázorněno zde:
 
-      ![Vlastnost Value s vyřešeným výrazem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![Vlastnost Value se zobrazuje s vyřešeným výrazem.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
 1. Uložte svou aplikaci logiky.
 
@@ -247,15 +247,15 @@ Dál přidejte podmínku, která zkontroluje, zda je aktuální doba trvání ce
 
    1. V seznamu dynamický obsah, který se zobrazí, vyberte v části **proměnné**vlastnost **dobacesty** .
 
-      ![Na levé straně podmínky sestavení](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![Sestavit levou stranu podmínky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
    1. V poli prostřední porovnání vyberte operátor **je větší než** .
 
-   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit:`15`
+   1. V poli **zvolit hodnotu** na pravé straně podmínky zadejte tento limit: `15`.
 
       Jakmile budete hotovi, bude podmínka vypadat jako v tomto příkladu:
 
-      ![Dokončená podmínka](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Dokončená podmínka pro kontrolu doby trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Uložte svou aplikaci logiky.
 
@@ -269,7 +269,7 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
 1. V části **zvolit akci**vyberte **standardní**. Do vyhledávacího pole zadejte "Odeslat e-mail". Seznam vrátí mnoho výsledků, takže nejdřív vyberte e-mailový konektor, který chcete, třeba:
 
-   ![Vybrat e-mailový konektor](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![Vyberte e-mailový konektor, který chcete.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
    * U pracovních nebo školních účtů Azure vyberte **Office 365 Outlook**.
    * U osobních účtů Microsoft, vyberte **Outlook.com**.
@@ -320,17 +320,17 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
    1. Až se vlastnost vyřeší uvnitř výrazu, vyberte **OK**.
 
-      ![Vlastnost "tělo" s vyřešeným výrazem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![Po vyřešení vlastnosti "tělo" vyberte možnost OK.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
       Vlastnost **text** se teď zobrazuje tak, jak je znázorněno zde:
 
-      ![Vlastnost "tělo" s vyřešeným výrazem](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![Byla vyřešena vlastnost "tělo" ve výrazu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. Uložte svou aplikaci logiky.
 
 V dalším kroku otestujte aplikaci logiky, která teď vypadá podobně jako v tomto příkladu:
 
-![Hotová aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![Dokončení ukázkového pracovního postupu aplikace logiky](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>Spuštění aplikace logiky
 
@@ -340,7 +340,7 @@ Pokud chcete aplikaci logiky spustit ručně, na panelu nástrojů návrháře v
 
 * Pokud aktuální doba trvání cesty překročí limit, dostanete e-mail s aktuální dobou trvání cesty a počtem minut nad vaším limitem. Tady je příklad e-mailu odeslaného aplikací logiky:
 
-![Odeslaný e-mail s dobou trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
+![Příklad odeslaného e-mailu, který ukazuje dobu trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
 Pokud neobdržíte žádné e-maily, zkontrolujte složku s nevyžádanou poštou. Váš filtr nevyžádané pošty může tento typ e-mailů přesměrovávat. Pokud si nejste jisti správným spuštěním aplikace logiky, přečtěte si téma [Řešení potíží s aplikací logiky](../logic-apps/logic-apps-diagnosing-failures.md).
 
@@ -358,7 +358,7 @@ Pokud už ukázkovou aplikaci logiky nepotřebujete, odstraňte skupinu prostře
 
 1. V hlavní nabídce Azure přejděte na **Skupiny prostředků** a vyberte skupinu prostředků pro vaši aplikaci logiky.
 
-1. V nabídce skupina prostředků vyberte **Přehled** > **Odstranit skupinu prostředků**. 
+1. V nabídce skupina prostředků vyberte **přehled** > **Odstranit skupinu prostředků**. 
 
    ![Přehled > Odstranit skupinu prostředků](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 

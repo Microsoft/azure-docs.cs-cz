@@ -7,26 +7,26 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801698"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027815"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="overview"></a>Přehled
 
 Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu. Pokud chcete zapnout režim ladění, použijte v horní části návrhové plochy tlačítko "ladění toku dat".
 
-![Posuvník ladění](media/data-flow/debugbutton.png "Posuvník ladění")
+Posuvník ![ladění posuvníku](media/data-flow/debugbutton.png "ladění")
 
-Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s 60 minutou až do živého času. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s 60 minutou až do živého času. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
 
-![Ladění infračerveného výběru](media/data-flow/debugbutton2.png "Ladění infračerveného výběru")
+Ladění ![infračerveného]výběru ladění infračerveného(media/data-flow/debugbutton2.png "výběru")
 
 Když je režim ladění zapnutý, budete interaktivně vytvářet tok dat s aktivním clusterem Spark. Po vypnutí ladění v Azure Data Factory dojde k ukončení relace. Měli byste si uvědomit, že hodinové poplatky vzniklé Azure Databricks v době, kdy máte zapnutou relaci ladění.
 
@@ -42,17 +42,17 @@ Až skončíte s laděním, vypněte přepínač ladění, aby se cluster Azure 
 
 Nastavení ladění můžete upravit kliknutím na nastavení ladění na panelu nástrojů plátna toku dat. Tady můžete vybrat omezení počtu řádků nebo zdroj souborů, které se mají použít pro každou transformaci vašich zdrojů. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také vybrat pracovní propojenou službu, která se má použít pro zdroj dat SQL DW. 
 
-![Nastavení ladění](media/data-flow/debug-settings.png "Nastavení ladění")
+![](media/data-flow/debug-settings.png "Nastavení ladění") nastavení ladění
 
 Pokud máte v toku dat nebo kterékoli z jeho odkazovaných datových sad parametry, můžete určit, které hodnoty se mají použít během ladění, a to tak, že vyberete kartu **parametry** .
 
-![Parametry nastavení ladění](media/data-flow/debug-settings2.png "Parametry nastavení ladění")
+![Parametry nastavení ladění](media/data-flow/debug-settings2.png "parametry nastavení ladění")
 
 ## <a name="data-preview"></a>Náhled dat
 
 S laděním na se na spodním panelu na kartě náhled dat zobrazí světlo. Bez režimu ladění zapnutý tok dat zobrazí na kartě zkontrolovat pouze aktuální metadata v a z každé transformace. Náhled dat bude dotazovat jenom na počet řádků, které jste v nastavení ladění nastavili jako limit. Kliknutím na **aktualizovat** načtete náhled dat.
 
-![Náhled dat](media/data-flow/datapreview.png "Náhled dat")
+![](media/data-flow/datapreview.png "Náhled") dat ve verzi Preview
 
 > [!NOTE]
 > Zdroje souborů omezují pouze řádky, které vidíte, nikoli řádky, které jsou čteny. U velmi rozsáhlých datových sad se doporučuje, abyste vybrali malou část tohoto souboru a použili ho pro vaše testování. Můžete vybrat dočasný soubor v nastavení ladění pro každý zdroj, který je typem datové sady souboru.
@@ -67,15 +67,15 @@ Pokud se test jednotky připojí, existují nebo transformace vyhledávání, uj
 
 Jakmile se zobrazí náhled dat, můžete vygenerovat rychlou transformaci pro přetypovat, odebrání nebo provedení úprav sloupce. Klikněte na záhlaví sloupce a pak na panelu nástrojů Náhled dat vyberte jednu z možností.
 
-![Rychlé akce](media/data-flow/quick-actions1.png "Rychlé akce")
+Rychlé(media/data-flow/quick-actions1.png "akce pro") rychlé ![Akce]
 
 Jakmile vyberete úpravu, náhled dat se okamžitě aktualizuje. Kliknutím na **Potvrdit** v pravém horním rohu Vygenerujte novou transformaci.
 
-![Rychlé akce](media/data-flow/quick-actions2.png "Rychlé akce")
+Rychlé(media/data-flow/quick-actions2.png "akce pro") rychlé ![Akce]
 
 **Přetypovat** a **Modify** vygenerují odvozenou transformaci sloupce a **Odebrání** vytvoří transformaci SELECT.
 
-![Rychlé akce](media/data-flow/quick-actions3.png "Rychlé akce")
+Rychlé(media/data-flow/quick-actions3.png "akce pro") rychlé ![Akce]
 
 > [!NOTE]
 > Pokud upravíte tok dat, budete muset před přidáním rychlé transformace znovu načíst náhled dat.
@@ -84,7 +84,7 @@ Jakmile vyberete úpravu, náhled dat se okamžitě aktualizuje. Kliknutím na *
 
 Výběr sloupce na kartě náhledu dat a kliknutí na **Statistika** na panelu nástrojů Náhled dat zobrazí graf na pravém okraji datové mřížky s podrobnými údaji o jednotlivých polích. Azure Data Factory se určí na základě vzorkování dat, který typ grafu se má zobrazit. Pole s vysokou mohutnou hodnotou budou mít jako výchozí hodnotu NULL nebo ne grafy, zatímco kategorií a číselná data s nízkou mohutnost budou zobrazovat pruhové grafy zobrazující frekvenci hodnot dat. Zobrazí se také hodnota Max/len pro pole řetězců, minimální/maximální hodnoty v číselném poli, standardní dev, percentily, počty a průměr.
 
-![Statistiky sloupců](media/data-flow/stats.png "Statistiky sloupců")
+(media/data-flow/stats.png "Statistiky sloupce") ![statistiky sloupců]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Informace o funkci Mobile Apps v Azure App Service
+title: Informace o Mobile Apps v Azure App Service
 description: Zjistěte, jaké výhody App Service přináší pro vaše firemní mobilní aplikace.
 services: app-service\mobile
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 48f7066f2db96165daa104dcf32fe8e2e2cd55cf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637945"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025229"
 ---
 # <a name="getting-started"></a>Informace o funkci Mobile Apps v Azure App Service
 
 > [!NOTE]
-> Visual Studio App Center je investována v nových a integrovaných službách z centrálního vývoje mobilních aplikací. Vývojáři mohou pomocísestavování, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a diagnostických služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu. Podívejte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 Azure App Service nabízí plně spravovanou [platformu jako službu](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) pro profesionální vývojáře. Tato služba přináší bohatou sadu možností pro webové, mobilní a integrační scénáře. 
 
@@ -36,54 +36,54 @@ Funkce Mobile Apps služby Azure App Service nabízí podnikovým vývojářům 
 ## <a name="why-mobile-apps"></a>Proč Mobile Apps?
 S funkcí Mobile Apps můžete:
 
-* **Sestavování nativních aplikací a aplikací pro různé platformy**: Bez ohledu na to, jestli vytváříte nativní aplikace pro iOS, Android a Windows nebo aplikace Xamarin nebo Cordova pro různé platformy (PhoneGap), můžete využít výhod App Service pomocí nativních sad SDK.
-* **Připojte se k podnikovým systémům**: Pomocí funkce Mobile Apps můžete přidat podnikové přihlášení v řádu minut a připojit se k místním nebo cloudovým prostředkům vaší organizace.
-* **Vytvářejte aplikace připravené pro offline práci pomocí synchronizace dat**: Vytvářejte aplikace, které pracují v režimu offline, a využijte Mobile Apps k synchronizaci dat na pozadí, když se k dispozici v jakémkoli podnikovém zdroji dat nebo v rozhraních API SaaS (software jako služba).
-* **Nabízená oznámení na miliony v řádu sekund**: Zapojte své zákazníky pomocí okamžitých nabízených oznámení na jakékoli zařízení, přizpůsobené podle svých potřeb a odešlete, když je čas správný.
+* **Vytvářet nativní a multiplatformní aplikace:** Ať už vytváříte nativní aplikace pro iOS, Android a Windows, nebo multiplatformní aplikace pomocí Xamarinu nebo Cordovy (PhoneGap), můžete využívat službu App Service díky nativním sadám SDK.
+* **Nastavit připojení k podnikovým systémům:** S funkcí Mobile Apps můžete v řádu minut přidat podnikové přihlašování a připojovat se k místním nebo cloudovým firemním prostředkům.
+* **Vytvářet aplikace připravené pro režim offline se synchronizací dat:** Větší produktivitu mobilních pracovníků zajistíte vytvářením aplikací, které fungují offline a využívají funkci Mobile Apps k synchronizaci dat na pozadí, když se obnoví připojení se zdroji firemních dat nebo s rozhraními API softwaru jako služby (SaaS).
+* **Odesílat nabízená oznámení milionům příjemců v řádu sekund:** Zákazníky oslovíte pomocí rychlých nabízených oznámení, která můžete odesílat na jakékoli zařízení, přizpůsobovat podle jejich potřeb a zasílat v nejvhodnější dobu.
 
 ## <a name="mobile-apps-features"></a>Funkce Mobile Apps
 Pro vývoj mobilních řešení využívajících cloud jsou důležité následující funkce:
 
-* **Ověřování a autorizace**: Podpora pro zprostředkovatele identity, včetně Azure Active Directory pro podnikové ověřování a poskytovatelů sociálních sítí, jako je Facebook, Google, Twitter a účty Microsoft. Funkce Mobile Apps nabízí službu OAuth 2.0 pro každého zprostředkovatele. Můžete také integrovat sadu SDK pro daného zprostředkovatele, aby se zajistila specifická funkcionalita.
+* **Ověřování a autorizace:** Podpora zprostředkovatelů identity, mezi které patří Azure Active Directory pro podnikové ověřování i poskytovatelé služeb sociálních sítí, jako je Facebook, Google, Twitter a účty Microsoft. Funkce Mobile Apps nabízí službu OAuth 2.0 pro každého zprostředkovatele. Můžete také integrovat sadu SDK pro daného zprostředkovatele, aby se zajistila specifická funkcionalita.
 
     Projděte si další informace o [funkcích ověřování].
 
-* **Přístup k datům**: Mobile Apps poskytuje zdroj dat OData V3 s mobilním nasazením, který je propojený s Azure SQL Database nebo místním SQL serverem. Protože tato služba může být založena na rozhraní Entity Framework, můžete ji snadno integrovat s jinými poskytovateli dat NoSQL i SQL, včetně [Azure Table Storage], MongoDB, [Azure Cosmos DB] a poskytovateli rozhraní API pro SaaS, jako je Office 365 a Salesforce.com.
+* **Přístup k datům:** Funkce Mobile Apps poskytuje zdroj dat OData verze 3, který skvěle funguje s mobilními zařízeními a je propojený se službou Azure SQL Database nebo místním SQL Serverem. Protože tato služba může být založena na rozhraní Entity Framework, můžete ji snadno integrovat s jinými poskytovateli dat NoSQL i SQL, včetně [Azure Table Storage], MongoDB, [Azure Cosmos DB] a poskytovateli rozhraní API pro SaaS, jako je Office 365 a Salesforce.com.
 
-* **Offline synchronizace**: Klientské sady SDK usnadňují vytváření robustních a reagujících mobilních aplikací, které pracují s offline datovou sadou. Tuto datovou sadu můžete automaticky synchronizovat s daty back-end, včetně podpory řešení konfliktů.
+* **Offline synchronizace:** Klientské sady SDK usnadňují vytváření robustních mobilních aplikací s rychlou odezvou, které pracují s offline datovou sadou. Tuto datovou sadu můžete automaticky synchronizovat s daty back-end, včetně podpory řešení konfliktů.
 
   Projděte si další informace o [datových funkcích].
 
-* **Nabízená oznámení**: Klientské sady SDK se hladce integrují s registračními funkcemi Azure Notification Hubs, takže můžete posílat nabízená oznámení milionům uživatelů současně.
+* **Nabízená oznámení:** Klientské sady SDK se hladce integrují s registračními funkcemi služby Azure Notification Hubs, takže můžete současně zasílat nabízená oznámení milionům uživatelů.
 
   Projděte si další informace o [funkcích pro nabízená oznámení].
 
-* **Klientské sady SDK**: K dispozici je kompletní sada klientských sad SDK, které zahrnují nativní vývoj ([iOS], [Android]a [Windows]), vývoj pro různé platformy ([Xamarin.iOS a Xamarin.Android], [Xamarin.Forms]) a hybridní aplikace. vývoj ([Apache Cordova]). Všechny klientské sady SDK jsou k dispozici s licencí MIT a jako open-source.
+* **Klientské sady SDK:** K dispozici je kompletní paleta klientských sad SDK, které zahrnují nativní vývoj ([iOS], [Android] a [Windows]), multiplatformní vývoj ([Xamarin.iOS a Xamarin.Android], [Xamarin.Forms]) a vývoj hybridních aplikací ([Apache Cordova]). Všechny klientské sady SDK jsou k dispozici s licencí MIT a jako open-source.
 
 ## <a name="azure-app-service-features"></a>Funkce Azure App Service
 U systémů pro mobilní zařízení v provozním prostředí jsou užitečné následující funkce platformy:
 
-* Automatické **škálování**: Pomocí App Service můžete rychle škálovat nebo škálovat na zpracování libovolného příchozího zatížení zákazníků. Počet a velikost virtuálních počítačů můžete vybrat ručně nebo je možné u back-endu mobilní aplikace nastavit automatické škálování podle plánu nebo momentální zátěže.
+* **Automatické škálování:** Se službou App Service můžete rychle vertikálně nebo horizontálně navyšovat kapacitu, aby bylo možné zvládnout jakoukoli zátěž vyplývající z příchozích zákaznických požadavků. Počet a velikost virtuálních počítačů můžete vybrat ručně nebo je možné u back-endu mobilní aplikace nastavit automatické škálování podle plánu nebo momentální zátěže.
 
   Projděte si další informace o [automatickém škálování].
 
-* Přípravná **prostředí**: App Service může spustit více verzí webu, takže můžete provádět testování a/B, testovat v produkčním prostředí v rámci většího plánu DevOps a provádět místní přípravu nového back-endu.
+* **Přípravná prostředí:** App Service umožňuje spuštění několika verzí webu, takže můžete provádět testování A/B, testovat v provozním prostředí v rámci většího plánu DevOps nebo místně fázovat nový back-end.
 
   Projděte si další informace o [přípravná prostředí].
 
-* **Průběžné nasazování**: App Service lze integrovat s běžnými systémy _správy zdrojového kódu_ (SCM), což vám umožní snadno nasadit novou verzi back-endu.
+* **Průběžné nasazování:** App Service umožňuje integraci s běžnými systémy _správy zdrojového kódu_ (SCM), které umožňují jednoduché nasazení nové verze back-endu.
 
   Projděte si další informace o [možnostech nasazení](../app-service/deploy-local-git.md).
 
-* **Virtuální síť**: App Service se můžou připojit k místním prostředkům pomocí služby Virtual Network, Azure ExpressRoute nebo hybridních připojení.
+* **Virtuální sítě:** App Service umožňuje připojení k místním prostředkům přes virtuální síť, Azure ExpressRoute nebo hybridní připojení.
 
   Projděte si další informace pro [hybridní připojení], [virtuální sítě] a [ExpressRoute].
 
-* **Izolovaná a vyhrazená prostředí**: Pro bezpečné spouštění aplikací Azure App Service můžete App Service spustit v plně izolovaném a vyhrazeném prostředí. Toto prostředí je ideální pro úlohy aplikací vyžadující velké škálování, izolaci nebo zabezpečený přístup k síti.
+* **Izolovaná a vyhrazená prostředí:** Pro zabezpečené spouštění aplikací Azure App Service je možné App Service spustit v plně izolovaném a vyhrazeném prostředí. Toto prostředí je ideální pro úlohy aplikací vyžadující velké škálování, izolaci nebo zabezpečený přístup k síti.
 
   Projděte si další informace o [Prostředí App Service].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít s funkcí Mobile Apps ve službě Azure App Service, dokončete [úvodní] kurz. Tento kurz popisuje základy vytváření libovolného mobilního back-endu a klienta. Zabývá se také integrací ověřování, offline synchronizací a nabízenými oznámeními. Kurz můžete absolvovat vícekrát, pokaždé pro jinou klientskou aplikaci.
 

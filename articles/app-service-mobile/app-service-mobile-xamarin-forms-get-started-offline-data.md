@@ -1,6 +1,6 @@
 ---
-title: Povolení offline synchronizace pro mobilní aplikace Azure (Xamarin.Forms) | Dokumentace Microsoftu
-description: Zjistěte, jak používat mobilní aplikace služby App Service do mezipaměti a synchronizaci offline dat v aplikaci Xamarin.Forms
+title: Povolení offline synchronizace pro mobilní aplikace Azure (Xamarin. Forms) | Microsoft Docs
+description: Naučte se používat App Service mobilní aplikace pro ukládání a synchronizaci offline dat v aplikaci Xamarin. Forms.
 documentationcenter: xamarin
 author: elamalani
 manager: yochayk
@@ -14,49 +14,49 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53d65d5577f8905d66da80e99cab6647f0a4dc4c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446279"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025030"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikace Xamarin.Forms
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
-Tento kurz představuje funkci offline synchronizace služby Azure Mobile Apps pro Xamarin.Forms. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací – zobrazení, přidání nebo úprava dat – i v případě, že není žádné síťové připojení. Změny jsou uloženy v místní databázi. Když je zařízení online, tyto změny se synchronizují s vzdálené služby.
+Tento kurz zavádí funkci offline synchronizace pro Azure Mobile Apps pro Xamarin. Forms. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací – zobrazení, přidávání nebo upravování dat – i když není dostupné žádné síťové připojení. Změny jsou uloženy v místní databázi. Jakmile je zařízení zase online, tyto změny se synchronizují se vzdálenou službou.
 
-Tento kurz je založený na řešení Xamarin.Forms rychlý start Mobile Apps, který vytvoříte, když dokončíte kurz [vytvoření aplikace Xamarin iOS]. Rychlý start řešení Xamarin.Forms obsahuje kód pro podporu offline synchronizace, která jenom je potřeba povolit. V tomto kurzu rychlý start řešení Chcete-li na offline funkce Azure Mobile Apps aktualizujete. Můžeme také zvýraznit offline specifické pro kód v aplikaci. Pokud nepoužíváte řešení stažené rychlý start, musíte přidat balíčky rozšíření datového přístupu do vašeho projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps][1].
+Tento kurz je založený na řešení rychlý Start pro Xamarin. Forms pro Mobile Apps, které vytvoříte po dokončení kurzu [vytvoření aplikace Xamarin iOS]. Řešení rychlé zprovoznění pro Xamarin. Forms obsahuje kód pro podporu offline synchronizace, který stačí povolit. V tomto kurzu aktualizujete řešení rychlého startu, abyste mohli zapnout offline funkce Azure Mobile Apps. V aplikaci také zvýrazníte kód specifický pro práci v režimu offline. Pokud nepoužíváte stažené řešení pro rychlé zprovoznění, musíte do svého projektu přidat balíčky rozšíření pro přístup k datům. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps][1].
 
-Další informace o funkci offline synchronizace najdete v tématu [Offline synchronizace dat v Azure Mobile Apps][2].
+Další informace o funkci offline synchronizace najdete v tématu [synchronizace offline dat v Azure Mobile Apps][2].
 
-## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Povolit funkci offline synchronizace v rychlém startu řešení
-Offline synchronizace kód je zahrnutý v projektu s použitím C# direktivy preprocesoru. Když **OFFLINE\_SYNCHRONIZACE\_povoleno** je definován symbol, tyto cesty kódu jsou součástí sestavení. Pro aplikace Windows musíte také nainstalovat platformu SQLite.
+## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Povolení funkce offline synchronizace v řešení pro rychlé zprovoznění
+Kód offline synchronizace je součástí projektu pomocí C# direktiv preprocesoru. Pokud je definován **offline symbol @ no__t-1SYNC @ no__t-2ENABLED** , jsou tyto cesty kódu zahrnuty do sestavení. Pro aplikace pro Windows je nutné nainstalovat také platformu SQLite.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na řešení > **spravovat balíčky NuGet pro řešení...** , vyhledejte a nainstalujte **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet pro všechny projekty v řešení.
-2. V Průzkumníku řešení otevřete soubor TodoItemManager.cs v projektu s **přenosné** v názvu, která je přenosná knihovna tříd projektu, pak zrušte komentář u následující direktivy preprocesoru:
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na řešení > **Spravovat balíčky NuGet pro řešení...** , vyhledejte a nainstalujte balíček NuGet **Microsoft. Azure. Mobile. Client. SQLiteStore** pro všechny projekty v řešení.
+2. V Průzkumník řešení otevřete soubor TodoItemManager.cs z projektu s **přenosným** názvem, který je Přenosná knihovna tříd projektu, a pak zrušte komentář následující direktivy preprocesoru:
 
         #define OFFLINE_SYNC_ENABLED
-3. (Volitelné) Pro podporu zařízení Windows, nainstalujte některou z následujících balíčků SQLite modulu runtime:
+3. Volitelné Pro podporu zařízení s Windows nainstalujte jeden z následujících balíčků za běhu programu SQLite:
 
-   * **Modul Runtime Windows 8.1:** Nainstalujte [SQLite pro Windows 8.1][3].
-   * **Windows Phone 8.1:** Nainstalujte [SQLite pro Windows Phone 8.1][4].
-   * **Universal Windows Platform** nainstalovat [SQLite pro Universal Windows Universal][5].
+   * **Windows 8.1 runtime:** Nainstalujte [SQLite pro Windows 8.1][3].
+   * **Windows Phone 8,1:** Nainstalujte [SQLite pro Windows Phone 8,1][4].
+   * **Univerzální platforma Windows** Nainstalujte [SQLite pro univerzální univerzální systém Windows][5].
 
-     I když tohoto rychlého startu neobsahuje Universal Windows project, Universal Windows platform podporuje Xamarin Forms.
-4. (Volitelné) V každém projektu aplikace Windows, klikněte pravým tlačítkem na **odkazy** > **přidat odkaz...** , rozbalte **Windows** složky > **rozšíření**.
-    Povolit vhodnou **SQLite pro Windows** SDK společně s **Visual C++ 2013 modulu Runtime pro Windows** SDK.
-    Názvy SQLite SDK se trochu liší s každou platformu Windows.
+     I když rychlý start neobsahuje univerzální projekt pro Windows, podpora Univerzální platformy Windows je podporovaná ve formulářích Xamarin.
+4. Volitelné V každém projektu aplikace pro Windows klikněte pravým tlačítkem na **odkazy** > **Přidat odkaz...** , rozbalte **rozšíření**složky **Windows** >.
+    Povolte příslušné **SQLite pro sadu Windows** SDK spolu s **modulem C++ runtime Visual 2013 pro sadu Windows** SDK.
+    Názvy sady SDK SQLite se mírně liší u jednotlivých platforem Windows.
 
-## <a name="review-the-client-sync-code"></a>Revize kódu synchronizace klienta
-Tady je stručný přehled, co je již součástí kurz kód uvnitř `#if OFFLINE_SYNC_ENABLED` direktivy. Funkci offline synchronizace je v souboru projektu TodoItemManager.cs v projektu knihovny přenosných tříd. Koncepční přehled funkce, najdete v části [Offline synchronizace dat v Azure Mobile Apps][2].
+## <a name="review-the-client-sync-code"></a>Kontrola kódu synchronizace klienta
+Tady je stručný přehled toho, co je již součástí kódu kurzu v rámci direktiv `#if OFFLINE_SYNC_ENABLED`. Funkce offline synchronizace je v souboru projektu TodoItemManager.cs v přenositelném projektu knihovny tříd. Koncepční přehled této funkce najdete v tématu [synchronizace offline dat v Azure Mobile Apps][2].
 
-* Před provedením jakékoli operace s tabulkou, musí být inicializován místního úložiště. Databáze místní úložiště se inicializuje **TodoItemManager** konstruktoru třídy pomocí následujícího kódu:
+* Před provedením jakékoli operace tabulky je nutné inicializovat místní úložiště. Místní databáze úložiště je inicializována v konstruktoru třídy **TodoItemManager** pomocí následujícího kódu:
 
         var store = new MobileServiceSQLiteStore(OfflineDbPath);
         store.DefineTable<TodoItem>();
@@ -66,12 +66,12 @@ Tady je stručný přehled, co je již součástí kurz kód uvnitř `#if OFFLIN
 
         this.todoTable = client.GetSyncTable<TodoItem>();
 
-    Tento kód vytvoří novou místní SQLite databáze pomocí **MobileServiceSQLiteStore** třídy.
+    Tento kód vytvoří novou místní databázi SQLite pomocí třídy **MobileServiceSQLiteStore** .
 
-    **DefineTable** metoda vytvoří tabulku v místním úložišti, která odpovídá polím v poskytnutého typu.  Typ nemusí obsahovat všechny sloupce, které jsou vzdálené databáze. Je možné ukládat podmnožinu sloupců.
-* **TodoTable** pole **TodoItemManager** je **IMobileServiceSyncTable** zadejte místo **IMobileServiceTable**. Tato třída používá místní databázi pro všechny vytváření, čtení, aktualizace a odstranění (CRUD) operací tabulky. Rozhodnete odesláním tyto změny do back-endu mobilní aplikace po zavolání **metodu PushAsync** na **IMobileServiceSyncContext**. Kontext synchronizace umožňuje zachovat relací mezi tabulkami sledováním a předávání změn operací push ve všech tabulkách klientská aplikace byla změněna při **metodu PushAsync** je volána.
+    Metoda **define** vytvoří tabulku v místním úložišti, která odpovídá polím v poskytnutém typu.  Typ nemusí zahrnovat všechny sloupce, které jsou ve vzdálené databázi. Je možné uložit podmnožinu sloupců.
+* Pole **TODO** v **TodoItemManager** je typ **IMobileServiceSyncTable** namísto **IMobileServiceTable**. Tato třída používá místní databázi pro všechny operace vytvoření, čtení, aktualizace a odstranění (CRUD) tabulky. Určíte, kdy se tyto změny vloží do back-endu mobilní aplikace, voláním **PushAsync** na **IMobileServiceSyncContext**. Kontext synchronizace pomáhá zachovat vztahy mezi tabulkami sledováním a vkládáním změn ve všech tabulkách. klientská aplikace byla při volání **PushAsync** změněna.
 
-    Následující **SyncAsync** metoda je volána pro synchronizaci se službou back-endu mobilní aplikace:
+    Pro synchronizaci s back-endu mobilní aplikace se volá následující metoda **SyncAsync** :
 
         public async Task SyncAsync()
         {
@@ -115,48 +115,48 @@ Tady je stručný přehled, co je již součástí kurz kód uvnitř `#if OFFLIN
             }
         }
 
-    Tato ukázka používá jednoduché s synchronizace výchozí obslužnou rutinu pro zpracování chyb. Aplikace skutečný by zpracovávat různé chyby, jako je stav sítě a serveru je v konfliktu s použitím vlastní **IMobileServiceSyncHandler** implementace.
+    Tato ukázka používá jednoduché zpracování chyb s výchozí obslužnou rutinou synchronizace. Skutečná aplikace by zpracovávala různé chyby, jako jsou třeba síťové podmínky a konflikty serveru, pomocí vlastní implementace **IMobileServiceSyncHandler** .
 
-## <a name="offline-sync-considerations"></a>Důležité informace o offline synchronizace
-V ukázce **SyncAsync** metoda je volána pouze na spuštění a pokud je požadováno k synchronizaci.  Spusťte synchronizaci v aplikaci pro Android nebo iOS, stáhněte dolů v seznamu položek; pro Windows, použijte **synchronizace** tlačítko. V reálné aplikaci může také vytvořit aktivační událost synchronizace při změně stavu sítě.
+## <a name="offline-sync-considerations"></a>Pokyny k offline synchronizaci
+V ukázce je metoda **SyncAsync** volána pouze při spuštění a při žádosti o synchronizaci.  Pokud chcete zahájit synchronizaci v aplikaci pro Android nebo iOS, přejděte na seznam položek. pro Windows použijte tlačítko **synchronizovat** . V reálné aplikaci můžete také při změně stavu sítě vytvořit aktivační událost synchronizace.
 
-Pokud o přijetí změn se provede na tabulku, která se má čekající místní aktuality sledována podle kontextu, který vyžádanou operaci automaticky aktivační události předchozí nabízených kontextu. Při aktualizaci, přidání a dokončení položky v této ukázce můžete vynechat explicitní **metodu PushAsync** volání.
+Při spuštění operace vyžádání na tabulce, která má nedokončené místní aktualizace sledované kontextem, tato operace vyžádané replikace automaticky aktivuje předchozí nabízený kontext. Při aktualizaci, přidávání a dokončování položek v této ukázce můžete vynechat explicitní volání **PushAsync** .
 
-Zadaný kód se generuje dotaz na všechny záznamy v vzdálenou tabulku TodoItem, ale je také možné filtrovat záznamy předáním id dotazu a dotaz pro **metodu PushAsync**. Další informace najdete v části *Přírůstková synchronizace* v [Offline synchronizace dat v Azure Mobile Apps][2].
+V poskytnutém kódu se dotazují všechny záznamy ve vzdálené tabulce TodoItem, ale je také možné filtrovat záznamy předáním ID dotazu a dotazu do **PushAsync**. Další informace najdete v části o *přírůstkové synchronizaci* při [synchronizaci offline dat v Azure Mobile Apps][2].
 
 ## <a name="run-the-client-app"></a>Spuštění klientské aplikace
-Offline synchronizace teď aspoň jednou spustili klientské aplikace na jednotlivých platformách k naplnění databáze místního úložiště. Později simulovat scénáři offline a upravovat data v místním úložišti, když je aplikace v režimu offline.
+Když je offline synchronizace zapnutá, spusťte na každé platformě aspoň jednou klientskou aplikaci, aby se naplnila místní databáze úložiště. Později Simulujte scénář offline a upravíte data v místním úložišti, zatímco je aplikace offline.
 
-## <a name="update-the-sync-behavior-of-the-client-app"></a>Aktualizace synchronizace chování klientské aplikace
-V této části upravte klientský projekt k simulaci scénáři offline pomocí Neplatná aplikace URL vaší back-endu. Alternativně můžete vypnout síťová připojení vašeho zařízení se přesunete na "Režim v letadle."  Při přidání nebo změně položek dat, tyto změny uložené v místním úložišti, ale není synchronizované do serverového úložiště dat, dokud se připojení znovu navázáno.
+## <a name="update-the-sync-behavior-of-the-client-app"></a>Aktualizace chování synchronizace klientské aplikace
+V této části upravíte projekt klienta pro simulaci offline scénáře pomocí neplatné adresy URL aplikace pro váš back-end. Případně můžete vypnout síťová připojení přesunutím zařízení do režimu v letadle.  Když přidáte nebo změníte datové položky, tyto změny se uchovávají v místním úložišti, ale nesynchronizují se do úložiště dat back-endu, dokud se připojení znovu nevytvoří.
 
-1. V Průzkumníku řešení otevřete soubor projektu Constants.cs z **přenosné** projektu a změňte hodnotu vlastnosti `ApplicationURL` tak, aby odkazoval na neplatnou adresu URL:
+1. V Průzkumník řešení otevřete soubor projektu Constants.cs z **přenosného** projektu a změňte hodnotu `ApplicationURL` tak, aby odkazovala na neplatnou adresu URL:
 
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
-2. Otevření souboru TodoItemManager.cs z **přenosné** projektu a pak přidejte **catch** pro základ **výjimka** třídu **try... catch**blokovat **SyncAsync**. To **catch** bloku zapíše zpráva o výjimce do konzoly, následujícím způsobem:
+2. Otevřete soubor TodoItemManager.cs z **přenosného** projektu a pak přidejte **catch** pro základní třídu **výjimky** do **Try... blok catch** v **SyncAsync**. Tento blok **catch** zapíše zprávu výjimky do konzoly, a to následujícím způsobem:
 
             catch (Exception ex)
             {
                 Console.Error.WriteLine(@"Exception: {0}", ex.Message);
             }
-3. Sestavení a spuštění klientské aplikace.  Přidání některých nových položek. Všimněte si, že se v konzole pro každý pokus o synchronizaci s back-endu protokoluje výjimku. Tyto nové položky existují pouze v místním úložišti, dokud nebude možné doručit mobilní back-endu. Klientská aplikace se chová jako v případě, že je připojený k back-endu, podporuje všechny vytvářet, číst, aktualizovat, operace odstranění (CRUD).
-4. Aplikaci zavřete a restartujte ji k ověření, že jsou zachované místní úložiště nové položky, kterou jste vytvořili.
-5. (Volitelné) Pomocí sady Visual Studio zobrazíte tabulky Azure SQL Database zobrazíte, že nedošlo ke změně dat v back-end databáze.
+3. Sestavte a spusťte klientskou aplikaci.  Přidejte nějaké nové položky. Všimněte si, že v konzole je zaznamenána výjimka pro každý pokus o synchronizaci s back-end. Tyto nové položky existují jenom v místním úložišti, dokud je nebudete moct vložit do mobilního back-endu. Klientská aplikace se chová, jako by byla připojena k back-endu, a podporuje všechny operace vytvoření, čtení, aktualizace a odstranění (CRUD).
+4. Zavřete aplikaci a restartujte ji, abyste ověřili, že nové položky, které jste vytvořili, jsou trvale uložené v místním úložišti.
+5. Volitelné Pomocí sady Visual Studio si můžete zobrazit tabulku Azure SQL Database, abyste viděli, že se data v back-end databázi nezměnila.
 
-    V sadě Visual Studio, otevřete **Průzkumníka serveru**. Přejděte k vaší databázi v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet do tabulky SQL database a její obsah.
+    V aplikaci Visual Studio otevřete **Průzkumník serveru**. Přejděte do databáze ve **službě Azure**->**databáze SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumník objektů systému SQL Server**. Teď můžete přejít k tabulce SQL Database a jejímu obsahu.
 
-## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Aktualizace klientské aplikace a znovu připojte mobilní back-end
-V této části se aplikaci znovu připojte mobilní back-endu, který simuluje aplikace vracející se zpět do stavu online. Když provádíte aktualizace gesta, data se synchronizuje s mobilním back-endu.
+## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Aktualizace klientské aplikace pro opětovné připojení k vašemu mobilnímu back-endu
+V této části znovu připojíte aplikaci k mobilnímu back-endu, která simuluje aplikaci, která se vrátí zpátky do online stavu. Při provádění gesta aktualizace se data synchronizují do mobilního back-endu.
 
-1. Znovu otevřete Constants.cs. Opravte `applicationURL` tak, aby odkazoval na správnou adresu URL.
-2. Znovu sestavit a spustit klientskou aplikaci. Aplikace se pokouší synchronizovat s back-endu mobilní aplikace po spuštění. Ověřte, že žádné výjimky jsou přihlášeni konzolou pro ladění.
-3. (Volitelné) Zobrazit aktualizovaná data pomocí Průzkumníku objektů systému SQL Server nebo REST nástroje, jako je Fiddler nebo [Postman][6]. Všimněte si, že se synchronizovala data mezi back-end databáze a místní úložiště.
+1. Znovu otevřete Constants.cs. Opravte `applicationURL` a nasměrujte na správnou adresu URL.
+2. Znovu sestavte a spusťte klientskou aplikaci. Aplikace se po spuštění pokusí o synchronizaci s back-endu mobilní aplikace. Ověřte, že v konzole ladění nejsou protokolovány žádné výjimky.
+3. Volitelné Zobrazte aktualizovaná data pomocí Průzkumník objektů systému SQL Server nebo nástroje REST, jako je Fiddler nebo [post][6]. Všimněte si, že data byla synchronizovaná mezi databází back-end a místním úložištěm.
 
-    Všimněte si, že data se synchronizovala mezi databází a místní úložiště a obsahuje položky, které jste přidali, zatímco aplikace byl odpojen.
+    Všimněte si, že data byla synchronizovaná mezi databází a místním úložištěm a obsahuje položky, které jste přidali v době, kdy byla aplikace odpojena.
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 * [Synchronizace offline dat v prostředí Azure Mobile Apps][2]
-* [Azure Mobile Apps .NET SDK postupy][8]
+* [POSTUPY pro sadu Azure Mobile Apps .NET SDK][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

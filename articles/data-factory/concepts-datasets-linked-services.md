@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137297"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030562"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -28,11 +28,11 @@ Tento článek popisuje, jaké jsou datové sady, jak jsou definovány ve formá
 Pokud s Data Factory začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md) pro přehled.
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých aktivitách použít jako vstupy a výstupy. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Datová sada objektu blob Azure například určuje kontejner objektů blob a složku v úložišti objektů blob, ze kterých by měla aktivita číst data.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Datová sada objektu blob Azure například určuje kontejner objektů blob a složku v úložišti objektů blob, ze kterých by měla aktivita číst data.
 
-Před vytvořením datové sady je nutné vytvořit propojenou [**službu**](concepts-linked-services.md) , která propojí úložiště dat s datovou továrnou. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem; datová sada představuje strukturu dat v propojených úložištích dat a propojená služba definuje připojení ke zdroji dat. Například propojená služba Azure Storage propojuje účet úložiště s datovou továrnou. Datová sada objektů BLOB v Azure představuje kontejner objektů BLOB a složku v rámci tohoto účtu úložiště Azure, která obsahuje vstupní objekty blob, které se mají zpracovat.
+Před vytvořením datové sady je nutné vytvořit [**propojenou službu**](concepts-linked-services.md) , která propojí úložiště dat s datovou továrnou. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem; datová sada představuje strukturu dat v propojených úložištích dat a propojená služba definuje připojení ke zdroji dat. Například propojená služba Azure Storage propojuje účet úložiště s datovou továrnou. Datová sada objektů BLOB v Azure představuje kontejner objektů BLOB a složku v rámci tohoto účtu úložiště Azure, která obsahuje vstupní objekty blob, které se mají zpracovat.
 
-Tady je ukázkový scénář. Pokud chcete kopírovat data z úložiště objektů blob do databáze SQL, vytvoříte dvě propojené služby: Azure Storage a Azure SQL Database. Pak vytvořte dvě datové sady: Datová sada objektu blob Azure (která odkazuje na propojenou službu Azure Storage) a datovou sadu tabulky Azure SQL (která odkazuje na propojenou službu Azure SQL Database). Azure Storage a Azure SQL Database propojené služby obsahují připojovací řetězce, které Data Factory používá za běhu, aby se připojily k vašemu Azure Storage a Azure SQL Database. Datová sada Azure Blob určuje kontejner objektů BLOB a složku objektů blob, které obsahují vstupní objekty BLOB v úložišti objektů BLOB. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, do které se zkopírují data.
+Tady je ukázkový scénář. Pokud chcete kopírovat data z úložiště objektů blob do databáze SQL, vytvoříte dvě propojené služby: Azure Storage a Azure SQL Database. Pak vytvořte dvě datové sady: datovou sadu Azure Blob (která odkazuje na propojenou službu Azure Storage) a datovou sadu tabulky Azure SQL (která odkazuje na propojenou službu Azure SQL Database). Azure Storage a Azure SQL Database propojené služby obsahují připojovací řetězce, které Data Factory používá za běhu, aby se připojily k vašemu Azure Storage a Azure SQL Database. Datová sada Azure Blob určuje kontejner objektů BLOB a složku objektů blob, které obsahují vstupní objekty BLOB v úložišti objektů BLOB. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, do které se zkopírují data.
 
 Následující diagram znázorňuje vztahy mezi kanálem, aktivitou, datovou sadou a propojenou službou v Data Factory:
 
@@ -66,16 +66,16 @@ Datová sada v Data Factory je definována v následujícím formátu JSON:
 ```
 Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu JSON:
 
-Vlastnost | Popis | Požadováno |
+Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
+jméno | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
 type | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: Azureblobu, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Ano |
-structure | Schéma datové sady Podrobnosti najdete v tématu [schéma datové sady](#dataset-structure-or-schema). | Ne |
-typeProperties | Vlastnosti typu se pro každý typ liší (například: Azure Blob, tabulka SQL Azure) Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
+strukturované | Schéma datové sady Podrobnosti najdete v tématu [schéma datové sady](#dataset-structure-or-schema). | Ne |
+typeProperties | Vlastnosti typu se u každého typu liší (například: Azure Blob, tabulka SQL Azure). Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
 
 ### <a name="data-flow-compatible-dataset"></a>Datová sada kompatibilní s datovým proudem
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Seznam typů datových sad, které jsou kompatibilní s [datovým proudem](concepts-data-flow-overview.md) , najdete v tématu [podporované typy datových sad](#dataset-type) . Datové sady, které jsou kompatibilní s datovým tokem, vyžadují pro transformace jemně odstupňované definice datových sad. Definice JSON se tedy mírně liší. Místo vlastnosti _struktury_ mají datové sady, které jsou kompatibilní s datovým proudem, vlastnost _schématu_ .
 
@@ -111,12 +111,12 @@ Po importu schématu datové sady toku dat vyberte tlačítko **importovat sché
 
 Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu JSON:
 
-Vlastnost | Popis | Požadováno |
+Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
+jméno | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
 type | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: Azureblobu, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Ano |
-schema | Schéma datové sady Podrobnosti najdete v tématu [datové sady kompatibilní](#dataset-type)s datovým proudem. | Ne |
-typeProperties | Vlastnosti typu se pro každý typ liší (například: Azure Blob, tabulka SQL Azure) Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
+XSD | Schéma datové sady Podrobnosti najdete v tématu [datové sady kompatibilní s datovým proudem](#dataset-type). | Ne |
+typeProperties | Vlastnosti typu se u každého typu liší (například: Azure Blob, tabulka SQL Azure). Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
 
 
 ## <a name="dataset-example"></a>Příklad datové sady
@@ -177,14 +177,14 @@ Datové sady oddílu **struktury** nebo **schématu** (kompatibilní s tokem dat
 
 Každý sloupec ve struktuře obsahuje následující vlastnosti:
 
-Vlastnost | Popis | Požadováno
+Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-name | Název sloupce | Ano
-type | Datový typ sloupce Data Factory podporuje následující dočasné datové typy jako povolené hodnoty: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, GUID, DateTime, DateTimeOffset a TimeSpan** | Ne
-culture | . Jazyková verze založená na síti, která se má použít, pokud je typem typ `Datetime` .NET `Datetimeoffset`: nebo. Výchozí hodnota je `en-us`. | Ne
-format | Řetězec formátu, který se má použít, pokud je typem typ .NET `Datetime` : `Datetimeoffset`nebo. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne
+jméno | Název sloupce | Ano
+type | Datový typ sloupce Data Factory podporuje následující dočasné datové typy jako povolené hodnoty: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, GUID, DateTime, DateTimeOffset a TimeSpan** . | Ne
+jazykových | . Jazyková verze založená na síti, která se má použít, pokud je typ typu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne
+formátovat | Řetězec formátu, který se má použít, pokud je typem typ .NET: `Datetime` nebo `Datetimeoffset`. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 V následujícím příkladu Předpokládejme, že zdrojová data objektů BLOB jsou ve formátu CSV a obsahují tři sloupce: UserID, Name a LastLoginDate. Jsou typu Int64, String a DateTime s vlastním formátem DateTime pomocí zkrácených francouzských názvů pro den v týdnu.
 
 Určete strukturu datové sady objektů BLOB následovně a s definicemi typů pro sloupce:
@@ -198,11 +198,11 @@ Určete strukturu datové sady objektů BLOB následovně a s definicemi typů p
 ]
 ```
 
-### <a name="guidance"></a>Doprovodné materiály
+### <a name="guidance"></a>Pokyny
 
 Následující pokyny vám pomohou pochopit, kdy zahrnout informace o struktuře a co zahrnout do části **Struktura** . Další informace o tom, jak Data Factory mapuje zdrojová data do jímky a kdy specifikovat informace o struktuře ze [schématu a mapování typů](copy-activity-schema-and-type-mapping.md).
 
-- **U zdrojů dat**se silným schématem určete oddíl struktura pouze v případě, že chcete mapovat zdrojové sloupce na sloupce jímky a jejich názvy nejsou stejné. Tento druh strukturovaného zdroje dat ukládá schéma dat a informace o typech spolu s samotnými daty. Příklady strukturovaných zdrojů dat zahrnují SQL Server, Oracle a Azure SQL Database.<br/><br/>Jelikož informace o typu jsou již k dispozici pro strukturované zdroje dat, neměli byste při zahrnutí oddílu struktury zahrnovat informace o typu.
+- **U zdrojů dat se silným schématem**určete oddíl struktura pouze v případě, že chcete mapovat zdrojové sloupce na sloupce jímky a jejich názvy nejsou stejné. Tento druh strukturovaného zdroje dat ukládá schéma dat a informace o typech spolu s samotnými daty. Příklady strukturovaných zdrojů dat zahrnují SQL Server, Oracle a Azure SQL Database.<br/><br/>Jelikož informace o typu jsou již k dispozici pro strukturované zdroje dat, neměli byste při zahrnutí oddílu struktury zahrnovat informace o typu.
 - **V případě nebezpečných zdrojů dat schématu, například textových souborů v úložišti objektů BLOB**, zahrňte strukturu, pokud je datová sada vstupem pro aktivitu kopírování, a datové typy zdrojové datové sady by měly být převedeny na nativní typy jímky. A zahrnují strukturu, pokud chcete namapovat zdrojové sloupce na sloupce jímky.
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
@@ -212,11 +212,11 @@ Datové sady můžete vytvořit pomocí jednoho z těchto nástrojů nebo sad SD
 
 Tady je několik rozdílů mezi Data Factory a datovými sadami Data Factory verze 1:
 
-- Vlastnost External není v aktuální verzi podporována. Je nahrazen triggerem. [](concepts-pipeline-execution-triggers.md)
-- Vlastnosti zásad a dostupnosti nejsou v aktuální verzi podporované. Čas spuštění kanálu závisí na triggerech. [](concepts-pipeline-execution-triggers.md)
+- Vlastnost External není v aktuální verzi podporována. Je nahrazen [triggerem](concepts-pipeline-execution-triggers.md).
+- Vlastnosti zásad a dostupnosti nejsou v aktuální verzi podporované. Čas spuštění kanálu závisí na [triggerech](concepts-pipeline-execution-triggers.md).
 - V aktuální verzi nejsou podporovány datové sady s vymezeným oborem (datové sady definované v kanálu).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytváření kanálů a datových sad pomocí jednoho z těchto nástrojů nebo sad SDK najdete v následujícím kurzu.
 
 - [Rychlý start: Vytvoření datové továrny pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md)

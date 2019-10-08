@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382489"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025510"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -61,10 +61,10 @@ V některých případech podniková aplikace vytvořená z Galerie aplikací za
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Přiřazení vlastníka k podnikové aplikaci
 
-1. Přihlaste se ke  [svojí organizaci Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)pomocí účtu, který má nárok na správce aplikace nebo správce cloudové aplikace pro organizaci.
-1. Na [stránce](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) registrace aplikací pro organizaci vyberte aplikaci. otevře se stránka přehled pro aplikaci.
-1. Pokud chcete zobrazit seznam vlastníků aplikace, vyberte **vlastníci** .
-1. Vyberte **Přidat** a vyberte jednu nebo více vlastníků, které chcete přidat do aplikace.
+1. Přihlaste se ke [svojí organizaci Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t – 1with účet, který má nárok na správce aplikace nebo správce cloudové aplikace pro organizaci.
+1. Na [stránce Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t – 1for na organizaci, vyberte aplikaci a otevřete stránku Přehled pro aplikaci.
+1. Pokud chcete zobrazit seznam vlastníků aplikace, vyberte **vlastníci** .
+1. Vyberte **Přidat** a vyberte jednu nebo více vlastníků, které chcete přidat do aplikace.
 
 > [!IMPORTANT]
 > Uživatelé a instanční objekty můžou být vlastníky registrace aplikací. Pouze uživatelé můžou být vlastníci podnikových aplikací. Skupiny nelze přiřadit jako vlastníky obou.
@@ -75,8 +75,8 @@ V některých případech podniková aplikace vytvořená z Galerie aplikací za
 
 Azure AD obsahuje sadu předdefinovaných rolí správce pro udělení přístupu ke správě konfigurace ve službě Azure AD pro všechny aplikace. Tyto role jsou doporučeným způsobem, jak udělit odborníkům na IT přístup ke správě rozsáhlých oprávnění konfigurace aplikace bez udělení přístupu ke správě jiných částí služby Azure AD, které nesouvisí s konfigurací aplikace.
 
-- Správce aplikace: Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací, kromě Microsoft Graph a Azure AD Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
-- Správce cloudové aplikace: Uživatelé v této roli mají stejná oprávnění jako role správce aplikace, kromě možnosti spravovat proxy aplikace. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
+- Správce aplikace: uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací, kromě Microsoft Graph a Azure AD Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
+- Správce cloudové aplikace: uživatelé v této roli mají stejná oprávnění jako role správce aplikace, kromě možnosti spravovat proxy aplikace. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
 Další informace a zobrazení popisu těchto rolí najdete v tématu [dostupné role](directory-assign-admin-roles.md#available-roles).
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262887"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023594"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -27,27 +27,32 @@ Tento článek popisuje, jak zaregistrovat SQL Server virtuální počítač v A
 
 Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s poskytovatelem prostředků. Pokud se rozhodnete vlastní instalaci SQL Server na virtuálním počítači Azure místo výběru image z Azure Marketplace nebo pokud zřídíte virtuální počítač Azure z vlastního virtuálního pevného disku s SQL Server, měli byste zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků pro :
 
-- **Zjednodušení správy licencí**: Podle podmínek produktu společnosti Microsoft musí zákazníci informovat společnost Microsoft, když používají [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Registrace pomocí poskytovatele prostředků virtuálního počítače SQL zjednodušuje správu licencí SQL Server a umožňuje rychle identifikovat SQL Server virtuální počítače pomocí Zvýhodněné hybridní využití Azure na [portálu](virtual-machines-windows-sql-manage-portal.md) nebo AZ CLI: 
+- **Zjednodušení správy licencí**: v souladu s podmínkami produktů Microsoftu musí zákazníci sdělit Microsoftu, když používají [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Registrace pomocí poskytovatele prostředků virtuálního počítače SQL zjednodušuje správu licencí SQL Server a umožňuje rychle identifikovat SQL Server virtuální počítače pomocí Zvýhodněné hybridní využití Azure na [portálu](virtual-machines-windows-sql-manage-portal.md) nebo AZ CLI: 
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-- **Výhody funkcí**: Registrace SQL Server virtuálního počítače pomocí poskytovatele prostředků odemkne [automatizované opravy](virtual-machines-windows-sql-automated-patching.md), [automatizované zálohování](virtual-machines-windows-sql-automated-backup-v2.md)a možnosti monitorování a správy. Také odemkne [licencování](virtual-machines-windows-sql-ahb.md) a flexibilitu [edice](virtual-machines-windows-sql-change-edition.md) . Dříve byly tyto funkce k dispozici pouze pro SQL Server imagí virtuálních počítačů z Azure Marketplace.
+- **Výhody funkcí**: registrace virtuálního počítače s SQL Server u poskytovatele prostředků odemkne [automatizované opravy](virtual-machines-windows-sql-automated-patching.md), [automatizované zálohování](virtual-machines-windows-sql-automated-backup-v2.md)a možnosti monitorování a správy. Také odemkne [licencování](virtual-machines-windows-sql-ahb.md) a flexibilitu [edice](virtual-machines-windows-sql-change-edition.md) . Dříve byly tyto funkce k dispozici pouze pro SQL Server imagí virtuálních počítačů z Azure Marketplace.
 
-- **Bezplatná Správa**:  Registrace u poskytovatele prostředků virtuálního počítače SQL a všechny režimy spravovatelnosti jsou zcela bezplatné. K poskytovateli prostředků se nevztahují žádné další náklady ani se měnícími se režimy správy. 
+- **Bezplatná Správa**: registrace u poskytovatele prostředků virtuálního počítače SQL a všechny režimy spravovatelnosti jsou zcela bezplatné. K poskytovateli prostředků se nevztahují žádné další náklady ani se měnícími se režimy správy. 
 
 Aby bylo možné využít poskytovatele prostředků virtuálního počítače SQL, musíte také zaregistrovat poskytovatele prostředků virtuálního počítače SQL s vaším předplatným. To můžete provést pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu. 
 
   > [!NOTE]
   > K registraci u poskytovatele prostředků se nevztahují žádné další licenční požadavky. Registrace pomocí poskytovatele prostředků SQL VM nabízí zjednodušenou metodu pro splnění požadavku na informování o tom, že Zvýhodněné hybridní využití Azure byla povolená v místě správy formulářů pro registraci licencí pro každý prostředek. 
 
-## <a name="prerequisites"></a>Požadavky
+Další informace o výhodách použití poskytovatele prostředků virtuálních počítačů SQL najdete na následujícím [channel9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) videu: 
+
+<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Výhody od poskytovatele prostředků SQL VM při samoobslužné instalaci SQL Server na Azure – Microsoft Channel 9 video"></iframe>
+
+
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
 
-- [Předplatného Azure](https://azure.microsoft.com/free/).
+- [Předplatné Azure](https://azure.microsoft.com/free/).
 - [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
 - Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/azure/new-azureps-module-az). 
 
@@ -61,7 +66,7 @@ Registrace u poskytovatele prostředků virtuálního počítače SQL v odlehče
 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-Pokud je na virtuálním počítači již nainstalováno rozšíření SQL Server IaaS, použijte následující fragment kódu pro registraci u poskytovatele prostředků SQL VM. Musíte zadat typ licence SQL Server, kterou chcete při registraci u poskytovatele prostředků SQL VM použít: průběžné platby (`PAYG`) nebo zvýhodněné hybridní využití Azure (`AHUB`). 
+Pokud je na virtuálním počítači již nainstalováno rozšíření SQL Server IaaS, použijte následující fragment kódu pro registraci u poskytovatele prostředků SQL VM. Musíte zadat typ licence SQL Server, kterou chcete při registraci u poskytovatele prostředků SQL VM použít: průběžné platby (`PAYG`) nebo Zvýhodněné hybridní využití Azure (`AHUB`). 
 
 Pomocí následujícího fragmentu kódu prostředí PowerShell Zaregistrujte SQL Server virtuální počítač:
 
@@ -117,8 +122,8 @@ Následující tabulka uvádí přijatelné hodnoty pro parametry zadané během
 
 | Parametr | Přijatelné hodnoty                                 |
 | :------------------| :--------------------------------------- |
-| **sqlLicenseType** | `AHUB` Nebo `PAYG`                    |
-| **sqlImageOffer**  | `SQL2008-WS2008` Nebo `SQL2008R2-WS2008`|
+| **sqlLicenseType** | `AHUB` nebo `PAYG`                    |
+| **sqlImageOffer**  | `SQL2008-WS2008` nebo `SQL2008R2-WS2008`|
 | &nbsp;             | &nbsp;                                   |
 
 
@@ -148,9 +153,9 @@ K registraci instance SQL Server 2008 nebo 2008 R2 v instanci Windows Server 200
 ## <a name="verify-registration-status"></a>Ověřit stav registrace
 Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zaregistrovaný u poskytovatele prostředků SQL VM pomocí Azure Portal, Azure CLI nebo PowerShellu. 
 
-### <a name="azure-portal"></a>portál Azure 
+### <a name="azure-portal"></a>Portál Azure 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](virtual-machines-windows-sql-manage-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server virtuální počítač, pravděpodobně není zaregistrovaný u poskytovatele prostředků virtuálního počítače SQL. 
 1. Zobrazit hodnotu v části **stav** Pokud je stav **úspěšný**, byl virtuální počítač SQL Server zaregistrován u poskytovatele prostředků virtuálního počítače SQL úspěšně. 
@@ -159,7 +164,7 @@ Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zareg
 
 ### <a name="command-line"></a>Příkazový řádek
 
-Ověřte aktuální SQL Server stav registrace virtuálního počítače pomocí AZ CLI nebo PowerShellu. `ProvisioningState`zobrazí se, zda byla registrace úspěšná. `Succeeded` 
+Ověřte aktuální SQL Server stav registrace virtuálního počítače pomocí AZ CLI nebo PowerShellu. `ProvisioningState` zobrazí `Succeeded`, pokud byla registrace úspěšná. 
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 
@@ -203,9 +208,9 @@ SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou*
 Postup upgradu režimu agenta na úplný: 
 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -245,7 +250,7 @@ Spusťte následující fragment kódu prostředí PowerShell:
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků virtuálního počítače SQL, musíte zaregistrovat poskytovatele prostředků u svého předplatného. Můžete to udělat pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 1. Otevřete Azure Portal a pokračujte na **všechny služby**. 
 1. Přejít na **předplatná** a vyberte předplatné, které vás zajímá.  

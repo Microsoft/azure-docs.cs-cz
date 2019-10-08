@@ -1,0 +1,98 @@
+---
+title: Vytvoření datového připojení centra událostí pro Azure Průzkumník dat pomocíC#
+description: V tomto článku se dozvíte, jak vytvořit datové připojení centra událostí pro Azure Průzkumník dat pomocí C#.
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
+ms.reviewer: orspodek
+ms.service: data-explorer
+ms.topic: conceptual
+ms.date: 10/07/2019
+ms.openlocfilehash: 741232bb7ed6ecf3d20711c1f6248f8e6d6215e8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72031679"
+---
+# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>Vytvoření datového připojení centra událostí pro Azure Průzkumník dat pomocíC#
+
+> [!div class="op_single_selector"]
+> * [Azure Portal](ingest-data-event-hub.md)
+> * [C#](data-connection-event-hub-csharp.md)
+> * [Python](data-connection-event-hub-python.md)
+
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte připojení dat centra událostí pro Azure Průzkumník dat pomocí C#.
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Pokud nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+
+* Vytvoření [clusteru a databáze](create-cluster-database-csharp.md)
+
+* Vytvořit [mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+
+* Nastavení [zásad databáze a tabulek](database-table-policies-csharp.md) (volitelné)
+
+* Vytvořte [centrum událostí s daty pro přijímání](ingest-data-event-hub.md#create-an-event-hub). 
+
+[!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
+
+[!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
+
+## <a name="add-an-event-hub-data-connection"></a>Přidání datového připojení centra událostí
+
+Následující příklad ukazuje, jak přidat datové připojení centra událostí prostřednictvím kódu programu. Informace o přidání datového připojení centra událostí pomocí Azure Portal najdete v tématu [připojení k centru událostí](ingest-data-event-hub.md#connect-to-the-event-hub) .
+
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+var credential = new ClientCredential(clientId, clientSecret);
+var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
+var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+
+var kustoManagementClient = new KustoManagementClient(credentials)
+{
+    SubscriptionId = subscriptionId
+};
+
+var resourceGroupName = "testrg";
+//The cluster and database that are created as part of the Prerequisites
+var clusterName = "mykustocluster";
+var databaseName = "mykustodatabase";
+var dataConnectionName = "myeventhubconnect";
+//The event hub that is created as part of the Prerequisites
+var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
+var consumerGroup = "$Default";
+var location = "Central US";
+//The table and column mapping are created as part of the Prerequisites
+var tableName = "StormEvents";
+var mappingRuleName = "StormEvents_CSV_Mapping";
+var dataFormat = DataFormat.CSV;
+await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+```
+
+|**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
+|---|---|---|
+| TenantId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | Vaše ID tenanta. Označuje se také jako ID adresáře.|
+| subscriptionId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID předplatného, které používáte pro vytváření prostředků.|
+| clientId | *XXXXXXXX-xxxxx-xxxx-xxxx-XXXXXXXXX* | ID klienta aplikace, která má přístup k prostředkům ve vašem tenantovi.|
+| clientSecret | *xxxxxxxxxxxxxx* | Tajný klíč klienta aplikace, který má přístup k prostředkům ve vašem tenantovi.|
+| resourceGroupName | *testrg* | Název skupiny prostředků, která obsahuje váš cluster.|
+| clusterName | *mykustocluster* | Název vašeho clusteru.|
+| Databáze | *mykustodatabase* | Název cílové databáze v clusteru.|
+| Připojení k dataconnectionname | *myeventhubconnect* | Požadovaný název datového připojení.|
+| tableName | *StormEvents* | Název cílové tabulky v cílové databázi.|
+| mappingRuleName | *StormEvents_CSV_Mapping* | Název mapování sloupce souvisejícího s cílovou tabulkou.|
+| Formát DataFormat | *Formát* | Formát dat zprávy|
+| eventHubResourceId | *ID prostředku* | ID prostředku centra událostí, které obsahuje data pro ingestování. |
+| Klientská organizace | *$Default* | Skupina uživatelů centra událostí.|
+| location | *Střed USA* | Umístění prostředku datového připojení.|
+
+[!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

@@ -1,49 +1,49 @@
 ---
-title: Azure Data Factory mapování transformace vyhledávání toku dat
-description: Azure Data Factory mapování transformace vyhledávání toku dat
+title: Azure Data Factory transformace vyhledávání toku dat
+description: Azure Data Factory transformace vyhledávání toku dat
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868124"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029340"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory mapování transformace vyhledávání toku dat
+# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Přidat odkaz na data z jiného zdroje do toku dat pomocí vyhledávání. Transformace vyhledávání vyžaduje definovaný zdroj, který odkazuje na referenční tabulku a odpovídá na klíčové pole.
 
-![Transformace vyhledávání](media/data-flow/lookup1.png "vyhledávání")
+Pomocí vyhledávání můžete přidat referenční data z jiného zdroje do toku dat. Transformace vyhledávání vyžaduje definovaný zdroj, který odkazuje na vaši referenční tabulku a odpovídá na klíčová pole.
 
-Vyberte klíče, které chcete porovnává příchozí datový proud pole a pole ze zdroje odkazu na pole. Musíte nejprve vytvoříte nový zdroj na plátně návrhu toku dat použít jako pravá strana pro vyhledávání.
+(media/data-flow/lookup1.png "Vyhledávání") ![transformace vyhledávání]
 
-Když shoda nenajde, výsledné řádky a sloupce ze zdrojového odkazu se přidají do vašeho datového toku. Můžete zvolit pole, která zájmu, které chcete zahrnout do na konci toku dat pro jímku.
+Vyberte klíčová pole, která chcete porovnat mezi poli příchozích datových proudů a poli ze zdroje odkazů. Nejdřív je potřeba vytvořit nový zdroj na plátně pro návrh toku dat, který se použije jako pravá strana pro vyhledávání.
 
-## <a name="match--no-match"></a>Odpovídá / žádná shoda
+Když se najde shody, výsledné řádky a sloupce z reference source se přidají do toku dat. Můžete zvolit, která pole zájmu chcete zahrnout do jímky na konci toku dat.
 
-Po transformaci vaše vyhledávání vám pomůže následující transformace kontrolu výsledků jednotlivých řádků shoda s použitím výrazu funkce `isMatch()` provádět další možnosti v logice podle Určuje, jestli vyhledávání výsledkem odpovídající řádek nebo ne.
+## <a name="match--no-match"></a>Shoda/bez shody
+
+Po transformaci vyhledávání můžete použít následnou transformaci k zkontrolování výsledků každého řádku shody pomocí funkce Expression `isMatch()` pro další volby v logice na základě toho, zda hledání vedlo ke shodě mezi řádky nebo nikoli.
 
 ## <a name="optimizations"></a>Optimalizace
 
-Ve službě Data Factory Data proudí provést v prostředí Spark horizontálním navýšením kapacity. Pokud vaše datová sada se vejde do pracovního uzlu paměťový prostor, doporučujeme optimalizovat výkon vyhledávání.
+V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
 
-![Vysílání spojení](media/data-flow/broadcast.png "vysílání spojení")
+Připojení všesměrového vysílání ![připojení](media/data-flow/broadcast.png "všesměrového") vysílání
 
-### <a name="broadcast-join"></a>Vysílání spojení
+### <a name="broadcast-join"></a>Připojení všesměrového vysílání
 
-Vyberte vlevo nebo vpravo vysílání spojení požádat o ADF můžete nabízet celou datovou sadu z obou stranách relaci vyhledávání do paměti.
+Vyberte levé nebo pravé straněné připojení všesměrového vysílání, které vyžádáte ADF a nahrajte celou datovou sadu z obou stran relace vyhledávání do paměti.
 
 ### <a name="data-partitioning"></a>Dělení dat
 
-Můžete také určit, dělení dat tak, že vyberete "Nastavit dělení" na kartě Optimalizace transformace vyhledávání k vytvoření sad dat, která lépe vejde do paměti na jeden pracovního procesu.
+Rozdělení dat můžete zadat také tak, že na kartě optimalizace v transformaci vyhledávání vyberete možnost nastavit rozdělení, aby se vytvořily sady dat, které mohou být pro jednotlivé pracovní procesy lépe přizpůsobeny paměti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Připojte se k](data-flow-join.md) a [Exists](data-flow-exists.md) transformace provádění podobných úloh v mapování Data proudí ADF. Podívejte se na tyto transformace Další.
+[](data-flow-join.md) Transformace a [Exists existují](data-flow-exists.md) podobné úkoly v toku dat mapování ADF. Podívejte se na následující transformace.

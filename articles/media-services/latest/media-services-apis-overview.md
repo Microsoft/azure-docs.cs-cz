@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308343"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025630"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -32,7 +32,7 @@ Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Me
 * **Ověřování instančního objektu** – používá se k ověření služby (například webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby). Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
 * **Ověřování uživatele** – používá se k ověření osoby, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **, ale** budou k dispozici jenom operace **Get** nebo **list**   . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
+Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **, ale** budou k dispozici jenom operace **Get** nebo **list** . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
 
 Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro přístup k rozhraní Media Services API prostřednictvím Azure Resource Manager. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -59,7 +59,7 @@ Na následujícím obrázku čísla reprezentují tok požadavků v chronologick
 4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
 5. Střední vrstva vrátí data z Media Services.
 
-### <a name="samples"></a>Ukázky kódu
+### <a name="samples"></a>Ukázky
 
 Podívejte se na následující ukázky, které ukazují, jak se připojit pomocí instančního objektu služby Azure AD:
 
@@ -75,7 +75,7 @@ Na názvy prostředků služby Azure Media Services v3 (například prostředky,
 
 Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
 
-Další informace o Azure Resource Manager pojmenování najdete v tématech: [Požadavky na pojmenování](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a zásady [vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Další informace o vytváření názvů Azure Resource Manageru najdete v tématech věnovaných [požadavkům na vytváření názvů](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásadám vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Názvy souborů/objektů BLOB v rámci assetu
 
@@ -83,7 +83,7 @@ Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na
 
 ## <a name="long-running-operations"></a>Dlouhodobě běžící operace
 
-Operace označené `x-ms-long-running-operation` v Azure Media Services [soubory Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) jsou dlouhodobě běžící operace. 
+Operace s označením `x-ms-long-running-operation` v Azure Media Services [souborech Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) jsou dlouhodobě běžící operace. 
 
 Podrobnosti o tom, jak sledovat asynchronní operace Azure, najdete v tématu [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -95,7 +95,7 @@ Media Services má následující dlouhodobě běžící operace:
 * [Spustit živou událost](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [Zastavit Livestream](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  `removeOutputsOnStop` Použijte parametr k odstranění všech přidružených výstupů živého vysílání při zastavování události.  
+  Při zastavování události použijte parametr `removeOutputsOnStop` k odstranění všech přidružených výstupů živého vysílání.  
 * [Resetovat Livestream](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [Vytvořit LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [Odstranit LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -115,7 +115,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 > [!NOTE]
 > Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji vícevláknové aplikace byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
-|Sada SDK|Reference|
+|SDK|Referenční informace|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
@@ -124,16 +124,16 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Referenční informace k jazyku Go](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Viz také:
+### <a name="see-also"></a>Další informace najdete v tématech
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
 ## <a name="azure-media-services-explorer"></a>Průzkumník Azure Media Services
 
-[Průzkumník Azure Media Services](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je WinForms neboC# aplikace, které odesílají, stahují, kódují, streamování vod a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
+[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je WinForms neboC# aplikace, které odesílají, stahují, kódují, streamování vod a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
 
-AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues) problémy). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v [nejčastějších dotazech k kodexu](https://opensource.microsoft.com/codeofconduct/faq/) nebo na kontaktování opencode@microsoft.com s dalšími dotazy nebo komentáři.
+AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny problémy https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v [nejčastějších dotazech k kodexu](https://opensource.microsoft.com/codeofconduct/faq/) a v opencode@microsoft.com s případnými dalšími dotazy nebo komentáři.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
@@ -143,11 +143,11 @@ Viz [filtrování, řazení, stránkování Azure Media Services entit](entities
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojení k Media Services pomocí Java](configure-connect-java-howto.md)
 * [Připojení k Media Services pomocí .NET](configure-connect-dotnet-howto.md)

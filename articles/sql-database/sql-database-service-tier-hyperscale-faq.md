@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/02/2019
+ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162256"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032884"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy k databázím Azure SQL s škálovatelným škálováním
 
@@ -37,31 +37,31 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Jak se úroveň služby škálování na úrovni služeb liší od Pro obecné účely a Pro důležité obchodní informace úrovní služeb
 
-Úrovně služeb založené na vCore se primárně liší v závislosti na dostupnosti, typu úložiště a IOPs.
+Úrovně služeb založené na vCore se primárně liší v závislosti na dostupnosti, typu úložiště a IOPS.
 
 - Úroveň služby Pro obecné účely je vhodná pro většinu obchodních úloh a nabízí vyváženou sadu výpočetních a úložných možností, u kterých není priorita vstupně-výstupních operací nebo doba převzetí služeb při selhání.
 - Úroveň služby s technologií webscale je optimalizovaná pro velmi velké databázové úlohy.
 - Úroveň služby Pro důležité obchodní informace je vhodná pro obchodní úlohy, u kterých je vstupně-výstupní latence v/v prioritou.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Vše|  Většina obchodních úloh. Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Datové aplikace s vysokými nároky na kapacitu dat a možnost automatického škálování úložiště a škálování výpočetních prostředků. | OLTP aplikace s vysokou mírou transakcí a nejnižší latencí v/v. Nabízí nejvyšší odolnost proti chybám při použití několika izolovaných replik.|
-|  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Jednoúčelová databáze | Jedna databáze/elastický fond/spravovaná instance |
+| **Nejlepší pro** |Všechno|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
+|  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
-| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| **Typ úložiště** | Vše |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| **Typ úložiště** | Všechno |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost úložiště** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
-| **Propustnost vstupně-výstupních operací** | Samostatná databáze * * | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovaná instance: Závisí na velikosti souboru|
-|**Dostupnost**|Vše|1 replika bez měřítka pro čtení, žádná místní mezipaměť | Více replik, až 4 škálování pro čtení, částečná místní mezipaměť | 3 repliky, 1 škálování pro čtení, zóna – redundantní HA, úplná místní mezipaměť |
-|**Vytvářet**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
+| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| **IOPS** | Samostatná databáze * * | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
+| | Spravovaná instance | Závisí na velikosti souboru | Nevztahuje se | Spravovaná instance: závisí na velikosti souboru.|
+|**Dostupnost**|Všechno|1 replika bez měřítka pro čtení, žádná místní mezipaměť | Více replik, až 4 škálování pro čtení, částečná místní mezipaměť | 3 repliky, 1 škálování pro čtení, zóna – redundantní HA, úplná místní mezipaměť |
+|**Vytvářet**|Všechno|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
 
-\*Elastické fondy nejsou podporované ve vrstvě služeb s škálováním na úrovni.
+@no__t – 0 elastické fondy nejsou podporované v úrovni služby škálování na úrovni služeb.
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Kdo má používat úroveň služby pro škálování na úrovni služeb
 
-Úroveň služby pro škálování na úrovni služeb je primárně určena pro zákazníky, kteří mají velké místní SQL Server databáze a chtějí modernizovat své aplikace přesunutím do cloudu nebo pro zákazníky, kteří již používají Azure SQL Database a chtějí je významně rozšířit. potenciál pro nárůst databáze. Škálování je také určené pro zákazníky, kteří hledají vysoký výkon i vysokou škálovatelnost. S škálovatelným škálováním získáte:
+Úroveň služby pro škálování na úrovni služeb je určená pro zákazníky, kteří mají velké místní SQL Server databáze a chtějí modernizovat své aplikace tím, že se přesunou do cloudu nebo pro zákazníky, kteří už používají Azure SQL Database a chtějí významně rozšířit potenciál pro nárůst databáze. Škálování je také určené pro zákazníky, kteří hledají vysoký výkon i vysokou škálovatelnost. S škálovatelným škálováním získáte:
 
 - Podpora až 100 TB velikosti databáze
 - Rychlé zálohování databáze bez ohledu na velikost databáze (zálohy jsou založené na snímcích souborů)
@@ -93,7 +93,7 @@ SQL Database škálování poskytuje rychlou škálovatelnost na základě poža
 
   S vlastním škálováním získáte také možnost zřídit jeden nebo více dalších výpočetních uzlů, které můžete použít k obsluze svých žádostí o čtení. To znamená, že tyto dodatečné výpočetní uzly můžete použít jako uzly jen pro čtení k přesměrování úlohy čtení z primární výpočetní služby. Kromě jen pro čtení tyto uzly také slouží jako aktivní pohotovostní režim v případě převzetí služeb při selhání z primární služby.
 
-  Zřizování každého z těchto dalších výpočetních uzlů se dá provést v konstantním čase a je to online operace. K těmto dalším výpočetním uzlům, které jsou jen pro čtení, se `ApplicationIntent` můžete připojit nastavením argumentu v `readonly`připojovacím řetězci na. Všechna připojení označená `readonly` pomocí jsou automaticky směrována na jeden z dalších výpočetních uzlů určených jen pro čtení.
+  Zřizování každého z těchto dalších výpočetních uzlů se dá provést v konstantním čase a je to online operace. K těmto dalším výpočetním uzlům, které jsou jen pro čtení, se můžete připojit nastavením argumentu `ApplicationIntent` v připojovacím řetězci na hodnotu `readonly`. Všechna připojení označená `readonly` jsou automaticky směrována na jeden z dalších výpočetních uzlů jen pro čtení.
 
 ## <a name="deep-dive-questions"></a>Podrobné dotazy k podrobně
 
@@ -161,7 +161,7 @@ Transakční protokol s měřítkem je prakticky nekonečný. Nemusíte se stara
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>Roste velikost dočasná databáze při zvětšování databáze
 
-Vaše `tempdb` databáze je umístěná v místním úložišti SSD a je nakonfigurovaná na základě výpočetní velikosti, kterou zřídíte. Vaše `tempdb` aplikace je optimalizovaná a vymezená tak, aby poskytovala maximální výkonnostní výhody. `tempdb` Velikost se nedá konfigurovat a je spravovaná za vás subsystémem úložiště.
+Vaše databáze `tempdb` je umístěná v místním úložišti SSD a je nakonfigurovaná na základě výpočetní velikosti, kterou zřídíte. Vaše `tempdb` je optimalizováno a stanoveno tak, aby poskytovalo maximální výkonnostní výhody. Velikost `tempdb` není konfigurovatelná a je spravována za vás subsystémem úložiště.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-the-data-files"></a>Roste velikost databáze automaticky nebo je nutné spravovat velikost datových souborů
 
@@ -169,11 +169,11 @@ Velikost databáze se automaticky zvětšuje při vkládání nebo přijímání
 
 ### <a name="what-is-the-smallest-database-size-that-sql-database-hyperscale-supports-or-starts-with"></a>Jaká je nejmenší velikost databáze, kterou SQL Database podporuje nebo začíná na
 
-10 GB
+10 GB
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>V jakých přírůstcích roste velikost databáze
 
-1 GB
+Každý datový soubor roste o 10 GB. Současně může růst více datových souborů.
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>Je úložiště v SQL Database místním nebo vzdáleném měřítku
 
@@ -217,22 +217,24 @@ Ne. V tuto chvíli nemůžete přesunout databázi v rámci škálování na jin
 
 Ano. Některé funkce Azure SQL Database se zatím nepodporují, mezi které patří ale ne omezené dlouhodobé zálohování uchovávání. Po migraci databází do škálovatelného prostředí tyto funkce přestanou fungovat.  Očekáváme, že tato omezení budou dočasná.
 
-### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Můžu přesunout místní SQL Server databázi nebo databázi virtuálního počítače SQL Server do škálování
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Můžu přesunout místní SQL Server databázi nebo databázi virtuálního počítače SQL Server do škálování
 
-Ano. Můžete použít všechny existující technologie migrace k migraci do škálování, včetně BACPAC, transakční replikace a načítání logických dat. Viz také [Azure Database Migration Service](../dms/dms-overview.md).
+Ano. Můžete použít všechny existující technologie migrace k migraci do škálování, včetně transakční replikace a dalších technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS). Viz také [Azure Database Migration Service](../dms/dms-overview.md).
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Co je během migrace z místního prostředí nebo z prostředí virtuálních počítačů na škálovatelné a jak můžu minimalizovat
 
-Výpadek je stejný jako výpadek při migraci databází do izolované databáze v Azure SQL Database. Transakční replikaci [](replication-to-sql-database.md#data-migration-scenario
+Výpadek je stejný jako výpadek při migraci databází do izolované databáze v Azure SQL Database. [Transakční replikaci](replication-to-sql-database.md#data-migration-scenario
 ) můžete použít k minimalizaci výpadku výpadku databáze o velikosti až několika TB. U velmi rozsáhlých databází (10 + TB) můžete zvážit migraci dat pomocí ADF, Sparku nebo jiných technologií pro přesun dat.
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Kolik času by vyžadovalo převedení X množství dat na SQL Database škálování
 
-Škálování na více verzí dokáže spotřebovávat 100 MB/s nových nebo změněných dat.
+Škálovatelné škálování je schopné spotřebovávat 100 MB/s nových nebo změněných dat, ale čas potřebný k přesunu dat do databází SQL Azure taky ovlivňuje dostupnou propustnost sítě, rychlost čtení zdroje a cílový cíl na úrovni služby databáze v rámci škálování na úrovni služby.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Můžu číst data z úložiště objektů BLOB a rychle je načíst (například základnu a SQL Data Warehouse).
 
 Můžete číst data z Azure Storage a načíst zatížení dat do databáze v rámci škálování (stejně jako v případě běžné izolované databáze). V Azure SQL Database se v tuto chvíli nepodporuje základ. Pomocí [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) nebo spuštění úlohy Sparku v [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) pomocí [konektoru Spark pro SQL](sql-database-spark-connector.md)můžete použít základ. Konektor Spark pro SQL podporuje hromadné vložení.
+
+Je také možné hromadně číst data z úložiště objektů BLOB v Azure pomocí BULK INSERT nebo OPENROWSET: [Příklady hromadného přístupu k datům v azure BLOB Storage](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Jednoduché obnovení nebo model hromadného protokolování není v měřítku podporován. K zajištění vysoké dostupnosti je vyžadován model úplného obnovení. Ale škálovatelná škála nabízí lepší rychlost ingestování dat v porovnání s jednou databází Azure SQL z důvodu nové architektury protokolů.
 
@@ -280,11 +282,11 @@ Ano.  Geografické obnovení je plně podporované.
 
 ### <a name="can-i-setup-geo-replication-with-sql-database-hyperscale-database"></a>Můžu nastavit geografickou replikaci s využitím SQL Database databáze s škálovatelným škálováním
 
-V tuto chvíli to není možné.
+V současnosti ne.
 
 ### <a name="do-my-secondary-compute-nodes-get-geo-replicated-with-sql-database-hyperscale"></a>Získají moje sekundární výpočetní uzly geograficky replikovanou SQL Database škálováním
 
-V tuto chvíli to není možné.
+V současnosti ne.
 
 ### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>Můžu SQL Database zálohu databáze na úrovni a obnovit ji na místním serveru nebo SQL Server na virtuálním počítači.
 
@@ -344,7 +346,7 @@ Pokud dojde k převzetí služeb při selhání na výpočetním uzlu s cílovou
 
 Koncový uživatel. Nepoužívá se automaticky.  
 
-### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>`tempb` Roste i při horizontálním navýšení kapacity
+### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>Zvětšuje se `tempb` také při horizontálním navýšení kapacity
 
 Ano. Temp DB se při nárůstu kapacity automaticky nasadí.  
 
@@ -360,16 +362,16 @@ Ve výchozím nastavení vytvoříme 2 repliky pro databáze s škálovatelnými
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Návody se připojit k těmto sekundárním výpočetním uzlům
 
-K těmto dalším výpočetním uzlům, které jsou jen pro čtení, se `ApplicationIntent` můžete připojit nastavením argumentu v `readonly`připojovacím řetězci na. Všechna připojení označená `readonly` pomocí jsou automaticky směrována na jeden z dalších výpočetních uzlů určených jen pro čtení.  
+K těmto dalším výpočetním uzlům, které jsou jen pro čtení, se můžete připojit nastavením argumentu `ApplicationIntent` v připojovacím řetězci na hodnotu `readonly`. Všechna připojení označená `readonly` jsou automaticky směrována na jeden z dalších výpočetních uzlů jen pro čtení.  
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Návody ověřit, jestli se mám úspěšně připojit k sekundárnímu výpočetnímu uzlu pomocí SSMS/jiných klientských nástrojů?
 
 Pomocí SSMS/jiných klientských nástrojů můžete spustit následující dotaz T-SQL: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
-Výsledkem je `READ_ONLY` , že pokud vaše připojení odkazuje na sekundární uzel, který je jen pro čtení `READ_WRITE` , nebo pokud vaše připojení odkazuje na primární uzel.
+Výsledek je `READ_ONLY`, pokud vaše připojení odkazuje na sekundární uzel jen pro čtení nebo `READ_WRITE`, pokud vaše připojení odkazuje na primární uzel.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Můžu vytvořit vyhrazený koncový bod pro repliku pro čtení a škálování.
 
-Ne. K replice se škálováním na úrovni čtení se můžete připojit `ApplicationIntent=ReadOnly`pouze zadáním.
+Ne. K replice se škálováním na úrovni čtení se můžete připojit pouze zadáním `ApplicationIntent=ReadOnly`.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Vyrovnává inteligentní vyrovnávání zatížení úlohy čtení.
 
@@ -381,7 +383,7 @@ Ne. Sekundární výpočetní uzly se používají také pro HA, takže v příp
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Získám různou velikost tempa databáze pro primární výpočetní prostředky a moje další sekundární výpočetní uzly
 
-Ne. Vaše `tempdb` sekundární výpočetní uzly mají na základě zřizování velikosti výpočtů stejnou velikost jako primární výpočetní prostředí.
+Ne. Vaše `tempdb` se konfiguruje na základě zřizování velikosti výpočtů, sekundární výpočetní uzly mají stejnou velikost jako primární výpočetní prostředí.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>Můžu přidat indexy a zobrazení na mých sekundárních výpočetních uzlech
 

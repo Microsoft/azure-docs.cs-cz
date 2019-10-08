@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 643539fb569cdefba8e04d1ac08e73055624d3ae
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67446300"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025054"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Přidání ověřování do aplikace Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center je investována v nových a integrovaných službách z centrálního vývoje mobilních aplikací. Vývojáři mohou pomocísestavování, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a diagnostických služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu. Podívejte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 V tomto tématu se dozvíte, jak ověřit uživatele App Service mobilní aplikace z klientské aplikace. V tomto kurzu přidáte do projektu pro rychlý Start formulářů Xamarin ověřování pomocí zprostředkovatele identity, který je podporován App Service. Po úspěšném ověření a autorizaci vaší mobilní aplikace se zobrazí hodnota ID uživatele a budete mít přístup k omezeným datům tabulky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro dosažení co nejlepších výsledků v tomto kurzu doporučujeme, abyste nejdřív dokončili kurz [Vytvoření aplikace pro tvorbu formulářů Xamarin][1] . Po dokončení tohoto kurzu budete mít projekt Xamarin Forms, který je aplikací TodoList s více platformami.
 
 Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, je nutné přidat balíček rozšíření ověřování do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps][2].
@@ -41,13 +41,13 @@ Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, je nutné
 
 ## <a name="redirecturl"></a>Přidání aplikace do povolených externích adres URL pro přesměrování
 
-Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nové schéma URL. To umožňuje, aby systém ověřování po dokončení procesu ověřování přesměroval zpátky do vaší aplikace. V tomto kurzu používáme celé rozhraní příkazového schématu URL. Můžete ale použít jakékoli schéma URL, které si zvolíte. Měl by být jedinečný pro vaši mobilní aplikaci. Zapnutí přesměrování na straně serveru:
+Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nové schéma URL. To umožňuje, aby systém ověřování po dokončení procesu ověřování přesměroval zpátky do vaší aplikace. V tomto kurzu používáme _celé rozhraní_ příkazového schématu URL. Můžete ale použít jakékoli schéma URL, které si zvolíte. Měl by být jedinečný pro vaši mobilní aplikaci. Zapnutí přesměrování na straně serveru:
 
 1. V [Azure Portal][8]vyberte App Service.
 
 2. Klikněte na možnost nabídka **ověřování/autorizace** .
 
-3. Do pole **povolené externí adresy URL**pro přesměrování `url_scheme_of_your_app://easyauth.callback`zadejte.  **Url_scheme_of_your_app** v tomto řetězci představuje schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
+3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** v tomto řetězci představuje schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
 
 4. Klikněte na **OK**.
 
@@ -63,10 +63,10 @@ Pro ověření pomocí projektu Xamarin Forms definujte rozhraní **IAuthenticat
 
 Implementujte rozhraní **IAuthenticate** pro každou platformu, kterou vaše aplikace podporuje.
 
-1. V aplikaci Visual Studio nebo Xamarin Studio otevřete App.cs z projektu s **přenosným** v názvu, který je Přenosná knihovna tříd projektu, a přidejte následující `using` příkaz:
+1. V aplikaci Visual Studio nebo Xamarin Studio otevřete App.cs z projektu s **přenosným** v názvu, který je Přenosná knihovna tříd projektu, a přidejte následující příkaz `using`:
 
         using System.Threading.Tasks;
-2. V App.cs přidejte následující `IAuthenticate` definici rozhraní těsně `App` před definici třídy.
+2. V App.cs přidejte následující definici rozhraní `IAuthenticate` bezprostředně před definicí třídy `App`.
 
         public interface IAuthenticate
         {
@@ -86,7 +86,7 @@ Implementujte rozhraní **IAuthenticate** pro každou platformu, kterou vaše ap
             Clicked="loginButton_Clicked"/>
 
     Toto tlačítko aktivuje ověřování spravované serverem pomocí back-endu vaší mobilní aplikace.
-5. Otevřete TodoList.XAML.cs z projektu přenositelné knihovny tříd a potom do `TodoList` třídy přidejte následující pole:
+5. Otevřete TodoList.xaml.cs z projektu přenositelné knihovny tříd a pak přidejte následující pole do třídy `TodoList`:
 
         // Track whether the user has authenticated.
         bool authenticated = false;
@@ -127,7 +127,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 1. V sadě Visual Studio nebo Xamarin Studio klikněte pravým tlačítkem na projekt **Droid** a pak **nastavte jako spouštěný projekt**.
 2. Stisknutím klávesy F5 spusťte projekt v ladicím programu a pak ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Kód 401 se vytvoří, protože přístup k back-endu je omezený jenom na autorizované uživatele.
-3. Otevřete MainActivity.cs v projektu pro Android a přidejte následující `using` příkazy:
+3. V projektu pro Android otevřete MainActivity.cs a přidejte následující příkazy `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -171,7 +171,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
     Pokud používáte jiného poskytovatele identity než Facebook, vyberte pro [MobileServiceAuthenticationProvider][7]jinou hodnotu.
 
-6. Aktualizujte soubor **souboru AndroidManifest. XML** přidáním následujícího kódu XML do `<application>` elementu:
+6. Aktualizujte soubor **souboru AndroidManifest. XML** přidáním následujícího kódu XML do prvku `<application>`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -194,16 +194,16 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-**V aplikaci došlo k chybě.`Java.Lang.NoSuchMethodError: No static method startActivity`**
+**V aplikaci došlo k chybě s `Java.Lang.NoSuchMethodError: No static method startActivity`.**
 
-V některých případech jsou konflikty v balíčcích pro podporu zobrazeny jako upozornění v aplikaci Visual Studio, ale aplikace při běhu selže s touto výjimkou. V takovém případě je nutné se ujistit, že všechny balíčky podpory, na které se odkazuje v projektu, mají stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
+V některých případech jsou konflikty v balíčcích pro podporu zobrazeny jako upozornění v aplikaci Visual Studio, ale aplikace při běhu selže s touto výjimkou. V takovém případě je nutné se ujistit, že všechny balíčky podpory, na které se odkazuje v projektu, mají stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má závislost `Xamarin.Android.Support.CustomTabs` pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Přidání ověřování do aplikace pro iOS
 V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v projektu aplikace pro iOS. Pokud nepodporujete zařízení s iOS, přeskočte tuto část.
 
 1. V sadě Visual Studio nebo Xamarin Studio klikněte pravým tlačítkem na projekt pro **iOS** a pak **nastavte jako spouštěný projekt**.
 2. Stisknutím klávesy F5 spusťte projekt v ladicím programu a pak ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). Odpověď 401 se vytvoří, protože přístup k back-endu je omezený jenom na autorizované uživatele.
-3. Otevřete AppDelegate.cs v projektu iOS a přidejte následující `using` příkazy:
+3. Otevřete AppDelegate.cs v projektu iOS a přidejte následující příkazy `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -271,7 +271,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt **UWP** a pak **nastavte jako spouštěný projekt**.
 2. Stisknutím klávesy F5 spusťte projekt v ladicím programu a pak ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno). K odpovědi 401 dochází, protože přístup k back-endu je omezený jenom na autorizované uživatele.
-3. Otevřete MainPage.XAML.cs pro projekt aplikace pro Windows a přidejte následující `using` příkazy:
+3. Otevřete MainPage.xaml.cs pro projekt aplikace pro Windows a přidejte následující příkazy `using`:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -344,7 +344,7 @@ V této části se dozvíte, jak implementovat rozhraní **IAuthenticate** v pro
 
 4. Znovu sestavte aplikaci, spusťte ji a pak se přihlaste pomocí poskytovatele ověřování, kterého jste zvolili, a ověřte, že máte přístup k datům jako ověřený uživatel.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste dokončili tento kurz základního ověřování, zvažte pokračování v jednom z následujících kurzů:
 
 * [Přidání nabízených oznámení do aplikace](app-service-mobile-xamarin-forms-get-started-push.md)

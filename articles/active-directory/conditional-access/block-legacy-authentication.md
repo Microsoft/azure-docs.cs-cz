@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931954"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024579"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blokování staršího ověřování do Azure AD s podmíněným přístupem   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
 Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure Active Directory (Azure AD) podporuje širokou škálu ověřovacích protokolů, včetně starších verzí ověřování. Starší protokoly ale nepodporují službu Multi-Factor Authentication (MFA). Vícefaktorové ověřování je v mnoha prostředích běžným požadavkem na krádež identity. 
 
 Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
 
@@ -52,9 +52,9 @@ V této části se dozvíte, jak nakonfigurovat zásady podmíněného přístup
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal** > **Azure Active Directory** > **přihlášení**.
-1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. **Přidat filtry** > **klienta aplikace** > vyberte všechny možnosti pro **ostatní klienty** a klikněte na **použít**.
+1. Přejděte na **Azure Portal** **přihlášení** > **Azure Active Directory** > .
+1. Pokud není zobrazený, klikněte na **sloupce** **klientské aplikace  > .**
+1. **Přidejte filtry**@no__t**klientské aplikace** -1 > vyberte všechny možnosti pro **ostatní klienty** a klikněte na **použít**.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 
@@ -101,7 +101,7 @@ Další informace najdete v tématu [Jak byste měli nasadit novou zásadu?](bes
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-Blokování přístupu pomocí **jiných klientů** také blokuje Exchange Online PowerShell pomocí základního ověřování.
+Blokování přístupu pomocí **jiných klientů** také blokuje Exchange Online PowerShell a Dynamics 365 pomocí základního ověřování.
 
 Konfigurace zásad pro **ostatní klienty** zablokuje celou organizaci od určitých klientů, jako je SPConnect. K tomuto bloku dochází, protože se starší klienti Ověřují neočekávaným způsobem. Tento problém se nevztahuje na hlavní aplikace Office, jako jsou starší klienti Office.
 
@@ -113,7 +113,7 @@ Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů
 
 - Android
 - iOS
-- Windows Phone
+- telefon se systémem Windows
 
 ![Konfigurace zásad není podporovaná.](./media/block-legacy-authentication/06.png)
 

@@ -1,34 +1,21 @@
 ---
-title: Vytvořit Dynamics 365 Customer Engagement technických prostředků | Azure Marketplace
-description: Vytvoření technických prostředků pro Dynamics 365 Customer Engagement nabídky aplikace.
+title: Vytvoření Dynamics 365 pro technické prostředky služby Customer Engagement | Azure Marketplace
+description: Tento článek v CPP se nepoužívá a odkazuje na počítač v článku; byl "vytvořit technické prostředky pro nabídku aplikace Dynamics 365 for Customer Engagement".
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: article
-ms.date: 12/29/2018
-ms.author: pabutler
-ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 378dc7d4b267a27088616cbe46b1a4309471af6b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943078"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033845"
 ---
-# <a name="create-technical-assets-for-azure-application-offer"></a>Vytvoření technických prostředků pro nabídku aplikací Azure
+# <a name="create-technical-assets-for-azure-application-offer"></a>Vytváření technických prostředků pro nabídku aplikací Azure
 
-Obvykle budete vyvíjet řešení s použitím [sady SDK pro Dynamics 365 Customer Engagement aplikací](https://docs.microsoft.com/dynamics365/customer-engagement/developer/get-started-sdk).  Řešení využít celou řadu forem, jak je popsáno v [modely programování pro Dynamics 365 Customer Engagement aplikací](https://docs.microsoft.com/dynamics365/customer-engagement/developer/programming-models).  Zvolit formulář, který nejlépe odpovídá vašim požadavkům řešení.  Při vývoji řešení, existuje několik problémů, které musí řešit, jako jsou možnosti rozšiřitelnosti, komponenty řešení a kompatibilita verzí.  Další informace najdete v tématu [seznámení s řešeními](https://docs.microsoft.com/dynamics365/customer-engagement/developer/introduction-solutions).
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové sady Dynamics 365 pro Customer Engagement & nabídky PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-Většina řešení Dynamics 365 publikovaných na webu AppSource je spravovaných aplikací distribuovaných jako soubory balíčku.
-
-
-## <a name="creating-and-storing-the-package"></a>Vytvoření a uložení balíčku
-
-Paralelní dokumentaci vytváření Dynamics 365 pro Customer Engagement nabízí je najdete v části [publikování aplikace na AppSource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).  Následující obsažené témata podrobnosti o tom, jak vytvořit soubor balíčku řešení a nahrajte ho do úložiště Azure:
-
-- [Krok 4: Vytvoření balíčku AppSource pro aplikaci](https://docs.microsoft.com/dynamics365/customer-engagement/developer/create-package-app-appsource) – vysvětluje, jak vytvořit soubor komprimované (zip), který představuje vaše spravovaná aplikace a obsahuje: prostředky složku řešení, vlastní kód knihovny DLL, soubor s informacemi o typ MIME, ikona balíčku AppSource, licence soubor podmínky (HTML) a obsah souborů (XML).
-- [Krok 5: Váš balíček AppSource Store ve službě Azure Storage a generovat adresu URL s klíčem SAS](https://docs.microsoft.com/dynamics365/customer-engagement/developer/store-appsource-package-azure-storage) – vysvětluje, jak uložit soubor balíčku AppSource v účtu úložiště objektů Blob v Microsoft Azure a pomocí klíče sdíleného přístupového podpisu (SAS) můžete sdílet soubor balíčku. Váš soubor balíčku se načte z umístění služby Azure Storage k certifikaci a pro AppSource zkušebních verzí a publikování.
-
-
-## <a name="next-steps"></a>Další postup
-
-Pokud jste tak již neučinili, [vytvořit vaše Dynamics 365 Customer Engagement nabídky](./cpp-create-offer.md).  Pak budete připraveni [publikování vaší nabídky](./cpp-publish-offer.md).
+Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) vytvořte.

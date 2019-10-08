@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703397"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030291"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Tvůrce výrazů pro tok dat mapování
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 V Azure Data Factory mapování toku dat najdete pole výrazů, kde můžete zadat výrazy pro transformaci dat. V těchto polích můžete použít sloupce, pole, proměnné, parametry a funkce z datového toku. Chcete-li sestavit výraz, použijte Tvůrce výrazů, který je spuštěn, kliknutím do textového pole výraz uvnitř transformace. Při výběru sloupců pro transformaci se taky někdy zobrazí možnosti vypočítaného sloupce. Když na něj kliknete, uvidíte také, že se spustil Tvůrce výrazů.
 

@@ -16,14 +16,14 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211953"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030656"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Kurz: Nabízená oznámení v aplikacích SWIFT pro iOS, které používají Notification Hubs REST API
+# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Kurz: nabízená oznámení v aplikacích SWIFT pro iOS, které používají Notification Hubs REST API
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -42,7 +42,7 @@ Tento kurz vás provede následujícími kroky:
 > * Připojte svoji aplikaci pro iOS k centru oznámení.
 > * Otestujte řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postup sledovat, potřebujete:
 
@@ -89,18 +89,18 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
 
 1. Aktualizujte **devsettings. plist** tak, aby zahrnovaly následující položky konfigurace pomocí vlastních hodnot z centra oznámení, které jste zřídili:
 
-   | Klíč                            | type                     | Value                     |
+   | Klíč                            | Typ                     | Hodnota                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Řetězec                   | \<hubKey>                  |
-   | notificationHubKeyName         | Řetězec                   | \<hubKeyName>              |
-   | notificationHubName            | Řetězec                   | \<hubName>                 |
-   | notificationHubNamespace       | Řetězec                   | \<hubNamespace>            |
+   | notificationHubKey             | Řetězec                   | @no__t – 0hubKey >                  |
+   | notificationHubKeyName         | Řetězec                   | @no__t – 0hubKeyName >              |
+   | notificationHubName            | Řetězec                   | @no__t – 0hubName >                 |
+   | notificationHubNamespace       | Řetězec                   | @no__t – 0hubNamespace >            |
 
    Požadované hodnoty můžete najít tak, že přejdete na prostředek centra oznámení v Azure Portal. Zejména hodnoty **notificationHubName** a **notificationHubNamespace** jsou v pravém horním rohu souhrnu **Essentials** na stránce **Přehled** .
 
    ![Shrnutí Notification Hubs Essentials](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Hodnoty **notificationHubKeyName** a **notificationHubKey** můžete najít také tak, že přejdete na **zásady přístupu** a vyberete příslušné **zásady přístupu**, například `DefaultFullSharedAccessSignature`. Potom zkopírujte z **primárního připojovacího řetězce** hodnotu s `SharedAccessKeyName=` předponou pro `notificationHubKeyName` a hodnotu s `SharedAccessKey=` předponou pro `notificationHubKey`.
+   Hodnoty **notificationHubKeyName** a **notificationHubKey** můžete najít také tak, že přejdete na **zásady přístupu** a vyberete příslušné **zásady přístupu**, například `DefaultFullSharedAccessSignature`. Potom zkopírujte z **primárního připojovacího řetězce** hodnotu s předponou `SharedAccessKeyName=` pro `notificationHubKeyName` a hodnotu s předponou `SharedAccessKey=` pro `notificationHubKey`.
 
    Připojovací řetězec by měl být v následujícím formátu:
 
@@ -108,15 +108,15 @@ V této části vytvoříte aplikaci pro iOS, která se připojí k centru ozná
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Chcete-li tuto možnost zjednodušit, zadejte `DefaultFullSharedAccessSignature` , abyste mohli použít token k odesílání oznámení. V praxi `DefaultListenSharedAccessSignature` by byla lepší volbou pro situace, kdy chcete dostávat jenom oznámení.
+   Pokud to chcete zachovat, zadejte `DefaultFullSharedAccessSignature`, abyste mohli použít token k odesílání oznámení. V praxi je `DefaultListenSharedAccessSignature` lepší volbou pro situace, kdy chcete dostávat jenom oznámení.
 
 1. V části **Navigátor projektu**vyberte **název projektu** a pak vyberte kartu **Obecné** .
 
-1. Najděte **identitu** a pak nastavte hodnotu **identifikátoru sady prostředků** tak, aby `com.<organization>.PushDemo`odpovídala hodnotě, která je použitá pro **ID aplikace** z předchozího kroku.
+1. Najděte **identitu** a pak nastavte hodnotu **identifikátoru sady** , aby odpovídala `com.<organization>.PushDemo`, což je hodnota, která se používá pro **ID aplikace** z předchozího kroku.
 
 1. Vyhledejte **podepisování**a potom vyberte příslušný **tým** pro svůj **účet Apple Developer**. Hodnota **týmu** by měla odpovídat tomu, ve kterém jste vytvořili certifikáty a profily.
 
-1. Xcode by měl automaticky stáhnout příslušnou hodnotu **zřizovacího profilu** na základě **identifikátoru sady prostředků**. Pokud nevidíte novou hodnotu **zřizovacího profilu** , zkuste obnovit profily pro **podpisovou identitu** tak, že vyberete zobrazení**účtu** >  **Xcode** > **Předvolby** >  **. Podrobnosti**. Vyberte **podpisovou identitu**a pak kliknutím na tlačítko **aktualizovat** v pravém dolním rohu Stáhněte profily.
+1. Xcode by měl automaticky stáhnout příslušnou hodnotu **zřizovacího profilu** na základě **identifikátoru sady prostředků**. Pokud nevidíte novou hodnotu **zřizovacího profilu** , zkuste aktualizovat profily **podpisové identity** tak, že vyberete **Xcode** > **Předvolby**@no__t **-5 @no__t**-7 –**Podrobnosti zobrazení**. Vyberte **podpisovou identitu**a pak kliknutím na tlačítko **aktualizovat** v pravém dolním rohu Stáhněte profily.
 
 1. Vyberte kartu **Možnosti** a zajistěte, aby byla povolená **nabízená oznámení** .
 
@@ -285,8 +285,8 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 Samotný proces zahrnuje stejný šest klíčových kroků:  
 
 1. Výpočet doby platnosti ve formátu [epocha času v systému UNIX](https://en.wikipedia.org/wiki/Unix_time) , což znamená, že počet sekund uplynulý od půlnoci koordinovaného světového času, od 1. ledna 1970.
-1. Formátování **ResourceUrl** , které představuje prostředek, ke kterému se pokoušíte získat přístup, je v procentech zakódovaných a malými písmeny. **ResourceUrl** má formu `'https://<namespace>.servicebus.windows.net/<hubName>'`.
-1. Připravuje se **StringToSign**, který je `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`formátovaný jako.
+1. Formátování **ResourceUrl** , které představuje prostředek, ke kterému se pokoušíte získat přístup, je v procentech zakódovaných a malými písmeny. **ResourceUrl** má formulář `'https://<namespace>.servicebus.windows.net/<hubName>'`.
+1. Připravuje se **StringToSign**, který je naformátovaný jako `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`.
 1. Výpočet a kódování Base64 – **Signatura** pomocí algoritmu hash HMAC-SHA256 hodnoty **StringToSign** . Hodnota hash se používá spolu s **klíčovou** částí **připojovacího řetězce** pro příslušné **autorizační pravidlo**.
 1. Formátování kódovaného formátu **Base64 tak, aby bylo** zakódováno v procentech.
 1. Vytvoření tokenu v očekávaném formátu pomocí hodnot **UrlEncodedSignature**, **ExpiryEpoch**, **KeyName**a **UrlEncodedResourceUrl** .
@@ -297,7 +297,7 @@ Pro účely tohoto příkladu SWIFT budete pomocí knihovny **CommonCrypto** Ope
 
 Postup přidání a konfigurace přemostění hlavičky:
 
-1. V Xcode vyberte **soubor** > **hlavičkového**souboru**nového** > **souboru** > . Pojmenujte hlavičkový soubor **BridgingHeader. h**.
+1. V Xcode vyberte **soubor** > **Nový** **soubor  >  @no__t**-5**soubor hlaviček**. Pojmenujte hlavičkový soubor **BridgingHeader. h**.
 
 1. Upravte soubor tak, aby importoval **CommonHMAC. h**:
 
@@ -313,11 +313,11 @@ Postup přidání a konfigurace přemostění hlavičky:
 
 1. Aktualizujte **nastavení sestavení** cíle tak, aby odkazovalo na hlavičku přemostění:
 
-   1. Otevřete kartu **Nastavení** budovy a přejděte dolů k části **kompilátor** SWIFT.
+   1. Otevřete kartu **Nastavení budovy** a přejděte dolů k části **kompilátor SWIFT** .
 
-   1. Zajistěte, aby byla možnost  **Hlavička kompatibility cíl-C**nastavená na **hodnotu Ano**.
+   1. Zajistěte, aby byla možnost **Hlavička kompatibility cíl-C** nastavená na **hodnotu Ano**.
 
-   1. Zadejte cestu `'<ProjectName>/BridgingHeader.h'` k souboru do možnosti **hlavičkového** mostu cíl-C. Toto je cesta k souboru v naší hlavičce přemostění.
+   1. Zadejte cestu k souboru `'<ProjectName>/BridgingHeader.h'` do možnosti **hlavičkového přemostění v cíli C** . Toto je cesta k souboru v naší hlavičce přemostění.
 
    Pokud tyto možnosti nemůžete najít, **Ujistěte se,** že máte vybrané zobrazení místo **základní** nebo **přizpůsobené**.
 
@@ -410,11 +410,11 @@ Postupujte podle těchto kroků a zavolejte rozhraní API **instalace** :
 
 1. Hlavičky požadavku nakonfigurujte takto:
 
-   | Klíč           | Value            |
+   | Klíč           | Hodnota            |
    | ------------- | ---------------- |
    | Typ obsahu  | application/json |
-   | Authorization | \<sasToken >       |
-   | x-ms-version  | 2015-01          |
+   | Autorizace | @no__t – 0sasToken >       |
+   | x-MS-Version  | 2015-01          |
 
 1. Vyberte tlačítko **Code (kód** ), které se zobrazí v pravém horním rohu pod tlačítkem **Uložit** . Požadavek by měl vypadat podobně jako v následujícím příkladu:
 
@@ -428,7 +428,7 @@ Postupujte podle těchto kroků a zavolejte rozhraní API **instalace** :
     Postman-Token: <postmanToken>
     ```
 
-1. Vyberte **odeslat** tlačítko.
+1. Klikněte na tlačítko **Odeslat** .
 
 V tuto chvíli neexistují žádné registrace pro zadaný **installationId** . Ověřování by mělo mít za následek odpověď "404 nebylo nalezeno", nikoli odpověď "401 neautorizovaného". Tento výsledek by měl potvrdit, že se token SAS přijal.
 
@@ -658,12 +658,12 @@ Oznámení můžete odesílat prostřednictvím [REST API](/rest/api/notificatio
 
 1. Hlavičky požadavku nakonfigurujte takto:
 
-   | Klíč                            | Value                          |
+   | Klíč                            | Hodnota                          |
    | ------------------------------ | ------------------------------ |
-   | Typ obsahu                   | application/json;charset=utf-8 |
-   | Authorization                  | \<sasToken >                     |
-   | ServiceBusNotification-Format  | Šablony                       |
-   | Tags                           | "12345"                        |
+   | Typ obsahu                   | Application/JSON; charset = UTF-8 |
+   | Autorizace                  | @no__t – 0sasToken >                     |
+   | ServiceBusNotification – formát  | šablona                       |
+   | Značky                           | "12345"                        |
 
 1. Nakonfigurujte **text** žádosti na použití **surového-JSON (Application. JSON)** s následující datovou částí JSON:
 
@@ -690,7 +690,7 @@ Oznámení můžete odesílat prostřednictvím [REST API](/rest/api/notificatio
     }
     ```
 
-1. Vyberte **odeslat** tlačítko.
+1. Klikněte na tlačítko **Odeslat** .
 
 Měli byste získat stavový kód úspěchu a obdržet oznámení v klientském zařízení.
 

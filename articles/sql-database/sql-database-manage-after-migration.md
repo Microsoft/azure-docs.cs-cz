@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845599"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028254"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nový DBA v cloudu – Správa databází s jedním a fondem v Azure SQL Database
 
@@ -32,7 +32,7 @@ Tento článek popisuje některé základní charakteristiky Azure SQL Database 
 - Provozní kontinuita a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní monitorování a údržba databáze
-- Přesun dat
+- Pohyb dat
 
 > [!NOTE]
 > Tento článek se týká následujících možností nasazení v Azure SQL Database: samostatné databáze a elastické fondy. Neplatí pro možnost nasazení Managed instance v SQL Database.
@@ -66,8 +66,8 @@ Nevytváříte zálohy v Azure SQL DB, což znamená, že nemusíte být. SQL Da
 
 |Úroveň služby|Doba uchování ve dnech|
 |---|:---:|
-|Basic|7|
-|Standard|35|
+|Úroveň Basic|7|
+|Úroveň Standard|35|
 |Premium|35|
 |||
 
@@ -85,7 +85,7 @@ Pokud není nakonfigurovaná skupina automatického převzetí služeb při selh
 
 Tradiční místní SQL Server instalační program vyžaduje, abyste aktivně spravovali dostupnost pomocí funkcí, jako je Clustering s podporou převzetí služeb při selhání, zrcadlení databáze, replikace transakcí nebo přesouvání protokolů a správu záloh, abyste zajistili, že Provozní kontinuita. S SQL Database platforma je spravuje za vás, takže se můžete soustředit na vývoj a optimalizaci databázové aplikace a nedělejte si starosti se správou havárií. Můžete mít nakonfigurované plány zálohování a zotavení po havárii a pracovat s několika kliknutími na Azure Portal (nebo několika příkazy pomocí rozhraní API PowerShellu).
 
-Další informace o zotavení po havárii najdete v těchto tématech: [Zotavení po havárii Azure SQL DB 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+Další informace o zotavení po havárii najdete v tématu: [Azure SQL DB – zotavení po havárii 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
 ## <a name="security-and-compliance"></a>Zabezpečení a dodržování předpisů
 
@@ -130,7 +130,7 @@ K dispozici je více postupů, které můžete použít k dosažení optimální
 
 Brána firewall zabraňuje přístup k vašemu serveru z externí entity tím, že umožňuje přístup k vašemu SQL Database serveru jenom konkrétním entitám. Ve výchozím nastavení jsou všechna připojení a databáze uvnitř SQL Database serveru zakázané, s výjimkou připojení přicházejících z jiných služeb Azure. Pomocí pravidla brány firewall můžete otevřít přístup k serveru pouze k entitám (například k počítači vývojáře), který schválíte, povolením IP adresy tohoto počítače přes bránu firewall. Umožňuje taky zadat rozsah IP adres, pro které chcete povolit přístup k serveru SQL Database. Například IP adresy počítače pro vývojáře ve vaší organizaci můžete přidat najednou zadáním rozsahu na stránce nastavení brány firewall.
 
-Pravidla brány firewall můžete vytvořit na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall protokolu IP na úrovni serveru se dají vytvořit pomocí Azure Portal nebo pomocí SSMS. Další informace o tom, jak nastavit pravidlo brány firewall na úrovni serveru a databáze, najdete v těchto tématech: [Vytvořte pravidla brány firewall protokolu IP v SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
+Pravidla brány firewall můžete vytvořit na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall protokolu IP na úrovni serveru se dají vytvořit pomocí Azure Portal nebo pomocí SSMS. Další informace o tom, jak nastavit pravidlo brány firewall na úrovni serveru a databáze, najdete v tématu: [Vytvoření pravidel brány firewall protokolu IP v SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Koncové body služby
 
@@ -152,11 +152,11 @@ Port 1433. SQL Database komunikuje prostřednictvím tohoto portu. Pokud se chce
 
 #### <a name="sql-database-auditing"></a>Auditování SQL Database
 
-Pomocí SQL Database můžete zapnout auditování a sledovat události databáze. [SQL Database auditování](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditu ve vašem účtu Azure Storage. Auditování je užitečné hlavně v případě, že máte v úmyslu získat přehled o potenciálních porušení zabezpečení a zásad, zachovat dodržování předpisů atd. Umožňuje definovat a konfigurovat určité kategorie událostí, které považujete za audit a na základě toho, že můžete získat předem nakonfigurované sestavy a řídicí panel, abyste získali přehled o událostech, ke kterým dochází v databázi. Tyto zásady auditování můžete použít buď na úrovni databáze, nebo na úrovni serveru. Návod, jak zapnout auditování pro server nebo databázi, najdete v tématech: [Povolte auditování SQL Database](sql-database-security-tutorial.md#enable-security-features).
+Pomocí SQL Database můžete zapnout auditování a sledovat události databáze. [SQL Database auditování](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditu ve vašem účtu Azure Storage. Auditování je užitečné hlavně v případě, že máte v úmyslu získat přehled o potenciálních porušení zabezpečení a zásad, zachovat dodržování předpisů atd. Umožňuje definovat a konfigurovat určité kategorie událostí, které považujete za audit a na základě toho, že můžete získat předem nakonfigurované sestavy a řídicí panel, abyste získali přehled o událostech, ke kterým dochází v databázi. Tyto zásady auditování můžete použít buď na úrovni databáze, nebo na úrovni serveru. Návod, jak zapnout auditování pro server nebo databázi, najdete v tématu: [Povolení auditování SQL Database](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Detekce hrozeb
 
-Díky [detekci hrozeb](sql-database-threat-detection.md)získáte možnost reagovat na zabezpečení nebo porušení zásad zjištěné auditováním velmi snadno. Nemusíte být odborníkem na zabezpečení, abyste mohli řešit potenciální hrozby nebo porušení v systému. Detekce hrozeb má také některé integrované možnosti, jako je detekce injektáže SQL. Injektáže SQL je pokus o změnu nebo zabezpečení dat a poměrně běžný způsob útoku na databázi aplikace obecně. Detekce hrozeb spouští několik sad algoritmů, které zjišťují potenciální chyby zabezpečení a útoky prostřednictvím injektáže SQL, a také vzory přístupu k databázi neobvyklé (například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Bezpečnostní důstojníci nebo jiní určení správci obdrží e-mailové oznámení, pokud se v databázi zjistí hrozba. Každé oznámení poskytuje podrobné informace o podezřelé aktivitě a doporučeních o tom, jak tuto hrozbu dále prozkoumat a zmírnit. Informace o tom, jak zapnout detekci hrozeb, najdete tady: [Povolte detekci hrozeb](sql-database-security-tutorial.md#enable-security-features).
+Díky [detekci hrozeb](sql-database-threat-detection.md)získáte možnost reagovat na zabezpečení nebo porušení zásad zjištěné auditováním velmi snadno. Nemusíte být odborníkem na zabezpečení, abyste mohli řešit potenciální hrozby nebo porušení v systému. Detekce hrozeb má také některé integrované možnosti, jako je detekce injektáže SQL. Injektáže SQL je pokus o změnu nebo zabezpečení dat a poměrně běžný způsob útoku na databázi aplikace obecně. Detekce hrozeb spouští několik sad algoritmů, které zjišťují potenciální chyby zabezpečení a útoky prostřednictvím injektáže SQL, a také vzory přístupu k databázi neobvyklé (například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Bezpečnostní důstojníci nebo jiní určení správci obdrží e-mailové oznámení, pokud se v databázi zjistí hrozba. Každé oznámení poskytuje podrobné informace o podezřelé aktivitě a doporučeních o tom, jak tuto hrozbu dále prozkoumat a zmírnit. Informace o tom, jak zapnout detekci hrozeb, najdete v tématu: [Povolení detekce hrozeb](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Návody chránit moje data obecně na SQL Database
 
@@ -173,7 +173,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
 |**Databázový server má přístup k citlivým datům.**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
-|**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
+|**Změny aplikací, které jsou nutné k použití této funkce**|Poskytuje|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|Úroveň databáze|
 ||||
 
@@ -181,7 +181,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 
 Každá aplikace má určitou bitovou část citlivých dat v databázi, kterou je třeba chránit před tím, než bude viditelná pro všechny. Někteří zaměstnanci v organizaci si musí tato data zobrazit, ale ostatní by si tato data nemohli zobrazit. Jedním z příkladů je mzdy zaměstnanců. Vedoucí bude potřebovat přístup k údajům o mzdě pro své přímé sestavy, ale jednotliví členové týmu by neměli mít přístup k informacím o mzdě jejich partnerských vztahů. Dalším scénářem jsou vývojáři dat, kteří můžou v průběhu vývoje nebo testování spolupracovat s citlivými údaji, například čísla sociálního zabezpečení zákazníky. Tyto informace nemusí být k dispozici vývojářům. V takových případech musí být citlivá data buď maskována, nebo nemusí být vystavena vůbec. SQL Database nabízí dva takové přístupy, které brání neoprávněným uživatelům zobrazovat citlivá data:
 
-[Maskování dynamických dat](sql-database-dynamic-data-masking-get-started.md) je funkce maskování dat, která umožňuje omezit vystavení citlivých dat jejich maskováním uživatelům bez privilegovaných oprávnění na aplikační vrstvě. Definujete pravidlo maskování, které může vytvořit masku maskování (například pokud chcete zobrazit jenom poslední čtyři číslice národního RODNÉho IDENTIFIKÁTORu: XXX-XX-0000, označit většinu z nich jako xs) a určit, kteří uživatelé mají být z pravidla maskování vyloučeni. Maskování probíhá průběžně a k dispozici jsou různé funkce maskování pro různé kategorie dat. Dynamické maskování dat umožňuje automaticky rozpoznávat citlivá data ve vaší databázi a použít na ni maskování.
+[Maskování dynamických dat](sql-database-dynamic-data-masking-get-started.md) je funkce maskování dat, která umožňuje omezit vystavení citlivých dat jejich maskováním uživatelům bez privilegovaných oprávnění na aplikační vrstvě. Definujete pravidlo maskování, které může vytvořit masku maskování (například pokud chcete zobrazit jenom poslední čtyři číslice RODNÉho IDENTIFIKÁTORu: XXX-XX-0000 a označit většinu z nich jako xs) a určit, kteří uživatelé mají být z pravidla maskování vyloučeni. Maskování probíhá průběžně a k dispozici jsou různé funkce maskování pro různé kategorie dat. Dynamické maskování dat umožňuje automaticky rozpoznávat citlivá data ve vaší databázi a použít na ni maskování.
 
 [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) vám umožňuje řídit přístup na úrovni řádků. To znamená, že určité řádky v tabulce databáze založené na uživateli, který spouští dotaz (členství ve skupině nebo kontext spuštění), jsou skryté. Omezení přístupu se provádí na úrovni databáze místo v aplikační vrstvě, aby se zjednodušila logika vaší aplikace. Začnete vytvořením predikátu filtru, odfiltrování řádků, které nejsou vystavené, a zásad zabezpečení další definování, kdo má přístup k těmto řádkům. Nakonec koncový uživatel spustí dotaz a v závislosti na oprávnění uživatele buď zobrazí tyto omezené řádky, nebo je nedokáže vůbec zobrazit.
 
@@ -198,7 +198,7 @@ V TDE existuje dvě klíčová hierarchie – data v jednotlivých uživatelský
 
 Ve výchozím nastavení je hlavní klíč pro transparentní šifrování dat spravovaný službou SQL Database pro usnadnění práce. Pokud by vaše organizace měla za hlavní klíč kontrolu, je k dispozici možnost použít Azure Key Vault] (SQL-Database-Always-Encrypted-Azure-Key-vault.md) jako úložiště klíčů. Pomocí Azure Key Vault vaše organizace předpokládá kontrolu nad správou klíčů, otočením a řízením oprávnění. [Rotace nebo přepínání typu hlavního klíče TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) je rychlé, protože klíč DEK ho znovu zašifruje. V organizacích, které mají oddělení rolí mezi zabezpečením a správou dat, může správce zabezpečení zřídit klíčový materiál pro hlavní klíč TDE ve službě Azure Key Vault a zadat Azure Key Vault identifikátoru klíče pro správce databáze, který se má použít pro šifrování v klidovém umístění na serveru. Key Vault je navržený tak, že Microsoft nevidí ani neextrahuje žádné šifrovací klíče. Získáte také centralizovanou správu klíčů pro vaši organizaci.
 
-#### <a name="always-encrypted"></a>Funkce Always Encrypted
+#### <a name="always-encrypted"></a>Always Encrypted
 
 V Always Encrypted existuje také [dvě klíčová hierarchie](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) – sloupec citlivých dat je zašifrovaný šifrovacím klíčem AES 256-Column (cek), který je zase zašifrovaný pomocí hlavního klíče sloupce (CMK). Ovladače klienta, které jsou k dispozici pro Always Encrypted, nemají žádná omezení délky CMKs. Šifrovaná hodnota CEK je uložena v databázi a CMK je uložena v úložišti důvěryhodných klíčů, jako je například úložiště certifikátů systému Windows, Azure Key Vault nebo modul hardwarového zabezpečení.
 
@@ -218,7 +218,7 @@ Síťový provoz mezi vaší organizací a SQL Database by byl obecně směrová
 - [Any-to-Any](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route také umožňuje zvýšit až dvojnásobek limitu šířky pásma, který zakoupíte bez dalších poplatků. Je také možné nakonfigurovat připojení mezi oblastmi pomocí expresní trasy. Seznam zprostředkovatelů připojení ER zobrazíte takto: [Partneři a umístění partnerského vztahu pro Express Route](../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
+Express Route také umožňuje zvýšit až dvojnásobek limitu šířky pásma, který zakoupíte bez dalších poplatků. Je také možné nakonfigurovat připojení mezi oblastmi pomocí expresní trasy. Pokud chcete zobrazit seznam poskytovatelů připojení ER, přečtěte si téma: [partneři a umístění partnerského vztahu pro Express Route](../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
 
 - [Úvod do expresní trasy](../expressroute/expressroute-introduction.md)
 - [Požadavky](../expressroute/expressroute-prerequisites.md)
@@ -260,7 +260,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -274,17 +274,17 @@ Z tohoto grafu můžete také nakonfigurovat výstrahy podle prostředku. Tyto v
 
 Můžete zadat dotaz na zobrazení dynamické správy [Sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , které vrátí historii statistik spotřeby prostředků za poslední hodinu a zobrazení katalogu System Catalog [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , které vrátí historii za posledních 14 dní.
 
-#### <a name="query-performance-insight"></a>Query Performance Insight
+#### <a name="query-performance-insight"></a>Přehled o výkonu dotazů
 
 [Query Performance Insight](sql-database-query-performance.md) vám umožní zobrazit historii nejdůležitějších dotazů využívajících prostředky a dlouhotrvajících dotazů pro konkrétní databázi. Můžete rychle identifikovat hlavní dotazy podle využití prostředků, doby trvání a četnosti provádění. Můžete sledovat dotazy a detekovat regresi. Tato funkce vyžaduje, aby [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bylo povolené a aktivní pro databázi.
 
-![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Přehled o výkonu dotazů](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (Preview) v protokolech Azure Monitor
 
-[Protokoly Azure monitor](../azure-monitor/insights/azure-sql.md) umožňují shromažďovat a vizualizovat klíčové metriky výkonu Azure SQL Azure a podporují až 150 000 databází sql a 5 000 elastických fondů SQL na pracovní prostor. Můžete ji použít k monitorování a přijímání oznámení. Metriky SQL Database a elastického fondu můžete monitorovat v několika předplatných Azure a elastických fondech a lze je použít k identifikaci problémů v každé vrstvě aplikačního zásobníku.
+[Protokoly Azure monitor](../azure-monitor/insights/azure-sql.md) umožňují shromažďovat a vizualizovat klíčové metriky výkonu služby Azure SQL Database, které podporují až 150 000 databází sql a 5 000 elastických fondů SQL na pracovní prostor. Můžete ji použít k monitorování a přijímání oznámení. Metriky SQL Database a elastického fondu můžete monitorovat v několika předplatných Azure a elastických fondech a lze je použít k identifikaci problémů v každé vrstvě aplikačního zásobníku.
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Všímáte problémy s výkonem: Jak se SQL Database metodologie řešení potíží liší od SQL Server
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Všímáte problémy s výkonem: jak se SQL Database metodologie řešení potíží liší od SQL Server
 
 Hlavní část technik řešení potíží, kterou byste použili pro diagnostiku problémů s výkonem dotazů a databází, zůstávají stejné. Po všech stejných SQL Server modul cloudu. Platforma – Azure SQL DB je však sestavena v "Intelligence". Může vám pomoct vyřešit a diagnostikovat problémy s výkonem ještě snadněji. Může také provádět některé z těchto opravných akcí vaším jménem a v některých případech aktivně opravovat – automaticky.
 
@@ -294,7 +294,7 @@ Při řešení potíží s výkonem je důležité určit, zda je to pouze aplik
 
 Pokud si navíc všimnete snížení celkového výkonu vaší databáze, můžete monitorovat zobrazení dynamické správy [Sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , abyste pochopili využití procesoru, vstupně-výstupních operací a paměti. Váš výkon může mít vliv na to, že vaše databáze nedostatek prostředky. Může se stát, že budete muset změnit velikost výpočetní kapacity nebo úroveň služby na základě požadavků na rostoucí a zmenšení zatížení.
 
-Komplexní sadu doporučení pro ladění problémů s výkonem najdete v těchto tématech: [Vyladění databáze](sql-database-performance-guidance.md#tune-your-database).
+Komplexní sadu doporučení pro ladění problémů s výkonem najdete v tématu: [vyladění databáze](sql-database-performance-guidance.md#tune-your-database).
 
 ### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Návody se ujistěte, že používáte příslušnou úroveň služby a výpočetní velikost
 
@@ -309,7 +309,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na ka�
 
 Aby se zajistila správná velikost výpočetní kapacity, můžete monitorovat spotřebu prostředků dotazu a databáze jedním z výše uvedených způsobů v tématu "Návody monitorovat výkon a využití prostředků v SQL Database". Pokud zjistíte, že dotazy nebo databáze jsou konzistentně spuštěné na procesoru nebo paměti atd. můžete zvážit horizontální navýšení kapacity až na vyšší výpočetní velikost. Podobně platí, že pokud si všimněte, že i během špičky, nebudete pravděpodobně prostředky používat, a to podobně. Zvažte snížení kapacity z aktuální výpočetní velikosti.
 
-Pokud máte vzor aplikace SaaS nebo scénář konsolidace databáze, zvažte použití elastického fondu pro optimalizaci nákladů. Elastický fond je skvělým způsobem, jak dosáhnout konsolidace databáze a optimalizaci nákladů. Další informace o správě více databází pomocí elastického fondu najdete v těchto tématech: [Spravujte fondy a databáze](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Pokud máte vzor aplikace SaaS nebo scénář konsolidace databáze, zvažte použití elastického fondu pro optimalizaci nákladů. Elastický fond je skvělým způsobem, jak dosáhnout konsolidace databáze a optimalizaci nákladů. Další informace o správě více databází pomocí elastického fondu naleznete v tématu: [Správa fondů a databází](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Jak často potřebuji spouštět kontroly integrity databáze pro moji databázi
 
@@ -319,11 +319,11 @@ SQL Database používá některé inteligentní techniky, které jim umožňují
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Návody exportovat a importovat data jako soubory BACPAC z SQL Database
 
-- **Exportovat**: Službu Azure SQL Database můžete exportovat jako soubor BACPAC z Azure Portal
+- **Export**: Azure SQL Database můžete exportovat jako soubor BACPAC z Azure Portal
 
    ![Export databáze](./media/sql-database-export/database-export1.png)
 
-- **Importovat**: Data můžete také importovat jako soubor BACPAC do databáze pomocí Azure Portal.
+- **Import**: můžete také importovat data jako soubor BacPac do databáze pomocí Azure Portal.
 
    ![Import databáze](./media/sql-database-import/import1.png)
 
@@ -332,7 +332,7 @@ SQL Database používá některé inteligentní techniky, které jim umožňují
 Toho můžete dosáhnout několika způsoby:
 
 - **[Synchronizace dat](sql-database-sync-data.md)** – Tato funkce pomáhá synchronizovat data obousměrně mezi několika místními databázemi SQL Server a SQL Database. Chcete-li provést synchronizaci s místními SQL Server databázemi, je nutné nainstalovat a nakonfigurovat agenta synchronizace v místním počítači a otevřít odchozí port TCP 1433.
-- **[Replikace transakcí](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – s replikací transakcí můžete synchronizovat data z místního prostředí do Azure SQL DB s místním vydavatelem a databází Azure SQL, která je předplatitelem. V současné době je podporována pouze tato instalace. Další informace o tom, jak migrovat data z místního prostředí do Azure SQL s minimálními výpadky, najdete v těchto tématech: [Použití replikace transakcí](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Replikace transakcí](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – s replikací transakcí můžete synchronizovat data z místního prostředí do Azure SQL DB s místním vydavatelem a databází Azure SQL, která je předplatitelem. V současné době je podporována pouze tato instalace. Další informace o tom, jak migrovat data z místního prostředí do Azure SQL s minimálním prostojem, najdete v tématu: [použití replikace transakcí](sql-database-single-database-migrate.md#method-2-use-transactional-replication) .
 
 ## <a name="next-steps"></a>Další kroky
 

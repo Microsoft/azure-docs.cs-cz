@@ -8,16 +8,16 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8f4ed6de5ff47efa441c371b80670c500f57c9bb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931919"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034064"
 ---
-# <a name="time-series-model"></a>Model Time Series
+# <a name="time-series-model"></a>Model služby Time Series
 
 Tento článek popisuje součást modelu časové řady Azure Time Series Insights ve verzi Preview. Zabývá se samotným modelem, jeho možnostmi a postupem, jak začít sestavovat a aktualizovat svůj vlastní model.
 
@@ -25,7 +25,7 @@ Data shromážděná ze zařízení IoT neobsahují kontextové informace, což 
 
 Modely časových řad hrají v dotazech a navigaci důležitou roli, protože dát zařízení a entity mimo zařízení. Data, která jsou trvalá v modelu časových řad, plní výpočty dotazů na časovou řadu tím, že využívají vzorce, které jsou v nich uložené.
 
-[![Přehled modelu časové řady](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[1Time – Přehled modelu řady @no__t](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
@@ -82,7 +82,7 @@ Time Series Insights typy mají proměnné, které jsou pojmenovány výpočty p
 
 Následující matice funguje jako legenda pro definice proměnných:
 
-[![Tabulka definice proměnné typu](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[@no__t – tabulka definic proměnných 1Type](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | Definice | Popis |
 | --- | ---|
@@ -129,12 +129,12 @@ V závislosti na *polích instance*se zobrazí atributy a hodnoty hierarchie, ja
 | ID časové řady | Pole instance |
 | --- | --- |
 | ID1 | "sestavování" = "1000", "patra" = "10", "místnost" = "55"  |
-| ID2 | "sestavování" = "1000", "místnost" = "55" |
+| ID 2 | "sestavování" = "1000", "místnost" = "55" |
 | ID3 | "Floor" = "10" |
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastavené žádné možnosti "budova", "patra" ani "místnost". |
 
-V předchozím příkladu **ID1** a **ID4** zobrazit jako součást hierarchie H1 v nástroji Azure Time Series Insights Explorer a zbývající jsou klasifikovány v rámci nenadřazených *instancí* , protože neodpovídají zadané hierarchii dat.
+V předchozím příkladu **ID1** a **ID4** zobrazit jako součást hierarchie H1 v nástroji Azure Time Series Insights Explorer a zbývající jsou klasifikovány v rámci *nenadřazených instancí* , protože neodpovídají zadané hierarchii dat.
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -189,7 +189,7 @@ Ukázka:
 
 Další informace o nastavení modelu časové řady najdete v [referenční dokumentaci](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md).
 

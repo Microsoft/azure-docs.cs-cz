@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827580"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034723"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (virtuální sítě) umožňují umístit spoustu vašich prostředků Azure do sítě směrovatelné do jiné sítě.  
@@ -59,10 +59,14 @@ Funkce integrace virtuální sítě:
 Integrace virtuální sítě nepodporuje zahrnutí následujících věcí:
 
 * připojení jednotky
-* Integrace AD 
-* Názv
+* Integrace služby AD 
+* NetBIOS
 
 ## <a name="regional-vnet-integration"></a>Místní integrace virtuální sítě 
+
+> [!NOTE]
+> Partnerský vztah ještě není k dispozici pro App Service na bázi Linux.
+>
 
 Pokud se integrace virtuální sítě používá s virtuální sítě ve stejné oblasti jako vaše aplikace, vyžaduje použití delegované podsítě s minimálně 32 adresami. Podsíť se nedá použít pro cokoli jiného. Odchozí volání vytvořená z vaší aplikace budou provedena z adres v delegované podsíti. Při použití této verze integrace virtuální sítě jsou volání provedena z adres ve vaší virtuální síti. Používání adres ve vaší virtuální síti umožňuje vaší aplikaci:
 
@@ -112,7 +116,7 @@ Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím d
 
 Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě.
 
-### <a name="service-endpoints"></a>Koncové body služby
+### <a name="service-endpoints"></a>Koncové body služeb
 
 Nová funkce integrace virtuální sítě umožňuje používat koncové body služby.  Pokud chcete pro vaši aplikaci používat koncové body služby, připojte se k vybrané virtuální síti pomocí nové integrace virtuální sítě a potom nakonfigurujte koncové body služby v podsíti, kterou jste použili pro integraci. 
 
@@ -129,7 +133,7 @@ Funkce podporuje jenom jedno virtuální rozhraní na pracovní proces.  Jedno v
 
 Vzhledem k povaze toho, jak tato technologie funguje, se nezobrazuje přenos, který se používá pro integraci virtuální sítě, v Network Watcher ani v protokolech toku NSG.  
 
-## <a name="gateway-required-vnet-integration"></a>Požadovaná brána Integration VNet 
+## <a name="gateway-required-vnet-integration"></a>požadovaná brána Integration VNet 
 
 Funkce integrace virtuální sítě požadovaná bránou:
 
@@ -230,7 +234,7 @@ Není nutná žádná další konfigurace, aby funkce Místní integrace virtuá
 > 
 > 
 
-## <a name="peering"></a>Partnerský vztah
+## <a name="peering"></a>Partnerské vztahy
 Pokud používáte partnerský vztah s místní integrací virtuální sítě, nemusíte provádět žádnou další konfiguraci. 
 
 Pokud používáte bránu, která vyžaduje integraci virtuální sítě s partnerským vztahem, budete muset nakonfigurovat několik dalších položek. Konfigurace partnerského vztahu pro práci s vaší aplikací:
@@ -250,11 +254,11 @@ Existují tři související poplatky za použití funkce integrace virtuální 
 * VPN Gateway náklady – pro bránu virtuální sítě, která je vyžadována pro síť VPN typu Point-to-site, se účtují náklady. Podrobnosti najdete na stránce s [cenami VPN Gateway][VNETPricing] .
 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
 
 #### <a name="tools"></a>Nástroje
-**Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je následující:
+**Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je:
 
     nameresolver.exe hostname [optional: DNS Server]
 
@@ -298,7 +302,7 @@ Mějte na paměti, že nevíte, jaká adresa bude vaše aplikace skutečně pou�
 
 Mezi další kroky ladění patří:
 
-* Připojte se k VIRTUÁLNÍmu počítači ve virtuální síti a pokuste se připojit k hostiteli prostředků: port. K otestování přístupu TCP použijte příkaz PowerShellu **test-NetConnection**. Syntaxe je následující:
+* Připojte se k VIRTUÁLNÍmu počítači ve virtuální síti a pokuste se připojit k hostiteli prostředků: port. K otestování přístupu TCP použijte příkaz PowerShellu **test-NetConnection**. Syntaxe je:
 
       test-netconnection hostname [optional: -Port]
 

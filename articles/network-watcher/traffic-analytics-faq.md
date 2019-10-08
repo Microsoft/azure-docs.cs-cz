@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610250"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026595"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -41,20 +41,20 @@ Aby bylo možné povolit analýzu provozu, musí váš účet splňovat jednu z 
 - Váš účet musí mít v oboru předplatného jeden z následujících rolí řízení přístupu na základě role (RBAC): vlastník, přispěvatel, čtenář nebo přispěvatel sítě.
 - Pokud váš účet není přiřazený k některé z výše uvedených rolí, musí být přiřazený k vlastní roli, která je přiřazená k následujícím akcím na úrovni předplatného.
             
-    - Microsoft.Network/applicationGateways/read
+    - Microsoft. Network/applicationGateways/Read
     - Microsoft. Network/Connections/Read
-    - Microsoft.Network/loadBalancers/read 
-    - Microsoft.Network/localNetworkGateways/read 
-    - Microsoft.Network/networkInterfaces/read 
-    - Microsoft.Network/networkSecurityGroups/read 
-    - Microsoft.Network/publicIPAddresses/read
+    - Microsoft. Network/loadBalancers/Read 
+    - Microsoft. Network/localNetworkGateways/Read 
+    - Microsoft. Network/networkInterfaces/Read 
+    - Microsoft. Network/networkSecurityGroups/Read 
+    - Microsoft. Network/publicIPAddresses/Read
     - Microsoft. Network/routeTables/Read
-    - Microsoft.Network/virtualNetworkGateways/read 
-    - Microsoft.Network/virtualNetworks/read
+    - Microsoft. Network/virtualNetworkGateways/Read 
+    - Microsoft. Network/virtualNetworks/Read
         
 Postup kontroly rolí přiřazených uživateli pro předplatné:
 
-1. Přihlaste se k Azure pomocí přihlašovacích údajů **-AzAccount**. 
+1. Přihlaste se k Azure pomocí **přihlašovacích údajů-AzAccount**. 
 
 2. Vyberte požadované předplatné pomocí **Select-AzSubscription**. 
 
@@ -68,39 +68,39 @@ Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předp
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 - Kanada – střed
 - Středozápadní USA
-- East US
-- Východní USA 2
+- USA – východ
+- Východ USA 2
 - Středoseverní USA
 - Středojižní USA
 - Střední USA
-- USA – západ
-- USA – západ 2
+- Západ USA
+- Západ USA 2
 - Francie – střed
 - Západní Evropa
 - Severní Evropa
 - Brazílie – jih
-- Spojené království – západ
+- Velká Británie – západ
 - Velká Británie – jih
 - Austrálie – východ
 - Austrálie – jihovýchod 
 - Východní Asie
 - Jihovýchodní Asie
-- Jižní Korea – střed
-- Střed Indie
-- Jižní Indie
+- Korea – střed
+- Indie – střed
+- Indie – jih
 - Japonsko – východ
 - Japonsko – západ
-- USA (Gov) – Virginia
+- USA – Virginie
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Kanada – střed
 - Středozápadní USA
-- USA – západ
-- USA – západ 2
+- Západ USA
+- Západ USA 2
 - Středojižní USA
 - Střední USA
-- East US
-- Východní USA 2
+- USA – východ
+- Východ USA 2
 - Francie – střed
 - Západní Evropa
 - Severní Evropa
@@ -109,10 +109,10 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 - Austrálie – jihovýchod
 - Východní Asie
 - Jihovýchodní Asie 
-- Jižní Korea – střed
-- Střed Indie
+- Korea – střed
+- Indie – střed
 - Japonsko – východ
-- USA (Gov) – Virginia
+- USA – Virginie
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Může skupin zabezpečení sítě povolit protokolování toků v různých oblastech, než je můj pracovní prostor?
 
@@ -143,15 +143,15 @@ Vyberte podporovanou oblast. Pokud vyberete nepodporovanou oblast, zobrazí se c
 Aby protokolování toků fungovalo správně, musí být zaregistrované poskytovatel Microsoft. Insights. Pokud si nejste jistí, jestli je pro vaše předplatné zaregistrovaný poskytovatel Microsoft. Insights, nahraďte v následujícím příkazu položku *xxxxx-xxxxx-xxxxxx-xxxx* a spusťte z PowerShellu následující příkazy:
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Nakonfiguroval (a) jsem řešení. Proč se na řídicím panelu nezobrazuje něco?
 
 První zobrazení řídicího panelu může trvat až 30 minut. Řešení musí nejdřív agregovat dostatek dat, aby bylo možné odvodit smysluplné poznatky. Pak generuje sestavy. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: "V tomto pracovním prostoru jsme nenašli žádná data pro vybraný časový interval. Zkuste změnit časový interval nebo vybrat jiný pracovní prostor. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co když se zobrazí tato zpráva: v tomto pracovním prostoru jsme nenašli žádná data pro vybraný časový interval. Zkuste změnit časový interval nebo vybrat jiný pracovní prostor. "?
 
 Vyzkoušejte následující možnosti:
 - Změňte časový interval na horním panelu.
@@ -160,7 +160,7 @@ Vyzkoušejte následující možnosti:
     
 Pokud potíže přetrvávají, vyvolejte ve [fóru hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844)obavy.
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "Probíhá analýza protokolů toku NSG poprvé. Dokončení tohoto procesu může trvat 20-30 minut. Vraťte se později. 2) Pokud výše uvedený krok nefunguje a váš pracovní prostor je pod bezplatnou SKU, zkontrolujte, jestli se tady používá pracovní prostor, abyste ověřili překročení kvóty, jinak najdete další informace v nejčastějších dotazech.
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "při prvním analyzování protokolů toku NSG. Dokončení tohoto procesu může trvat 20-30 minut. Vraťte se později. 2) Pokud výše uvedený krok nefunguje a váš pracovní prostor je pod bezplatnou SKU, zkontrolujte, jestli se tady používá pracovní prostor, abyste ověřili překročení kvóty, jinak najdete další informace v nejčastějších dotazech.
 
 Tato zpráva se může zobrazit, protože:
 - Analýza provozu byla nedávno povolena a pravděpodobně ještě nemusela agregovat dostatek dat, aby mohla odvodit smysluplné poznatky.
@@ -168,7 +168,7 @@ Tato zpráva se může zobrazit, protože:
     
 Pokud potíže přetrvávají, vyvolejte ve [fóru hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844)obavy.
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: "Vypadá to, že máme data prostředků (topologie) a žádné informace o tocích. Mezitím kliknutím sem zobrazíte data prostředků a další informace najdete v nejčastějších dotazech.
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co když se zobrazí tato zpráva: vypadá to, že máme data o prostředcích (topologie) a žádné informace o tocích. Mezitím kliknutím sem zobrazíte data prostředků a další informace najdete v nejčastějších dotazech.
 
 Informace o prostředcích vidíte na řídicím panelu. Nicméně nejsou k dispozici žádné statistiky související s tokem. Data nemusí být k dispozici z důvodu nekomunikačních toků mezi prostředky. Počkejte na 60 minut a znovu ověřte stav. Pokud potíže potrvají a jste si jisti, že existují komunikační toky mezi prostředky, vyvolejte obavy ve [fóru hlasu uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -266,72 +266,72 @@ Analýza provozu nemá integrovanou podporu pro výstrahy. Vzhledem k tomu, že 
 
 Stránka geografického mapování obsahuje dvě hlavní části:
     
-- **Banner**: Banner v horní části geografické mapy nabízí tlačítka pro výběr filtrů distribuce provozu (například nasazení, provoz ze zemí nebo oblastí a škodlivá). Když vyberete tlačítko, příslušný filtr se použije na mapě. Například pokud vyberete aktivní tlačítko, mapa zvýrazní aktivní datová centra v nasazení.
-- **Mapa**: Pod hlavičkou se v části Mapa zobrazuje distribuce provozu mezi datacentry Azure a zeměmi nebo oblastmi.
+- **Banner**: banner v horní části geografické mapy nabízí tlačítka pro výběr filtrů distribuce provozu (například nasazení, provoz ze zemí nebo oblastí a škodlivá). Když vyberete tlačítko, příslušný filtr se použije na mapě. Například pokud vyberete aktivní tlačítko, mapa zvýrazní aktivní datová centra v nasazení.
+- **Mapa**: pod hlavičkou se v části Mapa zobrazuje distribuce provozu mezi datacentry Azure a zeměmi nebo oblastmi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce geografického mapování pro hlavičku "filtr Azure DCss".
-- Chcete-li přejít na jiný filtr, použijte `Tab` buď `Right arrow` klíč, nebo. Chcete-li přejít zpět, použijte `Shift+Tab` buď `Left arrow` klíč, nebo. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Pokud `Enter` chcete použít `Down` vybraný filtr, stiskněte klávesy nebo klávesu šipka. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů pod sekcí map.
-- Chcete-li přepínat mezi hlavičkou `Ctrl+F6`a mapou, stiskněte klávesu.
+- Chcete-li přejít na jiný filtr, použijte buď `Tab`, nebo klíč `Right arrow`. Chcete-li přejít zpět, použijte buď `Shift+Tab`, nebo klíč `Left arrow`. Přední navigace je ponechána vpravo a následuje shora dolů.
+- Kliknutím na `Enter` nebo na klávesovou zkratku `Down` použijete vybraný filtr. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů pod sekcí map.
+- Chcete-li přepínat mezi hlavičkou a mapou, stiskněte `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-map"></a>Navigace na klávesnici na mapě
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
-- Chcete-li přejít na jiné zvýrazněné uzly v mapě, `Tab` použijte buď `Right arrow` klíč, nebo pro pohyb vpřed. Použijte `Shift+Tab` klíč`Left arrow` nebo pro zpětný pohyb.
-- Pokud chcete vybrat libovolný zvýrazněný uzel na mapě, použijte `Enter` klávesu nebo `Down arrow` .
-- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení pole `Right arrow` , `Left arrow` použijte klávesy a a přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
-- Když stisknete klávesu `Tab` , když je fokus v **poli Information Tool**, přesune se fokus do koncových bodů stejného kontinentu jako vybraný uzel. K přesunu `Left arrow` těchto koncových bodů použijte klávesy a.`Right arrow`
-- Chcete-li přejít na jiné koncové body toku nebo kontinenty, použijte `Tab` k přemístění vpřed a `Shift+Tab` k zpětnému přesunu.
-- Pokud je fokus v clusterech s kontinentem, zvýrazněte `Down` koncové body v rámci clusteru s kontinentem nebo pomocí kláves se `Enter` šipkami. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním poli clusteru kontinentů, použijte `Right arrow` buď `Left arrow` klávesu nebo, pro dopředu a zpětnou pohyb v uvedeném pořadí. U libovolného koncového bodu můžete použít `Shift+L` k přepnutí na linku připojení z vybraného uzlu do koncového bodu. Opětovným stisknutím `Shift+L` klávesy můžete přejít na vybraný koncový bod.
+- Po výběru jakéhokoli filtru v hlavičce a stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**datacentrum Azure** nebo **země/oblast**) v zobrazení mapy.
+- Chcete-li přejít na jiné zvýrazněné uzly v mapě, použijte buď `Tab`, nebo klíč `Right arrow` pro pohyb vpřed. Pro zpětný pohyb použijte `Shift+Tab` nebo klíč `Left arrow`.
+- Pokud chcete vybrat libovolný zvýrazněný uzel na mapě, použijte `Enter` nebo `Down arrow` klíč.
+- Při výběru všech takových uzlů se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko uzavřeno v **poli informační nástroj**. Chcete-li pokračovat v zobrazení **pole** , použijte `Right arrow` a `Left arrow` klávesy pro přesun vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný účinek jako výběr tlačítka zaměření v **poli Information Tool (informace**).
+- Když stisknete `Tab`, zatímco se fokus nachází v **poli informační nástroj**, přesune se fokus do koncových bodů ve stejné kontinentu jako vybraný uzel. K přesunu těchto koncových bodů použijte `Right arrow` a `Left arrow` klíče.
+- Pokud chcete přejít na jiné koncové body toku nebo kontinenty, použijte `Tab` pro pohyb vpřed a `Shift+Tab` pro zpětný pohyb.
+- Pokud je fokus na **kontinent clusterech**, zvýrazněte koncové body v rámci clusteru kontinentu pomocí šipek `Enter` nebo `Down`. Chcete-li přejít mezi koncovými body a tlačítkem Zavřít v informačním okně clusteru s kontinentem, použijte buď `Right arrow` nebo `Left arrow` klíč pro dopředu a zpětnou pohyb, v uvedeném pořadí. U libovolného koncového bodu můžete pomocí `Shift+L` přepnout na linku připojení z vybraného uzlu do koncového bodu. Stiskem `Shift+L` můžete přejít na vybraný koncový bod.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Navigace na klávesnici v libovolné fázi
     
-- `Esc`sbalí rozbalený výběr.
-- Klíč provádí stejnou akci jako `Esc`. `Up arrow` Klíč provádí stejnou akci jako `Enter`. `Down arrow`
-- Slouží `Shift+Plus` k přiblížení a `Shift+Minus` oddálení.
+- `Esc` sbalí rozbalený výběr.
+- Klíč `Up arrow` provádí stejnou akci jako `Esc`. Klíč `Down arrow` provádí stejnou akci jako `Enter`.
+- Přiblížit můžete pomocí `Shift+Plus` a `Shift+Minus` oddálení.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení topologie virtuální sítě?
 
 Stránka topologie virtuálních sítí obsahuje dvě hlavní části:
     
-- **Banner**: Banner v horní části topologie virtuálních sítí nabízí tlačítka pro výběr filtrů distribuce provozu (například připojené virtuální sítě, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete tlačítko aktivní, topologie zvýrazní aktivní virtuální sítě ve vašem nasazení.
-- **Topologie**: Pod hlavičkou se v části topologie zobrazuje distribuce provozu mezi virtuálními sítěmi.
+- **Banner**: banner v horní části topologie virtuálních sítí nabízí tlačítka pro výběr filtrů distribuce provozu (například připojené virtuální sítě, odpojené virtuální sítě a veřejné IP adresy). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete tlačítko aktivní, topologie zvýrazní aktivní virtuální sítě ve vašem nasazení.
+- **Topologie**: pod hlavičkou se v části topologie zobrazuje distribuce provozu mezi virtuálními sítěmi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce topologie virtuální sítě pro tento proužek filtrem "připojené virtuální sítě".
-- Pokud se chcete přesunout na jiný filtr, `Tab` použijte klávesu pro přesunutí vpřed. Chcete-li přejít zpět, `Shift+Tab` použijte klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Kliknutím `Enter` použijete vybraný filtr. Na základě výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (virtuální síť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií `Ctrl+F6`, stiskněte klávesu.
+- Chcete-li přejít na jiný filtr, přesuňte se pomocí klávesy `Tab` vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
+- Zvolený filtr použijete stisknutím `Enter`. Na základě výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (virtuální síť) v části topologie.
+- Chcete-li přepínat mezi bannerem a topologií, stiskněte `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune na jeden ze zvýrazněných uzlů (**VNet**) v zobrazení topologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, `Shift+Right arrow` použijte klávesu pro dopředný pohyb. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , `Right arrow` použijte `Left arrow` klávesy a k přesunutí vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
-- Po výběru všech takových uzlů můžete navštívit všechna jeho připojení, a to tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.
+- Po výběru jakéhokoli filtru na banneru a stisknutí `Ctrl+F6` se fokus přesune na jeden ze zvýrazněných uzlů (**VNet**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte k přesunu vpřed klíč `Shift+Right arrow`. 
+- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte klávesy `Right arrow` a `Left arrow` pro přesunutí vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný účinek jako výběr tlačítka zaměření v **poli Information Tool (informace**).
+- Na výběr všech takových uzlů můžete navštívit všechna jeho připojení, a to jedním kliknutím na klíč `Shift+Left arrow`. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím `Shift+Right arrow` znovu.
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Jak můžu přejít pomocí klávesnice v zobrazení topologie podsítě?
 
 Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
     
-- **Banner**: Banner v horní části topologie virtuální podsítě nabízí tlačítka pro výběr filtrů distribuce přenosů (například aktivních, středních a podsítí brány). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete aktivní tlačítko, topologie zvýrazní aktivní virtuální síť v nasazení.
-- **Topologie**: Pod hlavičkou se v části topologie zobrazuje distribuce přenosů mezi virtuálními podsítěmi.
+- **Banner**: banner v horní části topologie virtuální podsítě nabízí tlačítka pro výběr filtrů distribuce přenosů (například aktivních, středních a podsítí brány). Když vyberete tlačítko, příslušný filtr se aplikuje na topologii. Pokud například vyberete aktivní tlačítko, topologie zvýrazní aktivní virtuální síť v nasazení.
+- **Topologie**: pod hlavičkou se v části topologie zobrazuje distribuce provozu mezi virtuálními podsítěmi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Navigace na klávesnici na banneru
     
 - Ve výchozím nastavení je výběr na stránce topologie virtuálních podsítí pro tento proužek filtrem "podsítě".
-- Pokud se chcete přesunout na jiný filtr, `Tab` použijte klávesu pro přesunutí vpřed. Chcete-li přejít zpět, `Shift+Tab` použijte klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
-- Kliknutím `Enter` použijete vybraný filtr. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (podsíť) v části topologie.
-- Chcete-li přepínat mezi hlavičkou a topologií `Ctrl+F6`, stiskněte klávesu.
+- Chcete-li přejít na jiný filtr, přesuňte se pomocí klávesy `Tab` vpřed. Chcete-li přejít zpět, použijte `Shift+Tab` klíč. Přední navigace je ponechána vpravo a následuje shora dolů.
+- Zvolený filtr použijete stisknutím `Enter`. V závislosti na výběru a nasazení filtru se zvýrazní jeden nebo víc uzlů (podsíť) v části topologie.
+- Chcete-li přepínat mezi bannerem a topologií, stiskněte `Ctrl+F6`.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Navigace na klávesnici v topologii
     
-- Po výběru jakéhokoli filtru v proužku a jeho stisknutí `Ctrl+F6`se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
-- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, `Shift+Right arrow` použijte klávesu pro dopředný pohyb. 
-- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení pole `Right arrow` , `Left arrow` použijte klávesy a a přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
-- Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.    
+- Po výběru jakéhokoli filtru na banneru a stisknutí `Ctrl+F6` se fokus přesune do jednoho ze zvýrazněných uzlů (**podsítě**) v zobrazení topologie.
+- Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte k přesunu vpřed klíč `Shift+Right arrow`. 
+- Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li pokračovat v zobrazení **pole** , použijte `Right arrow` a `Left arrow` klávesy pro přesun vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný účinek jako výběr tlačítka zaměření v **poli Information Tool (informace**).
+- Po výběru všech takových uzlů můžete navštívit všechna jeho připojení, jednu po jedné, stisknutím klávesy `Shift+Left arrow`. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím `Shift+Right arrow` znovu.    
 

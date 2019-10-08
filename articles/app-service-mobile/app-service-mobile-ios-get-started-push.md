@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace s Azure Mobile Apps pro iOS
-description: Zjistěte, jak používat Azure Mobile Apps k odesílání nabízených oznámení do aplikace pro iOS.
+title: Přidání nabízených oznámení do aplikace pro iOS pomocí Azure Mobile Apps
+description: Naučte se používat Azure Mobile Apps k odesílání nabízených oznámení do vaší aplikace pro iOS.
 services: app-service\mobile
 documentationcenter: ios
 manager: crdun
@@ -14,42 +14,42 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 5ab968e88331f888dfcecd2cc30a658b0b0f53ec
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7a037cfb411eb3c15f60bb6a8763374d9102bc4e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445362"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027317"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Přidání nabízených oznámení do aplikace pro iOS
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [Rychlý start pro iOS] projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do projektu [rychlý Start pro iOS] , takže se do zařízení pošle nabízené oznámení pokaždé, když se do něj vloží záznam.
 
-Pokud použijete stažený projekt rychlého spuštění serveru, budete potřebovat balíček rozšíření nabízené oznámení. Další informace najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) průvodce.
+Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce se sadou SDK back-end serveru .NET pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) Guide.
 
-[Simulátoru iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Potřebujete na fyzickém zařízení iOS a [členství v programu Apple Developer](https://developer.apple.com/programs/ios/).
+[Simulátor iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Potřebujete fyzické zařízení se systémem iOS a [členství v programu Apple Developer](https://developer.apple.com/programs/ios/).
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Registrace aplikace pro nabízená oznámení
+## <a id="register"></a>Registrovat aplikaci pro nabízená oznámení
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure k odesílání nabízených oznámení
+## <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a id="update-server"></a>Aktualizovat back-endu k odesílání nabízených oznámení
+## <a id="update-server"></a>Aktualizace back-endu pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
@@ -57,17 +57,17 @@ Pokud použijete stažený projekt rychlého spuštění serveru, budete potřeb
 
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a id="test"></a>Nabízená oznámení
+## <a id="test"></a>Test nabízených oznámení
 
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a id="more"></a>Více
+## <a id="more"></a>Aktuálnější
 
-* Šablony poskytují flexibilitu pro odesílání nabízených oznámení napříč platformami a lokalizovaných nabízených oznámení. [Jak iOS použijte klientskou knihovnu pro Azure Mobile Apps](app-service-mobile-ios-how-to-use-client-library.md#templates) ukazuje, jak zaregistrovat šablony.
+* Šablony vám poskytnou flexibilitu při odesílání nabízených oznámení mezi platformami a lokalizovaných nabízených oznámení. Jak [používat klientskou knihovnu iOS pro Azure Mobile Apps](app-service-mobile-ios-how-to-use-client-library.md#templates) ukazuje, jak registrovat šablony.
 
 <!-- Anchors.  -->
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[Rychlý start pro iOS]: app-service-mobile-ios-get-started.md
+[rychlý Start pro iOS]: app-service-mobile-ios-get-started.md

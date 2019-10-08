@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001485"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030001"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme se zdvojením zařízení (Python)
 
@@ -27,11 +27,11 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace Python:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -171,7 +171,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Přidejte následující kód. Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymbolupřipojovacímřetězcemzařízení,kterýjstezkopírovalivčástiregistracenovéhozařízeníveslužběIoT`[IoTHub Device Connection String]` hub.
+4. Přidejte následující kód. Nahraďte hodnotu zástupného symbolu `[IoTHub Device Connection String]` připojovacím řetězcem zařízení, který jste zkopírovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -187,7 +187,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
             print(patch)
 
     def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():
@@ -242,7 +242,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
 
     ![druhý dotaz](./media/iot-hub-python-twin-getstarted/service-2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí registru.
 
@@ -252,4 +252,4 @@ Pomocí následujících zdrojů se naučíte:
 
 * V kurzu [použití požadovaných vlastností ke konfiguraci zařízení](tutorial-device-twins.md) nakonfigurujte zařízení pomocí požadovaných vlastností pro vyplňování zařízení.
 
-* interaktivní řízení zařízení (například zapnutí ventilátoru z aplikace řízené uživatelem) pomocí kurzu [použití přímých metod](quickstart-control-device-python.md) .
+* Interaktivní řízení zařízení (například zapnutí ventilátoru z aplikace řízené uživatelem) pomocí kurzu [použití přímých metod](quickstart-control-device-python.md) .

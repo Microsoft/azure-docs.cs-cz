@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: ad7f93bb3934ca01b7f45c0bd4b5cc8be81ea54b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325527"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034972"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do služby Azure Virtual Network
 
@@ -28,7 +28,8 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * Komunikace kontejneru s místními prostředky prostřednictvím [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview jsou k dispozici na základě podmínky, že souhlasíte s [doplňkovými podmínkami použití][terms-of-use]. Některé aspekty této funkce se mohou změnit před všeobecnou dostupností (GA).
+
 
 ## <a name="virtual-network-deployment-limitations"></a>Omezení nasazení virtuální sítě
 
@@ -67,7 +68,7 @@ Virtuální síť definuje adresní prostor, ve kterém vytvoříte jednu nebo v
 
 ### <a name="subnet-delegated"></a>Podsíť (delegovaný)
 
-Podsítě virtuální sítě rozdělit do samostatné adresní prostory použitelné Azure prostředky, které umístíte do nich. Vytvoříte jednu nebo několik podsítí v rámci virtuální sítě.
+Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vytvoříte jednu nebo několik podsítí v rámci virtuální sítě.
 
 Podsíť, kterou použijete pro skupiny kontejnerů, může obsahovat pouze skupiny kontejnerů. Když nasadíte skupinu kontejnerů do podsítě poprvé, Azure deleguje tuto podsíť Azure Container Instances. Po delegování se podsíť dá použít jenom pro skupiny kontejnerů. Pokud se pokusíte nasadit jiné prostředky než skupiny kontejnerů na delegovanou podsíť, operace se nezdaří.
 
@@ -150,7 +151,7 @@ $ az container show --resource-group myResourceGroup --name appcontainer --query
 10.0.0.4
 ```
 
-Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli `az container show` pomocí příkazu, a spusťte `az container create` následující příkaz. Tento druhý kontejner *commchecker*spustí bitovou kopii systému Alpine Linux a provede `wget` se s první IP adresou privátní podsítě pro skupinu kontejnerů.
+Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli pomocí příkazu `az container show`, a spusťte následující příkaz `az container create`. Tento druhý kontejner *commchecker*, spustí bitovou kopii systému Alpine Linux a provede `wget` proti první IP adrese privátní podsítě pro skupinu kontejnerů.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-here>
@@ -165,7 +166,7 @@ az container create \
     --subnet aci-subnet
 ```
 
-Po dokončení tohoto druhého nasazení kontejneru načtěte protokoly, abyste viděli výstup `wget` příkazu, který jste provedli:
+Po dokončení tohoto druhého nasazení kontejneru si načtěte jeho protokoly, abyste viděli výstup příkazu `wget`, který jste provedli:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -179,17 +180,17 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-Výstup protokolu by měl ukázat, `wget` že se mohl připojit a stáhnout soubor indexu z prvního kontejneru pomocí jeho privátní IP adresy v místní podsíti. Síťový provoz mezi oběma skupinami kontejnerů zůstal v rámci virtuální sítě.
+Výstup protokolu by měl ukázat, že `wget` se dokázal připojit a stáhnout soubor indexu z prvního kontejneru pomocí jeho privátní IP adresy v místní podsíti. Síťový provoz mezi oběma skupinami kontejnerů zůstal v rámci virtuální sítě.
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Nasazení do existující virtuální sítě – YAML
 
 Můžete také nasadit skupinu kontejnerů do existující virtuální sítě pomocí souboru YAML. K nasazení do podsítě ve virtuální síti zadáte několik dalších vlastností v YAML:
 
-* `ipAddress`: Nastavení IP adresy pro skupinu kontejnerů.
-  * `ports`: Porty, které se mají otevřít.
-  * `protocol`: Protokol (TCP nebo UDP) pro otevřený port.
+* `ipAddress`: nastavení IP adresy pro skupinu kontejnerů.
+  * `ports`: porty, které se mají otevřít.
+  * `protocol`: protokol (TCP nebo UDP) pro otevřený port.
 * `networkProfile`: Určuje nastavení sítě, jako je virtuální síť a podsíť pro prostředek Azure.
-  * `id`: Úplné ID `networkProfile`správce prostředků prostředku.
+  * `id`: úplné ID Správce prostředků prostředku `networkProfile`.
 
 Pokud chcete nasadit skupinu kontejnerů do virtuální sítě se souborem YAML, musíte nejdřív získat ID profilu sítě. Spusťte příkaz [AZ Network Profile list][az-network-profile-list] a určete název skupiny prostředků, která obsahuje vaši virtuální síť a delegovanou podsíť.
 
@@ -204,7 +205,7 @@ $ az network profile list --resource-group myResourceGroup --query [0].id --outp
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml*. V `networkProfile` části`id` nahraďte hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
+Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml*. V části `networkProfile` nahraďte hodnotu `id` ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
 
 ```YAML
 apiVersion: '2018-09-01'
@@ -235,7 +236,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create][az-container-create] a zadáním názvu souboru YAML pro `--file` parametr:
+Nasaďte skupinu kontejnerů pomocí příkazu [AZ Container Create][az-container-create] a zadáním názvu souboru YAML pro parametr `--file`:
 
 ```azurecli
 az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
@@ -264,9 +265,13 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 ### <a name="delete-network-resources"></a>Odstranění síťových prostředků
 
+
+> [!NOTE]
+> Pokud dojde k chybě při pokusu o odebrání profilu sítě, povolte 2-3 dní, aby platforma automaticky zmírnila problém a znovu se pokusila o odstranění. Pokud stále máte problémy s odebráním profilu sítě, [otevřete podporu reqest.](https://azure.microsoft.com/support/create-ticket/)
+
 Počáteční verze Preview této funkce vyžaduje několik dalších příkazů k odstranění síťových prostředků, které jste vytvořili dříve. Pokud jste použili ukázkové příkazy v předchozích částech tohoto článku k vytvoření virtuální sítě a podsítě, můžete k odstranění těchto síťových prostředků použít následující skript.
 
-Před spuštěním skriptu nastavte `RES_GROUP` proměnnou na název skupiny prostředků obsahující virtuální síť a podsíť, kterou chcete odstranit. Pokud jste nepoužili `aci-vnet` dříve navržený název, aktualizujte název virtuální sítě. Skript je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit proměnnou přiřazení a přistupující objekty.
+Před spuštěním skriptu nastavte proměnnou `RES_GROUP` na název skupiny prostředků obsahující virtuální síť a podsíť, kterou chcete odstranit. Pokud jste nepoužívali dříve navržený název `aci-vnet`, aktualizujte název virtuální sítě. Skript je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit proměnnou přiřazení a přistupující objekty.
 
 > [!WARNING]
 > Tento skript odstraní prostředky. Odstraní virtuální síť a všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *žádné* prostředky ve virtuální síti, včetně všech podsítí, které obsahuje, před spuštěním tohoto skriptu. Po odstranění se **tyto prostředky neobnoví**.
@@ -285,9 +290,9 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny kontejnerů pomocí šablony Správce prostředků najdete v tématu [vytvoření skupiny kontejnerů Azure s virtuální](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+Postup nasazení nové virtuální sítě, podsítě, profilu sítě a skupiny kontejnerů pomocí šablony Správce prostředků najdete v tématu [Vytvoření skupiny kontejnerů Azure s virtuální](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )sítí.
 
 V tomto článku jsme popisovali několik prostředků virtuální sítě a funkcí, ale krátce. Dokumentace k Azure Virtual Network zahrnuje i rozsáhlá témata:

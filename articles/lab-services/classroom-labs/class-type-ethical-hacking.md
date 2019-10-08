@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982031"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028669"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
 V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
@@ -128,7 +128,11 @@ Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s ch
 ## <a name="cost"></a>Náklady  
 Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete použít následující příklad: 
  
-Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí nebo pracovní účely je cena za testovací prostředí: 25 studentů * (20 + 10) hodiny × 55 jednotek testovacího prostředí × 0,01 USD za hodinu = 412,50. Další podrobnosti o cenách najdete v článku [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
+Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí úlohy nebo přiřazení by cena za testovací prostředí byla: 
+
+25 Students * (20 + 10) hod. × 55 jednotek testovacího prostředí × 0,01 USD za hodinu = 412,50 USD. 
+
+Další informace o cenách najdete v tématu [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Závěr
 Tento článek vás vás provedl postupem, jak vytvořit testovací prostředí pro etický třídu hackerů. Obsahuje postup pro nastavení vnořené virtualizace pro vytváření dvou virtuálních počítačů uvnitř hostitelského virtuálního počítače pro pronikání testování.

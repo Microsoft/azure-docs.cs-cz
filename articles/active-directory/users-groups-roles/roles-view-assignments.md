@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772373"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025552"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí v Azure Active Directory
 
@@ -31,8 +31,8 @@ Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v A
 
 Tento postup popisuje zobrazení přiřazení role s rozsahem v rámci organizace.
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
+1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
 1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli.
 
     ![Zobrazení přiřazení rolí a oprávnění při otevření role ze seznamu](./media/roles-view-assignments/role-assignments.png)
@@ -104,12 +104,12 @@ HTTP/1.1 200 OK
 
 Tato část popisuje zobrazení přiřazení role s oborem jedné aplikace. Tato funkce je aktuálně ve verzi Public Preview.
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
 1. Vyberte **Registrace aplikací**a pak vyberte registraci aplikace a zobrazte její vlastnosti. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vytvoření nebo úprava registrací aplikací ze stránky Registrace aplikací](./media/roles-create-custom/appreg-all-apps.png)
 
-1. V registraci aplikace vyberte **role a správci**a pak výběrem role zobrazíte její vlastnosti.
+1. V registraci aplikace vyberte **role a správci**a pak výběrem role zobrazíte její vlastnosti.
 
     ![Zobrazit přiřazení rolí registrace aplikace ze stránky Registrace aplikací](./media/roles-view-assignments/appreg-assignments.png)
 
@@ -117,7 +117,7 @@ Tato část popisuje zobrazení přiřazení role s oborem jedné aplikace. Tato
 
     ![Zobrazení přiřazení role registrace aplikace z vlastností registrace aplikace](./media/roles-view-assignments/appreg-assignments-2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).

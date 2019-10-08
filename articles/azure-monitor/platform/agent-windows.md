@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073972"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033951"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -51,21 +51,25 @@ Před instalací agenta Log Analytics pro Windows budete potřebovat ID a klíč
 5. Zkopírujte a vložte do svého oblíbeného editoru, **ID pracovního prostoru** a **primární klíč**.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Nakonfigurovat agenta na používání protokolu TLS 1,2
-Chcete-li nakonfigurovat použití protokolu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) pro komunikaci mezi agentem Windows a službou Log Analytics, můžete postupovat podle následujících kroků, abyste mohli povolit, aby byl agent nainstalován na virtuálním počítači nebo následně.   
+Chcete-li nakonfigurovat použití protokolu [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) pro komunikaci mezi agentem Windows a službou Log Analytics, můžete postupovat podle následujících kroků, abyste mohli povolit, aby byl agent nainstalován na virtuálním počítači nebo následně.
+
+>[!NOTE]
+>Pokud konfigurujete virtuální počítač s Windows Serverem 2008 SP2 x64 pro použití TLS 1,2, před provedením následujících kroků musíte nejdřív nainstalovat tuto [aktualizaci podpory podepisování kódu SHA-2](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) . 
+>
 
 1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Vytvoření podklíče v části **protokoly** pro TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Vytvořte podklíč **klienta** pod podklíčem protokolu TLS 1,2 verze, který jste vytvořili dříve. Například **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
 4. V části **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient**vytvořte následující hodnoty DWORD:
 
-    * **Povoleno** [Hodnota = 1]
-    * **DisabledByDefault** [Hodnota = 0]  
+    * **Povoleno** [Value = 1]
+    * **DisabledByDefault** [hodnota = 0]  
 
 Nakonfigurujte .NET Framework 4,6 nebo novější, aby podporovaly zabezpečenou kryptografii, protože ve výchozím nastavení je zakázaná. [Silná kryptografie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly jako TLS 1,2 a blokuje protokoly, které nejsou zabezpečené. 
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 2. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**.  
-3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 4. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**. 
 5. Restartujte systém, aby se nastavení projevilo. 
 
@@ -79,7 +83,7 @@ Následující postup nainstaluje a nakonfiguruje agenta Log Analytics v Azure a
 4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak klikněte na **Další**.
 5. Na stránce **Možnosti instalace agenta** zvolte připojení agenta k Azure Log Analytics a pak klikněte na **Další**.   
 6. Na stránce **Azure Log Analytics** postupujte následovně:
-   1. Vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (primární klíč)** , které jste si zkopírovali dříve.  Pokud se má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  
+   1. Vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (primární klíč)** , které jste si zkopírovali dříve.  Pokud se má počítač hlásit do pracovního prostoru služby Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  
    2. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, klikněte na **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro ověření proxy serveru a pak klikněte na **Další**.  
 7. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, klikněte na **Další**.<br><br> ![vložení ID pracovního prostoru a primárního klíče](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak klikněte na **Nainstalovat**.
@@ -106,7 +110,7 @@ V následující tabulce jsou vysvětlené konkrétní parametry podporované in
 |OPINSIGHTS_PROXY_USERNAME               | Uživatelské jméno pro přístup k ověřenému proxy serveru |
 |OPINSIGHTS_PROXY_PASSWORD               | Heslo pro přístup k ověřenému proxy serveru |
 
-1. K extrakci instalačních souborů agenta se spustí `MMASetup-<platform>.exe /c` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů.  Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
+1. K extrakci instalačních souborů agenta můžete z příkazového řádku se zvýšenými oprávněními spustit `MMASetup-<platform>.exe /c` a zobrazí se výzva k zadání cesty k extrakci souborů.  Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.  
 2. Pokud chcete nainstalovat agenta v tichém režimu a nakonfigurovat ho tak, aby se nahlásil k pracovnímu prostoru ve službě Azure Commercial Cloud, ze složky, do které jste extrahovali instalační soubory, zadejte: 
    
      ```dos
@@ -125,20 +129,20 @@ V následující tabulce jsou vysvětlené konkrétní parametry podporované in
 
 Pomocí následujícího příkladu skriptu můžete nainstalovat agenta pomocí Azure Automation DSC.   Pokud nemáte účet Automation, přečtěte si téma Začínáme [s Azure Automation](/azure/automation/) , abyste pochopili požadavky a kroky pro vytvoření účtu Automation, který je potřeba před použitím automatizace DSC.  Pokud nejste obeznámeni s Automatizace DSC, přečtěte si téma [Začínáme s Automatizace DSC](../../automation/automation-dsc-getting-started.md).
 
-Následující příklad nainstaluje agenta 64, který je identifikován `URI` hodnotou. Verzi 32 můžete použít i tak, že nahradíte hodnotu identifikátoru URI. Identifikátory URI pro obě verze jsou:
+Následující příklad nainstaluje 64ho agenta určeného hodnotou `URI`. Verzi 32 můžete použít i tak, že nahradíte hodnotu identifikátoru URI. Identifikátory URI pro obě verze jsou:
 
-- Windows 64 – bit Agent- https://go.microsoft.com/fwlink/?LinkId=828603
-- Windows 32 – bit Agent- https://go.microsoft.com/fwlink/?LinkId=828604
+- Windows 64 – bit agent- https://go.microsoft.com/fwlink/?LinkId=828603
+- Windows 32 – bit agent- https://go.microsoft.com/fwlink/?LinkId=828604
 
 
 >[!NOTE]
 >Tento postup a příklad skriptu nepodporuje upgrade agenta, který už je nasazený na počítači s Windows.
 
-32 bitové a 64 verze balíčku agenta mají různé kódy produktů a nové verze jsou také jedinečné.  Kód produktu je identifikátor GUID, který je hlavní identifikací aplikace nebo produktu a který je reprezentován vlastností Instalační služba systému Windows **ProductCode** .  Hodnota ve skriptu **MMAgent. ps1** musí odpovídat kódu produktu z balíčku pro instalaci agenta 32 nebo 64. `ProductId`
+32 bitové a 64 verze balíčku agenta mají různé kódy produktů a nové verze jsou také jedinečné.  Kód produktu je identifikátor GUID, který je hlavní identifikací aplikace nebo produktu a který je reprezentován vlastností Instalační služba systému Windows **ProductCode** .  Hodnota `ProductId` ve skriptu **MMAgent. ps1** musí odpovídat kódu produktu z balíčku pro instalaci agenta 32 nebo 64.
 
 Chcete-li načíst kód produktu z instalačního balíčku agenta přímo, můžete použít program Orca. exe z [komponent Windows SDK pro instalační služba systému Windows vývojářů](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , kteří jsou součástí sady Windows Software Development Kit nebo pomocí prostředí PowerShell za [ Příklad skriptu](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsaného MVP (Microsoft hodnotný Professional).  Pro oba tyto metody musíte nejprve extrahovat soubor **MOMAgent. msi** z instalačního balíčku MMASetup.  Tento postup je uveden výše v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
-1. Importujte modul xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) nástroje do Azure Automation.  
+1. Importujte modul xPSDesiredStateConfiguration DSC z [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.  Vytvořte Azure Automation variabilní prostředky pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* na své ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč vašeho pracovního prostoru.
 3.  Zkopírujte skript a uložte ho jako MMAgent. ps1.
 
@@ -178,7 +182,7 @@ Chcete-li načíst kód produktu z instalačního balíčku agenta přímo, mů�
 
     ```
 
-4. Aktualizujte `ProductId` hodnotu ve skriptu pomocí kódu produktu extrahovaného z nejnovější verze instalačního balíčku agenta pomocí výše doporučených metod. 
+4. Aktualizujte hodnotu `ProductId` ve skriptu pomocí kódu produktu extrahovaného z nejnovější verze instalačního balíčku agenta pomocí výše doporučených metod. 
 5. [Importujte konfigurační skript MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do svého účtu Automation. 
 5. Přiřaďte ke konfiguraci [počítač se systémem Windows nebo uzel](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) . Během 15 minut uzel zkontroluje svou konfiguraci a Agent se odešle do uzlu.
 
@@ -186,7 +190,7 @@ Chcete-li načíst kód produktu z instalačního balíčku agenta přímo, mů�
 
 Po dokončení instalace agenta ověřte, zda je úspěšné připojení a vytváření sestav lze provést dvěma způsoby.  
 
-V **Ovládacích panelech** na počítači vyhledejte položku **Microsoft Monitoring Agent**.  Vyberte ji a na kartě **Azure Log Analytics** by agent měl zobrazit tuto zprávu: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+V **Ovládacích panelech** na počítači vyhledejte položku **Microsoft Monitoring Agent**.  Vyberte ho a na kartě **Azure Log Analytics** by měl agent zobrazit zprávu informující o tom, **že Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 V Azure Portal můžete také provádět jednoduché dotazy protokolu.  
 
@@ -202,7 +206,7 @@ V Azure Portal můžete také provádět jednoduché dotazy protokolu.
 
 Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro počítač, který označuje, že je připojený a hlásí službu.   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si téma [Správa a údržba agenta Log Analytics pro systémy Windows a Linux](agent-manage.md) , kde se dozvíte, jak překonfigurovat, upgradovat nebo odebrat agenta z virtuálního počítače.
 

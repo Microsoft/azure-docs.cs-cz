@@ -1,6 +1,6 @@
 ---
-title: Přidání ověřování v systému Android s funkcí Mobile Apps | Dokumentace Microsoftu
-description: Informace o používání funkce Mobile Apps služby Azure App Service k ověřování uživatelů vaší aplikace pro Android prostřednictvím různých poskytovatelů identit, včetně Google, Facebook, Twitter a Microsoft.
+title: Přidání ověřování na Androidu pomocí Mobile Apps | Microsoft Docs
+description: Naučte se používat funkci Mobile Apps Azure App Service k ověřování uživatelů vaší aplikace pro Android prostřednictvím celé řady poskytovatelů identity, včetně Google, Facebook, Twitteru a Microsoftu.
 services: app-service\mobile
 documentationcenter: android
 author: elamalani
@@ -14,64 +14,64 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 789bb45ddef8d5ca0205e96298491ebee02698d6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443588"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025506"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Přidání ověřování do aplikace pro Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="summary"></a>Souhrn
-V tomto kurzu přidáte ověřování do seznamu úkolů projektu v systému Android pomocí zprostředkovatele podporovanou identitu. Tento kurz je založený na [Začínáme s Mobile Apps] kurzu, který je třeba nejprve provést.
+V tomto kurzu přidáte do projektu rychlý Start ToDoList v Androidu ověřování pomocí podporovaného zprostředkovatele identity. Tento kurz je založený na kurzu [Začínáme s Mobile Apps] , který musíte nejdřív provést.
 
-## <a name="register"></a>Registrace aplikace pro ověřování a konfigurace služby Azure App Service
+## <a name="register"></a>Zaregistrovat aplikaci pro ověřování a nakonfigurovat Azure App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Přidání aplikace do adresy URL pro povolené externího přesměrování
+## <a name="redirecturl"></a>Přidání aplikace do povolených externích adres URL pro přesměrování
 
-Zabezpečené ověřování, musíte definovat nové schéma adresy URL pro vaši aplikaci. To umožňuje ověřování systému přesměrovat zpět do aplikace po dokončení procesu ověřování. V tomto kurzu používáme schéma adresy URL _appname_ v průběhu. Můžete ale použít jakékoli schéma adresy URL, kterou zvolíte. Musí být jedinečné pro vaši mobilní aplikaci. Pokud chcete povolit přesměrování na straně serveru:
+Zabezpečené ověřování vyžaduje, abyste pro svou aplikaci nadefinovali nové schéma URL. To umožňuje, aby systém ověřování po dokončení procesu ověřování přesměroval zpátky do vaší aplikace. V tomto kurzu používáme _celé rozhraní_ příkazového schématu URL. Můžete ale použít jakékoli schéma URL, které si zvolíte. Měl by být jedinečný pro vaši mobilní aplikaci. Zapnutí přesměrování na straně serveru:
 
-1. V [Azure Portal], vyberte službu App Service.
+1. V [Azure Portal]vyberte App Service.
 
-2. Klikněte na tlačítko **ověřování / autorizace** nabídky.
+2. Klikněte na možnost nabídka **ověřování/autorizace** .
 
-3. V **povolené externí adresy URL pro přesměrování**, zadejte `appname://easyauth.callback`.  _Appname_ v tomto řetězci je schéma adresy URL pro vaši mobilní aplikaci.  Měla by odpovídat specifikaci normální adresu URL pro určitý protokol (použití písmena a čísla jenom a začíná písmenem).  By měl poznamenejte řetězce, který zvolíte, jako je třeba upravit kód mobilní aplikace s schéma adresy URL na několika místech.
+3. Do pole **povolené externí adresy URL pro přesměrování**zadejte `appname://easyauth.callback`.  _AppName_ v tomto řetězci je schéma adresy URL vaší mobilní aplikace.  Měla by následovat po běžné specifikaci adresy URL protokolu (použijte pouze písmena a čísla a začněte písmenem).  Měli byste si poznamenat řetězec, který si zvolíte, protože budete muset upravit kód mobilní aplikace pomocí schématu adresy URL na několika místech.
 
 4. Klikněte na **OK**.
 
 5. Klikněte na **Uložit**.
 
-## <a name="permissions"></a>Omezit oprávnění k ověření uživatelé
+## <a name="permissions"></a>Omezení oprávnění pro ověřené uživatele
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* V nástroji Android Studio, otevřete projekt, dokončení kurzu [Začínáme s Mobile Apps]. Z **spustit** nabídky, klikněte na tlačítko **spuštění aplikace**a ověřte, že po spuštění aplikace je vyvolána neošetřená výjimka se stavovým kódem 401 (Neautorizováno).
+* V Android Studio otevřete projekt, který jste dokončili v kurzu [Začínáme s Mobile Apps]. V nabídce **Spustit** klikněte na **Spustit aplikaci**a ověřte, že po spuštění aplikace se vyvolá Neošetřená výjimka se stavovým kódem 401 (Neautorizováno).
 
-     Tato výjimka se stane, protože se aplikace pokusí o přístup k back-endu jako neověřený uživatel, ale *TodoItem* tabulka nyní vyžaduje ověřování.
+     K této výjimce dochází, protože se aplikace pokusí získat přístup k back-endu jako neověřeného uživatele, ale tabulka *TodoItem* nyní vyžaduje ověření.
 
-Dále aktualizujete aplikaci k ověření uživatelů před požadováním prostředky z back-endu Mobile Apps.
+V dalším kroku aplikaci aktualizujete, aby ověřovala uživatele před vyžádáním prostředků z Mobile Apps back-endu.
 
 ## <a name="add-authentication-to-the-app"></a>Přidání ověřování do aplikace
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
 
 
-## <a name="cache-tokens"></a>Tokeny ověřování mezipaměti na straně klienta
+## <a name="cache-tokens"></a>Tokeny ověřování mezipaměti na klientovi
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste dokončili kurz základní ověřování, vezměte v úvahu pokračováním jednu z následujících kurzů:
+## <a name="next-steps"></a>Další kroky
+Teď, když jste dokončili tento kurz základního ověřování, zvažte pokračování v jednom z následujících kurzů:
 
-* [Přidání nabízených oznámení do aplikace pro Android](app-service-mobile-android-get-started-push.md).
-  Zjistěte, jak nakonfigurovat vaší mobilní aplikace back-endu pomocí Azure notification hubs k odesílání nabízených oznámení.
-* [Povolení offline synchronizace u aplikace pro Android](app-service-mobile-android-get-started-offline-data.md).
-  Zjistěte, jak přidat do aplikace podporu offline režimu pomocí back-end Mobile Apps. Offline synchronizace, mohou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není žádné síťové připojení.
+* [Přidejte do svojí aplikace pro Android nabízená oznámení](app-service-mobile-android-get-started-push.md).
+  Naučte se, jak nakonfigurovat back-end Mobile Apps, abyste mohli používat centra oznámení Azure k odesílání nabízených oznámení.
+* [Povolte offline synchronizaci vaší aplikace pro Android](app-service-mobile-android-get-started-offline-data.md).
+  Naučte se přidat do aplikace podporu offline pomocí Mobile Apps back-endu. Při offline synchronizaci můžou uživatelé interaktivně pracovat s mobilní aplikací @ no__t-0viewing, přidávat nebo upravovat data @ no__t-1even, když není k dispozici žádné síťové připojení.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register

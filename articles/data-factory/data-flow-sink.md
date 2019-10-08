@@ -6,38 +6,38 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515665"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029235"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Po transformaci toku dat můžete data zpracovat do cílové datové sady. V transformaci jímky vyberte definici datové sady pro cílová výstupní data. V případě, že datový tok vyžaduje, můžete mít tolik transformací jímky.
 
 Aby se zohlednila změna schématu a změny v příchozích datech, zajímky výstupních dat do složky bez definovaného schématu ve výstupní datové sadě. V případě změn sloupců ve vašich zdrojích můžete také vybrat možnost u zdroje použít **posun schématu** . Pak automap všechna pole v jímky.
 
-![Možnosti na kartě jímka, včetně možnosti automatické mapování](media/data-flow/sink1.png "jímka 1")
+![Možnosti na kartě jímka, včetně jímky možnosti automatického mapování](media/data-flow/sink1.png "1")
 
 Chcete-li zpracovat všechna příchozí pole, zapněte **automatickou mapu**. Chcete-li vybrat pole, která mají být zajímka do cíle, nebo změnit názvy polí v cíli, vypněte **automatickou mapu**. Pak otevřete kartu **mapování** a namapujte výstupní pole.
 
-![Možnosti na kartě mapování](media/data-flow/sink2.png "jímka 2")
+![Možnosti na jímku karty mapování](media/data-flow/sink2.png "2")
 
 ## <a name="output"></a>Výstup 
 Pro úložiště objektů BLOB v Azure nebo Data Lake Storage typy jímky výstup transformovaná data do složky. Spark generuje výstupní datové soubory rozdělené do oddílů na základě schématu dělení, které používá transformace jímky. 
 
 Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Data Factory sloučit výstup do jednoho souboru, vyberte **jeden oddíl**.
 
-![Možnosti na kartě optimalizace](media/data-flow/opt001.png "Možnosti jímky")
+Možnosti možností(media/data-flow/opt001.png "jímky") na ![kartě optimalizace]
 
 ## <a name="field-mapping"></a>Mapování polí
 Na kartě **mapování** transformace jímky můžete namapovat příchozí sloupce vlevo na cílové umístění na pravé straně. Když datovou jímku zařadíte do souborů, Data Factory bude vždy zapisovat nové soubory do složky. Při mapování na datovou sadu databáze zvolíte možnosti operace databázové tabulky pro vložení, aktualizaci, Upsert nebo odstranění.
 
-![Karta mapování](media/data-flow/sink2.png "Jímky")
+(media/data-flow/sink2.png "Jímky") ![karet mapování]
 
 V tabulce mapování můžete vícenásobný výběr propojit více sloupců, zrušit propojení více sloupců nebo mapovat více řádků na stejný název sloupce.
 
@@ -47,7 +47,7 @@ Chcete-li vždy mapovat příchozí sadu polí na cíl, protože jsou a plně ak
 
 Chcete-li obnovit mapování sloupců, vyberte možnost **znovu mapovat**.
 
-![Karta jímka](media/data-flow/sink1.png "Jímka jedna")
+(media/data-flow/sink1.png "Jedna jímka jímky") ![na kartě jímky]
 
 Pokud se změní schéma, vyberte možnost **ověřit schéma** a selhání jímky.
 
@@ -56,7 +56,7 @@ Chcete-li zkrátit obsah složky jímky před zápisem cílových souborů do t�
 ## <a name="rule-based-mapping"></a>Mapování na základě pravidel
 Při vypnutí automatického mapování budete mít možnost Přidat mapování na základě sloupců (pevné mapování) nebo mapování na základě pravidel. Mapování na základě pravidel vám umožní zapisovat výrazy s porovnáváním vzorů. 
 
-![Mapování na základě pravidel](media/data-flow/rules4.png "Mapování na základě pravidel")
+Mapování(media/data-flow/rules4.png "založené na") pravidlech ![mapování]na základě pravidel
 
 Když zvolíte mapování na základě pravidel, budete mít k stránce ADF možnost vyhodnotit odpovídající výraz tak, aby odpovídala pravidlům příchozího vzoru, a definovat názvy odchozích polí. Můžete přidat libovolnou kombinaci polí i mapování na základě pravidel. Názvy polí se pak generují za běhu pomocí ADF na základě příchozích metadat ze zdroje. Můžete zobrazit názvy generovaných polí během ladění a pomocí podokna náhledu dat.
 
@@ -66,11 +66,11 @@ Podrobnosti o porovnávání vzorů jsou v [dokumentaci ke vzorci sloupců](conc
 
 Nastavit pojmenování souborů: 
 
-   * **Výchozí**: Umožňuje Sparku pojmenovat soubory založené na výchozím nastavení části.
-   * **Vzor**: Zadejte vzor pro výstupní soubory. Například **půjčky [n]** vytvoří loans1. csv, loans2. csv a tak dále.
-   * **Na oddíl**: Zadejte jeden název souboru na oddíl.
+   * **Výchozí**: umožňuje Sparku pojmenovat soubory založené na výchozím nastavení části.
+   * **Vzor**: zadejte vzor pro výstupní soubory. Například **půjčky [n]** vytvoří loans1. csv, loans2. csv a tak dále.
+   * **Na oddíl**: zadejte jeden název souboru na oddíl.
    * **Jako data ve sloupci**: Nastavte výstupní soubor na hodnotu sloupce.
-   * **Výstup do jednoho souboru**: Pomocí této možnosti sloučí ADF výstupní soubory rozdělené do jednoho pojmenovaného souboru. Chcete-li použít tuto možnost, musí být datová sada přeložena na název složky. Všimněte si také, že tato operace sloučení může být na základě velikosti uzlu neúspěšná.
+   * **Výstup do jednoho souboru**: pomocí této možnosti bude ADF spojovat výstupní soubory rozdělené do jednoho pojmenovaného souboru. Chcete-li použít tuto možnost, musí být datová sada přeložena na název složky. Všimněte si také, že tato operace sloučení může být na základě velikosti uzlu neúspěšná.
 
 > [!NOTE]
 > Operace se soubory zahájí pouze v případě, že jste spustili aktivitu spustit tok dat. Nespustí se v režimu ladění toku dat.
@@ -79,24 +79,24 @@ Nastavit pojmenování souborů:
 
 Vyberte nastavení databáze:
 
-![Karta nastavení zobrazující možnosti jímky SQL](media/data-flow/alter-row2.png "Možnosti SQL")
+![Karta nastavení zobrazující možnosti SQL jímky,](media/data-flow/alter-row2.png "Možnosti SQL")
 
-* **Metoda aktualizace**: Ve výchozím nastavení je povoleno vkládání. Pokud chcete zastavit vkládání nových řádků ze zdroje, zrušte zaškrtnutí políčka **povolí vložení** . Chcete-li aktualizovat, Upsert nebo odstranit řádky, přidejte nejprve transformaci ALTER-Row k označení řádků pro tyto akce. 
-* **Znovu vytvořit tabulku**: Před dokončením toku dat vyřaďte nebo vytvořte cílovou tabulku.
-* **Zkrátit tabulku**: Před dokončením toku dat odeberte všechny řádky z cílové tabulky.
-* **Velikost dávky**: Zadejte číslo, kterým se mají zablokovat zápisy do bloků. Tato možnost slouží k načítání velkých objemů dat. 
-* **Povolit přípravu**: Použijte základnu, když načítáte datový sklad Azure jako datovou sadu jímky.
-* **Skripty před a po SQL**: Zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
+* **Metoda aktualizace**: ve výchozím nastavení se povoluje vkládání. Pokud chcete zastavit vkládání nových řádků ze zdroje, zrušte zaškrtnutí políčka **povolí vložení** . Chcete-li aktualizovat, Upsert nebo odstranit řádky, přidejte nejprve transformaci ALTER-Row k označení řádků pro tyto akce. 
+* **Znovu vytvořit tabulku**: před dokončením toku dat vyřaďte nebo vytvořte cílovou tabulku.
+* **Zkrátit tabulku**: před dokončením toku dat odeberte všechny řádky z cílové tabulky.
+* **Velikost dávky**: zadejte číslo pro zablokování zápisů do bloků dat. Tato možnost slouží k načítání velkých objemů dat. 
+* **Povolit přípravu**: při načítání datového skladu Azure jako datové sady jímky použijte základnu.
+* **Skripty před a po SQL**: zadejte víceřádkové skripty SQL, které se spustí před (před zpracováním) a po (po zpracování) se zapisují do databáze jímky.
 
-![skripty pro zpracování před a po SQL](media/data-flow/prepost1.png "Skripty pro zpracování SQL")
+skripty pro(media/data-flow/prepost1.png "zpracování skriptů SQL") ![před a po zpracování SQL]
 
 > [!NOTE]
 > V toku dat můžete Data Factory přímo vytvořit novou definici tabulky v cílové databázi. Chcete-li vytvořit definici tabulky, nastavte datovou sadu v transformaci jímky, která má název nové tabulky. V datové sadě SQL pod názvem tabulky vyberte **Upravit** a zadejte nový název tabulky. Potom v transformaci jímky zapněte možnost **Povolit posun schématu**. Nastavte **schéma pro import** na **none**.
 
-![Nastavení datové sady SQL, kde se zobrazuje, kde upravit název tabulky](media/data-flow/dataset2.png "Schéma SQL")
+![Nastavení datové sady SQL, které ukazuje, kde upravit schéma názvu tabulky](media/data-flow/dataset2.png "SQL")
 
 > [!NOTE]
 > Když aktualizujete nebo odstraníte řádky v jímky databáze, musíte nastavit klíčový sloupec. Toto nastavení umožňuje transformaci ALTER-Row určit jedinečný řádek v knihovně pro přesun dat (DML).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste vytvořili tok dat, přidejte [do svého kanálu aktivitu toku dat](concepts-data-flow-overview.md).

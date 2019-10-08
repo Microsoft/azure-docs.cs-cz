@@ -1,6 +1,6 @@
 ---
-title: Jak pomocí sady JavaScript SDK pro Azure Mobile Apps
-description: Jak používat technologie v Azure Mobile Apps
+title: Jak používat sadu JavaScript SDK pro Azure Mobile Apps
+description: Jak používat v pro Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: elamalani
@@ -14,38 +14,38 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: d5aa2e326739a97ff3d518ec383f4cf14311ca74
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 410571320e5ffae9cf94c5035079e5b202190863
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446339"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027363"
 ---
-# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Použití knihovny JavaScript klienta pro Azure Mobile Apps
+# <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu JavaScriptu pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-html-how-to-use-client-library) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [Sada JavaScript SDK pro Azure Mobile Apps]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlým startem] vytvoření back-endu a vytvořte tabulku. V této příručce se zaměříme na používání mobilní back-end v HTML/JavaScript webových aplikací.
+Tato příručka vás seznámí s provedením běžných scénářů pomocí nejnovější [JavaScript SDK pro Azure Mobile Apps]. Pokud s Azure Mobile Apps začínáte, nejdřív dokončete [rychlé zprovoznění Mobile Apps Azure] a vytvořte back-end a vytvořte tabulku. V tomto průvodci se zaměříme na použití mobilního back-endu ve webových aplikacích HTML/JavaScript.
 
 ## <a name="supported-platforms"></a>Podporované platformy
-Omezená podpora prohlížečů na aktuální a poslední verze hlavní prohlížeče:  Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že sada SDK pro funkci v libovolném relativně moderním prohlížeči.
+Podporujeme podporu prohlížeče pro aktuální a poslední verze hlavních prohlížečů: Google Chrome, Microsoft Edge, Microsoft Internet Explorer a Mozilla Firefox.  Očekáváme, že sada SDK bude fungovat s případným poměrně moderním prohlížečem.
 
-Balíček je distribuován jako univerzální modul JavaScript, tak podporuje globals, AMD, a CommonJS formáty.
+Balíček se distribuuje jako univerzální modul JavaScriptu, takže podporuje i formáty Globals, AMD a CommonJS.
 
-## <a name="Setup"></a>Instalace a požadavky
-Tato příručka předpokládá, že vytvoříte back-end s tabulkou. Tento průvodce to předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech.
+## <a name="Setup"></a>Nastavení a předpoklady
+V tomto průvodci se předpokládá, že jste vytvořili back-end s tabulkou. V tomto průvodci se předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech.
 
-Instalace sady Azure Mobile Apps JavaScript SDK, můžete to udělat pomocí `npm` příkaz:
+Instalace sady Azure Mobile Apps JavaScript SDK se dá provést pomocí příkazu `npm`:
 
 ```
 npm install azure-mobile-apps-client --save
 ```
 
-Knihovny můžete použít také jako modul ES2015 v rámci CommonJS prostředí, jako je například Browserify a Webpacku a jako knihovny AMD.  Příklad:
+Knihovnu je také možné použít jako modul ES2015 v prostředích CommonJS, jako jsou Browserify a Webpack, a jako knihovna AMD.  Například:
 
 ```javascript
 // For ECMAScript 5.1 CommonJS
@@ -54,7 +54,7 @@ var WindowsAzure = require('azure-mobile-apps-client');
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
-Předem připravené verzi sady SDK můžete také stáhnout přímo z naší síti CDN:
+Můžete také použít předem vytvořenou verzi sady SDK stažením přímo z našeho CDN:
 
 ```html
 <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.min.js"></script>
@@ -62,53 +62,53 @@ Předem připravené verzi sady SDK můžete také stáhnout přímo z naší s�
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Jak: Ověřování uživatelů
-Azure App Service podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v tématu [Začínáme s ověřováním] kurzu.
+## <a name="auth"></a>Postupy: ověřování uživatelů
+Azure App Service podporuje ověřování a autorizaci uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft a Twitter. Můžete nastavit oprávnění pro tabulky a omezit tak přístup pro konkrétní operace jenom na ověřené uživatele. Identitu ověřených uživatelů můžete použít taky k implementaci autorizačních pravidel ve skriptech serveru. Další informace najdete v kurzu Začínáme [Začínáme s ověřováním] .
 
-Jsou podporovány dvě toky ověřování: serveru a klienta tok.  Tok server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na zprostředkovatele webového ověření rozhraní. Tok klienta umožňuje hlubší integraci s funkcemi konkrétní zařízení, jako single-sign-on jako spoléhá na SDK specifickým pro zprostředkovatele.
+Podporují se dva toky ověřování: tok serveru a tok klienta.  Tok serveru poskytuje nejjednodušší možnosti ověřování, protože spoléhá na rozhraní webového ověřování poskytovatele. Tok klienta umožňuje hlubší integraci s funkcemi specifickými pro zařízení, jako je jednotné přihlašování, protože spoléhá na sady SDK pro konkrétní poskytovatele.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Jak: Nakonfigurujte službu Mobile App Service pro adresy URL pro externí přesměrování.
-Několik typů aplikací jazyka JavaScript pomocí funkce zpětné smyčky pro zpracování toky OAuth uživatelského rozhraní.  Mezi tyto možnosti patří:
+### <a name="configure-external-redirect-urls"></a>Postupy: konfigurace mobilních App Service pro externí adresy URL pro přesměrování
+Několik typů aplikací JavaScriptu používá ke zpracování toků uživatelského rozhraní OAuth schopnost zpětné smyčky.  Mezi tyto možnosti patří:
 
-* Vaše služba spuštěná místně
-* Živé opětovné načtení pomocí rozhraní Ionic
-* Přesměrování do služby App Service pro ověřování.
+* Místní spuštění služby
+* Použití živého opětovného načtení s iontovou architekturou
+* Přesměrování na App Service pro ověřování.
 
-Místně spuštěná může způsobit potíže, protože ve výchozím nastavení, ověřování pomocí služby App Service je pouze nakonfigurována pro povolení přístupu z back-endu mobilní aplikace. Chcete-li změnit nastavení služby App Service umožňuje ověřování při místním spuštění serveru použijte následující kroky:
+Spouštění v místním prostředí může způsobovat problémy, protože ve výchozím nastavení App Service ověřování je nakonfigurované jenom tak, aby povolovalo přístup z back-endu mobilní aplikace. Pomocí následujícího postupu změníte nastavení App Service tak, aby se povolilo ověřování při místním spuštění serveru:
 
 1. Přihlaste se k portálu [Azure Portal].
-2. Přejděte do back-endu mobilní aplikace.
-3. Vyberte **Průzkumníka prostředků** v **nástroje pro vývoj** nabídky.
-4. Klikněte na tlačítko **Přejít** otevřete Průzkumníka prostředků pro back-endu mobilní aplikace v nové kartě nebo v okně.
-5. Rozbalte **config** > **authsettings** uzel pro vaši aplikaci.
-6. Klikněte na tlačítko **upravit** tlačítko, aby se povolily úpravy prostředku.
-7. Najít **allowedExternalRedirectUrls** element, který by měl mít hodnotu null. Přidání vaší adresy URL v poli:
+2. Přejděte na back-end mobilní aplikace.
+3. V nabídce **vývojové nástroje** vyberte **Průzkumník prostředků** .
+4. Kliknutím na **Přejít** otevřete Průzkumníka prostředků pro back-end mobilní aplikace na nové kartě nebo v okně.
+5. Rozbalte uzel **config** > **authsettings** pro vaši aplikaci.
+6. Kliknutím na tlačítko **Upravit** povolte úpravy prostředku.
+7. Vyhledejte element **allowedExternalRedirectUrls** , který by měl mít hodnotu null. Přidejte adresy URL do pole:
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
 
-    Nahraďte adresy URL do pole adresy URL vaší služby, který v tomto příkladu je `http://localhost:3000` pro místní služby pro Node.js vzorku. Můžete také použít `http://localhost:4400` pro službu Ripple nebo některé jiné adresy URL, v závislosti na tom, jak vaše aplikace je nakonfigurovaná.
-8. V horní části stránky klikněte na tlačítko **r/w**, pak klikněte na tlačítko **UMÍSTIT** uložte provedené změny.
+    Nahraďte adresy URL v poli adresami URL vaší služby, což je v tomto příkladu `http://localhost:3000` pro ukázkovou službu Node. js. V závislosti na tom, jak je vaše aplikace nakonfigurovaná, můžete také použít `http://localhost:4400` pro službu Ripple nebo jinou adresu URL.
+8. V horní části stránky klikněte na **čtení/zápis**a pak **klikněte na Uložit. tím uložíte** aktualizace.
 
-Také je potřeba přidat stejné adresy URL zpětné smyčky do seznamu povolených nastavení CORS:
+Do nastavení seznamu povolených rozhraní CORS taky musíte přidat stejné adresy URL zpětné smyčky:
 
-1. Přejděte zpět [Azure Portal].
-2. Přejděte do back-endu mobilní aplikace.
-3. Klikněte na tlačítko **CORS** v **API** nabídky.
-4. Zadejte všechny adresy URL v prázdném **povolené zdroje** textového pole.  Vytvoří se nové textové pole.
-5. Klikněte na tlačítko **uložit**
+1. Přejděte zpět na [Azure Portal].
+2. Přejděte na back-end mobilní aplikace.
+3. V nabídce **rozhraní API** klikněte na **CORS** .
+4. Zadejte každou adresu URL do textového pole prázdné **Povolené zdroje** .  Vytvoří se nové textové pole.
+5. Klikněte na **Uložit** .
 
-Po dokončení aktualizace back-endem bude moct pomocí nové adresy URL zpětné smyčky ve vaší aplikaci.
+Po aktualizaci back-endu budete moci v aplikaci používat nové adresy URL zpětné smyčky.
 
 <!-- URLs. -->
-[Azure Mobile Apps rychlým startem]: app-service-mobile-cordova-get-started.md
+[rychlé zprovoznění Mobile Apps Azure]: app-service-mobile-cordova-get-started.md
 [Začínáme s ověřováním]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure Portal]: https://portal.azure.com/
-[Sada JavaScript SDK pro Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
+[JavaScript SDK pro Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841338"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025937"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD & T dev/test Environment v Azure
 
 Chcete-li vytvořit vývojové a testovací prostředí pro úlohy v sálových počítačích v systémech IBM Z, můžete nasadit vývojové a testovací prostředí od IBM Z (zD & T) na infrastruktuře virtuálních počítačů Azure jako službu (IaaS).
 
-Díky zD & T můžete využít úspory nákladů platformy x86 pro méně kritická vývojová a testovací prostředí a pak aktualizace odeslat zpět do produkčního prostředí Z systému. Další informace najdete v pokynech k [instalaci aplikace IBM ZD & T](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+Díky zD & T můžete využít úspory nákladů platformy x86 pro méně kritická vývojová a testovací prostředí a pak aktualizace odeslat zpět do produkčního prostředí Z systému. Další informace najdete v [pokynech k instalaci aplikace IBM ZD & T](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
 Azure a Azure Stack podporují následující verze:
 
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 > [!NOTE]
 > IBM umožňuje instalovat zD & T Enterprise Edition pouze do prostředí pro vývoj a testování,*nikoli* v produkčních prostředích.
 
-- Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 - Potřebujete přístup k médiu, které je k dispozici pouze pro zákazníky a partnery společnosti IBM. Pokud chcete získat další informace, obraťte se na zástupce IBM nebo na webu [zD & T](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment) kontaktujte kontaktní údaje.
 
@@ -62,11 +62,11 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formátu **\<IP adresa\@\>ID\>uživatele SSH.\<** Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formátu **SSH @ no__t-1User ID @ no__t-2 @ no__t-3 @ no__t-4IP Address @ no__t-5**. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 
-Instalační soubor pro webový server je **ZDT\_Install\_EE\_v 12.0.0.1. tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
+Instalační soubor pro webový server je **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Je součástí médií dodaných společností IBM. Tento soubor musíte nahrát na virtuální počítač s Ubuntu.
 
 1. V příkazovém řádku zadejte následující příkaz, abyste se ujistili, že je vše v nově vytvořené imagi aktuální:
 
@@ -91,7 +91,7 @@ Instalační soubor pro webový server je **ZDT\_Install\_EE\_v 12.0.0.1. tgz**.
 
 ## <a name="install-the-enterprise-edition"></a>Instalace edice Enterprise
 
-1. Do adresáře ZDT a dekomprimujete soubor ZDT\_Install\_EE\_v 12.0.0.1. tgz pomocí následujících příkazů:
+1. Do adresáře ZDT a dekomprimujte soubor ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz pomocí následujících příkazů:
 
     ```
     cd ZDT
@@ -104,7 +104,7 @@ Instalační soubor pro webový server je **ZDT\_Install\_EE\_v 12.0.0.1. tgz**.
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Vyberte **1** pro instalaci podnikového serveru.
+3. Vyberte **1** pro instalaci podnikového serveru.
 
 4. Stiskněte klávesu **ENTER** a pečlivě si přečtěte licenční smlouvy. Na konci licence Pokračujte zadáním **Ano** .
 
@@ -136,6 +136,6 @@ Mějte na paměti, že při spuštění webového serveru běží pod ID uživat
 
 3. Vložte adresu URL do webového prohlížeče a otevřete tak součást pro správu pro instalaci zD & T.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD & T V1](./demo.md)

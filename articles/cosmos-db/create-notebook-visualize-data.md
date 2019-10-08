@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.date: 09/25/2019
 ms.author: de
 ms.reviewer: sngun
-ms.openlocfilehash: 6f007b60d38ea3025bbcdc36ef45673c0f370d05
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 05c9558479e0ad0bf9e05c8f5cae25d7fce6be42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338428"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023843"
 ---
 # <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
 Tento článek popisuje, jak pomocí integrovaných poznámkových bloků Jupyter importovat ukázková maloobchodní data do Azure Cosmos DB. Uvidíte, jak použít příkazy SQL a Azure Cosmos DB Magic ke spouštění dotazů, analýze dat a vizualizaci výsledků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Povolit podporu poznámkových bloků při vytváření účtu Azure Cosmos](enable-notebooks.md)
 
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 V této části budete spouštět některé dotazy na načtená data.
 
-* **Dotaz1** Spusťte v dataframe dotaz na skupinu, abyste získali součet celkových tržeb za jednotlivé země a zobrazili 5 položek z výsledků. V nové buňce poznámkového bloku spusťte následující kód:
+* **Dotaz1:** Spusťte v dataframe dotaz na skupinu, abyste získali součet celkových tržeb za jednotlivé země a zobrazili 5 položek z výsledků. V nové buňce poznámkového bloku spusťte následující kód:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -190,47 +190,47 @@ V této části budete spouštět některé dotazy na načtená data.
 1. Vizualizace tržeb v různých zemích na světové mapě spuštěním následujícího kódu v nové buňce pro Poznámkový blok:
 
    ```python
-    from bokeh.io import output_notebook, show
-    from bokeh.plotting import figure
-    from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
-    from bokeh.palettes import brewer
+   from bokeh.io import output_notebook, show
+   from bokeh.plotting import figure
+   from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
+   from bokeh.palettes import brewer
     
-    #Input GeoJSON source that contains features for plotting.
-    geosource = GeoJSONDataSource(geojson = json_data)
+   #Input GeoJSON source that contains features for plotting.
+   geosource = GeoJSONDataSource(geojson = json_data)
     
-    #Choose our choropleth color palette: https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
-    palette = brewer['YlGn'][8]
+   #Choose our choropleth color palette: https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
+   palette = brewer['YlGn'][8]
     
-    #Reverse color order so that dark green is highest revenue
-    palette = palette[::-1]
+   #Reverse color order so that dark green is highest revenue
+   palette = palette[::-1]
     
-    #Instantiate LinearColorMapper that linearly maps numbers in a range, into a sequence of colors.
-    color_mapper = LinearColorMapper(palette = palette, low = 0, high = 1000)
+   #Instantiate LinearColorMapper that linearly maps numbers in a range, into a sequence of colors.
+   color_mapper = LinearColorMapper(palette = palette, low = 0, high = 1000)
     
-    #Define custom tick labels for color bar.
-    tick_labels = {'0': '$0', '250': '$250', '500':'$500', '750':'$750', '1000':'$1000', '1250':'$1250', '1500':'$1500','1750':'$1750', '2000': '>$2000'}
+   #Define custom tick labels for color bar.
+   tick_labels = {'0': '$0', '250': '$250', '500':'$500', '750':'$750', '1000':'$1000', '1250':'$1250', '1500':'$1500','1750':'$1750', '2000': '>$2000'}
     
-    #Create color bar. 
-    color_bar = ColorBar(color_mapper=color_mapper, label_standoff=8,width = 500, height = 20,
-    border_line_color=None,location = (0,0), orientation = 'horizontal', major_label_overrides = tick_labels)
+   #Create color bar. 
+   color_bar = ColorBar(color_mapper=color_mapper, label_standoff=8,width = 500, height = 20,
+   border_line_color=None,location = (0,0), orientation = 'horizontal', major_label_overrides = tick_labels)
     
-    #Create figure object.
-    p = figure(title = 'Sales revenue by country', plot_height = 600 , plot_width = 1150, toolbar_location = None)
-    p.xgrid.grid_line_color = None
-    p.ygrid.grid_line_color = None
+   #Create figure object.
+   p = figure(title = 'Sales revenue by country', plot_height = 600 , plot_width = 1150, toolbar_location = None)
+   p.xgrid.grid_line_color = None
+   p.ygrid.grid_line_color = None
     
-    #Add patch renderer to figure. 
-    p.patches('xs','ys', source = geosource,fill_color = {'field' :'ItemRevenue', 'transform' : color_mapper},
+   #Add patch renderer to figure. 
+   p.patches('xs','ys', source = geosource,fill_color = {'field' :'ItemRevenue', 'transform' : color_mapper},
               line_color = 'black', line_width = 0.25, fill_alpha = 1)
     
-    #Specify figure layout.
-    p.add_layout(color_bar, 'below')
+   #Specify figure layout.
+   p.add_layout(color_bar, 'below')
     
-    #Display figure inline in Jupyter Notebook.
-    output_notebook()
-    
-    #Display figure.
-    show(p)
+   #Display figure inline in Jupyter Notebook.
+   output_notebook()
+   
+   #Display figure.
+   show(p)
    ```
 
    Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země s nejvyšším výnosem nejnižším výnosem.
@@ -240,50 +240,50 @@ V této části budete spouštět některé dotazy na načtená data.
 1. Pojďme se podívat na další případ vizualizace dat. Kontejner WebsiteData obsahuje záznam o uživatelích, kteří si prohlíželi položku, přidali do svého košíku a koupili položku. Pojďme vykreslit míru konverze položek, které byly koupeny. Spusťte následující kód v nové buňce pro vizualizaci míry převodu pro každou položku:
 
    ```python
-    from bokeh.io import show, output_notebook
-    from bokeh.plotting import figure
-    from bokeh.palettes import Spectral3
-    from bokeh.transform import factor_cmap
-    from bokeh.models import ColumnDataSource, FactorRange
+   from bokeh.io import show, output_notebook
+   from bokeh.plotting import figure
+   from bokeh.palettes import Spectral3
+   from bokeh.transform import factor_cmap
+   from bokeh.models import ColumnDataSource, FactorRange
        
-    # Get the top 10 items as an array
-    top_10_items = df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False)[:10].index.values.tolist()
+   # Get the top 10 items as an array
+   top_10_items = df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False)[:10].index.values.tolist()
     
-    # Filter our data to only these 10 items
-    df_top10 = df_cosmos[df_cosmos['Item'].isin(top_10_items)]
+   # Filter our data to only these 10 items
+   df_top10 = df_cosmos[df_cosmos['Item'].isin(top_10_items)]
     
-    # Group by Item and Action, sorting by event count
-    df_top10_sorted = df_top10.groupby(['Item', 'Action']).count().rename(columns={'Country':'ResultCount'}, inplace=False).reset_index().sort_values(['Item', 'ResultCount'], ascending = False).set_index(['Item', 'Action'])
+   # Group by Item and Action, sorting by event count
+   df_top10_sorted = df_top10.groupby(['Item', 'Action']).count().rename(columns={'Country':'ResultCount'}, inplace=False).reset_index().sort_values(['Item', 'ResultCount'], ascending = False).set_index(['Item', 'Action'])
     
-    # Get sorted X-axis values - this way, we can display the funnel of view -> add -> purchase
-    x_axis_values = df_top10_sorted.index.values.tolist()
+   # Get sorted X-axis values - this way, we can display the funnel of view -> add -> purchase
+   x_axis_values = df_top10_sorted.index.values.tolist()
     
-    group = df_top10_sorted.groupby(['Item', 'Action'])
+   group = df_top10_sorted.groupby(['Item', 'Action'])
     
-    # Specifiy colors for X axis
-    index_cmap = factor_cmap('Item_Action', palette=Spectral3, factors=sorted(df_top10.Action.unique()), start=1, end=2)
+   # Specifiy colors for X axis
+   index_cmap = factor_cmap('Item_Action', palette=Spectral3, factors=sorted(df_top10.Action.unique()), start=1, end=2)
     
-    # Create the plot
+   # Create the plot
     
-    p = figure(plot_width=1200, plot_height=500, title="Conversion rate of items from View -> Add to cart -> Purchase", x_range=FactorRange(*x_axis_values), toolbar_location=None, tooltips=[("Number of events", "@ResultCount_max"), ("Item, Action", "@Item_Action")])
+   p = figure(plot_width=1200, plot_height=500, title="Conversion rate of items from View -> Add to cart -> Purchase", x_range=FactorRange(*x_axis_values), toolbar_location=None, tooltips=[("Number of events", "@ResultCount_max"), ("Item, Action", "@Item_Action")])
     
-    p.vbar(x='Item_Action', top='ItemRevenue_max', width=1, source=group,
+   p.vbar(x='Item_Action', top='ItemRevenue_max', width=1, source=group,
            line_color="white", fill_color=index_cmap, )
     
-    #Configure how the plot looks
-    p.y_range.start = 0
-    p.x_range.range_padding = 0.05
-    p.xgrid.grid_line_color = None
-    p.xaxis.major_label_orientation = 1.2
-    p.outline_line_color = "black"
-    p.xaxis.axis_label = "Item"
-    p.yaxis.axis_label = "Count"
+   #Configure how the plot looks
+   p.y_range.start = 0
+   p.x_range.range_padding = 0.05
+   p.xgrid.grid_line_color = None
+   p.xaxis.major_label_orientation = 1.2
+   p.outline_line_color = "black"
+   p.xaxis.axis_label = "Item"
+   p.yaxis.axis_label = "Count"
     
-    #Display figure inline in Jupyter Notebook.
-    output_notebook()
+   #Display figure inline in Jupyter Notebook.
+   output_notebook()
     
-    #Display figure.
-    show(p)
+   #Display figure.
+   show(p)
    ```
 
    ![Míra převodu nákupu vizualizace](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)

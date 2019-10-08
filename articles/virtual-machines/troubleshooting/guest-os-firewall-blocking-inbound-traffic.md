@@ -1,5 +1,5 @@
 ---
-title: Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače | Dokumentace Microsoftu
+title: Brána firewall operačního systému hosta virtuálního počítače Azure blokuje příchozí provoz | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,145 +14,145 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154024"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028791"
 ---
-# <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače
+# <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Brána firewall operačního systému hosta virtuálního počítače Azure blokuje příchozí provoz
 
-Tento článek popisuje, jak portál RDP (Remote Desktop) tento problém vyřešit, který nastane, pokud brána firewall blokuje operačního systému hosta příchozí provoz.
+Tento článek popisuje, jak opravit problém s portálem vzdálené plochy (RDP), ke kterému dochází, když brána firewall hostovaného operačního systému blokuje příchozí provoz.
 
 ## <a name="symptoms"></a>Příznaky
 
-Připojení ke vzdálené ploše nelze použít pro připojení k Azure virtuální počítač (VM). Pomocí spuštění ze diagnostické nástroje -> – snímek obrazovky, ukazuje, že je operační systém plně načtený zobrazená úvodní obrazovka (Ctrl + Alt + Del).
+Připojení RDP nelze použít pro připojení k virtuálnímu počítači Azure (VM). Z okna Diagnostika spouštění – > snímku obrazovky se zobrazí, že je operační systém plně načtený na úvodní obrazovce (Ctrl + Alt + Del).
 
 ## <a name="cause"></a>Příčina
 
-### <a name="cause-1"></a>Příčiny 1
+### <a name="cause-1"></a>Příčina 1
 
-Chcete-li povolit provoz protokolu RDP není nastavené pravidlo protokolu RDP.
+Pravidlo protokolu RDP není nastavené tak, aby umožňovalo provoz protokolu RDP.
 
-### <a name="cause-2"></a>Příčiny 2
+### <a name="cause-2"></a>Příčina 2
 
-Profily brány firewall systému hosta jsou nastavení blokovat všechna příchozí připojení včetně provozu protokolu RDP.
+Profily brány firewall systému hosta jsou nastavené tak, aby blokovaly všechna příchozí připojení včetně provozu protokolu RDP.
 
 ![Nastavení brány firewall](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
 ## <a name="solution"></a>Řešení
 
-Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Než budete postupovat podle těchto kroků, pořiďte snímek systémového disku ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete problém vyřešit, použijte jednu z metod v [použití nástrojů remote tools pro řešení potíží s virtuálním počítači Azure](remote-tools-troubleshoot-azure-vm-issues.md) vzdálené připojení k virtuálnímu počítači a potom upravit pravidla brány firewall hostovaného operačního systému pro **povolit** provoz protokolu RDP .
+Pokud chcete tento problém vyřešit, použijte jednu z metod, [jak pomocí vzdálených nástrojů řešit problémy](remote-tools-troubleshoot-azure-vm-issues.md) s virtuálním počítačem Azure pro vzdálené připojení k virtuálnímu počítači, a pak upravte pravidla brány firewall hostovaného operačního systému tak, aby **umožňovala** provoz protokolu RDP.
 
-### <a name="online-troubleshooting"></a>Řešení potíží s online
+### <a name="online-troubleshooting"></a>Online řešení potíží
 
-Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte na "[opravit virtuální počítač Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Připojte se ke [konzole sériového portu a pak otevřete instanci prostředí PowerShell](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Pokud není na virtuálním počítači povolená konzola sériového prostředí, použijte možnost[opravit virtuální počítač offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
-#### <a name="mitigation-1"></a>Zmírnění dopadů 1
+#### <a name="mitigation-1"></a>Zmírnění 1
 
-1.  Pokud je nainstalovaný Agent služby Azure a správně funguje na virtuálním počítači, můžete použít možnost "Jenom resetování konfigurace" v části **podpora a řešení potíží** > **resetovat heslo** v nabídce virtuálního počítače.
+1.  Pokud je agent Azure nainstalovaný a na virtuálním počítači funguje správně, můžete použít možnost resetovat jenom konfiguraci v části **Podpora a řešení potíží** > **resetování hesla** v nabídce VM.
 
-2.  Tato možnost obnovení provede následující akce:
+2.  Spuštění této možnosti obnovení provede následující akce:
 
-    *   Umožňuje jako součást protokolu RDP, jestli není zakázaný.
+    *   Povolí komponentu RDP, pokud je zakázaná.
 
-    *   Povolí všechny profily firewallu Windows.
+    *   Povolí všechny profily brány Windows Firewall.
 
-    *   Ujistěte se, že v bráně Windows Firewall je zapnutá pravidlo protokolu RDP.
+    *   Ujistěte se, že je pravidlo protokolu RDP zapnuté v bráně Windows Firewall.
 
-    *   Pokud předchozí postup nefunguje, ručně obnovit pravidlo brány firewall. Chcete-li to provést, dotaz všechna pravidla, které obsahují název "Vzdálená plocha" spuštěním následujícího příkazu:
+    *   Pokud předchozí kroky nefungují, ručně resetujte pravidlo brány firewall. Provedete to tak, že spustíte následující příkaz a vydáte dotaz na všechna pravidla, která obsahují název Vzdálená plocha:
 
         ```cmd
         netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(Name.*Remote Desktop)" -context 9,4 | more
         ```
 
-        RDP port byl nastavený na jakýkoli jiný port než 3389, budete muset najít všechny vlastní pravidlo, které může být vytvořená a nastavte na tento port. Se dotázat na všechny příchozí pravidla, která mají port. Tento vlastní port, spusťte následující příkaz:
+        Pokud byl port RDP nastaven na jiný port než 3389, je nutné najít jakékoli vlastní pravidlo, které bylo pravděpodobně vytvořeno a nastaveno na tento port. Pokud chcete zadat dotaz na všechna příchozí pravidla, která mají vlastní port, spusťte následující příkaz:
 
         ```cmd
         netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<CUSTOM PORT>)" -context 9,4 | more
         ```
 
-3.  Pokud vidíte, že je zakázané pravidlo, povolte ho. Pokud chcete otevřít celou skupinu, jako je například předdefinované skupiny Vzdálená plocha, spusťte následující příkaz:
+3.  Pokud vidíte, že je pravidlo zakázané, povolte ho. Chcete-li otevřít celou skupinu, například integrovanou skupinu vzdálené plochy, spusťte následující příkaz:
 
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
 
-    V opačném případě otevřete příslušné vzdálené plochy (TCP-In) pravidlo, spusťte následující příkaz:
+    Jinak otevřete konkrétní pravidlo vzdálené plochy (TCP-in) a spusťte následující příkaz:
 
     ```cmd
     netsh advfirewall firewall set rule name="<CUSTOM RULE NAME>" new enable=yes
     ```
 
-4.  S řešením problémů, můžete ji profilů brány firewall na hodnotu OFF:
+4.  Pro řešení potíží můžete vypnout profily brány firewall na OFF:
 
     ```cmd
     netsh advfirewall set allprofiles state off
     ```
 
-    Po dokončení odstraňování potíží a nastavení brány firewall správně, povolte bránu firewall.
+    Po dokončení odstraňování potíží a správné nastavení brány firewall znovu povolte bránu firewall.
 
     > [!Note]
-    > Není nutné restartovat počítač změny se projeví.
+    > Nemusíte restartovat virtuální počítač, aby se tyto změny projevily.
 
-5.  Pokuste se vytvořit připojení RDP k virtuálnímu počítači.
+5.  Pokuste se vytvořit připojení RDP pro přístup k virtuálnímu počítači.
 
-#### <a name="mitigation-2"></a>Zmírnění dopadů 2
+#### <a name="mitigation-2"></a>Zmírnění 2
 
-1.  Dotazování profilů brány firewall k určení, zda je nastaven zásady brány firewall pro příchozí *BlockInboundAlways*:
+1.  Dotaz na profily brány firewall, abyste zjistili, jestli jsou příchozí zásady brány firewall nastavené na *BlockInboundAlways*:
 
     ```cmd
     netsh advfirewall show allprofiles | more
     ```
 
-    ![Allprofile](./media/guest-os-firewall-blocking-inbound-traffic/firewall-profiles.png)
+    ![Allprofiles](./media/guest-os-firewall-blocking-inbound-traffic/firewall-profiles.png)
 
     > [!Note]
-    > Následující pokyny se vztahují zásady brány firewall, v závislosti na tom, jak je nastavit:
-    >    * *BlockInbound*: Veškerý příchozí provoz bude zablokován, pokud nemáte pravidlo pro povolení provozu.
-    >    * *BlockInboundAlways*: Všechna pravidla brány firewall budou ignorována a veškerý provoz bude zablokován.
+    > Následující pokyny se vztahují na zásady brány firewall v závislosti na tom, jak se nastavuje:
+    >    * *BlockInbound*: veškerý příchozí provoz bude zablokován, pokud nemáte pravidlo pro povolení provozu.
+    >    * *BlockInboundAlways*: všechna pravidla brány firewall budou ignorována a veškerý provoz bude zablokován.
 
-2.  Upravit *DefaultInboundAction* nastavit tyto profily **povolit** provoz. Chcete-li to provést, spusťte následující příkaz:
+2.  Upravte *DefaultInboundAction* a nastavte tyto profily tak, aby **umožňovaly** provoz. Provedete to spuštěním následujícího příkazu:
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
     ```
 
-3.  Dotazovat profily znovu a ujistit se, že změny proběhla úspěšně. Chcete-li to provést, spusťte následující příkaz:
+3.  Vytvořte dotaz na profily znovu a ujistěte se, že se vaše změna úspěšně provedla. Provedete to spuštěním následujícího příkazu:
 
     ```cmd
     netsh advfirewall show allprofiles | more
     ```
 
     > [!Note]
-    > Není nutné restartovat počítač změny se projeví.
+    > Změny se projeví až po restartování virtuálního počítače.
 
-4.  Přístup k vašemu virtuálnímu počítači přes SSH, zkuste to znovu.
+4.  Zkuste to znovu s přístupem k VIRTUÁLNÍmu počítači přes RDP.
 
-### <a name="offline-mitigations"></a>Offline migrace
+### <a name="offline-mitigations"></a>Zmírnění offline
 
-1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
+2.  Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení.
 
-3.  Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojený systémový disk.
+3.  Ujistěte se, že je disk označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému systémovému disku.
 
-#### <a name="mitigation-1"></a>Zmírnění dopadů 1
+#### <a name="mitigation-1"></a>Zmírnění 1
 
 Viz [Jak povolit – zakázat pravidlo brány firewall v hostovaném operačním systému](enable-disable-firewall-rule-guest-os.md).
 
-#### <a name="mitigation-2"></a>Zmírnění dopadů 2
+#### <a name="mitigation-2"></a>Zmírnění 2
 
-1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
+2.  Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení.
 
-3.  Po systémový disk připojen k virtuální počítač pro obnovení, ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+3.  Po připojení systémového disku k virtuálnímu počítači pro obnovení se ujistěte, že je disk označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem.
 
-4.  Spusťte instanci příkazového řádku se zvýšenými oprávněními a spusťte následující skript:
+4.  Otevřete instanci příkazového řádku se zvýšenými oprávněními a spusťte následující skript:
 
     ```cmd
     REM Backup the registry prior doing any change
@@ -173,6 +173,6 @@ Viz [Jak povolit – zakázat pravidlo brány firewall v hostovaném operační
     reg unload HKLM\BROKENSYSTEM
     ```
 
-5.  [Odpojení disku a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md).
+5.  [Odpojte systémový disk a vytvořte virtuální počítač znovu](troubleshoot-recovery-disks-portal-windows.md).
 
-6.  Zkontrolujte, zda byl problém vyřešen.
+6.  Ověřte, zda je problém vyřešen.

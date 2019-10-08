@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace Xamarin.iOS pomocí služby Azure App Service
-description: Další informace o použití služby Azure App Service k odesílání nabízených oznámení do aplikace Xamarin.iOS
+title: Přidání nabízených oznámení do aplikace Xamarin. iOS pomocí Azure App Service
+description: Naučte se používat Azure App Service k odesílání nabízených oznámení do vaší aplikace Xamarin. iOS.
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,51 +14,51 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 9edd5e755b4a42fe881a0863bb284039299ec713
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 27c20d3d3c84455130c8fd978eaeb076781846ef
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446268"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024989"
 ---
-# <a name="add-push-notifications-to-your-xamarinios-app"></a>Přidání nabízených oznámení do aplikace Xamarin.iOS
+# <a name="add-push-notifications-to-your-xamarinios-app"></a>Přidání nabízených oznámení do aplikace Xamarin. iOS
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [Xamarin.iOS úvodní](app-service-mobile-xamarin-ios-get-started.md) projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do projektu [Xamarin. iOS s rychlým startem](app-service-mobile-xamarin-ios-get-started.md) , aby bylo při každém vložení záznamu nabízené oznámení odesíláno do zařízení.
 
-Pokud použijete serverový projekt stažené rychlý start, budete potřebovat balíček rozšíření nabízené oznámení. Zobrazit [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) Další informace.
+Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Dokončení [rychlý start Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md) kurzu.
-* Fyzickém zařízení iOS. Nabízená oznámení nepodporuje simulátoru iOS.
+* Dokončete kurz [rychlý Start pro Xamarin. iOS](app-service-mobile-xamarin-ios-get-started.md) .
+* Fyzické zařízení s iOS. V simulátoru iOS se nabízená oznámení nepodporují.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registrace aplikace pro nabízená oznámení na portálu pro vývojáře Apple
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registrace aplikace pro nabízená oznámení na portálu pro vývojáře od společnosti Apple
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Konfigurace mobilní aplikace k odesílání nabízených oznámení
+## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Konfigurace mobilní aplikace pro posílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizovat projekt serveru k odesílání nabízených oznámení
+## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizace projektového serveru pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>Konfigurace projektu Xamarin.iOS
+## <a name="configure-your-xamarinios-project"></a>Konfigurace projektu Xamarin. iOS
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Přidání nabízených oznámení do aplikace
 
-1. V **QSTodoService**, přidejte následující vlastnost tak, aby **AppDelegate** můžete získat tak mobilního klienta:
+1. Do **QSTodoService**přidejte následující vlastnost, aby **AppDelegate** mohl získat mobilního klienta:
 
     ```csharp
     public MobileServiceClient GetClient {
@@ -73,14 +73,14 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
     }
     ```
 
-2. Přidejte následující `using` příkaz do horní části **AppDelegate.cs** souboru.
+2. Do horní části souboru **AppDelegate.cs** přidejte následující příkaz `using`.
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
     using Newtonsoft.Json.Linq;
     ```
 
-3. V **AppDelegate**, přepsat **FinishedLaunching** události:
+3. V **AppDelegate**Přepište událost **FinishedLaunching** :
 
    ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -99,9 +99,9 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
     }
     ```
 
-4. Ve stejném souboru přepsat `RegisteredForRemoteNotifications` událostí. V tomto kódu při registraci pro jednoduchá Šablona oznámení, které se odešlou server na všech podporovaných platformách.
+4. Ve stejném souboru Přepište událost `RegisteredForRemoteNotifications`. V tomto kódu se chystáte k oznámení jednoduché šablony, která bude odeslána na všech podporovaných platformách serverem.
 
-    Další informace o šablonách pomocí Notification Hubs najdete v tématu [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    Další informace o šablonách s Notification Hubs najdete v tématu [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -122,7 +122,7 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
     }
     ```
 
-5. Nakonec přepsání **DidReceivedRemoteNotification** události:
+5. Potom přepsat událost **DidReceivedRemoteNotification** :
 
    ```csharp
     public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
@@ -142,17 +142,17 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
     }
     ```
 
-Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.
+Vaše aplikace se teď aktualizovala tak, aby podporovala nabízená oznámení.
 
-## <a name="test"></a>Nabízená oznámení ve vaší aplikaci
+## <a name="test"></a>Testování nabízených oznámení ve vaší aplikaci
 
-1. Stisknutím klávesy **spustit** tlačítko se projekt sestavil a aplikace se spustila v podporuje zařízení s Iosem a potom klikněte na **OK** přijímat nabízená oznámení.
+1. Stisknutím tlačítka **Spustit** Sestavte projekt a spusťte aplikaci na zařízení s technologií iOS a potom kliknutím na **OK** potvrďte nabízená oznámení.
 
    > [!NOTE]
-   > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze při prvním spuštění aplikace.
+   > Nabízená oznámení musíte explicitně přijmout z vaší aplikace. Tato žádost nastane jenom při prvním spuštění aplikace.
 
-2. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
-3. Ověřte, že přijetí oznámení a pak klikněte na **OK** chcete oznámení zavřít.
-4. Opakujte krok 2 a okamžitě zavřete aplikaci a potom ověřte, že se zobrazí oznámení.
+2. V aplikaci zadejte úlohu a potom klikněte na ikonu Plus ( **+** ).
+3. Ověřte, zda bylo přijato oznámení, a pak kliknutím na tlačítko **OK** zavřete oznámení.
+4. Opakujte krok 2 a hned aplikaci zavřete a pak ověřte, že se zobrazilo oznámení.
 
 Úspěšně jste dokončili tento kurz.

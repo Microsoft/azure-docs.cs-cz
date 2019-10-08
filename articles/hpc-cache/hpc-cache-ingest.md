@@ -4,14 +4,14 @@ description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/07/2019
+ms.author: rohogue
+ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299995"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024500"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Přesun dat do služby Azure Blob Storage
 
@@ -27,7 +27,7 @@ Pamatujte na tyto skutečnosti:
 
 Nástroj založený na Pythonu je k dispozici pro načtení obsahu do kontejneru úložiště objektů BLOB. Další informace najdete [v tématu předběžné načtení dat v úložišti objektů BLOB](#pre-load-data-in-blob-storage-with-clfsload) .
 
-Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obsah do existujícího cíle úložiště, postupujte podle tipů paralelního příjmu dat v [části kopírování dat prostřednictvím mezipaměti HPC Azure](#copy-data-through-the-azure-hpc-cache). 
+Pokud nechcete použít nástroj pro načítání, nebo pokud chcete přidat obsah do existujícího cíle úložiště, postupujte podle tipů paralelního příjmu dat v [části kopírování dat prostřednictvím mezipaměti HPC Azure](#copy-data-through-the-azure-hpc-cache).
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Předběžné načtení dat v úložišti objektů BLOB pomocí CLFSLoad
 
@@ -58,13 +58,13 @@ Nástroj avere CLFSLoad potřebuje následující informace:
 
 Pokud nechcete použít nástroj avere CLFSLoad, nebo pokud chcete do existujícího cíle úložiště objektů BLOB přidat velké množství dat, můžete ho zkopírovat přes mezipaměť. Mezipaměť HPC Azure je navržená tak, aby sloužila více klientům současně, takže ke kopírování dat prostřednictvím mezipaměti byste měli použít paralelní zápisy z více klientů.
 
-![Diagram znázorňující pohyb dat s více vlákny s více klienty: Vlevo nahoře je ikona pro místní hardwarové úložiště, která z něho přichází více šipek. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k mezipaměti HPC Azure. Z mezipaměti HPC Azure se několik šipek odkazuje na úložiště objektů BLOB.](media/hpc-cache-parallel-ingest.png) 
+![Diagram znázorňující pohyb vícevláknových dat s více klienty: vlevo nahoře je ikona pro místní hardwarové úložiště s více šipkami. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k mezipaměti HPC Azure. Z mezipaměti HPC Azure se několik šipek odkazuje na úložiště objektů BLOB.](media/hpc-cache-parallel-ingest.png)
 
-Příkazy ``cp`` nebo``copy`` , které obvykle slouží k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku uchovávat pouze jeden soubor, což je odpad z prostředků mezipaměti.
+Příkazy ``cp`` nebo ``copy``, které obvykle slouží k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku uchovávat pouze jeden soubor, což je odpad z prostředků mezipaměti.
 
 V této části se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny pro přesun dat do úložiště objektů BLOB s využitím Azure HPC cache. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 
-Vysvětluje taky některé nástroje, které vám pomůžou. ``msrsync`` Nástroj lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a používání příkazů rsync. Tento ``parallelcp`` skript je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.
+Vysvětluje taky některé nástroje, které vám pomůžou. Nástroj ``msrsync`` lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a použití příkazů rsync. Skript ``parallelcp`` je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.
 
 ### <a name="strategic-planning"></a>Strategické plánování
 
@@ -77,11 +77,11 @@ Každý proces kopírování má míru propustnosti a přenosovou rychlost přen
 
 Strategie paralelního příjmu dat s mezipamětí služby Azure HPC cache zahrnují:
 
-* Ruční kopírování – vícevláknové kopírování můžete vytvořit ručně na straně klienta spuštěním více než jednoho příkazu kopírování na pozadí v porovnání s předdefinovanými sadami souborů nebo cest. Přečtěte si informace v článku ingestování [cloudových dat Azure HPC – ruční kopírování](hpc-cache-ingest-manual.md) .
+* Ruční kopírování – vícevláknové kopírování můžete vytvořit ručně na straně klienta spuštěním více než jednoho příkazu kopírování na pozadí v porovnání s předdefinovanými sadami souborů nebo cest. Přečtěte si podrobnosti v tématu [Azure HPC cache ingestování – metoda ručního kopírování](hpc-cache-ingest-manual.md) .
 
-* Částečně automatizované kopírování s ``msrsync``  -  ``msrsync`` nástrojem je Obálkový nástroj, který spouští ``rsync`` více paralelních procesů. Podrobnosti si můžete přečíst v tématu [Azure HPC cache data ingestování – metoda msrsync](hpc-cache-ingest-msrsync.md).
+* Částečně automatizované kopírování pomocí ``msrsync`` @ no__t-1 @ no__t-2 je Obálkový nástroj, který spouští více paralelních procesů ``rsync``. Podrobnosti si můžete přečíst v tématu [Azure HPC cache data ingestování – metoda msrsync](hpc-cache-ingest-msrsync.md).
 
-* Skriptované kopírování pomocí ``parallelcp`` – Zjistěte, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
+* Skriptované kopírování pomocí ``parallelcp`` – Naučte se, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache data ingestně – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>Další kroky
 

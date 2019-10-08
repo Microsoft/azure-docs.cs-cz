@@ -1,37 +1,37 @@
 ---
-title: Azure Data Factory mapování transformace filtr toku dat
-description: Azure Data Factory mapování transformace filtr toku dat
+title: Transformace filtru toku dat Azure Data Factory mapování
+description: Transformace filtru toku dat Azure Data Factory mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd29753ff14d16081a46eebbc2ea02d94e5985f1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234416"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029355"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure data factory filtr transformace
+# <a name="azure-data-factory-filter-transformation"></a>Transformace filtru Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Filtr transformace poskytuje filtrování řádků. Sestavte výraz, který definuje podmínky filtru. Klikněte do textového pole pro spuštění Tvůrce výrazů. Uvnitř výrazu Tvůrce sestavení výraz filtru řídit, které řádky z aktuální datový proud můžou předávání (filtr) k další transformaci. Představte si filtr transformace jako klauzuli WHERE příkazu SQL.
 
-## <a name="filter-on-loanstatus-column"></a>Vyfiltrujte sloupec loan_status:
+Transformace filtru poskytují filtrování řádků. Sestavte výraz definující podmínku filtru. Kliknutím do textového pole spusťte Tvůrce výrazů. V Tvůrci výrazů Sestavte výraz filtru, který určuje, které řádky z aktuálního datového proudu můžou předávat (filtrovat) k další transformaci. Transformaci filtru můžete představit jako klauzuli WHERE příkazu SQL.
+
+## <a name="filter-on-loan_status-column"></a>Filtrovat podle sloupce loan_status:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
 ```
 
-Vyfiltrujte sloupec pro rok v ukázce filmy:
+Filtrovat podle sloupce year v ukázce filmů:
 
 ```
 year > 1980
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Sloupec filtrování transformace, zkuste [vyberte transformace](data-flow-select.md)
+Zkuste transformaci filtrovat sloupce, [transformaci Select](data-flow-select.md)

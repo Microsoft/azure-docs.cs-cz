@@ -1,44 +1,44 @@
 ---
-title: Vytvoření služby Azure Data Factory mapování toku dat
-description: Vytvoření Azure Data Factory mapování toku dat
+title: Vytvoření toku dat mapování Azure Data Factory
+description: Vytvoření toku dat mapování Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ebc026add9dfd85d7cbe312a8cfffd3e365f82
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235664"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026875"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Vytvoření toku dat Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Mapování toků dat ve službě ADF poskytují způsob, jak transformovat data ve velkém měřítku bez kódování vyžaduje. Úlohu transformace dat v Návrháři toků dat můžete navrhnout pomocí řady transformací. Začněte s libovolným počtem zdroj transformace, za nímž následuje postup transformace dat. Potom dokončete svůj tok dat s jímky objevil výsledky v cílovém umístění.
 
-Začněte tím, že první vytvoříte novou službu Data Factory V2 na webu Azure Portal. Jakmile vytvoříte nový objekt factory, klikněte na dlaždici "Vytvořit a monitorovat" na uživatelské rozhraní služby Data Factory.
+Mapování toků dat v ADF nabízí způsob, jak transformovat data ve velkém měřítku bez nutnosti jakéhokoli kódování. Můžete navrhnout úlohu transformace dat v Návrháři toku dat vytvořením řady transformací. Začněte s libovolným počtem zdrojových transformací následovaných kroky transformace dat. Potom dokončete tok dat pomocí jímky, aby se vaše výsledky nakládal do cíle.
 
-![Možnosti toku dat](media/data-flow/v2portal.png "vytvoření toku dat")
+Začněte tím, že nejprve vytvoříte nový Data Factory v2 z Azure Portal. Po vytvoření nové továrny klikněte na dlaždici "Author & monitor" a spusťte Data Factory uživatelské rozhraní.
 
-Až se v Uživatelském rozhraní služby Data Factory, můžete použít ukázkové datové toky. Ukázky jsou k dispozici z Galerie šablon ADF. Ve službě ADF vytvoření "Kanálu z šablony" a vyberte kategorii toku dat z Galerie šablon.
+(media/data-flow/v2portal.png "Vytvoření toku dat") ![možností toku dat]
 
-![Možnosti toku dat](media/data-flow/template.png "vytvoření toku dat")
+Když jste v uživatelském rozhraní Data Factory, můžete použít ukázkové toky dat. Ukázky jsou k dispozici v galerii šablon ADF. V podavači ADF vytvořte "kanál ze šablony" a vyberte kategorii toku dat z galerie šablon.
 
-Se výzva k zadání informací o vašem účtu úložiště objektů Blob v Azure.
+(media/data-flow/template.png "Vytvoření toku dat") ![možností toku dat]
 
-![Možnosti toku dat](media/data-flow/template2.png "datový tok vytvořit 2")
+Zobrazí se výzva k zadání informací o účtu Azure Blob Storage.
 
-[Data ukládaná za účelem těchto ukázek můžete najít zde](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Stáhněte si ukázková data a ukládat soubory v účtu úložiště objektů Blob v Azure tak, aby bylo možné provést ukázky.
+(media/data-flow/template2.png "Vytvoření toku dat") ![možností toku dat]2
 
-## <a name="create-new-data-flow"></a>Vytvoření nového toku dat
+[Data použitá pro tyto ukázky najdete tady](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Stáhněte si ukázková data a uložte soubory do svých účtů služby Azure Blob Storage, abyste mohli spustit ukázky.
 
-Použití v Uživatelském rozhraní ADF na vytváření toků dat tlačítko vytvořit prostředek "znaménko plus".
+## <a name="create-new-data-flow"></a>Vytvořit nový tok dat
 
-![Možnosti toku dat](media/data-flow/newresource.png "nový prostředek")
+K vytvoření toků dat použijte tlačítko pro vytvoření prostředku plus v uživatelském rozhraní ADF.
 
-## <a name="next-steps"></a>Další postup
+![Možnosti toku dat]–(media/data-flow/newresource.png "nový prostředek")
 
-Začít sestavovat vaši jak transformovat data pomocí [zdroje transformace](data-flow-source.md).
+## <a name="next-steps"></a>Další kroky
+
+Začněte sestavovat transformaci dat pomocí [zdrojové transformace](data-flow-source.md).

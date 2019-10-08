@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382823"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026401"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -30,8 +30,8 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Vytvoření nové vlastní role pro udělení přístupu pro správu registrací aplikací
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory** > **role a správci** > **novou vlastní roli**.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)@no__t – 1with oprávnění správce privilegované role nebo globálního správce v organizaci Azure AD.
+1. Vyberte **Azure Active Directory** **rolí a správců** >   > **novou vlastní roli**.
 
    ![Vytvoření nebo úprava rolí na stránce role a správci](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,11 +40,11 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
    ![zadání názvu a popisu vlastní role na kartě základy](./media/roles-create-custom/basics-tab.png)
 
 1. Na kartě **oprávnění** vyberte oprávnění nutná ke správě základních vlastností a vlastností přihlašovacích údajů pro registrace aplikací. Podrobný popis jednotlivých oprávnění naleznete [v tématu typy registrace aplikace a oprávnění v Azure Active Directory](./roles-custom-available-permissions.md).
-   1. Nejdřív na panelu hledání zadejte "přihlašovací údaje" a vyberte `microsoft.directory/applications/credentials/update` oprávnění.
+   1. Nejdřív na panelu hledání zadejte "přihlašovací údaje" a vyberte oprávnění `microsoft.directory/applications/credentials/update`.
 
       ![Na kartě oprávnění vyberte oprávnění pro vlastní roli.](./media/roles-create-custom/permissions-tab.png)
 
-   1. Potom na panelu hledání zadejte "základní", vyberte `microsoft.directory/applications/basic/update` oprávnění a pak klikněte na **Další**.
+   1. Potom na panelu hledání zadejte "základní", vyberte oprávnění `microsoft.directory/applications/basic/update` a pak klikněte na **Další**.
 1. Na kartě **Revize + vytvořit** Zkontrolujte oprávnění a vyberte **vytvořit**.
 
 Vaše vlastní role se zobrazí v seznamu dostupných rolí, které se mají přiřadit.
@@ -116,7 +116,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Požadavek HTTP na vytvoření vlastní definice role.
 
-    POST
+    SPUŠTĚNÍ
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
@@ -145,7 +145,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Požadavek HTTP na vytvoření vlastní definice role.
 
-    POST
+    SPUŠTĚNÍ
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
@@ -176,7 +176,7 @@ Podobně jako předdefinované role jsou vlastní role ve výchozím rozsahu př
 1. Výběrem role otevřete stránku **přiřazení** .
 1. Vyberte **Přidat přiřazení** a přidejte uživatele. Uživateli se udělí jakákoli oprávnění jenom pro vybranou registraci aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).

@@ -1,6 +1,6 @@
 ---
-title: Přiřazení nebo odebrání licence – Azure Active Directory | Dokumentace Microsoftu
-description: Pokyny ohledně toho, jak přiřadit nebo odebrání uživatele nebo skupiny licencí Azure Active Directory.
+title: Přiřadit nebo odebrat licence – Azure Active Directory | Microsoft Docs
+description: Pokyny k přiřazení nebo odebrání licencí Azure Active Directory uživatelům nebo skupinám.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -9,137 +9,140 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/18/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f76e766d0aedae88eb11dd244f71f130f77c57e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 869713967a6a89611ab2ea9ca7b7516f090a5f92
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561650"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034262"
 ---
-# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory
-Mnoho služeb Azure Active Directory (Azure AD) vyžadují aktivaci produktů Azure AD a licencování jednotlivých uživatelů nebo skupin (a související členy) pro tento produkt. Uživatelé s licencemi na aktivní budou moci přistupovat a používat licencovaný jenom služby Azure AD.
+# <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí na portálu Azure Active Directory
 
-## <a name="available-product-editions"></a>Edice k dispozici produktu
-K dispozici několik edice produktu Azure AD.
+Mnoho služeb Azure Active Directory (Azure AD) vyžaduje, abyste pro danou službu měli licenci na každého z vašich uživatelů nebo skupin (a přidružených členů). Pouze uživatelé s aktivními licencemi budou moci získat přístup k licencovaným službám Azure AD, pro které platí, a používat je.
+
+## <a name="available-license-plans"></a>Dostupné plány licencí
+
+Pro službu Azure AD je k dispozici několik plánů licencí, mezi které patří:
 
 - Azure AD Free
 
-- Azure AD Basic
+- Azure AD Premium P1
 
-- Azure AD Premium 1 (Azure AD P1)
+- Azure AD Premium P2
 
-- Azure AD Premium 2 (Azure AD P2)
+Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Konkrétní informace o každé edici produktu a související podrobnosti o licencování najdete v tématu [jaká licence potřebuji?](../authentication/concept-sspr-licensing.md).
+Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti **nastavení Azure Active Directory &gt; uživatelé &gt; nastavení @no__t profilu** ve službě Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
-## <a name="view-your-product-edition-and-license-details"></a>Zobrazit vaše edice a licenční podrobnosti o produktu
-Můžete zobrazit vaši dostupný produkty Microsoftu, včetně jednotlivých licencí, kontrolují všechna data vypršení a počet přiřazení k dispozici.
+## <a name="view-license-plans-and-plan-details"></a>Zobrazení plánů licencí a podrobností plánu
 
-### <a name="to-find-your-product-and-license-details"></a>Najít podrobnosti o vašich produktů a licence
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
+Můžete zobrazit dostupné plány služeb, včetně jednotlivých licencí, kontrolovat nevyřízená data vypršení platnosti a zobrazit počet dostupných přiřazení.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **licence**.
+### <a name="to-find-your-service-plan-and-plan-details"></a>Postup vyhledání plánu služby a podrobností plánu
 
-    **Licence** se zobrazí stránka.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce licencí ve vaší organizaci Azure AD.
 
-    ![Stránka licence s počtem zakoupených produktů a přiřazených licencí](media/license-users-groups/license-details-blade.png)
-    
-3. Vyberte **zakoupených produktů** odkaz zobrazíte **produkty** stránky a zobrazíte **přiřazeno**, **dostupné**, a  **Zanedlouho vyprší platnost** podrobnosti pro jednotlivé edice konkrétního produktu.
+1. Vyberte **Azure Active Directory**a pak vyberte **licence**.
 
-    ![Stránka produkty v rámci edicí produktu a informace o přidružené licenci](media/license-users-groups/license-products-blade-with-products.png)
+    ![Stránka licence s počtem zakoupených služeb a přiřazených licencí](media/license-users-groups/license-details-blade.png)
 
-4. Vyberte název edice produktu a zjistěte jeho licencovaných uživatelů a skupin.
+1. Pokud si chcete zobrazit stránku **Products** , vyberte odkaz **koupeno** a zobrazí se **jim přiřazená**, **k dispozici**a **brzo vyprší** čísla vašich licenčních plánů.
+
+    ![Stránka služby s licenčními plány služby a informacemi o přidružených licencích](media/license-users-groups/license-products-blade-with-products.png)
+
+1. Pokud chcete zobrazit licencované uživatele a skupiny, vyberte název plánu.
 
 ## <a name="assign-licenses-to-users-or-groups"></a>Přiřazení licencí uživatelům nebo skupinám
-Ujistěte se, že kdokoli by bylo potřeba použít licencovanou služby Azure AD má příslušnou licenci. To je na vás, jestli chcete přidat licenční práva pro jednotlivé uživatele nebo celé skupiny.
 
->[!Note]
->Licencování na základě skupin je funkce Public Preview služby Azure AD a je dostupná pro placený plán licencí Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).<br><br>Podrobné informace o tom, jak přidat uživatele najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md). Podrobné informace o tom, jak vytvářet skupiny a přidávat členy, naleznete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
+Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD, má odpovídající licenci. Můžete přidat licenční práva uživatelům nebo do celé skupiny.
 
-### <a name="to-assign-a-license-to-a-specific-user"></a>Chcete-li přiřadit licenci pro konkrétního uživatele
-1. Na **produkty** stránky, vyberte název edice, kterou chcete uživateli přiřadit ručně. Například _Azure Active Directory Premium plán 2_.
+### <a name="to-assign-a-license-to-a-user"></a>Přiřazení licence uživateli
 
-    ![Stránka produktů s edici zvýrazněné produktu](media/license-users-groups/license-products-blade-with-product-highlight.png)
+1. Na stránce **produkty** vyberte název licenčního plánu, který chcete uživateli přiřadit.
 
-2. Na **Azure Active Directory Premium plán 2** stránce **přiřadit**.
+    ![Stránka služby se zvýrazněným plánem licencí služby](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-    ![Stránka produktů se zvýrazněnou možností přiřadit](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+1. Na stránce Přehled licenčního plánu vyberte **přiřadit**.
 
-3. Na **přiřadit** stránce **uživatelů a skupin**a poté vyhledejte a vyberte uživateli přiřazujete licenci. Například _Mary Parker_.
+    ![Stránka služby se zvýrazněnou možností přiřadit](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-    ![Přiřazení licencí stránky s zvýrazněný hledaný a zvolit možnosti](media/license-users-groups/assign-license-blade-with-highlight.png)
+1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny**a pak vyhledejte a vyberte uživatele, kterému přiřadíte licenci.
 
-4. Vyberte **možnosti přiřazení**, ujistěte se, že máte příslušné licence funkcí zapnutou a pak vyberte **OK**.
+    ![Stránka přiřadit licenci se zvýrazněným hledáním a vybrat možnosti](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-    ![Stránka možností licence se všemi možnostmi dostupnými v edici](media/license-users-groups/license-option-blade-assignments.png)
+1. Vyberte **možnosti přiřazení**, ujistěte se, že máte zapnuté správné možnosti licence, a pak vyberte **OK**.
 
-    **Přiřadit licence** stránka se aktualizuje a zobrazí, že je vybraný uživatel a zda jsou nakonfigurovány na přiřazení.
+    ![Stránka možností licence se všemi možnostmi dostupnými v plánu licencí](media/license-users-groups/license-option-blade-assignments.png)
 
-    >[!NOTE]
-    >Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, je nutné zadat **místo využívání**. Tuto hodnotu lze nastavit **Azure Active Directory &gt; uživatelé &gt; profilu &gt; nastavení** oblasti ve službě Azure AD.
+    Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
-5. Vyberte **Přiřadit**.
+    > [!NOTE]
+    > Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena uživateli, je nutné zadat **umístění používání**. Tuto hodnotu můžete nastavit v oblasti **nastavení Azure Active Directory &gt; uživatelé &gt; nastavení @no__t profilu** ve službě Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
-    Uživatel se přidá do seznamu licencovaných uživatelů s přístupem ke zahrnutou služby Azure AD.
+1. Vyberte **Přiřadit**.
 
-### <a name="to-assign-a-license-to-an-entire-group"></a>Chcete-li přiřadit licenci pro celou skupinu
-1. Na **produkty** stránky, vyberte název edice, kterou chcete uživateli přiřadit ručně. Například _Azure Active Directory Premium plán 2_.
+    Uživatel se přidá do seznamu licencovaných uživatelů a bude mít přístup k zahrnutým službám Azure AD.
 
-    ![Okno produkty s edici zvýrazněné produktu](media/license-users-groups/license-products-blade-with-product-highlight.png)
+### <a name="to-assign-a-license-to-a-group"></a>Přiřazení licence ke skupině
 
-2. Na **Azure Active Directory Premium plán 2** stránce **přiřadit**.
+1. Na stránce **produkty** vyberte název licenčního plánu, který chcete uživateli přiřadit.
 
-    ![Stránka produktů se zvýrazněnou možností přiřadit](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![Okno produkty s zvýrazněným plánem multilicenčních produktů](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-3. Na **přiřadit** stránce **uživatelů a skupin**a poté vyhledejte a vyberte skupinu, kterou přiřazujete licenci. Například _zásady MDM - západní_.
+1. Na stránce **Azure Active Directory Premium Plan 2** vyberte **přiřadit**.
 
-    ![Přiřazení licencí stránky s zvýrazněný hledaný a zvolit možnosti](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Stránka produkty s možností zvýraznění přiřazení](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-4. Vyberte **možnosti přiřazení**, ujistěte se, že máte příslušné licence funkcí zapnutou a pak vyberte **OK**.
+1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny**a pak vyhledejte a vyberte skupinu, které přiřazujete licenci.
 
-    ![Stránka možností licence se všemi možnostmi dostupnými v edici](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Stránka přiřadit licenci se zvýrazněným hledáním a vybrat možnosti](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-    **Přiřadit licence** stránka se aktualizuje a zobrazí, že je vybraný uživatel a zda jsou nakonfigurovány na přiřazení.
+1. Vyberte **možnosti přiřazení**, ujistěte se, že máte zapnuté správné možnosti licence, a pak vyberte **OK**.
 
-    >[!NOTE]
-    >Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licenci ke skupině, je nutné zadat **místo využívání** pro všechny členy. Tuto hodnotu lze nastavit **Azure Active Directory &gt; uživatelé &gt; profilu &gt; nastavení** oblasti ve službě Azure AD. Každý uživatel, jehož umístění využití nezadáte dědí umístění tenanta.
+    ![Stránka možností licence se všemi možnostmi dostupnými v plánu licencí](media/license-users-groups/license-option-blade-group-assignments.png)
 
-5. Vyberte **Přiřadit**.
+    Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
-    Skupinu se přidá do seznamu skupin licencí a všichni členové mají přístup k zahrnutou služby Azure AD.
+1. Vyberte **Přiřadit**.
+
+    Skupina se přidá do seznamu licencovaných skupin a všichni členové mají přístup k zahrnutým službám Azure AD.
 
 ## <a name="remove-a-license"></a>Odebrání licence
-Můžete odebrat licenci z uživatele nebo skupiny z **licence** stránky.
 
-### <a name="to-remove-a-license-from-a-specific-user"></a>Chcete-li odebrat licenci od konkrétního uživatele
-1. Na **licencovaní uživatelé** stránky pro edici produktu, vyberte uživatele, který už má licence. Například _Alain Charon_.
+Licenci můžete odebrat na stránce uživatele Azure AD, ze stránky přehled skupiny pro přiřazení skupiny, nebo na stránce **licence** Azure AD zobrazit uživatele a skupiny pro licenci.
 
-2. Vyberte **odebrat licenci**.
+### <a name="to-remove-a-license-from-a-user"></a>Odebrání licence uživatele
 
-    ![Licencovaní uživatelé stránky se zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
+1. Na stránce **licencované uživatele** pro plán služby vyberte uživatele, který už nemá mít licenci. Například _Alain Charon_.
 
-### <a name="to-remove-a-license-from-a-group"></a>Chcete-li odebrat licenci ze skupiny
-1. Na **licencované skupiny** stránky pro edici produktu, vyberte skupinu, která už má licence. Například _zásady MDM - západní_.
+1. Vyberte **odebrat licenci**.
 
-2. Vyberte **odebrat licenci**.
+    ![Stránka licencované uživatele s zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
-    ![Licencované skupiny stránky se zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+> [!IMPORTANT]
+> Licence, které uživatel dědí ze skupiny, se nedají odebrat přímo. Místo toho je nutné odebrat uživatele ze skupiny, ze které dědí licenci.
 
->[!Important]
->Licence děděné uživatele ze skupiny nelze odebrat přímo. Místo toho budete muset odebrat uživatele ze skupiny, ze kterého se máte dědění licence.
+### <a name="to-remove-a-license-from-a-group"></a>Odebrání licence ze skupiny
 
-## <a name="next-steps"></a>Další postup
-Po přiřazení licence, můžete provádět následující procesy:
+1. Na stránce **licencované skupiny** pro licenční plán vyberte skupinu, která už nebude mít licenci.
 
-- [Identifikovat a vyřešit problémy přiřazení licence](../users-groups-roles/licensing-groups-resolve-problems.md)
+1. Vyberte **odebrat licenci**.
 
-- [Licencovaní uživatelé přidat do skupiny pro licencování](../users-groups-roles/licensing-groups-migrate-users.md)
+    ![Stránka licencovaných skupin s zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
 
-- [Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo změně informací profilu](active-directory-users-profile-azure-portal.md)
+Po přiřazení licencí můžete provádět následující procesy:
+
+- [Identifikace a řešení problémů s přiřazením licencí](../users-groups-roles/licensing-groups-resolve-problems.md)
+
+- [Přidání licencovaných uživatelů do skupiny pro licencování](../users-groups-roles/licensing-groups-migrate-users.md)
+
+- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+
+- [Přidat nebo změnit informace o profilu](active-directory-users-profile-azure-portal.md)

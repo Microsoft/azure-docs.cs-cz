@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/09/2019
+ms.date: 10/07/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362481"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72023079"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute Direct?
 
@@ -35,6 +35,7 @@ Dostupné porty budou dynamické a budou k dispozici prostředí PowerShell pro 
 * Dublin
 * Hongkong – zvláštní správní oblast
 * Londýn
+* Londýn2
 * Melbourne
 * New York City
 * Perth
@@ -47,7 +48,7 @@ Dostupné porty budou dynamické a budou k dispozici prostředí PowerShell pro 
 * Tchaj-pej
 * Tokio
 * Toronto
-* Washington
+* Washington DC
 * Washington DC2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Jaká je smlouva SLA pro ExpressRoute Direct?
@@ -56,7 +57,7 @@ ExpressRoute Direct využije stejnou [podnikovou třídu ExpressRoute](https://a
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jaké scénáře by měly zákazníci zvážit pomocí ExpressRoute Direct?  
 
-ExpressRoute Direct poskytuje zákazníkům přímé páry portů 100 nebo 10 GB/s v globální páteřní síti Microsoft. Mezi scénáře, které budou zákazníkům poskytovat největší výhody, patří: Obrovský příjem dat, fyzickou izolaci regulovaných trhů a vyhrazenou kapacitu pro shlukový scénář, jako je například vykreslování. 
+ExpressRoute Direct poskytuje zákazníkům přímé páry portů 100 nebo 10 GB/s v globální páteřní síti Microsoft. Mezi scénáře, které budou zákazníkům poskytovat největší výhody, patří: obrovský příjem dat, fyzická izolace pro regulované trhy a vyhrazená kapacita pro scénář shluku, jako je například vykreslování. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Jaký je model fakturace pro ExpressRoute Direct? 
 

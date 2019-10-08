@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229404"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024620"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: Prozkoumat incidenty pomocí služby Azure Sentinel
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
 > [!IMPORTANT]
 > Graf šetření je aktuálně ve verzi Public Preview.
@@ -31,7 +31,7 @@ ms.locfileid: "71229404"
 
 Tento kurz vám pomůže prozkoumat incidenty pomocí služby Azure Sentinel. Po připojení zdrojů dat ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Pokud to chcete povolit, Azure Sentinel vám umožní vytvářet Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a prozkoumat.
 
-Tento článek se týká:
+Tento článek popisuje:
 > [!div class="checklist"]
 > * Šetření incidentů
 > * Použití grafu šetření
@@ -39,12 +39,12 @@ Tento článek se týká:
 
 Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. Incident se vytvoří na základě analytických pravidel, která jste vytvořili na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte a jak se mají najít, můžete monitorovat zjištěné hrozby zkoumáním incidentů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
 ## <a name="how-to-investigate-incidents"></a>Jak prozkoumat incidenty
 
-1. Vyberte **incidenty**. Na ****  stránce incidenty se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu**a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
+1. Vyberte **incidenty**. Na stránce **incidenty** se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu**a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, jaké incidenty se mají zpracovat jako první.
 
     ![Zobrazit závažnost incidentu](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -54,7 +54,7 @@ Incident budete moct prozkoumat jenom v případě, že jste při nastavování 
 
 1. Chcete-li zobrazit další podrobnosti o výstrahách a entitách v incidentu, vyberte možnost **Zobrazit úplné podrobnosti** na stránce incident a zkontrolujte příslušné karty, které shrnují informace o incidentu. Na kartě **výstrahy** si prohlédněte samotnou výstrahu. Zobrazí se všechny relevantní informace o výstraze – dotaz, který aktivoval výstrahu, počet vrácených výsledků na dotaz a možnost spustit playbooky na výstrahách. Chcete-li přejít k podrobnostem i dál k incidentu, vyberte počet **událostí**. Otevře se dotaz, který vygeneroval výsledky, a události, které vyvolaly výstrahu v Log Analytics. Na kartě **entity** můžete zobrazit všechny entity, které jste namapovali jako součást definice pravidla výstrahy.
 
-    ![Zobrazit podrobnosti o upozornění](media/tutorial-investigate-cases/alert-details.png)
+    ![Zobrazit podrobnosti výstrahy](media/tutorial-investigate-cases/alert-details.png)
 
 1. Pokud aktivně zkoumáte incident, je vhodné nastavit stav incidentu na **probíhá** , dokud ho nezavřete.
 
@@ -70,22 +70,22 @@ Graf šetření umožňuje analytikům požádat o správné otázky pro každé
   
 Graf šetření vám poskytne:
 
-- **Vizuální kontext z nezpracovaných dat**: Živý vizuál zobrazuje vztahy mezi entitami extrahovanými automaticky z nezpracovaných dat. Díky tomu můžete snadno zobrazit připojení v různých zdrojích dat.
+- **Vizuální kontext z nezpracovaných dat**: Live, Visual Graph zobrazuje vztahy mezi entitami extrahovanými automaticky z nezpracovaných dat. Díky tomu můžete snadno zobrazit připojení v různých zdrojích dat.
 
-- **Zjišťování rozsahu úplného šetření**: Rozšiřte svůj rozsah šetření pomocí integrovaných dotazů na průzkum, abyste nastavili plný rozsah porušení.
+- **Zjišťování rozsahu úplného šetření**: Rozšiřte svůj rozsah šetření pomocí integrovaných dotazů na průzkum, které doplní celou oblast porušení.
 
-- **Integrované kroky šetření**: Použijte předdefinované možnosti průzkumu a ujistěte se, že na začátku hrozby vyžádáte správné otázky.
+- **Integrované kroky pro šetření**: pomocí předdefinovaných možností průzkumu se ujistěte, že na začátku hrozby vyžádáte správné otázky.
 
 Použití grafu šetření:
 
-1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
+1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
 
    > [!IMPORTANT] 
    > Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
-   ![Zobrazit mapu](media/tutorial-investigate-cases/map1.png)
+   ![Zobrazení mapy](media/tutorial-investigate-cases/map1.png)
 
-1. Vyberte entitu a otevřete tak podokno **entity** , abyste mohli zkontrolovat informace o dané entitě.
+1. Vyberte entitu a otevřete tak podokno **entity** , abyste mohli zkontrolovat informace o dané entitě.
 
     ![Zobrazit entity v mapě](media/tutorial-investigate-cases/map-entities.png)
   
@@ -95,9 +95,9 @@ Použití grafu šetření:
 
    Například na počítači můžete požádat o související výstrahy. Pokud vyberete dotaz průzkumu, výsledné nároky se přidají zpátky do grafu. V tomto příkladu vyberete **související výstrahy** , které vrátí následující výstrahy do grafu:
 
-    ![Zobrazit související upozornění](media/tutorial-investigate-cases/related-alerts.png)
+    ![Zobrazit související výstrahy](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že **vyberete\>události**.
+1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že vyberete **události @ no__t-1**.
 
 1. Aby bylo možné porozumět incidentu, graf vám nabídne paralelní časovou osu.
 
@@ -112,5 +112,5 @@ Použití grafu šetření:
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
-> [Reakce](tutorial-respond-threats-playbook.md) na hrozby pro automatizaci reakcí na hrozby.
+> [Reakce na hrozby](tutorial-respond-threats-playbook.md) pro automatizaci reakcí na hrozby.
 

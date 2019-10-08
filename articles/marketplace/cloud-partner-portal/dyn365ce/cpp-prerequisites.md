@@ -1,56 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement nabízí požadavky | Azure Marketplace
-description: Požadavky pro publikování aplikací Azure nabízet na webu Azure Marketplace.
+title: Dynamics 365 pro požadavky nabídky Customer Engagement | Azure Marketplace
+description: Zastaralý článek CPP propojený s počítačem. Byl "předpokladem pro publikování nabídky aplikace Azure na Azure Marketplace"
 services: Dynamics 365 for Customer Engagement offer, Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a7d5edeed762da82b20b8bb4dbdd524be34fea3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338895"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034295"
 ---
-# <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 Customer Engagement předpoklady
+# <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Požadavky na Dynamics 365 pro zákaznickou zapojení
 
-Tento článek popisuje technické a podnikové požadavky pro publikování Dynamics 365 Customer Engagement aplikace nabídky na webu AppSource Marketplace.  Pokud jste tak již neučinili, přečtěte si [Office 365, Dynamics 365, PowerApps a Power BI nabízí průvodce publikováním](../../appsource-offer-publishing-guide.md).
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové sady Dynamics 365 pro Customer Engagement & nabídky PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="technical-requirements"></a>Technické požadavky
-
-Musí odpovídat vaší Dynamics 365 Customer Engagement aplikace [pokyny pro recenze v app Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/AppsourceGuidelines/Microsoft%20AppSource%20app%20review%20guidelines_v5.pdf), což zahrnuje následující požadavky:
-
-
-|              Požadavek             |        Popis           |
-|            ---------------           |      ---------------         |
-| Integrace Azure Active Directory   | Aplikace musí povolit Azure Active Directory federované jednotné přihlašování (AAD federované jednotné přihlašování) s souhlasu povolena. Další informace najdete v tématu [získání certifikace AppSource pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-get-appsource-certified). |
-| Integrace se službami Cloud od Microsoftu (volitelné) | Tam, kde je to nezbytně nutné, vaše aplikace by měla integrace s jinými službami Microsoft Cloud jako služby Microsoft Power BI, Microsoft Flow nebo Microsoft Azure, jako jsou machine learning nebo cognitive services. |
-| Obchodní, zaměřuje            |  Aplikace musí zaměřit na obchodní dobře definovaný proces nebo vydat, především cílit na firemním zákazníkům a umožňují uživatelům přihlašovat se pomocí svých pracovních přihlašovacích údajů (uživatelské jméno a heslo).  |
-| Období bezplatné zkušební verze a zkušební verze |  Zákazník musí být schopen použít vaši aplikaci zdarma po omezenou dobu: "Get je nyní" pro bezplatné aplikace, "bezplatnou zkušební verzi" pro určité období, demonstrator "Testovací verze" nebo "Kontakt me" žádost o – možnost.  |
-| Konfigurace bez nebo s minimálním                 | Aplikace musí být snadné a rychlé ke konfiguraci a nastavení (žádné vývoj nebo přizpůsobení nutné).  |
-| Zákaznická podpora                     | Podpora pro vaše aplikace musí obsahovat odkaz podpory zákazníků kde najdete pomoc.  |
-| Dostupnost/doba provozu                  | Vaše aplikace musí mít minimálně 99,9 % dostupnost. |
-|  |  |
-
-
-## <a name="business-requirements"></a>Obchodní požadavky
-
-Obchodní požadavky zahrnují následující procesní, smluvní a právní závazky:
-
-* Musíte být zaregistrováni na [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) nebo být registrované vydavatele na webu Marketplace cloudu. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).  (Může se také připojit pomocí [Dynamics 365 pro Customer Engagement onboardingový tým](https://experience.dynamics.com/isvengage/)).
-
-    >[!NOTE]
-    >K přihlášení na portál Cloud Partner musí použít stejný účet registrace Microsoft Developer Center. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Tento účet nesmí být specifické pro jednotlivé služby nebo nabídky.
-
-* Protože AppSource nenabízí možnost publikování povoleno obchodování, je nutné použít aktuální řazení a fakturační infrastruktury bez další investice, změn.
-* Zodpovídáte za zpřístupnění technické podpory pro zákazníky přiměřené způsobem. Tato podpora může být zdarma, placená nebo prostřednictvím komunity přístupy.
-* Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.
-* Měli jste vytvořili přidružené marketingové materiály, jako je například název aplikace oficiální, popis (ve formátu HTML), loga ve formátu PNG (40 x 40, 90 x 90, 115 x 115 a 255 x 115 pixelů) a podmínky použití a zásady ochrany osobních údajů.  
-
-
-## <a name="next-steps"></a>Další postup
-
-Po splnění těchto požadavků, můžete [vytvořte nabídku Dynamics 365 Customer Engagement](./cpp-create-offer.md) 
+Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) vytvořte.

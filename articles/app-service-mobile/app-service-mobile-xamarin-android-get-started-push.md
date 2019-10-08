@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace Xamarin.Android | Dokumentace Microsoftu
-description: Další informace o použití služby Azure App Service a Azure Notification Hubs k odesílání nabízených oznámení do aplikace Xamarin.Android
+title: Přidání nabízených oznámení do vaší aplikace Xamarin. Android | Microsoft Docs
+description: Naučte se používat Azure App Service a Azure Notification Hubs k odesílání nabízených oznámení do vaší aplikace Xamarin. Android.
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,71 +14,71 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: cff0845b555f25fce438f3389e1f97cda0450bc3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f71dc2cde2790f60641462a705a1147b4ace3128
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447130"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027161"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Android
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení [rychlý start Xamarin.Android](app-service-mobile-windows-store-dotnet-get-started.md) projekt tak, aby na zařízení přijde nabízené oznámení pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do projektu [Xamarin. Android pro rychlý Start](app-service-mobile-windows-store-dotnet-get-started.md) , takže nabízené oznámení se odešle do zařízení při každém vložení záznamu.
 
-Pokud použijete stažený projekt rychlého spuštění serveru, budete potřebovat balíček rozšíření nabízené oznámení. Další informace najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) průvodce.
+Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce se serverovou sadou .NET back-end SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) průvodce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje nastavení:
 
-* Aktivní účet Google. Můžete se zaregistrovat pro účet Google na [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
-* [Komponenta klienta zasílání zpráv cloudu Google](https://components.xamarin.com/view/GCMClient/).
+* Aktivní účet Google. Účet Google si můžete zaregistrovat na adrese [accounts.Google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
+* [Google Cloud Messaging součásti klienta](https://components.xamarin.com/view/GCMClient/).
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Povolení služby Firebase Cloud Messaging
+## <a id="register"></a>Povolení zasílání zpráv Firebase do cloudu
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-azure-to-send-push-requests"></a>Konfigurace Azure k odesílání nabízených oznámení požadavků
+## <a name="configure-azure-to-send-push-requests"></a>Konfigurace Azure pro odesílání nabízených žádostí
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>Aktualizovat projekt serveru k odesílání nabízených oznámení
+## <a id="update-server"></a>Aktualizace projektového serveru pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>Konfigurace projektu klienta pro nabízená oznámení
+## <a id="configure-app"></a>Konfigurace klientského projektu pro nabízená oznámení
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>Přidejte kód nabízených oznámení do vaší aplikace
+## <a id="add-push"></a>Přidání kódu nabízených oznámení do aplikace
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>Nabízená oznámení ve vaší aplikaci
+## <a name="test"></a>Testování nabízených oznámení ve vaší aplikaci
 
-Aplikaci můžete otestovat pomocí virtuálního zařízení se spustila v emulátoru. Existují další konfigurační kroky potřebné při spouštění v emulátoru.
+Aplikaci můžete testovat pomocí virtuálního zařízení v emulátoru. Při spuštění v emulátoru jsou vyžadovány další kroky konfigurace.
 
-1. Rozhraní Google API nastavit jako cíl v nástroji Android Virtual Device (AVD) manager musí mít virtuální zařízení.
+1. Virtuální zařízení musí mít ve Správci AVD (Android Virtual Device) nastavené rozhraní Google API jako cíl.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. Kliknutím přidejte účet Google na zařízení s Androidem **aplikace** > **nastavení** > **přidat účet**, postupujte podle pokynů.
+2. Kliknutím na **aplikace**@no__t**nastavení**-1  > **Přidat účet**a potom postupujte podle pokynů, přidejte do zařízení s Androidem účet Google.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 
-3. Spuštění aplikace seznamu úkolů stejně jako dříve a vložit novou položku seznamu úkolů. Tentokrát ikonu oznámení se zobrazí v oznamovací oblasti. Je-li otevřít panel oznámení k zobrazení textu v plném znění oznámení.
+3. Spusťte aplikaci ToDoList jako dřív a vložte novou položku todo. Tentokrát se v oznamovací oblasti zobrazí ikona oznámení. K zobrazení úplného textu oznámení můžete otevřít zásuvku oznámení.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
 

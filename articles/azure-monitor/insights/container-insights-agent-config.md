@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ada573cc919d775af52abc5a75004866aebbeddb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709425"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033931"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
@@ -41,15 +41,15 @@ K dispozici je soubor šablony ConfigMap, který umožňuje snadnou úpravu pomo
 
 Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shromažďování dat.
 
-|Key |Datový typ |Hodnota |Popis |
+|Klíč |Data type |Hodnota |Popis |
 |----|----------|------|------------|
 |`schema-version` |Řetězec (rozlišuje velká a malá písmena) |V1 |Toto je verze schématu používaná agentem při analýze tohoto ConfigMap. Aktuálně podporovaná verze schématu je v1. Změna této hodnoty není podporována a při vyhodnocování ConfigMap bude odmítnuta.|
-|`config-version` |String | | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti. Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
-|`[log_collection_settings.stdout] enabled =` |Boolean | True nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Pokud je nastavená hodnota `true` a pro kolekci protokolů stdout (nastavení `log_collection_settings.stdout.exclude_namespaces` níže nejsou žádné obory názvů), budou se protokoly stdout shromažďovat ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|String | Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Boolean | True nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Pokud je nastavena hodnota `true` a žádné obory názvů nejsou vyloučeny pro shromažďování protokolů stdout (nastavení `log_collection_settings.stderr.exclude_namespaces`), budou protokoly stderr shromažďovány ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |String |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Boolean | True nebo false | Tyto ovládací prvky, pokud je povolena kolekce proměnných prostředí. Pokud je nastavena hodnota `false`, žádné proměnné prostředí nejsou shromažďovány pro žádný kontejner spuštěný ve všech luskech nebo uzlech v clusteru. Pokud není zadán v ConfigMap, výchozí hodnota je `enabled = true`. |
+|`config-version` |Řetězec | | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti. Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
+|`[log_collection_settings.stdout] enabled =` |Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Pokud je nastavená hodnota `true` a pro kolekci protokolů stdout (nastavení `log_collection_settings.stdout.exclude_namespaces` níže nejsou žádné obory názvů), budou se protokoly stdout shromažďovat ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Řetězec | Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`.|
+|`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Pokud je nastavena hodnota `true` a žádné obory názvů nejsou vyloučeny pro shromažďování protokolů stdout (nastavení `log_collection_settings.stderr.exclude_namespaces`), budou protokoly stderr shromažďovány ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Řetězec |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve výchozím nastavení `enabled = true`, pokud není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner zakázat nastavením proměnné prostředí `AZMON_COLLECT_ENV` na **hodnotu false** buď pomocí nastavení souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) příkaz pod **. ENV:** oddíl Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
 
 ### <a name="prometheus-scraping-settings"></a>Nastavení pro likvidační Prometheus
 
@@ -62,7 +62,7 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 * Adresa URL pro clustery v rámci clusteru a zjišťování cílů z uvedených koncových bodů služby, k8s služeb, jako jsou Kube-DNS a Kube – metriky a pod, poznámky specifické pro aplikaci. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus data_collection_settings. cluster]* .
 * Adresa URL v rámci uzlu-HTTP a zjišťují se cíle z uvedených koncových bodů služby. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus_data_collection_settings. Node]* .
 
-| Koncový bod | Rozsah | Příklad |
+| Koncový bod | Rozsah | Příklad: |
 |----------|-------|---------|
 | Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
 | Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -70,21 +70,21 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 
 Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
 
-|Rozsah | Key | Datový typ | Hodnota | Popis |
+|Rozsah | Klíč | Data type | Hodnota | Popis |
 |------|-----|-----------|-------|-------------|
 | Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
-| | `urls` | String | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je specifický parametr Azure Monitor for Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
-| | `kubernetes_services` | String | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Například `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean | True nebo false | Když nastavíte `true` v nastaveních na úrovni celého clusteru, Azure Monitor pro agenta kontejnerů vyřadí Kubernetes do celého clusteru pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | True nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastavené na `true`. |
-| | `prometheus.io/scheme` | String | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https`. | 
-| | `prometheus.io/path` | String | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta k metrikám není `/metrics`, definujte ji pomocí této poznámky. |
-| | `prometheus.io/port` | String | 9102 | Zadejte port, na kterém se má naslouchat. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
-| Napříč uzly | `urls` | String | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je specifický parametr Azure Monitor for Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
-| V rozsáhlých uzlech nebo v clusteru | `interval` | String | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Kolekci můžete upravit buď pro *[prometheus_data_collection_settings. Node]* , nebo *[prometheus_data_collection_settings. cluster]* , na časové jednotky, jako je například NS, US (nebo Âμs), MS, s, m, h. |
-| V rozsáhlých uzlech nebo v clusteru | `fieldpass`<br> `fielddrop`| String | Pole oddělené čárkami | Nastavením seznamu Povolit (`fieldpass`) a zakázat (`fielddrop`) můžete určit určité metriky, které mají být shromažďovány nebo nikoli z koncového bodu. Nejprve musíte nastavit seznam povolených. |
+| | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je specifický parametr Azure Monitor for Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| | `kubernetes_services` | Řetězec | Pole oddělené čárkami | Pole služeb Kubernetes pro vyřazení metrik z Kube-State-Metrics. Například `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Logická hodnota | true nebo false | Když nastavíte `true` v nastaveních na úrovni celého clusteru, Azure Monitor pro agenta kontejnerů vyřadí Kubernetes do celého clusteru pro následující poznámky Prometheus:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastavené na `true`. |
+| | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https`. | 
+| | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta k metrikám není `/metrics`, definujte ji pomocí této poznámky. |
+| | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, na kterém se má naslouchat. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
+| Napříč uzly | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je specifický parametr Azure Monitor for Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
+| V rozsáhlých uzlech nebo v clusteru | `interval` | Řetězec | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Kolekci můžete upravit buď pro *[prometheus_data_collection_settings. Node]* , nebo *[prometheus_data_collection_settings. cluster]* , na časové jednotky, jako je například NS, US (nebo Âμs), MS, s, m, h. |
+| V rozsáhlých uzlech nebo v clusteru | `fieldpass`<br> `fielddrop`| Řetězec | Pole oddělené čárkami | Nastavením seznamu Povolit (`fieldpass`) a zakázat (`fielddrop`) můžete určit určité metriky, které mají být shromažďovány nebo nikoli z koncového bodu. Nejprve musíte nastavit seznam povolených. |
 
-ConfigMap je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMap pro kolekce.
+ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
 
 ## <a name="configure-and-deploy-configmaps"></a>Konfigurace a nasazení ConfigMaps
 

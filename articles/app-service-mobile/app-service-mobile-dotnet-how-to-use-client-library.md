@@ -1,6 +1,6 @@
 ---
-title: Práce s knihovna spravovaných klientů aplikace App Service Mobile Apps | Dokumentace Microsoftu
-description: Další informace o použití klientské knihovny .NET pro Azure App Service Mobile Apps s aplikací pro Windows a Xamarin.
+title: Práce s knihovnou spravovaného klienta App Service Mobile Apps | Microsoft Docs
+description: Naučte se používat klientskou knihovnu .NET pro Azure App Service Mobile Apps s aplikacemi pro Windows a Xamarin.
 services: app-service\mobile
 documentationcenter: ''
 author: elamalani
@@ -14,43 +14,42 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2abced3bd7f1afe5e447a60c73da26fa302ced98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446362"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027387"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře pomocí spravované klientské knihovny pro Azure App Service Mobile Apps pro Windows a aplikace pro Xamarin. Pokud jste ještě na Mobile Apps, měli byste zvážit nejprve dokončení [Azure Mobile Apps quickstart][1] kurzu. V této příručce se zaměříme na spravované sady SDK na straně klienta. Další informace o sadách SDK na straně serveru pro Mobile Apps, naleznete v dokumentaci k [.NET Server SDK][2] or the
-[Node.js Server SDK][3].
+V této příručce se dozvíte, jak provádět běžné scénáře pomocí spravované klientské knihovny pro Azure App Service Mobile Apps pro aplikace pro Windows a Xamarin. Pokud s Mobile Apps začínáte, měli byste zvážit, jak nejprve vyplníte kurz [Azure Mobile Apps rychlý Start][1] . V tomto průvodci se zaměříme na spravovanou sadu SDK na straně klienta. Další informace o sadách SDK na straně serveru pro Mobile Apps naleznete v dokumentaci k sadě [.NET Server SDK][2] nebo sadě [SDK serveru Node. js][3].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
-Referenční dokumentace pro klienta SDK je umístěná tady: [Referenční informace k klienta Azure Mobile Apps pro .NET][4].
-Můžete také získat několik vzorových klienta v [úložiště GitHub Azure-Samples][5].
+Referenční dokumentace k sadě Client SDK se nachází tady: [odkazy na klienta Azure Mobile Apps .NET][4].
+Několik ukázek klientů můžete najít také v [úložišti GitHub Azure-Samples][5].
 
 ## <a name="supported-platforms"></a>Podporované platformy
-Na platformě .NET podporuje tyto platformy:
+Platforma .NET podporuje následující platformy:
 
-* Vydání pro Xamarin Android pro rozhraní API 19 až 24 (KitKat prostřednictvím verzi Nougat)
-* Pro iOS verze 8.0 a novější verzí Xamarin pro iOS
+* Verze Xamarin Androidu pro rozhraní API 19 až 24 (KitKat až nougat)
+* Verze Xamarin iOS pro iOS verze 8,0 a novější
 * Univerzální platforma Windows
-* Windows Phone 8.1
-* Windows Phone 8.0, s výjimkou aplikace Silverlight
+* Windows Phone 8,1
+* Windows Phone 8,0 s výjimkou aplikací Silverlight
 
-"Serveru tok" ověřování používá komponenty WebView pro zobrazené uživatelské rozhraní.  Pokud zařízení není možné zobrazení WebView uživatelského rozhraní, jsou potřeba další metody ověřování.  Tato sada SDK není proto vhodný pro Watch-type nebo podobně jako zařízení s omezeným přístupem.
+Ověřování "Server-Flow" používá pro prezentované uživatelské rozhraní WebView.  Pokud zařízení není schopné prezentovat uživatelské rozhraní WebView, vyžadují se další metody ověřování.  Tato sada SDK není vhodná pro zařízení s omezením typu kukátka nebo podobně.
 
-## <a name="setup"></a>Instalace a požadavky
-Předpokládáme, že jste už vytvořili a publikování projektu back-endu mobilní aplikace, který obsahuje alespoň jednu tabulku.  V kódu aplikace v tomto tématu, je v tabulce s názvem `TodoItem` a má následující sloupce: `Id`, `Text`, a `Complete`. Tato tabulka je stejné tabulky vytvořené po dokončení [Azure Mobile Apps quickstart][1].
+## <a name="setup"></a>Nastavení a předpoklady
+Předpokládáme, že už jste vytvořili a publikovali projekt back-endu mobilní aplikace, který obsahuje alespoň jednu tabulku.  V kódu použitém v tomto tématu je tabulka pojmenována `TodoItem` a má následující sloupce: `Id`, `Text` a `Complete`. Tato tabulka je stejná jako tabulka vytvořená při dokončení [rychlého startu Azure Mobile Apps][1].
 
-Odpovídající typ zadaný na straně klienta v jazyce C# je následující třídy:
+Odpovídající typový typ na straně klienta v C# nástroji je následující třída:
 
 ```csharp
 public class TodoItem
@@ -65,87 +64,85 @@ public class TodoItem
 }
 ```
 
-[JsonPropertyAttribute][6] se používá k definování *PropertyName* mapování mezi poli klienta a pole tabulky.
+[JsonPropertyAttribute][6] se používá k definování mapování *PropertyName* mezi polem klient a polem tabulky.
 
-Informace o vytváření tabulek v back-endu Mobile Apps, najdete v článku [.NET Server SDK tématu][7]
-or the [Node.js Server SDK topic][8]. Pokud jste vytvořili back-endu mobilní aplikace v tomto rychlém startu pomocí webu Azure portal, můžete také použít **jednoduché tabulky** nastavení [Azure Portal].
+Informace o vytváření tabulek v back-endu Mobile Apps najdete v tématu [věnovaném sadě SDK serveru pro .NET][7] nebo v [tématu SDK pro server Node. js][8]. Pokud jste v Azure Portal vytvořili back-end mobilní aplikace pomocí rychlého startu, můžete také použít nastavení **jednoduché tabulky** v [Azure Portal].
 
-### <a name="how-to-install-the-managed-client-sdk-package"></a>Postup: Instalace balíčku sady SDK spravovaného klienta
-Použijte jednu z následujících metod instalace balíčku sady SDK spravovaného klienta Mobile Apps z [NuGet][9]:
+### <a name="how-to-install-the-managed-client-sdk-package"></a>Postupy: instalace balíčku spravovaného klienta sady SDK
+K instalaci balíčku spravovaného klienta sady SDK pro Mobile Apps z [NuGet][9]použijte jednu z následujících metod:
 
-* **Visual Studio** klikněte pravým tlačítkem na projekt, klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.Mobile.Client` balíček a pak klikněte na **nainstalovat**.
-* **Xamarin Studio** klikněte pravým tlačítkem na projekt, klikněte na tlačítko **přidat** > **přidat balíčky NuGet**, vyhledejte `Microsoft.Azure.Mobile.Client` balíček a pak klikněte na tlačítko **přidat balíček** .
+* **Visual Studio** Klikněte pravým tlačítkem na projekt, klikněte na **Spravovat balíčky NuGet**, vyhledejte balíček `Microsoft.Azure.Mobile.Client` a pak klikněte na **nainstalovat**.
+* **Xamarin Studio** Klikněte pravým tlačítkem na projekt, klikněte na **přidat** > **Přidat balíčky NuGet**, vyhledejte balíček `Microsoft.Azure.Mobile.Client` a pak klikněte na **Přidat balíček**.
 
-V hlavní aktivitě souboru, nezapomeňte přidat následující **pomocí** – příkaz:
+V souboru hlavní aktivity nezapomeňte přidat následující příkaz **using** :
 
 ```csharp
 using Microsoft.WindowsAzure.MobileServices;
 ```
 
 > [!NOTE]
-> Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. Sada SDK má `Xamarin.Android.Support.CustomTabs` závislostí pro platformy Android, tak pokud váš projekt používá novější podporu balíčky je nutné nainstalovat tento balíček s požadovanou verzi přímo, aby nedocházelo ke konfliktům.
+> Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. Sada SDK má @no__t závislost – 0 pro platformu Android, takže pokud váš projekt používá novější balíčky pro podporu, je nutné nainstalovat tento balíček s požadovanou verzí přímo, aby nedocházelo ke konfliktům.
 
-### <a name="symbolsource"></a>Jak: Práce s symboly ladění v sadě Visual Studio
-Symboly pro obor názvů Microsoft.Azure.Mobile jsou k dispozici na [SymbolSource][10] .  Refer to the
-[SymbolSource instructions][11] integrovat SymbolSource pomocí sady Visual Studio.
+### <a name="symbolsource"></a>Postupy: práce s symboly ladění v aplikaci Visual Studio
+V [SymbolSource][10]jsou k dispozici symboly pro obor názvů Microsoft. Azure. Mobile.  Informace o integraci SymbolSource se sadou Visual Studio najdete v [pokynech k SymbolSource][11] .
 
 ## <a name="create-client"></a>Vytvoření klienta Mobile Apps
-Následující kód vytvoří [MobileServiceClient][12] objekt, který se používá pro přístup k back-endu mobilní aplikace.
+Následující kód vytvoří objekt [MobileServiceClient][12] , který se používá pro přístup k back-endu mobilní aplikace.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-V předchozím kódu nahraďte `MOBILE_APP_URL` s adresou URL back-endu mobilní aplikace, která byla nalezena v okně pro back-endu mobilní aplikace v [Azure Portal]. Objekt MobileServiceClient by měl být typu singleton.
+V předchozím kódu nahraďte `MOBILE_APP_URL` adresou URL back-endu mobilní aplikace, který najdete v okně pro back-end mobilní aplikace v [Azure Portal]. Objekt MobileServiceClient by měl být typu singleton.
 
 ## <a name="work-with-tables"></a>Práce s tabulkami
-Následující část podrobně popisuje, jak vyhledat a načíst záznamy a úprava dat v tabulce.  Jsou pokryta následující témata:
+Následující část popisuje, jak vyhledat a načíst záznamy a upravit data v tabulce.  Jsou pokrytá následující témata:
 
-* [Vytvořit odkaz na tabulku](#instantiating)
+* [Vytvoření odkazu na tabulku](#instantiating)
 * [Dotazování dat](#querying)
-* [Filtr vrátil data](#filtering)
-* [Řazení vrátil data](#sorting)
-* [Vrácení dat na stránkách](#paging)
-* [Vyberte sloupce zaškrtnutím](#selecting)
-* [Vyhledání záznamu podle Id](#lookingup)
-* [Práce s netypové dotazy](#untypedqueries)
+* [Filtrovat vrácená data](#filtering)
+* [Řazení vrácených dat](#sorting)
+* [Vrátit data na stránkách](#paging)
+* [Vybrat konkrétní sloupce](#selecting)
+* [Vyhledat záznam podle ID](#lookingup)
+* [Obchodování s netypovými dotazy](#untypedqueries)
 * [Vkládání dat](#inserting)
 * Aktualizace dat
-* [Odstranění dat](#deleting)
-* [Řešení konfliktů a optimistického řízení souběžnosti](#optimisticconcurrency)
-* [Vytvoření vazby na uživatelské rozhraní Windows](#binding)
+* [Odstraňování dat](#deleting)
+* [Řešení konfliktů a Optimistická souběžnost](#optimisticconcurrency)
+* [Vytvoření vazby na uživatelské rozhraní systému Windows](#binding)
 * [Změna velikosti stránky](#pagesize)
 
-### <a name="instantiating"></a>Jak: Vytvořit odkaz na tabulku
-Veškerý kód, který přistupuje k nebo upravuje data v tabulce back-endu volá funkce na `MobileServiceTable` objektu. Získat odkaz na tabulku voláním [Jít] metodu následujícím způsobem:
+### <a name="instantiating"></a>Postupy: Vytvoření odkazu na tabulku
+Veškerý kód, který přistupuje k datům v back-endové tabulce a upravuje je, volá funkce objektu `MobileServiceTable`. Získejte odkaz na tabulku voláním metody [GetTable] následujícím způsobem:
 
 ```csharp
 IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 ```
 
-Vrácený objekt používá model typovaná serializace. Model netypové serializace je také podporována. Následující příklad [Vytvoří odkaz na tabulku netypový kód]:
+Vrácený objekt používá typový serializace model. Podporuje se taky Netypový serializace model. Následující příklad [vytvoří odkaz na netypové tabulky]:
 
 ```csharp
 // Get an untyped table reference
 IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 ```
 
-Netypové dotazy musíte určit základní řetězec dotazu OData.
+V netypových dotazech je nutné zadat podkladový řetězec dotazu OData.
 
-### <a name="querying"></a>Jak: Dotazování dat ze služby mobilní aplikace
-Tato část popisuje, jak zadávat dotazy na back-end mobilní aplikace, která zahrnuje následující funkce:
+### <a name="querying"></a>Postupy: dotazování dat z mobilní aplikace
+Tato část popisuje, jak vydávat dotazy do back-endu mobilní aplikace, který obsahuje následující funkce:
 
-* [Filtr vrátil data](#filtering)
-* [Řazení vrátil data](#sorting)
-* [Vrácení dat na stránkách](#paging)
-* [Vyberte sloupce zaškrtnutím](#selecting)
+* [Filtrovat vrácená data](#filtering)
+* [Řazení vrácených dat](#sorting)
+* [Vrátit data na stránkách](#paging)
+* [Vybrat konkrétní sloupce](#selecting)
 * [Vyhledat data podle ID](#lookingup)
 
 > [!NOTE]
-> Velikost stránky řízených serverem se vynucuje zabránit všechny řádky se vrací.  Stránkování uchovává výchozí požadavky pro velké datové sady ze mělo negativní dopad na službu.  Chcete-li vrátit více než 50 řádků, použijte `Skip` a `Take` způsob, jak je popsáno v [vracet data na stránkách](#paging).
+> Je využívána velikost stránky řízená serverem, aby se zabránilo vrácení všech řádků.  Stránkování udržuje výchozí požadavky na velké datové sady z negativního vlivu na službu.  Chcete-li vrátit více než 50 řádků, použijte metodu `Skip` a `Take`, jak je popsáno v tématu [návratová data na stránkách](#paging).
 
-### <a name="filtering"></a>Jak: Filtr vrátil data
-Následující kód ukazuje, jak filtrovat data zahrnutím `Where` klauzule v dotazu. Vrátí všechny položky z `todoTable` jehož `Complete` rovná vlastnost `false`. [Kde] použije funkce pro řádek filtrování predikátu k dotazu na tabulku.
+### <a name="filtering"></a>Postupy: filtrování vrácených dat
+Následující kód ilustruje, jak filtrovat data zahrnutím klauzule `Where` v dotazu. Vrátí všechny položky z `todoTable`, jejichž vlastnost `Complete` se rovná `false`. Funkce [WHERE] aplikuje predikát filtru řádku na dotaz na tabulku.
 
 ```csharp
 // This query filters out completed TodoItems and items without a timestamp.
@@ -154,13 +151,13 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Můžete zobrazit identifikátor URI požadavku odeslaného do back-endu pomocí kontroly softwaru zprávy, jako jsou nástroje pro vývojáře prohlížeče nebo [Fiddler]. Když se podíváte na identifikátoru URI požadavku, Všimněte si, že řetězec dotazu upravit, aby se:
+Identifikátor URI žádosti odeslané do back-endu můžete zobrazit pomocí softwaru pro kontrolu zpráv, například nástrojů pro vývojáře a [Fiddler]. Pokud se podíváte na požadavek s identifikátorem URI, Všimněte si, že je upraven řetězec dotazu:
 
 ```csharp
 GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 ```
 
-Tuto žádost OData je přeložen do dotazu SQL serveru SDK:
+Tento požadavek OData se převede na dotaz SQL ze serverové sady SDK:
 
 ```csharp
 SELECT *
@@ -168,7 +165,7 @@ SELECT *
     WHERE ISNULL(complete, 0) = 0
 ```
 
-Funkce, která je předána `Where` metoda může mít libovolný počet podmínek.
+Funkce, která je předána metodě `Where`, může mít libovolný počet podmínek.
 
 ```csharp
 // This query filters out completed TodoItems where Text isn't null
@@ -177,7 +174,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-V tomto příkladu by byl přeložen do dotazu SQL serveru SDK:
+Tento příklad by byl přeložen na dotaz SQL pomocí sady SDK serveru:
 
 ```csharp
 SELECT *
@@ -186,7 +183,7 @@ SELECT *
           AND ISNULL(text, 0) = 0
 ```
 
-Tento dotaz můžete také rozdělit do více klauzulí:
+Tento dotaz může být také rozdělen do více klauzulí:
 
 ```csharp
 List<TodoItem> items = await todoTable
@@ -195,22 +192,22 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Tyto dvě metody jsou ekvivalentní a můžou se používat Zaměnitelně.  Možnost bývalé&mdash;z zřetězení více predikátů v jednom dotazu&mdash;je kompaktní a doporučené.
+Tyto dvě metody jsou ekvivalentní a dají se použít zaměnitelné.  Předchozí možnost @ no__t-0of zřetězí více predikátů v jednom dotazu @ no__t-1Is kompaktnější a doporučuje se.
 
-`Where` Klauzule podporuje operace, které se přeložit na podmnožinu protokolu OData. Mezi operace patří:
+Klauzule `Where` podporuje operace, které budou přeloženy do podmnožiny OData. Operace zahrnují:
 
-* Relační operátory (==,! =, <, < =, >, > =),
-* Aritmetické operátory (+, -, /, *, %),
-* Číslo přesnosti (Math.Floor, Math.Ceiling)
-* Funkce řetězce (Délka podřetězce, nahradit, IndexOf, StartsWith, EndsWith),
-* Vlastnosti kalendářních dat (rok, měsíc, den, hodinu, minutu a sekundu),
-* Přístup k vlastnostem objektu, a
-* Výrazy kombinování každé z těchto operací.
+* Relační operátory (= =,! =, <, < =, >, > =),
+* Aritmetické operátory (+,-,/, *,%),
+* Přesnost čísel (Math. Floor, Math. strop),
+* Řetězcové funkce (délka, podřetězec, Replace, IndexOf, StartsWith, EndsWith),
+* Vlastnosti data (rok, měsíc, den, hodina, minuta, sekundy),
+* Přístup k vlastnostem objektu a
+* Výrazy kombinující některé z těchto operací.
 
-Při zvažování, co Server SDK podporuje, můžete zvážit [dokumentace ke službě OData v3].
+Při zvažování, co podporuje sada SDK serveru, můžete zvážit [Dokumentace k OData V3].
 
-### <a name="sorting"></a>Jak: Řazení vrátil data
-Následující kód ukazuje, jak řadit včetně dat [Řadit podle] nebo [OrderByDescending] funkce v dotazu. Vrátí položky z `todoTable` seřazeno vzestupně podle `Text` pole.
+### <a name="sorting"></a>Postupy: řazení vrácených dat
+Následující kód ilustruje, jak řadit data zahrnutím funkce [OrderBy] nebo [OrderByDescending] do dotazu. Vrátí položky z `todoTable` seřazené vzestupně podle pole `Text`.
 
 ```csharp
 // Sort items in ascending order by Text field
@@ -224,8 +221,8 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-### <a name="paging"></a>Jak: Vrácení dat na stránkách
-Ve výchozím nastavení back-end vrací jenom prvních 50 řádky. Můžete zvýšit počet řádků, vrácený voláním [Take] metody. Použití `Take` spolu s [Přeskočit] metoda požádat o konkrétní "stránka" celkový sady dat vrácených dotazem. Následující dotaz, při spuštění vrátí první tři položky v tabulce.
+### <a name="paging"></a>Postupy: vrácení dat na stránkách
+Ve výchozím nastavení back-end vrátí jenom prvních 50 řádků. Počet vrácených řádků můžete zvýšit voláním metody [Nezbytná] . Použijte `Take` spolu s metodou [Přímo] pro vyžádání konkrétní "stránky" celkové datové sady vrácené dotazem. Následující dotaz po provedení vrátí první tři položky v tabulce.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -233,7 +230,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-Následující upravený dotaz přeskočí první tři výsledky a vrátí následující tři výsledky. Tento dotaz vytvoří druhé "stránky" dat, kde je velikost stránky tři položky.
+Následující revidovaný dotaz přeskočí první tři výsledky a vrátí další tři výsledky. Tento dotaz vytvoří druhou "stránku" dat, kde je velikost stránky tři položky.
 
 ```csharp
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -241,22 +238,22 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Skip(3).Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-[IncludeTotalCount] celkový počet požadavků metody *všechny* záznamy, které by byly vráceny, ignoruje všechny klauzule stránkování/limitace zadali:
+Metoda [IncludeTotalCount] požaduje celkový počet *všech* záznamů, které by byly vráceny, ignorování všech zadaných klauzulí stránkování a omezení:
 
 ```csharp
 query = query.IncludeTotalCount();
 ```
 
-V reálné aplikaci můžete použít dotazy podobně jako v předchozím příkladu se ovládací prvek stránkování nebo srovnatelný uživatelského rozhraní pro navigaci mezi stránkami.
+V reálné aplikaci můžete použít dotazy podobné předchozím příkladům pomocí ovládacího prvku stránkování nebo srovnatelného uživatelského rozhraní pro navigaci mezi stránkami.
 
 > [!NOTE]
-> Pokud chcete přepsat řádek 50 limit v back-end mobilní aplikace, musíte taky použít [EnableQueryAttribute] veřejně metoda GET a určit chování stránkování. Při použití metody, nastaví následující maximální počet vrácených řádcích až 1000:
+> Chcete-li v back-endu mobilní aplikace přepsat 50 – limit řádku, je nutné také použít [EnableQueryAttribute] na metodu public get a určit chování stránkování. Při použití na metodu nastaví následující nastavení maximální počet vrácených řádků na 1000:
 >
 > `[EnableQuery(MaxTop=1000)]`
 
 
-### <a name="selecting"></a>Jak: Vyberte sloupce zaškrtnutím
-Můžete určit, které sada vlastností zahrnout výsledky tak, že přidáte [Výběr] klauzule dotazu. Například následující kód ukazuje, jak vybrat pouze jedno pole a také jak vybírat a formátování více polí:
+### <a name="selecting"></a>Postupy: Výběr konkrétních sloupců
+Přidáním klauzule [Výběr] do dotazu můžete určit, kterou sadu vlastností zahrnout do výsledků. Například následující kód ukazuje, jak vybrat pouze jedno pole a také jak vybrat a formátovat více polí:
 
 ```csharp
 // Select one field -- just the Text
@@ -272,7 +269,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-Všechny funkce popsané zatím jsou aditivní, takže jsme můžete zachovat řetězení je. Každé volání zřetězené ovlivňuje více dotazu. Další příklad:
+Všechny funkce popsané v této míře jsou doplňkové, takže je můžeme dál zřetězit. Každé zřetězené volání má vliv na více dotazů. Jeden další příklad:
 
 ```csharp
 MobileServiceTableQuery<TodoItem> query = todoTable
@@ -283,35 +280,35 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-### <a name="lookingup"></a>Jak: Vyhledat data podle ID
-[LookupAsync] funkce umožňuje vyhledat objekty v databázi s konkrétním ID.
+### <a name="lookingup"></a>Postupy: vyhledávání dat podle ID
+Funkci [LookupAsync] lze použít k vyhledání objektů z databáze pomocí konkrétního ID.
 
 ```csharp
 // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
 TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 ```
 
-### <a name="untypedqueries"></a>Jak: Provádění netypové dotazů
-Při provádění dotazu pomocí objektu netypové tabulky, je nutné explicitně zadat řetězec dotazu OData voláním [ReadAsync], jako v následujícím příkladu:
+### <a name="untypedqueries"></a>Postupy: spuštění netypových dotazů
+Při provádění dotazu pomocí netypového objektu tabulky je nutné explicitně zadat řetězec dotazu OData voláním [ReadAsync], jak je uvedeno v následujícím příkladu:
 
 ```csharp
 // Lookup untyped data using OData
 JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 ```
 
-Můžete se vrátit hodnoty JSON, které lze používat jako kontejner objektů. Další informace o JToken a Newtonsoft Json.NET, najdete v článku [Json.NET] lokality.
+Vrátíte se zpátky hodnoty JSON, které můžete použít jako kontejner objektů a dat. Další informace o JToken a Newtonsoft Json.NET najdete na webu [JSON.NET] .
 
-### <a name="inserting"></a>Jak: Vložit data do back-end mobilní aplikace
-Všechny typy klientů musí obsahovat člena s názvem **Id**, což je ve výchozím nastavení řetězec. To **Id** se vyžaduje k provádění operací CRUD a pro offline synchronizaci. Následující kód ukazuje, jak používat [InsertAsync] metodu pro vkládání nových řádků do tabulky. Parametr obsahuje data, která mají být vloženy jako objekt .NET.
+### <a name="inserting"></a>Postupy: vkládání dat do back-endu mobilní aplikace
+Všechny typy klientů musí obsahovat člen s názvem **ID**, který je ve výchozím nastavení řetězec. Toto **ID** je vyžadováno k provádění operací CRUD a pro offline synchronizaci. Následující kód ilustruje použití metody [InsertAsync] k vložení nových řádků do tabulky. Parametr obsahuje data, která mají být vložena jako objekt rozhraní .NET.
 
 ```csharp
 await todoTable.InsertAsync(todoItem);
 ```
 
-Pokud není součástí jedinečnou hodnotu ID vlastní `todoItem` při vložení, identifikátor GUID je generován serverem.
-Vygenerované Id, které můžete načíst tak, že zkontrolujete objektu po volání se vrátí.
+Pokud během vkládání není do `todoItem` zahrnutá jedinečná hodnota vlastního ID, vygeneruje se na serveru identifikátor GUID.
+Vygenerované ID můžete načíst tak, že zkontrolujete objekt po návratu volání.
 
-Vložte data bez typu, mohou využít Json.NET:
+Chcete-li vložit netypové údaje, můžete využít výhod Json.NET:
 
 ```csharp
 JObject jo = new JObject();
@@ -320,7 +317,7 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-Tady je příklad použití e-mailovou adresu jako jedinečný řetězec id:
+Tady je příklad použití e-mailové adresy jako jedinečného ID řetězce:
 
 ```csharp
 JObject jo = new JObject();
@@ -330,28 +327,28 @@ jo.Add("Complete", false);
 var inserted = await table.InsertAsync(jo);
 ```
 
-### <a name="working-with-id-values"></a>Práce s ID hodnoty
-Mobile Apps podporuje vlastní jedinečný řetězec hodnoty pro tabulky **id** sloupce. Řetězcová hodnota umožňuje aplikacím používat vlastní hodnoty, jako je e-mailové adresy nebo uživatelské jméno pro ID.  Řetězec ID poskytují následující výhody:
+### <a name="working-with-id-values"></a>Práce s hodnotami ID
+Mobile Apps podporuje jedinečné vlastní hodnoty řetězce pro sloupec **ID** tabulky. Řetězcová hodnota umožňuje aplikacím používat vlastní hodnoty, jako jsou e-mailové adresy nebo uživatelská jména pro ID.  ID řetězců poskytují následující výhody:
 
-* ID se generují přitom latence do databáze.
-* Záznamy se snadněji sloučení z různých tabulek nebo databází.
-* ID hodnoty můžete lépe integrovat aplikace logiky.
+* ID jsou generována bez odeslání odezvy do databáze.
+* Záznamy je snazší sloučit z různých tabulek nebo databází.
+* Hodnoty ID se můžou integrovat lépe díky logice aplikace.
 
-Když řetězcovou hodnotu ID není nastavená na vložený záznam, back-endu mobilní aplikace generuje jedinečnou hodnotu pro ID. Můžete použít [Guid.NewGuid] metoda ke generování vlastních ID hodnoty na straně klienta nebo v back-endu.
+Pokud u vloženého záznamu není nastavená hodnota ID řetězce, back-end mobilní aplikace vygeneruje pro ID jedinečnou hodnotu. Pomocí metody [GUID. NewGuid] můžete vygenerovat vlastní hodnoty ID, a to buď v klientovi, nebo v back-endu.
 
 ```csharp
 JObject jo = new JObject();
 jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
-### <a name="modifying"></a>Jak: Změna dat v back-end mobilní aplikace
-Následující kód ukazuje, jak používat [UpdateAsync] metoda aktualizovat existující záznam se stejným ID se novými informacemi. Parametr obsahuje data, která mají být aktualizovány jako objekt .NET.
+### <a name="modifying"></a>Postupy: Změna dat v back-endu mobilní aplikace
+Následující kód ilustruje použití metody [UpdateAsync] k aktualizaci existujícího záznamu se stejným ID s novými informacemi. Parametr obsahuje data, která mají být aktualizována jako objekt .NET.
 
 ```csharp
 await todoTable.UpdateAsync(todoItem);
 ```
 
-K aktualizaci dat bez typu, mohou využít výhod [Json.NET] následujícím způsobem:
+Chcete-li aktualizovat netypové údaje, můžete využít výhod [JSON.NET] následujícím způsobem:
 
 ```csharp
 JObject jo = new JObject();
@@ -361,16 +358,16 @@ jo.Add("Complete", false);
 var inserted = await table.UpdateAsync(jo);
 ```
 
-`id` Pole musí být zadán při aktualizaci. Back-endu používá `id` pole k identifikaci řádek, který má aktualizovat. `id` Pole můžete získat výsledek `InsertAsync` volání. `ArgumentException` Je vyvolána, pokud se pokusíte aktualizovat položku bez zadání `id` hodnotu.
+Při provádění aktualizace je třeba zadat pole `id`. Back-end používá pole `id` k identifikaci řádku, který se má aktualizovat. Pole `id` lze získat z výsledku volání `InsertAsync`. Pokud se pokusíte aktualizovat položku bez zadání hodnoty `id`, je vyvolána `ArgumentException`.
 
-### <a name="deleting"></a>Jak: Odstraňování dat v back-end mobilní aplikace
-Následující kód ukazuje, jak používat [DeleteAsync] metoda odstranit existující instanci. Instance je identifikován `id` sadu pole na `todoItem`.
+### <a name="deleting"></a>Postupy: odstranění dat v back-endu mobilní aplikace
+Následující kód ilustruje použití metody [DeleteAsync] k odstranění existující instance. Instance je identifikována polem `id` nastaveným na `todoItem`.
 
 ```csharp
 await todoTable.DeleteAsync(todoItem);
 ```
 
-Odstranit data bez typu, mohou využít výhod Json.NET následujícím způsobem:
+K odstranění netypových dat můžete využít výhod Json.NET následujícím způsobem:
 
 ```csharp
 JObject jo = new JObject();
@@ -378,14 +375,14 @@ jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 await table.DeleteAsync(jo);
 ```
 
-Když vytvoříte žádost o odstranění, musíte zadat ID. Ostatní vlastnosti nejsou předaná do služby nebo jsou ignorovány ve službě. Výsledek `DeleteAsync` volání je obvykle `null`. Výsledek můžete získat ID a zajistěte tak předání `InsertAsync` volání. A `MobileServiceInvalidOperationException` dojde při pokusu o odstranění položky bez zadání `id` pole.
+Při provádění žádosti o odstranění je nutné zadat ID. Do služby se nepředaly další vlastnosti nebo se ve službě ignorují. Výsledek volání `DeleteAsync` je obvykle `null`. ID, které se má předat, se dá získat z výsledku volání `InsertAsync`. Při pokusu o odstranění položky bez zadání pole `id` je vyvolána hodnota `MobileServiceInvalidOperationException`.
 
-### <a name="optimisticconcurrency"></a>Jak: Použít optimistické řízení souběžnosti pro případ řešení konfliktů
-Dva nebo víc klientů může zapsat změny do jedné položce ve stejnou dobu. Bez zjišťování konfliktů by přepsala poslední zápis všech předchozích aktualizací. **Optimistického řízení souběžnosti** předpokládá, že každou transakci potvrdit a proto nepoužívá žádné uzamčení prostředků.  Před potvrzením transakce, optimistického řízení souběžnosti ověřuje, že se data mění žádné jiné transakce. Pokud byla změněna data, spouštění transakce je vrácena zpět.
+### <a name="optimisticconcurrency"></a>Postupy: použití optimistického řízení souběžnosti pro řešení konfliktů
+Dva nebo více klientů může současně zapisovat změny stejné položky. Bez zjištění konfliktů by poslední zápis přepsal všechny předchozí aktualizace. **Optimistické řízení souběžnosti** předpokládá, že každá transakce se může potvrdit, a proto nepoužívá žádné uzamykání prostředků.  Před potvrzením transakce ověří optimistické řízení souběžnosti, že žádná jiná transakce data nezměnila. Pokud byla data změněna, transakce potvrzení se vrátí zpět.
 
-Mobile Apps podporuje optimistické řízení souběžného Díky sledování změn pro každou položku pomocí `version` systémový vlastnost sloupec, který je definován pro každou tabulku v back-endu mobilní aplikace. Pokaždé, když se aktualizuje záznam, Mobile Apps nastaví `version` vlastnost u záznamu daného novou hodnotu. Při každé žádosti o aktualizaci `version` vlastnosti záznamu zahrnuté v požadavku se porovnává se stejnou vlastnost pro záznam na serveru. Pokud je verze předány s požadavku se neshoduje s back-endu a potom vyvolá klientské knihovny `MobileServicePreconditionFailedException<T>` výjimky. Typ výjimky je součástí je záznam z back-endu obsahující servery verze záznamu. Aplikace pak tyto informace můžete použít se rozhodnout, jestli se má provést žádost o aktualizaci zopakovat se správnou `version` hodnotu z back-endu potvrzení změn.
+Mobile Apps podporuje optimistické řízení souběžnosti tím, že sleduje změny každé položky pomocí sloupce vlastnosti systému `version`, který je definován pro každou tabulku v back-endu mobilní aplikace. Pokaždé, když se aktualizuje záznam, Mobile Apps nastaví vlastnost `version` pro tento záznam na novou hodnotu. Během každé žádosti o aktualizaci se vlastnost `version` záznamu, který je součástí žádosti, porovnává se stejnou vlastností záznamu na serveru. Pokud se verze předaná s požadavkem neshoduje s back-end, Klientská knihovna vyvolá výjimku `MobileServicePreconditionFailedException<T>`. Typ zahrnutý s výjimkou je záznam z back-endu, který obsahuje verzi daného záznamu na serverech. Aplikace pak může tyto informace použít k rozhodnutí, jestli se má znovu spustit žádost o aktualizaci se správnou hodnotou `version` z back-endu pro potvrzení změn.
 
-Definovat v třídě tabulky pro sloupec `version` systémová vlastnost umožňující optimistického řízení souběžnosti. Příklad:
+Definujte sloupec třídy Table pro vlastnost systému `version`, aby se povolila Optimistická souběžnost. Například:
 
 ```csharp
 public class TodoItem
@@ -404,14 +401,14 @@ public class TodoItem
 }
 ```
 
-Aplikace pomocí netypové tabulky umožňují optimistického řízení souběžnosti tak, že nastavíte `Version` příznaku `SystemProperties` tabulky následujícím způsobem.
+Aplikace používající netypové tabulky umožňují optimistickou souběžnost nastavením příznaku `Version` v `SystemProperties` tabulky následujícím způsobem.
 
 ```csharp
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Kromě povolení optimistickou metodu souběžného, musí také catch `MobileServicePreconditionFailedException<T>` výjimka ve vašem kódu při volání metody [UpdateAsync].  Vyřešte konflikt s použitím správné `version` aktualizovaný záznam a volání [UpdateAsync] k vyřešení záznamu. Následující kód ukazuje, jak vyřešit jednou byl zjištěn konflikt zápisu:
+Kromě povolení optimistické souběžnosti musíte také zachytit výjimku `MobileServicePreconditionFailedException<T>` v kódu při volání [UpdateAsync].  Vyřešte konflikt pomocí správného `version` až po aktualizovaný záznam a zavolejte [UpdateAsync] pomocí přeloženého záznamu. Následující kód ukazuje, jak vyřešit konflikt zápisu, jakmile byl zjištěn:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -469,10 +466,10 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-Další informace najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps] tématu.
+Další informace najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps] .
 
-### <a name="binding"></a>Jak: Vytvoření vazby dat Mobile Apps na uživatelské rozhraní Windows
-Tato část ukazuje, jak zobrazit objekty vrácená data pomocí prvky uživatelského rozhraní v aplikaci Windows.  Následující příklad kódu vytvoří vazbu na zdroj seznamu s dotazem neúplných položek. [MobileServiceCollection] vytvoří kolekci mobilní aplikace s ohledem na vazbu.
+### <a name="binding"></a>Postupy: vázání dat Mobile Apps k uživatelskému rozhraní systému Windows
+V této části se dozvíte, jak zobrazit vrácené datové objekty pomocí prvků uživatelského rozhraní v aplikaci pro Windows.  Následující příklad kódu se váže ke zdroji seznamu s dotazem na nedokončené položky. [MobileServiceCollection] vytvoří kolekci vazeb s podporou Mobile Apps.
 
 ```csharp
 // This query filters out completed TodoItems.
@@ -488,7 +485,7 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Některé ovládací prvky v spravovaný modul runtime nepodporuje rozhraní volá [ISupportIncrementalLoading]. Toto rozhraní podporuje ovládací prvky uživatel posune stránku požádat o další data. Je integrovaná podpora pro toto rozhraní pro univerzální aplikace pro Windows prostřednictvím [MobileServiceIncrementalLoadingCollection], který automaticky zpracovává volání z ovládacích prvků. Použití `MobileServiceIncrementalLoadingCollection` v aplikacích Windows následujícím způsobem:
+Některé ovládací prvky ve spravovaném modulu runtime podporují rozhraní s názvem [ISupportIncrementalLoading]. Toto rozhraní umožňuje ovládacím prvkům požádat o další data, když se uživatel posune. K dispozici je integrovaná podpora pro toto rozhraní pro univerzální aplikace pro Windows přes [MobileServiceIncrementalLoadingCollection], která automaticky zpracovává volání z ovládacích prvků. V aplikacích pro Windows použijte `MobileServiceIncrementalLoadingCollection` následujícím způsobem:
 
 ```csharp
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
@@ -498,19 +495,19 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Pokud chcete použít novou kolekci na aplikace pro Windows Phone 8 a "Silverlight", použijte `ToCollection` rozšiřující metody na `IMobileServiceTableQuery<T>` a `IMobileServiceTable<T>`. Chcete-li načíst data, zavolejte `LoadMoreItemsAsync()`.
+Chcete-li použít novou kolekci v aplikacích Windows Phone 8 a "Silverlight", použijte rozšiřující metody `ToCollection` v `IMobileServiceTableQuery<T>` a `IMobileServiceTable<T>`. Chcete-li načíst data, zavolejte `LoadMoreItemsAsync()`.
 
 ```csharp
 MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 await items.LoadMoreItemsAsync();
 ```
 
-Kdy použít kolekci vytvořenou voláním `ToCollectionAsync` nebo `ToCollection`, získat kolekci, která mohou být vázány na ovládací prvky uživatelského rozhraní.  Tato kolekce je s ohledem na stránkování.  Protože kolekce je načítání dat ze sítě, načítají se někdy nezdaří. Pro zpracování těchto chyb, přepsat `OnException` metodu na `MobileServiceIncrementalLoadingCollection` ke zpracování výjimky vyplývající z volání `LoadMoreItemsAsync`.
+Použijete-li kolekci vytvořenou voláním `ToCollectionAsync` nebo `ToCollection`, získáte kolekci, která může být svázána s ovládacími prvky uživatelského rozhraní.  Tato kolekce je s podporou stránkování.  Vzhledem k tomu, že kolekce načítá data ze sítě, načítání se někdy nezdařilo. Chcete-li tyto chyby zpracovat, přepište metodu `OnException` na `MobileServiceIncrementalLoadingCollection` pro zpracování výjimek vyplývajících z volání `LoadMoreItemsAsync`.
 
-Vezměte v úvahu, pokud vaše tabulka má velký počet polí, ale chcete jenom některé z nich zobrazí v ovládacím prvku. Můžete použít pokyny v předchozí části "[vyberte sloupce zaškrtnutím](#selecting)" a vyberte konkrétní sloupce se mají zobrazit v uživatelském rozhraní.
+Vezměte v úvahu, jestli má tabulka mnoho polí, ale chcete zobrazit jenom některé z nich v ovládacím prvku. Pomocí pokynů v předchozí části[vyberte konkrétní sloupce](#selecting)můžete vybrat konkrétní sloupce, které se zobrazí v uživatelském rozhraní.
 
 ### <a name="pagesize"></a>Změnit velikost stránky
-Ve výchozím nastavení Azure Mobile Apps vrátí maximálně 50 položek na požadavek.  Můžete změnit velikost stránkovacího zvýšením maximální velikost stránky na klienta a serveru.  Chcete-li zvýšit požadovaná velikost stránky, zadejte `PullOptions` při použití `PullAsync()`:
+Služba Azure Mobile Apps ve výchozím nastavení vrací maximálně 50 položek na jednu žádost.  Velikost stránkování můžete změnit zvětšením maximální velikosti stránky na straně klienta i serveru.  Chcete-li zvětšit požadovanou velikost stránky, zadejte `PullOptions` při použití `PullAsync()`:
 
 ```csharp
 PullOptions pullOptions = new PullOptions
@@ -519,21 +516,21 @@ PullOptions pullOptions = new PullOptions
     };
 ```
 
-Za předpokladu, že jste provedli `PageSize` roven nebo větší než 100 v rámci serveru, požadavek vrátí až 100 položek.
+Za předpokladu, že jste na serveru nastavili `PageSize`, která se rovná nebo je větší než 100, vrátí požadavek až 100 položek.
 
-## <a name="#offlinesync"></a>Práce s tabulkami v režimu Offline
-Offline tabulky pomocí místního úložiště do úložiště dat SQLite pro použití v režimu offline.  Všechny tabulky, které operace se provádějí proti místní úložiště SQLite místo úložiště serveru pro vzdálený.  Pokud chcete vytvořit tabulku v režimu offline, Příprava projektu:
+## <a name="#offlinesync"></a>Práce s offline tabulkami
+Offline tabulky používají místní úložiště SQLite k ukládání dat pro použití v režimu offline.  Všechny operace tabulky se provádí v rámci místního úložiště SQLite místo z úložiště vzdáleného serveru.  Chcete-li vytvořit offline tabulku, připravte si nejprve projekt:
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na řešení > **spravovat balíčky NuGet pro řešení...** , vyhledejte a nainstalujte **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet pro všechny projekty v řešení.
-2. (Volitelné) Pro podporu zařízení Windows, nainstalujte některou z následujících balíčků SQLite modulu runtime:
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na řešení > **Spravovat balíčky NuGet pro řešení...** , vyhledejte a nainstalujte balíček NuGet **Microsoft. Azure. Mobile. Client. SQLiteStore** pro všechny projekty v řešení.
+2. Volitelné Pro podporu zařízení s Windows nainstalujte jeden z následujících balíčků za běhu programu SQLite:
 
-   * **Modul Runtime Windows 8.1:** Nainstalujte [SQLite pro Windows 8.1][3].
-   * **Windows Phone 8.1:** Nainstalujte [SQLite pro Windows Phone 8.1][4].
-   * **Universal Windows Platform** nainstalovat [SQLite pro Universal Windows][5].
-3. (Volitelné). Pro zařízení s Windows, klikněte na tlačítko **odkazy** > **přidat odkaz...** , rozbalte **Windows** složky > **rozšíření**, povolte příslušnou **SQLite pro Windows** SDK společně s **2013 modulu Runtime visual C++ pro Windows** SDK.
-    Názvy SQLite SDK se trochu liší s každou platformu Windows.
+   * **Windows 8.1 runtime:** Nainstalujte [SQLite pro Windows 8.1][3].
+   * **Windows Phone 8,1:** Nainstalujte [SQLite pro Windows Phone 8,1][4].
+   * **Univerzální platforma Windows** Nainstalujte [SQLite pro univerzální Windows][5].
+3. (Volitelné). V případě zařízení s Windows klikněte na **odkazy** > **Přidat odkaz...** , rozbalte **rozšíření**složky **Windows** > a pak povolte příslušné **SQLite pro sadu Windows** SDK společně s **modulem runtime Visual C++ 2013. pro sadu Windows** SDK.
+    Názvy sady SDK SQLite se mírně liší u jednotlivých platforem Windows.
 
-Bylo možné vytvořit odkaz na tabulku, musí být připravené místního úložiště:
+Aby bylo možné vytvořit odkaz na tabulku, je nutné připravit místní úložiště:
 
 ```csharp
 var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
@@ -543,21 +540,21 @@ store.DefineTable<TodoItem>();
 await this.client.SyncContext.InitializeAsync(store);
 ```
 
-Inicializace Store se obvykle provádí ihned po vytvoření klienta.  **OfflineDbPath** by měl být název souboru vhodný pro použití na všech platformách, které podporujete.  Pokud není plně kvalifikovaná cesta (to znamená, začíná lomítko), pak tato cesta se používá.  Pokud není plně kvalifikovaná cesta, soubor se umístí na místě specifické pro platformu.
+Inicializace úložiště se obvykle provádí ihned po vytvoření klienta.  **OfflineDbPath** by měl být název souboru vhodný pro použití na všech platformách, které podporujete.  Pokud je cesta plně kvalifikovanou cestou (to znamená, že začíná lomítkem), pak se tato cesta použije.  Pokud cesta není plně kvalifikovaná, soubor se umístí do umístění specifického pro danou platformu.
 
-* Výchozí cesta je pro iOS a androidem, složce "Osobní soubory".
-* Výchozí cesta pro zařízení s Windows, je "Aplikací" složky specifické pro aplikaci.
+* Pro zařízení s iOS a Androidem je výchozí cesta složka osobní soubory.
+* Pro zařízení s Windows je výchozí cesta složka "data specifická pro aplikaci".
 
-Odkaz na tabulku lze zjistit pomocí `GetSyncTable<>` metody:
+Odkaz na tabulku lze získat pomocí metody `GetSyncTable<>`:
 
 ```csharp
 var table = client.GetSyncTable<TodoItem>();
 ```
 
-Není nutné k ověření pomocí offline tabulky.  Stačí k ověření, když komunikují s back-end službu.
+Nemusíte ověřovat, aby bylo možné používat offline tabulku.  Musíte ověřovat jenom při komunikaci se službou back-end.
 
-### <a name="syncoffline"></a>Synchronizace Offline tabulky
-Offline tabulky nejsou synchronizované s back-endu ve výchozím nastavení.  Synchronizace je rozdělený do dvou částí.  Samostatně můžete nabízet změny stahování nových položek.  Tady je metoda typické synchronizace:
+### <a name="syncoffline"></a>Synchronizace offline tabulky
+Ve výchozím nastavení nejsou offline tabulky synchronizovány s back-end.  Synchronizace je rozdělena do dvou částí.  Změny se dají doručovat nezávisle na stažení nových položek.  Tady je typická metoda synchronizace:
 
 ```csharp
 public async Task SyncAsync()
@@ -605,68 +602,68 @@ public async Task SyncAsync()
 }
 ```
 
-Pokud první argument `PullAsync` má hodnotu null, pak se nepoužívá přírůstkové synchronizace.  Každou operaci synchronizace načte všechny záznamy.
+Pokud je první argument `PullAsync` null, přírůstková synchronizace se nepoužije.  Každá operace synchronizace načte všechny záznamy.
 
-Sada SDK provede implicitní `PushAsync()` před stažením záznamy.
+Sada SDK před vyžádáním záznamů provede implicitní `PushAsync()`.
 
-Zpracování konfliktů dojde na `PullAsync()` metoda.  Stejným způsobem jako online tabulky můžete vyřešit konflikty.  Konflikt je vytvořen při `PullAsync()` se nazývá místo během insert, update nebo delete. Pokud více konfliktu, jsou spojeny do jednoho MobileServicePushFailedException.  Každou chybu zpracujte samostatně.
+Ke zpracování konfliktů dochází na metodě @no__t 0.  Konflikty můžete řešit stejným způsobem jako online tabulky.  Konflikt je vytvořen při volání `PullAsync()` namísto během vkládání, aktualizace nebo odstranění. Pokud dojde k více konfliktům, jsou rozčleněny do jediného MobileServicePushFailedException.  Každou chybu zpracujte samostatně.
 
-## <a name="#customapi"></a>Práce s vlastní rozhraní API
-Vlastní rozhraní API vám umožní definovat vlastní koncové body, které zveřejňují funkce serveru, které nejsou mapování pro vložení, aktualizaci, odstranění nebo operace čtení. Pomocí vlastního rozhraní API může mít větší kontrolu nad zasílání zpráv, včetně čtení a nastavení hlavičky HTTP zpráv a definování formátu těla zprávy kromě formátu JSON.
+## <a name="#customapi"></a>Práce s vlastním rozhraním API
+Vlastní rozhraní API umožňuje definovat vlastní koncové body, které zveřejňují funkci serveru, která není namapována na operaci vložení, aktualizace, odstranění nebo čtení. Pomocí vlastního rozhraní API můžete mít větší kontrolu nad zasíláním zpráv, včetně čtení a nastavování hlaviček zpráv HTTP a definování formátu textu zprávy, který je jiný než JSON.
 
-Volat vlastní API voláním jedné z [InvokeApiAsync] metody na straně klienta. Například následující řádek kódu odešle požadavek POST **completeAll** rozhraní API na back-endu:
+Zavoláte vlastní rozhraní API voláním jedné z metod [InvokeApiAsync] na straně klienta. Například následující řádek kódu odešle požadavek POST rozhraní **completeAll** API na back-end:
 
 ```javascript
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 
-Tento formulář je typová metoda volání a vyžaduje, aby **MarkAllResult** vrátit typ je definován. Typové a netypové metody jsou podporovány.
+Tento formulář je typové volání metody a vyžaduje, aby byl definován návratový typ **MarkAllResult** . Podporují se typové i netypové metody.
 
-Metoda InvokeApiAsync() předřadí '/ api /"k rozhraní API, kterou chcete volat, pokud rozhraní API začíná"/".
-Příklad:
+Metoda InvokeApiAsync () přiřadí "/API/" do rozhraní API, které chcete volat, pokud rozhraní API nezačíná znakem "/".
+Například:
 
-* `InvokeApiAsync("completeAll",...)` volá /api/completeAll na back-endu
-* `InvokeApiAsync("/.auth/me",...)` volá /.auth/me na back-endu
+* @no__t – 0 volá/api/completeAll na back-end.
+* @no__t – 0 volá/.auth/me na back-end.
 
-InvokeApiAsync můžete použít k volání jakékoli WebAPI, včetně těchto WebAPIs, které nejsou definovány pomocí Azure Mobile Apps.  Při použití InvokeApiAsync() odpovídající záhlaví, včetně ověřování záhlaví se posílají s požadavkem.
+InvokeApiAsync můžete použít k volání libovolných WebAPI, včetně těchto rozhraní WebApi, která nejsou definovaná pomocí Azure Mobile Apps.  Při použití InvokeApiAsync () se s požadavkem odesílají příslušné hlavičky, včetně ověřovacích hlaviček.
 
 ## <a name="authentication"></a>Ověřování uživatelů
-Mobile Apps podporuje ověřování a autorizace uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v serverových skriptů. Další informace najdete v kurzu [Přidání ověřování do aplikace].
+Mobile Apps podporuje ověřování a autorizaci uživatelů aplikací pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky a omezit tak přístup pro konkrétní operace jenom na ověřené uživatele. Identitu ověřených uživatelů můžete použít taky k implementaci autorizačních pravidel ve skriptech serveru. Další informace najdete v kurzu [Přidání ověřování do aplikace].
 
-Jsou podporovány dvě toky ověřování: *klienta spravovat* a *server spravován* toku. Tok spravovat server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na zprostředkovatele webového ověření rozhraní. Závisí na konkrétní zařízení specifickým pro zprostředkovatele sady SDK klienta spravovat tok umožňuje pro hlubší integraci s funkcemi konkrétní zařízení.
+Podporovány jsou dva toky ověřování: tok spravovaný *klientem* a *serverem* . Tok spravovaný serverem nabízí nejjednodušší možnosti ověřování, protože spoléhá na rozhraní webového ověřování poskytovatele. Tok spravovaný klientem umožňuje hlubší integraci s funkcemi specifickými pro konkrétní zařízení, protože spoléhá na sady SDK specifické pro konkrétní zařízení.
 
 > [!NOTE]
-> Doporučujeme používat klienta spravovat tok v produkčních aplikacích.
+> V produkčních aplikacích doporučujeme použít tok spravovaný klientem.
 
-Nastavení ověřování, je třeba aplikaci zaregistrovat pomocí jednoho nebo více zprostředkovatelů identity.  Zprostředkovatele identity vygeneruje ID klienta a tajný kód klienta pro vaši aplikaci.  Tyto hodnoty jsou nastavte v back-endu k povolení ověřování/autorizace služby Azure App Service.  Další informace, postupujte podle podrobné pokyny v tomto kurzu [Přidání ověřování do aplikace].
+Pokud chcete nastavit ověřování, musíte aplikaci zaregistrovat s jedním nebo více zprostředkovateli identity.  Zprostředkovatel identity vygeneruje ID klienta a tajný klíč klienta pro vaši aplikaci.  Tyto hodnoty se pak nastaví v back-endu, aby povolovaly Azure App Service ověřování a autorizaci.  Pokud chcete získat další informace, postupujte podle podrobných pokynů v kurzu [Přidání ověřování do aplikace].
 
-V této části jsou popsané v následujících tématech:
+Tato část pojednává o následujících tématech:
 
-* [Spravovat klienta ověřování](#clientflow)
-* [Spravovat server ověřování](#serverflow)
-* [Ukládání do mezipaměti ověřovací token](#caching)
+* [Ověřování spravované klientem](#clientflow)
+* [Ověřování spravované serverem](#serverflow)
+* [Ukládání ověřovacího tokenu do mezipaměti](#caching)
 
-### <a name="clientflow"></a>Spravovat klienta ověřování
-Vaše aplikace může nezávisle kontaktovat zprostředkovatele identity a následně poskytnout navrácený token během přihlašování s back-endu. Tento tok klienta umožňuje poskytovat jednotné přihlašování pro uživatele nebo od zprostředkovatele identity načíst další uživatelská data. Tok ověřování klientů je upřednostňovaný použití toku server jako zprostředkovatele identity sada SDK poskytuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
+### <a name="clientflow"></a>Ověřování spravované klientem
+Vaše aplikace může nezávisle kontaktovat poskytovatele identity a pak poskytnout vrácený token během přihlašování k back-endu. Tento tok klienta vám umožní poskytnout uživatelům jednotné přihlašování nebo načíst další uživatelská data od poskytovatele identity. Ověřování toku klienta se upřednostňuje při používání toku serveru, protože sada SDK zprostředkovatele identity poskytuje více nativních možností uživatelského rozhraní a umožňuje další přizpůsobení.
 
-Příklady jsou k dispozici pro následující vzory ověřování toku na straně klienta:
+Příklady jsou k dispozici pro následující vzory ověřování klientského toku:
 
-* [Knihovna ověřování Active Directory](#adal)
-* [Facebooku nebo Googlu](#client-facebook)
+* [Active Directory Authentication Library](#adal)
+* [Facebook nebo Google](#client-facebook)
 
 #### <a name="adal"></a>Ověřování uživatelů pomocí Active Directory Authentication Library
-Active Directory Authentication Library (ADAL) můžete použít k ověření spusťte uživatelů z klienta pomocí ověřování Azure Active Directory.
+K zahájení ověřování uživatelů z klienta pomocí ověřování Azure Active Directory můžete použít Active Directory Authentication Library (ADAL).
 
-1. Podle konfigurace váš back-end mobilní aplikace pro přihlašování AAD [Postup konfigurace služby App Service pro přihlašování služby Active Directory] kurzu. Ujistěte se, že k dokončení volitelný krok registrace nativní klientské aplikace.
-2. V sadě Visual Studio nebo Xamarin Studio, otevřete si projekt a přidejte odkaz na `Microsoft.IdentityModel.Clients.ActiveDirectory` balíček NuGet. Při hledání, zahrnout předběžné verze.
-3. Přidejte následující kód do vaší aplikace, podle platformy, které používáte. V každém proveďte následující nahrazení:
+1. Nakonfigurujte back-end mobilní aplikace pro přihlášení AAD pomocí pokynů v článku [Postup konfigurace App Service pro přihlášení ke službě Active Directory] . Ujistěte se, že jste dokončili volitelný krok registrace nativní klientské aplikace.
+2. V aplikaci Visual Studio nebo Xamarin Studio otevřete projekt a přidejte odkaz na balíček NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory`. Při hledání zahrnout předběžné verze verzí.
+3. Přidejte do své aplikace následující kód podle používané platformy. V každém z nich proveďte následující náhrady:
 
-   * Nahraďte **INSERT-AUTORITY-KORENOVA** s názvem tenanta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu je možné zkopírovat ze záložky domény ve službě Azure Active Directory v [Azure Portal].
-   * Nahraďte **INSERT-RESOURCE-ID – TADY** s ID klienta pro back-endu mobilní aplikace. Můžete získat ID klienta z **Upřesnit** kartu **nastavení služby Azure Active Directory** na portálu.
-   * Nahraďte **vložit klienta ID TADY** s ID klienta, který jste zkopírovali z nativní klientskou aplikaci.
-   * Nahraďte **vložení – PŘESMĚROVÁNÍ-URI-TADY** s vaší lokality */.auth/login/done* koncový bod, používat schéma HTTPS. Tato hodnota by měl být podobný *https://contoso.azurewebsites.net/.auth/login/done* .
+   * V části pro **vložení autority** nahraďte název tenanta, ve kterém jste aplikaci zřídili. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu lze zkopírovat z karty doména v Azure Active Directory [Azure Portal].
+   * Pro back-end mobilní aplikace nahraďte **INSERT-Resource-ID – tady** ID klienta. ID klienta můžete získat z karty **Upřesnit** v části **Nastavení Azure Active Directory** na portálu.
+   * Pomocí ID klienta, které jste zkopírovali z nativní klientské aplikace, nahraďte **INSERT-Client-ID** .
+   * Pomocí schématu HTTPS nahraďte **text INSERT-redirect-URI – tady** s koncovým bodem */.auth/Login/Done* vašeho webu. Tato hodnota by měla být podobná *https://contoso.azurewebsites.net/.auth/login/done* .
 
-     Následující kód potřebný pro každou platformu:
+     Kód potřebný pro každou platformu je následující:
 
      **Windows:**
 
@@ -769,8 +766,8 @@ Active Directory Authentication Library (ADAL) můžete použít k ověření sp
      }
      ```
 
-#### <a name="client-facebook"></a>Jednotné přihlašování pomocí tokenu z Facebooku nebo Googlu
-Tok klienta můžete použít, jak je znázorněno v tomto fragmentu kódu pro Facebook nebo Google.
+#### <a name="client-facebook"></a>Jednotné přihlašování pomocí tokenu z Facebooku nebo Google
+Můžete použít tok klienta, jak je znázorněno v tomto fragmentu pro Facebook nebo Google.
 
 ```csharp
 var token = new JObject();
@@ -803,8 +800,8 @@ private async Task AuthenticateAsync()
 }
 ```
 
-### <a name="serverflow"></a>Spravovat server ověřování
-Jakmile budete zaregistrováni u zprostředkovatele identity, zavolejte [LoginAsync] metodu na [MobileServiceClient] s [MobileServiceAuthenticationProvider] hodnotu vašeho zprostředkovatele. Například následující kód zahájí u serveru toku přihlášení pomocí Facebooku.
+### <a name="serverflow"></a>Ověřování spravované serverem
+Po zaregistrování poskytovatele identity volejte metodu [LoginAsync] na [MobileServiceClient] s hodnotou [MobileServiceAuthenticationProvider] vašeho poskytovatele. Následující kód například inicializuje přihlášení k serveru pomocí služby Facebook.
 
 ```csharp
 private MobileServiceUser user;
@@ -832,12 +829,12 @@ private async System.Threading.Tasks.Task Authenticate()
 }
 ```
 
-Pokud používáte zprostředkovatelů identity než Facebook, změňte hodnotu vlastnosti [MobileServiceAuthenticationProvider] s hodnotou pro poskytovatele.
+Pokud používáte jiného poskytovatele identity než Facebook, změňte hodnotu [MobileServiceAuthenticationProvider] na hodnotu pro vašeho poskytovatele.
 
-V toku serveru službě Azure App Service spravuje tok ověřování OAuth zobrazením přihlašovací stránku vybraného zprostředkovatele.  Jakmile se vrátí zprostředkovatele identity, služby Azure App Service vygeneruje ověřovací token služby App Service. [LoginAsync] metoda vrátí hodnotu [MobileServiceUser], který poskytuje [UserId] ověřeného uživatele a [MobileServiceAuthenticationToken], jako webový token JSON (JWT). Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti. Další informace najdete v tématu [ukládání do mezipaměti ověřovací token](#caching).
+V toku serveru Azure App Service spravuje tok ověřování OAuth zobrazením přihlašovací stránky vybraného zprostředkovatele.  Jakmile se zprostředkovatel identity vrátí, Azure App Service vygeneruje ověřovací token App Service. Metoda [LoginAsync] vrací hodnotu [MobileServiceUser], která poskytuje [UserID] ověřeného uživatele i [MobileServiceAuthenticationToken]jako webový token JSON (Jwt). Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti. Další informace najdete v tématu [ukládání ověřovacího tokenu do mezipaměti](#caching).
 
-### <a name="caching"></a>Ukládání do mezipaměti ověřovací token
-V některých případech lze se vyhnout volání metody přihlášení po prvním úspěšném ověření uložením ověřovací token od zprostředkovatele.  Můžete použít Microsoft Store a aplikace pro UPW [PasswordVault] pro ukládání do mezipaměti aktuální ověřovací token po úspěšně přihlášení, následujícím způsobem:
+### <a name="caching"></a>Ukládání ověřovacího tokenu do mezipaměti
+V některých případech se volání metody Login může vyhnout po prvním úspěšném ověření uložením ověřovacího tokenu od poskytovatele.  Aplikace Microsoft Store a UWP můžou používat [PasswordVault] k ukládání aktuálního ověřovacího tokenu do mezipaměti po úspěšném přihlášení, a to následujícím způsobem:
 
 ```csharp
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -847,7 +844,7 @@ vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
     client.currentUser.MobileServiceAuthenticationToken));
 ```
 
-Hodnota ID uživatele je uložená jako uživatelské jméno přihlašovacích údajů a token, který je uložený jako heslo. Na následujících začínající podniky, můžete zkontrolovat **PasswordVault** pro přihlašovací údaje v mezipaměti. Následující příklad používá přihlašovací údaje v mezipaměti, když se nacházejí a v opačném případě se pokusí znovu provést ověření s back-endu:
+Hodnota ID uživatele je uložená jako uživatelské jméno přihlašovacích údajů a token je uložený jako heslo. Při dalších spuštěních se můžete podívat na přihlašovací údaje **PasswordVault** pro ukládání do mezipaměti. Následující příklad používá při jejich nalezení přihlašovací údaje uložené v mezipaměti a v opačném případě se pokusí znovu ověřit pomocí back-endu:
 
 ```csharp
 // Try to retrieve stored credentials.
@@ -865,16 +862,16 @@ else
 }
 ```
 
-Když se odhlásíte uživatele, je potřeba taky odebrat uložené přihlašovací údaje, následujícím způsobem:
+Když odhlásíte uživatele, musíte taky odebrat uložené přihlašovací údaje následujícím způsobem:
 
 ```csharp
 client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-Použití aplikace Xamarin [Xamarin.Auth] rozhraní API pro bezpečné ukládání přihlašovacích údajů v **účet** objektu. Příklad použití těchto rozhraní API, najdete v článku [AuthStore.cs] souboru kódu v [ContosoMoments fotografii sdílení ukázky](https://github.com/azure-appservice-samples/ContosoMoments).
+Aplikace Xamarin používají rozhraní API [Xamarin. auth] k bezpečnému ukládání přihlašovacích údajů do objektu **účtu** . Příklad použití těchto rozhraní API naleznete v souboru kódu [AuthStore.cs] v [ukázce sdílení fotek ContosoMoments](https://github.com/azure-appservice-samples/ContosoMoments).
 
-Při použití ověřování klienta spravovat mezipaměti můžete také ukládat přístupový token získaný od poskytovatele, jako je Facebook nebo Twitter. Tento token mohou být poskytnuty požádat o nový ověřovací token z back-endu, následujícím způsobem:
+Když použijete ověřování spravované klientem, můžete také ukládat do mezipaměti přístupový token získaný od poskytovatele, jako je Facebook nebo Twitter. Tento token lze zadat pro vyžádání nového ověřovacího tokenu z back-endu následujícím způsobem:
 
 ```csharp
 var token = new JObject();
@@ -886,14 +883,14 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 ```
 
 ## <a name="pushnotifications"></a>Nabízená oznámení
-Nabízená oznámení v následujících tématech:
+Nabízená oznámení jsou pokrytá v následujících tématech:
 
-* [Registrace pro nabízená oznámení](#register-for-push)
-* [Získat identifikátor SID balíčku Microsoft Store](#package-sid)
-* [Zaregistrovat s využitím šablon Cross-platform](#register-xplat)
+* [Registrace nabízených oznámení](#register-for-push)
+* [Získání Microsoft Store SID balíčku](#package-sid)
+* [Registrace v šablonách pro různé platformy](#register-xplat)
 
-### <a name="register-for-push"></a>Jak: Registrace pro nabízená oznámení
-Klienta Mobile Apps umožňuje zaregistrovat pro nabízená oznámení pomocí Azure Notification Hubs. Při registraci, získat popisovač, který získáte z specifické pro platformu Push Notification Service (PNS). Pak poskytnete tuto hodnotu spolu s žádné značky při vytváření registrace. Následující kód registruje nabízených oznámení v aplikaci Windows služby oznámení Windows (WNS):
+### <a name="register-for-push"></a>Postupy: registrace nabízených oznámení
+Klient Mobile Apps umožňuje registrovat nabízená oznámení pomocí Azure Notification Hubs. Při registraci získáte popisovač, který získáte ze služby nabízených oznámení specifických pro konkrétní platformu (PNS). Po vytvoření registrace pak tuto hodnotu zadejte spolu s jakýmikoli značkami. Následující kód zaregistruje aplikaci pro Windows pro nabízená oznámení pomocí služby oznamování systému Windows (WNS):
 
 ```csharp
 private async void InitNotificationsAsync()
@@ -906,38 +903,38 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Pokud nabízíte službě nabízených oznámení Windows, je nutné [získat balíček Microsoft Store SID](#package-sid).  Další informace o aplikace pro Windows, včetně toho, jak zaregistrovat pro šablony registrace najdete v části [Přidání nabízených oznámení do aplikace].
+Pokud předáváte do WNS, musíte [získat Microsoft Store SID balíčku](#package-sid).  Další informace o aplikacích pro Windows, včetně toho, jak se zaregistrovat k registraci šablon, najdete v tématu [Přidání nabízených oznámení do aplikace].
 
-Vyžádání značky z klienta se nepodporuje.  Značka požadavky jsou vynechány tiše z registrace.
-Pokud si chcete zaregistrovat zařízení se značkami, vytvořte vlastní rozhraní API, která používá rozhraní API Notification Hubs k provedení registrace vaším jménem.  Volání rozhraní API Custom namísto `RegisterNativeAsync()` metody.
+Vyžadování značek od klienta není podporováno.  Požadavky na značky se tiše odcházejí z registrace.
+Pokud chcete zařízení zaregistrovat pomocí značek, vytvořte vlastní rozhraní API, které používá rozhraní Notification Hubs API k provedení registrace vaším jménem.  Místo metody `RegisterNativeAsync()` zavolejte vlastní rozhraní API.
 
-### <a name="package-sid"></a>Jak: Získat identifikátor SID balíčku Microsoft Store
-SID balíčku je potřeba pro povolení nabízených oznámení v aplikacích pro Microsoft Store.  Pokud chcete přijímat SID balíčku, registrace aplikace pomocí Microsoft Store.
+### <a name="package-sid"></a>Postupy: získání identifikátoru SID balíčku Microsoft Store
+K povolení nabízených oznámení v aplikacích Microsoft Store se vyžaduje SID balíčku.  Pokud chcete získat identifikátor SID balíčku, Zaregistrujte svoji aplikaci pomocí Microsoft Store.
 
-Získat tuto hodnotu:
+Tuto hodnotu můžete získat takto:
 
-1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na projekt aplikace pro Microsoft Store, klikněte na tlačítko **Store** > **přidružit aplikaci Store...** .
-2. V průvodci klikněte na tlačítko **Další**, přihlaste se pomocí účtu Microsoft, zadejte název pro vaši aplikaci v **rezervovat nový název aplikace**, pak klikněte na tlačítko **rezervy**.
-3. Po registraci aplikace je úspěšně vytvořen, vyberte název aplikace, klikněte na **Další**a potom klikněte na tlačítko **přidružit**.
-4. Přihlaste se k [Windows Dev Center] pomocí Account Microsoft. V části **Moje aplikace**, klikněte na možnost registrace aplikace, který jste vytvořili.
-5. Klikněte na tlačítko **správy aplikací** > **identity aplikace**a posuňte se dolů najít vaše **SID balíčku**.
+1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na projekt aplikace Microsoft Store, klikněte na možnost **uložit** > **přidružit aplikaci k úložišti...** .
+2. V průvodci klikněte na **Další**, přihlaste se pomocí svého účet Microsoft, zadejte název vaší aplikace do pole **rezervovat nový název aplikace**a pak klikněte na **rezervovat**.
+3. Po úspěšném vytvoření registrace aplikace vyberte název aplikace, klikněte na **Další**a pak klikněte na **přidružit**.
+4. Přihlaste se k webu [Centrum vývojářů pro Windows] pomocí svého účtu Microsoft. V části **Moje aplikace**klikněte na registraci aplikace, kterou jste vytvořili.
+5. Klikněte na **Správa aplikací**@no__t**identitu aplikace**-1 a potom se posuňte dolů a vyhledejte **identifikátor SID balíčku**.
 
-Mnoho používá identifikátor SID balíčku ji považovat za identifikátor URI, v takovém případě budete muset použít *ms-app: / /* schéma. Poznamenejte si verzi balíčku vytvořený zřetězením tuto hodnotu jako předponu SID.
+Mnohé použití identifikátoru SID balíčku považuje za identifikátor URI. v takovém případě je třeba použít *aplikaci MS-App://* jako schéma. Poznamenejte si verzi vašeho balíčku SID vytvořenou zřetězením této hodnoty jako předpony.
 
-Aplikace Xamarin vyžadovat další kód bude moci zaregistrovat aplikaci spuštěnou v prostředí platformu iOS nebo Android. Další informace naleznete v tématu pro vaši platformu:
+Aplikace Xamarin vyžadují nějaký další kód, který by mohl Registrovat aplikaci běžící na platformách iOS nebo Android. Další informace najdete v tématu věnovaném vaší platformě:
 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>Jak: Registrace šablon nabízených oznámení k odesílání oznámení napříč platformami
-Pokud chcete zaregistrovat šablony, použijte `RegisterAsync()` metoda se šablonami, následujícím způsobem:
+### <a name="register-xplat"></a>Postupy: Registrace šablon nabízených oznámení pro odesílání oznámení pro různé platformy
+K registraci šablon použijte metodu `RegisterAsync()` se šablonami, a to následujícím způsobem:
 
 ```csharp
 JObject templates = myTemplates();
 MobileService.GetPush().RegisterAsync(channel.Uri, templates);
 ```
 
-Šablony by měl být `JObject` typy a může obsahovat více šablon ve formátu JSON:
+Vaše šablony by měly být @no__t typy-0 a mohou obsahovat více šablon v následujícím formátu JSON:
 
 ```csharp
 public JObject myTemplates()
@@ -962,19 +959,19 @@ public JObject myTemplates()
 }
 ```
 
-Metoda **RegisterAsync()** přijímá také sekundární dlaždice:
+Metoda **RegisterAsync ()** také přijímá sekundární dlaždice:
 
 ```csharp
 MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
 ```
 
-Všechna klíčová slova jsou zbavíme během registrace pro zabezpečení. Přidání značek na zařízení nebo šablony v rámci instalace naleznete v tématu [práce se serverem back-end .NET SDK pro Azure Mobile Apps].
+Všechny značky jsou během registrace odstraněny pro zabezpečení. Chcete-li přidat značky do instalací nebo šablon v rámci instalací, přečtěte si téma [práce s back-end serverem .NET SDK pro Azure Mobile Apps].
 
-Odeslat oznámení využívá tyto registrované šablony, najdete v tématu [Rozhraní API pro Notification Hubs].
+Pokud chcete odesílat oznámení s těmito registrovanými šablonami, přečtěte si téma [rozhraní API pro Notification Hubs].
 
-## <a name="misc"></a>Různé témata
-### <a name="errors"></a>Jak: Zpracování chyb
-Když dojde k chybě v back-endu, klient SDK vyvolá `MobileServiceInvalidOperationException`.  Následující příklad ukazuje, jak zpracovat výjimku, která se vrátí back-endu:
+## <a name="misc"></a>Různá témata
+### <a name="errors"></a>Postupy: zpracování chyb
+Pokud dojde k chybě v back-endu, klientská sada SDK vyvolá `MobileServiceInvalidOperationException`.  Následující příklad ukazuje, jak zpracovat výjimku vrácenou back-end:
 
 ```csharp
 private async void InsertTodoItem(TodoItem todoItem)
@@ -993,10 +990,10 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Další příklad chybové stavy řešení najdete v [Ukázkové soubory mobilní aplikace]. [LoggingHandler] příklad poskytuje obslužné rutiny protokolování delegátů protokolovat požadavky do back-endu.
+Další příklad práce s chybovými stavy najdete v [Ukázka souborů Mobile Apps]. Příklad [LoggingHandler] poskytuje obslužnou rutinu delegáta protokolování pro protokolování požadavků do back-endu.
 
-### <a name="headers"></a>Jak: Přizpůsobení záhlaví požadavku
-Pro podporu vašeho scénáře pro konkrétní aplikaci, potřebujete přizpůsobit komunikaci s back-endu mobilní aplikace. Můžete například přidat vlastní hlavičku každý odchozí požadavek nebo dokonce i změnit stavový kód odpovědi. Můžete použít vlastní [DelegatingHandler], jako v následujícím příkladu:
+### <a name="headers"></a>Postupy: přizpůsobení hlaviček požadavku
+Aby bylo možné podporovat konkrétní scénář aplikace, může být nutné přizpůsobit komunikaci s back-endu mobilní aplikace. Například můžete chtít přidat vlastní hlavičku do každého odchozího požadavku nebo dokonce změnit stavové kódy odpovědí. Můžete použít vlastní [DelegatingHandler], jak je znázorněno v následujícím příkladu:
 
 ```csharp
 public async Task CallClientWithHandler()
@@ -1050,7 +1047,7 @@ public class MyHandler : DelegatingHandler
 [Synchronizace offline dat v prostředí Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Přidání nabízených oznámení do aplikace]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
-[Postup konfigurace služby App Service pro přihlašování služby Active Directory]: ../app-service/configure-authentication-provider-aad.md
+[Postup konfigurace App Service pro přihlášení ke službě Active Directory]: ../app-service/configure-authentication-provider-aad.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
@@ -1058,39 +1055,39 @@ public class MyHandler : DelegatingHandler
 [MobileServiceAuthenticationProvider]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
-[Jít]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
-[Vytvoří odkaz na tabulku netypový kód]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
+[GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
+[vytvoří odkaz na netypové tabulky]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
 [DeleteAsync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
 [IncludeTotalCount]: https://msdn.microsoft.com/library/azure/dn250560(v=azure.10).aspx
 [InsertAsync]: https://msdn.microsoft.com/library/azure/dn296400(v=azure.10).aspx
 [InvokeApiAsync]: https://msdn.microsoft.com/library/azure/dn268343(v=azure.10).aspx
 [LoginAsync]: https://msdn.microsoft.com/library/azure/dn296411(v=azure.10).aspx
 [LookupAsync]: https://msdn.microsoft.com/library/azure/jj871654(v=azure.10).aspx
-[Řadit podle]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
+[OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
-[Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Nezbytná]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Výběr]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Přeskočit]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Přímo]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[UserId]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[kde]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[WHERE]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
+[GUID. NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Windows Dev Center]: https://dev.windows.com/overview
+[Centrum vývojářů pro Windows]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [Rozhraní API pro Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[Ukázkové soubory mobilní aplikace]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[Ukázka souborů Mobile Apps]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->
-[Dokumentace ke službě OData v3]: https://www.odata.org/documentation/odata-version-3-0/
+[Dokumentace k OData V3]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
 [Json.NET]: https://www.newtonsoft.com/json
-[Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
+[Xamarin. auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

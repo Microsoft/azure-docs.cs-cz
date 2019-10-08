@@ -1,6 +1,6 @@
 ---
-title: Synchronizace offline dat v Azure Mobile Apps | Dokumentace Microsoftu
-description: Reference konceptu postupu a Přehled funkce synchronizace offline dat pro Azure Mobile Apps
+title: Synchronizace offline dat v Azure Mobile Apps | Microsoft Docs
+description: Koncepční referenční informace a Přehled funkce synchronizace offline dat pro Azure Mobile Apps
 documentationcenter: windows
 author: conceptdev
 manager: crdun
@@ -14,91 +14,96 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 7f5b24915ddb9fd12085583844770dd7587f2394
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205092"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025216"
 ---
-# <a name="offline-data-sync-in-azure-mobile-apps"></a>Offline synchronizace dat pro Azure Mobile Apps
-## <a name="what-is-offline-data-sync"></a>Co je synchronizace offline dat?
-Synchronizace offline dat je klient a server funkce sady SDK služby Azure Mobile Apps, která umožňuje vývojářům snadno vytvářet aplikace, které fungují bez síťového připojení.
+# <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronizace offline dat v prostředí Azure Mobile Apps
 
-Pokud vaše aplikace je v režimu offline, můžete pořád vytvářet a upravovat data, která se uloží do místního úložiště. Jakmile je aplikace zpátky online, se synchronizuje místní změny s back-endu mobilní aplikace Azure. Tato funkce zároveň podporuje zjišťování konfliktů, pokud se stejný záznam změní na klientovi a back-endu. Konflikty může být zpracována klikněte buď na serveru nebo klienta.
+> [!NOTE]
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
+
+## <a name="what-is-offline-data-sync"></a>Co je offline synchronizace dat?
+Offline synchronizace dat je funkce klient a server sady SDK služby Azure Mobile Apps usnadňující vývojářům vytvářet aplikace, které jsou funkční bez připojení k síti.
+
+Když je vaše aplikace v režimu offline, můžete stále vytvářet a upravovat data, která se ukládají do místního úložiště. Když je aplikace zase online, může synchronizovat místní změny s back-endu mobilní aplikace Azure. Tato funkce také zahrnuje podporu zjišťování konfliktů při změně stejného záznamu v klientovi i v back-endu. Konflikty je pak možné zpracovat buď na serveru, nebo na klientovi.
 
 Offline synchronizace má několik výhod:
 
-* Zrychlete odezvu aplikace ukládáním dat ze serveru místní mezipaměti v zařízení
-* Vytvářejte robustní aplikace, které budou fungovat i při problémech se sítí
-* Povolit koncovým uživatelům vytvářet a upravovat data i v případě, že neexistuje žádný přístup k síti, podporovat scénáře s minimální nebo žádné připojení
-* Synchronizovat data mezi různými zařízeními a je v konfliktu rozpoznat, kdy se stejný záznam se aktualizuje dvě zařízení
-* Omezit využití sítě v sítích s vysokou latencí nebo účtované podle objemu dat
+* Vylepšení odezvy aplikace ukládáním dat serveru do mezipaměti místně na zařízení
+* Vytvářejte robustní aplikace, které budou fungovat, když dojde k problémům se sítí
+* Umožněte koncovým uživatelům vytvářet a upravovat data, i když nedochází k přístupu k síti, podporu scénářů s malým nebo žádným připojením.
+* Synchronizace dat napříč více zařízeními a zjištění konfliktů při úpravě stejného záznamu dvěma zařízeními
+* Omezení využití sítě v sítích s vysokou latencí nebo měřenými sítěmi
 
-Následující kurzy vám ukážou, jak přidat offline synchronizace do vašich mobilních klientů pomocí Azure Mobile Apps:
+Následující kurzy ukazují, jak přidat offline synchronizaci do mobilních klientů pomocí Azure Mobile Apps:
 
-* [Android: Povolení offline synchronizace]
-* [Apache Cordova: Povolení offline synchronizace](app-service-mobile-cordova-get-started-offline-data.md)
-* [iOS: Povolení offline synchronizace]
-* [Xamarin pro iOS: Povolení offline synchronizace]
-* [Xamarin Android: Povolení offline synchronizace]
-* [Xamarin.Forms: Povolení offline synchronizace](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Universal Windows Platform: Povolení offline synchronizace]
+* [Android: povolení offline synchronizace]
+* [Apache Cordova: Povolit offline synchronizaci](app-service-mobile-cordova-get-started-offline-data.md)
+* [iOS: povolení offline synchronizace]
+* [Xamarin iOS: povolení offline synchronizace]
+* [Xamarin Android: povolení offline synchronizace]
+* [Xamarin. Forms: povolení offline synchronizace](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+* [Univerzální platforma Windows: Povolit offline synchronizaci]
 
-## <a name="what-is-a-sync-table"></a>Co je tabulka synchronizace?
-Pro přístup ke koncovému bodu "/ tabulky", Azure Mobile klientské sady SDK poskytují rozhraní, jako `IMobileServiceTable` (Klientská sada SDK rozhraní .NET) nebo `MSTable` (iOS klienta). Tato rozhraní API připojit přímo k back-endu mobilní aplikace Azure a selhat, pokud zařízení klienta nemá připojení k síti.
+## <a name="what-is-a-sync-table"></a>Co je synchronizovaná tabulka?
+Pro přístup ke koncovému bodu "/Tables" poskytují sady SDK pro mobilní klienty Azure rozhraní, jako je například `IMobileServiceTable` (.NET Client SDK) nebo `MSTable` (klient iOS). Tato rozhraní API se připojují přímo k back-endu mobilní aplikace Azure a selžou, pokud v klientském zařízení není síťové připojení.
 
-Pro podporu použití v offline režimu, by měla vaše aplikace místo toho použít *synchronizovat* rozhraní API, jako například `IMobileServiceSyncTable` (Klientská sada SDK rozhraní .NET) nebo `MSSyncTable` (iOS klienta). Všechny stejné operace CRUD (vytváření, čtení, Update, Delete), které využívají synchronizace tabulky rozhraní API, s výjimkou nyní budou přečíst z nebo zápis do *místní úložiště*. Před provedením jakékoli operace s tabulkou synchronizace místního úložiště musí být inicializována.
+Aby bylo možné podporu offline použít, měla by vaše aplikace místo toho používat rozhraní API pro *synchronizaci tabulek* , například `IMobileServiceSyncTable` (.NET Client SDK) nebo `MSSyncTable` (klient iOS). Všechny stejné operace CRUD (vytvoření, čtení, aktualizace, odstranění) práce s rozhraními API pro synchronizaci tabulek, s výjimkou případů, kdy se nyní čtou z *místního úložiště*nebo do něj zapisovat. Před provedením jakékoli operace synchronizace tabulek je nutné inicializovat místní úložiště.
 
 ## <a name="what-is-a-local-store"></a>Co je místní úložiště?
-Místní úložiště je vrstvu trvalosti dat v klientském zařízení. Klientské sady SDK Azure Mobile Apps poskytuje výchozí implementaci místní úložiště. Na Windows, Xamarin a s Androidem je založen na SQLite. V systémech iOS je založen na základní Data.
+Místní úložiště je vrstva trvalosti dat v klientském zařízení. Sady SDK pro klienty Azure Mobile Apps poskytují výchozí implementaci místního úložiště. Ve Windows, Xamarin a Androidu je založena na SQLite. V systému iOS je založena na základních datech.
 
-Použití implementace SQLite založené na Windows Phone nebo Microsoft Store, musíte nainstalovat rozšíření SQLite. Další informace najdete v tématu [Universal Windows Platform: Povolení offline synchronizace]. Zařízení s androidem a iOS dodávání verzí SQLite v operačním systému zařízení, takže není nutné odkazovat na vlastní verzi SQLite.
+Chcete-li použít implementaci na základě SQLite na Windows Phone nebo Microsoft Store, je nutné nainstalovat rozšíření SQLite. Další informace najdete v tématu [Univerzální platforma Windows: Povolit offline synchronizaci]. Android a iOS se dodávají s verzí SQLite v samotném operačním systému zařízení, takže není nutné odkazovat na vlastní verzi SQLite.
 
-Vývojáři můžou také implementovat vlastní místní úložiště. Například pokud chcete ukládat data v šifrovaném formátu v mobilním klientovi, můžete definovat místní úložiště, který používá SQLCipher pro šifrování.
+Vývojáři můžou také implementovat své vlastní místní úložiště. Pokud například chcete ukládat data do šifrovaného formátu v mobilním klientovi, můžete pro šifrování definovat místní úložiště, které používá SQLCipher.
 
 ## <a name="what-is-a-sync-context"></a>Co je kontext synchronizace?
-A *kontext synchronizace* je spojen s objektem mobilního klienta (například `IMobileServiceClient` nebo `MSClient`) a sleduje změny, které jsou provedeny s tabulkami synchronizace. Kontext synchronizace udržuje *operace fronty*, což zajišťuje uspořádaný seznam CUD operace (Create, Update, Delete), který je později odesláno na server.
+*Kontext synchronizace* je přidružený k objektu mobilního klienta (například `IMobileServiceClient` nebo `MSClient`) a sleduje změny provedené s tabulkami synchronizace. Kontext synchronizace udržuje *frontu operací*, která udržuje uspořádaný seznam operací CUD (vytvořit, aktualizovat, odstranit), který se později pošle na server.
 
-Místní úložiště je přidružená ke kontextu synchronizace pomocí metodu initialize například `IMobileServicesSyncContext.InitializeAsync(localstore)` v [Klientská sada SDK pro .NET].
+Místní úložiště je přidruženo k kontextu synchronizace pomocí metody Initialize, jako je například `IMobileServicesSyncContext.InitializeAsync(localstore)` v [Sada SDK klienta .NET].
 
-## <a name="how-sync-works"></a>Jak v režimu offline synchronizace funguje
-Při použití synchronizace tabulek, váš klientský kód řídí, kdy místní změny se synchronizují s back-endu mobilní aplikace Azure. Nic posílá na back-end, dokud nedojde k volání *nabízených* místní změny. Obdobně místní úložiště se vyplní nová data pouze v případě, že volání *o přijetí změn* data.
+## <a name="how-sync-works"></a>Jak funguje synchronizace offline
+Při použití synchronizačních tabulek váš klientský kód řídí, kdy se místní změny synchronizují s back-endu mobilní aplikace Azure. Do back-endu se nic nepošle, dokud se nespustí volání na *vložení* místních změn. Podobně se místní úložiště naplní novými daty pouze v případě, že dojde k volání dat pro *vyžádání* .
 
-* **Push**: Nabízených oznámení je operace v kontextu synchronizace a odešle všechny změny CUD od poslední nasdílení změn. Všimněte si, že není možné odesílat pouze změny jednotlivé tabulky, protože jinak operace by mohla pošlou mimo pořadí. Push vykoná řadu volání REST pro back-endu mobilní aplikace Azure, který pak změní databázovém serveru.
-* **O přijetí změn**: O přijetí změn se provádí na základě jednotlivých tabulek a je možné přizpůsobit pomocí dotaz pro načtení pouze podmnožinu dat serveru. Klientské sady SDK Azure Mobile vložte Výsledná data do místního úložiště.
-* **Implicitní nabízených oznámení v ceně**: Pokud o přijetí změn se provede na tabulku, která se má čekající místní aktualizace, nejprve provede operace přijetí změn `push()` v kontextu synchronizace. Tato nabízená pomáhá minimalizovat konflikty mezi změnami, které jsou již zařazeny do fronty a nová data ze serveru.
-* **Přírůstková synchronizace**: první parametr operace přijetí změn je *název dotazu* , který se používá pouze na straně klienta. Pokud použijete název dotazu jinou hodnotu než null, provede Azure Mobile SDK *Přírůstková synchronizace*. Pokaždé, když operace přijetí změn, vrátí sadu výsledků, nejnovější `updatedAt` časové razítko z této sady výsledků se ukládají do tabulek sadu SDK místního systému. Následujících vyžádanou operace načtení záznamů pouze po tomto časovém razítku.
+* **Push**: Push je operace v kontextu synchronizace a odesílá všechny CUD změny od posledního vložení. Všimněte si, že není možné odesílat pouze změny jednotlivých tabulek, protože jiné operace mohou být odeslány mimo pořadí. Příkaz push spustí sérii volání REST do back-endu mobilních aplikací Azure, což zase upraví databázi serveru.
+* **Pull**: operace přijetí změn se provádí na bázi jednotlivých tabulek a dá se přizpůsobit pomocí dotazu, který načte jenom podmnožinu serverových dat. Sady SDK mobilních klientů Azure pak vloží výsledná data do místního úložiště.
+* **Implicitní nabízená oznámení**: Pokud se u tabulky, která čeká na místní aktualizace, spustí operaci vyžádání obsahu, vyžádá si nejprve `push()` v kontextu synchronizace. Tato nabízená oznámení pomáhají minimalizovat konflikty mezi změnami, které jsou už ve frontě, a novými daty ze serveru.
+* **Přírůstková synchronizace**: první parametr operace přijetí změn je *název dotazu* , který se používá pouze v klientovi. Pokud použijete název dotazu, který není null, Azure Mobile SDK provede *přírůstkovou synchronizaci*. Pokaždé, když operace vyžádání obsahu vrátí sadu výsledků, bude v tabulce místních systémových systémů sady SDK uloženo nejnovější časové razítko `updatedAt` z této sady výsledků. Následné operace Pull načítají pouze záznamy po tomto časovém razítku.
 
-  Používat přírůstkovou synchronizaci, musí vrátit smysluplné serveru `updatedAt` hodnoty a musí taky podporovat řazení podle tohoto pole. Ale vzhledem k tomu, že sada SDK přidá vlastní řazení v poli updatedAt, nemůžete použít dotaz o přijetí změn, který má vlastní `orderBy` klauzuli.
+  Chcete-li použít přírůstkovou synchronizaci, váš server musí vracet smysluplné hodnoty `updatedAt` a musí také podporovat řazení podle tohoto pole. Vzhledem k tomu, že sada SDK přidává vlastní řazení do pole updatedAt, nemůžete použít dotaz Pull, který má svou vlastní klauzuli `orderBy`.
 
-  Název dotazu může být libovolný řetězec, který zvolíte, ale musí být jedinečný pro každý logický dotaz ve vaší aplikaci.
-  Jinak operace různých o přijetí změn by mohl přepsat stejné časové razítko Přírůstková synchronizace a dotazech může vrátit nesprávné výsledky.
+  Název dotazu může být libovolný řetězec, který si zvolíte, ale musí být jedinečný pro každý logický dotaz ve vaší aplikaci.
+  V opačném případě můžou různé operace přijetí změn přepsat stejné časové razítko přírůstkového synchronizace a dotazy můžou vracet nesprávné výsledky.
 
-  Pokud dotaz obsahuje parametr, začlenit hodnota tohoto parametru je jeden způsob, jak vytvořit dotaz jedinečný název.
-  Například pokud provádíte filtrování na ID uživatele, může být název vašeho dotazu následujícím způsobem (v jazyce C#):
+  Pokud má dotaz parametr, jeden ze způsobů, jak vytvořit jedinečný název dotazu, je začlenit hodnotu parametru.
+  Pokud například filtrujete podle ID uživatele, může to být váš název dotazu takto C#:
 
         await todoTable.PullAsync("todoItems" + userid,
             syncTable.Where(u => u.UserId == userid));
 
-  Pokud chcete vyjádřit výslovný nesouhlas Přírůstková synchronizace, předejte `null` jako ID dotazu. V tomto případě jsou načteny všechny záznamy pro každé volání do `PullAsync`, což je potenciálně neefektivní.
-* **Vyprazdňování**: Můžete vymazat obsah z místního úložiště pomocí `IMobileServiceSyncTable.PurgeAsync`.
-  Odstranění může být nutné, pokud máte zastaralých dat v databázi klienta, nebo pokud chcete zahodit všechny neuložené změny.
+  Pokud se chcete odhlásit z přírůstkové synchronizace, předejte `null` jako ID dotazu. V tomto případě jsou všechny záznamy načteny při každém volání `PullAsync`, což je potenciálně neefektivní.
+* **Vymazání**: obsah místního úložiště můžete vymazat pomocí `IMobileServiceSyncTable.PurgeAsync`.
+  Vymazání může být nutné v případě, že máte v klientské databázi zastaralá data, nebo pokud chcete zahodit všechny nedokončené změny.
 
-  Vyprázdnění odstraní tabulku z místního úložiště. Pokud je operace čeká na synchronizaci s databází serveru, k vyprázdnění vyvolá výjimku, pokud *Vynutit vyprázdnění* je nastaven parametr.
+  Vymazání vymaže tabulku z místního úložiště. Pokud jsou operace čekající na synchronizaci s databází serveru, vygeneruje vyprázdnění výjimku, pokud není nastaven parametr *Vynutit mazání* .
 
-  Jako příklad zastaralých dat na straně klienta Předpokládejme, že v příkladu "seznam úkolů" zařízení1 si vyžádá pouze položky, které nebyly dokončeny. Položka todoitem "Koupit mléka" je označen dokončena na serveru pomocí jiného zařízení. Ale zařízení1 stále má "Koupit mléka" todoitem v místním úložišti, protože táhne pouze položky, které nejsou označeny jako dokončené. Vyprázdnění vymaže této zastaralé položky.
+  Jako příklad zastaralých dat na klientovi, Předpokládejme v příkladu "seznam úkolů", Zařízení1 pouze nedokončené položky. TodoItem "koupit mléko" je na serveru označeno jiným zařízením. Zařízení1 však stále obsahuje TodoItem "koupit mléko" v místním úložišti, protože probíhá pouze stahování položek, které nejsou označeny jako úplné. Vymaže tuto zastaralou položku.
 
-## <a name="next-steps"></a>Další postup
-* [iOS: Povolení offline synchronizace]
-* [Xamarin pro iOS: Povolení offline synchronizace]
-* [Xamarin Android: Povolení offline synchronizace]
-* [Universal Windows Platform: Povolení offline synchronizace]
+## <a name="next-steps"></a>Další kroky
+* [iOS: povolení offline synchronizace]
+* [Xamarin iOS: povolení offline synchronizace]
+* [Xamarin Android: povolení offline synchronizace]
+* [Univerzální platforma Windows: Povolit offline synchronizaci]
 
 <!-- Links -->
-[Klientská sada SDK pro .NET]: app-service-mobile-dotnet-how-to-use-client-library.md
-[Android: Povolení offline synchronizace]: app-service-mobile-android-get-started-offline-data.md
-[iOS: Povolení offline synchronizace]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin pro iOS: Povolení offline synchronizace]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: Povolení offline synchronizace]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[Universal Windows Platform: Povolení offline synchronizace]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Sada SDK klienta .NET]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Android: povolení offline synchronizace]: app-service-mobile-android-get-started-offline-data.md
+[iOS: povolení offline synchronizace]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: povolení offline synchronizace]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: povolení offline synchronizace]: app-service-mobile-xamarin-android-get-started-offline-data.md
+[Univerzální platforma Windows: Povolit offline synchronizaci]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

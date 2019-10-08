@@ -1,6 +1,6 @@
 ---
-title: Udělení uživatelských oprávnění na určitém laboratorním zásady | Dokumentace Microsoftu
-description: Zjistěte, jak udělit oprávnění uživatele pro zásady konkrétní testovacího prostředí v DevTest Labs podle potřeb jednotlivých uživatelů
+title: Udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí | Microsoft Docs
+description: Naučte se, jak udělit uživatelům oprávnění ke konkrétním zásadám testovacího prostředí v DevTest Labs na základě potřeb jednotlivých uživatelů.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,46 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 10/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127374"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028435"
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění na určitém laboratorním zásady
+# <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí
 ## <a name="overview"></a>Přehled
-Tento článek ukazuje, jak pomocí prostředí PowerShell k udělení oprávnění uživatele pro zásady konkrétní testovacího prostředí. Tímto způsobem oprávnění se dají aplikovat podle potřeb jednotlivých uživatelů. Můžete například udělit možnost změnit zásady nastavení virtuálního počítače, ale nikoli zásady náklady na konkrétního uživatele.
+Tento článek ukazuje, jak pomocí PowerShellu udělit uživatelům oprávnění ke konkrétním zásadám testovacího prostředí. Tímto způsobem lze oprávnění použít na základě potřeb jednotlivých uživatelů. Můžete třeba udělit konkrétnímu uživateli možnost změnit nastavení zásad virtuálního počítače, ale ne zásady pro náklady.
 
 ## <a name="policies-as-resources"></a>Zásady jako prostředky
-Jak je popsáno v [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md) článku, RBAC umožňuje přesnou správu přístupu prostředků Azure. RBAC můžete oddělit úlohy v rámci týmu DevOps a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh.
+Jak je popsáno v článku [Access Control založeném na rolích Azure](../role-based-access-control/role-assignments-portal.md) , umožňuje RBAC přístup k prostředkům pro Azure v jemně odstupňované správě. Pomocí RBAC můžete oddělit povinnosti v rámci týmu DevOps a udělit jenom přístup uživatelům, kteří potřebují k provádění svých úloh.
 
-Ve službě DevTest Labs, se zásada typ prostředku, který umožňuje akce RBAC **Microsoft.DevTestLab/labs/policySets/policies/** . Jednotlivé zásady testovacího prostředí je prostředek v prostředku typu zásad a je možné přiřadit jako obor pro roli RBAC.
+V DevTest Labs je zásada typem prostředku, který umožňuje akci RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor role RBAC.
 
-Například, pokud chcete udělit oprávnění pro čtení a zápis uživatele **povolené velikosti virtuálních počítačů** zásad, vytvořili byste vlastní roli, která funguje s **Microsoft.DevTestLab/labs/policySets/policies/** akce a pak přiřaďte tuto vlastní roli v rámci příslušné uživatele **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Pokud třeba chcete uživatelům udělit oprávnění ke čtení a zápisu pro zásady **povolených velikostí virtuálních počítačů** , vytvoříte vlastní roli, která bude fungovat s **Microsoft. DevTestLab/Labs/policySets/** actions/action a pak jim přiřadí příslušné uživatele. Tato vlastní role v oboru **Microsoft. DevTestLab/Labs/policySets/policies/AllowedVmSizesInLab**.
 
-Další informace o vlastních rolích v RBAC, najdete v článku [vlastní role řízení přístupu](../role-based-access-control/custom-roles.md).
+Další informace o vlastních rolích v RBAC najdete v tématu [řízení přístupu vlastních rolí](../role-based-access-control/custom-roles.md).
 
-## <a name="creating-a-lab-custom-role-using-powershell"></a>Vytvoření testovacího prostředí vlastní role pomocí prostředí PowerShell
-Abyste mohli začít, budete muset [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps). 
+## <a name="creating-a-lab-custom-role-using-powershell"></a>Vytvoření vlastní role testovacího prostředí pomocí prostředí PowerShell
+Aby bylo možné začít, budete muset [nainstalovat Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Po nastavení rutin prostředí Azure PowerShell můžete provádět následující úlohy:
+Po nastavení rutin Azure PowerShell můžete provádět následující úlohy:
 
-* Vypsání všech operací/akcí pro poskytovatele prostředků.
-* Seznam akcí v konkrétní roli:
+* Vypíše všechny operace nebo akce pro poskytovatele prostředků.
+* Vypsat akce v určité roli:
 * Vytvoření vlastní role
 
-Následující skript prostředí PowerShell ukazuje příklady, jak k provádění těchto úkolů:
+Následující skript prostředí PowerShell ukazuje příklady provedení těchto úloh:
 
-    ‘List all the operations/actions for a resource provider.
+    # List all the operations/actions for a resource provider.
     Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
-    ‘List actions in a particular role.
+    # List actions in a particular role.
     (Get-AzRoleDefinition "DevTest Labs User").Actions
 
-    ‘Create custom role.
+    # Create custom role.
     $policyRoleDef = (Get-AzRoleDefinition "DevTest Labs User")
     $policyRoleDef.Id = $null
     $policyRoleDef.Name = "Policy Contributor"
@@ -61,10 +61,10 @@ Následující skript prostředí PowerShell ukazuje příklady, jak k provádě
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Přiřazení oprávnění pro uživatele pro konkrétní zásady pomocí vlastní role
-Jakmile se vlastní role, které jste definovali, můžete je přiřadit uživatelům. Aby bylo možné přiřadit vlastní roli uživatele, je nutné nejprve získat **ObjectId** představující uživatele. Chcete-li to mohli udělat, použijte **Get-AzADUser** rutiny.
+## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Přiřazení oprávnění uživateli pro konkrétní zásady pomocí vlastních rolí
+Po definování vlastních rolí je můžete přiřadit uživatelům. Chcete-li uživateli přiřadit vlastní roli, musíte nejprve získat **identifikátor objectID** představující tohoto uživatele. K tomu použijte rutinu **Get-AzADUser** .
 
-V následujícím příkladu **ObjectId** z *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 je uživatel.
+V následujícím příkladu je **identifikátor objectID** uživatele *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
 
     PS C:\>Get-AzADUser -SearchString "SomeUser"
 
@@ -72,11 +72,11 @@ V následujícím příkladu **ObjectId** z *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Jakmile budete mít **ObjectId** pro uživatele a název vlastní roli, můžete přiřadit danou roli uživatele s **New-AzRoleAssignment** rutiny:
+Jakmile máte **identifikátor objectID** pro uživatele a vlastní název role, můžete tuto roli přiřadit uživateli pomocí rutiny **New-AzRoleAssignment** :
 
     PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
-V předchozím příkladu **AllowedVmSizesInLab** zásady použít. Můžete použít některý z následujících zásad:
+V předchozím příkladu se používá zásada **AllowedVmSizesInLab** . Můžete použít kteroukoli z následujících zásad:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -85,8 +85,8 @@ V předchozím příkladu **AllowedVmSizesInLab** zásady použít. Můžete pou
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Další postup
-Jakmile jste poskytli oprávnění uživatele pro zásady specifické testovací prostředí, zde je několik dalších kroků, které byste měli zvážit:
+## <a name="next-steps"></a>Další kroky
+Po udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí můžete zvážit několik dalších kroků, které je potřeba vzít v úvahu:
 
 * [Zabezpečení přístupu k testovacímu prostředí](devtest-lab-add-devtest-user.md)
 * [Nastavení zásad testovacího prostředí](devtest-lab-set-lab-policy.md)

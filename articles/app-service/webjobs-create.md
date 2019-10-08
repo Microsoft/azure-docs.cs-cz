@@ -12,12 +12,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 748f49a3f6f36617271a1497ccac6c63821a7693
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945812"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024656"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -35,10 +35,10 @@ Azure Functions poskytuje další způsob, jak spouštět programy a skripty. Po
 
 ## <a name="webjob-types"></a>Typy webové úlohy
 
-Následující tabulka popisuje rozdíly mezi průběžnými a *aktivovanými* WebJobs.
+Následující tabulka popisuje rozdíly mezi *průběžnými* a *aktivovanými* WebJobs.
 
 
-|Nepřetržitě  |Aktivované  |
+|Průběžný  |Aktivuje  |
 |---------|---------|
 | Spustí se hned po vytvoření webové úlohy. Aby bylo možné úlohu ukončit, program nebo skript obvykle provede svou práci v nekonečné smyčce. Pokud úloha skončí, můžete ji restartovat. | Spustí se jenom v případě, že se aktivuje ručně nebo podle plánu. |
 | Spustí se ve všech instancích, na kterých běží webová aplikace. Můžete volitelně omezit webovou úlohu na jednu instanci. |Spustí se v jediné instanci, kterou Azure vybere pro vyrovnávání zatížení.|
@@ -75,20 +75,20 @@ when making changes in one don't forget the other two.
 
     ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
+3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Nepřetržitě | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Typ** | Průběžný | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
    | **Škálování** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
 
 4. Klikněte na **OK**.
 
-   Nová webová úloha se zobrazí na stránce WebJobs.
+   Nová webová úloha se zobrazí na stránce **WebJobs** .
 
    ![Seznam WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
@@ -113,26 +113,26 @@ when making changes in one don't forget the other two.
 
     ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
+3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Aktivované | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Zpráv** | Ručně | |
+   | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
+   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Triggery** | Manual | |
 
 4. Klikněte na **OK**.
 
-   Nová webová úloha se zobrazí na stránce WebJobs.
+   Nová webová úloha se zobrazí na stránce **WebJobs** .
 
    ![Seznam WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
 7. Webovou úlohu spustíte tak, že kliknete pravým tlačítkem na jeho název v seznamu a kliknete na **Spustit**.
    
-    ![Zprovoznění webové úlohy](./media/web-sites-create-web-jobs/runondemand.png)
+    ![Spustit úlohu WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateScheduledCRON"></a>Vytvoření plánované webové úlohy
 
@@ -151,27 +151,27 @@ when making changes in one don't forget the other two.
 
    ![Stránka WebJob](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
+3. Použijte možnost **Přidat nastavení úlohy WebJob** , jak je uvedeno v tabulce.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Aktivované | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Zpráv** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
-   | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
+   | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
+   | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Triggery** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
+   | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
 
 4. Klikněte na **OK**.
 
-   Nová webová úloha se zobrazí na stránce WebJobs.
+   Nová webová úloha se zobrazí na stránce **WebJobs** .
 
    ![Seznam WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
 ## <a name="ncrontab-expressions"></a>Výrazy NCRONTAB
 
-Na portálu můžete zadat [výraz NCRONRAB](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) nebo zahrnout `settings.job` soubor do kořenové složky souboru WebJob *. zip* , jak je uvedeno v následujícím příkladu:
+Na portálu můžete zadat [výraz NCRONRAB](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) nebo zahrnout soubor `settings.job` do kořenového adresáře souboru WebJob *. zip* , jak je uvedeno v následujícím příkladu:
 
 ```json
 {

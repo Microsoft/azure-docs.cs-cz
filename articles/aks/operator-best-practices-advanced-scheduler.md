@@ -1,50 +1,50 @@
 ---
-title: Osvědčené postupy – operátor - pokročilé funkce plánovače ve službě Azure Kubernetes služby (AKS)
-description: Přečtěte si operátor clusteru osvědčené postupy při používání pokročilých Plánovač funkce, jako je poskvrnění a tolerations, uzel selektory a vztahů, nebo vztahů mezi pod a proti spřažení ve službě Azure Kubernetes Service (AKS)
+title: Doporučené postupy pro obsluhu – pokročilé funkce plánovače ve službě Azure Kubernetes Services (AKS)
+description: Seznamte se s osvědčenými postupy pro použití pokročilých funkcí Scheduleru, jako jsou například chuti a tolerovánosti, selektory uzlů a spřažení nebo spřažení a spřažení ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614880"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026102"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač pokročilé funkce ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
 
-Jak budete spravovat clustery ve službě Azure Kubernetes Service (AKS), často potřebujete oddělit týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které umožňují řídit podů, které je možné naplánovat na určitých uzlech, nebo jak více podů, které aplikace mají správný distribuovat napříč clusterem. 
+Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které vám umožní řídit, které lusky se můžou naplánovaly na určitých uzlech, nebo jak můžou být aplikace pro víc pod clusterem správně distribuované napříč clusterem. 
 
-Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce plánování pro operátory clusteru Kubernetes. V tomto článku získáte informace o těchto tématech:
+Tento článek o osvědčených postupech se zaměřuje na pokročilé funkce plánování Kubernetes pro operátory clusterů. V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Použití poskvrnění a tolerations omezit jaké podů naplánovaných na uzlech
-> * Dát přednost podů pro spuštění na některé uzly s selektory uzlu nebo spřažení uzlu
-> * Této doby změny nepublikujete dělené tunelové propojení nebo společně podů skupiny vztahů mezi pod nebo proti spřažení
+> * Použití chuti a tolerování k omezení, které lusky je možné plánovat na uzlech
+> * Dává přednost rozchodu do lusků na určitých uzlech se selektory uzlů nebo spřažením uzlů.
+> * Rozdělení nebo seskupení v kombinaci s použitím spřažení nebo proti spřažení
 
-## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Zadejte vyhrazené uzly pomocí poskvrnění a tolerations
+## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Poskytování vyhrazených uzlů pomocí chuti a tolerovánosti
 
-**Osvědčené postupy pro moduly** – omezení přístupu pro aplikace náročné na prostředek, jako jsou řadiče příchozího přenosu dat, ke konkrétním uzlům. Zachovat uzel prostředky dostupné pro úlohy, které požadují a Nepovolovat plánování dalších úloh v uzlech.
+**Doprovodné materiály k osvědčeným postupům** – omezení přístupu k aplikacím náročným na prostředky, jako jsou například řadiče příchozího přenosu dat, na konkrétní uzly. Udržujte prostředky uzlů k dispozici pro úlohy, které je vyžadují, a nepovolujte plánování dalších úloh v uzlech.
 
-Při vytváření clusteru AKS je možné nasadit uzly s podporou GPU nebo velký počet procesory. Tyto uzly jsou často používá pro úlohy zpracování velkých dat, jako jsou machine learning (ML) nebo umělé inteligence (AI). Tento typ hardwaru je obvykle prostředek nákladné uzel k nasazení, omezte zátěží, které je možné naplánovat na těchto uzlech. Místo toho můžete chtít vyhradit některé uzly v klastru, aby spouštění služeb příchozího přenosu dat a zabránilo jiné úlohy.
+Při vytváření clusteru AKS můžete nasadit uzly s podporou GPU nebo velkým množstvím výkonných procesorů. Tyto uzly se často používají pro úlohy velkých objemů dat, jako je Machine Learning (ML) nebo umělá Intelligence (AI). Vzhledem k tomu, že tento typ hardwaru je obvykle náročný prostředek uzlu k nasazení, omezte zatížení, které lze na těchto uzlech naplánovat. Místo toho můžete chtít vyhradit některé uzly v clusteru, aby běžely příchozí služby, a zabránit dalším úlohám.
 
-Tato podpora pro různé uzly se poskytuje s použitím více fondy uzlů. AKS cluster obsahuje jeden nebo více fondy uzlů. Podpora pro více fondy uzlů ve službě AKS je aktuálně ve verzi preview.
+Tato podpora pro různé uzly je poskytována pomocí více fondů uzlů. Cluster AKS poskytuje jeden nebo více fondů uzlů. Podpora pro více fondů uzlů v AKS je aktuálně ve verzi Preview.
 
-Plánovač Kubernetes můžete použít poskvrnění a tolerations omezit, co můžete spouštět úlohy na uzlech.
+Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je možné spouštět na uzlech.
 
-* A **taint** se použije na uzel, který označuje pouze konkrétní podů naplánovaných na ně.
-* A **toleration** se následně použije na pod, které jim umožní *tolerovat* barvu uzlu.
+* Pro uzel, který indikuje, že je možné naplánovat pouze určité lusky, se použije značka **chuti** .
+* **Tolerování** se pak použije na uzel pod, který umožňuje *tolerovat* chuti v uzlu.
 
-Když nasadíte podu na AKS cluster, Kubernetes pouze naplánuje podů na uzlech, kde je v souladu toleration s barvu. Jako příklad předpokládejme, že máte fond uzlů v clusteru AKS pro uzly s GPU podporovat. Definovat název, jako například *gpu*, pak hodnota pro plánování. Pokud nastavíte tuto hodnotu na *NoSchedule*, Plánovač Kubernetes nelze naplánovat podů na uzlu, pokud chcete pod příslušnou toleration nedefinuje.
+Když nasadíte uzel pod do clusteru AKS, Kubernetes pouze plánuje na uzly, kde je dovoleno sjednocení s příchodem. Předpokládejme například, že máte ve svém clusteru AKS fond uzlů pro uzly s podporou GPU. Definujte název, jako je například *GPU*, a pak hodnotu pro plánování. Pokud tuto hodnotu nastavíte na *plán*, Plánovač Kubernetes nemůže naplánovat lusky na uzlu, pokud uzel pod nedefinuje příslušnou tolerovánost.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Pomocí barvu na uzlech pak definovat toleration ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `sku: gpu` a `effect: NoSchedule` tolerovat barvu použitý pro uzel v předchozím kroku:
+Po použití chuti na uzlech můžete definovat tolerování ve specifikaci pod, která umožňuje plánování na uzlech. Následující příklad definuje `sku: gpu` a `effect: NoSchedule` k tolerování chuti použité na uzel v předchozím kroku:
 
 ```yaml
 kind: Pod
@@ -69,44 +69,44 @@ spec:
     effect: "NoSchedule"
 ```
 
-Při nasazení tohoto podu, jako je třeba použití `kubectl apply -f gpu-toleration.yaml`, Kubernetes můžete úspěšně naplánovat podu na uzly s barvu použít. Tuto logickou izolaci umožňuje řídit přístup k prostředkům v rámci clusteru.
+Při nasazení tohoto uzlu, jako je například použití `kubectl apply -f gpu-toleration.yaml`, Kubernetes může v uzlech s aplikovaným přím úspěšně naplánovat uzel pod. Tato logická izolace umožňuje řídit přístup k prostředkům v rámci clusteru.
 
-Při použití poskvrnění pracujete s vaší aplikací vývojáři a vlastníci a povolení jejich definování požadované tolerations v jejich nasazeních.
+Když použijete chuti, pracujte s vývojáři vaší aplikace a vlastníky, abyste jim umožnili definovat požadovaná tolerovánost v jejich nasazeních.
 
-Další informace o poskvrnění a tolerations najdete v tématu [použití poskvrnění a tolerations][k8s-taints-tolerations].
+Další informace o chuti a jejich tolerovánosti najdete v tématu [použití chuti a tolerovánosti][k8s-taints-tolerations].
 
-Další informace o tom, jak používat více fondy uzlů ve službě AKS najdete v tématu [vytvořit a spravovat více fondy uzlů clusteru ve službě AKS][use-multiple-node-pools].
+Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvoření a Správa fondů více uzlů pro cluster v AKS][use-multiple-node-pools].
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Chování poskvrnění a tolerations ve službě AKS
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Chování chuti a jejich tolerovánosti v AKS
 
-Při upgradu fond uzlů ve službě AKS poskvrnění a tolerations podle vzoru sady jako už použitý pro nové uzly:
+Když upgradujete fond uzlů v AKS, příchuti a tolerovánosti se řídí vzorem, který se použije pro nové uzly:
 
-- **Výchozí clusterů bez podpory škálování virtuálního počítače**
-  - Předpokládejme, že máte dvojuzlový cluster - *node1* a *node2*. Při upgradu, do dalšího uzlu (*Uzel3*) se vytvoří.
-  - Poskvrnění z *node1* aplikují i na *Uzel3*, pak *node1* se pak odstraní.
-  - Je vytvořen nový uzel jiného (s názvem *node1*, od předchozího *node1* byl odstraněn) a *node2* poskvrnění jsou použita pro nový *node1*. Potom *node2* se odstraní.
-  - V podstatě *node1* stane *Uzel3*, a *node2* stane *node1*.
+- **Výchozí clustery bez podpory škálování virtuálních počítačů**
+  - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Při upgradu se vytvoří další uzel (*Uzel3*).
+  - Od *Uzel1* se aplikují příchuti na *Uzel3*, *Uzel1* se pak odstraní.
+  - Vytvoří se další nový uzel (s názvem *Uzel1*, protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1*se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
+  - V podstatě *Uzel1* se bude *Uzel3*a *Uzel2* se bude *Uzel1*.
 
-- **Clustery, které používají virtuální počítače škálovacích sad** (aktuálně ve verzi preview ve službě AKS)
-  - Znovu, Předpokládejme, že máte dvojuzlový cluster - *node1* a *node2*. Je-li provést upgrade fond uzlů.
-  - Jsou vytvořeny dva další uzly, *Uzel3* a *Uzel4*, a poskvrnění jsou předány v uvedeném pořadí.
-  - Původní *node1* a *node2* se odstraní.
+- **Clustery, které používají Virtual Machine Scale Sets**
+  - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
+  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
+  - Původní *Uzel1* a *Uzel2* se odstraní.
 
-Když je potřeba škálovat fond uzlů ve službě AKS, poskvrnění a tolerations nemají od návrhu.
+Při horizontálním navýšení kapacity fondu uzlů v AKS se neprovádí návrh.
 
-## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Plánování s použitím selektory uzlu a vztahů pod ovládací prvek
+## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Řízení pod plánováním pomocí selektorů uzlů a spřažení
 
-**Osvědčené postupy pro moduly** – řízení plánování podů na uzlech, pomocí uzlu selektory, spřažení uzlu, nebo mezi pod spřažení. Tato nastavení umožňují Plánovač Kubernetes logicky izolaci úloh, jako například hardware v uzlu.
+**Doprovodné materiály k osvědčeným postupům** – řízení plánování lusků na uzlech pomocí selektorů uzlů, spřažení uzlů nebo spřažení mezi uzly. Tato nastavení umožňují, aby Plánovač Kubernetes logicky izoluje úlohy, jako je například hardware v uzlu.
 
-Poskvrnění a tolerations se používají k logicky izolaci prostředků pomocí pevné oříznutím – Pokud chcete pod nebude tolerovat barvu uzlu, není naplánované na uzlu. Alternativním přístupem je použití uzlu selektorů. Uzly, označíte jako místně připojené úložiště SSD nebo velké množství paměti, a pak definovat ve specifikaci pod uzel selektor. Kubernetes potom naplánuje tyto pody na odpovídající uzlu. Na rozdíl od tolerations můžete naplánovat podů bez odpovídající selektor uzlu na uzly s popiskem. Toto chování umožňuje nevyužité prostředky na uzlech využívat, ale dává priority podů, které definují odpovídající selektor uzlu.
+K logické izolaci prostředků s pevným vyjmutím se používají chuti a omezení, pokud je v uzlu nepovoluje, není naplánovaná na uzlu. Alternativním přístupem je použití selektorů uzlů. Označíte uzly, například k označení místně připojeného úložiště SSD nebo velkého množství paměti a pak definování ve specifikaci pod modulem pro výběr uzlu. Kubernetes pak tyto lusky naplánuje na vyhovujícím uzlu. Na rozdíl od tolerování je možné naplánovat lusky bez odpovídajícího voliče uzlů v uzlech s popisky. Toto chování umožňuje nevyužité prostředky na uzlech využívat, ale má prioritu pro lusky, které definují odpovídající selektor uzlů.
 
-Pojďme se podívat na příklad z uzlů s vysoké množství paměti. Tyto uzly můžete dát přednost podů, které požadují vysoké množství paměti. Pokud chcete mít jistotu, že prostředky nejsou umístěni nečinné, umožňují taky další pody ke spuštění.
+Pojďme se podívat na příklad uzlů s velkým množstvím paměti. Tyto uzly můžou mít přednost pro lusky, které vyžadují vysoké množství paměti. Aby se zajistilo, že se prostředky nečinný, umožňují také spuštění ostatních lusků.
 
 ```console
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-Specifikace pod pak přidá `nodeSelector` k definování selektor uzel, který odpovídá popisku nastavenou na uzlu:
+Specifikace pod pak přidá vlastnost `nodeSelector` k definování voliče uzlu, který odpovídá sadě popisku na uzlu:
 
 ```yaml
 kind: Pod
@@ -128,15 +128,15 @@ spec:
       hardware: highmem
 ```
 
-Při použití těchto možností Plánovač pracujete s vaší aplikací vývojáři a vlastníci a povolení jejich správně definovat jejich pod specifikace.
+Když použijete tyto možnosti plánovače, spolupracujte s vývojáři vaší aplikace a vlastníky a umožněte jejich správnému definování specifikace pod.
 
-Další informace o používání selektorů. uzel, naleznete v tématu [přiřazení Podů uzly][k8s-node-selector].
+Další informace o používání selektorů uzlů najdete v tématu [přiřazení lusků k uzlům][k8s-node-selector].
 
-### <a name="node-affinity"></a>Uzel vztahů
+### <a name="node-affinity"></a>Spřažení uzlů
 
-Výběr uzlu je základní způsob, jak přiřadit podů daný uzel. Větší flexibilitu, je k dispozici pomocí *spřažení uzlu*. Přidružení uzlu můžete definovat, co se stane, když chcete pod nejde spárovat s uzlem. Je možné *vyžadují* , Plánovač Kubernetes odpovídá podu s hostitelem, s popiskem. Nebo můžete *raději* shodu a povolit pod naplánovaná na jiného hostitele, pokud není shoda je k dispozici.
+Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale pokud není k dispozici, nechejte možnost naplánovaná na jiném hostiteli.
 
-Následující příklad nastaví spřažení uzlu *requiredDuringSchedulingIgnoredDuringExecution*. Toto přidružení vyžaduje Kubernetes plánu pro uzel s odpovídající popisku. Pokud je k dispozici žádný uzel, pod musí čekat plánování pokračujte. Povolit pod naplánovaná na jiný uzel, můžete místo toho nastavte hodnotu na *preferredDuringScheduledIgnoreDuringExecution*:
+Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tento spřažení vyžaduje, aby plán Kubernetes používal uzel se shodným popiskem. Pokud není k dispozici žádný uzel, musí čekat na pokračování plánování. Chcete-li nechat naplánovaná hodnota v poli pod jiným uzlem, můžete místo toho nastavit hodnotu na *preferredDuringScheduledIgnoreDuringExecution*:
 
 ```yaml
 kind: Pod
@@ -164,28 +164,28 @@ spec:
             values: highmem
 ```
 
-*IgnoredDuringExecution* součástí nastavení znamená, že pokud uzel označuje změnu, by neměla pod vyřazovány z uzlu. Plánovač Kubernetes pouze pomocí popisků aktualizovaný uzel pro nových podů naplánované, ne podů naplánována na uzlech.
+*IgnoredDuringExecution* část nastavení znamená, že pokud se popisky uzlů změní, nesmí být v uzlu vyřazena. Plánovač Kubernetes používá pouze aktualizované popisky uzlů pro naplánování nových lusků, nikoli již v uzlech.
 
-Další informace najdete v tématu [vztahů a proti spřažení][k8s-affinity].
+Další informace najdete v tématu [spřažení a anti-spřažení][k8s-affinity].
 
-### <a name="inter-pod-affinity-and-anti-affinity"></a>Spřažení mezi pod a proti spřažení
+### <a name="inter-pod-affinity-and-anti-affinity"></a>Spřažení a proti spřažení
 
-Poslední jedním z přístupů pro Kubernetes scheduler k logické izolaci úloh používá spřažení mezi pod nebo proti spřažení. Nastavení definují této podů *by neměl* naplánovat na uzel, který má existující odpovídající pod nebo že *by měl* naplánovat. Ve výchozím nastavení Kubernetes plánovače pokusí naplánovat několik podů se v sadě uzlech replik. Můžete definovat konkrétnější pravidla kolem tohoto chování.
+Jeden z konečných přístupů pro Kubernetes Scheduler pro logickou izolaci úloh používá spřažení nebo proti spřažení. Nastavení definuje, že lusky by *neměly* být naplánovány na uzlu, který má existující odpovídající příkaz pod nebo *by měl* být naplánován. Ve výchozím nastavení se Plánovač Kubernetes pokusí naplánovat více lusků v sadě replik napříč uzly. Kolem tohoto chování můžete definovat více specifických pravidel.
 
-Dobrým příkladem je webová aplikace, která se také používá pro Redis Cache Azure. Pod proti spřažení pravidla můžete požadovat, že Kubernetes Plánovač distribuuje replik napříč uzly. Abyste měli jistotu, že každá součást webové aplikace je naplánováno na stejném hostiteli jako odpovídající mezipaměti můžete poté může pomocí pravidel přidružení. Distribuce podů napříč uzly bude vypadat jako v následujícím příkladu:
+Dobrým příkladem je webová aplikace, která používá také službu Azure cache pro Redis. Pravidla ochrany proti spřažení můžete použít k vyžádání, že Plánovač Kubernetes distribuuje repliky napříč uzly. Pak můžete použít pravidla spřažení a zajistit, aby byla každá součást webové aplikace naplánována na stejném hostiteli jako příslušná mezipaměť. Rozdělení lusků mezi uzly vypadá jako v následujícím příkladu:
 
 | **Uzel 1** | **Uzel 2** | **Uzel 3** |
 |------------|------------|------------|
-| webapp-1   | webapp-2   | webapp-3   |
-| cache-1    | cache-2    | cache-3    |
+| WebApp-1   | WebApp – 2   | WebApp-3   |
+| mezipaměť – 1    | mezipaměť – 2    | mezipaměť – 3    |
 
-V tomto příkladu je složitější nasazení než používání selektorů. uzel nebo spřažení uzlu. Nasazení umožňuje ovládat způsob Kubernetes naplánuje podů na uzlech a logicky můžete izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure Redis příkladu, naleznete v tématu [společné umístění podů na stejném uzlu][k8s-pod-affinity].
+Tento příklad je složitější nasazení než použití selektorů uzlů nebo spřažení uzlů. Nasazení vám umožní řídit, jak se Kubernetes plány v luskech uzlů a můžou logicky izolovat prostředky. Úplný příklad této webové aplikace s mezipamětí Azure cache pro Redis najdete v tématu [společné umístění lusků na stejném uzlu][k8s-pod-affinity].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřuje na pokročilé funkce plánovače Kubernetes. Další informace o operacích clusteru ve službě AKS najdete v následující osvědčené postupy:
+Tento článek se zaměřuje na pokročilé funkce plánovače Kubernetes. Další informace o operacích clusteru v AKS najdete v následujících osvědčených postupech:
 
-* [Izolace více tenantů a clusteru][aks-best-practices-scheduler]
+* [Víceklientská architektura a izolace clusteru][aks-best-practices-scheduler]
 * [Základní funkce plánovače Kubernetes][aks-best-practices-scheduler]
 * [Ověřování a autorizace][aks-best-practices-identity]
 

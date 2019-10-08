@@ -1,49 +1,49 @@
 ---
-title: Konfigurace a získat přístup k protokolům server for PostgreSQL – jeden Server s použitím rozhraní příkazového řádku Azure
-description: Tento článek popisuje, jak nakonfigurovat a přístup k protokolům serveru ve službě Azure Database for PostgreSQL – jeden Server pomocí příkazového řádku Azure CLI.
+title: Konfigurace a přístup k protokolům serveru pro PostgreSQL-Single server pomocí Azure CLI
+description: Tento článek popisuje, jak nakonfigurovat a přistupovat k protokolům serveru v Azure Database for PostgreSQL-Single server pomocí příkazového řádku Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067215"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023624"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
-Můžete stáhnout protokoly chyb serveru PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokolům transakce však není podporován. 
+# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí Azure CLI
+Protokoly chyb serveru PostgreSQL můžete stáhnout pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokolům transakcí ale není podporovaný. 
 
-## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- [Azure Database for PostgreSQL server](quickstart-create-server-database-azure-cli.md)
-- [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nástroj příkazového řádku nebo Azure Cloud Shell v prohlížeči
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete projít tento průvodce, budete potřebovat:
+- [Server Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
+- Nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
 
-## <a name="configure-logging"></a>Konfigurace protokolování
-Můžete nakonfigurovat server pro přístup k dotazu protokoly a protokoly chyb. Protokoly chyb může mít informace o automatické takový, připojení a kontrolního bodu.
-1. Zapnutí protokolování.
-2. Pokud chcete povolit protokolování dotazů, aktualizujte **protokolu\_příkaz** a **protokolu\_min\_doba trvání\_příkaz**.
-3. Aktualizujte dobu uchování.
+## <a name="configure-logging"></a>Konfigurovat protokolování
+Server můžete nakonfigurovat tak, aby měl přístup k protokolům dotazů a protokolům chyb. Protokoly chyb můžou mít informace o automatickém vaku, připojení a kontrolním bodu.
+1. Zapněte protokolování.
+2. Pokud chcete povolit protokolování dotazů, aktualizujte **protokol @ no__t-1statement** a **log @ no__t-3min @ no__t-4duration @ no__t-5statement**.
+3. Aktualizovat dobu uchování.
 
 Další informace najdete v tématu [přizpůsobení parametrů konfigurace serveru](howto-configure-server-parameters-using-cli.md).
 
-## <a name="list-logs"></a>Seznam protokolů
-Chcete-li seznam souborů protokolu k dispozici pro váš server, spusťte [az postgres server-logs list](/cli/azure/postgres/server-logs) příkazu.
+## <a name="list-logs"></a>Výpis protokolů
+Chcete-li zobrazit seznam dostupných souborů protokolu pro váš server, spusťte příkaz [AZ Postgres Server-logs list](/cli/azure/postgres/server-logs) .
 
-Můžete zobrazit seznam souborů protokolu pro server **mydemoserver.postgres.database.azure.com** ve skupině prostředků **myresourcegroup**. Potom směrovat seznam souborů protokolů do textového souboru s názvem **protokolu\_soubory\_seznam.txt**.
+Soubory protokolu pro server **mydemoserver.Postgres.Database.Azure.com** můžete zobrazit v části Skupina prostředků **myresourcegroup**. Pak nasměrujte seznam souborů protokolu do textového souboru s názvem **log @ no__t-1files\_list.txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
-## <a name="download-logs-locally-from-the-server"></a>Místní stažení protokolů ze serveru
-S [az postgres server-logs Stáhnout](/cli/azure/postgres/server-logs) příkazu si můžete stáhnout jednotlivých protokolových souborů pro váš server. 
+## <a name="download-logs-locally-from-the-server"></a>Stahovat protokoly místně ze serveru
+Pomocí příkazu [AZ Postgres Server-logs Download](/cli/azure/postgres/server-logs) si můžete stáhnout jednotlivé soubory protokolu pro váš server. 
 
-Použijte následující příklad ke stažení souboru protokolu specifické pro server **mydemoserver.postgres.database.azure.com** ve skupině prostředků **myresourcegroup** do vašeho místního prostředí.
+Použijte následující příklad ke stažení konkrétního souboru protokolu pro server **mydemoserver.Postgres.Database.Azure.com** ve skupině prostředků **myresourcegroup** do svého místního prostředí.
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="next-steps"></a>Další postup
-- Další informace o protokolech serveru najdete v tématu [protokolů serveru ve službě Azure Database for PostgreSQL](concepts-server-logs.md).
+## <a name="next-steps"></a>Další kroky
+- Další informace o protokolech serveru najdete [v tématu protokoly serveru v Azure Database for PostgreSQL](concepts-server-logs.md).
 - Další informace o parametrech serveru najdete v tématu [přizpůsobení parametrů konfigurace serveru pomocí Azure CLI](howto-configure-server-parameters-using-cli.md).

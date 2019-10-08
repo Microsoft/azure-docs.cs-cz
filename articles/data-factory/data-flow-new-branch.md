@@ -1,32 +1,32 @@
 ---
-title: Azure Data Factory mapování dat Flow novou větev transformace
-description: Azure Data Factory mapování dat Flow novou větev transformace
+title: Azure Data Factory transformace toku dat při mapování nové větve
+description: Azure Data Factory transformace toku dat při mapování nové větve
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348930"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029290"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory mapování dat Flow novou větev transformace
+# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory transformace toku dat při mapování nové větve
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Nepodmíněný skok možnosti](media/data-flow/menu.png "nabídky")
 
-Větvení trvat aktuální datový proud ve svém toku dat a replikaci do jiného datového proudu. Nastaví použít novou větev provádět více operací a transformace na stejný datový proud.
+(media/data-flow/menu.png "Nabídka") ![Možnosti větve]
 
-Příklad: Váš tok dat má zdroj transformace s vybranou sadou sloupců a převody typů dat. Pak umístěte sloupec odvozené hned za tohoto zdroje. Ve sloupci odvozené jsme vytvořit nové pole, které kombinuje křestní jméno a příjmení, aby nové pole "jméno".
+Větvení převezme aktuální datový proud v toku dat a provede replikaci do jiného datového proudu. Pomocí nové větve můžete provádět více sad operací a transformací proti stejnému datovému proudu.
 
-Můžete zpracovávat tohoto nového datového proudu sadu transformací a jímku na jeden řádek a můžete vytvořit kopii tohoto datového proudu, kde můžete transformovat ke stejným datům s jinou sadu transformací pro novou větev. Pomocí transformace této zkopírovaná data v samostatné větvi, můžete následně jímky tato data do samostatné umístění.
+Příklad: datový tok obsahuje zdrojovou transformaci s vybranou sadou sloupců a převody datových typů. Poté umístěte odvozený sloupec hned za tento zdroj. V odvozeném sloupci vytvoříte nové pole, které kombinuje jméno a příjmení, aby bylo vytvořeno nové pole "celé jméno".
+
+Můžete s tímto novým datovým proudem zacházet ze sady transformací a jímky na jednom řádku a pomocí nové větve vytvořit kopii tohoto datového proudu, kde můžete stejná data transformovat pomocí jiné sady transformací. Po transformaci, která zkopírovala data v samostatné větvi, můžete tato data následně zajímky do samostatného umístění.
 
 > [!NOTE]
-> "Nové větve" se zobrazí pouze jako akci na + nabídky transformace při následné transformace podle aktuální umístění, kde se pokoušíte větve. To znamená nezobrazí možnost "Nová větev" na konci tady, dokud nepřidáte další transformaci po Select
+> "Nová větev" bude v nabídce + Transform zobrazovat jenom v případě, že se po aktuálním umístění, kde se pokoušíte o větev, vyskytne následná transformace. To znamená, že se na konci tady nezobrazuje možnost Nová větev, dokud nepřidáte další transformaci po výběru.
 
-![Větev](media/data-flow/branch2.png "větev 2")
+Větev ![větve](media/data-flow/branch2.png "2")

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973371"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029015"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -434,6 +434,9 @@ Pro změnu způsobu stažení a instalace spravovaných závislostí jsou k disp
 | MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 dnů)     | Každý pracovní proces PS inicializuje kontrolu pro upgrady modulů v galerii PS v pracovním procesu Start a všech MDMaxBackgroundUpgradePeriod po ní. Pokud jsou v galerii PS dostupné nové verze modulů, nainstalují se do systému souborů dostupného pro pracovníky PS. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale zároveň zvýšila využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít ke zpoždění doručení nových verzí modulu do aplikace.      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" (1 hodina)       | Po instalaci nových verzí modulu do systému souborů musí být každý pracovní proces PS restartován. Restartování procesů PS může mít vliv na dostupnost vaší aplikace, protože může přerušit aktuální volání funkcí. Dokud nebudou všechny procesy PS restartovány, mohou vyvolání funkcí použít buď starou, nebo novou verzi modulu. Restartování všech pracovníků PS se dokončí v rámci MDNewSnapshotCheckPeriod. Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se taky prodloužit doba, po kterou vyvolání funkce využije buď starou, nebo nové verze modulu, které nejsou deterministické. |
 | MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 den)     | Aby nedocházelo k nadměrnému upgradu modulů v častých restartech pracovních procesů, neproběhne kontrola upgradu modulů, pokud některý z pracovních procesů, které už během poslední MDMinBackgroundUpgradePeriod inicioval. |
+
+> [!NOTE]
+> Spravované závislosti spoléhají na přístup k www.powershellgallery.com ke stažení modulů. Je nutné zajistit, aby modul runtime funkce měl přístup k této adrese URL přidáním požadovaných pravidel brány firewall.
 
 Využití vlastních modulů je trochu jiné, než jak byste to prostupovali normálně.
 

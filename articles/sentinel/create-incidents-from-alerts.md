@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241267"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029762"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft
 
@@ -35,7 +35,7 @@ Aby bylo možné vytvářet incidenty z výstrah služby zabezpečení, je nutn�
 
 Pomocí předdefinovaných pravidel dostupných v Azure Sentinel můžete zvolit, která připojená řešení zabezpečení Microsoftu by měla v reálném čase vytvářet incidenty Sentinel Azure automaticky. Můžete také upravit pravidla a definovat konkrétnější možnosti pro filtrování, které výstrahy vygenerované řešením zabezpečení Microsoftu by měly vytvářet incidenty v Azure Sentinel. Můžete se třeba rozhodnout vytvořit incidenty Sentinel Azure automaticky jenom z Azure Security Center výstrahy s vysokou závažností.
 
-1. V Azure Portal v části Azure Sentinel vyberte **Analytics**.
+1. V Azure Portal v části Azure Sentinel vyberte **Analytics**.
 
 1. Vyberte kartu **šablony pravidel** a zobrazte všechna předdefinovaná analytická pravidla.
 

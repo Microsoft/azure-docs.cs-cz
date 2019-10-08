@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972801"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029860"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování výkonu Azure Database for MySQL s využitím úložiště dotazů
 
-**Platí pro:**  Azure Database for MySQL 5,7
+**Platí pro:** Azure Database for MySQL 5,7
 
 > [!IMPORTANT]
 > Úložiště dotazů je ve verzi Preview.
@@ -37,14 +37,14 @@ Funkce úložiště dotazů v Azure Database for MySQL poskytuje způsob, jak sl
 ### <a name="enable-query-store-using-the-azure-portal"></a>Povolit úložiště dotazů pomocí Azure Portal
 
 1. Přihlaste se k Azure Portal a vyberte Azure Database for MySQL server.
-1. Vyberte **parametry serveru** in **Nastavení** section v nabídce.
+1. V části **Nastavení** v nabídce vyberte **parametry serveru** .
 1. Vyhledejte parametr query_store_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+1. Nastavte hodnotu vše a **uložte**.
 
 Postup při povolování statistik čekání v úložišti dotazů:
 
 1. Vyhledejte parametr query_store_wait_sampling_capture_mode.
-1. Nastavte hodnotu vše a **uložte**.
+1. Nastavte hodnotu vše a **uložte**.
 
 Umožňuje trvat až 20 minut, než se první dávka dat uloží v databázi MySQL.
 
@@ -78,8 +78,8 @@ Tady je několik příkladů, jak můžete získat další přehledy o svých ú
 | **Příležitostný** | **Akce** |
 |---|---|
 |Čekání na vysoký zámek | Ověřte texty dotazů pro ovlivněné dotazy a Identifikujte cílové entity. Hledání v úložišti dotazů pro další dotazy upravující stejnou entitu, která se spouští často a/nebo mají vysokou dobu trvání. Po identifikaci těchto dotazů zvažte změnu aplikační logiky pro zlepšení souběžnosti nebo použijte méně omezující úroveň izolace. |
-|Vysoká vyrovnávací paměť v/v – čeká | Vyhledá dotazy s vysokým počtem fyzických čtení v úložišti dotazů. Pokud se shodují s dotazy s vysokým počtem vstupně-výstupních operací, zvažte, jestli v základní entitě zadáte index a nebudete moct hledat místo kontrol. Tím by došlo k minimalizaci režie v/v dotazů. Podívejte se na **doporučení k výkonu**@no__t – 1for svého serveru na portálu, abyste viděli, jestli existují doporučení indexu pro tento server, který by tyto dotazy optimalizoval. |
-|Vysoká paměťová čekání | Vyhledá v úložišti dotazů nejlepší dotazy náročné na paměť. Tyto dotazy jsou pravděpodobně zpožděny o další průběh ovlivněných dotazů. Podívejte se na **doporučení týkající se výkonu**@no__t 1for svého serveru na portálu a zjistěte, jestli existují doporučení indexu, která by tyto dotazy optimalizoval.|
+|Vysoká vyrovnávací paměť v/v – čeká | Vyhledá dotazy s vysokým počtem fyzických čtení v úložišti dotazů. Pokud se shodují s dotazy s vysokým počtem vstupně-výstupních operací, zvažte, jestli v základní entitě zadáte index a nebudete moct hledat místo kontrol. Tím by došlo k minimalizaci režie v/v dotazů. Podívejte se na **doporučení týkající se výkonu** vašeho serveru na portálu a zjistěte, jestli existují doporučení indexu pro tento server, který by tyto dotazy optimalizoval. |
+|Vysoká paměťová čekání | Vyhledá v úložišti dotazů nejlepší dotazy náročné na paměť. Tyto dotazy jsou pravděpodobně zpožděny o další průběh ovlivněných dotazů. Podívejte se na **doporučení týkající se výkonu** vašeho serveru na portálu a zjistěte, jestli existují doporučení indexu, která by tyto dotazy optimalizoval.|
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
@@ -108,7 +108,7 @@ Použijte [Azure Portal](howto-server-parameters.md)@no__t 1OR [Azure CLI](how
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 
-Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze ve službě **mysql** database.
+Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 

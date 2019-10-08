@@ -1,70 +1,21 @@
 ---
-title: Dynamics 365 pro kartu technické informace o zapojení zákazníků | Azure Marketplace
-description: Jak určit technické informace pro Dynamics 365 Customer Engagement aplikace na webu AppSource Marketplace.
+title: Karta technické informace o Dynamics 365 pro zákaznickou zapojení | Azure Marketplace
+description: Zastaralý článek CPP, propojený s počítačem článek; byl "Postup určení technických informací o aplikaci Dynamics 365 pro zákaznickou zapojení na webu AppSource Marketplace".
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: df7f3be5a92a183176da7851ce1943793b8b57d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 364bc5148ee821882b1de803b03ccc2df5c234a4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942351"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033857"
 ---
-# <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 pro kartu technické informace o zapojení zákazníků
+# <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Karta technické informace pro Dynamics 365 pro zákaznickou zapojení
 
-**Technické informace o** karty **nová nabídka** stránky můžete zadat podrobné informace o vaší Dynamics 365 Customer Engagement aplikace včetně CRM balíček a marketing logo prostředků.  Na této kartě je rozdělen do čtyř oddílů: **Informace o aplikaci**, **CRM balíček**, **Dostupnost balíčku CRM**, a **marketingové artefakty**. Připojený hvězdička (*) na název pole označuje, že je povinný. 
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové sady Dynamics 365 pro Customer Engagement & nabídky PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="application-info-section"></a>Oddíl informací o aplikaci
-
-Bude poskytovat podrobnosti o vaší aplikaci Dynamics 365 v této části.
-
-![Oddíl informací o aplikaci na kartě technické informace](./media/dynce-technical-info-tab1.png)
-
-Následující tabulka popisuje tato pole. Povinná pole jsou uvést hvězdičkou (*).
-
-|      Pole                    |    Popis                  |
-|    ---------                  |  ---------------                |
-|   Základní licenční model\*          |  Licenční model Určuje, jak zákazníci jsou přiřazeny vaši aplikaci v Centru pro správu Dynamics 365. **Prostředek** licencování je založený na instancích, zatímco **uživatele** jeden do každého tenanta přiřazení licencí.  |
-|  Odchozí S2S a CRM Secure Store přístup\* |  Umožňuje konfigurovat CRM Secure Store nebo odchozí přístup k serveru (S2S). *Tato funkce vyžaduje specializované pozornost od týmu služby Dynamics 365 během fáze certifikace.* Microsoft bude kontaktovat, abyste mohli provést další kroky pro tuto funkci podporovat.  |
-| Přihlášení k odběru událostí životního cyklu aplikace CRM\* | Integrace s událostmi životního cyklu Dynamics 365 vyžaduje poskytnutí o vyhrazenou službu, který je registrovaný prostřednictvím metody speciální smlouvy s Microsoftem. *Tato funkce vyžaduje specializované pozornost od týmu služby Dynamics 365 během fáze certifikace.* Vás bude kontaktovat na dokončení další kroky pro podporu této možnosti.  |
-| Adresa Url konfigurace aplikace | Adresa URL webové stránky, která umožňuje uživateli konfigurace aplikace |
-| Podporovaných produktů Dynamics 365  | Vyberte produkty Dynamics 365, které tato nabídka platí pro. V rámci této nabídky se zobrazí v rámci vybrané produkty v AppSource.  |
-| Marketingové pouze změny         | Nastavení této možnosti Ano znamená, že byly provedeny pouze marketing/popisný změny do existující nabídky.  Tyto změny umožní nabídka obejít certifikace a fáze zřizování.  |
-|  |  |
-
-
-## <a name="crm-package-section"></a>Části balíčku aplikace CRM
-
-Bude poskytovat podrobnosti o souboru balíčku AppSource v této části.  Tato informace se použijí podle týmů ověření a certifikace Dynamics 365.
-
-![Balíček CRM část technické informace o kartě](./media/dynce-technical-info-tab2.png)
-
-Následující tabulka popisuje tato pole.  Povinná pole jsou uvést hvězdičkou (*).
-
-|      Pole                    |    Popis                  |
-|    ---------                  |  ---------------                |
-|  Název souboru balíčku\*     |  Název souboru balíčku (.zip).  Tento název se *není* veřejné a se používá interně týmem certifikační Dynamics 365.  |
-|  Adresa URL umístění balíčku\*      |  Adresa URL účtu Azure Storage, která obsahuje soubor nahraného balíčku. Tato adresa URL by měla obsahovat jen pro čtení klíč SAS pro povolení náš tým ke sbírání vašeho balíčku pro ověření.  |
-| Více než jeden balíček crm\*     | Vyberte Ano pouze pokud podporujete více verzí aplikace crm pomocí různých balíčků.  Každá verze bude mít odpovídající vazby soubor balíčku, které je třeba vytvořit samostatně.  |
-| Scénář a použití případu asset\*   | Umožňuje nahrát dokument funkční specifikace pro vaši aplikaci pro použití týmem ověření Dynamics 365.  Upřednostňované formát tato specifikace je [E2E uživatelské scénáře šablony](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
-|  |  |
-
-
-## <a name="crm-package-availability-section"></a>Oddíl Dostupnost balíčku CRM
-
-V této části vyberte, které geografické oblasti vaše aplikace bude dostupná pro zákazníky.  Nasazení do těchto suverénních oblastech *vyžadují zvláštní oprávnění a ověření* během certifikačního procesu: [Německo](https://docs.microsoft.com/azure/germany/), [cloudu pro státní správu USA](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)a TIP.
-
-
-## <a name="marketing-artifacts-section"></a>Část artefakty marketing
-
-Tato část vyžaduje, abyste pro nahrání logo aplikace, který se použije k reprezentaci balíčku na webu Marketplace AppSource.  Obrázek loga musí být ve formátu PNG a je 255 x 115 velikost v pixelech.
-
-
-## <a name="next-steps"></a>Další postup
-
-Doporučujeme nabízet ukázku aplikace vyplněním [kartu testovací verze](./cpp-testdrive-tab.md)
+Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) vytvořte.

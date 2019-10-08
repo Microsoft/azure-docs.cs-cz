@@ -1,40 +1,22 @@
 ---
-title: Požadavky na aplikace Kurátorování
-description: Seznam požadovaných součástí pro aplikaci kurátorování.
+title: Předpoklady pro obdobu aplikace
+description: Zastaralý článek CPP, propojený s počítačem článek; byl "seznam požadavků pro obdobu aplikace".
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a92d32084dd36433fdc872db66f0f375a770bfda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935533"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034428"
 ---
-# <a name="prerequisites-for-application-curation"></a>Požadavky na aplikace Kurátorování
+# <a name="prerequisites-for-application-curation"></a>Předpoklady pro obdobu aplikace
 
-Microsoft vyžaduje určité revize, chcete-li ověřit, že jsou splněny následující požadavky:
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu Dynamics 365 pro nabídky finance a operace. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-- Partner\'s vlastní kód splňuje pokyny Microsoftu.
-- Balíček řešení Microsoft Dynamics Lifecycle Services (LCS) je možné úspěšně nasadit.
-- Transakce je možné dokončit.
-
-V současné době musí partneři prokázat, že jsou splněné tyto požadavky na provádění nasazení testu a výsledky pak sdílení s Microsoftem. Žádný kód bude nasazený v prostředí zákazníka že Microsoft nemá\'t ověřit. Partneři musí dokončit následující kurátorování artefakty a zkoušky:
-
-- Sestava analýzy kódu (Auto)
-- Modelování obchodních procesů (řízení) nebo testování skriptů
-- Název projektu a popis
-- Zálohování databáze firmy
-- Data balíčky a balíčky dat procesu (PDPs)
-- Metodologie
-- Binární soubory (volitelné)
-- Nasadit balíčky
-- Modely (kód a testy)
-- Obsah marketing
-
-Další informace o technické a procesní požadavky najdete v tématu [ověření aplikací pro Finance and Operations](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Také pokud jste tak již neučinili, zkontrolujte [Office 365, Dynamics 365, PowerApps a Power BI nabízí průvodce publikováním](../appsource-offer-publishing-guide.md).
-
+Před vytvořením nové nabídky Dynamics 365 for Operations byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) vytvořte nabídku.

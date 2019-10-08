@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162216"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028279"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -44,7 +44,7 @@ Scénář | Postup odebrání závislostí pro odstranění trezoru |
 Mám místní soubory a složky chráněné pomocí agenta Azure Backup, který se zálohuje do Azure | Proveďte kroky v [části odstranění zálohových položek z konzoly pro správu Mars](#delete-backup-items-from-the-mars-management-console) .
 Mám místní počítače, které jsou chráněné pomocí MABS (Microsoft Azure Backup serveru) nebo DPM (System Center Data Protection Manager) do Azure | Proveďte kroky v [části odstranění zálohovaných položek v konzole pro správu MABS](#delete-backup-items-from-the-mabs-management-console) .
 Mám chráněné položky v cloudu (například virtuální počítač s laaS nebo sdílenou složku Azure Files)  | Provedení kroků v [části odstranění chráněných položek v cloudu](#delete-protected-items-in-the-cloud)
-Mám chráněné položky jak místně, tak i v cloudu | Proveďte kroky ve všech následujících částech v tomto pořadí: <br> 1. [Odstranění chráněných položek v cloudu](#delete-protected-items-in-the-cloud)<br> 2. [Odstranit zálohované položky z konzoly pro správu MARS](#delete-backup-items-from-the-mars-management-console) <br> 3. [Odstranit zálohované položky z konzoly pro správu MABS](#delete-backup-items-from-the-mabs-management-console)
+Mám chráněné položky jak místně, tak i v cloudu | Proveďte kroky ve všech následujících částech v tomto pořadí: <br> 1. [odstranění chráněných položek v cloudu](#delete-protected-items-in-the-cloud)<br> 2. [odstraňte zálohované položky z konzoly pro správu Mars](#delete-backup-items-from-the-mars-management-console) . <br> 3. [odstraňte zálohované položky z konzoly pro správu MABS](#delete-backup-items-from-the-mabs-management-console) .
 Nepoužívám místní nebo cloudové chráněné položky; Pořád se ale stále zobrazuje chyba odstraňování trezoru | Proveďte kroky v části [odstranění Recovery Servicesového trezoru pomocí Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager)
 
 
@@ -68,7 +68,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
          ![Podokno odstranit zálohovaná data.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. Ověřte ikonu **oznámení** : ![Ikona oznámení](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí tato zpráva: *Zastavuje se zálohování a odstraňují se záložní data pro* : Zálohovaná*položka.* *Operace se úspěšně dokončila*.
+5. Podívejte se na ikonu **oznámení** : ![The – ikona oznámení. ](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí následující zpráva: *zastavte zálohování a odstraňte zálohovaná data pro "* zálohovanou položku *"* . *Operace se úspěšně dokončila*.
 6. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
 
       ![Stránka Odstranit zálohované položky](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -84,7 +84,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 
         ![V případě MARS vyberte svůj trezor a otevřete jeho řídicí panel.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - Pro MABS nebo DPM vyberte **záložní servery pro správu**. Pak vyberte server, který chcete odstranit. 
+      - Pro MABS nebo DPM vyberte **záložní servery pro správu**. Pak vyberte server, který chcete odstranit. 
 
 
           ![V případě MABS vyberte svůj trezor a otevřete jeho řídicí panel.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
@@ -102,7 +102,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 4. Zaškrtněte políčko souhlasu a pak vyberte **Odstranit**.
 
 
-5. Podívejte se na ikonu ![oznámení odstranit zálohovaná data](./media/backup-azure-delete-vault/messages.png). Po dokončení operace služba zobrazí zprávu: *Zastavuje se zálohování a odstraňují se zálohovaná data pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
+5. Ověřte **oznamovací** ikonu ![delete data zálohování @ no__t-2. Po dokončení operace se ve službě zobrazí zpráva: *zastavení zálohování a odstranění zálohovaných dat pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
 6. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
 
 Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly pro správu:
@@ -122,13 +122,13 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na > **vlastnosti** **Nastavení** >  **trezoru Recovery Services**.
+5. Přejít na **Recovery Services trezoru** > **nastavení**–**vlastnosti** > .
 6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
     ![Vygenerujte bezpečnostní kód PIN.](./media/backup-azure-delete-vault/security-pin.png)
 
-8. Na stránce **Upravit průběh zálohování** se zobrazí následující zpráva: *Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní.*  
+8. Na stránce **Upravit průběh zálohování** se zobrazí následující zpráva: *Odstraněná data zálohy se uchovávají 14 dní. Po uplynutí této doby se zálohovaná data trvale odstraní.*  
 
     ![Odstraňte infrastrukturu zálohování.](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
@@ -212,7 +212,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
        [-Confirm] 
        [<CommonParameters>] 
     ```
-    [Přečtěte si další](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) informace o zakázání ochrany pro položku chráněnou zálohováním. 
+    Další [informace](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)@no__t – 1about zakáže ochranu pro položku chráněnou zálohováním. 
 
 - Pro místní soubory a složky chráněné pomocí agenta Azure Backup, který se zálohuje do Azure, pomocí následujícího příkazu PowerShellu odstraňte zálohovaná data z každého modulu MARS PowerShellu:
 
@@ -222,7 +222,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, který se zobrazí na následující příkazovém řádku:
      
-    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
+    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] bez [L] No do všech [S] pozastavit [?] Help (výchozí je "Y"):*
 
 
 - U místních počítačů chráněných pomocí MABS (Microsoft Azure Backup serveru) nebo DPM do Azure (System Center Data Protection Manager) pomocí následujícího příkazu odstraňte zálohovaná data v Azure.
@@ -233,7 +233,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, který se zobrazí na následující příkazovém řádku: 
          
-   *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
+   *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] bez [L] No do všech [S] pozastavit [?] Help (výchozí je "Y"):*
 
 Po odstranění zálohovaných dat zrušte registraci místních kontejnerů a serverů pro správu. 
 
@@ -344,7 +344,7 @@ Další informace o příkazu ARMClient najdete v [souboru Readme pro ARMClient]
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-2. Pokud trezor není prázdný, zobrazí se následující chybová zpráva: *Trezor se nedá odstranit, protože v tomto trezoru jsou nějaké prostředky.* Chcete-li odebrat chráněnou položku nebo kontejner v rámci trezoru, spusťte následující příkaz:
+2. Pokud trezor není prázdný, zobrazí se následující chybová zpráva: *trezor se nedá odstranit, protože v tomto trezoru existují nějaké prostředky.* Chcete-li odebrat chráněnou položku nebo kontejner v rámci trezoru, spusťte následující příkaz:
 
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01

@@ -14,16 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972096"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024941"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto rychlém startu se dozvíte, jak nasadit aplikaci v Pythonu nad integrovanou image Pythonu v App Service v systému Linux pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+V tomto rychlém startu nasadíte jednoduchou aplikaci v Pythonu, která [App Service na Linux](app-service-linux-intro.md), která poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů. Použijete rozhraní příkazového řádku Azure ( [Azure CLI](/cli/azure/install-azure-cli)) prostřednictvím interaktivního Azure Cloud Shell založeného na prohlížeči, takže můžete postupovat podle pokynů k použití počítače se systémem Mac, Linux nebo Windows.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -120,7 +122,7 @@ Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovan
 
 **Blahopřejeme!** Nasadili jste svoji první aplikaci v Pythonu do služby App Service v Linuxu.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
+## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
 
 V Cloud Shell otevřete Editor Cloud Shell zadáním `code application.py`.
 

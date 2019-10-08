@@ -1,39 +1,21 @@
 ---
-title: Vytvoření Dynamics 365 Customer Engagement aplikace nabídky | Azure Marketplace
-description: Jak vytvořit nový Dynamics 365 Customer Engagement aplikace nabídky na webu AppSource Marketplace.
+title: Vytvoření nabídky aplikace Dynamics 365 for Customer Engagement | Azure Marketplace
+description: Tento článek v CPP byl zastaralý a odkazoval na počítač v článku; byl "postup vytvoření nové nabídky aplikace Dynamics 365 for Customer Engagement na webu AppSource Marketplace".
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942698"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034349"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Vytvoření Dynamics 365 Customer Engagement aplikace nabídky
+# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Vytvoření nabídky aplikace Dynamics 365 for Customer Engagement
 
-Tato část popisuje, jak vytvářet a publikovat Dynamics 365 Customer Engagement nabídky aplikace pro web AppSource Marketplace. Každé nabídky se zobrazí jako vlastní entity na webu Marketplace a se skládá z následujících seskupení prostředků a služeb podpory: nabízí informace, technické informace o balíčku, marketingové artefakty, podporovat informace a volitelný testovací verze specifikace. 
+[Portál partnerů cloudu](https://cloudpartner.azure.com/) už nepodporuje vytváření a správu nabídek Dynamics 365 Customer Engagement. Místo toho se tato funkce přesunula na [portál partnerského centra](https://partner.microsoft.com/)Microsoftu. Další informace najdete v tématu [Vytvoření nové sady Dynamics 365 pro Customer Engagement & nabídky PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="new-offer-form"></a>Formulář nové nabídky
-
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **Dynamics 365 for Customer Engagement**:
-
-![Nová položka nabídky nabídky pro Dynamics 365 Customer Engagement aplikace](./media/new-dyn365ce-menu-item.png)
-
-**Nová nabídka** zobrazí formulář zobrazuje počáteční [ **nabízejí nastavení** kartu](./cpp-offer-settings-tab.md).
-
-
-## <a name="next-steps"></a>Další postup
-
-**Nová nabídka** stránka obsahuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Následující články popisují, jak definovat skupiny prostředků a podpůrné informace pro nové nabídky.
-
-* [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
-* [Karta Technické informace](./cpp-technical-info-tab.md)
-* [Karta Testovací verze](./cpp-testdrive-tab.md)
-* [Karta podrobností o prodejních místech](./cpp-storefront-details-tab.md)
-* [Karta Kontakty](./cpp-contacts-tab.md)
+Před vytvořením nové nabídky Dynamics 365 for Customer Engagement byste si měli přečíst téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a pak otevřít [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/directory) se zvolenou stránkou s **přehledem** . Podle pokynů v tématu [Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) vytvořte.

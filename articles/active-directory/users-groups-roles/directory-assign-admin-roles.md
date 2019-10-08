@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b5a8a7667419e0e3345fb453eefd840368b643
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001685"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026377"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -69,7 +69,7 @@ Uživatelé s touto rolí můžou nastavovat nebo resetovat přihlašovací úda
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 
 * Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -128,7 +128,7 @@ Uživatelé v této roli můžou povolit, zakázat a odstranit zařízení ve sl
 
 Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících s dodržováním předpisů v Microsoft 365 centrum dodržování předpisů, Microsoft 365 centrum pro správu, Azure a Office 365 Centrum zabezpečení a dodržování předpisů. Assignees může také spravovat všechny funkce v centru pro správu Exchange a týmy & centra pro správu Skypu pro firmy a vytvářet lístky podpory pro Azure a Microsoft 365. Další informace najdete v informacích [o rolích správce Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-V | Může
+Pro | Může
 ----- | ----------
 [Centrum kompatibility Microsoft 365](https://protection.office.com) | Chraňte a spravujte data vaší organizace napříč Microsoft 365 službami<br>Spravovat výstrahy dodržování předpisů
 [Správce dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Sledovat, přiřazovat a ověřovat aktivity dodržování předpisů právními předpisy vaší organizace
@@ -140,7 +140,7 @@ V | Může
 
 Uživatelé s touto rolí mají oprávnění sledovat data v Microsoft 365 centrum dodržování předpisů, Microsoft 365 centrum pro správu a Azure. Uživatelé také mohou sledovat data o dodržování předpisů v centru pro správu Exchange, správců dodržování předpisů a týmech & centru pro správu Skypu pro firmy a vytvářet lístky podpory pro Azure a Microsoft 365.
 
-V | Může
+Pro | Může
 ----- | ----------
 [Centrum kompatibility Microsoft 365](https://protection.office.com) | Monitorování zásad souvisejících s dodržováním předpisů napříč Microsoft 365 službami<br>Spravovat výstrahy dodržování předpisů
 [Správce dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Sledovat, přiřazovat a ověřovat aktivity dodržování předpisů právními předpisy vaší organizace
@@ -212,6 +212,22 @@ Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure 
 >
 >
 
+### <a name="global-readerglobal-reader-permissions"></a>[Globální čtenář](#global-reader-permissions)
+
+Uživatelé v této roli můžou číst nastavení a informace pro správu napříč Microsoft 365 službami, ale nemůžou provádět akce správy. Globální čtenář je protistranou, která je jen pro čtení, globální správce. Přiřaďte globální čtenáře místo globálního správce pro plánování, audity nebo vyšetřování. Pomocí globálního čtecího zařízení v kombinaci s dalšími omezenými rolemi správců, jako je třeba správce Exchange, můžete usnadnit práci bez vyvolání role globálního správce. Globální čtečka funguje s novým centrem pro správu Microsoft 365, centrem pro správu Exchange, centrem pro správu týmů, Security Center, centrem dodržování předpisů, centrem pro správu služby Azure AD a centrem pro správu správy zařízení. 
+
+> [!NOTE]
+> Role globálního čtenáře teď má následující omezení:
+>* Centrum pro správu SharePointu – centrum pro správu SharePointu nepodporuje roli globálního čtecího modulu. V levém podokně v centru pro správu v [M365](https://admin.microsoft.com/Adminportal/Home#/homepage)se nezobrazuje ' SharePoint '. Když přejdete na https://{název tenanta} – admin.sharepoint.com, budete mít přístup odepřen. 
+>* [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální Čtenář nemůže přečíst režim zřizování podnikové aplikace.
+>* [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul cusomter. Kartu žádosti o bezpečnostní modul pro zákazníky nenajdete v části Podpora v levém podokně centra pro správu M365.
+>* [M365 Security Center](https://security.microsoft.com/homepage) – globální čtecí modul nemůže přečíst citlivost a popisky uchování. V levém podokně v části klasifikace v M365 Security Center nenajdete popisky citlivosti, popisky uchování a karty analýza popisků.
+>* [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst životní cyklus týmů, sestavy & analýzy volání, správu IP adres zařízení a katalog aplikací.
+>* [Privileged Access Management (pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nepodporuje globální čtecí zařízení.
+> 
+> Podpora těchto funkcí bude v průběhu času.
+>
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Pozvánka hosta](#guest-inviter-permissions)
 
 Uživatelé v této roli můžou spravovat Azure Active Directory pozvání uživatele hosta B2B, když **můžou členové pozvat** uživatele na hodnotu ne. Další informace o spolupráci B2B v rámci spolupráce B2B v [Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nezahrnuje žádná další oprávnění.
@@ -227,7 +243,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 
 * Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -313,13 +329,13 @@ Uživatelé v této roli můžou vytvářet, spravovat a odstraňovat obsah pro 
 
 Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících se zabezpečením v Microsoft 365 Centrum zabezpečení a dodržování předpisů Security Center, Azure Active Directory Identity Protection, Azure Information Protection a Office 365. Další informace o oprávněních sady Office 365 jsou k dispozici na stránce [oprávnění v sadě office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-V | Může
+Pro | Může
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Monitorování zásad souvisejících se zabezpečením napříč Microsoft 365 službami<br>Správa bezpečnostních hrozeb a výstrah<br>Zobrazit sestavy
 Centrum služby Identity Protection | Všechna oprávnění role čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace centra služby Identity Protection s výjimkou resetování hesel
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Všechna oprávnění role čtenář zabezpečení<br>**Nejde** spravovat přiřazení rolí nebo nastavení role Azure AD.
 [Sada Office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad zabezpečení<br>Zobrazení, zkoumání a reakce na bezpečnostní hrozby<br>Zobrazit sestavy
-Rozšířená ochrana před internetovými útoky Azure | Monitorování a reakce na podezřelé aktivity zabezpečení
+Rozšířená ochrana před internetovými útoky v Azure | Monitorování a reakce na podezřelé aktivity zabezpečení
 Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa skupin počítačů<br>Konfigurace detekce hrozeb a automatizované nápravy koncových bodů<br>Zobrazit, prozkoumat a reagovat na výstrahy
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazí informace o uživatelích, zařízeních, registraci, konfiguraci a aplikacích.<br>Nejde dělat změny v Intune.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Přidávání správců, přidávání zásad a nastavení, nahrávání protokolů a provádění akcí zásad správného řízení
@@ -330,7 +346,7 @@ Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa sk
 
 Uživatelé s touto rolí můžou spravovat výstrahy a mít globální přístup jen pro čtení k funkci související se zabezpečením, včetně všech informací v Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management a Office 365. Centrum zabezpečení a dodržování předpisů. Další informace o oprávněních sady Office 365 jsou k dispozici na stránce [oprávnění v sadě office 365 Centrum zabezpečení a dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
-V | Může
+Pro | Může
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Všechna oprávnění role čtenář zabezpečení<br>Zobrazení, zkoumání a reakce na výstrahy zabezpečení hrozeb
 Centrum služby Identity Protection | Všechna oprávnění role čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace centra služby Identity Protection s výjimkou resetování hesel
@@ -345,12 +361,12 @@ Ochrana ATP a EDR v programu Windows Defender | Všechna oprávnění role čten
 
 Uživatelé s touto rolí mají globální přístup jen pro čtení k funkci související se zabezpečením, včetně všech informací v Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management a také možnost číst Azure Active. Sestavy pro přihlášení k adresáři a protokoly auditu a v sadě Office 365 Centrum zabezpečení a dodržování předpisů. Další informace o oprávněních sady Office 365 jsou k dispozici na stránce [oprávnění v sadě office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
-V | Může
+Pro | Může
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Zobrazení zásad souvisejících se zabezpečením napříč Microsoft 365 službami<br>Zobrazit bezpečnostní hrozby a výstrahy<br>Zobrazit sestavy
-Centrum služby Identity Protection | Čtení všech sestav zabezpečení a informací o nastavení pro funkce zabezpečení<br><ul><li>Ochrana proti nevyžádané poště<li>Šifr<li>Prevence ztráty dat<li>Ochrana proti malwaru<li>Rozšířená ochrana před internetovými útoky<li>Ochrana proti podvodným zprávám<li>Pravidla mailflow
+Centrum služby Identity Protection | Čtení všech sestav zabezpečení a informací o nastavení pro funkce zabezpečení<br><ul><li>Ochrana proti nevyžádané poště<li>Šifrování<li>Prevence ztráty dat<li>Ochrana proti malwaru<li>Rozšířená ochrana před internetovými útoky<li>Ochrana proti podvodným zprávám<li>Pravidla mailflow
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Má přístup jen pro čtení ke všem informacím, které jsou v Azure AD Privileged Identity Management: zásady a sestavy pro přiřazení rolí Azure AD a recenze zabezpečení.<br>**Nelze** se zaregistrovat k Azure AD Privileged Identity Management ani provádět žádné změny. V portálu Privileged Identity Management nebo prostřednictvím PowerShellu může osoba v této roli aktivovat další role (například správce globálních správců nebo privilegovaných rolí), pokud je pro ně uživatel oprávněný.
-[Sada Office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zobrazit zásady zabezpečení<br>Zobrazit a prozkoumat bezpečnostní hrozby<br>Zobrazit sestavy
+[Sada Office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Zobrazení zásad zabezpečení<br>Zobrazit a prozkoumat bezpečnostní hrozby<br>Zobrazit sestavy
 Ochrana ATP a EDR v programu Windows Defender | Zobrazit a prozkoumat výstrahy. Když zapnete řízení přístupu na základě role v ochraně ATP v programu Windows Defender, uživatelé s oprávněním jen pro čtení, jako je role čtenář zabezpečení Azure AD, ztratí přístup, dokud nebudou přiřazeni k roli ochrany ATP v programu Windows Defender.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazí informace o uživatelích, zařízeních, registraci, konfiguraci a aplikacích. V Intune nejde dělat změny.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Má oprávnění jen pro čtení a může spravovat výstrahy.
@@ -396,7 +412,7 @@ Uživatelé v této roli můžou řešit problémy s komunikací v rámci Micros
 
 Uživatelé v této roli můžou řešit problémy s komunikací v rámci Microsoft Teams & Skype pro firmy pomocí nástrojů pro řešení potíží s uživatelem v Microsoft Teams & v centru pro správu Skypu pro firmy. Uživatelé v této roli můžou zobrazit jenom podrobnosti o uživateli ve volání pro konkrétního uživatele, který si vyhledali. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
 
-### <a name="user-administratoruser-administrator-permissions"></a>[Správce uživatele](#user-administrator-permissions)
+### <a name="user-administratoruser-administrator-permissions"></a>[Správce uživatelů](#user-administrator-permissions)
 
 Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s některými omezeními (viz níže) a můžou aktualizovat zásady vypršení platnosti hesla. Uživatelé s touto rolí můžou navíc vytvářet a spravovat všechny skupiny. Tato role také zahrnuje možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby. Správci uživatelů nemají oprávnění ke správě některých uživatelských vlastností pro uživatele ve většině rolí správce. Role, které jsou výjimkou tohoto omezení, jsou uvedeny v následující tabulce.
 
@@ -404,10 +420,10 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | --- | --- |
 |Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytváření a Správa uživatelských zobrazení</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 |<p>U všech uživatelů, včetně všech správců</p>|<p>Spravovat licence</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetovat heslo</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 
 * Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -423,7 +439,7 @@ Následující tabulky popisují specifická oprávnění v Azure Active Directo
 
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Application/appProxyAuthentication/Update | Aktualizujte vlastnosti ověřování proxy aplikací u instančních objektů v Azure Active Directory. |
 | Microsoft. Directory/Application/appProxyUrlSettings/Update | Aktualizuje interní a externí adresy URL proxy aplikace v Azure Active Directory. |
@@ -477,7 +493,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 Může vytvořit registrace aplikací nezávisle na nastavení uživatelé můžou registrovat aplikace.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Applications/createAsOwner | Vytváření aplikací v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
 | Microsoft. Directory/appRoleAssignments/createAsOwner | Vytvořte appRoleAssignments v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
@@ -488,7 +504,7 @@ Může vytvořit registrace aplikací nezávisle na nastavení uživatelé můž
 
 Povoleno zobrazení, nastavení a obnovení informací o metodě ověřování pro libovolného uživatele bez oprávnění správce.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
 | Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
@@ -508,7 +524,7 @@ Může spravovat zásady a nastavení organizace Azure DevOps.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. devOps/allEntities/allTasks | Přečtěte si a nakonfigurujte Azure DevOps. |
 
@@ -521,7 +537,7 @@ Může spravovat všechny aspekty služby Azure Information Protection.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
@@ -533,7 +549,7 @@ Může spravovat všechny aspekty služby Azure Information Protection.
 
 Vytvářejte a spravujte všechny aspekty toků uživatelů.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. B2C/userFlows/allTasks | Čtení a konfigurace toků uživatelů v Azure Active Directory B2C. |
 
@@ -541,7 +557,7 @@ Vytvářejte a spravujte všechny aspekty toků uživatelů.
 
 Vytvořte a spravujte schéma atributů dostupné pro všechny toky uživatelů.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. B2C/userAttributes/allTasks | Čtení a konfigurace uživatelských atributů v Azure Active Directory B2C. |
 
@@ -549,7 +565,7 @@ Vytvořte a spravujte schéma atributů dostupné pro všechny toky uživatelů.
 
 Spravujte tajné klíče pro federaci a šifrování v architektuře prostředí identity.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. B2C/trustFramework/-Sets/allTasks | Přečte a nakonfiguruje sady klíčů v Azure Active Directory B2C. |
 
@@ -557,7 +573,7 @@ Spravujte tajné klíče pro federaci a šifrování v architektuře prostředí
 
 Vytváření a Správa zásad pro pravidla důvěryhodnosti v architektuře prostředí identity
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. B2C/trustFramework/policies/allTasks | Čtení a konfigurace vlastních zásad v Azure Active Directory B2C. |
 
@@ -570,7 +586,7 @@ Může provádět běžné úkoly související s fakturací, jako je aktualizac
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
@@ -584,7 +600,7 @@ Může provádět běžné úkoly související s fakturací, jako je aktualizac
 
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací kromě proxy aplikací.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Applications/publikum/Update | Aktualizuje vlastnost Applications. cílová skupina v Azure Active Directory. |
 | Microsoft. Directory/Applications/Authentication/Update | Aktualizuje vlastnost Applications. Authentication v Azure Active Directory. |
@@ -627,7 +643,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 Úplný přístup ke správě zařízení ve službě Azure AD.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
@@ -647,7 +663,7 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. cloudAppSecurity. |
 | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytvořit a odstranit administrativeUnits a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
@@ -714,7 +730,7 @@ Může číst a spravovat konfiguraci a sestavy dodržování předpisů v Azure
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -735,7 +751,7 @@ Vytvoří a spravuje obsah dodržování předpisů.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
 | Microsoft. Azure. informationProtection/allEntities/allTasks | Umožňuje spravovat všechny aspekty Azure Information Protection. |
@@ -753,7 +769,7 @@ Vytvoří a spravuje obsah dodržování předpisů.
 
 Může spravovat funkce podmíněného přístupu.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/policies/conditionalAccess/Basic/Read | Číst zásady. conditionalAccess vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/policies/conditionalAccess/Basic/Update | Aktualizuje vlastnost policies. conditionalAccess v Azure Active Directory. |
@@ -773,7 +789,7 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -791,7 +807,7 @@ Může schvalovat žádosti o podporu Microsoftu pro přístup k datům organiza
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. bezpečnostní modul/allEntities/allTasks | Správa všech aspektů Office 365 Customer Lockbox |
@@ -805,7 +821,7 @@ Může spravovat služby zásad & Desktop Analytics a Office Customization. Pro 
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -818,7 +834,7 @@ Může spravovat služby zásad & Desktop Analytics a Office Customization. Pro 
 
 Uživatelé přiřazení k této roli budou přidáni do místní skupiny Administrators na zařízeních připojených k Azure AD.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/groupSettings/Basic/Read | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
 | Microsoft. Directory/groupSettingTemplates/Basic/Read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
@@ -826,7 +842,7 @@ Uživatelé přiřazení k této roli budou přidáni do místní skupiny Admini
 ### <a name="directory-readers-permissions"></a>Oprávnění čtenáře adresářů
 Může číst základní informace o adresáři. Pro udělení přístupu k aplikacím, které nejsou určené pro uživatele.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/administrativeUnits/Basic/Read | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
 | Microsoft. Directory/administrativeUnits/Members/Read | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
@@ -880,7 +896,7 @@ Může číst základní informace o adresáři. Pro udělení přístupu k apli
 
 Používáno pouze službou Azure AD Connect.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
 | Microsoft. Directory/policies/Create | Vytvořte zásady v Azure Active Directory. |
@@ -915,7 +931,7 @@ Používáno pouze službou Azure AD Connect.
 
 Může číst & informace o adresáři Basic Write. Pro udělení přístupu k aplikacím, které nejsou určené pro uživatele.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
@@ -943,7 +959,7 @@ Může spravovat všechny aspekty produktu Exchange.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti skupin Office 365. |
@@ -962,14 +978,84 @@ Může spravovat všechny aspekty produktu Exchange.
 
 Nakonfigurujte zprostředkovatele identity pro použití v přímé federaci.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. B2C/identityProviders/allTasks | Číst a konfigurovat zprostředkovatele identity v Azure Active Directory B2C. |
+
+### <a name="global-reader-permissions"></a>Oprávnění pro globální čtenáře
+Může číst vše, co globální správce může, ale ne nic upravovat. 
+
+> [!NOTE]
+> Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#global-reader) výše.
+>
+>
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. Commerce. fakturace/allEntities/čtení   | Přečtěte si všechny aspekty fakturace Office 365. |
+| Microsoft. Directory/administrativeUnits/Basic/Read    | Přečte základní vlastnosti administrativeUnits v Azure Active Directory. |
+| Microsoft. Directory/administrativeUnits/Members/Read  | Načte vlastnost administrativeUnits. Members v Azure Active Directory. |
+| Microsoft. Directory/Applications/Basic/Read   | Přečte základní vlastnosti aplikací v Azure Active Directory. |
+| Microsoft. Directory/aplikace/vlastníci/čtení  | Číst vlastnost Applications. Owners v Azure Active Directory. |
+| Microsoft. Directory/aplikace/zásady/číst    | Přečte vlastnost Applications. policies v Azure Active Directory. |
+| Microsoft. Directory/Contacts/Basic/Read   | Přečte základní vlastnosti kontaktů v Azure Active Directory. |
+| Microsoft. Directory/Contacts/memberOf/Read    | Číst vlastnost Contacts. memberOf v Azure Active Directory. |
+| Microsoft. Directory/Contracts/Basic/Read  | Přečte základní vlastnosti smluv v Azure Active Directory. |
+| Microsoft. Directory/zařízení/Basic/číst    | Přečte základní vlastnosti na zařízeních v Azure Active Directory. |
+| Microsoft. Directory/zařízení/memberOf/číst | Číst vlastnost Devices. memberOf v Azure Active Directory. |
+| Microsoft. Directory/Devices/registeredOwners/Read | Číst vlastnost Devices. registeredOwners v Azure Active Directory. |
+| Microsoft. Directory/Devices/registeredUsers/Read  | Číst vlastnost Devices. registeredUsers v Azure Active Directory. |
+| Microsoft. Directory/directoryRoles/Basic/Read | Přečte základní vlastnosti directoryRoles v Azure Active Directory. |
+| Microsoft. Directory/directoryRoles/eligibleMembers/Read   | Číst vlastnost directoryRoles. eligibleMembers v Azure Active Directory. |
+| Microsoft. Directory/directoryRoles/Members/Read   | Načte vlastnost directoryRoles. Members v Azure Active Directory. |
+| Microsoft. Directory/domény/Basic/číst    | Přečte základní vlastnosti domén v Azure Active Directory. |
+| Microsoft. Directory/Groups/appRoleAssignments/Read    | Načte vlastnost groups. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/Groups/Basic/Read | Přečte základní vlastnosti pro skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
+| Microsoft. Directory/Groups/memberOf/Read  | Načte vlastnost groups. memberOf v Azure Active Directory. |
+| Microsoft. Directory/Groups/Members/Read   | Přečte vlastnost groups. Members v Azure Active Directory. |
+| Microsoft. Directory/Groups/Owners/Read    | Číst vlastnost groups. Owners v Azure Active Directory. |
+| Microsoft. Directory/Groups/Settings/Read  | Číst vlastnost groups. Settings v Azure Active Directory. |
+| Microsoft. Directory/groupSettings/Basic/Read  | Přečte základní vlastnosti groupSettings v Azure Active Directory. |
+| Microsoft. Directory/groupSettingTemplates/Basic/Read  | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
+| Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Přečte základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft. Directory/Organization/Basic/Read   | Přečte základní vlastnosti v organizaci v Azure Active Directory. |
+| Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read   | Číst vlastnost Organization. trustedCAsForPasswordlessAuth v Azure Active Directory. |
+| Microsoft. Directory/policies/Standard/Read    | Číst standardní zásady v Azure Active Directory. |
+| Microsoft. Directory/roleAssignments/Basic/Read    | Přečte základní vlastnosti roleAssignments v Azure Active Directory. |
+| Microsoft. Directory/roleDefinitions/Basic/Read    | Přečte základní vlastnosti roleDefinitions v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read  | Číst vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Číst vlastnost servicePrincipals. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/Basic/Read  | Přečte základní vlastnosti servicePrincipals v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/memberOf/Read   | Načte vlastnost servicePrincipals. memberOf v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/Basic/Read   | Číst vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/ownedObjects/Read   | Číst vlastnost servicePrincipals. ownedObjects v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/Owners/Read | Číst vlastnost servicePrincipals. Owners v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/policies/Read   | Číst vlastnost servicePrincipals. policies v Azure Active Directory. |
+| Microsoft. Directory/signInReports/allProperties/Read  | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
+| Microsoft. Directory/subscribedSkus/Basic/Read | Přečte základní vlastnosti subscribedSkus v Azure Active Directory. |
+| Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/Basic/číst  | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft. Directory/Users/directReports/Read  | Číst vlastnost Users. directReports v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/Správce/číst    | Umožňuje číst vlastnost Users. Manager v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/memberOf/číst   | Číst vlastnost Users. memberOf v Azure Active Directory. |
+| Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read   | Číst vlastnost Users. oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft. Directory/Users/ownedDevices/Read   | Číst vlastnost Users. ownedDevices v Azure Active Directory. |
+| Microsoft. Directory/Users/ownedObjects/Read   | Číst vlastnost Users. ownedObjects v Azure Active Directory. |
+| Microsoft. Directory/Users/registeredDevices/Read  | Číst vlastnost Users. registeredDevices v Azure Active Directory. |
+| Microsoft. Directory/Users/strongAuthentication/Read   | Přečtěte si vlastnosti silného ověřování, jako jsou přihlašovací údaje MFA. |
+| Microsoft. Office 365. Exchange/allEntities/Read | Přečtěte si všechny aspekty Exchange Online. |
+| Microsoft. Office 365. messageCenter/Messages/Read   | Přečte zprávy v Microsoft. Office 365. messageCenter. |
+| Microsoft. Office 365. messageCenter/securityMessages/Read   | Přečtěte si securityMessages v Microsoft. Office 365. messageCenter. |
+| Microsoft. Office 365. protectionCenter/allEntities/Read | Přečtěte si všechny aspekty centra ochrany Office 365. |
+| Microsoft. Office 365. securityComplianceCenter/allEntities/Read | Načte všechny standardní vlastnosti v Microsoft. Office 365. securityComplianceCenter. |
+| Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Standard/Read   | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
 ### <a name="guest-inviter-permissions"></a>Oprávnění pozvat hosta
 Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Users/appRoleAssignments/Read | Číst vlastnost Users. appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/Basic/číst | Číst základní vlastnosti pro uživatele v Azure Active Directory. |
@@ -986,7 +1072,7 @@ Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou po
 
 Může resetovat hesla pro správce bez oprávnění správce a helpdesku.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
@@ -1006,7 +1092,7 @@ Může spravovat všechny aspekty produktu Intune.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
@@ -1044,7 +1130,7 @@ Může spravovat nastavení pro Microsoft Kaizala.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
@@ -1054,7 +1140,7 @@ Může spravovat nastavení pro Microsoft Kaizala.
 
 Může spravovat licence na produkty pro uživatele a skupiny.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
 | Microsoft. Directory/Users/usageLocation/Update | Umožňuje aktualizovat vlastnost Users. usageLocation v Azure Active Directory. |
@@ -1071,7 +1157,7 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -1089,7 +1175,7 @@ Může číst příspěvky centra zpráv, zprávy o ochraně dat, skupiny, domé
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
@@ -1103,7 +1189,7 @@ Může číst zprávy a aktualizace pro svou organizaci jenom v centru zpráv Of
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
@@ -1117,7 +1203,7 @@ Nepoužívejte – Neurčeno pro obecné použití.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
@@ -1150,7 +1236,7 @@ Nepoužívejte – Neurčeno pro obecné použití.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Contacts/Basic/Update | Aktualizuje základní vlastnosti kontaktů v Azure Active Directory. |
 | Microsoft. Directory/Contacts/Create | Vytvoří kontakty v Azure Active Directory. |
@@ -1180,7 +1266,7 @@ Nepoužívejte – Neurčeno pro obecné použití.
 
 Může resetovat hesla správců, kteří nejsou správci a hesla.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/uživatelé/heslo/aktualizace | Aktualizuje hesla pro všechny uživatele v Azure Active Directory. Další podrobnosti najdete v online dokumentaci. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
@@ -1194,7 +1280,7 @@ Může spravovat všechny aspekty Power BI produktu.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -1207,7 +1293,7 @@ Může spravovat všechny aspekty Power BI produktu.
 
 Povoleno zobrazení, nastavení a resetování informací o metodě ověřování pro libovolného uživatele (správce nebo jiný správce).
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
 | Microsoft. Directory/Users/strongAuthentication/Update | Aktualizujte vlastnosti silného ověřování jako informace o přihlašovacích údajích MFA. |
@@ -1227,7 +1313,7 @@ Může spravovat přiřazení rolí v Azure AD a všechny aspekty Privileged Ide
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. privilegedIdentityManagement/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. privilegedIdentityManagement. |
 | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
@@ -1245,7 +1331,7 @@ Může číst sestavy pro přihlášení a audit.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/signInReports/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na signInReports v Azure Active Directory. |
@@ -1261,7 +1347,7 @@ Může vytvářet a spravovat všechny aspekty nastavení služby Microsoft Sear
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 | Microsoft. Office 365. Search/allEntities/allProperties/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat všechny vlastnosti v Microsoft. Office 365. Search. |
@@ -1279,7 +1365,7 @@ Může vytvářet a spravovat redakční obsah, jako jsou záložky, Q a as, Loc
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 | Microsoft. Office 365. Search/Content/allProperties/allTasks | Vytváření a odstraňování obsahu a čtení a aktualizace všech vlastností v Microsoft. Office 365. Search. |
@@ -1294,7 +1380,7 @@ Může číst informace o zabezpečení a sestavy a spravovat konfiguraci v Azur
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/aplikace/zásady/aktualizace | Aktualizuje vlastnost Applications. policies v Azure Active Directory. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
@@ -1324,7 +1410,7 @@ Vytvoří a spravuje události zabezpečení.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. aad. cloudAppSecurity/allEntities/allTasks | Čtení a konfigurace Microsoft Cloud App Security. |
 | Microsoft. aad. identityProtection/allEntities/Read | Načte všechny prostředky v Microsoft. aad. identityProtection. |
@@ -1344,7 +1430,7 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Office 365.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Načte všechny vlastnosti (včetně privilegovaných vlastností) na auditLogs v Azure Active Directory. |
 | Microsoft. Directory/Devices/bitLockerRecoveryKeys/Read | Číst vlastnost Devices. bitLockerRecoveryKeys v Azure Active Directory. |
@@ -1365,7 +1451,7 @@ Může číst informace o stavu služby a spravovat lístky podpory.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -1382,7 +1468,7 @@ Může spravovat všechny aspekty služby SharePoint.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/Basic/Update | Aktualizuje základní vlastnosti skupin Office 365. |
@@ -1406,7 +1492,7 @@ Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
@@ -1424,7 +1510,7 @@ Může řešit problémy s komunikací v rámci týmů pomocí pokročilých ná
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
@@ -1439,7 +1525,7 @@ Může řešit problémy s komunikací v rámci týmů pomocí základních nás
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Čtení a konfigurace Azure Service Health. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
@@ -1454,7 +1540,7 @@ Může spravovat službu Microsoft Teams.
 >
 >
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/Groups/hiddenMembers/Read | Načte vlastnost groups. hiddenMembers v Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Aktualizuje vlastnost groups. Unified v Azure Active Directory. |
@@ -1473,7 +1559,7 @@ Může spravovat službu Microsoft Teams.
 ### <a name="user-administrator-permissions"></a>Oprávnění správce uživatele
 Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce.
 
-| **Činností** | **Popis** |
+| **Akce** | **Popis** |
 | --- | --- |
 | Microsoft. Directory/appRoleAssignments/Create | Vytvořte appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/appRoleAssignments/DELETE | Odstraní appRoleAssignments v Azure Active Directory. |
@@ -1518,8 +1604,8 @@ Vývojář aplikace | Vývojář aplikace | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Správce toku B2C uživatele | Správce toku B2C uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
-Správce atributů toku uživatele B2C | Správce atributů toku uživatele B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
-B2C IEF, správce sady klíčů | B2C IEF, správce sady klíčů | aaf43236-0c0d-4d5f-883a-6955382ac081
+Správce atributů uživatelských toků B2C | Správce atributů uživatelských toků B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
+Správce sady klíčů IEF B2C | Správce sady klíčů IEF B2C | aaf43236-0c0d-4d5f-883a-6955382ac081
 Správce zásad IEF B2C | Správce zásad IEF B2C | 3edaf663-341e-4475-9f94-5c398ef6c070
 Správce fakturace | Správce fakturace | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Správce cloudové aplikace | Správce cloudové aplikace | 158c047a-c907-4556-b7ef-446551a6b5f7
@@ -1540,6 +1626,7 @@ Uživatelé zařízení | Uživatelé zařízení | d405c6df-0af8-4e3b-95e4-4d06
 Zapisovače adresářů | Zapisovače adresářů | 9360feb5-f418-4baa-8175-e2a00bac4301
 Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Pozvánka hosta | Pozvánka hosta | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce helpdesku | Správce hesel | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1559,9 +1646,9 @@ Správce hledání | Správce hledání | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Editor hledání | Editor hledání | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Správce zabezpečení | Správce zabezpečení | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Operátor zabezpečení | Operátor zabezpečení | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-Čtecí modul zabezpečení | Čtecí modul zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
+Čtecí modul zabezpečení | Čtenář zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
 Správce služby Service support | Správce služeb | f023fd81-a637-4b56-95fd-791ac0226033
-Správce služby SharePoint | Správce služby SharePoint | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+Správce služby SharePoint | Správce SharePointu | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Správce komunikace týmů | Správce komunikace týmů | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Týmy Communications support inženýr | Týmy Communications support inženýr | f70938a0-fc10-4177-9e90-2178f8765737
 Týmy Communications support specialisty | Týmy Communications support specialisty | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
@@ -1585,5 +1672,5 @@ Následující role by se neměly používat. Jsou zastaralé a v budoucnu se od
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md)
-* Další informace o tom, jak se řídí přístup k prostředkům v Microsoft Azure, najdete v tématu [Principy přístupu k prostředkům v Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) .
-* Další informace o tom, jak se Azure Active Directory vztahují k vašemu předplatnému Azure, najdete v tématu [jak jsou předplatná Azure přidružená k Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Další informace o vztahu Azure Active Directory k předplatnému Azure najdete v tématu [Jak je předplatné Azure propojeno se službou Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

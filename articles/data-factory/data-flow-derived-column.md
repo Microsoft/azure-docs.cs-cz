@@ -1,34 +1,32 @@
 ---
-title: Odvozené transformací sloupců v mapování toku dat – Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak transformovat data ve velkém měřítku v Azure Data Factory pomocí transformace mapování datového toku odvozené sloupce.
+title: Transformace odvozeného sloupce v datovém toku mapování – Azure Data Factory | Microsoft Docs
+description: Naučte se, jak transformovat data ve velkém měřítku v Azure Data Factory pomocí transformace sloupce s odvozeným datovým tokem.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 941c629fd8359edc7fc1cf364a6735314044d95e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: aacd6f1799f1813e168bd04e78f18cf60ad5243f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312202"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026847"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozené transformací sloupců v mapování toku dat
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+Pomocí transformace odvozeného sloupce můžete vygenerovat nové sloupce v toku dat nebo upravit existující pole.
 
-Pomocí transformace odvozených sloupců, vytvořte nové sloupce ve svém toku dat nebo upravovat existující pole.
+## <a name="derived-column-settings"></a>Nastavení odvozeného sloupce
 
-## <a name="derived-column-settings"></a>Odvozené nastavení sloupců
+Pokud chcete přepsat existující sloupec, vyberte ho přes rozevírací seznam sloupec. V opačném případě použijte pole výběru sloupce jako textové pole a zadejte název nového sloupce. Chcete-li vytvořit výraz odvozeného sloupce, klikněte na pole zadejte výraz pro otevření [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md).
 
-Pokud chcete přepsat existující sloupec, vyberte ho pomocí rozevíracího seznamu sloupců. V opačném případě použijte pole výběru sloupce jako textové pole a zadejte název nového sloupce. Sestavit výraz odvozených sloupců, klikněte na pole 'Zadejte výraz' otevřou [Tvůrce výrazů tok dat](concepts-data-flow-expression-builder.md).
+Nastavení ![odvozených sloupců](media/data-flow/dc1.png "odvozená nastavení sloupců")
 
-![Odvozené nastavení sloupců](media/data-flow/dc1.png "odvozené nastavení sloupců")
+Chcete-li přidat další odvozené sloupce, najeďte myší na existující odvozený sloupec a klikněte na tlačítko "+". Pak zvolte buď přidat sloupec nebo přidat vzor sloupce. Vzorce sloupce mohou být užitečné, pokud jsou názvy sloupců z vašich zdrojů proměnné. Další informace najdete v tématu [vzory sloupců](concepts-data-flow-column-pattern.md).
 
-Pokud chcete přidat další odvozených sloupců, podržte ukazatel myši nad existující odvozené sloupce a klikněte na tlačítko "+". Zvolte 'Přidat sloupec' nebo 'Přidat sloupec vzorek'. Vzory sloupce může být užitečné, pokud vaše názvy sloupců jsou proměnné ze zdrojů. Další informace najdete v tématu [sloupec vzory](concepts-data-flow-column-pattern.md).
+![Nový odvozený výběr sloupce](media/data-flow/columnpattern.png "Nový odvozený výběr sloupce")
 
-![Nový odvozených sloupců výběru](media/data-flow/columnpattern.png "nový odvozené výběr sloupce")
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
-
-- Další informace o [mapování toku dat jazyk výrazů](data-flow-expression-functions.md).
+- Přečtěte si další informace o [jazyce výrazu Mapping data Flow](data-flow-expression-functions.md).

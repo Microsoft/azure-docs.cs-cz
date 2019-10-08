@@ -6,23 +6,23 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314227"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026971"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Agregovaná transformace je místo, kde definujete agregace sloupců v datových proudech. Pomocí Tvůrce výrazů můžete definovat různé typy agregací, jako například SUM, MIN, MAX a COUNT, které lze seskupit podle existujících nebo počítaných sloupců.
 
 ## <a name="group-by"></a>Seskupit podle
 Vyberte existující sloupec nebo vytvořte nový počítaný sloupec, který chcete použít jako klauzuli Group by pro agregaci. Chcete-li použít existující sloupec, vyberte požadovaný sloupec z rozevíracího seznamu. Pokud chcete vytvořit nový počítaný sloupec, najeďte myší na klauzuli a klikněte na vypočítaný sloupec. Tím se otevře [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md). Po vytvoření vypočítaného sloupce zadejte název výstupního sloupce pod pole název jako. Pokud chcete přidat další klauzuli Group by, najeďte myší nad existující klauzuli a klikněte na +.
 
-![Agregovaná transformační skupina podle nastavení](media/data-flow/agg.png "Agregovaná transformační skupina podle nastavení")
+![Agregovaná transformační skupina podle nastavení]–(media/data-flow/agg.png "agregovaná transformační skupina podle nastavení")
 
 > [!NOTE]
 > Klauzule GROUP by je volitelná v agregační transformaci.
@@ -30,7 +30,7 @@ Vyberte existující sloupec nebo vytvořte nový počítaný sloupec, který ch
 ## <a name="aggregate-column"></a>Agregovaný sloupec 
 Pro sestavení agregačních výrazů vyberte kartu agregace. Můžete buď zvolit existující sloupec a přepsat hodnotu agregací, nebo vytvořit nové pole s novým názvem. Agregační výraz je zadán v pravém poli vedle pole selektor názvu sloupce. Chcete-li upravit výraz, klikněte na textové pole a otevřete Tvůrce výrazů. Pokud chcete přidat další agregaci, najeďte myší na stávající výraz a kliknutím na + vytvořte nový agregační sloupec nebo [vzorec sloupce](concepts-data-flow-column-pattern.md).
 
-![Nastavení agregace transformace](media/data-flow/agg2.png "Nastavení agregace transformace")
+Agregovaná(media/data-flow/agg2.png "Nastavení") agregované agregované transformace pro ![transformaci]
 
 > [!NOTE]
 > Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
@@ -44,6 +44,6 @@ Agregované transformace jsou úzce rovnocenné dotazům na agregační výběr 
 * Použití agregační funkce k zahrnutí tohoto dalšího sloupce, například Last () nebo First ()
 * Znovu se připojte ke sloupcům před agregací pomocí [vzoru vlastního spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Definování agregace na základě okna pomocí [transformace okna](data-flow-window.md)

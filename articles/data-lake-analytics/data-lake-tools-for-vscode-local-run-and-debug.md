@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e51b5640163546c673a1b0f61da47ccd992f27ad
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338251"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030033"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Spuštění U-SQL a místní ladění v Visual Studio Code
 Tento článek popisuje, jak spustit úlohy U-SQL na místním vývojovém počítači, abyste urychlili fáze počátečního kódování nebo mohli ladit kód místně v Visual Studio Code. Pokyny k nástroji Azure Data Lake Tool for Visual Studio Code najdete v tématu [použití kódu nástroje Azure Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -23,7 +23,7 @@ Pouze instalace systému Windows Nástroje Azure Data Lake pro Visual Studio pod
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Nastavení místního prostředí pro spuštění U-SQL
 
-1. Vyberte CTRL + SHIFT + P a otevřete paletu příkazů a pak zadejte **ADL: Stáhněte si místní balíček** pro spuštění a Stáhněte balíčky.  
+1. Stisknutím kombinace kláves CTRL + SHIFT + P otevřete paletu příkazů a pak zadejte **ADL: stáhnout místní spuštění balíčku** pro stažení balíčků.  
 
    ![Stáhnout balíčky závislostí ADL LocalRun](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
@@ -45,40 +45,39 @@ Pouze instalace systému Windows Nástroje Azure Data Lake pro Visual Studio pod
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Spuštění místní služby spuštění a odeslání úlohy U-SQL do místního účtu 
-V případě prvního uživatele použijte **ADL: Pokud jste**nestavili [místní prostředí pro spuštění U-SQL](#set-up-the-u-sql-local-run-environment), Stáhněte si místní spuštění balíčku pro stažení místních balíčků spuštění.
+V případě prvního uživatele použijte **ADL: Stáhněte si místní spuštění balíčku** pro stažení místních balíčků Run, pokud jste nastavili [místní prostředí pro spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
 
-1. Vyberte CTRL + SHIFT + P a otevřete paletu příkazů a pak zadejte **ADL: Spusťte službu**Local run.   
+1. Stisknutím kombinace kláves CTRL + SHIFT + P otevřete paletu příkazů a pak zadejte **ADL: Spusťte místní spuštění služby**.   
 2. Pokud chcete licenční podmínky pro software společnosti Microsoft přijměte poprvé, vyberte **přijmout** . 
 
    ![Přijmout licenční podmínky pro software společnosti Microsoft](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
 3. Otevře se konzola cmd. Pro uživatele v prvním čase musíte zadat **3**a potom najít cestu k místní složce pro vstup a výstup dat. Pokud nejste úspěšně definovali cestu pomocí zpětných lomítek, zkuste lomítko. Pro jiné možnosti můžete použít výchozí hodnoty.
 
    ![Data Lake nástroje pro Visual Studio Code místní spuštění cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. Stisknutím kombinace kláves CTRL + SHIFT + P otevřete paletu příkazů a **zadejte ADL: Odešlete**úlohu a pak vyberte **místní** a odešlete úlohu do místního účtu.
+4. Vyberte CTRL + SHIFT + P a otevřete paletu příkazů, zadejte **ADL: odeslat úlohu**a potom vyberte **místní** a odešlete úlohu do místního účtu.
 
    ![Data Lake nástroje pro Visual Studio Code výběr místní](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. Po odeslání úlohy si můžete zobrazit podrobnosti o odeslání. Chcete-li zobrazit podrobnosti o odeslání, vyberte v okně **výstup** možnost **jobUrl** . Stav odeslání úlohy můžete také zobrazit z konzoly cmd. Pokud chcete získat další informace o úloze, zadejte **7** v konzole cmd.
 
-   ![Data Lake Tools for Visual Studio Code Local Run Output](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
-   ![Data Lake Tools for Visual Studio Code status cmd run](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
+   @no__t – 0Data Lake Tools for Visual Studio Code místního spuštění výstupu @ no__t-1 @ no__t-2Data Lake Tools for Visual Studio Code Local Run cmd status @ no__t-3 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Spustit místní ladění pro úlohu U-SQL  
 Pro uživatele v prvním čase:
 
-1. Použijte **ADL: Pokud jste**nestavili [místní prostředí pro spuštění U-SQL](#set-up-the-u-sql-local-run-environment), Stáhněte si místní spuštění balíčku pro stažení místních balíčků spuštění.
+1. Pomocí **ADL: stáhnout místní balíček** pro spuštění pro stažení místních balíčků spuštění, pokud jste nastavili [místní prostředí pro spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Pokud není nainstalována, nainstalujte .NET Core SDK 2,0, jak je navrženo v okně se zprávou.
  
-  ![připomenutí nainstaluje dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Pokud C# není nainstalovaný, nainstalujte pro Visual Studio Code, jak je navrženo v okně se zprávou. Pokračujte kliknutím na tlačítko **nainstalovat** a pak restartujte VSCode.
+   @ no__t-1reminder nainstaluje dotnet @ no__t-2
+3. Pokud C# není nainstalovaný, nainstalujte pro Visual Studio Code, jak je navrženo v okně se zprávou. Pokračujte kliknutím na tlačítko **nainstalovat** a pak restartujte VSCode.
 
     ![Připomenutí k instalaciC#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 Pomocí následujících kroků proveďte místní ladění:
   
-1. Vyberte CTRL + SHIFT + P a otevřete paletu příkazů a pak zadejte **ADL: Spusťte službu**Local run. Otevře se konzola cmd. Ujistěte se, že je nastavena sada dataroot.
+1. Stisknutím kombinace kláves CTRL + SHIFT + P otevřete paletu příkazů a pak zadejte **ADL: Spusťte místní spuštění služby**. Otevře se konzola cmd. Ujistěte se, že je nastavena sada **dataroot** .
 2. Nastavte zarážku v C# kódu na pozadí.
-3. Zpět na editor skriptů, klikněte pravým tlačítkem a **vyberte ADL: Místní ladění**.
+3. Zpět na editor skriptů, klikněte pravým tlačítkem a vyberte **ADL: místní ladění**.
     
    ![Data Lake nástroje pro Visual Studio Code výsledek místního ladění](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 
