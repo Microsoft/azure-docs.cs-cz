@@ -142,7 +142,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>Získání přístupových klíčů k úložišti
 Vyhledejte přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčích najdete v tématu [informace o účtech Azure Storage](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: Klikněte na **všechny služby** > **účty** > úložiště**přístupové klíče***účtu* > úložiště. Zkopírujte klíč označený jako **klíč1**.
+* **Portál**: Klikněte na **všechny služby**  >  **účty**  > úložiště **přístupové klíče** *účtu* > úložiště. Zkopírujte klíč označený jako **klíč1**.
 * **PowerShell**: Pomocí [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) Získejte klíč úložiště pro účet úložiště **mystorageaccount** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč označený jako **klíč1**.
 
 ```powershell

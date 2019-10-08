@@ -58,7 +58,7 @@ V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovo
 1. Vyberte **Sestavy**.
 1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
     ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. Souhrnná částka za **Celkové využití** a **Azure Marketplace** by měla odpovídat hodnotě *****Celková rozšířená částka** na vaší faktuře.
+1. Souhrnná částka za **Celkové využití** a **Azure Marketplace** by měla odpovídat hodnotě **Celková rozšířená částka** na vaší faktuře.
 1. Další podrobnosti o vašich poplatcích najdete v části **Stažení dat o využití**.  
     ![Snímek obrazovky s kartou Stažení dat o využití](./media/billing-understand-your-bill-ea/ea-portal-download-usage.png)
 
@@ -99,7 +99,7 @@ V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovo
 1. Vyberte **Sestavy**.
 1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
     ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
-1. Částka **Celkové využití** by měla odpovídat hodnotě *****Celková rozšířená částka** na vaší faktuře za nadlimitní využití služby.  
+1. Částka **Celkové využití** by měla odpovídat hodnotě **Celková rozšířená částka** na vaší faktuře za nadlimitní využití služby.  
 1. Další informace o poplatcích najdete v části **Stažení dat o využití** > **Stažení rozšířené sestavy**. Tato sestava nezahrnuje daně, poplatky za rezervace ani poplatky za Marketplace.  
       ![Snímek obrazovky ukazující položku Stažení rozšířené sestavy na kartě Stažení dat o využití](./media/billing-understand-your-bill-ea/ea-portal-download-usage-advanced.png)
 
