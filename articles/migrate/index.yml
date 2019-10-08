@@ -1,43 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Azure Migrate
+summary: Azure Migrate můžete využít k migraci do cloudu Azure. Azure Migrate je centrem pro zjišťování, hodnocení a migraci místních úloh do Azure. Toto centrum poskytuje nástroje Azure Migrate a také integrované nástroje od nezávislých výrobců softwaru (ISV).
 metadata:
-  title: 'Dokumentace k Azure Migrate – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: Informace o posouzení místních počítačů pro migraci do Azure
-  services: migration-planner
-  author: rayne-wiselman
-  manager: carmonm
-  ms.service: migration
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Dokumentace k Azure Migrate
+  description: Azure Migrate můžete využít k migraci do cloudu Azure. Azure Migrate je centrem pro zjišťování, hodnocení a migraci místních úloh do Azure. Toto centrum poskytuje nástroje Azure Migrate a také integrované nástroje od nezávislých výrobců softwaru (ISV).
+  ms.service: azure-migrate
   ms.topic: landing-page
-  ms.date: 11/22/2017
+  ms.collection: collection
+  author: rayne-wiselman
   ms.author: raynew
-abstract:
-  description: 'Azure Migrate pomáhá při migraci do cloudu Azure. Azure Migrate je centrem pro sledování zjišťování, hodnocení a migrace místních úloh a cloudových virtuálních počítačů. Toto centrum poskytuje nástroje Azure Migrate pro hodnocení a migraci a také integrované nástroj od nezávislých výrobců softwaru (ISV).'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Informace o posouzení a migraci virtuálních počítačů VMware do Azure
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-vmware">Příprava virtuálních počítačů VMware na vyhodnocení a migraci do Azure</a>
-          - html: <a href="tutorial-assess-vmware">Posouzení virtuálních počítačů VMware pro migraci do Azure</a>
-          - html: <a href="tutorial-migrate-vmware">Migrace virtuálních počítačů VMware do Azure bez agentů</a>
-          - html: <a href="tutorial-migrate-vmware-agent">Migrace virtuálních počítačů VMware do Azure založená na agentech</a>
-      - type: paragraph
-        text: Informace o posouzení a migraci virtuálních počítačů Hyper-V do Azure
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-hyper-v">Příprava virtuálních počítačů Hyper-V na vyhodnocení a migraci do Azure</a>
-          - html: <a href="tutorial-assess-hyper-v">Posouzení virtuálních počítačů Hyper-V pro migraci do Azure</a>
-          - html: <a href="tutorial-migrate-hyper-v">Migrace virtuálních počítačů Hyper-V do Azure</a>
-      - type: paragraph
-        text: 'Zjistěte si víc o migraci fyzických serverů, virtualizovaných počítačů a cloudových virtuálních počítačů do Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-migrate-physical-virtual-machines">Migrace fyzických nebo virtualizovaných serverů do Azure</a>
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001136"
+landingContent:
+- title: Informace o službě Azure Migrate
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Migrate?
+      url: ./migrate-services-overview.md
+    - text: Co je nového v Azure Migrate?
+      url: ./whats-new.md
+    - text: Časté dotazy
+      url: ./resources-faq.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vyhodnocení virtuálních počítačů VMware (vyhodnocení serveru)
+      url: ./tutorial-prepare-vmware.md
+    - text: Vyhodnocení virtuálních počítačů Hyper-V (vyhodnocení serveru)
+      url: ./tutorial-prepare-hyper-v.md
+    - text: Migrace virtuálních počítačů VMware (migrace serveru)
+      url: ./server-migrate-overview.md
+    - text: Migrace virtuálních počítačů Hyper-V (migrace serveru)
+      url: ./tutorial-migrate-hyper-v.md
+    - text: Migrace fyzických serverů / virtuálních počítačů (migrace serveru)
+      url: ./tutorial-migrate-physical-virtual-machines.md
+- title: Začátek nasazení
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Přehled osvědčených postupů pro vyhodnocení serveru
+      url: ./best-practices-assessment.md
+    - text: Další informace o nasazení zařízení s využitím Azure Migrate
+      url: ./migrate-replication-appliance.md
+    - text: Přehled matice podpory pro Azure Migrate
+      url: migrate-support-matrix.md
+    - text: Přehled matice podpory pro VMware
+      url: migrate-support-matrix-vmware.md
+    - text: Přehled matice podpory pro Hyper-V
+      url: migrate-support-matrix-hyper-v.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání nástrojů pro migraci
+      url: ./how-to-migrate.md
+    - text: Škálování vyhodnocení pro VMware
+      url: ./scale-vmware-assessment.md
+    - text: Automatizace a škálování migrace
+      url: ./how-to-migrate-at-scale.md
+    - text: Řešení potíží s hodnocením a migrací
+      url: ./troubleshooting-general.md
+- title: Další informace
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Architektura migrace založené na agentech pro VMware
+      url: ./agent-based-migration-architecture.md
+    - text: Architektura migrace Hyper-V
+      url: ./hyper-v-migration-architecture.md
+    - text: Další informace o vyhodnocení
+      url: ./concepts-assessment-calculation.md
+    - text: Další informace o vizualizaci závislostí
+      url: ./concepts-dependency-visualization.md
+- title: Zapojení
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Žádost o funkci služby
+      url: https://feedback.azure.com/forums/907195-azure-migrate
+    - text: Dotaz na fóru
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=AzureMigrate
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

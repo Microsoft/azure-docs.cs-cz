@@ -4,16 +4,16 @@ description: V tomto článku jsou vysvětlené nejčastější úkoly, které p
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105484"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308092"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -31,7 +31,7 @@ Při prvním přidání nových vlastníků účtů do registrace Azure EA se u 
 
 Jakmile správce Azure EA vytvoří oddělení, může přidat správce oddělení a přidružit je k oddělením. Správce oddělení může vytvářet nové účty. Nové účty jsou potřeba pro vytvářená předplatná Azure EA.
 
-Další informace o přidání oddělení najdete v tématu Vytvoření oddělení Azure EA.
+Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](billing-ea-portal-get-started.md#add-a-department-admin).
 
 ## <a name="enterprise-user-roles"></a>Role podnikových uživatelů
 
@@ -208,7 +208,7 @@ Pokud uživatel nedostává oznámení, zkontrolujte, jestli jsou správně nast
 6. Pokud potřebujete přidat kontakt, klikněte na **Přidat**.
 7. Klikněte na **Uložit**.
 
-![Příklad přidání kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![Příklad ukazující pole pro přidání kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Nabídka Azure Sponsorship
 Nabídka Azure Sponsorship se týká omezeného sponzorovaného účtu Microsoft Azure. Nabídka je k dispozici jenom na základě e-mailové pozvánky určené omezenému počtu zákazníků, které vybral Microsoft. Pokud máte na nabídku Microsoft Azure Sponsorship nárok, přijde vám e-mailem pozvánka určená pro vaše ID účtu.

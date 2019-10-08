@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490289"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326941"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
@@ -28,22 +28,22 @@ Kredit vaší organizace zahrnuje váš peněžní závazek. Peněžní závazek
 
 Tato část se netýká zákazníků Azure v Austrálii, Japonsku a Singapuru. Pokud se nacházíte v některé z těchto zemí nebo oblastí, přejděte do části [Faktury pro ostatní zákazníky](#invoices-for-other-customers).
 
-Pokud během fakturačního cyklu dojde k jedné z následujících situací, dostanete fakturu za Azure:
+Pokud během fakturačního cyklu dojde k některé z následujících situací, dostanete fakturu za Azure:
 
 - **Nadlimitní využití služby:** Poplatky za využití pro vaši organizace překročí váš kredit.
-- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Bez ohledu na výši vašeho kreditu se vám budou fakturovat následující služby:
+- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Bez ohledu na zůstatek vašeho kreditu se vám budou fakturovat následující služby:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
-    - Registrovaný uživatel služby Remote Access Rights pro XenApp Essentials
+    - Registrovaný uživatel s oprávněním ke vzdálenému přístupu XenApp Essentials
     - Ubuntu Advantage
     - Visual Studio Enterprise (měsíční)
     - Visual Studio Enterprise (roční)
     - Visual Studio Professional (měsíční)
     - Visual Studio Professional (roční)
-- **Poplatky za Marketplace:** Kredit vaší organizace se nevztahuje na nákupy na webu Azure Marketplace a jejich využívání. Poplatky za Marketplace se vám tedy naúčtují bez ohledu na výši vašeho kreditu. Podnikový správce může povolit nebo zakázat nákupy na webu Marketplace na webu Enterprise Portal.
+- **Poplatky za Marketplace:** Kredit vaší organizace se nevztahuje na nákupy na webu Azure Marketplace a jejich využívání. Poplatky za Marketplace se vám tedy naúčtují bez ohledu na zůstatek vašeho kreditu. Podnikový správce může povolit nebo zakázat nákupy na webu Marketplace na webu Enterprise Portal.
 
 ## <a name="review-charges-for-most-customers"></a>Kontrola poplatků pro většinu zákazníků
 Tato část se netýká zákazníků Azure v Austrálii, Japonsku a Singapuru. Pokud se nacházíte v některé z těchto zemí, přejděte do části [Kontrola poplatků pro ostatní zákazníky](#review-charges-for-other-customers).
@@ -54,7 +54,7 @@ Na vaší faktuře se zobrazuje veškeré využívání Azure a za ním poplatky
 
 V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovou částku uvedenou na webu Enterprise Portal s vaší fakturou za Azure. Částky v části **Souhrn využití** jsou uvedené bez daně.
 
-1. Přihlaste se na web [Enterprise Portal](https://ea.azure.com).
+1. Přihlaste se k portálu [Enterprise Portal](https://ea.azure.com).
 1. Vyberte **Sestavy**.
 1. V pravém horním rohu karty přepněte zobrazení z **M** na **C** a nastavte stejné období jako na faktuře.  
     ![Snímek obrazovky zobrazující možnost M + C v souhrnu využití](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
@@ -69,13 +69,13 @@ Tato část se týká jenom zákazníků Azure v Austrálii, Japonsku a Singapur
 Když nastane některá z následujících situací, dostanete jednu nebo více faktur Azure:
 
 - **Nadlimitní využití služby:** Poplatky za využití pro vaši organizace překročí váš kredit.
-- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Bez ohledu na výši vašeho kreditu se vám budou fakturovat následující služby:
+- **Poplatky účtované zvlášť:** Služby použité vaší organizací, na které se nevztahuje kredit. Fakturují se vám následující služby:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
     - Registrovaný uživatel
     - Openlogic
-    - Registrovaný uživatel služby Remote Access Rights pro XenApp Essentials
+    - Registrovaný uživatel s oprávněním ke vzdálenému přístupu XenApp Essentials
     - Ubuntu Advantage
     - Visual Studio Enterprise (měsíční)
     - Visual Studio Enterprise (roční)

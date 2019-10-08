@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240245"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338486"
 ---
 ::: zone target="docs"
 
@@ -53,7 +53,7 @@ Než začnete, ujistěte se, že:
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
 6. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
 7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
-    - Alespoň jeden měděný kabel 10 GbE SFP+ Twinax nebo optický kabel SFP+ (pro síťová rozhraní DATA 1, DATA 2). Data Box obsahuje síťové rozhraní Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0, takže kabely kompatibilní s tímto rozhraním by měly fungovat. Například při interním testování jsme použili kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M. Další informace najdete v [seznamu podporovaných kabelů a přepínačů od společnosti Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Alespoň jeden měděný kabel 10 GbE SFP+ Twinax nebo optický kabel SFP+ (pro síťová rozhraní DATA 1, DATA 2). Data Box obsahuje síťové rozhraní Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0, takže kabely kompatibilní s tímto rozhraním by měly fungovat. Například při interním testování jsme použili kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M. Další informace najdete v [seznamu podporovaných kabelů a přepínačů od společnosti Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 

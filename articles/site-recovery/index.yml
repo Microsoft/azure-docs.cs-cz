@@ -1,77 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Site Recovery
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Site Recovery
+summary: Azure Site Recovery můžete použít k zotavení místních počítačů a úloh po havárii do Azure a virtuálních počítačů Azure do sekundární oblasti Azure. Díky replikaci do Azure můžete orchestrovat převzetí služeb při selhání, pokud dojde k výpadku, a pokračovat v přístupu k úlohám a aplikacím v Azure. Jakmile je primární lokalita znovu dostupná, můžete provést navrácení služeb po obnovení.
 metadata:
-  title: 'Dokumentace ke službě Azure Site Recovery – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
-  services: site-recovery
-  author: carmonmills
-  manager: carmonm
+  title: Dokumentace ke službě Azure Site Recovery
+  description: Azure Site Recovery můžete použít k zotavení místních počítačů a úloh po havárii do Azure a virtuálních počítačů Azure do sekundární oblasti Azure. Díky replikaci do Azure můžete orchestrovat převzetí služeb při selhání, pokud dojde k výpadku, a pokračovat v přístupu k úlohám a aplikacím v Azure. Jakmile je primární lokalita znovu dostupná, můžete provést navrácení služeb po obnovení.
   ms.service: site-recovery
   ms.topic: landing-page
-  ms.date: 11/27/2018
-  ms.author: carmonm
-abstract:
-  description: 'Azure Site Recovery orchestruje a spravuje zotavení po havárii pro virtuální počítače Azure a místní virtuální počítače a fyzické servery. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak replikovat, převzít služby při selhání a navrátit služby po obnovení.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Rychlé nastavení zotavení po havárii pro virtuální počítač Azure
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/media/index/portal.svg
-            text: portál Azure
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučíte se, jak nastavit zotavení po havárii pro virtuální počítače a fyzické servery.'
-      - type: text
-        html: <h3>Azure do Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">Nastavení zotavení po havárii</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">Spuštění postupu zotavení po havárii</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
-      - type: text
-        html: <h3>VMware</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-vmware">Příprava VMware v místním prostředí</a>
-          - html: <a href="tutorial-vmware-to-azure">Nastavení zotavení po havárii</a>
-          - html: <a href="tutorial-dr-drill-azure">Spuštění postupu zotavení po havárii</a>
-          - html: <a href="vmware-azure-tutorial-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
-      - type: text
-        html: <h3>Hyper-V</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-hyper-v">Příprava místního Hyper-V</a>
-          - html: <a href="tutorial-hyper-v-to-azure">Nastavení zotavení po havárii pro virtuální počítače Hyper-V</a>
-          - html: '<a href="tutorial-hyper-v-vmm-to-azure">Nastavení zotavení po havárii pro virtuální počítače Hyper-V, které spravuje System Center VMM</a>'
-          - html: <a href="tutorial-dr-drill-azure">Spuštění postupu zotavení po havárii</a>
-          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
-      - type: text
-        html: <h3>Migrace do Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
-          - html: <a href="tutorial-migrate-on-premises-to-azure">Migrace místních počítačů</a> nebo <a href="tutorial-migrate-aws-to-azure">instancí AWS do Azure</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">Reference k rozhraní REST API</a></p>
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001089"
+landingContent:
+- title: O službě Azure Site Recovery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Site Recovery?
+      url: ./site-recovery-overview.md
+    - text: Co je nového ve službě Site Recovery
+      url: ./site-recovery-whats-new.md
+- title: Zotavení po havárii pro virtuální počítače Azure
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vyzkoušení zotavení po havárii pro virtuální počítač Azure
+      url: ./azure-to-azure-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Zotavení po havárii pro virtuální počítače Azure
+      url: ./azure-to-azure-tutorial-enable-replication.md
+    - text: Přesun virtuálních počítačů Azure do jiné oblasti
+      url: ./azure-to-azure-tutorial-migrate.md
+  - linkListType: learn
+    links:
+    - text: Architektura zotavení po havárii virtuálního počítače Azure
+      url: ./azure-to-azure-architecture.md
+    - text: Systém podpory replikace z Azure do Azure
+      url: ./azure-to-azure-support-matrix.md
+    - text: Časté dotazy
+      url: ./azure-to-azure-common-questions.md
+    - text: Informace o přesunu virtuálních počítačů Azure
+      url: ./azure-to-azure-move-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Sítě pro zotavení po havárii virtuálních počítačů Azure
+      url: ./azure-to-azure-about-networking.md
+    - text: Zotavení po havárii po migraci do Azure
+      url: ./azure-to-azure-replicate-after-migration.md
+- title: Zotavení po havárii pro místní počítače
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zotavení po havárii pro virtuální počítače VMware
+      url: ./tutorial-prepare-azure.md
+    - text: Zotavení po havárii pro virtuální počítače Hyper-V
+      url: ./tutorial-prepare-azure-for-hyperv.md
+    - text: Zotavení po havárii pro fyzické servery
+      url: ./physical-azure-disaster-recovery.md
+  - linkListType: deploy
+    links:
+    - text: Matice podpory pro VMware
+      url: ./vmware-physical-azure-support-matrix.md
+    - text: Matice podpory pro Hyper-V
+      url: ./hyper-v-azure-support-matrix.md
+  - linkListType: learn
+    links:
+    - text: Architektura zotavení po havárii VMware
+      url: ./vmware-azure-architecture.md
+    - text: Přehled zotavení po havárii VMware
+      url: ./vmware-azure-about-disaster-recovery.md
+    - text: Časté dotazy k zotavení po havárii pro VMware
+      url: ./vmware-azure-common-questions.md
+    - text: Architektura zotavení po havárii pro Hyper-V
+      url: ./hyper-v-azure-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zotavení po havárii pro VMware ve velkém měřítku
+      url: ./vmware-physical-large-deployment.md
+    - text: Plánování kapacity pro VMware
+      url: ./site-recovery-plan-capacity-vmware.md
+    - text: Plánování kapacity pro Hyper-V
+      url: ./hyper-v-deployment-planner-overview.md
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa aktualizací Site Recovery
+      url: service-updates-how-to.md
+    - text: Monitorování Site Recovery
+      url: site-recovery-monitor-and-troubleshoot.md
+    - text: Monitorování Site Recovery s využitím protokolů Azure Monitoru
+      url: monitor-log-analytics.md
+- title: Zapojení
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Žádost o funkci služby
+      url: https://feedback.azure.com/forums/256299-site-recovery
+    - text: Dotaz na fóru
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

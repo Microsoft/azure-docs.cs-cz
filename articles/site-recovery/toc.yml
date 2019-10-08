@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Zotavení po havárii pro aplikace
       items:
-        - name: Nastavení zotavení po havárii do Azure pro místní aplikace
+        - name: Informace o zotavení po havárii pro místní aplikace
           href: site-recovery-workload.md
         - name: Active Directory a DNS
           href: site-recovery-active-directory.md

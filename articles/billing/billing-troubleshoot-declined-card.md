@@ -12,42 +12,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: banders
-ms.openlocfilehash: 730238d62e4ee4aad1807a4461c9b26ee1c8485d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 79e65932699242de2f161e6858189cf0bf562903
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69657057"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718674"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Řešení potíží s odmítnutou kartou při registraci do Azure
 
-Tento článek vám pomůže vyřešit problémy s odmítnutím platební karty při registraci do Azure na webu Azure Portal nebo v Centru účtů Azure. Než začnete s řešením tohoto problému, podívejte se na následující body:
+Může dojít k problému nebo chybě, kdy se při registraci na portálu Microsoft Azure nebo v Centru účtů Azure zamítne platební karta.
 
-- Ujistěte se, že informace, které jste zadali pro profil účtu Azure (jako je kontaktní e-mail, adresa a telefonní číslo), jsou správné.
-- Ujistěte se, že údaje o platební kartě jsou správné.​
-- Ujistěte se, že ještě nemáte účet Microsoft se stejnými údaji.
-- Debetní karty se nepřijímají.
+Pokud chcete tyto potíže vyřešit, zvolte si z následujících témat to, které nejvíce připomíná vaši situaci.
 
-## <a name="issues"></a>Problémy
-
-Níže jsou uvedeny běžné problémy, které můžou způsobit odmítnutí platební karty při registraci do Azure.
-
-### <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Poskytovatel platební karty není pro vaši zemi schválený
+## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Poskytovatel platební karty není pro vaši zemi schválený
 
 Když zvolíte kartu, Azure zobrazí možnosti karty platné v zemi, kterou vyberete. Pokud chcete ověřit, jestli jsou u vaší platební karty povoleny mezinárodní transakce, obraťte se na svou banku nebo vystavitele karty. Další informace o podporovaných zemích a měnách najdete na stránce [Nejčastější dotazy k cenám Azure](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >V Indii nejsou v současnosti podporovány jako platební nástroj platební karty American Express. Neznáme časový rámec, odkdy by mohly být přijatelnou formou platby.
 
-### <a name="youre-using-a-virtual-or-prepaid-card"></a>Používáte virtuální nebo předplacenou kartu 
+## <a name="youre-using-a-virtual-or-prepaid-card"></a>Používáte virtuální nebo předplacenou kartu 
 
 Při platbě za předplatná Azure se nepřijímají virtuální nebo předplacené kreditní nebo debetní karty.
 
-### <a name="your-credit-information-is-inaccurate-or-incomplete"></a>Zadané informace o platební kartě jsou nepřesné nebo neúplné 
+## <a name="your-credit-information-is-inaccurate-or-incomplete"></a>Zadané informace o platební kartě jsou nepřesné nebo neúplné 
 
 Vámi zadaný název, adresa a kód CVV se musí přesně shodovat s tím, co je na vytištěno kartě.
 
-### <a name="the-card-is-inactive-or-blocked"></a>Karta je neaktivní nebo zablokovaná 
+## <a name="the-card-is-inactive-or-blocked"></a>Karta je neaktivní nebo zablokovaná 
 
 Kontaktujte banku a ujistěte se, jestli je vaše karta aktivní.
 
@@ -57,13 +50,13 @@ Další informace o řešení potíží s registrací do Azure najdete v násled
 
 [Nemůžete se zaregistrovat do Azure na webu Azure Portal nebo v Centru účtů Azure](billing-troubleshoot-azure-sign-up.md)
 
-### <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Zastupujete firmu, která nechce platit kartou 
+## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Zastupujete firmu, která nechce platit kartou 
 
 Pokud zastupujete firmu, můžete předplatné Azure platit fakturačními metodami platby, jako jsou šeky, šeky splatné do druhého dne nebo platby převodem. Když u účtu nastavíte platbu fakturou, budete ji moct změnit na jiný způsob platby jenom v případě, že máte smlouvu se zákazníkem Microsoftu a zaregistrovali jste se k Azure prostřednictvím webu Azure.
 
 Další informace o tom, jak platit fakturou, najdete v tématu [o odeslání žádosti o zaplacení předplatného Azure fakturou](billing-how-to-pay-by-invoice.md).
 
-### <a name="your-credit-card-information-is-outdated"></a>Informace o vaší platební kartě jsou zastaralé 
+## <a name="your-credit-card-information-is-outdated"></a>Informace o vaší platební kartě jsou zastaralé 
 
 Informace o tom, jak spravovat informace o vaší kartě, včetně změny nebo odebrání karty, najdete v tématu [o přidání, aktualizaci nebo odebrání platební karty pro Azure](billing-how-to-change-credit-card.md).
 
