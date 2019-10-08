@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Skriptování Shellu v Linuxu
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: Etický hacking
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: Testovací prostředí v učebnách
       items:
         - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Připojení nebo odpojení sdílené galerie imagí
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
           items:
             - name: Vytváření a správa testovacích prostředí v učebnách

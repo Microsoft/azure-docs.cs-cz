@@ -27,14 +27,14 @@
           items:
             - name: .NET
               href: storage-quickstart-blobs-dotnet.md
-            - name: Node.js
-              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: Java
+              href: storage-quickstart-blobs-java.md
             - name: Python
               href: storage-quickstart-blobs-python.md
-            - name: JS/HTML s využitím v10 SDK
+            - name: Javascript (Node.js)
+              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: Javascript (prohlížeč)
               href: storage-quickstart-blobs-javascript-client-libraries-v10.md
-            - name: JS/HTML s využitím v2 SDK
-              href: storage-quickstart-blobs-javascript-client-libraries.md
             - name: Přejít
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -410,12 +410,12 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-            - name: Starší verze sad SDK
+            - name: Předchozí verze sady SDK
               items:
-                - name: Java (Storage SDK V7)
-                  href: storage-quickstart-blobs-java.md
-                - name: Node.js (Storage SDK v2)
+                - name: Javascript (Node.js) (Storage SDK v2)
                   href: storage-quickstart-blobs-nodejs.md
+                - name: Javascript (prohlížeč) (Storage SDK v2)
+                  href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: Správa objektů blob
           items:
             - name: Azure CLI

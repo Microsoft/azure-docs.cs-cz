@@ -59,7 +59,8 @@
           href: concepts-connectivity-architecture.md
     - name: Kontinuita podnikových procesů
       items:
-        - name: Přehled
+        - name: Úvod do provozní kontinuity
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: Zálohování a obnovení
           href: concepts-backup.md
@@ -185,7 +186,7 @@
       href: /rest/api/mariadb
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Uložené procedury Azure
+    - name: Uložené procedury správy
       href: reference-stored-procedures.md
 - name: Zdroje a prostředky
   items:

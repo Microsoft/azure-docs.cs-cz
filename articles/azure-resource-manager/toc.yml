@@ -71,6 +71,8 @@
         - name: Použití kontroly stavu v Deployment Manageru
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+        - name: Aktualizace skriptu nasazení VS na AZ PowerShell
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
         - name: Řešení potíže s nasazováním šablon
           href: resource-manager-tutorial-troubleshoot.md
 - name: Ukázky
@@ -141,14 +143,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: Nasazení – rozhraní příkazového řádku
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: Nasazení – PowerShell
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: Nasazení – REST API
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Opětovné nasazení při chybě
+          displayName: rollback
+          href: rollback-on-error.md
         - name: Zabezpečení šablony s tokenem SAS
           href: secure-template-with-sas-token.md
         - name: Nasazení do několika skupin prostředků nebo předplatných
