@@ -34,6 +34,8 @@
           href: sql-database-server-level-firewall-rule.md
         - name: Konfigurace veřejného koncového bodu ve spravované instanci
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: Konfigurace typů připojení pro spravovanou instanci
+          href: sql-database-managed-instance-connection-type.md
         - name: Připojení klientského virtuálního počítače ke spravované instanci
           href: sql-database-managed-instance-configure-vm.md
         - name: Připojení typu point-to-site ke spravované instanci

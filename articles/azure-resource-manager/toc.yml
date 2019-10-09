@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Vytvoření několika instancí
           href: resource-group-create-multiple.md
-        - name: Vytvoření prostředků a skupin prostředků v předplatném
-          displayName: subscription level deployment
+        - name: Prostředky na úrovni předplatného
           href: deploy-to-subscription.md
     - name: Nasazení šablon
       items:
