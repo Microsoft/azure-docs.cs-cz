@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2598ce01c749574833d53133ed3aced184e71737
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694603"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174737"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -137,7 +137,7 @@ Do modulu AzureADPreview byly přidány nové rutiny, které vám pomůžou defi
 **Kategorie služby:** Jiná  
 **Schopnost produktu:** Službě
 
-Vydali jsme aktualizovanou verzi Azure AD Connect pro zákazníky s automatickým upgradem. Tato nová verze zahrnuje několik nových funkcí, vylepšení a opravy chyb. Další informace o této nové verzi najdete v tématu [Azure AD Connect: Historie vydání verze](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14x0).
+Vydali jsme aktualizovanou verzi Azure AD Connect pro zákazníky s automatickým upgradem. Tato nová verze zahrnuje několik nových funkcí, vylepšení a opravy chyb. Další informace o této nové verzi najdete v tématu [Azure AD Connect: Historie vydání verze](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14250).
 
 ---
 
@@ -647,7 +647,7 @@ Další informace o těchto aktualizacích najdete v tématech [filtrování pro
 
 ---
 
-## <a name="june-2019"></a>Červeně 2019
+## <a name="june-2019"></a>Červen 2019
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Nové rozhraní riskDetections API pro Microsoft Graph (Public Preview)
 

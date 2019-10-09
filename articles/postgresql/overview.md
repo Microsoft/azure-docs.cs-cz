@@ -7,57 +7,57 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073272"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177954"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
-Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Je založen na komunitní verze open source [PostgreSQL](https://www.postgresql.org/) databázový stroj a je k dispozici dvě možnosti nasazení: Jeden Server a velkokapacitní (Citus) (preview).
+Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Vychází z komunitní verze open source databázového stroje [PostgreSQL](https://www.postgresql.org/) a je k dispozici ve dvou možnostech nasazení: jeden server a škálovatelné (Citus) (Preview).
 
-## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden Server
-Nabízí možnost nasazení jednoho serveru:
+## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden server
+Možnost nasazení jediného serveru nabízí:
 
-- Integrovanou vysokou dostupnost (99,99 % smlouva SLA) bez dalších poplatků
+- Integrovaná vysoká dostupnost bez dalších nákladů (99,99% SLA)
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách
 - Vertikální škálování podle potřeby během několika sekund
-- Monitorování a upozorňování rychle posoudit dopad vertikálního
+- Monitorování a upozorňování na rychlé posouzení dopadu škálování
 - Zabezpečení pro ochranu neaktivních uložených dat i přenášených dat
 - Automatické zálohování a obnovení k určitému bodu v čase po dobu až 35 dnů
-- Zabezpečení a dodržování předpisů na podnikové úrovni
+- Dodržování předpisů a zabezpečení na podnikové úrovni
 
-Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Umožňují vám soustředit se na rychlý vývoj aplikací a zkracuje dobu uvedení na trh, namísto trávit cenný čas a prostředky ke správě virtuálních počítačů a infrastruktury. Můžete pokračovat k vývoji aplikací pomocí opensourcových nástrojů a platformy podle vašeho výběru, aniž byste museli učit nové dovednosti.
+Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Díky tomu se můžete soustředit na rychlý vývoj aplikací a urychlení doby uvedení na trh, ale netráví drahých časů a prostředků pro správu virtuálních počítačů a infrastruktury. Můžete pokračovat v vývoji aplikace pomocí Open source nástrojů a platformy podle vašeho výběru, aniž byste se museli učit nové dovednosti.
 
-Možnost nasazení jednoho serveru nabízí tři cenové úrovně: Basic, pro obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-pricing-tiers.md) podrobnosti.
+Možnost nasazení na jeden server nabízí tři cenové úrovně: základní, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [cenové úrovně](concepts-pricing-tiers.md) .
 
-## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
-Možnost Hyperškálovatelného (Citus) vodorovně škáluje dotazy napříč více počítačů pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozích dotazů SQL na těchto serverů pro rychlejší odpovědi na rozsáhlých datových sadách. Aplikace, které vyžadují větší škálovatelnost a výkon, obvykle úlohy, které se blíží--nebo již překračují – 100 GB dat slouží.
+## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL – Citus (Náhled)
+Možnost Citus () horizontálně škáluje dotazy napříč více počítači pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozí dotazy SQL napříč těmito servery, aby bylo rychlejší odezvy na velké datové sady. Obsluhuje aplikace, které vyžadují větší rozsah a výkon, obvykle úlohy, které se blíží--100 GB dat.
 
-Nabízí možnost nasazení Hyperškálovatelného (Citus):
+Možnost nasazení Citus () nabízí:
 
-- Vodorovné škálování na více počítačů pomocí horizontálního dělení
-- Využitím paralelizace dotazů na těchto serverů pro rychlejší odpovědi na rozsáhlých datových sadách
-- Skvělou podporu pro aplikace s více tenanty, operační analýza v reálném čase a Vysoká propustnost transakčními úlohami
+- Horizontální škálování napříč několika počítači pomocí horizontálního dělení
+- Dotazování paralelního zpracování na těchto serverech pro rychlejší odezvy na velké datové sady
+- Vynikající podpora pro víceklientské aplikace, provozní analýzy v reálném čase a transakční úlohy s vysokou propustností
 
-Aplikace vytvořené pro PostgreSQL můžete spouštění distribuovaných dotazů na Hyperškálovatelného (Citus) se standardem [knihovny připojení](./concepts-connection-libraries.md) a minimální změny.
+Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](./concepts-connection-libraries.md) a minimálními změnami).
 
-Všimněte si, že Hyperškálovatelného (Citus) je ve verzi public preview a jako takový zatím nenabízí smlouvu SLA.
+Upozorňujeme, že Citus () je ve verzi Public Preview a že ještě nenabízí smlouvu SLA.
 
 ## <a name="data-security"></a>Zabezpečení dat
-Azure Database for PostgreSQL zachovává tradici zabezpečení dat v Azure databázové služby. Obsahuje funkce, které omezují přístup, chránit data v klidovém stavu a za provozu a vám pomohou monitorovat aktivitu. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
+Azure Database for PostgreSQL podrží zabezpečení dat v tradici Azure Database Services. Obsahuje funkce, které omezují přístup, chrání data v klidovém a velkém a usnadňuje monitorování aktivit. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
 
-Azure Database for postgresql – služba používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně záloh se šifrují na disku. Služba používá šifrování AES 256 bitů součástí šifrování úložiště Azure a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat. Ve výchozím nastavení služba Azure Database for PostgreSQL vyžaduje zabezpečené připojení pro data přenášená přes síť a mezi databází a kódem klientské aplikace.
+Služba Azure Database for PostgreSQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat. Ve výchozím nastavení vyžaduje služba Azure Database for PostgreSQL zabezpečená připojení pro přenášená data v síti i mezi databází a klientskou aplikací.
 
 ## <a name="contacts"></a>Kontakty
-Pro jakékoli dotazy nebo návrhy o práci s využitím Azure Database for PostgreSQL, pošlete e-mail na databázi Azure pro PostgreSQL týmu ([ @Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Tato adresa se pro obecné dotazy spíše než lístky podpory.
+Pokud máte jakékoli dotazy nebo návrhy týkající se práce s Azure Database for PostgreSQL, odešlete e-mail týmu Azure Database for PostgreSQL ([@Ask Azure DB pro PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Tato adresa je určena pro obecné otázky, nikoli pro lístky podpory.
 
-Kromě toho, zvažte následující body kontaktu podle potřeby:
-- Obraťte se na podporu Azure nebo vyřešit problém s vaším účtem [lístek na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Dále podle potřeby zvažte tyto kontaktní body:
+- Pokud chcete kontaktovat podporu Azure nebo vyřešit problém s vaším účtem, zapište [lístek z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) najdete porovnání nákladů a kalkulačky.
-- Začněte vytvořením první databáze Azure Database for PostgreSQL [jeden Server](./quickstart-create-server-database-portal.md) nebo [Hyperškálovatelného (Citus) (preview)](./quickstart-create-hyperscale-portal.md)
-- Vytvořte svoji první aplikaci v prostředí typu Python, PHP, Ruby, C\#, Java, Node.js: [Knihovny připojení](./concepts-connection-libraries.md)
+- Začněte vytvořením prvního Azure Database for PostgreSQL [jednoho serveru](./quickstart-create-server-database-portal.md) nebo Citus ( [Preview)](./quickstart-create-hyperscale-portal.md)
+- Sestavte svou první aplikaci v jazyce Python, PHP, Ruby, C\#, Java, Node.js: [Knihovny připojení](./concepts-connection-libraries.md)

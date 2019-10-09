@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8c882d819771473db2cf1c91fb39912883d144d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963741"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177570"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Kurz: Přidání značek do šablony Správce prostředků
 
@@ -35,15 +35,15 @@ Po nasazení těchto prostředků možná budete potřebovat sledovat náklady a
 
 ## <a name="add-tags"></a>Přidat značky
 
-Prostředky označíte přidáním hodnot, které vám pomůžou identifikovat jejich použití. Můžete například přidat značky, které označují prostředí a projekt. Můžete přidat značky, které identifikují nákladové středisko nebo tým, který je vlastníkem daného prostředku. Přidejte všechny hodnoty, které dávají smysl pro vaši organizaci.
+Prostředky označíte přidáním hodnot, které vám pomůžou identifikovat jejich použití. Můžete například přidat značky, které uvádějí prostředí a projekt. Můžete přidat značky, které identifikují nákladové středisko nebo tým, který je vlastníkem daného prostředku. Přidejte všechny hodnoty, které dávají smysl pro vaši organizaci.
 
 Následující příklad zvýrazní změny šablony. Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Je čas nasadit šablonu a podívat se na vrácenou hodnotu.
+Je čas nasadit šablonu a prohlédnout si výsledky.
 
 Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937145"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176623"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Azure Security Center pro směrný plán IoT a vlastní kontroly
 
 Tento článek vysvětluje Azure Security Center pro směrný plán IoT a shrnuje všechny přidružené vlastnosti vlastních kontrol standardních hodnot.
 
-## <a name="baseline"></a>směrný
+## <a name="baseline"></a>Směrný
 
 Směrný plán vytvoří pro každé zařízení standardní chování a usnadňuje navázání neobvyklého chování nebo odchylky od očekávaných standardů.  
 
@@ -55,7 +55,7 @@ Konfigurace vlastních kontrol standardních hodnot:
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }

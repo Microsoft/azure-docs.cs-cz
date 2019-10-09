@@ -1,6 +1,6 @@
 ---
 title: Doporučení zabezpečení pro virtuální počítače se systémem Linux v Azure
-description: Doporučení zabezpečení pro virtuální počítače v Azure. Implementace těchto doporučení vám pomůže splnit vaše povinnosti zabezpečení, jak je popsáno v našem sdíleném modelu zodpovědnosti a zvýší celkové zabezpečení vašich nasazení.
+description: Tato doporučení použijte k zajištění splnění bezpečnostních povinností popsaných v modelu sdílené zodpovědnosti a ke zvýšení celkového zabezpečení vašich nasazení.
 services: virtual-machines
 author: barclayn
 manager: RKarlin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 39d83907256596e2d6904422f9bf71e435614f03
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c7a313a73af7969fc203ee00644901539890f7a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71163979"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174154"
 ---
 # <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Doporučení zabezpečení pro virtuální počítače se systémem Linux v Azure
 

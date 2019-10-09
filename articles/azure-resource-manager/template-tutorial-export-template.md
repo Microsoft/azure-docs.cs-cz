@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53c93b4e0184468ddee75613b48b887c9d07f751
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963790"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177581"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
@@ -46,13 +46,13 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
     - **Název**: zadejte název plánu služby App Service.
     - **Operační systém**: vyberte **Linux**.
     - **Oblast**: vyberte umístění Azure. Například **střed USA**.
-    - **Cenová úroveň**: Pokud chcete ušetřit náklady, změňte SKU na **Basic**.
+    - **Cenová úroveň**: Pokud chcete ušetřit náklady, změňte SKU na **Basic B1** (vývoj/test).
 
     ![Portál šablony Správce prostředků Exportovat šablonu](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Vyberte možnost **zkontrolovat a vytvořit**.
 1. Vyberte **vytvořit**. Vytvoření prostředku chvíli trvá.
 
-## <a name="export-template"></a>Exportovat šablonu
+## <a name="export-the-template"></a>Exportovat šablonu
 
 1. Vyberte **Přejít k prostředku**.
 
@@ -62,7 +62,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
     ![Šablona exportu šablony Správce prostředků](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Funkce Exportovat šablonu převezme aktuální stav prostředku a vygeneruje šablonu, která ho nasadí. Export šablony může být užitečný pro rychlé získání formátu JSON, který potřebujete k nasazení prostředku.
+   Funkce Exportovat šablonu převezme aktuální stav prostředku a vygeneruje šablonu, která ho nasadí. Export šablony může být užitečný způsob, jak rychle získat JSON, který potřebujete k nasazení prostředku.
 
 1. Zkopírujte definici **Microsoft. Web/serverových farem** a definici parametru do šablony.
 
@@ -71,7 +71,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 > [!IMPORTANT]
 > Vyexportovaná šablona je typicky podrobnější, než když budete chtít vytvořit šablonu. Například objekt SKU v exportované šabloně má pět vlastností. Tato šablona funguje, ale můžete pouze použít vlastnost **Name** . Můžete začít s exportovanou šablonou a pak ji upravit tak, jak budete chtít podle svých požadavků.
 
-## <a name="revise-existing-template"></a>Revidovat existující šablonu
+## <a name="revise-the-existing-template"></a>Revidovat existující šablonu
 
 Vyexportovaná šablona vám poskytne většinu formátu JSON, který potřebujete, ale je nutné ji přizpůsobit pro šablonu. Věnujte zvláštní pozornost rozdílům v parametrech a proměnných mezi šablonou a exportovanou šablonou. Proces exportu neznáte parametry a proměnné, které jste již definovali v šabloně.
 
@@ -81,7 +81,7 @@ Zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-template"></a>Nasadit šablonu
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
 

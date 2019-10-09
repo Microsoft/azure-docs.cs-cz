@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 36514c342f8ed8d988f26fcb69daf30c42ee5cf3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326727"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176634"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
@@ -34,11 +34,11 @@ Vzhledem k tomu, že miliarda nových zařízení je připojená k Internetu a i
 
 Azure Security Center pro IoT zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, nabízí prevenci proti hrozbám a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních, místních i v Azure. Cloud. 
 
-![Architektura služby Azure Security Center pro IoT](./media/architecture/azure-iot-security-architecture.png)
+![Azure Security Center pro architekturu IoT](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>Sjednocená viditelnost a řízení
 
-Získejte jednotný přehled o zabezpečení všech místních i cloudových úloh včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení. 
+Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami, včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení. 
 
 ### <a name="adaptive-threat-prevention"></a>Prevence adaptivních hrozeb
 
@@ -46,7 +46,7 @@ Používejte Azure Security Center pro IoT k nepřetržitému monitorování zab
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 
-Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte ve svých řešeních IoT příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte řešení IoT pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 
 ## <a name="next-steps"></a>Další kroky
 

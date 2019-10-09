@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Service Bus, témat a odběrů s Node.js | Dokumentace Microsoftu
-description: Zjistěte, jak používat témata a odběry Service Bus v Azure z aplikace Node.js.
+title: Jak používat Azure Service Bus témata a odběry s Node. js | Microsoft Docs
+description: Naučte se používat Service Bus témata a odběry v Azure z aplikace Node. js.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,40 +14,40 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 7686014adb989494e6df277de4137b76c3125696
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f927274e1e866a9cba72330280316cc5ee7d8047
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992139"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178058"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Jak používat témata a odběry Service Bus pomocí Node.js a balíček azure/service-bus
-> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Node.js balíčku"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Jak používat Service Bus témata a odběry s využitím Node. js a balíčku Azure/Service-Bus
+> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-V tomto kurzu se dozvíte, jak psát aplikace Node.js k odesílání zpráv do tématu služby Service Bus a příjem zpráv z odběru služby Service Bus pomocí nového [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíčku. Tento balíček používá rychlejší [protokolu AMQP 1.0](service-bus-amqp-overview.md) vzhledem k tomu starší [azure-sb](https://www.npmjs.com/package/azure-sb) balíček použitý [rozhraní API REST pro Service Bus za běhu](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsané v jazyce JavaScript.
+V tomto kurzu zjistíte, jak napsat program Node. js pro posílání zpráv do Service Busho tématu a příjem zpráv z Service Bus předplatného pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 
-## <a name="prerequisites"></a>Požadavky
-- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Pokud nemáte téma a odběr pracovat, postupujte podle kroků v [použijte Azure portal k vytvoření služby Service Bus témata a odběry](service-bus-quickstart-topics-subscriptions-portal.md) článek k jejich vytvoření. Poznamenejte si připojovací řetězec pro vaši instanci služby Service Bus a názvy téma a odběr, který jste vytvořili. Použijeme tyto hodnoty ve vzorcích.
+## <a name="prerequisites"></a>Předpoklady
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Pokud nemáte téma a předplatné, se kterým chcete pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření Service Bus témata a předplatných](service-bus-quickstart-topics-subscriptions-portal.md) , abyste je mohli vytvořit. Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a názvy tématu a předplatného, které jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 
 > [!NOTE]
-> - Tento kurz pracuje s ukázkami, které můžete zkopírovat a spustit pomocí [Nodejs](https://nodejs.org/). Pokyny o tom, jak vytvořit aplikaci v Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure](../app-service/app-service-web-get-started-nodejs.md), nebo [Node.js cloudové službě pomocí Windows Powershellu](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Nové [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíček nepodporuje vytváření ještě topcis a předplatných. Použijte prosím [ @azure/arm-servicebus ](https://www.npmjs.com/package/@azure/arm-servicebus) balíček, pokud chcete prostřednictvím kódu programu vytvořit.
+> - Tento kurz funguje s ukázkami, které můžete zkopírovat a spustit pomocí [NodeJS](https://nodejs.org/). Pokyny k vytvoření aplikace Node. js najdete v tématu [Vytvoření a nasazení aplikace Node. js na web Azure](../app-service/app-service-web-get-started-nodejs.md)nebo [cloudovou službu Node. js pomocí prostředí Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Nový balíček [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) ještě nepodporuje vytváření topcis a předplatných. Pokud je chcete programově vytvořit, použijte prosím balíček [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) .
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalace balíčku pomocí Node Package Manageru (NPM)
-Instalace balíčku npm služby Service Bus, otevřete příkazový řádek, který má `npm` v cestě, změňte adresář na složku, ve kterém chcete mít vašich ukázek a spusťte tento příkaz.
+Chcete-li nainstalovat balíček npm pro Service Bus, otevřete příkazový řádek, který má v cestě `npm`, změňte adresář na složku, ve které chcete mít ukázky, a pak spusťte tento příkaz.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-Interakce se službou Service Bus téma začíná vytvoření instance [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) třídy a použít ho k vytvoření instance [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) třídy. Jakmile budete mít klienta tématu, můžete vytvořit odesílatele a použijte buď [odeslat](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) nebo [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metodu na ni odesílání zpráv.
+Interakce s tématem Service Bus začíná vytvořením instance třídy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) a jejím použitím k vytvoření instance třídy [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) . Jakmile budete mít klienta tématu, můžete vytvořit odesílatele a k odesílání zpráv použít buď metodu [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) , nebo [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) .
 
-1. Otevřete oblíbeného editoru, jako například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte soubor s názvem `send.js` a vložte níže uvedeného kódu do něj. Tento kód odešle 10 zpráv do tématu.
+1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com/)
+2. Vytvořte soubor s názvem `send.js` a vložte do něj následující kód. Tento kód odešle 10 zpráv do tématu.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -84,20 +84,20 @@ Interakce se službou Service Bus téma začíná vytvoření instance [ServiceB
       console.log("Error occurred: ", err);
     });
     ```
-3. Zadejte připojovací řetězec a název vašeho tématu ve výše uvedeném kódu.
-4. Pak spusťte příkaz `node send.js` v příkazovém řádku a spusťte tento soubor. 
+3. Do výše uvedeného kódu zadejte připojovací řetězec a název vašeho tématu.
+4. Pak spusťte příkaz `node send.js` na příkazovém řádku, aby se tento soubor spustil. 
 
-Blahopřejeme! Jste právě odeslali zprávy do fronty služby Service Bus.
+Blahopřejeme! Právě jste odeslali zprávy do fronty Service Bus.
 
-Zprávy mají některými standardní vlastnostmi, třeba `label` a `messageId` , kterou můžete nastavit při odesílání. Pokud chcete nastavit všechny vlastní vlastnosti, použijte `userProperties`, což je objekt json, který může obsahovat páry klíč hodnota vaše vlastní data.
+Zprávy mají některé standardní vlastnosti, například `label` a `messageId`, které můžete nastavit při odesílání. Pokud chcete nastavit libovolné vlastní vlastnosti, použijte `userProperties`, což je objekt JSON, který může uchovávat páry klíč-hodnota vašich vlastních dat.
 
-Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Neexistuje žádné omezení na počet zpráv držených v tématu, ale celková velikost zpráv držených v tématu, je omezený. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [kvótách služby Service Bus](service-bus-quotas.md).
+Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Počet zpráv držených v tématu není nijak omezený, ale celková velikost zpráv držených v tématu je omezena. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [Service Bus kvóty](service-bus-quotas.md).
 
-## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
-Interakce se službou Service Bus předplatného začíná vytvoření instance [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) třídy a použít ho k vytvoření instance [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) třídy. Jakmile budete mít předplatné klienta, můžete vytvořit příjemce a použijte buď [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) nebo [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metoda ji pro příjem zpráv.
+## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
+Interakce s předplatným Service Bus začíná vytvořením instance třídy [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) a jejím použitím k vytvoření instance třídy [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) . Jakmile budete mít klienta předplatného, můžete vytvořit příjemce a pro příjem zpráv použít buď metodu [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) nebo [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) .
 
-1. Otevřete oblíbeného editoru, jako například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte soubor s názvem `recieve.js` a vložte níže uvedeného kódu do něj. Tento kód se pokusí o 10 zpráv z odběru. Skutečný počet, který jste dostali, závisí na počtu zpráv v předplatném a latence sítě.
+1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com/)
+2. Vytvořte soubor s názvem `recieve.js` a vložte do něj následující kód. Tento kód se pokusí získat 10 zpráv z vašeho předplatného. Skutečný počet, který obdržíte, závisí na počtu zpráv v předplatném a na latenci sítě.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -110,7 +110,7 @@ Interakce se službou Service Bus předplatného začíná vytvoření instance 
     async function main(){
       const sbClient = ServiceBusClient.createFromConnectionString(connectionString); 
       const subscriptionClient = sbClient.createSubscriptionClient(topicName, subscriptionName);
-      const receiver = subscriptionClient.createReceiver(ReceiveMode.ReceiveAndDelete);
+      const receiver = subscriptionClient.createReceiver(ReceiveMode.receiveAndDelete);
       
       try {
         const messages = await receiver.receiveMessages(10);
@@ -127,32 +127,32 @@ Interakce se službou Service Bus předplatného začíná vytvoření instance 
       console.log("Error occurred: ", err);
     });
     ```
-3. Zadejte připojovací řetězec a názvy téma a odběr ve výše uvedeném kódu.
-4. Pak spusťte příkaz `node receiveMessages.js` v příkazovém řádku a spusťte tento soubor.
+3. Do výše uvedeného kódu zadejte připojovací řetězec a názvy vašeho tématu a předplatného.
+4. Pak spusťte příkaz `node receiveMessages.js` na příkazovém řádku, aby se tento soubor spustil.
 
-Blahopřejeme! Právě obdrželi zprávy z odběru služby Service Bus.
+Blahopřejeme! Právě jste dostali zprávy z předplatného Service Bus.
 
-[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) metoda přijímá `ReceiveMode` což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnat vaše zprávy](message-transfers-locks-settlement.md#settling-receive-operations) používáte `PeekLock` režimu pomocí některé z `complete()`, `abandon()`, `defer()`, nebo `deadletter()` metody ve zprávě.
+Metoda [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) přebírá v `ReceiveMode`, což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnávat zprávy](message-transfers-locks-settlement.md#settling-receive-operations) , pokud použijete režim `PeekLock` pomocí kterékoli z metod `complete()`, `abandon()`, `defer()` nebo `deadletter()` ve zprávě.
 
-## <a name="subscription-filters-and-actions"></a>Filtry předplatných a akce
-Service Bus podporuje [akce na předplatná a filtry](topic-filters.md), která umožňuje filtrovat příchozí zprávy na předplatné a upravit jeho vlastnosti.
+## <a name="subscription-filters-and-actions"></a>Akce a filtry předplatného
+Service Bus podporuje [filtry a akce v předplatných](topic-filters.md), což umožňuje filtrovat příchozí zprávy do předplatného a upravovat jejich vlastnosti.
 
-Jakmile budete mít instanci `SubscriptionClient` můžete použít následujících metod na ji, abyste získali, přidání a odebrání pravidel v rámci předplatného řídit akce a filtry.
+Jakmile budete mít instanci `SubscriptionClient`, můžete k tomu použít níže uvedené metody, které vám pomůžou získat a odebrat pravidla v rámci předplatného a řídit tak filtry a akce.
 
-- getRules
+- getrules
 - addRule
 - removeRule
 
-Každé předplatné má výchozí pravidlo, které používá skutečný filtr k umožnění všechny příchozí zprávy. Když přidáte nové pravidlo, nezapomeňte odebrat výchozí filtr v pořadí filtru v nové pravidlo pracovat. Pokud předplatné nemá žádná pravidla, pak bude přijímat žádné zprávy.
+Každé předplatné má výchozí pravidlo, které používá filtr true k povolení všech příchozích zpráv. Když přidáte nové pravidlo, nezapomeňte odebrat výchozí filtr, aby se filtr v novém pravidle fungoval. Pokud předplatné nemá žádná pravidla, nepřijde žádné zprávy.
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace naleznete v následujících zdrojích.
+Další informace najdete v následujících zdrojích informací.
 
 - [Fronty, témata a odběry](service-bus-queues-topics-subscriptions.md)
-- Podívejte se na další [Nodejs ukázky pro Service Bus na Githubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
+- Rezervace dalších [ukázek NodeJS pro Service Bus na GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Středisko pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/)
 
 

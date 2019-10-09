@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 0f8c8900782ec8beb9f9b11c8fe7f7651901c343
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958999"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177471"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -87,7 +87,7 @@ Použití rozhraní příkazového řádku Azure:
 
 1. Přihlaste se k Azure Portal: *AZ Login* , abyste se přihlásili do Azure.
 
-1. Zadání *AZ Account Get-Access-token*ověřte přístup. Pokud se zobrazí chyba, ověřte, že je správně nainstalovaná správná verze rozhraní příkazového řádku Azure.
+1. Zadání *AZ Account Get-Access-token--resource https://vault.azure.net* ověřte přístup. Pokud se zobrazí chyba, ověřte, že je správně nainstalovaná správná verze rozhraní příkazového řádku Azure.
 
    Pokud rozhraní příkazového řádku Azure není nainstalované ve výchozím adresáři, může se zobrazit zpráva o chybách, kterou `AzureServiceTokenProvider`. cestu k rozhraní příkazového řádku Azure CLI nejde najít. K definování instalační složky Azure CLI použijte proměnnou prostředí **AzureCLIPath** . `AzureServiceTokenProvider` přidá adresář zadaný v proměnné prostředí **AzureCLIPath** do proměnné prostředí **path** v případě potřeby.
 

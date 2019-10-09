@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: chackdan
-ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.author: pepogors
+ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200456"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167327"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
 Služby [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastaví samostatné škálování.  Modul runtime Service Fabric nainstalovaný na každém virtuálním počítači ve škále nastaveném rozšířením virtuálního počítače Microsoft. Azure. ServiceFabric. Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
@@ -34,9 +34,9 @@ Jak je znázorněno na předchozím obrázku, škálované instance sad se spust
 Při horizontálním navýšení kapacity se vytvoří nová instance. Nový název instance sady škálování je obvykle název sady škálování a další číslo instance. V našem příkladu je to BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Škálování mapy – nastavení nástrojů pro vyrovnávání zatížení na typy uzlů a sady škálování
-Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **&lt;Názevtypuv-9,1&gt;** . Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
+Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: diskont **-&lt;node název typu @ no__t-2**. Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
-![Zdroje a prostředky][Resources]
+![Prostředky][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
 Service Fabric rozšíření virtuálního počítače se používá ke spuštění Service Fabric do Azure Virtual Machines a konfiguraci zabezpečení uzlů.
@@ -75,21 +75,21 @@ Následuje fragment Service Fabric rozšíření virtuálního počítače:
 
 Níže jsou uvedeny popisy vlastností:
 
-| **Název** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
+| **Jméno** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| name | řetězec | --- | jedinečný název pro rozšíření |
-| type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | --- | Identifikuje Service Fabric operačního systému. |
-| autoUpgradeMinorVersion | True nebo false | --- | Povolit automatický upgrade dílčích verzí SF modulu runtime |
-| publisher | Microsoft.Azure.ServiceFabric | --- | název vydavatele rozsahu Service Fabric |
-| clusterEndpont | řetězec | --- | Identifikátor URI: PORT pro koncový bod správy |
-| nodeTypeRef | řetězec | --- | název nodeType |
+| name | odkazy řetězců | --- | jedinečný název pro rozšíření |
+| – typ | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | --- | Identifikuje Service Fabric operačního systému. |
+| autoUpgradeMinorVersion | true nebo false | --- | Povolit automatický upgrade dílčích verzí SF modulu runtime |
+| Microsoft | Microsoft. Azure. ServiceFabric | --- | název vydavatele rozsahu Service Fabric |
+| clusterEndpont | odkazy řetězců | --- | Identifikátor URI: PORT pro koncový bod správy |
+| nodeTypeRef | odkazy řetězců | --- | název nodeType |
 | durabilityLevel | bronzová, stříbrná, zlatá, Platinum | --- | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
-| enableParallelJobs | True nebo false | --- | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
-| nicPrefixOverride | řetězec | --- | Předpona podsítě jako 10.0.0.0/24 |
+| enableParallelJobs | true nebo false | --- | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
+| nicPrefixOverride | odkazy řetězců | --- | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | --- | Běžné názvy instalovaných certifikátů clusteru |
-| x509StoreName | řetězec | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
+| x509StoreName | odkazy řetězců | --- | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
 | typeHandlerVersion | 1.1 | --- | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
-| dataPath | řetězec | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
+| Cesta k DataPath | odkazy řetězců | --- | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací. 
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na [Přehled funkce nasazení kamkoli a porovnání s clustery spravovanými Azure](service-fabric-deploy-anywhere.md).

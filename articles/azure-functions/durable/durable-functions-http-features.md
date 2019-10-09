@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694877"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177366"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
 
@@ -210,6 +210,38 @@ Pokud některá z těchto omezení by mohla ovlivnit váš případ použití, z
 > Pokud jste vývojářem .NET, můžete se setkat s tím, proč tato funkce používá typy **DurableHttpRequest** a **DurableHttpResponse** namísto vestavěných typů rozhraní .NET **zprávy HttpRequestMessage** a **HttpResponseMessage** .
 >
 > Tato volba návrhu je úmyslné. Hlavním důvodem je, že vlastní typy vám pomůžou zajistit, aby uživatelé nemuseli vytvářet nesprávné předpoklady o podporovaném chování interního klienta HTTP. Typy specifické pro Durable Functions také umožňují zjednodušit návrh rozhraní API. Můžou taky snáze zpřístupnit speciální funkce, jako je [spravovaná integrace identit](#managed-identities) a [uživatelský vzor cyklického dotazování](#http-202-handling). 
+
+### <a name="extensibility-net-only"></a>Rozšiřitelnost (jenom .NET)
+
+Přizpůsobení chování interního klienta HTTP orchestrace je možné pomocí [vkládání závislostí Azure Functions .NET](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection). Tato možnost může být užitečná pro provádění malých změn chování. Může to být užitečné také při testování jednotek klienta HTTP vložením objektů kresby.
+
+Následující příklad ukazuje použití injektáže závislosti k zakázání ověřování certifikátu SSL pro funkce nástroje Orchestrator, které volají externí koncové body HTTP.
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

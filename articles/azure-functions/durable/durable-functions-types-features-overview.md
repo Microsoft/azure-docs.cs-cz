@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2019
 ms.locfileid: "70933158"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy a funkce (Azure Functions)
@@ -40,7 +40,7 @@ Na rozdíl od funkcí Orchestrator nejsou funkce aktivity omezeny v typu práce,
 > [!NOTE]
 > Vzhledem k tomu, že funkce aktivity zaručují *alespoň jedno* spuštění, doporučujeme, abyste *idempotentní* logiku funkce Activity, kdykoli to bude možné.
 
-K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete k vstupu přistupovat prostřednictvím `<activity trigger binding name>` vlastnosti [ `context.bindings` objektu](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
+K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete ke vstupu přistupovat prostřednictvím vlastnosti `<activity trigger binding name>` [objektu `context.bindings`](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
 
 > [!NOTE]
 > Funkci aktivity můžete aktivovat jenom z funkce Orchestrator.
@@ -63,7 +63,7 @@ Funkce Orchestrator se aktivují [aktivační vazbou orchestrace](durable-functi
 
 Kromě toho, že se aktivují funkce Orchestrator nebo entity, se dá *trvalé vazba klienta* použít k interakci s běžícími orchestrací a entitami. Například orchestrace lze dotazovat, ukončit a mohou mít vyvolané události. Další informace o správě orchestrací a entit najdete v článku věnovaném [správě instancí](durable-functions-instance-management.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li začít, vytvořte svou první trvalou [C#](durable-functions-create-first-csharp.md) funkci v nebo [JavaScriptu](quickstart-js-vscode.md).
 

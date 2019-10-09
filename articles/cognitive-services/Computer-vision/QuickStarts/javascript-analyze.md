@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza vzdálené image – REST, JavaScript'
+title: 'Rychlý Start: analýza vzdálené image – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a JavaScriptu.
 services: cognitive-services
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 446558c88ee99cf61bd3591b687ebbd7e9710b76
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6a52ff2ff5d5a2c44df3bc6572efd61d120d8f6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376226"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176516"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Analýza vzdálené Image pomocí REST API a JavaScriptu v Počítačové zpracování obrazu
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a JavaScriptu v počítačovém zpracování obrazu
 
 V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -58,7 +58,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
         let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
         if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
         
-        var uriBase = endpoint + "vision/v2.0/analyze";
+        var uriBase = endpoint + "vision/v2.1/analyze";
 
         // Request parameters.
         var params = {

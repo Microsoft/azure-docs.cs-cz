@@ -10,18 +10,27 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695545"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177904"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2019-10-08"></a>2019-10-08
+
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Nové webové prostředí (Preview) pro Azure Machine Learning pracovní prostory
+
+Karta experiment v [novém portálu pracovního prostoru](http://ml.azure.com) se aktualizovala, takže vědečtí data mohou sledovat experimenty způsobem. Můžete prozkoumat následující funkce:
++ Experimentování metadat pro snadné filtrování a řazení seznamu experimentů
++ Zjednodušené a výkonné stránky s podrobnostmi o experimentech, které umožňují vizualizovat a porovnávat vaše běhy
++ Nový návrh ke spuštění stránek s podrobnostmi pro pochopení a monitorování vašich školicích běhů
 
 ## <a name="2019-09-30"></a>2019-09-30
 
@@ -829,7 +838,7 @@ Poznámka: sada SDK pro přípravu dat už nebude instalovat balíčky `numpy` a
 
  + **Provedeny**
    + Balíček AzureML-tensorboard nahrazuje. AzureML-contrib-tensorboard.
-   + V této verzi můžete při vytváření amlcompute (Managed Compute Cluster) nastavit uživatelský účet. To lze provést předáním těchto vlastností v konfiguraci zřizování. Další podrobnosti najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-).
+   + V této verzi můžete při vytváření amlcompute (Managed Compute Cluster) nastavit uživatelský účet. To lze provést předáním těchto vlastností v konfiguraci zřizování. Další podrobnosti najdete v [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remotelogin-port-public-access--notspecified--).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Sada Azure Machine Learning data PREP SDK v 1.0.17
 

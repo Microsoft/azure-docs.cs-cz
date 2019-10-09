@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f53ade09c5e2e7db0499122526a1de482af9378f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901617"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174268"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů (Preview) v Azure Active Directory
 
@@ -26,18 +26,22 @@ Azure Active Directory (Azure AD) podporuje hromadně vytvořené a odstranit op
 
 ## <a name="to-bulk-restore-users"></a>Postup hromadného obnovení uživatelů
 
-1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
-1. V Azure AD vyberte **Uživatelé** > **odstranění**.
+1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci Azure AD.
+1. V Azure AD vyberte **uživatelé** > **odstraněno**.
 1. Na stránce **odstraněné uživatele** výběrem možnosti **Hromadná obnova** nahrajte platný soubor CSV s vlastnostmi uživatelů, které chcete obnovit.
 
    ![Na stránce odstraněné uživatele vyberte příkaz hromadné obnovení.](./media/users-bulk-restore/bulk-restore.png)
 
-1. Po dokončení úprav souboru CSV nebo pokud máte vlastní připravená nahrávání, vyberte soubor v části **nahrát soubor CSV** , který chcete ověřit.
+1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, který chcete obnovit. Jediná požadovaná hodnota je **objectID**. Pak soubor uložte.
 
    ![Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.](./media/users-bulk-restore/upload-button.png)
 
-1. Pokud dojde k ověření obsahu souboru, opravte informace o souboru a znovu odešlete soubor, pokud dojde k chybám. Odesláním platného souboru se spustí úloha nahrávání dat automaticky.
-1. Po úspěšném ověření souboru CSV vyberte **Odeslat** a spusťte úlohu Azure Batch, která uživatele obnoví. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
+1. Na stránce **Hromadná obnova (Preview)** v části **nahrát soubor CSV**přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
+1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele obnoví.
+1. Po dokončení operace obnovení se zobrazí oznámení, že hromadná operace byla úspěšná.
+
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
@@ -64,7 +68,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Měli byste vidět, že jsou uvedeni uživatelé, které jste obnovili.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Hromadný import uživatelů](users-bulk-add.md)
 - [Hromadné odstranění uživatelů](users-bulk-delete.md)

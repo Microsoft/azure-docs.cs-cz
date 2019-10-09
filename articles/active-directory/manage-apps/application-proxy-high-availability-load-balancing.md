@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/08/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667201"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169805"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
@@ -81,24 +81,25 @@ V některých situacích (jako je auditování, Vyrovnávání zatížení atd.)
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Osvědčené postupy pro vyrovnávání zatížení mezi více aplikačními servery
 Pokud má skupina konektorů přiřazená aplikaci proxy aplikace dva nebo více konektorů a používáte back-end webovou aplikaci na více serverech (serverové farmy), je nutná vhodná strategie vyrovnávání zatížení. Dobrá strategie zajišťuje, aby servery vybraly požadavky klientů rovnoměrně a zabránily nadměrnému nebo nevytížení serverů v serverové farmě.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scénář 1: Aplikace back-end nevyžaduje trvalou relaci.
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Scénář 1: aplikace back-end nevyžaduje trvalou relaci.
 Nejjednodušším scénářem je, že back-end webová aplikace nevyžaduje relaci vytrvalost (trvalá relace). Jakoukoli žádost od uživatele může zpracovat jakákoli instance back-endové aplikace v serverové farmě. Můžete použít nástroj pro vyrovnávání zatížení vrstvy 4 a nakonfigurovat ho bez spřažení. Mezi možnosti patří služba Vyrovnávání zatížení sítě Microsoftu a Azure Load Balancer nebo nástroj pro vyrovnávání zatížení od jiného dodavatele. Alternativně je možné nakonfigurovat službu DNS pro kruhové dotazování.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scénář 2: Back-endové aplikace vyžadují trvalou relaci.
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Scénář 2: back-end aplikace vyžaduje trvalou relaci.
 V tomto scénáři vyžaduje back-end webová aplikace vytrvalost relace (trvalá relace) během ověřené relace. Všechny požadavky od uživatele musí být zpracovány instancí back-endové aplikace, která běží na stejném serveru v serverové farmě.
 Tento scénář může být složitější, protože klient obvykle vytváří více připojení ke službě proxy aplikací. Žádosti přes různá připojení můžou přijít do různých konektorů a serverů ve farmě. Vzhledem k tomu, že každý konektor používá pro tuto komunikaci svou vlastní IP adresu, nemůže nástroj pro vyrovnávání zatížení zajistit, aby se relace vytrvalost na základě IP adresy konektorů. Spřažení zdrojové IP adresy nelze použít ani jednu z nich.
 Tady je několik možností pro scénář 2:
 
-- Možnost 1: Založte trvalost relace na soubory cookie relace nastavené nástrojem pro vyrovnávání zatížení. Tato možnost se doporučuje, protože umožňuje, aby bylo zatížení rovnoměrně roztaženo mezi back-end servery. K této funkci vyžaduje nástroj pro vyrovnávání zatížení vrstvy 7 a který může zpracovávat přenosy HTTP a ukončit připojení SSL. Můžete použít Azure Application Gateway (spřažení relace) nebo nástroj pro vyrovnávání zatížení od jiného dodavatele.
+- Možnost 1: Založte trvalou relaci pro soubory cookie relace nastavené nástrojem pro vyrovnávání zatížení. Tato možnost se doporučuje, protože umožňuje, aby bylo zatížení rovnoměrně roztaženo mezi back-end servery. K této funkci vyžaduje nástroj pro vyrovnávání zatížení vrstvy 7 a který může zpracovávat přenosy HTTP a ukončit připojení SSL. Můžete použít Azure Application Gateway (spřažení relace) nebo nástroj pro vyrovnávání zatížení od jiného dodavatele.
 
-- Možnost 2: Založte trvalost relace na pole s předaným X-pro hlavičku. Tato možnost vyžaduje, aby nástroj pro vyrovnávání zatížení vrstvy 7 s touto funkcí pracoval a mohl zpracovávat přenosy HTTP a ukončit připojení SSL.  
+- Možnost 2: Založte trvalost relace pro pole záhlaví X-předané. Tato možnost vyžaduje, aby nástroj pro vyrovnávání zatížení vrstvy 7 s touto funkcí pracoval a mohl zpracovávat přenosy HTTP a ukončit připojení SSL.  
 
 - Možnost 3: Nakonfigurujte back-end aplikaci tak, aby nevyžadovala trvalost relace.
 
 Informace o požadavcích na Vyrovnávání zatížení back-endové aplikace najdete v dokumentaci od dodavatele softwaru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Povolení Proxy aplikace](application-proxy-add-on-premises-application.md)
+- [Povolit proxy aplikací](application-proxy-add-on-premises-application.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolit podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md)
-- [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)
+- [Řešení problémů, které máte s proxy aplikací](application-proxy-troubleshoot.md)
+- [Přečtěte si, jak architektura Azure AD podporuje vysokou dostupnost](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

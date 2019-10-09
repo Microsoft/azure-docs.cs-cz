@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948190"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174705"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -32,11 +32,11 @@ Základní informace o Azure Disk Encryption pro Linux najdete během několika 
 
 ### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
 
-Virtuální počítače se systémem Linux jsou k dispozici v [různých velikostech](sizes.md). Azure Disk Encryption není k dispozici na virtuálních počítačích [Basic, a-Series](/pricing/details/virtual-machines/series/)ani na virtuálních počítačích, které nesplňují tyto minimální požadavky na paměť:
+Virtuální počítače se systémem Linux jsou k dispozici v [různých velikostech](sizes.md). Azure Disk Encryption není k dispozici na virtuálních počítačích [Basic, a-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/)ani na virtuálních počítačích, které nesplňují tyto minimální požadavky na paměť:
 
 | Virtuální počítač | Minimální požadavek na paměť |
 |--|--|
-| Virtuální počítače se systémem Linux jenom při šifrování datových svazků| 2 GB |
+| Virtuální počítače se systémem Linux jenom při šifrování datových svazků| 2 GB |
 | Virtuální počítače se systémem Linux při šifrování dat a svazků operačních systémů a v případě použití systému souborů root (/) je 4 GB nebo méně | 8 GB |
 | Virtuální počítače se systémem Linux při šifrování dat a svazků operačních systémů a využití systému souborů root (/) je větší než 4 GB | Použití kořenového souborového systému * 2. Například 16 GB použití kořenového systému souborů vyžaduje aspoň 32 GB paměti RAM. |
 
@@ -61,17 +61,17 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 | RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7,5 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 7,4 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7,3 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7,2 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 6,8 | Datový disk (viz poznámka níže) |
-| RHEL | 6,7 | Datový disk (viz poznámka níže) |
+| RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 6.8 | Datový disk (viz poznámka níže) |
+| RHEL | 6.7 | Datový disk (viz poznámka níže) |
 | CentOS | 7,7 | Operační systém a datový disk |
 | CentOS | 7,6 | Operační systém a datový disk |
 | CentOS | 7,5 | Operační systém a datový disk |
 | CentOS | 7,4 | Operační systém a datový disk |
-| CentOS | 7,3 | Operační systém a datový disk |
+| CentOS | 7.3 | Operační systém a datový disk |
 | CentOS | 7.2 n | Operační systém a datový disk |
-| CentOS | 6,8 | Datový disk |
+| CentOS | 6.8 | Datový disk |
 | openSUSE | 42,3 | Datový disk |
 | SLES | 12. SP4 | Datový disk |
 | SLES | 12. SP3 | Datový disk |
@@ -113,10 +113,10 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 | Terminologie | Definice |
 | --- | --- |
 | Azure Key Vault | Key Vault je kryptografická služba pro správu klíčů založená na modulech zabezpečení hardwaru FIPS (Federal Information Processing Standards) ověřené. Tyto standardy usnadňují ochranu kryptografických klíčů a citlivých tajných klíčů. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Rozhraní příkazového řádku Azure | [Azure CLI](/cli/azure/install-azure-cli) je optimalizováno pro správu a správu prostředků Azure z příkazového řádku.|
+| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) je optimalizováno pro správu a správu prostředků Azure z příkazového řádku.|
 | DM-crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je transparentní podsystém šifrování disku založený na systému Linux, který slouží k povolení šifrování disku na virtuálních počítačích se systémem Linux. |
 | Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete poskytnout klíč chráněný modulem hardwarového zabezpečení (HSM) nebo klíč chráněný softwarem. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Rutiny PowerShellu | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/overview). |
+| Rutiny prostředí PowerShell | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Další kroky

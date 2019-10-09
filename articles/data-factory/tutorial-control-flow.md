@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815882"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176011"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak provádět následující úlohy:
 > * Spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
-Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts).
+Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](/azure/data-factory/quickstart-create-data-factory-portal).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

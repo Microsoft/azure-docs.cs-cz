@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202912"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178125"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
-Azure Migrate: Posouzení serveru vyhodnocuje skupiny místních počítačů pro migraci do Azure. K vytvoření skupin můžete použít funkci Vizualizace závislostí v nástroji hodnocení serveru. Tento článek poskytuje informace o této funkci.
+Azure Migrate: posouzení serveru vyhodnocuje skupiny místních počítačů pro migraci do Azure. K vytvoření skupin můžete použít funkci Vizualizace závislostí v nástroji hodnocení serveru. Tento článek poskytuje informace o této funkci.
 
 > [!NOTE]
 > Funkce vizualizace závislosti není v Azure Government k dispozici.
@@ -27,8 +27,8 @@ Vizualizace závislostí v nástroji vyhodnocování serveru umožňuje vytvoři
 ## <a name="before-you-start"></a>Než začnete
 
 - Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
-- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru.
-- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: Hodnocení serverů. [Další informace](migrate-appliance.md).
+- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
+- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
@@ -36,7 +36,7 @@ Azure Migrate používá řešení [Service map](../operations-management-suite/
 - Aby bylo možné využít vizualizaci závislostí, je nutné k projektu Azure Migrate přidružit Log Analytics pracovní prostor, a to buď nové, nebo existující.
 - Pracovní prostor můžete vytvořit nebo připojit pouze ve stejném předplatném, ve kterém je vytvořen Azure Migrate projekt.
 - Připojení pracovního prostoru Log Analytics k projektu:
-    1. Na kartě **servery** v **Azure Migrate: Na dlaždici posouzení** serveru klikněte na **Přehled**.
+    1. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na **Přehled**.
     2. V části **Přehled**klikněte na šipku dolů a rozbalte **základy**.
     3. V **pracovním prostoru OMS**klikněte na **vyžaduje konfiguraci**.
     4. V **oblasti konfigurovat pracovní prostor**určete, jestli chcete vytvořit nový pracovní prostor, nebo použijte existující:
@@ -51,7 +51,7 @@ Azure Migrate používá řešení [Service map](../operations-management-suite/
   > Jakmile připojíte pracovní prostor k projektu, nemůžete ho později změnit.
 
   > [!NOTE]
-  > Azure Migrate aktuálně podporuje vytváření pracovních prostorů OMS v oblastech Východní USA, jihovýchodní Asie a Západní Evropa. Pokud je pracovní prostor vytvořen mimo Azure Migrate v jakékoli jiné oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate. 
+  > Azure Migrate aktuálně podporuje vytváření nebo přidružení Log Analytics pracovních prostorů, které jsou v oblastech Východní USA, jihovýchodní Asie a Západní Evropa. Pokud je pracovní prostor vytvořen mimo Azure Migrate v nepodporované oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate. 
 
 - Přidružený pracovní prostor je označený jako **projekt migrace**klíče a hodnota **název projektu**, kterou můžete použít k vyhledávání v Azure Portal.
 - Pokud chcete přejít k pracovnímu prostoru přidruženému k projektu, můžete přejít na oddíl **základy** na stránce **Přehled** projektu a získat přístup k pracovnímu prostoru.

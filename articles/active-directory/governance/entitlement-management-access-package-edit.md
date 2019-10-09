@@ -16,19 +16,19 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326381"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170027"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a Správa stávajícího balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
+> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Balíček pro přístup vám umožní jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. Jako správce balíčků přístupu můžete kdykoli změnit prostředky v balíčku pro přístup, aniž byste se museli starat o přístup uživatelů k novým prostředkům nebo odebrat jeho přístup z předchozích zdrojů. Zásady je také možné kdykoli aktualizovat, ale změny zásad ovlivňují jenom nové přístupy.
 
@@ -73,15 +73,15 @@ Další informace najdete v tématu věnovaném [porovnání skupin](/office365/
 
     ![Přístup k balíčku – přidání rolí prostředků – výběr skupin](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. Klikněte na tlačítko **vyberte**.
+1. Klikněte na **Vybrat**.
 
     Jakmile vyberete skupinu nebo tým, sloupec **Sub Type** zobrazí jeden z následujících podtypů:
 
     |  |  |
     | --- | --- |
     | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
-    | Distribuce | Slouží k odesílání oznámení skupině lidí. |
-    | O365 | Skupina Office 365, která není povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
+    | Šíření | Slouží k odesílání oznámení skupině lidí. |
+    | Dostupná | Skupina Office 365, která není povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
     | Tým | Skupina Office 365, která je povolená pro týmy Používá se pro spolupráci mezi uživateli i mimo vaši společnost. |
 
 1. V seznamu **role** vyberte možnost **vlastník** nebo **člen**.
@@ -90,7 +90,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](/office365/
 
     ![Přístup k balíčku – přidání role prostředku pro skupinu nebo tým](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku přístupu se při přidání automaticky stanou členy této skupiny nebo týmu.
 
@@ -115,13 +115,13 @@ Zde jsou některé předpoklady při výběru aplikace:
 
     ![Přístup k balíčku – přidání rolí prostředků – výběr aplikací](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. Klikněte na tlačítko **vyberte**.
+1. Klikněte na **Vybrat**.
 
 1. V seznamu **role** vyberte roli aplikace.
 
     ![Přístup k balíčku – přidání role prostředku pro aplikaci](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít k této aplikaci přístup.
 
@@ -135,13 +135,13 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
     ![Přístup k balíčku – přidání rolí prostředků – výběr webů SharePointu Online](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. Klikněte na tlačítko **vyberte**.
+1. Klikněte na **Vybrat**.
 
 1. V seznamu **role** vyberte roli webu SharePoint Online.
 
     ![Přístup k balíčku – přidání role prostředku pro web SharePointu Online](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Klikněte na **Přidat**.
+1. Klikněte na tlačítko **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít přístup k tomuto webu SharePointu Online.
 
@@ -161,7 +161,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou mít při odebrání do této role prostředků automaticky přístup odvolali.
 
-## <a name="add-a-new-policy"></a>Přidat nové zásady
+## <a name="add-a-new-policy"></a>Přidat novou zásadu
 
 Způsob, jakým určíte, kdo může požádat o přístup k balíčku, je vytvořit zásadu. Můžete vytvořit více zásad pro jeden balíček přístupu, pokud chcete, aby bylo možné udělit různým sadám uživatelů přiřazení s jiným nastavením schválení a vypršení platnosti. Jednu zásadu nelze použít k přiřazení interních a externích uživatelů ke stejnému balíčku přístupu. V jednom balíčku pro přístup se ale dají vytvořit dvě zásady – jeden pro interní uživatele a jeden pro externí uživatele. Pokud je k dispozici více zásad, které platí pro uživatele, budou v době žádosti vyzváni k výběru zásady, ke kterým se mají přiřadit.
 
@@ -309,7 +309,7 @@ Většina uživatelů v adresáři se může přihlásit k portálu pro přístu
 
 Je důležité, abyste při odesílání e-mailu na interní obchodní partner zkopírovali celý odkaz Můj portál pro přístup. Tím se zajistí, že partner získá přístup k portálu vašeho adresáře, aby mohl učinit svůj požadavek. 
 
-Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit identifikátorem přístupového balíčku. Ujistěte se, že odkaz obsahuje všechny tyto skutečnosti:
+Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit IDENTIFIKÁTORem přístupového balíčku. Ujistěte se, že odkaz obsahuje všechny tyto skutečnosti:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -345,7 +345,7 @@ Ve výchozím nastavení jsou balíčky pro přístup zjistitelné. To znamená,
 
     Pokud je nastavená hodnota **Ano**, balíček přístupu nebude uveden na portálu pro přístup uživatele. Jediným způsobem, jak může uživatel zobrazit balíček přístupu, je, že má odkaz na přímý **přístup** do balíčku pro přístup.
 
-## <a name="delete"></a>Odstranění
+## <a name="delete"></a>Odstranit
 
 Balíček přístupu se dá odstranit jenom v případě, že nemá žádná aktivní uživatelská přiřazení.
 
@@ -367,5 +367,4 @@ V rámci správy nároků služba Azure AD zpracuje hromadnou změnu přiřazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidat vlastníka katalogu nebo správce balíčků přístupu](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

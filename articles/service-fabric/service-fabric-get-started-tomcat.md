@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
-ms.author: chackdan
-ms.openlocfilehash: 165dc95681b75e98d91c66b490e15c2e96608299
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: pepogors
+ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098936"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170604"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric, na kterém běží Apache Tomcat Server v systému Linux
 Apache Tomcat je oblíbená a open source implementace technologií serveru Java servlet a Java. V tomto článku se dozvíte, jak vytvořit kontejner s Apache Tomcat a jednoduchou webovou aplikací, nasadit kontejner do Service Fabric clusteru se systémem Linux a připojit se k webové aplikaci.  
 
 Další informace o Apache Tomcat najdete na [domovské stránce Apache Tomcat](https://tomcat.apache.org/). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Vývojový počítač s:
   * [Sada Service Fabric SDK a nástroje](service-fabric-get-started-linux.md).
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -58,16 +58,16 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    COPY ./ApacheTomcat /usr/local/tomcat
    ```
 
-   Další informace najdete v referenčních informacích k [souboru Dockerfile](https://docs.docker.com/engine/reference/builder/) .
+   Další informace najdete v [referenčních](https://docs.docker.com/engine/reference/builder/) informacích k souboru Dockerfile.
 
 
-4. `docker build` Spuštěním příkazu vytvořte image spouštějící vaši webovou aplikaci:
+4. Spuštěním příkazu `docker build` vytvořte bitovou kopii, která spouští vaši webovou aplikaci:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Tento příkaz sestaví novou image pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označování) obrázku `tomcattest`. Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
+   Tento příkaz sestaví nový obrázek pomocí instrukcí v souboru Dockerfile, pojmenovávání (-t označení) obrázku `tomcattest`. Pokud chcete vytvořit image kontejneru, nejdřív se z dokovacího centra stáhne základní image a do ní se přidá aplikace. 
 
    Po dokončení příkazu pro sestavení spusťte příkaz `docker images` a zobrazte informace o nové imagi:
 
@@ -84,11 +84,11 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`pojmenuje kontejner, takže se na něj můžete odkazovat pomocí popisného názvu místo jeho ID.
-   * `-p`Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
+   * `--name` kontejner pojmenuje, takže se na něj můžete odkazovat pomocí popisného názvu místo jeho ID.
+   * `-p` Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
 
    > [!Note]
-   > Port, který otevřete s `-p` parametrem, by měl být port, na kterém vaše aplikace Tomcat naslouchá požadavkům. V aktuálním příkladu je konektor nakonfigurovaný v souboru *ApacheTomcat/conf/server. XML* , aby naslouchal na portu 8080 pro požadavky HTTP. Tento port je namapován na port 8080 na hostiteli. 
+   > Port, který otevřete s parametrem `-p`, by měl být port, na kterém aplikace Tomcat naslouchá požadavkům. V aktuálním příkladu je konektor nakonfigurovaný v souboru *ApacheTomcat/conf/server. XML* , aby naslouchal na portu 8080 pro požadavky HTTP. Tento port je namapován na port 8080 na hostiteli. 
 
    Další informace o dalších parametrech najdete v [dokumentaci k Docker Run](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -110,7 +110,7 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Vložení image Tomcat do registru kontejneru
 Teď, když jste ověřili, že se image Tomcat spouští v kontejneru ve vývojovém počítači, nahrajte ji do úložiště v registru kontejnerů. Tento článek používá Azure Container Registry k uložení image, ale s určitou úpravou kroků můžete použít libovolný registr kontejneru, který si zvolíte. V tomto článku se předpokládá, že název registru bude *myregistry* a úplný název registru je myregistry.azurecr.IO. Odpovídajícím způsobem je změňte pro váš scénář. 
 
-1. Spusťte `docker login` , abyste se k registru kontejneru přihlásili pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+1. Spusťte `docker login` pro přihlášení ke svému registru kontejneru pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
 
    Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
@@ -133,7 +133,7 @@ Teď, když jste ověřili, že se image Tomcat spouští v kontejneru ve vývoj
 ## <a name="build-and-deploy-the-service-fabric-container-application"></a>Sestavení a nasazení aplikace Service Fabric Container
 Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavit a nasadit aplikaci typu kontejner pro Service Fabric, která načte image Tomcat z registru a spustí ji jako kontejnerové služby v clusteru. 
 
-1. Vytvořte nový adresář mimo svůj místní klon (mimo strom adresářů *Service-Fabric-Java-Začínáme* -Started). Přepněte na něj a použijte Yeoman k vytvoření uživatelského rozhraní pro aplikaci typu kontejner: 
+1. Vytvořte nový adresář mimo svůj místní klon (mimo strom adresářů *Service-Fabric-Java-Začínáme-Started* ). Přepněte na něj a použijte Yeoman k vytvoření uživatelského rozhraní pro aplikaci typu kontejner: 
 
    ```bash
    yo azuresfcontainer 
@@ -142,8 +142,8 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
 
    * Pojmenování aplikace: ServiceFabricTomcat
    * Název aplikační služby: TomcatService
-   * Zadejte název bitové kopie: Zadejte adresu URL pro Image kontejneru v registru kontejnerů. například myregistry.azurecr.io/samples/tomcattest.
-   * Příkazy: Nechte prázdné. Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potřeba explicitně zadat vstupní příkazy (příkazy se spouští uvnitř kontejneru, což zajistí zachování provozu kontejneru po spuštění).
+   * Zadejte název bitové kopie: zadejte adresu URL image kontejneru ve vašem registru kontejneru. například myregistry.azurecr.io/samples/tomcattest.
+   * Příkazy: nechte toto pole prázdné. Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potřeba explicitně zadat vstupní příkazy (příkazy se spouští uvnitř kontejneru, což zajistí zachování provozu kontejneru po spuštění).
    * Počet instancí hostované aplikace kontejneru: 1
 
    ![Generátor Service Fabric Yeoman pro kontejnery](./media/service-fabric-get-started-tomcat/yo-generator.png)
@@ -191,7 +191,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     V předchozím příkazu nahraďte `your-certificate.pem` názvem souboru klientského certifikátu. Ve vývojových a testovacích prostředích se certifikát clusteru často používá jako klientský certifikát. Pokud certifikát není podepsaný svým držitelem, vynechejte `-no-verify` parametr. 
+     V předchozím příkazu nahraďte `your-certificate.pem` názvem souboru klientského certifikátu. Ve vývojových a testovacích prostředích se certifikát clusteru často používá jako klientský certifikát. Pokud certifikát není podepsaný svým držitelem, vynechejte parametr `-no-verify`. 
        
      Certifikáty clusteru jsou obvykle stahovány místně jako soubory. pfx. Pokud ještě nemáte certifikát ve formátu PEM, můžete spuštěním následujícího příkazu vytvořit soubor. pem ze souboru. pfx:
 
@@ -199,7 +199,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     Pokud Váš soubor. pfx není chráněný heslem, použijte `-passin pass:` pro poslední parametr.
+     Pokud Váš soubor. pfx není chráněný heslem, použijte pro poslední parametr `-passin pass:`.
 
 
 13. Spuštěním instalačního skriptu, který je součástí šablony, nasaďte aplikaci do clusteru. Skript zkopíruje balíček aplikace do úložiště imagí clusteru, zaregistruje typ aplikace a vytvoří instanci aplikace.
@@ -210,7 +210,7 @@ Teď, když jste vložili image Tomcat do registru kontejnerů, můžete sestavi
 
    Po spuštění instalačního skriptu otevřete prohlížeč a přejděte na Service Fabric Explorer:
     
-   * V místním clusteru použijte `http://localhost:19080/Explorer` (nahraďte *localhost* privátní IP adresou virtuálního počítače, pokud používáte Vagrant na Mac OS X).
+   * V místním clusteru použijte `http://localhost:19080/Explorer` (Pokud používáte Vagrant v Mac OS X), nahraďte *localhost* privátní IP adresou virtuálního počítače.
    * V zabezpečeném clusteru Azure použijte `https://PublicIPorFQDN:19080/Explorer`. 
     
    Rozbalte uzel **aplikace** a Všimněte si, že teď existuje položka pro typ aplikace, **ServiceFabricTomcatType**a další pro první instanci tohoto typu. Může trvat několik minut, než se aplikace plně nasadí, tedy pacient.
@@ -238,7 +238,7 @@ docker rmi tomcattest
 docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Rychlé kroky dalších funkcí kontejnerů pro Linux najdete [v tématu Vytvoření první Service Fabric aplikace kontejneru v systému Linux](service-fabric-get-started-containers-linux.md).
 * Podrobnější kroky k kontejnerům pro Linux najdete v kurzu [Vytvoření aplikace typu kontejner pro Linux](service-fabric-tutorial-create-container-images.md) .
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).

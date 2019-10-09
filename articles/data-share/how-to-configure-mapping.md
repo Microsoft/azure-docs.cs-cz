@@ -1,41 +1,41 @@
 ---
-title: Konfigurace mapování datové sady
-description: Konfigurace mapování datové sady
+title: Konfigurace mapování datových sad v Azure Data Share Preview
+description: Přečtěte si, jak nakonfigurovat mapování datové sady pro přijatou sdílenou složku pomocí Azure Data Share Preview.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789238"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169132"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Jak nakonfigurovat mapování datovou sadu pro sdílenou složku přijaté v náhledu dat sdílené složky Azure
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Jak nakonfigurovat mapování datové sady pro přijatou sdílenou složku v Azure Data Share Preview
 
-Tento článek vysvětluje, jak nakonfigurovat mapování datovou sadu pro sdílenou složku přijatých pomocí Azure Data sdílené složky ve verzi Preview. Bude potřeba udělat, pokud je přijmout pozvánku sdílení dat, ale rozhodli "přijmout a nakonfigurovat později". V opačném případě můžete jednoduše chtít změnit cílový účet úložiště pro přijatá data. 
+Tento článek vysvětluje, jak nakonfigurovat mapování datové sady pro přijatou sdílenou složku pomocí Azure Data Share Preview. Tuto akci budete chtít provést, pokud jste přijali pozvánku ke sdílení dat, ale rozhodli jste se použít možnost přijmout a konfigurovat později. V opačném případě budete možná chtít změnit cílový účet úložiště pro přijatá data. 
 
-## <a name="navigate-to-a-received-data-share"></a>Přejděte do sdílené složky přijatých dat.
+## <a name="navigate-to-a-received-data-share"></a>Přechod na přijatou sdílenou složku dat
 
-Ve službě Azure Data sdílet přejděte přijatý sdílené složky a vyberte **podrobnosti** kartu. 
+Ve službě sdílení dat Azure přejděte do přijaté sdílené složky a vyberte kartu **Podrobnosti** . 
 
-![Datová sada mapování](./media/dataset-mapping.png "mapování datové sady") 
+![](./media/dataset-mapping.png "Mapování datové sady") mapování datové sady 
 
-Zaškrtněte políčko vedle datové sady, které chcete přiřadit cíl, aby a klikněte na tlačítko **+ mapu, aby cílový**. Budete muset zrušit mapování první, pokud už jste nakonfiguroval cílový účet úložiště a vy chcete změnit mapování na jiný účet úložiště. 
+Zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl, a klikněte na tlačítko **+ mapovat k cíli**. Pokud jste už nakonfigurovali cílový účet úložiště a chcete změnit mapování na jiný účet úložiště, možná budete muset mapování nejdřív zrušit. 
 
-![Mapa k cíli](./media/dataset-map-target.png "Mapa k cíli") 
+![Mapovat na cílovou](./media/dataset-map-target.png "mapu pro cíl") 
 
-## <a name="select-a-new-storage-account"></a>Vyberte nový účet úložiště 
+## <a name="select-a-new-storage-account"></a>Vyberte nový účet úložiště. 
 
-Vyberte účet úložiště, které chcete dat objevil v. Všimněte si, že všechna data, která již existuje v libovolném dříve namapována účty úložiště nebudou automaticky přesunuty do nového účtu úložiště.
+Vyberte účet úložiště, do kterého chcete data založit. Všimněte si, že všechna data, která už existují v jakýchkoli dříve mapovaných účtech úložiště, se automaticky přesunou na nový účet úložiště.
 
-![Cílový účet úložiště](./media/map-target.png "cílového úložiště") 
+(./media/map-target.png "Cílové úložiště") ![účtu cílového úložiště] 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak začít, sdílení dat, nadále [sdílet vaše data](share-your-data.md) kurzu.
+Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
 
 
 

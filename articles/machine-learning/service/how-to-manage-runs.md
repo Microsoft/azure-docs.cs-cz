@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 1c77c0a83762dacf2e98d2401a3926a0d7b082eb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001175"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174541"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -29,7 +29,7 @@ Tento článek ukazuje příklady následujících úloh:
 * Vytvoření podřízených spuštění.
 * Označení a hledání spuštění.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat následující položky:
 
@@ -49,7 +49,7 @@ Budete potřebovat následující položky:
 
 ## <a name="start-a-run-and-its-logging-process"></a>Spuštění běhu a jeho procesu protokolování
 
-### <a name="using-the-sdk"></a>Používání sady SDK
+### <a name="using-the-sdk"></a>Použití sady SDK
 
 Nastavte experiment tak, že naimportujete třídy [pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py), [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py), [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) z balíčku [AzureML. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) .
 
@@ -106,7 +106,7 @@ Pro spuštění experimentu použijte následující postup:
 
 ## <a name="monitor-the-status-of-a-run"></a>Monitoruje stav spuštění.
 
-### <a name="using-the-sdk"></a>Používání sady SDK
+### <a name="using-the-sdk"></a>Použití sady SDK
 
 Získejte stav spuštění s metodou [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) .
 
@@ -163,7 +163,7 @@ print(notebook_run.get_status())
 
 Pokud si všimnete omylem nebo pokud dokončení běhu trvá příliš dlouho, můžete spustit operaci.
 
-### <a name="using-the-sdk"></a>Používání sady SDK
+### <a name="using-the-sdk"></a>Použití sady SDK
 
 Chcete-li zrušit běh pomocí sady SDK, použijte metodu [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) :
 
@@ -189,7 +189,7 @@ print(local_script_run.get_status())
 Chcete-li zrušit běh pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `runid` číslem ID běhu.
 
 ```azurecli-interactive
-az ml run cancel -r runid
+az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Další informace najdete v tématu [AZ ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
@@ -257,7 +257,7 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
 
 ### <a name="add-properties-and-tags"></a>Přidat vlastnosti a značky
 
-#### <a name="using-the-sdk"></a>Používání sady SDK
+#### <a name="using-the-sdk"></a>Použití sady SDK
 
 Chcete-li přidat k vašim běhům hledaná metadata, použijte metodu [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) . Například následující kód přidá vlastnost `"author"` do běhu:
 
@@ -309,7 +309,7 @@ Další informace najdete v tématu [AZ ml Run Update](https://docs.microsoft.co
 
 Dotazování můžete spustit v experimentu a vrátit seznam spuštění, který odpovídá specifickým vlastnostem a značkám.
 
-#### <a name="using-the-sdk"></a>Používání sady SDK
+#### <a name="using-the-sdk"></a>Použití sady SDK
 
 ```Python
 list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))

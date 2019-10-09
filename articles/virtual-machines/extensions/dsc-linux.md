@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960409"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176685"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Požadovaná konfigurace stavu (DSC) je platforma pro správu, která umožňuje spravovat infrastrukturu IT a vývoj s konfigurací jako kód.
 
-> ! Všimněte si, že rozšíření DSC pro Linux a [rozšíření Azure monitor virtuálního počítače pro Linux](/virtual-machines/extensions/oms-linux) aktuálně prezentují konflikt a nejsou podporovaná v konfiguraci vedle sebe.  To znamená, že tato dvě řešení byste neměli používat společně na jednom virtuálním počítači.
+> ! Všimněte si, že rozšíření DSC pro Linux a [rozšíření Azure monitor virtuálního počítače pro Linux](/azure/virtual-machines/extensions/oms-linux) aktuálně prezentují konflikt a nejsou podporovaná v konfiguraci vedle sebe.  To znamená, že tato dvě řešení byste neměli používat společně na jednom virtuálním počítači.
 
 Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta OMI a DSC na virtuální počítače Azure. Rozšíření DSC může také provádět následující akce.
 
@@ -41,7 +41,7 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
+Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
 
 | Šíření | Version |
 |---|---|

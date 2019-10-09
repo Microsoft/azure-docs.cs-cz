@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959012"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168489"
 ---
 # <a name="virtual-wan-partners"></a>Virtuální partneři sítě WAN
 
@@ -215,11 +215,13 @@ Vaše místní zařízení SDWAN/VPN nebo konfigurace SD-WAN musí odpovídat ne
 * Algoritmus integrity protokolu IPsec
 * Skupina PFS
 
-### <a name="default"></a>Výchozí zásady pro připojení IPsec 
+### <a name="default"></a>Výchozí zásady pro připojení IPsec
 
-Při práci s výchozími zásadami může Azure během nastavení tunelu IPsec fungovat jako iniciátor i respondér. Azure není podporován pouze jako respondér.
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
+### <a name="custom"></a>Vlastní zásady pro připojení IPsec
+
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

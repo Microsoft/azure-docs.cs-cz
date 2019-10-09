@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc7710619b8975064ec4ec60ed44ccede970ac34
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3ef8ab4b24d223f372ae3704b00ba6ff090fb039
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200957"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169991"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: Blokování starší verze ověřování
+# <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
 V důsledku zvýšeného rizika spojeného se staršími protokoly pro ověřování společnost Microsoft doporučuje, aby organizace zablokovaly žádosti o ověření pomocí těchto protokolů a vyžadovala moderní ověřování.
 
@@ -26,22 +26,22 @@ V důsledku zvýšeného rizika spojeného se staršími protokoly pro ověřov�
 
 Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu, které blokují požadavky na starší verzi ověřování.
 
-1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na **Azure Active Directory** **podmíněný přístup** > .
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte všechny účty, které musí udržovat možnost používat starší verze ověřování. 
-   1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > vyberte **všechny cloudové aplikace**.
+   1. Vyberte **Hotovo**.
+1. V části **cloudové aplikace nebo akce**@no__t-1 zadejte **všechny cloudové aplikace**.
    1. Pokud musíte z vaší zásady vyloučit konkrétní aplikace, můžete je vybrat z karty **vyloučit** v části **Vybrat vyloučené cloudové aplikace** a zvolit **Vybrat**.
-   1. Vyberte **Done** (Hotovo).
-1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**.
-   1. Zaškrtněte políčka pouze >  **mobilní aplikace a klienti klasické pracovní plochy** **ostatní klienti**.
-   2. Vyberte **Done** (Hotovo).
-1. V části **řízení** > přístupu**udělit**vyberte **blokovat přístup**.
-   1. Vyberte **vyberte**.
+   1. Vyberte **Hotovo**.
+1. V části **podmínky**@no__t**klientských aplikacích – 1 (Preview)** nastavte **Konfigurovat** na **Ano**.
+   1. Zaškrtněte políčka **mobilní aplikace a desktopové klienty** > **ostatní klienti**.
+   2. Vyberte **Hotovo**.
+1. V části **řízení přístupu**@no__t**udělení**-1 vyberte **blokovat přístup**.
+   1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 

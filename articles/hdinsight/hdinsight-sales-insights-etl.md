@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: 07714575bb4adfccf5d72a093874852c1bfebcc8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843783"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178015"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Kurz: vytvoření uceleného datového kanálu pro odvození obchodních přehledů
 
@@ -23,7 +23,7 @@ Tento datový kanál kombinuje data z různých úložišť, odebírá všechna 
 
 ![Architektura ETL](./media/hdinsight-sales-insights-etl/architecture.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -33,14 +33,14 @@ Na konci tohoto kurzu si stáhněte [Power BI Desktop](https://www.microsoft.com
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Klonování úložiště pomocí skriptů a dat
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. V horním řádku nabídek otevřete Azure Cloud Shell. Pokud vás Cloud Shell, vyberte předplatné pro vytvoření sdílené složky.
 
-   ![Otevření služby Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
+   ![Otevřít Azure Cloud Shell](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
 1. V rozevírací nabídce **Vybrat prostředí** zvolte **bash**.
 1. Přihlaste se ke svému účtu Azure a nastavte předplatné. 
 1. Nastavte skupinu prostředků pro projekt.
-   1. Pro skupinu prostředků vyberte jedinečný název.
+   1. Vyberte jedinečný název pro skupinu prostředků.
    1. Spusťte následující fragment kódu v Cloud Shell k nastavení proměnných, které budou použity v pozdějších krocích:
 
        ```azurecli-interactive 
@@ -102,12 +102,12 @@ Výchozí heslo pro přístup SSH ke clusterům je `Thisisapassword1`. Pokud chc
 
 1. Pokud chcete zjistit stav svého nasazení, na Azure Portal se podívejte do skupiny prostředků. V části **Nastavení**vyberte **nasazení** . Vyberte název nasazení `ResourcesDeployment`. Tady vidíte prostředky, které se úspěšně nasadily, a prostředky, které pořád probíhají.
 1. Po dokončení nasazení přejdete do **skupiny prostředků** Azure Portal > > < RESOURCE_GROUP_NAME >.
-1. Vyhledejte nový účet služby Azure Storage, který byl vytvořen pro uložení prodejních souborů. Název účtu úložiště začíná na `blob` a pak obsahuje náhodný řetězec. Udělejte toto:
+1. Vyhledejte nový účet služby Azure Storage, který byl vytvořen pro uložení prodejních souborů. Název účtu úložiště začíná na `blob` a pak obsahuje náhodný řetězec. Postupujte následovně:
    1. Poznamenejte si název účtu úložiště, abyste ho mohli později použít.
    1. Vyberte název účtu služby Blob Storage.
    1. Na levé straně portálu v části **Nastavení**vyberte **přístupové klíče**.
    1. Zkopírujte řetězec do pole **klíč1** a uložte ho pro pozdější použití.
-1. Vyhledejte účet Data Lake Storage Gen2, který byl vytvořen jako úložiště pro clustery HDInsight. Tento účet se nachází ve stejné skupině prostředků jako účet úložiště objektů blob, ale začíná na `adlsgen2`. Udělejte toto:
+1. Vyhledejte účet Data Lake Storage Gen2, který byl vytvořen jako úložiště pro clustery HDInsight. Tento účet se nachází ve stejné skupině prostředků jako účet úložiště objektů blob, ale začíná na `adlsgen2`. Postupujte následovně:
    1. Poznamenejte si název účtu Data Lake Storage Gen2.
    1. Vyberte název účtu Data Lake Storage Gen2.
    1. Na levé straně portálu v části **Nastavení**vyberte **přístupové klíče**.
@@ -175,7 +175,7 @@ Chcete-li ověřit, zda byly kanály spuštěny, můžete provést jeden z násl
 - V datové továrně na portálu můžete přejít do části **monitorování** .
 - V Průzkumník služby Azure Storage přejít na účet úložiště Data Lake Storage Gen 2. Přejděte do systému souborů `files` a potom přejděte do složky `transformed` a zkontrolujte její obsah, abyste viděli, jestli kanál úspěšně uspěl.
 
-Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [tomto článku o použití Jupyter notebook](/spark/apache-spark-load-data-run-query.md).
+Další způsoby, jak transformovat data pomocí služby HDInsight, najdete v [tomto článku o použití Jupyter notebook](/azure/hdinsight/spark/apache-spark-load-data-run-query).
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Vytvoření tabulky v clusteru interaktivních dotazů pro zobrazení dat v Power BI
 
@@ -202,9 +202,9 @@ Tento skript vytvoří spravovanou tabulku v clusteru interaktivních dotazů, k
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Vytvoření řídicího panelu Power BI z prodejních dat
 
 1. Otevřete Power BI Desktop.
-1. Vyberte **Načíst data**.
+1. Vyberte **získat data**.
 1. Vyhledejte **cluster HDInsight Interactive Query**.
-1. Vložte identifikátor URI pro svůj cluster. Měla by mít formát `https://<LLAP CLUSTER NAME>.azurehdinsight.net`.
+1. Vložte identifikátor URI pro svůj cluster. Měl by mít formát `https://<LLAP CLUSTER NAME>.azurehdinsight.net`.
 
    Jako databázi zadejte `default`.
 1. Zadejte uživatelské jméno a heslo, které používáte pro přístup ke clusteru.

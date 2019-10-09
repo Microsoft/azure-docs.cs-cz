@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829109"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177895"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -56,7 +56,7 @@ Ve výchozím nastavení ADF přenáší data z Amazon S3 do Azure Blob Storage 
 
 Případně, pokud nechcete, aby byla data přenášena prostřednictvím veřejného Internetu, můžete dosáhnout vyššího zabezpečení přenosem dat přes privátní partnerský vztah mezi AWS přímým připojením a trasou Azure Express.  Informace o tom, jak se dá dosáhnout, najdete v níže uvedené architektuře řešení. 
 
-## <a name="solution-architecture"></a>Architektury řešení
+## <a name="solution-architecture"></a>Architektura řešení
 
 Migrace dat prostřednictvím veřejného Internetu:
 
@@ -136,7 +136,6 @@ Tady je odhadovaná cena na základě výše uvedených předpokladů:
 
 ![ceny – tabulka](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
 ### <a name="additional-references"></a>Další odkazy 
 - [Konektor služby Amazon Simple Storage Service Connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Konektor Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
@@ -149,6 +148,10 @@ Tady je odhadovaná cena na základě výše uvedených předpokladů:
 - [Kopírovat soubor postupně na základě názvu souboru s oddíly](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Kopírování nových a změněných souborů na základě LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Stránka s cenami ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Šablona
+
+Tady je [Šablona](solution-template-migration-s3-azure.md) , která se má začít používat k migraci petabajty dat složených ze stovek milionů souborů z Amazon S3 do Azure Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Další kroky
 

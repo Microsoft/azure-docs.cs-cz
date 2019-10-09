@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947605"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177773"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
+# <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
 Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Windows umožňuje:
 
@@ -25,7 +25,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -156,9 +156,9 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 2. Přejít do pracovního prostoru Log Analytics.
 3. Na levém panelu v části zdroje dat pracovního prostoru vyberte **virtuální počítače**.
 4. Vyberte název virtuálního počítače, ke kterému se chcete připojit.
-5. Vyberte **připojit**.
+5. Vyberte **Connect** (Připojit).
 
-## <a name="deploy-the-diagnostics-tool"></a>Nasazení nástroje pro diagnostiku
+## <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
@@ -167,7 +167,7 @@ Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
     -   ID klienta
     -   Tajný kód klienta
-    -   ID pracovního prostoru Log Analytics
+    -   ID pracovního prostoru služby Log Analytics
 
 3.  Až budou zadané vstupní parametry, přijměte podmínky a ujednání a pak vyberte **koupit**.
 
@@ -191,13 +191,13 @@ Nastavení identifikátoru URI přesměrování:
 
 8. Teď přejděte k prostředkům Azure, vyberte prostředek Azure App Services s názvem, který jste zadali v šabloně, a přejděte na adresu URL, která k němu je přidružená. (Pokud například název aplikace, který jste použili v šabloně, byl `contosoapp45`, je vaše přidružená adresa URL <https://contosoapp45.azurewebsites.net>).
 9. Přihlaste se pomocí příslušného Azure Active Directory uživatelského účtu.
-10.   Vyberte **přijmout**.
+10.   Vyberte **Přijmout**.
 
 ## <a name="distribute-the-diagnostics-tool"></a>Distribuce nástroje pro diagnostiku
 
 Před zpřístupněním diagnostického nástroje pro uživatele se ujistěte, že mají následující oprávnění:
 
-- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Uživatelé potřebují pro Log Analytics oprávnění ke čtení. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  Uživatelé potřebují taky oprávnění ke čtení pro tenanta virtuálních počítačů s Windows (role čtenářů služby Vzdálená plocha). Další informace najdete v tématu [delegovaný přístup na virtuálním počítači s Windows](delegated-access-virtual-desktop.md).
 
 Také musíte uživatelům poskytnout následující informace:

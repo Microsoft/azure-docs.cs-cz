@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d70a2aa6ad0e092fc6df9f5792029dc759345321
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026377"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169777"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -214,18 +214,19 @@ Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure 
 
 ### <a name="global-readerglobal-reader-permissions"></a>[Globální čtenář](#global-reader-permissions)
 
-Uživatelé v této roli můžou číst nastavení a informace pro správu napříč Microsoft 365 službami, ale nemůžou provádět akce správy. Globální čtenář je protistranou, která je jen pro čtení, globální správce. Přiřaďte globální čtenáře místo globálního správce pro plánování, audity nebo vyšetřování. Pomocí globálního čtecího zařízení v kombinaci s dalšími omezenými rolemi správců, jako je třeba správce Exchange, můžete usnadnit práci bez vyvolání role globálního správce. Globální čtečka funguje s novým centrem pro správu Microsoft 365, centrem pro správu Exchange, centrem pro správu týmů, Security Center, centrem dodržování předpisů, centrem pro správu služby Azure AD a centrem pro správu správy zařízení. 
+Uživatelé v této roli můžou číst nastavení a informace pro správu napříč Microsoft 365 službami, ale nemůžou provádět akce správy. Globální čtenář je protistranou, která je jen pro čtení, globální správce. Přiřaďte globální čtenáře místo globálního správce pro plánování, audity nebo vyšetřování. Pomocí globálního čtecího zařízení v kombinaci s jinými omezenými rolemi správců, jako je třeba správce Exchange, můžete usnadnit práci bez přiřazení role globálního správce. Globální čtečka spolupracuje s centrem pro správu Microsoft 365, centrem pro správu Exchange, centrem pro správu týmů, centrem zabezpečení, centrem dodržování předpisů, centrem pro správu Azure AD a centrem pro správu správy zařízení.
 
 > [!NOTE]
-> Role globálního čtenáře teď má následující omezení:
->* Centrum pro správu SharePointu – centrum pro správu SharePointu nepodporuje roli globálního čtecího modulu. V levém podokně v centru pro správu v [M365](https://admin.microsoft.com/Adminportal/Home#/homepage)se nezobrazuje ' SharePoint '. Když přejdete na https://{název tenanta} – admin.sharepoint.com, budete mít přístup odepřen. 
+> Role globálního čtecího modulu teď má v současné době několik omezení –
+>
+>* Centrum pro správu SharePointu – centrum pro správu SharePointu nepodporuje roli globálního čtecího modulu. V levém podokně v části centra pro správu v centru pro správu [Microsoft 365](https://admin.microsoft.com/Adminportal/Home#/homepage)se nezobrazuje ' SharePoint '. při pokusu o přechod na server *https://{název organizace Azure} – admin.SharePoint.com*se vám bude zamítnout přístup.
 >* [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální Čtenář nemůže přečíst režim zřizování podnikové aplikace.
->* [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul cusomter. Kartu žádosti o bezpečnostní modul pro zákazníky nenajdete v části Podpora v levém podokně centra pro správu M365.
->* [M365 Security Center](https://security.microsoft.com/homepage) – globální čtecí modul nemůže přečíst citlivost a popisky uchování. V levém podokně v části klasifikace v M365 Security Center nenajdete popisky citlivosti, popisky uchování a karty analýza popisků.
->* [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst životní cyklus týmů, sestavy & analýzy volání, správu IP adres zařízení a katalog aplikací.
->* [Privileged Access Management (pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nepodporuje globální čtecí zařízení.
-> 
-> Podpora těchto funkcí bude v průběhu času.
+>* [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
+>* [M365 Security Center](https://security.microsoft.com/homepage) – globální Čtenář nemůže přečíst citlivost a popisky pro uchování. V levém podokně služby M365 Security Center nenajdete **popisky citlivosti**, **popisky pro uchování**a karty **Analytics** .
+>* [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
+>* [Privileged Access Management (pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nepodporuje roli globálního čtecího modulu.
+>
+> Tyto funkce jsou momentálně ve vývoji.
 >
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Pozvánka hosta](#guest-inviter-permissions)

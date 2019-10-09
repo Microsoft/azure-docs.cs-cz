@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7f8c029c5ceff0865b060cf8edc794454d6c282
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828469"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174715"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -36,9 +36,9 @@ Ve všech případech byste si měli [udělat snímek](snapshot-copy-managed-dis
 
 ## <a name="install-tools-and-connect-to-azure"></a>Nainstalovat nástroje a připojit se k Azure
 
-Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní příkazového [řádku Azure](/cli/azure) a [Azure PowerShell](/azure/new-azureps-module-az). K tomu je potřeba nainstalovat nástroje místně a připojit se k předplatnému Azure.
+Azure Disk Encryption můžete povolit a spravovat prostřednictvím rozhraní příkazového [řádku Azure](/cli/azure) a [Azure PowerShell](/powershell/azure/new-azureps-module-az). K tomu je potřeba nainstalovat nástroje místně a připojit se k předplatnému Azure.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
 
 [Azure CLI 2,0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je navržené k flexibilnímu dotazování dat, podpoře dlouhotrvajících operací jako neblokujících procesů a snadného skriptování. Můžete ji nainstalovat místně pomocí postupu v části [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 Další informace najdete v tématu Začínáme [s Azure CLI 2,0](/cli/azure/get-started-with-azure-cli). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell AZ Module](/azure/new-azureps-module-az) poskytuje sadu rutin, které používají model [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ke správě prostředků Azure. Můžete ji použít v prohlížeči pomocí [Azure Cloud Shell](../../cloud-shell/overview.md)nebo ji můžete nainstalovat na místní počítač podle pokynů v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-az-ps). 
+[Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az) poskytuje sadu rutin, které používají model [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ke správě prostředků Azure. Můžete ji použít v prohlížeči pomocí [Azure Cloud Shell](../../cloud-shell/overview.md)nebo ji můžete nainstalovat na místní počítač podle pokynů v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-az-ps). 
 
 Pokud jste ho již nainstalovali místně, ujistěte se, že používáte nejnovější verzi sady Azure PowerShell SDK ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [Azure PowerShell verze](https://github.com/Azure/azure-powershell/releases).
 
@@ -102,7 +102,7 @@ V tomto scénáři můžete šifrování povolit pomocí šablony Správce prost
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Povolení šifrování na stávajícím nebo běžícím virtuálním počítači se systémem Linux pomocí Azure CLI 
 
-Pomocí nástroje příkazového řádku [Azure CLI](/cli/azure/?view=azure-cli-latest) můžete povolit šifrování disku na zašifrovaném virtuálním pevném disku. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](../../cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu. Pokud chcete povolit šifrování pro existující nebo běžící virtuální počítače se systémem Linux v Azure, použijte následující příkazy rozhraní příkazového řádku:
+Pomocí nástroje příkazového řádku [Azure CLI](/cli/azure/?view=azure-cli-latest) můžete povolit šifrování disku na zašifrovaném virtuálním pevném disku. Můžete ji použít v prohlížeči s [Azure Cloud Shell](../../cloud-shell/overview.md), nebo ji můžete nainstalovat na místní počítač a použít ji v jakékoli relaci PowerShellu. Pokud chcete povolit šifrování pro existující nebo běžící virtuální počítače se systémem Linux v Azure, použijte následující příkazy rozhraní příkazového řádku:
 
 Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) Povolte šifrování na běžícím virtuálním počítači v Azure.
 
@@ -202,7 +202,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
-| location | Umístění pro všechny prostředky. |
+| umístění | Umístění pro všechny prostředky. |
 
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux
@@ -382,7 +382,7 @@ Na rozdíl od syntaxe PowerShellu rozhraní příkazového řádku nevyžaduje, 
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Zakázat šifrování pomocí šablony Správce prostředků:** Zakáže šifrování pomocí [zákazu šifrování na spuštěné šabloně virtuálního počítače se systémem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) .
-     1. Klikněte na **Deploy to Azure** (Nasadit do Azure).
+     1. Klikněte na **nasadit do Azure**.
      2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, právní podmínku a smlouvu.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře

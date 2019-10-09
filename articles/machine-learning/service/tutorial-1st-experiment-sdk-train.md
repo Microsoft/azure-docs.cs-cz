@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: analýza prvního modelu ML'
+title: 'Kurz: výuka prvního modelu Azure ML v Pythonu'
 titleSuffix: Azure Machine Learning
 description: V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes.
 services: machine-learning
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828014"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173307"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
-Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
+Tento kurz je **druhou částí série kurzů s dvěma částmi**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
 V tomto kurzu se seznámíte s následujícími úlohami:
 
@@ -29,7 +29,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 > * Zobrazení výsledků školení na portálu
 > * Načíst nejlepší model
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -83,7 +83,7 @@ X, y = load_diabetes(return_X_y = True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Trénování modelu
+## <a name="train-a-model"></a>Výuka modelu
 
 Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého měřítka, ale při školení mnoha iterací s desítkami různých funkcí a nastaveními parametrů je snadné sledovat, které modely jste si naučili a jak vám školení. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
 
@@ -129,7 +129,7 @@ Po dokončení školení zavolejte proměnnou `experiment`, která načte odkaz 
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104887"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177455"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a redundantní Application Gateway V2 v zóně 
 
@@ -20,14 +20,14 @@ Application Gateway a firewall webových aplikací (WAF) jsou také k dispozici 
 
 Nová SKU v2 obsahuje následující vylepšení:
 
-- Automatické **škálování**: Nasazení Application Gateway nebo WAF v rámci SKU automatického škálování se může škálovat nahoru nebo dolů na základě změny schémat zatížení provozu. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Tato SKU nabízí skutečnou pružnost. V skladové jednotce Standard_v2 a WAF_v2 může Application Gateway provozovat v pevné kapacitě (automatické škálování je zakázané) a v režimu povoleného automatického škálování. Režim pevné kapacity je vhodný pro scénáře s konzistentními a předvídatelnými úlohami. Režim automatického škálování je užitečný v aplikacích, které se zobrazují jako odchylka v provozu aplikací.
-- **Redundance zóny**: Nasazení Application Gateway nebo WAF může zahrnovat více Zóny dostupnosti a odstraňuje nutnost zřídit v každé zóně samostatné instance Application Gateway Traffic Manager. Můžete zvolit jednu zónu nebo několik zón, ve kterých se Application Gateway instance nasazují, což zjednodušuje selhání zóny. Back-end fond pro aplikace se dá v rámci zón dostupnosti podobně distribuovat.
+- Automatické **škálování**: Application Gateway nebo WAF nasazení v rámci SKU automatického škálování se dá škálovat nahoru nebo dolů na základě změny schémat zatížení provozu. Automatické škálování také odebere požadavek na výběr velikosti nasazení nebo počtu instancí během zřizování. Tato SKU nabízí skutečnou pružnost. V skladové jednotce Standard_v2 a WAF_v2 může Application Gateway provozovat v pevné kapacitě (automatické škálování je zakázané) a v režimu povoleného automatického škálování. Režim pevné kapacity je vhodný pro scénáře s konzistentními a předvídatelnými úlohami. Režim automatického škálování je užitečný v aplikacích, které se zobrazují jako odchylka v provozu aplikací.
+- **Redundance zóny**: nasazení Application Gateway nebo WAF může zahrnovat více zóny dostupnosti a odstraňuje nutnost zřídit v každé zóně samostatné instance Application Gateway Traffic Manager. Můžete zvolit jednu zónu nebo několik zón, ve kterých se Application Gateway instance nasazují, což zjednodušuje selhání zóny. Back-end fond pro aplikace se dá v rámci zón dostupnosti podobně distribuovat.
 
   Redundance zóny je dostupná jenom v případě, že jsou dostupné zóny Azure. V ostatních oblastech jsou všechny ostatní funkce podporované. Další informace najdete v tématu [co je zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
-- **Statická virtuální IP adresa**: SKU Application Gateway v2 podporuje výhradně typ statických virtuálních IP adres. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění pro životní cyklus nasazení, ani po restartování.  V v1 není statická virtuální IP adresa, proto musíte místo IP adresy pro směrování názvu domény použít adresu URL služby Application Gateway, aby bylo možné App Services prostřednictvím aplikační brány.
-- **Přepsání hlavičky**: Application Gateway umožňuje přidávat, odebírat nebo aktualizovat žádosti protokolu HTTP a hlavičky odpovědí s SKU v2. Další informace najdete v tématu [přepis hlaviček protokolu HTTP pomocí Application Gateway](rewrite-http-headers.md)
-- **Key Vault Integration (Preview)** : Application Gateway v2 podporuje integraci s Key Vault (ve verzi Public Preview) pro certifikáty serveru, které jsou připojené k naslouchacímu procesu s povoleným protokolem HTTPS. Další informace najdete v tématu [ukončení SSL pomocí certifikátů Key Vault](key-vault-certs.md).
-- **Kontroler příchozího přenosu služeb Azure Kubernetes (Preview)** : Kontroler příchozího přenosu Application Gateway v2 umožňuje použití Application Gateway Azure jako příchozího přenosu pro službu Azure Kubernetes (AKS), která se označuje jako cluster AKS. Další informace najdete na stránce s [dokumentací](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Statická virtuální IP adresa**: Application Gateway v2 SKU podporuje výhradně typ VIP typu static. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění pro životní cyklus nasazení, ani po restartování.  V v1 není statická virtuální IP adresa, proto musíte místo IP adresy pro směrování názvu domény použít adresu URL služby Application Gateway, aby bylo možné App Services prostřednictvím aplikační brány.
+- **Přepisování hlaviček**: Application Gateway umožňuje přidávat, odebírat nebo aktualizovat žádosti HTTP a hlavičky odpovědí s SKU v2. Další informace najdete v tématu [přepis hlaviček protokolu HTTP pomocí Application Gateway](rewrite-http-headers.md)
+- **Key Vault Integration (Preview)** : Application Gateway v2 podporuje integraci s Key Vault (ve verzi Public Preview) pro certifikáty serveru, které jsou připojené k naslouchacímu procesu s POVOLENým protokolem HTTPS. Další informace najdete v tématu [ukončení SSL pomocí certifikátů Key Vault](key-vault-certs.md).
+- Kontroler příchozího přenosu dat **služby Azure Kubernetes (Preview)** : kontroler příchozího přenosu Application Gateway v2 umožňuje použití Application Gateway Azure jako příchozí pro službu Azure KUBERNETES (AKS), která se označuje jako cluster AKS. Další informace najdete na stránce s [dokumentací](https://azure.github.io/application-gateway-kubernetes-ingress/).
 - **Vylepšení výkonu**: SKU v2 nabízí až pětinásobné vyšší výkon při snižování zátěže SSL ve srovnání s SKU Standard/WAF.
 - **Rychlejší nasazení a čas aktualizace** SKU verze 2 poskytuje rychlejší nasazení a dobu aktualizace ve srovnání s SKU Standard/WAF. To zahrnuje také změny konfigurace WAF.
 
@@ -35,16 +35,16 @@ Nová SKU v2 obsahuje následující vylepšení:
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-SKU Standard_v2 a WAF_v2 jsou k dispozici v následujících oblastech: Střed USA – sever, Střed USA – jih, Západní USA Západní USA 2, Východní USA, Východní USA 2, Střed USA, Severní Evropa, Západní Evropa, jihovýchodní Asie, Francie – střed, Velká Británie – západ, Japonsko – východ, Japonsko – západ, Austrálie – východ, Austrálie – jihovýchod, Kanada – střed, Kanada – východ, Východní Asie, Korea Střední, Korea – jih, Jižní Indie, Velká Británie – jih, Střed Indie Západní Indie Jižní Indie.
+SKU Standard_v2 a WAF_v2 je k dispozici v následujících oblastech: Střed USA – sever, Střed USA – jih, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Střed USA, Severní Evropa, Západní Evropa, jihovýchodní Asie, Francie – střed, Velká Británie – západ, Japonsko – východ, Japonsko – západ, Austrálie – východ , Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Východní Asie, Korea – jih, Jižní Korea, Jižní Indie, Velká Británie – jih, Střed Indie, Západní Indie Jižní Indie.
 
 ## <a name="pricing"></a>Ceny
 
 V případě SKU verze v2 je cenový model založený na spotřebě a již není připojen k počtům nebo velikostem instancí. Ceny SKU v2 mají dvě komponenty:
 
 - **Pevná cena** – je to hodinová (nebo částečná hodinová) cena za účelem zřízení brány Standard_v2 nebo WAF_v2.
-- **Jednotková cena kapacity** – jedná se o náklady založené na spotřebě, které se účtují i s pevnými náklady. Poplatek za jednotky kapacity se počítá po hodinách nebo částečně po hodinách. Jednotka kapacity má tři dimenze – výpočetní jednotka, trvalá připojení a propustnost. Výpočetní jednotka měří spotřebovanou kapacitu procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisu adresy URL a zpracování pravidel WAF. Trvalé připojení je míra navázaných připojení TCP k aplikační bráně v daném fakturačním intervalu. Propustnost je průměr MB/s zpracováno systémem v daném fakturačním intervalu.
+- **Jednotková cena kapacity** – jedná se o náklady založené na spotřebě, které se účtují i s pevnými náklady. Poplatky za jednotku se vypočítávají také každou hodinu nebo částečně. Existují tři dimenze kapacity jednotek a výpočetní jednotky, trvalá připojení a propustnost. Výpočetní jednotka je míra spotřebované kapacity procesoru. Faktory ovlivňující výpočetní jednotku jsou připojení TLS/s, výpočty přepisu adresy URL a zpracování pravidel WAF. Trvalé připojení je míra navázaných připojení TCP k aplikační bráně v daném fakturačním intervalu. Propustnost je průměr MB/s zpracováno systémem v daném fakturačním intervalu.
 
-Každou jednotku kapacity tvoří nejvýše: 1 výpočetní jednotka, nebo 2500 trvalá připojení, nebo propustnost 2,22-MB/s.
+Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
 
 Doprovodné materiály k výpočetním jednotkám:
 
@@ -118,15 +118,15 @@ Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivý
 | Redundance zóny                                   |          | &#x2713; |
 | Statická virtuální IP adresa                                        |          | &#x2713; |
 | Řadič příchozího přenosu dat (AKS) Azure Kubernetes Service () |          | &#x2713; |
-| Integrace se službou Azure Key Vault                       |          | &#x2713; |
+| Integrace Azure Key Vault                       |          | &#x2713; |
 | Přepsat hlavičky HTTP (S)                           |          | &#x2713; |
 | Směrování na základě adresy URL                                 | &#x2713; | &#x2713; |
-| Hostování několika webů                             | &#x2713; | &#x2713; |
+| Hostování více lokalit                             | &#x2713; | &#x2713; |
 | Přesměrování provozu                               | &#x2713; | &#x2713; |
 | Firewall webových aplikací (WAF)                    | &#x2713; | &#x2713; |
-| Ukončení protokolu SSL (Secure Sockets Layer)            | &#x2713; | &#x2713; |
+| Ukončení SSL (Secure Sockets Layer) (SSL)            | &#x2713; | &#x2713; |
 | Komplexní šifrování SSL                         | &#x2713; | &#x2713; |
-| Spřažení relací                                  | &#x2713; | &#x2713; |
+| Spřažení relace                                  | &#x2713; | &#x2713; |
 | Vlastní chybové stránky                                | &#x2713; | &#x2713; |
 | Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
 | Podpora HTTP/2                                    | &#x2713; | &#x2713; |
@@ -139,24 +139,24 @@ Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivý
 
 |Rozdíl|Podrobnosti|
 |--|--|
-|Ověřovací certifikát|Nepodporuje se.<br>Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporuje se|
-|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Nepodporuje se|
-|NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro SKU Standard_v2<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v nejčastějších [dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Měly by se používat metriky Azure.|
-|Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|
+|Ověřovací certifikát|Není podporováno.<br>Další informace najdete v tématu [Přehled koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Není podporováno|
+|Uživatelem definovaná trasa (UDR) na Application Gateway podsíti|Není podporováno|
+|NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro SKU Standard_v2<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|Protokoly výkonu v diagnostice Azure|Není podporováno.<br>Měly by se používat metriky Azure.|
+|Fakturované|Fakturace naplánovala zahájení od 1. července 2019.|
 |Režim FIPS|V tuto chvíli se nepodporují.|
 |Jenom interního nástroje režim|To se v tuto chvíli nepodporuje. Podporují se veřejné a interního nástroje režimy.|
-|Integrace Netwatcher|Nepodporuje se.|
+|Integrace Netwatcher|Není podporováno.|
 |Integrace Azure Security Center|Ještě není k dispozici.
 
-## <a name="migrate-from-v1-to-v2"></a>Migrace z v1 na v2
+## <a name="migrate-from-v1-to-v2"></a>Migrace z verze V1 na v2
 
 Skript Azure PowerShell je k dispozici v galerii prostředí PowerShell, který vám může při migraci z verze V1 Application Gateway/WAF do SKU automatického škálování v2. Tento skript vám pomůže zkopírovat konfiguraci z vaší brány v1. Migrace provozu je stále vaše zodpovědnost. Další informace najdete v tématu [migrace Azure Application Gateway z verze V1 na verzi 2](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Rychlé zprovoznění: Přímý webový provoz pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md)
+- [Rychlý Start: směrování webového provozu s využitím Azure Application Gateway-Azure Portal](quick-create-portal.md)
 - [Vytvoření automatického škálování, zóny redundantní aplikační brány s vyhrazenou virtuální IP adresou pomocí Azure PowerShell](tutorial-autoscale-ps.md)
 - Přečtěte si další informace o [Application Gateway](overview.md).
 - Přečtěte si další informace o [Azure firewall](../firewall/overview.md).

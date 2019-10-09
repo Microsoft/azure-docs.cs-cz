@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Příkladů v jazyce Java pro rozhraní SQL API'
+title: 'Azure Cosmos DB: příklady v Javě pro rozhraní SQL API'
 description: Vyhledejte si příklady v Javě na GitHubu pro běžné úlohy prováděné pomocí rozhraní SQL API služby Azure Cosmos DB, včetně operací CRUD.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,22 +8,23 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 02/08/2019
 ms.author: sngun
-ms.openlocfilehash: 1b60df197e83fa480a3fdaed60552a6c977845b1
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8b133f0044bdf8f99fdee657177d561ef5bb406b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250039"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170151"
 ---
-# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Příkladů v jazyce Java pro rozhraní SQL API
+# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v Javě pro rozhraní SQL API
 
 > [!div class="op_single_selector"]
-> * [Příklady v .NET](sql-api-dotnet-samples.md)
+> * [Příklady sady .NET v2 SDK](sql-api-dotnet-samples.md)
+> * [Příklady sady .NET V3 SDK](sql-api-dotnet-v3sdk-samples.md)
 > * [Příklady v Javě](sql-api-java-samples.md)
 > * [Příklady v asynchronní Javě](sql-api-async-java-samples.md)
 > * [Příklady v Node.js](sql-api-nodejs-samples.md)
 > * [Příklady v Pythonu](sql-api-python-samples.md)
-> * [Galerie ukázkového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
+> * [Galerie vzorového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
 
@@ -36,7 +37,7 @@ Nejnovější ukázkové aplikace, které provádí operace CRUD a další běž
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- Je možné [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Vaše předplatné sady Visual Studio vám dává kredity každý měsíc, můžete použít k placení za služby Azure.
+- Můžete si [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Za své předplatné sady Visual Studio každý měsíc získáváte kredity, které můžete využít pro placené služby Azure.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -88,73 +89,73 @@ Spuštění z příkazového řádku:
    > 
 
 ## <a name="database-examples"></a>Příklady pro databáze
-[DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o databázi Azure Cosmos před spuštěním následující ukázky, naleznete v tématu [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek. 
+V souboru [DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) se dozvíte, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytvoření a čtení databáze](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L64-L79) | [DocumentClient.createDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase)<br>[DocumentClient.readDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdatabase)<br>[Resource.setId](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resource.setid) |
 | [Vytvoření a odstranění databáze](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L82-L93) | [DocumentClient.deleteDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletedatabase) |
 | [Vytvoření a dotazování databáze](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L96-L111) | [DocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Příklady pro kolekce
-[CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o kolekcích Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek.
+V souboru [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) se dozvíte, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytvoření kolekce tvořené jedním oddílem](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L74-L84) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) |
 | [Vytvoření vlastní kolekce s více oddíly](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L103-L155) | [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentcollection)<br>[PartitionKeyDefinition](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.partitionkeydefinition)<br>[RequestOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions) |
 | [Odstranění kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L97-L99) | [DocumentClient.deleteCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletecollection) |
 
 ## <a name="document-examples"></a>Příklady pro dokumenty
-[DocumentCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o dokumenty Azure Cosmos před spuštěním následující ukázky, viz [práci s databází, kontejnerů a položky](databases-containers-items.md) konceptuální článek.
+V souboru [DocumentCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) se dozvíte, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytváření, čtení a odstranění dokumentu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java#L84-L122) | [DocumentClient.createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createdocument)<br>[DocumentClient.readDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocument)<br>[DocumentClient.deleteDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument) |
 | [Vytvoření dokumentu s programovatelnou definicí dokumentu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java#L126-L147) | [Dokument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.document)<br>[Resource.setId](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resource.setid) |
 
-## <a name="indexing-examples"></a>Příklady indexování
-[CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o indexování ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [zásadám indexování](index-policy.md), [indexování typů](index-types.md), a [indexování cesty](index-paths.md) koncepčních článků. 
+## <a name="indexing-examples"></a>Příklady pro indexování
+V souboru [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) se dozvíte, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) . 
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
-| [Vytvoření indexu a nastavení zásad indexování](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L125-L141) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy) |
+| [Vytvoření indexu a sady zásad indexování](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L125-L141) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy) |
 
-Další informace o indexování najdete v tématu pojednávajícím o [zásadách indexování služby Azure Cosmos DB](index-policy.md).
+Další informace o indexování najdete v tématu pojednávajícím o [zásadách indexování služby Azure DB Cosmos](index-policy.md).
 
 ## <a name="query-examples"></a>Příklady dotazů
-[DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o odkaz na dotaz SQL ve službě Azure Cosmos DB před spuštěním následující ukázky, viz [Příklady dotazů SQL](how-to-sql-query.md) konceptuální článek. 
+V souboru [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) se dozvíte, jak provádět následující úlohy. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku [příklady dotazů SQL](how-to-sql-query.md) koncepční článek. 
 
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Provedení jednoduchého dotazu na dokument napříč oddíly](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L108-L129) | [DocumentClient.queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments)<br>[FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setenablecrosspartitionquery) |
-| [Řazení podle dotazu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse\<T > .getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
+| [Řazení podle dotazu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse @ no__t-1T >. getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
 
 Další informace o psaní dotazů najdete v tématu věnovaném [dotazům SQL ve službě Azure Cosmos DB](how-to-sql-query.md).
 
 ## <a name="offer-examples"></a>Příklady pro nabídky
 Soubor [OfferCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) ukazuje, jak provádět následující úlohy:
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytvoření kolekce a nastavení propustnosti](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions.setofferthroughput) |
 | [Čtení kolekce kvůli nalezení související nabídky](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L108-L132) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.offer.getcontent)<br>[DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer)<br>[DocumentClient.readCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readcollection)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.queryoffers) |
 
 ## <a name="partition-key-examples"></a>Příklady pro klíče oddílu
-[SinglePartitionCollectionDocumentCrudSample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) soubor ukazuje, jak provádět následující úlohy. Další informace o vytváření oddílů a klíče oddílů ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [dělení](partitioning-overview.md) konceptuální článek. 
+V souboru [SinglePartitionCollectionDocumentCrudSample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) se dozvíte, jak provádět následující úlohy. Další informace o dělení a klíčích oddílů v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku koncepční článek [dělení](partitioning-overview.md) . 
 
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytvoření kolekce tvořené jedním oddílem](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java#L164-L207) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) |
 | [Změna nabídky propustnost pro kolekci tvořenou jedním oddílem](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java#L209-L223) | [DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Příklady pro uložené procedury
-[StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) soubor ukazuje, jak provádět následující úlohy. Další informace o programování na straně serveru ve službě Azure Cosmos DB před spuštěním následujících ukázkách najdete v tématu [uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md) konceptuální článek. 
+V souboru [StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) se dozvíte, jak provádět následující úlohy. Další informace o programování na straně serveru v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [uložených procedurách, triggerech a uživatelsky definovaných funkcích](stored-procedures-triggers-udfs.md) koncepční článek. 
 
 
-| Úloha | API – referenční informace |
+| Úkol | Referenční materiály k rozhraním API |
 | --- | --- |
 | [Vytvoření uložené procedury](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java#L85-L118) | [StoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.storedprocedure)<br>[DocumentClient.createStoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createstoredprocedure) |
 | [Spuštění uložené procedury s argumenty](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java#L121-L144) | [DocumentClient.executeStoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.executestoredprocedure) |

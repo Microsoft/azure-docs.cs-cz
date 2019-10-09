@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f193dceaf26361fececde9df9df6769e2a971543
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970379"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178107"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 
@@ -50,7 +50,7 @@ Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkov
 ## <a name="secure-your-data"></a>Zabezpečte svoje data
 Služba Azure Database Services má tradici zabezpečení dat, která Azure Database for MySQL zachovává, s funkcemi, které omezují přístup, chrání neaktivní a nepohybovaná data a umožňuje sledovat aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
-Služba Azure Database for MySQL používá šifrování úložiště pro data v klidovém provozu a je kompatibilní se standardem FIPS 140-2. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+Služba Azure Database for MySQL používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 Ve výchozím nastavení je služba Azure Database for MySQL nakonfigurovaná tak, aby vyžadovala [zabezpečení připojení SSL](./concepts-ssl-connection-security.md) pro pohyb dat napříč sítí. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
 

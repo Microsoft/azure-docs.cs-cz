@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: atsenthi
+ms.openlocfilehash: 6471d3f58fbe0e19910f39e9527f193d00a228be
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828502"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170626"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Kroky v tomto článku předpokládají, že provádíte nativní instalaci v Li
 Instalace sady SDK a modulu runtime Service Fabric v subsystému Windows pro Linux se nepodporuje. Podporuje se však rozhraní příkazového řádku Azure Service Fabric, které umožňuje správu entit Service Fabric hostovaných jinde v clusteru nebo místním prostředí. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Nastavení rozhraní příkazového řádku Service Fabric](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro vývoj jsou podporovány tyto verze operačních systémů.
 
@@ -272,7 +272,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. Můžete nainstalovat integrované vývojové prostředí Eclipse pro vývojáře v Javě nebo v Javě EE.
 
-1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujte tak, že vyberete **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Můžete aktualizovat buildy pomocí pokynů v sestavách [na pozatmění: Moduly plug-in zatmění pro][buildship-update]Gradle.
+1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujte tak, že vyberete **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Můžete aktualizovat buildy pomocí instrukcí v části vytváření pořízeného [: moduly plug-in pro Gradle][buildship-update].
 
 2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **Help** (Nápověda) > **Install New Software** (Instalace nového softwaru).
 
@@ -286,7 +286,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 6. Proveďte kroky instalace. Potom přijměte licenční smlouvu s koncovým uživatelem.
 
-Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **Update** (Aktualizovat).
+Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
 
 Další informace najdete v tématu [Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě](service-fabric-get-started-eclipse.md).
 
@@ -324,7 +324,7 @@ Pokud chcete odebrat sady Service Fabric SDK, spusťte následující příkazy.
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí modulu plug-in Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md)

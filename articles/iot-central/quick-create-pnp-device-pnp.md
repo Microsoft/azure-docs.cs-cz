@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048962"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174835"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Rychlý start: Vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central pomocí modelu schopností zařízení
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Rychlý Start: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play a jeho připojení k aplikaci IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
@@ -25,7 +25,7 @@ _Model schopností zařízení_ (DCM) popisuje možnosti zařízení [IoT techno
 * Spusťte kód zařízení ve Windows a podívejte se, jak se připojí k vaší IoT Central aplikaci.
 * Podívejte se na simulovanou telemetrii, kterou zařízení odesílá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central (náhled funkcí)](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) a vytvořte IoT Central aplikaci pomocí šablony **aplikace Preview** .
 
@@ -36,18 +36,18 @@ K dokončení tohoto rychlého startu je potřeba na svůj místní počítač n
 * [Cmake](https://cmake.org/download/) – při instalaci **cmake**vyberte možnost **Přidat cmake do systémové cesty**.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Node.js](https://nodejs.org/)
-* `dps-keygen` Nástroj:
+* Nástroj `dps-keygen`:
 
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>Instalace aplikace Workbench pro zařízení Azure IoT
+### <a name="install-azure-iot-tools"></a>Instalace nástrojů Azure IoT
 
-Pomocí následujících kroků nainstalujete rozšíření Azure IoT Device Workbench do VS Code:
+Pomocí následujících kroků nainstalujete balíček rozšíření Azure IoT Tools do VS Code:
 
 1. V VS Code vyberte kartu **rozšíření** .
-1. Vyhledejte aplikaci **Workbench pro zařízení Azure IoT**.
+1. Vyhledejte **nástroje Azure IoT Tools**.
 1. Vyberte **Install** (Nainstalovat).
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
@@ -64,7 +64,7 @@ Připravte vývojové prostředí, které můžete použít k sestavení sady SD
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-1. `central_app` Vytvořte složku v kořenovém adresáři místního klonu úložiště. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
+1. Vytvořte složku `central_app` v kořenovém adresáři místního klonu úložiště. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -95,11 +95,11 @@ Pokud chcete zařízení připojit k IoT Central aplikaci, budete potřebovat kl
 
 V tomto rychlém startu použijete veřejný DCM pro zařízení MxChip IoT DevKit. Pro spuštění kódu nepotřebujete skutečné zařízení DevKit. v tomto rychlém startu zkompilujete kód, který chcete spustit v systému Windows.
 
-1. Otevřete `azure-iot-sdk-c\central_app` složku s vs Code.
+1. Otevřete složku `azure-iot-sdk-c\central_app` s VS Code.
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte **IoT technologie Plug and Play**a vyberte **Otevřít úložiště modelu**. Vyberte **veřejné úložiště**. VS Code zobrazuje seznam DCMs ve veřejném úložišti modelu.
 
-1. Vyberte **MXChip IoT DevKit** DCM s ID `urn:mxchip:mxchip_iot_devkit:1`. Pak vyberte **Stáhnout**. Nyní máte kopii DCM ve `central_app` složce.
+1. Vyberte **MXChip IoT DevKit** DCM s ID `urn:mxchip:mxchip_iot_devkit:1`. Pak vyberte **Stáhnout**. Nyní máte kopii DCM ve složce `central_app`.
 
 ![Úložiště modelu a DCM](./media/quick-create-pnp-device-pnp/public-repository.png)
 
@@ -125,7 +125,7 @@ Teď máte **MXChip IoT DevKit** DCM a jeho přidružená rozhraní, můžete vy
 
 1. Jako metodu připojení vyberte **přes DPS (služba Device Provisioning Service) symetrický klíč** .
 
-1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení `devkit_device` ve složce.
+1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení ve složce `devkit_device`.
 
 ![Generovaný kód zařízení](./media/quick-create-pnp-device-pnp/generated-code.png)
 
@@ -133,7 +133,7 @@ Přidání informací o připojení do vygenerovaného kódu zařízení:
 
 1. V okně VS Code, které obsahuje generovaný kód jazyka C. Otevřete soubor `main.c`.
 
-1. Nahraďte `[DPS Id Scope]` **ID rozsahu** , který jste si poznamenali dříve.
+1. Nahraďte `[DPS Id Scope]` s **ID oboru** , které jste si poznamenali dříve.
 
 1. Nahraďte `[DPS symmetric key]` klíčem zařízení, který jste vygenerovali v předchozím kroku.
 
@@ -145,15 +145,15 @@ Přidání informací o připojení do vygenerovaného kódu zařízení:
 
 Pomocí sady SDK pro zařízení sestavíte nevygenerovanou zástupné kódy zařízení. Aplikace, kterou vytváříte, simuluje zařízení **MXChip IoT DevKit** a připojuje se k vaší IoT Central aplikaci. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
-1. V vs Code otevřete `CMakeLists.txt` soubor `azure-iot-sdk-c` ve složce. Ujistěte se, že jste `CMakeLists.txt` soubor otevřeli `azure-iot-sdk-c` ve složce, `devkit_device` nikoli ve složce.
+1. V VS Code otevřete soubor `CMakeLists.txt` ve složce `azure-iot-sdk-c`. Ujistěte se, že jste otevřeli soubor `CMakeLists.txt` ve složce `azure-iot-sdk-c`, nikoli ve složce `devkit_device`.
 
-1. Do dolní `CMakeLists.txt` části souboru přidejte řádek, aby při kompilování zahrnoval složku se zástupným kódem zařízení:
+1. Do dolní části souboru `CMakeLists.txt` přidejte řádek, který bude při kompilování zahrnovat složku se zástupnými procedurami kódu zařízení:
 
     ```txt
     add_subdirectory(central_app/devkit_device)
     ```
 
-1. Ve složce vytvořte `cmake` složku a v příkazovém řádku přejděte do této složky: `azure-iot-sdk-c`
+1. Ve složce `azure-iot-sdk-c` vytvořte složku `cmake` a přejděte do této složky z příkazového řádku:
 
     ```cmd\sh
     mkdir cmake
@@ -193,7 +193,7 @@ Po připojení kódu zařízení k vašemu IoT Central můžete zobrazit vlastno
 
     ![Stránka šablony zařízení](./media/quick-create-pnp-device-pnp/device-template.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak připojit zařízení IoT technologie Plug and Play, které bylo vygenerováno z DCM v úložišti veřejného modelu.
 

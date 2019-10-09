@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: Koncepty
   items:
-    - name: Informace o službě Soubory Azure
+    - name: Plánování nasazení služby Soubory Azure
       href: storage-files-planning.md
-    - name: Informace o službě Synchronizace souborů Azure
+    - name: Plánování nasazení Synchronizace souborů Azure
       href: storage-sync-files-planning.md
     - name: Informace o vrstvení cloudu
       href: storage-sync-cloud-tiering.md

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030527"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168631"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -36,16 +36,38 @@ Další informace najdete v tématu [pokyny k migraci pro přesun z Media Servic
 
 ## <a name="september-2019"></a>Září 2019
 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>Živé lineární kódování pro živé události
+
 Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineárního kódování živých událostí.
- 
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
+
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Procesor [Azure Media Indexer](../previous/media-services-index-content.md) médií bude vyřazení od 1. října 2020. Od 1. ledna 2020 budou zpracovatelské procesory [Azure Media Indexer 2 ve verzi Preview](../previous/media-services-process-content-with-indexer2.md) vyřazené. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) nahrazuje tyto starší verze procesorů médií.
+
+Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
+
 ## <a name="august-2019"></a>Srpen 2019
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Pro Media Services je otevřen regionální pár jar. 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Pro Media Services je otevřen regionální pár jar. 
 
 Media Services je teď k dispozici v oblasti Jižní Afrika – sever a Jižní Afrika – západ.
 
 Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Media Services V3](azure-clouds-regions.md).
 
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
+
+Oznamujeme vyřazení mediálních procesorů *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které se vyřadí do 30. listopadu 2019.
+
+Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+ 
 ## <a name="july-2019"></a>Červenec 2019
 
 ### <a name="content-protection"></a>Ochrana obsahu

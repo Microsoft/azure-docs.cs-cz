@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží s Azure Data Share Preview
-description: Přečtěte si, jak řešit problémy s Azure Data Share Preview
+description: Naučte se řešit problémy s pozvánkami a chybami při vytváření nebo přijímání sdílených dat pomocí Azure Data Share Preview.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320296"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169223"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Řešení běžných problémů v Azure Data Share Preview
 
@@ -41,9 +41,9 @@ Pokud stále nemůžete zobrazit pozvánku ke sdílení dat, kontaktujte poskyto
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Chyba při vytváření nebo přijímání nové sdílené složky dat
 
-Chyba Operace vrátila neplatný stavový kód důvodu chybného požadavku.
+"Chyba: operace vrátila neplatný stavový kód důvodu chybného požadavku."
 
-Chyba AuthorizationFailed"
+"Chyba: AuthorizationFailed"
 
 "Chyba: přiřazení role k účtu úložiště"
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza vzdálené image – REST, kudrlinkou'
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat vzdálený obrázek pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0c52bf9b62026caec54a09acd10a52f89ca98d52
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 4f03ae62e2a455a5a5101bef45cf2d78100248f4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138023"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177319"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Rychlý start: Analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a kudrlinkou
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a kudrlinkou
 
 V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít [cURL](https://curl.haxx.se/windows).
 - Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. 
@@ -44,7 +44,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Vložte příkaz z textového editoru do okna příkazového řádku a pak příkaz spusťte.
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309614"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170047"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -37,38 +37,38 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 K provedení této ukázky budete potřebovat:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) nebo [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Baňka](http://flask.pocoo.org/), [baňka – relace](https://pythonhosted.org/Flask-Session/), [žádosti](https://2.python-requests.org/en/master/)
+- [Baňka](http://flask.pocoo.org/), [baňka – relace](https://pythonhosted.org/Flask-Session/), [žádosti](https://requests.kennethreitz.org//en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Tenant Azure Active Directory (Azure AD). Další informace o tom, jak získat tenanta Azure AD, najdete v tématu [Jak získat tenanta Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 
 > [!div renderon="docs"]
 >
-> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý Start
 >
 > Máte dvě možnosti, jak spustit aplikaci pro rychlý Start: Express (možnost 1) a ruční (možnost 2).
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
 > 1. Přejít na [Registrace aplikací Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Vyberte **Nová registrace**.
-> 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
+> 1. Zadejte název vaší aplikace a vyberte **zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: registrace a ruční konfigurace vaší aplikace a ukázky kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
+> #### <a name="step-1-register-your-application"></a>Krok 1: registrace aplikace
 >
-> Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
+> K registraci aplikace a přidání registračních informací aplikace do řešení použijte následující postup:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
+> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
+>      - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `python-webapp`.
 >      - V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 >      - V části **identifikátor URI pro přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a nastavte hodnotu na `http://localhost:5000/getAToken`.
->      - Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
+>      - Vyberte **Registrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. V nabídce vlevo vyberte **certifikáty & tajných** kódů a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
 >
 >      - Zadejte popis klíče (instance tajného kódu aplikace).
@@ -86,17 +86,17 @@ K provedení této ukázky budete potřebovat:
 > 1. Vytvořte tajný klíč klienta.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Tuto změnu pro mě udělat]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurováno](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
+> > @no__t – 0Already nakonfigurovaná na @ no__t-1 aplikace je nakonfigurovaná s tímto atributem.
 
-#### <a name="step-2-download-your-project"></a>Krok 2: Stažení projektu
+#### <a name="step-2-download-your-project"></a>Krok 2: stažení projektu
 
 [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 #### <a name="step-3-configure-the-application"></a>Krok 3: Konfigurace aplikace
 
-1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
+1. Extrahujte soubor zip do místní složky blíž ke kořenové složce, například **C:\Azure-Samples**
 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
 1. Otevřete soubor **app_config. py** , který najdete v kořenové složce a nahraďte následujícím fragmentem kódu:
 
@@ -106,12 +106,12 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
-> Kde:
+> ,
 >
-> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
-> - `Enter_the_Client_Secret_Here`– je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
+> - `Enter_the_Application_Id_here` – je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Client_Secret_Here`-je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
 
-#### <a name="step-4-run-the-code-sample"></a>Krok 4: Spuštění ukázky kódu
+#### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
 
 1. Budete muset nainstalovat MSAL knihovny Pythonu, architekturu baněk, baňky pro správu relací na straně serveru a požadavky pomocí PIP následujícím způsobem:
 
@@ -130,6 +130,6 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 Přečtěte si další informace o webových aplikacích, které přihlásí uživatele, a potom zavolá webová rozhraní API:
 
 > [!div class="nextstepaction"]
-> [Scénář: Webové aplikace, které přihlásí uživatele](scenario-web-app-sign-user-overview.md)
+> [Scénář: webové aplikace, které přihlásí uživatele](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950313"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169757"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -52,14 +52,14 @@ Obě implementace používají Linux *softwaru iptables* k vykonání zadaných 
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Rozdíly mezi zásadami Azure a Calico a jejich funkcemi
 
-| Funkce                               | Azure                      | Calico                      |
+| Schopnost                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Podporované platformy                      | Linux                      | Linux                       |
 | Podporované síťové možnosti             | CNI Azure                  | Azure CNI a kubenet       |
 | Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
 | Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového řádku `calicoctl` ke správě těchto rozšířených funkcí najdete v tématu [reference uživatele calicoctl][calicoctl]. |
 | Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
-| protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
+| Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení zásad sítě
 
@@ -134,7 +134,7 @@ az aks create \
     --network-policy azure
 ```
 
-Vytvoření clusteru trvá několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
+Vytvoření clusteru bude trvat několik minut. Až bude cluster připravený, nakonfigurujte `kubectl` pro připojení ke clusteru Kubernetes pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -464,7 +464,7 @@ Další informace o zásadách najdete v tématu [zásady sítě Kubernetes][kub
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
 [calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
+[calico-support]: https://www.tigera.io/tigera-products/calico/
 [calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 

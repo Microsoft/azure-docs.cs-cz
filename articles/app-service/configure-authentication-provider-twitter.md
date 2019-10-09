@@ -14,51 +14,60 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983603"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176960"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Postup konfigurace aplikace App Service pro použití služby Twitter Login
+# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurace aplikace pro App Service, aby používala přihlášení k Twitteru
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití služby Twitter jako poskytovatele ověřování.
+Tento článek ukazuje, jak nakonfigurovat Azure App Service pro použití služby Twitter jako poskytovatele ověřování.
 
-Chcete-li dokončit postup v tomto tématu, musíte mít účet na Twitteru s ověřenou e-mailovou adresou a telefonním číslem. Pokud chcete vytvořit nový účet na Twitteru, navštivte <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">Twitter.com</a>.
+K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověřenou e-mailovou adresou a telefonním číslem. Pokud chcete vytvořit nový účet na Twitteru, navštivte [Twitter.com].
 
 ## <a name="register"> </a>Registrace aplikace na Twitteru
-1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**. Budete ho používat ke konfiguraci aplikace Twitter.
-2. Přejděte na web pro [Vývojáři na Twitteru] na Twitteru, přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a klikněte na **vytvořit novou aplikaci**.
-3. Zadejte **název** a **Popis** nové aplikace. Do **adresy URL** vaší aplikace vložte hodnotu **Web** . Potom pro **adresu URL zpětného volání**zadejte adresu url vaší App Service aplikace a přidejte cestu `/.auth/login/twitter/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
-4. V dolní části stránky si přečtěte a přijměte podmínky. Pak klikněte na **vytvořit aplikaci Twitter**. Zobrazí se podrobnosti o aplikaci.
-5. Klikněte na kartu **Nastavení** , zaškrtněte políčko **povolí použití této aplikace pro přihlášení**k Twitteru a pak klikněte na **aktualizovat nastavení**.
-6. Vyberte kartu **klíče a přístupové tokeny** . Poznamenejte si hodnoty **klíč příjemce (klíč rozhraní API)** a tajného kódu **příjemce (tajný klíč rozhraní API)** .
-   
+
+1. Přihlaste se k [Azure Portal] a pokračujte do své aplikace. Zkopírujte **adresu URL**. Použijete ho ke konfiguraci aplikace Twitter.
+1. Přejít na web pro [Vývojáři na Twitteru] , přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a vyberte **vytvořit novou aplikaci**.
+1. Zadejte **název** a **Popis** nové aplikace. Vložte **adresu URL** vaší aplikace do pole **Web** . Do pole **Adresa URL zpětného volání** zadejte adresu URL vaší aplikace App Service a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
+1. V dolní části stránky si přečtěte a přijměte podmínky. Vyberte **vytvořit aplikaci Twitter**. Zobrazí se podrobnosti o aplikaci.
+1. Vyberte kartu **Nastavení** , zaškrtněte políčko **povoluje, aby se tato aplikace použila k přihlášení přes Twitter**, a pak vyberte **aktualizovat nastavení**.
+1. Vyberte kartu **klíče a přístupové tokeny** .
+
+   Poznamenejte si tyto hodnoty:
+   - Klíč příjemce (klíč rozhraní API)
+   - Tajný klíč uživatele (tajný kód rozhraní API)
+
    > [!NOTE]
    > Tajný klíč příjemce je důležité bezpečnostní pověření. Nesdílejte tento tajný klíč s kýmkoli ani ho distribuujte s vaší aplikací.
-   > 
-   > 
 
 ## <a name="secrets"> </a>Přidání informací o Twitteru do aplikace
-1. Zpátky v [Azure Portal]přejděte do aplikace. Klikněte na **Nastavení**a pak na **ověřování nebo autorizaci**.
-2. Pokud není povolená funkce ověřování/autorizace, zapněte přepínač na **zapnuto**.
-3. Klikněte na **Twitter**. Vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve. Pak klikněte na **OK**.
-   
-   ![][1]
-   
+
+1. V [Azure Portal]přejdete do své aplikace.
+1. Vyberte **nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Twitter**.
+1. Vložte do hodnot `API Key` a `API Secret`, které jste získali dříve.
+1. Vyberte **OK**.
+
+   ![Snímek obrazovky s nastavením Twitteru mobilní aplikace][1]
+
    Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
-4. Volitelné Pokud chcete omezit přístup k vašemu webu jenom na uživatele ověřené Twitterem, nastavte **akci, která se má provést, když se žádost neověřuje** na **Twitteru**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky se přesměrovaly na Twitter pro ověřování.
 
-> [!NOTE]
-> Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (bez akce)** , pokud se aplikace ručně spouští samotné přihlášení, jak je popsáno [zde](overview-authentication-authorization.md#authentication-flow).
+1. Volitelné Pokud chcete omezit přístup k vašemu webu jenom na uživatele ověřené Twitterem, nastavte **akci, která se má provést, když se žádost neověřuje** na **Twitteru**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechny neověřené požadavky na Twitter pro ověřování.
 
-5. Klikněte na **Uložit**.
+   > [!CAUTION]
+   > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. Pro takové aplikace může být vhodnější použití **anonymních požadavků (žádná akce)** , aby aplikace ručně spouštěla ověřování. Další informace najdete v tématu [tok ověřování](overview-authentication-authorization.md#authentication-flow).
+
+1. Vyberte **Save** (Uložit).
 
 Nyní jste připraveni použít Twitter pro ověřování ve vaší aplikaci.
 
-## <a name="related-content"> </a>Související obsah
+## <a name="related-content"></a>Další kroky
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->
@@ -69,5 +78,6 @@ Nyní jste připraveni použít Twitter pro ověřování ve vaší aplikaci.
 <!-- URLs. -->
 
 [Vývojáři na Twitteru]: https://go.microsoft.com/fwlink/p/?LinkId=268300
+[twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
 [Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

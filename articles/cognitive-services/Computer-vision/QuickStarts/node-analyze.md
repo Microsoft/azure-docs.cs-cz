@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza vzdálené Image pomocí REST API a Node. js'
+title: 'Rychlý Start: analýza vzdálené Image pomocí REST API a Node. js'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Node.js.
 services: cognitive-services
@@ -10,25 +10,25 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18, seo-javascript-september2018
-ms.openlocfilehash: c9d2c28a1faa2bceafb2b45f1dac76356e0e8753
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
+ms.openlocfilehash: b00c9ccca3c07ad1cfb6ca1f949f1f2c8c33655d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933953"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176477"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Rychlý start: Analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API s Node. js
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API s Node. js
 
-V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu pro Node. js. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít nainstalovaný [Node.js](https://nodejs.org) 4.x nebo novější.
 - Musíte mít nainstalovaný [npm](https://www.npmjs.com/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -60,7 +60,7 @@ let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
 let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
 if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
-var uriBase = endpoint + 'vision/v2.0/analyze';
+var uriBase = endpoint + 'vision/v2.1/analyze';
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
@@ -176,7 +176,7 @@ Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte bal�
 
 3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

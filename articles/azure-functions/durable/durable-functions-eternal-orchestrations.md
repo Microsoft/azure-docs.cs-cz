@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d96229bb5e3d288915b64e5a7ce29a8651f2a181
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933365"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177381"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
 
@@ -28,10 +28,10 @@ Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrat
 
 Namísto použití nekonečné smyčky, funkce Orchestrator obnoví stav tím, že zavolá metodu [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) . Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
 
-Když `ContinueAsNew` je volána, instance před ukončením zachová zprávy do sebe samé. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
+Při volání `ContinueAsNew` instance zachová zprávu před ukončením. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
 
 > [!NOTE]
-> Prostředí trvalého zpracování úloh udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která resetuje `ContinueAsNew`. Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
+> Prostředí trvalého zpracování úloh udržuje stejné ID instance, ale interně vytvoří nové *ID spuštění* pro funkci Orchestrator, která obnoví `ContinueAsNew`. Toto ID spuštění většinou není vystaveno externě, ale může být užitečné, abyste měli informace o spuštění orchestrace ladění.
 
 ## <a name="periodic-work-example"></a>Příklad periodické práce
 
@@ -77,7 +77,7 @@ Rozdíl mezi tímto příkladem a funkcí aktivovanou časovačem je, že doba t
 Pomocí metody [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) spustíte orchestraci externí. To se neliší od aktivace jakékoli jiné funkce orchestrace.  
 
 > [!NOTE]
-> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité při spouštění orchestrace zachovat stejnou `id` instanci. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+> Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité při spuštění orchestrace zachovat stejnou instanci `id`. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -87,14 +87,14 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 {
     string instanceId = "StaticId";
     // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, Nevolejte `ContinueAsNew` vše, co je potřeba udělat, a nechejte funkci ukončit.
+Pokud je potřeba, aby funkce Orchestrator mohla nakonec dokončit, *Nevolejte @no__t* -1 a nechejte funkci ukončit.
 
 Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení metodu [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) . Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 

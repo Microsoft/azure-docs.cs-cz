@@ -13,22 +13,22 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: cbeaccf4cdea87d6f34d5ee77e6a08b32abd76b5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708344"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169450"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Rychlý start: Vytváření a nasazování šablon Azure Resource Manager s využitím NÁPADu IntelliJ
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Rychlý Start: vytvoření a nasazení šablon Azure Resource Manager pomocí NÁPADu IntelliJ
 
-Naučte se, jak nasadit šablonu Správce prostředků do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
+Naučte se, jak nasadit šablonu Správce prostředků do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony Správce prostředků jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [přehled Azure Resource Manager](resource-group-overview.md).
 
 ![Diagram portálu pro rychlé zprovoznění šablon Správce prostředků](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,15 +40,15 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="deploy-a-quickstart-template"></a>Nasazení šablony pro rychlý Start
 
-Šablonu nemusíte vytvářet od začátku, ale můžete místo toho otevřít některou [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Definuje prostředek účtu Azure Storage. 
+Místo vytvoření zcela nové šablony otevřete šablonu ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Šablona použitá v tomto rychlém startu se nazývá [vytvořit účet úložiště úrovně Standard](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Definuje prostředek účtu Azure Storage.
 
-1. Klikněte pravým tlačítkem myši a [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) uložte [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) a do místního počítače.
+1. Klikněte pravým tlačítkem a uložte [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) a [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) do svého místního počítače.
 
 1. Pokud je vaše sada Azure Toolkit správně nainstalovaná a přihlášená, měla by se zobrazit v Průzkumníkovi Azure na postranním panelu IntelliJ NÁPADu. Klikněte pravým tlačítkem na **Správa prostředků** a vyberte **vytvořit nasazení**.
 
     ![Správce prostředků šablonu kliknutím pravým tlačítkem myši vytvoříte nasazení.](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Proveďte konfiguraci **názvu nasazení**,předplatného, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny `testRG`prostředků. Pak vyberte možnost cesta pro **šablonu prostředků** jako `azuredeploy.json` `azuredeploy.parameters.json` a **parametry prostředku** při stažení.
+1. Proveďte konfiguraci **názvu nasazení**, **předplatného**, **skupiny prostředků**a **oblasti**. Tady nasadíme šablonu do nové skupiny prostředků `testRG`. Pak vyberte cesta pro **šablonu prostředků** jako `azuredeploy.json` a **parametry prostředku** jako `azuredeploy.parameters.json`, které jste si stáhli.
 
     ![Správce prostředků šablonou vyberte soubory pro vytvoření nasazení.](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -58,7 +58,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="browse-an-existing-deployment"></a>Procházet existující nasazení
 
-1. Po dokončení nasazení uvidíte novou skupinu `testRG` prostředků a nové nasazení se vytvořilo. Klikněte pravým tlačítkem na nasazení a uvidíte seznam možných akcí. Nyní vyberte **Zobrazit vlastnosti**.
+1. Po dokončení nasazení uvidíte novou skupinu prostředků `testRG` a vytvoří se nové nasazení. Klikněte pravým tlačítkem na nasazení a uvidíte seznam možných akcí. Nyní vyberte **Zobrazit vlastnosti**.
 
     ![Nasazení procházení šablonou Správce prostředků](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-deployment-browse.png)
 
@@ -72,27 +72,27 @@ K dokončení tohoto článku potřebujete:
 
     ![Nasazení úprav šablony Správce prostředků](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů z `Standard_LRS` na. `Standard_GRS` Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
+1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů, od `Standard_LRS` do `Standard_GRS`. Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
 
     ![Nasazení úprav šablony Správce prostředků](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. Po dokončení nasazení aktualizace můžete na portálu ověřit, jestli je vytvořený účet úložiště změněný `Standard_GRS`.
+1. Po dokončení nasazení aktualizace můžete na portálu ověřit, že se vytvořený účet úložiště změnil na `Standard_GRS`.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Můžete to provést z Azure Portal nebo pomocí Azure CLI. V Azure Exploreru na IntelliJ nápad klikněte pravým tlačítkem na vytvořenou **skupinu prostředků** a vyberte Odstranit.
+1. Pokud už prostředky Azure nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků. Můžete to provést z Azure Portal nebo pomocí Azure CLI. V Azure Exploreru na IntelliJ nápad klikněte pravým tlačítkem na vytvořenou **skupinu prostředků** a vyberte Odstranit.
 
     ![Odstranění skupiny prostředků v Azure Exploreru z IntelliJ NÁPADu](./media/resource-manager-quickstart-create-templates-use-intellij/delete-resource-group.png)
 
 > [!NOTE]
 > Všimněte si, že odstraněním nasazení nedojde k odstranění prostředků vytvořených nasazením. Odstraňte prosím odpovídající skupinu prostředků nebo konkrétní prostředky, pokud je už nepotřebujete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Hlavním cílem tohoto rychlého startu je použít IntelliJ nápad k nasazení existující šablony ze šablon Azure pro rychlý Start. Zjistili jste také, jak zobrazit a aktualizovat existující nasazení v Azure. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. V dalším kurzu se dozvíte, jak v referenčních informacích k šablonám vyhledat potřebné informace, abyste mohli vytvořit šifrovaný účet služby Azure Storage.
+Hlavním cílem tohoto rychlého startu je použít IntelliJ nápad k nasazení existující šablony ze šablon Azure pro rychlý Start. Zjistili jste také, jak zobrazit a aktualizovat existující nasazení v Azure. Šablony ze šablon Azure pro rychlý Start vám nemusí poskytnout všechno, co potřebujete. Další informace o vývoji šablon najdete v naší nové řadě kurzů pro začátečníky:
 
 > [!div class="nextstepaction"]
-> [Vytvoření šifrovaného účtu úložiště](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Začátečník – kurzy](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
 > [Navštívit Java ve službě Azure Dev Center](https://docs.microsoft.com/azure/java)

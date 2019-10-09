@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290888"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169820"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
@@ -38,7 +38,7 @@ Správce balíčků přístupu může nakonfigurovat zásady, které vyžadují 
 
 Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyžádat přístup k balíčku přístupu.
 
-**Požadovaná role:** Žadatel
+**Požadovaná role:** Žadatele
 
 1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit ID balíčku pro přístup podobně jako v následujícím příkladu:
  
@@ -54,7 +54,7 @@ Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyž�
 
 Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat žádost.
 
-**Požadovaná role:** Žadatel
+**Požadovaná role:** Žadatele
 
 1. V seznamu vyhledejte balíček pro přístup.  V případě potřeby můžete hledat zadáním hledaného řetězce a následným výběrem filtru **název**, **katalog**nebo **prostředky** .
 
@@ -83,7 +83,7 @@ Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat ž�
 
 Pokud odešlete žádost o přístup a žádost zůstane stále ve stavu **čeká na schválení** , můžete žádost zrušit.
 
-**Požadovaná role:** Žadatel
+**Požadovaná role:** Žadatele
 
 1. Na portálu pro přístup na levé straně klikněte na **Historie žádostí** , abyste viděli seznam žádostí a stav.
 
@@ -99,7 +99,7 @@ Pokud odešlete žádost o přístup a žádost zůstane stále ve stavu **ček�
 
 Pokud požadujete přístup k balíčku přístupu, který má několik zásad, které platí, může se zobrazit výzva k výběru zásady. Správce balíčků pro přístup může například nakonfigurovat balíček přístupu se dvěma zásadami pro dvě skupiny interních zaměstnanců. První zásada může mít povolený přístup po 60 dnech a vyžaduje schválení. Druhá zásada může mít povolený přístup 2 dny a nemusí vyžadovat schválení. Pokud se setkáte s tímto scénářem, musíte vybrat zásadu, kterou chcete použít.
 
-**Požadovaná role:** Žadatel
+**Požadovaná role:** Žadatele
 
 ## <a name="next-steps"></a>Další kroky
 

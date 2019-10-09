@@ -9,14 +9,14 @@ services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/03/2019
-ms.openlocfilehash: 03a0f285b2e8c74070a30bfbaac50e9bd9c58f65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a23518cd016a1711e47734df0f7179770aa92a87
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051476"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166987"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub (iOS)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -28,18 +28,18 @@ V tomto článku se k odesílání telemetrických dat používá předem napsan
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stažení vzorového kódu z [ukázek Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip).
-- Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý start byl testován s XCode 10.2 a iOS 12.2.
+- Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý Start byl testován pomocí XCode 10,2 a iOS 12,2.
 - Nejnovější verze [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
-- Spusťte následující příkaz pro přidání rozšíření Microsoft Azure IoT pro Azure CLI do instance služby Cloud Shell. Rozšíření IOT přidá služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS) konkrétní příkazy rozhraní příkazového řádku Azure.
+- Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -47,27 +47,29 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **myiOSdevice** : Toto je název pro registrovaná zařízení. Použijte uvedený název myiOSdevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
+   **myiOSdevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **myiOSdevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
    ```azurecli-interactive
-   az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
+   az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spuštěním následujícího příkazu v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
+   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myiOSdevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Tuto hodnotu použijete později v tomto rychlém startu.
+    Tuto hodnotu použijete později v rychlém startu.
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
@@ -101,7 +103,7 @@ Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vyt
 
 2. Rozbalte projekt **MQTT Client Sample** a pak rozbalte složku se stejným názvem.  
 3. Otevřete soubor **ViewController.swift** pro úpravy v XCode. 
-4. Vyhledejte proměnnou **connectionString** a aktualizujte její hodnotu s použitím připojovacího řetězce zařízení, který jste si poznamenali dříve.
+4. Vyhledejte proměnnou **ConnectionString** a aktualizujte hodnotu pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve.
 5. Uložte provedené změny. 
 6. Spusťte projekt v emulátoru zařízení pomocí tlačítka **Build and run** (Sestavit a spustit) nebo kombinace kláves **command + r**. 
 
@@ -115,12 +117,12 @@ Následující snímek obrazovky ukazuje příklad výstupu, zatímco aplikace o
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Ukázková aplikace, kterou jste spustili v emulátoru XCode, ukazuje data o zprávách odeslaných ze zařízení. Můžete zobrazit také přijatá data procházející přes vaše centrum IoT. Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Ukázková aplikace, kterou jste spustili v emulátoru XCode, ukazuje data o zprávách odeslaných ze zařízení. Můžete zobrazit také přijatá data procházející přes vaše centrum IoT. Rozšíření rozhraní příkazového řádku IoT Hub se může připojit ke koncovému bodu **Události** na straně služby v IoT Hubu. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
 Ve službě Azure Cloud Shell spusťte následující příkazy a položku `YourIoTHubName` nahraďte názvem centra IoT:
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
 
 Následující snímek obrazovky ukazuje výstup, když rozšíření přijímá telemetrická data odesílaná simulovaným zařízením do centra:
@@ -133,11 +135,11 @@ Následující snímek obrazovky ukazuje typ telemetrických dat, která se zobr
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste nastavili centrum IoT, zaregistrovali zařízení, odeslali do centra simulovaná telemetrická data ze zařízení iOS a četli telemetrická data z centra. 
+V tomto rychlém startu jste nastavili centrum IoT, zaregistrovali zařízení, poslali simulovanou telemetrii do centra ze zařízení s iOS a načetli telemetrii z centra. 
 
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Řízení zařízení připojeném do služby IoT hub](quickstart-control-device-node.md)
+> [Rychlý start: Řízení zařízení připojeného k centru IoT](quickstart-control-device-node.md)

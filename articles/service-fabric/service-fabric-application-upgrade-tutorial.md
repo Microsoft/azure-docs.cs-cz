@@ -1,6 +1,6 @@
 ---
-title: Kurz upgradu aplikací Service Fabric | Dokumentace Microsoftu
-description: Tento článek vás provedl možnostmi, které nasazení aplikace Service Fabric, změny kódu a zavádí upgrade pomocí sady Visual Studio.
+title: Kurz upgradu Service Fabric aplikace | Microsoft Docs
+description: Tento článek vás provede nasazením aplikace Service Fabric, změnou kódu a zavedením upgradu pomocí sady Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,76 +13,76 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615182"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167377"
 ---
-# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Kurz upgradu Service Fabric aplikace pomocí sady Visual Studio
+# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric kurz upgradu aplikací pomocí sady Visual Studio
 > [!div class="op_single_selector"]
-> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [Prostředí](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
 
 <br/>
 
-Azure Service Fabric zjednodušuje proces upgradu cloudové aplikace díky zajištění, že budou upgradovány pouze změněné služby a, že se v rámci procesu upgradu monitoruje stav aplikací. Je také automaticky vrátí zpět aplikaci na předchozí verzi při zjištění problémů. Upgrady aplikací Service Fabric se *nulové výpadky*, protože je možné upgradovat aplikace bez výpadků. Tento kurz se zaměřuje na dokončení upgradu se zajištěním provozu ze sady Visual Studio.
+Azure Service Fabric zjednodušuje proces upgradu cloudových aplikací tím, že zajišťuje, že se upgradují jenom změněné služby a že stav aplikace se monitoruje během procesu upgradu. Při výskytu problémů se také automaticky vrátí aplikace na předchozí verzi. Service Fabric upgrady aplikací nejsou žádné *výpadky*, protože aplikaci lze upgradovat bez výpadků. Tento kurz popisuje, jak dokončit postupný upgrade ze sady Visual Studio.
 
-## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Krok 1: Vytvářejte a publikujte ukázka vizuálních objektů
-Nejdřív stáhněte [vizuální objekty](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) aplikace z Githubu. Potom sestavení a publikování aplikace kliknutím pravým tlačítkem na projekt aplikace **VisualObjects**a výběr **publikovat** v položce nabídky Service Fabric.
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>Krok 1: sestavování a publikování ukázky vizuálních objektů
+Nejdřív Stáhněte aplikaci [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) z GitHubu. Poté sestavte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikace, **VisualObjects**a výběrem příkazu **publikovat** v položce nabídky Service Fabric.
 
-![Místní nabídka pro aplikace Service Fabric][image1]
+![Místní nabídka pro aplikaci Service Fabric][image1]
 
-Výběr **publikovat** zobrazí místní okno, a můžete nastavit **cílový profil** k **PublishProfiles\Local.xml**. V okně by měl vypadat nějak takto před kliknutím na **publikovat**.
+Po výběru možnosti **publikovat** se zobrazí místní nabídka a **cílový profil** můžete nastavit na **PublishProfiles\Local.XML**. Před kliknutím na tlačítko **publikovat**by okno mělo vypadat takto.
 
 ![Publikování aplikace Service Fabric][image2]
 
-Nyní můžete kliknout na **publikovat** v dialogovém okně. Můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Vizuální objekty aplikace má webovou službu, můžete přejít na zadáním [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) do adresního řádku prohlížeče.  Měli byste vidět 10 s plovoucí desetinnou čárkou vizuální objekty přesouvat na obrazovce.
+Nyní můžete v dialogovém okně kliknout na **publikovat** . [K zobrazení clusteru a aplikace](service-fabric-visualizing-your-cluster.md)můžete použít Service Fabric Explorer. Aplikace Visual Objects obsahuje webovou službu, na kterou můžete přejít zadáním [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) do panelu Adresa v prohlížeči.  Mělo by se zobrazit 10 plovoucích vizuálních objektů, které se pohybují na obrazovce.
 
-**POZNÁMKA:** Pokud nasazení `Cloud.xml` profilu (Azure Service Fabric), aplikace pak měla být k dispozici na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Ujistěte se, že máte `8081/TCP` nakonfigurovaná v nástroji pro vyrovnávání zatížení (najít nástroj pro vyrovnávání zatížení ve stejné skupině prostředků jako instance Service Fabric).
+**Poznámka:** Pokud nasazujete na profil `Cloud.xml` (Azure Service Fabric), měla by být aplikace dostupná na adrese **http://{ServiceFabricName}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Ujistěte se, že v Load Balancer máte nakonfigurované `8081/TCP` (Najděte Load Balancer ve stejné skupině prostředků jako instance Service Fabric).
 
-## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Ukázku aktualizovat, a vizuálních objektů
-Můžete si všimnout, že s verzí, který je nasazený v kroku 1, ne otočit vizuální objekty. Umožňuje upgradovat tuto aplikaci do jednoho kde také otočit vizuální objekty.
+## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
+Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-Vyberte projekt VisualObjects.ActorService v rámci řešení VisualObjects a otevřete **VisualObjectActor.cs** souboru. V rámci tohoto souboru, přejděte k metodě `MoveObject`, okomentujte `visualObject.Move(false)`a zrušte komentář u `visualObject.Move(true)`. Tato změna kódu otočí objekty po upgradu služby.  **(Sestavení) můžete vytvořit řešení**, která sestavení upravené projekty. Pokud vyberete *sestavit vše znovu*, budete muset aktualizovat verze pro všechny projekty.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject`, komentovat `visualObject.Move(false)` a Odkomentujete `visualObject.Move(true)`. Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
 
-Musíme také verze našich aplikací. Změnit verzi, po kliknutí pravým tlačítkem na **VisualObjects** projektu, můžete použít Visual Studio **upravit verze manifestu** možnost. Výběrem této možnosti se vyvolá dialogové okno pro vydání verze následujícím způsobem:
+Musíme také poznáte verzi naší aplikace. Chcete-li provést změny verze po kliknutí pravým tlačítkem na projekt **VisualObjects** , můžete použít možnost **Upravit verze manifestu** aplikace Visual Studio. Když vyberete tuto možnost, zobrazí se dialogové okno pro verze edice následujícím způsobem:
 
-![Dialogové okno správy verzí][image3]
+![Správa verzí – dialogové okno][image3]
 
-Aktualizace verze pro upravené projekty a jejich balíčky kódu, společně s aplikací na verzi 2.0.0. Po provedení změny v manifestu by měl vypadat nějak takto (tučné části se změny zobrazily):
+Aktualizujte verze upravených projektů a jejich balíčků kódu společně s aplikací na verzi 2.0.0. Po provedení změn by měl manifest vypadat jako následující (tučné části zobrazují změny):
 
-![Aktualizace verze][image4]
+![Aktualizace verzí][image4]
 
-Nástroje sady Visual Studio můžete provést automatické kumulativní verzí při výběru **automaticky aktualizovat verze aplikací a služeb**. Pokud používáte [SemVer](http://www.semver.org), je potřeba aktualizovat kód a/nebo je vybraná samostatně, pokud tuto možnost konfigurace balíčku verze.
+Nástroje sady Visual Studio mohou provádět automatické souhrny verzí při výběru **automaticky aktualizovat verze aplikací a služeb**. Použijete-li [SemVer](http://www.semver.org), je nutné aktualizovat pouze verzi balíčku Code nebo Configuration, pokud je tato možnost vybrána.
 
-Uložte změny a teď zkontrolujte, **upgradovat aplikaci** pole.
+Uložte změny a teď zaškrtněte políčko **upgradovat aplikaci** .
 
-## <a name="step-3--upgrade-your-application"></a>Krok 3:  Upgrade aplikace
-Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a [procesu upgradu](service-fabric-application-upgrade.md) získat dobrý přehled o různé parametry upgradu, vypršení časových limitů a stavu kritérium, které může být použít. V tomto návodu kritéria hodnocení stavu služby nastavený na výchozí hodnotu (nemonitorované režim). Tato nastavení můžete konfigurovat tak, že vyberete **konfigurace nastavení upgradu** a následnou úpravou parametrů podle potřeby.
+## <a name="step-3--upgrade-your-application"></a>Krok 3: upgrade aplikace
+Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a [procesem upgradu](service-fabric-application-upgrade.md) , abyste získali dobré znalosti o různých parametrech upgradu, časových limitech a kritériu stavu, které lze použít. V tomto návodu je kritérium vyhodnocení stavu služby nastavené na výchozí (nemonitorovaný režim). Tato nastavení můžete nakonfigurovat výběrem možnosti **Konfigurovat nastavení upgradu** a úpravou parametrů podle potřeby.
 
-Teď máme nastavené a můžete začít upgrade aplikace tak, že vyberete **publikovat**. Tato možnost provede upgrade aplikace na verzi 2.0.0, ve kterém objekty otočit. Service Fabric se upgraduje jednu aktualizační doménu najednou (některé objekty se aktualizují jako první, za nímž následuje ostatní) a služby zůstávají dostupná během upgradu. Přístup ke službě mohou být zkontrolována prostřednictvím vašeho klienta (prohlížeč).  
+Nyní je vše nastaveno na spuštění upgradu aplikace výběrem možnosti **publikovat**. Tato možnost upgraduje aplikaci na verzi 2.0.0, ve které se objekty otáčí. Service Fabric upgraduje jednu aktualizační doménu současně (některé objekty se aktualizují jako první, za kterými následuje ostatní) a služba zůstane během upgradu dostupná. Přístup ke službě se dá zkontrolovat přes klienta (prohlížeč).  
 
-Teď, když aplikace upgrade bude pokračovat, ji můžete sledovat pomocí Service Fabric Exploreru pomocí **probíhající upgrady** na kartě aplikace.
+Teď, když upgrade aplikace pokračuje, můžete ho monitorovat pomocí Service Fabric Explorer, a to pomocí karty **probíhající upgrady** v části aplikace.
 
-Za pár minut nutné upgradovat všech aktualizačních domén (dokončení) a v okně výstupu sady Visual Studio by měl také uvést dokončení upgradu. A měli byste najít, který *všechny* vizuálních objektů v okně prohlížeče jsou nyní otáčení!
+Během několika minut by měly být upgradovány všechny aktualizační domény (dokončeny) a okno výstup sady Visual Studio by mělo také mít za následek dokončení upgradu. A měli byste najít, že *všechny* vizuální objekty v okně prohlížeče jsou teď rotující!
 
-Můžete chtít, zkuste změnit verze a přesun z verze 2.0.0 verze 3.0.0 jako cvičení, nebo dokonce z verze 2.0.0 zpět do verze 1.0.0. Pohrajte si s vypršení časových limitů a zásady stavu proveďte vlastní zkušenosti s nimi. Při nasazování do clusteru, na rozdíl od místního clusteru služby Azure, může mít parametry použité dokumenty budou lišit. Doporučujeme nastavit konzervativní časových limitů.
+Možná budete chtít zkusit změnit verze a přesunout se z verze 2.0.0 na verzi 3.0.0 jako cvičení nebo dokonce z verze 2.0.0 zpátky na verzi 1.0.0. Můžete hrát s časovými limity a zásadami stavu, abyste s nimi mohli s nimi dobře pracovat. Při nasazování do clusteru Azure na rozdíl od místního clusteru se můžou použité parametry lišit. Doporučujeme, abyste nastavili časový limit uvážlivě.
 
-## <a name="next-steps"></a>Další postup
-[Upgrade vaší aplikace pomocí Powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí Powershellu.
+## <a name="next-steps"></a>Další kroky
+[Upgrade aplikace pomocí PowerShellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgradem aplikace pomocí PowerShellu.
 
-Řídí, jak se aplikace upgradovat pomocí [parametry upgradu](service-fabric-application-upgrade-parameters.md).
+Pomocí [parametrů upgradu](service-fabric-application-upgrade-parameters.md)lze řídit, jak je aplikace upgradována.
 
-Díky upgradů aplikace kompatibilní učit, jak používat [serializaci dat](service-fabric-application-upgrade-data-serialization.md).
+Vyjistěte, aby byly upgrady aplikací kompatibilní, pomocí učení, jak používat [serializaci dat](service-fabric-application-upgrade-data-serialization.md).
 
-Zjistěte, jak používat pokročilé funkce při upgradu aplikace rekapitulací [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
+Naučte se používat pokročilé funkce při upgradu vaší aplikace, které odkazují na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
-Vyřešit běžné problémy v upgradech aplikací odkazující na kroky v [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md).
+Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
 
 [image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png

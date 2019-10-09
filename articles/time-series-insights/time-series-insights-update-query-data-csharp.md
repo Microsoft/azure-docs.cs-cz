@@ -10,14 +10,14 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6d2395dcfae5d512412048a683a7f1397967499e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f1a10996749a113fec1f29d2150ebaacfeffbeba
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978651"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168901"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Preview pomocíC#
 

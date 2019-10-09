@@ -1,6 +1,6 @@
 ---
-title: Delegovat úlohy ve správě nároků Azure AD (Preview) – Azure Active Directory
-description: Přečtěte si o rolích, které můžete přiřadit k úlohám delegování v Azure Active Directory správě nároků.
+title: Delegování a role ve správě nároků ve službě Azure AD (Preview) – Azure Active Directory
+description: Naučte se delegovat řízení přístupu od správců IT na manažery oddělení a vedoucí projektu, aby mohli spravovat přístup sami.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,92 +12,110 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 89cdab09e3ae03ddea6259eda657908f900f982e
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057778"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169850"
 ---
-# <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegovat úlohy ve správě nároků Azure AD (Preview)
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Delegování a role ve správě nároků ve službě Azure AD (Preview)
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny scénáře, kdy jsou balíčky pro přístup požadovány. Obvykle se jedná o uživatele v rámci oddělení, kteří vědí, kdo potřebují spolupracovat. 
+Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny situace, kdy je potřeba získat přístup k balíčkům. Obvykle se jedná o uživatele v rámci příslušných oddělení, týmů nebo projektů, kteří vědí, kdo s nimi spolupracuje, pomocí jakých prostředků a jak dlouho. Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují k provedení své úlohy, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv.
 
-Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují k provedení své úlohy, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv. Tento článek popisuje role, které můžete přiřadit k delegování různých úloh v rámci správy oprávnění. 
+Toto video poskytuje přehled o tom, jak delegovat řízení přístupu od správce IT na uživatele, kteří nejsou správci.
 
-## <a name="delegate-example-for-departmental-adoption"></a>Příklad delegáta pro přijetí oddělení
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq00]
 
-Pokud chcete pochopit, jak byste mohli delegovat úlohy ve správě nároků, je třeba vzít v úvahu příklad. 
+## <a name="delegate-example"></a>Příklad delegáta
 
-Předpokládejme, že vaše organizace má následující pět uživatelů:
+Pokud chcete pochopit, jak byste mohli delegovat řízení přístupu ve správě nároků, je třeba vzít v úvahu příklad. Předpokládejme, že vaše organizace má následující správce a manažery.
 
-| Uživatel | Oddělení | Poznámky |
-| --- | --- | --- |
-| Alice | IT | Globální správce |
-| Bob | Výzkum | Bob je také vlastníkem výzkumné skupiny. |
-| Carole | Výzkum |  |
-| Dave | Marketing |  |
-| Elisa | Marketing | Test ELISA je také vlastníkem marketingové aplikace |
+![Delegovat od správce IT k manažerům](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-Oddělení výzkumu i marketingu chtějí pro své uživatele používat oprávnění ke správě. Alice ještě není připravená na jiné oddělení, aby používala správu nároků. Tady je jeden ze způsobů, jak může Alice delegovat úkoly na oddělení výzkumu a marketingu.
+Jako správce IT má Hana kontakty v každém oddělení – Mamta marketing, označovat finance a Jana, kteří zodpovídají za prostředky svého oddělení a jejich důležitý obsah.
 
-1. Alice vytvoří novou skupinu zabezpečení Azure AD pro tvůrci katalogu a přidá Bob, Karolínu, Dave a ELISA jako členy této skupiny.
+Správa nároků vám umožní delegovat řízení přístupu pro tyto správce bez oprávnění, protože se jedná o ty, kteří znají, kteří uživatelé potřebují mít přístup, jak dlouho a na jaké prostředky. Tím se zajistí, že uživatelé budou mít ke svým oddělením přístup i oprávnění.
 
-1. Alice pomocí nastavení správy oprávnění přidá tuto skupinu do role tvůrci katalogu.
+Tady je jeden ze způsobů, jak může Hana delegovat řízení přístupu na marketing, finance a právní oddělení.
 
-1. Karolínu vytvoří katalog **výzkumu** a přidá Bob jako spoluvlastníka tohoto katalogu. Bob přidá skupinu Research, kterou vlastní do katalogu, jako prostředek, aby ji bylo možné použít v přístupovém balíčku pro výzkumovou spolupráci.
+1. Hana vytvoří novou skupinu zabezpečení Azure AD a přidá jako členy skupiny Mamta, Mark a Jan.
 
-1. Dave vytvoří **marketingový** katalog a přidá ELISA jako spoluvlastník tohoto katalogu. Test ELISA přidá marketingovou aplikaci, kterou vlastní do katalogu, jako prostředek, takže se dá použít v přístupovém balíčku pro marketingovou spolupráci.
+1. Hana přidá tuto skupinu do role tvůrci katalogu.
 
-Oddělení pro výzkum a marketing teď můžou využívat nárok na správu. Bob, Karolínu, Dave a ELISA můžou vytvořit a spravovat balíčky přístupu v příslušných katalozích.
+    Mamta, Mark a Jana teď můžou vytvářet katalogy pro svoje oddělení, přidávat prostředky, které jejich oddělení potřebují, a provádět další delegování v rámci katalogu.
+
+    Všimněte si, že Mamta, Mark a Jana se nemohou podívat na ostatní katalogy.
+
+1. Mamta vytvoří **marketingový** katalog, který je kontejnerem prostředků.
+
+1. Mamta přidá prostředky, které má marketingový oddělení vlastní k tomuto katalogu.
+
+1. Mamta může přidat další lidi z jejího oddělení jako vlastníky katalogu pro tento katalog. To pomáhá sdílet zodpovědnost za správu katalogu.
+
+1. Mamta může dále delegovat vytváření a správu balíčků přístupu v marketingovém katalogu do vedoucích projektů v marketingovém oddělení. To může provést přiřazením do role správce balíčků přístupu. Správce balíčků přístupu může vytvářet a spravovat balíčky přístupu. 
+
+Následující diagram znázorňuje katalogy s prostředky pro marketingové, finanční a právní oddělení. Pomocí těchto katalogů mohou manažeři projektů vytvářet balíčky přístupu pro své týmy nebo projekty.
 
 ![Příklad delegáta správy oprávnění](./media/entitlement-management-delegate/elm-delegate.png)
 
+Po delegování mohou mít marketingové oddělení stejné role jako v následující tabulce.
+
+| Uživatel | Pracovní role | Role Azure AD | Role správy oprávnění |
+| --- | --- | --- | --- |
+| Hana | Správce IT | Globální správce nebo Správce uživatelů |  |
+| Mamta | Marketingový manažer | Uživatel | Tvůrce katalogu a vlastník katalogu |
+| Bobem | Marketingový zájemce | Uživatel | Vlastník katalogu |
+| Jessica | Manažer marketingového projektu | Uživatel | Přístup ke Správci balíčků |
 
 ## <a name="entitlement-management-roles"></a>Role správy oprávnění
 
 Správa nároků má následující role, které jsou specifické pro správu nároků.
 
-| Role | Popis |
+| Role správy oprávnění | Popis |
 | --- | --- |
 | Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem, nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. Tvůrce katalogu nemůže spravovat ani zobrazovat katalogy, které nevlastní, a nemůže přidat prostředky, které nevlastní katalog. Pokud tvůrce katalogu potřebuje spravovat další katalog nebo přidat prostředky, které nevlastní, můžou požádat o spoluvlastníky tohoto katalogu nebo prostředku. |
 | Vlastník katalogu | Umožňuje upravovat a spravovat existující katalogy. Obvykle správce IT nebo vlastníci prostředků nebo uživatel, který určil vlastníka katalogu. |
 | Přístup ke Správci balíčků | Umožňuje upravovat a spravovat všechny existující balíčky přístupu v rámci katalogu. |
 
 Kromě toho má určený schvalovatel a žadatel pro přístupovou sadu také práva, i když se nejedná o role.
- 
-* Uživatelem Autorizováno zásadou ke schválení nebo zamítnutí žádostí o přístup k balíčkům, i když nemůžou měnit definice přístupového balíčku.
-* Žadatele Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku.
 
-V následující tabulce jsou uvedeny úlohy, které tyto role mohou provádět.
+| Kliknutím | Popis |
+| --- | --- |
+| Uživatelem | Autorizováno zásadou ke schválení nebo zamítnutí žádostí o přístup k balíčkům, i když nemůžou měnit definice přístupového balíčku. |
+| Žadatele | Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku. |
 
-| Úloha | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Schvalovatel |
+V následující tabulce jsou uvedeny úlohy, které mohou provádět role správy oprávnění.
+
+| Úkol | Správ | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků |
 | --- | :---: | :---: | :---: | :---: |
-| [Vytvořit nový katalog](entitlement-management-catalog-create.md) | :heavy_check_mark: |  |  |  |
-| [Přidání prostředku do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | | :heavy_check_mark: | | |
-| [Úprava katalogu](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
-| [Odstranění katalogu](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
-| [Přidání vlastníka katalogu nebo správce balíčků přístupu do katalogu](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [Vytvoření nového přístupového balíčku v katalogu](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
-| [Správa rolí prostředků v balíčku pro přístup](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Vytvoření a úprava zásad](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Přímé přiřazení uživatele k balíčku pro přístup](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazit, kdo má přiřazení k balíčku pro přístup](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazit žádosti balíčku pro přístup](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zobrazit chyby doručení žádosti](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Zrušení žádosti, která čeká na vyřízení](entitlement-management-access-package-edit.md#cancel-a-pending-request) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Skrytí přístupového balíčku](entitlement-management-access-package-edit.md#change-the-hidden-setting) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Odstranění balíčku pro přístup](entitlement-management-access-package-edit.md#delete) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Schválení žádosti o přístup](entitlement-management-request-approve.md) |  |  |  | :heavy_check_mark: |
+| [Delegovat na tvůrce katalogu](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [Vytvořit nový katalog](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Přidání prostředku do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Přidat vlastníka katalogu](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Úprava katalogu](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Odstranění katalogu](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Delegování do Správce balíčků přístupu](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Odebrání správce balíčků přístupu](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Vytvoření nového přístupového balíčku v katalogu](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [Správa rolí prostředků v balíčku pro přístup](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Vytvoření a úprava zásad](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Přímé přiřazení uživatele k balíčku pro přístup](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Zobrazit, kdo má přiřazení k balíčku pro přístup](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Zobrazit žádosti balíčku pro přístup](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Zobrazit chyby doručení žádosti](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Zrušení žádosti, která čeká na vyřízení](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Skrytí přístupového balíčku](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Odstranění balíčku pro přístup](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Požadované role pro přidání prostředků do katalogu
 
@@ -107,8 +125,8 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 
 | Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení. | Může přidat skupinu Office 365. | Může přidat aplikaci. | Může přidat web SharePointu Online. |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globální správce](../users-groups-roles/directory-assign-admin-roles.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Správce uživatele](../users-groups-roles/directory-assign-admin-roles.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globální správce](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Správce uživatele](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Správce Intune](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Správce Exchange](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
 | [Správce služby Teams](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
@@ -119,49 +137,7 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 
 K určení nejnižší privilegované role pro úlohu můžete také [v Azure Active Directory odkazovat na role správce podle úlohy](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)správce.
 
-## <a name="add-a-catalog-creator"></a>Přidat tvůrce katalogu
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete delegovat vytváření katalogu, přidejte uživatele do role tvůrce katalogu.  Můžete přidat jednotlivé uživatele nebo pro usnadnění můžete přidat skupinu, jejíž členové pak mohou vytvářet katalogy. Pomocí těchto kroků přiřaďte uživatele k roli tvůrce katalogu.
-
-**Požadovaná role:** Globální správce nebo Správce uživatelů
-
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
-
-1. V levé nabídce v části **Správa nároků** klikněte na **Nastavení**.
-
-1. Klikněte na **Upravit**.
-
-1. V části **Správa nároků delegáta** klikněte na **Přidat tvůrci katalogu** a vyberte uživatele nebo skupiny, kteří budou členy této role správy oprávnění.
-
-1. Klikněte na tlačítko **vyberte**.
-
-1. Klikněte na **Uložit**.
-
-## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Přidat vlastníka katalogu nebo správce balíčků přístupu
-
-Chcete-li delegovat správu katalogu nebo přístupu k balíčkům v katalogu, přidejte uživatele do rolí vlastník katalogu nebo přístup k rolím Správce balíčků. Ten vytvoří katalog jako prvního vlastníka katalogu. 
-
-Přiřazený vlastník katalogu nebo správce balíčků přístupu musí být obeznámen s projektem. Tvůrce katalogu by měl vytvořit balíček přístupu, pokud je součástí každodenního provozu projektu a znal následující informace:
-- Jaké prostředky jsou potřeba
-- Kdo bude potřebovat přístup
-- Kdo potřebuje schválit přístup
-- doba, po kterou bude projekt naposledy
-
-Tvůrce katalogu by měl delegovat úkol vedoucímu projektu, který bude vytvářet a spravovat balíček přístupu, pokud se k němu nepodílel v každodenním provozu projektu. Pomocí těchto kroků přiřaďte uživatele k roli správce balíčků pro vlastníka nebo přístup k správci balíčků:
-
-**Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
-
-1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
-
-1. V nabídce vlevo klikněte na **katalogy** a pak otevřete katalog, do kterého chcete přidat správce.
-
-1. V nabídce vlevo klikněte na **role a správci**.
-
-1. Klikněte na **Přidat vlastníky** nebo **přidejte správce balíčků přístupu** a vyberte členy pro tyto role.
-
-1. Kliknutím na **Vybrat** přidejte tyto členy.
-
-## <a name="next-steps"></a>Další postup
-
-- [Přidat schvalovatele](entitlement-management-access-package-edit.md#policy-request)
-- [Přidání prostředků do katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
+- [Delegování zásad správného řízení přístupu k tvůrcům katalogu](entitlement-management-delegate-catalog.md)
+- [Vytvoření a správa katalogu prostředků](entitlement-management-catalog-create.md)

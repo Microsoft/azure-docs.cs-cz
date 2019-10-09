@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: 5e05acf515aacaada96bd6e493c1a2bf24d7c5ab
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/8/2019
+ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030763"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173439"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Porozumění výstupům z Azure Stream Analytics
 

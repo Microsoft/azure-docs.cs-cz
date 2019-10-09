@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 11/19/2018
+ms.date: 10/08/2019
 ms.author: ramkris
-ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703370"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176833"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -22,7 +22,7 @@ ms.locfileid: "71703370"
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
+> * [Asynchronní Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
@@ -35,12 +35,16 @@ ms.locfileid: "71703370"
 |---|---|
 | **Popis**| Knihovna hromadného prováděcího modulu .NET umožňuje klientským aplikacím provádět hromadné operace s účty Azure Cosmos DB. Tato knihovna poskytuje obory názvů BulkImport, BulkUpdate a BulkDelete. Modul BulkImport dokáže hromadně ingestovat dokumenty optimalizovaným způsobem tak, že propustnost zřízená pro kolekci se spotřebovává do svého maximálního rozsahu. Modul BulkUpdate může hromadně aktualizovat existující data v kontejnerech Azure Cosmos jako opravy. Modul BulkDelete může rychle odstranit dokumenty optimalizovaným způsobem tak, aby propustnost zřízená pro kolekci byla spotřebována do maximálního rozsahu.|
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHubu](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou vykonavatelskou práci](bulk-executor-dot-net.md)|
 | **Aktuální podporovaná architektura**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
+
+### <a name="a-name240-preview240-preview"></a>@no__t – 02.4.0 – Preview
+
+* Změna závislosti sady SDK na > = 2.5.1
 
 ### <a name="a-name230-preview2230-preview2"></a>@no__t – 02.3.0 – preview2
 

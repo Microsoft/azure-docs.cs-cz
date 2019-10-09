@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro Python | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna pro Python | Microsoft Docs'
 description: Začínáme s klientskou knihovnou obličeje pro Python...
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966914"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176137"
 ---
-# <a name="quickstart-face-client-library-for-python"></a>Rychlý start: Klientská knihovna obličeje pro Python
+# <a name="quickstart-face-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Python
 
 Začínáme s klientskou knihovnou obličeje pro Python Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Face API poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -29,12 +29,12 @@ Pomocí klientské knihovny obličeje pro Python:
 * Ověřit plošky
 * Pořídit snímek migrace dat
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0) balíčku | [zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | knihovny Referenční dokumentace[(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)[ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)  | 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -45,11 +45,11 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 * Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
 
-Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro tento klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `FACE_SUBSCRIPTION_KEY`.
+Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `FACE_SUBSCRIPTION_KEY`.
  
 ### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte nový skript&mdash;Pythonu*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
+Vytvořte nový skript Pythonu @ no__t-0*Quickstart-File.py*, například. Pak ho otevřete v preferovaném editoru nebo integrovaném vývojovém prostředí a importujte následující knihovny.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -65,14 +65,14 @@ Pak vytvořte proměnné pro koncový bod a klíč Azure prostředku. Možná bu
 Klientskou knihovnu můžete nainstalovat pomocí nástroje:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Face
+pip install --upgrade azure-cognitiveservices-vision-face
 ```
 
 ## <a name="object-model"></a>Objektový model
 
 Následující třídy a rozhraní se řídí některými hlavními funkcemi sady Face SDK pro sadu Python.
 
-|Name|Popis|
+|Name (Název)|Popis|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
@@ -97,7 +97,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úkoly s klientskou
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro svůj `FACE_SUBSCRIPTION_KEY`klíč obličeje s názvem.
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro svůj klíč obličeje s názvem `FACE_SUBSCRIPTION_KEY`.
 
 Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) .
 
@@ -117,7 +117,7 @@ Následující kód vytvoří výstup daného obrázku do zobrazení a Nakreslí
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
 
-![Mladé ženu s červeným rámečkem vykreslen kolem typ písma](../images/face-rectangle-result.png)
+![Mladí žena s červeným obdélníkem nakresleným kolem plochy](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -147,7 +147,7 @@ Následující kód vytvoří samostatnou **osobu** se třemi různými objekty 
 
 Pro krokování v tomto scénáři je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-Tato skupina imagí obsahuje tři sady imagí obličeje, které odpovídají třem různým lidem. Kód bude definovat tři objekty **Person** a přidružit je k souborům obrázků, které začínají `woman`na `man`, a `child`.
+Tato skupina imagí obsahuje tři sady imagí obličeje, které odpovídají třem různým lidem. Kód bude definovat tři objekty **Person** a přidružit je k souborům obrázků, které začínají na `woman`, `man` a `child`.
 
 Po nastavení imagí definujte v horní části skriptu popisek pro objekt **Person** , který vytvoříte.
 
@@ -178,7 +178,7 @@ Následující kód přebírá obrázek s více ploškami a hledá identitu kaž
 
 ### <a name="get-a-test-image"></a>Získat image testu
 
-Následující kód vypadá v kořenu projektu pro obrázek _test-image-person-Group. jpg_ a detekuje plošky v obrázku. Tuto image najdete s obrázky použitými pro správu **osob** : https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Následující kód vypadá v kořenu projektu pro obrázek _test-image-person-Group. jpg_ a detekuje plošky v obrázku. Tuto image najdete s obrázky použitými pro správu **Person** : https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -246,7 +246,7 @@ Zbývající operace snímku se provádějí v rámci asynchronní funkce.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
 
-    Tento kód využívá `wait_for_operation` funkci, kterou byste měli definovat samostatně:
+    Tento kód využívá funkci `wait_for_operation`, kterou byste měli definovat samostatně:
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
 
@@ -254,7 +254,7 @@ Zbývající operace snímku se provádějí v rámci asynchronní funkce.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
 
-1. Znovu použijte `wait_for_operation` funkci pro dotazování ID, dokud se operace nedokončí.
+1. Znovu použijte funkci `wait_for_operation` k dotazování ID, dokud se operace nedokončí.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
 
@@ -262,7 +262,7 @@ Až dokončíte tyto kroky, budete mít přístup k konstrukcím vašich datový
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `python` příkazu v souboru rychlého startu.
+Spusťte aplikaci pomocí příkazu `python` v souboru rychlého startu.
 
 ```console
 python quickstart-file.py
@@ -283,7 +283,7 @@ Pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro Python k provádění základních úloh. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
 
@@ -291,4 +291,4 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro Pyt
 > [Odkaz na Face API (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
 * [Co je Face API?](../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).

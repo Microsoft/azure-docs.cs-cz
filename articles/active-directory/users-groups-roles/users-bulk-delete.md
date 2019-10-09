@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146440"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174388"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Hromadné odstranění uživatelů (Preview) v Azure Active Directory
 
@@ -26,18 +26,22 @@ Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký poče
 
 ## <a name="to-bulk-delete-users"></a>Hromadné odstranění uživatelů
 
-1. Přihlaste se ke svojí organizaci Azure AD pomocí účtu, který je správcem uživatele v organizaci.
-1. V Azure AD vyberte **Uživatelé** > **hromadného odstranění**.
-1. Na stránce **hromadné odstranění uživatele** vyberte **Stáhnout** pro příjem platného souboru CSV vlastností uživatele a pak přidejte uživatele, které chcete odstranit.
-
-   ![Soubor CSV obsahuje jména a ID uživatelů, kteří se mají odstranit.](./media/users-bulk-delete/delete-csv-file.png)
-
-1. Po dokončení úprav souboru CSV vyberte soubor v části **nahrání souboru CSV** , který se má ověřit.
+1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
+1. V Azure AD vyberte **uživatelé** > **hromadné odstranění**.
+1. Na stránce **hromadné odstranění uživatele** vyberte **Stáhnout** pro příjem platného souboru CSV vlastností uživatele.
 
    ![Vyberte místní soubor CSV, ve kterém chcete vypsat uživatele, které chcete odstranit.](./media/users-bulk-delete/bulk-delete.png)
 
-1. Po ověření obsahu souboru je nutné před odesláním úlohy opravit všechny chyby.
-1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte úlohu Azure Batch, která uživatele odstraní. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
+1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, kterého chcete odstranit. Jediná požadovaná hodnota je **hlavní název uživatele**. Pak soubor uložte.
+
+   ![Soubor CSV obsahuje jména a ID uživatelů, kteří se mají odstranit.](./media/users-bulk-delete/delete-csv-file.png)
+
+1. Na stránce **hromadné odstranění uživatele (Preview)** v části **nahrání souboru CSV**přejděte k souboru. Když vyberete soubor a kliknete na Odeslat, spustí se ověření souboru CSV.
+1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele odstraní.
+1. Po dokončení operace odstranění se zobrazí oznámení, že hromadná operace byla úspěšná.
+
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 

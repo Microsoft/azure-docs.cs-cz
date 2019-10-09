@@ -7,16 +7,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937424"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168979"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift 
 
-Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
+Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
 
 ## <a name="list-security-context-constraints"></a>Vypsat omezení kontextu zabezpečení
 

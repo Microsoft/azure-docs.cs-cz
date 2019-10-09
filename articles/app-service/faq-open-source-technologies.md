@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121223"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169691"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
 
@@ -36,11 +36,11 @@ Zapnutí protokolování PHP:
 2. V horní nabídce vyberte **ladit konzolu** > **cmd**.
 3. Vyberte složku **webu** .
 4. Vyberte složku **wwwroot** .
-5. Vyberte ikonu a pak vyberte **nový soubor.** **+**
+5. Vyberte ikonu **+** a potom vyberte **nový soubor**.
 6. Nastavte název souboru na **. User. ini**.
 7. Vyberte ikonu tužky vedle souboru **. User. ini**.
-8. Do souboru přidejte tento kód:`log_errors=on`
-9. Vyberte **Uložit**.
+8. Do souboru přidejte tento kód: `log_errors=on`
+9. Vyberte **Save** (Uložit).
 10. Vyberte ikonu tužky vedle **wp-config. php**.
 11. Změňte text na následující kód:
     ```php
@@ -78,7 +78,7 @@ Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následují
   Proces nasazení správy zdrojových kódů Azure zahrnuje následující kroky:
   1. Přesune obsah do webové aplikace Azure.
   2. Vytvoří výchozí skript nasazení, pokud v kořenové složce webové aplikace není jeden (nasadit soubory. cmd,. nasazení).
-  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete verzi Node. js v souboru Package. JSON > Engine`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete verzi Node. js v souboru Package. JSON > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`.
   4. Soubor iisnode. yml má následující řádek kódu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -113,24 +113,24 @@ Informace o instalaci Django najdete v tématu [nasazení aplikace Django pro Ap
 
 Pro Azure Marketplace a vlastní nasazení:
 
-* Umístění složky: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Umístění složky: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
 * Zajímavé soubory:
-    * catalina.*yyyy-mm-dd*.log
+    * catalina. *RRRR-MM-DD*. log
     * Správce hostitele. *RRRR-MM-DD*. log
     * místního. *RRRR-MM-DD*. log
     * programu. *RRRR-MM-DD*. log
-    * site_access_log.*yyyy-mm-dd*.log
+    * site_access_log. *RRRR-MM-DD*. log
 
 
 Pro nasazení portálových **nastavení aplikace** :
 
 * Umístění složky: D:\home\LogFiles
 * Zajímavé soubory:
-    * catalina.*yyyy-mm-dd*.log
+    * catalina. *RRRR-MM-DD*. log
     * Správce hostitele. *RRRR-MM-DD*. log
     * místního. *RRRR-MM-DD*. log
     * programu. *RRRR-MM-DD*. log
-    * site_access_log.*yyyy-mm-dd*.log
+    * site_access_log. *RRRR-MM-DD*. log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Návody řešit potíže s připojením ovladače JDBC?
 
@@ -144,7 +144,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. Odstraňte soubor Sqljdbc*. jar ze složky App/lib.
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor. jar do složky Tomcat lib.
-3. Pokud povolíte Java z Azure Portal (vyberte**Tomcat Server** **Java 1,8** > ), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
+3. Pokud povolujete jazyk Java z Azure Portal (vyberte **java 1,8** > **Tomcat Server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
 
     ```xml
     <httpPlatform>
@@ -187,24 +187,24 @@ App Service nemá vestavěnou e-mailovou funkci. Některé dobré alternativy pr
 
 Pokud jste v poslední době migrovali do Azure, WordPress se může přesměrovat na starou adresu URL domény. To je způsobeno nastavením v databázi MySQL.
 
-WordPress kamarád + je rozšířením webu Azure, které můžete použít k aktualizaci adresy URL pro přesměrování přímo v databázi. Další informace o používání programu WordPress kamarád + najdete v tématu věnovaném [nástrojům WordPress a migraci MySQL pomocí programu WordPress kamarád +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+WordPress kamarád + je rozšířením webu Azure, které můžete použít k aktualizaci adresy URL pro přesměrování přímo v databázi. Další informace o používání programu WordPress kamarád + najdete v tématu věnovaném [nástrojům WordPress a migraci MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
-Případně, pokud chcete ručně aktualizovat adresu URL pro přesměrování pomocí dotazů SQL nebo phpMyAdmin, podívejte [se na článek WordPress: Přesměrování na špatnou adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Případně, pokud upřednostňujete ruční aktualizaci adresy URL pro přesměrování pomocí dotazů SQL nebo PHPMyAdmin, podívejte se na článek [WordPress: přesměrování na špatnou adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Návody změnit přihlašovací heslo pro WordPress?
 
-Pokud jste zapomněli heslo pro přihlášení ke službě WordPress, můžete ho aktualizovat pomocí služby WordPress kamarád +. Pokud chcete resetovat heslo, nainstalujte rozšíření WordPress kamarád + Azure a pak dokončete postup popsaný v tématu [nástroje a migrace MySQL pomocí programu WordPress kamarád +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Pokud jste zapomněli heslo pro přihlášení ke službě WordPress, můžete ho aktualizovat pomocí služby WordPress kamarád +. Pokud chcete resetovat heslo, nainstalujte rozšíření WordPress kamarád + Azure a pak dokončete postup popsaný v tématu [nástroje a migrace MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nemůžu se přihlásit k WordPress. Návody vyřešit?
 
-Pokud se po poslední instalaci modulu plug-in v programu WordPress nacházíte uzamčeno, může být možné, že máte vadný modul plug-in. WordPress kamarád + je rozšířením webu Azure, které vám může pomáhat s zakázáním modulů plug-in v WordPress. Další informace najdete v tématech [nástroje WordPress a migrace MySQL pomocí programu WordPress kamarád +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Pokud se po poslední instalaci modulu plug-in v programu WordPress nacházíte uzamčeno, může být možné, že máte vadný modul plug-in. WordPress kamarád + je rozšířením webu Azure, které vám může pomáhat s zakázáním modulů plug-in v WordPress. Další informace najdete v tématech [nástroje WordPress a migrace MySQL pomocí programu WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Návody migrovat databázi WordPress?
 
 K migraci databáze MySQL, která je připojená k webu WordPress, máte několik možností:
 
-* Vývojáři: Použití [příkazového řádku nebo phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nevývojáři: Použití [WordPress kamarád +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* Vývojáři: použijte [příkazový řádek nebo phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Nevývojáři: použití [WordPress kamarád +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Návody pomůžete WordPress lépe zabezpečit?
 
@@ -212,9 +212,9 @@ Další informace o osvědčených postupech zabezpečení pro WordPress najdete
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Snažím se používat PHPMyAdmin a zobrazí se zpráva "přístup byl odepřen". Návody vyřešit?
 
-K tomuto problému může dojít, pokud funkce MySQL in-app není v této instanci App Service ještě spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL in-app. Pokud chcete ověřit, jestli je aplikace MySQL v aplikaci spuštěná, v Průzkumníkovi procesů se ujistěte, že jsou v procesech uvedené MySQL. exe.
+K tomuto problému může dojít, pokud funkce MySQL v aplikaci v této instanci App Service ještě není spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL v aplikaci. Chcete-li ověřit, zda je spuštěn MySQL v aplikaci, v Průzkumníkovi procesů ověřte, zda je v procesech uveden seznam MySQL. exe.
 
-Po ujištění, že je aplikace MySQL v aplikaci spuštěná, zkuste použít PHPMyAdmin.
+Až se ujistíte, že je spuštěný MySQL v aplikaci, zkuste použít PHPMyAdmin.
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Při pokusu o import nebo export databáze MySQL v aplikaci pomocí PHPMyadmin se zobrazí chyba HTTP 403. Návody vyřešit?
 

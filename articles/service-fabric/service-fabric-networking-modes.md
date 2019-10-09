@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599391"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168792"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric síťové režimy kontejneru
 
@@ -202,15 +202,15 @@ Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, I
 
    |Nastavení |Hodnota | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Name |Custom_Dns  | |
-   |Source |VirtualNetwork | |
+   |Priorita |2000 | |
+   |Name (Název) |Custom_Dns  | |
+   |Zdroj |VirtualNetwork | |
    |Cíl | VirtualNetwork | |
    |Služba | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |Akce | Povolit  | |
    | | |
 
-4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. V případě otevřeného síťového režimu dojde k získání vyhrazené IP adresy ve službě. Pokud není zadán režim, služba je výchozím režimem **překladu adres (NAT)** . V následujícím příkladu `NodeContainerServicePackage1` manifestu můžou služby a `NodeContainerServicePackage2` naslouchat na stejném portu (obě služby naslouchá na `Endpoint1`). Je-li zadán režim otevření sítě `PortBinding` , nelze zadat konfigurace.
+4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. V případě **otevřeného** síťového režimu dojde k získání vyhrazené IP adresy ve službě. Pokud není zadán režim, služba je výchozím režimem **překladu adres (NAT)** . V následujícím příkladu manifestu mohou služby `NodeContainerServicePackage1` a `NodeContainerServicePackage2` naslouchat na stejném portu (obě služby naslouchá na `Endpoint1`). Když je zadaný režim otevření sítě, nedají se zadat `PortBinding` konfigurací.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

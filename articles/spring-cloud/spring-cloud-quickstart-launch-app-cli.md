@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 632059710bf54847eb7a0a1aa388fd1409a3075a
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 6d399f04015140477af17f718c3e2205b8c3855f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038969"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170545"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
@@ -34,7 +34,8 @@ Po tomto rychlém startu se dozvíte, jak:
 ## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, obraťte se na nás e-mailem: azure-spring-cloud@service.microsoft.com.
+> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .

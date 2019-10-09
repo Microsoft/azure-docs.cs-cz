@@ -10,28 +10,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 842efca1b40827f63ab23581aeac7e5226d04349
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4ccfa45c56a7e59024ce0639f218861054e32395
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900287"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166945"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Rychlý start: Odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (C)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí back-endové aplikace (C)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím služby IoT Hub do back-endové aplikace za účelem zpracování.
+IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto rychlém startu odešlete telemetrická data z aplikace simulovaného zařízení prostřednictvím centra IoT do back-endové aplikace za účelem zpracování.
 
 V rychlém startu se používá k odesílání telemetrických dat do centra IoT ukázková aplikace C ze [sady SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). Sady SDK pro zařízení Azure IoT jsou kvůli přenositelnosti a široké kompatibilitě platforem napsané v [ANSI C (C99)](https://wikipedia.org/wiki/C99). Před spuštěním ukázkového kódu vytvoříte centrum IoT a zaregistrujete simulované zařízení v tomto centru.
 
-Tento článek je napsaný pro Windows, ale tento rychlý start se dá použít i pro Linux.
+Tento článek je napsán pro systém Windows, ale tento rychlý Start můžete dokončit i v systému Linux.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) s povoleným pracovním vytížením pro [desktopovou vývoj C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
@@ -45,21 +45,21 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 V tomto rychlém startu budete používat [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). 
 
-Tuto sadu SDK můžete používat, když nainstalujete tyto balíčky a knihovny pro následující prostředí:
+V následujících prostředích můžete sadu SDK použít tak, že nainstalujete tyto balíčky a knihovny:
 
 * **Linux**: apt-get Packages jsou k dispozici pro Ubuntu 16,04 a 18,04 pomocí následujících architektur procesoru: AMD64, arm64, armhf a i386. Další informace najdete v tématu o [vytvoření projektu klienta zařízení jazyka C na Ubuntu pomocí apt-get](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
 
-* **mbed**: Pro vývojáře, kteří vytvářejí aplikace zařízení na platformě mbed, jsme publikovali knihovnu a ukázky, které vám pomůžou začít používat Azure IoT Hub v řádu minut. Další informace najdete v tématu o [použití knihovny mbed](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
+* **mbed**: pro vývojáře, kteří vytvářejí aplikace zařízení na platformě mbed, jsme publikovali knihovnu a ukázky, které vám pomůžou začít používat Azure IoT Hub v řádu minut. Další informace najdete v tématu o [použití knihovny mbed](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
 
 * **Arduino**: Pokud vyvíjíte na Arduino, můžete využít knihovnu Azure IoT dostupnou ve Správci knihovny IDE Arduino. Další informace najdete v tématu o [knihovně Azure IoT Hub pro Arduino](https://github.com/azure/azure-iot-arduino).
 
-* **iOS**: Sada IoT Hub SDK pro zařízení je k dispozici jako CocoaPods pro vývoj zařízení s Mac a iOS. Další informace najdete v [ukázkách pro iOS pro Microsoft Azure IoT](https://cocoapods.org/pods/AzureIoTHubClient).
+* **iOS**: Sada SDK pro zařízení IoT Hub je k dispozici jako CocoaPods pro vývoj pro zařízení se systémy Mac a iOS. Další informace najdete v [ukázkách pro iOS pro Microsoft Azure IoT](https://cocoapods.org/pods/AzureIoTHubClient).
 
 V tomto rychlém startu ale připravíte vývojové prostředí, které se používá k klonování a sestavení [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) z GitHubu. Ukázkový kód, který se používá v tomto rychlém startu, je součástí sady SDK na GitHubu.
 
 1. Stáhněte si [sestavovací systém cmake](https://cmake.org/download/).
 
-    **Před** zahájením `CMake` instalace je důležité, abyste na svém počítači nainstalovali požadavky sady Visual Studio ( C++Visual Studio a Desktop Development with). Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
+    Před zahájením instalace `CMake` je důležité, aby byly nainstalovány požadavky sady Visual Studio C++(aplikace Visual Studio a úloha vývoj desktopových aplikací s). Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
 2. Otevřete příkazový řádek nebo prostředí Git bash a přejděte do pracovního adresáře, do kterého chcete klonovat sadu Azure IoT C SDK. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
 
@@ -101,7 +101,7 @@ V tomto rychlém startu ale připravíte vývojové prostředí, které se použ
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -111,27 +111,27 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyCDevice**: Toto je název zadaný pro registrované zařízení. Použijte uvedený název MyCDevice. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyCDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyCDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
     ```
 
-2. Spuštěním následujících příkazů v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste zaregistrovali:
+2. Spuštěním následujícího příkazu v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Tuto hodnotu použijete později v tomto rychlém startu.
+    Tuto hodnotu použijete později v rychlém startu.
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
@@ -150,7 +150,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
     static const char* connectionString = "[device connection string]";
     ```
 
-    Hodnotu konstanty `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Pak uložte změny do souboru **iothub_convenience_sample.c**.
+    Hodnotu konstanty `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak uložte změny do souboru **iothub_convenience_sample.c**.
 
 3. V okně místního terminálu přejděte v adresáři CMake do adresáře projektu *iothub_convenience_sample*, který jste vytvořili v sadě Azure IoT C SDK. Do pracovního adresáře zadejte tento příkaz:
 
@@ -180,10 +180,10 @@ V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 
-   **YourIoTHubName**: Nahraďte tento zástupný symbol níže názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
     ![Čtení zpráv zařízení pomocí Azure CLI](media/quickstart-send-telemetry-c/read-device-to-cloud-messages-app.png)
@@ -192,9 +192,9 @@ V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nastavili centrum IoT, zaregistrovali zařízení, odeslali simulovaná telemetrická data do centra pomocí aplikace C a přečetli telemetrická data z centra pomocí služby Azure Cloud Shell.
+V tomto rychlém startu nastavíte centrum IoT, zaregistrovali zařízení, poslali simulovanou telemetrii do centra pomocí aplikace v jazyce C a načetli telemetrii z centra pomocí Azure Cloud Shell.
 
 Další informace o vývoji pomocí sady Azure IoT Hub C SDK najdete v následujícím průvodci:
 

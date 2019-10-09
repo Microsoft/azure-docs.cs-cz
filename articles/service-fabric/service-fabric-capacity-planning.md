@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: atsenthi
+ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335642"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167393"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Plánování kapacity pro aplikace Service Fabric
 V tomto dokumentu se dozvíte, jak odhadnout množství prostředků (CPU, paměť RAM, diskové úložiště), které potřebujete ke spuštění aplikací Service Fabric Azure. Je běžné, že vaše požadavky na prostředky se v průběhu času mění. Obvykle při vývoji nebo testování služby budete potřebovat pár prostředků a pak při přechodu do produkčního prostředí vyžadovat další prostředky a vaše aplikace se bude zvětšovat v oblíbenosti. Při návrhu aplikace je třeba vzít v úvahu dlouhodobé požadavky a vybrat možnosti, které umožňují vaší službě škálování na vysokou zákaznickou poptávku.
@@ -59,7 +59,7 @@ V závislosti na všech těchto informacích se v tabulce zobrazí, že byste mo
 
 ![Tabulka pro výpočet nákladů][Image1]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o dělení služby najdete v [oddílu Service Fabric služby dělení na oddíly][10] .
 
 <!--Image references-->

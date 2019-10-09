@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití Node. js k dotazování Azure SQL Database'
+title: 'Rychlý Start: použití Node. js k dotazování Azure SQL Database'
 description: Jak pomocí Node. js vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059279"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178051"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze Azure SQL
 
-Tento článek ukazuje, jak pomocí [Node. js](https://nodejs.org) připojit k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
+Tento rychlý Start ukazuje použití [Node. js](https://nodejs.org) k připojení k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
@@ -30,7 +30,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -55,7 +55,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
 

@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599232"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166557"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
 
 Pokud spouštíte více služeb na stejném uzlu nebo clusteru, je možné, že jedna služba může spotřebovat víc prostředků, omezují se v procesu další služby. Tento problém se označuje jako problém s "vysokou úrovní souseda". Azure Service Fabric umožňuje vývojářům určit rezervace a omezení pro službu za účelem zajištění prostředků a omezení využití prostředků.
 
-> Než budete pokračovat v tomto článku, doporučujeme vám seznámit se s [Service Fabric aplikačním modelem](service-fabric-application-model.md) a modelem [Service Fabric hostování](service-fabric-hosting-model.md).
+> Než budete pokračovat v tomto článku, doporučujeme vám seznámit se s [Service Fabric aplikačním modelem](service-fabric-application-model.md) a [modelem Service Fabric hostování](service-fabric-hosting-model.md).
 >
 
 ## <a name="resource-governance-metrics"></a>Metriky zásad správného řízení prostředků
 
-Zásady správného řízení prostředků jsou podporované v Service Fabric v souladu s [balíčkem služby](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služby, mohou být dále rozděleny mezi balíčky kódu. Zadaná omezení prostředků také znamenají rezervaci prostředků. Service Fabric podporuje určení procesoru a paměti na balíček služby se dvěma integrovanými metrikami [](service-fabric-cluster-resource-manager-metrics.md):
+Zásady správného řízení prostředků jsou podporované v Service Fabric v souladu s [balíčkem služby](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služby, mohou být dále rozděleny mezi balíčky kódu. Zadaná omezení prostředků také znamenají rezervaci prostředků. Service Fabric podporuje určení procesoru a paměti na balíček služby se dvěma integrovanými [metrikami](service-fabric-cluster-resource-manager-metrics.md):
 
-* *Procesor* (název `servicefabric:/_CpuCores`metriky): Logický jádr, který je k dispozici na hostitelském počítači. Všechny jádra ve všech uzlech jsou vážená na stejnou.
+* *CPU* (název metriky `servicefabric:/_CpuCores`): logické jádro, které je k dispozici na hostitelském počítači. Všechny jádra ve všech uzlech jsou vážená na stejnou.
 
-* *Paměť* (název `servicefabric:/_MemoryInMB`metriky): Paměť je vyjádřena v megabajtech a mapuje se na fyzickou paměť, která je k dispozici v počítači.
+* *Paměť* (název metriky `servicefabric:/_MemoryInMB`): paměť je vyjádřena v megabajtech a je namapována na fyzickou paměť, která je k dispozici v počítači.
 
 Pro tyto dvě metriky [cluster správce prostředků](service-fabric-cluster-resource-manager-cluster-description.md) sleduje celkovou kapacitu clusteru, zatížení každého uzlu v clusteru a zbývající prostředky v clusteru. Tyto dvě metriky jsou ekvivalentní libovolné jiné uživateli nebo vlastní metriky. U těchto funkcí se dají použít všechny existující funkce:
 
 * Cluster může být [vyvážený](service-fabric-cluster-resource-manager-balancing.md) podle těchto dvou metrik (výchozí chování).
-* Cluster se dá defragmentovat podle těchto dvou metrik. [](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+* Cluster se dá [defragmentovat](service-fabric-cluster-resource-manager-defragmentation-metrics.md) podle těchto dvou metrik.
 * Při [popisu clusteru](service-fabric-cluster-resource-manager-cluster-description.md)je možné nastavit kapacitu vyrovnávací paměti pro tyto dvě metriky.
 
 [Generování sestav dynamického načtení](service-fabric-cluster-resource-manager-metrics.md) není pro tyto metriky podporováno a zatížení těchto metrik je definováno během vytváření.
@@ -56,9 +56,9 @@ V tomto okamžiku součet omezení se rovná kapacitě uzlu. Proces a kontejner 
 
 Existují však dvě situace, kdy mohou být pro procesor soupeří jiné procesy. V takových situacích se může stát, že proces a kontejner z našeho příkladu nastanou problém s sousedním směrovačem v hlučnosti:
 
-* *Kombinování a neřídících se služeb a kontejnerů*: Pokud uživatel vytvoří službu bez zadaného zásad správného řízení prostředků, modul runtime ji uvidí, protože nespotřebovává žádné prostředky a může ji umístit na uzel v našem příkladu. V tomto případě tento nový proces efektivně spotřebovává určitý procesor na úkor služeb, které jsou již spuštěny na uzlu. K tomuto problému dochází ze dvou řešení. Buď nemíchejte řízení a neřídící služby ve stejném clusteru, nebo použijte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , aby tyto dva typy služeb neukončily stejnou sadu uzlů.
+* *Kombinování řízených a neřízených služeb a kontejnerů*: Pokud uživatel vytvoří službu bez zadaného zásad správného řízení prostředků, modul runtime ji uvidí, že nespotřebovává žádné prostředky, a může je umístit na uzel v našem příkladu. V tomto případě tento nový proces efektivně spotřebovává určitý procesor na úkor služeb, které jsou již spuštěny na uzlu. K tomuto problému dochází ze dvou řešení. Buď nemíchejte řízení a neřídící služby ve stejném clusteru, nebo použijte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) , aby tyto dva typy služeb neukončily stejnou sadu uzlů.
 
-* *Když je na uzlu spuštěn jiný proces, mimo Service Fabric (například pro službu operačního systému)* : V takové situaci se proces mimo Service Fabric taky zamýšlí pro procesor s existujícími službami. Řešením tohoto problému je správné nastavení kapacity uzlů pro účet pro režijní náklady na operační systém, jak je znázorněno v další části.
+* *Když je na uzlu spuštěný jiný proces, mimo Service Fabric (například pro službu operačního systému)* : v této situaci se proces mimo Service Fabric taky zamýšlí pro procesor s existujícími službami. Řešením tohoto problému je správné nastavení kapacity uzlů pro účet pro režijní náklady na operační systém, jak je znázorněno v další části.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Nastavení clusteru pro povolení zásad správného řízení prostředků
 
@@ -133,7 +133,7 @@ Omezení zásad správného řízení prostředků jsou uvedena v manifestu apli
   </ServiceManifestImport>
 ```
 
-V tomto příkladu balíček služby s názvem **ServicePackageA** získá jeden základní uzel na uzlech, kde je umístěn. Tento balíček služby obsahuje dva balíčky kódu (**CodeA1** a **CodeA2**) a `CpuShares` oba určují parametr. Podíl CpuShares 512:256 vydělí jádro napříč dvěma balíčky kódu.
+V tomto příkladu balíček služby s názvem **ServicePackageA** získá jeden základní uzel na uzlech, kde je umístěn. Tento balíček služby obsahuje dva balíčky kódu (**CodeA1** a **CodeA2**) a oba určují parametr `CpuShares`. Podíl CpuShares 512:256 vydělí jádro napříč dvěma balíčky kódu.
 
 Proto v tomto příkladu CodeA1 získá dvě třetiny základního typu a CodeA2 získá jednu třetinu jádra (a rezervaci se zárukou). Pokud nejsou zadány CpuShares pro balíčky kódu, Service Fabric rozděluje mezi nimi stejné jádra.
 
@@ -190,12 +190,12 @@ V tomto příkladu jsou pro produkční prostředí nastavené výchozí hodnoty
 
 Kromě procesoru a paměti je možné určit další omezení prostředků pro kontejnery. Tato omezení jsou určena na úrovni balíčku kódu a jsou použita při spuštění kontejneru. Na rozdíl od CPU a paměti nemusí cluster Správce prostředků znát tyto prostředky a nebude pro ně provádět žádné kontroly kapacity ani vyrovnávání zatížení.
 
-* *MemorySwapInMB*: Velikost odkládací paměti, kterou může kontejner použít.
-* *MemoryReservationInMB*: Měkké omezení pro zásady správného řízení paměti, které je vynutilo pouze v případě, že je v uzlu zjištěno spory paměti.
-* *CpuPercent*: Procento využití procesoru, které může kontejner použít. Pokud jsou pro balíček služby zadané limity procesoru, tento parametr se efektivně ignoruje.
-* *MaximumIOps*: Maximální hodnota IOPS, kterou může kontejner použít (čtení a zápis).
-* *MaximumIOBytesps*: Maximální v/v (bajty za sekundu), které může kontejner použít (čtení a zápis).
-* *BlockIOWeight*: Hmotnost za vstupně-výstupní operace bloku pro relativní vzhledem k ostatním kontejnerům.
+* *MemorySwapInMB*: velikost odkládací paměti, kterou může kontejner použít.
+* *MemoryReservationInMB*: částečný limit pro zásady správného řízení paměti, která je vynutila pouze při zjištění kolizí paměti v uzlu.
+* *CpuPercent*: procento využití procesoru, které může kontejner použít. Pokud jsou pro balíček služby zadané limity procesoru, tento parametr se efektivně ignoruje.
+* *MaximumIOps*: maximální hodnota IOPS, kterou může kontejner použít (čtení a zápis).
+* *MaximumIOBytesps*: maximální vstupně-výstupní operace (bajty za sekundu), které může kontejner použít (čtení a zápis).
+* *BlockIOWeight*: zablokuje váhu v/v pro relativní vzhledem k ostatním kontejnerům.
 
 Tyto prostředky je možné kombinovat s PROCESORem a pamětí. Tady je příklad, jak určit další prostředky pro kontejnery:
 
@@ -209,7 +209,7 @@ Tyto prostředky je možné kombinovat s PROCESORem a pamětí. Tady je příkla
     </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o Správce prostředků clusteru najdete v tématu [představení služby Service Fabric cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md).
 * Další informace o modelu aplikace, balíčcích služeb a balíčcích kódu – a o tom, jak jsou repliky mapovány, najdete v tématu [model aplikace v Service Fabric](service-fabric-application-model.md).

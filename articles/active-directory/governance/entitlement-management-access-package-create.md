@@ -16,19 +16,19 @@ ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326345"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170001"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
+> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Balíček pro přístup vám umožní jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. Tento článek popisuje, jak vytvořit nový balíček pro přístup.
 
@@ -44,9 +44,9 @@ Následující diagram znázorňuje proces vysoké úrovně pro vytvoření nov�
 
 ## <a name="start-new-access-package"></a>Spustit nový balíček pro přístup
 
-**Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
+**Požadovaná role:** Globální správce, Správce uživatelů nebo vlastník katalogu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -56,7 +56,7 @@ Následující diagram znázorňuje proces vysoké úrovně pro vytvoření nov�
 
 1. Klikněte na **nový balíček pro přístup**.
 
-## <a name="basics"></a>Základní informace
+## <a name="basics"></a>Práce
 
 Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke kterému katalogu se má balíček pro přístup vytvořit.
 
@@ -73,7 +73,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
     Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Později můžete také přidat další vlastníky katalogu.
 
 
-1. Klikněte na **Další**.
+1. Klikněte na tlačítko **Další**.
 
 ## <a name="resource-roles"></a>Role prostředků
 
@@ -95,9 +95,9 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. Klikněte na **Další**.
+1. Klikněte na tlačítko **Další**.
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>politických
 
 Na kartě **zásady** vytvoříte první zásadu, která určí, kdo může žádat o přístup k balíčku a také nastavení schválení a vypršení platnosti. Později můžete vytvořit další zásady, které umožní více skupinám uživatelů žádat o přístup k balíčku s vlastním nastavením schválení a vypršení platnosti. Zásadu můžete vytvořit také později.
 
@@ -125,6 +125,4 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úprava a správa existujících přístupových balíčků](entitlement-management-access-package-edit.md)
-- [Přidat vlastníka katalogu nebo správce balíčků přístupu](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Vytvoření a správa katalogu](entitlement-management-catalog-create.md)
+- [Úprava a Správa stávajícího balíčku pro přístup](entitlement-management-access-package-edit.md)

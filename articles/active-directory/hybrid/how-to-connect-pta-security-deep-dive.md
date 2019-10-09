@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory předávací ověřování podrobné informace o zabezpečení | Dokumentace Microsoftu
-description: Tento článek popisuje, jak předávací ověřování služby Azure Active Directory (Azure AD) chrání vaše místní účty
+title: Azure Active Directory předávací ověřování zabezpečení podrobně | Microsoft Docs
+description: Tento článek popisuje, jak Azure Active Directory (Azure AD) předávací ověřování chrání vaše místní účty.
 services: active-directory
-keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro službu Azure AD, jednotné přihlašování, jednotné přihlašování
+keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -15,207 +15,208 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348059"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174438"
 ---
-# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
+# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení s hloubkovým podrobně
 
-Tento článek poskytuje podrobnější popis toho, jak funguje předávací ověřování služby Azure Active Directory (Azure AD). Zaměřuje se na aspekty zabezpečení funkce. Tento článek je určený pro zabezpečení a IT správce, hlavní dodržování předpisů a zabezpečením a dalším IT profesionálům, kteří jsou zodpovědní za zabezpečení IT a dodržování předpisů na malé až střední velikosti organizace nebo velké podniky.
+Tento článek poskytuje podrobnější popis způsobu, jakým funguje předávací ověřování Azure Active Directory (Azure AD). Zaměřuje se na aspekty zabezpečení této funkce. Tento článek je určený pro zabezpečení a správce IT, dodržování předpisů a úředníků v oblasti zabezpečení a další odborníky na IT, kteří zodpovídají za zabezpečení IT a dodržování předpisů u malých a velkých podnikových organizací.
 
-Zákazníky a vyřešené témata:
-- Podrobné technické informace o tom, jak nainstalovat a zaregistrovat agentů ověřování.
-- Podrobné technické informace o šifrování hesla při přihlášení uživatele.
-- Zabezpečení těchto kanálů mezi místní ověřování agentů a Azure AD.
-- Podrobné technické informace o tom, jak provozně zabezpečit agentů ověřování.
+Mezi zahrnutá témata patří:
+- Podrobné technické informace o tom, jak nainstalovat a zaregistrovat ověřovací agenty.
+- Podrobné technické informace o šifrování hesel během přihlašování uživatelů
+- Zabezpečení kanálů mezi místními agenty ověřování a službou Azure AD.
+- Podrobné technické informace o tom, jak zajistit fungování ověřovacích agentů.
 - Další témata související se zabezpečením.
 
-## <a name="key-security-capabilities"></a>Klíčových bezpečnostních schopností
+## <a name="key-security-capabilities"></a>Klíčové funkce zabezpečení
 
-Jde o aspektech zabezpečení klíče této funkce:
-- Orchard je založen na zabezpečenou architekturu s více klienty, která zajišťuje izolaci žádostí o přihlášení mezi tenanty.
-- Místních hesel se nikdy neukládají v cloudu v libovolné formě.
-- Místní ověřování agenty, které naslouchají hrozeb a reakce na, odchozí připojení z v rámci vaší sítě vytvořit pouze žádostí o ověření hesla. Není nutné k instalaci těchto agentů ověřování v hraniční síti (DMZ). Jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
-- Pro odchozí komunikaci z agentů ověřování do služby Azure AD se používají pouze standardní porty (80 a 443). Není nutné otevřít příchozí porty na bráně firewall. 
-  - Pro všechny ověřené odchozí komunikace se používá port 443.
-  - Port 80 slouží pouze pro stahování seznamy odvolaných certifikátů (CRL) k zajištění, že žádný z certifikátů používaných touto funkcí byl odvolán.
-  - Úplný seznam požadavků na síť, naleznete v tématu [předávacího ověřování Azure Active Directory: Rychlý start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
-- Hesla, které uživatelé poskytnout během přihlášení jsou šifrované v cloudu, předtím, než je agentů ověřování místní přijmout pro ověření na základě služby Active Directory.
-- Kanál protokolu HTTPS mezi službami Azure AD a místní ověřovací Agent se šifrují pomocí vzájemného ověřování.
-- Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../conditional-access/conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
+Toto jsou klíčové aspekty zabezpečení této funkce:
+- Je postavená na zabezpečené víceklientské architektuře, která poskytuje izolaci žádostí o přihlášení mezi klienty.
+- Místní hesla se v jakémkoli formuláři nikdy neukládají v cloudu.
+- Místní agenti ověřování, kteří naslouchají a reagují na požadavky na ověření hesla, budou mít pouze odchozí připojení z vaší sítě. Neexistuje žádný požadavek na instalaci těchto ověřovacích agentů v hraniční síti (DMZ). Osvědčeným postupem je považovat všechny servery, na kterých běží agenti ověřování, jako systémy vrstvy 0 (viz [referenční](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)informace).
+- Pro odchozí komunikaci od agentů ověřování do Azure AD se používají jenom standardní porty (80 a 443). Nemusíte otevírat příchozí porty na bráně firewall. 
+  - Port 443 se používá pro veškerou ověřenou odchozí komunikaci.
+  - Port 80 se používá jenom ke stažení seznamů odvolaných certifikátů (CRL), aby se zajistilo, že žádný z certifikátů, které tato funkce nepoužila, nebyla odvolána.
+  - Úplný seznam požadavků na síť najdete v tématu [Azure Active Directory předávacího ověřování: rychlý Start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+- Hesla, která uživatelé poskytují během přihlašování, se šifrují v cloudu předtím, než je místní agent ověřování přijímají k ověřování proti službě Active Directory.
+- Kanál HTTPS mezi Azure AD a místním ověřovacím agentem je zabezpečený pomocí vzájemného ověřování.
+- Chrání vaše uživatelské účty pomocí [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně Multi-Factor Authentication (MFA), [blokováním staršího ověřování](../conditional-access/conditions.md) a [filtrováním útoků hrubou silou na hesla](../authentication/howto-password-smart-lockout.md).
 
-## <a name="components-involved"></a>Součástí
+## <a name="components-involved"></a>Zapojené součásti
 
-Obecné podrobnosti o zabezpečení dat a provozní, služba Azure AD, najdete v článku [centrum](https://azure.microsoft.com/support/trust-center/). Při používání předávacího ověřování pro přihlášení uživatele se podílejí následující komponenty:
-- **Azure AD STS**: Bezstavové služby tokenů zabezpečení (STS), která zpracovává požadavky na přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby uživatelů.
-- **Azure Service Bus**: Poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a propojení komunikace, která pomáhá propojit místní řešení s cloudem.
-- **Azure AD Connect ověřovací Agent nebyl**: Součást v místním, která přijímá a reaguje na požadavky ověřování hesla.
-- **Azure SQL Database**: Obsahuje informace o vašem tenantovi agentů ověřování, včetně jejich metadata, šifrovacích klíčů.
-- **Služby Active Directory**: Místní služby Active Directory, kde jsou uloženy vaše uživatelské účty a hesla.
+Obecné informace o provozu, službě a zabezpečení dat v Azure AD najdete v [centru](https://azure.microsoft.com/support/trust-center/)zabezpečení. Při použití předávacího ověřování pro přihlášení uživatele jsou zapojeny následující komponenty:
+- **Azure AD STS**: Bezstavová služba tokenů zabezpečení (STS), která zpracovává žádosti o přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby.
+- **Azure Service Bus**: poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a přenáší komunikaci, která pomáhá propojit místní řešení s cloudem.
+- **Azure AD Connect ověřovací agent**: místní komponenta, která naslouchá a reaguje na žádosti o ověření hesla.
+- **Azure SQL Database**: uchovává informace o agentech ověřování vašeho tenanta, včetně jejich metadat a šifrovacích klíčů.
+- **Active Directory**: místní služba Active Directory, kde jsou uložené vaše uživatelské účty a hesla.
 
-## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalace a registrace agentů ověřování
+## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalace a registrace ověřovacích agentů
 
-Agentů ověřování jsou instalaci a registraci do služby Azure AD při můžete buď:
-   - [Povolit předávací ověřování prostřednictvím služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [Přidejte další agenty ověřování k zajištění vysoké dostupnosti žádostí o přihlášení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+Agenti ověřování se nainstalují a zaregistrují ve službě Azure AD, když to bude:
+   - [Povolit předávací ověřování prostřednictvím Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
+   - [Přidejte další ověřovací agenty, abyste zajistili vysokou dostupnost žádostí o přihlášení.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
    
-Začínáme pracovní ověřovacího agenta služby zahrnuje tři hlavní fáze:
+Získání ověřovacího agenta pro práci se skládá ze tří hlavních fází:
 
-1. Ověření instalace agenta
-2. Ověření registrace agenta
-3. Inicializace ověřování agenta
+1. Instalace ověřovacího agenta
+2. Registrace ověřovacího agenta
+3. Inicializace ověřovacího agenta
 
-Následující části popisují tyto fáze podrobně.
+Následující části podrobněji popisují tyto fáze.
 
-### <a name="authentication-agent-installation"></a>Ověření instalace agenta
+### <a name="authentication-agent-installation"></a>Instalace ověřovacího agenta
 
-Jenom globální správci můžete nainstalovat ověřovacího agenta (pomocí služby Azure AD Connect nebo samostatné) na místním serveru. Přidá dva nové položky pro instalaci **ovládací panely** > **programy** > **programy a funkce** seznamu:
-- Samotná aplikace ověřovacího agenta. Tato aplikace funguje s [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) oprávnění.
-- Aktualizátor aplikace, který se používá k automatické aktualizaci ověřovacího agenta. Tato aplikace funguje s [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) oprávnění.
+Pouze globální Správci mohou nainstalovat ověřovacího agenta (pomocí Azure AD Connect nebo samostatné) na místním serveru. Instalace přidá do **ovládacích panelů**dvě nové položky  > **programy** > **programy a seznam funkcí** :
+- Aplikace ověřovacího agenta samotného. Tato aplikace se spouští s oprávněními [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) .
+- Aplikace aktualizace, která se používá k automatické aktualizaci ověřovacího agenta. Tato aplikace běží s oprávněními [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
-### <a name="authentication-agent-registration"></a>Ověření registrace agenta
+### <a name="authentication-agent-registration"></a>Registrace ověřovacího agenta
 
-Po instalaci ověřovací Agent potřebuje k registraci v Azure AD. Azure AD přiřadí každé ověřovací Agent jedinečné, digitální identity certifikát, který můžete použít pro zabezpečenou komunikaci s Azure AD.
+Po instalaci agenta pro ověřování musí být tento agent zaregistrované ve službě Azure AD. Azure AD přiřadí každému agentovi ověřování jedinečný certifikát digitální identity, který může použít pro zabezpečenou komunikaci s Azure AD.
 
-Postup registrace sváže ověřovacího agenta v tenantu. Tím se zajistí, že Azure AD ví, že tato konkrétní ověřovací Agent je pouze jeden oprávnění pro zpracování žádostí o ověření hesla pro vašeho tenanta. Tento postup se opakuje pro každý nový ověřovací Agent zaregistrovat.
+Postup registrace také váže agenta ověřování s vaším klientem. Tím se zajistí, že Azure AD ví, že tento konkrétní agent ověřování je jedinou jedinou autorizací pro zpracování žádostí o ověření hesla pro vašeho tenanta. Tento postup se opakuje u každého nového ověřovacího agenta, který zaregistrujete.
 
-Agentů ověřování použijte následující postup zaregistrovat se službou Azure AD:
+Ověřovací agenti používají následující postup k registraci ve službě Azure AD:
 
 ![Registrace agenta](./media/how-to-connect-pta-security-deep-dive/pta1.png)
 
-1. Azure AD poprvé požádá, že se globální správce přihlásit ke službě Azure AD pomocí svých přihlašovacích údajů. Při přihlašování ověřování agenta získá přístupový token, který můžete použít jménem globálního správce.
-2. Ověřovací Agent poté vygeneruje pár klíče: veřejný klíč a soukromý klíč.
-    - Pár klíčů je generována pomocí standardního šifrování RSA 2048 bitů.
-    - Privátní klíč zůstane na na místním serveru, ve které se nachází Agent ověřování.
-3. Ověřovací Agent odešle "registrace" požadavek do služby Azure AD prostřednictvím protokolu HTTPS, s následujícími součástmi zahrnutý v požadavku:
-    - Přístupový token získali v kroku 1.
+1. Azure AD nejdřív vyžaduje, aby se globální správce přihlásil k Azure AD pomocí svých přihlašovacích údajů. Během přihlašování agent ověřování získá přístupový token, který může používat jménem globálního správce.
+2. Agent ověřování pak vygeneruje pár klíčů: veřejný klíč a privátní klíč.
+    - Pár klíčů se generuje prostřednictvím standardu RSA 2048-bit Encryption.
+    - Privátní klíč zůstane na místním serveru, kde se nachází agent ověřování.
+3. Agent ověřování vytvoří žádost o registraci do služby Azure AD prostřednictvím protokolu HTTPS s následujícími součástmi, které jsou součástí žádosti:
+    - Přístupový token získaný v kroku 1.
     - Veřejný klíč vygenerovaný v kroku 2.
-    - Žádost o podepsání certifikátu (CSR nebo žádost o certifikát). Tento požadavek platí i pro certifikát digitálních identit s Azure AD jako jeho certifikační autority (CA).
-4. Azure AD ověří přístupový token v žádosti o registraci a ověřuje, že žádost pochází ze globálního správce.
-5. Azure AD pak přihlásí a odešle certifikát digitální identity ověřovacího agenta.
-    - Kořenové certifikační Autority ve službě Azure AD se používá k podepsání certifikátu. 
+    - Žádost o podepsání certifikátu (CSR nebo žádost o certifikát). Tento požadavek se vztahuje na certifikát digitální identity s Azure AD jako certifikační autorita (CA).
+4. Azure AD ověří přístupový token v žádosti o registraci a ověří, že požadavek pochází od globálního správce.
+5. Služba Azure AD pak podepíše a pošle certifikát digitální identity zpátky agentovi ověřování.
+    - Pro podepsání certifikátu se používá kořenová certifikační autorita v Azure AD. 
 
       > [!NOTE]
-      > Tato certifikační Autorita je _není_ Windows důvěryhodné kořenové certifikační autority úložiště.
-    - Certifikační Autorita používá pouze funkce předávací ověřování. Certifikační Autority slouží pouze k přihlášení během registrace ověřovacího agenta služby zákazníkům.
-    -  Žádné další služby Azure AD pomocí této certifikační Autority.
-    - Subjekt certifikátu (rozlišující název nebo název domény) je nastavena na ID vašeho tenanta. Tento název domény je identifikátor GUID, který jednoznačně identifikuje vašeho tenanta. Tento název domény obory certifikátu pro použití pouze v tenantu.
-6. Veřejný klíč ověřovacího agenta služby Azure AD ukládá v databázi Azure SQL, která jenom služby Azure AD má přístup k.
-7. Certifikát (vydané v kroku 5) je uložen na místním serveru do úložiště certifikátů Windows (konkrétně v [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) umístění). Používá se ověřovací Agent i aplikace Updater.
+      > Tato certifikační autorita _není v úložišti_ důvěryhodné kořenové certifikační autority Windows.
+    - Certifikační autorita se používá jenom funkcí předávacího ověřování. Certifikační autorita se používá pouze k podepisování zástupců oddělení služeb při registraci ověřovacího agenta.
+    -  Žádná z ostatních služeb Azure AD tuto certifikační autoritu nepoužívá.
+    - Předmět certifikátu (rozlišující název nebo rozlišující název DN) je nastaven na ID tenanta. Tento rozlišující název je identifikátor GUID, který jedinečně identifikuje vašeho tenanta. Tento rozlišující obor je certifikát pro použití jenom s vaším klientem.
+6. Azure AD ukládá veřejný klíč ověřovacího agenta do Azure SQL Database, ke kterému má přístup jenom Azure AD.
+7. Certifikát (vydaný v kroku 5) je uložený na místním serveru v úložišti certifikátů Windows (konkrétně v umístění [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) ). Používá ho agent ověřování i aktualizační aplikace.
 
-### <a name="authentication-agent-initialization"></a>Inicializace ověřování agenta
+### <a name="authentication-agent-initialization"></a>Inicializace ověřovacího agenta
 
-Při spuštění ověřovacího agenta, poprvé po registraci nebo po server restartovat, potřebuje způsob, jak bezpečně komunikovat se službou Azure AD a začněte přijímat žádosti o ověření hesla.
+Když se ověřovací Agent spustí buď poprvé po registraci, nebo po restartování serveru, potřebuje způsob, jak bezpečně komunikovat se službou Azure AD a zahájit přijímání žádostí o ověření hesla.
 
 ![Inicializace agenta](./media/how-to-connect-pta-security-deep-dive/pta2.png)
 
-Zde je, jak jsou inicializovány agentů ověřování:
+Tady je postup, jak se inicializují agenti ověřování:
 
-1. Ověřovací Agent zašle odchozí bootstrap požadavek do služby Azure AD. 
-    - Tento požadavek se provádí přes port 443 a je nad vzájemně ověřené kanálu protokolu HTTPS. Požadavek používá stejný certifikát, který byl vydán během registrace agenta ověřování.
-2. Azure AD odpoví na požadavek tím, že poskytuje přístupový klíč do fronty služby Azure Service Bus, která je pro vašeho klienta jedinečný a, který je identifikován podle ID vašeho tenanta.
-3. Ověřovací Agent díky trvalé odchozí připojení HTTPS (přes port 443) fronty. 
-    - Ověřovací Agent je nyní připraven k načtení a zpracování požadavků na ověření hesla.
+1. Ověřovací agent zpřístupňuje službě Azure AD odchozí požadavek na zavedení. 
+    - Tato žádost se provádí přes port 443 a je přes vzájemně ověřený kanál HTTPS. Požadavek používá stejný certifikát, který byl vydán během registrace ověřovacího agenta.
+2. Azure AD odpoví na požadavek poskytnutím přístupového klíče ke frontě Azure Service Bus, která je pro vašeho tenanta jedinečná a která je identifikovaná vaším ID tenanta.
+3. Agent ověřování vytvoří trvalé odchozí připojení HTTPS (přes port 443) do fronty. 
+    - Agent ověřování je nyní připraven k načtení a zpracování požadavků na ověření hesla.
 
-Pokud máte více agentů ověřování zaregistrovaný ve svém tenantovi, pak inicializační proceduru zajistí, že každý z nich připojí ke stejné fronty služby Service Bus. 
+Pokud máte ve vašem tenantovi zaregistrovaných víc agentů ověřování, pak Inicializační procedura zajistí, že se každá z nich připojí ke stejné Service Busové frontě. 
 
-## <a name="process-sign-in-requests"></a>Zpracování žádostí o přihlášení 
+## <a name="process-sign-in-requests"></a>Zpracovat žádosti o přihlášení 
 
-Následující diagram znázorňuje, jak předávací ověřování zpracovává požadavky přihlášení uživatele.
+Následující diagram ukazuje, jak předávací ověřování zpracovává požadavky uživatelů na přihlášení.
 
-![Proces přihlášení](./media/how-to-connect-pta-security-deep-dive/pta3.png)
+![Zpracovat přihlášení](./media/how-to-connect-pta-security-deep-dive/pta3.png)
 
-Předávací ověřování zpracování požadavku na přihlášení uživatele následujícím způsobem: 
+Předávací ověřování zpracovává požadavek na přihlášení uživatele následujícím způsobem: 
 
-1. Uživatel se pokusí o přístup k aplikaci, například [Outlook Web App](https://outlook.office365.com/owa).
-2. Pokud ještě není přihlášení uživatele, aplikace prohlížeč přesměruje na přihlašovací stránce služby Azure AD.
-3. Odpoví služba tokenů zabezpečení Azure AD zpátky s **přihlášení uživatele** stránky.
-4. Uživatel zadá své uživatelské jméno do **přihlášení uživatele** stránce a potom vybere **Další** tlačítko.
-5. Uživatel zadá své heslo do **přihlášení uživatele** stránce a potom vybere **přihlášení** tlačítko.
-6. Uživatelské jméno a heslo jsou odeslány do Azure AD Služba tokenů zabezpečení ve požadavek POST protokolu HTTPS.
-7. Azure AD STS načte veřejných klíčů pro všechny agenty ověřování zaregistrovaný ve svém tenantovi ze služby Azure SQL database a heslo zašifruje pomocí nich.
-    - Vyvolá hodnoty "N" šifrované heslo pro ověření "N" agenti zaregistrovaní ve svém tenantovi.
-8. Azure AD STS umístí žádosti o ověření hesla se skládá z uživatelského jména a hodnoty šifrované heslo, do fronty služby Service Bus, který je určený výhradně pro vašeho tenanta.
-9. Protože inicializované agentů ověřování trvalé připojení do fronty služby Service Bus, jeden z dostupných agentů ověřování načte žádosti o ověření hesla.
-10. Ověřovací Agent vyhledá šifrované heslo hodnotu, která je specifická pro svůj veřejný klíč, s použitím identifikátoru a dešifruje ji pomocí jeho privátní klíč.
-11. Ověřovací Agent se pokusí ověřit uživatelské jméno a heslo pro místní služby Active Directory s použitím [rozhraní API systému Win32 LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) s **dwLogonType** parametr nastaven na **LOGON32_LOGON_NETWORK**. 
-    - Toto rozhraní API je stejného rozhraní API, která používá služby Active Directory Federation Services (AD FS) k přihlašování uživatelů ve scénáři federované přihlášení.
-    - Toto rozhraní API se spoléhá na standardním rozlišením procesu ve Windows serveru k vyhledání řadiče domény.
-12. Ověřovací Agent přijímá výsledek ze služby Active Directory, jako je například úspěch, uživatelské jméno nebo heslo není správné nebo platnost hesla vypršela.
+1. Uživatel se pokusí o přístup k aplikaci, například k aplikaci [Outlook Web App](https://outlook.office365.com/owa).
+2. Pokud uživatel ještě není přihlášený, aplikace přesměruje prohlížeč na přihlašovací stránku služby Azure AD.
+3. Služba TOKENů Azure AD odpoví zpátky pomocí **přihlašovací stránky uživatele** .
+4. Uživatel zadá své uživatelské jméno do **přihlašovací stránky uživatele** a pak vybere tlačítko **Další** .
+5. Uživatel zadá heslo do **přihlašovací stránky uživatele** a pak vybere tlačítko pro **přihlášení** .
+6. Uživatelské jméno a heslo se odešle do služby Azure AD STS v žádosti POST protokolu HTTPS.
+7. Služba Azure AD STS načte veřejné klíče pro všechny ověřovací agenty zaregistrované ve vašem tenantovi z databáze SQL Azure a zašifruje je pomocí těchto hesel.
+    - Vytvoří "N" šifrované hodnoty hesel pro ověřovací agenty "N" zaregistrované ve vašem tenantovi.
+8. Azure AD STS ukládá žádost o ověření hesla, která se skládá z uživatelského jména a šifrovaných hodnot hesla, do fronty Service Bus specifické pro vašeho tenanta.
+9. Vzhledem k tomu, že inicializované agenti ověřování jsou trvale připojeni k frontě Service Bus, jeden z dostupných ověřovacích agentů načte požadavek na ověření hesla.
+10. Agent ověřování vyhledává hodnotu šifrovaného hesla, která je specifická pro svůj veřejný klíč, pomocí identifikátoru a dešifruje ho pomocí jeho privátního klíče.
+11. Ověřovací agent se pokusí ověřit uživatelské jméno a heslo proti místní službě Active Directory pomocí [rozhraní Win32 API LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) s parametrem **dwLogonType** nastaveným na **LOGON32_LOGON_NETWORK**. 
+    - Toto rozhraní API je stejné rozhraní API, které používá Active Directory Federation Services (AD FS) (AD FS) k přihlašování uživatelů ve scénáři federovaného přihlášení.
+    - Toto rozhraní API využívá ke zjištění řadiče domény standardní proces řešení ve Windows serveru.
+12. Agent ověřování obdrží výsledek ze služby Active Directory, například úspěch, uživatelské jméno nebo heslo je nesprávné nebo vypršela platnost hesla.
 
    > [!NOTE]
-   > Pokud ověřovací Agent selže během procesu přihlášení, zcela žádost o přihlášení se zahodí. Neexistuje žádné ruční schválení požadavků na přihlášení z jednoho ověřovacího agenta jiného ověřovacího agenta služby i místní. Tito agenti komunikovat jenom s cloudem a není mezi sebou.
-13. Ověřovací Agent výsledek předá zpět služby tokenů zabezpečení Azure AD přes odchozí vzájemně ověřené kanál HTTPS přes port 443. Vzájemné ověřování používá certifikát k ověřování agenta dříve vydané během registrace.
-14. Služba tokenů zabezpečení Azure AD ověří, že tento výsledek koreluje s konkrétní přihlášení žádost ve svém tenantovi.
-15. Azure AD STS pokračuje s postupem přihlášení podle konfigurace. Například pokud ověření hesla byla úspěšná, uživatel může být postiženy omezeními pro ověřování službou Multi-Factor Authentication nebo přesměrován zpět do aplikace.
+   > Pokud agent ověřování během procesu přihlašování dojde k chybě, celý požadavek na přihlášení je vyřazený. Neexistují žádné ruční žádosti o přihlášení od jednoho ověřovacího agenta k místnímu ověřovacímu agentovi. Tito agenti komunikují jenom s cloudem, a ne mezi sebou.
+   
+13. Agent ověřování přepošle výsledek zpátky do služby Azure AD STS přes odchozí kanál protokolu HTTPS přes port 443. Vzájemné ověřování používá certifikát, který se dřív vystavil agentovi ověřování během registrace.
+14. Služba Azure AD STS ověřuje, že se tento výsledek koreluje s konkrétním přihlašovacím požadavkem ve vašem tenantovi.
+15. Služba tokenů zabezpečení Azure AD pokračuje s postupem přihlášení, jak je nakonfigurované. Pokud bylo například ověření hesla úspěšné, může být uživatel vyzván pro Multi-Factor Authentication nebo přesměrován zpět do aplikace.
 
 ## <a name="operational-security-of-the-authentication-agents"></a>Provozní zabezpečení agentů ověřování
 
-Aby bylo zajištěno, že předávací ověřování zůstává provozně zabezpečené, pravidelně Azure AD se tato možnost obnoví agentů ověřování certifikátů. Azure AD se aktivuje prodloužení. Prodloužení se neřídí agentů ověřování sami.
+Aby bylo zajištěno, že předávací ověřování zůstane provozně zabezpečené, služba Azure AD pravidelně obnovuje certifikáty agentů ověřování. Služba Azure AD vyvolá obnovení. Obnovení se neřídí samotnými ověřovacími agenty.
 
 ![Provozní zabezpečení](./media/how-to-connect-pta-security-deep-dive/pta4.png)
 
-Obnovit ověřovací Agent vztah důvěryhodnosti s Azure AD:
+Postup obnovení vztahu důvěryhodnosti ověřovacího agenta s Azure AD:
 
-1. Ověřovací Agent příkaz ping pravidelně Azure AD každých pár hodin ke kontrole, pokud je čas na obnovení certifikátu. Certifikát se obnovuje 30 dnů před vypršením jeho platnosti.
-    - Tato kontrola se provádí přes vzájemně ověřené kanálu protokolu HTTPS a používá stejný certifikát, který byl vydán během registrace.
-2. Pokud službu označuje, že je čas k obnovení, ověřovací Agent vygeneruje nový pár klíčů: veřejný klíč a soukromý klíč.
-    - Tyto klíče jsou vygenerované pomocí standardního šifrování RSA 2048 bitů.
-    - Privátní klíč se nikdy neopustí na místním serveru.
-3. Ověřovací Agent pak požádá "obnovení certifikátu" do služby Azure AD prostřednictvím protokolu HTTPS, s následujícími součástmi zahrnutý v požadavku:
-    - Existující certifikát, který je načten z CERT_SYSTEM_STORE_LOCAL_MACHINE umístění v úložišti certifikátů Windows. Zahrnuté v tomto postupu, neexistuje žádný globální správce, takže neexistuje žádný token přístupu potřeby jménem globálního správce.
+1. Ověřovací agent pravidelně odesílá výzvu k otestování Azure AD každých pár hodin, aby zkontroloval, jestli je čas obnovit svůj certifikát. Certifikát se obnoví 30 dní před jeho vypršením platnosti.
+    - Tato kontrolu se provádí prostřednictvím vzájemně ověřeného kanálu HTTPS a používá stejný certifikát, který byl vydán během registrace.
+2. Pokud služba indikuje, že je čas na obnovení, vygeneruje ověřovací agent nový pár klíčů: veřejný klíč a privátní klíč.
+    - Tyto klíče jsou generovány prostřednictvím standardního šifrování RSA 2048.
+    - Privátní klíč nikdy neopouští místní server.
+3. Agent ověřování pak provede požadavek na obnovení certifikátu do služby Azure AD prostřednictvím protokolu HTTPS s následujícími součástmi, které jsou součástí žádosti:
+    - Existující certifikát, který byl načten z umístění CERT_SYSTEM_STORE_LOCAL_MACHINE v úložišti certifikátů Windows. V tomto postupu není žádný globální správce, a proto neexistuje žádný přístupový token, který je potřeba pro uživatele globálního správce.
     - Veřejný klíč vygenerovaný v kroku 2.
-    - Žádost o podepsání certifikátu (CSR nebo žádost o certifikát). Tento požadavek platí i pro nový certifikát digitálních identit s Azure AD jako jeho certifikační autority.
-4. Azure AD ověří existujícího certifikátu v žádost o obnovení certifikátu. Poté ověří, že žádost pochází z ověřování agenta registrován ve svém tenantovi.
-5. Pokud je stále platný stávající certifikát, Azure AD pak zaregistruje nový certifikát digitální identity a vydá nový certifikát zpět do agenta ověřování. 
-6. Pokud existujícího certifikátu vypršela platnost, Azure AD z vašeho tenanta seznamu registrovaných agentů ověřování odstraní ověřovacího agenta. Pak musí ručně nainstalovat a zaregistrovat nové ověřovací Agent globální správce.
-    - Azure AD kořenovou certifikační Autoritu použijte k podepsání certifikátu.
-    - Nastavte předmět certifikátu (rozlišující název nebo název domény) na ID vašeho tenanta, identifikátor GUID, který jednoznačně identifikuje vašeho tenanta. Název domény obory certifikát, který chcete pouze vašeho tenanta.
-6. Nový veřejný klíč ověřovacího agenta služby Azure AD uloží ve službě Azure SQL database, která pouze má přístup k. Také zruší platnost starých veřejný klíč přidružený k ověřování agenta.
-7. Nový certifikát (vydané v kroku 5) jsou pak uloženy na serveru do úložiště certifikátů Windows (konkrétně v [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) umístění).
-    - Protože postup obnovení vztah důvěryhodnosti se stane neinteraktivně (bez přítomnosti globální správce), ověřovací Agent již nemá přístup k aktualizaci existujícího certifikátu v CERT_SYSTEM_STORE_LOCAL_MACHINE umístění. 
+    - Žádost o podepsání certifikátu (CSR nebo žádost o certifikát). Tento požadavek se vztahuje na nový certifikát digitální identity s Azure AD jako certifikační autorita.
+4. Azure AD ověří existující certifikát v žádosti o obnovení certifikátu. Potom ověří, že požadavek pochází z ověřovacího agenta zaregistrovaného ve vašem tenantovi.
+5. Pokud je stávající certifikát stále platný, služba Azure AD pak podepíše nový certifikát digitální identity a vydá nový certifikát agentovi ověřování. 
+6. Pokud platnost existujícího certifikátu vyprší, Azure AD odstraní agenta ověřování ze seznamu registrovaných ověřovacích agentů vašeho tenanta. Globální správce pak musí ručně nainstalovat a zaregistrovat nového ověřovacího agenta.
+    - K podepsání certifikátu použijte kořenovou certifikační autoritu služby Azure AD.
+    - Nastavte předmět certifikátu (rozlišující název nebo DN) na ID tenanta, identifikátor GUID, který jedinečně identifikuje vašeho tenanta. Obory názvu jsou jenom certifikáty pro vašeho tenanta.
+6. Azure AD ukládá nový veřejný klíč ověřovacího agenta do Azure SQL Database, ke kterému má přístup jenom přístup. Také zruší platnost starého veřejného klíče přidruženého k agentovi ověřování.
+7. Nový certifikát (vydaný v kroku 5) je pak uložený na serveru v úložišti certifikátů Windows (konkrétně v umístění [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) ).
+    - Vzhledem k tomu, že se postup obnovení vztahu důvěryhodnosti neinteraktivně (bez přítomnosti globálního správce), agent ověřování už nebude mít přístup k aktualizaci stávajícího certifikátu v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE. 
     
    > [!NOTE]
-   > Tento postup neodebere z umístění CERT_SYSTEM_STORE_LOCAL_MACHINE vlastní certifikát.
-8. Nový certifikát se používá k ověřování z tohoto bodu na. Každé následné obnovení certifikátu nahradí certifikát v CERT_SYSTEM_STORE_LOCAL_MACHINE umístění.
+   > Tento postup neodebere samotný certifikát z umístění CERT_SYSTEM_STORE_LOCAL_MACHINE.
+8. Nový certifikát se používá k ověření od tohoto okamžiku. Každé následné obnovení certifikátu nahrazuje certifikát v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE.
 
-## <a name="auto-update-of-the-authentication-agents"></a>Automatické aktualizace agentů ověřování
+## <a name="auto-update-of-the-authentication-agents"></a>Automatické aktualizace ověřovacích agentů
 
-Aktualizátor aplikaci automaticky aktualizuje ověřovací Agent po vydání nové verze (s opravy chyb a vylepšení výkonu). Aplikace Aktualizátoru nezpracovává veškerých žádostí o ověření hesla pro vašeho tenanta.
+Aplikace aktualizace automaticky aktualizuje ověřovacího agenta při vydání nové verze (s opravami chyb nebo vylepšení výkonu). Aplikace aktualizačního programu nezpracovává žádné žádosti o ověření hesla pro vašeho tenanta.
 
-Azure AD je hostitelem nová verze softwaru podepsané **balíček Instalační služby systému Windows (MSI)** . Soubor MSI je podepsaná pomocí [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmus digest. 
+Azure AD hostuje novou verzi softwaru jako podepsaný **balíček Instalační služba systému Windows (MSI)** . Soubor MSI je podepsaný pomocí [technologie Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmem Digest. 
 
 ![Automatické aktualizace](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
-K automatické aktualizaci ověřovací Agent:
+Automatické aktualizace ověřovacího agenta:
 
-1. Příkazy ping aplikace Aktualizátoru Azure AD každou hodinu kvůli kontrole, jestli je k dispozici nová verze ověřovacího agenta služby. 
-    - Tato kontrola se provádí přes kanál protokolu HTTPS vzájemně ověřené pomocí stejného certifikátu, který byl vydán během registrace. Ověřovací Agent a Aktualizátoru sdílet certifikát uložený na serveru.
-2. Pokud je dostupná nová verze, Azure AD vrátí zpět do Aktualizátoru podepsaný soubor MSI.
-3. Aktualizátoru ověřuje, že soubor MSI je podepsán společností Microsoft.
-4. Spuštění aktualizační soubor MSI. Tato akce zahrnuje následující kroky:
+1. Aplikace aktualizace otestuje každou hodinu službu Azure AD a zkontroluje, jestli je k dispozici nová verze ověřovacího agenta. 
+    - Tato kontrolu se provádí prostřednictvím vzájemně ověřeného kanálu HTTPS pomocí stejného certifikátu, který byl vydán během registrace. Agent ověřování a aktualizační program sdílí certifikát uložený na serveru.
+2. Pokud je k dispozici nová verze, Azure AD vrátí podepsané MSI zpátky do aktualizace.
+3. Aktualizace ověří, že je soubor MSI podepsaný Microsoftem.
+4. Nástroj pro aktualizace spustí soubor MSI. Tato akce zahrnuje následující kroky:
 
    > [!NOTE]
-   > Se systémem Aktualizátoru [místní systém](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) oprávnění.
+   > Aktualizační program se spouští s oprávněními [místního systému](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
-    - Zastaví službu ověřování agenta
-    - Nainstaluje novou verzi ověřovacího agenta na server
-    - Restartuje službu ověřování agenta
+    - Zastaví službu Agent ověřování.
+    - Nainstaluje novou verzi ověřovacího agenta na server.
+    - Restartuje službu ověřovacího agenta.
 
 >[!NOTE]
->Pokud máte více agentů ověřování zaregistrovaný ve svém tenantovi Azure AD nepodporuje obnovit své certifikáty ani aktualizovat ve stejnou dobu. Místo toho Azure AD se proto postupně k zajištění vysoké dostupnosti žádostí o přihlášení.
+>Pokud máte ve svém tenantovi zaregistrovaných víc agentů ověřování, Azure AD certifikáty neobnovuje ani je neaktualizuje ve stejnou dobu. Místo toho služba Azure AD naplní jednu po druhé, aby zajistila vysokou dostupnost žádostí o přihlášení.
 >
 
 
-## <a name="next-steps"></a>Další postup
-- [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
-- [Rychlý start](how-to-connect-pta-quick-start.md): Uvedení do provozu na předávacího ověřování Azure AD.
-- [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoptadpdownload) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
-- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Nakonfigurujte schopnosti inteligentním uzamčením ve svém tenantovi k ochraně uživatelské účty.
-- [Jak to funguje](how-to-connect-pta-how-it-works.md): Naučte se základy toho, jak funguje předávacího ověřování Azure AD.
-- [Nejčastější dotazy k](how-to-connect-pta-faq.md): Najděte odpovědi na nejčastější dotazy.
-- [Řešení potíží s](tshoot-connect-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.
-- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Další informace o této doplňkové funkce.
+## <a name="next-steps"></a>Další kroky
+- [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, které scénáře jsou podporovány a které nejsou.
+- [Rychlý Start](how-to-connect-pta-quick-start.md): zprovoznění při předávacím ověřování Azure AD.
+- [Migrace z AD FS na předávací ověřování](https://aka.ms/adfstoptadpdownload) – podrobný průvodce migrací z AD FS (nebo jiných federačních technologií) na předávací ověřování.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): umožňuje nakonfigurovat funkci inteligentního uzamknutí pro vašeho tenanta, aby se chránily uživatelské účty.
+- [Jak to funguje](how-to-connect-pta-how-it-works.md): Naučte se základy fungování předávacího ověřování Azure AD.
+- [Nejčastější dotazy](how-to-connect-pta-faq.md): Přečtěte si odpovědi na nejčastější dotazy.
+- [Řešení potíží](tshoot-connect-pass-through-authentication.md): Naučte se řešit běžné problémy s funkcí předávacího ověřování.
+- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Přečtěte si další informace o této doplňkové funkci.

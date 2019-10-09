@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07612d325929468e3919b543d9b4ae0ad268036a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938471"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176734"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -44,7 +44,7 @@ V tomto článku:
 
 ## <a name="check-whats-supported"></a>Zjistit, co je podporováno
 
-- Pro virtuální počítače VMware Azure Migrate migrace serveru podporuje [migraci bez agentů nebo na základě agenta](/server-migrate-overview.md). Ověřte požadavky na virtuální počítače VMware a podporu pro migrace bez [agentů](migrate-support-matrix-vmware.md#migration---limitations) a [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
+- Pro virtuální počítače VMware Azure Migrate migrace serveru podporuje [migraci bez agentů nebo na základě agenta](server-migrate-overview.md). Ověřte požadavky na virtuální počítače VMware a podporu pro migrace bez [agentů](migrate-support-matrix-vmware.md#migration---limitations) a [na základě agentů](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
 - Ověřte [požadavky na migraci a podporu](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) pro virtuální počítače Hyper-V.
 - Ověřte [požadavky na migraci a podporu](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) místních fyzických počítačů nebo jiných virtualizovaných serverů. Tyto požadavky jsou podobné požadavkům na virtuální počítače VMware.
 

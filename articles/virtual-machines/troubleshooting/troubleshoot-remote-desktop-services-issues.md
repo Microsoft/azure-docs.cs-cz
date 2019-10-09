@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087099"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168956"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Služba Vzdálená plocha se nespouští na virtuálním počítači Azure.
 
 Tento článek popisuje, jak řešit problémy při připojení k virtuálnímu počítači Azure a službě Vzdálená plocha, nebo TermService, nespouští se nebo nespustí.
 
 > [!NOTE]  
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení, nikoli pro model nasazení Classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a Classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení, nikoli pro model nasazení Classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -34,18 +34,18 @@ Při pokusu o připojení k virtuálnímu počítači se setkáte s následujíc
 
     ![Snímek obrazovky se stavem virtuálního počítače](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
 
-- Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že Vzdálená plocha, TermService, nespouští se nebo ji nespustí. Následující protokol je příkladem:
+- Můžete vzdáleně zobrazit protokoly událostí na virtuálním počítači pomocí Prohlížeč událostí. Uvidíte, že Vzdálená plocha, TermService, nespouští se nebo ji nespustí. Následující protokol je příkladem:
 
-    **Název protokolu**:      Systém </br>
-    **Zdroj**:        Správce řízení služeb </br>
-    **Datum**:          12/16/2017 11:19:36 DOP.</br>
-    **ID události**:      7022</br>
-    **Kategorie úlohy**: Žádné</br>
-    **Úroveň**:         Chyba</br>
-    **Klíčová slova**:      Classic</br>
-    **Uživatel**:          Není k dispozici</br>
+    **Název protokolu**: systém </br>
+    **Zdroj**: Správce řízení služeb </br>
+    **Datum**: 12/16/2017 11:19:36 dop.</br>
+    **ID události**: 7022</br>
+    **Kategorie úkolu**: žádné</br>
+    **Úroveň**: Chyba</br>
+    **Klíčová slova**: klasický</br>
+    **Uživatel**: není k dispozici</br>
     **Počítač**: VM.contoso.com</br>
-    **Popis**: Služba Vzdálená plocha přestala při spuštění reagovat. 
+    **Popis**: Služba Vzdálená plocha při spuštění přestala reagovat. 
 
     Pomocí funkce Konzola sériového přístupu můžete také vyhledat tyto chyby spuštěním následujícího dotazu: 
 
@@ -98,22 +98,22 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
     |  Chyba |  Návrh |
     |---|---|
-    |5 - PŘÍSTUP BYL ODEPŘEN |V tématu [Služba TermService je zastavena z důvodu chyby odepření přístupu](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Viz [Služba TermService je zakázaná](#termservice-service-is-disabled).  |  
-    |1058 - ERROR_SERVICE_DISABLED  |Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs).  |
-    |. 1059 - ERROR_CIRCULAR_DEPENDENCY |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém.|
-    |1067 - ERROR_PROCESS_ABORTED  |Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs).  |
-    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |Neúspěšné přihlášení najdete v tématu [Služba TermService](#termservice-service-fails-because-of-logon-failure) |
-    |1070 - ERROR_SERVICE_START_HANG   | Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs). |
-    |1077. - ERROR_SERVICE_NEVER_STARTED   | Viz [Služba TermService je zakázaná](#termservice-service-is-disabled).  |
-    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém. |
+    |5 – PŘÍSTUP BYL ODEPŘEN. |V tématu [Služba TermService je zastavena z důvodu chyby odepření přístupu](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 – ERROR_SERVICE_REQUEST_TIMEOUT  |Viz [Služba TermService je zakázaná](#termservice-service-is-disabled).  |  
+    |1058 – ERROR_SERVICE_DISABLED  |Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs).  |
+    |1059 – ERROR_CIRCULAR_DEPENDENCY |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém.|
+    |1067 – ERROR_PROCESS_ABORTED  |Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs).  |
+    |1068 – ERROR_SERVICE_DEPENDENCY_FAIL|[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém.|
+    |1069 – ERROR_SERVICE_LOGON_FAILED  |Neúspěšné přihlášení najdete v tématu [Služba TermService](#termservice-service-fails-because-of-logon-failure) |
+    |1070 – ERROR_SERVICE_START_HANG   | Přečtěte si téma [zhroucení nebo zablokování služby TermService](#termservice-service-crashes-or-hangs). |
+    |1077 – ERROR_SERVICE_NEVER_STARTED   | Viz [Služba TermService je zakázaná](#termservice-service-is-disabled).  |
+    |1079 – ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém. |
     |1753   |[Obraťte](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se na podporu, abyste mohli rychle vyřešit problém.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Služba TermService se zastavila kvůli problému s odepřením přístupu.
 
-1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
-2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
+1. Připojte se ke [konzole sériového](serial-console-windows.md) prostředí a otevřete instanci prostředí PowerShell.
+2. Spusťte následující skript a Stáhněte si Nástroj Process monitor:
 
    ```
    remove-module psreadline  
@@ -123,7 +123,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Začít **procmon** trasování:
+3. Nyní spusťte trasování **procmon** :
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -135,29 +135,29 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    sc start TermService 
    ```
 
-   Pokud se nezdaří, ukončete monitorování procesu trasování:
+   Pokud dojde k chybě, ukončete trasování sledování procesu:
 
    ```   
    procmon /Terminate 
    ```
 
-5. Shromáždění souboru **c:\temp\ProcMonTrace.PML**:
+5. Shromáždění souboru **c:\temp\ProcMonTrace.PML**:
 
-    1. [Připojení datového disku k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
+    1. [Připojte datový disk k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
 ).
-    2. Pomocí konzoly sériového portu můžete zkopírovat soubor na nový disk. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu F je ovladač písmeno přídavný datový disk.
+    2. Pomocí sériové konzoly můžete soubor zkopírovat na novou jednotku. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu je F písmeno ovladače připojeného datového disku.
     3. Odpojte datovou jednotku a připojte ji k pracovnímu virtuálnímu počítači, na kterém je nainstalovaný ubstakke monitor procesu.
 
-6. Otevřete **ProcMonTrace. PML** pomocí procesu sledovat pracovní virtuální počítač. Potom vyfiltrovat **výsledkem je přístup ODEPŘEN**, jak je znázorněno na následujícím snímku obrazovky:
+6. Otevřete **ProcMonTrace. PML** pomocí procesu sledovat pracovní virtuální počítač. Pak je filtr podle **výsledku odepřen přístup**, jak je znázorněno na následujícím snímku obrazovky:
 
     ![Filtrovat podle výsledku v monitorování procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
-6. Opravte klíče registru, složky nebo soubory, které jsou na výstupu. Tento problém je obvykle nastává, když přihlašovací účet, který se používá ve službě nemá oprávnění seznamu ACL pro přístup k těmto objektům. Pokud chcete zjistit správné oprávnění seznamu ACL pro přihlašovací účet, můžete se podívat na zdravý virtuální počítač. 
+6. Opravte klíče registru, složky nebo soubory, které jsou ve výstupu. K tomuto problému obvykle dochází, když přihlašovací účet, který se používá ve službě, nemá oprávnění seznamu ACL pro přístup k těmto objektům. Pokud chcete zjistit správné oprávnění seznamu ACL pro přihlašovací účet, můžete se podívat na zdravý virtuální počítač. 
 
 #### <a name="termservice-service-is-disabled"></a>Služba TermService je zakázaná.
 
-1. Služba obnovíte jeho výchozí hodnota při spuštění:
+1. Obnovte službu na výchozí spouštěcí hodnotu:
 
    ```
    sc config TermService start= demand 
@@ -191,7 +191,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 1. Pokud je stav služby zablokovaný při **spuštění** nebo **zastavení**, zkuste službu zastavit: 
 
         sc stop TermService
-2. Izolace službu na kontejneru "svchost":
+2. Izolujte službu na svém vlastním kontejneru Svchost:
 
         sc config TermService type= own
 3. Spusťte službu:
@@ -199,13 +199,13 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
         sc start TermService
 4. Pokud se služba stále nedaří spustit, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
+### <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
-2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3. Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači. 
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení. Ujistěte se, že připojený disk je označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem.
+3. Otevřete instanci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**). Pak spusťte následující skript. Předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,8 +219,8 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
+4. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontakty na podporu
 
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli problém vyřešit.

@@ -1,6 +1,6 @@
 ---
-title: Koncepty zařízení zřizování zařízení v Azure | Dokumentace Microsoftu
-description: Popisuje koncepty specifické pro zařízení pomocí služby Azure Device Provisioning a centrem IoT zřizování zařízení
+title: Koncepty zařízení v Azure Device Provisioning | Microsoft Docs
+description: Popisuje koncepty zřizování zařízení, které jsou specifické pro zařízení se službou Device Provisioning a IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745974"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173388"
 ---
-# <a name="iot-hub-device-provisioning-service-device-concepts"></a>Koncepty zařízení IoT Hub Device Provisioning Service
+# <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service koncepty zařízení
 
-IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, který použijete ke konfiguraci plně automatizované zřizování zařízení pro určité Centrum IoT. Se službou Device Provisioning můžete bezpečně a škálovatelně zřizovat miliony zařízení.
+IoT Hub Device Provisioning Service je pomocná služba pro IoT Hub, která slouží ke konfiguraci zařízení s nulovým dotykem pro zadané centrum IoT. Služba Device Provisioning umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
 
-Tento článek obsahuje přehled *zařízení* součástí koncepty zřizování zařízení. Tento článek je relevantní osobám, které jsou součástí [výrobní krok](about-iot-dps.md#manufacturing-step) získání zařízení připravené na nasazení.
+Tento článek obsahuje přehled konceptů *zařízení* , které se týkají zřizování zařízení. Tento článek je nejdůležitější pro osoby zapojení do [výrobního kroku](about-iot-dps.md#manufacturing-step) , kdy je zařízení připravené k nasazení.
 
 ## <a name="attestation-mechanism"></a>Mechanismus ověřování
 
-Mechanismus ověřování použije právě tato metoda za potvrzení identity zařízení. Mechanismus ověřování se taky hodí pro seznamu registrací, který informuje službu zřizování, jakou metodu ověření pro použití s daným zařízením.
+Mechanismus ověřování je metoda, která se používá k potvrzení identity zařízení. Mechanismus ověřování je také relevantní pro seznam registrací, který oznamuje službě zřizování, kterou metodu ověřování použít s daným zařízením.
 
 > [!NOTE]
-> IoT Hub "schéma ověřování" používá pro podobný koncept dané služby.
+> IoT Hub používá schéma ověřování pro podobný koncept v dané službě.
 
-Služby Device Provisioning podporuje následující formy ověření identity:
-* **Certifikáty X.509** založen na standardní tok ověřování certifikátu X.509.
-* **Trusted Platform Module (TPM)** podle hodnoty nonce výzvu, pomocí čipu TPM standard pro klíče zobrazíte podepsaný token sdíleného přístupového podpisu (SAS). Tato akce nevyžaduje fyzický čip TPM na zařízení, ale služba očekává, že ověřit pomocí ověřovacího klíče za [specifikace TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symetrický klíč** podle sdíleného přístupového podpisu (SAS) [tokeny zabezpečení](../iot-hub/iot-hub-devguide-security.md#security-tokens), která zahrnuje hash podpisu a vložené vypršení platnosti. Další informace najdete v tématu [symetrického klíče ověření](concepts-symmetric-key-attestation.md).
+Služba Device Provisioning podporuje následující formy ověření identity:
+* **Certifikáty x. 509** založené na standardním toku ověřování certifikátu x. 509.
+* **Trusted Platform Module (TPM)** na základě výzvy s identifikátorem nonce, který používá standard TPM pro klíče k prezentaci podepsaného tokenu sdíleného přístupového podpisu (SAS). To nevyžaduje fyzického čipu TPM v zařízení, ale služba očekává ověření pomocí ověřovacího klíče podle [specifikace čipu TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symetrický klíč** založený na [tokenech zabezpečení](../iot-hub/iot-hub-devguide-security.md#security-tokens)sdíleného přístupového podpisu (SAS), které zahrnují signaturu s hodnotou hash a vložené vypršení platnosti. Další informace najdete v tématu [ověření identity symetrického klíče](concepts-symmetric-key-attestation.md).
 
 ## <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
 
-Modul hardwarového zabezpečení nebo HSM, se používá pro zabezpečené hardwarové úložiště tajných kódů zařízení a je nejbezpečnější způsob úložiště tajných kódů. Certifikáty X.509 a tokeny SAS, mohou být uloženy v modulu HSM. Moduly hardwarového zabezpečení je možné s oběma mechanismů ověřování zřizovací služba podporuje.
+Modul hardwarového zabezpečení (HSM) se používá k zabezpečenému hardwarovému úložišti tajných kódů zařízení a jedná se o nejbezpečnější formu tajného úložiště. Certifikáty X. 509 i tokeny SAS můžou být uložené v modulu HSM. HSM je možné použít s mechanismem ověřování, který služba zřizování podporuje.
 
 > [!TIP]
-> Důrazně doporučujeme pomocí modulu hardwarového zabezpečení zařízení pro bezpečné ukládání tajných klíčů v zařízeních.
+> Důrazně doporučujeme používat modul HARDWAROVÉho zabezpečení a zařízení k bezpečnému ukládání tajných kódů do vašich zařízení.
 
-Tajné kódy zařízení můžou být uložené taky v softwaru (paměť), ale je méně bezpečné forma úložiště než modulu hardwarového zabezpečení.
+Tajné kódy zařízení je také možné ukládat v softwaru (paměti), ale jedná se o méně bezpečnou podobu úložiště než modul hardwarového zabezpečení (HSM).
 
 ## <a name="registration-id"></a>ID registrace
 
-ID registrace slouží k jednoznačné identifikaci zařízení ve službě Device Provisioning. ID zařízení musí být jedinečný ve zřizovací službě [rozsah ID](#id-scope). Každé zařízení musí mít ID registrace ID registrace je alfanumerický, malá písmena a může obsahovat pomlčky.
+ID registrace slouží k jednoznačné identifikaci zařízení ve službě Device Provisioning. ID registrace musí být v [oboru ID](#id-scope)služby zřizování jedinečné. Každé zařízení musí mít ID registrace. ID registrace je alfanumerické a malými písmeny a může obsahovat spojovníky.
 
-* V případě čipu TPM ID registrace poskytuje samotném čipu TPM.
-* V případě ověření založené na X.509 se ID registrace poskytuje jako název subjektu certifikátu.
+* V případě čipu TPM je ID registrace zajištěno samotným čipem TPM.
+* V případě ověřování na základě X. 509 se ID registrace poskytuje jako název subjektu certifikátu.
 
 ## <a name="device-id"></a>ID zařízení
 
-ID zařízení je ID, jak se zobrazuje ve službě IoT Hub. ID požadované zařízení může být nastaven v položce registrace, ale není nutné nastavit. Pokud ID požadované zařízení určena v seznamu registrací, ID registrace se používá jako ID zařízení při registraci zařízení. Další informace o [ID ve službě IoT Hub zařízení](../iot-hub/iot-hub-devguide-identity-registry.md).
+ID zařízení je ID tak, jak se zobrazuje v IoT Hub. V položce registrace může být nastaveno požadované ID zařízení, není však nutné jej nastavit. Pokud v seznamu registrací není požadované ID zařízení, jako ID zařízení se při registraci zařízení použije ID registrace. Přečtěte si další informace o [ID zařízení v IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
 
-## <a name="id-scope"></a>Obor ID
+## <a name="id-scope"></a>Rozsah ID
 
-Rozsah ID je přiřazen do služby Device Provisioning Service, když je vytvořen uživatelem a slouží k jednoznačné identifikaci konkrétní službu zřizování, který zařízení k registraci prostřednictvím. Rozsah ID je generovaný službou a je neměnný, což zaručuje jedinečnost.
+Obor ID se přiřadí službě Device Provisioning, když ji vytvoří uživatel a používá se k jednoznačné identifikaci konkrétní služby zřizování, přes kterou se bude zařízení registrovat. Rozsah ID je vygenerován službou a je neměnný, což zaručuje jedinečnost.
 
 > [!NOTE]
-> Je důležité pro dlouho běžící operace nasazení a fúzí a akvizic scénáře jedinečnost.
+> Jedinečnost je důležitá pro dlouhotrvající operace nasazení a scénáře fúze a akvizice.

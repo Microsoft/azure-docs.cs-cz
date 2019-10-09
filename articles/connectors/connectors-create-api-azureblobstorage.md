@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703262"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176072"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytváření a správa objektů BLOB v úložišti objektů BLOB v Azure pomocí Azure Logic Apps
 
@@ -24,10 +24,11 @@ V tomto článku se dozvíte, jak můžete v rámci aplikace logiky pomocí kone
 
 Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. který funguje jako Trigger vaší aplikace logiky. Když k této události dojde, můžete aplikaci logiky aktualizovat nějaký soubor v kontejneru úložiště objektů blob, což je akce v aplikaci logiky.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Logic Apps však mají přístup k účtům Azure Storage, které existují v jiné oblasti, protože pro komunikaci mezi oblastmi se používá veřejná IP adresa. Stačí se ujistit, že povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound). Nebo můžete použít pokročilejší možnosti zde:
->
+> Aplikace logiky nemají přímý přístup k účtům Azure Storage, které mají [pravidla brány firewall](../storage/common/storage-network-security.md) a existují ve stejné oblasti. Pokud ale povolíte [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound), můžou Logic Apps získat přístup k účtům úložiště v jiné oblasti kromě případů, kdy použijete konektor Azure Table Storage nebo Azure Queue Storage Connector. Pro přístup k Table Storage nebo Queue Storage můžete i nadále používat Trigger a akce HTTP. 
+> V opačném případě můžete použít pokročilejší možnosti:
+> 
 > * Vytvořte [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), které se může připojit k prostředkům ve službě Azure Virtual Network.
 >
 > * Pokud pro API Management použijete vyhrazenou vrstvu, můžete rozhraní API úložiště před tím, že použijete API Management a povolíte jeho IP adresy prostřednictvím brány firewall. V podstatě přidejte virtuální síť Azure, kterou používá API Management, do nastavení brány firewall účtu úložiště. Pak můžete použít akci API Management nebo akci protokolu HTTP pro volání rozhraní API Azure Storage. Pokud však zvolíte tuto možnost, musíte proces ověřování zpracovat sami. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).

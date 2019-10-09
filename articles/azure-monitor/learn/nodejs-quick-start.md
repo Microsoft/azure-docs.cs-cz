@@ -7,21 +7,21 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.service: application-insights
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 1db26002167f4b7c5b4fc19699ddb021de8ac23d
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703012"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177683"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: spuštění sledování webové aplikace v Node. js pomocí Azure Application Insights
 
-Pomocí Azure Application Insights můžete snadno monitorovat webovou aplikaci, aby byla dostupná, výkon a využití. V aplikaci můžete také rychle identifikovat a diagnostikovat chyby bez čekání na jejich nahlášení uživatele. V rámci verze 0,20 SDK můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
-
 Tento rychlý Start vás provede přidáním verze 0,22 Application Insights SDK pro Node. js do existující webové aplikace Node. js.
+
+Pomocí Azure Application Insights můžete snadno monitorovat webovou aplikaci, aby byla dostupná, výkon a využití. V aplikaci můžete také rychle identifikovat a diagnostikovat chyby bez čekání na jejich nahlášení uživatele. V rámci verze 0,20 SDK můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
 ## <a name="prerequisites"></a>Požadavky
 

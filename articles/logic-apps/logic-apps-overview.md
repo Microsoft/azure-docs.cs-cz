@@ -1,6 +1,6 @@
 ---
-title: Integrace dat a automatizace pracovních postupů – Azure Logic Apps
-description: Vytvářejte řešení pro integraci dat a automatizaci úloh, pracovních postupů a procesů napříč podnikem nebo organizací pro scénáře integrace systému, integrace podnikových aplikací (EAI) a orchestrace.
+title: Automatizace úloh pro podnikovou integraci – Azure Logic Apps
+description: Naučte se automatizovat pracovní postupy, které integrují aplikace, data, služby a systémy s minimálním kódem pro podnikovou integraci pomocí Azure Logic Apps.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: fdcf3d7bc0111530307a4bf30a437ab70c71bf83
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981749"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178029"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Přehled – co je Azure Logic Apps?
 

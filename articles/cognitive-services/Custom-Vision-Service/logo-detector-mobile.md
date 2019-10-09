@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Použití vlastního detektoru loga k rozpoznávání služeb Azure – Custom Vision'
+title: 'Kurz: použití vlastního detektoru loga k rozpoznávání služeb Azure – Custom Vision'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu provedete ukázkovou aplikaci, která jako součást scénáře detekce loga používá službu Azure Custom Vision. Přečtěte si, jak se používá Custom Vision s dalšími komponentami k zajištění ucelené aplikace.
+description: V tomto kurzu provedete ukázkovou aplikaci, která používá Custom Vision jako součást scénáře detekce loga. Přečtěte si, jak se používá Custom Vision s dalšími komponentami k zajištění ucelené aplikace.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261975"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177796"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: Rozpoznání loga služby Azure v obrázcích na kameře
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
-V tomto kurzu se seznámíte s ukázkovou aplikací, která používá Azure Custom Vision jako součást většího scénáře. Aplikace pro vizuální zřizování AI, aplikace Xamarin. Forms pro mobilní platformy, analyzuje obrázky kamery s logy služby Azure a pak nasadí skutečné služby na účet Azure uživatele. V tomto článku se dozvíte, jak používá Custom Vision ve spolupráci s dalšími komponentami k zajištění užitečné ucelené aplikace. Můžete spustit celý scénář aplikace pro sebe nebo můžete dokončit pouze Custom Vision část nastavení a prozkoumat, jak ji aplikace používá.
+V tomto kurzu se seznámíte s ukázkovou aplikací, která používá Custom Vision jako součást většího scénáře. Aplikace pro vizuální zřizování AI, aplikace Xamarin. Forms pro mobilní platformy, analyzuje obrázky kamery s logy služby Azure a pak nasadí skutečné služby na účet Azure uživatele. V tomto článku se dozvíte, jak používá Custom Vision ve spolupráci s dalšími komponentami k zajištění užitečné ucelené aplikace. Můžete spustit celý scénář aplikace pro sebe nebo můžete dokončit pouze Custom Vision část nastavení a prozkoumat, jak ji aplikace používá.
 
 V tomto kurzu se dozvíte, jak:
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
@@ -97,7 +97,7 @@ Přihlaste se k odběru služby Počítačové zpracování obrazu, abyste získ
 
 ![Služba Počítačové zpracování obrazu v Azure Portal s vybranou nabídkou pro rychlý Start. Odkaz na klíče je popsaný, jak je adresa URL koncového bodu rozhraní API.](media/azure-logo-tutorial/comvis-keys.png)
 
-Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `ComputerVisionEndpoint` proměnné a `ComputerVisionKey` pomocí správných hodnot.
+Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte proměnné `ComputerVisionEndpoint` a `ComputerVisionKey` správnými hodnotami.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -131,11 +131,11 @@ Po úspěšném dokončení by se měl zobrazit následující výstup JSON, vč
 }
 ```
 
-Poznamenejte `clientId` si hodnoty a `tenantId` . Přidejte je do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* .
+Poznamenejte si hodnoty `clientId` a `tenantId`. Přidejte je do příslušných polí v souboru *Source\VisualProvision\AppSettings.cs* .
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 V tuto chvíli jste přidali přístup k aplikaci:
 
@@ -153,7 +153,7 @@ Pomocí těchto kroků spusťte aplikaci:
 1. Na první obrazovce zadejte ID klienta instančního objektu, ID tenanta a heslo. Vyberte tlačítko pro **přihlášení** .
 
     > [!NOTE]
-    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , `Button` Najděte element s označením **Login**, odeberte následující řádek a pak znovu spusťte aplikaci.
+    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , najděte element `Button` s popiskem **přihlášení**, odeberte následující řádek a pak znovu spusťte aplikaci.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```

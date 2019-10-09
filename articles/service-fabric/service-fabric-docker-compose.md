@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric Docker Compose Deployment Preview
-description: Azure Service Fabric přijímá formát Docker Compose, který usnadňuje orchestraci stávajících kontejnerů pomocí Service Fabric. Tato podpora je aktuálně ve verzi preview.
+description: Azure Service Fabric přijímá formát Docker Compose, který usnadňuje orchestraci stávajících kontejnerů pomocí Service Fabric. Tato podpora je aktuálně ve verzi Preview.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: de02c9a8580527ab708418aa266f1b56411fb95b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599575"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168838"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení Docker Compose ve službě Azure Service Fabric (Preview)
 
-Docker používá soubor [Docker-Compose. yml](https://docs.docker.com/compose) pro definování aplikací využívajících více kontejnerů. Abychom zákazníkům, kteří znají Docker, usnadnili orchestraci stávajících aplikací kontejneru v Azure Service Fabric, zahrnuli jsme podporu Preview pro nasazení Docker Compose nativně v této platformě. Service Fabric může přijmout verzi 3 a pozdější `docker-compose.yml` soubory. 
+Docker používá soubor [Docker-Compose. yml](https://docs.docker.com/compose) pro definování aplikací využívajících více kontejnerů. Abychom zákazníkům, kteří znají Docker, usnadnili orchestraci stávajících aplikací kontejneru v Azure Service Fabric, zahrnuli jsme podporu Preview pro nasazení Docker Compose nativně v této platformě. Service Fabric může přijmout verzi 3 a novější z `docker-compose.yml` souborů. 
 
 Vzhledem k tomu, že je tato podpora ve verzi Preview, je podporovaná jenom podmnožina direktiv pro vytváření. Například upgrady aplikací nejsou podporovány. Aplikace ale můžete místo upgradu kdykoli odebrat a nasadit.
 
@@ -35,10 +35,10 @@ Chcete-li použít tuto verzi Preview, vytvořte cluster s verzí 5,7 nebo vyš�
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Nasazení souboru Docker Compose v Service Fabric
 
-Následující příkazy vytvoří aplikaci Service Fabric (s názvem `fabric:/TestContainerApp`), kterou můžete monitorovat a spravovat stejně jako jakoukoli jinou aplikaci Service Fabric. Pro dotazy na stav můžete použít zadaný název aplikace.
+Následující příkazy vytvoří aplikaci Service Fabric (s názvem `fabric:/TestContainerApp`), kterou můžete monitorovat a spravovat stejně jako jakoukoli jinou Service Fabric aplikaci. Pro dotazy na stav můžete použít zadaný název aplikace.
 Service Fabric rozpoznává "Deployment" jako identifikátor nasazení vytváření.
 
-### <a name="use-powershell"></a>Použití prostředí PowerShell
+### <a name="use-powershell"></a>Použití PowerShellu
 
 Spuštěním následujícího příkazu v PowerShellu vytvořte Service Fabric vytvoření nasazení ze souboru Docker-Compose. yml:
 
@@ -46,7 +46,7 @@ Spuštěním následujícího příkazu v PowerShellu vytvořte Service Fabric v
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName`a `RegistryPassword` Podívejte se na uživatelské jméno a heslo registru kontejneru. Po dokončení nasazení můžete zjistit jeho stav pomocí následujícího příkazu:
+`RegistryUserName` a `RegistryPassword` odkazují na uživatelské jméno a heslo registru kontejneru. Po dokončení nasazení můžete zjistit jeho stav pomocí následujícího příkazu:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
@@ -123,7 +123,7 @@ Tato verze Preview podporuje podmnožinu možností konfigurace z formátu sesta
 * Služby > nasazení > prostředků > omezení
     * -CPU – sdílené složky
     * – paměť
-    * -memory-swap
+    * – swap paměti
 * Služby > příkazy
 * Služby > prostředí
 * Služby > porty
@@ -148,7 +148,7 @@ V části porty zadejte protokol HTTP nebo https, který bude použit pro naslou
 
 Pokud název služby, který zadáte ve vytvořeném souboru, je plně kvalifikovaný název domény (tj. obsahuje tečku [.]), název DNS zaregistrovaný Service Fabric je `<ServiceName>` (včetně tečky). V takovém případě se každý segment cesty v názvu aplikace stane názvem domény v názvu DNS služby, přičemž první segment cesty se stane popiskem domény nejvyšší úrovně.
 
-Například pokud je `fabric:/SampleApp/MyComposeApp`zadaný název aplikace, `<ServiceName>.MyComposeApp.SampleApp` bude registrovaný název DNS.
+Pokud je například zadaný název aplikace `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` bude registrovaným názvem DNS.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Sestavování nasazení (definice instance) versus Service Fabric aplikačního modelu (definice typu)
 
@@ -161,7 +161,7 @@ Například zákazník A může mít vytvořenou aplikaci s typem 1,0 AppTypeA a
 
 I když tento model nabízí flexibilitu, plánujeme také podporu jednoduššího modelu nasazení založeného na instancích, kde jsou typy implicitní ze souboru manifestu. V tomto modelu každá aplikace získá svůj vlastní nezávislý manifest. Toto úsilí si vyhledáme přidáním podpory pro Docker-Compose. yml, což je formát nasazení na základě instance.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si článek [Service Fabric aplikační model](service-fabric-application-model.md)
 * [Začínáme s rozhraním příkazového řádku Service Fabric](service-fabric-cli.md)

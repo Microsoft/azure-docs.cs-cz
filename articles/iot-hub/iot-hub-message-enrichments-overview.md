@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873195"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177996"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub (Preview)
 
-*Rozšiřování zpráv* je schopnost IoT Hub k razítku zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
+*Rozšiřování zpráv* je schopnost IoT Hub k *razítku* zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
 
 ![Tok rozšíření zpráv](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -90,8 +90,8 @@ Tato funkce je dostupná ve verzi Preview a je dostupná ve všech oblastech kro
 
 Další informace o směrování zpráv do IoT Hub najdete v těchto článcích:
 
-* [Kurz vylepšení zpráv](tutorial-message-enrichments.md)
+* [Kurz rozšíření zpráv](tutorial-message-enrichments.md)
 
 * [Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](iot-hub-devguide-messages-d2c.md)
 
-* [Kurz: Směrování IoT Hub](tutorial-routing.md)
+* [Kurz: IoT Hub směrování](tutorial-routing.md)

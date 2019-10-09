@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212864"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173483"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Runbook Azure Automation do plánů obnovení
 
@@ -51,8 +51,8 @@ Když se skript spustí, vloží kontext plánu obnovení do Runbooku. Kontext o
 | GroupID |Určuje číslo skupiny v plánu obnovení, když je plán spuštěný. |
 | VmMap |Pole všech virtuálních počítačů ve skupině. |
 | VMMap klíč |Jedinečný klíč (GUID) pro každý virtuální počítač. |
-| SubscriptionId |ID předplatného Azure, ve kterém se vytvořil virtuální počítač |
-| ResourceGroupName | Název skupiny prostředků, ve které se virtuální počítač nachází.
+| subscriptionId |ID předplatného Azure, ve kterém se vytvořil virtuální počítač |
+| resourceGroupName | Název skupiny prostředků, ve které se virtuální počítač nachází.
 | CloudServiceName |Název cloudové služby Azure, pod kterou se vytvořil virtuální počítač. |
 | RoleName |Název virtuálního počítače Azure. |
 | RecoveryPointId|Časové razítko pro obnovení virtuálního počítače. |
@@ -99,11 +99,11 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 
 - Pokud s Azure Automation začínáte, můžete si [zaregistrovat](https://azure.microsoft.com/services/automation/) a [stáhnout ukázkové skripty](https://azure.microsoft.com/documentation/scripts/).
 - Ujistěte se, že účet Automation obsahuje následující moduly:
-    - AzureRM.profile
-    - AzureRM.Resources
-    - AzureRM.Automation
-    - AzureRM.Network
-    - AzureRM.Compute
+    - AzureRM. Profile
+    - AzureRM. Resources
+    - AzureRM. Automation
+    - AzureRM. Network
+    - AzureRM. COMPUTE
 
     Všechny moduly by měly mít kompatibilní verze. Nejjednodušším způsobem je vždy používat nejnovější verze všech modulů.
 
@@ -112,14 +112,14 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobení plánu obnovení
 
 1. V trezoru vyberte **plány obnovení (Site Recovery)** .
-2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](/site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
+2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md) Pokud již máte plán obnovení, vyberte jej a otevřete ho.
 3. Na stránce plán obnovení klikněte na **přizpůsobit**.
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klikněte na tlačítko se třemi tečkami (... **) vedle skupiny 1: Spusťte**akci > **Přidat příspěvek**.
+2. Klikněte na tlačítko se třemi tečkami (...) vedle **skupiny 1: začátek** > **přidat akci post**.
 3. V části **Vložit akci**ověřte, že je vybraný **skript** , a zadejte název skriptu (**Hello World**).
-4. Zadejte účet Automation a vyberte Runbook. Chcete-li skript uložit, klikněte na tlačítko **OK**. Skript se přidá do **skupiny 1: Kroky**po.
+4. Zadejte účet Automation a vyberte Runbook. Chcete-li skript uložit, klikněte na tlačítko **OK**. Skript se přidá do **skupiny 1: kroky po**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Opakované použití skriptu Runbooku
@@ -251,7 +251,7 @@ Stejný skript můžete použít pro různé plány obnovení. Zadejte jiné par
 
 Pokud chcete nasadit ukázkové skripty do svého účtu Automation, klikněte na tlačítko **nasadit do Azure** .
 
-[![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[@no__t – 1Deploy do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Toto video poskytuje další příklad. Ukazuje, jak obnovit dvě vícevrstvé aplikace WordPress do Azure:
 

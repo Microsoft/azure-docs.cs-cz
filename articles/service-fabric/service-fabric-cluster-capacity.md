@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
-ms.author: chackdan
-ms.openlocfilehash: 2d13364093776028f96b75c5bfef252e2fdfc790
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: pepogors
+ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679404"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167405"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 Pro jakékoli provozní nasazení je plánování kapacity důležitým krokem. Tady je několik položek, které je třeba vzít v úvahu jako součást tohoto procesu.
 
 * Počet typů uzlů, se kterými cluster musí být spuštěný
 * Vlastnosti každého typu uzlu (velikost, primární, internetový přístup, počet virtuálních počítačů atd.)
-* Spolehlivost a odolnost clusteru
+* Charakteristiky spolehlivosti a odolnosti clusteru
 
 > [!NOTE]
-> Během plánování byste měli zkontrolovat, že nepovolené hodnoty zásad upgradu budou minimální. K tomu je potřeba, abyste správně nastavili hodnoty a zmírnili vypalování clusteru z důvodu nezměněných nastavení konfigurace systému. 
+> Během plánování byste měli zkontrolovat, že **nepovolené** hodnoty zásad upgradu budou minimální. K tomu je potřeba, abyste správně nastavili hodnoty a zmírnili vypalování clusteru z důvodu nezměněných nastavení konfigurace systému. 
 > 
 
 Podíváme se na každou z těchto položek krátce.
@@ -37,7 +37,7 @@ Podíváme se na každou z těchto položek krátce.
 ## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>Počet typů uzlů, se kterými cluster musí být spuštěný
 Nejdřív musíte zjistit, k čemu se má vytvářený cluster používat.  Jaké druhy aplikací plánujete nasadit do tohoto clusteru? Pokud nechcete, aby se pro účely clusteru neprojevily, pravděpodobně zatím nejste připravení zadat proces plánování kapacity.
 
-Stanovte počet typů uzlů, se kterými je cluster potřeba začít.  Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Proto rozhodnutí o počtu typů uzlů v podstatě nastane v následujících ohledech:
+Stanovte počet typů uzlů, se kterými je cluster potřeba začít.  Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Každý typ uzlu je pak možné nezávisle škálovat směrem nahoru nebo dolů, mít různé sady portů otevřené a můžou mít různé metriky kapacity. Proto rozhodnutí o počtu typů uzlů v podstatě nastane v následujících ohledech:
 
 * Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové? Typické aplikace obsahují front-endové službu brány, která přijímá vstup od klienta a jednu nebo více back-endové služby, které komunikují s front-end službami. Takže v tomto případě skončíte s alespoň dvěma typy uzlů.
 * Mají vaše služby (z vaší aplikace) různé požadavky na infrastrukturu, jako je větší nebo vyšší počet cyklů procesoru? Předpokládejme například, že aplikace, kterou chcete nasadit, obsahuje front-end službu a back-endové služby. Front-end služba může běžet na menších virtuálních počítačích (velikosti virtuálních počítačů jako D2), které mají porty otevřené na internetu.  Back-end služba je však náročné na výpočetní výkon a musí běžet na větších virtuálních počítačích (s velikostí virtuálních počítačů, jako je D4, D6, D15), které nejsou na internetu.
@@ -62,7 +62,7 @@ Systémové služby Service Fabric (například služba Správce clusterů nebo 
 * **Minimální velikost virtuálních počítačů** pro typ primárního uzlu závisí na zvolené **úrovni odolnosti** . Výchozí úroveň odolnosti je bronzová. Další podrobnosti najdete v části [charakteristiky odolnosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) .  
 * **Minimální počet virtuálních počítačů** pro typ primárního uzlu závisí na zvolené **úrovni spolehlivosti** . Výchozí úroveň spolehlivosti je stříbrná. Další podrobnosti najdete v tématu [charakteristiky spolehlivosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .  
 
-V šabloně Azure Resource Manager je typ primárního uzlu nakonfigurován s `isPrimary` atributem v rámci [definice typu uzlu](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+V šabloně Azure Resource Manager je typ primárního uzlu nakonfigurován s atributem `isPrimary` v rámci [definice typu uzlu](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>Typ bez primárního uzlu
 
@@ -76,9 +76,9 @@ V clusteru s více typy uzlů je jeden primární typ uzlu a zbytek není primá
 
 | Úroveň odolnosti  | Požadovaný minimální počet virtuálních počítačů | Podporované SKU virtuálních počítačů                                                                  | Aktualizace provedené v rámci sady škálování virtuálních počítačů                               | Aktualizace a údržba iniciované Azure                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Zlatá             | 5                              | SKU na plný uzel vyhrazené pro jednoho zákazníka (například L32s úrovně, GS5, G5, DS15_v2, D15_v2) | Může se zpozdit až po schválení clusterem Service Fabric. | Dá se pozastavit na 2 hodiny na UD, aby se repliky obnovily z předchozích selhání. |
-| Stříbrný           | 5                              | Virtuální počítače s jedním jádrem nebo novějším s minimálně 50 GB místní jednotky SSD                      | Může se zpozdit až po schválení clusterem Service Fabric. | Nelze zpozdit na jakékoli významné časové období.                                                    |
-| Bronzová           | 1                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
+| měňují             | 5                              | SKU na plný uzel vyhrazené pro jednoho zákazníka (například L32s úrovně, GS5, G5, DS15_v2, D15_v2) | Může se zpozdit až po schválení clusterem Service Fabric. | Dá se pozastavit na 2 hodiny na UD, aby se repliky obnovily z předchozích selhání. |
+| Silver           | 5                              | Virtuální počítače s jedním jádrem nebo novějším s minimálně 50 GB místní jednotky SSD                      | Může se zpozdit až po schválení clusterem Service Fabric. | Nelze zpozdit na jakékoli významné časové období.                                                    |
+| Bronzová           | první                              | Virtuální počítače s minimálně 50 GB místní jednotky SSD                                              | Nebude zpožděný Service Fabricým clusterem.           | Nelze zpozdit na jakékoli významné časové období.                                                    |
 
 > [!WARNING]
 > Typy uzlů běžící s bronzovou trvanlivostí nezískají _žádná oprávnění_. To znamená, že úlohy infrastruktury, které ovlivňují vaše bezstavové úlohy, nebudou zastaveny ani zpožděny, což by mohlo mít vliv na vaše úlohy. Používejte pouze bronzové typy uzlů, které spouštějí pouze bezstavové úlohy. Pro produkční úlohy se doporučuje používat stříbro nebo vyšší. 
@@ -108,7 +108,7 @@ Použijte stříbro nebo zlatou odolnost pro všechny typy uzlů, které hostuj�
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Provozní doporučení pro typ uzlu, který jste nastavili na stříbro nebo zlato úrovně odolnosti.
 
 - Udržujte cluster a aplikace pořád v pořádku a ujistěte se, že aplikace reagují na všechny [události životního cyklu repliky služby](service-fabric-reliable-services-lifecycle.md) (jako replika v buildu se zablokuje) včas.
-- Přijmout bezpečnější způsob, jak provést změnu skladové položky virtuálního počítače (horizontální navýšení kapacity): Změna SKU virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje několik kroků a důležitých informací. Tady je postup, který vám umožní vyhnout se běžným problémům.
+- Přijmout bezpečnější způsob, jak provést změnu SKU virtuálního počítače (horizontální navýšení kapacity): Změna SKU virtuálního počítače pro sadu škálování virtuálního počítače vyžaduje několik kroků a aspektů. Tady je postup, který vám umožní vyhnout se běžným problémům.
     - **Pro neprimární typy uzlů:** Doporučuje se vytvořit novou sadu škálování virtuálních počítačů, Upravit omezení umístění služby tak, aby zahrnovala novou sadu virtuálních počítačů nebo typ uzlu, a potom omezit starý počet instancí sady škálování virtuálního počítače na hodnotu nula, jeden uzel v čase (to se provede Ujistěte se, že odebrání uzlů nemá vliv na spolehlivost clusteru).
     - **Pro primární typ uzlu:** Pokud se skladová položka, kterou jste vybrali, nastavila na kapacitu a chcete přejít na větší SKU virtuálního počítače, postupujte podle pokynů v části [vertikální škálování pro typ primárního uzlu](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
 
@@ -141,10 +141,10 @@ Tady je doporučení pro výběr úrovně spolehlivosti.  Počet počátečních
 
 | **Počet uzlů clusteru** | **Úroveň spolehlivosti** |
 | --- | --- |
-| 1 |Nezadávejte parametr úrovně spolehlivosti, systém ho vypočítá. |
+| první |Nezadávejte parametr úrovně spolehlivosti, systém ho vypočítá. |
 | 3 |Bronzová |
-| 5 nebo 6|Stříbrný |
-| 7 nebo 8 |Zlatá |
+| 5 nebo 6|Silver |
+| 7 nebo 8 |měňují |
 | 9 a více |Podpora |
 
 ## <a name="primary-node-type---capacity-guidance"></a>Pokyny pro typ primárního uzlu – doprovodné materiály pro kapacitu
@@ -153,7 +153,7 @@ Tady je návod pro plánování kapacity typu primárního uzlu:
 
 - **Počet instancí virtuálních počítačů pro spuštění jakékoli provozní úlohy v Azure:** Je nutné zadat minimální velikost primárního typu uzlu na hodnotu 5 a úroveň spolehlivosti stříbrného.  
 - **Počet instancí virtuálních počítačů pro spouštění testovacích úloh v Azure** Můžete zadat minimální velikost primárního typu uzlu 1 nebo 3. Cluster s jedním uzlem se spouští se zvláštní konfigurací, takže horizontální navýšení kapacity z tohoto clusteru se nepodporuje. Cluster s jedním uzlem, který nemá žádnou spolehlivost, tedy i v šabloně Správce prostředků, je nutné odebrat/neurčit, že konfigurace (není nastavena hodnota konfigurace není dostatečná). Pokud nastavíte cluster s jedním uzlem nastaveným prostřednictvím portálu, konfigurace se automaticky postará o. Clustery s jedním a třemi uzly nejsou podporované pro spuštěné produkční úlohy. 
-- **SKU VIRTUÁLNÍHO POČÍTAČE:** Typ primárního uzlu je místo, kde se spouštějí systémové služby, takže si pro ni můžete vybrat SKLADOVOU položku, kterou si pro ni zvolíte, a přitom vzít v úvahu celkové špičkové zatížení, které chcete do clusteru umístit. Tady je příklad, který ukazuje, co znamená, že se jedná o typ primárního uzlu jako "plíce", je to, co poskytuje kyslík pro mozek, a tak v případě, že mozek nezíská dostatek kyslíku, tělo je nedostatečné. 
+- **SKU virtuálního počítače:** Typ primárního uzlu je místo, kde se spouštějí systémové služby, takže si pro ni můžete vybrat SKLADOVOU položku, kterou si pro ni zvolíte, a přitom vzít v úvahu celkové špičkové zatížení, které chcete do clusteru umístit. Tady je příklad, který ukazuje, co znamená, že se jedná o typ primárního uzlu jako "plíce", je to, co poskytuje kyslík pro mozek, a tak v případě, že mozek nezíská dostatek kyslíku, tělo je nedostatečné. 
 
 Vzhledem k tomu, že úlohy, které chcete spustit v clusteru, se určují podle potřeb kapacity clusteru, ale nemůžeme vám poskytnout doprovodné materiály k vašim konkrétním úlohám, ale zde najdete obecné pokyny, které vám pomůžou začít.
 
@@ -178,7 +178,7 @@ Tyto doprovodné materiály jsou pro stavové úlohy využívající [spolehliv�
 
 V případě produkčních úloh je minimální doporučená velikost neprimárního typu uzlu 5, pokud v ní spouštíte stavové úlohy.
 
-**SKU VIRTUÁLNÍHO POČÍTAČE:** Toto je typ uzlu, ve kterém jsou spuštěny vaše aplikační služby, takže si SKU, kterou si pro něj zvolíte, musí vzít v úvahu nejvyšší zatížení, které plánujete do každého uzlu. Nároky na kapacitu typu uzlu jsou určené úlohou, kterou plánujete spustit v clusteru, takže nemůžeme poskytnout doporučení pro konkrétní pracovní vytížení, ale tady je obecné pokyny, které vám pomůžou začít.
+**SKU virtuálního počítače:** Toto je typ uzlu, ve kterém jsou spuštěny vaše aplikační služby, takže si SKU, kterou si pro něj zvolíte, musí vzít v úvahu nejvyšší zatížení, které plánujete do každého uzlu. Nároky na kapacitu typu uzlu jsou určené úlohou, kterou plánujete spustit v clusteru, takže nemůžeme poskytnout doporučení pro konkrétní pracovní vytížení, ale tady je obecné pokyny, které vám pomůžou začít.
 
 Pro produkční úlohy 
 
@@ -193,7 +193,7 @@ Tyto pokyny týkající se bezstavových úloh, které běží na neprimárním 
 
 **Počet instancí virtuálních počítačů:** U produkčních úloh, které mají stav bez stavu, je minimální podporovaná velikost neprimárního typu uzlu 2. To vám umožní spouštět dvě bezstavové instance aplikace a umožní, aby služba zadržela ztrátu instance virtuálního počítače. 
 
-**SKU VIRTUÁLNÍHO POČÍTAČE:** Toto je typ uzlu, ve kterém jsou spuštěny vaše aplikační služby, takže si SKU, kterou si pro něj zvolíte, musí vzít v úvahu nejvyšší zatížení, které plánujete do každého uzlu. Požadavky na kapacitu typu uzlu závisí na zatížení, které chcete v clusteru spustit. Nemůžeme vám poskytnout informace o kvalitativních pokynech k vašemu konkrétnímu zatížení.  Zde je však uveden seznam hlavních pokynů, které vám pomohou začít.
+**SKU virtuálního počítače:** Toto je typ uzlu, ve kterém jsou spuštěny vaše aplikační služby, takže si SKU, kterou si pro něj zvolíte, musí vzít v úvahu nejvyšší zatížení, které plánujete do každého uzlu. Požadavky na kapacitu typu uzlu závisí na zatížení, které chcete v clusteru spustit. Nemůžeme vám poskytnout informace o kvalitativních pokynech k vašemu konkrétnímu zatížení.  Zde je však uveden seznam hlavních pokynů, které vám pomohou začít.
 
 Pro produkční úlohy 
 
@@ -204,7 +204,7 @@ Pro produkční úlohy
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po dokončení plánování kapacity a nastavení clusteru si přečtěte následující informace:
 
 * [Service Fabric zabezpečení clusteru](service-fabric-cluster-security.md)

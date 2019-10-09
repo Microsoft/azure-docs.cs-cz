@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812709"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170074"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Active Directory (Azure A
 >
 > Tento konektor je momentálně ve verzi Preview. Další informace o funkci používání podmínek Azure pro funkce ve verzi Preview najdete v [části dodatečné použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste splnili následující požadavky:
 
@@ -118,11 +118,11 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
 1. V části **přihlašovací údaje správce**postupujte takto:
 
-   a. Do pole **Adresa URL klienta** zadejte hodnotu **https://concierge.food.ee/scim/v2** , kterou jste získali dříve.
+   a. Do pole **Adresa URL tenanta** zadejte hodnotu **https: \//concierge. Food. ee/SCIM/v2** , kterou jste získali dříve.
 
    b. Do pole **token tajného klíče** zadejte hodnotu **tokenu rozhraní API** , kterou jste získali dříve.
    
-   c. Pokud chcete zajistit, aby se služba Azure AD mohla připojit k Foodee, vyberte **Test připojení**. Pokud se připojení nepovede, ujistěte se, že má váš účet Foodee oprávnění správce, a zkuste to znovu.
+   r. Pokud chcete zajistit, aby se služba Azure AD mohla připojit k Foodee, vyberte **Test připojení**. Pokud se připojení nepovede, ujistěte se, že má váš účet Foodee oprávnění správce, a zkuste to znovu.
 
     ![Odkaz testovat připojení](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,7 +130,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Textové pole pro oznamovací E-mail](common/provisioning-notification-email.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 1. V části **mapování**vyberte **synchronizovat Azure Active Directory uživatelé Foodee**.
 
@@ -168,10 +168,10 @@ Předchozí operace spustí počáteční synchronizaci uživatelů nebo skupin,
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Tato sestava popisuje všechny akce, které provádí služba zřizování Azure AD v Foodee. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 

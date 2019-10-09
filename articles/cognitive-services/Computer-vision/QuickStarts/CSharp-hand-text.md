@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrakce vytištěného a rukopisného textu,C#'
+title: 'Rychlý Start: extrakce vytištěného a rukopisného textu,C#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete vytištěný a rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu C#.
 services: cognitive-services
@@ -11,38 +11,38 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7340105e6d64900b769e2601032b04eb7a91e6e1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ca1c1ebee6f2c1a47ee651f9c0d4ea5c62dec8d3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138112"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176922"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API aC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API aC#
 
-V tomto rychlém startu budete z obrázku extrahováni vytištěné a/nebo ručně psaný text pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a čtení dávkových [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
+V tomto rychlém startu budete z obrázku extrahováni vytištěné a/nebo ručně psaný text pomocí REST API Počítačové zpracování obrazu. Pomocí metod [čtení a čtení dávkových](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) [operací](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) Batch můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. Rozhraní API určí, který model rozpoznávání se má použít pro každý řádek textu, takže podporuje obrázky s tištěným i psaným textem.
 
 > [!IMPORTANT]
-> Metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda Read vrátí identifikátor URI v `Operation-Location` poli hlavička odpovědi. Pak můžete použít tento identifikátor URI, který reprezentuje metodu [výsledku operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby zkontroloval stav a vrátil výsledky volání metody čtení dávky.
+> Metoda [čtení dávky](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) se spouští asynchronně. Tato metoda nevrací žádné informace v těle úspěšné odpovědi. Místo toho metoda Read vrátí identifikátor URI v poli hlavičky odpovědi `Operation-Location`. Pak můžete použít tento identifikátor URI, který reprezentuje metodu [výsledku operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby zkontroloval stav a vrátil výsledky volání metody čtení dávky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015 nebo novější](https://visualstudio.microsoft.com/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Pro Počítačové zpracování obrazu musíte mít klíč předplatného. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
-Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
+Chcete-li vytvořit ukázku v aplikaci Visual Studio, proveďte následující kroky:
 
-1. Vytvořte v sadě Visual Studio nové řešení pomocí šablony pro konzolovou aplikaci Visual C#.
-1. Nainstalujte balíček NuGet Newtonsoft.Json.
-    1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
-    1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Newtonsoft.Json.
-    1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
+1. Vytvořte nové řešení sady Visual Studio v aplikaci Visual Studio pomocí šablony aplikace C# Visual Console.
+1. Nainstalujte balíček NuGet Newtonsoft. JSON.
+    1. V nabídce klikněte na **nástroje**, vyberte **Správce balíčků NuGet**a pak **spravujte balíčky NuGet pro řešení**.
+    1. Klikněte na kartu **Procházet** a do **vyhledávacího** pole zadejte "Newtonsoft. JSON".
+    1. Po zobrazení vyberte **Newtonsoft. JSON** a potom klikněte na zaškrtávací políčko vedle názvu projektu a **nainstalujte**.
 1. Spusťte program.
-1. Do příkazového řádku zadejte cestu k místnímu obrázku.
+1. Na příkazovém řádku zadejte cestu k místní imagi.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -63,7 +63,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Batch Read method endpoint
-        const string uriBase = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze";
+        const string uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
 
         static void Main()
         {
@@ -205,9 +205,9 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Prozkoumání odpovědi
+## <a name="examine-the-response"></a>Projděte si odpověď.
 
-Úspěšná odpověď se vrátí ve formátu JSON. Ukázková aplikace provede analýzu a zobrazí úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
+Ve formátu JSON se vrátí úspěšná odpověď. Ukázková aplikace analyzuje a zobrazuje úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -311,7 +311,7 @@ namespace CSHttpClientSample
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už řešení sady Visual Studio nepotřebujete, odstraňte je. Uděláte to tak, že otevřete Průzkumníka souborů, přejdete ke složce, ve které jste vytvořili řešení sady Visual Studio, a tuto složku odstraníte.
+Pokud už je nepotřebujete, odstraňte řešení sady Visual Studio. Provedete to tak, že otevřete Průzkumníka souborů, přejdete do složky, ve které jste řešení sady Visual Studio vytvořili, a odstraníte složku.
 
 ## <a name="next-steps"></a>Další kroky
 

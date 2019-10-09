@@ -6,6 +6,16 @@
       href: resource-group-overview.md
     - name: Přehled šablon
       href: template-deployment-overview.md
+- name: Rychlý start
+  items:
+    - name: Vytváření šablon – portál
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: Vytváření šablon – VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: Vytváření šablon – Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+    - name: Vytváření šablon – IntelliJ IDEA
+      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Kurzy
   items:
     - name: Začátečník
@@ -32,14 +42,6 @@
           href: template-tutorial-use-parameter-file.md
     - name: Upřesňující
       items:
-        - name: Vytváření šablon – portál
-          href: resource-manager-quickstart-create-templates-use-the-portal.md
-        - name: Vytváření šablon – VS Code
-          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-        - name: Vytváření šablon – Visual Studio
-          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-        - name: Vytváření šablon – IntelliJ IDEA
-          href: resource-manager-quickstart-create-templates-use-intellij.md
         - name: Využití referenčních informací k šablonám
           href: resource-manager-tutorial-create-encrypted-storage-accounts.md
         - name: Vytvoření několika instancí

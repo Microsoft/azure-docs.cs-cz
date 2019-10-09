@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Analýza místního image – REST, Python'
+title: 'Rychlý Start: analýza místního image – REST, Pythonu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
+description: V tomto rychlém startu analyzujete místní Image pomocí rozhraní Počítačové zpracování obrazu APi pomocí Pythonu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cbb3d2fea7b48da8ce899d53901f7fb22bc66e35
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b64711b73cf1b18636b569a21c2bc98610117cb8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141303"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176449"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Analýza místní Image pomocí Počítačové zpracování obrazu REST API a Pythonu
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: analýza místní Image pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete místně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [analyzovat obrázek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce založené na obsahu obrázku.
 
-Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
+Tento rychlý Start můžete v kroku spustit pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Chcete-li spustit aplikaci Binder, vyberte následující tlačítko:
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[@no__t – 1Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Pokud chcete spustit ukázku místně, musíte mít nainstalovaný [Python](https://www.python.org/downloads/) .
+- Pro Počítačové zpracování obrazu musíte mít klíč předplatného. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 - Musíte mít nainstalované následující balíčky Pythonu. Pomocí [PIP](https://packaging.python.org/tutorials/installing-packages/) můžete nainstalovat balíčky Pythonu.
-    - požadavků
+    - požadavky
     - [matplotlib](https://matplotlib.org/)
     - [pillow](https://python-pillow.org/)
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pokud chcete vytvořit a spustit ukázku, postupujte takto:
+Chcete-li vytvořit a spustit ukázku, proveďte následující kroky:
 
-1. Zkopírujte do textového editoru následující kód.
-1. Volitelně můžete hodnotu `image_path` nahradit cestou a názvem souboru jiného obrázku, který chcete analyzovat.
-1. Uložte kód jako soubor s příponou `.py`. Například, `analyze-local-image.py`.
+1. Zkopírujte následující kód do textového editoru.
+1. V případě potřeby nahraďte hodnotu `image_path` cestou a názvem souboru jiné image, kterou chcete analyzovat.
+1. Uložte kód jako soubor s příponou `.py`. Například `analyze-local-image.py`.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python analyze-local-image.py`.
+1. Na příkazovém řádku použijte příkaz `python` ke spuštění ukázky. Například `python analyze-local-image.py`.
 
 ```python
 import requests
@@ -65,7 +65,7 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = endpoint + "vision/v2.0/analyze"
+analyze_url = endpoint + "vision/v2.1/analyze"
 
 # Set image_path to the local path of an image that you want to analyze.
 image_path = "C:/Documents/ImageToAnalyze.jpg"
@@ -92,9 +92,9 @@ plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
 ```
 
-## <a name="examine-the-response"></a>Prozkoumání odpovědi
+## <a name="examine-the-response"></a>Projděte si odpověď.
 
-Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
+Ve formátu JSON se vrátí úspěšná odpověď. Ukázková webová stránka analyzuje a zobrazuje úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -168,9 +168,9 @@ _ = plt.title(image_caption, size="x-large", y=-0.1)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci v Pythonu, která používá Počítačové zpracování obrazu k provádění optického rozpoznávání znaků (OCR); vytvořit miniatury s inteligentním oříznutím; Navíc ke zjištění, kategorizaci, označení a popisu vizuálních funkcí, včetně obličeje, v obrázku. Chcete-li rychle experimentovat s rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [konzolu Open API Testing](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)
+> [Kurz rozhraní API pro počítačové zpracování obrazu Pythonu](../Tutorials/PythonTutorial.md)

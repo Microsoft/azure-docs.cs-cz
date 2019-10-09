@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876261"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170478"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
 ServiceRemoting runtime Reliable vygeneruje [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
@@ -41,24 +41,24 @@ Aplikace [sledování výkonu systému Windows](https://technet.microsoft.com/li
 Cluster, který má velký počet ServiceRemoting služeb nebo oddílů, má velký počet instancí čítače výkonu. Názvy instancí čítače výkonu vám pomůžou identifikovat konkrétní oddíl a metodu služby (Pokud je k dispozici), ke které je přidružená instance čítače výkonu.
 
 #### <a name="service-fabric-service-category"></a>Kategorie služby Service Fabric
-Pro kategorii `Service Fabric Service`jsou názvy instancí čítače v následujícím formátu:
+Pro kategorii `Service Fabric Service` jsou názvy instancí čítače v následujícím formátu:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. Identifikátor oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím metody [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) s specifikátorem formátu "D".
 
 *ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
 *ServiceRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Service` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do kategorie `Service Fabric Service`:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-V předchozím příkladu `2740af29-78aa-44bc-a20b-7e60fb783264` je řetězcová reprezentace ID oddílu Service Fabric, `635650083799324046` je řetězcové vyjádření repliky/InstanceId a `5008379932` je 64 ID, které je generováno pro interní použití modulu runtime.
+V předchozím příkladu je `2740af29-78aa-44bc-a20b-7e60fb783264` řetězcové vyjádření ID oddílu Service Fabric, `635650083799324046` je řetězcové vyjádření repliky/InstanceId a `5008379932` je 64 ID, které je generováno pro interní použití modulu runtime.
 
 #### <a name="service-fabric-service-method-category"></a>Kategorie metody služby Service Fabric
-Pro kategorii `Service Fabric Service Method`jsou názvy instancí čítače v následujícím formátu:
+Pro kategorii `Service Fabric Service Method` jsou názvy instancí čítače v následujícím formátu:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -66,17 +66,17 @@ Pro kategorii `Service Fabric Service Method`jsou názvy instancí čítače v n
 
 *ServiceRuntimeMethodId* je řetězcová reprezentace 32ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. Identifikátor oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metody s specifikátorem formátu "D".
+*ServiceFabricPartitionID* je řetězcová reprezentace ID oddílu Service Fabric, ke které je instance čítače výkonu přidružena. IDENTIFIKÁTOR oddílu je identifikátor GUID a řetězcová reprezentace je generována prostřednictvím metody [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) s specifikátorem formátu "D".
 
 *ServiceReplicaOrInstanceId* je řetězcová reprezentace ID repliky nebo instance Service Fabric, ke které je instance čítače výkonu přidružená.
 
 *ServiceRuntimeInternalID* je řetězcová reprezentace 64ého celého čísla generovaného modulem runtime služby Fabric pro jeho interní použití. Tato hodnota je obsažena v názvu instance čítače výkonu k zajištění jeho jedinečnosti a zabránění konfliktu s jinými názvy instancí čítače výkonu. Uživatelé by se neměli pokoušet interpretovat tuto část názvu instance čítače výkonu.
 
-Následuje příklad názvu instance čítače pro čítač, který patří do `Service Fabric Service Method` kategorie:
+Následuje příklad názvu instance čítače pro čítač, který patří do kategorie `Service Fabric Service Method`:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody, `2` je identifikátor 32 generovaný pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcové vyjádření ID oddílu Service Fabric,`635650083804480486` je řetězcové vyjádření. Service Fabric repliky/ID instance a `5008380` je identifikátor 64 generovaný pro interní použití modulu runtime.
+V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název metody. `2` je 32 ID bitu generované pro interní použití modulu runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` je řetězcová reprezentace ID Service Fabricho oddílu, `635650083804480486` je řetězcové vyjádření Service Fabric repliky/ ID instance a `5008380` je identifikátor 64 generovaný pro interní použití modulu runtime.
 
 ## <a name="list-of-performance-counters"></a>Seznam čítačů výkonu
 ### <a name="service-method-performance-counters"></a>Čítače výkonu metody služby
@@ -99,6 +99,6 @@ Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za nás
 | Služba Service Fabric |Průměrný počet milisekund pro deserializaci žádosti |Doba trvání (v milisekundách) k deserializaci zprávy žádosti o službu, když se přijme ve službě |
 | Služba Service Fabric |Průměrný počet milisekund serializace odpovědi |Doba trvání (v milisekundách) k serializaci zprávy s odpovědí služby ve službě před odesláním odpovědi klientovi |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Ukázka kódu](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [Zprostředkovatelé EventSource v PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

@@ -5,46 +5,50 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 05/28/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 90c6d40103bc9a20f7af28c76d0183f7a3fb04a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304573"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168370"
 ---
+>[!NOTE]
+>Při práci s výchozími zásadami může Azure během nastavení tunelu IPsec fungovat jako iniciátor i respondér. Azure není podporován pouze jako respondér.
+>
+
 ### <a name="initiator"></a>Iniciátor
 
-V následujících částech kombinace podporovaných zásad Azure po iniciátor pro tunelové propojení.
+V následujících oddílech jsou uvedeny podporované kombinace zásad, pokud je Azure iniciátorem pro tunel.
 
-**Phase-1**
+**Fáze-1**
 
 * AES_256, SHA1, DH_GROUP_2
 * AES_256, SHA_256, DH_GROUP_2
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
 
-**Phase-2**
+**Fáze 2**
 
 * GCM_AES_256, GCM_AES_256, PFS_NONE
 * AES_256, SHA_1, PFS_NONE
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 
-### <a name="responder"></a>Respondér
+### <a name="responder"></a>Protějšk
 
-V následujících částech kombinace podporovaných zásad Azure po respondér pro tunelové propojení.
+V následujících částech jsou uvedeny podporované kombinace zásad, pokud je Azure respondér pro tunelové propojení.
 
-**Phase-1**
+**Fáze-1**
 
 * AES_256, SHA1, DH_GROUP_2
 * AES_256, SHA_256, DH_GROUP_2
 * AES_128, SHA1, DH_GROUP_2
 * AES_128, SHA_256, DH_GROUP_2
 
-**Phase-2**
+**Fáze 2**
 
 * GCM_AES_256, GCM_AES_256, PFS_NONE
 * AES_256, SHA_1, PFS_NONE

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrakce vytištěného textu – REST, Java'
+title: 'Rychlý Start: extrakce vytištěného textu – REST, Java'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 73d5effa3341337f3238c49c17a2227942af4958
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cf7924c3201a362403b59ec1ad883cefe6a3cf9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141348"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176537"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Rychlý start: Extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a Java
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a Java
 
 V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí optického rozpoznávání znaků (OCR) s využitím rozhraní REST API počítačového zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy. Vytvořte projekt Java ze šablony aplikace příkazového řádku, pokud je tato možnost k dispozici.
 1. Následující knihovny naimportujte do projektu Java. Pokud používáte Maven, jsou k dispozici souřadnice Maven pro každou knihovnu.
    - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
    - [Jádro Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
@@ -53,7 +53,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
    import org.json.JSONObject;
    ```
 
-1. Nahraďte `Main` veřejnou třídu následujícím kódem.
+1. Nahraďte veřejnou třídu `Main` následujícím kódem.
 1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat tištěný text.
 1. Uložte a sestavte projekt Java.
 1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
@@ -70,7 +70,7 @@ public class Main {
     String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
     private static final String uriBase = endpoint + 
-            "vision/v2.0/ocr";
+            "vision/v2.1/ocr";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +

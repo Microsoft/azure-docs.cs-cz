@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a7ff2d7e02b557676d2ba569f7baa216d07221b9
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.author: atsenthi
+ms.openlocfilehash: 0010108a7f3f9341d28c0b2f146c2e2f421ce47d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192548"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170588"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Rozdíly mezi Service Fabric v Linuxu a ve Windows
 

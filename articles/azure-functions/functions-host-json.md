@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096405"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176578"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -25,7 +25,7 @@ ms.locfileid: "70096405"
 Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici pro modul runtime v2.  
 
 > [!NOTE]
-> Tento článek je určen pro Azure Functions 2. x.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
+> Tento článek je určen pro Azure Functions 2. x.  Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
 
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
@@ -93,7 +93,7 @@ Následující části tohoto článku vysvětlují jednotlivé vlastnosti nejvy
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>applicationInsights
+## <a name="applicationinsights"></a>ApplicationInsights
 
 Toto nastavení je podřízenou položkou [protokolování](#logging).
 
@@ -117,6 +117,9 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 |---------|---------|---------| 
 |isEnabled|true|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|5|Prahová hodnota, při které začíná vzorkování.| 
+|EnableLiveMetrics |true|Povoluje shromažďování živých metrik.|
+|EnableDependencyTracking|true|Povolí sledování závislostí.|
+|EnablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu Kudu.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -126,15 +129,15 @@ Nastavení konfigurace najdete v [Cosmos DB triggerech a vazbách](functions-bin
 
 Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durable-functions-bindings.md#host-json).
 
-## <a name="eventhub"></a>centra událostí
+## <a name="eventhub"></a>eventHub
 
-Nastavení konfigurace najdete v aktivačních [událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
+Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
 ## <a name="extensions"></a>SND
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
-## <a name="functions"></a>– funkce
+## <a name="functions"></a>functions
 
 Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
@@ -149,7 +152,7 @@ Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spušt
 Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle formátu řetězce TimeSpan. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut.  
 Ve vyhrazeném (App Service) plánu neexistuje žádný celkový limit a výchozí hodnota závisí na verzi modulu runtime: 
 + Verze 1. x: výchozí hodnota je *null*, což znamená, že nevypršel časový limit.   
-+ Verze 2. x: výchozí hodnota je 30 minut. Hodnota `-1` označuje neohraničené spuštění.
++ Verze 2. x: výchozí hodnota je 30 minut. Hodnota `-1` označuje neohraničené spouštění.
 
 ```json
 {
@@ -175,19 +178,19 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|enabled|true|Určuje, jestli je funkce povolená. | 
+|umožněn|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
-|healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s `healthCheckThreshold` nastavením.| 
+|healthCheckWindow|2 minuty|Posuvné časové okno používané ve spojení s nastavením `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
 ## <a name="http"></a>http
 
-Nastavení konfigurace najdete v aktivačních [událostech http a vazbách](functions-bindings-http-webhook.md).
+Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>protokolu
+## <a name="logging"></a>Protokolu
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -209,12 +212,12 @@ Nastavení konfigurace najdete v aktivačních [událostech http a vazbách](fun
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always`, `debugOnly`. |
-|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|console|neuvedeno| [console](#console) nastavení protokolování. |
-|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
+|fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always` `debugOnly`. |
+|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|–| Nastavení protokolování [konzoly](#console) . |
+|ApplicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
 
-## <a name="console"></a>console
+## <a name="console"></a>konzola
 
 Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí protokolování konzoly, pokud není v režimu ladění.
 
@@ -236,7 +239,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 
 ## <a name="queues"></a>vytvořil
 
-Nastavení konfigurace najdete v aktivačních [událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
+Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -268,11 +271,11 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>version
 
-Pro aplikaci funkcí `"version": "2.0"` , která cílí na modul runtime v2, se vyžaduje řetězec verze.
+Pro aplikaci Function App, která cílí na modul runtime v2, se vyžaduje řetězec verze `"version": "2.0"`.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -296,7 +299,7 @@ Spravovaná závislost je funkce ve verzi Preview, která je aktuálně podporov
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Naučte se aktualizovat soubor host. JSON.](functions-reference.md#fileupdate)

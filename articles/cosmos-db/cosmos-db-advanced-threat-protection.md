@@ -1,18 +1,18 @@
 ---
 title: Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 description: Přečtěte si, jak Azure Cosmos DB poskytuje šifrování neaktivních dat a jejich implementaci.
-author: monhaber
+author: rkarlin
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: v-mohabe
+ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2b12d639e734502113b6afdd7250fca6a520c687
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123858"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176020"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 
@@ -39,7 +39,7 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 3. V okně **Upřesnit konfiguraci zabezpečení** :
 
-    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** anastavte ji na zapnuto.
+    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto**.
     * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API
@@ -98,7 +98,7 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
  Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](../security-center/security-center-alerts-data-services.md#cosmos-db) v dokumentaci k Security Center.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
