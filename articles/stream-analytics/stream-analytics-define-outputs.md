@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5e05acf515aacaada96bd6e493c1a2bf24d7c5ab
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937539"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030763"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Porozumění výstupům z Azure Stream Analytics
 
@@ -37,7 +37,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro kon
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název, který se v dotazech používá k přímému nasměrování výstupu dotazu na Data Lake Store. |
-| formě | Předplatné, které obsahuje váš účet Azure Data Lake Storage. |
+| Formě | Předplatné, které obsahuje váš účet Azure Data Lake Storage. |
 | Název účtu | Název účtu Data Lake Store, do kterého posíláte výstup. Zobrazí se rozevírací seznam Data Lake Store účtů, které jsou k dispozici v rámci vašeho předplatného. |
 | Vzor předpony cesty | Cesta k souboru, která se používá k zápisu souborů v rámci zadaného Data Lake Store účtu. Můžete zadat jednu nebo více instancí proměnných {Date} a {Time}:<br /><ul><li>Příklad 1: složku1/logs/{Date}/{Time}</li><li>Příklad 2: složku1/logs/{Date}</li></ul><br />Časové razítko vytvořené struktury složek se řídí časem UTC a ne místním časem.<br /><br />Pokud vzor cesty k souboru neobsahuje koncové lomítko (/), považuje se poslední vzor v cestě k souboru za předponu názvu souboru. <br /><br />V těchto případech se vytvoří nové soubory:<ul><li>Změna ve schématu výstupu</li><li>Externí nebo interní restartování úlohy</li></ul> |
 | Formát data | Volitelné. Pokud je token data použit v cestě předpony, můžete vybrat formát data, ve kterém jsou soubory uspořádány. Příklad: RRRR/MM/DD |
@@ -61,7 +61,7 @@ Následující tabulka uvádí seznam názvů vlastností a jejich popis pro vyt
 | Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
 | Databáze | Název databáze, do které posíláte výstup. |
 | Název serveru | Název serveru SQL Database. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342* |
-| Jmen | Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
+| jmen | Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 | Heslo | Heslo pro připojení k databázi. |
 | Tabulka | Název tabulky, do které se zapisuje výstup V názvu tabulky se rozlišují velká a malá písmena. Schéma této tabulky by mělo přesně odpovídat počtu polí a jejich typům vygenerovaných výstupem úlohy. |
 |Zdědit schéma oddílu| Možnost dědění schématu dělení vašeho předchozího dotazu, která umožňuje úplnou paralelní topologii s více zapisovači v tabulce. Další informace najdete v tématu [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md).|
@@ -78,7 +78,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název vlastnosti       | Popis                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Alias pro výstup        | Popisný název, který se používá v dotazech k směrování výstupu dotazu do tohoto úložiště objektů BLOB. |
-| účet úložiště     | Název účtu úložiště, do kterého posíláte výstup.               |
+| Účet úložiště     | Název účtu úložiště, do kterého posíláte výstup.               |
 | Klíč účtu úložiště | Tajný klíč přidružený k účtu úložiště                              |
 | Kontejner úložiště   | Logické seskupení pro objekty blob uložené v Azure Blob service. Po nahrání objektu blob do Blob service musíte zadat kontejner pro tento objekt BLOB. |
 | Vzor cesty | Volitelné. Vzor cesty k souboru, který se používá k zápisu objektů BLOB v zadaném kontejneru. <br /><br /> Ve vzoru cesty se můžete rozhodnout použít jednu nebo více instancí proměnných data a času k určení četnosti zápisu objektů BLOB: <br /> {Date}, {Time} <br /><br />Vlastní dělení objektů blob můžete použít k určení jednoho vlastního názvu {Field} z dat události pro vytvoření oddílů objektů BLOB. Název pole je alfanumerický a může obsahovat mezery, spojovníky a podtržítka. Mezi vlastní pole patří tato omezení: <ul><li>V názvech polí se nerozlišují malá a velká písmena. Například služba nemůže odlišit sloupce "ID" a "ID".</li><li>Vnořená pole nejsou povolena. Místo toho použijte alias v dotazu úlohy na možnost "sloučit" pole.</li><li>Výrazy nelze použít jako název pole.</li></ul> <br />Tato funkce povoluje použití vlastních konfigurací specifikátoru formátu data a času v cestě. Vlastní formáty data a času musí být zadány po jednom a uzavřeny klíčovým slovem {DateTime: \<specifier >}. Povolené vstupy pro \<specifier > jsou rrrr, MM, M, DD, d, HH, H, mm, m, SS nebo s. Klíčové slovo {DateTime: \<specifier >} lze v cestě použít několikrát k vytvoření vlastních konfigurací data a času. <br /><br />Příklady: <ul><li>Příklad 1: Cluster1/logs/{Date}/{Time}</li><li>Příklad 2: Cluster1/logs/{Date}</li><li>Příklad 3: Cluster1/{client_id}/{Date}/{Time}</li><li>Příklad 4: Cluster1/{DateTime: SS}/{myField}, kde je dotaz: Vyberte data. myField jako myField ze vstupu;</li><li>Příklad 5: Cluster1/Year = {DateTime: rrrr}/month = {DateTime: MM}/Day = {DateTime: DD}</ul><br />Časové razítko vytvořené struktury složek se řídí časem UTC a ne místním časem.<br /><br />Pojmenovávání souborů používá následující konvenci: <br /><br />{Vzor předpony cesty}/schemaHashcode_Guid_Number.extension<br /><br />Příklady výstupních souborů:<ul><li>MyOutput/20170901/00/45434_gguid_1. csv</li>  <li>MyOutput/20170901/01/45434_gguid_1. csv</li></ul> <br />Další informace o této funkci najdete v tématu [Azure Stream Analytics vlastního dělení výstupu objektů BLOB](stream-analytics-custom-path-patterns-blob-storage-output.md). |
@@ -119,7 +119,7 @@ Pro konfiguraci datových proudů z Center událostí jako výstupu potřebujete
 | Formát serializace události | Formát serializace pro výstupní data. Podporují se JSON, CSV a Avro. |
 | Kódování | V případě CSV a JSON je v tuto chvíli jediným podporovaným formátem kódování UTF-8. |
 | Oddělovač | Platí pouze pro serializaci CSV. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, mezera, tabulátor a svislá čára. |
-| Formát | Platí pouze pro serializaci JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. **Pole** určuje, že výstup je formátován jako pole objektů JSON. Toto pole je uzavřeno pouze v případě, že se úloha zastaví nebo Stream Analytics přesunula k následujícímu časovému intervalu. Obecně je vhodnější použít JSON oddělený řádkem, protože nevyžaduje žádné speciální zpracování, pokud je výstupní soubor stále zapisován do zápisu. |
+| Formát | Platí pouze pro serializaci JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. **Pole** určuje, že výstup je formátován jako pole objektů JSON. Toto pole je uzavřeno pouze v případě, že se úloha zastaví nebo Stream Analytics přesunula k následujícímu časovému intervalu. Obecně je vhodnější použít JSON oddělený řádkem, protože nevyžaduje žádné speciální zpracování, pokud je výstupní soubor stále zapisován do zápisu. Další informace najdete v části [velikost výstupní dávky](#output-batch-size) . |
 | Sloupce vlastností | Volitelné. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
@@ -158,7 +158,7 @@ Z Stream Analytics | Pro Power BI
 -----|-----
 bigint | Int64
 nvarchar (max) | String
-hodnotu | hodnotu
+Hodnotu | Hodnotu
 float | Double
 Pole záznamu | Typ řetězce, konstantní hodnota "IRecord" nebo "IArray"
 
@@ -168,12 +168,12 @@ Stream Analytics odvodí schéma datového modelu na základě první sady udál
 Nepoužívejte dotaz `SELECT *`, abyste zabránili aktualizaci dynamického schématu napříč řádky. Kromě potenciálních dopadů na výkon může být výsledkem nejistota doba trvání výsledků. Vyberte přesná pole, která se musí zobrazit na řídicím panelu Power BI. Kromě toho musí být hodnoty dat kompatibilní se zvoleným datovým typem.
 
 
-Předchozí/aktuální | Int64 | String | hodnotu | Double
+Předchozí/aktuální | Int64 | String | Hodnotu | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
 String | String | String | String | String 
-hodnotu | String | String |  hodnotu | String
+Hodnotu | String | String |  Hodnotu | String
 
 ## <a name="table-storage"></a>Table Storage
 
@@ -184,7 +184,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto úložiště tabulek. |
-| účet úložiště |Název účtu úložiště, do kterého posíláte výstup. |
+| Účet úložiště |Název účtu úložiště, do kterého posíláte výstup. |
 | Klíč účtu úložiště |Přístupový klíč přidružený k účtu úložiště |
 | Název tabulky |Název tabulky Tabulka se vytvoří, pokud neexistuje. |
 | Klíč oddílu |Název výstupního sloupce, který obsahuje klíč oddílu. Klíč oddílu je jedinečný identifikátor oddílu v tabulce, který tvoří první část primárního klíče entity. Je to hodnota řetězce, která může mít velikost až 1 KB. |
@@ -247,7 +247,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Alias pro odkazování na tento výstup v dotazu Stream Analytics. |
-| jímkou | Azure Cosmos DB. |
+| Jímkou | Azure Cosmos DB. |
 | Možnost importu | Zvolte buď **možnost vybrat Cosmos DB z předplatného** , nebo **Zadejte Cosmos DB nastavení ručně**.
 | ID účtu | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB. |
 | Klíč účtu | Sdílený přístupový klíč pro účet Azure Cosmos DB. |

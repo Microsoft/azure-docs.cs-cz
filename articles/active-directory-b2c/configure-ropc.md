@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023737"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
@@ -25,7 +25,7 @@ Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standar
 
 V Azure Active Directory B2C (Azure AD B2C) jsou podporovány následující možnosti:
 
-- **Nativní klient**: během ověřování dojde k interakci uživatele, když se kód spouští na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je například Android nebo spuštěná v prohlížeči, jako je například JavaScript.
+- **Nativní klient**: během ověřování dojde k interakci uživatele, když se kód spouští na zařízení na straně uživatele. Zařízení může být mobilní aplikace, která běží v nativním operačním systému, jako je Android a iOS.
 - **Veřejný klientský tok**: v volání rozhraní API se odešlou jenom přihlašovací údaje uživatele shromážděné aplikací. Přihlašovací údaje aplikace se neodesílají.
 - **Přidat nové deklarace identity**: obsah TOKENu ID se dá změnit tak, aby se přidaly nové deklarace identity.
 
@@ -66,9 +66,9 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 
 | Key | Hodnota |
 | --- | ----- |
-| Jmen | leadiocl@outlook.com |
-| Zadáno | Passxword1 |
-| parametr grant_type | Zadáno |
+| jmen | leadiocl@outlook.com |
+| zadáno | Passxword1 |
+| parametr grant_type | zadáno |
 | rozsah | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | id_token tokenu |

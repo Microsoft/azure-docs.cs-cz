@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203712"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023643"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Volba správné IoT Hub úrovně pro vaše řešení
 
@@ -39,7 +39,7 @@ Pro jednu IoT Hub lze zvolit pouze jeden typ [edice](https://azure.microsoft.com
 | ---------- | ---------- | ------------- |
 | [Telemetrie ze zařízení do cloudu](iot-hub-devguide-messaging.md) | Ano | Ano |
 | [Identita vázaná na zařízení](iot-hub-devguide-identity-registry.md) | Ano | Ano |
-| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md) a [Event Grid integrace](iot-hub-event-grid.md) | Ano | Ano |
+| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md), [rozšiřování zpráv](iot-hub-message-enrichments-overview.md)a [integrace Event Grid](iot-hub-event-grid.md) | Ano | Ano |
 | [Protokoly HTTP, AMQP a MQTT](iot-hub-devguide-protocols.md) | Ano | Ano |
 | [Služba Device Provisioning](../iot-dps/about-iot-dps.md) | Ano | Ano |
 | [Monitorování a diagnostika](iot-hub-monitor-resource-health.md) | Ano | Ano |
@@ -51,7 +51,7 @@ Pro jednu IoT Hub lze zvolit pouze jeden typ [edice](https://azure.microsoft.com
 
 IoT Hub také nabízí bezplatnou úroveň, která je určena pro testování a vyhodnocení. Má všechny možnosti úrovně Standard, ale omezené odchylky pro zasílání zpráv. Nemůžete upgradovat z úrovně Free na Basic nebo Standard.
 
-## <a name="partitions"></a>Oddíly
+## <a name="partitions"></a>Disk
 
 Centra IoT Azure obsahují mnoho základních součástí [Azure Event Hubs](../event-hubs/event-hubs-features.md), včetně [oddílů](../event-hubs/event-hubs-features.md#partitions). Datové proudy událostí pro centra IoT jsou obvykle vyplněny příchozími daty telemetrie, která jsou uvedena v různých zařízeních IoT. Rozdělení datového proudu událostí se používá ke snížení kolizí, ke kterým dochází při současném čtení a zápisu do datových proudů událostí.
 
@@ -66,7 +66,7 @@ Pokud migrujete z úrovně Basic na úroveň Standard, zůstane konfigurace odd�
 > [!NOTE]
 > Úroveň Free nepodporuje upgrade na Basic nebo Standard.
 
-## <a name="iot-hub-rest-apis"></a>Rozhraní REST API Centra IoT
+## <a name="iot-hub-rest-apis"></a>Rozhraní REST API pro IoT Hub
 
 Rozdíl v podporovaných možnostech mezi úrovněmi Basic a Standard IoT Hub znamená, že některá volání rozhraní API nefungují s centry na úrovni Basic. Následující tabulka uvádí, která rozhraní API jsou k dispozici:
 
@@ -108,8 +108,8 @@ Rozdíl v podporovaných možnostech mezi úrovněmi Basic a Standard IoT Hub zn
 
 Nejlepším způsobem, jak velikost IoT Hub řešení, je vyhodnotit provoz na základě jednotlivých jednotek. Zvažte zejména požadovanou propustnost ve špičce pro následující kategorie operací:
 
-* Zprávy typu zařízení-cloud
-* Zprávy typu cloud zařízení
+* Zprávy ze zařízení do cloudu
+* Zprávy z cloudu na zařízení
 * Operace registru identit
 
 Provoz se měří pro Centrum IoT na jednotlivých jednotkách. Když vytváříte centrum IoT, zvolíte jeho úroveň a edici a nastavíte počet dostupných jednotek. Pro edici B1, B2, S1 nebo S2 můžete zakoupit až 200 jednotek a až 10 jednotek pro edici B3 nebo S3. Po vytvoření centra IoT můžete změnit počet jednotek dostupných v rámci své edice, upgradovat nebo downgradovat mezi edicemi v rámci své vrstvy (B1 až B2) nebo upgradovat z úrovně Basic na úroveň Standard (B1 až S1), aniž by došlo k přerušení stávajících operací. Další informace najdete v tématu [Postup upgradu služby IoT Hub](iot-hub-upgrade.md).  

@@ -1,6 +1,6 @@
 ---
-title: Povolení offline synchronizace pro mobilní aplikace Azure (Cordova) | Dokumentace Microsoftu
-description: Zjistěte, jak používat mobilní aplikace služby App Service do mezipaměti a synchronizaci offline dat v aplikaci Cordova
+title: Povolit offline synchronizaci pro mobilní aplikace Azure (Cordova) | Microsoft Docs
+description: Naučte se používat App Service mobilní aplikace pro ukládání a synchronizaci offline dat v aplikaci Cordova.
 documentationcenter: cordova
 author: elamalani
 manager: crdun
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 04c8e7b2b60a60f17c49862d5c17793c16456032
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dc1183e1557d634ab1880376a1347f43f33b329f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443527"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027505"
 ---
-# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikaci Cordova
+# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikace Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-offline-data) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
-Tento kurz představuje funkci offline synchronizace služby Azure Mobile Apps pro Cordova. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není žádné síťové připojení. Změny jsou uloženy v místní databázi.  Když je zařízení online, tyto změny se synchronizují s vzdálené služby.
+V tomto kurzu se seznámíte s funkcí offline synchronizace služby Azure Mobile Apps pro Cordova. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací @ no__t-0viewing, přidáváním nebo úpravou dat @ no__t-1even, když není k dispozici žádné síťové připojení. Změny jsou uloženy v místní databázi.  Jakmile je zařízení zase online, tyto změny se synchronizují se vzdálenou službou.
 
-Tento kurz je založený na rychlý start řešení Cordova pro Mobile Apps, který vytvoříte, po dokončení tohoto kurzu [rychlý start pro Apache Cordova]. V tomto kurzu rychlý start řešení Chcete-li přidat offline funkce Azure Mobile Apps aktualizujete.  Můžeme také zvýraznit offline specifické pro kód v aplikaci.
+Tento kurz je založený na řešení Cordova rychlý Start pro Mobile Apps, které vytvoříte po dokončení kurzu [Rychlý Start Apache Cordova]. V tomto kurzu aktualizujete řešení pro rychlé zprovoznění a přidáte offline funkce Azure Mobile Apps.  V aplikaci také zvýrazníte kód specifický pro práci v režimu offline.
 
-Další informace o funkci offline synchronizace najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps]. Podrobnosti o použití rozhraní API najdete [dokumentace k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
+Další informace o funkci offline synchronizace najdete v tématu [synchronizace offline dat v Azure Mobile Apps]. Podrobnosti o využití rozhraní API najdete v [dokumentaci k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
 
-## <a name="add-offline-sync-to-the-quickstart-solution"></a>Přidání offline synchronizace do řešení rychlý start
-Offline synchronizace kód musí být přidán do aplikace. Offline synchronizace vyžaduje modul plug-in cordova úložiště sqlite, který automaticky přidá do vaší aplikace při plugin Azure Mobile Apps je součástí projektu. Projekt rychlý Start obsahuje oba tyto moduly plug-in.
+## <a name="add-offline-sync-to-the-quickstart-solution"></a>Přidání offline synchronizace do řešení pro rychlé zprovoznění
+Do aplikace se musí přidat kód offline synchronizace. Offline synchronizace vyžaduje modul plug-in Cordova-SQLite-Storage, který se automaticky přidá do aplikace, když je v projektu zahrnutý modul plug-in Azure Mobile Apps. Projekt rychlý Start zahrnuje oba tyto moduly plug-in.
 
-1. V Průzkumníku řešení sady Visual Studio otevřete index.js a nahraďte následující kód
+1. V Průzkumník řešení aplikace Visual Studio otevřete index. js a nahraďte následující kód
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
@@ -49,7 +49,7 @@ Offline synchronizace kód musí být přidán do aplikace. Offline synchronizac
            todoItemTable,      // Reference to a table endpoint on backend
            syncContext;        // Reference to offline data sync context
 
-2. V dalším kroku nahraďte následujícím kódem:
+2. Dále nahraďte následující kód:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
@@ -71,13 +71,13 @@ Offline synchronizace kód musí být přidán do aplikace. Offline synchronizac
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    Předchozím přidávání kódu inicializovat místní úložiště a definovat místní tabulku, která odpovídá sloupec hodnot použitých v Azure back-endu. (Není nutné zahrnout všechny hodnoty ve sloupcích v tomto kódu.)  `version` Pole se spravuje pomocí mobilního back-endu a slouží k odstranění konfliktů.
+    Předchozí přidání kódu inicializuje místní úložiště a definuje místní tabulku, která odpovídá hodnotám sloupců použitým v back-endu Azure. (Do tohoto kódu nemusíte vkládat všechny hodnoty sloupců.)  Pole `version` se uchovává v mobilním back-endu a používá se pro řešení konfliktů.
 
-    Získání odkazu na kontext synchronizace voláním **getSyncContext**. Kontext synchronizace umožňuje zachovat relací mezi tabulkami sledováním a předávání změn operací push ve všech tabulkách klientská aplikace byla změněna při `.push()` je volána.
+    Získáte odkaz na kontext synchronizace voláním **getSyncContext**. Kontext synchronizace pomáhá zachovat vztahy mezi tabulkami sledováním a vkládáním změn ve všech tabulkách. klientská aplikace se změnila při volání `.push()`.
 
-3. Aktualizujte adresu URL aplikace adresu URL vaší mobilní aplikace aplikace.
+3. Aktualizujte adresu URL aplikace na adresu URL aplikace Mobilní aplikace.
 
-4. V dalším kroku nahraďte tento kód:
+4. Dále nahraďte tento kód:
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
@@ -113,13 +113,13 @@ Offline synchronizace kód musí být přidán do aplikace. Offline synchronizac
         $('#add-item').submit(addItemHandler);
         $('#refresh').on('click', refreshDisplay);
 
-    Předchozí kód inicializuje kontext synchronizace a pak zavolá getSyncTable (namísto jít) k získání odkazu na místní tabulku.
+    Předchozí kód inicializuje kontext synchronizace a poté volá metodu getsync (místo metody GetTable), aby získal odkaz na místní tabulku.
 
-    Tento kód používá místní databázi pro všechny vytváření, čtení, aktualizace a odstranění (CRUD) operací tabulky.
+    Tento kód používá místní databázi pro všechny operace vytvoření, čtení, aktualizace a odstranění (CRUD) tabulky.
 
-    Tato ukázka provádí jednoduché na konflikty pro zpracování chyb. Aplikace skutečný by zpracovávat různé chyby, jako je síťové podmínky, je v konfliktu serveru a dalších. Příklady kódu naleznete v tématu [Ukázka offline synchronizace].
+    Tato ukázka provádí jednoduché zpracování chyb při konfliktu synchronizace. Skutečná aplikace by vedla k různým chybám, jako jsou stavy sítě, konflikty serverů a další. Příklady kódu naleznete v tématu [Ukázka offline synchronizace].
 
-5. Dále přidejte tuto funkci provádět skutečný synchronizace.
+5. Pak přidejte tuto funkci, která provede skutečnou synchronizaci.
 
         function syncBackend() {
 
@@ -133,19 +133,19 @@ Offline synchronizace kód musí být přidán do aplikace. Offline synchronizac
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Můžete se rozhodnout, kdy odešlete změny do back-endu mobilní aplikace po zavolání **syncContext.push()** . Například lze zavolat **syncBackend** v obslužné rutině události tlačítko vázané na tlačítko synchronizovat.
+    Rozhodnete, kdy doručovat změny do back-endu mobilní aplikace voláním **syncContext. push ()** . Například můžete volat **syncBackend** v obslužné rutině události tlačítka vázané na tlačítko synchronizovat.
 
-## <a name="offline-sync-considerations"></a>Důležité informace o offline synchronizace
+## <a name="offline-sync-considerations"></a>Pokyny k offline synchronizaci
 
-V ukázce **nabízených** metodu **syncContext** volat pouze při spuštění aplikace ve funkci zpětného volání pro přihlášení.  V reálné aplikaci může provést tuto funkci synchronizaci spustit ručně nebo při změně stavu sítě.
+V ukázce je metoda **push** **syncContext** volána pouze při spuštění aplikace ve funkci zpětného volání pro přihlášení.  V reálné aplikaci můžete také aktivovat tuto funkci synchronizace ručně nebo při změně stavu sítě.
 
-Pokud o přijetí změn se provede na tabulku, která se má čekající místní aktuality sledována podle kontextu, který vyžádanou operaci automaticky aktivační události oznámení. Při aktualizaci, přidání a dokončení položky v této ukázce můžete vynechat explicitní **nabízených** volat, protože může být redundantní.
+Při spuštění operace vyžádání na tabulce, která má nedokončené místní aktualizace sledované kontextem, bude tato operace vyžádané replikace automaticky spouštět push. Při aktualizaci, přidávání a dokončování položek v této ukázce můžete vynechat explicitní volání **push** , protože může být redundantní.
 
-Zadaný kód se generuje dotaz na všechny záznamy v tabulce vzdálené todoItem, ale je také možné filtrovat záznamy předáním id dotazu a dotaz pro **nabízených**. Další informace najdete v části *Přírůstková synchronizace* v [Synchronizace offline dat v prostředí Azure Mobile Apps].
+V poskytnutém kódu jsou dotazovány všechny záznamy ve vzdálené tabulce todoItem, ale je také možné filtrovat záznamy předáním ID dotazu a dotazu do příkazu **push**. Další informace najdete v části o *přírůstkové synchronizaci* při [Synchronizace offline dat v Azure Mobile Apps].
 
-## <a name="optional-disable-authentication"></a>(Volitelné) Zakázat ověřování
+## <a name="optional-disable-authentication"></a>Volitelné Zakázat ověřování
 
-Pokud nechcete nastavit ověřování před testování offline synchronizaci, okomentujte funkci zpětného volání pro přihlášení, ale ponechte kód uvnitř funkce zpětného volání komentář.  Po okomentování řádky přihlášení, následující kód:
+Pokud nechcete nastavit ověřování před testováním offline synchronizace, odkomentujte funkci zpětného volání pro přihlášení, ale nechte kód uvnitř funkce zpětného volání.  Po přidání komentáře k přihlašovacím řádkům kódu následuje následující kód:
 
       // Login to the service.
       // client.login('twitter')
@@ -156,57 +156,57 @@ Pokud nechcete nastavit ověřování před testování offline synchronizaci, o
         });
       // }, handleError);
 
-Teď aplikace se synchronizuje s Azure back-endu při spuštění aplikace.
+Nyní se aplikace při spuštění aplikace synchronizuje s back-endu Azure.
 
 ## <a name="run-the-client-app"></a>Spuštění klientské aplikace
-Offline synchronizace teď můžete spustit klientskou aplikaci alespoň jednou na jednotlivých platformách k naplnění databáze místní úložiště. Později simulovat scénáři offline a upravovat data v místním úložišti, když je aplikace v režimu offline.
+Když je offline synchronizace povolená, můžete na každé platformě spustit alespoň jednou klientskou aplikaci, aby se naplnila místní databáze úložiště. Později Simulujte scénář offline a upravíte data v místním úložišti, zatímco je aplikace offline.
 
-## <a name="optional-test-the-sync-behavior"></a>(Volitelné) Otestování chování synchronizace
-V této části upravíte klientský projekt k simulaci scénáři offline pomocí Neplatná aplikace URL vaší back-endu. Při přidání nebo změně položek dat, tyto změny jsou uloženy v místním úložišti, ale nejsou synchronizované do backendového úložiště dat, dokud se připojení znovu navázáno.
+## <a name="optional-test-the-sync-behavior"></a>Volitelné Testování chování synchronizace
+V této části upravíte projekt klienta pro simulaci offline scénáře pomocí neplatné adresy URL aplikace pro váš back-end. Když přidáte nebo změníte datové položky, budou tyto změny uloženy v místním úložišti, ale nejsou synchronizovány do úložiště dat back-endu, dokud nebude připojení znovu navázáno.
 
-1. V Průzkumníku řešení otevřete soubor index.js projektu a změňte adresu URL aplikace tak, aby odkazoval na neplatnou adresu URL, jako v následujícím kódu:
+1. V Průzkumník řešení otevřete soubor projektu index. js a změňte adresu URL aplikace tak, aby odkazovala na neplatnou adresu URL, podobně jako v následujícím kódu:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. V index.html, aktualizujte CSP `<meta>` element se stejným neplatná adresa URL.
+2. V souboru index. html aktualizujte prvek CSP `<meta>` se stejnou neplatnou adresou URL.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
-3. Sestavení a spuštění klientské aplikace a Všimněte si, že výjimka přihlášen v konzole, když se aplikace pokusí synchronizovat s back-endu po přihlášení. Všechny nové položky, které přidáte existovat pouze v místním úložišti, dokud se nasdílejí do mobilního back-endu. Klientská aplikace chová se jako připojení k back-endu.
+3. Sestavte a spusťte klientskou aplikaci a Všimněte si, že v konzole se zaprotokoluje výjimka, když se aplikace po přihlášení pokusí o synchronizaci s back-endu. Jakékoli nové přidané položky existují pouze v místním úložišti, dokud nebudou vloženy do mobilního back-endu. Klientská aplikace se chová, jako by byla připojená k back-endu.
 
-4. Aplikaci zavřete a restartujte ji k ověření, že jsou zachované místní úložiště nové položky, kterou jste vytvořili.
+4. Zavřete aplikaci a restartujte ji, abyste ověřili, že nové položky, které jste vytvořili, jsou trvale uložené v místním úložišti.
 
-5. (Volitelné) Pomocí sady Visual Studio zobrazíte tabulky Azure SQL Database zobrazíte, že nedošlo ke změně dat v back-end databáze.
+5. Volitelné Pomocí sady Visual Studio si můžete zobrazit tabulku Azure SQL Database, abyste viděli, že se data v back-end databázi nezměnila.
 
-    V sadě Visual Studio, otevřete **Průzkumníka serveru**. Přejděte k vaší databázi v **Azure**->**databází SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumníku objektů systému SQL Server**. Teď můžete procházet do tabulky SQL database a její obsah.
+    V aplikaci Visual Studio otevřete **Průzkumník serveru**. Přejděte do databáze ve **službě Azure**->**databáze SQL**. Klikněte pravým tlačítkem na databázi a vyberte **otevřít v Průzkumník objektů systému SQL Server**. Teď můžete přejít k tabulce SQL Database a jejímu obsahu.
 
-## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(Volitelné) Testování opětovné připojení k mobilním back-endu
+## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>Volitelné Otestování opětovného připojení k vašemu mobilnímu back-endu
 
-V této části můžete aplikaci znovu připojte mobilní back-endu, který simuluje aplikace vracející se zpět do stavu online. Při přihlášení, data se synchronizuje s mobilním back-endu.
+V této části znovu připojíte aplikaci k mobilnímu back-endu, která simuluje aplikaci, která se vrátí zpátky do online stavu. Když se přihlásíte, data se synchronizují do mobilního back-endu.
 
-1. Znovu otevřít index.js a obnovte adresu URL aplikace.
-2. Znovu otevřít index.html a opravte adresy URL aplikace ve zprostředkovateli CSP `<meta>` elementu.
-3. Znovu sestavit a spustit klientskou aplikaci. Aplikace se pokouší synchronizovat s back-endu mobilní aplikace po přihlášení. Ověřte, že žádné výjimky jsou přihlášeni konzolou pro ladění.
-4. (Volitelné) Zobrazte aktualizovaná data pomocí Průzkumníku objektů systému SQL Server nebo REST nástroje, jako je Fiddleru. Všimněte si, že se synchronizovala data mezi back-end databáze a místní úložiště.
+1. Znovu otevřete index. js a obnovte adresu URL aplikace.
+2. Znovu otevřete index. html a opravte adresu URL aplikace v elementu CSP `<meta>`.
+3. Znovu sestavte a spusťte klientskou aplikaci. Aplikace se po přihlášení pokusí o synchronizaci s back-endu mobilní aplikace. Ověřte, že v konzole ladění nejsou protokolovány žádné výjimky.
+4. Volitelné Zobrazte aktualizovaná data pomocí Průzkumník objektů systému SQL Server nebo nástroje REST, jako je Fiddler. Všimněte si, že data byla synchronizovaná mezi databází back-end a místním úložištěm.
 
-    Všimněte si, že data se synchronizovala mezi databází a místní úložiště a obsahuje položky, které jste přidali, zatímco aplikace byl odpojen.
+    Všimněte si, že data byla synchronizovaná mezi databází a místním úložištěm a obsahuje položky, které jste přidali v době, kdy byla aplikace odpojena.
 
-## <a name="additional-resources"></a>Další materiály
-* [Synchronizace offline dat v prostředí Azure Mobile Apps]
+## <a name="additional-resources"></a>Další zdroje
+* [Synchronizace offline dat v Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 
-## <a name="next-steps"></a>Další postup
-* Zkontrolujte další pokročilé funkce offline synchronizaci, jako je řešení konfliktů v [ukázka offline synchronizace]
-* Projděte si referenční offline synchronizace rozhraní API v [dokumentace k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
+## <a name="next-steps"></a>Další kroky
+* Projděte si pokročilejší funkce offline synchronizace, jako je řešení konfliktů v [Ukázka offline synchronizace] .
+* Přečtěte si referenční informace k rozhraní API offline synchronizace v [dokumentaci k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
 
 <!-- ##Summary -->
 
 <!-- Images -->
 
 <!-- URLs. -->
-[Rychlý start pro Apache Cordova]: app-service-mobile-cordova-get-started.md
+[Rychlý Start Apache Cordova]: app-service-mobile-cordova-get-started.md
 [Ukázka offline synchronizace]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
-[Synchronizace offline dat v prostředí Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Synchronizace offline dat v Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md
 [authentication]: app-service-mobile-cordova-get-started-users.md

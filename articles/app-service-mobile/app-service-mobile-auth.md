@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 1d40f1992a5c68872de6e0fa2fc04a1a25abe674
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3c7329638bd8a5d9e466864d780b7784304fa874
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098596"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027490"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Ověřování a autorizace v Azure App Service pro mobilní aplikace
+
+> [!NOTE]
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 Tento článek popisuje, jak ověřování a autorizace funguje při vývoji nativních mobilních aplikací pomocí back-endu App Service. App Service poskytuje integrované ověřování a autorizaci, takže vaše mobilní aplikace mohou podepisovat uživatele bez nutnosti měnit kód v App Service. Poskytuje snadný způsob ochrany vaší aplikace a práci s daty jednotlivých uživatelů. 
 
@@ -52,7 +56,7 @@ Pokud nechcete nastavit sadu SDK poskytovatele, můžete povolit funkci Mobile A
 Kód pro spuštění tohoto toku je obsažen v kurzu ověřování pro každou platformu. Na konci toku má klientská sada SDK token App Service a token je automaticky připojen ke všem žádostem o back-end aplikace.
 
 Další informace o toku ověřování najdete v tématu [App Service tok ověřování](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje
 
 V následujících kurzech se dozvíte, jak do mobilních klientů přidat ověřování pomocí [toku směrovaného serverem](../app-service/overview-authentication-authorization.md#authentication-flow):
 
@@ -61,7 +65,7 @@ V následujících kurzech se dozvíte, jak do mobilních klientů přidat ově�
 * [Přidání ověřování do aplikace pro Windows][Windows]
 * [Přidání ověřování do aplikace Xamarin. iOS][Xamarin.iOS]
 * [Přidání ověřování do aplikace Xamarin. Android][Xamarin.Android]
-* [Přidání ověřování do aplikace Xamarin.Forms][Xamarin.Forms]
+* [Přidání ověřování do aplikace Xamarin. Forms][Xamarin.Forms]
 * [Přidání ověřování do aplikace Cordova][Cordova]
 
 Pokud chcete pro Azure Active Directory použít [tok směrovaný na klienta](../app-service/overview-authentication-authorization.md#authentication-flow) , použijte následující prostředky:

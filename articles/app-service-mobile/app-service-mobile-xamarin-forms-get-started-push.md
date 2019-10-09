@@ -1,6 +1,6 @@
 ---
-title: Přidání nabízených oznámení do aplikace Xamarin.Forms | Dokumentace Microsoftu
-description: Zjistěte, jak odesílat multiplatformní nabízená oznámení do aplikací Xamarin.Forms pomocí služby Azure.
+title: Přidání nabízených oznámení do aplikace Xamarin. Forms | Microsoft Docs
+description: Naučte se používat služby Azure k posílání nabízených oznámení více platforem do aplikací Xamarin. Forms.
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,63 +14,63 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b7e2ff63211ec5891a48a585e4f69e18116cdeb3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8ce307df954575b3204f7a4b3f46af1f4a9c3089
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446588"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027460"
 ---
-# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Forms
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin. Forms
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center investuje do nové a integrované služby, které jsou centrální při vývoji mobilních aplikací. Vývojáři mohou použít **sestavení**, **testovací** a **rozmístit** služby vytvořit kanál pro průběžnou integraci a doručování. Po nasazení aplikace se můžou vývojáři monitorovat stav a využití své aplikace pomocí **Analytics** a **diagnostiky** služeb a Zaujměte uživatele, kteří používají **Push** Služba. Vývojáři mohou využít i **Auth** k ověření uživatelů a **Data** službu zachovat, synchronizaci dat aplikací v cloudu. Podívejte se na [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-push) ještě dnes.
->
+> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu přidáte nabízená oznámení na všechny projekty, které je výsledkem [Xamarin.Forms úvodní](app-service-mobile-xamarin-forms-get-started.md). To znamená, že nabízené oznámení je odesláno všem klientům multiplatformní pokaždé, když se vložení záznamu.
+V tomto kurzu přidáte nabízená oznámení do všech projektů, které vznikly v [rychlém startu Xamarin. Forms](app-service-mobile-xamarin-forms-get-started.md). To znamená, že nabízené oznámení se pošle všem klientům pro více platforem při každém vložení záznamu.
 
-Pokud použijete serverový projekt stažené rychlý start, budete potřebovat balíček rozšíření nabízené oznámení. Další informace najdete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro iOS, budete potřebovat [členství v programu Apple Developer](https://developer.apple.com/programs/ios/) a fyzickém zařízení iOS. [Simulátoru iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
+Pro iOS budete potřebovat [členství v programu Apple Developer](https://developer.apple.com/programs/ios/) a fyzické zařízení s iOS. [Simulátor iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizovat projekt serveru k odesílání nabízených oznámení
+## <a name="update-the-server-project-to-send-push-notifications"></a>Aktualizace projektového serveru pro odesílání nabízených oznámení
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-and-run-the-android-project-optional"></a>Nakonfigurujte a spusťte projekt pro Android (nepovinné)
+## <a name="configure-and-run-the-android-project-optional"></a>Konfigurace a spuštění projektu pro Android (volitelné)
 
-Dokončení této části ke zprovoznění nabízených oznámení pro Xamarin.Forms Droid projekt pro Android.
+Dokončete tuto část, pokud chcete povolit nabízená oznámení pro projekt Xamarin. Forms Droid pro Android.
 
-### <a name="enable-firebase-cloud-messaging-fcm"></a>Povolení služby Firebase Cloud Messaging (FCM)
+### <a name="enable-firebase-cloud-messaging-fcm"></a>Povolit Firebase Cloud Messaging (FCM)
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Konfigurace back end Mobile Apps k odesílání nabízených oznámení požadavků pomocí FCM
+### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>Konfigurace back-endu Mobile Apps k odesílání nabízených žádostí pomocí FCM
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>Přidání nabízených oznámení do projektu pro Android
 
-Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k registraci ve službě FCM. Můžete také zaregistrovat pro nabízená oznámení pomocí Azure Notification Hubs pomocí back-endu mobilní aplikace a přijímat oznámení.
+S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty a kódy pro registraci v FCM. Můžete se také zaregistrovat k nabízeným oznámením pomocí Azure Notification Hubs prostřednictvím back-endu Mobile Apps a dostávat oznámení.
 
-1. V **Droid** projektu, klikněte pravým tlačítkem na **odkazy > spravovat balíčky NuGet...** .
-1. V okně Správce balíčků NuGet, vyhledejte **Xamarin.Firebase.Messaging** balíček a přidejte do projektu.
-1. Ve vlastnostech projektu **Droid** projektu, nastavte aplikaci zkompilovat pomocí verze Androidu 7.0 nebo vyšší.
-1. Přidat **souboru google-services.json** soubor, stáhnout z konzole Firebase do kořenového adresáře **Droid** projektu a nastavte jeho akci sestavení na **GoogleServicesJson**. Další informace najdete v tématu [přidat soubor JSON služby Google](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. V projektu **Droid** klikněte pravým tlačítkem na **odkazy > spravovat balíčky NuGet...** .
+1. V okně Správce balíčků NuGet vyhledejte balíček **Xamarin. Firebase. Messaging** a přidejte ho do projektu.
+1. Ve vlastnostech projektu projektu **Droid** nastavte aplikaci na kompilovat pomocí Androidu verze 7,0 nebo vyšší.
+1. Přidejte soubor **Google-Services. JSON** stažený z konzoly Firebase do kořenového adresáře projektu **Droid** a nastavte jeho akci sestavení na **GoogleServicesJson**. Další informace najdete v tématu [Přidání souboru JSON služby Google Services](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
-#### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
+#### <a name="registering-with-firebase-cloud-messaging"></a>Registrace pomocí cloudového zasílání zpráv Firebase
 
-1. Otevřete soubor **AndroidManifest.xml** a vložte následující elementy `<receiver>` do elementu `<application>`:
+1. Otevřete soubor **souboru AndroidManifest. XML** a vložte následující prvky `<receiver>` do prvku `<application>`:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -83,9 +83,9 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Implementace služby Firebase Instance ID
+#### <a name="implementing-the-firebase-instance-id-service"></a>Implementace služby ID instance Firebase
 
-1. Přidejte novou třídu do **Droid** projekt s názvem `FirebaseRegistrationService`a ujistěte se, že následující `using` příkazy jsou k dispozici v horní části souboru:
+1. Přidejte novou třídu do projektu **Droid** s názvem `FirebaseRegistrationService` a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
     ```csharp
     using System.Threading.Tasks;
@@ -95,7 +95,7 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     using Microsoft.WindowsAzure.MobileServices;
     ```
 
-1. Nahraďte prázdnou `FirebaseRegistrationService` třídy následujícím kódem:
+1. Nahraďte prázdnou třídu `FirebaseRegistrationService` následujícím kódem:
 
     ```csharp
     [Service]
@@ -122,13 +122,13 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     }
     ```
 
-    `FirebaseRegistrationService` Třída je zodpovědný za generování tokenů zabezpečení, které aplikaci autorizujte pro přístup k FCM. `OnTokenRefresh` Metoda je voláno, když aplikace obdrží registračního tokenu z FCM. Metoda načte token z `FirebaseInstanceId.Instance.Token` vlastnost, která se aktualizuje asynchronně pomocí FCM. `OnTokenRefresh` Zřídka vyvoláním metody, protože token se aktualizuje jenom při instalaci nebo odinstalaci, když uživatel odstraní data aplikací, pokud aplikace odstraní Identifikátor Instance aplikace nebo tokenu zabezpečení byl dojde k ohrožení bezpečnosti. Kromě toho FCM Instance ID služby bude požadovat, že aplikace aktualizuje svůj token pravidelně, obvykle každých 6 měsíců.
+    Třída `FirebaseRegistrationService` zodpovídá za generování tokenů zabezpečení, které aplikaci opravňují k přístupu k FCM. Metoda `OnTokenRefresh` je vyvolána, když aplikace obdrží registrační token z FCM. Metoda načte token z vlastnosti `FirebaseInstanceId.Instance.Token`, která je asynchronně aktualizována pomocí FCM. Metoda `OnTokenRefresh` je nečastěji vyvolána, protože token je aktualizován pouze v případě, že je aplikace nainstalována nebo odinstalována, když uživatel odstraní data aplikace, když aplikace smaže ID instance nebo pokud bylo zabezpečení tokenu ohrožené. Kromě toho bude služba FCM instance ID požadovat, aby aplikace pravidelně aktualizovala svůj token, obvykle každých 6 měsíců.
 
-    `OnTokenRefresh` Také vyvolá metodu `SendRegistrationTokenToAzureNotificationHub` metodu, která slouží k přidružení tokenu registrace uživatele do centra oznámení Azure.
+    Metoda `OnTokenRefresh` také vyvolá metodu `SendRegistrationTokenToAzureNotificationHub`, která se používá k přidružení registračního tokenu uživatele k centru oznámení Azure.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Registraci do centra oznámení Azure
+#### <a name="registering-with-the-azure-notification-hub"></a>Registrace pomocí Centra oznámení Azure
 
-1. Přidejte novou třídu do **Droid** projekt s názvem `AzureNotificationHubService`a ujistěte se, že následující `using` příkazy jsou k dispozici v horní části souboru:
+1. Přidejte novou třídu do projektu **Droid** s názvem `AzureNotificationHubService` a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
     ```csharp
     using System;
@@ -138,7 +138,7 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     using Newtonsoft.Json.Linq;
     ```
 
-1. Nahraďte prázdnou `AzureNotificationHubService` třídy následujícím kódem:
+1. Nahraďte prázdnou třídu `AzureNotificationHubService` následujícím kódem:
 
     ```csharp
     public class AzureNotificationHubService
@@ -167,11 +167,11 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     }
     ```
 
-    `RegisterAsync` Metoda vytvoří šablonu zpráv s oznámením jednoduchá jako JSON a registry získat šablonu oznámení v centru oznámení pomocí služby Firebase registračního tokenu. Tím se zajistí, že všechna naše oznámení odeslaná do centra oznámení Azure se zaměří na zařízení reprezentována registračního tokenu.
+    Metoda `RegisterAsync` vytvoří jednoduchou šablonu zprávy oznámení jako JSON a registruje pro příjem oznámení šablon z centra oznámení pomocí registračního tokenu Firebase. Tím se zajistí, že všechna oznámení posílaná z centra oznámení Azure budou cílit na zařízení reprezentované registračním tokenem.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Zobrazení obsahu nabízené oznámení
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Zobrazení obsahu nabízeného oznámení
 
-1. Přidejte novou třídu do **Droid** projekt s názvem `FirebaseNotificationService`a ujistěte se, že následující `using` příkazy jsou k dispozici v horní části souboru:
+1. Přidejte novou třídu do projektu **Droid** s názvem `FirebaseNotificationService` a ujistěte se, že jsou v horní části souboru k dispozici následující příkazy `using`:
 
     ```csharp
     using Android.App;
@@ -182,7 +182,7 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     using Firebase.Messaging;
     ```
 
-1. Nahraďte prázdnou `FirebaseNotificationService` třídy následujícím kódem:
+1. Nahraďte prázdnou třídu `FirebaseNotificationService` následujícím kódem:
 
     ```csharp
     [Service]
@@ -224,44 +224,44 @@ Back-endu nakonfigurovanou FCM můžete přidat komponenty a kódy pro klienta k
     }
     ```
 
-    `OnMessageReceived` Metodu, která je vyvolána, když aplikace obdrží oznámení z FCM, extrahuje obsah zprávy a volá `SendNotification` metody. Tato metoda převede obsah zprávy do místního oznámení, který se spustí, když je spuštěná aplikace s oznámením v oznamovací oblasti.
+    Metoda `OnMessageReceived`, která je vyvolána, když aplikace obdrží oznámení od FCM, extrahuje obsah zprávy a zavolá metodu `SendNotification`. Tato metoda převede obsah zprávy na místní oznámení, které se spustí, když je aplikace spuštěná, s oznámením zobrazeným v oznamovací oblasti.
 
-Nyní jsou připravené testovací nabízená oznámení v aplikaci spuštěnou na zařízení s Androidem nebo emulátoru.
+Nyní jste připraveni nabízená oznámení testů v aplikaci spuštěné na zařízení s Androidem nebo v emulátoru.
 
-### <a name="test-push-notifications-in-your-android-app"></a>Nabízená oznámení v aplikaci pro Android
+### <a name="test-push-notifications-in-your-android-app"></a>Testování nabízených oznámení v aplikaci pro Android
 
-První dva kroky jsou povinné, pouze při testování na emulátoru.
+První dva kroky jsou požadovány pouze při testování emulátoru.
 
-1. Ujistěte se, že jsou nasazení nebo ladění na zařízení nebo emulátor, který je nakonfigurovaný pomocí služby Google Play. Můžete to ověřit tak, že zkontrolujete, který **Přehrát** aplikace jsou nainstalované na zařízení nebo emulátoru.
-2. Kliknutím přidejte účet Google na zařízení s Androidem **aplikace** > **nastavení** > **přidat účet**. Postupujte podle pokynů, které chcete přidat existující účet Google do zařízení, nebo vytvořte novou.
-3. V sadě Visual Studio nebo Xamarin Studio, klikněte pravým tlačítkem **Droid** projektu a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-4. Klikněte na tlačítko **spustit** se projekt sestavil a aplikace se spustila v emulátoru nebo zařízení s Androidem.
-5. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
-6. Ověřte, že obdržení oznámení při přidání položky.
+1. Ujistěte se, že nasazujete nebo ladíte na zařízení nebo emulátoru nakonfigurovaném pomocí Služby Google Play. Můžete to ověřit tak, že zkontrolujete, jestli jsou aplikace pro **přehrávání** nainstalované v zařízení nebo emulátoru.
+2. Kliknutím na **aplikace**@no__t**nastavení**-1  > **Přidat účet**na zařízení s Androidem přidejte účet Google. Pak podle pokynů přidejte existující účet Google do zařízení nebo vytvořte nový.
+3. V sadě Visual Studio nebo Xamarin Studio klikněte pravým tlačítkem na projekt **Droid** a klikněte na **nastavit jako spouštěný projekt**.
+4. Kliknutím na **Spustit** sestavíte projekt a spustíte aplikaci na svém zařízení nebo emulátoru Android.
+5. V aplikaci zadejte úlohu a potom klikněte na ikonu Plus ( **+** ).
+6. Ověřte, že je při přidání položky přijata oznámení.
 
-## <a name="configure-and-run-the-ios-project-optional"></a>Nakonfigurujte a spusťte projekt pro iOS (volitelné)
+## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurace a spuštění projektu iOS (volitelné)
 
-Tato část se týká spuštění projektu Xamarin iOS pro zařízení s iOS. Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
+Tato část je určena pro spuštění projektu Xamarin iOS pro zařízení s iOS. Tuto část můžete přeskočit, pokud nepracujete se zařízeními s iOS.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-#### <a name="configure-the-notification-hub-for-apns"></a>Konfigurace centra oznámení pro služby APN
+#### <a name="configure-the-notification-hub-for-apns"></a>Konfigurace centra oznámení pro APNS
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-Dále nakonfigurujete nastavení projektu iOS v nástroji Xamarin Studio nebo Visual Studio.
+Dále nakonfigurujete nastavení projektu iOS v Xamarin Studio nebo Visual Studiu.
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 #### <a name="add-push-notifications-to-your-ios-app"></a>Přidání nabízených oznámení do aplikace pro iOS
 
-1. V **iOS** projektu, otevřete AppDelegate.cs a přidejte následující příkaz do horní části souboru kódu.
+1. V projektu **iOS** otevřete AppDelegate.cs a přidejte následující příkaz do horní části souboru kódu.
 
     ```csharp
     using Newtonsoft.Json.Linq;
     ```
 
-2. V **AppDelegate** třídy, přidejte přepsání pro **RegisteredForRemoteNotifications** události k registraci pro oznámení:
+2. Do třídy **AppDelegate** přidejte přepsání pro událost **RegisteredForRemoteNotifications** pro registraci oznámení:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application,
@@ -281,7 +281,7 @@ Dále nakonfigurujete nastavení projektu iOS v nástroji Xamarin Studio nebo Vi
     }
     ```
 
-3. V **AppDelegate**, přidejte také následující přepsání **DidReceiveRemoteNotification** obslužné rutiny události:
+3. V **AppDelegate**přidejte také následující přepsání pro obslužnou rutinu události **DidReceiveRemoteNotification** :
 
     ```csharp
     public override void DidReceiveRemoteNotification(UIApplication application,
@@ -302,9 +302,9 @@ Dále nakonfigurujete nastavení projektu iOS v nástroji Xamarin Studio nebo Vi
     }
     ```
 
-    Tato metoda zpracovává příchozí oznámení, když aplikace běží.
+    Tato metoda zpracovává příchozí oznámení v době, kdy aplikace běží.
 
-4. V **AppDelegate** třídy, přidejte následující kód, který **FinishedLaunching** metody:
+4. Do třídy **AppDelegate** přidejte následující kód do metody **FinishedLaunching** :
 
     ```csharp
     // Register for push notifications.
@@ -318,36 +318,36 @@ Dále nakonfigurujete nastavení projektu iOS v nástroji Xamarin Studio nebo Vi
     UIApplication.SharedApplication.RegisterForRemoteNotifications();
     ```
 
-    To umožňuje podporu pro vzdálené oznámení a požadavky nabízené registrace.
+    To umožňuje podporu pro vzdálená oznámení a žádosti o nabízenou registraci.
 
-Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.
+Vaše aplikace se teď aktualizovala tak, aby podporovala nabízená oznámení.
 
-#### <a name="test-push-notifications-in-your-ios-app"></a>Nabízená oznámení v aplikaci pro iOS
+#### <a name="test-push-notifications-in-your-ios-app"></a>Testování nabízených oznámení v aplikaci pro iOS
 
-1. Klikněte pravým tlačítkem na projekt pro iOS a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-2. Stisknutím klávesy **spustit** tlačítko nebo **F5** v sadě Visual Studio se projekt sestavil a spustil aplikaci v zařízení s Iosem. Pak klikněte na tlačítko **OK** přijímat nabízená oznámení.
+1. Klikněte pravým tlačítkem na projekt pro iOS a pak klikněte na **nastavit jako spouštěný projekt**.
+2. Stisknutím tlačítka **Spustit** nebo **F5** v aplikaci Visual Studio Sestavte projekt a spusťte aplikaci na zařízení se systémem iOS. Pak kliknutím na **OK** potvrďte nabízená oznámení.
 
    > [!NOTE]
-   > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze při prvním spuštění aplikace.
+   > Nabízená oznámení musíte explicitně přijmout z vaší aplikace. Tato žádost nastane jenom při prvním spuštění aplikace.
 
-3. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
-4. Ověřte, že přijetí oznámení a potom klikněte na tlačítko **OK** chcete oznámení zavřít.
+3. V aplikaci zadejte úlohu a potom klikněte na ikonu Plus ( **+** ).
+4. Ověřte, zda bylo přijato oznámení, a poté kliknutím na tlačítko **OK** zavřete oznámení.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurace a spuštění projektů Windows (volitelné)
 
-Tato část se týká s Xamarin.Forms WinApp a WinPhone81 projekty pro zařízení s Windows. Tyto kroky také podporují projekty univerzální platformu Windows (UPW). Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
+Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPhone81 pro zařízení s Windows. Tyto kroky také podporují projekty Univerzální platforma Windows (UWP). Pokud nepracujete se zařízeními s Windows, můžete tuto část přeskočit.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Registrace aplikace Windows pro nabízená oznámení pomocí služby oznámení Windows (WNS)
+#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Registrace aplikace pro Windows pro nabízená oznámení pomocí služby oznamování systému Windows (WNS)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro služby nabízených oznámení Windows
+#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro WNS
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 
-1. V sadě Visual Studio, otevřete **App.xaml.cs** v Windows projekt a přidejte následující příkazy.
+1. V aplikaci Visual Studio otevřete **App.XAML.cs** v projektu Windows a přidejte následující příkazy.
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -357,9 +357,9 @@ Tato část se týká s Xamarin.Forms WinApp a WinPhone81 projekty pro zařízen
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    Nahraďte `<your_TodoItemManager_portable_class_namespace>` s oborem názvů přenosného projektu, který obsahuje `TodoItemManager` třídy.
+    Nahraďte `<your_TodoItemManager_portable_class_namespace>` oborem názvů vašeho přenosného projektu, který obsahuje třídu `TodoItemManager`.
 
-2. V souboru App.xaml.cs přidejte následující **InitNotificationsAsync** metody:
+2. Do App.xaml.cs přidejte následující metodu **InitNotificationsAsync** :
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -385,42 +385,42 @@ Tato část se týká s Xamarin.Forms WinApp a WinPhone81 projekty pro zařízen
     }
     ```
 
-    Tato metoda získá kanál nabízená oznámení a registruje šablonu pro příjem oznámení šablony z vašeho centra oznámení. Šablony oznámení, která podporuje *messageParam* bude doručen do tohoto klienta.
+    Tato metoda načte kanál nabízených oznámení a zaregistruje šablonu pro příjem oznámení šablon z vašeho centra oznámení. Do tohoto klienta bude doručeno oznámení šablony, které podporuje *messageParam* .
 
-3. V souboru App.xaml.cs, aktualizujte **OnLaunched** definici metody obslužné rutiny události přidáním `async` modifikátor. Poté přidejte následující řádek kódu na konec metody:
+3. V App.xaml.cs aktualizujte definici metody obslužné rutiny události po **spuštění** přidáním modifikátoru `async`. Pak na konec metody přidejte následující řádek kódu:
 
     ```csharp
     await InitNotificationsAsync();
     ```
 
-    Tím se zajistí, že registrace nabízených oznámení vytvoří nebo aktualizuje pokaždé, když je aplikace spuštěná. Je potřeba provést k zajištění, že kanál nabízených oznámení WNS je vždy aktivní.  
+    Tím zajistíte, že se registrace nabízených oznámení vytvoří nebo aktualizuje při každém spuštění aplikace. Je důležité to udělat, aby se zaručilo, že kanál nabízených oznámení WNS je vždycky aktivní.  
 
-4. V Průzkumníku řešení sady Visual Studio, otevřete **Package.appxmanifest** souboru a nastavit **podporuje informační zprávy** k **Ano** pod **oznámení**.
-5. Sestavení aplikace a zkontrolujte, že jste žádné chyby. Klientské aplikace by měla nyní zaregistrovat pro šablony oznámení z back-endu Mobile Apps. Tato část opakujte pro každý projekt Windows ve vašem řešení.
+4. V Průzkumník řešení pro Visual Studio otevřete soubor **Package. appxmanifest** a v části **oznámení**nastavte **informační** zprávy s možností **Ano** .
+5. Sestavte aplikaci a ověřte, že nedošlo k chybám. Vaše klientská aplikace by se teď měla zaregistrovat pro oznámení šablon z Mobile Apps back-endu. Tento oddíl opakujte pro každý projekt Windows ve vašem řešení.
 
-#### <a name="test-push-notifications-in-your-windows-app"></a>Nabízená oznámení v aplikaci pro Windows
+#### <a name="test-push-notifications-in-your-windows-app"></a>Testování nabízených oznámení v aplikaci pro Windows
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt Windows a klikněte na tlačítko **nastavit jako spouštěný projekt**.
-2. Stiskněte tlačítko **Spustit** a sestavte projekt a spusťte aplikaci.
-3. V aplikaci, zadejte název nového úkolu a potom klikněte na znaménko plus ( **+** ) ikonu a přidejte ji.
-4. Ověřte, že je přijato oznámení, když je položka přidána.
+1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt Windows a klikněte na **nastavit jako spouštěný projekt**.
+2. Stisknutím tlačítka **Spustit** Sestavte projekt a spusťte aplikaci.
+3. V aplikaci zadejte název nového TodoItem a kliknutím na ikonu Plus ( **+** ) ho přidejte.
+4. Ověřte, že je při přidání položky přijata oznámení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o nabízených oznámení:
+Můžete získat další informace o nabízených oznámeních:
 
-* [Odesílání nabízených oznámení z Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Posílání nabízených oznámení z Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
 * [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
-* [Vzdálená oznámení pomocí služby Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
-* [Diagnostikujte problémy nabízených oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Existují různé důvody, proč oznámení může získáte nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistěte příčinu selhání nabízené oznámení.
+* [Vzdálená oznámení pomocí zasílání zpráv Firebase do cloudu](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
+* [Diagnostikovat problémy s nabízenými oznámeními](../notification-hubs/notification-hubs-push-notification-fixer.md)  
+  Existují různé důvody, proč mohou být oznámení vyřazena nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistit hlavní příčinu selhání nabízených oznámení.
 
-Také budete moct pokračovat do jednoho z následujících kurzů:
+Můžete také pokračovat k jednomu z následujících kurzů:
 
 * [Přidání ověřování do aplikace](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Povolení offline synchronizace u aplikace](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Zjistěte, jak pomocí back-endu Mobile Apps přidat do aplikace podporu offline režimu. Offline synchronizace, mohou uživatelé komunikovat s mobilní aplikací&mdash;zobrazení, přidání nebo úprava dat&mdash;i v případě, že není žádné síťové připojení.
+  Naučte se ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
+* [Povolit offline synchronizaci vaší aplikace](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Naučte se, jak pomocí back-endu Mobile Apps přidat do aplikace podporu offline režimu. Při offline synchronizaci můžou uživatelé interaktivně pracovat s mobilní aplikací @ no__t-0viewing, přidávat nebo upravovat data @ no__t-1even, když není k dispozici žádné síťové připojení.
 
 <!-- Images. -->
 
