@@ -259,7 +259,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 ## <a name="monitor-incoming-email"></a>Monitorování příchozích e-mailů
 
-1. V Návrháři zadejte do pole hledání filtr „při přijetí nového e-mailu“. Vyberte tuto aktivační událost pro poskytovatele e-mailu: **Při přijetí nového e-mailu – <*poskytovatele e* -mailu>**
+1. V Návrháři zadejte do pole hledání filtr „při přijetí nového e-mailu“. Vyberte tuto aktivační událost pro poskytovatele e-mailu: **Při přijetí nového e-mailu – <*poskytovatele e-mailu*>**
 
    Příklad:
 
