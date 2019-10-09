@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0f54f218c630129049182e00ad3c53624172a5f0
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039074"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166533"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure jaře Cloud?
 
@@ -19,7 +19,8 @@ Jarní cloud Azure usnadňuje nasazení mikroslužeb založených na jarních ap
 
 V rámci ekosystému Azure umožňuje Azure jaře Cloud snadnou vazbu na další služby Azure, včetně úložiště, databází, monitorování a dalších.
 
-Jarní cloud Azure je aktuálně ve verzi Preview.  Pokud chcete mít přístup k této službě, když je ve verzi Preview, obraťte se na nás e-mailem: azure-spring-cloud@service.microsoft.com.
+Jarní cloud Azure je aktuálně ve verzi Preview.  Pokud chcete získat přístup k této službě, když je ve verzi Preview, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Začněte tím, že dokončíte rychlý Start jarního cloudu pomocí rozhraní příkazového [řádku Azure CLI](spring-cloud-quickstart-launch-app-cli.md), [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)nebo [Maven](spring-cloud-quickstart-launch-app-maven.md).
 

@@ -1,17 +1,17 @@
 ---
 title: Co je verze Preview služby Azure Data Share
-description: Přehled služby Azure Data Share Preview
+description: Přečtěte si, jak jednoduše a bezpečně sdílet data s více zákazníky a partnery pomocí Azure Data Share Preview.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6ba6e9df7b3fd2992891f4b085581c51fe900744
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421397"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169075"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Co je Azure Data Share Preview?
 
@@ -90,6 +90,6 @@ Azure Data Share neukládá žádná data. Data se ukládají do podkladových �
 
 Služba Azure Data Share není ve vaší oblasti k dispozici, aby ji bylo možné využívat. Pokud máte například data uložená v účtu Azure Storage umístěném v oblasti, kde není ještě dostupná služba Azure Data Share, můžete tuto službu využít ke sdílení dat. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux'
+title: 'Rychlý Start: použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux'
 description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI vytvořit virtuální počítač s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 0208e72263991daceed52073bcce8b3e01f8e8c2
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801054"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174282"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Linuxem. V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
+V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure (CLI) nasadit virtuální počítač (VM) pro Linux v Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, [https://shell.azure.com/bash](https://shell.azure.com/bash)že kliknete na. Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete také otevřít na samostatné kartě prohlížeče tak, že kliknete na [https://shell.azure.com/bash](https://shell.azure.com/bash). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
 
 Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroup --location eastus
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm).
 
-Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh*). `--generate-ssh-keys` Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. Parametr `--generate-ssh-keys` slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh*). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -117,7 +117,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, otevřeli jste síťový port pro webový provoz a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 

@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828219"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173404"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (Preview)
 
@@ -145,7 +145,7 @@ Automatické obnovení se také aktivuje při nasazení některých aktualizací
 
 Pokud je databáze bez serveru pozastavená, pak se při prvním přihlášení obnoví databáze a vrátí se chyba s oznámením, že databáze není k dispozici, kód chyby 40613. Po obnovení databáze se přihlašovací jméno musí znovu pokusit o navázání připojení. Klienti databáze s logikou opakování připojení by nemuseli upravovat.
 
-### <a name="latency"></a>Latence
+### <a name="latency"></a>latence
 
 Latence pro autoresume a autopauza databáze bez serveru je obvykle na hodnotu 1 minuta k autoresume a 1-10 minut pro autopauzu.
 
@@ -326,7 +326,7 @@ Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda. 
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Výpočetní úroveň bez serveru je dostupná po celém světě s výjimkou následujících oblastí: Austrálie – střed, Čína – východ, Čína – sever, Francie – jih, Německo – střed, Německo – západ, Indie – západ, Korea – jih, Jižní Afrika – západ, Velká Británie – sever, Velká Británie – jih, Velká Británie – západ a západ Střed USA.
+Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou následujících oblastí: Čína – východ, Čína – sever, Německo Central, Německo – severovýchod, Velká Británie – sever, Velká Británie – jih 2, Středozápadní USA a US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>Další kroky
 

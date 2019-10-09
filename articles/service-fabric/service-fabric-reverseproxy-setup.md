@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
-ms.author: chackdan
-ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.author: pepogors
+ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030810"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166583"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete v tématu [reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md). V tomto článku se dozvíte, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -29,10 +29,10 @@ Azure Portal poskytuje možnost Povolit reverzní proxy server při vytváření
 
 Pokud chcete konfigurovat reverzní proxy server, když [vytvoříte cluster pomocí Azure Portal](./service-fabric-cluster-creation-via-portal.md), ujistěte se, že jste provedli následující akce:
 
-1. V **kroku 2: Konfigurace**clusteru, v části **Konfigurace typu uzlu**vyberte **Povolit reverzní proxy**.
+1. V **kroku 2: konfigurace clusteru**v části **typ uzlu Konfigurace**vyberte **Povolit reverzní proxy server**.
 
    ![Povolit reverzní proxy na portálu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Volitelné Ke konfiguraci zabezpečeného reverzního proxy serveru musíte nakonfigurovat certifikát SSL. V **kroku 3: Zabezpečení**, v části **Konfigurovat nastavení zabezpečení clusteru**, v části **typ konfigurace**vyberte možnost **vlastní**. Pak v části **certifikát SSL pro reverzní proxy**vyberte **Zahrnout certifikát SSL pro reverzní proxy** a zadejte podrobnosti o certifikátu.
+2. Volitelné Ke konfiguraci zabezpečeného reverzního proxy serveru musíte nakonfigurovat certifikát SSL. V **kroku 3: zabezpečení**v části **Konfigurace nastavení zabezpečení clusteru**v části **typ konfigurace**vyberte možnost **vlastní**. Pak v části **certifikát SSL pro reverzní proxy**vyberte **Zahrnout certifikát SSL pro reverzní proxy** a zadejte podrobnosti o certifikátu.
 
    ![Konfigurace zabezpečeného reverzního proxy serveru na portálu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -309,7 +309,7 @@ Následující JSON odkazuje na stejnou šablonu, která se používá v [Povole
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Přizpůsobení chování reverzního proxy serveru pomocí nastavení prostředků infrastruktury
 
-Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v souboru ClusterConfig. JSON pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v části věnované vlastnostem clusteru. 
+Můžete přizpůsobit chování reverzního proxy serveru prostřednictvím nastavení prostředků infrastruktury v šabloně Správce prostředků pro clustery hostované v Azure nebo v souboru ClusterConfig. JSON pro samostatné clustery. Nastavení, které řídí chování reverzního proxy serveru, se nachází v části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) v části **fabricSettings** v části věnované **vlastnostem** clusteru. 
 
 Například můžete nastavit hodnotu **DefaultHttpRequestTimeout** , abyste nastavili časový limit pro požadavky na reverzní proxy na 180 sekund, jak je uvedeno v následujícím formátu JSON:
 
@@ -335,6 +335,6 @@ Další informace o aktualizaci nastavení prostředků infrastruktury pro clust
 
 K navázání zabezpečené komunikace mezi reverzním proxy serverem a službami se používá několik nastavení prostředků infrastruktury. Podrobné informace o těchto nastaveních najdete v tématu [připojení k zabezpečené službě pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nastavení přesměrování na zabezpečenou službu HTTP pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md)
 * Možnosti konfigurace reverzního proxy serveru najdete [v části ApplicationGateway/http tématu přizpůsobení Service Fabricho nastavení clusteru](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

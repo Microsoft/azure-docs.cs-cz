@@ -1,23 +1,27 @@
 ---
-title: Spustit svou jarní cloudovou aplikaci ze zdrojového kódu
+title: 'Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu'
 description: Naučte se, jak spustit cloudovou aplikaci Azure pro jaře přímo ze zdrojového kódu.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038805"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170535"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Spustit svou jarní cloudovou aplikaci ze zdrojového kódu
 
 Jarní cloud Azure umožňuje spustit aplikaci přímo ze zdrojového kódu Java nebo z předem připraveného JAR. Tento článek vás provede potřebnými kroky.
 
-## <a name="initial-requirements"></a>Počáteční požadavky
+## <a name="prerequisites"></a>Předpoklady
+
+>[!Note]
+> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Než začnete, ujistěte se, že vaše předplatné Azure má požadované závislosti:
 
