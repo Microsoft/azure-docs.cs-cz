@@ -1,5 +1,5 @@
 ---
-title: Nahrát a svázat certifikát SSL – Azure App Service | Dokumentace Microsoftu
+title: Nahrání a vytvoření vazby certifikátu SSL-Azure App Service | Microsoft Docs
 description: Zjistěte, jak ve službě Azure App Service vytvořit vazbu vlastního certifikátu SSL k webové aplikaci, back-endu mobilní aplikace nebo aplikaci API.
 services: app-service\web
 documentationcenter: nodejs
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 32e6311a8796e708119f3e1df813b6ebb2ed0673
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: c5095bc8c274ef0985b00459b0d088371ab24d88
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743010"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177045"
 ---
-# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Kurz: Nahrání a vytvoření vazby certifikátů SSL do služby Azure App Service
+# <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>Kurz: nahrávání a vázání certifikátů SSL pro Azure App Service
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak zabezpečit vlastní domény ve službě App Service s certifikátem, který jste si koupili od důvěryhodné certifikační autority. Je také ukazuje, jak nahrát libovolný privátní a veřejné certifikáty požadavkům vašich aplikací. Jakmile budete hotovi, budete mít přístup k aplikaci přes koncový bod HTTPS vlastní domény DNS.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak zabezpečit vlastní doménu v App Service s certifikátem zakoupeným od důvěryhodné certifikační autority. Také se dozvíte, jak nahrát všechny soukromé a veřejné certifikáty, které vaše aplikace potřebuje. Až budete hotovi, budete mít přístup k aplikaci na koncovém bodu HTTPS vaší vlastní domény DNS.
 
 ![Webová aplikace s vlastním certifikátem SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -32,28 +32,28 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Upgrade cenové úrovně aplikace
-> * Zabezpečte vlastní doménu s certifikátem
-> * Odeslání privátního certifikátu
-> * Odeslat veřejný certifikát
+> * Zabezpečení vlastní domény pomocí certifikátu
+> * Nahrání privátního certifikátu
+> * Nahrajte veřejný certifikát.
 > * Obnovení certifikátů
 > * Vynucení HTTPS
 > * Vynucení protokolu TLS 1.1/1.2
 > * Automatizace správy protokolu TLS pomocí skriptů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - [Vytvořit aplikaci App Service](/azure/app-service/)
-- [Mapování vlastního názvu DNS do aplikace služby App Service](app-service-web-tutorial-custom-domain.md) (je-li zabezpečení vlastní domény)
+- [Mapování vlastního názvu DNS na aplikaci App Service](app-service-web-tutorial-custom-domain.md) (při zabezpečení vlastní domény)
 - Získat certifikát od důvěryhodné certifikační autority
-- Privátní klíč, který jste použili k podepsání žádosti o certifikát (pro privátní certifikáty)
+- Máte privátní klíč, který jste použili k podepsání žádosti o certifikát (u privátních certifikátů).
 
 <a name="requirements"></a>
 
 ## <a name="prepare-a-private-certificate"></a>Příprava privátního certifikátu
 
-K zabezpečení domény, certifikát musí splňovat následující požadavky:
+Pro zabezpečení domény musí certifikát splňovat následující požadavky:
 
 * Nakonfigurováno pro ověřování serveru
 * Podepsaný důvěryhodnou certifikační autoritou
@@ -62,12 +62,12 @@ K zabezpečení domény, certifikát musí splňovat následující požadavky:
 * Obsahuje v řetězu certifikátů všechny zprostředkující certifikáty
 
 > [!TIP]
-> Pokud je potřeba získat vlastního certifikátu SSL, můžete získat na webu Azure Portal přímo a importujte ho do své aplikace. Postupujte podle [kurzu Certifikáty App Service](web-sites-purchase-ssl-web-site.md).
+> Pokud potřebujete získat vlastní certifikát SSL, můžete ho získat přímo v Azure Portal a naimportovat ho do vaší aplikace. Postupujte podle [kurzu Certifikáty App Service](web-sites-purchase-ssl-web-site.md).
 
 > [!NOTE]
 > **Certifikáty ECC (elliptic curve cryptography)** můžou fungovat se službou App Service, ale tento článek se jimi nezabývá. Konkrétní pokyny k vytvoření certifikátů ECC vám sdělí vaše certifikační autorita.
 
-Po získání certifikátu od poskytovatele certifikát, postupujte podle kroků v této části, aby byla připravena pro službu App Service.
+Jakmile obdržíte certifikát od poskytovatele certifikátů, postupujte podle kroků v této části, aby byl připravený na App Service.
 
 ### <a name="merge-intermediate-certificates"></a>Sloučení zprostředkujících certifikátů
 
@@ -109,20 +109,20 @@ Po zobrazení výzvy definujte heslo pro export. Toto heslo použijete později 
 
 Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo nástroj _Certreq.exe_, nainstalujte certifikát na místním počítači a pak [exportujte certifikát do formátu PFX](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
-Jste nyní připraveno nahrajte certifikát do služby App Service.
+Nyní jste si certifikát nahráli do App Service.
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 <a name="upload"></a>
 
-## <a name="secure-a-custom-domain"></a>Zabezpečte vlastní doménu
+## <a name="secure-a-custom-domain"></a>Zabezpečení vlastní domény
 
 > [!TIP]
-> Pokud je potřeba získat vlastního certifikátu SSL, můžete získat na webu Azure Portal přímo a vázat na vaši aplikaci. Postupujte podle [kurzu Certifikáty App Service](web-sites-purchase-ssl-web-site.md).
+> Pokud potřebujete získat vlastní certifikát SSL, můžete ho získat přímo v Azure Portal a vytvořit jeho propojení s vaší aplikací. Postupujte podle [kurzu Certifikáty App Service](web-sites-purchase-ssl-web-site.md).
 
-K zabezpečení [vlastní doménu](app-service-web-tutorial-custom-domain.md) certifikátem třetích stran, nahrajete [připravili privátního certifikátu](#prepare-a-private-certificate) a pak vytvořit vazbu k vlastní doméně, ale služby App Service zjednodušuje proces za vás. Proveďte následující kroky:
+Pokud chcete zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) s certifikátem třetí strany, nahrajete [připravený privátní certifikát](#prepare-a-private-certificate) a potom ho svážete s vlastní doménou, ale App Service tento proces zjednodušuje. Proveďte následující kroky:
 
-Klikněte na tlačítko **vlastní domény** v levém navigačním panelu vaší aplikace, pak klikněte na tlačítko **přidat vazbu** pro doménu, kterou chcete zabezpečit. Pokud nevidíte **přidat vazbu** pro doménu, pak je již zabezpečená a musí mít **Secure** stav protokolu SSL.
+V levém navigačním panelu aplikace klikněte na **vlastní domény** a pak klikněte na **Přidat vazbu** pro doménu, kterou chcete zabezpečit. Pokud nevidíte **Přidat vazbu** pro doménu, pak je už zabezpečená a měla by mít **zabezpečený** stav SSL.
 
 ![Přidat vazbu k doméně](./media/app-service-web-tutorial-custom-ssl/secure-domain-launch.png)
 
@@ -134,45 +134,45 @@ Klikněte na **Odeslat**.
 
 ![Nahrát certifikát pro doménu](./media/app-service-web-tutorial-custom-ssl/secure-domain-upload.png)
 
-Počkejte, Azure, nahrát svůj certifikát a spusťte dialogové okno vazby SSL.
+Počkejte, až Azure nahraje váš certifikát a spustí dialogové okno vazby SSL.
 
-V dialogovém okně vazby SSL, vyberte certifikát, který jste nahráli a typ SSL a pak klikněte na tlačítko **přidat vazbu**.
+V dialogovém okně vazby SSL vyberte certifikát, který jste nahráli, a typ SSL a pak klikněte na **Přidat vazbu**.
 
 > [!NOTE]
-> Jsou podporovány následující typy SSL:
+> Podporují se tyto typy SSL:
 >
-> - **[Na základě SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)**  -lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).
+> - **[SSL založené na sni](https://en.wikipedia.org/wiki/Server_Name_Indication)** – můžete přidat několik vazeb SSL založených na sni. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).
 > - **SSL na základě IP adresy** – Můžete přidat pouze jednu vazbu SSL na základě IP adresy. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Pokud chcete zabezpečit více domén, musíte je všechny zabezpečit pomocí stejného certifikátu. Toto je tradiční možnost vytvoření vazby SSL.
 
 ![Vytvoření vazby SSL k doméně](./media/app-service-web-tutorial-custom-ssl/secure-domain-bind.png)
 
-Stav SSL domény by měl nyní být změněn na **Secure**.
+Stav protokolu SSL domény by se teď měl změnit na **zabezpečený**.
 
-![Domain secured](./media/app-service-web-tutorial-custom-ssl/secure-domain-finished.png)
+![Zabezpečená doména](./media/app-service-web-tutorial-custom-ssl/secure-domain-finished.png)
 
 > [!NOTE]
-> A **Secure** stát **vlastní domény** prostředky, které je zabezpečený pomocí certifikátu, ale neprovádí kontrolu služby App Service, pokud je certifikát podepsaný svým držitelem nebo vypršela platnost, například, které může taky způsobovat prohlížeče Zobrazte chybu nebo upozornění.
+> **Zabezpečený** stav ve **vlastních doménách** znamená, že je zabezpečený certifikátem, ale App Service nekontroluje, jestli je certifikát podepsaný svým držitelem nebo pokud vypršela jeho platnost, což může taky způsobit, že se v prohlížečích zobrazí chyba nebo upozornění.
 
 ## <a name="remap-a-record-for-ip-ssl"></a>Přemapování záznamu A pro IP SSL
 
-Pokud nepoužíváte SSL na základě IP adresy ve vaší aplikaci, přejděte k [Test HTTPS pro vlastní doménu](#test).
+Pokud v aplikaci nepoužíváte protokol SSL založený na protokolu IP, přejděte k [testu HTTPS pro vaši vlastní doménu](#test).
 
-Ve výchozím nastavení vaše aplikace používá sdílenou veřejnou IP adresu. Když vytvoříte vazbu certifikátu SSL na základě IP adresy, App Service vytvoří novou vyhrazenou IP adresu pro vaši aplikaci.
+Ve výchozím nastavení vaše aplikace používá sdílenou veřejnou IP adresu. Když svážete certifikát s protokolem SSL na základě IP adresy, App Service pro vaši aplikaci vytvoří novou vyhrazenou IP adresu.
 
-Pokud jste namapovali záznam A do vaší aplikace, aktualizujte registr domény s tuto novou vyhrazenou IP adresu.
+Pokud jste namapovali záznam A na svou aplikaci, aktualizujte svůj registr domény pomocí této nové vyhrazené IP adresy.
 
-Vaše aplikace **vlastní domény** stránka je aktualizována novou vyhrazenou IP adresu. [Zkopírujte tuto IP adresu](app-service-web-tutorial-custom-domain.md#info) a pak [přemapujte záznam A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na tuto novou IP adresu.
+Stránka **vlastní doména** vaší aplikace se aktualizuje o novou vyhrazenou IP adresu. [Zkopírujte tuto IP adresu](app-service-web-tutorial-custom-domain.md#info) a pak [přemapujte záznam A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na tuto novou IP adresu.
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>Test HTTPS
 
-Teď už zbývá jen ověřit, že HTTPS na vaší vlastní doméně funguje. V různých prohlížečích přejděte do `https://<your.custom.domain>` k zkontrolujte, že se do vaší aplikace.
+Teď už zbývá jen ověřit, že HTTPS na vaší vlastní doméně funguje. V různých prohlížečích přejděte na `https://<your.custom.domain>` a podívejte se, že aplikace funguje.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> Pokud má vaše aplikace zobrazí chyby ověření certifikátu, pravděpodobně používáte certifikát podepsaný svým držitelem.
+> Pokud vaše aplikace poskytuje chyby ověřování certifikátů, pravděpodobně používáte certifikát podepsaný svým držitelem.
 >
 > Pokud to není váš případ, možná jste při exportování certifikátu do souboru PFX vynechali zprostředkující certifikáty.
 
@@ -188,13 +188,13 @@ Vaše příchozí IP adresa se může změnit při odstranění vazby, a to i v 
 
 ## <a name="enforce-https"></a>Vynucení HTTPS
 
-Ve výchozím nastavení každý uživatel dál přístup k aplikaci pomocí protokolu HTTP. Všechny požadavky HTTP můžete přesměrovat na port HTTPS.
+Ve výchozím nastavení může kdokoli k vaší aplikaci přistupovat pomocí protokolu HTTP. Všechny požadavky HTTP můžete přesměrovat na port HTTPS.
 
-Na stránce vaší aplikace v levém navigačním panelu vyberte **nastavení SSL**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
+V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
 
 ![Vynucení HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
+Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Například:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -204,7 +204,7 @@ Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na v
 
 Vaše aplikace ve výchozím nastavení povoluje protokol [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2, což je doporučená úroveň protokolu TLS z hlediska oborových standardů, například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Pokud chcete vynucovat jiné verze protokolu TLS, postupujte následovně:
 
-Na stránce vaší aplikace v levém navigačním panelu vyberte **nastavení SSL**. Pak v části **Verze protokolu TLS** vyberte minimální požadovanou verzi protokolu TLS. Toto nastavení řídí pouze příchozí volání. 
+V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pak v části **Verze protokolu TLS** vyberte minimální požadovanou verzi protokolu TLS. Toto nastavení řídí pouze příchozí volání. 
 
 ![Vynucení protokolu TLS 1.1 nebo 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
@@ -212,7 +212,7 @@ Po dokončení operace bude vaše aplikace odmítat všechna připojení využí
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
-Můžete automatizovat vazby SSL pro vaši aplikaci pomocí skriptů s využitím [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo [prostředí Azure PowerShell](/powershell/azure/overview).
+K automatizaci vazeb SSL pro vaši aplikaci můžete použít skripty pomocí [Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -233,9 +233,18 @@ Následující příkaz s použitím kryptografického otisku z předchozího p�
 ```azurecli-interactive
 az webapp config ssl bind \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --certificate-thumbprint $thumbprint \
     --ssl-type SNI \
+```
+
+Následující příkaz vynutí, aby aplikace používala protokol HTTPS.
+
+```azurecli-interactive
+az webapp update \
+    --name <app-name> \
+    --resource-group <resource-group-name> \
+    --https-only true
 ```
 
 Následující příkaz vynutí minimální verzi protokolu TLS 1.2.
@@ -243,7 +252,7 @@ Následující příkaz vynutí minimální verzi protokolu TLS 1.2.
 ```azurecli-interactive
 az webapp config set \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --min-tls-version 1.2
 ```
 
@@ -263,11 +272,11 @@ New-AzWebAppSSLBinding `
     -SslState SniEnabled
 ```
 
-## <a name="use-certificates-in-your-code"></a>Používání certifikátů v kódu
+## <a name="use-certificates-in-your-code"></a>Použití certifikátů v kódu
 
-Pokud vaše aplikace potřebuje k připojení ke vzdáleným prostředkům a vzdáleného prostředku vyžaduje ověřování pomocí certifikátu, můžete nahrát veřejný nebo privátní certifikáty do vaší aplikace. Není nutné k vytvoření vazby tyto certifikáty žádné vlastní domény ve vaší aplikaci. Další informace najdete v tématu [Použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md).
+Pokud se vaše aplikace potřebuje připojit ke vzdáleným prostředkům a vzdálený prostředek vyžaduje ověření certifikátu, můžete do aplikace nahrát veřejné nebo privátní certifikáty. Tyto certifikáty nemusíte Přivážete k žádné vlastní doméně ve vaší aplikaci. Další informace najdete v tématu [Použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

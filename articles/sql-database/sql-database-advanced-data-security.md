@@ -6,16 +6,16 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
-author: monhaber
-ms.author: v-mohabe
+author: rkarlin
+ms.author: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc302d5435234b8cad9d79b5d626056e4d1e2cf2
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569539"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170376"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Rozšířené zabezpečení dat pro Azure SQL Database
 
@@ -25,7 +25,7 @@ Rozšířené zabezpečení dat je jednotný balíček pro pokročilé funkce za
 
 Služba ADS (Advanced Data Security) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace dat & klasifikace, posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky.
 
-- [Klasifikace & Discovery Data](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) nabízí funkce, které jsou integrované v Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Klasifikace & Discovery dat](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) poskytuje možnosti integrované do Azure SQL Database pro zjišťování, klasifikaci a označování & ochrany citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
 - [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je jednoduchá konfigurace služby, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
 - [Rozšířená ochrana před internetovými útoky](sql-database-threat-detection-overview.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo jejím zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Výstrahy rozšířené ochrany před internetovými útoky poskytují podrobné informace o podezřelé aktivitě a doporučuje akci, jak tuto hrozbu prozkoumat a zmírnit.
 
@@ -37,7 +37,7 @@ ADS vyrovnává ceny s Azure Security Center úrovně Standard, kde se každý c
 
 Následující kroky vám pomohou začít s REKLAMou.
 
-## <a name="1-enable-ads"></a>1. Povolit reklamy
+## <a name="1-enable-ads"></a>1. povolení reklam
 
 Povolte reklamu tak, že přejdete na **pokročilé zabezpečení dat** v záhlaví **zabezpečení** pro vaši instanci serveru SQL Database nebo spravovaných. Pokud chcete povolit reklamu pro všechny databáze na databázovém serveru nebo ve spravované instanci, klikněte na **Povolit rozšířená data zabezpečení na serveru**.
 
@@ -49,7 +49,7 @@ Povolte reklamu tak, že přejdete na **pokročilé zabezpečení dat** v záhla
 > [!NOTE]
 > Náklady na reklamu se zarovnají s Azure Security Centermi cenami na úrovni Standard na uzel, kde uzel je celý SQL Database Server nebo spravovaná instance. Proto platíte jenom jednou za ochranu všech databází na databázovém serveru nebo na spravované instanci pomocí reklam. S bezplatnou zkušební verzí můžete nejdřív vyzkoušet reklamu.
 
-## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Zahájení klasifikace dat, sledování slabých míst a vyšetřování výstrah hrozeb
+## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. zahájení klasifikace dat, sledování ohrožení zabezpečení a vyšetřování výstrah hrozeb
 
 Klikněte na kartu **klasifikace & zjišťování dat** , abyste viděli Doporučené citlivé sloupce pro klasifikaci a klasifikaci dat pomocí popisků trvalé citlivosti. Pokud chcete zobrazit a spravovat kontroly a sestavy ohrožení zabezpečení a sledovat stature zabezpečení, klikněte na kartu **posouzení ohrožení zabezpečení** . Pokud se přijaly výstrahy zabezpečení, klikněte na kartu **Rozšířená ochrana před internetovými útoky** , abyste si zobrazili podrobnosti o výstrahách a zobrazili jste konsolidovanou sestavu se všemi výstrahami ve vašem předplatném Azure prostřednictvím stránky Azure Security Center výstrahy zabezpečení.
 
@@ -71,7 +71,7 @@ Pokročilá nastavení zabezpečení dat pro váš databázový server nebo spra
 
 ![Nastavení databáze](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 - Další informace o [klasifikaci & Discovery Data](sql-database-data-discovery-and-classification.md) 
 - Další informace o [posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) 

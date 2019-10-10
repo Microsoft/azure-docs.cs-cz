@@ -1,17 +1,17 @@
 ---
 title: Role a požadavky pro Azure Data Share Preview
-description: Role a požadavky pro Azure Data Share Preview
+description: Seznamte se s rolemi a požadavky na řízení přístupu pro poskytovatele dat a příjemce dat ke sdílení dat ve verzi Preview Azure Data Share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307345"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166375"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Role a požadavky pro Azure Data Share Preview
 
@@ -30,9 +30,9 @@ Níže je uveden souhrn rolí přiřazených k identitě spravované zdroji dat:
 | |  |  |
 |---|---|---|
 |**Typ úložiště**|**Účet Zprostředkovatel dat zdrojového úložiště**|**Účet úložiště cílového příjemce dat**|
-|Azure Blob Storage| Čtenář dat v objektech blob služby Storage | Přispěvatel dat v objektech blob služby Storage
-|Azure Data Lake Gen1 | Owner | Není podporováno
-|Azure Data Lake Gen2 | Čtenář dat v objektech blob služby Storage | Přispěvatel dat v objektech blob služby Storage
+|Azure Blob Storage| Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
+|Azure Data Lake Gen1 | Vlastník | Nepodporuje se
+|Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
 |
 ### <a name="data-providers"></a>Poskytovatelé dat 
 Pokud chcete přidat datovou sadu do sdílené složky Azure Data Provider, musí se do role čtečky dat objektů BLOB úložiště přidat identita, která je sdílená zdroji dat. To je prováděno automaticky službou Sdílení dat Azure, pokud uživatel přidává datové sady prostřednictvím Azure a je vlastníkem účtu úložiště, nebo je členem vlastní role s přiřazenými oprávněními Microsoft. Authorization/role/Write. 
@@ -44,7 +44,7 @@ Pokud sdílíte data z Azure Data Lake Gen1, musí být přiřazení role k roli
 Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
 
 1. Přejděte k účtu úložiště.
-1. Vyberte **řízení přístupu (IAM)** .
+1. Vyberte **Access Control (IAM)** .
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte *čtečka dat objektů BLOB úložiště*.
 1. V části *Vybrat*zadejte název vašeho účtu Azure Data Share.
@@ -58,7 +58,7 @@ Případně může uživatel mít správce Azure, aby do role Přispěvatel dat 
 Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
 
 1. Přejděte k účtu úložiště.
-1. Vyberte **řízení přístupu (IAM)** .
+1. Vyberte **Access Control (IAM)** .
 1. Vyberte **Přidat přiřazení role**.
 1. V části *role*vyberte *Přispěvatel dat objektu BLOB úložiště*. 
 1. V části *Vybrat*zadejte název vašeho účtu Azure Data Share.
@@ -78,7 +78,7 @@ Když přijmete pozvánku ke sdílené složce Azure, budete muset ručně zareg
 1. Vyhledejte Microsoft. datashare.
 1. Klikněte na **zaregistrovat**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích v Azure – [pochopení definic rolí](../role-based-access-control/role-definitions.md)
 

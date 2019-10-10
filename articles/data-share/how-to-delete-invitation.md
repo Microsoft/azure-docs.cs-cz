@@ -1,17 +1,17 @@
 ---
 title: Odstranění pozvánky v Azure Data Share Preview
-description: Odstranění pozvánky
+description: Naučte se, jak odstranit pozvánku na příjemce sdílení dat ve verzi Preview Azure Data Share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: eacc4e5edb196d512d3b27b2a0acc72a82e8f0b9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6bb247833a9cd9f2c767b27b655a434f573860c0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327200"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166400"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share-preview"></a>Jak odstranit pozvánku na příjemce v Azure Data Share Preview
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak odstranit pozvánku příjemce, aby ji přijal
 
 ## <a name="navigate-to-a-sent-data-share"></a>Přejít na sdílenou složku odeslaných dat
 
-V Azure Data Share Preview přejděte do odeslané sdílené složky a vyberte kartu **pozvánky** . Zde jsou uvedeni všichni příjemci pozvánky k této sdílené složce dat. Klikněte na pole vedle příjemců, jejichž pozvánky chcete odstranit, a potom klikněte na **Odstranit**.
+Ve verzi Preview sdílené složky Azure přejděte do odeslané sdílené složky a vyberte kartu **pozvánky** . tady jsou všichni příjemci pozvánky k této sdílené složce dat. Klikněte na pole vedle příjemců, jejichž pozvánky chcete odstranit, a potom klikněte na **Odstranit**.
 
 ![Odstranit pozvánku](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 

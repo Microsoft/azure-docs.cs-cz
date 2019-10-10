@@ -1,17 +1,17 @@
 ---
 title: Terminologie ve službě Azure Data Share Preview
-description: Terminologie ve službě Azure Data Share Preview
+description: Přečtěte si o běžných pojmech, které se používají k popisu prostředků používaných ve verzi Preview Azure Data Share (poskytovatel dat, příjemce dat, sdílení dat, sdílení předplatného, snímek, pozvánka, příjemce).
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844702"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166278"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Koncepty verze Preview služby Azure Data Share 
 
@@ -47,9 +47,9 @@ Poskytovatel dat může povolit nastavení snímku pro sdílenou složku dat. To
 
 Pokud zprostředkovatel dat povolí toto nastavení, je možné vybrat interval opakování. Interval opakování může být hodinu nebo každý den. 
 
-Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat tak přírůstkové aktualizace, což zahrnuje všechna data, která se změnila od prvního vygenerování nového snímku. 
+Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat tak přírůstkové aktualizace, které zahrnují všechna data, která se změnila od prvního vygenerování nového snímku. 
 
-## <a name="invitation"></a>Pozvánka
+## <a name="invitation"></a>Uživateli
 
 Poskytovatel dat může pozvat více příjemců ke sdílení dat. Můžou to udělat tak, že přidáte příjemce do sdílené složky dat. Pozvánky je také možné přidat po vytvoření sdílené složky dat. 
 
@@ -61,7 +61,7 @@ Pozvánky je možné znovu odeslat až pětkrát denně.
 
 Příjemce je osoba, která obdrží pozvánku ke sdílení dat. Poskytovatel dat obvykle přidá příjemce do sdílené složky dat, kterou vytvoří. Jakmile příjemce pozvánky pozvánku přijme, stane se příjemcem dat.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak začít sdílet data, pokračujte do kurzu [sdílení vašich dat](share-your-data.md) .
 

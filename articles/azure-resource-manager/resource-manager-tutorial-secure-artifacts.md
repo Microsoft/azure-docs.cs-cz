@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení artefaktů v nasazení šablon Azure Resource Manageru | Dokumentace Microsoftu
-description: Zjistěte, jak zabezpečit artefakty, které používají v šablonách Azure Resource Manageru.
+title: Zabezpečení artefaktů v nasazeních šablon Azure Resource Manager | Microsoft Docs
+description: Naučte se zabezpečit artefakty používané v šablonách Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,141 +10,141 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcf64d98f53d85937ee7960ec3938280814267d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069269"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170196"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečené artefaktů v nasazení šablon Azure Resource Manageru
+# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: zabezpečení artefaktů v nasazeních šablon Azure Resource Manager
 
-Zjistěte, jak zabezpečit artefakty, které používají v šablonách Azure Resource Manageru pomocí sdílených přístupových podpisů (SAS) účtu služby Azure Storage. Artefakty nasazení jsou všechny soubory kromě souborů hlavní šablony, které jsou potřebné k dokončení nasazení. Například v [kurzu: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), hlavní šablony vytvoří službu Azure SQL Database; volá také pro vytváření tabulek a vkládání dat souboru BACPAC. Soubor BACPAC je artefakt. Artefakt je uložená v účtu služby Azure storage s veřejný přístup. V tomto kurzu použijete SAS udělit omezený přístup do souboru BACPAC v účtu úložiště Azure. Další informace o SAS najdete v tématu [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Přečtěte si, jak zabezpečit artefakty používané v šablonách Azure Resource Manager pomocí Azure Storage účtu se sdíleným přístupovým podpisem (SAS). Artefakty nasazení jsou kromě hlavního souboru šablony, které jsou potřeba k dokončení nasazení, také všechny soubory. Například v [kurzu: Import souborů SQL BacPac pomocí šablon Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)vytvoří hlavní šablona Azure SQL Database; také zavolá soubor BACPAC a vytvoří tabulky a vloží data. Soubor BACPAC je artefaktem. Artefakt je uložený v účtu služby Azure Storage s veřejným přístupem. V tomto kurzu pomocí SAS udělíte omezený přístup k souboru BACPAC ve svém vlastním účtu Azure Storage. Další informace o SAS najdete v tématu [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-Zjistěte, jak zabezpečit propojené šablony, najdete v článku [kurzu: Vytvoření propojených šablon Azure Resource Manageru](./resource-manager-tutorial-create-linked-templates.md).
+Informace o tom, jak zabezpečit propojenou šablonu, najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./resource-manager-tutorial-create-linked-templates.md).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Příprava souboru BACPAC
-> * Otevřete existující šablonu
+> * Otevřít existující šablonu
 > * Úprava šablony
 > * Nasazení šablony
 > * Ověření nasazení
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
 * [Visual Studio Code](https://code.visualstudio.com/) s rozšířením Nástroje Resource Manageru Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Kontrola [kurzu: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). Šablona použitá v tomto kurzu je vyvinutý v tomto kurzu. Odkaz ke stažení dokončené šablony je uvedené v tomto článku.
+* [Kurz recenze: Import souborů SQL BacPac pomocí šablon Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). Šablona použitá v tomto kurzu je ta, která je vyvíjena v tomto kurzu. V tomto článku je uveden odkaz ke stažení pro dokončenou šablonu.
 * Pro zlepšení zabezpečení použijte pro účet správce SQL Serveru vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
-V této části Příprava souboru BACPAC, že soubor je bezpečně při nasazení šablony Resource Manageru. V této části je pět postupů:
+V této části připravíte soubor BACPAC tak, aby byl soubor bezpečně přístupný při nasazení šablony Správce prostředků. V této části najdete pět postupů:
 
 * Stáhněte si soubor BACPAC.
 * Vytvořit účet služby Azure Storage
-* Vytvořte kontejner objektů Blob v účtu úložiště.
-* Nahrání souboru BACPAC do kontejneru.
-* Získat token SAS souboru BACPAC.
+* Vytvořte kontejner objektů BLOB účtu úložiště.
+* Nahrajte soubor BACPAC do kontejneru.
+* Načte token SAS souboru BACPAC.
 
-Automatizace kroků pomocí skriptu prostředí PowerShell, Zobrazit skript z [odešlete propojenou šablonu](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
+Pokud chcete tyto kroky automatizovat pomocí skriptu PowerShellu, přečtěte si [odkaz na skript odeslání propojené šablony](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
 
 ### <a name="download-the-bacpac-file"></a>Stažení souboru BACPAC
 
-Stáhněte si [souboru BACPAC](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac)a uložte ho do místního počítače se stejným názvem, **SQLDatabaseExtension.bacpac**.
+Stáhněte si [soubor BacPac](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)a uložte ho do místního počítače se stejným názvem **SQLDatabaseExtension. BacPac**.
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-1. Vyberte následující obrázek otevřete šablonu Resource Manageru na webu Azure Portal.
+1. Vyberte následující obrázek pro otevření šablony Správce prostředků v Azure Portal.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Zadejte tyto vlastnosti:
+2. Zadejte následující vlastnosti:
 
     * **Předplatné**: Vyberte své předplatné Azure.
-    * **Skupina prostředků**: Vyberte **vytvořit nový** a pojmenujte ho. Skupina prostředků je kontejner pro prostředky Azure pro účely správy. V tomto kurzu můžete použít stejnou skupinu prostředků pro účet úložiště a Azure SQL Database. Poznamenejte si tento název skupiny prostředků, budete potřebovat při vytváření serveru Azure SQL Database později v kurzech.
-    * **Umístění**: Vyberte oblast. Například **USA (střed)** .
+    * **Skupina prostředků**: vyberte **vytvořit novou** a pojmenujte ji. Skupina prostředků je kontejner pro prostředky Azure pro účely správy. V tomto kurzu můžete použít stejnou skupinu prostředků pro účet úložiště a Azure SQL Database. Poznamenejte si tento název skupiny prostředků, budete ho potřebovat při vytváření Azure SQL Database později v kurzech.
+    * **Umístění**: Vyberte oblast. Například **střed USA**.
     * **Typ účtu úložiště**: použijte výchozí hodnotu, která je **Standard_LRS**.
-    * **Umístění**: Použijte výchozí hodnotu, která je **[resourceGroup () .location]** . To znamená, že používáte umístění skupiny prostředků pro účet úložiště.
-    * **Souhlasím s podmínkami a podmínky spuštění výše**: (zaškrtnuto)
+    * **Umístění**: použijte výchozí hodnotu, která je **[resourceName (). Location]** . To znamená, že použijete umístění skupiny prostředků pro účet úložiště.
+    * **Souhlasím s podmínkami a ujednáními, které byly zahájeny výše**: (vybráno)
 3. Vyberte **Koupit**.
-4. Vyberte ikonu oznámení (ikona zvonku) v pravém horním rohu portálu, abyste zobrazili stav nasazení.
+4. Výběrem ikony oznámení (ikona zvonku) v pravém horním rohu portálu zobrazte stav nasazení.
 
-    ![Podokno kurz portálu oznámení Resource Manageru](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. Po úspěšném nasazení účtu úložiště vyberte **přejít ke skupině prostředků** v podokně oznámení a otevřete skupinu prostředků.
+    ![Podokno oznámení na portálu Správce prostředků kurzu](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
+5. Po úspěšném nasazení účtu úložiště vyberte v podokně oznámení **Přejít na skupinu prostředků** a otevřete skupinu prostředků.
 
-### <a name="create-a-blob-container"></a>Vytvořte kontejner objektů Blob
+### <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů BLOB
 
-Kontejner objektů Blob je potřeba předtím, než můžete nahrát všechny soubory.
+Aby bylo možné nahrávat soubory, je nutné mít kontejner objektů BLOB.
 
-1. Výběrem účtu úložiště ho otevřete. Zobrazí se jenom jeden účet úložiště, které jsou uvedené ve skupině prostředků. Název svého účtu úložiště se liší od znázorněné na následujícím snímku obrazovky.
+1. Výběrem účtu úložiště ho otevřete. Ve skupině prostředků se zobrazí jenom jeden účet úložiště. Název účtu úložiště je jiný než ten, který se zobrazuje na následujícím snímku obrazovky.
 
-    ![Účet kurz úložiště Resource Manageru](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    ![Účet úložiště kurzu Správce prostředků](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
 
-2. Vyberte **objekty BLOB** dlaždici.
+2. Vyberte dlaždici **objektů BLOB** .
 
-    ![Kurz objekty BLOB Resource Manageru](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. Vyberte **+ kontejner** z horní části, chcete-li vytvořit nový kontejner.
+    ![Objekty blob kurzu Správce prostředků](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
+3. Vyberte **+ kontejner** z horní části a vytvořte nový kontejner.
 4. Zadejte následující hodnoty:
 
-    * **Název**: Zadejte **sqlbacpac**.
-    * **Úroveň veřejného přístupu**: použijte výchozí hodnotu **privátní (bez anonymního přístupu)** .
+    * **Název**: zadejte **sqlbacpac**.
+    * **Úroveň veřejného přístupu**: použijte výchozí hodnotu **Private (bez anonymního přístupu)** .
 5. Vyberte **OK**.
-6. Vyberte **sqlbacpac** otevřete nově vytvořený kontejner.
+6. Výběrem **sqlbacpac** otevřete nově vytvořený kontejner.
 
 ### <a name="upload-the-bacpac-file-to-the-container"></a>Nahrání souboru BACPAC do kontejneru
 
 1. Vyberte **Nahrát**.
 2. Zadejte následující hodnoty:
 
-    * **Soubory**: Postupujte podle pokynů a vyberte soubor BACPAC jste předtím stáhli. Výchozí název je **SQLDatabaseExtension.bacpac**.
-    * **Typ ověřování**: Vyberte **SAS**.  *SAS* je výchozí hodnota.
-3. Vyberte **Nahrát**.  Po úspěšném odeslání souboru je název souboru se uvádějí v kontejneru.
+    * **Soubory**: podle pokynů vyberte soubor BacPac, který jste stáhli dříve. Výchozí název je **SQLDatabaseExtension. BacPac**.
+    * **Typ ověřování**: vyberte **SAS**.  Výchozí hodnota je *SAS* .
+3. Vyberte **Nahrát**.  Po úspěšném nahrání souboru se název souboru zobrazí v kontejneru.
 
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Vygenerování tokenu SAS
+### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a>@no__t – 0Generate token SAS
 
-1. Klikněte pravým tlačítkem na **SQLDatabaseExtension.bacpac** z kontejneru a pak vyberte **generovat SAS**.
+1. Klikněte pravým tlačítkem na **SQLDatabaseExtension. BacPac** z kontejneru a pak vyberte **Generovat SAS**.
 2. Zadejte následující hodnoty:
 
-    * **Oprávnění**: Použijte výchozí **čtení**.
-    * **Datum/čas začátku a konce platnosti**: Výchozí hodnota nabízí osm hodin pomocí tokenu SAS. Pokud potřebujete více času k dokončení tohoto kurzu, aktualizujte **vypršení platnosti**.
-    * **Povolené IP adresy**: Toto pole nechte prázdné.
-    * **Povolené protokoly**: použijte výchozí hodnotu: **HTTPS**.
-    * **Podpisový klíč**: použijte výchozí hodnotu: **Klíč 1**.
-3. Vyberte **vygenerujte token SAS objektů blob a adresa URL**.
-4. Vytvořte kopii **SAS URL objektu Blob**. Uprostřed adresa URL je název souboru **SQLDatabaseExtension.bacpac**.  Název souboru rozděluje adresu URL do tří částí:
+    * **Oprávnění**: použijte výchozí, **číst**.
+    * **Datum/čas začátku a konce platnosti**: výchozí hodnota poskytuje osm hodin pro použití tokenu SAS. Pokud potřebujete víc času na dokončení tohoto kurzu, aktualizujte **vypršení platnosti**.
+    * **Povolené IP adresy**: nechte toto pole prázdné.
+    * **Povolené protokoly**: použijte výchozí hodnotu **https**.
+    * **Podpisový klíč**: použijte výchozí hodnotu: **klíč 1**.
+3. Vyberte **Generovat token SAS objektu BLOB a adresu URL**.
+4. Vytvořte kopii **adresy URL SAS objektu BLOB**. Uprostřed adresy URL je název souboru **SQLDatabaseExtension. BacPac**.  Název souboru rozdělí adresu URL na tři části:
 
-   - **Umístění artefaktů**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ujistěte se, že umístění končí "/".
-   - **Název souboru BACPAC**: SQLDatabaseExtension.bacpac.
-   - **Token SAS umístění artefaktů**: Ujistěte se, že token, který předchází s "?."
+   - **Umístění artefaktu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ujistěte se, že umístění končí znakem "/".
+   - **Název souboru BacPac**: SQLDatabaseExtension. BacPac.
+   - **Umístění artefaktu SAS tokenu**: Ujistěte se, že token předchází "?."
 
-     V tyto tři hodnoty budete potřebovat [nasazení šablony](#deploy-the-template).
+     Tyto tři hodnoty budete potřebovat v [části nasazení šablony](#deploy-the-template).
 
-## <a name="open-an-existing-template"></a>Otevřete existující šablonu
+## <a name="open-an-existing-template"></a>Otevřít existující šablonu
 
-V této relaci, můžete upravit šablonu, kterou jste vytvořili v [kurzu: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) volat souboru BACPAC s tokenem SAS.  Šablona vyvinutý v tomto kurzu rozšíření SQL je sdílen na [ https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json ](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json).
+V této relaci upravíte šablonu, kterou jste vytvořili v [kurzu: Import souborů SQL BacPac pomocí šablon Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) pro volání souboru BacPac s tokenem SAS.  Šablona vytvořená v kurzu rozšíření SQL je sdílená na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
-    https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
 
-    Existuje pět prostředky definované v šabloně:
+    V šabloně je definováno pět prostředků:
 
    * `Microsoft.Sql/servers`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
    * `Microsoft.SQL/servers/securityAlertPolicies`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
@@ -182,9 +182,9 @@ Přidejte následující další parametry:
 }
 ```
 
-![Kurz zabezpečené artefakty parametrů Resource Manageru](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+![Parametry zabezpečených artefaktů Správce prostředků kurzu](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-Aktualizujte hodnotu z následujících dvou prvků:
+Aktualizujte hodnotu následujících dvou prvků:
 
 ```json
 "storageKey": "[parameters('_artifactsLocationSasToken')]",
@@ -218,7 +218,7 @@ New-AzResourceGroupDeployment `
 ```
 
 Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
-Hodnoty _artifactsLocation, _artifactsLocationSasToken a bacpacFileName naleznete v části [vygenerování tokenu SAS](#generate-a-sas-token).
+Hodnoty _artifactsLocation, _artifactsLocationSasToken a bacpacFileName najdete v tématu [generování tokenu SAS](#generate-a-sas-token).
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
@@ -235,9 +235,9 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se nasadit SQL Server, SQL Database a import souboru BACPAC pomocí tokenu SAS. Zjistěte, jak vytvoříte kanál Azure průběžně vyvíjet a nasazovat šablony Resource Manageru, najdete v tématu
+V tomto kurzu jste nasadili SQL Server, SQL Database a importovali soubor BACPAC pomocí tokenu SAS. Informace o tom, jak vytvořit kanál Azure pro průběžné vývoj a nasazování šablon Správce prostředků, najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Průběžná integrace se sadou Azure kanálu](./resource-manager-tutorial-use-azure-pipelines.md)
+> [Kontinuální integrace s kanálem Azure](./resource-manager-tutorial-use-azure-pipelines.md)

@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: true
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070964"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177015"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -26,7 +28,7 @@ V tomto rychlém startu nasadíte jednoduchou aplikaci v Pythonu, která [App Se
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -56,15 +58,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
 
-# In PowerShell
-py -3 -m venv env
-env\scripts\activate
-pip install -r requirements.txt
-Set-Item Env:FLASK_APP ".\application.py"
-flask run
 ```
 
-Otevřete webový prohlížeč a v `http://localhost:5000/`části použijte ukázkovou aplikaci.
+Otevřete webový prohlížeč a přejít na ukázkovou aplikaci na adrese `http://localhost:5000/`.
 
 Na stránce se zobrazí zpráva **Hello World!** z ukázkové aplikace.
 
@@ -100,11 +96,11 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Vytvoření webové aplikace
+## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
 
-V následujícím `<app-name>` příkladu nahraďte globálně jedinečným názvem aplikace (*platné znaky jsou `a-z`, `0-9`a `-`* ).
+V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z`, `0-9` a `-`* ).
 
 ```bash
 cd python-docs-hello-world
@@ -157,7 +153,7 @@ Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovan
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
-Do Cloud Shell `code application.py` otevřete Editor Cloud Shell.
+V Cloud Shell otevřete Editor Cloud Shell zadáním `code application.py`.
 
 ![Application.py kódu](media/quickstart-python/code-applicationpy.png)
 
@@ -169,7 +165,7 @@ return "Hello Azure!"
 
 Uložte změny a ukončete Editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
 
-Znovu nasaďte aplikaci pomocí [`az webapp up`](/cli/azure/webapp#az-webapp-up) příkazu. Nahraďte název vaší aplikace pro `<app-name>`a zadejte umístění pro `<location-name>` (pomocí jedné z hodnot zobrazených v [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkazu).
+Znovu nasaďte aplikaci pomocí příkazu [`az webapp up`](/cli/azure/webapp#az-webapp-up) . Nahraďte název vaší aplikace `<app-name>` a zadejte umístění pro `<location-name>` (pomocí jedné z hodnot zobrazených v příkazu [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ).
 
 ```bash
 az webapp up -n <app-name> -l <location-name>
@@ -198,10 +194,10 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Webová aplikace Python (Django) s PostgreSQL](tutorial-python-postgresql-app.md)
+> [Kurz: webová aplikace Python (Django) s PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace v Pythonu](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Spustit aplikaci v Pythonu ve vlastním kontejneru](tutorial-custom-docker-image.md)
+> [Kurz: spuštění aplikace v Pythonu ve vlastním kontejneru](tutorial-custom-docker-image.md)

@@ -1,20 +1,19 @@
 ---
-title: Ukázky Azure PowerShell pro Azure Data Share | Microsoft Docs
-description: Ukázky Azure PowerShell – skripty, které vám pomůžou vytvářet a spravovat sdílené složky dat.
-services: data-share
+title: Ukázky Azure PowerShell pro Azure Data Share
+description: Přečtěte si o Azure PowerShell ukázkových skriptech, které vám pomůžou vytvořit a spravovat sdílené složky dat ve verzi Preview Azure Data Share.
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243097"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166327"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Ukázky Azure PowerShell pro Azure Data Share
 
@@ -33,9 +32,3 @@ Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pr
 |[Zobrazit podrobnosti o sdílených složkách dat](scripts/powershell/view-share-details-powershell.md)| Tento ukázkový skript PowerShellu vypíše a načte podrobnosti o sdílených složkách dat. |
 |[Monitorování využití sdílených dat](scripts/powershell/monitor-usage-powershell.md)| Tento ukázkový skript PowerShellu monitoruje použití odeslaných sdílených dat. |
 |[Vytvořit a zobrazit triggery snímků](scripts/powershell/create-view-trigger-powershell.md)| Tento ukázkový skript PowerShellu vytvoří triggery snímků sdílené složky.
-
-
-
-
-
-

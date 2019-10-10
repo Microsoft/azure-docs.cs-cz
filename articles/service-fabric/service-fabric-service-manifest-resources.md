@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: atsenthi
+ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927691"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170441"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
@@ -56,7 +56,7 @@ Pokud existuje více balíčků kódu v jednom balíčku služby, pak musí být
 Další informace o odkazování koncových bodů ze souboru nastavení balíčku konfigurace (Settings. XML) najdete v článku [Konfigurace stavového Reliable Services](service-fabric-reliable-services-configuration.md) .
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Příklad: určení koncového bodu HTTP pro vaši službu
-Následující manifest služby definuje jeden prostředek koncového bodu TCP a dva prostředky koncového bodu &lt;http&gt; v elementu Resources.
+Následující manifest služby definuje jeden prostředek koncového bodu TCP a dva prostředky koncového bodu HTTP v elementu &lt;Resources @ no__t-1.
 
 Koncové body HTTP jsou automaticky ACL Service Fabric.
 
@@ -105,7 +105,7 @@ Koncové body HTTP jsou automaticky ACL Service Fabric.
 ```
 
 ## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Příklad: určení koncového bodu HTTPS pro vaši službu
-Protokol HTTPS zajišťuje ověřování serveru a používá se také k šifrování komunikace mezi klientem a serverem. Pokud chcete ve službě Service Fabric povolit protokol HTTPS, zadejte protokol v části Resources-> Endpoints *– > koncový bod* manifestu služby, jak je uvedeno výše pro koncový bod *ServiceEndpoint3*.
+Protokol HTTPS zajišťuje ověřování serveru a používá se také k šifrování komunikace mezi klientem a serverem. Pokud chcete ve službě Service Fabric povolit protokol HTTPS, zadejte protokol v části *Resources-> Endpoints – > koncový bod* manifestu služby, jak je uvedeno výše pro koncový bod *ServiceEndpoint3*.
 
 > [!NOTE]
 > Protokol služby se během upgradu aplikace nedá změnit. Pokud dojde ke změně během upgradu, jedná se o zásadní změnu.
@@ -196,15 +196,15 @@ Do pole níže přidejte následující parametry:
   </Parameters>
 ```
 
-Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Příklad:
+Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Například:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Poznámka: Pokud jsou hodnoty zadané pro ApplicationParameters prázdné, vrátíme výchozí hodnotu poskytnutou v ServiceManifest pro odpovídající koncový bod.
+Poznámka: Pokud jsou hodnoty zadané pro ApplicationParameters prázdné, vrátíme výchozí hodnotu poskytnutou v ServiceManifest pro odpovídající koncové číslo koncového bodu.
 
-Příklad:
+Například:
 
 Pokud jste zadali ServiceManifest
 
@@ -218,4 +218,4 @@ Pokud jste zadali ServiceManifest
 
 A hodnota Port1 a Protocol1 pro parametry aplikace je null nebo prázdná. Port se stále určuje pomocí ServiceFabric. A protokol bude TCP.
 
-Předpokládejme, že zadáváte nesprávnou hodnotu. Podobně jako u portu jste zadali řetězcovou hodnotu "foo" namísto int.  Příkaz New-ServiceFabricApplication se nezdaří s chybou: Parametr přepsání s názvem "ServiceEndpoint1" atributu "PORT1" v oddílu "ResourceOverrides" je neplatný. Zadaná hodnota je ' foo ' a požadovaná je ' int '.
+Předpokládejme, že zadáváte nesprávnou hodnotu. Podobně jako u portu jste zadali řetězcovou hodnotu "foo" namísto int.  Příkaz New-ServiceFabricApplication selže s chybou: parametr override s názvem ' ServiceEndpoint1 ' atributu ' PORT1 ' v oddílu ' ResourceOverrides ' je neplatný. Zadaná hodnota je ' foo ' a požadovaná je ' int '.

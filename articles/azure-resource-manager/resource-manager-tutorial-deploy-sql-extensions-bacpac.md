@@ -1,6 +1,6 @@
 ---
 title: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru | Microsoft Docs
-description: Další informace o použití rozšíření SQL Database pro import souborů SQL BACPAC pomocí šablon Azure Resource Manageru.
+description: Naučte se používat rozšíření SQL Database k importu souborů SQL BACPAC pomocí šablon Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 08befabfbd14651475fa56dec95bdf4c2fe54c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 239bb77d486e8cb845ec439d84def5e34cf64348
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390264"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170233"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon Azure Resource Manageru
 
-Další informace o použití rozšíření Azure SQL Database pro import souboru BACPAC s šablonami Azure Resource Manageru. Artefakty nasazení jsou všechny soubory kromě souboru hlavní šablony, které jsou vyžadovány k dokončení nasazení. Soubor BACPAC je artefakt. V tomto kurzu vytvoříte šablonu k nasazení Azure SQL Server, SQL Database a import souboru BACPAC. Informace o nasazení rozšíření virtuálního počítače Azure pomocí šablon Azure Resource Manageru najdete v tématu [# kurzu: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
+Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager. Artefakty nasazení jsou kromě hlavního souboru šablony, který je potřeba k dokončení nasazení, všechny soubory. Soubor BACPAC je artefaktem. V tomto kurzu vytvoříte šablonu pro nasazení SQL Server Azure, SQL Database a importu souboru BACPAC. Informace o nasazování rozšíření virtuálních počítačů Azure pomocí šablon Azure Resource Manageru najdete v [kurzu nasazování rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](./resource-manager-tutorial-deploy-vm-extensions.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -35,7 +35,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -45,21 +45,21 @@ K dokončení tohoto článku potřebujete:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
-Soubor BACPAC je sdílen na [účtu služby Azure Storage](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac) s veřejný přístup. Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../sql-database/sql-database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
+Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../sql-database/sql-database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablona použitá v tomto kurzu je uložen v [účtu služby Azure Storage](https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json). 
+Šablona použitá v tomto kurzu je uložená na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
-    https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
 
@@ -74,7 +74,7 @@ Soubor BACPAC je sdílen na [účtu služby Azure Storage](https://armtutorials.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Přidejte dva další prostředky do šablony.
+Přidejte do šablony dva další prostředky.
 
 * Aby rozšíření služby SQL Database mohlo importovat soubory BACPAC, musíte povolit přístup ke službám Azure. Přidejte k definici serveru SQL následující kód JSON:
 
@@ -112,7 +112,7 @@ Přidejte dva další prostředky do šablony.
             "properties": {
                 "storageKeyType": "SharedAccessKey",
                 "storageKey": "?",
-                "storageUri": "https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac",
+                "storageUri": "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac",
                 "administratorLogin": "[variables('databaseServerAdminLogin')]",
                 "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
                 "operationMode": "Import",
@@ -127,11 +127,11 @@ Přidejte dva další prostředky do šablony.
 
     Vysvětlení definice prostředku najdete v [referenčních informacích k rozšíření služby SQL Database](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). Tady je několik důležitých elementů:
 
-    * **dependsOn**: Rozšíření prostředků musí být vytvořeny po vytvoření databáze SQL.
-    * **storageKeyType**: Typ klíče úložiště. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Vzhledem k tomu, že uvedený soubor BACPAC je sdílený v účtu služby Azure Storage s veřejným přístupem, používá se zde typ SharedAccessKey.
-    * **storageKey**: Klíč úložiště používat. Pokud je typ klíče úložiště SharedAccessKey, musí tato hodnota začínat na znak „?“.
-    * **storageUri**: Identifikátor uri úložiště používat. Pokud se rozhodnete nepoužít uvedený soubor BACPAC, musíte hodnoty aktualizovat.
-    * **administratorLoginPassword**: Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
+    * **dependsOn:** Prostředek rozšíření se musí vytvořit po vytvoření databáze SQL.
+    * **storageKeyType:** Typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Vzhledem k tomu, že uvedený soubor BACPAC je sdílený v účtu služby Azure Storage s veřejným přístupem, používá se zde typ SharedAccessKey.
+    * **storageKey:** Klíč úložiště, který se má použít. Pokud je typ klíče úložiště SharedAccessKey, musí tato hodnota začínat na znak „?“.
+    * **storageUri:** Identifikátor URI úložiště, které se má použít. Pokud se rozhodnete nepoužít uvedený soubor BACPAC, musíte hodnoty aktualizovat.
+    * **administratorLoginPassword:** Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -170,9 +170,9 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili SQL Server a službu SQL Database a importovali jste soubor BACPAC. Soubor BACPAC je uložený v účtu služby Azure storage. Každý, kdo má adresu URL můžete získat přístup k souboru. Informace o zabezpečení souboru BACPAC (artefaktu), najdete v tématu
+V tomto kurzu jste nasadili SQL Server a službu SQL Database a importovali jste soubor BACPAC. Soubor BACPAC je uložený v účtu úložiště Azure. Kdokoli s adresou URL může získat přístup k souboru. Informace o tom, jak zabezpečit soubor BACPAC (artefakt), najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Artefakty zabezpečení](./resource-manager-tutorial-secure-artifacts.md)
+> [Zabezpečit artefakty](./resource-manager-tutorial-secure-artifacts.md)

@@ -1,7 +1,7 @@
 ---
-title: Visual Studio připojená služba - pro počítačové zpracování obrazu
+title: Připojená služba sady Visual Studio – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Připojení k rozhraní API pro počítačové zpracování obrazu z webové aplikace ASP.NET Core pomocí funkce připojení ve službě Visual Studio.
+description: Připojte se k rozhraní API pro počítačové zpracování obrazu z webové aplikace ASP.NET Core pomocí funkce připojená služba sady Visual Studio.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: ff3ae9ec4a775e2450a552e414ec52597593dd39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e4308f98b6e547acd4adfb62ab78c0517247d905
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604267"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177088"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Připojení k rozhraní API pro počítačové zpracování obrazu s využitím připojených služeb v sadě Visual Studio
 
 Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio s rozhraním API služeb Cognitive Services pro počítačové zpracování obrazu. Tato možnost je dostupná v sadě Visual Studio 2017 15.7 nebo novější s nainstalovaným rozšířením Cognitive Services.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- Visual Studio 2017 verze 15.7 nebo novější s **vývoj pro Web** nainstalovaná úloha. [Stáhnout](https://visualstudio.microsoft.com/downloads/)
+- Visual Studio 2017 verze 15,7 nebo novější s nainstalovanou úlohou **Vývoj webu** . [Stáhnout](https://visualstudio.microsoft.com/downloads/)
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -36,23 +36,23 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 1. V **Průzkumníku řešení** zvolte **Přidat**  > **Připojená služba**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 
-   ![Klikněte pravým tlačítkem na nabídku projektu sady Visual Studio: Přidat > připojená služba](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Nabídka kliknutí pravým tlačítkem na projekt aplikace Visual Studio: přidat připojenou službu >](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. V nabídce dostupných služeb zvolte **Rozhraní API služeb Cognitive Services pro počítačové zpracování obrazu**.
 
-   ![Nabídka propojené služby: Díky analýze obrázků... popsané](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Nabídka připojené služby: analýza obrázků... je popsaný](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Pokud jste přihlášení k sadě Visual Studio a máte ke svému účtu přidružené předplatné Azure, zobrazí se stránka s rozevíracím seznamem vašich předplatných.
 
-   ![Rozhraní API pro zpracování obrazu okno počítač se zvýrazněnou rozevírací nabídce předplatných](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Okno rozhraní API pro počítačové zpracování obrazu se zvýrazněným rozevíracím seznamem odběru](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Vyberte předplatné, které chcete použít, a pak zvolte název rozhraní API pro počítačové zpracování obrazu, nebo zvolte odkaz Upravit a změňte automaticky vygenerovaný název, zvolte skupinu prostředků a cenovou úroveň.
 
-   ![Úprava podrobností připojené služby](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
+   ![Úprava podrobnosti připojené služby](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-2.PNG)
 
    Pomocí odkazu můžete zobrazit podrobnosti o cenových úrovních.
 
-1. Výběrem možnosti Přidat přidejte podporu této připojené služby.
+1. Volbou možnosti Přidat přidejte podporu této připojené služby.
    Sada Visual Studio upraví projekt tak, že přidá balíčky NuGet, položky konfiguračního souboru a další změny pro podporu připojení rozhraní API pro počítačové zpracování obrazu. V okně Výstup se zobrazí protokol, který ukazuje, co se s projektem děje. Mělo by se zobrazit něco podobného:
 
    ```output
@@ -62,7 +62,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
    [4/26/2018 5:15:40.286 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' version 2.1.0.
    [4/26/2018 5:15:44.117 PM] Retrieving keys...
    [4/26/2018 5:15:45.602 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceKey=<service key>
-   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.0
+   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.1
    [4/26/2018 5:15:45.609 PM] Changing appsettings.json setting: ComputerVisionAPI_Name=WebApplication-Core-ComputerVision_ComputerVisionAPI
    [4/26/2018 5:15:46.747 PM] Successfully added Computer Vision API to the project.
    ```
@@ -90,13 +90,13 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
       }
    ```
 
-1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klikněte pravým tlačítkem na některou k imagí, uložit na místní pevný disk a potom v okně Průzkumník řešení, klikněte pravým tlačítkem na složku Obrázky a zvolte **přidat** > **existující položku** ho přidat do projektu. V Průzkumníku řešení by měl projekt vypadat takto: 
+1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klikněte pravým tlačítkem na jeden z imagí, uložte ho na místní pevný disk a pak v Průzkumník řešení klikněte pravým tlačítkem na složku images a zvolte **přidat** > **existující položku** , kterou chcete přidat do projektu. V Průzkumníku řešení by měl projekt vypadat takto: 
   
-   ![Snímek obrazovky zobrazení Průzkumníka řešení se souborem bitové kopie vybrané](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![Snímek obrazovky zobrazení Průzkumníka řešení se zvoleným obrázkovým souborem](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. Klikněte pravým tlačítkem na soubor obrázku, zvolte Vlastnosti a pak zvolte **Kopírovat, pokud je novější**. 
 
-   ![okno Vlastnosti obrázku; Kopírovat do výstupního adresáře nastavit na Kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![okno vlastností obrázku; Kopírovat do výstupního adresáře nastaveného na kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Nahraďte metodu Configure následujícím kódem pro přístup k rozhraní API pro počítačové zpracování obrazu a otestování obrázku.
 
@@ -164,7 +164,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
     Zde uvedený kód vytvoří požadavek HTTP s identifikátorem URI a obrázkem jako binárním obsahem pro volání rozhraní REST API pro počítačové zpracování obrazu.
 
-1. Přidejte pomocné funkce GetImageAsByteArray a JsonPrettyPrint.
+1. Přidejte funkce pomocných rutin GetImageAsByteArray a JsonPrettyPrint.
 
    ```csharp
     /// <summary>
@@ -252,12 +252,12 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
+Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o rozhraní API pro počítačové zpracování obrazu pro čtení [dokumentace k rozhraní API pro počítačové zpracování obrazu](Home.md).
+Další informace o rozhraní API pro počítačové zpracování obrazu najdete v [dokumentaci k rozhraní API pro počítačové zpracování obrazu](Home.md).
