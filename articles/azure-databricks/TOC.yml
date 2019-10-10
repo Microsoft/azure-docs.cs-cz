@@ -1342,8 +1342,8 @@
             - name: Použití metrik Apache Sparku
               href: /azure/databricks/kb/metrics/spark-metrics
               maintainContext: true
-            - name: Notebooks
-              items: null
+        - name: Notebooks
+          items:
             - name: 'Kontrola, jestli se sparková vlastnost dá upravit'
               href: /azure/databricks/kb/notebooks/check-spark-property-modifiable
               maintainContext: true

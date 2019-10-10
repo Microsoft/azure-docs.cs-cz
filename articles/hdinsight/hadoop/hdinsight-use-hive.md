@@ -1,58 +1,57 @@
 ---
 title: Co je Apache Hive a HiveQL – Azure HDInsight
-description: Apache Hive se systémem datového skladu pro Apache Hadoop. Můžete dotazovat data uložená v Hive s využitím HiveQL, který podobný příkazů jazyka Transact-SQL. V tomto dokumentu zjistěte, jak pomocí Azure HDInsight Hive a HiveQL.
-keywords: hiveql, co je hive, hiveql s hadoop, použití hive, zjistěte, hive, co je hive
+description: Apache Hive je systém datového skladu pro Apache Hadoop. Můžete zadávat dotazy na data uložená v podregistru pomocí HiveQL, který se podobá jazyku Transact-SQL. V tomto dokumentu se dozvíte, jak používat podregistr a HiveQL v Azure HDInsight.
+keywords: hiveql, co je podregistr, Hadoop hiveql, jak používat podregistr, naučit se podregistr, co je podregistr
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/04/2019
+ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076317"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167354"
 ---
-# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
+# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
 
-[Apache Hive](https://hive.apache.org/) je systém datového skladu pro Apache Hadoop. Hive umožňuje souhrnů dat, dotazování a analýze dat. Dotazy Hive jsou napsané v HiveQL, což je dotazovací jazyk podobný SQL.
+[Apache Hive](https://hive.apache.org/) je systém datového skladu pro Apache Hadoop. Podregistr umožňuje sumarizaci dat, dotazování a analýzu dat. Dotazy na podregistr se napíší v HiveQL, což je dotazovací jazyk podobný SQL.
 
-Struktura projektu do značné míry nestrukturovaných dat vám umožní Hive. Po definování struktury můžete zadávat dotazy na data bez znalosti Javy nebo MapReduce HiveQL.
+Podregistr umožňuje strukturování struktury na základě nestrukturovaných dat. Po definování struktury můžete použít HiveQL k dotazování dat bez znalosti jazyka Java nebo MapReduce.
 
-HDInsight obsahuje několik typů clusteru, která je vyladěná pro konkrétní úlohy. Následující typy clusteru se nejčastěji používají pro dotazy Hive:
+HDInsight nabízí několik typů clusterů, které jsou vyladěné pro konkrétní úlohy. Následující typy clusterů se nejčastěji používají pro dotazy na podregistry:
 
-* __Interactive Query__: Cluster Hadoop, která poskytuje [s nízkou latencí analytické zpracování (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkce, které zkrátit dobu odezvy pro interaktivní dotazy. Další informace najdete v tématu [Začínáme s interaktivními dotazy v HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+* __Interaktivní dotaz__: cluster Hadoop, který poskytuje funkci [LLAP (Low latence Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) , která zvyšuje dobu odezvy pro interaktivní dotazy. Další informace najdete v dokumentu [Začínáme s interaktivním dotazem v HDInsight](../interactive-query/apache-interactive-query-get-started.md) .
 
-* __Hadoop__: Cluster Hadoop, která je vyladěná pro zpracování úloh služby batch. Další informace najdete v tématu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
+* __Hadoop__: cluster Hadoop, který je vyladěn pro úlohy dávkového zpracování. Další informace najdete v dokumentu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .
 
-* __Spark__: Apache Spark má integrované funkce pro práci s Hive. Další informace najdete v tématu [Začínáme s Apache Spark v HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
+* __Spark__: Apache Spark obsahuje integrovanou funkcionalitu pro práci s podregistru. Další informace najdete v dokumentu [Začínáme s Apache Spark v HDInsight](../spark/apache-spark-jupyter-spark-sql.md) .
 
-* __HBase__: HiveQL slouží k dotazování dat uložených v Apache HBase. Další informace najdete v tématu [Začínáme s Apache HBase v HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
+* __HBA__: HiveQL lze použít k dotazování na data uložená v Apache HBA. Další informace najdete v článku [Začínáme s Apache HBA v dokumentu HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) .
 
-## <a name="how-to-use-hive"></a>Použití Hivu
+## <a name="how-to-use-hive"></a>Jak používat podregistr
 
-V následující tabulce použijte ke zjištění různých způsobech používání Hive s HDInsight:
+Pro zjištění různých způsobů použití podregistru se službou HDInsight použijte následující tabulku:
 
-| **Tuto metodu použijte** Pokud chcete... | ... **interaktivní** dotazy | ...**batch** zpracování | ...from to **klientský operační systém** |
+| **Tuto metodu použijte** , pokud chcete... | ... **interaktivní** dotazy | ... **dávkové** zpracování | ... z tohoto **klientského operačního systému** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Nástroje HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X a Windows |
+| [Nástroje HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, UNIX, Mac OS X nebo Windows |
 | [Nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
-| [Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Žádné (využívajících prohlížeč) |
-| [Klient beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X a Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X a Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
+| [Zobrazení podregistru](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Jakékoli (založené na prohlížeči) |
+| [Klient Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X nebo Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X nebo Windows |
+| [Prostředí Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
+## <a name="hiveql-language-reference"></a>Reference k jazyku HiveQL
 
-## <a name="hiveql-language-reference"></a>Referenční informace k jazyku HiveQL
+Reference k jazyku HiveQL je k dispozici v [příručce jazyka](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
-Referenční informace k jazyku HiveQL je k dispozici v [jazyk ruční](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+## <a name="hive-and-data-structure"></a>Struktura podregistru a dat
 
-## <a name="hive-and-data-structure"></a>Hive a datové struktury
-
-Hive znalost práce s strukturovaných a částečně strukturovaná data. Například textové soubory kde pole jsou odděleny určitých znaků. Následující příkaz HiveQL vytvoří tabulku daty oddělených mezerami:
+Podregistr chápe, jak pracovat se strukturovanými a částečně strukturovanými daty. Například textové soubory, kde jsou pole oddělená konkrétními znaky. Následující příkaz HiveQL vytvoří tabulku pro data oddělená mezerou:
 
 ```hiveql
 CREATE EXTERNAL TABLE log4jLogs (
@@ -67,53 +66,53 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive podporuje taky vlastní **serializátor/deserializers (SerDe)** pro komplexní nebo nepravidelně strukturovaná data. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentu.
+Podregistr také podporuje vlastní **serializátor nebo deserializaci (SerDe)** pro složitá nebo nepravidelná strukturovaná data. Další informace najdete v tématu [Jak používat vlastní SERDE JSON s](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentem HDInsight.
 
-Další informace o formátech podporovaných Hive najdete v článku [ruční jazyka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Další informace o formátech souborů podporovaných podregistru najdete v tématu [Ruční příručka k jazyku (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
 
-### <a name="hive-internal-tables-vs-external-tables"></a>Interní tabulky vs externích tabulek Hive
+### <a name="hive-internal-tables-vs-external-tables"></a>Vnitřní tabulky a externí tabulky podregistru
 
-Existují dva typy tabulek, které můžete vytvořit pomocí Hive:
+Existují dva typy tabulek, které lze vytvořit s podregistru:
 
-* __Interní__: Data se ukládají v datovém skladu Hive. Datový sklad se nachází na `/hive/warehouse/` na výchozí úložiště pro cluster.
+* __Interní__: data jsou uložená v datovém skladu podregistru. Datový sklad je umístěný na `/hive/warehouse/` ve výchozím úložišti pro daný cluster.
 
-    Použijte interní tabulky při vztahovat jeden z následujících podmínek:
+    Použijte interní tabulky, pokud platí jedna z následujících podmínek:
 
-    * Data jsou dočasné.
-    * Chcete, aby Hive ke správě životního cyklu tabulky a data.
+    * Data jsou dočasná.
+    * Chcete, aby podregistr spravoval životní cyklus tabulky a dat.
 
-* __Externí__: Data uložená mimo datového skladu. Data lze uložit na jakékoli úložiště dostupné v clusteru.
+* __Externí__: data se ukládají mimo datový sklad. Data je možné ukládat do libovolného úložiště přístupného clusterem.
 
-    Používejte externí tabulky, které při vztahovat jeden z následujících podmínek:
+    Externí tabulky použijte v případě, že platí jedna z následujících podmínek:
 
-    * Data se také používá mimo Hive. Například datové soubory jsou aktualizovány jiným procesem (tj. Nepoužívejte zámky souborech.)
-    * Data musí zůstat v podkladové umístění i po odstranění v tabulce.
-    * Budete potřebovat vlastní umístění, jako je například účet služby storage jiné než výchozí.
-    * Program než hive spravuje formát dat, umístění atd.
+    * Data se také používají mimo podregistr. Například datové soubory jsou aktualizovány jiným procesem (což nezamkne soubory.)
+    * Data musí zůstat v základním umístění, a to i po vyřazení tabulky.
+    * Potřebujete vlastní umístění, jako je například účet úložiště, který není výchozí.
+    * Jiný program než podregistr spravuje formát dat, umístění atd.
 
-Další informace najdete v tématu [Hive interní a externí tabulky ÚVOD](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blogový příspěvek.
+Další informace najdete v blogovém příspěvku v [interních a externích tabulkách pro podregistr](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) .
 
-## <a name="user-defined-functions-udf"></a>Uživatelem definované funkce (UDF)
+## <a name="user-defined-functions-udf"></a>Uživatelsky definované funkce (UDF)
 
-Hive se také dají rozšířit prostřednictvím **uživatelem definované funkce (UDF)** . Uživatelem definovanou FUNKCI umožňuje implementovat logiku, která se snadno modelována nebo funkce v HiveQL. Příklad použití funkce UDF pomocí Hive najdete v následujících dokumentech:
+Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovaných funkcí (UDF)** . Systém souborů UDF umožňuje implementovat funkce nebo logiku, které nejsou v HiveQL snadno modelované. Příklad použití UDF s podregistrem najdete v následujících dokumentech:
 
-* [Uživatelem definované funkce jazyka Java pomocí Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
+* [Použití uživatelsky definované funkce Java s Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [Použití uživatelem definované funkce Pythonu s Apache Hive](../hadoop/python-udf-hdinsight.md)
+* [Použití uživatelsky definované funkce Pythonu s Apache Hive](../hadoop/python-udf-hdinsight.md)
 
-* [Použití C# uživatelem definovanou funkci s Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Použití C# uživatelsky definované funkce s Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Jak přidat vlastní Apache Hive uživatelem definované funkce HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Postup přidání vlastní Apache Hive uživatelsky definované funkce do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [Příklad Apache Hive uživatelem definované funkce pro převod formátů data a času na časové razítko Hive](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [Příklad Apache Hive uživatelsky definované funkce pro převod formátů data a času na časové razítko podregistru](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a id="data"></a>Ukázková data
 
-Hive v HDInsight se dodává už načtené s interní tabulku s názvem `hivesampletable`. HDInsight také poskytuje příklad datové sady, které je možné pomocí Hive. Tyto datové sady jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře neexistují ve výchozím nastavení úložiště pro váš cluster.
+Podregistr v HDInsight je předem načtený pomocí interní tabulky s názvem `hivesampletable`. HDInsight také poskytuje příklady datových sad, které se dají použít s podregistru. Tyto sady dat jsou uložené v adresářích `/example/data` a `/HdiSamples`. Tyto adresáře existují ve výchozím úložišti pro váš cluster.
 
-## <a id="job"></a>Příklad dotazu Hive
+## <a id="job"></a>Ukázkový dotaz na podregistr
 
-Sloupce do projektu následující příkazy HiveQL `/example/data/sample.log` souboru:
+Následující příkazy HiveQL vystaví sloupce projektu do souboru `/example/data/sample.log`:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -127,32 +126,31 @@ CREATE EXTERNAL TABLE log4jLogs (
     t7 string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
-SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
     GROUP BY t4;
 ```
 
-Příkazy HiveQL v předchozím příkladu, proveďte následující akce:
+V předchozím příkladu příkazy HiveQL provádějí následující akce:
 
+* `DROP TABLE`: Pokud tabulka již existuje, odstraňte ji.
 
-* `DROP TABLE`: Pokud tabulka již existuje, odstraňte ho.
+* `CREATE EXTERNAL TABLE`: Vytvoří novou **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění a v původním formátu.
 
-* `CREATE EXTERNAL TABLE`: Vytvoří novou **externí** tabulky v Hivu. Externí tabulky pouze uložte definici tabulky Hive. Data zůstane v původním umístění a v původním formátu.
+* `ROW FORMAT`: oznamuje podregistru, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
-* `ROW FORMAT`: Říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+* `STORED AS TEXTFILE LOCATION`: říká podregistru, ve kterém jsou data uložená (adresář `example/data`) a který je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.
 
-* `STORED AS TEXTFILE LOCATION`: Říká Hive, ve kterém jsou data uložená ( `example/data` adresáře) a, která je uložená jako text. Data mohou být v jednom souboru nebo rozdělené mezi více souborů v adresáři.
+* `SELECT`: vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.
 
-* `SELECT`: Vybere počet všech řádků ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
-
-* `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že jsme by měl vrátit pouze data ze souborů s koncovkou. log.
+* `INPUT__FILE__NAME LIKE '%.log'`-podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by mělo vracet pouze data ze souborů končících log. log.
 
 > [!NOTE]  
-> Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat operaci MapReduce nebo procesu.
+> Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například proces automatizovaného nahrávání dat nebo operace MapReduce.
 >
-> Vyřazení externí tabulky neodpovídá **není** odstranit data, jenom odstraní definici tabulky.
+> Při vyřazení externí tabulky **se data neodstraňují** , jenom definice tabulky se odstraní.
 
-Vytvoření **interní** místo externí tabulky, použijte následující HiveQL:
+Chcete-li vytvořit **interní** tabulku místo External, použijte následující HiveQL:
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -169,55 +167,55 @@ SELECT t1, t2, t3, t4, t5, t6, t7
     FROM log4jLogs WHERE t4 = '[ERROR]';
 ```
 
-Tyto příkazy provádět následující akce:
+Tyto příkazy provádějí následující akce:
 
-* `CREATE TABLE IF NOT EXISTS`: Pokud tabulka neexistuje, vytvořte ho. Vzhledem k tomu, **externí** – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Tabulka je uložena v datovém skladu Hive a spravuje úplně Hive.
+* `CREATE TABLE IF NOT EXISTS`: Pokud tabulka neexistuje, vytvořte ji. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Tabulka je uložená v datovém skladu podregistru a je plně spravovaná podregistrem.
 
-* `STORED AS ORC`: Ukládá data ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
+* `STORED AS ORC`: ukládá data ve formátu optimalizované řádky (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
 
-* `INSERT OVERWRITE ... SELECT`: Vybere řádky z **log4jLogs** tabulku, která obsahuje **[Chyba]** a pak vloží data do **nepřenesl** tabulky.
+* `INSERT OVERWRITE ... SELECT`: Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží **do tabulky chyb** .
 
 > [!NOTE]  
-> Na rozdíl od externích tabulek vyřadit interní tabulku se odstraní také podkladová data.
+> Vyřazení interní tabulky na rozdíl od externích tabulek odstraní také podkladová data.
 
-## <a name="improve-hive-query-performance"></a>Zlepšení výkonu dotazů Hive
+## <a name="improve-hive-query-performance"></a>Zvýšení výkonu dotazů na podregistr
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) je architektura, která umožňuje aplikace náročné na data, jako je například Hive mnohem efektivněji spouštět škálovaně. Ve výchozím nastavení je povoleno tez.  [Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
+[Apache tez](https://tez.apache.org) je rozhraní, které umožňuje aplikacím náročným na data, jako je například podregistr, fungovat mnohem efektivněji ve velkém měřítku. Tez je ve výchozím nastavení povolená.  [Apache Hive v dokumentech návrhu tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobnosti o volbách implementace a ladění konfigurací.
 
 ### <a name="low-latency-analytical-processing-llap"></a>Analytické zpracování s nízkou latencí (LLAP)
 
-[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (někdy označované jako Live Long and Process) je nová funkce ve verzi 2.0 Hive, umožňující ukládání v mezipaměti dotazů. LLAP díky dotazů Hive mnohem rychlejší, až [26 x rychlejší než Hive 1.x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (někdy označované jako Live Long and Process) je nová funkce v podregistru 2,0, která umožňuje ukládání dotazů do mezipaměti v paměti. LLAP vydává dotazy na podregistr mnohem rychleji, až do [26x rychleji než v registru 1. x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 
-HDInsight poskytuje LLAP v typu clusteru Interactive Query. Další informace najdete v tématu [Začínáme s interaktivními dotazy](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+HDInsight poskytuje LLAP v typu clusteru interaktivních dotazů. Další informace najdete v dokumentu [Začínáme s interaktivním dotazem](../interactive-query/apache-interactive-query-get-started.md) .
 
-## <a name="scheduling-hive-queries"></a>Plánování dotazů Hive
+## <a name="scheduling-hive-queries"></a>Plánování dotazů na podregistr
 
-Existuje několik služeb, které je možné ke spouštění dotazů Hive jako součást pracovního postupu ručně, nebo na vyžádání.
+K dispozici je několik služeb, které se dají použít ke spouštění dotazů na podregistr v rámci plánu nebo pracovního postupu na vyžádání.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory umožňuje používat HDInsight jako součást kanálu služby Data Factory. Další informace o používání Hive v kanálu najdete v článku [transformovat data pomocí aktivity Hivu ve službě Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) dokumentu.
+Azure Data Factory umožňuje používat HDInsight jako součást kanálu Data Factory. Další informace o použití podregistru z kanálu naleznete [v tématu transformace dat pomocí aktivity podregistru v dokumentu Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) .
 
-### <a name="hive-jobs-and-sql-server-integration-services"></a>Úlohy Hive a SQL Server Integration Services
+### <a name="hive-jobs-and-sql-server-integration-services"></a>Úlohy podregistru a služba SSIS (SQL Server Integration Services)
 
-SQL Server Integration Services (SSIS) můžete použít ke spuštění úlohy Hive. Azure Feature Pack for SSIS obsahuje následující součásti, které pracují s úloh Hive v HDInsight.
+Ke spuštění úlohy podregistru můžete použít služba SSIS (SQL Server Integration Services) (SSIS). Sada Azure Feature Pack pro SSIS poskytuje následující komponenty, které pracují s úlohami podregistru v HDInsight.
 
-* [Úloha Azure HDInsight Hive](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Úloha pro podregistr Azure HDInsight](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Správce připojení Azure předplatného](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Správce připojení předplatného Azure](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Další informace najdete v tématu [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentaci.
+Další informace najdete v dokumentaci k [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) .
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Další informace o použití Oozie s Hive najdete v článku [Apache Oozie použijte k definování a spuštění pracovního postupu](../hdinsight-use-oozie-linux-mac.md) dokumentu.
+Apache Oozie je pracovní postup a systém koordinace, který spravuje úlohy systému Hadoop. Další informace o použití Oozie s podregistrem najdete v tématu věnovaném [Definování a spuštění dokumentu pracovního postupu pomocí Apache Oozie](../hdinsight-use-oozie-linux-mac.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, co je Hive a jeho použití se systémem Hadoop v HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
+Teď, když jste se naučili, jaký podregistr je a jak ho používat se systémem Hadoop ve službě HDInsight, můžete pomocí následujících odkazů prozkoumat další způsoby práce s Azure HDInsight.
 
-* [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md)
-* [Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight](./python-udf-hdinsight.md)
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md)
+* [Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight](./python-udf-hdinsight.md)
 * [Použití úloh MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
