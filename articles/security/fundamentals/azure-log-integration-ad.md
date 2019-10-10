@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727649"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244673"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrace protokolů auditu Azure Active Directory
 
@@ -71,10 +71,10 @@ Pomoc komunity je k dispozici prostřednictvím [Azure log Integration fóra MSD
 
 Můžete také otevřít [žádost o podporu](../../azure-supportability/how-to-create-azure-support-request.md). Jako službu, pro kterou požadujete podporu, vyberte **integrace protokolu** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Azure Log Integration najdete v těchto tématech:
 
-* [Microsoft Azure log Integration pro protokoly Azure](https://www.microsoft.com/download/details.aspx?id=53324): Tato stránka služby Stažení softwaru obsahuje podrobnosti, požadavky na systém a pokyny k instalaci Azure Log Integration.
-* [Úvod do Azure log Integration](azure-log-integration-overview.md): Tento článek vás seznámí s Azure Log Integration, jeho klíčovými schopnostmi a jak funguje.
-* [Nejčastější dotazy k Azure log Integration](azure-log-integration-faq.md): Tento článek obsahuje odpovědi na otázky týkající se Azure Log Integration.
+* [Microsoft Azure log Integration pro protokoly Azure](https://azure.microsoft.com/services/monitor/): Tato stránka služby Stažení softwaru obsahuje podrobnosti, požadavky na systém a pokyny k instalaci pro Azure log Integration.
+* [Úvod do Azure log Integration](azure-log-integration-overview.md): Tento článek vás seznámí s Azure log Integration, jeho klíčovými schopnostmi a jak funguje.
+* [Azure log Integration Nejčastější dotazy](azure-log-integration-faq.md): Tento článek obsahuje odpovědi na otázky týkající se Azure log Integration.
 * [Nové funkce pro Azure Diagnostics a protokoly auditu Azure](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Tento Blogový příspěvek vás seznámí s protokoly auditu Azure a dalšími funkcemi, které vám pomůžou získat přehled o operacích vašich prostředků Azure.

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/18/2019
+ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120500"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240195"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace Java pomocí Microsoftu
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -32,89 +32,83 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K provedení této ukázky budete potřebovat:
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 nebo vyšší a [Maven](https://maven.apache.org/).
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý Start
 > Máte dvě možnosti, jak spustit aplikaci pro rychlý Start: Express (možnost 1) nebo ruční (možnost 2).
 > 
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
 > 1. Přejít na [Registrace aplikací Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-> 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
+> 1. Zadejte název vaší aplikace a vyberte **zaregistrovat**.
 > 1. Podle pokynů stáhněte a automaticky nakonfigurujte novou aplikaci.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: registrace a ruční konfigurace vaší aplikace a ukázky kódu
 > 
 >
-> #### <a name="step-1-download-the-code-sample"></a>Krok 1: Stažení ukázky kódu
-> 
-> - [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
->
-> #### <a name="step-2-open-applicationproperties"></a>Krok 2: Otevřít Application. Properties
->
-> 1. Extrahujte soubor zip do místní složky.
-> 1. Volitelné Pokud používáte integrované vývojové prostředí, otevřete ukázku ve svém oblíbeném integrovaném vývojovém prostředí (IDE).
-> 1. Otevřete soubor *Application. Properties* . Při registraci aplikace v dalším `aad.clientId`kroku `aad.authority`budete vkládat `aad.secretKey` hodnoty pro, a.
-
-
-> #### <a name="step-3-register-your-application"></a>Krok 3: Zaregistrujte svoji aplikaci.
+> #### <a name="step-1-register-your-application"></a>Krok 1: registrace aplikace
 > K registraci aplikace a ručnímu přidání registračních informací aplikace do řešení použijte následující postup:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+> 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+> 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
-> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
->    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
+> 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte informace o registraci vaší aplikace:
+>    - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `java-webapp`.
 >    - Nyní nechejte **identifikátor URI pro přesměrování** prázdné a vyberte **Registrovat**.
-> 1. Vyhledejte hodnotu **ID aplikace (klienta)** aplikace. Aktualizujte hodnotu `Enter_the_Application_Id_here` v souboru *Application. Properties* .
-> 1. Vyhledejte hodnotu **ID adresáře aplikace (tenant)** . Aktualizujte hodnotu `Enter_the_Tenant_Info_Here` v souboru *Application. Properties* . 
+> 1. Vyhledejte hodnotu **ID aplikace (klienta)** aplikace. Zkopírujte tuto hodnotu, budete ji potřebovat později.
+> 1. Vyhledejte hodnotu **ID adresáře aplikace (tenant)** . Zkopírujte tuto hodnotu, budete ji potřebovat později.
 > 1. Vyberte nabídku **ověřování** a přidejte následující informace:
->    - V případě **identifikátorů URI přesměrování**přidejte `http://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/users`.
+>    - Do rozevíracích **identifikátorů URI pro přesměrování**přidejte `http://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/users`.
 >    - Vyberte **Uložit**.
 > 1. V nabídce vlevo vyberte **certifikáty & tajných** kódů a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta** :
 >     
 >    - Zadejte popis klíče (instance tajného kódu aplikace).
 >    - Vyberte dobu trvání klíče **v intervalu 1 roku**.
 >    - Po kliknutí na tlačítko **Přidat**se zobrazí hodnota klíče. 
->    - Zkopírujte hodnotu klíče. Otevřete soubor *Application. Properties* , který jste stáhli dříve, a aktualizujte `Enter_the_Client_Secret_Here` hodnotu s hodnotou klíče. 
+>    - Zkopírujte hodnotu klíče, budete ji potřebovat později.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
-> 1. Přidejte adresy URL odpovědi `http://localhost:8080/msal4jsamples/secure/aad` jako `https://localhost:8080/msal4jsamples/graph/users`a.
+> 1. Přidejte adresy URL odpovědi jako `http://localhost:8080/msal4jsamples/secure/aad` a `https://localhost:8080/msal4jsamples/graph/users`.
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Tuto změnu pro mě udělat]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
-> 
-> #### <a name="step-2-download-the-code-sample"></a>Krok 2: Stažení ukázky kódu
-> 
-> - [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
-> 
-> #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu 
-> 
-> 1. Extrahujte soubor zip do místní složky.
-> 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
-> 1. Otevřete soubor **Application. Properties** , který lze najít v části *Src/Main/Resources/* .
-> 1. Nahraďte vlastnosti aplikace.
->   1. Vyhledejte `aad.clientId` a aktualizujte `Enter_the_Application_Id_here` hodnotu s hodnotou **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali. 
->   1. Vyhledejte `aad.authority` a aktualizujte `Enter_the_Tenant_Name_Here` hodnotu s hodnotou **ID adresáře (tenant)** v registrované aplikaci.
->   1. Vyhledejte `aad.secretKey` a aktualizujte `Enter_the_Client_Secret_Here` hodnotu pomocí **tajného klíče klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
+> > ![Already nakonfigurovaná na @ no__t-1 aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-4-run-the-code-sample"></a>Krok 4: Spuštění ukázky kódu
-1. Spusťte ukázku kódu a otevřete prohlížeč a přejděte na *http://localhost:8080* adresu.
+#### <a name="step-2-download-the-code-sample"></a>Krok 2: stažení ukázky kódu
+ 
+ [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+ 
+ #### <a name="step-3-configure-the-code-sample"></a>Krok 3: Konfigurace ukázky kódu 
+ 
+ 1. Extrahujte soubor zip do místní složky.
+ 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
+ 1. Otevřete soubor **Application. Properties** , který lze najít v části *Src/Main/Resources/* .
+ 1. Nahraďte vlastnosti aplikace.
+   1. Vyhledejte `aad.clientId` a aktualizujte hodnotu `Enter_the_Application_Id_here` s hodnotou **ID aplikace (klienta)** , kterou jste zaregistrovali. 
+   1. Vyhledejte `aad.authority` a aktualizujte hodnotu `Enter_the_Tenant_Name_Here` s hodnotou **ID adresáře (tenant)** , kterou jste zaregistrovali.
+   1. Vyhledejte `aad.secretKey` a aktualizujte hodnotu `Enter_the_Client_Secret_Here` s **tajným klíčem klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro aplikaci, kterou jste zaregistrovali.
+
+> [!div renderon="docs"]
+> Kde:
+>
+> - `Enter_the_Application_Id_here` – je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Client_Secret_Here`-je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.
+
+#### <a name="step-4-run-the-code-sample"></a>Krok 4: spuštění ukázky kódu
+1. Spusťte ukázku kódu a otevřete prohlížeč a přejděte na *http://localhost:8080* .
 1. Přední stránka obsahuje **přihlašovací** tlačítko. Klikněte na tlačítko **Přihlásit** se a přesměrujte na Azure Active Directory. Uživateli se zobrazí výzva k zadání přihlašovacích údajů.  
 1. Po úspěšném ověření u Azure Active Directory budou přesměrovány na *http://localhost:8080/msal4jsamples/secure/aad* . Jsou oficiálně přihlášeni k aplikaci a stránka by měla zobrazovat informace pro přihlášený účet. Bude obsahovat také tlačítka pro: 
-    - *Odhlásit*se: Vypíše z aplikace aktuálního uživatele a přesměruje je na domovskou stránku.
+    - *Odhlásit*se: odhlásí aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
     - *Zobrazit uživatele*: Získá token pro Microsoft Graph a potom zavolejte Microsoft Graph s tokenem připojeným k žádosti o získání všech uživatelů v tenantovi.
-
 
 ## <a name="more-information"></a>Další informace
 
@@ -134,7 +128,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ```
 
 
-### <a name="msal-initialization"></a>Inicializace Msal
+### <a name="msal-initialization"></a>Inicializace MSAL
 Odkaz na MSAL4J můžete přidat přidáním následujícího kódu do horní části souboru, kde budete používat MSAL4J: 
 
 ```Java

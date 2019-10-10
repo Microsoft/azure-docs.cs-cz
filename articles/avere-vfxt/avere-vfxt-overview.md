@@ -1,80 +1,80 @@
 ---
-title: Avere vFXT for Azure
-description: Úvod do Avere vFXT for Azure, cloudové vrstvy mezipaměti pro prostředí HPC
+title: Avere vFXT pro Azure
+description: Seznámení s avere vFXT pro Azure, vrstva mezipaměti cloudu pro HPC
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohogue
+ms.openlocfilehash: 70ae20daa81ab52d4054dcd4bea3c9432a5ceaeb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409414"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256170"
 ---
-# <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT for Azure? 
+# <a name="what-is-avere-vfxt-for-azure"></a>Co je avere vFXT pro Azure? 
 
-Avere vFXT for Azure je řešení ukládání do mezipaměti na úrovni systému souborů pro úlohy vysokovýkonného výpočetního prostředí (HPC) s velkými nároky na data. Umožňuje využít škálovatelnost cloud computingu ke zpřístupnění dat kdykoli a kdekoli jsou potřeba, a to i dat uložených na vlastním místním hardwaru.
+Avere vFXT for Azure je řešení pro ukládání do mezipaměti systému souborů pro úlohy HPC (High Performance Computing) náročné na data. Umožňuje využít škálovatelnost cloud computingu a zpřístupnit data v případě potřeby a tam, kde je potřeba, a to i pro data uložená ve vašem vlastním místním hardwaru.
 
-Avere vFXT podporuje tyto běžné scénáře výpočetního prostředí: 
+Avere vFXT podporuje tyto běžné výpočetní scénáře: 
 
-* Hybridní cloudovou architekturu: Avere vFXT pro Azure můžete pracovat se systém hardwaru úložiště, která poskytuje výhody cloud computingu bez nutnosti přesouvat soubory. 
-* Shlukování cloudu: Avere vFXT pro Azure můžete přesunout data do cloudu pro jeden projekt, nebo metodou "lift and shift" celého pracovního postupu trvale. 
+* Hybridní cloudová architektura: avere vFXT for Azure může pracovat s hardwarovým úložným systémem, který přináší výhody cloud computingu, aniž byste museli přesouvat soubory. 
+* Shlukování cloudu: avere vFXT pro Azure vám může přispět k přesunu dat do cloudu pro jeden projekt nebo "zvednutí a posunutí" celého pracovního postupu. 
 
-![Diagram znázorňující podrobnosti o systému Avere vFXT v předplatném Azure připojeném k úložišti objektů blob a místnímu datacentru](media/avere-vfxt-hybrid.png)
+![Diagram znázorňující podrobnosti o systému avere vFXT v rámci předplatného Azure připojeného k úložišti objektů BLOB a místnímu datovému centru](media/avere-vfxt-hybrid.png)
 
-Avere vFXT for Azure je nejvhodnější pro tyto situace: 
+Avere vFXT pro Azure se nejlépe hodí pro tyto situace: 
 
-* Operace s velkými nároky na čtení pro úlohy HPC
-* Aplikace využívající běžný protokol NFS
-* Výpočetní farmy s 1 000 až 40 000 procesorových jader
-* Integrace s místním hardwarovým řešením NAS, úložištěm objektů blob v Azure nebo oběma
+* Operace čtení – těžké pro úlohy prostředí HPC
+* Aplikace používající běžný protokol NFS
+* Výpočetní farmy 1000 až 40 000 PROCESORových jader
+* Integrace s místním hardwarovým serverem NAS, úložištěm objektů BLOB v Azure nebo obojím
 
-Další informace najdete na adrese <https://azure.microsoft.com/services/storage/avere-vfxt/>.
+Další informace najdete na stránce @no__t – 0.
 
-## <a name="who-uses-avere-vfxt-for-azure"></a>Kdo používá Avere vFXT for Azure? 
+## <a name="who-uses-avere-vfxt-for-azure"></a>Kdo používá avere vFXT pro Azure? 
 
-Avere vFXT může pomáhat s nejrůznějšími výpočetními úlohami náročnými na čtení:
+Avere vFXT může pomáhat s nejrůznějšími výpočetními úkoly náročnými na čtení:
 
 ### <a name="visual-effects-rendering"></a>Vykreslování vizuálních efektů 
 
-V oblasti médií a zábavy může cluster Avere vFXT zrychlit přístup k datům u projektů vykreslování náročných na čas. Díky možnosti přidat více místa v mezipaměti i výpočetních uzlů v Azure získáte flexibilitu efektivně zpracovávat velké projekty. 
+V případě médií a zábavy může cluster avere vFXT zrychlit přístup k datům pro projekty vykreslování kritické pro čas. Vzhledem k tomu, že v Azure můžete přidat další místo pro mezipaměť i více výpočetních uzlů, máte flexibilitu efektivně zpracovávat velké projekty. 
 
-### <a name="life-sciences"></a>Lékařské technologie 
+### <a name="life-sciences"></a>Vědy o života 
 
-Avere vFXT může výzkumným pracovníkům umožnit spouštět pracovní postupy sekundární analýzy ve službě Azure Compute a přistupovat ke genomickým údajům, ať jsou kdekoli.
+Avere vFXT může umožnit výzkumným pracovníkům spouštět své sekundární analytické pracovní postupy ve službě Azure COMPUTE a přistupovat k datům genom bez ohledu na jejich umístění.
 
-Ve farmaceutickém výzkumu můžou clustery Avere vFXT sloužit k urychlení objevování léků díky tomu, že pomůžou výzkumným pracovníkům předvídat interakce léků s cílem a analyzovat data o výzkumu.
+Ve farmaceutickém výzkumu se clustery avere vFXT dají využít k urychlení zjišťování drog tím, že pomáhají výzkumným pracovníkům cílit interakce zaměřené na drogy a analyzovat data o výzkumu.
 
-### <a name="financial-services-analytics"></a>Analýza finančních služeb
+### <a name="financial-services-analytics"></a>Analýzy finančních služeb
 
-Cluster Avere vFXT může pomoct s urychlením výpočtů kvantitativní analýzy a poskytnout tak společnostem poskytujícím finanční služby lepší přehled, který jim umožní provádět strategická rozhodnutí. 
+Cluster avere vFXT může pomoci zrychlit kvantitativní výpočty analýz, které poskytují společnosti finančních služeb lepší přehled o strategických rozhodnutích. 
 
 ## <a name="features-and-specifications"></a>Funkce a specifikace
 
-Systém Avere vFXT se skládá ze tří nebo více virtuálních hraničních souborových uzlů nakonfigurovaných v clusteru. Může se nacházet blízko klientským počítačům, které místo přímého připojování úložiště připojují cluster. 
+Systém avere vFXT se skládá ze tří nebo více uzlů souborového virtuální hrany, které jsou nakonfigurovány v clusteru. Může se nacházet poblíž klientských počítačů, které připojovat cluster místo přímého připojení úložiště. 
 
-Cluster Avere vFXT ukládá požadované soubory okamžitě do mezipaměti. Opakované požadavky je možné ve více než 80 % případů obsluhovat z mezipaměti.
+Cluster avere vFXT ukládá soubory do mezipaměti, jak jsou požadovány. Opakované požadavky lze zpracovat z mezipaměti více než 80% času.
 
-### <a name="compatibility"></a>Kompatibilita 
+### <a name="compatibility"></a>Režim 
 
-* Kompatibilní s hardwarovými systémy NAS od NetApp nebo Dell EMC Isilon
+* Kompatibilní s hardwarovými systémy NAS z NetApp nebo Dell EMC Isilon
 * Kompatibilní s Azure Blob
-* Používá protokol NFSv3 nebo SMB2
+* Používá protokol NFSv3 nebo SMB2.
 
-Azure vFXT používá následující prostředky Azure: 
+Avere vFXT používá následující prostředky Azure: 
 
 |Komponenta Azure|   |
 |----------|-----------|
 |Virtuální počítače|3 nebo více E32s_v3|
-|Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |
-|Účet úložiště (volitelné) |v2|
-|Back-endové úložiště dat (volitelné) | Jeden prázdný kontejner objektů blob místně redundantního úložiště |
+|SSD úrovně Premium úložiště|200 GB místa pro operační systém a 1 TB až 4 TB místa v mezipaměti na uzel |
+|Účet úložiště (volitelné) |2|
+|Úložiště back-endu dat (volitelné) | Jeden prázdný kontejner objektů BLOB LRS |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tady je několik odkazů, které vám pomůžou začít vytvářet vlastní nasazení Avere vFXT. 
+Tady je několik odkazů, které vám pomohou začít vytvářet vlastní nasazení služby avere vFXT. 
 
 * [Plánování systému](avere-vfxt-deploy-plan.md)
 * [Přehled nasazení](avere-vfxt-deploy-overview.md)

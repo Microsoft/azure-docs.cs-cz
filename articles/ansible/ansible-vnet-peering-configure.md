@@ -1,48 +1,48 @@
 ---
-title: Kurz – konfigurace partnerského vztahu virtuální sítě Azure, pomocí Ansible | Dokumentace Microsoftu
-description: Zjistěte, jak použít Ansible k propojení virtuálních sítí s využitím partnerského vztahu virtuální sítě.
-keywords: ansible, azure, devops, bash, playbooku, sítě, partnerský vztah
+title: Kurz – konfigurace partnerského vztahu virtuálních sítí Azure pomocí Ansible
+description: Naučte se používat Ansible k propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí.
+keywords: Ansible, Azure, DevOps, bash, PlayBook, sítě, partnerský vztah
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f51e7c857a22a362a3d295fbe087c54b25f85780
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230756"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241242"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Kurz: Nakonfigurujte partnerský vztah virtuální sítě Azure, pomocí Ansible
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Kurz: konfigurace partnerského vztahu virtuálních sítí Azure pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Partnerské vztahy virtuálních sítí (VNet)](/azure/virtual-network/virtual-network-peering-overview) umožňuje bezproblémové propojení dvou virtuálních sítí Azure. Po navázání partnerského vztahu se dvěma virtuálními sítěmi se jeví jako jedna pro účely připojení. 
+[Partnerský vztah virtuálních sítí (VNET)](/azure/virtual-network/virtual-network-peering-overview) umožňuje bezproblémové připojení dvou virtuálních sítí Azure. Po navázání partnerského vztahu se tyto dvě virtuální sítě zobrazí jako jedna pro účely připojení. 
 
-Provoz se směruje mezi virtuálními počítači ve stejné virtuální síti pomocí soukromých IP adres. Podobně provoz mezi virtuálními počítači v partnerské virtuální síti je směrován přes páteřní infrastrukturu Microsoftu. V důsledku toho virtuálních počítačů v různých virtuálních sítích komunikovat mezi sebou.
+Provoz se směruje mezi virtuálními počítači ve stejné virtuální síti prostřednictvím privátních IP adres. Podobně provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován prostřednictvím páteřní infrastruktury Microsoftu. Výsledkem je, že virtuální počítače v různých virtuálních sítích můžou vzájemně komunikovat.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Vytvoření dvou virtuálních sítí
-> * Navázání partnerského vztahu mezi dvěma virtuálními sítěmi
-> * Odstranit partnerský vztah mezi těmito dvěma sítěmi
+> * Navázat partnerský vztah mezi dvěma virtuálními sítěmi
+> * Odstranění partnerského vztahu mezi dvěma sítěmi
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-two-resource-groups"></a>Vytvořit dvě skupiny prostředků
+## <a name="create-two-resource-groups"></a>Vytvoření dvou skupin prostředků
 
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
-- Vytvořit dvě skupiny prostředků 
+- Vytvoření dvou skupin prostředků 
 
 ```yml
   - name: Create a resource group
@@ -57,10 +57,10 @@ Vzorový kód playbook v této části se používá pro:
 
 ## <a name="create-the-first-virtual-network"></a>Vytvoření první virtuální sítě
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
 - Vytvoření virtuální sítě
-- Vytvořte podsíť ve virtuální síti
+- Vytvoření podsítě v rámci virtuální sítě
 
 ```yml
   - name: Create first virtual network
@@ -78,10 +78,10 @@ Vzorový kód playbook v této části se používá pro:
 
 ## <a name="create-the-second-virtual-network"></a>Vytvoření druhé virtuální sítě
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
 - Vytvoření virtuální sítě
-- Vytvořte podsíť ve virtuální síti
+- Vytvoření podsítě v rámci virtuální sítě
 
 ```yml
   - name: Ceate second virtual network
@@ -97,12 +97,12 @@ Vzorový kód playbook v této části se používá pro:
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>Navázání partnerského vztahu mezi dvěma virtuálními sítěmi
+## <a name="peer-the-two-virtual-networks"></a>Navázat partnerský vztah mezi dvěma virtuálními sítěmi
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
-- Inicializovat partnerský vztah virtuální sítě
-- Navázání partnerského vztahu mezi dvěma dříve vytvořili virtuální sítě
+- Inicializace partnerského vztahu virtuálních sítí
+- Partnerské dva dřív vytvořené virtuální sítě
 
 ```yml
   - name: Initial vnet peering
@@ -130,9 +130,9 @@ Vzorový kód playbook v této části se používá pro:
 
 ## <a name="delete-the-virtual-network-peering"></a>Odstranit partnerský vztah virtuální sítě
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
-- Odstranit partnerský vztah mezi těmito dvěma dříve vytvořili virtuální sítě
+- Odstranit partnerský vztah mezi dvěma dříve vytvořenými virtuálními sítěmi
 
 ```yml
   - name: Delete vnet peering
@@ -143,11 +143,11 @@ Vzorový kód playbook v této části se používá pro:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Získat ukázky playbook
+## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
 
-Existují dva způsoby, jak získat playbook úplnou ukázku:
+Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
 
-- [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) a uložit ho. tím `vnet_peering.yml`.
+- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) a uložte ho do `vnet_peering.yml`.
 - Vytvořte nový soubor s názvem `vnet_peering.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -229,21 +229,21 @@ Existují dva způsoby, jak získat playbook úplnou ukázku:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Spustit playbook vzorku
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
 
-Vzorový kód playbook v této části se používá k testování různých funkcí zobrazených v celém tomto kurzu.
+Vzorový PlayBook kód v této části se používá k testování různých funkcí zobrazených v celém kurzu.
 
-Tady jsou některé důležité poznámky vzít v úvahu při práci s playbook ukázka:
+Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- V `vars` části, nahraďte `{{ resource_group_name }}` zástupný symbol s názvem vaší skupiny prostředků.
+- V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
 
-Spusťte playbook ansible playbook příkazem:
+Spusťte PlayBook pomocí příkazu Ansible-PlayBook:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-Po spuštění playbooku, se zobrazí výstup podobný následující výsledky:
+Po spuštění PlayBook se zobrazí výstup podobný následujícímu výsledku:
 
 ```Output
 PLAY [localhost] 
@@ -294,11 +294,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Vzorový kód playbook v této části se používá pro:
+Vzorový kód PlayBook v této části se používá pro:
 
-- Odstranění skupiny dva prostředky vytvořili dříve
+- Odstranit dvě skupiny prostředků vytvořené dříve
 
-Uložte následující ukázkový playbook jako `cleanup.yml`:
+Následující PlayBook uložte jako `cleanup.yml`:
 
 ```bash
 - hosts: localhost
@@ -319,19 +319,19 @@ Uložte následující ukázkový playbook jako `cleanup.yml`:
         state: absent
 ```
 
-Tady jsou některé důležité poznámky vzít v úvahu při práci s playbook ukázka:
+Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- Nahradit `{{ resource_group_name-1 }}` vytvořili zástupný symbol s názvem první skupinu prostředků.
-- Nahradit `{{ resource_group_name-2 }}` zástupný symbol s názvem skupiny prostředků, druhém vytvořili.
-- Odstraní všechny prostředky v rámci dvou skupin zadaný prostředek.
+- Zástupný text `{{ resource_group_name-1 }}` nahraďte názvem první vytvořené skupiny prostředků.
+- Nahraďte zástupný text `{{ resource_group_name-2 }}` názvem druhé skupiny prostředků, kterou jste vytvořili.
+- Všechny prostředky v rámci dvou zadaných skupin prostředků se odstraní.
 
-Spusťte playbook ansible playbook příkazem:
+Spusťte PlayBook pomocí příkazu Ansible-PlayBook:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
 > [Ansible v Azure](/azure/ansible/)

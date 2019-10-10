@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ed7bfca6095dbb03042efd14456f34556f74a843
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6ad5bafe66e6e39503d3987aa6ddd9159c532fa0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175229"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237321"
 ---
-Můžete se účtuje na základě vašeho využití účtu úložiště Azure Storage. Všechny objekty v rámci účtu úložiště se fakturují společně jako skupina. 
+Účtuje se vám Azure Storage na základě využití účtu úložiště. Všechny objekty v účtu úložiště se účtují dohromady jako skupina. 
 
-Náklady na úložiště se počítají podle následujících faktorů: oblast/umístění, typ účtu, úroveň přístupu, kapacita úložiště, schématu replikace, transakce služby storage a sazbách za odchozí data.
+Náklady na úložiště se počítají v závislosti na následujících faktorech: oblast/umístění, typ účtu, úroveň přístupu, kapacita úložiště, schéma replikace, transakce úložiště a odchozí přenos dat.
 
-* **Oblast** odkazuje na geografické oblasti, ve kterém se účet nachází.
-* **Typ účtu** odkazuje na typ účtu úložiště, kterou používáte. 
-* **Úroveň přístupu** odkazuje se vzorem využití dat, kterou jste zadali pro obecné účely verze 2 nebo účtu služby Blob storage.
-* Úložiště **kapacity** odkazuje na kolik svého účtu úložiště využíváte se ukládání dat pomocí.
-* **Replikace** udává, kolik kopií vašich dat se spravuje najednou a v jakých umístěních.
-* **Transakce** najdete všechny operace čtení a zápisu do služby Azure Storage.
-* **Odchozí přenos dat** odkazuje na všechna data přenesená z oblasti Azure. Když k datům v účtu úložiště přistupuje aplikace, která neběží ve stejné oblasti, budou se vám účtovat odchozí data. Informace o použití skupin prostředků ke skupině vaše data a služby ve stejné oblasti a omezit poplatky za výchozí přenos dat najdete v tématu [co je skupina prostředků Azure?](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group). 
+* **Oblast** odkazuje na geografickou oblast, ve které je účet založený.
+* **Typ účtu** odkazuje na typ účtu úložiště, který používáte. 
+* **Úroveň přístupu** odkazuje na model využití dat, který jste zadali pro účet úložiště pro obecné účely v2 nebo BLOB.
+* **Kapacita** úložiště označuje, jak velká část vašeho účtu úložiště používáte k ukládání dat.
+* **Replikace** určuje, kolik kopií vašich dat se uchovává najednou a v jakých umístěních.
+* **Transakce** odkazují na všechny operace čtení a zápisu na Azure Storage.
+* **Výstup dat** odkazuje na všechna data přenesená z oblasti Azure. Když k datům v účtu úložiště přistupovala aplikace, která neběží ve stejné oblasti, účtují se vám poplatky za výstup dat. Informace o použití skupin prostředků k seskupení dat a služeb ve stejné oblasti za účelem omezení nákladů na výstup najdete v tématu [co je skupina prostředků Azure?](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group). 
 
-Na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) najdete podrobné informace o cenách na základě typu účtu, kapacity úložiště, replikace a transakcí. Na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/) najdete podrobné informace o sazbách za odchozí data. Představu o nákladech můžete získat v [Cenové kalkulačce pro Azure Storage](https://azure.microsoft.com/pricing/calculator/?scenario=data-management).
+Na stránce s [cenami Azure Storage](https://azure.microsoft.com/pricing/details/storage/) najdete podrobné informace o cenách na základě typu účtu, kapacity úložiště, replikace a transakcí. [Podrobnosti o cenách přenosu dat](https://azure.microsoft.com/pricing/details/data-transfers/) poskytují podrobné informace o cenách pro výstup dat. Pomocí [cenové kalkulačky Azure Storage](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) můžete odhadnout náklady.
 

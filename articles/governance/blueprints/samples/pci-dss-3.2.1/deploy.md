@@ -1,18 +1,18 @@
 ---
 title: Ukázka-PCI-DSS v 3.2.1 plán – nasazení kroků
-description: Nasaďte kroky v ukázce podrobného plánu zabezpečení dat v odvětví platebních karet.
+description: Nasaďte kroky pro ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1, včetně podrobností o parametrech artefaktu podrobného plánu.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980925"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248857"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 

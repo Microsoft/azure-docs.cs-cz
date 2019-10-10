@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673425"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241176"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
-V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
+V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Můžete nastavit pravidlo pro dynamické členství ve skupinách zabezpečení nebo skupinách Office 365.
 
 Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupiny v adresáři, aby zjistil, jestli by změna aktivovala nebo odebrala nějakou skupinu. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, přidají se jako členové této skupiny. Pokud už pravidla nevyhovují, odeberou se. Nemůžete ručně přidat nebo odebrat člena dynamické skupiny.
 
@@ -43,7 +43,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 - Pravidlo s více než pěti výrazy
 - Pravidlo přímých sestav
 - Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
-- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
@@ -54,7 +54,7 @@ Další podrobné pokyny najdete v tématu [Aktualizace dynamické skupiny](grou
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe pravidla pro jeden výraz
 
-Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu `Property Operator Value`:, kde syntaxe pro vlastnost je název Object. Property.
+Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá nějak takto: `Property Operator Value`, kde syntaxe vlastnosti je název Object. Property.
 
 Následuje příklad správného vytvořeného pravidla členství s jedním výrazem:
 
@@ -69,8 +69,8 @@ Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidl
 Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
 
 - Vlastnost
-- Operator
-- Value
+- Operátor
+- Hodnota
 
 Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám syntaxe.
 
@@ -86,48 +86,48 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 
 ### <a name="properties-of-type-boolean"></a>Vlastnosti typu Boolean
 
-| properties | Povolené hodnoty | Využití |
+| Properties | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| accountEnabled |true false |User. accountEnabled-EQ true |
-| dirSyncEnabled |true false |User. nastavení dirsyncenabled-EQ true |
+| AccountEnabled |true false |User. accountEnabled-EQ true |
+| Nastavení dirsyncenabled |true false |User. nastavení dirsyncenabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Vlastnosti typu String
 
-| properties | Povolené hodnoty | Využití |
+| Properties | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
+| Vatikán |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
 | Krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
-| displayName |libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
-| employeeId |libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
+| displayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
+| Zaměstnance |Libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
 | facsimileTelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. facsimileTelephoneNumber-EQ "value") |
 | givenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
-| pracovní funkce |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
-| e-mailu |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
+| JobTitle |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
+| Pošta |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
 | mailNickName |Libovolná hodnota řetězce (e-mailový alias uživatele) |(User. mailNickName-EQ "value") |
-| Mobilní zařízení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
-| ID objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| mobilní |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
+| Objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Místní identifikátor zabezpečení (SID) pro uživatele, kteří byli synchronizováni z místního prostředí do cloudu. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Žádné DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Libovolná hodnota řetězce nebo hodnota *null* |(User. physicalDeliveryOfficeName-EQ "value") |
-| PSČ |Libovolná hodnota řetězce nebo hodnota *null* |(User. postalCode-EQ "hodnota") |
+| Ovládacím |Libovolná hodnota řetězce nebo hodnota *null* |(User. postalCode-EQ "hodnota") |
 | preferredLanguage |Kód ISO 639-1 |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. sipProxyAddress-EQ "value") |
-| state |Libovolná hodnota řetězce nebo hodnota *null* |(User. State-EQ "value") |
+| státech |Libovolná hodnota řetězce nebo hodnota *null* |(User. State-EQ "value") |
 | streetAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. streetAddress-EQ "value") |
 | Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
-| telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
+| TelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
-| userPrincipalName (Hlavní název uživatele) |libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
-| UserType |člen typu host *null* |(User. userType-EQ "Member") |
+| Třídy |Libovolná hodnota řetězce |(User. userPrincipalName-EQ "alias@domain") |
+| userType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
-| properties | Povolené hodnoty | Využití |
+| Properties | Povolené hodnoty | Použití |
 | --- | --- | --- |
-| otherMails |libovolná hodnota řetězce |(User. otherMails-Contains "alias@domain") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
+| otherMails |Libovolná hodnota řetězce |(User. otherMails-obsahuje "alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
 
 Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
 
@@ -135,17 +135,17 @@ Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operator | Syntaxe |
+| Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
-| Je rovno |– EQ |
+| Rovná |– EQ |
 | Nezačíná na |-notStartsWith |
-| Začíná |– startsWith |
+| Začíná na |– startsWith |
 | Neobsahuje |-notContains |
-| Obsahuje |-obsahuje |
+| Zobrazí |-obsahuje |
 | Neodpovídá |-notMatch |
 | Shoda |– shoda |
-| V | -in |
+| V systému | -in |
 | Není v | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>Používání operátorů-in a-notIn
@@ -176,17 +176,17 @@ David se vyhodnotí jako true, da se vyhodnotí jako false.
 
 Hodnoty použité ve výrazu mohou sestávat z několika typů, včetně:
 
-* Řetězce
+* Zobrazen
 * Logická hodnota – true, false
-* Hodnoty
+* Numbers
 * Pole – číselné pole, pole řetězců
 
 Při zadávání hodnoty v rámci výrazu je důležité použít správnou syntaxi, aby nedocházelo k chybám. Zde jsou některé tipy syntaxe:
 
 * Dvojité uvozovky jsou volitelné, pokud hodnota není řetězec.
 * Operace s řetězci String a Regex nerozlišují velká a malá písmena.
-* Pokud řetězcová hodnota obsahuje dvojité uvozovky, obě nabídky by měly být uvozeny \` znakem, například User. Department-EQ \`"Sales\`", jedná se o správnou syntaxi, pokud je hodnota "Sales".
-* Můžete také provádět kontroly null a jako hodnotu použít null, `user.department -eq null`například.
+* Pokud řetězcová hodnota obsahuje dvojité uvozovky, obě nabídky by měly být uvozené znakem \`, například User. Department-EQ \` "Sales @ no__t-2" je správná syntaxe, pokud je hodnota "Sales".
+* Můžete také provádět kontroly null a jako hodnotu použít null, například `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Použití hodnot null
 
@@ -249,10 +249,10 @@ Pravidlo členství se může skládat ze složitých výrazů, kde vlastnosti, 
 
 Vlastnosti s více hodnotami jsou kolekce objektů stejného typu. Je možné je použít k vytvoření pravidel členství pomocí logických operátorů-any a-All.
 
-| properties | Hodnoty | Využití |
+| Properties | Hodnoty | Použití |
 | --- | --- | --- |
 | assignedPlans | Každý objekt v kolekci zpřístupňuje následující řetězcové vlastnosti: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-any (.-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-a assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -obsahuje "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-obsahuje "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>Použití operátorů-any a-All
 
@@ -283,7 +283,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 Syntaxe podtržítka (\_) se shoduje s výskytem konkrétní hodnoty v jedné z vlastností kolekce řetězců s více hodnotami, aby bylo možné přidat uživatele nebo zařízení do dynamické skupiny. Používá se u operátorů-any nebo-ALL.
 
-Tady je příklad použití podtržítka (\_) v pravidle pro přidání členů na základě User. ProxyAddress (to funguje stejně pro User. otherMails). Toto pravidlo přidá libovolného uživatele s adresou proxy, který ve skupině obsahuje "contoso".
+Tady je příklad použití podtržítka (\_) v pravidle pro přidání členů na základě User. proxyAddress (funguje stejně pro User. otherMails). Toto pravidlo přidá libovolného uživatele s adresou proxy, který ve skupině obsahuje "contoso".
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány j
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Vlastní vlastnosti rozšíření se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]__[Attribute]`, kde:
+Vlastní vlastnosti rozšíření se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]`, kde:
 
 * [GUID] je jedinečný identifikátor ve službě Azure AD pro aplikaci, která vytvořila vlastnost ve službě Azure AD.
 * [Attribute] je název vlastnosti, jak byla vytvořena.
@@ -350,10 +350,10 @@ Vlastní vlastnosti rozšíření se synchronizují z místní služby Windows S
 Příkladem pravidla, které používá vlastní vlastnost rozšíření:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Název vlastní vlastnosti lze najít v adresáři dotazem na vlastnost uživatele pomocí Průzkumníka graphu a vyhledáním názvu vlastnosti. V Tvůrci pravidel dynamické skupiny uživatelů teď můžete vybrat odkaz **získat vlastní rozšíření vlastností** a zadat jedinečný identifikátor aplikace a získat úplný seznam vlastností vlastního rozšíření, které se použijí při vytváření dynamického pravidla členství. Tento seznam můžete také aktualizovat, k získání nových vlastností vlastního rozšíření pro tuto aplikaci.
+Název vlastní vlastnosti lze najít v adresáři dotazem na vlastnost uživatele pomocí Průzkumníka graphu a vyhledáním názvu vlastnosti. V Tvůrci pravidel dynamické skupiny uživatelů teď můžete vybrat odkaz **získat vlastní rozšíření vlastností** a zadat jedinečný identifikátor aplikace a získat úplný seznam vlastností vlastního rozšíření, které se použijí při vytváření dynamického pravidla členství. Tento seznam je také možné aktualizovat, aby získal všechny nové vlastnosti rozšíření pro danou aplikaci.
 
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 
@@ -368,19 +368,19 @@ Je možné použít následující atributy zařízení.
 
  Atribut zařízení  | Hodnoty | Příklad
  ----- | ----- | ----------------
- accountEnabled | true false | (Device. accountEnabled-EQ true)
- displayName | libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")
- deviceOSType | libovolná hodnota řetězce | (Device. deviceOSType-EQ "iPad")-nebo (zařízení. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-obsahuje "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | libovolná hodnota řetězce | (Device. deviceOSVersion-EQ "9,1")
+ AccountEnabled | true false | (Device. accountEnabled-EQ true)
+ displayName | Libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")
+ deviceOSType | Libovolná hodnota řetězce | (Device. deviceOSType-EQ "iPad")-nebo (zařízení. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-obsahuje "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | Libovolná hodnota řetězce | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | platný název kategorie zařízení | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | libovolná hodnota řetězce | (Device. deviceManufacturer-EQ "Samsung")
- deviceModel | libovolná hodnota řetězce | (Device. deviceModel-EQ "iPad Air")
+ deviceManufacturer | Libovolná hodnota řetězce | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | Libovolná hodnota řetězce | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Osobní, společnost, neznámá | (Device. deviceOwnership-EQ "společnost")
  enrollmentProfileName | Registrační profil zařízení Apple, registrace zařízení – identifikátory podnikových zařízení (Android – celoobrazovkový) nebo název profilu Windows autopilot | (zařízení. enrollmentProfileName-EQ "DEP – iPhone")
  s kořenem | true false | (Device.-rooted-EQ true)
  managementType | MDM (pro mobilní zařízení)<br>POČÍTAČ (pro počítače spravované agentem Intune pro počítače) | (Device. managementType-EQ "MDM")
  deviceId | platné ID zařízení Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- ID objektu | platné ID objektu Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ Objektu | platné ID objektu Azure AD |  (Device. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
  systemLabels | libovolný řetězec odpovídající vlastnosti zařízení Intune pro označování moderních zařízení na pracovišti | (Device. systemLabels-obsahuje "M365Managed")
 
 > [!Note]  
@@ -390,8 +390,8 @@ Je možné použít následující atributy zařízení.
 
 Tyto články poskytují další informace o skupinách v Azure Active Directory.
 
-- [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Zobrazit existující skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Vytvořit novou skupinu a přidat členy](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
 - [Správa dynamických pravidel pro uživatele ve skupině](groups-create-rule.md)

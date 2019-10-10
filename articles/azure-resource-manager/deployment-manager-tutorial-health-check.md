@@ -5,17 +5,17 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/31/2019
+ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095819"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254977"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Použití kontroly stavu v Azure Deployment Manager (Public Preview)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
 Přečtěte si, jak integrovat kontrolu stavu v [Azure Deployment Manager](./deployment-manager-overview.md). Tento kurz je založený na kurzu [použití Azure Deployment Manager with správce prostředků Templates](./deployment-manager-tutorial.md) . Před pokračováním v tomto kurzu je nutné provést tento kurz.
 
@@ -43,7 +43,7 @@ Další materiály:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -52,17 +52,17 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="create-a-health-check-service-simulator"></a>Vytvořit simulátor služby kontroly stavu
 
-V produkčním prostředí obvykle používáte jednoho nebo více poskytovatelů monitorování. Abychom mohli co nejsnáze integrovat stav, společnost Microsoft spolupracuje s některými špičkovými společnostmi sledování stavu služby, které vám poskytnou jednoduché řešení kopírování a vkládání za účelem integrace kontrol stavu s nasazeními. Seznam těchto společností najdete v tématu poskytovatelé [monitorování stavu](./deployment-manager-health-check.md#health-monitoring-providers). Pro účely tohoto kurzu vytvoříte [funkci Azure](/azure/azure-functions/) pro simulaci služby sledování stavu. Tato funkce přebírá stavový kód a vrací stejný kód. Vaše šablona Azure Deployment Manager používá stavový kód k určení, jak pokračovat v nasazení.
+V produkčním prostředí obvykle používáte jednoho nebo více poskytovatelů monitorování. Abychom mohli co nejsnáze integrovat stav, společnost Microsoft spolupracuje s některými špičkovými společnostmi sledování stavu služby, které vám poskytnou jednoduché řešení kopírování a vkládání za účelem integrace kontrol stavu s nasazeními. Seznam těchto společností najdete v tématu [poskytovatelé monitorování stavu](./deployment-manager-health-check.md#health-monitoring-providers). Pro účely tohoto kurzu vytvoříte [funkci Azure](/azure/azure-functions/) pro simulaci služby sledování stavu. Tato funkce přebírá stavový kód a vrací stejný kód. Vaše šablona Azure Deployment Manager používá stavový kód k určení, jak pokračovat v nasazení.
 
 Následující dva soubory se používají k nasazení funkce Azure Functions. Tyto soubory nemusíte stahovat, abyste procházeli v tomto kurzu.
 
-* Správce prostředků šablonu umístěnou na [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)adrese. Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
+* Správce prostředků šablona umístěná na [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
 * Soubor zip zdrojového kódu funkce Azure, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato metoda ZIP je volána šablonou Správce prostředků.
 
 Pokud chcete službu Azure Functions nasadit, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell, a pak do okna prostředí vložte následující skript.  Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
 
 > [!IMPORTANT]
-> **ProjectName** ve skriptu PowerShellu se používá ke generování názvů služeb Azure, které jsou nasazené v tomto kurzu. Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit, aby bylo nasazení úspěšné, vyberte název, který má méně než 12 znaků a použijte pouze malá písmena a číslice.
+> **ProjectName** ve skriptu PowerShellu se používá ke generování názvů služeb Azure, které jsou nasazené v tomto kurzu. Použijte stejnou hodnotu **namePrefix** , kterou jste použili v části [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md) pro ProjectName.  Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit, aby bylo nasazení úspěšné, vyberte název, který má méně než 12 znaků a použijte pouze malá písmena a číslice.
 > Uložte kopii názvu projektu. V tomto kurzu použijete stejný projectName.
 
 ```azurepowershell-interactive
@@ -71,7 +71,7 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json" -projectName $projectName
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
 Ověření a otestování funkce Azure Functions:
@@ -83,7 +83,7 @@ Ověření a otestování funkce Azure Functions:
 
     ![Azure Deployment Manager – funkce kontroly stavu Azure Functions](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. **Vyberte&lt;nebo > získat adresu URL funkce**.
+1. Vyberte **&lt;/> získat adresu URL funkce**.
 1. Výběrem **Kopírovat** zkopírujte adresu URL do schránky.  Adresa URL je podobná:
 
     ```url
@@ -107,9 +107,9 @@ Ověření a otestování funkce Azure Functions:
 
 ## <a name="revise-the-rollout-template"></a>Revidovat šablonu zavedení
 
-Účelem této části je Ukázat, jak zahrnout do šablony zavedení krok kontroly stavu. K dokončení tohoto kurzu nemusíte vytvářet vlastní soubor CreateADMRollout. JSON. Šablona revidovaného zavedení se sdílí v účtu úložiště, který se používá v následujících oddílech.
+Účelem této části je Ukázat, jak zahrnout do šablony zavedení krok kontroly stavu.
 
-1. Otevřete **CreateADMRollout. JSON**. Tento soubor JSON je součástí stahování.  Viz [Požadavky](#prerequisites).
+1. Otevřete **CreateADMRollout. JSON** , který jste vytvořili v [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md). Tento soubor JSON je součástí stahování.  Viz [Požadavky](#prerequisites).
 1. Přidejte dva další parametry:
 
     ```json
@@ -233,26 +233,21 @@ Ověření a otestování funkce Azure Functions:
 
 ## <a name="deploy-the-topology"></a>Nasazení topologie
 
-Pro zjednodušení tohoto kurzu se šablona topologie a artefakty sdílejí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
+Spusťte následující skript prostředí PowerShell pro nasazení topologie. Potřebujete stejný **CreateADMServiceTopology. JSON** a **CreateADMServiceTopology. Parameters. JSON** , který jste použili v [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md).
 
-* Šablona topologie: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplates/CreateADMServiceTopology.JSON
-* Úložiště artefaktů: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
-
-Pokud chcete topologii nasadit, vyberte **vyzkoušet** a otevřete Cloud Shell a pak vložte powershellový skript.
-
-```azurepowershell-interactive
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
+
 $resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
+
 
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMServiceTopology.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation
+    -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
 ```
 
 Pomocí webu Azure Portal ověřte úspěšné vytvoření topologie služby a prostředků:
@@ -263,38 +258,24 @@ Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky 
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Nasazení zavedení do stavu není v pořádku
 
-Pro zjednodušení tohoto kurzu se revidovaná Šablona zavedení sdílí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
-
-* Šablona topologie: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplatesHC/CreateADMRollout.JSON
-* Úložiště artefaktů: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
-
-Použijte adresu URL stavu není v pořádku, kterou jste vytvořili v části [Vytvoření simulátoru služby kontroly stavu](#create-a-health-check-service-simulator). **ManagedIdentityID**najdete v tématu [Vytvoření spravované identity přiřazené uživatelem](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
+Použijte adresu URL stavu není v pořádku, kterou jste vytvořili v části [Vytvoření simulátoru služby kontroly stavu](#create-a-health-check-service-simulator). Potřebujete revidovaný **CreateADMServiceTopology. JSON** a stejný **CreateADMServiceTopology. Parameters. JSON** , který jste použili v části [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md).
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$managedIdentityID = Read-Host -Prompt "Enter a user-assigned managed identity"
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
 $healthCheckAuthAPIKey = $healthCheckUrl.Substring($healthCheckUrl.IndexOf("?code=")+6, $healthCheckUrl.Length-$healthCheckUrl.IndexOf("?code=")-6)
 $healthCheckUrl = $healthCheckUrl.Substring(0, $healthCheckUrl.IndexOf("?"))
 
-$resourceGroupName = "${projectName}rg"
-$artifactLocation = "https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore?st=2019-05-06T03%3A57%3A31Z&se=2020-05-07T03%3A57%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=gOh%2Bkhi693rmdxiZFQ9xbKZMU1kbLJDqXw7EP4TaGlI%3D" | ConvertTo-SecureString -AsPlainText -Force
-
 # Create the rollout
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json" `
-    -namePrefix $projectName `
-    -azureResourceLocation $location `
-    -artifactSourceSASLocation $artifactLocation `
-    -managedIdentityID $managedIdentityID `
+    -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
+    -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json" `
     -healthCheckUrl $healthCheckUrl `
     -healthCheckAuthAPIKey $healthCheckAuthAPIKey
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, `Get-AZDeploymentManagerRollout`použijte.  Podívejte se na další postup.
+> `New-AzResourceGroupDeployment` je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. K ověření nasazení použijte `Get-AZDeploymentManagerRollout`.  Podívejte se na další postup.
 
 Postup kontroly zavedení pomocí následujícího skriptu prostředí PowerShell:
 
@@ -396,6 +377,6 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat funkci kontroly stavu služby Azure Deployment Manager. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).

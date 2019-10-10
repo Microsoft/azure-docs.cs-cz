@@ -7,13 +7,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.date: 10/8/2019
+ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000404"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244856"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
@@ -21,7 +21,7 @@ Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou
 
 Stream Analytics podporuje službu Azure Blob Storage a Azure SQL Database jako vrstvu úložiště pro referenční data. Můžete také transformovat nebo kopírovat referenční data do úložiště objektů BLOB z Azure Data Factory, abyste mohli používat [libovolný počet cloudových a místních úložišť dat](../data-factory/copy-activity-overview.md).
 
-## <a name="azure-blob-storage"></a>Úložiště objektů BLOB v Azure
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 Referenční data jsou modelována jako sekvence objektů BLOB (definovaných ve vstupní konfiguraci) ve vzestupném pořadí podle data a času zadaného v názvu objektu BLOB. Podporuje se **pouze** přidávání na konec sekvence pomocí data a času **většího** než ta, kterou Určuje poslední objekt BLOB v sekvenci.
 
@@ -31,7 +31,7 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 
 |**Název vlastnosti**  |**Popis**  |
 |---------|---------|
-|Alias vstupu   | Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.   |
+|Alias pro vstup   | Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.   |
 |Účet úložiště   | Název účtu úložiště, ve kterém jsou umístěné objekty blob Pokud je ve stejném předplatném jako vaše Stream Analytics úlohy, můžete ho vybrat z rozevírací nabídky.   |
 |Klíč účtu úložiště   | Tajný klíč přidružený k účtu úložiště Tato funkce se automaticky naplní, pokud je účet úložiště ve stejném předplatném jako vaše úloha Stream Analytics.   |
 |Kontejner úložiště   | Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Po nahrání objektu blob do Blob service musíte zadat kontejner pro tento objekt BLOB.   |
@@ -39,7 +39,7 @@ Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, kte
 |Formát data [nepovinné]   | Pokud jste {Date} použili v rámci zadaného vzoru cesty, můžete vybrat formát data, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: RRRR/MM/DD, MM/DD/RRRR atd.   |
 |Formát času [nepovinné]   | Pokud jste v rámci zadaného vzoru cesty použili {Time}, můžete vybrat formát času, ve kterém jsou objekty blob seřazené z rozevírací nabídky podporovaných formátů.<BR>Příklad: HH, HH/mm nebo HH-mm.  |
 |Formát serializace události   | Chcete-li zajistit, aby dotazy fungovaly podle očekávání, Stream Analytics musí znát, který formát serializace používáte pro příchozí datové proudy. V případě referenčních dat jsou podporované formáty CSV a JSON.  |
-|Kódování   | Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8.  |
+|Encoding   | Formát UTF-8 v tuto chvíli podporuje pouze kódování UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statická referenční data
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automaticky hledá aktualizované objekty blob referenčn
 > 
 > Výjimkou je to, že úloha potřebuje znovu zpracovat data zpět v čase nebo při prvním spuštění úlohy. V okamžiku spuštění úlohy hledá nejaktuálnější objekt BLOB vytvořený před zadaným počátečním časem úlohy. K tomu je potřeba zajistit, aby při spuštění úlohy byla nastavena **neprázdná** referenční datová sada. Pokud ho nejde najít, úloha zobrazí následující diagnostiku: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) lze použít k orchestraci úlohy vytváření aktualizovaných objektů BLOB vyžadovaných Stream Analytics k aktualizaci definic referenčních dat. Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesun a transformaci dat. Data Factory podporuje [připojení k velkému počtu cloudových a místních úložišť dat](../data-factory/copy-activity-overview.md) a snadné přesouvání dat podle pravidelného plánu, který zadáte. Další informace a podrobné pokyny k nastavení kanálu Data Factory pro generování referenčních dat pro Stream Analytics, která se aktualizují podle předem definovaného plánu, najdete v této [ukázce GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) lze použít k orchestraci úlohy vytváření aktualizovaných objektů BLOB vyžadovaných Stream Analytics k aktualizaci definic referenčních dat. Data Factory je cloudová integrační služba, která organizuje a automatizuje pohyb a transformaci dat. Data Factory podporuje [připojení k velkému počtu cloudových a místních úložišť dat](../data-factory/copy-activity-overview.md) a snadné přesouvání dat podle pravidelného plánu, který zadáte. Další informace a podrobné pokyny k nastavení kanálu Data Factory pro generování referenčních dat pro Stream Analytics, která se aktualizují podle předem definovaného plánu, najdete v této [ukázce GitHubu](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tipy pro aktualizaci referenčních dat objektů BLOB
 
@@ -91,9 +91,9 @@ Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvoř
 |**Název vlastnosti**|**Popis**  |
 |---------|---------|
 |Alias vstupu|Popisný název, který bude použit v dotazu úlohy pro odkazování na tento vstup.|
-|Formě|Výběr předplatného|
+|Předplatné|Zvolte vaše předplatné.|
 |Databáze|Azure SQL Database, která obsahuje vaše referenční data. Pro Azure SQL Database Managed instance je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342*|
-|jmen|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
+|Uživatelské jméno|Uživatelské jméno přidružené k vašemu Azure SQL Database.|
 |Heslo|Heslo přidružené k vašemu Azure SQL Database.|
 |Pravidelně aktualizovat|Tato možnost umožňuje zvolit obnovovací frekvenci. Když zvolíte Zapnuto, budete moct zadat obnovovací frekvenci v DD: HH: MM.|
 |Snímkový dotaz|Toto je výchozí možnost dotazu, která načte referenční data z vašeho SQL Database.|
@@ -105,7 +105,7 @@ Stream Analytics podporuje referenční data s **maximální velikostí 300 MB**
 
 |**Počet jednotek streamování**  |**Přibližně podporovaná maximální velikost (v MB)**  |
 |---------|---------|
-|první   |50   |
+|1\. místo   |50   |
 |3   |150   |
 |6 a více   |300   |
 

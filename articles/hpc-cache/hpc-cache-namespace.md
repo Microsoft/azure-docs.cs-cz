@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299936"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255262"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
@@ -52,12 +52,12 @@ Cíl úložiště NFS může mít několik cest k virtuálnímu oboru názvů, p
 
 Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu, budete muset definovat několik cest k oboru názvů ze stejného cíle úložiště.
 
-| Cílový název hostitele úložiště  | Cesta k exportu systému souborů NFS      | Cesta podadresáře | Cesta oboru názvů    |
+| Cílový název hostitele úložiště  | Cesta exportu NFS      | Cesta k podadresáři | Cesta oboru názvů    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám ``/source`` ``/templates/sku798``k souborům oboru názvů ``/templates/sku980``, a.
+Klientská aplikace může připojit mezipaměť a snadno přistupovat k agregovaným cestám k souborům oboru názvů ``/source``, ``/templates/sku798`` a ``/templates/sku980``.
 
 ## <a name="next-steps"></a>Další kroky
 

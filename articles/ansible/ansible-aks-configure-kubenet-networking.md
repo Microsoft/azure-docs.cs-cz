@@ -1,41 +1,41 @@
 ---
-title: Kurz – konfigurace sítě ve službě Azure Kubernetes Service (AKS) pomocí Ansible kubenet | Dokumentace Microsoftu
-description: Zjistěte, jak použít Ansible ke konfiguraci kubenet sítí v clusteru Azure Kubernetes Service (AKS)
-keywords: ansible, azure, devops, bash, cloud shell, playbooku, aks, kontejner, aks, kubernetes
+title: Kurz – konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS) pomocí Ansible
+description: Naučte se používat Ansible ke konfiguraci sítě kubenet v clusteru Azure Kubernetes Service (AKS).
+keywords: Ansible, Azure, DevOps, bash, cloudshellu, PlayBook, AKS, Container, AKS, Kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: cd32347f9de87ea6272be922d0359f1cc7f6f758
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231316"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242168"
 ---
-# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: Konfigurace kubenet sítě ve službě Azure Kubernetes Service (AKS) pomocí Ansible
+# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Kurz: konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS) pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Používání AKS můžete nasadit cluster pomocí následující modely sítě:
+Pomocí AKS můžete nasadit cluster pomocí následujících síťových modelů:
 
-- [Sítě Kubenet](/azure/aks/configure-kubenet) – jsou síťovým prostředkům obvykle vytvoření a konfiguraci při nasazení clusteru AKS.
-- [Sítě Azure Container síťové rozhraní (CNI)](/azure/aks/configure-azure-cni) – AKS cluster je připojený k existující prostředky virtuální sítě a konfigurace.
+- [Kubenet](/azure/aks/configure-kubenet) Networks – síťové prostředky se většinou vytvářejí a konfigurují při nasazení clusteru AKS.
+- [Síťové rozhraní CNI (Azure Container Networking Interface)](/azure/aks/configure-azure-cni) – cluster AKS je připojený ke stávajícím prostředkům a konfiguracím virtuální sítě.
 
-Další informace o možnostech sítě pro vaše aplikace ve službě AKS najdete v tématu [sítě koncepty pro aplikace ve službě AKS](/azure/aks/concepts-network).
+Další informace o sítích pro aplikace v AKS najdete v tématu [Koncepty sítě pro aplikace v AKS](/azure/aks/concepts-network).
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Vytvoření clusteru AKS
-> * Konfigurace sítí Azure kubenet
+> * Konfigurace sítě Azure kubenet
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -43,10 +43,10 @@ Další informace o možnostech sítě pro vaše aplikace ve službě AKS najdet
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Playbook kód v této části se vytvoří následující prostředky Azure:
+Kód PlayBook v této části vytvoří následující prostředky Azure:
 
 - Virtuální síť
-- Podsítě v rámci virtuální sítě
+- Podsíť v rámci virtuální sítě
 
 Uložte následující ukázkový playbook jako `vnet.yml`:
 
@@ -69,7 +69,7 @@ Uložte následující ukázkový playbook jako `vnet.yml`:
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Playbook kód v této části se vytvoří cluster AKS ve virtuální síti. 
+Kód PlayBook v této části vytvoří cluster AKS v rámci virtuální sítě. 
 
 Uložte následující ukázkový playbook jako `aks.yml`:
 
@@ -105,29 +105,29 @@ Uložte následující ukázkový playbook jako `aks.yml`:
   register: aks
 ```
 
-Tady jsou některé důležité poznámky vzít v úvahu při práci s playbook ukázka:
+Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- Použití `azure_rm_aks_version` modulu najít podporovanou verzi.
-- `vnet_subnet_id` Je podsíť vytvořená v předchozím oddílu.
-- `network_profile` Definuje vlastnosti pro modul plug-in kubenet sítě.
-- `service_cidr` Slouží k přiřazení interních služeb v clusteru AKS na IP adresu. Tento rozsah IP adres by měl být adresní prostor, který se nepoužívá jinde ve vaší síti. 
-- `dns_service_ip` Adresa by měla být ". 10" adresu vašeho rozsahu IP adres služby.
-- `pod_cidr` By měl být velký adresní prostor, který se používá jinde ve vašem síťovém prostředí. Rozsah adres musí být dostatečně velký, aby mohla pojmout množství uzly, které plánujete škálovat až. Tento rozsah adres nelze změnit, až se cluster nasazuje.
-- Rozsah IP adres pod slouží k přiřazení/24 je adresní prostor k jednotlivým uzlům v clusteru. V následujícím příkladu `pod_cidr` z 192.168.0.0/16 přiřadí první uzel 192.168.0.0/24, druhý uzel 192.168.1.0/24 a třetí 192.168.2.0/24 uzlu.
-- Škálování clusteru nebo upgrady Azure se stále jste rozsah IP adres pod přiřadit každého nového uzlu.
-- Načte playbook `ssh_key` z `~/.ssh/id_rsa.pub`. Když ji upravíte, použijte jednořádkovém formátu – začíná na "ssh-rsa" (bez uvozovek).
-- `client_id` a `client_secret` načtení hodnot z `~/.azure/credentials`, což je výchozí soubor přihlašovacích údajů. Můžete nastavit tyto hodnoty do vaší služby instančního objektu nebo načíst tyto hodnoty z proměnné prostředí:
+- K nalezení podporované verze použijte modul `azure_rm_aks_version`.
+- @No__t-0 je podsíť vytvořená v předchozí části.
+- @No__t-0 definuje vlastnosti pro modul plug-in kubenet sítě.
+- @No__t-0 slouží k přiřazení interních služeb v clusteru AKS k IP adrese. Tento rozsah IP adres by měl být adresní prostor, který se v síti nepoužívá jinde. 
+- Adresa `dns_service_ip` by měla být adresa ". 10" rozsahu IP adres služby.
+- @No__t-0 by měl být velký adresní prostor, který se ve vašem síťovém prostředí nepoužívá jinde. Rozsah adres musí být dostatečně velký, aby odpovídal počtu uzlů, na které očekáváte horizontální navýšení kapacity. Po nasazení clusteru už tento rozsah adres nemůžete změnit.
+- Rozsah IP adres pod se používá k přiřazení adresního prostoru/24 k jednotlivým uzlům v clusteru. V následujícím příkladu `pod_cidr` 192.168.0.0/16 přiřadí první uzel 192.168.0.0/24, druhý uzel 192.168.1.0/24 a třetí uzel 192.168.2.0/24.
+- Při škálování a upgradech clusteru Azure stále přiřazuje každému novému uzlu rozsah IP adres pod.
+- PlayBook načítá `ssh_key` z `~/.ssh/id_rsa.pub`. Pokud ho upravíte, použijte jednořádkový formát začínající na "SSH-RSA" (bez uvozovek).
+- Hodnoty `client_id` a `client_secret` jsou načteny z `~/.azure/credentials`, což je výchozí soubor přihlašovacích údajů. Tyto hodnoty můžete nastavit na instanční objekt nebo načíst tyto hodnoty z proměnných prostředí:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
     client_secret: "{{ lookup('env', 'AZURE_SECRET') }}"
     ```
 
-## <a name="associate-the-network-resources"></a>Přidružit síťové prostředky
+## <a name="associate-the-network-resources"></a>Přidružení síťových prostředků
 
-Při vytváření clusteru AKS, se vytvoří tabulky skupiny a postupu zabezpečení sítě. Tyto prostředky jsou spravovaná službou AKS a aktualizován při vytváření a zpřístupňují služby. Přidružte síťové zabezpečení skupiny a směrovací tabulky podsítě vaší virtuální sítě následujícím způsobem. 
+Při vytváření clusteru AKS se vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto prostředky jsou spravované nástrojem AKS a při vytváření a vystavování služeb se aktualizují. Následujícím způsobem přidružte skupinu zabezpečení sítě a směrovací tabulku k podsíti virtuální sítě. 
 
-Uložte následující playbook jako `associate.yml`.
+Následující PlayBook uložte jako `associate.yml`.
 
 ```yml
 - name: Get route table
@@ -159,15 +159,15 @@ Uložte následující playbook jako `associate.yml`.
       route_table: "{{ routetable.route_tables[0].id }}"
 ```
 
-Tady jsou některé důležité poznámky vzít v úvahu při práci s playbook ukázka:
+Tady jsou některé klíčové poznámky, které je potřeba vzít v úvahu při práci s ukázkovým PlayBook:
 
-- `node_resource_group` Je název skupiny prostředků, ve kterém se vytvářejí uzly AKS.
-- `vnet_subnet_id` Je podsíť vytvořená v předchozím oddílu.
+- @No__t-0 je název skupiny prostředků, ve které jsou vytvořeny uzly AKS.
+- @No__t-0 je podsíť vytvořená v předchozí části.
 
 
-## <a name="run-the-sample-playbook"></a>Spustit playbook vzorku
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
 
-Tato část obsahuje seznam playbook úplnou ukázku, která volá úkolů a vytvoření v tomto článku. 
+V této části je uveden úplný vzorový PlayBook, který volá úkoly vytvořené v tomto článku. 
 
 Uložte následující ukázkový playbook jako `aks-kubenet.yml`:
 
@@ -210,19 +210,19 @@ Uložte následující ukázkový playbook jako `aks-kubenet.yml`:
            var: output.aks[0]
 ```
 
-V `vars` části, proveďte následující změny:
+V části `vars` proveďte následující změny:
 
-- Pro `resource_group` změnu klíče, `aksansibletest` hodnota, která má název skupiny prostředků.
-- Pro `name` změnu klíče, `aksansibletest` hodnota, která má název vašeho AKS.
-- Pro `Location` změnu klíče, `eastus` hodnotu pro vaše umístění skupiny prostředků.
+- U klíče `resource_group` změňte hodnotu `aksansibletest` na název skupiny prostředků.
+- U klíče `name` změňte hodnotu `aksansibletest` na název AKS.
+- U klíče `Location` změňte hodnotu `eastus` na umístění skupiny prostředků.
 
-Spuštění pomocí kompletní playbook `ansible-playbook` příkaz:
+Spusťte úplnou PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook aks-kubenet.yml
 ```
 
-Spuštění playbooku zobrazí výsledky podobné následující výstup:
+Spuštění PlayBook zobrazí výsledky podobné následujícímu výstupu:
 
 ```Output
 PLAY [localhost] 
@@ -331,7 +331,7 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Uložte následující kód jako `cleanup.yml`:
+Následující kód uložte jako `cleanup.yml`:
 
 ```yml
 ---
@@ -346,15 +346,15 @@ Uložte následující kód jako `cleanup.yml`:
             force: yes
 ```
 
-V `vars` části, nahraďte `{{ resource_group_name }}` zástupný symbol s názvem vaší skupiny prostředků.
+V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz – konfigurace sítí v Azure kontejner síťové rozhraní (CNI) ve službě AKS pomocí Ansible](./ansible-aks-configure-cni-networking.md)
+> [Kurz – konfigurace sítě CNI (Azure Container Networking Interface) v AKS pomocí Ansible](./ansible-aks-configure-cni-networking.md)

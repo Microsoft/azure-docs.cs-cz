@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178589"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244121"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace MACsec na přímých portech ExpressRoute
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 V tomto okamžiku je MACsec v přímých portech ExpressRoute na straně Microsoftu zakázaný.
+
+### <a name="test-connectivity"></a>Test připojení
+Po nakonfigurování MACsec (včetně aktualizace klíče MACsec) na portech ExpressRoute Direct [Ověřte](expressroute-troubleshooting-expressroute-overview.md) , jestli jsou relace BGP okruhů v provozu. Pokud na těchto portech ještě nemáte žádný okruh, vytvořte si nejdřív jednu z nich a nastavte privátní partnerský vztah Azure nebo partnerský vztah Microsoftu pro okruh. Pokud je MACsec nesprávně nakonfigurovaný, včetně neshody klíčů MACsec, mezi síťovými zařízeními a síťovými zařízeními Microsoftu, na úrovni 2 a ve vrstvě 3 se rozlišení ARP nezobrazuje. Pokud je vše nakonfigurované správně, měli byste vidět správné trasy protokolu BGP v obou směrech a toku dat aplikací přes ExpressRoute.
 
 ## <a name="next-steps"></a>Další kroky
 1. [Vytvoření okruhu ExpressRoute na ExpressRoute Direct](expressroute-howto-erdirect.md)

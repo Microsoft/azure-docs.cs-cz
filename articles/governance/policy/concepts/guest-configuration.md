@@ -1,17 +1,17 @@
 ---
-title: Informace o tom, jak auditovat obsah počítače
+title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá konfiguraci hosta k auditování nastavení v rámci počítače Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978060"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255848"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta Azure Policy
 
@@ -75,12 +75,12 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 V následující tabulce je uveden seznam podporovaných operačních systémů na obrázcích Azure:
 
-|Vydavatel|Name (Název)|Verze|
+|Publisher|Jméno|Zachovávaných|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credativ|Debian|8, 9|
+|Interpret|Server Ubuntu|14,04, 16,04, 18,04|
+|credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Klient Windows|Windows 10|
+|Microsoft|Klient systému Windows|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
 |SUSE|SLES|12 SP3|
@@ -179,8 +179,8 @@ Ukázky konfigurace hosta zásad jsou k dispozici v následujících umístění
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
-- Projděte si [strukturu definic Azure Policy](definition-structure.md).
-- Projděte si [Vysvětlení efektů zásad](effects.md).
+- Zkontrolujte [strukturu definice Azure Policy](definition-structure.md).
+- Přečtěte si téma [Principy efektů zásad](effects.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).

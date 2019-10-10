@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266422"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249391"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -46,8 +46,9 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 | Funkce | Podrobnosti |
 | ---| --- |
+| <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">Konfigurace podsítě s podporou služby</a> | Zabezpečený a pohodlný způsob, jak spravovat konfiguraci podsítě. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Transparentní šifrování dat (TDE) s Bring Your Own Key (BYOK)</a> |Informace najdete v tématu [Azure SQL transparentní šifrování dat s klíči spravovanými zákazníky v Azure Key Vault: Podpora](transparent-data-encryption-byok-azure-sql.md)Bring Your Own Key.|
+| <a href="https://aka.ms/managed-instance-tde-byok">Transparentní šifrování dat (TDE) s Bring Your Own Key (BYOK)</a> |Informace najdete v tématu [Azure SQL transparentní šifrování dat s klíči spravovanými zákazníkem v Azure Key Vault: Bring Your Own Key podpora](transparent-data-encryption-byok-azure-sql.md).|
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
 | [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Změny v tabulkách replikujte do jiných databází umístěných na spravovaných instancích, v izolovaných databázích nebo instancích SQL Server, nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných spravovaných instancích nebo instanci SQL Server. Informace najdete v tématu [Konfigurace replikace v databázi spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md). |
 | Detekce hrozeb |Informace najdete v tématu [konfigurace detekce hrozeb v Azure SQL Database Managed instance](sql-database-managed-instance-threat-detection.md).|
@@ -73,7 +74,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
   - Nakonfigurujte instance tak, aby používaly [veřejné koncové body](sql-database-managed-instance-public-endpoint-configure.md), připojení [přepsání proxy serveru](sql-database-connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až do 35 dnů</a> pro obnovení k bodu v čase. Dlouhodobé uchovávání záloh (až 10 let) není pořád povolené, takže můžete jako alternativu použít <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">zálohy jenom pro kopírování</a> .
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](sql-database-managed-instance-delete-virtual-cluster.md).
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
-  - Spravovaná instance je k dispozici v následujících oblastech Azure Government pro GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je k dispozici také v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika – sever, Jižní Afrika – západ
+  - Spravovaná instance je k dispozici v následujících oblastech Azure Government pro GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.
 
 ## <a name="fixed-known-issues"></a>Opravené známé problémy
 

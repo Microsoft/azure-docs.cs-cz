@@ -1,17 +1,17 @@
 ---
-title: Spuštění prvního dotazu pomocí Azure PowerShell
+title: Spuštění prvního dotazu pomocí prostředí PowerShell
 description: Tento článek vás provede kroky k povolení modulu Resource Graph pro Azure PowerShell a spuštění prvního dotazu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9193b2e6cc00ef4c46afc72b041c12234af19299
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976777"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254543"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 

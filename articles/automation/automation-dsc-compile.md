@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3d9c6c9b73f8887d4fdb85da277b2e27d8f5221c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959989"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243572"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu Azure Automation
 
@@ -124,7 +124,7 @@ Informace o předávání PSCredentials jako parametrů najdete v části [asset
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Kompilování konfigurací v Azure Automation, které obsahují složené prostředky
 
-**Složené prostředky** umožňují používat konfigurace DSC jako vnořené prostředky v rámci konfigurace. To umožňuje použít pro jeden prostředek více konfigurací. Další informace o **složených**prostředcích najdete v tématu [složené prostředky: použití konfigurace DSC jako prostředku](/powershell/dsc/authoringresourcecomposite) .
+**Složené prostředky** umožňují používat konfigurace DSC jako vnořené prostředky v rámci konfigurace. To umožňuje použít pro jeden prostředek více konfigurací. Další informace o **složených**prostředcích najdete v tématu [složené prostředky: použití konfigurace DSC jako prostředku](/powershell/scripting/dsc/resources/authoringresourcecomposite) .
 
 > [!NOTE]
 > Aby byly konfigurace obsahující **složené prostředky** správně kompilovány, je třeba nejprve zajistit, aby všechny prostředky DSC, na kterých se kompozitní spoléhá, byly nejprve importovány do Azure Automation.
@@ -189,7 +189,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Práce s prostředky v Azure Automation během kompilace
 
-Odkazy na prostředky jsou stejné v konfiguraci Azure Automation stavech a sadách Runbook. Další informace najdete v následujících tématech:
+Odkazy na prostředky jsou stejné v konfiguraci Azure Automation stavech a sadách Runbook. Další informace:
 
 - [Certifikáty](automation-certificates.md)
 - [Připojení](automation-connections.md)
@@ -277,7 +277,7 @@ Soubor MOF nebo soubory vytvořené kompilací konfigurace je pak možné import
    ![Vyhledat místní soubor](./media/automation-dsc-compile/import-browse.png)
 
 1. Do textového pole **název konfigurace** zadejte název. Tento název musí odpovídat názvu konfigurace, ze které byla zkompilována konfigurace uzlu.
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Import konfigurace uzlu s Azure PowerShell
 

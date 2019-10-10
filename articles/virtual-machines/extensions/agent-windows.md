@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7c163dd48e53a3116d58cb94988f2822ddede5e5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169125"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244656"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
 Agent virtuálního počítače Microsoft Azure (agent virtuálního počítače) je zabezpečený a odlehčený proces, který spravuje interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a provádění rozšíření virtuálních počítačů Azure. Rozšíření virtuálních počítačů umožňují konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálních počítačů také umožňují funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nejde spustit rozšíření virtuálních počítačů.
@@ -67,8 +67,8 @@ Agenta virtuálního počítače můžete nainstalovat dvojitým kliknutím na s
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
-### <a name="prerequisites"></a>Požadavky
-Aby bylo možné spustit agenta virtuálního počítače s Windows, musí být v rozhraní .NET Framework 4,0 alespoň Windows Server 2008 R2 (64-bitů).
+### <a name="prerequisites"></a>Požadované součásti
+Aby bylo možné spustit agenta virtuálního počítače s Windows, musí být v rozhraní .NET Framework 4,0 alespoň Windows Server 2008 R2 (64-bitů). Podívejte [se na podporu minimálních verzí pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) .
 
 ## <a name="detect-the-vm-agent"></a>Zjištění agenta virtuálního počítače
 
@@ -110,6 +110,8 @@ Když se přihlásíte k virtuálnímu počítači s Windows, můžete ke kontro
 ## <a name="upgrade-the-vm-agent"></a>Upgrade agenta virtuálního počítače
 Agent virtuálního počítače Azure pro Windows se upgraduje automaticky. Když se do Azure nasadí nové virtuální počítače, dostanou nejnovějšího agenta virtuálního počítače při zřizování virtuálních počítačů. Vlastní image virtuálních počítačů by se měly aktualizovat ručně, aby se při vytváření image zahrnul nový agent virtuálního počítače.
 
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Kolekce automatických protokolů agenta hosta systému Windows
+Agent hosta systému Windows obsahuje funkci pro automatické shromáždění některých protokolů. Tato funkce je řadičem procesu CollectGuestLogs. exe. Existuje jak pro PaaS Cloud Services, tak pro IaaS Virtual Machines a jejím cílem je rychle & automaticky shromažďovat některé diagnostické protokoly z virtuálního počítače, aby se mohly použít pro offline analýzu. Shromážděné protokoly jsou protokoly událostí, protokoly operačního systému, protokoly Azure a některé klíče registru. Vytvoří soubor ZIP, který se přenese na hostitele virtuálního počítače. Tento soubor ZIP si pak můžete prověřit technickými týmy a odborníky na podporu a prozkoumat problémy na žádost zákazníka, který vlastní virtuální počítač.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).

@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177581"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243212"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
-V této sérii kurzů jste vytvořili šablonu pro nasazení účtu úložiště Azure. V následujících dvou kurzech můžete přidat *plán App Service* a *Web*. Místo vytváření šablon od začátku se naučíte exportovat šablony z Azure Portal a jak používat ukázkové šablony ze [šablon Azure pro rychlý Start](/resources/templates/). Tyto šablony můžete přizpůsobit pro použití. Tento kurz se zaměřuje na export šablon a přizpůsobení výsledku pro šablonu. Dokončení trvá přibližně **14 minut** .
+V této sérii kurzů jste vytvořili šablonu pro nasazení účtu úložiště Azure. V následujících dvou kurzech můžete přidat *plán App Service* a *Web*. Místo vytváření šablon od začátku se naučíte exportovat šablony z Azure Portal a jak používat ukázkové šablony ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Tyto šablony můžete přizpůsobit pro použití. Tento kurz se zaměřuje na export šablon a přizpůsobení výsledku pro šablonu. Dokončení trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Doporučujeme, abyste dokončili [kurz týkající se výstupů](template-tutorial-add-outputs.md), ale není to nutné.
 
@@ -35,10 +35,10 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
 ## <a name="create-app-service-plan"></a>Vytvořit plán App Service
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
-1. Vyberte **vytvořit**.
+1. Vyberte **Vytvořit**.
 1. Napište
 
     - **Předplatné**: vyberte své předplatné Azure.
@@ -50,7 +50,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
     ![Portál šablony Správce prostředků Exportovat šablonu](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. Vyberte možnost **zkontrolovat a vytvořit**.
-1. Vyberte **vytvořit**. Vytvoření prostředku chvíli trvá.
+1. Vyberte **Vytvořit**. Vytvoření prostředku chvíli trvá.
 
 ## <a name="export-the-template"></a>Exportovat šablonu
 
@@ -114,7 +114,7 @@ az group deployment create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Skupina prostředků obsahuje účet úložiště a plán App Service.

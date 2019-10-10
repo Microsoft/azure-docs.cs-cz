@@ -1,69 +1,69 @@
 ---
-title: Inicializace hardwaru – Microsoft Azure FXT hrany vyfiltrovat
-description: Nastavení počátečního hesla na uzlech Azure FXT hrany vyfiltrovat
+title: Inicializovat hardware – Microsoft Azure FXT Edge souborového
+description: Jak nastavit počáteční heslo na uzlech souborového Azure FXT Edge
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 11cf9f49014648fff1e78aff91c5a724a812e9e7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450293"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256012"
 ---
-# <a name="tutorial-set-hardware-passwords"></a>Kurz: Sada hardwarových hesla
+# <a name="tutorial-set-hardware-passwords"></a>Kurz: Nastavení hardwarových hesel
 
-Prvním je až do uzlu Azure FXT hrany Filer výkonu, musíte nastavit kořenové heslo. Hardwarové uzly nejsou součástí výchozí heslo. 
+Při prvním zapnutí uzlu Azure FXT Edge souborového je nutné nastavit kořenové heslo. Hardwarové uzly nejsou dodávány s výchozím heslem. 
 
-Síťové porty jsou zakázány až poté, co je nastavit heslo a přihlášení uživatele root.
+Síťové porty jsou zakázané, dokud se heslo nenastaví a uživatel root se přihlásí.
 
-Proveďte tento krok po instalaci a kabeláž uzlu, ale před pokusem o vytvoření clusteru. 
+Tento krok proveďte po instalaci a propojení uzlu, ale před tím, než se pokusíte vytvořit cluster. 
 
-Tento kurz vysvětluje, jak se připojit k uzlu hardware a nastavení hesla. 
+V tomto kurzu se dozvíte, jak se připojit k uzlu hardwaru a nastavit heslo. 
 
 V tomto kurzu se naučíte, jak: 
 
 > [!div class="checklist"]
-> * Připojte klávesnici a monitor k uzlu a zapnout ho
-> * Nastavení hesla pro uživatele, port a kořenové iDRAC v tomto uzlu
-> * Přihlaste se jako uživatel root 
+> * Připojte klávesnici a monitor k uzlu a zapněte ho.
+> * Nastavte hesla pro port iDRAC a uživatele root v tomto uzlu.
+> * Přihlásit se jako kořen 
 
-Tento postup opakujte pro každý uzel, který budete používat ve vašem clusteru. 
+Opakujte tyto kroky pro každý uzel, který budete používat ve vašem clusteru. 
 
-Tento kurz trvá přibližně 15 minut. 
+Dokončení tohoto kurzu trvá přibližně 15 minut. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Před zahájením tohoto kurzu, proveďte tyto kroky: 
+Před zahájením tohoto kurzu proveďte tyto kroky: 
 
-* [Nainstalujte](fxt-install.md) každého uzlu Azure FXT hrany vyfiltrovat v zařízení do racku a připojit napájecích kabelů a přístup k síti, jak je popsáno v [starší kurz](fxt-network-power.md). 
-* Najdete klávesnice připojeného přes USB a VGA připojené monitorování, který může připojit k uzlům hardwaru. (Uzlu sériového portu je neaktivní, než nastavíte heslo.)
+* [Nainstalujte](fxt-install.md) každý uzel Azure FXT Edge souborového do racku zařízení a připojte napájecí kabely a přístup k síti, jak je popsáno v [předchozím kurzu](fxt-network-power.md). 
+* Vyhledejte klávesnici připojenou k USB a monitor připojený přes VGA, který se může připojit k hardwarovým uzlům. (Sériový port uzlu je neaktivní před tím, než nastavíte heslo.)
 
-## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Připojte klávesnici a monitor k uzlu
+## <a name="connect-a-keyboard-and-monitor-to-the-node"></a>Připojit klávesnici a monitor k uzlu
 
-Fyzicky připojte k uzlu Azure FXT hrany Filer monitorem a klávesnicí. 
+Fyzicky Připojte monitor a klávesnici k uzlu Azure FXT Edge souborového. 
 
-* Monitorování připojení k portu VGA.
-* Připojte klávesnici na jeden z portů USB. 
+* Připojte monitor k portu VGA.
+* Připojte klávesnici k jednomu z portů USB. 
 
-Pomocí tohoto odkazu diagramu vyhledejte porty na zadní straně skříni. 
+Tento diagram odkazů použijte k vyhledání portů na zadní straně skříně. 
 
 > [!NOTE]
-> Po nastavení hesla, je neaktivní až do sériového portu. 
+> Sériový port je neaktivní, dokud není heslo nastaveno. 
 
-![Diagram zadní Azure FXT hrany Filer se sériovým VGA a portů USB s popiskem](media/fxt-back-serial-vga-usb.png)
+![Diagram zadní části Azure FXT Edge souborového s porty sériového, VGA a USB s označením](media/fxt-back-serial-vga-usb.png)
 
-Přepínač KVM můžete použít, pokud se chcete připojit víc než jeden uzel na stejné periferní zařízení. 
+Přepínač KVM můžete použít, pokud chcete ke stejným periferním zařízením připojit více než jeden uzel. 
 
-Napájení uzlu stisknutím tlačítka napájení v popředí. 
+Zapněte uzel stisknutím tlačítka napájení na přední straně. 
 
-![Diagram front Azure FXT hrany Filer - round tlačítko napájení je označené jako nahoře vpravo](media/fxt-front-annotated.png)
+![Diagram přední části Azure FXT Edge souborového – tlačítko s kulatým tlačítkem Power je označeno v blízkosti pravé horní části.](media/fxt-front-annotated.png)
 
-## <a name="set-initial-passwords"></a>Nastavení počátečního hesla 
+## <a name="set-initial-passwords"></a>Nastavit počáteční hesla 
 
-Uzel Azure FXT hrany Filer vytiskne různé zprávy pro monitorování při spuštění. Po chvíli se zobrazí obrazovky počátečním nastavení následujícím způsobem:
+Uzel Azure FXT Edge souborového při spuštění vytiskne různé zprávy na monitorování. Po chvíli se zobrazí úvodní obrazovka s nastavením, například:
 
 ```
 ------------------------------------------------------
@@ -78,13 +78,13 @@ Enter new password:
 
 Heslo, které zadáte, se používá pro dvě věci: 
 
-* Je dočasný kořenové heslo pro tento uzel Azure FXT hrany vyfiltrovat. 
+* Jedná se o dočasné kořenové heslo pro tento uzel Azure FXT Edge souborového. 
 
-  Toto heslo se změní při vytváření clusteru pomocí tohoto uzlu, nebo při přidávání tohoto uzlu do clusteru. Heslo pro správu clusteru (přidružené k uživateli ``admin``) je také kořenové heslo pro všechny uzly v clusteru.
+  Toto heslo se změní, když vytvoříte cluster pomocí tohoto uzlu, nebo když přidáte tento uzel do clusteru. Heslo pro správu clusteru (přidružené k uživateli ``admin``) je také kořenovým heslem pro všechny uzly v clusteru.
 
-* Je dlouhodobá heslo iDRAC/IPMI hardwaru portu pro správu.
+* Jedná se o dlouhodobé heslo pro port správy hardwaru iDRAC/IPMI.
 
-  Zajistěte, aby že si zapamatovat heslo v případě, že budete muset přihlásit se přes rozhraní IPMI později Poradce při potížích s hardwarem.
+  Ujistěte se, že jste si zapomněli heslo pro případ, že se k potížím s hardwarem později budete muset přihlásit pomocí rozhraní IPMI.
 
 Zadejte a potvrďte heslo: 
 
@@ -94,9 +94,9 @@ Re-enter password:**********
 Loading AvereOS......
 ```
 
-Po zadání hesla, systém bude pokračovat, spouštění. Po dokončení, poskytuje ``login:`` řádku. 
+Po zadání hesla systém pokračuje v spouštění. Až se dokončí, zobrazí se výzva ``login:``. 
 
-## <a name="sign-in-as-root"></a>Přihlaste se jako uživatel root
+## <a name="sign-in-as-root"></a>Přihlásit se jako kořen
 
 Přihlaste se jako ``root`` s heslem, které jste právě nastavili. 
 
@@ -105,11 +105,11 @@ login: root
 Password:**********
 ```
 
-Po přihlášení jako uživatel root síťové porty jsou aktivní a bude kontaktovat DHCP server pro IP adresy. 
+Po přihlášení jako kořenového adresáře jsou síťové porty aktivní a budou kontaktovat server DHCP pro IP adresy. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Uzel je připravené k odeslání nepatří do clusteru. Slouží k vytvoření clusteru Azure FXT hrany vyfiltrovat, nebo se dají [přidat do existujícího clusteru](fxt-add-nodes.md). 
+Uzel je připravený jako součást clusteru. Můžete ho použít k vytvoření clusteru Azure FXT Edge souborového nebo [ho můžete přidat do existujícího clusteru](fxt-add-nodes.md). 
 
 > [!div class="nextstepaction"]
 > [Vytvoření clusteru](fxt-cluster-create.md)

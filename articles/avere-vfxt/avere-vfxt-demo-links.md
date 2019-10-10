@@ -1,37 +1,37 @@
 ---
-title: Avere vFXT pro projekty ukázku Azure
-description: odkazy na kurzy ukázkový kód pro Avere vFXT
+title: Avere vFXT pro ukázkové projekty Azure
+description: odkazy na ukázky kódu pro avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 42a2055b9a49d6d9f8f4930cb3704fe581f41724
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: d812c472d16f23148b929a2ba60f29663c0145a1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409987"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256248"
 ---
-# <a name="avere-vfxt-demo-projects"></a>Avere vFXT ukázkové projekty
+# <a name="avere-vfxt-demo-projects"></a>Ukázkové projekty avere vFXT
 
-Kurzy ukázky jsou k dispozici na [Githubu](https://github.com/Azure/Avere). Tyto malé projekty ukazují klíčové funkce a případy použití pro Avere vFXT pro Azure. 
+Ukázkové kurzy jsou k dispozici na [GitHubu](https://github.com/Azure/Avere). Tyto malé projekty ukazují klíčové funkce a případy použití pro avere vFXT pro Azure. 
 
 ## <a name="video-rendering"></a>Vykreslování videa
 
-* [Vykreslování pomocí služby Azure Batch a Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – ukázka 60 minut, který ukazuje, jak používat Autodesk Maya s Azure Batch a Avere vFXT cluster ke generování animovaného filmu
+* [Vykreslování pomocí Azure Batch a avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – ukázky 60-minut, která demonstruje použití Autodesk Maya s Azure Batch a cluster avere vFXT k vygenerování animovaného filmu
 
-* [Proč používat Avere vFXT pro vykreslování?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Ukázku, která porovná dobu vykreslování NAS a nemusíte Avere vFXT cluster 
+* [Proč používat avere vFXT pro vykreslování?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Ukázka, která porovnává dobu vykreslování od serveru NAS s clusterem avere vFXT a bez něj. 
 
 
 ## <a name="high-performance-computing"></a>Vysokovýkonné výpočetní prostředí
 
-* [Osvědčené postupy pro zlepšení virtuálního počítače Azure (VM) spuštění](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -reprodukovatelné testů ke zlepšení spuštění pomocí Avere vFXT pro Azure v případech, kdy rychle opravíte vytvořením tisíců výpočetních klientů
+* [Osvědčené postupy pro zlepšení času spuštění virtuálního počítače Azure](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – reprodukovatelný test použití avere VFXT pro Azure ke zlepšení časů spouštění při rychlém spuštění tisíců výpočetních klientů
 
-## <a name="vfxt-performance"></a>vFXT výkonu 
+## <a name="vfxt-performance"></a>vFXT výkon 
 
-* [Měření výkonu vFXT s vdbench](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) – základní test nastavení k vygenerování malé a střední úlohy k otestování subsystémů vFXT paměti a disku
+* [Měření výkonu vFXT pomocí vdbench](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) – základní nastavení testu pro generování malých a středně velkých úloh pro otestování vFXT paměti a subsystémů disku
 
 ## <a name="client-setup"></a>Instalace klienta
 
-* [Pracovní stanice Windows 10 pro Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/windows_10_avere_vfxt_mounted_workstation.md) -ukazuje, jak se pracovní stanice Windows a použijete připojení ke clusteru vFXT Avere
+* [Windows 10 Workstation pro avere vFXT](https://github.com/Azure/Avere/blob/master/docs/windows_10_avere_vfxt_mounted_workstation.md) – ukazuje, jak nastavit pracovní stanici Windows a připojit ji k clusteru avere vFXT.

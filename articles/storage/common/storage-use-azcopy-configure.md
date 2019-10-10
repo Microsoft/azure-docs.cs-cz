@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844800"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244703"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -28,11 +28,11 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, `https_proxy` nastavte proměnnou prostředí. Pokud spustíte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže toto nastavení nemusíte používat v systému Windows. Pokud se rozhodnete použít toto nastavení ve Windows, přepíše se automatické zjišťování.
+Pokud chcete nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte proměnnou prostředí `https_proxy`. Pokud spustíte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže toto nastavení nemusíte používat v systému Windows. Pokud se rozhodnete použít toto nastavení ve Windows, přepíše se automatické zjišťování.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | V příkazovém řádku použijte:`set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | V příkazovém řádku použijte: `set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -40,13 +40,13 @@ AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřov�
 
 ## <a name="optimize-throughput"></a>Optimalizace propustnosti
 
-`cap-mbps` Příznak můžete použít k umístění horní meze rychlosti propustnosti dat. Například následující příkaz CAPS propustnosti na `10` megabity (MB) za sekundu.
+Pomocí příznaku `cap-mbps` můžete umístit strop pro míru propustnosti dat. Například následující příkaz CAPS propustnosti `10` megabitů (MB) za sekundu.
 
 ```azcopy
 azcopy cap-mbps 10
 ```
 
-Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné nastavena na `32`. V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `300`, ale tuto hodnotu můžete nastavit ručně nebo dolů.
+Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením proměnné prostředí `AZCOPY_CONCURRENCY_VALUE`. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  Pokud má počítač méně než 5 procesorů, hodnota této proměnné je nastavená na `32`. V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `300`, ale tuto hodnotu můžete ručně nastavit na vyšší nebo nižší.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -54,11 +54,11 @@ Při přenosu malých souborů se propustnost může snížit. Propustnost můž
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-`azcopy env` Pro kontrolu aktuální hodnoty této proměnné použijte.  Pokud je hodnota prázdná, pak `AZCOPY_CONCURRENCY_VALUE` je proměnná nastavena na výchozí `300`hodnotu.
+Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`.  Pokud je hodnota prázdná, proměnná `AZCOPY_CONCURRENCY_VALUE` je nastavena na výchozí hodnotu `300`.
 
 ## <a name="change-the-location-of-the-log-files"></a>Změna umístění souborů protokolu
 
-Ve výchozím nastavení se soubory protokolu nacházejí v `%USERPROFILE\\.azcopy` adresáři ve Windows nebo `$HOME\\.azcopy` v adresáři v systému Mac a Linux. Toto umístění můžete změnit, pokud potřebujete pomocí těchto příkazů.
+Ve výchozím nastavení se soubory protokolu nacházejí v adresáři `%USERPROFILE%\.azcopy` ve Windows nebo v adresáři `$HOME\\.azcopy` v systému Mac a Linux. Toto umístění můžete změnit, pokud potřebujete pomocí těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -66,28 +66,28 @@ Ve výchozím nastavení se soubory protokolu nacházejí v `%USERPROFILE\\.azco
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-`azcopy env` Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
+Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
 
 ## <a name="change-the-default-log-level"></a>Změna výchozí úrovně protokolu
 
-Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na `INFO`hodnotu. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí ``--log-level`` možnosti. 
+Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na hodnotu `INFO`. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí možnosti ``--log-level``. 
 
-Dostupné úrovně protokolu jsou: `DEBUG`, `INFO` `WARNING` `ERROR` ,,`PANIC`, a .`FATAL`
+Dostupné úrovně protokolu jsou: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` a `FATAL`.
 
 ## <a name="troubleshoot-issues"></a>Řešení potíží
 
 AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly můžete použít k prozkoumání a odstraňování potíží s případnými problémy. 
 
-Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`, a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
+Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED` a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení se soubory protokolů a plánů nacházejí v `%USERPROFILE\\.azcopy` adresáři ve Windows nebo `$HOME\\.azcopy` v adresáři Mac a Linux.
+Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE\\.azcopy` ve Windows nebo v adresáři `$HOME\\.azcopy` v systému Mac a Linux.
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.
 
 ### <a name="review-the-logs-for-errors"></a>Zkontrolujte chyby v protokolech.
 
-Následující příkaz zobrazí všechny chyby se `UPLOADFAILED` stavem `04dc9ca9-158f-7945-5933-564021086c79` z protokolu:
+Následující příkaz zobrazí všechny chyby se stavem @no__t 0 z protokolu `04dc9ca9-158f-7945-5933-564021086c79`:
 
 **Windows (PowerShell)**
 

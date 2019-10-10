@@ -5,23 +5,23 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180949"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254509"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (Preview) data ingestování – paralelní kopírování metody skriptu
 
-Tento článek obsahuje pokyny pro vytvoření ``parallelcp`` skriptu a jeho použití k přesunu dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
+Tento článek obsahuje pokyny pro vytvoření skriptu ``parallelcp`` a jeho použití k přesunu dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
 
 Další informace o přesouvání dat do úložiště objektů BLOB pro mezipaměť prostředí Azure HPC najdete v tématu [přesun dat do Azure Blob Storage pro Azure HPC cache](hpc-cache-ingest.md).
 
 ## <a name="create-the-parallelcp-script"></a>Vytvoření skriptu parallelcp
 
-Do následujícího skriptu se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu; Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
+Ve skriptu níže se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu. Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Příklad paralelního kopírování
 
-V tomto příkladu se používá skript paralelního kopírování ``glibc`` ke kompilaci pomocí zdrojových souborů v mezipaměti HPC Azure.
+V tomto příkladu se používá paralelní kopírování skriptu pro kompilaci ``glibc`` pomocí zdrojových souborů v mezipaměti HPC Azure.
 
 Zdrojové soubory jsou ukládány do mezipaměti v bodu připojení mezipaměti služby Azure HPC a soubory objektů jsou uloženy na místním pevném disku.
 
-V tomto příkladu se používá paralelní kopírování skriptu s možností ``-j`` a ``make`` získání paralelismu.
+V tomto příkladu se používá skript paralelního kopírování s možností ``-j`` a ``make`` pro získání paralelismu.
 
 ```bash
 sudo apt-get update

@@ -1,56 +1,56 @@
 ---
-title: Kurz – aktualizace vlastní image virtuálního počítače Azure škálování nastaví pomocí Ansible | Dokumentace Microsoftu
-description: Zjistěte, jak použít Ansible k aktualizaci škálovací sady virtuálních počítačů v Azure s použitím vlastní image
-keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
+title: Kurz – aktualizace vlastní image služby Azure Virtual Machine Scale Sets pomocí Ansible
+description: Naučte se používat Ansible k aktualizaci služby Virtual Machine Scale Sets v Azure s využitím vlastní image.
+keywords: Ansible, Azure, DevOps, bash, PlayBook, virtuální počítač, sada škálování virtuálních počítačů, VMSS
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d3eedc5b83190af46669b9b5df8643f3c80e9bb1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230849"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241333"
 ---
-# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Kurz: Nastaví aktualizace vlastní image škálování virtuálních počítačů Azure pomocí Ansible
+# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Kurz: aktualizace vlastní image služby Azure Virtual Machine Scale Sets pomocí Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-Po nasazení virtuálního počítače nakonfigurujete virtuální počítač se softwarem požadavkům vašich aplikací. Místo provádění této úlohy konfigurace pro každý virtuální počítač, můžete vytvořit vlastní image. Vlastní image je snímek existujícího virtuálního počítače, který zahrnuje veškerý software nainstalovaný. Když jste [konfigurace škálovací sady](./ansible-create-configure-vmss.md), určete bitovou kopii pro tuto škálovací sadu virtuálních počítačů. S použitím vlastní image, je stejně jako jednotlivých instancí virtuálních počítačů nakonfigurované pro vaši aplikaci. V některých případech budete muset aktualizovat vlastní image pro škálovací sady. Tento úkol je hlavním cílem tohoto kurzu.
+Po nasazení virtuálního počítače nakonfigurujete virtuální počítač na software, který vaše aplikace potřebuje. Místo provádění této úlohy konfigurace pro každý virtuální počítač můžete vytvořit vlastní image. Vlastní image je snímek existujícího virtuálního počítače, který obsahuje nainstalovaný software. Při [konfiguraci sady škálování](./ansible-create-configure-vmss.md)určíte image, která se má použít pro virtuální počítače sady škálování. Když použijete vlastní image, každá instance virtuálního počítače je u vaší aplikace nakonfigurované identicke. V některých případech možná budete muset aktualizovat vlastní image sady škálování. Tento úkol se zaměřuje na tento kurz.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Konfigurovat dva virtuální počítače s HTTPD
+> * Konfigurace dvou virtuálních počítačů pomocí HTTPD
 > * Vytvoření vlastní image z existujícího virtuálního počítače
-> * Vytvoření škálovací sady z image
-> * Aktualizovat vlastní image
+> * Vytvoření sady škálování z obrázku
+> * Aktualizace vlastní image
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="configure-two-vms"></a>Konfigurovat dva virtuální počítače
+## <a name="configure-two-vms"></a>Konfigurace dvou virtuálních počítačů
 
-Playbook kódu v této části vytvoří dva virtuální počítače s HTTPD nainstalovaná na obojí. 
+Kód PlayBook v této části vytvoří dva virtuální počítače s nainstalovanou HTTPD na obě. 
 
-`index.html` Stránky pro každý virtuální počítač zobrazí testovací řetězec:
+Stránka `index.html` pro každý virtuální počítač zobrazuje testovací řetězec:
 
-* První virtuální počítač zobrazuje hodnotu `Image A`
-* Druhý virtuální počítač zobrazuje hodnotu `Image B`
+* První virtuální počítač zobrazí hodnotu `Image A`.
+* Druhý virtuální počítač zobrazí hodnotu `Image B`.
 
-Tento řetězec je určená k napodobení konfiguraci každého virtuálního počítače pomocí různých softwarových.
+Tento řetězec má napodobovat konfiguraci každého virtuálního počítače pomocí jiného softwaru.
 
-Existují dva způsoby, jak získat ukázkové scénáře:
+Existují dva způsoby, jak získat ukázkovou PlayBook:
 
-* [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) a uložit ho. tím `create_vms.yml`.
+* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) a uložte ho do `create_vms.yml`.
 * Vytvořte nový soubor s názvem `create_vms.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -167,38 +167,38 @@ Existují dva způsoby, jak získat ukázkové scénáře:
       msg: "Public IP Address B: {{ pip_output.results[1].state.ip_address }}"
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz a nahraďte `myrg` názvem skupiny prostředků:
+Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názvem vaší skupiny prostředků:
 
 ```bash
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-Z důvodu `debug` oddíly playbooku, `ansible-playbook` příkaz vytiskne IP adresu každého virtuálního počítače. Zkopírujte tyto IP adresy pro pozdější použití.
+Z důvodu `debug` v PlayBook se v příkazu `ansible-playbook` vytiskne IP adresa každého virtuálního počítače. Zkopírujte tyto IP adresy pro pozdější použití.
 
 ![IP adresy virtuálních počítačů](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
-## <a name="connect-to-the-two-vms"></a>Připojte se k dva virtuální počítače
+## <a name="connect-to-the-two-vms"></a>Připojení ke dvěma virtuálním počítačům
 
-V této části se připojíte ke všem virtuálním počítačům. Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují s dva různé virtuální počítače s různými konfiguracemi.
+V této části se připojíte ke každému virtuálnímu počítači. Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dva odlišné virtuální počítače s různými konfiguracemi.
 
-Pomocí IP adresy z předchozí části se připojte k oba virtuální počítače:
+Pomocí IP adres z předchozí části se připojte k oběma virtuálním počítačům:
 
 ![Snímek obrazovky z virtuálního počítače A](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
 
-![Snímek obrazovky z virtuálních počítačů B](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
+![Snímek obrazovky s virtuálním počítačem B](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
 
-## <a name="create-images-from-each-vm"></a>Vytvoření Image z každého virtuálního počítače
+## <a name="create-images-from-each-vm"></a>Vytváření imagí z každého virtuálního počítače
 
-V tomto okamžiku budete mít dva virtuální počítače s různými konfiguracemi (jejich `index.html` soubory).
+V tomto okamžiku máte dva virtuální počítače s mírně odlišnými konfiguracemi (soubory `index.html`).
 
-Playbook kód v této části se vytvoří vlastní image pro každý virtuální počítač:
+Kód PlayBook v této části vytvoří vlastní image pro každý virtuální počítač:
 
-* `image_vmforimageA` – Vlastní image vytvořené pro virtuální počítač, který zobrazuje `Image A` na své domovské stránce.
-* `image_vmforimageB` – Vlastní image vytvořené pro virtuální počítač, který zobrazuje `Image B` na své domovské stránce.
+* `image_vmforimageA` – vlastní image vytvořená pro virtuální počítač, která na domovské stránce zobrazuje `Image A`.
+* `image_vmforimageB` – vlastní image vytvořená pro virtuální počítač, která na domovské stránce zobrazuje `Image B`.
 
-Existují dva způsoby, jak získat ukázkové scénáře:
+Existují dva způsoby, jak získat ukázkovou PlayBook:
 
-* [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) a uložit ho. tím `capture-images.yml`.
+* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) a uložte ho do `capture-images.yml`.
 * Vytvořte nový soubor s názvem `capture-images.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -228,23 +228,23 @@ Existují dva způsoby, jak získat ukázkové scénáře:
       - B
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz a nahraďte `myrg` názvem skupiny prostředků:
+Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názvem vaší skupiny prostředků:
 
 ```bash
 ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 ```
 
-## <a name="create-scale-set-using-image-a"></a>Vytvoření škálovací sady pomocí bitové kopie A
+## <a name="create-scale-set-using-image-a"></a>Vytvoření sady škálování pomocí Image A
 
-V této části playbooku lze konfigurovat následující prostředky Azure:
+V této části se ke konfiguraci následujících prostředků Azure používá PlayBook:
 
 * Veřejná IP adresa
-* Nástroj pro vyrovnávání zatížení
-* Škálovací sada této odkazy `image_vmforimageA`
+* Load Balancer
+* Sada škálování, která odkazuje na `image_vmforimageA`
 
-Existují dva způsoby, jak získat ukázkové scénáře:
+Existují dva způsoby, jak získat ukázkovou PlayBook:
 
-* [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) a uložit ho. tím `create-vmss.yml`.
+* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) a uložte ho do `create-vmss.yml`.
 * Vytvořte nový soubor s názvem `create-vmss.yml` a zkopírujte do něj následující obsah: "
 
 ```yml
@@ -311,39 +311,39 @@ Existují dva způsoby, jak získat ukázkové scénáře:
         msg: "Scale set public IP address: {{ pip_output.state.ip_address }}"
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz a nahraďte `myrg` názvem skupiny prostředků:
+Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názvem vaší skupiny prostředků:
 
 ```bash
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-Z důvodu `debug` část playbooku, `ansible-playbook` příkaz vytiskne IP adresy škálovací sady. Zkopírujte tuto IP adresu pro pozdější použití.
+Vzhledem k tomu, že část `debug` v PlayBook, příkaz `ansible-playbook` vytiskne IP adresu sady škálování. Tuto IP adresu zkopírujte pro pozdější použití.
 
 ![Veřejná IP adresa](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
-## <a name="connect-to-the-scale-set"></a>Připojte se ke škálovací sadě
+## <a name="connect-to-the-scale-set"></a>Připojit se k sadě škálování
 
-V této části se připojíte ke škálovací sadě. 
+V této části se připojíte k sadě škálování. 
 
-Pomocí IP adresy z předchozí části, připojte se ke škálovací sadě.
+Pomocí IP adresy z předchozí části se připojte k sadě škálování.
 
-Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují s dva různé virtuální počítače s různými konfiguracemi.
+Jak je uvedeno v předchozí části, řetězce `Image A` a `Image B` napodobují dva odlišné virtuální počítače s různými konfiguracemi.
 
-Škálovací sada odkazů na vlastní image s názvem `image_vmforimageA`. Vlastní image `image_vmforimageA` byl vytvořen z virtuálního počítače, jejichž Domovská stránka zobrazí `Image A`.
+Sada škálování odkazuje na vlastní image s názvem `image_vmforimageA`. Vlastní image `image_vmforimageA` se vytvořila z virtuálního počítače, na kterém se na domovské stránce zobrazuje `Image A`.
 
-V důsledku toho se zobrazí domovská stránka zobrazení `Image A`:
+V důsledku toho se zobrazí domovská stránka zobrazující `Image A`:
 
-![Škálovací sada je spojené s prvním virtuálním počítači.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
+![Sada škálování je přidružená k prvnímu virtuálnímu počítači.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
 
-Ponechte okno prohlížeče, otevřené a pokračujte v další části.
+Nechte okno prohlížeče otevřené, když budete pokračovat k další části.
 
-## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Nastavit vlastní obrázek změny ve škálovací a upgradovat instance
+## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Změna vlastní image v sadě škálování a instancích upgradu
 
-Škálovací sady image - playbook kódu v této části se změní z `image_vmforimageA` k `image_vmforimageB`. Aktualizují se také všechny aktuální virtuální počítače nasazené ve škálovací sadě.
+PlayBook kód v této části změní obrázek sady škálování z `image_vmforimageA` na `image_vmforimageB`. Všechny aktuální virtuální počítače nasazené pomocí sady škálování jsou taky aktualizované.
 
-Existují dva způsoby, jak získat ukázkové scénáře:
+Existují dva způsoby, jak získat ukázkovou PlayBook:
 
-* [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) a uložit ho. tím `update-vmss-image.yml`.
+* [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) a uložte ho do `update-vmss-image.yml`.
 * Vytvořte nový soubor s názvem `update-vmss-image.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -395,7 +395,7 @@ Existují dva způsoby, jak získat ukázkové scénáře:
     with_items: "{{ instances.instances }}"
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz a nahraďte `myrg` názvem skupiny prostředků:
+Spusťte PlayBook pomocí příkazu `ansible-playbook` a nahraďte `myrg` názvem vaší skupiny prostředků:
 
 ```bash
 ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
@@ -403,15 +403,15 @@ ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 
 Vraťte se do prohlížeče a aktualizujte stránku. 
 
-Uvidíte, že vlastní image základního virtuálního počítače je aktualizována.
+Vidíte, že je upravena základní image virtuálního počítače.
 
-![Škálovací sada je přidružen druhý virtuální počítač](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
+![Sada škálování je přidružená k druhému virtuálnímu počítači.](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Uložte následující kód jako `cleanup.yml`:
+Následující kód uložte jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -425,13 +425,13 @@ Uložte následující kód jako `cleanup.yml`:
         state: absent
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
 > [Ansible v Azure](/azure/ansible)

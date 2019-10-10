@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9d16d9d9967af5bf8f9e13406e13d5637325f52
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850399"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243353"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Sestavování konfigurací DSC v konfiguraci stavu Azure Automation (DSC) pomocí složených prostředků
 
-Pokud je potřeba prostředek spravovat s více než jednou konfigurací požadovaného stavu konfigurace (DSC), nejlepším řešením je použití [složených prostředků](/powershell/dsc/authoringresourcecomposite). Složený prostředek je vnořená a Parametrizovaná konfigurace, která se používá jako prostředek DSC v rámci jiné konfigurace. To umožňuje vytváření složitých konfigurací a zároveň umožňuje, aby byly základní složené prostředky (parametrizované konfigurace) jednotlivě spravovány a sestaveny.
+Pokud je potřeba prostředek spravovat s více než jednou konfigurací požadovaného stavu konfigurace (DSC), nejlepším řešením je použití [složených prostředků](/powershell/scripting/dsc/resources/authoringresourcecomposite). Složený prostředek je vnořená a Parametrizovaná konfigurace, která se používá jako prostředek DSC v rámci jiné konfigurace. To umožňuje vytváření složitých konfigurací a zároveň umožňuje, aby byly základní složené prostředky (parametrizované konfigurace) jednotlivě spravovány a sestaveny.
 
 Azure Automation umožňuje [Import a kompilaci složených prostředků](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
 Po importu složených prostředků do účtu Automation můžete na stránce **Konfigurace stavu (DSC)** použít prostředí pro **vytváření konfigurace** .
@@ -28,26 +28,26 @@ Po importu složených prostředků do účtu Automation můžete na stránce **
 
 Než budete moct přiřadit konfiguraci provedenou ze složených prostředků v Azure Portal, je nutné ji vytvořit. To lze provést pomocí **Konfigurace psaní** na stránce **Konfigurace stavu (DSC)** , a to na kartách **Konfigurace** nebo **zkompilované konfigurace** .
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na **všechny prostředky** a pak na název svého účtu Automation.
 1. Na stránce **účet Automation** vyberte v části **Správa konfigurace**možnost **Konfigurace stavu (DSC)** .
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** nebo **zkompilované konfigurace** a pak v nabídce v horní části stránky klikněte na **vytvořit konfiguraci** .
 1. V kroku **základy** zadejte nový název konfigurace (požadováno) a klikněte kamkoli na řádek každého složeného prostředku, který chcete zahrnout do nové konfigurace, a potom klikněte na **Další** nebo klikněte na krok **zdrojového kódu** . Pro následující kroky jsme vybrali složené prostředky **PSExecutionPolicy** a **RenameAndDomainJoin** .
-   ![Snímek obrazovky kroku základy stránky konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
+   @no__t – 0Screenshot kroku základní stránky pro vytváření konfigurace @ no__t-1
 1. Krok **zdrojového kódu** ukazuje, jak vypadá složená konfigurace vybraných složených prostředků. Můžete zobrazit sloučení všech parametrů a jejich předání do složeného prostředku. Po dokončení kontroly nového zdrojového kódu klikněte na tlačítko **Další** nebo klikněte na krok **parametry** .
-   ![Snímek obrazovky kroku zdrojového kódu stránky konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
+   @no__t – 0Screenshot kroku zdrojového kódu stránky konfigurace pro psaní @ no__t-1
 1. V kroku **Parameters** je parametr, který má každý složený prostředek vystavený, aby mohl být poskytnut. Pokud má parametr popis, zobrazí se vedle pole parametru. Pokud je pole parametr typu **PSCredential** , rozevírací seznam, který se má nakonfigurovat, poskytne seznam objektů **přihlašovacích údajů** v aktuálním účtu Automation. K dispozici je také možnost **+ Přidat pověření** . Po zadání všech požadovaných parametrů klikněte na **Uložit a zkompilovat**.
-   ![Snímek obrazovky s krokem parametrů na stránce konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
+   @no__t – 0Screenshot kroku Parameters stránky konfigurace pro psaní @ no__t-1
 
 Po uložení nové konfigurace je odeslána pro kompilaci. Stav úlohy kompilace můžete zobrazit stejně jako všechny importované konfigurace. Další informace naleznete v tématu [zobrazení úlohy kompilace](automation-dsc-getting-started.md#viewing-a-compilation-job).
 
 Po úspěšném dokončení kompilace se nová konfigurace zobrazí na kartě **zkompilované konfigurace** . Jakmile je tato karta viditelná, může být přiřazena ke spravovanému uzlu pomocí kroků v části [Změna přiřazení uzlu k jiné konfiguraci uzlu](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
 - Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu průběžné [nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949363"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240232"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -59,22 +59,22 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude Azure AD vystavo
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Popis |
+| Formát NameID | Description |
 |---------------|-------------|
-| **Default** | Azure AD bude používat výchozí formát zdroje. |
+| **Výchozí** | Azure AD bude používat výchozí formát zdroje. |
 | **Perzistentní** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
 | **EmailAddress** | Azure AD bude používat EmailAddress jako formát NameID. |
 | **Neurčené** | Azure AD použije nespecifikovaný formát NameID. |
 
-Další informace o atributu NameIDPolicy najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md).
+Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Atributy
 
 Vyberte požadovaný zdroj pro deklaraci identity `NameIdentifier` (nebo NameID). Můžete vybrat z následujících možností.
 
-| Name | Popis |
+| Jméno | Description |
 |------|-------------|
-| E-mail | E-mailová adresa uživatele |
+| E-mailu | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | objectID uživatele v Azure AD |
@@ -102,7 +102,7 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
 | **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mail (joe_smith@contoso.com) a jako ověřenou doménu vyberete contoso.onmicrosoft.com, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
@@ -121,7 +121,7 @@ Přidání deklarací specifických pro aplikaci:
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. |

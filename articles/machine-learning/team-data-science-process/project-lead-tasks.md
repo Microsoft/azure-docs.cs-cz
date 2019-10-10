@@ -1,222 +1,100 @@
 ---
-title: Úvodní úlohy pro projekt vědeckého zpracování týmových dat
-description: Přehled úloh, vedoucí projektu by měl dokončit v týmovém projektu datové vědy.
+title: Úlohy vedoucího projektu v rámci vědeckého zpracování týmových dat
+description: Podrobný návod pro úlohy vedoucí k projektu týmu vědeckého zpracování týmových dat
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952837"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244376"
 ---
-# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Úvodní úlohy pro projekt vědeckého zpracování týmových dat
+# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Úkoly vedoucího projektu v rámci vědeckého zpracování týmových dat
 
-Tento kurz ukazuje úlohy, které je vedoucí projektu očekává pro jejich tým projektu. Cílem je vytvořit prostředí pro spolupráci týmu, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutý microsoftem, která poskytuje strukturovaných posloupnost aktivit k úspěšnému provedení cloudové prediktivní analytická řešení. Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
+Tento článek popisuje úlohy, které *vedoucí projektu* dokončí, aby nastavil úložiště pro svůj projektový tým v rámci [vědeckého zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutá Microsoftem, která poskytuje strukturovanou sekvenci aktivit pro efektivní spouštění cloudových řešení prediktivní analýzy. TDSP je navržený tak, aby pomohla zdokonalit spolupráci a týmovou výuku. Přehled rolí personálu a přidružených úloh pro tým pro datové vědy, který se na TDSPe standardizace, najdete v tématu [role procesů a úlohy vědeckého zpracování dat týmu](roles-tasks.md).
 
-A **vedoucí projektu** spravuje každodenní činnosti jednotlivé datové vědce v projektu konkrétní datové vědy. Pracovní postup pro úkoly, které mají být dokončit zájemci o projekt k nastavení tohoto prostředí jsou znázorněné na následujícím obrázku:
+Vedoucí projektu spravuje každodenní činnosti jednotlivých vědeckých pracovníků dat v rámci konkrétního projektu pro datové vědy v TDSP. Následující diagram znázorňuje pracovní postup pro úkoly vedoucího projektu:
 
-![1](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![Pracovní postup úkolu vedoucího projektu](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
-Toto téma popisuje aktuálně úlohy 1,2 a 6 tento pracovní postup pro zájemci o projekt.
+Tento kurz popisuje krok 1: vytvoření úložiště projektu a krok 2: počáteční úložiště projektu z vašeho týmového úložiště ProjectTemplate. 
 
-> [!NOTE]
-> Uvádíme kroky potřebné k nastavení prostředí TDSP týmu projektu pomocí Azure DevOps v následujících pokynech. Můžeme určit způsob k provedení těchto úloh s Azure DevOps, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud je pro vaši skupinu pro jinou platformu pro hosting kódu, úlohy, které musíte provést vedoucí týmu obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
+V kroku 3: vytvoření pracovní položky funkce pro projekt a krok 4: Přidání scénářů pro fáze projektu, viz [agilní vývoj projektů pro datové vědy](agile-development.md).
 
+Krok 5: vytvoření a přizpůsobení prostředků úložiště/analýzy a jejich sdílení v případě potřeby najdete v tématu [Vytvoření týmových dat a analytických prostředků](team-lead-tasks.md#create-team-data-and-analytics-resources).
 
-## <a name="repositories-and-directories"></a>Úložiště a adresáře
+Pro krok 6: nastavení řízení zabezpečení pro úložiště projektu, viz [Přidání členů týmu a konfigurace oprávnění](team-lead-tasks.md#add-team-members-and-configure-permissions).
 
-Tento kurz používá zkrácené názvy pro úložiště a adresáře. Tyto názvy usnadňují sledování operací mezi úložišť a adresáře. Tato notace (R pro úložiště Git) a D pro místní adresáře na vaše DSVM se používá v následujících částech:
+> [!NOTE] 
+> Tento článek používá Azure Repos k nastavení projektu TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jinou platformu hostování kódu, úkoly vedoucího projektu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-- **R3**: Tým **ProjectTemplate** úložiště v Gitu, které nastavil váš vedoucí týmu.
-- **R5**: V úložišti projektů na Git nastavení pro váš projekt.
-- **D3**: Místní adresář naklonovali z R3.
-- **D5**: Místní adresář naklonovali z R5.
+## <a name="prerequisites"></a>Předpoklady
 
+V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks.md) a [vedoucí týmu](team-lead-tasks.md) si nastavili následující prostředky a oprávnění:
 
-## <a name="0-prerequisites"></a>0. Požadavky
+- **Organizace** Azure DevOps pro vaši datovou jednotku
+- Týmový **projekt** pro tým pro datové vědy
+- Šablony a **úložiště** nástrojů týmu
+- **Oprávnění** pro váš účet organizace k vytváření a úpravám úložišť pro váš projekt
 
-Požadavky splněny dokončení úkolů přiřazena vedoucímu skupiny uvedených v [úkoly správce skupiny pro datové vědy tým](group-manager-tasks.md) a k seskupení zájemce uvedených v [úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md). 
+Pokud chcete klonovat úložiště a upravovat obsah na vašem místním počítači nebo Data Science Virtual Machine (DSVM) nebo nastavit službu Azure File Storage a připojit ji k DSVM, budete potřebovat taky následující:
 
-Slouží ke shrnutí tady, třeba tyto požadavky splnit, předtím, než začnete s úkoly vedoucí týmu: 
+- Předplatné Azure.
+- V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
+- Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 
-- Vaše **skupině služby Azure DevOps** (nebo skupinový účet na některé jiné platformě hosting kódu) je nastavený správcem skupiny.
-- Vaše **TeamProjectTemplate úložiště** (R3) je nastavený v rámci vašeho účtu skupiny ve vaší vedoucí týmu na hosting kódu platformy, plánujete použít.
-- Byli jste **oprávnění** podle váš vedoucí týmu k vytvoření úložiště ve vašem účtu skupiny pro váš tým.
-- Git musí být nainstalován na počítači. Pokud používáte Data virtuálního počítače VĚDY, Git je předem nainstalovaný a jste připravení. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).  
-- Pokud používáte **Windows DSVM**, musíte mít [Git Credential Manageru (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) na vašem počítači nainstalovaný. V souboru README.md přejděte dolů k položce **stáhněte a nainstalujte** a klikněte *nejnovější instalační program*. Tím přejdete na stránku pro nejnovější instalační program. Stažení instalačního programu .exe odsud a spustíme ji. 
-- Pokud používáte **Linux DSVM**vytvořte veřejný klíč SSH na vaše DSVM a přidejte k vašim službám Azure DevOps skupiny. Další informace o SSH najdete v tématu **vytvořit veřejný klíč SSH** tématu [platformami a nástroji příloha](platforms-and-tools.md#appendix). 
+## <a name="create-a-project-repository-in-your-team-project"></a>Vytvoření úložiště projektu v týmovém projektu
 
+Vytvoření úložiště projektu v projektu **myTeam** vašeho týmu:
 
-## <a name="1-create-a-project-repository-r5"></a>1. Vytvořit projekt úložiště (R5)
+1. Přejít na stránku **souhrnu** projektu vašeho týmu na adrese *https: \/ @ no__t-3 @ no__t-4server název >/\<organization name >/\<team >* , například **https: \//dev. Azure. com/DataScienceUnit/myTeam**a v levém navigačním **panelu vyberte úložiště** . 
+   
+1. V horní části stránky vyberte název úložiště a v rozevíracím seznamu vyberte **nové úložiště** .
+   
+   ![Vybrat nové úložiště](./media/project-lead-tasks/project-leads-9-select-repos.png)
+   
+1. V dialogovém okně **vytvořit nové úložiště** se ujistěte, že je v části **typ**zaškrtnuté políčko **Git** . Do **pole název úložiště**zadejte *DSProject1* a pak vyberte **vytvořit**.
+   
+   ![Vytvořit úložiště](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
+   
+1. Potvrďte, že na stránce nastavení projektu vidíte nové úložiště **DSProject1** . 
+   
+   ![Úložiště projektu v nastavení projektu](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-- Přihlaste se k vašim službám skupinu Azure DevOps v *https://\<název služby Azure DevOps\>. visualstudio.com*. 
-- V části **poslední projekty a týmy**, klikněte na tlačítko **Procházet**. Okna, která se zobrazí seznam všech projektů ve službě Azure DevOps. 
+## <a name="import-the-team-template-into-your-project-repository"></a>Import šablony týmu do úložiště projektu
 
-    ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
+Chcete-li naplnit úložiště projektu obsahem vašeho úložiště šablony týmu:
 
-- Klikněte na název projektu, ve které se chystáte vytvořit úložiště vašeho projektu. V tomto příkladu klikněte na tlačítko **MyTeam**. 
-- Potom klikněte na **Navigovat** k přesměrováni na domovskou stránku projektu **MyTeam**:
+1. Na stránce **Souhrn** projektu vašeho **týmu vyberte úložiště** v levém navigačním panelu. 
+   
+1. V horní části stránky vyberte název úložiště a v rozevíracím seznamu vyberte **DSProject1** .
+   
+1. Na stránce **DSProject1 je prázdná** vyberte **importovat**. 
+   
+   ![Vybrat Import](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
+   
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a do pole **Adresa URL klonu**zadejte adresu URL úložiště **TeamTemplate** . Adresa URL je *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team název >/_git/\<team název úložiště šablon >* . Například: **https: \//dev. Azure. com/DataScienceUnit/myTeam/_git/TeamTemplate**. 
+   
+1. Vyberte **importovat**. Obsah vašeho úložiště šablony týmu se importuje do vašeho úložiště projektu. 
+   
+   ![Importovat úložiště šablon týmu](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-    ![3](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
+Pokud potřebujete přizpůsobit obsah vašeho úložiště projektu tak, aby splňoval konkrétní potřeby vašeho projektu, můžete přidat, odstranit nebo upravit soubory a složky úložiště. Můžete pracovat přímo v Azure Repos nebo klonovat úložiště do místního počítače nebo DSVM, provést změny a zapsat a nasdílet své aktualizace do sdíleného úložiště projektu. Postupujte podle pokynů v tématu [přizpůsobení obsahu úložišť týmu](team-lead-tasks.md#customize-the-contents-of-the-team-repositories).
 
-- Klikněte na tlačítko **spolupráce na kódu** k přesměrováni na domovskou stránku projektu git.  
+## <a name="next-steps"></a>Další kroky
 
-    ![4](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
+Zde jsou odkazy na podrobné popisy dalších rolí a úloh, které jsou definovány v rámci vědeckého zpracování týmových dat:
 
-- Klikněte na šipku dolů v levém horním rohu a vyberte **+ nové úložiště**. 
-    
-    ![5](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
-
-- V **vytvořit nové úložiště** okno, zadejte název pro úložiště git vašeho projektu. Ujistěte se, že jste vybrali **Git** jako typ úložiště. V tomto příkladu používáme název *DSProject1*. 
-
-    ![6](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
-
-- Chcete-li vytvořit váš ***DSProject1*** projektu úložiště git, klikněte na tlačítko **vytvořit**.
-
-
-## <a name="2-seed-the-dsproject1-project-repository"></a>2. Počáteční hodnoty v úložišti projektů DSProject1
-
-Je zde úkol na počáteční hodnotu **DSProject1** úložiště projektu (R5) z úložiště šablony projektu (R3). Osazení postup používá adresáře D3 a D5 na vaše místní DSVM jako zprostředkující pracovní lokality. Stručně řečeno osazení cestu je: R3 -> D3 -> D5 -> R5.
-
-Pokud je potřeba upravit vaše **DSProject1** úložiště projektu pro splnění některé specifické potřeby projektu, uděláte v předposlední kroku tohoto postupu. Zde je uveden seznam kroky používají naplnit obsah **DSProject1** úložiště projektu. Témata v postupu osazení odpovídají jednotlivé kroky:
-
-- Klonování úložiště šablon projektu do místního adresáře: týmu R3 - do -> místní D3 klonovat.
-- Klonování úložiště DSProject1 do místního adresáře: týmu R5 - klonovat do místního D5 ->.
-- Zkopírujte obsah šablony naklonované projektu do místní klon úložiště DSProject1:  D3 - obsah bude zkopírován do -> D5.
-- (Volitelné) Místní D5 přizpůsobení.
-- Nahrání místního obsahu DSProject1 do týmových úložišť: D5 - do -> týmu R5 přidat obsah.
-
-
-### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Klonování úložiště šablony projektu (R3) do adresáře (D3) na místním počítači.
-
-Na místním počítači vytvořte adresář:
-
-- *C:\GitRepos\MyTeamCommon* pro Windows 
-- *$home/GitRepos/MyTeamCommon* pro Linux
-
-Přechod do této složky. Spusťte následující příkaz a naklonujte úložiště šablony projektu do místního počítače. 
-
-**Windows**
-            
-    git clone <the HTTPS URL of the TeamProjectTemplate repository>
-    
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle *adresy URL HTTPS úložiště šablony projektu* je:
-
- ***https://\<název služby Azure DevOps\>.visualstudio.com/\<název vašeho projektu\>/_git/\<úložiště název šablony projektu\>***. 
-
-V tomto příkladu jsme provedli následující:
-
-***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***. 
-
-![7](./media/project-lead-tasks/project-leads-7-clone-team-project-template.png)
-            
-**Linux**
-
-    git clone <the SSH URL of the TeamProjectTemplate repository>
-        
-![8](./media/project-lead-tasks/project-leads-8-clone-team-project-template-linux.png)
-
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle *SSH adresu URL úložiště šablon projektu* je:
-
-***SSH: / /\<název služby Azure DevOps\>\@\<název služby Azure DevOps\>.visualstudio.com:22/\<svůj název projektu > /_git/\<šablony projektu Název úložiště\>.*** 
-
-V tomto příkladu jsme provedli následující:
-
-***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***. 
-
-### <a name="clone-dsproject1-repository-r5-to-a-directory-d5-on-your-local-machine"></a>Naklonujte úložiště DSProject1 (R5) do adresáře (D5) na místním počítači
-
-Změňte adresář na **GitRepos**, a spusťte následující příkaz a naklonujte úložiště projektu do místního počítače. 
-
-**Windows**
-            
-    git clone <the HTTPS URL of the Project repository>
-
-![9](./media/project-lead-tasks/project-leads-9-clone-project-repository.png)
-
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL HTTPS v úložišti projektů_ je ***https://\<název služby Azure DevOps\>.visualstudio.com/\<Svůj název projektu > /_git/ < název vašeho projektu úložiště\>***. V tomto příkladu máme ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***.
-
-**Linux**
-
-    git clone <the SSH URL of the Project repository>
-
-![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
-
-Pokud používáte Azure DevOps jako platformu pro hosting kódu, obvykle _adresu URL SSH úložiště projektu_ je _ssh: / / < název služby Azure DevOps\>@< název služby Azure DevOps\>.visualstudio.com:22/ < název vašeho projektu\>/\_git / < název vašeho projektu úložiště\>. V tomto příkladu máme ***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
-
-### <a name="copy-contents-of-d3-to-d5"></a>Zkopírujte obsah D3 D5 
-
-Teď v místním počítači, je nutné zkopírovat obsah _D3_ k _D5_, s výjimkou metadat gitu adresář .Git, na který. Následující skripty provede úlohu. Nezapomeňte zadat správné a úplné cesty k adresářům. Zdrojová složka je pro váš tým (_D3_); cílová složka je pro váš projekt (_D5_).    
-
-**Windows**
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 -role 3
-    
-![11](./media/project-lead-tasks/project-leads-11-local-copy-project-lead-new.png)
-
-Teď vidíte v _DSProject1_ složky, všechny soubory (s výjimkou .git) jsou zkopírovány z _MyTeamProjectTemplate_.
-
-![12](./media/project-lead-tasks/project-leads-12-teamprojectTemplate_copied_to_local.png)
-
-**Linux**
-            
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 3
-        
-![13](./media/project-lead-tasks/project-leads-13-local_copy_project_lead_linux_new.png)
-
-Teď vidíte v _DSProject1_ složky, všechny soubory (s výjimkou metadata v .git) jsou zkopírovány z _MyTeamProjectTemplate_.
-
-![14](./media/project-lead-tasks/project-leads-14-teamprojectTemplate_copied_to_local_linux_new.png)
-
-
-### <a name="customize-d5-if-you-need-to-optional"></a>Přizpůsobení D5, pokud je potřeba (volitelné)
-
-Pokud váš projekt potřebuje některé konkrétní adresáře nebo dokumenty, než ty, které získáte ze šablony projektu (zkopírován do adresáře D5 v předchozím kroku), můžete přizpůsobit obsah D5 nyní. 
-
-### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-azure-devops-services"></a>Přidat obsah DSProject1 v D5 R5 ve vašich službách Azure DevOps skupiny
-
-Teď musíte vložit obsah **_DSProject1_** k _R5_ úložiště v projektu na vaši skupinu Azure DevOps služby. 
-
-
-- Přejděte do adresáře **D5**. 
-- Pomocí následujících příkazů git přidat obsah **D5** k **R5**. Příkazy jsou stejné pro systémy Windows a Linux. 
-    
-    Git status git přidat.
-    Git commit -m "push z win DSVM" git push
-    
-- Potvrzení změn a nabízených oznámení. 
-
-> [!NOTE]
-> Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
-        
-    git config --global user.name <your name>
-    git config --global user.email <your email address>
- 
-> Pokud jsou přiřazeni k více úložišť Git, použijte stejný název a e-mailovou adresu ve všech z nich. Pomocí stejného jména a e-mailovou adresu prokáže pohodlný později při vytváření řídicích panelů Power BI ke sledování aktivit Git na více úložišť.
-
-![15](./media/project-lead-tasks/project-leads-15-git-config-name.png)
-
-
-## <a name="6-create-and-mount-azure-file-storage-as-project-resources-optional"></a>6. Vytvoření a připojení Azure file storage jako projekt prostředků (volitelné)
-
-Pokud chcete vytvořit Azure file storage pro sdílení dat, jako je například projekt nezpracovaná data nebo funkce vygenerovaný pro váš projekt tak, aby všichni členové projektu mají přístup do stejné datové sady z více datové postupujte podle pokynů v části 3 a 4 [ Týmu úkoly potenciálních zákazníků pro datové vědy tým](team-lead-tasks.md). 
-
-
-## <a name="next-steps"></a>Další postup
-
-Tady jsou odkazy na podrobnější popis role a úlohy určené vědecké zpracování týmových dat:
-
-- [Úlohy správce skupiny pro datové vědy tým](group-manager-tasks.md)
-- [Úkoly vedoucí týmu pro datové vědy tým](team-lead-tasks.md)
-- [Vedoucí úkoly pro datové vědy tým projektu](project-lead-tasks.md)
-- [Jednotlivé přispěvatelé projektu týmu datové vědy](project-ic-tasks.md)
+- [Úlohy správce skupin pro tým pro datové vědy](group-manager-tasks.md)
+- [Úkoly vedoucí týmu pro tým pro datové vědy](team-lead-tasks.md)
+- [Jednotlivé úlohy přispěvatele pro tým pro datové vědy](project-ic-tasks.md)

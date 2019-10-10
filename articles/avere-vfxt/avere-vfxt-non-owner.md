@@ -1,32 +1,32 @@
 ---
-title: Alternativní řešení jiných uživatelů vFXT Avere – Azure
-description: Alternativní řešení umožňující uživatelům bez oprávnění vlastníka předplatného Avere vFXT nasazení pro Azure
+title: Alternativní řešení avere vFXT, které není vlastníkem – Azure
+description: Alternativní řešení umožňující uživatelům bez oprávnění vlastníka předplatného nasazovat avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409205"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256180"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
 
-Tyto pokyny jsou alternativní řešení, která umožňuje uživateli bez předplatného oprávnění vlastníka k vytvoření Avere vFXT systému Azure.
+Tyto pokyny představují alternativní řešení, které umožňuje uživateli bez oprávnění vlastníka předplatného vytvářet avere vFXT pro systém Azure.
 
-(Doporučený způsob, jak nasadit Avere vFXT systému je, aby uživatel s oprávněními vlastníka provést vytvoření kroky, jak je vysvětleno v [Příprava k tvorbě Avere vFXT](avere-vfxt-prereqs.md).)  
+(Doporučený způsob, jak nasadit systém avere vFXT, je mít uživatele s oprávněním vlastníka udělat kroky vytváření, jak je vysvětleno v tématu [Příprava na vytvoření avere vFXT](avere-vfxt-prereqs.md).)  
 
-Alternativní řešení zahrnuje vytvoření roli další přístup, který poskytuje svým uživatelům dostatečná oprávnění k instalaci clusteru. Je nutné vytvořit roli vlastník předplatného a vlastníka nutné ji přiřadit k příslušným uživatelům. 
+Alternativní řešení zahrnuje vytvoření další role přístupu, která poskytne svým uživatelům dostatečná oprávnění k instalaci clusteru. Role musí být vytvořena vlastníkem předplatného a vlastník ji musí přiřadit odpovídajícím uživatelům. 
 
-Také musí vlastník předplatného [přijměte podmínky použití](avere-vfxt-prereqs.md) pro Avere vFXT marketplace image. 
+Vlastník předplatného musí také [přijmout podmínky použití](avere-vfxt-prereqs.md) pro Image avere vFXT Marketplace. 
 
 > [!IMPORTANT] 
-> Všechny tyto kroky musí být přijata uživatelem s oprávněními vlastníka předplatného, který se použije pro cluster.
+> Všechny tyto kroky musí provést uživatel s oprávněním vlastníka v předplatném, které se bude používat pro cluster.
 
-1. Zkopírujte tyto řádky a uložit je do souboru (například `averecreatecluster.json`). Použijte ID vašeho předplatného v `AssignableScopes` příkazu.
+1. Zkopírujte tyto řádky a uložte je do souboru (například `averecreatecluster.json`). V příkazu `AssignableScopes` použijte své ID předplatného.
 
    ```json
    {
@@ -58,7 +58,7 @@ Také musí vlastník předplatného [přijměte podmínky použití](avere-vfxt
    }
    ```
 
-1. Spusťte tento příkaz pro vytvoření role:
+1. Spuštěním tohoto příkazu vytvořte roli:
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
@@ -67,12 +67,12 @@ Také musí vlastník předplatného [přijměte podmínky použití](avere-vfxt
     az role definition create --role-definition ./averecreatecluster.json
     ```
 
-1. Tuto roli přiřaďte uživatele, který se vytvoří cluster:
+1. Přiřaďte tuto roli uživateli, který vytvoří cluster:
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Po provedení tohoto postupu je žádný uživatel tuto roli nemají přiřazenou následující oprávnění pro předplatné: 
+Po provedení tohoto postupu má každý uživatel přiřazený k této roli následující oprávnění pro předplatné: 
 
 * Vytvoření a konfigurace síťové infrastruktury
-* Vytvoření clusteru kontroleru
-* Spouštění skriptů pro vytvoření clusteru z clusteru kontroleru k vytvoření clusteru
+* Vytvoření řadiče clusteru
+* Spusťte skripty pro vytvoření clusteru z řadiče clusteru a vytvořte cluster.

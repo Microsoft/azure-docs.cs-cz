@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 5b72753054881d992d01f3f50926a7f023def337
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bcde469ba4a376b278295d9c14c9ae12e434e3d5
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969600"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244246"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Vytvoření nové nabídky Dynamics 365 for Operations
 
@@ -86,7 +86,7 @@ Vyberte z následujících možností:
 
 ## <a name="connect-lead-management"></a>Připojit řízení zájemců
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 Další informace najdete v tématu [Přehled správy potenciálních zákazníků](./commercial-marketplace-get-customer-leads.md) .
 

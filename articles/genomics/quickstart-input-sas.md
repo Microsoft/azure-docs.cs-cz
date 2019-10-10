@@ -1,7 +1,7 @@
 ---
-title: Odeslání pracovní postupu pomocí signatur sdíleného přístupu – Microsoft Genomics
-titleSuffix: Azure
-description: Tento článek předpokládá mají nainstalovaného klienta msgen a úspěšně zpracovali ukázková data ve službě.
+title: Pracovní postup využívající signatury sdíleného přístupu
+titleSuffix: Microsoft Genomics
+description: Tento článek ukazuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí sdílených přístupových podpisů (SAS) místo klíčů účtu úložiště.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657102"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248585"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Odeslání pracovního postupu do služby Microsoft Genomics pomocí SAS místo klíče účtu úložiště 
 
-Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics pomocí souboru config.txt, který obsahuje [sdílené přístupové podpisy (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) místo klíčů účtu úložiště. Tato funkce může být užitečná v případě, že existují obavy ohledně zabezpečení kvůli viditelnému klíči účtu úložiště v souboru config.txt. 
+Tento článek popisuje, jak odeslat pracovní postup do služby Microsoft Genomics pomocí souboru config. txt, který obsahuje [sdílené přístupové podpisy (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) místo klíčů účtu úložiště. Tato funkce může být užitečná v případě, že existují obavy ohledně zabezpečení kvůli viditelnému klíči účtu úložiště v souboru config.txt. 
 
-Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí připravená ukázková data, budete chtít pokračovat v tomto článku. 
+Tento článek předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat službu Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
 
 ## <a name="what-is-a-sas"></a>Co je SAS?
 [Sdílený přístupový podpis (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit přístup k prostředkům ve vašem účtu úložiště, aniž byste sdíleli své klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
@@ -33,14 +33,14 @@ Identifikátor URI tokenu sdíleného přístupového podpisu (SAS) na úrovni s
 Každý pracovní postup odeslaný do služby Microsoft Genomics vyžaduje dva nebo více tokenů SAS – jeden pro každý vstupní soubor a jeden pro výstupní kontejner.
 
 SAS pro vstupní soubory musí mít následující vlastnosti:
-1.  Rozsah (účet, kontejner, objekt blob): objekt blob
-2.  Vypršení platnosti: odteď za 48 hodin
-3.  Oprávnění: čtení
+ - Rozsah (účet, kontejner, objekt blob): objekt blob
+ - Vypršení platnosti: odteď za 48 hodin
+ - Oprávnění: čtení
 
 SAS pro výstupní kontejner musí mít následující vlastnosti:
-1.  Rozsah (účet, kontejner, objekt blob): kontejner
-2.  Vypršení platnosti: odteď za 48 hodin
-3.  Oprávnění: čtení, zápis, odstranění
+ - Rozsah (účet, kontejner, objekt blob): kontejner
+ - Vypršení platnosti: odteď za 48 hodin
+ - Oprávnění: čtení, zápis, odstranění
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>Vytvoření SAS pro vstupní soubory a výstupní kontejner
@@ -56,7 +56,7 @@ Rozsah SAS pro vstupní soubory musí být omezený na konkrétní vstupní soub
  ![SAS pro službu Genomics v Průzkumníku služby Storage](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "SAS pro službu Genomics v Průzkumníku služby Storage")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Nastavení: Vytvoření SAS prostřednictvím kódu programu
+### <a name="set-up-create-a-sas-programmatically"></a>Nastavení: vytvoření SAS prostřednictvím kódu programu
 
 Informace o vytvoření SAS pomocí sady SDK služby Azure Storage najdete ve stávající dokumentaci v různých jazycích, včetně [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Pythonu](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
@@ -85,5 +85,5 @@ V tomto případě pomocí pythonového klienta Microsoft Genomics odešlete sv�
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste odeslali pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen` s použitím tokenů SAS místo klíčů účtu. Další informace týkající se odesílání pracovních postupů a dalších příkazů, které můžete použít se službou Microsoft Genomics, najdete v [nejčastějších dotazech](frequently-asked-questions-genomics.md). 

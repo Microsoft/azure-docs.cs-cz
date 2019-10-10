@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931248"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255661"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -33,7 +33,7 @@ Chcete:
 
 Aby bylo možné vyřešit tyto otázky, služba Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav. 
 
-Tento článek:
+V tomto článku najdete:
 
 - Předpokládá, že máte zkušenosti s [vytvářením interaktivních sestav pomocí monitorování sešitů](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
 
@@ -41,7 +41,7 @@ Tento článek:
  
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete používat monitorované sešity, potřebujete:
 
@@ -49,11 +49,18 @@ Pokud chcete používat monitorované sešity, potřebujete:
 
 - [Log Analytics pracovní prostor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
+- [Přístup](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
+- Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
+    - Správce zabezpečení
+    - Čtecí modul zabezpečení
+    - Čtečka sestav
+    - Globální správce
+
 ## <a name="roles"></a>Role
 Musíte být v jedné z následujících rolí a mít [přístup k podkladovým Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) pracovním prostorům pro správu sešitů:
 -   Globální správce
 -   Správce zabezpečení
--   Čtenář zabezpečení
+-   Čtecí modul zabezpečení
 -   Čtečka sestav
 -   Správce aplikace
 
@@ -62,7 +69,7 @@ Musíte být v jedné z následujících rolí a mít [přístup k podkladovým 
 
 Přístup k sešitům:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V levém navigačním podokně vyberte **Azure Active Directory**.
 
@@ -72,7 +79,7 @@ Přístup k sešitům:
 
 4. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít**. 
 
-    ![Vyberte Otevřít](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![Vyberte otevřít.](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>Analýza přihlášení
@@ -85,7 +92,7 @@ Tento sešit obsahuje následující trendy při přihlašování:
 
 - Úspěch
 
-- Čeká se na akci uživatele.
+- Nedokončená akce uživatele
 
 - Chyba
 
@@ -93,16 +100,16 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časový rozsah
 
-- Aplikace
+- Apps
 
-- Uživatelé
+- Users
 
 ![Analýza přihlášení](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
 Pro každý trend získáte rozpis podle následujících kategorií:
 
-- Location
+- Umístění
 
     ![Přihlášení podle umístění](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -127,11 +134,11 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časový rozsah
 
-- Aplikace
+- Apps
 
-- Uživatelé
+- Users
 
-- Protokoly
+- Použité
 
 ![Přihlášení pomocí starší verze ověřování](./media/howto-use-azure-monitor-workbooks/47.png)
 
@@ -151,9 +158,9 @@ Tento sešit zobrazuje trendy pro zakázané přihlášení. Jednotlivé trendy 
 
 - Časový rozsah
 
-- Aplikace
+- Apps
 
-- Uživatelé
+- Users
 
 ![Přihlášení pomocí podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/49.png)
 
@@ -177,20 +184,20 @@ Tento sešit obsahuje následující zakázané trendy přihlašování:
 
 - Vyžadování MFA
  
-- Vyžadování podmínek použití
+- Vyžadovat použití podmínek použití
 
 - Vyžadovat prohlášení o zásadách ochrany osobních údajů
 
-- Ostatní
+- Jiný uživatel
 
 
 Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časový rozsah
 
-- Aplikace
+- Apps
 
-- Uživatelé
+- Users
 
 ![Přihlášení pomocí ovládacích prvků grant](./media/howto-use-azure-monitor-workbooks/50.png)
 
@@ -219,7 +226,7 @@ Tento sešit obsahuje následující trendy při přihlašování:
 
 - Úspěch
 
-- Čeká se na akci.
+- Akce čeká na vyřízení
 
 - Chyba
 
@@ -228,9 +235,9 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časový rozsah
 
-- Aplikace
+- Apps
 
-- Uživatelé
+- Users
 
 ![Řešení potíží s přihlášením](./media/howto-use-azure-monitor-workbooks/52.png)
 
@@ -250,6 +257,6 @@ Při řešení potíží s přihlášením vám Azure Monitor poskytuje rozpis p
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytváření interaktivních sestav pomocí sledování sešitů](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).

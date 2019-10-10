@@ -1,54 +1,53 @@
 ---
 title: Avere vFXT DNS – Azure
-description: Konfigurace serveru DNS pro zatížení s kruhovým pomocí Avere vFXT pro Azure
+description: Konfigurace serveru DNS pro vyrovnávání zatížení kruhového dotazování pomocí avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410107"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256276"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Konfigurace DNS clusteru Avere
 
-Tato část vysvětluje základy konfigurace systému DNS pro váš cluster vFXT Avere Vyrovnávání zatížení. 
+V této části najdete základní informace o konfiguraci systému DNS pro vyrovnávání zatížení clusteru avere vFXT. 
 
-Tento dokument *nezahrnuje* pokyny pro nastavení a Správa serveru DNS v prostředí Azure. 
+Tento dokument *neobsahuje* pokyny k nastavení a správě serveru DNS v prostředí Azure. 
 
-Namísto použití kruhové dotazování DNS tak, aby Vyrovnávání zatížení vFXT clusteru v Azure, zvažte použití ruční metody k přiřazování IP adres rovnoměrně mezi klienty, když jsou připojené. Několik metod, které jsou popsány v [připojení clusteru Avere](avere-vfxt-mount-clients.md). 
+Místo používání služby DNS pro kruhové dotazování pro vyrovnávání zatížení clusteru vFXT v Azure zvažte použití ručních metod k přiřazování IP adres rovnoměrně mezi klienty, když jsou připojené. Několik metod je popsáno v tématu [připojení clusteru avere](avere-vfxt-mount-clients.md). 
 
-Ponechte tyto věci v úvahu při rozhodování o tom, jestli se mají použít DNS server: 
+Při rozhodování, jestli chcete používat server DNS, pamatujte na tyto věci: 
 
-* Pokud váš systém přistupuje pouze klienti NFS, pomocí DNS se nevyžaduje – je možné určit všechny síťové adresy pomocí číselného IP adres. 
+* Pokud k systému přistupovali pouze klienti systému souborů NFS, použití DNS není vyžadováno – je možné zadat všechny síťové adresy pomocí číselných IP adres. 
 
-* Pokud váš systém podporuje přístup k protokolu SMB (CIFS), se vyžaduje, DNS, protože je nutné zadat doménu DNS pro server služby Active Directory.
+* Pokud váš systém podporuje přístup přes protokol SMB (CIFS), vyžaduje se DNS, protože musíte zadat doménu DNS pro server služby Active Directory.
 
-* Pokud chcete používat ověřování protokolem Kerberos se vyžaduje DNS.
+* Služba DNS je vyžadována, pokud chcete použít ověřování pomocí protokolu Kerberos.
 
 ## <a name="load-balancing"></a>Vyrovnávání zatížení
 
-K distribuci celkové zatížení, nakonfigurujte svoje DNS domény pro účely klienta IP adres distribuci zatížení pomocí kruhového dotazování.
+Pokud chcete distribuovat celkové zatížení, nakonfigurujte doménu DNS tak, aby používala distribuci zatížení kruhového dotazování pro klientské IP adresy.
 
 ## <a name="configuration-details"></a>Podrobnosti konfigurace
 
-Když klienti přístup ke clusteru, RRDNS automaticky vyrovnává jejich požadavky mezi všechny dostupné rozhraní.
+Když klienti přistupují ke clusteru, RRDNS automaticky vyrovnává požadavky mezi všemi dostupnými rozhraními.
 
-Pro zajištění optimálního výkonu konfigurace serveru DNS pro zpracování klienta adresy clusteru, jak je znázorněno v následujícím diagramu.
+Pro zajištění optimálního výkonu nakonfigurujte server DNS tak, aby zpracovávala adresy clusterů, jak je znázorněno v následujícím diagramu.
 
-Vserver clusteru se zobrazí na levé straně a IP adresy se zobrazí v centru a na pravé straně. Konfigurovat každý klientský přístupový bod a záznamy a ukazatele, jak je znázorněno.
+Na levé straně se zobrazí cluster VServer a IP adresy se zobrazí v centru a na pravé straně. Nakonfigurujte všechny klientské přístupové body pomocí záznamů a ukazatelů, jak je znázorněno.
 
-![Diagram Avere clusteru kruhové dotazování DNS](media/avere-vfxt-rrdns-diagram.png) 
-<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+@no__t – diagram DNS pro kruhové dotazování v 0Avere @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
-Každou IP adresu klienta musí mít jedinečný název pro interní použití v clusteru. (V tomto diagramu jsou klientských IP adres s názvem vs1 – klient - IP-* pro přehlednost, ale v produkčním prostředí je vhodné použít něco jako klient * stručnější.)
+Každá IP adresa pro klienta musí mít jedinečný název pro interní použití clusterem. (V tomto diagramu se IP adresy klientů nazývají VS1-Client-IP-* pro přehlednost, ale v produkčním prostředí byste pravděpodobně použili něco výstižného, jako je třeba klient *.)
 
-Klienti připojení ke clusteru pomocí názvu vserver jako argument serveru. 
+Klienti připojí cluster pomocí názvu VServer jako argumentu serveru. 
 
-Upravit DNS server ``named.conf`` souboru nastavit cyklické pořadí pro dotazy na vaše vserver. Tato možnost zajišťuje, že všechny dostupné hodnoty jsou cyklicky. Přidejte příkaz podobný tomuto:
+Upravte soubor ``named.conf`` serveru DNS pro nastavení cyklického pořadí dotazů na vaše VServer. Tato možnost zajistí, že se všechny dostupné hodnoty cyklují cyklicky. Přidejte příkaz podobný následujícímu:
 
 ```
 options {
@@ -58,7 +57,7 @@ options {
 };
 ```
 
-Následující příkazy nsupdate uveďte příklad konfigurace DNS správně:
+Následující příkazy nsupdate obsahují příklad konfigurace DNS správně:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -74,12 +73,12 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>Nastavení DNS clusteru
 
-Určení serveru DNS, která používá vFXT clusteru **clusteru** > **pro správu sítě** stránku nastavení. Nastavení na této stránce:
+Zadejte server DNS, který cluster vFXT používá, na stránce nastavení**sítě pro správu**  >  **clusteru**. Nastavení na této stránce zahrnují:
 
 * Adresa serveru DNS
 * Název domény DNS
-* DNS search domains
+* Domény hledání DNS
 
-Čtení [nastavení DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) v Průvodci konfigurace clusteru Avere další podrobnosti o použití této stránky.
+Další podrobnosti o použití této stránky najdete v Průvodci konfigurací clusteru avere v tématu věnovaném [nastavení DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) .
 
 

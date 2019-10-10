@@ -1,17 +1,17 @@
 ---
-title: Informace o tom, jak auditovat obsah virtuálního počítače
+title: Informace Azure Policy pro službu Azure Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů ve službě Azure Kubernetes.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981445"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254739"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Vysvětlení Azure Policy pro službu Azure Kubernetes
 
@@ -21,7 +21,7 @@ Rozšířením použití [serveru gatekeeper](https://github.com/open-policy-age
 > [!NOTE]
 > Azure Policy pro AKS je ve verzi omezené verze Preview a podporuje jenom integrované definice zásad.
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Pokud chcete povolit a používat Azure Policy pro AKS s clusterem AKS, proveďte následující akce:
 
@@ -38,7 +38,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
   1. Zaregistrujte poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** . Postup najdete v tématu [poskytovatelé a typy prostředků](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+  1. Spusťte službu Azure Policy v Azure Portal tak, že kliknete na **všechny služby**a pak vyhledáte a vyberete **zásadu**.
 
      ![Vyhledat zásady ve všech službách](../media/rego-for-aks/search-policy.png)
 
@@ -63,9 +63,22 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
   # Feature register: enables installing the add-on
   az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.ContainerService
+  
   # Feature register: enables the add-on to call the Azure Policy resource provider
   az feature register --namespace Microsoft.PolicyInsights --name AKS-DataplaneAutoApprove
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.PolicyInsights/AKS-DataPlaneAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.PolicyInsights
+  
   ```
 
 ## <a name="azure-policy-add-on"></a>Doplněk Azure Policy
@@ -79,11 +92,11 @@ _Doplněk Azure Policy_ pro Kubernetes připojuje službu Azure Policy k řadič
 
 ### <a name="installing-the-add-on"></a>Instalace doplňku
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadované součásti
 
 Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Preview. Tento krok se provádí pomocí Azure CLI:
 
-1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.62 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.62 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 1. Cluster AKS musí mít verzi _1,10_ nebo vyšší. K ověření verze clusteru AKS použijte následující skript:
 
@@ -113,7 +126,7 @@ Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Pr
 
 Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- Portál Azure
+- Portál Azure Portal
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -130,7 +143,7 @@ Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, 
      > [!NOTE]
      > Pokud je tlačítko **Povolit doplněk** šedě zobrazené, předplatné ještě není přidané do verze Preview. Požadované kroky najdete v tématu [výslovný souhlas pro verzi Preview](#opt-in-for-preview) .
 
-- Azure CLI
+- Rozhraní příkazového řádku Azure
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -193,7 +206,7 @@ Pokud chcete zobrazit protokoly z kontejnerů GateKeeper, postupujte podle krok�
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- Portál Azure
+- Portál Azure Portal
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -207,7 +220,7 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 
      ![Zakázat doplněk Azure Policy pro AKS](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure CLI
+- Rozhraní příkazového řádku Azure
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -218,8 +231,8 @@ Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Porta
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
-- Projděte si [strukturu definic zásad](definition-structure.md).
-- Projděte si [Vysvětlení efektů zásad](effects.md).
+- Zkontrolujte [strukturu definic zásad](definition-structure.md).
+- Přečtěte si téma [Principy efektů zásad](effects.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).
 - Přečtěte si, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](../how-to/remediate-resources.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: d74d1c33816b3c028a26335af4c6d5b23b7a2046
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958488"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243279"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -222,7 +222,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové obslužné rutiny [`logging`](https://docs.python.org/3/library/logging.html#module-logging) ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -238,7 +238,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Popis                                |
+| Metoda                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -282,7 +282,7 @@ V této funkci se hodnota parametru dotazu `name` získá z parametru `params` o
 
 Podobně můžete nastavit `status_code` a `headers` pro zprávu odpovědi v vráceném objektu [HttpResponse] .
 
-## <a name="concurrency"></a>Souběžnost
+## <a name="concurrency"></a>Concurrency
 
 Ve výchozím nastavení funkce modulu runtime jazyka Python mohou současně zpracovat pouze jedno vyvolání funkce. Tato úroveň souběžnosti nemusí být dostatečná pro jednu nebo více následujících podmínek:
 
@@ -320,7 +320,7 @@ Ve výchozím nastavení má každá instance hostitele Functions pracovní proc
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte do podpisu argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
-Příklad:
+Například:
 
 ```python
 import azure.functions
@@ -331,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) má následující metody:
+Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) má následující atributy řetězce:
 
 `function_directory`  
 Adresář, ve kterém je funkce spuštěná.
@@ -580,7 +580,7 @@ Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících materiálech:
+Další informace najdete v následujících materiálech:
 
 * [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Osvědčené postupy pro Azure Functions](functions-best-practices.md)

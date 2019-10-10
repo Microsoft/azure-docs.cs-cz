@@ -11,26 +11,26 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
-ms.openlocfilehash: 588fac1fc48396584188eec44f21a7005dc8ed96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b15ebc40e99c1cd454396ccde5cca6b1a46abbc
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567552"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244748"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurace vlastního DNS pro Azure SQL Database spravovanou instanci
 
 Spravovaná instance Azure SQL Database musí být nasazená v rámci [virtuální sítě Azure (VNET)](../virtual-network/virtual-networks-overview.md). Existuje několik scénářů (například databázová pošta, propojené servery na jiné instance SQL ve vašem cloudovém nebo hybridním prostředí), které vyžadují, aby byly názvy privátních hostitelů přeloženy ze spravované instance. V takovém případě musíte nakonfigurovat vlastní DNS v Azure. 
 
-Vzhledem k tomu, že spravovaná instance používá pro vnitřní práci stejnou službu DNS, musíte nakonfigurovat vlastní server DNS tak, aby mohl přeložit názvy veřejných domén.
+Vzhledem k tomu, že spravovaná instance používá pro vnitřní práci stejnou službu DNS, nakonfigurujte vlastní server DNS tak, aby mohl přeložit názvy veřejných domén.
 
-   > [!IMPORTANT]
-   > Vždy používejte plně kvalifikované názvy domén (FQDN) pro poštovní servery, servery SQL a další služby, i když se nacházejí v privátní zóně DNS. Například použijte `smtp.contoso.com` pro poštovní server, protože jednoduchá `smtp` nebude vyřešena správně.
+> [!IMPORTANT]
+> U poštovního serveru, SQL Server instance a dalších služeb vždycky používejte plně kvalifikovaný název domény (FQDN), a to i v případě, že se nachází v privátní zóně DNS. Například pro poštovní server použijte `smtp.contoso.com`, protože `smtp` se nebude překládat správně. Vytvoření propojeného serveru nebo replikace, která odkazuje na virtuální počítače SQL ve stejné virtuální síti, taky vyžaduje plně kvalifikovaný název domény a výchozí příponu DNS. Například `SQLVM.internal.cloudapp.net`. Další informace najdete v tématu [překlad názvů, který používá vlastní server DNS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
 
-   > [!IMPORTANT]
-   > Aktualizace serverů DNS virtuální sítě by neovlivnila přímo spravovanou instanci. Konfigurace DNS spravované instance se aktualizuje po vypršení platnosti zapůjčení DHCP nebo za platformou upgarade, ať už nastane dřív. **Před vytvořením první spravované instance doporučujeme uživatelům, aby si nastavili konfiguraci DNS virtuální sítě.**
+> [!IMPORTANT]
+> Aktualizace serverů DNS virtuální sítě nebude mít na spravovanou instanci okamžitě vliv. Konfigurace DNS spravované instance se aktualizuje po vypršení platnosti zapůjčení DHCP nebo za upgarade platformy, podle toho, co nastane dřív. **Před vytvořením první spravované instance doporučujeme uživatelům, aby si nastavili konfiguraci DNS virtuální sítě.**
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled najdete v tématu [co je spravovaná instance](sql-database-managed-instance.md) .
 - Kurz, ve kterém se dozvíte, jak vytvořit novou spravovanou instanci, najdete v tématu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md).

@@ -1,41 +1,41 @@
 ---
-title: Přístup k ovládacím panelům vFXT Avere – Azure
-description: Jak se připojit ke clusteru vFXT a založené na prohlížeči Avere ovládacím panelem konfigurace Avere vFXT
+title: Přístup k ovládacímu panelu avere vFXT – Azure
+description: Jak se připojit ke clusteru vFXT a ovládacímu panelu avere na bázi prohlížeče pro konfiguraci avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439975"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255029"
 ---
 # <a name="access-the-vfxt-cluster"></a>Přístup ke clusteru vFXT
 
-Chcete-li změnit nastavení a monitorování clusteru vFXT Avere, pomocí ovládacího panelu Avere. Avere ovládací panely je založené na prohlížeči grafické rozhraní pro cluster.
+Chcete-li změnit nastavení a monitorovat cluster avere vFXT, použijte ovládací panel avere. Ovládací panel avere je grafické rozhraní založené na prohlížeči pro cluster.
 
-Protože vFXT cluster nachází v rámci privátní virtuální síť, musíte vytvořit tunel SSH nebo použít jinou metodou k dosažení IP adresa pro správu clusteru. Existují dva základní kroky: 
+Vzhledem k tomu, že cluster vFXT je umístěný v privátní virtuální síti, musíte vytvořit tunel SSH nebo použít jinou metodu pro dosažení IP adresy pro správu clusteru. Existují dva základní kroky: 
 
-1. Vytvořte připojení mezi pracovní stanice a privátní virtuální síť 
-1. Zatížení clusteru ovládací panely ve webovém prohlížeči 
+1. Vytvoření připojení mezi vaší pracovní stanicí a privátní virtuální sítí 
+1. Načtěte ovládací panel clusteru ve webovém prohlížeči. 
 
 > [!NOTE] 
-> Tento článek předpokládá, že jste nastavili veřejné IP adresy na adaptéru clusteru nebo na jiný virtuální počítač ve virtuální síti vašeho clusteru. Tento článek popisuje, jak používat tento virtuální počítač jako hostitele pro přístup ke clusteru. Pokud používáte síť VPN nebo ExpressRoute pro přístup k virtuální síti, přejděte k [připojení v Ovládacích panelech Avere](#connect-to-the-avere-control-panel-in-a-browser).
+> V tomto článku se předpokládá, že jste nastavili veřejnou IP adresu na řadiči clusteru nebo na jiném VIRTUÁLNÍm počítači uvnitř virtuální sítě vašeho clusteru. Tento článek popisuje, jak tento virtuální počítač používat jako hostitele pro přístup ke clusteru. Pokud pro přístup k virtuální síti používáte síť VPN nebo ExpressRoute, přejděte k [části připojení k ovládacímu panelu avere](#connect-to-the-avere-control-panel-in-a-browser).
 
-Před připojením, ujistěte se, že veřejného/soukromého páru klíčů SSH, který jste použili při vytváření clusteru kontroleru je nainstalována na místním počítači. Přečtěte si jejich dokumentaci klíče SSH [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc. (Pokud jste použili heslo místo veřejný klíč, budete vyzváni k jeho zadání, když se připojíte.) 
+Před připojením se ujistěte, že je v místním počítači nainstalovaný pár veřejného a privátního klíče SSH, který jste použili při vytváření řadiče clusteru. Pokud potřebujete nápovědu, přečtěte si dokumentaci k klíčům SSH pro [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) nebo pro [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) . (Pokud jste místo veřejného klíče použili heslo, budete vyzváni k jeho zadání, až se připojíte.) 
 
 ## <a name="create-an-ssh-tunnel"></a>Vytvoření tunelu SSH 
 
-Vytvořením tunelu SSH z příkazového řádku z založenou na Linuxu nebo klienta systému Windows 10. 
+Tunel SSH můžete vytvořit z příkazového řádku klientského systému se systémem Linux nebo Windows 10. 
 
-Použijte příkaz v tomto formuláři tunelování SSH: 
+Použijte příkaz pro tunelování SSH s tímto formulářem: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
+SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
 
-Tento příkaz se připojí k IP adresa pro správu clusteru prostřednictvím IP adresa adaptéru clusteru.
+Tento příkaz se připojí k IP adrese správy clusteru prostřednictvím IP adresy řadiče clusteru.
 
 Příklad:
 
@@ -43,26 +43,26 @@ Příklad:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Ověřování je automatické, pokud jste použili veřejný klíč SSH k vytvoření clusteru a v klientském systému je nainstalován odpovídajícího klíče. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
+Ověřování je automatické, pokud jste k vytvoření clusteru použili veřejný klíč SSH a v klientském systému je nainstalovaný shodný klíč. Pokud jste použili heslo, systém vás vyzve k jeho zadání.
 
-## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Připojení v Ovládacích panelech Avere v prohlížeči
+## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Připojení k ovládacímu panelu avere v prohlížeči
 
-Tento krok používá pro připojení k nástroji pro konfiguraci spuštěné v clusteru vFXT webový prohlížeč.
+Tento krok používá webový prohlížeč pro připojení ke konfiguračnímu nástroji spuštěnému v clusteru vFXT.
 
-* Pro připojení tunelu SSH, otevřete webový prohlížeč a přejděte do `https://127.0.0.1:8443`. 
+* Pro tunelové připojení SSH otevřete webový prohlížeč a přejděte na `https://127.0.0.1:8443`. 
 
-  Jste připojeni ke clusteru IP adresu při vytváření tunelového propojení, takže stačí použít IP adresu místního hostitele v prohlížeči. Pokud jste použili jiný místní port než 8443, použijte místo toho vaše číslo portu.
+  Při vytváření tunelu jste se připojili k IP adrese clusteru, takže v prohlížeči stačí použít IP adresu místního hostitele. Pokud jste použili místní port jiný než 8443, použijte místo něj číslo portu.
 
-* Pokud používáte síť VPN nebo ExpressRoute k dosažení clusteru, přejděte na IP adresa pro správu clusteru ve vašem prohlížeči. Příklad: ``https://203.0.113.51``
+* Pokud ke clusteru máte přístup pomocí sítě VPN nebo ExpressRoute, přejděte v prohlížeči na IP adresu pro správu clusteru. Příklad: ``https://203.0.113.51``
 
-V závislosti na vašem prohlížeči možná budete muset kliknout na **Upřesnit** a ověřte, zda je a pokračujte na stránku.
+V závislosti na prohlížeči možná budete muset kliknout na **Upřesnit** a ověřit, jestli je bezpečné pokračovat na stránce.
 
-Zadejte uživatelské jméno `admin` a hesla pro správu, které jste zadali při vytváření clusteru.
+Zadejte uživatelské jméno `admin` a heslo správce, které jste zadali při vytváření clusteru.
 
-![Snímek obrazovky Avere přihlašovací stránka vyplní uživatelské jméno admin a heslo](media/avere-vfxt-gui-login.png)
+![Snímek obrazovky avere přihlašovací stránky naplněný uživatelským jménem admin a heslem](media/avere-vfxt-gui-login.png)
 
-Klikněte na tlačítko **přihlášení** nebo stiskněte klávesu enter na klávesnici.
+Klikněte na **Přihlásit** nebo na klávesnici stiskněte klávesu ENTER.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když má přístup ke clusteru, povolte [podporují](avere-vfxt-enable-support.md).
+Teď, když máte přístup ke clusteru, povolte [podporu](avere-vfxt-enable-support.md).

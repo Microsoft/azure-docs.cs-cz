@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozhraní API pro hostování RESTful s CORS – Azure App Service'
+title: 'Kurz: hostování rozhraní RESTful API s CORS – Azure App Service'
 description: Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743865"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255179"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
 
@@ -37,7 +37,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
@@ -58,7 +58,7 @@ Ukázkové úložiště naklonujete spuštěním následujícího příkazu.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Toto úložiště obsahuje aplikaci, která je vytvořená na základě následujícího kurzu: [Stránky s ASP.NET Core webové rozhraní API pomocí Swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio) Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
+Toto úložiště obsahuje aplikaci vytvořenou podle následujícího kurzu: [Generování stránek nápovědy webového rozhraní ASP.NET Core API pomocí Swaggeru](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
@@ -72,7 +72,7 @@ dotnet run
 
 V prohlížeči přejděte na adresu `http://localhost:5000/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
-![Místně spuštěné rozhraní ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
+![Místně spuštěné rozhraní ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 Přejděte na adresu `http://localhost:5000/api/todo`, kde se zobrazí seznam položek úkolů ve formátu JSON.
 
@@ -98,7 +98,7 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -136,7 +136,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 V prohlížeči přejděte na adresu `http://<app_name>.azurewebsites.net/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
-![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 Přejděte na adresu `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json`, kde se zobrazí soubor _swagger.json_ pro vaše nasazené rozhraní API.
 
@@ -158,9 +158,9 @@ V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 dotnet run
 ```
 
-Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. V prohlížeči otevřete okno vývojářských nástrojů (`Ctrl`+`Shift`+`i` v Chrome pro Windows) a prozkoumejte kartu **Console** (Konzola). Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
-![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 Kvůli neshodě domén aplikace v prohlížeči (`http://localhost:5000`) a vzdáleného prostředku (`http://<app_name>.azurewebsites.net`) a skutečnosti, že vaše rozhraní API v App Service neodesílá hlavičku `Access-Control-Allow-Origin`, zabránil váš prohlížeč aplikaci v načtení obsahu z jiné domény.
 
@@ -177,13 +177,13 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 Ve vlastnosti `properties.cors.allowedOrigins` můžete nastavit více než jednu adresu URL klienta (`"['URL1','URL2',...]"`). Můžete také povolit všechny adresy URL klientů pomocí `"['*']"`.
 
 > [!NOTE]
-> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč `ACCESS-CONTROL-ALLOW-CREDENTIALS` vyžadovat hlavičku odpovědi. Pokud to chcete v App Service povolit, `properties.cors.supportCredentials` nastavte `true` v konfiguraci CORS. Tato možnost se nedá povolit `allowedOrigins` , `'*'`Pokud zahrnuje.
+> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč pro odpověď vyžadovat hlavičku `ACCESS-CONTROL-ALLOW-CREDENTIALS`. Pokud to chcete v App Service povolit, nastavte v konfiguraci CORS `properties.cors.supportCredentials` na `true`. Tato možnost se nedá povolit, pokud `allowedOrigins` zahrnuje `'*'`.
 
 ### <a name="test-cors-again"></a>Opětovný test CORS
 
 Aktualizujte aplikaci v prohlížeči na adrese `http://localhost:5000`. Chybová zpráva v okně **Console** (Konzola) už je pryč a zobrazí se data z nasazeného rozhraní API, se kterými můžete pracovat. Vaše vzdálené rozhraní API nyní podporuje CORS pro vaši místně spuštěnou aplikaci v prohlížeči. 
 
-![Úspěch CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![Úspěch CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 Blahopřejeme! Teď máte v Azure App Service spuštěné rozhraní API s podporou CORS.
 
@@ -199,7 +199,7 @@ Místo CORS v App Service můžete použít vlastní CORS poskytující větší
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučili jste se:
 
@@ -211,4 +211,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak ověřovat a autorizovat uživatele.
 
 > [!div class="nextstepaction"]
-> [Kurz: Kompletní ověřování a autorizace uživatelů](app-service-web-tutorial-auth-aad.md)
+> [Kurz: Komplexní ověřování a autorizace uživatelů](app-service-web-tutorial-auth-aad.md)

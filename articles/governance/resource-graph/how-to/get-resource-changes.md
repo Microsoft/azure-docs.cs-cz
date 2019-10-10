@@ -4,23 +4,24 @@ description: Zjistěte, jak najít, kdy byl prostředek změněn, a získejte se
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/10/2019
+ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980275"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244115"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
 Prostředky se v průběhu každodenního použití, změny konfigurace a dokonce opětovného nasazení mění.
 Změna může pocházet z individuálního nebo automatizovaného procesu. Většina změn je záměrné, ale někdy ne. V posledních 14 dnech historie změn vám Azure Resource Graph umožní:
 
-- Zjistit, kdy byly změny detekovány vlastností Azure Resource Manageru.
-- Podívat se, které vlastnosti se v rámci této změnové události změnily.
+- Najde, kdy se u vlastnosti Azure Resource Manager zjistily změny.
+- Informace o jednotlivých změnách prostředků najdete v tématu podrobnosti o změně vlastnosti.
+- Zobrazit úplné porovnání prostředku před a po zjištěné změně
 
 Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkových scénářích:
 
@@ -36,14 +37,15 @@ Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady S
 > [!IMPORTANT]
 > Historie změn v grafu prostředků Azure je Public Preview.
 
-## <a name="find-when-changes-were-detected"></a>Najít, kdy byly zjištěny změny
+## <a name="find-detected-change-events-and-view-change-details"></a>Najít zjištěné události změny a zobrazit podrobnosti o změně
 
-Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít události změny týkající se tohoto prostředku v časovém intervalu. Tento krok se provádí prostřednictvím koncového bodu **resourceChanges** REST.
+Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít události změny týkající se tohoto prostředku v časovém intervalu. Každá událost změny také obsahuje podrobnosti o tom, co se u prostředku změnilo. Tento krok se provádí prostřednictvím koncového bodu **resourceChanges** REST.
 
-Koncový bod **resourceChanges** vyžaduje v textu žádosti dva parametry:
+Koncový bod **resourceChanges** akceptuje v textu požadavku následující parametry:
 
-- **ResourceID**: prostředek Azure, na kterém se mají hledat změny.
-- **interval**: vlastnost s _počátečním_ a _koncovým_ datem, kdy se má kontrolovat událost změny pomocí **časového pásma Zulu (Z)** .
+- **resourceId** \[required @ no__t-2: prostředek Azure pro hledání změn v.
+- **interval** @no__t – 1required @ no__t-2: vlastnost s _počátečním_ a _koncovým_ datem pro kontrolu události změny pomocí **časového pásma Zulu (Z)** .
+- **fetchPropertyChanges** (volitelné): logická vlastnost, která nastavuje, zda objekt Response obsahuje změny vlastností.
 
 Příklad textu žádosti:
 
@@ -51,9 +53,10 @@ Příklad textu žádosti:
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "interval": {
-        "start": "2019-03-28T00:00:00.000Z",
-        "end": "2019-03-31T00:00:00.000Z"
-    }
+        "start": "2019-09-28T00:00:00.000Z",
+        "end": "2019-09-29T00:00:00.000Z"
+    },
+    "fetchPropertyChanges": true
 }
 ```
 
@@ -67,38 +70,100 @@ Odpověď vypadá podobně jako v tomto příkladu:
 
 ```json
 {
-    "changes": [{
-            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
+    "changes": [
+        {
+            "changeId": "{\"beforeId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"beforeTime\":\"2019-09-28T00:45:35.012Z\",\"afterId\":\"6178968e-981e-4dac-ac37-340ee73eb577\",\"afterTime\":\"2019-09-28T00:52:53.371Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-29T01:32:05.993Z"
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-29T01:54:24.42Z"
-            }
+                "snapshotId": "6178968e-981e-4dac-ac37-340ee73eb577",
+                "timestamp": "2019-09-28T00:52:53.371Z"
+            },
+            "changeType": "Create"
         },
         {
-            "changeId": "9dc352cb-b7c1-4198-9eda-e5e3ed66aec8",
+            "changeId": "{\"beforeId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"beforeTime\":\"2019-09-28T00:43:38.366Z\",\"afterId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"afterTime\":\"2019-09-28T00:45:35.012Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-28T10:30:19.68Z"
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-28T21:12:31.337Z"
-            }
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
+            },
+            "changeType": "Delete"
+        },
+        {
+            "changeId": "{\"beforeId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"beforeTime\":\"2019-09-28T00:43:15.518Z\",\"afterId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"afterTime\":\"2019-09-28T00:43:38.366Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
+            },
+            "propertyChanges": [
+                {
+                    "propertyName": "tags.org",
+                    "afterValue": "compute",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                },
+                {
+                    "propertyName": "tags.team",
+                    "afterValue": "ARG",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                }
+            ],
+            "changeType": "Update"
+        },
+        {
+            "changeId": "{\"beforeId\":\"19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268\",\"beforeTime\":\"2019-09-28T00:42:46.839Z\",\"afterId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"afterTime\":\"2019-09-28T00:43:15.518Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268",
+                "timestamp": "2019-09-28T00:42:46.839Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "propertyChanges": [{
+                "propertyName": "tags.cgtest",
+                "afterValue": "hello",
+                "changeCategory": "User",
+                "changeType": "Insert"
+            }],
+            "changeType": "Update"
         }
     ]
 }
 ```
 
-Každá zjištěná událost změny pro **ResourceID** má **changeId** , který je pro tento prostředek jedinečný. I když řetězec **changeId** může někdy obsahovat jiné vlastnosti, je zaručený pouze jedinečný. Záznam změny zahrnuje časy, ve kterých byly provedeny snímky před a po.
-K události změny došlo v určitém okamžiku v tomto časovém intervalu.
+Každá zjištěná událost změny pro **ResourceID** má následující vlastnosti:
 
-## <a name="see-what-properties-changed"></a>Zobrazit změněné vlastnosti
+- **changeId** – tato hodnota je pro tento prostředek jedinečná. I když řetězec **changeId** může někdy obsahovat jiné vlastnosti, je zaručený pouze jedinečný.
+- **beforeSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden před zjištěním změny.
+- **afterSnapshot** – obsahuje **snapshotId** a **časové razítko** snímku prostředku, který byl proveden po zjištění změny.
+- **ChangeType** – popisuje typ změny zjištěné u celého záznamu změny mezi **beforeSnapshot** a **afterSnapshot**. Hodnoty jsou: _vytvořit_, _aktualizovat_a _Odstranit_. Pole vlastností **propertyChanged** je zahrnuto pouze v případě, že je nastavena _aktualizace_ **ChangeType** .
+- **propertyChanged** – toto pole vlastností podrobně popisuje všechny vlastnosti prostředku, které byly aktualizovány mezi **beforeSnapshot** a **afterSnapshot**:
+  - **PropertyName** – název vlastnosti prostředku, která byla změněna.
+  - **changeCategory** – popisuje, co změna provedla. Hodnoty jsou: _systém_ a _uživatel_.
+  - **ChangeType** – popisuje typ změny zjištěné u jednotlivých vlastností prostředku.
+    Hodnoty jsou: _INSERT_, _Update_, _Remove_.
+  - **beforeValue** – hodnota vlastnosti prostředku v **beforeSnapshot**. Není zobrazeno, když je _vloženo_ **ChangeType** .
+  - **afterValue** – hodnota vlastnosti prostředku v **afterSnapshot**. Se nezobrazí, pokud je _odebráno_ **ChangeType** .
 
-Pomocí **changeId** z koncového bodu **resourceChanges** se pak koncový bod **resourceChangeDetails** REST používá k získání specifických změn události změny.
+## <a name="compare-resource-changes"></a>Porovnání změn prostředků
+
+Pomocí **changeId** z koncového bodu **resourceChanges** se pak koncový bod **resourceChangeDetails** REST používá k získání před a po snímkům prostředku, který se změnil.
 
 Koncový bod **resourceChangeDetails** vyžaduje v textu žádosti dva parametry:
 
-- **ResourceID**: prostředek Azure, na kterém se mají hledat změny.
+- **ResourceID**: prostředek Azure pro porovnání změn v.
 - **changeId**: jedinečná událost změny pro ID služby **ResourceID** shromážděná z **resourceChanges**.
 
 Příklad textu žádosti:
@@ -220,7 +285,7 @@ Odpověď vypadá podobně jako v tomto příkladu:
 
 **beforeSnapshot** a **afterSnapshot** každý z nich poskytují čas pořízení snímku a vlastnosti v daném čase. Změna nastala v určitém bodě mezi těmito snímky. V předchozím příkladu vidíte, že vlastnost, která se změnila, byla **supportsHttpsTrafficOnly**.
 
-Chcete-li porovnat výsledky prostřednictvím kódu programu, porovnejte část **obsahu** každého snímku a určete tak rozdíl. Pokud porovnáte celý snímek, **časové razítko** se vždycky zobrazí jako rozdíl, i když se očekává.
+Pro porovnání výsledků buď použijte vlastnost **changess** v **resourceChanges** nebo vyhodnoťte část **obsahu** každého snímku v **resourceChangeDetails** , abyste zjistili rozdíl. Pokud porovnáte snímky, **časové razítko** se vždycky zobrazí jako rozdíl, i když se očekává.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958758"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244045"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -26,7 +26,7 @@ Informace uvedené v tomto článku nejsou stejné. Pro pomoc s určením priori
 
 IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na virtuální počítač běžící na serveru. Je možné, že budete mít přístup k zařízení buď fyzicky, nebo prostřednictvím virtuálního připojení, nebo může být izolovaný po delší dobu. V obou případech se chcete ujistit, že je správně nakonfigurovaný tak, aby fungoval. 
 
-* **Významná**
+* **Důležité upozornění**
     * Instalace provozních certifikátů
     * Máte plán správy zařízení
     * Použití Moby jako modulu kontejneru
@@ -129,7 +129,7 @@ Při přechodu z testovacích scénářů do produkčních scénářů nezapome�
 
 ## <a name="container-management"></a>Správa kontejnerů
 
-* **Významná**
+* **Důležité upozornění**
     * Správa přístupu k registru kontejneru
     * Použití značek ke správě verzí
 
@@ -147,7 +147,7 @@ Značky vám také pomůžou vymáhat aktualizace vašich IoT Edgech zařízení
 
 Příklad konvence značek najdete v tématu [aktualizace modulu runtime IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags) , kde zjistíte, jak IoT Edge používá ke sledování verzí značky válcování a specifické značky. 
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 * **Případech**
     * Kontrola odchozí/příchozí konfigurace
@@ -172,14 +172,16 @@ Kromě toho **kontejnerový modul** provádí volání registrů kontejnerů př
 
 Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
 
-   | Adresa URL (\* = zástupný znak) | Odchozí porty TCP | Použití |
+   | Adresa URL (\* = zástupný znak) | Odchozí porty TCP | Využití |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | Přístup k DPS (volitelné) |
    | @no__t – 0.azurecr.io | 443 | Osobní a Registry kontejnerů třetích stran |
-   | @no__t – 0.blob.core.windows.net | 443 | Stažení rozdílových obrázků | 
+   | \*.blob.core.windows.net | 443 | Stažení rozdílových rozdílů Azure Container Registry imagí ze služby Blob Storage  | 
    | @no__t – 0.azure-devices.net | 5671, 8883, 443 | Přístup k IoT Hub |
    | @no__t – 0.docker.io  | 443 | Přístup k Docker Hub (volitelné) |
+
+Některá z těchto pravidel brány firewall jsou zděděná z Azure Container Registry. Další informace najdete v tématu [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurace komunikace prostřednictvím proxy serveru
 
@@ -230,7 +232,7 @@ Aby se změny projevily, musí být modul kontejneru restartován.
 
 **Možnost: upravit nastavení protokolu pro každý modul kontejneru**
 
-To můžete provést v **createOptions** každého modulu. Příklad:
+To můžete provést v **createOptions** každého modulu. Například:
 
 ```yml
 "createOptions": {

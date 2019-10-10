@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Spuštění pracovního postupu Microsoft Genomics'
-description: Tento článek ukazuje, jak načíst vstupní data do Azure Blob Storage a jak spustit pracovní postup ve službě Microsoft Genomics.
+title: 'Rychlý Start: spuštění pracovního postupu'
+description: V tomto rychlém startu se dozvíte, jak načíst vstupní data do Azure Blob Storage a spustit pracovní postup prostřednictvím služby Microsoft Genomics.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -8,63 +8,63 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e7c90cc0ce85f2a90cc2ddc2cd086fd2626f4d96
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670744"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248526"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spustit pracovní postup službě Microsoft Genomics
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý Start: spuštění pracovního postupu prostřednictvím služby Microsoft Genomics
 
-V tomto rychlém startu si ukážeme, jak načíst vstupní data do Azure Blob Storage a jak spustit pracovní postup ve službě Microsoft Genomics. Microsoft Genomics je škálovatelná a bezpečná služba pro sekundární analýzu, která dokáže rychle analyzovat genom počínaje od nezpracovaných čtení a vytváří zarovnaná čtení a volání variant. 
+V tomto rychlém startu se dozvíte, jak načíst vstupní data do Azure Blob Storage a spustit pracovní postup prostřednictvím služby Microsoft Genomics. Microsoft Genomics je škálovatelná a zabezpečená služba pro sekundární analýzu, která může rychle zpracovat genom od nezpracovaných čtení a vyprodukovat zarovnané čtení a volání variant. 
 
-Začátek je rozdělen do několika kroků: 
-1.  Nastavení: Vytvoření účtu Microsoft Genomics na webu Azure portal a nainstalujte Pythonového klienta Microsoft Genomics v místním prostředí. 
-2.  Nahrání vstupních dat: Vytvoření účtu úložiště Microsoft Azure na webu Azure portal a nahrajte vstupní soubory. Vstupní soubory by měly obsahovat sekvence paired-end (soubory fastq nebo bam).
-3.  Spuštěním příkazu Pomocí rozhraní příkazového řádku Microsoft Genomics spusťte pracovní postupy ve službě Microsoft Genomics. 
+Začněte v několika krocích: 
+1.  Nastavení: vytvořte účet Microsoft Genomics přes Azure Portal a nainstalujte do svého místního prostředí klienta Microsoft Genomics Python. 
+2.  Nahrávání vstupních dat: Vytvořte Microsoft Azure účet úložiště pomocí Azure Portal a nahrajte vstupní soubory. Vstupní soubory by měly být spárované koncové čtení (soubory souborů fastq nebo BAM).
+3.  Spustit: pomocí rozhraní příkazového řádku Microsoft Genomics můžete spouštět pracovní postupy prostřednictvím služby Microsoft Genomics. 
 
-Další informace najdete v článku [Co je služba Microsoft Genomics?](overview-what-is-genomics.md)
+Další informace o Microsoft Genomics najdete v tématu [co je Microsoft Genomics?](overview-what-is-genomics.md)
 
-## <a name="set-up-create-a-microsoft-genomics-account-in-the-azure-portal"></a>Nastavení: Vytvoření účtu Microsoft Genomics na webu Azure Portal
+## <a name="set-up-create-a-microsoft-genomics-account-in-the-azure-portal"></a>Nastavení: vytvoření účtu Microsoft Genomics v Azure Portal
 
-Účet služby Microsoft Genomics vytvoříte na webu [Azure Portal](https://portal.azure.com/#create/Microsoft.Genomics). Pokud ještě nemáte předplatné Azure, založte si ho před vytvořením účtu Microsoft Genomics. 
+Účet Microsoft Genomics vytvoříte tak, že přejdete do [Azure Portal](https://portal.azure.com/#create/Microsoft.Genomics). Pokud ještě nemáte předplatné Azure, vytvořte si ho ještě před vytvořením účtu Microsoft Genomics. 
 
-![Microsoft Genomics na webu Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Microsoft Genomics na webu Azure Portal")
+![Microsoft Genomics na Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-create-blade.png "Microsoft Genomics na Azure Portal")
 
 
 
-Nastavte v účtu Genomics následující údaje, viz předchozí obrázek. 
+Nakonfigurujte svůj účet genomiky pomocí následujících informací, jak je znázorněno na předchozím obrázku. 
 
- |**Nastavení**          |  **Navrhovaná hodnota**  | **Popis pole** |
+ |**Nastavením**          |  **Navrhovaná hodnota**  | **Popis pole** |
  |:-------------       |:-------------         |:----------            |
- |Subscription         | Název vašeho předplatného|Toto je fakturační jednotka pro vaše služby Azure – podrobnosti o vašem předplatném najdete v části [Předplatná](https://account.azure.com/Subscriptions) |      
- |Resource group       | MyResourceGroup       |  Skupiny prostředků umožňují sdružení několika prostředků Azure (účet úložiště, účet Genomics atd.) do jedné skupiny pro zjednodušení správy. Další informace najdete v tématu [Skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Název účtu         | MyGenomicsAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Location                   | USA – západ 2                    |    Služba je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie |
+ |Předplatné         | Název vašeho předplatného|Toto je fakturační jednotka pro služby Azure – Podrobnosti o předplatném najdete v tématu [předplatná](https://account.azure.com/Subscriptions) . |      
+ |Skupina prostředků       | MyResourceGroup       |  Skupiny prostředků umožňují seskupit více prostředků Azure (účet úložiště, účet genomiky atd.) do jedné skupiny pro jednoduchou správu. Další informace najdete v tématu [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) . |
+ |Název účtu         | MyGenomicsAccount     |Vyberte jedinečný identifikátor účtu. Platné názvy najdete v tématu [pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) . |
+ |Umístění                   | Západní USA 2                    |    Služba je dostupná v Západní USA 2, Západní Evropa a jihovýchodní Asie |
 
 
 
 
-V horní nabídce klikněte na Oznámení, budete tak moci sledovat proces nasazení.
-![Oznámení služby Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "Oznámení služby Microsoft Genomics")
+Kliknutím na oznámení na horním panelu nabídek můžete monitorovat proces nasazení.
+Oznámení ![Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-notifications-box.png "Microsoft Genomics oznámení")
 
 
 
-## <a name="set-up-install-the-microsoft-genomics-python-client"></a>Nastavení: Nainstalujte Pythonového klienta Microsoft Genomics
+## <a name="set-up-install-the-microsoft-genomics-python-client"></a>Nastavení: instalace klienta Microsoft Genomics Python
 
-Uživatelé musí do svého místního prostředí nainstalovat Python i pythonového klienta Microsoft Genomics. 
+Uživatelé musí do svého místního prostředí instalovat jak Python, tak i Microsoft Genomics klienta Pythonu. 
 
 ### <a name="install-python"></a>Instalace Pythonu
 
-Pythonový klient Microsoft Genomics je kompatibilní s Pythonem 2.7. 12 nebo novější verzí 2.7.xx. Nejnovější verze v době psaní tohoto článku je 2.7.15. Doporučená verze je 2.7.14. Můžete si ji stáhnout [tady](https://www.python.org/downloads/). 
+Klient Pythonu Microsoft Genomics je kompatibilní s Pythonem 2,7. 12 nebo novější 2.7. xx verze; 2.7.15 je nejnovější verze v době psaní tohoto textu; 2.7.14 je navržená verze. Soubor ke stažení najdete [tady](https://www.python.org/downloads/). 
 
-POZNÁMKA: Python 3.x není kompatibilní s Python 2.7.xx.  MSGen je aplikace Pythonu 2.7. Pokud používáte MSGen, ujistěte se, že vaše aktivní prostředí Pythonu používá Python verze 2.7.xx. Pokud se pokusíte použít MSGen s Pythonem verze 3.x, může docházet k chybám.
+Poznámka: Python 3. x není kompatibilní s Pythonem 2.7. xx.  MSGen je aplikace Python 2,7. Pokud používáte MSGen, ujistěte se, že aktivní prostředí Pythonu používá verzi 2.7. xx v Pythonu. Při pokusu o použití MSGen s verzí 3. x jazyka Python se může zobrazit chyba.
 
 
-### <a name="install-the-microsoft-genomics-client"></a>Instalace pythonového klienta Microsoft Genomics
+### <a name="install-the-microsoft-genomics-client"></a>Instalace klienta Microsoft Genomics
 
-Pythonového klienta Microsoft Genomics `msgen` nainstalujte v Pythonu pomocí nástroje pip. Následující pokyny předpokládají, že je Python zahrnutý v proměnné path. Pokud máte potíže s tím, že instalace pip není rozpoznána, bude třeba přidat Python a podsložku se skripty do systémové proměnné path.
+K instalaci klienta Microsoft Genomics `msgen` použijte Python PIP. Následující pokyny předpokládají, že Python je již ve vaší systémové cestě. Pokud máte problémy s instalací PIP neznámou, musíte do systémové cesty přidat Python a složku Scripts.
 
 
 ```
@@ -73,92 +73,92 @@ pip install msgen
 ```
 
 
-Pokud nechcete instalovat `msgen` jako binární soubor pro celý systém a upravovat balíčky Python pro celý systém, použijte příkaz `pip` s příznakem `–-user`.
-Pokud použijete instalaci využívající balíčky nebo skript setup.py, nainstalují se všechny potřebné balíčky. Jinak msgen vyžaduje tyto základní balíčky 
+Pokud nechcete instalovat `msgen` jako binární soubor v rámci systému a upravovat balíčky Pythonu v rámci systému, použijte příznak `–-user` s `pip`.
+Použijete-li instalaci nebo setup.py založenou na balíčku, jsou nainstalovány všechny nezbytné požadované balíčky. V opačném případě jsou základní požadované balíčky pro msgen 
 
- * [Azure-storage](https://pypi.python.org/pypi/azure-storage). 
- * [Requests](https://pypi.python.org/pypi/requests). 
-
-
-Tyto balíčky můžete nainstalovat pomocí `pip`, `easy_install` nebo standardní procedury `setup.py`. 
+ * [Úložiště Azure](https://pypi.python.org/pypi/azure-storage). 
+ * [Žádosti](https://pypi.python.org/pypi/requests). 
 
 
+Tyto balíčky můžete nainstalovat pomocí `pip`, `easy_install` nebo pomocí standardních postupů `setup.py`. 
 
 
 
-### <a name="test-the-microsoft-genomics-client"></a>Test pythonového klienta Microsoft Genomics
-Chcete-li otestovat klienta Microsoft Genomics, stáhněte si ze svého účtu Genomics konfigurační soubor. Přejděte do svého účtu Genomics kliknutím na **Všechny služby** v levém horním rohu, filtrováním a výběrem účtu Genomics.
 
 
-![Filtr pro Microsoft Genomics na webu Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Filtr pro Microsoft Genomics na webu Azure Portal")
+### <a name="test-the-microsoft-genomics-client"></a>Test klienta Microsoft Genomics
+Pokud chcete otestovat klienta Microsoft Genomics, Stáhněte si konfigurační soubor z vašeho účtu genomiky. Přejděte na svůj účet genomika kliknutím na **všechny služby** v levém horním rohu, filtrováním a výběrem pro účty genomiky.
+
+
+![Filtr pro Microsoft Genomics v Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "filtru pro Microsoft Genomics na Azure Portal")
 
 
 
-Vyberte účet Genomics, který jste právě vytvořili, přejděte na **Přístupové klíče** a stáhněte si konfigurační soubor.
+Vyberte účet genomiky, který jste právě vytvořili, přejděte na **přístupové klíče** a Stáhněte si konfigurační soubor.
 
-![Stažení konfiguračního souboru pro Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "Stažení konfiguračního souboru pro Microsoft Genomics")
+![Stažení konfiguračního souboru z Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "stažení konfiguračního souboru z Microsoft Genomics")
 
 
-Vyzkoušejte správnou funkci pythonového klienta Microsoft Genomics pomocí následujícího příkazu
+Otestujte, že Microsoft Genomics klient Python pracuje s následujícím příkazem
 
 
 ```
 msgen list -f “<full path where you saved the config file>”
 ```
 
-## <a name="create-a-microsoft-azure-storage-account"></a>Vytvoření účtu služby Microsoft Azure Storage 
-Služba Microsoft Genomics očekává vstupy uložené jako objekty blob bloku v účtu úložiště Azure. Také výstupní soubory zapisuje jako objekty blob bloku do uživatelem zadaného kontejneru v účtu úložiště Azure. Vstupy a výstupy můžou patřit do různých účtů úložiště.
-Pokud již máte data v účtu úložiště Azure, stačí se ujistit, že je ve stejném umístění jako účet Genomics. V opačném případě se při použití služby Genomics budou účtovat poplatky za přenos dat. Pokud ještě nemáte účet Microsoft Azure Storage, budete ho muset vytvořit a nahrát do něj svá data. Další informace o účtech Azure Storage najdete [tady](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account), včetně toho, co je účet úložiště a jaké služby nabízí. Chcete-li vytvořit účet Microsoft Azure Storage, přejděte na [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM ).  
+## <a name="create-a-microsoft-azure-storage-account"></a>Vytvoření účtu Microsoft Azure Storage 
+Služba Microsoft Genomics očekává, že vstupy budou uloženy jako objekty blob bloku v účtu úložiště Azure. Zapisuje také výstupní soubory jako objekty blob bloku do kontejneru zadaného uživatelem v účtu úložiště Azure. Vstupy a výstupy se můžou nacházet v různých účtech úložiště.
+Pokud již máte data v účtu úložiště Azure, musíte se ujistit, že je ve stejném umístění jako váš účet genomiky. V opačném případě se při spuštění služby genomiky účtují poplatky za výstup. Pokud ještě nemáte účet Microsoft Azure Storage, budete ho muset vytvořit a nahrát data. [Tady](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)najdete další informace o Azure Storagech účtech, včetně toho, co je účet úložiště a jaké služby nabízí. Účet Microsoft Azure Storage vytvoříte tak, že přejdete do [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM ).  
 
-![Okno vytvoření úložiště](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Okno vytvoření úložiště")
+![](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Okno") vytvořit úložiště okno pro vytvoření úložiště
 
-Nastavte v účtu Storage následující údaje, viz předchozí obrázek. Použijte pro účet úložiště většinu výchozích hodnot, určete pouze, že účet úložiště má být typu blob, ne pro obecný účel. Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání.  Doporučuje se výchozí model nasazení resource Manageru.  
+Nakonfigurujte účet úložiště pomocí následujících informací, jak je znázorněno na předchozím obrázku. Použijte pro účet úložiště většinu standardních možností a určete jenom to, že účet je úložiště objektů blob, ne pro obecné účely. Úložiště objektů BLOB může být 2 – pětinásobné rychlejší pro soubory ke stažení a nahrávání.  Doporučuje se výchozí model nasazení Azure Resource Manager.  
 
 
- |**Nastavení**          |  **Navrhovaná hodnota**  | **Popis pole** |
+ |**Nastavením**          |  **Navrhovaná hodnota**  | **Popis pole** |
  |:-------------------------       |:-------------         |:----------            |
- |Subscription         | Vaše předplatné Azure |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |      
- |Resource group       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků, ve které je váš účet Genomics. Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Název účtu úložiště         | MyStorageAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Location                  | USA – západ 2                  | Použijte stejné umístění, jaké má účet Genomics, abyste se vyhnuli poplatkům za přenosy dat a vyšší latenci.  | 
- |Výkon                  | Standard                   | Výchozí nastavení je Standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
- |Account kind (Druh účtu)       | Blob Storage       |  Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání než úložiště pro obecné účely. |
- |Replikace                  | (Locally redundant storage) Místně redundantní úložiště                  | Místně redundantní úložiště replikuje data třikrát v rámci oblasti, ve které jste vytvořili účet úložiště. Další informace najdete v tématu [Replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).    |
- |Access tier (Vrstva přístupu)                  | Hot                   | Horká úroveň přístupu znamená, že k objektům v účtu úložiště budete přistupovat častěji.    |
+ |Předplatné         | Vaše předplatné Azure |Podrobnosti o předplatném najdete v tématu [předplatná](https://account.azure.com/Subscriptions) . |      
+ |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků jako váš účet genomiky. Platné názvy skupin prostředků najdete v tématu [pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) . |
+ |Název účtu úložiště         | MyStorageAccount     |Vyberte jedinečný identifikátor účtu. Platné názvy najdete v tématu [pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) . |
+ |Umístění                  | Západní USA 2                  | Použijte stejné umístění jako umístění vašeho účtu genomika, abyste snížili náklady na výstup a snížili latenci.  | 
+ |Výkon                  | Standardní                   | Výchozí hodnota je standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |Druh účtu       | Úložiště objektů BLOB       |  Úložiště objektů BLOB může být 2 – pětinásobné rychleji než obecné účely ke stažení a nahrávání. |
+ |Replikace                  | Místně redundantní úložiště                  | Místně redundantní úložiště replikuje vaše data v datacentru v oblasti, ve které jste vytvořili účet úložiště. Další informace najdete v tématu [replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) .    |
+ |Úroveň přístupu                  | Provozu                   | Hot Access indikuje, že se k objektům v účtu úložiště budou přistupovat častěji.    |
 
 
-Pak klikněte na tlačítko `Review + create` k vytvoření účtu úložiště. Podobně jako při vytváření účtu Genomics klikněte v horní nabídce na Oznámení, budete tak moci sledovat proces nasazení. 
+Potom kliknutím na `Review + create` vytvořte účet úložiště. Stejně jako při vytváření účtu genomiky můžete kliknutím na oznámení na horním panelu nabídek monitorovat proces nasazení. 
 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>Nahrání vstupních dat do účtu úložiště
 
-Služba Microsoft Genomics očekává jako vstupní soubory sekvence paired-end. Můžete nahrát svoje vlastní data, nebo použít veřejně dostupná ukázková data, která jsme pro vás připravili. Pokud chcete použít veřejně dostupné ukázková data, najdete je tady:
+Služba Microsoft Genomics očekává, že spárované konce přečtou jako vstupní soubory. Můžete si vybrat buď nahrávání vlastních dat, nebo prozkoumat pomocí veřejně dostupných ukázkových dat, která máte k dispozici. Pokud chcete použít veřejně dostupná ukázková data, je hostována zde:
 
 
 [https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_1.fq.gz)
 [https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz](https://msgensampledata.blob.core.windows.net/small/chr21_2.fq.gz)
 
 
-V rámci účtu úložiště budete potřebovat jeden kontejner objektů blob pro vstupní data a druhý kontejner objektů blob pro výstupní data.  Nahrajte vstupní data do vstupního kontejneru objektů blob. Můžete k tomu použít různé nástroje, včetně [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), [blobporter](https://github.com/Azure/blobporter) nebo [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+V rámci vašeho účtu úložiště musíte pro vstupní data vytvořit jeden kontejner objektů BLOB a druhý kontejner objektů BLOB pro vaše výstupní data.  Nahrajte vstupní data do vstupního kontejneru objektů BLOB. K tomu můžete použít různé nástroje, včetně [Průzkumník služby Microsoft Azure Storage](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter)nebo [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 
 
-## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>Spuštění pracovního postupu ve službě Microsoft Genomics pomocí pythonového klienta 
+## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>Spuštění pracovního postupu prostřednictvím služby Microsoft Genomics pomocí klienta Pythonu 
 
-Ke spuštění pracovního postupu služby Microsoft Genomics je třeba upravit soubor config.txt a zadat vstupní a výstupní kontejner úložiště pro vaše data.
-Otevřete soubor config.txt, který jste stáhli ze svého účtu Genomics. Je třeba zadat váš klíč předplatného a šest položek na konci – název účtu úložiště, klíč a kontejner pro vstupní a výstupní soubory. Tyto informace můžete zjistit na portálu v části **Access keys** (Přístupové klíče) pro váš účet úložiště, nebo přímo pomocí Průzkumníka služby Azure Storage.  
-
-
-![Konfigurace Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Konfigurace Genomics")
+Pokud chcete spustit pracovní postup prostřednictvím služby Microsoft Genomics, upravte soubor config. txt a určete vstupní a výstupní kontejner úložiště pro vaše data.
+Otevřete soubor config. txt, který jste stáhli z vašeho účtu genomiky. V sekcích, které potřebujete zadat, jsou klíč předplatného a šest položek dole, název účtu úložiště, název klíče a kontejneru pro vstup i výstup. Tyto informace můžete najít tak, že přejdete na portál a **získáte přístup k klíčům** pro svůj účet úložiště nebo přímo z Průzkumník služby Azure Storage.  
 
 
-Pokud chcete spustit GATK4, nastavte `process_name` parametr `gatk4`.
+Konfigurace genomiky ![Konfigurace](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "genomiky")
 
-Ve výchozím nastavení služby Genomics výstupy VCF soubory. Pokud by například gVCF výstup místo VCF výstupu (ekvivalentní `-emitRefConfidence` v GATK 3.x a `emit-ref-confidence` v GATK 4.x), přidejte `emit_ref_confidence` parametr vaše `config.txt` a nastavte ho na `gvcf`, jak je znázorněno na obrázku výše.  Chcete-li změnit zpět do výstupu VCF, buď odeberte ho z `config.txt` souboru nebo nastavené `emit_ref_confidence` parametr `none`. 
 
-### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Odešlete svůj pracovní postup službě Microsoft Genomics pomocí klienta Microsoft Genomics
+Pokud byste chtěli spustit GATK4, nastavte parametr `process_name` na `gatk4`.
 
-Pomocí pythonového klienta Microsoft Genomics odešlete svůj pracovní postup pomocí následujícího příkazu:
+Ve výchozím nastavení služba genomiky produkuje soubory VCF. Pokud byste chtěli výstup gVCF místo výstupu VCF (ekvivalent `-emitRefConfidence` v GENOME 3. x a `emit-ref-confidence` v GENOME 4. x), přidejte do `config.txt` parametr `emit_ref_confidence` a nastavte jej na `gvcf`, jak je znázorněno na obrázku výše.  Pokud chcete změnit zpátky na výstup VCF, odeberte ho ze souboru `config.txt` nebo nastavte parametr `emit_ref_confidence` na `none`. 
+
+### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Odešlete pracovní postup do služby Microsoft Genomics klienta Microsoft Genomics
+
+Použijte klienta Microsoft Genomics Python k odeslání pracovního postupu pomocí následujícího příkazu:
 
 
 ```python
@@ -166,14 +166,14 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ```
 
 
-Stav pracovního postupu můžete zkontrolovat následujícím příkazem: 
+Stav pracovních postupů můžete zobrazit pomocí následujícího příkazu: 
 ```python
 msgen list -f c:\temp\config.txt 
 ```
 
 
-Po dokončení pracovního postupu můžete zobrazit výstupní soubory ve vašem účtu úložiště Azure Storage ve výstupním kontejneru, který jste nakonfigurovali. 
+Po dokončení pracovního postupu můžete zobrazit výstupní soubory ve vašem účtu Azure Storage v nakonfigurovaném kontejneru výstupu. 
 
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste nahráli ukázková vstupní data do úložiště Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen`. Další informace o ostatních typech vstupních souborů, které můžete se službou Microsoft Genomics použít, najdete na následujících stránkách: [Párované soubory FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Více souborů FASTQ nebo BAM](quickstart-input-multiple.md). Tento kurz můžete prozkoumat také prostřednictvím našeho [kurzu ke službě Azure Notebooks](https://aka.ms/genomicsnotebook).
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste nahráli ukázková vstupní data do Azure Storage a odeslali pracovní postup do služby Microsoft Genomics prostřednictvím klienta Pythonu `msgen`. Další informace o dalších typech vstupních souborů, které lze použít s Microsoft Genomics službou, najdete na následujících stránkách: [SPÁROVANÉ souborů fastq](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [více souborů fastq nebo BAM](quickstart-input-multiple.md). Tento kurz můžete prozkoumat také pomocí našeho [kurzu pro Azure Poznámkový blok.](https://aka.ms/genomicsnotebook)

@@ -1,47 +1,47 @@
 ---
-title: Povolení podpory pro Avere vFXT – Azure
-description: Jak povolit podporu ukládání z Avere vFXT pro Azure
+title: Povolení podpory pro avere vFXT – Azure
+description: Jak povolit nahrávání podpory z avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: fe096b2e2a75cc89e3ce5ef905d8e4c347cc153a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: ac7db46a681fcde6bfcbb7695e2d66724f738918
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409835"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256217"
 ---
 # <a name="enable-support-uploads"></a>Povolení nahrávání podpory
 
-Data podpory o clusteru můžete nahrát automaticky vFXT Avere pro Azure. Tyto nahrávání nechat pracovníci podpory poskytují nejlepší možné péče.
+Avere vFXT pro Azure může automaticky nahrávat data podpory pro váš cluster. Tato nahrávání umožňují pracovníkům podpory poskytovat nejlepší možné služby zákazníkům.
 
-## <a name="steps-to-enable-uploads"></a>Postup povolení nahrávání
+## <a name="steps-to-enable-uploads"></a>Postup povolení odesílání
 
-Následujícím postupem z ovládacího panelu Avere k aktivaci podpory. (Čtení [přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) se naučíte, chcete-li otevřít ovládací Panel Avere.)
+Chcete-li aktivovat podporu, postupujte podle těchto kroků v Ovládacích panelech avere. (Pokud chcete zjistit, jak otevřít ovládací panel avere, přečtěte si téma [přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) .)
 
-1. Přejděte **nastavení** kartě v horní části.
-1. Klikněte na tlačítko **podporu** odkaz na levé straně a přijměte zásady ochrany osobních údajů.
+1. V horní části přejděte na kartu **Nastavení** .
+1. Na levé straně klikněte na odkaz **Podpora** a přijměte zásady ochrany osobních údajů.
 
-   ![Snímek obrazovky zobrazující Avere ovládací panely a automaticky otevírané okno s tlačítkem pro potvrzení přijímat zásady ochrany osobních údajů](media/avere-vfxt-privacy-policy.png)
+   ![Snímek obrazovky, který zobrazuje ovládací panel avere a automaticky otevírané okno s tlačítkem potvrdit pro přijetí zásad ochrany osobních údajů](media/avere-vfxt-privacy-policy.png)
 
-1. Klikněte na trojúhelník nalevo od **informace o zákaznících** rozbalte v části.
-1. Klikněte na tlačítko **Revalidate odesílat informace** tlačítko.
-1. Nastavení podpory názvu clusteru v **jedinečný název clusteru** – Ujistěte se, že ho jednoznačně identifikuje clusteru pracovníci podpory.
-1. Zaškrtněte políčka pro **statistiky monitorování**, **obecné informace o nahrání**, a **havárií nahrát informace**.
-1. Klikněte na **Submit** (Odeslat).
+1. Kliknutím na trojúhelník nalevo od **informací o zákaznících** rozbalte oddíl.
+1. Klikněte na tlačítko znovu **ověřit informace o nahrání** .
+1. V **jedinečném názvu clusteru** nastavte název podpory clusteru – Ujistěte se, že jednoznačně identifikuje váš cluster pro podporu pracovníků.
+1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací**a **nahrávání informací o chybách**.
+1. Klikněte na **Odeslat**.
 
-   ![Snímek obrazovky, který obsahuje oddíl informací o dokončené Zákaznická podpora nastavení stránky](media/avere-vfxt-support-info.png)
+   ![Snímek obrazovky s oddílem informace o dokončených zákaznících stránky nastavení podpory](media/avere-vfxt-support-info.png)
 
-1. Klikněte na trojúhelník nalevo od **zabezpečení proaktivní podpory (SPS)** rozbalte v části.
-1. Zaškrtněte políčko u **odkaz povolit aktualizace Service PACKU**.
-1. Klikněte na **Submit** (Odeslat).
+1. Kliknutím na trojúhelník nalevo od **zabezpečené proaktivní podpory (SPS)** rozbalte oddíl.
+1. Zaškrtněte políčko **Povolit odkaz na SPS**.
+1. Klikněte na **Odeslat**.
 
-   ![Snímek obrazovky obsahující dokončené zabezpečení proaktivní podporují oddíl na stránce nastavení podpory](media/avere-vfxt-support-sps.png)
+   ![Snímek obrazovky s dokončenou částí zabezpečená proaktivní podpora na stránce nastavení podpory](media/avere-vfxt-support-sps.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud je potřeba přidat místní nebo existující systém úložiště do clusteru v cloudu, postupujte podle pokynů v [konfigurace úložiště](avere-vfxt-add-storage.md). 
+Pokud potřebujete do clusteru přidat místní nebo existující cloudový úložný systém, postupujte podle pokynů v části [Konfigurace úložiště](avere-vfxt-add-storage.md). 
 
-Pokud jste připravení začít s připojení klientů ke clusteru, přečtěte si [připojení clusteru vFXT Avere](avere-vfxt-mount-clients.md).
+Pokud jste připraveni začít s připojením klientů ke clusteru, přečtěte si téma [připojit cluster avere vFXT](avere-vfxt-mount-clients.md).

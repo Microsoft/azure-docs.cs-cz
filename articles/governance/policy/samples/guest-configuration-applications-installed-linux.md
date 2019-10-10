@@ -1,17 +1,17 @@
 ---
-title: Ukázka – audit, pokud se aplikace neinstalují do virtuálních počítačů se systémem Linux
+title: Ukázka – audit chybějících aplikací na virtuálních počítačích se systémem Linux
 description: Tento ukázkový konfigurační iniciativu a definice hosta zásad, pokud zadané aplikace nejsou nainstalovány v rámci virtuálních počítačů se systémem Linux.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977040"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255746"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Ukázka – audit, pokud zadané aplikace nejsou nainstalované v rámci virtuálních počítačů se systémem Linux
 
@@ -42,14 +42,14 @@ Iniciativa je vytvořena připojením k definicím **audit** a **DeployIfNotExis
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
-### <a name="initiative-parameters"></a>Parametry iniciativ
+### <a name="initiative-parameters"></a>Parametry iniciativy
 
-|Name (Název) |Typ |Popis |
+|Jméno |Type |Description |
 |---|---|---|
 |applicationName |Řetězec |Názvy aplikací. Příklad: "Python", "PowerShell" nebo čárkami oddělený seznam, jako je například Python, PowerShell. Pro spárování se zástupnými znaky použijte \*, jako je Power @ no__t-1. |
 
-Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
-PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
+Při vytváření přiřazení prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure můžete hodnoty parametrů předat jako JSON buď v řetězci, nebo prostřednictvím souboru pomocí `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
+PowerShell také podporuje `-PolicyParameterObject`, která vyžaduje předání rutiny s názvem a hodnotou hash, kde **název** je název parametru a **hodnota** je jediná hodnota nebo pole hodnot předávaných během přiřazení.
 
 V tomto příkladu parametru je instalace aplikací _Python_ a _PowerShell_ auditována.
 
@@ -77,31 +77,31 @@ JSON definující pravidla definice zásad **deployIfNotExists**
 
 Definice zásad **deployIfNotExists** definuje image Azure, na kterých byla zásada ověřena:
 
-|Vydavatel |Nabídka |Skladová položka |
+|Publisher |Dodání |SKU |
 |-|-|-|
 |OpenLogic |CentOS @ no__t-0 |Vše kromě 6 @ no__t-0 |
 |RedHat |RHEL |Vše kromě 6 @ no__t-0 |
-|RedHat |osa | Všechno |
+|RedHat |osa | Vše |
 |credativ |Debian | Vše kromě 7 @ no__t-0 |
 |SUSE |SLES @ no__t-0 |Vše kromě 11 @ no__t-0 |
-|Canonical| UbuntuServer |Vše kromě 12 @ no__t-0 |
-|Microsoft-dsvm |Linux – data-věda-VM-Ubuntu |Všechno |
-|Microsoft-dsvm |AzureML |Všechno |
+|Interpret| UbuntuServer |Vše kromě 12 @ no__t-0 |
+|Microsoft-dsvm |Linux – data-věda-VM-Ubuntu |Vše |
+|Microsoft-dsvm |AzureML |Vše |
 |Cloudera |Cloudera-CentOS – OS |Vše kromě 6 @ no__t-0 |
-|Cloudera |Cloudera-Altus-CentOS-OS |Všechno |
-|Microsoft-ADS |Linux @ no__t-0 |Všechno |
-|Microsoft-AKS |Všechno |Všechno |
-|AzureDatabricks |Všechno |Všechno |
-|qubole – Inc |Všechno |Všechno |
-|DataStax |Všechno |Všechno |
-|Couchbase |Všechno |Všechno |
-|scalegrid |Všechno |Všechno |
-|kontrolní bod |Všechno |Všechno |
-|paloaltonetworks |Všechno |Všechno |
+|Cloudera |Cloudera-Altus-CentOS-OS |Vše |
+|Microsoft-ADS |Linux @ no__t-0 |Vše |
+|Microsoft-AKS |Vše |Vše |
+|AzureDatabricks |Vše |Vše |
+|qubole – Inc |Vše |Vše |
+|DataStax |Vše |Vše |
+|Couchbase |Vše |Vše |
+|scalegrid |Vše |Vše |
+|Kontrolní bod |Vše |Vše |
+|paloaltonetworks |Vše |Vše |
 
 Část **nasazení** pravidla předá parametr _installedApplication_ k agentovi konfigurace hosta na virtuálním počítači. Tato konfigurace umožňuje agentovi provádět ověřování a nahlásit dodržování předpisů zpět pomocí definice zásad **auditu** .
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Portál Azure Portal
 
 Po vytvoření **auditu** a definice **deployIfNotExists** na portálu je doporučujeme seskupit je do [iniciativy](../concepts/definition-structure.md#initiatives) pro přiřazení.
 
@@ -124,7 +124,7 @@ Použití těchto tlačítek k nasazení prostřednictvím portálu vytvoří ko
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-### <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShellu
+### <a name="deploy-with-azure-powershell"></a>Nasazení pomocí Azure PowerShell
 
 #### <a name="copy-and-assign-the-initiative"></a>Kopírovat a přiřadit iniciativu
 
@@ -150,7 +150,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Pokud chcete odebrat předchozí přiřazení a definici, spusťte následující příkazy:
+Spuštěním následujících příkazů odeberte předchozí přiřazení a definici:
 
 ```azurepowershell-interactive
 # Remove the initiative assignment
@@ -178,7 +178,7 @@ $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'guestconfig-installed-application-linux-audit-assignment' -DisplayName 'GuestConfig - Python and PowerShell apps on Linux' -Scope $scope.ResourceID -PolicyDefinition $definition
 ```
 
-Pokud chcete odebrat předchozí přiřazení a definici, spusťte následující příkazy:
+Spuštěním následujících příkazů odeberte předchozí přiřazení a definici:
 
 ```azurepowershell-interactive
 # Remove the policy definition
@@ -213,7 +213,7 @@ $saIdentity = $assignment.Identity.principalId
 $roleAssignment = New-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefinitionName 'Contributor'
 ```
 
-Pokud chcete odebrat předchozí přiřazení a definici, spusťte následující příkazy:
+Spuštěním následujících příkazů odeberte předchozí přiřazení a definici:
 
 ```azurepowershell-interactive
 # Remove the policy assignment
@@ -226,18 +226,18 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-### <a name="azure-powershell-explanation"></a>Vysvětlení Azure PowerShellu
+### <a name="azure-powershell-explanation"></a>Vysvětlení Azure PowerShell
 
-Ve skriptech nasazení a odebrání se používají následující příkazy. Každý příkaz v následující tabulce odkazuje na příslušnou část dokumentace:
+Skripty nasazení a odebrání používají následující příkazy. Každý příkaz v následující tabulce odkazuje na dokumentaci specifickou pro příkaz:
 
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Vytvoří Azure Policy iniciativu. |
 | [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Vytvoří definici Azure Policy. |
-| [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Získá jednu skupinu prostředků. |
+| [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Načte jednu skupinu prostředků. |
 | [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Vytvoří nové přiřazení Azure Policy pro podnět nebo definici. |
 | [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Poskytuje existující přiřazení role ke konkrétnímu objektu zabezpečení. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Odebere stávající přiřazení Azure Policy. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Odebere existující přiřazení Azure Policy. |
 | [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Odstraní iniciativu. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Odebere definici. |
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9805ff9aa4932c262db13c47fd2e442b3d3d676f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811727"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242407"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
@@ -111,10 +111,10 @@ Níže uvedené odkazy ukazují, jak vytvořit prostředky kontejneru pro Azure 
 Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](cli-samples.md), [rozhraní API Cassandra](cli-samples-cassandra.md), [rozhraní API pro MongoDB](cli-samples-mongodb.md), rozhraní [Gremlin API](cli-samples-gremlin.md)a [rozhraní API pro tabulky](cli-samples-table.md)
 
 * [Vytvoření kontejneru pomocí Azure CLI](manage-with-cli.md#create-a-container)
-* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí Azure CLI](/scripts/cli/mongodb/create.md)
-* [Vytvoření tabulky Cassandra pomocí Azure CLI](/scripts/cli/cassandra/create.md)
-* [Vytvoření grafu Gremlin pomocí Azure CLI](/scripts/cli/gremlin/create.md)
-* [Vytvoření tabulky rozhraní API pro tabulky pomocí Azure CLI](/scripts/cli/table/create.md)
+* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí Azure CLI](./scripts/cli/mongodb/create.md)
+* [Vytvoření tabulky Cassandra pomocí Azure CLI](./scripts/cli/cassandra/create.md)
+* [Vytvoření grafu Gremlin pomocí Azure CLI](./scripts/cli/gremlin/create.md)
+* [Vytvoření tabulky rozhraní API pro tabulky pomocí Azure CLI](./scripts/cli/table/create.md)
 
 ## Vytvoření kontejneru pomocí PowerShellu<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
 
@@ -123,10 +123,10 @@ Níže uvedené odkazy ukazují, jak vytvořit prostředky kontejneru pro Azure 
 Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](powershell-samples-sql.md), [rozhraní API Cassandra](powershell-samples-cassandra.md), [rozhraní API pro MongoDB](powershell-samples-mongodb.md), rozhraní [Gremlin API](powershell-samples-gremlin.md)a [rozhraní API pro tabulky](powershell-samples-table.md)
 
 * [Vytvoření kontejneru pomocí PowerShellu](manage-with-powershell.md#create-container)
-* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí PowerShellu](/scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Vytvoření tabulky Cassandra pomocí prostředí PowerShell](/scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Vytvoření grafu Gremlin pomocí prostředí PowerShell](/scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Vytvoření tabulky rozhraní API pro tabulky pomocí prostředí PowerShell](/scripts/powershell/table/ps-table-create.md)
+* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí PowerShellu](./scripts/powershell/mongodb/ps-mongodb-create.md)
+* [Vytvoření tabulky Cassandra pomocí prostředí PowerShell](./scripts/powershell/cassandra/ps-cassandra-create.md)
+* [Vytvoření grafu Gremlin pomocí prostředí PowerShell](./scripts/powershell/gremlin/ps-gremlin-create.md)
+* [Vytvoření tabulky rozhraní API pro tabulky pomocí prostředí PowerShell](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Vytvoření kontejneru pomocí sady .NET SDK
 

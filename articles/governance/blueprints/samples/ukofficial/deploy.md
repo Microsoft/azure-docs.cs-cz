@@ -1,18 +1,18 @@
 ---
 title: Ukázka-UK oficiální a Velká Británie NHS Details-Deploy Steps
-description: Nasaďte kroky OFICIÁLNÍch a NHS podrobných plánů na Velká Británie.
+description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: e2109c5b524c0b38886327bf4c1ea7087380b40f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c2c6089d9c600626a93906e460ef1c662c32cb59
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978250"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248279"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -66,17 +66,17 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základy
+   - Práce
 
      - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Azure Blueprint používá tuto spravovanou identitu k nasazení všech artefaktů v přiřazeném podrobném plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
-     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace najdete v tématu [uzamykání prostředků v modrotisky](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
@@ -95,7 +95,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-Název artefaktu|Typ artefaktu|Název parametru|Popis|
+Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
 |Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které jsou podporované operačním systémem Linux pro přidání do oboru (Policy: \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
@@ -109,10 +109,10 @@ Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS pod
 > [Oficiální a NHSové plány Spojené království – přehledy](./index.md)
 > [UK oficiální a Velká Británie NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
-Další články věnované podrobným plánům a postupu jejich využití:
+Další články o semodrotiskych a jejich použití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
+- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

@@ -1,17 +1,17 @@
 ---
-title: Vytvoření zásad pro prostředky, které nedodržují předpisy, pomocí Azure PowerShell
+title: Vytvoření zásady pro audit prostředků pomocí PowerShellu
 description: Pomocí Azure PowerShell můžete vytvořit přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 7e86436b1b87ab4eec3a971ec19e7dc0ffb106b3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 55b7d8509fcf681438b377aa43f5f8aa9bac158d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978129"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255912"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure PowerShell
 
@@ -22,7 +22,7 @@ V této příručce se dozvíte, jak pomocí funkce AZ Module vytvořit přiřaz
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Než začnete, ujistěte se, že je nainstalovaná nejnovější verze Azure PowerShell. Podrobné informace najdete v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-az-ps) .
 - Zaregistrujte poskytovatele prostředků Azure Policy Insights pomocí Azure PowerShell. Když zaregistrujete poskytovatele prostředků, zajistíte, že vaše předplatné spolupracuje s ním. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít oprávnění k operaci registrovat poskytovatele prostředků. Tato operace je obsažena v rolích přispěvatel a Owner. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:

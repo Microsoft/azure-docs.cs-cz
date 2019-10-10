@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: v-erkell
-ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.author: rohogue
+ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624118"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255979"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Otevření lístku podpory pro Azure FXT Edge souborového
 
@@ -26,11 +26,11 @@ Pomocí Azure Portal otevřete lístek podpory s zákaznickými službami a podp
    ![Snímek obrazovky s prázdným formulářem žádosti o podporu](media/fxt-support-blank.png)
 
 1. Vyplňte formulář žádosti.  
-    1. Na kartě **základy** vyberte **typ** ``Technical``problému. 
+    1. Na kartě **základy** vyberte **typ problému** ``Technical``. 
     1. Vyberte své předplatné. 
     1. V části **Služba**vyberte **Azure FXT Edge souborového**. Možná budete muset kliknout na ovládací prvek filtru **všechny služby** a najít ho. 
     1. Zadejte **Souhrn** a vyberte **typ problému**. 
-    ![Snímek obrazovky s prázdným formulářem žádosti o podporu](media/fxt-support-populated.png) 
+    @no__t 0Screenshot prázdného formuláře žádosti o podporu @ no__t-1 
     1. Pokračujte kliknutím na tlačítko **Další** . 
 1. Na kartě **Podrobnosti** přidejte další informace o problému a o tom, jak vás kontaktovat. Můžete nahrát soubor, který se vztahuje k problému. 
 1. V části **Revize + vytvořit**zkontrolujte informace a kliknutím na tlačítko **vytvořit** odešlete žádost.

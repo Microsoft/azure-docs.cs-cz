@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978077"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255881"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -44,6 +44,9 @@ V současné době není k dispozici žádné pořadí vyhodnocení pro **Enforc
 ## <a name="disabled"></a>Zakázáno
 
 Tento efekt je vhodný pro situace při testování nebo v případě, že definice zásad má vliv na parametry. Díky této flexibilitě je možné zakázat jedno přiřazení místo zakázání všech těchto přiřazení zásad.
+
+Alternativa k zadanému efektu je **enforcementMode** , která je nastavená u přiřazení zásady.
+Když je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
 
 ## <a name="append"></a>Připojit
 

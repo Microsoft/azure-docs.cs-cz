@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263505"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240926"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
@@ -56,19 +56,19 @@ V současné době jsou podporovány pouze některé image platformy operačníh
 
 V současné době jsou podporovány následující SKU (a jsou pravidelně přidávány):
 
-| Vydavatel               | Nabídka OS      |  Skladová jednotka (SKU)               |
+| Publisher               | Nabídka OS      |  Skladové               |
 |-------------------------|---------------|--------------------|
-| Canonical               | UbuntuServer  | 16.04-LTS          |
-| Canonical               | UbuntuServer  | 18.04-LTS          |
-| Neautorizovaný Wave (OpenLogic)  | CentOS        | 7.5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
+| Interpret               | UbuntuServer  | 16,04 – LTS          |
+| Interpret               | UbuntuServer  | 18,04 – LTS          |
+| Neautorizovaný Wave (OpenLogic)  | CentOS        | 7,5                |
+| CoreOS                  | CoreOS        | Zůstal             |
+| Microsoft Corporation   | WindowsServer | 2012 – R2 – Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-with-Containers |
+| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Smalldisk |
+| Microsoft Corporation   | WindowsServer | 2016 – Datacenter-with-Containers |
 | Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
+| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Smalldisk |
+| Microsoft Corporation   | WindowsServer | 2019 – Datacenter-with-Containers |
 | Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
 
 
@@ -112,14 +112,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) ověřte historii upgradu operačního systému pro vaši sadu škálování. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí rutiny [Update-AzVmss](/powershell/module/az.compute/update-azvmss) nakonfigurujte automatické upgrady bitových kopií operačního systému pro sadu škálování. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) a ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
+### <a name="azure-cli-20"></a>Azure CLI 2,0
+K nakonfigurování automatických upgradů bitových kopií operačního systému pro sadu škálování použijte [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad konfiguruje automatické upgrady pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -222,7 +222,7 @@ Pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) ověřte h
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLI 2,0
 Pomocí [AZ VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) ověřte historii upgradu operačního systému pro vaši sadu škálování. Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak zkontrolovat stav upgradu operačního systému pro sadu škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive
@@ -243,7 +243,7 @@ GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{lo
 Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLI 2,0
 ```azurecli-interactive
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
@@ -270,7 +270,7 @@ Pomocí rutiny [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Star
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLI 2,0
 Pokud chcete zjistit historii upgradu operačního systému pro vaši sadu škálování, použijte příkaz AZ VMSS provedený [upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) . Použijte rozhraní příkazového řádku Azure CLI 2.0.47 nebo vyšší. Následující příklad podrobně popisuje, jak můžete spustit upgrade operačního systému v rámci sady škálování s názvem *myScaleSet* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli-interactive

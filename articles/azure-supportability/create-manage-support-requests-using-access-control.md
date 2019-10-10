@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967809"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248835"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure na základě rolí Access Control (RBAC) pro řízení přístupových práv k vytváření a správě žádostí o podporu
 
@@ -20,7 +20,7 @@ Správa [na Access Control základě rolí (RBAC)](https://docs.microsoft.com/az
 Support request vytváření v Azure Portal [Portal.Azure.com](https://portal.azure.com)využívá model RBAC Azure k definování, kdo může vytvářet a spravovat žádosti o podporu.
 Přístup je udělen přiřazením příslušné role RBAC uživatelům, skupinám a aplikacím v určitém oboru, což může být předplatné, skupina prostředků nebo prostředek.
 
-Pojďme si příklad: Jako vlastník skupiny prostředků s oprávněním ke čtení v oboru předplatného můžete spravovat všechny prostředky ve skupině prostředků, jako jsou weby, virtuální počítače a podsítě.
+Pojďme si příklad: jako vlastníka skupiny prostředků s oprávněním ke čtení v oboru předplatného můžete spravovat všechny prostředky ve skupině prostředků, jako jsou weby, virtuální počítače a podsítě.
 Když se ale pokusíte vytvořit žádost o podporu u prostředku virtuálního počítače, narazíte na následující chybu.
 
 ![Chyba předplatného](./media/create-manage-support-requests-using-access-control/subscription-error.png)
@@ -75,7 +75,7 @@ Chcete udělit přístup k vašemu partnerovi, Jana, možnost vytvářet a sprav
 
 3. Po výběru názvu role klikněte na Přidat uživatele a zadejte e-mailové přihlašovací údaje Jana. Klikněte na Vybrat.
 
-    ![Přidat uživatele](./media/create-manage-support-requests-using-access-control/add-users.png)
+    ![Přidání uživatelů](./media/create-manage-support-requests-using-access-control/add-users.png)
 
 4. Pokračujte kliknutím na OK.
 
@@ -91,7 +91,7 @@ Chcete udělit přístup k vašemu partnerovi, Jana, možnost vytvářet a sprav
 
     ![Nová žádost o podporu](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Kliknutím na všechny žádosti o podporu se zobrazí seznam žádostí o podporu vytvořených pro toto zobrazení podrobností případu ![předplatného.](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. Kliknutím na položku všechny žádosti o podporu se zobrazí seznam žádostí o podporu vytvořených pro toto předplatné ![Case Details @ no__t-1.
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Odebrat přístup k žádosti o podporu v Azure Portal
 

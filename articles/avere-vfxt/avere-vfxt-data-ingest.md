@@ -1,74 +1,74 @@
 ---
-title: Přesun dat do Avere vFXT pro Azure
-description: Přidání dat do nového svazku úložiště pro použití s Avere vFXT pro Azure
+title: Přesun dat do avere vFXT pro Azure
+description: Jak přidat data do nového svazku úložiště pro použití s avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: f4696d9e2d45e99089c9a723024067bf3b2aabcc
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410080"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255433"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT - paralelních dat ingestu 
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT – paralelní data ingestování 
 
-Po vytvoření nového clusteru vFXT, vaše první úkol může být pro přesun dat na nový svazek úložiště. Pokud vaše obvyklé metody pro přesun dat vydává příkaz jednoduché kopírování z jednoho klienta, uvidíte pravděpodobně výkonem pomalých kopírování. S jedním vláknem kopírování není vhodný pro kopírování dat do úložiště clusteru vFXT Avere back-endu.
+Po vytvoření nového clusteru vFXT může být prvním úkolem přesunutí dat do nového svazku úložiště. Pokud však vaše Obvyklá metoda přesunu dat vydává jednoduchý příkaz kopírování z jednoho klienta, pravděpodobně se zobrazí pomalý výkon při kopírování. Kopírování s jedním vláknem není vhodnou možností pro kopírování dat do back-endu clusteru avere vFXT.
 
-Vzhledem k tomu, že je Avere vFXT cluster škálovatelné více klientů mezipaměti, nejúčinnější a nejrychlejší způsob, jak kopírovat data do ní je s více klienty. Tato technika parallelizes ingestování soubory a objekty.
+Vzhledem k tomu, že cluster avere vFXT je škálovatelná mezipaměť více klientských počítačů, nejrychlejší a nejúčinnější způsob, jak kopírovat data, je více klientů. Tato technika parallelizes přijímání souborů a objektů.
 
-![Diagram zobrazující více klientů a vícevláknové přesouvání dat: V levé horní části ikonu pro úložiště v místním hardwaru má více šipky pocházející z něj. Šipky odkazovat na čtyři počítače klienta. Z každý klientský počítač tři šipky ukazují směrem k Avere vFXT. Z Avere vFXT více šipky ukazují do úložiště objektů Blob.](media/avere-vfxt-parallel-ingest.png) 
+![Diagram znázorňující pohyb vícevláknových dat s více klienty: vlevo nahoře je ikona pro místní hardwarové úložiště s více šipkami. Šipky ukazují na čtyři klientské počítače. Z každého klientského počítače tři šipky směřuje k avere vFXT. Z vFXT avere se několik šipek odkazuje na úložiště objektů BLOB.](media/avere-vfxt-parallel-ingest.png) 
 
-``cp`` Nebo ``copy`` jsou příkazy, které se běžně používají k používání pro přenos dat z jednoho úložiště systému na jiný s jedním vláknem procesy, které kopírují pouze jeden soubor současně. To znamená, že je souborový server ingestovat pouze jeden soubor v době – které by o plýtvání prostředky clusteru.
+Příkazy ``cp`` nebo ``copy``, které se běžně používají k přenosu dat z jednoho úložného systému do jiného, jsou procesy s jedním vláknem, které kopírují pouze jeden soubor v jednom okamžiku. To znamená, že souborový server bude v jednom okamžiku přijímat pouze jeden soubor, což je odpad z prostředků clusteru.
 
-Tento článek vysvětluje strategie pro vytvoření souboru více klientů, vícevláknové kopírování pro přesun dat do clusteru vFXT Avere systému. Vysvětluje koncepty přenosu souborů a rozhodovací body, které lze použít pro kopírování efektivní dat pomocí více klientů a příkazy pro jednoduché kopírování.
+V tomto článku se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny k přesunu dat do clusteru avere vFXT. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 
-Také vysvětluje některé nástroje, které vám mohou pomoci. ``msrsync`` Částečně automatizovat proces rozdělení datové sady do bloků a použití příkazů rsync můžete použít nástroj. ``parallelcp`` Skript je jiný nástroj, který přečte zdrojový adresář a problémy automaticky kopírovat příkazy.  
+Vysvětluje taky některé nástroje, které vám pomůžou. Nástroj ``msrsync`` lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a použití příkazů rsync. Skript ``parallelcp`` je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.  
 
-Klikněte na odkaz pro přechod na oddíl:
+Kliknutím na odkaz přejdete do části:
 
-* [Ruční kopírování příkladů](#manual-copy-example) – důkladné vysvětlení, používání příkazy pro kopírování
-* [Příklad částečně automatizovaný (msrsync)](#use-the-msrsync-utility-to-populate-cloud-volumes) 
-* [Paralelní kopírování příkladů](#use-the-parallel-copy-script)
+* [Ukázka ručního kopírování](#manual-copy-example) – důkladné vysvětlení pomocí příkazů kopírování
+* [Příklad částečně automatizovaného (msrsync)](#use-the-msrsync-utility-to-populate-cloud-volumes) 
+* [Příklad paralelního kopírování](#use-the-parallel-copy-script)
 
-## <a name="data-ingestor-vm-template"></a>Šablonu virtuálního počítače přijímání dat
+## <a name="data-ingestor-vm-template"></a>Šablona virtuálního počítače pro přijímání dat
 
-Šablona Resource Manageru je k dispozici na Githubu, automaticky vytvoří virtuální počítač pomocí nástroje pro ingestování paralelních dat uvedených v tomto článku. 
+K automatickému vytvoření virtuálního počítače pomocí nástrojů pro příjem paralelních dat uvedených v tomto článku je k dispozici Správce prostředků šablona na GitHubu. 
 
-![Diagram znázorňující několik šipky každý z úložiště objektů blob, úložiště hardwaru a zdrojů Azure file. Šipky bod registrace k "data přijímač virtuální počítač" a odtud více šipky ukazují na Avere vFXT](media/avere-vfxt-ingestor-vm.png)
+![Diagram znázorňující několik šipek od úložiště objektů blob, hardwarového úložiště a zdrojů souborů Azure. Šipky ukazují na "virtuální počítač pro ingestování dat" a odtud více šipek ukazují na avere vFXT.](media/avere-vfxt-ingestor-vm.png)
 
-Přijímání dat virtuálního počítače je součástí kurzu, kde nově vytvořenému virtuálnímu počítači připojí Avere vFXT cluster a stáhne jeho spuštění skriptu clusteru. Čtení [Bootstrap přijímání dat virtuálního počítače](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) podrobnosti.
+Virtuální počítač pro ingestování dat je součástí kurzu, ve kterém nově vytvořený virtuální počítač připojí cluster avere vFXT a stáhne spouštěcí skript z clusteru. Další informace najdete v tématu spuštění [virtuálního počítače](https://github.com/Azure/Avere/blob/master/docs/data_ingestor.md) pro ingestování dat.
 
 ## <a name="strategic-planning"></a>Strategické plánování
 
-Při vytváření strategie pro kopírování dat v paralelní, měli byste porozumět kompromisy velikost souboru, počet souborů a hloubka adresáře.
+Při sestavování strategie pro paralelní kopírování dat byste měli pochopit kompromisy v velikosti souborů, počtu souborů a hloubkě adresáře.
 
-* Po malých souborů je metrika zájmu soubory za sekundu.
-* Když jsou soubory velké (10MiBi nebo vyšší), metriky, které vás zajímají je bajtů za sekundu.
+* Když jsou soubory malé, je metrika zájmu soubory za sekundu.
+* Když jsou soubory velké (10MiBi nebo větší), je metrika zájmu v bajtech za sekundu.
 
-Každý proces kopírování se propustnost a rychlost přenosu souborů, které lze změřit podle časování délka příkazu kopírování a které budou zohledňovat velikost souboru a počet souborů. Vám vysvětlíme, jak měřit sazby sahá nad rámec tohoto dokumentu, ale je nutné pochopit, jestli budete jednat s malé nebo velké soubory.
+Každý proces kopírování má míru propustnosti a přenosovou rychlost přenosu souborů, která se dá změřit časováním příkazu pro kopírování a určením velikosti souboru a počtu souborů. Vysvětluje, jak změřit sazby jsou mimo rozsah tohoto dokumentu, ale je důležité pochopit, zda budete pracovat s malými nebo velkými soubory.
 
-## <a name="manual-copy-example"></a>Ruční kopírování příkladů 
+## <a name="manual-copy-example"></a>Příklad ručního kopírování 
 
-Můžete ručně vytvořit kopii vícevláknové na klientovi spuštěním více než jednoho příkazu kopírování najednou na pozadí proti předdefinované sady soubory nebo cesty.
+Můžete ručně vytvořit vícevláknovou kopii na klientovi spuštěním více než jednoho příkazu kopírování na pozadí v předdefinovaných sadách souborů nebo cest.
 
-Linux/UNIX ``cp`` příkaz zahrnuje argument ``-p`` zachovat vlastnictví a mtime metadat. Přidávání do níže uvedených příkazů tento argument je volitelný. (Přidání argument zvyšuje počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
+Příkaz systému Linux/UNIX ``cp`` zahrnuje argument ``-p``, který zachová metadata vlastnictví a mtime. Přidání tohoto argumentu do příkazů níže je volitelné. (Přidáním argumentu se zvýší počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
 
-Tento jednoduchý příklad zkopíruje paralelně dva soubory:
+Tento jednoduchý příklad kopíruje dva soubory paralelně:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po vydání tohoto příkazu `jobs` příkaz zobrazí, zda jsou spuštěny dvěma vlákny.
+Po vystavení tohoto příkazu se v příkazu `jobs` zobrazí, že jsou spuštěná dvě vlákna.
 
-### <a name="predictable-filename-structure"></a>Struktura předvídatelný název souboru 
+### <a name="predictable-filename-structure"></a>Předvídatelná struktura názvů souborů 
 
-Pokud vaše názvy souborů se u nich předvídat, můžete použít výrazy k vytvoření kopie paralelních vláken. 
+Pokud jsou názvy souborů předvídatelné, můžete použít výrazy k vytvoření paralelních vláken kopírování. 
 
-Například, pokud váš adresář obsahuje 1000 souborů, které jsou číslována od `0001` k `1000`, následující výrazy můžete použít k vytvoření deset paralelních vláken, že každý kopírování 100 souborů:
+Pokud například váš adresář obsahuje soubory 1000, které jsou číslovány sekvenčně z `0001` do `1000`, můžete použít následující výrazy k vytvoření deseti paralelních vláken, které každý soubor kopie 100:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -83,11 +83,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-### <a name="unknown-filename-structure"></a>Neznámý název souboru struktura
+### <a name="unknown-filename-structure"></a>Neznámá struktura názvu souboru
 
-Pokud strukturu pojmenování souboru není předvídatelné, můžete seskupit soubory podle názvů adresářů. 
+Pokud není struktura názvů souborů předvídatelná, můžete soubory seskupit podle názvů adresářů. 
 
-V tomto příkladu shromažďuje celý adresář k odeslání ``cp`` příkazy se spouští jako úlohy na pozadí:
+Tento příklad shromažďuje celé adresáře pro odeslání na příkazy ``cp`` spouštěné jako úlohy na pozadí:
 
 ```bash
 /root
@@ -99,7 +99,7 @@ V tomto příkladu shromažďuje celý adresář k odeslání ``cp`` příkazy s
 |-/dir1d
 ```
 
-Po shromáždění souborů, můžete spustit paralelní kopírovat příkazy k rekurzivnímu kopírování podadresářů a veškerý jejich obsah:
+Po shromáždění souborů můžete spustit paralelní příkazy kopírování pro rekurzivní kopírování podadresářů a veškerého jejich obsahu:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -110,11 +110,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-### <a name="when-to-add-mount-points"></a>Přidání přípojné body
+### <a name="when-to-add-mount-points"></a>Kdy přidat přípojné body
 
-Jakmile budete mít dostatek paralelních vláken, že přejdete na jednom místě přípojný bod systému souborů, bude bod, ve kterém přidáte další vlákna neposkytuje větší propustnost. (Propustnost se měří v souborech za sekundu nebo počet bajtů za sekundu, v závislosti na typu dat.) Nebo horší, over-pass-the dělení na vlákna mohou někdy způsobit snížení propustnosti.  
+Po zobrazení dostatečného množství paralelních vláken proti jednomu přípojnému bodu systému souborů aplikace bude k dispozici bod, ve kterém přidání dalších vláken neposkytuje větší propustnost. (V závislosti na typu dat se měří propustnost v souborech za sekundu nebo v bajtech za sekundu.) Nebo horší, více vláken může někdy způsobit snížení propustnosti.  
 
-Pokud k tomu dojde, můžete přidat na straně klienta přípojné body na jiné vFXT clusteru IP adresy, pomocí stejné cesty připojení vzdáleného systému souborů:
+Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do dalších IP adres clusteru vFXT pomocí stejné cesty vzdáleného připojení systému souborů:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -123,9 +123,9 @@ Pokud k tomu dojde, můžete přidat na straně klienta přípojné body na jin�
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Přidání bodů připojení na straně klienta vám umožňuje vytvořit fork vypne další kopie příkazy pro další `/mnt/destination[1-3]` přípojné body, další dosažení paralelismu.  
+Přidání přípojných bodů na straně klienta vám umožní rozvětvit další příkazy kopírování do dalších přípojných bodů `/mnt/destination[1-3]` a dosáhnout tak dalších paralelismu.  
 
-Například pokud jsou velmi velké soubory, můžete třeba definovat příkazy pro kopírování použít odlišné cílové cesty odesláním další příkazy paralelně z klienta vytváří kopii.
+Například pokud jsou soubory velmi velké, můžete definovat příkazy kopírování pro použití odlišných cílových cest a odeslání dalších příkazů paralelně z klienta provádějícího kopírování.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -139,11 +139,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-V předchozím příkladu jsou všechny tři cílové přípojné body cílený procesy kopírování souborů klienta.
+V předchozím příkladu jsou všechny tři cílové přípojné body cíleny procesy kopírování souborů klienta.
 
-### <a name="when-to-add-clients"></a>Kdy se má přidat klienty
+### <a name="when-to-add-clients"></a>Kdy přidat klienty
 
-A konečně, když dosáhli možnosti klienta, přidání více podprocesů kopírování další přípojné body, nepřinese žádné další soubory za sekundu nebo zvyšuje bajty/s. V takovém případě můžete nasadit jiného klienta se stejnou sadou přípojné body, které poběží vlastní sadu procesů kopírování souborů. 
+Nakonec, pokud jste dosáhli možností klienta, přidání dalších vláken kopírování nebo dalších přípojných bodů nebude zvyšovat žádné další soubory za sekundu nebo bajtů/s. V takové situaci můžete nasadit jiného klienta se stejnou sadou přípojných bodů, na kterých budou spuštěné vlastní sady procesů kopírování souborů. 
 
 Příklad:
 
@@ -165,11 +165,11 @@ Client4: cp -R /mnt/source/dir2/dir2d /mnt/destination/dir2/ &
 Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 ```
 
-### <a name="create-file-manifests"></a>Vytváření souboru manifestu
+### <a name="create-file-manifests"></a>Vytváření manifestů souborů
 
-Po Principy přístupy výše (více kopírování vláken na cílový, více cílů jednoho klienta, více klientů za síťově přístupné zdrojového systému souborů), vezměte v úvahu tato doporučení: Sestavení souborů manifestů a použít je s příkazy pro kopírování do více klientů.
+Po porozumění výše uvedeným přístupům (více než několik míst kopírování na cíl, více cílů na klienta, více klientů na zdrojový systém souborů přístupný pro síť) zvažte toto doporučení: manifesty souborů sestavení a pak je používejte s kopírováním. příkazy napříč více klienty.
 
-Tento scénář využívá UNIX ``find`` příkaz pro vytvoření manifestů souborů nebo adresářů:
+V tomto scénáři se k vytváření manifestů souborů nebo adresářů používá příkaz ``find`` systému UNIX:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -184,9 +184,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Tento výsledek přesměrujte do souboru: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Přesměrovat tento výsledek do souboru: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Pak můžete iterovat manifest, počet souborů a určení velikosti podadresáře pomocí příkazy BASH:
+Pak můžete iterovat v manifestu pomocí příkazů BASH pro počítání souborů a určení velikosti podadresářů:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
@@ -225,56 +225,56 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-A konečně musí si vytvořte skutečný soubor příkazy pro kopírování na klienty.  
+Nakonec je nutné, aby byly vlastní příkazy kopírování souborů pro klienty.  
 
-Pokud máte čtyři klientů, použijte tento příkaz:
+Pokud máte čtyři klienty, použijte tento příkaz:
 
 ```bash
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Pokud máte pět klientů, použijte vypadat přibližně takto:
+Pokud máte pět klientů, použijte něco podobného:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-A pro šest... Potom údaje Extrapolujte podle potřeby.
+A šest.... Odvodit podle potřeby.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Zobrazí se *N* výsledné soubory, jeden pro každou z vašich *N* klientů, které obsahuje názvy cesty k adresářům úroveň 4 získaný jako součást výstup z `find` příkaz. 
+Zobrazí se *N* výsledných souborů, jeden pro každého z vašich klientů *N* , který má názvy cest k adresářům úrovně 4, které byly získány jako součást výstupu z příkazu `find`. 
 
-Pomocí každého souboru sestavení kopírovací příkazy:
+Pomocí každého souboru Sestavte příkaz pro kopírování:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Výše uvedeného vám poskytne *N* soubory, každá kopie příkazem na řádku, který může běžet jako BASH skript na straně klienta. 
+Výše uvedené soubory vám poskytnou *N* souborů, každý s příkazem kopírování na řádek, který je možné spustit jako bash skript na klientovi. 
 
-Cílem je více vláken současně za klienta tyto skripty spustit souběžně na více klientů.
+Cílem je spouštět více vláken těchto skriptů souběžně na jednom klientovi paralelně na více klientech.
 
-## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Použijte nástroj msrsync k naplnění svazky cloudu
+## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Naplnění cloudových svazků pomocí nástroje msrsync
 
-``msrsync`` Nástroj můžete použít také pro přesun dat do vyfiltrovat jádra back-endu pro Avere cluster. Tento nástroj je určená k optimalizaci využití šířky pásma spuštěním více paralelních ``rsync`` procesy. Je k dispozici na Githubu v https://github.com/jbd/msrsync.
+Nástroj ``msrsync`` lze použít také k přesunu dat do back-endu jádra souborového pro cluster avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních procesů @no__t 0. Je k dispozici z GitHubu na adrese https://github.com/jbd/msrsync.
 
-``msrsync`` rozdělí zdrojový adresář do samostatných "bloky" a pak spustí jednotlivé ``rsync`` procesy na jednotlivé sektory.
+``msrsync`` rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé procesy ``rsync`` v každém intervalu.
 
-Předběžné testování pomocí virtuálních počítačů čtyři jádra jsme si ukázali nejlepších výsledků, při použití 64 procesů. Použití ``msrsync`` možnost ``-p`` nastavit počet procesů na 64.
+Předběžné testování pomocí virtuálního počítače se čtyřmi jádry ukázalo při použití procesů 64 nejlepší efektivitu. Pomocí možnosti ``msrsync`` ``-p`` Nastavte počet procesů na 64.
 
-Všimněte si, že ``msrsync`` lze zapisovat pouze do a z místní svazky. Zdroj a cíl musí být přístupné jako místní připojení ve virtuální síti clusteru.
+Všimněte si, že ``msrsync`` může zapisovat pouze do místních svazků a z nich. Zdroj a cíl musí být přístupné jako místní připojení ve virtuální síti clusteru.
 
-Pokud chcete použít k naplnění svazku cloudu Azure s clusterem Avere msrsync, postupujte podle těchto pokynů:
+Pokud chcete použít msrsync k naplnění cloudového svazku Azure pomocí clusteru avere, postupujte podle těchto pokynů:
 
-1. Nainstalujte msrsync a nezbytný software (rsync a Python 2.6 nebo novější)
-1. Zjistěte celkový počet souborů a adresářů ke zkopírování.
+1. Nainstalovat msrsync a jeho požadavky (rsync a Python 2,6 nebo novější)
+1. Určete celkový počet souborů a adresářů, které mají být zkopírovány.
 
-   Třeba použít nástroj Avere ``prime.py`` s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením url https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
+   Například použijte nástroj avere ``prime.py`` s argumenty ```prime.py --directory /path/to/some/directory``` (k dispozici stažením adresy URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py) ).
 
-   Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek s Gnu ``find`` nástroj následujícím způsobem:
+   Pokud nepoužíváte ``prime.py``, můžete vypočítat počet položek pomocí nástroje GNU ``find`` následujícím způsobem:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -282,23 +282,23 @@ Pokud chcete použít k naplnění svazku cloudu Azure s clusterem Avere msrsync
    find <path> |wc -l                 # (counts both)
    ```
 
-1. Počet položek, které dělit 64 k určení počtu položek na proces. Pomocí tohoto čísla s ``-f`` možnost nastavit velikost ze sektorů při spuštění příkazu.
+1. Rozdělte počet položek podle 64 k určení počtu položek na proces. Pomocí tohoto čísla s možností ``-f`` nastavíte velikost kontejnerů při spuštění příkazu.
 
-1. Vydejte příkaz msrsync kopírování souborů:
+1. Vydejte příkaz msrsync ke zkopírování souborů:
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Třeba tento příkaz slouží k přesunutí 11 000 souborů do 64 procesů z /test/source-repository do /mnt/vfxt/repository:
+   Například tento příkaz je navržen pro přesun 11 000 souborů v 64 Process z/test/source-repository na/mnt/vfxt/Repository:
 
    ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
-## <a name="use-the-parallel-copy-script"></a>Použití paralelních kopírovat skript
+## <a name="use-the-parallel-copy-script"></a>Použití skriptu paralelního kopírování
 
-``parallelcp`` Skript také může být užitečná pro přesun dat do vašeho clusteru vFXT back-endového úložiště. 
+Skript ``parallelcp`` také může být užitečný pro přesun dat do back-endu vašeho clusteru vFXT. 
 
-Níže uvedený skript bude spustitelný soubor přidáváte `parallelcp`. (Tento skript je navržená pro Ubuntu; Pokud používáte jiné distribuce, musíte nainstalovat ``parallel`` zvlášť.)
+Ve skriptu níže se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu. Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -350,14 +350,14 @@ find \$SOURCE_DIR -mindepth 1 ! -type d -print0 | sed -z "s/\$SOURCE_DIR\///" | 
 EOM
 ```
 
-### <a name="parallel-copy-example"></a>Paralelní kopírování příkladů
+### <a name="parallel-copy-example"></a>Příklad paralelního kopírování
 
-Tento příklad používá ke kompilaci skriptu parallel kopírování ``glibc`` použití zdrojových souborů z Avere clusteru. 
+V tomto příkladu se používá paralelní kopírování skriptu pro kompilaci ``glibc`` pomocí zdrojových souborů z clusteru avere. 
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
-Pro bod připojení clusteru Avere budou uložené zdrojové soubory a soubory objektů jsou uloženy na místní pevný disk.
+Zdrojové soubory jsou uloženy v přípojném bodu clusteru avere a soubory objektů jsou uloženy na místním pevném disku.
 
-Tento skript používá paralelní kopírovat skript výše. Možnost ``-j`` se používá s ``parallelcp`` a ``make`` získat paralelního zpracování.
+Tento skript používá skript paralelního kopírování. Možnost ``-j`` se používá s ``parallelcp`` a ``make`` k získání paralelismu.
 
 ```bash
 sudo apt-get update

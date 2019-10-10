@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b7feb1b980054ba224173d5054907879a88cdd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952875"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243551"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávat data o konfiguraci stavu přeAzure Automation do protokolů Azure Monitor
 
@@ -31,7 +31,7 @@ Díky protokolům Azure Monitor můžete:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Monitor protokolů, budete potřebovat:
 
@@ -60,7 +60,7 @@ Pokud chcete začít importovat data z Azure Automation DSC do protokolů Azure 
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. Spusťte následující příkaz PowerShellu a `<AutomationResourceId>` nahraďte `<WorkspaceResourceId>` hodnoty ResourceID hodnotami a hodnotou _ResourceID_ z každého z předchozích kroků:
+1. Spusťte následující příkaz PowerShellu a nahraďte `<AutomationResourceId>` a `<WorkspaceResourceId>` hodnotami _ResourceID_ z každého z předchozích kroků:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -78,7 +78,7 @@ Po nastavení integrace s protokoly Azure Monitor pro data konfigurace stavu aut
 
 ![Tlačítko hledání protokolu](media/automation-dsc-diagnostics/log-search-button.png)
 
-Otevře se okno **prohledávání protokolu** a zobrazí se operace **DscNodeStatusData** pro každý uzel Konfigurace stavu a operace **DscResourceStatusData** pro každý [prostředek DSC](/powershell/dsc/resources) s názvem v konfiguraci uzlu použité pro tento uzel.
+Otevře se okno **prohledávání protokolu** a zobrazí se operace **DscNodeStatusData** pro každý uzel Konfigurace stavu a operace **DscResourceStatusData** pro každý [prostředek DSC](/powershell/scripting/dsc/resources/resources) s názvem v konfiguraci uzlu použité pro tento uzel.
 
 Operace **DscResourceStatusData** obsahuje informace o chybě pro všechny prostředky DSC, které selhaly.
 
@@ -86,9 +86,9 @@ Kliknutím na jednotlivé operace v seznamu zobrazíte data pro danou operaci.
 
 Protokoly můžete zobrazit také tak, že vyhledáte Azure Monitor protokoly.
 Viz [najít data pomocí prohledávání protokolů](../log-analytics/log-analytics-log-searches.md).
-Zadejte následující dotaz pro vyhledání protokolů konfigurace stavu:`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+Zadejte následující dotaz pro vyhledání protokolů konfigurace stavu: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
-Dotaz můžete také zúžit podle názvu operace. Příklad: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+Dotaz můžete také zúžit podle názvu operace. Například: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Odeslat e-mail, když se nepovede ověřit dodržování předpisů konfigurace stavu
 
@@ -97,7 +97,7 @@ Jednou z našich nejlepších žádostí o zákazníky je možnost Odeslat e-mai
 Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledání protokolu pro záznamy sestavy konfigurace stavu, které by měly vyvolat výstrahu. Kliknutím na tlačítko **+ nové pravidlo výstrahy** vytvořte a nakonfigurujte pravidlo výstrahy.
 
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **protokoly**.
-1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
+1. Vytvořte dotaz prohledávání protokolu pro upozornění zadáním následujícího hledání do pole dotazu: `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation.
    Název účtu Automation se dá odvodit z pole prostředků ve vyhledávání DscNodeStatusData.
@@ -109,7 +109,7 @@ Jednou z výhod používání protokolů Azure Monitor je, že můžete vyhledat
 Najde všechny instance prostředků DSC, které selhaly.
 
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **protokoly**.
-1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
+1. Vytvořte dotaz prohledávání protokolu pro upozornění zadáním následujícího hledání do pole dotazu: `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>Zobrazit historický stav uzlu DSC
 
@@ -126,19 +126,19 @@ Diagnostika z Azure Automation vytváří dvě kategorie záznamů v protokolech
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 | --- | --- |
 | TimeGenerated |Datum a čas spuštění kontroly dodržování předpisů. |
 | OperationName |DscNodeStatusData |
-| ResultType |Zda je uzel kompatibilní. |
+| Hodnotu |Zda je uzel kompatibilní. |
 | NodeName_s |Název spravovaného uzlu. |
 | NodeComplianceStatus_s |Zda je uzel kompatibilní. |
 | DscReportStatus |Zda byla ověření kompatibility úspěšně spuštěna. |
-| ConfigurationMode | Způsob použití konfigurace na uzel. Možné hodnoty jsou __"ApplyOnly"__ , __"ApplyandMonitior"__ a __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a nic dalšího neprovede, pokud se nová konfigurace nevloží do cílového uzlu nebo když se ze serveru načte nová konfigurace. Po počátečním použití nové konfigurace DSC nekontroluje posun od dříve nakonfigurovaného stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, než se __ApplyOnly__ uplatní. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM aplikuje všechny nové konfigurace. Pokud se cílový uzel po počáteční aplikaci posune od požadovaného stavu, DSC nahlásí nesoulad v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, než se __ApplyAndMonitor__ uplatní.</li><li>__ApplyAndAutoCorrect__: DSC používá všechny nové konfigurace. Pokud se po počátečním použití nové konfigurace Posune cílový uzel od požadovaného stavu, DSC nahlásí nesoulad v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
+| ConfigurationMode | Způsob použití konfigurace na uzel. Možné hodnoty jsou __"ApplyOnly"__ , __"ApplyandMonitior"__ a __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a nedělá nic dalšího, pokud se do cílového uzlu nevloží nová konfigurace nebo když se ze serveru načte nová konfigurace. Po počátečním použití nové konfigurace DSC nekontroluje posun od dříve nakonfigurovaného stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, než se __ApplyOnly__ uplatní. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM aplikuje všechny nové konfigurace. Pokud se cílový uzel po počáteční aplikaci posune od požadovaného stavu, DSC nahlásí nesoulad v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, než se __ApplyAndMonitor__ uplatní.</li><li>__ApplyAndAutoCorrect__: DSC používá všechny nové konfigurace. Pokud se po počátečním použití nové konfigurace Posune cílový uzel od požadovaného stavu, DSC nahlásí nesoulad v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaného uzlu. |
 | IP adresa | IPv4 adresa spravovaného uzlu. |
 | Category | DscNodeStatus |
-| Resource | Název Azure Automation účtu. |
+| Prostředek | Název Azure Automation účtu. |
 | Tenant_g | Identifikátor GUID, který identifikuje tenanta pro daného volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaný uzel. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavu |
@@ -149,22 +149,22 @@ Diagnostika z Azure Automation vytváří dvě kategorie záznamů v protokolech
 | SourceSystem | Jak Azure Monitor protokoly shromáždily data. Vždy *Azure* pro diagnostiku Azure. |
 | Prostředku |Určuje Azure Automation účet. |
 | ResultDescription | Popis této operace |
-| SubscriptionId | ID předplatného Azure (GUID) pro účet Automation. |
-| Skupina prostředků | Název skupiny prostředků pro účet Automation. |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| Typ prostředku | AUTOMATIONACCOUNTS |
-| CorrelationId |Identifikátor GUID, který představuje ID korelace sestavy dodržování předpisů. |
+| subscriptionId | ID předplatného Azure (GUID) pro účet Automation. |
+| resourceGroup | Název skupiny prostředků pro účet Automation. |
+| ResourceProvider | Microsoft. AUTOMATION |
+| ResourceType | AUTOMATIONACCOUNTS |
+| ID |Identifikátor GUID, který představuje ID korelace sestavy dodržování předpisů. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 | --- | --- |
 | TimeGenerated |Datum a čas spuštění kontroly dodržování předpisů. |
 | OperationName |DscResourceStatusData|
-| ResultType |Zda je prostředek kompatibilní. |
+| Hodnotu |Zda je prostředek kompatibilní. |
 | NodeName_s |Název spravovaného uzlu. |
 | Category | DscNodeStatus |
-| Resource | Název Azure Automation účtu. |
+| Prostředek | Název Azure Automation účtu. |
 | Tenant_g | Identifikátor GUID, který identifikuje tenanta pro daného volajícího. |
 | NodeId_g |Identifikátor GUID, který identifikuje spravovaný uzel. |
 | DscReportId_g |Identifikátor GUID, který identifikuje sestavu |
@@ -180,11 +180,11 @@ Diagnostika z Azure Automation vytváří dvě kategorie záznamů v protokolech
 | SourceSystem | Jak Azure Monitor protokoly shromáždily data. Vždy *Azure* pro diagnostiku Azure. |
 | Prostředku |Určuje Azure Automation účet. |
 | ResultDescription | Popis této operace |
-| SubscriptionId | ID předplatného Azure (GUID) pro účet Automation. |
-| Skupina prostředků | Název skupiny prostředků pro účet Automation. |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| Typ prostředku | AUTOMATIONACCOUNTS |
-| CorrelationId |Identifikátor GUID, který představuje ID korelace sestavy dodržování předpisů. |
+| subscriptionId | ID předplatného Azure (GUID) pro účet Automation. |
+| resourceGroup | Název skupiny prostředků pro účet Automation. |
+| ResourceProvider | Microsoft. AUTOMATION |
+| ResourceType | AUTOMATIONACCOUNTS |
+| ID |Identifikátor GUID, který představuje ID korelace sestavy dodržování předpisů. |
 
 ## <a name="summary"></a>Souhrn
 
@@ -202,6 +202,6 @@ Protokoly Azure Monitor poskytují větší provozní viditelnost dat konfigurac
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
 - Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu průběžné [nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
 - Další informace o tom, jak vytvořit různé vyhledávací dotazy a zkontrolovat protokoly konfigurace stavu automatizace pomocí protokolů Azure Monitor, najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../log-analytics/log-analytics-log-searches.md)
 - Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/collect-azure-metrics-logs.md) .

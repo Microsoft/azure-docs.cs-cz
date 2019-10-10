@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s grafy metrik Azure monitoru
-description: Řešení potíží s vytváření, přizpůsobení nebo interpretace grafy metrik
+title: Řešení potíží s Azure Monitor grafy metrik
+description: Řešení potíží s vytvářením, přizpůsobením nebo interpretací grafů metrik
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,112 +8,114 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341979"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243224"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
-Pokud narazíte na problémy s vytváření, přizpůsobení nebo interpretaci grafů v Průzkumníku metrik Azure, pomocí tohoto článku. Pokud jste ještě na metriky, přečtěte si o [Začínáme s Průzkumníkem metrik](metrics-getting-started.md) a [pokročilé funkce Průzkumníka metrik](metrics-charts.md). Můžete také zobrazit [příklady](metric-chart-samples.md) nakonfigurované metriky grafů.
+Tento článek použijte, pokud narazíte na problémy s vytvářením, přizpůsobením nebo interpretací grafů v Průzkumníkovi metrik Azure. Pokud s metrikami začínáte, přečtěte si informace o tom, jak [začít s Průzkumníkem metrik a s](metrics-getting-started.md) [pokročilými funkcemi v Průzkumníkovi metrik](metrics-charts.md). Můžete také zobrazit [Příklady](metric-chart-samples.md) konfigurovaných grafů metriky.
 
-## <a name="cant-find-your-resource-to-select-it"></a>Vyberte váš prostředek nejde najít.
+## <a name="cant-find-your-resource-to-select-it"></a>Nepovedlo se najít prostředek pro jeho výběr.
 
-Jste kliknuli **vyberte prostředek** tlačítko, ale nevidíte váš prostředek v dialogovém okně pro výběr prostředků.
+Kliknuli jste na tlačítko **Vybrat prostředek** , ale prostředek se v dialogovém okně pro výběr prostředku nezobrazuje.
 
-**Řešení:** Průzkumník metrik vyžaduje, abyste před Výpis dostupných prostředků vyberte předplatné a skupiny prostředků. Pokud se váš prostředek:
+**Řešení:** Průzkumník metrik vyžaduje před výpisem dostupných prostředků výběr předplatných a skupin prostředků. Pokud se prostředek nezobrazuje:
 
-1. Ujistěte se, že jste vybrali správné předplatné **předplatné** rozevíracího seznamu. Pokud vaše předplatné není uvedené, klikněte na **adresář a předplatné nastavení** a přidejte předplatné s vaším prostředkem.
+1. Ujistěte se, že jste v rozevíracím seznamu **předplatné** vybrali správné předplatné. Pokud vaše předplatné není uvedené, klikněte na **Nastavení adresáře a předplatného** a přidejte předplatné s vaším prostředkem.
 
-1. Ujistěte se, že jste vybrali správný prostředek skupiny.
+1. Ujistěte se, že jste vybrali správnou skupinu prostředků.
     > [!WARNING]
-    > Pro zajištění nejlepšího výkonu, při prvním otevření Průzkumníku metrik **skupiny prostředků** rozevírací seznam nemá žádné skupiny prostředků. předem vybraná. Předtím, než se zobrazí všechny prostředky, je třeba vybrat alespoň jednu skupinu.
+    > Nejlepšího výkonu dosáhnete, když při prvním otevření Průzkumníka metrik v rozevíracím seznamu **Skupina prostředků** nejsou žádné předem vybrané skupiny prostředků. Než budete moci zobrazit všechny prostředky, je nutné vybrat alespoň jednu skupinu.
 
-## <a name="chart-shows-no-data"></a>Graf zobrazuje žádná data
+## <a name="chart-shows-no-data"></a>Graf nezobrazuje žádná data
 
-Někdy může grafy zobrazovat žádná data po výběru správné prostředky a metriky. Toto chování může být způsobeno několika z následujících důvodů:
+V některých případech se může stát, že grafy po výběru správných prostředků a metrik nezobrazí žádná data. Toto chování může být způsobeno několika z následujících důvodů:
 
-### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Pro vaše předplatné není registrováno poskytovatele prostředků Microsoft.Insights.
+### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Poskytovatel prostředků Microsoft. Insights není pro vaše předplatné registrovaný.
 
-Zkoumání metrik vyžaduje *Microsoft.Insights* ve vašem předplatném zaregistrovaný poskytovatel prostředků. V mnoha případech je zapsáno automaticky (to znamená, po konfiguraci pravidla upozornění, přizpůsobení nastavení diagnostiky pro prostředek nebo konfigurace pravidla automatického škálování). Pokud není zaregistrovaný poskytovatel prostředků Microsoft.Insights, budete muset ručně zaregistrovat ji pomocí kroků popsaných v [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
+Zkoumání metrik vyžaduje poskytovatele prostředků *Microsoft. Insights* zaregistrovaný ve vašem předplatném. V mnoha případech je zaregistrováno automaticky (tj. po konfiguraci pravidla výstrahy, přizpůsobení nastavení diagnostiky pro libovolný prostředek nebo konfigurace pravidla automatického škálování). Pokud poskytovatel prostředků Microsoft. Insights není zaregistrovaný, musíte ho ručně zaregistrovat pomocí následujících kroků popsaných v tématu [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
 
-**Řešení:** Otevřít **předplatná**, **poskytovatelů prostředků** kartě a ověřte, že *Microsoft.Insights* je registrován pro vaše předplatné.
+**Řešení:** Otevřete **předplatné**, kartu **poskytovatelé prostředků** a ověřte, jestli je pro vaše předplatné zaregistrované *Microsoft. Insights* .
 
-### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nemáte dostatečná přístupová práva k prostředku
+### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nemáte dostatečná přístupová práva k vašemu prostředku.
 
-V Azure, se řídí přístup k metrikám [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Musíte být členem skupiny [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader), [Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor), nebo [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) zkoumat metriky pro prostředek.
+V Azure se přístup k metrikám řídí [řízením přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Abyste mohli prozkoumat metriky pro libovolný prostředek, musíte být členem [čtecího modulu pro monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader), [přispěvatelem monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor)nebo [přispěvatelem](../../role-based-access-control/built-in-roles.md#contributor) .
 
-**Řešení:** Ujistěte se, že máte dostatečná oprávnění pro prostředek, ze kterého jsou zkoumání metrik.
+**Řešení:** Ujistěte se, že máte dostatečná oprávnění pro prostředek, ze kterého prozkoumáte metriky.
 
-### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Váš prostředek nebyla během vybraného časového úseku generovat metriky
+### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Váš prostředek negeneroval metriky během vybraného časového rozsahu.
 
-Některé prostředky negenerovat neustále jejich metriky. Například Azure nebude shromažďovat metriky pro zastavených virtuálních počítačů. Další prostředky mohou vysílat jejich metriky pouze v případě, že dojde k některé podmínky. Například metrika zobrazuje doba zpracování transakce vyžaduje aspoň jedna transakce. Pokud nebyly provedeny žádné transakce ve vybraném časovém rozsahu, graf přirozeně bude prázdný. Kromě toho Přestože většina metrik v Azure jsou shromažďovány každou minutu, platí, která jsou shromážděna méně často. V dokumentaci metriky zobrazíte další podrobnosti o metriku, která chcete prozkoumat.
+Některé prostředky stále negenerují své metriky. Azure například nebude shromažďovat metriky pro zastavené virtuální počítače. Jiné prostředky mohou vygenerovat své metriky pouze v případě, že dojde k nějaké situaci. Například metrika ukazující čas zpracování transakce vyžaduje alespoň jednu transakci. Pokud ve vybraném časovém rozsahu neexistovaly žádné transakce, graf bude přirozeně prázdný. I když je většina metrik v Azure shromažďována každou minutu, některé z nich jsou shromažďovány méně často. Další podrobnosti o metrikě, kterou se snažíte prozkoumat, najdete v dokumentaci metriky.
 
-**Řešení:** Používání nástroje většímu změníte čas grafu. Můžete začít z "Posledních 30 dní" pomocí větší granularitu (nebo spoléhat na možnost "Automatické časové intervaly").
+**Řešení:** Změňte čas grafu na širší rozsah. Můžete začít od "posledních 30 dnů" s použitím většího časového rozlišení (nebo se spoléhat na možnost automatické členitosti v časovém intervalu).
 
-### <a name="you-picked-a-time-range-greater-than-30-days"></a>Vybere časový rozsah, který je větší než 30 dní
+### <a name="you-picked-a-time-range-greater-than-30-days"></a>Vybrali jste časový rozsah delší než 30 dní.
 
-[Většina metrik v Azure ukládají 93 dní](data-platform-metrics.md#retention-of-metrics). Nicméně dotaz lze použít pouze pro více než 30 dní, po který dat na libovolný graf jednoho. Toto omezení neplatí pro [metriky založené na protokolech](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+[Většina metrik v Azure se ukládá po dobu 93 dnů](data-platform-metrics.md#retention-of-metrics). Můžete ale zadávat dotazy jenom na data o více než 30 dnech na jakémkoli jednom grafu. Toto omezení se nevztahuje na [metriky založené na protokolech](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-**Řešení:** Pokud se zobrazí prázdný graf nebo diagramu se zobrazí pouze část dat metriky, ověřte, že rozdíl mezi start-end data a v výběr času nepřekročí 30denní interval.
+**Řešení:** Pokud se zobrazí prázdný graf nebo se v grafu zobrazí pouze část dat metriky, ověřte, zda rozdíl mezi počátečním a koncovým datem v nástroji pro výběr času nepřekročí 30 dní.
 
-### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Všechny hodnoty metrik byly mimo rozsah uzamčen osy y
+### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Všechny hodnoty metrik byly mimo rozsah uzamčené osy y.
 
-Podle [uzamčení hranice osa y grafu](metrics-charts.md#lock-boundaries-of-chart-y-axis), můžete neúmyslně vytvořit zobrazení oblasti grafu, není uveden čára grafu. Například pokud osy y je pevně nastavené na rozsah mezi 0 a 50 % a metriku má konstantní hodnotu 100 %, řádku vždy vykreslován mimo viditelná oblast, aby graf se zobrazí prázdné.
+Tím, že [zamknete hranice grafu osy y](metrics-charts.md#lock-boundaries-of-chart-y-axis), můžete neúmyslně nastavit oblast zobrazení grafu, aby nezobrazovala spojnici grafu. Pokud je například osa y pevně nastavená na rozsah mezi 0 a 50% a metrika má konstantní hodnotu 100%, řádek se vždycky vykreslí mimo viditelnou oblast, takže se graf zobrazí jako prázdný.
 
-**Řešení:** Ověřte, že nejsou uzamčeny hranice osa y grafu mimo rozsah hodnoty metrik. Pokud jsou zamčené uvnitř hranic osy y, můžete dočasně obnovit je zajistit, aby metriky, které hodnoty není spadá mimo oblast grafu. Rozsah osy y uzamčení se nedoporučuje používat s automatickou členitosti u grafů s **součet**, **min**, a **maximální** agregace vzhledem k tomu, že jejich hodnoty se budou měnit s členitost změně velikosti okna prohlížeče nebo přechod z jedné obrazovky řešení do jiného. Přepínání členitosti může zanechat zobrazení oblasti grafu prázdný.
+**Řešení:** Ověřte, že hranice osy y grafu nejsou uzamčené mimo rozsah hodnot metriky. Pokud jsou hranice osy y zamčené, můžete je dočasně resetovat, aby se zajistilo, že hodnoty metrik nespadají mimo rozsah grafu. Uzamykání rozsahu osy y se nedoporučuje s automatickou členitost grafů s agregací **Sum**, **min**a **Max** , protože jejich hodnoty se změní na členitost změnou velikosti okna prohlížeče nebo při přechodu na jedno rozlišení obrazovky. do druhé. Přepínání členitosti může zůstat prázdný prostor zobrazení grafu.
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>Před sebou metriku hostovaného operačního systému, ale neměli povolit rozšíření diagnostiky Azure
+### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>Prohlížíte se na metriku hostovaného operačního systému, ale nepovolili jste diagnostické rozšíření Azure.
 
-Kolekce **hostovaného operačního systému** metriky vyžaduje konfiguraci rozšíření diagnostiky Azure nebo povolte ho pomocí **nastavení diagnostiky** panel pro váš prostředek.
+Kolekce metrik **operačního systému hosta** vyžaduje konfiguraci rozšíření Azure Diagnostics nebo jeho povolení pomocí panelu **nastavení diagnostiky** pro váš prostředek.
 
-**Řešení:** Pokud je povolené rozšíření diagnostiky Azure, ale nemůžete zobrazit metriky, postupujte podle kroků uvedených v [Průvodce odstraňováním potíží rozšíření Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Viz také kroky pro řešení potíží [nelze vybrat obor názvů hostovaný operační systém a metriky](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)
+**Řešení:** Pokud je povolené rozšíření Azure Diagnostics, ale stále nemůžete zobrazit metriky, postupujte podle kroků popsaných v [Průvodci odstraňováním potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Další informace najdete v tématu řešení potíží s [oborem názvů a metrikami hostovaného operačního systému](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) .
 
-## <a name="error-retrieving-data-message-on-dashboard"></a>Zpráva "Chyba při načítání dat" na řídicím panelu
+## <a name="error-retrieving-data-message-on-dashboard"></a>Chybová zpráva při načítání dat na řídicím panelu
 
-Tomuto problému může dojít v případě, že váš řídicí panel vytvořil s metriku, která se později zastaralé a odebrána z Azure. Chcete-li ověřit, že se jedná o tento případ, otevřete **metriky** kartu prostředku a zkontrolujte dostupné metriky v metriky pro výběr. Pokud metrika není zobrazený, metriku byl odebrán z Azure. Obvykle když metrika je zastaralá, je lepší novou metriku, která nabízí podobné perspektivou na stav prostředku.
+K tomuto problému může dojít, když byl řídicí panel vytvořen pomocí metriky, která byla později vystaralá a odebrána z Azure. Pokud chcete ověřit, že se jedná o tento případ, otevřete kartu **metriky** prostředku a zkontrolujte dostupné metriky ve výběru metriky. Pokud není metrika zobrazená, byla metrika odebrána z Azure. Když je metrika zastaralá, je k dispozici lepší nová metrika, která nabízí podobnou perspektivu týkající se stavu prostředků.
 
-**Řešení:** Aktualizujte dlaždici selhání výběrem alternativní metrik pro graf na řídicí panel. Je možné [prohlédněte si seznam dostupných metrik pro služby Azure](metrics-supported.md).
+**Řešení:** Aktualizujte dlaždici, která selhala, výběrem alternativní metriky pro váš graf na řídicím panelu. Můžete [si prohlédnout seznam dostupných metrik pro služby Azure](metrics-supported.md).
 
-## <a name="chart-shows-dashed-line"></a>Graf zobrazuje přerušované čáry
+## <a name="chart-shows-dashed-line"></a>Graf znázorňuje čárkovanou čáru
 
-Metriky Azure grafy pomocí čárkovanou čáru naznačují, že chybí hodnota (označované také jako "null value") mezi dvěma známý časový interval datových bodů. Například, pokud v modulu pro výběr času vyberou "1" čas minutu, ale byla nahlášena metriku na 07:26, 07:27 07:29 a 07:30 (Poznámka: minuta propast mezi druhý a třetí datových bodů), bude na přerušovanou čáru připojení 07:27 a 07:29 a připojí plná čára Další datové body. Drops přerušovanou čáru na nulu, když se používá metrika **počet** a **součet** agregace. Pro **avg**, **min** nebo **maximální** agregace, přerušované čáry připojí dva nejbližší známé datové body. Také když na straně úplně vlevo nebo vpravo v grafu chybí data, přerušované čáry rozšíří směr chybí datový bod.
-  ![metriky image](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+Grafy metrik Azure používají čárkovaný styl čáry k označení toho, že mezi dvěma známými datovými body zrnitosti chybí hodnota (označovaná také jako hodnota null). Například pokud v selektoru jste vybrali členitou časovou prodlevu 1 minutu, ale metrika byla nahlášena v 07:26, 07:27, 07:29 a 07:30 (Všimněte si, že se v průběhu druhého a třetího datového bodu objevila mezera), pak se přerušovaná čára připojí 07:27 a 07:29 a připojení k pevné čáře všechny ostatní datové body. Přerušovaná čára klesne dolů na nulu, pokud metrika používá agregaci **Count** a **Sum** . U agregací **AVG**, **min** nebo **Max** se přerušovaná čára spojí dva nejbližší známé datové body. Také, pokud data chybějí na pravé straně grafu nebo na levé straně grafu, je přerušovaná čára rozšířena směrem k směru chybějícího datového bodu.
+  ![metric obrázek @ no__t-1
 
-**Řešení:** Toto chování je záměrné. To je užitečné pro identifikaci chybějící datové body. Spojnicový graf dokonalá volbou pro vizualizace trendů metrik s vysokou hustotou je ale může být obtížné interpretovat metriky hodnotami zhuštěný, zejména v případě, že hodnoty s časovým intervalem corelating je důležité. Přerušované čáry usnadňuje čtení těchto grafů, ale pokud graf je stále nejasné, vezměte v úvahu zobrazení metriky pomocí typu grafu. Například roztříštěný Krabicový diagram stejné metriky jasně ukazuje každý časový interval podle jen vizualizace tečku po hodnotu a přeskočení data bodu úplně když chybí hodnota: ![metriky image](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Řešení:** Toto chování je záměrné. Je vhodný pro identifikaci chybějících datových bodů. Spojnicový graf je nadřízenou volbou pro vizualizaci trendů metrik s vysokou hustotou, ale může být obtížné ji interpretovat pro metriky s zhuštěnými hodnotami, zejména v případě, že se v souvislosti s časovým intervalem jsou důležité hodnoty. Přerušovaná čára usnadňuje čtení těchto grafů, ale pokud je váš graf stále nejasný, zvažte zobrazení metriky s jiným typem grafu. Například rozptýlený graf pro stejnou metriku jasně zobrazuje každé časové intervaly tím, že vizualizuje tečku, pokud existuje hodnota a přeskočí datový bod úplně, když hodnota chybí: ![metric image @ no__t-1
 
    > [!NOTE]
-   > Pokud stále chcete spojnicový graf vaše metriky, přesunutí myši nad grafem může pomoct s vyhodnocení časové intervaly zvýrazněním datový bod v umístění ukazatele myši.
+   > Pokud pro svou metriku stále upřednostňujete spojnicový graf, přesunutím myši na graf může pomáhat s vyhodnocením časového rozlišení tím, že zvýrazníte datový bod na místě ukazatele myši.
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>Graf zobrazuje rozevírací neočekávané hodnoty
+## <a name="chart-shows-unexpected-drop-in-values"></a>Graf zobrazuje neočekávané hodnoty zrušení v hodnotách
 
-V mnoha případech je vnímaná prudkým snížením hodnoty metrik neporozumění daty zobrazenými v grafu. Může být omyl podle pokles součtů nebo vrátí, když tento graf zobrazuje nejnovější minut, protože poslední bod data metriky nebyly přijata nebo zpracována Azure ještě. V závislosti na službě zpracování metriky latence může být v rozsahu několika minut. Grafy znázorňující poslední časový rozsah s 1 nebo 5minutových intervalech, bude snadněji postřehnutelné pokles hodnoty za posledních několik minut: ![metriky image](./media/metrics-troubleshoot/drop-in-values.png)
+V mnoha případech je vnímaná odkládací hodnota metriky nesrozumitelnější data zobrazená v grafu. V případě, že se v grafu zobrazují nejaktuálnější minuty, můžete být v omylu započítány na základě součtů nebo počtů, protože poslední datové body metriky ještě nebyly od Azure přijaty nebo zpracovány. V závislosti na službě může být latence zpracování metrik v rozsahu několika minut. V grafech zobrazujících nedávný časový rozsah s členitou přesností 1 nebo 5 minut se může poznamenat, že hodnota za posledních několik minut bude podrobná: ![metric image @ no__t-1.
 
-**Řešení:** Toto chování je záměrné. Jsme přesvědčeni, že je vhodné zobrazení dat poté, co jsme ji přijmou, i v případě, že data jsou *částečné* nebo *neúplné*. To umožňuje provést až po důležité uzavření a spustit šetření okamžitě. Například pro metriku, který zobrazuje počet chyb, zobrazení částečné hodnoty X zjistíte, že došlo k nejméně X chyb v danou chvíli. Můžete začít okamžitě zkoumání problému, místo dočkat, až uvidíme přesný počet chyb, ke kterým došlo na tato minuta, který nemusí být jako důležité. Graf aktualizujeme, jakmile obdržíme celá sada dat, ale v tuto chvíli lze také zobrazit neúplné datové body novější minut.
+**Řešení:** Toto chování je záměrné. Věříme, že se data zobrazují hned po obdržení dat, která jsou výhodná, i když jsou data *částečná* nebo *neúplná*. To vám umožní udělat si důležitý závěr dřív a zahájit šetření hned. Například u metriky, která zobrazuje počet selhání, se zobrazí částečná hodnota X, která vám oznamuje, že v dané minutě došlo k nejméně × selhání. Můžete zahájit šetření problému hned a nečekat, než se zobrazí přesný počet chyb, ke kterým došlo v této minutě, což nemusí být důležité. Graf se po obdržení celé sady dat aktualizuje, ale v tuto chvíli může zobrazit nové nedokončené datové body z novějších minut.
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Nelze vybrat obor názvů hostovaný operační systém a metriky
+## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Nejde vybrat obor názvů a metriky hostovaného operačního systému.
 
-Virtuální počítače a škálovací sady virtuálních počítačů mají dvě kategorie metriky: **Hostitel virtuálního počítače** metriky, které byly shromážděny sadou hostování prostředí Azure a **hostovaného operačního systému** metriky, které byly shromážděny sadou [agenta monitorování](agents-overview.md) běžící na virtuálních počítačích. Instalace agenta monitorování tím, že [diagnostické rozšíření Azure](diagnostics-extension-overview.md).
+Virtuální počítače a služba Virtual Machine Scale Sets mají dvě kategorie metrik: metriky **hostitele virtuálních počítačů** shromažďované hostitelským prostředím Azure a metriky **hostovaného operačního systému (Classic)** shromažďované [agentem monitorování. ](agents-overview.md)běží na virtuálních počítačích. Agenta monitorování nainstalujete povolením [diagnostického rozšíření Azure](diagnostics-extension-overview.md).
 
-Ve výchozím nastavení, metriky hostovaného operačního systému se ukládají v účtu Azure Storage, který jste si můžete vybrat z **nastavení diagnostiky** kartu prostředku. Pokud se neshromažďují metriky hostovaného operačního systému nebo Průzkumníka metrik k nim nelze přistupovat, zobrazí se pouze **hostitele virtuálního počítače** metriky oboru názvů:
+Ve výchozím nastavení se metriky hostovaného operačního systému ukládají v Azure Storage účtu, který vybíráte z karty **nastavení diagnostiky** vašeho prostředku. Pokud nejsou shromažďovány metriky hostovaného operačního systému nebo k nim Průzkumník metrik nemůže získat přístup, zobrazí se pouze obor názvů metriky **hostitele virtuálního počítače** :
 
-![metriky image](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
+![Obrázek metriky](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**Řešení:** Pokud nevidíte **hostovaného operačního systému** obor názvů a metrik v Průzkumníku metrik:
+**Řešení:** Pokud nevidíte obor názvů a metriky oborů **hostovaného operačního systému (Classic)** v Průzkumníkovi metrik:
 
-1. Ujistěte se, že [diagnostické rozšíření Azure](diagnostics-extension-overview.md) je povolená a nakonfigurovaná tak, aby shromažďovat metriky.
+1. Potvrďte, že je pro shromažďování metrik zapnuté a nakonfigurované [diagnostické rozšíření Azure](diagnostics-extension-overview.md) .
     > [!WARNING]
-    > Nemůžete použít [agenta Log Analytics](agents-overview.md#log-analytics-agent) (také označované jako agenta Microsoft Monitoring Agent, nebo "MMA") k odeslání **hostovaného operačního systému** do účtu úložiště.
+    > [Agenta Log Analytics](agents-overview.md#log-analytics-agent) (označovaného také jako Microsoft Monitoring Agent nebo "MMA") nemůžete použít k odeslání **hostovaného operačního systému** do účtu úložiště.
 
-1. Ověřte, že účet úložiště není chráněn bránou firewall.
+1. Ujistěte se, že je [pro vaše předplatné zaregistrovaný](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)poskytovatel prostředků **Microsoft. Insights** .
 
-1. Použití [Průzkumníka služby Azure storage](https://azure.microsoft.com/features/storage-explorer/) k ověření, že se metriky přenášejí do účtu úložiště. Pokud se neshromažďují metriky, postupujte podle [Průvodce odstraňováním potíží rozšíření Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. Ověřte, jestli není účet úložiště chráněný bránou firewall. Azure Portal potřebuje přístup k účtu úložiště, aby bylo možné načíst data metrik a sekreslit grafy.
 
-## <a name="next-steps"></a>Další postup
+1. Pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) ověřte, zda jsou metriky předávány do účtu úložiště. Pokud nejsou metriky shromažďovány, postupujte podle pokynů pro [řešení potíží s rozšířením Azure Diagnostics](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
-* [Další informace o zahájení práce s Průzkumníkem metrik](metrics-getting-started.md)
-* [Další informace o pokročilých funkcích sady Průzkumník metrik](metrics-charts.md)
-* [Podívejte se do seznamu dostupných metrik pro služby Azure](metrics-supported.md)
-* [Podívejte se na příklady nakonfigurované grafů](metric-chart-samples.md)
+## <a name="next-steps"></a>Další kroky
+
+* [Další informace o tom, jak začít s Průzkumníkem metrik](metrics-getting-started.md)
+* [Další informace o rozšířených funkcích Průzkumníka metrik](metrics-charts.md)
+* [Zobrazit seznam dostupných metrik pro služby Azure](metrics-supported.md)
+* [Zobrazit příklady konfigurovaných grafů](metric-chart-samples.md)

@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309759"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249056"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
 Tento článek popisuje, jak použít Azure PowerShell k zálohování a obnovení databáze SQL ve virtuálním počítači Azure pomocí služby [Azure Backup](backup-overview.md) Recovery Services trezoru.
 
-Tento kurz vysvětluje následující postupy:
+V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Nastavte PowerShell a zaregistrujte poskytovatele služby Azure Recovery Services.
-> * Vytvořte trezor služby Recovery Services.
+> * Vytvořte Trezor Recovery Services.
 > * Konfigurace zálohování databáze SQL na virtuálním počítači Azure.
 > * Spusťte úlohu zálohování.
 > * Obnovte zálohovanou databázi SQL.
@@ -43,7 +43,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
+Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
 
 ### <a name="set-up-and-install"></a>Nastavení a instalace
 
@@ -85,9 +85,9 @@ Nastavte PowerShell následujícím způsobem:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se zaregistrují. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
+9. Ve výstupu příkazu ověřte, že **RegistrationState** změny se **zaregistrují**. Pokud ne, spusťte znovu rutinu **Register-AzResourceProvider** .
 
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
+## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Recovery Services
 
 Pomocí těchto kroků můžete vytvořit trezor Recovery Services.
 
@@ -140,7 +140,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Uložte objekt trezoru do proměnné a nastavte kontext trezoru.
 
 * Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
-* Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
+* Kontext trezoru je typ dat chráněný v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
 
 Následující příklad nastaví kontext trezoru pro **testvault**.
 
@@ -261,7 +261,7 @@ Vzhledem k tomu, že pokyn slouží k zálohování všech budoucích databáze,
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
-Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $targetPolicy -VaultId $targetvault.ID
+Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $NewSQLPolicy -VaultId $targetvault.ID
 ```
 
 Po uvedení záměru AutoProtection se dotaz do počítače pro načtení nově přidaných databáze provede jako naplánovaná úloha na pozadí každých 8 hodin.
@@ -273,7 +273,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 1. Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 2. Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Před obnovením SQL databáze ověřte zmíněné požadavky. [](restore-sql-database-azure-vm.md#prerequisites)
+Před obnovením SQL databáze [Ověřte zmíněné](restore-sql-database-azure-vm.md#prerequisites) požadavky.
 
 Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS.
 
@@ -567,6 +567,6 @@ Předpokládejme například, že SQL AG má dva uzly: SQL-Server-0 a SQL-Server
 5. Všechny výchozí SQL databáze (Master, model, msdb) v rámci SQL-Server-0-Protected typu položky jako SQLDatabase
 6. Všechny výchozí SQL databáze (Master, model, msdb) v části SQL-Server-Protected typ položky jako SQLDatabase
 
-SQL-Server-0, SQL Server-1 bude při výpisu zálohovacích kontejnerů v seznamu [](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)obsahovat také "AzureVMAppContainer".
+SQL-Server-0, SQL Server-1 bude při [výpisu zálohovacích kontejnerů](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)v seznamu obsahovat také "AzureVMAppContainer".
 
-Stačí načíst příslušnou databázi SQL pro [Povolení zálohování](#configuring-backup) a rutiny zálohování a [obnovení](#restore-sql-dbs) [ad hoc](#on-demand-backup) jsou identické.
+Stačí načíst příslušnou databázi SQL pro [Povolení zálohování](#configuring-backup) a [rutiny](#restore-sql-dbs) zálohování a obnovení [ad hoc](#on-demand-backup) jsou identické.

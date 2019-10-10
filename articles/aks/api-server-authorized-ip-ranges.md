@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058344"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241137"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Náhled – zabezpečený přístup k serveru rozhraní API pomocí povolených rozsahů IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -32,7 +32,7 @@ Tento článek předpokládá, že pracujete s clustery, které používají [ku
 
 Schválené rozsahy IP adres serveru API fungují jenom pro nové clustery AKS, které vytvoříte. V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
@@ -69,7 +69,7 @@ Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Micr
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="limitations"></a>Omezení
+## <a name="limitations"></a>Omezení (limity)
 
 Při konfiguraci rozsahů IP adres autorizovaných serverem API platí následující omezení:
 
@@ -77,7 +77,7 @@ Při konfiguraci rozsahů IP adres autorizovaných serverem API platí následuj
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Přehled povolených IP adres serveru rozhraní API
 
-Kubernetes API Server je způsob, jakým jsou vystavená základní rozhraní Kubernetes API. Tato součást poskytuje interakci pro nástroje pro správu, například `kubectl` nebo řídicí panel Kubernetes. AKS poskytuje hlavní server s jedním nájemcem, který má vyhrazený server API. Ve výchozím nastavení je serveru rozhraní API přiřazena veřejná IP adresa a měli byste řídit přístup pomocí řízení přístupu na základě role (RBAC).
+Kubernetes API Server je způsob, jakým jsou vystavená základní rozhraní Kubernetes API. Tato součást poskytuje interakci pro nástroje pro správu, jako je například `kubectl` nebo řídicí panel Kubernetes. AKS poskytuje hlavní server s jedním nájemcem, který má vyhrazený server API. Ve výchozím nastavení je serveru rozhraní API přiřazena veřejná IP adresa a měli byste řídit přístup pomocí řízení přístupu na základě role (RBAC).
 
 Chcete-li zabezpečit přístup k jinému veřejně přístupné rovině AKS ovládacího prvku nebo serveru rozhraní API, můžete povolit a použít autorizované rozsahy IP adres. Tyto autorizované rozsahy IP adres povolují komunikaci se serverem API jenom definované rozsahy IP adres. Požadavek na server rozhraní API z IP adresy, která není součástí těchto povolených rozsahů IP adres, je blokovaný. K následnému autorizaci uživatelů a akcí, které požadují, byste měli nadále používat RBAC.
 
@@ -111,7 +111,7 @@ Pokud chcete zajistit, aby uzly v clusteru spolehlivě komunikovaly se serverem 
 > [!WARNING]
 > Použití Azure Firewall může během měsíčního fakturačního cyklu způsobit významné náklady. Požadavek na použití Azure Firewall by měl být v tomto počátečním období verze Preview nezbytný. Další informace a plánování nákladů najdete v tématu [Azure firewall ceny][azure-firewall-costs].
 >
-> Případně, pokud váš cluster používá nástroj [pro vyrovnávání zatížení Standard SKU][standard-sku-lb], nemusíte konfigurovat Azure firewall jako odchozí bránu. Použijte příkaz [AZ Network Public-IP list][az-network-public-ip-list] a zadejte skupinu prostředků clusteru AKS, který obvykle začíná na *MC_* . Tím se zobrazí veřejná IP adresa pro váš cluster, který můžete vyřadit do seznamu povolených. Příklad:
+> Případně, pokud váš cluster používá nástroj [pro vyrovnávání zatížení Standard SKU][standard-sku-lb], nemusíte konfigurovat Azure firewall jako odchozí bránu. Použijte příkaz [AZ Network Public-IP list][az-network-public-ip-list] a zadejte skupinu prostředků clusteru AKS, který obvykle začíná na *MC_* . Tím se zobrazí veřejná IP adresa pro váš cluster, který můžete vyřadit do seznamu povolených. Například:
 >
 > ```azurecli-interactive
 > RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
@@ -228,7 +228,7 @@ Pokud chcete povolit rozsahy IP adres autorizovaných serverem API, zadejte sezn
 
 Použijte příkaz [AZ AKS Update][az-aks-update] a určete *Rozsah--API-Server-povoleno-IP-rozsahy* , které chcete povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi. Přidejte veřejnou IP adresu vlastní brány Azure firewall získanou v předchozím kroku, například *20.42.25.196/32*.
 
-Následující příklad povoluje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres, které se mají autorizovat, jsou *20.42.25.196/32* (veřejná IP adresa brány firewall Azure) a pak *172.0.0.0/16* a *168.10.0.0/18*:
+Následující příklad povoluje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres, které se mají autorizovat, jsou *20.42.25.196/32* (veřejná IP adresa brány firewall Azure), potom *172.0.0.0/16* (rozsah adres pod/uzly) a *168.10.0.0/18* (ServiceCidr):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Tyto rozsahy byste měli přidat do seznamu povolených:
+> - Veřejná IP adresa brány firewall
+> - CIDR služby
+> - Rozsah adres pro podsítě, uzly a lusky
+> - Libovolný rozsah, který představuje sítě, ze kterých budete spravovat cluster.
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualizovat nebo zakázat schválené rozsahy IP adres
 

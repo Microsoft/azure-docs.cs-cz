@@ -1,116 +1,116 @@
 ---
-title: Microsoft Azure FXT hrany Filer konfigurace clusteru - přidat uzly
-description: Přidání uzlů do mezipaměti Azure FXT hrany souborového úložiště
+title: Konfigurace clusteru Microsoft Azure FXT Edge souborového – přidání uzlů
+description: Postup přidání uzlů do mezipaměti úložiště Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: d84b98b4ab936bbb6978144eb2e89b5e19df7069
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543204"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254923"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>Kurz: Přidat uzly clusteru 
+# <a name="tutorial-add-cluster-nodes"></a>Kurz: Přidání uzlů clusteru 
 
-Nový cluster Azure FXT hrany Filer se vytvoří s pouze jedním uzlem. By měl přidat aspoň dva další uzly a povolit vysokou dostupnost než přistoupíte k další konfiguraci. 
+Vytvoří se nový cluster Azure FXT Edge souborového jenom s jedním uzlem. Před provedením další konfigurace byste měli přidat aspoň dva další uzly a povolit vysokou dostupnost. 
 
-Tento kurz vysvětluje, jak přidat uzly clusteru a povolit funkci vysoká dostupnost (HA). 
+V tomto kurzu se dozvíte, jak přidat uzly clusteru a povolit funkci vysoké dostupnosti (HA). 
 
 V tomto kurzu se dozvíte: 
 
 > [!div class="checklist"]
-> * Přidání uzlů do clusteru FXT
-> * Jak povolit vysokou dostupnost
+> * Postup přidání uzlů do clusteru FXT
+> * Jak povolit HA
 
-Kroky v tomto kurzu trvat přibližně 45 minut.
+Dokončení kroků v tomto kurzu trvá přibližně 45 minut.
 
-Než začnete tento kurz, zapněte uzly, které chcete přidat a [počátečního hesla](fxt-node-password.md). 
+Než začnete s tímto kurzem, zapněte uzly, které chcete přidat, a [nastavte jejich počáteční hesla](fxt-node-password.md). 
 
-## <a name="1-load-the-cluster-nodes-page"></a>1. Načtení stránky uzly clusteru
+## <a name="1-load-the-cluster-nodes-page"></a>1. načtení stránky uzlů clusteru
 
-Otevřete ovládací panely clusteru ve webovém prohlížeči a přihlaste se jako správce. (Podrobné pokyny naleznete v článku s přehledem, v části [otevření stránky nastavení](fxt-cluster-create.md#open-the-settings-pages).)
+Ve webovém prohlížeči otevřete ovládací panely clusteru a přihlaste se jako správce. (Podrobné pokyny najdete v článku Přehled v části [otevření stránek nastavení](fxt-cluster-create.md#open-the-settings-pages).)
 
-Ukazuje ovládací panely **řídicí panel** kartu, když se otevře. 
+Ovládací panel při otevření zobrazí kartu **řídicí panel** . 
 
-![Ovládací prvek Panel řídicího panelu (první kartu)](media/fxt-cluster-config/dashboard-1-node.png)
+![Řídicí panel (první karta)](media/fxt-cluster-config/dashboard-1-node.png)
 
-Tento obrázek ukazuje na řídicím panelu pro nově vytvořený cluster s jeden uzel.
+Tento obrázek ukazuje řídicí panel nově vytvořeného clusteru s jedním uzlem.
 
-## <a name="2-locate-the-node-to-add"></a>2. Vyhledejte uzel, který má přidat
+## <a name="2-locate-the-node-to-add"></a>2. Vyhledejte uzel, který chcete přidat.
 
-Přidat uzly, klikněte na tlačítko **nastavení** kartě a zvolte **FXT uzly** stránku **clusteru** oddílu.
+Chcete-li přidat uzly, klikněte na kartu **Nastavení** a vyberte stránku **uzly FXT** v části **cluster** .
 
-![Nastavení ovládacího panelu kartu (druhá karta) s clusterem > FXT uzly načíst](media/fxt-cluster-config/settings-fxt-nodes.png)
+![Karta nastavení ovládacího panelu (druhá karta) s načtenými uzly clusteru > FXT](media/fxt-cluster-config/settings-fxt-nodes.png)
 
-**FXT uzlů – odpojen** seznamu zobrazí všechny nepřiřazené FXT uzly (většina datových center disponuje jenom pár. Najdete FXT uzly, které chcete přidat do clusteru.
+**Uzel FXT – nepřipojený** seznam zobrazuje všechny nepřiřazené FXT uzly (většina datových Center má jenom pár. Vyhledejte uzly FXT, které chcete přidat do clusteru.
 
 > [!Tip] 
-> Pokud nemůžete najít uzel chcete na **Unjoined** seznamu, zkontrolujte, že splňuje tyto požadavky:
+> Pokud v seznamu **nepřipojený** požadovaný uzel nemůžete najít, ověřte, že splňuje tyto požadavky:
 > 
-> * Zapne a byla [kořenové heslo sady](fxt-node-password.md).
-> * Je připojený k síti, ke kterým může přístup. Pokud používáte sítě VLAN, musí být na stejnou síť VLAN jako cluster.
-> * U protokolu Bonjour se dá zjistit. 
+> * Je zapnutý a má [nastavené kořenové heslo](fxt-node-password.md).
+> * Je připojen k síti, ke které máte přístup. Pokud používáte sítě VLAN, musí se nacházet ve stejné síti VLAN jako cluster.
+> * Dá se zjistit pomocí protokolu Bonjour. 
 >
->   Některá nastavení brány firewall na blokování TCP/UDP portů používaných Bonjour, které brání automatické zjišťování uzly FXT operačního systému.
+>   Některá nastavení brány firewall blokují porty TCP/UDP používané službou Bonjour, což brání operačnímu systému FXT v automatickém zjišťování uzlů.
 > 
-> Pokud uzel, který chcete přidat, není na seznamu, vyzkoušejte tato řešení: 
+> Pokud uzel, který chcete přidat, není v seznamu, zkuste Tato řešení: 
 > 
-> * Klikněte na tlačítko **ručně zjišťovat** tlačítko Najít podle IP adresy.
+> * Klikněte na tlačítko **Ruční zjišťování** a vyhledejte ho podle IP adresy.
 > 
-> * Přiřadíte ručně dočasné IP adresy. To je vzácné, ale může být nutné, pokud používáte označené sítě VLAN a nejsou ve správné síti nebo síti neumožňuje svým přiřazené IP adresy. Postupujte podle pokynů ve starší verzi tohoto dokumentu [ručně nastavili statickou IP adresu](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
+> * Ručně přiřaďte dočasné IP adresy. Tato situace je vzácná, ale může být nutná, pokud používáte tagované sítě VLAN a uzly nejsou ve správné síti nebo vaše síť nepovoluje IP adresy přiřazené svým držitelem. Podle pokynů ve starší verzi tohoto dokumentu [nastavte STATICKOU IP adresu ručně](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/static_ip.html).
 
-Název uzlu, IP adresa, verze softwaru a způsobilosti stav se zobrazí v seznamu. Obvykle **stav** sloupec buď říká "Chce připojit k" nebo popisuje problém systému nebo hardware, který vytvoří uzel nelze připojit ke clusteru.
+V seznamu se zobrazí název uzlu, IP adresa, verze softwaru a stav způsobilosti. Sloupec status ( **stav** ) zpravidla říká "chce se připojit" nebo popisuje problém se systémem nebo hardwarem, který způsobí, že se uzel neoprávněně připojí ke clusteru.
 
-**Akce** sloupec obsahuje tlačítka, která umožňují přidání uzlu do clusteru nebo aktualizovat svůj software. Tlačítko Aktualizovat automaticky nainstaluje verzi softwaru, která odpovídá uzly v clusteru.
+Sloupec **Actions** obsahuje tlačítka, která umožňují přidat uzel do clusteru nebo aktualizovat jeho software. Tlačítko Aktualizovat automaticky nainstaluje verzi softwaru, která odpovídá uzlům, které jsou již v clusteru.
 
-Všechny uzly v clusteru musí používat stejnou verzi operačního systému, ale není nutné aktualizace softwaru před přidáním uzlu. Po klepnutí **povolení k připojení k** tlačítko, proces připojení clusteru automaticky kontroluje a nainstaluje software operačního systému, která odpovídá verzi v clusteru.
+Všechny uzly v clusteru musí používat stejnou verzi operačního systému, ale před přidáním uzlu nemusíte tento software aktualizovat. Po kliknutí na tlačítko **pro připojení** se proces připojení clusteru automaticky zkontroluje a nainstaluje software operačního systému, který odpovídá verzi v clusteru.
 
-Další informace o možnosti na této stránce najdete v článku [ **clusteru** > **FXT uzly** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurace clusteru.
+Další informace o možnostech na této stránce najdete v části [ **cluster** > **uzly FXT** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
 
-## <a name="3-click-the-allow-to-join-button"></a>3. Klikněte na tlačítko "Povolit chcete se připojit k" 
+## <a name="3-click-the-allow-to-join-button"></a>3. klikněte na tlačítko "udělit připojení". 
 
-Klikněte na tlačítko **povolit chcete se připojit k*** tlačítko **akce** sloupec uzlu, který chcete přidat.
+Klikněte na tlačítko **povolení spojení*** ve sloupci **Akce** pro uzel, který chcete přidat.
 
-Po kliknutí na tlačítko uzlu stav může změnit, protože jeho software se aktualizuje při přípravě na jeho přidání do clusteru. 
+Po kliknutí na tlačítko se stav uzlu může změnit, protože jeho software se aktualizuje při přípravě na jeho přidání do clusteru. 
 
-Následující obrázek ukazuje uzel, který se právě připojení (pravděpodobně, že je to stále aktualizace operačního systému přidán) clusteru. Žádné tlačítek se zobrazí v **akce** sloupec uzlů, které se v současnosti se přidávají do clusteru.
+Následující obrázek ukazuje uzel, který se v procesu připojení ke clusteru (pravděpodobně ho před přidáním aktualizuje na operační systém). Ve sloupci **Actions** se nezobrazí žádná tlačítka pro uzly, které se v procesu přidávají do clusteru.
 
-![jeden řádek tabulky uzlu, zobrazuje název uzlu, IP adresa, verze softwaru, zpráva "Povolené pro připojení" a poslední sloupec je prázdný](media/fxt-cluster-config/node-join-in-process.png)
+![jeden řádek tabulky uzlů, ve kterém se zobrazuje název uzlu, IP adresa, verze softwaru, zpráva s povoleným připojením a prázdný poslední sloupec](media/fxt-cluster-config/node-join-in-process.png)
 
-Po chvíli se nový uzel by se zobrazit v seznamu uzlů clusteru v horní části **FXT uzly** stránku nastavení. 
+Po chvíli by se měl nový uzel zobrazit v seznamu uzlů clusteru v horní části stránky nastavení **uzlů FXT** . 
 
-Opakujte tento postup pro přidání dalších uzlů do clusteru. Nemusíte čekat na jeden uzel, který dokončit před zahájením druhé připojující se ke clusteru.
+Opakujte tento postup pro přidání dalších uzlů do clusteru. Než začnete s nasazením jiného uzlu, nemusíte čekat na dokončení připojení ke clusteru.
 
 ## <a name="enable-high-availability"></a>Povolit vysokou dostupnost
 
-Po přidání druhého uzlu do clusteru, zobrazí se pravděpodobně zprávu s upozorněním na ovládacím panelu, řídicí panel, který funkci vysoké dostupnosti není nakonfigurovaná. 
+Po přidání druhého uzlu do clusteru se na řídicím panelu ovládacích panelů může zobrazit zpráva s upozorněním, že funkce vysoké dostupnosti není nakonfigurovaná. 
 
-Vysoká dostupnost (HA) umožňuje uzly clusteru jako kompenzaci za sobě navzájem, pokud jeden ocitne mimo provoz. Ve výchozím nastavení není povoleno vysokou dostupnost.
+Vysoká dostupnost (HA) umožňuje uzlům clusteru kompenzovat každou druhou dobu, pokud jedna dojde k výpadku. HA není ve výchozím nastavení povolená.
 
-![Karta řídicí panel se zprávou "má více než jeden uzel clusteru, ale vysokou dostupnost bez povoleného..." v tabulce podmínky](media/fxt-cluster-config/no-ha-2-nodes.png)
+![Karta řídicího panelu se zprávou "cluster má více než jeden uzel, ale možnost HA není povolena..." v tabulce podmínky](media/fxt-cluster-config/no-ha-2-nodes.png)
 
 > [!Note] 
-> Nepovolujte vysokou dostupnost, dokud nebudete mít alespoň tři uzly v clusteru.
+> Nepovolujte HA, dokud nebudete mít aspoň tři uzly v clusteru.
 
-Tento postup, chcete-li na vysokou dostupnost: 
+Pomocí tohoto postupu zapněte HA: 
 
-1. Zatížení **vysoké dostupnosti** stránku **clusteru** část **nastavení** kartu.
+1. V části **cluster** na kartě **Nastavení** načtěte stránku **vysoké dostupnosti** .
 
-   ![Stránka Konfigurace vysokou dostupnost (clusteru > vysoká dostupnost). Tlačítka pro odeslání je v dolní části políčko "Povolit HA" je v horní části.](media/fxt-cluster-config/enable-ha.png)
+   ![Konfigurační stránka HA (vysoká dostupnost clusteru >). Zaškrtávací políčko "Povolit HA" je v horní části a tlačítko Odeslat je v dolní části.](media/fxt-cluster-config/enable-ha.png)
 
-2. Klikněte na poli označeném **povolit HA** a klikněte na tlačítko **odeslat** tlačítko. 
+2. Klikněte na pole s popiskem **Povolit ha** a klikněte na tlačítko **Odeslat** . 
 
-Upozornění se zobrazí na **řídicí panel** potvrďte, že je povoleno vysokou dostupnost.
+Na **řídicím panelu** se zobrazí výstraha, která potvrdí, že je možnost ha povolena.
 
-![Řídicí panel Tabulka zobrazující zprávu "Vysokou DOSTUPNOSTÍ je teď plně nakonfigurované"](media/fxt-cluster-config/ha-configured-alert.png)
+![Tabulka řídicích panelů ukazující zprávu "HA je nyní plně nakonfigurovaná"](media/fxt-cluster-config/ha-configured-alert.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po přidání všech uzlů v clusteru, pokračujte v instalaci podle konfigurace vašeho clusteru dlouhodobé uložení.
+Po přidání všech uzlů v clusteru pokračujte v instalaci nakonfigurováním dlouhodobého úložiště clusteru.
 
 > [!div class="nextstepaction"]
-> [Přidání back endové úložné a nastavení virtuální obor názvů](fxt-add-storage.md)
+> [Přidání back-endu úložiště a nastavení virtuálního oboru názvů](fxt-add-storage.md)

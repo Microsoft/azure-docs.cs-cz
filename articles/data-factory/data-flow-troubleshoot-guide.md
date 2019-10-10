@@ -7,18 +7,20 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5eafa0cc6284df5c969f63e2ab3fac4113fab417
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b5895b061426066d265d3ff68dc948014e641322
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178615"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242274"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
 
 Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure Data Factory.
 
-## <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Chybová zpráva: DF-SYS-01: vystínované. datacihly. org. Apache. Hadoop. FS. Azure. AzureException: com. Microsoft. Azure. Storage. StorageException: zadaný kontejner neexistuje.
+## <a name="common-errors-and-messages"></a>Běžné chyby a zprávy
+
+### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Chybová zpráva: DF-SYS-01: vystínované. datacihly. org. Apache. Hadoop. FS. Azure. AzureException: com. Microsoft. Azure. Storage. StorageException: zadaný kontejner neexistuje.
 
 - **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
 
@@ -26,7 +28,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: Ujistěte se, že kontejner, na který odkazujete, existuje ve vaší datové sadě.
 
-## <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Chybová zpráva: DF-SYS-01: Java. lang. AssertionError: kontrolní výraz se nezdařil: byly zjištěny konfliktní struktury adresáře. Podezřelé cesty
+### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Chybová zpráva: DF-SYS-01: Java. lang. AssertionError: kontrolní výraz se nezdařil: byly zjištěny konfliktní struktury adresáře. Podezřelé cesty
 
 - **Příznaky**: při použití zástupných znaků ve zdrojové transformaci pomocí souborů Parquet
 
@@ -34,7 +36,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: Podívejte se na zástupnou syntaxi, kterou používáte v možnostech transformace zdroje.
 
-## <a name="error-message-df-src-002-container-container-name-is-required"></a>Chybová zpráva: DF-SRC-002: Container (název kontejneru) je povinný.
+### <a name="error-message-df-src-002-container-container-name-is-required"></a>Chybová zpráva: DF-SRC-002: Container (název kontejneru) je povinný.
 
 - **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
 
@@ -42,7 +44,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: Ujistěte se, že kontejner, na který odkazujete, existuje ve vaší datové sadě.
 
-## <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Chybová zpráva: DF-UNI-001: PrimaryKeyValue má nekompatibilní typy IntegerType a StringType
+### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Chybová zpráva: DF-UNI-001: PrimaryKeyValue má nekompatibilní typy IntegerType a StringType
 
 - **Příznaky**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
 
@@ -50,7 +52,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: použijte odvozený sloupec k přetypování sloupce, který používáte pro primární klíč v toku dat tak, aby odpovídal datovému typu cílové databáze.
 
-## <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: připojení TCP/IP k hostitelskému portu xxxxx.database.windows.net 1433 se nezdařilo. Chyba: "xxxx.database.windows.net. Ověřte vlastnosti připojení. Ujistěte se, že je na hostiteli spuštěná instance SQL Server a přijímá připojení TCP/IP na portu. Ujistěte se, že brána firewall neblokuje připojení TCP k portu.
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: připojení TCP/IP k hostitelskému portu xxxxx.database.windows.net 1433 se nezdařilo. Chyba: "xxxx.database.windows.net. Ověřte vlastnosti připojení. Ujistěte se, že je na hostiteli spuštěná instance SQL Server a přijímá připojení TCP/IP na portu. Ujistěte se, že brána firewall neblokuje připojení TCP k portu.
 
 - **Příznaky**: nejde zobrazit náhled dat nebo spustit kanál se zdrojem nebo jímkou databáze.
 
@@ -58,7 +60,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: otevřete bránu firewall pro přístup k databázi.
 
-## <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: v databázi se již nachází objekt s názvem "XXXXXX".
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Chybová zpráva: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: v databázi se již nachází objekt s názvem "XXXXXX".
 
 - **Příznaky**: jímka nemůže vytvořit tabulku.
 
@@ -66,7 +68,11 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: Změna názvu tabulky, kterou se pokoušíte vytvořit
 
+## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
+1. Ověřte stav připojení datové sady. V každé transformaci zdroje a jímky navštivte propojenou službu pro každou datovou sadu, kterou používáte, a otestujte připojení.
+2. Ověřte stav připojení k souborům a tabulkám z návrháře toku dat. Přepněte na ladění a klikněte na náhled dat ve vašich zdrojových transformacích, abyste měli jistotu, že budete mít přístup k datům.
+3. Pokud vše vypadá z verze Preview, přejdete do návrháře kanálů a zadáte tok dat do aktivity kanálu. Ladění kanálu pro ucelený test.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -78,3 +84,4 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Průvodce výkonem datových toků mapování ADF](concepts-data-flow-performance.md)

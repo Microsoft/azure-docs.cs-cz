@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: d9d432c073872e7bb7f3562979e78989faea65eb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097805"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241097"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry služby Azure Kubernetes
 
@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **ID prostředku ACR má následující formát:** 
 
-/Subscriptions/<předplatné-d>/resourceGroups/<Resource-Group-Name>/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/\<subscription-ID @ no__t-1/resourceGroups/\<resource-Group-Name @ no__t-3/Providers/Microsoft. ContainerRegistry/Registry/\<name @ no__t-5 
   
 Dokončení tohoto kroku může trvat několik minut.
 
@@ -61,7 +61,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 ## <a name="log-in-to-your-acr"></a>Přihlaste se k ACR
 
-K přihlášení do ACR použijte následující příkaz.  Nahraďte <acrname> parametr názvem ACR.  Výchozí hodnota je například **aks < > ACR**.
+K přihlášení do ACR použijte následující příkaz.  Nahraďte parametr <acrname> názvem ACR.  Výchozí hodnota je například **aks < > ACR**.
 
 ```azurecli
 az acr login -n <acrName>

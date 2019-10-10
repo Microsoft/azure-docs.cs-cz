@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/04/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: b50c7c0fbd2ef2c3825ba4c69232b69188d7ffbb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 433bcd31399d8443355edcb2e8586993644174ca
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308295"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242361"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -29,24 +29,23 @@ Následující informace zobrazují aktuálně podporované [Microsoft Azure nab
 
 | **Kategorie**  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** | **Data dostupná z** |
 | --- | --- | --- | --- | --- |
-| **Azure Německo** | [Azure Německo – průběžné platby](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P | 2\. října 2018<sup>2</sup> |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Květen 2014<sup>1</sup> |
-| **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Květen 2014<sup>1</sup> |
-| **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Květen 2014<sup>1</sup> |
-| **Smlouva o zákaznících Microsoftu** | [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Není k dispozici | Březen 2019<sup>3</sup> |
-| **Smlouva o zákaznících Microsoftu** | [Microsoft Azure plán pro vývoj a testování](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Není k dispozici | Březen 2019<sup>3</sup> |
-| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p) <sup>4</sup> . | MSDN_2014-09-01 | MS-AZR-0062P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Bezplatná zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p) <sup>4</sup> .         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p) <sup>4</sup> .      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P | 2\. října 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p) <sup>4</sup> .     | MPN_2014-09-01 | MS-AZR-0029P | 2\. října 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2\. října 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2\. října 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2\. října 2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2\. října 2018<sup>2</sup> |
+| **Smlouva Enterprise (EA)** | Enterprise pro vývoj/testování                                                        | MSDNDevTest_2014-09-01 | MS-AZR – 0148P | Květen 2014<sup>1</sup> |
+| **Smlouva Enterprise (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR – 0017P | Květen 2014<sup>1</sup> |
+| **Smlouva o zákaznících Microsoftu** | [Plán Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
+| **Smlouva o zákaznících Microsoftu** | [Microsoft Azure plán pro vývoj a testování](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Nevztahuje se | Březen 2019<sup>3</sup> |
+| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR – 0062P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR – 0003P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR – 0023P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR – 0025P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Bezplatná zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p)<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR – 0044P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | [Systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p)<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR – 0111P | 2\. října 2018<sup>2</sup> |
+| **Průběžné platby** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P-MS-AZR-0125P, MS-AZR-0128P-MS-AZR-0130P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)<sup>4</sup>     | MPN_2014-09-01 | MS-AZR – 0029P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR – 0059P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR – 0060P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR – 0063P | 2\. října 2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR – 0064P | 2\. října 2018<sup>2</sup> |
 
 _<sup>**1**</sup> pro data před 1. května 2014 navštivte [portál Azure Enterprise](https://ea.azure.com)._
 
@@ -61,15 +60,15 @@ Následující nabídky ještě nejsou podporované:
 | Kategorie  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** |
 | --- | --- | --- | --- |
 | **Azure Německo** | [Azure Německo – průběžné platby](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Poskytovatel Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
+| **Poskytovatel Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR – 0145P |
 | **Poskytovatel Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Poskytovatel Cloud Solution Provider (CSP)** | Azure Germany v CSP pro Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **Průběžné platby**                 | Azure for Students Starter | DreamSpark_2015 – 02 – 01 | MS-AZR-0144P |
-| **Průběžné platby** | [Azure pro studenty](https://azure.microsoft.com/offers/ms-azr-0170p) <sup>4</sup> . | AzureForStudents_2018-01-01 | MS-AZR-0170P |
-| **Průběžné platby**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
-| **Plány podpory** | Standard Support                    | Default_2014-09-01 | MS-AZR-0041P |
-| **Plány podpory** | Podpora Professional Direct         | Default_2014-09-01 | MS-AZR-0042P |
-| **Plány podpory** | Podpora pro vývojáře                   | Default_2014-09-01 | MS-AZR-0043P |
+| **Průběžné platby**                 | Azure for Students Starter | DreamSpark_2015 – 02 – 01 | MS-AZR – 0144P |
+| **Průběžné platby** | [Azure pro studenty](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018 – 01 – 01 | MS-AZR – 0170P |
+| **Průběžné platby**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016 – 01 – 01 | MS-AZR – 0036P |
+| **Plány podpory** | Standard Support                    | Default_2014-09-01 | MS-AZR – 0041P |
+| **Plány podpory** | Podpora Professional Direct         | Default_2014-09-01 | MS-AZR – 0042P |
+| **Plány podpory** | Podpora pro vývojáře                   | Default_2014-09-01 | MS-AZR – 0043P |
 | **Plány podpory** | Plán podpory pro Německo                | Default_2014-09-01 | MS-AZR-DE-0043P |
 | **Plány podpory** | Azure Government Standard Support   | Default_2014-09-01 | MS-AZR-USGOV-0041P |
 | **Plány podpory** | Azure Government pro – Direct support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
@@ -100,7 +99,7 @@ _<sup>**6**</sup> nákupů na tržišti není v tuto chvíli k dispozici pro nab
 
 _<sup>**7**</sup> nákupy rezervací jsou v tuto chvíli dostupné jenom pro účty smlouva Enterprise (EA)._
 
-**Metadata**
+**Mezipaměť**
 
 | **Obsaženy** | **Nezahrnuto** |
 | --- | --- |
@@ -147,6 +146,6 @@ Historická data pro nabídky na základě kreditu a platby se nemusí shodovat 
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).
+- Pokud jste ještě nedokončili první rychlý Start pro Cost Management, přečtěte si ho v části [zahájení analýzy nákladů](quick-acm-cost-analysis.md).

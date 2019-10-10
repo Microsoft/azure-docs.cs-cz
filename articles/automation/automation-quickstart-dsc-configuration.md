@@ -1,72 +1,72 @@
 ---
-title: Rychlý start Azure – Konfigurace virtuálního počítače s využitím DSC | Dokumentace Microsoftu
-description: Konfigurace sady LAMP na virtuálním počítači s Linuxem s využitím konfigurace požadovaného stavu
+title: Rychlý Start Azure – konfigurace virtuálního počítače s využitím DSC | Microsoft Docs
+description: Konfigurace sady LAMP na virtuálním počítači se systémem Linux s konfigurací požadovaného stavu
 services: automation
 ms.service: automation
 ms.subservice: dsc
-keywords: dsc, configuration, automation
+keywords: DSC, konfigurace, automatizace
 author: KrisBash
 ms.author: krbash
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850567"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243461"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
 
-Povolení konfigurace požadovaného stavu (DSC) vám umožní spravovat a monitorovat konfigurace vašich serverů s Windows a Linuxem. Konfigurace, které se odchylují o požadované konfigurace, je možné identifikovat nebo automaticky opravit. Tento rychlý start prochází jednotlivé kroky k připojení virtuálního počítače s Linuxem a nasazení sady LAMP s využitím DSC.
+Povolením konfigurace požadovaného stavu (DSC) můžete spravovat a monitorovat konfigurace serverů s Windows a Linux. Konfigurace, které se posunou od požadované konfigurace, se dají identifikovat nebo automaticky opravit. Tento rychlý Start prochází kroky připojení virtuálního počítače se systémem Linux a nasazení zásobníku LAMP s DSC.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-K dokončení tohoto rychlého startu je potřeba:
+K dokončení tohoto rychlého startu potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
-* Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
-* Virtuální počítač Azure Resource Manageru (ne Classic) se systémem Red Hat Enterprise Linux, CentOS nebo Oracle Linux. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Linuxem na webu Azure Portal](../virtual-machines/linux/quick-create-portal.md).
+* Předplatné Azure. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+* Účet Azure Automation. Pokyny k vytvoření Azure Automation účtu Spustit jako najdete v tématu [účet Spustit](automation-sec-configure-azure-runas-account.md)jako pro Azure.
+* Azure Resource Manager virtuální počítač (ne Classic) se spuštěným Red Hat Enterprise Linux, CentOS nebo Oracle Linux. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k Azure na adrese https://portal.azure.com.
+## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+Přihlaste se k Azure na adrese https://portal.azure.com
 
-## <a name="onboard-a-virtual-machine"></a>Připojení virtuálního počítače
-Existuje celá řada různých metod, jak připojit počítač a povolit konfiguraci požadovaného stavu. Tento rychlý start popisuje připojení přes účet Automation. Další informace o různých metodách připojení počítačů ke konfiguraci požadovaného stavu najdete v článku o [připojování](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
+## <a name="onboard-a-virtual-machine"></a>Zprovoznění virtuálního počítače
+Existuje mnoho různých způsobů, jak připojit počítač a povolit konfiguraci požadovaného stavu. Tento rychlý Start popisuje připojování prostřednictvím účtu Automation. Další informace o různých metodách připojení počítačů k požadovaným stavům konfigurace najdete v článku [připojování](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding) .
 
-1. V levém podokně webu Azure Portal vyberte **Účty Automation**. Pokud tuto možnost v levém podokně nevidíte, klikněte na **Všechny služby** a vyhledejte ji ve výsledném zobrazení.
+1. V levém podokně Azure Portal vyberte **účty Automation**. Pokud není zobrazený v levém podokně, klikněte na **všechny služby** a vyhledejte ho ve výsledném zobrazení.
 1. V seznamu vyberte účet Automation.
 1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** .
-2. Kliknutím na **Přidat** otevřete stránku pro výběr virtuálního počítače.
-3. Vyhledejte virtuální počítače, pro který chcete povolit DSC. K vyhledání konkrétního virtuálního počítače můžete použít vyhledávací pole a možnosti filtru.
-4. Klikněte na vybraný virtuální počítač a vyberte **Připojit**.
-5. Vyberte vhodné nastavení DSC pro tento virtuální počítač. Pokud již máte připravenou konfiguraci, můžete ji zadat jako *Název konfigurace uzlu*. Pokud chcete řídit chování konfigurace počítače, můžete nastavit [režim konfigurace](https://docs.microsoft.com/powershell/dsc/metaconfig).
-6. Klikněte na tlačítko **OK**.
+2. Kliknutím na **Přidat** otevřete virtuální počítač vybrat stránku.
+3. Vyhledejte virtuální počítač, pro který chcete povolit DSC. Konkrétní virtuální počítač můžete najít pomocí vyhledávacího pole a možností filtrování.
+4. Klikněte na virtuální počítač a pak vyberte **připojit** .
+5. Vyberte nastavení DSC, která jsou vhodná pro virtuální počítač. Pokud jste už připravili konfiguraci, můžete ji zadat jako *název konfigurace uzlu*. Můžete nastavit [režim konfigurace](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) pro řízení chování konfigurace pro daný počítač.
+6. Klikněte na **OK**.
 
-![Připojení virtuálního počítače Azure k DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
+![Připojování virtuálního počítače Azure do DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
-Zatímco se rozšíření konfigurace požadovaného stavu nasazuje do virtuální počítače, zobrazuje se stav *Připojování*.
+I když je ve virtuálním počítači nasazené rozšíření pro konfiguraci požadovaného stavu, zobrazuje se *připojení.*
 
-## <a name="import-modules"></a>Import modulů
+## <a name="import-modules"></a>Importovat moduly
 
-Moduly obsahují prostředky DSC a řadu jich můžete najít v [Galerii prostředí PowerShell](https://www.powershellgallery.com). Všechny prostředky, které se používají ve vašich konfiguracích, se před zkompilováním musí importovat do účtu Automation. Pro účely tohoto kurzu se vyžaduje modul **nx**.
+Moduly obsahují prostředky DSC a mnoho najdete na [Galerie prostředí PowerShell](https://www.powershellgallery.com). Všechny prostředky, které se používají ve vašich konfiguracích, musí být před kompilací naimportovány do účtu Automation. Pro tento kurz je nutný modul s názvem **NX** .
 
-1. V levém podokně účtu Automation vyberte **Galerie modulů** (v části Sdílené prostředky).
-1. Vyhledejte modul, který chcete importovat, zadáním části jeho názvu: *nx*
-1. Klikněte na modul, který chcete importovat.
-1. Klikněte na **Importovat**.
+1. V levém podokně účtu Automation vyberte **moduly Galerie** (v části sdílené prostředky).
+1. Vyhledejte modul, který chcete importovat, zadáním části názvu: *NX*
+1. Klikněte na modul, který chcete naimportovat.
+1. Klikněte na **importovat** .
 
-![Importování modulu DSC](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
+![Import modulu DSC](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 
 ## <a name="import-the-configuration"></a>Import konfigurace
 
-Tento rychlý start využívá konfiguraci DSC, která na počítači konfiguruje Apache HTTP Server, MySQL a PHP.
+V tomto rychlém startu se používá konfigurace DSC, která na počítači konfiguruje server Apache HTTP, MySQL a PHP.
 
-Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/dsc/configurations).
+Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
 
-V textovém editoru zadejte následující a soubor místně uložte jako `LAMPServer.ps1`.
+V textovém editoru zadejte následující příkaz a uložte ho místně jako `LAMPServer.ps1`.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -101,48 +101,48 @@ configuration LAMPServer {
 
 Import konfigurace:
 
-1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** a pak klikněte na kartu **Konfigurace**.
-2. Klikněte na **+ Přidat**.
-3. Vyberte *Konfigurační soubor*, který jste uložili před tímto krokem.
-4. Klikněte na tlačítko **OK**.
+1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** a pak klikněte na kartu **Konfigurace** .
+2. Klikněte na **+ Přidat** .
+3. Vyberte *konfigurační soubor* , který jste uložili v předchozím kroku.
+4. Klikněte na **OK**.
 
 ## <a name="compile-a-configuration"></a>Kompilace konfigurace
 
-Konfigurace DSC se musí před přiřazením k uzlu zkompilovat do konfigurace uzlu (dokument MOF). Kompilace ověří konfiguraci a umožňuje zadat hodnoty parametrů. Další informace o kompilaci konfigurace najdete v těchto tématech: [Kompilace konfigurací v Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+Konfigurace DSC se musí před přiřazením k uzlu kompilovat do konfigurace uzlu (dokument MOF). Kompilace ověřuje konfiguraci a povoluje zadání hodnot parametrů. Další informace o kompilaci konfigurace naleznete v tématu: [kompilování konfigurací v Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile) .
 
 Kompilace konfigurace:
 
-1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** a pak klikněte na kartu **Konfigurace**.
-1. Vyberte konfiguraci LAMPServer, kterou jste naimportovali v dřívějším kroku.
-1. V možnostech nabídky klikněte na **Zkompilovat** a pak na **Ano**.
-1. V zobrazení Konfigurace se teď ve frontě zobrazí nová *Úloha kompilace*. Až se úloha úspěšně dokončí, budete připraveni přejít k dalšímu kroku. Pokud dojde k nějakým chybám, kliknutím na úlohu kompilace můžete zobrazit podrobnosti.
+1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** a pak klikněte na kartu **Konfigurace** .
+1. Vyberte konfiguraci, kterou jste importovali v předchozím kroku, "LAMPServer".
+1. Z možností nabídky klikněte na **kompilovat** a pak na **Ano** .
+1. V zobrazení konfigurace se zobrazí nová *úloha kompilace* zařazená do fronty. Po úspěšném dokončení úlohy budete připraveni přejít k dalšímu kroku. Pokud dojde k nějakým chybám, můžete kliknutím na úlohu kompilace zobrazit podrobnosti.
 
 ## <a name="assign-a-node-configuration"></a>Přiřazení konfigurace uzlu
 
-Zkompilovanou *konfiguraci uzlu* už je možné přiřadit uzlům DSC. Přiřazení aplikuje konfiguraci na počítač a monitoruje (nebo automaticky opravuje) případné odchylky od této konfigurace.
+Konfiguraci zkompilovaného *uzlu* je možné přiřadit uzlům DSC. Přiřazení aplikuje konfiguraci na počítač a monitoruje (nebo automaticky opravuje) jakoukoli odstavení z této konfigurace.
 
-1. V levém podokně účtu Automation vyberte Konfigurace stavu (DSC) a pak klikněte na kartu **Uzly**.
-1. Vyberte uzel, ke kterému chcete přiřadit konfiguraci.
-1. Klikněte na **Přiřadit konfiguraci uzlu**
-1. Vyberte *konfiguraci uzlu* - **LAMPServer.localhost**, která se přiřadí, a klikněte na **OK**
-1. Zkompilovaná konfigurace se teď přiřazuje k uzlu a stav uzlu se mění na *Probíhá*. Při další pravidelné kontrole si uzel tuto konfiguraci načte, použije ji a ohlásí zpět stav. Načtení konfigurace může uzlu trvat až 30 minut v závislosti na nastavení uzlu. Pokud chcete vynutit okamžitou kontrolu, můžete spustit následující příkaz místně na virtuálním počítači s Linuxem:`sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
+1. V levém podokně účtu Automation vyberte * * konfigurace stavu (DSC) a pak klikněte na kartu **uzly** .
+1. Vyberte uzel, kterému chcete přiřadit konfiguraci.
+1. Klikněte na **přiřadit konfiguraci uzlu** .
+1. Vyberte *konfiguraci uzlu* - **LAMPServer. localhost** -k přiřazení a klikněte na **OK** .
+1. Kompilovaná konfigurace je nyní přiřazena k uzlu a stav uzlu se změní na *čeká na vyřízení*. Při další periodické kontrole uzel načte konfiguraci, použije ho a nahlásí zpět stav. Může trvat až 30 minut, než uzel načte konfiguraci v závislosti na nastavení uzlu. Chcete-li vynutit okamžitou kontrolu, můžete spustit následující příkaz místně na virtuálním počítači se systémem Linux: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![Přiřazení konfigurace uzlu](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)
 
 ## <a name="viewing-node-status"></a>Zobrazení stavu uzlu
 
-Stav všech spravovaných uzlů najdete v účtu Automation v části **Konfigurace stavu (DSC)** na kartě **Uzly**. Zobrazení můžete filtrovat podle stavu, konfigurace uzlu nebo hledání názvu.
+Stav všech spravovaných uzlů najdete v části **Konfigurace stavu (DSC)** a pak na kartě **uzly** v účtu Automation. Zobrazení můžete filtrovat podle stavu, konfigurace uzlu nebo hledání názvu.
 
 ![Stav uzlu DSC](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V rámci tohoto rychlého startu jste připojili virtuální počítač s Linuxem k DSC, vytvořili konfiguraci sady LAMP a nasadili ji do virtuálního počítače. Informace o tom, jak pomocí Automation DSC umožnit průběžné nasazování, najdete v následujícím článku:
+V tomto rychlém startu jste připojili virtuální počítač Linux k DSC, vytvořili konfiguraci pro sadu LAMP a nasadili jste ho do virtuálního počítače. Pokud chcete zjistit, jak můžete použít Automatizace DSC k povolení průběžného nasazování, pokračujte k článku:
 
 > [!div class="nextstepaction"]
-> [Průběžné nasazování do virtuálního počítače pomocí DSC a Chocolatey](./automation-dsc-cd-chocolatey.md)
+> [Průběžné nasazování do virtuálního počítače pomocí DSC a čokolády](./automation-dsc-cd-chocolatey.md)
 
-* Další informace o konfiguraci požadovaného stavu PowerShellu najdete v tématu [Přehled konfigurace požadovaného stavu PowerShellu](https://docs.microsoft.com/powershell/dsc/overview).
-* Další informace o správě Automation DSC z PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/).
+* Další informace o konfiguraci požadovaného stavu PowerShellu najdete v tématu [Přehled konfigurace požadovaného stavu prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
+* Další informace o správě Automatizace DSC z PowerShellu najdete v článku [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)
 * Informace o předávání sestav DSC do Azure Monitor protokolů pro vytváření sestav a upozorňování najdete v tématu [předávání sestav DSC do protokolů Azure monitor](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) . 
 

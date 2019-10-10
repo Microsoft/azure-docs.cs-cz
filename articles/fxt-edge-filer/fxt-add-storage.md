@@ -1,164 +1,164 @@
 ---
-title: Přidání back endové úložné do Microsoft Azure FXT hrany Filer clusteru
-description: Konfigurace back endové úložné a pseudonamespace klienta pro Azure FXT hrany vyfiltrovat
+title: Přidání úložiště back-endu do clusteru Microsoft Azure FXT Edge souborového
+description: Jak nakonfigurovat back-end úložiště a klientské pseudonamespace pro Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 4a69aa7838e08c83b47c5f0248e821edf86b3990
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543364"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256064"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Kurz: Přidat back endové úložné a nakonfigurovat virtuální obor názvů 
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Kurz: přidání back-endu úložiště a konfigurace virtuálního oboru názvů 
 
-Tento kurz vysvětluje, jak přidat úložiště okraje zpět ke svojí mezipaměti a jak nastavit virtuální systém souborů klienta. 
+V tomto kurzu se dozvíte, jak přidat back-Edge úložiště pro mezipaměť a jak nastavit virtuální počítač s klientským přístupem. 
 
-Cluster se připojí k back endové úložné systémy pro přístup k žádosti klientů data a ukládat změny trvale než v mezipaměti. 
+Cluster se připojuje k back-endovém systémům úložiště pro přístup k požadavku na datové klienty a trvale ukládá změny, než je mezipaměť. 
 
-Obor názvů je pseudo klienta systému souborů, umožňující vyměnit back endové úložné bez změny pracovních postupů na straně klienta. 
+Obor názvů je systém, který je pro klientské počítače, který umožňuje odkládací úložiště back-endu bez změny pracovních postupů na straně klienta. 
 
 V tomto kurzu se dozvíte: 
 
 > [!div class="checklist"]
-> * Postup přidání back endové úložiště do clusteru Azure FXT hrany vyfiltrovat 
-> * Definování cestu klienta pro úložiště
+> * Postup přidání úložiště back-endu do clusteru Azure FXT Edge souborového 
+> * Jak definovat cestu k klientovi pro úložiště
 
-## <a name="about-back-end-storage"></a>O službě storage back-end
+## <a name="about-back-end-storage"></a>O back-endu úložiště
 
-Cluster Azure FXT hrany Filer používá *základní filer* definice propojení systému back endové úložné FXT clusteru.
+Cluster Azure FXT Edge souborového používá základní definici *souborového* k propojení záložního úložného systému s clusterem FXT.
 
-Azure FXT hrany Filer je kompatibilní s několika oblíbenými NAS hardwaru pro systémy a pomocí prázdné kontejnerů objektů Blob v Azure nebo jiné cloudové úložiště. 
+Azure FXT Edge souborového je kompatibilní s několika oblíbenými hardwarovými systémy NAS a může používat prázdné kontejnery z Azure Blob nebo jiného cloudového úložiště. 
 
-Kontejnery úložiště cloudu musí být prázdný, když se přidá tak, aby všechna data na svazek úložiště cloudu můžete spravovat zcela FXT operačního systému. Vaše existující data můžete přesunout do cloudového kontejneru po přidání do clusteru jako základní filtr kontejneru.
+Kontejnery cloudového úložiště musí být po přidání prázdné, aby operační systém FXT mohl úplně spravovat všechna data ve svazku cloudového úložiště. Po přidání kontejneru do clusteru jako základního souborového můžete přesunout existující data do kontejneru cloudu.
 
-Použijte ovládací Panel Přidat core souborového systému.
+Pomocí ovládacích panelů přidejte do systému základní souborového.
 
 > [!NOTE]
 > 
-> Pokud chcete použít Amazon AWS a Google Cloud storage, je nutné nainstalovat FlashCloud<sup>TM</sup> funkce licence. Kontaktujte zástupce Microsoftu pro licenčního kódu a pak postupujte podle pokynů v Průvodci starší verzi konfigurace [přidáním nebo odebráním licencí funkce](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses).
+> Pokud chcete použít službu Amazon AWS nebo Google Cloud Storage, musíte nainstalovat licenci na funkci FlashCloud<sup>TM</sup> . Pro [Přidání nebo odebrání licencí funkcí](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/install_licenses.html#install-licenses)se obraťte na zástupce společnosti Microsoft a potom postupujte podle pokynů v Průvodci konfigurací starší verze.
 > 
-> Podpora pro Azure Blob storage je zahrnuté v licencích softwaru Azure FXT hrany vyfiltrovat. 
+> Podpora služby Azure Blob Storage je součástí licence na software Azure FXT Edge souborového. 
 
-Podrobnější informace o přidávání křížového core, přečtěte si tyto kapitoly Průvodce konfigurací clusteru:
+Podrobnější informace o přidání základních filers najdete v těchto částech Průvodce konfigurací clusteru:
 
-* Další informace o výběr a příprava na přidání core filer, najdete v článku [práce s Core křížového](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/core_filer_overview.html#core-filer-overview).
-* Podrobné požadavky a pokyny přečtěte si tyto články:
+* Další informace o výběru a přípravě pro přidání základní souborového najdete v článku [práce s jádrem filers](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/core_filer_overview.html#core-filer-overview).
+* Podrobné požadavky a podrobné pokyny najdete v těchto článcích:
 
-  * [Přidání nové Filer Core NAS](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html#create-core-filer-nas)
-  * [Přidání nové Filer Core cloudu](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#create-core-filer-cloud)
+  * [Přidání nového serveru NAS Core souborového](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html#create-core-filer-nas)
+  * [Přidává se nový Cloud Core souborového.](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#create-core-filer-cloud)
 
-Po přidání core filer můžete aktualizovat svoje nastavení na stránce s podrobnostmi Filer základní nastavení.
+Po přidání základního souborového můžete aktualizovat jeho nastavení na stránce základní nastavení podrobností souborového.
 
-## <a name="add-a-core-filer"></a>Přidat filtr core
+## <a name="add-a-core-filer"></a>Přidat základní souborového
 
-Definovat core filer kliknutím **vytvořit** tlačítko **Core Filer** > **spravovat křížového Core** stránku nastavení.
+Kliknutím na tlačítko **vytvořit** na stránce **Core souborového** > **spravovat základní nastavení filers** definujte základní souborového.
 
-![Kliknutím na tlačítko Vytvořit nad seznam filtrech jádra na stránce Správa křížového Core](media/fxt-cluster-config/create-core-filer-button.png)
+![Kliknutím na tlačítko vytvořit nad seznamem základních filers na stránce spravovat základní filers](media/fxt-cluster-config/create-core-filer-button.png)
 
-**Přidat nový filtr Core** Průvodce vás provede procesem vytvoření základní filtr, který odkazuje na back endové úložné. Průvodce konfigurací clusteru obsahuje podrobný popis procesu, který se liší pro systém souborů NFS nebo NAS úložiště a cloudového úložiště (odkazy jsou výše). 
+Průvodce **přidáním nového základního souborového** vás provede procesem vytvoření základního souborovéhou, který odkazuje na vaše back-endové úložiště. Průvodce konfigurací clusteru obsahuje podrobné popisy procesu, který je odlišný pro úložiště NFS/NAS a pro cloudové úložiště (odkazy jsou uvedené výše). 
 
-Dílčí úkoly patří:
+Mezi dílčí úkoly patří:
 
-* Zadejte typ filer core (NAS nebo v cloudu)
+* Zadejte typ základního souborového (NAS nebo Cloud).
 
-  ![První stránka průvodce hardwaru NAS nové základní filtr Možnost "cloud core filer" je zakázané a zobrazí se chybová zpráva o chybí licence.](media/fxt-cluster-config/new-nas-1.png)
+  ![První stránka průvodce hardwarovým serverem NAS New Core souborového Wizard. Možnost "Cloud Core souborového" je zakázána a zobrazí se chybová zpráva s informacemi o chybějící licenci.](media/fxt-cluster-config/new-nas-1.png)
 
-* Nastavte název základní filtr. Zvolte název, který pomáhá pochopit, jaký systém úložiště představuje správce clusteru.
+* Nastavte název základního souborového. Vyberte název, který pomůže správcům clusteru pochopit, který úložný systém představuje.
 
-* Křížového core NAS zadejte plně kvalifikovaný název domény (FQDN) nebo IP adresu. Plně kvalifikovaný název domény se doporučuje pro všechna jádra filtrech a vyžadované pro přístup k protokolu SMB.
+* V části NAS Core filers zadejte plně kvalifikovaný název domény (FQDN) nebo IP adresu. Pro všechny základní filers se doporučuje plně kvalifikovaný název domény a vyžaduje se pro přístup přes protokol SMB.
 
-* Výběr zásad mezipaměti – na druhé stránce průvodce seznam zásad mezipaměti k dispozici pro nové základní filtr. Podrobnosti najdete v článku [mezipaměti zásad část Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html). 
+* Výběr zásad mezipaměti – druhá stránka průvodce obsahuje seznam dostupných zásad mezipaměti pro nové jádro souborového. Podrobnosti najdete v [části zásady mezipaměti v Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html). 
 
-  ![Druhá stránka hardwaru NAS core filer Průvodce; Rozevírací nabídka zásad mezipaměti je otevřená, zobrazuje několik zakázána možnosti a tři možnosti zásad platné mezipaměti (obejít, přečtěte si ukládání do mezipaměti a ukládání do mezipaměti pro čtení a zápis).](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
+  ![Druhá stránka průvodce hardwarovým serverem NAS New Core souborového Wizard; rozevírací nabídka zásady mezipaměti je otevřená, zobrazuje několik zakázaných možností a tři platné možnosti zásad mezipaměti (nepoužívat, ukládání do mezipaměti a čtení a zápis do mezipaměti).](media/fxt-cluster-config/new-nas-choose-cache-policy.png)
 
-* Pro cloudové úložiště je nutné zadat cloudové služby a přístup k přihlašovací údaje, mezi další parametry. Podrobnosti najdete v článku [cloudové služby a protokol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) v Průvodci konfigurace clusteru.
+* V případě cloudového úložiště musíte zadat přihlašovací údaje cloudové služby a přístup mezi další parametry. Podrobnosti najdete v tématu [cloudová služba a protokol](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) v Průvodci konfigurací clusteru.
 
-  ![Informace o filer core cloudu v nástroji Průvodce novou základní filtr](media/fxt-cluster-config/new-core-filer-cloud3.png) 
+  ![Informace o cloud Core souborového v Průvodci novým jádrem souborového](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
-  Pokud jste už přidali přihlašovacích údajů pro přístup k cloudu pro tento cluster, jsou uvedeny v seznamu. Aktualizovat a přidat přihlašovací údaje **clusteru** > **přihlašovací údaje ke cloudu** stránku nastavení. 
+  Pokud jste už přidali přihlašovací údaje cloudového přístupu pro tento cluster, zobrazí se v seznamu. Aktualizujte a přidejte přihlašovací údaje na stránce @no__t **clusteru**nastavení**přihlašovacích údajů cloudu** : 1. 
 
-Po vyplnění všechna požadovaná nastavení v průvodci, klikněte na tlačítko **přidat filtr** tlačítko k odeslání změn.
+Po vyplnění všech požadovaných nastavení v průvodci klikněte na tlačítko **přidat souborového** a odešlete změnu.
 
-Po chvíli se systém úložiště se zobrazí na **řídicí panel** základní seznam filtrech a je přístupný prostřednictvím stránky nastavení filer core.
+Po chvíli se systém úložiště zobrazí v seznamu Core filers ( **řídicí panel** ) a bude se k němu přihlédnout prostřednictvím základních stránek nastavení souborového.
 
-![Základní filtr "Flurry NAS" na stránce nastavení spravovat křížového Core pomocí zobrazení podrobností o filer rozšířit](media/fxt-cluster-config/core-filer-in-manage-page.png)
+![Core souborového "Flurry-NAS" na stránce Správa základních filers nastavení s rozbaleným zobrazením podrobností souborového](media/fxt-cluster-config/core-filer-in-manage-page.png)
 
-Základní filtr na tomto snímku obrazovky chybí vserver. Musíte propojit vserver filer jádra a vytvořit spojení tak, aby klienti mají přístup k úložišti. Tyto kroky jsou popsány níže v [konfigurace oboru názvů](#configure-the-namespace).
+V jádru souborového na tomto snímku obrazovky chybí VServer. Musíte propojit základní souborového s VServer a vytvořit spojení, aby klienti mohli získat přístup k úložišti. Tyto kroky jsou popsané níže v části [Konfigurace oboru názvů](#configure-the-namespace).
 
 ## <a name="configure-the-namespace"></a>Konfigurace oboru názvů
 
-Cluster Azure FXT hrany Filer vytvoří virtuálního systému souborů, volá se *clusteru obor názvů* , která zjednodušuje klientský přístup k datům uloženým na různé back endových systémů. Protože klienti požadují souborů pomocí virtuální cesty, úložných systémů lze přidat nebo nahradit bez nutnosti změny pracovního postupu klienta. 
+Cluster Azure FXT Edge souborového vytvoří virtuální systém souborů pojmenovaný *obor názvů clusteru* , který zjednodušuje klientský přístup k datům uloženým v různých systémech back-end. Vzhledem k tomu, že klienti požadují soubory pomocí virtuální cesty, je možné přidat nebo nahradit systémy úložišť bez nutnosti měnit pracovní postup klienta. 
 
-Obor názvů clusteru také umožňuje cloudu a systémů úložišť NAS v podobné struktury. 
+Obor názvů clusteru taky umožňuje zobrazit cloudové a síťové úložné systémy v podobné struktuře souborů. 
 
-Clusteru vservers udržovat obor názvů a poskytování obsahu pro klienty. Existují dva kroky k vytvoření oboru názvů clusteru: 
+Vservers clusteru udržuje obor názvů a obsluhuje obsah pro klienty. Existují dva kroky pro vytvoření oboru názvů clusteru: 
 
-1. Vytvoření vserver 
-1. Nastavení spojení mezi back endové úložné systémy a cesty klienta systému souborů 
+1. Vytvoření VServer 
+1. Nastavení spojení mezi back-endové systémy úložiště a cestami k systémovým systémům pro klientské počítače 
 
-### <a name="create-a-vserver"></a>Vytvoření vserver
+### <a name="create-a-vserver"></a>Vytvoření VServer
 
-VServers jsou virtuální souborové servery, které řídí tok dat mezi klientem a křížového core clusteru:
+VServers jsou virtuální souborové servery, které řídí způsob toku dat mezi klientem a jádrem filers clusteru:
 
-* VServers hostitele IP adresy klienta
-* VServers vytvořit obor názvů a definovat spojovacích bodech, které se mapují klienta virtuální adresářovou strukturu, exporty u back endové úložné
-* VServers vynutit řízení přístupu k souboru, včetně základní filer export zásad a systémy ověřování uživatele
-* VServers poskytují infrastrukturu protokolu SMB
+* IP adresy pro klientské hostitele VServers
+* VServers vytvořit obor názvů a definovat spojení, která mapují klientské struktury virtuálních adresářů na export v úložišti back-endu
+* VServers vynutila řízení přístupu k souborům, včetně základních zásad exportu souborového a systémů ověřování uživatelů.
+* VServers poskytuje infrastrukturu SMB.
 
-Před zahájením konfigurace vserver clusteru, přečtěte si dokumentaci propojené a prostudovat si zástupce společnosti Microsoft pro obor názvů nápovědy principy a vservers. Pokud používáte sítě VLAN, [je vytvořit](fxt-configure-network.md#adjust-network-settings) před vytvořením vserver. 
+Než začnete konfigurovat cluster vserver, přečtěte si odkazovanou dokumentaci a obraťte se na zástupce Microsoftu, kde najdete nápovědu k oboru názvů a vservers. Pokud používáte sítě VLAN, [vytvořte je](fxt-configure-network.md#adjust-network-settings) ještě před vytvořením VServer. 
 
-Tyto části Průvodce konfigurací clusteru vám pomůže seznámit se s FXT vserver a globální obor názvů funkce:
+Tyto části Průvodce konfigurací clusteru vám pomůžou se seznámení s funkcemi FXT VServer a globálním oborem názvů:
 
-* [Vytváření a práci s VServers](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers)
-* [Pomocí globálního Namespace](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
-* [Vytváření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
+* [Vytváření a práce s VServers](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers)
+* [Použití globálního oboru názvů](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)
+* [Vytvoření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)
 
-Budete potřebovat alespoň jeden vserver pro váš cluster. 
+Pro svůj cluster potřebujete aspoň jeden VServer. 
 
-Pokud chcete vytvořit nový vserver, budete potřebovat následující informace:
+K vytvoření nového VServer potřebujete následující informace:
 
-* Název má být nastavena pro vserver
+* Název, který se má nastavit pro VServer
 
-* Rozsah adres IP klienta vserver bude zpracovávat.
+* Rozsah IP adres směřujících klientovi, které bude VServer zpracovávat
 
-  Při vytváření vserver, je třeba zadat jeden rozsah adres IP souvislé. Další adresy můžete přidat později pomocí **síť směřující klienta** stránku nastavení.
+  Při vytváření VServer je nutné, abyste zadali jeden rozsah souvislých IP adres. Další adresy můžete přidat později pomocí stránky nastavení **sítě klientské sítě** .
 
-* Pokud síť obsahuje virtuální místní sítě, které sítě VLAN pro účely tohoto vserver
+* Pokud má síť sítě VLAN, kterou síť VLAN použijete pro tento VServer
 
-Použití **VServer** > **spravovat VServers** nastavení stránky vytvořte novou vserver. Přečtěte si podrobnosti [vytváření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) v Průvodci konfigurace clusteru. 
+Pomocí stránky **VServer** > **Spravovat nastavení VServers** vytvořte nový VServer. Podrobnosti najdete v [tématu Vytvoření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) v Průvodci konfigurací clusteru. 
 
-![automaticky otevírané okno pro vytvoření nového vserver](media/fxt-cluster-config/new-vserver.png)
+![automaticky otevírané okno pro vytvoření nového VServer](media/fxt-cluster-config/new-vserver.png)
 
-### <a name="create-a-junction"></a>Vytvořit spojení
+### <a name="create-a-junction"></a>Vytvoření spojení
 
-A *spojení* back endové úložné cesta se mapuje na klienta viditelným oboru názvů.
+*Spojení* mapuje cestu k úložišti back-endu na obor názvů viditelný pro klienta.
 
-Tento systém můžete použít ke zjednodušení cesty použité v přípojné body klienta a k jednoduchému škálování kapacity, protože jedna virtuální cesta zvládne úložiště z více jader filtrech.
+Tento systém můžete použít ke zjednodušení cesty používané v přípojných bodech klienta a k bezproblémovému škálování kapacity, protože jedna virtuální cesta může připojovat úložiště od více jader filers.
 
-![Přidat stránku průvodce novou spojení s nastavením vyplněna](media/fxt-cluster-config/add-junction-full.png)
+![Stránka Průvodce přidáním nového spojení s vyplněnými nastaveními](media/fxt-cluster-config/add-junction-full.png)
 
-Odkazovat na [ **VServer** > **Namespace** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) v Průvodci konfigurace clusteru pro kompletní informace o vytváření spojení oboru názvů.
+Kompletní informace o vytvoření spojení oboru názvů najdete v tématu [**obor názvů** **VServer** > ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) v Průvodci konfigurací clusteru.
 
-![VServer > Namespace nastavení stránka zobrazující podrobnosti pro spojení](media/fxt-cluster-config/namespace-populated.png)
+![Stránka nastavení oboru názvů VServer > zobrazující podrobnosti o spojení](media/fxt-cluster-config/namespace-populated.png)
 
-## <a name="configure-export-rules"></a>Konfigurovat pravidla pro export
+## <a name="configure-export-rules"></a>Konfigurace pravidel exportu
 
-Až budete mít, vserver a vyfiltrovat core, by měl přizpůsobení pravidel exportu a exportovat zásady, které řídí, jak mohou klienti získat přístup souborů na exporty filer core.
+Až budete mít VServer i Core souborového, měli byste přizpůsobit pravidla exportu a exportovat zásady, které řídí, jak můžou klienti přistupovat k souborům v základních exportech souborového.
 
-Nejprve **VServer** > **exportovat pravidla** stránky přidávat nová pravidla, chcete-li změnit výchozí zásady nebo vytvořte vlastní zásadu vlastní export.
+Nejprve pomocí stránky **VServer** > **export pravidel** přidejte nová pravidla, upravte výchozí zásady nebo vytvořte vlastní zásadu exportu.
 
-Za druhé, použijte **VServer** > **exportovat zásady** stránce vlastní zásadu chcete uplatnit na vaší základní filer exporty při přístupu prostřednictvím tohoto vserver.
+Za druhé použijte stránku **VServer** > **Export zásad** , pomocí které můžete přizpůsobené zásady použít pro export základních souborovéhoů při použití v tomto VServer.
 
-Přečtěte si článek Průvodce konfigurací clusteru [řízení přístupu ke Core Filer exporty](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) podrobnosti.
+Podrobnosti najdete v článku Průvodce konfigurací clusteru [řízení přístupu k základním exportům souborového](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) .
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po přidání úložiště a konfiguraci oboru názvů klienta, dokončete počáteční nastavení vašeho clusteru: 
+Po přidání úložiště a konfiguraci oboru názvů s přístupem klienta dokončete počáteční nastavení clusteru: 
 
 > [!div class="nextstepaction"]
 > [Konfigurace síťových nastavení clusteru](fxt-configure-network.md)

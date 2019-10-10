@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a83112c1555d50976e5a20106b877f5c0099a5f3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178145"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244831"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Požadavky na síť pro řešení Azure VMware podle CloudSimple
 
@@ -58,6 +58,7 @@ Připojení VPN typu Point-to-site umožňuje přístup k síti CloudSimple z kl
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Nastavení místní brány firewall pro přístup k vašemu privátnímu cloudu](on-premises-firewall-configuration.md)
 * [Rychlý Start – vytvoření služby CloudSimple](quickstart-create-cloudsimple-service.md)
 * [Rychlý Start – konfigurace privátního cloudu](quickstart-create-private-cloud.md)
 * Další informace o [síťových připojeních Azure](cloudsimple-azure-network-connection.md)

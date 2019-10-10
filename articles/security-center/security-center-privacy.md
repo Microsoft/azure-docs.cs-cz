@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996734"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254613"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat v Azure Security Center
 Tento článek poskytuje informace o tom, jak můžete spravovat data uživatelů v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu, odstranění a exportu dat.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji. Další informace o rolích čtenářů, vlastníků a přispěvatelů najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) . Další informace o roli správce účtu najdete v tématu [Správci předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md) .
+Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet má přístup k zákaznickým datům v nástroji. Další informace o roli správce účtu najdete v tématu [předdefinované role pro řízení přístupu na základě role v Azure](../role-based-access-control/built-in-roles.md) , kde se dozvíte víc o rolích čtenářů, vlastníků a přispěvatelů. Viz [Správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Hledání a identifikace osobních údajů
-Uživatel Security Center může pomocí Azure Portal zobrazit jejich osobní údaje. Security Center ukládá pouze podrobnosti o kontaktech zabezpečení, jako jsou e-mailové adresy a telefonní čísla. Další informace najdete [v tématu Zadání podrobností o kontaktu zabezpečení v Azure Security Center](security-center-provide-security-contact-details.md) .
+Uživatel Security Center může pomocí Azure Portal zobrazit jejich osobní údaje. Security Center ukládá pouze podrobnosti o kontaktech zabezpečení, jako jsou e-mailové adresy a telefonní čísla. Další informace najdete v tématu [zadání podrobností o kontaktu zabezpečení v Azure Security Center](security-center-provide-security-contact-details.md).
 
-V Azure Portal může uživatel zobrazit povolené konfigurace IP pomocí funkce přístup k virtuálnímu počítači za běhu Security Center. Další informace najdete v tématu [Správa přístupu k virtuálnímu počítači pomocí za běhu](security-center-just-in-time.md) .
+V Azure Portal může uživatel zobrazit povolené konfigurace IP pomocí funkce přístup k virtuálnímu počítači za běhu Security Center. Další informace najdete v tématu [Správa přístupu k virtuálnímu počítači pomocí za běhu](security-center-just-in-time.md).
 
-V Azure Portal může uživatel zobrazit výstrahy zabezpečení, které poskytuje Security Center včetně IP adres a podrobností útočníka. Další informace najdete [v tématu Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) .
+V Azure Portal může uživatel zobrazit výstrahy zabezpečení, které poskytuje Security Center včetně IP adres a podrobností útočníka. Další informace najdete v tématu [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md).
 
 ## <a name="classifying-personal-data"></a>Klasifikace osobních údajů
-Nemusíte klasifikovat osobní údaje, které byly nalezeny ve funkci kontaktu zabezpečení Security Center. Uložená data jsou e-mailová adresa (nebo několik e-mailových adres) a telefonní číslo. [Kontaktní údaje](security-center-provide-security-contact-details.md) se ověřují pomocí Security Center.
+Nemusíte klasifikovat osobní údaje, které se našly ve funkci kontaktování zabezpečení Security Center. Uložená data jsou e-mailová adresa (nebo několik e-mailových adres) a telefonní číslo. [Kontaktní údaje](security-center-provide-security-contact-details.md) se ověřují pomocí Security Center.
 
 Nemusíte klasifikovat IP adresy a čísla portů uložená funkcí [za](security-center-just-in-time.md) běhu Security Center.
 
@@ -60,12 +60,12 @@ Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo sp
 
 Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může pomocí Azure Portal odstranit [zásady za běhu](security-center-just-in-time.md) .
 
-Uživatel Security Center nemůže odstranit incidenty výstrahy. V důsledku potřeb zabezpečení se [incident výstrahy](security-center-managing-and-responding-alerts.md) považuje za data určená jen pro čtení.
+Security Center uživatel nemůže odstranit incidenty výstrahy. Z bezpečnostních důvodů se [incident výstrahy](security-center-managing-and-responding-alerts.md) považuje za data jen pro čtení.
 
 ## <a name="exporting-personal-data"></a>Export osobních údajů
 Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvatel nebo účet může exportovat [data kontaktů zabezpečení](security-center-provide-security-contact-details.md) podle těchto údajů:
 
-- Probíhá kopírování z Azure Portal
+- Kopírování z Azure Portal
 - Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Uživatel Security Center přiřazený k roli Čtenář, vlastník, přispěvate
 
 Security Center uživatel, kterému je přiřazena role správce účtu, může exportovat [zásady za běhu](security-center-just-in-time.md) , které obsahují IP adresy:
 
-- Probíhá kopírování z Azure Portal
+- Kopírování z Azure Portal
 - Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,13 +81,13 @@ Security Center uživatel, kterému je přiřazena role správce účtu, může 
 
 Správce účtu může exportovat podrobnosti výstrahy podle těchto údajů:
 
-- Probíhá kopírování z Azure Portal
+- Kopírování z Azure Portal
 - Spouští se volání služby Azure REST API, získat HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](https://msdn.microsoft.com/library/mt704050.aspx) .
+Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](https://msdn.microsoft.com/library/mt704050.aspx).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Omezení používání osobních údajů pro profilaci nebo marketing bez souhlasu
 Uživatel Security Center se může rozhodnout, že se má odhlásit a odstranit [data kontaktů zabezpečení](security-center-provide-security-contact-details.md).

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677865"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243516"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -59,7 +59,7 @@ Aktualizace softwaru můžete nasadit a nainstalovat do počítačů, které vy�
 
 Plánované nasazení definuje, které cílové počítače obdrží příslušné aktualizace, buď explicitním zadáním počítačů, nebo výběrem [skupiny počítačů](../azure-monitor/platform/computer-groups.md) , která je založená na hledání protokolu konkrétní sady počítačů, nebo pomocí [dotazu Azure](#azure-machines) . Tím se dynamicky vybraly virtuální počítače Azure na základě zadaných kritérií. Tyto skupiny se liší od [Konfigurace oboru](../azure-monitor/insights/solution-targeting.md), která se používá pouze k určení, které počítače získávají sady Management Pack umožňující řešení.
 
-Také zadáte plán, který schválíte a nastavíte časový úsek, během kterého lze aktualizace nainstalovat. Tato doba se nazývá časový interval pro správu a údržbu. Pokud je restartování nutné a vybrali jste vhodnou možnost restartování, je v časovém intervalu pro správu a údržbu vyrezervováno deset minut. Pokud provádění oprav trvá déle, než bylo očekáváno, a v časovém intervalu údržby je méně než deset minut, nebude k dispozici restart.
+Také zadáte plán, který schválíte a nastavíte časový úsek, během kterého lze aktualizace nainstalovat. Tato doba se nazývá časový interval pro správu a údržbu. 20 minut časového období údržby je vyhrazeno pro restartování, pokud je potřeba restartovat počítač a vybrali jste příslušnou možnost restartování. Pokud provádění oprav trvá déle, než bylo očekáváno, a v časovém intervalu údržby je méně než dvacet minut, nebude k dispozici restart.
 
 Aktualizace se instalují pomocí runbooků v Azure Automation. Tyto Runbooky nemůžete zobrazit a runbooky nevyžadují žádnou konfiguraci. Když se vytvoří nasazení aktualizace, vytvoří nasazení aktualizace plán, který spustí v zadaném čase pro zahrnuté počítače sadu Master Update Runbook. Hlavní runbook spouští podřízený Runbook na každém agentovi pro instalaci požadovaných aktualizací.
 
@@ -92,10 +92,10 @@ V následující tabulce je uveden seznam operačních systémů, které nejsou 
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Klient systému Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.        |
-|Windows Server 2016 nano Server     | Není podporováno.       |
-|Uzly služby Azure Kubernetes | Není podporováno. Použijte postup opravy podrobně popsaný v části [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
+|Windows Server 2016 nano Server     | Není podporované.       |
+|Uzly služby Azure Kubernetes | Není podporované. Použijte postup opravy podrobně popsaný v části [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
-### <a name="client-requirements"></a>Požadavky na klienta
+### <a name="client-requirements"></a>Požadavky na klienty
 
 #### <a name="windows"></a>Windows
 
@@ -194,7 +194,7 @@ Pokud chcete ověřit, že skupina pro správu Operations Manager komunikuje s p
 
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporované | Description |
 | --- | --- | --- |
 | Agenti Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů systému Windows a poté inicializuje instalaci požadovaných aktualizací. |
 | Agenti Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -235,13 +235,13 @@ Virtuální počítače vytvořené z imagí RHEL (na Red Hat Enterprise Linux v
 
 Pokud chcete vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. Otevře se stránka **nové nasazení aktualizace** . Zadejte hodnoty vlastností popsaných v následující tabulce a pak klikněte na **vytvořit**:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 | --- | --- |
-| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
+| Jméno |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
 | Skupiny, které se mají aktualizovat |V případě počítačů Azure definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. </br></br>V případě počítačů mimo Azure vyberte existující uložené hledání a vyberte skupinu počítačů mimo Azure, které chcete zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups) .|
 | Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **počítače**, připravenost počítače se zobrazí ve sloupci **připravenosti agenta aktualizace** .</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md) |
-|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete.|
+|Update classifications|Vyberte všechny klasifikace aktualizací, které potřebujete.|
 |Zahrnout nebo vyloučit aktualizace|Tím se otevře stránka **zahrnutí/vyloučení** . Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu věnovaném [chování při zahrnutí](automation-update-management.md#inclusion-behavior) . |
 |Nastavení plánu|Vyberte čas, kdy se má spustit, a pro opakování vyberte buď jednou, nebo opakovanou.|
 | Pre-Scripts + post-Scripts|Vyberte skripty, které se spustí před nasazením a po něm.|
@@ -289,13 +289,13 @@ Vyberte kartu **nasazení aktualizací** , abyste zobrazili seznam existujícíc
 
 Pokud chcete zobrazit nasazení aktualizace z REST API, přečtěte si téma [spuštění konfigurace aktualizací softwaru](/rest/api/automation/softwareupdateconfigurationruns).
 
-## <a name="update-classifications"></a>Klasifikace aktualizací
+## <a name="update-classifications"></a>Update classifications
 
 V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
 
 ### <a name="windows"></a>Windows
 
-|Mazal  |Popis  |
+|Klasifikace  |Description  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
 |Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
@@ -304,11 +304,11 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
 |Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
-|Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
+|Updates     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 ### <a name="linux-2"></a>Linux
 
-|Mazal  |Popis  |
+|Klasifikace  |Description  |
 |---------|---------|
 |Kritické aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo nejsou aktualizace zabezpečení.        |
@@ -608,7 +608,7 @@ Update Management poskytuje možnost cílit na dynamickou skupinu virtuálních 
 
 Tyto skupiny jsou definovány dotazem, když je zahájeno nasazení aktualizace, členové této skupiny budou vyhodnocováni. Dynamické skupiny nefungují s klasickými virtuálními počítači. Při definování dotazu lze společně použít následující položky k naplnění dynamické skupiny.
 
-* formě
+* Předplatné
 * Skupiny prostředků
 * Polohy
 * Značky

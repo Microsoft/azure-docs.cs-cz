@@ -198,22 +198,20 @@
                   href: /sql/connect/ruby/ruby-driver-for-sql-server
     - name: 'Zálohování, obnovení, vysoká dostupnost (BCDR)'
       items:
-        - name: Obnovení pomocí záloh
-          href: sql-database-recovery-using-backups.md
-        - name: Zrychlené obnovení databáze
-          href: sql-database-accelerated-database-recovery.md
-        - name: Pokyny k zotavení po výpadku
-          href: sql-database-disaster-recovery.md
-        - name: Postupy zotavení
-          href: sql-database-disaster-recovery-drills.md
         - name: Kontinuita podnikových procesů
           href: sql-database-business-continuity.md
         - name: Vysoká dostupnost
           href: sql-database-high-availability.md
-        - name: Automatizované zálohy
-          href: sql-database-automated-backups.md
-        - name: Dlouhodobé uchovávání záloh
-          href: sql-database-long-term-retention.md
+        - name: Zálohování
+          items:
+            - name: Automatizované zálohy
+              href: sql-database-automated-backups.md
+            - name: Obnovení pomocí záloh
+              href: sql-database-recovery-using-backups.md
+            - name: Zrychlené obnovení databáze
+              href: sql-database-accelerated-database-recovery.md
+            - name: Dlouhodobé uchovávání záloh
+              href: sql-database-long-term-retention.md
         - name: Skupiny převzetí služeb při selhání a geografická replikace
           items:
             - name: Aktivní geografická replikace
@@ -222,6 +220,10 @@
               href: sql-database-auto-failover-group.md
             - name: Konfigurace zabezpečení pro repliky
               href: sql-database-geo-replication-security-config.md
+            - name: Pokyny k zotavení po výpadku
+              href: sql-database-disaster-recovery.md
+            - name: Postupy zotavení
+              href: sql-database-disaster-recovery-drills.md
     - name: Monitorování a ladění
       items:
         - name: Dokumentace k monitorování a ladění

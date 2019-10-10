@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/07/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9caf82d2fa4683e845d23b5496f9e7b8f9682ec7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e99bdd92d4a1aab833a95943b22aaabe7f0daa1d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234821"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248662"
 ---
 # <a name="vm-series-vcpu-limit-increase"></a>Zvýšení limitu virtuálních jader řady virtuálních počítačů
 
@@ -29,7 +29,7 @@ Nyní můžete požádat o zvýšení prostřednictvím okna **help + support** 
 
 Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help + podpora" v Azure, které je dostupné v Azure Portal. 
 
-1. V https://portal.azure.com klikněte na tlačítko **help + podpora**.
+1. V https://portal.azure.com vyberte možnost **help + podpora**.
 
    ![Pomoc a podpora](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -45,7 +45,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
    ![Vybrat příspěvek odběru](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Vyberte **COMPUTE – virtuální počítač (jádra – vCPU) zvýšení limitu** předplatného v rozevíracím seznamu **typ kvóty** . 
+5. Vyberte **COMPUTE – virtuální počítač (jádra – vCPU) zvýšení limitu předplatného** v rozevíracím seznamu **typ kvóty** . 
 
    ![Vybrat typ kvóty](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -70,7 +70,7 @@ Podle pokynů níže vytvořte žádost o podporu prostřednictvím okna "Help +
 
 Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřednictvím okna Azure využití + kvóty dostupného v Azure Portal. 
 
-1. V https://portal.azure.com vyberte **odběry**.
+1. Z https://portal.azure.com vyberte **odběry**.
 
    ![Předplatná](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -86,7 +86,7 @@ Pomocí následujících pokynů můžete vytvořit žádost o podporu prostřed
 
    ![Zvýšení žádosti](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5. Vyberte **COMPUTE-VM (cores-vCPU) limit** předplatného, který se zvyšuje jako typ citace. 
+5. Vyberte **COMPUTE-VM (cores-vCPU) limit předplatného** , který se zvyšuje jako typ citace. 
 
    ![Vyplnit formulář](./media/resource-manager-core-quotas-request/select-quota-type.png)
    

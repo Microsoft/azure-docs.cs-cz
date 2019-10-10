@@ -1,35 +1,35 @@
 ---
-title: Microsoft Azure FXT hrany Filer – další dokumentace
-description: Další referenční dokumenty pro instalaci Azure FXT hrany vyfiltrovat
+title: Microsoft Azure FXT Edge souborového – další dokumentace
+description: Další referenční dokumenty pro instalaci Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6b04537da7c26cdeff6cac9f262e138c29bee37a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453863"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254916"
 ---
 # <a name="additional-documentation"></a>Další dokumentace 
 
-Některé prostředky mimo tento web docs.microsoft.com může pomoct pochopit a pracovat s Microsoft Azure FXT hrany Filer hybridní mezipamětí.
+Některé prostředky mimo tento web docs.microsoft.com vám pomůžou pochopit a pracovat s Microsoft Azureou Souborovéhoou hybridní mezipamětí FXT Edge.
 
-## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT dokumentaci k Azure cache
+## <a name="avere-vfxt-for-azure-cache-documentation"></a>Dokumentace k avere vFXT pro mezipaměť Azure
 
-[Avere vFXT pro Azure](https://docs.microsoft.com/azure/avere-vfxt/) je podobný clusteru mezipaměti produkt, který používá virtuální uzly v Microsoft Azure. Je vytvořen pomocí webu Azure portal, ale používá stejný software konfigurační panel ovládacího prvku jako mezipaměť Azure FXT hrany Filer hardwaru. 
+[Avere vFXT for Azure](https://docs.microsoft.com/azure/avere-vfxt/) je podobný produkt mezipaměti clusteru, který používá virtuální uzly v Microsoft Azure. Je vytvořen pomocí Azure Portal, ale používá stejný konfigurační software ovládacích panelů jako mezipaměť hardwaru Azure FXT Edge souborového. 
 
-## <a name="legacy-hardware-documentation"></a>Dokumentace ke službě starší verze hardwaru 
+## <a name="legacy-hardware-documentation"></a>Starší verze dokumentace k hardwaru 
 
-Tato technologie se předtím používal v produkty Avere systémy. Dokumentace pro uživatele na tyto starší produkty je k dispozici na [web dokumentace starší verze Avere](https://azure.github.io/Avere/). 
+Tato technologie se dřív použila v produktech od avere systémů. Dokumentace uživatele pro tyto starší produkty je k dispozici na [webu dokumentace ke starší verzi avere](https://azure.github.io/Avere/). 
 
-Konkrétně tyto dokumenty můžou mít užitečné informace:
+Konkrétně tyto dokumenty mohou mít užitečné podrobnosti:
 
-* [Příručka pro konfiguraci clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) – obsahuje přehled informací o běžných úlohách nastavení a správu clusteru a obsahuje podrobné vysvětlení na stránkách nastavení clusteru 
+* [Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) – obsahuje přehled informací o běžných úlohách instalace a správy clusteru a obsahuje podrobné vysvětlení stránek nastavení clusteru. 
 
-* [Řídicí panel Průvodce](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) -vysvětluje funkce ovládacího panelu **řídicí panel** kartu
+* [Průvodce řídicím](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) panelem – Vysvětlení funkcí karty **řídicí** panel v Ovládacích panelech
 
-* [Průvodce vytvořením clusteru FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) – Průvodce vytvoření clusteru z předchozí produkty
+* [Průvodce vytvořením clusteru FXT](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) – Průvodce vytvořením clusteru z předchozích produktů
 

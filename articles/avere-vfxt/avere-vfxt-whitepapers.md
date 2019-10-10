@@ -1,47 +1,47 @@
 ---
-title: Dokumenty White Paper a Případová studie - Avere vFTX pro Azure
-description: Odkazy ke stažení dokumenty White Paper, případové studie a další články, které ilustrují Avere vFXT pro Azure a jak je možné.
+title: Dokumenty White Paper a případové studie – avere vFTX pro Azure
+description: Odkazy na dokumenty ke stažení, případové studie a další články, které ilustrují avere vFXT pro Azure a jak se dají použít.
 ms.service: avere-vfxt
 author: ekpgh
-ms.author: v-erkell
+ms.author: rohogue
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 257164a7417d4356c83cd1804939973b7029a4f1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409188"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255344"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX pro Azure dokumenty White Paper a další prostředky 
+# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX pro dokumenty White Paper a další materiály pro Azure 
 
-Prostředky v této tabulce zahrnují případové studie, dokumenty White Paper technologie, infografiky a další články, které vám pomůžou pochopit, jak Avere vFXT pro Azure zapadá do vašich pracovních postupů. 
+Prostředky v této tabulce obsahují případové studie, technické dokumenty, infografika a další články, které vám pomůžou pochopit, jak avere vFXT pro Azure zapadá do vašeho pracovního postupu. 
 
-## <a name="deploy-agisoft-photoscan-on-azure"></a>Nasazení Agisoft PhotoScan v Azure
+## <a name="deploy-agisoft-photoscan-on-azure"></a>Nasazení Agisoftého fotokontroly v Azure
 
-**Odkaz na:** [Nasazení pro Azure nebo BeeGFS Agisoft PhotoScan v Azure pomocí Avere vFXT](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf) 
+**Odkaz:** [nasazení Agisoftého fotokontroly v Azure s avere vFXT pro Azure nebo BeeGFS](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf) 
 
-Tato příručka obsahuje podrobné pokyny pro instalaci Agisoft PhotoScan photogrammetry softwaru se opírá o Avere vFXT úložiště nebo BeeGFS paralelní systém souborů. Autor Paulo obchodních da Costa z poradního, ukazuje, jak nastavit PhotoScan na Azure Virtual Machines (VM). Vysoce výkonné úložiště urychluje dobu zpracování a výsledky jeho srovnávací testy jsou zahrnuty. Toto prostředí je možné škálovat nahoru i dolů podle potřeby a podporuje terabajtů úložiště bez omezení výkonu.
+Tato příručka poskytuje podrobné pokyny pro instalaci Agisoft softwaru Photogrammetry pro fotokontrolu pomocí avere vFXT úložiště nebo BeeGFS paralelního systému souborů. Autor, Paulo Marques da Kostarika zákaznického poradního, ukazuje, jak nastavit fotokontrolu na Azure Virtual Machines (virtuálních počítačích). Vysoce výkonné úložiště zrychluje dobu zpracování a zahrnuje výsledky testů srovnávacích testů. Toto prostředí je možné škálovat nahoru a dolů podle potřeby a podporuje terabajty úložiště bez obětování výkonu.
 
-## <a name="datasheet-avere-vfxt-for-azure"></a>Datový list: Avere vFXT for Azure
+## <a name="datasheet-avere-vfxt-for-azure"></a>Datový list: avere vFXT pro Azure
 
-**Odkaz na:** [Avere vFXT pro datový list Azure](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
+**Odkaz:** [avere vFXT pro datový list Azure](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
 
-Tento článek dvě stránky obsahuje základní informace a scénáře použití diagramy, které popisují, jak používat Avere vFXT pro Azure v několika.
+Tato dvě stránka obsahuje základní informace a diagramy, které vysvětlují, jak používat avere vFXT pro Azure v několika scénářích případu použití.
 
 ## <a name="hybrid-cloud-for-file-based-workloads"></a>Hybridní cloud pro úlohy založené na souborech
 
-**Odkaz na:** [Infografika: Budování hybridního cloudu pro souborové úlohy](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
+**Odkaz:** [infografika: vytvoření hybridního cloudu pro souborové úlohy](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
 
-Tento obrázek zobrazuje součásti a rozložení pro přidání infrastruktury cloudu do stávajícího systému pomocí Avere vFXT pro Azure. Použití Avere vFXT pro Azure a rozšířit výpočetní kapacity s vaší stávající místní infrastrukturu, nebo přesouvání dat a výpočty v cloudu na základě dočasný nebo trvalý.  
+Tento obrázek ukazuje komponenty a rozložení pro použití avere vFXT pro Azure k přidání cloudové infrastruktury do stávajícího systému. Avere vFXT pro Azure použijte k rozšíření výpočetní kapacity se stávající místní infrastrukturou nebo k dočasnému nebo trvalému přesunu dat a výpočtů do cloudu.  
 
 ## <a name="cloud-bursting"></a>Shlukování cloudu 
 
-**Odkaz na:** [Cloud bursting pro vysoce výkonné, škálovatelné NAS](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf) 
+**Odkaz:** [shlukování cloudu pro vysoký výkon, škálovatelný server NAS](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf) 
 
- Tento cloud bursting přehled řešení se dozvíte, jak rychle dokážete data dostupná pro nondisruptively cloudových výpočetních prostředků s využitím Avere vFXT pro Azure.
+ V tomto řešení shlukování cloudu se dozvíte, jak můžete pomocí avere vFXT pro Azure rychle vytvářet data pro cloudové výpočetní prostředky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Chcete-li pokračovat, plánování Avere vFXT pro nasazení v Azure, přečtěte si [plánování vašeho systému vFXT Avere](avere-vfxt-deploy-plan.md).
-* Pro odpovědi na konkrétní otázky najdete [Avere vFXT pro Azure – nejčastější dotazy](avere-vfxt-faq.md).
+* Pokud chcete pokračovat v plánování avere vFXT pro nasazení Azure, přečtěte si téma [Plánování systému avere vFXT](avere-vfxt-deploy-plan.md).
+* Odpovědi na konkrétní otázky najdete v tématu [Nejčastější dotazy k avere vFXT pro Azure](avere-vfxt-faq.md).

@@ -1,38 +1,38 @@
 ---
-title: Připojte vFXT Avere – Azure
-description: Jak připojit klienti s Avere vFXT pro Azure
+title: Připojení avere vFXT – Azure
+description: Jak připojit klienty pomocí avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c461b379629927e8f367fad9bfc70b87413f47b7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409360"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255382"
 ---
-# <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru Avere vFXT  
+# <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru avere vFXT  
 
-Postupujte podle těchto kroků se připojíte ke svému clusteru vFXT klientské počítače.
+Pomocí těchto kroků připojíte klientské počítače ke clusteru vFXT.
 
-1. Rozhodněte, jak vyrovnávat zatížení klientského provozu mezi uzly clusteru. Čtení [Vyrovnávání zatížení klienta](#balance-client-load)níže, pro podrobnosti. 
-1. Určete IP adresu a spojení cestu pro připojení.
-1. Problém [příkaz připojení](#mount-command-arguments), s příslušnými argumenty.
+1. Rozhodněte, jak vyrovnávat zatížení klientských přenosů mezi uzly clusteru. Podrobnosti o [Vyrovnávání zatížení klienta](#balance-client-load)najdete níže. 
+1. Identifikujte IP adresu a cestu spojení pro připojení.
+1. Vydejte odpovídající argumenty pomocí [příkazu Mount](#mount-command-arguments).
 
-## <a name="balance-client-load"></a>Vyrovnání zatížení klienta
+## <a name="balance-client-load"></a>Vyvážit zatížení klienta
 
-Abychom požadavky klientů rovnováhu mezi všechny uzly v clusteru, by měl připojení klientů k celému rozsahu IP adresy klienta. Existuje několik způsobů jednoduché pro automatizaci tohoto úkolu.
+Aby bylo možné vyrovnávat požadavky klientů mezi všemi uzly v clusteru, měli byste připojit klienty k celé škále IP adres klientů. Je několik jednoduchých způsobů, jak tuto úlohu automatizovat.
 
 > [!TIP] 
-> Jiné metody vyrovnávání zatížení může být vhodné pro velký nebo komplikovaný systémů: [vytvořit lístek podpory](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) nápovědu.)
+> Další metody vyrovnávání zatížení můžou být vhodné pro velké nebo komplikované systémy. [otevřete lístek podpory](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) pro pomoc.)
 > 
-> Pokud chcete použít DNS server pro vyrovnávání zatížení automatické na straně serveru, musíte nastavit a spravovat vlastní server DNS v rámci Azure. V takovém případě můžete nakonfigurovat kruhové dotazování DNS pro cluster vFXT podle tohoto dokumentu: [Konfigurace DNS clusteru Avere](avere-vfxt-configure-dns.md).
+> Pokud upřednostňujete použití serveru DNS pro automatické vyrovnávání zatížení na straně serveru, musíte nastavit a spravovat vlastní server DNS v rámci Azure. V takovém případě můžete nakonfigurovat DNS pro kruhové dotazování pro cluster vFXT podle tohoto dokumentu: [avere konfigurace DNS clusteru](avere-vfxt-configure-dns.md).
 
-### <a name="sample-balanced-client-mounting-script"></a>Ukázka vyvážené klienta připojení skriptu
+### <a name="sample-balanced-client-mounting-script"></a>Ukázkový skript pro připojování klienta
 
-Tento příklad kódu používá klientských IP adres jako prvek randomizing distribuovat všechny vFXT clusteru k dispozici IP adresy klientům.
+Tento příklad kódu používá klientské IP adresy jako náhodné prvky pro distribuci klientů na všechny dostupné IP adresy clusteru vFXT.
 
 ```bash
 function mount_round_robin() {
@@ -57,69 +57,69 @@ function mount_round_robin() {
 } 
 ```
 
-Výše uvedené funkce je součástí k dispozici v Batch příkladu [Avere vFXT příklady](https://github.com/Azure/Avere#tutorials) lokality.
+Výše uvedená funkce je součástí příkladu dávky, který je k dispozici na webu [Příklady avere vFXT](https://github.com/Azure/Avere#tutorials) .
 
-## <a name="create-the-mount-command"></a>Vytvořit příkaz připojení 
+## <a name="create-the-mount-command"></a>Vytvoření příkazu Mount 
 
 > [!NOTE]
-> Pokud při vytváření clusteru vFXT Avere nevytvoří nový kontejner objektů Blob, postupujte podle kroků v [konfigurace úložiště](avere-vfxt-add-storage.md) před pokusem o připojení klientů.
+> Pokud jste při vytváření clusteru avere vFXT nevytvořili nový kontejner objektů blob, postupujte podle kroků v části [Konfigurace úložiště](avere-vfxt-add-storage.md) předtím, než se pokusíte připojit klienty.
 
-Z klienta ``mount`` příkazu mapování virtuálního serveru (vserver) na clusteru vFXT na cestu v místním systému souborů. Formát je ``mount <vFXT path> <local path> {options}``
+Z klienta příkaz ``mount`` mapuje virtuální server (VServer) v clusteru vFXT na cestu k místnímu systému souborů. Formát je ``mount <vFXT path> <local path> {options}``
 
-Existují tři elementy pro tento příkaz: 
+Příkaz Mount obsahuje tři prvky: 
 
-* Cesta vFXT - (kombinaci IP adresy a obor názvů spojovací cesty popsaných níže)
-* místní cesta - cesta na straně klienta 
-* příkaz Možnosti - připojení (uvedené v [připojit argumenty příkazu](#mount-command-arguments))
+* vFXT cesta – (kombinace IP adresy a cesty spojení s oborem názvů popsaná níže)
+* místní cesta – cesta na klientovi 
+* parametry příkazu připojení – (uvedené v [příkazech připojit argumenty příkazu](#mount-command-arguments))
 
-### <a name="junction-and-ip"></a>Spojení a IP
+### <a name="junction-and-ip"></a>Spojení a IP adresa
 
-Cesta vserver je tvořená kombinací jeho *IP adresu* plus cestu k *obor názvů spojení*. Obor názvů spojení je virtuální cesta, která byla definována při přidání systému úložiště.
+Cesta VServer je kombinací své *IP adresy* a cesty k *oboru názvů*. Spojení oboru názvů je virtuální cesta, která byla definována při přidání systému úložiště.
 
-Pokud váš cluster byl vytvořen s úložištěm objektů Blob, je cestě k oboru názvů `/msazure`
+Pokud byl cluster vytvořen s úložištěm objektů blob, cesta k oboru názvů je `/msazure`.
 
 Příklad: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Pokud jste přidali úložiště po vytvoření clusteru, cestě k oboru názvů spojení odpovídá hodnotu nastavenou v **Namespace cestu** při vytváření spojení. Například, pokud jste použili ``/avere/files`` jako vaší cestě k oboru názvů, vaši klienti připojují *IP_adresa*: / avere/soubory do jejich místní přípojného bodu.
+Pokud jste po vytvoření clusteru přidali úložiště, cesta spojení oboru názvů odpovídá hodnotě, kterou jste nastavili v **cestě oboru názvů** při vytváření spojení. Pokud jste například jako cestu k oboru názvů použili ``/avere/files``, budou klienti připojení *Adresa_IP*:/avere/Files k místnímu přípojnému bodu.
 
-!["Přidání nové spojení" dialogové okno s/avere/soubory do pole Cesta oboru názvů](media/avere-vfxt-create-junction-example.png)
+![Dialogové okno Přidat nový spojovací bod s/avere/Files v poli cesta oboru názvů](media/avere-vfxt-create-junction-example.png)
 
 
-IP adresa je jedním z IP adresy klienta, definována pro vserver. Můžete najít rozsah IP adres na dvou místech v Ovládacích panelech Avere přístupem klienta:
+IP adresa je jedna z klientských IP adres definovaných pro VServer. Rozsah IP adres klientů můžete najít na dvou místech v ovládacím panelu avere:
 
-* **VServers** tabulku (kartu řídicí panel) – 
+* Tabulka **VServers** (karta řídicí panel) – 
 
-  ![Karta řídicí panel ovládacího panelu Avere kartou VServer vybrané v následující tabulce dat grafu a oddíl IP adresy v kruhu](media/avere-vfxt-ip-addresses-dashboard.png)
+  ![Karta řídicí panel ovládacího panelu avere s kartou VServer vybranou v tabulce dat pod grafem a část IP adresy v kruhu](media/avere-vfxt-ip-addresses-dashboard.png)
 
-* **Síť směřující klienta** stránka nastavení - 
+* Stránka nastavení **sítě s přístupem klienta** – 
 
-  ![Nastavení > VServer > Stránka Konfigurace síť směřující klienta v kroužku část tabulky pro konkrétní vserver rozsah adres](media/avere-vfxt-ip-addresses-settings.png)
+  ![Nastavení > VServer > stránce konfigurace sítě klientské sítě s kruhem kolem části rozsah adres v tabulce pro konkrétní VServer](media/avere-vfxt-ip-addresses-settings.png)
 
-Kromě cesty, zahrnout [připojit argumenty příkazu](#mount-command-arguments) je popsáno níže, když připojení každého klienta.
+Kromě cest uveďte [argumenty příkazu Mount](#mount-command-arguments) popsané níže při připojování jednotlivých klientů.
 
-### <a name="mount-command-arguments"></a>Argumenty příkazu připojení
+### <a name="mount-command-arguments"></a>Argumenty příkazu Mount
 
-Zajistit bezproblémové klientských připojení předání těchto nastavení a argumenty v příkazu připojení: 
+Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastavení a argumenty do příkazu mount: 
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 
 | Požadovaná nastavení | |
 --- | --- 
-``hard`` | Dočasná připojení ke clusteru vFXT jsou přidruženy k selhání aplikace a ke ztrátě. 
-``proto=netid`` | Tato možnost podporuje vhodné řešení chyb sítě systému souborů NFS.
-``mountproto=netid`` | Tato možnost podporuje vhodné řešení chyb sítě pro operace připojení.
-``retry=n`` | Nastavte ``retry=30`` aby se zabránilo selhání přechodné připojení. (Jiné hodnoty se doporučuje v popředí připojení).
+``hard`` | K selhání aplikací a možné ztrátě dat se připojí provizorní připojení k vFXT clusteru. 
+``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.
+``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
+``retry=n`` | Nastavte ``retry=30``, aby se předešlo přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
-| Nastavení  | |
+| Preferované nastavení  | |
 --- | --- 
-``nointr``            | Možnost "nointr" je upřednostněny klientům pomocí starší verze jádra (před duben 2008), které podporují tuto možnost. Všimněte si, že je možnost "intr" výchozí nastavení.
+``nointr``            | Možnost "nointr" je upřednostňována pro klienty se staršími jádry (před dubna 2008), které podporují tuto možnost. Všimněte si, že výchozí možností je "intr".
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po připojení klientů je můžete použít k naplnění back-endového úložiště dat (základní filtr). Přečtěte si k těmto dokumentům Další informace o úlohách další nastavení:
+Po připojení klientů je můžete použít k naplnění úložiště dat back-endu (Core souborového). Další informace o dalších úlohách nastavení najdete v těchto dokumentech:
 
-* [Přesun dat do jádra filer clusteru](avere-vfxt-data-ingest.md) – jak efektivně nahrát data pomocí více klientů a vlákna
-* [Přizpůsobení clusteru ladění](avere-vfxt-tuning.md) -přizpůsobit nastavení clusteru tak, aby vyhovovala vaší úlohy
-* [Správa clusteru](avere-vfxt-manage-cluster.md) – spuštění nebo zastavení clusteru a spravovat uzly
+* [Přesuňte data do clusteru Core souborového](avere-vfxt-data-ingest.md) – jak používat víc klientů a vláken k efektivnímu nahrávání vašich dat.
+* [Přizpůsobení ladění clusteru](avere-vfxt-tuning.md) – přizpůsobení nastavení clusteru podle vašich úloh
+* [Správa clusteru](avere-vfxt-manage-cluster.md) – jak spustit nebo zastavit cluster a spravovat uzly

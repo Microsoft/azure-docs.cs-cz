@@ -1,31 +1,25 @@
 ---
-title: Řady SKU není k dispozici | Dokumentace Microsoftu
-description: Některé řady SKU nejsou pro vybrané předplatné v této oblasti.
+title: Řada SKU není dostupná | Microsoft Docs
+description: Pro vybrané předplatné této oblasti nejsou některé řady SKU k dispozici.
 services: Azure Supportability
-documentationcenter: ''
 author: stevendotwang
-manager: rajatk
-editor: ''
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: xingwan
-ms.openlocfilehash: a57899e36a6716a6fd59cb018119c225b7396c0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60649086"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249045"
 ---
-# <a name="region-or-sku-unavailable"></a>Oblast nebo SKU není k dispozici
-Tento článek popisuje, jak vyřešit problém předplatné Azure nemáte přístup k oblasti nebo skladovou Položku virtuálního počítače.
+# <a name="region-or-sku-unavailable"></a>Oblast nebo SKU nejsou k dispozici
+Tento článek popisuje, jak vyřešit problém předplatného Azure, který nemá přístup k oblasti nebo SKU virtuálního počítače.
 
 ## <a name="symptoms"></a>Příznaky
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Při nasazování virtuálního počítače, se zobrazit jedna z následujících chybových zpráv:
+### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Při nasazování virtuálního počítače se zobrazí jedna z následujících chybových zpráv:
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -43,7 +37,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Při nákupu rezervované instance virtuálních počítačů, se zobrazit jedna z následujících chybových zpráv:
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Při nákupu rezervovaných instancí virtuálních počítačů se zobrazí jedna z následujících chybových zpráv:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -54,32 +48,32 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Při vytváření žádosti o podporu o navýšení kvóty pro jádra výpočetní prostředky, oblasti nebo rodině SKU není k dispozici pro výběr.
+### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Při vytváření žádosti o podporu pro zvýšení kvóty výpočetního jádra není pro výběr k dispozici oblast nebo rodina SKU.
 
 ## <a name="solution"></a>Řešení
-Nejdřív doporučujeme považovat alternativní oblast nebo skladovou Položku, která vyhovuje vašim obchodním potřebám. Pokud nemůžete najít vhodné oblasti nebo SKU, vytvořte "Správa předplatného" [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) následujících kroků:
+Nejdřív doporučujeme vzít v úvahu alternativní oblast nebo SKU, které vyhovují vašim obchodním potřebám. Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) pro správu předplatného podle následujících kroků:
 
 
-- Na stránce základy vyberte typ problému jako "Správa předplatného", vyberte odběr a klikněte na tlačítko Další.
+- Na stránce základy vyberte typ problému jako "Správa předplatného", vyberte předplatné a klikněte na další.
 
-![Okno Základy](./media/SKU-series-unavailable/BasicsSubMgmt.png)
+![Okno základy](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
 
--   Na stránce problému vyberte typ problému jako "Ostatní obecné dotazy".
+-   Na stránce problém vyberte typ problému "ostatní obecné otázky".
 - V části Podrobnosti:
-  - Uveďte, pokud chcete nasadit virtuální počítače nebo nákupu rezervované instance virtuálních počítačů
-  - Zadejte prosím oblast, SKU a počet instancí virtuálních počítačů, které plánujete nasadit nebo nákupu
+  - Uveďte prosím, jestli se chystáte nasadit virtuální počítače nebo zakoupit rezervované instance virtuálních počítačů.
+  - Zadejte prosím oblast, SKLADOVOU položku a počet instancí virtuálních počítačů, které plánujete nasadit nebo koupit.
 
 
 ![Problém](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
--   Zadejte svoje kontaktní údaje a klikněte na možnost "Vytvořit".
+-   Zadejte svoje kontaktní údaje a klikněte na vytvořit.
 
 ![Kontaktní informace](./media/SKU-series-unavailable/ContactInformation.png)
 
-## <a name="feedback"></a>Váš názor
-Máme vždy otevřít na názory a návrhy! Pošlete nám vaše [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete zapojit s námi prostřednictvím [Twitter](https://twitter.com/azuresupport) nebo [DISKUZNÍ fóra MSDN](https://social.msdn.microsoft.com/Forums/azure).
+## <a name="feedback"></a>Od
+Vždycky jsme otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat přes [Twitter](https://twitter.com/azuresupport) nebo [fóra MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq)
 

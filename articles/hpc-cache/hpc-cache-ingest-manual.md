@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299975"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254466"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (Preview) data ingestování – metoda ručního kopírování
 
@@ -23,7 +23,7 @@ Další informace o přesouvání dat do úložiště objektů BLOB pro mezipam�
 
 Můžete ručně vytvořit vícevláknovou kopii na klientovi spuštěním více než jednoho příkazu kopírování na pozadí v předdefinovaných sadách souborů nebo cest.
 
-Příkaz Linux/UNIX ``cp`` obsahuje argument ``-p`` pro zachování vlastnictví a mtime metadat. Přidání tohoto argumentu do příkazů níže je volitelné. (Přidáním argumentu se zvýší počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
+Příkaz systému Linux/UNIX ``cp`` zahrnuje argument ``-p``, který zachová metadata vlastnictví a mtime. Přidání tohoto argumentu do příkazů níže je volitelné. (Přidáním argumentu se zvýší počet volání systému souborů odeslaných z klienta do cílového systému souborů pro úpravu metadat.)
 
 Tento jednoduchý příklad kopíruje dva soubory paralelně:
 
@@ -31,13 +31,13 @@ Tento jednoduchý příklad kopíruje dva soubory paralelně:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po vystavení tohoto příkazu `jobs` se v příkazu zobrazí, že jsou spuštěná dvě vlákna.
+Po vystavení tohoto příkazu se v příkazu `jobs` zobrazí, že jsou spuštěná dvě vlákna.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Kopírování dat s předvídatelnými názvy souborů
 
 Pokud jsou názvy souborů předvídatelné, můžete použít výrazy k vytvoření paralelních vláken kopírování. 
 
-Pokud například váš adresář obsahuje soubory 1000, které jsou očíslovány postupně z `0001` na `1000`, můžete použít následující výrazy k vytvoření deseti paralelních vláken, které každý soubor kopie 100:
+Pokud například váš adresář obsahuje soubory 1000, které jsou číslovány sekvenčně z `0001` do `1000`, můžete použít následující výrazy k vytvoření deseti paralelních vláken, které každý soubor kopie 100:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Pokud vaše struktura pojmenovávání souborů není předvídatelná, můžete soubory seskupit podle názvů adresářů. 
 
-Tento příklad shromažďuje celé adresáře pro odeslání do ``cp`` příkazů spouštěných jako úlohy na pozadí:
+Tento příklad shromažďuje celé adresáře pro odeslání na příkazy ``cp`` spouštěné jako úlohy na pozadí:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Pokud k tomu dojde, můžete přidat přípojné body na straně klienta do jin�
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Přidáním přípojných bodů na straně klienta můžete rozvětvit další příkazy kopírování do dalších `/mnt/destination[1-3]` přípojných bodů a dosáhnout tak dalších paralelismu.  
+Přidání přípojných bodů na straně klienta vám umožní rozvětvit další příkazy kopírování do dalších přípojných bodů `/mnt/destination[1-3]` a dosáhnout tak dalších paralelismu.  
 
 Například pokud jsou soubory velmi velké, můžete definovat příkazy kopírování pro použití odlišných cílových cest a odeslání dalších příkazů paralelně z klienta provádějícího kopírování.
 
@@ -136,9 +136,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Vytváření manifestů souborů
 
-Po porozumění výše uvedeným funkcím (více než jedno místo kopírování na cíl, více cílů na každého klienta, více klientů na přístupný zdrojový souborový systém) zvažte toto doporučení: Sestavujte manifesty souborů a pak je používejte s příkazy kopírování mezi více klienty.
+Po porozumění výše uvedeným přístupům (více než několik míst pro kopírování na cíl, více cílů na klienta, více klientů na jeden zdrojový souborový systém) zvažte toto doporučení: manifesty souborů sestavení a pak je používejte s kopírováním. příkazy napříč více klienty.
 
-V tomto scénáři se k ``find`` vytváření manifestů souborů nebo adresářů používá příkaz UNIX:
+V tomto scénáři se k vytváření manifestů souborů nebo adresářů používá příkaz ``find`` systému UNIX:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,7 +153,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Přesměrovat tento výsledek do souboru:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Přesměrovat tento výsledek do souboru: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Pak můžete iterovat v manifestu pomocí příkazů BASH pro počítání souborů a určení velikosti podadresářů:
 
@@ -214,7 +214,7 @@ A šest.... Odvodit podle potřeby.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Dostanete *N* výsledných souborů, jeden pro každého z vašich klientů *N* , který má názvy cest k adresářům úrovně čtyři, které byly získány jako součást `find` výstupu z příkazu. 
+Zobrazí se *N* výsledných souborů, jeden pro každého z vašich klientů *N* , který má názvy cest k adresářům úrovně 4, které byly získány jako součást výstupu z příkazu `find`. 
 
 Pomocí každého souboru Sestavte příkaz pro kopírování:
 

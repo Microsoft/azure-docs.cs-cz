@@ -1,21 +1,21 @@
 ---
-title: Ukázka – audit, pokud Network Watcher není pro oblast povolený
+title: Ukázka – audit pro oblasti bez Network Watcher
 description: Tento ukázkový audit definice zásad není povolený, pokud sledovací proces sítě není pro zadanou oblast povolený.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 94d4bbd70c21713fa366907b3fe8cec8543350eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3c93fb72be82c1a89ea4420f4b8d34bb98785376
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981371"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254768"
 ---
 # <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Ukázka – audit, pokud Network Watcher není pro oblast povolený
 
-Tato zásada provede audit, pokud pro zadanou oblast není povolena služba Network Watcher. Zadejte název oblasti, pro kterou se zkontroluje, jestli je povolena služba Network Watcher.
+Tato zásada Audituje, pokud Network Watcher není pro zadanou oblast povolená. Zadejte název oblasti, abyste zkontrolovali, jestli je povolená Network Watcher.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,13 +23,13 @@ Tato zásada provede audit, pokud pro zadanou oblast není povolena služba Netw
 
 [!code-json[main](../../../../policy-templates/samples/Network/audit-network-watcher-existence/azurepolicy.json "Audit if Network Watcher is not enabled for region")]
 
-K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli).
+Tuto šablonu můžete nasadit pomocí [Azure Portal](#deploy-with-the-portal), pomocí [PowerShellu](#deploy-with-powershell) nebo pomocí [Azure CLI](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
 [@no__t 1Deploy ukázkových zásad do Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Faudit-network-watcher-existence%2Fazurepolicy.json)
 
-## <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -40,7 +40,7 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -loc
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení prostředí PowerShell
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
@@ -48,7 +48,7 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení pomocí Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'audit-network-watcher-existence' --display-n
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-network-watcher-existence"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázky najdete v [ukázkách zásad Azure](index.md).
+- Přečtěte si další ukázky na [Azure Policy Samples](index.md)

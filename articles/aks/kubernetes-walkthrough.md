@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 3a07186856fd05c65f583a94f324df05e348d24f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 1d700afe36d51f0b939629f86d770e54072f47a9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960020"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255524"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu nasadíte cluster Azure Kubernetes Service (AKS) pomocí
 
 Pokud chcete používat kontejnery Windows serveru (aktuálně ve verzi Preview v AKS), přečtěte si téma [Vytvoření clusteru AKS, který podporuje kontejnery Windows serveru][windows-container-cli].
 
-![Obrázek přechodu na hlasování Azure](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Hlasovací aplikace v Azure v akci](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 V tomto rychlém startu se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
@@ -230,7 +230,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Pokud chcete zobrazit hlasovou aplikaci Azure v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
 
-![Obrázek přechodu na hlasování Azure](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Hlasovací aplikace v Azure v akci](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 Po vytvoření clusteru AKS byly povoleny [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) pro zachycení metrik stavu pro uzly clusteru a lusky. Tyto metriky stavu jsou k dispozici v Azure Portal.
 

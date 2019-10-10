@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: a9141adfb1dd05efd73061379be89ddf27ab3832
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5be64ad2b3141791d5612aba84324278ea812875
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803062"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244842"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -29,7 +29,7 @@ Když nasadíte škálovací sadu virtuálních počítačů Azure prostřednict
 Všechny funkce popsané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru. Pro vybrané funkce jsou zahrnuté také příklady Azure CLI a PowerShellu.
 
 ## <a name="accelerated-networking"></a>Akcelerované síťové služby
-Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Příklad:
+Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Například:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -95,11 +95,11 @@ Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, 
 Ve výchozím nastavení škálovací sady přebírají konkrétní nastavení DNS virtuální sítě a podsítě, ve kterých byly vytvořeny. Nastavení DNS pro škálovací sadu ale můžete nakonfigurovat i přímo.
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Vytvoření škálovací sady s konfigurovatelnými servery DNS
-Pokud chcete vytvořit škálovací sadu s vlastní konfigurací DNS pomocí Azure CLI, přidejte do příkazu **vmss create** argument **--dns-servers** následovaný mezerami oddělenými IP adresami serverů. Příklad:
+Pokud chcete vytvořit škálovací sadu s vlastní konfigurací DNS pomocí Azure CLI, přidejte do příkazu **vmss create** argument **--dns-servers** následovaný mezerami oddělenými IP adresami serverů. Například:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
-Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do části networkInterfaceConfigurations škálovací sady vlastnost dnsSettings. Příklad:
+Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do části networkInterfaceConfigurations škálovací sady vlastnost dnsSettings. Například:
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -109,7 +109,7 @@ Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Vytvoření škálovací sady s konfigurovatelnými názvy domén virtuálních počítačů
 Pokud chcete vytvořit škálovací sadu s vlastním názvem DNS pro virtuální počítače pomocí rozhraní příkazového řádku, přidejte do příkazu **virtual machine scale set create** argument **--vm-domain-name** následovaný řetězcem představujícím název domény.
 
-Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** škálovací sady vlastnost **dnsSettings**. Příklad:
+Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** škálovací sady vlastnost **dnsSettings**. Například:
 
 ```json
 "networkProfile": {
@@ -117,7 +117,7 @@ Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **n
     {
     "name": "nic1",
     "properties": {
-      "primary": "true",
+      "primary": true,
       "ipConfigurations": [
       {
         "name": "ip1",
@@ -154,7 +154,7 @@ Některé scénáře však vyžadují, aby virtuální počítače ve škálovac
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Vytvoření škálovací sady s veřejnou IP adresou na virtuální počítač
 Pokud chcete pomocí rozhraní příkazového řádku vytvořit škálovací sadu, která každému virtuálnímu počítači přiřadí veřejnou IP adresu, přidejte do příkazu **vmss create** parametr **--public-ip-per-vm**. 
 
-Pokud chcete vytvořit škálovací sadu pomocí šablony Azure, ujistěte se, že verze rozhraní API prostředku Microsoft.Compute/virtualMachineScaleSets je alespoň **2017-03-30**, a do části ipConfigurations škálovací sady přidejte vlastnost JSON **publicIpAddressConfiguration**. Příklad:
+Pokud chcete vytvořit škálovací sadu pomocí šablony Azure, ujistěte se, že verze rozhraní API prostředku Microsoft.Compute/virtualMachineScaleSets je alespoň **2017-03-30**, a do části ipConfigurations škálovací sady přidejte vlastnost JSON **publicIpAddressConfiguration**. Například:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,12 +169,12 @@ Ukázková šablona: [201-vmss-public-ip-linux](https://github.com/Azure/azure-q
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Dotazování veřejných IP adres virtuálních počítačů ve škálovací sadě
 Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips**.
 
-Seznam škálovací sadě veřejné IP adresy, které používají Powershellu, použijte _Get-AzPublicIpAddress_ příkazu. Příklad:
+Pokud chcete zobrazit seznam veřejných IP adres sady škálování pomocí PowerShellu, použijte příkaz _Get-AzPublicIpAddress_ . Například:
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Příklad:
+Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Například:
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -251,7 +251,7 @@ V následujícím příkladu je profil sítě škálovací sady ukazující něk
         {
         "name": "nic1",
         "properties": {
-            "primary": "true",
+            "primary": true,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -283,7 +283,7 @@ V následujícím příkladu je profil sítě škálovací sady ukazující něk
         {
         "name": "nic2",
         "properties": {
-            "primary": "false",
+            "primary": false,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -323,14 +323,14 @@ Skupiny zabezpečení sítě se můžou použít přímo na škálovací sadu p�
 
 Skupiny zabezpečení aplikace se můžou použít přímo na škálovací sadu přidáním odkazu do části konfigurace IP adresy síťového rozhraní ve vlastnostech virtuálního počítače ve škálovací sadě.
 
-Příklad: 
+Například: 
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
             "name": "nic1",
             "properties": {
-                "primary": "true",
+                "primary": true,
                 "ipConfigurations": [
                     {
                         "name": "ip1",
@@ -401,5 +401,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o virtuálních sítích Azure najdete v [přehledu virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).

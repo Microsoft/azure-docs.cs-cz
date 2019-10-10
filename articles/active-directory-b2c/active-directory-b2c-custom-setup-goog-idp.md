@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a1366b24e4e46a93af777753debb1cce7c0f0ce
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cc7e7b334791194cd4f8ebbd2038e9c1877eb297
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826957"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240219"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Google pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení uživatelům z účtu Google pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory B2C (Azure AD B2C).
+V tomto článku se dozvíte, jak povolit přihlášení uživatelům s účtem Google pomocí [vlastních zásad](active-directory-b2c-overview-custom.md) v Azure Active Directory B2C (Azure AD B2C).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](active-directory-b2c-get-started-custom.md).
 - Pokud ještě nemáte účet Google, vytvořte si ho vytvořením [účtu Google](https://accounts.google.com/SignUp).
@@ -40,14 +40,14 @@ Pokud chcete povolit přihlášení uživatelům z účtu Google, musíte vytvo�
 6. V části **Typ aplikace**vyberte **Webová aplikace**.
 7. Zadejte **název** vaší aplikace.
 8. V **autorizovaných zdrojích JavaScriptu**zadejte `https://your-tenant-name.b2clogin.com` a v **autorizovaných identifikátorech URI pro přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte název-tenanta názvem vašeho tenanta. Při zadávání názvu tenanta musíte použít malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
-8. Klikněte na **vytvořit**.
+8. Klikněte na **Vytvořit**.
 9. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Obě tyto služby budete potřebovat ke konfiguraci Google jako poskytovatele identity ve vašem tenantovi. Tajný kód klienta je důležité bezpečnostní pověření.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
 Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
@@ -56,7 +56,7 @@ Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve sv�
 7. Zadejte **název** klíče zásad. Například `GoogleSecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 9. V případě **použití klíče**vyberte `Signature`.
-10. Klikněte na **vytvořit**.
+10. Klikněte na **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
@@ -119,7 +119,7 @@ Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat
 
 1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
 2. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
-3. Klikněte na **nahrát**.
+3. Klikněte na **Nahrát**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 

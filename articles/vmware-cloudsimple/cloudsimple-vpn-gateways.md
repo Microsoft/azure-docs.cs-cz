@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972891"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244771"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
-Služba VPN Gateway slouží k posílání šifrovaného provozu mezi sítí v CloudSimple oblasti v místním umístění nebo v počítači prostřednictvím veřejného Internetu.  Každá oblast může mít jednu bránu sítě VPN, která může podporovat více připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma.
+Služba VPN Gateway slouží k posílání šifrovaného provozu mezi sítí v CloudSimple oblasti v místním umístění nebo v počítači prostřednictvím veřejného Internetu.  Každá oblast může mít jednu bránu sítě VPN, která může podporovat více připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma brány.
 
 CloudSimple poskytuje dva druhy bran sítě VPN:
 
@@ -47,8 +47,8 @@ Připojení VPN typu Site-to-site používá k navázání zabezpečeného přip
 
 | Parametr | Návrh 1 | Návrh 2 | Návrh 3 |
 |-----------|------------|------------|------------|
-| Verze IKE | IKEv1 | IKEv1 | IKEv1 |
-| Šifrování | AES 128 | AES 256 | AES 256 |
+| Verze protokolu IKE | IKEv1 | IKEv1 | IKEv1 |
+| Encryption | AES 128 | AES 256 | AES 256 |
 | Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
 | Skupina Diffie Hellman (Skupina DH) | 2 | 2 | 2 |
 | Doba života | 28 800 sekund | 28 800 sekund | 28 800 sekund |
@@ -58,16 +58,20 @@ Připojení VPN typu Site-to-site používá k navázání zabezpečeného přip
 
 | Parametr | Návrh 1 | Návrh 2 | Návrh 3 |
 |-----------|------------|------------|------------|
-| Šifrování | AES 128 | AES 256 | AES 256 |
+| Encryption | AES 128 | AES 256 | AES 256 |
 | Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
-| Skupina PFS (Perfect Forward Secrecy) | Žádné | Žádný | Žádné |
+| Skupina PFS (Perfect Forward Secrecy) | Ne | Ne | Ne |
 | Doba života | 1 800 sekund | 1 800 sekund | 1 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> Na zařízení VPN nastavte připojení TCP MSS na 1200. Nebo pokud vaše zařízení VPN nepodporují svorky MSS, můžete místo toho nastavit jednotku MTU v rozhraní tunelu na 1240 bajtů.
 
 ## <a name="point-to-site-vpn-gateway"></a>Brána sítě VPN typu Point-to-site
 
 SÍŤ VPN typu Point-to-site slouží k posílání šifrovaného provozu mezi sítí v CloudSimple oblasti a klientským počítačem.  Síť VPN typu Point-to-site je nejjednodušší způsob, jak získat přístup k síti privátního cloudu, včetně virtuálních počítačů vCenter a zatížení vašeho privátního cloudu.  Pokud se připojujete k privátnímu cloudu vzdáleně, použijte připojení VPN typu Point-to-site.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení služby VPN Gateway](vpn-gateway.md)

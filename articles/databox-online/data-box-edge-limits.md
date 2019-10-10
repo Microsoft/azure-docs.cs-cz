@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge omezuje | Dokumentace Microsoftu
-description: Popisuje omezení systému a doporučené velikosti pro Azure Data Box Edge.
+title: Omezení Azure Data Box Edge | Microsoft Docs
+description: Popisuje omezení systému a Doporučené velikosti pro Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,49 +8,49 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924601"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244319"
 ---
-# <a name="azure-data-box-edge-limits"></a>Omezení služby Azure Data Box Edge
+# <a name="azure-data-box-edge-limits"></a>Omezení Azure Data Box Edge
 
-Jak nasadit a provozovat řešení Microsoft Azure Data Box Edge vezměte v úvahu tyto limity.
+Tato omezení zvažte při nasazení a provozu Data Box Edge řešení Microsoft Azure.
 
-## <a name="data-box-edge-service-limits"></a>Omezení služby data Box Edge
+## <a name="data-box-edge-service-limits"></a>Omezení služby Data Box Edge
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-edge-device-limits"></a>Omezení datové pole hraniční zařízení
+## <a name="data-box-edge-device-limits"></a>Omezení Data Box Edge zařízení
 
-Následující tabulka popisuje omezení pro zařízení Data Box Edge.
+Následující tabulka popisuje omezení pro Data Box Edge zařízení.
 
 | Popis | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 milionů |
+|Ne. souborů na zařízení |100 000 000 |
 |Ne. sdílených složek na zařízení |24 |
-|Ne. sdílených složek na kontejner |1 |
-|Maximální velikost souboru zapsána do sdílené složky| 5 TB |
+|Ne. sdílených složek na kontejner |1\. místo |
+|Maximální velikost souboru zapsaná do sdílené složky| 5 TB |
 
-## <a name="azure-storage-limits"></a>Omezení služby Azure storage
+## <a name="azure-storage-limits"></a>Omezení úložiště Azure
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Odesílání dat upozornění
+## <a name="data-upload-caveats"></a>Upozornění na nahrávání dat
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-and-object-size-limits"></a>Omezení velikosti účtu úložiště Azure a objekt velikosti
+## <a name="azure-storage-account-size-and-object-size-limits"></a>Omezení velikosti účtu a velikosti objektu Azure Storage
 
 [!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
 
-## <a name="azure-object-size-limits"></a>Omezení velikosti objektu Azure
+## <a name="azure-object-size-limits"></a>Omezení velikosti objektů Azure
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
+- [Příprava k nasazení služby Azure Data Box Edge](data-box-edge-deploy-prep.md)

@@ -1,109 +1,109 @@
 ---
-title: Správa clusteru vFXT Avere – Azure
-description: Jak spravovat Avere cluster – přidat nebo odebrat uzly, restartovat, zastavit nebo odstranit vFXT cluster
+title: Správa clusteru avere vFXT – Azure
+description: Jak spravovat cluster avere – přidání nebo odebrání uzlů, restartování, zastavení nebo zničení clusteru vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: v-erkell
-ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: bcdba7f14147714c5e29c13bfe9e20fa44a27ef9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409734"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256204"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Správa clusteru Avere vFXT
 
-Po vytvoření clusteru může být potřeba přidat uzly clusteru nebo zastavení nebo restartování clusteru. A po dokončení projektu je potřeba vědět, jak zastavit a trvalé odebrání clusteru. 
+Po vytvoření clusteru možná budete muset přidat uzly clusteru nebo zastavit nebo restartovat cluster. A po dokončení projektu potřebujete zjistit, jak cluster trvale zastavit a odebrat. 
 
-V závislosti na úloze správy clusteru můžete potřebovat udělat pomocí ovládacího panelu Avere, skriptu vfxt.py příkazového řádku pro vytváření clusteru nebo na webu Azure portal. 
+V závislosti na úloze správy clusteru možná budete muset použít ovládací panel avere, skript pro vytvoření clusteru příkazového řádku vfxt.py nebo Azure Portal. 
 
-Tato tabulka poskytuje přehled, z nichž lze použít nástroje pro každý úkol. 
+Tato tabulka obsahuje přehled toho, které nástroje lze pro jednotlivé úlohy použít. 
 
-| Akce | Avere ovládací panely | vfxt.py  | portál Azure |
+| Akce | Ovládací panel avere | vfxt.py  | Portál Azure |
 | --- | --- | --- | --- |
 | Přidat uzly clusteru | ne | ano | ne |
-| Odebrání uzlů clusteru | ano | ne | ne |
-| Zastavit uzel clusteru. | Ano (můžete také restartovat služby nebo po restartování) | ne | provozování dolů uzlu virtuálního počítače z portálu se interpretuje jako selhání uzlu |
-| Spusťte zastavené uzel | ne | ne | ano |
-| Odstranit jednoho uzlu clusteru | ne | ne | ano |
-| Restartování clusteru |  |  |  |
-| Vypnout nebo zastavení clusteru bezpečně | ano | ano | ne |
-| Odstranit cluster  | ne | ano | Ano, ale není možné zaručit integritu dat |
+| Odebrat uzly clusteru | ano | ne | ne |
+| Zastavení uzlu clusteru | Ano (může také restartovat služby nebo restartovat) | ne | vypínání virtuálního počítače uzlu z portálu je interpretováno jako selhání uzlu. |
+| Spustit zastavený uzel | ne | ne | ano |
+| Zničení jednoho uzlu clusteru | ne | ne | ano |
+| Restartujte cluster. |  |  |  |
+| Bezpečně vypínejte nebo Zastavte cluster. | ano | ano | ne |
+| Zničit cluster  | ne | ano | Ano, ale integrita dat není zaručena. |
 
-Podrobné pokyny pro každý nástroj jsou uvedeny níže.
+Podrobné pokyny pro jednotlivé nástroje jsou uvedené níže.
 
-## <a name="about-stopped-instances-in-azure"></a>Informace o zastavení instance v Azure
+## <a name="about-stopped-instances-in-azure"></a>O zastavených instancích v Azure
 
-Při vypnutí nebo zastavit všechny virtuální počítač Azure, zastaví nabíhání poplatků za výpočetní prostředky, ale stále se musíte zaplatit za jeho úložiště. Pokud vypnete vFXT uzlu nebo celý vFXT clusteru a že se ji restartovat, používejte na webu Azure portal k odstranění souvisejících virtuálních počítačů. 
+Když vypnete nebo zastavíte některý virtuální počítač Azure, zastaví se vám poplatky za výpočetní prostředky, ale ještě musíte platit za své úložiště. Pokud vypnete uzel vFXT nebo celý cluster vFXT a nechcete ho restartovat, měli byste k odstranění souvisejících virtuálních počítačů použít Azure Portal. 
 
-Na webu Azure Portal *zastavena* uzlu (který může být restartován) se zobrazuje stav **zastavena** na webu Azure Portal; *odstranit* uzlu se zobrazuje stav **zastavena (přidělení zrušeno)**  a už budou vám účtovány poplatky za výpočetní prostředky ani prostředky úložiště.
+V Azure Portal *zastavený* uzel (který může být restartován) zobrazuje stav **zastaveno** v Azure Portal. *Odstraněný* uzel zobrazuje stav **Zastaveno (přidělení zrušeno)** a již nezahrnuje poplatky za výpočetní prostředky nebo úložiště.
 
-Před odstraněním virtuálního počítače, ujistěte se, že všechny změněná data byl zapsán z mezipaměti do back endové úložné pomocí možnosti Avere ovládacích panelech nebo vfxt.py zastavte nebo vypněte cluster.
+Před odstraněním virtuálního počítače se ujistěte, že všechna změněná data byla zapsána z mezipaměti do back-endového úložiště pomocí ovládacích panelů avere nebo možností vfxt.py pro zastavení nebo vypnutí clusteru.
 
-## <a name="manage-the-cluster-with-avere-control-panel"></a>Správa clusteru s Avere ovládací panely 
+## <a name="manage-the-cluster-with-avere-control-panel"></a>Správa clusteru pomocí ovládacího panelu avere 
 
-Ovládací Panel Avere lze použít pro tyto úlohy: 
+Ovládací panel avere lze použít pro tyto úlohy: 
 
-* Zastavit nebo restartovat jednotlivé uzly
+* Zastavení nebo restartování jednotlivých uzlů
 * Odebrání uzlu z clusteru
-* Zastavení nebo restartování celý cluster
+* Zastavení nebo restartování celého clusteru
 
-Avere ovládací panely upřednostňuje integritu dat, takže se pokusí o zápis změněná data do back-endového úložiště pravděpodobně destruktivní operace. Díky tomu je bezpečnější možnost než Avere portálu. 
+Ovládací panel avere určuje prioritu integrity dat, takže se pokusí zapsat změněná data do back-endu úložiště před možnou destruktivní operací. Díky tomu je tato možnost bezpečnější než na portálu avere. 
 
-Panel ovládacího prvku Avere přístup z webového prohlížeče. Postupujte podle pokynů v [přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) Pokud potřebujete pomoc.
+Přístup k ovládacímu panelu avere z webového prohlížeče. Pokud potřebujete podporu, postupujte podle pokynů v [části přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) .
 
-### <a name="manage-nodes-with-avere-control-panel"></a>Spravujte uzly pomocí Avere ovládací panely
+### <a name="manage-nodes-with-avere-control-panel"></a>Správa uzlů pomocí ovládacího panelu avere
 
-**FXT uzly** nastavení stránky obsahuje ovládací prvky pro správu jednotlivých uzlů.
+Stránka nastavení **uzlů FXT** obsahuje ovládací prvky pro správu jednotlivých uzlů.
 
-Vypnout, restartovat nebo odebrání uzlu, uzlu v seznamu vyhledejte na **FXT uzly** stránky a klepněte na příslušné tlačítko v jeho **akce** sloupce.
+Chcete-li vypnout, restartovat nebo odebrat uzel, vyhledejte uzel v seznamu na stránce **uzly FXT** a klikněte na příslušné tlačítko ve sloupci jeho **Akce** .
 
 > [!NOTE] 
-> IP adresy se mohou pohybovat mezi uzly clusteru při změně počtu aktivních uzlů.
+> Pokud se počet aktivních uzlů změní, můžou se IP adresy přesouvat mezi uzly clusteru.
 
-Čtení [Cluster > uzly FXT](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) v Průvodci Avere clusteru nastavení pro další informace.
+Další informace najdete v tématu [cluster > FXT Nodes](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) v Průvodci nastavením clusteru avere.
 
-### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Zastavení nebo restartování clusteru pomocí Avere ovládací panely
+### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Zastavení nebo restartování clusteru pomocí ovládacího panelu avere
 
-**Údržbě systému** stránka nastavení obsahuje příkazy pro restartování služby clusteru, restartování clusteru nebo bezpečné provozování clusteru dolů. Čtení [správy > Údržba systému](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (v Avere clusteru nastavení průvodce) podrobnosti.
+Stránka nastavení **údržby systému** obsahuje příkazy pro restartování clusterových služeb, restartování clusteru nebo bezpečného napájení clusteru. Podrobnosti naleznete v tématu [správa > údržba systému](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (v Průvodci nastavením clusteru avere).
 
-Cluster se vypíná, odešle stavové zprávy pro **řídicí panel** kartu v první. Po chvíli se relace Avere ovládací panely, přestane reagovat, což znamená, že byl vypnut clusteru.
+Když se cluster vypíná, na začátku pošle stavové zprávy na kartu **řídicí panel** . Po chvíli přestane relace ovládacího panelu avere reagovat, což znamená, že se cluster vypnul.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Správa clusteru s vfxt.py
+## <a name="manage-the-cluster-with-vfxtpy"></a>Správa clusteru pomocí vfxt.py
 
-vfxt.PY je nástroj příkazového řádku pro správu a vytváření clusteru. 
+vfxt.py je nástroj příkazového řádku pro vytváření a správu clusteru. 
 
-vfxt.PY je předinstalován v řadiči clusteru virtuálních počítačů. Pokud chcete nainstalovat na jiný systém, najdete v dokumentaci na adrese <https://github.com/Azure/AvereSDK>.
+vfxt.py je předem nainstalovaný na virtuálním počítači s řadičem clusteru. Pokud ho chcete nainstalovat na jiný systém, přečtěte si dokumentaci na adrese <https://github.com/Azure/AvereSDK>.
 
-Skript vfxt.py lze použít pro tyto úlohy správy clusteru:
+Skript vfxt.py se dá použít pro tyto úlohy správy clusteru:
 
 * Přidání nových uzlů do clusteru
 * Zastavení nebo spuštění clusteru  
-* Odstranit cluster
+* Zničit cluster
 
-Jako Avere ovládací panely zkuste vfxt.py operace Ujistěte se, že je změněná data trvale uložen na back endové úložné před vypnutím nebo zničení clusteru nebo uzlu. Díky tomu je bezpečnější možnost než Avere portálu.
+Podobně jako v Ovládacích panelech avere se operace vfxt.py snaží zajistit, aby se změněná data ukládala trvale do back-endu úložiště před vypnutím nebo zničením clusteru nebo uzlu. Díky tomu je tato možnost bezpečnější než na portálu avere.
 
-Průvodce kompletní vfxt.py využití je k dispozici na Githubu: [Cloudová Správa clusteru s vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
+Kompletní příručka k používání vfxt.py je k dispozici na GitHubu: [Správa cloudových clusterů pomocí vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
-### <a name="add-cluster-nodes-with-vfxtpy"></a>Přidat uzly clusteru s vfxt.py
+### <a name="add-cluster-nodes-with-vfxtpy"></a>Přidání uzlů clusteru pomocí vfxt.py
 
-Ukázkový skript příkaz pro přidání uzlů clusteru je součástí Správce clusteru. Vyhledejte ``./add-nodes`` na řadiči a otevřít ji v editoru a přizpůsobit s informacemi o clusteru. 
+Do řadiče clusteru je zahrnut ukázkový skript příkazu pro přidání uzlů clusteru. V kontroleru Najděte ``./add-nodes`` a otevřete ji v editoru, abyste ji mohli přizpůsobit s informacemi o clusteru. 
 
-Použití tohoto příkazu musí být spuštěná clusteru. 
+Aby bylo možné použít tento příkaz, musí být spuštěn cluster. 
 
 Zadejte následující hodnoty: 
 
-* Název skupiny prostředků clusteru a také pro prostředky sítě a úložiště, pokud nejsou stejné jako clusteru
+* Název skupiny prostředků pro cluster, a to i pro prostředky sítě a úložiště, pokud se neshodují s clusterem
 * Umístění clusteru
-* Síť s clustery a podsítě 
-* Role clusteru uzel přístup (použijte předdefinovaná role [Avere operátor](../role-based-access-control/built-in-roles.md#avere-operator))
-* IP adresa pro správu clusteru a heslo správce 
-* Počet uzlů pro přidání (1, 2 nebo 3)
-* Uzel instance typu a mezipaměti velikost hodnoty 
+* Síť a podsíť clusteru 
+* Role přístupu k uzlu clusteru (použijte předdefinovaný [avere operátor](../role-based-access-control/built-in-roles.md#avere-operator)role)
+* IP adresa pro správu clusteru a heslo pro správu 
+* Počet uzlů, které se mají přidat (1, 2 nebo 3)
+* Typ instance uzlu a hodnoty velikosti mezipaměti 
 
-Pokud nepoužíváte prototyp, je nutné vytvořit příkaz podobný následující, včetně všech informace popsané výše. 
+Pokud prototyp nepoužíváte, musíte vytvořit příkaz podobný následujícímu, včetně všech výše popsaných informací. 
 
 ```bash
    vfxt.py --cloud-type azure --from-environment \
@@ -117,96 +117,96 @@ Pokud nepoužíváte prototyp, je nutné vytvořit příkaz podobný následují
    --log ~/vfxt.log
 ```
 
-Další informace najdete v článku [přidání uzlů do clusteru](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) v Průvodci vfxt.py využití.
+Další informace najdete v tématu [Přidání uzlů do clusteru](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) v příručce pro použití vfxt.py.
 
-### <a name="stop-a-cluster-with-vfxtpy"></a>Zastavení clusteru s vfxt.py
+### <a name="stop-a-cluster-with-vfxtpy"></a>Zastavení clusteru pomocí vfxt.py
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET
 ```
 
-### <a name="start-a-stopped-cluster-with-vfxtpy"></a>Spustit zastavený cluster s vfxt.py
+### <a name="start-a-stopped-cluster-with-vfxtpy"></a>Spuštění zastaveného clusteru s vfxt.py
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```    
 
-Protože clusteru je zastaven, musíte předat identifikátory instancí k určení uzly clusteru. Čtení [zadání clusteru, které chcete upravit](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) v příručce využití vfxt.py Další informace.
+Vzhledem k tomu, že je cluster zastavený, je nutné předat identifikátory instancí, abyste určili uzly clusteru. Další informace najdete v tématu [určení clusteru, který se má upravit](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) v průvodci používáním vfxt.py.
 
-### <a name="destroy-a-cluster-with-vfxtpy"></a>Zrušení clusteru s vfxt.py
+### <a name="destroy-a-cluster-with-vfxtpy"></a>Zničit cluster pomocí vfxt.py
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Možnost ``--quick-destroy`` lze použít, pokud nechcete k zápisu změněná data z mezipaměti clusteru.
+Možnost ``--quick-destroy`` se dá použít, pokud nechcete zapisovat změněná data z mezipaměti clusteru.
 
-Čtení [příručce využití vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) pro další informace.  
+Další informace najdete v [příručce k používání vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) .  
 
-## <a name="manage-cluster-vms-from-the-azure-portal"></a>Spravovat virtuální počítače clusteru z webu Azure portal 
+## <a name="manage-cluster-vms-from-the-azure-portal"></a>Správa virtuálních počítačů clusteru z Azure Portal 
 
-Na webu Azure portal je možné odstranit virtuální počítače clusteru jednotlivě, ale integrity dat není zaručeno, pokud není čistě nejprve clusteru. 
+Azure Portal lze použít ke zničení virtuálních počítačů clusteru jednotlivě, ale integrita dat není zaručena, Pokud cluster není nejprve vypnutý. 
 
-Na webu Azure portal je možné pro tyto úlohy správy clusteru: 
+Azure Portal lze použít pro tyto úlohy správy clusteru: 
 
-* Spusťte zastavené vFXT uzel
-* Zastavení uzlu jednotlivé vFXT (clusteru interpretuje jako selhání uzlu)
-* Zrušení clusteru vFXT *Pokud* není potřeba zajistit, že je změněná data v clusteru mezipaměti zapsáno do základní filtr
-* Trvale odstranit vFXT uzlů a jiných prostředků clusteru po jejich vyply bezpečně
+* Spustit zastavený uzel vFXT
+* Zastavení jednotlivého uzlu vFXT (cluster to interpretuje jako selhání uzlu)
+* *Pokud* nepotřebujete mít jistotu, že se změněná data v mezipaměti clusteru zapisují do základního souborového, odstraňte cluster vFXT.
+* Trvalé odebrání uzlů vFXT a dalších prostředků clusteru poté, co byly bezpečně vypnuty
 
-### <a name="restart-vfxt-instances-from-the-azure-portal"></a>Restartování instance vFXT z portálu Azure portal
+### <a name="restart-vfxt-instances-from-the-azure-portal"></a>Restartujte vFXT instance z Azure Portal
 
-Pokud je potřeba restart zastavené uzel, musíte použít na webu Azure portal. Vyberte **virtuálních počítačů** v levé nabídce a potom klikněte na název virtuálního počítače v seznamu, otevřete její stránku Přehled.
+Pokud potřebujete restartovat zastavený uzel, je nutné použít Azure Portal. V nabídce vlevo vyberte **virtuální počítače** a potom kliknutím na název virtuálního počítače v seznamu otevřete jeho stránku s přehledem.
 
-Klikněte na tlačítko **Start** tlačítko v horní části stránky přehled pro opětovnou aktivaci virtuálního počítače.
+Kliknutím na tlačítko **Start** v horní části stránky přehled znovu aktivujete virtuální počítač.
 
-![Azure portal obrazovky zobrazující možnost spuštění zastaveného virtuálního počítače](media/avere-vfxt-start-stopped-incurring-annot.png)
+![Obrazovka Azure Portal znázorňující možnost spuštění zastaveného virtuálního počítače](media/avere-vfxt-start-stopped-incurring-annot.png)
 
 ### <a name="delete-cluster-nodes"></a>Odstranit uzly clusteru
 
-Pokud chcete odstranit jednoho uzlu z clusteru vFXT, ale ponechat zbytek clusteru, měli byste nejprve [odebrat uzel z clusteru](#manage-nodes-with-avere-control-panel) pomocí ovládacího panelu Avere.
+Pokud chcete odstranit jeden uzel z clusteru vFXT, ale zachovat zbývající část clusteru, měli byste nejdřív [odebrat uzel z clusteru](#manage-nodes-with-avere-control-panel) pomocí ovládacího panelu avere.
 
 > [!CAUTION]
-> Při odstranění uzlu bez první odebrání z clusteru vFXT, data budou ztracena.
+> Pokud odstraníte uzel, aniž byste ho nejdřív odebrali z clusteru vFXT, může dojít ke ztrátě dat.
 
-Chcete-li trvale odstranit jednu nebo víc instancí, které se používají jako uzel vFXT, použijte na webu Azure portal.
-Vyberte **virtuálních počítačů** v levé nabídce a potom klikněte na název virtuálního počítače v seznamu, otevřete její stránku Přehled.
+K trvalému zničení jedné nebo více instancí používaných jako uzel vFXT použijte Azure Portal.
+V nabídce vlevo vyberte **virtuální počítače** a potom kliknutím na název virtuálního počítače v seznamu otevřete jeho stránku s přehledem.
 
-Klikněte na tlačítko **odstranit** tlačítko v horní části stránky přehled trvale zničit virtuálního počítače.
+Kliknutím na tlačítko **Odstranit** v horní části stránky přehled trvale odstraníte virtuální počítač.
 
-Tuto metodu můžete po jejich vyply bezpečně trvale odebrat uzly clusteru. 
+Tuto metodu můžete použít k trvalému odebrání uzlů clusteru poté, co byly bezpečně vypnuty. 
 
-### <a name="destroy-the-cluster-from-the-azure-portal"></a>Odstranit cluster na webu Azure Portal
+### <a name="destroy-the-cluster-from-the-azure-portal"></a>Zničit cluster z Azure Portal
 
 > [!NOTE] 
-> Pokud chcete, aby všechny zbývající změny klienta v mezipaměti k zápisu do back endové úložné, použijte vfxt.py `--destroy` možnost nebo pomocí ovládacího panelu Avere řádně vypnout clusteru před odebráním uzlu instance na webu Azure Portal.
+> Pokud chcete, aby se všechny zbývající změny klienta v mezipaměti zapisovaly do back-endu úložiště, použijte možnost vfxt.py `--destroy` nebo pomocí ovládacího panelu avere vypněte cluster čistě předtím, než odeberete instance uzlů v Azure Portal.
 
-Instance uzlu může trvale zničit tak, že odstraníte na webu Azure Portal. Můžete je jednotlivě jak je popsáno výše, nebo můžete použít odstranit **virtuálních počítačů** stránku a najít všechny virtuální počítače clusteru, vyberte pomocí zaškrtávacích políček a klikněte na tlačítko **odstranit** tlačítko je odebrat vše v jedna akce.
+Instance uzlů můžete zničit trvale jejich odstraněním v Azure Portal. Můžete je odstranit jednou, jak je popsáno výše, nebo můžete použít stránku **Virtual Machines** k vyhledání všech virtuálních počítačů clusteru, jejich zaškrtnutí pomocí zaškrtávacích políček a kliknutím na tlačítko **Odstranit** je odstranit vše v jedné akci.
 
-![Seznam virtuálních počítačů na portálu, Filtroval termín "clusteru", s třemi čtyři zaškrtnuto a zvýrazní](media/avere-vfxt-multi-vm-delete.png)
+![Seznam virtuálních počítačů na portálu filtrovaných podle výrazu "cluster" se třemi ze čtyř zaškrtnutých a zvýrazněných](media/avere-vfxt-multi-vm-delete.png)
 
-### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Odstranit prostředky další clusteru z webu Azure portal
+### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Odstranění dalších prostředků clusteru z Azure Portal
 
-Pokud jste vytvořili speciálně pro vFXT cluster další prostředky, můžete chtít odebrat jako součást opětné clusteru. Nelze odstranit prvky, které obsahují data, která potřebujete nebo všechny položky, které jsou sdíleny s jinými projekty.
+Pokud jste vytvořili další prostředky konkrétně pro cluster vFXT, můžete je chtít odebrat jako součást odtrhnout cluster. Nezničit prvky, které obsahují data, která potřebujete, nebo jakékoli položky, které jsou sdíleny s jinými projekty.
 
-Kromě odstranění uzlů clusteru, zvažte odebrání těchto součástí: 
+Kromě odstranění uzlů clusteru zvažte odebrání těchto součástí: 
 
-* Kontroler clusteru virtuálních počítačů
-* Datové disky, které jsou spojené s uzly clusteru
-* Síťová rozhraní a veřejné IP adresy přidružené k součástem clusteru
+* Virtuální počítač řadiče clusteru
+* Datové disky přidružené k uzlům clusteru
+* Síťová rozhraní a veřejné IP adresy přidružené ke komponentám clusteru
 * Virtuální sítě
-* Účty úložiště (**pouze** pokud neobsahují žádné důležité data)
+* Účty úložiště (**jenom** v případě, že neobsahují žádná důležitá data)
 * Skupina dostupnosti 
 
-![Azure portal vytvořil "všechny prostředky" seznamu, který ukazuje prostředky pro testovací cluster](media/avere-vfxt-all-resources-list.png)
+![Azure Portal seznamu všechny prostředky zobrazující prostředky vytvořené pro testovací cluster](media/avere-vfxt-all-resources-list.png)
 
-### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Odstranit skupinu prostředků clusteru z webu Azure portal
+### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Odstraní skupinu prostředků clusteru z Azure Portal.
 
-Pokud jste vytvořili skupinu prostředků speciálně pro organizace clusteru, lze zničit všechny související prostředky pro cluster pomocí zničení skupinu prostředků. 
+Pokud jste vytvořili skupinu prostředků konkrétně pro vytvoření clusteru, můžete zničit všechny související prostředky pro cluster zničením skupiny prostředků. 
 
 > [!Caution] 
-> Pokud jste si jisti, že žádné hodnoty se nachází ve skupině jenom odstranit skupinu prostředků. Například Ujistěte se, že přesunete veškerá potřebná data z libovolné úložiště kontejnerů v rámci skupiny prostředků.  
+> Jenom zničit skupinu prostředků, jenom pokud jste si jisti, že ve skupině není žádná hodnota. Ujistěte se například, že jste přesunuli veškerá potřebná data z kontejnerů úložiště v rámci skupiny prostředků.  
 
-Pokud chcete odstranit skupinu prostředků, klikněte na tlačítko **skupiny prostředků** v nabídce vlevo na portálu a filtrovat seznam skupin prostředků na vyberte si tu edici jste vytvořili pro vFXT cluster. Vyberte skupinu prostředků a klikněte na tlačítko se třemi tečkami na pravé straně panelu. Zvolte **Odstranit skupinu prostředků**. Portál vás vyzve k potvrzení odstranění, které je nevratná operace.  
+Pokud chcete odstranit skupinu prostředků, klikněte v levé nabídce na portálu na **skupiny** prostředků a vyfiltrujte seznam skupin prostředků tak, abyste našli ten, který jste vytvořili pro cluster vFXT. Vyberte skupinu prostředků a klikněte na tři tečky na pravé straně panelu. Zvolte **Odstranit skupinu prostředků**. Portál vás vyzve k potvrzení odstranění, což je nevratné.  
 
-![Skupina prostředků zobrazuje akce "Odstranit skupinu prostředků"](media/avere-vfxt-delete-resource-group.png)
+![Skupina prostředků, která zobrazuje akci "odstranit skupinu prostředků"](media/avere-vfxt-delete-resource-group.png)

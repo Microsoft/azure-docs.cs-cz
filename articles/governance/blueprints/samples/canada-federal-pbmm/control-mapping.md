@@ -1,17 +1,17 @@
 ---
 title: Ukázka – federální PBMM podrobného plánu v Kanadě – mapování ovládacích prvků
-description: Mapování ovládacího prvku pro ukázku federálního PBMM podrobného plánu pro Kanadu na Azure Policy.
+description: Mapování ovládacích prvků pro ukázky federální PBMM podrobného plánu pro Kanadu Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 8fae03acf33d80502869e2f8d19aa619d72f038c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7630db80c81f1e717b84c6be0c4fcf9526ed06c9
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981662"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248618"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Mapování ovládacích prvků pro ukázku federálního PBMM podrobného plánu pro Kanadu
 

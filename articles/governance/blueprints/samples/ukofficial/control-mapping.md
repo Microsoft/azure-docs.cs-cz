@@ -1,18 +1,18 @@
 ---
 title: Ukázka – oficiální a britský NHS modrotisky – mapování ovládacích prvků
-description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
+description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9001e752c9b0f79d7c688e0b13fd7133004ff4ad
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980885"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248791"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 

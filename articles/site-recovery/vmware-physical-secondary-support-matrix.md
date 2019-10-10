@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972076"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255199"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -25,6 +25,17 @@ Tento článek shrnuje, co je podporováno při použití služby [Azure Site Re
 > [!NOTE]
 > Replikaci místních virtuálních počítačů VMware a fyzických serverů poskytuje InMage Scout. InMage Scout je součástí předplatného služby Azure Site Recovery.
 
+## <a name="end-of-support-announcement"></a>Oznámení o ukončení podpory
+Scénář Site Recovery pro replikaci mezi místními VMware nebo fyzickými datacentry se blíží konci podpory.
+
+- Od srpna 2018 se scénář nedá nakonfigurovat v Recovery Services trezoru a InMage Scout software nejde stáhnout z trezoru. Existující nasazení budou podporována.
+- - Od prosince 31 2020 se scénář nepodporuje.
+Stávající partneři mohou připojit nové zákazníky do scénáře až do doby, než skončí podpora.
+- Během 2018 a 2019 budou vydány dvě aktualizace:
+
+    - Aktualizace 7: opravuje problémy s konfigurací sítě a dodržováním předpisů a poskytuje podporu TLS 1,2.
+    - Aktualizace 8: přidává podporu pro operační systémy Linux RHEL/CentOS 7.3/7.4/7.5 a pro SUSE 12
+    - Po aktualizaci 8 nebudou zveřejněny žádné další aktualizace. Pro operační systémy přidané v Update 8 bude omezená podpora oprav hotfix a opravy chyb na základě nejlepšího úsilí.
 
 ## <a name="host-servers"></a>Hostitelské servery
 
@@ -68,14 +79,14 @@ Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se** 
 --- | --- 
 NFS | Ano 
-SMB 3.0 | Není k dispozici 
+SMB 3.0 | Nevztahuje se 
 SÍŤ SAN (ISCSI) | Ano 
 Multipath (multi-Path) | Ano 
 
@@ -83,9 +94,9 @@ Multipath (multi-Path) | Ano
 
 **Konfigurace** | **Podporuje se** 
 --- | --- 
-VMDK | Ano 
-VHD/VHDX | Není k dispozici 
-Virtuální počítač 2. generace | Není k dispozici 
+FORMÁTU | Ano 
+VHD/VHDX | Nevztahuje se 
+Virtuální počítač 2. generace | Nevztahuje se 
 Disk sdíleného clusteru | Ano 
 Zašifrovaný disk | Ne 
 UEFI| Ano 
@@ -97,7 +108,7 @@ Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ne 
 Hot Add/Remove disk | Ano 
 Vyloučení disku | Ano 
-Multipath (multi-Path) | Není k dispozici 
+Multipath (multi-Path) | Nevztahuje se 
 
 ## <a name="vaults"></a>Trezory
 
@@ -112,13 +123,13 @@ Služba mobility koordinuje replikaci mezi místními servery VMware nebo fyzick
 
 | **Aktualizace** | **Podrobnosti** |
 | --- | --- |
-|Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> Seznamte se s nejnovějšími aktualizacemi Scout [a stáhněte](vmware-physical-secondary-disaster-recovery.md#updates) si je |
+|Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> [Seznamte se s](vmware-physical-secondary-disaster-recovery.md#updates) nejnovějšími aktualizacemi Scout a Stáhněte si je |
 |Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Stáhnout uživatelskou příručku k [InMage Scout](https://aka.ms/asr-scout-user-guide)
+Stáhnout [uživatelskou příručku k InMage Scout](https://aka.ms/asr-scout-user-guide)
 
 - [Replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality](tutorial-vmm-to-vmm.md)
 - [Replikace fyzických serverů a virtuálních počítačů VMware do sekundární lokality](tutorial-vmware-to-vmware.md)

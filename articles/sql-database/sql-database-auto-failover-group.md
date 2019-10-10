@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/09/2019
+ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103185"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249321"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -33,7 +33,7 @@ Pokud používáte skupiny s automatickým převzetím služeb při selhání se
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
 - [PowerShell: Skupina převzetí služeb při selhání](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API: Skupina](https://docs.microsoft.com/rest/api/sql/failovergroups)převzetí služeb při selhání.
+- [REST API: Skupina převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
 Po převzetí služeb při selhání zajistěte, aby byly požadavky na ověřování pro server a databázi nakonfigurovány na novém primárním serveru. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
@@ -46,7 +46,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
   Skupina převzetí služeb při selhání je pojmenovaná skupina databází spravovaná jedním SQL Database serverem nebo v rámci jedné spravované instance, která může převzít služby při selhání jako jednotka v jiné oblasti v případě výpadku v primární oblasti, nebo když některé primární databáze nebudou k dispozici. Při vytvoření pro spravované instance obsahuje skupina převzetí služeb při selhání všechny uživatelské databáze v instanci, a proto lze v instanci nakonfigurovat pouze jednu skupinu převzetí služeb při selhání.
   
   > [!IMPORTANT]
-  > Název skupiny převzetí služeb při selhání musí být globálně jedinečný v `.database.windows.net` rámci domény.
+  > Název skupiny převzetí služeb při selhání musí být globálně jedinečný v rámci domény `.database.windows.net`.
 
 - **SQL Database servery**
 
@@ -80,11 +80,11 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Naslouchací proces pro čtení a zápis skupiny převzetí služeb při selhání**
 
-  Záznam DNS CNAME, který odkazuje na aktuální primární adresu URL. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje, aby se při převzetí služeb při selhání znovu znovu připojila úloha SQL pro čtení i zápis k primární databázi. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího `<fog-name>.database.windows.net`procesu vytvořený jako. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, bude záznam CNAME DNS pro adresu URL naslouchacího procesu `<fog-name>.zone_id.database.windows.net`vytvořený jako.
+  Záznam DNS CNAME, který odkazuje na aktuální primární adresu URL. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje, aby se při převzetí služeb při selhání znovu znovu připojila úloha SQL pro čtení i zápis k primární databázi. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.database.windows.net`. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.zone_id.database.windows.net`.
 
 - **Skupina převzetí služeb při selhání – naslouchací proces jen pro čtení**
 
-  Záznam CNAME DNS vytvořený, který odkazuje na naslouchací proces jen pro čtení, který odkazuje na adresu URL sekundárního objektu. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohy SQL, která je jen pro čtení, k sekundárnímu připojení k sekundárnímu pomocí zadaných pravidel vyrovnávání zatížení. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, bude záznam CNAME DNS pro adresu URL naslouchacího `<fog-name>.secondary.database.windows.net`procesu vytvořený jako. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, bude záznam CNAME DNS pro adresu URL naslouchacího procesu `<fog-name>.zone_id.secondary.database.windows.net`vytvořený jako.
+  Záznam CNAME DNS vytvořený, který odkazuje na naslouchací proces jen pro čtení, který odkazuje na adresu URL sekundárního objektu. Automaticky se vytvoří při vytvoření skupiny převzetí služeb při selhání a umožňuje úlohy SQL, která je jen pro čtení, k sekundárnímu připojení k sekundárnímu pomocí zadaných pravidel vyrovnávání zatížení. Když je na serveru SQL Database vytvořená skupina převzetí služeb při selhání, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.secondary.database.windows.net`. Pokud je skupina převzetí služeb při selhání vytvořena na spravované instanci, záznam CNAME DNS pro adresu URL naslouchacího procesu se vytvoří jako `<fog-name>.zone_id.secondary.database.windows.net`.
 
 - **Zásady automatického převzetí služeb při selhání**
 
@@ -92,7 +92,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Zásada převzetí služeb při selhání jen pro čtení**
 
-  Ve výchozím nastavení je převzetí služeb při selhání naslouchacího procesu jen pro čtení zakázané. Zajišťuje, že výkon primárního z těchto primárních není ovlivněný, když je sekundární objekt v režimu offline. Ale také to znamená, že relace jen pro čtení se nebudou moci připojit až po obnovení sekundárního zařízení. Pokud nemůžete tolerovat výpadky v relacích jen pro čtení a jsou v pořádku, aby byly primární pro provoz jen pro čtení i pro čtení i zápis na úkor možného snížení výkonu primární služby, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení. konfigurací `AllowReadOnlyFailoverToPrimary` vlastnosti. V takovém případě bude přenos, který je jen pro čtení, automaticky přesměrován na primární, pokud není k dispozici sekundární.
+  Ve výchozím nastavení je převzetí služeb při selhání naslouchacího procesu jen pro čtení zakázané. Zajišťuje, že výkon primárního z těchto primárních není ovlivněný, když je sekundární objekt v režimu offline. Ale také to znamená, že relace jen pro čtení se nebudou moci připojit až po obnovení sekundárního zařízení. Pokud nemůžete tolerovat výpadky v relacích jen pro čtení a jsou v pořádku, aby byly primární pro provoz jen pro čtení i pro čtení i zápis na úkor možného snížení výkonu primární služby, můžete povolit převzetí služeb při selhání pro naslouchací proces jen pro čtení. konfigurací vlastnosti `AllowReadOnlyFailoverToPrimary`. V takovém případě bude přenos, který je jen pro čtení, automaticky přesměrován na primární, pokud není k dispozici sekundární.
 
 - **Plánované převzetí služeb při selhání**
 
@@ -112,7 +112,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 
 - **Období odkladu s ztrátou dat**
 
-  Vzhledem k tomu, že primární a sekundární databáze jsou synchronizovány pomocí asynchronní replikace, může převzetí služeb při selhání dojít ke ztrátě dat. Zásady automatického převzetí služeb při selhání můžete přizpůsobit tak, aby odrážely odolnost vaší aplikace proti ztrátě dat. Konfigurací `GracePeriodWithDataLossHours`nástroje můžete určit, jak dlouho systém počká, než se iniciuje převzetí služeb při selhání, které pravděpodobně bude mít za následek ztrátu dat.
+  Vzhledem k tomu, že primární a sekundární databáze jsou synchronizovány pomocí asynchronní replikace, může převzetí služeb při selhání dojít ke ztrátě dat. Zásady automatického převzetí služeb při selhání můžete přizpůsobit tak, aby odrážely odolnost vaší aplikace proti ztrátě dat. Konfigurací `GracePeriodWithDataLossHours` můžete určit, jak dlouho systém počká, než iniciuje převzetí služeb při selhání, které pravděpodobně bude mít za následek ztrátu dat.
 
 - **Několik skupin převzetí služeb při selhání**
 
@@ -151,11 +151,11 @@ Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito o
 
 - **Použití naslouchacího procesu pro čtení i zápis pro úlohu OLTP**
 
-  Při provádění operací OLTP použijte `<fog-name>.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Všimněte si, že při převzetí služeb při selhání je potřeba aktualizovat záznam DNS, aby se připojení klientů přesměrovala na nové primární až po aktualizaci mezipaměti DNS klienta.
+  Při provádění operací OLTP použijte jako adresu URL serveru `<fog-name>.database.windows.net` a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Všimněte si, že při převzetí služeb při selhání je potřeba aktualizovat záznam DNS, aby se připojení klientů přesměrovala na nové primární až po aktualizaci mezipaměti DNS klienta.
 
 - **Použití naslouchacího procesu jen pro čtení pro úlohu jen pro čtení**
 
-  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte `<fog-name>.secondary.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v úmyslu přečíst si v připojovacím řetězci pomocí `ApplicationIntent=ReadOnly`. Pokud chcete zajistit, že se po převzetí služeb při selhání může znovu připojit úloha jen pro čtení, nebo pokud sekundární server přejde do režimu offline, ujistěte `AllowReadOnlyFailoverToPrimary` se, že jste nakonfigurovali vlastnost zásady převzetí služeb při selhání. 
+  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. V případě relací jen pro čtení použijte jako adresu URL serveru `<fog-name>.secondary.database.windows.net` a připojení se automaticky přesměruje na sekundární. Je také vhodné určit v záměru čtení připojovacího řetězce pomocí `ApplicationIntent=ReadOnly`. Pokud chcete zajistit, že se po převzetí služeb při selhání může znovu připojit úloha jen pro čtení, nebo pokud sekundární server přejde do režimu offline, nezapomeňte nakonfigurovat vlastnost `AllowReadOnlyFailoverToPrimary` zásady převzetí služeb při selhání. 
 
 - **Připravte se na snížení výkonu.**
 
@@ -166,7 +166,7 @@ Při navrhování služby s ohledem na provozní kontinuitu se řiďte těmito o
 
 - **Příprava na ztrátu dat**
 
-  Pokud se zjistí výpadek, SQL počká na období, které jste určili `GracePeriodWithDataLossHours`. Výchozí hodnota je 1 hodina. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit `GracePeriodWithDataLossHours` na dostatečně velký počet, například 24 hodin. K navrácení služeb po obnovení ze sekundárního na primární se používá ruční převzetí služeb při selhání pomocí skupiny.
+  Pokud se zjistí výpadek, SQL počká na období zadané pomocí `GracePeriodWithDataLossHours`. Výchozí hodnota je 1 hodina. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit `GracePeriodWithDataLossHours` na dostatečně velké číslo, například 24 hodin. K navrácení služeb po obnovení ze sekundárního na primární se používá ruční převzetí služeb při selhání pomocí skupiny.
 
   > [!IMPORTANT]
   > Elastické fondy s 800 nebo méně DTU a více než 250 databází pomocí geografické replikace můžou narazit na problémy, včetně delšího plánovaného převzetí služeb při selhání a sníženého výkonu.  Tyto problémy se budou pravděpodobněji vyskytnout pro úlohy náročné na zápis, když jsou koncové body geografické replikace široce oddělené geograficky nebo pokud se pro každou databázi používá více sekundárních koncových bodů.  Příznaky těchto problémů jsou uvedené v případě, že se prodleva geografické replikace v průběhu času zvyšuje.  Toto zpoždění se dá monitorovat pomocí [Sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Pokud dojde k těmto potížím, bude zmírnění rizik zahrnovat zvýšení počtu DTU fondů nebo snížení počtu geograficky replikovaných databází ve stejném fondu.
@@ -186,7 +186,7 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
 - **Vytvoření sekundární instance ve stejné zóně DNS jako primární instance**
 
-  Pro zajištění nepřerušeného připojení k primární instanci po převzetí služeb při selhání musí být primární i sekundární instance ve stejné zóně DNS. Zaručujeme, že stejný certifikát s více doménami (SAN) se dá použít k ověření připojení klientů ke kterékoli z těchto dvou instancí ve skupině převzetí služeb při selhání. Když je vaše aplikace připravená na produkční nasazení, vytvořte sekundární instanci v jiné oblasti a ujistěte se, že se zóna DNS sdílí s primární instancí. Můžete to provést zadáním `DNS Zone Partner` volitelného parametru pomocí Azure Portal, PowerShellu nebo REST API. 
+  Pro zajištění nepřerušeného připojení k primární instanci po převzetí služeb při selhání musí být primární i sekundární instance ve stejné zóně DNS. Zaručujeme, že stejný certifikát s více doménami (SAN) se dá použít k ověření připojení klientů ke kterékoli z těchto dvou instancí ve skupině převzetí služeb při selhání. Když je vaše aplikace připravená na produkční nasazení, vytvořte sekundární instanci v jiné oblasti a ujistěte se, že se zóna DNS sdílí s primární instancí. Můžete to provést zadáním volitelného parametru `DNS Zone Partner` pomocí Azure Portal, PowerShellu nebo REST API. 
 
 > [!IMPORTANT]
 > První instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.   
@@ -199,7 +199,7 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
 - **Vytvoření skupiny převzetí služeb při selhání mezi spravovanými instancemi v různých předplatných**
 
-  Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi ve dvou různých předplatných. Pokud používáte rozhraní PowerShell API, můžete to udělat zadáním `PartnerSubscriptionId` parametru pro sekundární instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID. 
+  Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi ve dvou různých předplatných. Pokud používáte rozhraní PowerShell API, můžete to udělat tak, že pro sekundární instanci zadáte parametr `PartnerSubscriptionId`. Při použití REST API může mít každé ID instance zahrnuté v parametru `properties.managedInstancePairs` vlastní subscriptionID. 
   
   > [!IMPORTANT]
   > Azure Portal nepodporuje skupiny převzetí služeb při selhání v různých předplatných.
@@ -214,16 +214,16 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
 - **Použití naslouchacího procesu pro čtení i zápis pro úlohu OLTP**
 
-  Při provádění operací OLTP použijte `<fog-name>.zone_id.database.windows.net` jako adresu URL serveru a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Převzetí služeb při selhání zahrnuje aktualizaci záznamu DNS, takže připojení klientů se přesměrují na nový primární až po aktualizaci mezipaměti DNS klienta. Vzhledem k tomu, že sekundární instance sdílí zónu DNS s primárním objektem, klientská aplikace se k ní bude moci znovu připojit pomocí stejného certifikátu sítě SAN.
+  Při provádění operací OLTP použijte jako adresu URL serveru `<fog-name>.zone_id.database.windows.net` a připojení se automaticky přesměrují na primární. Tato adresa URL se po převzetí služeb při selhání nemění. Převzetí služeb při selhání zahrnuje aktualizaci záznamu DNS, takže připojení klientů se přesměrují na nový primární až po aktualizaci mezipaměti DNS klienta. Vzhledem k tomu, že sekundární instance sdílí zónu DNS s primárním objektem, klientská aplikace se k ní bude moci znovu připojit pomocí stejného certifikátu sítě SAN.
 
 - **Přímé připojení k geograficky replikovaným sekundárním dotazům jen pro čtení**
 
-  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému `server.secondary.zone_id.database.windows.net` sekundárnímu serveru, použijte jako adresu URL serveru a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
+  Pokud máte logicky izolovanou úlohu jen pro čtení, která je odolná vůči určité zastaralosti dat, můžete v aplikaci použít sekundární databázi. Chcete-li se připojit přímo k geograficky replikovanému sekundárnímu serveru, použijte jako adresu URL serveru `server.secondary.zone_id.database.windows.net` a připojení se provede přímo na geograficky replikovanou sekundární hodnotu.
 
   > [!NOTE]
-  > V některých úrovních služby Azure SQL Database podporuje použití [replik jen pro čtení](sql-database-read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a použitím `ApplicationIntent=ReadOnly` parametru v připojovacím řetězci. Když jste nakonfigurovali geograficky replikovanou sekundární položku, můžete tuto možnost použít k připojení k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
-  > - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, `<fog-name>.zone_id.database.windows.net`použijte.
-  > - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, `<fog-name>.secondary.zone_id.database.windows.net`použijte.
+  > V některých úrovních služby Azure SQL Database podporuje použití [replik jen pro čtení](sql-database-read-scale-out.md) k vyrovnávání zatížení úloh dotazů jen pro čtení pomocí kapacity jedné repliky jen pro čtení a pomocí parametru `ApplicationIntent=ReadOnly` v připojovacím řetězci. Když jste nakonfigurovali geograficky replikovanou sekundární položku, můžete tuto možnost použít k připojení k replice jen pro čtení v primárním umístění nebo v geograficky replikovaném umístění.
+  > - Pokud se chcete připojit k replice jen pro čtení v primárním umístění, použijte `<fog-name>.zone_id.database.windows.net`.
+  > - Pokud se chcete připojit k replice jen pro čtení v sekundárním umístění, použijte `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Připravte se na snížení výkonu.**
 
@@ -231,7 +231,7 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
 - **Příprava na ztrátu dat**
 
-  Pokud dojde k výpadku, SQL automaticky aktivuje převzetí služeb při selhání pro čtení a zápis, pokud dojde ke ztrátě dat na základě našeho vědomí. V opačném případě počká na období, které jste určili `GracePeriodWithDataLossHours`. Pokud jste určili `GracePeriodWithDataLossHours`, připravte se na ztrátu dat. Obecně platí, že při výpadkech Azure upřednostňuje dostupnost. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit GracePeriodWithDataLossHours na dostatečně velké číslo, například 24 hodin.
+  Pokud dojde k výpadku, SQL automaticky aktivuje převzetí služeb při selhání pro čtení a zápis, pokud dojde ke ztrátě dat na základě našeho vědomí. V opačném případě počká na určenou dobu `GracePeriodWithDataLossHours`. Pokud jste zadali `GracePeriodWithDataLossHours`, připravte se na ztrátu dat. Obecně platí, že při výpadkech Azure upřednostňuje dostupnost. Pokud nemůžete zaručit ztrátu dat, nezapomeňte nastavit GracePeriodWithDataLossHours na dostatečně velké číslo, například 24 hodin.
 
   Aktualizace DNS naslouchacího procesu pro čtení a zápis proběhne hned po zahájení převzetí služeb při selhání. Tato operace nebude mít za následek ztrátu dat. Proces přepínání databázových rolí však může za normálních podmínek trvat až 5 minut. Až do dokončení, budou některé databáze v nové primární instanci pořád jen pro čtení. Pokud se převzetí služeb při selhání iniciuje pomocí PowerShellu, bude celá operace synchronní. Pokud je inicializována pomocí Azure Portal, uživatelské rozhraní bude označovat stav dokončení. Pokud je iniciována pomocí REST API, použijte mechanismus dotazování standardní Azure Resource Manager ke sledování dokončení.
 
@@ -304,15 +304,12 @@ Tato sekvence se doporučuje konkrétně vyhnout problému, při kterém se seku
 > [!NOTE]
 > Pokud jste sekundární databázi vytvořili jako součást konfigurace skupiny převzetí služeb při selhání, nedoporučuje se ji převést na downgrade sekundární databáze. Tím zajistíte, že vaše datová úroveň má dostatečnou kapacitu pro zpracování pravidelného zatížení po aktivaci převzetí služeb při selhání.
 
-> [!IMPORTANT]
-> Upgrade nebo downgrade spravované instance, která je členem skupiny převzetí služeb při selhání, se v tuto chvíli nepodporuje.
-
 ## <a name="preventing-the-loss-of-critical-data"></a>Zabránění ztrátě důležitých dat
 
-V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Aby bylo možné tyto kritické aktualizace chránit, může vývojář aplikace volat systémovou proceduru [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) okamžitě po potvrzení transakce. Volání `sp_wait_for_database_copy_sync` blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. `sp_wait_for_database_copy_sync`je vymezen na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
+V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Aby bylo možné tyto kritické aktualizace chránit, může vývojář aplikace volat systémovou proceduru [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) okamžitě po potvrzení transakce. Volání `sp_wait_for_database_copy_sync` blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. `sp_wait_for_database_copy_sync` je vymezen na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`zabraňuje ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené `sp_wait_for_database_copy_sync` voláním procedury může být významné a závisí na velikosti transakčního protokolu v době volání.
+> `sp_wait_for_database_copy_sync` zabraňuje ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené voláním procedury `sp_wait_for_database_copy_sync` může být významné a závisí na velikosti transakčního protokolu v době volání.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Skupiny převzetí služeb při selhání a obnovení k bodu v čase
 
@@ -324,13 +321,13 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: Správa převzetí služeb při selhání SQL Database s izolovanými databázemi a elastickými fondy
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru a odstraní všechny sekundární databáze zahrnuté do skupiny. |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání. |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání. |
-| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
+| [Switch – AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
 | [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny Azure SQL Database převzetí služeb při selhání.|
 |  | |
 
@@ -340,7 +337,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 ### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: Správa skupin převzetí služeb při selhání SQL Database se spravovanými instancemi 
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|
@@ -349,9 +346,9 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Odebere skupinu převzetí služeb při selhání.|
 |  | |
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Správa skupin převzetí služeb při selhání SQL Database s jednou a sdruženými databázemi
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Správa skupin převzetí služeb při selhání databáze SQL pomocí jedné a sdružené databáze
 
-| rozhraní API | Popis |
+| API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -364,7 +361,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Správa skupin převzetí služeb při selhání se spravovanými instancemi
 
-| rozhraní API | Popis |
+| API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -373,7 +370,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte skupinu převzetí služeb při selhání. |
 | [Seznam skupin převzetí služeb při selhání – seznam podle umístění](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobné pokyny najdete v tématu.
     - [Přidání jedné databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md)

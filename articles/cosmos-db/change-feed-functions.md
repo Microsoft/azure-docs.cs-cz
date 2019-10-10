@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 2ec38659b0bafa8836ac787ac36b662970141843
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709814"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249090"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury založené na událostech bez serveru s Azure Cosmos DB a Azure Functions
 
@@ -25,11 +25,11 @@ Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bi
 > [!NOTE]
 > V současné době se aktivační událost Azure Functions pro Cosmos DB podporuje jenom s rozhraním API Core (SQL).
 
-## <a name="requirements"></a>Požadavky
+## <a name="requirements"></a>požadavky
 
 K implementaci toku založeného na události bez serveru budete potřebovat:
 
-* **Monitorovaný kontejner**: monitorovaný kontejner je monitorovaným kontejnerem Azure Cosmos a ukládá data, ze kterých se generuje kanál změn. Jakékoli vložení a změny (například CRUD) do monitorovaného kontejneru se projeví v kanálu změn kontejneru.
+* **Monitorovaný kontejner**: monitorovaný kontejner je monitorovaným kontejnerem Azure Cosmos a ukládá data, ze kterých se generuje kanál změn. Jakékoli vložení, aktualizace monitorovaného kontejneru se projeví v kanálu změn kontejneru.
 * **Kontejner zapůjčení**: kontejner zapůjčení udržuje stav napříč několika a dynamickými instancemi funkcí Azure bez serveru a umožňuje dynamické škálování. Tento kontejner zapůjčení může být ručně nebo automaticky vytvořen triggerem Azure Functions pro Cosmos DB. Chcete-li automaticky vytvořit kontejner zapůjčení, nastavte v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)příznak *CreateLeaseCollectionIfNotExists* . U kontejnerů zapůjčení musí být rozdělená definice klíče oddílu `/id`.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Vytvoření triggeru Azure Functions pro Cosmos DB

@@ -1,5 +1,5 @@
 ---
-title: Kurz – konfigurace clusteru ve službě Azure HDInsight pomocí Ansible | Microsoft Docs
+title: Kurz – konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
 description: Naučte se používat Ansible k vytvoření a změně velikosti Azure HDInsight.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Apache Hadoop, HDInsight
 ms.topic: tutorial
@@ -8,14 +8,14 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861269"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241956"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Kurz: Konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Kurz: konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "70861269"
 > * Změna velikosti clusteru
 > * Odstranění clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -144,7 +144,7 @@ Dokončení vytvoření instance může trvat několik minut.
 
 Po vytvoření clusteru je jediným nastavením, které můžete změnit, počet pracovních uzlů. 
 
-Kód PlayBook v této části zvyšuje počet pracovních uzlů aktualizací `target_instance_count` v rámci. `workernode`
+PlayBook kód v této části zvýší počet pracovních uzlů tím, že aktualizuje `target_instance_count` v rámci `workernode`.
 
 ```yml
 - name: Resize cluster
@@ -205,7 +205,7 @@ Kód PlayBook v tomto oddílu odstraní cluster.
 ## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
 
 Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
-- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) a uložte ho do `hdinsight_create.yml`souboru.
+- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) a uložte ho do `hdinsight_create.yml`.
 - Vytvořte nový soubor s názvem `hdinsight_create.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -353,9 +353,9 @@ Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
 V této části spustíte PlayBook k otestování různých funkcí, které jsou uvedené v tomto článku.
 
 Před spuštěním PlayBook proveďte následující změny:
-- V části nahraďte zástupný symbol názvem vaší skupiny prostředků. `{{ resource_group_name }}` `vars`
+- V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
 
-Spusťte PlayBook pomocí `ansible-playbook` příkazu:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -379,13 +379,13 @@ Následující kód uložte jako `cleanup.yml`:
         state: absent
 ```
 
-Spusťte PlayBook pomocí `ansible-playbook` příkazu:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
 > [Ansible v Azure](/azure/ansible/)

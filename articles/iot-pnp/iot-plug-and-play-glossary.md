@@ -3,18 +3,18 @@ title: Glosář pojmů – IoT technologie Plug and Play Preview | Microsoft Doc
 description: Koncepty – Glosář běžných termínů týkajících se IoT technologie Plug and Play ve verzi Preview.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858844"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249308"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -97,6 +97,7 @@ Připojovací řetězec zapouzdřuje informace potřebné pro připojení ke kon
 
 - Připojovací řetězce zařízení umožňují [zařízením iot technologie Plug and Play](#iot-plug-and-play-device) připojit se k koncovým bodům připojeným k zařízení ve službě IoT Hub. Klientský kód v zařízení používá připojovací řetězec k navázání zabezpečeného připojení ke službě IoT Hub.
 - Připojovací řetězce IoT Hub umožňují zabezpečené připojení k koncovým bodům pro služby v centru IoT. Tato řešení a nástroje spravují centrum IoT a zařízení, která jsou k němu připojená.
+- Připojovací řetězce úložiště modelu společnosti umožňují back-endové řešení a nástroje pro zabezpečené připojení k [firemnímu úložišti](#company-model-repository). Tato řešení a nástroje využívají nebo spravují modely a [rozhraní](#interface) [schopností zařízení](#device-capability-model) v úložišti.
 
 ## <a name="device-capability-model"></a>Model schopností zařízení
 
@@ -114,7 +115,7 @@ Vývojář zařízení používá model, [rozhraní](#interface)a sadu [funkcí]
 
 [Vývojář zařízení](#device-developer) používá k modelování schopností [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device) [Jazyk digitálního vlákna s definicemi](#digital-twin-definition-language) . Model se dá sdílet pomocí úložiště modelu. Vývojář zařízení může z modelu vygenerovat kostru kódu zařízení. [Vývojář řešení](#solution-developer) může nakonfigurovat řešení IoT z modelu.
 
-## <a name="device-provisioning-service"></a>Device Provisioning Service
+## <a name="device-provisioning-service"></a>Služba Device Provisioning
 
 [Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/concepts-connectivity-pnp.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
@@ -142,7 +143,7 @@ Jazyk popisující modely a rozhraní pro [zařízení IoT technologie Plug and 
 
 Trasa nastavená ve [IoT Hub](#azure-iot-hub) pro doručování [událostí digitální události změny](#digital-twin-change-events) do a koncového bodu, jako je Service Bus fronta.
 
-## <a name="interface"></a>Rozhraní
+## <a name="interface"></a>Prostředí
 
 Rozhraní popisuje související možnosti, které jsou implementovány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) nebo z [digitálního vlákna](#digital-twin). Můžete opakovaně používat rozhraní napříč různými [modely schopností zařízení](#device-capability-model).
 

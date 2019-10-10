@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/07/2019
+ms.date: 10/08/2019
 ms.author: magoedte
-ms.openlocfilehash: ada573cc919d775af52abc5a75004866aebbeddb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: dfa823955cccba4ac7ec6859894a4562f0810d76
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033931"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248756"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
@@ -64,7 +64,7 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 
 | Koncový bod | Rozsah | Příklad: |
 |----------|-------|---------|
-| Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
+| Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | Adresa URL/koncový bod | Pro jednotlivé uzly nebo pro clustery v rámci clusteru | `http://myurl:9101/metrics` |
 
@@ -79,9 +79,9 @@ Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncov�
 | | `prometheus.io/scrape` | Logická hodnota | true nebo false | Povoluje vyřazení pod. `monitor_kubernetes_pods` musí být nastavené na `true`. |
 | | `prometheus.io/scheme` | Řetězec | http nebo https | Výchozím nastavením je vyřazení přes protokol HTTP. V případě potřeby nastavte na `https`. | 
 | | `prometheus.io/path` | Řetězec | Pole oddělené čárkami | Cesta prostředku HTTP, ze které se mají načíst metriky Pokud cesta k metrikám není `/metrics`, definujte ji pomocí této poznámky. |
-| | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, na kterém se má naslouchat. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
+| | `prometheus.io/port` | Řetězec | 9102 | Zadejte port, ze kterého se má vyřadit. Pokud není Port nastavený, použije se výchozí hodnota 9102. |
 | Napříč uzly | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je specifický parametr Azure Monitor for Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |
-| V rozsáhlých uzlech nebo v clusteru | `interval` | Řetězec | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Kolekci můžete upravit buď pro *[prometheus_data_collection_settings. Node]* , nebo *[prometheus_data_collection_settings. cluster]* , na časové jednotky, jako je například NS, US (nebo Âμs), MS, s, m, h. |
+| V rozsáhlých uzlech nebo v clusteru | `interval` | Řetězec | 60 s | Výchozí interval shromažďování je jedna minuta (60 sekund). Můžete upravit kolekci pro *[prometheus_data_collection_settings. Node]* a/nebo *[prometheus_data_collection_settings. cluster]* na časové jednotky, například s, m, h. |
 | V rozsáhlých uzlech nebo v clusteru | `fieldpass`<br> `fielddrop`| Řetězec | Pole oddělené čárkami | Nastavením seznamu Povolit (`fieldpass`) a zakázat (`fielddrop`) můžete určit určité metriky, které mají být shromažďovány nebo nikoli z koncového bodu. Nejprve musíte nastavit seznam povolených. |
 
 ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
@@ -91,7 +91,8 @@ ConfigMaps je globální seznam a v agentovi může být použit pouze jeden Con
 Provedením následujících kroků nakonfigurujete a nasadíte konfigurační soubor ConfigMap do clusteru.
 
 1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) si soubor Template ConfigMap YAML a uložte ho jako Container-AZM-MS-agentconfig. yaml.  
-1. Upravte soubor ConfigMap YAML s vlastními nastaveními.
+
+2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo.
 
     - Pokud chcete vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
@@ -99,48 +100,67 @@ Provedením následujících kroků nakonfigurujete a nasadíte konfigurační s
     
     - Pokud chcete zakázat shromažďování protokolů protokolu stderr na úrovni clusteru, nakonfigurujte klíč/hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false`.
     
-    - Následující příklady demonstrují, jak nakonfigurovat metriky souborů ConfigMap z rozsahu adres URL na úrovni clusteru, od DameonSetho uzlu a zadáním poznámky pod.
+3. Chcete-li konfigurovat shromažďování služby Kubernetes Services v clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
 
-        - Vyřadí metriky Prometheus z konkrétní adresy URL v clusteru.
+    ```
+    prometheus-data-collection-settings: |- 
+    # Custom Prometheus metrics data collection settings
+    [prometheus_data_collection_settings.cluster] 
+    interval = "1m"  ## Valid time units are s, m, h.
+    fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+    fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+    kubernetes_services = ["http://my-service-dns.my-namespace:9102/metrics"]
+    ```
+
+4. Pokud chcete nakonfigurovat vyřazení metrik Prometheus z konkrétní adresy URL v clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+
+    ```
+    prometheus-data-collection-settings: |- 
+    # Custom Prometheus metrics data collection settings
+    [prometheus_data_collection_settings.cluster] 
+    interval = "1m"  ## Valid time units are s, m, h.
+    fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
+    fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
+    urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+    ```
+
+5. Pokud chcete nakonfigurovat vyřazení metrik Prometheus z DaemonSet agenta pro každý jednotlivý uzel v clusteru, nakonfigurujte následující v ConfigMap:
+    
+    ```
+    prometheus-data-collection-settings: |- 
+    # Custom Prometheus metrics data collection settings 
+    [prometheus_data_collection_settings.node] 
+    interval = "1m"  ## Valid time units are s, m, h. 
+    urls = ["http://$NODE_IP:9103/metrics"] 
+    fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
+    fielddrop = ["metric_to_drop"] 
+    ```
+
+    >[!NOTE]
+    >$NODE _IP je konkrétní Azure Monitor parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká. 
+
+6. Chcete-li nakonfigurovat vyřazení metrik Prometheus zadáním poznámky pod, proveďte následující kroky:
+
+    1. V části ConfigMap zadejte následující:
 
         ```
          prometheus-data-collection-settings: |- 
          # Custom Prometheus metrics data collection settings
          [prometheus_data_collection_settings.cluster] 
-         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h.
-         fieldpass = ["metric_to_pass1", "metric_to_pass12"] ## specify metrics to pass through 
-         fielddrop = ["metric_to_drop"] ## specify metrics to drop from collecting
-         urls = ["http://myurl:9101/metrics"] ## An array of urls to scrape metrics from
+         interval = "1m"  ## Valid time units are s, m, h
+         monitor_kubernetes_pods = true 
         ```
 
-        - Prometheus metriky z DaemonSet agenta běžícího na všech uzlech v clusteru.
+    2. Pro poznámky pod zadejte následující konfiguraci:
 
         ```
-         prometheus-data-collection-settings: |- 
-         # Custom Prometheus metrics data collection settings 
-         [prometheus_data_collection_settings.node] 
-         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h. 
-         # Node level scrape endpoint(s). These metrics will be scraped from agent's DaemonSet running in every node in the cluster 
-         urls = ["http://$NODE_IP:9103/metrics"] 
-         fieldpass = ["metric_to_pass1", "metric_to_pass2"] 
-         fielddrop = ["metric_to_drop"] 
+         - prometheus.io/scrape:"true" #Enable scraping for this pod 
+         - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+         - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
+         - prometheus.io/port:"8000" #If port is not 9102 use this annotation
         ```
 
-        - Zařadit metriky Prometheus zadáním poznámky pod.
-
-        ```
-         prometheus-data-collection-settings: |- 
-         # Custom Prometheus metrics data collection settings
-         [prometheus_data_collection_settings.cluster] 
-         interval = "1m"  ## Valid time units are ns, us (or µs), ms, s, m, h
-         monitor_kubernetes_pods = true #replicaset will scrape Kubernetes pods for the following prometheus annotations: 
-          - prometheus.io/scrape:"true" #Enable scraping for this pod 
-          - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
-          - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
-          - prometheus.io/port:"8000" #If port is not 9102 use this annotation
-        ```
-
-1. Vytvořte ConfigMap spuštěním následujícího příkazu kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
+7. Vytvořte ConfigMap spuštěním následujícího příkazu kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
     Příklad: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
@@ -186,29 +206,32 @@ Ve výstupu se zobrazí zpráva podobná následující se schématy poznámky �
                     schema-versions=v1 
 ```
 
-## <a name="review-prometheus-data-usage"></a>Kontrola využití dat Prometheus
+## <a name="query-prometheus-metrics-data"></a>Data metrik Prometheus dotazů
 
 Pokud chcete zobrazit Prometheus metriky, které jsou vyřazeny Azure Monitor, zadejte jako obor názvů "Prometheus". Tady je ukázkový dotaz pro zobrazení metrik Prometheus z oboru názvů Kubernetes `default`.
 
 ```
 InsightsMetrics 
-| where Namespace contains "prometheus"
+| where Namespace == "prometheus"
 | extend tags=parse_json(Tags)
-| where tostring(tags.namespace) == "default" 
+| summarize count() by Name
 ```
 
 Data Prometheus lze také přímo dotazovat podle názvu.
 
 ```
 InsightsMetrics 
+| where Namespace == "prometheus"
 | where Name contains "some_prometheus_metric"
 ```
+
+## <a name="review-prometheus-data-usage"></a>Kontrola využití dat Prometheus
 
 Pokud chcete zjistit objem příjmu každé metriky v GB za den, abyste zjistili, jestli je vysoká, je k dispozici následující dotaz.
 
 ```
 InsightsMetrics 
-| where Namespace contains "prometheus"
+| where Namespace == "prometheus"
 | where TimeGenerated > ago(24h)
 | summarize VolumeInGB = (sum(_BilledSize) / (1024 * 1024 * 1024)) by Name
 | order by VolumeInGB desc

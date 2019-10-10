@@ -56,11 +56,11 @@
     - name: Řešení potíží s protokolem SSH
       href: troubleshoot-ssh-connection.md
     - name: Řešení potíží s chybami systému souborů
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: Řešení potíží při spuštění souvisejících s jádrem
       href: 'https://support.microsoft.com/help/4091524'
     - name: Řešení potíží s chybami fstab
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: Podrobné řešení potíží s protokolem SSH
       href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy

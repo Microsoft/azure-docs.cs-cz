@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333370"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237319"
 ---
-| Resource | Výchozí/maximální limit |
+| Prostředek | Výchozí/maximální limit |
 | --- | --- |
 | Prostředky služby front-dveří pro Azure na předplatné | 100 |
 | Hostitelé front-endu, mezi které patří vlastní domény na prostředek | 100 |
@@ -24,7 +24,7 @@ ms.locfileid: "67333370"
 | Back-endy na fond back-endu | 100 |
 | Vzor cesty, který se má shodovat s pravidlem směrování | 25 |
 | Vlastní pravidla firewallu webových aplikací na jednu zásadu | 10 |
-| Zásada firewallu webových aplikací na prostředek | 100 |
+| Zásada firewallu webových aplikací na předplatné | 100 |
 | Podmínky shody brány firewall webových aplikací na vlastní pravidlo | 10 |
 | Rozsahy IP adres firewallu webových aplikací na shodnou podmínku | 600 |
 | Hodnoty shody řetězců firewallu webových aplikací za shodné podmínky | 10 |
@@ -50,7 +50,8 @@ ms.locfileid: "67333370"
 |  | S kódováním přenosu v bloku dat (CTE) | Bez bloků HTTP |
 | ---- | ------- | ------- |
 | **Stáhnout** | Velikost stahovaných velikostí není nijak omezena. | Velikost stahovaných velikostí není nijak omezena. |
-| **Upload** |  Neexistují žádné limity, pokud je každé nahrání CTE menší než 2 GB. | Velikost nemůže být větší než 2 GB. |
+| **Nahrát** |  Neexistují žádné limity, pokud je každé nahrání CTE menší než 2 GB. | Velikost nemůže být větší než 2 GB. |
 
 ### <a name="other-limits"></a>Další omezení
-- Maximální velikost adresy URL-8 192 bajtů – určuje maximální délku nezpracované adresy URL (schéma + hostname + port + cesta a řetězec dotazu adresy URL) – maximální velikost řetězce dotazu-4 096 bajtů – určuje maximální délku řetězce dotazu v bajtech.
+- Maximální velikost adresy URL-8 192 bajtů – určuje maximální délku nezpracované adresy URL (schéma + název hostitele + port + cesta + řetězec dotazu adresy URL).
+- Maximální velikost řetězce dotazu-4 096 bajtů – určuje maximální délku řetězce dotazu v bajtech.

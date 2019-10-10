@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949033"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249201"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Řízení přístupu na základě role v digitálních Vlákenách Azure
 
-Digitální vlákna Azure umožňuje přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v prostorovém grafu. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako řízení přístupu na základě role (RBAC). RBAC se skládá z _rolí_ a _přiřazení rolí_. Role identifikují úroveň oprávnění. Přiřazení rolí přiřadí roli k uživateli nebo zařízení.
+Digitální vlákna Azure umožňuje přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v prostorovém grafu. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako [řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC). RBAC se skládá z _rolí_ a _přiřazení rolí_. Role identifikují úroveň oprávnění. Přiřazení rolí přiřadí roli k uživateli nebo zařízení.
 
 Pomocí RBAC se dá udělit oprávnění k těmto akcím:
 
@@ -84,3 +84,5 @@ Chcete-li udělit oprávnění příjemci, vytvořte přiřazení role. Chcete-l
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete získat další informace o vytváření a správě přiřazení rolí digitálních vláken Azure, přečtěte si téma [Vytvoření a správa přiřazení rolí](./security-create-manage-role-assignments.md).
+
+- Přečtěte si další informace o [RBAC pro Azure](https://docs.microsoft.com/azure/role-based-access-control/).

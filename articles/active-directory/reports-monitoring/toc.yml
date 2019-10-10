@@ -15,8 +15,6 @@
       href: quickstart-download-audit-report.md
     - name: Konfigurace pojmenovaných umístění
       href: quickstart-configure-named-locations.md
-    - name: Instalace balíčku obsahu Power BI
-      href: quickstart-install-power-bi-content-pack.md
     - name: Směrování protokolů do účtu úložiště
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: Kurzy
@@ -58,8 +56,6 @@
           href: howto-troubleshoot-sign-in-errors.md
         - name: Oprava uživatelů označených příznakem rizika
           href: howto-remediate-users-flagged-for-risk.md
-        - name: Použití balíčku obsahu Power BI pro sestavy Azure AD
-          href: howto-power-bi-content-pack.md
         - name: Konfigurace požadavků pro rozhraní API pro generování sestav
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Jak používat sešity Azure AD
@@ -86,8 +82,6 @@
           href: troubleshoot-missing-data-download.md
         - name: Nedá se získat přístup k rozhraní Graph API pro generování sestav
           href: troubleshoot-graph-api.md
-        - name: Chyby v balíčku obsahu Power BI
-          href: troubleshoot-content-pack.md
 - name: Referenční informace
   expanded: true
   items:

@@ -1,85 +1,85 @@
 ---
-title: Monitorování Filer Azure FXT hrany
-description: Jak monitorovat stav hardwaru pro mezipaměť Azure FXT hrany Filer hybridní úložiště
+title: Monitorování Azure FXT Edge souborového
+description: Jak monitorovat stav hardwaru pro mezipaměť hybridního úložiště Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827445"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254883"
 ---
-# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorování Azure FXT hrany Filer stavu hardwaru
+# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorovat stav hardwaru Azure FXT Edge souborového
 
-Systém Azure FXT hrany Filer hybridní úložiště mezipaměti obsahuje více indikátory stavu integrované do skříně správcům porozumět fungování hardwaru.
+Systém Azure FXT Edge pro hybridní úložiště souborového má na skříni více stavových světel, které správcům pomůžou pochopit, jak hardware funguje.
 
 ## <a name="system-health-status"></a>Stav systému
 
-K monitorování operace s mezipamětí na vyšší úrovni, použijte software ovládací panely **řídicí panel** stránce, jak je popsáno v [Průvodce řídicí panel ovládacího prvku Panel](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)
+Chcete-li monitorovat operace mezipaměti na vyšší úrovni, použijte stránku **řídicí** panel softwarového ovládacího panelu, jak je popsáno v [Průvodci řídicí panel v Ovládacích panelech](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) .
 
-## <a name="hardware-status-leds"></a>Stav hardwarových indikátorů LED
+## <a name="hardware-status-leds"></a>Stav hardwaru – diody
 
-Tato část vysvětluje různé indikátory stavu součástí Azure FXT hrany Filer hardwaru.
+Tato část popisuje různé stavové indikátory, které jsou součástí hardwaru Azure FXT Edge souborového.
 
-### <a name="hard-drive-status-leds"></a>Stav disku indikátorů LED
+### <a name="hard-drive-status-leds"></a>Indikátory stavu pevného disku
 
-![Obrázek popředí pevného disku, horizontální, bublinové popisky popisky 2 (levého horního rohu), 1 (levého dolního rohu) a 3 (pravá strana)](media/fxt-monitor/fxt-drive-callouts.png)
+![Obrázek horního, vodorovného a popisku popisku 2 (levý horní roh), 1 (dolní roh) a 3 (pravá strana)](media/fxt-monitor/fxt-drive-callouts.png)
 
-Má dva LED stav každého disku dopravce: indikátorem aktivity (1) a indikátor stavu (2). 
+Každý operátor jednotky má dvě stavy LED: Indikátor aktivity (1) a indikátor stavu (2). 
 
-* Indikátory aktivity LED (1), pokud na jednotce se používá.  
-* Indikátor LED (2) označuje podmínku, která jednotky pomocí kódů v následující tabulce.
+* Indikátory LED aktivity (1), pokud je jednotka používána.  
+* Indikátor LED stavu (2) indikuje stav jednotky pomocí kódů v následující tabulce.
 
-| Jednotka stav Indikátor stavu              | Význam  |
+| Stav LED jednotky stavu              | Význam  |
 |-------------------------------------|----------------------------------------------------------|
-| Bliká zelené dvakrát za sekundu      | Identifikace disku *nebo* <br> Příprava jednotky pro odebrání  |
-| Vypnuto (nesvítí)                         | Systém se nedokončila spuštění *nebo* <br>Verze je připravená k odebrání |
-| Bliká zelené, žluté a vypnout       | Očekává se selhání jednotky   |
-| Bliká žlutou čtyřikrát za sekundu | Jednotce se nezdařil   |
-| Plné zelená                         | Jednotka není online |
+| Blikají zeleně dvakrát za sekundu      | Identifikace jednotky *nebo* <br> Příprava jednotky k odebrání  |
+| Vypnuto (unlit)                         | Systém nedokončil spuštění *nebo* <br>Jednotka je připravena k odebrání. |
+| Blikají zeleně, žlutě a vypnuto       | Předpokládá se selhání jednotky.   |
+| Blikají žlutě čtyřikrát za sekundu | Selhání jednotky   |
+| Plná zelená                         | Jednotka je online. |
 
-Pravé straně jednotky (3) je označena s na jednotku kapacity a další informace.
+Na pravé straně jednotky (3) je označena kapacita jednotky a další informace.
 
-Jednotka čísla se vytisknou na mezeru mezi jednotky. V Azure FXT hrany vyfiltrovat disk 0 je jednotka vlevo nahoře a jednotka 1 je přímo pod ním. Číslování dál v tomto vzoru. 
+Čísla jednotek se tisknou na místo mezi jednotkami. Ve službě Azure FXT Edge souborového je jednotka 0 levou horní jednotkou a jednotka 1 je přímo pod ní. Číslování pokračuje v tomto vzoru. 
 
-![fotografie jeden pevný disk ve skříni FXT zobrazující čísla a kapacitu popisek jednotky](media/fxt-drives-photo.png)
+![Fotografie jedné pozice pevného disku na skříni FXT, která zobrazuje čísla jednotek a popisky kapacity](media/fxt-drives-photo.png)
 
-## <a name="left-control-panel"></a>Levého ovládacího prvku panel
+## <a name="left-control-panel"></a>Levý ovládací panel
 
-Levé přední ovládacího panelu má různé indikátory stavu LED (1) a indikátor stavu velké podsvícené systému (2). 
+Levý ovládací panel má různé indikátory LED stavu (1) a velký indikátor stavu systému (2). 
 
-![levé stavový panel s 1 označování indikátory stavu na levé straně a označování indikátor stavu rozsáhlém systému světla na pravé straně 2](media/fxt-monitor/fxt-control-panel-left.jpg)
+![levý panel stavu s 1 indikátory stavu označení na levé straně a 2 označení velkého světla indikátoru stavu systému na pravé straně](media/fxt-monitor/fxt-control-panel-left.jpg)
 
-### <a name="control-panel-status-indicators"></a>Indikátory stavu ovládacího prvku panel 
+### <a name="control-panel-status-indicators"></a>Indikátory stavu ovládacích panelů 
 
-Indikátory stavu vlevo zobrazit solid oranžové světlo, pokud dojde k chybě v daném systému. Následující tabulka popisuje možné příčiny a řešení pro chyby. 
+Indikátory stavu na levé straně zobrazují plnou žlutou žlutou světlo, pokud dojde k chybě v tomto systému. Následující tabulka popisuje možné příčiny a řešení chyb. 
 
-Pokud chyba stále ještě máte po vyzkoušení tato řešení [obraťte se na podporu](fxt-support-ticket.md) nápovědu. 
+Pokud k této chybě došlo i po vyzkoušení těchto řešení, [požádejte](fxt-support-ticket.md) o pomoc podporu. 
 
-| Ikona | Popis | Chybový stav | Možná řešení |
+| Ikona | Description | Chybový stav | Možná řešení |
 |----------------|---------------|--------------------|----------------------|
-| ![ikona jednotky](media/fxt-monitor/fxt-hd-icon.jpg) | Stav disku | Chyba jednotky | Zkontrolujte protokol událostí systému k určení, pokud na jednotce došlo k chybě, nebo <br>Spustit test odpovídající online diagnostiky; restartování systému a Diagnostika embedded (ePSA), nebo <br>Pokud jednotky jsou nakonfigurované v pole RAID, restartování systému a zadejte program pro nástroj Konfigurace hostitele adaptéru |
-|![Ikona teploty](media/fxt-monitor/fxt-temp-icon.jpg) | Stav teploty | Teplotní chyba – například ventilátoru selhal nebo okolní teploty je mimo rozsah. | Zkontrolujte následující adresovatelný podmínky: <br>Chladicí ventilátory chybí nebo se nezdařilo <br>V systému titulní air shroud paměti modulu prázdné nebo zpět Odebereme přednastavené závorky <br>Teplota je příliš vysoká. <br>Externí vzduchu je nelze blokovat. |
-|![Ikona k elektrické energie](media/fxt-monitor/fxt-electric-icon.jpg) | Elektrické stav | Chyba elektrické – například napětí mimo rozsah, nepovedlo PSU nebo regulační neúspěšné napětí |  Zkontrolujte protokol událostí systému nebo systémové zprávy pro konkrétní problém. Pokud dojde k problému PSU, zkontrolujte stav PSU LED a v případě potřeby upevnění PSU. | 
-|![Ikona paměti](media/fxt-monitor/fxt-memory-icon.jpg) | Stav paměti | Chyba paměti | Zkontrolujte protokol událostí systému nebo systémové zprávy pro umístění paměti se nezdařilo. upevnění paměti modulu. |
-|![Ikona PCIe](media/fxt-monitor/fxt-pcie-icon.jpg) | Stav PCIe | Chyba PCIe karty | Restartování systému; aktualizace ovladačů karty PCIe; Přeinstalujte karty |
+| ![ikona jednotky](media/fxt-monitor/fxt-hd-icon.jpg) | Stav jednotky | Chyba jednotky | Zkontrolujte protokol událostí systému, abyste zjistili, jestli má jednotka chybu, nebo <br>Spusťte příslušný test online diagnostiky. Restartujte systém a spusťte Embedded Diagnostics (ePSA), nebo <br>Pokud jsou jednotky nakonfigurované v poli RAID, restartujte systém a zadejte program pro konfiguraci hostitelského adaptéru. |
+|![ikona teploty](media/fxt-monitor/fxt-temp-icon.jpg) | Stav teploty | Tepelná chyba – například ventilátor se nezdařil nebo je okolní teplota mimo rozsah | Podívejte se na následující adresovatelné podmínky: <br>Chladicí ventilátor chybí nebo se nezdařil. <br>V systému se odeberou titulní stranu systému, modul Air Shroud, modul pro vyplňování paměti nebo zálomená závorka. <br>Okolní teplota je příliš vysoká. <br>Externí tok v toku je zablokován. |
+|![ikona elektřiny](media/fxt-monitor/fxt-electric-icon.jpg) | Stav elektroinstalace | Chyba elektrického napájení – například napětí mimo rozsah, selhání PSU nebo regulátor napětí při selhání |  Ověřte protokol událostí systému nebo systémové zprávy pro konkrétní problém. Pokud dojde k potížím s PSU, podívejte se na indikátor stavu PSU a v případě potřeby znovu zasedací PSU. | 
+|![ikona paměti](media/fxt-monitor/fxt-memory-icon.jpg) | Stav paměti | Chyba paměti | Ověřte protokol událostí systému nebo systémové zprávy pro umístění vadné paměti. Přemístěte modul paměti. |
+|![Ikona PCIe](media/fxt-monitor/fxt-pcie-icon.jpg) | Stav PCIe | Chyba karty PCIe | Restartujte systém. aktualizovat ovladače karty PCIe; Přeinstalujte kartu. |
 
 
-### <a name="system-health-status-indicator"></a>Indikátor stavu stavu systému
+### <a name="system-health-status-indicator"></a>Indikátor stavu systému
 
-Po velké tlačítko v pravém rohu levého ovládacího panelu indikuje celkový stav systému a také slouží jako jednotka Lokátor světla v režimu ID systému.
+Velké tlačítko rozsvícené na pravé straně levého ovládacího panelu indikuje celkový stav systému a používá se také jako indikátor lokátoru jednotky v režimu ID systému.
 
-Stiskněte tlačítko ID přepínat mezi režimem ID systému a stav systému a stav systému.
+Stisknutím tlačítka stav systému a ID přepnete mezi režimem ID systému a režimem stavu systému.
 
-|Stav systému stavu | Podmínka |
+|Stav systému stav | Podmínka |
 |-------------------------------------------|-----------------------------------------------|
-| Plné modrá | Normálního provozu: systém zapnutý, normálně, a režim ID systému není aktivní. <br/>Stisknutím klávesy stavu systému a ID tlačítko, pokud chcete přepnout do režimu ID systému. |
-| Bliká vám kontrolka modrá | Režim ID systému je aktivní. Stisknutím klávesy stavu systému a systém ID tlačítko, pokud chcete přepnout na režim stavu systému. |
-| Plné oranžová | Systém je v pohotovostním režimu. Pokud se problém nevyřeší, [obraťte se na Microsoft zákaznický servis a podporu](fxt-support-ticket.md). |
-| Bliká vám kontrolka oranžová | Selhání systému. Zkontrolujte protokol událostí systému pro specifické chybové zprávy. Informace o události a chybové zprávy generované firmware systému a agenty, které monitorují součásti systému naleznete na stránce vyhledávání kódu chyby na qrl.dell.com. |
+| Plná modrá | Normální operace: systém je zapnutý, pracuje normálně a režim ID systému není aktivní. <br/>Pokud chcete přepnout do režimu ID systému, stiskněte tlačítko Stav systému a ID. |
+| Modré blikání | Režim ID systému je aktivní. Pokud chcete přepnout do režimu stavu systému, stiskněte tlačítko Stav systému a systémové ID. |
+| Plná oranžová | Systém je v režimu bezpečného selhání. Pokud potíže potrvají, [obraťte se na zákaznickou službu a podporu Microsoftu](fxt-support-ticket.md). |
+| Blikající oranžová | Systémová chyba. V protokolu událostí systému vyhledejte konkrétní chybové zprávy. Informace o událostech a chybových zprávách generovaných systémovým firmwarem a agenty, které monitorují systémové součásti, najdete na stránce pro vyhledávání kódů chyb na adrese qrl.dell.com. |
 
 

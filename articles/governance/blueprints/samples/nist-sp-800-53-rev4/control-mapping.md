@@ -1,17 +1,17 @@
 ---
 title: Ukázka-NIST SP 800-53 R4 – mapování ovládacích prvků
-description: Mapování ovládacího prvku NIST SP 800-53 R4 v ukázce na Azure Policy.
+description: Mapování ovládacího prvku Sample NIST SP 800-53 R4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: c4d8cd7996e45aafca37e68974d6250578ba9502
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c45e0fc450c420418e9302a6a811865867e7b096
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980963"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248399"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Mapování ovládacího prvku NIST SP 800-53 R4 – ukázka
 
@@ -30,7 +30,7 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
-- Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Schémata založená na rolích
 
@@ -77,10 +77,10 @@ Azure implementuje [řízení přístupu na základě role](../../../../role-bas
 
 ## <a name="ac-16-security-attributes"></a>Atributy zabezpečení AC-16
 
-Funkce zjišťování a klasifikace dat pro rozšířené zabezpečení dat pro Azure SQL Database poskytuje možnosti pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni. Pokročilé zabezpečení dat vám může pomáhat zajistit informace, které jsou přidruženy k příslušným atributům zabezpečení vaší organizace. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro monitorování a prosazování použití pokročilých zabezpečení dat na SQL serveru. 
+Funkce zjišťování a klasifikace dat pro rozšířené zabezpečení dat pro Azure SQL Database poskytuje možnosti pro zjišťování, klasifikaci, označování a ochranu citlivých dat ve vašich databázích. Dá se použít k zajištění viditelnosti stavu klasifikace databáze a ke sledování přístupu k citlivým datům v rámci databáze a nad rámec jejího ohraničení. Pokročilé zabezpečení dat vám může pomáhat zajistit informace, které jsou přidruženy k příslušným atributům zabezpečení vaší organizace. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro monitorování a prosazování použití pokročilých zabezpečení dat na SQL serveru. 
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) vzdálený přístup | Automatizované monitorování a řízení
@@ -110,10 +110,10 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které monitorují konfigurace auditu a protokolování událostí. Monitorování těchto konfigurací může poskytnout indikátor selhání systému nebo chybnou konfiguraci a pomáhat s provedením nápravných akcí.
 
-- Auditování nastavení diagnostiky
+- Nastavení diagnostiky auditu
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) revize auditu, analýza a vytváření sestav | Centrální kontrola a analýza
 
@@ -138,10 +138,10 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
 - \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
 - \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
-- Auditování nastavení diagnostiky
+- Nastavení diagnostiky auditu
 - Auditovat nastavení auditování na úrovni SQL serveru
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení auditování na SQL serverech
 - Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
@@ -216,7 +216,7 @@ Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje
 Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Oprava ohrožení zabezpečení v konfiguraci zabezpečení na virtuálních počítačích by měla být opravena
@@ -268,7 +268,7 @@ Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílanýc
 Tento podrobný plán vám pomůže vyhovět zásadám používání ovládacích prvků cryptograph k ochraně informací v klidovém prostředí tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které vynutily konkrétní ovládací prvky cryptograph a auditují použití slabého nastavení kryptografie. Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptografické konfigurace, můžou podniknout nápravné akce, které zajistí konfiguraci prostředků v souladu s vašimi zásadami zabezpečení informací. Konkrétně definice zásad přiřazené tímto plánem vyžaduje šifrování pro účty Data Lake Storage. vyžadovat transparentní šifrování dat na databázích SQL; a auditovat chybějící šifrování pro databáze SQL, disky virtuálních počítačů a proměnné účtu Automation.
 
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení transparentního šifrování dat databáze SQL
 - Na virtuálních počítačích by se mělo použít šifrování disku
@@ -314,7 +314,7 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 - \[Preview @ no__t-1: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
 - \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení rozšířené ochrany před internetovými útoky na účty úložiště
 - Nasazení auditování na SQL serverech
@@ -338,10 +338,10 @@ Teď, když jste zkontrolovali mapování ovládacího prvku NIST SP 800-53 R4, 
 > [NIST SP 800-53 R4 Details-Overview](./index.md)
 > [NIST SP 800-53 R4 Details-Deploy Steps](./deploy.md)
 
-Další články věnované podrobným plánům a postupu jejich využití:
+Další články o semodrotiskych a jejich použití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
+- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

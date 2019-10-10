@@ -1,7 +1,7 @@
 ---
-title: Odeslání pracovní postupu pomocí souboru BAM vstupní – Microsoft Genomics
-titleSuffix: Azure
-description: Tento článek předpokládá mají nainstalovaného klienta msgen a úspěšně zpracovali ukázková data ve službě.
+title: Odeslání pracovního postupu pomocí vstupu souboru BAM
+titleSuffix: Microsoft Genomics
+description: Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud je vstupním souborem jeden soubor BAM.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,28 +9,28 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780838"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249167"
 ---
-# <a name="submit-a-workflow-using-a-bam-file-input"></a>Odeslání pracovní postupu pomocí vstupního souboru BAM
+# <a name="submit-a-workflow-using-a-bam-file-input"></a>Odeslání pracovního postupu pomocí vstupu ze souboru BAM
 
-Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud váš vstupní soubor je jeden soubor BAM. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že víte, jak používat úložiště Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí připravená ukázková data, budete chtít pokračovat v tomto článku. 
+Tento článek ukazuje, jak odeslat pracovní postup službě Microsoft Genomics, pokud je vstupním souborem jeden soubor BAM. Toto téma předpokládá, že jste už nainstalovali a spustili klienta `msgen` a že máte zkušenosti s používáním Azure Storage. Pokud jste úspěšně odeslali pracovní postup pomocí poskytnutých ukázkových dat, budete připraveni pokračovat v tomto článku. 
 
-## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Nastavení: Odeslání souboru BAM do úložiště Azure
-Předpokládejme, že máte jeden soubor BAM, *reads.bam*, a že jste ho nahráli do svého účtu úložiště *myaccount* v Azure jako **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** . Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
+## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Nastavení: nahrání souboru BAM do úložiště Azure
+Předpokládejme, že máte jeden soubor BAM, *přečte. BAM*a nahráli jste ho do svého účtu úložiště *MyAccount* v Azure jako **<span></span>https://myaccount. blob. Core<span></span>. Windows<span></span>.NET<span></span>/Inputs/reads<span></span>. BAM <span></span>** . Máte adresu URL rozhraní API a přístupový klíč. Chcete mít výstupy v **<span></span>https://myaccount. blob. Core<span></span>. Windows<span></span>.NET<span></span>/Outputs<span></span>** .
 
 
 
 ## <a name="submit-your-job-to-the-msgen-client"></a>Odeslání úlohy do klienta `msgen` 
 
 
-Tady je minimální sadu argumentů, které budete muset poskytnout klientovi `msgen`; zalomení řádků jsou přidána pro přehlednost:
+Tady je minimální sada argumentů, které budete muset poskytnout klientovi `msgen`. bylo přidáno zalomení řádků pro přehlednost:
 
-Ve Windows:
+Pro Windows:
 
 ```
 msgen submit ^
@@ -47,7 +47,7 @@ msgen submit ^
 ```
 
 
-V Unixu:
+Pro UNIX
 
 ```
 msgen submit \
@@ -64,7 +64,7 @@ msgen submit \
 ```
 
 
-Pokud dáváte přednost použití konfiguračního souboru, měl by obsahovat:
+Pokud dáváte přednost použití konfiguračního souboru, bude obsahovat:
 
 ``` config.txt
 api_url_base:                     <Genomics API URL>
@@ -79,7 +79,7 @@ output_storage_account_key:       <storage access key to "myaccount">
 output_storage_account_container: outputs
 ```
 
-Odešlete soubor `config.txt` tímto voláním: `msgen submit -f config.txt`
+Odeslat soubor `config.txt` s tímto voláním: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste nahráli soubor BAM do úložiště Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics pomocí pythonového klienta `msgen`. Další informace týkající se odesílání pracovních postupů a dalších příkazů, které můžete použít se službou Microsoft Genomics, najdete v [nejčastějších dotazech](frequently-asked-questions-genomics.md). 
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste nahráli soubor BAM do Azure Storage a odeslali jste pracovní postup do služby Microsoft Genomics prostřednictvím klienta Pythonu `msgen`. Další informace týkající se odesílání pracovních postupů a dalších příkazů, které můžete použít se službou Microsoft Genomics, najdete v části [Nejčastější dotazy](frequently-asked-questions-genomics.md). 

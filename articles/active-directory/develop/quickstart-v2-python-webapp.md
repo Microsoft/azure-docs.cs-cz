@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 241935afa023162a35559cd3c46206efa7a7835f
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170047"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240184"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -32,14 +32,13 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K provedení této ukázky budete potřebovat:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) nebo [Python 3 +](https://www.python.org/downloads/release/python-364/)
 - [Baňka](http://flask.pocoo.org/), [baňka – relace](https://pythonhosted.org/Flask-Session/), [žádosti](https://requests.kennethreitz.org//en/master/)
-- [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
-- Tenant Azure Active Directory (Azure AD). Další informace o tom, jak získat tenanta Azure AD, najdete v tématu [Jak získat tenanta Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
+- [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
 >
@@ -106,7 +105,7 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
-> ,
+> Kde:
 >
 > - `Enter_the_Application_Id_here` – je ID aplikace, kterou jste zaregistrovali.
 > - `Enter_the_Client_Secret_Here`-je **tajný klíč klienta** , který jste vytvořili v části **certifikáty & tajných** kódů pro zaregistrovanou aplikaci.

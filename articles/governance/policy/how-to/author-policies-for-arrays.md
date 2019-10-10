@@ -1,17 +1,17 @@
 ---
-title: Vytváření zásad pro vlastnosti pole v prostředcích Azure
+title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se vytvořit parametry pole, vytvořit pravidla pro výrazy jazyka Array, vyhodnotit alias [*] a přidat prvky do existujícího pole s pravidly Azure Policy definice.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978042"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255809"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -184,7 +184,7 @@ U každého příkladu podmínky nahraďte `<field>` pomocí `"field": "Microsof
 
 Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
 
-|Podmínka |Výsledek |Vysvětlení |
+|Podmínka |Zaznamenaný |Vysvětlení |
 |-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Žádným |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
@@ -207,8 +207,8 @@ Další informace najdete v [příkladech připojení](../concepts/effects.md#ap
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
-- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
-- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
+- Zkontrolujte [strukturu definice Azure Policy](../concepts/definition-structure.md).
+- Přečtěte si téma [Principy efektů zásad](../concepts/effects.md).
 - Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](remediate-resources.md).
 - Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

@@ -1,21 +1,21 @@
 ---
-title: Kurz – konfigurace front v Azure Service Bus pomocí Ansible | Dokumentace Microsoftu
-description: Zjistěte, jak použít Ansible k vytvoření fronty služby Azure Service Bus
-keywords: ansible v azure, devops, bash, playbook, služby Service bus, front
+title: Kurz – konfigurace front v Azure Service Bus pomocí Ansible
+description: Naučte se, jak pomocí Ansible vytvořit frontu Azure Service Bus.
+keywords: Ansible, Azure, DevOps, bash, PlayBook, Service Bus, Queue
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230767"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241385"
 ---
-# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Kurz: Konfigurace front v Azure Service Bus pomocí Ansible
+# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Kurz: konfigurace front v Azure Service Bus pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -26,24 +26,24 @@ ms.locfileid: "65230767"
 > [!div class="checklist"]
 >
 > * Vytvoření fronty
-> * Vytvoření SAS plicy
-> * Načíst informace o oboru názvů
-> * Načtení informací o frontě
-> * Odvolat fronty zásady SAS.
+> * Vytvoření plicy SAS
+> * Načíst informace oboru názvů
+> * Načíst informace o frontě
+> * Odvolat zásady SAS pro frontu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-queue"></a>Vytvořit frontu služby Service Bus
+## <a name="create-the-service-bus-queue"></a>Vytvoření fronty Service Bus
 
-Playbook vzorový kód vytvoří následující prostředky:
+Vzorový PlayBook kód vytvoří následující prostředky:
 - Skupina prostředků Azure
-- Obor názvů služby Service Bus v rámci skupiny prostředků
-- Fronty služby Service Bus s oborem názvů
+- Obor názvů Service Bus v rámci skupiny prostředků
+- Service Bus frontu s oborem názvů
 
-Uložte následující ukázkový playbook jako `servicebus_queue.yml`:
+Následující PlayBook uložte jako `servicebus_queue.yml`:
 
 ```yml
 ---
@@ -72,19 +72,19 @@ Uložte následující ukázkový playbook jako `servicebus_queue.yml`:
           var: queue
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue.yml
 ```
 
-## <a name="create-the-sas-policy"></a>Vytvořit zásady SAS.
+## <a name="create-the-sas-policy"></a>Vytvoření zásad SAS
 
-A [sdíleného přístupového podpisu (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) virtuálních sítí je mechanismus ověřování na základě deklarací identity pomocí tokenů. 
+[Sdílený přístupový podpis (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) je ověřovací mechanismus založený na deklaracích, který používá tokeny. 
 
-Playbook vzorový kód vytvoří dvě zásady SAS pro frontu služby Service Bus pomocí jiné oprávnění.
+Vzorový kód PlayBook vytvoří dvě zásady SAS pro Service Bus frontu s různými oprávněními.
 
-Uložte následující ukázkový playbook jako `servicebus_queue_policy.yml`:
+Následující PlayBook uložte jako `servicebus_queue_policy.yml`:
 
 ```yml
 ---
@@ -106,20 +106,20 @@ Uložte následující ukázkový playbook jako `servicebus_queue_policy.yml`:
           var: policy
 ```
 
-Před spuštěním playbooku, viz následující poznámky:
-- `rights` Hodnota představuje oprávnění má uživatel s frontou. Zadejte jednu z následujících hodnot: `manage`, `listen`, `send`, nebo `listen_send`.
+Před spuštěním PlayBook se podívejte na následující poznámky:
+- Hodnota `rights` představuje oprávnění, které má uživatel s frontou. Zadejte jednu z následujících hodnot: `manage`, `listen`, `send` nebo `listen_send`.
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Načíst informace o oboru názvů
+## <a name="retrieve-namespace-information"></a>Načíst informace oboru názvů
 
-Vzorový kód playbook zadá dotaz na informace oboru názvů.
+Vzorový kód PlayBook se dotazuje na informace oboru názvů.
 
-Uložte následující ukázkový playbook jako `servicebus_namespace_info.yml`:
+Následující PlayBook uložte jako `servicebus_namespace_info.yml`:
 
 ```yml
 ---
@@ -139,20 +139,20 @@ Uložte následující ukázkový playbook jako `servicebus_namespace_info.yml`:
           var: ns
 ```
 
-Před spuštěním playbooku, viz následující poznámky:
-- `show_sas_policies` Hodnota označuje, jestli se má zobrazit zásady SAS v rámci zadaného oboru názvů. Výchozí hodnota je `False` aby se zabránilo další síťové zatížení.
+Před spuštěním PlayBook se podívejte na následující poznámky:
+- Hodnota `show_sas_policies` označuje, zda se mají v rámci zadaného oboru názvů zobrazovat zásady SAS. Ve výchozím nastavení je hodnota `False`, aby se předešlo dalšímu síťovému zatížení.
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-queue-information"></a>Načtení informací o frontě
+## <a name="retrieve-queue-information"></a>Načíst informace o frontě
 
-Ukázkové dotazy kód playbook fronty informace. 
+Ukázkový PlayBook kód dotazuje informace o frontě. 
 
-Uložte následující ukázkový playbook jako `servicebus_queue_info.yml`:
+Následující PlayBook uložte jako `servicebus_queue_info.yml`:
 
 ```yml
 ---
@@ -174,20 +174,20 @@ Uložte následující ukázkový playbook jako `servicebus_queue_info.yml`:
           var: queue
 ```
 
-Před spuštěním playbooku, viz následující poznámky:
-- `show_sas_policies` Hodnota označuje, jestli se má zobrazit zásady SAS pod zadanou frontu. Ve výchozím nastavení, tato hodnota nastavená na `False` aby se zabránilo další síťové zatížení.
+Před spuštěním PlayBook se podívejte na následující poznámky:
+- Hodnota `show_sas_policies` označuje, zda se mají v zadané frontě zobrazovat zásady SAS. Ve výchozím nastavení je tato hodnota nastavená na `False`, aby se předešlo dalšímu síťovému zatížení.
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Odvolat fronty zásady SAS.
+## <a name="revoke-the-queue-sas-policy"></a>Odvolat zásady SAS pro frontu
 
-Vzorový kód playbook odstraní zásady SAS fronty.
+Vzorový kód PlayBook odstraní zásady SAS pro frontu.
 
-Uložte následující ukázkový playbook jako `servicebus_queue_policy_delete.yml`:
+Následující PlayBook uložte jako `servicebus_queue_policy_delete.yml`:
 
 ```yml
 ---
@@ -206,7 +206,7 @@ Uložte následující ukázkový playbook jako `servicebus_queue_policy_delete.
           state: absent
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -216,7 +216,7 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Uložte následující kód jako `cleanup.yml`:
+Následující kód uložte jako `cleanup.yml`:
 
 ```yml
 ---
@@ -244,12 +244,12 @@ Uložte následující kód jako `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
-> [Kurz: Konfigurace téma v Azure Service Bus pomocí Ansible](ansible-service-bus-topic-configure.md)
+> [Kurz: konfigurace tématu v Azure Service Bus pomocí Ansible](ansible-service-bus-topic-configure.md)

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření aplikace v Pythonu na platformě Linux-Azure App Service | Microsoft Docs
-description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
+description: Nasaďte svou první aplikaci Hello World v jazyce Python v Azure App Service v systému Linux v řádu minut.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,25 +15,25 @@ ms.date: 08/23/2019
 ms.author: cephalin
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177015"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242464"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
 V tomto rychlém startu nasadíte jednoduchou aplikaci v Pythonu, která [App Service na Linux](app-service-linux-intro.md), která poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů. Použijete rozhraní příkazového řádku Azure ( [Azure CLI](/cli/azure/install-azure-cli)) prostřednictvím interaktivního Azure Cloud Shell založeného na prohlížeči, takže můžete postupovat podle pokynů k použití počítače se systémem Mac, Linux nebo Windows.
 
-![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/quickstart-python/hello-world-in-browser.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+K dokončení tohoto rychlého startu:
 
-* <a href="https://www.python.org/downloads/" target="_blank">Nainstalovat Python 3.7</a>
-* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
+* <a href="https://www.python.org/downloads/" target="_blank">Instalace Pythonu 3,7</a>
+* <a href="https://git-scm.com/" target="_blank">Nainstalovat git</a>
 * Předplatné Azure. Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 ## <a name="download-the-sample-locally"></a>Místní stažení ukázky
@@ -49,30 +49,37 @@ cd python-docs-hello-world
 
 ## <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
-Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do Azure. Otevřete okno terminálu a pomocí následujících příkazů nainstalujte požadované závislosti a spusťte integrovaný vývojový server. 
+Spusťte aplikaci místně, abyste viděli, jak by měla vypadat při nasazení do Azure. Otevřete okno terminálu a pomocí níže uvedených příkazů nainstalujte požadované závislosti a spusťte integrovaný vývojový server. 
 
 ```bash
-# In Bash
+# In Bash (for Linux or Mac)
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
-
+```
+```powershell
+# In Powershell (for Windows)
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
 Otevřete webový prohlížeč a přejít na ukázkovou aplikaci na adrese `http://localhost:5000/`.
 
-Na stránce se zobrazí zpráva **Hello World!** z ukázkové aplikace.
+Zobrazí se **Hello World.** Zpráva z ukázkové aplikace zobrazené na stránce.
 
 ![Ukázková aplikace spuštěná místně](media/quickstart-python/hello-world-in-browser.png)
 
-V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
+V okně terminálu ukončete webový server stisknutím **kombinace kláves CTRL + C** .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-Ve službě Cloud Shell vytvořte adresář rychlého startu a přejděte do něj.
+V Cloud Shell vytvořte adresář pro rychlý Start a pak na něj přejděte.
 
 ```bash
 mkdir quickstart
@@ -80,13 +87,13 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Potom spusťte následující příkaz, pomocí kterého do tohoto adresáře naklonujete úložiště ukázkové aplikace.
+Dále spusťte následující příkaz, který naklonuje úložiště ukázkové aplikace do adresáře pro rychlý Start.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
+Při spuštění se zobrazí podobné informace jako v následujícím příkladu:
 
 ```bash
 Cloning into 'python-docs-hello-world'...
@@ -96,7 +103,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
 
@@ -108,7 +115,7 @@ cd python-docs-hello-world
 az webapp up -n <app-name>
 ```
 
-Spuštění tohoto příkazu může trvat několik minut. Při spuštění příkaz zobrazí podobné informace jako v následujícím příkladu:
+Spuštění tohoto příkazu může trvat několik minut. Při spuštění se zobrazí podobné informace jako v následujícím příkladu:
 
 ```json
 The behavior of this command has been altered by the following extension: webapp
@@ -137,9 +144,9 @@ All done.
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
-## <a name="browse-to-the-app"></a>Přechod do aplikace
+## <a name="browse-to-the-app"></a>Přejít k aplikaci
 
-V prohlížeči zadejte adresu nasazené aplikace.
+Vyhledejte nasazenou aplikaci pomocí webového prohlížeče.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -147,9 +154,9 @@ http://<app-name>.azurewebsites.net
 
 Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovanou imagí.
 
-![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
+![Ukázková aplikace spuštěná v Azure](media/quickstart-python/hello-world-in-browser.png)
 
-**Blahopřejeme!** Nasadili jste svoji první aplikaci v Pythonu do služby App Service v Linuxu.
+**Blahopřejeme!** Nasadili jste svoji první aplikaci v Pythonu, abyste App Service na Linux.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
@@ -157,13 +164,13 @@ V Cloud Shell otevřete Editor Cloud Shell zadáním `code application.py`.
 
 ![Application.py kódu](media/quickstart-python/code-applicationpy.png)
 
- Proveďte malou změnu textu ve volání na `return`:
+ Proveďte malou změnu textu ve volání `return`:
 
 ```python
 return "Hello Azure!"
 ```
 
-Uložte změny a ukončete Editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
+Uložte změny a ukončete Editor. Pomocí příkazu `^S` uložte a `^Q` pro ukončení.
 
 Znovu nasaďte aplikaci pomocí příkazu [`az webapp up`](/cli/azure/webapp#az-webapp-up) . Nahraďte název vaší aplikace `<app-name>` a zadejte umístění pro `<location-name>` (pomocí jedné z hodnot zobrazených v příkazu [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ).
 
@@ -171,9 +178,9 @@ Znovu nasaďte aplikaci pomocí příkazu [`az webapp up`](/cli/azure/webapp#az-
 az webapp up -n <app-name> -l <location-name>
 ```
 
-Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v kroku **Přechod do aplikace**, a aktualizujte zobrazení stránky.
+Po dokončení nasazení přepněte zpátky do okna prohlížeče, které se otevřelo v kroku **přechod do aplikace** , a aktualizujte stránku.
 
-![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-azure-in-browser.png)
+![Aktualizovaná ukázková aplikace spuštěná v Azure](media/quickstart-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
@@ -181,13 +188,13 @@ Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https:/
 
 V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
 
-![Přechod do aplikace Azure na portálu](./media/quickstart-python/app-service-list.png)
+![Navigace na portálu do aplikace Azure](./media/quickstart-python/app-service-list.png)
 
 Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
-![Stránka služby App Service na webu Azure Portal](media/quickstart-python/app-service-detail.png)
+![Stránka App Service v Azure Portal](media/quickstart-python/app-service-detail.png)
 
-Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+V nabídce vlevo najdete různé stránky pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

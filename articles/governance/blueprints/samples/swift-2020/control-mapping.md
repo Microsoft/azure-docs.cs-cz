@@ -1,17 +1,17 @@
 ---
 title: Ukázka – SWIFT CSP – CSCF v2020 – mapování ovládacích prvků
-description: Mapování ovládacího prvku Sample CSP-CSCF v2020 Details pro Azure Policy.
+description: Mapování ovládacího prvku ukázka SWIFT CSP-CSCF v2020 details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 50c278cd22d8901560a83561f38084622bc86865
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980916"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248831"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Mapování ovládacího prvku Sample CSP-CSCF v2020 details
 

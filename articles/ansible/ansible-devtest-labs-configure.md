@@ -1,51 +1,51 @@
 ---
-title: Kurz – konfigurace testovacích prostředí ve službě Azure DevTest Labs pomocí Ansible | Dokumentace Microsoftu
-description: Další informace o konfiguraci testovacího prostředí ve službě Azure DevTest Labs pomocí Ansible
+title: Kurz – konfigurace cvičení v Azure DevTest Labs pomocí Ansible
+description: Naučte se konfigurovat testovací prostředí v Azure DevTest Labs pomocí Ansible.
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbooku, devtest labs
+keywords: Ansible, Azure, DevOps, bash, PlayBook, DevTest Labs
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: c6bc4d50e4db52f772a137495658492018ee5360
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230972"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241662"
 ---
-# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Kurz: Konfigurace testovacích prostředí ve službě Azure DevTest Labs pomocí Ansible
+# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Kurz: Konfigurace cvičení v Azure DevTest Labs pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) umožňuje vývojářům k automatizaci vytváření prostředí virtuálních počítačů pro své aplikace. Tato prostředí můžete konfigurovat pro aplikace, vývoj, testování a školení. 
+[Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) umožňuje vývojářům automatizovat vytváření prostředí virtuálních počítačů pro své aplikace. Tato prostředí je možné nakonfigurovat pro vývoj, testování a školení aplikací. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Vytvoření testovacího prostředí
-> * Nastavte zásady testovacího prostředí
-> * Nastavte plány testovacího prostředí
-> * Vytvořte virtuální síť testovacího prostředí
-> * Definování zdroje artefaktů pro testovací prostředí
+> * Nastavení zásad testovacího prostředí
+> * Nastavení plánů testovacího prostředí
+> * Vytvoření virtuální sítě testovacího prostředí
+> * Definovat zdroj artefaktů pro testovací prostředí
 > * Vytvoření virtuálního počítače v testovacím prostředí
-> * Seznam zdrojů artefaktů a artefakty testovacího prostředí
-> * Získat informace o Azure Resource Manageru pro zdroje artefaktů
+> * Zobrazit zdroje artefaktů a artefakty testovacího prostředí
+> * Získat informace o Azure Resource Manager pro zdroje artefaktů
 > * Vytvoření testovacího prostředí
-> * Vytvoření bitové kopie testovacího prostředí
+> * Vytvořit bitovou kopii testovacího prostředí
 > * Odstranění testovacího prostředí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-resource-group"></a>Vytvořit skupinu prostředků
 
-Playbook ukázka vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vzorový fragment PlayBook vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```yml
   - name: Create a resource group
@@ -56,7 +56,7 @@ Playbook ukázka vytvoří skupinu prostředků Azure. Skupina prostředků je l
 
 ## <a name="create-the-lab"></a>Vytvoření testovacího prostředí
 
-Dalším úkolem vytvoří ukázka testovacího prostředí.
+Další úloha vytvoří ukázkové prostředí.
 
 ```yml
 - name: Create the lab
@@ -69,18 +69,18 @@ Dalším úkolem vytvoří ukázka testovacího prostředí.
   register: output_lab
 ```
 
-## <a name="set-the-lab-policies"></a>Nastavte zásady testovacího prostředí
+## <a name="set-the-lab-policies"></a>Nastavení zásad testovacího prostředí
 
-Můžete nastavit nastavení zásad testovacího prostředí. Můžete nastavit následující hodnoty:
+Nastavení zásad testovacího prostředí můžete nastavit. Lze nastavit následující hodnoty:
 
-- `user_owned_lab_vm_count` je počet virtuálních počítačů, které uživatel může vlastnit.
-- `user_owned_lab_premium_vm_count` počet virtuálních počítačů služby premium můžete vlastnit uživatele
-- `lab_vm_count` je maximální počet virtuálních počítačů testovacího prostředí
-- `lab_premium_vm_count` je maximální počet testovacího prostředí virtuálních počítačů služby premium
-- `lab_vm_size` je velikost(i) virtuálních počítačů povolených testovacího prostředí
-- `gallery_image` je povolené Galerie Image
-- `user_owned_lab_vm_count_in_subnet` je maximální počet virtuálních počítačů uživatele v podsíti
-- `lab_target_cost` Cílové náklady testovacího prostředí
+- `user_owned_lab_vm_count` je počet virtuálních počítačů, které může uživatel vlastnit.
+- `user_owned_lab_premium_vm_count` je počet virtuálních počítačů úrovně Premium, které může uživatel vlastnit.
+- `lab_vm_count` je maximální počet virtuálních počítačů v testovacím prostředí.
+- `lab_premium_vm_count` je maximální počet virtuálních počítačů testovacího prostředí úrovně Premium
+- @no__t – 0 je povolená velikost virtuálních počítačů testovacího prostředí (s).
+- `gallery_image` jsou povolené image galerie.
+- `user_owned_lab_vm_count_in_subnet` je maximální počet virtuálních počítačů uživatele v podsíti.
+- `lab_target_cost` jsou cílové náklady testovacího prostředí.
 
 ```yml
 - name: Set the lab policies
@@ -93,11 +93,11 @@ Můžete nastavit nastavení zásad testovacího prostředí. Můžete nastavit 
     threshold: 5
 ```
 
-## <a name="set-the-lab-schedules"></a>Nastavte plány testovacího prostředí
+## <a name="set-the-lab-schedules"></a>Nastavení plánů testovacího prostředí
 
-Ukázkový úkol v této části nakonfiguruje v testovacím plánu. 
+Ukázkový úkol v této části nakonfiguruje plán testovacího prostředí. 
 
-V následujícím fragmentu kódu `lab_vms_startup` hodnota se používá k určení doby spuštění virtuálního počítače. Podobně, nastavení `lab_vms_shutdown` hodnota vytváří čas vypnutí virtuálního počítače testovacího prostředí.
+V následujícím fragmentu kódu se hodnota `lab_vms_startup` používá k určení času spuštění virtuálního počítače. Podobně nastavení hodnoty `lab_vms_shutdown` vytvoří čas vypnutí testovacího prostředí.
 
 ```yml
 - name: Set the lab schedule
@@ -110,9 +110,9 @@ V následujícím fragmentu kódu `lab_vms_startup` hodnota se používá k urč
   register: output
 ```
 
-## <a name="create-the-lab-virtual-network"></a>Vytvořte virtuální síť testovacího prostředí
+## <a name="create-the-lab-virtual-network"></a>Vytvoření virtuální sítě testovacího prostředí
 
-Tato úloha následující vytvoří výchozí virtuální síť testovacího prostředí.
+Následující úloha vytvoří výchozí testovací virtuální síť.
 
 ```yml
 - name: Create the lab virtual network
@@ -125,9 +125,9 @@ Tato úloha následující vytvoří výchozí virtuální síť testovacího pr
   register: output
 ```
 
-## <a name="define-an-artifact-source-for-the-lab"></a>Definování zdroje artefaktů pro testovací prostředí
+## <a name="define-an-artifact-source-for-the-lab"></a>Definovat zdroj artefaktů pro testovací prostředí
 
-Zdroj artefaktů je správně strukturované úložiště GitHub obsahující definice artefaktů a šablony Azure Resource Manageru. Každé prostředí obsahuje předdefinované veřejné artefakty. Následující úlohy se dozvíte, jak vytvořit zdroj artefaktu pro testovací prostředí.
+Zdroj artefaktů je správné strukturované úložiště GitHub, které obsahuje definice artefaktů a šablony Azure Resource Manager. Každé testovací prostředí se dodává s předdefinovanými veřejnými artefakty. Následující úkoly vám poukazují, jak vytvořit zdroj artefaktů pro testovací prostředí.
 
 ```yml
 - name: Define the lab artifacts source
@@ -143,7 +143,7 @@ Zdroj artefaktů je správně strukturované úložiště GitHub obsahující de
 
 ## <a name="create-a-vm-within-the-lab"></a>Vytvoření virtuálního počítače v testovacím prostředí
 
-Vytvoření virtuálního počítače v testovacím prostředí.
+Vytvořte virtuální počítač v testovacím prostředí.
 
 ```yml
 - name: Create a VM within the lab
@@ -173,9 +173,9 @@ Vytvoření virtuálního počítače v testovacím prostředí.
     expiration_date: "2029-02-22T01:49:12.117974Z"
 ```
 
-## <a name="list-the-labs-artifact-sources-and-artifacts"></a>Seznam zdrojů artefaktů a artefakty testovacího prostředí
+## <a name="list-the-labs-artifact-sources-and-artifacts"></a>Zobrazit zdroje artefaktů a artefakty testovacího prostředí
 
-K zobrazení seznamu všech výchozí a zdroji vlastních artefaktů v testovacím prostředí použijte následující úlohy:
+Chcete-li zobrazit seznam všech výchozích a vlastních artefaktů v testovacím prostředí, použijte následující úlohu:
 
 ```yml
 - name: List the artifact sources
@@ -187,7 +187,7 @@ K zobrazení seznamu všech výchozí a zdroji vlastních artefaktů v testovac�
     var: output
 ```
 
-Následující úlohu uvádí všechny artefakty:
+Následující úkol obsahuje seznam všech artefaktů:
 
 ```yml
 - name: List the artifact facts
@@ -200,9 +200,9 @@ Následující úlohu uvádí všechny artefakty:
     var: output
 ```
 
-## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Získat informace o Azure Resource Manageru pro zdroje artefaktů
+## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Získat informace o Azure Resource Manager pro zdroje artefaktů
 
-Chcete-li vypsat všechny šablony Azure Resource Manageru v `public environment repository`, předdefinované úložiště s využitím šablon:
+Chcete-li zobrazit seznam všech šablon Azure Resource Manager v `public environment repository`, předdefinované úložiště s šablonami:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -214,7 +214,7 @@ Chcete-li vypsat všechny šablony Azure Resource Manageru v `public environment
     var: output
 ```
 
-A následující úloha načítá podrobnosti o konkrétní šablony Azure Resource Manageru z úložiště:
+A následující úkol načte podrobnosti o konkrétní Azure Resource Manager šabloně z úložiště:
 
 ```yml
 - name: Get Azure Resource Manager template facts
@@ -230,7 +230,7 @@ A následující úloha načítá podrobnosti o konkrétní šablony Azure Resou
 
 ## <a name="create-the-lab-environment"></a>Vytvoření testovacího prostředí
 
-Následující úloha vytvoří testovací prostředí podle šablon z prostředí veřejného úložiště.
+Následující úloha vytvoří testovací prostředí na základě jedné ze šablon z úložiště veřejného prostředí.
 
 ```yml
 - name: Create the lab environment
@@ -244,9 +244,9 @@ Následující úloha vytvoří testovací prostředí podle šablon z prostřed
       register: output
 ```
 
-## <a name="create-the-lab-image"></a>Vytvoření bitové kopie testovacího prostředí
+## <a name="create-the-lab-image"></a>Vytvořit bitovou kopii testovacího prostředí
 
-Následující úloha vytvoří image z virtuálního počítače. Image můžete vytvořit identických virtuálních počítačů.
+Následující úloha vytvoří obrázek z virtuálního počítače. Image umožňuje vytvořit identické virtuální počítače.
 
 ```yml
 - name: Create the lab image
@@ -260,7 +260,7 @@ Následující úloha vytvoří image z virtuálního počítače. Image můžet
 
 ## <a name="delete-the-lab"></a>Odstranění testovacího prostředí
 
-Pokud chcete odstranit testovací prostředí, použijte následující úlohy:
+Testovací prostředí odstraníte pomocí této úlohy:
 
 ```yml
 - name: Delete the lab
@@ -275,10 +275,10 @@ Pokud chcete odstranit testovací prostředí, použijte následující úlohy:
       - output.changed
 ```
 
-## <a name="get-the-sample-playbook"></a>Získat ukázky playbook
+## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
 
-Existují dva způsoby, jak získat playbook úplnou ukázku:
-- [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) a uložit ho. tím `devtestlab-create.yml`.
+Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
+- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) a uložte ho do `devtestlab-create.yml`.
 - Vytvořte nový soubor s názvem `devtestlab-create.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -444,15 +444,15 @@ Existují dva způsoby, jak získat playbook úplnou ukázku:
         state: absent
 ```
 
-## <a name="run-the-playbook"></a>Spuštění playbooku
+## <a name="run-the-playbook"></a>Spusťte PlayBook.
 
-V této části se spusťte playbook pro testování různých funkcí uvedených v tomto článku.
+V této části spustíte PlayBook k otestování různých funkcí, které jsou uvedené v tomto článku.
 
-Před spuštěním playbooku, proveďte následující změny:
-- V `vars` části, nahraďte `{{ resource_group_name }}` zástupný symbol s názvem vaší skupiny prostředků.
-- Store token Githubu jako proměnnou prostředí s názvem `GITHUB_ACCESS_TOKEN`.
+Před spuštěním PlayBook proveďte následující změny:
+- V části `vars` nahraďte zástupný text `{{ resource_group_name }}` názvem vaší skupiny prostředků.
+- Uložte token GitHubu jako proměnnou prostředí s názvem `GITHUB_ACCESS_TOKEN`.
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -462,7 +462,7 @@ ansible-playbook devtestlab-create.yml
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Uložte následující kód jako `cleanup.yml`:
+Následující kód uložte jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -476,13 +476,13 @@ Uložte následující kód jako `cleanup.yml`:
         state: absent
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
 > [Ansible v Azure](/azure/ansible/)

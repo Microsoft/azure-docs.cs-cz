@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686741"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240119"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití Key Vault odkazů pro App Service a Azure Functions (Preview)
 
 > [!NOTE] 
-> Odkazy na Key Vault jsou momentálně ve verzi Preview.
+> V současné době jsou odkazy na Key Vault ve verzi Preview a momentálně se nepodporují v plánech spotřeby Linux.
 
 V tomto tématu se dozvíte, jak pracovat s tajnými kódy z Azure Key Vault v App Service nebo Azure Functions aplikace bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/key-vault-overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
@@ -46,7 +46,7 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
 Odkaz na Key Vault má formát `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` se nahrazuje jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
-> | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
+> | Řetězec odkazu                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
 > | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
@@ -76,7 +76,7 @@ Chcete-li použít odkaz Key Vault pro nastavení aplikace, nastavte odkaz jako 
 > [!TIP]
 > Většina nastavení aplikací pomocí Key Vault odkazů by měla být označená jako nastavení slotu, protože pro každé prostředí byste měli mít oddělené trezory.
 
-### <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
+### <a name="azure-resource-manager-deployment"></a>Nasazení Azure Resource Manager
 
 Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager může být nutné pořadí závislostí v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako vlastní prostředek, místo použití vlastnosti `siteConfig` v definici webu. Je to proto, že lokalita musí být definovaná jako první, aby se k ní vytvořila identita přiřazená systémem a mohla by se používat v zásadách přístupu.
 

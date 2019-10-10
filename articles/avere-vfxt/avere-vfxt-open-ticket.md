@@ -1,54 +1,54 @@
 ---
-title: Jak získat podporu pro Avere vFXT pro Azure
-description: Vysvětlení otevření lístky žádostí o podporu o Avere vFXT pro Azure
+title: Jak získat podporu pro avere vFXT pro Azure
+description: Vysvětlení otevření lístků podpory o avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: d621511cbb6983f8ad57ea8305823039475f40d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409637"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255373"
 ---
-# <a name="get-help-with-your-system"></a>Získejte pomoc ve vašem systému
+# <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
-Pokud potřebujete pomoc s vaší Avere vFXT pro Azure, tady jsou různé způsoby, jak získat podporu:
+Pokud potřebujete pomoc s avere vFXT pro Azure, najdete tady různé způsoby, jak získat podporu:
 
-* **Problém vFXT Avere** -pomocí webu Azure portal otevřete lístek podpory pro vaše Avere vFXT, jak je popsáno [níže](#open-a-support-ticket-for-your-avere-vfxt).
-* **Kvóta** – Pokud máte potíže s týkající se kvóty [požádat o zvýšení kvóty](#request-a-quota-increase)
-* **Dokumentaci a příklady** - li najít problémy s této dokumentace nebo příklady, přejděte do dolní části stránky se problém a použití **zpětnou vazbu** části hledání pro stávající potíže a zaslat nové jeden if potřeba.  
+* **Avere vFXT problém** – pomocí Azure Portal otevřete lístek podpory pro avere vFXT, jak je popsáno [níže](#open-a-support-ticket-for-your-avere-vfxt).
+* **Kvóta** – Pokud máte problém související s kvótou, [požádejte o zvýšení kvóty](#request-a-quota-increase) .
+* **Dokumentace a příklady** – Pokud najdete problémy s touto dokumentací nebo příklady, posuňte se k dolnímu okraji stránky a v případě potřeby můžete v části **Zpětná vazba** vyhledat existující problémy a vytvořit nové soubory.  
 
-## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Vytvořit lístek podpory pro vaše Avere vFXT
+## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Otevření lístku podpory pro avere vFXT
 
-Pokud narazíte na problémy při nasazení nebo použití Avere vFXT, požádat o pomoc prostřednictvím webu Azure portal.  
+Pokud narazíte na problémy při nasazování nebo používání avere vFXT, požádejte o technickou podporu Azure Portal.  
 
-Postupujte podle těchto kroků, abyste měli jistotu, že vašeho lístku podpory je označené prostředků z clusteru. Označování-the-ticket pomáhá nám směrovat na správná podporu prostředků. 
+Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený prostředkem z vašeho clusteru. Označení lístku vám pomůže nám ho směrovat na správný prostředek podpory. 
 
-1. Z [ https://portal.azure.com ](https://portal.azure.com)vyberte **skupiny prostředků**.
+1. V [https://portal.azure.com](https://portal.azure.com)vyberte **skupiny prostředků**.
 
-   ![snímek obrazovky portálu levou nabídkou Azure se skupinami"prostředků" v kruhu](media/avere-vfxt-ticket-rg.png)
+   ![snímek obrazovky levé nabídky Azure Portal se skupinami prostředků v kruhu](media/avere-vfxt-ticket-rg.png)
 
-1. Přejděte do skupiny prostředků, která obsahuje vFXT cluster, kde došlo k problému a klikněte na jeden z virtuálních počítačů Avere.
+1. Přejděte do skupiny prostředků, která obsahuje cluster vFXT, ve kterém došlo k problému, a klikněte na jeden z virtuálních počítačů s avere.
 
-    ![snímek obrazovky portálu prostředků Azure skupiny "Přehled" panel konkrétního virtuálního počítače v kruhu](media/avere-vfxt-ticket-vm.png)
+    ![snímek obrazovky s Azure Portalou skupinou prostředků "Přehled" s konkrétním virtuálním počítačem v kruhu](media/avere-vfxt-ticket-vm.png)
 
-1. Na stránce virtuální počítač, posuňte se dolů na levém panelu a klikněte na tlačítko **nová žádost o podporu**.
+1. Na stránce virtuální počítač přejděte dolů k dolnímu okraji levého panelu a klikněte na **Nová žádost o podporu**.
 
-    ![Snímek obrazovky stránky Azure portal virtuálního počítače pro virtuální počítač z předchozího snímku obrazovky. V levé nabídce je přechod na dolní a "Nová žádost o podporu" je v kruhu.](media/avere-vfxt-ticket-request.png)
+    ![Snímek obrazovky Azure Portalho virtuálního počítače pro virtuální počítač z předchozího snímku obrazovky V levé nabídce se posune dolů a "nová žádost o podporu" je zakroužkovaná.](media/avere-vfxt-ticket-request.png)
 
-1. Jedna žádost o podporu, klikněte na stránce **všechny služby** a podívejte se do části **úložiště** zvolit **Avere vFXT**.
+1. Na stránce jedna z žádostí o podporu klikněte na **všechny služby** a vyhledejte v části **úložiště** možnost **avere vFXT**.
 
-    ![snímek obrazovky s novou obrazovku žádost o podporu na webu Azure Portal se záhlavím "Základní" a kolečko okolo položky "Služba". Je vybráno tlačítko "Všechny služby" a pole rozevírací nabídky má hodnotu "Avere vFXT"](media/avere-vfxt-ticket-service.png)
+    ![snímek obrazovky nové žádosti o podporu v Azure Portal s hlavičkou "Základy" a kruhem kolem položky "služba". Je vybráno tlačítko všechny služby a pole rozevírací nabídky má hodnotu "avere vFXT".](media/avere-vfxt-ticket-service.png)
 
-1. Na stránce dvě zvolte typ problému a kategorie, které nejvíce odpovídají svůj problém. Přidejte krátký výstižný název a popis, který obsahuje čas, kdy došlo k problému. 
+1. Na stránce druhá klikněte na typ problému a kategorii, které nejlépe odpovídají vašemu problému. Přidejte krátký název a popis, který obsahuje čas výskytu problému. 
 
-   ![snímek obrazovky s novou obrazovku žádost o podporu s hlavičkou "Problém", který obsahuje mnoho polí, které je potřeba dokončit](media/avere-vfxt-ticket-problem.png)
+   ![snímek obrazovky s novou žádostí o podporu s hlavičkou "problém", která obsahuje mnoho polí, která se musí dokončit](media/avere-vfxt-ticket-problem.png)
 
-1. Na stránce tři, vyplňte svoje kontaktní informace a klikněte na tlačítko **vytvořit**. Číslo lístku a potvrzení se pošle e-mailovou adresu a bude vás kontaktovat člen pracovníky podpory.
+1. Na stránce tři zadejte kontaktní informace a klikněte na **vytvořit**. Na vaši e-mailovou adresu se pošle potvrzení a číslo lístku, na které vás bude kontaktovat člen zaměstnance podpory.
 
 ## <a name="request-a-quota-increase"></a>Požádat o zvýšení kvóty
 
-Čtení [kvóty pro vFXT cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) se dozvíte, jaké součásti jsou potřeba k nasazení Avere vFXT pro Azure. Je možné [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) z portálu Azure portal.
+Přečtěte si [kvótu pro cluster vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) , kde se dozvíte, jaké součásti jsou potřeba k nasazení avere VFXT pro Azure. Z Azure Portal můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) .

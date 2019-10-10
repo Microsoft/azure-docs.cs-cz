@@ -1,17 +1,17 @@
 ---
 title: Ukázka – mapování kontrolního plánu sdílených služeb ISO 27001
-description: Mapování kontrolního plánu sdílených služeb ISO 27001 na Azure Policy a RBAC.
+description: Kontrola mapování kontrolního plánu sdílených služeb ISO 27001 Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9ec44b4207cb3489205a646429f7fdd5ff2f3f90
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0a09de82375546f8d320686d9291466ae12d78c2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981575"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248928"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Mapování ovládacího prvku ukázka podrobného plánu sdílených služeb ISO 27001
 

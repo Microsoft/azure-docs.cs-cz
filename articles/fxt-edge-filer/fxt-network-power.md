@@ -1,168 +1,168 @@
 ---
-title: Připojení k síti Microsoft Azure FXT hrany vyfiltrovat a napájení
-description: Jak zapojení síťové porty a připojit power Azure FXT hrany Filer hardwaru
+title: Microsoft Azure FXT Edge souborového síťová připojení a zdroj napájení
+description: Jak zapojovat síťové porty a připojit napájení pro Azure FXT Edge souborového hardware
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: ae179e8ce2a2ba772a7fb14825660e0fff9e7410
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542948"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254857"
 ---
-# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Kurz: Zkontrolujte připojení k síti a napájení Azure FXT hrany Filer uzlu
+# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Kurz: vytvoření síťových připojení a napájení do uzlu Azure FXT Edge souborového
 
-Tento kurz vás naučí, jak zapojení síťová připojení pro uzlu Azure FXT hrany Filer hardwaru.
+V tomto kurzu se dozvíte, jak kabelové připojení k síti pro uzel FXT Edge souborového pro Azure.
 
-V tomto kurzu se dozvíte: 
+V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
 > * Jak zvolit typ síťového kabelu pro vaše prostředí
-> * Jak se připojit k síti datového centra do Azure FXT hrany Filer uzlu
-> * Jak směrovat kabely přes arm správy kabel (CMA)
-> * Jak se připojit power racked zařízení a zapnout ho
+> * Jak připojit uzel Azure FXT Edge souborového k síti datového centra
+> * Postup směrování kabelů přes ARM pro správu kabelů (CMA)
+> * Jak připojit napájení k zamontovanému zařízení a zapnout ho
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-Před zahájením tohoto kurzu musí být nainstalován Filer Azure FXT hrany v racku standardní zařízení. CMA musí být nainstalován na uzlu vyfiltrovat. 
+Před zahájením tohoto kurzu by se Azure FXT Edge souborového měl nainstalovat do racku Standard Equipment. CMA by měl být nainstalovaný na uzlu souborového. 
 
 ## <a name="identify-ports"></a>Identifikace portů
 
-Identifikujte různé porty na pozadí vaší Azure FXT hrany vyfiltrovat. 
+Identifikujte různé porty na zadní straně Azure FXT Edge souborového. 
  
-![Zadní poskytuje zařízení](media/fxt-back-annotated.png)
+![Zpětně zapojené zařízení](media/fxt-back-annotated.png)
 
-## <a name="cable-the-device"></a>Zapojení kabeláže zařízení
+## <a name="cable-the-device"></a>Zapojení zařízení do kabelu
 
-* Připojit porty RJ-45 ke zdroji sítě datového centra, jak je popsáno v [síťovým portům](#network-ports).  
-* Připojte se bezpečně [iDRAC port](#idrac-port) k oddělení síti, pomocí zabezpečeného serveru DHCP. 
-* Použití portů USB a VGA port pro připojení k uzlu pro počáteční nastavení klávesnice a monitor. Je třeba spustit na uzel a [nastavit počáteční heslo](fxt-node-password.md) aktivovat uzel v jiné porty. Čtení [nastavení počátečního hesla](fxt-node-password.md) podrobnosti. 
+* Připojte porty RJ-45 k síťovému zdroji datového centra, jak je popsáno v části [síťové porty](#network-ports).  
+* [Port iDRAC](#idrac-port) bezpečně připojte k samostatné síti pomocí zabezpečeného serveru DHCP. 
+* Pomocí portů USB a portu VGA připojte klávesnici a monitor k uzlu pro počáteční nastavení. Musíte spustit uzel a [nastavit počáteční heslo](fxt-node-password.md) pro aktivaci dalších portů uzlu. Podrobnosti si můžete přečíst v tématu [nastavení počátečních hesel](fxt-node-password.md) . 
 
-Tento článek také popisuje, jak [připojit napájení ze sítě](#connect-power-cables) pro uzel. 
+Tento článek také popisuje, jak [propojit](#connect-power-cables) elektrickou energii pro uzel. 
 
-Tento článek také vysvětluje, jak se připojit k uzlu [sériového portu](#serial-port-only-when-necessary), v případě potřeby odborné řešení potíží. 
+Tento článek také vysvětluje, jak se připojit k [sériovému portu](#serial-port-only-when-necessary)uzlu, pokud je to nutné pro specializované řešení potíží. 
 
 ### <a name="network-ports"></a>Síťové porty 
 
-Každý uzel Azure FXT hrany Filer zahrnuje následující síťové porty: 
+Každý uzel souborového pro Azure FXT Edge zahrnuje tyto síťové porty: 
 
-* Šest vysokorychlostní 25GbE/10GbE duální míra data porty: 
+* Šest vysokorychlostních 25GbE/10GbE datových portů s duální rychlostí: 
 
-  * Čtyři portů poskytuje dva modulu plug-in dvouportové síťové adaptéry
-  * Dva porty, které poskytuje základní desky mezzanine síťový adaptér 
+  * Čtyři porty poskytované dvěma síťovými adaptéry modulu plug-in se dvěma porty
+  * Dva porty poskytované Mezzanine síťovým adaptérem základní desky 
 
-* Dva 1GbE porty, které poskytuje základní desky mezzanine síťový adaptér 
+* Dva porty 10 GbE LOM, které poskytuje síťový adaptér Mezzanine základní desky 
 
-Porty vysokorychlostní 25GbE/10GbE data mají klece standardní SFP28 kompatibilní. Použití optické kabely, je nutné nainstalovat moduly SFP28 optické vysílač (není k dispozici).
+Vysokorychlostní datové porty 25GbE/10GbE mají standardní klece kompatibilní s SFP28. Aby bylo možné používat optické kabely, je nutné nainstalovat moduly SFP28 optický vysílač (nejsou k dispozici).
 
-Porty 1GbE mají standardní konektory, RJ-45.
+Porty 10 GbE LOM mají standardní konektory RJ-45.
 
-Úplný seznam podporovaných kabely, přepínače a vysílače, naleznete [Cavium FastlinQ 41000 řady Interoperability matice](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+Úplný seznam podporovaných kabelů, přepínačů a vysílačů najdete v části [Cavium FastlinQ 41000 – matice interoperability](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 
-Typ připojení pro použití pro váš systém závisí na prostředí vašeho datového centra.
+Typ připojení, která se mají použít pro váš systém, závisí na vašem prostředí datového centra.
 
-* Připojení k síti 25GbE zapojení každý z portů vysokorychlostní dat s jednou z následujících typů kabel:
+* Pokud se připojujete k síti 25GbE, připojte každý z vysokorychlostních datových portů k jednomu z následujících typů kabelů:
 
-  * Optické kabely a SFP28 optické vysílač 25GbE nebo duální míra 25GbE/10GbE funkce
-  * Přímé podporující 25GbE SFP28 typ připojte kabel twinaxial
+  * Optický kabel a SFP28 optický vysílač s možností 25GbE nebo dual rate 25GbE/10GbE
+  * SFP28 typ 25GbE s přímým připojením twinaxial kabelem
 
-* Pokud připojení k síti 10GbE, zapojení každý z portů vysokorychlostní dat s jednou z následujících akcí: 
+* Pokud se připojujete k síti 10GbE, připojte každý z vysokorychlostních datových portů k jednomu z následujících způsobů: 
 
-  * Optické kabely a SFP28 optické vysílač 10GbE nebo duální míra 25GbE/10GbE funkce.
-  * Přímé podporující 25GbE SFP28 typ připojte kabel twinaxial
-  * Přímé podporující 10GbE SFP28 typ připojte kabel twinaxial
+  * Optický kabel a SFP28 optický vysílač s možností 10GbE nebo dual rate 25GbE/10GbE.
+  * SFP28 typ 25GbE s přímým připojením twinaxial kabelem
+  * SFP28 typ 10GbE s přímým připojením twinaxial kabelem
 
-* 1GbE síťové porty se používají pro přenos pro správu clusteru. Zkontrolujte **použít síť mgmt 1Gb** možnosti při vytváření clusteru, pokud chcete vytvořit fyzicky oddělené sítě pro konfiguraci clusteru (popsané v [konfigurace sítě pro správu](fxt-cluster-create.md#configure-the-management-network)). Porty s standardní Cat5 nebo lepší kabel, jak je popsáno v seznamu podporovaných kabely zapojení.
+* Porty sítě 10 GbE LOM se používají pro provoz správy clusteru. Pokud chcete vytvořit fyzicky oddělenou síť pro konfiguraci clusteru (popis najdete v tématu [Konfigurace sítě pro správu](fxt-cluster-create.md#configure-the-management-network)), při vytváření clusteru **použijte možnost použít síť pro správu s GB** /s. Zapojte porty se standardním CAT5 nebo lepším kabelem, jak je popsáno v seznamu podporované kabely.
 
-  Můžete nechat 1GbE porty uncabled, pokud hodláte použít vysokorychlostní porty pro veškerý provoz. Ve výchozím nastavení 1GbE síťové porty nepoužívají, pokud je k dispozici vyšší rychlost portu data.  
+  Porty 10 GbE LOM můžete nechat nekabelované, pokud plánujete používat vysokorychlostní porty pro veškerý provoz. Ve výchozím nastavení se porty sítě 10 GbE LOM nepoužívají, pokud je k dispozici vysokorychlostní datový port.  
 
-### <a name="idrac-port"></a>iDRAC port  
+### <a name="idrac-port"></a>Port iDRAC  
 
-Port s popiskem iDRAC je 1Gb připojení, která umožňuje komunikaci s řadičem vzdálený přístup používá ke správě hardwaru a monitorování. FXT software Intelligent Platform Management Interface (IPMI) používá k tomuto kontroleru pro řešení potíží a obnovení. Můžete použít předdefinované [iDRAC rozhraní](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) ke sledování hardwarových přes tento port. ve výchozím nastavení jsou povolené iDRAC a přístup k rozhraní IPMI. 
+Port označený iDRAC je připojení s 1 GB, které umožňuje komunikaci s řadičem vzdáleného přístupu, který se používá ke správě a monitorování hardwaru. FXT software používá rozhraní IPMI (Intelligent Platform Management Interface) s tímto kontrolérem k odstraňování potíží a obnovení. Pomocí integrovaného [rozhraní iDRAC](https://www.dell.com/support/manuals/idrac9-lifecycle-controller-v3.30.30.30/idrac_3.30.30.30_ug/) můžete monitorovat hardware prostřednictvím tohoto portu. přístup iDRAC a IPMI jsou ve výchozím nastavení povolené. 
 
 > [!Note]
-> IDRAC port můžete vynechat operačního systému a pracovat přímo s hardwarem v uzlu. 
+> Port iDRAC může obejít operační systém a komunikovat přímo s hardwarem v uzlu. 
 
-Pomocí těchto strategií zabezpečení při připojení a konfiguraci iDRAC portu:
+Tyto strategie zabezpečení použijte při připojování a konfiguraci portu iDRAC:
 
-* Porty iDRAC připojte jenom k síti, která je fyzicky oddělená od data sítě, která slouží pro přístup ke clusteru.
-* Nastavení hesla správce zabezpečeného iDRAC na každém uzlu. Je nutné nastavit toto heslo k aktivaci hardwaru – postupujte podle pokynů v [nastavit hesla hardwaru](fxt-node-password.md).
-* Výchozí konfiguraci portů iDRAC používá pro přiřazování IP adres DHCP a IPv4. Ujistěte se, že vaše prostředí DHCP je dobře chráněné a omezeny připojení mezi klienty a DHCP server. (Ovládací panely clusteru zahrnuje nastavení můžete změnit způsob konfigurace adresy uzlů po vytvoření clusteru.)
-* Ponechte iDRAC port nastaven na "vyhrazené režim" (výchozí), což omezuje iDRAC/IPMI síťový provoz na vyhrazený port, RJ-45.
+* Připojte jenom porty iDRAC k síti, která je fyzicky oddělená od datové sítě, která se používá pro přístup ke clusteru.
+* V každém uzlu nastavte heslo správce zabezpečení iDRAC. Je nutné nastavit toto heslo pro aktivaci hardwaru – postupujte podle pokynů v části [Nastavení hardwarových hesel](fxt-node-password.md).
+* Výchozí konfigurace portu iDRAC používá pro přiřazení IP adresy DHCP a IPv4. Ujistěte se, že je prostředí DHCP správně chráněné a že je mezi klienty DHCP a serverem DHCP omezené připojení. (Ovládací panel clusteru obsahuje nastavení, která mění způsob konfigurace adresy uzlů po vytvoření clusteru.)
+* Ponechte port iDRAC nastavený na "Vyhrazený režim" (výchozí), což omezí síťový provoz iDRAC/IPMI na vyhrazený port RJ-45.
 
-IDRAC port nevyžaduje vysokorychlostní síťové připojení.
+Port iDRAC nevyžaduje vysokorychlostní síťové připojení.
   
 ### <a name="serial-port-only-when-necessary"></a>Sériový port (pouze v případě potřeby)
 
-V některých situacích můžete zjistit Microsoft Service a podporu můžete připojit k uzlu sériového portu k diagnostice problému terminálu.  
+V některých situacích vám může služba a podpora Microsoftu sdělit, že se k sériovému portu uzlu připojí terminál, aby mohl diagnostikovat problém.  
 
-Pro připojení konzoly:
+Postup připojení konzoly:
 
-1. Vyhledání sériového portu (COM1) na zadní Filer FXT hraniční uzel.
-1. Pro připojení k terminálu nakonfigurovaný pro ANSI. přenosovou rychlostí 115 200 8N1 sériového portu pomocí kabelu null modemu.
-1. Přihlaste se ke konzole a provést další kroky, podle pracovníky podpory.
+1. Vyhledejte sériový port (COM1) na zadní straně uzlu FXT Edge souborového.
+1. K připojení sériového portu k terminálu nakonfigurovanému pro ANSI-115200-8N1 použijte kabel nulového modemu.
+1. Přihlaste se ke konzole a proveďte další kroky podle pokynů pracovníků podpory.
 
-## <a name="route-cables-in-the-cable-management-arm-cma"></a>Trasa kabelů v arm správy kabel (CMA)
+## <a name="route-cables-in-the-cable-management-arm-cma"></a>Směrování kabelů v ARM pro správu kabelů (CMA)
 
-Každý uzel Azure FXT hrany Filer součástí na starosti správu volitelné kabel. CMA zjednodušuje kabel směrování a poskytuje jednodušší přístup k zadní skříni aniž by bylo potřeba odpojit kabely. 
+Každý uzel souborového pro Azure FXT Edge se dodává s volitelnou ARM pro správu kabelů. CMA zjednodušuje směrování kabelů a poskytuje snadný přístup k back-skříni, aniž by bylo nutné odpojit kabely. 
 
-Postupujte podle těchto pokynů a kabely prostřednictvím CMA trasy: 
+Při směrování kabelů prostřednictvím CMA postupujte podle těchto pokynů: 
 
-1. Pomocí zabalí tie k dispozici, pohromadě kabely podle jejich vstupní a výstupní košíky tak, aby jejich nejsou v konfliktu s sousední systémy (1).
-1. S CMA v umístění služby směrování sady kabel košíky vnitřní a vnější (2).
-1. Použijte předinstalovaných popruhů hook a smyčky k zabezpečení kabely (3) na jednom konci koše.
-1. Postupná CMA zpět do místa na hlavním panelu (4).
-1. Nainstalujte kabel indikátor stavu zádi systém a zabezpečení kabel přesměrováním prostřednictvím CMA. Připojte druhém konci kabel do horního rohu vnějšího nákupní košík CMA (5). 
+1. Pomocí zadaných kabelů můžete seskupit kabely společně při zadávání a ukončování košíků, aby nedošlo ke konfliktu se sousedními systémy (1).
+1. Pomocí CMA ve službě poloha služby směrujte kabelovou sadu přes vnitřní a vnější koše (2).
+1. Pomocí předinstalovaného zavěšení a popruhů cyklů na obou koncích zabezpečíte kabely (3).
+1. CMA zpátky na místo na zásobníku (4).
+1. Nainstalujte kabel indikátoru stavu na zadní straně systému a zapojte kabel pomocí směrování přes CMA. Druhý konec kabelu připojte k rohu vnějšího košíku CMA (5). 
 
    > [!CAUTION]
-   > Aby se zabránilo potenciální poškození vyčnívající kabely, zabezpečte všechny slack kabel indikátor stavu po směrování tento kabel prostřednictvím CMA. 
+   > Aby nedocházelo k potenciálním škodám vyčnívajících kabelů, zabezpečte jakoukoli časovou rezervu na kabelu indikátoru stavu po směrování tohoto kabelu přes CMA. 
 
-![Obrázek CMA s kabely nainstalovaná](media/fxt-install/cma-cabling-400.png)
+![Obrázek CMA s nainstalovanými kabely](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
->  Pokud jste nenainstalovali CMA, použít dva zavěšení a opakovat popruhů k dispozici v sadě lišty směrovat kabely zádi vašeho systému.
+>  Pokud jste nenainstalovali CMA, použijte dva popruhy zavěšení a cyklů, které jsou k dispozici v sadě kolejnice, ke směrování kabelů na zadní straně systému.
 > 
->  1. Vnější závorky CMA vyhledejte na vnitřní stranách obou přírub stojanu.
->  2. Vytvoření balíčku kabely jemně, přijímání změn je vymazat systému konektorů pro levé a pravé straně.
->  3. Vlákno hook a smyčka popruhů prostřednictvím tooled sloty na vnější závorky CMA na každé straně systém a zabezpečení sady kabel.
+>  1. Vyhledá vnější CMA závorky na vnitřních stranách obou přírub na racku.
+>  2. Rozbalení kabelů za mírné a jejich navýšení ze systémových konektorů na levou a pravou stranu.
+>  3. Rozbalí zavěšení a smyčku pomocí pruhů nástrojů na vnějších CMA závorkách na každé straně systému, aby se zabezpečily kabelové sady.
 > 
->     ![Směrovat bez CMA kabely](media/fxt-install/fxt-route-cables-no-cma-400.png)
+>     ![Kabely směrované bez CMA](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
-## <a name="about-ip-address-requirements"></a>O požadavcích na IP adresu
+## <a name="about-ip-address-requirements"></a>Požadavky na IP adresu
 
-Pro hardware do uzlů do mezipaměti Azure FXT hrany Filer hybridního úložiště IP adres spravuje software clusteru.
+V případě hardwarových uzlů v mezipaměti hybridního úložiště Azure FXT Edge souborového spravuje software clusteru IP adresy.
 
-Každý uzel vyžaduje alespoň jednu IP adresu, ale uzel adresy se přiřazují při uzly jsou přidán či odebrán z clusteru. 
+Každý uzel vyžaduje aspoň jednu IP adresu, ale adresy uzlů se přiřazují při přidávání nebo odebírání uzlů z clusteru. 
 
-Celkový počet IP adres vyžaduje závisí na počtu uzlů, které tvoří mezipaměť. 
+Celkový počet požadovaných IP adres závisí na počtu uzlů v, které tvoří mezipaměť. 
 
-Nakonfigurujte rozsah IP adres pomocí ovládacích panelů softwaru po nainstalování uzly. Další informace najdete v článku [shromažďování informací o clusteru](fxt-cluster-create.md#gather-information-for-the-cluster).  
+Po instalaci uzlů nakonfigurujte rozsah IP adres pomocí softwaru ovládacích panelů. Další informace najdete v článku [shromáždění informací o clusteru](fxt-cluster-create.md#gather-information-for-the-cluster).  
 
-## <a name="connect-power-cables"></a>Připojit napájecích kabelů
+## <a name="connect-power-cables"></a>Připojení napájecích kabelů
 
-Každý uzel Azure FXT hrany Filer používá dvě jednotky dodávku napájení (PSUs). 
+Každý uzel souborového pro Azure FXT Edge používá dva jednotky napájení (PSUs). 
 
 > [!TIP] 
-> Výhod dvou PSUs redundantní připojení k jednotka distribuční napájení (PDU) na okruh nezávislé větve každý AC napájecí kabel.  
+> Pokud chcete využít výhod těchto dvou redundantních PSUs, připojte každý kabel elektrické energie k jednotce pro distribuci napájení (PDU) na nezávislém okruhu větví.  
 > 
-> Vám pomůže UPS power PDU pro zvláštní ochranu. 
+> K napájení jednotek PDU pro dodatečnou ochranu můžete použít UPS. 
 
-1. Zahrnuté napájecích se připojte k PSUs ve skříni. Ujistěte se, že jsou plně sedí kabelů a PSUs. 
-1. Připojte napájecích kabelů k jednotek pro distribuci napájení na rack zařízení. Pokud je to možné použijte dva samostatné napájecí zdroje pro dvě kabely. 
+1. Připojte zahrnuté napájecí šňůry k PSUs na skříni. Ujistěte se, že jsou šňůry a PSUs plně upevněné. 
+1. Připojte napájecí šňůry k jednotkám distribuce napájení v racku zařízení. Pokud je to možné, použijte dva samostatné zdroje napájení pro tyto dva šňůry. 
  
-### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Zapnutí do Azure FXT hrany Filer uzlu
+### <a name="power-on-an-azure-fxt-edge-filer-node"></a>Zapnutí uzlu Azure FXT Edge souborového
 
-Napájení uzlu, stisknutím tlačítka napájení na začátku systému. Tlačítko je na pravé straně ovládací panely. 
+Pokud chcete uzel zapnout, stiskněte tlačítko napájení na přední straně systému. Tlačítko je na ovládacím panelu na pravé straně. 
 
-### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Napájení vypnuto uzlu Azure FXT hrany vyfiltrovat
+### <a name="power-off-an-azure-fxt-edge-filer-node"></a>Vypnutí uzlu Azure FXT Edge souborového
 
-Tlačítko napájení slouží k vypnutí systému při testování a před přidáním do clusteru. Ale po uzlu Azure FXT hrany Filer se používá jako součást clusteru, by měl použít software panel ovládacího prvku clusteru vypnout hardwaru. Čtení [jak bezpečně vypnutí hardware Azure FXT hrany Filer](fxt-power-off.md) podrobnosti. 
+Tlačítko napájení se dá použít k vypnutí systému během testování a před jeho přidáním do clusteru. Až se ale uzel Azure FXT Edge souborového používá jako součást clusteru, měli byste k vypnutí hardwaru použít software na ovládacím panelu clusteru. Podrobnosti najdete v článku [jak bezpečně vypnout hardware Azure FXT Edge souborového](fxt-power-off.md) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po dokončení kabelů hardwaru, napájení na každém uzlu a inicializovat nastavením kořenového hesla. 
+Po dokončení práce s hardwarem zapněte všechny uzly a inicializujte je nastavením jejich kořenových hesel. 
 > [!div class="nextstepaction"]
-> [Nastavení počátečního hesla](fxt-node-password.md)
+> [Nastavit počáteční hesla](fxt-node-password.md)

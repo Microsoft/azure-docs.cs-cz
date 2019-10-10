@@ -1,6 +1,6 @@
 ---
-title: Připojení dat Symantec AWS ke službě Azure Sentinel | Microsoft Docs
-description: Naučte se připojit data Symantec AWS ke službě Azure Sentinel.
+title: Připojit AWS CloudTrail ke službě Azure Sentinel | Microsoft Docs
+description: Naučte se připojit data AWS CloudTrail k Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 61bee1618092788da33549ec322dc4ab7130de16
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240870"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244682"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 
 Pomocí konektoru AWS můžete streamovat všechny události AWS CloudTrail do Azure Sentinel. Tento proces připojení deleguje delegáty přístupu pro Azure Sentinel do protokolů prostředků AWS a vytvoří vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel. To se provádí na AWS vytvořením role, která pro přístup k protokolům AWS uděluje oprávnění službě Azure Sentinel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
 
