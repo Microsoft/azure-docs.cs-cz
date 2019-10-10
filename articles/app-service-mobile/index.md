@@ -9,14 +9,18 @@ ms.service: app-service-mobile
 ms.topic: landing-page
 ms.date: 05/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 5526f7ce11722469909adfaad11773bc2c8e4b66
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 38b1acad5e8eb869d1ed2a8d218a2416bd3b8098
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610209"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024749"
 ---
 # <a name="mobile-apps-documentation"></a>Dokumentace k Mobile Apps
+
+> [!NOTE]
+> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
+> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb App Center[App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Naučte se využívat Mobile Apps ve službě Azure App Service k sestavování nativních aplikací pro iOS, Android nebo Windows nebo aplikací pro více platforem pomocí Xamarinu nebo Cordovy. Kurzy, videa, dokumentace ke klientským sadám SDK a další zdroje informací ukazují, jak sestavovat a hostovat back-end pro libovolnou mobilní aplikaci.
 

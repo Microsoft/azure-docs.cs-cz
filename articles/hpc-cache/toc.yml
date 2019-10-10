@@ -36,3 +36,5 @@
   items:
     - name: Otevření lístku podpory
       href: hpc-cache-support-ticket.md
+    - name: Zotavení z oblastního výpadku
+      href: hpc-region-recovery.md

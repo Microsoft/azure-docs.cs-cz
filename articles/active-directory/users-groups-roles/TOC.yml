@@ -110,7 +110,7 @@
           href: groups-naming-policy.md
         - name: Referenční informace k vypršení platnosti skupin
           href: groups-lifecycle.md
-        - name: 'Obnovení odstraněných skupin nebo skupin, kterým vypršela platnost'
+        - name: Obnovení odstraněných skupin
           href: groups-restore-deleted.md
         - name: Správa nastavení skupin
           href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,7 +134,7 @@
           href: licensing-groups-resolve-problems.md
         - name: Změna uživatelů na skupinové licencování
           href: licensing-groups-migrate-users.md
-        - name: Změna licencí pro uživatele
+        - name: Změna licencí pro uživatele nebo skupinu
           href: licensing-groups-change-licenses.md
         - name: Další scénáře
           href: licensing-group-advanced.md
@@ -168,7 +168,7 @@
           href: roles-delegate-by-task.md
         - name: Role Microsoft 365
           href: roles-m365-workload-docs.md
-        - name: Zabezpečení role správce
+        - name: Zabezpečení rolí
           items:
             - name: Plánování zabezpečení rolí
               href: directory-admin-roles-secure.md

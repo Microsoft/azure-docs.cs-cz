@@ -196,6 +196,8 @@
               href: disk-encryption-cli-quickstart.md
             - name: Šifrování virtuálního počítače s využitím Azure PowerShellu
               href: disk-encryption-powershell-quickstart.md
+            - name: Šifrování virtuálního počítače s využitím webu Azure Portal
+              href: disk-encryption-portal-quickstart.md
             - name: Trezor klíčů pro Azure Disk Encryption
               href: disk-encryption-key-vault.md
             - name: Ukázkové skripty pro šifrování disků

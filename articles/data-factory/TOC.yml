@@ -80,6 +80,8 @@
           items:
             - name: Nástroj pro kopírování dat
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+    - name: Transformace dat s využitím mapování toků dat
+      href: tutorial-data-flow.md
     - name: Transformace dat v cloudu
       items:
         - name: HDInsight Spark
@@ -143,7 +145,7 @@
       href: concepts-integration-runtime.md
     - name: Mapování toků dat
       items:
-        - name: Koncepce mapování toků dat
+        - name: Přehled mapování toků dat
           href: concepts-data-flow-overview.md
         - name: Režim ladění
           href: concepts-data-flow-debug-mode.md
@@ -151,8 +153,6 @@
           href: concepts-data-flow-json.md
         - name: Posun schématu
           href: concepts-data-flow-schema-drift.md
-        - name: Podokno kontroly
-          href: concepts-data-flow-inspect-pane.md
         - name: Vzory sloupců
           href: concepts-data-flow-column-pattern.md
         - name: Sledování toku dat
@@ -161,12 +161,8 @@
           href: concepts-data-flow-performance.md
         - name: Přesun uzlů
           href: concepts-data-flow-move-nodes.md
-        - name: Karta Optimalizace
-          href: concepts-data-flow-optimize-tab.md
         - name: Tvůrce výrazů
           href: concepts-data-flow-expression-builder.md
-        - name: Referenční uzly
-          href: concepts-data-flow-reference-node.md
         - name: Jazyk výrazů
           href: data-flow-expression-functions.md
     - name: Role a oprávnění
@@ -390,6 +386,8 @@
     - name: Transformace dat
       href: transform-data.md
       items:
+        - name: Aktivita spuštění toku dat
+          href: control-flow-execute-data-flow-activity.md
         - name: Aktivita funkcí Azure
           href: control-flow-azure-function-activity.md
         - name: Vlastní aktivita
@@ -424,8 +422,6 @@
       items:
         - name: Aktivita připojení proměnné
           href: control-flow-append-variable-activity.md
-        - name: Aktivita spuštění toku dat
-          href: control-flow-execute-data-flow-activity.md
         - name: Aktivita spuštění kanálu
           href: control-flow-execute-pipeline-activity.md
         - name: Aktivita filtrování
