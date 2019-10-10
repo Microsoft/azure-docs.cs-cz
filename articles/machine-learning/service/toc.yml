@@ -137,23 +137,6 @@
           href: how-to-train-with-datasets.md
     - name: Trénování modelů
       items:
-        - name: Nastavení prostředí trénování
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-          href: how-to-set-up-training-targets.md
-        - name: Použití odhadů k trénování
-          items:
-            - name: Vytváření odhadů při trénování
-              href: how-to-train-ml-models.md
-            - name: Použití knihovny Scikit-learn
-              href: how-to-train-scikit-learn.md
-            - name: Použití TensorFlow
-              href: how-to-train-tensorflow.md
-            - name: Použití Keras
-              href: how-to-train-keras.md
-            - name: Použití PyTorchu
-              href: how-to-train-pytorch.md
-            - name: Použití Chaineru
-              href: how-to-train-chainer.md
         - name: Použití vizuálního rozhraní
           displayName: sample visual interface experiments
           items:
@@ -175,25 +158,29 @@
             - name: Predikce zpoždění letů
               displayName: 'classification, studio'
               href: how-to-ui-sample-classification-predict-flight-delay.md
-        - name: Ladění hyperparametrů
-          displayName: parameter
-          href: how-to-tune-hyperparameters.md
-        - name: Použití služby Key Vault během trénování
-          displayName: secrets keyvault
-          href: how-to-use-secrets-in-runs.md
-    - name: Sledování a monitorování experimentů
-      items:
-        - name: 'Spuštění, monitorování nebo zrušení běhů'
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: Protokolování metrik pro tréninková spuštění
-          href: how-to-track-experiments.md
-        - name: Sledování experimentů s využitím MLflow
-          displayName: 'log, monitor, metrics'
-          href: how-to-use-mlflow.md
-        - name: Vizualizace spuštění s využitím TensorBoardu
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
+        - name: Použití nástrojů pro odhady pro ML
+          items:
+            - name: Vytváření odhadů při trénování
+              href: how-to-train-ml-models.md
+            - name: Nastavení prostředí trénování
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: Ladění hyperparametrů
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: Použití služby Key Vault během trénování
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
     - name: Automatizace strojového učení
       displayName: 'automl, auto ml'
       items:
@@ -210,6 +197,19 @@
           href: how-to-auto-train-forecast.md
         - name: Principy grafů a metrik
           href: how-to-understand-automated-ml.md
+    - name: Sledování a monitorování experimentů
+      items:
+        - name: 'Spuštění, monitorování nebo zrušení běhů'
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: Protokolování metrik pro tréninková spuštění
+          href: how-to-track-experiments.md
+        - name: Sledování experimentů s využitím MLflow
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: Vizualizace spuštění s využitím TensorBoardu
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: Nasazení a obsluha modelů
       items:
         - name: Kde a jak nasadit

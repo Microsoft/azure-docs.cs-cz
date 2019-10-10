@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: O službě ExpressRoute Global Reach
       href: expressroute-global-reach.md
+    - name: Informace o šifrování ExpressRoute
+      href: expressroute-about-encryption.md
     - name: Připojení Azure k veřejným cloudům
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Interoperabilita možností připojení back-endu
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: Konfigurace MACsec pro porty ExpressRoute Direct
+      href: expressroute-howto-macsec.md
     - name: Konfigurace filtrů směrování pro partnerský vztah Microsoftu
       items:
         - name: portál Azure

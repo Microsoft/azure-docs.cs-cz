@@ -4,6 +4,8 @@
   items:
     - name: Informace o Media Services
       href: media-services-overview.md
+    - name: Co je nového v Media Services
+      href: release-notes.md
 - name: Kurzy
   expanded: true
   items:
@@ -343,8 +345,6 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Průzkumník Azure Media Services
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: "Poznámky k\_verzi"
-      href: release-notes.md
     - name: Kvóty a omezení
       href: limits-quotas-constraints.md
     - name: Nejčastější dotazy

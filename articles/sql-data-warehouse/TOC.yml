@@ -151,6 +151,10 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: Nastavení pro relace
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+            - name: Kontrola velikosti mezipaměti
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest'
+            - name: Vyčištění mezipaměti
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest'
         - name: Tabulky
           items:
             - name: Přehled

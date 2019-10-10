@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace ke Custom Vision
-summary: Azure Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
+summary: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
 metadata:
   title: Dokumentace ke Custom Vision
-  description: Azure Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
+  description: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211970"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176176"
 landingContent:
 - title: Informace o Custom Vision
   linkLists:

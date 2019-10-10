@@ -105,6 +105,8 @@
               href: map-add-line-layer.md
             - name: Přidání mnohoúhelníkové vrstvy
               href: map-add-shape.md
+            - name: Přidání vysunuté mnohoúhelníkové vrstvy
+              href: map-extruded-polygon.md
             - name: Přidání vrstvy heat mapy
               href: map-add-heat-map-layer.md
             - name: Přidání místního okna

@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: Ukázky
   items:
-    - name: Ukázky .NET
+    - name: Ukázky .NET V2 SDK
       href: sql-api-dotnet-samples.md
+    - name: Ukázky .NET V3 SDK
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Ukázky Java
       href: sql-api-java-samples.md
     - name: Ukázky Async Java
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: Migrace dat do Cosmos DB
       items:
+        - name: Možnosti migrace dat do Cosmos DB
+          href: cosmosdb-migrationchoices.md
         - name: Migrace do rozhraní API SQL s využitím Striimu
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Migrace do rozhraní API Cassandra s využitím Striimu
