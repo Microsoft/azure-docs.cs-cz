@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240119"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274427"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití Key Vault odkazů pro App Service a Azure Functions (Preview)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
 > [!NOTE] 
-> V současné době jsou odkazy na Key Vault ve verzi Preview a momentálně se nepodporují v plánech spotřeby Linux.
+> Odkazy na Key Vault nejsou aktuálně k dispozici v plánech spotřeby Linux.
 
 V tomto tématu se dozvíte, jak pracovat s tajnými kódy z Azure Key Vault v App Service nebo Azure Functions aplikace bez nutnosti jakýchkoli změn kódu. [Azure Key Vault](../key-vault/key-vault-overview.md) je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
 
@@ -46,13 +46,13 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
 Odkaz na Key Vault má formát `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` se nahrazuje jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
-> | Řetězec odkazu                                                            | Description                                                                                                                                                                                 |
+> | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
 > | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
 > [!NOTE] 
-> V aktuální verzi Preview jsou vyžadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
+> Aktuálně jsou požadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
 
 Například kompletní odkaz by vypadal jako následující:
 
@@ -192,7 +192,9 @@ Pokud odkaz není správně přeložen, použije se místo toho referenční hod
 
 Nejčastěji to je způsobeno neznámým nastavením [zásad přístupu Key Vault](#granting-your-app-access-to-key-vault). Může to ale také být způsobeno tím, že už existující tajný kód nebo Chyba syntaxe samotného odkazu.
 
-Je-li syntaxe správná, můžete zobrazit další příčiny chyby kontrolou aktuálního stavu řešení pomocí integrovaného detektoru.
+Pokud je syntaxe správná, můžete zobrazit další příčiny chyby tak, že zkontrolujete aktuální stav řešení na portálu. Přejděte do nastavení aplikace a pro příslušný odkaz vyberte Upravit. Pod konfigurací nastavení byste měli vidět informace o stavu, včetně všech chyb. Neexistence těchto informací implikuje neplatnou syntaxi reference.
+
+K získání dalších informací můžete použít také jeden z vestavěných detektorů.
 
 ### <a name="using-the-detector-for-app-service"></a>Použití detektoru pro App Service
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300699"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273723"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
@@ -71,7 +71,7 @@ Nyní můžete nakonfigurovat model časové řady Time Series Insightsho prost�
 
 Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Time Series Insights. Informace o sestavování modelu najdete v tématu [použití modelu časové řady](./time-series-insights-update-how-to-tsm.md).
 
-Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k dispozici předem sestavené uživatelské prostředí [](https://github.com/Microsoft/tsiclient) , které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do ukázkového ukázkového [prostředí](https://insights.timeseries.azure.com/preview/demo).
+Pro mnoho zákazníků se model časových řad mapuje na existující model assetů nebo systém ERP, který je už na svém místě. Pokud nemáte existující model, je k [dispozici](https://github.com/Microsoft/tsiclient) předem sestavené uživatelské prostředí, které vám umožní rychle začít pracovat. Chcete-li předvést, jak vám model může pomáhat, podívejte se do [ukázkového](https://insights.timeseries.azure.com/preview/demo)ukázkového prostředí.
 
 ## <a name="shape-your-events"></a>Natvarování událostí
 
@@ -82,7 +82,7 @@ Dobré pravidlo pro palec:
 * Uložte metadata v modelu časové řady.
 * Režim časové řady, pole instancí a události obsahují pouze potřebné informace, například ID časové řady nebo časové razítko.
 
-Další informace najdete v tématu [události obrazce](./time-series-insights-send-events.md#json).
+Další informace najdete v tématu [události obrazce](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162417"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274185"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz na nastavení Azure Active Directory podmíněného přístupu
 
@@ -53,27 +53,26 @@ Zásady podmíněného přístupu můžete přiřadit k těmto cloudovým aplika
 - Portál Microsoft Commerce Tools Access Control Portal
 - Služba Microsoft Commerce Tools Authentication Service
 - Microsoft Flow
-- Microsoft Forms
+- Formuláře Microsoft
 - Microsoft Intune
-- Registrace v Microsoft Intune
-- Aplikace Microsoft Planner
+- Registrace Microsoft Intune
+- Microsoft Planner
 - Microsoft PowerApps
 - Hledání ve službě Bing
-- Microsoft StaffHub
+- Microsoft směn staffhubu
 - Microsoft Stream
 - Microsoft Teams
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
 - Office – Delvu
-- Office Sway
-- Outlook Groups
+- Sway pro Office
+- Skupiny Outlooku
 - Služba Power BI
-- Project Online
+- Projekt online
 - Online Skype pro firmy
 - Virtuální privátní síť (VPN)
-- Visual Studio App Center
-- Windows Defender ATP
+- Ochrana ATP v programu Windows Defender
 
 ### <a name="other-applications"></a>Další aplikace
 
@@ -103,7 +102,7 @@ Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů
 
 V rámci zásad podmíněného přístupu můžete nakonfigurovat podmínku pro [klientské aplikace](conditions.md#client-apps) tak, aby zásady provedla pro klientskou aplikaci, která iniciovala pokus o přístup. Nastavte podmínku pro klientské aplikace tak, aby při pokusu o přístup z následujících typů klientských aplikací udělily nebo blokovaly přístup:
 
-- Browser
+- Prohlížeee
 - Mobilní aplikace a aplikace klasické pracovní plochy
 
 ![Řízení přístupu pro klientské aplikace](./media/technical-reference/03.png)
@@ -116,7 +115,7 @@ V zásadách podmíněného přístupu můžete jako klientskou aplikaci vybrat 
 
 Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
-| OS                     | Prohlížeče                                        |
+| JINÉHO                     | Nimi                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
@@ -124,7 +123,7 @@ Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zás
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
 | Windows Phone          | Microsoft Edge, Internet Explorer               |
-| Windows Server. 2019    | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
@@ -143,19 +142,19 @@ Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vy
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| type | REG_SZ (řetězec) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/Service/Update2/CRX |
+| Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name | první |
+| Typ | REG_SZ (řetězec) |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/Service/-datum2/CRX |
 
 V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| type | REG_SZ (řetězec) |
-| Data | {"vzor": "https://device.login.microsoftonline.com", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}} |
+| Cesta | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name | první |
+| Typ | REG_SZ (řetězec) |
+| Data | {"Pattern": "https://device.login.microsoftonline.com"; "Filter": {"ISSUER": {"CN": "MS-Organization-Access"}}} |
 
 Tyto prohlížeče podporují ověřování zařízení, což umožňuje, aby se zařízení identifikovalo a ověřilo na základě zásad. Pokud je prohlížeč spuštěný v privátním režimu, neproběhne jeho ověření.
 
@@ -176,7 +175,7 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Aplikace Office 2016, Office 2013 (s moderním ověřováním), klient synchronizace OneDrive (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Aplikace Office 2016, univerzální aplikace Office, Office 2013 (s moderním ověřováním), synchronizační klient OneDrivu (viz [poznámky](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), podpora skupin Office je pro budoucnost plánována. Podpora aplikací SharePoint je pro budoucnost budoucí. | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (jenom Word, Excel, PowerPoint, OneNote) Podpora OneDrivu pro firmy plánovaná pro budoucnost| Office 365 SharePoint Online| macOS|
-| Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
+| Sada Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Mobilní aplikace Office | Office 365 SharePoint Online | Android, iOS |
 | Aplikace Office Yammer | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
@@ -204,34 +203,34 @@ V zásadách podmíněného přístupu můžete vyžadovat, aby byl pokus o př�
 Toto nastavení platí pro následující klientské aplikace:
 
 - Microsoft Azure Information Protection
-- Microsoft Bookings
+- Rezervace Microsoftu
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- Microsoft fakturace
+- Fakturace Microsoftu
 - Microsoft Kaizala
-- Spouštěcí program společnosti Microsoft
+- Spouštěč Microsoftu
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Aplikace Microsoft Planner
+- Microsoft Planner
 - Microsoft PowerApps
-- Microsoft Power BI
+- Power BI Microsoftu
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype pro firmy
-- Microsoft StaffHub
+- Microsoft směn staffhubu
 - Microsoft Stream
 - Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
+- Microsoft to-do
+- Aplikace Microsoft Visio
 - Microsoft Word
-- Microsoft Yammer
+- Yammer Microsoftu
 
-**Poznámky**
+**Mark**
 
 - Schválené klientské aplikace podporují funkci správy mobilních aplikací Intune.
 - Požadavek na **vyžadování schválené aplikace klienta** :
@@ -248,9 +247,9 @@ Toto nastavení platí pro následující klientské aplikace:
 - Microsoft Cortana
 - Microsoft OneDrive
 - Microsoft Outlook
-- Aplikace Microsoft Planner
+- Microsoft Planner
 
-**Poznámky**
+**Mark**
 
 - Aplikace pro zásady ochrany aplikací podporují funkci správy mobilních aplikací Intune s ochranou zásad.
 - Požadavky na **zásady pro vyžadování zásad ochrany aplikací** :

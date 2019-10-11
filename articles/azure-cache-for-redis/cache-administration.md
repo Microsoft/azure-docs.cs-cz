@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827589"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263686"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -48,17 +48,11 @@ Dopad na klientské aplikace se liší v závislosti na tom, které uzly se rest
 * **Hlavní i podřízený** – při restartu obou uzlů mezipaměti dojde k výpadku všech dat v mezipaměti a připojení k mezipaměti selže, dokud se primární uzel nevrátí zpět do režimu online. Pokud jste nakonfigurovali [Trvalost dat](cache-how-to-premium-persistence.md), obnoví se poslední záloha, když se mezipaměť vrátí zpět do režimu online, ale všechny zápisy do mezipaměti, ke kterým došlo po poslední záloze, se ztratí.
 * **Uzly mezipaměti Premium s povoleným clusteringem** – když restartujete jeden nebo víc uzlů mezipaměti Premium s povoleným clusteringem, chování pro vybrané uzly se shoduje s tím, jak restartujete odpovídající uzel nebo uzly, které nejsou v Clusterové mezipaměti.
 
-> [!IMPORTANT]
-> Pro všechny cenové úrovně je teď k dispozici restart.
-> 
-> 
-
 ## <a name="reboot-faq"></a>Nejčastější dotazy k restartování
 * [Který uzel mám restartovat, aby se aplikace otestovala?](#which-node-should-i-reboot-to-test-my-application)
 * [Můžu restartovat mezipaměť, aby se vymazala připojení klientů?](#can-i-reboot-the-cache-to-clear-client-connections)
 * [Ztratím během restartování data z mezipaměti?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [Je možné restartovat tuto mezipaměť pomocí PowerShellu, CLI nebo jiných nástrojů pro správu?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [Jaké cenové úrovně můžou používat funkce restartování?](#what-pricing-tiers-can-use-the-reboot-functionality)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Který uzel mám restartovat, aby se aplikace otestovala?
 Chcete-li otestovat odolnost vaší aplikace proti selhání primárního uzlu vaší mezipaměti, restartujte **Hlavní** uzel. Chcete-li otestovat odolnost vaší aplikace proti selhání sekundárního uzlu, restartujte **podřízený** uzel. Chcete-li otestovat odolnost aplikace proti celkovému selhání mezipaměti, restartujte **oba** uzly.
@@ -79,23 +73,18 @@ Pokud restartujete pouze jeden z uzlů, data se obvykle neztratí, ale přesto m
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Je možné restartovat tuto mezipaměť pomocí PowerShellu, CLI nebo jiných nástrojů pro správu?
 Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azure pro Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Jaké cenové úrovně můžou používat funkce restartování?
-K dispozici je restartování pro všechny cenové úrovně.
-
-## <a name="schedule-updates"></a>Aktualizace plánu
+## <a name="schedule-updates"></a>Naplánovat aktualizace
 Okno **naplánovat aktualizace** umožňuje určit časové období údržby pro instanci mezipaměti. Po zadání časového období údržby se v průběhu tohoto okna provedou všechny aktualizace Redis serveru. 
 
 > [!NOTE] 
 > Časové období údržby se vztahuje jenom na aktualizace serveru Redis a ne na aktualizace nebo aktualizace Azure v operačním systému virtuálních počítačů, které hostují mezipaměť.
-> 
-> 
+>
 
-![Aktualizace plánu](./media/cache-administration/redis-schedule-updates.png)
+![Naplánovat aktualizace](./media/cache-administration/redis-schedule-updates.png)
 
 Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Všimněte si, že čas časového období údržby je UTC. 
 
 Výchozí nastavení a minimální interval údržby pro aktualizace jsou pět hodin. Tato hodnota se nedá konfigurovat z Azure Portal, ale můžete ji nakonfigurovat v PowerShellu pomocí parametru `MaintenanceWindow` rutiny [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Další informace najdete v tématu Správa naplánovaných aktualizací pomocí PowerShellu, rozhraní příkazového řádku nebo jiných nástrojů pro správu.
-
 
 ## <a name="schedule-updates-faq"></a>Nejčastější dotazy k plánu aktualizací
 * [Kdy k aktualizacím dochází, když nepoužívám funkci plán Updates?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

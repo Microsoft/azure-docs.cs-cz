@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 633d960e430d035a187a402e664c70f27cd23756
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648740"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274100"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopírování dat z kontejnerů Amazon S3 pomocí AzCopy
 
@@ -30,7 +30,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 Pokud si chcete stáhnout AzCopy, přečtěte si článek Začínáme [s AzCopy](storage-use-azcopy-v10.md) a vyberte způsob poskytování autorizačních přihlašovacích údajů do služby úložiště.
 
 > [!NOTE]
-> V příkladech v tomto článku se předpokládá, že jste ověřili vaši identitu `AzCopy login` pomocí příkazu. AzCopy pak použije účet Azure AD k autorizaci přístupu k datům v úložišti objektů BLOB.
+> V příkladech v tomto článku se předpokládá, že jste ověřili vaši identitu pomocí příkazu `AzCopy login`. AzCopy pak použije účet Azure AD k autorizaci přístupu k datům v úložišti objektů BLOB.
 >
 > Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy.
 >
@@ -57,8 +57,8 @@ AzCopy používá [blok Put z](https://docs.microsoft.com/rest/api/storageservic
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>/<object-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>"` |
-| **Příklad** | `azcopy copy "https://s3.amazonaws.com/mybucket/myobject" "https://mystorageaccount.blob.core.windows.net/mycontainer/myblob"` |
+| **Syntaktick** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
+| **Příklad** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > Příklady v tomto článku používají adresy URL ve stylu cesty pro AWS S3 (například: `http://s3.amazonaws.com/<bucket-name>`). 
@@ -67,47 +67,47 @@ AzCopy používá [blok Put z](https://docs.microsoft.com/rest/api/storageservic
 >
 > Další informace o virtuálním hostování kontejnerů naleznete v tématu [virtuální hostování kontejnerů]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-directory"></a>Kopírovat adresář
+### <a name="copy-a-directory"></a>Kopírování adresáře
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
-| **Příklad** | `azcopy copy "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
+| **Syntaktick** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **Příklad** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Kopírování intervalu
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy "https://s3.amazonaws.com/<bucket-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true` |
-| **Příklad** | `azcopy copy "https://s3.amazonaws.com/mybucket" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true` |
+| **Syntaktick** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
+| **Příklad** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Kopírovat všechny intervaly ve všech oblastech
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy "https://s3.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **Příklad** | `azcopy copy "https://s3.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
+| **Syntaktick** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Příklad** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Kopírovat všechny intervaly v konkrétní oblasti S3
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy copy "https://s3-<region-name>.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **Příklad** | `azcopy copy "https://s3-rds.eu-north-1.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
+| **Syntaktick** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **Příklad** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Zpracování rozdílů v pravidlech pojmenovávání objektů
 
 AWS S3 má jinou sadu zásad pro pojmenování názvů sad, které jsou ve srovnání s kontejnery objektů blob Azure. O nich si můžete přečíst [tady](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules). Pokud se rozhodnete zkopírovat skupinu kontejnerů do účtu služby Azure Storage, operace kopírování může selhat kvůli rozdílům v pojmenování.
 
-AzCopy zpracovává dva z nejběžnějších problémů, které mohou nastat; sady obsahující tečky a intervaly, které obsahují po sobě jdoucí spojovníky. Názvy kontejnerů AWS S3 můžou obsahovat tečky a po sobě jdoucí pomlčky, ale kontejner v Azure nemůže. AzCopy nahrazuje tečky pomlčkami a po sobě jdoucích spojovníků číslo představující počet po sobě jdoucích spojovníků (například: sada s názvem `my----bucket` se `my-4-bucket`stala. 
+AzCopy zpracovává dva z nejběžnějších problémů, které mohou nastat; sady obsahující tečky a intervaly, které obsahují po sobě jdoucí spojovníky. Názvy kontejnerů AWS S3 můžou obsahovat tečky a po sobě jdoucí pomlčky, ale kontejner v Azure nemůže. AzCopy nahrazuje tečky pomlčkami a po sobě jdoucích spojovníků číslo představující počet po sobě jdoucích spojovníků (například: sada s názvem `my----bucket` se stal `my-4-bucket`. 
 
-I když AzCopy kopíruje soubory, kontroluje kolize názvů a pokusy o jejich vyřešení. Například pokud obsahuje `bucket-name` množiny s názvem a `bucket.name`, AzCopy přeloží kontejner s názvem `bucket.name` First na `bucket-name` a poté na `bucket-name-2`.
+I když AzCopy kopíruje soubory, kontroluje kolize názvů a pokusy o jejich vyřešení. Pokud se například nachází v kontejnerech s názvem `bucket-name` a `bucket.name`, AzCopy přeloží kontejner s názvem `bucket.name` nejprve na `bucket-name` a pak na `bucket-name-2`.
 
 ## <a name="handle-differences-in-object-metadata"></a>Zpracování rozdílů v metadatech objektů
 
-AWS S3 a Azure povolují v názvech klíčů objektů různé sady znaků. Můžete si přečíst o znacích, které AWS S3 používá [](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys). Na straně Azure se klíče objektu BLOB řídí pravidly pro [ C# ](https://docs.microsoft.com/dotnet/csharp/language-reference/)pojmenovávání identifikátorů.
+AWS S3 a Azure povolují v názvech klíčů objektů různé sady znaků. Můžete si přečíst o znacích, které AWS [S3 používá.](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys) Na straně Azure se klíče objektu BLOB řídí pravidly pro [ C# ](https://docs.microsoft.com/dotnet/csharp/language-reference/)pojmenovávání identifikátorů.
 
-Jako součást příkazu AzCopy `copy` můžete zadat hodnotu `s2s-invalid-metadata-handle` volitelného příznaku, který určuje, jak chcete zpracovat soubory, kde metadata souboru obsahují nekompatibilní názvy klíčů. V následující tabulce jsou popsány všechny hodnoty příznaků.
+Jako součást příkazu AzCopy `copy` můžete zadat hodnotu volitelného příznaku `s2s-invalid-metadata-handle`, který určuje, jak byste chtěli zpracovat soubory, kde metadata souboru obsahují nekompatibilní názvy klíčů. V následující tabulce jsou popsány všechny hodnoty příznaků.
 
 | Hodnota příznaku | Popis  |
 |--------|-----------|
@@ -131,7 +131,7 @@ AzCopy provádí tyto kroky:
    Tento klíč se použije k uložení původních metadat neplatného **klíče**.
    Tento klíč můžete použít k tomu, abyste si vyzkoušeli a obnovili metadata na straně Azure, protože klíč metadat se uchová jako hodnota ve službě BLOB Storage.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další příklady najdete v některém z těchto článků:
 

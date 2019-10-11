@@ -98,7 +98,7 @@
             - name: Ověřování ze služby Azure Container Instances
               href: container-registry-auth-aci.md
             - name: Ověřování ze služby Azure Kubernetes Service (AKS)
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: Role a oprávnění
           href: container-registry-roles.md
         - name: Důvěryhodnost obsahu

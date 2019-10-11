@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 3d8983835c587ffeec9dd2bc418f1c01afbeb571
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018974"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264499"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -27,23 +27,22 @@ V tomto článku se dozvíte, jak:
 - Nastavte skupinu ochrany, která obsahuje virtuální počítače VMware, které chcete zálohovat, zadejte nastavení zálohování a naplánujte zálohování.
 
 ## <a name="before-you-start"></a>Než začnete
+
 - Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro záložní verze 6,5, 6,0 a 5,5.
 - Ujistěte se, že jste nastavili Azure Backup Server. Pokud jste to ještě neudělali, [udělejte to předtím,](backup-azure-microsoft-azure-backup.md) než začnete. Měli byste používat Azure Backup Server s nejnovějšími aktualizacemi.
-
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Vytvoření zabezpečeného připojení k vCenter Server
 
 Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomocí protokolu HTTPS. Pokud chcete nastavit připojení HTTPS, Stáhněte si certifikát certifikační autority (CA) VMware a naimportujte ho na Azure Backup Server.
 
-
-### <a name="before-you-start"></a>Než začnete
+### <a name="before-you-begin"></a>Než začnete
 
 - Pokud nechcete používat protokol HTTPS, můžete [zakázat ověřování certifikátu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
-- Obvykle se připojujete z prohlížeče na Azure Backup Server počítači k serveru vCenter/ESXi pomocí webového klienta vSphere. Když to uděláte poprvé, připojení se nebezpečí a zobrazí se následující.
+- Obvykle se připojujete z prohlížeče na Azure Backup Server počítači k serveru vCenter/ESXi pomocí webového klienta vSphere. Když to uděláte poprvé, připojení není zabezpečené a zobrazí se následující.
 - Je důležité pochopit, jak Azure Backup Server zpracovává zálohy.
-    - V prvním kroku Azure Backup Server zálohují data na místní diskové úložiště. Azure Backup Server používá fond úložiště, sadu disků a svazků, na kterých Azure Backup Server ukládá body obnovení disku pro chráněná data. Fond úložiště může být přímo připojený k úložišti (DAS), síti SAN s technologií Fibre Channel nebo úložnému zařízení iSCSI nebo SAN. Je důležité zajistit, abyste měli dostatečné úložiště pro místní zálohování dat virtuálních počítačů VMware.
-    - Azure Backup Server pak zálohuje úložiště místního disku do Azure.
-    - [Získejte pomoc](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) , jak zjistit, kolik úložného prostoru potřebujete. Informace jsou určeny pro aplikaci DPM, ale lze je použít také pro Azure Backup Server.
+  - V prvním kroku Azure Backup Server zálohují data na místní diskové úložiště. Azure Backup Server používá fond úložiště, sadu disků a svazků, na kterých Azure Backup Server ukládá body obnovení disku pro chráněná data. Fond úložiště může být přímo připojený k úložišti (DAS), síti SAN s technologií Fibre Channel nebo úložnému zařízení iSCSI nebo SAN. Je důležité zajistit, abyste měli dostatečné úložiště pro místní zálohování dat virtuálních počítačů VMware.
+  - Azure Backup Server pak zálohuje úložiště místního disku do Azure.
+  - [Získejte pomoc](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) , jak zjistit, kolik úložného prostoru potřebujete. Informace jsou určeny pro aplikaci DPM, ale lze je použít také pro Azure Backup Server.
 
 ### <a name="set-up-the-certificate"></a>Nastavení certifikátu
 
@@ -67,42 +66,38 @@ Zabezpečený kanál nastavte následujícím způsobem:
    - Soubor kořenového certifikátu s příponou začínající číslovanou sekvencí, například. 0 a. 1.
    - Soubor CRL má příponu, která začíná sekvencí, jako je například. r0 nebo. R1. Soubor CRL je přidružený k certifikátu.
 
-     ![Stažené certifikáty](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+         ![Downloaded certificates](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
-5. Ve složce **certifikáty** klikněte pravým tlačítkem na soubor kořenového certifikátu > **Přejmenovat**.
+6. Ve složce **certifikáty** klikněte pravým tlačítkem na soubor kořenového certifikátu > **Přejmenovat**.
 
     ![Přejmenovat kořenový certifikát](./media/backup-azure-backup-server-vmware/rename-cert.png)
 
-6. Změňte rozšíření kořenového certifikátu na. CRT a potvrďte ho. Ikona souboru se změní na jednu, která představuje kořenový certifikát.
+7. Změňte rozšíření kořenového certifikátu na. CRT a potvrďte ho. Ikona souboru se změní na jednu, která představuje kořenový certifikát.
 
-7. Klikněte pravým tlačítkem na kořenový certifikát a v místní nabídce vyberte **nainstalovat certifikát**.
+8. Klikněte pravým tlačítkem na kořenový certifikát a v místní nabídce vyberte **nainstalovat certifikát**.
 
-8. V **Průvodci importem certifikátu**vyberte jako cíl pro certifikát **místní počítač** a pak klikněte na **Další**. Potvrďte, jestli se vám zobrazí dotaz, jestli chcete v počítači povolené změny.
+9. V **Průvodci importem certifikátu**vyberte jako cíl pro certifikát **místní počítač** a pak klikněte na **Další**. Potvrďte, jestli se vám zobrazí dotaz, jestli chcete v počítači povolené změny.
 
     ![Vítá vás Průvodce](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
+10. Na stránce **úložiště certifikátů** vyberte možnost **všechny certifikáty umístit v následujícím úložišti**a pak klikněte na tlačítko **Procházet** a vyberte úložiště certifikátů.
 
-9. Na stránce **úložiště certifikátů** vyberte možnost **všechny certifikáty umístit v následujícím úložišti**a pak klikněte na tlačítko **Procházet** a vyberte úložiště certifikátů.
+         ![Certificate storage](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-     ![Úložiště certifikátů](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-10. V části **vybrat úložiště certifikátů**jako cílovou složku pro certifikáty vyberte **Důvěryhodné kořenové certifikační autority** a pak klikněte na **OK**.
+11. V části **vybrat úložiště certifikátů**jako cílovou složku pro certifikáty vyberte **Důvěryhodné kořenové certifikační autority** a pak klikněte na **OK**.
 
     ![Cílová složka certifikátu](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-11. V části **dokončení Průvodce importem certifikátu**ověřte složku a pak klikněte na **Dokončit**.
+12. V části **dokončení Průvodce importem certifikátu**ověřte složku a pak klikněte na **Dokončit**.
 
     ![Ověřte, jestli je certifikát ve správné složce.](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
-
-12. Po potvrzení importu certifikátu se přihlaste k vCenter Server a ověřte, že je připojení zabezpečené.
-
-
-
+13. Po potvrzení importu certifikátu se přihlaste k vCenter Server a ověřte, že je připojení zabezpečené.
 
 ### <a name="disable-https-certificate-validation"></a>Zakázat ověřování certifikátu HTTPS
 
-Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používat protokol HTTPS mezi servery VMware a Azure Backup Serverm počítačem, zakažte protokol HTTPS následujícím způsobem: 
+Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používat protokol HTTPS mezi servery VMware a Azure Backup Serverm počítačem, zakažte protokol HTTPS následujícím způsobem:
+
 1. Zkopírujte následující text do souboru. txt a vložte ho do něj.
 
       ```text
@@ -115,7 +110,6 @@ Pokud máte v rámci vaší organizace zabezpečený rozsah a nechcete používa
 
 3. Dvojím kliknutím na soubor aktivujte položku registru.
 
-
 ## <a name="create-a-vmware-role"></a>Vytvoření role VMware
 
 Azure Backup Server potřebuje uživatelský účet s oprávněními pro přístup k serveru v-Center nebo hostiteli ESXi. Vytvořte roli VMware s konkrétními oprávněními a pak přidružte uživatelský účet k roli.
@@ -125,44 +119,41 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
     ![Správa](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. V části**role** **pro správu** > klikněte na ikonu Přidat roli (symbol +).
+3. V části **Správa** **rolí** >  klikněte na ikonu Přidat roli (symbol +).
 
     ![Přidat roli](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-
-4. Do**název role** **Vytvoření** > role zadejte *BackupAdminRole*. Název role může být libovolný, ale měl by být rozpoznatelný pro účel role.
+4. V @no__t **vytvořit roli** **název role**-1 zadejte *BackupAdminRole*. Název role může být libovolný, ale měl by být rozpoznatelný pro účel role.
 
 5. Vyberte oprávnění shrnutá v následující tabulce a pak klikněte na **OK**.  Nová role se zobrazí v seznamu na panelu **role** .
    - Kliknutím na ikonu vedle nadřazeného popisku rozbalte nadřazenou položku a zobrazte podřízená oprávnění.
    - Pokud chcete vybrat oprávnění VirtualMachine, musíte přejít na několik úrovní v nadřazené hierarchii podřízenosti.
    - V rámci nadřazeného oprávnění nemusíte vybírat všechna podřízená oprávnění.
 
-     ![Nadřazená podřízená hierarchie oprávnění](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+             ![Parent child privilege hierarchy](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Oprávnění role
-**verze 6.5/6.0** | **5.5**
+
+**verze 6.5/6.0** | **5,5**
 --- | ---
 Úložiště dat. AllocateSpace | Úložiště dat. AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Síť. přiřadit
+Global. ManageCustomFields | Global. ManageCustomFields
+Global. SetCustomField |
+Host. Local. CreateVM | Síť. přiřadit
 Síť. přiřadit |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk   
+Resource. AssignVMToPool |
+VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
 VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
+VirtualMachine. config. sledování změn ve| VirtualMachine. config. sledování změn ve
 VirtualMachine. config. HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
+VirtualMachine. config. QueryUnownedFiles |
+VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
+VirtualMachine. interaktivně. stavu poweroff| VirtualMachine. interaktivně. stavu poweroff
+VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
+VirtualMachine. Provisioning. DiskRandomAccess |
+VirtualMachine. Provisioning. DiskRandomRead | VirtualMachine. Provisioning. DiskRandomRead
+VirtualMachine. State. CreateSnapshot | VirtualMachine. State. CreateSnapshot
 VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
-
-
-
 
 ## <a name="create-a-vmware-account"></a>Vytvoření účtu VMware
 
@@ -172,21 +163,17 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
     Zobrazí se panel **Uživatelé a skupiny vCenter** .
 
-
 2. Na panelu **Uživatelé a skupiny vCenter** vyberte kartu **Uživatelé** a potom klikněte na ikonu Přidat uživatele (symbol +).
 
-     ![panel Uživatelé a skupiny vCenter](./media/backup-azure-backup-server-vmware/usersandgroups.png)
-
+         ![vCenter Users and Groups panel](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. V dialogovém okně **Nový uživatel** přidejte informace o uživateli > **OK**. V tomto postupu je uživatelské jméno BackupAdmin.
 
     ![Nový uživatel – dialogové okno](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-
 4. Chcete-li přidružit uživatelský účet k roli, klikněte na panelu **navigátor** na možnost **globální oprávnění**. Na panelu **globální oprávnění** vyberte kartu **Spravovat** a potom klikněte na ikonu Přidat (symbol +).
 
     ![Panel globálních oprávnění](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
-
 
 5. V části **globální oprávnění root – přidat oprávnění**klikněte na tlačítko **Přidat** a vyberte uživatele nebo skupinu.
 
@@ -196,26 +183,21 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
     ![Přidat uživatele BackupAdmin](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-
-7.  V poli **přiřazená role**v rozevíracím seznamu vyberte **BackupAdminRole** > **OK**.
+7. V poli **přiřazená role**v rozevíracím seznamu vyberte **BackupAdminRole** > **OK**.
 
     ![Přiřazení uživatele k roli](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
-
 Na kartě **Spravovat** na panelu **globální oprávnění** se v seznamu zobrazí nový uživatelský účet a přidružená role.
 
-
 ## <a name="add-the-account-on-azure-backup-server"></a>Přidat účet na Azure Backup Server
-
 
 1. Otevřete Azure Backup Server. Pokud ikonu na ploše nemůžete najít, otevřete Microsoft Azure Backup ze seznamu aplikací.
 
     ![Ikona Azure Backup Server](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. V konzole Azure Backup Server klikněte na **Správa** >  **provozní servery** > **Spravovat VMware**.
+2. V konzole Azure Backup Server klikněte na **správa** >  **produkční servery** > **Spravovat VMware**.
 
     ![Konzola Azure Backup Server](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
-
 
 3. V dialogovém okně **Spravovat pověření** klikněte na tlačítko **Přidat**.
 
@@ -229,20 +211,17 @@ Na kartě **Spravovat** na panelu **globální oprávnění** se v seznamu zobra
 
     ![Dialogové okno Azure Backup Server Správa přihlašovacích údajů](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
-
 ## <a name="add-the-vcenter-server"></a>Přidat vCenter Server
 
 Přidejte vCenter Server do Azure Backup Server.
 
-
-1. V konzole Azure Backup Server klikněte na **Správa** > **provozní servery** > **Přidat**.
+1. V konzole Azure Backup Server klikněte na **správa** > **produkční servery** > **Přidat**.
 
     ![Průvodce přidáním provozního serveru](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
+2. V **Průvodci přidáním provozního serveru** > **Vyberte stránku typ provozního serveru** , vyberte **servery VMware**a pak klikněte na **Další**.
 
-2.  > V **Průvodci přidáním provozního serveru** **Vyberte stránku typ provozního serveru** , vyberte **servery VMware**a pak klikněte na **Další**.
-
-     ![Průvodce přidáním provozního serveru](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+         ![Production Server Addition Wizard](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. V části **Vybrat počítače**  **název serveru/IP adresa**zadejte plně kvalifikovaný název domény nebo IP adresu serveru VMware. Pokud jsou všechny servery ESXi spravované stejným serverem vCenter, zadejte název vCenter. V opačném případě přidejte hostitele ESXi.
 
@@ -254,7 +233,7 @@ Přidejte vCenter Server do Azure Backup Server.
 
     ![Zadat přihlašovací údaje](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Pak klikněte na tlačítko **Další**.
+6. Kliknutím na **Přidat** přidejte server VMware do seznamu servery. Pak klikněte na **Další**.
 
     ![Přidat server VMWare a přihlašovací údaje](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -268,13 +247,9 @@ Přidejte vCenter Server do Azure Backup Server.
 
 Pokud máte více hostitelů ESXi, které nejsou spravovány serverem vCenter nebo máte více instancí vCenter Server, je nutné znovu spustit průvodce a přidat servery.
 
-
-
-
 ## <a name="configure-a-protection-group"></a>Konfigurace skupiny ochrany
 
 Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shromažďují více virtuálních počítačů a používají stejná nastavení pro uchovávání dat a zálohování u všech virtuálních počítačů ve skupině.
-
 
 1. V konzole Azure Backup Server klikněte na **ochrana**> **Nový**.
 
@@ -286,15 +261,14 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
 1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a potom klikněte na **Další**. Zobrazí se stránka **Vybrat členy skupiny** .
 
-1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na tlačítko **Další**.
+1. V části **Vybrat členy skupiny**vyberte virtuální počítače (nebo složky VM), které chcete zálohovat. Pak klikněte na **Další**.
 
     - Když vyberete složku nebo virtuální počítače nebo složky v této složce jsou také vybrány pro zálohování. Můžete zrušit kontrolu složek nebo virtuálních počítačů, které nechcete zálohovat.
 1. Pokud je už virtuální počítač nebo složka zálohovaný, nemůžete ho vybrat. Tím je zajištěno, že pro virtuální počítač nejsou vytvořeny duplicitní body obnovení.
 
-     ![Vybrat členy skupiny](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+         ![Select group members](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-
-1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Pak klikněte na tlačítko **Další**.
+1. Na stránce **Vybrat způsob ochrany dat** zadejte název skupiny ochrany a nastavení ochrany. Pokud chcete zálohovat do Azure, nastavte krátkodobou ochranu na **disk** a povolte online ochranu. Pak klikněte na **Další**.
 
     ![Vyberte způsob ochrany dat](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -305,52 +279,51 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
        - Krátkodobé zálohy jsou úplné zálohy a nejsou přírůstkově.
        - Klikněte na **Upravit** a změňte časy a data, kdy dojde k krátkodobému zálohování.
 
-     ![Zadat krátkodobé cíle](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![Zadat krátkodobé cíle](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. V části **Kontrola přidělení disku**Zkontrolujte místo na disku, které je k dispozici pro zálohování virtuálních počítačů. pro virtuální počítače.
 
    - Doporučené přidělení disku vychází z rozsahu uchování, který jste zadali, typu úlohy a velikosti chráněných dat. Proveďte požadované změny a potom klikněte na tlačítko **Další**.
    - **Velikost dat:** Velikost dat ve skupině ochrany.
    - **Místo na disku:** Doporučená velikost místa na disku pro skupinu ochrany. Pokud chcete toto nastavení změnit, měli byste přidělit celkové místo, které je mírně větší než množství odhadu jednotlivých zdrojů dat.
-   - **Společně najít data:** Pokud zapnete společné umístění, může být více zdrojů dat v ochraně namapováno na jednu repliku a svazek bodu obnovení. Společné umístění se nepodporuje pro všechny úlohy.
+   - Společně **najít data:** Pokud zapnete společné umístění, může být více zdrojů dat v ochraně namapováno na jednu repliku a svazek bodu obnovení. Společné umístění se nepodporuje pro všechny úlohy.
    - **Automaticky rozšiřovat:** Pokud zapnete toto nastavení, když data v chráněné skupině přesáhne počáteční přidělení, Azure Backup Server se pokusí zvětšit velikost disku o 25 procent.
    - **Podrobnosti fondu úložiště:** Zobrazuje stav fondu úložiště včetně celkové a zbývající velikosti disku.
 
-     ![Zkontrolovat přidělení disku](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+         ![Review disk allocation](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
 1. Na stránce **Vybrat způsob vytvoření repliky** určete, jak se má provést prvotní zálohování, a pak klikněte na **Další**.
    - Výchozí hodnota je **automaticky přes síť** a **nyní**.
    - Pokud použijete výchozí, doporučujeme zadat dobu mimo špičku. Zvolte **později** a zadejte den a čas.
    - U velkých objemů dat nebo méně optimálních síťových stavů zvažte replikaci dat offline pomocí vyměnitelného média.
 
-     ![Výběr metody vytvoření repliky](./media/backup-azure-backup-server-vmware/replica-creation.png)
+         ![Choose replica creation method](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Pak klikněte na tlačítko **Další**.
+1. V **Možnosti kontroly konzistence**vyberte, jak a kdy se mají automatizovat kontroly konzistence. Pak klikněte na **Další**.
       - Můžete spouštět kontroly konzistence, když se data repliky neshodují, nebo podle nastaveného plánu.
       - Pokud nechcete konfigurovat automatické kontroly konzistence, můžete spustit ruční kontrolu. Provedete to tak, že kliknete pravým tlačítkem na skupinu ochrany > **provést kontrolu konzistence**.
 
-1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Pak klikněte na tlačítko **Další**.
+1. Na stránce **zadat data online ochrany** vyberte virtuální počítače nebo složky virtuálních počítačů, které chcete zálohovat. Můžete vybrat členy jednotlivě nebo kliknout na **Vybrat vše** pro výběr všech členů. Pak klikněte na **Další**.
 
-      ![Zadat data online ochrany](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+          ![Specify online protection data](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Na stránce **zadat plán online zálohování** určete, jak často chcete zálohovat data z místního úložiště do Azure.
 
-    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Pak klikněte na tlačítko **Další**.
+    - Body obnovení cloudu pro data budou vygenerovány podle plánu. Pak klikněte na **Další**.
     - Po vygenerování bodu obnovení se přenese do trezoru Recovery Services v Azure.
 
-      ![Zadat plán online zálohování](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+          ![Specify online backup schedule](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Na stránce **zadat zásady uchovávání online** určete, jak dlouho chcete zachovat body obnovení vytvořené z denních, týdenních nebo měsíčních záloh do Azure. pak klikněte na **Další**.
+1. Na stránce **zadat zásady uchovávání online** určete, jak dlouho chcete zachovat body obnovení vytvořené z denních, týdenních nebo měsíčních záloh do Azure. Pak klikněte na **Další**.
 
     - Neexistují žádná časová omezení, jak dlouho můžete uchovávat data v Azure.
     - Jediným omezením je, že nemůžete mít více než 9999 bodů obnovení na chráněnou instanci. V tomto příkladu je chráněná instance serverem VMware.
 
-      ![Zadat zásady uchovávání informací online](./media/backup-azure-backup-server-vmware/retention-policy.png)
-
+          ![Specify online retention policy](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 1. Na stránce **Souhrn** zkontrolujte nastavení a klikněte na **vytvořit skupinu**.
 
-     ![Souhrn a nastavení člena skupiny ochrany](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+         ![Protection group member and setting summary](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
@@ -360,19 +333,28 @@ Pokud chcete zálohovat vSphere 6,7, udělejte toto:
   >[!Note]
   >VMWare 6,7 a vyšší povolily TLS jako komunikační protokol.
 
-- Klíče registru nastavte takto:  
+- Klíče registru nastavte takto:
 
-  Editor registru systému Windows verze 5,00
+```text
+ Windows Registry Editor Version 5.00
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v2.0.50727] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v2.0.50727] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 s"SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete řešit problémy při nastavování záloh, přečtěte si [příručku pro řešení potíží pro Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

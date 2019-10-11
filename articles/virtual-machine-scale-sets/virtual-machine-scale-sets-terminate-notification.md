@@ -3,7 +3,7 @@ title: Ukončit oznámení pro instance sady škálování virtuálních počít
 description: Naučte se, jak povolit koncová oznámení pro instance sady škálování virtuálních počítačů Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
-ms.author: manayar
-ms.openlocfilehash: de303032fcbbde30534c802e3d5185aedf05cb98
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.author: vashan
+ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076235"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264679"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Ukončit oznámení pro instance sady škálování virtuálních počítačů Azure (Preview)
 Instance sady škálování můžou vyjádřit výslovný souhlas s přijetím oznámení o ukončení instance a nastavením předem definovaného časového limitu prodlevy na operaci ukončení. Oznámení ukončení se odesílá prostřednictvím služby Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), která poskytuje oznámení a zpoždění ovlivněných operací, jako je třeba restartování a opětovné nasazení. Řešení Preview přidá další událost – ukončit – do seznamu Scheduled Events a přidružená prodleva události ukončení bude záviset na limitu zpoždění zadaného uživateli ve svých konfiguracích modelu sady škálování.
@@ -29,8 +29,8 @@ Po zaregistrování do funkce nemusí instance sady škálování čekat na vypr
 
 > [!IMPORTANT]
 > Oznámení ukončení pro instance sady škálování je momentálně v Public Preview. K používání funkcí veřejné verze Preview popsaných níže není nutné žádné výslovné pokyny.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
+> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 ## <a name="enable-terminate-notifications"></a>Povolit ukončení oznámení
 Existuje několik způsobů, jak povolit koncová oznámení na instancích sady škálování, jak je popsáno v následujících příkladech.
@@ -109,7 +109,7 @@ Pokud instance sady škálování nevytváří požadavek na 24 hodin, je Schedu
 Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je Metadata Service k dispozici ze statické IP adresy, která není směrovatelný, 169.254.169.254.
 
 Úplný koncový bod pro nejnovější verzi Scheduled Events pro tuto verzi Preview:
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+> ' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="query-response"></a>Odpověď na dotaz
 Odpověď obsahuje pole naplánovaných událostí. Prázdné pole znamená, že aktuálně nejsou naplánovány žádné události.
@@ -166,10 +166,10 @@ Pokud se zobrazí chyba "důvodu chybného požadavku" s chybovou zprávou "neby
 
 ### <a name="failure-to-get-terminate-events"></a>Nepovedlo se získat události ukončení.
 Pokud nezískáváte žádné události **ukončení** prostřednictvím Scheduled Events, zkontrolujte verzi rozhraní API, která se používá pro získání událostí. Pro události ukončení se vyžaduje Metadata Service rozhraní API verze **2019-01-01** nebo vyšší.
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+>' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Získání události ukončení s nesprávným NotBefore časem  
 Po povolení *scheduledEventsProfile* v modelu sady škálování a nastavení *notBeforeTimeout*aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , aby se změny projevily.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Naučte se, jak [nasadit vaši aplikaci do služby](virtual-machine-scale-sets-deploy-app.md) Virtual Machine Scale Sets.

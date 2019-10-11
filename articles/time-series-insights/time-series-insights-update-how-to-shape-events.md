@@ -1,5 +1,5 @@
 ---
-title: Obrazce událostí pomocí Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+title: Události obrazce s Azure Time Series Insights Preview | Microsoft Docs
 description: Pochopte, jak pomocí Azure Time Series Insights ve verzi Preview přetvarovat události.
 author: ashannon7
 ms.author: dpalled
@@ -10,37 +10,37 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1eb0d7450e1a7f263f29b8d4657547dd85d4276
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ed0594373c8702ab01b50facaf0ef5ece2d6c7e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883292"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274273"
 ---
-# <a name="shape-events-with-azure-time-series-insights-preview"></a>Tvar událostí pomocí Azure čas Series Insights ve verzi Preview
+# <a name="shape-events-with-azure-time-series-insights-preview"></a>Události obrazce s Azure Time Series Insights Preview
 
-Tento článek pomáhá utvářet souboru JSON pro maximalizaci efektivity vašich dotazů Azure čas Series Insights ve verzi Preview.
+Tento článek vám pomůže tvarovat soubor JSON, aby se maximalizovala efektivita vašich Azure Time Series Insights dotazů ve verzi Preview.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Zamyslete se nad tím, jak odesíláte události do Time Series Insights ve verzi Preview. Konkrétně měli byste vždy:
+Zamyslete se nad tím, jak odesíláte události do Time Series Insights ve verzi Preview. Konkrétně byste měli:
 
-* co možná posílat data přes síť.
-* Store vaše data způsobem, který umožňuje agregovat více vhodnou pro váš scénář.
+* Co nejefektivněji odesílejte data přes síť.
+* Uložte si data způsobem, který vám pomůže ho agregovat lépe pro váš scénář.
 
-Pro zajištění nejlepšího výkonu dotazů postupujte takto:
+Pro nejlepší možný výkon dotazů udělejte toto:
 
-* Neposílat zbytečné vlastnosti. Čas Series Insights ve verzi Preview účtuje poplatky na použití. Doporučujeme ukládat a zpracovávat data, která budete dotazovat.
-* Pomocí pole instancí pro statická data. Tento postup umožňuje vyhnout se odesílat statická data přes síť. Pole instancí, součást modelu časové řady, funguje jako referenční data v Time Series Insights všeobecně dostupná služba. Další informace o poli instance najdete v tématu [čas řady modely](./time-series-insights-update-tsm.md).
-* Sdílení vlastností dimenze mezi dva nebo více událostí. Tento postup pomáhá efektivněji posílat data přes síť.
-* Nepoužívejte vnoření hloubkové pole. Time Series Insights Preview podporuje až dvě úrovně vnořených polí, která obsahují objekty. Čas Series Insights ve verzi Preview sloučí pole zpráv do více událostí pomocí dvojice vlastnost.
-* Pokud jenom pár opatření existovat pro všechny nebo většina události, je lepší odesílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí.
+* Neodesílat nepotřebné vlastnosti. Ve verzi Preview se vám na používání vyTime Series Insights. Je nejvhodnější ukládat a zpracovávat data, která budete dotazovat.
+* Použijte pole instance pro statická data. Tento postup vám pomůže vyhnout se posílání statických dat přes síť. Pole instancí, součást modelu časové řady, funguje jako referenční data v Time Series Insights všeobecně dostupná služba. Další informace o polích instance najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md).
+* Sdílení vlastností dimenze mezi dvěma nebo více událostmi. Tento postup vám pomůže rychleji odesílat data z sítě.
+* Nepoužívejte vnořování hlubokých polí. Time Series Insights Preview podporuje až dvě úrovně vnořených polí, která obsahují objekty. Time Series Insights Preview sloučí pole ve zprávách do více událostí s páry hodnot vlastností.
+* Pokud pro všechny nebo většinu událostí existuje jenom několik měr, je lepší posílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí.
 
 ## <a name="example"></a>Příklad
 
-Následující příklad je založen na scénář, kde dva nebo více zařízení odesílají měření nebo signálů. Měření nebo signály mohou být *průtokové rychlosti*, *tlak*v oleji, *teplota*a *vlhkost*v motoru.
+Následující příklad je založen na scénáři, kdy dvě nebo více zařízení odesílá měření nebo signály. Měření nebo signály mohou být *průtokové rychlosti*, *tlak v oleji*, *teplota*a *vlhkost*v motoru.
 
-V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílený oddíl běžných hodnot dimenzí. Vnější pole používá data Instance řady čas ke zvýšení efektivity zprávy. Instance řady času obsahuje metadata zařízení, která se nemění podle každé události, ale nabízí užitečné vlastnosti pro analýzu dat. Pokud chcete uložit v bajtech odeslaných přenosu a zefektivnit zprávy, vezměte v úvahu dávkování běžné hodnoty dimenze a použití Instance řady čas metadat.
+V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílený oddíl běžných hodnot dimenzí. Vnější pole používá data instance časové řady k zvýšení efektivity zprávy. Instance časové řady obsahuje metadata zařízení, která se nemění u každé události, ale poskytuje užitečné vlastnosti pro analýzu dat. Pokud chcete ušetřit bajty odeslané přes vodiče a zvýšit efektivitu zprávy, zvažte dávkování běžných hodnot dimenzí a využití metadat instance časových řad.
 
 ### <a name="example-json-payload"></a>Příklad datové části JSON
 
@@ -73,9 +73,9 @@ V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vn�
 ]
 ```
 
-### <a name="time-series-instance"></a>Instance řady čas 
+### <a name="time-series-instance"></a>Instance časové řady 
 > [!NOTE]
-> Je čas řady ID *deviceId*.
+> ID časové řady je *deviceId*.
 
 ```JSON
 {
@@ -108,26 +108,26 @@ V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vn�
   },
 ```
 
-Čas Series Insights ve verzi Preview spojuje tabulku (po sloučení) během doby dotazu. Tabulka obsahuje další sloupce, jako například **typ**. Následující příklad ukazuje, jak můžete [tvarovat](./time-series-insights-send-events.md#json) data telemetrie.
+Time Series Insights Preview se v průběhu dotazu spojí s tabulkou (po sloučení). Tabulka obsahuje další sloupce, například **typ**. Následující příklad ukazuje, jak můžete [tvarovat](./time-series-insights-send-events.md#supported-json-shapes) data telemetrie.
 
-| deviceId  | Typ | L1 | L2 | časové razítko | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
+| deviceId  | Typ | L1 | Paměť | časové razítko | řadu. Rychlost toku ft3/s | řadu. Psí tlak v oleji motoru |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| `FXXX` | Default_Type | SIMULÁTOR | Systémové baterie | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
-| `FXXX` | Default_Type | SIMULÁTOR |   Systémové baterie |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
-| `FYYY` | BĚŽNÉ LINE_DATA | SIMULÁTOR |    Systémové baterie |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
+| `FXXX` | Default_Type | SIMULÁTOR | Systém baterie | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34,7 |
+| `FXXX` | Default_Type | SIMULÁTOR |   Systém baterie |    2018-01-17T01:17:00Z | 2.445906400680542 |  49,2 |
+| `FYYY` | LINE_DATA SPOLEČNÉ | SIMULÁTOR |    Systém baterie |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22,2 |
 
-V předchozím příkladu mějte na paměti následující body:
+V předchozím příkladu si všimněte následujících bodů:
 
-* Statické vlastnosti se ukládají v čase Series Insights ve verzi Preview pro optimalizaci dat posílaných prostřednictvím sítě.
+* Statické vlastnosti jsou uložené v Time Series Insights Preview pro optimalizaci dat odesílaných přes síť.
 * Data ve verzi Preview Time Series Insights jsou připojena v době dotazu pomocí ID časové řady, které je definováno v instanci.
-* Používají se dvě vrstvy vnoření, což je maximum, který podporuje čas Series Insights ve verzi Preview. Je důležité, aby se zabránilo hluboce vnořených polí.
-* Protože existuje pár opatření, odeslali jste jako samostatné vlastnosti v rámci stejného objektu. V tomto příkladu **řady. Tok míra psi**, **řady. Modul ropy tlak psi**, a **řady. Tok ft3 sazba za sekundu** jedinečných sloupců.
+* Používají se dvě vrstvy vnoření, což je maximum, které podporuje Time Series Insights Preview. Je důležité vyhnout se hluboko vnořeným polím.
+* Vzhledem k tomu, že existuje několik opatření, jsou odesílána jako samostatné vlastnosti v rámci stejného objektu. V příkladu **Series. Psí Flow**, **řady. Psí zatížení motoru**a **řady. Ft3/s míry toku** jsou jedinečné sloupce.
 
 >[!IMPORTANT]
 > Pole instance nejsou uložena s telemetrie. Ukládají se s metadaty v **modelu časové řady**.
-> V předchozí tabulce představuje zobrazení dotazu.
+> Předchozí tabulka představuje zobrazení dotazu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Tyto pokyny převést do praxe, naleznete v tématu [syntaxe dotazů Azure čas Series Insights ve verzi Preview](./time-series-insights-query-data-csharp.md). Dozvíte se, že informace o syntaxi dotazů pro data, času Series Insights ve verzi Preview přístup k rozhraní REST API.
-- Další informace o podporované tvary JSON najdete v tématu [tvary JSON nepodporuje](./time-series-insights-send-events.md#json).
+- Chcete-li tyto pokyny do praxe umístit, přečtěte si článek [syntaxe dotazu Azure Time Series Insights Preview](./time-series-insights-query-data-csharp.md). Přečtěte si další informace o syntaxi dotazu pro Time Series Insights REST API pro přístup k datům ve verzi Preview.
+- Další informace o podporovaných tvarech JSON najdete v tématu [podporované tvary JSON](./time-series-insights-send-events.md#supported-json-shapes).

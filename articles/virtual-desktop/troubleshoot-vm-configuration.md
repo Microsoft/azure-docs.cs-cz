@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841296"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274486"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -296,13 +296,13 @@ Pokud používáte operační systém Microsoft Windows 10, pokračujte podle n�
 
 16. Po spuštění rutin restartujte virtuální počítač s nefunkčním zásobníkem souběžného nasdílení.
 
-## <a name="remote-licensing-model-isnt-configured"></a>Model vzdálených licencování není nakonfigurovaný.
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Režim licencování vzdálené plochy není nakonfigurovaný.
 
 Pokud se přihlásíte k používání více relací s Windows 10 Enterprise pomocí účtu správce, může se vám zobrazit oznámení, že "režim licencování vzdálené plochy není nakonfigurovaný, služba Vzdálená plocha přestane během X dnů fungovat. Na serveru zprostředkovatele připojení použijte Správce serveru k určení režimu licencování vzdálené plochy. "
 
 Pokud časový limit vyprší, zobrazí se chybová zpráva oznamující, že Vzdálená relace byla odpojena, protože pro tento počítač nejsou k dispozici žádné licence pro klientský přístup k vzdálené ploše.
 
-Pokud se zobrazí některá z těchto zpráv, znamená to, že musíte otevřít Editor Zásady skupiny a ručně nakonfigurovat režim licencování na **uživatele**. Ruční proces konfigurace se liší v závislosti na verzi Windows 10 Enterprise multi-session, kterou používáte. V následujících částech se dozvíte, jak ověřit číslo verze a jak pro ně dělat.
+Pokud se zobrazí některá z těchto zpráv, znamená to, že image nemá nainstalované nejnovější aktualizace Windows nebo že nastavujete režim licencování vzdálené plochy na **uživatele**. Odeberte všechny konfigurace, které tuto zásadu nastavují, a pak postupujte podle pokynů k identifikaci verze Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.  
 
 >[!NOTE]
 >Virtuální desktop Windows vyžaduje jenom licenci CAL pro klientský přístup (CAL), pokud fond hostitelů obsahuje hostitele relací Windows serveru. Informace o tom, jak nakonfigurovat licence VP CAL, najdete v článku o [licenci nasazení služby Vzdálená plocha pomocí licencí pro klientský přístup](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
@@ -322,50 +322,11 @@ Teď, když znáte číslo verze, přejděte k příslušné části.
 
 ### <a name="version-1809"></a>Verze 1809
 
-Pokud číslo vaší verze říká 1809, můžete buď upgradovat na Windows 10 Enterprise multi-session, verze 1903 nebo nasadit fond hostitelů s nejnovější imagí.
-
-Upgrade na Windows 10 verze 1903:
-
-1. Pokud jste to ještě neudělali, Stáhněte a nainstalujte [Windows 10 květen 2019 Update](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
-2. Přihlaste se k počítači pomocí účtu správce.
-3. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-4. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
-5. Vyberte **nastavit režim licencování vzdálené plochy**.
-6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro server Hostitel relace VP pro **jednotlivé uživatele**, jak je znázorněno na následujícím obrázku.
-    
-    ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
-
-7. Vyberte **Použít**.
-8. Vyberte **OK**.
-9.  Restartujte počítač.
-
-Postup opětovného nasazení fondu hostitelů s nejnovější imagí:
-
-1. Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure Marketplace,](create-host-pools-azure-marketplace.md) dokud nebudete vyzváni k výběru verze operačního systému imagí. Můžete zvolit jednu relaci Windows 10 Enterprise s více relacemi s nebo bez Office 365 ProPlus.
-2. Přihlaste se k počítači pomocí účtu správce.
-3. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-4. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
-5. Vyberte **nastavit režim licencování vzdálené plochy**.
-6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro hostitel relace VP server pro **jednotlivé uživatele**.
-7. Vyberte **Použít**.
-8. Vyberte **OK**.
-9.  Restartujte počítač.
+Pokud číslo verze říká 1809, nainstalujte [aktualizaci KB4516077](https://support.microsoft.com/help/4516077).
 
 ### <a name="version-1903"></a>Verze 1903
 
-Pokud číslo vaší verze říká "1903", postupujte podle těchto pokynů:
-
-1. Přihlaste se k počítači pomocí účtu správce.
-2. Spusťte příkaz **gpedit. msc** a otevřete Editor Zásady skupiny.
-3. V části Konfigurace počítače klikněte na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování**.
-4. Vyberte **nastavit režim licencování vzdálené plochy**.
-6. V okně, které se otevře, vyberte nejdřív možnost **povoleno**a potom v části Možnosti zadejte režim licencování pro server Hostitel relace VP pro **jednotlivé uživatele**, jak je znázorněno na následujícím obrázku.
-    
-    ![Snímek obrazovky s oknem nastavit režim licencování vzdálené plochy, který je nakonfigurovaný podle pokynů v kroku 6.](media/group-policy-editor-per-user.png)
-
-7. Vyberte **Použít**.
-8. Vyberte **OK**.
-9.  Restartujte počítač.
+Pokud číslo verze říká 1903, nainstalujte [aktualizaci KB4517211](https://support.microsoft.com/help/4517211).
 
 ## <a name="next-steps"></a>Další kroky
 

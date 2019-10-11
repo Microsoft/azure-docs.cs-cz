@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 12/18/2018
-ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/10/2019
+ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568603"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264233"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 
@@ -33,7 +33,7 @@ Stáhněte si a spusťte [ukázku Začínáme s nástroji pro elastic Database](
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvoření správce map horizontálních oddílů pomocí ukázkové aplikace
 Tady vytvoříte správce map horizontálních oddílů spolu s několika horizontálních oddílůy, za kterými následuje vložení dat do horizontálních oddílů. Pokud už máte horizontálních oddílů nastavení s horizontálně dělené daty, můžete přeskočit následující kroky a přejít k další části.
 
-1. Sestavte a spusťte ukázkovou aplikaci **nástroje Začínáme s nástrojem elastic Database** . Postupujte podle kroků až do kroku 7 v části [Stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci kroku 7 se zobrazí následující příkazový řádek:
+1. Sestavte a spusťte ukázkovou aplikaci **nástroje Začínáme s elastic Database** , a to pomocí kroků v části článek [Stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1). Po dokončení všech kroků se zobrazí následující příkazový řádek:
 
     ![příkazový řádek][1]
 2. V příkazovém okně zadejte "1" a stiskněte klávesu **ENTER**. Tím se vytvoří správce map horizontálních oddílů a na server se přidá dva horizontálních oddílů. Pak zadejte "3" a stiskněte **ENTER**; Opakujte akci čtyřikrát. Tím se vloží vzorové datové řádky do horizontálních oddílů.
@@ -62,13 +62,13 @@ Používají se k připojení ke Správci map horizontálních oddílů a k hori
 1. Otevřete SQL Server Management Studio nebo SQL Server Data Tools v aplikaci Visual Studio.
 2. Připojte se k databázi ElasticDBQuery a spusťte následující příkazy T-SQL:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    uživatelské jméno a heslo by mělo být stejné jako přihlašovací informace používané v kroku 6 [ke stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v tématu [Začínáme s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
+    uživatelské jméno a heslo by se mělo shodovat s přihlašovacími údaji použitými v kroku 3 oddílu [Stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v článku **Začínáme s elastic Database Tools** .
 
 ### <a name="external-data-sources"></a>Externí zdroje dat
 Pokud chcete vytvořit externí zdroj dat, spusťte v databázi ElasticDBQuery tento příkaz:
@@ -114,7 +114,7 @@ Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů 
 3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server**.
 
    ![Import z jiných zdrojů z Excelu][5]
-4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na tlačítko **Další**.
+4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na **Další**.
 5. V dialogovém okně **Vyberte databázi**obsahující požadovaná data a vyberte databázi **ElasticDBQuery** .
 6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další**. Pak klikněte na **Dokončit**.
 7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu**vyberte **tabulka** a klikněte na tlačítko **OK**.
@@ -123,18 +123,18 @@ Všechny řádky z tabulky **Customers** uložené v různých horizontálních 
 
 Nyní můžete používat výkonné funkce pro vizualizaci dat v Excelu. Připojovací řetězec s názvem vašeho serveru, názvem databáze a přihlašovacími údaji můžete použít k propojení nástrojů pro integraci BI a dat s databází elastického dotazu. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Na databázi elastických dotazů a externích tabulkách můžete odkazovat stejně jako na jakékoli jiné SQL Server databáze a SQL Server tabulky, ke kterým se připojíte pomocí nástroje.
 
-### <a name="cost"></a>Náklady
+### <a name="cost"></a>Ze
 Pro použití funkce dotazu Elastic Database se neúčtují žádné další poplatky.
 
 Informace o cenách najdete v článku informace o [cenách SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přehled elastického dotazu najdete v tématu [Přehled elastického dotazu](sql-database-elastic-query-overview.md).
 * Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
-* Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu dotazování na [vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
+* Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
 * Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
-* V [tématu\_SP \_Execute Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
+* V tématu [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) najdete uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, které v horizontálním schématu dělení slouží jako horizontálních oddílů.
 
 
 <!--Image references-->

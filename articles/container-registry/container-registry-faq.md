@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827411"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264313"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -39,7 +39,7 @@ Ano. Podívejte se na dokumentaci z [TwistLock](https://www.twistlock.com/2016/1
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
-Přečtěte si dokumentaci k [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) a krokům pro [službu Azure Kubernetes](container-registry-auth-aks.md).
+Přečtěte si dokumentaci k [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) a krokům pro [službu Azure Kubernetes](../aks/cluster-container-registry-integration.md).
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Návody získat přihlašovací údaje správce pro registr kontejneru?
 

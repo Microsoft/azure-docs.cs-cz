@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001634"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263037"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager
 
@@ -35,6 +35,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | Důvodu chybného požadavku | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
 | Došlo | Požadujete operaci, která není v aktuálním stavu prostředku povolena. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při uvolnění virtuálního počítače. | |
 | DeploymentActiveAndUneditable | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
+| DeploymentFailedCleanUp | Při nasazení v režimu úplného se odstraní všechny prostředky, které nejsou v šabloně. Tato chyba se zobrazí, pokud nemáte dostatečná oprávnění k odstranění všech prostředků, které v šabloně nejsou. Chcete-li se této chybě vyhnout, změňte režim nasazení na přírůstkové. | [Režimy nasazení Azure Resource Manager](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | Název nasazení může obsahovat jenom písmena, číslice, znak "-", "." nebo "_". | |
 | DeploymentNameLengthLimitExceeded | Názvy nasazení jsou omezené na 64 znaků.  | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
@@ -246,7 +247,7 @@ V některých případech nejjednodušší způsob, jak řešit potíže s vaš�
 }
 ```
 
-Nebo Předpokládejme, že dochází k chybám při nasazení, které se domníváte, že jsou v relaci nesprávně nastavené závislosti. Otestujte šablonu tím, že ji rozdělíte na zjednodušené šablony. Nejprve vytvořte šablonu, která nasadí pouze jeden prostředek (například SQL Server). Pokud jste si jisti, že tento prostředek máte správně definovaný, přidejte prostředek, který na něm závisí (například SQL Database). Po správném definování těchto dvou prostředků přidejte další závislé prostředky (například zásady auditování). V rámci každého testovacího nasazení odstraňte skupinu prostředků, abyste se ujistili, že jste správně otestovali závislosti.
+Nebo Předpokládejme, že máte k dispozici chyby nasazení, které se domníváte, že jsou v relaci nesprávně nastavené závislosti. Otestujte šablonu tím, že ji rozdělíte na zjednodušené šablony. Nejprve vytvořte šablonu, která nasadí pouze jeden prostředek (například SQL Server). Když jste si jisti, že tento prostředek máte správně definovaný, přidejte prostředek, který na něm závisí (například SQL Database). Po správném definování těchto dvou prostředků přidejte další závislé prostředky (například zásady auditování). V rámci každého testovacího nasazení odstraňte skupinu prostředků, abyste se ujistili, že jste správně otestovali závislosti.
 
 
 ## <a name="next-steps"></a>Další kroky

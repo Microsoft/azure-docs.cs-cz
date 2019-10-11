@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315695"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263957"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 Tento článek obsahuje pokyny k vytvoření a aktualizaci skupin pomocí rutin prostředí PowerShell pro Azure Active Directory (Azure AD). Tento obsah platí jenom pro skupiny Office 365 (někdy označované jako sjednocené skupiny). 
@@ -28,15 +28,15 @@ Tento článek obsahuje pokyny k vytvoření a aktualizaci skupin pomocí rutin 
 > [!IMPORTANT]
 > Některá nastavení vyžadují licenci Azure Active Directory Premium P1. Další informace najdete v tabulce [Nastavení šablon](#template-settings) .
 
-Další informace o tom, jak zabránit uživatelům, kteří nejsou správci, aby vytvářeli skupiny `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` zabezpečení, nastavte podle popisu v [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Další informace o tom, jak zabránit uživatelům bez oprávnění správce v vytváření skupin zabezpečení, nastavte @ no__t-0, jak je popsáno v [set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 Nastavení skupiny Office 365 jsou nakonfigurována pomocí objektu nastavení a objektu SettingsTemplate. Zpočátku se ve vašem adresáři nezobrazí žádné objekty nastavení, protože váš adresář je nakonfigurovaný s výchozím nastavením. Chcete-li změnit výchozí nastavení, je nutné vytvořit nový objekt nastavení pomocí šablony nastavení. Šablony nastavení jsou definovány společností Microsoft. Existuje několik různých šablon nastavení. Ke konfiguraci nastavení skupiny Office 365 pro svůj adresář použijte šablonu s názvem "Group. Unified". Pokud chcete nakonfigurovat nastavení skupiny Office 365 pro jednu skupinu, použijte šablonu s názvem "Group. Unified. host". Tato šablona se používá ke správě přístupu hosta ke skupině Office 365. 
 
 Rutiny jsou součástí modulu Azure Active Directory PowerShell v2. Pokyny ke stažení a instalaci modulu do počítače najdete v článku [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/azuread/). Verzi 2 tohoto modulu můžete nainstalovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="install-powershell-cmdlets"></a>Instalace rutin PowerShellu
+## <a name="install-powershell-cmdlets"></a>Nainstalovat rutiny PowerShellu
 
-Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Před spuštěním příkazů PowerShellu si nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShellu pro modul Graph pro prostředí Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph-Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) .
 
 1. Otevřete aplikaci Windows PowerShell jako správce.
 2. Odinstalujte všechny předchozí verze AzureADPreview.
@@ -50,11 +50,12 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
   
    ``` PowerShell
    Install-Module AzureADPreview
+   ```
+   
+## <a name="create-settings-at-the-directory-level"></a>Vytvoření nastavení na úrovni adresáře
+Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechny skupiny Office 365 v adresáři. Rutina Get-AzureADDirectorySettingTemplate je k dispozici pouze v [modulu Azure AD PowerShell Preview pro graf](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## Create settings at the directory level
-These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
-
-1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
+1. V rutinách DirectorySettings je nutné zadat ID SettingsTemplate, které chcete použít. Pokud toto ID neznáte, vrátí tato rutina seznam všech šablon nastavení:
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
@@ -110,23 +111,23 @@ Pak proveďte krok 5 a nastavte novou hodnotu.
 ## <a name="template-settings"></a>Nastavení šablony
 Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud není uvedeno jinak, tyto funkce vyžadují licenci Azure Active Directory Premium P1. 
 
-| **Nastavení** | **Popis** |
+| **Nastavením** | **Popis** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Zadejte: Logická hodnota<li>Výchozí Pravda |Příznak označující, jestli je vytváření skupin Office 365 povolené v adresáři pro uživatele bez oprávnění správce. Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Zadejte: Řetězec<li>Výchozí: "" |Identifikátor GUID skupiny zabezpečení, pro kterou můžou členové vytvářet skupiny Office 365 i v případě, že EnableGroupCreation = = false |
-|  <ul><li>UsageGuidelinesUrl<li>Zadejte: Řetězec<li>Výchozí: "" |Odkaz na pokyny pro použití skupiny |
-|  <ul><li>ClassificationDescriptions<li>Zadejte: Řetězec<li>Výchozí: "" | Seznam popisů klasifikace oddělený čárkami. Hodnota ClassificationDescriptions je platná pouze v tomto formátu:<br>$setting ["ClassificationDescriptions"] = "klasifikace: Popis, klasifikace: Popis"<br>kde klasifikace odpovídá řetězcům v ClassificationList.|
-|  <ul><li>DefaultClassification<li>Zadejte: Řetězec<li>Výchozí: "" | Klasifikace, která má být použita jako výchozí klasifikace pro skupinu, pokud nebyla zadána žádná.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Zadejte: Řetězec<li>Výchozí: "" | Řetězec o maximální délce 64 znaků definující konvence pojmenování nakonfigurovaných pro skupiny sady Office 365. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Zadejte: Řetězec<li>Výchozí: "" | Textový řetězec oddělený čárkami, který uživatelé nebudou moct používat ve skupinových názvech nebo aliasech. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Zadejte: Logická hodnota<li>Výchozí Chybné | Nepoužívejte
-|  <ul><li>AllowGuestsToBeGroupOwner<li>Zadejte: Logická hodnota<li>Výchozí False | Logická hodnota označující, zda uživatel typu Host může být vlastníkem skupin. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Zadejte: Logická hodnota<li>Výchozí Pravda | Logická hodnota označující, jestli uživatel typu Host může mít přístup k obsahu skupin Office 365.  Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Zadejte: Řetězec<li>Výchozí: "" | Adresa URL odkazu na pokyny pro použití hostů |
-|  <ul><li>AllowAddGuests<li>Zadejte: Logická hodnota<li>Výchozí Pravda | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře.|
-|  <ul><li>ClassificationList<li>Zadejte: Řetězec<li>Výchozí: "" |Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 |
+|  <ul><li>EnableGroupCreation<li>Typ: Boolean<li>Výchozí: true |Příznak označující, jestli je vytváření skupin Office 365 povolené v adresáři pro uživatele bez oprávnění správce. Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Typ: řetězec<li>Výchozí: "" |Identifikátor GUID skupiny zabezpečení, pro kterou můžou členové vytvářet skupiny Office 365 i v případě, že EnableGroupCreation = = false |
+|  <ul><li>UsageGuidelinesUrl<li>Typ: řetězec<li>Výchozí: "" |Odkaz na pokyny pro použití skupiny |
+|  <ul><li>ClassificationDescriptions<li>Typ: řetězec<li>Výchozí: "" | Seznam popisů klasifikace oddělený čárkami. Hodnota ClassificationDescriptions je platná pouze v tomto formátu:<br>$setting ["ClassificationDescriptions"] = "klasifikace: Popis, klasifikace: Popis"<br>kde klasifikace odpovídá řetězcům v ClassificationList.|
+|  <ul><li>DefaultClassification<li>Typ: řetězec<li>Výchozí: "" | Klasifikace, která má být použita jako výchozí klasifikace pro skupinu, pokud nebyla zadána žádná.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: řetězec<li>Výchozí: "" | Řetězec o maximální délce 64 znaků definující konvence pojmenování nakonfigurovaných pro skupiny sady Office 365. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Typ: řetězec<li>Výchozí: "" | Textový řetězec oddělený čárkami, který uživatelé nebudou moct používat ve skupinových názvech nebo aliasech. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
+| <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolean<li>Výchozí: false | Nepoužívat
+|  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Výchozí: false | Logická hodnota označující, zda uživatel typu Host může být vlastníkem skupin. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, jestli uživatel typu Host může mít přístup k obsahu skupin Office 365.  Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
+|  <ul><li>GuestUsageGuidelinesUrl<li>Typ: řetězec<li>Výchozí: "" | Adresa URL odkazu na pokyny pro použití hostů |
+|  <ul><li>AllowAddGuests<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře.|
+|  <ul><li>ClassificationList<li>Typ: řetězec<li>Výchozí: "" |Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 |
 
-## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Příklad: Konfigurace zásad hosta pro skupiny na úrovni adresáře
+## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Příklad: Konfigurace zásady hosta pro skupiny na úrovni adresáře
 1. Získání všech šablon nastavení:
    ```powershell
    Get-AzureADDirectorySettingTemplate
@@ -285,5 +286,5 @@ Další Azure Active Directory dokumentaci PowerShellu najdete v [Azure Active D
 
 ## <a name="additional-reading"></a>Další čtení
 
-* [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
-* [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
+* [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
+* [Integrace místních identit s Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

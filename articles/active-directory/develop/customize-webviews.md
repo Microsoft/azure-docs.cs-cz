@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269074"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264198"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postup: Přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
+# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Postupy: přizpůsobení prohlížečů a webových zobrazení pro iOS/macOS
 
-Pro interaktivní ověřování je vyžadován webový prohlížeč. V systému iOS knihovna Microsoft Authentication Library (MSAL) ve výchozím nastavení používá systémový webový prohlížeč (který se může zobrazit v horní části vaší aplikace), aby se mohli přihlásit k uživatelům pomocí interaktivního ověřování. Použití prohlížeče systému má významnou výhodu sdílení stavu jednotného přihlašování (SSO) s jinými aplikacemi a webovými aplikacemi.
+Pro interaktivní ověřování je vyžadován webový prohlížeč. V systému iOS knihovna Microsoft Authentication Library (MSAL) ve výchozím nastavení používá systémový webový prohlížeč (který se může zobrazit v horní části vaší aplikace), aby se mohli přihlásit k uživatelům pomocí interaktivního ověřování. Použití prohlížeče systému má výhodu sdílení stavu jednotného přihlašování (SSO) s jinými aplikacemi a webovými aplikacemi.
 
 Můžete změnit prostředí úpravou konfigurace na jiné možnosti zobrazení webového obsahu, jako například:
 
@@ -40,13 +40,13 @@ Pro iOS a macOS:
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL pro macOS podporuje `WKWebView`pouze.
+MSAL pro macOS podporuje pouze `WKWebView`.
 
 ## <a name="system-browsers"></a>Systémové prohlížeče
 
-Pro iOS, `ASWebAuthenticationSession`, `SFAuthenticationSession`a `SFSafariViewController` se považují za systémové prohlížeče. Obecně platí, že systémové prohlížeče sdílí soubory cookie a jiná data webu pomocí prohlížeče Safari.
+Pro iOS se jako systémové prohlížeče považují `ASWebAuthenticationSession`, `SFAuthenticationSession` a `SFSafariViewController`. Obecně platí, že systémové prohlížeče sdílí soubory cookie a jiná data webu pomocí prohlížeče Safari.
 
-Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený prohlížeč systému, který je v této verzi k dispozici. V systému iOS 12 + bude `ASWebAuthenticationSession`. 
+Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený prohlížeč systému, který je v této verzi k dispozici. V systému iOS 12 + se @no__t – 0. 
 
 | Version | Webový prohlížeč |
 |:-------------:|:-------------:|
@@ -56,8 +56,8 @@ Ve výchozím nastavení MSAL dynamicky detekuje verzi iOS a vybere doporučený
 
 Vývojáři můžou také vybrat jiný systémový prohlížeč pro aplikace MSAL:
 
-- `SFAuthenticationSession`je verze iOS 11 systému `ASWebAuthenticationSession`.
-- `SFSafariViewController`je obecnější a poskytuje rozhraní pro procházení webu a dá se použít i pro účely přihlášení. V systému iOS 9 a 10 se soubory cookie a další webová data sdílí s Safari, ale ne v iOS 11 a novějších.
+- `SFAuthenticationSession` je verze iOS 11 `ASWebAuthenticationSession`.
+- `SFSafariViewController` je obecnější a poskytuje rozhraní pro procházení webu a dá se použít i pro účely přihlášení. V systému iOS 9 a 10 se soubory cookie a další webová data sdílí s Safari, ale ne v iOS 11 a novějších.
 
 ## <a name="in-app-browser"></a>Prohlížeč v aplikaci
 
@@ -67,19 +67,19 @@ Vývojáři můžou také vybrat jiný systémový prohlížeč pro aplikace MSA
 
 Prohlížeč, který použijete, má vliv na možnosti jednotného přihlašování z důvodu sdílení souborů cookie. Následující tabulky shrnují možnosti jednotného přihlašování na prohlížeč.
 
-| Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | Jednotné přihlašování |
+| Technologie    | Typ prohlížeče  | dostupnost iOS | dostupnost macOS | Sdílí soubory cookie a jiná data  | Dostupnost MSAL | JEDNOTNÉ |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systém | iOS12 a nahoru | macOS 10,15 a až | Ano | jenom iOS | instance w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | neuvedeno | Ano | jenom iOS |  instance w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | neuvedeno | Ne | jenom iOS | Ne * *
-| **SFSafariViewController** | Systém | iOS10 | neuvedeno | Ano | jenom iOS |  instance w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systém | iOS11 a nahoru | Není k dispozici | Ano | jenom iOS |  instance w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systém | iOS11 a nahoru | Není k dispozici | Ne | jenom iOS | Ne * *
+| **SFSafariViewController** | Systém | iOS10 | Není k dispozici | Ano | jenom iOS |  instance w/Safari
 | **WKWebView**  | V aplikaci | iOS8 a nahoru | macOS 10,10 a až | Ne | iOS a macOS | Ne * *
 
 \* * Aby jednotné přihlašování fungovalo, musí být tokeny sdílené mezi aplikacemi. To vyžaduje mezipaměť tokenů nebo aplikaci zprostředkovatele, například Microsoft Authenticator pro iOS.
 
 ## <a name="change-the-default-browser-for-the-request"></a>Změna výchozího prohlížeče pro požadavek
 
-Pomocí prohlížeče v aplikaci nebo konkrétního webového prohlížeče v závislosti na vašich požadavcích na uživatelské prostředí můžete změnit následující vlastnost v `MSALWebviewParameters`nástroji:
+Pomocí prohlížeče v aplikaci nebo konkrétního webového prohlížeče v závislosti na požadavcích na uživatelské prostředí můžete změnit následující vlastnost v `MSALWebviewParameters`:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -87,9 +87,9 @@ Pomocí prohlížeče v aplikaci nebo konkrétního webového prohlížeče v z�
 
 ## <a name="change-per-interactive-request"></a>Změnit na interaktivní požadavek
 
-Každý požadavek lze nakonfigurovat tak, aby potlačil výchozí prohlížeč `MSALInteractiveTokenParameters.webviewParameters.webviewType` změnou vlastnosti před předáním `acquireTokenWithParameters:completionBlock:` do rozhraní API.
+Každý požadavek je možné nakonfigurovat tak, aby přepsal výchozí prohlížeč změnou vlastnosti `MSALInteractiveTokenParameters.webviewParameters.webviewType` před předáním do rozhraní API `acquireTokenWithParameters:completionBlock:`.
 
-Kromě toho MSAL podporuje předávání vlastní `WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView` nastavením vlastnosti.
+Kromě toho MSAL podporuje předávání do vlastního `WKWebView` nastavením vlastnosti `MSALInteractiveTokenParameters.webviewParameters.customWebView`.
 
 Příklad:
 
@@ -104,7 +104,7 @@ MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenPa
     
 [app acquireTokenWithParameters:interactiveParameters completionBlock:completionBlock];
 ```
-Kód SWIFT
+SWIFT
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...

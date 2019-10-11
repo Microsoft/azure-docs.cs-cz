@@ -1,6 +1,6 @@
 ---
-title: Kurzy integrace aplikací SaaS pro použití s Azure AD | Microsoft Docs
-description: Nakonfigurujte Azure Active Directory integraci s jednotným přihlašováním pomocí nejrůznějšího softwaru třetích stran jako aplikací služby.
+title: Výukové programy pro jednotné přihlašování a SCIM – kurzy pro integraci aplikací SaaS pro použití s Azure AD | Microsoft Docs
+description: Nakonfigurujte Azure Active Directory jednotné přihlašování (SSO) a SCIM zajišťování integrace s nejrůznějšími aplikacemi třetích stran jako aplikacemi služby.
 services: active-directory
 documentationcenter: ''
 author: jeevansd
@@ -17,18 +17,18 @@ ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4594d54f245c8fb96e62d7f193816e1031138ec0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 267efd103c3cfdca1aa6d3db10977bac9739f641
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026149"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274457"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Kurzy pro integraci aplikací SaaS s Azure Active Directory
 
 Abychom vám pomohli integrovat aplikace SaaS (Cloud-Enabled [software jako služba)](https://azure.microsoft.com/overview/what-is-saas/) s Azure Active Directory, vyvinuli jsme kolekci kurzů, které vás provedou konfigurací.
 
-Seznam všech aplikací SaaS, které byly předem integrovány do služby Azure AD, najdete v [tržišti služby Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
+Seznam všech aplikací SaaS, které byly předem integrovány do služby Azure AD, najdete v [tržišti služby Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps). Kliknutím [sem](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) si vyžádáte, aby se aplikace přidala do Galerie aplikací. 
 
 ## <a name="quick-links"></a>Rychlé odkazy
 

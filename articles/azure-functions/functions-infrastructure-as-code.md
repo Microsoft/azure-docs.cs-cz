@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276828"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263193"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -36,12 +36,12 @@ Ukázkové šablony naleznete zde:
 
 Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
-| Resource                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |   |
+| Partner                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Aplikace Function App                                                                     | Požadováno    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Účet [Azure Storage](../storage/index.yml)                                   | Požadováno    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | volitelná,    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
-| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Aplikace Function App                                                                     | Požadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |   |
+| Účet [Azure Storage](../storage/index.yml)                                   | Požadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Nepovinné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
+| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Plán hostování se vyžaduje jenom v případě, že se rozhodnete spustit aplikaci Function App na [plánu Premium](./functions-premium-plan.md) (ve verzi Preview) nebo v [plánu App Service](../app-service/overview-hosting-plans.md).
 
@@ -57,20 +57,20 @@ Pro aplikaci Function App je vyžadován účet služby Azure Storage. Potřebuj
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-04-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
 
-Kromě toho musí být vlastnost `AzureWebJobsStorage` zadána jako nastavení aplikace v konfiguraci lokality. Pokud aplikace Function App nepoužívá Application Insights ke sledování, měla by také určovat `AzureWebJobsDashboard` nastavení aplikace.
+Kromě toho musí být vlastnost `AzureWebJobsStorage` zadána jako nastavení aplikace v konfiguraci lokality. Pokud aplikace Function App nepoužívá Application Insights ke sledování, měl by také jako nastavení aplikace zadat `AzureWebJobsDashboard`.
 
-Modul runtime Azure Functions používá `AzureWebJobsStorage` připojovací řetězec k vytvoření interních front.  Když Application Insights není povolený, modul runtime použije `AzureWebJobsDashboard` připojovací řetězec k přihlášení do úložiště tabulek Azure a napájení karty **monitor** na portálu.
+Modul runtime Azure Functions používá připojovací řetězec `AzureWebJobsStorage` k vytvoření interních front.  Pokud není povolená Application Insights, modul runtime používá připojovací řetězec `AzureWebJobsDashboard` k přihlášení do úložiště tabulek Azure a kartu **monitorování** na portálu.
 
-Tyto vlastnosti jsou uvedeny v `appSettings` kolekci `siteConfig` v objektu:
+Tyto vlastnosti jsou uvedené v kolekci `appSettings` v objektu `siteConfig`:
 
 ```json
 "appSettings": [
@@ -106,7 +106,7 @@ Application Insights se doporučuje pro monitorování aplikací Function App. P
         },
 ```
 
-Kromě toho je potřeba zadat klíč instrumentace aplikace Function App pomocí `APPINSIGHTS_INSTRUMENTATIONKEY` nastavení aplikace. Tato vlastnost je určena v `appSettings` kolekci `siteConfig` v objektu:
+Kromě toho je potřeba zadat klíč instrumentace aplikace Function App pomocí nastavení aplikace `APPINSIGHTS_INSTRUMENTATIONKEY`. Tato vlastnost je určena v kolekci `appSettings` v objektu `siteConfig`:
 
 ```json
 "appSettings": [
@@ -120,11 +120,11 @@ Kromě toho je potřeba zadat klíč instrumentace aplikace Function App pomocí
 ### <a name="hosting-plan"></a>Plán hostování
 
 Definice plánu hostování se liší a může to být jedna z následujících:
-* [Plán spotřeby](#consumption) výchozí
+* [Plán spotřeby](#consumption) (výchozí)
 * [Plán Premium](#premium) (ve verzi Preview)
-* [Plán služby App Service](#app-service-plan)
+* [Plán App Service](#app-service-plan)
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>Aplikace Function App
 
 Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web/Sites** a druhu **functionapp**:
 
@@ -142,7 +142,7 @@ Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web
 ```
 
 > [!IMPORTANT]
-> Pokud explicitně definujete plán hostování, bude v poli dependsOn potřeba další položka:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Pokud explicitně definujete plán hostování, bude v poli dependsOn potřeba další položka: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 Aplikace Function App musí zahrnovat tato nastavení aplikace:
 
@@ -150,10 +150,10 @@ Aplikace Function App musí zahrnovat tato nastavení aplikace:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime Functions pro vnitřní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java`nebo`python` |
-| WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě `node` , že používáte sadu jazyků, určuje verzi, která se má použít.              | `10.14.1`                             |
+| FUNCTIONS_WORKER_RUNTIME     | Jazyková sada, která se má použít pro funkce v této aplikaci                                   | `dotnet`, `node`, `java` nebo `python` |
+| WEBSITE_NODE_DEFAULT_VERSION | Je potřeba jenom v případě, že používáte zásobník jazyka `node`, určuje verzi, která se má použít.              | `10.14.1`                             |
 
-Tyto vlastnosti jsou zadány v `appSettings` kolekci `siteConfig` ve vlastnosti:
+Tyto vlastnosti jsou zadané v kolekci `appSettings` ve vlastnosti `siteConfig`:
 
 ```json
 "properties": {
@@ -192,7 +192,7 @@ Ukázkové Azure Resource Managerovou šablonu najdete v tématu [Aplikace Funct
 
 Plán spotřeby není nutné definovat. Při vytváření samotného prostředku aplikace Function App se jedna z jednotlivých oblastí automaticky vytvoří nebo vybere.
 
-Plán spotřeby je speciální typ prostředku "serverová farma". V případě systému Windows jej můžete zadat pomocí `Dynamic` hodnoty `computeMode` vlastností a `sku` :
+Plán spotřeby je speciální typ prostředku "serverová farma". Pro Windows ji můžete zadat pomocí hodnoty `Dynamic` vlastností `computeMode` a `sku`:
 
 ```json
 {  
@@ -217,13 +217,13 @@ Plán spotřeby je speciální typ prostředku "serverová farma". V případě 
 > [!NOTE]
 > Plán spotřeby nelze explicitně definovat pro Linux. Vytvoří se automaticky.
 
-Pokud budete plán spotřeby explicitně definovat, budete muset nastavit `serverFarmId` vlastnost v aplikaci tak, aby odkazovala na ID prostředku plánu. Měli byste se ujistit, že aplikace Function App `dependsOn` má také nastavení pro plán.
+Pokud budete plán spotřeby explicitně definovat, budete muset nastavit vlastnost `serverFarmId` v aplikaci tak, aby odkazovala na ID prostředku plánu. Ujistěte se, že aplikace Function App má také nastavení `dependsOn` pro plán.
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace Function App
 
 #### <a name="windows"></a>Windows
 
-V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a. `WEBSITE_CONTENTSHARE` Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE`. Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
 
 ```json
 {
@@ -270,7 +270,7 @@ V systému Windows plán spotřeby vyžaduje dvě další nastavení v konfigura
 
 #### <a name="linux"></a>Linux
 
-V systému `kind` Linux musí mít aplikace funkcí `functionapp,linux`nastavenou hodnotu `reserved` a musí mít vlastnost nastavenou na `true`:
+V systému Linux musí mít aplikace funkcí `kind` nastavenou na `functionapp,linux` a musí mít vlastnost `reserved` nastavenou na `true`:
 
 ```json
 {
@@ -318,7 +318,7 @@ Plán Premium nabízí stejné škálování jako plán spotřeby, ale zahrnuje 
 
 ### <a name="create-a-premium-plan"></a>Vytvořit plán Premium
 
-Plán Premium je zvláštní typ prostředku "serverová farma". Můžete `EP1`ji zadat buď pomocí, `EP2`nebo `EP3` pro `sku` hodnotu vlastnosti.
+Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zadat buď pomocí `EP1`, `EP2` nebo `EP3` pro hodnotu vlastnosti `sku`.
 
 ```json
 {
@@ -333,9 +333,9 @@ Plán Premium je zvláštní typ prostředku "serverová farma". Můžete `EP1`j
 }
 ```
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace Function App
 
-Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a. `WEBSITE_CONTENTSHARE` Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
+Aplikace funkcí v plánu Premium musí mít vlastnost `serverFarmId` nastavenou na ID prostředku dříve vytvořeného plánu. Kromě toho plán Premium vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE`. Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
 
 ```json
 {
@@ -391,48 +391,48 @@ V plánu App Service aplikace Function App běží na vyhrazených virtuálních
 
 Ukázkovou Azure Resource Managerovou šablonu najdete v tématu [aplikace Function App v plánu Azure App Service].
 
-### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
+### <a name="create-an-app-service-plan"></a>Vytvoření plánu App Service
 
 Plán App Service je definovaný prostředkem "serverová farma".
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-Chcete-li spustit aplikaci v systému Linux, je nutné také `kind` nastavit `Linux`na:
+Chcete-li spustit aplikaci v systému Linux, je nutné také nastavit `kind` na `Linux`:
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-### <a name="create-a-function-app"></a>Vytvoření Function App 
+### <a name="create-a-function-app"></a>Vytvoření aplikace Function App 
 
-Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve.
+Aplikace funkcí v plánu App Service musí mít vlastnost `serverFarmId` nastavenou na ID prostředku plánu, který jste vytvořili dříve.
 
 ```json
 {
@@ -471,9 +471,9 @@ Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastav
 }
 ```
 
-Aplikace pro Linux by měly také `linuxFxVersion` obsahovat `siteConfig`vlastnost. Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem Runtime:
+Aplikace pro Linux by měly také zahrnovat vlastnost `linuxFxVersion` v části `siteConfig`. Pokud právě nasazujete kód, hodnota pro tuto hodnotu je určena požadovaným zásobníkem Runtime:
 
-| Zásobník            | Příklad hodnoty                                         |
+| Rámec            | Ukázková hodnota                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
@@ -517,7 +517,7 @@ Aplikace pro Linux by měly také `linuxFxVersion` obsahovat `siteConfig`vlastno
 }
 ```
 
-Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](/azure/app-service/containers). Nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` také na `false`, protože obsah vaší aplikace je k dispozici v kontejneru samotném:
+Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), je nutné ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje načíst vaši image, jako v [Web App for Containers](/azure/app-service/containers). Kromě toho nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false`, protože obsah vaší aplikace je k dispozici v kontejneru samotném:
 
 ```json
 {
@@ -648,14 +648,14 @@ Aplikace Function App má mnoho podřízených prostředků, které můžete pou
 
 K nasazení šablony můžete použít kterýkoli z následujících způsobů:
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Prostředí](../azure-resource-manager/resource-group-template-deploy.md)
+* [Rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Tlačítko nasadit do Azure
 
-Nahraďte ```<url-encoded-path-to-azuredeploy-json>``` verzí `azuredeploy.json` inpracovaná cesta ve formátu [adresy URL](https://www.bing.com/search?q=url+encode) souboru na GitHubu.
+Nahraďte ```<url-encoded-path-to-azuredeploy-json>``` verzí s nezpracovanými cestami k souboru `azuredeploy.json` v GitHubu s [kódováním URL](https://www.bing.com/search?q=url+encode) .
 
 Tady je příklad, který používá Markdownu:
 
@@ -671,7 +671,7 @@ Tady je příklad, který používá HTML:
 
 ### <a name="deploy-using-powershell"></a>Nasazení pomocí PowerShellu
 
-Následující příkazy PowerShellu vytvoří skupinu prostředků a nasadí šablonu, která vytvoří aplikaci funkcí s požadovanými prostředky. Pokud chcete spustit místně, musíte mít nainstalovanou [Azure PowerShell](/powershell/azure/install-az-ps) . Spusťte [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) , abyste se přihlásili.
+Následující příkazy PowerShellu vytvoří skupinu prostředků a nasadí šablonu, která vytvoří aplikaci funkcí s požadovanými prostředky. Pokud chcete spustit místně, musíte mít nainstalovanou [Azure PowerShell](/powershell/azure/install-az-ps) . Pokud se chcete přihlásit, spusťte [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) .
 
 ```powershell
 # Register Resource Providers if they're not already registered

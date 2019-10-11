@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244703"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273938"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -38,7 +38,29 @@ Pokud chcete nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte promě
 
 AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřování pomocí protokolu NTLM nebo Kerberos.
 
-## <a name="optimize-throughput"></a>Optimalizace propustnosti
+## <a name="optimize-performance"></a>Optimalizace výkonu
+
+Můžete použít srovnávací testy výkonu a pak pomocí příkazů a proměnných prostředí najít optimální kompromisy mezi výkonem a spotřebou prostředků.
+
+### <a name="run-benchmark-tests"></a>Spustit testy srovnávacích testů
+
+Test srovnávacího testu výkonu můžete spustit pro konkrétní kontejnery objektů BLOB a zobrazit tak obecná statistiku výkonu a kritická místa výkonu identity. 
+
+> [!NOTE]
+> V aktuální verzi je tato funkce dostupná jenom pro kontejnery Blob Storage.
+
+Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
+
+|    |     |
+|--------|-----------|
+| **Syntaktick** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Příklad** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+
+Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data jsou generována v paměti, odeslána do cíle a poté po dokončení testu odstraněna z cílového umístění. Můžete určit, kolik souborů se má vygenerovat a jakou velikost byste chtěli použít při použití volitelných parametrů příkazu.
+
+Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy bench -h` a potom stiskněte klávesu ENTER.
+
+### <a name="optimize-throughput"></a>Optimalizace propustnosti
 
 Pomocí příznaku `cap-mbps` můžete umístit strop pro míru propustnosti dat. Například následující příkaz CAPS propustnosti `10` megabitů (MB) za sekundu.
 
@@ -46,7 +68,9 @@ Pomocí příznaku `cap-mbps` můžete umístit strop pro míru propustnosti dat
 azcopy cap-mbps 10
 ```
 
-Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením proměnné prostředí `AZCOPY_CONCURRENCY_VALUE`. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  Pokud má počítač méně než 5 procesorů, hodnota této proměnné je nastavená na `32`. V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `300`, ale tuto hodnotu můžete ručně nastavit na vyšší nebo nižší.
+Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením proměnné prostředí `AZCOPY_CONCURRENCY_VALUE`. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  
+
+Pokud má počítač méně než 5 procesorů, hodnota této proměnné je nastavená na `32`. V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `3000`, ale tuto hodnotu můžete ručně nastavit na vyšší nebo nižší. 
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -54,25 +78,20 @@ Při přenosu malých souborů se propustnost může snížit. Propustnost můž
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`.  Pokud je hodnota prázdná, proměnná `AZCOPY_CONCURRENCY_VALUE` je nastavena na výchozí hodnotu `300`.
+Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud je hodnota prázdná, můžete si přečíst, která hodnota se používá, a to na začátku libovolného souboru protokolu AzCopy. Je zde uvedena vybraná hodnota a důvod, proč byla vybrána.
 
-## <a name="change-the-location-of-the-log-files"></a>Změna umístění souborů protokolu
+Před nastavením této proměnné doporučujeme spustit test testu výkonnosti. Proces testování srovnávacích testů bude hlásit doporučenou hodnotu souběžnosti. Případně platí, že pokud se síťové podmínky a datové části liší, nastavte tuto proměnnou na slovo `AUTO` místo na konkrétní číslo. To způsobí, že AzCopy vždy spustí stejný proces automatického ladění, který používá testy srovnávacích testů.
 
-Ve výchozím nastavení se soubory protokolu nacházejí v adresáři `%USERPROFILE%\.azcopy` ve Windows nebo v adresáři `$HOME\\.azcopy` v systému Mac a Linux. Toto umístění můžete změnit, pokud potřebujete pomocí těchto příkazů.
+### <a name="optimize-memory-use"></a>Optimalizace využití paměti
+
+Nastavte proměnnou prostředí `AZCOPY_BUFFER_GB` a určete tak maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
+Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
-
-Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
-
-## <a name="change-the-default-log-level"></a>Změna výchozí úrovně protokolu
-
-Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na hodnotu `INFO`. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí možnosti ``--log-level``. 
-
-Dostupné úrovně protokolu jsou: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` a `FATAL`.
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
+| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ## <a name="troubleshoot-issues"></a>Řešení potíží
 
@@ -80,7 +99,7 @@ AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly mů�
 
 Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED` a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE\\.azcopy` ve Windows nebo v adresáři `$HOME\\.azcopy` v systému Mac a Linux.
+Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systému Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.
@@ -129,3 +148,45 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 Když úlohu obnovíte, AzCopy se podívá na soubor plánu úlohy. Soubor plánu obsahuje seznam všech souborů, které byly identifikovány pro zpracování při prvním vytvoření úlohy. Když obnovíte úlohu, AzCopy se pokusí přenést všechny soubory, které jsou uvedené v souboru plánu, který se už nepřenesl.
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Změna umístění plánu a souborů protokolu
+
+Ve výchozím nastavení se soubory schématu a protokolu nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systému Mac a Linux. Toto umístění můžete změnit.
+
+### <a name="change-the-location-of-plan-files"></a>Změna umístění souborů plánu
+
+Použijte některý z těchto příkazů.
+
+| Operační systém | Příkaz  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud je hodnota prázdná, pak se soubory plánu zapisují do výchozího umístění.
+
+### <a name="change-the-location-of-log-files"></a>Změna umístění souborů protokolu
+
+Použijte některý z těchto příkazů.
+
+| Operační systém | Příkaz  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+Pro kontrolu aktuální hodnoty této proměnné použijte `azcopy env`. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
+
+## <a name="change-the-default-log-level"></a>Změna výchozí úrovně protokolu
+
+Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na hodnotu `INFO`. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí možnosti ``--log-level``. 
+
+Dostupné úrovně protokolu jsou: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` a `FATAL`.
+
+## <a name="remove-plan-and-log-files"></a>Odebrat soubory plánu a protokolu
+
+Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, abyste ušetřili místo na disku, použijte příkaz `azcopy jobs clean`.
+
+Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>`. V tomto příkladu nahraďte zástupný symbol `<job-id>` s ID úlohy úlohy.
+
+

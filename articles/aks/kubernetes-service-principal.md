@@ -1,38 +1,38 @@
 ---
-title: Instanční objekty pro službu Azure Kubernetes Service (AKS)
-description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster ve službě Azure Kubernetes Service (AKS)
+title: Instanční objekty pro službu Azure Kubernetes Services (AKS)
+description: Vytvoření a Správa instančního objektu služby Azure Active Directory pro cluster ve službě Azure Kubernetes (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 304b9dae9f3a1e134809d8959a96dc4e3ec0edd3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e24d930ec82ea92a040efeed3056a10917ce2b2a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615112"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263917"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
-K interakci s rozhraními API Azure, AKS cluster vyžaduje [instanční objekt Azure Active Directory (AD)][aad-service-principal]. Instanční objekt je potřeba k dynamickému vytváření a správě dalších prostředků Azure, jako je například nástroj pro vyrovnávání zatížení nebo registr kontejneru Azure (ACR).
+Pro interakci s rozhraními API Azure vyžaduje cluster AKS [instanční objekt služby Azure Active Directory (AD)][aad-service-principal]. Instanční objekt je potřeba k dynamickému vytváření a správě dalších prostředků Azure, jako je Azure Load Balancer nebo registr kontejnerů (ACR).
 
-Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
+Tento článek ukazuje, jak vytvořit a použít instanční objekt pro clustery AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
+K vytvoření instančního objektu služby Azure AD musíte mít oprávnění k registraci aplikace v tenantovi Azure AD a přiřazení aplikace k roli v rámci vašeho předplatného. Pokud nemáte potřebná oprávnění, možná budete muset požádat svého správce služby Azure AD nebo předplatného o přiřazení potřebných oprávnění, nebo předem vytvořit instanční objekt, který budete moct použít s clusterem AKS.
 
-Pokud používáte hlavního názvu služby z jiné služby Azure AD tenanta, existují další důležité informace týkající oprávnění k dispozici při nasazování clusteru. Nemáte příslušná oprávnění ke čtení a zápisu informací adresáře. Další informace najdete v tématu [co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?][azure-ad-permissions]
+Pokud používáte instanční objekt z jiného tenanta Azure AD, existují další okolnosti týkající se oprávnění, která jsou k dispozici při nasazení clusteru. Možná nemáte potřebná oprávnění ke čtení a zápisu informací o adresáři. Další informace najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?][azure-ad-permissions]
 
-Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Vyhledejte verzi spuštěním @ no__t-0. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatické vytvoření a použití instančního objektu
 
-Při vytváření clusteru AKS ve službě Azure portal nebo pomocí [az aks vytvořit][az-aks-create] příkazu, Azure můžete automaticky vygenerovat instanční objekt služby.
+Když vytvoříte cluster AKS v Azure Portal nebo pomocí příkazu [AZ AKS Create][az-aks-create] , může Azure automaticky vygenerovat instanční objekt.
 
-V následujícím příkladu rozhraní příkazového řádku Azure není zadán instanční objekt. V tomto scénáři rozhraní příkazového řádku Azure vytvoří instanční objekt pro cluster AKS. K úspěšnému dokončení této operace musí mít váš účet Azure příslušná práva k vytvoření instančního objektu.
+V následujícím příkladu Azure CLI není zadaný instanční objekt. V tomto scénáři vytvoří Azure CLI instanční objekt pro cluster AKS. K úspěšnému dokončení operace musí mít váš účet Azure správná práva k vytvoření instančního objektu.
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup
@@ -40,13 +40,13 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 
 ## <a name="manually-create-a-service-principal"></a>Ruční vytvoření instančního objektu
 
-Pokud chcete ručně vytvořit hlavní název služby pomocí Azure CLI, použijte [az ad sp create-for-rbac][az-ad-sp-create] příkazu. V následujícím příkladu parametr `--skip-assignment` zakazuje jakékoli další přiřazení výchozích přiřazení:
+Pokud chcete ručně vytvořit instanční objekt pomocí Azure CLI, použijte příkaz [AZ AD SP Create-for-RBAC][az-ad-sp-create] . V následujícím příkladu parametr `--skip-assignment` brání přiřazení dalších výchozích přiřazení:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-Výstup se podobá následujícímu příkladu. Poznamenejte si sami `appId` a `password`. Tyto hodnoty se používají při vytváření clusteru AKS v další části.
+Výstup je podobný následujícímu příkladu. Poznamenejte si vlastní `appId` a `password`. Tyto hodnoty se použijí při vytváření clusteru AKS v další části.
 
 ```json
 {
@@ -58,9 +58,9 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si sami `appId` a `
 }
 ```
 
-## <a name="specify-a-service-principal-for-an-aks-cluster"></a>Specifikace instančního objektu pro cluster AKS
+## <a name="specify-a-service-principal-for-an-aks-cluster"></a>Určení instančního objektu pro cluster AKS
 
-Chcete-li použít existující instanční objekt služby, při vytváření clusteru AKS pomocí [az aks vytvořit][az-aks-create] příkazu, použijte `--service-principal` a `--client-secret` parametry k určení `appId` a `password` z výstupu [az ad sp create-for-rbac][az-ad-sp-create] příkaz:
+Pokud chcete použít existující instanční objekt, když vytvoříte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] , pomocí parametrů `--service-principal` a `--client-secret` určete `appId` a `password` z výstupu příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create] :
 
 ```azurecli-interactive
 az aks create \
@@ -70,69 +70,69 @@ az aks create \
     --client-secret <password>
 ```
 
-Pokud nasadíte cluster AKS pomocí portálu Microsoft Azure, na stránce *ověřování* dialogového okna **Vytvořit cluster Kubernetes** zvolit **Konfigurace instančního objektu**. Vyberte **Použít existující** a zadejte následující hodnoty:
+Pokud nasadíte cluster AKS pomocí Azure Portal, vyberte na stránce *ověřování* v dialogovém okně **vytvořit cluster Kubernetes** možnost **Konfigurace instančního objektu**. Vyberte **použít existující**a zadejte následující hodnoty:
 
-- **ID klienta instančního objektu** je vaše *appId*
-- **Tajný klíč klienta instančního objektu služby** je hodnota *hesla*
+- **ID klienta instančního objektu** je vaše *appId* .
+- **Tajný kód klienta instančního objektu** je hodnota *hesla* .
 
-![Obrázek přechodu na aplikaci Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
+![Obrázek přechodu na hlasování Azure](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
-## <a name="delegate-access-to-other-azure-resources"></a>Delegování přístupu k jiným prostředkům Azure
+## <a name="delegate-access-to-other-azure-resources"></a>Delegovat přístup k jiným prostředkům Azure
 
-Instanční objekt pro AKS cluster je možné pro přístup k dalším prostředkům. Například pokud chcete nasadit cluster AKS do existující virtuální sítě Azure podsíť nebo se připojit k Azure Container Registry (ACR), musíte delegovat přístup k těmto prostředkům pro instanční objekt.
+Instanční objekt pro cluster AKS se dá použít pro přístup k jiným prostředkům. Pokud například chcete nasadit cluster AKS do existující podsítě virtuální sítě Azure nebo připojit k Azure Container Registry (ACR), budete muset k těmto prostředkům delegovat přístup k instančnímu objektu.
 
-Delegovat oprávnění vytvořit přiřazení role pomocí [vytvořit přiřazení role az][az-role-assignment-create] příkazu. Přiřazení `appId` na konkrétní rozsah, jako jsou skupiny prostředků nebo prostředek virtuální sítě. Role potom definuje, jaká oprávnění instančního objektu má na prostředek, jak je znázorněno v následujícím příkladu:
+Chcete-li delegovat oprávnění, vytvořte přiřazení role pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Přiřaďte `appId` ke konkrétnímu oboru, jako je například skupina prostředků nebo prostředek virtuální sítě. Role pak definuje, jaká oprávnění má instanční objekt u prostředku, jak je znázorněno v následujícím příkladu:
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-`--scope` Pro prostředek musí být úplné ID prostředku, jako například */subscriptions/\<guid\>/resourceGroups/myResourceGroup* nebo */subscriptions/\<guid \>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+@No__t-0 prostředku musí být úplné ID prostředku, například */subscriptions/\<guid @ no__t-3/resourceGroups/myResourceGroup* nebo */Subscriptions/\<guid @ no__t-6/resourceGroups/myResourceGroupVnet/Providers/Microsoft. Network/virtualNetworks/myVnet*
 
-Následující části popisují běžné delegování, které musíte provést.
+V následujících částech najdete podrobné informace o běžných delegováních, která může být potřeba udělat.
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
-Pokud používáte jako vaše úložiště imagí kontejnerů Azure Container Registry (ACR), budete muset udělit oprávnění pro váš cluster AKS ke čtení a stažení imagí. Instanční objekt clusteru AKS je potřeba delegovat *čtečky* role v registru. Podrobné pokyny najdete v článku [AKS udělit přístup do služby ACR][aks-to-acr].
+Pokud jako úložiště imagí kontejneru použijete Azure Container Registry (ACR), budete muset udělit oprávnění k instančnímu objektu pro váš cluster AKS ke čtení a vyžádání imagí. V současné době je doporučeným nastavením použití příkazu [AZ AKS Create][az-aks-create] nebo [az AKS Update] [az-AKS-Update] k integraci s registrem a přiřazení příslušné role k instančnímu objektu. Podrobný postup najdete v tématu [ověření pomocí Azure Container Registry služby Azure Kubernetes][aks-to-acr].
 
-### <a name="networking"></a>Sítě
+### <a name="networking"></a>Síťové služby
 
-Můžete použít rozšířeného sítě kde virtuální sítě a podsítě nebo veřejné IP adresy jsou v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
+Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsíť nebo veřejné IP adresy nacházejí v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
-- Vytvoření [vlastní roli][rbac-custom-role] a definovat následující oprávnění role:
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-- Nebo přiřadit [Přispěvatel sítě][rbac-network-contributor] předdefinovaná role v podsíti ve virtuální síti
+- Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
+  - *Microsoft. Network/virtualNetworks/subnets/JOIN/Action*
+  - *Microsoft. Network/virtualNetworks/podsítí/čtení*
+  - *Microsoft. Network/virtualNetworks/podsítí/Write*
+  - *Microsoft. Network/publicIPAddresses/JOIN/Action*
+  - *Microsoft. Network/publicIPAddresses/Read*
+  - *Microsoft. Network/publicIPAddresses/Write*
+- Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
-Potřebujete přístup k existující prostředky disku v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
+Možná budete potřebovat přístup k existujícím diskovým prostředkům v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
-- Vytvoření [vlastní roli][rbac-custom-role] a definovat následující oprávnění role:
-  - *Microsoft.Compute/disks/read*
-  - *Microsoft.Compute/disks/write*
-- Nebo přiřadit [Přispěvatel účtů úložiště][rbac-storage-contributor] předdefinovanou roli ve skupině prostředků.
+- Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
+  - *Microsoft. COMPUTE/disky/číst*
+  - *Microsoft. COMPUTE/disks/Write*
+- Nebo přiřaďte do skupiny prostředků integrovanou roli [přispěvatele účtu úložiště][rbac-storage-contributor] .
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
-Pokud používáte Virtual Kubelet k integraci s AKS a zvolit spuštění služby Azure Container Instances (ACI) ve skupině prostředků samostatný AKS cluster, musí mít udělena instanční objekt služby AKS *Přispěvatel* oprávnění pro prostředek ACI Skupina.
+Pokud k integraci s AKS používáte Virtual Kubelet a v případě, že se rozhodnete spustit Azure Container Instances (ACI) ve skupině prostředků oddělené ke clusteru AKS, musí být ve skupině prostředků AKS udělená oprávnění *přispěvatele* .
 
-## <a name="additional-considerations"></a>Další aspekty
+## <a name="additional-considerations"></a>Další požadavky
 
-Při použití instančních objektů služeb Azure AD a AKS mějte na paměti následující informace.
+Při používání AKS a instančních objektů služby Azure AD mějte na paměti následující skutečnosti.
 
-- Instanční objekt pro Kubernetes je součástí konfigurace clusteru. K nasazení clusteru ale nepoužívejte identitu.
-- Ve výchozím nastavení přihlašovací údaje instančního objektu služby jsou platné po dobu jednoho roku. Je možné [aktualizovat nebo otočit přihlašovacích údajů instančního objektu služby][update-credentials] kdykoli.
-- Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes může být přidružený k jakémukoli platnému názvu aplikace Azure AD (například *https://www.contoso.org/example* ). Adresa URL aplikace nemusí být skutečný koncový bod.
-- Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId`.
-- Na agenta uzlu virtuální počítače v clusteru Kubernetes jsou uložené přihlašovací údaje instančního objektu služby v souboru `/etc/kubernetes/azure.json`
-- Při použití [az aks vytvořit][az-aks-create] příkaz, který automaticky vygenerovat instanční objekt služby, přihlašovací údaje instančního objektu se zapisují do souboru `~/.azure/aksServicePrincipal.json` na počítači používá ke spuštění příkazu.
-- Při odstranění clusteru AKS vytvořeného [az aks vytvořit][az-aks-create], instanční objekt, který se vytvořil automaticky se neodstraní.
-    - Chcete-li odstranit objekt služby, dotaz pro váš cluster *servicePrincipalProfile.clientId* a odstraňte s [az ad app delete][az-ad-app-delete]. Následující zdroje skupiny a cluster názvy nahraďte vlastními hodnotami:
+- Instanční objekt pro Kubernetes je součástí konfigurace clusteru. Nepoužívejte ale identitu k nasazení clusteru.
+- Ve výchozím nastavení jsou přihlašovací údaje instančního objektu platné po dobu jednoho roku. [Přihlašovací údaje instančního objektu můžete kdykoli aktualizovat nebo otáčet][update-credentials] .
+- Každý instanční objekt je přidružený k aplikaci služby Azure AD. Instanční objekt pro cluster Kubernetes se dá přidružit k libovolnému platnému názvu aplikace Azure AD (například: *https://www.contoso.org/example* ). Adresa URL aplikace nemusí být skutečným koncovým bodem.
+- Pokud zadáte **ID klienta**instančního objektu, použijte hodnotu `appId`.
+- Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru `/etc/kubernetes/azure.json`.
+- Když použijete příkaz [AZ AKS Create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který se používá ke spuštění příkazu.
+- Když odstraníte cluster AKS, který byl vytvořen pomocí [AZ AKS Create][az-aks-create], objekt služby, který byl vytvořen automaticky, nebude odstraněn.
+    - Pokud chcete odstranit instanční objekt, zadejte dotaz na svůj cluster *servicePrincipalProfile. ClientID* a pak ho odstraňte pomocí příkazu [AZ AD App Delete][az-ad-app-delete]. Nahraďte následující názvy skupin prostředků a názvů clusterů vlastními hodnotami:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -140,7 +140,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Jsou ukládány do mezipaměti přihlašovací údaje instančního objektu služby pro AKS cluster pomocí Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování clusteru AKS. Tato chybová zpráva při spuštění [az aks vytvořit][az-aks-create] může znamenat problém s přihlašovacích údajů instančního objektu služby uložený v mezipaměti:
+Přihlašovací údaje instančního objektu pro cluster AKS se ukládají do mezipaměti rozhraní příkazového řádku Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování AKS clusterů. Při spuštění [AZ AKS Create][az-aks-create] může znamenat problém s přihlašovacími údaji instančního objektu uloženého v mezipaměti následující chybová zpráva:
 
 ```console
 Operation failed with status: 'Bad Request'.
@@ -148,19 +148,19 @@ Details: The credentials in ServicePrincipalProfile were invalid. Please see htt
 (Details: adal: Refresh request failed. Status Code = '401'.
 ```
 
-Zkontrolujte stáří souboru s přihlašovacími údaji pomocí následujícího příkazu:
+Pomocí následujícího příkazu ověřte stáří souboru s přihlašovacími údaji:
 
 ```console
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-Výchozí doba vypršení platnosti pro přihlašovací údaje instančního objektu služby je 1 rok. Pokud vaše *aksServicePrincipal.json* soubor je starší než jeden rok, odstraňte soubor a zkuste to znovu nasadit AKS cluster.
+Výchozí čas vypršení platnosti přihlašovacích údajů instančního objektu je jeden rok. Pokud je soubor *aksServicePrincipal. JSON* starší než jeden rok, odstraňte soubor a pokuste se znovu nasadit cluster AKS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o objektech služby Azure Active Directory najdete v tématu [aplikace a instanční objekty][service-principal].
+Další informace o Azure Active Directory instančních objektech naleznete v tématu [Application and Service instanční objekty][service-principal].
 
-Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [aktualizovat nebo otočit přihlašovací údaje pro instanční objekt služby ve službě AKS][update-credentials].
+Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [aktualizace nebo otočení přihlašovacích údajů pro instanční objekt v AKS][update-credentials].
 
 <!-- LINKS - internal -->
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md
@@ -177,6 +177,6 @@ Informace o tom, jak aktualizovat přihlašovací údaje, najdete v tématu [akt
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
+[aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

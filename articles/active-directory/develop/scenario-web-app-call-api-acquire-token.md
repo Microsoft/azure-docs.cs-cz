@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd66dcd6e3845aad79ebffb3cad656d0a14c1a6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720225"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274468"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API – získá token pro aplikaci.
 
@@ -29,7 +29,7 @@ Teď, když jste vytvořili objekt klientské aplikace, ho použijete k získán
 - Získání tokenu pro webové rozhraní API pomocí mezipaměti tokenů Chcete-li získat tento token, zavoláte `AcquireTokenSilent`.
 - Volání chráněného rozhraní API pomocí přístupového tokenu.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Metody kontroleru jsou chráněné pomocí atributu `[Authorize]`, který vynucuje ověřování uživatelů pro používání webové aplikace. Zde je kód, který volá Microsoft Graph.
 
@@ -61,10 +61,10 @@ public async Task<IActionResult> Profile()
  string[] scopes = new string[]{"user.read"};
  string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
 
-// use the access token to call a protected web API
-HttpClient client = new HttpClient();
-client.DefaultRequestHeaders.Add("Authorization", result.CreateAuthorizationHeader());
-string json = await client.GetStringAsync(url);
+ // use the access token to call a protected web API
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ string json = await client.GetStringAsync(url);
 }
 ```
 

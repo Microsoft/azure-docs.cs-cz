@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936686"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264424"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -56,7 +56,7 @@ Existují dva přístupy: použití výchozího monitorování a adaptivního vz
 
 Díky [adaptivnímu vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sady ASP.NET SDK se datový svazek automaticky upraví tak, aby udržoval v rámci zadané maximální míry provozu pro výchozí Application Insights monitorování. Pokud aplikace vytvoří nízké množství telemetrie, například při ladění nebo z důvodu nízkého využití, položky se nebudou vyřadit procesorem vzorkování, pokud je svazek pod úrovní konfigurovaných událostí za sekundu. U vysoce výkonných aplikací s výchozí prahovou hodnotou 5 událostí za sekundu se adaptivní vzorkování omezí počet denních událostí na 432 000. Při použití typické průměrné velikosti události 1 KB odpovídá to 13,4 GB telemetrie za 31 dní na uzel, který je hostitelem vaší aplikace (vzhledem k tomu, že vzorkování je provedeno místně pro každý uzel). 
 
-Pro sady SDK, které nepodporují adaptivní vzorkování, můžete použít [vzorkování ingestování) [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ], které vzorky, když se data receved pomocí Application Insights na základě procenta množství dat, která se mají zachovat, nebo [vzorkování s pevnou sazbou pro ASP.NET, ASP.NET Core a Java. webové stránky](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) , které snižují provoz odeslaný z webového serveru a webových prohlížečů
+Pro sady SDK, které nepodporují adaptivní vzorkování, můžete využívat [vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) ingestování, které vzorky, když se data Application Insights receved, na základě procenta dat, která se mají zachovat, nebo [vzorkování s pevnou sazbou pro ASP.NET, ASP.NET Core a Java. webové stránky](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) , které snižují provoz odeslaný z webového serveru a webových prohlížečů
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Další informace o shromažďování podobných zákazníků
 
@@ -68,10 +68,10 @@ Application Insights usnadňuje pochopení toho, jaké náklady budou pravděpod
 
 ![Zvolit ceny](./media/pricing/pricing-001.png)
 
-Určitého. Prohlédněte si svůj objem dat za měsíc. To zahrnuje všechna data, která jsou přijatá a zachovaná (po případném [vzorkování](../../azure-monitor/app/sampling.md)) z vašich serverových a klientských aplikací, a z testů dostupnosti.  
-B. Pro [webové testy s více kroky](../../azure-monitor/app/availability-multistep.md)se provede samostatný poplatek. (Nezahrnuje jednoduché testy dostupnosti, které jsou zahrnuté do poplatků za objem dat.)  
-R. Zobrazení trendů objemu dat za minulý měsíc.  
-Trojrozměrné. Povolit [vzorkování](../../azure-monitor/app/sampling.md)přijímání dat   
+určitého. Prohlédněte si svůj objem dat za měsíc. To zahrnuje všechna data, která jsou přijatá a zachovaná (po případném [vzorkování](../../azure-monitor/app/sampling.md)) z vašich serverových a klientských aplikací, a z testů dostupnosti.  
+b. Pro [webové testy s více kroky](../../azure-monitor/app/availability-multistep.md)se provede samostatný poplatek. (Nezahrnuje jednoduché testy dostupnosti, které jsou zahrnuté do poplatků za objem dat.)  
+r. Zobrazení trendů objemu dat za minulý měsíc.  
+trojrozměrné. Povolit [vzorkování](../../azure-monitor/app/sampling.md)přijímání dat   
 Cerebrální. Nastavte limit denního objemu dat.  
 
 Pokud chcete prozkoumat využití Application Insightsější, otevřete stránku **metriky** , přidejte metriku s názvem "svazek datových bodů" a pak vyberte možnost *použít rozdělení* pro rozdělení dat podle typu položky telemetrie. 
@@ -183,7 +183,7 @@ Pokud chcete změnit dobu uchovávání, z prostředku Application Insights pře
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-005.png)
 
-Uchování je také možné [nastavit přes ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell) pomocí parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom přes ARM. 
+Uchovávání je také možné [nastavit pomocí prostředí programově pomocí](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes ARM a měla by se používat s mimořádnou péčí. 
 
 Když se fakturace začne po delší dobu od 15. prosince 2019, data uchovávaná déle než 90 dnů se budou účtovat jako stejná sazba, která se aktuálně účtuje za Azure Log Analytics uchovávání dat. Další informace najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). [Pro tento návrh](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)můžete mít přehled o průběhu proměnlivého uchovávání dat. 
 

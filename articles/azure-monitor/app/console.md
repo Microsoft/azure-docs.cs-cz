@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169450"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274132"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -27,13 +27,13 @@ ms.locfileid: "71169450"
 K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se pomocí účet Microsoft, kterou můžete potřebovat pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. Váš tým může mít k Azure předplatné organizace: Požádejte vlastníka, aby vás do něho přidal pomocí účet Microsoft.
 
 > [!NOTE]
-> K dispozici je nová verze beta Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), a proto se dá použít v .NET Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo novější.
+> K dispozici je nová verze beta Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí na [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), a proto je možné ho použít v .net Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo vyšší.
 Po vydání stabilní verze tohoto nového balíčku bude tento dokument zastaralý.
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
-* Zkopírujte klíč instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili. 
+* V [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](../../azure-monitor/app/create-new-resource.md). Jako typ aplikace vyberte **Obecné**.
+* Poznamenejte si kopii klíče instrumentace. Vyhledejte klíč v rozevíracím seznamu **základy** nového prostředku, který jste vytvořili. 
 * Nainstalujte nejnovější balíček [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Před sledováním jakékoli telemetrie (nebo nastavením proměnné prostředí APPINSIGHTS_INSTRUMENTATIONKEY) nastavte klíč instrumentace ve vašem kódu. Potom byste měli být schopni ručně sledovat telemetrii a vidět ji na Azure Portal
 
@@ -47,13 +47,13 @@ telemetryClient.TrackTrace("Hello World!");
 
 * Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.
 
-Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí `ApplicationInsights.config` souboru. Ujistěte se, že k inicializaci dojde co nejdříve. 
+Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí souboru `ApplicationInsights.config`. Ujistěte se, že k inicializaci dojde co nejdříve. 
 
 > [!NOTE]
 > Pokyny odkazující na **ApplicationInsights. config** platí jenom pro aplikace, které cílí na .NET Framework a nevztahují se na aplikace .NET Core.
 
 ### <a name="using-config-file"></a>Použití konfiguračního souboru
-Ve výchozím nastavení Application Insights SDK při `ApplicationInsights.config` `TelemetryConfiguration` vytváření v pracovním adresáři vyhledá soubor.
+Ve výchozím nastavení vyhledává sada Application Insights SDK při vytváření `TelemetryConfiguration` soubor `ApplicationInsights.config` v pracovním adresáři.
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -103,7 +103,7 @@ Další informace najdete v tématu [Referenční dokumentace ke konfiguračním
 > [!NOTE]
 > Čtení konfiguračního souboru není v rozhraní .NET Core podporováno. Můžete zvážit použití [Application Insights SDK pro ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
-* Při spuštění aplikace vytvořte a nakonfigurujte `DependencyTrackingTelemetryModule` instanci – musí být typu Singleton a musí být zachována pro dobu života aplikace.
+* Při spuštění aplikace se vytvoří a nakonfigurují instance `DependencyTrackingTelemetryModule` – musí být typu Singleton a musí se zachovat pro dobu života aplikace.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -130,7 +130,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Pokud jste vytvořili konfiguraci pomocí jednoduchého `TelemetryConfiguration()` konstruktoru, je nutné povolit podporu korelace navíc. Není **nutné** , pokud si přečtete konfiguraci ze souboru, používá `TelemetryConfiguration.CreateDefault()` se `TelemetryConfiguration.Active`nebo.
+Pokud jste vytvořili konfiguraci pomocí jednoduchého konstruktoru `TelemetryConfiguration()`, je nutné povolit podporu korelace navíc. Není **potřeba** , pokud načtete konfiguraci ze souboru, který se používá `TelemetryConfiguration.CreateDefault()` nebo `TelemetryConfiguration.Active`.
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
@@ -159,7 +159,7 @@ namespace ConsoleApp
             configuration.InstrumentationKey = "removed";
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
-            var telemetryClient = new TelemetryClient();
+            var telemetryClient = new TelemetryClient(configuration);
             using (InitializeDependencyTracking(configuration))
             {
                 // run app...

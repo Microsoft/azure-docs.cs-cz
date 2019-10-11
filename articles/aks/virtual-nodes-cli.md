@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613779"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263867"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů pomocí Azure CLI
 
@@ -20,9 +20,9 @@ Pokud chcete rychle škálovat úlohy aplikace v clusteru AKS (Azure Kubernetes 
 
 V tomto článku se dozvíte, jak vytvořit a nakonfigurovat prostředky virtuální sítě a cluster AKS, a pak povolit virtuální uzly.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v ACI a v clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení se clustery AKS vytvářejí se základními sítěmi. V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
+Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v ACI a v clusteru AKS. Pro zajištění této komunikace se vytvoří podsíť virtuální sítě a přiřadí se delegovaná oprávnění. Virtuální uzly fungují jenom s clustery AKS vytvořenými pomocí *pokročilých* sítí. Ve výchozím nastavení se clustery AKS vytvářejí se *základními* sítěmi. V tomto článku se dozvíte, jak vytvořit virtuální síť a podsítě a pak nasadit cluster AKS, který využívá pokročilé sítě.
 
 Pokud jste ACI ještě dřív nepoužívali, zaregistrujte poskytovatele služeb u svého předplatného. Stav registrace poskytovatele ACI můžete zjistit pomocí příkazu [AZ Provider list][az-provider-list] , jak je znázorněno v následujícím příkladu:
 
@@ -68,20 +68,20 @@ Funkce virtuálních uzlů je silně závislá na sadě funkcí ACI. Následují
 * Inicializovat kontejnery
 * [Aliasy hostitele](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenty](../container-instances/container-instances-exec.md#restrictions) pro exec v ACI
-* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nebude nasazovat lusky do virtuálního uzlu.
+* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nebude nasazovat lusky do virtuálního uzlu.
 * [Uzly Windows serveru (aktuálně ve verzi Preview v AKS)](windows-container-cli.md) nejsou podporované současně s virtuálními uzly. Virtuální uzly můžete použít k naplánování kontejnerů Windows serveru bez nutnosti uzlů Windows serveru v clusteru AKS.
 
-## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+## <a name="launch-azure-cloud-shell"></a>Spustit Azure Cloud Shell
 
-Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku. Má společné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem.
 
-Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash). Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy ENTER ji spusťte.
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.49 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.49 nebo novější. Pokud chcete zjistit verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westus*.
+Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create][az-group-create] . Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *westus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -112,15 +112,15 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Aby mohl cluster AKS pracovat a komunikovat s jinými prostředky Azure, používá se instanční objekt služby Azure Active Directory. Tento instanční objekt se dá automaticky vytvořit pomocí rozhraní příkazového řádku Azure nebo portálu, nebo si ho můžete předem vytvořit a přiřadit další oprávnění.
+Pokud chcete, aby cluster AKS spolupracoval s dalšími prostředky Azure, použije se Azure Active Directory instanční objekt. Tento instanční objekt je možné automaticky vytvořit pomocí Azure CLI nebo portálu, nebo ho můžete předem vytvořit a přiřadit další oprávnění.
 
-Vytvořte instanční objekt pomocí příkazu [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. Parametr `--skip-assignment` nastavuje omezení, aby už nešla přidělovat žádná další oprávnění.
+Objekt služby vytvoříte pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Parametr `--skip-assignment` omezuje přiřazení dalších oprávnění.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-Výstup se podobá následujícímu příkladu:
+Výstup je podobný následujícímu příkladu:
 
 ```
 {
@@ -132,7 +132,7 @@ Výstup se podobá následujícímu příkladu:
 }
 ```
 
-Poznamenejte si *appId* a *password*. Tyto hodnoty se použijí v dalších krocích.
+Poznamenejte si *appId* a *Password*. Tyto hodnoty se používají v následujících krocích.
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Přiřazení oprávnění k virtuální síti
 
@@ -144,7 +144,7 @@ Nejdřív Získejte ID prostředku virtuální sítě pomocí [AZ Network VNet s
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-Chcete-li udělit správnému přístupu ke clusteru AKS použít virtuální síť, vytvořte přiřazení role pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Nahraďte `<appId`> a `<vnetId>` hodnotami získanými v předchozích dvou krocích.
+Chcete-li udělit správnému přístupu ke clusteru AKS použít virtuální síť, vytvořte přiřazení role pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Nahradí hodnoty `<appId` > a `<vnetId>` hodnotami shromážděnými v předchozích dvou krocích.
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -158,7 +158,7 @@ Cluster AKS nasadíte do podsítě AKS vytvořené v předchozím kroku. Získá
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` ID, které jste získali v předchozím kroku, a `<appId>` pak `<password>` a pomocí 
+Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster s názvem *myAKSCluster* s jedním uzlem. Nahraďte `<subnetId>` ID, které jste získali v předchozím kroku, a pak `<appId>` a `<password>` s 
 
 ```azurecli-interactive
 az aks create \
@@ -174,7 +174,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
+Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON.
 
 ## <a name="enable-virtual-nodes-addon"></a>Povolit doplněk virtuálních uzlů
 
@@ -188,15 +188,15 @@ az aks enable-addons \
     --subnet-name myVirtualNodeSubnet
 ```
 
-## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
+## <a name="connect-to-the-cluster"></a>Připojit ke clusteru
 
-Pokud chcete `kubectl` nakonfigurovat připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tímto krokem se stáhnou přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pokud chcete nakonfigurovat `kubectl` pro připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento krok stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][kubectl-get], který vrátí seznam uzlů clusteru.
+Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl Get][kubectl-get] , který vrátí seznam uzlů clusteru.
 
 ```console
 kubectl get nodes
@@ -214,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Nasazení ukázkové aplikace
 
-Vytvořte soubor s názvem `virtual-node.yaml` a zkopírujte ho na následující YAML. Pro naplánování kontejneru na uzlu jsou definovány [nodeSelector][node-selector] a [tolerování][toleration] .
+Vytvořte soubor s názvem `virtual-node.yaml` a zkopírujte následující YAML. Pro naplánování kontejneru na uzlu jsou definovány [nodeSelector][node-selector] a [tolerování][toleration] .
 
 ```yaml
 apiVersion: apps/v1
@@ -253,7 +253,7 @@ Spusťte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Použijte příkaz [kubectl Get lusks][kubectl-get] s `-o wide` argumentem pro výstup seznamu lusků a naplánovaného uzlu. Všimněte si, `aci-helloworld` že `virtual-node-aci-linux` uzel pod byl naplánován na uzlu.
+Pro výstup seznamu lusků a naplánovaného uzlu použijte příkaz [kubectl Get lusks][kubectl-get] s argumentem `-o wide`. Všimněte si, že `aci-helloworld` pod bylo naplánováno na uzlu `virtual-node-aci-linux`.
 
 ```
 $ kubectl get pods -o wide
@@ -265,7 +265,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Pod ní je přiřazena interní IP adresa z podsítě virtuální sítě Azure delegované pro použití s virtuálními uzly.
 
 > [!NOTE]
-> Pokud používáte Image uložené v Azure Container Registry, [nakonfigurujte a používejte tajný kód Kubernetes][acr-aks-secrets]. Aktuálním omezením virtuálních uzlů je, že nemůžete použít integrované ověřování instančního objektu služby Azure AD. Pokud nepoužíváte tajný kód, nespustí se u nich naplánované na virtuálních uzlech a nahlásí se chyba `HTTP response status code 400 error code "InaccessibleImage"`.
+> Pokud používáte Image uložené v Azure Container Registry, [nakonfigurujte a používejte tajný kód Kubernetes][acr-aks-secrets]. Aktuálním omezením virtuálních uzlů je, že nemůžete použít integrované ověřování instančního objektu služby Azure AD. Pokud nepoužíváte tajný kód, nespustí se v něm naplánované na virtuálních uzlech a nahlásí se chyba `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>Test virtuálního uzlu pod
 
@@ -275,13 +275,13 @@ Chcete-li otestovat běžící na virtuálním uzlu, přejděte k ukázkové apl
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Nainstalujte `curl` v části pod pomocí `apt-get`:
+Nainstalovat `curl` v části pod pomocí `apt-get`:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Teď dostanete přístup k adrese vašeho pod pomocí `curl`, *http://10.241.0.4* jako je například. Zadejte vlastní interní IP adresu zobrazenou v předchozím `kubectl get pods` příkazu:
+Teď dostanete přístup k adrese vaší pod pomocí `curl`, jako je například *http://10.241.0.4* . Zadejte vlastní interní IP adresu uvedenou v předchozím příkazu `kubectl get pods`:
 
 ```console
 curl -L http://10.241.0.4
@@ -299,7 +299,7 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-Zavřete relaci Terminálové služby k vašemu testu pod `exit`. Po ukončení relace je pod odstraněnou.
+Ukončete relaci terminálu s testem pod `exit`. Po ukončení relace je pod odstraněnou.
 
 ## <a name="remove-virtual-nodes"></a>Odebrat virtuální uzly
 
@@ -364,6 +364,7 @@ Virtuální uzly jsou často jednou součástí řešení škálování v AKS. D
 [aks-github]: https://github.com/azure/aks/issues
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -384,4 +385,3 @@ Virtuální uzly jsou často jednou součástí řešení škálování v AKS. D
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

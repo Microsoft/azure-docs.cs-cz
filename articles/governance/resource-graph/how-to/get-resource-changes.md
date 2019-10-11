@@ -1,5 +1,5 @@
 ---
-title: Získání změn prostředků
+title: Získat změny prostředků
 description: Zjistěte, jak najít, kdy byl prostředek změněn, a získejte seznam vlastností, které se změnily.
 services: resource-graph
 author: DCtheGeek
@@ -7,14 +7,14 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244115"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274196"
 ---
-# <a name="get-resource-changes"></a>Získání změn prostředků
+# <a name="get-resource-changes"></a>Získat změny prostředků
 
 Prostředky se v průběhu každodenního použití, změny konfigurace a dokonce opětovného nasazení mění.
 Změna může pocházet z individuálního nebo automatizovaného procesu. Většina změn je záměrné, ale někdy ne. V posledních 14 dnech historie změn vám Azure Resource Graph umožní:
@@ -30,6 +30,7 @@ Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkov�
 - Informace o tom, jaké další vlastnosti se mohly změnit, když prostředek změnil stav dodržování předpisů. Vyhodnocení těchto dalších vlastností může poskytnout přehled o dalších vlastnostech, které mohou být nutné ke správě pomocí definice Azure Policy.
 
 Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure.
+Podrobnosti o změnách vašich aplikací z infrastruktury do nasazení aplikace najdete v tématu [použití analýzy změn aplikace (Preview)](../../../azure-monitor/app/change-analysis.md) v Azure monitor.
 
 > [!NOTE]
 > Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/automation-change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.

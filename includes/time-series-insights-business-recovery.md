@@ -3,71 +3,72 @@ ms.topic: include
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a3c630b54ff95a9b1200e2421c787a514a0aa52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/09/2019
+ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431034"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72259094"
 ---
-## <a name="business-disaster-recovery"></a>Zotavení po havárii firmy
+## <a name="business-disaster-recovery"></a>Zotavení po havárii podniku
 
-Tato část popisuje funkce služby Azure Time Series Insights, který zachovat aplikace a služby spuštěné, i když dojde k havárii (označované jako *zotavení po havárii obchodní*).
+Tato část popisuje funkce Azure Time Series Insights, které udržují spuštěné aplikace a služby, a to i v případě, že dojde k havárii (označované jako *obnovení obchodních havárií*).
 
 ### <a name="high-availability"></a>Vysoká dostupnost
 
-Služby Azure Time Series Insights poskytuje určité *vysoké dostupnosti* funkcí pomocí redundance na úrovni oblasti Azure. Například Azure podporuje možnosti zotavení po havárii prostřednictvím služby Azure *dostupnosti mezi různými oblastmi* funkce.
+Jako služba Azure Time Series Insights poskytuje určité funkce *vysoké dostupnosti* , které využívají redundance na úrovni oblasti Azure. Azure například podporuje možnosti zotavení po havárii prostřednictvím funkce *dostupnosti napříč oblastmi* Azure.
 
-Další funkce vysoké dostupnosti k dispozici prostřednictvím Azure (a také k dispozici na jakoukoli instanci služby Time Series Insights):
+Další funkce s vysokou dostupností poskytované prostřednictvím Azure (a také dostupné pro libovolnou instanci Time Series Insights) zahrnují:
 
-- **Převzetí služeb při selhání**: Azure poskytuje [geografickou replikaci a vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
-- **Obnovení dat** a **úložiště obnovení**: Azure poskytuje [celou řadu možností pro zachování a obnovení dat](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Obnovení lokality**: Azure poskytuje funkce pro obnovení lokality pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Převzetí služeb při selhání**: Azure zajišťuje [geografickou replikaci a vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
+- Obnovení **dat** a **obnovení úložiště**: Azure nabízí [několik možností, jak uchovávat a obnovovat data](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
+- **Site Recovery**: Azure poskytuje funkce Site Recovery prostřednictvím [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) podporuje místní i cloudové zálohování virtuálních počítačů Azure.
 
-Ujistěte se, že jste povolili relevantní funkce Azure pro zajištění vysoké dostupnosti globální, mezi různými oblastmi pro zařízení a uživatelů.
+Ujistěte se, že jste povolili příslušné funkce Azure a zajistili globální a vysokou dostupnost pro vaše zařízení a uživatele v různých oblastech.
 
 > [!NOTE]
-> Pokud Azure je nakonfigurované tak, aby mezi oblastmi dostupnosti, není nutná žádná konfigurace větší dostupnost mezi různými oblastmi v Azure Time Series Insights.
+> Pokud je Azure nakonfigurovaný tak, aby povoloval dostupnost mezi oblastmi, v Azure Time Series Insights není nutná žádná další konfigurace dostupnosti mezi oblastmi.
 
-### <a name="iot-and-event-hubs"></a>IoT a centra událostí
+### <a name="iot-and-event-hubs"></a>Centra IoT a Event hub
 
-Některé služby Azure IoT také zahrnují integrované funkce pro zotavení po havárii:
+Mezi některé služby Azure IoT patří také integrované funkce pro obnovení obchodních havárií:
 
-- [Zotavení po havárii vysokou dostupnost služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), včetně uvnitř oblasti redundance
-- [Zásady centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure redundance úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [IoT Hub zotavení po havárii s vysokou dostupností](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), včetně redundance uvnitř oblasti
+- [Zásady Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
-Integrace s dalšími službami Time Series Insights poskytuje další po havárii příležitosti pro obnovení. Telemetrická data odesílaná do vašeho centra událostí může například nastavit jako trvalý, k záloze databáze úložiště objektů Blob v Azure.
+Integrace Time Series Insights s ostatními službami nabízí další možnosti zotavení po havárii. Například telemetrii poslaná do centra událostí může být trvalá v zálohování databáze úložiště objektů BLOB v Azure.
 
 ### <a name="time-series-insights"></a>Time Series Insights
 
-Existuje několik způsobů, jak zachovat vaše data služby Time Series Insights, aplikace a služby spuštěné, i v případě, že přerušit. 
+Existuje několik způsobů, jak uchovávat data Time Series Insights, aplikace a služby spuštěné, i když jsou přerušeny. 
 
-Ale možná zjistíte, že kompletní záložní kopie vašeho prostředí Azure Time Series také vyžaduje, k těmto účelům:
+Je ale možné, že se vyžaduje také kompletní záložní kopie prostředí Azure Time Series, a to z těchto důvodů:
 
-- Jako *převzetí služeb při selhání instance* speciálně pro Time Series Insights k přesměrování dat a provoz do
-- Chcete-li zachovat data a informace o auditování
+- Jako *instance převzetí služeb při selhání* specifickou pro Time Series Insights pro přesměrování dat a provozu do
+- Zachování informací o datech a auditování
 
-Obecně platí nejlepší způsob, jak duplikovat prostředí Time Series Insights je vytvoření druhého prostředí Time Series Insights ve službě backup oblasti Azure. Události jsou také odesílány do tohoto sekundárního prostředí ze zdroje událostí primární. Ujistěte se, že používáte skupinu příjemců druhou, vyhrazené. Postupujte podle pokyny k obnovení po havárii firmy tohoto zdroje, jak je popsáno výše.
+Obecně platí, že nejlepším způsobem, jak duplikovat Time Series Insights prostředí, je vytvořit druhé prostředí Time Series Insights v rámci zálohování v oblasti Azure. Události se také odesílají do tohoto sekundárního prostředí z primárního zdroje událostí. Ujistěte se, že používáte druhou, vyhrazenou skupinu uživatelů. Postupujte podle pokynů pro zotavení po havárii tohoto zdroje, jak je popsáno výše.
 
-K vytvoření duplicitní prostředí:
+Vytvoření duplicitního prostředí:
 
-1. Vytvořte prostředí v druhé oblasti. Další informace najdete v tématu [vytvořit nové prostředí Time Series Insights na webu Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
-1. Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.
-1. Připojte tento zdroj událostí do nového prostředí. Ujistěte se, že určíte druhé, vyhrazená skupina příjemců.
-1. Projděte si Time Series Insights [služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) a [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) dokumentaci.
+1. Vytvořte prostředí ve druhé oblasti. Další informace najdete v tématu [Vytvoření nového Time Series Insightsho prostředí v Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+1. Vytvořte druhou vyhrazenou skupinu uživatelů pro zdroj události.
+1. Připojte tento zdroj událostí k novému prostředí. Ujistěte se, že určíte druhou, vyhrazenou skupinu uživatelů.
+1. Přečtěte si dokumentaci Time Series Insights [IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) a [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) .
 
 Pokud dojde k události:
 
-1. Pokud primární oblast je ovlivněné incidentem po havárii, přesměrování operací zálohování prostředí Time Series Insights.
-1. Zálohujte a Obnovujte všechny telemetrických dat a dotazování dat Time Series Insights pomocí druhé oblasti.
+1. Pokud je vaše primární oblast ovlivněná během incidentu po havárii, přesměrujte operace do prostředí zálohování Time Series Insights.
+1. Pomocí druhé oblasti můžete zálohovat a obnovovat všechna Time Series Insights telemetrie a data dotazů.
 
 > [!IMPORTANT]
-> Pokud dojde k selhání:
+> Pokud dojde k převzetí služeb při selhání:
 > 
-> * Může také dojít ke zpoždění.
-> * Momentální Špička při zpracování zprávy může dojít, jako jsou přesměrovány operace.
+> * Může dojít také ke zpoždění.
+> * V průběhu přesměrování operací se může vyskytnout chvilkový špička zpracování zpráv.
 > 
 > Další informace najdete v tématu [zmírnění latence v Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 

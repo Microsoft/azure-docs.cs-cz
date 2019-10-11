@@ -1,6 +1,6 @@
 ---
-title: Odesílání událostí do prostředí Azure Time Series Insights | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat Centrum událostí a spustit ukázkovou aplikaci pro odesílání událostí, které si můžete prohlédnout v Azure Time Series Insights.
+title: Odeslání událostí do prostředí pro Azure Time Series Insights | Microsoft Docs
+description: Naučte se konfigurovat centrum událostí a spustit ukázkovou aplikaci, která bude nabízet události, které můžete zobrazit v Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,86 +10,86 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072828"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274524"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
+# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Odeslání událostí do Time Series Insights prostředí pomocí centra událostí
 
 Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./time-series-insights-update-create-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 
-1. Zjistěte, jak vytvořit Centrum událostí, najdete v článku [dokumentace ke službě Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
-1. Do vyhledávacího pole vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
-1. Vyberte Centrum událostí.
+1. Informace o tom, jak vytvořit centrum událostí, najdete v [dokumentaci k Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+1. Do vyhledávacího pole vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
+1. Vyberte centrum událostí.
 1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity**centrum událostí.  
 
-    [![Seznam Center událostí](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
+    [@no__t – 1List z Center událostí](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
-1. Po vytvoření centra událostí, vyberte ho v seznamu event hubs.
+1. Po vytvoření centra událostí ho vyberte v seznamu Center událostí.
 1. V nabídce v části **entity**vyberte možnost **Event Hubs**.
-1. Vyberte název centra událostí, abyste ho nakonfigurovali.
+1. Vyberte název centra událostí, abyste ho mohli nakonfigurovat.
 1. V části **Přehled**vyberte **skupiny uživatelů**a pak vyberte **Skupina uživatelů**.
 
-    [![Vytvoření skupiny uživatelů](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
+    [@no__t – 1Create skupina příjemců](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Ujistěte se, že jste vytvořili skupinu uživatelů, která je používána výhradně vaším Time Series Insights zdrojem událostí.
 
     > [!IMPORTANT]
-    > Ujistěte se, že tuto skupinu uživatelů nepoužívá žádná jiná služba, například Azure Stream Analytics úloha nebo jiné Time Series Insights prostředí. Pokud skupinu příjemců je použit jinými služby, operace čtení jsou negativně ovlivněna pro toto prostředí i pro jiné služby. Pokud používáte **$Default** jako skupinu příjemců jinými čtenáři může potenciálně opakovaně používat vaše skupina uživatelů.
+    > Ujistěte se, že tuto skupinu uživatelů nepoužívá žádná jiná služba, například Azure Stream Analytics úloha nebo jiné Time Series Insights prostředí. Pokud je skupina uživatelů používána jinými službami, operace čtení jsou negativně ovlivněny pro toto prostředí i pro jiné služby. Pokud jako skupinu příjemců použijete **$Default** , ostatní čtenáři můžou potenciálně znovu použít vaši skupinu uživatelů.
 
 1. V nabídce v části **Nastavení**vyberte **zásady sdíleného přístupu**a pak vyberte **Přidat**.
 
-    [![Vyberte zásady sdíleného přístupu a pak vyberte tlačítko Přidat.](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
+    [@no__t – zásady sdíleného přístupu 1Select a pak vyberte tlačítko Přidat.](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
-1. V **přidat nové zásady sdíleného přístupu** podokně vytvoření sdíleného přístupu s názvem **zásady MySendPolicy**. Pomocí této zásady sdíleného přístupu můžete odesílat události v C# příkladech dále v tomto článku.
+1. V podokně **Přidat nové zásady sdíleného přístupu** vytvořte sdílený přístup s názvem **MySendPolicy**. Pomocí této zásady sdíleného přístupu můžete odesílat události v C# příkladech dále v tomto článku.
 
-    [![Do pole název zásady zadejte MySendPolicy](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
+    [@no__t – 1In pole název zásady zadejte MySendPolicy.](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. V části **deklarace identity**zaškrtněte políčko **Odeslat** .
 
-## <a name="add-a-time-series-insights-instance"></a>Přidání instance služby Time Series Insights
+## <a name="add-a-time-series-insights-instance"></a>Přidat instanci Time Series Insights
 
-Aktualizace služby Time Series Insights používá k přidání kontextové údaje do příchozí telemetrická data instance. Data je spojena v době zpracování dotazu **ID řady času**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku `id`. Další informace o instancích Time Series Insights a **ID řady času**, naleznete v tématu [čas řady modely](./time-series-insights-update-tsm.md).
+Time Series Insights Update používá instance pro přidání kontextových dat do příchozích dat telemetrie. Data jsou připojena v době dotazu pomocí **ID časové řady**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku, je `id`. Další informace o instancích Insight Series Insights a **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
 
-1. Pokud jste ještě nevytvořili zdroj událostí, dokončete postup [vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+1. Pokud jste ještě nevytvořili zdroj událostí, proveďte kroky k [Vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Nastavit hodnotu pro `timeSeriesId`. Další informace o **ID řady času**, naleznete v tématu [čas řady modely](./time-series-insights-update-tsm.md).
+1. Nastavte hodnotu pro `timeSeriesId`. Další informace o **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md).
 
-### <a name="push-events"></a>Odesílání událostí (windmills ukázka)
+### <a name="push-events-to-windmills-sample"></a>Vložení událostí do Windmills Sample
 
-1. Na panelu hledání vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
+1. Na panelu hledání vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
 
 1. Vyberte instanci centra událostí.
 
-1. Přejděte > na **zásady sdíleného přístupu** **MySendPolicy**. Zkopírujte hodnotu **připojovací řetězec – primární klíč**.
+1. Přejděte do **zásad sdíleného přístupu** > **MySendPolicy**. Zkopírujte hodnotu **připojovacího řetězce – primární klíč**.
 
-    [![Kopírovat hodnotu pro připojovací řetězec primárního klíče](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
+    [@no__t – 1Copy hodnotu pro připojovací řetězec primárního klíče](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
-1. Přejděte do části https://tsiclientsample.azurewebsites.net/windFarmGen.html (Soubor > Nový > Jiné). Adresa URL spustí windmill simulované zařízení.
-1. V **připojovací řetězec centra událostí** pole na webové stránce, vložte připojovací řetězec, který jste zkopírovali v [odesílání událostí](#push-events).
+1. Přejít na @no__t – 0. Adresa URL spouští simulovaná zařízení Windmill.
+1. Do pole **připojovací řetězec centra událostí** na webové stránce vložte připojovací řetězec, který jste zkopírovali do [vstupního pole Windmill](#push-events-to-windmills-sample).
   
-    [![Vložte připojovací řetězec primárního klíče do pole Připojovací řetězec centra událostí.](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)
+    [@no__t – 1Paste připojovací řetězec primárního klíče v poli připojovací řetězec centra událostí](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
-1. Vyberte **Kliknutím spustíte**. Simulátor generuje instance JSON, které můžete použít přímo.
+1. Vyberte **kliknutím spustit**. Simulátor generuje JSON instance, který můžete použít přímo.
 
-1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na stránce **Přehled** se zobrazí nové události, které centrum událostí přijme.
+1. Vraťte se do centra událostí v Azure Portal. Na stránce **Přehled** se zobrazí nové události, které centrum událostí přijme.
 
-    [![Stránka s přehledem centra událostí, která zobrazuje metriky pro centrum událostí](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
+    [@no__t – stránka Přehled centra událostí 1An, která zobrazuje metriky pro centrum událostí](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
-## <a name="json"></a>Podporované tvary JSON
+## <a name="supported-json-shapes"></a>Podporované tvary JSON
 
 ### <a name="example-one"></a>Příklad jedné
 
-* **Vstup**: Jednoduchý objekt JSON.
+* **Input**: jednoduchý objekt JSON.
 
     ```JSON
     {
@@ -98,15 +98,15 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
     }
     ```
 
-* **Výstup**: Jedna událost.
+* **Výstup**: jedna událost.
 
     |id|časové razítko|
     |--------|---------------|
-    |device1|2016-01-08T01:08:00Z|
+    |zařízení1|2016-01-08T01:08:00Z|
 
 ### <a name="example-two"></a>Příklad 2
 
-* **Vstup**: Pole JSON se dvěma objekty JSON. Každý objekt JSON je převedena na událost.
+* **Input**: pole JSON se dvěma objekty JSON. Každý objekt JSON je převeden na událost.
 
     ```JSON
     [
@@ -121,16 +121,16 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
     ]
     ```
 
-* **Výstup**: Dvě události.
+* **Výstup**: dvě události.
 
     |id|časové razítko|
     |--------|---------------|
-    |device1|2016-01-08T01:08:00Z|
+    |zařízení1|2016-01-08T01:08:00Z|
     |device2|2016-01-08T01:17:00Z|
 
 ### <a name="example-three"></a>Příklad tři
 
-* **Vstup**: Objekt JSON s vnořeného pole JSON, který obsahuje dva objekty JSON.
+* **Input**: objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON.
 
     ```JSON
     {
@@ -148,16 +148,16 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
     }
     ```
 
-* **Výstup**: Dvě události. Vlastnost **umístění** se kopíruje do každé události.
+* **Výstup**: dvě události. **Umístění** vlastnosti je zkopírováno do každé události.
 
-    |location|events.id|events.timestamp|
+    |umístění|events.id|události. timestamp|
     |--------|---------------|----------------------|
-    |WestUs|device1|2016-01-08T01:08:00Z|
+    |WestUs|zařízení1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
 
 ### <a name="example-four"></a>Příklad 4
 
-* **Vstup**: Objekt JSON s vnořeného pole JSON, který obsahuje dva objekty JSON. Tento vstup ukazuje, že globální vlastnosti může reprezentovat komplexní objekt JSON.
+* **Input**: objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON. Tento vstup ukazuje, že globální vlastnosti mohou být reprezentovány komplexním objektem JSON.
 
     ```JSON
     {
@@ -189,13 +189,15 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
     }
     ```
 
-* **Výstup**: Dvě události.
+* **Výstup**: dvě události.
 
-    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |umístění|manufacturer.name|výrobce. umístění|events.id|události. timestamp|události. data. Type|události. data. Units|události. data. Value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
-    |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
+    |WestUs|manufacturer1|EastUs|zařízení1|2016-01-08T01:08:00Z|Citlivost|rozhraní|108,09|
+    |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|Vibrační|ABS G|217,09|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Zobrazte si prostředí](https://insights.timeseries.azure.com) v Průzkumníkovi Time Series Insights.
+
+- Přečtěte si další informace o [IoT Hubch zprávách zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) .

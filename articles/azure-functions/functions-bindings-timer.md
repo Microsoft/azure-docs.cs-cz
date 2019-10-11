@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937115"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263434"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -213,7 +213,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -264,7 +264,7 @@ Každé pole může mít jeden z následujících typů hodnot:
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|v hh: 05:00, kde HH je každou hodinu (jednou za hodinu)|
 |Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: mm: 00 každý den, kde mm je každé minuty hodiny (60 dní)|
-|Rozsah (operátor `-`)|<nobr>"5-7 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 06 a hh: mm: 07, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|  
+|Rozsah (operátor `-`)|<nobr>"5-7 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 06 a hh: mm: 07, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|
 |Sada hodnot (operátor `,`)|<nobr>"5, 8, 10 * * * * *"</nobr>|v hh: mm: 05, hh: mm: 08 a hh: mm: 10, kde hh: mm je každou minutu každou hodinu (3 hodiny za minutu)|
 |Hodnota intervalu (operátor `/`)|<nobr>"0 */5 * * * *"</nobr>|v hh: 05:00, hh: 10:00, hh: 15:00, a tak dále až hh: 55:00, kde HH je každou hodinu (12 krát za hodinu)|
 
@@ -326,7 +326,16 @@ Pokud se aplikace funkcí škáluje na více instancí, spustí se ve všech ins
 
 ## <a name="function-apps-sharing-storage"></a>Aplikace Function App pro sdílení úložiště
 
-Pokud sdílíte účet úložiště mezi více aplikacemi funkcí, ujistěte se, že každá aplikace Function App má v *Host. JSON*jinou `id`. Můžete vynechat vlastnost `id` nebo ručně nastavit každou `id` aplikace Function App na jinou hodnotu. Aktivační událost časovače používá zámek úložiště k tomu, aby se zajistilo, že pokud se aplikace funkcí škáluje na více instancí, bude to mít jenom jednu instanci časovače. Pokud dvě aplikace Function sdílí stejné `id` a každá z nich používá aktivační událost časovače, spustí se jenom jeden časovač.
+Pokud sdílíte účty úložiště napříč aplikacemi funkcí, které nejsou nasazené do služby App Service, může být nutné explicitně přiřadit ID hostitele ke každé aplikaci.
+
+| Verze funkcí | Nastavením                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2.x               | Proměnná prostředí `AzureFunctionsWebHost__hostid` |
+| verze               | `id` v *Host. JSON*                                  |
+
+Identifikujte hodnotu můžete vynechat nebo ručně nastavit identifikaci konfigurace aplikace Function App na jinou hodnotu.
+
+Aktivační událost časovače používá zámek úložiště, aby zajistila, že pokud se aplikace funkcí škáluje na více instancí, je potřeba jenom jedna instance časovače. Pokud dvě aplikace Function App sdílí stejnou identifikaci konfigurace a každá z nich používá aktivační událost časovače, spustí se jenom jedno časovače.
 
 ## <a name="retry-behavior"></a>Chování opakování
 

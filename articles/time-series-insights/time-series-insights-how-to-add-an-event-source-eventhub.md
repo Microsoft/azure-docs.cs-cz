@@ -1,6 +1,6 @@
 ---
-title: Přidání zdroje událostí služby Event Hubs do služby Azure Time Series Insights | Dokumentace Microsoftu
-description: Tento článek popisuje postup přidání zdroje událostí, který je připojený k Azure Event Hubs do prostředí Time Series Insights.
+title: Přidat zdroj události Event Hubs do Azure Time Series Insights | Microsoft Docs
+description: Tento článek popisuje, jak do prostředí Time Series Insights přidat zdroj událostí, který je připojený k Azure Event Hubs.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8403c8fbc4faf35e0ccd3c87347e88a46f0769ff
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854463"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274350"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
 
-Tento článek popisuje postup přidání zdroje událostí, která čte data z Azure Event Hubs do prostředí Azure Time Series Insights pomocí webu Azure portal.
+Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, který čte data z Azure Event Hubs do vašeho Azure Time Series Insights prostředí.
 
 > [!NOTE]
 > Postup, který je popsaný v tomto článku, platí jak pro prostředí Time Series Insights GA a Time Series Insights ve verzi Preview.
@@ -29,88 +29,90 @@ Tento článek popisuje postup přidání zdroje událostí, která čte data z 
 
 - Vytvořte Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./time-series-insights-update-create-environment.md).
 - Vytvořte centrum událostí. Přečtěte si téma [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md).
-- Centrum událostí, musíte mít aktivní zprávě události do něj odesílají. Naučte se [odesílat události do Azure Event Hubs pomocí .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
-- Vytvořte vyhrazenou skupinu spotřebitelů v Centru událostí, které využívají z prostředí Time Series Insights. Každý zdroj událostí Time Series Insights musí mít svůj vlastní vyhrazenou skupinu spotřebitelů, který není sdílený s další příjemce. Pokud více čtenářům přijímat události z stejnou skupinu uživatelů, jsou pravděpodobně uvidíte selhání všechny nástroje pro čtení. Platí omezení 20 skupin uživatelů na Centrum událostí. Podrobnosti najdete v tématu [programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md).
+- Centrum událostí musí mít odeslané aktivní události zpráv. Naučte se [odesílat události do Azure Event Hubs pomocí .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Vytvořte vyhrazenou skupinu uživatelů v centru událostí, ze které může prostředí Time Series Insights spotřebovat. Každý Time Series Insights zdroj události musí mít svou vlastní vyhrazenou skupinu uživatelů, která není sdílená s žádným jiným příjemcem. Pokud více čtenářů spotřebovává události ze stejné skupiny příjemců, budou se jim nejspíš zobrazovat chyby. V každém centru událostí je limit 20 skupin uživatelů. Podrobnosti najdete v tématu [Průvodce programováním v Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidat skupinu uživatelů do vašeho centra událostí
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidání skupiny příjemců do centra událostí
 
-Aplikace používat skupiny příjemců k získání dat z Azure Event Hubs. Pokud chcete spolehlivě číst data z centra událostí, poskytněte vyhrazenou skupinu uživatelů, kterou používá jenom toto Time Series Insights prostředí.
+Aplikace používají skupiny uživatelů k vyžádání dat z Azure Event Hubs. Pokud chcete spolehlivě číst data z centra událostí, poskytněte vyhrazenou skupinu uživatelů, kterou používá jenom toto Time Series Insights prostředí.
 
-Chcete-li přidat novou skupinu uživatelů ve službě event hub:
+Přidání nové skupiny příjemců do centra událostí:
 
-1. Na webu Azure Portal vyhledejte a otevřete vaše Centrum událostí.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete centrum událostí z oboru názvů centra událostí.
 
-1. V části **entity**vyberte **skupiny příjemců**a pak vyberte **skupinu příjemců**.
+    [@no__t – 1Open oboru názvů centra událostí](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
-   [![Centrum událostí – přidat skupinu příjemců](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
+1. V části **entity**vyberte **skupiny uživatelů**a pak vyberte **Skupina uživatelů**.
 
-1. Na **skupiny příjemců** stránky, zadejte novou jedinečnou hodnotu pro **název**.  Když vytvoříte nový zdroj událostí do prostředí Time Series Insights, použijte tento stejný název.
+   [@no__t – 1Event hub – přidání skupiny příjemců](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
-1. Vyberte **Vytvořit**.
+1. Na stránce **skupiny příjemců** zadejte novou jedinečnou hodnotu pro **název**.  Stejný název použijte při vytváření nového zdroje událostí v prostředí Time Series Insights.
 
-## <a name="add-a-new-event-source"></a>Přidat nový zdroj událostí
+1. Vyberte **vytvořit**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Vyhledejte existující prostředí Time Series Insights. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte vaše prostředí Time Series Insights.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 
-1. V části **topologie prostředí**vyberte **zdroje událostí**a pak vyberte **přidat**.
+1. Vyhledejte existující Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte prostředí Time Series Insights.
 
-   [![V části zdroje událostí vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
+1. V části **topologie prostředí**vyberte **zdroje událostí**a pak vyberte **Přidat**.
 
-1. Zadejte hodnotu pro **název zdroje událostí** , který je jedinečný pro toto prostředí Time Series Insights, jako například **datového proudu událostí**.
+   [@no__t – 1Under zdroje událostí, vyberte tlačítko Přidat.](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
-1. Pro **zdroj**vyberte **centra událostí**.
+1. Zadejte hodnotu pro **název zdroje události** , která je jedinečná pro toto Time Series Insights prostředí, jako je například **Event-Stream**.
 
-1. Vyberte příslušné hodnoty pro **možnost importu**:
-   - Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použijte Centrum událostí z dostupných předplatných**. Tato možnost je nejjednodušší přístup.
+1. V případě **zdroje**vyberte **centrum událostí**.
 
-       [![V podokně nový zdroj událostí zadejte hodnoty pro první tři parametry.](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+1. Vyberte odpovídající hodnoty pro **možnost importovat**:
 
+   * Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použít centrum událostí z dostupných předplatných**. Tato možnost představuje nejjednodušší přístup.
 
-       [![Podrobnosti o předplatném a centru událostí](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+     [@no__t – 1Select možnost importu zdroje událostí](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
-     V následující tabulce jsou popsány požadované vlastnosti pro **použijte Centrum událostí z dostupných předplatných** možnost:
+    *  V následující tabulce jsou popsány požadované vlastnosti pro možnost **použít centrum událostí z dostupných předplatných** :
 
-     | Vlastnost | Popis |
-     | --- | --- |
-     | ID předplatného | Vyberte předplatné, ve kterém byla vytvořena centra událostí.
-     | Obor názvů služby Service Bus | Vyberte obor názvů služby Azure Service Bus, která obsahuje centra událostí.
-     | Název centra událostí | Vyberte název centra událostí.
-     | Název zásady centra událostí | Vyberte zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
-     | Klíč zásad centra událostí | Hodnota klíče může být předem.
-     | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí. |
-     | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. Zprávy událostí musí být v tomto formátu nebo data nelze číst. |
-     | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
+       [Podrobnosti o @no__t – 1Subscription a centra událostí](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
-    - Pokud centra událostí je externí ke svým předplatným, nebo pokud budete chtít Upřesnit možnosti, vyberte **nastavení zadejte centra událostí ručně**.
+       | Vlastnost | Popis |
+       | --- | --- |
+       | Formě | Předplatné, ke kterému patří požadovaná instance centra událostí a obor názvů. |
+       | Obor názvů centra událostí | Obor názvů centra událostí, ke kterému patří požadovaná instance centra událostí |
+       | Název centra událostí | Název požadované instance centra událostí. |
+       | Hodnota zásad centra událostí | Vyberte požadované zásady sdíleného přístupu. Zásadu sdíleného přístupu můžete vytvořit na kartě **Konfigurace** centra událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **ke čtení** . |
+       | Klíč zásad centra událostí | Hodnota předem vyplněná z vybrané hodnoty zásad centra událostí |
 
-      V následující tabulce jsou popsány požadované vlastnosti pro **nastavení zadejte centra událostí ručně** možnost:
+    * Pokud je centrum událostí externí pro vaše předplatná nebo pokud chcete vybrat rozšířené možnosti, vyberte **zadat nastavení centra událostí ručně**.
+
+       V následující tabulce jsou popsány požadované vlastnosti pro možnost **zadat nastavení centra událostí ručně** :
  
-      | Vlastnost | Popis |
-      | --- | --- |
-      | ID předplatného | Předplatné, ve kterém byla vytvořena centra událostí.
-      | Skupina prostředků | Skupina prostředků, ve kterém byla vytvořena centra událostí.
-      | Obor názvů služby Service Bus | Obor názvů služby Service Bus je kontejner sady entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor názvů Service Bus.
-      | Název centra událostí | Název vašeho centra událostí. Když vytvoříte Centrum událostí, dáte mu taky určitý název.
-      | Název zásady centra událostí | Zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
-      | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů služby Service Bus. Zadejte primární a sekundární klíč tady.
-      | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.
-      | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. Zprávy událostí musí být v tomto formátu nebo data nelze číst. |
-      | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
+       | Vlastnost | Popis |
+       | --- | --- |
+       | ID předplatného | Předplatné, ke kterému patří požadovaná instance centra událostí a obor názvů. |
+       | Skupina prostředků | Skupina prostředků, ke které patří požadovaná instance centra událostí a obor názvů |
+       | Obor názvů centra událostí | Obor názvů centra událostí, ke kterému patří požadovaná instance centra událostí |
+       | Název centra událostí | Název požadované instance centra událostí. |
+       | Hodnota zásad centra událostí | Vyberte požadované zásady sdíleného přístupu. Zásadu sdíleného přístupu můžete vytvořit na kartě **Konfigurace** centra událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **ke čtení** . |
+       | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů Service Bus. Sem zadejte primární nebo sekundární klíč. |
 
-1. Přidáte vyhrazenou Time Series Insights příjemce názvu skupiny, kterou jste přidali do vašeho centra událostí.
+    * Obě možnosti sdílejí následující možnosti konfigurace:
 
-1. Vyberte **Vytvořit**.
+       | Vlastnost | Popis |
+       | --- | --- |
+       | Skupina uživatelů centra událostí | Skupina příjemců, která čte události z centra událostí. Důrazně doporučujeme, abyste pro zdroj událostí používali vyhrazenou skupinu uživatelů. |
+       | Formát serializace události | V současné době je JSON jediným dostupným formátem serializace. Zprávy událostí musí být v tomto formátu nebo data nelze číst. |
+       | Název vlastnosti časového razítka | Chcete-li zjistit tuto hodnotu, je třeba porozumět formátu zprávy pro data zprávy, která jsou odeslána do centra událostí. Tato hodnota je **název** konkrétní vlastnosti události v datech zprávy, kterou chcete použít jako časové razítko události. V hodnotě se rozlišují malá a velká písmena. Pokud je ponecháno prázdné, použije se čas zařazení do **fronty události** ve zdroji události jako časové razítko události. |
 
-   [![Vyberte vytvořit.](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
+1. Přidejte název vyhrazené Time Series Insights skupiny uživatelů, který jste přidali do centra událostí.
 
-   Po vytvoření zdroje událostí Time Series Insights automaticky spustí, streamování dat do vašeho prostředí.
+1. Vyberte **vytvořit**.
 
-## <a name="next-steps"></a>Další postup
+   Po vytvoření zdroje události Time Series Insights automaticky zahájí streamování dat do vašeho prostředí.
 
-* [Definovat zásady přístupu k datům](time-series-insights-data-access.md) zabezpečit data.
+## <a name="next-steps"></a>Další kroky
 
-* [Odesílání událostí](time-series-insights-send-events.md) ke zdroji události.
+* [Definováním zásad přístupu k datům](time-series-insights-data-access.md) Zabezpečte data.
 
-* Přístup k prostředí na [Průzkumníka služby Time Series Insights](https://insights.timeseries.azure.com).
+* [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
+
+* Přístup k prostředí v [průzkumníkovi Time Series Insights](https://insights.timeseries.azure.com).

@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242517"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264434"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro rozpoznávání formulářů pro .NET
 
-Začínáme s klientskou knihovnou pro rozpoznávání formulářů pro .NET Nástroj pro rozpoznávání formulářů je výtahová služba, která pomocí technologie strojového učení identifikuje a extrahuje páry klíč/hodnota a tabulková data z dokumentů formuláře. Jejím výstupem jsou strukturovaná data, která zahrnují relace z původního souboru. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy.
+Začínáme s klientskou knihovnou pro rozpoznávání formulářů pro .NET Nástroj pro rozpoznávání formulářů je výtahová služba, která pomocí technologie strojového učení identifikuje a extrahuje páry klíč/hodnota a tabulková data z dokumentů formuláře. Potom vytvoří výstup strukturovaných dat, která zahrnují relace v původním souboru. Pomocí těchto kroků nainstalujete balíček sady SDK a vyzkoušíte ukázkový kód pro základní úlohy.
 
 Použijte klientskou knihovnu pro rozpoznávání formulářů pro .NET pro:
 
@@ -30,11 +30,11 @@ Použijte klientskou knihovnu pro rozpoznávání formulářů pro .NET pro:
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
-* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../build-training-data-set.md) . Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) .
+* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení vašich školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451).
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Nastavení
@@ -91,7 +91,7 @@ Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio,
 
 Následující třídy zpracovávají hlavní funkce sady SDK pro rozpoznávání formulářů.
 
-|Name (Název)|Popis|
+|Name|Popis|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Tato třída je potřebná pro všechny funkce nástroje pro rozpoznávání formulářů. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Tuto třídu použijete k výuce vlastního modelu rozpoznávání formulářů pomocí vlastního školicího vstupního data. |
@@ -116,12 +116,13 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 * [Získat seznam vlastních modelů](#get-a-list-of-custom-models)
 * [Odstranění vlastního modelu](#delete-a-custom-model)
 
-## <a name="define-variables"></a>Definování proměnných
+## <a name="define-variables"></a>Definovat proměnné
 
 Před definováním jakýchkoli metod přidejte do horní části třídy **programu** následující definice proměnných. Musíte vyplnit některé proměnné sami. 
 
 * Hodnotu koncového bodu vaší služby najdete v části **Přehled** v Azure Portal. 
 * Pokud chcete načíst adresu URL SAS pro vaše školicí údaje, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Pokud potřebujete ukázkový formulář k analýze, můžete použít jeden ze souborů ve složce **test** [sady vzorových dat](https://go.microsoft.com/fwlink/?linkid=2090451). Tato příručka používá pouze formuláře PDF.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
@@ -131,7 +132,7 @@ Pod metodou `Main` definujte úkol, na který je odkazováno v `Main`. Tady ově
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-## <a name="train-a-custom-model"></a>Trénování vlastního modelu
+## <a name="train-a-custom-model"></a>Výuka vlastního modelu
 
 Následující metoda používá klientský objekt pro rozpoznávání formulářů k učení nového modelu rozpoznávání v dokumentech uložených v kontejneru objektů BLOB v Azure. Používá pomocnou metodu k zobrazení informací o nově školených modelech (reprezentovaných objektem [ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) ) a vrací ID modelu.
 
@@ -184,8 +185,8 @@ dotnet run
 
 Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
-* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Bran](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Rozhraní příkazového řádku Azure](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Pokud jste navíc prohlédli vlastní model, který chcete z účtu odstranit, spusťte metodu v části [odstranění vlastního modelu](#delete-a-custom-model).
 

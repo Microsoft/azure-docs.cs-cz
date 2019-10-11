@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Výuka modelu a extrakce dat formuláře pomocí nástroje pro rozpoznávání složeného formuláře'
+title: 'Rychlý Start: výuka modelu a extrakce dat formuláře pomocí funkce pro rozpoznávání složeného formuláře'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s kudrlinkou k učení modelu a extrakce dat z formulářů.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b889be6f881894b2666ed47304f6b61e7c776474
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073710"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264379"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s kudrlinkou ke výukám a k extrakci formulářů a jejich skóre a k extrakci párů klíč-hodnota a tabulek.
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení tohoto rychlého startu musíte mít:
 - Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - byl nainstalován [oblý](https://curl.haxx.se/windows/) .
-- Sada alespoň pěti forem stejného typu. Tato data použijete ke výuku modelu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte data do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
+- Sada alespoň pěti forem stejného typu. Tato data použijete ke výuku modelu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -38,15 +38,15 @@ Nejdřív budete potřebovat sadu školicích dat v objektu blob Azure Storage. 
 
 Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure naučit model pro rozpoznávání formulářů, zavolejte rozhraní API pro **vlak** spuštěním následujícího příkazu složeného. Před spuštěním příkazu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
+1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formuláře. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `<subscription key>` klíčem předplatného, který jste zkopírovali z předchozího kroku.
-1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<SAS URL>` pomocí adresy URL sdíleného přístupového podpisu kontejneru Azure Blob Storage (SAS). Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Dostanete `200 (Success)` odpověď s následujícím výstupem JSON:
+Dostanete odpověď `200 (Success)` s následujícím výstupem JSON:
 
 ```json
 {
@@ -87,24 +87,24 @@ Dostanete `200 (Success)` odpověď s následujícím výstupem JSON:
 }
 ```
 
-Poznamenejte `"modelId"` si hodnotu. Budete ho potřebovat v následujících krocích.
+Všimněte si hodnoty `"modelId"`. Budete ho potřebovat v následujících krocích.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Extrahovat páry klíč-hodnota a tabulky z formulářů
 
 Dále analyzujete dokument a z něj extrahujete páry klíč-hodnota a tabulky. Zavolejte **model – Analyzujte** rozhraní API spuštěním příkazu složeného, který následuje. Před spuštěním příkazu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` koncovým bodem, který jste získali z klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<modelID>` ID modelu, které jste obdrželi v předchozí části.
-1. Nahraďte `<path to your form>` cestou k souboru vašeho formuláře (například C:\temp\file.PDF).
-1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf`, `image/jpeg`, `image/png`.
-1. Místo `<subscription key>` použijte váš klíč předplatného.
+1. Nahraďte `<modelID>` číslem ID modelu, který jste obdrželi v předchozí části.
+1. Nahraďte `<path to your form>` cestou k souboru vašeho formuláře (například C:\temp\file.PDF). Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf`, `image/jpeg` `image/png`.
+1. Nahraďte `<subscription key>` klíčem předplatného.
 
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-### <a name="examine-the-response"></a>Prozkoumání odpovědi
+### <a name="examine-the-response"></a>Projděte si odpověď.
 
 Ve formátu JSON se vrátí odpověď na úspěch. Představuje páry klíč-hodnota a tabulky extrahované z formuláře:
 
@@ -429,7 +429,7 @@ Ve formátu JSON se vrátí odpověď na úspěch. Představuje páry klíč-hod
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste použili nástroj pro rozpoznávání formulářů REST API s kudrlinkou ke školení modelu a jeho spuštění ve vzorovém scénáři. Dále si přečtěte referenční dokumentaci a prozkoumejte rozhraní API pro rozpoznávání formulářů ve větší hloubkě.
 

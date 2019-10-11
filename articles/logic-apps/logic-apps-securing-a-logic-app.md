@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004097"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264658"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -30,7 +30,7 @@ K řízení přístupu a ochraně dat v Azure Logic Apps můžete nastavit zabez
 
 ## <a name="access-to-http-request-triggers"></a>Přístup k aktivačním událostem požadavku HTTP
 
-Když aplikace logiky používá Trigger založený na požadavcích HTTP, jako je [požadavek](../connectors/connectors-native-reqres.md) nebo Trigger Webhooku, můžete omezit přístup tak, aby aplikace logiky mohli spustit jenom autorizovaní klienti. [](../connectors/connectors-native-webhook.md) Všechny požadavky přijaté aplikací logiky jsou šifrované a zabezpečené pomocí protokolu SSL (Secure Sockets Layer) (SSL). 
+Když aplikace logiky používá Trigger založený na požadavcích HTTP, jako je [požadavek](../connectors/connectors-native-reqres.md) nebo Trigger [Webhooku](../connectors/connectors-native-webhook.md) , můžete omezit přístup tak, aby aplikace logiky mohli spustit jenom autorizovaní klienti. Všechny požadavky přijaté aplikací logiky jsou šifrované a zabezpečené pomocí protokolu SSL (Secure Sockets Layer) (SSL). 
 
 Tady jsou způsoby, kterými můžete zabezpečit přístup k tomuto typu triggeru:
 
@@ -46,7 +46,7 @@ Každý koncový bod žádosti v aplikaci logiky má [sdílený přístupový po
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
-Každá adresa URL obsahuje `sp`parametr `sv`dotazu, `sig` a, jak je popsáno v této tabulce:
+Každá adresa URL obsahuje parametr dotazu `sp`, `sv` a `sig`, jak je popsáno v této tabulce:
 
 | Parametr dotazu | Popis |
 |-----------------|-------------|
@@ -83,7 +83,7 @@ Pokud sdílíte adresu URL koncového bodu pro Trigger založený na požadavcí
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-V těle zahrňte `NotAfter`vlastnost pomocí řetězce data JSON. Tato vlastnost vrátí adresu URL zpětného volání, která je platná `NotAfter` pouze do data a času.
+Do těla zadejte `NotAfter`property pomocí řetězce data JSON. Tato vlastnost vrátí adresu URL zpětného volání, která je platná pouze do data a času `NotAfter`.
 
 <a name="primary-secondary-key"></a>
 
@@ -95,7 +95,7 @@ Když generujete nebo vypíšete adresy URL zpětného volání pro aktivační 
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-V těle zahrňte `KeyType` vlastnost buď `Primary` nebo `Secondary`. Tato vlastnost vrátí adresu URL, která je podepsána zadaným zabezpečeným klíčem.
+V těle zahrňte vlastnost `KeyType` buď jako `Primary`, nebo `Secondary`. Tato vlastnost vrátí adresu URL, která je podepsána zadaným zabezpečeným klíčem.
 
 <a name="restrict-incoming-ip"></a>
 
@@ -109,7 +109,7 @@ Společně se sdíleným přístupovým podpisem můžete chtít omezit konkrét
 
 1. V nabídce aplikace logiky v části **Nastavení**vyberte **Nastavení pracovního postupu**.
 
-1. V části >  **Konfigurace řízení přístupu** **povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
+1. V části **Konfigurace řízení přístupu**@no__t – 1**povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
 
 1. V části **rozsahy IP pro aktivační události**zadejte rozsahy IP adres, které aktivační událost akceptuje.
 
@@ -118,11 +118,11 @@ Společně se sdíleným přístupovým podpisem můžete chtít omezit konkrét
 Pokud chcete, aby se aplikace logiky spouštěla jenom jako vnořená aplikace logiky, vyberte ze seznamu **povolené IP adresy** **jenom další Logic Apps**. Tato možnost zapíše prázdné pole do prostředku aplikace logiky. Tímto způsobem mohou spustit vnořenou aplikaci logiky pouze volání ze služby Logic Apps (nadřazené aplikace logiky).
 
 > [!NOTE]
-> Bez ohledu na IP adresu můžete přesto spustit aplikaci logiky, která má Trigger `/triggers/<trigger-name>/run` založený na požadavcích HTTP prostřednictvím služby Azure REST API nebo prostřednictvím API Management. Tento scénář ale pořád vyžaduje ověřování proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
+> Bez ohledu na IP adresu můžete přesto spustit aplikaci logiky, která má Trigger založený na požadavcích HTTP pomocí `/triggers/<trigger-name>/run` prostřednictvím Azure REST API nebo prostřednictvím API Management. Tento scénář ale pořád vyžaduje ověřování proti REST API Azure. Všechny události se zobrazí v protokolu auditu Azure. Ujistěte se, že jste nastavili zásady řízení přístupu odpovídajícím způsobem.
 
 #### <a name="restrict-incoming-ip-ranges-in-azure-resource-manager-template"></a>Omezení rozsahů příchozích IP adres v šabloně Azure Resource Manager
 
-Pokud automatizujete nasazení aplikace logiky pomocí [Azure Resource Manager šablony](../logic-apps/logic-apps-create-deploy-template.md), můžete určit rozsahy IP adres pomocí `accessControl` oddílu s `triggers` oddílem v definici prostředků vaší aplikace logiky, například:
+Pokud automatizujete nasazení aplikací logiky pomocí [Azure Resource Manager šablony](../logic-apps/logic-apps-create-deploy-template.md), můžete určit rozsahy IP adres pomocí oddílu `accessControl` s částí `triggers` v definici prostředků vaší aplikace logiky, například:
 
 ``` json
 {
@@ -173,9 +173,9 @@ K přidání dalších autorizačních protokolů do aplikace logiky zvažte pou
 
 Můžete povolit pouze konkrétní uživatele nebo skupiny, aby mohli spouštět konkrétní operace, jako je správa, úpravy a zobrazení Logic Apps. Pokud chcete řídit svá oprávnění, pomocí [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/role-assignments-portal.md) přiřaďte členům v předplatném Azure vlastní nebo předdefinované role:
 
-* [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor): Umožňuje vám spravovat Logic Apps, ale nemůžete pro ně měnit přístup.
+* [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor): umožňuje spravovat Logic Apps, ale nemůžete pro ně měnit přístup.
 
-* [Operátor aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator): Umožňuje čtení, povolování a zakazování Logic Apps, ale nemůžete je upravovat ani aktualizovat.
+* [Operátor aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator): umožňuje číst, povolit a zakázat Logic Apps, ale nemůžete je upravovat ani aktualizovat.
 
 Pokud chcete ostatním uživatelům zabránit v změně nebo odstranění vaší aplikace logiky, můžete použít [Azure Resource Lock](../azure-resource-manager/resource-group-lock-resources.md), který ostatním uživatelům brání v změně nebo odstranění produkčních prostředků.
 
@@ -183,7 +183,7 @@ Pokud chcete ostatním uživatelům zabránit v změně nebo odstranění vaší
 
 ## <a name="access-to-run-history-data"></a>Přístup k datům historie spouštění
 
-Během provádění aplikace logiky jsou všechna data během přenosu zašifrovaná pomocí [protokolu TLS (Transport Layer Security)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) a v [klidovém](../security/fundamentals/encryption-atrest.md)stavu. Až se vaše aplikace logiky dokončí, můžete zobrazit historii pro toto spuštění, včetně kroků, které byly spuštěny spolu se stavem, dobou trvání, vstupy a výstupy pro každou akci. Tato bohatá podrobnosti poskytuje přehled o tom, jak vaše aplikace logiky běžela a kde můžete začít řešit problémy, ke kterým dojde.
+Během provádění aplikace logiky se všechna data šifrují během přenosu pomocí [protokolu TLS (Transport Layer Security)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) a v [klidovém](../security/fundamentals/encryption-atrest.md)stavu. Až se vaše aplikace logiky dokončí, můžete zobrazit historii pro toto spuštění, včetně kroků, které byly spuštěny spolu se stavem, dobou trvání, vstupy a výstupy pro každou akci. Tato bohatá podrobnosti poskytuje přehled o tom, jak vaše aplikace logiky běžela a kde můžete začít řešit problémy, ke kterým dojde.
 
 Když přistupujete k historii spuštění aplikace logiky, Logic Apps ověří váš přístup a poskytne odkazy na vstupy a výstupy z požadavků a odpovědí v běhu vaší aplikace logiky. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z [Azure Key Vault](../key-vault/key-vault-overview.md) , který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
 
@@ -201,7 +201,7 @@ K řízení přístupu k vstupům a výstupům v historii spuštění aplikace l
 
 ### <a name="restrict-access-by-ip-address-range"></a>Omezení přístupu podle rozsahu IP adres
 
-V historii spuštění aplikace logiky můžete omezit přístup k vstupům a výstupům, aby se tato data mohla zobrazit jenom z konkrétních rozsahů IP adres. Chcete-li například zablokovat komukoli přístup k vstupům a výstupům, zadejte rozsah IP `0.0.0.0-0.0.0.0`adres, například. Pouze osoba s oprávněními správce může toto omezení odebrat, což umožňuje "za běhu" přístup k datům aplikace logiky. Rozsahy IP adres, které se mají omezit, můžete zadat pomocí Azure Portal nebo v šabloně Azure Resource Manager, kterou používáte pro nasazení aplikace logiky.
+V historii spuštění aplikace logiky můžete omezit přístup k vstupům a výstupům, aby se tato data mohla zobrazit jenom z konkrétních rozsahů IP adres. Chcete-li například zablokovat komukoli přístup k vstupům a výstupům, zadejte rozsah IP adres, například `0.0.0.0-0.0.0.0`. Pouze osoba s oprávněními správce může toto omezení odebrat, což umožňuje "za běhu" přístup k datům aplikace logiky. Rozsahy IP adres, které se mají omezit, můžete zadat pomocí Azure Portal nebo v šabloně Azure Resource Manager, kterou používáte pro nasazení aplikace logiky.
 
 #### <a name="restrict-ip-ranges-in-azure-portal"></a>Omezení rozsahů IP adres v Azure Portal
 
@@ -209,7 +209,7 @@ V historii spuštění aplikace logiky můžete omezit přístup k vstupům a v�
 
 1. V nabídce aplikace logiky v části **Nastavení**vyberte **Nastavení pracovního postupu**.
 
-1. V části >  **Konfigurace řízení přístupu** **povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
+1. V části **Konfigurace řízení přístupu**@no__t – 1**povolená příchozí IP adresa**vyberte **konkrétní rozsahy IP**adres.
 
 1. V části **rozsahy IP adres pro obsah**zadejte rozsahy IP adres, které budou mít přístup k obsahu ze vstupů a výstupů. 
 
@@ -217,7 +217,7 @@ V historii spuštění aplikace logiky můžete omezit přístup k vstupům a v�
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Omezení rozsahů IP adres v šabloně Azure Resource Manager
 
-Pokud automatizujete nasazení aplikace logiky pomocí [Azure Resource Manager šablony](../logic-apps/logic-apps-create-deploy-template.md), můžete určit rozsahy IP adres pomocí `accessControl` oddílu s `contents` oddílem v definici prostředků vaší aplikace logiky, například:
+Pokud automatizujete nasazení aplikací logiky pomocí [Azure Resource Manager šablony](../logic-apps/logic-apps-create-deploy-template.md), můžete určit rozsahy IP adres pomocí oddílu `accessControl` s částí `contents` v definici prostředků vaší aplikace logiky, například:
 
 ``` json
 {
@@ -272,7 +272,7 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
    ![Otevřete nastavení.](media/logic-apps-securing-a-logic-app/open-settings.png)
 
-1. Zapněte buď **zabezpečené vstupy**, **zabezpečené výstupy**, nebo obojí. Jakmile budete hotovi, vyberte **Hotovo**.
+1. Zapněte buď **zabezpečené vstupy**, **zabezpečené výstupy**, nebo obojí. Až budete hotovi, vyberte **Hotovo**.
 
    ![Zapnutí zabezpečených vstupů nebo výstupů](media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
@@ -298,10 +298,10 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Zabezpečené vstupy a výstupy v zobrazení kódu
 
-V podkladové aktivační události nebo definici akce přidejte nebo aktualizujte `runtimeConfiguration.secureData.properties` pole pomocí jedné nebo obou hodnot:
+V podkladové aktivační události nebo definici akce přidejte nebo aktualizujte pole `runtimeConfiguration.secureData.properties` pomocí jedné nebo obou hodnot:
 
-* `"inputs"`: Zabezpečuje vstupy v historii spuštění.
-* `"outputs"`: Zabezpečuje výstupy v historii spuštění.
+* `"inputs"`: zabezpečuje vstupy v historii spuštění.
+* `"outputs"`: zabezpečuje výstupy v historii spuštění.
 
 Tady je několik [důležitých informací, které](#obfuscation-considerations) je potřeba zkontrolovat, když použijete tato nastavení k zabezpečení těchto dat.
 
@@ -337,11 +337,11 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
 
   **Nastavení zabezpečených výstupů**
 
-  Když ručně zapnete **zabezpečené výstupy** v triggeru nebo akci, Logic Apps tyto výstupy zabezpečit v historii spuštění. Pokud akce pro příjem dat explicitně používá tyto zabezpečené výstupy jako vstupy, Logic Apps skrývá vstupy této akce v historii spuštění, ale *nepovolí* nastavení zabezpečených **vstupů** akce.
+  Když ručně zapnete **zabezpečené výstupy** v triggeru nebo akci, Logic Apps tyto výstupy zabezpečit v historii spuštění. Pokud akce pro příjem dat explicitně používá tyto zabezpečené výstupy jako vstupy, Logic Apps skrývá vstupy této akce v historii spuštění, ale *nepovolí* nastavení **zabezpečených vstupů** akce.
 
   ![Zabezpečené výstupy jako vstupy a přínosy při většině akcí](media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  Akce vytvořit, analyzovat JSON a odpověď mají pouze nastavení **zabezpečené vstupy** . Když je tato možnost zapnutá, tato nastavení také skryje výstupy těchto akcí. Pokud tyto akce explicitně používají výstupy proti nadřazenému objektu jako vstupy, Logic Apps skrývá vstupy a výstupy těchto akcí, ale nepovoluje nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
+  Akce vytvořit, analyzovat JSON a odpověď mají pouze nastavení **zabezpečené vstupy** . Když je tato možnost zapnutá, tato nastavení také skryje výstupy těchto akcí. Pokud tyto akce explicitně používají výstupy proti nadřazenému objektu jako vstupy, Logic Apps skrývá vstupy a výstupy těchto akcí, ale *nepovoluje* nastavení **zabezpečených vstupů** těchto akcí. Pokud akce pro příjem dat explicitně používá skryté výstupy z akcí vytvořit, analyzovat JSON nebo odpovědět jako vstupy, Logic Apps *neskryje tyto vstupy a výstupy této akce*.
 
   ![Zabezpečené výstupy jako vstupy s vlivem na konkrétní akce na základě dat](media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
@@ -361,14 +361,14 @@ Tady je několik [důležitých informací, které](#obfuscation-considerations)
 
 Pokud nasazujete v různých prostředích, zvažte Parametrizace hodnot v definici pracovního postupu, které se liší v závislosti na těchto prostředích. Tímto způsobem můžete použít [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters) k nasazení aplikace logiky, ochraně citlivých informací definováním zabezpečených parametrů a zadání těchto parametrů samostatně prostřednictvím parametrů šablony pomocí [parametru. soubor](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Pokud například ověříte akce HTTP pomocí [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication), můžete definovat a zabezpečit parametry, které přijímají ID klienta a tajný kód klienta používaný pro ověřování. Pro definování těchto parametrů pro vaši aplikaci logiky použijte `parameters` část v definici pracovního postupu vaší aplikace logiky. Pro ochranu hodnot parametrů, které nechcete zobrazit při úpravách aplikace logiky nebo zobrazení historie spuštění, definujte parametry pomocí `securestring` typu nebo `secureobject` a podle potřeby použijte kódování. Parametry, které mají tento typ, nejsou vráceny s definicí prostředků a nejsou přístupné při zobrazení prostředku po nasazení. Pro přístup k těmto hodnotám parametrů za běhu použijte `@parameters('<parameter-name>')` výraz uvnitř definice pracovního postupu. Tento výraz je vyhodnocen pouze za běhu a je popsán [jazykem definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md).
+Pokud například ověříte akce HTTP pomocí [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication), můžete definovat a zabezpečit parametry, které přijímají ID klienta a tajný kód klienta používaný pro ověřování. Pro definování těchto parametrů pro vaši aplikaci logiky použijte část `parameters` v definici pracovního postupu vaší aplikace logiky. Pro ochranu hodnot parametrů, které nechcete zobrazit při úpravách aplikace logiky nebo zobrazení historie spuštění, definujte parametry pomocí typu `securestring` nebo `secureobject` a podle potřeby kódování použijte. Parametry, které mají tento typ, nejsou vráceny s definicí prostředků a nejsou přístupné při zobrazení prostředku po nasazení. Pro přístup k těmto hodnotám parametrů za běhu použijte výraz `@parameters('<parameter-name>')` uvnitř definice pracovního postupu. Tento výraz je vyhodnocen pouze za běhu a je popsán [jazykem definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md).
 
 > [!NOTE]
 > Pokud použijete parametr v záhlaví nebo těle požadavku HTTP, může být tento parametr viditelný při zobrazení historie spuštění vaší aplikace logiky a odchozího požadavku HTTP. Ujistěte se, že jste odpovídajícím způsobem také nastavili zásady přístupu k obsahu. Autorizační hlavičky nejsou nikdy viditelné prostřednictvím vstupů nebo výstupů. Takže pokud se tam používá tajný klíč, nedá se tento tajný klíč získat.
 
 Další informace najdete v části [zabezpečené parametry v definicích pracovních postupů](#secure-parameters-workflow) dále v tomto tématu.
 
-Při automatizaci nasazení pomocí [šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters)můžete definovat zabezpečené parametry šablony, které jsou vyhodnocovány při nasazení, pomocí `securestring` typů a. `secureobject` Chcete-li definovat parametry šablony, použijte sekci nejvyšší úrovně `parameters` šablony, která je oddělená a odlišná od `parameters` oddílu definice pracovního postupu. Chcete-li zadat hodnoty parametrů šablony, použijte samostatný [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
+Při automatizaci nasazení pomocí [šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters)můžete definovat zabezpečené parametry šablony, které jsou vyhodnocovány při nasazení pomocí typů `securestring` a `secureobject`. Chcete-li definovat parametry šablony, použijte část nejvyšší úrovně šablony `parameters`, která je oddělená a odlišná od `parameters` definice pracovního postupu. Chcete-li zadat hodnoty parametrů šablony, použijte samostatný [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
 Pokud například používáte tajné kódy, můžete definovat a používat zabezpečené parametry šablony, které tyto tajné kódy načítají z [Azure Key Vault](../key-vault/key-vault-overview.md) při nasazení. Pak můžete odkazovat na Trezor klíčů a tajný kód v souboru parametrů. Další informace najdete v těchto tématech:
 
@@ -379,7 +379,7 @@ Pokud například používáte tajné kódy, můžete definovat a používat zab
 
 ### <a name="secure-parameters-in-workflow-definitions"></a>Zabezpečené parametry v definicích pracovních postupů
 
-Pokud chcete chránit citlivé informace v definici pracovního postupu vaší aplikace logiky, použijte zabezpečené parametry, aby tyto informace nebyly po uložení aplikace logiky viditelné. Předpokládejme například, že máte akci HTTP vyžaduje základní ověřování, které používá uživatelské jméno a heslo. V definici `parameters` pracovního postupu oddíl `basicAuthPasswordParam` definuje parametry `securestring` a `basicAuthUsernameParam` pomocí typu. Definice akce pak odkazuje na tyto parametry v `authentication` části.
+Pokud chcete chránit citlivé informace v definici pracovního postupu vaší aplikace logiky, použijte zabezpečené parametry, aby tyto informace nebyly po uložení aplikace logiky viditelné. Předpokládejme například, že máte akci HTTP vyžaduje základní ověřování, které používá uživatelské jméno a heslo. V definici pracovního postupu oddíl `parameters` definuje parametry `basicAuthPasswordParam` a `basicAuthUsernameParam` pomocí typu `securestring`. Definice akce pak na tyto parametry odkazuje v části `authentication`.
 
 ```json
 "definition": {
@@ -425,22 +425,22 @@ Pokud chcete chránit citlivé informace v definici pracovního postupu vaší a
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Zabezpečené parametry v šablonách Azure Resource Manager
 
-Šablona správce prostředků pro aplikaci logiky obsahuje několik `parameters` oddílů. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí `securestring` typu nebo. `secureobject` Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a použít [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečených hodnot parametrů při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Šablona Správce prostředků pro aplikaci logiky má několik částí `parameters`. K ochraně hesel, klíčů, tajných kódů a dalších citlivých informací můžete definovat zabezpečené parametry na úrovni šablony a definice pracovního postupu pomocí typu `securestring` nebo `secureobject`. Tyto hodnoty pak můžete uložit v [Azure Key Vault](../key-vault/key-vault-overview.md) a použít [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) k odkazování na Trezor klíčů a tajný kód. Vaše šablona pak tyto informace načte při nasazení. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečených hodnot parametrů při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-Zde jsou další informace o těchto `parameters` oddílech:
+Další informace o těchto částech `parameters`:
 
-* V nejvyšší úrovni `parameters` šablony definuje oddíl parametry pro hodnoty, které šablona používá při *nasazení*. Například tyto hodnoty mohou zahrnovat připojovací řetězce pro konkrétní prostředí nasazení. Tyto hodnoty pak můžete uložit do samostatného [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values), což usnadňuje změnu těchto hodnot.
+* V části nejvyšší úrovně šablony definuje `parameters` parametry pro hodnoty, které šablona používá při *nasazení*. Například tyto hodnoty mohou zahrnovat připojovací řetězce pro konkrétní prostředí nasazení. Tyto hodnoty pak můžete uložit do samostatného [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values), což usnadňuje změnu těchto hodnot.
 
-* V definici prostředků vaší aplikace logiky, ale mimo definici pracovního postupu, `parameters` určuje část hodnoty pro parametry definice pracovního postupu. V této části můžete přiřadit tyto hodnoty pomocí výrazů šablony, které odkazují na parametry šablony. Tyto výrazy jsou vyhodnocovány při nasazení.
+* V rámci definice prostředků vaší aplikace logiky, ale mimo definici pracovního postupu, určuje část `parameters` hodnoty pro parametry definice pracovního postupu. V této části můžete přiřadit tyto hodnoty pomocí výrazů šablony, které odkazují na parametry šablony. Tyto výrazy jsou vyhodnocovány při nasazení.
 
-* V rámci definice `parameters` pracovního postupu oddíl definuje parametry, které vaše aplikace logiky používá za běhu. Pak můžete odkazovat na tyto parametry uvnitř pracovního postupu aplikace logiky pomocí výrazů definice pracovního postupu, které jsou vyhodnocovány za běhu.
+* V rámci definice pracovního postupu @no__t oddíl-0 definuje parametry, které vaše aplikace logiky používá za běhu. Pak můžete odkazovat na tyto parametry uvnitř pracovního postupu aplikace logiky pomocí výrazů definice pracovního postupu, které jsou vyhodnocovány za běhu.
 
-Tento příklad šablony s více zabezpečenými definicemi parametrů, které `securestring` používají typ:
+Tento příklad šablony s více zabezpečenými definicemi parametrů, které používají typ `securestring`:
 
 | Název parametru | Popis |
 |----------------|-------------|
-| `TemplatePasswordParam` | Parametr šablony, který přijímá heslo, které je pak předáno `basicAuthPasswordParam` parametru definice pracovního postupu |
-| `TemplateUsernameParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno `basicAuthUserNameParam` parametru definice pracovního postupu |
+| `TemplatePasswordParam` | Parametr šablony, který přijímá heslo, které se pak předává parametru `basicAuthPasswordParam` definice pracovního postupu |
+| `TemplateUsernameParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno parametru `basicAuthUserNameParam` definice pracovního postupu |
 | `basicAuthPasswordParam` | Parametr definice pracovního postupu, který přijímá heslo pro základní ověřování v akci HTTP |
 | `basicAuthUserNameParam` | Parametr definice pracovního postupu, který přijímá uživatelské jméno pro základní ověřování v akci HTTP |
 |||

@@ -1,17 +1,17 @@
 ---
-title: Práce s rozsáhlými datovými sadami
+title: Práce s velkými datovými sadami
 description: Naučte se, jak získat a řídit velké datové sady při práci s Azure Resource graphem.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980332"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274234"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -68,7 +68,7 @@ Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracová
 
 Pokud má resultTruncated **hodnotu true**, v odpovědi se nastaví vlastnost **$skipToken** . Tato hodnota se používá se stejnými hodnotami dotazů a předplatného k získání další sady záznamů, které odpovídají dotazu.
 
-Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po vynechání pomocí Azure CLI a Azure PowerShell:
+Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po přeskočení těchto záznamů pomocí Azure CLI a Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -82,6 +82,90 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > Aby bylo možné stránkování fungovat, dotaz musí **projektovat** pole **ID** . Pokud v dotazu chybí, nebude odpověď zahrnovat **$skipToken**.
 
 Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resources/resources#next-page-query) v dokumentaci REST API.
+
+## <a name="formatting-results"></a>Formátování výsledků
+
+Výsledky dotazu grafu prostředků jsou k dispozici ve dvou formátech, _tabulce_ a _ObjectArray_. Formát je nakonfigurován s parametrem **resultFormat** jako součást možností žádosti. Formát _tabulky_ je výchozí hodnota pro **resultFormat**.
+
+Výsledky z Azure CLI se ve výchozím nastavení poskytují ve formátu JSON. Výsledkem je, že ve výchozím nastavení jsou Azure PowerShell **PSCustomObject** , ale dají se rychle převést na JSON pomocí rutiny `ConvertTo-Json`. Pro jiné sady SDK se můžou výsledky dotazu nakonfigurovat na výstup formátu _ObjectArray_ .
+
+### <a name="format---table"></a>Formát – tabulka
+
+Výchozí formát, _tabulka_, vrátí výsledek ve formátu JSON navrženém pro zdůraznění návrhu sloupce a hodnot řádků vlastností vrácených dotazem. Tento formát se velmi podobá datům definovaným ve strukturované tabulce nebo tabulce se sloupci určenými jako první a pak každý řádek, který představuje data zarovnaná na tyto sloupce.
+
+Tady je ukázka výsledku dotazu s formátováním _tabulky_ :
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Format – ObjectArray
+
+Formát _ObjectArray_ také vrátí výsledky ve formátu JSON. Tento návrh ale zarovnává vztah mezi dvojici klíč/hodnota společný ve formátu JSON, kde se sloupce a data řádku shodují v rámci skupin polí.
+
+Tady je ukázka výsledku dotazu s formátováním _ObjectArray_ :
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+Tady je několik příkladů nastavení **resultFormat** pro použití formátu _ObjectArray_ :
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>Další kroky
 

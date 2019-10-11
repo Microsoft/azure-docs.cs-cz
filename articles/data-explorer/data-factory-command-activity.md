@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131438"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264487"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Použití aktivity Azure Data Factory příkazu pro spuštění příkazů Azure Průzkumník dat Control
 
@@ -34,6 +34,8 @@ ms.locfileid: "71131438"
    ![vytvořit nový kanál](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Vytvoření aktivity vyhledávání
+
+[Aktivita vyhledávání](/azure/data-factory/control-flow-lookup-activity) může načíst datovou sadu z libovolného zdroje dat podporovaného Azure Data Factory. Výstup aktivity vyhledávání lze použít v ForEach nebo jiné aktivitě.
 
 1. V podokně **aktivity** v části **Obecné**vyberte aktivitu **vyhledávání** . Přetáhněte ho na hlavní plátno na pravé straně.
  
@@ -83,13 +85,13 @@ ms.locfileid: "71131438"
     * Vyberte **Test připojení** a otestujte připojení propojené služby, které jste vytvořili. Pokud se můžete připojit k instalaci, **zobrazí se zelený symbol zaškrtnutí.**
     * Vytvoření propojené služby dokončíte kliknutím na **Dokončit** .
 
-1. Jakmile nastavíte propojenou službu, v**připojení** **AzureDataExplorerTable** > přidejte název **tabulky** . Vyberte **Náhled dat**, abyste se ujistili, že se data zobrazují správně.
+1. Jakmile nanastavíte propojenou službu, v **AzureDataExplorerTable** **připojení** >  přidejte název **tabulky** . Vyberte **Náhled dat**, abyste se ujistili, že se data zobrazují správně.
 
    Vaše datová sada je teď připravená a můžete pokračovat v úpravách kanálu.
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Přidat dotaz do aktivity vyhledávání
 
-1. V**Nastavení** **kanál-4-docs** > přidejte do textového pole **dotazu** dotaz, například:
+1. V**Nastavení** **kanál-4-docs** >  přidejte do textového pole **dotazu** dotaz, například:
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131438"
 
 ## <a name="create-a-for-each-activity"></a>Vytvoření aktivity for-each 
 
-1. Dále do kanálu přidáte aktivitu for-each. Tato aktivita zpracuje data vrácená z aktivity vyhledávání. 
+Aktivita [for-each](/azure/data-factory/control-flow-for-each-activity) se používá k iteraci v kolekci a provádění zadaných aktivit ve smyčce. 
+
+1. Nyní do kanálu přidáte aktivitu for-each. Tato aktivita zpracuje data vrácená z aktivity vyhledávání. 
     * V podokně **aktivity** v části **iterace & Podmíněné podmínky**vyberte aktivitu **foreach** a přetáhněte ji na plátno.
     * Nakreslete čáru mezi výstupem aktivity vyhledávání a vstupem aktivity ForEach na plátně, abyste je připojili.
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131438"
 1.  Vyberte aktivitu ForEach na plátně. Na kartě **Nastavení** níže:
     * Zaškrtněte políčko **sekvenční** pro sekvenční zpracování výsledků vyhledávání nebo ho nechte nezaškrtnuté, chcete-li vytvořit paralelní zpracování.
     * Nastavte **počet dávek**.
-    * V části **položky**zadejte následující odkaz na výstupní hodnotu:  *@activity(' Lookup1 '). Output. Value*
+    * V části **položky**zadejte následující odkaz na výstupní hodnotu: *@activity (' Lookup1 '). Output. Value*
 
        ![Nastavení aktivity ForEach](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -146,7 +150,7 @@ ms.locfileid: "71131438"
 
     > [!NOTE]
     > Aktivita příkazu má následující omezení:
-    > * Omezení velikosti: velikost odpovědi 1 MB
+    > * Omezení velikosti: 1 MB velikosti odpovědi
     > * Časový limit: 20 minut (výchozí), 1 hodina (maximum).
     > * V případě potřeby můžete k výsledku připojit dotaz pomocí [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands)a snížit tak výslednou velikost a čas.
 
@@ -166,7 +170,7 @@ Struktura výstupu aktivity příkazu je popsána níže. Tento výstup může p
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Vrácená hodnota řídicího příkazu, který není asynchronní
 
-V neasynchronním řídicím příkazu je struktura vrácené hodnoty podobná struktuře výsledku vyhledávací aktivity. `count` Pole indikuje počet vrácených záznamů. Pole `value` s pevným polem obsahuje seznam záznamů. 
+V neasynchronním řídicím příkazu je struktura vrácené hodnoty podobná struktuře výsledku vyhledávací aktivity. Pole `count` označuje počet vrácených záznamů. Pole s pevným polem `value` obsahuje seznam záznamů. 
 
 ```json
 { 

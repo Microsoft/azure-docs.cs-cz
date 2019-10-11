@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244788"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274643"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -29,7 +29,8 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 
 Nejdřív Stáhněte spustitelný soubor AzCopy v10 za účelem do libovolného adresáře v počítači. AzCopy v10 za účelem je jenom spustitelný soubor, takže nemusíte nic instalovat.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Windows 64 – bit](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Windows 32 – bit](https://aka.ms/downloadazcopy-v10-windows-32bit) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
@@ -96,7 +97,7 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 - Kontejner (systém souborů)
 - Účet úložiště
 - Skupina prostředků
-- Předplatné
+- Formě
 
 Informace o tom, jak ověřit a přiřadit role, najdete [v tématu udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
