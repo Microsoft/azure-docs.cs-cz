@@ -1,22 +1,22 @@
 ---
-title: Jaké úlohy je možné chránit pomocí Azure Site Recovery? | Dokumenty Microsoft
+title: Zotavení po havárii pro místní aplikace pomocí Azure Site Recovery
 description: Popisuje úlohy, které se dají chránit pomocí zotavení po havárii se službou Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232189"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255554"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jaké úlohy je možné chránit pomocí Azure Site Recovery?
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>Zotavení po havárii pro místní aplikace
 
-Tento článek popisuje úlohy a aplikace, které můžete chránit při zotavení po havárii pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
+Tento článek popisuje místní úlohy a aplikace, které můžete chránit při zotavení po havárii pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
 
 
@@ -55,7 +55,7 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 | Linux (operační systém a aplikace) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem)|
 | Dynamics AX |Ano |Ano |Ano |Ano |Ano|
 | Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
-| Citrix XenApp a XenDesktop |Ano|Není k dispozici |Ano |Není k dispozici |Ano |
+| Citrix XenApp a XenDesktop |Ano|Nevztahuje se |Ano |Nevztahuje se |Ano |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikace služby Active Directory a DNS
 Pro většinu firemních aplikací má zásadní význam infrastruktura Active Directory a DNS. Během zotavování po havárii budete muset před obnovením aplikací a úloh ochránit a obnovit tyto součástí infrastruktury.

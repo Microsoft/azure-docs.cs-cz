@@ -1,7 +1,7 @@
 ---
-title: Kontrola textu proti seznamu vlastních výrazů v jazyce C# – Content Moderator
+title: Kontrolovat text proti vlastnímu seznamu termínů C# v Content moderator
 titleSuffix: Azure Cognitive Services
-description: Návod, jak moderovat text se seznamy vlastních výrazů pomocí sady Content Moderator SDK pro jazyk C#.
+description: Způsob, jakým se má pro aplikace použít Content Moderator sada SDK pro C#střední text s vlastními seznamy termínů
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,57 +10,56 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564409"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242827"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Kontrolovat text proti vlastnímu seznamu podmínek vC#
 
-Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
+Výchozí globální seznam podmínek v Azure Content Moderator je postačující pro většinu potřeb Moderování obsahu. Může se ale stát, že se budete muset setkat s podmínkami, které jsou specifické pro vaši organizaci. Můžete například chtít označit názvy konkurence pro další revize. 
 
-Můžete pomocí sady [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) vytvořit vlastní seznamy výrazů pro použití s rozhraním API pro moderování textu.
+[Sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) můžete použít k vytvoření vlastních seznamů podmínek pro použití s rozhraním API pro moderování textu.
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu Content Moderator SDK pro .NET k následujícím účelům:
-- Vytvoření seznamu
-- Přidání výrazů do seznamu
-- Porovnání výrazů s výrazy v seznamu
-- Odstranění výrazů ze seznamu
-- Odstranění seznamu
-- Úprava informací o seznamu
-- Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
+Tento článek poskytuje informace a ukázky kódu, které vám pomohou začít používat sadu Content Moderator SDK pro .NET k těmto akcím:
+- Vytvoří seznam.
+- Přidejte do seznamu podmínek.
+- Obrazovky s podmínkami v seznamu.
+- Odstraní výrazy ze seznamu.
+- Odstraní seznam.
+- Upravit informace o seznamu.
+- Aktualizuje index, aby byly změny v seznamu zahrnuty do nové kontroly.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
+## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte se do služby Content Moderator Services.
 
-Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného. Získáte ho přihlášením k odběru služby Content Moderator na webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
+Předtím, než budete moci používat Content Moderator služby prostřednictvím REST API nebo sady SDK, budete potřebovat klíč předplatného. Přihlaste se k odběru služby Content Moderator v [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) , abyste ji mohli získat.
 
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
+## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)** .
+1. Přidejte do svého řešení nový projekt **konzolové aplikace (.NET Framework)** .
 
-1. Pojmenujte projekt **TermLists**. Projekt vyberte jako jediný spouštěný projekt řešení.
+1. Pojmenujte projekt **TermLists**. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-### <a name="install-required-packages"></a>Instalace požadovaných balíčků
+### <a name="install-required-packages"></a>Nainstalovat požadované balíčky
 
-Nainstalujte následující balíčky NuGet pro projekt TermLists:
+Pro projekt TermLists nainstalujte následující balíčky NuGet:
 
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Microsoft.Rest.ClientRuntime.Azure
-- Newtonsoft.Json
+- Microsoft. Azure. Cognitiveservices Account. ContentModerator
+- Microsoft. REST. ClientRuntime
+- Microsoft. REST. ClientRuntime. Azure
+- Newtonsoft. JSON
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
+### <a name="update-the-programs-using-statements"></a>Aktualizovat příkazy using programu
 
 Přidejte následující příkazy `using`.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -68,12 +67,12 @@ using System.IO;
 using System.Threading;
 ```
 
-### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderator
 
-Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
+Přidejte následující kód, který vytvoří klienta Content Moderator pro vaše předplatné.
 
 > [!IMPORTANT]
-> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
+> Aktualizujte pole **a** a **CMSubscriptionKey** hodnotami identifikátoru vaší oblasti a klíče předplatného.
 
 ```csharp
 /// <summary>
@@ -119,9 +118,9 @@ public static class Clients
 }
 ```
 
-### <a name="add-private-properties"></a>Přidání soukromých vlastností
+### <a name="add-private-properties"></a>Přidat soukromé vlastnosti
 
-Přidejte následující soukromé vlastnosti do oboru názvů TermLists, třída Program.
+Přidejte následující soukromé vlastnosti do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -142,17 +141,17 @@ private const int throttleRate = 3000;
 private const double latencyDelay = 0.5;
 ```
 
-## <a name="create-a-term-list"></a>Vytvoření seznamu výrazů
+## <a name="create-a-term-list"></a>Vytvoření seznamu termínů
 
-Vytvoříte seznam výrazů s **ContentModeratorClient.ListManagementTermLists.Create**. První parametr pro **Create** (Vytvořit) je řetězec, který obsahuje typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Druhý parametr je objekt **Body** (Tělo), který obsahuje název a popis nového seznamu výrazů.
-
-> [!NOTE]
-> Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
-
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Vytvoříte seznam termínů pomocí **ContentModeratorClient. ListManagementTermLists. Create**. První parametr, který se má **vytvořit** , je řetězec, který obsahuje typ MIME, který by měl být "Application/JSON". Další informace najdete v referenčních informacích k [rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Druhý parametr je **tělo** objektu, který obsahuje název a popis pro nový seznam termínů.
 
 > [!NOTE]
-> Klíč služby Content Moderator má limit četnosti žádostí za sekundu (RPS), a pokud ho překročíte, sada SDK vyvolá výjimku s kódem chyby 429. Klíč úrovně Free má limit nastavený na 1 RPS.
+> Každý seznam obsahuje maximálně **5 seznamů termínů** , které **nepřekračují 10 000 podmínek**.
+
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
+
+> [!NOTE]
+> Váš klíč služby Content Moderator má omezení četnosti požadavků za sekundu (RPS). Pokud tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429. Klíč bezplatné úrovně má RPS limit četnosti.
 
 ```csharp
 /// <summary>
@@ -180,11 +179,11 @@ static string CreateTermList (ContentModeratorClient client)
 }
 ```
 
-## <a name="update-term-list-name-and-description"></a>Aktualizace názvu a popisu seznamu výrazů
+## <a name="update-term-list-name-and-description"></a>Aktualizovat název a popis seznamu termínů
 
-Informace o seznamu výrazů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.Update**. První parametr pro **Update** (Aktualizace) je ID seznamu výrazů. Druhý parametr je typ MIME, který by měl být "application/json". Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr je objekt **Body**, který obsahuje nový název a popis.
+Informace o seznamu termínů se aktualizují pomocí **ContentModeratorClient. ListManagementTermLists. Update**. První parametr, který se má **aktualizovat** , je ID seznamu termínů. Druhý parametr je typ MIME, který by měl být "Application/JSON". Další informace najdete v referenčních informacích k [rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr je **tělo** objektu, který obsahuje nový název a popis.
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -203,9 +202,9 @@ static void UpdateTermList (ContentModeratorClient client, string list_id, strin
 }
 ```
 
-## <a name="add-a-term-to-a-term-list"></a>Přidání výrazu do seznamu výrazů
+## <a name="add-a-term-to-a-term-list"></a>Přidat termín do seznamu termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -222,9 +221,9 @@ static void AddTerm (ContentModeratorClient client, string list_id, string term)
 }
 ```
 
-## <a name="get-all-terms-in-a-term-list"></a>Načtení všech výrazů v seznamu výrazů
+## <a name="get-all-terms-in-a-term-list"></a>Získat všechny podmínky v seznamu termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -245,13 +244,13 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="add-code-to-refresh-the-search-index"></a>Přidání kódu k aktualizaci indexu vyhledávání
+## <a name="add-code-to-refresh-the-search-index"></a>Přidání kódu pro aktualizaci indexu hledání
 
-Po provedení změn v seznamu výrazů obnovte jeho index vyhledávání, aby tyto změny byly zahrnuty při příštím použití seznamu termínů k prohledání textu. Je to podobné, jako když vyhledávací modul na počítači (pokud je povolený) nebo vyhledávací web průběžně aktualizuje svůj index, aby obsahoval nové soubory nebo stránky.
+Po provedení změn v seznamu termínů aktualizujete index vyhledávání, aby se změny projevily při příštím použití seznamu termínů k zadání textu obrazovky. To se podobá tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-Index vyhledávání seznamu termínů aktualizujete pomocí **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+Index vyhledávání seznamu termínů aktualizujete pomocí **ContentModeratorClient. ListManagementTermLists. RefreshIndexMethod**.
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -267,22 +266,22 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="screen-text-using-a-term-list"></a>Prohledávání textu pomocí seznamu výrazů
+## <a name="screen-text-using-a-term-list"></a>Text obrazovky používající seznam termínů
 
-Text prohledáte s použitím seznamu výrazů pomocí **ContentModeratorClient.TextModeration.ScreenText**, který se dá použít s následujícími parametry.
+Zobrazíte text na obrazovce pomocí seznamu termínů s **ContentModeratorClient. TextModeration. ScreenText**, který přebírá následující parametry.
 
-- Jazyk výrazů v seznamu termínů.
-- Typ MIME, což může být "text/html", "text/xml", "text/markdown" nebo "text/plain"
-- Text, který se má prohledat
-- Logická hodnota. Nastavte toto pole na **true**, pokud chcete, aby se v textu před jeho prohledáním provedly automatické opravy.
-- Logická hodnota. Nastavte toto pole na **true**, pokud se mají v textu zjišťovat identifikovatelné osobní údaje (PII).
-- ID seznamu výrazů
+- Jazyk podmínek v seznamu termínů.
+- Typ MIME, který může být "text/HTML", "text/XML", "text/Markdownu" nebo "text/prostý".
+- Text na obrazovku
+- Logická hodnota. Nastavte toto pole na **hodnotu true** , pokud chcete text před zablokováním vymezit.
+- Logická hodnota. Nastavte toto pole na **true** , aby se v textu zjistily osobní identifikovatelné údaje (PII).
+- ID seznamu termínů.
 
-Další informace najdete v [referenčních informacích k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
+Další informace najdete v referenčních informacích k [rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** vrátí objekt **Screen**, který má vlastnost **Terms**, která obsahuje všechny výrazy, které Content Moderator zjistil při prohledávání. Všimněte si, že pokud Content Moderator nezjistil žádné výrazy během prohledávání, má vlastnost **Terms** hodnotu **null**.
+**ScreenText** vrátí objekt **obrazovky** , který má vlastnost **terms** , která obsahuje seznam podmínek, které Content moderator zjistila v prověřování. Všimněte si, že pokud Content Moderator nerozpoznal žádné výrazy během prověřování, má vlastnost **terms** hodnotu **null**.
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -310,17 +309,17 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 }
 ```
 
-## <a name="delete-terms-and-lists"></a>Odstranění výrazů a seznamů
+## <a name="delete-terms-and-lists"></a>Odstranění podmínek a seznamů
 
-Odstranění výrazu nebo seznamu je jednoduché. Použijete sadu SDK k provádění následujících úloh:
+Odstranění termínu nebo seznamu je jednoduché. Pomocí sady SDK můžete provádět následující úlohy:
 
-- Odstranění výrazu. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Odstranění všech výrazů v seznamu bez odstranění seznamu. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Odstranění seznamu a veškerého jeho obsahu. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Odstraňte termín. (**ContentModeratorClient. ListManagementTerm. DeleteTerm**)
+- Odstraní všechny výrazy v seznamu bez odstranění seznamu. (**ContentModeratorClient. ListManagementTerm. DeleteAllTerms**)
+- Odstraní seznam a veškerý jeho obsah. (**ContentModeratorClient. ListManagementTermLists. Delete**)
 
-### <a name="delete-a-term"></a>Odstranění výrazu
+### <a name="delete-a-term"></a>Odstranit termín
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -337,9 +336,9 @@ static void DeleteTerm (ContentModeratorClient client, string list_id, string te
 }
 ```
 
-### <a name="delete-all-terms-in-a-term-list"></a>Odstranění všech výrazů v seznamu výrazů
+### <a name="delete-all-terms-in-a-term-list"></a>Odstranit všechny podmínky v seznamu termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -355,9 +354,9 @@ static void DeleteAllTerms (ContentModeratorClient client, string list_id)
 }
 ```
 
-### <a name="delete-a-term-list"></a>Odstranění seznamu výrazů
+### <a name="delete-a-term-list"></a>Odstranit seznam termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třída Program.
+Přidejte následující definici metody do oboru názvů TermLists, program třídy.
 
 ```csharp
 /// <summary>
@@ -375,7 +374,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>Vytvoření metody Main
 
-Přidejte definici metody **Main** do oboru názvů **TermLists**, třída **Program**. Nakonec zavřete třídu **Program** a obor názvů **TermLists**.
+Přidejte definici **Main** metody do oboru názvů **TermLists**, **program**třídy. Nakonec zavřete třídu **program** a obor názvů **TermLists** .
 
 ```csharp
 static void Main(string[] args)
@@ -413,7 +412,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-application-to-see-the-output"></a>Zobrazení výstupu spuštěním aplikace
+## <a name="run-the-application-to-see-the-output"></a>Spusťte aplikaci, aby se zobrazil výstup
 
 Výstup vaší konzoly bude vypadat následovně:
 
@@ -447,6 +446,6 @@ Deleting term list with ID 252.
 Press ENTER to close the application.
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+Získejte [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a řešení sady [Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další Content moderator rychlý Start pro .NET a začněte s integrací.
