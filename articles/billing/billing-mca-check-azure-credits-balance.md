@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709598"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177539"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
 Zůstatek kreditu Azure u smlouvy se zákazníkem Microsoftu můžete zobrazit na webu Azure Portal. Pomocí kreditů můžete platit poplatky, na které se tyto kredity vztahují.
 
-Pokud používáte produkty, na které se kredity nevztahují, nebo při využívání překročíte zůstatek kreditu, začnou se vám účtovat poplatky. Další informace najdete v části [Produkty, na které se nevztahují kredity Azure].(#products-that-arent-covered-by-azure-credits).
+Pokud používáte produkty, na které se kredity nevztahují, nebo při využívání překročíte zůstatek kreditu, začnou se vám účtovat poplatky. Další informace najdete v seznamu [produktů, na které se nevztahují kredity Azure](#products-that-arent-covered-by-azure-credits).
 
 Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 

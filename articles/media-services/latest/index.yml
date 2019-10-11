@@ -1,116 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Media Services v3
+summary: Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 metadata:
-  document_id: null
-  title: 'Dokumentace ke službě Azure Media Services v3 – kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.'
+  title: Dokumentace ke službě Azure Media Services v3
+  description: Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.
   services: media-services
-  author: Juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 04/12/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Naučíte se kódovat a balit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů. <br/> Sady SDK jsou založené na <a href="https://aka.ms/ams-v3-rest-sdk">specifikaci OpenAPI (Swagger) služby Media Services v3</a>.'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: cards
-        className: cardImageOuter
-        items:
-          - title: Informace o konceptech
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Nahrávání do cloudu a úložiště</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Analýzy mediálních služeb</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Balení</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Ochrana</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Živé streamování</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Klienti přehrávače</a></p>'
-          - title: Vývoj s rozhraní API v3
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-services-apis-overview">Doprovodné materiály</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Vývoj s využitím REST</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Připojení s využitím Javy</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Připojení s využitím .NET</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Připojení s využitím Node.js</a></p>'
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak vytvořit účet Media Services a spustit kódování, balení a streamování videí:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/dotnet.svg
-            text: Kódování a streamování s využitím .NET
-            href: /azure/media-services/latest/stream-files-dotnet-quickstart
-          - image:
-              src: media/index/cli.svg
-            text: Kódování a streamování s využitím CLI
-            href: /azure/media-services/latest/stream-files-cli-quickstart
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Kódování a streamování s využitím Node.js
-            href: /azure/media-services/latest/stream-files-nodejs-quickstart
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Kurzy vám ukážou, jak bezpečně a za běhu škálovat a balit videa na vyžádání a živá živé s využitím výkonu integrované služby Azure CDN:'
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 1
-        items:
-          - html: '<p>V tomto kurzu se načte místní videosoubor, zakóduje se a potom se tento kódovaný obsah streamuje.<p/>'
-            href: /azure/media-services/latest/stream-files-tutorial-with-api
-            title: Kódování načteného souboru a streamování videa
-          - html: '<p>Kurz vysvětluje nastavení pro živou událost. Dál ukazuje, jak vytvořit průchozí typ události v reálném čase.</p>'
-            href: /azure/media-services/latest/stream-live-tutorial-with-api
-            title: Živé vysílání
-          - html: '<p>Tento kurz vám ukáže, jak analyzovat video pomocí rozhraní API služby Azure Media Services.</p>'
-            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-            title: Analýza videa
-          - html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím AES-128.</p>'
-            href: /azure/media-services/latest/protect-with-aes128
-            title: Dynamické šifrování s využitím AES-128
-          - html: '<p>Naučíte se, jak konfigurovat a využívat rozhraní API služby Media Services k dynamickému šifrování vašeho obsahu s využitím více variant DRM (PlayReady, Widevine a FairPlay).</p>'
-            href: /azure/media-services/latest/protect-with-drm
-            title: Dynamické šifrování s využitím více variant DRM
-          - html: <p>Tento kurz ukazuje kódování vzdáleného souboru na základě adresy URL a streamování videa.</p>
-            href: /azure/media-services/latest/stream-files-tutorial-with-rest
-            title: Kódování vzdáleného souboru a streamování videa
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: 'V následujících ukázkách GitHubu se dozvíte, jak využívat rozhraní API ke streamování videa, živému vysílání a analýzám vašich videí pomocí Media Services v3:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
-          - image:
-              src: media/index/rest.svg
-            text: REST s Postmanem
-            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
-          - image:
-              src: media/index/logo_dotnet_core.svg
-            text: .NET Core s editorem Visual Studio Code
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
-          - image:
-              src: media/index/dotnet.svg
-            text: .NET se sadou Visual Studio
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
-  - title: Referenční informace
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>'
-          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
-          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
-          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
-          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
-          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'
+  ms.date: 10/07/2019
+  ms.openlocfilehash: b55677aba5f99d4960d51d3a717175d47db026e2
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72244216"
+landingContent:
+- title: Informace o Media Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je platforma Media Services v3?
+      url: media-services-overview.md
+    - text: Co je nového v Media Services?
+      url: release-notes.md
+  - linkListType: concept
+    links:
+    - text: Účty Media Services
+      url: media-services-account-concept.md
+    - text: Účty úložiště
+      url: storage-account-concept.md
+    - text: Balení
+      url: dynamic-packaging-overview.md
+    - text: Monitorování
+      url: reacting-to-media-services-events.md
+    - text: Klienti přehrávače
+      url: use-azure-media-player.md
+    - text: Vývoj s využitím pokynů pro rozhraní API v3
+      url: media-services-apis-overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu
+      url: create-account-cli-how-to.md
+    - text: Přístup k rozhraní API
+      url: access-api-cli-how-to.md
+  - linkListType: download
+    links:
+    - text: Ukázky .NET SDK
+      url: https://github.com/Azure-Samples/media-services-v3-dotnet
+    - text: Ukázky Java SDK
+      url: https://github.com/Azure-Samples/media-services-v3-java
+    - text: Ukázky kolekce REST Postman
+      url: https://github.com/Azure-Samples/media-services-v3-rest-postman
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: https://aka.ms/ams-v3-cli-ref
+    - text: REST
+      url: https://aka.ms/ams-v3-rest-ref
+    - text: .NET
+      url: https://aka.ms/ams-v3-dotnet-ref
+    - text: Java
+      url: https://aka.ms/ams-v3-java-ref
+- title: Živé streamování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Živé streamování
+      url: live-streaming-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Živé streamování
+      url: stream-live-tutorial-with-api.md
+- title: Stream na vyžádání
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nahrávání
+      url: assets-concept.md
+    - text: Kódování
+      url: encoding-concept.md
+  - linkListType: tutorial
+    links:
+    - text: Kódování vzdáleného souboru a streamu
+      url: stream-files-tutorial-with-rest.md
+    - text: Kódování načteného souboru a streamu
+      url: stream-files-tutorial-with-api.md
+- title: Šifrování obsahu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ochrana
+      url: content-protection-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Dynamické šifrování s využitím AES-128
+      url: protect-with-aes128.md
+    - text: Dynamické šifrování s využitím DRM
+      url: protect-with-drm.md
+- title: Analýza obsahu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Analýzy mediálních služeb
+      url: analyzing-video-audio-files-concept.md
+  - linkListType: tutorial
+    links:
+    - text: Analýza videí
+      url: analyze-videos-tutorial-with-api.md

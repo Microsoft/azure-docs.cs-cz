@@ -4,16 +4,16 @@ description: V tomto článku jsou vysvětlené nejčastější úkoly, které p
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308092"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035219"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -87,10 +87,11 @@ Další body, na které je potřeba myslet před převodem účtu:
 - Cílovou a zdrojovou registraci musí schválit správce EA.
   - V některých případech může Microsoft požádat správce EA, který spravuje zdrojovou registraci, o další schválení.
 - Pokud převod účtu vašim požadavkům nevyhovuje, můžete zvážit převod registrace.
-- Při převodu účtu se převádějí všechny služby, předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
-- Převodem účtu se u zdrojové registrace nastaví stav _Přenesené_. Převedený účet bude k dispozici jenom pro sestavy, které se týkají historie použití.
-- Do registrace, která je v přeneseném stavu, nemůžete přidávat role ani předplatná. Stav brání dalšímu použití registrace.
-- Zbývající zůstatek peněžního závazku ve zdrojové smlouvě se ruší, včetně budoucích podmínek.
+- Převod účtů přenese všechny služby a předplatná související s konkrétními účty.
+- Po dokončení převodu se převedený účet v rámci zdrojové registrace zobrazí jako neaktivní.
+- Převod účtu jde antedatovat k libovolnému datu v rámci počátečního data cílové registrace.
+- Účet zobrazuje koncové datum odpovídající efektivnímu datu převodu zdrojové registrace jako počáteční datum cílové registrace.
+- Jakékoliv použití účtu před efektivním datem převodu zůstane v rámci zdrojové registrace.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Převod podnikové registrace do nové registrace

@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: Aktivita podmínky Když
           href: control-flow-if-condition-activity.md
+        - name: Aktivita přepnutí
+          href: control-flow-switch-activity.md
         - name: Aktivita vyhledávání
           href: control-flow-lookup-activity.md
         - name: Aktivita nastavení proměnné
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Řešení potíží s toky dat
+          href: data-flow-troubleshoot-guide.md
 - name: Scénáře
   items:
     - name: Migrace dat pro datové jezero a EDW

@@ -119,6 +119,10 @@
           href: app/troubleshoot-faq.md
 - name: Návody
   items:
+    - name: Scénáře monitorování
+      items:
+        - name: Monitorování služby Azure
+          href: insights/monitor-azure-resource.md
     - name: Správa Azure Monitoru
       items:
         - name: Návrh nasazení pracovního prostoru

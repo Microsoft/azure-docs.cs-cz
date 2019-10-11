@@ -1,5 +1,5 @@
 ---
-title: Ukázky – podrobný plán Cílová zóna migrace CAF – přehled
+title: Ukázka – podrobný plán Cílová zóna migrace CAF – přehled
 description: Přehled a architektura ukázkového podrobného plánu Cílová zóna migrace CAF
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 2162e61262cc7ba157e85f7f8fe0ef586d064dd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 469ddfa647a2ee739756414ba1bad87c983057c6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978430"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243975"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Cílová zóna migrace
 

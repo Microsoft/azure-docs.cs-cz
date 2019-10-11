@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Azure SQL Data Warehouse
+summary: Naučte se používat službu Azure SQL Data Warehouse, která kombinuje relační databáze SQL s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak navrhovat, načítat, spravovat a analyzovat data pomocí datového skladu.
+metadata:
+  title: Azure SQL Data Warehouse
+  description: description
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72245843"
+landingContent:
+- title: Informace o službě SQL Data Warehouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je SQL Data Warehouse?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: SQL Data Warehouse – architektura MPP
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Tipy a osvědčené postupy pro datový sklad
+      url: cheat-sheet.md
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Vytvoření SQL Data Warehouse
+      url: create-data-warehouse-portal.md
+- title: Načtení dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Návrh strategie načítání dat pomocí PolyBase
+      url: design-elt-data-loading.md
+    - text: Osvědčené postupy načítání dat
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Načtení dat z Azure Data Lake Storage
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Načtení dat z Azure Blob Storage
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Ladění výkonu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Osvědčené postupy pro SQL Data Warehouse
+      url: sql-data-warehouse-best-practices.md
+    - text: Optimalizace uspořádaného clusterovaného indexu columnstore
+      url: performance-tuning-ordered-cci.md
+    - text: Použití materializovaných zobrazení pro optimalizaci úloh
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analýza úloh
+      url: analyze-your-workload.md
+- title: Správa a monitorování služby SQL Data Warehouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Další informace o správě a monitorování služby SQL Data Warehouse
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování vaší úlohy pomocí DMV
+      url: sql-data-warehouse-manage-monitor.md
+    - text: Správa a monitorování důležitosti úloh
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: Zabezpečení služby SQL Data Warehouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Základní informace o zabezpečení služby SQL Data Warehouse
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace ověřování Azure Active Directory
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: Zdroje a prostředky
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Sledovat nejnovější videa k Azure SQL Data Warehouse
+      url: sql-data-warehouse-videos.md

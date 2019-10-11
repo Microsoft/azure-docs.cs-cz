@@ -234,6 +234,10 @@
       items:
         - name: Zabezpečení a zásady
           href: security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: virtual-machines-windows-security-controls.md
     - name: Stavy a životní cyklus
       href: states-lifecycle.md
     - name: Monitorování
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: Příklad infrastruktury
       href: infrastructure-example.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: virtual-machines-windows-security-controls.md
 - name: Návody
   items:
     - name: Vytvoření virtuálních počítačů
@@ -286,8 +288,31 @@
         - name: Přístup za běhu
           href: ../../security-center/security-center-just-in-time.md
         - name: Šifrování
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Scénáře šifrování disků pro Windows
+              href: disk-encryption-windows.md
+            - name: Šifrování virtuálního počítače s využitím Azure CLI
+              href: disk-encryption-cli-quickstart.md
+            - name: Šifrování virtuálního počítače s využitím Azure PowerShellu
+              href: disk-encryption-powershell-quickstart.md
+            - name: Šifrování virtuálního počítače s využitím webu Azure Portal
+              href: disk-encryption-portal-quickstart.md
+            - name: Trezor klíčů pro Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Ukázkové skripty pro šifrování disků
+              href: disk-encryption-sample-scripts.md
+            - name: Řešení potíží s šifrováním disků
+              href: disk-encryption-troubleshooting.md
+            - name: Šifrování disků – nejčastější dotazy
+              href: disk-encryption-faq.md
+            - name: Šifrování disků – předchozí verze (AAD)
+              items:
+                - name: Přehled
+                  href: disk-encryption-overview-aad.md
+                - name: Trezor klíčů pro Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Scénáře šifrování disků pro Windows
+                  href: disk-encryption-windows-aad.md
         - name: Použití WinRM
           href: winrm.md
         - name: Použití řízení přístupu

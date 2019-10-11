@@ -1,5 +1,5 @@
 ---
-title: Ukázky – podrobný plán Základy CAF – přehled
+title: Ukázka – podrobný plán Základy CAF – přehled
 description: Přehled a architektura ukázkového podrobného plánu Základy CAF
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 404fe62b85d3c273a3aedb495b9fe01d2447360a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ad906c7502f468c611022af9b6b2e951d55b61a9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978419"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243986"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 

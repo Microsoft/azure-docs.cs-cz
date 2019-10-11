@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719913"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958370"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
@@ -272,7 +272,7 @@ Skupiny akcí jsou jediným koncovým bodem, který integrujete s rozpočtem. Up
 Po vytvoření skupiny akcí budete odkazovat na aplikaci logiky, kterou jste vytvořili dříve v tomto kurzu.
 
 1.  Pokud ještě nejste přihlášeni k webu [Azure Portal](https://portal.azure.com/), přihlaste se a vyberte **Všechny služby** > **Sledovat**.
-2.  V části **Nastavení** vyberte **Skupiny akcí**.
+2.  Vyberte **Upozornění** a pak vyberte **Spravovat akce**.
 3.  V okně **Skupiny akcí** vyberte **Přidat skupinu akcí**.
 4.  Přidejte a ověřte následující položky:
     - Název skupiny akcí

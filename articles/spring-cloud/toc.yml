@@ -2,7 +2,9 @@
   href: index.yml
   displayName: Azure Spring Cloud
 - name: Přehled
-  href: spring-cloud-overview.md
+  items:
+    - name: Co je Azure Spring Cloud?
+      href: spring-cloud-overview.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -12,7 +14,7 @@
       href: spring-cloud-quickstart-launch-app-cli.md
     - name: Spuštění aplikace Spring Cloudu ze zdroje
       href: spring-cloud-launch-from-source.md
-    - name: Spuštění aplikace Java Spring s využitím Mavenu
+    - name: Spuštění aplikace Spring Cloudu s využitím Mavenu
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Kurzy
   items:
