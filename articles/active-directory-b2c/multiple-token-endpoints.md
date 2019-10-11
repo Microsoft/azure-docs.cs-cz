@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 V této části aktualizujete kód a určíte, že oba koncové body vystavitele tokenu jsou platné.
 
 1. Otevřete řešení **B2C-WebApi-dotnet. sln** v aplikaci Visual Studio
-1. V projektu **TaskService** otevřete soubor *TaskService\\app_start\\**Startup.auth.cs*** v editoru.
+1. V projektu **TaskService** otevřete soubor *TaskService\\app_start\\**Startup.auth.cs**.* v editoru.
 1. Do horní části `using` souboru přidejte následující direktivu:
 
     `using System.Collections.Generic;`
@@ -122,7 +122,7 @@ Jak už bylo zmíněno dříve, jiné knihovny OWIN obvykle poskytují podobnou 
 
 U obou identifikátorů URI, které teď podporuje vaše webové rozhraní API, teď potřebujete aktualizovat webovou aplikaci tak, aby se z koncového bodu b2clogin.com načítat tokeny.
 
-Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v souboru *TaskWebApp\\**Web. config** v* projektu **TaskWebApp** .
+Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v souboru *TaskWebApp\\**Web. config**.* v projektu **TaskWebApp** .
 
 Změňte hodnotu v *souboru Web. config* pro TaskWebApp tak, aby odkazovala `{your-b2c-tenant-name}.b2clogin.com` místo `login.microsoftonline.com`na. `ida:AadInstance`
 
