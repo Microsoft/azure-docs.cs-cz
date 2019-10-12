@@ -1,7 +1,7 @@
 ---
 title: Předem připravené modely – LUIS
 titleSuffix: Azure Cognitive Services
-description: Předem připravené modely poskytují domén, záměrů, projevy a entity. Můžete spustit vaši aplikaci s využitím předem připravených doménou nebo později přidat příslušné domény do vaší aplikace.
+description: Předem připravené modely poskytují domény, záměry, projevy a entity. Můžete spustit aplikaci s předem vytvořenou doménou nebo přidat relevantní doménu do aplikace později.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,58 +11,58 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: b072e265204bba3caa1388576008d5e41adcc33d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: b88801ded3dea7c7514ff117361feba3e95444ed
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619707"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264382"
 ---
-# <a name="prebuilt-domain-intent-and-entity-models"></a>Předem připravené modely entity, domény a záměr
+# <a name="prebuilt-domain-intent-and-entity-models"></a>Předem připravené modely domén, záměrů a entit
 
-Předem připravené modely poskytují domén, záměrů, projevy a entity. Můžete spustit vaši aplikaci s využitím předem připravených doménou nebo později přidat příslušné domény do vaší aplikace. 
+Předem připravené modely poskytují domény, záměry, projevy a entity. Můžete spustit aplikaci s předem vytvořenou doménou nebo přidat relevantní doménu do aplikace později. 
 
-## <a name="types-of-prebuilt-models"></a>Typech předem připravené modely
+## <a name="types-of-prebuilt-models"></a>Typy předem sestavených modelů
 
-Existují 3 typy předem připravené modely, které poskytuje služby LUIS. Každý model lze přidat do vaší aplikace v každém okamžiku. 
+Existují tři typy předem sestavených modelů, které LUIS poskytuje. Každý model lze kdykoli přidat do aplikace. 
 
 |Typ modelu|Zahrnuje|
 |--|--|
-|Domain (Doména)|Záměrů, projevy, entity|
-|Záměry|Záměrů, projevy|
+|Domain (Doména)|Záměry, projevy, entity|
+|Záměry|Záměry, projevy|
 |Entity|Pouze entity| 
 
-## <a name="prebuilt-domains"></a>Předem připravených domén
+## <a name="prebuilt-domains"></a>Předem připravené domény
 
-Language Understanding (LUIS) poskytuje *předem připravených domén*, které jsou předem připravených sad [záměry](luis-how-to-add-intents.md) a [entity](luis-concept-entity-types.md) , které pracují společně pro domény nebo běžné kategorie klientské aplikace. 
+Language Understanding (LUIS) poskytuje *předem sestavené domény*, které jsou předem sestavené sady [záměrů](luis-how-to-add-intents.md) a [entit](luis-concept-entity-types.md) , které pracují dohromady pro domény nebo běžné kategorie klientských aplikací. 
 
-Předem připravených domén jsou trénované a připravené k přidání do aplikace LUIS. Záměry a entity v doméně předem připravených jsou plně přizpůsobitelné po jejich přidání do vaší aplikace. 
+Předem připravené domény jsou trained a připravené k přidání do aplikace LUIS. Záměry a entity v předem sestavené doméně jsou po přidání do vaší aplikace plně přizpůsobitelné. 
 
-Když spustíte z přizpůsobení celou předem připravených doménu, odstraňte záměry a entity, které vaše aplikace nemusí používat. Můžete také přidat některé záměry a entity na sadu předem připravených domény již poskytuje. Například, pokud používáte **události** předem připravených domény aplikace sportovní událost, můžete přidat entity pro týmy, sportu. Při spuštění [poskytuje projevy](luis-how-to-add-example-utterances.md) LUIS, zahrňte podmínky, které jsou specifické pro vaši aplikaci. Služba LUIS se naučí rozeznat je a přizpůsobuje jim předem připravených domény záměry a entity, které vaše aplikace potřebuje. 
+Pokud začnete s přizpůsobením celé předem připravené domény, odstraňte záměry a entity, které vaše aplikace nemusí používat. Můžete také přidat některé záměry nebo entity do sady, kterou již předem vytvořená doména nabízí. Pokud například používáte **události** předem sestavené pro aplikaci sportovní události, můžete přidat entity pro sportovní týmy. Když začnete [poskytovat projevy](luis-how-to-add-example-utterances.md) do Luis, zahrňte do něj výrazy, které jsou specifické pro vaši aplikaci. LUIS se učí, aby je rozpoznali a vystavili vlastníci domény a entity pro potřeby vaší aplikace. 
 
 > [!TIP]
-> Záměry a entity v doméně předem připravených fungují nejlépe společně. Je lepší zkombinovat záměry a entity ve stejné doméně, pokud je to možné.
-> Doména předem připravených nástrojů má záměrů, které můžete přizpůsobit pro použití v libovolné doméně. Například můžete přidat `Utilities.Repeat` do vaší aplikace a trénování rozpoznat libovolné akce uživatele může být vhodné opakování ve vaší aplikaci. 
+> Záměry a entity v předem připravené doméně pracují nejlépe společně. Je lepší kombinovat záměry a entity ze stejné domény, pokud je to možné.
+> Předem vytvořená doména nástrojů má záměry, které můžete přizpůsobit pro použití v libovolné doméně. Do své aplikace můžete například přidat `Utilities.Repeat` a naučit se rozpoznávat jakékoli akce, které by měl uživatel opakovat. 
 
-### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Změna chování záměr předem připravených domény
+### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Změna chování předem vytvořeného záměru domény
 
-Můžete zjistit, že předem připravená doména obsahuje záměru, který je podobný záměru, který chcete mít ve vaší aplikaci LUIS, ale chcete, aby chovat odlišně. Například **míst** předem připravená doména poskytuje `MakeReservation` záměr pro provedení rezervace restaurace, ale má vaše aplikace použít k vytvoření hotelových rezervací tohoto záměru. V takovém případě můžete změnit chování tohoto záměru poskytnutím projevy k LUIS informace o vytváření hotelových rezervací a označování je pomocí `MakeReservation` záměru, takže pak LUIS může být retrained rozpoznat `MakeReservation` v žádosti o rezervovat hotelu záměru .
+Může se stát, že předem sestavená doména obsahuje záměr podobný záměru, který chcete mít v aplikaci LUIS, ale chcete, aby se chovala jinak. Například předem sestavená doména poskytuje `MakeReservation` záměr vytvořit rezervaci restaurace, ale chcete, aby vaše aplikace použila tento záměr na rezervaci hotelu. V takovém případě můžete změnit chování tohoto záměru tím, že projevy LUIS o vytváření rezervací hotelu a jejich označování pomocí @no__tho záměru, takže LUIS se dá přepracovat tak, aby se v požadavku na rezervaci hotelu rozpoznala `MakeReservation`.
 
-Najdete úplný seznam předem připravených domén v [předem připravených domén odkaz](./luis-reference-prebuilt-domains.md).
+Úplný seznam předdefinovaných domén najdete v [odkazech předem sestavené domény](./luis-reference-prebuilt-domains.md).
 
-## <a name="prebuilt-intents"></a>Předem připravené příkazy
+## <a name="prebuilt-intents"></a>Předem připravené záměry
 
-Služba LUIS poskytuje předem připravených záměry a jejich projevy. Bez přidání celé domény je možné přidat záměry. Přidání záměru je proces přidávání záměru a jeho projevy. Název záměru a seznamu utterance lze upravit.  
+LUIS poskytuje předem sestavené záměry a jejich projevy. Záměry je možné přidat bez přidání celé domény. Přidání záměru je proces přidání záměru a jeho projevy. Název záměru i seznam utterance lze upravit.  
 
-## <a name="prebuilt-entities"></a>Předem připravených entit
+## <a name="prebuilt-entities"></a>Předem připravené entity
 
-Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS. Úplný seznam předem připravených entit, které podporuje služba LUIS, včetně podpory podle jazykové verze, najdete v článku [předem připravených entit odkaz](./luis-reference-prebuilt-entities.md).
+LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měna. Předem připravená podpora entit se liší podle jazykové verze vaší aplikace LUIS. Úplný seznam předem připravených entit, které LUIS podporuje, včetně podpory podle jazykové verze, najdete v tématu [předem sestavený odkaz na entitu](./luis-reference-prebuilt-entities.md).
 
-Předem připravených entit je obsažen ve vaší aplikaci, jeho předpovědi jsou zahrnuty v publikované aplikaci. Chování předem připravených entit je předem vytrénovaných a **nelze** upravit. Postupujte podle těchto kroků, abyste viděli, jak funguje předem připravených entit:
+Pokud je do aplikace zahrnutá předem sestavená entita, je její předpovědi součástí vaší publikované aplikace. Chování předem připravených entit je předem vyškolené a **nelze** je upravit. 
 
 > [!NOTE]
-> **Builtin.DateTime** je zastaralý. Se nahrazuje [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), která poskytuje rozpoznávání datum a časové rozsahy a také vylepšené rozpoznávání nejednoznačný dat a časů.
+> **předdefinovaná hodnota. DateTime** je zastaralá. Je nahrazená funkcí [**Builtin. datetimeV2**](luis-reference-prebuilt-datetimev2.md), která poskytuje rozpoznávání rozsahů data a času a vylepšené rozpoznávání nejednoznačných dat a časů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [přidání předem připravených entit](luis-prebuilt-entities.md) do vaší aplikace.
+Naučte se, jak do své aplikace [Přidat předem připravené entity](luis-prebuilt-entities.md) .
