@@ -2,18 +2,17 @@
 title: Azure Analysis Services zálohování a obnovení databáze | Microsoft Docs
 description: Popisuje postup zálohování a obnovení databáze Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932459"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295414"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -50,13 +49,13 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
     ![Uložit nastavení zálohování](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Zálohování pomocí SSMS
 
 1. V SSMS klikněte pravým tlačítkem na databázi > **zálohovat**.
 
-2. V záložním**souboru**zálohy **databáze** > klikněte na tlačítko **Procházet**.
+2. V **záložní databázi** > **záložní soubor**klikněte na **Procházet**.
 
 3. V dialogovém okně **Uložit soubor jako** ověřte cestu ke složce a potom zadejte název záložního souboru. 
 
@@ -74,7 +73,7 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 ### <a name="powershell"></a>PowerShell
 Použijte rutinu [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) .
 
-## <a name="restore"></a>Obnovit
+## <a name="restore"></a>Obnovení
 Při obnovení musí být váš záložní soubor v účtu úložiště, který jste nakonfigurovali pro váš server. Pokud potřebujete přesunout záložní soubor z místního umístění do svého účtu úložiště, použijte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) nebo nástroj příkazového řádku [AzCopy](../storage/common/storage-use-azcopy.md) . 
 
 

@@ -2,24 +2,23 @@
 title: Přidání instančního objektu do role správce serveru Azure Analysis Services | Microsoft Docs
 description: Naučte se přidat instanční objekt služby Automation do role správce serveru.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8fbbdbd647aa3d733a26ceaf72629058ae3a274
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619268"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298715"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
  Aby bylo možné automatizovat bezobslužné úlohy PowerShellu, instanční objekt musí mít oprávnění **Správce serveru** na spravovaném serveru Analysis Services. Tento článek popisuje, jak přidat instanční objekt do role Správci serveru na serveru Azure jako.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Před dokončením této úlohy musíte mít v Azure Active Directory zaregistrovaný instanční objekt.
 
 [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
@@ -31,7 +30,7 @@ K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis
 ## <a name="add-service-principal-to-server-administrators-role"></a>Přidání instančního objektu k roli správců serveru
 
 1. V SSMS se připojte k Azure AS serveru.
-2. V nabídce**zabezpečení** **vlastností** > serveru klikněte na **Přidat**.
+2. V **Vlastnosti serveru** > **zabezpečení**klikněte na **Přidat**.
 3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
 
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

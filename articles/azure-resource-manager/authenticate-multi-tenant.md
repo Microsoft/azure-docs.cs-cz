@@ -4,14 +4,14 @@ description: Popisuje, jak Azure Resource Manager zpracovává žádosti o ově�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 625a17156eaf199af0d51151c6fd37769b8f7b4a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848752"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300351"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Ověřování žádostí napříč klienty
 
@@ -23,8 +23,8 @@ Požadavek má následující hodnoty hlaviček ověřování:
 
 | Název hlavičky | Popis | Příklad hodnoty |
 | ----------- | ----------- | ------------ |
-| Authorization | Primární token | &lt;Primární token nosiče&gt; |
-| x-MS-Authorization – pomocná | Pomocné tokeny | &lt;&gt; &lt;Nosič pomocná – token1&gt;, EncryptedBearer AUX-token2, nosič pomoc – token3 &lt;&gt; |
+| Autorizace | Primární token | Nosič &lt;primary-token @ no__t-1 |
+| x-MS-Authorization – pomocná | Pomocné tokeny | Nosič &lt;auxiliary-token1 @ no__t-1, EncryptedBearer &lt;auxiliary-token2 @ no__t-3, nosič &lt;auxiliary-token3 @ no__t-5 |
 
 Pomocné záhlaví může obsahovat až tři pomocné tokeny. 
 
@@ -37,5 +37,6 @@ Když aplikace pošle požadavek na Správce prostředků, žádost se spustí p
 Když požadavek odkazuje na prostředek z jiného tenanta, Správce prostředků zkontroluje pomocné tokeny a určí, jestli se žádost dá zpracovat. Všechny pomocné tokeny v hlavičce musí být platné a neprošlé. Pokud vypršela platnost nějakého tokenu, Správce prostředků vrátí kód odpovědi 401. Odpověď zahrnuje ID klienta a ID tenanta z tokenu, který není platný. Pokud pomocné záhlaví obsahuje pro tenanta platný token, je zpracován požadavek mezi klienty.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o posílání žádostí o ověření pomocí rozhraní API Azure Resource Manager najdete v tématu [použití rozhraní API pro ověřování Správce prostředků k přístupu k](resource-manager-api-authentication.md)předplatným.
-* Další informace o tokenech najdete v tématu [Azure Active Directory Access tokens](/azure/active-directory/develop/access-tokens).
+
+* Další informace o požadavcích na ověřování najdete v tématu [toky ověřování a scénáře použití aplikace](../active-directory/develop/authentication-flows-app-scenarios.md).
+* Další informace o tokenech najdete v tématu [Azure Active Directory Access tokens](../active-directory/develop/access-tokens.md).

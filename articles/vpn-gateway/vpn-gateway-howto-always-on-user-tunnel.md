@@ -1,47 +1,50 @@
 ---
-title: Konfigurace tunelového připojení VPN Always On pro VPN Gateway
-description: Postup konfigurace tunelového připojení VPN uživatele Always On VPN Gateway
+title: Konfigurace tunelového připojení VPN typu Always On pro vaši bránu VPN
+description: Tento článek popisuje, jak pro vaši bránu VPN nakonfigurovat uživatelské tunelové propojení VPN typu Always On.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: dc0abf12c60f845fde0d16bd874a1436aef3b7ab
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9aa1f951add5b79eab12f4957be05a42bbdd4434
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846469"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299920"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurace tunelového propojení uživatelů v síti VPN Always On
+# <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurace tunelu uživatele VPN AlwaysOn
 
-Jednou z nových funkcí klienta virtuální privátní sítě (VPN) Windows 10 je schopnost udržovat připojení VPN. Always On je funkce Windows 10, která umožňuje, aby se aktivní profil sítě VPN připojoval automaticky a zůstal připojený na triggerech – konkrétně přihlášení uživatele, změna stavu sítě nebo obrazovka zařízení aktivní.
+Novou funkcí klienta sítě VPN s Windows 10, která je vždycky zapnutá, je možnost udržovat připojení VPN. Díky službě Always On se aktivní profil sítě VPN může připojit automaticky a zůstat připojený na triggerech, jako jsou přihlášení uživatele, změna stavu sítě nebo obrazovka zařízení aktivní.
 
-Brány virtuální sítě Azure je možné používat s Windows 10 vždy k navázání trvalých tunelů uživatelů i tunelů zařízení do Azure. Tento článek vám pomůže nakonfigurovat tunelové propojení uživatelů VPN typu Always On.
+Brány virtuální sítě Azure s Windows 10 se vždycky používají k navázání trvalých tunelů uživatelů a tunelových připojení zařízení do Azure. Tento článek vám pomůže nakonfigurovat tunelové propojení uživatelů VPN typu Always On.
 
-Připojení k síti VPN Always On zahrnuje dva typy tunelů:
+Připojení k síti VPN Always On zahrnuje jeden ze dvou typů tunelů:
 
-* **Tunel zařízení** se připojí k ZADANÝM serverům VPN, než se uživatelé přihlásí k zařízení. Scénáře připojení před přihlášením a účely správy zařízení používají tunelování zařízení.
+* **Tunelové propojení zařízení**: připojí se k zadaným serverům sítě VPN, než se uživatelé přihlásí k zařízení. Scénáře připojení před přihlášením a Správa zařízení používají tunelové zařízení.
 
-* **Tunelování uživatele** se připojí až po přihlášení uživatele k zařízení. Tunelové propojení uživatelů umožňuje uživatelům přístup k prostředkům organizace prostřednictvím serverů VPN.
+* **Tunelové propojení uživatelů**: připojuje se až po přihlášení uživatelů k zařízení. Pomocí tunelů uživatelů můžete získat přístup k prostředkům organizace prostřednictvím serverů VPN.
 
-Tunelové propojení zařízení i tunelové propojení uživatelů fungují nezávisle na svých profilech sítě VPN. Můžou být připojené ve stejnou dobu a můžou podle potřeby používat jiné metody ověřování a další nastavení konfigurace VPN.
+Tunely zařízení a tunely uživatelů fungují nezávisle na jejich profilech sítě VPN. Můžou být připojené ve stejnou dobu a můžou podle potřeby používat jiné metody ověřování a další nastavení konfigurace VPN.
 
-## <a name="1-configure-the-gateway"></a>1. Konfigurace brány
+V následujících částech nakonfigurujete bránu VPN a tunel uživatele.
 
-Nakonfigurujte bránu VPN na používání protokolu IKEv2 a ověřování založeného na certifikátech pomocí tohoto [článku Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+## <a name="step-1-configure-a-vpn-gateway"></a>Krok 1: Konfigurace služby VPN Gateway
 
-## <a name="2-configure-the-user-tunnel"></a>2. konfigurace tunelového propojení uživatelů
+Bránu VPN nakonfigurujete tak, aby používala ověřování IKEv2 a založený na certifikátech podle pokynů v tomto článku [Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) .
 
-1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto [článku klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md). Certifikát musí být v úložišti aktuálního uživatele.
-2. Pomocí [těchto pokynů](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)NAKONFIGURUJTE klienta VPN Always On prostřednictvím PowerShellu, SCCM nebo Intune.
+## <a name="step-2-configure-a-user-tunnel"></a>Krok 2: konfigurace tunelového propojení uživatele
 
-### <a name="configuration-example-for-user-tunnel"></a>Příklad konfigurace pro tunelové propojení uživatelů
+1. Nainstalujte klientské certifikáty na klienta Windows 10, jak je znázorněno v tomto článku [klienta VPN typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md) . Certifikát musí být v úložišti aktuálního uživatele.
 
-Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 použijte následující příklady ke konfiguraci tunelu klientského zařízení.
+1. Nakonfigurujete klienta VPN Always On prostřednictvím PowerShellu, System Center Configuration Manager nebo Intune podle pokynů v tématu [Konfigurace připojení k síti VPN na straně klienta s Windows 10](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
 
-1. Zkopírujte následující text a uložte ho jako ***Usercert. ps1***.
+### <a name="example-configuration-for-the-user-tunnel"></a>Příklad konfigurace pro tunelové propojení uživatelů
+
+Po nakonfigurování brány virtuální sítě a instalaci klientského certifikátu v úložišti místního počítače na klientovi Windows 10 nakonfigurujte tunelové zařízení klienta pomocí následujících příkladů:
+
+1. Zkopírujte následující text a uložte ho jako *Usercert. ps1*:
 
    ```
    Param(
@@ -93,7 +96,7 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Zkopírujte následující text a uložte ho jako ***VPNProfile. XML*** ve stejné složce jako **Usercert. ps1**. Upravte následující text tak, aby odpovídal vašemu prostředí.
+1. Zkopírujte následující text a uložte ho jako *VPNProfile. XML* ve stejné složce jako *Usercert. ps1*. Upravte následující text tak, aby odpovídal vašemu prostředí:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -138,31 +141,31 @@ Po nakonfigurování brány virtuální sítě a instalaci klientského certifik
    ```
 1. Spusťte PowerShell jako správce.
 
-1. V PowerShellu přejděte do složky, kde se nachází **Usercert. ps1** a **VPNProfile. XML** , a spusťte následující příkaz:
+1. V PowerShellu přejděte do složky, kde se nachází *Usercert. ps1* a *VPNProfile. XML* , a spusťte následující příkaz:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-user-tunnel/p2s2.jpg)
-1. Podívejte se na nastavení sítě VPN.
+1. V části **nastavení sítě VPN**vyhledejte položku **UserTest** a pak vyberte **připojit**.
 
-1. Vyhledejte položku **UserTest** a klikněte na **připojit**.
+1. Pokud je připojení úspěšné, úspěšně jste nakonfigurovali tunelové propojení vždycky na uživatele.
 
-1. Pokud je připojení úspěšné, pak jste úspěšně nakonfigurovali tunelové propojení vždycky na uživatele.
+## <a name="clean-up-your-resources"></a>Vyčištění prostředků
 
-## <a name="cleanup"></a>Vyčištění
+Pokud chcete profil odebrat, udělejte toto:
 
-Chcete-li odebrat profil, spusťte následující příkaz:
-
-1. Odpojte připojení a zrušte tuto možnost připojit automaticky.
+1. Spusťte následující příkaz:
 
    ```powershell
    C:\> Remove-VpnConnection UserTest  
    ```
 
+1. Odpojte připojení a zrušte zaškrtnutí políčka **Připojit automaticky** .
+
 ![Vyčištění](./media/vpn-gateway-howto-always-on-user-tunnel/p2s4..jpg)
 
 ## <a name="next-steps"></a>Další kroky
 
-Řešení potíží najdete v tématu [problémy s připojením Point-to-site v Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) .
+Pokud chcete řešit problémy s připojením, ke kterým může dojít, přečtěte si téma [problémy s připojením Point-to-site v Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

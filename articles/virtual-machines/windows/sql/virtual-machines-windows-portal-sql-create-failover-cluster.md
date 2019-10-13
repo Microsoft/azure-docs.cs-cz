@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170254"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300588"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání v Azure Virtual Machines
 
@@ -375,14 +375,15 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Nakonfigurujte Nástroj pro vyrovnávání zatížení pomocí:
 
-   - **Název**: název, který identifikuje Nástroj pro vyrovnávání zatížení.
-   - **Typ**: Nástroj pro vyrovnávání zatížení může být buď veřejný, nebo soukromý. Privátní Nástroj pro vyrovnávání zatížení je možné použít v rámci stejné virtuální sítě. Většina aplikací Azure může používat privátní Nástroj pro vyrovnávání zatížení. Pokud vaše aplikace potřebuje přístup k SQL Server přímo přes Internet, použijte veřejný Nástroj pro vyrovnávání zatížení.
-   - **Virtual Network**: stejná síť jako virtuální počítače.
-   - **Podsíť**: stejná podsíť jako virtuální počítače.
-   - **Privátní IP adresa**: stejná IP adresa, kterou jste přiřadili SQL Server síťovému prostředku clusteru FCI.
-   - **předplatné**: vaše předplatné Azure.
+   - **Předplatné**: vaše předplatné Azure.
    - **Skupina prostředků**: použijte stejnou skupinu prostředků jako virtuální počítače.
-   - **Umístění**: použijte stejné umístění Azure jako virtuální počítače.
+   - **Název**: název, který identifikuje Nástroj pro vyrovnávání zatížení.
+   - **Oblast**: použijte stejné umístění Azure jako virtuální počítače.
+   - **Typ**: Nástroj pro vyrovnávání zatížení může být buď veřejný, nebo soukromý. Privátní Nástroj pro vyrovnávání zatížení je možné použít v rámci stejné virtuální sítě. Většina aplikací Azure může používat privátní Nástroj pro vyrovnávání zatížení. Pokud vaše aplikace potřebuje přístup k SQL Server přímo přes Internet, použijte veřejný Nástroj pro vyrovnávání zatížení.
+   - **SKU**: SKU pro váš nástroj pro vyrovnávání zatížení by měla být standard. 
+   - **Virtual Network**: stejná síť jako virtuální počítače.
+   - **Přiřazení IP adresy**: přiřazení IP adresy musí být statické. 
+   - **Privátní IP adresa**: stejná IP adresa, kterou jste přiřadili SQL Server síťovému prostředku clusteru FCI.
    Podívejte se na následující obrázek:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

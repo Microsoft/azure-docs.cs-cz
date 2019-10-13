@@ -12,23 +12,23 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: aa04b2508f89b9658d904624e884bf9133caf3b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948226"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299541"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
 Tento článek popisuje funkce a možnosti všeobecně dostupné pro [webovou aplikaci Azure Time Series Insights Explorer](https://insights.timeseries.azure.com/). Průzkumník Time Series Insights ukazuje výkonné možnosti vizualizace dat poskytované službou a lze k němu přistupovat v rámci vašeho vlastního prostředí.
 
-Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje prozkoumávání a analýzu miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. Průzkumník Time Series Insights je aktuálně ve verzi Public Preview.
+Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech, který vám umožní rychle ověřit vaše řešení IoT a vyhnout se nákladným výpadkům důležitých zařízení. Můžete zjišťovat skryté trendy, odhalit anomálie a provádět analýzy hlavních příčin téměř v reálném čase. Průzkumník Time Series Insights je aktuálně ve verzi Public Preview.
 
 > [!TIP]
 > Prohlídku provedenou pomocí demonstračního prostředí si můžete přečíst v tématu [rychlý start Azure Time Series Insights](time-series-quickstart.md).
 
-## <a name="video"></a>Obrazový
+## <a name="video"></a>Video
 
 ### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Přečtěte si informace o dotazování na data pomocí Time Series Insights Exploreru. </br>
 
@@ -37,7 +37,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 >[!NOTE]
 >Projděte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít Time Series Insights Explorer, musíte:
 
@@ -74,9 +74,9 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
          |Operace  |Podporované typy  |Poznámky  |
          |---------|---------|---------|
          |`<`, `>` `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
-         |`=`, `!=` `<>`     | String, bool, Double, DateTime, TimeSpan, NULL        |         |
+         |`=`, `!=`, `<>`     | String, bool, Double, DateTime, TimeSpan, NULL        |         |
          |IN     | String, bool, Double, DateTime, TimeSpan, NULL        |  Všechny operandy by měly být stejného typu nebo mít nulovou konstantu.        |
-         |MÁ     | String        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny.       |
+         |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny.       |
 
       - **Příklady dotazů**
 
@@ -126,4 +126,5 @@ Nyní jste viděli různé funkce a možnosti, které jsou k dispozici v rámci 
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [diagnostikovat a řešit problémy](time-series-insights-diagnose-and-solve-problems.md) v prostředí Time Series Insights.
+
 - Převezměte [Azure Time Series Insights](time-series-quickstart.md) úvodní prohlídka s asistencí.

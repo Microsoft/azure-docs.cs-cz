@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: Uzamčení prostředků
           href: resource-group-lock-resources.md
-        - name: Ověřovací rozhraní API pro přístup k předplatným
-          href: resource-manager-api-authentication.md
         - name: Vytvoření předplatných EA
           href: programmatically-create-subscription.md
         - name: Udělení přístupu pro vytváření předplatných EA

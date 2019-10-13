@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991869"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299672"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
-V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen2. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen2. Před Data Lake Storage Gen2 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Při Data Lake Storage Gen2 se většina pevných omezení velikosti a výkonu odebere. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen2.
+V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen2. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen2. Před Data Lake Storage Gen2 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Data Lake Storage Gen2 podporuje jednotlivé velikosti souborů tak vysoké jako 5 TB a většina pevných limitů pro výkon se odebrala. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen2.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Informace o zabezpečení
 
 Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a adresáře. Ovládací prvky přístupu lze také použít k vytvoření výchozích oprávnění, která lze automaticky použít pro nové soubory nebo adresáře. Další podrobnosti o Data Lake Storage Gen2ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
 
@@ -39,7 +39,7 @@ Azure Active Directory instanční objekty obvykle používají služby, jako je
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Povolit bránu Data Lake Storage Gen2 firewall s přístupem ke službě Azure
 
-Data Lake Storage Gen2 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což doporučuje omezit vektor externích útoků. Bránu firewall je možné povolit v účtu > úložiště v Azure Portal přes bránu firewall**Povolit bránu firewall (zapnuto)**  > **Povolit přístup k možnostem služeb Azure** .
+Data Lake Storage Gen2 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což doporučuje omezit vektor externích útoků. Bránu firewall můžete v účtu úložiště v Azure Portal povolit přes **bránu firewall** > **Povolit bránu firewall (zapnutou)**  > **Povolit přístup k možnostem služeb Azure** .
 
 Pokud chcete získat přístup k účtu úložiště z Azure Databricks, nasaďte Azure Databricks do vaší virtuální sítě a potom do své brány firewall přidejte tuto virtuální síť. Viz [Konfigurace bran firewall a virtuálních sítí Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -47,7 +47,7 @@ Pokud chcete získat přístup k účtu úložiště z Azure Databricks, nasaďt
 
 Při navrhování systému pomocí Data Lake Storage Gen2 nebo libovolné cloudové služby musíte vzít v úvahu požadavky na dostupnost a postup reakce na potenciální přerušení ve službě. Problém může být lokalizovaný na konkrétní instanci nebo dokonce v celé oblasti, takže plán pro oba je důležitý. V závislosti na době obnovení a cíli SLA bodu obnovení pro vaše zatížení můžete zvolit více nebo méně agresivní strategii pro vysokou dostupnost a zotavení po havárii.
 
-### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
+### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
 
 Vysoká dostupnost (HA) a zotavení po havárii (DR) se někdy můžou kombinovat dohromady, i když každá z nich má mírně odlišnou strategii, zejména pokud se data nacházejí. Data Lake Storage Gen2 už v digestoři zpracovává replikaci 3x, která chrání před selháním lokalizovaných hardwarových zařízení. Kromě toho další možnosti replikace, jako je ZRS nebo GZRS (Preview), zlepšují HA, zatímco GRS & RA-GRS vylepšit DR. Při sestavování plánu pro HA potřebuje v případě přerušení služby přístup k nejnovějším datům co nejrychleji, a to tak, že přepnete na samostatnou replikovanou instanci lokálně nebo v nové oblasti.
 
@@ -65,7 +65,7 @@ Pro distribuované kopírování je DistCp nástroj příkazového řádku pro L
 
 Azure Data Factory lze také použít k plánování úloh kopírování pomocí aktivity kopírování a je možné ji dokonce nastavit na frekvenci prostřednictvím Průvodce kopírováním. Mějte na paměti, že Azure Data Factory má limit DMUsch přenosů dat v cloudu, a nakonec si zajistěte, aby propustnost a výpočet pro úlohy s velkým objemem dat byly omezené. Kromě toho Azure Data Factory v současné době nenabízí rozdílové aktualizace mezi účty Data Lake Storage Gen2, takže adresáře, jako jsou tabulky podregistru, budou vyžadovat úplnou kopii k replikaci. Další informace o kopírování pomocí Data Factory najdete v článku věnovaném službě [Data Factory](../../data-factory/load-azure-data-lake-storage-gen2.md) .
 
-## <a name="monitoring-considerations"></a>Důležité informace o monitorování
+## <a name="monitoring-considerations"></a>Monitorování – požadavky
 
 Data Lake Storage Gen2 poskytuje metriky v Azure Portal pod účtem Data Lake Storage Gen2 a v Azure Monitor. V Azure Portal se zobrazí dostupnost Data Lake Storage Gen2. Chcete-li získat nejaktuálnější dostupnost účtu Data Lake Storage Gen2, je nutné spustit vlastní syntetické testy k ověření dostupnosti. Jiné metriky, jako je například celkové využití úložiště, požadavky na čtení a zápis a příchozí/odchozí, jsou k dispozici, aby je bylo možné využívat monitorováním aplikací a mohou také aktivovat výstrahy v případě překročení prahových hodnot (například průměrná latence nebo počet chyb za minutu).
 
@@ -89,7 +89,7 @@ Na konci adresářové struktury je důležitý důvod, jak umístit datum. Poku
 
 Z vysoké úrovně se běžně používaným přístupem v dávkovém zpracování slouží k obstání dat v adresáři "v". Až se data zpracují, vložte nová data do adresáře "out", aby bylo možné procesy pro příjem dat využívat. Tato adresářová struktura se občas zobrazuje pro úlohy, které vyžadují zpracování na jednotlivých souborech a nemusí vyžadovat výkonné paralelní zpracování v rámci velkých datových sad. Podobně jako u výše zmíněné struktury IoT má vhodná adresářová struktura k dispozici adresáře na úrovni nadřazených objektů pro věci, jako jsou oblasti a záležitosti předmětu (například organizace, produkt/výrobce). Tato struktura pomáhá zabezpečit data napříč vaší organizací a lépe spravovat data ve vašich úlohách. Kromě toho zvažte datum a čas ve struktuře, aby bylo možné lepší organizaci, filtrovaná hledání, zabezpečení a automatizaci ve zpracování. Úroveň členitosti struktury data Určuje interval, ve kterém jsou data nahraná nebo zpracovaná, například každou hodinu, každý den nebo dokonce měsíčně.
 
-Občas se zpracování souborů nezdařilo z důvodu poškození dat nebo neočekávaných formátů. V takových případech by adresářová struktura mohla těžit ze složky **/Bad** , aby se soubory přesunuly pro další kontrolu. Úloha služby Batch může také zpracovávat zprávy a oznámení těchto neplatných souborů pro ruční zásah. Vezměte v úvahu následující strukturu šablon:
+Občas se zpracování souborů nezdařilo z důvodu poškození dat nebo neočekávaných formátů. V takových případech by adresářová struktura mohla těžit ze složky **/Bad** , aby se soubory přesunuly pro další kontrolu. Úloha služby Batch může také zpracovávat zprávy a oznámení těchto *neplatných* souborů pro ruční zásah. Vezměte v úvahu následující strukturu šablon:
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/

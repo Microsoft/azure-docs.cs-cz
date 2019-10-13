@@ -1,5 +1,5 @@
 ---
-title: Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services
+title: Použití sady Visual Studio, povolení vzdálené plochy pro roli (Azure Cloud Services)
 description: Konfigurace aplikace cloudové služby Azure tak, aby povolovala připojení ke vzdálené ploše
 services: cloud-services
 author: ghogen
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515914"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298387"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services pomocí sady Visual Studio
 
@@ -47,13 +47,13 @@ Při použití sady Visual Studio 2017 verze 15,4 a starší můžete použít m
    > [!Note]
    > Certifikáty, které potřebujete pro připojení ke vzdálené ploše, se liší od certifikátů, které používáte pro jiné operace Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
 
-5. Vyberte certifikát ze seznamu nebo zvolte  **&lt;vytvořit... &gt;** . Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
+5. Vyberte certifikát ze seznamu nebo zvolte **&lt;Create... &gt;** . Při vytváření nového certifikátu zadejte po zobrazení výzvy popisný název nového certifikátu a vyberte **OK**. Nový certifikát se zobrazí v rozevíracím seznamu.
 
 6. Zadejte uživatelské jméno a heslo. Existující účet nemůžete použít. Jako uživatelské jméno nového účtu nepoužívejte "správce".
 
 7. Vyberte datum, kdy vyprší platnost účtu, a po kterém budou připojení ke vzdálené ploše blokovaná.
 
-8. Až zadáte všechny požadované informace, vyberte **OK**. Visual Studio přidá nastavení vzdálené plochy do souborů projektu `.cscfg` a `.csdef` , včetně hesla zašifrovaného pomocí vybraného certifikátu.
+8. Až zadáte všechny požadované informace, vyberte **OK**. Visual Studio přidá nastavení vzdálené plochy do souborů @no__t 0 a `.csdef` vašeho projektu, včetně hesla zašifrovaného pomocí vybraného certifikátu.
 
 9. Pomocí tlačítka **Další** dokončete všechny zbývající kroky a pak vyberte **publikovat** , až budete připraveni publikovat cloudovou službu. Pokud nejste připraveni k publikování, vyberte **Zrušit** a po zobrazení výzvy k uložení změn odpovězte na **Ano** . Pomocí těchto nastavení můžete cloudovou službu publikovat později.
 
@@ -86,7 +86,7 @@ Projekt cloudové služby lze nasadit ze serveru sestavení (například pomocí
 
 Pokud chcete použít rozšíření RDP z Azure DevOps Services, zahrňte do svého kanálu sestavení následující podrobnosti:
 
-1. Zahrňte `/p:ForceRDPExtensionOverPlugin=true` do argumentů MSBuild, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Příklad:
+1. Do argumentů MSBuild zahrňte `/p:ForceRDPExtensionOverPlugin=true`, abyste se ujistili, že nasazení funguje s rozšířením RDP a nikoli s modulem plug-in RDP. Například:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -95,9 +95,9 @@ Pokud chcete použít rozšíření RDP z Azure DevOps Services, zahrňte do sv�
 
 1. Po dokončení postupu sestavení přidejte krok **nasazení cloudové služby Azure** a nastavte jeho vlastnosti.
 
-1. Po kroku nasazení přidejte krok **Azure PowerShellu** , nastavte jeho vlastnost **Zobrazovaný název** na nasazení Azure: Povolte rozšíření RDP (nebo jiný vhodný název) a vyberte příslušné předplatné Azure.
+1. Po kroku nasazení přidejte krok **Azure PowerShellu** , nastavte jeho vlastnost **zobrazované jméno** na "nasazení Azure: Povolit rozšíření RDP" (nebo jiný vhodný název) a vyberte příslušné předplatné Azure.
 
-1. Nastavte **typ skriptu** na "inline" a vložte níže uvedený kód do **vloženého pole skriptu** . (V projektu můžete také vytvořit `.ps1` soubor pomocí tohoto skriptu, nastavit **typ skriptu** na "cesta k souboru skriptu" a nastavit **cestu skriptu** tak, aby odkazovala na soubor.)
+1. Nastavte **typ skriptu** na "inline" a vložte níže uvedený kód do **vloženého pole skriptu** . (Můžete také vytvořit soubor `.ps1` v projektu pomocí tohoto skriptu, nastavit **typ skriptu** na "cesta k souboru skriptu" a nastavit **cestu skriptu** tak, aby odkazovala na soubor.)
 
     ```ps
     Param(
@@ -146,6 +146,6 @@ Po publikování cloudové služby v Azure a zapnutí vzdálené plochy můžete
 
 3. Zadejte uživatelské jméno a heslo, které jste vytvořili dříve. Nyní jste přihlášeni ke vzdálené relaci.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

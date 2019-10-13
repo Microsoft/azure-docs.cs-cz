@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173914"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299493"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora virtuálních počítačů 2. generace (Preview) v Azure
 
@@ -40,7 +40,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
+* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
@@ -62,7 +62,7 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní vs. Virtuální počítače Azure generace 2
+## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
 Azure v současné době nepodporuje některé funkce, které místní technologie Hyper-V podporuje pro virtuální počítače 2. generace.
 
@@ -80,20 +80,20 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
-| Spustit             | PCAT         | UEFI |
-| Řadiče disku | IDE – integrované vývojové prostředí          | SCSI |
-| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
+| Spouštění             | PCAT         | UEFI |
+| Řadiče disku | IDE          | SCSI |
+| Velikosti virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
 
-| Funkce | Generace 1 | Generace 2 |
+| Schopnost | Generace 1 | Generace 2 |
 |------------|--------------|--------------|
 | Disk s operačním systémem > 2 TB                    | znak                | :heavy_check_mark: |
 | Vlastní disk/image/prohození operačního systému         | :heavy_check_mark: | :heavy_check_mark: |
 | Podpora sady škálování virtuálních počítačů | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | znak                |
 | Zálohování a obnovení                    | :heavy_check_mark: | :heavy_check_mark: |
-| Galerie sdílených imagí              | :heavy_check_mark: | znak                |
+| Galerie sdílených imagí              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | znak                |
 
 ## <a name="creating-a-generation-2-vm"></a>Vytvoření virtuálního počítače 2. generace
@@ -102,7 +102,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure
 
 Image generace 2 pro Windows a SLES jsou součástí stejné nabídky serveru jako image Gen1. Z hlediska toků to znamená, že vyberete nabídku a SKU z portálu pro váš virtuální počítač. Pokud SKU podporuje jak image generace 1, tak i generace 2, můžete vybrat vytvoření virtuálního počítače generace 2 z karty *Upřesnit* v toku vytváření virtuálních počítačů.
 
@@ -111,7 +111,7 @@ V současné době následující SKU podporují image generace 1 i generace 2:
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
-* Windows Server. 2019
+* Windows Server 2019
 
 Když jako nabídku vyberete SKU Windows serveru, na kartě **Upřesnit** máte možnost vytvořit virtuální počítač s identifikátorem **1.1** nebo **Gen 2** (UEFI). Pokud vyberete **Obecné 2**, ujistěte se, že velikost virtuálního počítače vybraná na kartě **základy** se [podporuje pro virtuální počítače generace 2](#generation-2-vm-sizes).
 
@@ -121,7 +121,7 @@ Když jako nabídku vyberete SKU Windows serveru, na kartě **Upřesnit** máte 
 
 PowerShell můžete také použít k vytvoření virtuálního počítače přímo odkazující na generaci SKU 1 nebo 2. generace.
 
-Pomocí následující rutiny prostředí PowerShell můžete například získat seznam SKU v `WindowsServer` nabídce.
+Pomocí následující rutiny prostředí PowerShell můžete například získat seznam SKU v nabídce `WindowsServer`.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
@@ -140,7 +140,7 @@ V části [funkce a možnosti](#features-and-capabilities) najdete aktuální se
 
 Virtuální počítač 2. generace můžete vytvořit ze spravované bitové kopie nebo spravovaného disku stejným způsobem, jako byste vytvořili virtuální počítač 1. generace.
 
-### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 
 Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtual Machine Scale Sets. V Azure CLI použijte Azure Scale Sets k vytvoření virtuálních počítačů 2. generace.
 

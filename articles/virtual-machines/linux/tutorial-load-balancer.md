@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b813a197266db37bde961e079f5d5d5e92353db1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708512"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300820"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI
 
@@ -34,11 +34,11 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že r
 > * Vytvoření základní aplikace Node.js pomocí cloud-init
 > * Vytvoření virtuálních počítačů a jejich připojení k nástroji pro vyrovnávání zatížení
 > * Zobrazení nástroje pro vyrovnávání zatížení v akci
-> * Přidání virtuálních počítačů do nástroje pro vyrovnávání zatížení a jejich odebrání
+> * Přidání virtuálních počítačů do nástroje pro vyrovnávání zatížení nebo jejich odebrání
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
 Nástroj pro vyrovnávání zatížení Azure je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP), který poskytuje vysokou dostupnost díky distribuci příchozího provozu mezi virtuální počítače v dobrém stavu. Sonda stavu nástroje pro vyrovnávání zatížení na všech virtuálních počítačích monitoruje daný port a distribuuje provoz pouze do virtuálních počítačů, které jsou v provozu.
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 Pokud chcete zlepšit vysokou dostupnost aplikace, umístěte své virtuální počítače do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v předchozím kurzu [Vytváření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md).
 
-Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti *myAvailabilitySet*:
+Vytvořte skupinu dostupnosti pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -243,11 +243,11 @@ for i in `seq 1 3`; do
 done
 ```
 
-Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Parametr `--no-wait` znamená, že se nečeká na dokončení všech úloh. Může trvat dalších několik minut, než k aplikaci budete mít přístup. Sonda stavu nástroje pro vyrovnávání zatížení automaticky rozpozná, jakmile bude aplikace spuštěná na všech virtuálních počítačích. Jakmile bude aplikace spuštěná, pravidlo nástroje pro vyrovnávání zatížení začne distribuovat provoz.
+Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. Parametr `--no-wait` znamená, že se nečeká na dokončení všech úloh. Než k aplikaci budete mít přístup, může to ještě několik minut trvat. Sonda stavu nástroje pro vyrovnávání zatížení automaticky rozpozná, jakmile bude aplikace spuštěná na všech virtuálních počítačích. Jakmile bude aplikace spuštěná, pravidlo nástroje pro vyrovnávání zatížení začne distribuovat provoz.
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
+Získejte veřejnou IP adresu svého nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -261,7 +261,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Nezapomeňte,
 
 ![Spuštěná aplikace Node.js](./media/tutorial-load-balancer/running-nodejs-app.png)
 
-Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče.
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče.
 
 
 ## <a name="add-and-remove-vms"></a>Přidání a odebrání virtuálních počítačů
@@ -314,7 +314,7 @@ az network nic ip-config address-pool add \
 Pokud chcete ověřit připojení virtuální síťové karty k fondu back-end adres, znovu použijte příkaz [az network lb address-pool show](/cli/azure/network/lb/address-pool) z předchozího kroku.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili nástroj pro vyrovnávání zatížení a připojili jste k němu virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

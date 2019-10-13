@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828598"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300098"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 
@@ -29,6 +29,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | Provedeny | Podrobnosti |
 | --- | --- |
 | **Konfigurace optimalizovaného úložiště výkonu** | Při vytváření nového virtuálního počítače SQL Server teď můžete [svoji konfiguraci úložiště plně přizpůsobit](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) . |
+| **Premium – sdílení souborů pro FCI** | Nyní můžete vytvořit instanci clusteru s podporou převzetí služeb při selhání pomocí [prémiové sdílené složky](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) namísto původní metody [prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md). 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>Srpen 2019

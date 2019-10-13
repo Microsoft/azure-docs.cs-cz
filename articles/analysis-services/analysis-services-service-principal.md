@@ -2,18 +2,17 @@
 title: Automatizace úloh Azure Analysis Services s instančními objekty | Microsoft Docs
 description: Naučte se vytvářet instanční objekty pro automatizaci Azure Analysis Services úloh.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4bfa969089407a35658160cf05a6407f8c717714
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 94f1313825b21b3adf7173b56798fce22736ea87
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347971"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294575"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -49,9 +48,9 @@ V připojovacích řetězcích se dá použít identifikátor appID a heslo nebo
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Použití modulu AZ. AnalysisServices
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a>@no__t – 0Using AZ. AnalysisServices Module
 
-Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices) použijte `Connect-AzAccount` rutinu. 
+Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices) použijte rutinu `Connect-AzAccount`. 
 
 V následujícím příkladu appID a Password slouží k provádění operací roviny řízení pro synchronizaci do replik jen pro čtení a horizontálního navýšení nebo navýšení kapacity:
 
@@ -93,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a rychlejší instalovat balíčky z NuGet podporovat instanční objekty v připojovacích řetězcích pomocí následující syntaxe `app:AppID` : a hesla. nebo `cert:thumbprint`. 
+Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a rychlejší instalovat balíčky z NuGet podporovat objekty služby v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo @no__ t-2. 
 
-V následujícím příkladu `appID` `password` a a slouží k provedení operace aktualizace databáze modelu:
+V následujícím příkladu se k provedení operace aktualizace databáze modelu používá `appID` a `password`:
 
 ```csharp
 string appId = "xxx";
@@ -109,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>Další postup
-[Přihlaste se pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+## <a name="next-steps"></a>Další kroky
+[Přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)   

@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm front a připojenými službami sady Visual Studio (cloudové služby) | Microsoft Docs
+title: Začínáme s úložištěm Queue pomocí sady Visual Studio (cloudové služby)
 description: Jak začít používat úložiště Azure Queue v projektu cloudové služby v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510691"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298779"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -57,7 +58,7 @@ Chcete-li získat přístup k frontám v projektech aplikace Visual Studio Cloud
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**POZNÁMKA:** Použijte veškerý výše uvedený kód před kódem v následujících ukázkách.
+**Poznámka:** Použijte veškerý výše uvedený kód před kódem v následujících ukázkách.
 
 ## <a name="create-a-queue-in-code"></a>Vytvoření fronty v kódu
 Chcete-li vytvořit frontu v kódu, stačí přidat volání do **CreateIfNotExists**.
@@ -85,7 +86,7 @@ Pomocí volání metody **PeekMessage** můžete prohlížet zprávy ve frontě,
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Čtení a odebrání zprávy ve frontě
 Kód může z fronty odebrat zprávu (z fronty) ve dvou krocích.
 
-1. K získání další zprávy ve frontě volejte metodu GetMessage. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
+1. K získání další zprávy ve frontě volejte metodu **GetMessage** . Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
 2. Chcete-li dokončit odebrání zprávy z fronty, zavolejte **DeleteMessage**.
 
 Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Následující kód volá **DeleteMessage** hned po zpracování zprávy.
@@ -152,6 +153,6 @@ Pokud budete chtít odstranit frontu se všemi zprávami, které v ní jsou, zav
     // Delete the queue.
     messageQueue.Delete();
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 

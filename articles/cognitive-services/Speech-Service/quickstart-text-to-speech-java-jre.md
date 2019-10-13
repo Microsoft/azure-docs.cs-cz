@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 832525ae1441fca85f8df661b4a187c0be8d91dc
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c66e321618b46d52f791f95dab570e3721e806a9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803982"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299228"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>Rychlý Start: syntetizace řeči pomocí sady Speech SDK for Java
 
@@ -79,7 +79,7 @@ Pokud používáte Windows (64-bit), ujistěte se, že máte nainstalovanou apli
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
 Stiskněte F11 nebo vyberte **Run** (Spustit)  >  **Debug** (Ladit).
-Po zvýšení úrovně zadejte text a v takovém případě se zobrazí syntetizované zvuky z výchozího mluvčího.
+Po zobrazení výzvy zadejte text a přečtete si syntetizované zvuky přehrávané z výchozího mluvčího.
 
 ## <a name="next-steps"></a>Další kroky
 

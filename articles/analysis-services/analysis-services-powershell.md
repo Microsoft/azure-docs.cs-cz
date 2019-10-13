@@ -2,18 +2,17 @@
 title: Správa Azure Analysis Services s využitím PowerShellu | Microsoft Docs
 description: Správa Azure Analysis Services pomocí prostředí PowerShell.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 38ce44f486616e4ab94e8332884005a187e31008
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bfe1bfc2828347e34fa92564c26d005998e14ece
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932424"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294734"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa Azure Analysis Services s využitím PowerShellu
 
@@ -40,22 +39,22 @@ Operace Azure Analysis Services Database používají stejný modul SqlServer ja
 
 Modul SqlServer poskytuje rutiny pro správu databáze specifické pro úlohu a také rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Pro Azure Analysis Services jsou podporovány následující rutiny v modulu SqlServer.
 
-Nainstalovat modul – [SQLServer](https://www.powershellgallery.com/packages/SqlServer)   
+Instalace modulu – [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
 Dokumentace – [Reference k SQLServer](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Podporované rutiny
 
-|Rutiny|Popis|
+|Rutina|Popis|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Přidejte člena do databázové role.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Zálohuje databázi Analysis Services.|  
+|[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Zálohuje databázi Analysis Services.|  
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Odebere člena z databázové role.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
+|[Invoke – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Spusťte skript TMSL.|
 |[Invoke – ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Zpracování databáze.|  
 |[Invoke – ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Zpracuje oddíl.| 
 |[Invoke – procesní](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Zpracuje tabulku.|  
 |[Sloučení – oddíl](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Sloučí oddíl.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Obnovení databáze Analysis Services.| 
+|[Obnovit – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Obnovení databáze Analysis Services.| 
   
 
 ## <a name="related-information"></a>Související informace

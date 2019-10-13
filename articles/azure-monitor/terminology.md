@@ -10,17 +10,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 10/08/2019
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827355"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300517"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>Říjen 2019 – diagnostický protokol do protokolu prostředků
+Diagnostické protokoly se změnily na "protokoly prostředků", aby lépe odpovídaly, co se skutečně shromažďují. Pojem "nastavení diagnostiky" zůstává stejný.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Února 2019 – Log Analytics terminologie
 Po konsolidaci různých služeb v rámci Azure Monitor provedeme další krok úpravou terminologie v naší dokumentaci, aby lépe popsali Azure Monitor službu a její různé komponenty. 
@@ -30,7 +33,7 @@ Data protokolu Azure Monitor jsou stále uložená v pracovním prostoru Log Ana
 
 Pojem _Log Analytics_ teď platí hlavně pro stránku v Azure Portal použitou k zápisu a spouštění dotazů a k analýze dat protokolu. Je to funkční ekvivalent [Průzkumníka metrik](platform/metrics-charts.md), což je stránka v Azure Portal používaná k analýze dat metrik.
 
-### <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
+### <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
 [Pracovní prostory](platform/manage-access.md) , které uchovávají data protokolu v Azure monitor jsou stále označovány jako Log Analytics pracovní prostory. Nabídka **Log Analytics** v Azure Portal byla přejmenována na **Log Analytics pracovní prostory** a je tam, kde [vytvoříte nové pracovní prostory](learn/quick-create-workspace.md) a nakonfigurujete zdroje dat. Analyzujte protokoly a další data monitorování v **Azure monitor** a nakonfigurujte svůj pracovní prostor v **pracovních prostorech Log Analytics**.
 
 ### <a name="management-solutions"></a>Řešení pro správu
@@ -59,7 +62,7 @@ Operations Management Suite (OMS) je sdružením následujících služeb správ
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [přehled Azure monitor](overview.md) , který popisuje jeho různé komponenty a funkce.
 - Přečtěte si o [přechodu portálu OMS](../log-analytics/log-analytics-oms-portal-transition.md).

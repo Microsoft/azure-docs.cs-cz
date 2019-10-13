@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (ASP.NET) | Microsoft Docs
+title: Začínáme s Azure Table Storage s využitím sady Visual Studio (ASP.NET)
 description: Jak začít používat úložiště Azure Table v projektu ASP.NET v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
@@ -12,23 +12,24 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 6f0858d3c2e3f79dda58710031c105e83418058e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511164"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298891"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Přehled
 
-Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.
+Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
 V tomto kurzu se dozvíte, jak napsat kód ASP.NET pro některé běžné scénáře s využitím entit služby Azure Table Storage. Mezi tyto scénáře patří vytvoření tabulky a přidání, dotazování a odstranění entit tabulky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
@@ -53,7 +54,7 @@ V tomto kurzu se dozvíte, jak napsat kód ASP.NET pro některé běžné scén�
 
     ![Pojmenování kontroleru MVC](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. Do`TablesController.cs` souboru přidejte následující direktivy *using* :
+1. Do souboru `TablesController.cs` přidejte následující direktivy *using* :
 
     ```csharp
     using Microsoft.Azure;
@@ -70,7 +71,7 @@ Mnohé z příkladů v tomto článku používají třídu odvozenou od **TableE
 
 1. V dialogovém okně **Přidat novou položku** pojmenujte třídu **CustomerEntity**.
 
-1. Otevřete soubor a přidejte následující direktivu **using:** `CustomerEntity.cs`
+1. Otevřete soubor `CustomerEntity.cs` a přidejte následující direktivu **using** :
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
@@ -114,7 +115,7 @@ Následující postup ukazuje, jak vytvořit tabulku:
     }
     ```
 
-1. V rámci metody **Create** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **Create** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -149,7 +150,7 @@ Následující postup ukazuje, jak vytvořit tabulku:
 
 1. V dialogovém okně **Přidat zobrazení** zadejte pro název zobrazení možnost **vytvořit** a vyberte **Přidat**.
 
-1. Otevřete `CreateTable.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `CreateTable.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @{
@@ -171,13 +172,13 @@ Následující postup ukazuje, jak vytvořit tabulku:
 
 1. Spusťte aplikaci a vyberte **vytvořit tabulku** , aby se zobrazily podobné výsledky jako na následujícím snímku obrazovky:
   
-    ![Vytvořit tabulku](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Vytvoření tabulky](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Jak bylo zmíněno dříve, metoda **Cloud. CreateIfNotExists** vrátí **hodnotu true** pouze v případě, že tabulka neexistuje a je vytvořena. Proto pokud aplikaci spustíte, když tabulka existuje, vrátí metoda **hodnotu false**. Chcete-li aplikaci spustit několikrát, je nutné tabulku před spuštěním aplikace odstranit. Odstranění tabulky se dá provést pomocí metody **Cloud. Delete** . Tabulku můžete také odstranit pomocí [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-*Entity* se mapují na\# objekty jazyka C pomocí vlastní třídy odvozené z **TableEntity**. Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. V této části se dozvíte, jak definovat třídu entity, která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Pro jakoukoliv vlastnost, která by měla být uložena ve službě Table Service, musí být vlastnost veřejnou vlastností podporovaného typu, která zpřístupňuje nastavení a načítá hodnoty.
+*Entity* se mapují na objekty C @ no__t-1 pomocí vlastní třídy odvozené z **TableEntity**. Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity. V této části se dozvíte, jak definovat třídu entity, která používá křestní jméno zákazníka jako klíč řádku a příjmení jako klíč oddílu. Společně pak klíč oddílu a řádku entity jednoznačně identifikují entitu v tabulce. Na entity se stejným klíčem oddílu je možné se (v porovnání s těmi, které mají různé klíče oddílů) rychleji dotazovat, ale používání různých klíčů oddílů umožňuje větší škálovatelnost paralelních operací. Pro jakoukoliv vlastnost, která by měla být uložena ve službě Table Service, musí být vlastnost veřejnou vlastností podporovaného typu, která zpřístupňuje nastavení a načítá hodnoty.
 Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
 
 > [!NOTE]
@@ -186,7 +187,7 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
 
 1. Otevřete soubor `TablesController.cs`.
 
-1. Přidejte následující direktivu, aby kód v `TablesController.cs` souboru mohl přistupovat ke třídě **CustomerEntity** :
+1. Přidejte následující direktivu, aby kód v souboru `TablesController.cs` mohl přistupovat ke třídě **CustomerEntity** :
 
     ```csharp
     using StorageAspnet.Models;
@@ -203,7 +204,7 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
     }
     ```
 
-1. V rámci metody **AddEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **AddEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -252,7 +253,7 @@ Třída entity *musí* deklarovat veřejný konstruktor bez parametrů.
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **AddEntity** a vyberte **Přidat**.
 
-1. Otevřete `AddEntity.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `AddEntity.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @{
@@ -298,7 +299,7 @@ Kromě toho, že je možné [Přidat entitu do tabulky po jednom](#add-an-entity
     }
     ```
 
-1. V rámci metody **AddEntities** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **AddEntities** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -356,7 +357,7 @@ Kromě toho, že je možné [Přidat entitu do tabulky po jednom](#add-an-entity
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **AddEntities** a vyberte **Přidat**.
 
-1. Otevřete `AddEntities.cshtml`a upravte jej tak, aby vypadal jako následující.
+1. Otevřete `AddEntities.cshtml` a upravte ji tak, aby vypadala jako následující.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -418,7 +419,7 @@ Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku 
     }
     ```
 
-1. V rámci metody getsingle získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **getsingle** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -457,9 +458,9 @@ Tato část ukazuje, jak získat jednu entitu z tabulky pomocí klíče řádku 
 
 1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >** .
 
-1. V dialogovém okně **Přidat zobrazení** zadejte getsingle pro název zobrazení a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte **getsingle** pro název zobrazení a vyberte **Přidat**.
 
-1. Otevřete `GetSingle.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `GetSingle.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -518,7 +519,7 @@ Jak je uvedeno v části, [Přidání entity do tabulky](#add-an-entity-to-a-tab
     }
     ```
 
-1. V rámci metody getpartition získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **getpartition** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -566,9 +567,9 @@ Jak je uvedeno v části, [Přidání entity do tabulky](#add-an-entity-to-a-tab
 
 1. V **Průzkumník řešení**rozbalte složku **zobrazení** , klikněte pravým tlačítkem myši na **tabulky**a v místní nabídce vyberte možnost **Přidat zobrazení >** .
 
-1. V dialogovém okně **Přidat zobrazení** zadejte getpartition pro název zobrazení a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte **getpartition** pro název zobrazení a vyberte **Přidat**.
 
-1. Otevřete `GetPartition.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `GetPartition.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -628,7 +629,7 @@ Tato část ukazuje, jak odstranit entitu z tabulky.
     }
     ```
 
-1. V rámci metody **DeleteEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód: (Změňte  *&lt;název účtu úložiště >* na název účtu úložiště Azure, ke kterému přistupujete.)
+1. V rámci metody **DeleteEntity** získejte objekt **CloudStorageAccount** , který představuje informace o vašem účtu úložiště. Použijte následující kód k získání informací o připojovacím řetězci a účtu úložiště z konfigurace služby Azure: (změňte *&lt;storage-Account-name >* na název účtu úložiště Azure, ke kterému přistupujete.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -670,7 +671,7 @@ Tato část ukazuje, jak odstranit entitu z tabulky.
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **DeleteEntity** a vyberte **Přidat**.
 
-1. Otevřete `DeleteEntity.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `DeleteEntity.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult

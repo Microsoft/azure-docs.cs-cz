@@ -1,17 +1,17 @@
 ---
-title: Ukázka – CIS Microsoft Azure Foundation – mapování doporučení
+title: Ukázka srovnávacího testu modelu CI Microsoft Azure Foundation – mapování doporučení
 description: Mapování doporučení pro ukázka srovnávacího testu služby CIS Microsoft Azure Foundation pro Azure Policy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 9368ad220f1ded1a11360dbdf0af86c27277a207
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: fa683206ec1ff4d02298fd2689791601ff11f85c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001275"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297791"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -42,7 +42,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
-- Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
+- Z předplatného by se měly odebrat externí účty s oprávněními pro zápis
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2,1 Ujistěte se, že je vybraná cenová úroveň Standard.
 
@@ -198,7 +198,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byla na serverech SQL a spravovaných instancích SQL povolena Pokročilá zabezpečení dat.
 
 - Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
-- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Na vašich serverech SQL by mělo být povolené pokročilé zabezpečení dat.
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 zajistěte, aby se typy detekce hrozeb nastavily na ALL.
 
@@ -219,7 +219,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit správné povolení pokročilých oznámení o zabezpečení dat.
 
 - E-mailová oznámení správcům a vlastníkům předplatného by se měla povolit v rozšířených nastaveních zabezpečení dat spravované instance SQL
-- E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security
+- V nastaveních pokročilého zabezpečení dat serverů SQL by měla být povolená e-mailová oznámení pro správce a vlastníky předplatného.
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 zajistěte, aby byl nakonfigurovaný správce Azure Active Directory.
 
@@ -238,7 +238,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby byla transparentní šifrování dat pro SQL servery a spravované instance SQL šifrované pomocí vlastního klíče.
 
 - Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
-- Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče
+- Ochrana TDE serverů SQL by měla být šifrovaná pomocí vašeho vlastního klíče.
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 zajistěte, aby se vynutilo připojení SSL u databázového serveru MySQL nastavené na povoleno.
 
@@ -362,10 +362,10 @@ Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plá
 > [Ci Microsoft Azure Foundation – přehled srovnávacích testů](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
-- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
-- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

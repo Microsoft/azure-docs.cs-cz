@@ -1,5 +1,5 @@
 ---
-title: Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services pomocí PowerShellu
+title: Použití PowerShellu, povolení vzdálené plochy pro roli (Azure Cloud Services)
 description: Konfigurace aplikace cloudové služby Azure pomocí prostředí PowerShell pro povolení připojení ke vzdálené ploše
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: gwallace
-ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358993"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298403"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Povolení Připojení ke vzdálené ploše pro roli v Azure Cloud Services pomocí PowerShellu
 
@@ -27,7 +27,7 @@ Vzdálená plocha umožňuje přístup k ploše role spuštěné v Azure. Připo
 Tento článek popisuje, jak povolit vzdálenou plochu na vašich rolích cloudových služeb pomocí PowerShellu. Potřebné předpoklady pro tento článek najdete v tématu [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) . Prostředí PowerShell využívá rozšíření vzdálené plochy, aby bylo možné povolit vzdálenou plochu po nasazení aplikace.
 
 ## <a name="configure-remote-desktop-from-powershell"></a>Konfigurace vzdálené plochy z PowerShellu
-Rutina [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) umožňuje povolit vzdálenou plochu na zadaných rolích nebo na všech rolích nasazení cloudové služby. Rutina umožňuje zadat uživatelské jméno a heslo pro uživatele vzdálené plochy prostřednictvím parametru přihlašovacích *údajů* , který přijímá objekt PSCredential.
+Rutina [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) umožňuje povolit vzdálenou plochu na zadaných rolích nebo na všech rolích nasazení cloudové služby. Rutina umožňuje zadat uživatelské jméno a heslo pro uživatele vzdálené plochy prostřednictvím parametru *přihlašovacích údajů* , který přijímá objekt PSCredential.
 
 Pokud používáte prostředí PowerShell interaktivně, můžete snadno nastavit objekt PSCredential voláním rutiny [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) .
 
@@ -62,7 +62,7 @@ $expiry = $(Get-Date).AddDays(1)
 $credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
 Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry
 ```
-Volitelně můžete také zadat slot nasazení a role, na kterých chcete povolit vzdálenou plochu. Nejsou-li tyto parametry zadány, rutina povolí vzdálenou plochu na všech rolích  v produkčním slotu nasazení.
+Volitelně můžete také zadat slot nasazení a role, na kterých chcete povolit vzdálenou plochu. Nejsou-li tyto parametry zadány, rutina povolí vzdálenou plochu na všech rolích v **produkčním** slotu nasazení.
 
 Rozšíření vzdálené plochy je přidruženo k nasazení. Pokud vytvoříte nové nasazení pro službu, musíte na tomto nasazení povolit vzdálenou plochu. Pokud chcete mít vždycky zapnutou vzdálenou plochu, měli byste zvážit integraci skriptů PowerShellu do pracovního postupu nasazení.
 
@@ -97,6 +97,6 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 >
 > Parametr **UninstallConfiguration** odinstaluje veškerou konfiguraci rozšíření, která se pro službu používá. Každá konfigurace rozšíření je přidružená ke konfiguraci služby. Volání rutiny *Remove* bez **UninstallConfiguration** zruší přidružení <mark>nasazení</mark> od konfigurace rozšíření, čímž se toto rozšíření efektivně odebírá. Konfigurace rozšíření ale zůstane přidružená ke službě.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 [Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

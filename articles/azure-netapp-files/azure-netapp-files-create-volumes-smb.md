@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827512"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300539"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
-Azure NetApp Files podporuje svazky NFS a SMBv3. Kapacita svazku se počítá podle zřízené kapacity fondu. V tomto článku se dozvíte, jak vytvořit svazek SMBv3. Pokud chcete vytvořit svazek NFS, přečtěte si téma [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files podporuje svazky NFS a SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMBv3. Pokud chcete vytvořit svazek NFS, přečtěte si téma [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Než začnete 
-Musíte mít již nastavený fond kapacit.   
+Musíte mít už nastavený fond kapacity.   
 [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
 Podsíť musí být delegovaná na Azure NetApp Files.  
 [Delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
@@ -40,25 +40,25 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 * V příslušném serveru služby Windows Active Directory (AD) musí být otevřeny správné porty.  
     Požadované porty jsou následující: 
 
-    |     Služba           |     Přístavní     |     Protokol     |
+    |     Služba           |     Port     |     Protocol (Protokol)     |
     |-----------------------|--------------|------------------|
-    |    Webové služby AD    |    9389      |    PROTOKOLU           |
-    |    NÁZV                |    53        |    PROTOKOLU           |
-    |    NÁZV                |    53        |    UDP           |
-    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
-    |    Sdílené           |    464       |    PROTOKOLU           |
-    |    Sdílené           |    464       |    UDP           |
-    |    Sdílené           |    88        |    PROTOKOLU           |
-    |    Sdílené           |    88        |    UDP           |
-    |    ADRESÁŘOVÝ               |    389       |    PROTOKOLU           |
-    |    ADRESÁŘOVÝ               |    389       |    UDP           |
-    |    ADRESÁŘOVÝ               |    3268      |    PROTOKOLU           |
-    |    Název pro rozhraní NetBIOS       |    138       |    UDP           |
-    |    SAM/LSA            |    445       |    PROTOKOLU           |
-    |    SAM/LSA            |    445       |    UDP           |
-    |    protokol Secure LDAP        |    636       |    PROTOKOLU           |
-    |    protokol Secure LDAP        |    3269      |    PROTOKOLU           |
-    |    W32Time            |    123       |    UDP           |
+    |    Webové služby AD    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    KONTROLNÍ           |
+    |    ICMPv4             |    Nevztahuje se       |    Odpověď na ozvěnu    |
+    |    Sdílené           |    464       |    TCP           |
+    |    Sdílené           |    464       |    KONTROLNÍ           |
+    |    Sdílené           |    88        |    TCP           |
+    |    Sdílené           |    88        |    KONTROLNÍ           |
+    |    ADRESÁŘOVÝ               |    389       |    TCP           |
+    |    ADRESÁŘOVÝ               |    389       |    KONTROLNÍ           |
+    |    ADRESÁŘOVÝ               |    3268      |    TCP           |
+    |    Název pro rozhraní NetBIOS       |    138       |    KONTROLNÍ           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    KONTROLNÍ           |
+    |    Protokol Secure LDAP        |    636       |    TCP           |
+    |    Protokol Secure LDAP        |    3269      |    TCP           |
+    |    W32Time            |    123       |    KONTROLNÍ           |
 
 * Topologie lokality pro cílovou Active Directory Domain Services musí splňovat osvědčené postupy, zejména v případě, že je nasazená síť Azure Azure NetApp Files.  
 
@@ -106,11 +106,14 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     ![Připojit ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
-3. Klikněte na tlačítko **připojit**.  
+3. Klikněte na **Připojit**.  
 
     Zobrazí se připojení služby Active Directory, které jste vytvořili.
 
     ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+
+> [!NOTE] 
+> Po uložení připojení služby Active Directory můžete upravit pole uživatelského jména a hesla. Po uložení připojení nelze upravovat žádné další hodnoty. Pokud potřebujete změnit jiné hodnoty, musíte nejdřív odstranit všechny nasazené svazky SMB a pak odstranit a znovu vytvořit připojení ke službě Active Directory.
 
 ## <a name="add-an-smb-volume"></a>Přidat svazek SMB
 
@@ -132,10 +135,10 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
 
-    * **Přidělení**  
-        Zadejte velikost logického úložiště, které je přiděleno svazku.  
+    * **Kvóta**  
+        Určuje velikost logického úložiště, které je přidělené svazku.  
 
-        V poli **dostupná kvóta** se zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
+        Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
 
     * **Virtuální síť**  
         Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  
@@ -150,7 +153,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
  
         ![Vytvoření svazku](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
-        ![Vytvořit podsíť](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+        ![Vytvoření podsítě](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
 4. Klikněte na **protokol** a vyplňte následující informace:  
     * Jako typ protokolu pro svazek vyberte **SMB** . 
@@ -163,12 +166,12 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     Svazek, který jste vytvořili, se zobrazí na stránce svazky. 
  
-    Svazek zdědí předplatné, skupinu prostředků, atributy umístění z fondu kapacity. Pokud chcete monitorovat stav nasazení svazku, můžete použít kartu oznámení.
+    Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
 
 ## <a name="next-steps"></a>Další kroky  
 
 * [Připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Nejčastější dotazy k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 * [Instalace nové doménové struktury služby Active Directory pomocí Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

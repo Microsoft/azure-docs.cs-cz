@@ -2,18 +2,17 @@
 title: Místní brána dat pro Azure Analysis Services | Microsoft Docs
 description: Místní brána je nutná v případě, že se Server Analysis Services v Azure připojí k místním zdrojům dat.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678393"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294935"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -43,7 +42,7 @@ Dotazy a tok dat:
 5. Brána odešle dotaz do zdroje dat ke spuštění.
 6. Výsledky se odešlou ze zdroje dat zpátky do brány a potom do cloudové služby a vašeho serveru.
 
-## <a name="installing"></a>Probíhá instalace.
+## <a name="installing"></a>Instalují
 
 Při instalaci pro prostředí Azure Analysis Services je důležité postupovat podle kroků popsaných v tématu [instalace a konfigurace místní brány dat pro Azure Analysis Services](analysis-services-gateway-install.md). Tento článek je určený pro Azure Analysis Services. Obsahuje další kroky potřebné k nastavení místního prostředku brány dat v Azure a připojení serveru Azure Analysis Services k prostředku.
 
@@ -57,22 +56,22 @@ Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
 | Názvy domén | Odchozí porty | Popis |
 | --- | --- | --- |
-| *.powerbi.com |80 |Protokol HTTP použitý ke stažení instalačního programu. |
-| *.powerbi.com |443 |HTTPS |
-| *.analysis.windows.net |443 |HTTPS |
+| *. powerbi.com |80 |Protokol HTTP použitý ke stažení instalačního programu. |
+| *. powerbi.com |443 |HTTPS |
+| *. analysis.windows.net |443 |HTTPS |
 | *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Rozšířený protokol řízení front zpráv (AMQP) (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |Naslouchací procesy v Service Bus Relay přes TCP (vyžaduje 443 pro získání tokenu Access Control) |
-| *.frontend.clouddatahub.net |443 |HTTPS |
-| *.core.windows.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |443 |HTTPS |
+| *. core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Používá se k otestování připojení k Internetu, pokud je brána nedosažitelná služba Power BI. |
-| *.microsoftonline-p.com |443 |Používá se pro ověřování v závislosti na konfiguraci. |
+| *. msftncsi.com |443 |Používá se k otestování připojení k Internetu, pokud je brána nedosažitelná služba Power BI. |
+| *. microsoftonline-p.com |443 |Používá se pro ověřování v závislosti na konfiguraci. |
 | dc.services.visualstudio.com  |443 |Používá se v AppInsights ke shromáždění telemetrie. |
 
 ### <a name="force-https"></a>Vynucení komunikace pomocí protokolu HTTPS s Azure Service Bus
 
-Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft. PowerBI. datamove. Pipeline. GatewayCore. dll. config* můžete upravit změnou hodnoty z `AutoDetect` na. `Https` Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
+Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft. PowerBI. datamove. Pipeline. GatewayCore. dll. config* můžete upravit změnou hodnoty z `AutoDetect` na `Https`. Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -80,7 +79,7 @@ Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS 
 </setting>
 ```
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 V části místní brána dat je součástí obecného obsahu, který se vztahuje na všechny služby, které brána podporuje:
 
@@ -90,5 +89,5 @@ V části místní brána dat je součástí obecného obsahu, který se vztahuj
 * [Konfigurace nastavení proxy serveru](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
 * [Upravit nastavení komunikace](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
 * [Konfigurace souborů protokolu](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Řešení potíží](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Řešení problémů](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 439e5ab4bf943293ff4ed20ed477bc98bb683836
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263434"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299331"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -37,7 +37,7 @@ Aktivační událost časovače je k dispozici v balíčku NuGet [Microsoft. Azu
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Podívejte se na příklad konkrétního jazyka:
 
@@ -132,7 +132,7 @@ public void keepAlive(
 }
 ```
 
-### <a name="javascript-example"></a>příklad v jazyce JavaScript
+### <a name="javascript-example"></a>Příklad JavaScriptu
 
 Následující příklad ukazuje vazbu triggeru časovače v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapíše protokol, který označuje, zda je vyvolání této funkce způsobeno chybějícím výskytem plánu. Do funkce se předává [objekt Timer](#usage) .
 
@@ -221,9 +221,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | není k dispozici | Musí být nastavené na "timerTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**směr** | není k dispozici | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | není k dispozici | Název proměnné, která představuje objekt časovače v kódu funkce. | 
+|**type** | – | Musí být nastavené na "timerTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | – | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | – | Název proměnné, která představuje objekt časovače v kódu funkce. | 
 |**schedule**|**ScheduleExpression**|[Výraz cron](#ncrontab-expressions) nebo hodnota [TimeSpan](#timespan) . @No__t-0 se dá použít jenom pro aplikaci Function App, která běží na plánu App Service. Výraz plánu můžete umístit do nastavení aplikace a tuto vlastnost nastavit na název nastavení aplikace, který je zabalený v symbolech **%** , jako v tomto příkladu:% ScheduleAppSetting%. |
 |**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce se vyvolá při spuštění modulu runtime. Například modul runtime začíná, když se aplikace funkce probudí po přechodu do stavu nečinnosti z důvodu neaktivity. Když se aplikace Function App restartuje kvůli změnám funkcí a když se aplikace Function App škáluje. Proto by **runOnStartup** měla být zřídka, pokud je nastavení někdy nastaveno na `true`, zejména v produkčním prostředí. |
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` a určete, jestli se má plán monitorovat. Plánování monitorování přetrvává i v případě, že dojde k podpoře při zajištění správné údržby plánu i v případě restartování instancí aplikace Function App. Pokud není nastavena explicitně, výchozí hodnota je `true` pro plány, jejichž interval opakování je větší nebo roven 1 minute. Pro plány, které se spouštějí více než jednou za minutu, je výchozí hodnota `false`.
@@ -233,7 +233,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 > [!CAUTION]
 > Doporučujeme nastavit **runOnStartup** na hodnotu `true` v produkčním prostředí. Použití tohoto nastavení způsobí, že se kód spustí při velmi nepředvídatelných časech. V některých nastaveních produkčního prostředí můžou tato dodatečná spuštění vést k významně vyšším nákladům na aplikace hostované v plánech spotřeby. Například s povoleným **runOnStartup** je vyvolána Trigger při každé změně měřítka aplikace Function App. Než povolíte **runOnStartup** v produkčním prostředí, ujistěte se, že plně rozumíte provoznímu chování vašich funkcí.   
 
-## <a name="usage"></a>Použití
+## <a name="usage"></a>Využití
 
 Když je vyvolána funkce Trigger časovače, je do funkce předán objekt Timer. Následující kód JSON je příklad reprezentace objektu Timer.
 
@@ -260,7 +260,7 @@ Azure Functions používá knihovnu [NCronTab](https://github.com/atifaziz/NCron
 
 Každé pole může mít jeden z následujících typů hodnot:
 
-|Typ  |Příklad  |Při aktivaci  |
+|Typ  |Příklad:  |Při aktivaci  |
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>"0 5 * * * *"</nobr>|v hh: 05:00, kde HH je každou hodinu (jednou za hodinu)|
 |Všechny hodnoty (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: mm: 00 každý den, kde mm je každé minuty hodiny (60 dní)|
@@ -274,7 +274,7 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 Tady je několik příkladů NCRONTAB výrazů, které můžete použít pro aktivační událost časovače v Azure Functions.
 
-|Příklad|Při aktivaci  |
+|Příklad:|Při aktivaci  |
 |---------|---------|
 |`"0 */5 * * * *"`|každých pět minut|
 |`"0 0 * * * *"`|jednou na začátku každé hodiny|
@@ -311,16 +311,16 @@ Když použijete `WEBSITE_TIME_ZONE`, čas se upraví pro časové změny v konk
 
 Na rozdíl od výrazu CRON určuje hodnota `TimeSpan` časový interval mezi vyvoláním funkce. Jakmile se funkce dokončí po spuštění déle, než je zadaný interval, časovač okamžitě vyvolá funkci znovu.
 
-Vyjádřeno jako řetězec, formát `TimeSpan` je `hh:mm:ss`, pokud `hh` je menší než 24. Pokud jsou první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Následuje několik příkladů:
+Vyjádřeno jako řetězec, formát `TimeSpan` je `hh:mm:ss`, pokud `hh` je menší než 24. Pokud jsou první dvě číslice 24 nebo větší, formát je `dd:hh:mm`. Zde je několik příkladů:
 
-|Příklad |Při aktivaci  |
+|Příklad: |Při aktivaci  |
 |---------|---------|
 |"01:00:00" | každou hodinu        |
 |"00:01:00"|každou minutu         |
-|"24:00:00" | každých 24 dní        |
+|"24:00:00" | každých 24 hodin        |
 |"1,00:00:00" | Každý den        |
 
-## <a name="scale-out"></a>Horizontální navýšení kapacity
+## <a name="scale-out"></a>Škálování na víc systémů
 
 Pokud se aplikace funkcí škáluje na více instancí, spustí se ve všech instancích jenom jedna instance funkce aktivované časovačem.
 
@@ -328,7 +328,7 @@ Pokud se aplikace funkcí škáluje na více instancí, spustí se ve všech ins
 
 Pokud sdílíte účty úložiště napříč aplikacemi funkcí, které nejsou nasazené do služby App Service, může být nutné explicitně přiřadit ID hostitele ke každé aplikaci.
 
-| Verze funkcí | Nastavením                                              |
+| Verze funkcí | Nastavení                                              |
 | ----------------- | ---------------------------------------------------- |
 | 2.x               | Proměnná prostředí `AzureFunctionsWebHost__hostid` |
 | verze               | `id` v *Host. JSON*                                  |
@@ -341,7 +341,7 @@ Aktivační událost časovače používá zámek úložiště, aby zajistila, �
 
 Na rozdíl od triggeru fronty se aktivační událost časovače neopakuje po chybě funkce. Když funkce dojde k chybě, nebude znovu volána až do příštího plánu.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Informace o tom, co dělat, když aktivační událost časovače nefunguje podle očekávání, najdete v tématu [zkoumání a hlášení problémů s aktivovanými funkcemi aktivované časovačem](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 

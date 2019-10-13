@@ -1,5 +1,5 @@
 ---
-title: Začínáme s tabulkovým úložištěm a připojenými službami sady Visual Studio (cloudové služby) | Microsoft Docs
+title: Začínáme s tabulkovým úložištěm pomocí sady Visual Studio (cloudové služby)
 description: Jak začít používat službu Azure Table Storage v projektu cloudové služby v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510719"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299985"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Table Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -25,11 +26,11 @@ ms.locfileid: "69510719"
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak začít používat službu Azure Table Storage v aplikaci Visual Studio po vytvoření nebo odkazování účtu úložiště Azure v projektu cloudové služby pomocí dialogového okna **Přidat připojené služby** sady Visual Studio. Operace **Přidat připojené služby** nainstaluje příslušné balíčky NuGet pro přístup k úložišti Azure v projektu a přidá připojovací řetězec pro účet úložiště do konfiguračních souborů projektu.
 
-Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.
+Služba Azure Table Storage umožňuje ukládat velké objemy strukturovaných dat. Služba je úložiště dat NoSQL, které přijímá ověřená volání zevnitř i mimo cloud Azure. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
 
-Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v\# kódu jazyka C a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Abyste mohli začít, musíte nejdřív vytvořit tabulku v účtu úložiště. Ukážeme vám, jak vytvořit tabulku Azure v kódu a také jak provádět základní operace s tabulkami a entitami, jako je přidání, úprava, čtení a čtení entit tabulky. Ukázky jsou napsány v kódu C @ no__t-0 a používají [klientské knihovny Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**POZNÁMKA:** Některá rozhraní API, která provádějí volání do služby Azure Storage, jsou asynchronní. Další informace najdete v tématu [asynchronní programování pomocí Async a operátoru await](https://msdn.microsoft.com/library/hh191443.aspx) . Níže uvedený kód předpokládá použití asynchronních programovacích metod.
+**Poznámka:** Některá rozhraní API, která provádějí volání do služby Azure Storage, jsou asynchronní. Další informace najdete v tématu [asynchronní programování pomocí Async a operátoru await](https://msdn.microsoft.com/library/hh191443.aspx) . Níže uvedený kód předpokládá použití asynchronních programovacích metod.
 
 * Další informace o programové manipulaci s tabulkami najdete v tématu Začínáme [s Azure Table Storage pomocí rozhraní .NET](../storage/storage-dotnet-how-to-use-tables.md) .
 * Obecné informace o Azure Storage najdete v [dokumentaci k úložišti](https://azure.microsoft.com/documentation/services/storage/) .
@@ -65,7 +66,7 @@ Pokud chcete získat přístup k tabulkám v projektech cloudové služby, musí
         CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
 
 ## <a name="create-a-table-in-code"></a>Vytvoření tabulky v kódu
-Chcete-li vytvořit tabulku Azure, stačí přidat volání **CreateIfNotExistsAsync** do až po získání objektu cloudu , jak je popsáno v části "tabulky pro přístup v kódu".
+Chcete-li vytvořit tabulku Azure, stačí přidat volání **CreateIfNotExistsAsync** do až po získání objektu **cloudu** , jak je popsáno v části "tabulky pro přístup v kódu".
 
     // Create the CloudTable if it does not exist.
     await peopleTable.CreateIfNotExistsAsync();
@@ -88,7 +89,7 @@ Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuj
         public string PhoneNumber { get; set; }
     }
 
-Operace s tabulkou zahrnující entity se provádí pomocí objektu cloudu, který jste vytvořili dříve v části "přístup k tabulkám v kódu". Objekt **TableOperation** představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt **cloudu** a objekt **CustomerEntity** . Pro přípravu operace je vytvořen **TableOperation** pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním funkce **Cloud. metody ExecuteAsync**.
+Operace s tabulkou zahrnující entity se provádí pomocí objektu **cloudu** , který jste vytvořili dříve v části "přístup k tabulkám v kódu". Objekt **TableOperation** představuje operaci, kterou chcete provést. Následující příklad kódu ukazuje, jak vytvořit objekt **cloudu** a objekt **CustomerEntity** . Pro přípravu operace je vytvořen **TableOperation** pro vložení entity zákazníka do tabulky. Nakonec se operace provede voláním funkce **Cloud. metody ExecuteAsync**.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
@@ -190,6 +191,6 @@ Entitu můžete po nalezení odstranit. Následující kód vyhledá entitu zák
     else
        Console.WriteLine("Couldn't delete the entity.");
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

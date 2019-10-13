@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 1c1fe208c77142351a786fa636896e64a8a467d7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f48fe94504d8012affb77c4fd5d39df2537d72b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129650"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300122"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Povolení a zakázání konzole sériového úložiště Azure
 
@@ -27,11 +27,11 @@ Stejně jako u jakéhokoli jiného prostředku je možné povolit a zakázat slu
 
 Službu sériového portu pro jednotlivé virtuální počítače nebo instance sady škálování virtuálních počítačů můžete také zakázat zakázáním diagnostiky spouštění. Budete vyžadovat přístup na úrovni přispěvatele nebo vyšší úrovně jak na virtuálním počítači, tak i v účtu úložiště pro diagnostiku spouštění.
 
-## <a name="vm-level-disable"></a>Zakázat úrovni virtuálního počítače
-Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sadu škálování virtuálního počítače zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z Azure Portal zakážete sériovou konzoli pro virtuální počítač nebo sadu škálování virtuálního počítače. Pokud v sadě škálování virtuálního počítače používáte sériovou konzolu, ujistěte se, že upgradujete instance sady škálování virtuálních počítačů na nejnovější model.
+## <a name="vm-level-disable"></a>Zakázat na úrovni virtuálního počítače
+Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sadu škálování virtuálního počítače zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z webu Azure Portal zakážete sériovou konzoli pro virtuální počítač nebo sadu škálování virtuálního počítače. Pokud v sadě škálování virtuálního počítače používáte sériovou konzolu, ujistěte se, že upgradujete instance sady škálování virtuálních počítačů na nejnovější model.
 
 
-## <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
+## <a name="subscription-level-disable"></a>Zákaz na úrovni předplatného
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -39,23 +39,23 @@ Sériová konzola můžete zakázat a znovu povolit pro celé předplatné pomoc
 
 Pokud chcete zakázat sériovou konzoli pro předplatné, použijte následující příkazy:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Pokud chcete pro odběr povolit sériovou konzolu, použijte následující příkazy:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Chcete-li získat aktuální stav povoleného a zakázaného sériového portu pro odběr, použijte následující příkazy:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" -o=json | jq .properties
+az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
 ### <a name="powershell"></a>PowerShell
@@ -76,7 +76,7 @@ $subscription=(Get-AzContext).Subscription.Id
 Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)
 * Další informace o [konzole sériového rozhraní Azure pro virtuální počítače s Windows](./serial-console-windows.md)
 * Další informace o [možnostech řízení spotřeby v rámci konzoly Azure Serial Console](./serial-console-power-options.md)

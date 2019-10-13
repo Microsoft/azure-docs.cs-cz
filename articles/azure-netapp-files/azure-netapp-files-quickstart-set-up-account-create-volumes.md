@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 9/11/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: d7bc07ddce605838cf7aa966c6c94b85dad6b58c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9676b10eafbc72a04cb68fc828a72f77e6c3916f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212212"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298585"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý start: Nastavení služby Azure NetApp Files a vytvoření svazku NFS 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
 V tomto článku se dozvíte, jak rychle nastavit Azure NetApp Files a vytvořit svazek. 
 
@@ -34,7 +34,7 @@ V tomto rychlém startu vytvoříte následující položky:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 
 > [!IMPORTANT] 
 > Je potřeba udělit přístup ke službě Azure NetApp Files.  Chcete-li požádat o přístup ke službě, přečtěte si [stránku odeslání Azure NetApp Files pořadníku](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  Než budete pokračovat, musíte počkat na oficiální e-mail s potvrzením od Azure NetApp Files týmu. 
@@ -111,7 +111,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
     > [!NOTE]
     > Seznam podporovaných oblastí najdete [v tématu dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
-    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím`Get-AzLocation | select Location`
+    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím `Get-AzLocation | select Location`.
     >
 
 1. Pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) vytvořte novou skupinu prostředků:
@@ -138,7 +138,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
     > [!NOTE]
     > Seznam podporovaných oblastí najdete [v tématu dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
-    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím`az account list-locations -query "[].{Region:name}" --out table`
+    > Pokud chcete získat název oblasti, který podporuje naše nástroje příkazového řádku, použijte prosím `az account list-locations -query "[].{Region:name}" --out table`.
     >
 
 2. Pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) vytvořte novou skupinu prostředků:
@@ -242,7 +242,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
        * Jako název virtuální sítě zadejte **myvnet1** .
        * Zadejte adresní prostor pro vaše nastavení, například 10.7.0.0/16.
        * Jako název podsítě zadejte **myANFsubnet** .
-       * Zadejte rozsah adres podsítě, například 10.7.0.0/24. Všimněte si, že vyhrazenou podsíť nelze sdílet s jinými prostředky.
+       * Zadejte rozsah adres podsítě, například 10.7.0.0/24. Vyhrazenou podsíť nelze sdílet s jinými prostředky.
        * V případě delegování podsítě vyberte **Microsoft. NetApp/** Volumes (svazky).
        * Kliknutím na **OK** vytvořte virtuální síť.
    5. V části podsíť vyberte nově vytvořenou virtuální síť (**myvnet1**) jako podsíť delegáta.
@@ -251,11 +251,14 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
       ![Okno vytvořit virtuální síť](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Klikněte na **protokol**a pak jako typ protokolu pro svazek vyberte **NFS** .   
+4. Klikněte na **protokol**a pak proveďte následující akce: 
+    * Jako typ protokolu pro svazek vyberte **systém souborů NFS** .  
+    * Jako cestu k souboru zadejte **myfilepath1** , který se použije k vytvoření cesty pro export pro daný svazek.  
+    * Vyberte verzi systému souborů NFS (**NFSv3** nebo **nfsv 4.1**) pro svazek.  
+> [!IMPORTANT] 
+> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání do seznamu povolených žádostí, odešlete žádost o <anffeedback@microsoft.com>. 
 
-    Jako cestu k souboru zadejte **myfilepath1** , který se použije k vytvoření cesty pro export pro daný svazek. 
-
-    ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+    ![Specify NFS protocol for quickstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klikněte na **Zkontrolovat a vytvořit**.
 
@@ -377,13 +380,13 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
 
 3. Na stránce skupina prostředků klikněte na **Odstranit skupinu prostředků**.
 
-    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
 
 4. Zadejte název skupiny prostředků (myRG1), abyste potvrdili, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní, a pak klikněte na **Odstranit**.
 
-    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241006"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298429"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Přehled vývoje služeb Azure blockchain
 
@@ -39,7 +39,7 @@ Aby bylo možné vyvíjet sofistikovaná podniková řešení blockchain, je pro
 
 Truffle je oblíbená blockchain vývojová platforma pro psaní, kompilování, nasazování a testování decentralizovaných aplikací na Ethereem blockchainy. Můžete si také představit Truffle jako rozhraní, které se pokusí hladkou integraci vývoje inteligentních smluv a tradičního vývoje webů.
 
-I nejmenší projekt komunikuje s alespoň dvěma blockchain uzly: Jeden v počítači vývojáře a druhý představuje síť, ve které vývojář nasadí svoji aplikaci. Například hlavní veřejná Ethereem síť nebo služba Azure blockchain. Truffle poskytuje systém pro správu artefaktů kompilace a nasazení pro každou síť a takovým způsobem, který zjednodušuje konečné nasazení aplikace. Další informace najdete v tématu [rychlý Start: Pomocí Truffle se připojte k síti](connect-truffle.md)služby Azure blockchain.
+I nejmenší projekt komunikuje s alespoň dvěma blockchain uzly: jeden na počítači vývojáře a druhý představuje síť, ve které vývojář nasadí svoji aplikaci. Například hlavní veřejná Ethereem síť nebo služba Azure blockchain. Truffle poskytuje systém pro správu artefaktů kompilace a nasazení pro každou síť a takovým způsobem, který zjednodušuje konečné nasazení aplikace. Další informace najdete v tématu [rychlý Start: použití Truffle pro připojení k síti služby Azure blockchain](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transaction"></a>Privátní transakce kvora ethereem
 
@@ -51,19 +51,19 @@ Kvorum je protokol distribuované hlavní knihy založený na Ethereem s transak
 * Oprávnění peer-to-node a peer-to s použitím inteligentních kontraktů, které zajišťují, aby se k síti mohly připojit jenom známé strany
 * Vyšší výkon – kvorum nabízí vyšší výkon než veřejná Geth
 
-Viz [kurz: Odešlete transakci pomocí služby](send-transaction.md) Azure blockchain, která je příkladem soukromé transakce.
+Příklad soukromé transakce najdete v tématu [kurz: odeslání transakce pomocí služby Azure blockchain](send-transaction.md) .
 
 ## <a name="block-explorers"></a>Blokovat Průzkumníka
 
 Blokování Průzkumníkovi jsou online prohlížeče blockchain, které zobrazují jednotlivé blokované obsahy, data adres transakcí a historii. Základní informace o blokování jsou k dispozici prostřednictvím Azure Monitor ve službě Azure blockchain. Pokud ale během vývoje potřebujete podrobnější informace, můžou být užitečné Průzkumníka bloků.  Existují oblíbené otevřené průzkumníky bloků, které můžete použít. Níže je seznam blokovaných Průzkumníka, které pracují se službou Azure blockchain Service:
 
-* [Průzkumník služby Azure blockchain](https://web3labs.com/azure-offer) z Web3 Labs
+* [Epirus Azure blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) z Web3 Labs
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS měření
 
 Protože blockchain se používá ve více podnikových scénářích, rychlost transakcí za sekundu (TPS) je důležitá, aby nedocházelo k kritickým bodům a neefektivitě systému. Vysoké sazby za transakce můžou být obtížné udržovat v rámci decentralizovaného blockchain. Přesné měření TPS může být ovlivněno různými faktory, jako je například vlákno serveru, velikost fronty transakcí, latence sítě a zabezpečení. Pokud během vývoje potřebujete změřit rychlost TPS, je oblíbený open source nástroj [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Rychlé zprovoznění: Použití Truffle pro připojení k síti služby Azure blockchain](connect-truffle.md)
+[Rychlý Start: použití Truffle pro připojení k síti služby Azure blockchain](connect-truffle.md)

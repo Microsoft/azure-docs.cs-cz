@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (ASP.NET Core) | Microsoft Docs
+title: Začínáme s Azure Blob Storage s využitím sady Visual Studio (ASP.NET Core)
 description: Jak začít používat službu Azure Blob Storage v projektu ASP.NET Core v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 documentationcenter: ''
@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
-ms.openlocfilehash: 8ae82548d4976e505dae055445c71a5c12cbf263
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516167"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300078"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (ASP.NET Core)
 
 > [!div class="op_single_selector"]
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
-> - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
+> - [Jádro ASP.NET](./vs-storage-aspnet-core-getting-started-blobs.md)
 
 Azure Blob Storage je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Další informace o službě BLOB Storage najdete v tématu [Úvod do úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
@@ -33,7 +34,7 @@ V tomto kurzu se dozvíte, jak napsat kód ASP.NET Core pro některé běžné s
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
@@ -43,25 +44,25 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 
 ### <a name="create-an-aspnet-mvc-app-project"></a>Vytvoření projektu aplikace ASP.NET MVC
 
-1. Otevřít Visual Studio.
+1. Otevřete sadu Visual Studio.
 
-1. V hlavní nabídce vyberte **soubor** > **Nový** > **projekt**.
+1. V hlavní nabídce vyberte **soubor** > **Nový** **projekt** > .
 
-1. V dialogovém okně **Nový projekt** vyberte **Web** > **ASP.NET Core webové aplikace** > **AspNetCoreStorage**. Pak vyberte **OK**.
+1. V dialogovém okně **Nový projekt** vyberte **Web** > **ASP.NET Core webová aplikace** > **AspNetCoreStorage**. Pak vyberte **OK**.
 
     ![Snímek obrazovky dialogového okna Nový projekt aplikace Visual Studio](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. V dialogovém okně **Nová webová aplikace ASP.NET Core** vyberte webovou aplikaci **.NET Core** > **ASP.NET Core 2,0** >  **(Model-View-Controller)** . Pak vyberte **OK**.
+1. V dialogovém okně **Nová webová aplikace ASP.NET Core** vyberte možnost **.NET Core** > **ASP.NET Core 2,0** > **Webová aplikace (model-zobrazení-kontroler)** . Pak vyberte **OK**.
 
     ![Snímek obrazovky dialogového okna Nová webová aplikace ASP.NET Core](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
 ### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Připojení k účtu služby Azure Storage pomocí připojených služeb
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt.
 
-2. V místní nabídce vyberte **Přidat** > **připojenou službu**.
+2. V místní nabídce vyberte **Přidat** **připojenou službu** > .
 
-1. V dialogovém okně **připojené služby** vyberte cloudové **úložiště s Azure Storage**a pak vyberte **Konfigurovat**.
+1. V dialogovém okně **připojené služby** vyberte **cloudové úložiště s Azure Storage**a pak vyberte **Konfigurovat**.
 
     ![Snímek obrazovky dialogového okna připojené služby](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
 
@@ -77,7 +78,7 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na **řadiče**.
 
-2. V místní nabídce vyberte **Přidat** > **kontroler**.
+2. V místní nabídce vyberte **Přidat** **kontroler** > .
 
     ![Snímek obrazovky s Průzkumník řešení](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
@@ -89,7 +90,7 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 
     ![Snímek obrazovky dialogového okna přidat prázdný řadič MVC](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
-1. Do souboru přidejte `using`následující direktivy:`BlobsController.cs`
+1. Přidejte následující direktivy `using` do souboru `BlobsController.cs`:
 
     ```csharp
     using System.IO;
@@ -102,7 +103,7 @@ Tato část vás provede nastavením vývojového prostředí. To zahrnuje vytvo
 
 Kontejner objektů BLOB je vnořená hierarchie objektů BLOB a složek. Zbytek kroků v tomto dokumentu vyžaduje odkaz na kontejner objektů blob, takže by měl být kód umístěn do své vlastní metody pro účely opětovné použitelnosti.
 
-Následující kroky vytvoří metodu pro připojení k účtu úložiště pomocí připojovacího řetězce v souboru **appSettings. JSON**. Kroky také vytvoří odkaz na kontejner. Nastavení připojovacího řetězce v souboru **appSettings. JSON** má název ve formátu `<storageaccountname>_AzureStorageConnectionString`. 
+Následující kroky vytvoří metodu pro připojení k účtu úložiště pomocí připojovacího řetězce v souboru **appSettings. JSON**. Kroky také vytvoří odkaz na kontejner. Nastavení připojovacího řetězce v souboru **appSettings. JSON** má název formát `<storageaccountname>_AzureStorageConnectionString`. 
 
 1. Otevřete soubor `BlobsController.cs`.
 
@@ -124,13 +125,13 @@ Následující kroky vytvoří metodu pro připojení k účtu úložiště pomo
     ```
 
 > [!NOTE]
-> I když *test-BLOB-Container* ještě neexistuje, tento kód vytvoří odkaz na něj. To je proto, že kontejner lze vytvořit pomocí `CreateIfNotExists` metody uvedené v dalším kroku.
+> I když *test-BLOB-Container* ještě neexistuje, tento kód vytvoří odkaz na něj. To je proto, že kontejner lze vytvořit s metodou `CreateIfNotExists` zobrazenou v dalším kroku.
 
 ## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 
 Následující kroky ukazují, jak vytvořit kontejner objektů BLOB:
 
-1. Přidejte metodu s názvem `CreateBlobContainer` , která `ActionResult`vrací.
+1. Přidejte metodu s názvem `CreateBlobContainer`, která vrací `ActionResult`.
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -141,25 +142,25 @@ Následující kroky ukazují, jak vytvořit kontejner objektů BLOB:
     }
     ```
  
-1. `CloudBlobContainer` Získejte objekt, který představuje odkaz na požadovaný název kontejneru objektů BLOB. 
+1. Získejte objekt `CloudBlobContainer`, který představuje odkaz na požadovaný název kontejneru objektů BLOB. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. `CloudBlobContainer.CreateIfNotExists` Zavolejte metodu pro vytvoření kontejneru, pokud ještě neexistuje. Metoda vrátí **hodnotu true** , pokud kontejner neexistuje a byl úspěšně vytvořen. `CloudBlobContainer.CreateIfNotExists` V opačném případě metoda vrátí **hodnotu false**.    
+1. Pro vytvoření kontejneru volejte metodu `CloudBlobContainer.CreateIfNotExists`, pokud ještě neexistuje. Metoda `CloudBlobContainer.CreateIfNotExists` vrátí **hodnotu true** , pokud kontejner neexistuje a byl úspěšně vytvořen. V opačném případě metoda vrátí **hodnotu false**.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExistsAsync().Result;
     ```
 
-1. Aktualizujte `ViewBag` název kontejneru objektů BLOB.
+1. Aktualizujte `ViewBag` názvem kontejneru objektů BLOB.
 
     ```csharp
     ViewBag.BlobContainerName = container.Name;
     ```
     
-    Následující příklad ukazuje dokončenou `CreateBlobContainer` metodu:
+    Následující příklad ukazuje dokončenou metodu `CreateBlobContainer`:
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -174,15 +175,15 @@ Následující kroky ukazují, jak vytvořit kontejner objektů BLOB:
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku **zobrazení** .
 
-2. V místní nabídce vyberte **Přidat** > **novou složku**. Pojmenujte nové *objekty blob*složky. 
+2. V místní nabídce vyberte **přidat** > **Nová složka**. Pojmenujte nové *objekty blob*složky. 
 
 1. V **Průzkumník řešení**rozbalte složku **zobrazení** a klikněte pravým tlačítkem myši na **objekty blob**.
 
-4. V místní nabídce vyberte možnost **Přidat** > **zobrazení**.
+4. V místní nabídce vyberte **Přidat** **zobrazení** > .
 
 1. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **CreateBlobContainer** a vyberte **Přidat**.
 
-1. Otevřete `CreateBlobContainer.cshtml`a upravte jej tak, aby vypadal jako následující fragment kódu:
+1. Otevřete `CreateBlobContainer.cshtml` a upravte ji tak, aby vypadala jako následující fragment kódu:
 
     ```csharp
     @{
@@ -194,9 +195,9 @@ Následující kroky ukazují, jak vytvořit kontejner objektů BLOB:
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. V **Průzkumník řešení**rozbalte položku sdílená složka **zobrazení** > a otevřete. `_Layout.cshtml`
+1. V **Průzkumník řešení**rozbalte položku **zobrazení** **sdílená** složka  >  a otevřete složku `_Layout.cshtml`.
 
-1. Vyhledejte Neseřazený seznam, který vypadá takto: `<ul class="nav navbar-nav">`.  Po posledním `<li>` prvku v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
+1. Vyhledejte Neseřazený seznam, který vypadá takto: `<ul class="nav navbar-nav">`.  Po posledním elementu `<li>` v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="CreateBlobContainer">Create blob container</a></li>
@@ -206,7 +207,7 @@ Následující kroky ukazují, jak vytvořit kontejner objektů BLOB:
   
     ![Snímek obrazovky s vytvořením kontejneru objektů BLOB](./media/vs-storage-aspnet-core-getting-started-blobs/create-blob-container-results.png)
 
-    Jak bylo zmíněno dříve `CloudBlobContainer.CreateIfNotExists` , metoda vrátí **hodnotu true** pouze v případě, že kontejner neexistuje a je vytvořen. Proto pokud je aplikace spuštěna, když existuje kontejner, metoda vrátí **hodnotu false**.
+    Jak bylo zmíněno dříve, metoda `CloudBlobContainer.CreateIfNotExists` vrátí **hodnotu true** pouze v případě, že kontejner neexistuje a je vytvořen. Proto pokud je aplikace spuštěna, když existuje kontejner, metoda vrátí **hodnotu false**.
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>Nahrání objektu blob do kontejneru objektů BLOB
 
@@ -214,7 +215,7 @@ Po [vytvoření kontejneru objektů BLOB](#create-a-blob-container)nahrajte do t
 
 1. Otevřete soubor `BlobsController.cs`.
 
-1. Přidejte metodu s názvem `UploadBlob` , která vrací řetězec.
+1. Přidejte metodu s názvem `UploadBlob`, která vrací řetězec.
 
     ```csharp
     public string UploadBlob()
@@ -225,13 +226,13 @@ Po [vytvoření kontejneru objektů BLOB](#create-a-blob-container)nahrajte do t
     }
     ```
  
-1. V rámci `CloudBlobContainer` metody získejte objekt, který představuje odkaz na požadovaný název kontejneru objektů BLOB. `UploadBlob` 
+1. V rámci metody `UploadBlob` získejte objekt `CloudBlobContainer`, který představuje odkaz na požadovaný název kontejneru objektů BLOB. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Azure Storage podporuje různé typy objektů BLOB. Tento kurz používá objekty blob bloku. Chcete-li načíst odkaz na objekt blob bloku, zavolejte `CloudBlobContainer.GetBlockBlobReference` metodu.
+1. Azure Storage podporuje různé typy objektů BLOB. Tento kurz používá objekty blob bloku. Chcete-li načíst odkaz na objekt blob bloku, zavolejte metodu `CloudBlobContainer.GetBlockBlobReference`.
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
@@ -240,7 +241,7 @@ Po [vytvoření kontejneru objektů BLOB](#create-a-blob-container)nahrajte do t
     > [!NOTE]
     > Název objektu BLOB je součástí adresy URL, která se používá k načtení objektu blob, a může to být libovolný řetězec, včetně názvu souboru.
 
-1. Po odkazování na objekt blob můžete do něj nahrát libovolný datový proud voláním `UploadFromStream` metody objektu BLOB reference. `UploadFromStream` Metoda vytvoří objekt blob, pokud neexistuje, nebo ho přepíše, pokud existuje. (Změna  *&lt;souboru na nahrání >* na plně kvalifikovanou cestu k souboru, který se má nahrát.)
+1. Poté, co je odkaz na objekt blob, můžete do něj nahrát libovolný datový proud voláním metody `UploadFromStream` odkazovaného objektu BLOB. Metoda `UploadFromStream` vytvoří objekt blob, pokud neexistuje, nebo ho přepíše, pokud existuje. (Změnu *&lt;File-to-upload >* na plně kvalifikovanou cestu k souboru, který se má nahrát.)
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
@@ -249,7 +250,7 @@ Po [vytvoření kontejneru objektů BLOB](#create-a-blob-container)nahrajte do t
     }
     ```
     
-    Následuje ukázka metody Completed `UploadBlob` (s plně kvalifikovanou cestou pro odeslání souboru):
+    Následující příklad ukazuje dokončenou metodu `UploadBlob` (s úplnou cestou k souboru, který se má nahrát):
 
     ```csharp
     public string UploadBlob()
@@ -264,9 +265,9 @@ Po [vytvoření kontejneru objektů BLOB](#create-a-blob-container)nahrajte do t
     }
     ```
 
-1. V **Průzkumník řešení**rozbalte položku sdílená složka **zobrazení** > a otevřete. `_Layout.cshtml`
+1. V **Průzkumník řešení**rozbalte položku **zobrazení** **sdílená** složka  >  a otevřete složku `_Layout.cshtml`.
 
-1. Po posledním `<li>` prvku v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
+1. Po posledním elementu `<li>` v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
@@ -282,7 +283,7 @@ Tato část ukazuje, jak zobrazit seznam objektů BLOB v kontejneru objektů BLO
 
 1. Otevřete soubor `BlobsController.cs`.
 
-1. Přidejte metodu s názvem `ListBlobs` , která `ActionResult`vrací.
+1. Přidejte metodu s názvem `ListBlobs`, která vrací `ActionResult`.
 
     ```csharp
     public ActionResult ListBlobs()
@@ -292,13 +293,13 @@ Tato část ukazuje, jak zobrazit seznam objektů BLOB v kontejneru objektů BLO
     }
     ```
  
-1. V rámci `CloudBlobContainer` metody získejte objekt, který představuje odkaz na kontejner objektů BLOB. `ListBlobs` 
+1. V rámci metody `ListBlobs` získejte objekt `CloudBlobContainer`, který představuje odkaz na kontejner objektů BLOB. 
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. Chcete-li zobrazit seznam objektů BLOB v kontejneru objektů BLOB `CloudBlobContainer.ListBlobsSegmentedAsync` , použijte metodu. `CloudBlobContainer.ListBlobsSegmentedAsync` Metoda`BlobResultSegment`vrátí. Obsahuje `IListBlobItem` objekty, které lze přetypovat na `CloudBlockBlob`objekty, `CloudPageBlob`nebo `CloudBlobDirectory` . Následující fragment kódu vytvoří výčet všech objektů BLOB v kontejneru objektů BLOB. Každý objekt BLOB je přetypovat na příslušný objekt na základě jeho typu. Do seznamu se přidá název (nebo identifikátor URI v `CloudBlobDirectory`případě a).
+1. Chcete-li zobrazit seznam objektů BLOB v kontejneru objektů blob, použijte metodu `CloudBlobContainer.ListBlobsSegmentedAsync`. Metoda `CloudBlobContainer.ListBlobsSegmentedAsync` vrátí `BlobResultSegment`. Obsahuje @no__t objekty-0, které lze přetypovat na objekty `CloudBlockBlob`, `CloudPageBlob` nebo `CloudBlobDirectory`. Následující fragment kódu vytvoří výčet všech objektů BLOB v kontejneru objektů BLOB. Každý objekt BLOB je přetypovat na příslušný objekt na základě jeho typu. Do seznamu se přidá název (nebo identifikátor URI v případě `CloudBlobDirectory`).
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -324,7 +325,7 @@ Tato část ukazuje, jak zobrazit seznam objektů BLOB v kontejneru objektů BLO
 
     return View(blobs);
     ```
-    Následující příklad ukazuje dokončenou `ListBlobs` metodu:
+    Následující příklad ukazuje dokončenou metodu `ListBlobs`:
 
     ```csharp
     public ActionResult ListBlobs()
@@ -357,11 +358,11 @@ Tato část ukazuje, jak zobrazit seznam objektů BLOB v kontejneru objektů BLO
 
 1. V **Průzkumník řešení**rozbalte složku **zobrazení** a klikněte pravým tlačítkem myši na **objekty blob**.
 
-2. V místní nabídce vyberte možnost **Přidat** > **zobrazení**.
+2. V místní nabídce vyberte **Přidat** **zobrazení** > .
 
-1. V dialogovém okně **Přidat zobrazení** zadejte `ListBlobs` do pole název zobrazení a vyberte **Přidat**.
+1. V dialogovém okně **Přidat zobrazení** zadejte do pole název zobrazení `ListBlobs` a vyberte **Přidat**.
 
-1. Otevřete `ListBlobs.cshtml`a nahraďte obsah následujícím kódem:
+1. Otevřete `ListBlobs.cshtml` a nahraďte obsah následujícím kódem:
 
     ```html
     @model List<string>
@@ -379,9 +380,9 @@ Tato část ukazuje, jak zobrazit seznam objektů BLOB v kontejneru objektů BLO
     </ul>
     ```
 
-1. V **Průzkumník řešení**rozbalte položku sdílená složka **zobrazení** > a otevřete. `_Layout.cshtml`
+1. V **Průzkumník řešení**rozbalte položku **zobrazení** **sdílená** složka  >  a otevřete složku `_Layout.cshtml`.
 
-1. Po posledním `<li>` prvku v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
+1. Po posledním elementu `<li>` v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="ListBlobs">List blobs</a></li>
@@ -397,7 +398,7 @@ Tato část ukazuje, jak stáhnout objekt BLOB. Můžete ji buď zachovat v mís
 
 1. Otevřete soubor `BlobsController.cs`.
 
-1. Přidejte metodu s názvem `DownloadBlob` , která vrací řetězec.
+1. Přidejte metodu s názvem `DownloadBlob`, která vrací řetězec.
 
     ```csharp
     public string DownloadBlob()
@@ -408,19 +409,19 @@ Tato část ukazuje, jak stáhnout objekt BLOB. Můžete ji buď zachovat v mís
     }
     ```
  
-1. V rámci `CloudBlobContainer` metody získejte objekt, který představuje odkaz na kontejner objektů BLOB. `DownloadBlob`
+1. V rámci metody `DownloadBlob` získejte objekt `CloudBlobContainer`, který představuje odkaz na kontejner objektů BLOB.
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Získejte odkazový objekt objektu BLOB voláním `CloudBlobContainer.GetBlockBlobReference` metody. 
+1. Získejte odkazový objekt objektu BLOB voláním metody `CloudBlobContainer.GetBlockBlobReference`. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. Pro stažení objektu BLOB použijte `CloudBlockBlob.DownloadToStream` metodu. Následující kód přenáší obsah objektu blob do objektu Stream. Tento objekt je pak uložený do místního souboru. (Změňte  *&lt;místní-soubor-name >* na plně kvalifikovaný název souboru, který představuje, kam se má objekt BLOB stáhnout.) 
+1. Chcete-li stáhnout objekt blob, použijte metodu `CloudBlockBlob.DownloadToStream`. Následující kód přenáší obsah objektu blob do objektu Stream. Tento objekt je pak uložený do místního souboru. (Změňte *&lt;local-File-name >* na plně kvalifikovaný název souboru, který představuje umístění, kde se má objekt BLOB stáhnout.) 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -429,7 +430,7 @@ Tato část ukazuje, jak stáhnout objekt BLOB. Můžete ji buď zachovat v mís
     }
     ```
     
-    Následuje ukázka metody Completed `ListBlobs` (s plně kvalifikovanou cestou pro místní soubor, který se vytváří):
+    Následující příklad ukazuje dokončenou metodu `ListBlobs` (s úplnou cestou pro místní soubor, který se vytváří):
     
     ```csharp
     public string DownloadBlob()
@@ -444,15 +445,15 @@ Tato část ukazuje, jak stáhnout objekt BLOB. Můžete ji buď zachovat v mís
     }
     ```
 
-1. V **Průzkumník řešení**rozbalte položku sdílená složka **zobrazení** > a otevřete. `_Layout.cshtml`
+1. V **Průzkumník řešení**rozbalte položku **zobrazení** **sdílená** složka  >  a otevřete složku `_Layout.cshtml`.
 
-1. Po posledním `<li>` prvku v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
+1. Po posledním elementu `<li>` v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
-1. Spusťte aplikaci a vyberte **Stáhnout objekt BLOB** pro stažení objektu BLOB. Objekt BLOB zadaný ve `CloudBlobContainer.GetBlockBlobReference` volání metody se stahuje do umístění zadaného `File.OpenWrite` ve volání metody. Text byl *úspěšný.* měl by se zobrazit v prohlížeči. 
+1. Spusťte aplikaci a vyberte **Stáhnout objekt BLOB** pro stažení objektu BLOB. Objekt BLOB zadaný ve volání metody `CloudBlobContainer.GetBlockBlobReference` se stáhne do umístění zadaného ve volání metody `File.OpenWrite`. Text byl *úspěšný.* měl by se zobrazit v prohlížeči. 
 
 ## <a name="delete-blobs"></a>Odstranění objektů blob
 
@@ -460,7 +461,7 @@ Následující postup ukazuje, jak odstranit objekt BLOB:
 
 1. Otevřete soubor `BlobsController.cs`.
 
-1. Přidejte metodu s názvem `DeleteBlob` , která vrací řetězec.
+1. Přidejte metodu s názvem `DeleteBlob`, která vrací řetězec.
 
     ```csharp
     public string DeleteBlob()
@@ -471,25 +472,25 @@ Následující postup ukazuje, jak odstranit objekt BLOB:
     }
     ```
 
-1. V rámci `CloudBlobContainer` metody získejte objekt, který představuje odkaz na kontejner objektů BLOB. `DeleteBlob`
+1. V rámci metody `DeleteBlob` získejte objekt `CloudBlobContainer`, který představuje odkaz na kontejner objektů BLOB.
    
     ```csharp
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
 
-1. Získejte odkazový objekt objektu BLOB voláním `CloudBlobContainer.GetBlockBlobReference` metody. 
+1. Získejte odkazový objekt objektu BLOB voláním metody `CloudBlobContainer.GetBlockBlobReference`. 
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. K odstranění objektu BLOB použijte `Delete` metodu.
+1. Chcete-li odstranit objekt blob, použijte metodu `Delete`.
 
     ```csharp
     blob.DeleteAsync().Wait();
     ```
     
-    Metoda Completed `DeleteBlob` by měla vypadat takto:
+    Dokončená metoda `DeleteBlob` by měla vypadat takto:
     
     ```csharp
     public string DeleteBlob()
@@ -501,15 +502,15 @@ Následující postup ukazuje, jak odstranit objekt BLOB:
     }
     ```
 
-1. V **Průzkumník řešení**rozbalte položku sdílená složka **zobrazení** > a otevřete. `_Layout.cshtml`
+1. V **Průzkumník řešení**rozbalte položku **zobrazení** **sdílená** složka  >  a otevřete složku `_Layout.cshtml`.
 
-1. Po posledním `<li>` prvku v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
+1. Po posledním elementu `<li>` v seznamu přidejte následující kód HTML pro přidání další položky navigační nabídky:
 
     ```html
     <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
-1. Spusťte aplikaci a vyberte **Odstranit objekt BLOB** pro odstranění objektu BLOB zadaného ve `CloudBlobContainer.GetBlockBlobReference` volání metody. Text byl *úspěšný.* měl by se zobrazit v prohlížeči. Vyberte tlačítko **zpět** v prohlížeči a pak vyberte **seznam objektů BLOB** , abyste ověřili, že objekt BLOB už není v kontejneru.
+1. Spusťte aplikaci a vyberte **Odstranit objekt BLOB** pro odstranění objektu BLOB zadaného ve volání metody `CloudBlobContainer.GetBlockBlobReference`. Text byl *úspěšný.* měl by se zobrazit v prohlížeči. Vyberte tlačítko **zpět** v prohlížeči a pak vyberte **seznam objektů BLOB** , abyste ověřili, že objekt BLOB už není v kontejneru.
 
 ## <a name="next-steps"></a>Další kroky
 

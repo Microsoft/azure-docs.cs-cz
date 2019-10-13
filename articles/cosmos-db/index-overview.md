@@ -4,14 +4,14 @@ description: Pochopte, jak funguje indexování v Azure Cosmos DB.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914197"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299781"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování v Azure Cosmos DB – přehled
 
@@ -64,9 +64,11 @@ Při zápisu položky Azure Cosmos DB efektivně indexuje cestu každé vlastnos
 
 ## <a name="index-kinds"></a>Typy indexů
 
-Azure Cosmos DB aktuálně podporuje tři druhy indexů:
+Azure Cosmos DB aktuálně podporuje tři druhy indexů.
 
-Typ indexu **rozsahu** se používá pro:
+### <a name="range-index"></a>Index rozsahu
+
+Index **rozsahu** je založen na seřazené struktuře podobné stromové struktury. Typ indexu rozsahu se používá pro:
 
 - Dotazy na rovnost:
 
@@ -74,20 +76,41 @@ Typ indexu **rozsahu** se používá pro:
    SELECT * FROM container c WHERE c.property = 'value'
    ```
 
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Shoda rovnosti na elementu pole
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
+
 - Dotazy na rozsah:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (funguje pro `>`, `<`, `>=` ,`<=`, )`!=`
+  (funguje pro `>`, `<`, `>=`, `<=`, `!=`)
 
-- `ORDER BY`odešle
+- Kontrola přítomnosti vlastnosti:
 
-   ```sql 
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- Shoda předpony řetězce (obsahuje klíčové slovo nebude využívat index rozsahu):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
+- dotazy `ORDER BY`:
+
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`odešle
+- dotazy `JOIN`:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -95,31 +118,41 @@ Typ indexu **rozsahu** se používá pro:
 
 Indexy rozsahu lze použít na skalárních hodnotách (String nebo Number).
 
-Druh **prostorového** indexu se používá pro:
+### <a name="spatial-index"></a>Prostorový index
 
-- Dotazy na geoprostorové vzdálenosti: 
+**Prostorové** indexy umožňují efektivní dotazy na geoprostorové objekty, jako jsou body, čáry, mnohoúhelníky a víceřádkový mnohoúhelník. Tyto dotazy používají klíčová slova ST_DISTANCE, ST_WITHIN, ST_INTERSECTS. Níže jsou uvedeny některé příklady použití prostorového indexu:
+
+- Dotazy na geoprostorové vzdálenosti:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Geoprostorové v rámci dotazů: 
+- Geoprostorové v rámci dotazů:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
+- Geoprostorové protínající se dotazy:
+
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
 Prostorové indexy lze použít na správně formátovaných objektech typu [injson](geospatial.md) . V současné době se podporují body, LineStrings, mnohoúhelníky a další mnohoúhelníky.
 
-Typ **složeného** indexu se používá pro:
+### <a name="composite-indexes"></a>Složené indexy
 
-- `ORDER BY`dotazy na více vlastností:
+**Složené** indexy zvyšují efektivitu při provádění operací s více poli. Typ složeného indexu se používá pro:
+
+- `ORDER BY` dotazů na více vlastností:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využít složený index, pokud je do `ORDER BY` klauzule přidána vlastnost Filter.
+- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využívat složený index, pokud je vlastnost Filter přidána do klauzule `ORDER BY`.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -131,18 +164,25 @@ Typ **složeného** indexu se používá pro:
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
+Pokud jeden predikát filtru používá typ indexu, dotazovací modul vyhodnotí, že nejprve před kontrolou zbývajícího typu. Například pokud máte dotaz SQL, například `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* Výše uvedený dotaz nejprve vyfiltruje položky, kde firstName = "Andrew" pomocí indexu. Pak předá všechny záznamy firstName = "Andrew" prostřednictvím následného kanálu k vyhodnocení predikátu OBSAHUJÍCÍho filtr.
+
+* Můžete zrychlit dotazy a vyhnout se úplným kontrolám kontejnerů při použití funkcí, které nepoužívají index (např. obsahuje) přidáním dalších predikátů filtru, které používají index. Pořadí klauzulí filtru není důležité. Dotazovací modul zjistí, které predikáty jsou podrobněji selektivní a spustí dotaz odpovídajícím způsobem.
+
+
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
-Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním `WHERE` klauzule dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
+Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním klauzule `WHERE` dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
 
 Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predikát dotazu (filtrování položek, kde jakékoli umístění má "France" jako země), by odpovídala cestě zvýrazněné červeně:
 
 ![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzule, která má ORDER by jedna vlastnost, vždy potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. `ORDER BY` Podobně `ORDER BY` dotaz, který ORDER by má více vlastností, *vždy* potřebuje složený index.
+> Klauzule `ORDER BY`, která má ORDER by jedna vlastnost, *vždy* potřebuje index rozsahu a selže, pokud cesta, na kterou odkazuje, nemá jednu. Podobně dotaz `ORDER BY`, který ORDER by má více vlastností, *vždy* potřebuje složený index.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o indexování najdete v následujících článcích:
 

@@ -1,22 +1,19 @@
 ---
 title: Referenční C# dokumentace pro vývojáře skriptu Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí C# skriptu.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
+author: craigshoemaker
+manager: gwallace
 keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.author: cshoe
+ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849422"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299854"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Referenční C# informace pro vývojáře skriptu Azure Functions (. csx)
 
@@ -26,13 +23,13 @@ Tento článek představuje úvod k vývoji Azure Functions pomocí C# skriptu (
 
 Azure Functions podporuje C# a C# skriptovací programovací jazyky. Pokud hledáte pokyny k [použití C# v projektu knihovny tříd sady Visual Studio](functions-develop-vs.md), přečtěte si téma [ C# referenční příručka pro vývojáře](functions-dotnet-class-library.md).
 
-V tomto článku se předpokládá, že už jste si přečetli příručku pro [vývojáře Azure Functions](functions-reference.md).
+V tomto článku se předpokládá, že už jste si přečetli [příručku pro vývojáře Azure Functions](functions-reference.md).
 
 ## <a name="how-csx-works"></a>Jak funguje. csx
 
-Prostředí C# skriptu pro Azure Functions je založené na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Data přetoků do C# vaší funkce prostřednictvím argumentů metody. V `function.json` souboru jsou zadány názvy argumentů a existují předdefinované názvy pro přístup k objektům, jako je protokolování funkcí a tokeny zrušení.
+Prostředí C# skriptu pro Azure Functions je založené na [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Data přetoků do C# vaší funkce prostřednictvím argumentů metody. Názvy argumentů jsou zadány v souboru @no__t 0 a existují předdefinované názvy pro přístup k objektům, jako je protokolování funkcí a tokeny zrušení.
 
-Formát *. csx* umožňuje napsat méně "často používaný" text a soustředit se na zápis pouze do C# funkce. Místo zabalení všeho v oboru názvů a třídě stačí definovat `Run` metodu. Zahrňte na začátek souboru odkazy na sestavení a obory názvů jako obvykle.
+Formát *. csx* umožňuje napsat méně "často používaný" text a soustředit se na zápis pouze do C# funkce. Místo zabalení všeho v oboru názvů a třídě stačí definovat metodu `Run`. Zahrňte na začátek souboru odkazy na sestavení a obory názvů jako obvykle.
 
 Soubory *. csx* aplikace Function App jsou kompilovány při inicializaci instance. Tento krok kompilace znamená, že některé věci, jako je studená operace Start, mohou trvat déle C# než knihovny C# tříd. Tento krok kompilace je také důvodem C# , proč jsou funkce skriptu v Azure Portal upravovat, C# zatímco knihovny tříd nejsou.
 
@@ -57,11 +54,11 @@ FunctionsProject
 
 Existuje soubor Shared [Host. JSON](functions-host-json.md) , který se dá použít ke konfiguraci aplikace Function App. Každá funkce má svůj vlastní soubor kódu (. csx) a konfigurační soubor vazby (Function. JSON).
 
-Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v `extensions.csproj` souboru se skutečnými soubory `bin` knihoven ve složce. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
+Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v souboru `extensions.csproj` se skutečnými soubory knihovny ve složce `bin`. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
 ## <a name="binding-to-arguments"></a>Vazba na argumenty
 
-Vstupní nebo výstupní data jsou svázána s C# parametrem funkce skriptu prostřednictvím `name` vlastnosti v konfiguračním souboru *Function. JSON* . Následující příklad ukazuje soubor *Function. JSON* a spusťte soubor *. csx* pro funkci aktivovanou ve frontě. Parametr, který přijímá data ze zprávy ve frontě, `myQueueItem` je pojmenován, protože to je `name` hodnota vlastnosti.
+Vstupní nebo výstupní data jsou svázána s C# parametrem funkce skriptu přes vlastnost `name` v konfiguračním souboru *Function. JSON* . Následující příklad ukazuje soubor *Function. JSON* a spusťte soubor *. csx* pro funkci aktivovanou ve frontě. Parametr, který přijímá data ze zprávy ve frontě, má název `myQueueItem`, protože to je hodnota vlastnosti `name`.
 
 ```json
 {
@@ -91,11 +88,11 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-Prohlášení je vysvětleno [dále v tomto článku.](#referencing-external-assemblies) `#r`
+Příkaz `#r` je vysvětlen [dále v tomto článku](#referencing-external-assemblies).
 
 ## <a name="supported-types-for-bindings"></a>Podporované typy pro vazby
 
-Každá vazba má své vlastní podporované typy; například Trigger objektu BLOB lze použít s parametrem řetězce, parametrem POCO, `CloudBlockBlob` parametrem nebo jakýmkoli jiným podporovaným typem. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob.md#trigger---usage) obsahuje seznam všech podporovaných typů parametrů pro triggery objektů BLOB. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
+Každá vazba má své vlastní podporované typy; Trigger objektu BLOB lze například použít s parametrem řetězce, parametrem POCO, parametrem `CloudBlockBlob` nebo libovolným jiným podporovaným typem. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob.md#trigger---usage) obsahuje seznam všech podporovaných typů parametrů pro triggery objektů BLOB. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -122,7 +119,7 @@ Třída POCO musí mít pro každou vlastnost definovanou metodu getter a setter
 
 ## <a name="reusing-csx-code"></a>Znovu se používá kód. csx
 
-Můžete použít třídy a metody definované v jiných souborech *. csx* v souboru *Run. csx* . K tomu použijte `#load` direktivy v souboru *Run. csx* . V následujícím příkladu `MyLogger` je rutina s názvem sdílena v *myLogger. csx* a načtena do `#load` run. csx pomocí direktivy:
+Můžete použít třídy a metody definované v jiných souborech *. csx* v souboru *Run. csx* . K tomu použijte direktivy `#load` v souboru *Run. csx* . V následujícím příkladu je rutina protokolování s názvem `MyLogger` sdílena v *myLogger. csx* a načtena do *Run. csx* pomocí direktivy `#load`:
 
 Příklad *spuštění. csx*:
 
@@ -147,7 +144,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Použití sdíleného souboru *. csx* je běžný vzor, pokud chcete silného typu dat předávaných mezi funkcemi pomocí objektu POCO. V následujícím zjednodušeném příkladu aktivační událost http a Trigger fronty sdílí objekt POCO s názvem `Order` pro silné zadání dat objednávky:
+Použití sdíleného souboru *. csx* je běžný vzor, pokud chcete silného typu dat předávaných mezi funkcemi pomocí objektu POCO. V následujícím zjednodušeném příkladu aktivační událost HTTP a Trigger fronty sdílí objekt POCO s názvem `Order` a silně tak zadáte data objednávky:
 
 Příklad *spuštění. csx* pro Trigger http:
 
@@ -214,25 +211,25 @@ public class Order
 }
 ```
 
-Můžete použít relativní cestu k této `#load` direktivě:
+Můžete použít relativní cestu s direktivou `#load`:
 
-* `#load "mylogger.csx"`Načte soubor umístěný ve složce Functions.
-* `#load "loadedfiles\mylogger.csx"`Načte soubor umístěný ve složce ve složce Functions.
-* `#load "..\shared\mylogger.csx"`Načte soubor umístěný do složky na stejné úrovni jako složka funkcí, která je přímo pod uzlem *wwwroot*.
+* `#load "mylogger.csx"` načte soubor umístěný ve složce Functions.
+* `#load "loadedfiles\mylogger.csx"` načte soubor umístěný ve složce ve složce Functions.
+* `#load "..\shared\mylogger.csx"` načte soubor umístěný ve složce na stejné úrovni jako složka funkce, tj. přímo pod uzlem *wwwroot*.
 
-Direktiva funguje pouze se soubory *. csx* , nikoli s *příponou. cs.* `#load`
+Direktiva `#load` funguje pouze se soubory *. csx* , nikoli s *příponou. cs* .
 
 ## <a name="binding-to-method-return-value"></a>Vazba na návratovou hodnotu metody
 
-Můžete použít návratovou hodnotu metody pro výstupní vazbu pomocí názvu `$return` ve *Function. JSON*. Příklady najdete v tématu [triggery a vazby](./functions-bindings-return-value.md).
+Můžete použít návratovou hodnotu metody pro výstupní vazbu pomocí názvu `$return` v *Function. JSON*. Příklady najdete v tématu [triggery a vazby](./functions-bindings-return-value.md).
 
-Návratovou hodnotu použijte pouze v případě, že úspěšné spuštění funkce vždy způsobí návratovou hodnotu, která bude předána výstupní vazbě. V opačném `ICollector` případě `IAsyncCollector`použijte nebo, jak je znázorněno v následující části.
+Návratovou hodnotu použijte pouze v případě, že úspěšné spuštění funkce vždy způsobí návratovou hodnotu, která bude předána výstupní vazbě. V opačném případě použijte `ICollector` nebo `IAsyncCollector`, jak je znázorněno v následující části.
 
 ## <a name="writing-multiple-output-values"></a>Zápis více výstupních hodnot
 
-Chcete-li zapsat více hodnot do výstupní vazby nebo pokud úspěšné vyvolání volání funkce nevede k žádnému předání do výstupní vazby, použijte [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) typy nebo. [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) Tyto typy jsou kolekce pouze pro zápis, které jsou zapsány do výstupní vazby po dokončení metody.
+Chcete-li zapsat více hodnot do výstupní vazby, nebo pokud úspěšné vyvolání volání funkce nemusí být výsledkem cokoli k předání výstupní vazbě, použijte typy [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) . Tyto typy jsou kolekce pouze pro zápis, které jsou zapsány do výstupní vazby po dokončení metody.
 
-Tento příklad zapisuje do stejné fronty více zpráv fronty pomocí `ICollector`:
+Tento příklad zapisuje do stejné fronty více zpráv Queue pomocí `ICollector`:
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -244,7 +241,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Protokolování
 
-Pokud chcete protokolovat výstup do protokolů streamování v C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám ho `log`pojmenovat. Nepoužívejte `Console.Write` v Azure Functions.
+Pokud chcete protokolovat výstup do protokolů streamování v C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste si ho pojmenovat `log`. Vyhněte se použití `Console.Write` v Azure Functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -254,11 +251,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Informace o novějším rozhraní protokolování, které lze použít místo `TraceWriter`, najdete v článku o [zápisu protokolů C# ve funkcích](functions-monitoring.md#write-logs-in-c-functions) v článku **monitorování Azure Functions** .
+> Informace o novějším rozhraní protokolování, které můžete použít místo `TraceWriter`, najdete v článku o [zápisu protokolů C# ve funkcích](functions-monitoring.md#write-logs-in-c-functions) v článku **monitorování Azure Functions** .
 
 ## <a name="async"></a>Async
 
-Chcete-li provést [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` `Task` klíčové slovo a vraťte objekt.
+Chcete-li provést [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte klíčové slovo `async` a vraťte objekt `Task`.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -270,7 +267,7 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-V asynchronních `out` funkcích nemůžete použít parametry. Pro výstupní vazby použijte místo toho [vrácenou hodnotu funkce](#binding-to-method-return-value) nebo [objekt sběrače](#writing-multiple-output-values) .
+V asynchronních funkcích nelze použít parametry `out`. Pro výstupní vazby použijte místo toho [vrácenou hodnotu funkce](#binding-to-method-return-value) nebo [objekt sběrače](#writing-multiple-output-values) .
 
 ## <a name="cancellation-tokens"></a>Tokeny zrušení
 
@@ -303,7 +300,7 @@ public static void Run(
 
 ## <a name="importing-namespaces"></a>Import oborů názvů
 
-Pokud potřebujete importovat obory názvů, můžete to udělat jako obvykle s `using` klauzulí.
+Pokud potřebujete importovat obory názvů, můžete tak učinit obvyklým způsobem s klauzulí `using`.
 
 ```csharp
 using System.Net;
@@ -326,7 +323,7 @@ Následující obory názvů se naimportují automaticky a jsou proto volitelné
 
 ## <a name="referencing-external-assemblies"></a>Odkazování na externí sestavení
 
-Pro sestavení rozhraní přidejte odkazy pomocí `#r "AssemblyName"` direktivy.
+Pro sestavení rozhraní přidejte odkazy pomocí direktivy `#r "AssemblyName"`.
 
 ```csharp
 #r "System.Web.Http"
@@ -365,15 +362,15 @@ Na následující sestavení může být odkazováno pomocí jednoduchého názv
 
 Chcete-li odkazovat na vlastní sestavení, můžete použít buď *sdílené* sestavení, nebo *soukromé* sestavení:
 
-* Sdílená sestavení se sdílejí napříč všemi funkcemi v rámci aplikace Function App. Chcete-li odkazovat na vlastní sestavení, nahrajte sestavení do složky `bin` s názvem v [kořenové složce aplikace Function App](functions-reference.md#folder-structure) (wwwroot).
+* Sdílená sestavení se sdílejí napříč všemi funkcemi v rámci aplikace Function App. Chcete-li odkazovat na vlastní sestavení, nahrajte sestavení do složky s názvem `bin` v [kořenové složce aplikace Function App](functions-reference.md#folder-structure) (wwwroot).
 
-* Soukromá sestavení jsou součástí kontextu dané funkce a podporují vedlejší načítání různých verzí. Soukromá sestavení by se měla nahrát do `bin` složky v adresáři Functions. Odkazujte na sestavení pomocí názvu souboru, například `#r "MyAssembly.dll"`.
+* Soukromá sestavení jsou součástí kontextu dané funkce a podporují vedlejší načítání různých verzí. Soukromá sestavení by se měla nahrát do složky `bin` v adresáři funkce. Odkazujte na sestavení pomocí názvu souboru, například `#r "MyAssembly.dll"`.
 
 Informace o tom, jak nahrát soubory do složky funkcí, najdete v části [Správa balíčků](#using-nuget-packages).
 
 ### <a name="watched-directories"></a>Sledované adresáře
 
-Adresář, který obsahuje soubor skriptu funkce, je automaticky sledován pro změny sestavení. Chcete-li sledovat změny sestavení v jiných adresářích, přidejte je `watchDirectories` do seznamu v [Host. JSON](functions-host-json.md).
+Adresář, který obsahuje soubor skriptu funkce, je automaticky sledován pro změny sestavení. Chcete-li sledovat změny sestavení v jiných adresářích, přidejte je do seznamu `watchDirectories` v [Host. JSON](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>Používání balíčků NuGet
 Pokud chcete používat balíčky NuGet ve funkci 2. C# x, nahrajte soubor *Function. proj* do složky funkce v systému souborů Function App. Tady je příklad souboru *Function. proj* , který přidá odkaz na *Microsoft. ProjectOxford. Face* verze *1.1.0*:
@@ -450,11 +447,11 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Vazba za běhu
 
-V C# a v jiných jazycích .NET můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vzor vazby na rozdíl od [deklarativních](https://en.wikipedia.org/wiki/Declarative_programming) vazeb v *Function. JSON*. Imperativní vazba je užitečná v případě, že parametry vazby je třeba vypočítat za běhu, nikoli jako dobu návrhu. S tímto modelem můžete vytvořit vazbu na podporované vstupní a výstupní vazby průběžně v kódu funkce.
+V C# a v jiných jazycích .NET můžete použít [imperativní](https://en.wikipedia.org/wiki/Imperative_programming) vzor vazby na rozdíl od [*deklarativních*](https://en.wikipedia.org/wiki/Declarative_programming) vazeb v *Function. JSON*. Imperativní vazba je užitečná v případě, že parametry vazby je třeba vypočítat za běhu, nikoli jako dobu návrhu. S tímto modelem můžete vytvořit vazbu na podporované vstupní a výstupní vazby průběžně v kódu funkce.
 
 Definujte imperativní vazbu následujícím způsobem:
 
-- Nezahrnovat položku *Function. JSON* pro požadované imperativní vazby.
+- **Nezahrnovat položku** *Function. JSON* pro požadované imperativní vazby.
 - Předejte vstupní parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) nebo [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
 - K provedení datové C# vazby použijte následující vzor.
 
@@ -465,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`je atribut rozhraní .NET, který definuje vaši vazbu `T` a je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T`nelze zadat typ `out JObject`parametru(například). `out` Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [\<> ICollector T](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T`.
+`BindingTypeAttribute` je atribut rozhraní .NET, který definuje vaši vazbu a `T` je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T` nemůže být typ parametru `out` (například `out JObject`). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector @ no__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T`.
 
 ### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
 
@@ -488,7 +485,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu `BindAsync<T>()`do. Použijte parametr, ne `IBinder`. `Binder`  Příklad:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, ne `IBinder`.  Například:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -512,9 +509,9 @@ public static async Task Run(string input, Binder binder)
 V následující tabulce jsou uvedeny atributy rozhraní .NET pro každý typ vazby a balíčky, ve kterých jsou definovány.
 
 > [!div class="mx-codeBreakAll"]
-> | Vazba | Atribut | Přidat odkaz |
+> | Ovládacího | Atribut | Přidat odkaz |
 > |------|------|------|
-> | Databáze Cosmos | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
+> | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
@@ -524,7 +521,7 @@ V následující tabulce jsou uvedeny atributy rozhraní .NET pro každý typ va
 > | Tabulka úložiště | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech a vazbách](functions-triggers-bindings.md)

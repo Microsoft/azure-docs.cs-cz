@@ -1,22 +1,22 @@
 ---
-title: Ukázka-CAF migrace cílové zóny podrobný plán – postup nasazení
-description: Nasaďte kroky pro ukázkový plán CAF migrace cílové zóny, včetně podrobností o parametrech artefaktu podrobného plánu.
+title: Ukázka podrobného plánu pro cílovou zónu migrace CAF – postup nasazení
+description: Nasaďte kroky pro ukázkový postup migrace CAF do cílové zóny, včetně podrobností o parametrech artefaktu podrobného plánu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248503"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298023"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Ukázková ukázka podrobného plánu cílové zóny pro migraci do Azure – nasazení rozhraní Microsoft Cloud
 
-Pokud chcete nasadit ukázku podrobného plánu prokládání Azure modrotisky CAF, je potřeba provést tyto kroky:
+Pokud chcete nasadit ukázku podrobného plánu pro migrační zónu Azure modrotisky CAF, musí být podniknuty tyto kroky:
 
 > [!div class="checklist1"]
 > - Doporučuje se nasadit ukázku podrobného plánu [CAF Foundation](../caf-foundation/index.md) .
@@ -68,18 +68,18 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Práce
+   - Základy
      - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
      - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit.
-     - Azure Blueprint používá tuto spravovanou identitu k nasazení všech artefaktů v přiřazeném podrobném plánu.
-       Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu.
+       Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
     
    - Zamknout přiřazení
 
-     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace najdete v tématu [uzamykání prostředků v modrotisky](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
@@ -105,25 +105,25 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Nasadit cílovou zónu sítě vNET|Šablona Správce prostředků|IPAddress_Space|**Uzamčené** – zadejte první dva oktety, například 10,0.|
-|Nasazení Key Vault|Šablona Správce prostředků|KV – AccessPolicy|ID objektu **Uzamčeno** nebo uživatele pro udělení oprávnění k v Key Vault|
-|Nasazení Log Analytics|Šablona Správce prostředků|LogAnalytics_DataRetention|**Uzamčený** počet dní, po které se budou uchovávat data v Log Analytics|
-|Nasazení Log Analytics|Šablona Správce prostředků|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
-|Nasazení Azure Migrate|Šablona Správce prostředků|Azure_Migrate_Location|**Uzamčené** – vyberte oblast, která se má nasadit Azure Migrate|
+|Nasadit cílovou zónu sítě vNET|Šablona Resource Manageru|IPAddress_Space|**Uzamčené** – zadejte první dva oktety, například 10,0.|
+|Nasazení Key Vault|Šablona Resource Manageru|KV – AccessPolicy|ID objektu **Uzamčeno** nebo uživatele pro udělení oprávnění k v Key Vault|
+|Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_DataRetention|**Uzamčený** počet dní, po které se budou uchovávat data v Log Analytics|
+|Nasazení Log Analytics|Šablona Resource Manageru|LogAnalytics_Location|**Zamčené** – oblast použitá při vytváření pracovního prostoru|
+|Nasazení Azure Migrate|Šablona Resource Manageru|Azure_Migrate_Location|**Uzamčené** – vyberte oblast, která se má nasadit Azure Migrate|
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zkontrolovali postup nasazení ukázky podrobného plánu CAF pro migraci cílové zóny, najdete informace o architektuře v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [CAF migrovat cílovou zónu do podrobného plánu – přehled](./index.md)
+> [Cílová zóna migrace CAF – přehled](./index.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
-- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
-- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

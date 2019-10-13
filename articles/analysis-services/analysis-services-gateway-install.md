@@ -2,18 +2,17 @@
 title: Instalace místní brány dat pro Azure Analysis Services | Microsoft Docs
 description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu dat.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678428"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298645"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -21,7 +20,7 @@ Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analy
 
 Další informace o bráně a o tom, jak ji používá Azure Analysis Services, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 **Minimální požadavky:**
 
@@ -76,39 +75,39 @@ Aby bylo možné vytvořit prostředek brány v Azure, musíte zaregistrovat mí
 
 1.  Vyberte možnost **zaregistrovat novou bránu na tomto počítači**.
 
-    ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Zadejte název a obnovovací klíč pro bránu. Ve výchozím nastavení používá brána výchozí oblast vašeho předplatného. Pokud potřebujete vybrat jinou oblast, vyberte **změnit oblast**.
 
     > [!IMPORTANT]
     > Uložte si obnovovací klíč na bezpečné místo. Obnovovací klíč se vyžaduje v rámci převzetí, migrace nebo obnovení brány. 
 
-   ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Vytvoření prostředku brány Azure
 
 Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
 
-1. V Azure Portal klikněte na **vytvořit prostředek**, vyhledejte místní bránu **dat**a pak klikněte na **vytvořit**.
+1. V Azure Portal klikněte na **vytvořit prostředek**, vyhledejte místní **bránu dat**a pak klikněte na **vytvořit**.
 
    ![Vytvoření prostředku brány](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
 2. V možnosti **vytvořit bránu připojení**zadejte tato nastavení:
 
-   * **Název**: Zadejte název prostředku brány. 
+   * **Název**: zadejte název prostředku brány. 
 
-   * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k vašemu prostředku brány. 
+   * **Předplatné**: vyberte předplatné Azure, které chcete přidružit k vašemu prostředku brány. 
    
      Výchozí předplatné vychází z účtu Azure, který jste použili k přihlášení.
 
-   * **Skupina prostředků**: Vytvořte skupinu prostředků nebo vyberte existující.
+   * **Skupina prostředků**: Vytvořte skupinu prostředků, nebo vyberte existující.
 
    * **Umístění**: Vyberte oblast, ve které jste zaregistrováni bránu.
 
    * **Název instalace**: Pokud vaše instalace brány ještě není vybraná, vyberte bránu, kterou jste nainstalovali v počítači a zaregistrujte se. 
 
-     Jakmile budete hotovi, klikněte na tlačítko **vytvořit**.
+     Až skončíte, klikněte na **vytvořit**.
 
 ## <a name="connect-servers"></a>Připojení serverů k prostředku brány
 
@@ -128,9 +127,9 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém p
 
     ![Připojení serveru k úspěšnému dokončení prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-A to je vše. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
+A je to. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa služby Analysis Services](analysis-services-manage.md)   
 * [Získat data z Azure Analysis Services](analysis-services-connect.md)   

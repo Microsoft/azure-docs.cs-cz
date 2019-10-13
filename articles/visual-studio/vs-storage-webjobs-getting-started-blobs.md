@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm objektů BLOB a připojenými službami sady Visual Studio (projekty WebJob) | Microsoft Docs
+title: Začínáme s úložištěm objektů BLOB pomocí sady Visual Studio (projekty WebJob)
 description: Jak začít používat úložiště objektů BLOB v projektu webové úlohy po připojení ke službě Azure Storage pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510652"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299981"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (projekty WebJob)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -31,7 +32,7 @@ V této části se dozvíte, jak použít atribut **BlobTrigger** .
  **Poznámka:** Sada WebJobs SDK prohledává soubory protokolů, které se mají sledovat pro nové nebo změněné objekty blob. Tento proces je z jeho podstaty pomalý. funkce se nemusí aktivovat, dokud neproběhne několik minut nebo déle po vytvoření objektu BLOB.  Pokud vaše aplikace potřebuje zpracovat objekty blob okamžitě, doporučuje se při vytváření objektu BLOB vytvořit zprávu fronty a použít atribut **QueueTrigger** namísto atributu **BlobTrigger** ve funkci, která objekt BLOB zpracovává. .
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Jeden zástupný symbol pro název objektu BLOB s příponou
-Následující ukázka kódu kopíruje textové objekty blob, které se zobrazí ve vstupním kontejneru do *výstupního* kontejneru:
+Následující ukázka kódu kopíruje textové objekty blob, které se zobrazí ve *vstupním* kontejneru do *výstupního* kontejneru:
 
         public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
             [Blob("output/{name}")] out string output)
@@ -49,9 +50,9 @@ Můžete zadat vzor názvu se zástupným symbolem názvu objektu blob, jak je z
             output = input.ReadToEnd();
         }
 
-Tento kód zkopíruje pouze objekty blob, jejichž názvy začínají řetězcem "původní –". Například *Original-Blob1. txt* ve vstupním kontejneru je zkopírován do *copy-Blob1. txt* ve výstupním kontejneru .
+Tento kód zkopíruje pouze objekty blob, jejichž názvy začínají řetězcem "původní –". Například *Original-Blob1. txt* ve *vstupním* kontejneru je zkopírován do *copy-Blob1. txt* ve *výstupním* kontejneru.
 
-Pokud potřebujete zadat vzor názvu pro názvy objektů blob, které mají složené závorky v názvu, poklikejte na složené závorky. Například pokud chcete najít objekty BLOB v kontejneru images, které mají název takto:
+Pokud potřebujete zadat vzor názvu pro názvy objektů blob, které mají složené závorky v názvu, poklikejte na složené závorky. Například pokud chcete najít objekty BLOB v kontejneru *images* , které mají název takto:
 
         {20140101}-soundfile.mp3
 
@@ -62,7 +63,7 @@ Použijte tento vzor:
 V příkladu je hodnota zástupný symbol *názvu* *soundfile. mp3*.
 
 ### <a name="separate-blob-name-and-extension-placeholders"></a>Oddělitelné zástupné symboly pro název a rozšíření objektu BLOB
-Následující ukázka kódu změní příponu souboru při kopírování objektů blob, které se zobrazí ve *vstupním* kontejneru do *výstupního* kontejneru. Kód protokoluje rozšíření *vstupního* objektu BLOB a nastaví rozšíření výstupního objektu BLOB na *. txt*.
+Následující ukázka kódu změní příponu souboru při kopírování objektů blob, které se zobrazí ve *vstupním* kontejneru do *výstupního* kontejneru. Kód protokoluje rozšíření *vstupního* objektu BLOB a nastaví rozšíření *výstupního* objektu BLOB na *. txt*.
 
         public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
             [Blob("output/{name}.txt")] out string output,
@@ -78,8 +79,8 @@ Následující ukázka kódu změní příponu souboru při kopírování objekt
 ## <a name="types-that-you-can-bind-to-blobs"></a>Typy, které můžete navazovat na objekty blob
 Atribut **BlobTrigger** lze použít pro následující typy:
 
-* **string**
-* **TextReader**
+* **řetezce**
+* **Elementu**
 * **Stream**
 * **ICloudBlob**
 * **CloudBlockBlob**
@@ -101,7 +102,7 @@ Pokud je očekáváno textové objekty blob, lze **BlobTrigger** použít na **�
         }
 
 ## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Získání serializovaného obsahu objektů BLOB pomocí ICloudBlobStreamBinder
-Následující ukázka kódu používá třídu, která implementuje **ICloudBlobStreamBinder** , aby atribut **BlobTrigger** mohl vytvořit vazby objektu BLOB k typu webimage.
+Následující ukázka kódu používá třídu, která implementuje **ICloudBlobStreamBinder** , aby atribut **BlobTrigger** mohl vytvořit vazby objektu BLOB k typu **webimage** .
 
         public static void WaterMark(
             [BlobTrigger("images3/{name}")] WebImage input,
@@ -120,7 +121,7 @@ Následující ukázka kódu používá třídu, která implementuje **ICloudBlo
             output = input.Resize(width, height);
         }
 
-Kód vazby webimage je k dispozici ve třídě **WebImageBinder** , která je odvozena od **ICloudBlobStreamBinder**.
+Kód vazby **webimage** je k dispozici ve třídě **WebImageBinder** , která je odvozena od **ICloudBlobStreamBinder**.
 
         public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
         {
@@ -144,7 +145,7 @@ Maximální počet opakovaných pokusů lze konfigurovat. Stejné nastavení **M
 
 Zpráva fronty pro poškozené objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (ve formátu *{název webové úlohy}* . POZVYHLEDAT. *{Function Name}* například: WebJob1.Functions.CopyBlob)
+* FunctionId (ve formátu *{název webové úlohy}* . POZVYHLEDAT. *{Function Name}* například: WebJob1. Functions. CopyBlob)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName

@@ -1,5 +1,5 @@
 ---
-title: Začínáme se službou BLOB Storage a připojenými službami sady Visual Studio (cloudové služby) | Microsoft Docs
+title: Začínáme s úložištěm objektů BLOB pomocí sady Visual Studio (cloudové služby)
 description: Jak začít používat úložiště objektů BLOB v Azure v projektu cloudové služby v aplikaci Visual Studio po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
@@ -12,18 +12,19 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510703"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298808"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Přehled
-Tento článek popisuje, jak začít s Azure Blob Storage po vytvoření nebo odkazování Azure Storage účtu pomocí dialogového okna **Přidat připojené služby** sady Visual Studio v projektu cloudové služby Visual Studio. Ukážeme vám, jak používat a vytvářet kontejnery objektů BLOB a jak provádět běžné úlohy, jako je nahrávání, výpis a stahování objektů BLOB. Ukázky jsou napsané v jazyce\# C a používají [Microsoft Azure Storage klientské knihovny pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Tento článek popisuje, jak začít s Azure Blob Storage po vytvoření nebo odkazování Azure Storage účtu pomocí dialogového okna **Přidat připojené služby** sady Visual Studio v projektu cloudové služby Visual Studio. Ukážeme vám, jak používat a vytvářet kontejnery objektů BLOB a jak provádět běžné úlohy, jako je nahrávání, výpis a stahování objektů BLOB. Ukázky jsou napsány v jazyce C @ no__t-0 a používají [klientské knihovny Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. Jeden objekt BLOB může být libovolná velikost. Objekty blob můžou být například obrázky, zvukové soubory a videosoubory, nezpracovaná data a soubory dokumentů.
 

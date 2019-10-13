@@ -1,21 +1,20 @@
 ---
 title: Kurz – Připojení ke službě Azure Analysis Services pomocí Power BI Desktopu | Microsoft Docs
 author: minewiskan
-manager: kfile
 description: Naučte se, jak se připojit k Azure Analysis Services pomocí Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932381"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294487"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Připojení pomocí Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Připojení pomocí Power BI Desktopu
 
 V tomto kurzu použijete Power BI Desktop pro připojení k ukázkové modelové databázi adventureworks na vašem serveru. Vámi provedené úlohy budou simulovat typické uživatelské připojení k modelu a vytvoření základní sestavy z dat modelu.
 
@@ -24,7 +23,7 @@ V tomto kurzu použijete Power BI Desktop pro připojení k ukázkové modelové
 > * Připojení pomocí Power BI Desktopu
 > * Vytvoření základní sestavy
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Přidejte ukázkovou modelovou databázi adventureworks](../analysis-services-create-sample-model.md) na server.
 - Ukázková modelová databáze adventureworks musí mít oprávnění ke [*čtení*](../analysis-services-server-admins.md).

@@ -65,8 +65,6 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy
   href: error-messages.md
-- name: 'Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation'
-  href: collect-data-microsoft-azure-automation-case.md
 - name: Problémy s výkonem virtuálních počítačů
   href: performance-diagnostics.md
 - name: Řešení obecných problémů s výkonem virtuálního počítače Azure se systémem Linux nebo Windows

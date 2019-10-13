@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679493"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300915"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Kurz: nasazení nástroje pro správu
 
@@ -26,6 +26,12 @@ Nástroj pro správu poskytuje uživatelské rozhraní (UI) pro správu prostře
 Vzhledem k tomu, že aplikace vyžaduje souhlas s používáním virtuálního klienta Windows, tento nástroj nepodporuje scénáře B2B (Business-to-Business). Každé předplatné tenanta Azure Active Directory (AAD) bude potřebovat vlastní samostatné nasazení nástroje pro správu.
 
 Tento nástroj pro správu je ukázka. Microsoft bude poskytovat důležité aktualizace zabezpečení a kvality. [Zdrojový kód je k dispozici na GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Zákazníkům a partnerům doporučujeme přizpůsobit nástroj tak, aby vyhovoval jejich obchodním potřebám.
+
+Pro následující prohlížeče jsou kompatibilní s nástrojem pro správu:
+- Google Chrome 68 nebo novější
+- Microsoft Edge 40,15063 nebo novější
+- Mozilla Firefox 52,0 nebo novější
+- Safari 10 nebo novější (jenom macOS)
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co potřebujete ke spuštění šablony Azure Resource Manager
 

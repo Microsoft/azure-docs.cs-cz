@@ -1,5 +1,5 @@
 ---
-title: Azure na základě role Access Control (RBAC) pro řízení přístupových práv k vytváření a správě žádostí o podporu | Microsoft Docs
+title: Řízení přístupu k vytváření žádostí o podporu v Azure
 description: Azure na základě rolí Access Control (RBAC) pro řízení přístupových práv k vytváření a správě žádostí o podporu
 author: ganganarayanan
 ms.author: gangan
@@ -7,14 +7,18 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248835"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299255"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure na základě rolí Access Control (RBAC) pro řízení přístupových práv k vytváření a správě žádostí o podporu
+
+> [!IMPORTANT]
+> Tento ruční přístup k řízení přístupových práv k žádosti o podporu v Azure byl nahrazen integrovanou rolí. Další informace najdete v tématu [Podpora – Přispěvatel žádostí](../role-based-access-control/built-in-roles.md#support-request-contributor). 
 
 Správa [na Access Control základě rolí (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) pro Azure umožňuje jemně odstupňovanou správu přístupu.
 Support request vytváření v Azure Portal [Portal.Azure.com](https://portal.azure.com)využívá model RBAC Azure k definování, kdo může vytvářet a spravovat žádosti o podporu.

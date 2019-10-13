@@ -1,19 +1,18 @@
 ---
-title: Kurz – přidání ukázkového modelu k serveru Azure Analysis Services | Dokumentace Microsoftu
+title: Kurz – přidání ukázkového modelu do serveru Azure Analysis Services | Microsoft Docs
 description: V této lekci kurzu zjistíte, jak přidat ukázkový model do služby Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a9721b05fbd478d108f06c36017ee444f721d28
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61026230"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298689"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -63,17 +62,17 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 
 2. Do pole **Připojit k serveru** vložte název serveru, v poli **Ověření** zvolte **Active Directory – univerzální s podporou vícefaktorového ověřování**, zadejte své uživatelské jméno a klikněte na **Připojit**.
 
-    ![Přihlášení](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Přihlásit se](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. V **Průzkumníku objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
 
     ![Odstranění ukázkové databáze](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 V tomto kurzu jste se naučili, jak na server přidat základní ukázkový model. Teď, když máte modelovou databázi, se k ní můžete připojit z SQL Server Management Studia a přidat uživatelské role. Pokud chcete vědět víc, pokračujte dalším kurzem.
 
 > [!div class="nextstepaction"]
-> [Kurz: Konfigurace role serveru správce a uživatele](analysis-services-database-users.md)
+> [Kurz: Konfigurace správce serveru a uživatelských rolí](analysis-services-database-users.md)
 
 

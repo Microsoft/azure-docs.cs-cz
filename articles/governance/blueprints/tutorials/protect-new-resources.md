@@ -1,17 +1,17 @@
 ---
-title: Kurz – ochrana nových prostředků pomocí zámků prostředků podrobného plánu
+title: Ochrana nových prostředků pomocí zámků podrobného plánu
 description: V tomto kurzu se naučíte používat možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978145"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297011"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 

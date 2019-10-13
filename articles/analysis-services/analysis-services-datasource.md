@@ -2,18 +2,17 @@
 title: Zdroje dat podporované v Azure Analysis Services | Microsoft Docs
 description: Popisuje zdroje dat podporované pro datové modely v Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993389"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298636"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -25,7 +24,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Ano      |    Ano      |
 |Azure SQL Data Warehouse     |   Ano      |   Ano       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
+|Blob Storage Azure<sup>[1](#tab1400a)</sup>     |   Ano       |    Ne      |
 |Table Storage Azure<sup>[1](#tab1400a)</sup>    |   Ano       |    Ne      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ano        |  Ne        |
 |Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>; <sup>[4](#gen2)</sup>      |   Ano       |    Ne      |
@@ -39,7 +38,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 <a name="gen2">4</a> adls Gen2 v tuto chvíli není podporovaná.
 
 
-**Zprostředkovatele**   
+@No__t **zprostředkovatele**-1  
 Modely v paměti a DirectQuery, které se připojují ke zdrojům dat Azure, používají .NET Framework Zprostředkovatel dat SQL Server.
 
 ## <a name="other-data-sources"></a>Další zdroje dat
@@ -51,7 +50,7 @@ Připojení k místním zdrojům dat z a Azure jako server vyžaduje místní br
 |Zdroj dat | Zprostředkovatel v paměti | Zprostředkovatel DirectQuery |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB Provider for SQL Server .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
-| SQL Server Data Warehouse |SQL Server Native Client 11,0, Microsoft OLE DB Provider for SQL Server .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
+| SQL Server datový sklad |SQL Server Native Client 11,0, Microsoft OLE DB Provider for SQL Server .NET Framework Zprostředkovatel dat pro SQL Server | .NET Framework Zprostředkovatel dat SQL Server |
 | Oracle | Poskytovatel OLE DB pro Oracle, Oracle Zprostředkovatel dat pro .NET |Oracle Zprostředkovatel dat pro .NET |
 | Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Zprostředkovatel dat pro .NET |Zprostředkovatel dat Teradata pro .NET |
 | | | |
@@ -72,7 +71,7 @@ Připojení k místním zdrojům dat z a Azure jako server vyžaduje místní br
 |IBM Informix<sup>[1](#tab1400b)</sup> (beta verze) |
 |Dokument JSON<sup>[1](#tab1400b)</sup>     |  
 |Řádky z binárního souboru<sup>[1](#tab1400b)</sup>     | 
-|MySQL Database     | 
+|Databáze MySQL     | 
 |Kanál OData<sup>[1](#tab1400b)</sup>     |  
 |Dotaz ODBC     | 
 |OLE DB     |   
@@ -92,15 +91,15 @@ Připojení k místním zdrojům dat z a Azure jako server vyžaduje místní br
 
 ## <a name="specifying-a-different-provider"></a>Určení jiného zprostředkovatele
 
-Datové modely v Azure Analysis Services mohou vyžadovat různé zprostředkovatele dat při připojování k určitým zdrojům dat. V některých případech mohou být v tabulkových modelech připojujících se ke zdrojům dat pomocí nativních zprostředkovatelů, jako je například SQL Server Native Client (SQLNCLI11), vrácena chyba. Pokud používáte jiné nativní zprostředkovatele než SQLOLEDB, může se zobrazit chybová zpráva: **Zprostředkovatel SQLNCLI 11.1 není zaregistrován**. Nebo, pokud máte model DirectQuery připojující se k místním zdrojům dat a používáte nativní zprostředkovatele, může se zobrazit chybová zpráva: **Při vytváření sady řádků OLE DB došlo k chybě. Nesprávná syntaxe u LIMITu**
+Datové modely v Azure Analysis Services mohou vyžadovat různé zprostředkovatele dat při připojování k určitým zdrojům dat. V některých případech mohou být v tabulkových modelech připojujících se ke zdrojům dat pomocí nativních zprostředkovatelů, jako je například SQL Server Native Client (SQLNCLI11), vrácena chyba. Pokud používáte nativní zprostředkovatele jiné než SQLOLEDB, může se zobrazit chybová zpráva: **poskytovatel ' sqlncli 11.1 ' není zaregistrován**. Nebo, pokud máte model DirectQuery připojující se k místním zdrojům dat a používáte nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření OLE DB sady řádků. Nesprávná syntaxe u LIMITu**
 
 Při migraci místního SQL Server Analysis Services tabulkového modelu do Azure Analysis Services může být nutné změnit poskytovatele.
 
 **Určení poskytovatele**
 
-1. V SSDT >**datové zdroje** **Průzkumníka** > tabulkových modelů klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
+1. V **SSDT > @no__t**-1**zdroje dat**-1, klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
 2. V části **Upravit připojení**kliknutím na **Upřesnit** otevřete okno Vlastnosti pro upřesnění.
-3. V části **nastavit pokročilé** > **poskytovatele**vlastností vyberte příslušného poskytovatele.
+3. V části **nastavit upřesňující vlastnosti** > **poskytovatelé**vyberte příslušného poskytovatele.
 
 ## <a name="impersonation"></a>Zosobnění
 V některých případech může být nutné zadat jiný účet zosobnění. Účet zosobnění lze zadat v aplikaci Visual Studio (SSDT) nebo v SSMS.
@@ -118,7 +117,7 @@ Pro cloudové zdroje dat:
 
 Pro tabelární modely na úrovni kompatibility 1400 a vyšší úrovně kompatibility Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 a SharePointový seznam podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Místní brána](analysis-services-gateway.md)   
 [Správa serveru](analysis-services-manage.md)   
 

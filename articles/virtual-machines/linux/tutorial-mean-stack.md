@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081525"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300799"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření zásobníku MongoDB, Express, AngularJS a Node. js (střední) na virtuálním počítači se systémem Linux v Azure
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure
 
 V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure. Stack MEAN, který vytvoříte, umožňuje přidávání, odstraňování a výpis knih v databázi. Získáte informace o těchto tématech:
 
@@ -34,9 +34,9 @@ V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a
 > * Přístup k trasám pomocí AngularJS
 > * Spuštění aplikace
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Vytvoření virtuálního počítače s Linuxem
@@ -323,11 +323,11 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
+2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http: \//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
 
     ![Záznam o knize](media/tutorial-mean/meanstack-init.png)
 
-3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Příklad:
+3. Do textových polí zadejte data a klikněte na **Add** (Přidat). Například:
 
     ![Přidání záznamu o knize](media/tutorial-mean/meanstack-add.png)
 
@@ -337,7 +337,7 @@ sudo apt-get install -y nodejs
 
 5. Můžete kliknout na **Delete** (Odstranit) a odstranit záznam o knize z databáze.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pomocí stacku MEAN na virtuálním počítači s Linuxem vytvořili webovou aplikaci, která uchovává záznamy o knihách. Naučili jste se tyto postupy:
 

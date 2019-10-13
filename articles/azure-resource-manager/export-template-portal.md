@@ -4,14 +4,14 @@ description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Ma
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959704"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300372"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -48,39 +48,36 @@ Exportujte šablonu před nasazením nebo z historie, pokud:
 * Chcete snadno použít šablonu.
 * Nemusíte zahrnovat změny, které jste provedli po původním nasazení.
 
-## <a name="export-template-from-resource-group"></a>Exportovat šablonu ze skupiny prostředků
+## <a name="export-template-from-a-resource-group"></a>Exportovat šablonu ze skupiny prostředků
 
 Export jednoho nebo více prostředků ze skupiny prostředků:
 
 1. Vyberte skupinu prostředků obsahující prostředky, které chcete exportovat.
 
-1. Pokud chcete exportovat všechny prostředky ve skupině prostředků, vyberte vše a pak **Exportujte šablonu**. Možnost **Exportovat šablonu** se aktivuje jenom po výběru alespoň jednoho prostředku.
+1. Vyberte jeden nebo více prostředků zaškrtnutím příslušných políček.  Chcete-li vybrat vše, zaškrtněte políčko vlevo od **názvu**. Položka nabídky **Exportovat šablonu** se aktivuje jenom po výběru alespoň jednoho prostředku.
 
    ![Exportovat všechny prostředky](./media/export-template-portal/select-all-resources.png)
 
-1. Chcete-li vybrat konkrétní prostředky pro export, zaškrtněte políčka vedle těchto prostředků. Pak vyberte **Exportovat šablonu**.
+    Na snímku obrazovky je vybrán pouze účet úložiště.
+1. Vyberte **Exportovat šablonu**.
 
-   ![Vybrat prostředky k exportu](./media/export-template-portal/select-resources.png)
-
-1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout.
+1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit.
 
    ![Zobrazit šablonu](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Exportovat šablonu z prostředku
+## <a name="export-template-from-a-resource"></a>Exportovat šablonu z prostředku
 
 Export jednoho prostředku:
 
 1. Vyberte skupinu prostředků obsahující prostředek, který chcete exportovat.
 
-1. Vyberte prostředek, který chcete exportovat.
-
-   ![Vybrat prostředek](./media/export-template-portal/select-link-resource.png)
+1. Vyberte prostředek, který chcete exportovat, a otevřete prostředek.
 
 1. V případě tohoto prostředku v levém podokně vyberte **Exportovat šablonu** .
 
    ![Exportovat prostředek](./media/export-template-portal/export-single-resource.png)
 
-1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout. Šablona obsahuje pouze jeden prostředek.
+1. Zobrazí se vyexportovaná šablona a je možné ji stáhnout a nasadit. Šablona obsahuje pouze jeden prostředek.
 
 ## <a name="export-template-before-deployment"></a>Exportovat šablonu před nasazením
 
@@ -90,11 +87,10 @@ Export jednoho prostředku:
 
 1. Po úspěšném ověření, ale před spuštěním nasazení vyberte **Stáhnout šablonu pro automatizaci**.
 
-   ![Stáhnout šablonu](./media/export-template-portal/download-before-deployment.png)
+   ![Stažení šablony](./media/export-template-portal/download-before-deployment.png)
 
-1. Šablona se zobrazí a je k dispozici ke stažení.
+1. Šablona se zobrazí a je k dispozici pro stažení a nasazení.
 
-   ![Zobrazit šablonu](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Exportovat šablonu po nasazení
 
@@ -112,7 +108,7 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 1. Vyberte **šablonu**. Zobrazí se Šablona použitá pro toto nasazení a je k dispozici ke stažení.
 
-   ![Vybrat šablonu](./media/export-template-portal/show-template-from-history.png)
+   ![Vyberte šablonu](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Další kroky
 

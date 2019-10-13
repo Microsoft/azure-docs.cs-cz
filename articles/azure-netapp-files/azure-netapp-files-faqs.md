@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299618"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298482"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -50,7 +50,7 @@ Ano, pokud vytvoříte požadované položky DNS, můžete. Azure NetApp Files p
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Je možné šifrovat síťový provoz mezi virtuálním počítačem Azure a úložištěm?
 
-Datové přenosy (provoz z klienta NFSv3 nebo SMBv3 do Azure NetApp Files svazků) nejsou šifrované. Provoz z virtuálního počítače Azure (s operačním systémem souborů NFS nebo klienta SMB) ale Azure NetApp Files je tak bezpečný jako jakýkoli jiný provoz Azure-VM-to-VM. Tento provoz je místní pro síť Azure Data Center. 
+Přenosy dat (přenosy z klienta NFSv3, NFSv 4.1 nebo SMBv3 do Azure NetApp Files) nejsou šifrované. Provoz z virtuálního počítače Azure (s operačním systémem souborů NFS nebo klienta SMB) ale Azure NetApp Files je tak bezpečný jako jakýkoli jiný provoz Azure-VM-to-VM. Tento provoz je místní pro síť Azure Data Center. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Je možné úložiště v klidovém stavu zašifrovat?
 
@@ -103,7 +103,7 @@ Azure NetApp Files poskytuje metriky výkonu svazku. K monitorování metrik vyu
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Chci automaticky připojen svazek, když se spustí nebo restartuje virtuální počítač Azure.  Návody nakonfigurovat můj hostitel pro trvalé svazky NFS?
 
-Pokud se pro svazek NFS automaticky připojí při spuštění nebo restartování virtuálního počítače, přidejte položku do `/etc/fstab` souboru na hostiteli. 
+Pokud se pro svazek NFS automaticky připojí při spuštění nebo restartování virtuálního počítače, přidejte položku do souboru `/etc/fstab` na hostiteli. 
 
 Příklad: `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -120,7 +120,11 @@ Velikost svazku nahlášená v DF je maximální velikost, na kterou může Azur
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Jakou verzi systému souborů NFS podporuje Azure NetApp Files?
 
-Azure NetApp Files aktuálně podporuje NFSv3.
+Azure NetApp Files podporuje NFSv3 a NFSv 4.1. Svazek můžete vytvořit pomocí buď verze systému souborů NFS. 
+
+> [!IMPORTANT] 
+> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání do seznamu povolených žádostí, odešlete žádost o <anffeedback@microsoft.com>. 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>Návody povolit root vtěsnání?
 
@@ -140,7 +144,7 @@ Azure NetApp Files aktuálně podporuje jedno připojení Active Directory pro k
 
 Jsou podporovány jak [služby Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) , tak [Active Directory Domain Services (služba AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Pomocí Azure NetApp Files můžete použít existující řadiče domény služby Active Directory. Řadiče domény se můžou nacházet v Azure jako virtuální počítače nebo místně prostřednictvím sítě VPN ExpressRoute nebo S2S. Azure NetApp Files v tuto chvíli nepodporuje službu AD JOIN pro [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers` , když pro svůj účet NetApp nakonfigurujete službu Active Directory.
+Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers`, když konfigurujete službu Active Directory pro svůj účet NetApp.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Jaké verze Windows serveru Active Directory se podporují?
 

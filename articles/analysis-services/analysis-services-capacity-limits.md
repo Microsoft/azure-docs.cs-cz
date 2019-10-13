@@ -2,18 +2,17 @@
 title: Azure Analysis Services omezení prostředků a objektů | Microsoft Docs
 description: Popisuje Azure Analysis Services omezení prostředků a objektů.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9fe43602c66af72357e16822ee9d4b5a741d3f86
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997588"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298700"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services omezení prostředků a objektů
 
@@ -27,11 +26,11 @@ Omezení QPU a paměti pro úrovně Developer, Basic a Standard najdete na [str�
 
 Tato omezení jsou teoretická. Výkon se sníží na nižších číslech.
 
-|Object|Maximální velikost/čísla|  
+|Objekt|Maximální velikost/čísla|  
 |------------|----------------------------|  
-|Databáze v instanci|16,000|  
-|Kombinovaný počet tabulek a sloupců v databázi|16,000|  
-|Řádky v tabulce|Unlimited<br /><br /> **Upozornění** Omezením, že žádný jeden sloupec v tabulce nemůže mít více než 1 999 999 997 jedinečných hodnot.|  
+|Databáze v instanci|16 000|  
+|Kombinovaný počet tabulek a sloupců v databázi|16 000|  
+|Řádky v tabulce|Bez omezení<br /><br /> **Upozornění:** Omezením, že žádný jeden sloupec v tabulce nemůže mít více než 1 999 999 997 jedinečných hodnot.|  
 |Hierarchie v tabulce|15 999|  
 |Úrovně v hierarchii|15 999|  
 |Relace|8 000|  

@@ -2,18 +2,17 @@
 title: Kurz – nakonfigurujte správce Azure Analysis Services a role uživatelů | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat role Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932217"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294430"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -28,7 +27,7 @@ ms.locfileid: "68932217"
 
 Další informace o zabezpečení uživatelů ve službě Azure Analysis Services najdete v článku o [ověřování a oprávněních uživatelů](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ve vašem předplatném je služba Azure Active Directory.
 - Ve vašem předplatném je vytvořený [server Azure Analysis Services](../analysis-services-create-server.md).
@@ -53,7 +52,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
-    ![Připojit](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Propojení](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. Do pole **Název serveru** v dialogovém okně **Připojit k serveru** vložte název serveru zkopírovaný z portálu. V poli **Ověřování** zvolte **Active Directory Universal s podporou vícefaktorového ověřování**, zadejte svůj uživatelský účet a klikněte na **Připojit**.
    
@@ -140,9 +139,9 @@ V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/b
 Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Pomocí možností **Vlastnosti role** > **Členství** odeberte uživatelské účty, nebo klikněte pravým tlačítkem na roli a pak klikněte na **Odstranit**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak se připojit k serveru Azure AD a prozkoumat ukázkové modelové databáze adventureworks a vlastnosti v SQL Server Management Studiu. Zároveň jste se naučili přidat uživatele nebo skupiny do existujících a nových rolí pomocí SQL Server Management Studia a skriptů TMSL. Teď, když máte pro server a ukázkovou modelovou databázi nakonfigurovaná uživatelská oprávnění, můžete se k nim spolu s dalšími uživateli připojit pomocí klientských aplikací, jako je Power BI. Pokud chcete vědět víc, pokračujte dalším kurzem. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Připojení pomocí Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Kurz: Připojení pomocí Power BI Desktopu](analysis-services-tutorial-pbid.md)
 

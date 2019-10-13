@@ -6,15 +6,15 @@ keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934933"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300941"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené kodéry živého streamování
 
@@ -37,6 +37,7 @@ Služba Media Services doporučuje používat jeden z následujících kodérů 
 > Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -73,9 +74,9 @@ Aby bylo možné přehrávat obsah, musí být k dispozici zvukový a obrazový 
 
 ### <a name="configuration-tips"></a>Tipy pro konfiguraci
 
-- Kdykoli je to možné, použijte standardní kabelové internetové připojení.
+- Pokud je to možné, použijte Hardwired připojení k Internetu.
 - Při určování požadavků na šířku pásma Zdvojnásobte přenosové rychlosti streamování. I když není povinné, toto jednoduché pravidlo pomáhá zmírnit dopad zahlcení sítě.
-- Při použití softwarových kodérů uzavřete všechny nepotřebné programy.
+- Při používání softwarových kodérů zavřete všechny nepotřebné programy.
 - Změna konfigurace kodéru po zahájení práce má na událost negativní vliv. Změny konfigurace můžou způsobit, že dojde k nestabilitě události. 
 - Ujistěte se, že máte k nastavení události dostatek času. Pro vysoce škálovatelné události doporučujeme spustit nastavení hodinu před událostí.
 
@@ -127,8 +128,8 @@ Použijte stejný postup jako v rámci [předávacího ověřování pro živé 
 
 ### <a name="email-your-recorded-settings"></a>Poslat zaznamenaná nastavení e-mailem
 
-Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
+Nakonec odešlete e-mailem zaznamenaná nastavení a parametry živého archivu do Azure Media Services na amshelp@microsoft.com jako oznámení, že prošly všechny kontroly pro vlastní ověření. Také zahrňte kontaktní informace pro jakékoliv následné zprávy. Můžete se obrátit na tým Azure Media Services s případnými dotazy týkajícími se tohoto procesu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Živé streamování s Media Services V3](live-streaming-overview.md)

@@ -7,28 +7,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176856"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298323"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 V tomto článku se dozvíte o různých výpočetních prostředích, která můžete použít ke zpracování nebo transformaci dat. Poskytuje taky podrobnosti o různých konfiguracích (na vyžádání a přineste si vlastní) podporované Data Factory při konfiguraci propojených služeb, které propojuje tato výpočetní prostředí s objektem pro vytváření dat Azure.
 
 Následující tabulka uvádí seznam výpočetních prostředí podporovaných Data Factory a aktivit, které na nich můžou běžet. 
 
-| Výpočetní prostředí                                          | aktivity                                                   |
+| Výpočetní prostředí                                          | activities                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Cluster HDInsight na vyžádání](#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](#azure-hdinsight-linked-service) | [Podregistr](transform-data-using-hadoop-hive.md), [prase](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [streamování Hadoop](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Uživatelská](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning aktivity: dávkové provádění a aktualizace prostředku](transform-data-using-machine-learning.md) |
-| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) |
+| [Služba Azure Machine Learning](#azure-machine-learning-service-linked-service) | [Azure Machine Learning spustit kanál](transform-data-machine-learning-service.md) |
+| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Uložená procedura](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Poznámkový blok](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 
@@ -53,7 +54,7 @@ Všimněte si následujících **důležitých** bodů pro propojenou službu HD
 > [!IMPORTANT]
 > Zřizování clusteru Azure HDInsight na vyžádání obvykle trvá **20 minut** nebo déle.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující JSON definuje propojenou službu HDInsight na vyžádání v systému Linux. Služba Data Factory pro zpracování požadované aktivity automaticky vytvoří cluster HDInsight se **systémem Linux** . 
 
 ```json
@@ -89,22 +90,22 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 ```
 
 > [!IMPORTANT]
-> Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali ve formátu JSON (**linkedServiceName**). HDInsight při odstranění clusteru tento kontejner neodstraní. Toto chování je záměrné. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat řez, pokud neexistuje stávající**TimeToLive**(Live cluster) a po dokončení zpracování se odstraní. 
+> Cluster HDInsight vytvoří **výchozí kontejner** ve službě Blob Storage, kterou jste určili v kódu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat určitý řez, pokud neexistuje aktivní cluster (**timeToLive**), a po dokončení zpracování se zase odstraní. 
 >
-> V případě více spuštění aktivit se v úložišti objektů BLOB v Azure zobrazuje spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Pomocí nástrojů, jako je [Microsoft Průzkumník služby Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
+> V případě více spuštění aktivit se v úložišti objektů BLOB v Azure zobrazuje spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
 >
 > 
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost                     | Popis                              | Požadováno |
+| Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
-| – typ                         | Vlastnost Type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
+| type                         | Vlastnost Type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
 | clusterSize                  | Počet uzlů pracovních procesů nebo datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly spolu s počtem pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra, takže cluster se čtyřmi pracovními uzly má 24 jader (4 @ no__t-04 = 16 jader pro pracovní uzly a navíc 2 @ no__t-14 = 8 jader pro hlavní uzly). Podrobnosti najdete v tématu [Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) . | Ano      |
-| linkedServiceName            | Azure Storage propojená služba, kterou má cluster na vyžádání použít k ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet Azure Storage. Azure HDInsight má omezení celkového počtu jader, které můžete použít v každé oblasti Azure, kterou podporuje. Ujistěte se, že je v oblasti Azure dostatek základních kvót, aby splňovaly požadované clusterSize. Podrobnosti najdete [v tématu Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) .<p>V současné době nemůžete vytvořit cluster HDInsight na vyžádání, který jako úložiště používá Azure Data Lake Store. Pokud chcete uložit výsledná data ze zpracování HDInsight ve Azure Data Lake Store, pomocí aktivity kopírování zkopírujte data z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
+| linkedServiceName            | Azure Storage propojená služba, kterou má cluster na vyžádání použít k ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet Azure Storage. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že je v oblasti Azure dostatek základních kvót, aby splňovaly požadované clusterSize. Podrobnosti najdete [v tématu Nastavení clusterů v HDInsight se systémem Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) .<p>V současné době nemůžete vytvořit cluster HDInsight na vyžádání, který jako úložiště používá Azure Data Lake Store. Pokud chcete uložit výsledná data ze zpracování HDInsight ve Azure Data Lake Store, pomocí aktivity kopírování zkopírujte data z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
 | clusterResourceGroup         | Cluster HDInsight se vytvoří v této skupině prostředků. | Ano      |
 | TimeToLive                   | Povolený čas nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane cluster HDInsight na vyžádání aktivní po dokončení spuštění aktivity, pokud v clusteru nejsou žádné další aktivní úlohy. Minimální povolená hodnota je 5 minut (00:05:00).<br/><br/>Pokud například spuštění aktivity trvá 6 minut a TimeToLive je nastaveno na 5 minut, zůstane cluster aktivní po dobu 5 minut po 6 minutách zpracování spuštění aktivity. Pokud je spuštěný jiný běh aktivity s oknem o 6 minut, zpracuje ho stejný cluster.<br/><br/>Vytvoření clusteru HDInsight na vyžádání je náročná operace (může chvíli trvat), proto toto nastavení použijte, pokud chcete zlepšit výkon objektu pro vytváření dat, a to tak, že znovu použijete cluster HDInsight na vyžádání.<br/><br/>Pokud nastavíte hodnotu TimeToLive na 0, cluster se odstraní hned po dokončení spuštění aktivity. Pokud nastavíte vysokou hodnotu, cluster může zůstat nečinný, abyste se mohli přihlásit k nějakému účelu řešení potíží, ale může to mít za následek vysoké náklady. Proto je důležité nastavit odpovídající hodnotu podle svých potřeb.<br/><br/>Pokud je hodnota vlastnosti TimeToLive správně nastavená, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
 | clusterType                  | Typ clusteru HDInsight, který se má vytvořit Povolené hodnoty jsou Hadoop a Spark. Pokud není zadaný, použije se výchozí hodnota Hadoop. Cluster s povoleným Balíček zabezpečení podniku nejde vytvořit na vyžádání, místo toho použijte [existující cluster nebo využijte vlastní výpočetní](#azure-hdinsight-linked-service)prostředky. | Ne       |
-| verze                      | Verze clusteru HDInsight. Pokud není zadaný, použije se aktuálně definovaná výchozí verze HDInsight. | Ne       |
+| version                      | Verze clusteru HDInsight. Pokud není zadaný, použije se aktuálně definovaná výchozí verze HDInsight. | Ne       |
 | hostSubscriptionId           | ID předplatného Azure, které se používá k vytvoření clusteru HDInsight. Pokud není zadaný, použije se ID předplatného vašeho přihlašovacího kontextu Azure. | Ne       |
 | clusterNamePrefix           | Předpona názvu clusteru HDI, na konci názvu clusteru se automaticky přidá časové razítko.| Ne       |
 | sparkVersion                 | Verze Sparku, pokud je typ clusteru "Spark" | Ne       |
@@ -136,7 +137,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 }]
 ```
 
-### <a name="service-principal-authentication"></a>Ověřování instančního objektu
+### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
 Propojená služba HDInsight na vyžádání vyžaduje k vytvoření clusterů HDInsight vaším jménem ověřování instančního objektu. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **přispěvatele** předplatného nebo skupiny prostředků, ve které se cluster HDInsight vytvoří. Podrobný postup najdete v tématu [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
@@ -146,17 +147,17 @@ Propojená služba HDInsight na vyžádání vyžaduje k vytvoření clusterů H
 
 Použijte ověřování instančního objektu zadáním následujících vlastností:
 
-| Vlastnost                | Popis                              | Požadováno |
+| Vlastnost                | Popis                              | Požaduje se |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Zadejte ID klienta aplikace.     | Ano      |
 | **servicePrincipalKey** | Zadejte klíč aplikace.           | Ano      |
 | **tenant**              | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano      |
 
-### <a name="advanced-properties"></a>Upřesnit vlastnosti
+### <a name="advanced-properties"></a>Rozšířené vlastnosti
 
 Pro podrobnou konfiguraci clusteru HDInsight na vyžádání můžete také zadat následující vlastnosti.
 
-| Vlastnost               | Popis                              | Požadováno |
+| Vlastnost               | Popis                              | Požaduje se |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Určuje základní konfigurační parametry (jako v Core-site. XML), které se mají vytvořit v clusteru HDInsight. | Ne       |
 | hBaseConfiguration     | Určuje konfigurační parametry HBA (HBase-site. XML) pro cluster HDInsight. | Ne       |
@@ -224,7 +225,7 @@ Pro podrobnou konfiguraci clusteru HDInsight na vyžádání můžete také zada
 ### <a name="node-sizes"></a>Velikosti uzlů
 Velikosti uzlů Head, data a Zookeeper můžete zadat pomocí následujících vlastností: 
 
-| Vlastnost          | Popis                              | Požadováno |
+| Vlastnost          | Popis                              | Požaduje se |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Určuje velikost hlavního uzlu. Výchozí hodnota je: Standard_D3. Podrobnosti najdete v části **Určení velikosti uzlů** . | Ne       |
 | dataNodeSize      | Určuje velikost datového uzlu. Výchozí hodnota je: Standard_D3. | Ne       |
@@ -240,7 +241,7 @@ Pokud chcete vytvořit hlavní uzly velikosti D4 a pracovní uzly, zadejte **Sta
 "dataNodeSize": "Standard_D4",
 ```
 
-Pokud pro tyto vlastnosti zadáte chybnou hodnotu, může se zobrazit následující **Chyba:** nepovedlo se vytvořit cluster. Výjimka: operaci vytvoření clusteru nelze dokončit. Operace se nezdařila s kódem "400". Cluster zbývá za stav: Error (chyba). Zpráva: ' PreClusterCreationValidationFailure '. Když se zobrazí tato chyba, ujistěte se, že používáte **rutinu & název rozhraní API** z tabulky ve [velikosti Virtual Machines](../virtual-machines/linux/sizes.md) článku.        
+Pokud pro tyto vlastnosti zadáte chybnou hodnotu, může se zobrazit následující **Chyba:** nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: Chyba. Zpráva: ' PreClusterCreationValidationFailure '. Když se zobrazí tato chyba, ujistěte se, že používáte **rutinu & název rozhraní API** z tabulky ve [velikosti Virtual Machines](../virtual-machines/linux/sizes.md) článku.        
 
 ## <a name="bring-your-own-compute-environment"></a>Přineste si vlastní výpočetní prostředí
 V tomto typu konfigurace můžou uživatelé zaregistrovat už existující výpočetní prostředí jako propojenou službu v Data Factory. Výpočetní prostředí spravuje uživatel a služba Data Factory ji používá ke spuštění aktivit.
@@ -256,7 +257,7 @@ Tento typ konfigurace se podporuje pro následující výpočetní prostředí:
 ## <a name="azure-hdinsight-linked-service"></a>Propojená služba Azure HDInsight
 Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastní cluster HDInsight s Data Factory.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -284,12 +285,12 @@ Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastn�
 ```
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost          | Popis                                                  | Požadováno |
+| Vlastnost          | Popis                                                  | Požaduje se |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| – typ              | Vlastnost Type by měla být nastavená na **HDInsight**.            | Ano      |
+| type              | Vlastnost Type by měla být nastavená na **HDInsight**.            | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.                            | Ano      |
-| jmen          | Zadejte jméno uživatele, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
-| zadáno          | Zadejte heslo pro uživatelský účet.                       | Ano      |
+| uživatelské jméno          | Zadejte jméno uživatele, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
+| heslo          | Zadejte heslo pro uživatelský účet.                       | Ano      |
 | linkedServiceName | Název propojené služby Azure Storage, která odkazuje na úložiště objektů BLOB v Azure používané clusterem HDInsight. <p>V současné době nelze pro tuto vlastnost zadat propojenou službu Azure Data Lake Store. Pokud má cluster HDInsight přístup k Data Lake Store, můžete k datům v Azure Data Lake Store přistupovat ze skriptů z podregistru nebo vepřového masa. </p> | Ano      |
 | isEspEnabled      | Pokud je cluster HDInsight [balíček zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) povolený, zadejte*hodnotu true*. Výchozí hodnota je*false (NEPRAVDA*). | Ne       |
 | connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. <br />Pro cluster HDInsight s povoleným Balíček zabezpečení podniku (ESP) se používá modul runtime integrace v místním prostředí, který má na clusteru řadu pohledů, nebo by se měl nasadit do stejného Virtual Network jako cluster s protokolem ESP HDInsight. | Ne       |
@@ -314,7 +315,7 @@ Pokud Azure Batch službu nezačínáte, podívejte se na následující témata
 * Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v tématu [použití PowerShellu ke správě účtu Azure Batch](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -344,9 +345,9 @@ Pokud Azure Batch službu nezačínáte, podívejte se na následující témata
 
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost          | Popis                              | Požadováno |
+| Vlastnost          | Popis                              | Požaduje se |
 | ----------------- | ---------------------------------------- | -------- |
-| – typ              | Vlastnost Type by měla být nastavená na **AzureBatch**. | Ano      |
+| type              | Vlastnost Type by měla být nastavená na **AzureBatch**. | Ano      |
 | accountName       | Název Azure Batch účtu         | Ano      |
 | accessKey         | Přístupový klíč pro účet Azure Batch  | Ano      |
 | batchUri          | Adresa URL účtu Azure Batch ve formátu https://*batchaccountname. region*. batch.Azure.com. | Ano      |
@@ -354,10 +355,10 @@ Pokud Azure Batch službu nezačínáte, podívejte se na následující témata
 | linkedServiceName | Název propojené služby Azure Storage přidružené k této Azure Batch propojené službě. Tato propojená služba se používá pro pracovní soubory potřebné ke spuštění aktivity. | Ano      |
 | connectVia        | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne       |
 
-## <a name="azure-machine-learning-linked-service"></a>Propojená služba Azure Machine Learning
-Vytvoříte propojenou službu Azure Machine Learning k registraci koncového bodu Machine Learning dávkového vyhodnocování do objektu pro vytváření dat.
+## <a name="azure-machine-learning-studio-linked-service"></a>Propojená služba Azure Machine Learning Studio
+Vytvoříte propojenou službu Azure Machine Learning Studio k registraci koncového bodu Machine Learning dávkového vyhodnocování do objektu pro vytváření dat.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -380,21 +381,65 @@ Vytvoříte propojenou službu Azure Machine Learning k registraci koncového bo
 ```
 
 ### <a name="properties"></a>Vlastnosti
-| Vlastnost               | Popis                              | Požadováno                                 |
+| Vlastnost               | Popis                              | Požaduje se                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Vlastnost Type by měla být nastavená na: **AzureML**. | Ano                                      |
 | mlEndpoint             | Adresa URL dávkového vyhodnocování                   | Ano                                      |
 | apiKey                 | Rozhraní API modelu publikovaného pracovního prostoru.     | Ano                                      |
-| updateResourceEndpoint | Adresa URL prostředku aktualizace pro koncový bod webové služby Azure ML, který se používá k aktualizaci prediktivní webové služby pomocí souboru trained model | Ne                                       |
+| updateResourceEndpoint | Adresa URL prostředku aktualizace pro koncový bod webové služby Azure Machine Learning, který se používá k aktualizaci prediktivní webové služby pomocí souboru trained model | Ne                                       |
 | servicePrincipalId     | Zadejte ID klienta aplikace.     | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | servicePrincipalKey    | Zadejte klíč aplikace.           | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | tenant                 | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Vyžaduje se, pokud je zadaný updateResourceEndpoint. |
 | connectVia             | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne                                       |
 
+## <a name="azure-machine-learning-service-linked-service"></a>Propojená služba Azure Machine Learning
+Vytvoříte propojenou službu Azure Machine Learning Service pro připojení pracovního prostoru služby Azure Machine Learning k datové továrně.
+
+> [!NOTE]
+> V současné době je pro propojenou službu Azure Machine Learning služby podporována pouze ověřování instančního objektu.
+
+### <a name="example"></a>Příklad:
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>Vlastnosti
+| Vlastnost               | Popis                              | Požaduje se                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| Typ                   | Vlastnost Type by měla být nastavená na: **AzureMLService**. | Ano                                      |
+| subscriptionId         | ID předplatného Azure              | Ano                                      |
+| resourceGroupName      | jméno | Ano                                      |
+| mlWorkspaceName        | Název pracovního prostoru služby Azure Machine Learning | Ano  |
+| servicePrincipalId     | Zadejte ID klienta aplikace.     | Ne |
+| servicePrincipalKey    | Zadejte klíč aplikace.           | Ne |
+| tenant                 | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Vyžaduje se, pokud je zadaný updateResourceEndpoint. | Ne |
+| connectVia             | Integration Runtime, která se má použít k odeslání aktivit do této propojené služby. Můžete použít Azure Integration Runtime nebo místní Integration Runtime. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne |    
+
 ## <a name="azure-data-lake-analytics-linked-service"></a>Propojená služba Azure Data Lake Analytics
 Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azure Data Lake Analytics výpočetní služby s objektem pro vytváření dat Azure. Aktivita Data Lake Analytics U-SQL v kanálu odkazuje na tuto propojenou službu. 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 ```json
 {
@@ -410,7 +455,7 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azur
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {
@@ -423,9 +468,9 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azur
 
 ### <a name="properties"></a>Vlastnosti
 
-| Vlastnost             | Popis                              | Požadováno                                 |
+| Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| – typ                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
+| type                 | Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
 | accountName          | Azure Data Lake Analytics název účtu.  | Ano                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics identifikátor URI.           | Ne                                       |
 | subscriptionId       | ID předplatného Azure                    | Ne                                       |
@@ -485,11 +530,11 @@ Můžete vytvořit **propojenou službu Azure Databricks** k registraci pracovn�
 
 ### <a name="properties"></a>Vlastnosti
 
-| Vlastnost             | Popis                              | Požadováno                                 |
+| Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | Název propojené služby               | Ano   |
-| – typ                 | Vlastnost Type by měla být nastavená na: **AzureDatabricks**. | Ano                                      |
-| doména               | Podle oblasti pracovního prostoru datacihly určete příslušné oblasti Azure. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
+| jméno                 | Název propojené služby               | Ano   |
+| type                 | Vlastnost Type by měla být nastavená na: **AzureDatabricks**. | Ano                                      |
+| Domain               | Podle oblasti pracovního prostoru datacihly určete příslušné oblasti Azure. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
 | accessToken          | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky, jak najít přístupový token, najdete [tady](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) .  | Ano                                       |
 | existingClusterId    | ID clusteru existujícího clusteru, ve kterém se mají spouštět všechny úlohy. Mělo by se jednat o již vytvořený interaktivní cluster. Pokud přestane reagovat, může být nutné cluster restartovat ručně. Datacihly navrhují spuštěné úlohy na nových clusterech kvůli větší spolehlivosti. ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > Interaktivní název clusteru – > značky konfigurace >. [Další podrobnosti](https://docs.databricks.com/user-guide/clusters/tags.html) | Ne 
 | instancePoolId    | ID fondu instancí existujícího fondu v pracovním prostoru datacihly  | Ne  |

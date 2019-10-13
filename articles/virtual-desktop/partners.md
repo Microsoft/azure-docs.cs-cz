@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937508"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300153"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
 V tomto článku jsou uvedeni partneři virtuálního klienta Windows.
 
-## <a name="citrix"></a>požádat
+## <a name="citrix"></a>Citrix
 
 ![Logo Citrix](./media/partners/citrix.png)
 
@@ -29,7 +29,7 @@ Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnik
 - [Přejít na web partnera](https://more.citrix.com/wvd).
 
 
-## <a name="vmware"></a>Hostiteli
+## <a name="vmware"></a>VMware
 
 ![Logo VMware](./media/partners/vmware.png)
 
@@ -62,6 +62,16 @@ Při použití s virtuálním počítačem s Windows poskytuje ControlUp další
 - [Podívejte se na stručné řešení připojení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Přejít na web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![Logo deviceTRUST](./media/partners/devicetrust.png)
+
+deviceTRUST je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který contextualizes podnikovým podnikem a umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na libovolném zařízení, a to prostřednictvím libovolné sítě. oddělení informací a ovládacích prvků, které potřebují ke splnění požadavků zásad správného řízení. 
+
+deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy. 
+
+- [Přejít na web partnera](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Lakeside software
 
 ![Logo Lakeside softwaru](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials rozšiřuje hodnotu virtuálního klienta Windows tím, ž
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Přejít na web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>Přihlašovací VSI
+
+![Logo VSI přihlašovacího jména](./media/partners/loginvsi.png)
+
+Přihlašovací VSI je poskytovatel služeb s přidanými virtuálními počítači s Windows a poskytuje software pro testování výkonu aplikace v prostředích virtuálních ploch Windows. Zákazníci, kteří přesouvá své místní obchodní služby na virtuální plochu Windows, používají přihlašovací VSI Enterprise Edition k vyhodnocení a údržbě optimálního výkonu, škálovatelnosti a dostupnosti Windows 10 Enterprise multi-session, Windows 10 Enterprise a Systém Windows 7 je povolený s jejich důležitými podnikovými aplikacemi.
+
+- [Přejít na web partnera](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Logo Nerdio](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje z�
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Přejít na web partnera](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![Logo PolicyPak](./media/partners/policypak.png)
+
+PolicyPak software je partner s virtuálními počítači s Windows, který provádí celkovou správu nastavení pro aplikace, stolní počítače, prohlížeče, Java a nastavení zabezpečení. PolicyPak zachovává dodržování předpisů pro stolní počítače, systém a zabezpečení. PolicyPak vylepšuje hodnotu virtuální plochy Windows přidáním sady součástí pro vylepšení předdefinované správy Windows. Pomocí stávající služby Active Directory Zásady skupiny a/nebo Windows Intune dodávejte nastavení PolicyPak a zvyšte schopnost správců spravovat jejich počítače s Windows 10. 
+
+Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místního správce a překonání výzev pro řízení uživatelských účtů, blokování ransomwarem, Správa více prohlížečů, Správa režimů podnikových a kompatibilních s Internet Explorerem, omezení počtu objektů zásad skupiny, Správa přidružení souborů Windows 10. Spravujte nabídku Start a hlavní panel Windows 10 a spravujte funkce Windows 10 a volitelné funkce.  
+
+- [Přejít na web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![Logo PrinterLogic](./media/partners/printerlogic.png)
+
+PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která umožňuje odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuální plochy Windows a Azure tím, že usnadňuje centrální správu a nasazování objektů tiskáren na všechny tiskárny nebo operační systémy Endpoint.   
+
+PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
+
+- [Přejít na web partnera](https://www.printerlogic.com).
 
 ## <a name="thinprint"></a>ThinPrint
 

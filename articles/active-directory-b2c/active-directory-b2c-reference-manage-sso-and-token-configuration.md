@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065556"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296411"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a přizpůsobení tokenů pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -54,9 +54,9 @@ V předchozím příkladu jsou nastaveny následující hodnoty:
 - **Životnosti přístupového tokenu** – hodnota životnosti přístupového tokenu je nastavená pomocí položky metadat **token_lifetime_secs** . Výchozí hodnota je 3600 sekund (60 minut).
 - **Doba platnosti tokenu ID** – hodnota životnosti tokenu ID je nastavená pomocí položky metadat **id_token_lifetime_secs** . Výchozí hodnota je 3600 sekund (60 minut).
 - **Doba platnosti tokenu** – hodnota životnosti obnovovacího tokenu je nastavená pomocí položky metadat **refresh_token_lifetime_secs** . Výchozí hodnota je 1209600 sekund (14 dní).
-- **Interval posuvných oken obnovovacího tokenu** – Pokud byste chtěli nastavit dobu trvání posuvných oken na obnovovací token, nastavte hodnotu položky metadat **rolling_refresh_token_lifetime_secs** . Výchozí hodnota je 7776000 (90 dní). Pokud nechcete vymáhat dobu trvání posuvných oken, nahraďte tuto položku `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`parametrem.
-- **Deklarace** vystavitele – deklarace identity vystavitele (ISS) se nastaví pomocí položky metadat **IssuanceClaimPattern** . Platné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
-- **Nastavení deklarace identity představující ID zásady** – možnosti pro nastavení této hodnoty jsou `TFP` (zásady pro vztah důvěryhodnosti) `ACR` a (odkaz na kontext ověřování). `TFP`je doporučená hodnota. Nastavte **AuthenticationContextReferenceClaimPattern** s hodnotou `None`.
+- **Interval posuvných oken obnovovacího tokenu** – Pokud byste chtěli nastavit dobu trvání posuvných oken na obnovovací token, nastavte hodnotu položky metadat **rolling_refresh_token_lifetime_secs** . Výchozí hodnota je 7776000 (90 dní). Pokud nechcete vymáhat dobu trvání klouzavého okna, nahraďte položku `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
+- **Deklarace vystavitele** – deklarace identity vystavitele (ISS) se nastaví pomocí položky metadat **IssuanceClaimPattern** . Platné hodnoty jsou `AuthorityAndTenantGuid` a `AuthorityWithTfp`.
+- **Nastavení deklarace identity představující ID zásady** – možnosti nastavení této hodnoty jsou `TFP` (zásady pro pravidlo důvěryhodnosti) a `ACR` (Referenční dokumentace kontextu ověřování). Doporučená hodnota je `TFP`. Nastavte **AuthenticationContextReferenceClaimPattern** s hodnotou `None`.
 
     Do elementu **ClaimsSchema** přidejte tento element:
 
@@ -75,7 +75,7 @@ V předchozím příkladu jsou nastaveny následující hodnoty:
 
     Pro ACR odeberte položku **AuthenticationContextReferenceClaimPattern** .
 
-- **Deklarace subjektu (sub)** – Tato možnost je ve výchozím nastavení nastavena na hodnotu ObjectId, pokud byste chtěli toto `Not Supported`nastavení přepnout na, nahraďte tento řádek:
+- **Deklarace subjektu (sub)** – Tato možnost je ve výchozím nastavení nastavena na ObjectId, pokud byste chtěli toto nastavení přepnout na `Not Supported`, nahraďte tento řádek:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
@@ -101,6 +101,6 @@ Chcete-li změnit chování relace a konfigurace jednotného přihlašování, p
 
 V předchozím příkladu jsou nakonfigurovány následující hodnoty:
 
-- **Jednotné přihlašování (SSO)** – jednotné přihlašování je nakonfigurované pomocí **SingleSignon**. Platné hodnoty jsou `Tenant`, `Application`, `Policy`a. `Suppressed`
-- **Doba života relace webové aplikace (minuty)** – doba trvání relace webové aplikace je nastavena pomocí elementu **SessionExpiryInSeconds** . Výchozí hodnota je 86400 sekund (1440 minut).
+- **Jednotné přihlašování (SSO)** – jednotné přihlašování je nakonfigurované pomocí **SingleSignon**. Platné hodnoty jsou `Tenant`, `Application`, `Policy` a `Suppressed`.
 - **Časový limit relace webové aplikace** – časový limit relace webové aplikace je nastaven pomocí elementu **SessionExpiryType** . Platné hodnoty jsou `Absolute` a `Rolling`.
+- **Doba života relace webové aplikace** – životnost relace webové aplikace je nastavená pomocí elementu **SessionExpiryInSeconds** . Výchozí hodnota je 86400 sekund (1440 minut).

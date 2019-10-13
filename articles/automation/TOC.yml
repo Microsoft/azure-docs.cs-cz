@@ -123,6 +123,8 @@
               href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Řešení potíží
       items:
+        - name: 'Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation'
+          href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Řešení potíží s funkcí Hybrid Runbook Worker
           href: troubleshoot/hybrid-runbook-worker.md
           displayName: 'troubleshoot, HRW, hybrid worker'

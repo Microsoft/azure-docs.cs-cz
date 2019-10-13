@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm front a připojenými službami sady Visual Studio (projekty WebJob) | Microsoft Docs
+title: Začínáme s úložištěm Queue pomocí sady Visual Studio (projekty WebJob)
 description: Jak začít používat úložiště Azure Queue v projektu webové úlohy po připojení k účtu úložiště pomocí připojených služeb sady Visual Studio.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510789"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298746"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty WebJob)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -88,7 +89,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typy atributů QueueTrigger fungují s
 **QueueTrigger** můžete použít s následujícími typy:
 
-* **string**
+* **řetezce**
 * Typ POCO serializovaný jako JSON
 * **Byte []**
 * **CloudQueueMessage**
@@ -184,13 +185,13 @@ public static void GracefulShutdownDemo(
 
 **Poznámka:** Řídicí panel nemusí správně zobrazovat stav a výstup funkcí, které byly vypnuty.
 
-Další informace najdete v tématu [řádné vypnutí](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)služby WebJobs.   
+Další informace najdete v tématu [řádné vypnutí služby WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
 ## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Vytvoření zprávy ve frontě při zpracování zprávy ve frontě
 Chcete-li napsat funkci, která vytvoří novou zprávu fronty, použijte atribut **Queue** . Podobně jako **QueueTrigger**, předáváte název fronty jako řetězec, nebo můžete [název fronty nastavit dynamicky](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Zprávy ve frontě řetězců
-Následující neasynchronní ukázka kódu vytvoří novou zprávu fronty ve frontě s názvem "funkce outputqueue" se stejným obsahem, jako je zpráva fronty přijatá ve frontě s názvem "InputQueue". (Pro asynchronní funkce použijte **IAsyncCollector\<T >** , jak je uvedeno dále v této části.)
+Následující neasynchronní ukázka kódu vytvoří novou zprávu fronty ve frontě s názvem "funkce outputqueue" se stejným obsahem, jako je zpráva fronty přijatá ve frontě s názvem "InputQueue". (Pro asynchronní funkce použijte **IAsyncCollector @ no__t-1T >** , jak je uvedeno dále v této části.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +217,7 @@ public static void CreateQueueMessage(
 Sada SDK automaticky serializace objektu do formátu JSON. Zpráva fronty je vždy vytvořena, a to i v případě, že objekt má hodnotu null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Vytvoření více zpráv nebo v asynchronních funkcích
-Chcete-li vytvořit více zpráv, nastavte typ parametru pro výstupní frontu **\<ICollector t >** nebo **\<IAsyncCollector t >** , jak je znázorněno v následujícím příkladu.
+Chcete-li vytvořit více zpráv, nastavte typ parametru pro výstupní frontu **ICollector @ no__t-1T >** nebo **IAsyncCollector @ no__t-3T >** , jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -235,13 +236,13 @@ Každá zpráva fronty je vytvořena ihned při volání metody **Add** .
 ### <a name="types-that-the-queue-attribute-works-with"></a>Typy, ve kterých pracuje atribut Queue
 Atribut **Queue** můžete použít u následujících typů parametrů:
 
-* **výstupní řetězec** (vytvoří zprávu ve frontě, pokud hodnota parametru končí funkcí, pokud není null)
-* **výstupní bajt []** (funguje jako **řetězec**)
-* **CloudQueueMessage** (funguje jako **řetězec**)
-* **POCO** (serializovatelný typ vytvoří zprávu s objektem s hodnotou null, pokud má parametr hodnotu null, pokud je funkce ukončena)
+* **výstupní řetězec** (vytvoří zprávu fronty, pokud hodnota parametru končí funkcí)
+* **out Byte []** (funguje jako **řetězec**)
+* **out CloudQueueMessage** (funguje jako **řetězec**)
+* **out POCO** (serializovatelný typ vytvoří zprávu s objektem s hodnotou null, pokud je parametr null, když funkce skončí)
 * **ICollector**
 * **IAsyncCollector**
-* **CloudQueue** (ruční vytváření zpráv přímo pomocí rozhraní Azure Storage API)
+* **CloudQueue** (ruční vytváření zpráv pomocí rozhraní API Azure Storage přímo)
 
 ### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>Použití atributů sady WebJobs SDK v těle funkce
 Pokud potřebujete před použitím atributu sady WebJobs SDK, jako je například **Queue**, **BLOB**nebo **Table**, udělat nějakou práci, můžete použít rozhraní **IBinder** .
@@ -324,14 +325,14 @@ Pokud potřebujete před navázáním objektu BLOB na objekt udělat nějakou pr
 ### <a name="types-you-can-use-the-blob-attribute-with"></a>Typy, ve kterých můžete použít atribut objektu BLOB
 Atribut **objektu BLOB** lze použít s následujícími typy:
 
-* **Datový proud** (čtení nebo zápis, zadaný pomocí parametru konstruktoru FileAccess)
-* **TextReader**
+* **Stream** (čtení nebo zápis, zadaný pomocí parametru konstruktoru FileAccess)
+* **Elementu**
 * **TextWriter**
-* **řetězec** oprávnění
+* **řetězec** (čtení)
 * **výstupní řetězec** (zápis; vytvoří objekt BLOB pouze v případě, že parametr řetězce má hodnotu null, když se funkce vrátí)
 * POCO (čtení)
 * out POCO (zápis; vždy vytvoří objekt blob, vytvoří se jako objekt s hodnotou null, pokud parametr POCO má hodnotu null, když se funkce vrátí)
-* **CloudBlobStream** (write)
+* **CloudBlobStream** (zápis)
 * **ICloudBlob** (čtení nebo zápis)
 * **CloudBlockBlob** (čtení nebo zápis)
 * **CloudPageBlob** (čtení nebo zápis)
@@ -340,7 +341,7 @@ Atribut **objektu BLOB** lze použít s následujícími typy:
 Zprávy, jejichž obsah způsobuje selhání funkce, se nazývají *poškozené zprávy*. Když dojde k selhání této funkce, zpráva fronty se neodstraní a nakonec se znovu vybere, což způsobí, že se cyklus opakuje. Sada SDK může cykly automaticky přerušit po omezeném počtu iterací, nebo můžete to provést ručně.
 
 ### <a name="automatic-poison-message-handling"></a>Automatické zpracování nepoškozených zpráv
-Sada SDK zavolá funkci až pětkrát, aby zpracovala zprávu fronty. Pokud se pátý pokus nezdařil, zpráva bude přesunuta do fronty nepoškozeného. Můžete si prohlédnout, jak nakonfigurovat maximální počet opakování při nastavování [možností konfigurace](#how-to-set-configuration-options).
+Sada SDK zavolá funkci až pětkrát, aby zpracovala zprávu fronty. Pokud se pátý pokus nezdařil, zpráva bude přesunuta do fronty nepoškozeného. Můžete si prohlédnout, jak nakonfigurovat maximální počet opakování při [nastavování možností konfigurace](#how-to-set-configuration-options).
 
 Fronta poškození má název *{originalqueuename}* – jed. Můžete napsat funkci pro zpracování zpráv z fronty poškození tím, že je přihlásíte nebo posíláte oznámení, že je potřeba ruční pozornost.
 
@@ -550,7 +551,7 @@ V nepřetržité úloze WebJob se protokoly aplikací zobrazí v/data/Jobs/Conti
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-V objektu blob Azure budou protokoly aplikací vypadat takto: 2014-09-26T21:01:13, informace, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, Console. Write-Hello World!, 2014-09-26T21:01:13, chyba, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, konzola. Error-Hello World!, 2014-09-26T21 : 01:13, Information, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, Console. out-Hello World!,
+V objektech blob v Azure budou protokoly aplikací vypadat takto: 2014-09-26T21:01:13, informace, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, Console. Write-Hello World!, 2014-09-26T21:01:13, Error, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, Console. Error-Hello World!, 2014-09-26T21:01:13, informace, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, Console. out-Hello World!,
 
 A v tabulce Azure **konzole. out** a **Console. Errors** vypadají takto:
 

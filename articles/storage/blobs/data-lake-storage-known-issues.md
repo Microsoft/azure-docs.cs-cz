@@ -1,19 +1,19 @@
 ---
-title: Známé problémy s Azure Data Lake Storage Gen2 | Dokumentace Microsoftu
-description: Další informace o omezeních a známých problémech s Azure Data Lake Storage Gen2
+title: Známé problémy s Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Přečtěte si o omezeních a známých problémech s Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 300da59aa1a16bb2c4cfeaf8035cbe882ae83358
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959116"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300244"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -21,36 +21,36 @@ V tomto článku jsou uvedené funkce a nástroje, které se ještě nepodporuj�
 
 <a id="blob-apis-disabled" />
 
-## <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
+## <a name="blob-storage-apis"></a>Rozhraní API pro Blob Storage
 
-Rozhraní API pro úložiště objektů BLOB jsou zakázaná, aby nedocházelo k problémům operability funkcí, které by mohly nastat, Blob Storage protože rozhraní API pro Azure Data Lake Gen2 ještě nejsou vzájemně interoperabilní.
+Rozhraní API pro Blob Storage jsou zakázaná, aby nedocházelo k problémům s operability funkcí, protože Blob Storage API ještě nefungují s rozhraními API Azure Data Lake Gen2.
 
 > [!NOTE]
-> Pokud se zaregistrujete do veřejné verze Preview přístupu k více protokolům na Data Lake Storage, rozhraní BLOB API a rozhraní API Data Lake Storage Gen2 můžou pracovat se stejnými daty. Další informace najdete v tématu [přístup k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md).
+> Ve veřejné verzi Preview přístupu k více protokolům na Data Lake Storage můžou rozhraní BLOB API a rozhraní API pro Data Lake Storage Gen2 pracovat se stejnými daty. Další informace najdete v tématu [přístup k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md).
 
 ### <a name="what-to-do-with-existing-tools-applications-and-services"></a>Co dělat s existujícími nástroji, aplikacemi a službami
 
-Pokud některá z těchto rozhraní používají rozhraní API objektů BLOB a chcete je použít pro práci se všemi obsahy, které nahráváte do svého účtu, máte dvě možnosti.
+Pokud některý z těchto objektů využívají rozhraní API objektů BLOB a chcete je použít pro práci se všemi obsahem v účtu, máte dvě možnosti.
 
-* **Možnost 1**: Nepovolujte hierarchický obor názvů v účtu úložiště BLOB, dokud nebudou rozhraní API BLOB vzájemně ovladatelné pomocí Azure Data Lake rozhraní API Gen2. Použití účtu úložiště bez hierarchického oboru názvů znamená, že nebudete mít přístup k Data Lake Storage Gen2 specifickým funkcím, jako jsou seznamy řízení přístupu k adresářům a kontejnerům.
+* **Možnost 1**: nepovolujte hierarchický obor názvů na vašem účtu BLOB Storage, dokud nebude [přístup k více protokolům Data Lake Storage](data-lake-storage-multi-protocol-access.md) všeobecně dostupný, a rozhraní API objektů BLOB se budou plně spolupracovat s Azure Data Lake Gen2 API. [Přístup k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md) je aktuálně ve verzi Public Preview.  Použití účtu úložiště **bez** hierarchického oboru názvů znamená, že nebudete mít přístup k Data Lake Storage Gen2 specifickým funkcím, jako jsou seznamy řízení přístupu k adresářům a kontejnerům.
 
-* **Možnost 2**: Zaregistrujte se do veřejné verze Preview [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Nástroje a aplikace, které volají rozhraní API objektů blob, stejně jako funkce úložiště BLOB, jako jsou protokoly diagnostiky, můžou pracovat s účty, které mají hierarchický obor názvů.
+* **Možnost 2**: povolení hierarchických oborů názvů. Ve veřejné verzi Preview [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md)můžou nástroje a aplikace, které volají rozhraní API objektů blob, i BLOB Storage funkce, jako jsou protokoly diagnostiky, fungovat s účty, které mají hierarchický obor názvů. Přečtěte si tento článek, kde najdete známé problémy a omezení.
 
 ### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>Jak postupovat v případě, že jste použili rozhraní API objektů BLOB k načtení dat před zakázáním rozhraní API objektů BLOB
 
-Pokud jste použili tato rozhraní API k načtení dat, než byly zakázány, aby bylo produkční požadavek na přístup k datům, obraťte se Microsoft Support s následujícími informacemi:
+Pokud jste tato rozhraní API použili k načtení dat před jejich vypnutím a máte požadavek na produkční přístup k těmto datům, kontaktujte prosím podpora Microsoftu s následujícími informacemi:
 
 > [!div class="checklist"]
 > * ID předplatného (identifikátor GUID, nikoli název).
 > * Názvy účtů úložiště.
 > * Bez ohledu na to, jestli jste aktivně ovlivnili produkční prostředí, a pokud ano, pro které účty úložiště?
-> * I když nejsou aktivně vliv v produkčním prostředí, dejte nám vědět, jestli tato data, které se mají zkopírovat do jiného účtu úložiště z nějakého důvodu potřebujete a pokud ano, proč?
+> * I když nebudete aktivně ovlivňovat v produkčním prostředí, řekněte nám, jestli potřebujete tato data z nějakého důvodu zkopírovat do jiného účtu úložiště, a pokud ano, proč?
 
 Za těchto okolností můžeme po omezené době obnovit přístup k rozhraní BLOB API, abyste mohli tato data zkopírovat do účtu úložiště, který nemá povolenou funkci hierarchického oboru názvů.
 
 ### <a name="issues-and-limitations-with-using-blob-apis-on-accounts-that-have-a-hierarchical-namespace"></a>Problémy a omezení při používání rozhraní API objektů BLOB u účtů, které mají hierarchický obor názvů
 
-Pokud se zaregistrujete do veřejné verze Preview přístupu k více protokolům na Data Lake Storage, rozhraní BLOB API a rozhraní API Data Lake Storage Gen2 můžou pracovat se stejnými daty.
+Ve veřejné verzi Preview přístupu k více protokolům na Data Lake Storage můžou rozhraní BLOB API a rozhraní API pro Data Lake Storage Gen2 pracovat se stejnými daty.
 
 Tato část popisuje problémy a omezení s použitím rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 pro práci se stejnými daty.
 
@@ -84,28 +84,28 @@ Tato rozhraní REST API pro objekty blob nejsou podporovaná:
 Nespravované disky virtuálních počítačů nejsou podporované v účtech, které mají hierarchický obor názvů. Pokud chcete povolit hierarchický obor názvů v účtu úložiště, umístěte nespravované disky virtuálních počítačů do účtu úložiště, který nemá povolenou funkci hierarchického oboru názvů.
 
 
-## <a name="support-for-other-blob-storage-features"></a>Podpora dalších funkcí úložiště objektů BLOB
+## <a name="support-for-other-blob-storage-features"></a>Podpora dalších funkcí Blob Storage
 
 Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, které ještě nejsou podporované nebo částečně podporované s účty úložiště, které mají hierarchický obor názvů (Azure Data Lake Storage Gen2).
 
 | Funkce/nástroj    | Další informace    |
 |--------|-----------|
-| **Rozhraní API pro Data Lake Storage Gen2 účty úložiště** | Částečně podporováno <br><br>přístup k více protokolům na Data Lake Storage je aktuálně ve verzi Public Preview. Tato verze Preview umožňuje používat rozhraní API objektů BLOB v sadách .NET, Java, Python SDK s účty, které mají hierarchický obor názvů.  Sady SDK zatím neobsahují rozhraní API, které vám umožní pracovat s adresáři nebo nastavit seznamy řízení přístupu (ACL). K provedení těchto funkcí můžete použít Data Lake Storage Gen2 rozhraní **REST** API. |
+| **Rozhraní API pro Data Lake Storage Gen2 účty úložiště** | Částečně podporováno <br><br>Přístup k více protokolům na Data Lake Storage je aktuálně ve verzi Public Preview. Tato verze Preview umožňuje používat rozhraní API objektů BLOB v sadách .NET, Java, Python SDK s účty, které mají hierarchický obor názvů.  Sady SDK zatím neobsahují rozhraní API, které vám umožní pracovat s adresáři nebo nastavit seznamy řízení přístupu (ACL). K provedení těchto funkcí můžete použít Data Lake Storage Gen2 rozhraní **REST** API. |
 | **AzCopy** | Podpora specifická pro verzi <br><br>Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.|
-| **Zásady správy životního cyklu služby Azure Blob Storage** | Podporováno pouze v případě, že se zaregistrujete do [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. Úrovně přístupu studené a archivní jsou podporovány pouze ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. |
+| **Zásady správy životního cyklu Azure Blob Storage** | Podporováno [přístupem k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. Úrovně přístupu studené a archivní jsou podporovány pouze ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
-| **Hledání Azure** |Podporováno pouze v případě, že se zaregistrujete do [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview.|
-| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Používejte pouze verzi `1.6.0` nebo vyšší. <br>Verze `1.6.0` je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
+| **Hledání Azure** |Podporováno [přístupem k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview.|
+| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Použijte pouze @no__t verze-0 nebo vyšší. <br>Verze @no__t – 0 je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
 | **Seznamy ACL kontejneru objektů BLOB** |Zatím nepodporováno|
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|
 | **Průzkumník systému souborů** | Omezená podpora |
-| **Protokolování diagnostiky** |Diagnostické protokoly se podporují jenom v případě, že se zaregistrujete do [protokolu pro přístup k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu `-ServiceType` parametru, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
+| **Protokolování diagnostiky** |Diagnostické protokoly podporuje [přístup k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br>Povolení protokolů v Azure Portal není aktuálně podporováno. Tady je příklad, jak povolit protokoly pomocí PowerShellu. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Nezapomeňte zadat `Blob` jako hodnotu parametru `-ServiceType`, jak je znázorněno v tomto příkladu. <br><br>V současné době nelze Průzkumník služby Azure Storage použít pro zobrazení diagnostických protokolů. Pokud chcete zobrazit protokoly, použijte prosím AzCopy nebo sady SDK.
 | **Neměnné úložiště** |Zatím nepodporováno <br><br>Neměnné úložiště poskytuje možnost ukládat data v [červech (jeden způsob zápisu, čtení mnoha)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
-| **Vrstvy na úrovni objektů** |Studené a archivní úrovně se podporují jenom v případě, že se zaregistrujete do [přístupu k více protokolům](data-lake-storage-multi-protocol-access.md) ve službě Data Lake Storage Preview. <br><br> Všechny ostatní úrovně přístupu ještě nejsou podporované.|
+| **Vrstvy na úrovni objektů** |Úroveň studeného a archivního rozhraní podporuje [přístup prostřednictvím více protokolů v Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br> Všechny ostatní úrovně přístupu ještě nejsou podporované.|
 | **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Podporují se operace správy, jako je vytváření účtu. Operace roviny dat, jako je například nahrávání a stahování souborů, jsou ve verzi Public Preview v rámci [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |
 | **Statické weby** |Zatím nepodporováno <br><br>Konkrétně možnost poskytovat soubory [statickým webům](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou pravděpodobně fungovat, pokud se zaregistrujete ve verzi Public Preview [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md). 
+| **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou nejspíš fungovat s verzí Public Preview [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md). 
 | **Funkce správy verzí** |Zatím nepodporováno <br><br>To zahrnuje [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) a [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
 
 

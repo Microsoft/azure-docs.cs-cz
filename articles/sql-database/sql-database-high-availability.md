@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 54994dd626df23694ea372d4a662d2b4fb051fc8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.date: 10/11/2019
+ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285757"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299710"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -39,7 +39,7 @@ Tyto úrovně služeb využívají standardní architekturu dostupnosti. Násled
 
 Standardní model dostupnosti obsahuje dvě vrstvy:
 
-- Bezstavová výpočetní vrstva, která spouští proces @no__t 0 a obsahuje pouze přechodná a uložená data v mezipaměti připojené jednotky SSD, jako je například TempDB, modelová databáze, mezipaměť plánu, fond vyrovnávacích pamětí a fond úložiště sloupců. Tento bezstavový uzel provozuje služba Azure Service Fabric, která inicializuje `sqlserver.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
+- Bezstavová výpočetní vrstva, která spouští proces @no__t 0 a obsahuje jenom přechodná a uložená data v mezipaměti, jako je TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávacích pamětí a fond columnstore v paměti. Tento bezstavový uzel provozuje služba Azure Service Fabric, která inicializuje `sqlservr.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
 - Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené v úložišti objektů BLOB v Azure. Služba Azure Blob Storage má vestavěnou funkci dostupnosti dat a redundance. Zaručuje, že každý záznam v souboru protokolu nebo na stránce v datovém souboru se zachová i v případě selhání procesu SQL Server.
 
 Pokaždé, když je databázový stroj nebo operační systém upgradovaný, nebo dojde k selhání, Azure Service Fabric přesune bezstavový proces SQL Server na jiný bezstavový výpočetní uzel s dostatečnou volnou kapacitou. Data v úložišti objektů BLOB v Azure nejsou ovlivněná přesunem a soubory dat a protokolů jsou připojené k nově inicializovanému procesu SQL Server. Tento proces garantuje 99,99% dostupnost, ale během přechodu může dojít k výraznému snížení výkonu, protože nová instance SQL Server začíná studenou mezipamětí.
@@ -54,7 +54,24 @@ Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úlo
 
 Model dostupnosti Premium navíc nabízí možnost přesměrovat připojení SQL jen pro čtení na jednu ze sekundárních replik. Tato funkce se nazývá horizontální navýšení [kapacity čtení](sql-database-read-scale-out.md). Poskytuje 100% dodatečnou výpočetní kapacitu bez dalších poplatků za vypínání operací jen pro čtení, jako jsou analytické úlohy, z primární repliky.
 
-### <a name="zone-redundant-configuration"></a>Redundantní konfigurace zóny
+## <a name="hyperscale-service-tier-availability"></a>Dostupnost vrstvy služeb s škálovatelným škálováním
+
+Architektura vrstvy služeb s více instancemi je popsaná v tématu [Architektura distribuovaných funkcí](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture). 
+
+![Funkční architektura s škálovatelným škálováním](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+Model dostupnosti v rámci škálování zahrnuje čtyři vrstvy:
+
+- Bezstavová výpočetní vrstva, která spouští procesy `sqlservr.exe` a obsahuje pouze přechodná a uložená data v mezipaměti, jako například nepokrývání mezipaměti RBPEX cache, TempDB, modelová databáze atd. na připojené SSD a v mezipaměti plánů, fond vyrovnávacích pamětí a fond columnstore v paměti. Tato Bezstavová vrstva zahrnuje primární repliku COMPUTE a volitelně také počet sekundárních výpočetních replik, které můžou sloužit jako cíle převzetí služeb při selhání.
+- Bezstavová vrstva úložiště vytvořená stránkami serverů. Tato vrstva je distribuovaný modul úložiště pro procesy @no__t 0, které běží na výpočetních replikách. Každý server stránky obsahuje jenom přechodná data a data uložená v mezipaměti, jako je třeba pokrytí RBPEX cache na připojené SSD a datových stránek uložených v paměti. Každý server stránky má spárovaný stránkovací Server v konfiguraci aktivní-aktivní, aby poskytoval vyrovnávání zatížení, redundanci a vysokou dostupnost.
+- Vrstva úložiště protokolu stavových transakcí vytvořená výpočetním uzlem, na kterém běží proces služby protokolování, zóna pro vykládku protokolu transakcí a dlouhodobé ukládání transakčního protokolu. Cílová zóna a dlouhodobé úložiště používají Azure Storage, což poskytuje dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) transakčního protokolu, což zajišťuje odolnost dat pro potvrzené transakce.
+- Stavová vrstva úložiště dat s databázovými soubory (. mdf/. NDF), které jsou uložené v Azure Storage a jsou aktualizovány pomocí stránkových serverů. Tato vrstva používá funkce pro dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) dat Azure Storage. Zaručuje, že každá stránka v datovém souboru se zachová i v případě, že procesy v jiných vrstvách selže nebo dojde k selhání výpočetních uzlů.
+
+Výpočetní uzly ve všech vrstvách s škálovatelným škálováním běží na Azure Service Fabric, které řídí stav jednotlivých uzlů a v případě potřeby provádějí převzetí služeb při selhání pro dostupné uzly v pořádku.
+
+Další informace o vysoké dostupnosti v měřítku najdete v tématu [Vysoká dostupnost databáze v měřítku](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
+
+## <a name="zone-redundant-configuration"></a>Redundantní konfigurace zóny
 
 Ve výchozím nastavení se cluster uzlů pro model dostupnosti Premium vytvoří ve stejném datovém centru. Při zavedení [zóny dostupnosti Azure](../availability-zones/az-overview.md)můžou SQL Database umístit různé repliky databáze pro důležité obchodní informace do různých zón dostupnosti ve stejné oblasti. Chcete-li eliminovat jediný bod selhání, je řídicí kanál také duplikován v několika zónách jako tři prstence brány (GS). Směrování na konkrétního okruhu brány se řídí službou [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že zóna redundantní konfigurace v úrovních služby Premium nebo Pro důležité obchodní informace nevytváří další redundanci databáze, můžete ji povolit bez dalších poplatků. Výběrem redundantní konfigurace zóny můžete zajistit, aby vaše databáze Premium nebo Pro důležité obchodní informace odolné vůči mnohem většímu počtu selhání, včetně závažných výpadků Datacenter, a to bez jakýchkoli změn v aplikační logice. Můžete také převést všechny existující databáze nebo fondy Premium nebo Pro důležité obchodní informace na zónu redundantní konfigurace.
 

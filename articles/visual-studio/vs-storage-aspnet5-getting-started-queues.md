@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm front a připojenými službami sady Visual Studio (ASP.NET Core) | Microsoft Docs
+title: Začínáme s úložištěm Queue pomocí sady Visual Studio (ASP.NET Core)
 description: Jak začít používat službu Azure Queue Storage v ASP.NET Core projektu v aplikaci Visual Studio
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: d8e370c6f7c59da8522bb4fb1403b6107a9c9c41
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510977"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300024"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s úložištěm front a připojenými službami sady Visual Studio (ASP.NET Core)
 
@@ -35,7 +36,7 @@ Některá rozhraní API Azure Storage jsou asynchronní a kód v tomto článku 
 
 Pokud chcete získat přístup k frontám v ASP.NET Core projektech, zahrňte C# do libovolného zdrojového souboru, který přistupuje k úložišti front Azure, následující položky. Tento kód použijte před kódem v následujících oddílech.
 
-1. Přidejte potřebné `using` příkazy:
+1. Přidejte potřebné příkazy `using`:
     ```cs
     using Microsoft.Framework.Configuration;
     using Microsoft.WindowsAzure.Storage;
@@ -44,20 +45,20 @@ Pokud chcete získat přístup k frontám v ASP.NET Core projektech, zahrňte C#
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. `CloudStorageAccount` Získejte objekt, který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód:
+1. Získejte objekt `CloudStorageAccount`, který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód:
 
     ```cs
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. `CloudQueueClient` Získat objekt, který bude odkazovat na objekty fronty v účtu úložiště:
+1. Získejte objekt `CloudQueueClient`, který bude odkazovat na objekty fronty v účtu úložiště:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. `CloudQueue` Získat objekt pro odkaz na konkrétní frontu:
+1. Získat objekt `CloudQueue` pro odkaz na konkrétní frontu:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
@@ -66,7 +67,7 @@ Pokud chcete získat přístup k frontám v ASP.NET Core projektech, zahrňte C#
 
 ### <a name="create-a-queue-in-code"></a>Vytvoření fronty v kódu
 
-Pokud chcete vytvořit frontu Azure v kódu, `CreateIfNotExistsAsync`zavolejte:
+Pokud chcete vytvořit frontu Azure v kódu, zavolejte `CreateIfNotExistsAsync`:
 
 ```cs
 // Create the CloudQueue if it does not exist.
@@ -75,7 +76,7 @@ await messageQueue.CreateIfNotExistsAsync();
 
 ## <a name="add-a-message-to-a-queue"></a>Přidat zprávu do fronty
 
-Chcete-li vložit zprávu do existující fronty, vytvořte nový `CloudQueueMessage` objekt a potom `AddMessageAsync` zavolejte metodu. `CloudQueueMessage` Objekt lze vytvořit buď z řetězce (ve formátu UTF-8), nebo pole bajtů.
+Chcete-li vložit zprávu do existující fronty, vytvořte nový objekt @no__t 0 a zavolejte metodu `AddMessageAsync`. Objekt `CloudQueueMessage` lze vytvořit buď z řetězce (ve formátu UTF-8), nebo pole bajtů.
 
 ```cs
 // Create a message and add it to the queue.
@@ -85,7 +86,7 @@ await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Čtení zprávy ve frontě
 
-Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním `PeekMessageAsync` metody:
+Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody `PeekMessageAsync`:
 
 ```cs
 // Peek the next message in the queue.
@@ -96,7 +97,7 @@ CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 Váš kód může z fronty odebrat (odřadit z fronty) zprávu ve dvou krocích.
 
-1. Voláním `GetMessageAsync` získáte další zprávu ve frontě. Zpráva vrácená z `GetMessageAsync` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
+1. Chcete-li získat další zprávu ve frontě, zavolejte `GetMessageAsync`. Zpráva vrácená z `GetMessageAsync` bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund.
 1. Chcete-li dokončit odebrání zprávy z fronty, zavolejte `DeleteMessageAsync`.
 
 Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Následující kód volá `DeleteMessageAsync` hned po zpracování zprávy:
@@ -113,7 +114,7 @@ await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="additional-options-for-dequeuing-messages"></a>Další možnosti pro vyřazování zpráv do fronty
 
-Existují dva způsoby, jak přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá `GetMessages` metodu k získání 20 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `foreach` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že časovač pět minut začíná u všech zpráv současně, takže po pěti minutách budou všechny zprávy, které nebyly odstraněny, opět viditelné.
+Existují dva způsoby, jak přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá metodu `GetMessages` pro získání 20 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky `foreach`. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že časovač pět minut začíná u všech zpráv současně, takže po pěti minutách budou všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -128,7 +129,7 @@ foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.From
 
 ## <a name="get-the-queue-length"></a>Získání délky fronty
 
-Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. `FetchAttributes` Metoda požádá službu front o načtení atributů fronty, včetně počtu zpráv. Vlastnost vrátí poslední hodnotu získanou `FetchAttributes` metodou bez volání služby fronty. `ApproximateMethodCount`
+Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda `FetchAttributes` požádá službu front o načtení atributů fronty, včetně počtu zpráv. Vlastnost `ApproximateMethodCount` vrátí poslední hodnotu získanou metodou `FetchAttributes` bez volání služby Queue.
 
 ```cs
 // Fetch the queue attributes.
@@ -143,7 +144,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Použití vzoru Async-await s běžnými rozhraními API fronty
 
-Tento příklad ukazuje použití vzoru Async-await s běžnými rozhraními API front končícím `Async`na. Při použití asynchronní metody vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další práci, která pomáhá vyhnout se kritickým bodům výkonu a zlepšuje celkovou odezvu vaší aplikace.
+Tento příklad ukazuje použití vzoru Async-await s běžnými rozhraními API front končícím na `Async`. Při použití asynchronní metody vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další práci, která pomáhá vyhnout se kritickým bodům výkonu a zlepšuje celkovou odezvu vaší aplikace.
 
 ```cs
 // Create a message to add to the queue.
@@ -164,13 +165,13 @@ Console.WriteLine("Deleted message");
 
 ## <a name="delete-a-queue"></a>Odstranění fronty
 
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené `Delete` , zavolejte metodu u objektu Queue:
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu `Delete` u objektu Queue:
 
 ```cs
 // Delete the queue.
 messageQueue.Delete();
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]

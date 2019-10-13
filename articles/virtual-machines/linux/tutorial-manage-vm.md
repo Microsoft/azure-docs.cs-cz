@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1df278c67c8f84648d2fc7ab3818656cfb9de74a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100705"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300793"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -30,12 +30,12 @@ Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní v
 > * Vytvoření a připojení virtuálního počítače
 > * Výběr a použití imagí virtuálních počítačů
 > * Zobrazení a použití specifických velikostí virtuálních počítačů
-> * Změna velikosti virtuálního počítače
+> * Změna velikosti virtuálního počítač
 > * Zobrazení a pochopení stavu virtuálního počítače
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -154,7 +154,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| type                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2          | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -208,7 +208,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-### <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
+### <a name="resize-a-vm"></a>Změna velikosti virtuálního počítač
 
 Po nasazení virtuálního počítače můžete jeho velikost změnit, čímž se zvýší nebo sníží přidělení prostředků. Aktuální velikost virtuálního počítače je možné zobrazit pomocí příkazu [az vm show](/cli/azure/vm):
 
@@ -304,7 +304,7 @@ az vm stop --resource-group myResourceGroupVM --name myVM
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### <a name="delete-resource-group"></a>Odstranit skupinu prostředků
+### <a name="delete-resource-group"></a>Odstranění skupiny prostředků
 
 Odstraněním skupiny prostředků se také odstraní všechny prostředky v ní obsažené, například virtuální počítač, virtuální síť a disk. Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
@@ -312,7 +312,7 @@ Odstraněním skupiny prostředků se také odstraní všechny prostředky v ní
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a správě virtuálních počítačů, jako jsou:
 
@@ -320,7 +320,7 @@ V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a sp
 > * Vytvoření a připojení virtuálního počítače
 > * Výběr a použití imagí virtuálních počítačů
 > * Zobrazení a použití specifických velikostí virtuálních počítačů
-> * Změna velikosti virtuálního počítače
+> * Změna velikosti virtuálního počítač
 > * Zobrazení a pochopení stavu virtuálního počítače
 
 V dalším kurzu se dozvíte něco o discích virtuálních počítačů.  

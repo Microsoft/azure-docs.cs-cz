@@ -1,17 +1,17 @@
 ---
-title: Ukázka – mapování kontrolního plánu ISO 27001
+title: Mapování ukázkových ovládacích prvků podle ISO 27001
 description: Mapování ovládacího prvku ukázka ISO 27001. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: f381cb2beff0dd828e7ab1e5661857d826c49ecf
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 57636db9eb341bad2e0caca83a2c413320847aae
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248876"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297504"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001
 

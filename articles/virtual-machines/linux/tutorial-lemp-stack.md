@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 15d88e082f9ab0838f4a560d89801edd9d46d682
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703543"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299384"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LEMP na virtuální počítač s Linuxem v Azure
 
-Tento článek vás provede nasazením webového serveru NGINX, MySQL a PHP (stack LEMP) na virtuální počítač s Ubuntu v Azure. Stack LEMP představuje alternativu oblíbeného [stacku LAMP](tutorial-lamp-stack.md), který můžete v Azure také nainstalovat. Pokud chcete zobrazit server LEMP v akci, můžete volitelně nainstalovat a nakonfigurovat web WordPress. V tomto kurzu se naučíte:
+Tento článek vás provede nasazením webového serveru NGINX, MySQL a PHP (stack LEMP) na virtuální počítač s Ubuntu v Azure. Stack LEMP představuje alternativu oblíbeného [stacku LAMP](tutorial-lamp-stack.md), který můžete v Azure také nainstalovat. Pokud chcete zobrazit server LEMP v akci, můžete volitelně nainstalovat a nakonfigurovat web WordPress. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Ubuntu (písmeno L ve stacku LEMP)
@@ -35,9 +35,9 @@ Tento článek vás provede nasazením webového serveru NGINX, MySQL a PHP (sta
 
 Toto nastavení je určené pro rychlé testy nebo testování konceptu.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
@@ -54,7 +54,7 @@ Zobrazí se výzva k instalaci balíčků a dalších závislostí. Tímto postu
 ## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
 
 
-### <a name="verify-nginx"></a>Ověření serveru NGINX
+### <a name="verify-nginx"></a>Ověřit NGINX
 
 Zkontrolujte verzi serveru NGINX pomocí následujícího příkazu:
 ```bash
@@ -66,7 +66,7 @@ Když je teď server NGINX nainstalovaný a port 80 k virtuálnímu počítači 
 ![Výchozí stránka serveru NGINX][3]
 
 
-### <a name="verify-and-secure-mysql"></a>Ověřit a zabezpečit MySQL
+### <a name="verify-and-secure-mysql"></a>Ověření a zabezpečení MySQL
 
 Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
@@ -74,13 +74,13 @@ Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si param
 mysql -V
 ```
 
-Chcete-li pomoc se zabezpečením instalace MySQL, včetně nastavení kořenové heslo, spusťte `mysql_secure_installation` skriptu. 
+Chcete-li zvýšit zabezpečení instalace MySQL, včetně nastavení kořenového hesla, spusťte skript `mysql_secure_installation`. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-Volitelně můžete nastavit heslo ověření modulu plug-in (doporučeno). Potom nastavte heslo pro kořenového uživatele MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme, abyste odpovědět "Y" (Ano) na všechny otázky.
+Volitelně můžete nastavit modul plug-in pro ověřování hesel (doporučeno). Pak nastavte heslo pro kořenového uživatele MySQL a nakonfigurujte zbývající nastavení zabezpečení pro vaše prostředí. Doporučujeme, abyste na všechny otázky odpověděli na Y (Ano).
 
 Pokud chcete vyzkoušet funkce MySQL (vytvoření databáze MySQL, přidání uživatelů nebo změna nastavení konfigurace), přihlaste se k MySQL. Tento krok není nezbytný k dokončení kurzu. 
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
-### <a name="verify-php"></a>Ověřte PHP
+### <a name="verify-php"></a>Ověřit PHP
 
 Zkontrolujte verzi PHP pomocí následujícího příkazu:
 
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Použijte veřejnou IP adresu virtuálního počítače, *yourPublicIPAddress*, zkontrolujte verzi PHP v `fastcgi_pass`a ponechte zbývající nastavení. Pak soubor uložte.
+V editoru nahraďte obsah souboru `/etc/nginx/sites-available/default` následujícím kódem. Komentáře obsahují vysvětlení jednotlivých nastavení. Nahraďte veřejnou IP adresu vašeho virtuálního počítače pro *yourPublicIPAddress*, potvrďte verzi PHP v `fastcgi_pass` a nechejte zbývající nastavení. Pak soubor uložte.
 
 ```
 server {
@@ -159,7 +159,7 @@ Teď můžete zkontrolovat informační stránku PHP, kterou jste vytvořili. Ot
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nasadili server LEMP v Azure. Naučili jste se tyto postupy:
 

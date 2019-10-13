@@ -1,5 +1,5 @@
 ---
-title: Začínáme s úložištěm objektů BLOB a připojenými službami sady Visual Studio (ASP.NET Core) | Microsoft Docs
+title: Začínáme s úložištěm objektů BLOB pomocí sady Visual Studio (ASP.NET Core)
 description: Jak začít používat službu Azure Blob Storage v projektu Visual studia ASP.NET Core po vytvoření účtu úložiště pomocí připojených služeb sady Visual Studio
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: c0f4124ffdb03a7a193791515444c4c7001378d7
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 81df41470c893f569fd17345e8bdf4b29641ec64
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511562"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298831"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob Storage a připojenými službami sady Visual Studio (ASP.NET Core)
 
@@ -27,7 +28,7 @@ Tento článek popisuje, jak začít používat úložiště objektů BLOB v Azu
 
 Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. Jeden objekt BLOB může být libovolná velikost. Objekty blob můžou být například obrázky, zvukové soubory a videosoubory, nezpracovaná data a soubory dokumentů. Tento článek popisuje, jak začít se službou BLOB Storage po vytvoření účtu služby Azure Storage pomocí **připojených služeb** sady Visual Studio v projektu ASP.NET Core.
 
-Stejně jako soubory v reálném čase ve složkách jsou objekty blob úložiště živé v kontejnerech. Po vytvoření objektu blob můžete v tomto objektu BLOB vytvořit jeden nebo více kontejnerů. Například v objektu BLOB s názvem "Scrapbook" můžete vytvořit kontejnery s názvem "image" k ukládání obrázků a další s názvem "zvuk" pro ukládání zvukových souborů. Po vytvoření kontejnerů můžete do nich nahrát jednotlivé soubory. Další [informace najdete v tématu rychlý Start: Další informace o programové manipulaci s objekty blob můžete](../storage/blobs/storage-quickstart-blobs-dotnet.md) nahrávat, stahovat a vypisovat objekty BLOB pomocí rozhraní .NET.
+Stejně jako soubory v reálném čase ve složkách jsou objekty blob úložiště živé v kontejnerech. Po vytvoření objektu blob můžete v tomto objektu BLOB vytvořit jeden nebo více kontejnerů. Například v objektu BLOB s názvem "Scrapbook" můžete vytvořit kontejnery s názvem "image" k ukládání obrázků a další s názvem "zvuk" pro ukládání zvukových souborů. Po vytvoření kontejnerů můžete do nich nahrát jednotlivé soubory. Další informace o programové manipulaci s objekty blob najdete v tématu [rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí rozhraní .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) .
 
 Některá rozhraní API Azure Storage jsou asynchronní a kód v tomto článku předpokládá použití asynchronních metod. Další informace najdete v tématu [asynchronní programování](https://docs.microsoft.com/dotnet/csharp/async) .
 
@@ -35,7 +36,7 @@ Některá rozhraní API Azure Storage jsou asynchronní a kód v tomto článku 
 
 Chcete-li programově přistupovat k objektům blob v ASP.NET Core projekty, je nutné přidat následující kód, pokud ještě neexistuje:
 
-1. Přidejte potřebné `using` příkazy:
+1. Přidejte potřebné příkazy `using`:
 
     ```cs
     using Microsoft.Extensions.Configuration;
@@ -45,7 +46,7 @@ Chcete-li programově přistupovat k objektům blob v ASP.NET Core projekty, je 
     using LogLevel = Microsoft.Extensions.Logging.LogLevel;
     ```
 
-1. `CloudStorageAccount` Získejte objekt, který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód:
+1. Získejte objekt `CloudStorageAccount`, který představuje informace o vašem účtu úložiště. K získání připojovacího řetězce a informací o účtu úložiště z konfigurace služby Azure použijte následující kód:
 
     ```cs
      CloudStorageAccount storageAccount = new CloudStorageAccount(
@@ -54,7 +55,7 @@ Chcete-li programově přistupovat k objektům blob v ASP.NET Core projekty, je 
         "<access-key>"), true);
     ```
 
-1. Pomocí objektu můžete `CloudBlobContainer` získat odkaz na existující kontejner v účtu úložiště: `CloudBlobClient`
+1. K získání odkazu `CloudBlobContainer` na existující kontejner v účtu úložiště použijte objekt `CloudBlobClient`:
 
     ```cs
     // Create a blob client.
@@ -66,7 +67,7 @@ Chcete-li programově přistupovat k objektům blob v ASP.NET Core projekty, je 
 
 ## <a name="create-a-container-in-code"></a>Vytvoření kontejneru v kódu
 
-Můžete také použít `CloudBlobClient` k vytvoření kontejneru v účtu úložiště voláním `CreateIfNotExistsAsync`:
+Pomocí `CloudBlobClient` můžete také vytvořit kontejner v účtu úložiště voláním `CreateIfNotExistsAsync`:
 
 ```cs
 // Create a blob client.
@@ -90,7 +91,7 @@ await container.SetPermissionsAsync(new BlobContainerPermissions
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
 
-Pokud chcete nahrát soubor objektu blob do kontejneru, získejte odkaz na kontejner a použijte ho k získání odkazu na objekt BLOB. Potom do tohoto odkazu nahrajte libovolný proud dat voláním `UploadFromStreamAsync` metody. Tato operace vytvoří objekt blob, pokud ještě neexistuje, a přepíše existující objekt BLOB. 
+Pokud chcete nahrát soubor objektu blob do kontejneru, získejte odkaz na kontejner a použijte ho k získání odkazu na objekt BLOB. Potom do tohoto odkazu nahrajte libovolný proud dat voláním metody `UploadFromStreamAsync`. Tato operace vytvoří objekt blob, pokud ještě neexistuje, a přepíše existující objekt BLOB. 
 
 ```cs
 // Get a reference to a blob named "myblob".
@@ -106,7 +107,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Chcete-li zobrazit seznam objektů BLOB v kontejneru, nejprve získejte odkaz na kontejner a pak `ListBlobsSegmentedAsync` zavolejte svou metodu pro načtení objektů BLOB a/nebo adresářů. Chcete-li získat přístup k bohatě nastaveným vlastnostem `IListBlobItem`a metodám pro vrácenou `CloudBlockBlob`, `CloudPageBlob`přetypujte ji `CloudBlobDirectory` na objekt, nebo. Pokud neznáte typ objektu blob, použijte kontrolu typu k určení, která z nich se má přetypovat.
+Chcete-li zobrazit seznam objektů BLOB v kontejneru, nejprve získejte odkaz na kontejner a potom zavolejte metodu `ListBlobsSegmentedAsync` pro načtení objektů BLOB a/nebo adresářů v ní. Chcete-li získat přístup k bohatou sadu vlastností a metod vrácených `IListBlobItem`, přetypujte je na objekt `CloudBlockBlob`, `CloudPageBlob` nebo `CloudBlobDirectory`. Pokud neznáte typ objektu blob, použijte kontrolu typu k určení, která z nich se má přetypovat.
 
 ```cs
 BlobContinuationToken token = null;
@@ -140,11 +141,11 @@ do
 } while (token != null);
 ```
 
-Další [informace najdete v tématu rychlý Start: Další způsoby, jak zobrazit obsah kontejneru objektů BLOB](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) , můžete nahrávat, stahovat a vypisovat objekty BLOB pomocí rozhraní .NET.
+Další způsoby, jak zobrazit obsah kontejneru objektů blob, najdete v tématu [rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí rozhraní .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) .
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
 
-Chcete-li stáhnout objekt blob, nejprve získejte odkaz na objekt BLOB a pak zavolejte `DownloadToStreamAsync` metodu. Následující příklad používá `DownloadToStreamAsync` metodu k přenosu obsahu objektu blob do objektu Stream, který pak můžete uložit jako místní soubor.
+Chcete-li stáhnout objekt blob, nejprve získejte odkaz na objekt BLOB a zavolejte metodu `DownloadToStreamAsync`. Následující příklad používá metodu `DownloadToStreamAsync` pro přenos obsahu objektu blob do objektu Stream, který pak můžete uložit jako místní soubor.
 
 ```cs
 // Get a reference to a blob named "photo1.jpg".
@@ -157,11 +158,11 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Další [informace najdete v tématu rychlý Start: Můžete nahrávat, stahovat a vypisovat objekty blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) pomocí rozhraní .NET a další způsoby ukládání objektů BLOB jako souborů.
+Další způsoby, jak ukládat objekty BLOB jako soubory, najdete v tématu [rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí rozhraní .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) .
 
 ## <a name="delete-a-blob"></a>Odstranění objektu blob
 
-Pokud chcete odstranit objekt blob, nejdřív Získejte odkaz na objekt BLOB a pak zavolejte `DeleteAsync` metodu:
+Pokud chcete odstranit objekt blob, nejdřív Získejte odkaz na objekt BLOB a potom zavolejte metodu `DeleteAsync`:
 
 ```cs
 // Get a reference to a blob named "myblob.txt".
@@ -171,6 +172,6 @@ CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 await blockBlob.DeleteAsync();
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]

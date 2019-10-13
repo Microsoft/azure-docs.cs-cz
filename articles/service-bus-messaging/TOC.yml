@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Zvládání výpadků a havárií
       href: service-bus-outages-disasters.md
+    - name: Throttling
+      href: service-bus-throttling.md
     - name: Zabezpečení
       items:
         - name: Ověřování a autorizace
