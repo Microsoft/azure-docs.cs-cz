@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816067"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285803"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Certifikáty a asymetrické klíče](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů pro operace `BACKUP` a `CREATE`. | Ano, bez přístupu k systému souborů pro operace `BACKUP` a `CREATE` – Podívejte se na [rozdíly v certifikátech](sql-database-managed-instance-transact-sql-information.md#certificates). | 
 | [Change Data Capture-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
 | [Kolace – Server/instance](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace logického serveru `SQL_Latin1_General_CP1_CI_AS` se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) a nelze ji později aktualizovat. |
-| [Indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva a pro důležité obchodní informace úrovně](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
+| [Indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva, pro důležité obchodní informace a úrovně škálování](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Modul CLR (Common Language Runtime) – CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano, ale bez přístupu k systému souborů v příkazu `CREATE ASSEMBLY`-zobrazit [rozdíly CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Přihlašovací údaje](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom **Azure Key Vault** a `SHARED ACCESS SIGNATURE`. [Podrobnosti najdete v podrobnostech](sql-database-managed-instance-transact-sql-information.md#credential) . |
 | [Dotazy na názvy mezi databázemi a třemi částmi](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – zobrazit [elastické dotazy](sql-database-elastic-query-overview.md) | Ano, plus [elastické dotazy](sql-database-elastic-query-overview.md) |

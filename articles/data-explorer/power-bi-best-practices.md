@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937322"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286750"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Osvědčené postupy pro použití Power BI k dotazování a vizualizaci dat Azure Průzkumník dat
 
-Azure Průzkumník dat je rychlá a vysoce škálovatelná služba průzkumu dat pro data protokolů a telemetrie. [Power BI](https://docs.microsoft.com/power-bi/) je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky napříč vaší organizací. Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI. Použijte [integrovaný konektor](power-bi-connector.md), [importujte dotaz z Azure Průzkumník dat do Power BI](power-bi-imported-query.md)nebo použijte [dotaz SQL](power-bi-sql-query.md). Tento článek poskytuje tipy pro dotazování a vizualizaci dat Průzkumník dat Azure pomocí Power BI. 
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. [Power BI](https://docs.microsoft.com/power-bi/) je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky napříč vaší organizací. Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI. Použijte [integrovaný konektor](power-bi-connector.md), [importujte dotaz z Azure Průzkumník dat do Power BI](power-bi-imported-query.md)nebo použijte [dotaz SQL](power-bi-sql-query.md). Tento článek poskytuje tipy pro dotazování a vizualizaci dat Průzkumník dat Azure pomocí Power BI. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Osvědčené postupy pro používání Power BI 
 
@@ -48,7 +48,7 @@ V následující části najdete tipy a triky pro používání dotazovacího ja
 
 Složité dotazy jsou snadněji vyjádřené v Kusto než v Power Query. Měly by být implementovány jako [Kusto funkce](/azure/kusto/query/functions)a vyvolány v Power BI. Tato metoda je vyžadována při použití **DirectQuery** s příkazy `let` v dotazu Kusto. Protože Power BI spojí dva dotazy a příkazy `let` nelze použít s operátorem `join`, může dojít k chybám syntaxe. Proto každou část JOIN uložte jako funkci Kusto a umožněte Power BI připojit tyto dvě funkce dohromady.
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>Postup simulace relativního operátoru data a času
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>Postup simulace relativního operátoru data a času
 
 Power BI neobsahuje *relativní* operátor data a času, například `ago()`.
 K simulaci `ago()` použijte kombinaci Power BI funkcí `DateTime.FixedLocalNow()` a `#duration`.
@@ -98,7 +98,7 @@ V okně **Upravit dotazy** **Domů** > **Rozšířený editor**
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Příklad:
+   Například:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])

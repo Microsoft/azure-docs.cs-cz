@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254977"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285687"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
@@ -38,8 +38,8 @@ Tento kurz se zabývá následujícími úkony:
 
 Další materiály:
 
-- [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
+* [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -48,7 +48,16 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 K dokončení tohoto článku potřebujete:
 
 * Dokončete [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md).
-* Stáhněte si [šablony a artefakty](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , které jsou používány v tomto kurzu.
+
+## <a name="install-the-artifacts"></a>Instalace artefaktů
+
+Stáhněte [šablony a artefakty](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) a rozbalte je místně, pokud jste to neudělali. A potom spusťte skript PowerShellu, který se našel v [části Příprava artefaktů](./deployment-manager-tutorial.md#prepare-the-artifacts). Skript vytvoří skupinu prostředků, vytvoří kontejner úložiště, vytvoří kontejner objektů blob, nahraje stažené soubory a pak vytvoří token SAS.
+
+Vytvořte kopii adresy URL s tokenem SAS. Tato adresa URL je nutná k naplnění pole v obou souborech parametrů, souboru parametrů topologie a souboru parametrů zavedení.
+
+Otevřete CreateADMServiceTopology. Parameters. JSON a aktualizujte hodnoty **ProjectName** a **artifactSourceSASLocation**.
+
+Otevřete CreateADMRollout. Parameters. JSON a aktualizujte hodnoty **ProjectName** a **artifactSourceSASLocation**.
 
 ## <a name="create-a-health-check-service-simulator"></a>Vytvořit simulátor služby kontroly stavu
 
@@ -56,21 +65,12 @@ V produkčním prostředí obvykle používáte jednoho nebo více poskytovatel�
 
 Následující dva soubory se používají k nasazení funkce Azure Functions. Tyto soubory nemusíte stahovat, abyste procházeli v tomto kurzu.
 
-* Správce prostředků šablona umístěná na [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
-* Soubor zip zdrojového kódu funkce Azure, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato metoda ZIP je volána šablonou Správce prostředků.
+* Správce prostředků šablona umístěná na [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
+* Soubor zip zdrojového kódu funkce Azure, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Tato metoda ZIP je volána šablonou Správce prostředků.
 
 Pokud chcete službu Azure Functions nasadit, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell, a pak do okna prostředí vložte následující skript.  Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
 
-> [!IMPORTANT]
-> **ProjectName** ve skriptu PowerShellu se používá ke generování názvů služeb Azure, které jsou nasazené v tomto kurzu. Použijte stejnou hodnotu **namePrefix** , kterou jste použili v části [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md) pro ProjectName.  Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit, aby bylo nasazení úspěšné, vyberte název, který má méně než 12 znaků a použijte pouze malá písmena a číslice.
-> Uložte kopii názvu projektu. V tomto kurzu použijete stejný projectName.
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
@@ -236,13 +236,6 @@ Ověření a otestování funkce Azure Functions:
 Spusťte následující skript prostředí PowerShell pro nasazení topologie. Potřebujete stejný **CreateADMServiceTopology. JSON** a **CreateADMServiceTopology. Parameters. JSON** , který jste použili v [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md).
 
 ```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
-
-$resourceGroupName = "${projectName}rg"
-
-
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
@@ -369,9 +362,9 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Skupina prostředků**.
 2. Pomocí pole **Filtrovat podle názvu** můžete vyfiltrovat skupiny prostředků vytvořené v tomto kurzu. Měly by být 3 až 4:
 
-    * **&lt;namePrefix>rg:** Obsahuje prostředky Deployment Manageru.
-    * **&lt;namePrefix>ServiceWUSrg:** Obsahuje prostředky definované službou ServiceWUS.
-    * **&lt;namePrefix>ServiceEUSrg:** Obsahuje prostředky definované službou ServiceEUS.
+    * **&lt;projectName > RG**: obsahuje prostředky Deployment Manager.
+    * **&lt;projectName > ServiceWUSrg**: obsahuje prostředky definované ServiceWUS.
+    * **&lt;projectName > ServiceEUSrg**: obsahuje prostředky definované ServiceEUS.
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
 3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.

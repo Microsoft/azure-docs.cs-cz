@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1a00a487713458e4221f1832b2a4840ebd0d0375
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972963"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286172"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
@@ -37,7 +37,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
     * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) .
 
 > [!NOTE]
-> Pokud se zjistí jenom monitorování na základě agentů a ruční instrumentaci založené na sadě SDK, bude se dodržovat jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odeslání duplicitních dat. Další informace o této části najdete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
+> Pokud je detekováno monitorování založené na agentech i ruční instrumentaci založené na sadě SDK, bude dodrženo pouze nastavení ručního instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace najdete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) níže.
 
 ## <a name="enable-agent-based-monitoring-for-net-applications"></a>Povolit monitorování na základě agentů pro aplikace .NET
 

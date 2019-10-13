@@ -4,18 +4,18 @@ description: K nasazení prostředků do Azure použijte Azure Resource Manager 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973395"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286026"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
-Tento článek vysvětluje, jak pomocí Azure CLI s Správce prostředků šablonami nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Azure Resource Manager Overview](resource-group-overview.md).  
+Tento článek vysvětluje, jak pomocí Azure CLI s Správce prostředků šablonami nasadit vaše prostředky do Azure. Pokud nejste obeznámeni s koncepty nasazení a správy řešení Azure, přečtěte si téma [Azure Resource Manager Overview](resource-group-overview.md).
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
@@ -49,7 +49,7 @@ Při nasazování prostředků do Azure:
 2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazené prostředky. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, spojovníky a závorky. Může to být až 90 znaků. Nemůže končit tečkou.
 3. Nasaďte do skupiny prostředků šablonu, která definuje prostředky, které se mají vytvořit.
 
-Šablona může obsahovat parametry, které umožňují přizpůsobení nasazení. Můžete například zadat hodnoty, které jsou upraveny pro konkrétní prostředí (například vývoj, testování a produkce). Ukázková šablona definuje parametr pro SKLADOVOU položku účtu úložiště. 
+Šablona může obsahovat parametry, které umožňují přizpůsobení nasazení. Můžete například zadat hodnoty, které jsou upraveny pro konkrétní prostředí (například vývoj, testování a produkce). Ukázková šablona definuje parametr pro SKLADOVOU položku účtu úložiště.
 
 Následující příklad vytvoří skupinu prostředků a nasadí šablonu z místního počítače:
 
@@ -149,9 +149,31 @@ az group deployment create \
   --parameters @storage.parameters.json
 ```
 
+## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
+
+Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři, je nutné použít přepínač `--handle-extended-json-format`.  Například:
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
 ## <a name="test-a-template-deployment"></a>Testování nasazení šablony
 
-K otestování svých šablon a hodnot parametrů bez skutečného nasazení prostředků použijte příkaz [AZ Group Deployment Validate](/cli/azure/group/deployment#az-group-deployment-validate). 
+K otestování svých šablon a hodnot parametrů bez skutečného nasazení prostředků použijte příkaz [AZ Group Deployment Validate](/cli/azure/group/deployment#az-group-deployment-validate).
 
 ```azurecli-interactive
 az group deployment validate \
@@ -176,8 +198,8 @@ Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předán�
   "error": {
     "code": "InvalidTemplate",
     "details": null,
-    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter 
-      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed 
+    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter
+      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed
       value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
     "target": null
   },

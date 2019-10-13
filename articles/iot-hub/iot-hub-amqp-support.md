@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354895"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286654"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu AMQP
 
@@ -26,7 +26,7 @@ Aby bylo možné se připojit ke službě IoT Hub pomocí AMQP, může klient po
 
 Pro klienta služby jsou vyžadovány následující informace:
 
-| Information | Value |
+| Informace | Hodnota |
 |-------------|--------------|
 | Název hostitele IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Název klíče | `service` |
@@ -65,9 +65,9 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Další informace o výměně zpráv z cloudu na zařízení mezi službou a centrem IoT a mezi zařízením a službou IoT Hub najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md). Klient služby používá dva odkazy k posílání zpráv a přijímání zpětné vazby pro dříve odeslané zprávy ze zařízení, jak je popsáno v následující tabulce:
 
-| Vytvořil(a) | Typ odkazu | Cesta odkazu | Popis |
+| Vytvořil | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
-| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou `To` vlastnost nastavenou na `/devices/<deviceID>/messages/devicebound`cestu k přijímači cílového zařízení. |
+| Služba | Odkaz odesílatele | `/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tento odkaz odesílají prostřednictvím služby. Zprávy odeslané prostřednictvím tohoto odkazu mají svou vlastnost `To` nastavenou na cestu k přijímači cílového zařízení `/devices/<deviceID>/messages/devicebound`. |
 | Služba | Odkaz na přijímače | `/messages/serviceBound/feedback` | Zprávy o dokončení, odmítnutí a zrušení zpětné vazby, které pocházejí ze zařízení přijatých prostřednictvím tohoto odkazu, se službou. Další informace o zprávách zpětné vazby najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Následující fragment kódu ukazuje, jak vytvořit zprávu typu cloud-zařízení a odeslat ji do zařízení pomocí [knihovny uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python).
@@ -128,11 +128,11 @@ for msg in batch:
 
 Jak je uvedeno v předchozím kódu, zpráva o zpětné vazbě z cloudu na zařízení má typ obsahu *application/vnd. Microsoft. iothub. feedback. JSON*. Stav doručení původní zprávy můžete odvodit pomocí vlastností v těle zprávy JSON:
 
-* Klíč `statusCode` v těle zpětné vazby má jednu z následujících hodnot: *Úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
+* Key @no__t – 0 v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
 
-* Klíč `deviceId` v těle zpětné vazby má ID cílového zařízení.
+* Key @no__t – 0 v těle zpětné vazby má ID cílového zařízení.
 
-* Klíč `originalMessageId` v těle zpětné vazby má ID původní zprávy typu cloud-zařízení, která byla odeslána službou. Tento stav doručování můžete použít ke korelaci zpětné vazby ke zprávám z cloudu na zařízení.
+* Key @no__t – 0 v těle zpětné vazby má ID původní zprávy typu cloud-zařízení, která byla odeslána službou. Tento stav doručování můžete použít ke korelaci zpětné vazby ke zprávám z cloudu na zařízení.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Dostávat zprávy telemetrie (klient služby)
 
@@ -222,7 +222,7 @@ Pokud se chcete připojit ke službě IoT Hub pomocí AMQP, může zařízení p
 
 Pro klienta zařízení jsou vyžadovány následující informace:
 
-| Information | Hodnota |
+| Informace | Hodnota |
 |-------------|--------------|
 | Název hostitele IoT Hub | `<iot-hub-name>.azure-devices.net` |
 | Přístupový klíč | Primární nebo sekundární klíč, který je přidružený k zařízení |
@@ -259,15 +259,15 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 Následující cesty odkazů jsou podporovány jako operace zařízení:
 
-| Vytvořil(a) | Typ odkazu | Cesta odkazu | Popis |
+| Vytvořil | Typ odkazu | Cesta odkazu | Popis |
 |------------|-----------|-----------|-------------|
 | Zařízení | Odkaz na přijímače | `/devices/<deviceID>/messages/devicebound` | Zprávy z cloudu do zařízení, které jsou určené pro zařízení, se na tomto odkazu přijímají na základě každého cílového zařízení. |
-| Zařízení | Odkaz odesílatele | `/devices/<deviceID>messages/events` | Zprávy typu zařízení-Cloud, které jsou odesílány ze zařízení, se odesílají prostřednictvím tohoto odkazu. |
+| Zařízení | Odkaz odesílatele | `/devices/<deviceID>/messages/events` | Zprávy typu zařízení-Cloud, které jsou odesílány ze zařízení, se odesílají prostřednictvím tohoto odkazu. |
 | Zařízení | Odkaz odesílatele | `/messages/serviceBound/feedback` | Zpětná vazba ze zprávy z cloudu na zařízení, kterou zařízení odesílá prostřednictvím tohoto odkazu. |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Příjem příkazů z cloudu na zařízení (klient zařízení)
 
-Příkazy typu cloud-zařízení, které se odesílají do zařízení, přicházejí na `/devices/<deviceID>/messages/devicebound` odkaz. Zařízení mohou přijímat tyto zprávy v dávkách a v případě potřeby ve zprávě použít datovou část dat zprávy, vlastnosti zprávy, poznámky nebo vlastnosti aplikace.
+Příkazy typu cloud-zařízení, které se odesílají do zařízení, přicházejí na odkaz `/devices/<deviceID>/messages/devicebound`. Zařízení mohou přijímat tyto zprávy v dávkách a v případě potřeby ve zprávě použít datovou část dat zprávy, vlastnosti zprávy, poznámky nebo vlastnosti aplikace.
 
 Následující fragment kódu používá [knihovnu uAMQP v Pythonu](https://github.com/Azure/azure-uamqp-python)k přijímání zpráv z cloudu na zařízení podle zařízení.
 
@@ -366,7 +366,7 @@ for result in results:
 
 * Je možné, že klient může občas zpracovat přesměrování propojení správně. Pokud chcete tuto operaci pochopit, přečtěte si dokumentaci ke klientovi AMQP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o protokolu AMQP najdete v tématu [specifikace AMQP v 1.0](https://www.amqp.org/sites/amqp.org/files/amqp.pdf).
 

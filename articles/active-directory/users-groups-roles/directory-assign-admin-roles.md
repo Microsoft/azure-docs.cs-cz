@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70a2aa6ad0e092fc6df9f5792029dc759345321
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169777"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286798"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -1603,6 +1603,7 @@ Zobrazovaný název grafu | Zobrazované jméno Azure Portal | directoryRoleTemp
 Správce aplikace | Správce aplikace | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Vývojář aplikace | Vývojář aplikace | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Správce Azure DevOps | Správce Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Správce toku B2C uživatele | Správce toku B2C uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Správce atributů uživatelských toků B2C | Správce atributů uživatelských toků B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

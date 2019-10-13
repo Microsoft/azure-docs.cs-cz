@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274824"
+ms.locfileid: "72286696"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -34,7 +34,7 @@ Tento článek popisuje různé entity, které tvoří vzorce automatického šk
 > [!IMPORTANT]
 > Při vytváření účtu Batch můžete zadat [konfiguraci účtu](batch-api-basics.md#account), která určuje, jestli se fondy přiřazují v předplatném služby Batch (výchozí), nebo v předplatném uživatele. Pokud jste vytvořili účet Batch s výchozí konfigurací služby Batch, je účet omezený na maximální počet jader, které se dají použít ke zpracování. Služba Batch škáluje výpočetní uzly až do limitu jader. Z tohoto důvodu služba Batch nedosáhne cílového počtu výpočetních uzlů určených vzorcem automatického škálování. Informace o zobrazení a zvýšení kvót účtu najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) .
 >
->Pokud jste vytvořili účet s konfigurací předplatného uživatele, pak váš účet sdílí v rámci kvóty základní pro předplatné. Další informace [Virtual Machines](../azure-subscription-service-limits.md#virtual-machines-limits) najdete v tématu omezení [limitů, kvót a omezení předplatných a služeb Azure](../azure-subscription-service-limits.md).
+>Pokud jste vytvořili účet s konfigurací předplatného uživatele, pak váš účet sdílí v rámci kvóty základní pro předplatné. Další informace najdete v tématu [Omezení virtuálních počítačů](../azure-subscription-service-limits.md#virtual-machines-limits) v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
 >
 >
 
@@ -106,7 +106,7 @@ Můžete získat a nastavit hodnoty těchto proměnných definovaných službou 
 | --- | --- |
 | $TargetDedicatedNodes |Cílový počet vyhrazených výpočetních uzlů pro fond. Počet vyhrazených uzlů je určen jako cíl, protože fond nemusí vždy dosáhnout požadovaného počtu uzlů. Například pokud je cílový počet vyhrazených uzlů upraven pomocí vyhodnocení automatického škálování předtím, než fond dosáhne počátečního cíle, fond nemusí dosáhnout cíle. <br /><br /> Fond v účtu vytvořeném s konfigurací služby Batch nemusí dosáhnout svého cíle, pokud cíl překročí uzel účtu Batch nebo kvótu jádra. Fond v účtu vytvořeném s konfigurací předplatného uživatele nemusí dosáhnout svého cíle, pokud cíl překračuje kvótu Shared Core pro předplatné.|
 | $TargetLowPriorityNodes |Cílový počet výpočetních uzlů s nízkou prioritou pro fond. Počet uzlů s nízkou prioritou je zadán jako cíl, protože fond nemusí vždy dosáhnout požadovaného počtu uzlů. Například pokud je cílový počet uzlů s nízkou prioritou změněn pomocí vyhodnocení automatického škálování předtím, než fond dosáhne počátečního cíle, fond nemusí dosáhnout cíle. Fond také nemůže dosáhnout svého cíle, pokud cíl překračuje kvótu pro uzel účtu Batch nebo jader. <br /><br /> Další informace o výpočetních uzlech s nízkou prioritou najdete v tématu [použití virtuálních počítačů s nízkou prioritou ve službě Batch (Preview)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |Akce, ke které dojde, když jsou výpočetní uzly odebrány z fondu. Možné hodnoty jsou:<ul><li>**requeue**--výchozí hodnota. Okamžitě ukončí úlohy a umístí je zpátky do fronty úloh, aby byly přeplánovány. Tato akce zajistí, že cílový počet uzlů bude co nejrychleji dosažitelný, ale může být méně efektivní, protože všechny spuštěné úlohy budou přerušeny a musí se restartovat, což znamená, že všechny práce, které již byly provedeny, budou přerušeny. <li>**ukončit**– ukončí úlohy okamžitě a odebere je z fronty úloh.<li>**taskcompletion**– čeká na dokončení aktuálně spuštěných úloh a pak odebere uzel z fondu. Tuto možnost použijte, pokud nechcete, aby se úlohy přerušily a znovu zařadily do fronty, což vylučuje veškerou práci, kterou úloha provedla. <li>**retaineddata**– čeká na vyčištění všech místních dat zadržených úlohami na uzlu, který se má vyčistit před odebráním uzlu z fondu.</ul> |
+| $NodeDeallocationOption |Akce, ke které dojde, když jsou výpočetní uzly odebrány z fondu. Možné hodnoty:<ul><li>**requeue**--výchozí hodnota. Okamžitě ukončí úlohy a umístí je zpátky do fronty úloh, aby byly přeplánovány. Tato akce zajistí, že cílový počet uzlů bude co nejrychleji dosažitelný, ale může být méně efektivní, protože všechny spuštěné úlohy budou přerušeny a musí se restartovat, což znamená, že všechny práce, které již byly provedeny, budou přerušeny. <li>**ukončit**– ukončí úlohy okamžitě a odebere je z fronty úloh.<li>**taskcompletion**– čeká na dokončení aktuálně spuštěných úloh a pak odebere uzel z fondu. Tuto možnost použijte, pokud nechcete, aby se úlohy přerušily a znovu zařadily do fronty, což vylučuje veškerou práci, kterou úloha provedla. <li>**retaineddata**– čeká na vyčištění všech místních dat zadržených úlohami na uzlu, který se má vyčistit před odebráním uzlu z fondu.</ul> |
 
 > [!NOTE]
 > Proměnnou `$TargetDedicatedNodes` lze také zadat pomocí aliasu `$TargetDedicated`. Podobně lze proměnnou `$TargetLowPriorityNodes` zadat pomocí aliasu `$TargetLowPriority`. Pokud je plně pojmenovaná proměnná i její alias nastavené vzorcem, bude mít přednost hodnota přiřazená plně pojmenované proměnné.
@@ -142,17 +142,17 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 >
 >
 
-## <a name="types"></a>Typy
+## <a name="types"></a>Druhy
 
 Ve vzorci jsou podporovány tyto typy:
 
 * double
 * doubleVec
 * doubleVecList
-* odkazy řetězců
+* string
 * časové razítko – časové razítko je složená struktura, která obsahuje následující členy:
 
-  * jednolet
+  * za rok
   * měsíc (1-12)
   * den (1-31)
   * Weekday (ve formátu číslo, například 1 pro pondělí)
@@ -197,7 +197,7 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 
 Při testování typu Double pomocí ternárního operátoru (`double ? statement1 : statement2`) je hodnota nenulového typu **true**a nula je **false**.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 Tyto předdefinované **funkce** jsou k dispozici pro použití při definování vzorce automatického škálování.
 
 | Funkce | Návratový typ | Popis |
@@ -207,7 +207,7 @@ Tyto předdefinované **funkce** jsou k dispozici pro použití při definován�
 | LG (Double) |double |Vrátí základ protokolu 2 pro Double. |
 | LG (doubleVecList) |doubleVec |Vrátí základ protokolu doubleVecList, který je součástí komponenty. Vec (Double) se musí explicitně předat pro parametr. V opačném případě se předpokládá LG verze (Double). |
 | LN (Double) |double |Vrátí přirozený logaritmus typu Double. |
-| LN (doubleVecList) |doubleVec |Vrátí základ protokolu doubleVecList, který je součástí komponenty. Vec (Double) se musí explicitně předat pro parametr. V opačném případě se předpokládá LG verze (Double). |
+| LN (doubleVecList) |doubleVec |Vrátí přirozený logaritmus typu Double. |
 | protokol (Double) |double |Vrátí základ protokolu 10 pro dvojitou hodnotu. |
 | protokol (doubleVecList) |doubleVec |Vrátí základ protokolu doubleVecList, který je součástí komponenty. Vec (Double) je nutné explicitně předat pro jeden parametr typu Double. V opačném případě se předpokládá, že je použita dvojitá verze protokolu (Double). |
 | Max (doubleVecList) |double |Vrátí maximální hodnotu v doubleVecList. |
@@ -222,7 +222,7 @@ Tyto předdefinované **funkce** jsou k dispozici pro použití při definován�
 | čas (String dateTime = "") |časové razítko |Vrátí časové razítko aktuálního času, pokud nejsou předány žádné parametry, nebo časové razítko řetězce dateTime, pokud je předán. Podporované formáty data a času jsou W3C-DTF a RFC 1123. |
 | Val (doubleVec v, Double i) |double |Vrátí hodnotu elementu, který je v umístění i ve vektoru v, s počátečním indexem nula. |
 
-Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Příklad:
+Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Například:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -242,7 +242,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Vrátí období vzorků, které byly získány v historické ukázkové sadě dat. |
 | Count () |Vrátí celkový počet vzorků v historii metrik. |
 | HistoryBeginTime() |Vrátí časové razítko ukázky nejstarších dostupných dat pro danou metriku. |
-| GetSamplePercent() |Vrátí procentuální hodnotu vzorků, které jsou k dispozici v daném časovém intervalu. Příklad:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Vzhledem k tomu, že metoda `GetSample` se nezdařila, pokud procento vrácených vzorků je menší než zadané `samplePercent`, můžete ke kontrole prvního použít metodu `GetSamplePercent`. Pak můžete provést alternativní akci, pokud nejsou k dispozici dostatečné vzorky, aniž by došlo k zastavení automatického vyhodnocení měřítka. |
+| GetSamplePercent() |Vrátí procentuální hodnotu vzorků, které jsou k dispozici v daném časovém intervalu. Například:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Vzhledem k tomu, že metoda `GetSample` se nezdařila, pokud procento vrácených vzorků je menší než zadané `samplePercent`, můžete ke kontrole prvního použít metodu `GetSamplePercent`. Pak můžete provést alternativní akci, pokud nejsou k dispozici dostatečné vzorky, aniž by došlo k zastavení automatického vyhodnocení měřítka. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Ukázky, procentuální vzorek a metoda *getsample ()*
 Základní operací vzorce automatického škálování je získat data metrik úlohy a prostředku a pak upravit velikost fondu na základě těchto dat. V takovém případě je důležité mít jasné informace o tom, jak vzorce automatického škálování pracují s daty metrik (ukázky).
@@ -267,7 +267,7 @@ K tomu použijte `GetSample(interval look-back start, interval look-back end)` a
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Příklad:
+Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Například:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -294,11 +294,11 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
 
 <table>
   <tr>
-    <th>Metriky</th>
+    <th>Metrika</th>
     <th>Popis</th>
   </tr>
   <tr>
-    <td><b>Partner</b></td>
+    <td><b>Prostředek</b></td>
     <td><p>Metriky prostředků jsou založené na procesoru, šířce pásma, využití paměti výpočetních uzlů a počtu uzlů.</p>
         <p> Tyto proměnné definované službou jsou užitečné při provádění úprav v závislosti na počtu uzlů:</p>
     <p><ul>
@@ -323,7 +323,7 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Hybn</b></td>
+    <td><b>Úkol</b></td>
     <td><p>Metriky úloh jsou založené na stavu úkolů, například aktivní, čeká na vyřízení a dokončeno. Následující proměnné definované službou jsou užitečné při vytváření úprav velikosti fondu na základě metrik úloh:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -472,7 +472,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování u existujícího fondu
 
-Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Příklad:
+Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Například:
 
 * [BatchClient. PoolOperations. EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Povolit automatické škálování ve fondu][rest_enableautoscale] (REST API)

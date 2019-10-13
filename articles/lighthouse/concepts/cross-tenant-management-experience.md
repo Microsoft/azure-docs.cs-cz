@@ -1,5 +1,5 @@
 ---
-title: Prostředí pro správu mezi klienty pomocí Azure Lighthouse
+title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
-ms.translationtype: MT
+ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309652"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286618"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -53,11 +53,11 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 
 - Správa hostovaných prostředí Kubernetes a nasazení a Správa kontejnerových aplikací v rámci zákaznických tenantů
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
 - Zobrazit výstrahy pro delegovaná předplatná v Azure Portal nebo programově prostřednictvím volání REST API, s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
-- Log Analytics: Dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
+- Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -108,7 +108,7 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 - Přístup k virtuálním počítačům pomocí sériové konzoly v klientech zákazníků
 - Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálnímu počítači a nemůžete integrovat virtuální počítač s Key Vaultem pro hesla, tajné klíče a kryptografické klíče pro šifrování disků.
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/):
 
 - Nasazení a správa virtuálních sítí a karet virtuální síťové adaptéry (Virtual Network Interface) v rámci zákaznických tenantů
 
@@ -119,7 +119,7 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 ## <a name="current-limitations"></a>Aktuální omezení
 U všech scénářů Prosím mějte na paměti následující stávající omezení:
 
-- Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operací pro tyto požadavky začínají `https://management.azure.com`na. Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k tajným klíčům klíčů nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Identifikátory URI operací pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo. `https://mykeyvault.vault.azure.net/` Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy. 
+- Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operace pro tyto požadavky začínají na `https://management.azure.com`. Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k tajným klíčům klíčů nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Operace s identifikátory URI pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/`. Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy. 
 - Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka, správce přístupu uživatele nebo jakýchkoli integrovaných rolí s oprávněním [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) se také nepodporují.
 - V současné době nemůžete připojit předplatné (nebo skupinu prostředků v rámci předplatného) pro správu delegovaných prostředků Azure, pokud předplatné používá Azure Databricks. Podobně platí, že pokud bylo předplatné zaregistrované pro registraci u poskytovatele prostředků **Microsoft. ManagedServices** , nebudete moct v tomto okamžiku vytvořit pracovní prostor datacihly pro toto předplatné.
 

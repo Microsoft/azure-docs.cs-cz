@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828934"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285788"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
@@ -23,9 +23,9 @@ V tomto článku se dozvíte, jak vytvořit privátní cloud CloudSimple a nasta
 
 Kontrola [požadavků na síť](cloudsimple-network-checklist.md).
 
-## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
@@ -33,7 +33,7 @@ Privátní cloud je izolovaný zásobník VMware, který podporuje hostitele ESX
 
 Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají svůj vlastní Server vCenter ve své vlastní doméně pro správu. Zásobník běží na vyhrazených uzlech a v izolovaných hardwarových uzlech.
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. V **přehledu**klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
@@ -57,7 +57,7 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 
 11. Klikněte na **Další: zkontrolovat a vytvořit**.
 12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
-13. Klikněte na **vytvořit**.
+13. Klikněte na **Vytvořit**.
 
 Spustí se proces zřizování privátního cloudu.  Zřízení privátního cloudu může trvat až dvě hodiny.
 
@@ -65,7 +65,7 @@ Spustí se proces zřizování privátního cloudu.  Zřízení privátního clo
 
 K portálu CloudSimple můžete přistupovat z Azure Portal.  Portál CloudSimple se spustí s přihlašovacími údaji pro přihlášení k Azure pomocí jednotného přihlašování (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizační aplikace služby CloudSimple** .  Další informace o udělení oprávnění najdete v tématu [souhlasu s aplikací autorizace služby CloudSimple](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
-1. Vyberte **všechny služby**.
+1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 4. Z přehledu klikněte na **Přejít na portál CloudSimple** a otevřete novou kartu prohlížeče pro portál CloudSimple.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
@@ -82,7 +82,7 @@ Připojení VPN typu Point-to-site je nejjednodušší způsob, jak se připojit
 2. Vyberte **VPN Gateway**.
 3. Klikněte na **nový VPN Gateway**.
 
-    ![Vytvořit bránu VPN](media/create-vpn-gateway.png)
+    ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
 4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
 
@@ -116,7 +116,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 4. Vyberte možnost **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN**.
 
-    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
+    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
 
 6. Naimportujte konfiguraci do svého klienta VPN.
 
@@ -183,9 +183,9 @@ Pokud nastavíte heslo, které nesplňuje požadavky:
 * Pokud používáte klienta vSphere Flash, nahlásí chybu.
 * Pokud používáte klienta HTML5, nehlásí chybu. Klient nepřijme změnu a původní heslo bude nadále fungovat.
 
-## <a name="change-nsx-administrator-password"></a>Změnit heslo správce NSX
+## <a name="access-nsx-manager"></a>Přístup k NSX Manageru
 
-NSX Manager je nasazen s výchozím heslem.  Po vytvoření privátního cloudu doporučujeme změnit heslo.
+NSX Manager je nasazen s výchozím heslem. 
 
 * Uživatelské jméno: **správce**
 * Heslo: **CloudSimple123!**
@@ -198,8 +198,6 @@ Plně kvalifikovaný název domény (FQDN) a IP adresa NSX Manageru najdete na p
 4. Použijte plně kvalifikovaný název domény nebo IP adresu **NSX Manageru** a připojte se pomocí webového prohlížeče.
 
     ![Najít plně kvalifikovaný název domény NSX Manageru](media/private-cloud-nsx-manager-fqdn.png)
-
-Pokud chcete změnit heslo, postupujte podle pokynů v části [instalace NSX Manageru](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
 
 ## <a name="create-a-port-group"></a>Vytvoření skupiny portů
 

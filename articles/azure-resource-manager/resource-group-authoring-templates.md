@@ -4,14 +4,14 @@ description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomo
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694976"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286718"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopení struktury a syntaxe šablon Azure Resource Manager
 
@@ -66,7 +66,7 @@ Dostupné vlastnosti pro parametr:
     "minLength": <minimum-length-for-string-or-array>,
     "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "<description-of-the parameter>" 
+      "description": "<description-of-the parameter>"
     }
   }
 }
@@ -107,8 +107,8 @@ Následující příklad ukazuje dostupné možnosti pro definování proměnné
 ```json
 "variables": {
   "<variable-name>": "<variable-value>",
-  "<variable-name>": { 
-    <variable-complex-type-value> 
+  "<variable-name>": {
+    <variable-complex-type-value>
   },
   "<variable-object-name>": {
     "copy": [
@@ -247,12 +247,12 @@ Provedete definování prostředků s následující strukturou:
 | location |Různé |Podporovaná geografická umístění poskytnutého prostředku Můžete vybrat kterékoli z dostupných umístění, ale obvykle dává smysl vybrat, která je blízko vašim uživatelům. Obvykle má smysl umístit prostředky, které vzájemně spolupracují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (například přiřazení role) nevyžadují umístění. Viz [Nastavení umístění prostředku](resource-location.md). |
 | tags |Ne |Značky, které jsou přidruženy k prostředku. Použijte značky pro logickou organizaci prostředků v rámci vašeho předplatného. |
 | Vyjádření |Ne |Poznámky k dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
-| Kopií |Ne |Pokud je potřeba více než jedna instance, počet prostředků, které se mají vytvořit. Výchozí režim je paralelní. Zadejte sériový režim, pokud nechcete, aby se nasadily všechny nebo prostředky. Další informace najdete v tématu [vytvoření několika instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md). |
+| kopií |Ne |Pokud je potřeba více než jedna instance, počet prostředků, které se mají vytvořit. Výchozí režim je paralelní. Zadejte sériový režim, pokud nechcete, aby se nasadily všechny nebo prostředky. Další informace najdete v tématu [vytvoření několika instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazeny před nasazením tohoto prostředku. Správce prostředků vyhodnocuje závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou prostředky vzájemně závislé, nasadí se paralelně. Hodnota může být čárkami oddělený seznam názvů prostředků nebo jedinečných identifikátorů prostředků. Pouze seznam prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou definované v této šabloně, už musí existovat. Vyhněte se přidávání zbytečných závislostí, protože mohou zpomalit nasazení a vytvářet cyklické závislosti. Pokyny k nastavení závislostí najdete v tématu [Definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifické pro prostředky. Hodnoty vlastností jsou stejné jako hodnoty, které zadáte v textu žádosti pro operaci REST API (metoda PUT) pro vytvoření prostředku. Můžete také zadat pole pro kopírování a vytvořit několik instancí vlastnosti. Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). |
-| skladové | Ne | Některé prostředky umožňují hodnoty definující SKU, které se mají nasadit. Můžete například zadat typ redundance pro účet úložiště. |
+| Skladové | Ne | Některé prostředky umožňují hodnoty definující SKU, které se mají nasadit. Můžete například zadat typ redundance pro účet úložiště. |
 | plnění | Ne | Některé prostředky umožňují hodnotu definující typ prostředku, který nasadíte. Můžete například zadat typ Cosmos DB, který se má vytvořit. |
-| Rozhraní | Ne | Některé prostředky umožňují hodnoty definující plán, který se má nasadit. Můžete například zadat image Marketplace pro virtuální počítač. | 
+| rozhraní | Ne | Některé prostředky umožňují hodnoty definující plán, který se má nasadit. Můžete například zadat image Marketplace pro virtuální počítač. |
 | Prostředky |Ne |Podřízené prostředky závislé na definovaném prostředku. Poskytněte jenom typy prostředků, které jsou povolené schématem nadřazeného prostředku. Nepředpokládá se závislost na nadřazeném prostředku. Tuto závislost musíte explicitně definovat. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Výstupy
@@ -355,7 +355,10 @@ Pro **výstupy**přidejte objekt metadat do výstupní hodnoty.
 
 Do uživatelsky definovaných funkcí nemůžete přidat objekt metadat.
 
-Pro vložené komentáře můžete použít `//`, ale tato syntaxe nefunguje u všech nástrojů. K nasazení šablony s vloženými komentáři nelze použít rozhraní příkazového řádku Azure CLI. A nemůžete použít editor šablon portálu pro práci se šablonami s vloženými komentáři. Pokud přidáte tento styl komentáře, ujistěte se, že nástroje, které používáte, podporují vložené komentáře JSON.
+Pro vložené komentáře můžete použít buď `//`, nebo `/* ... */`, ale tato syntaxe nefunguje u všech nástrojů. Editor šablon portálu nemůžete použít pro práci se šablonami s vloženými komentáři. Pokud přidáte tento styl komentáře, ujistěte se, že nástroje, které používáte, podporují vložené komentáře JSON.
+
+> [!NOTE]
+> K nasazení šablon s komentáři pomocí rozhraní příkazového řádku Azure je nutné použít přepínač `--handle-extended-json-format`.
 
 ```json
 {
@@ -363,7 +366,7 @@ Pro vložené komentáře můžete použít `//`, ale tato syntaxe nefunguje u v
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
-  "dependsOn": [ // storage account and network interface must be deployed first
+  "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
@@ -376,6 +379,30 @@ V VS Code můžete nastavit režim jazyka na JSON s komentáři. Vložené komen
 1. Vyberte **JSON s komentáři**.
 
    ![Vybrat režim jazyka](./media/resource-group-authoring-templates/select-json-comments.png)
+
+## <a name="multi-line-strings"></a>Víceřádkové řetězce
+
+Řetězec můžete rozdělit na více řádků. Například vlastnost Location a jeden z komentářů v následujícím příkladu JSON.
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+Chcete-li nasadit šablony s víceřádkovými řetězci pomocí rozhraní příkazového řádku Azure, je nutné použít přepínač `--handle-extended-json-format`.
 
 ## <a name="next-steps"></a>Další kroky
 

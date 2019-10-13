@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264313"
+ms.locfileid: "72286509"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -97,7 +97,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně nastavení brány firewall prosím počkejte několik minut, než ověříte tuto změnu.
 
 
-## <a name="registry-operations"></a>Operace v registru
+## <a name="registry-operations"></a>Operace registru
 
 - [Návody přístup k HTTP API v2 registru Docker?](#how-do-i-access-docker-registry-http-api-v2)
 - [Návody odstranit všechny manifesty, na které není odkazováno pomocí žádné značky v úložišti?](#how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository)
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Příklad:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Například:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -416,15 +416,15 @@ Pokud používáte prohlížeč Microsoft Edge/IE, můžete vidět maximálně 1
 Prohlížeč nemusí být schopný odeslat žádost o načtení úložišť nebo značek na server. Mohou nastat různé důvody:
 
 * Nedostatečné síťové připojení
-* Servery
+* Brána firewall
 * Blokování služby AD
 * Chyby služby DNS
 
-Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a připojení. Kromě toho můžete také vyzkoušet anonymním nebo soukromou relaci v prohlížeči, abyste se vyhnuli zastaralým mezipaměťm nebo souborům cookie v prohlížeči.
+Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a připojení. Zkuste spustit `az acr check-health -n yourRegistry` pomocí rozhraní příkazového řádku Azure, abyste zkontrolovali, jestli se vaše prostředí dokáže připojit k Container Registry. Kromě toho můžete také vyzkoušet anonymním nebo soukromou relaci v prohlížeči, abyste se vyhnuli zastaralým mezipaměťm nebo souborům cookie v prohlížeči.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Povolit dešifrování HTTPS v Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -434,7 +434,7 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 
 Konfigurovat proxy Docker na 127.0.0.1:8888
 
-#### <a name="linux-containers"></a>Kontejnery platformy Linux
+#### <a name="linux-containers"></a>Linuxové kontejnery
 
 Vyhledejte IP adresu virtuálního přepínače Docker VM:
 
@@ -444,7 +444,7 @@ Vyhledejte IP adresu virtuálního přepínače Docker VM:
 
 Nakonfigurujte proxy Docker na výstup předchozího příkazu a portu 8888 (například 10.0.75.1:8888).
 
-## <a name="tasks"></a>Úkoly
+## <a name="tasks"></a>Úlohy
 
 - [Návody Batch zruší spuštění?](#how-do-i-batch-cancel-runs)
 - [Návody do příkazu AZ ACR Build zahrnout složku. Git?](#how-do-i-include-the-git-folder-in-az-acr-build-command)

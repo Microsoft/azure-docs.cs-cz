@@ -1,5 +1,5 @@
 ---
-title: Připojení zákazníka k delegované správě prostředků Azure – Azure Lighthouse
+title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
 author: JnHs
 ms.author: jenhayes
@@ -7,14 +7,14 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f1d01a4b6b4e42261542cc64516a2e1c2bef56c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
-ms.translationtype: MT
+ms.openlocfilehash: 78cef29807ced2f3dec765723c57f951f843b1ca
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958727"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286577"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Připojení zákazníka ke správě delegovaných prostředků Azure
+# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
 V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit zákazníka k delegované správě prostředků Azure a povolit, aby jejich delegované prostředky (předplatná a/nebo skupiny prostředků) byly dostupné a spravované prostřednictvím vašich vlastních Azure Active Directory ( Tenant Azure AD). V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
 
@@ -40,7 +40,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto informace ještě nemáte, můžete si je načíst jedním z následujících způsobů.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portál Azure
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -52,7 +52,7 @@ ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horn
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -93,7 +93,7 @@ Aby bylo možné definovat autorizaci, budete muset znát hodnoty ID pro každé
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -126,7 +126,7 @@ K zaregistrování předplatného zákazníka použijte příslušnou šablonu A
 
 |**K zaregistrování**  |**Použít tuto šablonu Azure Resource Manager**  |**A upravit tento soubor parametrů** |
 |---------|---------|---------|
-|Formě   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Předplatné   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Skupina prostředků   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
 |Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
@@ -215,7 +215,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -239,7 +239,7 @@ az deployment create –-name <deploymentName \
 
 Po úspěšném připojení zákaznického předplatného na delegované řízení prostředků v Azure budou uživatelé v tenantovi poskytovatele služeb moci zobrazit předplatné a jeho prostředky (pokud jim byl udělen přístup prostřednictvím výše uvedeného postupu). buď samostatně, nebo jako člen skupiny Azure AD s příslušnými oprávněními). Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portál Azure
 
 V tenantovi poskytovatele služeb:
 
@@ -264,7 +264,7 @@ V tenantovi zákazníka:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

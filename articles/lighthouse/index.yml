@@ -3,19 +3,19 @@ title: Dokumentace ke službě Azure Lighthouse
 summary: Azure Lighthouse umožňuje poskytovatelům služeb spravovat prostředky Azure napříč všemi jejich zákazníky se zajištěním vyšší automatizace, větší škálovatelnosti a vylepšených zásad správného řízení.
 metadata:
   title: Dokumentace ke službě Azure Lighthouse
-  description: Informace o správě prostředků zákazníků ve velkém měřítku
+  description: Azure Lighthouse umožňuje poskytovatelům služeb spravovat prostředky Azure napříč všemi jejich zákazníky se zajištěním vyšší automatizace, větší škálovatelnosti a vylepšených zásad správného řízení.
   ms.service: lighthouse
   ms.topic: landing-page
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/25/2019
-  ms.openlocfilehash: d2003af574961a5729949f60824aa67692be1655
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: 9543ac8a6e7dc30fa44e4bada42ca4786cc53ba0
+  ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71264573"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72286571"
 landingContent:
 - title: Informace o službě Azure Lighthouse
   linkLists:

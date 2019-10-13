@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240656"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285914"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Ingestování dat v Azure Průzkumník dat
 
@@ -22,17 +22,17 @@ Ingestování dat je proces, který se používá k načtení záznamů dat z je
 
 Služba správy dat Azure Průzkumník dat, která zodpovídá za příjem dat, nabízí tyto funkce:
 
-1. **Data pro vyžádání**: Vyžádat data z externích zdrojů (Event Hubs) nebo číst žádosti o přijetí změn z fronty Azure.
+1. **Vyžádání dat**: vyžádání dat z externích zdrojů (Event Hubs) nebo čtení žádostí o přijetí změn z fronty Azure.
 
-1. **Dávkování**: Dávková data se přenášejí do stejné databáze a tabulky, aby se optimalizoval propustnost přijímání.
+1. **Dávkování**: dávkové zpracování dat do stejné databáze a tabulky pro optimalizaci propustnosti přijímání.
 
-1. **Ověření**: Předběžné ověření a převod formátu v případě potřeby.
+1. **Ověření**: v případě potřeby předběžné ověření a převod formátu.
 
-1. **Manipulace s daty**: Přiřazení schématu, uspořádání, indexování, kódování a komprimace dat.
+1. **Manipulace s daty**: porovnání schématu, uspořádání, indexování, kódování a komprimace dat.
 
-1. **Bod trvalosti v toku přijímání**: Spravujte pro modul přijímání příjmu a pokusy o opakování při přechodných selháních.
+1. **Bod trvalosti v toku**příjmu: umožňuje spravovat přijímání příjmu na stroji a zpracovávat opakované pokusy po přechodných chybách.
 
-1. **Potvrďte příjem dat**: Zpřístupňuje dostupná data pro dotaz.
+1. **Potvrďte příjem dat**: zpřístupňuje data pro dotaz.
 
 ## <a name="ingestion-methods"></a>Metody přijímání
 
@@ -76,7 +76,7 @@ Kusto nabízí klientskou sadu SDK, která se dá použít k ingestování a dot
 
 * Ingestování dat prostřednictvím služby Azure Průzkumník dat Data Management (vysoce propustnost a spolehlivé ingestování):
 
-    Ingestování [**dávky**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (poskytováno sadou SDK): klient nahraje data do služby Azure Blob Storage (určené službou správy dat Azure Průzkumník dat) a odešle oznámení do fronty Azure. Pro zajištění vysokého objemu, spolehlivého a levného příjmu dat se doporučuje postupovat v dávce.
+    Ingestování [**dávky**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (poskytované sadou SDK): klient nahraje data do úložiště objektů BLOB v Azure (určené službou správy dat Azure Průzkumník dat) a odešle oznámení do fronty Azure. Pro zajištění vysokého objemu, spolehlivého a levného příjmu dat se doporučuje postupovat v dávce.
 
 * Ingestování dat přímo do modulu Azure Průzkumník dat (nejvhodnější pro zkoumání a vytváření prototypů):
 
@@ -90,7 +90,7 @@ Kusto nabízí klientskou sadu SDK, která se dá použít k ingestování a dot
 
 | Metoda | Latence |
 | --- | --- |
-| **Ingestování vloženého textu** | Okamžité |
+| **Ingestování vloženého textu** | Projev |
 | **Ingestování z dotazu** | Doba zpracování dotazu + |
 | **Ingestování z úložiště** | Doba stahování a doba zpracování |
 | **Přijímání zpráv do fronty** | Čas dávky a doba zpracování |
@@ -119,7 +119,7 @@ Pro organizace s existující infrastrukturou, která je založená na službě 
 
 Pro všechny metody příjmu kromě ingestování z dotazu naformátujte data tak, aby je mohla Azure Průzkumník dat analyzovat. Podporované formáty dat:
 
-* CSV, TSV, TSVE, PSV, SCSV, SOH
+* TXT, CSV, TSV, TSVE, PSV, SCSV, SOH
 * JSON (oddělený řádkem, víceřádkový), Avro
 * ZIP a GZIP 
 
@@ -135,7 +135,7 @@ Pro všechny metody příjmu kromě ingestování z dotazu naformátujte data ta
 
 Mapování schématu pomáhá navazovat zdrojová datová pole na sloupce cílové tabulky.
 
-* [Mapování sdílených svazků clusteru](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje se všemi ordinálními formáty. Dá se udělat pomocí parametru příkazu ingestovat nebo [předem vytvořit v tabulce](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazovat z parametru příkazu ingestování.
+* [Mapování CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje se všemi ordinálními formáty. Dá se udělat pomocí parametru příkazu ingestovat nebo [předem vytvořit v tabulce](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazovat z parametru příkazu ingestování.
 * [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [mapování Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) je možné provést pomocí parametru příkazového řádku ingestování. Lze je také [předem vytvořit v tabulce](/azure/kusto/management/tables#create-ingestion-mapping) a odkazovat z parametru příkazu ingest.
 
 ## <a name="next-steps"></a>Další kroky

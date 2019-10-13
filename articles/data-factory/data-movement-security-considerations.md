@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931267"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285602"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,12 +46,12 @@ Data Factory bylo certifikováno pro:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure – https://aka.ms/AzureCompliance.
+Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech nabídek Azure check- https://aka.ms/AzureCompliance.
 
 V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou scénářích přesunu dat: 
 
-- **Scénář cloudu**: V tomto scénáři je váš zdroj i cíl veřejně přístupný prostřednictvím Internetu. Mezi ně patří spravované služby cloudového úložiště, jako jsou Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, jako je Salesforce, a webové protokoly, jako jsou FTP a OData. V [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats)najdete úplný seznam podporovaných zdrojů dat.
-- **Hybridní scénář**: V tomto scénáři je buď zdroj nebo cíl za bránou firewall nebo v místní podnikové síti. Nebo je úložiště dat v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupné. V tomto scénáři spadají i databázové servery hostované na virtuálních počítačích.
+- **Scénář cloudu**: v tomto scénáři jsou vaše zdrojová i cílová služba veřejně přístupná prostřednictvím Internetu. Mezi ně patří spravované služby cloudového úložiště, jako jsou Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, jako je Salesforce, a webové protokoly, jako jsou FTP a OData. V [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats)najdete úplný seznam podporovaných zdrojů dat.
+- **Hybridní scénář**: v tomto scénáři je buď zdroj nebo cíl za bránou firewall nebo místní podnikovou sítí. Nebo je úložiště dat v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupné. V tomto scénáři spadají i databázové servery hostované na virtuálních počítačích.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -110,7 +110,7 @@ Kanál příkazů umožňuje komunikaci mezi službami přesunu dat v Data Facto
 ### <a name="on-premises-data-store-credentials"></a>Přihlašovací údaje místního úložiště dat
 Přihlašovací údaje mohou být uloženy v rámci objektu pro vytváření dat nebo na [ně odkazovat pomocí služby Data Factory](store-credentials-in-key-vault.md) za běhu z Azure Key Vault. Pokud ukládáte přihlašovací údaje v rámci služby Data Factory, je vždy uložen šifrovaný v místním prostředí Integration runtime. 
  
-- **Ukládat přihlašovací údaje lokálně**. Pokud přímo použijete rutinu **set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji, které jsou vložené ve formátu JSON, bude propojená služba zašifrovaná a uložená v místním prostředí Integration runtime.  V takovém případě přihlašovací údaje přes back-end službu Azure, která je geograficky zabezpečená, na integrační počítač v místním prostředí, kde je konečně encrpted a uložený. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) .
+- **Ukládat přihlašovací údaje lokálně**. Pokud přímo použijete rutinu **set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji, které jsou vložené ve formátu JSON, bude propojená služba zašifrovaná a uložená v místním prostředí Integration runtime.  V takovém případě přihlašovací údaje přes back-end službu Azure, která je mimořádně bezpečná, na integrační počítač v místním prostředí, kde je konečně zašifrovaný a uložený. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) .
 
 - **Ukládat přihlašovací údaje v Azure Key Vault**. Přihlašovací údaje úložiště dat můžete také uložit v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory načítá přihlašovací údaje během provádění aktivity. Další informace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md).
 
@@ -136,11 +136,11 @@ Azure Virtual Network je logická reprezentace vaší sítě v cloudu. Můžete 
 
 Následující tabulka shrnuje doporučení konfigurace sítě a místního prostředí Integration runtime na základě různých kombinací zdrojového a cílového umístění pro pohyb hybridních dat.
 
-| Source      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
+| Zdroj      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
+| Místní prostředí | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Místní prostředí | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Místní prostředí | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
 
 Následující obrázky ukazují použití prostředí Integration runtime v místním prostředí pro přesun dat mezi místní databází a službami Azure pomocí ExpressRoute a IPSec VPN (s využitím Azure Virtual Network):
 
@@ -152,24 +152,17 @@ Následující obrázky ukazují použití prostředí Integration runtime v mí
 
 ![IPSec VPN s bránou](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Konfigurace brány firewall a seznam povolených IP adres
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Nastavení konfigurace brány firewall a povolení seznamu povolených IP adres
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť  
 V podniku je podniková brána firewall provozována v centrálním směrovači organizace. Brána Windows Firewall běží jako démon na místním počítači, ve kterém je nainstalovaný modul runtime integrace v místním prostředí. 
 
 Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podnikové brány firewall:
 
-| Názvy domén                  | Odchozí porty | Popis                              |
-| ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | Požadováno místním prostředím Integration runtime pro připojení k pohybovým službám dat v Data Factory. |
-| `*.frontend.clouddatahub.net` | 443            | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. |
-| `download.microsoft.com`    | 443            | Požadováno místním prostředím Integration runtime pro stahování aktualizací. Pokud jste zakázali automatickou aktualizaci, můžete to vynechat. |
-| `*.core.windows.net`          | 443            | Používá se v místním prostředí Integration runtime pro připojení k účtu úložiště Azure při použití funkce [dvoufázové kopírování](copy-activity-performance.md#staged-copy) . |
-| `*.database.windows.net`      | 1433           | Volitelné Vyžaduje se při kopírování z nebo do Azure SQL Database nebo Azure SQL Data Warehouse. Pomocí funkce dvoufázové kopírování zkopírujte data do Azure SQL Database nebo Azure SQL Data Warehouse bez otevření portu 1433. |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | Volitelné Vyžaduje se při kopírování z nebo do Azure Data Lake Store. |
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Možná budete muset spravovat porty nebo seznam povolených domén na úrovni brány firewall společnosti podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.   
+> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.   
 
 Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
@@ -179,10 +172,10 @@ Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
 ![Požadavky na port brány](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>Konfigurace a seznam povolených IP adres v úložištích dat
-Některá úložiště dat v cloudu také vyžadují, abyste přistupovali IP adresu počítače, který přistupuje k úložišti. Ujistěte se, že IP adresa počítače místního prostředí Integration runtime je povolená nebo správně nakonfigurovaná v bráně firewall.
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Nastavení konfigurace protokolu IP a povolených seznamů povolených v úložištích dat
+Některá úložiště dat v cloudu také vyžadují, abyste povolili IP adresu počítače, který přistupuje k úložišti. Ujistěte se, že je IP adresa počítače místního prostředí Integration runtime povolená nebo správně nakonfigurovaná v bráně firewall.
 
-Následující cloudová úložiště dat vyžadují, abyste přibyly do seznamu povolených IP adres počítače místního prostředí Integration runtime. Některá z těchto úložišť dat ve výchozím nastavení nemusí vyžadovat přidávání do seznamu povolených. 
+Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu počítače místního prostředí Integration runtime. Některá z těchto úložišť dat nemusí ve výchozím nastavení vyžadovat seznam povolených. 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -198,10 +191,10 @@ Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing
 
 **Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 
-Místní prostředí Integration runtime zpřístupňuje připojení založená na protokolu HTTP pro přístup k Internetu. Aby bylo možné vytvořit toto připojení, musí být otevřeny Odchozí porty 443 pro prostředí Integration runtime v místním prostředí. Pro aplikaci Správce přihlašovacích údajů otevřete příchozí port 8060 jenom na úrovni počítače (ne na úrovni firemní brány firewall). Je-li jako zdroj nebo cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, je nutné otevřít také port 1433. Další informace najdete v části [Konfigurace brány firewall a seznam povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of-gateway) . 
+Místní prostředí Integration runtime zpřístupňuje připojení založená na protokolu HTTP pro přístup k Internetu. Aby bylo možné vytvořit toto připojení, musí být otevřeny Odchozí porty 443 pro prostředí Integration runtime v místním prostředí. Pro aplikaci Správce přihlašovacích údajů otevřete příchozí port 8060 jenom na úrovni počítače (ne na úrovni firemní brány firewall). Je-li jako zdroj nebo cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, je nutné otevřít také port 1433. Další informace najdete v části [Konfigurace brány firewall a nastavení seznamu povolených IP adres](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) . 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o Azure Data Factory výkonu aktivity kopírování najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](copy-activity-performance.md).
 
  

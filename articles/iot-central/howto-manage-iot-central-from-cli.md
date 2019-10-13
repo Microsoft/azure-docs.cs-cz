@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1ec83541c62d93eee91348531797ecdeb8c9fc6e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 42a2b2d7962f3efd71639f65e9e6f6f5d6783afb
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873475"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286422"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "70873475"
 
 Místo vytváření a správy aplikací IoT Central na webu [azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure CLI](/cli/azure/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -31,7 +31,7 @@ Pokud raději spustíte Azure CLI na místním počítači, přečtěte si téma
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pomocí příkazu [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
+Pomocí příkazu [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Například:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -53,11 +53,11 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | Parametr         | Popis |
 | ----------------- | ----------- |
 | resource-group    | Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
-| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** , případně v oblasti **Austrálie** . |
-| name              | Název aplikace v Azure Portal. |
-| subdomény         | Subdoména v adrese URL aplikace V tomto příkladu je https://mysubdomain.azureiotcentral.com adresa URL aplikace. |
-| SKU               | V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| Šablony          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
+| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** nebo v zeměpisných oblastech **Austrálie** a **Asie a Tichomoří** . |
+| jméno              | Název aplikace v Azure Portal. |
+| Subdomény         | Subdoména v adrese URL aplikace V tomto příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
+| Skladové               | V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+| šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
 | zobrazované jméno      | Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 **Šablony aplikací**
@@ -87,14 +87,14 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Pomocí příkazu [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) odstraňte aplikaci IoT Central. Příklad:
+Pomocí příkazu [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) odstraňte aplikaci IoT Central. Například:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak spravovat aplikace Azure IoT Central z Azure CLI, je tady doporučený další krok:
 

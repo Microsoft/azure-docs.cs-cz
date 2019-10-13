@@ -1,5 +1,5 @@
 ---
-title: Program Azure Lighthouse a Cloud Solution Provider
+title: Aspekty programu Cloud Solution Provider
 description: Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 399d2cb829c0425e3c9ee70a61cafde8568f903b
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012118"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286203"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
@@ -30,7 +30,7 @@ V ADMINISTRATE bude mít každý uživatel s rolí [agenta správce](https://doc
 
 Pomocí delegované správy prostředků Azure můžete přiřadit různé skupiny různým zákazníkům nebo rolím, jak je znázorněno v následujícím diagramu. Vzhledem k tomu, že uživatelé budou mít odpovídající úroveň přístupu prostřednictvím delegované správy prostředků Azure, můžete snížit počet uživatelů, kteří mají roli agenta správce (a mít tak úplný přístup k ADMINISTRATE). To pomáhá zlepšovat zabezpečení tím, že omezuje zbytečný přístup k prostředkům vašich zákazníků. Nabízí také větší flexibilitu při správě více zákazníků ve velkém měřítku.
 
-Registrace předplatného, které jste vytvořili prostřednictvím programu CSP, se řídí postupem popsaným v tématu připojení předplatného [ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md). Tuto registraci může provádět libovolný uživatel, který má ve vašem tenantovi roli agenta správce.
+Registrace předplatného, které jste vytvořili prostřednictvím programu CSP, se řídí postupem popsaným v tématu připojení [předplatného ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md). Tuto registraci může provádět libovolný uživatel, který má ve vašem tenantovi roli agenta správce.
 
 ![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
 
