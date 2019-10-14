@@ -410,10 +410,12 @@
           href: transform-data-using-spark.md
         - name: Aktivita Streamování služby HDInsight
           href: transform-data-using-hadoop-streaming.md
-        - name: Aktivita spouštění dávek ML
+        - name: Aktivita Provedení dávky služby Machine Learning
           href: transform-data-using-machine-learning.md
-        - name: Aktivita prostředků aktualizace ML
+        - name: Aktivita aktualizace prostředku služby Machine Learning
           href: update-machine-learning-models.md
+        - name: Aktivita kanálu spuštění služby Machine Learning
+          href: transform-data-machine-learning-service.md
         - name: Aktivita Uložená procedura
           href: transform-data-using-stored-procedure.md
         - name: Propojené služby Compute

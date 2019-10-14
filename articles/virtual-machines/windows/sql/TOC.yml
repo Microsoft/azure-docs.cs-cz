@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: Instance clusteru převzetí služeb při selhání
           items:
-            - name: Konfigurace
+            - name: "S využitím prostorů úložiště s\_přímým přístupem"
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: S využitím služby File Storage úrovně Premium
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

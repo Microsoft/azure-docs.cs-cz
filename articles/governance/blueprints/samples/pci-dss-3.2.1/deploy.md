@@ -1,5 +1,5 @@
 ---
-title: Ukázka-PCI-DSS v 3.2.1 plán – nasazení kroků
+title: Ukázkový plán PCI-DSS v 3.2.1 – nasazení kroků
 description: Nasaďte kroky pro ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1, včetně podrobností o parametrech artefaktu podrobného plánu.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248857"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299047"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
@@ -66,17 +66,17 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základy
+   - Práce
 
      - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
      - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
        Změňte podle potřeby nebo ponechte tak, jak je.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Azure Blueprint používá tuto spravovanou identitu k nasazení všech artefaktů v přiřazeném podrobném plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
-     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
+     Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace najdete v tématu [uzamykání prostředků v modrotisky](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
@@ -100,7 +100,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |\[Preview @ no__t-1 audit PCI v 3.2.1: ovládací prvky pro 2018 a nasazení specifických rozšíření virtuálních počítačů pro podporu požadavků na audit|Přiřazení zásad|Seznam typů prostředků | Auditování nastavení diagnostiky pro vybrané typy prostředků. Výchozí hodnota jsou vybrané všechny prostředky.| 
 |Povolená umístění|Přiřazení zásad|Seznam povolených umístění|Seznam umístění datových center povolených pro všechny prostředky, které se mají nasadit do. Tento seznam je globálně přizpůsobitelný pro požadovaná umístění Azure. Vyberte umístění, která chcete přidělit.| 
 |Povolená umístění pro skupiny prostředků|Přiřazení zásad |Povolené umístění |Tato zásada vám umožní omezit umístění, ve kterých může organizace vytvářet skupiny prostředků. Použijte k vymáhání vašich požadavků na geografické dodržování předpisů.| 
-|Nasazení auditování na SQL serverech|Přiřazení zásad|Dny uchování|Uchovávání dat za počet dní Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
+|Nasazení auditování na SQL serverech|Přiřazení zásad|Dny uchování|Uchovávání dat v počtu dnů. Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
 |Nasazení auditování na SQL serverech|Přiřazení zásad|Název skupiny prostředků pro účet úložiště|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti).| 
 
 ## <a name="next-steps"></a>Další kroky
@@ -111,10 +111,10 @@ Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podr
 > [PCI-DSS v 3.2.1 podrobný plán – přehled](./index.md)
 > [PCI-DSS v 3.2.1 podrobného plánu – mapování ovládacích prvků](./control-mapping.md)
 
-Další články věnované podrobným plánům a postupu jejich využití:
+Další články o semodrotiskych a jejich použití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
-- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
-- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
-- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
-- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Naučte se používat [statické a dynamické parametry](../../concepts/parameters.md).
+- Naučte se přizpůsobit [pořadí klasifikace](../../concepts/sequencing-order.md)podrobného plánu.
+- Zjistěte, jak využít [uzamykání prostředků](../../concepts/resource-locking.md)podrobného plánu.
+- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).

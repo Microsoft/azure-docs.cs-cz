@@ -1,5 +1,5 @@
 ---
-title: Ukázka-UK oficiální a Velká Británie NHS Details-Deploy Steps
+title: '& Oficiální Velká Británie – ukázky NHS podrobného plánu – postup nasazení'
 description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: c2c6089d9c600626a93906e460ef1c662c32cb59
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ea58ef49aa4d901339bf87343f0eea8eb517011d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248279"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299027"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -95,7 +95,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-Název artefaktu|Typ artefaktu|Název parametru|Description|
+Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |Iniciativa pro Spojené království a oficiální nebo Velká Británie NHS|Přiřazení zásad |Typy prostředků pro audit diagnostických protokolů (zásady: podrobný plán iniciativ pro Spojené království a oficiální nebo Velká Británie NHS) |Seznam typů prostředků, které se mají auditovat, pokud je v nastavení diagnostického protokolu zapnutá možnost Poznámka  Přijatelné hodnoty najdete v tématu [podporované služby, schémata a kategorie pro diagnostické protokoly Azure](../../../../azure-monitor/platform/diagnostic-logs-schema.md). |
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které jsou podporované operačním systémem Linux pro přidání do oboru (Policy: \[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |

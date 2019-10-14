@@ -1,17 +1,17 @@
 ---
-title: Ukázka-NIST SP 800-53 R4 – mapování ovládacích prvků
+title: NIST SP 800-53 R4 podrobný plán – mapování ovládacích prvků
 description: Mapování ovládacího prvku Sample NIST SP 800-53 R4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: c45e0fc450c420418e9302a6a811865867e7b096
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1fab1ebee03f48434fd0fb8ccb1bf1be708370e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248399"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299077"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Mapování ovládacího prvku NIST SP 800-53 R4 – ukázka
 

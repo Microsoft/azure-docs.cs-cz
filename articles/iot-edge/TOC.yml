@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: Ukládání dat na hraničních zařízeních
       items:
+        - name: Udělení přístupu k místnímu úložišti zařízení pro moduly
+          href: how-to-access-host-storage-from-module.md
         - name: Azure Blob Storage ve službě IoT Edge
           href: how-to-store-data-blob.md
         - name: Nasazení modulů úložiště objektů blob

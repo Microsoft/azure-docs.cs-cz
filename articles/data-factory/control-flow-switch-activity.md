@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: bc37c8a4f55b06338859e66d53050c6e0ad1ecf6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178641"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293953"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
 
@@ -26,54 +26,54 @@ Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích j
 
 {
    "name": "<Name of the activity>",
-        "type": "Switch",
-        "typeProperties": {
-            "expression": {
-                "value": "<expression that evaluates to some string value>",
-                "type": "Expression"
+    "type": "Switch",
+    "typeProperties": {
+        "expression": {
+            "value": "<expression that evaluates to some string value>",
+            "type": "Expression"
+        },
+        "cases": [
+            {
+                "value": "<string value that matches expression evaluation>",
+                "activities": [
+                    {
+                        "<Activity 1 definition>"
+                    },
+                    {
+                        "<Activity 2 definition>"
+                    },
+                    {
+                        "<Activity N definition>"
+                    }
+                ]
+            }           
+        ],
+        "defaultActivities": [
+            {
+                "<Activity 1 definition>"
             },
-            "cases": [
-                {
-                    "value": "<string value that matches expression evaluation>",
-                    "activities": [
-                        {
-                            "<Activity 1 definition>"
-                        },
-                        {
-                            "<Activity 2 definition>"
-                        },
-                        {
-                            "<Activity N definition>"
-                        }
-                    ]
-                }           
-            ],
-            "defaultActivities": [
-                {
-                    "<Activity 1 definition>"
-                },
-                {
-                    "<Activity 2 definition>"
-                },
-                {
-                    "<Activity N definition>"
-                }
-            ]
+            {
+                "<Activity 2 definition>"
+            },
+            {
+                "<Activity N definition>"
+            }
+        ]
     }
 }
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity Switch | Řetězec | Ano
-type | Musí být nastavené na *Switch**. | Řetězec | Ano
-vyjádření | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
+name | Název aktivity Switch | String | Ano
+– typ | Musí být nastavené na *Switch**. | String | Ano
+výraz | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
 věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
 defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection.
 
@@ -334,9 +334,9 @@ $result.Error -join "`r`n"
 
 Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
-- [Aktivita podmínky If](control-flow-if-condition-activity.md)
+- [Aktivita podmínky if](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

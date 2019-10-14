@@ -44,6 +44,8 @@
     - name: Zobrazení a správa poskytovatelů služeb
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: 'Nasazení zásady, která se dá napravit'
+      href: ./how-to/deploy-policy-remediation.md
 - name: Referenční informace
   items:
     - name: Azure CLI

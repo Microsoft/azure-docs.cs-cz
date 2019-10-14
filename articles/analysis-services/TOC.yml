@@ -66,6 +66,8 @@
           href: analysis-services-addservprinc-admins.md
     - name: Model
       items:
+        - name: Tabulkové modelování
+          href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
         - name: Nasazení ze sady Visual Studio (SSDT)
           href: analysis-services-deploy.md
         - name: Aktualizace pomocí REST API

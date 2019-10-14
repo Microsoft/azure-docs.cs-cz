@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 11e9fadc240b90ceb7e4a0e6690978dac9bae859
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255078"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296469"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
@@ -31,7 +31,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
 > Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview požádáme zákazníky, aby se na nás dostali, abychom mohli přidat vaše předplatné do našeho seznamu povolených.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, obraťte se na nás e-mailem: azure-spring-cloud@service.microsoft.com.
@@ -59,6 +59,8 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
 
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
+
 1. Pokud chcete přejít na stránku Přehled, vyberte **Azure jaře Cloud** . Začněte tím, že vyberete tlačítko **vytvořit** .
 
 1. Vyplňte formulář a zvažte následující pokyny:
@@ -74,6 +76,8 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 1. Přejít na stránku **Přehled** služby a vyberte možnost **konfigurační server**.
 
 1. V části **výchozí úložiště** nastavte možnost **URI** na "https://github.com/Azure-Samples/piggymetrics", nastavte **jmenovku** na "config" a pak změny uložte kliknutím na **použít** .
+
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
@@ -130,10 +134,15 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
-1. Otevřete stránku **řídicího panelu aplikace** .
-2. Vyberte aplikaci `gateway` pro zobrazení stránky s **podrobnostmi o aplikaci** .
-3. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Může to pár minut trvat. 
-4. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazenou veřejnou IP adresu do prohlížeče.
+1. Otevřete kartu **aplikace** v nabídce na levé straně.
+2. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
+3. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Může to pár minut trvat.
+
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+
+1. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazený veřejný koncový bod (označený jako **URL**) do prohlížeče.
+
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 
 ## <a name="next-steps"></a>Další kroky

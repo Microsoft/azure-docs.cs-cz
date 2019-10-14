@@ -1,17 +1,17 @@
 ---
-title: Ukázka-ISO 27001 detailed – postup nasazení
+title: Ukázka ISO 27001 Details – nasazení kroků
 description: Nasaďte kroky pro samostatnou ukázku ISO 27001 podrobného plánu včetně podrobností parametrů artefaktu podrobného plánu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 338741cc2d5bc019c5a33fdeb20ada6b05f3eef9
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 00e1f7bf0ff783a82d7a8458c44c8c50322632b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248421"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299089"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Nasazení ukázky ISO 27001 details
 
@@ -100,7 +100,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS)|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[ @ no__t-1.|

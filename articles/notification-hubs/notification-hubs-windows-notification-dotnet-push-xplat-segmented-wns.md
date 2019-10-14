@@ -1,6 +1,6 @@
 ---
-title: Zasílání oznámení určitým zařízením (Univerzální platforma Windows) | Microsoft Docs
-description: Pomocí Azure Notification Hubs se značkami v registraci můžete odesílat nejnovější zprávy do aplikace pro Univerzální platformu Windows.
+title: Odesílat oznámení na konkrétní zařízení (Univerzální platforma Windows) | Microsoft Docs
+description: Pomocí služby Azure Notification Hubs s značkami v registraci můžete odesílat novinky Univerzální platforma Windows aplikaci.
 services: notification-hubs
 documentationcenter: windows
 author: sethmanheim
@@ -13,49 +13,49 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/22/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: aa6714729e48ab63957b5f9a69c5c064c3c34df6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212126"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296741"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Kurz: Nabízená oznámení na konkrétní zařízení s Windows, na kterých běží aplikace Univerzální platforma Windows
+# <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Kurz: nabízená oznámení na konkrétní zařízení s Windows, na kterých běží aplikace Univerzální platforma Windows
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu zjistíte, jak používat Azure Notification Hubs k vysílání oznámení o nejnovějších zprávách do aplikací pro Windows Store a Windows Phone 8.1 (bez Silverlight). Pokud cílíte na platformu Windows Phone 8.1 Silverlight, podívejte se na kurz pro verzi [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs vysílat oznámení o novinkách. Tento kurz se zabývá aplikacemi pro Windows Store nebo Windows Phone 8,1 (bez technologie Silverlight). Pokud cílíte na Windows Phone 8,1 Silverlight, přečtěte si téma [nabízená oznámení na konkrétní Windows Phone zařízení pomocí služby Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení určitým zařízením Windows, na kterých běží aplikace pro Univerzální platformu Windows (UPW). Po dokončení kurzu si můžete zaregistrovat kategorie nejnovějších zpráv, které vás zajímají, a budete dostávat nabízená oznámení, která se týkají jenom těchto kategorií.
+V tomto kurzu se naučíte používat službu Azure Notification Hubs k nabízeným oznámením na konkrétní zařízení s Windows, na kterých běží aplikace Univerzální platforma Windows (UWP). Po dokončení tohoto kurzu se můžete zaregistrovat na kategorie nedokončených zpráv, které vás zajímají. Pro tyto kategorie obdržíte nabízená oznámení.
 
-Scénáře vysílání povolíte tak, že při vytvoření registrace v centru oznámení přidáte jednu nebo více *značek*. Při posílání oznámení značce toto oznámení přijde všem zařízením, která si danou značku zaregistrovala. Další informace o značkách najdete v článku o [značkách používaných k registraci](notification-hubs-tags-segment-push-message.md).
+Pokud chcete povolit scénáře vysílání, zahrňte při vytváření registrace v centru oznámení jednu nebo více *značek* . Po odeslání oznámení do značky obdrží oznámení všechna zařízení zaregistrovaná v této značce. Další informace o značkách najdete v tématu [výrazy směrování a značek](notification-hubs-tags-segment-push-message.md).
 
 > [!NOTE]
-> Windows Store a verze projektu Windows Phone 8.1 a dřívější nejsou v sadě Visual Studio 2017 podporované. Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Aplikace Windows Store a Windows Phone Project verze 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2019. Další informace najdete v tématu [cílení a kompatibilita platformy Visual Studio 2019](/visualstudio/releases/2019/compatibility).
 
-V tomto kurzu provedete následující kroky:
+V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Přidání výběru kategorií do mobilní aplikace
-> * Registrace oznámení
-> * Posílání značených oznámení
+> * Přidat výběr kategorie do mobilní aplikace
+> * Registrace pro oznámení
+> * Odesílat označená oznámení
 > * Spuštění aplikace a generování oznámení
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete [kurz: Než začnete s tímto kurzem, pošlete][get-started] oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs.  
+Dokončete [kurz: odeslání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs][get-started] před zahájením tohoto kurzu.  
 
-## <a name="add-category-selection-to-the-app"></a>Přidání výběru kategorií do aplikace
+## <a name="add-category-selection-to-the-app"></a>Přidat výběr kategorie do aplikace
 
-První krok spočívá v přidání prvků uživatelského rozhraní na stávající hlavní stránku, aby uživatelé mohli vybrat kategorie, které chtějí zaregistrovat. Vybrané kategorie se uloží do zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi v podobě značek.
+Prvním krokem je přidání prvků uživatelského rozhraní do existující hlavní stránky, aby uživatelé mohli vybrat kategorie k registraci. Vybrané kategorie jsou uloženy v zařízení. Po spuštění aplikace se v centru oznámení vytvoří registrace zařízení s vybranými kategoriemi jako značky.
 
-1. Otevřete soubor projektu MainPage. XAML a poté zkopírujte následující kód v `Grid` elementu:
+1. Otevřete soubor projektu *MainPage. XAML* a poté zkopírujte následující kód v prvku `Grid`:
 
     ```xml
     <Grid>
@@ -81,7 +81,9 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     </Grid>
     ```
 
-2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a přidejte novou třídu: **Oznámení**. Do definice třídy přidejte modifikátor **Public** a přidejte následující `using` příkazy do nového souboru kódu:
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt, vyberte **Přidat** **třídu** > . V okně **Přidat novou položku**pojmenujte *oznámení*třídy a vyberte **Přidat**. V případě potřeby přidejte modifikátor `public` do definice třídy.
+
+1. Do nového souboru přidejte následující příkazy `using`:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -90,7 +92,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     using System.Threading.Tasks;
     ```
 
-3. Zkopírujte následující kód do nové `Notifications` třídy:
+1. Zkopírujte následující kód do nové třídy `Notifications`:
 
     ```csharp
     private NotificationHub hub;
@@ -132,35 +134,35 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     }
     ```
 
-    Tato třída ukládá kategorie novinek, které bude zařízení dostávat, do místního úložiště. Namísto volání `RegisterNativeAsync` metody zavolejte `RegisterTemplateAsync` k registraci pro kategorie pomocí registrace šablony.
+    Tato třída používá místní úložiště k uložení kategorií zpráv, které musí toto zařízení přijmout. Namísto volání metody `RegisterNativeAsync` zavolejte `RegisterTemplateAsync` pro registraci kategorií pomocí registrace šablony.
 
-    Pokud chcete zaregistrovat více než jednu šablonu (například jednu pro informační oznámení a druhou pro dlaždice), zadejte název šablony (například simpleWNSTemplateExample). Názvy šablon se zadávají proto, aby je bylo možné aktualizovat nebo odstranit.
+    Pokud chcete registrovat více než jednu šablonu, zadejte název šablony, například *simpleWNSTemplateExample*. Šablony pojmenujte, abyste je mohli aktualizovat nebo odstranit. Můžete zaregistrovat více než jednu šablonu, která bude mít jednu pro informační zprávy a jednu pro dlaždice.
 
     >[!NOTE]
-    >Pokud si zařízení zaregistruje více šablon se stejnou značkou, příchozí zpráva cílící na danou značku způsobí, že se do daného zařízení doručí více oznámení (pro každou šablonu jedno). Toto chování je užitečné, pokud má mít stejná logická zpráva za následek více vizuálních oznámení (například zobrazení oznámení i informační zprávy v aplikaci pro Windows Store).
+    > Pomocí Notification Hubs může zařízení registrovat více šablon pomocí stejné značky. V takovém případě příchozí zpráva, která cílí na značku, má za následek doručování více oznámení do zařízení, jednu pro každou šablonu. Tento proces umožňuje zobrazit stejnou zprávu ve více vizuálních oznámeních, jako je například označení jako označení a informační zpráva v aplikaci pro Windows Store.
 
-    Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
+    Další informace najdete v tématu [šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
-4. V souboru projektu app.XAML.cs přidejte do `App` třídy následující vlastnost:
+1. V souboru projektu *App.XAML.cs* přidejte do třídy `App` následující vlastnost:
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
     ```
 
-    Tato vlastnost slouží k vytvoření instance a k jejímu `Notifications` přístupu.
+    Tato vlastnost slouží k vytvoření a přístup k instanci @no__t 0.
 
-    Nahraďte v kódu zástupné symboly `<hub name>` a `<connection string with listen access>` názvem vašeho centra oznámení a připojovacím řetězcem pro *DefaultListenSharedAccessSignature*, který jste získali dříve.
+    V kódu Nahraďte zástupné symboly `<hub name>` a `<connection string with listen access>` názvem vašeho centra oznámení a připojovacím řetězcem pro **DefaultListenSharedAccessSignature**, který jste získali dříve.
 
    > [!NOTE]
-   > Přihlašovací údaje distribuované s klientskou aplikací obvykle nejsou zabezpečené, a proto s klientskou aplikací distribuujte jenom přístupový klíč pro *naslouchání*. Přístup pro naslouchání umožňuje aplikaci registrovat oznámení, ale neumožňuje měnit stávající registrace ani odesílat oznámení. Přístupový klíč pro úplný přístup se používá v zabezpečené službě back-end k posílání oznámení a změně stávajících registrací.
+   > Vzhledem k tomu, že přihlašovací údaje, které jsou distribuované pomocí klientské aplikace, nejsou obvykle zabezpečené, distribuujte jenom klíč pro přístup k *naslouchání* vaší klientské aplikace. S přístupem k naslouchání se vaše aplikace může zaregistrovat pro oznámení, ale existující registrace se nedají změnit a oznámení nejde odeslat. Úplný přístupový klíč se používá v zabezpečené back-endové službě pro odesílání oznámení a změny stávajících registrací.
 
-5. `MainPage.xaml.cs` Do souboru přidejte následující řádek:
+1. Do souboru *MainPage.XAML.cs* přidejte následující řádek:
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-6. `MainPage.xaml.cs` Do souboru přidejte následující metodu:
+1. Do souboru *MainPage.XAML.cs* přidejte následující metodu:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -181,18 +183,18 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií a pomocí `Notifications` třídy uloží seznam do místního úložiště. Dále zaregistruje odpovídající značky v centru oznámení. Při změně kategorií se registrace vytvoří znovu s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí třídy `Notifications` uloží seznam do místního úložiště. Registruje také odpovídající značky v centru oznámení. Při změně kategorií se registrace znovu vytvoří s novými kategoriemi.
 
-Aplikace teď může uchovávat sadu kategorií v místním úložišti v zařízení. Aplikace se zaregistruje v centru oznámení vždy, když uživatelé změní výběr kategorií.
+Vaše aplikace teď může do zařízení uložit sadu kategorií v místním úložišti. Aplikace se registruje v centru oznámení, kdykoli uživatelé změní výběr kategorie.
 
-## <a name="register-for-notifications"></a>Registrace oznámení
+## <a name="register-for-notifications"></a>Registrace pro oznámení
 
-V této části provedete registraci v centru oznámení při spuštění pomocí kategorií, které jste uložili v místním úložišti.
+V této části se v centru oznámení při spuštění zaregistrujete pomocí kategorií, které jste uložili v místním úložišti.
 
 > [!NOTE]
-> Identifikátor URI kanálu přiřazený Službou nabízených oznámení Windows se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám v oznámeních. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud spouštíte aplikace často (více než jednou denně), můžete kvůli úspoře šířky pásma registraci pravděpodobně přeskočit, pokud od předchozí registrace uplynul méně než jeden den.
+> Vzhledem k tomu, že identifikátor URI kanálu, který je přiřazený službou oznamování systému Windows (WNS), se může kdykoli změnit, měli byste se pravidelně registrovat pro oznámení, aby nedocházelo k chybám oznámení. Tento příklad registruje pro oznámení pokaždé, když se aplikace spustí. Pro aplikace, které často spouštíte, například více než jednou denně, můžete pravděpodobně přeskočit registraci, abyste zachovali šířku pásma, pokud od předchozí registrace uplynul méně než jeden den.
 
-1. Chcete-li `notifications` použít třídu k přihlášení k odběru na základě kategorií, otevřete soubor App.XAML.cs a pak `InitNotificationsAsync` aktualizujte metodu.
+1. Chcete-li použít třídu `notifications` k přihlášení k odběru na základě kategorií, otevřete soubor *App.XAML.cs* a pak aktualizujte metodu `InitNotificationsAsync`.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -203,8 +205,8 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Tento proces zajistí, aby aplikace při spuštění načetla kategorie z místního úložiště a vyžadovala registraci těchto kategorií. Tuto `InitNotificationsAsync` metodu jste vytvořili jako součást kurzu [Začínáme s Notification Hubs][get-started] .
-2. `OnNavigatedTo` V souboru `MainPage.xaml.cs` projektu přidejte následující kód do metody:
+    Tento proces zajistí, že se při spuštění aplikace načte kategorie z místního úložiště. Pak si vyžádá registraci těchto kategorií. Vytvořili jste metodu `InitNotificationsAsync` jako součást [odesílání oznámení do Univerzální platforma Windows aplikací pomocí Azure Notification Hubs][get-started] kurzu.
+2. V souboru projektu *MainPage.XAML.cs* přidejte následující kód do metody `OnNavigatedTo`:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -222,18 +224,19 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
 
     Tento kód aktualizuje hlavní stránku na základě stavu dříve uložených kategorií.
 
-Aplikace je teď hotová. Může uchovávat sadu kategorií v místním úložišti zařízení, které se používá k registraci v centru oznámení, když uživatelé změní výběr kategorií. V další části definujete back-end, který aplikaci posílá oznámení kategorií.
+Aplikace je teď dokončená. Může ukládat sadu kategorií do místního úložiště zařízení. Když uživatelé změní výběr kategorie, použijí se uložené kategorie k registraci v centru oznámení. V další části definujete back-end, který do této aplikace může posílat oznámení kategorií.
 
-## <a name="run-the-uwp-app"></a>Spuštění aplikace pro UWP 
-1. Pokud chcete v sadě Visual Studio kompilovat aplikaci a spustit ji, stiskněte **F5**. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat kategorie přihlášené k odběru.
+## <a name="run-the-uwp-app"></a>Spuštění aplikace pro UWP
 
-    ![Aplikace Nejnovější zprávy](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
+1. V aplikaci Visual Studio vyberte F5 pro zkompilování a spuštění aplikace. Uživatelské rozhraní aplikace poskytuje sadu přepínačů, které vám umožní vybrat kategorie k přihlášení k odběru.
 
-2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**.
+   ![Porušující aplikace News](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-    Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí v dialogovém okně.
+1. Povolte jeden nebo více přepínačů kategorie a potom vyberte možnost **přihlásit k odběru**.
 
-    ![Přepínače kategorií a tlačítko Přihlásit k odběru](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
+   Aplikace převede vybrané kategorie na značky a požádá o nové registrace zařízení pro vybrané značky z centra oznámení. Aplikace zobrazí v dialogovém okně registrované kategorie.
+
+    ![Tlačítko pro přepnutí kategorie a přihlášení k odběru](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast.png)
 
 ## <a name="create-a-console-app-to-send-tagged-notifications"></a>Vytvoření konzolové aplikace pro odesílání oznámení s příznakem
 
@@ -241,18 +244,14 @@ Aplikace je teď hotová. Může uchovávat sadu kategorií v místním úloži�
 
 ## <a name="run-the-console-app-to-send-tagged-notifications"></a>Spuštění konzolové aplikace pro posílání oznámení s příznakem
 
-1. Spusťte aplikaci vytvořenou v předchozí části.
-2. Oznámení pro vybrané kategorie se zobrazí jako informační zprávy. Pokud vyberete oznámení, zobrazí se první okno aplikace UWP. 
-
-     ![Informační zprávy](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
-
+Spusťte aplikaci vytvořenou v předchozí části. Oznámení pro vybrané kategorie se zobrazí jako informační zpráva.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak vysílat nejnovější zprávy podle kategorií. Back-end aplikace odesílá značená oznámení zařízením, která jsou zaregistrovaná pro příjem oznámení s danou značkou. Pokud se chcete naučit posílat nabízená oznámení určitým uživatelům bez ohledu na to, jaká zařízení používají, pokračujte následujícím kurzem:
+V tomto článku jste zjistili, jak vysílat dodatečné novinky podle kategorie. Back-endové aplikace přenáší oznámení s označením do zařízení, která jsou zaregistrovaná pro příjem oznámení pro tuto značku. Pokud se chcete dozvědět, jak zasílat oznámení konkrétním uživatelům nezávisle na používaném zařízení, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Odesílání lokalizovaných oznámení](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> [Doručovat lokalizovaná oznámení do aplikací pro Windows pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 
 <!-- Anchors. -->
 [Add category selection to the app]: #adding-categories

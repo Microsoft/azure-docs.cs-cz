@@ -1,23 +1,20 @@
 ---
 title: Osvědčené postupy pro Azure Functions | Microsoft Docs
 description: Seznamte se s osvědčenými postupy a vzory pro Azure Functions.
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure Functions, vzory, osvědčené postupy, funkce, zpracování událostí, Webhooky, dynamické výpočty, architektura bez serveru
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933057"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294357"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
@@ -29,7 +26,9 @@ Níže jsou uvedené osvědčené postupy při sestavování a architekti řeše
 
 ### <a name="avoid-long-running-functions"></a>Nepoužívejte dlouho běžící funkce
 
-Velké a dlouho běžící funkce můžou způsobit neočekávané problémy s časovým limitem. Funkce může být velká z důvodu mnoha závislostí Node. js. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly.  
+Velké a dlouho běžící funkce můžou způsobit neočekávané problémy s časovým limitem. Další informace o časových limitech pro daný plán hostování najdete v tématu [Doba trvání časového limitu aplikace Function App](functions-scale.md#timeout). 
+
+Funkce může být velká z důvodu mnoha závislostí Node. js. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly. 
 
 Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, které fungují společně, a rychle vrátí odpovědi. Například Webhook nebo funkce triggeru HTTP může vyžadovat odpověď potvrzení v určitém časovém limitu. pro Webhooky je běžné, že vyžadují okamžitou reakci. Datovou část triggeru HTTP můžete předat do fronty, aby ji bylo možné zpracovat funkcí triggeru fronty. Tento přístup umožňuje odložit skutečnou práci a vrátit okamžitou odpověď.
 
@@ -49,7 +48,7 @@ Centra událostí jsou užitečná pro podporu komunikace s vysokými objemy.
 
 ### <a name="write-functions-to-be-stateless"></a>Psaní funkcí, které mají být bezstavové 
 
-Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte k vašim datům všechny požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého `state` člena. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
+Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte k vašim datům všechny požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého člena `state`. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
 
 Funkce idempotentní jsou obzvláště Doporučené s triggery časovače. Například pokud máte něco, co naprosto musí běžet jednou denně, zapište ho, aby mohl běžet kdykoli během dne se stejnými výsledky. Funkce může skončit, pokud pro určitý den nefunguje žádná práce. I v případě, že se nepovedlo dokončit předchozí spuštění, mělo by se další spuštění vystavit tam, kde skončila.
 
@@ -67,7 +66,7 @@ Jak váš kód reaguje, když po vložení 5 000 těchto položek do fronty ke z
 
 Pokud byla položka fronty již zpracována, povolte funkci no-op.
 
-Využijte výhod obrannou liniích opatření, která už jsou k dispozici pro komponenty, které používáte v Azure Functions platformě. Například viz **zpracování zpráv** o nepoškozených frontách v dokumentaci pro [aktivační události a vazby fronty Azure Storage](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Využijte výhod obrannou liniích opatření, která už jsou k dispozici pro komponenty, které používáte v Azure Functions platformě. Například viz **zpracování zpráv o nepoškozených frontách** v dokumentaci pro [aktivační události a vazby fronty Azure Storage](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
 ## <a name="scalability-best-practices"></a>Osvědčené postupy škálovatelnosti
 
@@ -93,19 +92,19 @@ Nepoužívejte podrobné protokolování v produkčním kódu. Má negativní do
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale vyhnout se blokování volání
 
-Asynchronní programování je doporučeným osvědčeným postupem. Nicméně vždy vyhněte odkazování na `Result` vlastnost nebo volání `Wait` metody v `Task` instanci. Tento přístup může vést k vyčerpání vlákna.
+Asynchronní programování je doporučeným osvědčeným postupem. Vždy se však Vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` v instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Kdykoli je to možné, přijímat zprávy v dávce
 
-Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v `host.json` souboru můžete nakonfigurovat podle podrobných informací v [dokumentaci Host. JSON.](functions-host-json.md)
+Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v souboru `host.json` můžete nakonfigurovat podle podrobných [informací v dokumentaci Host. JSON.](functions-host-json.md)
 
-U C# funkcí lze typ změnit na pole silného typu.  Například namísto `EventData sensorEvent` signatury metody může být `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v sadě `function.json` na `many` , aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+U C# funkcí lze typ změnit na pole silného typu.  Například místo `EventData sensorEvent` by signatura metody mohla `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v `function.json` na `many`, aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitelů pro lepší zpracování souběžnosti
 
-`host.json` Soubor v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů.  Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
+Soubor `host.json` v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů.  Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
 Nastavení v souboru Hosts se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App s 2 funkcemi HTTP a souběžnými požadavky nastavili na 25, požadavek na Trigger HTTP by měl počítat se sdílenými 25 souběžnými požadavky.  Pokud se tato aplikace Functions škáluje na 10 instancí, funkce 2 umožní efektivně 250 souběžných požadavků (10 instancí × 25 souběžných požadavků na instanci).
 
@@ -115,7 +114,7 @@ Nastavení v souboru Hosts se aplikují napříč všemi funkcemi v rámci aplik
 
 Další možnosti konfigurace hostitele najdete [v dokumentu konfigurace hostitele](functions-host-json.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v následujících materiálech:
 

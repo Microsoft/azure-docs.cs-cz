@@ -2,24 +2,23 @@
 title: Ukázky Azure Analysis Services kódu, projektu a databáze | Microsoft Docs
 description: Seznamte se s ukázkami kódu, projektu a databáze pro Azure Analysis Services.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d34da4e1b3d9c3131db1d9edd94f67a132dc564f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 77f909f616f75406e3f6428a884d60f39514468f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932366"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301110"
 ---
 # <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
 Následující ukázkové materiály vám pomůžou naučit se a testovat Analysis Services pro vaše prostředí.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 [Analysis Services](https://github.com/Microsoft/Analysis-Services) úložiště na GitHubu obsahuje otevřené ukázky zdrojového kódu a komunitní projekty. 
 
@@ -44,5 +43,5 @@ Pokud máte Server Analysis Services v Azure Portal, můžete rychle a snadno vy
 
 ## <a name="next-steps"></a>Další kroky
 
-[Kurz Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
+[Kurz Adventure Works](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)@no__t – 1  
 [Místní brána dat Azure](analysis-services-gateway.md)  

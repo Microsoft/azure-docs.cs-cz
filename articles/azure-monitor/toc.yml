@@ -606,6 +606,8 @@
                   href: insights/vminsights-overview.md
                 - name: Známé problémy
                   href: insights/vminsights-known-issues.md
+                - name: Nejčastější dotazy k všeobecné dostupnosti
+                  href: insights/vminsights-ga-release-faq.md
                 - name: Nejčastější dotazy
                   href: insights/vminsights-faq.md
                 - name: Povolení monitorování

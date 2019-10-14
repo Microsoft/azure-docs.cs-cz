@@ -5,15 +5,15 @@ metadata:
   description: " Zjistěte, jak pomocí služby Azure Database Migration Service umožnit bezproblémovou migraci z několika databázových zdrojů na datové platformy Azure s minimem výpadků."
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/04/2019
+  ms.date: 10/12/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 41b2733152a93705c81134ccbb75866bf6f0af1b
-  ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+  ms.openlocfilehash: bb2eec4e07eb444549c5b8491799d491a1960250
+  ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/03/2019
-  ms.locfileid: "71842992"
+  ms.lasthandoff: 10/13/2019
+  ms.locfileid: "72293785"
 landingContent:
 - title: Informace o službě Azure Database Migration Service
   linkLists:
@@ -31,14 +31,6 @@ landingContent:
     links:
     - text: Vytvoření služby – portál
       url: quickstart-create-data-migration-service-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Monitorování aktivit migrace
-      url: how-to-monitor-migration-activity.md
-    - text: Řešení běžných potíží a chyb
-      url: known-issues-troubleshooting-dms.md
-    - text: Řešení potíží s možnostmi připojení zdrojové databáze
-      url: known-issues-troubleshooting-dms-source-connectivity.md
   - linkListType: video
     links:
     - text: Seznámení se službou Azure Data Migration Service
@@ -47,10 +39,8 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
     - text: Proces migrace a doporučené nástroje/služby
       url: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
-    - text: Splnění požadavků a vytvoření instance DMS
+    - text: Splnění požadavků a vytvoření instance služby Azure Data Migration Service
       url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
-    - text: Monitorování online migrace a provedení přímé migrace
-      url: https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/
   - linkListType: whats-new
     links:
     - text: Přechod na náš blog
@@ -59,95 +49,59 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Online migrace SQL Serveru do izolované databáze Azure SQL DB
+    - text: Migrace do izolované databáze SQL Database – online
       url: tutorial-sql-server-azure-sql-online.md
-    - text: Offline migrace SQL Serveru do izolované databáze Azure SQL DB
+    - text: Migrace do izolované databáze SQL Database – offline
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Online migrace SQL Serveru do spravované instance Azure SQL DB
+    - text: Migrace do spravované instance SQL Database – online
       url: tutorial-sql-server-managed-instance-online.md
-    - text: Offline migrace SQL Serveru do spravované instance Azure SQL DB
+    - text: Migrace do spravované instance SQL Database – offline
       url: tutorial-sql-server-to-managed-instance.md
-    - text: Online migrace RDS SQL Serveru do izolované databáze Azure SQL DB nebo spravované instance Azure SQL DB
+    - text: Migrace RDS SQL Serveru do izolované databáze / spravované instance SQL Database – online
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-  - linkListType: how-to-guide
+  - linkListType: reference
     links:
-    - text: Použití PowerShellu k migraci SQL Serveru do izolované databáze Azure SQL DB
-      url: howto-sql-server-to-azure-sql-powershell.md
-    - text: Použití PowerShellu k migraci SQL Serveru do spravované instance Azure SQL DB
-      url: howto-sql-server-to-azure-sql-mi-powershell.md
-    - text: Znovunasazení balíčků SSIS do izolované databáze Azure SQL DB
-      url: how-to-migrate-ssis-packages.md
-    - text: Znovunasazení balíčků SSIS do spravované instance Azure SQL Database
-      url: how-to-migrate-ssis-packages-managed-instance.md
-  - linkListType: concept
-    links:
-    - text: Známé problémy – online migrace do izolované databáze Azure SQL DB
+    - text: Známé problémy – online migrace do izolované databáze SQL Database
       url: known-issues-azure-sql-online.md
-    - text: Síťové topologie pro migrace spravované instance Azure SQL DB
+    - text: Síťové topologie pro migrace spravovaných instancí SQL Database
       url: resource-network-topologies.md
   - linkListType: video
     links:
-    - text: Migrace SQL Serveru 2008 do spravované instance Azure SQL Database
+    - text: Migrace SQL Serveru 2008 do spravované instance SQL Database
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
-- title: Migrace PostgreSQL do Azure Database for PostgreSQL
+- title: Migrace opensourcových databází do Azure
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Online migrace PostgreSQL do Azure DB for PostgreSQL – Single server
+    - text: Migrace do Azure Database for PostgreSQL – Single server – online
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: Online migrace RDS PostgreSQL do Azure DB for PostgreSQL – Single server
+    - text: Migrace RDS PostgreSQL do Azure Database for PostgreSQL – Single server – online
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-  - linkListType: concept
-    links:
-    - text: Známé problémy – online migrace z PostgreSQL do Azure DB for PostgreSQL – Single server
-      url: known-issues-azure-postgresql-online.md
-  - linkListType: video
-    links:
-    - text: Migrace PostgreSQL do Azure Database for PostgreSQL
-      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
-- title: Migrace MySQL do služby Azure Database for MySQL
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Online migrace MySQL do Azure DB for MySQL
+    - text: Migrace do Azure Database for MySQL – online
       url: tutorial-mysql-azure-mysql-online.md
-    - text: Online migrace RDS MySQL do Azure DB for MySQL
+    - text: Migrace RDS MySQL do Azure Database for MySQL – online
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-  - linkListType: concept
-    links:
-    - text: Známé problémy – online migrace do Azure DB for MySQL
-      url: known-issues-azure-mysql-online.md
-- title: Migrace MongoDB do Azure Cosmos DB
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Online migrace MongoDB do Azure Cosmos DB
+    - text: Migrace do rozhraní Mongo API služby Azure Cosmos DB – online
       url: tutorial-mongodb-cosmos-db-online.md
-    - text: Offline migrace MongoDB do Azure Cosmos DB
+    - text: Migrace do rozhraní Mongo API služby Azure Cosmos DB – offline
       url: tutorial-mongodb-cosmos-db.md
+  - linkListType: reference
+    links:
+    - text: Známé problémy – online migrace do Azure Database for PostgreSQL – Single server
+      url: known-issues-azure-postgresql-online.md
+    - text: Známé problémy – online migrace do Azure Database for MySQL
+      url: known-issues-azure-mysql-online.md
   - linkListType: video
     links:
-    - text: Migrace MongoDB do Azure Cosmos DB
+    - text: Migrace PostgreSQL do Azure Database for PostgreSQL – Single server
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
+    - text: Migrace do rozhraní Mongo API služby Azure Cosmos DB
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
-- title: Migrace Oraclu do Azure
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Online migrace Oraclu do Azure DB for PostgreSQL – Single server
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: concept
-    links:
-    - text: Známé problémy – online migrace z Oraclu do Azure DB for PostgreSQL – Single server
-      url: known-issues-oracle-azure-postgresql-online.md
-  - linkListType: video
-    links:
-    - text: Migrace Oraclu do izolované databáze Azure SQL Database
-      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
 - title: Nástroje a pokyny
   linkLists:
   - linkListType: reference
     links:
-    - text: Dostupné služby a nástroje pro scénáře migrace dat
+    - text: Služby a nástroje podle scénáře migrace dat
       url: dms-tools-matrix.md
     - text: Průvodce migrací databází
       url: https://datamigration.microsoft.com/
@@ -159,3 +113,17 @@ landingContent:
       url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
     - text: Data Access Migration Toolkit
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
+- title: Migrace Oraclu do Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Migrace do Azure Database for PostgreSQL – Single server – online
+      url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: reference
+    links:
+    - text: Známé problémy – online migrace do Azure Database for PostgreSQL – Single server
+      url: known-issues-oracle-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: Migrace do izolované databáze SQL Database
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/

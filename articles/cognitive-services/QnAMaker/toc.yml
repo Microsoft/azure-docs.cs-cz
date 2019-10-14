@@ -116,7 +116,7 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
         - name: Vytvoření robota s využitím QnA Makeru a LUIS
           href: Tutorials/integrate-qnamaker-luis.md
-        - name: Vytvoření znalostní báze v jiném jazyce
+        - name: Výběr jazyka
           href: How-To/language-knowledge-base.md
         - name: Migrace znalostní báze
           href: Tutorials/migrate-knowledge-base.md
@@ -141,6 +141,12 @@
           href: How-To/business-continuity-plan.md
 - name: Referenční informace
   items:
+    - name: Jazyky
+      href: Overview/language-support.md
+    - name: Omezení
+      href: limits.md
+    - name: Řešení potíží
+      href: troubleshooting.md
     - name: Reference k rozhraní REST API
       items:
         - name: Rozhraní API pro vytváření
@@ -150,10 +156,6 @@
         - name: Rozhraní Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: Řešení potíží
-      href: troubleshooting.md
-    - name: Omezení
-      href: limits.md
     - name: Ukázky
       items:
         - name: Pomocný robot QnA Maker
@@ -206,8 +208,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny a omezení
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: Podpora jazyků
-      href: Overview/language-support.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice

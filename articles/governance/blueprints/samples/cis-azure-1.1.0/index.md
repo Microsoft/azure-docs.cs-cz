@@ -1,17 +1,17 @@
 ---
-title: Ukázka – podrobný plán srovnávacího testu CIS Microsoft Azure Foundations – Přehled
+title: Ukázka podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations – přehled
 description: Přehled ukázky podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 6219a8e7814901fe05bbe2c8a9780af686a44938
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 526ae799fc3071934936d177743129a6c33f59de
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248447"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297771"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Přehled ukázky podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations
 

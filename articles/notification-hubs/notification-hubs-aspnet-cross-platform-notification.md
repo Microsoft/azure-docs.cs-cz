@@ -12,36 +12,38 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cea0d63c20af781fcfc6ba5d7c06061b12992702
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212029"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293430"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Odesílání oznámení pro různé platformy uživatelům pomocí Notification Hubs
 
-V předchozím kurzu informujte [Informování uživatelů pomocí Notification Hubs], zjistili jste, jak nabízet oznámení pro všechna zařízení, která jsou zaregistrovaná pro konkrétního ověřeného uživatele. V tomto kurzu bylo pro odeslání oznámení na každou z podporovaných klientských platforem vyžadováno více požadavků. Azure Notification Hubs podporuje šablony, pomocí kterých můžete určit, jak konkrétní zařízení chce dostávat oznámení. Tato metoda zjednodušuje odesílání oznámení pro různé platformy.
+Tento kurz sestaví v předchozím kurzu a [Posílání oznámení konkrétním uživatelům pomocí Azure Notification Hubs]. V tomto kurzu se dozvíte, jak zasílat oznámení do všech zařízení, která jsou zaregistrovaná konkrétnímu ověřenému uživateli. Tento přístup vyžadoval více požadavků pro odeslání oznámení na každou podporovanou klientskou platformu. Azure Notification Hubs podporuje šablony, pomocí kterých můžete určit, jak konkrétní zařízení chce dostávat oznámení. Tato metoda zjednodušuje odesílání oznámení pro různé platformy.
 
-V tomto článku se dozvíte, jak využít výhod šablon k odeslání v rámci jediné žádosti nezávislá oznámení platformy, které cílí na všechny platformy. Podrobnější informace o šablonách najdete v tématu [Přehled Azure Notification Hubs][Templates].
+Tento článek ukazuje, jak využít výhod šablon k odeslání oznámení, které cílí na všechny platformy. V tomto článku se používá jedna žádost o odeslání neutrálního oznámení platformy. Podrobnější informace o šablonách najdete v tématu [přehled Notification Hubs][Templates].
 
 > [!IMPORTANT]
-> Windows Phone projekty 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2017. Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Windows Phone projekty 8,1 a starší nejsou podporovány v aplikaci Visual Studio 2019. Další informace najdete v tématu [cílení a kompatibilita platformy Visual Studio 2019](/visualstudio/releases/2019/compatibility).
 
 > [!NOTE]
-> Pomocí Notification Hubs může zařízení registrovat více šablon se stejnou značkou. V tomto případě příchozí zpráva, která cílí na značku, má za následek doručení více oznámení do zařízení, jednu pro každou šablonu. Tento proces umožňuje zobrazit stejnou zprávu ve více vizuálních oznámeních, jako je například označení jako označení a informační zpráva v aplikaci pro Windows Store.
+> Pomocí Notification Hubs může zařízení registrovat více šablon pomocí stejné značky. V takovém případě příchozí zpráva, která cílí na značku, má za následek doručování více oznámení do zařízení, jednu pro každou šablonu. Tento proces umožňuje zobrazit stejnou zprávu ve více vizuálních oznámeních, jako je například označení jako označení a informační zpráva v aplikaci pro Windows Store.
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Odesílání oznámení pro různé platformy pomocí šablon
 
-Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělejte toto:
+V této části se používá vzorový kód, který jste vytvořili v tématu [Posílání oznámení konkrétním uživatelům pomocí Azure Notification Hubs] . Ukázku si můžete stáhnout z [GitHubu](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
-1. V Průzkumník řešení v aplikaci Visual Studio rozbalte složku **řadiče** a pak otevřete soubor RegisterController.cs.
+Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, proveďte následující kroky:
 
-2. Vyhledejte blok kódu v `Put` metodě, která vytvoří novou registraci, a poté `switch` nahraďte obsah následujícím kódem:
+1. V aplikaci Visual Studio v **Průzkumník řešení**rozbalte složku **řadiče** a pak otevřete soubor *RegisterController.cs* .
+
+1. Vyhledejte blok kódu v metodě `Put`, která vytvoří novou registraci, a potom nahraďte obsah `switch` následujícím kódem:
 
     ```csharp
     switch (deviceUpdate.Platform)
@@ -74,7 +76,7 @@ Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělej
 
     Tento kód volá metodu specifickou pro platformu pro vytvoření registrace šablony namísto nativní registrace. Vzhledem k tomu, že registrace šablon jsou odvozeny z nativních registrací, nemusíte měnit existující registrace.
 
-3. V kontroleru nahraďte `sendNotification`metodunásledujícímkódem: `Notifications`
+1. V **Průzkumník řešení**ve složce **Controllers** otevřete soubor *NotificationsController.cs* . Metodu `Post` nahraďte následujícím kódem:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -89,21 +91,20 @@ Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělej
     }
     ```
 
-    Tento kód pošle oznámení na všechny platformy současně, a to bez nutnosti zadat nativní datovou část. Notification Hubs sestaví a doručuje správnou datovou část na každé zařízení s poskytnutou hodnotou *značky* , jak je uvedeno v zaregistrovaných šablonách.
+    Tento kód pošle oznámení na všechny platformy současně. Neurčíte nativní datovou část. Notification Hubs sestaví a doručuje správnou datovou část na každé zařízení s poskytnutou hodnotou značky, jak je uvedeno v zaregistrovaných šablonách.
 
-4. Publikujte projekt back-endu WebApi znovu.
+1. Znovu publikujte projekt webového rozhraní API.
 
-5. Znovu spusťte klientskou aplikaci a ověřte, zda byla registrace úspěšná.
+1. Opětovným spuštěním klientské aplikace ověřte, zda byla registrace úspěšná.
 
-6. Volitelné Nasaďte klientskou aplikaci do druhého zařízení a pak aplikaci spusťte.
-    Na každém zařízení se zobrazí oznámení.
+1. Volitelně nasaďte klientskou aplikaci do druhého zařízení a pak aplikaci spusťte. Na každém zařízení se zobrazí oznámení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste dokončili tento kurz, získáte další informace o Notification Hubs a šablonách v těchto tématech:
+Teď, když jste dokončili tento kurz, získáte další informace o Notification Hubs a šablonách v těchto článcích:
 
-* [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.
-* [Přehled služby Azure Notification Hubs][Templates]: Obsahuje podrobnější informace o šablonách.
+* Jiný scénář použití šablon najdete v kurzu [nabízená oznámení na konkrétní zařízení s Windows, která běží na Univerzální platforma Windows aplikacích][Use Notification Hubs to send breaking news] .
+* Podrobnější informace o šablonách najdete v tématu [přehled Notification Hubs][Templates].
 
 <!-- Anchors. -->
 
@@ -112,10 +113,10 @@ Teď, když jste dokončili tento kurz, získáte další informace o Notificati
 <!-- URLs. -->
 [Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Visual Studio 2012 Express for Windows 8]: https://go.microsoft.com/fwlink/?LinkId=257546
+[Visual Studio 2012 Express for Windows 8]: https://visualstudio.microsoft.com/downloads/
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
-[Informování uživatelů pomocí Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Posílání oznámení konkrétním uživatelům pomocí Azure Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx

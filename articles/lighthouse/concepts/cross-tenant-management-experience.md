@@ -1,20 +1,20 @@
 ---
-title: Prostředí pro správu napříč tenanty
+title: Prostředí pro správu mezi klienty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286618"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301001"
 ---
-# <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
+# <a name="cross-tenant-management-experiences"></a>Prostředí pro správu mezi klienty
 
 Tento článek popisuje scénáře, které vám jako poskytovatel služeb můžou využít se [správou delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) ke správě prostředků Azure pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com).
 
@@ -58,6 +58,7 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 - Zobrazit výstrahy pro delegovaná předplatná v Azure Portal nebo programově prostřednictvím volání REST API, s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
 - Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
+- Vytváření výstrah v klientech zákazníka, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions v tenantovi poskytovatele služeb prostřednictvím webhooků
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Prostředí pro správu mezi klienty v současné době podporuje v rámci deleg
 - Vytvoření a úprava definic zásad v rámci delegovaného předplatného
 - Přiřazení definic zásad definovaných zákazníkem v rámci delegovaného předplatného
 - Zákazníci uvidí zásady vytvořené poskytovatelem služeb společně se všemi zásadami, které sami vytvořily.
-- Může napravit přiřazení deployIfNotExists v rámci klientů zákazníka, pokud zákazník nakonfiguroval spravovanou identitu a *roleDefinitionIds* pro toto přiřazení zásady.
+- Může [napravit deployIfNotExists nebo upravit přiřazení v rámci tenanta zákazníka](../how-to/deploy-policy-remediation.md) .
 
 [Graf prostředků Azure](https://docs.microsoft.com/azure/governance/resource-graph/):
 

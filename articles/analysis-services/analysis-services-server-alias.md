@@ -1,50 +1,49 @@
 ---
-title: Azure názvy serveru aliasů služby Analysis Services | Dokumentace Microsoftu
-description: Popisuje postup vytvoření a použití serveru aliasů názvu.
+title: Názvy serverů s aliasem Azure Analysis Services | Microsoft Docs
+description: Popisuje, jak vytvořit a používat aliasy názvů serverů.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 66e6b4713591f099769543a75dcddec34f3d2e2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 161df354bae350df533f3991e551401fd56a4a65
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534271"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301074"
 ---
-# <a name="alias-server-names"></a>Názvy serveru aliasů
+# <a name="alias-server-names"></a>Názvy serverů s aliasem
 
-S použitím aliasu názvu souboru, uživatelé se mohou připojit k serveru Azure Analysis Services pomocí v kratší *alias* místo názvu serveru. Když se připojujete z klientské aplikace, aliasem, který je zadán jako koncový bod pomocí **odkaz: / /** formát protokolu. Koncový bod vrátí název skutečný server aby bylo možné připojit.
+Pomocí aliasu názvu serveru se uživatelé můžou k serveru Azure Analysis Services připojit pomocí kratšího *aliasu* místo názvu serveru. Při připojování z klientské aplikace je alias zadán jako koncový bod pomocí formátu protokolu **Link://** . Koncový bod pak vrátí skutečný název serveru, aby se mohl připojit.
 
-Názvy serveru aliasů jsou vhodné pro:
+Názvy serverů aliasů jsou vhodné pro:
 
-- Migrace modely mezi servery, aniž by to ovlivnilo uživatele. 
-- Názvy serverů popisný jsou uživatelé tak mějte na paměti. 
-- Uživatelé na různé servery v různých časech dne. 
-- Uživatelé v různých oblastech k instancím, které jsou geograficky blíž, stejně jako při použití Azure Traffic Manageru. 
+- Migrace modelů mezi servery bez vlivu na uživatele. 
+- Popisné názvy serverů usnadňují uživatelům zapamatování. 
+- Přímé nasměrování uživatelů na různé servery v různou denní dobu. 
+- Přímé směrování uživatelů v různých oblastech do geograficky podrobnějších instancí, jako při použití Azure Traffic Manager. 
 
-Libovolný koncový bod HTTPS, který vrátí platný název serveru Azure Analysis Services může sloužit jako alias. Koncový bod musí podporovat protokol HTTPS přes port 443 a port, který nesmí být zadaný v identifikátoru URI.
+Libovolný koncový bod HTTPS, který vrátí platný název Azure Analysis Services serveru, může sloužit jako alias. Koncový bod musí podporovat HTTPS přes port 443 a port nesmí být zadaný v identifikátoru URI.
 
-![Alias odkazu formátu](media/analysis-services-alias/aas-alias-browser.png)
+![Alias pomocí formátu odkazu](media/analysis-services-alias/aas-alias-browser.png)
 
-Když se připojujete z klienta, je zadán název serveru alias pomocí **odkaz: / /** formát protokolu. Například v Power BI Desktopu:
+Při připojování z klienta se název serveru aliasu zadává pomocí formátu protokolu **Link://** . Například v Power BI Desktop:
 
-![Připojení Power BI Desktopu](media/analysis-services-alias/aas-alias-connect-pbid.png)
+![Power BI Desktop připojení](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
-## <a name="create-an-alias"></a>Vytvořit alias
+## <a name="create-an-alias"></a>Vytvoření aliasu
 
-Chcete-li vytvořit alias koncový bod, můžete použít libovolnou metodu, která vrací platný název serveru Azure Analysis Services. Například odkaz na soubor v Azure Blob Storage, který obsahuje skutečný server name, nebo vytvořte a publikujte aplikaci webových formulářů ASP.NET.
+Pokud chcete vytvořit koncový bod aliasu, můžete použít libovolnou metodu, která vrátí platný název Azure Analysis Services serveru. Například odkaz na soubor v Azure Blob Storage, který obsahuje skutečný název serveru, nebo vytvořit a publikovat webovou aplikaci ASP.NET Web Forms.
 
-V tomto příkladu se vytvoří aplikace webových formulářů ASP.NET v sadě Visual Studio. Hlavní stránka odkazu a uživatelský ovládací prvek se odeberou z stránku Default.aspx. Obsah Default.aspx jsou jednoduše následující direktiva stránky:
+V tomto příkladu je aplikace webových formulářů ASP.NET vytvořena v aplikaci Visual Studio. Odkaz na hlavní stránku a uživatelský ovládací prvek se odeberou ze stránky default. aspx. Obsah default. aspx je jednoduše následující direktivou stránky:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-V události Page_Load v Default.aspx.cs pomocí metody Response.Write() metody vrátí název serveru Azure Analysis Services.
+Událost Page_Load v Default.aspx.cs používá metodu Response. Write () k vrácení názvu serveru Azure Analysis Services.
 
 ```
 protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +52,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Klientské knihovny](analysis-services-data-providers.md)   
-[Připojení z Power BI Desktopu](analysis-services-connect-pbi.md)
+[Připojit z Power BI Desktop](analysis-services-connect-pbi.md)

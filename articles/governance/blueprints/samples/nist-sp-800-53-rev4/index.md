@@ -1,17 +1,17 @@
 ---
-title: Ukázka – podrobný plán NIST SP 800-53 R4 – přehled
+title: Ukázka podrobného plánu NIST SP 800-53 R4 – přehled
 description: Přehled ukázky podrobného plánu NIST SP 800-53 R4 Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly NIST SP 800-53 R4.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 6edec05d157df35fb4096e41059b12e36cefd3da
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 2aa8b413ff6489e9d893b17348f7a0760527dbda
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248362"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299050"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>Přehled ukázky podrobného plánu NIST SP 800-53 R4
 

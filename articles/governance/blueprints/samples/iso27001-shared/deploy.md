@@ -1,17 +1,17 @@
 ---
-title: Ukázka – podrobný plán sdílených služeb ISO 27001 – postup nasazení
+title: Ukázkový plán sdílených služeb ISO 27001 – postup nasazení
 description: Nasaďte kroky pro ukázka podrobného plánu sdílených služeb ISO 27001, včetně podrobností o parametrech artefaktu podrobného plánu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 184bc87dc74cd67115b82b5be1a939c8286ed54f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 3a58894f8033e1f837a3b8ac64438337c3a7f0a5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248954"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299104"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
@@ -104,7 +104,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-|Název artefaktu|Typ artefaktu|Název parametru|Description|
+|Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
 |\[Preview @ no__t-1: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux|Přiřazení zásad|Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru|Volitelné Výchozí hodnota je _["none"]_ .|
@@ -114,12 +114,12 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Povolené skladové položky účtu úložiště|Přiřazení zásad|Povolené skladové položky úložiště|Seznam povolených SKU účtu úložiště pro diagnostické protokoly. Výchozí hodnota je _["Standard_LRS"]_ .|
 |Povolené SKU virtuálních počítačů|Přiřazení zásad|Seznam SKU virtuálních počítačů, které je možné nasadit Výchozí hodnota je _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Plán iniciativy pro ISO 27001|Přiřazení zásad|Typy prostředků pro audit diagnostických protokolů|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Log Analytics skupina prostředků|Skupina prostředků|Jméno|**Uzamkl** – zřetězí **název organizace** s `-sharedsvsc-log-rg`, aby byla skupina prostředků jedinečná.|
+|Log Analytics skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvsc-log-rg`, aby byla skupina prostředků jedinečná.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Log Analytics|Šablona Správce prostředků|Úroveň služby|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona Log Analytics|Šablona Správce prostředků|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Log Analytics|Šablona Správce prostředků|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
-|Skupina síťových prostředků|Skupina prostředků|Jméno|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-net-rg`, aby byla skupina prostředků jedinečná.|
+|Skupina síťových prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-net-rg`, aby byla skupina prostředků jedinečná.|
 |Skupina síťových prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Azure Firewall|Šablona Správce prostředků|Privátní IP adresa brány Azure firewall|Nakonfiguruje privátní IP adresu [brány firewall Azure](../../../../firewall/overview.md). Tato hodnota se používá také jako výchozí směrovací tabulka v podsíti sdílených služeb. By měl být součástí zápisu CIDR definovaného v **Azure firewall předponu adresy podsítě**. Výchozí hodnota je _10.0.4.4_.|
 |Šablona Azure Firewall|Šablona Správce prostředků|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
@@ -131,7 +131,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Šablona směrovací tabulky Virtual Network a|Šablona Správce prostředků|Application Gateway předpony adresy podsítě|Zápis CIDR pro podsíť aplikační brány. Výchozí hodnota je _10.0.2.0/24_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Správce prostředků|Předpona adresy podsítě Virtual Network brány|Zápis CIDR pro podsíť brány virtuální sítě. Výchozí hodnota je _10.0.3.0/24_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Správce prostředků|Azure Firewall předpony adresy podsítě|Zápis CIDR pro podsíť [brány firewall Azure](../../../../firewall/overview.md) . By měl obsahovat parametr **privátní IP adresy brány firewall Azure** .|
-|Key Vault skupina prostředků|Skupina prostředků|Jméno|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-kv-rg`, aby byla skupina prostředků jedinečná.|
+|Key Vault skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-kv-rg`, aby byla skupina prostředků jedinečná.|
 |Key Vault skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Key Vault|Šablona Správce prostředků|Uživatelské jméno správce JumpBox|Uživatelské jméno pro JumpBox. V **šabloně JumpBox**musí odpovídat stejné hodnotě vlastnosti. Výchozí hodnota je _JB-Admin-User_.|
 |Šablona Key Vault|Šablona Správce prostředků|Klíč SSH správce JumpBox nebo heslo|Klíč nebo heslo pro účet na JumpBox V **šabloně JumpBox**musí odpovídat stejné hodnotě vlastnosti. Žádná výchozí hodnota a nemůže být ponechána prázdná.|
@@ -140,13 +140,13 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Šablona Key Vault|Šablona Správce prostředků|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci Key Vault. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.  |
 |Šablona Key Vault|Šablona Správce prostředků|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Key Vault|Šablona Správce prostředků|SKU Key Vault|Určuje SKLADOVOU položku Key Vault, která je vytvořena. Výchozí hodnota je _Premium_.|
-|Skupina prostředků JumpBox|Skupina prostředků|Jméno|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-jb-rg`, aby byla skupina prostředků jedinečná.|
+|Skupina prostředků JumpBox|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-jb-rg`, aby byla skupina prostředků jedinečná.|
 |Skupina prostředků JumpBox|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona JumpBox|Šablona Správce prostředků|Uživatelské jméno správce JumpBox|Uživatelské jméno, které se používá pro přístup k virtuálním počítačům s JumpBox. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Key Vault**. Výchozí hodnota je _JB-Admin-User_.|
 |Šablona JumpBox|Šablona Správce prostředků|Heslo správce JumpBox (ID prostředku Key Vault)|ID prostředku Key Vault. Použijte "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" a nahraďte `{subscriptionId}` vaším ID předplatného a `{orgName}` s **názvem organizace** . parametr podrobného plánu|
 |Šablona JumpBox|Šablona Správce prostředků|Heslo správce JumpBox (název tajného klíče Key Vault)|Uživatelské jméno správce JumpBox Ve vlastnosti **šablony Key Vault** **uživatelské jméno správce JumpBox**musí odpovídat hodnotě.|
 |Šablona JumpBox|Šablona Správce prostředků|Operační systém JumpBox|Určuje operační systém virtuálního počítače JumpBox. Výchozí hodnota je _Windows_.|
-|Active Directory Domain Services skupina prostředků|Skupina prostředků|Jméno|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-adds-rg`, aby byla skupina prostředků jedinečná.|
+|Active Directory Domain Services skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-sharedsvcs-adds-rg`, aby byla skupina prostředků jedinečná.|
 |Active Directory Domain Services skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Active Directory Domain Services|Šablona Správce prostředků|Uživatelské jméno správce domény|Uživatelské jméno pro přidání JumpBox Musí odpovídat stejné hodnotě vlastnosti v **šabloně Key Vault**. Výchozí hodnota je _přidat – admin-User_.|
 |Šablona Active Directory Domain Services|Šablona Správce prostředků|Heslo správce domény (ID prostředku Key Vault)|ID prostředku Key Vault. Použijte "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" a nahraďte `{subscriptionId}` vaším ID předplatného a `{orgName}` s **názvem organizace** . parametr podrobného plánu|

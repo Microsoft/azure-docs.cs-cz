@@ -1,6 +1,6 @@
 ---
-title: Filtrování, řazení, stránkování entit Media Services – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje filtrování, řazení, stránkování entit Azure Media Services.
+title: Filtrování, řazení, stránkování Media Services entit – Azure | Microsoft Docs
+description: Tento článek popisuje filtrování, řazení, stránkování Azure Media Services entit.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,240 +9,120 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60732361"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298946"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
-Služba Media Services podporuje následující možnosti dotazu OData pro službu Media Services v3 entity: 
+Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je k dispozici při výpisu Azure Media Servicesch entit systému V3.
 
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
+## <a name="considerations"></a>Odůvodněn
 
-Popis operátoru:
+* Vlastnosti entit, které jsou typu DateTime, jsou vždy ve formátu UTC.
+* Před odesláním žádosti by měl být prázdný znak v řetězci dotazu zakódovaný na adrese URL.
 
-* EQ = rovno
-* Ne = není rovno
-* Ge = větší než nebo rovno
-* Le = menší než nebo rovno
-* Gt = je větší než
-* Lt = menší než
+## <a name="comparison-operators"></a>Operátory porovnání
 
-Vlastnosti entity, které jsou typu datum a čas jsou vždy ve formátu UTC.
+K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
-## <a name="page-results"></a>Výsledky stránky
+Operátory rovnosti:
 
-Pokud odpovědi na dotaz obsahuje mnoho položek, tato služba vrátí "\@odata.nextLink" k získání další stránky výsledků. Tímto lze na stránku prostřednictvím úplná sada výsledků. Nelze konfigurovat velikost stránky. Velikost stránky se liší podle typu entity, přečtěte si prosím následující jednotlivé části Podrobnosti.
+- `eq`: test, zda je pole **rovno** konstantní hodnotě
+- `ne`: test, zda pole není **rovno** konstantní hodnotě
 
-Pokud entity jsou vytvořeny nebo odstranili stránkování prostřednictvím kolekce, změny se projeví v navrácených výsledcích (pokud tyto změny jsou součástí kolekce, která se nestáhla). 
+Operátory rozsahu:
 
-> [!TIP]
-> Odkaz na další vždy používejte k vytvoření výčtu kolekce a není závislý na konkrétní stránce velikost.
+- `gt`: test, zda je pole **větší než** konstantní hodnota
+- `lt`: test, zda je pole **menší než** hodnota konstanty
+- `ge`: test, zda je pole **větší nebo rovno** konstantní hodnotě
+- `le`: test, zda je pole **menší nebo rovno** konstantní hodnotě
 
-## <a name="assets"></a>Prostředky
+## <a name="filter"></a>Filtrovací
 
-### <a name="filteringordering"></a>Filtrování a řazení
+**$Filter** – pomocí filtru zadejte parametr filtru OData, abyste našli jenom objekty, které vás zajímají.
 
-Následující tabulka ukazuje, jak filtrování a řazení možnosti může použít u [Asset](https://docs.microsoft.com/rest/api/media/assets) vlastnosti: 
+Následující příklad filtruje alternateId assetu:
 
-|Name|Filtr|Objednání|
-|---|---|---|
-|id|||
-|name|eq, gt, lt| Vzestupným a sestupným|
-|properties.alternateId |EQ||
-|properties.assetId |EQ||
-|Properties.Container |||
-|Properties.Created| eq, gt, lt| Vzestupným a sestupným|
-|Properties.Description |||
-|properties.lastModified |||
-|properties.storageAccountName |||
-|properties.storageEncryptionFormat | ||
-|type|||
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
+```
 
-Následující příklad jazyka C# filtry na datum vytvoření:
+Následující C# příklad filtruje datum vytvoření prostředku:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```
+```    
 
-### <a name="pagination"></a>Stránkování 
+## <a name="order-by"></a>Řadit podle
 
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 1000.
-
-#### <a name="c-example"></a>Příklad jazyka C#
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všechny prostředky v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-#### <a name="rest-example"></a>Příklad REST
-
-Podívejte se na následující příklad použití $skiptoken. Ujistěte se, že nahradíte *amstestaccount* se název účtu a sadou *verze api-version* hodnotu na nejnovější verzi.
-
-Pokud jste požádali o seznam prostředků tímto způsobem:
+**$OrderBy** – slouží k řazení vrácených objektů podle zadaného parametru. Příklad:    
 
 ```
-GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
+```
+
+Chcete-li výsledky seřadit ve vzestupném nebo sestupném pořadí, přidejte buď `asc`, nebo `desc` k názvu pole oddělené mezerou. Například `$orderby properties/created desc`.
+
+## <a name="skip-token"></a>Přeskočit token
+
+**$skiptoken** – Pokud odpověď dotazu obsahuje mnoho položek, vrátí služba hodnotu tokenu skip (`@odata.nextLink`), kterou použijete k získání další stránky výsledků. Tato možnost se dá použít k vytvoření stránky celé sady výsledků dotazu.
+
+V Media Services V3 nemůžete konfigurovat velikost stránky. Velikost stránky se liší podle typu entity, přečtěte si prosím jednotlivé části, které následují za podrobnosti.
+
+Pokud jsou při stránkování vytvořeny nebo smazány entity, změny se projeví v vrácených výsledcích (pokud jsou tyto změny součástí kolekce, která nebyla stažena). 
+
+> [!TIP]
+> Vždy byste měli použít `nextLink` k vytvoření výčtu kolekce a nezáleží na konkrétní velikosti stránky.
+>
+> @No__t-0 bude k dispozici pouze v případě, že existuje více než jedna stránka entit.
+
+Vezměte v úvahu následující příklad, kde se používá $skiptoken. Ujistěte se, že jste nahradili *amstestaccount* názvem vašeho účtu a nastavíte hodnotu *rozhraní API-Version* na nejnovější verzi.
+
+Pokud si vyžádáte seznam prostředků, takto:
+
+```
+GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
 x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-By získáte zpět odpověď podobná následujícímu:
+Měla by se vám vrátit odpověď podobnou této:
 
 ```
 HTTP/1.1 200 OK
- 
+
 {
 "value":[
 {
-"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 0","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-00000000-0000-0000-0000-0000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 },
 // lots more assets
 {
-"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 517","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-00000000-0000-0000-0000-000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 }
-],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
-}
-```
-
-Na další stránku byste požádat o pak zasláním požadavek get:
-
-```
-https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
-```
-
-Další příklady REST, najdete v článku [prostředky – seznam](https://docs.microsoft.com/rest/api/media/assets/list)
-
-## <a name="content-key-policies"></a>Zásady symetrických klíčů
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [obsahu zásady klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies) vlastnosti: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Description |Eq, ne, ge, le, gt, lt||
-|properties.lastModified|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|Properties.Options |||
-|properties.policyId|Eq, ne||
-|type|||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-Následující C# příklad ukazuje, jak vytvořit výčet všech **obsahu zásady klíčů** v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
 }
 ```
 
-ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-
-## <a name="jobs"></a>Úlohy
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [úlohy](https://docs.microsoft.com/rest/api/media/jobs) vlastnosti: 
-
-| Name    | Filtr                        | Objednání |
-|---------|-------------------------------|-------|
-| name                    | EQ            | Vzestupným a sestupným|
-| properties.state        | Eq, ne        |                         |
-| Properties.Created      | gt, ge, lt, le| Vzestupným a sestupným|
-| properties.lastModified | gt, ge, lt, le | Vzestupným a sestupným| 
-
-### <a name="pagination"></a>Stránkování
-
-Úlohy stránkování je podporována v Media Services v3.
-
-Následující C# příklad ukazuje, jak zobrazit výčet prostřednictvím úlohy v rámci účtu.
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
+Pak odešlete požadavek GET na další stránku.
 
 ```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+```
 
-ZBÝVAJÍCÍ příklady naleznete v tématu [úloh – seznam](https://docs.microsoft.com/rest/api/media/jobs/list)
-
-## <a name="streaming-locators"></a>Lokátory streamování
-
-### <a name="filteringordering"></a>Filtrování a řazení
-
-Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingLocator: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id |||
-|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všech StreamingLocators v účtu.
+Následující C# příklad ukazuje, jak vytvořit výčet ze všech lokátorů streamování v účtu.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -254,56 +134,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-ZBÝVAJÍCÍ příklady naleznete v tématu [lokátory streamování – seznam](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+## <a name="using-logical-operators-to-combine-query-options"></a>Kombinování možností dotazu pomocí logických operátorů
 
-## <a name="streaming-policies"></a>Zásady streamování
+Media Services V3 podporuje logické operátory "nebo" a "a". 
 
-### <a name="filteringordering"></a>Filtrování a řazení
+Následující příklad funkce REST kontroluje stav úlohy:
 
-Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti StreamingPolicy: 
-
-|Název|Filtr|Objednání|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>Stránkování
-
-Pro každý ze čtyř povoleno řazení je podporováno stránkování. V současné době je velikost stránky je 10.
-
-Následující příklad jazyka C# ukazuje, jak zobrazit výčet prostřednictvím všech StreamingPolicies v účtu.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
+```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-ZBÝVAJÍCÍ příklady naleznete v tématu [streamování zásady – seznam](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+Stejný dotaz C# sestavíte takto: 
 
-## <a name="transform"></a>Transformace
+```csharp
+var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
+client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
+```
 
-### <a name="filteringordering"></a>Filtrování a řazení
+## <a name="filtering-and-ordering-options-of-entities"></a>Možnosti filtrování a řazení entit
 
-Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [transformuje](https://docs.microsoft.com/rest/api/media/transforms) vlastnosti: 
+Následující tabulka ukazuje, jak lze použít možnosti filtrování a řazení u různých entit:
 
-| Name    | Filtr                        | Objednání |
-|---------|-------------------------------|-------|
-| name                    | EQ            | Vzestupným a sestupným|
-| Properties.Created      | gt, ge, lt, le| Vzestupným a sestupným|
-| properties.lastModified | gt, ge, lt, le | Vzestupným a sestupným|
+|Název entity|Název vlastnosti|Filtrovací|Za|
+|---|---|---|---|
+|[Hmot](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
+||Properties. alternateId |`eq`||
+||Properties. assetId |`eq`||
+||vlastnosti. vytvořeno| `eq`, `gt` `lt`| `asc` a `desc`|
+|[Zásady pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||Properties. policyId|`eq`, `ne`||
+|[Úlohy](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` a `desc`|
+||vlastnosti. State        | `eq`, `ne`        |                         |
+||vlastnosti. vytvořeno      | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
+||Properties. lastModified | `gt`, `ge` `lt`, `le` | `asc` a `desc`| 
+|[Lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. čas_ukončení    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+||vlastnosti. vytvořeno    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` a `desc`|
+|[Transformace](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` a `desc`|
+|| vlastnosti. vytvořeno      | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
+|| Properties. lastModified | `gt`, `ge` `lt`, `le`| `asc` a `desc`|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Streamování souboru](stream-files-dotnet-quickstart.md)
+* [Vypsat prostředky](https://docs.microsoft.com/rest/api/media/assets/list)
+* [Seznam zásad pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [Vypsat úlohy](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [Vypsat zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [Seznam lokátorů streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Streamování souboru](stream-files-dotnet-quickstart.md)
+* [Kvóty a omezení](limits-quotas-constraints.md)

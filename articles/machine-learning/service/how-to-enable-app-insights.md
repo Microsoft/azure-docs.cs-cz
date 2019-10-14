@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 08c891ce2702455cac9618152061e992fc81420b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c16b6d769aa191b0e8ac86768a7eafd35ccbc3b9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274002"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301022"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 
