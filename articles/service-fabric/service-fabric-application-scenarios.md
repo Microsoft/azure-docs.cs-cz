@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327294"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303518"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
 Azure Service Fabric nabízí spolehlivou a flexibilní platformu, kde můžete psát a spouštět mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužby můžou být bezstavové nebo stavové a jsou mezi virtuálními počítači vyrovnávány prostředky, aby se maximalizovala efektivita. 
@@ -38,11 +38,11 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
     Mezi zákazníky, kteří vytvořili herní služby, patří [Další hry](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) a [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/). Zákazníci, kteří vytvořili interaktivní relace, zahrnují [Honeywell s HoloLens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
-* **Analýza dat a zpracování pracovního postupu**: Aplikace, které musí spolehlivě zpracovávat události nebo datové proudy s využitím optimalizovaného čtení a zápisu v Service Fabric. Service Fabric podporuje také kanály zpracování aplikací, kde musí být výsledky spolehlivé a předávané do další fáze zpracování bez jakýchkoli ztrát. Tyto kanály zahrnují transakční a finanční systémy, kde jsou zásadní záruky konzistence a výpočtu dat.
+* **Analýza dat a zpracování pracovních postupů**: aplikace, které musí spolehlivě zpracovávat události nebo proudy dat z optimalizovaného čtení a zápisu v Service Fabric. Service Fabric podporuje také kanály zpracování aplikací, kde musí být výsledky spolehlivé a předávané do další fáze zpracování bez jakýchkoli ztrát. Tyto kanály zahrnují transakční a finanční systémy, kde jsou zásadní záruky konzistence a výpočtu dat.
 
     Zákazníci, kteří mají sestavené služby podnikového pracovního postupu, zahrnují [skupinu Zeiss](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform), [řešení pro kvorum](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)a [obecnou Société](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric).
 
-* **Výpočet dat**: Service Fabric vám umožní sestavovat stavové aplikace, které mají náročné výpočty dat. Service Fabric umožňuje společné umístění zpracování (výpočtu) a dat v aplikacích. 
+* **Výpočet dat**: Service Fabric umožňuje sestavovat stavové aplikace, které jsou náročné na výpočetní data. Service Fabric umožňuje společné umístění zpracování (výpočtu) a dat v aplikacích. 
 
    Když vaše aplikace obvykle vyžaduje přístup k datům, latence sítě přidružená k externí mezipaměti dat nebo vrstvě úložiště omezuje dobu výpočtu. Stavové Service Fabric služby eliminují tuto latenci a povolují více optimalizovaných čtení a zápisů. 
    
@@ -50,9 +50,9 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
     Zákazníci, kteří vytvořili výpočetní služby, zahrnují [odpověď Solidsoft](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) a [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura).
 
-* **Služby s vysokou dostupností**: Service Fabric poskytuje rychlé převzetí služeb při selhání vytvořením několika replik sekundární služby. Pokud dojde k výpadku uzlu, procesu nebo samostatné služby z důvodu hardwaru nebo jiné chyby, bude jedna ze sekundárních replik povýšena na primární repliku s minimální ztrátou služby.
+* **Vysoce dostupné služby**: Service Fabric poskytuje rychlé převzetí služeb při selhání vytvořením několika replik sekundární služby. Pokud dojde k výpadku uzlu, procesu nebo samostatné služby z důvodu hardwaru nebo jiné chyby, bude jedna ze sekundárních replik povýšena na primární repliku s minimální ztrátou služby.
 
-* **Škálovatelné služby**: Jednotlivé služby je možné rozdělit na oddíly a umožnit tak horizontální navýšení kapacity napříč clusterem. Jednotlivé služby je také možné vytvořit a odebrat. Můžete škálovat služby z několika instancí na několika uzlech na tisíce instancí na mnoha uzlech a pak je znovu škálovat podle potřeby. Pomocí Service Fabric můžete tyto služby vytvářet a spravovat jejich kompletní životní cykly.
+* **Škálovatelné služby**: jednotlivé služby je možné rozdělit do oddílů a umožnit tak škálování stavu napříč clusterem. Jednotlivé služby je také možné vytvořit a odebrat. Můžete škálovat služby z několika instancí na několika uzlech na tisíce instancí na mnoha uzlech a pak je znovu škálovat podle potřeby. Pomocí Service Fabric můžete tyto služby vytvářet a spravovat jejich kompletní životní cykly.
 
 ## <a name="application-design-case-studies"></a>Případové studie pro návrh aplikace
 Případové studie, které ukazují, jak Service Fabric slouží k návrhu aplikací, jsou publikovány v [zákaznických scénářích](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) a [mikroslužbách](https://azure.microsoft.com/solutions/microservice-applications/) na webech Azure.
@@ -68,9 +68,9 @@ Stavové mikroslužby zjednodušují návrhy aplikací, protože odstraňují nu
 
 Následující diagramy znázorňují rozdíly mezi návrhem aplikace, která je Bezstavová a ta je stavová. Díky využití [Reliable Services](service-fabric-reliable-services-introduction.md) a [Reliable Actors](service-fabric-reliable-actors-introduction.md) programovacích modelů omezuje stavové služby složitost aplikace při dosahování vysoké propustnosti a nízké latence.
 
-Tady je ukázková aplikace, která používá bezstavové služby: @no__t – 0Application používající bezstavové služby @ no__t-1
+Tady je ukázková aplikace, která používá bezstavové služby: ![Application, která používá bezstavové služby @ no__t-1.
 
-Tady je ukázková aplikace, která používá stavové služby: @no__t – 0Application používající bezstavové služby @ no__t-1
+Tady je ukázková aplikace, která používá stavové služby: ![Application, který používá stavové služby @ no__t-1.
 
 ## <a name="next-steps"></a>Další kroky
 

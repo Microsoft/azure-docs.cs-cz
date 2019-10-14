@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a75f3f606129d370457816507537f2cb4491adf8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cf48426f14eb1ea5004b23da594194fa9828a112
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478833"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303456"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -23,14 +23,14 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > [!div class="checklist"]
 > * Vytvoření účtu Azure Maps
 > * Získání primárního klíče pro váš účet Maps
-> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -114,7 +114,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     </html>
     ```
 
-   Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. `GetMap` Funkce bude obsahovat vložený kód jazyka JavaScript pro přístup k rozhraním API Azure Maps.
+   Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. Funkce `GetMap` bude obsahovat vložený kód jazyka JavaScript pro přístup k rozhraním API Azure Maps.
 
 3. Do funkce `GetMap` v souboru HTML přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` primárním klíčem, který jste zkopírovali z účtu Maps.
 
@@ -129,7 +129,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     });
     ```
 
-   Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. `atlas`je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. `atlas.Map`poskytuje ovládací prvek pro vizuální a interaktivní webové mapování.
+   Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. `atlas` je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. `atlas.Map` poskytuje ovládací prvek pro vizuální a interaktivní webové mapování.
 
 4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Toto je nejzákladnější mapa, kterou můžete provést voláním `atlas.Map` pomocí klíče účtu.
 
@@ -161,7 +161,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
     });
     ```
 
-   V tomto segmentu `ready` kódu se událost přidá do mapy, která se aktivuje, když se načtou prostředky mapy a že je k ní přistupovaná mapa připravena. V obslužné rutině události mapy `ready` je vytvořen zdroj dat pro ukládání výsledných dat. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslit výsledná data ve zdroji dat, v tomto případě jako ikona tmavě modrého kulatého špendlíku ve středu souřadnic výsledku, který umožňuje překrytí jinými ikonami. Výsledná vrstva je přidána do vrstev mapy.
+   V tomto segmentu kódu se do mapy přidá událost `ready`, která se aktivuje, když se načtou prostředky mapy a že je k ní přistupovaná mapa připravena. V obslužné rutině události map `ready` se vytvoří zdroj dat pro uložení výsledných dat. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se mají vykreslit výsledná data ve zdroji dat, v tomto případě jako ikona tmavě modrého kulatého špendlíku ve středu souřadnic výsledku, který umožňuje překrytí jinými ikonami. Výsledná vrstva je přidána do vrstev mapy.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](http
 
 ### <a name="service-module"></a>Modul služeb
 
-1. V obslužné rutině události mapy `ready` vytvořte adresu URL vyhledávací služby přidáním následujícího kódu jazyka JavaScript.
+1. V obslužné rutině události map `ready` vytvořte adresu URL vyhledávací služby přidáním následujícího kódu jazyka JavaScript.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](http
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential` VytvoříaověřípožadavkyHTTP,kterésemajíAzureMapspomocí`SubscriptionKeyCredentialPolicy` klíče předplatného. Zásada převezme a vytvoří instanci kanálu. [](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` Představuje adresu URL pro Azure Maps vyhledávacích operací. [](https://docs.microsoft.com/rest/api/maps/search) `searchURL`
+   @No__t-0 vytvoří `SubscriptionKeyCredentialPolicy` pro ověření požadavků HTTP na Azure Maps pomocí klíče předplatného. @No__t-0 převezme zásady `SubscriptionKeyCredential` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . @No__t-0 představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
 
-2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá okolí benzinových stanic v rámci zadaného poloměru poskytnuté zeměpisné šířky a délky. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat, což automaticky vede k vykreslování dat na mapě prostřednictvím vrstvy symbolů. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
+2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá okolí benzinových stanic v rámci zadaného poloměru poskytnuté zeměpisné šířky a délky. Kolekce funkcí geografického formátu JSON z odpovědi je pak extrahována pomocí metody `geojson.getFeatures()` a přidána do zdroje dat, což automaticky vede k vykreslování dat na mapě prostřednictvím vrstvy symbolů. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -220,7 +220,7 @@ V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](http
 4. Můžete zobrazit nezpracovaná data, která mapa vykresluje, zadáním následujícího požadavku HTTP v prohlížeči. Nahraďte \<Your Azure Maps Key\> svým primárním klíčem.
 
    ```http
-   https://atlas.microsoft.com/search/poi/json?api-version=2&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
+   https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
    ```
 
 V tomto okamžiku může stránka MapSearch zobrazit umístění bodů zájmu, které se vrátí z dotazu na vyhledání přibližných shod. Teď přidáme několik interaktivních funkcí a další informace o umístěních.
@@ -229,7 +229,7 @@ V tomto okamžiku může stránka MapSearch zobrazit umístění bodů zájmu, k
 
 Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze data o zeměpisné šířce a délce. Pokud se však podíváte na nezpracovaný JSON, který vrací vyhledávací služba Maps, uvidíte, že obsahuje další informace o jednotlivých čerpacích stanicích, včetně názvu a adresy. Tato data můžete zahrnout do mapy s použitím interaktivních, automaticky otevíraných oken.
 
-1. Přidejte následující řádky kódu do obslužné rutiny události `ready` mapy po kódu pro dotazování na službu přibližné vyhledávání. Tím se vytvoří instance metody Popup a do vrstvy symbolů se přidá událost mouseover.
+1. Přidejte následující řádky kódu do obslužné rutiny události `ready` po kódu pro dotazování na službu přibližného vyhledávání. Tím se vytvoří instance metody Popup a do vrstvy symbolů se přidá událost mouseover.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,9 +239,9 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Rozhraní API `*atlas.Popup` poskytuje okno informace ukotvené na požadované pozici na mapě. 
+    Rozhraní API `*atlas.Popup` poskytuje okno s informacemi ukotvené na požadované pozici na mapě. 
 
-2. Do této `GetMap` funkce přidejte následující kód, chcete-li v překryvném okně zobrazit ukazatel myši nad výslednou informací.
+2. Přidejte následující kód do funkce `GetMap`, chcete-li v překryvném okně zobrazit ukazatel myši na výslednou informaci.
 
     ```JavaScript
     function showPopup(e) {
@@ -270,7 +270,7 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
 
     ![Ovládací prvek Mapa a Search Service v Azure](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846244"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303588"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace pravidla omezení četnosti brány firewall webových aplikací pomocí Azure PowerShell
 Pravidlo omezení četnosti firewallu webových aplikací (WAF) v Azure pro front-end řídí počet požadavků povolených z jedné IP adresy klienta během doby trvání 1 minuty.
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nakonfigurovat pravidlo omezení četnosti WAF
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 
@@ -49,7 +49,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>Vytvoření profilu front-dveří
-Pomocí pokynů popsaných v [tématu rychlý Start vytvořte profil front-dveří: Vytvoření profilu front-dveří](quickstart-create-front-door.md)
+Vytvořte profil front-dveří podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří.](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>Definování podmínek shody adresy URL
 Definujte podmínku shody adresy URL (adresa URL obsahuje/promo) pomocí [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
@@ -76,11 +76,9 @@ Nastavte omezení přenosové rychlosti pomocí [New-AzFrontDoorWafCustomRuleObj
 
 ## <a name="configure-a-security-policy"></a>Konfigurace zásad zabezpečení
 
-Vyhledejte název skupiny prostředků, která obsahuje profil front-dveří pomocí `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení s vlastním pravidlem omezení četnosti pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
+Vyhledejte název skupiny prostředků, která obsahuje profil předních dveří, pomocí `Get-AzureRmResourceGroup`. V dalším kroku nakonfigurujte zásadu zabezpečení s vlastním pravidlem omezení četnosti pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) v zadané skupině prostředků, která obsahuje profil front-dveří.
 
-V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: Vytvořte si článek na](quickstart-create-front-door.md) předním dveř.
-
- pomocí [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: Vytvoření článku pro front-](quickstart-create-front-door.md) in pomocí [ New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -94,7 +92,7 @@ V níže uvedeném příkladu se používá název skupiny prostředků *myResou
 Propojte objekt zásad zabezpečení s existujícím koncovým hostitelem front-end a aktualizujte vlastnosti front-endu. Nejdřív načtěte objekt přední dveře pomocí příkazu [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) .
 Dále nastavte vlastnost front-end *WebApplicationFirewallPolicyLink* na *resourceId* pro "$ratePolicy" vytvořenou v předchozím kroku pomocí příkazu [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) . 
 
-V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: Vytvořte si článek na](quickstart-create-front-door.md) předním dveř. V následujícím příkladu nahraďte $frontDoorName názvem vašeho profilu front-dveří. 
+V níže uvedeném příkladu se používá název skupiny prostředků *myResourceGroupFD1* s předpokladem, že jste vytvořili profil front-dveří pomocí pokynů uvedených v [rychlém startu: vytvořit článek na předních dveřích](quickstart-create-front-door.md) . V následujícím příkladu nahraďte $frontDoorName názvem vašeho profilu front-dveří. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -109,6 +107,6 @@ V níže uvedeném příkladu se používá název skupiny prostředků *myResou
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [front](front-door-overview.md) -dveřích 
+- Další informace o [front-dveřích](front-door-overview.md) 
 
 

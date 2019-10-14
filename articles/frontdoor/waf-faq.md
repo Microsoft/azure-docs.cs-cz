@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375348"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302846"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Nejčastější dotazy k bráně firewall webových aplikací Azure
 
@@ -31,7 +31,7 @@ Zásady Azure WAF je možné použít u webových aplikací hostovaných na slu�
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Co je WAF pro službu Azure front-dveří? 
 
-Přední dvířka Azure je vysoce škálovatelná, globálně distribuovaná aplikace a síť pro doručování obsahu. Služba Azure WAF, která je integrovaná s předními dveřmi, zabrání útokům na dostupnost služby a cíle aplikace na hraničních zařízeních Azure. před přechodem do vaší virtuální sítě pak nabízí ochranu bez obětování výkonu.
+Přední dvířka Azure je vysoce škálovatelná, globálně distribuovaná aplikace a síť pro doručování obsahu. Když je služba Azure WAF integrovaná s předními dvířky Azure, na hraničních zařízeních Azure se zastaví útoky zaměřené na cílení na službu a na cílové aplikace. Tato ochrana se blíží zdroji útoků předtím, než budou mít možnost zadat vaši vitrual síť. WAF pro službu Azure front-dveří nabízí ochranu bez obětování výkonu.
 
 ## <a name="does-azure-waf-support-https"></a>Podporuje Azure WAF protokol HTTPS?
 
@@ -70,7 +70,7 @@ V případě globálně distribuovaných na okrajích sítě Azure můžou před
 Doporučujeme, abyste v produkčním prostředí uzamknul své back-endy, aby se snížila plocha pro útok na DDoS. Přečtěte si téma [návody uzamčení přístupu k back-endu pouze do front-endu Azure?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [bráně firewall webových aplikací Azure](waf-overview.md).
 - Přečtěte si další informace o [službě Azure front-dveří](front-door-overview.md).

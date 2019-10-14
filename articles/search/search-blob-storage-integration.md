@@ -1,22 +1,21 @@
 ---
-title: Přidání fulltextového vyhledávání do Azure Blob Storage-Azure Search
-description: Procházení obsahu textu v úložišti objektů BLOB v Azure pro Azure Search indexování v kódu pomocí REST API HTTP.
-services: search
+title: Přidání fulltextového vyhledávání do Azure Blob Storage
+titleSuffix: Azure Search
+description: Při vytváření fulltextového fulltextového vyhledávání v Azure Search extrakce obsahu a přidání struktury do objektů blob Azure.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650089"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302906"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Prohledávání služby Blob Storage pomocí Azure Search
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Přidání fulltextového vyhledávání do dat objektů BLOB v Azure pomocí Azure Search
 
 Hledání v nejrůznějších typech obsahu uložených ve službě Azure Blob Storage může být obtížné vyřešit problém. Můžete ale indexovat a hledat obsah objektů BLOB jenom několika kliknutími pomocí Azure Search. Vyhledávání v úložišti objektů BLOB vyžaduje zřízení Azure Search služby. Různá omezení služby a cenové úrovně Azure Search najdete na [stránce s cenami](https://aka.ms/azspricing).
 
@@ -45,7 +44,7 @@ Azure Search lze nakonfigurovat pro extrakci strukturovaného obsahu nalezeného
 
 Analýzu JSON nejde v tuto chvíli konfigurovat prostřednictvím portálu. [Další informace o analýze JSON najdete v Azure Search.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Rychlý start
+## <a name="quickstart"></a>Rychlý start
 Azure Search lze do objektů BLOB přidat přímo ze stránky portálu úložiště objektů BLOB.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

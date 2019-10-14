@@ -1,26 +1,21 @@
 ---
 title: Vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure
 description: Naučte se vyvíjet a nasazovat Azure WebJobs pro Azure App Service pomocí sady Visual Studio.
-services: app-service
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.service: app-service
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876876"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303566"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service
 
@@ -32,7 +27,7 @@ Verze 3. x sady [Azure WEBJOBS SDK](webjobs-sdk-how-to.md) umožňuje vyvíjet w
 
 ## <a name="webjobs-as-net-core-console-apps"></a>WebJobs jako konzolové aplikace .NET Core
 
-Při použití verze 3. x WebJobs můžete vytvářet a publikovat webové úlohy jako konzolové aplikace .NET Core. Podrobné pokyny k vytvoření a publikování konzolové aplikace .NET Core v Azure jako webové úlohy najdete v tématu [Začínáme s Azure WEBJOBS SDK pro zpracování na pozadí](webjobs-sdk-get-started.md)založeném na událostech.
+Při použití verze 3. x WebJobs můžete vytvářet a publikovat webové úlohy jako konzolové aplikace .NET Core. Podrobné pokyny k vytvoření a publikování konzolové aplikace .NET Core v Azure jako webové úlohy najdete v tématu [Začínáme s Azure WEBJOBS SDK pro zpracování na pozadí založeném na událostech](webjobs-sdk-get-started.md).
 
 > [!NOTE]
 > Webové úlohy .NET Core nelze propojit s webovými projekty. Pokud potřebujete webovou úlohu nasadit pomocí webové aplikace, měli byste [vytvořit webovou úlohu jako konzolovou aplikaci .NET Framework](#webjobs-as-net-framework-console-apps).  
@@ -86,7 +81,7 @@ Projekt můžete nasadit jako webovou úlohu samostatně nebo ho připojit k web
 
 ![Diagram znázorňující, že se projekt úlohy WebJob odkazuje na webový projekt](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud používáte sadu Visual Studio 2015, nainstalujte [sadu Azure SDK pro .NET (Visual studio 2015)](https://azure.microsoft.com/downloads/).
 
@@ -106,7 +101,7 @@ Máte dvě možnosti:
 
 #### <a id="convertlink"></a>Povolení automatického nasazení webových úloh pomocí webového projektu
 
-1. Klikněte pravým tlačítkem na webový projekt v **Průzkumník řešení**a pak klikněte na **Přidat** > **existující projekt jako webovou úlohu Azure**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na webový projekt a pak klikněte na **přidat**existující projekt  > **jako Azure WebJob**.
    
     ![Existující projekt jako webová úloha Azure](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -137,18 +132,18 @@ Chcete-li vytvořit nový projekt s podporou WebJobs, můžete použít šablonu
     Vytvořte projekt, který je nakonfigurován pro automatické nasazení jako webovou úlohu, když je nasazen webový projekt ve stejném řešení. Tuto možnost použijte, pokud chcete spustit webovou úlohu ve stejné webové aplikaci, ve které spouštíte související webovou aplikaci.
 
 > [!NOTE]
-> Šablona New – projekt WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *program.cs* pro [sadu WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete používat sadu WebJobs SDK, odeberte nebo změňte `host.RunAndBlock` příkaz v *program.cs*.
+> Šablona New – projekt WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *program.cs* pro [sadu WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete používat sadu WebJobs SDK, odeberte nebo změňte příkaz `host.RunAndBlock` v *program.cs*.
 > 
 > 
 
 #### <a id="createnolink"></a>Použití šablony WebJobs New-Project pro nezávislou úlohu WebJob
-1. Klikněte **na soubor** > **Nový projekt**a potom v dialogovém **okně Nový projekt** klikněte na **cloudová** > **Webová úloha Azure (.NET Framework)** .
+1. Klikněte **na soubor** > **Nový projekt**a potom v dialogovém okně **Nový projekt** klikněte na **cloudová** > **Azure WebJob (.NET Framework)** .
    
     ![Dialog Nový projekt znázorňující šablonu WebJob](./media/webjobs-dotnet-deploy-vs/np.png)
-2. Postupujte podle pokynů uvedených výše a [zpřístupněte konzolovou aplikaci projekt](#convertnolink)nezávisle na projektu WebJobs.
+2. Postupujte podle pokynů uvedených výše a [zpřístupněte konzolovou aplikaci projekt nezávisle na projektu WebJobs](#convertnolink).
 
 #### <a id="createlink"></a>Použití šablony WebJobs New-Project pro webovou úlohu propojenou s webovým projektem
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na webový projekt a pak klikněte na **Přidat** > **Nový projekt úlohy WebJob Azure**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na webový projekt a pak klikněte na **Přidat** **nový projekt Azure WebJob**pro  > .
    
     ![Nový záznam nabídky projektu úlohy WebJob Azure](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -169,7 +164,7 @@ Pole v tomto dialogovém okně odpovídají polím v dialogovém okně **Přidat
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a id="publishsettings"></a>Webová úloha-publikování-nastavení. JSON
 Když konfigurujete konzolovou aplikaci pro nasazení služby WebJobs, Visual Studio nainstaluje balíček NuGet [Microsoft. Web. WebJobs. Publisher](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) a uloží informace o plánování do souboru *WebJob – Publish-Settings. JSON* v projektu *. Složka vlastností* projektu WebJobs Tady je příklad tohoto souboru:
 
         {
@@ -182,9 +177,9 @@ Když konfigurujete konzolovou aplikaci pro nasazení služby WebJobs, Visual St
           "runMode": "Continuous"
         }
 
-Tento soubor můžete upravit přímo a aplikace Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uloženo v umístění [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) a lze ho zobrazit.  
+Tento soubor můžete upravit přímo a aplikace Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uloženo v [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) a lze jej zobrazit.  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a id="webjobslist"></a>WebJobs-list. JSON
 Když propojíte projekt s aktivními úlohami na webový projekt, Visual Studio uloží název projektu WebJobs do souboru *WebJobs-list. JSON* ve složce *vlastností* webového projektu. Seznam může obsahovat více projektů WebJobs, jak je znázorněno v následujícím příkladu:
 
         {
@@ -199,10 +194,10 @@ Když propojíte projekt s aktivními úlohami na webový projekt, Visual Studio
           ]
         }
 
-Tento soubor můžete upravit přímo a aplikace Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uloženo v umístění [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) a lze ho zobrazit.
+Tento soubor můžete upravit přímo a aplikace Visual Studio poskytuje technologii IntelliSense. Schéma souboru je uloženo v [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) a lze jej zobrazit.
 
 ### <a id="deploy"></a>Nasazení projektu WebJobs
-Projekt WebJobs, který jste propojili s webovým projektem, se nasadí automaticky s webovým projektem. Informace o nasazení webového projektu naleznete v tématu **Průvodci** > **nasazením aplikace** v levém navigačním panelu.
+Projekt WebJobs, který jste propojili s webovým projektem, se nasadí automaticky s webovým projektem. Informace o nasazení webového projektu naleznete v tématu **příručky s postupy** > **nasazení aplikace** v levém navigačním panelu.
 
 Pokud chcete nasadit projekt WebJobs sám o sobě, klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a klikněte na **Publikovat jako webovou úlohu Azure...** . 
 
@@ -220,7 +215,7 @@ WebJobs používá soubor *Settings. job* k určení, kdy se webová úloha spus
 }
 ```
 
-Tento soubor se musí nacházet v kořenovém adresáři složky WebJobs, a to na straně skriptu vaší webové úlohy, `wwwroot\app_data\jobs\triggered\{job name}` jako `wwwroot\app_data\jobs\continuous\{job name}`je například nebo. Když nasadíte webovou úlohu ze sady Visual Studio, `settings.job` označte vlastnosti souboru jako **kopie, pokud je novější**. 
+Tento soubor se musí nacházet v kořenovém adresáři složky WebJobs, a to na straně skriptu webové úlohy, jako je například `wwwroot\app_data\jobs\triggered\{job name}` nebo `wwwroot\app_data\jobs\continuous\{job name}`. Když nasadíte webovou úlohu ze sady Visual Studio, označte své vlastnosti souboru `settings.job` jako **kopie, pokud je novější**. 
 
 Když [vytvoříte webovou úlohu z Azure Portal](webjobs-create.md), vytvoří se soubor Settings. job.
 
@@ -228,7 +223,9 @@ Když [vytvoříte webovou úlohu z Azure Portal](webjobs-create.md), vytvoří 
 
 ### <a name="cron-expressions"></a>Výrazy CRON
 
-WebJobs používá stejné výrazy CRON pro plánování jako Trigger časovače v Azure Functions. Další informace o podpoře CRON najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)informace o aktivačních událostech časovače.
+WebJobs používá stejné výrazy CRON pro plánování jako Trigger časovače v Azure Functions. Další informace o podpoře CRON najdete v [článku referenční informace o aktivačních událostech časovače](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ### <a name="settingjob-reference"></a>nastavení odkazu na úlohu
 
@@ -236,12 +233,12 @@ WebJobs podporuje následující nastavení:
 
 | **Nastavení** | **Typ**  | **Popis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Vše | Umožňuje, aby se úloha běžela na místě, aniž by se nejdřív zkopírovala do dočasné složky. Další informace najdete v tématu [pracovní adresář WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
-| `is_singleton` | Nepřetržitě | Při horizontálním navýšení kapacity spouštějte jenom WebJobs na jedné instanci. Další informace najdete v tématu [Nastavení průběžné úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Aktivované | Spusťte úlohu WebJob v plánu založeném na CRON. Další informace najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)informace o aktivačních událostech časovače. |
-| `stopping_wait_time`| Vše | Umožňuje kontrolu nad chováním při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `is_in_place` | Všechno | Umožňuje, aby se úloha běžela na místě, aniž by se nejdřív zkopírovala do dočasné složky. Další informace najdete v tématu [pracovní adresář WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_singleton` | Průběžný | Při horizontálním navýšení kapacity spouštějte jenom WebJobs na jedné instanci. Další informace najdete v tématu [Nastavení průběžné úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
+| `schedule` | Aktivuje | Spusťte úlohu WebJob v plánu založeném na CRON. Další informace najdete v [článku referenční informace o aktivačních událostech časovače](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
+| `stopping_wait_time`| Všechno | Umožňuje kontrolu nad chováním při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o sadě WebJobs SDK](webjobs-sdk-how-to.md)

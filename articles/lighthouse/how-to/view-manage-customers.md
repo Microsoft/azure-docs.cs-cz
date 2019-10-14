@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8163bcb4189cbec545544b7d43ba7142d34e29dd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286150"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302744"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a Správa zákazníků a delegovaných prostředků
 
@@ -37,7 +37,7 @@ Na této stránce můžete zobrazit následující informace:
 
 - Pokud chcete zobrazit všechna předplatná, nabídky a delegování přidružená k zákazníkovi, vyberte jméno zákazníka.
 - Pokud chcete zobrazit další podrobnosti o nabídce a jejích delegováních, vyberte název nabídky.
-- Pokud chcete zobrazit další podrobnosti o acrolecess přiřazení pro delegovaná předplatná nebo skupiny prostředků, vyberte položku ve sloupci **delegaces** .
+- Chcete-li zobrazit další podrobnosti o přiřazení rolí pro delegovaná předplatná nebo skupiny prostředků, vyberte položku ve sloupci **delegace** .
 
 ## <a name="view-delegations"></a>Zobrazit delegování
 

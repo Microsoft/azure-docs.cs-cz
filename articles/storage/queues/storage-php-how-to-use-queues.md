@@ -8,19 +8,19 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: b175c34f131a7a0f172c7be0dda083fbfda3dc1e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721444"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302972"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Používání úložiště Queue z PHP
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Přehled
 V této příručce se dozvíte, jak provádět běžné scénáře pomocí služby Azure Queue Storage. Ukázky jsou zapisovány prostřednictvím tříd z [klientské knihovny Azure Storage pro php][download]. Zahrnuté scénáře zahrnují vkládání, prohlížení, získávání a odstraňování zpráv front a vytváření a odstraňování front.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -28,12 +28,15 @@ V této příručce se dozvíte, jak provádět běžné scénáře pomocí slu�
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
+
 Jediným požadavkem pro vytvoření aplikace PHP, která přistupuje k úložišti front Azure, je odkazování tříd v [klientské knihovně Azure Storage pro php][download] z vašeho kódu. K vytvoření aplikace můžete použít jakékoli vývojové nástroje, včetně Poznámkového bloku.
 
-V této příručce použijete funkce služby Queue Storage, které je možné volat v rámci aplikace v PHP místně, nebo v kódu spuštěném v rámci webové role Azure, role pracovního procesu nebo webu.
+V této příručce použijete funkce služby Queue Storage, které je možné volat v rámci aplikace v PHP místně, nebo v kódu běžícím v rámci webové aplikace v Azure.
 
 ## <a name="get-the-azure-client-libraries"></a>Získání klientských knihoven Azure
+
 ### <a name="install-via-composer"></a>Instalace prostřednictvím skladatele
+
 1. V kořenovém adresáři projektu vytvořte soubor s názvem **skladatel. JSON** a přidejte do něj následující kód:
    
     ```json
@@ -53,6 +56,7 @@ V této příručce použijete funkce služby Queue Storage, které je možné v
 Můžete také přejít na [knihovnu klienta PHP Azure Storage][download] na GitHubu a klonovat zdrojový kód.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup do úložiště Queue
+
 Pokud chcete používat rozhraní API pro úložiště front Azure, musíte:
 
 1. Odkazování na soubor automatického zavaděče pomocí příkazu [require_once]
@@ -65,9 +69,10 @@ require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-V následujících příkladech `require_once` je příkaz zobrazen vždy, ale jsou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
+V následujících příkladech je příkaz `require_once` zobrazen vždy, ale jsou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Nastavení připojení Azure Storage
+
 Pokud chcete vytvořit instanci klienta služby Azure Queue Storage, musíte nejdřív mít platný připojovací řetězec. Formát připojovacího řetězce služby fronty je následující.
 
 Přístup k živé službě:
@@ -98,6 +103,7 @@ $queueClient = QueueRestProxy::createQueueService($connectionString);
 ```
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
+
 Objekt **QueueRestProxy** umožňuje vytvořit frontu pomocí metody **createQueue** . Při vytváření fronty můžete nastavit možnosti fronty, ale není to nutné. (Následující příklad ukazuje, jak nastavit metadata ve frontě.)
 
 ```php
@@ -137,6 +143,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="add-a-message-to-a-queue"></a>Přidat zprávu do fronty
+
 Chcete-li přidat zprávu do fronty, použijte **QueueRestProxy-> createMessage**. Metoda vezme název fronty, text zprávy a možnosti zprávy (které jsou volitelné).
 
 ```php
@@ -166,6 +173,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="peek-at-the-next-message"></a>Zobrazení náhledu další zprávy
+
 Můžete prohlížet zprávu (nebo zprávy) na přední straně fronty bez jejího odebrání z fronty voláním **QueueRestProxy-> peekMessages**. Ve výchozím nastavení metoda **peekMessage** vrací jedinou zprávu, ale tuto hodnotu můžete změnit pomocí metody **PeekMessagesOptions-> setNumberOfMessages** .
 
 ```php
@@ -214,6 +222,7 @@ else{
 ```
 
 ## <a name="de-queue-the-next-message"></a>Vyřazení další zprávy z fronty
+
 Kód ve dvou krocích odstraní zprávu z fronty. Nejprve zavoláte **QueueRestProxy-> listMessages**, což způsobí, že zpráva nebude viditelná pro jakýkoli jiný kód, který je čten z fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. (Pokud se zpráva v tomto časovém období neodstraní, bude se znovu zobrazovat ve frontě.) Chcete-li dokončit odebrání zprávy z fronty, je nutné volat **QueueRestProxy-> deleteMessage**. Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Váš kód volá **deleteMessage** hned po zpracování zprávy.
 
 ```php
@@ -255,6 +264,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Změna obsahu zpráv zařazených ve frontě
+
 Obsah zprávy na místě ve frontě můžete změnit voláním **QueueRestProxy-> updateMessage**. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávu fronty novými obsahem a nastaví časový limit viditelnosti na prodloužení dalších 60 sekund. Tím se uloží stav práce, která je přidružená ke zprávě, a klientovi poskytne další minutu, aby pokračoval v práci na této zprávě. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud by se pokus o zpracování zprávy opakoval více než *n*krát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
 ```php
@@ -300,7 +310,8 @@ catch(ServiceException $e){
 ```
 
 ## <a name="additional-options-for-de-queuing-messages"></a>Další možnosti pro zprávy o zrušení fronty
-Existují dva způsoby, jak můžete přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé můžete nastavit delší nebo kratší časový limit viditelnosti, což umožňuje, aby váš kód měl více nebo méně času na úplné zpracování každé zprávy. Následující příklad kódu používá metodu GetMessages k získání 16 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky **for** . Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+
+Existují dva způsoby, jak můžete přizpůsobit načítání zpráv z fronty. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé můžete nastavit delší nebo kratší časový limit viditelnosti, což umožňuje, aby váš kód měl více nebo méně času na úplné zpracování každé zprávy. Následující příklad kódu používá metodu **GetMessages** k získání 16 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky **for** . Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -350,6 +361,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="get-queue-length"></a>Získat délku fronty
+
 Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda **QueueRestProxy-> getQueueMetadata** požádá službu front, aby vrátila metadata o frontě. Volání metody **getApproximateMessageCount** u vráceného objektu poskytuje počet zpráv ve frontě. Počet je přibližný pouze vzhledem k tomu, že je možné přidat nebo odebrat zprávy poté, co služba fronty odpoví na vaši žádost.
 
 ```php
@@ -381,6 +393,7 @@ echo $approx_msg_count;
 ```
 
 ## <a name="delete-a-queue"></a>Odstranění fronty
+
 Pokud chcete odstranit frontu a všechny zprávy v ní, zavolejte metodu **QueueRestProxy-> deleteQueue** .
 
 ```php
@@ -408,7 +421,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Teď, když jste se seznámili se základy Azure Queue Storage, najdete na následujících odkazech informace o složitějších úlohách úložiště:
 
 * Navštívit [Reference k rozhraní API pro Azure Storage klientskou knihovnu php](https://azure.github.io/azure-storage-php/)
@@ -420,4 +434,3 @@ Další informace najdete v tématu také [středisko pro vývojáře PHP](https
 [require_once]: https://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 [composer-phar]: https://getcomposer.org/composer.phar
-

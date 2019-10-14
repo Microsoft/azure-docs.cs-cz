@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065873"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302544"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory B2C (Azure AD B2C). Udržujte kontrolu aktualizací.
 
@@ -27,7 +27,7 @@ Existují dva běžné důvody, proč rozšíření Azure AD nefunguje za vás. 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Můžu ve svém existujícím tenantovi Azure AD s využitím zaměstnanců použít funkce Azure AD B2C?
 
-Azure AD a Azure AD B2C jsou samostatné nabídky produktů a nemůžou koexistovat ve stejném tenantovi. Tenant Azure AD představuje organizaci. Tenant Azure AD B2C představuje kolekci identit, které se mají používat s aplikacemi předávající strany. Díky vlastním zásadám (ve verzi Public Preview) se Azure AD B2C můžou federovat do služby Azure AD, která umožňuje ověřování zaměstnanců v organizaci.
+Azure AD a Azure AD B2C jsou samostatné nabídky produktů a nemůžou koexistovat ve stejném tenantovi. Tenant Azure AD představuje organizaci. Tenant Azure AD B2C představuje kolekci identit, které se mají používat s aplikacemi předávající strany. Díky vlastním zásadám se Azure AD B2C můžou federovat do Azure AD, což umožňuje ověřování zaměstnanců v organizaci.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Můžu použít Azure AD B2C k poskytování sociálního přihlášení (Facebook a Google +) do sady Office 365?
 
@@ -35,9 +35,9 @@ Azure AD B2C nelze použít k ověřování uživatelů pro systém Microsoft Of
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co jsou místní účty v Azure AD B2C? Jak se liší od pracovních nebo školních účtů ve službě Azure AD?
 
-V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. Je jednou z ověřených domén v tenantovi nebo v počáteční `<...>.onmicrosoft.com` doméně. `<tenant domain>` Tento typ účtu je pracovní nebo školní účet.
+V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. @No__t-0 je jedna z ověřených domén v tenantovi nebo počáteční doména `<...>.onmicrosoft.com`. Tento typ účtu je pracovní nebo školní účet.
 
-V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e joe@comcast.net-mailové adresy (například bob@gmail.com sarah@contoso.com,, nebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
+Ve Azure AD B2C tenantovi většina aplikací chce, aby se uživatel přihlásil pomocí libovolné e-mailové adresy (například joe@comcast.net, bob@gmail.com, sarah@contoso.com nebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
 
 Uživatelské účty pro aplikace se musí vždy vytvořit prostřednictvím uživatelského toku registrace, registrace nebo přihlašování uživatelů nebo pomocí Graph API Azure AD. Uživatelské účty vytvořené v Azure Portal se používají jenom pro správu tenanta.
 
@@ -54,12 +54,12 @@ Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů
 * Facebook: e-mail
 * Google +: e-mail
 * Účet Microsoft: e-mailový profil OpenID
-* Amazon: profile
+* Amazon: Profil
 * LinkedIn: r_emailaddress, r_basicprofile
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Musí být moje aplikace spuštěná v Azure pro práci s Azure AD B2C?
 
-Ne, aplikaci můžete hostovat kdekoli (v cloudu nebo místně). Vše, co potřebuje k interakci s Azure AD B2C, je schopnost odesílat a přijímat požadavky HTTP na veřejně přístupných koncových bodech.
+Ne, aplikaci můžete hostovat kdekoli (v cloudu nebo místně). To jediné, co pro interakci s Azure AD B2C potřebuje, je možnost odesílat a přijímat požadavky HTTP na veřejně přístupných koncových bodech.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mám více Azure AD B2C tenantů. Jak je můžu spravovat na Azure Portal?
 
@@ -69,8 +69,8 @@ Před otevřením ' Azure AD B2C ' v nabídce na levé straně Azure Portal je n
 
 K přizpůsobení obsahu ověřovacích e-mailů můžete použít [funkci Branding společnosti](../active-directory/fundamentals/customize-branding.md) . Konkrétně je možné přizpůsobit tyto dva prvky e-mailu:
 
-* **Logo banner**: Zobrazuje se vpravo dole.
-* **Barva pozadí**: Zobrazuje se v horní části.
+* **Logo banner**: zobrazuje se vpravo dole.
+* **Barva pozadí**: zobrazuje se v horní části.
 
     ![Snímek obrazovky přizpůsobeného ověřovacího e-mailu](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
@@ -78,7 +78,7 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce.
 1. Otevřete okno **Azure Active Directory** .
-1. Klikněte na tlačítko **vlastnosti** kartu.
+1. Klikněte na kartu **vlastnosti** .
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
 
@@ -122,7 +122,7 @@ Ne, Azure AD B2C nepodporuje stejnou sadu sestav jako Azure AD Premium. Existuje
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Můžu lokalizovat uživatelské rozhraní stránek obsluhované Azure AD B2C? Jaké jsou podporované jazyky?
 
-Ano!  Přečtěte si o [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md), který je ve verzi Public Preview. Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
+Ano, podívejte se na téma [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md). Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Můžu vlastní adresy URL používat na přihlašovacích a přihlašovacích stránkách, které obsluhuje Azure AD B2C? Například je možné změnit adresu URL z contoso.b2clogin.com na login.contoso.com?
 

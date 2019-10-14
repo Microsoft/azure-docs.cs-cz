@@ -1,33 +1,31 @@
 ---
 title: Spouštění úloh na pozadí pomocí WebJobs – Azure App Service
 description: Naučte se používat webové úlohy ke spouštění úloh na pozadí v Azure App Service Web Apps, API Apps nebo Mobile Apps.
-services: app-service
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
-ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
+manager: wgallace
+s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d97f826f4288d13589a2fb9da8148d58a2c5e1e
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177492"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303581"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
+Tento článek ukazuje, jak nasadit webové úlohy pomocí [Azure Portal](https://portal.azure.com) k nahrání spustitelného souboru nebo skriptu. Informace o tom, jak vyvíjet a nasazovat WebJobs pomocí sady Visual Studio, najdete v tématu [Nasazení WebJobs pomocí sady Visual Studio](webjobs-dotnet-deploy-vs.md).
+
 ## <a name="overview"></a>Přehled
-WebJobs je funkce [Azure App Service](https://docs.microsoft.com/azure/app-service/) , která umožňuje spustit program nebo skript ve stejném kontextu jako webová aplikace, aplikace API nebo mobilní aplikace. Pro použití WebJobs se neúčtují žádné další náklady.
+WebJobs je funkce [Azure App Service](index.yml) , která umožňuje spustit program nebo skript ve stejném kontextu jako webová aplikace, aplikace API nebo mobilní aplikace. Pro použití WebJobs se neúčtují žádné další náklady.
 
 > [!IMPORTANT]
 > Webové úlohy se zatím nepodporují pro App Service v systému Linux.
-
-Tento článek ukazuje, jak nasadit webové úlohy pomocí [Azure Portal](https://portal.azure.com) k nahrání spustitelného souboru nebo skriptu. Informace o tom, jak vyvíjet a nasazovat WebJobs pomocí sady Visual Studio, najdete v tématu [Nasazení WebJobs pomocí sady Visual Studio](webjobs-dotnet-deploy-vs.md).
 
 Sadu Azure WebJobs SDK lze použít s WebJobs k zjednodušení mnoha programovacích úloh. Další informace najdete v tématu [co je sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
@@ -38,7 +36,7 @@ Azure Functions poskytuje další způsob, jak spouštět programy a skripty. Po
 Následující tabulka popisuje rozdíly mezi *průběžnými* a *aktivovanými* WebJobs.
 
 
-|Opětovné  |Aktivuje  |
+|Průběžný  |Aktivuje  |
 |---------|---------|
 | Spustí se hned po vytvoření webové úlohy. Aby bylo možné úlohu ukončit, program nebo skript obvykle provede svou práci v nekonečné smyčce. Pokud úloha skončí, můžete ji restartovat. | Spustí se jenom v případě, že se aktivuje ručně nebo podle plánu. |
 | Spustí se ve všech instancích, na kterých běží webová aplikace. Můžete volitelně omezit webovou úlohu na jednu instanci. |Spustí se v jediné instanci, kterou Azure vybere pro vyrovnávání zatížení.|
@@ -79,14 +77,14 @@ when making changes in one don't forget the other two.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Nastavením      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Jméno** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
    | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Opětovné | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Kapacity** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
+   | **Typ** | Průběžný | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Škálování** | Více instancí | K dispozici pouze pro nepřetržité webové úlohy. Určuje, zda se program nebo skript spouští na všech instancích nebo pouze v jedné instanci. Možnost spuštění na více instancích se nevztahuje na [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)Free nebo Shared. | 
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -117,14 +115,14 @@ when making changes in one don't forget the other two.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Nastavením      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Jméno** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
+   | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
    | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Triggery** | Zásah | |
+   | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Triggery** | Manual | |
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -155,15 +153,15 @@ when making changes in one don't forget the other two.
 
    ![Přidat stránku WebJob](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Nastavením      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Jméno** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
    | **Nahrání souboru** | ConsoleApp. zip | Soubor *. zip* , který obsahuje spustitelný soubor nebo soubor skriptu a všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované spustitelné soubory nebo typy souborů skriptu jsou uvedené v části [podporované typy souborů](#acceptablefiles) . |
-   | **Textový** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
-   | **Triggery** | Uvedenou | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
+   | **Typ** | Aktivuje | [Typy webové úlohy](#webjob-types) jsou popsány výše v tomto článku. |
+   | **Triggery** | Naplánované | Aby plánování fungovalo spolehlivě, povolte funkci Always On. Always On je k dispozici jenom pro cenové úrovně Basic, Standard a Premium.|
    | **Výraz CRON** | 0 0/20 * * * * | [Výrazy cron](#ncrontab-expressions) jsou popsány v následující části. |
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
    Nová webová úloha se zobrazí na stránce **WebJobs** .
 
@@ -180,6 +178,8 @@ Na portálu můžete zadat [výraz NCRONTAB](../azure-functions/functions-bindin
 ```
 
 Další informace najdete v tématu [plánování aktivované webové úlohy](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ## <a name="ViewJobHistory"></a>Zobrazit historii úlohy
 
@@ -203,6 +203,6 @@ Další informace najdete v tématu [plánování aktivované webové úlohy](we
    
     ![Seznam WebJobs na řídicím panelu Historie](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a>Další kroky
+## <a name="NextSteps"></a> Další kroky
 
 Sadu Azure WebJobs SDK lze použít s WebJobs k zjednodušení mnoha programovacích úloh. Další informace najdete v tématu [co je sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
