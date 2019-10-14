@@ -10,22 +10,22 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990148"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299808"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Použití ověřování pomocí Azure Active Directory (Azure AD) se službou moderního čtecího zařízení
 
-V následujících částech použijete prostředí Azure Cloud Shell nebo Azure CLI k vytvoření nového prostředku moderního čtecího zařízení s vlastní subdoménou a potom nakonfigurovat Azure AD ve vašem tenantovi Azure. Po dokončení této počáteční konfigurace budete volat službu Azure AD a získat přístupový token podobný tomu, jak se bude provádět při používání sady moderní čtečky. Pokud se dostanete k zablokování, najdete v každé části všechny dostupné možnosti pro jednotlivé příkazy rozhraní příkazového řádku Azure.
+V následujících částech použijete Azure Cloud Shell prostředí nebo Azure PowerShell k vytvoření nového prostředku moderního čtecího zařízení s vlastní subdoménou a potom nakonfigurujete Azure AD ve vašem tenantovi Azure. Po dokončení této počáteční konfigurace budete volat službu Azure AD a získat přístupový token podobný tomu, jak se bude provádět při používání sady moderní čtečky. Pokud se zablokuje, jsou odkazy v jednotlivých oddílech k dispozici se všemi dostupnými možnostmi pro každý z Azure PowerShell příkazů.
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>Vytvoření prostředku pro moderní čtečku s vlastní subdoménou
 
 1. Začněte otevřením [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
@@ -36,12 +36,12 @@ V následujících částech použijete prostředí Azure Cloud Shell nebo Azure
 
    -SkuName může být F0 (úroveň Free) nebo S0 (úroveň Standard, ve verzi Public Preview také zdarma). Úroveň S0 má vyšší limit frekvence volání a žádnou měsíční kvótu pro počet volání.
 
-   -Umístění může být kterékoli z následujících: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`,`westeurope`
+   -Umístění může být jedna z následujících možností: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`, `westeurope`
 
    -CustomSubdomainName musí být globálně jedinečné a nesmí obsahovat speciální znaky, například: ".", "!", ",".
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
@@ -54,11 +54,11 @@ V následujících částech použijete prostředí Azure Cloud Shell nebo Azure
 
 
    >[!NOTE]
-   > Pokud vytvoříte prostředek v Azure Portal, použije se jako vlastní subdoména název prostředku. Název subdomény můžete na portálu ověřit tak, že na něm kliknete na stránku Přehled prostředku a v koncovém bodu tam najdete subdoménu, `https://[SUBDOMAIN].cognitiveservices.azure.com/`například. Pokud potřebujete získat subdoménu pro integraci se sadou SDK, můžete to také provést později.
+   > Pokud vytvoříte prostředek v Azure Portal, použije se jako vlastní subdoména název prostředku. Název subdomény můžete na portálu ověřit tak, že na něm kliknete na stránku Přehled prostředků a v koncovém bodu tam najdete subdoménu, například `https://[SUBDOMAIN].cognitiveservices.azure.com/`. Pokud potřebujete získat subdoménu pro integraci se sadou SDK, můžete to také provést později.
 
    Pokud se prostředek na portálu vytvořil, můžete teď [získat existující prostředek](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0) .
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, musí
    >[!NOTE]
    > Heslo, označované také jako "tajný klíč klienta", bude použito při získávání ověřovacích tokenů.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -87,7 +87,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, musí
 
 2. Dále musíte [vytvořit instanční objekt](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) pro aplikaci služby Azure AD.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, musí
 
 3. Posledním krokem je [přiřazení role "Cognitive Services uživatele"](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) k instančnímu objektu (vymezenému pro prostředek). Přiřazením role udělíte instančnímu objektu přístup k tomuto prostředku. Stejnému instančnímu objektu můžete udělit přístup k několika prostředkům v rámci vašeho předplatného.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, musí
 V tomto příkladu se heslo používá k ověření instančního objektu pro získání tokenu služby Azure AD.
 
 1. Získejte **TenantId**:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Získání tokenu:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
