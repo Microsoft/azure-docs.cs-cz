@@ -11,49 +11,48 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948212"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330901"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
 Tento článek popisuje dvě nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 
-## <a name="video"></a>Obrazový
+## <a name="video"></a>Video
 
 ### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Následující video shrnuje Time Series Insights uchovávání dat a jejich plánování.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Každé prostředí Azure Time Series má nastavení, které řídí **dobu uchovávání dat**. Hodnota zahrnuje 1 až 400 dní. Data se odstraňují na základě kapacity úložiště v prostředí nebo doby uchování, podle toho, co nastane dřív.
+Každé z vašich Azure Time Series Insightsch prostředí má nastavení, které řídí **dobu uchovávání dat**. Hodnota zahrnuje 1 až 400 dní. Data se odstraňují na základě kapacity úložiště v prostředí nebo doby uchování, podle toho, co nastane dřív.
 
-Kromě toho má prostředí Azure Time Series nastavení **chování při překročení limitu úložiště** . Řídí chování vstupu a vyprázdnění při dosažení maximální kapacity prostředí. Při konfiguraci si můžete vybrat ze dvou příznaků:
+Kromě toho má Azure Time Series Insights prostředí nastavené **chování při překročení limitu úložiště** . Řídí chování vstupu a vyprázdnění při dosažení maximální kapacity prostředí. Při konfiguraci si můžete vybrat ze dvou příznaků:
 
 - **Vyprázdnit stará data** (výchozí)  
 - **Pozastavit příchozí přenos dat**
 
 > [!NOTE]
 > Ve výchozím nastavení platí, že při vytváření nového prostředí se uchování nakonfiguruje tak, aby **vymazala stará data**. Toto nastavení se dá po vytvoření pomocí Azure Portal přepínat podle potřeby, a to na stránce **konfigurace** Time Series Insights prostředí.
+> * Informace o tom, jak nakonfigurovat zásady uchovávání informací, najdete [v článku Konfigurace uchovávání v Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-Informace o přepnutí chování uchovávání najdete [v Time Series Insights konfigurace uchovávání v](time-series-insights-how-to-configure-retention.md)nástroji.
-
-Porovnání chování uchovávání dat:
+Obě zásady uchovávání dat jsou popsané podrobněji.
 
 ## <a name="purge-old-data"></a>Vyprázdnit stará data
 
-- Toto chování je výchozím chováním pro Time Series Insights prostředí.  
-- Toto chování je preferováno, když uživatelé chtějí vždy zobrazit nejnovější *data* ve svém Time Series InsightSM prostředí.
-- Toto chování *vymaže* data po dosažení limitů prostředí (doba uchování, velikost nebo počet, podle toho, co nastane dřív). Doba uchování je ve výchozím nastavení nastavená na 30 dní.
-- Nejstarší ingestovaná data se nejprve vyprázdní (přístup FIFO).
+- **Vyprázdnit stará data** je výchozím nastavením pro Azure Time Series Insights prostředí.  
+- **Vyprázdnit stará data** jsou upřednostňovaná, když uživatelé chtějí ve svém Time Series Insights prostředí vždycky zobrazovat nejnovější *data* .
+- Nastavení **vyprázdnění starých dat** *vymaže* data po dosažení limitů prostředí (doba uchování, velikost nebo počet, podle toho, co nastane dřív). Doba uchování je ve výchozím nastavení nastavená na 30 dní.
+- Nejstarší ingestovaná data se vyprázdní jako první (přístup "první v prvním)".
 
 ### <a name="example-one"></a>Příklad jedné
 
 Vezměte v úvahu ukázkové prostředí s chováním uchovávání **a vyprázdnit stará data**:
 
-**Doba uchovávání dat** je nastavená na 400 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity.   Vybereme, že příchozí data se za průměrně nashromáždí do 500 MB každého dne. Toto prostředí může uchovávat jenom 60 dní, které mají za sekundu množství příchozích dat, protože maximální kapacita dosáhne 60 dnů. Příchozí data se sčítají takto: 500 MB každý den × 60 dní = 30 GB.
+**Doba uchovávání dat** je nastavená na 400 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity. Vybereme, že příchozí data se za průměrně nashromáždí do 500 MB každého dne. Toto prostředí může uchovávat jenom 60 dní, které mají za sekundu množství příchozích dat, protože maximální kapacita dosáhne 60 dnů. Příchozí data se sčítají takto: 500 MB každý den × 60 dní = 30 GB.
 
 V 61stém dni se v prostředí zobrazují data o aktuálnosti, ale vyprázdní nejstarší data starší než 60 dní. Vyprázdnit vytvoří místo pro nové streamování dat v, aby se nová data mohla dál prozkoumat. Pokud si uživatel přeje zachovat data déle, může zvětšit velikost prostředí přidáním dalších jednotek nebo může doručovat méně dat.  
 
@@ -93,8 +92,10 @@ V ovlivněných Event Hubs zvažte úpravu vlastnosti **uchovávání zpráv** ,
 
 Pokud nejsou u zdroje událostí nakonfigurované žádné vlastnosti (`timeStampPropertyName`), Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud je `timeStampPropertyName` nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá nakonfigurované `timeStampPropertyName` v datovém paketu, když se události analyzují.
 
-Pokud potřebujete škálovat prostředí tak, aby vyhovovalo další kapacitě nebo aby se zvýšila doba uchovávání, přečtěte si téma [Jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md) , kde najdete další informace.  
+Přečtěte si [, jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md) a škálovat prostředí tak, aby vyhovovalo další kapacitě nebo zvýšila délku uchovávání.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o konfiguraci a změně nastavení uchovávání dat najdete [v Time Series Insights konfigurace uchovávání v](time-series-insights-how-to-configure-retention.md)nástroji.
+
+- Přečtěte si o [zmírnění latence v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).

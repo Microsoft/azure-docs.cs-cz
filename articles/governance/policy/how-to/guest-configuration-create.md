@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977977"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376188"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
-Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
+Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/scripting/dsc/overview/overview) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
@@ -55,7 +55,7 @@ Konfigurace hosta používá modul prostředků **GuestConfiguration** k vytvá�
 
 ## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Vytvoření vlastní konfigurace a prostředků konfigurace hosta
 
-Prvním krokem k vytvoření vlastní zásady pro konfiguraci hosta je vytvoření konfigurace DSC. Přehled konceptů a terminologie DSC najdete v tématu [Přehled prostředí POWERSHELL DSC](/powershell/dsc/overview/overview).
+Prvním krokem k vytvoření vlastní zásady pro konfiguraci hosta je vytvoření konfigurace DSC. Přehled konceptů a terminologie DSC najdete v tématu [Přehled prostředí POWERSHELL DSC](/powershell/scripting/dsc/overview/overview).
 
 Pokud vaše konfigurace vyžaduje jenom prostředky, které jsou integrované s instalací agenta konfigurace hosta, stačí vytvořit konfigurační soubor MOF. Pokud potřebujete spustit další skript, budete muset vytvořit vlastní modul prostředků.
 
@@ -115,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/dsc/configurations/write-compile-apply-configuration).
+Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Konfigurace vlastní konfigurace hosta ve Windows
 
@@ -141,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/dsc/configurations/write-compile-apply-configuration).
+Další informace najdete v tématu [zápis, kompilace a použití konfigurace](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>Vytvořit vlastní balíček zásad konfigurace hosta
 
@@ -190,7 +190,7 @@ V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné kl
 
 1. Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače.
 
-   @No__t-0 a adresu URL instance Key Vault lze předat prostředku jako [vlastnosti](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) , takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty.
+   @No__t-0 a adresu URL instance Key Vault lze předat prostředku jako [vlastnosti](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty.
 
 Následující příklad kódu lze použít ve vlastním prostředku k načtení tajných kódů z Key Vault pomocí uživatelsky přiřazené identity. Hodnota vrácená z požadavku na Key Vault je prostý text. Jako osvědčený postup si ho uložte v rámci objektu přihlašovacích údajů.
 
@@ -226,7 +226,7 @@ Rutina podporuje také vstup z kanálu PowerShellu. Zapotrubní výstup rutiny `
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-Další informace o tom, jak testovat pomocí parametrů, najdete v níže uvedené části [použití parametrů ve vlastních zásadách konfigurace hostů](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies).
+Další informace o tom, jak testovat pomocí parametrů, najdete v níže uvedené části [použití parametrů ve vlastních zásadách konfigurace hostů](#using-parameters-in-custom-guest-configuration-policies).
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Vytvoření souborů nasazení definice Azure Policy a iniciativa
 
@@ -367,7 +367,7 @@ Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat pos
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
 
-Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC. Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování. Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/dsc/quickstarts/gpo-quickstart).
+Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC. Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování. Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Volitelné: podepisování balíčků konfigurace hosta

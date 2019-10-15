@@ -580,7 +580,7 @@
     - name: Šablony Rychlý start
       items:
         - name: Dotazování na Apache HBase – Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Dotazování na Apache HBase – HBase Shell
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: Kurzy

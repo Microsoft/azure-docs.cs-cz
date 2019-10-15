@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b8f213bd614e4adce74b83c87649a0f248cba7b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710109"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330657"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
 
@@ -25,7 +25,7 @@ Bez ohledu na to, jestli vyvíjíte model TensorFlow z provozu nebo přenášít
 
 Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -46,7 +46,7 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 Tato část nastavuje experiment pro školení načtením požadovaných balíčků Pythonu, inicializací pracovního prostoru, vytvořením experimentu a nahráním školicích dat a školicích skriptů.
 
-### <a name="import-packages"></a>Importovat balíčky
+### <a name="import-packages"></a>Import balíčků
 
 Nejdřív importujte nezbytné knihovny Pythonu.
 
@@ -142,9 +142,9 @@ TensorFlow Estimator je implementován prostřednictvím obecné třídy [`estim
 
 Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete je nainstalovat ve výsledné imagi Docker předáním jejich názvů pomocí argumentů `pip_packages` a `conda_packages`.
 
-```Python
+```python
 script_params = {
-    '--data-folder': ws.get_default_datastore().as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

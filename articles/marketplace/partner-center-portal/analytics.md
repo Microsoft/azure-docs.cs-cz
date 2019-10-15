@@ -1,18 +1,18 @@
 ---
 title: Analýzy pro komerční tržiště v partnerském centru
 description: Naučte se, jak získat přístup k analytickým sestavám a monitorovat prodej, hodnotit výkon a optimalizovat nabídky na webu Marketplace.
-author: chjenk
+author: ChJenk
 manager: evansma
-ms.author: shthota
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028846"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332094"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
 
@@ -233,7 +233,7 @@ Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místn
 
 ### <a name="dictionary-of-data-terms"></a>Slovník datových podmínek
 
-| Název atributu | Reports | Definice|
+| Název atributu | Sestavy | Definice|
 |---|---|---|
 | Typ licence Azure | Zákazník, objednávka | Typ licenční smlouvy používané zákazníky k nákupu Azure. Známý také jako kanál |
 | Typ licence Azure: Cloud Solution Provider | Zákazník, objednávka | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím poskytovatele Cloud Solution Provider, který funguje jako váš prodejce.|
@@ -321,3 +321,24 @@ V části hodnocení & Recenze – Souhrn zobrazuje níže uvedené metriky pro 
 Recenze se zobrazují v chronologickém pořadí při odeslání. Ve výchozím zobrazení se zobrazí všechny recenze. Pomocí **filtru** v rozevírací nabídce můžete filtrovat recenze pomocí hodnocení hvězdičkami. Můžete také vyhledat klíčová slova, která se zobrazí v revizi.  
 
 ![Analyzovat revizní komentáře partnerského centra](./media/analyze-reviews.png)
+
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+V této části najdete odpovědi na nejčastější dotazy týkající se **dosud nedostupných analýz** ve zprávách v partnerském centru.
+
+**Nedaří se mi zobrazit data analýz v partnerském centru. Po přístupu na tyto stránky se zobrazí zpráva níže. Proč je to?**
+
+![Zatím žádná data pro vaše nabídky](./media/analytics-faq-no-data.png)
+
+Proč se vám může stát, že se vám tato zpráva zobrazuje:
+
+- Vaše nabídky uvedené na webu Marketplace nejsou SaaS nabídky. V současné době jsou v partnerském centru sestavy jenom pro nabídky SaaS. Nabídky Dynamics 365 se dají publikovat v partnerském centru, ale v partnerském centru se ještě nepovolují analytické služby pro tyto nabídky.
+- Pro vaše publikované nabídky na webu Marketplace zatím neexistují žádné akvizice. To může znamenat, že vaše nabídky jsou živé v Marketplace a získají zobrazení od zákazníků na stránkách zobrazení produktu, ale zákazníci zatím neudělali, že si je nakoupili a nasadili.
+- Publikování vaší nabídky může být v procesu a ještě není živé. Zákazníci mohou získat pouze živé nabídky. Pokud chcete zjistit stav nabídek, přečtěte si téma Přehled na [řídicím panelu analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace najdete v části [souhrnný řídicí panel](#summary-dashboard) v tomto článku.
+- Vaše nabídky můžou být uvedené jako **kontaktní mě**, což jsou jenom nabídky se seznamem a zákazníci na webu Marketplace je nemůžou koupit. I když tyto nabídky umožňují generovat zájemce a sdílí se s vámi, objednávky pro tyto nabídky se nevytvoří, protože je nejde koupit. Chcete-li kontrolovat typ seznamu nabídek, klikněte na stránku nastavení.
+
+**Vím, že mám analytická data, ale zobrazuje se následující zpráva:**
+
+![Pro daný rozsah dat nejsou k dispozici žádná data.](./media/analytics-faq-data-range.png)
+
+Pokud obdržíte tuto zprávu, znamená to, že máte analytická data, ale pro vybraný rozsah dat nejsou k dispozici žádná data. Vyberte jiný rozsah kalendářních dat nebo vlastní rozsah kalendářních dat, abyste zobrazili data od 2010. Další informace najdete v tématu [rozsah dat](#date-range).

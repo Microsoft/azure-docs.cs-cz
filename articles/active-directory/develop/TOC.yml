@@ -553,7 +553,7 @@
         - name: Authentication
           items:
             - name: Základy ověřování
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: Protokoly OAuth 2.0 a OpenID Connect
               items:
                 - name: OpenID Connect

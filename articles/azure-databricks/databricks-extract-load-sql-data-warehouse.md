@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826045"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329760"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
 V tomto kurzu provedete operaci ETL (extrakce, transformace a načítání dat) pomocí Azure Databricks. Data z Azure Data Lake Storage Gen2 můžete extrahovat do Azure Databricks, spustit transformace dat v Azure Databricks a načíst transformovaná data do Azure SQL Data Warehouse.
 
@@ -40,22 +40,22 @@ Tento kurz se zabývá následujícími úkony:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!Note]
-> Tento kurz se nedá provést pomocí předplatného **Azure free zkušební verze**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na průběžné **platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a požádejte o [zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
+> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
      
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, dokončete tyto úkoly:
 
-* Vytvořte službu Azure SQL Data Warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojte se k serveru jako správce serveru. Další [informace najdete v tématu rychlý Start: Vytvoření a dotazování služby Azure SQL Data Warehouse v Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Vytvořte službu Azure SQL Data Warehouse, vytvořte pravidlo brány firewall na úrovni serveru a připojte se k serveru jako správce serveru. Další informace najdete [v tématu rychlý Start: vytvoření a dotazování služby Azure SQL Data Warehouse v Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Vytvořte hlavní klíč databáze pro Azure SQL Data Warehouse. Viz [Vytvoření hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Vytvořte hlavní klíč pro Azure SQL Data Warehouse. Viz [Vytvoření hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Další [informace najdete v tématu rychlý Start: Nahrávat, stahovat a vypisovat objekty BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Další informace najdete v tématu [rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Vytvořte účet úložiště Azure Data Lake Storage Gen2. Další [informace najdete v tématu rychlý Start: Vytvořte účet](../storage/blobs/data-lake-storage-quickstart-create-account.md)úložiště Azure Data Lake Storage Gen2.
+* Vytvořte účet úložiště Azure Data Lake Storage Gen2. Další informace najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-* Vytvoření instančního objektu. Viz [jak: Portál můžete použít k vytvoření aplikace a instančního objektu služby Azure AD, který má](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)přístup k prostředkům.
+* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
    K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a hodnoty hesla do textového souboru. Budete je potřebovat brzy.
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -73,17 +73,17 @@ Ujistěte se, že jste dokončili požadavky tohoto kurzu.
 
    Než začnete, měli byste mít tyto položky informací:
 
-   :heavy_check_mark:  Název databáze, název databázového serveru, uživatelské jméno a heslo pro službu Azure SQL Data Warehouse.
+   : heavy_check_mark: název databáze, název databázového serveru, uživatelské jméno a heslo ke službě Azure SQL Data Warehouse.
 
-   :heavy_check_mark:  Přístupový klíč účtu úložiště objektů BLOB.
+   : heavy_check_mark: přístupový klíč účtu úložiště objektů BLOB.
 
-   :heavy_check_mark:  Název vašeho účtu úložiště Data Lake Storage Gen2.
+   : heavy_check_mark: název vašeho účtu úložiště Data Lake Storage Gen2.
 
-   :heavy_check_mark:  ID tenanta vašeho předplatného.
+   : heavy_check_mark: ID tenanta vašeho předplatného.
 
-   :heavy_check_mark:  ID aplikace, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD).
+   : heavy_check_mark: ID aplikace aplikace, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD).
 
-   :heavy_check_mark:  Ověřovací klíč pro aplikaci, kterou jste zaregistrovali ve službě Azure AD.
+   : heavy_check_mark: ověřovací klíč pro aplikaci, kterou jste zaregistrovali ve službě Azure AD.
 
 ## <a name="create-an-azure-databricks-service"></a>Vytvoření služby Azure Databricks
 
@@ -100,7 +100,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | Vyberte **Západní USA 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
+    |**Umístění**     | Vyberte **Západní USA 2**.  Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).      |
     |**Cenová úroveň**     |  Vyberte **Standard**.     |
 
 3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
@@ -123,7 +123,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
     * Zadejte název clusteru.
 
-    * Ujistěte se, že jste zaškrtli políčko **Ukončit \_ po \_ minutách nečinnosti** . Pokud se cluster nepoužívá, zadejte dobu (v minutách), po kterou má cluster skončit.
+    * Ujistěte se, že jste zaškrtli políčko **ukončit po \_ @ no__t-2 minuty nečinnosti** . Pokud se cluster nepoužívá, zadejte dobu (v minutách), po kterou má cluster skončit.
 
     * Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -135,13 +135,13 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
 
 2. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Vytvoření poznámkového bloku v") datacihlech
+    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "vytvoření poznámkového bloku v datacihlech")
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
 
-    ![Zadání podrobností pro Poznámkový blok v] datacihlách (./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Zadání podrobností pro Poznámkový blok v") datacihlách
+    ![Zadání podrobností pro Poznámkový blok v datacihlách], které(./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "poskytují podrobné informace o poznámkovém bloku v datacihlech")
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 5. Následující blok kódu nastaví výchozí přihlašovací údaje instančního objektu pro libovolný účet ADLS Gen 2, ke kterému se přistupoval v relaci Spark. Druhý blok kódu připojí název účtu k nastavení k zadání přihlašovacích údajů pro konkrétní účet ADLS Gen 2.  Zkopírujte a vložte blok kódu do první buňky Azure Databricks poznámkového bloku.
 
@@ -182,13 +182,13 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V `<app-id>`tomto bloku kódu Nahraďte zástupné hodnoty, `<storage-account-name>` `<password>`, `<tenant-id>`a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `<file-system-name>` hodnotu zástupného symbolu libovolným názvem, který chcete systému souborů poskytnout.
+6. V tomto bloku kódu Nahraďte zástupné hodnoty `<app-id>`, `<password>`, `<tenant-id>` a `<storage-account-name>` v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte zástupnou hodnotu `<file-system-name>` libovolným názvem, který chcete systému souborů poskytnout.
 
-   * `<app-id>` A`<password>` jsou z aplikace, kterou jste v rámci služby Active Directory zaregistrovali jako součást vytváření instančního objektu.
+   * @No__t-0 a `<password>` jsou z aplikace, kterou jste zaregistrovali ve službě Active Directory, v rámci vytváření instančního objektu.
 
-   * `<tenant-id>` Z vašeho předplatného.
+   * @No__t – 0 pochází z vašeho předplatného.
 
-   * `<storage-account-name>` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+   * @No__t-0 je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
 7. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -365,27 +365,27 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    ```
 
    > [!NOTE]
-   > Tato ukázka používá příznak `forward_spark_azure_storage_credentials` , který způsobí, že SQL Data Warehouse přístup k datům z úložiště objektů BLOB pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
+   > Tato ukázka používá příznak `forward_spark_azure_storage_credentials`, který způsobí, že SQL Data Warehouse přístup k datům z úložiště objektů BLOB pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
    >
    > Pokud je Blob Storage Azure omezené na výběr virtuálních sítí, SQL Data Warehouse [místo přístupových klíčů vyžaduje identita spravované služby](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tím dojde k chybě "Tato žádost není autorizována k provedení této operace".
 
-6. Připojte se k databázi SQL a ověřte, že se zobrazí databáze snázvem Samples.
+6. Připojte se k databázi SQL a ověřte, že se zobrazí databáze s názvem **Samples**.
 
-   ![Ověření ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Ověřit ukázkovou tabulku")
+   ![Ověření]ukázkové(./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "tabulky ověření") ukázkové tabulky
 
 7. Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla mít stejná data jako **renamedColumnsDF** dataframe.
 
-    ![Ověření obsahu ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "Ověření obsahu ukázkové tabulky")
+    ![Ověření obsahu ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "ověření obsahu ukázkové tabulky")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení kurzu můžete cluster ukončit. V pracovním prostoru Azure Databricks na levé straně vyberte clustery. Pokud chcete cluster ukončit, v části **Akce**přejděte na tři tečky (...) a vyberte ikonu **ukončit** .
+Po dokončení kurzu můžete cluster ukončit. V pracovním prostoru Azure Databricks na levé straně vyberte **clustery** . Pokud chcete cluster ukončit, v části **Akce**přejděte na tři tečky (...) a vyberte ikonu **ukončit** .
 
 ![Zastavení clusteru Databricks](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud cluster neukončíte ručně, automaticky se zastaví a za předpokladu, že jste při vytváření clusteru vybrali zaškrtávací políčko **Ukončit \_ po \_ minutách nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud je po určenou dobu neaktivní.
+Pokud cluster neukončíte ručně, automaticky se zastaví a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t – 2 minuty nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud je po určenou dobu neaktivní.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

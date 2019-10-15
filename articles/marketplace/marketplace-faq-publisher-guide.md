@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969582"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330240"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy týkající se komerčního tržiště Microsoftu
 
@@ -24,15 +24,15 @@ Odpovědi na běžné dotazy týkající se Azure Marketplace a Microsoft AppSou
 
 **Co je Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) poskytuje přístup a informace o řešeních a službách, které jsou dostupné od Microsoftu a našich partnerů. Zákazníci (IT specialisté a vývojáři) můžou zjistit, zkusit koupit cloudová softwarová řešení postavená na Azure nebo postavená na nich. Náš katalog 8000 a výpisů poskytuje stavební bloky pro Azure, jako jsou Virtual Machines (virtuální počítače), rozhraní API, aplikace Azure, šablony řešení a spravované aplikace, aplikace SaaS, kontejnery a konzultační služby. 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) poskytuje přístup a informace o řešeních a službách, které jsou dostupné od Microsoftu a našich partnerů. Zákazníci můžou vyhledat, vyzkoušet nebo koupit cloudová softwarová řešení postavená na systému nebo pro Azure. Náš katalog 8000 a výpisů poskytuje stavební bloky pro Azure, jako jsou Virtual Machines (virtuální počítače), rozhraní API, aplikace Azure, šablony řešení a spravované aplikace, aplikace SaaS, kontejnery a konzultační služby.
 
 **Kteří zákazníci Azure Marketplace?**
 
-Azure Marketplace je navržená pro odborníky v oblasti IT a cloudové vývojáře, kteří mají zájem o komerční IT software a služby.
+Azure Marketplace je navržená pro odborníky v oblasti IT a vývojáře v cloudu, kteří mají zájem o komerční software a služby IT.
 
 **Jaké typy produktů jsou aktuálně k dispozici v Azure Marketplace?**
 
-Azure Marketplace nabízí technická řešení a služby Microsoftu a partnerů, které rozšiřují služby a produkty Azure. Katalog řešení zahrnuje několik kategorií, mimo jiné:
+Azure Marketplace nabízí technická řešení a služby Microsoftu a partnerů, které rozšiřují služby a produkty Azure. Katalog řešení zahrnuje několik kategorií, včetně:
 
 * základní operační systémy
 * databases
@@ -41,9 +41,6 @@ Azure Marketplace nabízí technická řešení a služby Microsoftu a partnerů
 * Sítě
 * Blockchain
 * vývojářské nástroje
-* a další
-
-Azure Marketplace nabízí aplikace SaaS, Virtual Machines, šablony řešení, aplikace spravované v Azure a konzultační služby.
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace pro zákazníky
 
@@ -338,7 +335,7 @@ Zájemci jsou zákazníci, kteří nasazují vaše produkty z webu Marketplace. 
 
 **Kde můžu získat pomoc při nastavování cíle realizace?**
 
-Další informace najdete v dokumentaci [portál partnerů cloudu – získat zájemce na zákazníky](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) nebo odeslat lístek podpory prostřednictvím [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) tak, že vyberete typ nabídky a správu potenciálních zákazníků.
+Další informace najdete v [centru partnerů – získání zájemců na zákazníky](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) nebo odeslání lístku podpory prostřednictvím [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) tak, že vyberete typ nabídky a správu potenciálních zákazníků.
 
 **Je nutné nakonfigurovat cíl zájemce pro publikování nabídky na webu Marketplace?**
 
@@ -346,7 +343,7 @@ Ano, pokud publikujete **kontaktní zprávu**, **aplikaci SaaS**nebo nabídku **
 
 **Jak si můžu ověřit, jestli je správně nastavená konfigurace potenciálního zákazníka?**
 
-Po dokončení nabídky a nastavení cíle realizace se může seznam správně publikovat v [portál partnerů cloudu](https://cloudpartner.azure.com/). Předtím, než se výpis začne pracovat, můžete ověřit, zda konfigurace vedoucího souboru funguje správně.  Poslat test – zájemce v rámci nabídky, který je konfigurovaný pro cíl zájemce
+Po dokončení nabídky a nastavení cíle realizace se seznam může řádně publikovat v [partnerském centru](https://cloudpartner.azure.com/). Předtím, než se výpis začne pracovat, můžete ověřit, zda konfigurace vedoucího souboru funguje správně.  Poslat test – zájemce v rámci nabídky, který je konfigurovaný pro cíl zájemce
 
 **Které země nebo oblasti jsou Azure Marketplace k dispozici pro vydavatele, kteří prodávají?**
 
@@ -356,7 +353,7 @@ Vydavatelé založené na následujících zemích nebo oblastech můžou v sou�
 
 *Aplikace & Azure pro virtuální počítače:*
 
-1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1. Přihlaste se k [partnerskému centru](https://cloudpartner.azure.com/).
 1. Vyberte nabídku na kartě **všechny nabídky** .
 1. V podokně na levé straně obrazovky vyberte kartu **SKU** .
 1. Vyberte SKLADOVOU položku k odstranění a klikněte na tlačítko **Odstranit** pro danou skladovou jednotku.
@@ -366,7 +363,7 @@ Další informace najdete v tématu [odstranění nabídky](./cloud-partner-port
 
 *Web Apps (aplikace SaaS, doplňky) & konzultačních služeb:*
 
-1. V portál partnerů cloudu vyberte ikonu otazníku a potom klikněte na tlačítko **Podpora**.
+1. V partnerském centru vyberte ikonu otazníku a potom klikněte na tlačítko **Podpora**.
 1. Přejděte do části <https://go.microsoft.com/fwlink/?linkid=844975> (Soubor > Nový > Jiné).
 1. Na stránce Podpora vyberte typ nabídky.
 1. Vyberte možnost **Odebrat** publikovanou nabídku.
@@ -419,19 +416,19 @@ Zaprotokolujte lístek pomocí [Podpora Microsoftu](https://support.microsoft.co
 
 **Koho se mám obrátit na Obecné problémy s podporou Azure Marketplace?**
 
-Pokud chcete získat obecnou aplikační podporu týkající se použitelnosti nebo řešení potíží, obraťte se na [podporu portál partnerů cloudu](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
+V případě obecné aplikační podpory týkající se použitelnosti nebo řešení potíží kontaktujte [podporu partnerského centra](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
 V případě problémů s fakturací a předplatnými Azure Marketplace nákupu se obraťte na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Na koho se mám obrátit s dotazy ohledně publikování nebo správy nabídek?**
 
-Projděte si [příručku pro Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete pomocí [Podpora Microsoftu v portál partnerů cloudu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)protokolovat lístek.
+Projděte si [příručku pro Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete protokolovat lístek pomocí [Podpora Microsoftu v partnerském centru](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
 
 **Návody definovat geografickou dostupnost, která umožňuje prodej v různých zemích nebo oblastech?**
 
-1.  V portál partnerů cloudu přejděte na SKU, do které chcete přidat nové země nebo oblasti.  V **podrobnostech SKU**přejděte k položce **dostupnost země/oblasti** a klikněte na **Vybrat oblasti**.
+1.  V partnerském centru přejděte na SKU, do kterého chcete přidat nové země nebo oblasti.  V **podrobnostech SKU**přejděte k položce **dostupnost země/oblasti** a klikněte na **Vybrat oblasti**.
 
     ![Vybrat oblasti](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 

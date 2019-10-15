@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286116"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329444"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit pro monitorování akcí u prostředků
 
@@ -193,7 +193,7 @@ Operace REST pro práci s protokolem aktivit jsou součástí [REST API Insights
 
 * Protokoly aktivit Azure se dají použít s Power BI k získání dalších přehledů o akcích ve vašem předplatném. Podívejte se [na téma zobrazení a analýza protokolů aktivit Azure v Power BI a dalších](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Další informace o nastavení zásad zabezpečení najdete v tématu [Access Control na základě rolí v Azure](../role-based-access-control/role-assignments-portal.md).
-* Pokud chcete zobrazit další podrobnosti o změnách vašich aplikací z infrastruktury infrastruktury všech způsobů nasazení aplikace, přečtěte si téma [použití analýzy změn aplikace v Azure Monitor] (.. /Azure-monitor/App/Change-Analysis. MD).
+* Pokud chcete zobrazit další podrobnosti o změnách vašich aplikací z infrastruktury infrastruktury všech způsobů nasazení aplikace, přečtěte si téma [použití analýzy změn aplikace v Azure monitor](../azure-monitor/app/change-analysis.md).
 * Další informace o příkazech pro zobrazení operací nasazení najdete v tématu [Zobrazení operací nasazení](resource-manager-deployment-operations.md).
 * Informace o tom, jak zabránit odstranění prostředků pro všechny uživatele, najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](resource-group-lock-resources.md).
 * Pokud chcete zobrazit seznam operací dostupných pro každého poskytovatele Microsoft Azure Správce prostředků, přečtěte si téma [Azure Resource Manager operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md) .

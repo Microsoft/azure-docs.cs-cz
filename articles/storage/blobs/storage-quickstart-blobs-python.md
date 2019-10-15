@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Pythonu | Microsoft Docs
+title: 'Rychlý Start: vytvoření objektu BLOB v úložišti objektů BLOB v Azure pomocí Pythonu'
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981211"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331804"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
-V tomto rychlém startu pomocí Pythonu nahráváte, stahujete a vypíšete objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Objekty BLOB v Azure Storage se liší od sdílených složek, tabulek bez schématu a front zpráv.  Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).
+V tomto článku můžete pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Objekty BLOB v Azure Storage se liší od sdílených složek, tabulek bez schématu a front zpráv.  Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

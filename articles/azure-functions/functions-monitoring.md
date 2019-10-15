@@ -1,21 +1,20 @@
 ---
 title: Monitorování Azure Functions
 description: Naučte se používat Azure Application Insights s Azure Functions k monitorování provádění funkcí.
-services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: dc333ef542da1330672ad1dc8ad731969eef6742
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098685"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374571"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -29,6 +28,8 @@ Jelikož je požadovaná instrumentace Application Insights integrovaná do Azur
 
 Můžete si vyzkoušet Application Insights integraci s aplikacemi Function App zdarma. K dispozici je denní limit pro množství dat, která je možné zpracovat zdarma. Tento limit se může vyrazit během testování. Azure poskytuje přístup k portálu a e-mailovým oznámením při přístupu k dennímu limitu. Pokud jste tyto výstrahy nepřišli a dosáhli jste limitu, nové protokoly se v Application Insightsch dotazech nezobrazují. Nezapomeňte omezit omezení, aby nedocházelo k zbytečnému času řešení potíží. Další informace najdete v tématu [Správa cen a objemu dat v Application Insights](../azure-monitor/app/pricing.md).
 
+Úplný seznam funkcí Application Insights, které jsou k dispozici pro aplikaci Function App, je podrobně popsán v [Application Insights pro Azure Functions podporované funkce](../azure-monitor/app/azure-functions-supported-features.md).
+
 ## <a name="enable-application-insights-integration"></a>Povolit integraci Application Insights
 
 Aby aplikace Function App odesílala data Application Insights, musí znát klíč instrumentace prostředku Application Insights. Klíč musí být v nastavení aplikace s názvem **APPINSIGHTS_INSTRUMENTATIONKEY**.
@@ -37,11 +38,11 @@ Aby aplikace Function App odesílala data Application Insights, musí znát klí
 
 Při [vytváření aplikace Function App v Azure Portal](functions-create-first-azure-function.md)je ve výchozím nastavení povolena integrace Application Insights. Prostředek Application Insights má stejný název jako aplikace Function App a je vytvořený buď ve stejné oblasti, nebo v nejbližší oblasti.
 
-Chcete-li zkontrolovat vytvářené prostředky Application Insights, vyberte ji a rozbalte okno **Application Insights** . Můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v geografických oblastech [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete data uložit.
+Chcete-li zkontrolovat vytvářené prostředky Application Insights, vyberte ji a rozbalte okno **Application Insights** . Můžete změnit **název nového prostředku** nebo zvolit jiné **umístění** v [geografických oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , kam chcete data uložit.
 
 ![Povolit Application Insights při vytváření aplikace Function App](media/functions-monitoring/enable-ai-new-function-app.png)
 
-Když zvolíte **vytvořit**, vytvoří se prostředek Application Insights s aplikací Function App, která má `APPINSIGHTS_INSTRUMENTATIONKEY` nastavenou hodnotu v nastavení aplikace. Všechno je připravené k přechodu.
+Když zvolíte **vytvořit**, vytvoří se prostředek Application Insights pomocí aplikace Function App, která má nastavenou `APPINSIGHTS_INSTRUMENTATIONKEY` v nastavení aplikace. Všechno je připravené k přechodu.
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Přidat do existující aplikace Function App 
@@ -78,7 +79,7 @@ Vidíte, že obě stránky mají **Spustit v Application Insights** odkaz na dot
 
 ![Spustit v Application Insights](media/functions-monitoring/run-in-ai.png)
 
-Zobrazí se následující dotaz. Můžete vidět, že seznam volání je omezený na posledních 30 dní. V seznamu se zobrazí maximálně 20 řádků (`where timestamp > ago(30d) | take 20`). Seznam podrobností o vyvolání je za posledních 30 dnů bez omezení.
+Zobrazí se následující dotaz. Můžete vidět, že seznam volání je omezený na posledních 30 dní. V seznamu se zobrazuje maximálně 20 řádků (`where timestamp > ago(30d) | take 20`). Seznam podrobností o vyvolání je za posledních 30 dnů bez omezení.
 
 ![Seznam volání analýzy Application Insights](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -90,13 +91,13 @@ Pokud chcete Application Insights otevřít z aplikace Function App v Azure Port
 
 ![Otevření Application Insights na stránce s přehledem aplikace Function App](media/functions-monitoring/ai-link.png)
 
-Informace o tom, jak používat Application Insights, najdete v [dokumentaci k Application Insights](https://docs.microsoft.com/azure/application-insights/). V této části jsou uvedeny některé příklady, jak zobrazit data v Application Insights. Pokud už jste obeznámeni s Application Insights, můžete přejít přímo k oddílům, [jak nakonfigurovat a přizpůsobit data telemetrie](#configure-categories-and-log-levels).
+Informace o tom, jak používat Application Insights, najdete v [dokumentaci k Application Insights](https://docs.microsoft.com/azure/application-insights/). V této části jsou uvedeny některé příklady, jak zobrazit data v Application Insights. Pokud už jste obeznámeni s Application Insights, můžete přejít přímo k [oddílům, jak nakonfigurovat a přizpůsobit data telemetrie](#configure-categories-and-log-levels).
 
 ![Karta Přehled Application Insights](media/functions-monitoring/metrics-explorer.png)
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Tabulátor | Popis |
+| Rážky | Popis |
 | ---- | ----------- |
 | **[Úspěšně](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Předepsané](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem. |
@@ -123,53 +124,53 @@ requests
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kódem funkce. |
 | **požádal** | Jedna žádost pro každé vyvolání funkce. |
 | **výjimek** | Jakékoli výjimky vyvolané modulem runtime. |
 | **customMetrics** | Počet úspěšných a neúspěšných vyvolání, míra úspěšnosti a trvání. |
-| **customEvents** | Události sledované modulem runtime, například: Požadavky HTTP, které aktivují funkci |
-| **performanceCounters** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
+| **customEvents** | Události sledované modulem runtime, například: požadavky HTTP, které aktivují funkci. |
+| **Čítače výkonu** | Informace o výkonu serverů, na kterých jsou spuštěny funkce. |
 
 Ostatní tabulky jsou k dispozici pro testy dostupnosti a telemetrie klientů a prohlížečů. Můžete implementovat vlastní telemetrii a přidat do nich data.
 
-V každé tabulce jsou některá data specifická pro konkrétní funkce v `customDimensions` poli.  Například následující dotaz načte všechna trasování, která mají úroveň `Error`protokolu.
+V každé tabulce jsou některá data specifická pro funkce v poli `customDimensions`.  Například následující dotaz načte všechna trasování, která mají úroveň protokolu `Error`.
 
 ```
 traces 
 | where customDimensions.LogLevel == "Error"
 ```
 
-Modul runtime poskytuje `customDimensions.LogLevel` pole a `customDimensions.Category` . V protokolech můžete zadat další pole, která zapíšete do kódu funkce. Viz [strukturované protokolování](#structured-logging) dále v tomto článku.
+Modul runtime poskytuje pole `customDimensions.LogLevel` a `customDimensions.Category`. V protokolech můžete zadat další pole, která zapíšete do kódu funkce. Viz [strukturované protokolování](#structured-logging) dále v tomto článku.
 
 ## <a name="configure-categories-and-log-levels"></a>Konfigurovat kategorie a úrovně protokolu
 
 Application Insights můžete použít bez vlastní konfigurace. Výchozí konfigurace může mít za následek velké objemy dat. Pokud používáte předplatné sady Visual Studio Azure, můžete pro Application Insights použít svůj limit dat. Později v tomto článku se dozvíte, jak nakonfigurovat a přizpůsobit data, která vaše funkce odesílají do Application Insights. V případě aplikace Function App se protokolování nakonfiguruje v souboru [Host. JSON] .
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategorie
 
 Protokolovací nástroj Azure Functions zahrnuje *kategorii* pro každý protokol. Kategorie označuje, která část běhového kódu nebo kód vaší funkce zapsaly protokol. 
 
-Modul runtime Functions vytvoří protokoly s kategorií, která začíná na "host". V protokolech verze 1. x `function started`, `function executed`, a `function completed` mají kategorii `Host.Executor`. Od verze 2. x mají tyto protokoly kategorii `Function.<YOUR_FUNCTION_NAME>`.
+Modul runtime Functions vytvoří protokoly s kategorií, která začíná na "host". V protokolech verze 1. x mají protokoly `function started`, `function executed` a `function completed` kategorii `Host.Executor`. Od verze 2. x mají tyto protokoly kategorii `Function.<YOUR_FUNCTION_NAME>`.
 
-Pokud zapíšete protokoly do kódu funkce, kategorie je `Function` ve verzi 1. x modulu runtime Functions. Ve verzi 2. x je `Function.<YOUR_FUNCTION_NAME>.User`kategorie.
+Pokud zapíšete protokoly do kódu funkce, kategorie je `Function` ve verzi 1. x modulu runtime Functions. Ve verzi 2. x je kategorie `Function.<YOUR_FUNCTION_NAME>.User`.
 
 ### <a name="log-levels"></a>Úrovně protokolu
 
 Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každým protokolem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|LogLevel    |Kód|
+|logLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
-|Information | 2 |
+|Ladění       | 1\. místo |
+|Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
+|Kritické    | 5 |
 |Žádné        | 6 |
 
-Úroveň `None` protokolu je vysvětleno v další části. 
+Úroveň protokolu @no__t – 0 je vysvětleno v další části. 
 
 ### <a name="log-configuration-in-hostjson"></a>Protokolovat konfiguraci v Host. JSON
 
@@ -212,13 +213,13 @@ Modul runtime v2. x používá [hierarchii filtrů protokolování .NET Core](ht
 
 Tento příklad nastavuje následující pravidla:
 
-* Pro protokoly s kategorií `Host.Results` nebo `Function`můžete odeslat Application Insights `Error` jenom úroveň a vyšší. Protokoly pro `Warning` úroveň a níže jsou ignorovány.
-* Pro protokoly s kategorií `Host.Aggregator`odešlete všechny protokoly do Application Insights. Úroveň protokolu je stejná jako u některých volání `Verbose`protokolovacích nástrojů, ale používá `Trace` se v souboru [Host. JSON] . `Trace`
-* Pro všechny ostatní protokoly odešlete Application Insights `Information` jenom úroveň a vyšší.
+* V případě protokolů s kategorií `Host.Results` nebo `Function` odešlete Application Insights úrovně `Error` a vyšší. Protokoly @no__t úrovně 0 a níže jsou ignorovány.
+* Pro protokoly s kategorií `Host.Aggregator` odešlete všechny protokoly do Application Insights. Úroveň protokolu `Trace` je stejná jako to, co některé protokolovací nástroje volají `Verbose`, ale v souboru [Host. JSON] použijte `Trace`.
+* U všech ostatních protokolů odešlete Application Insights úroveň @no__t 0 a vyšší.
 
-Hodnota kategorie v prvku [Host. JSON] určuje protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host`v ovládacích prvcích [Host. JSON] se `Host.General`přihlašuje `Host.Results`pro, `Host.Executor`, a tak dále.
+Hodnota kategorie v prvku [Host. JSON] určuje protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host` v nástroji [Host. JSON] protokolování pro `Host.General`, `Host.Executor`, `Host.Results` atd.
 
-Pokud [Host. JSON] obsahuje několik kategorií, které začínají stejným řetězcem, budou se nejdřív shodovat. Předpokládejme, že chcete, aby vše z `Host.Aggregator` modulu runtime s `Error` výjimkou protokolování na úrovni `Host.Aggregator` , ale `Information` Chcete se přihlásit na úrovni:
+Pokud [Host. JSON] obsahuje několik kategorií, které začínají stejným řetězcem, budou se nejdřív shodovat. Předpokládejme, že chcete, aby se všechny z modulu runtime s výjimkou `Host.Aggregator` přihlásily na úrovni `Error`, ale chcete se přihlásit `Host.Aggregator` na úrovni `Information`:
 
 ### <a name="version-2x"></a>Verze 2. x 
 
@@ -253,7 +254,7 @@ Pokud [Host. JSON] obsahuje několik kategorií, které začínají stejným ře
 }
 ```
 
-Chcete-li potlačit všechny protokoly pro kategorii, můžete použít úroveň `None`protokolu. S touto kategorií nejsou zapsány žádné protokoly a nad ní není žádná úroveň protokolu.
+Pokud chcete potlačit všechny protokoly pro kategorii, můžete použít úroveň protokolu `None`. S touto kategorií nejsou zapsány žádné protokoly a nad ní není žádná úroveň protokolu.
 
 V následujících částech jsou popsány hlavní kategorie protokolů, které modul runtime vytvoří. 
 
@@ -263,17 +264,17 @@ Tyto protokoly ukazují jako "žádosti" v Application Insights. Označují úsp
 
 ![Graf požadavků](media/functions-monitoring/requests-chart.png)
 
-Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat.
+Všechny tyto protokoly jsou zapisovány na úrovni @no__t 0. Pokud filtrujete `Warning` nebo vyšší, nezobrazí se žádná z těchto dat.
 
 ### <a name="category-hostaggregator"></a>Kategorie Host. agregátor
 
-Tyto protokoly poskytují počty a průměry volání funkcí v konfigurovatelném časovém [](#configure-the-aggregator) intervalu. Výchozí doba je 30 sekund nebo 1 000 výsledků, podle toho, co nastane dřív. 
+Tyto protokoly poskytují počty a průměry volání funkcí v [konfigurovatelném](#configure-the-aggregator) časovém intervalu. Výchozí doba je 30 sekund nebo 1 000 výsledků, podle toho, co nastane dřív. 
 
 Protokoly jsou k dispozici v tabulce **customMetrics** v Application Insights. Jedná se o počet spuštění, úspěšnost a dobu trvání.
 
 ![dotaz customMetrics](media/functions-monitoring/custom-metrics-query.png)
 
-Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat.
+Všechny tyto protokoly jsou zapisovány na úrovni @no__t 0. Pokud filtrujete `Warning` nebo vyšší, nezobrazí se žádná z těchto dat.
 
 ### <a name="other-categories"></a>Jiné kategorie
 
@@ -281,7 +282,7 @@ Všechny protokoly pro jiné kategorie než ty, které jsou již uvedeny, jsou k
 
 ![dotaz Traces](media/functions-monitoring/analytics-traces.png)
 
-Všechny protokoly s kategoriemi, které `Host` začínají, jsou zapsány modulem runtime Functions. V protokolech "spuštěná funkce" a "dokončená funkce `Host.Executor`" jsou kategorie. V případě úspěšného spuštění jsou `Information` tyto protokoly na úrovni. Výjimky jsou protokolovány `Error` na úrovni. Modul runtime také vytváří `Warning` protokoly úrovně, například: fronty odeslané do fronty nepoškozených zpráv.
+Všechny protokoly s kategoriemi, které začínají na `Host`, jsou zapsány modulem runtime Functions. Do protokolů "spuštěno" a "dokončená funkce" se kategorie `Host.Executor`. V případě úspěšného spuštění jsou tyto protokoly @no__t úroveň 0. Výjimky jsou protokolovány na úrovni `Error`. Modul runtime také vytvoří protokoly na úrovni `Warning`, například: fronty odeslané do fronty nepoškozených zpráv.
 
 Protokoly zapsané vaším kódem funkce mají kategorii `Function` a můžou být libovolné úrovně protokolu.
 
@@ -339,9 +340,9 @@ Protokoly můžete zapsat v kódu funkce, který se zobrazí jako trasování v 
 
 ### <a name="ilogger"></a>ILogger
 
-Místo`TraceWriter` parametru použijte ve svých funkcích parametr [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) . Protokoly vytvořené pomocí `TraceWriter` možnosti přejít na Application Insights, ale `ILogger` umožňují [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Místo parametru `TraceWriter` použijte ve svých funkcích parametr [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) . Protokoly vytvořené pomocí `TraceWriter` přejít na Application Insights, ale `ILogger` umožňuje [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-S objektem zavoláte `Log<level>` [metody rozšíření v ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. `ILogger` Následující kód zapisuje `Information` protokoly do kategorie "Function".
+Pomocí objektu `ILogger` zavoláte do [ILogger metody rozšíření](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) `Log<level>` pro vytváření protokolů. Následující kód zapisuje `Information` protokolů s kategorií "Function".
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -363,11 +364,11 @@ Pokud zachováte stejný řetězec zprávy a obrátíte pořadí parametrů, vý
 
 Zástupné symboly jsou zpracovávány tímto způsobem, aby bylo možné provádět strukturované protokolování. Application Insights ukládá páry parametr název-hodnota a řetězec zprávy. Výsledkem je, že se argumenty zprávy stanou poli, se kterými se můžete dotazovat.
 
-Pokud vaše volání metody protokolovacího nástroje vypadá jako v předchozím příkladu, můžete zadat dotaz `customDimensions.prop__rowKey`na pole. Je `prop__` přidána předpona, aby se zajistilo, že mezi poli, které modul runtime přidává, nedochází k žádné kolizi, které přidávají kód funkce.
+Pokud vaše volání metody protokolovacího nástroje vypadá jako v předchozím příkladu, můžete zadat dotaz na pole `customDimensions.prop__rowKey`. Je přidána předpona `prop__`, aby se zajistilo, že mezi poli, které modul runtime přidá, nejsou žádné kolize, a pole, které váš kód funkce přidá.
 
 Můžete také zadat dotaz na původní řetězec zprávy odkazem na pole `customDimensions.prop__{OriginalFormat}`.  
 
-Tady je ukázková reprezentace dat ve `customDimensions` formátu JSON:
+Tady je ukázka reprezentace dat `customDimensions` ve formátu JSON:
 
 ```json
 {
@@ -382,17 +383,17 @@ Tady je ukázková reprezentace dat ve `customDimensions` formátu JSON:
 
 ### <a name="custom-metrics-logging"></a>Protokolování vlastních metrik
 
-Ve C# skriptových funkcích můžete použít `LogMetric` metodu `ILogger` rozšíření pro k vytvoření vlastních metrik v Application Insights. Zde je příklad volání metody:
+Ve C# skriptových funkcích můžete pomocí metody rozšíření `LogMetric` v `ILogger` vytvořit vlastní metriky v Application Insights. Zde je příklad volání metody:
 
 ```csharp
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Tento kód je alternativou pro volání `TrackMetric` pomocí rozhraní Application Insights API pro rozhraní .NET.
+Tento kód je alternativou pro volání `TrackMetric` pomocí rozhraní Application Insights API pro .NET.
 
 ## <a name="write-logs-in-javascript-functions"></a>Zápis protokolů ve funkcích JavaScriptu
 
-V funkcích Node. js použijte `context.log` k zápisu protokolů. Strukturované protokolování není povoleno.
+V funkcích Node. js použijte `context.log` pro zápis protokolů. Strukturované protokolování není povoleno.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
@@ -400,7 +401,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Protokolování vlastních metrik
 
-Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) funkcí runtime Functions, Node. js, může pomocí `context.log.metric` metody vytvořit vlastní metriky v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x. Zde je příklad volání metody:
+Pokud používáte [verzi 1. x](functions-versions.md#creating-1x-apps) funkcí runtime Functions, Node. js, může pomocí metody `context.log.metric` vytvořit vlastní metriky v Application Insights. Tato metoda není aktuálně podporovaná ve verzi 2. x. Zde je příklad volání metody:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -414,7 +415,7 @@ Pomocí balíčku NuGet [Microsoft. ApplicationInsights](https://www.nuget.org/p
 
 ### <a name="version-2x"></a>Verze 2. x
 
-Modul runtime verze 2. x používá k automatickému sladění telemetrie s aktuální operací novější funkce v Application Insights. Nemusíte ručně nastavit operaci `Id`, `ParentId`nebo `Name` pole.
+Modul runtime verze 2. x používá k automatickému sladění telemetrie s aktuální operací novější funkce v Application Insights. Není nutné ručně nastavit operaci `Id`, `ParentId` nebo `Name`.
 
 ```cs
 using System;
@@ -563,9 +564,9 @@ namespace functionapp0915
 }
 ```
 
-Nevolejte `TrackRequest` nebo `StartOperation<RequestTelemetry>` , protože se zobrazí duplicitní požadavky na vyvolání funkce.  Modul runtime Functions automaticky sleduje požadavky.
+Nevolejte `TrackRequest` nebo `StartOperation<RequestTelemetry>`, protože se zobrazí duplicitní požadavky na vyvolání funkce.  Modul runtime Functions automaticky sleduje požadavky.
 
-Nenastaveno `telemetryClient.Context.Operation.Id`. Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie (`DependencyTelemetry`, `EventTelemetry`) a upravte její `Context` vlastnost. `Track` Pak předejte instanci telemetrie do odpovídající metody on `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
+Nenastavte `telemetryClient.Context.Operation.Id`. Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie (`DependencyTelemetry`, `EventTelemetry`) a upravte její vlastnost `Context`. Pak předejte instanci telemetrie odpovídající metodě `Track` na `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokolování vlastní telemetrie ve funkcích JavaScriptu
 
@@ -590,7 +591,7 @@ module.exports = function (context, req) {
 };
 ```
 
-`tagOverrides` Parametr`operation_Id` nastaví ID vyvolání funkce. Toto nastavení umožňuje korelovat všechny automaticky vygenerované a vlastní telemetrie pro dané volání funkce.
+Parametr `tagOverrides` nastaví `operation_Id` na ID vyvolání funkce. Toto nastavení umožňuje korelovat všechny automaticky vygenerované a vlastní telemetrie pro dané volání funkce.
 
 ## <a name="dependencies"></a>Závislosti
 
@@ -606,7 +607,7 @@ Pokud chcete ohlásit problém s Application Insights integrací v rámci funkc�
 
 ## <a name="streaming-logs"></a>Protokoly streamování
 
-Při vývoji aplikace často budete chtít, aby se při spuštění v Azure v reálném čase psaly do protokolů téměř v reálném čase.
+Při vývoji aplikace často chcete zjistit, co se do protokolů zapsalo téměř v reálném čase při spuštění v Azure.
 
 Existují dva způsoby, jak zobrazit datový proud souborů protokolu generovaných spuštěním vaší funkce.
 
@@ -672,11 +673,11 @@ Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 
 Pokud povolíte Application Insights, zakažte integrované protokolování, které používá Azure Storage. Integrované protokolování je užitečné pro testování s využitím lehkých úloh, ale není určené pro použití v produkčním prostředí s vysokou zátěží. Pro produkční monitorování doporučujeme Application Insights. Pokud se v produkčním prostředí používá integrované protokolování, může být záznam protokolování neúplný z důvodu omezování Azure Storage.
 
-Pokud chcete zakázat integrované protokolování, odstraňte `AzureWebJobsDashboard` nastavení aplikace. Informace o tom, jak odstranit nastavení aplikace v Azure Portal, najdete v části **nastavení aplikace** v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md#settings). Před odstraněním nastavení aplikace se ujistěte, že žádné existující funkce ve stejné aplikaci Function App nepoužívají nastavení pro Azure Storage triggery nebo vazby.
+Pokud chcete zakázat integrované protokolování, odstraňte nastavení aplikace `AzureWebJobsDashboard`. Informace o tom, jak odstranit nastavení aplikace v Azure Portal, najdete v části **nastavení aplikace** v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md#settings). Před odstraněním nastavení aplikace se ujistěte, že žádné existující funkce ve stejné aplikaci Function App nepoužívají nastavení pro Azure Storage triggery nebo vazby.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících materiálech:
+Další informace najdete v následujících materiálech:
 
 * [Application Insights](/azure/application-insights/)
 * [Protokolování ASP.NET Core](/aspnet/core/fundamentals/logging/)

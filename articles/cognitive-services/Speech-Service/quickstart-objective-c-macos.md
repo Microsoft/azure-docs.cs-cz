@@ -10,80 +10,86 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: f843636b0c4f604af4984c6d75bb6c3cae75d275
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 6955fc5dd98b65d2eb94914ea39685f1f69a46ac
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803299"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327798"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v cíli-C v macOS pomocí sady Speech SDK
+# <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v cíli-C v macOS pomocí sady Speech SDK
 
 K dispozici jsou také rychlé starty pro [syntézu řeči](quickstart-text-to-speech-objectivec-macos.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku se naučíte, jak vytvořit aplikaci macOS v cíli-C pomocí sady Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
+V tomto článku se dozvíte, jak vytvořit aplikaci macOS v cíli-C pomocí sady Azure Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, tady je seznam požadavků:
+Než začnete, budete potřebovat:
 
-* [Klíč předplatného](get-started.md) pro službu pro rozpoznávání řeči
-* MacOS počítač s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším a MacOS 10,13 nebo novějším
+* [Klíč předplatného](get-started.md) pro službu rozpoznávání řeči
+* MacOS počítač s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novějším a MacOS 10,13 nebo novějším.
 
 ## <a name="get-the-speech-sdk-for-macos"></a>Získat sadu Speech SDK pro macOS
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Sada Cognitive Services Speech SDK for Mac je distribuována jako sada rozhraní.
-Dá se použít v projektech Xcode jako [CocoaPod](https://cocoapods.org/)nebo stahovat z https://aka.ms/csspeech/macosbinary a propojit ručně. Tato příručka používá CocoaPod.
+Sada Cognitive Services Speech SDK for Mac je distribuována jako sada rozhraní. Dá se použít v projektech Xcode jako [CocoaPod](https://cocoapods.org/) nebo stažených z https://aka.ms/csspeech/macosbinary a propojených ručně. Tento článek používá CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
-Spusťte Xcode a kliknutím na **File** > **New** > **Project** (Soubor > Nový > Projekt) spusťte nový projekt.
-V dialogovém okně Výběr šablony vyberte šablonu aplikace pro kakao.
+Spusťte Xcode a spusťte nový projekt tak, že vyberete **soubor** > **Nový** **projekt** > . V dialogovém okně Výběr šablony vyberte šablonu aplikace pro **kakao** .
 
-V následujících dialogových oknech proveďte následující výběry:
+V následujících dialogových oknech proveďte následující výběry.
 
-1. Dialogové okno Project Options (Možnosti projektu)
-    1. Zadejte název aplikace Rychlý start, například `helloworld`.
-    1. Zadejte název příslušné organizace a identifikátor organizace, pokud již máte účet Apple Developer. Pro účely testování stačí vybrat jakýkoli název, třeba `testorg`. K podepsání aplikace potřebujete správný zřizovací profil. Podrobnosti najdete na [webu pro vývojáře Apple](https://developer.apple.com/) .
-    1. Ujistěte se, že jako jazyk projektu je zvolený jazyk Objective-C.
-    1. Pokud chcete použít scénáře a vytvořit aplikaci založenou na dokumentu, zakažte zaškrtávací políčka. Jednoduché uživatelské rozhraní pro ukázkovou aplikaci se vytvoří programově.
-    1. Zrušte zaškrtnutí všech políček týkajících se testů a základních dat.
+1. V dialogovém okně **Možnosti projektu** :
+    1. Zadejte název aplikace pro rychlý Start, například *HelloWorld*.
+    1. Zadejte název příslušné organizace a identifikátor organizace, pokud už máte účet Apple Developer. Pro účely testování použijte název jako *testorg*. K podepsání aplikace potřebujete správný zřizovací profil. Další informace najdete na [webu Apple Developer](https://developer.apple.com/).
+    1. Ujistěte se, že je jako jazyk pro projekt vybrán **cíl-C** .
+    1. Zrušte zaškrtnutí políček pro použití scénářů a vytvoření aplikace založené na dokumentu. Jednoduché uživatelské rozhraní pro ukázkovou aplikaci se vytvoří programově.
+    1. Zrušte zaškrtnutí všech políček pro testy a základní data.
+
     ![Nastavení projektu](media/sdk/qs-objectivec-macos-project-settings.png)
-1. Vyberte adresář projektu.
-    1. Vyberte adresář, do kterého se má projekt umístit. Tím se v domovském adresáři vytvoří adresář `helloworld`, který obsahuje všechny soubory projektu Xcode.
+
+1. Vyberte adresář projektu:
+    1. Vyberte adresář, do kterého se má projekt umístit. Tento krok vytvoří adresář HelloWorld v domovském adresáři, který obsahuje všechny soubory projektu Xcode.
     1. Zakažte vytvoření úložiště Git pro tento ukázkový projekt.
-1. Nastavte oprávnění pro přístup k síti a mikrofonu. Kliknutím na název aplikace v prvním řádku v přehledu vlevo získáte konfiguraci aplikace a pak zvolíte kartu Možnosti.
-    1. Povolte pro aplikaci nastavení "Sandbox aplikace".
-    1. Zaškrtněte políčka pro přístup odchozí připojení a mikrofon.
-    ![Sandbox nastavení @ no__t-1
-1. Aplikace musí také deklarovat použití mikrofonu v souboru `Info.plist`. V přehledu klikněte na soubor a přidejte klíč "" soukromí – mikrofon použití popisu "s hodnotou jako" mikrofon je potřeba pro rozpoznávání řeči ".
-    @no__t – 0Settings v souboru info. plist @ no__t-1
-1. Zavřete projekt Xcode. Později po nastavení CocoaPods budete používat jinou instanci tohoto programu.
+1. Nastavte oprávnění pro přístup k síti a mikrofonu. Pokud se chcete dostat do konfigurace aplikace, vyberte v prvním řádku přehledu vlevo název aplikace. Pak vyberte kartu **Možnosti** .
+    1. Povolte nastavení **izolovaného prostoru aplikace** pro aplikaci.
+    1. Zaškrtněte políčka pro **odchozí připojení** a přístup **přes mikrofon** .
+
+    ![Nastavení izolovaného prostoru](media/sdk/qs-objectivec-macos-sandbox.png)
+
+1. Aplikace musí také deklarovat použití mikrofonu v souboru `Info.plist`. V přehledu vyberte soubor a přidejte k rozpoznávání řeči klíč s **popisem používání mikrofonu – mikrofon** s hodnotou, jako *je třeba mikrofon*.
+
+    ![Nastavení v souboru info. plist](media/sdk/qs-objectivec-macos-info-plist.png)
+
+1. Zavřete projekt Xcode. Jinou instanci můžete použít později po nastavení CocoaPods.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Instalace sady SDK jako CocoaPod
 
 1. Nainstalujte správce závislostí CocoaPod, jak je popsáno v [pokynech k instalaci](https://guides.cocoapods.org/using/getting-started.html).
-1. Přejděte do adresáře ukázkové aplikace (`helloworld`). Umístěte textový soubor s názvem `Podfile` a následujícím obsahem v tomto adresáři:  
-   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
-1. V terminálu přejděte do adresáře `helloworld` a spusťte příkaz `pod install`. Tím se vygeneruje Xcode pracovní prostor `helloworld.xcworkspace` obsahující ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor bude použit v následujících.
+1. Přejít do adresáře ukázkové aplikace, což je HelloWorld. Umístěte textový soubor s názvem *souboru podfile* a následujícím obsahem v tomto adresáři:
+
+   [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
+1. Přejděte do adresáře HelloWorld v terminálu a spusťte příkaz `pod install`. Tento příkaz vygeneruje Xcode pracovní prostor `helloworld.xcworkspace`, který jako závislost obsahuje ukázkovou aplikaci i sadu Speech SDK. Tento pracovní prostor se používá v následujících krocích.
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
 1. Otevřete pracovní prostor `helloworld.xcworkspace` v Xcode.
-1. Nahraďte obsah automaticky vygenerovaného souboru `AppDelegate.m` následujícím kódem:  
-   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
+1. Obsah automaticky generovaného souboru `AppDelegate.m` nahraďte následujícím kódem:
+
+   [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
-1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. Nahraďte řetězec `YourServiceRegion` [oblastí](regions.md) , která je přidružená k vašemu předplatnému. Například pro předplatné bezplatné zkušební verze použijte `westus`.
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
 
-1. Zobrazte výstup ladění: vyberte **View** > **Debug Area** > **Activate Console** (Zobrazení > Oblast ladění > Aktivovat konzolu).
-1. Sestavte a spusťte ukázkový kód tak, že vyberete **produkt** > **Spustit** z nabídky nebo kliknete na tlačítko **Přehrát** .
-1. Po kliknutí na tlačítko a vyslovení několika slov byste se měli podívat na text, který jste promluví v dolní části obrazovky. Při prvním spuštění aplikace by se vám měla zobrazit výzva k poskytnutí přístupu aplikace k mikrofonu vašeho počítače.
+1. Zpřístupněte výstup ladění tak, že vyberete **zobrazení** > **oblast ladění** > **aktivovat konzolu**.
+1. Sestavte a spusťte ukázkový kód výběrem **produktu** > **Spustit** z nabídky. Můžete také vybrat možnost **Přehrát**.
+1. Po výběru tlačítka a vyslovení několika slov byste se měli podívat na text, který jste v dolní části obrazovky promluví. Při prvním spuštění aplikace by se vám měla zobrazit výzva k poskytnutí přístupu aplikace k mikrofonu vašeho počítače.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,6 +1,6 @@
 ---
-title: Ukázky Azure Powershellu – spravované aplikace Azure | Dokumentace Microsoftu
-description: Ukázky Azure Powershellu – spravované aplikace Azure
+title: Ukázky Azure PowerShell – Azure Managed Applications | Microsoft Docs
+description: Poskytuje Azure PowerShell ukázkové skripty, které se použijí při práci s Azure Managed Applications.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: c1a960077ed96bb395ade9a09f47b035e6ff4318
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b93abd774cf3145c485a294c009b00892a878509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252131"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330217"
 ---
 # <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
 
-Následující tabulka obsahuje odkazy na skripty pro spravované aplikace Azure, který pomocí Azure Powershellu.
+Následující tabulka obsahuje odkazy na skripty pro Azure Managed Applications, které používají Azure PowerShell.
 
 | | |
 |-|-|
-|**Vytvoření spravované aplikace**||
-| [Vytvoření definice spravované aplikace](scripts/managed-application-powershell-sample-create-definition.md) | Vytvoří definici spravované aplikace katalogu služeb.  |
-| [Nasazení spravované aplikace](scripts/managed-application-poweshell-sample-create-application.md) | Nasadí spravované aplikace z katalogu služeb.  |
+|**Vytvořit spravovanou aplikaci**||
+| [Vytvořit definici spravované aplikace](scripts/managed-application-powershell-sample-create-definition.md) | Vytvoří definici spravované aplikace v katalogu služeb.  |
+| [Nasazení spravované aplikace](scripts/managed-application-poweshell-sample-create-application.md) | Nasadí spravovanou aplikaci z katalogu služeb.  |
 | | |
-|**Aktualizovat spravované skupiny prostředků**||
-| [Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Načte prostředky ze spravované skupině prostředků a změní velikost virtuálních počítačů. |
+|**Aktualizovat spravovanou skupinu prostředků**||
+| [Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Získá prostředky ze spravované skupiny prostředků a změní velikost virtuálních počítačů. |

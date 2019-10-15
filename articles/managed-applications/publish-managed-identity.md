@@ -1,6 +1,6 @@
 ---
-title: Spravované aplikace Azure s využitím spravované Identity
-description: Zjistěte, jak nakonfigurovat spravované Identity spravované aplikace. Spravované Identity lze použít k nasazení spravované aplikace propojené s existující prostředky, udělte spravované aplikace spravovat prostředky Azure mimo spravovanou skupinu prostředků a poskytovat provozní identitu spravované aplikace pro protokol aktivit a Další služby v rámci Azure.
+title: Spravovaná aplikace Azure se spravovanou identitou
+description: Konfigurace spravované aplikace se spravovanou identitou pro propojení s existujícími prostředky, Správa prostředků Azure a poskytování provozní identity pro protokol aktivit
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
@@ -8,36 +8,36 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e1f5072921104c749a0acef95b7da09f1cbb662
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434865"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330229"
 ---
-# <a name="azure-managed-application-with-managed-identity"></a>Spravované aplikace Azure s využitím spravované Identity
+# <a name="azure-managed-application-with-managed-identity"></a>Spravovaná aplikace Azure se spravovanou identitou
 
 > [!NOTE]
-> Podpora Identity spravovaných pro spravované aplikace je aktuálně ve verzi preview. Použijte prosím verzi rozhraní api 2018-09-01-preview využívat spravované Identity.
+> Podpora spravované identity pro spravované aplikace je momentálně ve verzi Preview. K využití spravované identity použijte verzi rozhraní API 2018-09-01-Preview.
 
-Zjistěte, jak nakonfigurovat spravované aplikace tak, aby obsahovala spravované Identity. Spravované Identity umožňuje povolit zákazníka k udělení přístupu spravované aplikace na další existující prostředky. Identita je spravovaná Platforma Azure a není nutné zřizovat nebo otočit jakýchkoli tajných kódů. Další informace o spravovaných identit v Azure Active Directory (AAD) najdete v tématu [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Naučte se, jak nakonfigurovat spravovanou aplikaci tak, aby obsahovala spravovanou identitu. Spravovaná identita se dá použít k tomu, aby zákazník udělil přístup spravované aplikace k dalším existujícím prostředkům. Identita je spravovaná platformou Azure a nevyžaduje zřízení ani otočení jakýchkoli tajných klíčů. Další informace o spravovaných identitách v Azure Active Directory (AAD) najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 Aplikaci lze udělit dva typy identit:
 
-- A **systém přiřadil identity** se váže na vaši aplikaci a je odstranit, pokud vaše aplikace se odstraní. Aplikace může mít pouze jednu identitu systém přiřadil.
-- A **uživatelsky přiřazené identity** je samostatný prostředek Azure, který lze přiřadit k aplikaci. Aplikace může obsahovat více uživatelsky přiřazené identity.
+- **Identita přiřazená systémem** je svázána s vaší aplikací a je odstraněna, pokud je vaše aplikace odstraněna. Aplikace může mít jenom jednu identitu přiřazenou systémem.
+- **Uživatelsky přiřazená identita** je samostatný prostředek Azure, který je možné přiřadit k vaší aplikaci. Aplikace může mít více uživatelsky přiřazených identit.
 
-## <a name="how-to-use-managed-identity"></a>Použití spravované Identity
+## <a name="how-to-use-managed-identity"></a>Použití spravované identity
 
-Spravované Identity umožňuje mnoho scénářů pro spravované aplikace. Jsou uvedeny některé obvyklé scénáře, které je možné řešit:
+Spravovaná identita povoluje mnoho scénářů pro spravované aplikace. Některé běžné scénáře, které lze vyřešit:
 
-- Nasazení spravované aplikace propojené s existující prostředky Azure. Příklad nasazuje virtuální počítač Azure (VM) v rámci spravované aplikace, která je přiřazena [existující síťové rozhraní](../virtual-network/virtual-network-network-interface-vm.md).
-- Udělení přístupu spravovaných aplikací a vydavatele na Azure prostředky mimo **spravované skupiny prostředků**.
-- Zajištění provozní identitu spravované aplikace pro protokol aktivit a dalších služeb v rámci Azure.
+- Nasazuje se spravovaná aplikace propojená s existujícími prostředky Azure. Příkladem je nasazení virtuálního počítače Azure v rámci spravované aplikace, která je připojená k [existujícímu síťovému rozhraní](../virtual-network/virtual-network-network-interface-vm.md).
+- Udělení přístupu spravované aplikaci a vydavateli k prostředkům Azure mimo **spravovanou skupinu prostředků**
+- Poskytování provozní identity spravovaných aplikací pro protokol aktivit a další služby v rámci Azure.
 
-## <a name="adding-managed-identity"></a>Přidání spravovaných identit
+## <a name="adding-managed-identity"></a>Přidání spravované identity
 
-Vytvoření spravované aplikace pomocí spravované Identity vyžaduje další vlastnosti pro nastavení u prostředku Azure. Následující příklad ukazuje ukázku **identity** vlastnost:
+Vytvoření spravované aplikace se spravovanou identitou vyžaduje, abyste u prostředku Azure nastavili další vlastnost. Následující příklad zobrazuje ukázkovou vlastnost **identity** :
 
 ```json
 {
@@ -49,11 +49,11 @@ Vytvoření spravované aplikace pomocí spravované Identity vyžaduje další 
 }
 ```
 
-Existují dva běžné způsoby vytvoření spravované aplikace s **identity**: [CreateUIDefinition.json](./create-uidefinition-overview.md) a [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md). Pro zadání jedné jednoduché vytvářet scénáře, CreateUIDefinition by se povolit identitu spravované použít, protože poskytuje pohodlnější a pestřejší prostředí. Při zpracování komplexnějších pokročilé nebo komplexních systémů, které vyžadují automatické nebo více nasazení spravované aplikace, šablony lze použít.
+Existují dva běžné způsoby vytvoření spravované aplikace s **identitou**: [CreateUIDefinition. json](./create-uidefinition-overview.md) a [šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). V případě jednoduchých jednoduchých scénářů vytváření by se měla CreateUIDefinition použít k povolení spravované identity, protože poskytuje bohatší možnosti. Při práci s pokročilými nebo složitými systémy, které vyžadují automatizované nebo vícenásobné nasazení spravovaných aplikací, je ale možné použít šablony.
 
-### <a name="using-createuidefinition"></a>Pomocí CreateUIDefinition
+### <a name="using-createuidefinition"></a>Použití CreateUIDefinition
 
-Spravované aplikace může mít nakonfigurovanou identitu spravované prostřednictvím [CreateUIDefinition.json](./create-uidefinition-overview.md). V [výstupy části](./create-uidefinition-overview.md#outputs), klíč `managedIdentity` můžete použít k přepsání vlastnosti identita třídy šablony spravované aplikace. Ukázka zmeškáte umožní **systém přiřadil** identitu na spravované aplikace. Složitější objekty identity může být tvořen pomocí elementů CreateUIDefinition požádat spotřebitele o vstupy. Tyto vstupy lze použít k vytvoření spravované aplikace s **uživatelsky přiřazené identity**.
+Spravovaná aplikace se dá nakonfigurovat se spravovanou identitou prostřednictvím [CreateUIDefinition. JSON](./create-uidefinition-overview.md). V [části výstupy](./create-uidefinition-overview.md#outputs)lze klíč `managedIdentity` použít k přepsání vlastnosti identity šablony spravované aplikace. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí CreateUIDefinition elementů, aby požádaly spotřebitele o vstupy. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
 ```json
 "outputs": {
@@ -61,17 +61,17 @@ Spravované aplikace může mít nakonfigurovanou identitu spravované prostřed
 }
 ```
 
-#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Kdy použít pro identitu spravované CreateUIDefinition
+#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>Kdy použít CreateUIDefinition pro spravovanou identitu
 
-Níže uvádíme několik doporučení, na kdy použít CreateUIDefinition pro povolení Identity spravované na spravované aplikace.
+Níže jsou uvedená doporučení týkající se použití CreateUIDefinition k povolení spravované identity na spravovaných aplikacích.
 
-- Vytvoření spravované aplikace přejde na webu Azure portal nebo v marketplace.
-- Identita spravované vyžaduje zadání složitých příjemce.
-- Identita spravované je potřeba při vytvoření spravované aplikace.
+- Vytváření spravovaných aplikací projde Azure Portal nebo Marketplace.
+- Spravovaná identita vyžaduje komplexní uživatelský vstup.
+- Spravovaná identita je nutná při vytváření spravované aplikace.
 
 #### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
 
-Základní CreateUIDefinition umožňující SystemAssigned identity pro spravované aplikace.
+Základní CreateUIDefinition, která povoluje identitu SystemAssigned pro spravovanou aplikaci.
 
 ```json
 {
@@ -93,7 +93,7 @@ Základní CreateUIDefinition umožňující SystemAssigned identity pro spravov
 
 #### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
 
-Základní CreateUIDefinition, který přijímá **uživatelsky přiřazené identity** prostředků, stejně jako vstup a aktivovat UserAssigned identity pro spravované aplikace.
+Základní CreateUIDefinition, který přijímá **uživatelsky přiřazený prostředek identity** jako vstup a povoluje identitu UserAssigned pro spravovanou aplikaci.
 
 ```json
 {
@@ -131,29 +131,29 @@ Základní CreateUIDefinition, který přijímá **uživatelsky přiřazené ide
 }
 ```
 
-Výše uvedené CreateUIDefinition.json generuje uživatelské prostředí vytvořit, obsahující textové pole pro spotřebitele zadat **uživatelsky přiřazené identity** ID prostředku Azure. Vygenerovaný prostředí vypadat nějak takto:
+Výše uvedený CreateUIDefinition. JSON vytvoří uživatelské prostředí, které má textové pole pro příjemce, aby zadal ID prostředku Azure **přiřazené identitě** . Vygenerované prostředí by vypadalo takto:
 
 ![Ukázka uživatelsky přiřazené identity CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Pomocí šablon Azure Resource Manageru
+### <a name="using-azure-resource-manager-templates"></a>Používání šablon Azure Resource Manager
 
 > [!NOTE]
-> Šablony Marketplace spravované aplikace jsou automaticky generovány pro zákazníky, že přejdete na webu Azure portal vytvořit prostředí.
-> Pro tyto scénáře `managedIdentity` použije klíč výstup na CreateUIDefinition povolit identitu.
+> Šablony spravované aplikace Marketplace se automaticky generují pro zákazníky, kteří procházejí prostředím Azure Portal vytvořit.
+> V těchto scénářích musí být pro povolení identity použit výstupní klíč `managedIdentity` pro CreateUIDefinition.
 
-Identita spravované je možné povolit také pomocí šablon Azure Resource Manageru. Ukázka zmeškáte umožní **systém přiřadil** identitu na spravované aplikace. Složitější objekty identity může být tvořen použití parametrů šablony Azure Resource Manageru pro zajištění vstupy. Tyto vstupy lze použít k vytvoření spravované aplikace s **uživatelsky přiřazené identity**.
+Spravovaná identita se dá povolit taky prostřednictvím šablon Azure Resource Manager. Vzorový níže povolí pro spravovanou aplikaci identitu **přiřazenou systémem** . Složitější objekty identity mohou být vytvořeny pomocí parametrů šablony Azure Resource Manager k poskytnutí vstupů. Tyto vstupy se dají použít k sestavování spravovaných aplikací s **uživatelsky přiřazenou identitou**.
 
-#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Použití šablon Azure Resource Manageru pro spravované Identity
+#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Kdy použít šablony Azure Resource Manager pro spravovanou identitu
 
-Níže je několik doporučení pro použití šablon Azure Resource Manageru pro povolení Identity spravované na spravované aplikace.
+Níže jsou uvedená doporučení týkající se použití Azure Resource Manager šablon pro povolení spravované identity na spravovaných aplikacích.
 
-- Spravované aplikace je možné nasadit prostřednictvím kódu programu, na základě šablony.
-- Přiřazení vlastních rolí pro identitu spravované jsou potřeba ke zřízení spravovaných aplikací.
-- Spravované aplikace Azure portal a marketplace průběh vytváření nemusí.
+- Spravované aplikace lze programově nasadit na základě šablony.
+- Ke zřízení spravované aplikace je potřeba vlastní přiřazení rolí pro spravovanou identitu.
+- Spravovaná aplikace nepotřebuje tok vytváření Azure Portal a Marketplace.
 
-#### <a name="systemassigned-template"></a>SystemAssigned šablony
+#### <a name="systemassigned-template"></a>Šablona SystemAssigned
 
-Základní šablony Azure Resource Manageru, který se nasazuje spravované aplikace s **systém přiřadil** identity.
+Základní Azure Resource Manager šablona, která nasadí spravovanou aplikaci s identitou **přiřazenou systémem** .
 
 ```json
 "resources": [
@@ -173,9 +173,9 @@ Základní šablony Azure Resource Manageru, který se nasazuje spravované apli
 ]
 ```
 
-### <a name="userassigned-template"></a>UserAssigned šablony
+### <a name="userassigned-template"></a>Šablona UserAssigned
 
-Základní šablony Azure Resource Manageru, které spravované aplikace se nasadí **uživatelsky přiřazené identity**.
+Základní Azure Resource Manager šablona, která nasadí spravovanou aplikaci s **uživatelem přiřazenou identitou**.
 
 ```json
 "resources": [
@@ -206,22 +206,22 @@ Základní šablony Azure Resource Manageru, které spravované aplikace se nasa
 
 ## <a name="granting-access-to-azure-resources"></a>Udělení přístupu k prostředkům Azure
 
-Jakmile spravované aplikace jsou udělena identitu, lze udělit přístup ke stávajícím prostředkům azure. Tento postup lze provést prostřednictvím rozhraní (IAM) řízení přístupu na webu Azure Portal. Název spravované aplikace nebo **uživatelsky přiřazené identity** může být prohledávány při přidání přiřazení role.
+Po udělení identity spravované aplikaci může být udělen přístup k existujícím prostředkům Azure. Tento postup lze provést prostřednictvím rozhraní IAM (Access Control) v Azure Portal. Název spravované aplikace nebo **uživatelsky přiřazené identity** můžete vyhledat a přidat přiřazení role.
 
-![Přidání přiřazení role pro spravované aplikace](./media/publish-managed-identity/identity-role-assignment.png)
+![Přidat přiřazení role pro spravovanou aplikaci](./media/publish-managed-identity/identity-role-assignment.png)
 
-## <a name="linking-existing-azure-resources"></a>Propojení stávajících prostředků Azure
+## <a name="linking-existing-azure-resources"></a>Propojování existujících prostředků Azure
 
 > [!NOTE]
-> A **uživatelsky přiřazené identity** musí být [nakonfigurované](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) před nasazením spravované aplikace. Kromě toho propojeného prostředku nasazení spravované aplikace se podporuje jenom pro **marketplace** druhu.
+> Před nasazením spravované aplikace musí být [nakonfigurovaná](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) **uživatelská identita** . Kromě toho se nasazení propojených prostředků u spravovaných aplikací podporuje jenom pro tento druh **Marketplace** .
 
-Spravované Identity lze použít také k nasazení spravované aplikace, která vyžaduje přístup ke stávajícím prostředkům během nasazení. Při zřízení spravovaných aplikací zákazníka, **uživatelsky přiřazené identity** lze přidat k poskytování dalších povolení **mainTemplate** nasazení.
+Spravovaná identita se dá použít taky k nasazení spravované aplikace, která během jejího nasazení vyžaduje přístup k existujícím prostředkům. Když je spravovaná aplikace zřízená zákazníkem, je možné přidat **uživatelsky přiřazené identity** k zajištění dalších autorizací nasazení **mainTemplate** .
 
-### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>Vytváření CreateUIDefinition s propojeného prostředku
+### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>Vytváření CreateUIDefinition s propojeným prostředkem
 
-Při propojování nasazení spravovaných aplikací ke stávajícím prostředkům, i stávající prostředky Azure a **uživatelsky přiřazené identity** k příslušné roli musí být zadaná přiřazení na tento prostředek.
+Při propojování nasazení spravované aplikace s existujícími prostředky je nutné zadat jak existující prostředek Azure, tak **uživatelem přiřazenou identitu** s příslušným přiřazením role daného prostředku.
 
- Ukázka CreateUIDefinition, která vyžaduje dva vstupy: ID prostředku rozhraní sítě a id prostředku identity přiřazené uživateli.
+ Vzorový CreateUIDefinition, který vyžaduje dva vstupy: ID prostředku síťového rozhraní a ID prostředku identity přiřazené uživatelem.
 
 ```json
 {
@@ -269,15 +269,15 @@ Při propojování nasazení spravovaných aplikací ke stávajícím prostředk
 }
 ```
 
-Tato CreateUIDefinition.json generuje vytvořit uživatelské prostředí, která má dvě pole. První pole umožňuje uživateli zadat ID prostředku Azure pro prostředek propojena k nasazení spravované aplikace. Druhá je příjemce k zadání **uživatelsky přiřazené identity** ID prostředku Azure, která má přístup k propojenému prostředku Azure. Vygenerovaný prostředí vypadat nějak takto:
+Tento CreateUIDefinition. JSON generuje prostředí pro vytváření uživatelů, které má dvě pole. První pole umožňuje uživateli zadat ID prostředku Azure pro prostředek propojený s nasazením spravované aplikace. Druhým je, aby příjemce zadal ID prostředku Azure **přiřazené identitě uživatele** , který má přístup k propojenému prostředku Azure. Vygenerované prostředí by vypadalo takto:
 
-![Ukázkový CreateUIDefinition se dva vstupy: síťové rozhraní ID prostředku a ID prostředku identity přiřazené uživateli](./media/publish-managed-identity/network-interface-cuid.png)
+![Ukázka CreateUIDefinition se dvěma vstupy: ID prostředku síťového rozhraní a ID prostředku identity přiřazené uživatelem](./media/publish-managed-identity/network-interface-cuid.png)
 
-### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Vytváření mainTemplate s propojeného prostředku
+### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Vytváření mainTemplate s propojeným prostředkem
 
-Kromě aktualizací CreateUIDefinition hlavní šablony musí také aktualizovat tak, aby přijímal předané ID propojeného prostředku. Hlavní šablony je možné aktualizovat tak, aby přijímal nový výstup tak, že přidáte nový parametr. Vzhledem k tomu, `managedIdentity` výstup přepíše hodnotu na vygenerované šablony spravované aplikace, který není předaný do hlavní šablony a by neměla být obsažená v sekci parametrů.
+Kromě aktualizace CreateUIDefinition je potřeba aktualizovat také hlavní šablonu, aby přijímala předané ID odkazovaného prostředku. Hlavní šablonu lze aktualizovat tak, aby přijímala nový výstup přidáním nového parametru. Vzhledem k tomu, že výstup `managedIdentity` Přepisuje hodnotu u generované šablony spravované aplikace, není předána do hlavní šablony a neměl by být zahrnut do oddílu Parameters.
 
-Ukázka hlavní šablony, které nastaví na existující síťové rozhraní, poskytuje CreateUIDefinition profilu sítě.
+Ukázková hlavní šablona, která nastavuje profil sítě na stávající síťové rozhraní, které poskytuje CreateUIDefinition.
 
 ```json
 {
@@ -309,17 +309,17 @@ Ukázka hlavní šablony, které nastaví na existující síťové rozhraní, p
 }
 ```
 
-### <a name="consuming-the-managed-application-with-a-linked-resource"></a>Použití spravovaných aplikací s propojeného prostředku
+### <a name="consuming-the-managed-application-with-a-linked-resource"></a>Využívání spravované aplikace s propojeným prostředkem
 
-Po vytvoření balíčku spravované aplikace mohou být spotřebovány spravovaných aplikací na webu Azure portal. Předtím, než může být upotřebena, existuje několik předpokladů kroků.
+Po vytvoření balíčku spravované aplikace je možné spravovanou aplikaci spotřebovat prostřednictvím Azure Portal. Předtím, než bude možné ji spotřebovat, je nutné provést několik požadovaných kroků.
 
-- Musí být vytvořena instance vyžaduje propojeného prostředku Azure.
-- **Uživatelsky přiřazené identity** musí být [vytvořen a zadané přiřazení rolí](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) k propojenému prostředku.
-- Stávající propojená ID prostředku a **uživatelsky přiřazené identity** ID jsou k dispozici na CreateUIDefinition.
+- Musí být vytvořená instance požadovaného propojeného prostředku Azure.
+- Je nutné vytvořit **identitu přiřazenou uživatelem** [a přiřadit přiřazení rolí](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) k propojenému prostředku.
+- Existující ID propojeného prostředku a ID **identity přiřazené uživatelem** jsou k dispozici pro CreateUIDefinition.
 
-## <a name="accessing-the-managed-identity-token"></a>Přístup k tokenu spravované Identity
+## <a name="accessing-the-managed-identity-token"></a>Přístup ke spravovanému tokenu identity
 
-Token spravované aplikace je teď přístupný prostřednictvím `listTokens` rozhraní api z klienta vydavatele. Příklad žádosti může vypadat:
+Token spravované aplikace je teď k dispozici prostřednictvím rozhraní API `listTokens` z tenanta vydavatele. Příklad požadavku může vypadat takto:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -332,15 +332,15 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
-Parametrů těla zprávy požadavku:
+Parametry textu žádosti:
 
 Parametr | Požaduje se | Popis
 ---|---|---
-authorizationAudience | *no* | Identifikátor URI aplikace ID cílového prostředku. Je také `aud` deklarace identity (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/"
-userAssignedIdentities | *no* | Seznam spravovaných uživatelsky přiřazené identity načíst token. Pokud není zadán, `listTokens` vrátí token pro systém přiřadil spravovaná identita.
+authorizationAudience | *Ne* | Identifikátor URI ID aplikace cílového prostředku Zároveň se jedná o deklaraci identity @no__t 0 (cílová skupina) vydaného tokenu. Výchozí hodnota je "https://management.azure.com/".
+userAssignedIdentities | *Ne* | Seznam uživatelsky přiřazených spravovaných identit, pro které se má načíst token Pokud není zadán, bude `listTokens` vracet token pro spravovanou identitu přiřazenou systémem.
 
 
-Ukázkové odpovědi může vypadat:
+Ukázková odpověď může vypadat takto:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -361,19 +361,19 @@ Content-Type: application/json
 }
 ```
 
-Odpověď bude obsahovat pole v rámci tokenů `value` vlastnost:
+Odpověď bude obsahovat pole tokenů pod vlastností `value`:
 
 Parametr | Popis
 ---|---
-access_token | Požadovaný přístupový token.
-expires_in | Počet sekund, po které bude přístupový token platný.
-expires_on | Interval timespan, když vyprší platnost přístupového tokenu. To je reprezentována jako počet sekund od epochy.
-not_before | Interval timespan, když přístupový token se projeví. To je reprezentována jako počet sekund od epochy.
-authorizationAudience | `aud` (Cílová skupina) přístupový token byl požadavek. Jde o stejný, jako je zadán v `listTokens` požadavku.
-resourceId | ID prostředku Azure pro vydaný token. Toto je Identifikátor spravované aplikace nebo ID uživatelsky přiřazené identity.
+access_token | Požadovaný přístupový token
+expires_in | Počet sekund, po který bude přístupový token platný
+expires_on | Časový interval pro přístup k vypršení platnosti přístupového tokenu Tato hodnota je vyjádřena jako počet sekund od epocha.
+not_before | Časové rozpětí, kdy se přístupový token projeví. Tato hodnota je vyjádřena jako počet sekund od epocha.
+authorizationAudience | @No__t-0 (cílová skupina) přístupový token byl požadován pro. To se shoduje s tím, co bylo zadáno v žádosti `listTokens`.
+resourceId | ID prostředku Azure pro vydaný token. Toto je buď ID spravované aplikace, nebo ID identity přiřazené uživatelem.
 token_type | Typ tokenu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ke konfiguraci spravovaných aplikací s využitím vlastního zprostředkovatele](./custom-providers-overview.md)
+> [Jak nakonfigurovat spravovanou aplikaci pomocí vlastního zprostředkovatele](./custom-providers-overview.md)

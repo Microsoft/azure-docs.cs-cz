@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 0dcca2175d6ccc35a51bccb1e47f75d25cb8b11f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299184"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327144"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -94,9 +94,9 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
   
 
 
-## <a name="cassandra-query-language-limits"></a>Omezení jazyka Cassandra Query Language
+## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra
 
-Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně žádný ekvivalent entity nebo řádku nemá žádná omezení počtu sloupců, ale celková velikost entity by neměla překročit 2 MB.
+Rozhraní API Cassandra pro Azure Cosmos DB nemá žádná omezení velikosti dat uložených v tabulce. Když se dodrží limity klíče oddílu, je možné uložit stovky terabajtů nebo petabajtů dat. Podobně každý ekvivalent entity nebo řádku nemá žádná omezení počtu sloupců, ale celková velikost entity by neměla překročit 2 MB. Data na klíč oddílu nesmí být větší než 10 GB jako u všech ostatních rozhraní API.
 
 ## <a name="tools"></a>Nástroje 
 
@@ -130,7 +130,7 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující databázové příkazy.
 
-* VYTVOŘIT prostor (nastavení replikace pro tento příkaz se ignoruje, systém použije základní [model replikace Azure Cosmos DB](global-dist-under-the-hood.md). Pokud potřebujete data mezi oblastmi, můžete ji povolit na úrovni účtu pomocí PowerShellu, rozhraní příkazového řádku nebo portálu. Další informace najdete v článku [jak přidat nebo odebrat oblasti pro svůj účet](how-to-manage-database-account.md#addremove-regions-from-your-database-account) .
+* VYTVOŘIT prostor (nastavení replikace pro tento příkaz se ignoruje)
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
@@ -157,21 +157,32 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Mapování konzistence 
 
-Rozhraní API Cassandra pro Azure Cosmos DB poskytuje volbu konzistence pro operace čtení.  Mapování konzistence je popsáno [zde [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
+Rozhraní API Cassandra pro Azure Cosmos DB poskytuje volbu konzistence pro operace čtení.  Mapování konzistence je popsáno [zde](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Správa oprávnění a rolí
 
-Azure Cosmos DB podporuje řízení přístupu na základě role (RBAC) pro zřizování, otáčení klíčů, zobrazení metrik a hesla pro čtení a zápis a klíče nebo klíče, které lze získat prostřednictvím [Azure Portal](https://portal.azure.com). Azure Cosmos DB nepodporuje role pro aktivity CRUD. 
+Azure Cosmos DB podporuje řízení přístupu na základě role (RBAC) pro zřizování, otáčení klíčů, zobrazení metrik a hesla pro čtení a zápis a klíče nebo klíče, které lze získat prostřednictvím [Azure Portal](https://portal.azure.com). Azure Cosmos DB nepodporuje role pro aktivity CRUD.
 
 ## <a name="keyspace-and-table-options"></a>Možnosti prostoru klíčů a tabulek
 
-V současné době se v současnosti ignorují možnosti název oblasti, třída, replication_factor, datacentrum v příkazu vytvořit prostor pro místo. Pokud přidáte požadované oblasti, systém používá [globální distribuci](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) Azure Cosmos DB základní distribuce. Pokud potřebujete data mezi oblastmi, můžete ji povolit na úrovni účtu pomocí PowerShellu, CLI nebo portálu. Další informace najdete v tomto dokumentu: https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#addremove-regions-from-your-database-account. Durable_writes nejde zakázat – protože Cosmos DB zajišťuje, že každý zápis je trvalý. V každé oblasti Cosmos DB replikuje data napříč REPLICASET tvořenými 4 replikami a tato [Konfigurace](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) REPLICASET se nedá změnit. Všechny možnosti vytváření tabulek se ignorují, s výjimkou gc_grace_seconds, které by měly mít nulovou hodnotu.
-Místo na úrovni a v tabulce je potřeba mít možnost cosmosdb_provisioned_throughput s minimální hodnotou 400. Propustnost místa na místě umožňuje sdílení propustnosti napříč několika tabulkami a hodí se pro scénáře, kdy všechny tabulky nevyužívají propustnost. ALTER TABLE umožňuje změnit zřízenou propustnost napříč oblastmi. VYTVOŘIT sampleks PROSTORů s REPLIKACÍ = {' class ': ' SimpleStrategy '} a cosmosdb_provisioned_throughput = 2000;  
-CREATE TABLE sampleks. T1 (user_id int PRIMARY KEY, LastName text) s cosmosdb_provisioned_throughput = 2000; ALTER TABLE gks1. T1 s cosmosdb_provisioned_throughput = 10000;
+Možnosti pro název oblasti, třídy, replication_factor a datacentrum v příkazu pro vytvoření prostoru klíčů se aktuálně ignorují. Systém používá k přidání oblastí základní metodu replikace [globální distribuce](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) Azure Cosmos DB. Pokud potřebujete data mezi oblastmi, můžete ji povolit na úrovni účtu pomocí PowerShellu, rozhraní příkazového řádku nebo portálu. Další informace najdete v článku [Přidání oblastí](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Durable_writes nejde zakázat, protože Azure Cosmos DB zajišťuje, že každý zápis je trvalý. V každé oblasti Azure Cosmos DB replikuje data napříč sadou replik, která se skládá ze 4 replik a tuto [konfiguraci](global-dist-under-the-hood.md) sady replik nelze upravit.
+ 
+Všechny možnosti jsou při vytváření tabulky ignorovány, s výjimkou gc_grace_seconds, které by měly být nastaveny na hodnotu nula.
+V prostoru a tabulce se nachází další možnost s názvem "cosmosdb_provisioned_throughput" s minimální hodnotou 400 RU/s. Propustnost místa na disku umožňuje sdílení propustnosti napříč několika tabulkami a je užitečná pro scénáře, kdy všechny tabulky nevyužívají zřízenou propustnost. Příkaz ALTER TABLE umožňuje změnit zřízenou propustnost napříč oblastmi. 
+
+```
+CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
+
+CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=2000; 
+
+ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
+
+```
+
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Použití zásad připojení Cassandra opakování
 
-Azure Cosmos DB je systém řídí prostředky. To znamená, že můžete provést určitý počet operací v určité druhé omezené zřízené propustností na základě jednotek žádostí spotřebovaných operacemi. Pokud aplikace překročí tento limit, bude vyvolána výjimka s omezením míry požadavků druhé žádosti. Cosmos DB rozhraní API Cassandra překládá tyto výjimky na přetížené chyby v nativním protokolu Cassandra. Chcete-li zajistit, aby aplikace mohla zachytit a provést opakování pro omezení četnosti, poskytne se podpora [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) . Pokud k přístupu rozhraní API Cassandra Cosmos DB používáte jiné sady SDK, vytvořte prosím zásady připojení a pokuste se o tyto výjimky znovu. 
+Azure Cosmos DB je systém spravovaný systémem prostředků. To znamená, že v dané druhé operaci můžete provést určitý počet operací na základě jednotek žádostí spotřebovaných operacemi. Pokud aplikace během dané sekundy toto omezení překročí, požadavky jsou omezené na frekvenci a vyvolají se výjimky. Rozhraní API Cassandra v Azure Cosmos DB překládá tyto výjimky na přetížené chyby v nativním protokolu Cassandra. Chcete-li zajistit, aby vaše aplikace mohla zachytit a opakovat požadavky v případě omezení přenosové rychlosti, jsou k dispozici rozšíření [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) . Pokud k přístupu k rozhraní API Cassandra v Azure Cosmos DB používáte jiné sady SDK, vytvořte zásadu připojení a zkuste to znovu s těmito výjimkami.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření, publikování a odpověď v QnA Maker'
+title: 'Kurz: vytvoření, publikování a odpověď v QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Vytvoření nové znalostní báze s dotazy a odpověďmi z veřejného webového nejčastějších dotazů. Uložte, výuku a publikujte znalostní bázi. Po publikování znalostní báze odešlete otázku a dostanete odpověď pomocí příkazu složeného. Pak vytvořte robot a vyzkoušejte si robota se stejnou otázkou.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 6cc509b9f9a9087fbe832dbd35b3dfd8d60a6577
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308066"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327964"
 ---
-# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Na portálu QnA Maker vytvořte znalostní bázi.
+# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Kurz: na portálu QnA Maker vytvořte znalostní bázi.
 
 Vytvoření nové znalostní báze s dotazy a odpověďmi z veřejného webového nejčastějších dotazů. Uložte, výuku a publikujte znalostní bázi. Po publikování znalostní báze odešlete otázku a dostanete odpověď pomocí příkazu složeného. Pak vytvořte robot a vyzkoušejte si robota se stejnou otázkou. 
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Programová verze tohoto kurzu je k dispozici s kompletním řešením z [úložiště GitHub **Azure-Samples/vnímání-Services-qnamakerem-CSharp** ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). 
 
@@ -59,7 +59,7 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
     ![Snímek obrazovky QnA Makerového portálu](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
-1. Zadejte název `My Tutorial kb`znalostní báze.
+1. Zadejte název znalostní báze `My Tutorial kb`.
 
     ![Snímek obrazovky QnA Makerového portálu](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
@@ -67,8 +67,8 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
     |Název nastavení|Hodnota nastavení|Účel|
     |--|--|--|
-    |zprostředkovatele identity|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Obsah nejčastějších dotazů na této adrese URL je formátovaný jako otázka, za níž následuje odpověď. Služba QnA Maker může tento formát interpretovat a extrahovat otázky a přidružené odpovědi.|
-    |File |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
+    |Adresa URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Obsah nejčastějších dotazů na této adrese URL je formátovaný jako otázka, za níž následuje odpověď. Služba QnA Maker může tento formát interpretovat a extrahovat otázky a přidružené odpovědi.|
+    |Soubor |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
     |Chit-chat personality (Charakter konverzace)|Vhodná|To přináší uživatelsky přívětivé a příležitostné [preference](../Concepts/best-practices.md#chit-chat) běžných otázek a odpovědí. Tyto otázky a odpovědi můžete později upravit. |
 
     ![Snímek obrazovky QnA Makerového portálu](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -109,7 +109,7 @@ Nezavírejte tuto stránku **publikování** . K vytvoření robota ho budete po
 
     ![Snímek obrazovky s kartou kudrlinkou](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Zkopírujte text na kartě **kudrlinkou** a spusťte ho v terminálu s povoleným oblým nebo na příkazovém řádku. Hodnota hlavičky autorizace obsahuje text `Endpoint`s koncovým mezerou a klíčovým znakem.
+1. Zkopírujte text na kartě **kudrlinkou** a spusťte ho v terminálu s povoleným oblým nebo na příkazovém řádku. Hodnota autorizační hlavičky zahrnuje text `Endpoint` s koncovým mezerou a klíčovým znakem.
 
 1. Nahraďte `<Your question>` za `How large can my KB be?` (Jak velká může být moje znalostní báze?). Tato otázka se podobá otázce `How large a knowledge base can I create?` (Jak velkou znalostní bázi můžu vytvořit?), ale není úplně stejná. Služba QnA Maker s využitím zpracování přirozeného jazyka určí, že se jedná o stejné otázky.     
 
@@ -139,7 +139,7 @@ Nezavírejte tuto stránku **publikování** . K vytvoření robota ho budete po
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Použití funkce kudrlinkou k dotazování na aplikaci CHITEST – chat – odpověď
 
-1. V terminálu s povoleným kudrlinkou nahraďte `How large can my KB be?` pomocí příkazu robot-končícího na uživateli, `Thank you`například.   
+1. V terminálu s povoleným kudrlinkou nahraďte `How large can my KB be?` pomocí příkazu robot-končícího příkazem od uživatele, například `Thank you`.   
 
 1. Spusťte příkaz kudrlinkou a přijímají odpověď JSON, včetně skóre a odpovědi. 
 
@@ -181,7 +181,7 @@ Nezavírejte tuto stránku **publikování** . K vytvoření robota ho budete po
 
 Všechny otázky, které QnA Maker, neplatí pro příjem výchozí odpovědi. Tuto odpověď můžete nakonfigurovat na webu Azure Portal. 
 
-1. V terminálu s povoleným kudrlinkou nahraďte `Thank you`. `x` 
+1. V terminálu s povoleným kudrlinkou nahraďte `Thank you` pomocí `x`. 
 
 1. Spusťte příkaz kudrlinkou a přijímají odpověď JSON, včetně skóre a odpovědi. 
 
@@ -201,7 +201,7 @@ Všechny otázky, které QnA Maker, neplatí pro příjem výchozí odpovědi. T
     }
     ```
     
-    QnA maker vrátilo skóre `0`, což znamená bez obav. Vrátila se také výchozí odpověď. 
+    QnA Maker vrátilo skóre `0`, což znamená, že se nejedná o jistotu. Vrátila se také výchozí odpověď. 
 
 ## <a name="create-a-knowledge-base-bot"></a>Vytvoření robota znalostní báze
 
@@ -209,7 +209,7 @@ Další informace najdete v tématu [Vytvoření robota v konverzaci s touto zna
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až se dokončíte s robotem znalostní báze, odeberte skupinu `my-tutorial-rg`prostředků, abyste odebrali všechny prostředky Azure vytvořené v procesu robota.
+Až se dokončíte s robotem znalostní báze, odeberte skupinu prostředků, `my-tutorial-rg`, abyste odebrali všechny prostředky Azure vytvořené v procesu robota.
 
 Až se znalostní báze dokončí, vyberte na portálu QnA Maker možnost **Moje znalostní**báze. Pak vyberte znalostní bázi, **můj kurz KB**a na pravé straně řádku vyberte ikonu Odstranit.  
 

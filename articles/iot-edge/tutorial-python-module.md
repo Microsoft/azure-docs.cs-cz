@@ -6,18 +6,18 @@ author: shizn
 manager: philmea
 ms.reviewer: kgremban
 ms.author: xshi
-ms.date: 03/24/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 99df85800c48585098a9df5bcc35d6b9ce9a8903
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001103"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331642"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Python IoT Edge pro zařízení se systémem Linux
 
 Pomocí Visual Studio Code můžete vyvíjet kód v jazyce C a nasazovat ho do zařízení se systémem Linux se spuštěným Azure IoT Edge. 
 
@@ -48,9 +48,9 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly Pythonu v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Pythonu na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [Vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky: 
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky: 
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
@@ -78,17 +78,17 @@ Použijte VS Code k vytvoření šablony řešení Python, kterou můžete vytvo
 
 1. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
 
-1. V paletě příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů a přihlaste se k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
+1. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
 
-1. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení**IoT Edge. Postupujte podle zobrazených výzev a poskytněte následující informace pro vytvoření řešení:
+1. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Postupujte podle zobrazených výzev a poskytněte následující informace pro vytvoření řešení:
 
    | Pole | Hodnota |
    | ----- | ----- |
    | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
-   | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
+   | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **PythonModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Finální úložiště imagí vypadá jako \<název\>registru. azurecr.IO/pythonmodule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<registry name\>.azurecr.io/pythonmodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-python-module/repository.png)
 
@@ -105,7 +105,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro kontejner úlož
 
 V současné době Visual Studio Code může vyvíjet moduly C pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64. 
 
-1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení**Edge nebo na bočním panelu v dolní části okna vyberte ikonu zástupce. 
+1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna. 
 
 2. V paletě příkazů vyberte v seznamu možností cílovou architekturu. Pro tento kurz používáme virtuální počítač s Ubuntu jako zařízení IoT Edge, takže se zachová výchozí hodnota **amd64**. 
 
@@ -124,63 +124,67 @@ Každá šablona obsahuje vzorový kód, který přijímá Simulovaná data senz
 3. Do globálních čítačů přidejte proměnné **TEMPERATURE_THRESHOLD** a **TWIN_CALLBACKS**. Prahová teplota definuje hodnotu, kterou musí naměřená teplota počítače překročit, aby se data odeslala do IoT Hubu.
 
     ```python
+    # global counters
     TEMPERATURE_THRESHOLD = 25
     TWIN_CALLBACKS = 0
+    RECEIVED_MESSAGES = 0
     ```
 
-4. Funkci **receive_message_callback** nahraďte následujícím kódem:
+4. Nahraďte funkci **input1_listener** následujícím kódem:
 
     ```python
-    # receive_message_callback is invoked when an incoming message arrives on the specified 
-    # input queue (in the case of this sample, "input1").  Because this is a filter module, 
-    # we forward this message to the "output1" queue.
-    def receive_message_callback(message, hubManager):
-        global RECEIVE_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        data = json.loads(message_text)
-        if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
-            map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
-        hubManager.forward_event_to_output("output1", message, 0)
-        return IoTHubMessageDispositionResult.ACCEPTED
+        # Define behavior for receiving an input message on input1
+        # Because this is a filter module, we forward this message to the "output1" queue.
+        async def input1_listener(module_client):
+            global RECEIVED_MESSAGES
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    input_message = await module_client.receive_message_on_input("input1")  # blocking call
+                    message = input_message.data
+                    size = len(message)
+                    message_text = message.decode('utf-8')
+                    print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+                    custom_properties = input_message.custom_properties
+                    print ( "    Properties: %s" % custom_properties )
+                    RECEIVED_MESSAGES += 1
+                    print ( "    Total messages received: %d" % RECEIVED_MESSAGES )
+                    data = json.loads(message_text)
+                    if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
+                        custom_properties["MessageType"] = "Alert"
+                        print ( "Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+                        await module_client.send_message_to_output(input_message, "output1")
+                except Exception as ex:
+                    print ( "Unexpected error in input1_listener: %s" % ex )
+        
+        # twin_patch_listener is invoked when the module twin's desired properties are updated.
+        async def twin_patch_listener(module_client):
+            global TWIN_CALLBACKS
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    data = await module_client.receive_twin_desired_properties_patch()  # blocking call
+                    print( "The data in the desired properties patch was: %s" % data)
+                    if "TemperatureThreshold" in data:
+                        TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
+                    TWIN_CALLBACKS += 1
+                    print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+                except Exception as ex:
+                    print ( "Unexpected error in twin_patch_listener: %s" % ex )
     ```
 
-5. Přidejte novou funkci nazvanou **module_twin_callback**. Tato funkce se bude volat při aktualizaci požadovaných vlastností.
+5. Aktualizujte **naslouchací procesy** tak, aby naslouchaly i aktualizace.
 
     ```python
-    # module_twin_callback is invoked when the module twin's desired properties are updated.
-    def module_twin_callback(update_state, payload, user_context):
-        global TWIN_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
-        data = json.loads(payload)
-        if "desired" in data and "TemperatureThreshold" in data["desired"]:
-            TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
-        if "TemperatureThreshold" in data:
-            TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
-        TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        # Schedule task for C2D Listener
+        listeners = asyncio.gather(input1_listener(module_client), twin_patch_listener(module_client))
+
+        print ( "The sample is now waiting for messages. ")
     ```
 
-6. Do třídy **HubManager** přidejte nový řádek do metody **__init__** , který inicializuje právě přidanou funkci **module_twin_callback**:
+6. Uložte soubor main.py.
 
-    ```python
-    # Sets the callback when a module twin's desired properties are updated.
-    self.client.set_module_twin_callback(module_twin_callback, self)
-    ```
-
-7. Uložte soubor main.py.
-
-8. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. 
+7. V průzkumníku VS Code otevřete soubor **deployment.template.json** v pracovním prostoru řešení IoT Edge. 
 
 9. Přidejte do manifestu nasazení dvojče modulu **PythonModule**. Vložte následující obsah JSON do dolní části oddílu **moduleContent** za dvojče modulu **$edgeHub**: 
 
@@ -192,13 +196,13 @@ Každá šablona obsahuje vzorový kód, který přijímá Simulovaná data senz
        }
    ```
 
-   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-python-module/module-twin.png)
+   ![Přidat nevlákenný modul do šablony nasazení](./media/tutorial-python-module/module-twin.png)
 
 10. Uložte soubor Deployment. template. JSON.
 
 ## <a name="build-and-push-your-module"></a>Sestavení a vložení modulu
 
-V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do PythonModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do PythonModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
 1. Výběrem **View** (Zobrazit) > **Terminal** (Terminál) otevřete integrovaný terminál VS Code.
 
@@ -208,11 +212,11 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`nástroje. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu [přihlašovací](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) Reference k Docker.
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge).
 
-   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a `docker push` nahraje úložiště imagí do registru kontejneru.
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` pro sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push`, aby se úložiště imagí nahrajte do registru kontejneru.
 
 
 ## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
@@ -237,7 +241,7 @@ Stav zařízení IoT Edge můžete zobrazit v části **Zařízení Azure IoT Hu
 
 1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte možnost **Spustit sledování integrovaného koncového bodu události**.
 
-2. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože IoT Edge zařízení musí přijmout nové nasazení a spustit všechny moduly. Změny, které jsme provedli v kódu PythonModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také výstrahu typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty. 
+2. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože IoT Edge zařízení musí přijmout nové nasazení a spustit všechny moduly. Změny, které jsme provedli v kódu PythonModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také **výstrahu** typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty. 
 
 ## <a name="edit-the-module-twin"></a>Upravit nevlákenný modul
 

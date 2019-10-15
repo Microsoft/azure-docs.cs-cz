@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8bee226c85e6433500fcbef9b084cc547ef2b58f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301669"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332817"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows
 
@@ -27,9 +27,9 @@ V následujících tabulkách jsou porovnávána řešení úložiště Azure St
 |Funkce|Azure Files|Azure NetApp Files|Prostory úložiště s přímým přístupem|
 |--------|-----------|------------------|---------------------|
 |Služba platformy|Ano, řešení Azure v nativním režimu|Ano, řešení Azure v nativním režimu|Ne, samostatně spravovaná|
-|Dostupnost podle oblastí|Prstenec 0, široká dostupnost|Prstenec, který je aktuálně dostupný [alespoň v devíti oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Azure COMPUTE – podporované oblasti DC, disky Premium jsou široce dostupné a doporučují se Prostory úložiště s přímým přístupem|
+|Dostupnost podle oblastí|Všechny oblasti|[Vybrat oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Všechny oblasti|
 |Redundance|Místně redundantní/zóna – redundantní/geograficky redundantní|Místně redundantní|Místně redundantní/zóna – redundantní/geograficky redundantní|
-|Úrovně a výkon|Úroveň Standard<br>Premium<br>Až do maximálního počtu 100 tisíc IOPS na sdílenou složku s 5 GB/s na sdílenou jednotku v rozmezí 3 MS|Úroveň Standard<br>Premium<br>Extrémně<br>Až 320k (16 KB) IOPS s 4,5 GB/s na jeden svazek při asi 1 MS latence|HDD úrovně Standard: omezení až 500 vstupně-výstupních operací za sekundu na disk<br>SSD úrovně Standard: omezení až 4k IOPS na disk<br>SSD úrovně Premium: omezení až 20 tisíc IOPS na disk|
+|Úrovně a výkon|Úroveň Standard<br>Premium<br>Až do maximálního počtu 100 tisíc IOPS na sdílenou složku s 5 GB/s na sdílenou jednotku v rozmezí 3 MS|Úroveň Standard<br>Premium<br>Extrémně<br>Až 320k (16 KB) IOPS s 4,5 GB/s na jeden svazek při asi 1 MS latence|HDD úrovně Standard: omezení až 500 vstupně-výstupních operací za sekundu na disk<br>SSD úrovně Standard: omezení až 4k IOPS na disk<br>SSD úrovně Premium: omezení až 20 tisíc IOPS na disk<br>Pro Prostory úložiště s přímým přístupem doporučujeme použít prémiové disky.|
 |Kapacita|100 TiB na sdílenou složku|100 TiB na svazek, až 12,5 PiB na předplatné|Maximální 32 TiB na disk|
 |Požadovaná infrastruktura|Minimální velikost sdílené složky 1 GiB|Minimální kapacita fondu 4 TiB, minimální velikost svazku 100 GiB|Dva virtuální počítače v Azure IaaS (+ disk s kopií cloudu) nebo minimálně tři virtuální počítače bez a s náklady na disky|
 |Protokoly|SMB 2.1/3. a REST|NFSv3, NFSv 4.1 (Preview), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -39,7 +39,6 @@ V následujících tabulkách jsou porovnávána řešení úložiště Azure St
 |Funkce|Azure Files|Azure NetApp Files|Prostory úložiště s přímým přístupem|
 |--------|-----------|------------------|---------------------|
 |Přístup|Cloud, místní a hybridní (Azure File Sync)|Cloud, místní (přes ExpressRoute)|Cloud, místní prostředí|
-|Integrace Azure Active Directory|Azure Active Directory a Azure Active Directory Domain Services|Azure Active Directory Domain Services a nativní služba Active Directory|Nativní služba Active Directory nebo Azure Active Directory Domain Services pouze podpora|
 |Backup|Integrace snímků Azure Backup|Snímky Azure NetApp Files|Integrace snímků Azure Backup|
 |Zabezpečení a dodržování předpisů|[Všechny podporované certifikáty Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|Dokončeno ISO|[Všechny podporované certifikáty Azure](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Integrace Azure Active Directory|Azure Active Directory a Azure Active Directory Domain Services|[Azure Active Directory Domain Services a nativní služba Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nativní služba Active Directory nebo Azure Active Directory Domain Services pouze podpora|

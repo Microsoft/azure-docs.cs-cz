@@ -1,39 +1,41 @@
 ---
-title: Použití jazyka Java a Maven k publikování funkce – Azure Functions
-description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
-services: functions
-documentationcenter: na
+title: Publikování funkce do Azure pomocí Java a Maven
+description: Vytvoření a publikování funkce aktivované protokolem HTTP do Azure pomocí jazyků Java a Maven
 author: rloutlaw
-manager: justhe
-keywords: azure functions, functions, event processing, compute, serverless architecture
+manager: gwallace
 ms.service: azure-functions
 ms.topic: quickstart
-ms.devlang: java
 ms.date: 08/10/2018
-ms.author: routlaw
-ms.reviewer: glenga
+ms.author: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5c51e445aaa27f3f83627ccf0da8fb80e01f156c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299398"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329531"
 ---
-# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Rychlý start: Použití jazyka Java k vytvoření a publikování funkce pro Azure Functions
+# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Rychlý Start: použití Java a Maven k vytvoření a publikování funkce v Azure
 
-Tento článek popisuje, jak vytvořit a publikovat funkci Java ve službě Azure Functions pomocí nástroje příkazového řádku Maven. Jakmile budete hotovi, váš kód funkce se spustí v [plánu spotřeby](functions-scale.md#consumption-plan) v Azure a může se aktivovat pomocí požadavku HTTP.
+V tomto článku se dozvíte, jak sestavit a publikovat funkci jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Maven. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+<!--
+> [!NOTE] 
+> You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
+-->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné vyvíjet funkce pomocí jazyka Java, je nutné mít nainstalované následující:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), verze 8
 - [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
+- Předplatné Azure.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 
 > [!IMPORTANT]
 > Pro dokončení tohoto rychlého startu musí být proměnná prostředí JAVA_HOME nastavená na umístění instalace sady JDK.
@@ -51,7 +53,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Pokud máte problémy se spuštěním příkazu, Prohlédněte si, jaká `maven-archetype-plugin` verze se používá. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři `.pom` bez souboru, může se pokusit použít modul plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` , pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit `maven-archetype-plugin` adresář a znovu spustit příkaz.
+> Pokud máte problémy se spuštěním příkazu, podívejte se na to, co se používá `maven-archetype-plugin` verze. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři bez `.pom`, může se pokusit použít modul plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`, pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit adresář `maven-archetype-plugin` a znovu spustit příkaz.
 
 ### <a name="windows"></a>Windows
 
@@ -67,170 +69,124 @@ mvn archetype:generate ^
     "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
-Maven vás vyzve k zadání hodnot požadovaných k dokončení generování projektu. Informace o hodnotách _groupId_, _artifactId_ a _version_ najdete v referenčních informacích k [zásadám vytváření názvů pro Maven](https://maven.apache.org/guides/mini/guide-naming-conventions.html). Hodnota _appName_ musí být v rámci Azure jedinečná, takže Maven ve výchozím nastavení vygeneruje název aplikace na základě dříve zadané hodnoty _artifactId_. Hodnota _packageName_ určuje balíček Java pro vygenerovaný kód funkce.
+Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení. Po zobrazení výzvy zadejte následující hodnoty:
 
-Níže uvedené identifikátory `com.fabrikam.functions` a `fabrikam-functions` slouží jako příklad a k zpřehlednění pozdějších kroků v tomto rychlém startu. V tomto kroku můžete do Mavenu zadat vlastní hodnoty.
+| Hodnota | Popis |
+| ----- | ----------- |
+| **groupId** | Hodnota, která jednoznačně identifikuje váš projekt napříč všemi projekty, podle [pravidel pro pojmenovávání balíčků](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) pro Java. Příklady v tomto rychlém startu používají `com.fabrikam.functions`. |
+| **artifactId** | Hodnota, která představuje název jar bez čísla verze. Příklady v tomto rychlém startu používají `fabrikam-functions`. |
+| **znění** | Vyberte výchozí hodnotu `1.0-SNAPSHOT`. |
+| **balíček** | Hodnota, která je balíčkem Java pro vygenerovaný kód funkce. Použijte výchozí hodnotu. Příklady v tomto rychlém startu používají `com.fabrikam.functions`. |
+| **appName** | Globálně jedinečný název, který identifikuje novou aplikaci Function App v Azure. Použijte výchozí, což je _artifactId_ připojené k náhodnému číslu. Poznamenejte si tuto hodnotu, budete ji potřebovat později. |
+| **appRegion** | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. Výchozí formát je `westus`. Spuštěním tohoto příkazu rozhraní příkazového [Azure CLI] zobrazíte seznam všech oblastí:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **resourceGroup** | Název nové [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) , ve které se má aplikace Function App vytvořit Použijte `myResourceGroup`, které používají příklady v tomto rychlém startu. Skupina prostředků musí být pro vaše předplatné Azure jedinečná.|
 
-```Output
-Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
-Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
-Define value for property 'version' 1.0-SNAPSHOT : 
-Define value for property 'package': com.fabrikam.functions
-Define value for property 'appName' fabrikam-functions-20170927220323382:
-Define value for property 'appRegion' westus: :
-Define value for property 'resourceGroup' java-functions-group: :
-Confirm properties configuration: Y
-```
+Zadejte `Y` nebo stiskněte klávesu ENTER a potvrďte ji.
 
-Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Připravený ke spuštění vygenerovaného kódu v projektu je funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo žádosti. Nahraďte *Src/Main/Java/com/Fabrikam/Functions/Function. Java* následujícím kódem: 
+Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který v tomto příkladu je `fabrikam-functions`. 
 
-```java
-package com.fabrikam.functions;
-
-import java.util.*;
-import com.microsoft.azure.functions.annotation.*;
-import com.microsoft.azure.functions.*;
-
-public class Function {
-    /**
-     * This function listens at endpoint "/api/HttpTrigger-Java". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTrigger-Java
-     * 2. curl {your host}/api/HttpTrigger-Java?name=HTTP%20Query
-     */
-    @FunctionName("HttpTrigger-Java")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST }, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-        context.getLogger().info("Java HTTP trigger processed a request.");
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("name");
-        String name = request.getBody().orElse(query);
-
-        if (name == null) {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        }
-    }
-}
-
-```
-
-## <a name="enable-extension-bundles"></a>Povolit sady rozšíření
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Otevřete nový soubor Function. Java z cesty *Src/Main/Java* v textovém editoru a zkontrolujte generovaný kód. Tento kód je funkce [aktivovaná protokolem HTTP](functions-bindings-http-webhook.md) , která vypisuje tělo žádosti. 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Změňte adresář na nově vytvořenou složku projektu (tu, která obsahuje soubory Host. JSON a pom. XML) a sestavte a spusťte funkci s Maven:
+Spusťte následující příkaz, který změní adresář na nově vytvořenou složku projektu a poté sestaví a spustí projekt funkce:
 
-```CMD
+```console
 cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
 
-> [!NOTE]
-> Pokud se zobrazuje tato výjimka `javax.xml.bind.JAXBException` pro Javu 9, najdete alternativní řešení na [GitHubu](https://github.com/jOOQ/jOOQ/issues/6477).
-
-Když je funkce spuštěná místně ve vašem systému a připravená reagovat na požadavky HTTP, zobrazí se tento výstup:
+Výstup se zobrazí jako následující z Azure Functions Core Tools při místním spuštění projektu:
 
 ```Output
-Listening on http://localhost:7071
-Hit CTRL-C to exit...
+...
+
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-   hello: http://localhost:7071/api/HttpTrigger-Java
+    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+...
 ```
 
-V novém okně terminálu aktivujte funkci z příkazového řádku pomocí příkazu curl:
+Aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
 
 ```CMD
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java -d LocalFunction
-```
-
-```Output
-Hello LocalFunction!
-```
-
-Pomocí klávesové zkratky `Ctrl-C` v terminálu zastavte kód aplikace.
-
-## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
-
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, přihlaste [se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
-
-```azurecli
-az login
-```
-
-Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`. Tím se provede nasazení souboru zip s povoleným režimem [Spustit z balíčku](functions-deployment-technologies.md#zip-deploy) .
-
-> [!NOTE]
-> Když použijete Visual Studio Code k nasazení aplikace Function App, nezapomeňte zvolit předplatné bez bezplatného předplatného nebo se zobrazí chyba. Své předplatné můžete sledovat na levé straně rozhraní IDE.
-
-```azurecli
-mvn azure-functions:deploy
-```
-
-Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistupovat k vaší aplikaci funkcí Azure:
-
-```output
-[INFO] Successfully deployed Function App with package.
-[INFO] Deleting deployment package from Azure Storage...
-[INFO] Successfully deleted deployment package fabrikam-function-20170920120101928.20170920143621915.zip
-[INFO] Successfully deployed Function App at https://fabrikam-function-20170920120101928.azurewebsites.net
-[INFO] ------------------------------------------------------------------------
-```
-
-Otestujte aplikaci funkcí spuštěnou v Azure pomocí `cURL`. V níže uvedené ukázce budete muset změnit adresu URL, aby odpovídala adrese URL nasazené vlastní aplikace funkcí z předchozího kroku.
-
-> [!NOTE]
-> Ujistěte se, že jste nastavili `Anonymous` **přístupová práva** na. Když zvolíte výchozí úroveň `Function`, budete muset [klíč funkce](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) prezentovat v žádosti o přístup ke koncovému bodu funkce.
-
-```azurecli
-curl -w "\n" https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
 ```Output
 Hello AzureFunctions!
 ```
+[Klíč funkce](functions-bindings-http-webhook.md#authorization-keys) není vyžadován při místním spuštění. Pomocí klávesové zkratky `Ctrl+C` v terminálu zastavte kód aplikace.
 
-## <a name="make-changes-and-redeploy"></a>Provedení změn a opětovné nasazení
+## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-Abyste upravili text vrácený aplikací funkcí, upravte ve vygenerovaném projektu zdrojový soubor `src/main.../Function.java`. Změňte tento řádek:
+Aplikace Function App a související prostředky se vytvoří v Azure při prvním nasazení aplikace Function App. Než budete moct nasadit, přihlaste se k předplatnému Azure pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) Azure CLI. 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+```azurecli
+az login
 ```
 
-Na následující:
+> [!TIP]
+> Pokud má váš účet přístup k několika předplatným, použijte příkaz [AZ Account set](/cli/azure/account#az-account-set) k nastavení výchozího předplatného pro tuto relaci. 
 
-```java
-return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
+K nasazení projektu do nové aplikace Function App použijte následující příkaz Maven. 
+
+```azurecli
+mvn azure-functions:deploy
 ```
 
-Uložte změny. Spusťte MVN vyčistit balíček a znovu ho nasaďte `azure-functions:deploy` spuštěním z terminálu jako dřív. Aplikace funkcí se aktualizuje a tento požadavek:
+Tento @no__t Maven Target v Azure vytvoří následující prostředky:
 
-```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
++ Skupina prostředků. Pojmenovaná se _zdrojem_ prostředků, kterou jste zadali.
++ Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
++ Plán služby App Service. Hostování bez serveru pro vaši aplikaci Function App v zadaném _appRegion_. Název se vygeneruje náhodně.
++ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_a je připojen s náhodně generovaným číslem. 
+
+Nasazení také zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy)s povoleným režimem spuštění z balíčku.
+
+Po dokončení nasazení se zobrazí adresa URL, kterou můžete použít pro přístup k koncovým bodům aplikace Function App. Protože Trigger HTTP, který jsme publikovali, používá `authLevel = AuthorizationLevel.FUNCTION`, je potřeba získat klíč funkce, který bude volat koncový bod funkce přes protokol HTTP. Nejjednodušší způsob, jak získat klíč funkce, je z [Azure Portal].
+
+## <a name="get-the-http-trigger-url"></a>Získat adresu URL triggeru HTTP
+
+<!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
+
+Z Azure Portal můžete získat adresu URL, která je vyžadována pro Trigger funkce, s klíčem funkce. 
+
+1. Přejděte na [Azure Portal], přihlaste se **, do horní** části stránky zadejte _AppName_ vaší aplikace Function App a stiskněte klávesu ENTER.
+ 
+1. V aplikaci Function App rozbalte **funkce (jen pro čtení)** , zvolte požadovanou funkci a potom vyberte **</> získat adresu URL funkce** v pravém horním rohu. 
+
+    ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-java-maven/get-function-url-portal.png)
+
+1. Zvolte **výchozí (klíč funkce)** a vyberte **Kopírovat**. 
+
+Pro přístup k funkci teď můžete použít zkopírovanou adresu URL.
+
+## <a name="verify-the-function-in-azure"></a>Ověření funkce v Azure
+
+Pokud chcete ověřit aplikaci Function App běžící v Azure pomocí `cURL`, nahraďte adresu URL z níže uvedené ukázky adresou URL, kterou jste zkopírovali z portálu.
+
+```azurecli
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Bude mít aktualizovaný výstup:
+Tím se odešle požadavek POST koncovému bodu funkce s `AzureFunctions` v těle žádosti. Zobrazí se následující odpověď.
 
 ```Output
-Hi, AzureFunctionsTest
+Hello AzureFunctions!
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
+Vytvořili jste projekt funkcí jazyka Java pomocí funkce aktivované protokolem HTTP, spustíte ji na místním počítači a nasadíte ji do Azure. Nyní svou funkci rozšíříte do...
 
-- V [příručce pro vývojáře funkcí v Javě](functions-reference-java.md) najdete další informace o vývoji funkcí v Javě.
-- Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
-- Funkce můžete psát a ladit místně pomocí nástrojů [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) a [Eclipse](functions-create-maven-eclipse.md). 
-- Funkce ladění můžete do Azure nasadit pomocí editoru Visual Studio Code. Pokyny najdete v dokumentaci editoru Visual Studio Code o [aplikacích bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
+> [!div class="nextstepaction"]
+> [Přidání výstupní vazby fronty Azure Storage](functions-add-output-binding-storage-queue-java.md)
 
-> [!NOTE] 
-> Můžete také vytvořit Azure Functions projekt založený na Kotlin pomocí Azure-Functions-Kotlin-Archetype. Další informace najdete v [úložišti GitHub](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) .
+
+[Azure CLI]: /cli/azure
+[Azure Portal]: https://portal.azure.com

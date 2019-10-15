@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Braze | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Braze | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Braze.
 services: active-directory
 documentationCenter: na
@@ -13,34 +13,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/03/2019
+ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a32548bdafa999fe72e8b2f8e3b80961ebe3c9a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 52a53735ebf8e0e4affa7daf6c345de6bf467228
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032913"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373442"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-braze"></a>Kurz: Integrace Azure Active Directory s Braze
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-braze"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Braze
 
-V tomto kurzu se dozvíte, jak integrovat Braze s Azure Active Directory (Azure AD).
-Integrace Braze s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Braze s Azure Active Directory (Azure AD). Když integrujete Braze s Azure AD, můžete:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k Braze.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Braze (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Braze.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Braze svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Ke konfiguraci integrace služby Azure AD s Braze potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Předplatné s povoleným Brazem jednotným přihlašováním
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Braze odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -52,184 +50,117 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Braze do služby Azure AD, musíte přidat Braze z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Braze z Galerie, proveďte následující kroky:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Braze** .
+1. Na panelu výsledků vyberte **Braze** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-braze"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Braze
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Braze pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Braze.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Braze, dokončete následující stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte BRAZE SSO](#configure-braze-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    * **[Vytvořte Braze Test User](#create-braze-test-user)** -to, abyste měli protějšek B. Simon v Braze, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Braze**, vyberte **Braze** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Braze** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Braze v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Braze na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Braze.
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.braze.com/auth/saml/callback `.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Braze, musíte dokončit tyto stavební bloky:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte jednotné přihlašování Braze](#configure-braze-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvoření Braze Test User](#create-braze-test-user)** – pro Britta Simon v Braze, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Braze, proveďte následující kroky:
-
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Braze** vyberte **jednotné přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
-
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
-
-    ![Informace o jednotném přihlašování v doméně Braze a adresách URL](common/both-replyurl.png)
-
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.braze.com/auth/saml/callback`
-
-5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    ![Informace o jednotném přihlašování v doméně Braze a adresách URL](common/both-signonurl.png)
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.braze.com/sign_in`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.braze.com/sign_in`.
 
     > [!NOTE]
-    > Pro subdoménu použijte koordinovánou subdoménu uvedenou v adrese URL instance Braze. Pokud je vaše instance například US-01, vaše adresa URL je https://dashboard-01.braze.com. To znamená, že vaše subdoména bude řídicí panel-01.
+    > Pro subdoménu použijte koordinovánou subdoménu uvedenou v adrese URL instance Braze. Pokud je vaše instance například US-01, adresa URL je https://dashboard-01.braze.com. To znamená, že vaše subdoména bude řídicí panel-01.
 
-6. Braze aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
+1. Braze aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-7. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
+1. Kromě toho očekává aplikace Braze několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     | -----| --------------- |
-    | email | user.userprincipalname |
-    | křestní_jméno| user.givenname|
-    | příjmení| user.surname|
-    | přihlášení| user.mail|
+    | e-mail | User. userPrincipalName |
+    | křestní_jméno| User. křestní jméno|
+    | příjmení| User. příjmení|
 
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![image](common/new-save-attribute.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
-
-    c. Ponechte **obor názvů** prázdný.
-
-    d. Jako **atribut**vyberte zdroj.
-
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-8. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
-
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
-
-9. V části **Nastavení Braze** zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **Nastavení Braze** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    b. Identifikátor Azure AD
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    c. Adresa URL – odhlášení
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="configure-braze-single-sign-on"></a>Konfigurace jednotného přihlašování Braze
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **Braze** , musíte se ujistit, že správce účtů Braze povolil pro váš účet jednotné přihlašování SAML. Po povolení můžete přejít na nastavení společnosti > nastavení zabezpečení a přepnout část jednotného přihlašování SAML na ZAPNUTo. V této části budete muset stažený **certifikát (Base64)** zkopírovat a vložit společně s přidáním názvu SAML. 
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Braze.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Braze**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+## <a name="configure-braze-sso"></a>Konfigurace jednotného přihlašování Braze
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Braze.
-
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Braze**.
-
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
-
-2. V seznamu aplikace vyberte **Braze**.
-
-    ![Odkaz Braze v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **Braze** , musíte se ujistit, že správce účtů Braze povolil pro váš účet jednotné přihlašování SAML. Po povolení můžete přejít na nastavení společnosti > nastavení zabezpečení a přepnout část jednotného přihlašování SAML na ZAPNUTo. V této části budete muset stažený **certifikát (Base64)** zkopírovat a vložit společně s přidáním názvu SAML.
 
 ### <a name="create-braze-test-user"></a>Vytvořit testovacího uživatele Braze
 
-V této části vytvoříte uživatele s názvem Britta Simon v Braze. Uživatele můžete přidat na platformě Braze. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon v Braze. Pokud chcete přidat uživatele na platformě Braze, pracujte s [týmem podpory Braze](mailto:support@braze.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici Braze, měli byste se automaticky přihlásit k Braze, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Braze s Azure AD](https://aad.portal.azure.com/)

@@ -1,6 +1,6 @@
 ---
-title: Spravovat šablonu testovacího prostředí v učebně ve službě Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet a spravovat šablony classroom testovacího prostředí ve službě Azure Lab Services.
+title: Správa šablony testovacího prostředí učebny v Azure Lab Services | Microsoft Docs
+description: Naučte se, jak vytvořit a spravovat šablonu prostředí učebny v Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,146 +11,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704350"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332751"
 ---
-# <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvářet a spravovat šablony classroom ve službě Azure Lab Services
-Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Potom můžete publikovat šablony, která má instance šablony virtuálního počítače zpřístupnit uživatelům testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
+# <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvoření a Správa šablony učebny v Azure Lab Services
+Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Pak publikujete šablonu, aby byly k dispozici instance virtuálního počítače šablony pro vaše uživatele testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
 
-Tento článek popisuje, jak vytvářet a spravovat šablony virtuálního počítače v prostředí v učebně Azure Lab Services. 
+Tento článek popisuje, jak vytvořit a spravovat virtuální počítač šablony v laboratorním prostředí pro učebnu Azure Lab Services. 
 
-## <a name="publish-a-template-while-creating-a-classroom-lab"></a>Publikování šablony při vytváření testovacího prostředí v učebně
-Nejprve můžete nastavit a publikovat šablony při vytváření testovacího prostředí v učebně.
-
-1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
-2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
-3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
-    1. Zadejte **název** testovacího prostředí. 
-    2. Zdejte maximální **počet uživatelů** s povoleným přístupem k testovacímu prostředí. 
-    6. Vyberte **Uložit**.
-
-        ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. 
-    2. Vyberte **oblast**, ve které se mají virtuální počítače vytvořit. 
-    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. 
-    4. Vyberte **Další**.
-
-        ![Zadání specifikací virtuálních počítačů](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
-5. Na stránce **Set credentials** (Nastavení přihlašovacích údajů) zadejte výchozí přihlašovací údaje ke všem virtuálním počítačům v testovacím prostředí. 
-    1. Zadejte **jméno uživatele** pro všechny virtuální počítače v testovacím prostředí.
-    2. Zadejte **heslo** tohoto uživatele. 
-
-        > [!IMPORTANT]
-        > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
-    3. Vyberte **Vytvořit**. 
-
-        ![Nastavení přihlašovacích údajů](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. Na stránce **Configure template** (Konfigurace šablony) se zobrazí stav vytváření testovacího prostředí. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. 
-
-    ![Konfigurace šablony](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. Po dokončení konfigurace šablony se zobrazí následující stránka: 
-
-    ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Následující kroky jsou pro tento kurz volitelné: 
-    1. Vyberte **Start** (Spustit) a spusťte virtuální počítač šablony.
-    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. 
-    3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
-    4. **Zastavte** virtuální počítač.  
-    5. Zadejte **popis** šablony.
-
-        ![Tlačítko Next (Další) na stránce Configure template (Konfigurace šablony)](../media/tutorial-setup-classroom-lab/configure-template-next.png)
-9. Na stránce šablony vyberte **Next** (Další). 
-10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
-    1. Pokud chcete šablonu publikovat okamžitě, zaškrtněte políčko *I understand I can't modify the template after publishing. This process can only be done once and can take up to an hour* (Chápu, že publikovanou šablonu není možné upravit. Tento postup je možné provést pouze jednou a může trvat až hodinu.) a vyberte **Publish** (Publikovat).  
-
-        > [!WARNING]
-        > Publikování nejde vrátit zpět. 
-    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o tom, jak konfigurace a publikování po dokončení průvodce, naleznete v části Podrobnosti o tom, jak konfigurace a publikování po dokončení průvodce, najdete v části publikování v oddílu šablony [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md) článku.
-
-        ![Publikování šablony](../media/tutorial-setup-classroom-lab/publish-template.png)
-11. Zobrazí se **průběh publikování** šablony. Tento proces může trvat až hodinu. 
-
-    ![Publikování šablony – průběh](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. Po úspěšném publikování šablony se zobrazí následující stránka. Vyberte **Done** (Hotovo).
-
-    ![Publikování šablony – úspěch](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. Zobrazí se **řídicí panel** testovacího prostředí. 
-    
-    ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-
+## <a name="publish-a-template-while-creating-a-classroom-lab"></a>Publikování šablony při vytváření testovacího prostředí učebny
+Informace o publikování šablony při vytváření testovacího prostředí pro učebnu najdete v tématu [Vytvoření testovacího prostředí pro učebnu](how-to-manage-classroom-labs.md#create-a-classroom-lab) .
  
-## <a name="set-or-update-template-title-and-description"></a>Nastavení nebo aktualizovat název šablony a popis
-Pomocí následujícího postupu k nastavení názvu a popisu poprvé a později aktualizovat. 
+## <a name="set-or-update-template-title-and-description"></a>Nastavit nebo aktualizovat název a popis šablony
+Pomocí následujícího postupu můžete nastavit název a popis poprvé a později je aktualizovat. 
 
-1. V **šablony** části, najeďte myší **název** šablony nebo **popis** šablony a vyberte ji. 
-2. Zadejte **nový název** nebo **nový popis** šablony a stiskněte klávesu **ENTER**.
+1. Na stránce **Šablona** zadejte nový **název** testovacího prostředí.  
+2. Zadejte nový **Popis** šablony. Když přesunete fokus z textového pole, bude automaticky uložen. 
 
     ![Název a popis šablony](../media/how-to-create-manage-template/template-name-description.png)
 
-## <a name="set-up-or-update-a-template-vm"></a>Nastavení nebo aktualizaci šablony virtuálního počítače
- Než šablonu virtuálního počítače zpřístupníte studentům, připojíte se k ní a nainstalujete na ní požadovaný software. Následujícím postupem nastavit šablonu virtuálního počítače poprvé nebo aktualizovat virtuální počítač. 
+## <a name="update-a-template-vm"></a>Aktualizace virtuálního počítače šablony
+Pomocí následujících kroků aktualizujte virtuální počítač šablony.  
 
-1. Počkejte, až bude šablona virtuálního počítače připravená. Jakmile bude připravená, mělo by se aktivovat tlačítko **Start** (Spustit). Pokud chcete virtuální počítač spustit, vyberte **Start** (Spustit).
+1. Na stránce **Šablona** vyberte **přizpůsobit šablonu** na panelu nástrojů. 
 
-    ![Spuštění šablony virtuálního počítače](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. Přečtěte si upozornění a vyberte **Start**. 
+    ![Tlačítko přizpůsobit šablonu](../media/how-to-create-manage-template/customize-template-button.png)
+2. V dialogovém okně **přizpůsobit šablonu** vyberte **pokračovat**. Po spuštění šablony a provedení změn už nebude mít stejné nastavení jako virtuální počítače, které jsou naposledy publikované pro vaše uživatele. Změny šablony se neprojeví na stávajících virtuálních počítačích vašich uživatelů, dokud je znovu nepublikujete.
 
-    ![Spustit šablonu – upozornění](../media/how-to-create-manage-template/start-template-warning.png)
-2. Zobrazí stav v testovacím prostředí v dlaždici **šablony** oddílu.
+    ![Dialogové okno přizpůsobit](../media/how-to-create-manage-template/customize-template-dialog.png)
+1. Kliknutím na tlačítko **připojit k šabloně** na panelu nástrojů se připojte k virtuálnímu počítači šablony a postupujte podle pokynů. Pokud se jedná o počítač s Windows, zobrazí se možnost stáhnout soubor RDP. 
 
-    ![Úvodní šablona – stav](../media/how-to-create-manage-template/template-start-status.png)
-1. Po spuštění pro připojení k virtuálnímu počítači, vybrat **připojit**a postupujte podle pokynů. 
-
-    ![Připojte se k nebo zastavení šablony virtuálního počítače](../media/how-to-create-manage-template/connect-stop-vm.png)
+    ![Připojení k šabloně virtuálního počítače](../media/how-to-create-manage-template/connect-template-vm.png)
 1. Nainstalujte software, který studenti v testovacím prostředí potřebují (například sadu Visual Studio, Průzkumníka služby Azure Storage atd.). 
 2. Odpojte se od šablony virtuálního počítače (ukončete relaci vzdálené plochy). 
-3. **Zastavte** šablonu virtuálního počítače výběrem **Stop** (Zastavit). 
+3. Kliknutím na **zastavit šablonu** **zastavte** virtuální počítač šablony. 
+4. Pokud chcete **publikovat** aktualizovaný virtuální počítač šablony, postupujte podle kroků v následující části. 
 
 ## <a name="publish-the-template-vm"></a>Publikování šablony virtuálního počítače  
-Pokud při vytváření testovacího prostředí není publikovat šablony, můžete ho publikovat později. Před publikováním, můžete se připojte k šabloně virtuálního počítače a aktualizujte s jakýmkoli softwarem. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. 
+Pokud šablonu nepublikujete během vytváření testovacího prostředí, můžete ji publikovat později. Před publikováním se můžete chtít připojit k virtuálnímu počítači šablony a aktualizovat ho pomocí libovolného softwaru. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů vytvořených v tomto procesu je počet virtuálních počítačů, které jste zadali při prvním publikování nebo které jste zadali na stránce fondu virtuálních počítačů. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. 
 
-1. V části **Template** (Šablona) vyberte **Publish** (Publikovat). 
+1. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
+1. V okně **publikování zprávy šablony** Zkontrolujte zprávu a vyberte **publikovat**. Tento proces může určitou dobu trvat v závislosti na tom, kolik virtuálních počítačů se vytváří.
 
-    ![Publikování šablony virtuálního počítače](../media/tutorial-setup-classroom-lab/public-access.png)
-1. Na **publikovat šablony** zprávou, projděte si zprávu a vybrat **publikovat**. Tento proces může trvat nějakou dobu v závislosti na tom, kolik virtuálních počítačů jsou vytvářeny.
-    
+    ![Tlačítko Publikovat](../media/how-to-create-manage-template/publish-button.png)
+
     > [!IMPORTANT]
-    > Jakmile je šablona publikovaná, nejde to vrátit. I když můžete znovu publikovat šablony. 
-4. Počkejte na stav šablonu, kterou chcete změnit na **publikováno**. 
+    > Jakmile je šablona publikovaná, nejde to vrátit. Šablonu můžete publikovat i v takovém případě. 
+4. Stav procesu publikování můžete zobrazit na stránce šablony. Počkejte, až se stav šablony změní na **Publikováno**. 
 
     ![Stav publikování](../media/how-to-create-manage-template/publish-status.png)
-1. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Můžete je spustit na této stránce nebo nechat své studenty spustit virtuální počítače. 
+1. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Můžete je spustit na této stránce nebo nechat své studenty začít s virtuálními počítači. 
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 
-## <a name="republish-the-template"></a>Šablonu znovu publikoval 
-Po publikování šablony pořád připojit k šabloně virtuálního počítače, aktualizujte ji a poté ji znovu publikovat. Při opětovném publikování šablony virtuálních počítačů, všechny uživatele, kterého odpojeny virtuálních počítačů a jejich rekonstruovaly podle aktualizovanou šablonu. 
-
-1. Na stránce řídicího panelu vašeho testovacího prostředí, vyberte **znovu publikovat** v části šablony. 
-
-    ![Tlačítko Publikovat](../media/how-to-create-manage-template/republish-button.png)
-2. Na **šablonu znovu publikoval** zprávou, zkontrolujte text a vyberte **znovu publikovat** pokračujte. V opačném případě vyberte **zrušit**. 
-
-    ![Opakované publikování zpráv šablonu](../media/how-to-create-manage-template/republish-template-message.png)
-3. Zobrazení stavu publikovat na dlaždici v **šablony** oddílu.
-
-    ![Stav publikování](../media/how-to-create-manage-template/republish-status-publishing.png)
-4. Jakmile je šablona publikovaná, je stav nastaven **publikováno**. 
-
-    ![Znovu úspěšné](../media/how-to-create-manage-template/republish-success.png)
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí konfigurovat a spravovat využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)
+- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982791"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372202"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -32,7 +32,7 @@ Spravovaná instance má charakteristiky a omezení prostředků, které závis�
 |   | **COMPUTE GEN4 –** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
-| Počet virtuální jádra | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| Počet virtuálních jader | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost paměti (poměr paměti/jádra) | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální paměť OLTP v paměti | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
 | Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
@@ -63,30 +63,30 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 > [!Important]
 > Pro důležité obchodní informace úroveň služby poskytuje další integrovanou kopii instance (sekundární repliky), která se dá použít pro úlohu určenou jen pro čtení. Pokud můžete oddělit dotazy pro čtení a zápis a dotazy jen pro čtení a analýzu nebo vytváření sestav, dostanete za stejnou cenu dvojnásobnou virtuální jádra a paměť. Sekundární replika může u primární instance prodlevu pár sekund provést, aby bylo možné přesměrovat úlohy vytváření sestav a analýzy, které nepotřebují přesný aktuální stav dat. V následující tabulce jsou **dotazy jen pro čtení** . Jedná se o dotazy, které se spouštějí u sekundární repliky.
 
-| **Zapnut** | **Pro obecné účely** | **Pro důležité obchodní informace** |
+| **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuální jádra @ no__t-0 | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>@no__t – 0Same počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
 | Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore) pro dotazy pro čtení i zápis<br/>+ dalších 20,4 GB až 408 GB (5.1 GB/vCore) pro dotazy jen pro čtení.<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální velikost úložiště instancí (rezervované) | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 –: 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost databáze | Až v aktuálně dostupné velikosti instance (max. 2 TB až 8 TB v závislosti na počtu virtuální jádra). | Až v aktuálně dostupné velikosti instance (max. 1 TB-4 TB v závislosti na počtu virtuální jádra). |
-| Maximální velikost databáze tempDB | Omezeno na 24 GB/vCore (96 – 1 920 GB) a aktuálně dostupná velikost úložiště instance.<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Až do aktuálně dostupné velikosti úložiště instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
+| Maximální velikost databáze tempDB | Omezeno na 24 GB/vCore (96 – 1 920 GB) a aktuálně dostupná velikost úložiště instance.<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB.<br/> Velikost souboru protokolu je omezená na 120 GB.| Až do aktuálně dostupné velikosti úložiště instance. |
 | Maximální počet databází na instanci | 100, pokud nedošlo k dosažení limitu velikosti úložiště instance. | 100, pokud nedošlo k dosažení limitu velikosti úložiště instance. |
 | Maximální počet souborů databáze na instanci | Až 280, pokud nedošlo k dosažení limitu velikosti úložiště instance nebo [místa přidělení úložiště na disku Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 souborů na databázi, pokud nebylo dosaženo limitu velikosti úložiště instance. |
 | Maximální velikost datového souboru | Omezeno na aktuálně dostupnou velikost úložiště instance (max. 2 TB-8 TB) a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na velikost úložiště aktuálně dostupné instance (až do velikosti 1 TB až 4 TB). |
 | Maximální velikost souboru protokolu | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. |
-| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
+| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
-| Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) . | Neomezeno. |
+| Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
-| OLTP v paměti | Není podporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
-| [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0,8 | 1 (zahrnuto do ceny) |
+| [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 
 > [!NOTE]
 > - **Aktuálně dostupná velikost úložiště instance** je rozdíl mezi rezervovanou velikostí instance a využitým prostorem úložiště.
 > - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí systémového zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> určete celkové využité místo podle databází. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
-> - Propustnost a IOPS závisí také na velikosti stránky, která není explicitně omezená pomocí spravované instance.
-> Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
+> - Propustnost a IOPS v Pro obecné účely úrovni závisí taky na [velikosti souboru](#file-io-characteristics-in-general-purpose-tier) , která není explicitně omezená pomocí spravované instance.
+> - Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
 > - Maximální instance IOPS závisí na rozložení souborů a distribuci úlohy. Pokud například vytváříte soubory o velikosti 7 až 1 GB s maximálním počtem 5K IOPS každý a 7 malým počtem souborů (menší než 128 GB) s 500 IOPS, můžete pro každou instanci získat 38500 IOPS (7x5000 + 7x500), pokud vaše úloha může použít všechny soubory. Všimněte si, že pro automatické zálohování se používá také určité množství IOPS.
 
 > [!NOTE]
@@ -135,12 +135,12 @@ Následující tabulka ukazuje **výchozí regionální omezení** pro podporova
 |Typ předplatného| Maximální počet podsítí spravované instance | Maximální počet jednotek vCore * |
 | :---| :--- | :--- |
 |Průběžné platby|3|320|
-|SLUŽEB |8 (15 v některých oblastech * *)|960 (1440 v některých oblastech * *)|
+|CSP |8 (15 v některých oblastech * *)|960 (1440 v některých oblastech * *)|
 |Průběžné platby dle aktuálního využití pro vývoj/testování|3|320|
 |Enterprise pro vývoj/testování|3|320|
 |EA|8 (15 v některých oblastech * *)|960 (1440 v některých oblastech * *)|
-|Visual Studio Enterprise|odst |64|
-|Visual Studio Professional a MSDN Platforms|odst|32|
+|Visual Studio Enterprise|2 |64|
+|Visual Studio Professional a MSDN Platforms|2|32|
 
 @no__t – 0 při plánování nasazení je třeba vzít v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) více vCore kapacity než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
@@ -156,13 +156,13 @@ Postup pro zahájení procesu získání větší kvóty:
    ![Pomoc a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na kartě základy nové žádosti o podporu:
    - Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
-   - Pro **předplatné**vyberte své předplatné.
+   - V části **Předplatné** vyberte své předplatné.
    - Jako **typ kvóty**vyberte **SQL Database spravovaná instance**.
    - V případě **plánu podpory**vyberte svůj plán podpory.
 
      ![Kvóta typu problému](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. Klikněte na tlačítko **Další**.
+3. Klikněte na **Další**.
 4. Na **kartě problém** u nové žádosti o podporu:
    - V části **závažnost**vyberte úroveň závažnosti problému.
    - **Podrobnosti**získáte zadáním dalších informací o vašem problému, včetně chybových zpráv.
@@ -176,9 +176,9 @@ Postup pro zahájení procesu získání větší kvóty:
      > - Požadovaný počet virtuální jádra, na úroveň služby v existujících podsítích po zvýšení kvóty (Pokud je nutné rozšířit libovolnou existující podsíť.
      > - Požadovaný počet nových podsítí a celkový počet virtuální jádra na úroveň služby v rámci nových podsítí (Pokud potřebujete nasadit spravované instance v nových podsítích).
 
-5. Klikněte na tlačítko **Další**.
+5. Klikněte na **Další**.
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
-7. Klikněte na **vytvořit**.
+7. Klikněte na **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

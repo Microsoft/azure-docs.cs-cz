@@ -6,24 +6,23 @@ ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-manager: jeconnoc
-ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 951e48e591f490ea6321329352fd798fea58855d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838952"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329700"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Připojení funkcí k Azure Storage pomocí Visual Studio Code
 
-Azure Functions umožňuje připojit funkce ke službám Azure a dalším prostředkům bez nutnosti psát vlastní kód pro integraci. Tyto *vazby*, které představují vstupní i výstupní, jsou deklarovány v rámci definice funkce. Data z vazeb jsou k dispozici funkci jako parametry. Trigger je speciální typ vstupní vazby. I když má funkce pouze jednu Trigger, může mít více vstupních a výstupních vazeb. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 V tomto článku se dozvíte, jak pomocí Visual Studio Code připojit funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-function-vs-code.md) pro Azure Storage. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do zprávy ve frontě úložiště Azure Queue. 
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte splnit následující požadavky:
 
@@ -47,7 +46,7 @@ V [předchozím článku rychlý Start](functions-create-first-function-vs-code.
 
 1. Zkopírujte hodnotu `AzureWebJobsStorage`, což je klíč pro hodnotu připojovacího řetězce účtu úložiště. Pomocí tohoto připojení ověříte, zda výstupní vazba funguje podle očekávání.
 
-## <a name="register-binding-extensions"></a>Registrovat rozšíření vazby
+## <a name="register-binding-extensions"></a>Registrace rozšíření vazeb
 
 Vzhledem k tomu, že používáte výstupní vazbu úložiště front, musíte mít nainstalované rozšíření úložiště vazeb před spuštěním projektu. 
 
@@ -55,7 +54,7 @@ Vzhledem k tomu, že používáte výstupní vazbu úložiště front, musíte m
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 S výjimkou aktivačních událostí protokolu HTTP a časovače jsou vazby implementovány jako balíčky rozšíření. Spusťte následující příkaz [dotnet přidat balíček](/dotnet/core/tools/dotnet-add-package) v okně terminálu a přidejte do projektu balíček rozšíření úložiště.
 
@@ -73,13 +72,13 @@ V případě funkcí vyžaduje každý typ vazby `direction`, `type` a jedinečn
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
 ---
 
-## <a name="add-code-that-uses-the-output-binding"></a>Přidat kód, který používá výstupní vazbu
+## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
 Po definování vazby můžete použít `name` vazby k přístupu jako atributu v signatuře funkce. Pomocí výstupní vazby nemusíte pro ověřování používat kód Azure Storage SDK, získat odkaz na frontu nebo zapisovat data. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
@@ -87,7 +86,7 @@ Po definování vazby můžete použít `name` vazby k přístupu jako atributu 
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -97,27 +96,27 @@ Po definování vazby můžete použít `name` vazby k přístupu jako atributu 
 
 V účtu úložiště se vytvoří nová fronta s názvem **front** . modul runtime Functions při prvním použití výstupní vazby. Pomocí Průzkumník služby Storage ověříte, že se vytvořila fronta spolu s novou zprávou.
 
-### <a name="connect-storage-explorer-to-your-account"></a>Připojit Průzkumník služby Storage k vašemu účtu
+### <a name="connect-storage-explorer-to-your-account"></a>Propojení Průzkumníka služby Storage s vaším účtem
 
 Pokud jste už Průzkumník služby Azure Storage nainstalovali a připojili ho k účtu Azure, přeskočte tuto část.
 
-1. Spusťte nástroj [Průzkumník služby Azure Storage] , vyberte ikonu připojit na levé straně a vyberte **Přidat účet**.
+1. Spusťte nástroj [Azure Storage Explorer] , vyberte ikonu připojit na levé straně a vyberte **Přidat účet**.
 
     ![Přidat účet Azure do Průzkumník služby Microsoft Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
 1. V dialogovém okně **připojit** zvolte **Přidat účet Azure**, zvolte **prostředí Azure**a pak vyberte **Přihlásit se...** . 
 
-    ![Přihlaste se ke svému účtu Azure.](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
+    ![Přihlášení k účtu Azure](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
 Po úspěšném přihlášení ke svému účtu uvidíte všechna předplatná Azure přidružená k vašemu účtu.
 
-### <a name="examine-the-output-queue"></a>Kontrola výstupní fronty
+### <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
 1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů, potom vyhledejte a spusťte příkaz `Azure Storage: Open in Storage Explorer` a zvolte název svého účtu úložiště. Váš účet úložiště se otevře v Průzkumník služby Azure Storage.  
 
-1. Rozbalte uzel **fronty** a pak vyberte frontu s názvem front- **Queue**. 
+1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
 
-   Fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste funkci vyvolali s výchozí hodnotou `name` v *Azure*, zpráva fronty je *název předaný do funkce: Azure*.
+   Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
 
     ![Zpráva fronty zobrazená v Průzkumník služby Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -141,9 +140,9 @@ Teď je čas na opětovné publikování aktualizované aplikace Function App do
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-*Prostředky* v Azure odkazují na aplikace Function App, funkce, účty úložiště a tak dále. Jsou seskupené do *skupin prostředků*a odstraněním skupiny můžete všechno odstranit ze skupiny.
+*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků*. Odstraněním skupiny odstraníte všechno, co v této skupině je.
 
-Vytvořili jste prostředky pro dokončení těchto rychlých startů. Tyto prostředky se vám můžou účtovat v závislosti na [stavu vašeho účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud už prostředky nepotřebujete, můžete je odstranit:
+Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prostředky se vám mohou fakturovat, a to v závislosti na [stavu účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud prostředky už nepotřebujete, můžete k jejich odstranění použít tento postup:
 
 1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Open in portal`.
 
@@ -151,13 +150,13 @@ Vytvořili jste prostředky pro dokončení těchto rychlých startů. Tyto pros
 
 1. Na kartě **Přehled** vyberte v části **Skupina prostředků**odkaz pojmenovaný.
 
-    ![Vyberte skupinu prostředků, kterou chcete odstranit ze stránky Function App.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
+    ![Vyberte skupinu prostředků, kterou chcete odstranit ze stránky aplikace funkcí.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
 
-1. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, zda se jedná o ty, které chcete odstranit.
+1. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, že jsou to ty, které chcete odstranit.
  
-1. Vyberte **Odstranit skupinu prostředků**a postupujte podle pokynů.
+1. Vyberte **Odstranit skupinu prostředků** a postupujte podle pokynů.
 
-   Odstranění může trvat několik minut. Až to bude hotové, zobrazí se oznámení během pár sekund. Můžete také vybrat ikonu zvonku v horní části stránky a zobrazit oznámení.
+   Odstranění může trvat několik minut. Po jeho dokončení se na několik sekund zobrazí oznámení. K zobrazení tohoto oznámení můžete také vybrat ikonu zvonku v horní části stránky.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -166,6 +165,6 @@ Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do f
 Dále byste měli povolit Application Insights monitorování aplikace Function App:
 
 > [!div class="nextstepaction"]
-> [Povolit integraci Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Povolení integrace Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
-[Průzkumník služby Azure Storage]: https://storageexplorer.com/
+[Azure Storage Explorer]: https://storageexplorer.com/

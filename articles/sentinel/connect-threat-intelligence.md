@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262716"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372279"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Připojení dat od zprostředkovatelů pro analýzu hrozeb
 
@@ -50,7 +50,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (s 
 - [Platforma ThreatConnect](https://threatconnect.com/solution/)
 
 
-## <a name="prerequisites"></a>Požadavky  
+## <a name="prerequisites"></a>Předpoklady  
 
 - Role Azure AD buď globálního správce nebo správce zabezpečení, aby udělila oprávnění k produktu TIP nebo vlastní aplikaci, která používá přímou integraci s rozhraním API Microsoft Graph tiIndicators Security.
 
@@ -60,9 +60,9 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (s 
 
 1. [Zaregistrujte aplikaci](/graph/auth-v2-service#1-register-your-app) v Azure Active Directory, abyste získali ID aplikace, tajný klíč aplikace a id klienta Azure Active Directory. Tyto hodnoty budete potřebovat, když nakonfigurujete integrovaný produkt nebo aplikaci TIP, která používá přímou integraci s rozhraním API Microsoft Graph tiIndicators Security.
 
-2. [Konfigurace oprávnění rozhraní API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) pro registrovanou aplikaci: Přidejte do registrované aplikace oprávnění aplikace Microsoft Graph **ThreatIndicators. OwnedBy** .
+2. [Konfigurace oprávnění rozhraní API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) pro registrovanou aplikaci: přidejte do registrované aplikace oprávnění aplikace Microsoft Graph **ThreatIndicators. OwnedBy** .
 
-3. Požádejte správce tenanta Azure Active Directory o udělení souhlasu správce k registrované aplikaci pro vaši organizaci. Z Azure Portal: >  > **Oprávnění** **\<rozhraní API pro zobrazení názvuaplikace>v**Azure Active Directory registrace aplikací udělení souhlasu správce pro >  >  **název tenanta\<>**
+3. Požádejte správce tenanta Azure Active Directory o udělení souhlasu správce k registrované aplikaci pro vaši organizaci. Z Azure Portal: **Azure Active Directory** > **Registrace aplikací** >  **\<_název aplikace_>**  > **Zobrazit oprávnění rozhraní API**0**udělení souhlasu správce pro 2_název tenanta_ @no__t – 14**.
 
 4. Pomocí přímé integrace s rozhraním Microsoft Graph Security tiIndicators API pro odesílání ukazatelů do Azure Sentinel určete následující nastavení:
     
@@ -72,11 +72,11 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (s 
     
     c. Pro akci zadejte výstrahu.
 
-5. V Azure Portal přejděte na**datové konektory** **Azure Sentinel** > a pak vyberte konektor **platformy pro analýzu hrozeb (Preview)** .
+5. V Azure Portal přejděte na**datové konektory** **Azure Sentinel** >  a pak vyberte konektor **platformy pro analýzu hrozeb (Preview)** .
 
 6. Vyberte **stránku otevřít konektor**a pak **připojit**.
 
-7. Pokud chcete zobrazit indikátory hrozeb importované do Azure Sentinel, přejděte do **Azure Sentinel-logs** > **SecurityInsights**a pak rozbalte **ThreatIntelligenceIndicator**.
+7. Chcete-li zobrazit indikátory hrozeb, které jsou importovány do služby Azure Sentinel, přejděte do části **Azure Sentinel-Logs** > **SecurityInsights**a potom rozbalte **ThreatIntelligenceIndicator**.
 
 ## <a name="next-steps"></a>Další kroky
 

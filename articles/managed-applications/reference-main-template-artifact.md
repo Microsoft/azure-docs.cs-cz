@@ -1,20 +1,20 @@
 ---
 title: Referenční dokumentace artefaktů šablony nasazení spravované aplikace Azure
-description: Tento článek je odkazem na artefakt šablony nasazení.
+description: Poskytuje příklad artefaktu šablony nasazení pro Azure Managed Applications.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336488"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330177"
 ---
-# <a name="reference-deployment-template-artifact"></a>Další informace: Artefakt šablony nasazení
+# <a name="reference-deployment-template-artifact"></a>Referenční dokumentace: artefakt šablony nasazení
 
 Tento článek je odkazem na artefakt *mainTemplate. JSON* v Azure Managed Applications. Další informace o vytváření šablon nasazení najdete v tématu [šablony Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -189,8 +189,8 @@ Následující JSON ukazuje příklad souboru *mainTemplate. JSON* pro Azure Man
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
-- [Odkaz Artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
-- [Odkaz Artefakt definice zobrazení](reference-view-definition-artifact.md)
+- [Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
+- [Referenční dokumentace: artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
+- [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md)

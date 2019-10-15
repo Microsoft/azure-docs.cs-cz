@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327144"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331213"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitorovat spotřebu prostředků a aktivity dotazů v Azure Search
 
@@ -40,7 +40,7 @@ Karta **monitorování** zobrazuje klouzavý průměr pro metriky, jako jsou vyh
 
 Tato čísla jsou přibližná a jsou určena k získání Obecné informace o tom, jak dobře systém obsluhuje požadavky. Skutečný QPS může být vyšší nebo nižší než číslo hlášené na portálu.
 
-![Aktivita dotazů za sekundu](./media/search-monitor-usage/monitoring-tab.png "Aktivita dotazů za sekundu")
+Dotazy ![na aktivity za sekundu](./media/search-monitor-usage/monitoring-tab.png "aktivity za sekundu")
 
 ## <a name="activity-logs"></a>Protokoly aktivit
 
@@ -56,9 +56,8 @@ Azure Search neukládá žádná data mimo objekty, které spravuje, což znamen
 
 V následující tabulce jsou porovnávány možnosti pro ukládání protokolů a přidání podrobného monitorování operací služby a úloh dotazů prostřednictvím Application Insights.
 
-| Resource | Použití |
+| Prostředek | Použití |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Události zaznamenané v protokolu a metriky dotazů založené na níže uvedených schématech v souvislosti s uživatelskými událostmi ve vaší aplikaci. Toto je jediné řešení, které přijímá uživatelské akce nebo signály v rámci účtu, mapování událostí z vyhledávání iniciované uživatelem, na rozdíl od požadavků na filtr odeslaných kódem aplikace. Chcete-li použít tento přístup, zkopírujte kód instrumentace do zdrojových souborů, aby bylo možné směrovat informace o požadavku do Application Insights. Další informace najdete v tématu věnovaném [vyhledávání analýz provozu](search-traffic-analytics.md). |
 | [Protokoly Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události jsou protokolovány do Log Analytics pracovního prostoru. Můžete spouštět dotazy na pracovní prostor a vracet tak podrobné informace z protokolu. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) . |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události se zaznamenávají do kontejneru objektů BLOB a ukládají se do souborů JSON. K zobrazení obsahu souboru použijte Editor JSON.|
 | [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazů na základě schémat popsaných v tomto článku. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
@@ -79,9 +78,9 @@ V této části se dozvíte, jak používat úložiště objektů BLOB k uklád�
 
 2. Otevřete stránku Přehled vyhledávací služby. V levém navigačním podokně přejděte dolů na **sledování** a klikněte na **Povolit monitorování**.
 
-   ![Povolit monitorování](./media/search-monitor-usage/enable-monitoring.png "Povolit monitorování")
+   ![Povolit]monitorování(./media/search-monitor-usage/enable-monitoring.png "Povolení") monitorování
 
-3. Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete ho zkopírovat do účtu úložiště, odeslat ho do centra událostí nebo ho exportovat do Azure Monitor protokolů.
+3. Vyberte data, která chcete exportovat: protokoly, metriky nebo obojí. Můžete ho zkopírovat do účtu úložiště, odeslat ho do centra událostí nebo ho exportovat do Azure Monitor protokolů.
 
    V případě archivace do úložiště objektů BLOB musí existovat pouze účet úložiště. Kontejnery a objekty blob budou při exportu dat protokolu vytvořeny podle potřeby.
 
@@ -93,8 +92,8 @@ V této části se dozvíte, jak používat úložiště objektů BLOB k uklád�
 
 Protokolování je povoleno, jakmile Profil uložíte. Kontejnery se vytvářejí pouze v případě, že existuje aktivita pro protokolování nebo měření. Když se data zkopírují do účtu úložiště, data se naformátují jako JSON a umístí se do dvou kontejnerů:
 
-* insights – protokoly operationlogs: pro protokoly přenosů služby search
-* insights-metrics-pt1m: pro metriky
+* Insights-logs-operationlogs: pro hledání protokolů přenosů
+* Insights – metriky – pt1m: pro metriky
 
 **Trvá to jednu hodinu, než se kontejnery zobrazí v úložišti objektů BLOB. Jeden objekt BLOB se za hodinu vychází z každého kontejneru.**
 
@@ -109,49 +108,49 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schéma protokolu
 Objekty blob, které obsahují protokoly přenosů služby Search, jsou strukturované, jak je popsáno v této části. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznamy** obsahující pole objektů log. Každý objekt BLOB obsahuje záznamy pro všechny operace, které byly provedeny během stejné hodiny.
 
-| Name | Typ | Příklad: | Poznámky |
+| Name (Název) | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
-| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
-| operationName |řetězec |"Query.Search" |Název operace |
-| operationVersion |řetězec |"2019-05-06" |Používá rozhraní api-version |
-| category |řetězec |"OperationLogs" |Konstanty |
-| resultType |řetězec |"Success" |Možné hodnoty: Úspěch nebo neúspěch |
-| resultSignature |int |200 |Kód výsledku protokolu HTTP |
-| doby trvání v MS |int |50 |Doba trvání operace v milisekundách |
-| properties |objekt |v následující tabulce najdete |Objekt obsahující data specifická pro operace |
+| time |datetime |"2018-12-07T00:00:43.6872559 Z" |Časové razítko operace |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/VÝCHOZÍ/POSKYTOVATELÉ/<br/> Microsoft. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Vaše ResourceId |
+| operationName |string |"Query. Search" |Název operace |
+| operationVersion |string |"2019-05-06" |Použitá verze rozhraní API |
+| category |string |"OperationLogs" |změnil |
+| resultType |string |Nástup |Možné hodnoty: úspěch nebo neúspěch |
+| resultSignature |int |200 |Kód výsledku HTTP |
+| Trvání v MS |int |50 |Doba trvání operace v milisekundách |
+| properties |object |Podívejte se na následující tabulku. |Objekt obsahující data specifická pro danou operaci |
 
-**Vlastnosti schématu**
+**Schéma vlastností**
 
-| Název | Typ | Příklad: | Poznámky |
+| Name (Název) | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| Popis |řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
-| Dotaz |řetězec |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Parametry dotazu |
+| Popis |string |"GET/Indexes (' Content ')/docs" |Koncový bod operace |
+| Dotaz |string |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry dotazu |
 | Dokumenty |int |42 |Počet zpracovaných dokumentů |
-| indexName |řetězec |"testindex" |Název přidružený k operaci indexu |
+| indexName |string |"testindex" |Název indexu přidruženého k operaci |
 
-## <a name="metrics-schema"></a>Schématu metrik
+## <a name="metrics-schema"></a>Schéma metrik
 
 Pro požadavky na dotazy jsou zachyceny metriky.
 
-| Name | Typ | Příklad: | Poznámky |
+| Name (Název) | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
-| metricName |řetězec |"Latence" |Název metriky |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |časové razítko operace |
-| průměr |int |64 |Průměrná hodnota nezpracovanou ukázky metriky časový interval |
-| minimum |int |37 |Minimální hodnota nezpracovanou ukázky metriky časový interval |
-| maximum |int |78 |Maximální hodnota nezpracovanou ukázky metriky časový interval |
-| celkem |int |258 |Celková hodnota nezpracovanou ukázky metriky časový interval |
-| count |int |4 |Počet nezpracovaných vzorků sloužící ke generování metriku |
-| timegrain |řetězec |"PT1M" |Časový interval metrika ve formátu ISO 8601 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/VÝCHOZÍ/POSKYTOVATELÉ/<br/>Microsoft. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |ID prostředku |
+| metricName |string |Latence |název metriky |
+| time |datetime |"2018-12-07T00:00:43.6872559 Z" |časové razítko operace |
+| Vypočítat |int |64 |Průměrná hodnota nezpracovaných vzorků v časovém intervalu metriky |
+| minimálně |int |37 |Minimální hodnota nezpracovaných vzorků v časovém intervalu metriky |
+| velikosti |int |78 |Maximální hodnota nezpracovaných vzorků v časovém intervalu metriky |
+| čtení |int |258 |Celková hodnota nezpracovaných vzorků v časovém intervalu metriky |
+| count |int |4 |Počet nezpracovaných vzorků použitých k vygenerování metriky |
+| timegrain |string |"PT1M" |Časový interval metriky v normě ISO 8601 |
 
-Všechny metriky se vykazují v minutových intervalech. Každý metrika uvádí minimální, maximální a průměrné hodnoty za minutu.
+Všechny metriky jsou hlášeny v intervalu 1 minuty. Každá metrika zpřístupňuje minimální, maximální a průměrné hodnoty za minutu.
 
-Metriky SearchQueriesPerSecond minimum je nejnižší hodnota vyhledávací dotazy za sekundu, která byla zaregistrována tohoto minutě. Totéž platí i pro maximální hodnotu. Průměr je agregace napříč celou minutu.
-Představte si, že o tomto scénáři během jedné minuty: jedné sekundy vysoké zatížení, který je maximální pro SearchQueriesPerSecond, za nímž následuje 58 sekund průměrné zatížení a nakonec jedné sekundy se jenom jeden dotaz, což je minimální.
+V případě metriky SearchQueriesPerSecond je minimální hodnotou pro vyhledávací dotazy za sekundu, která byla zaregistrována během této minuty. Totéž platí pro maximální hodnotu. Průměrná hodnota je agregovaná napříč celou minutou.
+Zamyslete se nad tímto scénářem v průběhu jedné minuty: jednu sekundu vysokého zatížení, která je maximální hodnota pro SearchQueriesPerSecond, následované 58 sekundami průměrného zatížení a nakonec jednu sekundou pouze s jedním dotazem, což je minimální hodnota.
 
-Pro ThrottledSearchQueriesPercentage, minimální, maximální, průměrné a celkový počet, všechny mají stejnou hodnotu: procento vyhledávacích dotazů, které byly omezené z celkového počtu vyhledávací dotazy za jednu minutu.
+Pro ThrottledSearchQueriesPercentage, minimum, maximum, průměr a součet musí mít všechny stejnou hodnotu: procento vyhledávacích dotazů, které byly omezeny, z celkového počtu vyhledávacích dotazů během jedné minuty.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Stažení a otevření v Visual Studio Code
 
@@ -169,11 +168,11 @@ Po stažení souboru ho otevřete v editoru JSON, abyste mohli zobrazit jeho obs
 REST API Azure Search a .NET SDK poskytují programový přístup k metrikám služeb, indexům a informacím indexeru a počtům dokumentů.
 
 * [Získat statistiku služeb](/rest/api/searchservice/get-service-statistics)
-* [Získání statistik indexu](/rest/api/searchservice/get-index-statistics)
+* [Získat statistiku indexu](/rest/api/searchservice/get-index-statistics)
 * [Počet dokumentů](/rest/api/searchservice/count-documents)
 * [Získat stav indexeru](/rest/api/searchservice/get-indexer-status)
 
-Pokud chcete povolit pomocí Powershellu nebo rozhraní příkazového řádku Azure, najdete v dokumentaci [tady](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+Pokud chcete povolit použití PowerShellu nebo rozhraní příkazového řádku Azure CLI, přečtěte si [tu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 

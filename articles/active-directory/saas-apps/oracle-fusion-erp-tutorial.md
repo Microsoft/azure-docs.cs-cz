@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Oracle Fusion ERP | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím Oracle Fusion ERP | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Oracle Fusion ERP.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ba929ab13864664a823ba969ecb472812d946a9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5cd7ea1a20eb82d030e9bdabe76ff7d14a619d1e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989550"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373097"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Oracle Fusion ERP
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím Oracle Fusion ERP
 
 V tomto kurzu se dozvíte, jak integrovat řešení Oracle Fusion ERP s Azure Active Directory (Azure AD). Když integrujete službu Oracle Fusion ERP s Azure AD, můžete:
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat řešení Oracle Fusion ERP s Azure Ac
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -82,34 +82,34 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.fa.em2.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.fa.em2.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome`.
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Oracle Fusion ERP](https://www.oracle.com/applications/erp/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **Nastavení Oracle Fusion ERP** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k platformě Oracle Fusion ERP.
 
@@ -117,7 +117,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **Oracle Fusion ERP**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -129,19 +129,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-oracle-fusion-erp-sso"></a>Konfigurace Oracle Fusion ERP SSO
 
-Ke konfiguraci jednotného přihlašování na straně aplikace **Oracle Fusion ERP** je potřeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně aplikace **Oracle Fusion ERP** je potřeba odeslat stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Oracle Fusion ERP](https://www.oracle.com/applications/erp/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-oracle-fusion-erp-test-user"></a>Vytvořit testovacího uživatele pro Oracle Fusion ERP
 
-V této části vytvoříte uživatele s názvem Britta Simon v Oracle Fusion ERP. Pracujte s [týmem podpory Oracle Fusion ERP](mailto:jinshu.peethambaran@oracle.com) a přidejte uživatele v platformě Oracle Fusion ERP. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem Britta Simon v Oracle Fusion ERP. Pracujte s [týmem podpory Oracle Fusion ERP](https://www.oracle.com/applications/erp/) a přidejte uživatele v platformě Oracle Fusion ERP. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici Oracle Fusion ERP, měli byste být automaticky přihlášeni ke službě Oracle Fusion ERP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

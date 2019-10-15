@@ -13,38 +13,27 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 992bc7acbb02dcdbc33d00349ddc7ae821f3ed01
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264424"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329456"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
 > [!NOTE]
 > Tento článek popisuje, jak pochopit a řídit náklady na Application Insights.  Související článek, [sledování využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely.
 
-Pokud máte dotazy ohledně toho, jak ceny fungují pro Application Insights, můžete na našem [fóru](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights)odeslat dotaz.
+Application Insights je navržený tak, aby získal vše, co potřebujete k monitorování dostupnosti, výkonu a využití webových aplikací, ať už jsou hostované v Azure nebo místně. Application Insights podporuje oblíbené jazyky a architektury, jako je .NET, Java nebo Node. js, a integruje se s procesy a nástroji DevOps, jako je Azure DevOps, JIRA a PagerDuty. Je důležité porozumět tomu, co určuje náklady na monitorování vašich aplikací. V tomto článku se naučíte, jak vaše aplikace sleduje náklady a jak je můžete aktivně monitorovat a řídit.
+
+Pokud máte dotazy ohledně toho, jak ceny fungují pro Application Insights, můžete na našem [fóru](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)odeslat dotaz.
 
 ## <a name="pricing-model"></a>Cenový model
 
-Ceny za [Azure Application Insights][start] jsou Model průběžných plateb na základě ingestování objemu dat a volitelně i pro delší dobu uchovávání dat. Každý prostředek Application Insights se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. 
+Ceny za [Azure Application Insights][start] jsou Model průběžných **plateb** na základě ingestování objemu dat a volitelně pro delší dobu uchovávání dat. Každý prostředek Application Insights se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. Objem dat se měří jako velikost balíčku nekomprimovaného data JSON, který přijímá Application Insights z vaší aplikace. Za použití [Live Metrics Stream](../../azure-monitor/app/live-stream.md)se neúčtují žádné poplatky za objem dat.
 
-### <a name="data-volume-details"></a>Podrobnosti o objemu dat
-
-* Objem dat je počet bajtů telemetrie obdržených Application Insights. Objem dat se měří jako velikost balíčku nekomprimovaného data JSON, který přijímá Application Insights z vaší aplikace. Pro [tabulková data importovaná do analýz](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)se objem dat měří jako nekomprimovaná velikost souborů, které se odesílají do Application Insights.
-* Poplatky za datové objemy dat vaší aplikace se teď hlásí na novém měřiči fakturace s názvem ingestování **dat** od dubna 2018. Tento nový měřič se sdílí mezi technologiemi monitorování, jako jsou aplikace Insights a Log Analytics a je v současnosti pod názvem služby **Log Analytics**. 
-* Pro účely cen se nepočítají [Live Metrics Stream](../../azure-monitor/app/live-stream.md) data.
-
-> [!NOTE]
-> Všechny ceny zobrazené na snímcích obrazovky v tomto článku jsou třeba jenom pro účely. Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny][pricing].
-
-### <a name="multi-step-web-tests"></a>Webové testy s více kroky
-
-U [více kroků webové testy](../../azure-monitor/app/availability-multistep.md) se účtují další poplatky. Webové testy s více kroky jsou webové testy, které provádějí posloupnost akcí.
-
-Pro *testy pomocí příkazů testování* jedné stránky se neúčtují žádné samostatné poplatky. Telemetrie z testů příkazového testu a testů pro více kroků se účtují stejně jako jiné telemetrie z vaší aplikace.
+U [více kroků webové testy](../../azure-monitor/app/availability-multistep.md) se účtují další poplatky. Webové testy s více kroky jsou webové testy, které provádějí posloupnost akcí. Pro *testy pomocí příkazů testování* jedné stránky se neúčtují žádné samostatné poplatky. Telemetrie z testů příkazového testu a testů pro více kroků se účtují stejně jako jiné telemetrie z vaší aplikace.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Odhad nákladů na správu aplikace 
 
@@ -64,15 +53,17 @@ Pokud v cenové kalkulačce monitorování Azure pro Application Insights povol�
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Pochopení nákladů na využití a odhadované náklady
 
-Application Insights usnadňuje pochopení toho, jaké náklady budou pravděpodobně založeny na nedávných vzorech použití. Začněte tím, že v Azure Portal pro prostředek Application Insights přejdete na stránku **využití a odhadované náklady** :
+Application Insights usnadňuje pochopení toho, jaké náklady budou pravděpodobně založeny na nedávných vzorech použití. Začněte tím, že v Azure Portal pro prostředek Application Insights přejdete na stránku **využití a odhadované náklady** : 
 
 ![Zvolit ceny](./media/pricing/pricing-001.png)
 
-určitého. Prohlédněte si svůj objem dat za měsíc. To zahrnuje všechna data, která jsou přijatá a zachovaná (po případném [vzorkování](../../azure-monitor/app/sampling.md)) z vašich serverových a klientských aplikací, a z testů dostupnosti.  
-b. Pro [webové testy s více kroky](../../azure-monitor/app/availability-multistep.md)se provede samostatný poplatek. (Nezahrnuje jednoduché testy dostupnosti, které jsou zahrnuté do poplatků za objem dat.)  
-r. Zobrazení trendů objemu dat za minulý měsíc.  
-trojrozměrné. Povolit [vzorkování](../../azure-monitor/app/sampling.md)přijímání dat   
-Cerebrální. Nastavte limit denního objemu dat.  
+A. Prohlédněte si svůj objem dat za měsíc. To zahrnuje všechna data, která jsou přijatá a zachovaná (po případném [vzorkování](../../azure-monitor/app/sampling.md)) z vašich serverových a klientských aplikací, a z testů dostupnosti.  
+B. Pro [webové testy s více kroky](../../azure-monitor/app/availability-multistep.md)se provede samostatný poplatek. (Nezahrnuje jednoduché testy dostupnosti, které jsou zahrnuté do poplatků za objem dat.)  
+C. Zobrazení trendů objemu dat za minulý měsíc.  
+D. Povolit [vzorkování](../../azure-monitor/app/sampling.md)přijímání dat   
+E. Nastavte limit denního objemu dat.  
+
+(Všimněte si, že všechny ceny zobrazené na snímcích obrazovky v tomto článku jsou například jenom pro účely. Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny][pricing].)
 
 Pokud chcete prozkoumat využití Application Insightsější, otevřete stránku **metriky** , přidejte metriku s názvem "svazek datových bodů" a pak vyberte možnost *použít rozdělení* pro rozdělení dat podle typu položky telemetrie. 
 
@@ -149,7 +140,7 @@ Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Applica
 
 Chcete-li [změnit denní limit pomocí Azure Resource Manager](../../azure-monitor/app/powershell.md), vlastnost, která se má změnit, je `dailyQuota`.  Prostřednictvím Azure Resource Manager můžete také nastavit `dailyQuotaResetTime` a denní limit `warningThreshold`. 
 
-## <a name="sampling"></a>Kontrol
+## <a name="sampling"></a>Vzorkování
 [Vzorkování](../../azure-monitor/app/sampling.md) je metoda snížení míry, s jakou se telemetrie posílá do vaší aplikace, a přitom zachovává schopnost najít související události během vyhledávání diagnostiky. Zachováváte si také správné počty událostí.
 
 Vzorkování je účinný způsob, jak snížit náklady a zůstat v rámci měsíční kvóty. Algoritmus vzorkování uchovává související položky telemetrie, takže například při použití vyhledávání můžete najít požadavek související s určitou výjimkou. Algoritmus také uchovává správné počty, takže se v Průzkumníkovi metriky zobrazí správné hodnoty pro míry požadavků, míry výjimek a další počty.
@@ -183,7 +174,7 @@ Pokud chcete změnit dobu uchovávání, z prostředku Application Insights pře
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-005.png)
 
-Uchovávání je také možné [nastavit pomocí prostředí programově pomocí](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes ARM a měla by se používat s mimořádnou péčí. 
+Uchovávání je také možné [nastavit pomocí prostředí programově pomocí](https://docs.microsoft.com/azure/azure-monitor/app/powershell#set-the-data-retention) parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes Azure Resource Manager a měla by se používat s mimořádnou péčí. 
 
 Když se fakturace začne po delší dobu od 15. prosince 2019, data uchovávaná déle než 90 dnů se budou účtovat jako stejná sazba, která se aktuálně účtuje za Azure Log Analytics uchovávání dat. Další informace najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). [Pro tento návrh](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)můžete mít přehled o průběhu proměnlivého uchovávání dat. 
 
@@ -240,7 +231,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 | Scénář                               | Celkový počet denních uzlů |
 |:---------------------------------------|:----------------:|
 | 1 aplikace s využitím 3 instancí Azure App Service a 1 virtuálního serveru | 4 |
-| 3 aplikace běžící na 2 virtuálních počítačích; prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a na úrovni jednotlivých uzlů. | odst | 
+| 3 aplikace běžící na 2 virtuálních počítačích; prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a na úrovni jednotlivých uzlů. | 2 | 
 | 4 aplikace, jejichž prostředky Application Insights jsou ve stejném předplatném. Každá aplikace, která spouští 2 instance během 16 hodin špičky, a 4 instance během 8 hodin špičky | 13,33 | 
 | Cloudové služby s 1 rolí pracovního procesu a 1 webovou rolí, každá spuštěná 2 instance | 4 | 
 | Cluster Azure Service Fabric s 5 uzly, který běží na mikroslužbách 50; Každá mikroslužba běžící na 3 instancích | 5|
@@ -251,14 +242,14 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
   * Pokud vaše aplikace používá sadu SDK k nastavení **roleInstance** na vlastní hodnotu, je ve výchozím nastavení použita stejná hodnota k určení počtu uzlů. 
   * Pokud používáte novou verzi sady SDK s aplikací, která běží z klientských počítačů nebo mobilních zařízení, počet uzlů může vracet velký počet velmi velkých (z důvodu velkého počtu klientských počítačů nebo mobilních zařízení). 
 
-## <a name="automation"></a>Automatizace
+## <a name="automation"></a>Automation
 
-Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové úrovně. [Přečtěte si, jak](powershell.md#price).
+Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové úrovně. [Zjistěte jak](powershell.md#price).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kontrol](../../azure-monitor/app/sampling.md)
+* [Vzorkování](../../azure-monitor/app/sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties

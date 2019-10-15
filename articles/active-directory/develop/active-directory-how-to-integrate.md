@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835369"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374038"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
@@ -37,7 +37,7 @@ Existuje několik způsobů, jak se vaše aplikace integruje s Azure AD. Využij
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora Azure AD jako způsobu přihlášení k aplikaci
 
-**Snižte tření při přihlašování a snižte náklady na podporu.** Když ke své aplikaci přihlašujete pomocí Azure AD, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Pravomoci Azure AD se přihlásí pro některé z nejoblíbenějších cloudových aplikací světa, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil ke službě Azure AD. Přečtěte si další informace o [Přidání podpory pro přihlášení ke službě Azure AD](authentication-scenarios.md).
+**Snižte tření při přihlašování a snižte náklady na podporu.** Když ke své aplikaci přihlašujete pomocí Azure AD, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Pravomoci Azure AD se přihlásí pro některé z nejoblíbenějších cloudových aplikací světa, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil ke službě Azure AD. Přečtěte si další informace o [Přidání podpory pro přihlášení ke službě Azure AD](v1-authentication-scenarios.md).
 
 **Zjednodušte si registraci své aplikace.**  Při registraci vaší aplikace může Azure AD odeslat základní informace o uživateli, abyste mohli předem vyplnit formulář pro registraci, nebo ho úplně eliminovat. Uživatelé se můžou k vaší aplikaci zaregistrovat pomocí svého účtu Azure AD prostřednictvím známého prostředí pro vyjádření souhlasu, které se podobá těm, která se nacházejí v sociálních médiích a mobilních aplikacích. Každý uživatel se může zaregistrovat a přihlásit k aplikaci, která je integrovaná s Azure AD bez nutnosti zapojení IT. Přečtěte si další informace o [registraci aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
@@ -77,7 +77,7 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují zápis d
 
 ### <a name="advanced-security-features"></a>Rozšířené funkce zabezpečení
 
-**Multi-Factor Authentication.**  Azure AD poskytuje nativní službu Multi-Factor Authentication. Správci IT můžou pro přístup k vaší aplikaci vyžadovat vícefaktorové ověřování, takže tuto podporu nemusíte zakódovat sami. Přečtěte si další informace o službě [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**Multi-Factor Authentication.**  Azure AD poskytuje nativní službu Multi-Factor Authentication. Správci IT můžou pro přístup k vaší aplikaci vyžadovat vícefaktorové ověřování, takže tuto podporu nemusíte zakódovat sami. Přečtěte si další informace o [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
 **Neobvyklé zjišťování přihlášení.**  Služba Azure AD zpracovává více než miliarda přihlášení denně a při použití algoritmů strojového učení ke zjištění podezřelých aktivit a oznamuje správcům IT možné problémy. Díky podpoře přihlášení Azure AD získá aplikace výhodu této ochrany. Přečtěte si další informace o [zobrazení sestavy Azure Active Directory Access](../active-directory-view-access-usage-reports.md).
 
@@ -93,9 +93,9 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují zápis d
 
 **Služba Azure AD je nasazená v datových centrech po celém světě a je spravovaná a monitorovaná v reálném čase.**  Azure AD je systém správy identit pro Microsoft Azure a Office 365 a je nasazený ve 28 datacentrech po celém světě. Je zaručeno, že data adresáře budou replikována alespoň do tří datových center. Globální nástroje pro vyrovnávání zatížení zajišťují uživatelům přístup k nejbližší kopii služby Azure AD obsahující jejich data a při zjištění problému automaticky přesměrují požadavky do jiných datových center.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začněte [psát kód](v2-overview.md#getting-started).
 
-[Podepisování uživatelů při používání platformy Microsoft Identity Platform](authentication-scenarios.md)
+[Podepisování uživatelů při používání platformy Microsoft Identity Platform](v1-authentication-scenarios.md)
 

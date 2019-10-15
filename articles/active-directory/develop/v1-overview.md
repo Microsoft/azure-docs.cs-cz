@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e790728cbc7415532754d10773d466e9a0280422
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834664"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373913"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Přehled Azure Active Directory pro vývojáře (v 1.0)
 
@@ -33,11 +33,11 @@ Azure Active Directory (Azure AD) je cloudová služba identit umožňující v�
 
 | | |
 | --- | --- |
-|[Základy ověřování](authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
+|[Základy ověřování](v1-authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
 |[Typy aplikací](app-types.md) | Přehled scénářů ověřování, které podporuje Azure AD |
 | | |
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 
 Rychlé starty a kurzy v 1.0 vás provedou vytvořením aplikace na upřednostňované platformě pomocí sady SDK knihovny ověřování v Azure AD. Pokud chcete začít, podívejte se na **kurzy** **rychlý Start v 1.0** a v 1.0 v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](index.yml) .
 

@@ -1,21 +1,21 @@
 ---
-title: Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv pomocí služby Azure blockchain
+title: Použití Visual Studio Code – služba Azure blockchain
 description: Kurz týkající se použití rozšíření Azure blockchain Development Kit pro rozšíření Ethereem v Visual Studio Code k vytvoření, sestavení a nasazení inteligentních kontraktů ve službě Azure blockchain Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935029"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329241"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Kurz: Použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Kurz: použití Visual Studio Code k vytváření, sestavování a nasazování inteligentních smluv
 
 V tomto kurzu pomocí rozšíření Azure blockchain Development Kit pro Ethereem v Visual Studio Code vytvoříte, sestavíte a nasadíte inteligentní smlouvu na Azure blockchain Service. Pomocí Truffle můžete také spustit funkci inteligentního kontraktu prostřednictvím transakce.
 
@@ -29,15 +29,15 @@ Pomocí Azure blockchain Development Kit pro Ethereem:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Kompletní [rychlé spuštění: Použití Visual Studio Code k připojení k síti konsorcia Azure blockchain](connect-vscode.md)
+* Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
 
 ## <a name="create-a-smart-contract"></a>Vytvoření inteligentního kontraktu
 
-Sada Azure blockchain Development Kit pro Ethereem používá projektové šablony a nástroje Truffle, které vám pomůžou vytvářet kontrakty pro generování a nasazení. Než začnete, dokončete [rychlý úvodní kurz: Pomocí Visual Studio Code se připojte k síti](connect-vscode.md)konsorcia Azure blockchain. Rychlý Start vás provede instalací a konfigurací sady Azure blockchain Development Kit pro Ethereem.
+Sada Azure blockchain Development Kit pro Ethereem používá projektové šablony a nástroje Truffle, které vám pomůžou vytvářet kontrakty pro generování a nasazení. Než začnete, dokončete potřebný [rychlý Start: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací a konfigurací sady Azure blockchain Development Kit pro Ethereem.
 
-1. Z palety příkazů vs Code vyberte **blockchain Azure: Nový projekt**soliding.
+1. Z palety příkazů VS Code vyberte **Azure blockchain: nový projekt soliding**.
 1. Vyberte **vytvořit základní projekt**.
 1. Vytvořte novou složku s názvem `HelloBlockchain` a **Vyberte možnost Nová cesta k projektu**.
 
@@ -104,7 +104,7 @@ Funkce **SendRequest** kontraktu **HelloBlockchain** změní proměnnou stavu **
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Nahraďte \<blockchain\> síť názvem sítě blockchain definované v **Truffle-config. js**.
+    Nahraďte \<blockchain síť @ no__t-1 názvem sítě blockchain definované v **Truffle-config. js**.
 
 Truffle spustí skript ve vaší síti blockchain.
 
@@ -159,7 +159,7 @@ Funkce inteligentních kontraktů mohou vracet aktuální hodnotu proměnných s
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Nahraďte \<blockchain\> síť názvem sítě blockchain definované v **Truffle-config. js**.
+    Nahraďte \<blockchain síť @ no__t-1 názvem sítě blockchain definované v **Truffle-config. js**.
 
 Skript se dotazuje na inteligentní kontrakt zavoláním funkce GetMessage. Vrátí se aktuální hodnota **RequestMessage** stavu proměnné.
 
@@ -175,14 +175,14 @@ Všimněte si, že hodnota není **Hello, blockchain!** . Místo toho je vrácen
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete prostředky odstranit tak, že `myResourceGroup` odstraníte skupinu prostředků, kterou jste vytvořili v rychlém startu průvodce *vytvořením blockchain člena* .
+Pokud už je nepotřebujete, můžete prostředky odstranit odstraněním skupiny prostředků `myResourceGroup`, kterou jste vytvořili v rychlém startu pro *vytváření požadovaných členů blockchain* .
 
 Odstranění skupiny prostředků:
 
 1. V Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
 1. Vyberte **Odstranit skupinu prostředků**. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili ukázkový projekt s ukázkou pomocí Azure blockchain Development Kit. Vystavíte a nasadili jste inteligentní kontrakt a pak jste volali funkci prostřednictvím transakce v síti konsorcia blockchain, která je hostovaná ve službě Azure blockchain.
 

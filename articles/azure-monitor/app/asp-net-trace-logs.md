@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 125f1bc14a376523a22984e9d8efa7848408bf7a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 654e4bc35de1ed33842944ba360d319705589683
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035206"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372511"
 ---
-# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core v Application Insights
+# <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
 
-Odešle protokoly diagnostiky trasování pro vaši aplikaci ASP.NET/ASP.NET Core z ILogger, NLog, log4Net nebo System. Diagnostics. Trace do [Azure Application Insights][start]. Pak je můžete prozkoumat a vyhledat. Tyto protokoly jsou sloučeny s dalšími soubory protokolu z vaší aplikace, takže můžete identifikovat trasování, které jsou spojeny s jednotlivými požadavky uživatelů a korelovat je s jinými událostmi a sestavami výjimek.
+Odešle protokoly diagnostiky trasování pro vaši aplikaci ASP.NET/ASP.NET Core z ILogger, NLog, log4Net nebo System. Diagnostics. Trace do [Azure Application Insights][start]. V případě aplikací Pythonu odešlete protokoly diagnostiky trasování pomocí AzureLogHandler v OpenCensus Pythonu pro Azure Monitor. Pak je můžete prozkoumat a vyhledat. Tyto protokoly jsou sloučeny s dalšími soubory protokolu z vaší aplikace, takže můžete identifikovat trasování, které jsou spojeny s jednotlivými požadavky uživatelů a korelovat je s jinými událostmi a sestavami výjimek.
 
 > [!NOTE]
 > Potřebujete modul pro zachycení protokolů? Je to užitečný adaptér pro protokolovací nástroje třetích stran. Pokud však již nepoužíváte NLog, log4Net nebo System. Diagnostics. Trace, zvažte, zda přímo zavoláte [**Application Insights TrackTrace ()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) .
@@ -58,19 +58,19 @@ Tuto metodu použijte, pokud váš typ projektu není podporován instalačním 
 3. Vyhledejte "Application Insights".
 4. Vyberte jeden z následujících balíčků:
 
-   - Pro ILogger: [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - Pro ILogger: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - Pro NLog: [Microsoft.ApplicationInsights.NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Pro NLog: [Microsoft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Pro Log4Net: [Microsoft.ApplicationInsights.Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Pro Log4Net: [Microsoft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - Pro System. Diagnostics: [Microsoft.ApplicationInsights.TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - Pro System. Diagnostics: [Microsoft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 [![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 Pokud je to možné, balíček NuGet nainstaluje potřebná sestavení a upraví soubor Web. config nebo App. config.
@@ -89,7 +89,7 @@ Pokud dáváte přednost log4net nebo NLog, použijte:
     logger.Warn("Slow response - database01");
 
 ## <a name="use-eventsource-events"></a>Použití událostí EventSource
-Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` oddíl souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte balíček NuGet `Microsoft.ApplicationInsights.EventSourceListener`. Pak upravte část `TelemetryModules` v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -101,11 +101,11 @@ Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](ht
 
 Pro každý zdroj můžete nastavit následující parametry:
  * **Název** Určuje název EventSource, který se má shromáždit.
- * **Úroveň** určuje úroveň protokolování, která se má shromáždit: *Kritická*, *Chyba*, *informativní*, *LogAlways*, *verbose*nebo *Warning*.
+ * **Úroveň** určuje úroveň protokolování, která se má shromáždit: *kritická*, *Chyba*, *informativní*, *LogAlways*, *verbose*nebo *Warning*.
  * **Klíčová slova** (volitelné) zadejte celočíselnou hodnotu kombinací klíčového slova, které chcete použít.
 
 ## <a name="use-diagnosticsource-events"></a>Použití událostí DiagnosticSource
-Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) , které budou odeslány do Application Insights jako trasování. Nejdřív nainstalujte [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) balíček NuGet. Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) , které budou odeslány do Application Insights jako trasování. Nejdřív nainstalujte balíček NuGet [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) . Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -118,7 +118,7 @@ Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https:
 Pro každý DiagnosticSource, který chcete trasovat, přidejte položku s atributem **Name** nastaveným na název vaší DiagnosticSource.
 
 ## <a name="use-etw-events"></a>Použít události ETW
-Můžete nakonfigurovat události trasování událostí pro Windows (ETW), které se mají odeslat Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EtwCollector` balíček NuGet. Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události trasování událostí pro Windows (ETW), které se mají odeslat Application Insights jako trasování. Nejdřív nainstalujte balíček NuGet `Microsoft.ApplicationInsights.EtwCollector`. Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 > [!NOTE] 
 > Události ETW se můžou shromažďovat jenom v případě, že se proces, který hostuje sadu SDK, spouští pod identitou, která je členem skupiny Performance Log Users nebo Administrators.
@@ -135,19 +135,19 @@ Pro každý zdroj můžete nastavit následující parametry:
  * **ProviderName** je název zprostředkovatele ETW, který se má shromáždit.
  * **ProviderGuid** Určuje identifikátor GUID zprostředkovatele ETW, který se má shromáždit. Dá se použít místo `ProviderName`.
  * **Level** nastaví úroveň protokolování na shromažďovat. Může to být *kritická*, *Chyba*, *informativní*, *LogAlways*, *verbose*nebo *Warning*.
- * **Klíčová slova** (volitelné) nastavte celočíselnou hodnotu kombinací klíčového slova, které se mají použít.
+ * **Klíčová slova** (volitelné) nastavte celočíselnou hodnotu kombinací klíčových slov, která se má použít.
 
 ## <a name="use-the-trace-api-directly"></a>Přímé použití rozhraní API trasování
 Rozhraní API pro trasování Application Insights můžete volat přímo. Toto rozhraní API používají adaptéry protokolování.
 
-Příklad:
+Například:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.
 
-Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -155,6 +155,23 @@ Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné
                    new Dictionary<string,string> { {"database", db.ID} });
 
 To vám umožní snadno odfiltrovat ve [vyhledávání][diagnostic] všechny zprávy určité úrovně závažnosti, které se vztahují k určité databázi.
+
+## <a name="azureloghandler-for-opencensus-python"></a>AzureLogHandler pro OpenCensus Python
+Obslužná rutina protokolu Azure Monitor umožňuje exportovat protokoly Pythonu pro Azure Monitor.
+
+Instrumentujte svoji aplikaci pomocí [sady OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) pro Azure monitor.
+
+V tomto příkladu se dozvíte, jak odeslat Azure Monitor protokolu úrovně upozornění.
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>'))
+logger.warning('Hello, World!')
+```
 
 ## <a name="explore-your-logs"></a>Prozkoumat protokoly
 Spusťte aplikaci v režimu ladění nebo ji nasaďte živě.
@@ -169,7 +186,7 @@ Můžete například:
 * Uložte konfiguraci stránky jako oblíbenou.
 
 > [!NOTE]
->Pokud vaše aplikace odesílá spoustu dat a používáte sadu SDK Application Insights pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce adaptivního *vzorkování* fungovat a odesílat jenom část telemetrie. [Přečtěte si další informace o vzorkování.](../../azure-monitor/app/sampling.md)
+>Pokud vaše aplikace odesílá spoustu dat a používáte sadu SDK Application Insights pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce *adaptivního vzorkování* fungovat a odesílat jenom část telemetrie. [Přečtěte si další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 >
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -177,7 +194,7 @@ Můžete například:
 Použijte [adaptéry protokolu Java](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>V místní nabídce projektu není žádná možnost Application Insights
-* Ujistěte se, že je ve vývojovém počítači nainstalován Developer Analytics Tools. V**rozšířeních a aktualizacích** **nástrojů** > sady Visual Studio vyhledejte **Developer Analytics Tools**. Pokud není na kartě **nainstalované** , otevřete **online** kartu a nainstalujte ji.
+* Ujistěte se, že je ve vývojovém počítači nainstalován Developer Analytics Tools. V nástroji Visual Studio **Tools**@no__t – 1**rozšíření a aktualizace**vyhledejte **Developer Analytics Tools**. Pokud není na kartě **nainstalované** , otevřete **online** kartu a nainstalujte ji.
 * Může to být typ projektu, který nástroje devloper Analytics Tools nepodporuje. Použijte [ruční instalaci](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>V konfiguračním nástroji není žádná možnost adaptéru protokolu.
@@ -202,7 +219,7 @@ Pokud vaše aplikace odesílá voluminous množství dat a používáte sadu SDK
 * [Diagnostika selhání a výjimek v ASP.NET][exceptions]
 * [Další informace o hledání][diagnostic]
 * [Nastavení testů dostupnosti a odezvy][availability]
-* [Odstraňování potíží][qna]
+* [Řešení potíží][qna]
 
 <!--Link references-->
 

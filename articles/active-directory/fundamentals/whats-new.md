@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/15/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174737"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373548"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -40,6 +40,16 @@ Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu n
 ---
 
 ## <a name="september-2019"></a>Září 2019
+
+### <a name="deprecation-of-the-power-bi-content-packs"></a>Vyřazení balíčků obsahu Power BI
+
+**Zadejte:** Zastaralé  
+**Kategorie služby:** Zpravodajský  
+**Schopnost produktu:** Monitorování & vytváření sestav
+
+Power BI zastaraly balíčky obsahu od jejich Storu a od 1. **října 2019**už nepodporujeme balíček obsahu Power BI Azure AD. Zákazníci, kteří aktuálně používají balíček obsahu, ho můžou dál používat i v případě, že jsou základní rozhraní API starší verze. Jako alternativu k tomuto balíčku obsahu můžete použít sešity Azure AD (postavené na Log Analytics) a získat přehled o službách souvisejících s Azure AD.
+
+Další informace o sešitech najdete v tématu [Jak používat Azure monitor sešity pro Azure Active Directory sestavy](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Další informace o vyřazení balíčků obsahu najdete v blogovém příspěvku s [oznámením o obecných dostupnosti pro Power BI šablonových aplikací](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Můj profil se znovu pojmenovává a integruje se stránkou systém Microsoft Office účtu.
 
@@ -647,7 +657,7 @@ Další informace o těchto aktualizacích najdete v tématech [filtrování pro
 
 ---
 
-## <a name="june-2019"></a>Červen 2019
+## <a name="june-2019"></a>Červeně 2019
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Nové rozhraní riskDetections API pro Microsoft Graph (Public Preview)
 

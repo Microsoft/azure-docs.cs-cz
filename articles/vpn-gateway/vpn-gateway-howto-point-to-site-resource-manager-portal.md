@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: ea80fda927d293d743f1fdc69f9a7f5fa29838fa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266581"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333241"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
 Tento článek vám pomůže bezpečně připojit jednotlivé klienty se systémem Windows, Linux nebo Mac OS X k virtuální síti Azure. Připojení VPN typu Point-to-Site jsou užitečná, když se chcete ke své virtuální síti připojit ze vzdáleného umístění, například při práci z domova nebo z místa konání konference. Místo sítě VPN Site-to-Site můžete také použít P2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo protokolu IKEv2. Další informace o síti VPN Point-to-Site najdete v článku věnovaném [síti VPN typu Point-to-Site](point-to-site-about.md).
 
@@ -37,18 +37,18 @@ Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můž
 * **Adresní prostor:** 192.168.0.0/16<br>V tomto příkladu používáme pouze jeden adresní prostor. Pro svoji virtuální síť můžete mít více adresních prostorů.
 * **Název podsítě:** FrontEnd
 * **Rozsah adres podsítě:** 192.168.1.0/24
-* **Formě** Pokud máte více než jedno předplatné, ověřte, že používáte správný.
+* **Předplatné:** Ujistěte se, že máte správné předplatné, pokud máte více než jedno.
 * **Skupina prostředků:** TestRG
-* **Location:** East US
-* **GatewaySubnet:** 192.168.200.0/24<br>
+* **Umístění:** Východní USA
+* **Podsíť brány:** 192.168.200.0/24<br>
 * **Název brány virtuální sítě:** VNet1GW
 * **Typ brány:** Síť VPN
-* **Typ sítě VPN:** Trasové
+* **Typ sítě VPN:** Založená na trasách
 * **Název veřejné IP adresy:** VNet1GWpip
 * **Typ připojení:** Point-to-Site
 * **Fond adres klienta:** 172.16.201.0/24<br>Klienti VPN, kteří se budou k virtuální síti připojovat pomocí tohoto připojení typu Point-to-Site, získají IP adresu ze zadaného fondu adres klienta.
 
-## <a name="createvnet"></a>1. Vytvoření virtuální sítě
+## <a name="createvnet"></a>1. vytvoření virtuální sítě
 
 Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
@@ -65,21 +65,21 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 >SKU brány úrovně Basic nepodporuje ověřování IKEv2 nebo RADIUS. Pokud plánujete, že se klienti se systémem Mac připojí k vaší virtuální síti, nepoužívejte základní SKU.
 >
 
-## <a name="generatecert"></a>3. Generování certifikátů
+## <a name="generatecert"></a>3. generování certifikátů
 
 Azure používá certifikáty k ověřování klientů, kteří se připojují k virtuální síti přes připojení VPN typu Point-to-Site. Jakmile získáte kořenový certifikát, [nahrajete](#uploadfile) do Azure informace o veřejném klíči. Azure pak kořenový certifikát považuje za důvěryhodný pro připojení k virtuální síti přes Point-to-Site. Z kořenového certifikátu také generujete klientské certifikáty, které pak nainstalujete na každém klientském počítači. Klientský certifikát se používá k ověřování klienta při zahájení připojení k virtuální síti. 
 
-### <a name="getcer"></a>1. Získání souboru .cer pro kořenový certifikát
+### <a name="getcer"></a>1. získání souboru. cer pro kořenový certifikát
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="generateclientcert"></a>2. Vygenerování klientského certifikátu
+### <a name="generateclientcert"></a>2. vygenerujte klientský certifikát.
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="addresspool"></a>4. Přidání fondu adres klienta
+## <a name="addresspool"></a>4. přidejte fond adres klienta.
 
-Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti připojující se přes síť VPN typu Point-to-Site dynamicky obdrží IP adresu z tohoto rozsahu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se připojujete, ani s virtuální sítí, ke které se chcete připojit.
+Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti připojující se přes síť VPN typu Point-to-Site dynamicky obdrží IP adresu z tohoto rozsahu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se připojujete, ani s virtuální sítí, ke které se chcete připojit. Pokud nakonfigurujete více protokolů a SSTP je jedním z protokolů, nakonfigurované fondy adres se rovnoměrně rozdělí mezi nakonfigurované protokoly.
 
 1. Jakmile je brána virtuální sítě vytvořená, přejděte do části **Nastavení** na stránce brány virtuální sítě. V části **Nastavení** klikněte na **Konfigurace Point-to-site (P2S)** .
 
@@ -89,25 +89,25 @@ Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti při
    ![Nakonfigurovat](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. Na stránce konfigurace **Point-to-Site** přidejte do pole **Fond adres** rozsah privátních IP adres, který chcete použít. Klienti VPN dynamicky obdrží IP adresu z rozsahu, který zadáte. Minimální maska podsítě je 29 bitů pro aktivní/pasivní a 28 bitů pro konfiguraci aktivní/aktivní. Kliknutím na **Uložit** ověřte a uložte nastavení.
 
-   ![Fond adres klientů](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![Fond adres klienta](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
    >[!NOTE]
    >Pokud se na této stránce portálu nezobrazí typ tunelu nebo typ ověřování, vaše brána používá skladovou položku Basic. Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
    >
 
-## <a name="tunneltype"></a>5. Konfigurace typu tunelového propojení
+## <a name="tunneltype"></a>5. konfigurace typu tunelu
 
 Můžete vybrat typ tunelového propojení. Možnosti tunelu jsou OpenVPN, SSTP a IKEv2. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOSu a OSX budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. Klienta OpenVPN můžete použít pro připojení k typu tunelu OpenVPN.
 
 ![Typ tunelového propojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
-## <a name="authenticationtype"></a>6. Konfigurace typu ověřování
+## <a name="authenticationtype"></a>6. konfigurace typu ověřování
 
 Vyberte **certifikát Azure**.
 
   ![Typ tunelového propojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
-## <a name="uploadfile"></a>7. Nahrání dat veřejného klíče kořenového certifikátu
+## <a name="uploadfile"></a>7. Nahrajte data veřejného certifikátu kořenového certifikátu.
 
 Můžete nahrát další důvěryhodné kořenové certifikáty až do celkového počtu 20. Jakmile jsou data veřejného certifikátu nahraná, Azure ho může použít k ověřování klientů s nainstalovaným klientským certifikátem vygenerovaným z důvěryhodného kořenového certifikátu. Nahrajte do Azure informace o veřejném klíči pro kořenový certifikát.
 
@@ -123,7 +123,7 @@ Můžete nahrát další důvěryhodné kořenové certifikáty až do celkovéh
 
    ![Uložit](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
-## <a name="installclientcert"></a>8. Instalace exportovaného klientského certifikátu
+## <a name="installclientcert"></a>8. instalace exportovaného klientského certifikátu
 
 Pokud chcete vytvořit připojení P2S z jiného klientského počítače, než který jste použili k vytvoření klientských certifikátů, budete muset klientský certifikát nainstalovat. Při instalaci klientského certifikátu budete potřebovat heslo, které bylo vytvořeno při jeho exportu.
 
@@ -131,11 +131,11 @@ Zkontrolujte, že se klientský certifikát vyexportoval jako soubor .pfx spolu 
 
 Postup instalace najdete v tématu věnovaném [instalaci klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="clientconfig"></a>9. Vygenerování a instalace konfiguračního balíčku klienta VPN
+## <a name="clientconfig"></a>9. vygenerujte a nainstalujte konfigurační balíček klienta VPN.
 
 Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zařízení, která umožňuje připojit se k virtuální síti přes připojení P2S. Pokyny pro generování a instalaci konfiguračních souborů klienta VPN najdete v tématu věnovaném [vytvoření a instalaci konfiguračních souborů klienta VPN pro konfigurace PS2 s nativním ověřováním certifikátů Azure](point-to-site-vpn-client-configuration-azure-cert.md).
 
-## <a name="connect"></a>10. Připojení k Azure
+## <a name="connect"></a>10. připojení k Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Připojení z klienta VPN systému Windows
 

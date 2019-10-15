@@ -1,19 +1,19 @@
 ---
-title: Klauzule ORDER by ve službě Azure Cosmos DB
-description: Další informace o SQL klauzule ORDER by pro službu Azure Cosmos DB. Použití SQL jako dotazovací jazyk Azure Cosmos DB JSON.
+title: Klauzule ORDER BY v Azure Cosmos DB
+description: Přečtěte si o klauzuli ORDER BY jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: d0a1ed33d5848c3ed8d5f83af8b320d77fe0dc65
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342473"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326840"
 ---
-# <a name="order-by-clause"></a>ORDER BY – klauzule
+# <a name="order-by-clause-in-azure-cosmos-db"></a>Klauzule ORDER BY v Azure Cosmos DB
 
 Volitelná klauzule ORDER BY určuje pořadí řazení pro výsledky vrácené dotazem.
 
@@ -29,31 +29,31 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Určuje vlastnost nebo výraz, podle kterého chcete řazení sady výsledků dotazu. Sloupec pro řazení lze zadat jako alias názvu nebo vlastnosti.  
+   Určuje vlastnost nebo výraz, pro který se má seřadit sada výsledků dotazu. Sloupec řazení lze zadat jako název nebo alias vlastnosti.  
   
-   Je možné zadat víc vlastností. Názvy vlastností musí být jedinečný. Posloupnost vlastnosti řazení v klauzuli ORDER by definuje organizace sady seřazených výsledků. To znamená sada výsledků je seřazený podle první vlastnost a potom tuto seřazený seznam je seřazen podle druhý vlastnosti a tak dále.  
+   Lze zadat více vlastností. Názvy vlastností musí být jedinečné. Pořadí vlastností řazení v klauzuli ORDER BY definuje organizaci seřazené sady výsledků. To znamená, že sada výsledků je seřazená podle první vlastnosti a pak je seřazená podle druhé vlastnosti, a tak dále.  
   
-   Názvy vlastností, které odkazuje v klauzuli ORDER by musí odpovídat vlastnosti v seznamu select nebo vlastnosti definované v kolekci specifikované v klauzuli FROM bez jakékoli nejednoznačnosti.  
+   Názvy vlastností, na které odkazuje klauzule ORDER BY, musí odpovídat buď vlastnosti v seznamu SELECT, nebo vlastnosti definované v kolekci určené v klauzuli FROM bez nejednoznačnosti.  
   
 - `<sort_expression>`  
   
-   Určuje jeden nebo více vlastností nebo výrazy, na kterém se má seřadit sady výsledků dotazu.  
+   Určuje jednu nebo více vlastností nebo výrazů, u kterých se má seřadit sada výsledků dotazu.  
   
 - `<scalar_expression>`  
   
-   Zobrazit [skalární výrazy](sql-query-scalar-expressions.md) podrobné informace.  
+   Podrobnosti najdete v části [skalární výrazy](sql-query-scalar-expressions.md) .  
   
 - `ASC | DESC`  
   
-   Určuje, zda mají být řazeny hodnot v zadaném sloupci ve vzestupném nebo sestupném pořadí. ASC řadí od nejnižší hodnoty po nejvyšší hodnotu. DESC seřadí od nejvyšší hodnotu na nejnižší hodnotu. ASC se použije výchozí pořadí řazení. Hodnoty Null jsou považovány za nejnižší možné hodnoty.  
+   Určuje, že hodnoty v zadaném sloupci by měly být seřazené ve vzestupném nebo sestupném pořadí. ASC seřadí z nejnižší hodnoty na nejvyšší hodnotu. DESC seřadí z nejvyšší hodnoty na nejnižší hodnotu. Výchozím pořadím řazení je ASC. Hodnoty null se považují za nejnižší možné hodnoty.  
   
 ## <a name="remarks"></a>Poznámky  
   
-   Klauzule ORDER by vyžaduje zásady indexování index pro pole seřazený. Modul runtime dotazu služby Azure Cosmos DB podporuje řazení proti název vlastnosti a ne vypočítané vlastnosti. Azure Cosmos DB podporuje více vlastností klauzule ORDER BY. Chcete-li spustit dotaz s více vlastnostmi klauzule ORDER BY, byste měli definovat [složeném indexu](index-policy.md#composite-indexes) na seřazený pole.
+   Klauzule ORDER BY vyžaduje, aby zásady indexování zahrnovaly index pro pole, která se seřadí. Modul runtime dotazu Azure Cosmos DB podporuje řazení proti názvu vlastnosti a nikoli k vypočítaným vlastnostem. Azure Cosmos DB podporuje více pořadí podle vlastností. Chcete-li spustit dotaz s více OBJEDNÁVKAmi podle vlastností, měli byste pro pole, která jsou seřazena, definovat [složený index](index-policy.md#composite-indexes) .
 
 ## <a name="examples"></a>Příklady
 
-Například tady je dotaz, který načte rodiny ve vzestupném pořadí název města rezidenční:
+Tady je příklad dotazu, který načte rodiny ve vzestupném pořadí podle jména rezidentního města:
 
 ```sql
     SELECT f.id, f.address.city
@@ -76,7 +76,7 @@ Výsledky jsou:
     ]
 ```
 
-Následující dotaz načte řady `id`s v pořadí podle jejich datum vytvoření položky. Položka `creationDate` je představující číslo *unixovém čase*, nebo uplynulý čas od dne do 1, 1970 v řádu sekund.
+Následující dotaz načte rodinu `id`s v pořadí data vytvoření položky. Item `creationDate` je číslo představující *epocha čas*nebo uplynulý čas od ledna. 1, 1970 v sekundách.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -99,7 +99,7 @@ Výsledky jsou:
     ]
 ```
 
-Kromě toho můžete uspořádat podle několika vlastností. Dotaz, který seřadí podle několika vlastností vyžaduje [složeném indexu](index-policy.md#composite-indexes). Vezměte v úvahu následující dotaz:
+Navíc můžete řadit podle více vlastností. Dotaz, který ORDER by s více vlastnostmi vyžaduje [složený index](index-policy.md#composite-indexes). Vezměte v úvahu následující dotaz:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,10 +107,10 @@ Kromě toho můžete uspořádat podle několika vlastností. Dotaz, který seř
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Tento dotaz načte rodině `id` ve vzestupném pořadí název města. Pokud více položek mají stejný název města, bude order dotaz `creationDate` v sestupném pořadí.
+Tento dotaz načte rodinu `id` ve vzestupném pořadí názvu města. Pokud má více položek stejný název města, dotaz bude seřazen podle `creationDate` v sestupném pořadí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
 - [Klauzule SELECT](sql-query-select.md)
-- [OFFSET LIMIT clause](sql-query-offset-limit.md)
+- [Klauzule LIMIT POSUNu](sql-query-offset-limit.md)

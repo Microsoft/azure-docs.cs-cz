@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285803"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330968"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkce
 
@@ -137,7 +137,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
 | [Synchronizace dat SQL](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. |
-| [Služba SSIS (SQL Server Integration Services) (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
+| [Služba SSIS (SQL Server Integration Services) (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database jedné databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) |
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | Ano | Ne. Použijte předdefinované sestavy v SQL Server Management Studio a Azure Data Studio. |
 | [Virtuální síť](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |

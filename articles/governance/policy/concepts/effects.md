@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255881"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330769"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -99,8 +99,7 @@ Příklad 2: dvojice s jedním **polem/hodnotou** pomocí [aliasu](definition-st
 
 ## <a name="modify"></a>Úpravy
 
-Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání značek prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Zásada úprav by měla vždy mít `mode` nastavenou na _indexované_. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md).
-Jediné pravidlo změny může mít libovolný počet operací.
+Příkaz Upravit slouží k přidání, aktualizaci nebo odebrání značek prostředku během vytváření nebo aktualizace. Běžným příkladem je aktualizace značek na prostředky, jako je costCenter. Zásada úprav by měla vždycky mít `mode` nastavenou na _indexované_ , pokud cílový prostředek není skupina prostředků. Stávající prostředky, které nedodržují předpisy, lze opravit pomocí [úlohy nápravy](../how-to/remediate-resources.md). Jediné pravidlo změny může mít libovolný počet operací.
 
 > [!IMPORTANT]
 > Upravit je aktuálně pouze pro použití s značkami. Pokud spravujete značky, doporučuje se místo možnosti připojit jako upravit zadat další typy operací a možnost opravit stávající prostředky. Pokud ale nemůžete vytvořit spravovanou identitu, doporučuje se připojení.

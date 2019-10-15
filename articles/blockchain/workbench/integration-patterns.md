@@ -1,21 +1,21 @@
 ---
-title: Vzory integrace inteligentních kontraktů ve službě Azure blockchain Workbench Preview
+title: Vzory integrace inteligentních kontraktů v Azure blockchain Workbench
 description: Přehled způsobů integrace inteligentních kontraktů ve službě Azure blockchain Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 80c4f2683efacf575be853b6268ee958f1567440
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3e7ff18dddeaeb1a42d69b9ed57d163410fbfa1
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845171"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329227"
 ---
 # <a name="smart-contract-integration-patterns"></a>Vzory integrace inteligentních kontraktů
 
@@ -71,7 +71,7 @@ Dotazování proběhne pomocí dříve popsaného procesu, kde:
 
 Integrace zasílání zpráv usnadňuje interakci se systémy, službami a zařízeními, kde interaktivní přihlášení není možné nebo žádoucí. Integrace zasílání zpráv se zaměřuje na dva typy zpráv: zprávy požadující transakce spouštěné v distribuované účetní knize a události vystavené touto hlavní knihou v době, kdy byly provedeny transakce.
 
-Integrace zasílání zpráv se zaměřuje na provádění a monitorování transakcí souvisejících s vytvořením uživatele, vytvořením smlouvy a prováděním transakcí ve smlouvách a primárně se používá v bezsystémovém back-endu.
+Integrace zasílání zpráv se zaměřuje na provádění a monitorování transakcí souvisejících s vytvořením uživatele, vytvořením smlouvy a prováděním transakcí ve smlouvách a primárně se používá *v bezsystémovém back-* Endu.
 
 Tato část se zabývá vzory, které se zaměřují na aspekty rozhraní API založeného na zprávách, které odesílají transakce do distribuované hlavní knihy a vzory, které reprezentují zprávy událostí vystavené základní distribuovanou knihou.
 
@@ -198,7 +198,7 @@ Tento proces znázorňuje vzor:
 -   Transformovaná zpráva se teď ve standardním formátu pošle do Service Bus pro Azure blockchain Workbench.
 -   Azure blockchain Workbench se přihlašuje k odběru událostí z Service Bus a zprávu načte.
 -   Azure blockchain Workbench inicializuje volání do hlavní knihy a odesílá data z externího systému do konkrétní smlouvy.
--   Po přijetí zprávy kontrakt vyhodnotí data a může změnit stav na základě výsledku tohoto vyhodnocení, například pro vysokou teplotu, změnit stav na nedodržení *předpisů*.
+-   Po přijetí zprávy kontrakt vyhodnotí data a může změnit stav na základě výsledku tohoto vyhodnocení, například pro vysokou teplotu, změnit stav na *nedodržení předpisů*.
 
 ## <a name="data-integration"></a>Integrace dat
 

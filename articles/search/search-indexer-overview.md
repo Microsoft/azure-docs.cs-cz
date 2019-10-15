@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: e50d88181a27dcc46da858f220404eb09ad9b4bd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308970"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376388"
 ---
 # <a name="indexers-in-azure-search"></a>Indexery ve službě Azure Search
 
@@ -45,10 +45,12 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 
 Úložiště dat procházení indexerů v Azure
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [SQL Server na Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Spravované instance SQL v Azure](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Postup základní konfigurace
 Indexery můžou nabízet funkce, které jsou jedinečné pro daný zdroj dat. Z toho důvodu se budou některé aspekty konfigurace indexeru nebo zdroje dat lišit podle typu indexeru. Všechny indexery ale sdílejí stejné základní složení a požadavky. Níže najdete popis kroků společných pro všechny indexery.
@@ -121,7 +123,7 @@ Odpověď obsahuje celkový stav indexeru, vyvolání posledního (nebo probíha
 
 Historie spouštění obsahuje až 50 posledních dokončených spuštění, která jsou seřazena v opačném chronologickém pořadí (takže poslední spuštění nastane jako první v odpovědi).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď jste získali základní představu. V dalším kroku se zaměříme na požadavky a úlohy specifické pro různé typy zdrojů dat.
 
 * [Azure SQL Database nebo SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

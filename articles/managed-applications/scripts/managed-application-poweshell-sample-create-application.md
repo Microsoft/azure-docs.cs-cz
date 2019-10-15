@@ -1,6 +1,6 @@
 ---
-title: Skript Azure Powershellu ukázkový – nasazení spravované aplikace | Dokumentace Microsoftu
-description: Skript Azure Powershellu ukázkový – nasazení definice spravované aplikace
+title: Ukázka skriptu Azure PowerShell – nasazení spravované aplikace | Microsoft Docs
+description: Poskytuje vzorový ukázkový skript Azure PowerShell, který nasadí definici spravované aplikace do předplatného.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 03b453e441b92d21f29e7e1f401bebae0b8589da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d450c2292f5d2982b7c8b266cc6780a72d426321
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171451"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332562"
 ---
-# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Nasazení spravované aplikace pro katalog služeb pomocí Powershellu
+# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Nasazení spravované aplikace pro katalog služeb pomocí PowerShellu
 
 Tento skript nasadí definici spravované aplikace z katalogu služeb.
 
@@ -42,7 +42,7 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 | [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Vytvoří spravovanou aplikaci. Zadejte pro šablonu parametry a ID definice. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

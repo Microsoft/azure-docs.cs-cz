@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e117c6f8aa8526392678f37a05ec61b55983a1c7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667463"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374428"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře
 
@@ -26,7 +26,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 
 ## <a name="enable-solutions"></a>Povolení řešení
 
-Přejděte do svého účtu Automation a v části **Správa konfigurace**vyberte buď inventarizaci, nebo **sledování změn** .
+Přejděte do svého účtu Automation a v části **Správa konfigurace**vyberte buď **inventarizaci** , nebo **sledování změn** .
 
 Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
@@ -53,30 +53,30 @@ Každé řešení používá v rámci pracovního prostoru konfiguraci oboru pro
 
 Pokud vybraný pracovní prostor nemá zatím Update Management nebo Change Tracking řešení, vytvoří se následující konfigurace oboru:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig – sledování změn ve**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig – aktualizace**
 
 Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu nenasadit a do něj se nepřidá konfigurace oboru.
 
-## <a name="saved-searches"></a>Uložené výsledky hledání
+## <a name="saved-searches"></a>Uložená hledání
 
 Když se počítač přidá do Update Management nebo řešení Change Tracking a inventáře, přidají se do jednoho ze dvou uložených hledání ve vašem pracovním prostoru. Tato uložená hledání jsou dotazy, které obsahují počítače cílené na tato řešení.
 
 Přejděte do svého účtu Automation a v části **Obecné**vyberte **uložená hledání** . Dvě uložená hledání, která používají tato řešení, se dají zobrazit v následující tabulce:
 
-|Name     |Kategorie  |Alias  |
+|Name (Název)     |Kategorie  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Aktuální zprávy        | Updates__MicrosoftDefaultComputerGroup         |
+|MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 
 Pokud chcete zobrazit dotaz, který jste použili k naplnění skupiny, vyberte buď uložená hledání. Následující obrázek znázorňuje dotaz a jeho výsledky:
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
 ## <a name="onboard-azure-vms"></a>Zprovoznění virtuálních počítačů Azure
 
-V účtu Automation vyberte v části **Správa konfigurace**inventarizaci nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
+V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
 
 Klikněte na **+ Přidat virtuální počítače Azure**, v seznamu vyberte jeden nebo víc virtuálních počítačů. Virtuální počítače, které není možné povolit, jsou šedé a nelze je vybrat. Virtuální počítače Azure můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. Na stránce **povolit Update Management** klikněte na **Povolit**. Tato akce přidá vybrané virtuální počítače do skupiny počítačů uloženého hledání řešení.
 
@@ -84,17 +84,17 @@ Klikněte na **+ Přidat virtuální počítače Azure**, v seznamu vyberte jede
 
 ## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
-Počítače, které nejsou v Azure, se musí přidat ručně. V účtu Automation vyberte v části **Správa konfigurace**inventarizaci nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
+Počítače, které nejsou v Azure, se musí přidat ručně. V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
 
 Klikněte na **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny, jak nainstalovat a nakonfigurovat Microsoft Monitoring Agent v počítači](../azure-monitor/platform/log-analytics-agent.md) , aby mohl počítač zahájit vytváření sestav do řešení. Pokud se připojujete k počítači, který je aktuálně spravovaný pomocí System Center Operations Manager, není vyžadován nový agent, informace o pracovním prostoru jsou zadány do stávajícího agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Zprovoznění počítačů v pracovním prostoru
 
-Ručně nainstalované počítače nebo počítače, které už hlásí do vašeho pracovního prostoru, se musí přidat do Azure Automation, aby bylo řešení povolené. V účtu Automation vyberte v části **Správa konfigurace**inventarizaci nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
+Ručně nainstalované počítače nebo počítače, které už hlásí do vašeho pracovního prostoru, se musí přidat do Azure Automation, aby bylo řešení povolené. V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
 
 Vyberte **spravovat počítače**. Tato akce otevře stránku **Správa počítačů** . Tato stránka umožňuje povolit řešení na vybrané sadě počítačů, všech dostupných počítačích nebo povolit řešení pro všechny aktuální počítače a povolit ho na všech budoucích počítačích. Tlačítko **spravovat počítače** může být šedé, pokud jste předtím zvolili možnost **Povolit u všech dostupných a budoucích počítačů**.
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Všechny dostupné počítače
 
@@ -116,7 +116,7 @@ Následující řešení jsou závislá na Log Analytics pracovním prostoru:
 
 * [Správa aktualizací](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+* [Start/Stop VMs during off-hours](automation-solution-vm-management.md)
 
 Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal.  Než budete pokračovat, musíte nejprve odebrat dříve uvedená řešení. v opačném případě bude znemožněno pokračovat v tomto procesu. Projděte si článek pro konkrétní řešení, které jste naimportovali, abyste pochopili kroky potřebné k jeho odebrání.
 
@@ -149,7 +149,14 @@ Pokud jste v době mimo špičku použili virtuální počítače spustit a zast
 
 Alternativně můžete také zrušit propojení pracovního prostoru s účtem Automation z pracovního prostoru Log Analytics. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**. Na stránce účet Automation vyberte zrušit **propojení účtu**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Odebrání virtuálního počítače z Update Management:
+
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak je používat, přejděte k kurzům řešení.
 

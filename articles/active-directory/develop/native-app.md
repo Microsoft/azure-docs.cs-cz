@@ -1,6 +1,6 @@
 ---
 title: Nativní aplikace v Azure Active Directory
-description: Popisuje, co jsou nativní aplikace a základní informace na protokol toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
+description: Popisuje, co jsou nativní aplikace a základní informace o toku, registraci a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,51 +17,51 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545846"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373872"
 ---
 # <a name="native-apps"></a>Nativní aplikace
 
-Nativní aplikace jsou aplikace, které volání webového rozhraní API jménem uživatele. Tento scénář je založený na typ udělení kódu autorizace OAuth 2.0 s veřejným klientem, jak je popsáno v části 4.1 [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749). Nativní aplikace získá přístupový token pro uživatele s použitím protokolu OAuth 2.0. Tento přístupový token se pak odešle přes požadavek do webového rozhraní API, které opravňují uživatele a vrátí požadovaný prostředek.
+Nativní aplikace jsou aplikace, které zavolají webové rozhraní API jménem uživatele. Tento scénář je založený na typu udělení autorizačního kódu OAuth 2,0 s veřejným klientem, jak je popsáno v části 4,1 [specifikace OAuth 2,0](https://tools.ietf.org/html/rfc6749). Nativní aplikace získá přístupový token pro uživatele pomocí protokolu OAuth 2,0. Tento přístupový token se pak pošle v žádosti do webového rozhraní API, které uživatele autorizuje a vrátí požadovaný prostředek.
 
 ## <a name="diagram"></a>Diagram
 
-![Nativní aplikace přes webové rozhraní API diagramu](./media/authentication-scenarios/native_app_to_web_api.png)
+![Diagram nativní aplikace do webového rozhraní API](./media/authentication-scenarios/native_app_to_web_api.png)
 
-## <a name="protocol-flow"></a>Protokol toku
+## <a name="protocol-flow"></a>Tok protokolu
 
-Pokud používáte knihoven ověřování služby AD, většinu níže popsaných podrobností protokolu jsou zpracovány za vás, jako je například automaticky otevírané okno prohlížeče, ukládání tokenu do mezipaměti a manipulace s tokeny obnovení.
+Pokud používáte knihovny ověřování AD, většina podrobností protokolu popsaných níže se zpracovává za vás, například automaticky otevíraná okna prohlížeče, ukládání tokenů do mezipaměti a zpracování obnovovacích tokenů.
 
-1. Pomocí prohlížeče automaticky otevíraném okně že nativní aplikace odešle požadavek na koncový bod autorizace ve službě Azure AD. Tato žádost obsahuje ID aplikace a identifikátor URI nativní aplikace pro přesměrování, jak je znázorněno na webu Azure portal a identifikátor URI ID aplikace pro webové rozhraní API. Pokud uživatel ještě přihlášeni, zobrazí se výzva k akci
-1. Azure AD ověřuje uživatele. Pokud je aplikace s více tenanty a souhlas se vyžaduje souhlas s použitím aplikace, uživatel muset vyjádřit souhlas, pokud se tak již neučinili. Po udělení souhlasu a po úspěšném ověření Azure AD vydá kód odpovědi ověřování. zpět do klientské aplikace identifikátor URI přesměrování.
-1. Když Azure AD vydá kód odpovědi zpět na identifikátor URI pro přesměrování ověřování, klientská aplikace přestane interakce prohlížeče a extrahuje autorizační kód z odpovědi. Pomocí tohoto kódu autorizace, klientská aplikace odešle požadavek na token koncového bodu Azure AD, který obsahuje autorizační kód, podrobností o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (identifikátor ID URI aplikace pro webové rozhraní API).
-1. Autorizační kód a informace o klientských aplikací a webového rozhraní API jsou ověření pomocí Azure AD. Po úspěšném ověření Azure AD vrací dva tokeny: přístupový token JWT a aktualizační token JWT. Kromě toho Azure AD vrátí základní informace o uživateli, jako je například jejich zobrazovaného názvu a tenanta ID.
-1. Přes protokol HTTPS že klientská aplikace používá vrácené přístupový token JWT přidat token JWT řetězec s označením "Nosiče" v hlavičce autorizace požadavku do webového rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaný prostředek.
-1. Když vyprší platnost přístupového tokenu, klientská aplikace obdrží chybu, která indikuje, že uživatel musí znovu provést ověření. Pokud má aplikace platné obnovovací token, můžete použít k získání nového tokenu přístupu bez výzvy pro uživatele se znovu přihlásit. Pokud vyprší platnost tokenu obnovení, aplikace bude nutné znovu interaktivně ověření uživatele.
+1. Pomocí automaticky otevíraného okna prohlížeče vytvoří nativní aplikace požadavek na koncový bod autorizace ve službě Azure AD. Tato žádost zahrnuje ID aplikace a identifikátor URI přesměrování nativní aplikace, jak je znázorněno v Azure Portal, a identifikátor URI ID aplikace pro webové rozhraní API. Pokud už uživatel není přihlášený, zobrazí se výzva k opětovnému přihlášení.
+1. Azure AD ověří uživatele. Pokud se jedná o aplikaci s více klienty a k používání aplikace se vyžaduje souhlas, bude uživatel muset udělit souhlas, pokud už to neudělalo. Po udělení souhlasu a po úspěšném ověření vydá služba Azure AD odpověď autorizačního kódu zpátky do identifikátoru URI přesměrování klientské aplikace.
+1. Když Azure AD vystaví odpověď autorizačního kódu zpátky na identifikátor URI přesměrování, klientská aplikace zastaví interakci prohlížeče a z odpovědi vyextrahuje autorizační kód. Pomocí tohoto autorizačního kódu pošle klientská aplikace požadavek na koncový bod tokenu služby Azure AD, který obsahuje autorizační kód, podrobnosti o klientské aplikaci (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (identifikátor URI ID aplikace pro webové rozhraní API).
+1. Služba Azure AD ověřuje autorizační kód a informace o klientské aplikaci a webovém rozhraní API. Po úspěšném ověření vrátí Azure AD dva tokeny: přístupový token JWT a obnovovací token JWT. Kromě toho Azure AD vrátí základní informace o uživateli, jako je jeho zobrazované jméno a ID tenanta.
+1. Klientská aplikace přes protokol HTTPS pomocí vráceného přístupového tokenu JWT přidá řetězec JWT s označením "nosiče" v autorizační hlavičce požadavku webovému rozhraní API. Webové rozhraní API potom ověří token JWT a pokud je ověření úspěšné, vrátí požadovaný prostředek.
+1. Po vypršení přístupového tokenu obdrží klientská aplikace chybu, která indikuje, že uživatel bude muset provést ověření znovu. Pokud má aplikace platný aktualizační token, dá se použít k získání nového přístupového tokenu bez vyzvání uživatele k opětovnému přihlášení. Pokud platnost tokenu obnovení vyprší, aplikace bude muset znovu interaktivně ověřit uživatele.
 
 > [!NOTE]
-> Aktualizace tokenu vydaného službou Azure AD umožňuje přístup k více prostředkům. Například pokud máte klientské aplikace, který má oprávnění k volání dvě webové rozhraní API, obnovovací token slouží k získání přístupového tokenu pro jiné webové rozhraní API také.
+> Obnovovací token vydaný službou Azure AD lze použít pro přístup k více prostředkům. Například pokud máte klientskou aplikaci, která má oprávnění volat dvě webová rozhraní API, může být obnovovací token použit také k získání přístupového tokenu k druhému webovému rozhraní API.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
-Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkách kódu. A vraťte se často – často přidáváme nové ukázky. [Nativní aplikace pro webové rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Podívejte se na ukázky kódu pro scénáře nativní aplikace do webového rozhraní API. A znovu se podívejte na časté – přidávajíme nové ukázky často. [Nativní aplikace do webového rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api)
 
 ## <a name="app-registration"></a>Registrace aplikací
 
-Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace](quickstart-register-app.md).
+Pokud chcete zaregistrovat aplikaci s koncovým bodem Azure AD v 1.0, přečtěte si téma [Registrace aplikace](quickstart-register-app.md).
 
-* Jeden tenant - nativní aplikace a webové rozhraní API musí být zaregistrovaný ve stejném adresáři, ve službě Azure AD. Webové rozhraní API je možné nakonfigurovat k vystavení sady oprávnění, které slouží k omezení přístupu k nativní aplikaci na prostředky. Klientská aplikace potom vybere požadovaná oprávnění z rozevírací nabídky "Oprávnění do jiných aplikací" na webu Azure Portal.
-* Víceklientské - nejprve nativní aplikace vždy jen registrované v vývojář nebo adresář vydavatele. Za druhé nativní aplikace je nakonfigurovaná k označení oprávnění, která ho, aby byl funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři dává souhlas pro aplikaci, které zpřístupní jejich organizace. Některé aplikace vyžadují jenom oprávnění na úrovni uživatele, které každý uživatel v organizaci můžou udělit souhlas s. Jiné aplikace vyžadují oprávnění na úrovni správce, které nelze vyjádřit souhlas uživatele v organizaci. Pouze správce adresáře lze udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, pouze webová rozhraní API je zaregistrovaný v jejich adresáře. 
+* Jeden tenant – nativní aplikace i webové rozhraní API musí být zaregistrované ve stejném adresáři v Azure AD. Webové rozhraní API je možné nakonfigurovat tak, aby vystavilo sadu oprávnění, která slouží k omezení přístupu nativní aplikace k jejím prostředkům. Klientská aplikace pak vybere požadovaná oprávnění z rozevírací nabídky "oprávnění k ostatním aplikacím" v Azure Portal.
+* Multi-tenant – první nativní aplikace se v minulosti jenom zaregistrovala v adresáři pro vývojáře nebo vydavatele. Druhý, nativní aplikace je nakonfigurovaná tak, aby označovala oprávnění, která vyžaduje, aby byla funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři udělí souhlas s aplikací a zpřístupní ji pro jejich organizaci. Některé aplikace vyžadují oprávnění na úrovni uživatele, ke kterým může udělit každý uživatel v organizaci souhlas. Jiné aplikace vyžadují oprávnění na úrovni správce, kterým uživatel v organizaci nemůže udělit souhlas. Pouze správce adresáře může udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, je ve svém adresáři zaregistrováno pouze webové rozhraní API. 
 
 ## <a name="token-expiration"></a>Vypršení platnosti tokenu
 
-Když nativní aplikace používá jeho autorizační kód k získání tokenu JWT přístupu, také obdrží obnovovací token JWT. Když vyprší platnost přístupového tokenu, token obnovení je možné opakované ověření uživatele bez nutnosti jejich nutnost znovu přihlásit. Tento aktualizační token se pak použije k ověření uživatele, jehož výsledkem nový přístupový token a aktualizační token.
+Pokud nativní aplikace používá svůj autorizační kód k získání přístupového tokenu JWT, obdrží také obnovovací token JWT. Po vypršení platnosti přístupového tokenu se dá obnovovací token použít k opětovnému ověření uživatele, aniž by se museli znovu přihlašovat. Tento obnovovací token se pak použije k ověření uživatele, což vede k vytvoření nového přístupového tokenu a k aktualizaci tokenu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o dalších [typy aplikací a scénářů](app-types.md)
-- Další informace o službě Azure AD [základy ověřování](authentication-scenarios.md)
+- Další informace o dalších [typech a scénářích aplikací](app-types.md)
+- Seznamte se se [základy ověřování](v1-authentication-scenarios.md) Azure AD

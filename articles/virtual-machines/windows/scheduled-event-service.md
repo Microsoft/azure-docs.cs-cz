@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051858"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376202"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
@@ -32,7 +32,7 @@ V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 
@@ -59,9 +59,9 @@ New-AzVm `
 ```
  
 
-Stáhněte si soubor instalace. zip projektu z GitHubu [](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
+Stáhněte si soubor instalace. zip projektu z [GitHubu](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky, která obsahuje `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`a nastavte službu.
+Připojte se k **myCollectorVM** a zkopírujte soubor. zip do virtuálního počítače a Extrahujte všechny soubory. Na svém VIRTUÁLNÍm počítači otevřete příkazový řádek PowerShellu. Přesuňte výzvu do složky obsahující `SchService.ps1`, například: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, a nastavte službu.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Ověřte stav služby a ujistěte se, že je spuštěný.
 .\SchService.ps1 -status  
 ```
 
-Mělo by se `Running`vrátit.
+Tato hodnota by měla vracet `Running`.
 
 Služba se teď začne dotazovat každých 10 sekund na jakékoli naplánované události a schválí události, aby se tato údržba urychlila.  Zablokování, restartování, opětovné nasazení a přerušení jsou události zachycené událostmi plánování. Před schválením události můžete skript roztáhnout, aby se aktivovaly některé zmírnění.
 
@@ -98,7 +98,7 @@ Když služba Event Scheduler zachytí události, přihlásí se do protokolu ud
 >
 > Pro naše nastavení jsme zvolili Windows, ale můžete navrhnout podobné řešení na platformě Linux.
 
-V jakémkoli okamžiku můžete zastavit nebo odebrat naplánovanou službu Event Service pomocí přepínačů `–stop` a. `–remove`
+Naplánovanou službu Event Service můžete kdykoli zastavit nebo odebrat pomocí přepínačů `–stop` a `–remove`.
 
 ## <a name="connect-to-the-workspace"></a>Připojení k pracovnímu prostoru
 
@@ -158,13 +158,13 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
     ![Uložit dotaz](./media/notifications/save-query.png)
 
 1. Vyberte **nové pravidlo výstrahy**. 
-1. Na stránce **vytvořit pravidlo** nechejte `collectorworkspace` jako **prostředek**.
-1. V části **Podmínka**vyberte položku *vždy, když je <login undefined>hledání v protokolu zákazníka* . Otevře se stránka **Konfigurovat logiku signálu** .
+1. Na stránce **vytvořit pravidlo** ponechte jako **prostředek**`collectorworkspace`.
+1. V části **Podmínka**vyberte položku *vždy, když je hledání v protokolu zákazníků <login undefined>* . Otevře se stránka **Konfigurovat logiku signálu** .
 1. V části **prahová hodnota**zadejte *0* a potom vyberte **Hotovo**.
 1. V části **Akce**vyberte **vytvořit skupinu akcí**. Otevře se stránka **Přidat skupinu akcí** .
 1. Do **název skupiny akcí**zadejte *myActionGroup*.
 1. Do textu **krátký název**zadejte **myActionGroup**.
-1. V **skupiny prostředků**vyberte *myResourceGroupAvailability* *.
+1. V **skupiny prostředků**vyberte **myResourceGroupAvailability**.
 1. V části Akce zadejte do pole **název akce** **e-mail**a pak vyberte **e-mail/SMS/Push/Voice**. Otevře se stránka **e-mail/SMS/Push/Voice** .
 1. Vyberte **e-mail**, zadejte e-mailovou adresu a pak vyberte **OK**.
 1. Na stránce **Přidat skupinu akcí** vyberte **OK**. 
@@ -175,6 +175,6 @@ Po vložení událostí do Log Analytics můžete spustit následující [dotaz]
 Chcete-li spravovat pravidla upozornění, přejděte do skupiny prostředků, v nabídce vlevo vyberte možnost **výstrahy** a v horní části stránky vyberte možnost **Spravovat pravidla výstrah** .
 
      
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete na stránce [Služba naplánované události](https://github.com/microsoft/AzureScheduledEventsService) na GitHubu.

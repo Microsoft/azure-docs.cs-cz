@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 19191e84e9af140f78e529398471f0e950b36c8c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694686"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332301"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Nastavení testovacího prostředí zaměřeného na obsáhlý Learning při zpracování v přirozeném jazyce pomocí Azure Lab Services
 V tomto článku se dozvíte, jak nastavit testovací prostředí zaměřené na obsáhlý Learning při zpracování přirozeného jazyka (NLP) pomocí Azure Lab Services. Zpracování přirozeného jazyka (NLP) je forma umělé Intelligence (AI), která umožňuje počítačům s překlady, rozpoznáváním řeči a dalšími možnostmi porozumění jazyku.  
@@ -40,7 +40,7 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 | ------------ | ------------------ |
 | Velikost virtuálního počítače (VM) | Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
 | Image virtuálního počítače | [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Tento obrázek poskytuje architektury a nástroje pro hloubkové učení pro Machine Learning a datové vědy. Úplný seznam nainstalovaných nástrojů na tomto obrázku si můžete prohlédnout v následujícím článku: [co je součástí DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se k jejich Virtual Machines (VM) pomocí vzdálené plochy (RDP).</p><p>**Důležité**: RDP je už nainstalované a nakonfigurované na image data Science Virtual Machine pro Linux. V důsledku toho se můžou učitelé a studenti připojit k virtuálním počítačům přes RDP bez jakýchkoli dalších kroků. Pokud se navíc potřebujete připojit k grafické ploše, již tato image má na virtuálním počítači nainstalovaný [X2Go Server](https://wiki.x2go.org/doku.php/doc:newtox2go) . Studenti musí nainstalovat klienta X2Go na své místní počítače a musí používat klienta pro připojení. Další informace najdete v následujících příručkách: <ul><li>[Přístup k Data Science Virtual Machine pro Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Připojení k virtuálnímu počítači šablony pro instalaci balíčků RDP a GUI](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp)</li></ul></p>   |
+| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se k jejich Virtual Machines (VM) pomocí vzdálené plochy (RDP).</p><p>**Důležité**: RDP je už nainstalované a nakonfigurované na image data Science Virtual Machine pro Linux. V důsledku toho se můžou učitelé a studenti připojit k virtuálním počítačům přes RDP bez jakýchkoli dalších kroků. Pokud se navíc potřebujete připojit k grafické ploše, již tato image má na virtuálním počítači nainstalovaný [X2Go Server](https://wiki.x2go.org/doku.php/doc:newtox2go) . Studenti musí nainstalovat klienta X2Go na své místní počítače a musí používat klienta pro připojení. Další informace najdete v následujících příručkách: <ul><li>[Přístup k Data Science Virtual Machine pro Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Připojení k virtuálnímu počítači šablony pro instalaci balíčků RDP a GUI](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Image Data Science Virtual Machine pro Linux poskytuje nezbytné architektury a nástroje pro hloubkové učení, které jsou potřebné pro tento typ třídy. V důsledku toho je po vytvoření šablony nutné tento postup ještě Neupravovat. Dá se publikovat pro studenty, kteří ho budou používat. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.  
 
@@ -58,7 +58,7 @@ V tomto článku se seznámíte s postupem vytvoření testovacího prostředí 
 Další kroky jsou běžné pro nastavení testovacího prostředí:
 
 - [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Nastavit kvótu](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Odkazy na registraci e-mailu studentům](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users). 
 

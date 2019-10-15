@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240617"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372412"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel"></a>Loven pro hrozby s v Azure Sentinel
 
@@ -35,20 +35,20 @@ Například jeden integrovaný dotaz poskytuje data o většině neobvyklých pr
 
 S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod následujících možností:
 
-- Integrované dotazy: Úvodní stránka vám poskytne předem načtené příklady dotazů, které vám pomohou začít a seznámit s tabulkami a dotazovacím jazykem. Tyto integrované lovecké dotazy jsou vyvíjené výzkumnými pracovníky Microsoftu, a to průběžně, přidáváním nových dotazů a vyladěním existujících dotazů, které vám poskytnou vstupní bod, který bude hledat nové detekce a zjistit, kde začít v lovu začátek nových útoků. 
+- Integrované dotazy: abyste mohli začít, úvodní stránka poskytuje příklady předem načtených dotazů, které vám pomohou začít a seznámit s tabulkami a dotazovacím jazykem. Tyto integrované lovecké dotazy jsou vyvíjené výzkumnými pracovníky Microsoftu, a to průběžně, přidáváním nových dotazů a vyladěním existujících dotazů, které vám poskytnou vstupní bod, který bude hledat nové detekce a zjistit, kde začít v lovu začátek nových útoků. 
 
-- Výkonný dotazovací jazyk pomocí technologie IntelliSense: Postaven na základě dotazovacího jazyka, který vám poskytne flexibilitu, kterou je třeba vzít v úvahu pro další úroveň.
+- Výkonný dotazovací jazyk pomocí technologie IntelliSense: postavený na dotazovacím jazyku, který vám poskytne flexibilitu, kterou je třeba vzít v úvahu pro další úroveň.
 
-- Vytvořte si vlastní záložky: Během loveckého procesu se můžete setkat se všemi shodami nebo nálezy, řídicími panely nebo aktivitami, které vypadají neobvyklé nebo podezřelé. Aby bylo možné označit tyto položky, abyste se do nich mohli vrátit v budoucnu, použijte funkci záložky. Záložky umožňují uložit položky pro pozdější použití k vytvoření incidentu pro účely šetření. Další informace o záložkách najdete [v tématu použití záložek při lovu](hunting.md).
-- K automatizaci šetření používejte poznámkové bloky: Poznámkové bloky se podobají podrobným playbookyům, které můžete sestavit, abyste provedli kroky vyšetřování a průzkumu.  Poznámkové bloky zapouzdřují všechny kroky pro lovecké v opakovaně použitelných PlayBook, které je možné sdílet s ostatními uživateli ve vaší organizaci. 
-- Dotaz na uložená data: Data jsou v tabulkách k dispozici pro dotazování. Můžete například zadat dotaz na vytváření procesů, události DNS a mnoho dalších typů událostí.
+- Vytvoření vlastních záložek: během procesu lovu se můžete setkat se všemi shodami nebo nálezy, řídicími panely nebo aktivitami, které vypadají nezvykle nebo podezřelé. Aby bylo možné označit tyto položky, abyste se do nich mohli vrátit v budoucnu, použijte funkci záložky. Záložky umožňují uložit položky pro pozdější použití k vytvoření incidentu pro účely šetření. Další informace o záložkách najdete [v tématu použití záložek při lovu](hunting.md).
+- Použití poznámkových bloků k automatizaci šetření: poznámkové bloky se podobají podrobným playbookyům, které můžete sestavit, abyste provedli kroky vyšetřování a průzkumu.  Poznámkové bloky zapouzdřují všechny kroky pro lovecké v opakovaně použitelných PlayBook, které je možné sdílet s ostatními uživateli ve vaší organizaci. 
+- Dotaz na uložená data: data jsou v tabulkách k dispozici pro dotazování. Můžete například zadat dotaz na vytváření procesů, události DNS a mnoho dalších typů událostí.
 
-- Odkazy na komunitu: Využijte sílu větší komunity k nalezení dalších dotazů a zdrojů dat.
+- Odkazy na komunita: Využijte sílu větší komunity k nalezení dalších dotazů a zdrojů dat.
  
 ## <a name="get-started-hunting"></a>Začít s loveckím
 
 1. Na portálu Sentinel Azure klikněte na možnost **rozlovu**.
-  ![Azure Sentinel začíná v lovu](media/tutorial-hunting/hunting-start.png)
+  @no__t 0Azure Sentinel začíná lov @ no__t-1
 
 2. Po otevření stránky pro **lov** se všechny lovecké dotazy zobrazí v jedné tabulce. V tabulce jsou uvedeny všechny dotazy napsané týmem analytiků zabezpečení společnosti Microsoft a všechny další dotazy, které jste vytvořili nebo upravili. Každý dotaz poskytuje popis toho, co je v nástroji k dispozici, a druh dat, na kterých se spouští. Tyto šablony jsou seskupené podle jejich různých taktiku – ikony na pravé straně typ hrozby, například počáteční přístup, trvalost a exfiltrace. Tyto šablony pro lovecké dotazy můžete filtrovat pomocí kteréhokoli z těchto polí. Libovolný dotaz můžete uložit do oblíbených položek. Když uložíte dotaz do oblíbených položek, dotaz se automaticky spustí při každém otevření stránky pro **lov** . Můžete vytvořit vlastní lovecký dotaz nebo klonovat a přizpůsobit existující šablonu pro lovecké dotazy. 
  
@@ -68,7 +68,7 @@ S ohledem na dodržování ověřovacích funkcí Azure můžete využít výhod
 
 ## <a name="query-language"></a>Dotazovací jazyk 
 
-Lov v Azure Sentinel vychází z dotazovacího jazyka Azure Log Analytics. Další informace o dotazovacím jazyku a podporovaných operátorech naleznete v tématu [Referenční dokumentace jazyka dotazů](https://docs.loganalytics.io/docs/Language-Reference/).
+Lov v Azure Sentinel je založený na jazyce dotazů Kusto. Další informace o dotazovacím jazyku a podporovaných operátorech naleznete v tématu [Referenční dokumentace jazyka dotazů](https://docs.loganalytics.io/docs/Language-Reference/).
 
 ## <a name="public-hunting-query-github-repository"></a>Úložiště GitHub pro veřejné lovecké dotazy
 
@@ -78,7 +78,7 @@ Podívejte se na [úložiště pro lovecké dotazy](https://github.com/Azure/Ori
 
 ## <a name="sample-query"></a>Vzorový dotaz
 
-Typický dotaz začíná názvem tabulky následovaný řadou operátorů, které \|jsou odděleny.
+Typický dotaz začíná názvem tabulky, za nímž následuje řada operátorů oddělených \|.
 
 V předchozím příkladu začněte s názvem tabulky SecurityEvent a podle potřeby přidejte do kanálu prvky.
 

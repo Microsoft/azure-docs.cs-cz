@@ -1,21 +1,21 @@
 ---
-title: Správa členů ve službě Azure blockchain Service Consortium pomocí Azure PowerShell
+title: Správa členů služby Azure blockchain pomocí Azure PowerShell
 description: Naučte se spravovat členy konsorcia služeb Azure blockchain pomocí Azure PowerShell.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 3e149a4a8e5ce7c82f0c9bf951bf9625763b30af
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285996"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329182"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Správa členů konsorcia ve službě Azure blockchain pomocí prostředí PowerShell
 

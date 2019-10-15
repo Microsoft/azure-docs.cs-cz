@@ -1,25 +1,25 @@
 ---
-title: Připojení k Azure Database for MySQL z Pythonu
+title: 'Rychlý Start: připojení k Azure Database for MySQL z Pythonu'
 description: V tomto rychlém startu najdete vzorový kód Pythonu, který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc
+ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: 0940d307d78236fea1a232c1e7c60a296ba46c62
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: afcf5f3ff5f104a95b700616f7c8bdd0723ac70c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195173"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331982"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu pro připojení a dotazování dat
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Pythonu](https://python.org). Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
+# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat
+Tento článek ukazuje, jak se pomocí [Pythonu](https://python.org) připojit k Azure Database for MySQL. Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+## <a name="prerequisites"></a>Předpoklady
+Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -265,6 +265,6 @@ else:
   print("Done.")
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285969"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372245"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -115,8 +115,8 @@ V této části vytvoříte server služby SQL Database v Azure.
     | **PODROBNOSTI INSTANCE** |  |
     | Název databáze  | Zadejte *MyDatabase*. Pokud se tento název povede, vytvořte jedinečný název. |
     |||
-5. V **serveru**vyberte **vytvořit novou**. 
-6. Na **novém serveru**zadejte nebo vyberte tyto informace:
+5. V **serveru**vyberte **vytvořit novou**. 
+6. Na **novém serveru**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -125,9 +125,9 @@ V této části vytvoříte server služby SQL Database v Azure.
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se vaše SQL Server nacházela. |
     
-7. Vyberte **OK**. 
-8. Vyberte **zkontrolovat + vytvořit**. Přejdete na **recenzi + create** page, kde Azure ověřuje vaši konfiguraci. 
-9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit**. 
+7. Vyberte **OK**. 
+8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+9. Když se zobrazí zpráva s potvrzením ověření, vyberte **vytvořit**. 
 10. Když se zobrazí zpráva s potvrzením ověření, vyberte vytvořit. 
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
@@ -147,18 +147,18 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Name (Název) | Zadejte * myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
     |Oblast|Vyberte **WestCentralUS**.|
     |||
-5. Vyberte **Další: prostředek**.
-6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
+5. Vyberte **Další: prostředek**.
+6. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
     | Předplatné| Vyberte své předplatné. |
-    | Typ prostředku | Vyberte **Microsoft. SQL/servery**. |
+    | Typ prostředku | Vyberte **Microsoft. SQL/servery**. |
     | Prostředek |Vybrat *MyServer*|
     |Cílový dílčí prostředek |Výběr *sqlServer*|
     |||
-7. Vyberte **Další: Konfigurace**.
+7. Vyberte **Další: Konfigurace**.
 8. V **Vytvoření privátního koncového bodu (Preview) – konfigurace**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
@@ -167,12 +167,12 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Virtuální síť| Vyberte *MyVirtualNetwork*. |
     | Podsíť | Vyberte *mySubnet*. |
     |**INTEGRACE PRIVÁTNÍ DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
+    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
     |Zóna Privátní DNS |Select *(New) privatelink. Database. Windows. NET* |
     |||
 
-1. Vyberte **zkontrolovat + vytvořit**. Přejdete na **recenzi + create** page, kde Azure ověřuje vaši konfiguraci. 
-2. Po zobrazení **úspěšného ověření** Message vyberte **vytvořit**. 
+1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Připojení k virtuálnímu počítači pomocí vzdálené plochy (RDP)
 
@@ -217,7 +217,7 @@ Po vytvoření **myVm*se k němu připojte z Internetu následujícím způsobem
     ```
 3. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
+4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -227,16 +227,16 @@ Po vytvoření **myVm*se k němu připojte z Internetu následujícím způsobem
     |Heslo |Zadejte heslo, které jste zadali během vytváření SQL serveru. |
     |Zapamatovat heslo|Vyberte **Ano**.|
     |||
-1. Vyberte **připojit**.
+1. Vyberte **Connect** (Připojit).
 2. Procházet databáze z levé nabídky
 3. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
 4. Zavřete připojení ke vzdálené ploše pro *myVm*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Až budete s použitím privátního koncového bodu, SQL serveru a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
-1. Zadejte *myResourceGroup* In the **Search** box v horní části portálu a vyberte *myResourceGroup* from výsledků hledání. 
-2. Vyberte **Odstranit skupinu prostředků**. 
-3. Zadejte myResourceGroup pro **typ název skupiny prostředků** And vyberte **Odstranit**.
+1. Zadejte *myResourceGroup*@no__t – 1in **vyhledávací** pole v horní části portálu a vyberte *myResourceGroup* from výsledky hledání. 
+2. Vyberte **Odstranit skupinu prostředků**. 
+3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

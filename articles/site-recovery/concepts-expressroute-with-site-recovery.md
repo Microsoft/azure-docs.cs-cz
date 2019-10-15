@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726476"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333053"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak můžete použít Azure ExpressRoute s Azure Site R
 
 ## <a name="expressroute-circuits"></a>Okruhy ExpressRoute
 
-Okruh ExpressRoute představuje logické propojení mezi vaši infrastrukturou v místním a cloudovým službám Microsoftu prostřednictvím poskytovatele připojení. Můžete si objednat víc okruhů ExpressRoute. Každý okruh může být v jedné nebo několika oblastech a jde připojit k místním prostřednictvím poskytovatelů jiné připojení. Další informace o okruhech ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md).
+Okruh ExpressRoute představuje logické propojení mezi vaší místní infrastrukturou a cloudovou službou Microsoftu prostřednictvím poskytovatele připojení. Můžete objednat více okruhů ExpressRoute. Každý okruh může být ve stejné nebo jiné oblasti a může být připojen k vašemu prostoru prostřednictvím různých poskytovatelů připojení. Další informace o okruhech ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md).
 
 K okruhu ExpressRoute je přidruženo více domén směrování. Další informace o a porovnání domén směrování ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
@@ -46,19 +46,19 @@ Tím se zajistí, že se během komunikace prostřednictvím proxy serveru proch
 
 Po převzetí služeb při selhání virtuálních počítačů nebo serverů do služby Azure Virtual Network můžete k nim přistupovat pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Kombinovaný scénář je reprezentován v následujícím diagramu: ![Místní – Azure s ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Kombinovaný scénář je reprezentován v následujícím diagramu: ![On-premises-to-Azure s ExpressRoute @ no__t-1
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikace z Azure do Azure pomocí ExpressRoute
 
 Azure Site Recovery umožňuje zotavení po havárii [virtuálních počítačů Azure](azure-to-azure-architecture.md). V závislosti na tom, jestli vaše virtuální počítače Azure používají [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md), se data replikace odesílají na účet Azure Storage nebo na spravovaný disk repliky v cílové oblasti Azure. I když jsou koncové body replikace veřejné, provoz replikace pro replikaci virtuálních počítačů Azure ve výchozím nastavení neprojde internetem, bez ohledu na to, ve které oblasti Azure ve zdrojové virtuální síti existuje. Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 
-Pro zotavení po havárii virtuálního počítače Azure se ve výchozím nastavení ExpressRoute nevyžaduje pro replikaci. Po převzetí služeb virtuálních počítačů do cílové oblasti Azure získáte přístup k nim pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Pro zotavení po havárii virtuálního počítače Azure se ve výchozím nastavení ExpressRoute nevyžaduje pro replikaci. Po převzetí služeb virtuálních počítačů do cílové oblasti Azure získáte přístup k nim pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). Počítejte s tím, že ceny za přenos dat platí bez ohledu na režim replikace dat napříč oblastmi Azure.
 
 Pokud už používáte ExpressRoute k připojení z místního datacentra k virtuálním počítačům Azure ve zdrojové oblasti, můžete v cílové oblasti převzetí služeb při selhání naplánovat opětovné vytvoření připojení ExpressRoute. Stejný okruh ExpressRoute můžete použít pro připojení k cílové oblasti prostřednictvím nového připojení k virtuální síti, nebo využít samostatný okruh ExpressRoute a připojení k zotavení po havárii. [Zde](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)jsou popsány různé možné scénáře.
 
 Virtuální počítače Azure můžete replikovat do jakékoli oblasti Azure v rámci stejného geografického clusteru, jak je popsáno [zde](../site-recovery/azure-to-azure-support-matrix.md#region-support). Pokud vybraná cílová oblast Azure není ve stejné geopolitické oblasti jako zdroj, možná budete muset povolit ExpressRoute Premium. Další podrobnosti najdete v [ExpressRoute umístěních](../expressroute/expressroute-locations.md) a [cenách ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [okruhech ExpressRoute](../expressroute/expressroute-circuit-peerings.md).
 - Přečtěte si další informace o [doménách směrování ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 - Přečtěte si další informace o [ExpressRoute umístěních](../expressroute/expressroute-locations.md).

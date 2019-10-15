@@ -1,21 +1,21 @@
 ---
-title: Pochopení a práce s obory Azure Cost Management | Microsoft Docs
+title: Pochopení a práce s obory Azure Cost Management
 description: Tento článek vám pomůže pochopit rozsahy správy fakturace a prostředků, které jsou dostupné v Azure, a jak používat obory Cost Management a rozhraní API.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338638"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374482"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -39,7 +39,7 @@ Azure podporuje tři obory pro správu prostředků. Každý obor podporuje spr�
 
 - [**Skupiny pro správu**](../governance/management-groups/overview.md) – hierarchické kontejnery, až osm úrovní, pro uspořádání předplatných Azure.
 
-    Typ prostředku: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    Typ prostředku: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
 
 - **Předplatná** – primární kontejnery pro prostředky Azure.
 
@@ -75,14 +75,14 @@ Fakturační účty smlouva Enterprise (EA), označované taky jako registrace, 
 
 - [**Fakturační účet**](../billing/billing-view-all-accounts.md) – představuje registraci EA. Faktury se generují v tomto oboru. Nákupy, které nejsou založené na využití, jako je například Marketplace a rezervace, jsou k dispozici pouze v tomto oboru. Nejsou reprezentovány v odděleních nebo účtech pro registraci.
 
-    Typ prostředku:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+    Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Oddělení** – volitelné seskupení registračních účtů.
 
-    Typ prostředku:`Billing/billingAccounts/departments`
+    Typ prostředku: `Billing/billingAccounts/departments`
 
 - **Účet pro zápis** – představuje jednoho vlastníka účtu. Nepodporuje udělení přístupu více lidem.
 
-    Typ prostředku:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Typ prostředku: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
 I když jsou rozsahy zásad správného řízení vázané na jeden adresář, fakturační obory EA nejsou. Fakturační účet EA může mít předplatné v jakémkoli počtu adresářů Azure AD.
 
@@ -106,7 +106,7 @@ Předplatná Azure vytvořená z jednotlivých nabídek, jako jsou průběžné 
 
 - [**Fakturační účet**](../billing/billing-view-all-accounts.md) – představuje jednoho vlastníka účtu pro jedno nebo více předplatných Azure. V současné době nepodporuje udělení přístupu více lidem nebo přístup k agregovaným zobrazením nákladů.
 
-    Typ prostředku: Nelze použít
+    Typ prostředku: nejde použít.
 
 Jednotlivé účty pro správu předplatného Azure můžou z [centrum účtů Azure](https://account.azure.com/subscriptions)zobrazovat a spravovat fakturační data, jako jsou faktury a platby. Nemůžou ale zobrazovat nákladová data ani spravovat prostředky v Azure Portal. Pokud chcete udělit přístup správci účtu, použijte výše zmíněné role Cost Management.
 
@@ -118,17 +118,20 @@ Fakturační účty Microsoft Customer Agreement mají tyto rozsahy:
 
 - **Fakturační účet** – představuje zákaznickou smlouvu o několika produktech a službách společnosti Microsoft. Fakturační účty zákaznických smluv nejsou funkčně stejné jako registrace EA. Registrace EA jsou podrobněji zarovnané na profily fakturace.
 
-    Typ prostředku:`Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Organization)`
 
 - **Fakturační profil** – definuje předplatná, která jsou zahrnutá na faktuře. Fakturační profily jsou funkční ekvivalentem registrace EA, protože se jedná o obor, ve kterém se faktury generují. Podobně nákupy, které nejsou založené na využití (například Marketplace a rezervace), jsou k dispozici pouze v tomto oboru. Nejsou zahrnuté v sekcích faktury.
 
-    Typ prostředku:`Microsoft.Billing/billingAccounts/billingProfiles`
+    Typ prostředku: `Microsoft.Billing/billingAccounts/billingProfiles`
 
 - **Oddíl Invoice** – představuje skupinu předplatných v rámci faktury nebo fakturačního profilu. Části faktury jsou jako oddělení – více lidí může mít přístup k části faktury.
 
-    Typ prostředku:`Microsoft.Billing/billingAccounts/invoiceSections`
+    Typ prostředku: `Microsoft.Billing/billingAccounts/invoiceSections`
+
+- **Zákazník** – představuje skupinu předplatných, která je přidružená k určitému zákazníkovi, který je spojený s zákaznickou smlouvou Microsoftu od partnera. Tento obor je specifický pro CSP.
 
 Na rozdíl od fakturačních oborů EA _jsou_ fakturační účty zákaznických smluv vázány na jeden adresář a nemohou mít odběry v rámci více adresářů služby Azure AD.
+
 
 Obory fakturace zákaznických smluv podporují tyto role:
 
@@ -148,11 +151,11 @@ Po dokončení integrace AWS se podívejte na téma [instalace a konfigurace int
 
 - **Externí fakturační účet** – představuje zákaznickou smlouvu s dodavatelem třetí strany. To se podobá fakturačnímu účtu EA.
 
-    Typ prostředku:`Microsoft.CostManagement/externalBillingAccounts`
-    
+    Typ prostředku: `Microsoft.CostManagement/externalBillingAccounts`
+
 - **Externí předplatné** – představuje provozní účet zákazníka s dodavatelem jiného výrobce. To je podobné jako u předplatného Azure.
 
-    Typ prostředku:`Microsoft.CostManagement/externalSubscriptions`
+    Typ prostředku: `Microsoft.CostManagement/externalSubscriptions`
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Obory pro Cloud Solution Provider (CSP)
 
@@ -160,7 +163,7 @@ Partneři poskytovatele Cloud Solution Provider (CSP) se v Cost Management ješt
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory v Cost Management
 
-Všechna zobrazení Cost Management v Azure Portal zahrnují výběr **oboru** v levém horním rohu zobrazení. Použijte ho k rychlé změně oboru. Kliknutím na ikonu **Rozsah** otevřete okno Výběr oboru. Zobrazuje fakturační účty, kořenovou skupinu pro správu a všechna předplatná, která nejsou vnořená do kořenové skupiny pro správu. Pokud chcete vybrat rozsah, zvýrazněte ho kliknutím na pozadí a potom v dolní části klikněte na **Vybrat** . Pokud chcete přejít na vnořené obory, jako jsou skupiny prostředků v rámci předplatného, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na jakékoli vnořené úrovni, klikněte v horní části výběru oboru na **&lt;vybrat tento obor&gt;** .
+Všechna zobrazení Cost Management v Azure Portal zahrnují výběr **oboru** v levém horním rohu zobrazení. Použijte ho k rychlé změně oboru. Kliknutím na ikonu **Rozsah** otevřete okno Výběr oboru. Zobrazuje fakturační účty, kořenovou skupinu pro správu a všechna předplatná, která nejsou vnořená do kořenové skupiny pro správu. Pokud chcete vybrat rozsah, zvýrazněte ho kliknutím na pozadí a potom v dolní části klikněte na **Vybrat** . Pokud chcete přejít na vnořené obory, jako jsou skupiny prostředků v rámci předplatného, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na jakékoli vnořené úrovni, klikněte v horní části výběru oboru na **vybrat tuto &lt;scope @ no__t-2** .
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Identifikace ID prostředku pro obor
 
@@ -171,7 +174,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 1. Otevřete Azure Portal a pak v seznamu služeb přejděte na **cost management + fakturace** .
 2. V nabídce fakturační účet vyberte **vlastnosti** .
 3. Zkopírujte ID fakturačního účtu.
-4. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+4. Váš rozsah je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
 ### <a name="billing-profiles"></a>Fakturační profily
 
@@ -180,7 +183,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 3. Klikněte na název požadovaného fakturačního profilu.
 4. V nabídce Profil fakturace vyberte **vlastnosti** .
 5. Zkopírujte fakturační účet a ID fakturačního profilu.
-6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+6. Váš rozsah je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
 ### <a name="invoice-sections"></a>Oddíly faktury
 
@@ -189,7 +192,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 3. Klikněte na název oddílu požadované faktury.
 4. V nabídce oddíl faktury vyberte **vlastnosti** .
 5. Zkopírujte ID fakturačního účtu a části faktury.
-6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+6. Váš rozsah je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>Oddělení EA
 
@@ -198,7 +201,7 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 3. Klikněte na název požadovaného oddělení.
 4. V nabídce oddělení vyberte **vlastnosti** .
 5. Zkopírujte fakturační účet a ID oddělení.
-6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+6. Váš rozsah je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
 ### <a name="ea-enrollment-account"></a>Účet pro registraci EA
 
@@ -207,20 +210,20 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 3. Klikněte na název požadovaného účtu pro zápis.
 4. V nabídce účet pro zápis vyberte **vlastnosti** .
 5. Zkopírujte účet pro fakturaci a ID účtu pro zápis.
-6. Váš rozsah je:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+6. Váš rozsah je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Skupina pro správu
 
 1. Otevřete Azure Portal a v seznamu služeb přejděte do **skupiny pro správu** .
 2. Přejděte do požadované skupiny pro správu.
 3. Zkopírujte ID skupiny pro správu z tabulky.
-4. Váš rozsah je:`"/providers/Microsoft.Management/managementGroups/{id}"`
+4. Váš rozsah je: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Předplatné
 
-1. Otevřete Azure Portal a v seznamu služeb přejděte na předplatná.
+1. Otevřete Azure Portal a v seznamu služeb přejděte na **předplatná** .
 2. Zkopírujte ID předplatného z tabulky.
-3. Váš rozsah je:`"/subscriptions/{id}"`
+3. Váš rozsah je: `"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Skupiny prostředků
 
@@ -228,10 +231,10 @@ Při práci s rozhraními API Cost Management je důležité znát obor. Násled
 2. Klikněte na název požadované skupiny prostředků.
 3. V nabídce skupina prostředků vyberte **vlastnosti** .
 4. Zkopírujte hodnotu pole ID prostředku.
-5. Váš rozsah je:`"/subscriptions/{id}/resourceGroups/{name}"`
+5. Váš rozsah je: `"/subscriptions/{id}/resourceGroups/{name}"`
 
 Cost Management se aktuálně podporuje v [globálním](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net)Azure. Další informace o Azure Government najdete v tématu [koncové body Azure Global a oficiálních rozhraní API](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud jste ještě nedokončili první tohoto rychlého startu Cost Management, přečtěte si ho na [začít analýza nákladů](quick-acm-cost-analysis.md).
+- Pokud jste ještě nedokončili první rychlý Start pro Cost Management, přečtěte si ho v části [zahájení analýzy nákladů](quick-acm-cost-analysis.md).

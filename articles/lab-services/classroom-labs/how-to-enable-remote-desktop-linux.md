@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 65a77b8243e7afc8d858360d3d3be86f44e6b67e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350755"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332226"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení vzdálené plochy pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -36,7 +36,7 @@ V poli **povolit připojení ke vzdálené plošeovou** zprávu vyberte **pokra�
 ![Povolení připojení ke vzdálené ploše pro bitovou kopii operačního systému Linux](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> Povolení **připojení ke vzdálené ploše** otevírá jenom port **RDP** na počítačích se systémem Linux. Pokud je už v imagi virtuálního počítače nainstalovaný a nakonfigurovaný protokol RDP (například: Ubuntu Data Science Virtual Machine image) se můžete k virtuálním počítačům a studentům připojit pomocí protokolu RDP, aniž byste museli postupovat podle dalších kroků.
+> Povolení **připojení ke vzdálené ploše** otevírá jenom port **RDP** na počítačích se systémem Linux. Pokud je už v imagi virtuálního počítače nainstalovaný a nakonfigurovaný protokol RDP (například: Ubuntu Data Science Virtual Machine image), můžete se k virtuálním počítačům připojit pomocí protokolu RDP bez dalších kroků.
 > 
 > Pokud není v imagi virtuálního počítače nainstalovaný a nakonfigurovaný RDP, budete se muset poprvé připojit k počítači se systémem Linux a nainstalovat balíčky RDP a GUI, abyste se vy a studenti mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. Další informace najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md). Potom obrázek publikujete, aby se studenti mohli připojit k virtuálním počítačům s Linuxem pro studenty. 
 
@@ -46,36 +46,22 @@ V současné době se připojení ke vzdálené ploše podporuje pro následují
 - openSUSE, přestupné 42,3
 - CentOS-based 7,5
 - Debian 9 "Stretch"
-- Ubuntu Server 16.04 LTS
+- Ubuntu Server 16,04 LTS
 
-## <a name="teachers-connecting-to-the-template-vm-using-rdp"></a>Učitelé, kteří se připojují k virtuálnímu počítači šablony pomocí protokolu RDP
-Učitelé se musí nejdřív připojit k virtuálnímu počítači šablony pomocí SSH a nainstalovat na něm balíčky RDP a GUI. Učitelé pak můžou pomocí následujících kroků připojit se k virtuálním počítačům se systémem Linux pomocí protokolu RDP: 
+## <a name="connect-to-the-template-vm"></a>Připojení k šabloně virtuálního počítače 
+Učitelé se musí nejdřív připojit k virtuálnímu počítači šablony pomocí SSH a nainstalovat na něm balíčky RDP a GUI. Učitelé pak můžou pomocí protokolu RDP připojit se k virtuálnímu počítači šablony: 
 
-V okamžiku vytvoření testovacího prostředí se zobrazí možnost **Vzdálená plocha** , která se připojí k virtuálnímu počítači šablony. 
+1. Pokud se na panelu nástrojů zobrazí možnost **přizpůsobit šablonu** , vyberte ji. Pak v dialogovém okně **přizpůsobit šablonu** vyberte **pokračovat** . Tato akce spustí virtuální počítač šablony.  
 
-![Připojení k šabloně prostřednictvím protokolu RDP v době jejího vytvoření](../media/how-to-enable-remote-desktop-linux/connect-at-creation.png)
+    ![Přizpůsobení šablony](../media/how-to-enable-remote-desktop-linux/customize-template.png)
+2. Po spuštění šablony virtuálního počítače můžete vybrat **Připojit šablonu** a pak na panelu nástrojů **připojit přes SSH** . 
 
-Po vytvoření testovacího prostředí a spuštění šablony virtuálního počítače se na domovské stránce testovacího prostředí zobrazí možnost **Vzdálená plocha** . Spusťte šablonu VM, pokud už není spuštěná. 
-
-![Připojení k šabloně přes protokol RDP po vytvoření testovacího prostředí](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
-
-Další informace o připojení k virtuálnímu počítači pomocí protokolu SSH nebo RDP najdete v tématu [připojení pomocí protokolu SSH nebo RDP] ((#connect-using-SSH-nebo-RDP). 
-
-## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>Učitelé připojující se k virtuálnímu počítači studenta pomocí protokolu RDP
-Učitel/profesor se může připojit k virtuálnímu počítači studenta tak, že přepne na zobrazení **Virtual Machines** a vybere ikonu **připojit** . Před tím učitelům musí **publikovat** image šablony s nainstalovanými balíčky RDP a GUI. 
-
-![Učitelé připojující se k virtuálnímu počítači studenta](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
-
-Další informace o připojení k virtuálnímu počítači pomocí protokolu SSH nebo RDP najdete v tématu [připojení pomocí protokolu SSH nebo RDP] ((#connect-using-SSH-nebo-RDP). 
-
-## <a name="connect-using-ssh-or-rdp"></a>Připojení pomocí protokolu SSH nebo RDP
-Pokud vyberete možnost **SSH** , zobrazí se následující dialogové okno **připojit k virtuálnímu počítači** :  
-
-![Připojovací řetězec SSH](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
-
-Kliknutím na tlačítko **Kopírovat** vedle textového pole ho zkopírujte do schránky. Uložte připojovací řetězec SSH. K připojení k virtuálnímu počítači použijte tento připojovací řetězec [](https://www.putty.org/)z terminálu SSH (jako např.).
-
-Pokud vyberete možnost **RDP** , na váš počítač se stáhne soubor RDP. Uložte ho a otevřete ho pro připojení k počítači. 
+    ![Připojení k šabloně přes protokol RDP po vytvoření testovacího prostředí](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
+3. Zobrazí se následující dialogové okno **připojit k virtuálnímu počítači** . Kliknutím na tlačítko **Kopírovat** vedle textového pole ho zkopírujte do schránky. Uložte připojovací řetězec SSH. K připojení k virtuálnímu počítači použijte tento připojovací řetězec z terminálu SSH [(jako např](https://www.putty.org/).).
+ 
+    ![Připojovací řetězec SSH](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+4. Nainstalujte balíčky RDP a GUI, abyste se mohli a studenti mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. Další informace najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md). Potom obrázek publikujete, aby se studenti mohli připojit k virtuálním počítačům s Linuxem pro studenty.
+5. Po instalaci těchto balíčků můžete použít **šablonu připojit k** na panelu nástrojů a pak vybrat **připojit přes RDP** pro připojení k virtuálnímu počítači šablony přes RDP. Uložte soubor RDP a použijte ho pro připojení k virtuálnímu počítači šablony přes RDP. 
 
 ## <a name="next-steps"></a>Další kroky
 Po povolení funkce připojení ke vzdálené ploše studentům se můžou studenti připojit ke svým virtuálním počítačům přes RDP/SSH. Další informace najdete v tématu [použití vzdálené plochy pro virtuální počítače se systémem Linux v prostředí učebny](how-to-use-remote-desktop-linux-student.md). 

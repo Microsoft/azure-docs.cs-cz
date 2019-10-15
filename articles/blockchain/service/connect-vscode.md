@@ -1,31 +1,31 @@
 ---
-title: Použití Azure blockchain Development Kit pro Ethereem pro připojení ke službě Azure blockchain Service
+title: Použití Azure blockchain Development Kit pro Ethereem – Azure blockchain Service
 description: Připojte se k síti konsorcia služeb Azure blockchain pomocí sady Azure blockchain Development Kit pro Ethereem Extension v Visual Studio Code
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 82b71a9d837ed3cb1d9461c0de2559178685b4b4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6364e887c699219d80974d592a8ff7c77cca2621
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935814"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329303"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Rychlý start: Použití Visual Studio Code k připojení k síti konsorcia Azure blockchain
+# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Rychlý Start: použití Visual Studio Code pro připojení k síti konsorcia služeb Azure blockchain
 
 V tomto rychlém startu nainstalujete a použijete službu Azure blockchain Development Kit pro rozšíření Visual Studio Code Ethereem pro připojení k konsorciu služby Azure blockchain. Vývojová sada Azure blockchain zjednodušuje vytváření, připojování, sestavování a nasazování inteligentních smluv v knihách Ethereem. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Kompletní [rychlé spuštění: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvoření členu blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md)
+* Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure blockchain Development Kit pro rozšíření Ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js](https://nodejs.org)
@@ -38,7 +38,7 @@ V tomto rychlém startu nainstalujete a použijete službu Azure blockchain Deve
 
 Sada Azure blockchain Development Kit ověřuje splnění požadavků na vývojové prostředí. Ověření vašeho vývojového prostředí:
 
-Z palety příkazů vs Code vyberte **blockchain Azure: Zobrazit úvodní stránku**
+Z palety příkazů VS Code vyberte možnost **Azure blockchain: Zobrazit úvodní stránku**.
 
 Azure blockchain Development Kit spustí ověřovací skript, který dokončení trvá přibližně minutu. Výstup můžete zobrazit tak, že vyberete **terminál > nový terminál**. V řádku nabídek terminálu vyberte kartu **výstup** a **Azure blockchain** v rozevíracím seznamu. Úspěšné ověření vypadá jako na následujícím obrázku:
 
@@ -54,7 +54,7 @@ Před pokračováním v rychlém startu nainstalujte všechny chybějící poža
 
 K členům konsorcia se můžete připojit pomocí rozšíření VS Code Azure blockchain Development Kit. Po připojení k konsorciu můžete kompilovat, sestavovat a nasazovat inteligentní kontrakty na člena konsorcia služeb Azure blockchain.
 
-Pokud nemáte přístup k členovi konsorcia služeb Azure blockchain, proveďte potřebný [rychlý Start: Vytvořte člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlého startu: Vytvořte člen blockchain služby Azure blockchain pomocí Azure CLI](create-member-cli.md).
+Pokud nemáte přístup k členovi konsorcia služeb Azure blockchain, proveďte kompletní [rychlé zprovoznění: Vytvoření členu blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena Azure blockchain Service BLOCKCHAIN pomocí Azure CLI ](create-member-cli.md).
 
 1. V podokně aplikace Visual Studio Code (VS Code) rozbalte rozšíření **Azure blockchain** .
 1. Vyberte **připojit k konsorciu**.

@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968285"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333125"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Spravovaná identita pro aplikaci Service Fabric (Preview)
 
@@ -45,7 +45,7 @@ V sadě dokumentace spravované identity pro prostředky Azure se používají n
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Podporované scénáře pro aplikace Service Fabric
 
-Spravované identity pro Service Fabric se podporují jenom v clusterech nasazených Service Fabric Azure a jenom pro aplikace nasazené jako prostředky Azure. aplikacím, které nejsou nasazené jako prostředek Azure, nelze přiřadit identitu. V tomto případě se podpora spravovaných identit ve službě Azure Service Fabric cluster skládá ze dvou fází:
+Spravované identity pro Service Fabric se podporují jenom v clusterech nasazených Service Fabric Azure a jenom pro aplikace nasazené jako prostředky Azure. aplikaci, která není nasazena jako prostředek Azure, nelze přiřadit identitu. V tomto případě se podpora spravovaných identit ve službě Azure Service Fabric cluster skládá ze dvou fází:
 
 1. Přiřaďte prostředku aplikace jednu nebo více spravovaných identit. aplikaci lze přiřadit jedinou identitu přiřazenou systémem a/nebo až 32 uživatelsky přiřazených identit.
 
@@ -64,12 +64,14 @@ Následující scénáře nejsou podporovány nebo nejsou doporučovány. Všimn
 
    - Umožňuje odebrat nebo změnit identity přiřazené k aplikaci. Pokud je nutné provést změny, odešlete samostatné nasazení, abyste přidali nové přiřazení identity a pak odebrali dříve přiřazenou identitu. Odebrání identity z existující aplikace může mít nežádoucí účinky, včetně ukončení aplikace ve stavu, který nelze upgradovat. Zcela odstraní aplikaci, pokud je nutné odebrat identitu. Všimněte si, že se odstraní identita přiřazená systémem (Pokud je definována) přidružená k aplikaci a odstraní všechna přidružení s uživatelsky přiřazenými identitami přiřazenými k aplikaci.
 
+   - Podpora SF pro spravované identity není v tuto chvíli integrována do [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); integrace bude dosaženo koncem období Preview pro funkci Managed identity.
+
 >
 > [!NOTE]
 >
 > Tato funkce je ve verzi Preview. v takovém případě se může vztahovat k častým změnám a nemusí být vhodná pro produkční nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Nasazení nového clusteru Azure Service Fabric s podporou spravované identity](./configure-new-azure-service-fabric-enable-managed-identity.md) 
 * [Povolení podpory spravovaných identit v existujícím clusteru Azure Service Fabric](./configure-existing-cluster-enable-managed-identity-token-service.md)
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

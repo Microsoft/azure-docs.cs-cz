@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694591"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374253"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k ASP.NET Core webovému rozhraní API z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -70,7 +70,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor *B2C-WebApi/* * appSettings. JSON** * v aplikaci Visual Studio nebo Visual Studio Code.
+1. Otevřete soubor <em>B2C-WebApi/**appSettings. JSON**</em>  v aplikaci Visual Studio nebo Visual Studio Code.
 1. Upravte blok `AzureAdB2C` tak, aby odrážel název vašeho tenanta, ID aplikace webového rozhraní API, název vaší zásady registrace a přihlašování a obory, které jste definovali dříve. Blok by měl vypadat podobně jako v následujícím příkladu (s odpovídajícími hodnotami `Tenant` a `ClientId`):
 
     ```json

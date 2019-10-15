@@ -11,41 +11,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: a4cb2abec429a790f493f95d3d16b2ff7b3eb445
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69645013"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331448"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-instructor"></a>Nastavení nebo resetování hesla pro virtuální počítače v učebně Labs (instruktor)
-Vlastník testovacího prostředí (učitel) může nastavit nebo resetovat heslo pro virtuální počítače v době vytvoření testovacího prostředí (Průvodce vytvořením testovacího prostředí) nebo po vytvoření testovacího prostředí (na řídicím panelu). 
+# <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a Správa fondu virtuálních počítačů 
+V tomto článku se dozvíte, jak provádět následující úlohy:
 
-## <a name="set-password-at-the-time-of-lab-creation"></a>Nastavení hesla v době vytváření testovacího prostředí
-Vlastník testovacího prostředí (učitel) může nastavit heslo pro virtuální počítače v testovacím prostředí na stránce **nastavit přihlašovací údaje** v Průvodci vytvořením testovacího prostředí.
+- Zvýšení počtu virtuálních počítačů v testovacím prostředí
+- Spuštění všech virtuálních počítačů nebo vybraných virtuálních počítačů 
+- Resetování virtuálních počítačů
 
-![Nastavit přihlašovací údaje](../media/tutorial-setup-classroom-lab/set-credentials.png)
+## <a name="update-the-lab-capacity"></a>Aktualizace kapacity testovacího prostředí
+Chcete-li zvýšit nebo snížit kapacitu testovacího prostředí (počet virtuálních počítačů v testovacím prostředí), proveďte následující kroky:
+
+1. Na stránce **fond virtuálních počítačů** vyberte možnost **kapacita testovacího prostředí: &lt;number @ no__t-3 počítače**.
+2. Zadejte nový **počet virtuálních počítačů** , které chcete v testovacím prostředí. Tento počet musí být větší nebo roven počtu uživatelů registrovaných v testovacím prostředí. 
+3. Potom vyberte **Uložit**. 
+
+    ![Tlačítko spustit vše](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+4. Pokud jste zvýšili kapacitu, uvidíte virtuální počítač nebo virtuální počítače, které jsou vytvářeny. 
+
+    ![Vytvářený virtuální počítač](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
+
+## <a name="start-vms"></a>Spuštění virtuálních počítačů
+
+### <a name="start-ot-stop-all-vms"></a>Start ot (zastavit všechny virtuální počítače)
+1. Přepněte na stránku **fondu virtuálních počítačů** . 
+2. Na panelu nástrojů vyberte **Spustit vše** . 
+
+    ![Tlačítko spustit vše](../media/how-to-set-virtual-machine-passwords/start-all-vms-button.png)
+3. Po spuštění všech virtuálních počítačů můžete zastavit všechny virtuální počítače tak, že na panelu nástrojů vyberete tlačítko **Zastavit vše** . 
+
+    ![Tlačítko Zastavit vše](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
+
+### <a name="start-selected-vms"></a>Spustit vybrané virtuální počítače
+Existují dva způsoby, jak spustit vybrané virtuální počítače (jeden nebo více). Prvním způsobem je vybrat virtuální počítač nebo virtuální počítače v seznamu a pak na panelu nástrojů vybrat **Spustit** . Druhým způsobem je vybrat virtuální počítač nebo virtuální počítače v seznamu, vybrat rozevírací seznam ve sloupci **stav** v jednom z řádků a pak vybrat možnost **Spustit**. 
+
+![Spustit vybrané virtuální počítače](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
+
+Podobně můžete zastavit jeden nebo více virtuálních počítačů pomocí rozevíracího seznamu ve sloupci **stav** nebo **zastavit** na panelu nástrojů. 
+
+## <a name="reset-vms"></a>Resetování virtuálních počítačů
+Pokud chcete resetovat jeden nebo víc virtuálních počítačů, vyberte je v seznamu a pak na panelu nástrojů vyberte **obnovit** . 
+
+![Resetovat vybrané virtuální počítače](../media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
+
+V dialogovém okně **resetovat virtuální počítače** vyberte **resetovat**. 
+
+![Dialogové okno resetovat virtuální počítač](../media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
+
+
+
+## <a name="set-password-for-vms"></a>Nastavení hesla pro virtuální počítače
+Vlastník testovacího prostředí (učitel) může nastavit nebo resetovat heslo pro virtuální počítače v době vytvoření testovacího prostředí (Průvodce vytvořením testovacího prostředí) nebo po vytvoření testovacího prostředí na stránce **šablony** . 
+
+### <a name="set-password-at-the-time-of-lab-creation"></a>Nastavení hesla v době vytváření testovacího prostředí
+Vlastník testovacího prostředí (učitel) může nastavit heslo pro virtuální počítače v testovacím prostředí na stránce **přihlašovací údaje virtuálního počítače** v Průvodci vytvořením testovacího prostředí.
+
+![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
 Když povolíte nebo zakážete možnost **použít stejné heslo pro všechny virtuální počítače** na této stránce, učitel se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí nebo umožnit studentům nastavit hesla pro své virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image operačních systémů Windows a Linux s výjimkou Ubuntu. Když je toto nastavení zakázané, Student se při prvním pokusu o připojení k virtuálnímu počítači vyzve k nastavení hesla. 
 
-Vlastník testovacího prostředí může resetovat toto heslo (v případě potřeby) na stránce **Konfigurovat šablonu** v Průvodci vytvořením testovacího prostředí. 
+### <a name="reset-password-later"></a>Resetování hesla později
 
-![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-
-Vlastník testovacího prostředí může také resetovat heslo po vytvoření testovacího prostředí na řídicím panelu. 
-
-## <a name="reset-password-on-the-dashboard"></a>Resetování hesla na řídicím panelu
-
-1. V dlaždici testovací prostředí vyberte nabídku přetečení (svislá a tři tečky) a vyberte **resetovat heslo**. 
+1. Na stránce **Šablona** testovacího prostředí vyberte **resetovat heslo** na panelu nástrojů. 
 
     ![Nabídka resetovat heslo na domovské stránce](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
-1. V dialogovém okně **nastavit heslo** zadejte heslo a vyberte **nastavit heslo**.
+1. V dialogovém okně **resetovat heslo** zadejte heslo a vyberte **resetovat heslo**.
     
     ![Dialogové okno nastavit heslo](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="next-steps"></a>Další postup
-Další informace o možnostech využití studenta (jako vlastník testovacího prostředí) můžete nakonfigurovat v následujícím článku: [Nakonfigurujte využití studenta](how-to-configure-student-usage.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o možnostech využití studenta (jako vlastník testovacího prostředí) můžete nakonfigurovat v následujícím článku: [Konfigurace využití studenta](how-to-configure-student-usage.md).
 
 Další informace o tom, jak studenti můžou resetovat hesla pro své virtuální počítače, najdete v tématu [nastavení nebo resetování hesla pro virtuální počítače v učebně Labs (studenti)](how-to-set-virtual-machine-passwords-student.md).

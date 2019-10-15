@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: b566cc9e45348241cf6ae7b81bd0e471fbf59ba0
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: ba03d643c8d3770da60d4225d6c2b84d2a07766f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720039"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72325538"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brána virtuální sítě ExpressRoute a FastPath
 Pokud chcete připojit virtuální síť Azure a místní síť přes ExpressRoute, musíte nejdřív vytvořit bránu virtuální sítě. Brána virtuální sítě slouží ke dvěma účelům: Exchange IP trasy mezi sítěmi a směrování síťového provozu. Tento článek vysvětluje typy bran, SKU brány a odhadovaný výkon podle SKU. Tento článek také vysvětluje ExpressRoute [FastPath](#fastpath), funkci, která umožňuje síťovému provozu z vaší místní sítě obejít bránu virtuální sítě, aby se zlepšil výkon.
@@ -65,7 +65,8 @@ FastPath je k dispozici na všech okruhech ExpressRoute. Ještě vyžaduje vytvo
 FastPath nepodporuje následující funkce:
 * UDR v podsíti brány: Pokud použijete UDR k podsíti brány vaší virtuální sítě, bude se síťový provoz z vaší místní sítě dál posílat do brány virtuální sítě.
 * Partnerský vztah virtuálních sítí: Pokud máte jiné virtuální sítě s partnerským vztahem, který je připojený k ExpressRoute síťového provozu z vaší místní sítě do ostatních virtuálních sítí (tj. virtuální sítě), bude se dál posílat do virtuální sítě. brány. Alternativním řešením je připojit všechny virtuální sítě k okruhu ExpressRoute přímo.
-* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, použijete základní interní nástroj pro vyrovnávání zatížení, síťový provoz z vaší místní sítě na virtuální IP adresy hostované na Do brány virtuální sítě se pošle základní nástroj pro vyrovnávání zatížení. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview). 
+* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, použijete základní interní nástroj pro vyrovnávání zatížení, síťový provoz z vaší místní sítě na virtuální IP adresy hostované na Do brány virtuální sítě se pošle základní nástroj pro vyrovnávání zatížení. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview).
+* Privátní odkaz: Pokud se připojíte k [privátnímu koncovému bodu](../private-link/private-link-overview.md) ve virtuální síti z místní sítě, připojení projde bránou virtuální sítě.
  
 ## <a name="resources"></a>Rozhraní REST API a rutiny PowerShellu
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API a rutin PowerShellu pro konfigurace brány virtuální sítě najdete na následujících stránkách:

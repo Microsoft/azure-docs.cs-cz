@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389963"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331989"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Použití Galerie sdílených imagí v Azure Lab Services
 V tomto článku se dozvíte, jakým způsobem může správce učitelů/testovacího prostředí uložit image virtuálního počítače šablony, aby ji mohli znovu použít jiní uživatelé. Tyto image jsou uložené v [galerii sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md)Azure. Jako první krok správce testovacího prostředí připojí existující galerii sdílených imagí k účtu testovacího prostředí. Jakmile je galerie sdílených imagí připojená, laboratoře vytvořené v účtu testovacího prostředí můžou ukládat image do galerie sdílených imagí. Ostatní učitelé můžou tuto image vybrat z Galerie sdílených imagí a vytvořit tak šablonu pro své třídy. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Pomocí [Azure PowerShell](../../virtual-machines/windows/shared-images.md) nebo rozhraní příkazového [řádku Azure](../../virtual-machines/linux/shared-images.md)můžete vytvořit galerii sdílených imagí.
 - Připojili jste galerii sdílených imagí k účtu testovacího prostředí. Podrobné pokyny najdete v tématu [Postup připojení nebo odpojení Galerie sdílených imagí](how-to-attach-detach-shared-image-gallery.md).
 
@@ -31,18 +31,18 @@ V tomto článku se dozvíte, jakým způsobem může správce učitelů/testova
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Uložení obrázku do galerie sdílených imagí
 Po připojení Galerie sdílených imagí může správce účtu testovacího prostředí nebo učitel Uložit image do galerie sdílených imagí, aby ji mohli používat i ostatní učitelé. 
 
-1. Na domovské stránce testovacího prostředí vyberte možnost **Uložit obrázek** na dlaždici v části **Šablona** .
+1. Na stránce **Šablona** testovacího prostředí vyberte **exportovat do galerie sdílených imagí** na panelu nástrojů.
 
-    ![Tlačítko Uložit obrázek](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  V okně **Uložit bitovou kopii virtuálního počítače** zadejte název bitové kopie a vyberte **Uložit**. 
+    ![Tlačítko Uložit obrázek](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. V dialogovém okně **exportovat do sdílené bitové kopie** zadejte **název bitové kopie**a pak vyberte **exportovat**. 
 
-    ![Uložit okno image virtuálního počítače](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. Ověřte stav dlaždice testovací prostředí. 
+    ![Dialog Exportovat do galerie sdílených imagí](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. Průběh této operace můžete zobrazit na stránce **šablony** . Tato operace může nějakou dobu trvat. 
 
-    ![Stav operace Uložit obrázek](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. Potvrďte, že operace proběhla úspěšně.
+    ![Probíhá export.](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. Po úspěšném provedení operace exportu se zobrazí následující zpráva:
 
-    ![Operace uložení obrázku byla úspěšná.](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![Export dokončen](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 Můžete také nahrát obrázek do galerie sdílených imagí mimo kontext testovacího prostředí. Další informace najdete v tématu [Přehled Galerie sdílených imagí](../../virtual-machines/windows/shared-images.md). 
 

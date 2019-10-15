@@ -1,6 +1,6 @@
 ---
-title: Povolit prostředí více virtuálních počítačů v Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit prostředí s více virtuálními počítači v rámci šablony virtuálního počítače v prostředí v učebně Azure Lab Services.
+title: Povolit prostředí s více virtuálními počítači v Azure Lab Services | Microsoft Docs
+description: Naučte se vytvořit prostředí s několika virtuálními počítači v rámci šablony virtuálního počítače v testovacím prostředí pro učebnu Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,93 +11,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 10/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a86ba803f899e78b2ba9640e6cc317966969e64
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702393"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332330"
 ---
-# <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>Vytvoření prostředí s více virtuálními počítači v rámci šablony virtuálního počítače z testovacího prostředí v učebně
-Aktuálně Azure Lab Services vám umožní nastavit jednu šablonu virtuálního počítače v testovacím prostředí a zpřístupnit jedna kopie všech uživatelů. Ale pokud profesor vyučují třídu IT o tom, jak nastavit brány firewall nebo servery, budete muset jednotlivé studenty poskytnout prostředí, ve kterém více virtuálních počítačů můžou komunikovat přes síť.
+# <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>Vytvoření prostředí s několika virtuálními počítači v rámci šablony virtuálního počítače pro prostředí učebny
+V současné době Azure Lab Services umožňuje nastavit jeden virtuální počítač šablony v testovacím prostředí a vytvořit pro každého uživatele jednu kopii. Pokud ale profesor výuku třídy IT o tom, jak nastavit brány firewall nebo servery, možná budete muset každému studentovi poskytnout prostředí, ve kterém může více virtuálních počítačů vzájemně komunikovat přes síť.
 
-Vnořená virtualizace umožňuje vytvářet prostředí s více virtuálních počítačů v testovacím prostředí šablony virtuálního počítače. Publikování šablony se pro každého uživatele v testovacím prostředí pomocí virtuálního počítače s několika virtuálních počítačů v rámci něj.
+Vnořená virtualizace umožňuje vytvořit prostředí s několika virtuálními počítači v rámci virtuálních počítačů šablon testovacího prostředí. Publikování šablony poskytne každého uživatele v testovacím prostředí s virtuálním počítačem nastaveným s několika virtuálními počítači v rámci něj.
 
 ## <a name="what-is-nested-virtualization"></a>Co je vnořená virtualizace?
-Vnořená virtualizace umožňuje vytvářet virtuální počítače v rámci virtuálního počítače. Vnořená virtualizace se provádí pomocí technologie Hyper-V a je dostupná pouze na virtuální počítače s Windows.
+Vnořená virtualizace umožňuje vytvářet virtuální počítače v rámci virtuálního počítače. Vnořená virtualizace se provádí prostřednictvím technologie Hyper-V a je dostupná jenom na virtuálních počítačích s Windows.
 
-Další informace o vnořená virtualizace najdete v následujících článcích:
+Další informace o vnořené virtualizaci naleznete v následujících článcích:
 
 - [Vnořená virtualizace v Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [Povolení vnořené virtualizace ve Virtuálním počítači Azure](../../virtual-machines/windows/nested-virtualization.md)
+- [Jak povolit vnořenou virtualizaci na virtuálním počítači Azure](../../virtual-machines/windows/nested-virtualization.md)
 
-## <a name="use-nested-virtualization-in-azure-lab-services"></a>Použití vnořené virtualizace v Azure Lab Services
-Jsou důležité kroky:
+## <a name="use-nested-virtualization-in-azure-lab-services"></a>Použít vnořenou virtualizaci v Azure Lab Services
+Důležité kroky:
 
-1. Vytvoření **velké** velikosti **Windows** počítače šablony pro testovací prostředí. 
-2. Připojte se k němu a [povolit vnořenou virtualizaci s](../../virtual-machines/windows/nested-virtualization.md).
+1. Vytvořte pro testovací prostředí **rozsáhlou** velikost počítače s **Windows** šablonou. 
+2. Připojte se k němu a [Povolte vnořenou virtualizaci](../../virtual-machines/windows/nested-virtualization.md).
 
 
-Následující postup obsahuje podrobné pokyny: 
+Následující postup vám poskytne podrobné kroky: 
 
-1. Pokud již nemáte, vytvořte si účet testovacího prostředí. Pokyny najdete v tématu [kurzu: Nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
-2. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
-3. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+1. Vytvořte účet testovacího prostředí, pokud ho ještě nemáte. Pokyny najdete v tématu [kurz: nastavení účtu testovacího prostředí pomocí Azure Lab Services](tutorial-setup-lab-account.md).
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 ještě není podporována. 
+2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+3. Vyberte **nové testovací prostředí**. 
+    
+    ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 
-    2. Zadejte maximální **počet virtuálních počítačů** v testovacím prostředí. Můžete zvýšit nebo decreate počet virtuálních počítačů po vytvoření testovacího prostředí nebo v existující testovací prostředí. Další informace najdete v tématu [aktualizovat počet virtuálních počítačů v testovacím prostředí](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
-    6. Vyberte **Uložit**.
+    2. Pro **Velikost virtuálního počítače**vyberte **Velká (vnořená virtualizace)** nebo **střední (vnořená virtualizace)** .
+    6. Vyberte **bitovou kopii** systému Windows, kterou chcete použít. Vnořená virtualizace je dostupná jenom na počítačích s Windows. 
+    4. Pak vyberte **Next** (Další). 
 
-        ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velké** pro velikosti virtuálních počítačů (VM) má být vytvořen v testovacím prostředí. V současné době podporuje pouze velká velikost vnořená virtualizace.
-    2. Zvolte image virtuálního počítače, který je **Windows image**. Vnořená virtualizace je dostupná pouze na počítače s Windows. 
-    3. Vyberte **Další**.
+        ![Vytvoření testovacího prostředí v učebně](../media/how-to-enable-multi-vm-environment/new-lab-window.png)
+    1. Na stránce **přihlašovací údaje virtuálního počítače** zadejte výchozí přihlašovací údaje pro všechny virtuální počítače v testovacím prostředí. Zadejte **jméno** a **heslo** pro uživatele a pak vyberte **Další**.  
 
-        ![Zadání specifikací virtuálních počítačů](../media/how-to-enable-multi-vm-environment/large-windows-vm.png)    
-5. Na stránce **Set credentials** (Nastavení přihlašovacích údajů) zadejte výchozí přihlašovací údaje ke všem virtuálním počítačům v testovacím prostředí. 
-    1. Zadejte **jméno uživatele** pro všechny virtuální počítače v testovacím prostředí.
-    2. Zadejte **heslo** tohoto uživatele. 
+        ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
         > [!IMPORTANT]
         > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
-    3. Vyberte **Vytvořit**. 
+    3. Na stránce **zásady testovacího prostředí** zadejte počet hodin přidělený každému uživateli (**kvótu pro každého uživatele**) mimo naplánovaný čas pro testovací prostředí a pak vyberte **Dokončit**. 
 
-        ![Nastavení přihlašovacích údajů](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. Na stránce **Configure template** (Konfigurace šablony) se zobrazí stav vytváření testovacího prostředí. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. 
+        ![Kvóta pro každého uživatele](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. Měla by se zobrazit následující obrazovka, která zobrazuje stav vytvoření virtuálního počítače šablony. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. 
 
-    ![Konfigurace šablony](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. Po dokončení konfigurace šablony se zobrazí následující stránka: 
+    ![Stav vytvoření virtuálního počítače šablony](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+1. Na stránce **Šablona** vyberte **přizpůsobit šablonu** na panelu nástrojů. 
 
-    ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Na **konfigurovat šablony** stránce **připojit** pro připojení k šabloně virtuálního počítače ke konfiguraci vnořená virtualizace. Můžete také nakonfigurovat později po dokončení kroků v tomto průvodci. 
-9. Uvnitř šablony virtuálního počítače nastavení vnořená virtualizace a konfigurace virtuální sítě s několika virtuálními počítači. Podrobné pokyny krok za krokem, najdete v článku [povolení vnořené virtualizace ve Virtuálním počítači Azure](../../virtual-machines/windows/nested-virtualization.md). Tady je stručný přehled kroků: 
-    1. Povolte funkce Hyper-V v šabloně virtuálního počítače.
-    2. Nastavit interní virtuální sítě s připojením k Internetu pro vnořených virtuálních počítačů
-    3. Vytvářet virtuální počítače pomocí Správce technologie Hyper-V
+    ![Tlačítko přizpůsobit šablonu](../media/how-to-create-manage-template/customize-template-button.png)
+2. V dialogovém okně **přizpůsobit šablonu** vyberte **pokračovat**. Po spuštění šablony a provedení změn už nebude mít stejné nastavení jako virtuální počítače, které jsou naposledy publikované pro vaše uživatele. Změny šablony se neprojeví na stávajících virtuálních počítačích vašich uživatelů, dokud je znovu nepublikujete.
+
+    ![Dialogové okno přizpůsobit](../media/how-to-create-manage-template/customize-template-dialog.png)
+1. Kliknutím na tlačítko **připojit k šabloně** na panelu nástrojů se připojte k virtuálnímu počítači šablony a nakonfigurujte vnořenou virtualizaci a postupujte podle pokynů. Pokud se jedná o počítač s Windows, zobrazí se možnost stáhnout soubor RDP. 
+
+    ![Připojení k šabloně virtuálního počítače](../media/how-to-create-manage-template/connect-template-vm.png) 
+9. V rámci virtuálního počítače šablony nastavte vnořenou virtualizaci a nakonfigurujte virtuální síť s více virtuálními počítači. Podrobné pokyny najdete v tématu [Postup povolení vnořené virtualizace ve virtuálním počítači Azure](../../virtual-machines/windows/nested-virtualization.md). Tady je stručný přehled kroků: 
+    1. Povolte funkci Hyper-V na virtuálním počítači šablony.
+    2. Nastavení interní virtuální sítě s připojením k Internetu pro vnořené virtuální počítače
+    3. Vytváření virtuálních počítačů pomocí Správce technologie Hyper-V
     4. Přiřazení IP adresy k virtuálním počítačům
-10. Na stránce šablony vyberte **Next** (Další). 
-11. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
-    1. Chcete-li publikovat šablony okamžitě a vyberte **publikovat**.  
+10. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
 
-        > [!WARNING]
-        > Publikování nejde vrátit zpět. 
-    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o postupu konfigurace a publikování po dokončení průvodce najdete v části [Publikování šablony](how-to-create-manage-template.md#publish-the-template-vm) v článku [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md).
+    ![Tlačítko publikovat šablonu](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![Publikování šablony](../media/how-to-enable-multi-vm-environment/publish-template-page.png)
-11. Zobrazí se **průběh publikování** šablony. Tento proces může trvat až hodinu. 
+    > [!WARNING]
+    > Publikování nejde vrátit zpět. 
+8. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
+
+    ![Šablona publikování – počet virtuálních počítačů](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. Na stránce se zobrazí **stav publikování** šablony. Tento proces může trvat až hodinu. 
 
     ![Publikování šablony – průběh](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. Po úspěšném publikování šablony se zobrazí následující stránka. Vyberte **Done** (Hotovo).
-
-    ![Publikování šablony – úspěch](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. Zobrazí se **řídicí panel** testovacího prostředí. 
-    
-    ![Řídicí panel testovacího prostředí v učebně](../media/how-to-enable-multi-vm-environment/dashboard.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní každý uživatel získá jeden virtuální počítač, který obsahuje prostředí více virtuálních počítačů v rámci něj. Zjistěte, jak přidat uživatele do testovacího prostředí a poslat odkaz registrace k nim, najdete v následujícím článku: [Přidání uživatelů do testovacího prostředí](tutorial-setup-classroom-lab.md#add-users-to-the-lab).
+Každý uživatel teď získá jeden virtuální počítač, který obsahuje prostředí s více virtuálními počítači. Informace o tom, jak přidat uživatele do testovacího prostředí a jak odeslat odkaz na registraci, najdete v následujícím článku: [Přidání uživatelů do testovacího prostředí](tutorial-setup-classroom-lab.md#add-users-to-the-lab).

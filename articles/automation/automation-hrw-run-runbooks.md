@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240325"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372834"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
 Ve struktuře runbooků, které běží v Azure Automation a runbooky, které běží na Hybrid Runbook Worker, není žádný rozdíl. Sady Runbook, které používáte s nejpravděpodobnějším rozdílem, se výrazně liší. Důvodem je to, že Runbooky, které cílí na Hybrid Runbook Worker, obvykle spravují prostředky v místním počítači nebo k prostředkům v místním prostředí, kde je nasazený. Runbooky v Azure Automation obvykle spravují prostředky v cloudu Azure.
 
-Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, `nxautomation` aby měl účet přístup k umístění, kam vaše moduly ukládáte. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , zadejte **AllUsers** k `-Scope` parametru, abyste si ověřili `naxautomation` , že má účet přístup.
+Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, aby účet `nxautomation` měl přístup k umístění, kam ukládáte své moduly. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , zadejte **AllUsers** k parametru `-Scope` a potvrďte tak, že má účet `naxautomation` přístup.
 
 Další informace o PowerShellu v systému Linux najdete v tématu [známé problémy pro prostředí PowerShell na platformách jiných než Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -45,7 +45,7 @@ Runbooky běžící na Hybrid Runbook Worker nemůžou používat stejnou metodu
 
 ### <a name="runbook-authentication"></a>Ověřování Runbooku
 
-Ve výchozím nastavení se Runbooky spouštějí v kontextu místního systémového účtu pro Windows a speciální uživatelský účet `nxautomation` pro Linux na místním počítači, takže musí poskytovat svoje vlastní ověřování pro prostředky, ke kterým přistupuje.
+Ve výchozím nastavení se Runbooky spouštějí v kontextu místního systémového účtu pro Windows a speciální uživatelský účet `nxautomation` pro Linux na místním počítači, takže musí poskytovat své vlastní ověřování pro prostředky, ke kterým přistupují.
 
 V sadě Runbook můžete použít prostředky [přihlašovacích údajů](automation-credentials.md) a [certifikátů](automation-certificates.md) s rutinami, které umožňují zadat přihlašovací údaje, abyste je mohli ověřit u různých prostředků. Následující příklad ukazuje část sady Runbook, která restartuje počítač. Načítá přihlašovací údaje z assetu přihlašovacích údajů a název počítače z variabilního prostředku a pak tyto hodnoty používá pomocí rutiny restart-Computer.
 
@@ -60,11 +60,11 @@ Můžete také použít [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Účet RunAs
 
-Ve výchozím nastavení používá Hybrid Runbook Worker pro spouštění Runbooků místní systém pro Windows a speciální `nxautomation` uživatelský účet pro Linux. Místo toho, aby Runbooky poskytovaly vlastní ověřování pro místní prostředky, můžete zadat účet **runas** pro skupinu hybridních pracovních procesů. Zadáte [Asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, včetně úložišť certifikátů, a všechny Runbooky spouštěné pod těmito přihlašovacími údaji při spuštění na Hybrid Runbook Worker ve skupině.
+Ve výchozím nastavení používá Hybrid Runbook Worker pro spouštění Runbooků místní systém pro Windows a speciální uživatelský účet `nxautomation` pro Linux. Místo toho, aby Runbooky poskytovaly vlastní ověřování pro místní prostředky, můžete zadat účet **runas** pro skupinu hybridních pracovních procesů. Zadáte [Asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, včetně úložišť certifikátů, a všechny Runbooky spouštěné pod těmito přihlašovacími údaji při spuštění na Hybrid Runbook Worker ve skupině.
 
 Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
 
-* domain\username
+* jméno
 * username@domain
 * uživatelské jméno (pro účty místní k místnímu počítači)
 
@@ -89,11 +89,10 @@ Pokud chcete používat spravovanou identitu pro prostředky Azure v procesu Hyb
 
 1. Vytvoření virtuálního počítače Azure
 2. [Konfigurace spravovaných identit pro prostředky Azure na vašem VIRTUÁLNÍm počítači](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
-3. [Udělení přístupu k VIRTUÁLNÍmu počítači do skupiny prostředků v Správce prostředků](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
-4. [Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
-5. Nainstalujte na virtuální počítač [Hybrid Runbook Worker Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) .
+3. [Udělení přístupu k virtuálnímu počítači do skupiny prostředků v Správce prostředků](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) kurzu – Windows-VM-Access-ARM. MD # Get-a-Access-token-using-the-VM-System-Assigned-identity-a-use-it-to-Call-Azure-Resource-Manager)
+4. Nainstalujte na virtuální počítač [Hybrid Runbook Worker Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) .
 
-Po dokončení předchozích kroků můžete pomocí `Connect-AzureRmAccount -Identity` sady Runbook ověřit prostředky Azure. Tato konfigurace omezuje nutnost použít účet Spustit jako a spravovat certifikát pro účet Spustit jako.
+Po dokončení předchozích kroků můžete v Runbooku použít `Connect-AzureRmAccount -Identity` a ověřit tak prostředky Azure. Tato konfigurace omezuje nutnost použít účet Spustit jako a spravovat certifikát pro účet Spustit jako.
 
 ```powershell
 # Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -102,6 +101,9 @@ Connect-AzureRmAccount -Identity
 # Get all VM names from the subscription
 Get-AzureRmVm | Select Name
 ```
+
+> [!NOTE]
+> `Connect-AzureRMAccount -Identity` funguje pro Hybrid Runbook Worker s identitou přiřazenou systémem a identitou přiřazenou k jednomu uživateli. Pokud potřebujete na HRW použít více identit přiřazených uživateli, musíte zadat parametr `-AccountId` pro výběr konkrétní identity přiřazené uživatelem.
 
 ### <a name="runas-script"></a>Účet Spustit jako pro Automation
 
@@ -182,7 +184,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > **Add-AzureRmAccount** je teď alias pro **Connect-AzureRmAccount**. Pokud se při hledání položek knihovny nezobrazí **příkaz Connect-AzureRMAccount**, můžete použít příkaz **Add-AzureRMAccount**nebo můžete aktualizovat moduly v účtu Automation.
 
-Uložte Runbook *Export-RunAsCertificateToHybridWorker* do počítače s `.ps1` příponou. Importujte ho do svého účtu Automation a upravte Runbook a změňte hodnotu proměnné `$Password` pomocí vlastního hesla. Publikování a spuštění sady Runbook. Určete cílovou skupinu Hybrid Worker, která spustí a ověří Runbooky pomocí účtu Spustit jako. Datový proud úlohy hlásí pokus o import certifikátu do úložiště místního počítače a následuje za více řádky. Toto chování závisí na tom, kolik účtů služby Automation ve vašem předplatném definujete a jestli je ověřování úspěšné.
+Uložte Runbook *Export-RunAsCertificateToHybridWorker* do počítače s rozšířením `.ps1`. Importujte ho do svého účtu Automation a upravte Runbook a změňte hodnotu proměnné `$Password` vlastním heslem. Publikování a spuštění sady Runbook. Určete cílovou skupinu Hybrid Worker, která spustí a ověří Runbooky pomocí účtu Spustit jako. Datový proud úlohy hlásí pokus o import certifikátu do úložiště místního počítače a následuje za více řádky. Toto chování závisí na tom, kolik účtů služby Automation ve vašem předplatném definujete a jestli je ověřování úspěšné.
 
 ## <a name="job-behavior"></a>Chování úlohy
 
@@ -193,7 +195,7 @@ Uložte Runbook *Export-RunAsCertificateToHybridWorker* do počítače s `.ps1` 
 Procesy Hybrid Runbook Worker lze konfigurovat tak, aby spouštěly pouze podepsané Runbooky s určitou konfigurací. Následující část popisuje, jak nastavit pracovní procesy Hybrid Runbook pro spouštění podepsaných [Hybrid Runbook Worker Windows](#windows-hybrid-runbook-worker) a [Linux Hybrid Runbook Worker](#linux-hybrid-runbook-worker)
 
 > [!NOTE]
-> Jakmile nakonfigurujete Hybrid Runbook Worker, aby spouštěla pouze podepsané Runbooky, nespustí se v pracovním procesu žádné nepodepsané Runbooky.
+> Jakmile nakonfigurujete Hybrid Runbook Worker, aby spouštěla pouze podepsané Runbooky, **nespustí se** v pracovním procesu žádné nepodepsané Runbooky.
 
 ### <a name="windows-hybrid-runbook-worker"></a>Hybrid Runbook Worker Windows
 
@@ -256,15 +258,15 @@ Aby bylo možné v Hybrid Runbook Worker pro Linux podepisovat Runbooky, Hybrid 
 
 #### <a name="create-a-gpg-keyring-and-keypair"></a>Vytvoření GPGch klíčů a souboru KeyPair
 
-Pokud chcete vytvořit Správce klíčů a souboru KeyPair, musíte použít účet `nxautomation`Hybrid Runbook Worker.
+Pokud chcete vytvořit Správce klíčů a souboru KeyPair, musíte použít účet Hybrid Runbook Worker `nxautomation`.
 
-Použijte `sudo` k přihlášení `nxautomation` jako účet.
+Pomocí `sudo` se přihlaste jako účet `nxautomation`.
 
 ```bash
 sudo su – nxautomation
 ```
 
-Po použití `nxautomation` účtu vygenerujte GPG souboru KeyPair.
+Po použití účtu `nxautomation` vygenerujte souboru keypairu GPG.
 
 ```bash
 sudo gpg --generate-key
@@ -272,7 +274,7 @@ sudo gpg --generate-key
 
 GPG vás provede jednotlivými kroky vytvoření souboru KeyPair. Pro vygenerování klíče budete muset zadat jméno, e-mailovou adresu, čas vypršení platnosti a heslo a čekat na to, až se na počítači dokončí dostatečná entropie.
 
-Vzhledem k tomu, že adresář GPG byl vygenerován pomocí sudo, je nutné změnit `nxautomation`jeho vlastníka na.
+Vzhledem k tomu, že adresář GPG byl vygenerován pomocí sudo, je nutné změnit jeho vlastníka na `nxautomation`.
 
 Chcete-li změnit vlastníka, spusťte následující příkaz.
 
@@ -282,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>Zpřístupnění Hybrid Runbook Workerho klíčů
 
-Jakmile se vytvoří Správce klíčů, budete ho muset zpřístupnit Hybrid Runbook Worker. Upravte soubor `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` nastavení tak, aby obsahoval následující příklad v části.`[worker-optional]`
+Jakmile se vytvoří Správce klíčů, budete ho muset zpřístupnit Hybrid Runbook Worker. Upravte soubor nastavení `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`, aby obsahoval následující příklad v části `[worker-optional]`.
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
@@ -290,7 +292,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Ověřte, jestli je zapnuté ověřování podpisů.
 
-Pokud je na počítači zakázané ověřování podpisů, budete ho muset zapnout. Spusťte následující příkaz, který povolí ověřování podpisů. Nahraďte `<LogAnalyticsworkspaceId>` ID vašeho pracovního prostoru.
+Pokud je na počítači zakázané ověřování podpisů, budete ho muset zapnout. Spusťte následující příkaz, který povolí ověřování podpisů. Nahrazuje se `<LogAnalyticsworkspaceId>` číslem vašeho pracovního prostoru.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -304,7 +306,7 @@ Po nakonfigurování ověřování podpisů můžete pro podepsání sady Runboo
 gpg –-clear-sign <runbook name>
 ```
 
-Podepsaný Runbook bude mít název `<runbook name>.asc`.
+Podepsaná sada Runbook bude mít název `<runbook name>.asc`.
 
 Podepsaný Runbook se teď dá nahrát na Azure Automation a dá se spustit jako běžná sada Runbook.
 

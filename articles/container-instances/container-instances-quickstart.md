@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – nasazení kontejneru Docker do Azure Container Instances-CLI
+title: 'Rychlý Start: nasazení kontejneru Docker do Azure Container Instances – Azure CLI'
 description: V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 services: container-instances
 author: dlepow
@@ -8,15 +8,18 @@ ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: 111191aa664650fe1ffdfd8de492e13e98349b34
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050620"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327437"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý start: Nasazení instance kontejneru v Azure pomocí Azure CLI
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
 
 Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání.
 
@@ -42,11 +45,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete veřejnou `mcr.microsoft.com/azuredocs/aci-helloworld` image. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. Pokud chcete vytvořit instanci kontejneru pomocí Azure CLI, zadejte název skupiny prostředků, název instance kontejneru a image kontejneru Docker do příkazu [AZ Container Create][az-container-create] . V tomto rychlém startu použijete veřejný obrázek `mcr.microsoft.com/azuredocs/aci-helloworld`. Tento obrázek zabalí malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML.
 
 Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s označením názvu DNS, aby byla webová aplikace veřejně dosažitelná.
 
-Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte jedinečnou `--dns-name-label` hodnotu v rámci oblasti Azure, ve které jste instanci vytvořili. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
+Spusťte příkaz podobný následujícímu jako při spuštění instance kontejneru. Nastavte hodnotu `--dns-name-label`, která je jedinečná v rámci oblasti Azure, ve které vytvoříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -67,7 +70,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Pokud `ProvisioningState` je kontejner **úspěšný**, v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
+Pokud je `ProvisioningState` kontejneru **úspěšný**, v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
 
 ![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure][aci-app-browser]
 
@@ -145,9 +148,9 @@ Pokud jste hotovi se skupinou prostředků *myResourceGroup* a všemi prostředk
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí veřejné image Microsoft. Pokud si chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

@@ -1,18 +1,18 @@
 ---
 title: Referenční informace C# o vlastním poskytovateli RESTful Endpoint – Azure
-description: Tento článek je základní referencí k RESTful koncovému bodu C# vlastního zprostředkovatele.
+description: Poskytuje základní referenční informace pro vlastní poskytovatele Azure C# Custom Providers RESTful Endpoint. Koncový bod je k dispozici prostřednictvím aplikace služby Azure Functions.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172926"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332654"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Referenční informace C# o vlastním poskytovateli RESTful koncového bodu
 
@@ -259,5 +259,5 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 - [Přehled poskytovatelů vlastních prostředků Azure](./custom-providers-overview.md)
 - [Kurz: Vytvoření vlastního poskytovatele prostředků Azure a nasazení vlastních prostředků](./create-custom-provider.md)
-- [Postup: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [Odkaz Vlastní odkaz na mezipaměť prostředků](./custom-providers-proxy-cache-resource-endpoint-reference.md)
+- [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Referenční dokumentace: vlastní odkaz na mezipaměť prostředků](./custom-providers-proxy-cache-resource-endpoint-reference.md)

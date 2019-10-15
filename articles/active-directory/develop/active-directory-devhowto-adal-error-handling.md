@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835413"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374189"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Došlo k chybě při zpracování osvědčených postupů pro klienty knihovny Azure Active Directory Authentication Library (ADAL).
 
@@ -28,13 +28,13 @@ Tento článek poskytuje pokyny týkající se typu chyb, ke kterým můžou vý
 
 V tomto článku se podíváme na konkrétní případy pro každou platformu, kterou podporuje ADAL, a jak vaše aplikace dokáže každý případ správně zpracovat. Pokyny k chybě jsou rozdělené do dvou širších kategorií na základě vzorů pro získání tokenů poskytovaných rozhraními API ADAL:
 
-- **AcquireTokenSilent**: Klient se pokusí získat token tiše (bez uživatelského rozhraní) a může selhat, pokud je ADAL neúspěšný. 
-- **AcquireToken**: Klient se může pokusit o tiché získání, ale může také provádět interaktivní požadavky, které vyžadují přihlášení.
+- **AcquireTokenSilent**: klient se pokusí získat token v tichém režimu (bez uživatelského rozhraní) a může selhat, pokud je ADAL neúspěšná. 
+- **AcquireToken**: klient se může pokusit o tiché získání, ale může také provádět interaktivní požadavky, které vyžadují přihlášení.
 
 > [!TIP]
 > Při použití ADAL a Azure AD je vhodné protokolovat všechny chyby a výjimky. Protokoly nejsou užitečné pouze pro porozumění celkovému stavu aplikace, ale jsou důležité i při ladění širších problémů. I když se vaše aplikace může zotavit z určitých chyb, může pocházet v dalších problémech s návrhem, které vyžadují změny kódu, aby je bylo možné vyřešit. 
 > 
-> Při implementaci chybových stavů popsaných v tomto dokumentu byste měli protokolovat kód chyby a popis z výše zmíněných důvodů. Příklady kódu protokolování najdete v referenčních informacích o [chybách a protokolování](#error-and-logging-reference) . 
+> Při implementaci chybových stavů popsaných v tomto dokumentu byste měli protokolovat kód chyby a popis z výše zmíněných důvodů. Příklady kódu protokolování najdete v [referenčních informacích o chybách a protokolování](#error-and-logging-reference) . 
 >
 
 ## <a name="acquiretokensilent"></a>AcquireTokenSilent
@@ -52,17 +52,17 @@ K dispozici je sada chyb generovaných operačním systémem, které mohou vyža
 
 V podstatě existují dva případy AcquireTokenSilent chyb:
 
-| Případ | Popis |
+| Tom | Popis |
 |------|-------------|
-| **Případ 1**: Chybu je možné přeložit pomocí interaktivního přihlašování. | V případě chyb způsobených chybějícími platnými tokeny je nutný interaktivní požadavek. Hledání v mezipaměti a neplatný/vypršení obnovovací token vyžaduje, aby AcquireToken volání vyřešilo.<br><br>V těchto případech musí být koncový uživatel vyzván, aby se přihlásil. Aplikace se může rozhodnout provést interaktivní požadavek okamžitě po interakci koncového uživatele (například při stisknutí tlačítka pro přihlášení) nebo později. Volba závisí na požadovaném chování aplikace.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují.|
-| **Případ 2**: Chybu nelze přeložit pomocí interaktivního přihlašování. | V případě sítě a přechodných/dočasných chyb nebo jiných selhání nevyřeší interaktivní žádost AcquireToken problém. Nepotřebné interaktivní výzvy pro přihlášení mohou také frustrovat koncové uživatele. ADAL se automaticky pokusí o jeden pokus o většinu chyb při selhání AcquireTokenSilent.<br><br>Klientská aplikace se také může pokusit o opakování později, ale když a jak to udělat, je závislá na chování aplikace a požadovaném prostředí pro koncové uživatele. Aplikace může například provést AcquireTokenSilent opakování po několika minutách nebo v reakci na akci koncového uživatele. Okamžité opakování bude mít za následek omezení aplikace a nemělo by se proto zkoušet.<br><br>Následné opakování se stejnou chybou neznamená, že klient provede interaktivní požadavek pomocí AcquireToken, protože nevyřešil chybu.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují. |
+| **Případ 1**: Chyba je možné přeložit pomocí interaktivního přihlašování. | V případě chyb způsobených chybějícími platnými tokeny je nutný interaktivní požadavek. Hledání v mezipaměti a neplatný/vypršení obnovovací token vyžaduje, aby AcquireToken volání vyřešilo.<br><br>V těchto případech musí být koncový uživatel vyzván, aby se přihlásil. Aplikace se může rozhodnout provést interaktivní požadavek okamžitě po interakci koncového uživatele (například při stisknutí tlačítka pro přihlášení) nebo později. Volba závisí na požadovaném chování aplikace.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují.|
+| **Případ 2**: Chyba nejde přeložit pomocí interaktivního přihlášení. | V případě sítě a přechodných/dočasných chyb nebo jiných selhání nevyřeší interaktivní žádost AcquireToken problém. Nepotřebné interaktivní výzvy pro přihlášení mohou také frustrovat koncové uživatele. ADAL se automaticky pokusí o jeden pokus o většinu chyb při selhání AcquireTokenSilent.<br><br>Klientská aplikace se také může pokusit o opakování později v pozdějším okamžiku, ale kdy a jak závisí na chování aplikace a na požadovaném prostředí pro koncové uživatele. Aplikace může například provést AcquireTokenSilent opakování po několika minutách nebo v reakci na akci koncového uživatele. Okamžité opakování bude mít za následek omezení aplikace a nemělo by se proto zkoušet.<br><br>Následné opakování se stejnou chybou neznamená, že klient provede interaktivní požadavek pomocí AcquireToken, protože nevyřešil chybu.<br><br>V tomto konkrétním případě se podívejte na kód v následující části a chyby, které ho diagnostikují. |
 
 ### <a name="net"></a>.NET
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- acquireTokenSilentAsync(…)
-- acquireTokenSilentSync(…) 
+- acquireTokenSilentAsync(...)
+- acquireTokenSilentSync(...) 
 - [zastaralé] acquireTokenSilent (...)
 - [zastaralé] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +105,7 @@ catch (AdalException e) {
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- acquireTokenSilentSync(…)
+- acquireTokenSilentSync(...)
 - acquireTokenSilentAsync(...)
 - [zastaralé] acquireTokenSilent (...)
 
@@ -188,7 +188,7 @@ Operační systém může také generovat sadu chyb, které vyžadují zpracová
   - Všechny scénáře, včetně přihlášeného uživatele
   - Konkrétní scénáře jménem
 
-### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Chybové případy a postup, který je možné provést: Nativní klientské aplikace
+### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Chybové případy a postupující akce: nativní klientské aplikace
 
 Pokud vytváříte nativní klientskou aplikaci, je potřeba vzít v úvahu několik případů, které se týkají problémů se sítí, přechodných selhání a dalších chyb specifických pro konkrétní platformu. Ve většině případů by aplikace neměla provádět okamžité opakování, ale místo toho čekat na interakci koncového uživatele, která vyzve k přihlášení. 
 
@@ -200,8 +200,8 @@ Zpracování chyb v nativních aplikacích lze definovat dvěma případy:
 
 |  |  |
 |------|-------------|
-| **Případ 1**:<br>Chyba bez opakování (ve většině případů) | 1. Nepokoušejte se znovu pokusit o okamžité opakování. Prezentujte uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování ("Zkuste se znovu přihlásit", "stáhnout aplikaci zprostředkovatele Azure AD" atd.). |
-| **Případ 2**:<br>Opakovaná chyba | 1. Proveďte jeden pokus znovu, protože koncový uživatel mohl zadat stav, který má za následek úspěch.<br><br>2. Pokud se to nepovede znovu, přihlaste uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování ("pokus o přihlášení znovu", "stáhnout aplikaci Azure AD Broker" atd.). |
+| **Případ 1**:<br>Chyba bez opakování (ve většině případů) | 1. nepokusit se o okamžité opakování Prezentujte uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování (například "zkusit se znovu přihlásit" nebo "stáhnout aplikaci služby Azure AD Broker"). |
+| **Případ 2**:<br>Opakovaná chyba | 1. proveďte jeden pokus znovu, protože koncový uživatel mohl zadat stav, který má za následek úspěch.<br><br>2. Pokud se to nepovede znovu, přihlaste uživatelské rozhraní koncového uživatele na základě konkrétní chyby, která vyvolá opakování (zkuste se znovu přihlásit, Stáhněte si aplikaci Azure AD Broker atd.). |
 
 > [!IMPORTANT]
 > Pokud se uživatelský účet předává do ADAL v tichém volání a dojde k selhání, pak následující interaktivní požadavek umožní koncovému uživateli přihlásit se pomocí jiného účtu. Po úspěšném AcquireToken pomocí uživatelského účtu musí aplikace ověřit, jestli přihlášený uživatel odpovídá objektu místního uživatele aplikace. Neshoda negeneruje výjimku (s výjimkou v cíli C), ale měla by být zvážena v případech, kdy je uživatel známý místně před požadavky na ověření (například neúspěšné tiché volání).
@@ -211,10 +211,10 @@ Zpracování chyb v nativních aplikacích lze definovat dvěma případy:
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení se všemi netichými AcquireToken (...). ADAL – metody *s výjimkou*: 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(..., ClientAssertion, ...)
+- AcquireTokenAsync (..., UserAssertion,...)   
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -341,13 +341,13 @@ Váš kód by byl implementován následujícím způsobem:
 }]
 ```
 
-### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Chybové případy a postup, který je možné provést: Webové aplikace, které volají rozhraní API prostředků (.NET)
+### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Chybové případy a akční kroky: webové aplikace, které volají rozhraní API prostředků (.NET)
 
 Pokud vytváříte webovou aplikaci .NET, která volá získání tokenu pomocí autorizačního kódu pro určitý prostředek, je vyžadován pouze kód výchozí obslužná rutina pro obecný případ. 
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenByAuthorizationCodeAsync(…)
+- AcquireTokenByAuthorizationCodeAsync(...)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -366,7 +366,7 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Chybové případy a postup, který je možné provést: Jednostránkové aplikace (ADAL. js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Chybové případy a postup, který je možné provést: jednostránkové aplikace (ADAL. js)
 
 Pokud vytváříte jednostránkovou aplikaci pomocí knihovny ADAL. js s AcquireToken, kód pro zpracování chyb je podobný řetězci typického tichého volání. Konkrétně v ADAL. js AcquireToken nikdy nezobrazuje uživatelské rozhraní. 
 
@@ -375,8 +375,8 @@ Neúspěšné AcquireToken má následující případy:
 |  |  |
 |------|-------------|
 | **Případ 1**:<br>Přeložit pomocí interaktivního požadavku | 1. Pokud se přihlášení () nepovede, neprovádějte okamžité opakování. Zkuste to znovu jenom po akci uživatele s výzvou k opakování.|
-| **Případ 2**:<br>Nelze přeložit s interaktivním požadavkem. Chyba je opakovaná. | 1. Udělejte jedno opakování, protože hlavní verze koncového uživatele zadala stav, který má za následek úspěch.<br><br>2. Pokud se to nepovede znovu, prezentujte koncovému uživateli akci na základě konkrétní chyby, která může vyvolat opakování (zkuste se znovu přihlásit). |
-| **Případ 3**:<br>Nelze přeložit s interaktivním požadavkem. Chyba není opakovaná. | 1. Nepokoušejte se znovu pokusit o okamžité opakování. Prezentovat koncovému uživateli akci v závislosti na konkrétní chybě, která může vyvolat opakování ("Zkuste se znovu přihlásit"). |
+| **Případ 2**:<br>Nelze přeložit s interaktivním požadavkem. Chyba je opakovaná. | 1. proveďte jeden pokus znovu, protože hlavní uživatel zadal stav, který má za následek úspěch.<br><br>2. Pokud se opakování nepovede, přeprezentujte koncovému uživateli akci na základě konkrétní chyby, která může vyvolat opakování (zkuste se znovu přihlásit). |
+| **Případ 3**:<br>Nelze přeložit s interaktivním požadavkem. Chyba není opakovaná. | 1. nepokusit se o okamžité opakování Prezentovat koncovému uživateli akci v závislosti na konkrétní chybě, která může vyvolat opakování ("Zkuste se znovu přihlásit"). |
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -416,10 +416,10 @@ Pro *všechny* scénáře aplikací služby na službu, včetně:
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion, …)
+- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(...,ClientAssertion, ...)
+- AcquireTokenAsync(...,UserAssertion, ...)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -440,11 +440,11 @@ catch (AdalException e) {
 
 #### <a name="on-behalf-of-scenarios"></a>Scénáře jménem
 
-Pro scénáře aplikací služby na službu.
+Pro *scénáře aplikací služby na službu* .
 
 Následující doprovodné materiály obsahují příklady zpracování chyb ve spojení s metodami ADAL: 
 
-- AcquireTokenAsync(…, UserAssertion, …)
+- AcquireTokenAsync(..., UserAssertion, ...)
 
 Váš kód by byl implementován následujícím způsobem:
 
@@ -482,8 +482,8 @@ Sestavili jsme [kompletní ukázku](https://github.com/Azure-Samples/active-dire
 
 ## <a name="error-and-logging-reference"></a>Chyba a odkaz na protokolování
 
-### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>Protokolování osobních identifikovatelných údajů (PII) & identifikovatelných informací o organizaci (OII)
-Protokolování ADAL standardně nezachycuje ani neprotokoluje žádné PII ani OII. Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím metody setter ve třídě protokolovacího nástroje. Když zapnete PII nebo OII, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování zákonných požadavků.
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Protokolování osobních identifikovatelných informací & identifikovatelné informace organizace 
+Protokolování ADAL ve výchozím nastavení nezachycuje ani neprotokoluje žádné osobní údaje nebo identifikovatelné informace v organizaci. Knihovna umožňuje vývojářům aplikací tuto možnost zapínat prostřednictvím metody setter ve třídě protokolovacího nástroje. Když přihlásíte osobní identifikovatelné informace nebo organizační údaje, aplikace vezme zodpovědnost za bezpečné zpracování vysoce citlivých dat a dodržování zákonných požadavků.
 
 ### <a name="net"></a>.NET
 
@@ -546,7 +546,7 @@ Pro zkoumání konkrétních chyb ADAL se jedná o nejlepší odkaz na zdrojový
 
 chyby iOS můžou vzniknout během přihlašování, když uživatelé používají Webová zobrazení, a povaha ověřování. To může být způsobeno podmínkami, jako jsou chyby SSL, vypršení časového limitu nebo chyby sítě:
 
-- V případě sdílení oprávnění nejsou přihlášení trvalá a mezipaměť se zobrazí jako prázdná. Můžete vyřešit přidáním následujícího řádku kódu do řetězce klíčů:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- V případě sdílení oprávnění nejsou přihlášení trvalá a mezipaměť se zobrazí jako prázdná. Můžete vyřešit přidáním následujícího řádku kódu do řetězce klíčů: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - V případě NsUrlDomain sady chyb se akce mění v závislosti na logice aplikace. Konkrétní instance, které je možné zpracovat, najdete v [referenční dokumentaci k NSURLErrorDomain](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) .
 - V tématu běžné problémy s modulem [ADAL obj. c](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) najdete seznam běžných chyb udržovaných týmem s přístupem ADAL v rámci objektivu.
 
@@ -586,11 +586,11 @@ window.Logging = {
 
 Použijte níže uvedené komentáře, které vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a poobrazovat náš obsah.
 
-[![Zobrazuje tlačítko Přihlásit se účtem Microsoft.][AAD-Sign-In]][AAD-Sign-In]
+[@no__t – 1Shows na tlačítko "Přihlásit se účtem Microsoft"][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
-[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AZURE-portal]: https://portal.azure.com

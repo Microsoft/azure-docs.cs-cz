@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – Získání spravované skupiny prostředků a změna velikosti virtuálních počítačů | Microsoft Docs
-description: Ukázkový skript Azure CLI – Získání spravované skupiny prostředků a změna velikosti virtuálních počítačů
+description: Poskytuje ukázkový skript Azure CLI, který načte spravovanou skupinu prostředků ve spravované aplikaci Azure. Skript změní velikost virtuálních počítačů.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: bbf03a0d53769c93a8aab304d3128ae0cc875a8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7218e2fd033614b5e9f77cca34a5db82e3571094
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364641"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330149"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí Azure CLI
 
@@ -44,7 +44,7 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 | [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Aktualizuje velikost virtuálního počítače. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

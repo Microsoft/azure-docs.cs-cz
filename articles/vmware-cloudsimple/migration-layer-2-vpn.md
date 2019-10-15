@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845484"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376306"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -57,10 +57,10 @@ V následující tabulce jsou uvedeny podporované verze vSphere a typy síťov�
 
 | verze vSphere | Zdrojový typ virtuálního přepínače | Ovladač virtuální síťové karty | Cílový typ virtuálního přepínače | Podporované? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Vše | DVS | Vše | DVS | Ano |
+| Všechno | DVS | Všechno | DVS | Ano |
 | vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | VMXNET3 | N-VDS | Ano |
 | vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | E1000 | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Vše | Vše | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Všechno | Všechno | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
 
 Od verze VMware NSX-T 2,3:
 
@@ -76,8 +76,8 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 | **Položka** | **Hodnota** |
 |------------|-----------------|
 | Název sítě | MGMT_NET_VLAN469 |
-| Síť VLAN | 469 |
-| IPV4/IPV6| 10.250.0.0/24 |
+| REŽIM | 469 |
+| IPv4/IPv6| 10.250.0.0/24 |
 | IP adresa samostatného hraničního zařízení | 10.250.0.111 |
 | IP adresa zařízení na samostatném hraničním zařízení | 192.227.85.167 |
 
@@ -85,8 +85,8 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
-| Síť VLAN | 472 |
-| IPV4/IPV6| 10.250.3.0/24 |
+| REŽIM | 472 |
+| IPv4/IPv6| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schéma IP adresy privátního cloudu pro směrovač NSX-T Tier0 (L2 VPN slouží)
 
@@ -101,22 +101,22 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 
 | **Položka** | **Hodnota** |
 |------------|-----------------|
-| Síť VLAN | 712 |
-| IPV4/IPV6| 10.200.15.0/24 |
+| REŽIM | 712 |
+| IPv4/IPv6| 10.200.15.0/24 |
 
 ## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Načtení ID logického směrovače potřebného pro L2VPN
 
 Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR instance logického směrovače pro služby IPsec a L2VPN. ID logického směrovače je potřeba později při implementaci rozhraní L2VPN.
 
-1. Přihlaste se k nástroji NSX-t Manager https://*NSX-t-Manager-IP-Address* a vyberte **sítě** > poskytovatel**směrovače** >  **–**  > **Přehled**LR. V **režimu vysoké dostupnosti**vyberte **aktivní – pohotovostní**. Tato akce otevře automaticky otevírané okno, ve kterém se zobrazí hraniční virtuální počítač, na kterém je směrovač Tier0 aktuálně aktivní.
+1. Přihlaste se k nástroji NSX-T Manager https://*NSX-t-Manager-IP-Address* a vyberte **sítě** > **směrovače** > **poskytovatel-LR**@no__t **-6.** V **režimu vysoké dostupnosti**vyberte **aktivní – pohotovostní**. Tato akce otevře automaticky otevírané okno, ve kterém se zobrazí hraniční virtuální počítač, na kterém je směrovač Tier0 aktuálně aktivní.
 
     ![Vybrat aktivní – pohotovostní](media/l2vpn-fetch01.png)
 
-2. Vyberte**okraje** **Fabric** > **uzly** > . Poznamenejte si IP adresu pro správu virtuálního počítače s aktivním okrajem (Edge VM1) identifikovanou v předchozím kroku.
+2. Vyberte **Fabric** > **uzly** > **okraje**. Poznamenejte si IP adresu pro správu virtuálního počítače s aktivním okrajem (Edge VM1) identifikovanou v předchozím kroku.
 
     ![Poznámka k IP správě](media/l2vpn-fetch02.png)
 
-3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte příkaz s uživatelským jménem **správce** a heslem **CloudSimple 123!.** ```get logical-router```
+3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte příkaz ```get logical-router``` se **správcem** uživatelského jména a heslem **CloudSimple 123!** .
 
     ![získat výstup logického směrovače](media/l2vpn-fetch03.png)
 
@@ -130,14 +130,14 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 
     ![Připojit fiktivní přepínač](media/l2vpn-fetch05.png)
 
-7. Znovu spusťte `get logical-router` příkaz v relaci SSH virtuálního počítače Edge. Je zobrazen identifikátor UUID logického směrovače DR-Provider-LR. Poznamenejte si identifikátor UUID, který se vyžaduje při konfiguraci L2VPN.
+7. Znovu spusťte příkaz `get logical-router` v relaci SSH virtuálního počítače Edge. Je zobrazen identifikátor UUID logického směrovače DR-Provider-LR. Poznamenejte si identifikátor UUID, který se vyžaduje při konfiguraci L2VPN.
 
     ![získat výstup logického směrovače](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Načtení IDENTIFIKÁTORu logického přepínače potřebného pro L2VPN
 
 1. Přihlaste se ke [Správci NSX-T](https://nsx-t-manager-ip-address).
-2. Vyberte**přepínač** **síťového** > **přepínání** > > * * < přepínač > \ * * > **Overview**.
+2. Vyberte **sítě** > **přepínání** > **přepínače** > * * < \Logical přepínač @ No__t-5 * * > **Přehled**.
 3. Poznamenejte si identifikátor UUID roztaženého logického přepínače, který se při konfiguraci L2VPN vyžaduje.
 
     ![získat výstup logického směrovače](media/l2vpn-fetch-switch01.png)
@@ -154,20 +154,20 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Inzerování IP adresy rozhraní zpětné smyčky do sítě Underlay
 
-1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste > se ke Správci NSX-T a vyberte **sítě** > směrování**směrovače** > **Směrování** >  **– LR** > **statické trasy**. Klikněte na **Přidat**. V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
+1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **Směrování** > **směrovače** > **poskytovatel-LR** > **Routing** > **statické trasy**. Klikněte na tlačítko **Přidat**. V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
 
     ![Přidat statickou trasu](media/l2vpn-routing-security01.png)
 
-2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě** > poskytovatel**směrovače** > **Směrování směrování** > –**seznamy předpon IP adres** **Směrování** > **LR** > . Klikněte na **Přidat**. Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
+2. Vytvoří seznam předpon IP adres. Přihlaste se k nástroji NSX-T Manager a vyberte **sítě** > **Směrování** > **směrovače** > **zprostředkovatel-LR** > **Routing** >  –**seznamy předpon IP adres**. Klikněte na tlačítko **Přidat**. Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
 3. Přiřaďte seznam předpon IP adres oběma sousedním uzlům protokolu BGP (mandát). Připojením seznamu předpony IP k sousednímu směrovači protokolu BGP znemožníte inzerování výchozí trasy v protokolu BGP k přepínačům MANDÁTu. Nicméně jakákoli jiná trasa, která obsahuje trasu s hodnotou null, bude inzerovat IP adresu rozhraní zpětné smyčky pro přepínače MANDÁTu.
 
     ![Vytvořit seznam předpon IP adres](media/l2vpn-routing-security02.png)
 
-4. Přihlaste se ke Správci NSX-T a vyberte **síťové** > **Směrování** > **směrovače** >  **– LR** > protokol**BGP**  >  **Směrování** > . **Okolí**. Vyberte první sousední uzel. Klikněte na **Upravit** > **rodin adres**. V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na **Uložit**. Tento krok opakujte pro druhý sousední uzel.
+4. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **Směrování** > **směrovače** > **zprostředkovatel-LR** > **Routing** > **BGP**@no__t-**11.** Vyberte první sousední uzel. Klikněte na **Upravit** **řady adres** > . V případě řady IPv4 upravte sloupec **Filtr pro výstup** a vyberte seznam předpon IP adres, který jste vytvořili. Klikněte na **Uložit**. Tento krok opakujte pro druhý sousední uzel.
 
-    ![Připojit seznam předpon IP adres](media/l2vpn-routing-security03.png) 1 ![připojit seznam předpon IP adres 2](media/l2vpn-routing-security04.png)
+    ![Attach – seznam předpon IP adres 1 @ no__t-1 ![Attach IP prefix list 2 @ no__t-3
 
-5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **Směrování** > **směrovače** > směrování **– LR** > .**přerozdělení trasy** **Směrování** >   >  **Okolí**. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
+5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **Směrování** > **směrovače** > **zprostředkovatel-LR** > **Routing**@no__t **-9 –** **sousední směrovače**1. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
 
     ![Znovu distribuovat statickou trasu null do protokolu BGP](media/l2vpn-routing-security05.png)
 
@@ -195,7 +195,7 @@ Logical-Port ID :
 Peer Code :
 ```
 
-U všech následujících volání rozhraní API nahraďte IP adresu svou IP adresou správce NSX-T. Všechna tato volání rozhraní API můžete spustit z klienta na straně klienta nebo pomocí `curl` příkazů.
+U všech následujících volání rozhraní API nahraďte IP adresu svou IP adresou správce NSX-T. Všechna tato volání rozhraní API můžete spustit z klienta po klientovi nebo pomocí příkazů `curl`.
 
 ### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Povolte službu VPN IPSec na logickém směrovači.
 
@@ -211,7 +211,7 @@ POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
 }
 ```
 
-### <a name="create-profiles-ike"></a>Vytvořit profily: IPSEC
+### <a name="create-profiles-ike"></a>Vytváření profilů: IKE
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
@@ -228,7 +228,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
 }
 ```
 
-### <a name="create-profiles-dpd"></a>Vytvořit profily: DPD
+### <a name="create-profiles-dpd"></a>Vytváření profilů: DPD
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles  
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Vytvořit profily: Připojením
+### <a name="create-profiles-tunnel"></a>Vytváření profilů: tunel
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -430,7 +430,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
 2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Další**.
 
-    ![](media/l2vpn-deploy-client02.png) Vybrat šablonu Vybratšablonu![](media/l2vpn-deploy-client03.png)
+    ![Select šablona @ no__t-1 ![Select šablona @ no__t-3
 
 3. Zadejte název samostatného klienta NSX-T a klikněte na **Další**.
 
@@ -460,8 +460,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
     * **Délka předpony**. Zadejte délku předpony pro síť VLAN nebo podsíť pro odesílání.
     * Rozhraní **CLI správce/povolení/heslo uživatele root**. Nastavte heslo pro účet správce/Enable/root.
 
-      ![](media/l2vpn-deploy-client08.png)
-      Přizpůsobení![šablony přizpůsobení šablon – další](media/l2vpn-deploy-client09.png)
+      ![Customize šablona @ no__t-1 @ no__t-2Customize – další @ no__t-3
 
 7. Zkontrolujte nastavení a klikněte na **Dokončit**.
 

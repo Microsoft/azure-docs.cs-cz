@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311870"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330096"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na Azure Virtual Machines
 
@@ -52,6 +52,8 @@ Kromě toho byste měli mít obecné informace o těchto technologiích:
 Soubory úrovně Premium poskytují IOPS a celou kapacitu, která bude vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v je ale vhodné [SQL Server FCI s prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md) na základě spravovaných disků Premium nebo extrémně-discích.  
 
 Zkontrolujte aktivitu IOPS vašeho aktuálního prostředí a před zahájením nasazení nebo migrace ověřte, že soubory prémií budou poskytnout IOPS, které potřebujete. Použijte čítače disku sledování výkonu systému Windows a monitorovat celkový počet vstupně-výstupních operací za sekundu (přenosy disku/s) a propustnost (v bajtech disku/s) požadované pro soubory SQL Server dat, protokolů a dočasné databáze. Mnohé úlohy mají v/v vstupně-výstupní operace, takže je dobré kontrolovat během těžkých dob používání a poznamenat maximální IOPS a také průměrnou IOPS. Sdílené soubory úrovně Premium poskytují IOPS na základě velikosti sdílené složky. Prémiové soubory také poskytují bezplatné rozmístění, kde můžete zvýšit počet vstupně-výstupních operací na trojnásobek základní částky po dobu až jedné hodiny. 
+
+Další informace o výkonu sdílené složky Premium najdete v tématu [úrovně výkonu sdílení souborů](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers). 
 
 ### <a name="licensing-and-pricing"></a>Licencování a ceny
 

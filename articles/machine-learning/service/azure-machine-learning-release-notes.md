@@ -10,18 +10,63 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177904"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331577"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2019-10-14"></a>2019-10-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1069"></a>Sada SDK Azure Machine Learning pro Python v 1.0.69
+
++ **Opravy chyb a vylepšení**
+  + **AzureML-automl – jádro**
+    + Omezení modelových vysvětlení tak, aby se místo výpočetních vysvětlení pro každé spuštění co nejlépe spouštělo. Změna chování místních, vzdálených a ADB.
+    + Přidání podpory pro vysvětlení modelu na vyžádání pro uživatelské rozhraní
+    + Přidání psutil jako závislosti automl a zahrnutí psutil jako závislosti conda v amlcompute.
+    + Opravili jsme problém s heuristickými prodlevy a velikostmi oken pro prognózování dat, jejichž série může způsobit chyby lineárního algebraický.
+      + Přidání tisku pro heuristicky určené parametry při spuštění prognózování.
+  + **AzureML-contrib – dataunášená**
+    + Přidání ochrany při vytváření výstupních metrik, pokud posun úrovně DataSet není v první části.
+  + **AzureML-contrib – interpretace**
+    + balíček AzureML-contrib-vysvětlit-model byl přejmenován na AzureML-contrib-Interpret
+  + **AzureML-Core**
+    + Bylo přidáno rozhraní API pro zrušení registrace datových sad. `dataset.unregister_all_versions()`
+    + Bylo přidáno rozhraní API datové sady pro kontrolu času změny dat. `dataset.data_changed_time`.
+    + Schopnost spotřebovávat `FileDataset` a `TabularDataset` jako vstupy pro `PythonScriptStep`, `EstimatorStep` a `HyperDriveStep` v kanálu Azure Machine Learning
+    + Výkon `FileDataset.mount` byl vylepšen pro složky s velkým počtem souborů
+    + Přidání adresy URL ke známým doporučením chyb v podrobnostech o spuštění.
+    + Opravili jsme chybu v běhu. Získejte _metrics, kde se požadavky nezdařily, pokud by běželo příliš mnoho podřízených objektů.
+    + Přidala se podpora pro ověřování v clusteru Arcadia.
+    + Vytvoření objektu experimentu Získá nebo vytvoří experiment v pracovním prostoru Azure Machine Learning pro sledování historie spuštění. ID experimentu a archivovaný čas se naplní v objektu experiment při vytváření. Příklad: experiment = experiment (pracovní prostor, "nový experiment") experiment_id = experiment.id Archive () a reactivate () jsou funkce, které lze volat v experimentu pro skrytí a obnovení experimentu v uživatelském rozhraní nebo ve výchozím nastavení ve volání funkce. k vypsání experimentů. Pokud se vytvoří nový experiment se stejným názvem jako archivovaný experiment, můžete při opětovné aktivaci přejmenovat archivovaný experiment tak, že předáte nový název. Může existovat pouze jeden aktivní experiment se zadaným názvem. Příklad: experiment1 = experiment (pracovní prostor, "aktivní Experimenta") experiment1. Archive () # vytvoří nový aktivní experiment se stejným názvem jako Archivovaná. experiment2. = Experiment (pracovní prostor, "aktivní experiment") experiment1. reactivate (new_name = "předchozí aktivní experiment"). seznam statických metod () při experimentování může pořizovat filtr názvů a filtr element ViewType. Element ViewType hodnoty jsou "ACTIVE_ONLY", "ARCHIVED_ONLY" a "ALL" Příklad: archived_experiments = experiment. list (pracovní prostor, view_type = "ARCHIVED_ONLY") all_first_experiments = experiment. list (pracovní prostor, název = "první experiment", view_type = "ALL")
+    + Podpora použití prostředí pro nasazení modelů a aktualizace služby
+  + **AzureML-dataunášená**
+    + Atribut show třídy DataDriftDector nepodporuje nepovinný argument "with_details". Atribut show bude prezentovat pouze koeficient posunu dat a příspěvek na posun dat pro sloupce funkcí.
+    + Změny chování atributu DataDriftDetector ' get_output ':
+      + Vstupní parametr start_time, end_time je volitelná místo povinné;
+      + nput specifické start_time a/nebo end_time s konkrétní run_id ve stejném vyvolání budou mít výjimku chyba, protože se vzájemně vylučují. 
+      + Po zadání specifických start_time a/nebo end_time se vrátí jenom výsledky plánovaných spuštění. 
+      + Parametr ' daily_latest_only ' je zastaralý.
+    + Podpora načítání výstupů pro posun dat na základě datové sady
+  + **AzureML-vysvětlit-model**
+    + Přejmenuje balíček AzureML-vysvětlit-model na AzureML-interpretace, takže starý balíček zůstane pro zpětnou kompatibilitu nyní.
+    + Opravená chyba automl s nezpracovanými vysvětlivkami nastavenými na úlohu klasifikace místo regrese ve výchozím nastavení při stahování z ExplanationClient
+    + Přidání podpory pro `ScoringExplainer` k přímému vytvoření pomocí `MimicWrapper`
+  + **AzureML-kanál – jádro**
+    + Vylepšený výkon pro vytváření velkých kanálů
+  + **AzureML-vlak – jádro**
+    + Přidání podpory TensorFlow 2,0 v TensorFlow Estimator
+  + **AzureML-vlak – automl**
+    + Nadřazený běh již nebude při iteraci instalace úspěšný, protože orchestrace ho již zajímá.
+    + Přidání podpory Local-Docker a Local-conda pro experimenty AutoML
 
 ## <a name="2019-10-08"></a>2019-10-08
 

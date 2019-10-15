@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124923"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373500"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
@@ -26,7 +26,7 @@ Správa přístupu k aplikacím a datům už nemůže spoléhat na tradiční st
 
 Při přijímání řešení hybridní identity pro Azure Active Directory (Azure AD) získají organizace přístup k funkcím úrovně Premium, které mají možnost odemknout produktivitu prostřednictvím automatizace, delegování, samoobslužné služby a možností jednotného přihlašování. Umožňuje vašim pracovníkům přístup k prostředkům společnosti z libovolného místa, kde potřebují svou práci, a umožňuje tak vašemu IT týmu řídit přístup tím, že zajistí, aby měli oprávnění ke zvýšení produktivity správný přístup ke správným prostředkům.
 
-Tento kontrolní seznam osvědčených postupů vám pomůže rychle nasadit doporučené akce pro vytvoření silného základu identity ve vaší organizaci, a to na základě našich kurzů:
+Tento kontrolní seznam osvědčených postupů vám pomůže rychle nasadit doporučené akce pro vytvoření *silného* základu identity ve vaší organizaci, a to na základě našich kurzů:
 
 * Snadné připojení k aplikacím
 * Vytvořit jednu identitu pro každého uživatele automaticky
@@ -81,9 +81,9 @@ Azure Proxy aplikací služby AD nabízí následující výhody:
 
 V moderních podnicích IT oddělení často nevědí o všech cloudových aplikacích, které používají uživatelé ke své práci. Když správci IT žádají, aby si využívali, kolik cloudových aplikací se jejich zaměstnanci považují, v průměru říká 30 nebo 40. Ve skutečnosti je průměr více než 1 000 samostatných aplikací používaných zaměstnanci ve vaší organizaci. 80% zaměstnanců používá neschválené aplikace, které nikdo nezkontroloval a nemusí být v souladu se zásadami zabezpečení a dodržování předpisů.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) vám může pomoct identifikovat užitečné aplikace, které jsou oblíbené s uživateli, že si mohou schválit a přidat do galerie podnikových aplikací, aby uživatelé využili výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
+[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) vám může pomoct identifikovat užitečné aplikace, které jsou oblíbené s uživateli, které může schválit a přidat do galerie podnikových aplikací, aby uživatelé využili výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
 
-**" *Cloud App Security** pomáhá zajistit, že naši lidé budou správně používat naše cloudové a SaaS aplikace, a to tak, jak podporují základní zásady zabezpečení, které pomáhají chránit Accenture*." --- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security** nám pomáhá zajistit, aby naši lidé správně používali naše cloudové a SaaS aplikace, a to díky způsobem, který podporuje základní zásady zabezpečení, které pomáhají chránit Accenture."</em> --- [John Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Kromě detekce stínového IT může MCAS také určit úroveň rizika aplikací, zabránit neoprávněnému přístupu k podnikovým datům, možnému úniku dat a dalším bezpečnostním rizikům, která jsou v aplikacích spojená.
 
@@ -133,7 +133,7 @@ V této části jsou uvedena doporučení pro odstranění tření z vaší orga
 
 ### <a name="enable-self-service-password-reset-for-all-users"></a>Povolit Samoobslužné resetování hesla pro všechny uživatele
 
-Samoobslužné [resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování a odemknutí hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
+[Samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování a odemknutí hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
 
 Ve výchozím nastavení Azure AD odemkne účty, když provede resetování hesla. Pokud však Azure AD Connect integraci povolíte [místně](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration), máte také možnost oddělit tyto dvě operace, které uživatelům umožňují odemknout svůj účet, aniž by museli resetovat heslo.
 
@@ -147,7 +147,7 @@ Podobně je možné pomocí [sestavy samoobslužné správy hesel](https://docs.
 
 ### <a name="self-service-app-management"></a>Samoobslužná správa aplikací
 
-Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit samoobslužný [přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé mohli spravovat přihlašovací údaje přiřazená těmto uživatelům pro samoobslužné přihlašování pomocí [hesel](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
+Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit [Samoobslužný přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé mohli spravovat přihlašovací údaje přiřazená těmto uživatelům pro [samoobslužné přihlašování pomocí hesel](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
 
 ### <a name="self-service-group-management"></a>Samoobslužná správa skupin
 
@@ -227,7 +227,7 @@ Doufáme, že tento dokument je užitečným plánem pro vytvoření silného z�
 
 Doporučujeme vytisknout následující kontrolní seznam, který bude odkazovat na vaši cestu k více Solid Identity Foundation ve vaší organizaci.
 
-### <a name="today"></a>Dnes
+### <a name="today"></a>Si
 
 |Hotovo?|Položka|
 |:-|:-|

@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739564"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372815"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Začlenění řešení Update Management a Change Tracking do Azure Automation
 
@@ -27,7 +27,7 @@ V tomto kurzu zjistíte, jak automaticky začlenit řešení Update Management, 
 > * Import runbooku připojování
 > * Spuštění runbooku
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující:
 
@@ -81,7 +81,7 @@ Když jsou teď řešení povolená, můžete přidat virtuální počítač Azu
    ![Povolení řešení Update Management pro virtuální počítač](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Pokud je nechcete čekat na dokončení, při povolování dalšího řešení se zobrazí zpráva s oznámením dalšího řešení: *Instalace jiného řešení se na tento nebo jiný virtuální počítač. Po dokončení této instalace se aktivuje tlačítko Povolit a můžete vyžádat instalaci řešení na tomto virtuálním počítači.*
+> Pokud nečekáte na dokončení dalšího řešení, při povolování dalšího řešení se zobrazí zpráva informující o tom, že *na tomto nebo jiném virtuálním počítači probíhá instalace jiného řešení. Po dokončení této instalace je povoleno tlačítko Povolit a můžete požádat o instalaci řešení na tento virtuální počítač.*
 
 ## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
 
@@ -131,7 +131,14 @@ Abyste tento runbook mohli spustit, musíte mít k virtuálnímu počítači Azu
 1. Vyberte **OK** a spusťte úlohu runbooku.
 1. Průběh a případné chyby můžete monitorovat na stránce úlohy runbooku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Odebrání virtuálního počítače z Update Management:
+
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

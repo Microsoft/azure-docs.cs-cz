@@ -9,26 +9,26 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 82fbaa35d8d06cdb1999a76a36fb4a1dade017e9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883886"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329641"
 ---
-# <a name="create-your-first-function-from-the-command-line"></a>Vytvoření první funkce z příkazového řádku
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Rychlý Start: Vytvoření první funkce z příkazového řádku pomocí Azure CLI
 
 Toto téma Rychlý start vás provede použitím příkazového řádku nebo terminálu k vytvoření první funkce. Pomocí Azure CLI vytvoříte aplikaci funkcí, což je infrastruktura [bez serveru](https://azure.microsoft.com/solutions/serverless/), která je hostitelem funkce. Projekt kódu funkce je generován ze šablony s použitím [Azure Functions Core Tools](functions-run-local.md), který se používá také k nasazení projektu funkcí aplikace do Azure.
 
 Následující kroky můžete provést v počítačích se systémem Mac, Windows nebo Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před spuštěním této ukázky musíte mít následující:
 
 + Nainstalujte [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo novější.
 
-+ Nainstalujte [rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli). Tento článek vyžaduje použití Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
++ Nainstalujte [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Tento článek vyžaduje Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 + Aktivní předplatné Azure.
 
@@ -52,7 +52,7 @@ Před spuštěním této ukázky musíte mít následující:
 
 K hostování provádění funkcí musíte mít aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
-V následujícím příkazu nahraďte zástupný symbol `<APP_NAME>` jedinečným názvem vaší aplikace funkcí a `<STORAGE_NAME>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<APP_NAME>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Měli `<language>` byste také nastavit modul runtime pro aplikaci Function App, od `dotnet` (C#) nebo `node` (JavaScript).
+V následujícím příkazu nahraďte zástupný symbol `<APP_NAME>` jedinečným názvem vaší aplikace funkcí a `<STORAGE_NAME>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<APP_NAME>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Měli byste také nastavit modul runtime `<language>` pro aplikaci Function App, od `dotnet` (C#) nebo `node` (JavaScript).
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westeurope \

@@ -3,8 +3,8 @@ title: Rychlý Start pro konfiguraci aplikací Azure s .NET Framework | Microsof
 description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi .NET Framework
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,32 +12,32 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326533"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329798"
 ---
-# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
+# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace založené na .NET Framework pro centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník** > konfigurace **+ vytvořit** a přidejte následující páry klíč-hodnota:
+6. Vyberte **Průzkumníka konfigurace** >  **+ vytvořit** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
@@ -45,9 +45,11 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 ## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
 
-1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
+1. Spusťte Visual Studio a vyberte **soubor** > **Nový** **projekt** > .
 
-2. V **novém projektu**vyberte možnost **nainstalované** > **prostředí C#Visual**   >  **Windows Desktop**. Vyberte **Konzolová aplikace (.NET Framework)** a zadejte název projektu. Vyberte **.NET Framework 4.7.1** nebo up a vyberte **OK**.
+1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
+
+1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -56,9 +58,10 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. Aktualizujte soubor *App. config* projektu následujícím způsobem:
+1. Aktualizujte soubor *App. config* projektu následujícím způsobem:
 
     ```xml
     <configSections>
@@ -78,14 +81,14 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
     </appSettings>
     ```
 
-   Připojovací řetězec úložiště konfigurace aplikace je načtený z proměnné `ConnectionString`prostředí. Přidejte nástroj `Environment` Configuration Builder `MyConfigStore` před `configBuilders` do vlastnosti `appSettings` oddílu.
+   Připojovací řetězec úložiště konfigurace aplikace je načtený z proměnné prostředí `ConnectionString`. Přidejte `Environment` Configuration Builder před `MyConfigStore` ve vlastnosti `configBuilders` části `appSettings`.
 
-3. Otevřete *program.cs*a aktualizujte `Main` metodu na použití konfigurace aplikace voláním `ConfigurationManager`.
+1. Otevřete *program.cs*a aktualizujte metodu `Main` pro použití konfigurace aplikace voláním `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
@@ -101,13 +104,13 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Pokud chcete, aby se změna projevila, restartujte Visual Studio. Stisknutím kombinace kláves CTRL + F5 Sestavte a spusťte konzolovou aplikaci.
+1. Pokud chcete, aby se změna projevila, restartujte Visual Studio. Stisknutím kombinace kláves CTRL + F5 Sestavte a spusťte konzolovou aplikaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci .NET Framework konzolu. Další informace o tom, jak používat konfiguraci aplikací, najdete v dalším kurzu, který předvádí ověřování.
 

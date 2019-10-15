@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure Powershellu – získání spravované skupiny prostředků a změna velikosti virtuálních počítačů | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – získání spravované skupiny prostředků a změna velikosti virtuálních počítačů
+title: Ukázka skriptu Azure PowerShell – získání spravované skupiny prostředků a změna velikosti virtuálních počítačů | Microsoft Docs
+description: Poskytuje Azure PowerShell ukázkový skript, který načte spravovanou skupinu prostředků pro spravovanou aplikaci Azure. Skript změní velikost virtuálních počítačů.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9e8930c95495673c0082a82757ed6d8137900b6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171482"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330123"
 ---
-# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Získání prostředků ve spravované skupiny prostředků a změna velikosti virtuálních počítačů pomocí Powershellu
+# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů pomocí PowerShellu
 
 Tento skript načte prostředky ze spravované skupiny prostředků a změní velikost virtuálních počítačů v této skupině prostředků.
 
@@ -38,12 +38,12 @@ Tento skript k nasazení spravované aplikace používá následující příkaz
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Vypíše spravované aplikace. Zadejte název skupiny prostředků pro zúžení výsledků. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Vypíše prostředky. Zadejte skupinu prostředků a typ prostředku pro zúžení výsledků. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Aktualizuje velikost virtuálního počítače. |
+| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Vypíše spravované aplikace. Zadáním názvu skupiny prostředků se zaměřte na výsledky. |
+| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Vypíše prostředky. Zadejte skupinu prostředků a typ prostředku pro zaměření na výsledek. |
+| [Update – AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Aktualizuje velikost virtuálního počítače. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

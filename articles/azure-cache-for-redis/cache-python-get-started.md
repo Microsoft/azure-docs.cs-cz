@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start k vytvoření aplikace v Pythonu, která používá Azure cache pro Redis | Microsoft Docs
+title: 'Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
 services: cache
 documentationcenter: ''
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743934"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329871"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý start: Použití Azure cache pro Redis s Pythonem
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Pythonem
 
-V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
+V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Python 2 nebo 3](https://www.python.org/downloads/)
@@ -51,7 +53,7 @@ Následující příklad používá *PIP3* pro python3 k instalaci balíčku Red
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python a otestujte používání mezipaměti z příkazového řádku. `<Your Host Name>` Nahraďte `<Your Access Key>` a hodnotou pro mezipaměť Azure pro Redis. 
+Spusťte Python a otestujte používání mezipaměti z příkazového řádku. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro mezipaměť Azure pro Redis. 
 
 ```python
 >>> import redis
@@ -70,7 +72,7 @@ b'bar'
 
 Vytvořte nový textový soubor skriptu *PythonApplication1.py*.
 
-Do souboru *PythonApplication1.py* přidejte následující skript a uložte ho. Tento skript otestuje přístup k mezipaměti. `<Your Host Name>` Nahraďte `<Your Access Key>` a hodnotou pro mezipaměť Azure pro Redis. 
+Do souboru *PythonApplication1.py* přidejte následující skript a uložte ho. Tento skript otestuje přístup k mezipaměti. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro mezipaměť Azure pro Redis. 
 
 ```python
 import redis
@@ -115,7 +117,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **
 
 Do textového pole **filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
-![Odstranění](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
 

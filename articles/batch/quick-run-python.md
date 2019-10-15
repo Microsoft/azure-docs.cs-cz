@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – spuštění úlohy služby Batch – Python
+title: 'Rychlý Start: spuštění úlohy Azure Batch – rozhraní Python API'
 description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch Python.
 services: batch
 author: laurenhughes
@@ -9,13 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom:
+- seo-python-october2019
+- mvc
+ms.openlocfilehash: e5ec131e73c40e72862122d360574bb4ee5d3cda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090769"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329363"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -25,7 +27,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python verze 2.7 nebo 3.3 nebo novější](https://www.python.org/downloads/)
 
@@ -47,7 +49,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Přejít do adresáře, který obsahuje skript `python_quickstart_client.py`Pythonu.
+Přejít do adresáře, který obsahuje skript Pythonu `python_quickstart_client.py`.
 
 Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 
@@ -55,7 +57,7 @@ Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Příklad:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Například:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -65,7 +67,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spusťte aplikaci
 
 Pokud chcete vidět pracovní postup Batch v akci, spusťte skript:
 
@@ -147,7 +149,7 @@ batch_client = batch.BatchServiceClient(
     batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
 K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Zde je objekt [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) určující [element imagereference](/python/api/azure-batch/azure.batch.models.imagereference) pro obrázek Ubuntu serveru 18,04 LTS publikovaný v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 

@@ -1,5 +1,5 @@
 ---
-title: Webová aplikace Python (Django) s PostgreSQL v systému Linux – Azure App Service | Microsoft Docs
+title: 'Kurz: webová aplikace Python (Django) s PostgreSQL v systému Linux – Azure App Service'
 description: Naučte se, jak spustit webovou aplikaci Python řízenou daty (Django) v Azure s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,16 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.custom:
+- mvc
+- seodec18
+- seo-python-october2019
+ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203264"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329995"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Vytvoření webové aplikace Python (Django) s PostgreSQL v Azure App Service
 
@@ -41,7 +44,7 @@ Postup uvedený v tomto článku najdete na macOS, Linux a pokyny pro Windows js
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu je potřeba:
 
@@ -140,13 +143,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-V prohlížeči `http://localhost:8000` přejdete na. Měla by se zobrazit zpráva `No polls are available.`. 
+V prohlížeči přejdete na `http://localhost:8000`. Měla by se zobrazit zpráva `No polls are available.`. 
 
-Přejít na `http://localhost:8000/admin` adresu a přihlaste se pomocí uživatele s rolí správce, kterého jste vytvořili v posledním kroku. Vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
+Vyberte @no__t – 0 a přihlaste se pomocí uživatele správce, kterého jste vytvořili v posledním kroku. Vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Přejděte znovu a podívejte se na zobrazenou otázku dotazování.
+Znovu přejděte na `http://localhost:8000` a podívejte se na zobrazenou otázku dotazování.
 
 Ukázková aplikace Django ukládá uživatelská data do databáze. Pokud jste při přidávání otázky na dotazování úspěšně přidali otázku dotazování, aplikace zapisuje data do místní databáze PostgreSQL.
 
@@ -166,7 +169,7 @@ V tomto kroku vytvoříte databázi PostgreSQL v Azure. Po nasazení do Azure bu
 
 Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) ve službě Cloud Shell vytvořte server PostgreSQL.
 
-V následujícím ukázkovém příkazu nahraďte  *\<PostgreSQL-Name >* jedinečným názvem serveru a nahraďte  *\<> Správce-username >* a  *\<admin-heslo* pomocí požadovaných přihlašovacích údajů uživatele. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
+V následujícím příkladu příkazu nahraďte *\<postgresql-name >* jedinečným názvem serveru a nahraďte *\<admin-username >* a *\<admin-Password >* pomocí požadovaných přihlašovacích údajů uživatele. Přihlašovací údaje uživatele jsou přihlašovací údaje k účtu správce databáze. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql-name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
 ```azurecli-interactive
 az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
@@ -194,7 +197,7 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 ```
 
 > [!NOTE]
-> Zapamatujte si \<správce – uživatelské \<jméno > a heslo správce > pro pozdější verzi. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
+> Nezapomeňte \<admin-username > a \<admin-Password > pro pozdější verzi. Budete je potřebovat, abyste se mohli přihlásit k serveru Postgre a jeho databázím.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Vytvoření pravidel brány firewall pro server PostgreSQL
 
@@ -207,7 +210,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-V Cloud Shell znovu spusťte příkaz, aby se povolil přístup z místního počítače, a to tak, že nahradíte  *\<> adres IP-IP-Address* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/).
+V Cloud Shell znovu spusťte příkaz pro povolení přístupu z místního počítače, a to tak, že nahradíte *\<your-IP-address >* s [místní IP adresou IPv4](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
@@ -269,21 +272,21 @@ Po vytvoření uživatele s oprávněními správce spusťte server Django.
 python manage.py runserver
 ```
 
-Znovu přejít `http://localhost:8000` na. Měla by se zobrazit zpráva `No polls are available.` znovu. 
+Znovu přejít na @no__t – 0. Měla by se zobrazit zpráva `No polls are available.` znovu. 
 
-Přihlaste se `http://localhost:8000/admin` a přihlaste se pomocí vámi vytvořeného správce a vytvořte otázku dotazování podobným způsobem.
+Vyberte `http://localhost:8000/admin` a přihlaste se pomocí vámi vytvořeného správce a vytvořte otázku dotazování, jako byste předtím.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-`http://localhost:8000` Přejděte znovu a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
+Znovu přejděte na `http://localhost:8000` a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
 
-## <a name="deploy-to-azure"></a>Nasazení do Azure
+## <a name="deploy-to-azure"></a>Nasadit do Azure
 
 V tomto kroku nasadíte aplikaci Python připojenou k Postgre do služby Azure App Service.
 
 ### <a name="configure-repository"></a>Konfigurace úložiště
 
-Django ověří `HTTP_HOST` hlavičku v příchozích požadavcích. Aby webová aplikace Django fungovala v App Service, musíte do povolených hostitelů přidat plně kvalifikovaný název domény aplikace. Otevřete _azuresite/Settings. py_ a vyhledejte `ALLOWED_HOSTS` nastavení. Změňte řádek na:
+Django ověří hlavičku `HTTP_HOST` v příchozích požadavcích. Aby webová aplikace Django fungovala v App Service, musíte do povolených hostitelů přidat plně kvalifikovaný název domény aplikace. Otevřete _azuresite/Settings. py_ a vyhledejte nastavení `ALLOWED_HOSTS`. Změňte řádek na:
 
 ```python
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
@@ -291,7 +294,7 @@ ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.
 
 V dalším kroku Django nepodporuje [obsluhu statických souborů v produkčním](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)prostředí, takže je potřeba tuto možnost povolit ručně. V tomto kurzu použijete [WhiteNoise](https://whitenoise.evans.io/en/stable/). Balíček WhiteNoise je již součástí _požadavků. txt_. Stačí nakonfigurovat Django, abyste ho mohli používat. 
 
-V _azuresite/Settings. py_Najděte `MIDDLEWARE` nastavení a `django.middleware.security.SecurityMiddleware` do seznamu přidejte `whitenoise.middleware.WhiteNoiseMiddleware` middleware, a to hned pod middlewaru. `MIDDLEWARE` Nastavení by mělo vypadat takto:
+V _azuresite/Settings. py_najděte nastavení `MIDDLEWARE` a přidejte do seznamu middleware `whitenoise.middleware.WhiteNoiseMiddleware`, a to hned pod middlewaru `django.middleware.security.SecurityMiddleware`. Nastavení `MIDDLEWARE` by mělo vypadat takto:
 
 ```python
 MIDDLEWARE = [
@@ -328,7 +331,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvoření webové aplikace
+### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
@@ -372,7 +375,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    06b6df4..6520eea  master -> master
 ```  
 
-Server pro nasazení App Service uvidí _požadavky. txt_ v kořenovém adresáři úložiště a spustí správu balíčků Pythonu `git push`automaticky po dokončení.
+Server pro nasazení App Service uvidí _požadavky. txt_ v kořenovém adresáři úložiště a spustí správu balíčků Pythonu automaticky po `git push`.
 
 ### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
@@ -384,9 +387,9 @@ http://<app-name>.azurewebsites.net
 
 Měla by se zobrazit otázka pro dotazování, kterou jste vytvořili dříve. 
 
-App Service detekuje projekt Django v úložišti tím, že hledá _WSGI.py_ v každém podadresáři, který je vytvořen `manage.py startproject` ve výchozím nastavení. Když soubor najde, načte webovou aplikaci Django. Další informace o tom, jak App Service načítají aplikace v Pythonu, najdete v tématu [Konfigurace integrované image Pythonu](how-to-configure-python.md).
+App Service detekuje projekt Django v úložišti tím, že hledá _WSGI.py_ v každém podadresáři, který je ve výchozím nastavení vytvořený pomocí `manage.py startproject`. Když soubor najde, načte webovou aplikaci Django. Další informace o tom, jak App Service načítají aplikace v Pythonu, najdete v tématu [Konfigurace integrované image Pythonu](how-to-configure-python.md).
 
-Pokračujte a `<app-name>.azurewebsites.net` Přihlaste se pomocí stejného vytvořeného uživatele správce. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
+Použijte `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného vytvořeného uživatele správce. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -424,7 +427,7 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
 Nebo si prohlédněte další zdroje informací:
 

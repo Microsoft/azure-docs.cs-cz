@@ -1,6 +1,6 @@
 ---
-title: Azure prvek uživatelského rozhraní rozevíracího seznamu | Dokumentace Microsoftu
-description: Popisuje element Microsoft.Common.DropDown uživatelského rozhraní pro Azure portal.
+title: Element uživatelského rozhraní rozevíracího seznamu Azure | Microsoft Docs
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. DropDown pro Azure Portal. Slouží k výběru z dostupných možností při nasazování spravované aplikace.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5784b5df9b522f0489ca1f6087627b45cec5349d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117297"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331744"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.DropDown
-Výběr ovládacího prvku s rozevíracím seznamu.
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown – element uživatelského rozhraní
+Ovládací prvek výběru s rozevíracím seznamem.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -53,16 +53,16 @@ Výběr ovládacího prvku s rozevíracím seznamu.
 
 ## <a name="remarks"></a>Poznámky
 
-- Popisek `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota elementu, který vyberete.
-- Je-li zadán, výchozí hodnota musí být k dispozici v popisku `constraints.allowedValues`. Pokud není zadán, první položky v `constraints.allowedValues` zaškrtnuto. Výchozí hodnota je **null**.
+- Popisek pro `constraints.allowedValues` je zobrazený text pro položku a jeho hodnota je výstupní hodnota prvku, pokud je vybrána možnost.
+- Je-li tento parametr zadán, musí být výchozí hodnota popisek, který je přítomný v `constraints.allowedValues`. Pokud není zadaný, vybere se první položka v `constraints.allowedValues`. Výchozí hodnota je **null**.
 - `constraints.allowedValues` musí mít alespoň jednu položku.
-- Pro emulaci hodnotu není povinné, přidat položku se popisek a hodnota `""` (prázdný řetězec) do `constraints.allowedValues`.
+- Chcete-li emulovat hodnotu, která není požadována, přidejte položku s popiskem a hodnotou `""` (prázdný řetězec) pro `constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json
 "two"
 ```
 
-## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Další kroky
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

@@ -1,6 +1,6 @@
 ---
-title: Typy aplikací v v1.0 | Azure
-description: Popisuje typy aplikací a scénáře podporované koncovým bodem v2.0 Azure Active Directory.
+title: Typy aplikací v v 1.0 | Azure
+description: Popisuje typy aplikací a scénářů, které podporuje koncový bod Azure Active Directory v 2.0.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,69 +17,69 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540663"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374052"
 ---
-# <a name="application-types-in-v10"></a>Typy aplikací v v1.0
+# <a name="application-types-in-v10"></a>Typy aplikací v v 1.0
 
-Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu architektur moderních aplikací, všechny z nich založené na standardních oborových protokolů OAuth 2.0 nebo OpenID Connect.
+Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu moderních architektur aplikací, které jsou založené na standardních protokolech OAuth 2,0 nebo OpenID Connect.
 
-Následující diagram znázorňuje scénáře a typy aplikací, a jak je možné přidat různé součásti:
+Následující diagram znázorňuje scénáře a typy aplikací a způsob, jakým lze přidat různé součásti:
 
 ![Typy aplikací a scénáře](./media/authentication-scenarios/application_types_and_scenarios.png)
 
-Toto jsou pěti primární aplikace scénáře podporované službou Azure AD:
+Toto jsou pět scénářů primárních aplikací podporovaných službou Azure AD:
 
-- **[Jednostránkové aplikace (SPA)](single-page-application.md)** : Uživatel musí přihlásit k jednostránkovou aplikaci, která je zabezpečena pomocí služby Azure AD.
-- **[Webový prohlížeč na webovou aplikaci](web-app.md)** : Uživatel musí přihlásit k webové aplikaci, která je zabezpečena pomocí služby Azure AD.
-- **[Nativní aplikace pro webové rozhraní API](native-app.md)** : Nativní aplikaci, která běží na telefonu, tabletu nebo počítači potřebuje ověřit uživatele k získání zdroje z webového rozhraní API, která je zabezpečena pomocí služby Azure AD.
-- **[Webové aplikace k webovému rozhraní API](web-api.md)** : Webová aplikace je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
-- **[Proces démon nebo server aplikace webového rozhraní API](service-to-service.md)** : Proces démon aplikace nebo serverovou aplikaci s žádné webové uživatelské rozhraní je potřeba získat prostředky z webového rozhraní API zabezpečené pomocí Azure AD.
+- **[Jednostránkové aplikace (Spa)](single-page-application.md)** : uživatel se musí přihlásit k jednostránkové aplikaci, která je zabezpečená službou Azure AD.
+- **[Webový prohlížeč do webové aplikace](web-app.md)** : uživatel se musí přihlásit k webové aplikaci, která je zabezpečená službou Azure AD.
+- **[Nativní aplikace do webového rozhraní API](native-app.md)** : nativní aplikace, která běží na telefonu, tabletu nebo počítači, musí ověřit uživatele a získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
+- **[Webová aplikace do webového rozhraní API](web-api.md)** : webová aplikace potřebuje získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
+- **[Démon nebo serverová aplikace do webového rozhraní API](service-to-service.md)** : aplikace démona nebo serverová aplikace bez webového uživatelského rozhraní musí získat prostředky z webového rozhraní API zabezpečeného službou Azure AD.
 
-V odkazech na další informace o jednotlivých typech aplikací a pochopit scénáře vysoké úrovně, než se pustíte do práce s kódem. Můžete také informace o rozdíly, na které je potřeba vědět při zápisu konkrétní aplikace, která funguje s koncový bod verze 1.0 nebo koncový bod verze 2.0.
+Pomocí odkazů můžete získat další informace o každém typu aplikace a porozumět scénářům vysoké úrovně předtím, než začnete pracovat s kódem. Můžete si také přečíst informace o rozdílech, které potřebujete vědět při psaní konkrétní aplikace, která funguje s koncovým bodem v 1.0 nebo v 2.0.
 
 > [!NOTE]
-> Koncový bod v2.0 nepodporuje všechny funkce a scénáře služby Azure AD. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Koncový bod v 2.0 nepodporuje všechny scénáře a funkce služby Azure AD. Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních v verzi 2.0](active-directory-v2-limitations.md).
 
-Můžete vyvíjet aplikace a scénáře popsané tady pomocí různé jazyky a platformy. Tyto jsou všechno se opírá kompletní kód ukázky, které jsou k dispozici v příručce ukázky kódu: [v1.0 ukázky kódu podle scénáře](sample-v1-code.md) a [ukázky kódu v2.0 podle scénáře](sample-v2-code.md). Můžete také stáhnout ukázky kódu přímo z odpovídající [ukázkové úložiště GitHub](https://github.com/Azure-Samples?q=active-directory).
+Můžete vyvíjet libovolné aplikace a scénáře popsané tady pomocí různých jazyků a platforem. Všechny jsou zajištěny úplnými ukázkami kódu, které jsou k dispozici v průvodci ukázkami kódu: [v 1.0 ukázky kódu podle scénáře](sample-v1-code.md) a [v 2.0 ukázky kódu podle scénáře](sample-v2-code.md). Ukázky kódu si také můžete stáhnout přímo z odpovídajících [ukázek úložišť pro GitHub](https://github.com/Azure-Samples?q=active-directory).
 
-Kromě toho zda vaše aplikace potřebuje konkrétní nebo segment začátku do konce scénáře, ve většině případů, které tuto funkci lze přidat nezávisle na sobě. Například pokud máte nativní aplikaci, která volá webové rozhraní API, můžete snadno přidat webovou aplikaci, která volá webové rozhraní API také.
+Kromě toho, pokud vaše aplikace potřebuje konkrétní část nebo segment kompletního scénáře, ve většině případů je možné přidat funkce nezávisle. Například pokud máte nativní aplikaci, která volá webové rozhraní API, můžete snadno přidat webovou aplikaci, která také volá webové rozhraní API.
 
 ## <a name="app-registration"></a>Registrace aplikací
 
-### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Registrace aplikace, která používá koncový bod Azure AD verze 1.0
+### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Registrace aplikace, která používá koncový bod Azure AD v 1.0
 
-Všechny aplikace, které outsources ověřování do služby Azure AD musí být zaregistrovaný v adresáři. Tento krok zahrnuje informacemi o vaší aplikaci, včetně adresy URL, kde je umístěn, adresa URL pro odeslání odpovědi po ověření, identifikátor URI k identifikaci vaší aplikace a další služby Azure AD. Tyto informace jsou nezbytné pro několik zásadních důvodů:
+Všechny aplikace, které ověřování pomocí zdrojů do Azure AD musí být zaregistrované v adresáři. Tento krok zahrnuje službu Azure AD o vaší aplikaci, včetně adresy URL, kde se nachází, adresy URL pro odeslání odpovědí po ověření, identifikátoru URI k identifikaci vaší aplikace a dalších. Tyto informace jsou vyžadovány pro několik hlavních důvodů:
 
-* Služba Azure AD potřebuje ke komunikaci s aplikací při zpracování přihlašování nebo výměnou tokenů. Předávat mezi službami Azure AD a aplikace zahrnují následující:
+* Služba Azure AD potřebuje komunikovat s aplikací při manipulaci s přihlašováním nebo výměnou tokenů. Mezi službou Azure AD a aplikací jsou předané tyto informace:
   
-  * **Identifikátor URI ID aplikace** -identifikátor pro aplikaci. Tato hodnota posílá do služby Azure AD během ověřování k označení, kterou aplikaci volající požaduje token. Kromě toho tato hodnota zahrnuje v tokenu, aby aplikace věděla, že byla zamýšleným cílem.
-  * **Adresa URL pro odpověď** a **identifikátor URI pro přesměrování** – pro webové rozhraní API nebo webovou aplikaci, adresa URL odpovědi je umístění, kam Azure AD pošle odpověď ověřování, včetně token, pokud je ověření proběhlo úspěšně. Pro nativní aplikace identifikátor URI pro přesměrování je jedinečný identifikátor, na který Azure AD přesměruje uživatelského agenta v požadavku OAuth 2.0.
-  * **ID aplikace** – ID aplikace, který je generován při registraci aplikace Azure AD. Pokud se požaduje token nebo autorizační kód, ID aplikace a klíč se odesílají do služby Azure AD během ověřování.
-  * **Klíč** – klíč, který se zasílá společně s ID aplikace při ověřování do služby Azure AD k volání webového rozhraní API.
-* Azure AD je potřeba zajistit, že aplikace má požadovaná oprávnění pro přístup k datům adresáře, jiné aplikace ve vaší organizaci a tak dále.
+  * Identifikátor **URI ID aplikace** – identifikátor pro aplikaci. Tato hodnota se během ověřování pošle do Azure AD, aby označovala aplikaci, pro kterou volající potřebuje token. Tato hodnota je navíc obsažena v tokenu, takže aplikace ví, že se jedná o zamýšlený cíl.
+  * Adresa URL **odpovědi** a **identifikátor URI pro přesměrování** – pro webové rozhraní API nebo webovou aplikaci je adresa URL odpovědi umístění, kde služba Azure AD odešle odpověď na ověření, včetně tokenu, pokud bylo ověření úspěšné. U nativních aplikací je identifikátor URI přesměrování jedinečným identifikátorem, na který Azure AD přesměruje uživatelského agenta v žádosti OAuth 2,0.
+  * **ID aplikace** – ID pro aplikaci, která je generována službou Azure AD při registraci aplikace. Při vyžádání autorizačního kódu nebo tokenu se ID aplikace a klíč pošle do služby Azure AD během ověřování.
+  * **Klíč** – klíč, který se pošle spolu s ID aplikace při ověřování ve službě Azure AD za účelem volání webového rozhraní API.
+* Azure AD musí zajistit, aby měla aplikace potřebná oprávnění pro přístup k datům adresáře, dalším aplikacím ve vaší organizaci atd.
 
-Podrobnosti, zjistěte, jak [registrace aplikace](quickstart-register-app.md).
+Další podrobnosti najdete v článku o [registraci aplikace](quickstart-register-app.md).
 
-## <a name="single-tenant-and-multi-tenant-apps"></a>Aplikace pro jednoho tenanta a více tenantů
+## <a name="single-tenant-and-multi-tenant-apps"></a>Klienti s jedním klientem a víceklientské aplikace
 
-Zřizování se změní volbu, pokud víte, že existují dvě kategorie aplikací, které mohou být vyvinuté a integrovat se službou Azure AD:
+Zřizování se může vyjasnit, když rozumíte tomu, že existují dvě kategorie aplikací, které je možné vyvíjet a integrovat s Azure AD:
 
-* **Jednoduché aplikace s tenanty** -jednoho tenanta aplikaci je určena pro použití v jedné organizaci. Toto jsou obvykle-obchodní (LoB) aplikace napsané tak podnikový vývojář. Jednoho tenanta aplikaci pouze musí mít přístup uživatelé v jednom adresáři, a proto potřebuje pouze zřídit v jednom adresáři. Tyto aplikace jsou běžně registrovány vývojáři, kteří v organizaci.
-* **Aplikace s více tenanty** – aplikace s více tenanty určena pro použití v mnoha organizacích, ne jenom jedné organizace. Toto jsou obvykle software-as-a-service (SaaS) aplikací autorem nezávislý výrobce softwaru (ISV). Aplikace s více tenanty potřeba ho zřídit v každém adresáři, kde se využijí, který vyžaduje souhlas správce nebo uživatele k registraci je. Tento proces souhlas začne, když aplikace byl zaregistrován v adresáři a je jim přístup k rozhraní Graph API nebo možná jiného webového rozhraní API. Pokud uživatel nebo správce z jiné organizace zaregistruje k používání aplikace, zobrazí se dialogové okno se zobrazí oprávnění, která aplikace požaduje instalaci. Uživatel nebo správce můžete pak souhlas s aplikací, které poskytuje přístup k aplikaci do uvedeného data a nakonec zaregistruje aplikaci do svého adresáře. Další informace najdete v tématu [přehled architektury souhlas](consent-framework.md).
+* **Samostatná aplikace tenanta** – jedna klientská aplikace je určená pro použití v jedné organizaci. Obvykle se jedná o obchodní aplikace napsané podnikovým vývojářem. Jediná aplikace tenanta musí být přístupná jenom uživatelům v jednom adresáři a v důsledku toho se musí zřídit jenom v jednom adresáři. Tyto aplikace jsou obvykle registrovány vývojářem v organizaci.
+* **Víceklientské aplikace** – víceklientské aplikace je určena pro použití v mnoha organizacích, nikoli jenom v jedné organizaci. Jsou to obvykle aplikace typu software jako služba (SaaS) napsané nezávislým dodavatelem softwaru (ISV). Víceklientské aplikace je potřeba zřídit v každém adresáři, kde se budou používat, což vyžaduje souhlas uživatele nebo správce při jejich registraci. Tento postup souhlasu začíná, když je aplikace registrovaná v adresáři a má přístup k Graph API nebo možná jiné webové rozhraní API. Když se uživatel nebo správce z jiné organizace přihlásí k používání aplikace, zobrazí se dialogové okno, ve kterém se zobrazují oprávnění, která aplikace vyžaduje. Uživatel nebo správce pak může udělit souhlas s aplikací, který aplikaci udělí přístup k uvedeným datům, a nakonec registruje aplikaci do svého adresáře. Další informace najdete v tématu [Přehled rozhraní pro vyjádření souhlasu](consent-framework.md).
 
-### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Další aspekty při vývoji jeden tenant nebo víceklientské aplikace
+### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Další předpoklady při vývoji jednoho nebo více tenantů aplikací
 
-Několik dalších důležitých informací ke kterým dochází při vývoji aplikace s více tenanty místo jednoho tenanta aplikaci. Například pokud vaše aplikace jsou zpřístupníte uživatelům v různých adresářích, je třeba mechanismus pro určení kterého tenanta ve kterých se nacházejí. Jednoho tenanta aplikace potřebuje pouze hledat v jeho vlastní adresáře pro uživatele, zatímco aplikace s více tenanty je potřeba určit konkrétní uživatele ze všech adresářů ve službě Azure AD. Chcete-li provést tuto úlohu, Azure AD poskytuje společný koncový bod ověřování kde jakékoli aplikace s více tenanty může směrovat požadavky na přihlášení, místo konkrétního klienta endpoint. Tento koncový bod je https://login.microsoftonline.com/common pro všechny adresáře ve službě Azure AD, že koncový bod specifickým pro tenanta může být https://login.microsoftonline.com/contoso.onmicrosoft.com. Společný koncový bod je obzvláště důležité vzít v úvahu při vývoji vaší aplikace, protože je budete potřebovat logiku potřebnou pro zpracování více tenantů během přihlášení, odhlášení a ověření tokenu.
+Při vývoji víceklientské aplikace místo jediné klientské aplikace vznikají nějaké další okolnosti. Pokud například aplikaci zpřístupníte uživatelům ve více adresářích, budete potřebovat mechanismus, který určí, v jakém tenantovi se nachází. Jediná klientská aplikace potřebuje vyhledat konkrétního uživatele pouze ve svém vlastním adresáři, zatímco aplikace pro více tenantů musí určit určitého uživatele ze všech adresářů ve službě Azure AD. K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může libovolná aplikace pro více tenantů směrovat požadavky na přihlášení namísto koncového bodu specifického pro tenanta. Tento koncový bod je https://login.microsoftonline.com/common pro všechny adresáře ve službě Azure AD, zatímco koncový bod specifický pro klienta může být https://login.microsoftonline.com/contoso.onmicrosoft.com. Běžný koncový bod je obzvláště důležitý při vývoji vaší aplikace, protože budete potřebovat logiku potřebnou k tomu, aby během přihlašování, odhlašování a ověřování tokenu zpracovala více tenantů.
 
-Pokud jsou aktuálně vývoj aplikace s jedním tenantem, ale mají být k dispozici pro mnoho organizací, můžete snadno provedete změny aplikace a jeho konfigurace ve službě Azure AD, aby více tenantů podporuje. Kromě toho Azure AD používá stejný podpisový klíč pro všechny tokeny ve všech adresářích, jestli poskytujete ověřování v jednom tenantovi nebo aplikace s více tenanty.
+Pokud aktuálně vyvíjíte jednu aplikaci tenanta, ale chcete ji zpřístupnit mnoha organizacím, můžete v Azure AD snadno provádět změny aplikace a její konfigurace, aby bylo možné ji využívat pro více tenantů. Kromě toho Azure AD používá stejný podpisový klíč pro všechny tokeny ve všech adresářích bez ohledu na to, jestli poskytujete ověřování v jednom tenantovi nebo víceklientské aplikaci.
 
-Každý scénář v tomto dokumentu obsahuje dílčí část, která popisuje požadavky na jeho zřizování. Podrobnější informace o zřizování aplikace ve službě Azure AD a jaký je rozdíl mezi aplikací jeden a více tenantů, naleznete v tématu [integrace aplikací s Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) Další informace. Pokračujte ve čtení o běžných scénářů aplikací ve službě Azure AD.
+Každý scénář uvedený v tomto dokumentu obsahuje dílčí oddíl, který popisuje jeho požadavky na zřizování. Podrobnější informace o zřizování aplikace v Azure AD a rozdílech mezi jednotlivými a více tenantů aplikacemi najdete v tématu [Integrace aplikací s Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) pro další informace. Pokračujte ve čtení a seznamte se s běžnými scénáři aplikací ve službě Azure AD.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o jiné služby Azure AD [základy ověřování](authentication-scenarios.md)
+- Další informace o dalších [základech ověřování](v1-authentication-scenarios.md) Azure AD

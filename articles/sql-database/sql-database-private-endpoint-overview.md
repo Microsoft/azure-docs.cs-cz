@@ -8,10 +8,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
 ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71066259"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privátní odkaz pro Azure SQL Database a datový sklad (Preview)
@@ -60,16 +60,16 @@ Po vytvoření privátního koncového bodu (PE) správcem sítě může správc
 
     - (1) v levém podokně vyberte připojení privátního koncového bodu.
     - (2) zobrazuje seznam všech připojení privátního koncového bodu (PECs).
-    - (3) ![snímek obrazovky s odpovídajícím privátním koncovým bodem (PE) všech Pecs][3]
+    - (3) vytvořil se odpovídající privátní koncový bod (PE) ![Screenshot všech PECs @ no__t-1.
 
 1. Vyberte jednotlivé řadiče PEC ze seznamu tím, že je vyberete.
-![Vybraná obrazovka PEC][6]
+@no__t – 0Screenshot vybrala PEC @ no__t-1.
 
 1. Správce SQL se může rozhodnout pro schválení nebo zamítnutí serveru PEC a volitelně také přidat krátkou odpověď na text.
-![Snímek obrazovky s schválením typu PEC][4]
+@no__t – 0Screenshot schválení typu PEC @ no__t-1
 
 1. Po schválení nebo odmítnutí bude seznam odpovídat příslušnému stavu spolu s textem odpovědi.
-![Snímek obrazovky všech PECs po schválení][5]
+@no__t – 0Screenshot všech PECs po schválení @ no__t-1
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Případy použití privátního odkazu pro Azure SQL Database 
 
@@ -128,7 +128,7 @@ Výstup ukazuje, že Psping může testovat privátní IP adresu přidruženou k
 
 ### <a name="check-connectivity-using-nmap"></a>Ověření připojení pomocí nmap
 
-Nmap (mapovač sítě) je bezplatný a open source nástroj, který se používá pro zjišťování sítě a auditování zabezpečení. Další informace a odkaz ke stažení najdete https://nmap.org v části. Tento nástroj můžete použít k zajištění toho, aby privátní koncový bod naslouchal připojení na portu 1433.
+Nmap (mapovač sítě) je bezplatný a open source nástroj, který se používá pro zjišťování sítě a auditování zabezpečení. Další informace a odkaz ke stažení najdete na stránce @no__t – 0. Tento nástroj můžete použít k zajištění toho, aby privátní koncový bod naslouchal připojení na portu 1433.
 
 Spusťte Nmap následujícím způsobem zadáním rozsahu adres podsítě, která je hostitelem privátního koncového bodu.
 

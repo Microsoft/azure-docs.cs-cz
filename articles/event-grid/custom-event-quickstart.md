@@ -1,6 +1,6 @@
 ---
-title: Posílání vlastních událostí pomocí Event Grid a Azure CLI
-description: Pomocí Azure Event Grid a Azure CLI můžete publikovat vlastní téma a přihlásit k odběru události týkající se daného tématu. Události jsou zpracovávány webové aplikace.
+title: 'Rychlý Start: odesílání vlastních událostí pomocí Event Grid a Azure CLI'
+description: K publikování vlastního tématu a přihlášení k odběru událostí pro toto téma použijte Azure Event Grid a Azure CLI. Události jsou zpracovávány webovou aplikací.
 services: event-grid
 keywords: ''
 author: spelluru
@@ -8,15 +8,18 @@ ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.custom: seodec18, seo-javascript-september2019
-ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+ms.openlocfilehash: 1129dffa37df4766b98f39a9efa05f4eb7ed9878
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861099"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326121"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do webového koncového bodu pomocí Azure CLI a Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure CLI a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -48,7 +51,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vašeho tématu. Název vlastního tématu musí být jedinečný, protože je součástí položky DNS. Kromě toho musí být dlouhý 3 až 50 znaků a obsahovat jenom hodnoty a – z, A-Z, 0-9, a "-"
+Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vašeho tématu. Název vlastního tématu musí být jedinečný, protože je součástí položky DNS. Navíc musí mít 3-50 znaků a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-"
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -143,7 +146,7 @@ Pokud chcete pokračovat v práci s touto událostí nebo aplikací prohlížeč
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

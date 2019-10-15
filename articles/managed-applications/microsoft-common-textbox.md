@@ -1,6 +1,6 @@
 ---
-title: Azure prvek textové pole uživatelského rozhraní | Dokumentace Microsoftu
-description: Popisuje element Microsoft.Common.TextBox uživatelského rozhraní pro Azure portal.
+title: Element uživatelského rozhraní textového pole Azure | Microsoft Docs
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. TextBox pro Azure Portal. Slouží k přidání neformátovaného textu.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044530"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331604"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.TextBox
-Ovládací prvek, který slouží k úpravě neformátovaného textu.
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox – element uživatelského rozhraní
+Ovládací prvek, který lze použít k úpravám neformátovaného textu.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+![Microsoft. Common. TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -44,10 +44,10 @@ Ovládací prvek, který slouží k úpravě neformátovaného textu.
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Pokud `constraints.required` je nastavena na **true**, potom do textového pole musí mít hodnotu úspěšně ověřit. Výchozí hodnota je **false**.
-- `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. Je-li zadána, textového pole Hodnota musí odpovídat vzoru úspěšně ověřit. Výchozí hodnota je **null**.
-- `constraints.validationMessage` je řetězec k zobrazení při ověřování se nezdaří, hodnota v textovém poli. Pokud není zadán, se používají textového pole předdefinovaných ověřovacích zpráv. Výchozí hodnota je **null**.
-- Je možné zadat hodnotu pro `constraints.regex` při `constraints.required` je nastavena na **false**. V tomto scénáři není vyžadována pro textové pole úspěšně ověřit hodnotu. Pokud je zadaná, musí odpovídat vzoru regulárního výrazu.
+- Je-li hodnota `constraints.required` nastavená na **hodnotu true**, musí mít textové pole hodnotu k úspěšnému ověření. Výchozí hodnota je **false (NEPRAVDA**).
+- `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. Je-li tento parametr zadán, musí být hodnota textového pole shodná se vzorem, aby bylo možné úspěšně ověřit. Výchozí hodnota je **null**.
+- `constraints.validationMessage` je řetězec, který se zobrazí, když se hodnota textového pole nezdařila. Není-li parametr zadán, jsou použity vestavěné zprávy ověřování v textovém poli. Výchozí hodnota je **null**.
+- Je možné zadat hodnotu pro `constraints.regex`, pokud je `constraints.required` nastaveno na **hodnotu false**. V tomto scénáři není požadovaná hodnota pro úspěšné ověření tohoto textového pole. Pokud je zadaný, musí se shodovat se vzorem regulárního výrazu.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
@@ -55,6 +55,6 @@ Ovládací prvek, který slouží k úpravě neformátovaného textu.
 "my text value"
 ```
 
-## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Další kroky
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

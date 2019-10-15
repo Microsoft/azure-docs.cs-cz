@@ -7,18 +7,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675115"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331774"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
 Začněte pracovat s Windows Data Science Virtual Machine.
 
-## <a name="prerequisite"></a>Předpoklad
+## <a name="prerequisite"></a>Požadavek
 
 Pokud chcete vytvořit Data Science Virtual Machine Windows, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálních počítačů s povoleným GPU.
@@ -34,13 +34,13 @@ Vytvoření instance DSVM:
 
 1. V dolní části vyberte tlačítko **vytvořit** .
 
-    [![](media/provision-vm/create-windows-expanded.png#lightbox)(media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Tlačítko pro vytvoření počítače s Windows")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    karta ![Basics odpovídající virtuálnímu počítači s Windows @ no__t-1
 
 1. Vyplňte kartu **základy** :
-      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Pro toto předplatné musíte mít oprávnění pro vytváření prostředků.
+      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
       * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
       * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
       * **Umístění**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
@@ -48,10 +48,10 @@ Vytvoření instance DSVM:
       * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
       * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
       * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 1. **Zkontrolovat a vytvořit**
    * Ověřte, zda jsou všechny informace, které jste zadali, správné. 
-   * Vyberte **vytvořit**.
+   * Vyberte **Create** (Vytvořit).
 
 
 > [!NOTE]
@@ -77,5 +77,4 @@ K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jup
 * Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Naučte se systematicky sestavovat komplexní Analytická řešení pomocí [procesu vědeckého zpracování týmových dat](../team-data-science-process/index.yml).
 * Podívejte se na [Azure AI Gallery](https://gallery.cortanaintelligence.com) pro ukázkové strojové učení a analýzu dat, které používají Azure Machine Learning a související datové služby v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
-* Projděte si příslušnou [referenční dokumentaci](./reference-windows-vm.md) pro tento virtuální počítač.
 

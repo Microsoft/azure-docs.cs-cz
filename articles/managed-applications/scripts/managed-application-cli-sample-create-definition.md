@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – Vytvoření definice spravované aplikace | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření definice spravované aplikace
+description: Poskytuje ukázkový skript Azure CLI, který v předplatném vytvoří definici spravované aplikace.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 79af2918c2342d1a0cc3b11763c30b35ab5e9f72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a653f2c10c28683c79f86c1c882bf00112f61ec0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61043886"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332623"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Vytvoření definice spravované aplikace pomocí Azure CLI
 
@@ -42,7 +42,7 @@ Tento skript k vytvoření definice spravované aplikace používá následujíc
 | [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

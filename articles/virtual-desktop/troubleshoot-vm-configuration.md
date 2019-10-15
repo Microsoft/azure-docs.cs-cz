@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274486"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330824"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -302,10 +302,17 @@ Pokud se přihlásíte k používání více relací s Windows 10 Enterprise pom
 
 Pokud časový limit vyprší, zobrazí se chybová zpráva oznamující, že Vzdálená relace byla odpojena, protože pro tento počítač nejsou k dispozici žádné licence pro klientský přístup k vzdálené ploše.
 
-Pokud se zobrazí některá z těchto zpráv, znamená to, že image nemá nainstalované nejnovější aktualizace Windows nebo že nastavujete režim licencování vzdálené plochy na **uživatele**. Odeberte všechny konfigurace, které tuto zásadu nastavují, a pak postupujte podle pokynů k identifikaci verze Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.  
+Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nemá nainstalované nejnovější aktualizace systému Windows nebo že nastavujete režim licencování vzdálené plochy prostřednictvím zásad skupiny. Postupujte podle kroků v následujících částech a ověřte nastavení zásad skupiny, identifikujte verzi Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.  
 
 >[!NOTE]
 >Virtuální desktop Windows vyžaduje jenom licenci CAL pro klientský přístup (CAL), pokud fond hostitelů obsahuje hostitele relací Windows serveru. Informace o tom, jak nakonfigurovat licence VP CAL, najdete v článku o [licenci nasazení služby Vzdálená plocha pomocí licencí pro klientský přístup](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Zakázat nastavení zásad skupiny pro režim licencování vzdálené plochy
+
+Podívejte se na nastavení zásad skupiny tak, že otevřete Editor Zásady skupiny ve virtuálním počítači a přejdete na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy**@no **licencování**__t-7 @no__t – 9**Nastaví režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
+
+>[!NOTE]
+>Pokud jste v doméně nastavili zásady skupiny, zakažte toto nastavení u zásad, které cílí na tyto virtuální počítače s Windows 10 Enterprise s více relacemi.
 
 ### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Zjistěte, kterou verzi Windows 10 Enterprise multi-session používáte.
 

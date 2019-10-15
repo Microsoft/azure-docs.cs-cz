@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534698"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372789"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení Update Management, Change Tracking a inventáře na několika virtuálních počítačích
 
@@ -76,7 +76,7 @@ Následující řešení jsou závislá na Log Analytics pracovním prostoru:
 
 * [Správa aktualizací](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
+* [Start/Stop VMs during off-hours](automation-solution-vm-management.md)
 
 Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejprve odebrat dříve uvedená řešení. v opačném případě bude znemožněno pokračovat v tomto procesu. Projděte si článek pro konkrétní řešení, které jste naimportovali, abyste pochopili kroky potřebné k jeho odebrání.
 
@@ -101,7 +101,7 @@ Pokud jste použili řešení Update Management, možná budete chtít po odebr�
 
 * Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Pokud jste v době mimo špičku použili virtuální počítače spustit/zastavit, budete možná chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
+Pokud jste použili řešení Start/Stop VMs during off-hours, možná budete chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
 
 * Spuštění a zastavení plánů Runbook VM
 * Spuštění a zastavení runbooků virtuálních počítačů
@@ -111,48 +111,55 @@ Alternativně můžete také zrušit propojení pracovního prostoru s účtem A
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při připojování více počítačů můžou existovat počítače, které ukazují, že se **nedají povolit**. Existují různé důvody, proč nemusí být některé počítače povolené. V následujících částech se dozvíte o možných důvodech, proč se při pokusu o připojení k virtuálnímu počítači nepodaří stav **Povolit** .
+Při připojování více počítačů můžou existovat počítače, které ukazují, že se **nedají povolit**. Existují různé důvody, proč nemusí být některé počítače povolené. V následujících částech se dozvíte o možných důvodech, proč se při pokusu o připojení k virtuálnímu počítači **nepodaří stav povolit** .
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Sestavování virtuálních počítačů do jiného pracovního\<prostoru:\>"pracovní prostor".  Změnit konfiguraci, aby se použila pro povolení
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítač sestaví do jiného pracovního prostoru: ' \<workspaceName @ no__t-1 '.  Změnit konfiguraci, aby se použila pro povolení
 
-**Příčina:** Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit, do jiného pracovního prostoru.
+**Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit, do jiného pracovního prostoru.
 
-**Řešení**: Kliknutím na **použít jako konfigurace** změníte cílový účet Automation a Log Analytics pracovní prostor.
+**Řešení**: kliknutím na **použít jako konfigurace** změníte cílový účet Automation a Log Analytics pracovní prostor.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Sestavování virtuálních počítačů do pracovního prostoru, který není v tomto předplatném k dispozici
 
-**Příčina:** Pracovní prostor, do kterého se virtuální počítač hlásí:
+**Příčina**: pracovní prostor, do kterého se virtuální počítač hlásí:
 
 * Je v jiném předplatném, nebo
 * Již neexistuje, nebo
 * Je ve skupině prostředků, ke které nemáte přístupová oprávnění.
 
-**Řešení**: Pomocí změny konfigurace oboru Najděte účet Automation přidružený k pracovnímu prostoru, který virtuální počítač hlásí a zařadí virtuálnímu počítači.
+**Řešení**: Najděte účet Automation přidružený k pracovnímu prostoru, který virtuální počítač hlásí a zaregistruje virtuální počítač, změnou konfigurace oboru.
 
 ### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Verze nebo distribuce operačního systému virtuálního počítače se nepodporuje.
 
-**Způsobit** Řešení není podporováno pro všechny distribuce systému Linux nebo všechny verze systému Windows.
+**Příčina:** Řešení není podporováno pro všechny distribuce systému Linux nebo všechny verze systému Windows.
 
-**Řešení** Přečtěte si [seznam podporovaných klientů](automation-update-management.md#clients) pro řešení.
+**Řešení:** Přečtěte si [seznam podporovaných klientů](automation-update-management.md#clients) pro řešení.
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasické virtuální počítače se nedají povolit.
 
-**Příčina:** Virtuální počítače, které používají model nasazení Classic, nejsou podporovány.
+**Příčina**: virtuální počítače, které používají model nasazení Classic, nejsou podporovány.
 
-**Řešení**: Migrujte virtuální počítač do modelu nasazení Správce prostředků. Další informace o tom, jak to udělat, najdete v tématu [migrace prostředků modelu nasazení Classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Řešení**: migrujte virtuální počítač do modelu nasazení Správce prostředků. Další informace o tom, jak to udělat, najdete v tématu [migrace prostředků modelu nasazení Classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 ### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. přidělení zrušeno
 
-**Příčina:** Virtuální počítač není ve spuštěném stavu .
+**Příčina**: virtuální počítač není ve **spuštěném** stavu.
 
-**Řešení**: Aby bylo možné připojit virtuální počítač k řešení, musí virtuální počítač běžet. Kliknutím na odkaz **Spustit virtuální počítač** spustíte virtuální počítač, aniž byste museli přejít pryč ze stránky.
+**Řešení**: aby bylo možné připojit virtuální počítač k řešení, musí být spuštěný virtuální počítač. Kliknutím na odkaz **Spustit virtuální počítač** spustíte virtuální počítač, aniž byste museli přejít pryč ze stránky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když je teď řešení povolené pro vaše virtuální počítače, přečtěte si článek Přehled Update Management, kde se dozvíte, jak zobrazit posouzení aktualizací pro vaše počítače.
+Odebrání virtuálního počítače z Update Management:
+
+* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates`. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
+* Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
+## <a name="next-steps"></a>Další kroky
+
+Když je teď řešení povolené pro vaše virtuální počítače, přečtěte si článek Přehled Update Management, kde se dozvíte, jak vytvořit **nasazení aktualizace** pro vaše počítače.
 
 > [!div class="nextstepaction"]
-> [Update Management – zobrazení posouzení aktualizací](./automation-update-management.md#viewing-update-assessments)
+> [Update Management – Správa aktualizací a oprav pro virtuální počítače Azure](./automation-tutorial-update-management.md)
 
 Přidání kurzů k řešením a jejich použití:
 

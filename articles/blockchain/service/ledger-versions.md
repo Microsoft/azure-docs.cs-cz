@@ -1,21 +1,21 @@
 ---
-title: Služba Azure blockchain podporuje verze hlavní knihy, opravy a upgrade.
+title: Verze v hlavní knize služby Azure blockchain, opravy a upgrade
 description: Přehled podporovaných verzí v hlavní knize ve službě Azure blockchain, včetně zásad týkajících se oprav systémů a počítačů spravovaných systémem a uživatelem spravovaných upgradů.
 services: azure-blockchain
 keywords: Blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286522"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329126"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Podporované verze hlavní knihy služby Azure blockchain
 

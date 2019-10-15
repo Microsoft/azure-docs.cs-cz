@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analyzovat data v Azure Data Lake Storage Gen2 pomocí Azure Databricks | Microsoft Docs'
+title: 'Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks | Microsoft Docs'
 description: Naučte se spouštět úlohu Sparku na Azure Databricks pomocí Azure Portal a účtu úložiště Azure Data Lake Storage Gen2.
 author: normesta
 ms.author: normesta
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992307"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330990"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
+# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Rychlý Start: Analýza dat v Azure Data Lake Storage Gen2 pomocí Azure Databricks
 
 V tomto rychlém startu se dozvíte, jak spustit úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště, který je povolený Azure Data Lake Storage Gen2.
 
@@ -23,22 +23,22 @@ V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu,
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Vytvořte účet úložiště Data Lake Gen2. Další [informace najdete v tématu rychlý Start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
+* Vytvořte účet úložiště Data Lake Gen2. Další informace najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 
   Vložte název účtu úložiště do textového souboru. Budete ho potřebovat brzy.
 
-* Vytvoření instančního objektu. Viz [jak: Portál můžete použít k vytvoření aplikace a instančního objektu služby Azure AD, který má](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)přístup k prostředkům.
+* Vytvoření instančního objektu. Viz [Postup: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   K dispozici je několik konkrétních věcí, které budete muset udělat při provádění kroků v tomto článku.
 
-  :heavy_check_mark: Při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
+  : heavy_check_mark: při provádění kroků v části [přiřazení aplikace k roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) v článku se ujistěte, že k instančnímu objektu přiřadíte roli **Přispěvatel dat objektu BLOB služby Storage** .
 
   > [!IMPORTANT]
   > Ujistěte se, že roli přiřadíte v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
 
-  :heavy_check_mark: Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a hodnoty hesla do textového souboru. Budete je potřebovat brzy.
+  : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Budete je potřebovat brzy.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -59,7 +59,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | Vyberte **Západní USA 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
+    |**Umístění**     | Vyberte **Západní USA 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
 3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
@@ -78,11 +78,11 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     ![Vytvoření clusteru Databricks Spark v Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
-    Přijměte všechny výchozí hodnoty kromě následujících:
+    Zadejte hodnoty následujících polí a potvrďte výchozí hodnoty dalších polí:
 
-    * Zadejte název clusteru.
-    * Vytvořte cluster s modulem runtime **5,1** .
-    * Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+    - Zadejte název clusteru.
+     
+    - Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
 4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -102,7 +102,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
     ![Vytvoření poznámkového bloku v Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
 4. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 
@@ -121,7 +121,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
     > [!NOTE]
     > Tento blok kódu přímo přistupuje k Data Lake koncovému bodu Gen2 pomocí OAuth, ale existují i jiné způsoby, jak připojit pracovní prostor datacihly k vašemu účtu Data Lake Storage Gen2. Kontejner můžete například připojit pomocí protokolu OAuth nebo použít přímý přístup se sdíleným klíčem. <br>Příklady těchto přístupů najdete v [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
 
-5. V `storage-account-name`tomto bloku kódu Nahraďte zástupné hodnoty, `tenant-id` `appID`, `password`a v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu `container-name` zástupný symbol na libovolný název, který chcete kontejneru přidělit.
+5. V tomto bloku kódu Nahraďte zástupné hodnoty `storage-account-name`, `appID`, `password` a `tenant-id` v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte zástupný symbol `container-name` na libovolný název, který chcete kontejneru přidělit.
 
     > [!NOTE]
     > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.
@@ -190,7 +190,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
     - V poli **Values** (Hodnoty) nastavte hodnotu **level** (Úroveň).
     - V poli **Aggregation** (Agregace) vyberte možnost **COUNT** (Počet).
 
-6. Klikněte na tlačítko **Použít**.
+6. Klikněte na **Použít**.
 
 7. Výstup bude obsahovat vizuální reprezentaci znázorněnou na následujícím snímku obrazovky:
 
@@ -202,9 +202,9 @@ Až budete s tímto článkem hotoví, můžete cluster ukončit. V pracovním p
 
 ![Zastavení clusteru Databricks](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud neukončíte ručně cluster, který se automaticky zastaví, za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit \_ po \_ minutách nečinnosti** . Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
+Pokud neukončíte ručně cluster, který se automaticky zastaví, za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ @ no__t-2 minuty nečinnosti** . Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke spuštění úlohy Spark použili data v účtu úložiště s povolenou službou Data Lake Storage Gen2. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 

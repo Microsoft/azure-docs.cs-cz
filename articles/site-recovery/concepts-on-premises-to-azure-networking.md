@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937558"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333049"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak nastavit připojení, abyste se mohli úspěšně p
 
 Když nastavíte zotavení po havárii místních virtuálních počítačů a fyzických serverů do Azure, [Azure Site Recovery](site-recovery-overview.md) spustí replikování počítačů do Azure. Pokud dojde k výpadku, můžete převzít služby při selhání do Azure z místní lokality. Když dojde k převzetí služeb při selhání, Site Recovery vytvoří virtuální počítače Azure pomocí replikovaných místních dat. V rámci plánování zotavení po havárii potřebujete zjistit, jak se připojit k aplikacím běžícím na těchto virtuálních počítačích Azure po převzetí služeb při selhání.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Příprava místních počítačů před převzetím služeb při selhání.
@@ -53,14 +53,14 @@ Na místních počítačích s Windows udělejte toto:
 Na místních počítačích se systémem Linux proveďte tyto kroky:
 
 1. Ověřte, že je služba Secure Shell nastavená tak, aby se spouštěla automaticky při spuštění systému.
-2. Ověřte, že pravidla brány firewall umožňují připojení SSH.
+2. Zkontrolujte, že pravidla brány firewall umožňují připojení SSH.
 
 
 ## <a name="configure-azure-vms-after-failover"></a>Konfigurace virtuálních počítačů Azure po převzetí služeb při selhání
 
 Po převzetí služeb při selhání proveďte následující na virtuálních počítačích Azure, které se vytvořily.
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Víc se uč](../virtual-network/virtual-network-public-ip-address.md)
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Nemůžete použít stejnou veřejnou IP adresu pro virtuální počítač Azure, který jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md)
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 
@@ -91,7 +91,7 @@ Site Recovery vám umožní při převzetí služeb při selhání do Azure zach
 
 Zachování IP adres vyžaduje následující kroky:
 
-- Ve vlastnostech místního počítače nastavte u cílového virtuálního počítače Azure nastavení sítě a IP adresy, aby se na něm nastavilo zrcadlení místních nastavení.
+- Ve vlastnostech služby COMPUTE & sítě replikované položky nastavte síťové a IP adresy cílového virtuálního počítače Azure tak, aby odpovídaly místnímu nastavení.
 - Podsítě se musí spravovat jako součást procesu zotavení po havárii. Potřebujete virtuální síť Azure, která bude odpovídat místní síti, a po změně síťových tras převzetí služeb při selhání je potřeba, aby odrážely, že se podsíť přesunula do Azure a přidala se nová umístění IP adres.  
 
 ### <a name="failover-example"></a>Příklad převzetí služeb při selhání
@@ -120,7 +120,7 @@ Aby bylo možné tyto adresy zachovat, je zde postup.
     > V závislosti na požadavcích aplikace by bylo možné nastavit připojení typu VNet-to-VNet před převzetím služeb při selhání, jako krok ruční krok/skriptování nebo sada Runbook služby Azure Automation v rámci [plánu obnovení](site-recovery-create-recovery-plans.md)Site Recovery nebo po dokončení převzetí služeb při selhání.
 
 4. Před převzetím služeb při selhání ve vlastnostech počítače v Site Recovery nastaví cílovou IP adresu na adresu místního počítače, jak je popsáno v dalším postupu.
-5. Po převzetí služeb při selhání se vytvoří virtuální počítače Azure se stejnou IP adresou. Woodgrove se připojuje ze **sítě Azure** k síti VNet pro **obnovení** pomocí 
+5. Po převzetí služeb při selhání se vytvoří virtuální počítače Azure se stejnou IP adresou. Woodgrove se připojuje ze **sítě Azure** k virtuální **síti pro obnovení** pomocí partnerského vztahu virtuálních sítí (s povoleným přenosovým připojením).
 6. V místním prostředí Woodgrove potřebuje provést změny v síti, včetně změny tras, aby odrážely, že 192.168.1.0/24 přesunul do Azure.  
 
 **Infrastruktura před převzetím služeb při selhání**

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026717"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Concur cestovném a výdaji
 
@@ -38,16 +38,18 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Concur cestovné a výdaje s jednotným přihlašováním (SSO) s podporou jednotného přihlašování.
+* Concur cestovné a výdajové předplatné.
+* Role "Správce společnosti" v rámci uživatelského účtu Concur. V případě, že máte správný přístup, se můžete pokusit přejít na [Concur samoobslužný nástroj jednotného přihlašování](https://www.concursolutions.com/nui/authadmin/ssoadmin). Pokud nemáte přístup, kontaktujte prosím podporu Concur nebo správce projektu implementace. 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD.
 
-* Concur cestovné a výdaje podporuje **IDP** iniciované jednotné přihlašování.
+* Concur cestovné a výdaje podporují jednotné přihlašování **IDP** a **SP**
+* Concur cestovné a výdaje podporují testování jednotného přihlašování v produkčním i implementačním prostředí. 
 
 > [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+> Identifikátor této aplikace je pevná řetězcová hodnota pro každou ze tří oblastí: US, EMEA a Čína. Proto lze pro každou oblast v jednom tenantovi nakonfigurovat pouze jednu instanci. 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>Přidání cestovného Concur a výdajů z Galerie
 
@@ -85,13 +87,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+    > [!NOTE]
+    > Identifikátor (ID entity) a adresa URL odpovědi (adresa URL služby assertion Consumer Service) jsou specifické pro oblast. Vyberte prosím na základě datacentra vaší entity Concur. Pokud si nejste jisti datacentrem vaší entity Concur, obraťte se prosím na podporu Concur. 
+
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na atribut pro úpravy nebo ikonu pera u **atributu uživatel** a upravte nastavení. Jedinečný identifikátor uživatele musí odpovídat Concur User login_id. Obvykle byste měli změnit **User. userPrincipalName** na **User. mail**.
+
+    ![Upravit atribut uživatele](common/edit-attribute.png)
+
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte si metadata a uložte je do počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
-
-1. V části **Nastavení cestovného a výdajů v Concur** zkopírujte příslušné adresy URL na základě vašeho požadavku.
-
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -125,11 +130,31 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Konfigurace cestovného Concur a jednotného přihlašování k výdajům
 
-Ke konfiguraci jednotného přihlašování na straně **Concur cestovné a výdaje** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Concur cestovného a výdajů](https://www.concur.com/support). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Pokud chcete nakonfigurovat jednotné přihlašování na straně **Concur cestovné a výdaje** , je potřeba nahrát stažený **soubor XML federačních metadat** do [Concur jednotného samoobslužného nástroje jednotného přihlašování](https://www.concursolutions.com/nui/authadmin/ssoadmin) a přihlásit se pomocí účtu s rolí správce společnosti. 
+
+1. Klikněte na tlačítko **Přidat**.
+1. Zadejte vlastní název pro IdP, například Azure AD (US). 
+1. Klikněte na **Odeslat soubor XML** a připojte **XML federačních metadat** , které jste si stáhli dřív.
+1. Kliknutím na **Přidat metadata** uložte změnu.
+
+    ![Snímek obrazovky samoobslužného nástroje Concur SSO](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Vytvoření Concur cestovného a uživatele testu výdajů
 
-V této části vytvoříte uživatele s názvem B. Simon v Concur cestovné a výdaje. Pokud chcete přidat uživatele na Concurovou platformu pro Cestovné a výdaje, pracujte s [Concur cestovné a týmu podpory](https://www.concur.com/support) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v Concur cestovné a výdaje. Pracujte s týmem podpory Concur a přidejte uživatele na Concurovou platformu pro cestování a výdaje. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+
+> [!NOTE]
+> B. ID přihlášení Concur Simon musí odpovídat jedinečnému identifikátoru B. Simon ve službě Azure AD. Například pokud je B. Simon Azure AD Unique identifikátorem je `B.Simon@contoso.com`. B. ID přihlášení Concur Simon musí být také `B.Simon@contoso.com`. 
+
+## <a name="configure-concur-mobile-sso"></a>Konfigurace mobilního přihlašování Concur
+Pokud chcete povolit Concur Mobile SSO, musíte zadat **adresu URL přístupového uživatele**týmu podpory Concur. Pomocí následujících kroků získáte **adresu URL přístupu uživatele** ze služby Azure AD:
+1. Přejít k **podnikovým aplikacím**
+1. Klikněte na **Concur cestovné a výdaje**
+1. Klikněte na **vlastnosti** .
+1. Kopírování **adresy URL přístupu uživatele** a udělení této adresy URL podpoře Concur
+
+> [!NOTE]
+> Možnost Samoobslužná služba pro konfiguraci jednotného přihlašování není dostupná, takže pokud chcete povolit mobilní jednotné přihlašování, pracujte s týmem podpory Concur. 
 
 ## <a name="test-sso"></a>Test SSO 
 

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 7fdb46ac7cffc4eb6a791304c7a6b58378806296
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679890"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374266"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Řešení potíží s virtuálními počítači s Windows 7 na virtuálním počítači s Windows
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Řešení potíží s virtuálními počítači s Windows 7 ve Windows Virtual Desktopu
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
@@ -39,11 +39,11 @@ Pokud virtuální počítač s Windows nemůže najít nebo přihlašovací úda
 
 Tuto chybu opravíte tak, že přidáte uživatele do skupiny uživatelů vzdálené plochy:
 
-1. Otevřete Azure Portal.
+1. Otevřete web Azure Portal.
 2. Vyberte virtuální počítač, na kterém jste viděli chybovou zprávu.
 3. Vyberte **Spustit příkaz**.
 4. Spusťte následující příkaz s `<username>` nahrazeným názvem uživatele, který chcete přidat:
    
    ```cmd
-   localgroup "Remote Desktop Users" <username> /add
+   net localgroup "Remote Desktop Users" <username> /add
    ```

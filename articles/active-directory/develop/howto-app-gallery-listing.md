@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001734"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374071"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Výpis aplikace v galerii aplikací Azure Active Directory
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
 Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure Active Directory (Azure AD), implementovat jednotné přihlašování (SSO) a spravovat výpis.
 
@@ -38,7 +38,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pro federované aplikace (otevřené ID a SAML/WS) musí aplikace podporovat model software jako služba (SaaS), aby mohl být uvedený v galerii aplikací Azure AD. Aplikace podnikové Galerie musí podporovat více zákaznických konfigurací a ne žádného konkrétního zákazníka.
 - Pro otevřené ID Connect musí být aplikace víceklientské a musí být pro aplikaci správně implementovaná [Architektura souhlasu služby Azure AD](consent-framework.md) . Uživatel může odeslat žádost o přihlášení ke společnému koncovému bodu, aby každý zákazník mohl poskytnout souhlas k aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu.
@@ -71,7 +71,7 @@ Náš tým si přečte podrobnosti a poskytne jim odpovídající přístup. Po 
 
 Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nejdřív implementovat jeden z následujících federačních protokolů, které Azure AD podporuje. Musíte také souhlasit s podmínkami a ujednáními v galerii aplikací Azure AD. Přečtěte si podmínky a ujednání Galerie aplikací Azure AD na [tomto webu](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-- **OpenID Connect**: Pokud chcete svou aplikaci integrovat s Azure AD pomocí protokolu Open ID Connect, postupujte podle [pokynů pro vývojáře](authentication-scenarios.md).
+- **OpenID Connect**: Pokud chcete svou aplikaci integrovat s Azure AD pomocí protokolu Open ID Connect, postupujte podle [pokynů pro vývojáře](v1-authentication-scenarios.md).
 
     ![Výpis aplikace OpenID Connect v galerii](./media/howto-app-gallery-listing/openid.png)
 

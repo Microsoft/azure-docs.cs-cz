@@ -1,11 +1,11 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Foodee | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Foodee.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Foodee | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Foodee.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 7e28bd4a-5624-4c67-aebb-0856d97e82c5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,144 +13,163 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/25/2019
+ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09752c1aa9840ab8dcdc1faa69222de4529644d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16e7c7e676737df7e755aa4e602f8ceabd8a002f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102144"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373190"
 ---
-# <a name="tutorial-integrate-foodee-with-azure-active-directory"></a>Kurz: Foodee integrovat s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-foodee"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Foodee
 
 V tomto kurzu se dozvíte, jak integrovat Foodee s Azure Active Directory (Azure AD). Když integrujete Foodee s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Foodee.
-* Aby uživatelé mohli být automaticky přihlášeni k Foodee pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Foodee.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Foodee svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Foodee jednotné přihlašování (SSO) povolené předplatné.
+* Foodee odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Foodee **SP a zprostředkovatele identity** iniciované jednotné přihlašování a podporuje **JIT** zřizování uživatelů.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Foodee podporuje jednotné přihlašování (SSO) **a IDP** .
+* Foodee podporuje zřizování uživatelů **jenom v čase** .
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-foodee-from-the-gallery"></a>Přidání Foodee z Galerie
 
-Konfigurace integrace Foodee do služby Azure AD, budete muset přidat Foodee z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Foodee do služby Azure AD, musíte přidat Foodee z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Foodee** do vyhledávacího pole.
-1. Vyberte **Foodee** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Foodee** .
+1. Na panelu výsledků vyberte **Foodee** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-foodee"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Foodee
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s Foodee pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Foodee.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Foodee pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Foodee.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Foodee, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Foodee, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-1. **[Konfigurace Foodee](#configure-foodee)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
-1. **[Vytvořit testovacího uživatele Foodee](#create-foodee-test-user)**  mít protějšek B. Simon Foodee, který je propojený s Azure AD reprezentace uživatele.
-1. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte FOODEE SSO](#configure-foodee-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Foodee Test User](#create-foodee-test-user)** -to, abyste měli protějšek B. Simon v Foodee, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Foodee** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Foodee** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, postupujte následovně:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://concierge.food.ee/sso/saml/<INSTANCENAME>/consume`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://concierge.food.ee/sso/saml/<INSTANCENAME>/consume`.
 
-1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://concierge.food.ee/sso/saml/<INSTANCENAME>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://concierge.food.ee/sso/saml/<INSTANCENAME>`.
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Foodee klienta](mailto:dev@food.ee) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Foodee](mailto:dev@food.ee) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **kód XML metadat federace** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-   ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-1. Na **nastavení Foodee** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení Foodee** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-foodee"></a>Konfigurace Foodee
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k Foodee jako správce.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. Klikněte na **profilu logo** v pravém horním rohu stránky přejděte na **Single Sign On** a proveďte následující kroky:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-   ![Konfigurace Foodee](./media/foodee-tutorial/config01.png)
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-   1. V **název zprostředkovatele identity** textové pole, zadejte název, jako je např: Azure.
-   1. Otevřete v poznámkovém bloku kód XML metadat federace, zkopírujte jeho obsah a vložte ji **kód XML METADAT zprostředkovatele identity** textového pole.
-   1. Klikněte na **Uložit**.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Foodee.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Foodee**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolíte B. Simon k udělení přístupu k Foodee použití Azure jednotného přihlašování.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Foodee**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
-
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-foodee-test-user"></a>Vytvoření Foodee testovacího uživatele
+### <a name="configure-foodee-sso"></a>Konfigurace jednotného přihlašování Foodee
 
-V této části se vytvoří uživatele služby serveru B. Simon ve Foodee. Foodee podporuje just-in-time zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Foodee, vytvoří se při pokusu o přístup k Foodee nový.
+1. Pokud chcete automatizovat konfiguraci v rámci Foodee, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-### <a name="test-sso"></a>Test SSO
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-Při výběru dlaždice Foodee na přístupovém panelu, můžete by měl být automaticky přihlášeni k Foodee, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit Foodee** , které vás přesměruje do aplikace Foodee. Odtud zadejte přihlašovací údaje správce, které se přihlásí k Foodee. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-4.
 
-## <a name="additional-resources"></a>Další materiály
+    ![Konfigurace instalace](common/setup-sso.png)
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+3. Pokud chcete nastavit Foodee ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Foodee společnosti jako správce a proveďte následující kroky:
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+4. Klikněte na **logo profil** v pravém horním rohu stránky a potom přejděte do **jednotného přihlašování** a proveďte následující kroky:
+
+   ![Konfigurace Foodee](./media/foodee-tutorial/config01.png)
+
+   1. Do textového pole **název IDP** zadejte název jako např. Azure.
+   1. V programu Poznámkový blok otevřete XML metadata federace, zkopírujte jeho obsah a vložte ho do textového pole **XML metadat IDP** .
+   1. Klikněte na **Uložit**.
+
+### <a name="create-foodee-test-user"></a>Vytvořit testovacího uživatele Foodee
+
+V této části se v Foodee vytvoří uživatel s názvem B. Simon. Foodee podporuje zřizování za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v Foodee neexistuje, vytvoří se nový, když se pokusíte o přístup k Foodee.
+
+## <a name="test-sso"></a>Test SSO 
+
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+
+Když na přístupovém panelu kliknete na dlaždici Foodee, měli byste se automaticky přihlásit k Foodee, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje informací:
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Foodee s Azure AD](https://aad.portal.azure.com/)
+

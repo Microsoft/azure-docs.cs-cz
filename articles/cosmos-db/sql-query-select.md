@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003516"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326793"
 ---
-# <a name="select-clause"></a>Klauzule SELECT
+# <a name="select-clause-in-azure-cosmos-db"></a>Klauzule SELECT v Azure Cosmos DB
 
 Každý dotaz se skládá z klauzule SELECT a volitelné klauzule [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je uveden výčet zdroje v klauzuli FROM a klauzule WHERE aplikuje filtr na zdroj, aby získal podmnožinu položek JSON. Klauzule SELECT potom v seznamu Select vyžádá projekty požadované hodnoty JSON.
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Vlastnosti nebo hodnota, která má být vybrána sada výsledků.  
+  Vlastnosti nebo hodnoty, které mají být vybrány pro sadu výsledků.  
   
 - `'*'`  
 
-  Určuje, že mají být načtena hodnota beze změn. Konkrétně, pokud je zpracovaných hodnota objekt, budou načítat všechny vlastnosti.  
+  Určuje, zda má být hodnota načtena bez provedení změn. Konkrétně Pokud je zpracována hodnota objektu, budou načteny všechny vlastnosti.  
   
 - `<object_property_list>`  
   
-  Určuje seznam vlastností, které se mají načíst. Každá vrácená hodnota bude objekt s vlastnostmi zadán.  
+  Určuje seznam vlastností, které mají být načteny. Každá vrácená hodnota bude objekt se zadanými vlastnostmi.  
   
 - `VALUE`  
 
-  Určuje, že hodnota JSON má být načtena namísto kompletního objektu JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota do objektu.  
+  Určuje, že se má místo úplného objektu JSON načíst hodnota JSON. To na rozdíl od `<property_list>` nezalomí předpokládané hodnoty do objektu.  
  
 - `DISTINCT`
   
@@ -56,29 +56,29 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](sql-query-scalar-expressions.md) podrobné informace.  
+  Výraz představující hodnotu, která má být vypočítána. Podrobnosti najdete v části [skalární výrazy](sql-query-scalar-expressions.md) .  
 
 ## <a name="remarks"></a>Poznámky
 
-`SELECT *` Syntaxe je platná pouze pokud klauzule FROM deklaroval přesně jeden alias. `SELECT *` poskytuje identitu projekce, které mohou být užitečné v případě potřeby žádná projekce. Vyberte * je platná pouze pokud je zadaná klauzule FROM a zavedl pouze jednoho vstupního zdroje.  
+Syntaxe `SELECT *` je platná pouze v případě, že klauzule FROM deklaruje přesně jeden alias. `SELECT *` poskytuje projekci identity, která může být užitečná, pokud není potřeba žádná projekce. PŘÍKAZ SELECT * je platný pouze v případě, že je zadána klauzule FROM a byl zaveden pouze jeden vstupní zdroj.  
   
-Obě `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být také vyjádřena pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
+@No__t-0 i `SELECT *` jsou "syntaktický cukr" a mohou být případně vyjádřeny pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   je ekvivalentní:  
+   je ekvivalentem:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   je ekvivalentní:  
+   je ekvivalentem:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Příklady
 
-Následující příklad dotazu Select se vrátí `address` `id` z `Families` jeho shody `AndersenFamily`:
+Následující příklad dotazu SELECT vrátí `address` od `Families`, jejichž hodnota `id` odpovídá `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -109,7 +109,7 @@ K vlastnostem můžete přistupovat pomocí operátoru vlastnosti v uvozovkách 
 
 ### <a name="nested-properties"></a>Vnořené vlastnosti
 
-Následující příklad projekty jsou dvě vnořené vlastnosti `f.address.state` a. `f.address.city`
+Následující příklad projektuje dvě vnořené vlastnosti `f.address.state` a `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Výsledky jsou:
     }]
 ```
 
-V předchozím příkladu musí klauzule SELECT vytvořit objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá název `$1`proměnné implicitního argumentu. Následující dotaz vrátí dvě proměnné implicitního argumentu `$1` : `$2`a.
+V předchozím příkladu je nutné, aby klauzule SELECT vytvořila objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá implicitní název proměnné argumentu `$1`. Následující dotaz vrátí dvě proměnné implicitního argumentu: `$1` a `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -170,8 +170,8 @@ Výsledky jsou:
     }]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Začínáme](sql-query-getting-started.md)
-- [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzule WHERE](sql-query-where.md)

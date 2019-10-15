@@ -1,23 +1,23 @@
 ---
-title: Používání aplikací v Azure blockchain Workbench Preview
+title: Používání aplikací v Azure blockchain Workbench
 description: Kurz týkající se použití kontraktů aplikací v Azure blockchain Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845139"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328959"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: Používání aplikací v Azure blockchain Workbench
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Kurz: používání aplikací v Azure blockchain Workbench
 
 Blockchain Workbench můžete použít k vytvoření a provedení akcí ve smlouvách. Můžete také zobrazit podrobnosti o kontraktu, například stav a historii transakcí.
 
@@ -29,7 +29,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Nasazená aplikace blockchain v blockchain Workbench. Další informace najdete [v tématu Vytvoření aplikace v blockchain v Azure blockchain Workbench](create-app.md) .
@@ -50,7 +50,7 @@ Pokud chcete vytvořit nový kontrakt, musíte být členem, který jste zadali 
 
     ![Tlačítko Nová smlouva](./media/use/contract-list.png)
 
-3. Zobrazí se podokno **nové smlouvy** . Zadejte hodnoty počátečních parametrů. Vyberte **Vytvořit**.
+3. Zobrazí se podokno **nové smlouvy** . Zadejte hodnoty počátečních parametrů. Vyberte **Create** (Vytvořit).
 
     ![Nové podokno smlouvy](./media/use/new-contract.png)
 
@@ -67,11 +67,11 @@ V závislosti na stavu, ve kterém se kontrakt nachází, můžou členové prov
 
     ![Podrobnosti o kontraktu](./media/use/contract-details.png)
 
-    | Section  | Popis  |
+    | Sekce  | Popis  |
     |---------|---------|
     | Stav | Zobrazí aktuální průběh v rámci fází smlouvy. |
     | Podrobnosti | Aktuální hodnoty kontraktu |
-    | Action | Podrobnosti o poslední akci |
+    | Akce | Podrobnosti o poslední akci |
     | Aktivita | Historie transakcí kontraktu |
     
 3. V části **Akce** vyberte **provést akci**.
@@ -87,7 +87,7 @@ V závislosti na stavu, ve kterém se kontrakt nachází, můžou členové prov
 
 7. Vyberte **provést akci** a akci spusťte.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Správa verzí aplikací v Azure blockchain Workbench](version-app.md)

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244168"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376288"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -436,7 +436,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-**musíte nejdřív Uložit změny cen, abyste mohli exportovat data o cenách.*
+*@no__t – 1You musí nejdřív Uložit změny cen, aby bylo možné exportovat data o cenách.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 

@@ -1,5 +1,5 @@
 ---
-title: Monitorování aplikací v Pythonu pomocí Azure Monitor | Microsoft Docs
+title: Monitorování aplikací v Pythonu pomocí Azure Monitor (Preview) | Microsoft Docs
 description: Poskytuje pokyny pro vedení OpenCensus Pythonu pomocí Azure Monitor
 services: application-insights
 keywords: ''
@@ -10,27 +10,27 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 manager: carmonm
-ms.openlocfilehash: 1316cf6808f6ccfc4165ad162c51421638b130be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ed61cb1bc88c48fe89c4a9390f04747749bd48c5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294005"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329486"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
+# <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a získání dat monitorování pro Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Potřebujete předplatné Azure.
+- Mít předplatné Azure.
 - Python by měl být nainstalovaný, v tomto článku se používá [Python 3.7.0](https://www.python.org/downloads/), i když starší verze budou pravděpodobně fungovat s menšími úpravami.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlaste se k Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource-in-azure-monitor"></a>Vytvořit prostředek Application Insights v Azure Monitor
 
@@ -40,15 +40,15 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
 
    ![Přidání prostředku Application Insights](./media/opencensus-python/0001-create-resource.png)
 
-   Zobrazí se konfigurační pole. k vyplnění vstupních polí použijte následující tabulku.
+   Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
     | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
-   | **Jméno**      | Globálně jedinečná hodnota | Název, který identifikuje monitorovanou aplikaci |
-   | **Skupina prostředků**     | MyResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights |
-   | **Poloha** | Východní USA | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
+   | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
+   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na **vytvořit**.
+2. Klikněte na **Vytvořit**.
 
 ## <a name="instrumenting-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace pomocí sady OpenCensus Python SDK pro Azure Monitor
 
@@ -63,7 +63,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
 
 2. Sada SDK využívá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor: trasování, metriky a protokoly. Podívejte [se na přehled datové platformy,](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) kde najdete další podrobnosti o těchto různých typech. Podle pokynů níže Zjistěte, jak odeslat tyto různé typy prostřednictvím tří vývozců.
 
-### <a name="trace"></a>Přehled
+### <a name="trace"></a>Trasování
 
 1. Nejdřív vygenerujte data trasování místně. V Pythonu nečinné nebo v editoru podle vlastního výběru zadejte následující kód.
 
@@ -233,7 +233,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
 
 4. Exportér pošle data metriky Azure Monitor v pevném intervalu, přičemž výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s jakoukoli hodnotou a časovým razítkem, která obsahuje, se budou posílat každý interval. Data najdete v části `customMetrics`.
 
-### <a name="logs"></a>Protokolování
+### <a name="logs"></a>Protokoly
 
 1. Nejdřív vygenerujeme některá místní data protokolu.
 
@@ -294,7 +294,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
 
 4. Exportér odešle data protokolu do Azure Monitor. Data najdete v části `traces`.
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Spustit monitorování v Azure Portal
+## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
 1. Nyní můžete znovu otevřít stránku **přehled** Application Insights v Azure Portal a zobrazit podrobnosti o aktuálně spuštěné aplikaci. Vyberte **živý stream metriky**.
 
@@ -345,8 +345,8 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
-* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md): Vytvořte testy, abyste se ujistili, že je váš web na webu viditelný.
-* [Inteligentní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md): tyto testy se spouštějí automaticky, takže nemusíte nic dělat, abyste je nastavili. Dozvíte se, jestli má vaše aplikace nezvyklé míry neúspěšných žádostí.
-* [Výstrahy metriky](../../azure-monitor/app/alerts.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Můžete je nastavit na vlastní metriky, které zadáváte do své aplikace.
+* [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
+* [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
+* [Výstrahy metriky](../../azure-monitor/app/alerts.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.

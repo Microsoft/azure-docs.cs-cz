@@ -1,6 +1,6 @@
 ---
-title: Azure prvek části uživatelského rozhraní | Dokumentace Microsoftu
-description: Popisuje element Microsoft.Common.Section uživatelského rozhraní pro Azure portal.
+title: Element uživatelského rozhraní oddílu Azure | Microsoft Docs
+description: Popisuje prvek uživatelského rozhraní Microsoft. Common. Section pro Azure Portal. Slouží k seskupení prvků na portálu pro nasazení spravovaných aplikací.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698896"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331653"
 ---
-# <a name="microsoftcommonsection-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.Section
-Ovládací prvek, který seskupuje jeden nebo více prvků pod nadpisem.
+# <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section – element uživatelského rozhraní
+Ovládací prvek, který seskupí jeden nebo více prvků pod záhlavím.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft. Common. Section](./media/managed-application-elements/microsoft.common.section.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -49,18 +49,18 @@ Ovládací prvek, který seskupuje jeden nebo více prvků pod nadpisem.
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `elements` musí mít alespoň jeden element a může mít všechny typy elementů s výjimkou `Microsoft.Common.Section`.
-- Tento prvek nepodporuje `toolTip` vlastnost.
+- `elements` musí mít alespoň jeden element a může mít všechny typy elementů kromě `Microsoft.Common.Section`.
+- Tento prvek nepodporuje vlastnost `toolTip`.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pro přístup k výstupu hodnoty prvků v `elements`, použijte [basics()](create-uidefinition-functions.md#basics) nebo [steps()](create-uidefinition-functions.md#steps) funkce a zápisu s tečkou:
+Chcete-li získat přístup k výstupním hodnotám prvků v `elements`, použijte funkce [Basic ()](create-uidefinition-functions.md#basics) nebo [kroky ()](create-uidefinition-functions.md#steps) a zápis tečky:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Prvky typu `Microsoft.Common.Section` mají samotné hodnoty žádný výstup.
+Prvky typu `Microsoft.Common.Section` nemají samotné žádné výstupní hodnoty.
 
-## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Další kroky
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

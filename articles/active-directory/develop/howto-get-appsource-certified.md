@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835211"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374097"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
@@ -33,15 +33,15 @@ K vypsání samostatné aplikace SaaS na AppSource musí aplikace přijmout jedn
 
 ## <a name="guides-and-code-samples"></a>Příručky a ukázky kódu
 
-Pokud se chcete dozvědět, jak integrovat aplikaci s Azure AD pomocí Open ID Connect, postupujte podle pokynů pro vývojáře a ukázky kódu v [příručce pro vývojáře Azure Active Directory](v1-overview.md#get-started "Začínáme se službou Azure AD pro vývojáře").
+Pokud se chcete dozvědět, jak integrovat aplikaci se službou Azure AD pomocí Open ID Connect, postupujte podle pokynů pro vývojáře a ukázky kódu v [příručce pro vývojáře Azure Active Directory](v1-overview.md#get-started "Začínáme se službou Azure AD pro vývojáře").
 
 ## <a name="multi-tenant-applications"></a>Víceklientské aplikace
 
 *Víceklientské aplikace* je aplikace, která přijímá přihlášení od uživatelů z jakékoli společnosti nebo organizace, která má Azure AD bez nutnosti samostatné instance, konfigurace nebo nasazení. AppSource doporučuje, aby aplikace implementovaly víceklientské prostředí pro zajištění bezplatné zkušební verze *jedním kliknutím* .
 
 Pokud chcete v aplikaci povolit více tenantů, postupujte takto:
-1. Nastavte `Multi-Tenanted` vlastnost na `Yes` informace o registraci vaší aplikace v [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení jsou aplikace vytvořené v Azure Portal nakonfigurované jako *[jeden tenant](#single-tenant-applications)* .
-1. Aktualizujte kód, aby odesílal požadavky na `common` koncový bod. To provedete tak, že aktualizujete `https://login.microsoftonline.com/common*`koncový bod z `https://login.microsoftonline.com/{yourtenant}` na.
+1. Nastavte vlastnost `Multi-Tenanted` na informace `Yes` v informacích o registraci vaší aplikace v [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení jsou aplikace vytvořené v Azure Portal nakonfigurované jako *[jeden tenant](#single-tenant-applications)* .
+1. Aktualizujte kód, aby odesílal požadavky na koncový bod `common`. Provedete to tak, že aktualizujete koncový bod z `https://login.microsoftonline.com/{yourtenant}` na `https://login.microsoftonline.com/common*`.
 1. U některých platforem, jako je například ASP .NET, je nutné také aktualizovat kód, aby přijímal více vystavitelů.
 
 Další informace o víceklientské architektuře najdete v tématu [jak se přihlásit k libovolnému uživateli Azure Active Directory (Azure AD) pomocí vzoru aplikace pro více tenantů](howto-convert-app-to-be-multi-tenant.md).
@@ -113,20 +113,20 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
 - Informace o tom, jak v AppSource zobrazit seznam aplikací SaaS, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners) .
 
 ## <a name="get-support"></a>Získat podporu
 
 Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
 
-Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označeny [ `[azure-active-directory]` pomocí `[appsource]`a ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme, abyste si nejdřív položili své dotazy na Stack Overflow a mohli si projít stávající problémy, abyste zjistili, jestli se někdo na svůj dotaz předá. Ujistěte se, že jsou vaše dotazy nebo komentáře označené [`[azure-active-directory]` a `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Následující komentáře vám poskytnou zpětnou vazbu a pomáhají nám zdokonalit a obsloužit náš obsah.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

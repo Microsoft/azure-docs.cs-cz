@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147366"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372712"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -77,7 +77,7 @@ Při směrování do úložiště objektů BLOB doporučujeme zařadit objekty B
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus fronty a Service Bus témata
 
-Service Bus front a témat používaných jako IoT Hub koncových bodů nesmí mít povoleny **relace** nebo je povolena **Detekce duplicitních** dat. Pokud je některá z těchto možností povolená, koncový bod se v Azure Portal jeví jako nedosažitelný.
+Service Bus front a témat používaných jako IoT Hub koncových bodů nesmí mít povoleny **relace** nebo je povolena **Detekce duplicitních** dat. Pokud je některá z těchto možností povolená, koncový bod se v Azure Portal jeví jako **nedosažitelný** .
 
 ### <a name="event-hubs"></a>Event Hubs
 
@@ -115,6 +115,12 @@ Kromě telemetrie zařízení umožňuje směrování zpráv také odesílat ud�
 
 Když vytvoříte novou trasu nebo upravíte existující trasu, měli byste otestovat dotaz trasy pomocí ukázkové zprávy. Můžete testovat jednotlivé trasy nebo testovat všechny trasy najednou a v průběhu testu nejsou směrovány žádné zprávy do koncových bodů. Pro testování je možné použít Azure Portal, Azure Resource Manager, Azure PowerShell a rozhraní příkazového řádku Azure CLI. Výsledky vám pomůžou zjistit, jestli se ukázková zpráva shodovala s dotazem, zpráva se neshodovala s dotazem, nebo nešlo spustit test, protože ukázková zpráva nebo syntaxe dotazu nejsou správné. Další informace najdete v tématu [testovací trasa](/rest/api/iothub/iothubresource/testroute) a [testování všech tras](/rest/api/iothub/iothubresource/testallroutes).
 
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Řazení záruk alespoň po doručení
+
+Služba směrování zpráv IoT Hub garantuje pořadí a alespoň jedno doručení zpráv do koncových bodů. To znamená, že může dojít k duplicitním zprávám a je možné znovu přenést řadu zpráv, které budou respektovat původní řazení zpráv. Pokud je například původní pořadí zpráv [1, 2, 3, 4], může se zobrazit sekvence zpráv, například [1, 2, 1, 2, 3, 1, 2, 3, 4]. Záruka objednávání znamená, že pokud se vám někdy zobrazí zpráva [1], vždy za ní následuje [2, 3, 4].
+
+Pro zpracování duplicit zpráv doporučujeme, abyste ve vlastnostech aplikace ve zprávě v bodě původu vyražení jedinečný identifikátor, což je obvykle zařízení nebo modul. Služba, která zprávy spotřebovává, může zpracovávat duplicitní zprávy pomocí tohoto identifikátoru.
+
 ## <a name="latency"></a>Latence
 
 Když směrujete zprávy o telemetrie typu zařízení-Cloud pomocí integrovaných koncových bodů, dojde po vytvoření první trasy k mírnému nárůstu koncové latence.
@@ -125,7 +131,7 @@ Ve většině případů je průměrné zvýšení latence menší než 500 ms. 
 
 IoT Hub poskytuje několik metrik vztahujících se ke směrování a koncovým bodům, které vám poskytnou přehled o stavu vašeho centra a zpráv odesílaných. Můžete zkombinovat informace z několika metrik a identifikovat tak hlavní příčinu problémů. Například použijte směrování metriky **: zprávy telemetrie vyřazené** nebo **D2C.** Prometric. disabled k určení počtu zpráv, které byly zahozeny, když neodpovídaly dotazům na některé z tras a záložní trasy byly zakázány. [IoT Hub metriky](iot-hub-metrics.md) uvádí všechny metriky, které jsou ve výchozím nastavení povolené pro vaši IoT Hub.
 
-Ke zjištění [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů můžete použít REST API [získat](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) stav koncových bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb v případě, že stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu Event Hubs můžete monitorovat **D2C. Endpoints. latence. eventHubs**. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.
+Ke zjištění [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb v případě, že stav koncového bodu je neaktivní nebo není v pořádku. Například pro typ koncového bodu Event Hubs můžete monitorovat **D2C. Endpoints. latence. eventHubs**. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.
 
 Pomocí **diagnostického diagnostického** protokolu v Azure monitor [nastavení diagnostiky](../iot-hub/iot-hub-monitor-resource-health.md)můžete sledovat chyby, ke kterým dojde během hodnocení směrovacího dotazu a stavu koncového bodu, jak je znázorněno IoT Hub, například když je koncový bod neaktivní. Tyto diagnostické protokoly lze odeslat do Azure Monitor protokolů, Event Hubs nebo Azure Storage pro vlastní zpracování.
 

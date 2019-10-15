@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 18c11198f6b81e72e371b3ab06ed3a7330078c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023787"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333144"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb
 
@@ -56,7 +56,7 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > Délka dotazu by měla být v rozmezí od 1 do 1, 0000 znaků a nesmí obsahovat "Search \*" nebo "Union \*".
+   > Délka dotazu by měla být mezi 1 a 1 000 znaky a nesmí obsahovat "Search \*" nebo "Union \*".
 
     1. V části **plánování dotazů**nastavte následující parametry:
 

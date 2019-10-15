@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129134"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330849"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikujte a řešte problémy v prostředí Time Series Insights.
 
@@ -34,17 +34,17 @@ V [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina: zdrojová data události nejsou ve formátu JSON.
 
-Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
 * Pro službu IoT Hub v Azure IoT Hub musíte zadat klíč, který má oprávnění **služby Connect** . Obě zásady **iothubowner** nebo **služby** budou fungovat, protože obě mají oprávnění **k připojení ke službě** .
 
-   [![Oprávnění služby IoT Hub Connect](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [@no__t – oprávnění k připojení služby centra 1IoT](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* V případě centra událostí v Azure Event Hubs musíte zadat klíč, který má oprávnění k **naslouchání** . Obě zásady **pro čtení** nebo **správu** budou fungovat, protože obě mají oprávnění k naslouchání.
+* V případě centra událostí v Azure Event Hubs musíte zadat klíč, který má oprávnění k **naslouchání** . Obě zásady **pro čtení** nebo **správu** budou fungovat, protože obě mají oprávnění k **naslouchání** .
 
-   [![Oprávnění k naslouchání centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [@no__t – oprávnění k naslouchání centra 1Event](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Příčina C: zadaná skupina příjemců není výhradně Time Series Insights
 
@@ -69,7 +69,7 @@ Omezení omezování se vynutilo na základě typu SKU a kapacity prostředí. V
 
 Následující obrázek ukazuje Time Series Insights prostředí, které má SKU S1 a kapacitu 3. Může to mít až 3 000 000 událostí za den.
 
-[![Aktuální kapacita SKU prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[aktuální kapacita @no__t 1Environment SKU](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Předpokládejme například, že prostředí přijímá zprávy z centra událostí. Frekvence denních přenosů je ~ 67 000 zpráv. Tato rychlost překládá na přibližně 46 zpráv každou minutu. 
 
@@ -109,12 +109,12 @@ První záhlaví sloupce by mělo být název vlastnosti časového razítka. Ve
 
 Neměly by se zobrazovat tyto hodnoty:
 
-- *(abc)* : Indikuje, že Time Series Insights čte datové hodnoty jako řetězce.
-- *Ikona kalendáře*: Indikuje, že Time Series Insights čte datovou hodnotu jako *DateTime*.
-- *#* : Indikuje, že Time Series Insights čte hodnoty dat jako celé číslo.
+- *(ABC)* : označuje, že Time Series Insights čte datové hodnoty jako řetězce.
+- *Ikona kalendáře*: označuje, že Time Series Insights čte datovou hodnotu jako *DateTime*.
+- *#* : označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud potřebujete pomoc, spusťte konverzaci na [fóru MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+- Přečtěte si o [tom, jak zmírnit latenci v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- V případě možností podpory s asistencí použijte [podporu Azure](https://azure.microsoft.com/support/options/).
+- Naučte [se škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).

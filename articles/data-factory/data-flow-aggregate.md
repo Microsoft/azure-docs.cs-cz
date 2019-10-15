@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1dcc28313d1d8e59024fbc70738567cb59585d20
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026971"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326462"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat 
 
@@ -44,6 +44,19 @@ Agregované transformace jsou úzce rovnocenné dotazům na agregační výběr 
 * Použití agregační funkce k zahrnutí tohoto dalšího sloupce, například Last () nebo First ()
 * Znovu se připojte ke sloupcům před agregací pomocí [vzoru vlastního spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
+## <a name="data-flow-script"></a>Skript toku dat
+
+Agregovaný(media/data-flow/aggdfs1.png "skript toku dat") pro ![skript toku dat]
+
+* ```MoviesYear```: odvozený sloupec definující rok a sloupce názvu
+* ```AvgComedyRatingByYear```: agregovaná transformace pro průměrné hodnocení kohodnot v seskupení podle roku
+* ```avgrating```: název nového sloupce, který se vytváří, aby obsahoval agregovanou hodnotu
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
+```
+  
 ## <a name="next-steps"></a>Další kroky
 
 * Definování agregace na základě okna pomocí [transformace okna](data-flow-window.md)

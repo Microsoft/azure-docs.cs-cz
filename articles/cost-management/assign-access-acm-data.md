@@ -1,21 +1,21 @@
 ---
-title: Přiřadit přístup k Azure Cost Management datům | Microsoft Docs
+title: Přiřazení přístupu k datům Azure Cost Management
 description: Tento článek vás provede přiřazením oprávnění k Azure Cost Management dat pro různé obory přístupu.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695399"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375134"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům Cost Management
 
@@ -63,6 +63,8 @@ Chcete-li zobrazit nákladová data pro ostatní předplatná Azure, musí mít 
 - Účet Azure
 - Skupina pro správu
 - Skupina prostředků
+
+Po připojení zákazníků k zákaznickým smlouvám Microsoftu jsou k dispozici různé obory. Zákazníci CSP potom můžou používat funkce Cost Management, když je povolí jejich partner CSP. Další informace najdete v tématu [Začínáme s Azure cost management pro partnery](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k nákladům na portálu EA
 

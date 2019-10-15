@@ -1,8 +1,6 @@
 ---
 title: Vytvoření první funkce v Azure pomocí sady Visual Studio
 description: Vytvořte v sadě Visual Studio funkci Azure Function aktivovanou protokolem HTTP a publikujte ji.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 keywords: azure functions, functions, event processing, compute, serverless architecture
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096572"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329498"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
@@ -27,7 +25,7 @@ V tomto článku se naučíte, jak pomocí sady Visual Studio 2019 místně vytv
 
 ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli tento kurz dokončit, musíte nejdřív nainstalovat [Visual Studio 2019](https://azure.microsoft.com/downloads/). Ujistěte se, že je nainstalovaná také úloha **vývoj pro Azure** .
 
@@ -39,7 +37,7 @@ Abyste mohli tento kurz dokončit, musíte nejdřív nainstalovat [Visual Studio
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. Atribut metody nastaví název funkce, která je ve výchozím nastavení nastavena `HttpTrigger`. `FunctionName` `HttpTrigger` Atribut určuje, že funkce je aktivována požadavkem http. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu.
+Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. Atribut `FunctionName` v metodě nastaví název funkce, která je ve výchozím nastavení `HttpTrigger`. Atribut `HttpTrigger` určuje, že funkce je aktivována požadavkem HTTP. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu.
 
 Můžete rozšířit možnosti vaší funkce pomocí vstupní a výstupní vazby, a to použitím příslušných atributů pro metodu. Další informace najdete v části [Triggery a vazby](functions-dotnet-class-library.md#triggers-and-bindings) v [referenčních informacích pro vývojáře v jazyce C# v Azure Functions](functions-dotnet-class-library.md).
 

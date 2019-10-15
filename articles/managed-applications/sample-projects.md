@@ -1,6 +1,6 @@
 ---
 title: Ukázkové projekty spravované aplikace Azure | Microsoft Docs
-description: Shrnuje ukázkové projekty dostupné pro spravované aplikace Azure.
+description: Poskytuje souhrn ukázkových projektů, které jsou k dispozici pro Azure Managed Applications.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4b046b25e81e7b90e71ce57aea17fab3e80e52f9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 8c041777f335f3ba2d6520db2bf8d5a6d1796ef1
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309159"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332595"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Ukázkové projekty pro spravované aplikace Azure
 

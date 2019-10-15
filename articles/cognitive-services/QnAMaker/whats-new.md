@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5327b01fdc3d350c547a2992341102832c0486c4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0ce44429c7222e4eaa0ef523dadf0fa08723e975
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975426"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327901"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -24,6 +24,10 @@ Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, 
 ## <a name="release-notes"></a>Poznámky k verzi 
 
 Přečtěte si, co je nového v QnA Maker.
+
+### <a name="october-2019"></a>Říjen 2019
+
+* [Explicitně se nastavuje jazyk](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) pro všechny znalostní báze ve službě QnA maker. 
 
 ### <a name="september-2019"></a>Září 2019
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030674"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330642"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 
@@ -30,7 +30,7 @@ K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, ab
 
 Po vytvoření účtu testovacího prostředí povolte v účtu testovacího prostředí následující nastavení: 
 
-| Nastavení účtu testovacího prostředí | Pokynů |
+| Nastavení účtu testovacího prostředí | Pokyny |
 | ----------- | ------------ |  
 | Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) . | 
 
@@ -38,15 +38,15 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
-| Velikost virtuálního počítače (VM) | Nejmenší  |
+| Velikost virtuálního počítače (VM) | Malé  |
 | Image virtuálního počítače | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
-| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp). </p>|
+| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Instalace desktopu a xrdp
 V imagi [LTS serveru Ubuntu server 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
 
-## <a name="install-ruby"></a>Nainstalovat Ruby
+## <a name="install-ruby"></a>Instalace Ruby
 Ruby je open source dynamický jazyk, který se dá kombinovat s bash skripty. V této části se dozvíte, jak pomocí `apt-get` nainstalovat nejnovější verzi [Ruby](https://www.ruby-lang.org/).
 
 1. Nainstalujte aktualizace spuštěním následujících příkazů:
@@ -80,7 +80,7 @@ V této části se dozvíte, jak nainstalovat několik textových editorů. Gedi
 
     Šablona je nyní aktualizována a má programovací jazyk i vývojové nástroje potřebné k dokončení testovacího prostředí. Image šablony se teď dají publikovat do testovacího prostředí. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.  
 
-## <a name="cost"></a>Ze 
+## <a name="cost"></a>Náklady 
 Pokud byste chtěli odhadnout náklady na toto testovací prostředí, můžete použít následující příklad:
  
 Pro třídu 25 studentů s 20 hodinami plánovaného času třídy a 10 hodin pro domácí úlohy nebo přiřazení by cena za testovací prostředí byla: 
@@ -95,10 +95,10 @@ Tento článek vás vás provedl postupem, jak vytvořit testovací prostředí 
 ## <a name="next-steps"></a>Další kroky
 Další kroky jsou běžné pro nastavení testovacího prostředí:
 
-- [Přidat uživatele](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Nastavit kvótu](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+- [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Odkazy na registraci e-mailu studentům](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users). 
 
 
 

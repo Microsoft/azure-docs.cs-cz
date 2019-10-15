@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 26652a956f9f50f82f462c564d6daf0dc37b0722
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254962"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329282"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
@@ -219,7 +219,7 @@ Další informace o adrese a hesle účtu najdete v tématu [ethereem Account](c
 
 ## <a name="get-the-contract-abi"></a>Získat kontrakt ABI
 
-Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracovat s inteligentní smlouvou. Můžete získat kontrakt ABI pomocí Azure blockchain Development Kit pro Ethereem. Můžete ho také získat ze souboru metadat kontraktu v kompilátoru hustoty.
+Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracovat s inteligentní smlouvou. Můžete získat kontrakt ABI pomocí Azure blockchain Development Kit pro Ethereem. Můžete ho také získat ze souboru metadat kontraktu vytvořeného kompilátorem hustoty.
 
 **Používání vývojové sady:**
 

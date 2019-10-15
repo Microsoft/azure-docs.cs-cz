@@ -1,6 +1,6 @@
 ---
 title: Pochopení objektových modelů a grafu prostorové logiky Azure pro digitální vlákna | Microsoft Docs
-description: Použití digitálních vláken Azure k modelování vztahů mezi lidmi, místy a zařízeními
+description: Využijte novou službu Azure Digital Twins k modelování vztahů mezi lidmi, místy a zařízeními
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950014"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372617"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
@@ -54,7 +54,7 @@ Další kategorie objektů jsou:
 - **Shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou zprávu telemetrie.
 - **Koncové body** jsou umístění, kde se dají směrovat zprávy telemetrie a události digitálních vláken, například `Event Hub`, `Service Bus` a `Event Grid`.
 
-## <a name="spatial-intelligence-graph"></a>Graf prostorové Intelligence
+## <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
 Prostorový graf je hierarchický graf prostorů, zařízení a osob definovaných v objektovém modelu digitálních vláken. Prostorový graf podporuje dědičnost, filtrování, procházení, škálovatelnost a rozšiřitelnost. Pomocí kolekce rozhraní REST API můžete spravovat prostorový graf a pracovat s nimi.
 
@@ -78,14 +78,14 @@ Po nasazení digitálních vláken z [Azure Portal](https://portal.azure.com)se 
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | Nahradit |
+| Name (Název) | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitálního vlákna |
 | YOUR_LOCATION | Které oblasti serveru vaše instance hostuje |
 
  V tomto obrázku se zobrazí úplný formát adresy URL.
 
-(![Rozhraní API pro správu portálu Digital vlákna](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/koncepty/Digital-Twins-Spatial-Graph-Management-API-URL. png # Lightbox)
+[@no__t – rozhraní API pro správu 1Digitalch vláken](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Další informace o tom, jak používat grafy prostorových informací, najdete v tématu rozhraní API pro správu digitálních vláken Azure vás zajímá ve verzi Preview.
 

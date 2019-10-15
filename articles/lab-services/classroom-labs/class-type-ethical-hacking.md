@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028669"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330673"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
 V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
@@ -141,7 +141,7 @@ Tento článek vás vás provedl postupem, jak vytvořit testovací prostředí 
 Další kroky jsou běžné pro nastavení testovacího prostředí:
 
 - [Přidání uživatelů](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Nastavit kvótu](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Nastavit kvótu](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Nastavit plán](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Odkazy na registraci e-mailu studentům](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Odkazy na registraci e-mailu studentům](how-to-configure-student-usage.md#send-invitations-to-users). 
 

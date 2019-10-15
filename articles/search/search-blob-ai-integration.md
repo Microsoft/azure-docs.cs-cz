@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 2513825fcb275aeb3c4f0ca49ff5f2a6bd9441f0
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 5dc81f6e35f86c6dee77d44ff5c59c2657434a37
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303012"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376271"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>Použití AI k pochopení dat objektů BLOB
 
@@ -48,7 +48,7 @@ Až přidáte Azure Search do svého účtu úložiště, můžete postupovat po
 
 V následujících částech prozkoumáme více komponent a konceptů.
 
-## <a name="use-blob-indexers"></a>Použití indexerů objektů BLOB
+## <a name="begin-with-blob-indexers"></a>Začátek s indexery objektů BLOB
 
 Rozšíření AI je doplněk k kanálu indexování a v Azure Search jsou tyto kanály postaveny nad *indexerem*. Indexer je podslužba s podporou zdrojů dat, která je vybavená interní logikou pro vzorkování dat, čtení dat metadat, načítání dat a serializaci dat z nativních formátů do dokumentů JSON pro následné importy. Indexery se často používají pro import, oddělené od AI, ale pokud chcete vytvořit kanál pro rozšíření AI, budete potřebovat indexer a dovednosti, abyste s ním mohli přejít. V této části se zaměříme na samotného indexeru.
 
@@ -76,30 +76,33 @@ Integrované dovednosti, které poskytuje Cognitive Services, vyžadují klíč 
 
 Pokud používáte pouze vlastní dovednosti a integrované obslužné pomůcky, neexistují žádné závislosti ani náklady související s Cognitive Services.
 
-## <a name="order-of-operations"></a>Pořadí operací
+<!-- ## Order of operations
 
-Nyní jsme pokryli indexery, extrakci obsahu a dovednosti, můžeme se blíže podívat na mechanismy kanálu a pořadí operací.
+Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
 
-Dovednosti je složení jedné nebo více dovedností. V případě, že je zapojeno více dovedností, dovednosti funguje jako sekvenční kanál a vytváření grafů závislostí, kde výstup z jedné dovednosti se zadává do jiného. 
+A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
 
-Například vzhledem k velkému objektu BLOB nestrukturovaného textu může ukázkové pořadí operací pro text Analytics být následující:
+For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
 
-1. K rozdělení objektu BLOB na menší části použijte rozdělovač textu.
-1. Pomocí Rozpoznávání jazyka můžete zjistit, jestli je obsah v angličtině nebo v jiném jazyce.
-1. Pomocí překladače textu můžete získat veškerý text do společného jazyka.
-1. Spusťte rozpoznávání entit, Extrakce klíčových frází nebo Analýza mínění na blocích textu. V tomto kroku se vytvoří a naplní nová pole. Entitami mohou být umístění, lidé, organizace a kalendářní data. Klíčové fráze jsou krátké kombinace slov, která se jeví jako patřící dohromady. Mínění Skore je hodnocení pro Continuum negativu (0) do kladného (1) mínění.
-1. Pomocí fúze textu můžete dokument znovu vytvořit z menších bloků dat.
+1. Use Text Splitter to break the blob into smaller parts.
+1. Use Language Detection to determine if content is English or another language.
+1. Use Text Translator to get all text into a common language.
+1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
+1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
+## <a name="how-to-use-ai-enriched-content"></a>Jak používat obsah obohacený AI
 
-## <a name="outputs-and-use-cases"></a>Výstupy a případy použití
+Výstupem rozšíření AI je index vyhledávání v Azure Search nebo znalostní báze v Azure Storage.
 
-Obohacený dokument na konci kanálu se od původní vstupní verze liší přítomností dalších polí obsahujících nové informace, které byly extrahovány nebo generovány během obohacení. V takovém případě můžete pracovat s kombinací původní a vytvořené hodnoty několika způsoby.
+V Azure Search se index vyhledávání používá pro interaktivní zkoumání pomocí bezplatného textu a filtrovaných dotazů v klientské aplikaci. Obohacené dokumenty vytvořené prostřednictvím AI jsou formátovány ve formátu JSON a indexované stejným způsobem jako všechny dokumenty jsou indexovány v Azure Search a využívají všechny výhody, které indexer poskytuje. Například při indexování odkazuje indexer objektů blob na konfigurační parametry a nastavení, aby bylo možné využít všechna mapování polí nebo změnu logiky detekce. Tato nastavení jsou plně dostupná pro pravidelné indexování a rozšířené úlohy AI. Po indexování, když je obsah uložený v Azure Search, můžete vytvářet bohatý dotazy a výrazy filtru, které vám pomůžou pochopit obsah.
 
-Výstupní formuláře jsou vyhledávací index v Azure Search nebo znalostní báze v Azure Storage.
+V Azure Storage má znalostní báze dva manifesty: kontejner objektů BLOB nebo tabulky v úložišti tabulek. 
 
-V Azure Search jsou obohacené dokumenty ve formátu JSON a dají se indexovat stejným způsobem jako všechny dokumenty, a to s výhodami, které indexer poskytuje. Pole z obohacených dokumentů jsou mapována na schéma indexu. Při indexování odkazuje indexer objektů blob na konfigurační parametry a nastavení, aby bylo možné využít všechna mapování polí, nebo změnit logiku detekce, kterou jste určili. Po indexování, když je obsah uložený v Azure Search, můžete vytvářet bohatý dotazy a výrazy filtru, které vám pomůžou pochopit obsah.
++ Kontejner objektů BLOB zachycuje obohacené dokumenty v celém rozsahu, což je užitečné, pokud chcete předávat data do jiných procesů. 
 
-V Azure Storage má znalostní báze dva manifesty: kontejner objektů BLOB nebo tabulky v úložišti tabulek. Kontejner objektů BLOB zachycuje obohacené dokumenty v celém rozsahu, což je užitečné, pokud chcete předávat data do jiných procesů. Na rozdíl od toho může tabulka úložiště přizpůsobit fyzické projekce obohacených dokumentů. Můžete vytvořit řezy nebo vrstvy obohacených dokumentů, které obsahují nebo vylučují určité části. Pro účely analýzy v Power BI se tabulky ve službě Azure Table Storage stanou zdrojem dat pro další vizualizaci a průzkum.
++ Na rozdíl od toho může tabulka úložiště přizpůsobit fyzické projekce obohacených dokumentů. Můžete vytvořit řezy nebo vrstvy obohacených dokumentů, které obsahují nebo vylučují určité části. Pro účely analýzy v Power BI se tabulky ve službě Azure Table Storage stanou zdrojem dat pro další vizualizaci a průzkum.
+
+Obohacený dokument na konci kanálu se od původní vstupní verze liší přítomností dalších polí obsahujících nové informace, které byly extrahovány nebo generovány během obohacení. V takovém případě můžete pracovat s kombinací původního a vytvořeného obsahu bez ohledu na to, jakou výstupní strukturu používáte.
 
 ## <a name="next-steps"></a>Další kroky
 

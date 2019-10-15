@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 10/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 036322e73470ad4aa25de03e95c506e9f04496d8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670984"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374274"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "71670984"
 V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure CLI.
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem se šifrováním Azure Storage vyžaduje, aby Trezor klíčů měl nakonfigurované dvě požadované vlastnosti, **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyžaduje, aby byly v trezoru klíčů nastaveny dvě vlastnosti, **obnovitelné odstranění** a **nemazatelné**. Tyto vlastnosti nejsou ve výchozím nastavení povolené. Pokud chcete tyto vlastnosti povolit, použijte PowerShell nebo rozhraní příkazového řádku Azure CLI.
 > Podporují se jenom klíče RSA a velikost klíče 2048.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Přiřazení identity k účtu úložiště

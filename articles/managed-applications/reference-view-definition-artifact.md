@@ -1,24 +1,24 @@
 ---
 title: Referenční informace o artefaktu definice zobrazení spravované aplikace Azure
-description: Tento článek je odkazem na artefakt definice zobrazení.
+description: Poskytuje příklad artefaktu definice zobrazení pro Azure Managed Applications. Název souboru je položku galerie. JSON.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: e60f26fe0a7144d768bac020d62c61cb92594914
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1f56f6c9c519bd29423d92a8dc8b8ce5904b523c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336540"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332634"
 ---
-# <a name="reference-view-definition-artifact"></a>Další informace: Zobrazení definičních artefaktů
+# <a name="reference-view-definition-artifact"></a>Reference: artefakt definice zobrazení
 
 Tento článek je odkazem na artefakt *položku galerie. JSON* v Azure Managed Applications. Další informace o konfiguraci zobrazení pro vytváření obsahu najdete v tématu [artefakt definice zobrazení](concepts-view-definition.md).
 
-## <a name="view-definition"></a>Zobrazit definici
+## <a name="view-definition"></a>Zobrazení definice
 
 Následující JSON ukazuje příklad souboru *položku galerie. JSON* pro Azure Managed Applications:
 
@@ -87,8 +87,8 @@ Následující JSON ukazuje příklad souboru *položku galerie. JSON* pro Azure
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
-- [Odkaz Artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
-- [Odkaz Artefakt šablony nasazení](reference-main-template-artifact.md)
+- [Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
+- [Referenční dokumentace: artefakt prvků uživatelského rozhraní](reference-createuidefinition-artifact.md)
+- [Referenční dokumentace: artefakt šablony nasazení](reference-main-template-artifact.md)

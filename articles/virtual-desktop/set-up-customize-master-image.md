@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710182"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330835"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavního image virtuálního pevného disku
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
 V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevného disku (VHD) pro nahrání do Azure, včetně postupu při vytváření virtuálních počítačů a instalaci softwaru na tyto počítače. Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Příprava softwaru a instalace
 
-Tato část popisuje, jak připravit a nainstalovat FSLogix, Windows Defender a další běžné aplikace. 
+V této části se dozvíte, jak připravit a instalovat FSLogix a Windows Defender a také některé základní možnosti konfigurace pro aplikace a registr vašich imagí. 
 
-Pokud na svém VIRTUÁLNÍm počítači instalujete Office 365 ProPlus a OneDrive, přečtěte si téma [instalace Office na hlavním obrázku VHD](install-office-on-wvd-master-image.md). Pomocí odkazu v dalších krocích tohoto článku se vraťte k tomuto článku a dokončete proces hlavního virtuálního pevného disku.
+Pokud na svém VIRTUÁLNÍm počítači instalujete Office 365 ProPlus a OneDrive, přejděte k instalaci [Office na hlavní disk VHD](install-office-on-wvd-master-image.md) a postupujte podle pokynů pro instalaci aplikací. Až budete hotovi, vraťte se k tomuto článku.
 
 Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujeme je nainstalovat po dokončení pokynů v této části.
+
+### <a name="set-up-user-profile-container-fslogix"></a>Nastavení kontejneru profilu uživatele (FSLogix)
+
+Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
+
+### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
+
+Pokud je ve virtuálním počítači nakonfigurovaný Windows Defender, ujistěte se, že je nakonfigurované tak, aby během přílohy nekontroloval celý obsah souborů VHD a VHDX.
+
+Tato konfigurace odstraní jenom kontrolu souborů VHD a VHDX během přílohy, ale neovlivní kontrolu v reálném čase.
+
+Podrobnější pokyny týkající se konfigurace Windows Defenderu na Windows serveru najdete v tématu [konfigurace vyloučení antivirové ochrany v programu Windows Defender na Windows serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+
+Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení určitých souborů ze skenování, najdete v tématu [Konfigurace a ověření vyloučení na základě přípony souboru a umístění složky](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="disable-automatic-updates"></a>Zakázat automatické aktualizace
 
@@ -88,20 +102,6 @@ Spusťte tento příkaz a určete tak počáteční rozložení počítačů s W
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>Nastavení kontejneru profilu uživatele (FSLogix)
-
-Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
-
-### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
-
-Pokud je ve virtuálním počítači nakonfigurovaný Windows Defender, ujistěte se, že je nakonfigurované tak, aby během přílohy nekontroloval celý obsah souborů VHD a VHDX.
-
-Tato konfigurace odstraní jenom kontrolu souborů VHD a VHDX během přílohy, ale neovlivní kontrolu v reálném čase.
-
-Podrobnější pokyny týkající se konfigurace Windows Defenderu na Windows serveru najdete v tématu [konfigurace vyloučení antivirové ochrany v programu Windows Defender na Windows serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
-
-Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení určitých souborů ze skenování, najdete v tématu [Konfigurace a ověření vyloučení na základě přípony souboru a umístění složky](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="configure-session-timeout-policies"></a>Konfigurace zásad časového limitu relace
 

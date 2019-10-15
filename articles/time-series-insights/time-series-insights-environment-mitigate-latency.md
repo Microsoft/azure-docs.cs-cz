@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123789"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332984"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
 
@@ -44,15 +44,15 @@ Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způ
 
 1. V Azure Portal vyberte **výstrahy**.
 
-   [![Generoval](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [@no__t – 1Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Zobrazí se panel **vytvořit pravidlo** . Vyberte **Přidat** pod **podmínkou**.
 
-   [![Přidat výstrahu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [Výstraha @no__t – 1Add](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Dále nakonfigurujte přesné podmínky pro logiku signálu.
 
-   [![Konfigurovat logiku signálu](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [@no__t – logika signálu 1Configure](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Odtud můžete nakonfigurovat výstrahy pomocí některých z těchto podmínek:
 
@@ -62,29 +62,29 @@ Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způ
    |**Příchozí přenos dat přijal neplatné zprávy.**     | Počet neplatných zpráv přečtených ze všech zdrojů událostí Azure Event Hubs nebo Azure IoT Hub.      |
    |**Příchozí zprávy příchozího přenosu dat**   | Počet zpráv načtených ze všech Event Hubs nebo zdrojů událostí centra IoT.        |
    |**Uložené bajty příchozího přenosu dat**     | Celková velikost uložených událostí a dostupných pro dotaz Velikost je vypočítána pouze v hodnotě vlastnosti.        |
-   |**Uložené události** příchozího přenosu dat    |   Počet sloučených událostí uložených a dostupných pro dotaz      |
-   |**Prodleva při příjmu příchozího přenosu zpráv**   |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
-   |**Prodleva počtu přijatých zpráv příchozího** přenosu dat   |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
+   |**Uložené události** příchozího přenosu     |   Počet sloučených událostí uložených a dostupných pro dotaz      |
+   |**Časová prodleva přijatých zpráv příchozího** přenosu    |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
+   |**Prodleva počtu zpráv přijatého příchozího** přenosu    |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
 
    Vyberte **Done** (Hotovo).
 
 1. Po nakonfigurování požadované logiky signálu si prohlédněte zvolené pravidlo výstrahy vizuálně.
 
-   [![Příchozího přenosu dat](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [@no__t – 1Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Omezování a správa pro příchozí přenosy
 
-* Pokud jste omezili omezení, zobrazí se hodnota *prodlevy přijatých zpráv příchozího*přenosu dat, která vás bude informovat o tom, kolik sekund za vaší TSI vychází ze skutečného času, kdy zpráva narazí na zdroj události (s výjimkou doby indexování appx. 30-60 sekund).  
+* Pokud se omezíte, zobrazí se hodnota *prodlevy přijatých zpráv příchozího*přenosu dat, která informuje o tom, kolik sekund má vaše prostředí Time Series Insights od skutečné doby, kdy zpráva narazí na zdroj události (s výjimkou času indexování. appx. 30-60 sekund).  
 
   *Prodleva počtu přijatých zpráv příchozího* přenosu dat by měla mít také hodnotu, která vám umožní určit, kolik zpráv je za vás.  Nejjednodušší způsob, jak se získat, je zvýšit kapacitu vašeho prostředí na velikost, která vám umožní překonat rozdíl.  
 
-  Pokud třeba máte prostředí s jednou jednotkou S1 a vidíte, že se jedná o prodlevu zprávy 5 000 000, mohli byste velikost svého prostředí zvětšit na šest jednotek po dobu jednoho dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
+  Pokud například zjistíte, že vaše prostředí S1 zobrazuje prodlevu 5 000 000 zpráv, můžete zvýšit velikost svého prostředí na šest jednotek po dobu okolního dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
 
 * Další možností je nastavit upozornění na **uložené události** příchozího přenosu > = mezní hodnota mírně pod celkovou kapacitou prostředí po dobu 2 hodin.  Tato výstraha vám pomůže pochopit, jestli máte neustále na kapacitě, což znamená vysokou pravděpodobnost latence. 
 
   Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za minutu příchozího přenosu dat), můžete nastavit upozornění na **uložené události** příchozího přenosu dat pro > = 1900 události na 2 hodiny. Pokud tuto prahovou hodnotu trvale obdržíte, a proto aktivujete upozornění, pravděpodobně jste v souladu se zřízením.  
 
-* Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy** s příchozími zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Time Series Insights jsou nejspíš omezené.
+* Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy s příchozími** zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Time Series Insights jsou nejspíš omezené.
 
 ## <a name="improving-performance"></a>Zlepšení výkonu
 
@@ -92,8 +92,8 @@ Aby se snížila latence nebo dochází k latenci, nejlepším způsobem, jak ho
 
 Latenci a omezování můžete zabránit tím, že správně nakonfigurujete prostředí pro množství dat, která chcete analyzovat. Další informace o tom, jak přidat kapacitu do svého prostředí, najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další kroky pro řešení potíží najdete [v Time Series Insights prostředí diagnostiky a řešení problémů](time-series-insights-diagnose-and-solve-problems.md).
+- Přečtěte si informace o [diagnostice a řešení problémů v prostředí Time Series Insights](time-series-insights-diagnose-and-solve-problems.md).
 
-- Pokud potřebujete další pomoc, spusťte konverzaci na [fóru MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Můžete se také obrátit na [podporu Azure](https://azure.microsoft.com/support/options/) s podporou možností podpory.
+- Naučte [se škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).

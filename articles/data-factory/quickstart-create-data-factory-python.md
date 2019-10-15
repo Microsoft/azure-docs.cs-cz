@@ -1,5 +1,5 @@
 ---
-title: Vytvoření datové továrny Azure pomocí Pythonu | Microsoft Docs
+title: 'Rychlý Start: vytvoření Azure Data Factory pomocí Pythonu'
 description: Vytvořte datovou továrnu Azure ke zkopírování dat z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.openlocfilehash: 4d3b7ce56863d82ed8322b937a290c52774677d2
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 599d1c3cee08bdc8e6e2f663c14244658e0f14e2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272284"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326325"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý start: Vytvoření datové továrny a kanálu pomocí Pythonu
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí Pythonu
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -29,12 +30,12 @@ Azure Data Factory je cloudová služba pro integraci dat umožňující vytvá�
 
 Tento rychlý start popisuje použití Pythonu k vytvoření datové továrny Azure. Kanál v této datové továrně kopíruje data z jedné složky do jiné složky v úložišti objektů blob Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** a **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
-* **V Azure Active Directory vytvořte aplikaci** s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
 
 ### <a name="create-and-upload-an-input-file"></a>Vytvoření a nahrání vstupního souboru
 
@@ -106,7 +107,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
     ```
-3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+3. Do metody **Main** přidejte následující kód, který vytvoří instanci třídy DataFactoryManagementClient. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu. Proměnnou **subscription_id** nastavte na ID vašeho předplatného Azure. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```python
     def main():
@@ -172,7 +173,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jím
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (input)
@@ -185,11 +186,11 @@ Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azu
     print_item(ds)
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
+### <a name="create-a-dataset-for-sink-azure-blob"></a>Vytvoření datové sady pro Azure Blob jímky
 
 Do metody Main přidejte následující kód, který vytvoří datovou sadu objektů blob Azure. Informace o vlastnostech datové sady objektů blob Azure najdete v článku [Konektor Azure Blob](connector-azure-blob-storage.md#dataset-properties).
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
+Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku.
 
 ```python
     # Create an Azure blob dataset (output)

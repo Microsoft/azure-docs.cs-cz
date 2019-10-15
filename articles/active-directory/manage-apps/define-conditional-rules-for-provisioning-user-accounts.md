@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70812682"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
@@ -65,7 +65,7 @@ Podle tohoto filtru oboru musí uživatelé splnit následující kritéria, kte
 Filtry oborů se konfigurují jako součást mapování atributů pro jednotlivé konektory zřizování uživatelů Azure AD. Následující postup předpokládá, že jste již nastavili Automatické zřizování pro [jednu z podporovaných aplikací](../saas-apps/tutorial-list.md) a přidáte do ní filtr oborů.
 
 ### <a name="create-a-scoping-filter"></a>Vytvoření filtru oboru
-1. V [Azure Portal](https://portal.azure.com)přejdete do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)v části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
 
 2. Vyberte aplikaci, pro kterou jste nakonfigurovali Automatické zřizování: například "ServiceNow".
 
@@ -79,21 +79,21 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor**a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
 
-   a. **JE ROVNO**. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá hodnotě vstupního řetězce (rozlišuje velká a malá písmena).
+   a. **Je rovno**. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá hodnotě vstupního řetězce (rozlišuje velká a malá písmena).
 
-   b. **NENÍ ROVNO**. Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje s hodnotou vstupního řetězce (rozlišuje velká a malá písmena).
+   b. **není rovno**. Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje s hodnotou vstupního řetězce (rozlišuje velká a malá písmena).
 
-   c. **MÁ HODNOTU TRUE**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu true.
+   c. **má hodnotu true**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu true.
 
-   d. **JE FALSE**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu false.
+   d. **je false**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu false.
 
-   e. **MÁ HODNOTU NULL**. Klauzule vrátí "true", pokud je vyhodnocený atribut prázdný.
+   e. **má hodnotu null**. Klauzule vrátí "true", pokud je vyhodnocený atribut prázdný.
 
-   f. NENÍ **NULL**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
+   f. není **null**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
 
-   g. **POROVNÁVÁNÍ REGULÁRNÍCH**ZNAKŮ. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
+   g. **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
-   h. **NESHODA S REGULÁRNÍM VÝRAZEM** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
+   h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
 
 8. Vyberte **Přidat novou klauzuli oboru**.
 

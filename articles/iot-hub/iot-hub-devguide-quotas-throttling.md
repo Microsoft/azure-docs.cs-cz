@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ed1b105f64d109284de441af1bcaee5f0827d75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264640"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331366"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -22,11 +22,11 @@ Tento článek vysvětluje kvóty pro IoT Hub a poskytuje informace, které vám
 
 Každé předplatné Azure může mít maximálně 50 IoT Hub a maximálně 1 bezplatné centrum.
 
-Každé centrum IoT je zřízené s určitým počtem jednotek v určité úrovni. Úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Každé centrum IoT se zřizuje s určitým počtem jednotek na konkrétní úrovni. Úroveň a počet jednotek určují maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, která se používá k výpočtu denní kvóty, je 0,5 KB pro rozbočovač úrovně Free a 4KB pro všechny ostatní úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Vrstva také určuje omezení omezování, která IoT Hub vynutila pro všechny operace.
 
-### <a name="iot-plug-and-play"></a>technologie Plug and Play IoT
+### <a name="iot-plug-and-play"></a>IoT Plug and Play
 
 Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší kvóty zpráv.
 
@@ -40,7 +40,7 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 | -------- | ------- | ------- | ------- |
 | [Operace registru identit](#identity-registry-operations-throttle) (vytvoření, načtení, výpis, aktualizace, odstranění) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
 | [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_, ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2 @ no__t-012 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení/s (9 @ no__t-012). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
-| Odesílání ze zařízení do cloudu | Vyšší z 100 operací odeslání/s nebo 12 operací odeslání za sekundu/jednotku <br/> Například dvě jednotky S1 jsou 2 @ no__t-012 = 24/s, ale v rámci jednotek máte minimálně 100 operací odeslání za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 operací odeslání za sekundu (9 @ no__t-012). | 120 operace odeslání za sekundu/jednotku | 6 000 operace odeslání za sekundu/jednotku |
+| Odesílání typu zařízení-cloud | Vyšší z 100 operací odeslání/s nebo 12 operací odeslání za sekundu/jednotku <br/> Například dvě jednotky S1 jsou 2 @ no__t-012 = 24/s, ale v rámci jednotek máte minimálně 100 operací odeslání za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 operací odeslání za sekundu (9 @ no__t-012). | 120 operace odeslání za sekundu/jednotku | 6 000 operace odeslání za sekundu/jednotku |
 | Z cloudu do zařízení odesílá<sup>1</sup> . | 1,67 operace odeslání za sekundu/jednotku (100 zpráv/min/jednotku) | 1,67 operace odeslání za sekundu/jednotku (100 operací odeslání/min/jednotku) | 83,33 operace odeslání za sekundu/jednotku (5 000 operací odeslání/min/jednotku) |
 | Cloud-zařízení obdrží<sup>1</sup> <br/> (jenom když zařízení používá protokol HTTPS)| 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 833,33 přijatých operací za sekundu (celkem 50 000 operací přijetí za minutu/min/jednotku) |
 | Nahrání souboru | 1,67 inicializace nahrávání souborů/s/jednotka (100/min/Unit) | 1,67 inicializace nahrávání souborů/s/jednotka (100/min/Unit) | 83,33 inicializace nahrávání souborů/s/jednotka (5 000/min/jednotku) |
@@ -48,9 +48,9 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 | Dotazy | 20/min/jednotku | 20/min/jednotku | 1000/min/jednotku |
 | Dvojitá (zařízení a modul) čtení<sup>1</sup> | 100/s | Vyšší z 100/s nebo 10/s/jednotka | 500/s/jednotka |
 | Dvojitá aktualizace (zařízení a modul)<sup>1</sup> | 50/s | Vyšší z 50/s nebo 5/s/jednotku | 250/s/jednotku |
-| Operace s úlohami<sup>1</sup> <br/> (vytvořit, aktualizovat, vypsat, odstranit) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
+| Operace s úlohami<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
 | Úlohy operací zařízení<sup>1</sup> <br/> (aktualizovat dvojitou metodu, vyvolat přímou metodu) | 10/s | Vyšší z 10/s nebo 1/s/jednotka | 50/s/jednotku |
-| Konfigurace a nasazení Edge<sup>1</sup> <br/> (vytvořit, aktualizovat, vypsat, odstranit) | 0.33/s/jednotku (20/min/jednotku) | 0.33/s/jednotku (20/min/jednotku) | 0.33/s/jednotku (20/min/jednotku) |
+| Konfigurace a nasazení Edge<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/s/jednotku (20/min/jednotku) | 0.33/s/jednotku (20/min/jednotku) | 0.33/s/jednotku (20/min/jednotku) |
 | Rychlost iniciace datového proudu zařízení<sup>1</sup> | 5 nových proudů za sekundu | 5 nových proudů za sekundu | 5 nových proudů za sekundu |
 | Maximální počet souběžně připojených zařízení proudů<sup>1</sup> | 50 | 50 | 50 |
 | Maximální přenos dat datového proudu zařízení<sup>1</sup> (agregovaný objem za den) | 300 MB | 300 MB | 300 MB |
@@ -93,14 +93,14 @@ Pokud například koupíte jednu jednotku S1, získáte omezení 100 připojení
 
 IoT Hub vynutila jiné provozní limity:
 
-| Operace | Počtu |
+| Operace | škálování |
 | --------- | ----- |
-| Signalizac | Maximální počet zařízení, která se dají připojit k jednomu centru IoT, je 1 000 000. Jediným způsobem, jak tento limit zvýšit, je kontaktovat [Podpora Microsoftu](https://azure.microsoft.com/support/options/).|
-| Nahrání souborů | 10 souběžných nahrávání souborů na zařízení. |
+| Zařízení | Celkový počet zařízení plus modulů, které se dají zaregistrovat do jednoho centra IoT Hub, je omezené na 1 000 000. Jediným způsobem, jak tento limit zvýšit, je kontaktovat [Podpora Microsoftu](https://azure.microsoft.com/support/options/).|
+| Nahrávání souborů | 10 souběžných nahrávání souborů na zařízení. |
 | Úlohy<sup>1</sup> | Maximální počet souběžných úloh je 1 (pro Free a S1), 5 (pro S2) a 10 (pro S3). Maximální počet souběžných [úloh importu/exportu zařízení](iot-hub-bulk-identity-mgmt.md) je ale 1 pro všechny úrovně. <br/>Historie úlohy se uchovává až po dobu 30 dnů. |
 | Další koncové body | Placené rozbočovače SKU můžou mít 10 dalších koncových bodů. Rozbočovače volných SKU můžou mít jeden další koncový bod. |
 | Dotazy směrování zpráv | Placené rozbočovače SKU můžou mít 100 dotazů na směrování. Rozbočovače volných SKU můžou mít pět dotazů směrování. |
-| Rozšíření zpráv | Placené rozbočovače SKU můžou mít až 10 rozšíření zpráv. Bezplatné rozbočovače SKU můžou mít až 2 rozšíření zpráv.|
+| Obohacení zpráv | Placené rozbočovače SKU můžou mít až 10 rozšíření zpráv. Bezplatné rozbočovače SKU můžou mít až 2 rozšíření zpráv.|
 | Zasílání zpráv ze zařízení do cloudu | Maximální velikost zprávy 256 KB |
 | Zasílání zpráv z cloudu na zařízení<sup>1</sup> | Maximální velikost zprávy 64 KB. Maximální počet nevyřízených zpráv pro doručení je 50 na jedno zařízení. |
 | Přímá metoda<sup>1</sup> | Maximální velikost datové části přímé metody je 128 KB. |
@@ -114,7 +114,7 @@ IoT Hub vynutila jiné provozní limity:
 
 V libovolném okamžiku můžete zvýšit počet kvót nebo omezení omezení [zvýšením počtu zřízených jednotek ve službě IoT Hub](iot-hub-upgrade.md).
 
-## <a name="latency"></a>latence
+## <a name="latency"></a>Latence
 
 IoT Hub usiluje o zajištění nízké latence pro všechny operace. Vzhledem k podmínkám sítě a jiným nepředvídatelným faktorům však nemůže zaručit určitou latenci. Při návrhu řešení byste měli:
 
@@ -132,4 +132,4 @@ Podrobné informace o chování omezení IoT Hub najdete v příspěvku na blogu
 
 Další referenční témata v tomto IoT Hub příručce pro vývojáře zahrnují:
 
-* [IoT Hub koncové body](iot-hub-devguide-endpoints.md)
+* [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md)

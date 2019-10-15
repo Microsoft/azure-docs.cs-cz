@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295519"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324732"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -62,7 +62,7 @@ Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo pr
 
 1. Vyberte **Řízení přístupu (IAM)** .
 1. Vyberte **Přidat přiřazení role**.
-1. Vyberte roli, kterou chcete aplikaci přiřadit. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je **restartování**, **spuštění** a **zastavení** instancí, vyberte roli **Přispěvatel** . Ve výchozím nastavení se aplikace Azure AD nezobrazí v dostupných možnostech. Chcete-li najít aplikaci, vyhledejte její název a vyberte ji.
+1. Vyberte roli, kterou chcete aplikaci přiřadit. Pokud například chcete, aby aplikace mohla provádět akce, jako je **restartování**, **spuštění** a **zastavení** instancí, vyberte roli **Přispěvatel** .  Další informace o [dostupných rolích](../../role-based-access-control/built-in-roles.md) ve výchozím nastavení se v dostupných možnostech nezobrazí v aplikacích Azure AD. Chcete-li najít aplikaci, vyhledejte její název a vyberte ji.
 
    ![Vyberte roli, kterou chcete přiřadit k aplikaci.](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Aplikace démona můžou pomocí dvou forem přihlašovacích údajů ověřit p
 
 ### <a name="upload-a-certificate"></a>Odeslat certifikát
 
-Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete pro účely testování vytvořit certifikát podepsaný svým držitelem. Otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem v úložišti certifikátů uživatele v počítači: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Exportujte tento certifikát pomocí modulu snap-in [Správa uživatelských certifikátů](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) konzoly MMC přístupný z ovládacích panelů systému Windows.
+Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete pro účely testování vytvořit certifikát podepsaný svým držitelem. Otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem v úložišti certifikátů uživatele v počítači: 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Exportujte tento certifikát do souboru pomocí modulu snap-in [Spravovat certifikát uživatele](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) konzoly MMC přístupný z ovládacích panelů systému Windows.
 
 Postup nahrání certifikátu:
 
@@ -114,6 +120,14 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
 
    ![Zkopírujte tajnou hodnotu, protože ji nemůžete později načíst.](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>Konfigurace zásad přístupu pro prostředky
+Mějte na paměti, že možná budete muset pro prostředky, ke kterým aplikace potřebuje přístup, nakonfigurovat oprávnění k přidání. Například je třeba [aktualizovat zásady přístupu trezoru klíčů](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) , aby vaše aplikace měla přístup k klíčům, tajným klíčům nebo certifikátům.  
+
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého trezoru klíčů a vyberte **zásady přístupu**.  
+1. Vyberte **Přidat zásady přístupu**a pak vyberte klíčová, tajná a oprávnění certifikátů, která chcete aplikaci udělit.  Vyberte objekt služby, který jste předtím vytvořili.
+1. Vyberte **Přidat** a přidejte zásadu přístupu a potom **uložte** změny, které chcete potvrdit.
+    @no__t – zásada přístupu 0Add @ no__t-1
+
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
 Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi Azure AD a přiřazení aplikace k roli v předplatném Azure.
@@ -125,7 +139,7 @@ Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi
 
    ![Najděte svoji roli. Pokud jste uživatel, ujistěte se, že nesprávci můžou registrovat aplikace.](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Vyberte **nastavení uživatele**.
+1. V levém podokně vyberte **nastavení uživatele**.
 1. Ověřte nastavení **Registrace aplikací** . Tuto hodnotu může nastavit jenom správce. Pokud je nastaveno na **Ano**, každý uživatel v TENANTOVI Azure AD může zaregistrovat aplikaci.
 
 Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správců a konkrétních oprávněních v Azure AD, která jsou udělena jednotlivým rolím, najdete v tématu [dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Pokud je váš účet přiřazený k roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo umožnit uživatelům registrovat aplikace.

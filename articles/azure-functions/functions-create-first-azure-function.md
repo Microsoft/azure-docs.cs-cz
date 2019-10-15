@@ -1,22 +1,20 @@
 ---
-title: Vytvoření první funkce z Azure Portal | Microsoft Docs
+title: Vytvoření první funkce bez serveru z Azure Portal
 description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí webu Azure Portal bez serveru.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eb3df5ace97e5a09b2869c0857d49926f354f2b0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096998"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329673"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -29,7 +27,7 @@ Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru]
 > [!NOTE]
 > C#Vývojáři by měli zvážit [Vytvoření první funkce v aplikaci Visual Studio 2019](functions-create-your-first-function-visual-studio.md) místo na portálu. 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí svého účtu Azure.
 
@@ -77,7 +75,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP.  
 

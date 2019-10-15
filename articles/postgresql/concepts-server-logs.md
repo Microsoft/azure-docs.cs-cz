@@ -1,48 +1,97 @@
 ---
-title: Protokoly serveru v Azure Database for PostgreSQL – jeden server
-description: Tento článek popisuje, jak Azure Database for PostgreSQL-Single server generuje protokoly dotazů a chyb a jak se konfiguruje uchovávání protokolů.
+title: Protokoly v Azure Database for PostgreSQL – jeden server
+description: Koncepty konfigurace protokolování, úložiště a analýzy v Azure Database for PostgreSQL – jeden server
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029988"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331302"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Protokoly serveru v Azure Database for PostgreSQL – jeden server
-Azure Database for PostgreSQL generuje protokoly dotazů a chyb. Dotazy a protokoly chyb lze použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k optimalizaci výkonu. (Přístup k protokolům transakcí není zahrnutý). 
+# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokoly v Azure Database for PostgreSQL – jeden server
+Azure Database for PostgreSQL umožňuje konfigurovat a přistupovat ke standardním protokolům Postgres. Protokoly je možné použít k identifikaci, odstraňování potíží a opravě chyb konfigurace a k zajištění optimálního výkonu. Protokolovací informace, které můžete konfigurovat, a přístup zahrnují chyby, informace o dotazech, autovaku záznamů, připojení a kontrolní body. (Přístup k protokolům transakcí není k dispozici).
+
+Protokolování auditu se zpřístupňuje prostřednictvím rozšíření Postgres pgaudit. Další informace najdete v článku věnovaném [koncepcím auditu](concepts-audit.md) .
+
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování 
-Protokolování můžete nakonfigurovat na serveru pomocí parametrů protokolovacího serveru. Na každém novém serveru **log_checkpoints** a **log_connections** jsou ve výchozím nastavení zapnuté. Existují další parametry, které je možné upravit, aby vyhovovaly vašim požadavkům na přihlášení: 
+Na serveru můžete nakonfigurovat standardní protokolování Postgres pomocí parametrů protokolovacího serveru. Na každém serveru Azure Database for PostgreSQL je ve výchozím nastavení zapnutá `log_checkpoints` a `log_connections`. Existují další parametry, které je možné upravit, aby vyhovovaly vašim požadavkům na přihlášení: 
 
 ![Azure Database for PostgreSQL – parametry protokolování](./media/concepts-server-logs/log-parameters.png)
 
-Další informace o těchto parametrech najdete v tématu [zasílání zpráv o chybách PostgreSQL a](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) v dokumentaci k protokolování. Informace o tom, jak nakonfigurovat parametry Azure Database for PostgreSQL, najdete v [dokumentaci k portálu](howto-configure-server-parameters-using-portal.md) nebo v dokumentaci k rozhraní příkazového [řádku](howto-configure-server-parameters-using-cli.md).
+Další informace o parametrech protokolu Postgres najdete v části dokumentace k [protokolování](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) a [co do protokolu](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) v dokumentaci k Postgres. Většina, ale ne všechny parametry protokolování Postgres jsou k dispozici pro konfiguraci v Azure Database for PostgreSQL.
 
-## <a name="access-server-logs-through-portal-or-cli"></a>Přístup k protokolům serveru prostřednictvím portálu nebo rozhraní příkazového řádku
-Pokud jste povolili protokoly, můžete k nim přistupovat z úložiště protokolu Azure Database for PostgreSQL pomocí [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLI](howto-configure-server-logs-using-cli.md)a rozhraní Azure REST API. Soubory protokolu se obměňují každou hodinu nebo po dosažení velikosti 100 MB (podle toho, co nastane dříve). Dobu uchování tohoto úložiště protokolu můžete nastavit pomocí parametru **log @ no__t-1retention @ no__t-2period** přidruženého k vašemu serveru. Výchozí hodnota je 3 dny; maximální hodnota je 7 dní. Server musí mít dostatek přiděleného úložiště pro ukládání souborů protokolu. (Tento parametr uchování neřídí diagnostické protokoly Azure.)
+Informace o tom, jak nakonfigurovat parametry v Azure Database for PostgreSQL, najdete v [dokumentaci k portálu](howto-configure-server-parameters-using-portal.md) nebo v dokumentaci k rozhraní příkazového [řádku](howto-configure-server-parameters-using-cli.md). 
 
+> [!NOTE]
+> Konfigurace velkého objemu protokolů, například protokolování příkazů, může výrazně zvýšit režii výkonu. 
+
+## <a name="access-log-files"></a>Soubory Access. log
+Výchozí formát protokolu v Azure Database for PostgreSQL je. log. Vzorový řádek z tohoto protokolu vypadá takto:
+
+```
+2019-10-14 17:00:03 UTC-5d773cc3.3c-LOG: connection received: host=101.0.0.6 port=34331 pid=16216
+```
+
+Azure Database for PostgreSQL poskytuje krátkodobé umístění úložiště pro soubory. log. Nový soubor začíná každé 1 hodinu nebo 100 MB, podle toho, co nastane dřív. Protokoly se připojují k aktuálnímu souboru, protože jsou vydávané z Postgres.  
+
+Dobu uchovávání dat pro toto krátkodobé úložiště protokolu můžete nastavit pomocí parametru `log_retention_period`. Výchozí hodnota je 3 dny; maximální hodnota je 7 dní. Umístění krátkodobého úložiště může obsahovat až 1 GB souborů protokolu. Po 1 GB se nejstarší soubory bez ohledu na dobu uchování odstraní, aby vytvářely místo pro nové protokoly. 
+
+Pro dlouhodobé uchovávání protokolů a analýzy protokolů můžete stáhnout soubory. log a přesunout je do služby třetí strany. Soubory si můžete stáhnout pomocí [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md). Případně můžete nakonfigurovat nastavení diagnostiky Azure Monitor, které automaticky generuje vaše protokoly (ve formátu JSON) do dlouhodobých umístění. Další informace o této možnosti najdete v níže uvedené části. 
+
+Generování souborů. log můžete zastavit nastavením parametru `logging_collector` na OFF (vypnuto). Vypnutí. generování souboru protokolu se doporučuje, pokud používáte Azure Monitor nastavení diagnostiky. Tato konfigurace sníží dopad dalšího protokolování na výkon.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for PostgreSQL je integrován s protokoly diagnostiky Azure Monitor. Po povolení protokolů na serveru PostgreSQL se můžete rozhodnout, že se mají vysílat do [Azure monitor protokolů](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. 
+Azure Database for PostgreSQL je integrován s nastavením diagnostiky Azure Monitor. Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste Azure Monitor protokoly pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci. 
 
 > [!IMPORTANT]
 > Tato diagnostická funkce pro protokoly serveru je k dispozici pouze v Pro obecné účely a v paměťově optimalizovaných [cenových úrovních](concepts-pricing-tiers.md).
+
+
+### <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
+Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolu, která se má vybrat, je **PostgreSQLLogs**. (Existují i jiné protokoly, které můžete nakonfigurovat, pokud používáte [úložiště dotazů](concepts-query-store.md).)
 
 Postup povolení diagnostických protokolů pomocí Azure Portal:
 
    1. Na portálu přejděte v navigační nabídce serveru Postgres na *nastavení diagnostiky* .
    2. Vyberte *Přidat nastavení diagnostiky*.
    3. Pojmenujte toto nastavení. 
-   4. Vyberte preferované umístění pro příjem dat (účet úložiště, centrum událostí, Log Analytics). 
-   5. Vyberte datové typy, které chcete.
-   6. Uložte nastavení.
+   4. Vyberte preferovaný koncový bod (účet úložiště, centrum událostí a Log Analytics). 
+   5. Vyberte typ protokolu **PostgreSQLLogs**.
+   7. Uložte nastavení.
 
-Následující tabulka popisuje, co je v každém protokolu. V závislosti na zvoleném výstupním koncovém bodu se můžou pole zahrnutá a pořadí, ve kterém se zobrazují, lišit. 
+Pokud chcete povolit diagnostické protokoly pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na článek [nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) .
+
+### <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
+
+Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Pro Azure Storage je schéma popsané v článku [log Storage Account](../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+
+Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/log-query/log-query-overview.md) .
+
+Níže jsou uvedené dotazy, které můžete zkusit začít. Výstrahy můžete konfigurovat na základě dotazů.
+
+Vyhledat všechny protokoly Postgres pro konkrétní server za poslední den
+```
+AzureDiagnostics
+| where LogicalServerName_s == 'myservername'
+| where TimeGenerated > ago(1d) 
+```
+
+Vyhledat všechny chyby pro všechny Postgres servery v tomto pracovním prostoru za posledních 6 hodin
+```
+AzureDiagnostics
+| where errorLevel_s == "error" and category == "PostgreSQLogs"
+| where TimeGenerated > ago(6h)
+```
+
+### <a name="log-format"></a>Formát protokolu
+
+V následující tabulce jsou popsána pole pro typ **PostgreSQLLogs** . V závislosti na zvoleném výstupním koncovém bodu se můžou pole zahrnutá a pořadí, ve kterém se zobrazují, lišit. 
 
 |**Pole** | **Popis** |
 |---|---|
@@ -70,7 +119,7 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na zv
 | Předvolba | Předpona řádku protokolu |
 
 
-
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o přístupu k protokolům z [Azure Portal](howto-configure-server-logs-in-portal.md) nebo pomocí [Azure CLI](howto-configure-server-logs-using-cli.md).
 - Přečtěte si další informace o [cenách Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+- Další informace o [protokolech auditu](concepts-audit.md)

@@ -1,6 +1,6 @@
 ---
-title: Web apps v Azure Active Directory
-description: Popisuje, co jsou webové aplikace a základní informace v protokolu toku, registrace a vypršení platnosti tokenu pro tento typ aplikace.
+title: Webové aplikace v Azure Active Directory
+description: Popisuje, co jsou webové aplikace, a základní informace o toku, registraci a vypršení platnosti tokenu pro tento typ aplikace.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,44 +17,44 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544727"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373648"
 ---
-# <a name="web-apps"></a>Webové aplikace
+# <a name="web-apps"></a>Web Apps
 
-Webové aplikace jsou aplikace, které ověřit uživatele ve webovém prohlížeči na webovou aplikaci. V tomto scénáři webová aplikace přesměruje prohlížeč uživatele pro jejich přihlášení k Azure AD. Azure AD vrátí odpověď přihlášení prostřednictvím webového prohlížeče, který obsahuje deklarace identity o uživateli v tokenu zabezpečení. Tento scénář podporuje přihlašování pomocí protokoly OpenID Connect, SAML 2.0 a WS-Federation.
+Webové aplikace jsou aplikace, které ověřují uživatele ve webovém prohlížeči na webové aplikace. V tomto scénáři webová aplikace nasměruje prohlížeč uživatele, aby je přihlásil do služby Azure AD. Azure AD vrátí odpověď pro přihlášení prostřednictvím prohlížeče uživatele, který obsahuje deklarace identity uživatele v tokenu zabezpečení. Tento scénář podporuje přihlašování pomocí protokolů OpenID Connect, SAML 2,0 a WS-Federation.
 
 ## <a name="diagram"></a>Diagram
 
-![Tok ověření pro prohlížeče a webové aplikace](./media/authentication-scenarios/web_browser_to_web_api.png)
+![Tok ověřování pro prohlížeč pro webovou aplikaci](./media/authentication-scenarios/web_browser_to_web_api.png)
 
-## <a name="protocol-flow"></a>Protokol toku
+## <a name="protocol-flow"></a>Tok protokolu
 
-1. Když uživatel navštíví aplikace a potřebuje přihlásit, bude přesměrován prostřednictvím přihlašovací požadavek na koncový bod ověřování ve službě Azure AD.
-1. Uživatel se přihlásí na přihlašovací stránku.
-1. Pokud je ověření úspěšné, Azure AD vytvoří ověřovacího tokenu a vrátí odpověď přihlašovací adresa URL odpovědi aplikace, který byl nakonfigurován na webu Azure Portal. Pro produkční aplikace tato adresa URL odpovědi by mělo být HTTPS. Vrácený token obsahuje deklarace identity o uživateli a Azure AD, které jsou vyžadované aplikací k ověření tokenu.
-1. Aplikace ověří daný token pomocí veřejného podpisového klíče a vydavatele informace, které jsou k dispozici v dokumentu federačních metadat pro službu Azure AD. Když aplikace ověří token, spustí novou relaci s uživatelem. Tato relace povolí uživateli přístup k aplikaci do vypršení jeho platnosti.
+1. Když uživatel navštíví aplikaci a potřebuje se přihlásit, budou přesměrováni prostřednictvím žádosti o přihlášení do koncového bodu ověřování ve službě Azure AD.
+1. Uživatel se přihlásí na přihlašovací stránce.
+1. Pokud je ověření úspěšné, Azure AD vytvoří ověřovací token a vrátí odpověď na přihlašovací odpověď k adrese URL odpovědi aplikace, která byla nakonfigurovaná v Azure Portal. V případě produkční aplikace by tato adresa URL odpovědi měla být HTTPS. Vrácený token obsahuje deklarace identity uživatele a služby Azure AD, které vyžaduje aplikace k ověření tokenu.
+1. Aplikace ověří token pomocí veřejného podpisového klíče a informací vystavitelů, které jsou k dispozici v dokumentu federačních metadat pro službu Azure AD. Poté, co aplikace ověří token, spustí novou relaci s uživatelem. Tato relace umožňuje uživateli přístup k aplikaci až do vypršení platnosti.
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
-Zobrazit ukázky kódu pro webový prohlížeč na web scénářích aplikací. A vrácení zpět často, jak často jsou přidávány nové ukázky.
+Podívejte se na ukázky kódu pro webový prohlížeč ve scénářích webové aplikace. A pravidelně se podívejte na to, jak se často přidávají nové ukázky.
 
 ## <a name="app-registration"></a>Registrace aplikací
 
-Chcete-li zaregistrovat webovou aplikaci, přečtěte si téma [registrace aplikace](quickstart-register-app.md).
+Pokud chcete zaregistrovat webovou aplikaci, přečtěte si téma [Registrace aplikace](quickstart-register-app.md).
 
-* Jednoho tenanta – Pokud vytváříte aplikaci pouze pro vaši organizaci, je nutné jej zaregistrovat v adresáři vaší firmy s využitím webu Azure portal.
-* Víceklientské – Pokud vytváříte aplikaci, která je možné uživatele mimo vaši organizaci ho musí být zaregistrovaný v adresáři vaší společnosti, ale také musí být zaregistrovaný v adresáři každé organizace, který bude používat aplikace. K zajištění dostupnosti v jejich adresáři aplikace, můžete zahrnout procesu registrace pro vaše zákazníky, díky kterým souhlas s vaší aplikací. Při registraci pro vaši aplikaci, se zobrazí se dialogové okno zobrazující oprávnění, která aplikace požaduje instalaci a pak možnost vyjádřit souhlas. V závislosti na požadovaných oprávnění může být správcem v druhé organizaci nutné vyjádřit souhlas. Když uživatel nebo správce souhlasí, aplikace je zaregistrovaný v jejich adresáře.
+* Jeden tenant – Pokud vytváříte aplikaci jenom pro vaši organizaci, musí být zaregistrovaná v adresáři vaší společnosti pomocí Azure Portal.
+* Vícenásobný tenant – Pokud vytváříte aplikaci, kterou můžou používat uživatelé mimo vaši organizaci, musí být zaregistrované v adresáři vaší společnosti, ale musí být zaregistrované v adresáři každé organizace, který bude aplikaci používat. Aby vaše aplikace byla ve svém adresáři k dispozici, můžete pro zákazníky zahrnout proces registrace, který jim umožní vyjádřit souhlas s vaší aplikací. Při registraci do aplikace se zobrazí dialogové okno, které zobrazuje oprávnění, která aplikace vyžaduje, a pak možnost souhlasu. V závislosti na požadovaných oprávněních může být vyžadováno poskytnutí souhlasu správce v jiné organizaci. Když uživatel nebo správce souhlasí, aplikace se zaregistruje ve svém adresáři.
 
 ## <a name="token-expiration"></a>Vypršení platnosti tokenu
 
-Relace uživatele vyprší po vypršení platnosti tokenu vydaného službou Azure AD. Aplikace můžete zkrátit toto časové období, v případě potřeby, jako je například odhlašování uživatelů podle určité době nečinnosti. Po vypršení platnosti relace, uživatel se vyzve se znovu přihlásit.
+Relace uživatele vyprší, jakmile vyprší doba platnosti tokenu vydaného službou Azure AD. V případě potřeby může aplikace zkrátit toto časové období, například odhlášení uživatelů na základě období neaktivity. Po vypršení platnosti relace se uživateli zobrazí výzva k opětovnému přihlášení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [typy aplikací a scénářů](app-types.md)
-* Další informace o službě Azure AD [základy ověřování](authentication-scenarios.md)
+* Další informace o dalších [typech a scénářích aplikací](app-types.md)
+* Seznamte se se [základy ověřování](v1-authentication-scenarios.md) Azure AD

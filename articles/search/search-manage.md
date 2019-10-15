@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719865"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331255"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Správa služeb pro Azure Search v Azure Portal
 > [!div class="op_single_selector"]
@@ -34,8 +34,7 @@ Azure Search je plně spravovaná cloudová vyhledávací služba, která se pou
 
 Všimněte si, že *upgrade* není uveden jako úloha správy. Vzhledem k tomu, že prostředky jsou přiděleny při zřizování služby, přesun na jinou úroveň vyžaduje novou službu. Podrobnosti najdete v tématu [vytvoření Azure Search služby](search-create-service-portal.md).
 
-> [!Tip]
-> Hledáte nápovědu k analýze provozu vyhledávání nebo výkonu dotazů? Můžete monitorovat objem dotazů, které vyhledávané osoby hledají, a jak jsou úspěšné výsledky hledání v rámci identifikátorů GUID pro zákazníky na konkrétní dokumenty v indexu. Další informace najdete v tématu [Analýza provozu pro hledání Azure Search](search-traffic-analytics.md), [monitorování využití a metriky dotazů](search-monitor-usage.md)a [výkonu a optimalizaci](search-performance-optimization.md).
+Můžete monitorovat svazky dotazů a další metriky a pomocí těchto přehledů upravovat službu pro rychlejší doby odezvy. Další informace najdete v tématech [monitorování využití a metriky dotazů](search-monitor-usage.md) a [výkonu a optimalizace](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ V souvislosti s obecnými informacemi o vaší službě můžete získat informa
 
 * Na portálu na řídicím panelu služby prostřednictvím oznámení, vlastností a zpráv o stavu.
 * Použití [PowerShellu](search-manage-powershell.md) nebo [REST API správy](https://docs.microsoft.com/rest/api/searchmanagement/) k [získání vlastností služby](https://docs.microsoft.com/rest/api/searchmanagement/services)nebo stavu využití prostředků indexu.
-* Pomocí [vyhledávání analýz provozu](search-traffic-analytics.md), jak bylo uvedeno dříve.
+
 
 <a id="sub-5"></a>
 

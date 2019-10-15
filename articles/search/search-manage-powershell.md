@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648098"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331244"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ I když pro správu obsahu nejsou k dispozici žádné vyhrazené příkazy pros
 
 Jiné úkoly, které nejsou podporované prostřednictvím PowerShellu nebo žádné jiné rozhraní API (jenom na portálu), zahrnují:
 + [Připojte prostředek služby poruchy](cognitive-search-attach-cognitive-services.md) pro [indexování obohacenou AI](cognitive-search-concept-intro.md). Služba rozpoznávání je připojená k dovednosti, nikoli k předplatnému nebo službě.
-+ [Doplňková řešení pro monitorování](search-monitor-usage.md#add-on-monitoring-solutions) nebo [vyhledávání analýz provozu](search-traffic-analytics.md) používaná pro monitorování Azure Search.
++ [Řešení monitorování doplňku](search-monitor-usage.md#add-on-monitoring-solutions) pro monitorování Azure Search.
 
 <a name="check-versions-and-load"></a>
 
@@ -84,7 +84,7 @@ Pokud máte více předplatných Azure, nastavte své předplatné Azure. Pokud 
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Chcete-li zadat odběr, spusťte následující příkaz. V následujícím příkladu je `ContosoSubscription`název předplatného.
+Chcete-li zadat odběr, spusťte následující příkaz. V následujícím příkladu je název předplatného `ContosoSubscription`.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -94,7 +94,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-all-azure-search-services-in-your-subscription"></a>Vypíše všechny Azure Search služby v předplatném.
 
-Následující příkazy jsou z [**AZ.** ](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)Resources a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
+Následující příkazy jsou z [**AZ. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
 
 První příkaz vrátí všechny vyhledávací služby.
 
@@ -197,11 +197,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
 
-V jednom okamžiku můžete znovu vygenerovat jenom jednu, zadanou buď `primary` jako klíč nebo. `secondary` U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
+Najednou můžete znovu vygenerovat jenom jednu, zadanou buď `primary` nebo `secondary` klíč. U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
 
 V případě, že budete chtít znovu vygenerovat klíče bez aktualizace kódu klienta, požadavky, které používají starý klíč, nebudou úspěšné. Opětovné generování všech nových klíčů vám trvale nezamkne vaše služby a stále budete mít přístup ke službě prostřednictvím portálu. Po opětovném vygenerování primárního a sekundárního klíče můžete aktualizovat klientský kód tak, aby používal nové klíče a operace budou odpovídajícím způsobem pokračovat.
 
-Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč, který Azure Search použít. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary` nebo. `secondary` 
+Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč, který Azure Search použít. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary` nebo `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -253,7 +253,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Sestavení [indexu](search-what-is-an-index.md), [dotazování indexu](search-query-overview.md) pomocí portálu, rozhraní REST API nebo sady .NET SDK.
 

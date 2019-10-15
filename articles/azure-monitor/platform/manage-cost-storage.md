@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972907"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329432"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -32,7 +32,7 @@ V tomto článku si projdeme, jak můžete aktivně monitorovat monitorovaný ob
 
 ## <a name="pricing-model"></a>Cenový model
 
-Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základě ingestování objemu dat a volitelně i pro delší dobu uchovávání dat. Každý Log Analytics pracovní prostor se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. Množství příjmu dat může být značná v závislosti na následujících faktorech: 
+Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základě ingestování objemu dat a volitelně i pro delší dobu uchovávání dat. Objem dat se měří jako velikost dat, která se budou ukládat. Každý Log Analytics pracovní prostor se účtuje jako samostatná služba a přispívá vám k fakturaci za vaše předplatné Azure. Množství příjmu dat může být značná v závislosti na následujících faktorech: 
 
   - Počet povolených řešení správy a jejich konfigurace (např. 
   - Počet monitorovaných virtuálních počítačů
@@ -123,13 +123,13 @@ Pokud chcete nastavit výchozí dobu uchovávání pro váš pracovní prostor,
 
     ![Změnit nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Uchování je také možné [nastavit přes ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom přes ARM. 
+Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom prostřednictvím Azure Resource Manager. 
 
 Dva datové typy--`Usage` a `AzureActivity`--jsou ve výchozím nastavení uchovány po dobu 90 dnů a za toto 90 dne se neúčtují žádné poplatky. Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
 
 ### <a name="retention-by-data-type"></a>Uchovávání dat podle datového typu
 
-Je také možné zadat různá nastavení uchovávání pro jednotlivé datové typy. Každý datový typ je dílčím prostředkem pracovního prostoru. Například tabulku SecurityEvent můžete vyřešit v [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) jako:
+Je také možné zadat různá nastavení uchovávání pro jednotlivé datové typy. Každý datový typ je dílčím prostředkem pracovního prostoru. Například tabulku SecurityEvent lze vyřešit v [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) jako:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -161,7 +161,7 @@ Chcete-li nastavit uchovávání konkrétního datového typu (v tomto příklad
 
 Datové typy `Usage` a `AzureActivity` nelze nastavit s vlastním uchováváním. Budou platit až do maximálního počtu výchozích uchovávání pracovních prostorů nebo 90 dnů. 
 
-Skvělý nástroj pro připojení přímo k ARM k nastavení uchovávání informací podle datového typu je [ARMclient](https://github.com/projectkudu/ARMClient)nástroje OSS.  Další informace o ARMclient od článků získáte v článku [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Tady je příkladu, který používá ARMClient, nastavení SecurityEvent dat na 730 dní:
+Skvělý nástroj pro připojení přímo k Azure Resource Manager k nastavení možnosti uchovávání informací podle datového typu je [ARMclient](https://github.com/projectkudu/ARMClient)nástroje OSS.  Další informace o ARMclient od článků získáte v článku [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Tady je příkladu, který používá ARMClient, nastavení SecurityEvent dat na 730 dní:
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -193,7 +193,7 @@ Pokud má váš Log Analytics pracovní prostor přístup ke starším cenovým 
 3. V části **cenová úroveň**vyberte cenovou úroveň a pak klikněte na **Vybrat**.  
     Cenový tarif @no__t 0Selected @ no__t-1
 
-[Cenovou úroveň můžete také nastavit přes ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `sku` (`pricingTier` v šabloně ARM). 
+[Cenovou úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) můžete také nastavit pomocí Azure Resource Manager parametrem `sku` (`pricingTier` v šabloně ARM). 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží s tím, proč Log Analytics už neshromažďuje data
 

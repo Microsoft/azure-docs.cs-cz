@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Protokolování a monitorování aktivit
           href: search-monitor-usage.md
-        - name: Prohledání analýzy provozu
-          href: search-traffic-analytics.md
 - name: Referenční informace
   items:
     - name: Azure CLI

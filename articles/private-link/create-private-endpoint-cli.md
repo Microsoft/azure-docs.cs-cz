@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219366"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376319"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Vytvoření privátního koncového bodu pomocí Azure CLI
 Soukromý koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače (VM), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač ve virtuální síti, SQL Database Server s privátním koncovým bodem pomocí Azure CLI. Pak můžete k virtuálnímu počítači přistupovat a získat zabezpečený přístup k prostředku privátního propojení (privátní Azure SQL Database Server v tomto příkladu). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, `az --version`spusťte příkaz. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem * mySubnet * * pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizace konfigurace podsítě s názvem *mySubnet* with [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Všimněte si, že ID SQL Server je ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` podobné jako v dalším kroku použijete ID SQL Server. 
+Všimněte si, že ID SQL Server se podobá @ no__t-0 v dalším kroku použijete ID SQL Server. 
 
 ## <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu 
 Vytvořte v Virtual Network privátní koncový bod pro server SQL Database: 
@@ -127,7 +127,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete stažený soubor. RDP *.
 
@@ -149,7 +149,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 V této části se připojíte k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
 
  1. Ve vzdálené ploše *myVM*otevřete PowerShell.
- 2. Zadejte nslookup MyServer.Database.Windows.NET  obdržíte zprávu podobnou této: 
+ 2. Zadejte příkaz nslookup MyServer. Database. Windows. NET @ no__t-0. zobrazí se zpráva podobná této: 
 
 ```
       Server:  UnKnown 
@@ -160,10 +160,10 @@ V této části se připojíte k serveru SQL Database z virtuálního počítač
       Aliases:  myserver.database.windows.net 
 ```
  3. Nainstalovat SQL Server Management Studio 
- 4. V Connect to Server (připojit k serveru) zadejte nebo vyberte tyto informace: Typ serveru: Vyberte možnost databázový stroj.
- Název serveru: Vyberte myserver.database.windows.net uživatelské jméno: Zadejte uživatelské jméno, které jste zadali při vytváření.
- Zadáno Zadejte heslo, které jste zadali při vytváření.
- Pamatovat heslo: Vyberte Ano.
+ 4. V připojení k serveru zadejte nebo vyberte tyto informace: typ serveru: vyberte možnost databázový stroj.
+ Název serveru: vyberte myserver.database.windows.net uživatelské jméno: zadejte uživatelské jméno, které jste zadali při vytváření.
+ Heslo: zadejte heslo, které jste zadali při vytváření.
+ Pamatovat heslo: vyberte Ano.
  
  5. Vyberte **připojit**.
  6. Procházet **databáze** z levé nabídky

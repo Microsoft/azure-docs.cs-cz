@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828167"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332921"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
@@ -31,33 +31,35 @@ Tento článek popisuje, jak naplánovat Azure Time Series Insights prostředí 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Pokud chcete začít s Time Series Insights, je nejlepší, pokud víte, kolik dat jste čekali po minutách a jak dlouho budete potřebovat ukládat data.  
+Pokud chcete začít s Azure Time Series Insights, je nejlepší, pokud víte, kolik dat jste čekali po minutách a jak dlouho budete potřebovat ukládat data.  
 
 Další informace o kapacitě a uchování obou Time Series Insights SKU najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Chcete-li nejlépe naplánovat Time Series Insights prostředí pro dlouhodobou úspěšnost, vezměte v úvahu následující atributy:
 
-- <a href="#storage-capacity">Kapacita úložiště</a>
-- <a href="#data-retention">Doba uchovávání dat</a>
-- <a href="#ingress-capacity">Kapacita příchozího přenosu dat</a>
-- <a href="#shape-your-events">Natvarování událostí</a>
-- <a href="#ensure-that-you-have-reference-data">Zajištění, že máte referenční data na místě</a>
+- [Kapacita úložiště](#storage-capacity)
+- [Doba uchovávání dat](#data-retention)
+- [Kapacita příchozího přenosu dat](#ingress-capacity)
+- [Natvarování událostí](#shape-your-events)
+- [Zajištění, že máte referenční data na místě](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
 Ve výchozím nastavení Time Series Insights uchovává data na základě velikosti úložiště, které zřizujete (jednotkové &#215; množství úložiště na jednotku) a příchozího přenosu dat.
 
-## <a name="data-retention"></a>Uchovávání dat
+## <a name="data-retention"></a>Uchování dat
 
-Nastavení **doby uchovávání dat** můžete změnit v prostředí Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
+Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
 
-Time Series Insights má dva režimy. Jeden režim optimalizuje, aby se zajistilo, že vaše prostředí má nejaktuálnější data. Tento režim je ve výchozím nastavení zapnutý. 
+Azure Time Series Insights má dva režimy:
 
-Druhý režim optimalizuje, aby se zajistilo splnění limitů uchovávání. V druhém režimu se příchozí přenos dat pozastaví, pokud je dosažená celková kapacita úložiště prostředí. 
+* Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý. 
+* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavit** příchozí přenos dat brání tomu, aby se nová data zobrazovala v případě, že se vybralo **omezení úložiště**. 
 
 Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na stránce konfigurace prostředí v Azure Portal.
 
-V prostředí Time Series Insights můžete nakonfigurovat maximálně 400 dní uchovávání dat.
+> [!IMPORTANT]
+> V prostředí Azure Time Series Insights GA můžete nakonfigurovat maximálně 400 dní uchovávání dat.
 
 ### <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
@@ -67,20 +69,20 @@ V prostředí Time Series Insights můžete nakonfigurovat maximálně 400 dní 
 
 1. Do pole **Doba uchovávání dat (ve dnech)** zadejte hodnotu mezi 1 a 400.
 
-   [![Konfigurace uchovávání](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [@no__t – uchování 1Configure](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Další informace o tom, jak implementovat příslušné zásady uchovávání dat, najdete v tématu [Postup konfigurace uchovávání](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Kapacita příchozího přenosu dat
 
-Druhá oblast, která se zaměřuje na plánování Time Series Insightsho prostředí, je kapacita pro příchozí přenosy. Kapacita příchozího přenosu dat je odvozená od přidělení po minutách.
+Druhá oblast, na kterou se můžete soustředit při plánování Time Series Insightsho prostředí, je kapacita pro příchozí *přenosy*. Kapacita příchozího přenosu dat je odvozená od přidělení po minutách.
 
 V perspektivě omezování se příchozí datový paket, který má velikost paketu 32 KB, považuje za 32 událostí, velikost 1 KB. Maximální povolená velikost události je 32 KB. Datové pakety větší než 32 KB se zkrátí.
 
 Následující tabulka shrnuje kapacitu příchozího přenosu dat na jednotku pro každý Time Series Insights SKU:
 
-|SKU  |Počet událostí za měsíc  |Velikost události za měsíc  |Počet událostí za minutu  |Velikost události za minutu  |
+|Skladová položka  |Počet událostí za měsíc  |Velikost události za měsíc  |Počet událostí za minutu  |Velikost události za minutu  |
 |---------|---------|---------|---------|---------|
 |S1     |   30 000 000     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 000 000    |   300 GB   | 7 200   | 7 200 KB  |
@@ -125,7 +127,7 @@ Další informace o tom, jak vytvářet, nahrávat a spravovat referenční data
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Začněte vytvořením [nového Time Series Insightsho prostředí v Azure Portal](time-series-insights-get-started.md).
 

@@ -1,21 +1,21 @@
 ---
-title: Správa verzí aplikací blockchain v Azure blockchain Workbench Preview
+title: Správa verzí aplikací blockchain – Azure blockchain Workbench
 description: Jak používat verze aplikací v Azure blockchain Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f6edbb54962ff11b5ed1497b6a202b9010c67aae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843878"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328826"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Správa verzí aplikace ve verzi Preview služby Azure blockchain Workbench
 
@@ -23,7 +23,7 @@ Můžete vytvářet a používat víc verzí aplikace Azure blockchain Workbench
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nasazení aplikace blockchain Workbench Další informace najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) pro podrobnosti o nasazení.
 * Nasazená aplikace blockchain v blockchain Workbench. Další informace najdete [v tématu Vytvoření aplikace v blockchain v Azure blockchain Workbench](create-app.md) .
@@ -32,7 +32,7 @@ Můžete vytvářet a používat víc verzí aplikace Azure blockchain Workbench
 
 Pokud chcete přidat novou verzi, nahrajte do aplikace blockchain Workbench nové soubory konfigurace a inteligentních smluv.
 
-1. Ve webovém prohlížeči přejděte na webovou adresu blockchain Workbench. Například informace o `https://{workbench URL}.azurewebsites.net/` tom, jak najít webovou adresu blockchain Workbench, najdete v tématu [Webová adresa URL služby blockchain Workbench](deploy.md#blockchain-workbench-web-url) .
+1. Ve webovém prohlížeči přejděte na webovou adresu blockchain Workbench. Například `https://{workbench URL}.azurewebsites.net/` pro informace o tom, jak najít webovou adresu blockchain Workbench, najdete v tématu [Webová adresa URL služby blockchain Workbench](deploy.md#blockchain-workbench-web-url) .
 2. Přihlaste se jako [správce aplikace blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 3. Vyberte aplikaci blockchain, kterou chcete aktualizovat, s jinou verzí.
 4. Vyberte **Přidat verzi**. Zobrazí se podokno **Přidat verzi** .

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840904"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375981"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -46,7 +46,7 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor   | Pracovní prostory    | 2017-03-15 – Preview |
+| Pracovní prostor   | pracovní prostory    | 2017-03-15 – Preview |
 | Hledat      | savedSearches | 2015-03-20 |
 | Zdroj dat | zdroje dat   | 2015-11-01 – Preview |
 | Řešení    | Řešení     | 2015-11-01 – Preview |
@@ -243,7 +243,7 @@ Následující ukázka šablony ukazuje, jak:
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ Následující ukázka šablony ukazuje, jak:
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ Následující ukázka šablony ukazuje, jak:
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ Následující ukázka šablony ukazuje, jak:
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>Nasazení ukázkové šablony
 
 Postup nasazení ukázkové šablony:

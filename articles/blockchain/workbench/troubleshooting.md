@@ -1,21 +1,21 @@
 ---
-title: Řešení potíží s Azure blockchain Workbench Preview
+title: Řešení potíží s Azure blockchain Workbench
 description: Řešení potíží s aplikací Azure blockchain Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844051"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329087"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Řešení potíží s Azure blockchain Workbench Preview
 
@@ -41,14 +41,14 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Spuštění skriptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1` Spusťte skript pro shromáždění protokolů a vytvořte soubor ZIP obsahující složku s informacemi o řešení potíží. Příklad:
+Spusťte skript `collectBlockchainWorkbenchTroubleshooting.ps1` pro shromáždění protokolů a vytvoření souboru ZIP obsahujícího složku s informacemi o řešení potíží. Například:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
 Skript přijímá následující parametry:
 
-| Parametr  | Popis | Požadováno |
+| Parametr  | Popis | Požaduje se |
 |---------|---------|----|
 | SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Ano |
 | ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Ano |
@@ -72,9 +72,9 @@ Výstupní soubor ZIP obsahuje následující strukturu složek:
 
 Soubor Shrnutí poskytuje snímek celkového stavu aplikace a stavu aplikace. Souhrn obsahuje doporučené akce, nejdůležitější hlavní chyby a metadata o spuštěných službách.
 
-Složka **metriky** obsahuje metriky různých systémových komponent v průběhu času. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn různých kódů odpovědí a dobu odezvy v průběhu období shromažďování. Složka **podrobností** obsahuje podrobné protokoly pro řešení konkrétních problémů s nástrojem Workbench nebo základní blockchainou sítí. `\Details\Workbench\Exceptions.csv` Obsahuje například seznam nejaktuálnějších výjimek, ke kterým došlo v systému, což je užitečné při řešení chyb pomocí inteligentních kontraktů nebo interakcí s blockchain. 
+Složka **metriky** obsahuje metriky různých systémových komponent v průběhu času. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn různých kódů odpovědí a dobu odezvy v průběhu období shromažďování. Složka **podrobností** obsahuje podrobné protokoly pro řešení konkrétních problémů s nástrojem Workbench nebo základní blockchainou sítí. Například `\Details\Workbench\Exceptions.csv` obsahuje seznam nejaktuálnějších výjimek, ke kterým došlo v systému, což je užitečné při řešení chyb s inteligentními kontrakty nebo interakcemi s blockchain. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Průvodce odstraňováním potíží s Application Insights pro Azure blockchain Workbench](https://aka.ms/workbenchtroubleshooting)

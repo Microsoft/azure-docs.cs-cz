@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182288"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333165"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie nasazení a osvědčené postupy pro optimalizaci výkonu na Azure Search
 
@@ -45,7 +45,7 @@ Při vytváření těchto testovacích úloh jsou k dispozici některé charakte
 ## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Škálování pro velké objemy dotazů a omezené požadavky
 Když přijímáte příliš mnoho omezených požadavků nebo překročíte cílové míry latence od zvýšeného zatížení dotazu, můžete se podívat na snížení sazeb latence jedním ze dvou způsobů:
 
-1. **Zvýšit repliky:**  Replika je jako kopie vašich dat, což umožňuje Azure Search vyrovnávat zatížení žádostí na více kopií.  Veškeré vyrovnávání zatížení a replikace dat mezi replikami se spravují pomocí Azure Search a kdykoli můžete změnit počet replik, které jsou pro vaši službu vyhrazené.  V rámci standardní vyhledávací služby můžete přidělit až 12 replik a 3 repliky ve službě Basic Search. Repliky je možné upravit buď z [Azure Portal](search-create-service-portal.md) , nebo [](search-manage-powershell.md)pomocí PowerShellu.
+1. **Zvýšit repliky:**  Replika je jako kopie vašich dat, což umožňuje Azure Search vyrovnávat zatížení žádostí na více kopií.  Veškeré vyrovnávání zatížení a replikace dat mezi replikami se spravují pomocí Azure Search a kdykoli můžete změnit počet replik, které jsou pro vaši službu vyhrazené.  V rámci standardní vyhledávací služby můžete přidělit až 12 replik a 3 repliky ve službě Basic Search. Repliky je možné upravit buď z [Azure Portal](search-create-service-portal.md) , nebo pomocí [PowerShellu](search-manage-powershell.md).
 2. **Zvýšit úroveň vyhledávání:**  Azure Search se nachází v [řadě vrstev](https://azure.microsoft.com/pricing/details/search/) a každá z těchto vrstev nabízí různé úrovně výkonu.  V některých případech můžete mít tolik dotazů, že úroveň, na kterou se nacházíte, nemůže poskytovat dostatečně nízkou míru latence, a to i v případě, že se repliky vyčerpáním. V takovém případě je vhodné zvážit použití jedné z vyšších úrovní vyhledávání, jako je například vrstva Azure Search S3, která je vhodná pro scénáře s velkým počtem dokumentů a velmi vysokými úlohami dotazů.
 
 ## <a name="scaling-for-slow-individual-queries"></a>Škálování pro pomalé jednotlivé dotazy
@@ -94,11 +94,6 @@ Pokud používáte Azure Search REST API k [nabízení obsahu v indexu Azure Sea
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umožňuje směrovat požadavky na více geograficky umístěných webů, které jsou pak zajištěné více službami Azure Search. Jednou z výhod Traffic Manager je, že se může test Azure Search, aby se zajistilo, že je k dispozici a v případě výpadku směruje uživatele na alternativní vyhledávací služby. Pokud navíc odesíláte žádosti o vyhledávání prostřednictvím webů Azure, Azure Traffic Manager umožňuje vyrovnávat zatížení případů, kdy web není Azure Search. Tady je příklad, jak architektura, která využívá Traffic Manager.
 
    ![Křížové karty služeb podle oblasti s centrálním Traffic Manager][3]
-
-## <a name="monitor-performance"></a>Monitorování výkonu
-Azure Search nabízí možnost analyzovat a monitorovat výkon služby prostřednictvím [vyhledávání analýz provozu](search-traffic-analytics.md). Když tuto funkci povolíte a přidáte do své klientské aplikace instrumentaci, můžete si volitelně protokolovat jednotlivé operace hledání i agregované metriky na účet Azure Storage, který se pak dá zpracovat pro analýzu nebo vizuální Power BI. Metriky zachycují tento způsob, jak poskytuje statistiku výkonu, jako je průměrný počet dotazů nebo doba odezvy na dotazy. Kromě toho protokolování operací umožňuje přejít k podrobnostem o konkrétních operacích hledání.
-
-Analýza provozu je užitečná pro porozumění sazbám latence z této Azure Search perspektivy. Vzhledem k tomu, že jsou zaznamenané metriky výkonu dotazu založeny na čase, kdy je dotaz plně zpracován v Azure Search (od okamžiku, kdy je požadavek odeslán), můžete to použít k určení, zda dochází k problémům s latencí ze strany Azure Search nebo z přebírání služeb. rozhraní IDE služby, jako je například latence sítě.  
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o cenových úrovních a omezeních služeb pro každé z nich najdete v tématu [omezení služby v Azure Search](search-limits-quotas-capacity.md).

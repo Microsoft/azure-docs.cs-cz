@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950731"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330946"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
+# <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
 
 Azure Time Series Insights je spravovaná cloudová služba s komponentami pro úložiště, analýzu a vizualizace, která usnadňuje ingestování, ukládání, prozkoumávání a analýzu miliard událostí současně.
 
@@ -28,7 +28,7 @@ Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou podl�
 
 Azure Time Series Insights považují osobní údaje za data přidružená správcům a uživatelům Time Series Insights. Time Series Insights ukládá Azure Active Directory objektu – ID uživatelů s přístupem k prostředí. Azure Portal zobrazí e-mailové adresy uživatelů, ale tyto e-mailové adresy se v Time Series Insights neukládají, dynamicky se vyhledá pomocí Azure Active Directory objektu-ID v Azure Active Directory.
 
-## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
+## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
 
 Správce klienta může odstranit zákaznická data pomocí Azure Portal.
 
@@ -68,7 +68,7 @@ Další informace najdete v tématu [Konfigurace uchovávání v Time Series Ins
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [udělení přístupu k datům do prostředí TSI](./time-series-insights-data-access.md).
+* Přečtěte si další informace o [udělení přístupu k datům do prostředí Azure Time Series Insights](./time-series-insights-data-access.md).
 
 * Zobrazit [průzkumníka Azure Time Series Insights](time-series-insights-explorer.md).
 

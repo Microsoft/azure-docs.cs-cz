@@ -1,20 +1,20 @@
 ---
 title: Referenční dokumentace artefaktů createUiDefinition spravované aplikace Azure
-description: Tento článek je odkazem na artefakt createUiDefinition.
+description: Ukazuje, jak vytvořit artefakt createUiDefinition pro spravovanou aplikaci Azure. Soubor má název createUiDefinition. JSON.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336475"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330198"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Další informace: Artefakt prvků uživatelského rozhraní
+# <a name="reference-user-interface-elements-artifact"></a>Referenční dokumentace: artefakt prvků uživatelského rozhraní
 
 Tento článek je odkazem na artefakt *createUiDefinition. JSON* v Azure Managed Applications. Další informace o vytváření prvků uživatelského rozhraní najdete v tématu [vytvoření prvků uživatelského rozhraní](create-uidefinition-elements.md).
 
@@ -81,8 +81,8 @@ Následující JSON ukazuje příklad souboru *createUiDefinition. JSON* pro Azu
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
-- [Odkaz Artefakt šablony nasazení](reference-main-template-artifact.md)
-- [Odkaz Artefakt definice zobrazení](reference-view-definition-artifact.md)
+- [Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky](tutorial-create-managed-app-with-custom-provider.md)
+- [Referenční dokumentace: artefakt šablony nasazení](reference-main-template-artifact.md)
+- [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md)

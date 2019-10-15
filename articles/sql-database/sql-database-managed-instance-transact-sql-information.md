@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b7ace716f920304eff3ddcfa3fab887f780cec0e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000493"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372323"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -48,7 +48,7 @@ Tato stránka také vysvětluje [dočasné známé problémy](#Issues) , které 
 - [ODPOJIT SKUPINU DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klauzule [set hadr](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Zálohovat
+### <a name="backup"></a>Backup
 
 Spravované instance mají automatické zálohování, takže uživatelé můžou vytvářet úplné zálohy databáze `COPY_ONLY`. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
@@ -61,7 +61,7 @@ Spravované instance mají automatické zálohování, takže uživatelé můžo
   - Možnosti pásky: `REWIND`, `NOREWIND`, `UNLOAD` a `NOUNLOAD` se nepodporují.
   - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY` a `NO_TRUNCATE` nejsou podporovány.
 
-Omezení: 
+Určitá 
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
 - V databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (Service-Managed), nejde provést `BACKUP DATABASE ... WITH COPY_ONLY`. TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
@@ -95,7 +95,7 @@ Hlavní rozdíly v syntaxi `CREATE AUDIT` pro auditování do úložiště objek
 - K dispozici je nová syntaxe `TO URL`, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěné soubory `.xel`.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace naleznete v tématu: 
+Další informace: 
 
 - [VYTVOŘIT AUDIT SERVERU](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -118,7 +118,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>pověřovací
+### <a name="credential"></a>Přihlašovací údaj
 
 Jsou podporovány pouze identity Azure Key Vault a `SHARED ACCESS SIGNATURE`. Uživatelé systému Windows nejsou podporováni.
 
@@ -306,7 +306,7 @@ Následující funkce agenta SQL momentálně nejsou podporované:
 - Proxy
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
-- Upozornění
+- Výstrahy
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
@@ -398,14 +398,14 @@ Operations
 - Transakce zápisu mezi instancemi nejsou podporované.
 - `sp_dropserver` se podporuje pro vyřazení propojeného serveru. Viz [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako zprostředkovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11` a `SQLOLEDB`. Příklad je `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
+- Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako zprostředkovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11` a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 - Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledovat tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
 
 Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se nepodporují. Informace o bázi základů naleznete v části [základ](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Umístění
+### <a name="replication"></a>Replikace
 
 - Podporují se typy snímků a obousměrné replikace. Slučovací replikace, replikace peer-to-peer a aktualizovatelné odběry nejsou podporovány.
 - [Transakční replikace](sql-database-managed-instance-transactional-replication.md) je k dispozici pro veřejnou verzi Preview spravované instance s některými omezeními:
@@ -457,7 +457,7 @@ Pokud je replikace povolená v databázi ve [skupině převzetí služeb při se
 - Nepodporovaná syntaxe:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Zdrojová 
+- Zdroj: 
   - `FROM URL` (Azure Blob Storage) je jedinou podporovanou možností.
   - `FROM DISK` @ no__t-1 @ no__t-2/zálohovací zařízení není podporováno.
   - Zálohovací sklady nejsou podporované.
@@ -474,7 +474,7 @@ Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je zm�
 - Stávající paměťově optimalizovaná skupina souborů se přejmenuje na XTP. 
 - možnosti `SINGLE_USER` a `RESTRICTED_USER` jsou převedeny na `MULTI_USER`.
 
-Omezení: 
+Určitá 
 
 - Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Ujistěte se, že na zdrojové instanci spustíte `DBCC CHECKDB` a použijte Backup `WITH CHECKSUM`, aby se předešlo tomuto problému.
 - Obnovení souboru `.BAK` databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu (například objekty `FILESTREAM` nebo `FILETABLE`) nelze obnovit ve spravované instanci.
@@ -537,13 +537,21 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ### <a name="tempdb"></a>DATABÁZE
 
-Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni Pro obecné účely. Maximální velikost `tempdb` na Pro důležité obchodní informace úrovni je omezená velikostí úložiště instance. velikost souboru protokolu `Tempdb` je omezena na 120 GB na úrovni Pro obecné účely a Pro důležité obchodní informace. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb`, nebo pokud vydávají více než 120 GB dat protokolu.
+Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni Pro obecné účely. Maximální velikost `tempdb` na Pro důležité obchodní informace úrovni je omezená velikostí úložiště instance. velikost souboru protokolu `Tempdb` je omezena na 120 GB na Pro obecné účely úrovni. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb`, nebo pokud vydávají více než 120 GB dat protokolu.
 
 ### <a name="error-logs"></a>Protokoly chyb
 
-Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření Managed instance (preview)](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
 
 ## <a name="Issues"></a>Známé problémy
+
+### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Limity OLTP paměti v paměti se nepoužívají.
+
+**Datum:** Říjen 2019
+
+Služba Pro důležité obchodní informace Service – úroveň v některých případech nebude správně používat [maximální limity paměti pro paměťově optimalizované objekty](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) . Spravovaná instance může úloh povolit používání více paměti pro operace OLTP v paměti, což může mít vliv na dostupnost a stabilitu instance. OLTP dotazy v paměti, které dosáhnou limitu, nemusí selhat immediatelly. Tento problém bude brzy vyřešen. Dotazy, které používají více paměti OLTP v paměti, selžou dříve, pokud dosáhnou [omezení](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space).
+
+**Alternativní řešení:** [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nepoužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
 
@@ -639,7 +647,7 @@ příkazy `CREATE DATABASE`, `ALTER DATABASE ADD FILE` a `RESTORE DATABASE` prav
 
 Každá Pro obecné účely spravovaná instance má až 35 TB úložiště rezervovaného pro místo na disku Azure Premium. Každý databázový soubor je umístěn na samostatném fyzickém disku. Velikosti disků můžou být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikostí disků Azure Premium nesmí překročit 35 TB. V některých případech může spravovaná instance, která nepotřebuje 8 TB celkem, překročit 35 TB Azure na velikost úložiště kvůli vnitřní fragmentaci.
 
-Například Pro obecné účely spravovaná instance může mít jeden velký soubor o velikosti 1,2 TB umístěný na 4 TB disku. Může taky mít 248 souborů o velikosti 1 GB, která je umístěná na samostatných discích 128-GB. V tomto příkladu:
+Například Pro obecné účely spravovaná instance může mít jeden velký soubor o velikosti 1,2 TB umístěný na 4 TB disku. Může taky mít 248 souborů o velikosti 1 GB, která je umístěná na samostatných discích 128-GB. V tomto příkladu:
 
 - Celková přidělená velikost diskového úložiště je 1 × 4 TB + 248 × 128 GB = 35 TB.
 - Celkové rezervované místo pro databáze v instanci je 1 × 1,2 TB + 248 × 1 GB = 1,4 TB.

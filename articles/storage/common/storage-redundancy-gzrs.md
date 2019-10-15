@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170330"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333214"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -25,7 +25,7 @@ Microsoft doporučuje používat GZRS pro aplikace, které vyžadují konzistenc
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
-GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky, které nejsou disky VHD, soubory, tabulky a fronty.
+GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (nejedná se o disky VHD), soubory, tabulky a fronty.
 
 GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících oblastech:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873293"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372779"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -22,7 +22,7 @@ ms.locfileid: "70873293"
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) nakonfigurovat [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
 
 > [!IMPORTANT]
-> Šablona prostředku pro vytváření výstrah metrik pro typ prostředku: Pracovní prostor Azure Log Analytics (tj. `Microsoft.OperationalInsights/workspaces`) vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředku pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Základní postup je následující:
 
@@ -2480,7 +2480,7 @@ Pro účely tohoto návodu uložte níže uvedený formát JSON jako list-VM-sta
                 "PT5M",
                 "PT15M",
                 "PT30M",
-                "PT1H""
+                "PT1H"
             ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"

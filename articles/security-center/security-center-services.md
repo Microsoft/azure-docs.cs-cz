@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254512"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331150"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
@@ -35,28 +35,28 @@ V následujících částech jsou uvedeny Security Center funkce, které jsou k 
 
 > [!div class="mx-tableFixed"]
 
-|Server|Windows|||Linux|||stanov|
+|Server|Windows|||Linux|||Ceny|
 |----|----|----|----|----|----|----|----|
-|**Hlediska**|**Azure**||**Mimo Azure**|**Azure**||**Mimo Azure**||
+|**Prostředí**|**Azure**||**Mimo Azure**|**Azure**||**Mimo Azure**||
 ||**Virtuální počítač**|**Sada škálování virtuálních počítačů**||**Virtuální počítač**|**Sada škálování virtuálních počítačů**|
-|[Integrace ATP v programu Microsoft Defender](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standardní|
+|[Integrace ATP v programu Microsoft Defender](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|×|×|×|Úroveň Standard|
 |[Výstrahy detekce hrozeb při analýze chování virtuálních počítačů](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
-|[Výstrahy detekce hrozeb nejenom pro soubory](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standardní|
-|[Výstrahy detekce hrozeb založené na síti](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standardní|
-|[Přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standardní|
-|[Monitorování integrity souborů](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standardní|
-|[Adaptivní řízení aplikací](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standardní|
-|[Mapa sítě](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standardní|
-|[Adaptivní posílení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standardní|
-|Adaptivní ovládací prvky sítě|✔|✔|X|✔|✔|X|Standardní|
-|[Řídicí panel dodržování předpisů & sestavy](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standardní|
-|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|X|X|X|✔|✔|✔|Standardní|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|✔|✔|✔|Dost|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|✔|✔|✔|Dost|
-|[Posouzení služby Endpoint Protection](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Dost|
-|Vyhodnocení šifrování disku|✔|✔|X|✔|✔|X|Dost|
-|Posouzení ohrožení zabezpečení třetí strany|✔|X|X|✔|X|X|Dost|
-|[Posouzení zabezpečení sítě]()|✔|✔|X|✔|✔|X|Dost|
+|[Výstrahy detekce hrozeb nejenom pro soubory](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|×|×|×|Úroveň Standard|
+|[Výstrahy detekce hrozeb založené na síti](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|×|✔|✔|×|Úroveň Standard|
+|[Přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|×|×|✔|×|×|Úroveň Standard|
+|[Monitorování integrity souborů](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Úroveň Standard|
+|[Adaptivní ovládací prvky aplikace](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|×|✔|✔|×|✔|Úroveň Standard|
+|[Mapa sítě](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|×|✔|✔|×|Úroveň Standard|
+|[Adaptivní posílení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|×|×|✔|×|×|Úroveň Standard|
+|Adaptivní ovládací prvky sítě|✔|✔|×|✔|✔|×|Úroveň Standard|
+|[Řídicí panel dodržování předpisů & sestavy](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Úroveň Standard|
+|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|×|×|×|✔|✔|✔|Úroveň Standard|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|✔|✔|✔|Zadarmo|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|✔|✔|✔|Zadarmo|
+|[Posouzení služby Endpoint Protection](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|×|×|×|Zadarmo|
+|Vyhodnocení šifrování disku|✔|✔|×|✔|✔|×|Zadarmo|
+|Posouzení ohrožení zabezpečení třetí strany|✔|×|×|✔|×|×|Zadarmo|
+|[Posouzení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|×|✔|✔|×|Zadarmo|
 
 ### Podporovaná řešení ochrany koncových bodů<a name="endpoint-supported"></a>
 
@@ -67,14 +67,14 @@ Následující tabulka poskytuje matrici:
 
 Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Ochrana koncových bodů| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, integrováno s operačním systémem| Ano |
-| System Center Endpoint Protection (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Přes rozšíření | Ano |
-| Trend Micro – všechny verze * | Řada Windows serveru  | Ne | Ano |
-| Symantec v 12.1.1100 +| Řada Windows serveru  | Ne | Ano |
-| McAfee v10 za účelem + | Řada Windows serveru  | Ne | Ano |
-| McAfee v10 za účelem + | Řada Linux serverů  | Ne | Ano **\*** |
+| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
+| Trend Micro – všechny verze * | Řada Windows Serverů  | Ne | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
 | Sophos v9 +| Řada Linux serverů  | Ne | Ano **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
@@ -94,30 +94,30 @@ Azure Security Center podporuje následující prostředky PaaS:
 |SQL|✔| ✔|
 |PostGreSQL|✔| ✔|
 |MySQL|✔| ✔|
-|CosmosDB|X| ✔|
-|Úložiště objektů BLOB|✔| ✔|
-|Účet úložiště|✔| Není k dispozici|
+|CosmosDB|×| ✔|
+|Úložiště blobů|✔| ✔|
+|Účet úložiště|✔| není k dispozici|
 |App Service|✔| ✔|
-|Funkce|✔| X|
-|Cloudová služba|✔| X|
-|Sítě|✔| Není k dispozici|
-|Podsíť|✔| Není k dispozici|
-|SÍŤOVÝCH|✔| Není k dispozici|
-|NSG|✔| Není k dispozici|
+|Funkce|✔| ×|
+|Cloudová služba|✔| ×|
+|VNet|✔| není k dispozici|
+|Podsíť|✔| není k dispozici|
+|NIC|✔| není k dispozici|
+|NSG|✔| není k dispozici|
 |Předplatné|✔ * *| ✔|
-|Účet Batch|✔| X|
-|Účet Service Fabric|✔| X|
-|Účet služby Automation|✔| X|
-|Load Balancer|✔| X|
-|Hledat|✔| X|
-|Obor názvů služby Service Bus|✔| X|
-|Stream Analytics|✔| X|
-|Obor názvů centra událostí|✔| X|
-|Logic Apps|✔| X|
-|Redis|✔| Není k dispozici|
-|Data Lake Analytics|✔| X|
-|Data Lake Store|✔| X|
-|Trezor klíčů|✔| X|
+|Účet Batch|✔| ×|
+|Účet Service Fabric|✔| ×|
+|Účet Automation|✔| ×|
+|Nástroj pro vyrovnávání zatížení|✔| ×|
+|Hledat|✔| ×|
+|Obor názvů služby Service Bus|✔| ×|
+|Stream Analytics|✔| ×|
+|Obor názvů centra událostí|✔| ×|
+|Logické aplikace|✔| ×|
+|Redis|✔| není k dispozici|
+|Analýza Data Lake|✔| ×|
+|Data Lake Store|✔| ×|
+|Key Vault|✔| ×|
 
 \* tyto funkce jsou aktuálně podporované ve verzi Public Preview.
 

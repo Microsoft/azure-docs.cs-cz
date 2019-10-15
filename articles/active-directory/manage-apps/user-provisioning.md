@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001710"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330030"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory
 
@@ -99,14 +99,14 @@ Pomocí portálu Azure Active Directory můžete nakonfigurovat službu zřizov�
 
 1. Vyberte možnost automatické volby pro **režim zřizování** a určete tak nastavení pro přihlašovací údaje správce, mapování, spuštění a zastavení a synchronizaci.
 
-   - Rozbalte **přihlašovací údaje správce** a zadejte přihlašovací údaje požadované pro Azure AD pro připojení k rozhraní API pro správu uživatelů aplikace. Tato část také umožňuje povolit e-mailová oznámení v případě, že přihlašovací údaje selžou nebo pokud úloha zřizování přejde do [karantény](#quarantine).
+   - Rozbalte **přihlašovací údaje správce** a zadejte přihlašovací údaje požadované pro Azure AD pro připojení k rozhraní API pro správu uživatelů aplikace. Tato část také umožňuje povolit e-mailová oznámení v případě, že přihlašovací údaje selžou nebo pokud úloha zřizování přejde do [karantény](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
    - Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které se při zřizování nebo aktualizaci uživatelských účtů flowují mezi službou Azure AD a cílovou aplikací. Pokud cílová aplikace tuto aplikaci podporuje, Tato část vám umožní volitelně nakonfigurovat zřizování skupin a uživatelských účtů. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde můžete zobrazit a přizpůsobit atributy uživatele.
 
-     **Filtry oborů** oznamují službě zřizování, které uživatele a skupiny ve zdrojovém systému mají být zřízené nebo zrušené pro cílový systém. V podokně **mapování atributů** vyberte **obor zdrojového objektu** , chcete-li filtrovat konkrétní hodnoty atributu. Můžete například určit, že pro zřizování by měl být v oboru pouze uživatelé s atributem "Department" (prodej). Další informace najdete v tématu [použití filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
+     **Filtry oborů** oznamují službě zřizování, které uživatele a skupiny ve zdrojovém systému mají být zřízené nebo zrušené pro cílový systém. V podokně **mapování atributů** vyberte **obor zdrojového objektu** , chcete-li filtrovat konkrétní hodnoty atributu. Můžete například určit, že v oboru pro zřízení mají být pouze uživatelé s atributem Department (Oddělení) s hodnotou Sales (Prodej). Další informace najdete v tématu [Používání filtrů oborů](define-conditional-rules-for-provisioning-user-accounts.md).
 
      Další informace najdete v tématu [Přizpůsobení mapování atributů](customize-application-attributes.md).
 
-   - **Nastavení** řídí operaci služby zřizování pro aplikaci, včetně toho, jestli je aktuálně spuštěná. Nabídka **obor** vám umožní určit, jestli se má v oboru pro zřizování zadat jenom přiřazení uživatelé a skupiny, nebo jestli se má zřídit všichni uživatelé v adresáři Azure AD. Informace o přiřazování uživatelů a skupin najdete v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
+   - **Nastavení** řídí operaci služby zřizování pro aplikaci, včetně toho, jestli je aktuálně spuštěná. Nabídka **obor** vám umožní určit, jestli se má v oboru pro zřizování zadat jenom přiřazení uživatelé a skupiny, nebo jestli se má zřídit všichni uživatelé v adresáři Azure AD. Informace o přiřazování uživatelů a skupin najdete v tématu [Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory](assign-user-or-group-access-portal.md).
 
 Na obrazovce Správa aplikací vyberte **zřizovací protokoly (Preview)** a zobrazte záznamy všech operací spuštěných službou zřizování Azure AD. Další informace najdete v [průvodci zřizováním sestav](check-status-user-account-provisioning.md).
 
@@ -173,7 +173,7 @@ Pokud se většina nebo všechna volání prováděná na cílovém systému kon
 
 Když je v karanténě, frekvence přírůstkových cyklů se postupně zkracuje na jeden den.
 
-Úloha zřizování bude odebrána z karantény poté, co dojde k odstranění všech problematických chyb a spustí se další cyklus synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná.
+Úloha zřizování bude odebrána z karantény poté, co dojde k odstranění všech problematických chyb a spustí se další cyklus synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná. Tady najdete další informace [o stavu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantény.
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřizování uživatelů?
 

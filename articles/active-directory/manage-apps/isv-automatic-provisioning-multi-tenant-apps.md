@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729214"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373391"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -67,29 +67,29 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 | Funkce, které jsou povolené nebo rozšířené pomocí automatického zřizování| Služba zřizování Azure AD (SCIM 2,0)| Rozhraní API pro Microsoft Graph (OData v 4.0)| JIT SAML |
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
-| Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X+| √| X |
+| Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √| √| Jenom uživatel * |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
-| Podpora více zprostředkovatelů identity| √| X| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| X| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
-<sup>*</sup>– Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
-<sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace do MIcrosoft graphu pro jiné účely.
+<sup>*</sup> – pro synchronizaci uživatelů ze služby AD do Azure AD se vyžaduje nastavení Azure AD Connect.  
+<sup>+</sup >– použití SCIM pro zřizování vám nevylučuje integraci aplikace do Microsoft graphu pro jiné účely.
 
-## <a name="azure-ad-provisioning-service"></a>Služba zřizování Azure AD
+## <a name="azure-ad-provisioning-service-scim"></a>Služba zřizování Azure AD (SCIM)
 
-Služba zřizování Azure AD používá SCIM, což je protokol podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM.
+Služba zřizování Azure AD používá [SCIM] (https://aka.ms/SCIMOverview, protokol podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM.
 
 Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, najdete v těchto tématech: 
+
+* [Další informace o standardu SCIM](https://aka.ms/SCIMOverview)
 
 * [Automatické zřizování uživatelů a skupin z Azure Active Directory k aplikacím pomocí systému pro správu identit mezi doménami (SCIM)](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Porozumění implementaci Azure AD SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
-* [Vytvoření koncového bodu SCIM pomocí knihoven Microsoft CLI](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph pro zřizování
 

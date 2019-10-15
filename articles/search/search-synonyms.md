@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: nitinme
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186453"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331181"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma v Azure Search
 
@@ -25,11 +25,11 @@ V Azure Search je rozšíření synonym provedeno v době dotazu. Můžete přid
 
 ## <a name="create-synonyms"></a>Vytvořit synonyma
 
-Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [Vytvořte mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáře můžete začít [přidáním synonym do služby C#Azure Search pomocí nástroje ](search-synonyms-tutorial-sdk.md).
+Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete použít sadu REST API nebo .NET SDK. Pokud chcete začít používat REST, doporučujeme [použít post](search-get-started-postman.md) a formulaci požadavků pomocí tohoto rozhraní API: [vytvořit mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Pro C# vývojáře můžete začít [přidáním synonym do služby C#Azure Search pomocí nástroje ](search-synonyms-tutorial-sdk.md).
 
 Pokud v případě, že používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby, můžete použít i tuto ochranu na obsah vaší mapy synonym.
 
-## <a name="use-synonyms"></a>Použití synonym
+## <a name="use-synonyms"></a>Použít synonyma
 
 V Azure Search je podpora synonym založena na mapách synonym, které definujete a nahráváte do vaší služby. Tyto mapy představují nezávislý prostředek (například indexy nebo zdroje dat) a lze jej použít v jakémkoli hledaném poli libovolného indexu ve vyhledávací službě.
 
@@ -40,6 +40,8 @@ Zahrnutí synonym do vaší aplikace pro hledání je proces se dvěma kroky:
 1.  Přidejte mapu synonym do vyhledávací služby prostřednictvím následujících rozhraní API.  
 
 2.  Nakonfigurujte prohledávatelné pole tak, aby v definici indexu bylo použito mapování synonym.
+
+Pro vaši vyhledávací aplikaci můžete vytvořit několik map synonym (například podle jazyka, pokud vaše aplikace podporuje vícejazyčnou základnu). V současné době může pole použít pouze jeden z nich. Vlastnost synonymMaps pole můžete kdykoli aktualizovat.
 
 ### <a name="synonymmaps-resource-apis"></a>Rozhraní API prostředků SynonymMaps
 
@@ -76,7 +78,7 @@ Alternativně můžete použít PUT a zadat název mapy synonym na identifikáto
 
 ##### <a name="apache-solr-synonym-format"></a>Formát synonyma Apache Solr
 
-Formát Solr podporuje mapování ekvivalentních a explicitních synonym. Pravidla mapování dodržují specifikaci Open Source filtru synonym pro Apache Solr, která je popsaná v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Níže je vzorové pravidlo pro ekvivalentní synonyma.
+Formát Solr podporuje mapování ekvivalentních a explicitních synonym. Pravidla mapování dodržují specifikace Open Source filtru synonym pro Apache Solr, která je popsaná v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Níže je vzorové pravidlo pro ekvivalentní synonyma.
 ```
 USA, United States, United States of America
 ```
@@ -152,18 +154,11 @@ Funkce synonym se vztahuje na vyhledávací dotazy a nevztahuje se na filtry neb
 
 Rozšíření synonym neplatí pro výrazy vyhledávání se zástupnými znaky; výrazy s předponou, přibližnými a regulárními výrazy nejsou rozbaleny.
 
-Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Například pro kombinování synonym se zástupnými znaky pro jednoduchou syntaxi dotazu by `<query> | <query>*`byl termín.
+Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Pokud například chcete kombinovat synonyma se zástupnými znaky pro jednoduchou syntaxi dotazu, bude `<query> | <query>*`.
 
-## <a name="tips-for-building-a-synonym-map"></a>Tipy pro sestavování mapy synonym
+Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Experimentujte s malým slovníkem, abyste viděli, jak Přidání synonym mění možnosti hledání, včetně dopadu na profily vyhodnocování, zvýrazňování přístupů a návrhy.
 
-- Stručná, vhodně navržená mapa synonym je efektivnější než vyčerpávající seznam možných shod. Pokud se dotaz rozšíří na mnoho synonym, analyzuje moc velký nebo složitý slovník delší dobu a ovlivňuje latenci dotazů. Místo odhadu, kdy se můžou používat tyto výrazy, můžete získat skutečné výrazy prostřednictvím [sestavy analýzy provozu vyhledávání](search-traffic-analytics.md).
+## <a name="next-steps"></a>Další kroky
 
-- V rámci předběžného i ověřovacího cvičení umožňuje tato sestava přesně určit, které z těchto podmínek bude vyhovovat shodě synonym, a pak je dál používat jako ověření, že vaše mapa synonym produkuje lepší výsledky. V předdefinované sestavě vám poskytnou potřebné informace i dlaždice nejčastější vyhledávací dotazy a dotazy s výsledky hledání s nulovým výsledkem.
-
-- Pro vaši vyhledávací aplikaci můžete vytvořit několik map synonym (například podle jazyka, pokud vaše aplikace podporuje vícejazyčnou základnu). V současné době může pole použít pouze jeden z nich. Vlastnost synonymMaps pole můžete kdykoli aktualizovat.
-
-## <a name="next-steps"></a>Další postup
-
-- Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Experimentujte s malým slovníkem, abyste viděli, jak Přidání synonym mění možnosti hledání, včetně dopadu na profily vyhodnocování, zvýrazňování přístupů a návrhy.
-
-- [Povolte vyhledávání analýz provozu](search-traffic-analytics.md) a pomocí předdefinované sestavy Power BI Zjistěte, které výrazy se nejčastěji používají a které vracejí nula dokumentů. Prodávejte tyto poznatky, upravte slovník tak, aby zahrnoval synonyma pro neproduktivní dotazy, které by se měly řešit na dokumenty v indexu.
+> [!div class="nextstepaction"]
+> [Vytvoření mapy synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

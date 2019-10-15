@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177773"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332839"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -108,7 +108,7 @@ Tady je postup, jak ručně nakonfigurovat Doporučené čítače výkonu:
 3. V části **Nastavení** vyberte **Upřesnit nastavení**.
 4. Potom přejděte do části **Data** > **čítače výkonu Windows** a přidejte následující čítače:
 
-    -   Logický disk (\*) \|% volného místa
+    -   Logický disk (\*) \%Free prostor
     -   Logický disk (C:) \\Avg. délka fronty disku
     -   Paměť (\*) @no__t – 1Available MB
     -   Informace o procesoru (\*) \\Processor čas
@@ -142,7 +142,7 @@ Abyste se ujistili, že váš pracovní prostor Log Analytics má předkonfiguro
 3. Pak přejdete na **Data** > **čítače výkonu systému Windows**.
 4. Ujistěte se, že jsou předem nakonfigurované následující čítače:
 
-   - Logický disk (\*) \|% volného místa: zobrazuje množství volného místa celkového použitelného místa na disku jako procento.
+   - Logický disk (\*) \%Free mezera: zobrazuje množství volného místa celkového použitelného místa na disku v procentech.
    - Logický disk (C:) \\Avg. délka fronty disku: délka požadavku na přenos disku pro jednotku jazyka C. Hodnota by neměla být větší než 2 pro více než krátkou dobu.
    - Paměť (\*) \\Available MB: dostupná paměť systému v megabajtech.
    - Informace o procesoru (\*) \\Processor Time: procentuální hodnota uplynulého času, který procesor stráví spuštěním nečinného vlákna.

@@ -1,20 +1,20 @@
 ---
-title: Monitorování Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics)
+title: Monitorovat Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics) | Microsoft Docs
 description: Naučte se monitorovat Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics).
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718480"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331918"
 ---
-# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery pomocí protokolů Azure Monitor
+# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
 Tento článek popisuje, jak monitorovat počítače replikované pomocí Azure [Site Recovery](site-recovery-overview.md), pomocí [protokolů Azure monitor](../azure-monitor/platform/data-platform-logs.md)a [Log Analytics](../azure-monitor/log-query/log-query-overview.md).
 
@@ -25,10 +25,14 @@ V případě Site Recovery můžete Azure Monitor protokoly, které vám pomohou
 - **Monitoruje stav a stav Site Recovery**. Můžete například monitorovat stav replikace, stav testovacího převzetí služeb při selhání, Site Recovery události, cíle bodu obnovení (RPO) pro chráněné počítače a míry změny disků a dat.
 - **Nastavte výstrahy pro Site Recovery**. Můžete například nakonfigurovat výstrahy pro stav počítače, stav testovacího převzetí služeb při selhání nebo Site Recovery stav úlohy.
 
-Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z Azure do Azure a virtuální počítač VMware nebo fyzický server do replikace Azure.
+Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z **Azure do Azure** a **virtuální počítač VMware nebo fyzický server do replikace Azure** .
+
+> [!NOTE]
+> Protokoly dat o četnosti a protokoly nahrávání jsou dostupné jenom pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure.
+
 ## <a name="before-you-start"></a>Než začnete
 
-Zde je, co potřebujete:
+Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
@@ -38,13 +42,14 @@ Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkajíc�
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Konfigurace Site Recovery pro odesílání protokolů
 
-1. V trezoru klikněte na **Nastavení** > diagnostiky**Přidat nastavení diagnostiky**.
+1. V trezoru klikněte na **nastavení diagnostiky** > **Přidat nastavení diagnostiky**.
 
     ![Vybrat protokolování diagnostiky](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. V **nastavení diagnostiky**zadejte název akce protokolu a vyberte **Odeslat do Log Analytics**.
+2. V okně **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
 3. Vyberte odběr Azure Monitor protokoly a pracovní prostor Log Analytics.
-4. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
+4. V přepínači vyberte **Azure Diagnostics** .
+5. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
 
     ![Výběr pracovního prostoru](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -61,7 +66,7 @@ Data z protokolů načítáte pomocí dotazů protokolu napsaných pomocí [dota
 
 ### <a name="query-replication-health"></a>Dotaz na stav replikace
 
-Tento dotaz vykreslí výsečový graf pro aktuální stav replikace všech chráněných virtuálních počítačů Azure, které jsou rozdělené do tří stavů: Normální, upozornění nebo kritická.
+Tento dotaz vykreslí výsečový graf pro aktuální stav replikace všech chráněných virtuálních počítačů Azure, které jsou rozdělené do tří stavů: normální, upozornění nebo kritická.
 
 ```
 AzureDiagnostics  
@@ -88,7 +93,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>Čas RPO dotazu
 
-Tento dotaz znázorňuje pruhový graf virtuálních počítačů Azure replikovaných s Site Recovery, rozepsaný podle cíle bodu obnovení (RPO): Méně než 15 minut, mezi 15-30 minutami, více než 30 minutami.
+Tento dotaz znázorňuje pruhový graf virtuálních počítačů Azure replikovaných s Site Recovery, rozepsaný podle cíle bodu obnovení (RPO): méně než 15 minut, mezi 15-30 minutami a více než 30 minutami.
 
 ```
 AzureDiagnostics 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>Frekvence změny dat dotazů pro virtuální počítač
 
-Tento dotaz vykreslí graf trendu pro konkrétní virtuální počítač Azure (ContosoVM123), který sleduje rychlost změny dat (bajty zápisu za sekundu) a rychlost odesílání dat. Tyto informace jsou dostupné jenom pro virtuální počítače Azure replikované do sekundární oblasti Azure.
+> [!NOTE] 
+> Informace o změnách jsou dostupné jenom pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure.
+
+Tento dotaz vykreslí graf trendu pro konkrétní virtuální počítač Azure (ContosoVM123), který sleduje rychlost změny dat (bajty zápisu za sekundu) a rychlost odesílání dat. 
 
 ```
 AzureDiagnostics   
@@ -319,6 +327,6 @@ AzureDiagnostics  
 
 Pro tuto výstrahu nastavte **prahovou hodnotu** na 1 a **periodu** na 1440 minut, abyste zkontrolovali selhání za poslední den.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si informace o](site-recovery-monitor-and-troubleshoot.md) sestaveném Site Recovery monitoring.
