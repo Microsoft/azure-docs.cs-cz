@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676688"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311591"
 ---
-# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
 
 Služba Virtual Desktop systému Windows nabízí kontejnery profilů FSLogix jako doporučené řešení profilu uživatele. Nedoporučujeme používat řešení diskového profilu uživatele (UPD), které se v budoucích verzích virtuálního klienta Windows už nepoužívá.
 
 V tomto článku se dozvíte, jak nastavit sdílení kontejneru profilu FSLogix pro fond hostitelů pomocí sdílené složky založené na virtuálním počítači. Další dokumentaci k FSLogix najdete na [webu FSLogix](https://docs.fslogix.com/).
+
+>[!NOTE]
+>Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Vytvořit nový virtuální počítač, který bude fungovat jako sdílená složka
 
@@ -62,10 +65,10 @@ Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělej
 6. Vytvořte klíč s názvem **Profiles**.
 7. Pro klíč profilů vytvořte následující hodnoty:
 
-| Name                | Typ               | Data/hodnota                        |
+| Name (Název)                | Typ               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
-| Povoleno             | DWORD              | první                                 |
+| Povoleno             | HODNOTY              | 1\. místo                                 |
 | VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |
 
 >[!IMPORTANT]
->Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md).

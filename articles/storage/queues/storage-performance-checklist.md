@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: f9bff9c9d96d28af43f59d2b645364fe32235212
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 02196a4df71bef767f8d1921f704907ad06e77b4
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303131"
+ms.locfileid: "72311156"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue
 

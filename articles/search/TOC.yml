@@ -169,7 +169,7 @@
           href: search-howto-complex-data-types.md
         - name: Modelování relačních dat
           href: index-sql-relational-data.md
-    - name: Načtení dat
+    - name: Indexování libovolných dat
       items:
         - name: Přehled importu dat
           href: search-what-is-data-import.md
@@ -181,7 +181,21 @@
           href: search-howto-large-index.md
         - name: Zpracování souběžných aktualizací
           href: search-howto-concurrency.md
-    - name: Načtení dat pomocí indexerů
+    - name: Indexování dat objektů blob Azure
+      items:
+        - name: Použití AI s daty objektů blob
+          href: search-blob-ai-integration.md
+        - name: Přidání fulltextového vyhledávání
+          href: search-blob-storage-integration.md
+        - name: Nastavení indexeru objektů blob
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: 'Indexování objektů blob 1:N'
+          href: search-howto-index-one-to-many-blobs.md
+        - name: Indexování objektů blob CSV
+          href: search-howto-index-csv-blobs.md
+        - name: Indexování objektů blob JSON
+          href: search-howto-index-json-blobs.md
+    - name: Indexování s využitím indexerů
       items:
         - name: Přehled indexerů
           href: search-indexer-overview.md
@@ -191,16 +205,6 @@
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
         - name: Indexer pro Azure Cosmos DB
           href: search-howto-index-cosmosdb.md
-        - name: Indexer pro Azure Blob Storage
-          items:
-            - name: Nastavení indexeru objektů blob
-              href: search-howto-indexing-azure-blob-storage.md
-            - name: 'Indexování objektů blob 1:N'
-              href: search-howto-index-one-to-many-blobs.md
-            - name: Indexování objektů blob CSV
-              href: search-howto-index-csv-blobs.md
-            - name: Indexování objektů blob JSON
-              href: search-howto-index-json-blobs.md
         - name: Plánování indexerů
           href: search-howto-schedule-indexers.md
         - name: Pole map

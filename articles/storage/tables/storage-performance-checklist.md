@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cb9f37d5e2c33984189c90857b409d3a59e74e59
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303117"
+ms.locfileid: "72311604"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -47,15 +47,15 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Tabulky a oddíly |[Správně jste rozdělili data?](#schema) |
 | &nbsp; |Aktivní oddíly |[Nechcete se vyhnout pouze připojeným vzorům jenom pro připojení a k předřazení?](#append-only-and-prepend-only-patterns) |
 | &nbsp; |Aktivní oddíly |[Jsou vložení nebo aktualizace rozloženy mezi mnoho oddílů?](#high-traffic-data) |
-| &nbsp; |Obor dotazu |[Navrhli jste schéma, aby bylo možné používat dotazy bodů ve většině případů, a dotazy tabulek, které se mají používat zřídka?](#query-scope) |
+| &nbsp; |Rozsah dotazu |[Navrhli jste schéma, aby bylo možné používat dotazy bodů ve většině případů, a dotazy tabulek, které se mají používat zřídka?](#query-scope) |
 | &nbsp; |Hustota dotazů |[Budou dotazy obvykle prohledávat a vracet pouze řádky, které bude aplikace používat?](#query-density) |
 | &nbsp; |Omezení vrácených dat |[Používáte filtrování, abyste se vyhnuli vrácení nepotřebných entit?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Omezení vrácených dat |[Používáte projekci k tomu, abyste se vyhnuli vrácení vlastností, které nejsou potřeba?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Denormalizace |[Vyzkoušeli jste Denormalizovaná data, abyste se vyhnuli neefektivním dotazům nebo vícenásobným požadavkům na čtení při pokusu o získání dat?](#denormalization) |
-| &nbsp; |Vložit/aktualizovat/odstranit |[Vytváříte dávkování požadavků, které musí být transakční, nebo je lze provést ve stejnou dobu, abyste snížili zpáteční cesty?](#batching) |
-| &nbsp; |Vložit/aktualizovat/odstranit |[Nemůžete načítat entitu jenom k určení toho, jestli se má volat vložení nebo aktualizace?](#upsert) |
-| &nbsp; |Vložit/aktualizovat/odstranit |[Měli jste v potaz ukládání řady dat, které se často načítají v jedné entitě jako vlastnosti místo více entit?](#storing-data-series-in-a-single-entity) |
-| &nbsp; |Vložit/aktualizovat/odstranit |[Pro entity, které se vždycky načítají společně a můžou být napsané v dávkách (například data časových řad), jste se domnívali používat objekty blob místo tabulek?](#storing-structured-data-in-blobs) |
+| &nbsp; |Vložení, aktualizace a odstranění |[Vytváříte dávkování požadavků, které musí být transakční, nebo je lze provést ve stejnou dobu, abyste snížili zpáteční cesty?](#batching) |
+| &nbsp; |Vložení, aktualizace a odstranění |[Nemůžete načítat entitu jenom k určení toho, jestli se má volat vložení nebo aktualizace?](#upsert) |
+| &nbsp; |Vložení, aktualizace a odstranění |[Měli jste v potaz ukládání řady dat, které se často načítají v jedné entitě jako vlastnosti místo více entit?](#storing-data-series-in-a-single-entity) |
+| &nbsp; |Vložení, aktualizace a odstranění |[Pro entity, které se vždycky načítají společně a můžou být napsané v dávkách (například data časových řad), jste se domnívali používat objekty blob místo tabulek?](#storing-structured-data-in-blobs) |
 
 ## <a name="scalability-targets"></a>Cíle škálovatelnosti
 
@@ -254,7 +254,7 @@ Pokud vaše klientská aplikace potřebuje jenom omezenou sadu vlastností z ent
 
 Na rozdíl od práce s relačními databázemi osvědčené postupy pro efektivní dotazování dat tabulek vedou k denormalizaci vašich dat. To znamená, že duplikují stejná data ve více entitách (jeden pro každý klíč, který můžete použít k vyhledání dat), abyste minimalizovali počet entit, které musí dotaz vyhledat, aby se vyhledala data, která potřebuje, a nemuseli kontrolovat velký počet entit, aby bylo možné najít data aplikace. likace potřeby. Například na webu elektronického obchodování můžete chtít najít objednávku podle ID zákazníka (dát mi objednávky tohoto zákazníka) a podle data (dát mi do objednávky datum). V Table Storage je nejlepší ukládat entitu (nebo odkaz na ni) dvakrát – jednou s názvem tabulky, PK a vých, aby se usnadnilo hledání podle zákaznického ID, a to jednou, aby bylo snazší ho najít podle data.  
 
-### <a name="insertupdatedelete"></a>Vložit/aktualizovat/odstranit
+### <a name="insert-update-and-delete"></a>Vložení, aktualizace a odstranění
 
 Tato část popisuje osvědčené postupy pro úpravu entit uložených v Table service.  
 

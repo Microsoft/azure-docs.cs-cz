@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303038"
+ms.locfileid: "72311134"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -45,6 +45,9 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
+| &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
+| &nbsp; |Kopírování objektů BLOB |[Používáte pro hromadné kopírování nejnovější verzi AzCopy?](#use-azcopy) |
+| &nbsp; |Kopírování objektů BLOB |[Používáte pro import velkých objemů dat Azure Data Box rodinu?](#use-azure-data-box) |
 | &nbsp; |Distribuce obsahu |[Používáte pro distribuci obsahu síť CDN?](#content-distribution) |
 | &nbsp; |Použití metadat |[Ukládáte často používaná metadata o objektech blob v jejich metadatech?](#use-metadata) |
 | &nbsp; |Rychlé nahrávání |[Při rychlém nahrání jednoho objektu BLOB se bloky nahrávají paralelně?](#upload-one-large-blob-quickly) |
@@ -183,7 +186,7 @@ Další informace o vylepšení výkonu v .NET Core najdete v následujících b
 
 ### <a name="increase-default-connection-limit"></a>Zvýšit výchozí limit připojení
 
-V rozhraní .NET zvyšuje následující kód výchozí limit připojení (obvykle 2 v klientském prostředí nebo 10 v prostředí serveru) na 100. Obvykle byste měli nastavit hodnotu na přibližně počet vláken používaných vaší aplikací. Před otevřením připojení nastavte limit připojení.
+V rozhraní .NET zvyšuje následující kód výchozí limit připojení (což je obvykle dvě v klientském prostředí nebo desítkě v prostředí serveru) na 100. Obvykle byste měli nastavit hodnotu na přibližně počet vláken používaných vaší aplikací. Před otevřením připojení nastavte limit připojení.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -227,9 +230,23 @@ Knihovny klienta zpracovává opakované pokusy s vědomím, které chyby lze op
 
 Další informace o kódech chyb Azure Storage naleznete v tématu [stav a chybové kódy](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="transfer-data"></a>Přenos dat
+## <a name="copying-and-moving-blobs"></a>Kopírování a přesouvání objektů BLOB
 
-Informace o efektivním přenosu dat do nebo z úložiště objektů BLOB nebo mezi účty úložiště najdete v tématu [Volba řešení Azure pro přenos dat](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
+Azure Storage poskytuje řadu řešení pro kopírování a přesouvání objektů BLOB v rámci účtu úložiště, mezi účty úložiště a mezi místními systémy a cloudem. Tato část popisuje některé z těchto možností z pohledu jejich dopadu na výkon. Informace o efektivním přenosu dat do úložiště objektů BLOB nebo z něj najdete v tématu [Volba řešení Azure pro přenos dat](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="blob-copy-apis"></a>Rozhraní API pro kopírování objektů BLOB
+
+K kopírování objektů BLOB mezi účty úložiště použijte operaci [vložení bloku z adresy URL](/rest/api/storageservices/put-block-from-url) . Tato operace kopíruje data synchronně z libovolného zdroje adresy URL do objektu blob bloku. Při migraci dat mezi účty úložiště může použití operace `Put Block from URL` významně snížit požadovanou šířku pásma. Vzhledem k tomu, že operace kopírování probíhá na straně služby, není nutné data stahovat a znovu nahrávat.
+
+Pokud chcete kopírovat data v rámci stejného účtu úložiště, použijte operaci [Kopírovat objekt BLOB](/rest/api/storageservices/Copy-Blob) . Kopírování dat v rámci stejného účtu úložiště se obvykle dokončí rychle.  
+
+### <a name="use-azcopy"></a>Použití AzCopy
+
+Nástroj příkazového řádku AzCopy je jednoduchá a efektivní možnost pro hromadné přenosy objektů blob do, z a napříč účty úložiště. AzCopy je pro tento scénář optimalizované a může dosáhnout vysoké míry přenosů. AzCopy verze 10 používá k kopírování dat objektů BLOB napříč účty úložiště operaci `Put Block From URL`. Další informace najdete v tématu [kopírování nebo přesun dat do Azure Storage pomocí nástroje AzCopy v10 za účelem](/azure/storage/common/storage-use-azcopy-v10).  
+
+### <a name="use-azure-data-box"></a>Použít Azure Data Box
+
+Pokud chcete importovat velké objemy dat do úložiště objektů blob, zvažte použití řady Azure Data Box pro offline přenosy. Zařízení Data Box poskytnutá společností Microsoft jsou vhodnou volbou pro přesun velkých objemů dat do Azure, pokud jste omezeni časem, dostupností sítě nebo náklady. Další informace najdete v dokumentaci ke [službě Azure Databox](/azure/databox/).
 
 ## <a name="content-distribution"></a>Distribuce obsahu
 
@@ -239,7 +256,7 @@ Další informace o Azure CDN najdete v tématu [Azure CDN](../../cdn/cdn-overvi
 
 ## <a name="use-metadata"></a>Použití metadat
 
-Blob service podporuje žádosti o hlavu, které mohou zahrnovat vlastnosti nebo metadata objektu BLOB. Například pokud vaše aplikace potřebuje data formátu EXIF (exchangable Image Format) z fotografie, může ji načíst a extrahovat. Chcete-li ušetřit šířku pásma a zvýšit výkon, aplikace může ukládat data Exif v metadatech objektu blob, když aplikace nahraje fotografii. Pak můžete načíst data Exif v metadatech pouze pomocí žádosti HEAD. Načítání pouze metadat a neúplný obsah objektu BLOB šetří značnou šířku pásma a zkracuje dobu zpracování potřebnou k extrakci dat EXIF. Pamatujte, že pro každý objekt BLOB se dá ukládat jenom 8 KB metadat.  
+Blob service podporuje žádosti o hlavu, které mohou zahrnovat vlastnosti nebo metadata objektu BLOB. Například pokud vaše aplikace potřebuje data formátu EXIF (exchangable Image Format) z fotografie, může ji načíst a extrahovat. Chcete-li ušetřit šířku pásma a zvýšit výkon, aplikace může ukládat data Exif v metadatech objektu blob, když aplikace nahraje fotografii. Pak můžete načíst data Exif v metadatech pouze pomocí žádosti HEAD. Načítání pouze metadat a neúplný obsah objektu BLOB šetří značnou šířku pásma a zkracuje dobu zpracování potřebnou k extrakci dat EXIF. Pamatujte, že 8 KiB metadat je možné uložit na objekt BLOB.  
 
 ## <a name="upload-blobs-quickly"></a>Rychlé nahrání objektů BLOB
 

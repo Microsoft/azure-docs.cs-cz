@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105388"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311643"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix ve službě Azure HDInsight
 
@@ -32,7 +32,7 @@ Apache Phoenix přidává do HBA dotazy několik vylepšení výkonu a funkcí.
 
 HBA mají jeden index, který je lexikograficky seřazený podle primárního klíče řádku. K těmto záznamům lze přistupovat pouze prostřednictvím klíče řádku. Přístup k záznamům přes libovolný jiný sloupec, než je klíč řádku, vyžaduje při použití požadovaného filtru kontrolu všech dat. V sekundárním indexu jsou sloupce nebo výrazy indexované na klíč alternativního řádku a umožňují vyhledávání a prohledávání rozsahu tohoto indexu.
 
-Pomocí `CREATE INDEX` příkazu vytvořte sekundární index:
+Pomocí příkazu `CREATE INDEX` vytvořte sekundární index:
 
 ```sql
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
@@ -44,7 +44,7 @@ Tento přístup může přinést výrazné zvýšení výkonu při provádění 
 
 Zobrazení v Phoenixu nabízí způsob, jak překonat omezení HBA, kde výkon začne snižovat při vytváření více než přibližně 100 fyzických tabulek. Zobrazení v Phoenixu umožňuje více *virtuálním tabulkám* sdílet jednu základní tabulku fyzických adaptérů HBA.
 
-Vytvoření zobrazení v Phoenixu se podobá použití standardní syntaxe zobrazení SQL. Jedním rozdílem je, že můžete definovat sloupce pro zobrazení kromě sloupců zděděných z jeho základní tabulky. Můžete také přidat nové `KeyValue` sloupce.
+Vytvoření zobrazení v Phoenixu se podobá použití standardní syntaxe zobrazení SQL. Jedním rozdílem je, že můžete definovat sloupce pro zobrazení kromě sloupců zděděných z jeho základní tabulky. Můžete také přidat nové sloupce `KeyValue`.
 
 Tady je například fyzická tabulka s názvem `product_metrics` s následující definicí:
 
@@ -65,13 +65,13 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Chcete-li přidat další sloupce později, `ALTER VIEW` použijte příkaz.
+Chcete-li později přidat další sloupce, použijte příkaz `ALTER VIEW`.
 
 ### <a name="skip-scan"></a>Přeskočit kontrolu
 
 Funkce Přeskočit kontrolu používá jeden nebo více sloupců složeného indexu k vyhledání jedinečných hodnot. Na rozdíl od prohledávání rozsahu je přeskočení kontroly implementovat kontrolu uvnitř řádku a výsledkem je [vyšší výkon](https://phoenix.apache.org/performance.html#Skip-Scan). Při kontrole se první odpovídající hodnota přeskočí spolu s indexem, dokud se nenajde další hodnota.
 
-Přeskočení vyhledávání používá `SEEK_NEXT_USING_HINT` výčet filtru HBA. Pomocí `SEEK_NEXT_USING_HINT`funkce Přeskočit kontrolu uchovává informace o tom, která sada klíčů nebo rozsahy klíčů je prohledávána v jednotlivých sloupcích. Přeskočení vyhledávání pak převezme klíč, který byl předán během vyhodnocování filtru, a určí, zda se jedná o jednu z kombinací. V takovém případě vyhledávání Skip vyhodnocuje další nejvyšší klíč, na který se má přejít.
+Při přeskočení vyhledávání se používá výčet @no__t 0 pro filtr HBA. Při použití `SEEK_NEXT_USING_HINT` bude přeskočení vyhledávání sledovat, která sada klíčů nebo rozsahy klíčů je prohledávána v jednotlivých sloupcích. Přeskočení vyhledávání pak převezme klíč, který byl předán během vyhodnocování filtru, a určí, zda se jedná o jednu z kombinací. V takovém případě vyhledávání Skip vyhodnocuje další nejvyšší klíč, na který se má přejít.
 
 ### <a name="transactions"></a>Transakce
 
@@ -81,13 +81,13 @@ Stejně jako u tradičních transakcí SQL vám transakce poskytované prostřed
 
 Pokud chcete povolit transakce v Phoenixu, přečtěte si [dokumentaci Apache Phoenix transakce](https://phoenix.apache.org/transactions.html).
 
-Chcete-li vytvořit novou tabulku s povolenými transakcemi `TRANSACTIONAL` , nastavte `true` vlastnost na `CREATE` hodnotu v příkazu:
+Chcete-li vytvořit novou tabulku s povolenými transakcemi, nastavte vlastnost `TRANSACTIONAL` na hodnotu `true` v příkazu `CREATE`:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Chcete-li změnit existující tabulku na transakční, použijte stejnou vlastnost v `ALTER` příkazu:
+Chcete-li změnit existující tabulku na transakční, použijte v příkazu `ALTER` stejnou vlastnost:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
@@ -100,7 +100,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 *Oblast serveru hotspotting* může nastat při zápisu záznamů s sekvenčními klíči do adaptérů HBA. I když máte ve vašem clusteru více serverů oblastí, budou se všechny zápisy objevovat pouze v jednom z nich. Tato koncentrace vytvoří problém hotspotting, kdy se místo úlohy zápisu do všech dostupných serverů oblastí zpracovává zatížení jenom jednou. Vzhledem k tomu, že každá oblast má předdefinovanou maximální velikost, když oblast dosáhne omezení velikosti, rozdělí se na dvě malé oblasti. Pokud k tomu dojde, jedna z těchto nových oblastí vezme všechny nové záznamy, stane se nové hotspoty.
 
-Pro zmírnění tohoto problému a dosažení lepšího výkonu, předem rozdělené tabulky, aby se všechny servery oblastí používaly stejně. Phoenix poskytuje *nasolené tabulky*, transparentně přidávají dvoubajtové bajty do klíče řádku pro konkrétní tabulku. Tabulka je předem rozdělena na hranice bajtových bajtů, aby bylo zajištěno stejné rozdělení zatížení mezi servery oblastí během počáteční fáze tabulky. Tento přístup distribuuje zátěž pro zápis napříč všemi dostupnými servery oblastí a zlepšuje výkon při zápisu a čtení. Chcete-li nasoleit tabulku `SALT_BUCKETS` , určete vlastnost Table při vytvoření tabulky:
+Pro zmírnění tohoto problému a dosažení lepšího výkonu, předem rozdělené tabulky, aby se všechny servery oblastí používaly stejně. Phoenix poskytuje *nasolené tabulky*, transparentně přidávají dvoubajtové bajty do klíče řádku pro konkrétní tabulku. Tabulka je předem rozdělena na hranice bajtových bajtů, aby bylo zajištěno stejné rozdělení zatížení mezi servery oblastí během počáteční fáze tabulky. Tento přístup distribuuje zátěž pro zápis napříč všemi dostupnými servery oblastí a zlepšuje výkon při zápisu a čtení. Chcete-li nasoleit tabulku, určete vlastnost tabulky `SALT_BUCKETS` při vytvoření tabulky:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -125,7 +125,7 @@ CREATE TABLE Saltedweblogs (
 
 Cluster An HDInsight HBA zahrnuje [uživatelské rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro provádění změn konfigurace.
 
-1. Pokud chcete povolit nebo zakázat Phoenix a řídit nastavení časového limitu dotazů v Phoenixu, přihlaste se k webovému`https://YOUR_CLUSTER_NAME.azurehdinsight.net`uživatelskému rozhraní Ambari () pomocí vašich uživatelských přihlašovacích údajů Hadoop.
+1. Pokud chcete povolit nebo zakázat Phoenix a řídit nastavení časového limitu dotazů v Phoenixu, přihlaste se k webovému uživatelskému rozhraní Ambari (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) pomocí vašich uživatelských přihlašovacích údajů Hadoop.
 
 2. V seznamu služeb v nabídce na levé straně vyberte **HBA** a pak vyberte kartu **Konfigurace** .
 
@@ -135,6 +135,6 @@ Cluster An HDInsight HBA zahrnuje [uživatelské rozhraní Ambari](hdinsight-had
 
     ![Oddíl konfigurace SQL pro Ambari Phoenix](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Použití Apache Phoenix s clustery se systémem Linux v HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Použití Apache Phoenix s clustery se systémem Linux v HDInsight](hbase/apache-hbase-query-with-phoenix.md)
