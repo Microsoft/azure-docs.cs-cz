@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: a4a4eefc1b31e8412392f5ffed404201b98e0386
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cefd0653985e4340e62e0ea56f73ff2cabf5741b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996359"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312124"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -40,14 +40,14 @@ Někteří partneři pro připojení můžou automatizovat automatizaci, aby zah
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři se v blízké budoucnosti plánované na náš plán: Arista, F5 Networks, Fortinet, stříbrné špičky, Velocloud, Nuage Nokia.
+Následující partneři jsou plánované pro náš budoucí plán: Arista, F5 Networks, Fortinet, stříbrná, Velocloud, Nuage Nokia.
 
 ## <a name="locations"></a>Polohy
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o virtuální síti WAN najdete v nejčastějších dotazech k [virtuální síti WAN](virtual-wan-faq.md).
+* Další informace o virtuální síti WAN najdete v [nejčastějších dotazech k virtuální síti WAN](virtual-wan-faq.md).
 
 * Další informace o tom, jak automatizovat připojení ke službě Azure Virtual WAN, najdete v tématu [virtuální partneři sítě WAN – jak automatizovat](virtual-wan-configure-automation-providers.md).

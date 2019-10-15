@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676602"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311797"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
 Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. FSLogix je navržená pro roaming profilů ve vzdálených výpočetních prostředích, jako je například virtuální počítač s Windows. Ukládá kompletní profil uživatele do jediného kontejneru. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
+
+>[!NOTE]
+>Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
 ## <a name="user-profiles"></a>Profily uživatelů
 
@@ -55,7 +58,7 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.  
 
-#### <a name="cost"></a>Ze
+#### <a name="cost"></a>Náklady
 
 I když clustery S2D dosahují nezbytného výkonu, jsou pro podnikové zákazníky nákladné, ale zvláště nákladné pro zákazníky s malým a středním firmou (SMB). Pro toto řešení podniky platíte za disky úložiště společně s náklady na virtuální počítače, které používají disky pro sdílenou složku.
 

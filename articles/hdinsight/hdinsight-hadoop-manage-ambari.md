@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/11/2019
+ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098656"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311657"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
 
@@ -29,16 +29,16 @@ V tomto dokumentu se dozvíte, jak používat webové uživatelské rozhraní Am
 
 ## <a name="connectivity"></a>Připojení
 
-Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight `https://CLUSTERNAME.azurehdinsight.net`v umístění `CLUSTERNAME` , kde je název vašeho clusteru.
+Webové uživatelské rozhraní Ambari je v clusteru HDInsight k dispozici na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
 
 > [!IMPORTANT]  
 > Připojení k Ambari v HDInsight vyžaduje protokol HTTPS. Po zobrazení výzvy k ověření použijte název účtu správce a heslo, které jste zadali při vytvoření clusteru.
 
 ## <a name="ssh-tunnel-proxy"></a>Tunel SSH (proxy)
 
-I když je Ambari pro váš cluster přístupný přímo přes Internet, některé odkazy z webového uživatelského rozhraní Ambari (například na JobTracker) se nezveřejňují na internetu. Chcete-li získat přístup k těmto službám, je nutné vytvořit tunel SSH. Další informace najdete v tématu [použití tunelového propojení SSH se službou HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+I když je Ambari pro váš cluster přístupný přímo přes Internet, některé odkazy z webového uživatelského rozhraní Ambari (například na JobTracker) nejsou zveřejněné na internetu. Chcete-li získat přístup k těmto službám, je nutné vytvořit tunel SSH. Další informace najdete v tématu [použití tunelového propojení SSH se službou HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="ambari-web-ui"></a>Webové uživatelské rozhraní Ambari
 
 > [!WARNING]  
 > Ve službě HDInsight nejsou podporovány všechny funkce webového uživatelského rozhraní Ambari. Další informace najdete v části [nepodporované operace](#unsupported-operations) v tomto dokumentu.
@@ -57,20 +57,20 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Řídicí panel|Zobrazí řídicí panel.|
 |Služby|Informace a konfigurační nastavení pro služby v clusteru.|
 |Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
-|Upozornění|Protokol informací, upozornění a kritických výstrah.|
-|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|Výstrahy|Protokol informací, upozornění a kritických výstrah.|
+|Správ|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 Následující seznam obsahuje běžné stavy výstrah, které používá Ambari:
 
-* **OK**
+* **Ok**
 * **Upozornění**
 * **KRITICKÉ**
-* **NEZNÁMÝ**
+* **Neznámý**
 
 Jiné výstrahy než **OK** způsobí, že položka **# výstrahy** v horní části stránky zobrazuje počet výstrah. Výběrem této položky se zobrazí upozornění a jejich stav.
 
@@ -82,7 +82,7 @@ Skupiny můžete spravovat pomocí nabídky **Akce** a výběrem **možnosti spr
 
 ![Správa skupin výstrah Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení výstrah__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
+Můžete také spravovat metody upozorňování a vytvářet oznámení výstrah z nabídky **Akce** výběrem __možnosti spravovat oznámení__. Zobrazí se všechna aktuální oznámení. Můžete také vytvořit oznámení z tohoto místa. Oznámení je možné odeslat **e-mailem** nebo **protokolem SNMP** , když dojde k určitým kombinacím výstrah a závažnosti. Můžete například odeslat e-mailovou zprávu, pokud se některá z výstrah ve **výchozí skupině příze** nastaví na **kritickou**.
 
 ![Oznámení o vytvoření výstrahy pro Apache Ambari](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -98,7 +98,7 @@ Karta **Heat mapy** zobrazuje metriky jako barevné Heat mapyy z zelené na čer
 
 ![Řídicí panel Apache Ambari s Heat mapy](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, který vás zajímá.
+Chcete-li získat další informace o uzlech v clusteru, vyberte možnost **hostitelé**. Pak vyberte konkrétní uzel, na který vás zajímáte.
 
 ![Souhrnné informace o Ambari hostitele Apache](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
@@ -159,8 +159,8 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Zapnout režim údržby|Potlačí výstrahy pro hostitele. Tento režim by měl být povolen, pokud provádíte akce, které generují výstrahy. Například zastavení a spuštění služby.|
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
-    |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restart|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Začátek|Spustí na hostiteli datanode nebo NodeManagers.|
+    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 
@@ -193,19 +193,19 @@ Ke konfiguraci služby použijte následující postup:
 
 1. Na stránce **řídicí panel** nebo **služby** vyberte službu.
 
-2. Vyberte **Configs** kartu. Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
+2. Vyberte kartu **Konfigurace** . Zobrazí se aktuální konfigurace. Zobrazí se také seznam předchozích konfigurací.
 
     ![Konfigurace služby Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Pomocí zobrazených polí Upravte konfiguraci a potom vyberte **Uložit**. Nebo vyberte předchozí konfiguraci a pak vyberte **nastavit jako aktuální** a vraťte se k předchozímu nastavení.
 
-## <a name="ambari-views"></a>Ambari Views
+## <a name="ambari-views"></a>Zobrazení Ambari
 
 Ambari zobrazení umožňují vývojářům napojit prvky uživatelského rozhraní do webového uživatelského rozhraní Ambari pomocí [architektury zobrazení Apache Ambari](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight poskytuje následující zobrazení s typy clusterů Hadoop:
 
-* Zobrazení podregistru: Zobrazení podregistru umožňuje spouštět dotazy na podregistr přímo z webového prohlížeče. Můžete ukládat dotazy, zobrazovat výsledky, ukládat výsledky do úložiště clusteru nebo stahovat výsledky do místního systému. Další informace o používání zobrazení podregistru najdete v tématu [použití zobrazení Apache Hive se službou HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
+* Zobrazení podregistru: zobrazení podregistru umožňuje spouštět dotazy na podregistr přímo z webového prohlížeče. Můžete ukládat dotazy, zobrazovat výsledky, ukládat výsledky do úložiště clusteru nebo stahovat výsledky do místního systému. Další informace o používání zobrazení podregistru najdete v tématu [použití zobrazení Apache Hive se službou HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Tez zobrazení: Zobrazení tez vám umožňuje lépe pochopit a optimalizovat úlohy. Můžete si prohlédnout informace o tom, jak se úlohy tez spouštějí a jaké prostředky se používají.
+* Zobrazení tez: tez zobrazení vám umožní lépe pochopit a optimalizovat úlohy. Můžete si prohlédnout informace o tom, jak se úlohy tez spouštějí a jaké prostředky se používají.
 
 ## <a name="unsupported-operations"></a>Nepodporované operace
 
@@ -213,6 +213,6 @@ Ve službě HDInsight nejsou podporovány následující operace Ambari:
 
 * Probíhá __Přesun služby sběrače metrik__. Při zobrazení informací o službě sběrače metrik je jednou z akcí, které jsou k dispozici v nabídce Akce služby, __kolekce metriky přesunutí__. V HDInsight to není podporováno.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se používat [REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md) se službou HDInsight.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301864"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311870"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na Azure Virtual Machines
 
@@ -37,7 +37,7 @@ Měli byste mít praktické znalosti následujících technologií:
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Důležitým rozdílem je to, že na clusteru s podporou převzetí služeb při selhání virtuálního počítače Azure IaaS doporučujeme jednu síťovou kartu na jeden server (uzel clusteru) a jednu podsíť. Sítě Azure má fyzickou redundanci, díky níž je zbytečné používat další síťové adaptéry a podsítě na hostovaném clusteru ve virtuálním počítači Azure IaaS. I když sestava ověření clusteru vydá upozornění, že uzly jsou dosažitelné jenom v jedné síti, můžete toto upozornění bezpečně ignorovat na clusterech s podporou převzetí služeb při selhání virtuálních počítačů Azure IaaS. 
+Důležitým rozdílem je to, že na clusteru s podporou převzetí služeb při selhání virtuálního počítače Azure IaaS doporučujeme jednu síťovou kartu na jeden server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když sestava ověření clusteru vydá upozornění, že uzly jsou dosažitelné jenom v jedné síti, můžete toto upozornění bezpečně ignorovat na clusterech s podporou převzetí služeb při selhání virtuálních počítačů Azure IaaS. 
 
 Kromě toho byste měli mít obecné informace o těchto technologiích:
 
@@ -51,7 +51,7 @@ Kromě toho byste měli mít obecné informace o těchto technologiích:
 
 Soubory úrovně Premium poskytují IOPS a celou kapacitu, která bude vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v je ale vhodné [SQL Server FCI s prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md) na základě spravovaných disků Premium nebo extrémně-discích.  
 
-Zkontrolujte aktivitu IOPS vašeho aktuálního prostředí a před zahájením nasazení nebo migrace ověřte, že soubory prémií budou poskytnout IOPS, které potřebujete. Použijte čítače disku sledování výkonu systému Windows a monitorovat celkový počet IOPS (přenosů disku/s) a propustnost (bajtů disku/s) požadovanou pro SQL Server dat, protokolů a dočasná databáze. Mnohé úlohy mají v/v vstupně-výstupní operace, takže je dobré kontrolovat během těžkých dob používání a poznamenat maximální IOPS a také průměrnou IOPS. Sdílené soubory úrovně Premium poskytují IOPS na základě velikosti sdílené složky. Prémiové soubory také poskytují bezplatné rozmístění, kde můžete zvýšit počet vstupně-výstupních operací na trojnásobek základní částky po dobu až jedné hodiny. 
+Zkontrolujte aktivitu IOPS vašeho aktuálního prostředí a před zahájením nasazení nebo migrace ověřte, že soubory prémií budou poskytnout IOPS, které potřebujete. Použijte čítače disku sledování výkonu systému Windows a monitorovat celkový počet vstupně-výstupních operací za sekundu (přenosy disku/s) a propustnost (v bajtech disku/s) požadované pro soubory SQL Server dat, protokolů a dočasné databáze. Mnohé úlohy mají v/v vstupně-výstupní operace, takže je dobré kontrolovat během těžkých dob používání a poznamenat maximální IOPS a také průměrnou IOPS. Sdílené soubory úrovně Premium poskytují IOPS na základě velikosti sdílené složky. Prémiové soubory také poskytují bezplatné rozmístění, kde můžete zvýšit počet vstupně-výstupních operací na trojnásobek základní částky po dobu až jedné hodiny. 
 
 ### <a name="licensing-and-pricing"></a>Licencování a ceny
 
@@ -165,34 +165,20 @@ Po vytvoření a konfiguraci virtuálních počítačů můžete nakonfigurovat 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a pokračujte na svůj účet úložiště.
 1. V části **Souborová služba** klikněte na **sdílené složky** a vyberte prémiovou sdílenou složku, kterou chcete použít pro své úložiště SQL. 
 1. Výběrem **připojit** otevřete připojovací řetězec pro sdílenou složku. 
-1. V rozevíracím seznamu vyberte písmeno jednotky, které chcete použít, a potom zkopírujte dva příkazy prostředí PowerShell ze dvou bloků příkazů prostředí PowerShell.  Vložte je do textového editoru, jako je například Poznámkový blok. 
+1. V rozevíracím seznamu vyberte písmeno jednotky, které chcete použít, a potom zkopírujte oba bloky kódu do poznámkového bloku.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce":::
 
 1. Protokol RDP do virtuálního počítače s SQL Server pomocí účtu, který bude služba SQL Server FCI používat pro účet služby. 
 1. Spusťte konzolu Command PowerShellu pro správu. 
-1. Spusťte příkaz `Test-NetConnection` pro otestování připojení k účtu úložiště. Nespouštějte příkaz `cmdkey` z prvního bloku kódu. 
+1. Spusťte příkazy z portálu, který jste předtím uložili. 
+1. Přejděte ke sdílené složce pomocí Průzkumníka souborů nebo dialogového okna **Spustit** (klávesa Windows + r) pomocí síťové cesty `\\storageaccountname.file.core.windows.net\filesharename`. Příklad: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. Spuštěním příkazu `cmdkey` z *druhého* bloku kódu připojte sdílenou složku jako jednotku a zachovejte ji. 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. Otevřete **Průzkumníka souborů** a přejděte na **Tento počítač**. Sdílená složka je zobrazena v umístění v síti: 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="Sdílená složka je v Průzkumníkovi souborů viditelná jako úložiště":::
-
-1. Otevřete nově namapovanou jednotku a vytvořte alespoň jednu složku, do které chcete uložit datové soubory SQL. 
+1. Vytvořte alespoň jednu složku pro nově připojenou sdílenou složku, do které chcete umístit datové soubory SQL. 
 1. Tento postup opakujte na každém virtuálním počítači s SQL Server, který se bude podílet na clusteru. 
 
   > [!IMPORTANT]
-  > Nepoužívejte stejnou sdílenou složku pro datové soubory a záložní zdroje. Použijte stejný postup pro konfiguraci sekundární sdílené složky pro zálohování, pokud chcete zálohovat databáze do sdílené složky. 
+  > Zvažte použití samostatné sdílené složky pro záložní soubory k uložení IOPS a velikosti kapacity této sdílené složky pro data a soubor protokolu. Pro záložní soubory můžete použít buď prémiovou, nebo standardní souborovou sdílenou složku.
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>Krok 3: konfigurace clusteru s podporou převzetí služeb při selhání pomocí sdílené složky 
 

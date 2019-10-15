@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: aad601a48b2b420a809a385e336f103612d2e378
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167099"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311701"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
 
@@ -21,7 +21,7 @@ Naučte se vytvořit aplikaci [Apache HBA](https://hbase.apache.org/) v jazyce J
 
 Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k vytvoření a sestavení projektu. Maven je nástroj pro správu a porozumění projektů softwaru, který umožňuje sestavovat software, dokumentaci a sestavy pro projekty v jazyce Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](./apache-hbase-tutorial-get-started-linux.md).
 
@@ -33,7 +33,7 @@ Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k
 
 * Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview).
 
-* Textový editor. Tento článek používá program Poznámkový blok společnosti Microsoft.
+* Textový editor Tento článek používá program Poznámkový blok společnosti Microsoft.
 
 ## <a name="test-environment"></a>Testovací prostředí
 Prostředí použité pro tento článek bylo počítač se systémem Windows 10.  Příkazy byly provedeny v příkazovém řádku a různé soubory byly upraveny pomocí poznámkového bloku. Upravte odpovídajícím způsobem pro vaše prostředí.
@@ -441,7 +441,7 @@ Následující kroky používají `scp` ke zkopírování JAR do primárního hl
 
 Následující postup slouží k nahrání JAR do výchozího úložiště pro cluster Apache HBA pomocí Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) . Rutiny HDInsight se pak používají ke vzdálenému spuštění příkladů.
 
-1. Po instalaci a konfiguraci modulu AZ Module vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah tohoto souboru použijte následující text:
+1. Po instalaci a konfiguraci modulu AZ Module vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah souboru použijte následující text:
 
    ```powershell
     <#
@@ -704,4 +704,4 @@ Pomocí parametru `-showErr` zobrazíte standardní chybu (STDERR), která je vy
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se používat SQLLine s Apache HBA](apache-hbase-phoenix-squirrel-linux.md)
+[Naučte se používat SQLLine s Apache HBA](apache-hbase-query-with-phoenix.md)

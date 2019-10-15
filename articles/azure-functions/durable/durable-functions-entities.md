@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 03e6852f5b54160bed6336e253e38423b5ecea51
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294323"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312139"
 ---
 # <a name="entity-functions-preview"></a>Funkce entit (Preview)
 
@@ -207,6 +207,68 @@ Například můžeme upravit výše uvedený příklad entity čítače, aby moh
         break;
 ```
 
+Následující fragment kódu ukazuje, jak začlenit vloženou službu do vaší třídy entit.
+
+```csharp
+public class HttpEntity
+{
+    private readonly HttpClient client;
+
+    public HttpEntity(IHttpClientFactory factory)
+    {
+        this.client = factory.CreateClient();
+    }
+
+    public async Task<int> GetAsync(string url)
+    {
+        using (var response = await this.client.GetAsync(url))
+        {
+            return (int)response.StatusCode;
+        }
+    }
+
+    // The function entry point must be declared static
+    [FunctionName(nameof(HttpEntity))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<HttpEntity>();
+}
+```
+
+> [!NOTE]
+> Na rozdíl od při použití injektáže konstruktoru v běžném Azure Functions .NET *musí* být metoda vstupního bodu služby Functions pro entity založené na třídě deklarována `static`. Deklarace vstupního bodu nestatické funkce může způsobit konflikty mezi normálním inicializátorem objektu Azure Functions a inicializátorem objektu trvalé entity.
+
+### <a name="bindings-in-entity-classes-net"></a>Vazby v třídách entit (.NET)
+
+Na rozdíl od regulárních funkcí nemají metody třídy entit přímý přístup k vstupní a výstupní vazbě. Místo toho musí být vazba dat zachycena v deklaraci funkce vstupního bodu a poté předána metodě `DispatchAsync<T>`. Všechny objekty předané do `DispatchAsync<T>` budou automaticky předány do konstruktoru třídy entity jako argument.
+
+Následující příklad ukazuje, jak lze zpřístupnit odkaz `CloudBlobContainer` ze [vstupní vazby objektu BLOB](../functions-bindings-storage-blob.md#input) na entitu založenou na třídě.
+
+```csharp
+public class BlobBackedEntity
+{
+    private readonly CloudBlobContainer container;
+
+    public BlobBackedEntity(CloudBlobContainer container)
+    {
+        this.container = container;
+    }
+
+    // ... entity methods can use this.container in their implementations ...
+    
+    [FunctionName(nameof(BlobBackedEntity))]
+    public static Task Run(
+        [EntityTrigger] IDurableEntityContext context,
+        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
+    {
+        // passing the binding object as a parameter makes it available to the
+        // entity class constructor
+        return context.DispatchAsync<BlobBackedEntity>(container);
+    }
+}
+```
+
+Další informace o vazbách v Azure Functions naleznete v dokumentaci k [aktivačním událostem Azure functions a vazebm](../functions-triggers-bindings.md) .
+
 ## <a name="entity-coordination"></a>Koordinace entit
 
 Může nastat situace, kdy potřebujete koordinovat operace mezi několika entitami. Například v bankovní aplikaci můžete mít entity, které představují jednotlivé bankovní účty. Při převádění finančních prostředků z jednoho účtu na jiný je potřeba zajistit, aby měl _zdrojový_ účet dostatečné prostředky a aby se aktualizace _zdrojového_ i _cílového_ účtu prováděly nevhodným způsobem.
@@ -292,7 +354,7 @@ Jakékoli porušení těchto pravidel způsobí chybu za běhu (například `Loc
 
 ## <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s nástrojem Actors, můžete pochopit mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo *zrnam*, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Příklad:
+Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s nástrojem Actors, můžete pochopit mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo *zrnam*, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Například:
 
 * Trvalé entity jsou adresovatelné prostřednictvím *ID entity*.
 * Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.

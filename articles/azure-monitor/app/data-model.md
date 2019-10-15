@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Telemetrie datový Model | Dokumentace Microsoftu
-description: Přehled služby Application Insights data modelu
+title: Datový model Azure Telemetrie Application Insights | Microsoft Docs
+description: Přehled datového modelu Application Insights
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,51 +9,51 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50109d7ba4688606a5a4f1b813d15d78636b7817
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899186"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311773"
 ---
-# <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie datového modelu
+# <a name="application-insights-telemetry-data-model"></a>Model dat Application Insights telemetrie
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá telemetrii z vaší webové aplikace na webu Azure portal, takže můžete analyzovat výkon a využití vaší aplikace. Telemetrická data modelu je standardizované. aby bylo možné vytvořit monitorování nezávislým na jazyku a platformě. 
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá telemetrie z vaší webové aplikace do Azure Portal, abyste mohli analyzovat výkon a využití vaší aplikace. Model telemetrie je standardizovaný tak, aby bylo možné vytvořit platformu a monitorování nezávislé na jazyce. 
 
-Modely dat shromážděných službou Application Insights tento model provádění Typická aplikace:
+Data shromažďovaná modelem Application Insights Tento typický vzor spuštění aplikace:
 
-![Application Insights Application Model](./media/data-model/application-insights-data-model.png)
+![Application Insights aplikační model](./media/data-model/application-insights-data-model.png)
 
-Následující typy telemetrických dat se používají ke sledování provádění vaší aplikace. Následující tři typy jsou obvykle automaticky shromážděná sadou Application Insights SDK z Architektura webových aplikací:
+Následující typy telemetrie slouží k monitorování provádění vaší aplikace. Následující tři typy jsou obvykle automaticky shromažďovány sadou Application Insights SDK z architektury webové aplikace:
 
-* [**Žádost o** ](data-model-request-telemetry.md) – generovaného protokolu žádosti přijaté vaší aplikace. Například webové služby Application Insights SDK automaticky generuje položky telemetrie požadavku pro každý požadavek HTTP, který vaše webová aplikace obdrží. 
+* [**Požadavek**](data-model-request-telemetry.md) vygenerovaný k zaznamenání žádosti přijaté vaší aplikací Například Application Insights webová sada SDK automaticky vygeneruje položku telemetrie žádosti pro každý požadavek HTTP, který vaše webová aplikace obdrží. 
 
-    **Operace** je vlákna provádění, která zpracuje požadavek. Můžete také [napsat kód](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) k monitorování jiných typů operace, například "probuzení" ve webovém projektu nebo funkce, které pravidelně zpracovává data.  Každá operace nemá identifikátor. Toto ID, které je možné použít k [skupiny](../../azure-monitor/app/correlation.md) všechny telemetrie vygenerovaná během zpracování požadavku aplikace. Každá operace buď uspěje nebo selže a má dobu trvání času.
-* [**Výjimka** ](data-model-exception-telemetry.md) – obvykle představuje výjimku, která způsobí, že se operace nezdaří.
-* [**Závislost** ](data-model-dependency-telemetry.md) – představuje volání z vaší aplikace k externí službě nebo úložiště, například rozhraní REST API nebo SQL. V technologii ASP.NET, jsou definovány volání závislostí SQL `System.Data`. Volání koncových bodů HTTP, které jsou definovány pomocí `System.Net`. 
+    **Operace** je podprocesy spuštění, které zpracovávají požadavek. Můžete také [napsat kód](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) pro monitorování jiných typů operací, jako je například "probuzení" ve webové úloze nebo funkci, která pravidelně zpracovává data.  Každá operace má ID. Toto ID, které se dá použít k [seskupení](../../azure-monitor/app/correlation.md) všech telemetrie generovaných v době, kdy vaše aplikace zpracovává požadavek. Každá operace buď proběhne úspěšně, nebo se nezdaří a má časový interval.
+* [**Výjimka**](data-model-exception-telemetry.md) – obvykle představuje výjimku, která způsobí selhání operace.
+* [**Dependency**](data-model-dependency-telemetry.md) – představuje volání z vaší aplikace do externí služby nebo úložiště, jako je například REST API nebo SQL. V ASP.NET jsou volání závislostí do SQL definována pomocí `System.Data`. Volání koncových bodů HTTP jsou definována `System.Net`. 
 
 Application Insights poskytuje tři další datové typy pro vlastní telemetrii:
 
-* [Trasování](data-model-trace-telemetry.md) – použít buď přímo nebo prostřednictvím adaptéru implementace protokolování diagnostiky pomocí rozhraní WMI, které je známé, jako `Log4Net` nebo `System.Diagnostics`.
-* [Událost](data-model-event-telemetry.md) – obvykle používá k zachycení interakce uživatele s vaší službou moct analyzovat vzory využití.
-* [Metrika](data-model-metric-telemetry.md) – používá se k sestavě pravidelná skalární měření.
+* [Trace](data-model-trace-telemetry.md) – používá se buď přímo, nebo prostřednictvím adaptéru k implementaci protokolování diagnostiky pomocí architektury instrumentace, která je pro vás známá, například `Log4Net` nebo `System.Diagnostics`.
+* [Událost](data-model-event-telemetry.md) – obvykle se používá k zaznamenání interakce uživatele s vaší službou a k analýze vzorců používání.
+* [Metrika](data-model-metric-telemetry.md) – používá se k hlášení periodických skalárních měření.
 
-Můžete definovat každé položce telemetrie [informace o kontextu](data-model-context.md) jako id aplikace verze nebo uživatelské relace. Kontext je sada polí pro silného typu, který se odblokuje určitých scénářů. Pokud verze aplikace je správně inicializována, Application Insights dokáže detekovat nové vzory v chování aplikace korelují s opětovné nasazení. Id relace lze použít k výpočtu výpadek nebo problém dopad na uživatele. Pro určité počítá počet jedinečných položek z hodnoty id relace se nezdařilo závislosti, trasování chyb nebo kritické výjimky poskytuje dobrý přehled o dopad.
+Každá položka telemetrie může definovat [kontextové informace](data-model-context.md) , jako je verze aplikace nebo ID uživatelské relace. Kontext je sada polí silného typu, která odblokuje určité scénáře. Pokud je verze aplikace správně inicializovaná, Application Insights může detekovat nové vzory v chování aplikace v souvislosti s novým nasazením. ID relace lze použít k výpočtu výpadku nebo dopadu problému na uživatele. Výpočet jedinečného počtu hodnot ID relace pro určitou neúspěšnou závislost, trasování chyb nebo kritickou výjimku poskytuje dobrý význam dopadu.
 
-Model telemetrie Application Insights definuje způsob, jak [korelovat](../../azure-monitor/app/correlation.md) telemetrii pro operace, které je součástí. Například požadavek mohl provádět volání SQL Database a zaznamenává diagnostické informace. Můžete nastavit kontext korelace telemetrie položek, které spojí zpět do telemetrických dat požadavek.
+Model telemetrie Application Insights definuje způsob, jak [korelace](../../azure-monitor/app/correlation.md) telemetrie s provozem, který je součástí. Požadavek může například učinit SQL Database volání a zaznamenané diagnostické informace. Můžete nastavit kontext korelace pro tyto položky telemetrie, které ji spojí zpátky s telemetrie žádostí.
 
 ## <a name="schema-improvements"></a>Vylepšení schématu
 
-Application Insights datový model je jednoduché a základní, ale efektivní způsob modelování telemetrie vaší aplikace. Snažíme se zachovat modelu jednoduché a tenký pro podporu základních scénářů a povolit rozšíření schématu pro pokročilé uživatele.
+Application Insights datový model je jednoduchý a základní, ale výkonný způsob modelování telemetrie aplikací. Snažíme se model zjednodušit a využít k podpoře základních scénářů a umožňuje rozšířit schéma pro pokročilé použití.
 
-K hlášení datový model nebo schématu problémy i návrhy můžete využít GitHub [ApplicationInsights domovské](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) úložiště.
+K nahlášení problémů s datovým modelem nebo schématům a návrhům použijte úložiště GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Psát vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md)
-- Zjistěte, jak [rozšířit a filtrování telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
-- Použití [vzorkování](../../azure-monitor/app/sampling.md) Chcete-li minimalizovat množství telemetrie na základě dat modelu.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- [Zápis vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)
+- Naučte se, jak můžete [zvětšit a filtrovat telemetrii](../../azure-monitor/app/api-filtering-sampling.md).
+- Pomocí [vzorkování](../../azure-monitor/app/sampling.md) můžete minimalizovat množství telemetrie na základě datového modelu.
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.
