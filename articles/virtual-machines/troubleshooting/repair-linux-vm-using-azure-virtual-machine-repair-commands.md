@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71132088"
 ---
-# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače se systémem Linux pomocí příkazů pro opravu virtuálního počítače Azure
+# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Linuxem pomocí příkazů pro opravu virtuálních počítačů Azure
 
 Pokud váš virtuální počítač se systémem Linux v Azure najde chybu při spuštění nebo disku, může být nutné provést zmírnění na samotném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí příkazů pro opravu virtuálních počítačů Azure připojit disk k jinému virtuálnímu počítači se systémem Linux a opravit případné chyby a pak znovu sestavit původní virtuální počítač.
 
@@ -48,19 +48,19 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
    Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Zahrnuje běžné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem.
 
-   Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, [https://shell.azure.com](https://shell.azure.com)že kliknete na.
+   Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete také otevřít na samostatné kartě prohlížeče tak, že kliknete na [https://shell.azure.com](https://shell.azure.com).
 
    Vyberte **Kopírovat** pro zkopírování bloků kódu, poté vložte kód do Cloud Shell a vyberte **ENTER** pro spuštění.
 
    Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Pokud `az vm repair` příkazy použijete poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
+2. Pokud jste použili příkazy `az vm repair` poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Pokud jste už použili `az vm repair` příkazy, aplikujte všechny aktualizace na rozšíření VM-Repair.
+   Pokud jste dříve používali příkazy `az vm repair`, použijte všechny aktualizace rozšíření VM-Repair.
 
    ```azurecli-interactive
    az extension update -n vm-repair
@@ -82,7 +82,7 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Ověření a povolení diagnostiky spouštění
 
-Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s ``myVMDeployed`` názvem ve skupině prostředků s ``myResourceGroup``názvem:
+Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s názvem ``myVMDeployed`` ve skupině prostředků s názvem ``myResourceGroup``:
 
 Azure CLI
 

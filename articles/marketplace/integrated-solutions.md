@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993627"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrovaná řešení v Azure Marketplace a AppSource
@@ -24,11 +24,11 @@ Tato řešení jsou navržená tak, aby se vyrozuměla konkrétním zákaznický
 
 Mezi výhody integrovaného přístupu patří:
 
-* *Specializace v oboru*: Integrátory systémů poskytující řešení specifická pro konkrétní odvětví a znalosti
-* *Čas do hodnoty*: Přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
-* *Nejlepší řešení*: Seznamte se s integrovaným prostředím pro nákup a implementaci
+* *Specializace v oboru*: systémy integrátorů poskytující konkrétní řešení a znalosti v oboru
+* *Čas do hodnoty*: přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
+* *Nejlepší řešení*: Seznamte se s usnadněním integrovaného nákupu a implementačního prostředí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Můžete zjišťovat integrovaná řešení a spojit se s těmito oceněnými partnery, a to návštěvou svých seznamů:
 
