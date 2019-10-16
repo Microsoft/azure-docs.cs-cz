@@ -103,7 +103,7 @@
           items:
             - name: Monitorování a ladění
               href: concepts-monitoring.md
-            - name: Protokoly serveru
+            - name: Protokoly
               href: concepts-server-logs.md
             - name: Protokoly auditu
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
-        - name: Přístup k protokolům serveru
+        - name: Protokoly přístupu
           items:
             - name: portál Azure
               href: howto-configure-server-logs-in-portal.md

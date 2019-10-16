@@ -102,7 +102,7 @@
           items:
             - name: "S využitím prostorů úložiště s\_přímým přístupem"
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: S využitím služby File Storage úrovně Premium
+            - name: S využitím sdílené složky úrovně Premium
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Referenční informace
   items:

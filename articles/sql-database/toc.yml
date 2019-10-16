@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: Model na základě virtuálních jader
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: Bezserverová výpočetní úroveň
+                  href: sql-database-serverless.md
+                - name: Předplacení záložní kapacity
+                  href: sql-database-reserved-capacity.md
             - name: Úrovně služby DTU
               href: sql-database-service-tiers-dtu.md
-            - name: Bezserverová výpočetní úroveň
-              href: sql-database-serverless.md
-            - name: Předplacení záložní kapacity
-              href: sql-database-reserved-capacity.md
-            - name: Migrace z úrovně služby Premium RS
-              href: sql-database-service-tiers-prs.md
         - name: Výpočetní prostředky a úložiště
           items:
             - name: Přehled
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: Nejčastější dotazy k hyperškálování
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Migrace z úrovně služby Premium RS
+              href: sql-database-service-tiers-prs.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: Postupy zotavení
               href: sql-database-disaster-recovery-drills.md
+            - name: Konfigurace skupiny převzetí služeb při selhání
+              href: sql-database-configure-failover-group.md
     - name: Monitorování a ladění
       items:
         - name: Dokumentace k monitorování a ladění
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Nastavení synchronizace dat SQL v Azure
           href: sql-database-get-started-sql-data-sync.md
-        - name: Přidání skupiny převzetí služeb při selhání do elastického fondu
+        - name: Přidání elastického fondu do skupiny převzetí služeb při selhání
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Konfigurace zabezpečení
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Konfigurace zabezpečení pro geografické repliky
           href: sql-database-geo-replication-security-config.md
-        - name: Konfigurace skupiny převzetí služeb při selhání
-          href: sql-database-configure-failover-group.md
         - name: Vyzkoušení funkcí v paměti
           href: sql-database-in-memory-sample.md
         - name: Povolení automatického ladění
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: Konfigurace zabezpečení
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: Přidání spravované instance do skupiny převzetí služeb při selhání
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: Koncepty
       items:
         - name: Referenční informace k rozhraní API pro správu

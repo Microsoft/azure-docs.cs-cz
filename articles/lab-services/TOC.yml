@@ -96,22 +96,22 @@
           items:
             - name: Vytváření a správa testovacích prostředí v učebnách
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: Nastavení a publikování šablon
+            - name: 'Nastavení, přizpůsobení a publikování šablon'
               href: classroom-labs/how-to-create-manage-template.md
-            - name: Konfigurace a řízení využití
+            - name: Nastavení a správa fondu virtuálních počítačů
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Přidání a správa uživatelů testovacího prostředí
               href: classroom-labs/how-to-configure-student-usage.md
             - name: Vytvoření a správa plánů
               href: classroom-labs/how-to-create-schedules.md
-            - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: Využití galerie sdílených imagí
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Povolení připojení ke vzdálené ploše pro Linux
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: Nastavení nebo resetování hesel pro virtuální počítače
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
             - name: Povolení vnořené virtualizace v šabloně virtuálního počítače
               href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: Vytvoření prostředí s více virtuálními počítači v rámci virtuálního počítače podle šablony
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
           items:
             - name: Přístup k testovacím prostředím v učebnách

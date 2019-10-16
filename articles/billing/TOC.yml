@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: Vysvětlení informací na faktuře za EA
       href: billing-understand-your-bill-ea.md
-    - name: Vysvětlení informací na faktuře – pouze smlouva se zákazníkem Microsoftu
+    - name: Vysvětlení informací na faktuře – smlouva se zákazníkem Microsoftu
       href: billing-mca-understand-your-bill.md
+    - name: Vysvětlení informací na faktuře – smlouva s partnerem Microsoftu
+      href: billing-mpa-understand-your-bill.md
     - name: Zobrazit a stáhnout fakturu Microsoft Azure
       href: billing-download-azure-invoice.md
     - name: Zobrazit a stáhnout využití a poplatky Microsoft Azure
       href: billing-download-azure-daily-usage.md
-    - name: Zobrazit a stáhnout daňové dokumenty pro smlouvu se zákazníkem Microsoftu
+    - name: Zobrazení a stažení daňových dokumentů
       href: billing-mca-download-tax-document.md
     - name: Poplatky za služby třetích stran
       href: billing-understand-your-azure-marketplace-charges.md
     - name: Vysvětlení podmínek použití
       href: billing-understand-your-usage.md
-    - name: Vysvětlení podmínek použití – pouze smlouva se zákazníkem Microsoftu
+    - name: Vysvětlení podmínek použití – smlouva se zákazníkem Microsoftu
       href: billing-mca-understand-your-usage.md
     - name: Vysvětlení podmínek fakturace
       href: billing-understand-your-invoice.md
-    - name: Vysvětlení podmínek fakturace – pouze smlouva se zákazníkem Microsoftu
+    - name: Vysvětlení podmínek fakturace – smlouva se zákazníkem Microsoftu
       href: billing-mca-understand-your-invoice.md
-    - name: Jak platit faktury – pouze smlouva se zákazníkem Microsoftu
+    - name: Vysvětlení podmínek fakturace – smlouva s partnerem Microsoftu
+      href: billing-mpa-invoice-terms-explained.md
+    - name: Postup při placení faktur – smlouva se zákazníkem Microsoftu
       href: billing-how-to-pay-bill.md
     - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
       href: billing-mca-overview.md
+    - name: Fakturační účty pro smlouvu s partnerem Microsoftu
+      href: mpa-overview.md
 - name: Správa nákladů
   items:
     - name: Jak zabránit neočekávaným nákladům
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Kontrola využití
           href: billing-check-free-service-usage.md
-        - name: Upgrade předplatného
+        - name: Upgrade účtu
           href: billing-upgrade-azure-subscription.md
-        - name: Principy mapování měřičů
-          href: billing-understand-free-service-meter-mapping.md
     - name: Úprava profilu
       href: billing-how-to-change-azure-account-profile.md
     - name: Otevřené bankovnictví a silné ověřování zákazníků
@@ -158,7 +162,7 @@
         - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
           href: billing-mca-enterprise-operations.md
     - name: Nastavení fakturačních účtů pro smlouvu se zákazníkem Microsoftu
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Registrace s použitím účtu Office 365
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Registrace Office 365 pomocí účtu Azure
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: Vyžádání vlastnictví – smlouva se zákazníkem Microsoftu
       href: billing-mca-request-billing-ownership.md
+    - name: Vyžádání vlastnictví – smlouva s partnerem Microsoftu
+      href: mpa-request-ownership.md
     - name: Zrušení předplatného
       href: billing-how-to-cancel-azure-subscription.md
     - name: Změna platební karty

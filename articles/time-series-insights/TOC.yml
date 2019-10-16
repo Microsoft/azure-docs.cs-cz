@@ -111,7 +111,9 @@
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights verze GA
+        - name: Azure Time Series Insights
+          href: /rest/api/time-series-insights/index
+        - name: Obecná dostupnost přístupu k datům
           href: /rest/api/time-series-insights/ga
           items:
             - name: Dotaz
@@ -123,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: Rozhraní API referenčních dat
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Azure Time Series Insights verze Preview
+        - name: Koncepty přístupu k datům ve verzi Preview
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: Dotaz na službu Time Series
-              href: /rest/api/time-series-insights/preview-query
-            - name: Model služby Time Series
-              href: /rest/api/time-series-insights/preview-model
-            - name: Rozhraní API prostředí služby Time Series
-              href: /rest/api/time-series-insights/preview-env
-            - name: Syntaxe a výrazy služby Time Series
-              href: /rest/api/time-series-insights/preview-tsx
     - name: Klientská sada SDK
       items:
         - name: Javascriptová klientská sada SDK

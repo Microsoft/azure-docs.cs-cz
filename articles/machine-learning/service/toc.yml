@@ -96,6 +96,9 @@
     - name: Hloubkové učení
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: Integrace Gitu
+      displayName: git github gitlab
+      href: concept-train-model-git-integration.md
 - name: Návody
   items:
     - name: Vytváření a správa pracovních prostorů

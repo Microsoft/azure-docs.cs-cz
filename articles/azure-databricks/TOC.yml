@@ -26,7 +26,7 @@
     - name: Streamování dat s využitím Event Hubs
       href: databricks-stream-from-eventhubs.md
     - name: Analýza mínění s využitím Cognitive Services
-  href: databricks-sentiment-analysis-cognitive-services.md
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: Návody
   items:
     - name: Začínáme
@@ -543,7 +543,7 @@
         - name: Seznámení s Delta Lake
           href: /azure/databricks/delta/delta-intro
           maintainContext: true
-        - name: Začínáme s Delta
+        - name: Začínáme s Delta Lake
           href: /azure/databricks/delta/quick-start
           maintainContext: true
         - name: Úvodní poznámkové bloky
@@ -617,6 +617,9 @@
               maintainContext: true
         - name: Nejčastější dotazy
           href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: Další zdroje Delta
+          href: /azure/databricks/delta/delta-resources
           maintainContext: true
     - name: Datové rámce a datové sady
       items:
@@ -772,9 +775,6 @@
             - name: PyTorch
               href: /azure/databricks/applications/deep-learning/single-node-training/pytorch
               maintainContext: true
-            - name: JCuda
-              href: /azure/databricks/applications/deep-learning/single-node-training/jcuda
-              maintainContext: true
             - name: PyTorch na jednom uzlu do distribuovaného DL
               href: /azure/databricks/applications/deep-learning/distributed-training/mnist-pytorch
               maintainContext: true
@@ -852,35 +852,28 @@
           maintainContext: true
     - name: Analýzy grafů
       items:
-        - name: Kurz analýzy grafů s využitím GraphFrames
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames – Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames – Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
-          maintainContext: true
-        - name: Analýza grafů s využitím GraphX (starší verze)
-          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
-          maintainContext: true
         - name: Přehled analýzy grafů
           href: /azure/databricks/spark/latest/graph-analysis/index
           maintainContext: true
-        - name: Kurz analýzy grafů
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: Přehled GraphFrames
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/index
-          maintainContext: true
-        - name: GraphFrames – Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames – Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+        - name: GraphFrames
+          items:
+            - name: Kurz analýzy grafů s využitím GraphFrames
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
+              maintainContext: true
+            - name: GraphFrames – Python
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
+              maintainContext: true
+            - name: GraphFrames – Scala
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+              maintainContext: true
+        - name: Analýza grafů s využitím GraphX (starší verze)
+          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
           maintainContext: true
     - name: Genomics
       items:
+        - name: Přehled služby Genomics
+          href: /azure/databricks/applications/genomics/index
+          maintainContext: true
         - name: Přehled ETL pro Genomics
           href: /azure/databricks/applications/genomics/etl/index
           maintainContext: true
@@ -921,6 +914,9 @@
             - name: Řízení kvality ukázek
               href: /azure/databricks/applications/genomics/etl/sample-qc
               maintainContext: true
+            - name: Funkce LiftOver
+              href: /azure/databricks/applications/genomics/etl/lift-over
+              maintainContext: true
         - name: Terciární analýza
           items:
             - name: Přehled terciární analýzy
@@ -937,9 +933,6 @@
               maintainContext: true
             - name: Regresní testy
               href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: SAIGE a SAIGE-GENE
-              href: /azure/databricks/applications/genomics/tertiary/saige
               maintainContext: true
             - name: Knihovny statistik Pythonu
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
@@ -1072,6 +1065,9 @@
               maintainContext: true
             - name: Vytvoření partnerského vztahu virtuálních sítí
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering
+              maintainContext: true
+            - name: Upgrade pracovního prostoru verze Preview na GA
+              href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject-upgrade
               maintainContext: true
             - name: Nasazení Azure Databricks ve virtuální síti
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
@@ -1282,6 +1278,9 @@
               maintainContext: true
             - name: Úlohy Sparku se zablokují kvůli vlastním uživatelsky definovaným funkcím
               href: /azure/databricks/kb/jobs/spark-udf-performance
+              maintainContext: true
+            - name: Úloha se nezdařila – MaxResultSize
+              href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
               maintainContext: true
         - name: Knihovny
           items:
@@ -1587,8 +1586,17 @@
                 - name: Podporované verze modulu runtime
                   href: /azure/databricks/release-notes/runtime/supported
                   maintainContext: true
+                - name: Databricks Runtime 6.1
+                  href: /azure/databricks/release-notes/runtime/6.1
+                  maintainContext: true
+                - name: Databricks Runtime 6.1 ML
+                  href: /azure/databricks/release-notes/runtime/6.1ml
+                  maintainContext: true
                 - name: Databricks Runtime 6.0
                   href: /azure/databricks/release-notes/runtime/6.0
+                  maintainContext: true
+                - name: Databricks Runtime 6.0 se systémem Conda
+                  href: /azure/databricks/release-notes/runtime/6.0conda
                   maintainContext: true
                 - name: Databricks Runtime 6.0 ML
                   href: /azure/databricks/release-notes/runtime/6.0ml

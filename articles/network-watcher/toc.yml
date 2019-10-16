@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: Zdroje a prostředky
   items:
+    - name: Nejčastější dotazy k Network Watcheru
+      href: frequently-asked-questions.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fórum MSDN

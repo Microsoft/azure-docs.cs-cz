@@ -35,6 +35,20 @@
       href: policy-samples.md
 - name: Koncepty
   items:
+    - name: NAT Gateway
+      items:
+        - name: Přehled
+          items:
+            - name: Informace o službě NAT Gateway
+              href: nat-service-overview.md
+        - name: Šablony Rychlý start
+          items:
+            - name: Vytvoření služby NAT Gateway – Azure CLI
+              href: quickstart-create-nat-gateway-cli.md
+        - name: Kurzy
+          items:
+            - name: Vytvoření a ověření služby NAT Gateway – Azure CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
     - name: Skupiny zabezpečení
       href: security-overview.md
     - name: Směrování
@@ -91,22 +105,26 @@
           href: virtual-network-tcpip-performance-tuning.md
     - name: Nasazení
       items:
-        - name: Protokol IPv6 pro virtuální síť – Load Balancer úrovně Basic
+        - name: Protokol IPv6 pro virtuální síť
           items:
-            - name: Azure PowerShell
-              href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-            - name: Azure CLI
-              href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-            - name: Šablona Resource Manageru
-              href: ipv6-configure-template-json.md
-        - name: Protokol IPv6 pro virtuální síť – Standard Load Balancer
-          items:
-            - name: Azure PowerShell
-              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-            - name: Azure CLI
-              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-            - name: Šablona Resource Manageru
-              href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Veřejný nástroj pro vyrovnávání zatížení verze Basic
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+                - name: Šablona Resource Manageru
+                  href: ipv6-configure-template-json.md
+            - name: Veřejný nástroj pro vyrovnávání zatížení verze Standard
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: Šablona Resource Manageru
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Interní nástroj pro vyrovnávání zatížení verze Standard
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
         - name: Skupiny zabezpečení sítě
           items:
             - name: Azure PowerShell
@@ -230,8 +248,6 @@
           items:
             - name: Podsítě
               href: virtual-network-manage-subnet.md
-            - name: Delegování podsítě
-              href: manage-subnet-delegation.md
             - name: Partnerské vztahy
               href: virtual-network-manage-peering.md
             - name: Ochrana před útoky DDoS
