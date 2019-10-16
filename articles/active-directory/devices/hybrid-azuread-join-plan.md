@@ -1,6 +1,6 @@
 ---
 title: Postup plánování implementace hybridního Azure Active Directory JOIN v Azure Active Directory (Azure AD) | Microsoft Docs
-description: Přečtěte si, jak nakonfigurovat zařízení připojená k hybridním Azure Active Directory.
+description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,26 +11,26 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960210"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389565"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
 Podobně jako uživatel je zařízení další základní identitou, kterou chcete chránit, a používejte ji k ochraně svých prostředků kdykoli a z libovolného místa. Tento cíl můžete dosáhnout vytvořením a správou identit zařízení ve službě Azure AD pomocí jedné z následujících metod:
 
 - Připojení k Azure AD
-- Připojení k hybridní službě Azure AD
-- Registrace Azure AD
+- Hybridní připojení k Azure AD
+- Registrace v Azure AD
 
-Díky zavedení zařízení do Azure AD maximalizujete produktivitu vašich uživatelů prostřednictvím jednotného přihlašování (SSO) napříč vaším cloudem a místními prostředky. V současné době můžete zabezpečený přístup k vašim cloudovým a místním prostředkům zabezpečit pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
+Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. V současné době můžete zabezpečený přístup k vašim cloudovým a místním prostředkům zabezpečit pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -43,11 +43,11 @@ K naplánování vaší hybridní implementace služby Azure AD byste se měli s
 
 |   |   |
 | --- | --- |
-| ![Zda][1] | Zkontrolovat podporovaná zařízení |
-| ![Zda][1] | Projděte si věci, které byste měli znát. |
-| ![Zda][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
-| ![Zda][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
-| ![Zda][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
+| ![Zaškrtnout][1] | Zkontrolovat podporovaná zařízení |
+| ![Zaškrtnout][1] | Projděte si věci, které byste měli znát. |
+| ![Zaškrtnout][1] | Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD |
+| ![Zaškrtnout][1] | Vyberte svůj scénář na základě vaší infrastruktury identity |
+| ![Zaškrtnout][1] | Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD |
 
 ## <a name="review-supported-devices"></a>Zkontrolovat podporovaná zařízení
 
@@ -55,7 +55,7 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 
 ### <a name="windows-current-devices"></a>Aktuální zařízení s Windows
 
-- Windows 10
+- Windows 10
 - Windows Server 2016
 - Windows Server 2019
 
@@ -97,7 +97,7 @@ Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](o
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD
 
-Když jsou splněné všechny požadavky, zařízení s Windows se v tenantovi Azure AD automaticky registrují jako zařízení. Stav těchto identit zařízení ve službě Azure AD se označuje jako připojení k hybridní službě Azure AD. Další informace o konceptech popsaných v tomto článku najdete v článcích [Seznámení se správou identit zařízení v Azure Active Directory](overview.md) a [Naplánování implementace Hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
+Když jsou splněné všechny požadavky, zařízení s Windows se v tenantovi Azure AD automaticky registrují jako zařízení. Stav těchto identit zařízení ve službě Azure AD se označuje jako připojení k hybridní službě Azure AD. Další informace o konceptech popsaných v tomto článku najdete v článku [Úvod do správy identit zařízení v Azure Active Directory](overview.md).
 
 Organizace můžou chtít provést řízené ověřování pro připojení k hybridní službě Azure AD, a to ještě před tím, než je zapnete v celé organizaci najednou. Přečtěte si článek [řízený ověření hybridního připojení ke službě Azure AD](hybrid-azuread-join-control.md) , abyste pochopili, jak to provést.
 
@@ -129,7 +129,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
 
-Počínaje verzí 1.1.819.0 vám Azure AD Connect poskytne průvodce pro konfiguraci hybridního připojení k Azure AD. Průvodce vám umožňuje významně zjednodušit proces konfigurace. Pokud se nejedná o možnost instalace požadované verze Azure AD Connect, přečtěte si téma [Postup ruční konfigurace registrace zařízení](hybrid-azuread-join-manual.md). 
+Azure AD Connect od verze 1.1.819.0 nabízí průvodce konfigurací hybridního připojení k Azure AD. Tento průvodce vám umožní výrazně zjednodušit proces konfigurace. Pokud se nejedná o možnost instalace požadované verze Azure AD Connect, přečtěte si téma [Postup ruční konfigurace registrace zařízení](hybrid-azuread-join-manual.md). 
 
 V závislosti na scénáři, který odpovídá vaší infrastruktuře identity, se podívejte na:
 
@@ -149,8 +149,8 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | ----- | ----- | ----- | ----- |
 | Balíček | Federované | Z verze 1703 | Všeobecně dostupné |
 | Bez směrování | Federované | Z verze 1803 | Všeobecně dostupné |
-| Balíček | Starosti | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Starosti | Není podporováno | |
+| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Bez směrování | Spravované | Nepodporováno | |
 
 ## <a name="next-steps"></a>Další kroky
 

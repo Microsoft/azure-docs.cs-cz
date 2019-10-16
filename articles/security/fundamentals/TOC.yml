@@ -3,6 +3,10 @@
 - name: Architektura a návrh
   href: overview.md
   expanded: false
+  items: null
+- name: Architektura a návrh
+  href: overview.md
+  expanded: false
   items:
     - name: Pokročilá detekce hrozeb
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Zabezpečení sítě Azure
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: Zabezpečení platformy bez serveru Azure
-      href: abstract-serverless-platform-security.md
-    - name: Zabezpečení kontejnerů v Azure
-      href: abstract-container-security.md
-    - name: Povolení provozního zabezpečení
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Izolace v cloudu Azure
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Technické možnosti zabezpečení
       href: technical-capabilities.md
-    - name: Vývoj bezpečných aplikací v Azure
-      href: abstract-develop-secure-apps.md
 - name: Zabezpečení a šifrování dat
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Zabezpečení služby Azure Storage
-      href: storage-overview.md
     - name: Příručka zabezpečení úložiště
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Customer Lockbox

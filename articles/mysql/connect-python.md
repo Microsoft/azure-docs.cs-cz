@@ -8,15 +8,17 @@ ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: afcf5f3ff5f104a95b700616f7c8bdd0723ac70c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9f9d432bc2f7d70396bca5d140f1a66a75fd7231
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331982"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434312"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat
-Tento článek ukazuje, jak se pomocí [Pythonu](https://python.org) připojit k Azure Database for MySQL. Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
+# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat pomocí Azure Database for MySQL
+Tento článek ukazuje, jak se pomocí [Pythonu](https://python.org) připojit k Azure Database for MySQL. Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. 
+
+Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
@@ -66,7 +68,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for MySQL](./media/connect-python/1_server-overview-name-login.png)
+ ![Název serveru Azure Database for MySQL](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
 ## <a name="run-python-code"></a>Spuštění kódu Pythonu
 - Vložte kód do textového souboru a ten uložte s příponou .py do složky projektu (například C:\pythonmysql\createtable.py nebo /home/username/pythonmysql/createtable.py).

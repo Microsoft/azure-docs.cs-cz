@@ -1,6 +1,6 @@
 ---
-title: Možnosti podporu a nápovědu pro vývojáře aplikací Azure AD | Dokumentace Microsoftu
-description: Už víte, jak získat nápovědu a podporu pro dotazy související s vývojem a problémů při vytváření aplikace, která lze integrovat s Microsoft identity (účet služby Azure Active Directory a Microsoft)
+title: Podpora a možnosti pomoci pro vývojáře aplikací Azure AD | Microsoft Docs
+description: Informace o tom, jak získat nápovědu a podporu pro otázky a problémy související s vývojem při vytváření aplikace, která se integruje s identitami Microsoft (Azure Active Directory a účet Microsoft)
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,87 +17,81 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235340"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429980"
 ---
-# <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
+# <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
-Pokud začínáte, můžete integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API, nebo když implementujete novou funkci pro vaši aplikaci, existují situace, kdy je potřeba získat pomoc od komunity nebo pochopit, Možnosti podpory, které máte jako vývojář. Tento článek vám pomůže porozumět těchto možností, včetně:
+Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Microsoft identity nebo Microsoft Graph API nebo když implementujete novou funkci vaší aplikace, nastane čas, kdy potřebujete získat technickou podporu od komunity nebo porozumět tomu, Možnosti podpory, které máte k dispozici jako vývojář. Tento článek vám pomůže pochopit tyto možnosti, včetně těchto:
 
 > [!div class="checklist"]
-> * Jak hledat, jestli váš dotaz není zodpovězená komunitou, nebo pokud stávající dokumentaci pro funkci, na který zkoušíte, implementovat již existuje
-> * V některých případech chcete používání našich nástrojů podpory si můžete usnadnit ladění určitý problém
-> * Pokud nenajdete odpovědi, které potřebujete, můžete položit dotaz na *Stack Overflow*
-> * Pokud narazíte na problém s jedním z našich knihoven ověřování, zvýšit *Githubu* problém
-> * Nakonec pokud potřebujete mluvit někomu, můžete chtít otevřít žádost o podporu
+> * Jak hledat, jestli na vaši otázku neodpověděla komunita, nebo jestli už existuje stávající dokumentace k funkci, kterou se pokoušíte implementovat
+> * V některých případech chcete použít naše nástroje podpory, které vám pomůžou s laděním konkrétního problému.
+> * Pokud nemůžete najít odpověď, kterou potřebujete, můžete klást otázky na *Stack Overflow*
+> * Pokud narazíte na problém s jednou z našich knihoven pro ověřování, vyvolejte problém *GitHubu* .
+> * Nakonec, pokud potřebujete mluvit s někým, možná budete chtít otevřít žádost o podporu.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
-Pokud máte dotazy související s vývojem, může být schopna najít odpovědi v dokumentaci, [Githubu ukázky](https://github.com/azure-samples), nebo odpovědi na [Stack Overflow](https://www.stackoverflow.com) dotazy.
+Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) otázky.
 
-### <a name="scoped-search"></a>Hledání s vymezeným oborem
+### <a name="scoped-search"></a>Hledání v oboru
 
-Rychlejší výsledky omezit rozsah hledání na webu Stack Overflow, dokumentaci a ukázky kódu s použitím následujícího dotazu v váš oblíbený vyhledávací web:
+Pro dosažení rychlejších výsledků můžete určit rozsah hledání Stack Overflow, dokumentaci a ukázky kódu pomocí následujícího dotazu v oblíbených vyhledávacích modulech:
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-Kde *{Your hledané termíny}* odpovídají klíčová slova pro vyhledávání.
+Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hledání.
 
-## <a name="use-the-development-support-tools"></a>Použití vývojářských nástrojů, podpory
+## <a name="use-the-development-support-tools"></a>Použití nástrojů pro podporu vývoje
 
 | Nástroj  | Popis  |
 |---------|---------|
-| [jwt.ms](https://jwt.ms) | Vložte ID a přístupový token k dekódování deklarace identity názvy a hodnoty. |
-| [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který vám umožní vytvářet požadavky a odpovědi na rozhraní Microsoft Graph API najdete v článku. |
+| [jwt.ms](https://jwt.ms) | Vložte ID nebo přístupový token k dekódování názvů a hodnot deklarací identity. |
+| [Průzkumník Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který umožňuje vytvářet žádosti a zobrazovat odpovědi na rozhraní Microsoft Graph API. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Odeslat dotaz na Stack Overflow
+## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
 
-Přetečení zásobníku je upřednostňovaný kanál pro dotazy související s vývojem. Členové komunity vývojářů a členové týmu Microsoft se tady přímo podílí na využít pomoci při řešení problémů.
+Stack Overflow je preferovaným kanálem pro otázky související s vývojem. V tomto případě jsou členové komunity vývojářů a členové týmu společnosti Microsoft přímo zapojeni v rámci pomoci při řešení vašich problémů.
 
-Pokud nemůžete najít odpověď na svou otázku prostřednictvím vyhledávání, odešlete nový dotaz na Stack Overflow. Při kladení otázek pomůže komunity identifikovat a odpověď na vaši otázku rychleji, použijte jednu z následujících značek:
+Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete novou otázku pro Stack Overflow. Použijte jednu z následujících značek při dotazování otázek, které komunitu pomůžou najít a odpovědět na svůj dotaz rychleji:
 
-|Komponenta nebo oblast  | Tags |
+|Součást/oblast  | Značky |
 |---------|---------|
-| Knihovna ADAL | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
-| Knihovna MSAL     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN middleware  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| Další oblasti související s ověřením nebo autorizací témata | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| Knihovna ADAL | [modulu](https://stackoverflow.com/questions/tagged/adal) |
+| Knihovna MSAL     | [msal](https://stackoverflow.com/questions/tagged/msal) |
+| Middleware OWIN  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
-Následující příspěvky z přetečení zásobníku obsahují tipy, jak klást otázky a přidání zdrojového kódu. Postupujte podle těchto pokynů zvýšit šanci na pro členy komunity k vyhodnocení a rychle reagovat na vaši otázku:
+Následující příspěvky z Stack Overflow obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
 
-* [Jak můžu pokládat správné otázky](https://stackoverflow.com/help/how-to-ask)
-* [Jak vytvořit příklad minimální, úplný a ověřit](https://stackoverflow.com/help/mcve)
+* [Návody klást dobré otázky](https://stackoverflow.com/help/how-to-ask)
+* [Jak vytvořit minimální, úplný a ověřitelný příklad](https://stackoverflow.com/help/mcve)
 
-## <a name="create-a-github-issue"></a>Vytvořit problém na Githubu
+## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
 
-Pokud najdete chybu nebo problém související s naše knihovny, vyvolat chybu v našich úložištích GitHub. Protože jsou našich knihoven open source, můžete také odeslat žádost o přijetí změn.
+Pokud narazíte na chybu nebo problém týkající se našich knihoven, vyvolejte problém v našich úložištích GitHubu. Vzhledem k tomu, že naše knihovny jsou open source, můžete také odeslat žádost o přijetí změn.
 
-Seznam knihoven a jejich úložiště GitHub naleznete v následujících tématech:
+Seznam knihoven a jejich úložišť GitHub najdete v následujících tématech:
 
-* [ADAL](active-directory-authentication-libraries.md) knihovny a úložištích GitHub.
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android), a [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) knihovny a úložištích GitHub.
+* Knihovny [ADAL](active-directory-authentication-libraries.md) a úložiště GitHub
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. ](https://github.com/AzureAD/microsoft-authentication-library-for-android)Knihovny pro Android a [MSAL. obj _c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) a úložiště GitHub
 
-## <a name="open-a-support-request"></a>Žádost o podporu
+## <a name="open-a-support-request"></a>Otevřete žádost o podporu.
 
-Pokud potřebujete mluvit někomu, můžete otevřít žádost o podporu. Pokud jste zákazníkem Azure, existuje několik možností podpory k dispozici. Porovnání plánů, najdete v článku [na této stránce](https://azure.microsoft.com/support/plans/). Plán Developer support je také dostupná pro zákazníky Azure. Informace o tom, jak zakoupit plány podpory Developer, naleznete v tématu [na této stránce](https://azure.microsoft.com/support/plans/developer/).
+Pokud potřebujete mluvit s někým, můžete otevřít žádost o podporu. Pokud jste zákazníkem Azure, máte k dispozici několik možností podpory. K porovnání plánů si Projděte [tuto stránku](https://azure.microsoft.com/support/plans/). K dispozici je také podpora pro vývojáře pro zákazníky Azure. Informace o tom, jak zakoupit plány podpory pro vývojáře, najdete na [této stránce](https://azure.microsoft.com/support/plans/developer/).
 
-* Pokud už máte Azure podporují plánování, [žádost o podporu tady](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+* Pokud už máte plán podpory Azure, [otevřete žádost o podporu tady](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-* Pokud si nejste zákazník Azure, můžete také otevřít žádost o podporu u Microsoftu přes [naši obchodní podporu](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial).
+* Pokud nejste zákazníkem Azure, můžete také pomocí [naší komerční podpory](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)otevřít žádost o podporu od Microsoftu.
 
-Můžete také zkusit [virtuální agenta](https://support.microsoft.com/contactus/?ws=support) k získání podpory nebo položit dotazy.
-
-### <a name="free-chat-support-for-a-limited-time"></a>Podpora formou chatu zdarma po omezenou dobu
-
-Můžete také použít Naše podpora formou chatu, který je zdarma pro Microsoft Partners po omezenou dobu. Pokud vaše společnost není partnera společnosti Microsoft, můžete ho zdarma zaregistrovat a získat další výhody tak, že přejdete [tady](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx).
-
-Po registraci vaší společnosti, můžete spustit chat požadavek [tady](https://aka.ms/devchat).
+Můžete také vyzkoušet [virtuálního agenta](https://support.microsoft.com/contactus/?ws=support) a získat podporu nebo klást otázky.

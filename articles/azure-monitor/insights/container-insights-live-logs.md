@@ -1,5 +1,5 @@
 ---
-title: Zobrazení monitorování Azure pro kontejnery protokolů v reálném čase | Dokumentace Microsoftu
+title: Zobrazit Azure Monitor pro protokoly kontejnerů v reálném čase | Microsoft Docs
 description: Tento článek popisuje zobrazení protokolů kontejnerů (stdout/stderr) v reálném čase a událostí bez použití kubectl s Azure Monitor pro kontejnery.
 services: azure-monitor
 documentationcenter: ''
@@ -13,34 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035352"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389786"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Postup zobrazení protokolů a událostí v reálném čase (Preview)
-Azure Monitor for containers obsahuje funkci, která je aktuálně ve verzi Preview, která poskytuje živé zobrazení do protokolů kontejnerů služby Azure Kubernetes (stdout/stderr) a událostí bez nutnosti spouštět příkazy kubectl. Když vyberete jednu z možností, pod tabulkou data o výkonu na **uzlech**, řadičích av zobrazení **kontejnerů** se zobrazí nové podokno. Zobrazuje dynamické protokolování a události generované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
+Azure Monitor for containers obsahuje funkci, která je aktuálně ve verzi Preview, která poskytuje živé zobrazení do protokolů kontejnerů služby Azure Kubernetes (stdout/stderr) a událostí bez nutnosti spouštět příkazy kubectl. Když vyberete jednu z možností, pod tabulkou data o výkonu na **uzlech**, **řadičích**a v zobrazení **kontejnerů** se zobrazí nové podokno. Zobrazuje dynamické protokolování a události generované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.
 
 >[!NOTE]
->Aby tato funkce fungovala, je nutné mít přístup k prostředku clusteru přístup přispěvatele.
->
+>Tato funkce je dostupná ve všech oblastech Azure, včetně Azure Čína. V tuto chvíli není dostupná ve službě Azure USA pro státní správu.
+
+>[!NOTE]
+>Aby tato funkce fungovala, vyžaduje se přístup k prostředku clusteru prostřednictvím **role uživatele clusteru služby Azure Kubernetes** . [Přečtěte si další informace o roli uživatele clusteru Azure Kubernetes](https://docs.microsoft.com/en-us/azure/aks/control-kubeconfig-access#available-cluster-roles-permissions).
 
 Živé protokoly podporují tři různé metody řízení přístupu k protokolům:
 
-1. Bez povolené oprávnění Kubernetes RBAC AKS
-2. Povolené s autorizací Kubernetes RBAC AKS
+1. AKS bez povoleného ověřování RBAC Kubernetes
+2. AKS povolený s autorizací Kubernetes RBAC
 3. AKS povolený pomocí jednotného přihlašování založené na Azure Active Directory (AD) založeného na SAML
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>Cluster Kubernetes bez povolené RBAC
+## <a name="kubernetes-cluster-without-rbac-enabled"></a>Cluster Kubernetes bez RBAC povolen
  
-Pokud máte cluster Kubernetes, který není nakonfigurovaný s Kubernetes RBAC se podařilo autorizovat nebo integrované s Azure AD jednotného přihlašování, není nutné postupovat podle následujících kroků. Vzhledem k tomu, že autorizace Kubernetes používá rozhraní Kube-API, vyžadují se oprávnění jen pro čtení.
+Pokud máte cluster Kubernetes, který není nakonfigurovaný s autorizací Kubernetes RBAC nebo se integruje s jednotným přihlašováním k Azure AD, nemusíte postupovat podle těchto kroků. Vzhledem k tomu, že autorizace Kubernetes používá rozhraní Kube-API, vyžadují se oprávnění jen pro čtení.
 
-## <a name="kubernetes-rbac-authorization"></a>Kubernetes RBAC se podařilo autorizovat
-Pokud jste povolili Kubernetes RBAC se podařilo autorizovat, je potřeba použít vazbu role clusteru. Následující příklady postupu ukazují, jak nakonfigurovat vazby role clusteru z této šablony konfigurace yaml. 
+## <a name="kubernetes-rbac-authorization"></a>Autorizace Kubernetes RBAC
+Pokud jste povolili autorizaci Kubernetes RBAC, budete muset použít vazbu role clusteru. Následující příklady kroků ukazují, jak nakonfigurovat vazbu role clusteru z této šablony konfigurace YAML. 
 
-1. Zkopírujte a vložte soubor yaml a uložte ho jako LogReaderRBAC.yaml.  
+1. Zkopírujte a vložte soubor YAML a uložte ho jako LogReaderRBAC. yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -66,17 +68,20 @@ Pokud jste povolili Kubernetes RBAC se podařilo autorizovat, je potřeba použ�
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Pokud konfigurujete poprvé, aplikujete vazbu pravidla clusteru spuštěním následujícího příkazu: `kubectl create -f LogReaderRBAC.yaml`. Pokud jste dříve povolili podporu pro živé protokoly ve verzi Preview předtím, než jsme napředstavili protokoly událostí v reálném čase, aktualizujte konfiguraci spuštěním následujícího příkazu: `kubectl apply -f LogReaderRBAC.yaml`.
+2. Pokud konfigurujete poprvé, aplikujete vazbu pravidla clusteru spuštěním následujícího příkazu: `kubectl create -f LogReaderRBAC.yaml`. Pokud jste dříve povolili podporu pro živé protokoly ve verzi Preview předtím, než jsme napředstavili protokoly událostí Live, aktualizujte konfiguraci spuštěním následujícího příkazu: `kubectl apply -f LogReaderRBAC.yaml`.
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurace AKS pomocí Azure Active Directory
 
-AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md). Během postupu vytvoření [klientské aplikace](../../aks/azure-ad-integration.md#create-the-client-application)zadejte následující:
+AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). Pokud konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory se službou Azure Kubernetes](../../aks/azure-ad-integration.md). Během postupu vytvoření [klientské aplikace](../../aks/azure-ad-integration.md#create-the-client-application)zadejte následující:
 
--  **Identifikátor URI pro přesměrování**: Je třeba vytvořit dva typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+-  **Identifikátor URI pro přesměrování**: je třeba vytvořit dva typy **webových** aplikací. První základní hodnota URL by měla být `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
 - Po registraci aplikace na stránce **Přehled** vyberte **ověřování** v levém podokně. V části **Upřesnit nastavení** na stránce **ověřování** se implicitně udělí **přístupové tokeny** a **tokeny ID** a změny se uloží.
 
 >[!NOTE]
->Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená.
+>Pokud tuto funkci používáte v oblasti Azure Čína, první základní hodnota URL by měla být `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` a druhá základní hodnota URL by měla být `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+
+>[!NOTE]
+>Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování se dá provést jenom při počátečním nasazení nového clusteru AKS. Nemůžete nakonfigurovat jednotné přihlašování pro cluster AKS, který je už nasazený.
   
 >[!IMPORTANT]
 >Pokud jste překonfigurovali službu Azure AD pro ověřování uživatelů pomocí aktualizovaného identifikátoru URI, vymažte mezipaměť prohlížeče, aby se zajistilo stažení a použití aktualizovaného ověřovacího tokenu.   
@@ -89,34 +94,34 @@ Události protokolu v reálném čase můžete zobrazit tak, jak jsou generován
 
 Zprávy protokolu a události jsou omezené na základě toho, jaký typ prostředku je vybraný v zobrazení.
 
-| Zobrazení | Typ prostředku | Protokol nebo událost | Zobrazená data |
+| Zobrazit | Typ prostředku | Protokol nebo událost | Zobrazená data |
 |------|---------------|--------------|----------------|
 | Uzly | Uzel | Událost | Když je uzel vybraný, události se nefiltrují a zobrazují Kubernetes události v rámci clusteru. Název podokna zobrazuje název clusteru. |
-| Uzly | Pod | Událost | Když je vybraná událost pod, jsou filtrovány na obor názvů. Název podokna zobrazuje obor názvů pod. | 
-| Kontrolery | Pod | Událost | Když je vybraná událost pod, jsou filtrovány na obor názvů. Název podokna zobrazuje obor názvů pod. |
-| Kontrolery | Kontrolér | Událost | Když je vybraný kontroler událostí, vyfiltruje se na jeho obor názvů. Název podokna zobrazuje obor názvů kontroleru. |
-| Uzly/řadiče/kontejnery | Kontejner | Logs | Název podokna zobrazuje název pod tím, kde je kontejner seskupen. |
+| Uzly | Nulu | Událost | Když je vybraná událost pod, jsou filtrovány na obor názvů. Název podokna zobrazuje obor názvů pod. | 
+| Kontrolou | Nulu | Událost | Když je vybraná událost pod, jsou filtrovány na obor názvů. Název podokna zobrazuje obor názvů pod. |
+| Kontrolou | Kontrolér | Událost | Když je vybraný kontroler událostí, vyfiltruje se na jeho obor názvů. Název podokna zobrazuje obor názvů kontroleru. |
+| Uzly/řadiče/kontejnery | Kontejner | Protokoly | Název podokna zobrazuje název pod tím, kde je kontejner seskupen. |
 
-Pokud AKS cluster je nakonfigurovaný s jednotným Přihlašováním pomocí AAD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověření pomocí Azure.  
+Pokud je cluster AKS nakonfigurovaný pomocí jednotného přihlašování pomocí AAD, budete vyzváni k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověřování pomocí Azure.  
 
-Po úspěšném ověření se zobrazí v podokně za provozu protokolu v dolní části podokna uprostřed. Pokud se indikátor stavu načítání zobrazí zelená značka zaškrtnutí, která je v pravém podokně, znamená to, že ji může načítat data.
+Po úspěšném ověření se v dolní části podokna v prostředním podokně zobrazí podokno se živým protokolem. Pokud indikátor stavu načítání zobrazuje zelený symbol zaškrtnutí, který je na pravé straně podokna, znamená to, že může načíst data.
     
-  ![Obnovení živé protokoly podokna data](./media/container-insights-live-logs/live-logs-pane-01.png)  
+  ![Načtená data v podokně protokoly v reálném čase](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
 Na panelu hledání můžete filtrovat podle klíčového slova a zvýraznit text v protokolu nebo události a na panelu hledání na pravé straně se zobrazí, kolik výsledků odpovídá filtru.
 
-  ![Živé protokoly podokno filtru příklad](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
+  ![Příklad filtru podokna služby Live logs](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
 
 Při prohlížení událostí můžete kromě toho omezit výsledky pomocí **filtru** , který se nachází na pravé straně panelu hledání. V závislosti na tom, jaký prostředek jste vybrali, zobrazuje funkce pilla seznam pod, oborem názvů nebo clusteru, ze kterého se má vybrat.  
 
-Chcete-li pozastavit automatické rolování a ovládat chování podokna a chcete-li ručně procházet nově přečtenými daty, klikněte na možnost **posouvání** . Chcete-li znovu povolit automatické posouvání, stačí znovu kliknout na možnost posunu. Můžete také pozastavit načítání dat protokolů nebo událostí kliknutím na možnost **pozastavit** a až budete připraveni k obnovení, stačí kliknout na tlačítko **Přehrát**.  
+Chcete-li pozastavit automatické rolování a ovládat chování podokna a chcete-li ručně procházet nově přečtenými daty, klikněte na možnost **posouvání** . Chcete-li znovu povolit automatické posouvání, stačí znovu kliknout na možnost **posunu** . Můžete také pozastavit načítání dat protokolů nebo událostí kliknutím na možnost **pozastavit** a až budete připraveni k obnovení, stačí kliknout na tlačítko **Přehrát**.  
 
-![Živé protokoly podokna pozastavení živé zobrazení](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
+![Živý pohled na pozastavit podokno protokolů](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
 
-Chcete-li zobrazit historické protokoly kontejnerů, vyberte **Zobrazit** protokoly kontejnerů v rozevíracím seznamu zobrazení **v části analýza**, a můžete přejít na Azure monitor protokoly.
+Chcete-li zobrazit historické protokoly kontejnerů, vyberte **Zobrazit protokoly kontejnerů** v rozevíracím seznamu zobrazení **v části analýza**, a můžete přejít na Azure monitor protokoly.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Chcete-li pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty vašeho clusteru AKS, přečtěte si téma [zobrazení Azure Kubernetes Service health](container-insights-analyze.md).
+- Pokud chcete pokračovat v učení, jak používat Azure Monitor a monitorovat další aspekty clusteru AKS, přečtěte si téma [zobrazení stavu služby Azure Kubernetes](container-insights-analyze.md).
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizace a analýzy clusterů.

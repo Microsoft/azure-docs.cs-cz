@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311134"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382048"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -66,7 +66,7 @@ Pokud se přiblížíte k maximálnímu počtu účtů úložiště povolených 
 
 - Používáte účty úložiště k ukládání nespravovaných disků a přidávání těchto disků do virtuálních počítačů (VM)? V tomto scénáři Microsoft doporučuje používat spravované disky. Spravované disky se škálují automaticky a bez nutnosti vytvářet a spravovat jednotlivé účty úložiště. Další informace najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md) .
 - Používáte pro účely izolace dat jeden účet úložiště pro každého zákazníka? V tomto scénáři Microsoft doporučuje použít pro každého zákazníka kontejner objektů BLOB namísto celého účtu úložiště. Azure Storage teď umožňuje přiřadit role řízení přístupu na základě role (RBAC) na základě kontejneru. Další informace najdete v tématu [udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](../common/storage-auth-aad-rbac-portal.md).
-- Používáte k horizontálních oddílů více účtů úložiště k navýšení příchozích, odchozích a vstupně-výstupních operací za sekundu (IOPS) nebo kapacity? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště úrovně Standard, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+- Používáte k horizontálních oddílů více účtů úložiště k navýšení příchozích, odchozích a vstupně-výstupních operací za sekundu (IOPS) nebo kapacity? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Cíle kapacity a transakce
 
@@ -286,6 +286,4 @@ Objekty blob stránky jsou vhodné, pokud aplikace potřebuje pro data provádě
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue](../queues/storage-performance-checklist.md)
-- [Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek](../tables/storage-performance-checklist.md)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

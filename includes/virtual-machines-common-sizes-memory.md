@@ -6,30 +6,30 @@ author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 55f82344956af7d6096fce7dbc3d7023589daa69
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830059"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428022"
 ---
 Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
 
-* Ev3-Series obsahuje procesor E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, poskytuje lepší hodnotu pro většinu úloh pro obecné účely a přináší Ev3 k virtuálním počítačům pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
+* Ev3-Series nabízí Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, které poskytují lepší polohu pro většinu úloh pro obecné účely a přinášejí Ev3 do zarovnání s virtuálními počítači pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno.  Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
 * Velikosti Preview Eav3-Series a Easv3-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více vlákny s až 256mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh.  Řady Eav3-Series a Easv3-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
-* Mv2-Series nabízí nejvyšší počet vCPU (až 208 vCPU) a největší paměť (až 5,7 TiB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo jiné aplikace, které využívají výhody vysokého počtu vCPU a velké množství paměti.
+* Mv2-Series nabízí nejvyšší počet vCPU (až 208 vCPU) a největší paměť (až 5,7 TiB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
 
 * Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti.
 
-* Dv2-Series, G-series a protějšky DSv2/GS jsou ideální pro aplikace, které vyžadují rychlejší vCPU, lepší dočasný výkon úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro spoustu aplikací na podnikové úrovni.
+* Dv2-Series, G-series a protějšky DSv2/GS jsou ideální pro aplikace, které vyžadují rychlejší vCPU, lepší dočasný výkon úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
 
-* Dv2-Series, následné až do původní řady D-Series, nabízí výkonnější procesor. PROCESOR Dv2-Series má přibližně 35% rychlejší než procesor řady D-Series. Vychází z nejnovější generace procesorů 2,4 Intel Xeon® E5-2673 V3 2,4 GHz (Haswell) nebo E5-2673 V4 2,3 GHz (Broadwell) a s 2,0 technologií Intel Turbo () může jít až o 3,1 GHz. Dv2-Series má stejnou konfiguraci paměti a disku jako řada D.
+* Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Běží na Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) a s 2,0 technologií Intel Turbo zvyšovat. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
-* Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysokou úroveň izolace od jiných zákazníků pro úlohy zahrnující prvky, jako jsou dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).  Další informace o možnostech izolovaného virtuálního počítače najdete v tabulkách řady virtuálních počítačů.
+* Azure Compute nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka.  Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysoký stupeň izolace od ostatních zákazníků a kterých se týkají například požadavky na dodržování předpisů a zákonné požadavky.  Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).  Další informace o možnostech izolovaného virtuálního počítače najdete v tabulkách řady virtuálních počítačů.
 
 ## <a name="esv3-series"></a>Esv3-Series
 
@@ -39,17 +39,17 @@ Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
 
-Instance ESv3-Series jsou založené na procesorech Intel XEON s 2,3 GHz® E5-2673 v4 (Broadwell) a můžou dosahovat 3,5 GHz pomocí technologie Intel Turbo rozbušky 2,0 a používat Premium Storage. Instance Ev3-Series jsou ideální pro podnikové aplikace náročné na paměť.
+Instance ESv3-Series obsahují Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) a můžou dosahovat 3,5 GHz pomocí technologie Intel Turbo pro zvýšení úrovně 2,0 a využívat Premium Storage. Instance Ev3-Series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
 
-| Velikost             | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální počet datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost             | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
-| Standard_E2s_v3 | odst      | 16bitovém          | 32             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1000                                   |
-| Standard_E4s_v3 @ no__t-0<sup>2</sup> | 4      | 32          | 64             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2000                                   |
-| Standard_E8s_v3 @ no__t-0<sup>2</sup> | 8      | 64          | 128            | 16bitovém             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                       |
-| Standard_E16s_v3 @ no__t-0<sup>2</sup> | 16bitovém     | 128         | 256            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                       |
-| Standard_E20s_v3                   | 20o     | 160         | 320            | 32             | 40000/320 (400)                                                    | 32000/480                              | 8 / 10000                                       |
-| Standard_E32s_v3 @ no__t-0<sup>2</sup> | 32     | 256         | 512            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16000                             |
+| Standard_E2s_v3 | 2      | 16          | 32             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2 / 1 000                                   |
+| Standard_E4s_v3 @ no__t-0<sup>2</sup> | 4      | 32          | 64             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2 / 2 000                                   |
+| Standard_E8s_v3 @ no__t-0<sup>2</sup> | 8      | 64          | 128            | 16             | 16000/128 (200)                                                    | 12800/192                              | 4 / 4000                                       |
+| Standard_E16s_v3 @ no__t-0<sup>2</sup> | 16     | 128         | 256            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                       |
+| Standard_E20s_v3                   | 20     | 160         | 320            | 32             | 40000/320 (400)                                                    | 32000/480                              | 8 / 10000                                       |
+| Standard_E32s_v3 @ no__t-0<sup>2</sup> | 32     | 256         | 512            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8 / 16 000                             |
 | Standard_E48s_v3 @ no__t-0<sup>2</sup> | 48     | 384         | 768            | 32             | 96000/768 (1200)                                                   | 76800/1152                             | 8 / 24000                             |
 | Standard_E64s_v3 @ no__t-0<sup>2</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
 | Standard_E64is_v3 @ no__t-0<sup>3</sup> | 64     | 432         | 864            | 32             | 128000/1024 (1600)                                                   | 80000/1200                             | 8 / 30000                             |
@@ -73,10 +73,10 @@ Velikosti řady Easv3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB |
 |---|---|---|---|
-| Standard_E2as_v3  | odst  | 16bitovém  | 32  |
+| Standard_E2as_v3  | 2  | 16  | 32  |
 | Standard_E4as_v3  | 4  | 32  | 64  |
 | Standard_E8as_v3  | 8  | 64  | 128 |
-| Standard_E16as_v3 | 16bitovém | 128 | 256 |
+| Standard_E16as_v3 | 16 | 128 | 256 |
 | Standard_E32as_v3 | 32 | 256 | 512 |
 | Standard_E48as_v3 | 48 | 384 | 768 |
 | Standard_E64as_v3 | 64 | 432 | 864 |
@@ -89,22 +89,22 @@ Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Instance řady Ev3-Series jsou založené na procesoru 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a může dosáhnout 3,5 GHz pomocí technologie Intel Turbo zvyšovat 2,0. Instance Ev3-Series jsou ideální pro podnikové aplikace náročné na paměť.
+Instance Ev3-Series obsahují procesory Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) a můžou dosahovat 3,5 GHz pomocí technologie Intel Turbo pro zvýšení 2,0. Instance Ev3-Series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
-Úložiště datových disků se fakturuje odděleně od virtuálních počítačů. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-Series. 
+Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series. 
 
 
-| Velikost            | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální počet datových disků | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet síťových karet/šířka pásma sítě |
+| Velikost            | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
-| Standard_E2_v3  | odst         | 16bitovém          | 50             | 4              | 3000/46/23                                               | 2 / 1000                 |
-| Standard_E4_v3  | 4         | 32          | 100            | 8              | 6000/93/46                                               | 2 / 2000                 |
-| Standard_E8_v3  | 8         | 64          | 200            | 16bitovém             | 12000/187/93                                             | 4 / 4000                     |
-| Standard_E16_v3 | 16bitovém        | 128         | 400            | 32             | 24000/375/187                                            | 8 / 8000                     |
-| Standard_E20_v3 | 20o        | 160         | 500            | 32             | 30000/469/234                                            | 8 / 10000                     |
-| Standard_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16000                 |
-| Standard_E48_v3 | 48        | 384         | 1200            | 32             | 96000/1000/500                                            | 8 / 24000                 |
-| Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000           |
-| Standard_E64i_v3 @ no__t-0<sup>2, &nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000           |
+| Standard_E2_v3  | 2         | 16          | 50             | 4              | 3 000 / 46 / 23                                               | 2 / 1 000                 |
+| Standard_E4_v3  | 4         | 32          | 100            | 8              | 6 000 / 93 / 46                                               | 2 / 2 000                 |
+| Standard_E8_v3  | 8         | 64          | 200            | 16             | 12 000 / 187 / 93                                             | 4 / 4000                     |
+| Standard_E16_v3 | 16        | 128         | 400            | 32             | 24 000 / 375 / 187                                            | 8 / 8000                     |
+| Standard_E20_v3 | 20        | 160         | 500            | 32             | 30000/469/234                                            | 8 / 10000                     |
+| Standard_E32_v3 | 32        | 256         | 800            | 32             | 48 000 / 750 / 375                                            | 8 / 16 000                 |
+| Standard_E48_v3 | 48        | 384         | 1200            | 32             | 96 000 / 1 000 / 500                                            | 8 / 24000                 |
+| Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30000           |
+| Standard_E64i_v3 @ no__t-0<sup>2, &nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96 000 / 1 000 / 500                                           | 8 / 30000           |
 
 <sup>1</sup> Ev3-Series je součástí virtuálního počítače Intel® technologie Hyper-Threading.
 
@@ -118,21 +118,21 @@ Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Velikosti řady Eav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – z 3.35 GHz a použít Premium Storage. Velikosti řady Eav3-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se fakturuje odděleně od virtuálních počítačů. Pokud chcete použít disky Premium Storage, použijte velikosti řady Easv3-Series. Měřiče cen a účtování pro velikosti Easv3 jsou stejné jako pro Eav3-Series.
+Velikosti řady Eav3-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení Fmax – z 3.35 GHz a použít Premium Storage. Velikosti řady Eav3-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti řady Easv3-Series. Měřiče cen a účtování pro velikosti Easv3 jsou stejné jako pro Eav3-Series.
 
 [Kliknutím sem se přihlaste k verzi Preview](http://aka.ms/azureamdpreview).
 
 | Velikost             | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB |
 |------------------|------|-------------|-------------------------|
-| Standard_E2a_v3  | odst    | 16bitovém          | 50                      |
+| Standard_E2a_v3  | 2    | 16          | 50                      |
 | Standard_E4a_v3  | 4    | 32          | 100                     |
 | Standard_E8a_v3  | 8    | 64          | 200                     |
-| Standard_E16a_v3 | 16bitovém   | 128         | 400                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
 | Standard_E32a_v3 | 32   | 256         | 800                     |
 | Standard_E48a_v3 | 48   | 384         | 1200                    |
 | Standard_E64a_v3 | 64   | 432         | 1600                    |
 
-## <a name="mv2-series"></a>Mv2-Series
+## <a name="mv2-series"></a>Řada Mv2
 
 Premium Storage: podporováno
 
@@ -142,10 +142,10 @@ Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-ma
 
 Mv2-Series nabízí vysokou propustnost, nízkou latenci, přímo mapované místní úložiště NVMe běžící na vláknech Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) se základní frekvencí jádra 2,5 GHz a maximální frekvence Turbo 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2-Series můžou využívat trvalé disky úrovně Standard i Premium. Instance Mv2-Series jsou paměťové optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu rozsáhlých databází a úloh s vysokým výkonem, které jsou ideální pro servery relačních databází, velké mezipaměti a v paměti. Analytics. 
 
-|Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální počet datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+|Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5700 | 4 096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4 096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16 000 |
 
 Funkce virtuálního počítače Mv2-Series Intel® technologie Hyper-Threading  
 
@@ -192,7 +192,7 @@ SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13
 SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
 ```
 
-## <a name="m-series"></a>Řada M-Series 
+## <a name="m-series"></a>M-Series 
 
 ACU: 160-180 <sup>1</sup>
 
@@ -204,21 +204,21 @@ Velikosti řady M-Series jsou založené na procesorech Intel (R) Xeon (R) Xeon 
 
 Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| Velikost            | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální počet datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost            | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M8ms @ no__t-0<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000/125 | 4 / 2000 |
-| Standard_M16ms @ no__t-0<sup>3</sup>   | 16bitovém | 437,5  | 512  | 16bitovém | 20000/200 (1587) | 10000/250 | 8 / 4000 |
+| Standard_M8ms @ no__t-0<sup>3</sup>    | 8  | 218,75 | 256  | 8  | 10000/100 (793)  | 5000/125 | 4 / 2 000 |
+| Standard_M16ms @ no__t-0<sup>3</sup>   | 16 | 437,5  | 512  | 16 | 20000/200 (1587) | 10000/250 | 8 / 4 000 |
 | Standard_M32ts | 32 | 192    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard_M32ls | 32 | 256    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
 | Standard_M32ms @ no__t-0<sup>3</sup>   | 32 | 875    | 1024 | 32 | 40000/400 (3174) | 20000/500 | 8 / 8000 |
-| Standard_M64s  | 64 | 1024   | 2048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16000          |
-| Standard_M64ls  | 64 | 512    | 2048 | 64 | 80000/800 (6348) | 40000/1000 | 8 / 16000 |
-| Standard_M64ms @ no__t-0<sup>3</sup>  | 64   | 1792 | 2048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16000          |
-| Standard_M128s @ no__t-0<sup>2</sup> | 128  | 2048        | 4096  | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
-| Standard_M128ms @ no__t-0<sup>2, &nbsp;3, &nbsp;4</sup> | 128  | 3892  | 4096 | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
-| Standard_M64   | 64  | 1024 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16000 |
-| Standard_M64m  | 64  | 1792 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16000 |
-| Standard_M128 @ no__t-0 @ no__t-12  | 128 | 2048 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
+| Standard_M64s  | 64 | 1024   | 2 048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16 000          |
+| Standard_M64ls  | 64 | 512    | 2 048 | 64 | 80000/800 (6348) | 40000/1000 | 8 / 16 000 |
+| Standard_M64ms @ no__t-0<sup>3</sup>  | 64   | 1 792 | 2 048 | 64 | 80000/800 (6348)| 40000/1000 | 8 / 16 000          |
+| Standard_M128s @ no__t-0<sup>2</sup> | 128  | 2 048        | 4 096  | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
+| Standard_M128ms @ no__t-0<sup>2, &nbsp;3, &nbsp;4</sup> | 128  | 3892  | 4 096 | 64 | 160000/1600 (12696) | 80000/2000                            | 8 / 30000          |
+| Standard_M64   | 64  | 1024 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16 000 |
+| Standard_M64m  | 64  | 1 792 | 7168  | 64 | 80000/800 (1228) | 40000/1000 | 8 / 16 000 |
+| Standard_M128 @ no__t-0 @ no__t-12  | 128 | 2 048 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
 | Standard_M128m @ no__t-0 @ no__t-12 | 128 | 3892 | 14336 | 64 | 250000/1600 (2456) | 80000/2000 | 8 / 32000 |
 
 
@@ -241,15 +241,15 @@ Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
 
-Velikosti řady DSv2-Series jsou založené na technologii Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz.
+Velikosti řady DSv2-Series běží na procesorech Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell).
 
-| Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální počet datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11_v2 @ no__t-0<sup>3</sup> |odst |čtrnáct |28 |8 |8000/64 (72) |6400/96 |2 / 1500 |
-| Standard_DS12_v2 @ no__t-0<sup>3</sup> |4 |28 |56 |16bitovém |16000/128 (144) |12800/192 |4 / 3000 |
-| Standard_DS13_v2 @ no__t-0<sup>3</sup> |8 |56 |112 |32 |32000/256 (288) |25600/384 |8 / 6000 |
-| Standard_DS14_v2 @ no__t-0<sup>3</sup>|16bitovém |112 |224 |64 |64000/512 (576) |51200/768 |8 / 12000 |
-| Standard_DS15_v2 @ no__t-0<sup>2</sup> |20o |140 |280 |64 |80000/640 (720) |64000/960 |8/25000 @ no__t-0<sup>4</sup>
+| Standard_DS11_v2 @ no__t-0<sup>3</sup> |2 |14 |28 |8 |8000/64 (72) |6400/96 |2 / 1 500 |
+| Standard_DS12_v2 @ no__t-0<sup>3</sup> |4 |28 |56 |16 |16000/128 (144) |12800/192 |4 / 3 000 |
+| Standard_DS13_v2 @ no__t-0<sup>3</sup> |8 |56 |112 |32 |32000/256 (288) |25600/384 |8 / 6 000 |
+| Standard_DS14_v2 @ no__t-0<sup>3</sup>|16 |112 |224 |64 |64000/512 (576) |51200/768 |8 / 12000 |
+| Standard_DS15_v2 @ no__t-0<sup>2</sup> |20 |140 |280 |64 |80000/640 (720) |64000/960 |8/25000 @ no__t-0<sup>4</sup>
 
 <sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), která je možné použít u virtuálního počítače DSv2 Series, může být omezená počtem, velikostí a prokládáním připojených disků.  Podrobnosti najdete v tématu [navrhování pro vysoký výkon](../articles/virtual-machines/windows/premium-storage-performance.md).  
 <sup>2</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.  
@@ -260,21 +260,21 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 
 ## <a name="dv2-series-11-15"></a>Dv2-Series 11-15
 
-ACU: 210-250
+ACU: 210–250
 
 Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Velikosti řady DSv2-Series jsou založené na technologii Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz.
+Velikosti řady DSv2-Series běží na procesorech Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell).
 
-| Velikost              | vCPU | Paměť: GiB | Dočasné úložiště (SSD) GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet datových disků/propustnost: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost              | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11_v2   | odst         | čtrnáct          | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1500                     |
-| Standard_D12_v2   | 4         | 28          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 3000                     |
-| Standard_D13_v2   | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 6000                     |
-| Standard_D14_v2   | 16bitovém        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 12000          |
-| Standard_D15_v2 @ no__t-0<sup>1</sup> | 20o        | 140         | 1000          | 60000/937/468                                        | 64/64x500                       | 8/25000 @ no__t-0<sup>2</sup> |
+| Standard_D11_v2   | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8×500                         | 2 / 1 500                     |
+| Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
+| Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
+| Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
+| Standard_D15_v2 @ no__t-0<sup>1</sup> | 20        | 140         | 1 000          | 60000 / 937 / 468                                        | 64/64x500                       | 8/25000 @ no__t-0<sup>2</sup> |
 
 <sup>1</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.  
 <sup>2</sup> 25000 MB/s s akcelerovanými síťovými službami. 

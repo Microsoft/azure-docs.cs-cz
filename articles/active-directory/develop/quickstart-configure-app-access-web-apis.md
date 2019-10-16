@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879339"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389611"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
 
 Aby se webová nebo důvěrná klientská aplikace mohla účastnit toku udělení autorizace, který vyžaduje ověření (a získání přístupového tokenu), musí mít zabezpečené přihlašovací údaje. Výchozí metodou ověřování podporovanou webem Azure Portal je ID klienta a tajný klíč.
 
@@ -43,7 +43,7 @@ V tomto rychlém startu si ukážeme, jak nakonfigurovat aplikaci následující
 * [Přidání přihlašovacích údajů do webové aplikace](#add-credentials-to-your-web-application)
 * [Přidání oprávnění pro přístup k webovým rozhraním API](#add-permissions-to-access-web-apis)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -80,8 +80,9 @@ Přidání identifikátorů URI pro přesměrování do aplikace:
 
 1. Pokud si chcete vybrat z navrhovaných identifikátorů URI pro veřejné klienty (mobilní, desktopové), postupujte následovně:
     1. Vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** .
-    1. Pomocí zaškrtávacích políček vyberte odpovídající identifikátory URI pro přesměrování pro vaši aplikaci.
+    1. Pomocí zaškrtávacích políček vyberte odpovídající identifikátory URI pro přesměrování pro vaši aplikaci. Můžete také zadat vlastní identifikátor URI pro přesměrování. Pokud si nejste jisti, co použít, podívejte se do dokumentace ke knihovně.
 
+Existují určitá omezení, která platí pro přesměrování identifikátorů URI. Přečtěte si další informace o [omezeních a omezeních identifikátoru URI přesměrování](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 > [!NOTE]
 > Vyzkoušejte si nové prostředí nastavení **ověřování** , kde můžete nakonfigurovat nastavení pro svou aplikaci na základě platformy nebo zařízení, na které chcete cílit.
 >
@@ -97,7 +98,7 @@ V závislosti na aplikaci, kterou zaregistrujete, existuje několik dalších na
 
 * **Odhlašovací adresa URL**
 * U aplikací s jednou stránkou můžete povolit **implicitní udělení** a vybrat tokeny, které chcete, aby koncový bod autorizace vydával.
-* U aplikací klasické pracovní plochy, které získávají tokeny s integrovaným ověřováním systému Windows, tokem kódu zařízení nebo uživatelským jménem/heslem v části **výchozí typ klienta** , nakonfigurujte nastavení považovat **aplikaci jako veřejného klienta** na **Ano**.
+* U aplikací klasické pracovní plochy, které získávají tokeny s integrovaným ověřováním systému Windows, tokem kódu zařízení nebo uživatelským jménem/heslem v části **výchozí typ klienta** , nakonfigurujte nastavení **považovat aplikaci jako veřejného klienta** na **Ano**.
 * Pro starší aplikace, které používaly sadu Live SDK pro integraci se službou účet Microsoft, nakonfigurujte **podporu sady Live SDK**. Nové aplikace toto nastavení nepotřebují.
 * **Výchozí typ klienta**
 
@@ -105,18 +106,18 @@ V závislosti na aplikaci, kterou zaregistrujete, existuje několik dalších na
 
 **Podporované typy účtů** určují, kdo může použít aplikaci nebo získat přístup k rozhraní API.
 
-Po nakonfigurování [podporovaných typů účtu](quickstart-register-app.md) při prvotní registraci aplikace lze toto nastavení změnit pouze pomocí editoru manifestu aplikace, pokud:
+Po [nakonfigurování podporovaných typů účtu](quickstart-register-app.md) při prvotní registraci aplikace lze toto nastavení změnit pouze pomocí editoru manifestu aplikace, pokud:
 
 * Můžete změnit typy účtů z **AzureADMyOrg** nebo **AzureADMultipleOrgs** na **AzureADandPersonalMicrosoftAccount**, nebo naopak.
 * Můžete změnit typy účtů z **AzureADMyOrg** na **AzureADMultipleOrgs**nebo naopak.
 
 Změna podporovaných typů účtů pro existující registraci aplikace:
 
-* Viz téma [Konfigurace manifestu aplikace](reference-app-manifest.md) a aktualizace `signInAudience` klíče.
+* Viz téma [Konfigurace manifestu aplikace](reference-app-manifest.md) a aktualizace klíče `signInAudience`.
 
 ## <a name="configure-platform-settings-for-your-application"></a>Konfigurace nastavení platformy pro vaši aplikaci
 
-[![Konfigurace nastavení aplikace na základě platformy nebo zařízení](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[nastavení @no__t 1Configure pro vaši aplikaci na základě platformy nebo zařízení](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cílíte na tyto možnosti:
 
@@ -131,7 +132,7 @@ Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cí
    | **Webové aplikace**    | **Web**              | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. |
    | **Mobilní aplikace** | **iOS**              | Zadejte **ID sady prostředků**aplikace, které najdete v Xcode v souboru info. plist nebo nastavení sestavení. Přidání ID sady prostředků automaticky vytvoří identifikátor URI přesměrování pro aplikaci. |
    |                         | **Android**          | * Zadejte **název balíčku**aplikace, který můžete najít v souboru souboru AndroidManifest. XML.<br/>* Vygenerujte a zadejte **hodnotu hash podpisu**. Přidání hodnoty hash signatury automaticky vytvoří identifikátor URI přesměrování pro aplikaci.  |
-   | **Plocha a zařízení**   | **Plocha a zařízení** | Volitelné. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Volitelné. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete interakce, použijte `https://localhost`. |
+   | **Plocha a zařízení**   | **Plocha a zařízení** | Volitelné. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Volitelné. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete použít interakci, použijte `https://localhost`. |
 
    > [!IMPORTANT]
    > Pro mobilní aplikace, které nepoužívají nejnovější knihovnu MSAL nebo nepoužívají zprostředkovatele, je nutné nakonfigurovat identifikátory URI přesměrování pro tyto aplikace v **desktopových a mobilních zařízeních**.
@@ -139,7 +140,7 @@ Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cí
 1. V závislosti na platformě, kterou jste zvolili, můžou existovat další nastavení, která můžete konfigurovat. Pro **Web** Apps můžete:
     * Přidat další identifikátory URI pro přesměrování
     * Pokud chcete vybrat tokeny, které byste chtěli vystavit pomocí koncového bodu autorizace, nakonfigurujte **implicitní udělení** :
-        * U jednostránkovéch aplikací vyberte **přístupové tokeny** a tokeny **ID** .
+        * U jednostránkovéch aplikací vyberte **přístupové tokeny** a **tokeny ID** .
         * Pro Web Apps vyberte **tokeny ID** .
 
 ## <a name="add-credentials-to-your-web-application"></a>Přidání přihlašovacích údajů do webové aplikace
@@ -177,7 +178,7 @@ Přidání oprávnění pro přístup k rozhraní API prostředků z klienta:
 1. Jakmile vyberete rozhraní API, zobrazí se stránka **Požádat o oprávnění rozhraní API**. Pokud rozhraní API zveřejňuje delegovaná oprávnění i oprávnění aplikace, vyberte, který typ oprávnění vaše aplikace potřebuje.
 1. Až budete hotovi, vyberte **Přidat oprávnění**. Vrátíte se na stránku **Oprávnění rozhraní API**, kde se v tabulce zobrazí uložená a přidaná oprávnění.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

@@ -1,5 +1,5 @@
 ---
-title: Vložení lokalizovaných oznámení do zařízení s iOS pomocí Azure Notification Hubs | Microsoft Docs
+title: Odesílání lokalizovaných nabízených oznámení do systému iOS pomocí Azure Notification Hubs | Microsoft Docs
 description: Naučte se používat pro zařízení s iOS lokalizovaná oznámení pomocí služby Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211889"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385659"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Kurz: Vložení lokalizovaných oznámení do zařízení s iOS pomocí Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Kurz: odeslání lokalizovaných nabízených oznámení do systému iOS pomocí Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -73,7 +73,7 @@ Pak zajistěte, aby se zařízení registrovala se šablonou, která odkazuje na
 
 Další informace o šablonách najdete v článku [šablony](notification-hubs-templates-cross-platform-push-messages.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete kurz [nabízených oznámení na konkrétní zařízení se systémem iOS](notification-hubs-ios-xplat-segmented-apns-push-notification.md) a zpřístupníte kód, protože tento kurz se sestaví přímo na tomto kódu.
 * Visual Studio 2019 je volitelné.
@@ -82,7 +82,7 @@ Další informace o šablonách najdete v článku [šablony](notification-hubs-
 
 V této části upravíte aplikaci s novinkami, kterou jste vytvořili v tématu [Používání centra oznámení k odesílání novinek] k odesílání lokalizovaných zpráv pomocí šablon.
 
-V aplikaci `MainStoryboard_iPhone.storyboard`přidejte segmentované řízení se třemi jazyky: Angličtina, francouzština a Mandarince.
+V `MainStoryboard_iPhone.storyboard` přidejte segmentované řízení se třemi jazyky: angličtina, francouzština a mandarinek.
 
 ![Vytvoření scénáře uživatelského rozhraní iOS][13]
 
@@ -92,7 +92,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
 
 ## <a name="build-the-ios-app"></a>Sestavení aplikace pro iOS
 
-1. `Notification.h`V ,`retrieveLocale` přidejte metodu a upravte úložiště a odběr metod, jak je znázorněno v následujícím kódu:
+1. V `Notification.h` přidejte metodu `retrieveLocale` a upravte úložiště a přihlaste se k odběru, jak je znázorněno v následujícím kódu:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
 
     - (int) retrieveLocale;
     ```
-    V, upravte `storeCategoriesAndSubscribe` metodu tak, že přidáte parametrauložítehodovýchozíchhodnotuživatele:`locale` `Notification.m`
+    V `Notification.m` upravte metodu `storeCategoriesAndSubscribe` tak, že přidáte parametr `locale` a uložíte ho do výchozích hodnot uživatele:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
     }
     ```
 
-    Místo použijte metodu `registerTemplateWithDeviceToken`. `registerNativeWithDeviceToken` Když se zaregistrujete na šablonu, musíte zadat šablonu JSON a také název šablony (protože aplikace může chtít registrovat jiné šablony). Ujistěte se, že jste své kategorie zaregistrovali jako značky, abyste je mohli dostávat pro tyto zprávy.
+    Použijte metodu `registerTemplateWithDeviceToken` namísto `registerNativeWithDeviceToken`. Když se zaregistrujete na šablonu, musíte zadat šablonu JSON a také název šablony (protože aplikace může chtít registrovat jiné šablony). Ujistěte se, že jste své kategorie zaregistrovali jako značky, abyste je mohli dostávat pro tyto zprávy.
 
     Přidejte metodu pro načtení národního prostředí z výchozího nastavení uživatele:
 
@@ -155,13 +155,13 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
     }
     ```
 
-2. Teď, když jste změnili `Notifications` třídu, musíte se ujistit `ViewController` , že využívá nové `UISegmentControl`. Do `viewDidLoad` metody přidejte následující řádek, abyste se ujistili, že chcete zobrazit aktuálně vybrané národní prostředí:
+2. Teď, když jste změnili třídu `Notifications`, je nutné se ujistit, že `ViewController` využívá nové `UISegmentControl`. Přidejte následující řádek do metody `viewDidLoad`, abyste se ujistili, že chcete zobrazit aktuálně vybrané národní prostředí:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Potom v `subscribe` metodě změňte vaše volání `storeCategoriesAndSubscribe` na následující kód:
+    Potom v metodě `subscribe` změňte volání na `storeCategoriesAndSubscribe` na následující kód:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
     }];
     ```
 
-3. Nakonec musíte aktualizovat `didRegisterForRemoteNotificationsWithDeviceToken` metodu v AppDelegate. m, abyste mohli správně aktualizovat svou registraci při spuštění aplikace. Změňte volání `subscribe` metody oznámení pomocí následujícího kódu:
+3. Nakonec musíte aktualizovat metodu `didRegisterForRemoteNotificationsWithDeviceToken` v AppDelegate. m, abyste mohli správně aktualizovat svou registraci při spuštění aplikace. Změňte volání metody `subscribe` oznámení pomocí následujícího kódu:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Pak nezapomeňte přidat IBOutlet do soubor viewcontroller. h, jak je znázorně
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>volitelné Odeslat lokalizovaná oznámení šablon ze zařízení
 
-Pokud nemáte přístup k aplikaci Visual Studio nebo chcete pouze testovat odesílání lokalizovaných oznámení šablon přímo z aplikace na zařízení. Můžete přidat lokalizované parametry šablony do `SendNotificationRESTAPI` metody, kterou jste definovali v předchozím kurzu.
+Pokud nemáte přístup k aplikaci Visual Studio nebo chcete pouze testovat odesílání lokalizovaných oznámení šablon přímo z aplikace na zařízení. Do metody `SendNotificationRESTAPI`, kterou jste definovali v předchozím kurzu, můžete přidat lokalizované parametry šablony.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag

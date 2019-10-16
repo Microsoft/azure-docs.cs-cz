@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029267"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387206"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapování toku dat pro výběr transformace
 
@@ -21,13 +21,13 @@ Tuto transformaci použijte pro selektivitu sloupce (zmenšení počtu sloupců)
 ## <a name="how-to-use-select-transformation"></a>Jak použít transformaci Select
 Možnost vybrat Transformer umožňuje aliasovat celý datový proud nebo sloupce v tomto datovém proudu, přiřazovat jiné názvy (aliasy) a následně na tyto nové názvy odkazovat později v toku dat. Tato transformace je užitečná pro scénáře automatického spojení. Způsob implementace automatického spojení v toku dat ADF je použít datový proud, vytvořit větvení s "novou větví" a hned následně přidat transformaci "SELECT". Tento datový proud teď bude mít nový název, který můžete použít pro připojení zpátky k původnímu streamu, a vytvořit tak nové připojení:
 
-![Samoobslužné](media/data-flow/selfjoin.png "spojení")
+![Připojovat se k sobě](media/data-flow/selfjoin.png "Připojovat se k sobě")
 
 Ve výše uvedeném diagramu je transformace SELECT v horní části. Tím se aliasuje původní datový proud na "OrigSourceBatting". Ve zvýrazněné transformaci spojení pod ním vidíte, že používáme tento datový proud aliasu jako připojení na pravé straně, což nám umožňuje odkazovat na stejný klíč v levém & pravé straně vnitřního spojení.
 
 Možnost vybrat se dá použít taky jako způsob, jak vybrat sloupce z toku dat. Například pokud máte v jímky definované 6 sloupců, ale chcete pouze vybrat konkrétní 3 pro transformaci a následně tok do jímky, můžete vybrat pouze ty 3 pomocí transformace SELECT.
 
-![Vybrat transformaci]–(media/data-flow/newselect1.png "Vybrat alias")
+![Vybrat transformaci](media/data-flow/newselect1.png "Vybrat alias")
 
 ## <a name="options"></a>Možnosti
 * Výchozím nastavením pro možnost vybrat je zahrnout všechny příchozí sloupce a zachovat tyto původní názvy. Datový proud můžete aliasovat tak, že nastavíte název transformace SELECT.
@@ -44,7 +44,7 @@ Možnost vybrat se dá použít taky jako způsob, jak vybrat sloupce z toku dat
 ## <a name="mapping"></a>Připojení
 Ve výchozím nastavení bude transformace výběru automaticky namapována na všechny sloupce, které budou předávat všechny příchozí sloupce se stejným názvem ve výstupu. Název výstupního datového proudu, který je nastaven v nastavení výběr, bude definovat nový název aliasu pro datový proud. Pokud zachováte sadu výběrů pro automatické mapování, pak můžete celý datový proud vytvořit alias se všemi sloupci.
 
-![Vybrat](media/data-flow/rule2.png "mapování na základě pravidel pro") transformaci
+![Vybrat pravidla transformace](media/data-flow/rule2.png "Mapování na základě pravidel")
 
 Pokud chcete, aby byly sloupce aliasy, odebrány, přejmenovány nebo přeobjednány, musíte nejprve přepnout na automatické mapování. Ve výchozím nastavení se zobrazí výchozí pravidlo, které se označuje jako "všechny vstupní sloupce". Toto pravidlo můžete ponechat v takovém případě, pokud máte v úmyslu vždy, aby se všechny příchozí sloupce namapovaly na stejný název na svém výstupu.
 

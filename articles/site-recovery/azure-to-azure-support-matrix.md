@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376331"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383508"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -82,18 +82,21 @@ Site Recovery podporuje replikaci virtuálních počítačů Azure s operačním
 
 ### <a name="windows"></a>Windows
 
+
 **Operační systém** | **Podrobnosti**
 --- | ---
 Windows Server 2019 | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2016  | Podporován jádro serveru, server s desktopovým prostředím.
 Windows Server 2012 R2 | Podporuje se.
 Windows Server 2012 | Podporuje se.
-Windows Server 2008 R2 s aktualizací SP1/SP2 | Podporuje se.<br/><br/> Z verze 9.30. x. x rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 R2 SP1/SP2.  Pokud tyto aktualizace nejsou nainstalované, rozšíření agenta se nemusí nainstalovat nebo upgradovat podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
-Windows Server 2008 s aktualizací SP2 | Z verze 9.30. x. x rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack (cestou nadřazené)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 s aktualizací SP2.  Pokud tyto aktualizace nejsou nainstalované, rozšíření agenta se nemusí nainstalovat nebo upgradovat podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 s aktualizací SP1/SP2 | Podporuje se.<br/><br/> Od verze 9.30. x. x (očekávaná verze od listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 R2 SP1/SP2.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows Server 2008 s aktualizací SP2 | Od verze 9.30. x. x (očekávaná verze od 1. listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4493730) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows Server 2008 s aktualizací SP2.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Podporuje se.
 Windows 8.1 (x64) | Podporuje se.
 Windows 8 (x64) | Podporuje se.
-Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze 9.30. x. x rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows 7 s aktualizací SP1.  Pokud tyto aktualizace nejsou nainstalované, rozšíření agenta se nemusí nainstalovat nebo upgradovat podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze 9.30. x. x (očekávaná verze od 1. listopadu 2019) rozšíření služby mobility pro virtuální počítače Azure je nutné nainstalovat aktualizaci Windows [Servicing Stack Service (cestou nadřazené)](https://support.microsoft.com/help/4490628) a [SHA-2](https://support.microsoft.com/help/4474419) na počítače se systémem Windows 7 s aktualizací SP1.  SHA-1 se od září 2019 nepodporuje a pokud podepisování kódu SHA-2 není povolené, rozšíření agenta se nenainstaluje nebo upgraduje podle očekávání. Přečtěte si další informace o [upgradu a požadavcích SHA-2](https://aka.ms/SHA-2KB).
+
+
 
 #### <a name="linux"></a>Linux
 

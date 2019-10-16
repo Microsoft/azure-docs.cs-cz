@@ -14,26 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: dc1183e1557d634ab1880376a1347f43f33b329f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c5fcc98bf3da79d1978da6e67535a5a93a8fe321
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027505"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388853"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikace Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
+> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
+>
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
 
 ## <a name="overview"></a>Přehled
 V tomto kurzu se seznámíte s funkcí offline synchronizace služby Azure Mobile Apps pro Cordova. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací @ no__t-0viewing, přidáváním nebo úpravou dat @ no__t-1even, když není k dispozici žádné síťové připojení. Změny jsou uloženy v místní databázi.  Jakmile je zařízení zase online, tyto změny se synchronizují se vzdálenou službou.
 
 Tento kurz je založený na řešení Cordova rychlý Start pro Mobile Apps, které vytvoříte po dokončení kurzu [Rychlý Start Apache Cordova]. V tomto kurzu aktualizujete řešení pro rychlé zprovoznění a přidáte offline funkce Azure Mobile Apps.  V aplikaci také zvýrazníte kód specifický pro práci v režimu offline.
 
-Další informace o funkci offline synchronizace najdete v tématu [synchronizace offline dat v Azure Mobile Apps]. Podrobnosti o využití rozhraní API najdete v [dokumentaci k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
+Další informace o funkci offline synchronizace najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps]. Podrobnosti o využití rozhraní API najdete v [dokumentaci k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client).
 
 ## <a name="add-offline-sync-to-the-quickstart-solution"></a>Přidání offline synchronizace do řešení pro rychlé zprovoznění
 Do aplikace se musí přidat kód offline synchronizace. Offline synchronizace vyžaduje modul plug-in Cordova-SQLite-Storage, který se automaticky přidá do aplikace, když je v projektu zahrnutý modul plug-in Azure Mobile Apps. Projekt rychlý Start zahrnuje oba tyto moduly plug-in.
@@ -141,7 +142,7 @@ V ukázce je metoda **push** **syncContext** volána pouze při spuštění apli
 
 Při spuštění operace vyžádání na tabulce, která má nedokončené místní aktualizace sledované kontextem, bude tato operace vyžádané replikace automaticky spouštět push. Při aktualizaci, přidávání a dokončování položek v této ukázce můžete vynechat explicitní volání **push** , protože může být redundantní.
 
-V poskytnutém kódu jsou dotazovány všechny záznamy ve vzdálené tabulce todoItem, ale je také možné filtrovat záznamy předáním ID dotazu a dotazu do příkazu **push**. Další informace najdete v části o *přírůstkové synchronizaci* při [Synchronizace offline dat v Azure Mobile Apps].
+V poskytnutém kódu jsou dotazovány všechny záznamy ve vzdálené tabulce todoItem, ale je také možné filtrovat záznamy předáním ID dotazu a dotazu do příkazu **push**. Další informace najdete v části o *přírůstkové synchronizaci* při [Synchronizace offline dat v prostředí Azure Mobile Apps].
 
 ## <a name="optional-disable-authentication"></a>Volitelné Zakázat ověřování
 
@@ -191,8 +192,8 @@ V této části znovu připojíte aplikaci k mobilnímu back-endu, která simulu
 
     Všimněte si, že data byla synchronizovaná mezi databází a místním úložištěm a obsahuje položky, které jste přidali v době, kdy byla aplikace odpojena.
 
-## <a name="additional-resources"></a>Další zdroje
-* [Synchronizace offline dat v Azure Mobile Apps]
+## <a name="additional-resources"></a>Další zdroje informací:
+* [Synchronizace offline dat v prostředí Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 
 ## <a name="next-steps"></a>Další kroky
@@ -206,7 +207,7 @@ V této části znovu připojíte aplikaci k mobilnímu back-endu, která simulu
 <!-- URLs. -->
 [Rychlý Start Apache Cordova]: app-service-mobile-cordova-get-started.md
 [Ukázka offline synchronizace]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
-[Synchronizace offline dat v Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Synchronizace offline dat v prostředí Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md
 [authentication]: app-service-mobile-cordova-get-started-users.md

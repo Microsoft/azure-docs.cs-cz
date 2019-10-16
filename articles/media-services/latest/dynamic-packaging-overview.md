@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910265"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383535"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -26,11 +26,11 @@ Microsoft Azure Media Services lze použít ke kódování mnoha mediálních fo
 
 V Media Services [koncový bod streamování](streaming-endpoint-concept.md) představuje dynamický (za běhu) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do klientské aplikace přehrávače pomocí jednoho z běžných protokolů mediálního streamování. uvedené v následující části. Dynamické balení je funkce, která je standardem u všech koncových bodů streamování (Standard i Premium). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Příprava zdrojových souborů na doručení
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>@no__t – 0To připravit zdrojové soubory pro doručení
 
 Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s kódovanými soubory MP4 a konfigurační soubory pro streamování, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím následujících protokolů multimediálního datového proudu:
 
-|Protocol|Příklad|
+|Protocol (Protokol)|Příklad:|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
@@ -98,14 +98,14 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje soubory MP4, které obsahují video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkové frekvence až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2. Pokud máte amshelp@microsoft.com v tomto tématu nějaké dotazy, kontaktujte prosím. 
+> Rozlišení až 4K a snímkové frekvence až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2. Pokud máte v tomto tématu nějaké dotazy, kontaktujte prosím amshelp@microsoft.com. 
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Zvukové kodeky podporované dynamickým balením
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>kodeky <a id="audio-codecs"/>Audio podporované dynamickým balením
 
 Dynamické balení podporuje zvuk, který je kódovaný pomocí následujících protokolů:
 
 * [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 nebo HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Rozšířené AC-3 nebo E-AC3)
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (vylepšené AC-3 nebo E-AC3)
 * Dolby ATMOS<br />
    Streamování formátu Dolby ATMOS je podporováno pro standardy, jako je protokol MPEG-dispomlčka (CSF) nebo Common Media Application Format (CMAF) fragmentované MP4 a prostřednictvím HTTP Live Streaming (HLS) s CMAF.
 
@@ -124,7 +124,7 @@ Dynamické balení podporuje více zvukových stop s POMLČKou nebo HLS (verze 4
 Dynamické balení nepodporuje soubory, které obsahují zvuk [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (Jedná se o zastaralý kodek).
 
 > [!NOTE]
-> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2. Pokud máte amshelp@microsoft.com v tomto tématu nějaké dotazy, kontaktujte prosím. 
+> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2. Pokud máte v tomto tématu nějaké dotazy, kontaktujte prosím amshelp@microsoft.com. 
 
 ## <a name="manifests"></a>Manifesty 
  
@@ -161,7 +161,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-#### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-POMLČKA
 
 Tady je příklad souboru manifestu MPEG-SPOJOVNÍK, označovaného také jako popis prezentace médií MPEG-SPOJOVNÍK (MPD):
 
@@ -220,7 +220,7 @@ Tady je příklad souboru manifestu Smooth Streaming:
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>Pojmenovávání stop v manifestu
 
-Pokud je v souboru. ISM zadán název zvukové stopy, Media Services přidá `Label` prvek `AdaptationSet` v rámci, aby určoval informace o textural pro konkrétní zvukovou stopu. Příklad manifestu výstupní POMLČKy:
+Pokud je v souboru. ISM zadán název zvukové stopy, Media Services do `AdaptationSet` přidat prvek `Label`, který určí informace o textural pro konkrétní zvukovou stopu. Příklad manifestu výstupní POMLČKy:
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -232,15 +232,34 @@ Pokud je v souboru. ISM zadán název zvukové stopy, Media Services přidá `La
 </AdaptationSet>
 ```
 
-Přehrávač může použít `Label` element k zobrazení v uživatelském rozhraní.
+Přehrávač může použít prvek `Label` k zobrazení v uživatelském rozhraní.
 
 ### <a name="signaling-audio-description-tracks"></a>Signalizace stopy Popis zvuku
 
-Zákazník může opatřit zvukovou stopou jako Popis zvuku v manifestu. To umožňuje přidat do souboru. ISM parametry "přístupnost" a "role". Pokud zvuková stopa má parametr "Accessibility" s hodnotou "Description" a parametr "role" s hodnotou "alternativním", bude Media Services rozpoznávat zvuk. Pokud Media Services detekuje zvukový popis v souboru. ISM, informace o zvukovém popisu jsou předány manifestu klienta jako `Accessibility="description"` a `Role="alternate"` atributy do `StreamIndex` elementu.
+Do svého videa můžete přidat záznam mluveného komentáře, který umožní vizuálně postiženým klientům sledovat záznam videa tím, že naslouchá mluveným komentářům. V manifestu musíte opatřit zvukovou stopu jako Popis zvuku. Uděláte to tak, že do souboru. ISM přidáte parametry usnadnění a role. Vaše zodpovědnost za správné nastavení těchto parametrů k signalizaci zvukové stopy jako zvukového popisu. Přidejte například `<param name="accessibility" value="description" />` a `<param name="role" value="alternate"` do souboru. ISM pro konkrétní zvukovou stopu. 
 
-Pokud je v souboru. ISM nastavená kombinace "přístupnost" = "Description" a "role" = "alternativní", přenesený manifest a hladký manifest přenáší hodnoty jako nastavené v parametrech "přístupnost" a "role". Je zodpovědností zákazníka nastavit tyto dvě hodnoty vpravo a označit zvukovou stopu jako Popis zvuku. Na základě typu POMLČKy, "usnadnění" = "Popis" a "role" = "alternativní" znamená zvukovou stopu, která je zvukovým popisem.
+Další informace najdete v příkladech [signalizace popisné zvukové stopy](signal-descriptive-audio-howto.md) .
 
-Pro HLS v7 a vyšší (`format=m3u8-cmaf`) má jeho `CHARACTERISTICS="public.accessibility.describes-video"` seznam testů pouze v případě, že je v souboru. ISM nastavena kombinace "přístupnost" = "Description" a "role" = "alternativní". 
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming manifest
+
+Pokud přehráváte Smooth Streaming Stream, manifest by přenese hodnoty v atributech `Accessibility` a `Role` pro tuto zvukovou stopu. Například `Role="alternate" Accessibility="description"` by se přidal do prvku `StreamIndex`, aby označoval, že se jedná o zvukový popis.
+
+#### <a name="dash-manifest"></a>SPOJOVNÍK – manifest
+
+V případě POMLČKového manifestu by se měly přidat následující dva elementy k signalizaci zvukového popisu:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS seznam testů
+
+Pro HLS v7 a vyšší `(format=m3u8-cmaf)` by jeho seznam testů mohl `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`, když je zvuková stopa signalizace.
+
+#### <a name="example"></a>Příklad:
+
+Další informace najdete v tématu [postup signalizace stopy zvukového popisu](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Dynamický manifest
 
@@ -248,13 +267,13 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
-*Dynamické šifrování* můžete použít k dynamickému šifrování živého obsahu nebo obsahu na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
+*Dynamické šifrování* můžete použít k dynamickému šifrování živého obsahu nebo na vyžádání pomocí AES-128 nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple Fairplay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM autorizovaným klientům. Další informace najdete v tématu [dynamické šifrování](content-protection-overview.md).
 
 ## <a name="more-information"></a>Další informace
 
 Podívejte se na [Azure Media Services komunita](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).

@@ -15,18 +15,18 @@ ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329995"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439496"
 ---
-# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Vytvoření webové aplikace Python (Django) s PostgreSQL v Azure App Service
+# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: Vytvoření webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Pythonu řízeném daty (Django) pomocí PostgreSQL jako back-endu databáze. Po dokončení budete mít webovou aplikaci Django běžící v Azure App Service v systému Linux.
 
-![Webová aplikace Python Django v App Service v systému Linux](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Webová aplikace Python Django v Azure App Service v systému Linux](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 V tomto kurzu se naučíte:
 
@@ -147,7 +147,7 @@ V prohlížeči přejdete na `http://localhost:8000`. Měla by se zobrazit zprá
 
 Vyberte @no__t – 0 a přihlaste se pomocí uživatele správce, kterého jste vytvořili v posledním kroku. Vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
-![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Spuštění aplikace Python Django v App Services místně](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Znovu přejděte na `http://localhost:8000` a podívejte se na zobrazenou otázku dotazování.
 
@@ -276,7 +276,7 @@ Znovu přejít na @no__t – 0. Měla by se zobrazit zpráva `No polls are avail
 
 Vyberte `http://localhost:8000/admin` a přihlaste se pomocí vámi vytvořeného správce a vytvořte otázku dotazování, jako byste předtím.
 
-![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Spuštění aplikace Python Django v App Services místně](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Znovu přejděte na `http://localhost:8000` a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
 
@@ -391,7 +391,7 @@ App Service detekuje projekt Django v úložišti tím, že hledá _WSGI.py_ v k
 
 Použijte `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného vytvořeného uživatele správce. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
 
-![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Spuštění aplikace Python Django v App Services v Azure](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 **Blahopřejeme!** Spouštíte webovou aplikaci Python (Django) v Azure App Service pro Linux.
 
@@ -405,11 +405,11 @@ Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure 
 
 V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
 
-![Přechod do aplikace Azure na portálu](./media/tutorial-python-postgresql-app/app-resource.png)
+![V Azure Portal přejděte do vaší aplikace Python Django](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
 Ve výchozím nastavení se na portálu zobrazí stránka s **přehledem** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
-![Stránka služby App Service na webu Azure Portal](./media/tutorial-python-postgresql-app/app-mgmt.png)
+![Správa aplikace Python Django na stránce Přehled v Azure Portal](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

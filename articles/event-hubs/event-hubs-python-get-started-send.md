@@ -1,111 +1,106 @@
 ---
-title: Posílání a přijímání událostí pomocí Pythonu – Azure Event Hubs | Microsoft Docs
-description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, která odesílá události do Azure Event Hubs.
+title: Posílání a přijímání událostí pomocí Pythonu – Azure Event Hubs
+description: Tento návod ukazuje, jak vytvořit a spustit skripty Pythonu, které odesílají události do nebo přijímají události z Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/16/2019
+ms.date: 10/11/2019
 ms.author: shvija
-ms.openlocfilehash: 5162c6359c4b6e6bdd53d2778ca247704e2f16be
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059145"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428899"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Odesílání událostí do nebo příjem událostí z Event Hubs pomocí Pythonu
+# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Odesílání a příjem událostí pomocí Event Hubs pomocí Pythonu
 
-Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
+Azure Event Hubs je platforma pro zpracování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Event Hubs může zpracovávat a ukládat události, data nebo telemetrie z distribuovaného softwaru a zařízení. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Další informace o Event Hubs najdete v tématu [azure Event Hubs](event-hubs-about.md) a [funkce a terminologie v Azure Event Hubs](event-hubs-features.md).
 
-V tomto kurzu se dozvíte, jak vytvářet aplikace v Pythonu pro odesílání událostí nebo přijímání událostí z centra událostí. 
+V tomto rychlém startu se dozvíte, jak vytvářet aplikace v Pythonu, které odesílají události do a přijímat události z centra událostí. 
 
 > [!NOTE]
-> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
+> Místo práce v rychlém startu si můžete stáhnout a spustit [ukázkové aplikace](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) z GitHubu. Nahraďte řetězce `EventHubConnectionString` a `EventHubName` hodnotami vašeho centra událostí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Python 3.4 nebo novější.
-- Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte hodnotu přístupového klíče pro centrum událostí podle pokynů v článku: [Získá připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Výchozí název klíče: **RootManageSharedAccessKey**.
-
-## <a name="install-python-package"></a>Instalovat balíček Pythonu
-
-Chcete-li nainstalovat balíček Pythonu pro službu Event Hubs, otevřete příkazový řádek, který má Python v cestě a spusťte tento příkaz: 
-
-```bash
-pip install azure-eventhub
-```
+- Obor názvů Active Event Hubs a centrum událostí vytvořené podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md). Poznamenejte si název oboru názvů a centra událostí, které použijete později v tomto návodu. 
+- Hodnota názvu sdíleného přístupového klíče a primárního klíče pro obor názvů Event Hubs. Pomocí pokynů uvedených v části [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)Získejte název a hodnotu přístupového klíče. Název výchozího přístupového klíče je **RootManageSharedAccessKey**. Zkopírujte název klíče a hodnotu primárního klíče pro pozdější použití v tomto návodu. 
+- Python 3,4 nebo novější s nainstalovanou a aktualizovanou `pip`.
+- Balíček Pythonu pro Event Hubs. Chcete-li nainstalovat balíček, spusťte tento příkaz na příkazovém řádku, který má Python v cestě: 
+  
+  ```cmd
+  pip install azure-eventhub
+  ```
+  
+  > [!NOTE]
+  > Kód v tomto rychlém startu používá aktuální stabilní verzi 1.3.1 sady Event Hubs SDK. Vzorový kód, který používá verzi Preview sady SDK, najdete v části [https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
 
 ## <a name="send-events"></a>Odesílání událostí
 
-> [!NOTE]
-> Tento kód v této části je pro aktuální stabilní verzi (1.3.1) Event Hubs SDK. Pokud hledáte vzorový kód, který používá verzi Preview sady SDK, přečtěte si [tuto stránku](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
-
-### <a name="create-a-python-script-to-send-events"></a>Vytvořit skript v jazyce Python pro odesílání událostí
-
-V dalším kroku vytvoření aplikace v Pythonu, která zasílá události do centra událostí:
+Vytvoření aplikace v Pythonu, která odesílá události do centra událostí:
 
 1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte skript volá **send.py**. Tento skript odesílá 100 události do vašeho centra událostí.
-3. Vložte následující kód do send.py, zadejte adresu, uživatele a klíč hodnoty hodnotami, které jste získali z portálu Azure portal v předchozí části: 
+2. Vytvořte nový soubor s názvem *Send.py*. Tento skript pošle do centra událostí 100 událostí.
+3. Do *Send.py*vložte následující kód a nahraďte Event Hubs \<namespace >, \<eventhub >, \<AccessKeyName > a \<primary hodnoty klíče > s hodnotami: 
+   
+   ```python
+   import sys
+   import logging
+   import datetime
+   import time
+   import os
+   
+   from azure.eventhub import EventHubClient, Sender, EventData
+   
+   logger = logging.getLogger("azure")
+   
+   # Address can be in either of these formats:
+   # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<namespace>.servicebus.windows.net/eventhub"
+   # "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   # SAS policy and key are not required if they are encoded in the URL
+   
+   ADDRESS = "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   USER = "<AccessKeyName>"
+   KEY = "<primary key value>"
+   
+   try:
+       if not ADDRESS:
+           raise ValueError("No EventHubs URL supplied.")
+   
+       # Create Event Hubs client
+       client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+       sender = client.add_sender(partition="0")
+       client.run()
+       try:
+           start_time = time.time()
+           for i in range(100):
+               print("Sending message: {}".format(i))
+               message = "Message {}".format(i)
+               sender.send(EventData(message))
+       except:
+           raise
+       finally:
+           end_time = time.time()
+           client.stop()
+           run_time = end_time - start_time
+           logger.info("Runtime: {} seconds".format(run_time))
+   
+   except KeyboardInterrupt:
+       pass
+   ```
+   
+4. Uložte soubor. 
 
-```python
-import sys
-import logging
-import datetime
-import time
-import os
+Pokud chcete skript spustit, z adresáře, kam jste uložili *Send.py*, spusťte tento příkaz:
 
-from azure.eventhub import EventHubClient, Sender, EventData
-
-logger = logging.getLogger("azure")
-
-# Address can be in either of these formats:
-# "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
-# "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
-# For example:
-ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
-
-# SAS policy and key are not required if they are encoded in the URL
-USER = "RootManageSharedAccessKey"
-KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
-
-try:
-    if not ADDRESS:
-        raise ValueError("No EventHubs URL supplied.")
-
-    # Create Event Hubs client
-    client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
-    sender = client.add_sender(partition="0")
-    client.run()
-    try:
-        start_time = time.time()
-        for i in range(100):
-            print("Sending message: {}".format(i))
-            message = "Message {}".format(i)
-            sender.send(EventData(message))
-    except:
-        raise
-    finally:
-        end_time = time.time()
-        client.stop()
-        run_time = end_time - start_time
-        logger.info("Runtime: {} seconds".format(run_time))
-
-except KeyboardInterrupt:
-    pass
-```
-
-### <a name="run-application-to-send-events"></a>Spuštění aplikace pro odesílání událostí
-
-Pro spuštění skriptu, otevřete příkazový řádek, který má Python v cestě a pak spusťte tento příkaz:
-
-```bash
+```cmd
 start python send.py
 ```
 
@@ -113,71 +108,68 @@ Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 
-### <a name="create-a-python-script-to-receive-events"></a>Vytvořit skript Pythonu pro příjem událostí
+Vytvoření aplikace v Pythonu, která přijímá události z centra událostí:
 
-V dalším kroku vytvoření aplikace v Pythonu, která bude přijímat události z centra událostí:
+1. V editoru Pythonu vytvořte soubor s názvem *recv.py*.
+2. Do *recv.py*vložte následující kód a nahraďte Event Hubs \<namespace >, \<eventhub >, \<AccessKeyName > a \<primary hodnoty klíče > s hodnotami: 
+   
+   ```python
+   import os
+   import sys
+   import logging
+   import time
+   from azure.eventhub import EventHubClient, Receiver, Offset
+   
+   logger = logging.getLogger("azure")
+   
+   # Address can be in either of these formats:
+   # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
+   # "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   # SAS policy and key are not required if they are encoded in the URL
+   
+   ADDRESS = "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   USER = "<AccessKeyName>"
+   KEY = "<primary key value>"
+   
+   
+   CONSUMER_GROUP = "$default"
+   OFFSET = Offset("-1")
+   PARTITION = "0"
+   
+   total = 0
+   last_sn = -1
+   last_offset = "-1"
+   client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+   try:
+       receiver = client.add_receiver(
+           CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+       client.run()
+       start_time = time.time()
+       for event_data in receiver.receive(timeout=100):
+           print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
+           total += 1
+   
+       end_time = time.time()
+       client.stop()
+       run_time = end_time - start_time
+       print("Received {} messages in {} seconds".format(total, run_time))
+   
+   except KeyboardInterrupt:
+       pass
+   finally:
+       client.stop()
+   ```
+   
+4. Uložte soubor.
 
-1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
-2. Vytvořte skript volá **recv.py**.
-3. Vložte následující kód do recv.py, zadejte adresu, uživatele a klíč hodnoty hodnotami, které jste získali z portálu Azure portal v předchozí části: 
+Pokud chcete skript spustit, z adresáře, kam jste uložili *recv.py*, spusťte tento příkaz:
 
-```python
-import os
-import sys
-import logging
-import time
-from azure.eventhub import EventHubClient, Receiver, Offset
-
-logger = logging.getLogger("azure")
-
-# Address can be in either of these formats:
-# "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
-# "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
-# For example:
-ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
-
-# SAS policy and key are not required if they are encoded in the URL
-USER = "RootManageSharedAccessKey"
-KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
-
-CONSUMER_GROUP = "$default"
-OFFSET = Offset("-1")
-PARTITION = "0"
-
-total = 0
-last_sn = -1
-last_offset = "-1"
-client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
-try:
-    receiver = client.add_receiver(
-        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
-    client.run()
-    start_time = time.time()
-    for event_data in receiver.receive(timeout=100):
-        print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
-        total += 1
-
-    end_time = time.time()
-    client.stop()
-    run_time = end_time - start_time
-    print("Received {} messages in {} seconds".format(total, run_time))
-
-except KeyboardInterrupt:
-    pass
-finally:
-    client.stop()
-```
-
-### <a name="receive-events"></a>Příjem událostí
-
-Pro spuštění skriptu, otevřete příkazový řádek, který má Python v cestě a pak spusťte tento příkaz:
-
-```bash
+```cmd
 start python recv.py
 ```
- 
+
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si následující články:
+Další informace o Event Hubs najdete v následujících článcích:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)

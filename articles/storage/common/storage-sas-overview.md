@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670834"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382011"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -24,9 +24,17 @@ Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný příst
 
 Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
-- **SAS delegování uživatele (Preview).** SAS delegování uživatele je zabezpečené pomocí přihlašovacích údajů pro Azure Active Directory (Azure AD) a také podle oprávnění zadaných pro SAS. SAS delegování uživatele se vztahuje pouze na úložiště objektů BLOB. Chcete-li vytvořit SAS delegování uživatele, je nutné nejprve vyžádat klíč pro delegování uživatele, který se používá k podepsání SAS. Další informace o SAS delegování uživatele najdete v tématu [Vytvoření SAS (REST API) delegování uživatele](/rest/api/storageservices/create-user-delegation-sas).
-- **SAS služby.** Podpis SAS služby je zabezpečený pomocí klíče účtu úložiště. SAS služby deleguje přístup k prostředku pouze v jedné z Azure Storage služeb: Úložiště objektů blob, úložiště front, úložiště tabulek nebo soubory Azure. Další informace o SAS služby najdete v tématu [Vytvoření SAS služby (REST API)](/rest/api/storageservices/create-service-sas).
-- **SAS účtu.** Podpis SAS účtu je zabezpečený pomocí klíče účtu úložiště. SAS účtu deleguje přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou k dispozici prostřednictvím SAS služby nebo delegování uživatele, jsou také k dispozici prostřednictvím SAS účtu. Kromě toho můžete pomocí SAS účtu delegovat přístup k operacím, které platí na úrovni služby, jako je například **získat nebo nastavit vlastnosti služby** a **získat operace statistiky služby** . Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. Další informace o SAS účtu získáte [vytvořením SAS (REST API) účtu](/rest/api/storageservices/create-account-sas).
+- **SAS delegování uživatele (Preview).** SAS delegování uživatele je zabezpečené pomocí přihlašovacích údajů pro Azure Active Directory (Azure AD) a také podle oprávnění zadaných pro SAS. SAS delegování uživatele se vztahuje pouze na úložiště objektů BLOB.
+
+    Další informace o SAS delegování uživatele najdete v tématu [Vytvoření SAS (REST API) delegování uživatele](/rest/api/storageservices/create-user-delegation-sas).
+
+- **SAS služby.** Podpis SAS služby je zabezpečený pomocí klíče účtu úložiště. SAS služby deleguje přístup k prostředku pouze v jedné z Azure Storage Services: BLOB Storage, Queue Storage, Table Storage nebo Azure Files. 
+
+    Další informace o SAS služby najdete v tématu [Vytvoření SAS služby (REST API)](/rest/api/storageservices/create-service-sas).
+
+- **SAS účtu.** Podpis SAS účtu je zabezpečený pomocí klíče účtu úložiště. SAS účtu deleguje přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou k dispozici prostřednictvím SAS služby nebo delegování uživatele, jsou také k dispozici prostřednictvím SAS účtu. Kromě toho můžete pomocí SAS účtu delegovat přístup k operacím, které platí na úrovni služby, jako je například **získat nebo nastavit vlastnosti služby** a **získat operace statistiky služby** . Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. 
+
+    Další informace o SAS účtu získáte [vytvořením SAS (REST API) účtu](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné, a ne používat klíč účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte přidružení zabezpečení uživatele, pokud je to možné, pro zajištění nadřazeného zabezpečení.
@@ -47,7 +55,7 @@ Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje
 
 SAS můžete podepsat jedním ze dvou způsobů:
 
-- Pomocí klíče pro delegování uživatele, který byl vytvořen pomocí pověření Azure Active Directory (Azure AD). Delegování uživatele je podepsané klíčem delegování uživatele.
+- Pomocí *klíče pro delegování uživatele* , který byl vytvořen pomocí pověření Azure Active Directory (Azure AD). Delegování uživatele je podepsané klíčem delegování uživatele.
 
     K získání klíče pro delegování uživatele a vytvoření SAS musí být objekt zabezpečení služby Azure AD přiřazený k roli řízení přístupu na základě role (RBAC), která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Podrobné informace o rolích RBAC s oprávněními k získání klíče pro delegování uživatelů najdete v tématu [Vytvoření SAS uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -71,11 +79,11 @@ Běžným scénářem, kdy je užitečný SAS, je služba, kde uživatelé čtou
 
 1. Klienti odesílají a stahují data prostřednictvím front-endové proxy služby, která provádí ověřování. Tato služba front-end proxy je výhodou pro povolení ověřování obchodních pravidel, ale pro velké objemy dat nebo velké objemy transakcí může být vytvoření služby, která se dá škálovat podle požadavků, náročné nebo obtížné.
 
-   ![Diagram scénáře: Front-end proxy služba](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
+   ![Diagram scénářů: front-end proxy služba](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
 1. Odlehčená služba ověřuje klienta podle potřeby a pak vygeneruje SAS. Jakmile klientská aplikace obdrží SAS, může získat přístup k prostředkům účtu úložiště přímo s oprávněními definovanými SAS a intervalem povoleným SAS. SAS snižuje nutnost směrování všech dat prostřednictvím služby front-end proxy.
 
-   ![Diagram scénáře: Služba poskytovatele SAS](./media/storage-sas-overview/sas-storage-provider-service.png)
+   ![Diagram scénáře: služba poskytovatele SAS](./media/storage-sas-overview/sas-storage-provider-service.png)
 
 Mnoho skutečných služeb může používat hybridní z těchto dvou přístupů. Některá data mohou být například zpracována a ověřena prostřednictvím proxy serveru front-end, zatímco jiná data jsou ukládána nebo čtena přímo pomocí SAS.
 

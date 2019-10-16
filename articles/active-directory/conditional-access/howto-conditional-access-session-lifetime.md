@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c93c9fe2b34ae3b87c44608cc5c5c8947ecc73
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499842"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389670"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
@@ -37,7 +37,7 @@ Frekvence přihlášení definuje časový interval před tím, než se uživate
 
 Výchozí konfigurací Azure Active Directory (Azure AD) pro frekvenci přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje se často zdá jako rozumné, ale může Backfire: uživatelé, kteří jsou vyškoleni k zadání přihlašovacích údajů, aniž by si je mohli omylem dodávat do výzvy ke škodlivým přihlašovacím údajům.
 
-Může se jednat o zvukové alarmy, které nežádá uživatele o přihlášení po dobu 90 dnů. u všech porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
+Může to vést ke zvukovému signalizaci, že nežádá uživatele, aby se k němu přihlásil. v důsledku toho jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
 
 Nastavení četnosti přihlašování funguje s aplikacemi, které implementovaly protokoly OAUTH2 nebo OIDC podle standardů. Většina nativních aplikací Microsoftu pro Windows, Mac a Mobile vyhovuje nastavením.
 
@@ -45,8 +45,8 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 
 Trvalá relace prohlížeče umožňuje uživatelům zůstat přihlášeni po zavření a opětovném otevření okna prohlížeče.
 
-Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních vybrat, jestli se má relace zachovat, a to tak, že zobrazí "zůstat přihlášeni?". Po úspěšném ověření se zobrazí výzva. Pokud je trvalost prohlížeče nakonfigurované v AD FS pomocí pokynů v článku [AD FS nastavení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-)jednotného přihlašování, budeme tyto zásady dodržovat a zároveň trvale zachová relaci Azure AD. Můžete také nakonfigurovat, jestli uživatelé ve vašem tenantovi uvidí "zůstat přihlášeni?" pomocí pokynů v článku [přizpůsobení přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)se zobrazí výzva, že změníte příslušné nastavení v podokně Branding společnosti v Azure Portal.
+Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních vybrat, jestli se má relace zachovat, a to tak, že zobrazí "zůstat přihlášeni?". Po úspěšném ověření se zobrazí výzva. Pokud je trvalost prohlížeče nakonfigurované v AD FS pomocí pokynů v článku [AD FS nastavení jednotného přihlašování](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+), budeme tyto zásady dodržovat a zároveň trvale zachová relaci Azure AD. Můžete také nakonfigurovat, jestli uživatelé ve vašem tenantovi uvidí "zůstat přihlášeni?" pomocí pokynů v článku [přizpůsobení přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)se zobrazí výzva, že změníte příslušné nastavení v podokně Branding společnosti v Azure Portal.
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurace ovládacích prvků relace ověřování
 
@@ -55,7 +55,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
 > [!WARNING]
 > Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a druhou s konfigurovatelným tokenem. funkce života. Společnost Microsoft plánuje vyřadit funkci životnosti konfigurovatelného tokenu od 1. listopadu a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>Zásada 1: Řízení četnosti přihlašování
+### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 
 1. Vytvořit novou zásadu
 1. Vyberte všechny požadované podmínky pro prostředí zákazníka, včetně cílových cloudových aplikací.
@@ -63,7 +63,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
    > [!NOTE]
    > Pro klíčové systém Microsoft Office aplikace, jako je Exchange Online a SharePoint Online, se doporučuje nastavit četnost výzvy pro ověření, která se bude používat pro nejlepší uživatelské prostředí.
 
-1. Přejít do**relace** **řízení** > přístupu a kliknout na **četnost přihlášení**
+1. Přejít na **řízení přístupu**@no__t**relaci** -1 a kliknutí na **četnost přihlášení**
 1. Zadejte požadovanou hodnotu dnů a hodin do prvního textového pole.
 1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
 1. Uložit zásadu
@@ -74,7 +74,7 @@ V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlás�
 
 Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webové aplikace, které běží ve stejné relaci prohlížeče, použije se u obou aplikací nejpřísnější zásada, protože všechny aplikace spuštěné ve stejné relaci prohlížeče sdílejí jeden token relace.
 
-### <a name="policy-2-persistent-browser-session"></a>Zásada 2: Trvalá relace prohlížeče
+### <a name="policy-2-persistent-browser-session"></a>Zásada 2: trvalá relace prohlížeče
 
 1. Vytvořit novou zásadu
 1. Vyberte všechny požadované podmínky.
@@ -82,7 +82,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
    > [!NOTE]
    > Upozorňujeme, že tento ovládací prvek vyžaduje jako podmínku možnost "všechny cloudové aplikace". Trvalost relace prohlížeče se řídí tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, takže všichni musí sdílet stav trvalosti.
 
-1. Přejděte na**relaci** **řízení** > přístupu a klikněte na **trvalá relace prohlížeče** .
+1. Přejděte na **ovládací prvky přístupu**@no__t**relaci** -1 a klikněte na **trvalá relace prohlížeče** .
 1. Vybrat hodnotu z rozevíracího seznamu
 1. Uložit zásady
 
@@ -91,7 +91,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
 > [!NOTE]
 > Trvalá konfigurace relace prohlížeče v rámci podmíněného přístupu Azure AD přepíše "zůstat přihlášeni?" nastavení v podokně Branding společnosti v Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
-## <a name="validation"></a>Ověřování
+## <a name="validation"></a>Ověření
 
 Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste nakonfigurovali zásady. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
 
@@ -99,7 +99,7 @@ Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové a
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v článku osvědčené [postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 

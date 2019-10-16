@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4fb2019b0298520d6bc2400e9fc2a2732664812
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329955"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439349"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Odstranění adresáře v Azure Active Directory
 
@@ -69,25 +69,29 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
 1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem vaší organizace. Pokud se pokoušíte odstranit adresář contoso s počáteční výchozí doménou contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com.
 
-2. Než budete moct odstranit předplatné, musíte ho zrušit. Vyberte **fakturace** a vyberte **produkty & Services**a pak vyberte **zrušit předplatné** u předplatného, které chcete zrušit. Zobrazí se stránka s názory.
+2. Zobrazte si náhled nového centra pro správu Microsoft 365 tím, že zajistěte, aby byl povolený přepínač **vyzkoušení nového centra pro správu** .
+
+   ![Náhled nového prostředí centra pro správu M365](./media/directory-delete-howto/preview-toggle.png)
+
+3. Po povolení nového centra pro správu je potřeba předplatné zrušit, aby ho bylo možné odstranit. Vyberte **fakturace** a vyberte **produkty & Services**a pak vyberte **zrušit předplatné** u předplatného, které chcete zrušit. Zobrazí se stránka s názory.
 
    ![Vyberte předplatné, které chcete zrušit.](./media/directory-delete-howto/cancel-choose-subscription.png)
 
-3. Dokončete formulář pro zpětnou vazbu a vyberte **zrušit předplatné** . tím zrušíte předplatné.
+4. Dokončete formulář pro zpětnou vazbu a vyberte **zrušit předplatné** . tím zrušíte předplatné.
 
    ![Zrušit příkaz v předplatném Preview](./media/directory-delete-howto/cancel-command.png)
 
-4. Nyní můžete odběr odstranit. U předplatného, které chcete odstranit, vyberte **Odstranit** . Pokud si předplatné nemůžete najít na stránce **produkty & Services** , ujistěte se, že máte **stav předplatného** nastavený na **vše**.
+5. Nyní můžete odběr odstranit. U předplatného, které chcete odstranit, vyberte **Odstranit** . Pokud si předplatné nemůžete najít na stránce **produkty & Services** , ujistěte se, že máte **stav předplatného** nastavený na **vše**.
 
    ![Odstranit odkaz pro odstranění předplatného](./media/directory-delete-howto/delete-command.png)
 
-5. Vyberte **Odstranit předplatné** a odstraňte předplatné a přijměte podmínky a ujednání. Všechna data se trvale odstraní do tří dní. Pokud změníte svůj názor, můžete [předplatné znovu aktivovat](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) v průběhu tříletého období.
+6. Vyberte **Odstranit předplatné** a odstraňte předplatné a přijměte podmínky a ujednání. Všechna data se trvale odstraní do tří dní. Pokud změníte svůj názor, můžete [předplatné znovu aktivovat](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) v průběhu tříletého období.
   
    ![pečlivě načtěte podmínky a ujednání.](./media/directory-delete-howto/delete-terms.png)
 
-6. Nyní došlo ke změně stavu předplatného a odběr je označený k odstranění. Předplatné vstoupí v platnost **po 72** hodin později.
+7. Nyní došlo ke změně stavu předplatného a odběr je označený k odstranění. Předplatné vstoupí v platnost **po 72** hodin později.
 
-7. Po odstranění odběru v adresáři a uplynutí 72 hodin se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte mít žádnou akci, která by neblokovala odstranění vašeho adresáře. Měli byste být schopni úspěšně odstranit adresář služby Azure AD.
+8. Po odstranění odběru v adresáři a uplynutí 72 hodin se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte mít žádnou akci, která by neblokovala odstranění vašeho adresáře. Měli byste být schopni úspěšně odstranit adresář služby Azure AD.
   
    ![obrazovka předat kontrolu předplatného](./media/directory-delete-howto/delete-checks-passed.png)
 

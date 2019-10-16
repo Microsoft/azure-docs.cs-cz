@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169820"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389089"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
@@ -30,7 +30,7 @@ ms.locfileid: "72169820"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Díky správě nároků Azure AD umožňuje přístupové balíčky jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. 
+Díky správě opravňujících k Azure AD umožňuje balíček pro přístup jednorázovou instalaci prostředků a zásad, které automaticky spravují přístup po dobu života balíčku přístupu. 
 
 Správce balíčků přístupu může nakonfigurovat zásady, které vyžadují schválení pro uživatele, kteří mají přístup k balíčkům přístupu. Uživatel, který potřebuje přístup k přístupovému balíčku, může odeslat žádost o získání přístupu. Tento článek popisuje, jak odeslat žádost o přístup.
 
@@ -40,7 +40,7 @@ Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyž�
 
 **Požadovaná role:** Žadatele
 
-1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz bude začínat řetězcem "myAccess", zahrnovat pomocný parametr adresáře a končit ID balíčku pro přístup podobně jako v následujícím příkladu:
+1. Vyhledejte e-mail nebo zprávu z projektu nebo obchodního manažera, se kterým pracujete. E-mail by měl obsahovat odkaz na balíček pro přístup, ke kterému budete potřebovat přístup. Odkaz začíná na `myaccess`, obsahuje pomocný parametr adresáře a končí ID balíčku přístupu.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

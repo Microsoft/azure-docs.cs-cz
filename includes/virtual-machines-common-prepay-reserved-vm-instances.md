@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806098"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391604"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>Úspora nákladů pomocí Azure Reserved VM Instances
 
@@ -26,26 +26,26 @@ K určení rezervací, které byste měli koupit, můžete použít doporučení
 - Doporučení nákupu a doporučené množství se zobrazí při nákupu rezervované instance virtuálního počítače v Azure Portal.
 - Azure Advisor poskytuje doporučení pro nákup pro jednotlivá předplatná.  
 - Rozhraní API můžete použít k získání doporučení pro nákup jak pro sdílený obor, tak pro obor jednoho předplatného. Další informace najdete v tématu [rozhraní API pro doporučení pro nákup rezervovaných instancí pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
-- Zákazníkům smlouva Enterprise (EA) jsou k dispozici zákaznická doporučení pro rozsahy sdílených a jednoduchého předplatného v [balíčku obsahu Azure Consumption Insights Power BI](/power-bi/service-connect-to-azure-consumption-insights).
+- Pro zákazníky smlouva Enterprise (EA) a Microsoft Customer Agreement (MCA) jsou k dispozici doporučení pro sdílení a jednotné rozsahy, které jsou k dispozici v [balíčku obsahu Azure Consumption Insights Power BI](/power-bi/service-connect-to-azure-consumption-insights).
 
-### <a name="services-that-get-vm-reservation-discounts"></a>Služby, které získávají slevy na rezervaci virtuálních počítačů
+### <a name="services-that-get-vm-reservation-discounts"></a>Služby, které získávají slevy za rezervaci virtuálních počítačů
 
-Rezervace virtuálních počítačů se můžou vztahovat na využití virtuálních počítačů vysílaná z několika služeb – ne jenom pro nasazení virtuálních počítačů. Prostředky, které získávají slevy na rezervované instance, se mění v závislosti na nastavení flexibility velikosti instance.
+Rezervace virtuálních počítačů se můžou vztahovat na využití virtuálních počítačů z několika služeb, nejen na vaše nasazení virtuálních počítačů. To, které prostředky získávají slevy za rezervované instance, se liší v závislosti na nastavení flexibility velikosti instance.
 
 #### <a name="instance-size-flexibility-setting"></a>Nastavení flexibility velikosti instance
 
-Nastavení flexibility velikosti instance Určuje, které služby získají slevy za rezervované instance.
+Nastavení flexibility velikosti instance určuje, které služby mají získat slevy za rezervované instance.
 
-Bez ohledu na to, jestli je nastavení zapnuté nebo vypnuté, se slevy za rezervované automaticky vztahují na `Microsoft.Compute`všechny vyhovující využití virtuálních počítačů, když je ConsumedService. Ověřte proto data o využití pro hodnotu *ConsumedService* . Možné příklady:
+Když má položka *ConsumedService* hodnotu `Microsoft.Compute`, slevy za rezervace se automaticky uplatňují na veškeré využití vyhovujících virtuálních počítačů bez ohledu na to, jestli je nastavení zapnuté, nebo vypnuté. Proto si u hodnoty *ConsumedService* kontrolujte údaje o využití. Možné příklady:
 
 - Virtuální počítače
 - Škálovací sady virtuálních počítačů
 - Služba kontejneru
-- Nasazení Azure Batch (v režimu předplatných uživatelů)
+- Nasazení služby Azure Batch (v režimu předplatných uživatelů)
 - Azure Kubernetes Service (AKS)
 - Service Fabric
 
-Pokud je nastavení zapnuté, slevy rezervace se automaticky použijí na vyhovující využití virtuálních počítačů, pokud je *ConsumedService* některou z následujících položek:
+Když je nastavení zapnuté a položka *ConsumedService* má některou z následujících hodnot, na veškeré využití vyhovujících virtuálních počítačů se automaticky uplatňují slevy za rezervace:
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -53,16 +53,16 @@ Pokud je nastavení zapnuté, slevy rezervace se automaticky použijí na vyhovu
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-Zkontrolujte hodnotu *ConsumedService* v datech o využití a určete, jestli je využití opravňující pro slevy za rezervované slevy.
+V datech využití si zkontrolujte hodnotu *ConsumedService*, abyste zjistili, jestli má dané využití nárok na slevy za rezervace.
 
-Další informace o flexibilitě velikosti instancí najdete v tématu [flexibilita velikosti virtuálních počítačů pomocí rezervovaných instancí virtuálních počítačů](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ### <a name="analyze-your-usage-information"></a>Analýza informací o použití
 Analýza informací o použití vám pomůže určit, které rezervace byste měli koupit.
 
 Data o využití jsou k dispozici v souboru využití a v rozhraních API. Použijte je společně k určení rezervace k nákupu. Zkontrolujte, jestli jsou instance virtuálních počítačů, které mají každodenní vysoké využití, na denní úrovni a určete množství rezervací, které se mají koupit.
 
-Vyhněte `Meter` se podkategorií `Product` a polím v datech o využití. Nerozlišují se mezi velikosti virtuálních počítačů, které používají službu Premium Storage. Pokud používáte tato pole k určení velikosti virtuálního počítače pro nákup rezervace, můžete si koupit špatnou velikost. Pak nezískáte zlevněnou rezervaci, kterou očekáváte. Místo toho použijte k určení správné velikosti virtuálního počítače polevsouboruvyužitíneborozhraníAPIvyužití.`AdditionalInfo`
+Vyhněte se poli `Meter` podkategorie a `Product` v datech o využití. Nerozlišují se mezi velikosti virtuálních počítačů, které používají službu Premium Storage. Pokud používáte tato pole k určení velikosti virtuálního počítače pro nákup rezervace, můžete si koupit špatnou velikost. Pak nezískáte zlevněnou rezervaci, kterou očekáváte. Místo toho použijte k určení správné velikosti virtuálního počítače pole `AdditionalInfo` v souboru využití nebo rozhraní API využití.
 
 ### <a name="purchase-restriction-considerations"></a>Požadavky na omezení nákupu
 
@@ -80,7 +80,7 @@ Rezervované instance virtuálních počítačů jsou k dispozici pro většinu 
 
 ## <a name="buy-a-reserved-vm-instance"></a>Zakoupení rezervované instance virtuálního počítače
 
-Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Platíte za rezervaci [předem nebo s měsíčními platbami](../articles/billing/billing-monthly-payments-reservations.md).
+Rezervovanou instanci virtuálního počítače můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../articles/billing/billing-monthly-payments-reservations.md).
 
 Tyto požadavky se vztahují k zakoupení rezervované instance virtuálního počítače:
 
@@ -90,34 +90,34 @@ Tyto požadavky se vztahují k zakoupení rezervované instance virtuálního po
 
 Zakoupení instance:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **všechny** > **rezervace**služeb.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Vyberte **Všechny služby** > **Rezervace**.
 1. Vyberte **Přidat** a Zakupte novou rezervaci a pak klikněte na **virtuální počítač**.
 1. Zadejte požadovaná pole. Pokud chcete získat slevu rezervace, spusťte instance virtuálních počítačů, které odpovídají vybraným atributům. Skutečný počet instancí virtuálních počítačů, které obdrží slevu, závisí na zvoleném rozsahu a množství.
 
 | Pole      | Popis|
 |------------|--------------|
-|Subscription|Předplatné použité pro platbu za rezervaci. Platební metodou předplatného se účtují náklady na rezervaci. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo individuální předplatné s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného.|    
-|Scope       |Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <ul><li>**Obor jedné skupiny prostředků** – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.</li><li>**Rozsah jednoho předplatného** – aplikuje slevu na rezervované prostředky ve vybraném předplatném.</li><li>**Sdílený rozsah** – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U jednotlivých předplatných s tarify průběžných plateb jsou oborem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>|
+|Předplatné|Předplatné použité pro platbu za rezervaci. Platební metodou předplatného se účtují náklady na rezervaci. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), zákaznická smlouva Microsoftu nebo jednotlivá předplatná s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se odečtou z bilance peněžního závazku, pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného.|    
+|Rozsah       |Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <ul><li>**Rozsah na jednu skupinu prostředků** – Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.</li><li>Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.</li><li>Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U jednotlivých předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.</li></ul>|
 |Oblast    |Oblast Azure, která je pokrytá rezervací.|    
 |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
-|Optimalizovat pro     |Ve výchozím nastavení je vybraná flexibilita velikosti instancí virtuálních počítačů. Klikněte na **Upřesnit nastavení** a změňte hodnotu flexibilita velikosti instance tak, aby se na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)použili sleva rezervace. Priorita kapacity má prioritu kapacity datového centra pro vaše nasazení. Nabízí další důvěru ve vaší schopnosti spouštět instance virtuálních počítačů, když je potřebujete. Priorita kapacity je dostupná jenom v případě, že obor rezervací je jedno předplatné. |
-|Termín        |Jeden rok nebo tři roky.|
+|Optimalizovat pro     |Ve výchozím nastavení je vybraná flexibilita velikosti instancí virtuálních počítačů. Klikněte na **Upřesnit nastavení** a změňte hodnotu flexibilita velikosti instance tak, aby se na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)použili sleva rezervace. Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Nabízí další důvěru ve vaší schopnosti spouštět instance virtuálních počítačů, když je potřebujete. Priorita kapacity je dostupná jenom v případě, že obor rezervací je jedno předplatné. |
+|Doba účinnosti        |Jeden rok nebo tři roky.|
 |Množství    |Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných instancí virtuálních počítačů, které můžou získat fakturační slevu. Pokud třeba v Východní USA používáte 10 virtuálních počítačů s Standard_D2, pak zadáte množství 10. tím se maximalizuje výhod všech spuštěných virtuálních počítačů. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="usage-data-and-reservation-utilization"></a>Využití a data využití rezervací
 
-Data o využití mají platnou cenu za využití, která vrací slevu za rezervaci. Můžete zjistit, která instance virtuálního počítače obdržela slevu za rezervaci pro každou rezervaci.
+V datech o využití se pro využití, které získá slevu za rezervaci, zobrazuje platná nulová cena. Můžete zjistit, která instance virtuálního počítače obdržela slevu za rezervaci pro každou rezervaci.
 
 Další informace o tom, jak se v datech využití zobrazují slevy, najdete v tématu [vysvětlení využívání rezervací Azure pro vaši podnikovou registraci](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , pokud jste zákazníkem EA. Pokud máte individuální předplatné, přečtěte si téma [vysvětlení využití rezervace Azure pro předplatné](../articles/billing/billing-understand-reserved-instance-usage.md)s průběžnými platbami.
 
 ## <a name="change-a-reservation-after-purchase"></a>Změna rezervace po nákupu
 
-Po nákupu můžete provést následující typy změn v rezervaci:
+V zakoupené rezervaci můžete provádět následující typy změn:
 
-- Aktualizovat rozsah rezervací
+- Aktualizace rozsahu rezervace
 - Flexibilita velikosti instance (Pokud je k dispozici)
 - Jejíž
 
@@ -126,28 +126,28 @@ Rezervaci můžete také rozdělit do menších bloků dat a sloučení už rozd
 Po nákupu nemůžete provést následující typy změn přímo:
 
 - Existující oblast rezervace
-- SKU
+- Skladová položka
 - Množství
-- Trvání
+- Délka
 
 Můžete ale *vyměnit* rezervaci, pokud chcete provést změny.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
+## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervaci, najdete v tématu [správa Azure reservations](../articles/billing/billing-manage-reserved-vm-instance.md).
-- Další informace o Azure Reservations najdete v následujících článcích:
-    - [Co jsou Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
+- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+- Další informace o rezervacích Azure najdete v následujících článcích:
+    - [Co jsou rezervace Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Vysvětlení způsobu použití slevy rezervace](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Vysvětlení využití rezervací pro předplatné s tarify průběžných plateb](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [Vysvětlení způsobu uplatnění slevy za rezervaci](../articles/billing/billing-understand-vm-reservation-charges.md)
+    - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Vysvětlení využití rezervací u smlouvy Enterprise](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Náklady na software systému Windows, které nejsou součástí rezervací](../articles/billing/billing-reserved-instance-windows-software-costs.md)
-    - [Azure Reservations v programu partner Center pro Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+    - [Náklady na software nezahrnuté v rezervacích](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262283"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434286"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Pomalé dotazování protokolů v Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
@@ -21,7 +21,7 @@ Další informace o protokolu pomalého dotazu MySQL najdete v [části protokol
 ## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalým dotazům
 Pomocí Azure Portal a Azure CLI můžete zobrazit a stáhnout protokoly pomalých dotazů Azure Database for MySQL.
 
-Na webu Azure Portal vyberte váš server Azure Database for MySQL. Pod hlavičkou **monitorování** vyberte stránku **protokoly serveru** .
+V Azure Portal vyberte server Azure Database for MySQL. Pod hlavičkou **monitorování** vyberte stránku **protokoly serveru** .
 
 Další informace o rozhraní příkazového řádku Azure najdete v tématu [Konfigurace a přístup k protokolům serveru pomocí Azure CLI](howto-configure-server-logs-in-cli.md).
 
@@ -40,6 +40,9 @@ Mezi další parametry, které můžete upravit, patří:
 - **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
 - **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
 
+> [!Note]
+> V případě `sql_text` se protokol zkrátí, pokud je delší než 2048 znaků.
+
 Úplný popis pomalých parametrů protokolu dotazů najdete v [dokumentaci k protokolu pomalého dotazů](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) MySQL.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
@@ -54,20 +57,20 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 |---|---|
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Vždy `AzureDiagnostics` |
+| `TimeGenerated` [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
+| `Type` | Typ protokolu Always `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Vždy `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Always `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Název serveru |
-| `start_time_t`UTC | Čas, kdy dotaz začal |
-| `query_time_s` | Celkový čas, kdy se dotaz trvalo spustit |
-| `lock_time_s` | Celkový čas, kdy byl dotaz uzamčen |
+| `start_time_t` [UTC] | Čas, kdy dotaz začal |
+| `query_time_s` | Celková doba v sekundách, po kterou se dotaz trvalo spustit |
+| `lock_time_s` | Celková doba v sekundách, po kterou byl dotaz uzamčen |
 | `user_host_s` | Uživatelské jméno |
 | `rows_sent_s` | Počet odeslaných řádků |
 | `rows_examined_s` | Počet testovaných řádků |

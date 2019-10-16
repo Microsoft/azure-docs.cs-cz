@@ -1,5 +1,5 @@
 ---
-title: Zasílání nabízených oznámení aplikacím pro Android službami Azure Notification Hubs a Google Cloud Messaging | Microsoft Docs
+title: Posílání nabízených oznámení do Androidu pomocí Azure Notification Hubs a Google Cloud Messaging | Microsoft Docs
 description: V tomto kurzu se naučíte používat služby Azure Notification Hubs a Google Firebase Cloud Messaging k zasílání nabízených oznámení zařízením s Androidem.
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212358"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72386308"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -43,7 +43,7 @@ Vytvoříte prázdnou aplikaci pro Android, která přijímá nabízená oznáme
 > [!IMPORTANT]
 > Toto téma popisuje nabízená oznámení ve službě Google Cloud Messaging (GCM). Pokud používáte Firebase Cloud Messaging (FCM) od Googlu, přečtěte si článek [Odesílání nabízených oznámení do systému Android pomocí služeb Azure Notification Hubs a FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-Dokončený kód v tomto kurzu lze stáhnout z portálu Github [zde](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted).
+Hotový kód z tohoto kurzu si můžete stáhnout z Githubu [tady](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted).
 
 V tomto kurzu provedete následující akce:
 
@@ -51,9 +51,9 @@ V tomto kurzu provedete následující akce:
 > * Vytvoříte projekt, který podporuje službu Google Cloud Messaging.
 > * Vytvoříte centrum oznámení.
 > * Připojte aplikaci k centru oznámení
-> * Testování aplikace
+> * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -166,9 +166,9 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 
     V následujícím kódu třídy `NotificationSettings` aktualizujte tyto tři zástupné symboly:
 
-   * `SenderId`: Číslo projektu, které jste získali dříve v [konzole Google Cloud](https://cloud.google.com/console).
-   * `HubListenConnectionString`: `DefaultListenAccessSignature` Připojovací řetězec pro vaše centrum. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
-   * `HubName`: Použijte název centra oznámení, které se zobrazí na stránce centra v [Azure Portal].
+   * `SenderId`: číslo projektu, které jste získali dříve v [konzole Google Cloud](https://cloud.google.com/console).
+   * `HubListenConnectionString`: připojovací řetězec `DefaultListenAccessSignature` pro vaše centrum. Připojovací řetězec můžete zkopírovat tak, že na webu [Azure Portal] ve svém centru kliknete na stránce **Nastavení** na **Zásady přístupu**.
+   * `HubName`: použijte název centra oznámení, který se zobrazí na stránce centra v [Azure Portal].
 
      Kód `NotificationSettings`:
 

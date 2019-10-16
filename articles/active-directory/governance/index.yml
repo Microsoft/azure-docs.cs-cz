@@ -7,17 +7,17 @@ metadata:
   manager: daveba
   ms.author: ajburnle
   ms.collection: na
-  ms.date: 08/15/2019
+  ms.date: 09/14/2019
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: cb3a19a372e81f7efe816d9f08831045b5f3332b
-  ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+  ms.openlocfilehash: 0abe0599bcaf88c2a925cb580bea601b827daba2
+  ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69542423"
+  ms.lasthandoff: 10/16/2019
+  ms.locfileid: "72430257"
 landingContent:
 - title: Zásady správného řízení identit
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Co je Azure AD Identity Governance?
       url: identity-governance-overview.md
-  - linkListType: learn
+  - linkListType: video
     links:
     - text: Řízení přístupu k prostředkům
       url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
@@ -39,10 +39,10 @@ landingContent:
     links:
     - text: Vytvoření prvního přístupového balíčku, který uživatelům pomůže požádat o potřebný přístup
       url: entitlement-management-access-package-first.md
-  - linkListType: how-to-guide
+  - linkListType: concept
     links:
-    - text: Úprava a správa existujících přístupových balíčků
-      url: entitlement-management-access-package-edit.md
+    - text: Delegování a role
+      url: entitlement-management-delegate.md
 - title: Opakovaná certifikace přístupu ke skupinám, aplikacím a privilegovaným rolím
   linkLists:
   - linkListType: overview

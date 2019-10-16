@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 5dc81f6e35f86c6dee77d44ff5c59c2657434a37
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376271"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434033"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>Použití AI k pochopení dat objektů BLOB
 
@@ -30,7 +30,7 @@ Rozšíření AI vytvoří nové informace zachycené jako text, které jsou ulo
 
 V tomto článku zobrazujeme obohacení AI prostřednictvím celé čočky, abyste mohli rychle poznat celý proces, od transformace nezpracovaných dat v objektech blob, aby se Queryable informace buď v indexu vyhledávání nebo ve znalostní bázi.
 
-## <a name="what-it-means-to-enrich-blob-data"></a>Co znamená "obohacen" data objektů BLOB
+## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>Co znamená "obohacení" dat objektů BLOB pomocí AI
 
 *Rozšíření AI* je součástí architektury indexování Azure Search, která integruje integrovaný AI od společnosti Microsoft nebo vlastního AI, který zadáte. Pomůže vám implementovat ucelené scénáře, kdy potřebujete zpracovat objekty BLOB (obě existující a nové, když jsou v nástroji nebo aktualizované), trhliny otevřít všechny formáty souborů pro extrakci obrázků a textu, extrahovat požadované informace pomocí různých funkcí AI a Indexujte je v indexu Azure Search pro rychlé hledání, načítání a průzkum. 
 
@@ -40,33 +40,37 @@ Výstupem je vždycky Azure Search index, který se používá pro rychlé vyhle
 
 V mezi je samotná architektura kanálu. Kanál je založen na funkci *indexeru* , ke které můžete přiřadit *dovednosti*, který se skládá z jedné nebo více *dovedností* , které poskytují AI. Účelem tohoto kanálu je vytvořit *obohacené dokumenty* , které vstupují jako nezpracovaný obsah, ale při přesouvání přes kanál si můžete vybrat další strukturu, kontext a informace. Obohacené dokumenty se při indexování spotřebují k vytváření obrácených indexů a dalších struktur používaných při fulltextovém vyhledávání nebo průzkumu a analýzách.
 
-## <a name="how-to-get-started"></a>Jak začít
+## <a name="start-with-services-and-data"></a>Začínáme se službami a daty
 
-Můžete začít přímo na stránce portálu účtu úložiště. Klikněte na **přidat Azure Search** a vytvořte novou službu Azure Search nebo vyberte některou z existujících. Pokud již máte v rámci stejného předplatného existující vyhledávací službu, kliknutím na tlačítko **přidat Azure Search** otevřete Průvodce importem dat, abyste mohli okamžitě Krokovat s indexováním, rozšířením a definicí indexu.
+Potřebujete Azure Search a Azure Blob Storage. V úložišti objektů BLOB budete potřebovat kontejner, který poskytuje zdrojový obsah.
 
-Až přidáte Azure Search do svého účtu úložiště, můžete postupovat podle standardního procesu k obohacení dat v jakémkoli zdroji dat Azure. Za předpokladu, že už máte obsah objektu blob, můžete pomocí Průvodce importem dat v Azure Search snadno počáteční Úvod do rozšíření AI. Tento rychlý Start vysvětluje postup: [vytvoření kanálu rozšíření AI na portálu](cognitive-search-quickstart-blob.md). 
+Můžete začít přímo na stránce portálu účtu úložiště. Na levé navigační stránce v části **BLOB Service** klikněte na **Přidat Azure Search** a vytvořte novou službu nebo vyberte existující. 
+
+Až přidáte Azure Search do svého účtu úložiště, můžete postupovat podle standardního procesu k obohacení dat v jakémkoli zdroji dat Azure. Průvodce **importem dat** doporučujeme v Azure Search, abyste mohli snadno úvodní Úvod do rozšíření AI. Tento rychlý Start vás provede jednotlivými kroky: [vytvoření kanálu rozšíření AI na portálu](cognitive-search-quickstart-blob.md). 
 
 V následujících částech prozkoumáme více komponent a konceptů.
 
-## <a name="begin-with-blob-indexers"></a>Začátek s indexery objektů BLOB
+## <a name="use-a-blob-indexer"></a>Použití indexeru objektů BLOB
 
-Rozšíření AI je doplněk k kanálu indexování a v Azure Search jsou tyto kanály postaveny nad *indexerem*. Indexer je podslužba s podporou zdrojů dat, která je vybavená interní logikou pro vzorkování dat, čtení dat metadat, načítání dat a serializaci dat z nativních formátů do dokumentů JSON pro následné importy. Indexery se často používají pro import, oddělené od AI, ale pokud chcete vytvořit kanál pro rozšíření AI, budete potřebovat indexer a dovednosti, abyste s ním mohli přejít. V této části se zaměříme na samotného indexeru.
+Rozšíření AI je doplněk k kanálu indexování a v Azure Search jsou tyto kanály postaveny nad *indexerem*. Indexer je podslužba s podporou zdrojů dat, která je vybavená interní logikou pro vzorkování dat, čtení dat metadat, načítání dat a serializaci dat z nativních formátů do dokumentů JSON pro následné importy. Indexery se často používají pro import, oddělené od AI, ale pokud chcete vytvořit kanál pro rozšíření AI, budete potřebovat indexer a dovednosti, abyste s ním mohli přejít. V této části se zvýrazní indexer. Další oddíl se zaměřuje na dovednosti.
 
-Objekty BLOB v Azure Storage jsou indexovány pomocí [Azure Search indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md). Tento indexer vyvoláte tak, že nastavíte typ a poskytnete informace o připojení, které zahrnují účet Azure Storage společně s kontejnerem objektů BLOB. Pokud jste objekty blob předtím neorganizovali do virtuálního adresáře, který pak můžete předat jako parametr, vyžádá indexer objektu BLOB z celého kontejneru.
+Objekty BLOB v Azure Storage jsou indexovány pomocí [Azure Search indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md). Tento indexer můžete vyvolat pomocí průvodce **importem dat** , REST API nebo sady .NET SDK. V kódu použijete Tento indexer nastavením typu a poskytnutím informací o připojení, které zahrnují účet Azure Storage společně s kontejnerem objektů BLOB. Objekty blob můžete podmnožinou vytvořit tak, že vytvoříte virtuální adresář, který pak můžete předat jako parametr, nebo filtrováním přípony typu souboru.
 
-Indexer provádí "trhliny dokumentů" a po připojení ke zdroji dat je prvním krokem v kanálu. V případě dat objektů BLOB se zjistí, kde jsou zjištěny soubory PDF, obrázky Office, image a další typy obsahu. Trhlina dokumentu s extrakcí textu je bezplatná. K extrakci dokumentů s extrakcí obrázků se účtují sazby, které najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/)Azure Search.
+Indexer provádí "trhliny dokumentů", otevírání objektu BLOB pro kontrolu obsahu. Po připojení ke zdroji dat je prvním krokem v kanálu. V případě dat objektů BLOB se zjistí, kde jsou zjištěny soubory PDF, obrázky Office, image a další typy obsahu. Trhlina dokumentu s extrakcí textu je bezplatná. K extrakci dokumentů s extrakcí obrázků se účtují sazby, které najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/)Azure Search.
 
-I když budou všechny dokumenty probíhat, k obohacení dojde pouze v případě, že tyto dovednosti výslovně zadáte. Pokud se například váš kanál skládá výhradně z analýzy textu, budou se všechny obrázky ve vašem kontejneru nebo dokumentech ignorovat.
+I když budou všechny dokumenty probíhat, k obohacení dojde pouze v případě, že tyto dovednosti výslovně zadáte. Pokud se například váš kanál skládá výhradně z analýzy obrázků, text ve vašem kontejneru nebo dokumentech se ignoruje.
 
 Indexer objektů BLOB obsahuje konfigurační parametry a podporuje sledování změn, pokud podkladová data poskytují dostatek informací. Další informace o základních funkcích najdete v části [Azure Search indexer úložiště objektů BLOB](search-howto-indexing-azure-blob-storage.md).
 
-## <a name="add-ai"></a>Přidat AI
+## <a name="add-ai-components"></a>Přidat komponenty AI
 
-*Dovednosti* jsou jednotlivé komponenty zpracování AI, které můžete použít samostatně nebo v kombinaci s dalšími dovednostmi pro sekvenční zpracování. 
+Rozšíření AI odkazuje na moduly, které hledají vzory nebo charakteristiky, a pak provede operaci odpovídajícím způsobem. Rozpoznávání obličeje na fotografiích, textové popisy fotek, detekce klíčových frází v dokumentu a rozpoznávání OCR (nebo rozpoznávání vytištěného textu nebo ručně psaného textu v binárních souborech) jsou příklady příkladů.
 
-+ Integrované dovednosti jsou zajištěny Cognitive Services s analýzou obrázků založenou na Počítačové zpracování obrazu a zpracováním přirozeného jazyka na základě Analýza textu. V několika příkladech jsou [optické rozpoznávání OCR](cognitive-search-skill-ocr.md), [rozpoznávání entit](cognitive-search-skill-entity-recognition.md)a [Analýza obrázků](cognitive-search-skill-image-analysis.md). Můžete si prohlédnout úplný seznam integrovaných dovedností v části [předdefinované dovednosti pro obohacení obsahu](cognitive-search-predefined-skills.md).
+V Azure Search *dovednosti* jsou jednotlivé komponenty zpracování AI, které můžete použít samostatně, nebo v kombinaci s dalšími dovednostmi. 
 
-+ Vlastní dovednosti jsou vlastní kód, zabalený do definice rozhraní, který umožňuje integraci do kanálu. V zákaznických řešeních je běžné použití obou s vlastními dovednostmi, které poskytují moduly open-source, třetí strany nebo nástroje AI první strany.
++ Integrované dovednosti jsou zajištěny Cognitive Services s analýzou obrázků založenou na Počítačové zpracování obrazu a zpracováním přirozeného jazyka na základě Analýza textu. Můžete si prohlédnout úplný seznam integrovaných dovedností v části [předdefinované dovednosti pro obohacení obsahu](cognitive-search-predefined-skills.md).
+
++ Vlastní dovednosti jsou vlastní kód, zabalený do [definice rozhraní](cognitive-search-custom-skill-interface.md) , který umožňuje integraci do kanálu. V zákaznických řešeních je běžné použití obou s vlastními dovednostmi, které poskytují moduly open-source, třetí strany nebo nástroje AI první strany.
 
 *Dovednosti* je kolekce dovedností použitých v kanálu a vyvolá se poté, co je ve fázi pro trhliny dokumentů k dispozici obsah. Indexer může spotřebovat právě jeden dovednosti, ale dovednosti existuje nezávisle na indexeru, abyste ho mohli znovu použít v jiných scénářích.
 
@@ -90,9 +94,9 @@ For example, given a large blob of unstructured text, a sample order of operatio
 1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
 1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
-## <a name="how-to-use-ai-enriched-content"></a>Jak používat obsah obohacený AI
+## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>Využití výstupu AI v navazujících řešeních
 
-Výstupem rozšíření AI je index vyhledávání v Azure Search nebo znalostní báze v Azure Storage.
+Výstupem rozšíření AI je index vyhledávání v Azure Search nebo [znalostní báze](knowledge-store-concept-intro.md) v Azure Storage.
 
 V Azure Search se index vyhledávání používá pro interaktivní zkoumání pomocí bezplatného textu a filtrovaných dotazů v klientské aplikaci. Obohacené dokumenty vytvořené prostřednictvím AI jsou formátovány ve formátu JSON a indexované stejným způsobem jako všechny dokumenty jsou indexovány v Azure Search a využívají všechny výhody, které indexer poskytuje. Například při indexování odkazuje indexer objektů blob na konfigurační parametry a nastavení, aby bylo možné využít všechna mapování polí nebo změnu logiky detekce. Tato nastavení jsou plně dostupná pro pravidelné indexování a rozšířené úlohy AI. Po indexování, když je obsah uložený v Azure Search, můžete vytvářet bohatý dotazy a výrazy filtru, které vám pomůžou pochopit obsah.
 

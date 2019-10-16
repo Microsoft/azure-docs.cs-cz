@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 8c9043db8159e2b7ff6520e9525472048cf73ae1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031276"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385559"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat pomocí mapování toků dat
 

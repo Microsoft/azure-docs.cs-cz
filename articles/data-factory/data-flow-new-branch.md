@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: de8cb74d788e3ca7599f226e4204c4b09112e70c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029290"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387219"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory transformace toku dat při mapování nové větve
 
 
 
-(media/data-flow/menu.png "Nabídka") ![Možnosti větve]
+![Možnosti větve](media/data-flow/menu.png "nabídce")
 
 Větvení převezme aktuální datový proud v toku dat a provede replikaci do jiného datového proudu. Pomocí nové větve můžete provádět více sad operací a transformací proti stejnému datovému proudu.
 
@@ -29,4 +29,4 @@ Můžete s tímto novým datovým proudem zacházet ze sady transformací a jím
 > [!NOTE]
 > "Nová větev" bude v nabídce + Transform zobrazovat jenom v případě, že se po aktuálním umístění, kde se pokoušíte o větev, vyskytne následná transformace. To znamená, že se na konci tady nezobrazuje možnost Nová větev, dokud nepřidáte další transformaci po výběru.
 
-Větev ![větve](media/data-flow/branch2.png "2")
+![Součástí](media/data-flow/branch2.png "Větev 2")

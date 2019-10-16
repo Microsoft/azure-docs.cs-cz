@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 575f23aef9534696566080257e61b2fa84de5d0f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013544"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428312"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -20,7 +20,7 @@ Emulátor úložiště Microsoft Azure je nástroj, který emuluje služby Azure
 
 ## <a name="get-the-storage-emulator"></a>Získání emulátoru úložiště
 
-Emulátor úložiště je k dispozici jako součást [sady Microsoft Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště můžete nainstalovat také pomocí samostatného instalačního [programu](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (přímo ke stažení). K instalaci emulátoru úložiště musíte mít v počítači oprávnění správce.
+Emulátor úložiště je k dispozici jako součást [sady Microsoft Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště můžete nainstalovat také pomocí [samostatného instalačního programu](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (přímo ke stažení). K instalaci emulátoru úložiště musíte mít v počítači oprávnění správce.
 
 Emulátor úložiště se v tuto chvíli spouští jenom v systému Windows. Pokud potřebujete emulátor úložiště pro Linux, jedna možnost je udržovaná komunitou, open source emulátor úložiště [Azurite](https://github.com/azure/azurite).
 
@@ -56,10 +56,10 @@ Po zavření okna příkazového řádku emulátoru úložiště bude emulátor 
 
 Při prvním spuštění emulátoru úložiště se místní prostředí úložiště inicializuje za vás. Proces inicializace vytvoří databázi v LocalDB a rezervuje porty HTTP pro každou místní službu úložiště.
 
-Emulátor úložiště je ve výchozím nastavení nainstalován do `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`nástroje.
+Emulátor úložiště se ve výchozím nastavení nainstaluje na `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`.
 
 > [!TIP]
-> K práci s prostředky emulátoru místního úložiště můžete použít [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) . Po instalaci a spuštění emulátoru úložiště vyhledejte "(vývoj)" v části účty úložiště ve stromu Průzkumník služby Storagech prostředků.
+> K práci s prostředky emulátoru místního úložiště můžete použít [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) . Po instalaci a spuštění emulátoru úložiště vyhledejte "(výchozí porty emulátoru) (klíč)" v části "místní & připojená" ve stromu Průzkumník služby Storage prostředků.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Inicializace emulátoru úložiště pro použití jiné databáze SQL
@@ -67,7 +67,7 @@ Emulátor úložiště je ve výchozím nastavení nainstalován do `C:\Program 
 Pomocí nástroje příkazového řádku emulátoru úložiště můžete inicializovat emulátor úložiště, aby odkazoval na jinou instanci služby SQL Database, než je výchozí instance LocalDB:
 
 1. Otevřete okno konzoly emulátoru úložiště, jak je popsáno v části [spuštění a inicializace emulátoru úložiště](#start-and-initialize-the-storage-emulator) .
-1. V okně konzoly zadejte následující příkaz, kde `<SQLServerInstance>` je název instance SQL Server. Chcete-li použít LocalDB `(localdb)\MSSQLLocalDb` , zadejte jako instanci SQL Server.
+1. V okně konzoly zadejte následující příkaz, kde `<SQLServerInstance>` je název instance SQL Server. Chcete-li použít LocalDB, zadejte jako instanci SQL Server `(localdb)\MSSQLLocalDb`.
 
    `AzureStorageEmulator.exe init /server <SQLServerInstance>`
 
@@ -79,10 +79,10 @@ Pomocí nástroje příkazového řádku emulátoru úložiště můžete inicia
 
    `AzureStorageEmulator.exe init /forceCreate`
 
-Další informace o těchto příkazech najdete v referenčních informacích k [nástroji příkazového řádku emulátoru úložiště](#storage-emulator-command-line-tool-reference).
+Další informace o těchto příkazech najdete v [referenčních informacích k nástroji příkazového řádku emulátoru úložiště](#storage-emulator-command-line-tool-reference).
 
 > [!TIP]
-> Ke správě instancí služby SQL Server, včetně instalace LocalDB, můžete použít [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). V dialogovém okně Smss **připojit k serveru** zadejte `(localdb)\MSSQLLocalDb` do pole **název serveru:** připojení k instanci LocalDB.
+> Ke správě instancí služby SQL Server, včetně instalace LocalDB, můžete použít [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). V dialogovém okně SMSS **připojit k serveru** zadejte do pole **název serveru** `(localdb)\MSSQLLocalDb` a připojte se k instanci LocalDB.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Ověřování požadavků pomocí emulátoru úložiště
 
@@ -103,7 +103,7 @@ Některé klientské knihovny pro Azure Storage, jako je například knihovna Xa
 Token SAS můžete vygenerovat také pomocí Azure PowerShell. Následující příklad vygeneruje token SAS s úplnými oprávněními k kontejneru objektů BLOB:
 
 1. Pokud jste to ještě neudělali (doporučujeme použít nejnovější verzi rutin Azure PowerShell, nainstalujte Azure PowerShell). Pokyny k instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/install-Az-ps).
-2. Otevřete Azure PowerShell a spusťte následující příkazy, které nahradíte `CONTAINER_NAME` názvem, který zvolíte:
+2. Otevřete Azure PowerShell a spusťte následující příkazy, kde nahraďte `CONTAINER_NAME` názvem, který zvolíte:
 
 ```powershell
 $context = New-AzStorageContext -Local
@@ -147,9 +147,9 @@ K přístupu k objektu BLOB v emulátoru úložiště můžete například použ
 
 Koncový bod služby pro emulátor úložiště:
 
-* Blob service:`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Služba front:`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service:`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Služba front: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adresování sekundárního účtu pomocí RA-GRS
 
@@ -181,11 +181,11 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help
 
 | Možnost | Popis | Příkaz | Argumenty |
 | --- | --- | --- | --- |
-| **Start** |Spustí emulátor úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-Rezpracovat*: Spusťte emulátor v aktuálním procesu místo vytvoření nového procesu. |
+| **Start** |Spustí emulátor úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-Rezpracovat*: spustí emulátor v aktuálním procesu místo vytvoření nového procesu. |
 | **Stop** |Zastaví emulátor úložiště. |`AzureStorageEmulator.exe stop` | |
 | **Stav** |Vytiskne stav emulátoru úložiště. |`AzureStorageEmulator.exe status` | |
-| **Jejich** |Vymaže data ve všech službách zadaných v příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*: Vymaže data objektu BLOB. <br/>*fronta*: Vymaže data ve frontě. <br/>*tabulka*: Vymaže data tabulky. <br/>*vše*: Vymaže všechna data ve všech službách. |
-| **For** |Provede jednorázovou inicializaci pro nastavení emulátoru. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*– serverName\instanceName serveru*: Určuje server, který je hostitelem instance SQL. <br/>*-SQLInstance instance*: Určuje název instance SQL, která se má použít ve výchozí instanci serveru. <br/>*-forceCreate*: Vynutí vytvoření databáze SQL, i když již existuje. <br/>*-skipcreate*: Přeskočí vytvoření databáze SQL. To má přednost před – forceCreate.<br/>*-reserveports*: Pokusí se rezervovat porty HTTP přidružené ke službám.<br/>*-unreserveports*: Pokusí se odebrat rezervace portů HTTP přidružených ke službám. To má přednost před – reserveports.<br/>*-* InProcess: Provede inicializaci v aktuálním procesu místo vytvoření nového procesu. Při změně rezervací portů je nutné spustit aktuální proces se zvýšenými oprávněními. |
+| **Jejich** |Vymaže data ve všech službách zadaných v příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB*: vymaže data objektu BLOB. <br/>*Queue*: vymaže data ve frontě. <br/>*Table*: vymaže data tabulky. <br/>*All*: vymaže všechna data ve všech službách. |
+| **For** |Provede jednorázovou inicializaci pro nastavení emulátoru. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server serverName\instanceName*: Určuje server, který je hostitelem instance SQL. <br/>*-SQLInstance instance*: Určuje název instance SQL, která se má použít ve výchozí instanci serveru. <br/>*-forceCreate*: vynutí vytvoření databáze SQL, a to i v případě, že již existuje. <br/>*-skipcreate*: přeskočí vytvoření databáze SQL. To má přednost před – forceCreate.<br/>*-reserveports*: pokusí se rezervovat porty HTTP přidružené ke službám.<br/>*-unreserveports*: pokusí se odebrat rezervace portů http přidružených ke službám. To má přednost před – reserveports.<br/>*-InProcess*: provede inicializaci v aktuálním procesu místo vytvoření nového procesu. Při změně rezervací portů je nutné spustit aktuální proces se zvýšenými oprávněními. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Rozdíly mezi emulátorem úložiště a Azure Storage
 
@@ -194,7 +194,7 @@ Vzhledem k tomu, že emulátor úložiště je místní emulované prostředí, 
 * Emulátor úložiště podporuje jenom jeden pevný účet a dobře známý ověřovací klíč.
 * Emulátor úložiště není škálovatelná služba úložiště a nepodporuje velký počet souběžných klientů.
 * Jak je popsáno v tématu [adresování prostředků v emulátoru úložiště](#addressing-resources-in-the-storage-emulator), se prostředky řeší odlišně v emulátoru úložiště a v účtu úložiště Azure. Rozdíl je v tom, že překlad názvů domény je k dispozici v cloudu, ale ne v místním počítači.
-* Počínaje verzí 3,1 podporuje účet emulátoru úložiště geograficky redundantní replikaci s přístupem pro čtení (RA-GRS). V emulátoru mají všechny účty povolený RA-GRS a nikdy neexistují žádné prodlevy mezi primárními a sekundárními replikami. Na sekundárním účtu se podporují operace získat statistiku služby blob, získat statistiky služby Queue Service a získat statistiku služby Table Service a vždycky vrátí hodnotu `LastSyncTime` elementu Response jako aktuální čas podle základní databáze SQL.
+* Počínaje verzí 3,1 podporuje účet emulátoru úložiště geograficky redundantní replikaci s přístupem pro čtení (RA-GRS). V emulátoru mají všechny účty povolený RA-GRS a nikdy neexistují žádné prodlevy mezi primárními a sekundárními replikami. Na sekundárním účtu se podporují operace získat statistiku služby blob, získat statistiku služby Queue Service a získat statistiku služby Table Service, která bude vždycky vracet hodnotu prvku odpovědi `LastSyncTime` jako aktuální čas podle podkladové databáze SQL.
 * Koncové body služby Souborové služby a protokolu SMB se v emulátoru úložiště aktuálně nepodporují.
 * Pokud používáte verzi služby úložiště, která není podporována emulátorem, emulátor vrátí chybu VersionNotSupportedByEmulator (kód stavu HTTP 400-Chybný požadavek).
 
@@ -216,7 +216,7 @@ Následující rozdíly platí pro úložiště tabulek v emulátoru:
 * Vlastnosti data v Table service v emulátoru úložiště podporují pouze rozsah podporovaný SQL Server 2005 (musí být pozdější než 1. ledna 1753). Všechna data před 1. ledna 1753 budou změněna na tuto hodnotu. Přesnost dat je omezená na přesnost SQL Server 2005, což znamená, že data jsou přesně na 1/300th sekundy.
 * Emulátor úložiště podporuje hodnoty vlastností klíče oddílu a klíče řádku, které mají méně než 512 bajtů. Celková velikost názvu účtu, názvu tabulky a názvů klíčových vlastností dohromady nesmí překročit 900 bajtů.
 * Celková velikost řádku v tabulce v emulátoru úložiště je omezená na méně než 1 MB.
-* V emulátoru úložiště `Edm.Guid` , vlastnosti datového typu nebo `Edm.Binary` podporují pouze `Equal (eq)` operátory porovnání a `NotEqual (ne)` v řetězcích filtru dotazů.
+* V emulátoru úložiště vlastnosti datového typu `Edm.Guid` nebo `Edm.Binary` podporují pouze operátory porovnání `Equal (eq)` a `NotEqual (ne)` v řetězcích filtru dotazů.
 
 ### <a name="differences-for-queue-storage"></a>Rozdíly pro úložiště Queue
 
@@ -264,7 +264,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 
 ### <a name="version-51"></a>Verze 5,1
 
-* Opravili jsme chybu, kdy emulátor úložiště vrátil `DataServiceVersion` hlavičku v některých odpovědích, kde služba nebyla.
+* Opravili jsme chybu, kdy emulátor úložiště vrátil hlavičku `DataServiceVersion` v některých odpovědích, kde služba nebyla.
 
 ### <a name="version-50"></a>Verze 5,0
 
@@ -272,7 +272,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 * Instalační program emulátoru úložiště již v rámci instalace nevytváří databázi. Databáze bude v případě potřeby vytvořena v rámci spuštění.
 * Vytvoření databáze již nevyžaduje zvýšení oprávnění.
 * Pro spuštění už nejsou potřeba žádné rezervace portů.
-* Přidá následující možnosti `init`: `-reserveports` (vyžaduje zvýšení oprávnění), `-unreserveports` (vyžaduje zvýšení oprávnění) `-skipcreate`.
+* Přidá následující možnosti pro `init`: `-reserveports` (vyžaduje zvýšení oprávnění), `-unreserveports` (vyžaduje zvýšení úrovně), `-skipcreate`.
 * Možnost uživatelského rozhraní emulátoru úložiště v ikoně na hlavním panelu systému teď spouští rozhraní příkazového řádku. Starý GUI již není k dispozici.
 * Některé knihovny DLL byly odebrány nebo přejmenovány.
 
@@ -315,7 +315,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 
 ### <a name="version-31"></a>Verze 3,1
 
-* V emulátoru úložiště se teď podporuje geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Rozhraní API `Get Queue Service Stats` ,a`Get Table Service Stats` jsou podporovaná pro sekundární účet a vždycky vrátí hodnotu prvku LastSyncTime Response jako aktuální čas podle podkladové databáze SQL. `Get Blob Service Stats` Pro programový přístup k sekundárnímu nástroji pomocí emulátoru úložiště použijte klientskou knihovnu pro úložiště pro .NET verze 3,2 nebo novější. Podrobnosti najdete v referenčních informacích k klientské knihovně Microsoft Azure Storage pro .NET.
+* V emulátoru úložiště se teď podporuje geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Rozhraní API `Get Blob Service Stats`, `Get Queue Service Stats` a `Get Table Service Stats` jsou pro sekundární účet podporovaná a budou vždycky vracet hodnotu elementu LastSyncTime Response jako aktuální čas podle podkladové databáze SQL. Pro programový přístup k sekundárnímu nástroji pomocí emulátoru úložiště použijte klientskou knihovnu pro úložiště pro .NET verze 3,2 nebo novější. Podrobnosti najdete v referenčních informacích k klientské knihovně Microsoft Azure Storage pro .NET.
 
 ### <a name="version-30"></a>Verze 3,0
 
@@ -323,7 +323,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 * Grafické uživatelské rozhraní emulátoru úložiště je zastaralé. Byl nahrazen rozhraním skriptového příkazového řádku. Podrobnosti o rozhraní příkazového řádku najdete v tématu Referenční informace k nástroji příkazového řádku emulátoru úložiště. Grafické rozhraní bude nadále k dispozici ve verzi 3,0, ale je k němu možné přistupovat pouze v případě, že se emulátor služby COMPUTE nainstaluje kliknutím pravým tlačítkem na ikonu na hlavním panelu systému a výběrem možnosti zobrazit uživatelské rozhraní emulátoru úložiště.
 * Služba Azure Storage je teď plně podporovaná ve verzi 2013-08-15. (Dřív byla tato verze podporovaná jenom emulátorem úložiště verze 2.2.1 Preview.)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyhodnoťte [Azurite](https://github.com/arafato/azurite)emulátoru Open Source úložiště pro různé platformy, který komunita udržuje. 
 * [Azure Storage ukázky používající rozhraní .NET](../storage-samples-dotnet.md) obsahují odkazy na několik ukázek kódu, které můžete použít při vývoji aplikace.

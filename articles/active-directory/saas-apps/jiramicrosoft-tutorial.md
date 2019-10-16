@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b43f720e3bccae3b9c6457a3317427fb3fc1a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960058"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439742"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 
@@ -77,7 +77,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci JIRA SSO SSO Microsoftu do Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat JIRA SSO SAML od galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -113,7 +113,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/`
 
-    r. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`.
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`.
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Port je nepovinný pro případ, že se jedná o pojmenovanou adresu URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in JIRA, který je vysvětlen dále v tomto kurzu.
@@ -129,10 +129,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například `B.Simon@contoso.com`.
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -214,8 +214,8 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     1. Pokud se chcete přihlásit jenom prostřednictvím přihlašovacích údajů služby Azure AD, povolte možnost **Vynutit přihlášení do Azure** .
     
        > [!Note]
-       >Pokud chcete povolit výchozí přihlašovací formulář pro přihlášení správce na přihlašovací stránce, když je povolené přihlášení k Azure, přidejte parametr dotazu do adresy URL prohlížeče.
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > Pokud chcete povolit výchozí přihlašovací formulář pro přihlášení správce na přihlašovací stránce, když je povolené přihlášení k Azure, přidejte parametr dotazu do adresy URL prohlížeče.
+       > `https://<domain:port>/login.jsp?force_azure_login=false`
 
     1. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
@@ -250,11 +250,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je B. Simon.
 
-    r. Do textového pole **uživatelské jméno** zadejte e-maily uživatele, jako B.simon@contoso.com.
+    c. Do textového pole **uživatelské jméno** zadejte e-maily uživatele, jako B.simon@contoso.com.
 
-    trojrozměrné. Do textového pole **heslo** zadejte heslo uživatele.
+    d. Do textového pole **heslo** zadejte heslo uživatele.
 
-    cerebrální. Klikněte na **vytvořit uživatele**.
+    e. Klikněte na **vytvořit uživatele**.
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -262,7 +262,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici JIRA SSO SSO Microsoft, měli byste se automaticky přihlásit k JIRA SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

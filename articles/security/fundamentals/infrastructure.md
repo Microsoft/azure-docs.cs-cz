@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a17d98d49d2c653e2498a663829d26e8a171fd74
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727063"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433511"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpečení infrastruktury Azure
 Microsoft Azure běží v datových centrech spravovaných a provozovaných společností Microsoft. Tato geograficky rozptýlená datacentra vyhovují klíčovým oborovým standardům, jako jsou ISO/IEC 27001:2013 a NIST SP 800-53, kvůli zabezpečení a spolehlivosti. Datová centra jsou spravovaná, monitorovaná a spravovaná provozními pracovníky Microsoftu. Provozní pracovníci mají po dobu let zkušeností s poskytováním největších online službyů na světě s nepřetržitou kontinuitou (24 × 7).
@@ -50,9 +50,9 @@ Vždycky zodpovídáte za následující, bez ohledu na typ nasazení:
 - Účet
 - Správa přístupu
 
-Ujistěte se, že rozumíte rozdělení zodpovědnosti mezi vámi a společností Microsoft v nasazení SaaS, PaaS a IaaS. Další informace najdete v tématu [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf).
+Ujistěte se, že rozumíte rozdělení zodpovědnosti mezi vámi a společností Microsoft v nasazení SaaS, PaaS a IaaS. Další informace najdete v tématu [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
 - [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)

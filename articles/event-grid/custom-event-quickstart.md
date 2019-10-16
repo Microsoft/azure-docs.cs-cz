@@ -12,20 +12,22 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 1129dffa37df4766b98f39a9efa05f4eb7ed9878
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326121"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429140"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure CLI a Event Grid
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek.
+
+Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
 Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
-![Zobrazení výsledků](./media/custom-event-quickstart/view-result.png)
+![Pomocí nástroje Azure Event Grid Viewer ověřte, zda byla data události odeslána.](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -96,7 +98,7 @@ az eventgrid event-subscription create \
 
 Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Vyberte ikonu oka a rozbalte data události. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Webová aplikace obsahuje kód pro ověření odběru.
 
-![Zobrazení události odběru](./media/custom-event-quickstart/view-subscription-event.png)
+![Zobrazit kód pro ověření předplatného v Azure Event Grid Vieweru](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Odeslání události do vlastního tématu
 

@@ -14,19 +14,20 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3cf18e6da56b25e453d52dc58020961f672da27d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027428"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388791"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu Apache Cordova pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
+> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
+>
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
 
 ## <a name="overview"></a>Přehled
 Tato příručka vás seznámí s provedením běžných scénářů pomocí nejnovějšího [Modul plug-in Apache Cordova pro Azure Mobile Apps]. Pokud s Azure Mobile Apps začínáte, nejdřív dokončete [rychlé zprovoznění Mobile Apps Azure] a vytvořte back-end, vytvořte tabulku a stáhněte předem sestavený projekt Apache Cordova. V tomto průvodci se zaměříme na Apache Cordova modul plug-in na straně klienta.
@@ -98,7 +99,7 @@ Několik typů Apache Cordova aplikací používá ke zpracování toků uživat
 
 Podle těchto pokynů přidejte do konfigurace místní nastavení:
 
-1. Přihlášení k [Azure Portal]
+1. Přihlaste se k portálu [Azure Portal].
 2. Vyberte **všechny prostředky** nebo **App Services** klikněte na název mobilní aplikace.
 3. Klikněte na **nástroje** .
 4. V nabídce sledování klikněte na **Průzkumník prostředků** a potom klikněte na **Přejít**.  Otevře se nové okno nebo karta.
@@ -118,13 +119,13 @@ Podle těchto pokynů přidejte do konfigurace místní nastavení:
 Nastavení jsou uložena v tomto okamžiku.  Nezavírejte okno prohlížeče, dokud se nedokončí ukládání nastavení.
 Přidejte taky tyto adresy URL zpětné smyčky do nastavení CORS pro vaše App Service:
 
-1. Přihlášení k [Azure Portal]
+1. Přihlaste se k portálu [Azure Portal].
 2. Vyberte **všechny prostředky** nebo **App Services** klikněte na název mobilní aplikace.
 3. Automaticky se otevře okno nastavení.  Pokud ne, klikněte na **všechna nastavení**.
 4. V nabídce rozhraní API klikněte na **CORS** .
 5. Zadejte adresu URL, kterou chcete přidat, do zadaného pole a stiskněte klávesu ENTER.
 6. Podle potřeby zadejte další adresy URL.
-7. Uložte nastavení kliknutím na **Uložit** .
+7. Kliknutím na **Uložit** nastavení uložte.
 
 Aby se nové nastavení projevilo, trvá přibližně 10-15 sekund.
 

@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620102"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433412"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Historie verze Plánovač nasazení služby Azure Site Recovery
 
 Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azure Site Recovery spolu s opravami, známá omezení v jednotlivých verzích a jejich datum vydání.
+
+## <a name="version-251"></a>Verze 2,51
+
+**Datum vydání: 22. srpna 2019**
+
+**Řeší**
+
+- Opravili jsme problém s doporučeními pro náklady Plánovač nasazení verze 2,5
 
 ## <a name="version-25"></a>Verze 2,5
 
@@ -101,7 +109,7 @@ Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azur
 
 **Známá omezení:**
 
-- Pro zotavení po havárii z Hyper-V do Azure se jako virtuální počítač s názvem, `,`který obsahuje `[`tyto znaky: ``` ` ``` , `"`, `]`, a nepodporuje. Při profilování se generování sestav nezdaří nebo bude mít nesprávný výsledek.
+- Pro zotavení po havárii z Hyper-V do Azure se jako virtuální počítač s názvem, který obsahuje tyto znaky: `,`, `"`, `[`, `]` a ``` ` ``` nepodporuje. Při profilování se generování sestav nezdaří nebo bude mít nesprávný výsledek.
 - Pro zotavení po havárii z VMware do Azure se virtuální počítač s názvem, který obsahuje čárka, nepodporuje. Pokud profilace, generování sestav selže nebo dojde k nesprávnému výsledku.
 
 ## <a name="version-131"></a>Verze 1.3.1

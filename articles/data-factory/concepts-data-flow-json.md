@@ -7,12 +7,12 @@ ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326525"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387350"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapování zpracování JSON toku dat
 
@@ -24,11 +24,11 @@ Do toku dat můžete přidat složitý sloupec prostřednictvím Tvůrce výrazu
 
 V podokně výstupní schéma umístěte ukazatel myši na sloupec a klikněte na ikonu se symbolem plus. Vyberte možnost **Přidat dílčí sloupec** a nastavte si sloupec jako složitý typ.
 
-![Přidat]Podsloupec(media/data-flow/addsubcolumn.png "Přidat") Podsloupec
+![Přidat Podsloupec](media/data-flow/addsubcolumn.png "Přidat Podsloupec")
 
 Můžete přidat další sloupce a podsloupce stejným způsobem. Pro každé nekomplikované pole lze přidat výraz do pravé části editoru výrazů.
 
-Složitý sloupec(media/data-flow/complexcolumn.png "se složitým") ![sloupcem]
+![Složitý sloupec](media/data-flow/complexcolumn.png "Složitý sloupec")
 
 ### <a name="entering-the-json-structure-manually"></a>Ruční zadání struktury JSON
 
@@ -86,7 +86,7 @@ Pokud byl tento výraz zadán pro sloupec s názvem "complexColumn", pak bude za
 
 Použití datové sady JSON jako zdroje v toku dat umožňuje nastavit pět dalších nastavení. Tato nastavení se dají najít v rámci souhlasu **Nastavení JSON** na kartě **zdrojové možnosti** .  
 
-![](media/data-flow/json-settings.png "Nastavení") JSON JSON
+![Nastavení JSON](media/data-flow/json-settings.png "Nastavení JSON")
 
 ### <a name="default"></a>Výchozí
 

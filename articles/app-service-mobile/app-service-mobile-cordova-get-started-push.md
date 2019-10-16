@@ -14,20 +14,21 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 8fe8485926e2c10b7fe58836196132f2881699a4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025719"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388873"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do aplikace Apache Cordova
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
+> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
+>
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
 
 ## <a name="overview"></a>Přehled
 
@@ -35,11 +36,11 @@ V tomto kurzu přidáte nabízená oznámení do projektu pro [rychlý start Apa
 
 Pokud nepoužíváte stažený projekt serveru pro rychlý Start, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem sady .NET pro Mobile Apps][1].
 
-## <a name="prerequisites"></a>Požadovaný
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že máte Apache Cordova aplikaci, která byla vyvinuta se sadou Visual Studio 2015. Toto zařízení by mělo běžet na Google Android Emulator, zařízení s Androidem, zařízení s Windows nebo zařízení s iOS.
 
-K dokončení tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu potřebujete:
 
 * POČÍTAČ se sadou [Visual Studio Community 2015][2] nebo novější
 * [Visual Studio Tools for Apache Cordova][4]
@@ -293,7 +294,7 @@ Později tento identifikátor použijte při vytváření ID aplikace na portál
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-[Podívejte se na video ukazující podobné kroky.](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
+[Podívejte se na video zobrazující podobný postup.](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
 #### <a name="configure-azure-to-send-push-notifications"></a>Konfigurace Azure pro odesílání nabízených oznámení
 
@@ -333,7 +334,7 @@ Chcete-li použít možnosti úložiště v aplikaci Visual Studio, vyberte cíl
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-[Podívejte se na video ukazující podobné kroky.][13]
+[Podívejte se na video zobrazující podobný postup.][13]
 
 #### <a name="configure-the-notification-hub-for-wns"></a>Konfigurace centra oznámení pro WNS
 
@@ -388,9 +389,9 @@ Ověřte, že je při přidání položky přijata oznámení.
 
 Naučte se používat tyto sady SDK:
 
-* [Sada Apache Cordova SDK][15]
-* [Sada SDK serveru ASP.NET][1]
-* [Sada SDK serveru Node. js][16]
+* [Apache Cordova SDK][15]
+* [ASP.NET Server SDK][1]
+* [Node.js Server SDK][16]
 
 <!-- Images -->
 [img1]: ./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png

@@ -8,22 +8,25 @@ ms.date: 09/17/2019
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 18333d3da0bb444ea236a4fbda4d6b72d7647053
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-javascript-october2019
+ms.openlocfilehash: 242ba7dbe4bfcc003899e95e76dc57d809dbc95a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059043"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427998"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Jak používat Azure Queue Storage z Pythonu
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
+Tento článek popisuje běžné scénáře použití služby Azure Queue Storage. Mezi zahrnuté scénáře patří vkládání, prohlížení, získávání a odstraňování zpráv fronty a vytváření a odstraňování front.
+
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
 
-V této příručce se dozvíte, jak provádět běžné scénáře pomocí služby Azure Queue Storage. Ukázky jsou napsané v Pythonu a používají [Sada SDK Microsoft Azure Storage pro Python]. Mezi zahrnuté scénáře patří vkládání, prohlížení, získávání a odstraňování zpráv fronty a vytváření a odstraňování front. Další informace o frontách najdete v části [Další kroky](#next-steps) .
+Ukázky v tomto článku jsou napsané v Pythonu a používají [Sada SDK Microsoft Azure Storage pro Python]. Další informace o frontách najdete v části [Další kroky](#next-steps) .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -42,25 +45,25 @@ pip install azure-storage-queue
 ```
 
 > [!NOTE]
-> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK `pip uninstall azure-storage` pomocí nástroje před instalací nejnovějšího balíčku.
+> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK pomocí `pip uninstall azure-storage` před instalací nejnovějšího balíčku.
 
 Alternativní metody instalace najdete v tématu [Azure Storage SDK pro Python](https://github.com/Azure/azure-storage-python/).
 
 ## <a name="view-the-sample-application"></a>Zobrazit ukázkovou aplikaci
 
-Pokud chcete zobrazit a spustit ukázkovou aplikaci, která ukazuje použití Pythonu s frontami Azure [, přečtěte si téma Azure Storage: Začínáme s frontami Azure v](https://github.com/Azure-Samples/storage-queue-python-getting-started)Pythonu. 
+Pokud chcete zobrazit a spustit ukázkovou aplikaci, která ukazuje použití Pythonu s frontami Azure, přečtěte si téma [Azure Storage: Začínáme s frontami Azure v Pythonu](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
 
-Chcete-li spustit ukázkovou aplikaci, ujistěte se, že jste `azure-storage-queue` nainstalovali `azure-storage-common` balíčky a.
+Pokud chcete spustit ukázkovou aplikaci, ujistěte se, že máte nainstalované balíčky `azure-storage-queue` i `azure-storage-common`.
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Objekt [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) vám umožní pracovat s frontami. Následující kód vytvoří `QueueService` objekt. V horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující Azure Storage:
+Objekt [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) vám umožní pracovat s frontami. Následující kód vytvoří objekt `QueueService`. V horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující Azure Storage:
 
 ```python
 from azure.storage.queue import QueueService
 ```
 
-Následující kód vytvoří `QueueService` objekt pomocí názvu účtu úložiště a klíče účtu. Pomocí názvu a klíče účtu nahraďte *MyAccount* a *myKey* .
+Následující kód vytvoří objekt `QueueService` pomocí názvu a klíče účtu úložiště. Pomocí názvu a klíče účtu nahraďte *MyAccount* a *myKey* .
 
 ```python
 queue_service = QueueService(account_name='myaccount', account_key='mykey')
@@ -86,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Zobrazení náhledu další zprávy
 
-Můžete prohlížet zprávu v přední části fronty bez jejího odebrání z fronty voláním metody [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) . Ve výchozím nastavení `peek_messages` se v jedné zprávě prohlédne.
+Můžete prohlížet zprávu v přední části fronty bez jejího odebrání z fronty voláním metody [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) . Ve výchozím nastavení `peek_messages` náhledy v jedné zprávě.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -96,7 +99,7 @@ for message in messages:
 
 ## <a name="dequeue-messages"></a>Vyřadit zprávy z fronty
 
-Kód ve dvou krocích odstraní zprávu z fronty. Při volání [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)se ve výchozím nastavení zobrazí další zpráva ve frontě. Zpráva vrácená z `get_messages` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-). Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Váš kód volá `delete_message` hned po zpracování zprávy.
+Kód ve dvou krocích odstraní zprávu z fronty. Při volání [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)se ve výchozím nastavení zobrazí další zpráva ve frontě. Zpráva vrácená z `get_messages` bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-). Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Váš kód volá `delete_message` hned po zpracování zprávy.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -105,7 +108,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
-Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá `get_messages` metodu k získání 16 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky for. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá metodu `get_messages` pro načtení 16 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky for. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```python
 messages = queue_service.get_messages(
@@ -143,7 +146,7 @@ Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, 
 queue_service.delete_queue('taskqueue')
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili základy ukládání do fronty, můžete získat další informace pomocí těchto odkazů.
 

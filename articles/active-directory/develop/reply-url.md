@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834821"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389601"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
 
@@ -24,20 +24,26 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
 ## <a name="maximum-number-of-redirect-uris"></a>Maximální počet identifikátorů URI pro přesměrování
 
-Následující tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat při registraci aplikace. 
+Následující tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat při registraci aplikace.
 
 | Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Popis |
 |--------------------------|---------------------------------|-------------|
-| Pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD) | 256 | `signInAudience`pole v manifestu aplikace je nastaveno na hodnotu *AzureADMyOrg* nebo *AzureADMultipleOrgs* |
-| Osobní účty Microsoft a pracovní a školní účty | 100 | `signInAudience`pole v manifestu aplikace je nastaveno na *AzureADandPersonalMicrosoftAccount* |
+| Pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD) | 256 | pole `signInAudience` v manifestu aplikace je nastavené na hodnotu *AzureADMyOrg* nebo *AzureADMultipleOrgs* . |
+| Osobní účty Microsoft a pracovní a školní účty | 100 | pole `signInAudience` v manifestu aplikace je nastaveno na *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>Maximální délka identifikátoru URI
 
 Pro každý identifikátor URI přesměrování, který přidáte do registrace aplikace, můžete použít maximálně 256 znaků.
 
+## <a name="supported-schemes"></a>Podporovaná schémata
+Aplikační model Azure AD dnes podporuje schémata HTTP i HTTPS pro aplikace, které přinášejí pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD). To je `signInAudience` pole v manifestu aplikace je nastaveno na hodnotu buď *AzureADMyOrg* nebo *AzureADMultipleOrgs*. Pro aplikace, které přihlásí osobní účty Microsoft a pracovní a školní účty (tj. `signInAudience` nastavené na *AzureADandPersonalMicrosoftAccount*) je povolené jenom schéma https.
+
+> [!NOTE]
+> Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) neumožňuje vývojářům přidávat identifikátory URI do schématu http na uživatelském rozhraní. Přidávání identifikátorů URI HTTP pro aplikace, které přinášejí pracovní nebo školní účty, se podporuje jenom přes editor manifestu aplikace. Díky dál nebudou nové aplikace moct používat schémata HTTP v identifikátoru URI přesměrování. Starší aplikace, které obsahují schémata HTTP v identifikátorech URI pro přesměrování, budou i nadále fungovat. Vývojáři musí v identifikátorech URI přesměrování používat schémata protokolu HTTPS.
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>Omezení používající zástupné znaky v identifikátorech URI
 
-Zástupné identifikátory URI `https://*.contoso.com`, například, jsou pohodlné, ale měly by se vyhnout. Použití zástupných znaků v identifikátoru URI přesměrování má vliv na zabezpečení. V souladu se specifikací OAuth 2,0 ([oddíl 3.1.2 dokumentu RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) musí být identifikátor URI koncového bodu přesměrování ABSOLUTNÍm identifikátorem URI. 
+Zástupné identifikátory URI, jako je například `https://*.contoso.com`, jsou pohodlné, ale je třeba se jim vyhnout. Použití zástupných znaků v identifikátoru URI přesměrování má vliv na zabezpečení. V souladu se specifikací OAuth 2,0 ([oddíl 3.1.2 dokumentu RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) musí být identifikátor URI koncového bodu přesměrování ABSOLUTNÍm identifikátorem URI. 
 
 Aplikační model Azure AD nepodporuje zástupné identifikátory URI pro aplikace, které jsou nakonfigurované k podepisování osobních účtů Microsoft a pracovních nebo školních účtů. Pro aplikace, které jsou nakonfigurované na pracovní nebo školní účty v tenantovi Azure AD ve vaší organizaci, ale jsou povolené identifikátory URI se zástupnými znaky. 
  
@@ -65,6 +71,6 @@ V tomto postupu:
 
 Dalším postupem je přidání identifikátorů URI přesměrování do [instančních objektů](app-objects-and-service-principals.md#application-and-service-principal-relationship) , které reprezentují registraci vaší aplikace v jakémkoli TENANTOVI Azure AD. Tento postup můžete použít, pokud nemůžete použít parametr stavu, nebo pokud váš scénář vyžaduje, abyste do registrace aplikace přidali nové identifikátory URI pro přesměrování pro každého nového tenanta, který podporujete. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [manifestu aplikace](reference-app-manifest.md)

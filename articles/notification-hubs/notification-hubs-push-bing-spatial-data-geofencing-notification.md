@@ -1,9 +1,9 @@
 ---
-title: Nabízená oznámení v monitorované geografické zóně s Azure Notification Hubs a Bing Spatial Data | Dokumentace Microsoftu
+title: Posílání nabízených oznámení pomocí Azure Notification Hubs a prostorových dat Bingu | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bing Spatial Data doručovat nabízená oznámení na základě polohy.
 services: notification-hubs
 documentationcenter: windows
-keywords: nabízené oznámení,nabízená oznámení
+keywords: nabízená oznámení, nabízená oznámení
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213241"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387483"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Kurz: Oznámení na základě umístění s využitím Azure Notification Hubs a prostorových dat Bingu
+# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Kurz: odeslání nabízených oznámení na základě polohy pomocí Azure Notification Hubs a prostorových dat Bingu
 
 V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs a Bing Spatial Data doručovat nabízená oznámení na základě polohy.
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 > * Nastavení back-endu
 > * Test nabízených oznámení v aplikaci pro Univerzální platformu Windows (UPW)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) nebo novější ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409))
@@ -53,7 +53,7 @@ V tomto kurzu provedete následující kroky:
 3. Pokud nemáte žádný zdroj dat, zobrazí se odkaz na jeho vytvoření. Vyberte **Nahrát data jako zdroj dat**. Můžete použít také nabídku **Zdroje dat** > **Nahrát data**.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Na pevném disku `NotificationHubsGeofence.pipe` vytvořte soubor s následujícím obsahem: V tomto kurzu použijete ukázkový soubor založený na kanálu, který je v oblasti sítě San Francisco Waterfront:
+4. Na pevném disku vytvořte soubor `NotificationHubsGeofence.pipe` s následujícím obsahem: v tomto kurzu použijete ukázkový soubor založený na kanálu, který je v oblasti sítě San Francisco Waterfront:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -66,7 +66,7 @@ V tomto kurzu provedete následující kroky:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Na stránce **Nahrát zdroj dat** proveďte následující akce:
    1. Jako **Formát dat** vyberte **kanál**.
-   2. Procházejte a vyberte `NotificationHubGeofence.pipe` soubor, který jste vytvořili v předchozím kroku.
+   2. Procházejte a vyberte soubor `NotificationHubGeofence.pipe`, který jste vytvořili v předchozím kroku.
    3. Vyberte tlačítko **Nahrát**.
 
       > [!NOTE]

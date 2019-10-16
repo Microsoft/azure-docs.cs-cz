@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 9648307bb7278f36686d8a53be90c2d9ef7159e1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 39e6273382133493a77321deed2baec4718bc912
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016696"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383671"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core v Azure Service Fabric Reliable Services
 
@@ -27,7 +27,7 @@ ASP.NET Core je open source architektura pro různé platformy. Tato architektur
 
 Tento článek je podrobným průvodcem pro hostování ASP.NET Core Services v Service Fabric Reliable Services pomocí **Microsoft. ServiceFabric. AspNetCore.** sada balíčků NuGet.
 
-Úvodní kurz týkající se ASP.NET Core v Service Fabric a pokyny k nastavení vývojového prostředí najdete v tématu [kurz: Vytvořte a nasaďte aplikaci s ASP.NET Core front-end službou webového rozhraní API a stavovou back-end službou](service-fabric-tutorial-create-dotnet-app.md).
+Úvodní kurz o ASP.NET Core v Service Fabric a pokyny k nastavení vývojového prostředí najdete v tématu [kurz: vytvoření a nasazení aplikace s front-end službou ASP.NET Core Web API a stavovou back-end službou](service-fabric-tutorial-create-dotnet-app.md).
 
 Ve zbývající části tohoto článku se předpokládá, že už jste obeznámeni s ASP.NET Core. Pokud ne, přečtěte si prosím [základy ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/index).
 
@@ -48,26 +48,26 @@ Tradiční ASP.NET (až do MVC 5) je pevně spojená se službou IIS prostředni
 Aby bylo možné kombinovat službu Service Fabric a ASP.NET, a to buď jako spustitelný soubor hosta, nebo ve spolehlivé službě, musíte být schopni spustit ASP.NET v rámci procesu hostitele služby. Tato funkce umožňuje samoobslužné hostování ASP.NET Core.
 
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Hostování ASP.NET Core ve spolehlivé službě
-Obvykle aplikace ASP.NET Core v místním prostředí vytvářejí webhosta v vstupním bodu aplikace, jako je `static void Main()` například metoda v. `Program.cs` V tomto případě je životní cyklus webhost svázán s životním cyklem procesu.
+Obvykle aplikace ASP.NET Core v místním prostředí vytvářejí webhosta v vstupním bodu aplikace, jako je například metoda `static void Main()` v `Program.cs`. V tomto případě je životní cyklus webhost svázán s životním cyklem procesu.
 
 ![Hostování ASP.NET Core v procesu][0]
 
 Vstupní bod aplikace ale není správné místo pro vytvoření Webhostu ve spolehlivé službě. To je proto, že se vstupní bod aplikace používá pouze k registraci typu služby s modulem Service Fabric runtime, aby mohl vytvořit instance daného typu služby. Webhost by měl být vytvořen v samotné spolehlivé službě. V rámci procesu hostitele služby můžou instance služby nebo repliky procházet několika životními cykly. 
 
-Spolehlivá instance služby je reprezentovaná vaší třídou služby odvozenou `StatelessService` z `StatefulService`nebo. Komunikační zásobník pro službu je obsažen v `ICommunicationListener` implementaci ve vaší třídě služby. Balíčky NuGet obsahují `ICommunicationListener` implementace tohoto spuštění a spravují ASP.NET Core webhost pro buď Kestrel nebo http. sys ve spolehlivé službě. `Microsoft.ServiceFabric.AspNetCore.*`
+Spolehlivá instance služby je reprezentovaná vaší třídou služby odvozenou od `StatelessService` nebo `StatefulService`. Komunikační zásobník pro službu je součástí implementace `ICommunicationListener` ve třídě služby. Balíčky NuGet `Microsoft.ServiceFabric.AspNetCore.*` obsahují implementace `ICommunicationListener`, které spouštějí a spravují ASP.NET Core webhost pro buď Kestrel nebo HTTP. sys ve spolehlivé službě.
 
 ![Diagram pro hostování ASP.NET Core ve spolehlivé službě][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ASP.NET Core ICommunicationListeners
-Implementace pro Kestrel a http. sys `Microsoft.ServiceFabric.AspNetCore.*` v balíčcích NuGet mají podobné vzory použití. `ICommunicationListener` Ale provádějí mírně různé akce specifické pro každý webový server. 
+Implementace `ICommunicationListener` pro Kestrel a HTTP. sys v balíčcích NuGet `Microsoft.ServiceFabric.AspNetCore.*` mají podobné vzory použití. Ale provádějí mírně různé akce specifické pro každý webový server. 
 
 Oba naslouchací procesy komunikace poskytují konstruktor, který přijímá následující argumenty:
- - **`ServiceContext serviceContext`** : Toto je `ServiceContext` objekt, který obsahuje informace o běžící službě.
- - **`string endpointName`** : Toto je název `Endpoint` konfigurace v souboru ServiceManifest. XML. Primárně se dva komunikační naslouchací procesy liší. HTTP. sys *vyžaduje* `Endpoint` konfiguraci, zatímco Kestrel ne.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** : Toto je výraz lambda, který implementujete, ve kterém vytvoříte a vrátíte `IWebHost`. Umožňuje nakonfigurovat `IWebHost` způsob, jakým normálně ASP.NET Core aplikaci. Lambda poskytuje adresu URL, která je vygenerována v závislosti na možnostech Service Fabric integrace, které používáte, a na `Endpoint` konfiguraci, kterou zadáte. Tuto adresu URL pak můžete změnit nebo použít ke spuštění webového serveru.
+ - **`ServiceContext serviceContext`** : Jedná se o objekt `ServiceContext`, který obsahuje informace o běžící službě.
+ - **`string endpointName`** : Jedná se o název konfigurace `Endpoint` v souboru ServiceManifest. XML. Primárně se dva komunikační naslouchací procesy liší. HTTP. sys *vyžaduje* konfiguraci `Endpoint`, zatímco Kestrel ne.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** : Jedná se o výraz lambda, který implementujete, ve kterém vytvoříte a vrátíte `IWebHost`. Umožňuje nakonfigurovat @no__t – 0 obvyklým způsobem ASP.NET Core aplikace. Lambda poskytuje adresu URL, která je vygenerována v závislosti na možnostech Service Fabric integrace, které používáte, a v konfiguraci `Endpoint`, kterou zadáte. Tuto adresu URL pak můžete změnit nebo použít ke spuštění webového serveru.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware pro integraci Service Fabric
-Balíček NuGet zahrnuje metodu rozšíření pro `IWebHostBuilder` , která přidává middleware s podporou Service Fabric. `UseServiceFabricIntegration` `Microsoft.ServiceFabric.AspNetCore` Tento middleware nakonfiguruje Kestrel nebo http. `ICommunicationListener` sys k registraci jedinečné adresy URL služby Naming Service Service Fabric. Potom ověří požadavky klienta, aby se klienti připojovali ke správné službě. 
+Balíček NuGet `Microsoft.ServiceFabric.AspNetCore` zahrnuje metodu rozšíření `UseServiceFabricIntegration` na `IWebHostBuilder`, která přidává middleware s podporou Service Fabric. Tento middleware konfiguruje Kestrel nebo HTTP. sys `ICommunicationListener` k registraci jedinečné adresy URL služby pomocí Naming Service Service Fabric. Potom ověří požadavky klienta, aby se klienti připojovali ke správné službě. 
 
 Tento krok je nezbytný k tomu, aby se klienti nemohli omylem připojit k nesprávné službě. To je proto, že v prostředí Shared-Host, jako je například Service Fabric, může běžet více webových aplikací na stejném fyzickém nebo virtuálním počítači, ale nepoužívá jedinečné názvy hostitelů. Tento scénář je podrobněji popsán v následující části.
 
@@ -86,7 +86,7 @@ To může způsobit chyby v náhodných časech, které může být obtížné d
 ### <a name="using-unique-service-urls"></a>Použití jedinečných adres URL služby
 Chcete-li zabránit těmto chybám, mohou služby odeslat koncový bod do Naming Service s jedinečným identifikátorem a ověřit jedinečný identifikátor během požadavků klientů. Jedná se o spolupráci mezi službami v nepřátelských důvěryhodných klientech. Neposkytuje zabezpečené ověřování pomocí služby v nepřátelských prostředích klienta.
 
-V důvěryhodném prostředí middleware, který je přidán `UseServiceFabricIntegration` metodou, automaticky připojí jedinečný identifikátor k adrese odeslané do Naming Service. Ověřuje tento identifikátor u každé žádosti. Pokud identifikátor neodpovídá, middleware okamžitě vrátí odpověď HTTP 410, která zmizela.
+V důvěryhodném prostředí middleware přidávané metodou `UseServiceFabricIntegration` automaticky připojí jedinečný identifikátor k adrese odeslané do Naming Service. Ověřuje tento identifikátor u každé žádosti. Pokud identifikátor neodpovídá, middleware okamžitě vrátí odpověď HTTP 410, která zmizela.
 
 Služby, které používají dynamicky přiřazený port, by měly používat tento middleware.
 
@@ -96,12 +96,12 @@ Následující diagram znázorňuje tok požadavků s povoleným middlewarem:
 
 ![Integrace ASP.NET Core Service Fabric][2]
 
-Implementace Kestrel i http. sys `ICommunicationListener` používají tento mechanismus přesně stejným způsobem. I když soubor http. sys dokáže interně odlišit požadavky na základě jedinečných cest URL pomocí základní funkce sdílení portů **http.** sys, tato funkce se nepoužívá pro implementaci http. `ICommunicationListener` sys. Důvodem je to, že ve výše popsaném scénáři má za následek stavové kódy chyb HTTP 503 a HTTP 404. Díky tomu je obtížné, aby klienti zjistili záměr této chyby, protože HTTP 503 a HTTP 404 se často používají k indikaci dalších chyb. 
+Implementace Kestrel i HTTP. sys `ICommunicationListener` používají tento mechanismus naprosto stejným způsobem. I když soubor HTTP. sys dokáže interně odlišit požadavky na základě jedinečných cest URL pomocí základní funkce sdílení portů **http. sys** , tato funkce *se nepoužívá pro* implementaci http. sys `ICommunicationListener`. Důvodem je to, že ve výše popsaném scénáři má za následek stavové kódy chyb HTTP 503 a HTTP 404. Díky tomu je obtížné, aby klienti zjistili záměr této chyby, protože HTTP 503 a HTTP 404 se často používají k indikaci dalších chyb. 
 
-Proto implementace Kestrel i http. sys `ICommunicationListener` standardizaci na middleware poskytované `UseServiceFabricIntegration` metodou rozšíření. Proto klienti musí provést akci opětovného překladu koncového bodu služby na odpovědích HTTP 410.
+Proto implementace Kestrel i HTTP. sys `ICommunicationListener` se standardizací na middleware poskytnuté metodou rozšíření `UseServiceFabricIntegration`. Proto klienti musí provést akci opětovného překladu koncového bodu služby na odpovědích HTTP 410.
 
 ## <a name="httpsys-in-reliable-services"></a>HTTP. sys v Reliable Services
-Soubor HTTP. sys můžete použít v Reliable Services importem balíčku NuGet **Microsoft. ServiceFabric. AspNetCore. HttpSys** . Tento balíček obsahuje `HttpSysCommunicationListener` `ICommunicationListener`implementaci. `HttpSysCommunicationListener`umožňuje vytvořit ASP.NET Core webhost v rámci spolehlivé služby pomocí HTTP. sys jako webového serveru.
+Soubor HTTP. sys můžete použít v Reliable Services importem balíčku NuGet **Microsoft. ServiceFabric. AspNetCore. HttpSys** . Tento balíček obsahuje `HttpSysCommunicationListener`, implementace `ICommunicationListener`. @no__t – 0 umožňuje vytvořit ASP.NET Core webhost v rámci spolehlivé služby pomocí HTTP. sys jako webového serveru.
 
 HTTP. sys je postaven na [rozhraní API systému Windows HTTP server](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Toto rozhraní API používá ovladač jádra **http. sys** ke zpracování požadavků HTTP a jejich směrování do procesů, které spouštějí webové aplikace. To umožňuje více procesů na stejném fyzickém nebo virtuálním počítači hostovat webové aplikace na stejném portu, a to v rámci jedinečné cesty URL nebo názvu hostitele. Tyto funkce jsou užitečné v Service Fabric pro hostování více webů ve stejném clusteru.
 
@@ -113,7 +113,7 @@ Následující diagram znázorňuje, jak HTTP. sys používá ovladač jádra **
 ![Diagram HTTP. sys][3]
 
 ### <a name="httpsys-in-a-stateless-service"></a>HTTP. sys v bezstavové službě
-Chcete- `HttpSys` li použít v bezstavové službě, `CreateServiceInstanceListeners` přepište metodu a `HttpSysCommunicationListener` vraťte instanci:
+Pokud chcete použít `HttpSys` v bezstavové službě, přepište metodu `CreateServiceInstanceListeners` a vraťte instanci `HttpSysCommunicationListener`:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -138,15 +138,15 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>HTTP. sys ve stavové službě
 
-`HttpSysCommunicationListener`není aktuálně určena pro použití ve stavových službách z důvodu komplikací se základní funkcí sdílení portů **http. sys** . Další informace najdete v následující části věnované dynamickému přidělování portů pomocí HTTP. sys. Pro stavové služby je Kestrel doporučeným webovým serverem.
+`HttpSysCommunicationListener` není aktuálně navržen pro použití ve stavových službách z důvodu komplikací se základní funkcí sdílení portů **http. sys** . Další informace najdete v následující části věnované dynamickému přidělování portů pomocí HTTP. sys. Pro stavové služby je Kestrel doporučeným webovým serverem.
 
 ### <a name="endpoint-configuration"></a>Konfigurace koncového bodu
 
-Pro webové servery, které používají rozhraní Windows HTTP Server API, včetně http. sys, se vyžaduje konfigurace.`Endpoint` Webové servery, které používají rozhraní API systému Windows HTTP server, musí nejdřív rezervovat svou adresu URL pomocí HTTP. sys (to se obvykle provádí pomocí nástroje [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) ). 
+Pro webové servery, které používají rozhraní Windows HTTP Server API, včetně HTTP. sys, se vyžaduje konfigurace `Endpoint`. Webové servery, které používají rozhraní API systému Windows HTTP server, musí nejdřív rezervovat svou adresu URL pomocí HTTP. sys (to se obvykle provádí pomocí nástroje [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) ). 
 
-Tato akce vyžaduje zvýšená oprávnění, která vaše služby ve výchozím nastavení nemají. Možnosti "http" nebo "https" pro `Protocol` vlastnost `Endpoint` konfigurace v souboru ServiceManifest. XML slouží konkrétně k tomu, aby modul runtime Service Fabric pro vaši jménem zaregistroval adresu URL pomocí souboru HTTP. sys. Používá předponu adresy URL se [*silným*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) zástupným znakem.
+Tato akce vyžaduje zvýšená oprávnění, která vaše služby ve výchozím nastavení nemají. Možnosti "http" nebo "https" pro vlastnost `Protocol` konfigurace `Endpoint` v souboru ServiceManifest. XML slouží konkrétně k tomu, aby modul runtime Service Fabric pro vaši jménem zaregistroval adresu URL pomocí souboru HTTP. sys. Používá předponu adresy URL se [*silným zástupným znakem*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) .
 
-Chcete-li například vyhradit `http://+:80` pro službu, použijte následující konfiguraci v souboru ServiceManifest. XML:
+Chcete-li například rezervovat `http://+:80` pro službu, použijte následující konfiguraci v souboru ServiceManifest. XML:
 
 ```xml
 <ServiceManifest ... >
@@ -160,7 +160,7 @@ Chcete-li například vyhradit `http://+:80` pro službu, použijte následujíc
 </ServiceManifest>
 ```
 
-A název koncového bodu musí být předán `HttpSysCommunicationListener` konstruktoru:
+A název koncového bodu musí být předán konstruktoru `HttpSysCommunicationListener`:
 
 ```csharp
  new HttpSysCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -174,7 +174,7 @@ A název koncového bodu musí být předán `HttpSysCommunicationListener` kons
 ```
 
 #### <a name="use-httpsys-with-a-static-port"></a>Použití HTTP. sys se statickým portem
-Chcete-li použít statický port se souborem http. sys, zadejte číslo portu v `Endpoint` konfiguraci:
+Pokud chcete použít statický port se souborem HTTP. sys, zadejte číslo portu v konfiguraci `Endpoint`:
 
 ```xml
   <Resources>
@@ -185,7 +185,7 @@ Chcete-li použít statický port se souborem http. sys, zadejte číslo portu v
 ```
 
 #### <a name="use-httpsys-with-a-dynamic-port"></a>Použití HTTP. sys s dynamickým portem
-Pokud chcete použít dynamicky přiřazený port se souborem http. sys, `Port` vynechejte vlastnost `Endpoint` v konfiguraci:
+Pokud chcete použít dynamicky přiřazený port se souborem HTTP. sys, vynechejte vlastnost `Port` v konfiguraci `Endpoint`:
 
 ```xml
   <Resources>
@@ -195,17 +195,17 @@ Pokud chcete použít dynamicky přiřazený port se souborem http. sys, `Port` 
   </Resources>
 ```
 
-Dynamický port přidělený `Endpoint` konfigurací poskytuje pouze jeden port *na proces hostitele*. Aktuální Service Fabric hostující model umožňuje hostování více instancí služby a/nebo replik v rámci stejného procesu. To znamená, že každá z nich bude při přidělování prostřednictvím `Endpoint` konfigurace sdílet stejný port. Port může sdílet několik instancí **http. sys** pomocí základní funkce sdílení portů **http. sys** . Není to ale podporováno `HttpSysCommunicationListener` z důvodu komplikací, které zavádí pro požadavky klientů. V případě použití dynamického portu je Kestrel navržený webový server.
+Dynamický port přidělený konfigurací `Endpoint` poskytuje pouze jeden port *na proces hostitele*. Aktuální Service Fabric hostující model umožňuje hostování více instancí služby a/nebo replik v rámci stejného procesu. To znamená, že každá z nich bude při přidělování pomocí konfigurace `Endpoint` sdílet stejný port. Port může sdílet několik instancí **http. sys** pomocí základní funkce sdílení portů **http. sys** . Ale není podporován `HttpSysCommunicationListener` kvůli komplikacím, které zavádí pro požadavky klientů. V případě použití dynamického portu je Kestrel navržený webový server.
 
 ## <a name="kestrel-in-reliable-services"></a>Kestrel v Reliable Services
-Pomocí Kestrel můžete v Reliable Services importovat balíček NuGet **Microsoft. ServiceFabric. AspNetCore. Kestrel** . Tento balíček obsahuje `KestrelCommunicationListener` `ICommunicationListener`implementaci. `KestrelCommunicationListener`umožňuje vytvořit ASP.NET Core webhost v rámci spolehlivé služby pomocí Kestrel jako webového serveru.
+Pomocí Kestrel můžete v Reliable Services importovat balíček NuGet **Microsoft. ServiceFabric. AspNetCore. Kestrel** . Tento balíček obsahuje `KestrelCommunicationListener`, implementace `ICommunicationListener`. @no__t – 0 umožňuje vytvořit ASP.NET Core webhost v rámci spolehlivé služby pomocí Kestrel jako webového serveru.
 
-Kestrel je webový server pro různé platformy pro ASP.NET Core založený na libuv, asynchronní vstupně-výstupní knihovně pro různé platformy. Na rozdíl od HTTP. sys Kestrel nepoužívá centralizovaného správce koncových bodů. I na rozdíl od HTTP. sys nepodporuje Kestrel sdílení portů mezi několika procesy. Každá instance Kestrel musí používat jedinečný port.
+Kestrel je webový server pro různé platformy pro ASP.NET Core. Na rozdíl od HTTP. sys Kestrel nepoužívá centralizovaného správce koncových bodů. I na rozdíl od HTTP. sys nepodporuje Kestrel sdílení portů mezi několika procesy. Každá instance Kestrel musí používat jedinečný port. Další informace o Kestrel najdete v [podrobnostech implementace](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
 
 ![Diagram Kestrel][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>Kestrel nestavové služby
-Chcete- `Kestrel` li použít v bezstavové službě, `CreateServiceInstanceListeners` přepište metodu a `KestrelCommunicationListener` vraťte instanci:
+Pokud chcete použít `Kestrel` v bezstavové službě, přepište metodu `CreateServiceInstanceListeners` a vraťte instanci `KestrelCommunicationListener`:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -230,7 +230,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="kestrel-in-a-stateful-service"></a>Kestrel ve stavové službě
-Chcete- `Kestrel` li použít ve stavové službě, `CreateServiceReplicaListeners` přepište metodu a `KestrelCommunicationListener` vraťte instanci:
+Pokud chcete ve stavové službě použít `Kestrel`, přepište metodu `CreateServiceReplicaListeners` a vraťte instanci `KestrelCommunicationListener`:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -255,12 +255,12 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-V tomto příkladu je instance typu `IReliableStateManager` singleton k dispozici pro kontejner vkládání závislostí webhost. To není nezbytně nutné, ale umožňuje používat `IReliableStateManager` a spolehlivé kolekce v metodách akcí kontroleru MVC.
+V tomto příkladu je k dispozici instance typu Singleton `IReliableStateManager` pro kontejner vkládání závislostí na Webhostu. To není nezbytně nutné, ale umožňuje používat v metodách akcí kontroleru MVC `IReliableStateManager` a spolehlivé kolekce.
 
-Ve stavové službě není zadaný `Endpoint` `KestrelCommunicationListener` název konfigurace. To je podrobněji vysvětleno v následující části.
+V stavové službě *není* `KestrelCommunicationListener` zadán název konfigurace `Endpoint`. To je podrobněji vysvětleno v následující části.
 
 ### <a name="configure-kestrel-to-use-https"></a>Nakonfigurovat Kestrel k používání HTTPS
-Když v rámci služby povolíte HTTPS s Kestrel, budete muset nastavit několik možností naslouchání. Aktualizujte `ServiceInstanceListener` , aby používaly koncový bod *EndpointHttps* a naslouchaly na konkrétním portu (například port 443). Když nakonfigurujete webového hostitele tak, aby používal webový server Kestrel, musíte nakonfigurovat Kestrel na naslouchání adresám IPv6 na všech síťových rozhraních: 
+Když v rámci služby povolíte HTTPS s Kestrel, budete muset nastavit několik možností naslouchání. Aktualizujte `ServiceInstanceListener` pro použití koncového bodu *EndpointHttps* a naslouchání na specifickém portu (například port 443). Když nakonfigurujete webového hostitele tak, aby používal webový server Kestrel, musíte nakonfigurovat Kestrel na naslouchání adresám IPv6 na všech síťových rozhraních: 
 
 ```csharp
 new ServiceInstanceListener(
@@ -304,14 +304,14 @@ serviceContext =>
 
 
 ### <a name="endpoint-configuration"></a>Konfigurace koncového bodu
-Pro použití Kestrel není nutná konfigurace.`Endpoint` 
+Konfigurace `Endpoint` se nevyžaduje pro použití Kestrel. 
 
-Kestrel je jednoduchý samostatný webový server. Na rozdíl od souboru HTTP. sys (nebo HttpListener) nepotřebuje `Endpoint` konfiguraci v souboru ServiceManifest. XML, protože před zahájením nevyžaduje registraci adresy URL. 
+Kestrel je jednoduchý samostatný webový server. Na rozdíl od souboru HTTP. sys (nebo HttpListener) nevyžaduje v souboru ServiceManifest. XML konfiguraci `Endpoint`, protože před zahájením nevyžaduje registraci adresy URL. 
 
 #### <a name="use-kestrel-with-a-static-port"></a>Použití Kestrel se statickým portem
-Pro použití s Kestrel můžete nakonfigurovat statický port `Endpoint` v konfiguraci souboru ServiceManifest. XML. I když to není nezbytně nutné, nabízí dvě možné výhody:
+Statický port můžete nakonfigurovat v konfiguraci `Endpoint` ServiceManifest. XML pro použití s Kestrel. I když to není nezbytně nutné, nabízí dvě možné výhody:
  - Pokud port nepadne do rozsahu portů aplikace, je otevřen pomocí brány firewall operačního systému pomocí Service Fabric.
- - Adresa URL, kterou jste `KestrelCommunicationListener` dostali za vás, použije tento port.
+ - Adresa URL, kterou jste dostali z `KestrelCommunicationListener` použije tento port.
 
 ```xml
   <Resources>
@@ -321,32 +321,32 @@ Pro použití s Kestrel můžete nakonfigurovat statický port `Endpoint` v konf
   </Resources>
 ```
 
-Pokud je nakonfigurováno, musí se jeho název předat `KestrelCommunicationListener` do konstruktoru: `Endpoint` 
+Pokud je nakonfigurován `Endpoint`, musí se jeho název předávat do konstruktoru `KestrelCommunicationListener`: 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-Pokud ServiceManifest. XML nepoužívá `Endpoint` konfiguraci, vynechejte název `KestrelCommunicationListener` v konstruktoru. V takovém případě bude používat dynamický port. Další informace najdete v další části.
+Pokud ServiceManifest. XML nepoužívá konfiguraci `Endpoint`, vynechejte název v konstruktoru `KestrelCommunicationListener`. V takovém případě bude používat dynamický port. Další informace najdete v další části.
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>Použití Kestrel s dynamickým portem
-Kestrel nemůže použít automatické přiřazování portů z `Endpoint` konfigurace v souboru ServiceManifest. XML. Důvodem je to, že automatické přiřazování `Endpoint` portů z konfigurace přiřadí jedinečný port pro každý *hostitelský proces*a jeden hostitelský proces může obsahovat několik instancí Kestrel. Nefunguje s Kestrel, protože nepodporuje sdílení portů. Proto musí být každá instance Kestrel otevřená na jedinečném portu.
+Kestrel nemůže použít automatické přiřazování portů z konfigurace `Endpoint` v souboru ServiceManifest. XML. Důvodem je, že automatické přiřazování portů z konfigurace `Endpoint` přiřadí jedinečný port na *hostitelský proces*a jeden hostitelský proces může obsahovat několik instancí Kestrel. Nefunguje s Kestrel, protože nepodporuje sdílení portů. Proto musí být každá instance Kestrel otevřená na jedinečném portu.
 
-Chcete-li použít dynamické přiřazování portů s Kestrel `Endpoint` , vynechejte zcela konfiguraci v souboru ServiceManifest. XML a nepředávejte `KestrelCommunicationListener` do konstruktoru název koncového bodu, jak je znázorněno níže:
+Chcete-li použít dynamické přiřazování portů s Kestrel, vynechejte zcela konfiguraci `Endpoint` v souboru ServiceManifest. XML a nepředejte název koncového bodu konstruktoru `KestrelCommunicationListener` následujícím způsobem:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
-V této konfiguraci `KestrelCommunicationListener` bude automaticky vybrán nepoužitý port z rozsahu portů aplikace.
+V této konfiguraci bude `KestrelCommunicationListener` automaticky vybírat nepoužitý port z rozsahu portů aplikace.
 
 ## <a name="service-fabric-configuration-provider"></a>Poskytovatel konfigurace Service Fabric
 Konfigurace aplikací v ASP.NET Core vychází z párů klíč-hodnota, které vytvořil Poskytovatel konfigurace. Pokud chcete získat další informace o obecné podpoře konfigurace ASP.NET Core, přečtěte si téma [konfigurace v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) .
 
-Tato část popisuje, jak se poskytovatel konfigurace Service Fabric integruje s konfigurací ASP.NET Core importem `Microsoft.ServiceFabric.AspNetCore.Configuration` balíčku NuGet.
+Tato část popisuje, jak se poskytovatel konfigurace Service Fabric integruje s konfigurací ASP.NET Core importem balíčku NuGet `Microsoft.ServiceFabric.AspNetCore.Configuration`.
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration – spouštěcí rozšíření
-Po importu `Microsoft.ServiceFabric.AspNetCore.Configuration` balíčku NuGet musíte zaregistrovat zdroj konfigurace Service Fabric pomocí rozhraní API pro ASP.NET Core konfigurace. Provedete to tak , že zkontrolujete `Microsoft.ServiceFabric.AspNetCore.Configuration` rozšíření AddServiceFabricConfiguration `IConfigurationBuilder`v oboru názvů.
+Po importu balíčku NuGet `Microsoft.ServiceFabric.AspNetCore.Configuration` musíte zaregistrovat Service Fabric zdroj konfigurace pomocí rozhraní API pro ASP.NET Core konfigurace. Provedete to tak, že zkontrolujete rozšíření **AddServiceFabricConfiguration** v oboru názvů `Microsoft.ServiceFabric.AspNetCore.Configuration` pro `IConfigurationBuilder`.
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;
@@ -380,7 +380,7 @@ Ve výchozím nastavení zahrnuje Poskytovatel konfigurace Service Fabric název
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
 
-Pokud máte například konfigurační balíček s názvem `MyConfigPackage` s následujícím obsahem, bude hodnota konfigurace k dispozici na ASP.NET Core `IConfiguration` do *MyConfigPackage: MyConfigSection: MyParameter*.
+Pokud máte například konfigurační balíček s názvem `MyConfigPackage` s následujícím obsahem, bude hodnota konfigurace k dispozici v ASP.NET Core `IConfiguration` až do *MyConfigPackage: MyConfigSection: MyParameter*.
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
@@ -390,10 +390,10 @@ Pokud máte například konfigurační balíček s názvem `MyConfigPackage` s n
 </Settings>
 ```
 ### <a name="service-fabric-configuration-options"></a>Možnosti konfigurace Service Fabric
-Poskytovatel konfigurace Service Fabric také podporuje `ServiceFabricConfigurationOptions` změnu výchozího chování mapování klíčů.
+Poskytovatel konfigurace Service Fabric také podporuje `ServiceFabricConfigurationOptions` ke změně výchozího chování mapování klíčů.
 
 #### <a name="encrypted-settings"></a>Šifrované nastavení
-Service Fabric podporuje šifrované nastavení, stejně jako poskytovatel konfigurace Service Fabric. Zašifrovaná nastavení nejsou ve výchozím nastavení dešifrována ASP.NET Core `IConfiguration` . Místo toho jsou uloženy šifrované hodnoty. Pokud ale chcete hodnotu dešifrovat pro ukládání do ASP.NET Core IConfiguration, můžete nastavit příznak *DecryptValue* na hodnotu false v `AddServiceFabricConfiguration` rozšíření následujícím způsobem:
+Service Fabric podporuje šifrované nastavení, stejně jako poskytovatel konfigurace Service Fabric. Šifrované nastavení není v ASP.NET Core ve výchozím nastavení dešifrováno `IConfiguration`. Místo toho jsou uloženy šifrované hodnoty. Pokud ale chcete hodnotu dešifrovat pro ukládání do ASP.NET Core IConfiguration, můžete nastavit příznak *DecryptValue* na hodnotu false v rozšíření `AddServiceFabricConfiguration` následujícím způsobem:
 
 ```csharp
 public Startup()
@@ -405,7 +405,7 @@ public Startup()
 }
 ```
 #### <a name="multiple-configuration-packages"></a>Více konfiguračních balíčků
-Service Fabric podporuje více konfiguračních balíčků. Ve výchozím nastavení je název balíčku součástí konfiguračního klíče. `IncludePackageName` Příznak ale můžete nastavit na false následujícím způsobem:
+Service Fabric podporuje více konfiguračních balíčků. Ve výchozím nastavení je název balíčku součástí konfiguračního klíče. Můžete ale nastavit příznak `IncludePackageName` na hodnotu false následujícím způsobem:
 ```csharp
 public Startup()
 {
@@ -417,9 +417,9 @@ public Startup()
 }
 ```
 #### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Mapování vlastních klíčů, extrakce hodnot a naplnění dat
-Poskytovatel konfigurace Service Fabric také podporuje pokročilejší scénáře pro přizpůsobení mapování klíče pomocí `ExtractKeyFunc` a vlastní extrakci hodnot pomocí. `ExtractValueFunc` Můžete dokonce změnit celý proces naplnění dat z konfigurace Service Fabric na ASP.NET Core konfiguraci `ConfigAction`pomocí.
+Poskytovatel konfigurace Service Fabric také podporuje pokročilejší scénáře pro přizpůsobení mapování klíčů pomocí `ExtractKeyFunc` a vlastního extrahování hodnot pomocí `ExtractValueFunc`. Můžete dokonce změnit celý proces naplnění dat z konfigurace Service Fabric na ASP.NET Core konfiguraci pomocí `ConfigAction`.
 
-Následující příklady ilustrují, jak použít `ConfigAction` k přizpůsobení datových napopulace:
+Následující příklady ilustrují, jak použít `ConfigAction` k přizpůsobení naplnění dat:
 ```csharp
 public Startup()
 {
@@ -454,7 +454,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Aktualizace konfigurace
-Poskytovatel konfigurace Service Fabric podporuje taky aktualizace konfigurace. K přijímání oznámení o `IOptionsMonitor` změnách můžete použít ASP.NET Core a potom použít `IOptionsSnapshot` k opětovnému načtení konfiguračních dat. Další informace najdete v tématu [možnosti ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+Poskytovatel konfigurace Service Fabric podporuje taky aktualizace konfigurace. K získání oznámení o změně můžete použít ASP.NET Core `IOptionsMonitor` a pak pomocí `IOptionsSnapshot` znovu načíst konfigurační data. Další informace najdete v tématu [možnosti ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
 
 Ve výchozím nastavení jsou tyto možnosti podporovány. K povolení aktualizací konfigurace není potřeba žádné další kódování.
 
@@ -479,9 +479,9 @@ Při zpřístupnění Internetu by služba bez stavu měla používat známý a 
 |  |  | **Poznámky** |
 | --- | --- | --- |
 | Webový server | Kestrel | Kestrel je upřednostňovaný webový server, jak je podporován v systémech Windows a Linux. |
-| Konfigurace portu | statická | Dobře známý statický port by měl být nakonfigurovaný v `Endpoints` konfiguraci souboru ServiceManifest. XML, jako je například 80 pro protokol HTTP nebo 443 pro protokol HTTPS. |
-| ServiceFabricIntegrationOptions | Žádné | `ServiceFabricIntegrationOptions.None` Použijte možnost při konfiguraci služby Service Fabric middleware pro integraci, aby se služba nepokoušela ověřit příchozí požadavky pro jedinečný identifikátor. Externí uživatelé vaší aplikace nebudou znát jedinečné identifikační údaje, které používá middleware. |
-| Počet instancí | -1 | V typických případech použití by nastavení počet instancí mělo být nastavené na hodnotu *-1*. To se provádí tak, že je instance dostupná na všech uzlech, které přijímají provoz z nástroje pro vyrovnávání zatížení. |
+| Konfigurace portu | tras | Dobře známý statický port by měl být nakonfigurovaný v konfiguraci `Endpoints` ServiceManifest. XML, třeba 80 pro protokol HTTP nebo 443 pro protokol HTTPS. |
+| ServiceFabricIntegrationOptions | Žádné | Při konfiguraci služby Service Fabric Integration middleware použijte možnost `ServiceFabricIntegrationOptions.None`, aby se služba nepokoušela ověřit příchozí požadavky pro jedinečný identifikátor. Externí uživatelé vaší aplikace nebudou znát jedinečné identifikační údaje, které používá middleware. |
+| Počet instancí | – 1 | V typických případech použití by nastavení počet instancí mělo být nastavené na hodnotu *-1*. To se provádí tak, že je instance dostupná na všech uzlech, které přijímají provoz z nástroje pro vyrovnávání zatížení. |
 
 Pokud několik externě vystavených služeb sdílí stejnou sadu uzlů, můžete použít soubor HTTP. sys s jedinečnou, ale stabilní cestou adresy URL. To můžete provést úpravou adresy URL, která je k dispozici při konfiguraci IWebHost. Všimněte si, že to platí jenom pro HTTP. sys.
 
@@ -506,14 +506,14 @@ Bezstavové služby, které se volají jenom v rámci clusteru, by měly použí
 | Webový server | Kestrel | I když můžete použít protokol HTTP. sys pro interní bezstavové služby, je Kestrel nejlepším serverem, který umožňuje sdílet hostitele s víc instancemi služby.  |
 | Konfigurace portu | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Díky dynamickému přiřazování portů toto nastavení zabrání problému chybné identity popsanému výše. |
-| InstanceCount | libovolné | Nastavení počtu instancí lze nastavit na libovolnou hodnotu nutnou k provozu služby. |
+| InstanceCount | Jakýmikoli | Nastavení počtu instancí lze nastavit na libovolnou hodnotu nutnou k provozu služby. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Jenom interní služba stavového ASP.NET Core
 Stavové služby, které jsou volány pouze v rámci clusteru, by měly používat dynamicky přiřazené porty, aby se zajistila spolupráce mezi několika službami. Doporučujeme následující konfiguraci:
 
 |  |  | **Poznámky** |
 | --- | --- | --- |
-| Webový server | Kestrel | `HttpSysCommunicationListener` Není určen pro použití ve stavových službách, ve kterých repliky sdílí hostitelský proces. |
+| Webový server | Kestrel | @No__t-0 není navržena pro použití ve stavových službách, ve kterých repliky sdílí hostitelský proces. |
 | Konfigurace portu | dynamicky přiřazené | Víc replik stavové služby může sdílet hostitelský proces nebo hostitelský operační systém, takže bude potřebovat jedinečné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Díky dynamickému přiřazování portů toto nastavení zabrání problému chybné identity popsanému výše. |
 

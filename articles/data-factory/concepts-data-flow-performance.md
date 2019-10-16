@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030707"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387324"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -23,11 +23,11 @@ Při navrhování a testování toků dat z uživatelského prostředí ADF neza
 
 Při návrhu toků mapování dat můžete každou transformaci otestovat tak, že na panelu Konfigurace kliknete na kartu náhled dat. Po ověření logiky otestujte tok dat od začátku po aktivitu v kanálu. Přidejte aktivitu spustit tok dat a použijte tlačítko ladit k otestování výkonu toku dat. Pokud chcete otevřít plán spuštění a profil výkonu vašeho toku dat, klikněte na ikonu brýlí v části akce na kartě výstup vašeho kanálu.
 
-Monitor toku dat ![sledování toku dat](media/data-flow/mon002.png "2")
+![Sledování toku dat](media/data-flow/mon002.png "Monitor toku dat 2")
 
  Tyto informace můžete použít k odhadu výkonu toku dat proti zdrojům dat s různou velikostí. Další informace najdete v tématu [monitorování toků dat mapování](concepts-data-flow-monitoring.md).
 
-(media/data-flow/mon003.png "Sledování toku dat") ![monitorování toku dat]3
+![Sledování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
 
  V případě spuštění ladění kanálu se v případě teplého clusteru vyžaduje asi jedna minuta času nastavení clusteru v celkových výpočtech výkonu. Pokud inicializujete výchozí Azure Integration Runtime, může to trvat přibližně 5 minut.
 
@@ -56,7 +56,7 @@ Při zapnutí ladění se ve výchozím nastavení použije výchozí prostřed�
 1. Pokud jste vybrali **sloupec**, vyberte sloupec partition (oddíl).
 1. Pokud jste vybrali **dotaz**, zadejte dotaz, který odpovídá schématu dělení vaší databázové tabulky. Tento dotaz umožňuje zdrojovému databázovému stroji využít odstraňování oddílů. Zdrojové tabulky databáze není nutné rozdělit na oddíly. Pokud váš zdroj ještě není rozdělený na oddíly, ADF bude v prostředí Spark Transforming dál používat dělení dat, a to na základě klíče, který jste vybrali ve zdrojové transformaci.
 
-(media/data-flow/sourcepart3.png "Část") zdroje ![zdrojové části]
+![Zdrojová část](media/data-flow/sourcepart3.png "Zdrojová část")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>Velikost, vstup a úroveň izolace zdrojové dávky
 
@@ -66,13 +66,13 @@ V části **Možnosti zdroje** ve zdrojové transformaci můžou mít následuj�
 * Nastavení dotazu vám umožní filtrovat řádky ve zdroji předtím, než dorazí do toku dat ke zpracování. Díky tomu může být počáteční získání dat rychlejší. Pokud použijete dotaz, můžete přidat volitelné pomocný parametr dotazu pro databázi SQL Azure, například nepotvrzené čtení.
 * Čtení nepotvrzeného vám poskytne rychlejší výsledky dotazu na transformaci zdroje.
 
-![Zdrojový](media/data-flow/source4.png "zdroj")
+![Zdroj](media/data-flow/source4.png "Zdroj")
 
 ### <a name="sink-batch-size"></a>Velikost dávky jímky
 
 Abyste se vyhnuli zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě nastavení pro Azure SQL DB a jímky Azure SQL DW. Pokud je nastavena velikost dávky, vytvoří ADF v dávkách zápisy do dávek v závislosti na zadané velikosti.
 
-![](media/data-flow/sink4.png "Jímka") jímky
+![Jímkou](media/data-flow/sink4.png "Jímka")
 
 ### <a name="partitioning-on-sink"></a>Dělení na jímku
 
@@ -101,7 +101,7 @@ V každé transformaci můžete nastavit schéma dělení, které má Datová to
 Při ladění v náhledu dat a při ladění kanálu se limity a velikosti vzorkování pro zdrojové datové sady na základě souborů vztahují pouze na počet vrácených řádků, nikoli na počet čtených řádků. To může mít vliv na výkon při spuštění ladění a může způsobit selhání toku.
 * Clustery ladění jsou ve výchozím nastavení malými clustery s jedním uzlem a doporučujeme pro ladění použít ukázkové malé soubory. Přejděte na nastavení ladění a najeďte na malou podmnožinu dat pomocí dočasného souboru.
 
-    ![](media/data-flow/debugsettings3.png "Nastavení ladění") nastavení ladění
+    ![Nastavení ladění](media/data-flow/debugsettings3.png "Nastavení ladění")
 
 ### <a name="file-naming-options"></a>Možnosti pojmenovávání souborů
 

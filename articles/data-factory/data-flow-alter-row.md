@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027003"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387270"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory ALTER Row transformovat
 
@@ -19,7 +19,7 @@ Použijte transformaci ALTER Row k nastavení zásad vložení, odstranění, ak
 
 
 
-![Změnit nastavení řádku](media/data-flow/alter-row1.png "změnit nastavení řádku")
+![Změnit nastavení řádku](media/data-flow/alter-row1.png "Změnit nastavení řádku")
 
 > [!NOTE]
 > Příkaz ALTER Row transformes bude fungovat jenom u jímky databáze v toku dat. Akce, které přiřadíte do řádků (INSERT, Update, DELETE, Upsert), nebudou během relace ladění provedeny. Do kanálu musíte přidat úlohu spustit tok dat a pomocí ladění kanálu nebo triggerů můžete v databázových tabulkách přijmout zásady ALTER Row.
@@ -28,7 +28,7 @@ Použijte transformaci ALTER Row k nastavení zásad vložení, odstranění, ak
 
 Vytvořte transformaci ALTER Row a zadejte zásadu řádku s podmínkou `true()`. Každý řádek, který nesplňuje žádný z dříve definovaných výrazů, bude označen pro zadané zásady řádků. Ve výchozím nastavení budou všechny řádky, které nesplňují žádný podmíněný výraz, označeny pro `Insert`.
 
-![ALTER Row jedna zásada](media/data-flow/alter-row4.png "změnit řádek jedna zásada")
+![Změnit řádek jedna zásada](media/data-flow/alter-row4.png "Změnit řádek jedna zásada")
 
 > [!NOTE]
 > Pokud chcete označit všechny řádky jednou zásadou, můžete pro tuto zásadu vytvořit podmínku a zadat podmínku jako `true()`.
@@ -37,7 +37,7 @@ Vytvořte transformaci ALTER Row a zadejte zásadu řádku s podmínkou `true()`
 
 Zapnout režim ladění toku dat, aby se zobrazily výsledky zásad ALTER Row v podokně náhledu dat. Provedení příkazu ALTER Row v režimu ladění toku dat nevygeneruje knihovny DDL ani DML v rámci vašeho cíle. Aby tyto akce probíhaly, spusťte tok dat v rámci aktivity toku dat spuštění v rámci kanálu.
 
-Změna ![zásad řádků](media/data-flow/alter-row3.png "Změna zásad řádků")
+![Změna zásad řádků](media/data-flow/alter-row3.png "Změna zásad řádků")
 
 To vám umožní ověřit a zobrazit stav každého řádku na základě vašich podmínek. K dispozici je ikona pro každou akci vložení, aktualizace, odstranění a Upsert, ke které dojde v toku dat, což znamená, která akce bude probíhat při spuštění toku dat uvnitř kanálu.
 
@@ -45,7 +45,7 @@ To vám umožní ověřit a zobrazit stav každého řádku na základě vašich
 
 Chcete-li změnit řádek na práci, je nutné mít typ jímky databáze. V nastavení jímky byste měli nastavit všechny akce, které odpovídají vašim podmínkám pro změnu řádku, které mají být povoleny.
 
-![ALTER Row]–(media/data-flow/alter-row2.png "Změna") jímky řádků
+![Změnit jímku řádků](media/data-flow/alter-row2.png "Změnit jímku řádků")
 
 Výchozím chováním při toku dat ADF pomocí jímky databáze je vložení řádků. Pokud chcete, aby byly povoleny aktualizace, upsertuje a DELETE, je také nutné zaškrtnout políčka v jímky, aby byly akce povoleny.
 

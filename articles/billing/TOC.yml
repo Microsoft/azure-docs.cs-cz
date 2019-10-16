@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: Vytvoření dalších předplatných
       href: billing-create-subscription.md
-    - name: Vytvoření dalších předplatných – smlouva se zákazníkem Microsoftu
-      href: billing-mca-create-subscription.md
     - name: Programové vytváření předplatných Enterprise
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Export informací o předplatném

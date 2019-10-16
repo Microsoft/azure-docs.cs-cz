@@ -1,6 +1,6 @@
 ---
-title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Zakázat monitorování | Microsoft Docs'
-description: Reference k rozhraní API pro Monitorování stavu v2 Disable-ApplicationInsightsMonitoring. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
+title: 'Reference k rozhraní API agenta Azure Application Insights: zakázat monitorování | Microsoft Docs'
+description: Reference k rozhraní API agenta Application Insights. Disable-ApplicationInsightsMonitoring. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203435"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389902"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Rozhraní API pro Monitorování stavu v2: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Rozhraní API pro Application Insights agenta: Disable-ApplicationInsightsMonitoring
 
 Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -71,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Další kroky
 
- Další informace najdete v Monitorování stavu v2:
- - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.
+ Další Application Insights agenta:
+ - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.

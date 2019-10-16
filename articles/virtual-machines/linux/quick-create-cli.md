@@ -14,17 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 440ba2cd7ac9cea19f903dff493790194962e1e8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299488"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427916"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
-V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure (CLI) nasadit virtuální počítač (VM) pro Linux v Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
+V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure (CLI) nasadit virtuální počítač (VM) pro Linux v Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
+
+V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -107,7 +113,7 @@ Až budete hotovi, zadáním příkazu `exit` ukončete relaci SSH.
 
 V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku serveru NGINX. Jako webovou adresu použijte veřejnou IP adresu virtuálního počítače. Následující příklad ukazuje výchozí web NGINX:
 
-![NGINX výchozí úvodní stránka](./media/quick-create-cli/nginix-welcome-page.png)
+![Zobrazení úvodní stránky serveru NGINX](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

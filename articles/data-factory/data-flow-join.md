@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029323"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387229"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Mapování transformace toku dat
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029323"
 
 Ke kombinování dat ze dvou tabulek v toku dat použijte JOIN. Klikněte na transformaci, která bude levou relací a přidejte transformaci spojení ze sady nástrojů. V transformaci spojení vyberete jiný datový proud z datového toku, který má být pravý.
 
-Spojit ![transformaci transformace](media/data-flow/join.png "")
+![Transformace spojení](media/data-flow/join.png "Spojit")
 
 ## <a name="join-types"></a>Typy spojení
 
@@ -56,7 +56,7 @@ Je nutné zadat alespoň 1 (1.. n) podmínky spojení. Můžou to být pole, na 
 
 Na rozdíl od spojení sloučení v nástrojích, jako je SSIS, se spojení v toku dat ADF nejedná o povinnou operaci sloučení slučovacího spojení. Proto se klíče JOIN nemusejí seřadit jako první. Operace join proběhne na základě optimální operace join ve Sparku: všesměrové vysílání/spojení na straně mapy:
 
-![Sloučit transformaci]–(media/data-flow/joinoptimize.png "optimalizace spojování")
+![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 
 Pokud se vaše datová sada vejde do paměti pracovního uzlu, můžeme optimalizovat výkon připojení. Můžete také určit rozdělení dat v rámci operace JOIN a vytvořit tak sady dat, které mohou být pro jednotlivé pracovní procesy lépe přizpůsobeny paměti.
 
@@ -64,7 +64,7 @@ Pokud se vaše datová sada vejde do paměti pracovního uzlu, můžeme optimali
 
 Podmínky pro samoobslužné spojení v toku dat ADF můžete dosáhnout pomocí transformace SELECT pro vytvoření aliasu existujícího datového proudu. Nejdřív vytvořte z datového proudu "novou větev" a pak přidejte výběr pro vytvoření aliasu pro celý původní datový proud.
 
-![Samoobslužné](media/data-flow/selfjoin.png "spojení")
+![Připojovat se k sobě](media/data-flow/selfjoin.png "Připojovat se k sobě")
 
 Ve výše uvedeném diagramu je transformace SELECT v horní části. Všechny IT jsou aliasy původního datového proudu na "OrigSourceBatting". V zvýrazněné transformaci spojení níže vidíte, že používáme tento datový proud s aliasem jako připojení na pravé straně, což nám umožňuje odkázat na stejný klíč v levém & pravé straně vnitřního spojení.
 

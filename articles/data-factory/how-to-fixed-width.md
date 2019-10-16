@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962116"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387048"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Zpracování textových souborů s pevnou délkou pomocí Data Factory mapování datových toků
 
@@ -65,13 +65,13 @@ Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformov
 
     ```substring(Column_1,1,4)```
 
-    ![Odvozený sloupec](media/data-flow/fwderivedcol1.png)
+    ![odvozený sloupec](media/data-flow/fwderivedcol1.png)
 
 11. Opakujte krok 10 pro všechny sloupce, které potřebujete analyzovat.
 
 12. Kliknutím na kartu **zkontrolovat** zobrazíte nové sloupce, které budou vygenerovány:
 
-    ![prohlížen](media/data-flow/fwinspect.png)
+    ![Prohlížen](media/data-flow/fwinspect.png)
 
 13. Pomocí transformace vybrat Transform odstraňte všechny sloupce, které nepotřebujete pro transformaci:
 
@@ -87,6 +87,6 @@ Pomocí mapování toků dat v Microsoft Azure Data Factory můžete transformov
 
   Data s pevnou šířkou jsou nyní rozdělena se čtyřmi znaky a přiřazena ke sloupci Sloupec1, col2, Col3, Col4 a tak dále. Na základě předchozího příkladu jsou data rozdělena do čtyř sloupců.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Sestavte zbývající část logiky toku dat pomocí [transformací](concepts-data-flow-overview.md)mapování toků dat.

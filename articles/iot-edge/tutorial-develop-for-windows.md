@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 755290997cb6aab328cd38ce81a21c598c737b5f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693414"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429002"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -206,7 +206,7 @@ Vzorový C# kód, který je součástí šablony projektu, používá [třídu M
 
 7. Vyhledejte vlastnost **routes** $edgeHub požadovaných vlastností. 
 
-   Jedna z funkcí, pokud je modul IoT Edge hub směrování zpráv mezi všemi moduly v nasazení. Zkontrolujte hodnoty ve vlastnosti Routes. První trasa **IotEdgeModule1ToIoTHub**používá zástupný znak ( **\*** ) k zahrnutí jakékoli zprávy přicházející z libovolné výstupní fronty v modulu IotEdgeModule1. Tyto zprávy se přejdou do *$upstream*, což je vyhrazený název, který označuje IoT Hub. Druhá trasa, **sensorToIotEdgeModule1**, přebírá zprávy z modulu SimulatedTemperatureSensor a směruje je do vstupní fronty *input1* modulu IotEdgeModule1. 
+   Jednou z funkcí modulu centra IoT Edge je směrování zpráv mezi všemi moduly v nasazení. Zkontrolujte hodnoty ve vlastnosti Routes. První trasa **IotEdgeModule1ToIoTHub**používá zástupný znak ( **\*** ) k zahrnutí jakékoli zprávy přicházející z libovolné výstupní fronty v modulu IotEdgeModule1. Tyto zprávy se přejdou do *$upstream*, což je vyhrazený název, který označuje IoT Hub. Druhá trasa, **sensorToIotEdgeModule1**, přebírá zprávy z modulu SimulatedTemperatureSensor a směruje je do vstupní fronty *input1* modulu IotEdgeModule1. 
 
    ![Kontrola tras v nasazení. template. JSON](./media/tutorial-develop-for-windows/deployment-routes.png)
 

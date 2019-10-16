@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: Nejčastější dotazy | Microsoft Docs'
+title: 'Azure Data Factory: nejčastější dotazy | Microsoft Docs'
 description: Získejte odpovědi na nejčastější dotazy týkající se Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141569"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387063"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory? 
-Objekt pro vytváření dat je plně spravovaná, cloudových dat integrační služba, která automatizuje přesouvání a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
+Data Factory je plně spravovaná cloudová služba pro integraci dat, která automatizuje přesun a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
 
 Pomocí Azure Data Factory můžete vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními a cloudovým úložištěm dat. A můžete zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight, Azure Data Lake Analytics a prostředí Integration runtime služba SSIS (SQL Server Integration Services) (SSIS). 
 
@@ -48,7 +48,7 @@ Data Factory poskytuje volnost modelování veškerého stylu toku, který je vy
 - Rozdílové toky:
     - Parametry se dají použít k definování horní meze pro rozdílové kopírování při přesouvání tabulek dimenzí nebo odkazů z relačního úložiště v místním prostředí nebo v cloudu, aby se data načetla do jezera. 
 
-Další informace najdete v tématu [kurz: Řízení toků](tutorial-control-flow.md).
+Další informace najdete v tématu [kurz: řízení toků](tutorial-control-flow.md).
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Data ve velkém měřítku s kanály bez kódu
 Nové prostředí nástrojů založené na prohlížeči poskytuje vytváření a nasazování kanálů bez kódu pomocí moderního interaktivního webového prostředí.
@@ -74,7 +74,7 @@ Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit 
 ### <a name="sdks"></a>Sady SDK
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 Můžete monitorovat datové továrny prostřednictvím PowerShellu, sady SDK nebo nástrojů pro monitorování vizuálů v uživatelském rozhraní prohlížeče. Efektivním a efektivním způsobem můžete monitorovat a spravovat vlastní toky na vyžádání, na základě triggeru a hodiny. Zrušit stávající úlohy, Projděte si přehled o selháních, přejděte k podrobnostem a Získejte podrobné chybové zprávy a Nalaďte problémy, a to vše z jednoho podokna skla bez kontextu přepínání nebo navigace mezi obrazovkami. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nové funkce pro SSIS v Data Factory
@@ -94,9 +94,9 @@ Od počáteční verze Public Preview v 2017 Data Factory přidali následujíc�
 ## <a name="what-is-the-integration-runtime"></a>Co je prostředí Integration runtime?
 Prostředí Integration runtime je výpočetní infrastruktura, kterou Azure Data Factory používá k tomu, aby poskytovala následující možnosti integrace dat napříč různými síťovými prostředími:
 
-- **Pohyb dat**: V případě přesunu dat prostředí Integration runtime přesouvá data mezi zdrojovým a cílovým úložištěm dat a nabízí podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Aktivity odeslání**: V případě transformace poskytuje modul runtime integrace možnost nativně spouštět balíčky SSIS.
-- **Spustit SSIS balíčky**: Prostředí Integration runtime nativně spouští balíčky SSIS ve spravovaném prostředí Azure Compute. Prostředí Integration runtime také podporuje odesílání a monitorování transformačních aktivit, které běží na různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, SQL Database a SQL Server.
+- **Pohyb dat**: Integration runtime při přesunu dat přesouvá data mezi zdrojovým a cílovým úložištěm dat a nabízí podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
+- **Aktivity odeslání**: pro transformaci Integration runtime poskytuje možnost nativně spouštět balíčky SSIS.
+- **Spouštění balíčků SSIS**: Integration runtime nativně spouští balíčky SSIS ve spravovaném prostředí Azure Compute. Prostředí Integration runtime také podporuje odesílání a monitorování transformačních aktivit, které běží na různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, SQL Database a SQL Server.
 
 Můžete nasadit jednu nebo více instancí prostředí Integration runtime, jak je potřeba k přesunutí a transformaci dat. Prostředí Integration runtime může běžet ve veřejné síti Azure nebo v privátní síti (místní, Azure Virtual Network nebo Amazon Web Services virtuální privátní cloud [VPC]). 
 
@@ -109,7 +109,7 @@ Neexistuje žádné pevné omezení počtu instancí prostředí Integration run
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory obsahuje čtyři klíčové komponenty, které společně fungují jako platforma, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.
 
 ### <a name="pipelines"></a>Kanály
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustit dotaz Hive v clusteru služby HDInsight pro rozdělení dat. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
 
 ### <a name="activities"></a>Aktivity
 Aktivity představují krok zpracování v rámci kanálu. Aktivitu kopírování můžete například použít ke kopírování dat z jednoho úložiště dat do jiného úložiště dat. Podobně můžete použít aktivitu podregistru, která spustí dotaz na podregistr v clusteru Azure HDInsight, aby transformoval nebo analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
@@ -118,15 +118,15 @@ Aktivity představují krok zpracování v rámci kanálu. Aktivitu kopírován�
 Datové sady představují datové struktury v rámci úložišť dat, které jednoduše odkazují na data, která chcete ve svých aktivitách použít jako vstupy nebo výstupy. 
 
 ### <a name="linked-services"></a>Propojené služby
-Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem: Propojená služba definuje připojení ke zdroji dat a datová sada představuje strukturu dat. Například propojená služba Azure Storage Určuje připojovací řetězec pro připojení k účtu Azure Storage. A datová sada Azure Blob určuje kontejner objektů BLOB a složku obsahující data.
+Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se jím takto: propojená služba definuje připojení ke zdroji dat a datová sada představuje strukturu dat. Například propojená služba Azure Storage Určuje připojovací řetězec pro připojení k účtu Azure Storage. A datová sada Azure Blob určuje kontejner objektů BLOB a složku obsahující data.
 
 Propojené služby mají dva účely v Data Factory:
 
 - Představuje *úložiště dat* , které zahrnuje, ale není omezené na místní instanci SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 - Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
 
-### <a name="triggers"></a>Aktivační procedury
-Aktivační události představují jednotky zpracování, které určují, kdy je spuštěna provádění zřetězeného příkazu. Pro různé typy událostí existují různé typy aktivačních událostí. 
+### <a name="triggers"></a>Aktivační události
+Triggery reprezentují jednotky zpracování, které určují, kdy se spustí spuštění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. 
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
 Spuštění kanálu je instance provádění kanálu. Spuštění kanálu je obvykle možné vytvořit předáním argumentů parametrům, které jsou definovány v kanálu. Argumenty můžete předat ručně nebo v rámci definice triggeru.
@@ -170,13 +170,13 @@ Ano, parametry jsou první třídou, koncept nejvyšší úrovně v Data Factory
 Ano. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Může aktivita v kanálu spotřebovat argumenty, které se předávají do spuštění kanálu? 
-Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
+Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spuštěna s konstrukcí `@parameter`. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Je možné vlastnost výstup aktivity spotřebovat v jiné aktivitě? 
-Ano. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
+Ano. Výstup aktivity lze spotřebovat v následné aktivitě s konstrukcí `@activity`.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
-`@coalesce` Konstrukce ve výrazech slouží k řádnému zpracování hodnot null. 
+Můžete použít konstrukci `@coalesce` ve výrazech k řádnému zpracování hodnot null. 
 
 ## <a name="mapping-data-flows"></a>Mapování toků dat
 
@@ -210,5 +210,5 @@ Použijte aktivitu kopírování pro přípravu dat z jiných konektorů a potom
 ## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytvoření datové továrny najdete v následujících kurzech:
 
-- [Rychlé zprovoznění: Vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
-- [Kurz: Kopírování dat v cloudu](tutorial-copy-data-dot-net.md)
+- [Rychlý Start: vytvoření datové továrny](quickstart-create-data-factory-dot-net.md)
+- [Kurz: kopírování dat v cloudu](tutorial-copy-data-dot-net.md)
