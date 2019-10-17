@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentace ke spravovaným aplikacím Azure
 metadata:
-  title: 'Dokumentace ke spravovaným aplikacím Azure – kurzy, reference k rozhraní API'
+  title: Dokumentace ke spravovaným aplikacím Azure
   description: 'Spravované aplikace Azure využijte k publikování cloudových řešení, jejichž údržba je pro zákazníky jednodušší.'
   services: managed-applications
   author: tfitzmac
