@@ -271,6 +271,8 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: Rozšířené události – cyklická vyrovnávací paměť
                   href: sql-database-xevent-code-ring-buffer.md
+        - name: Diagnostika výkonu hyperškálování
+          href: sql-database-hyperscale-performance-diagnostics.md
     - name: Škálovatelnost
       items:
         - name: Dokumentace ke škálovatelnosti

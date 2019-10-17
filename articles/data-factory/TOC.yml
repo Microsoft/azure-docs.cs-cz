@@ -80,7 +80,7 @@
           items:
             - name: Nástroj pro kopírování dat
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Transformace dat s využitím mapování toků dat
+    - name: Transformace dat s využitím toků dat mapování
       href: tutorial-data-flow.md
     - name: Transformace dat v cloudu
       items:
@@ -143,7 +143,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
-    - name: Mapování toků dat
+    - name: Toky dat mapování
       items:
         - name: Přehled mapování toků dat
           href: concepts-data-flow-overview.md
@@ -616,7 +616,7 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Migrace dat z místního serveru Netezza do Azure
           href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Transformace s využitím mapování toků dat
+    - name: Transformace s využitím toků dat mapování
       items:
         - name: Zpracování textových souborů s pevnou šířkou
           href: how-to-fixed-width.md

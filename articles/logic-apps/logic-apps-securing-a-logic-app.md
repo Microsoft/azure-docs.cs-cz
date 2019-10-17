@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c7b6abb9874c8b6bb2469595b9ce53541656834f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264658"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430128"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -183,7 +183,7 @@ Pokud chcete ostatním uživatelům zabránit v změně nebo odstranění vaší
 
 ## <a name="access-to-run-history-data"></a>Přístup k datům historie spouštění
 
-Během provádění aplikace logiky se všechna data šifrují během přenosu pomocí [protokolu TLS (Transport Layer Security)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) a v [klidovém](../security/fundamentals/encryption-atrest.md)stavu. Až se vaše aplikace logiky dokončí, můžete zobrazit historii pro toto spuštění, včetně kroků, které byly spuštěny spolu se stavem, dobou trvání, vstupy a výstupy pro každou akci. Tato bohatá podrobnosti poskytuje přehled o tom, jak vaše aplikace logiky běžela a kde můžete začít řešit problémy, ke kterým dojde.
+Během provádění aplikace logiky se všechna data [šifrují během přenosu](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) pomocí protokolu TLS (Transport Layer Security) a [v klidovém](../security/fundamentals/encryption-atrest.md)stavu. Až se vaše aplikace logiky dokončí, můžete zobrazit historii pro toto spuštění, včetně kroků, které byly spuštěny spolu se stavem, dobou trvání, vstupy a výstupy pro každou akci. Tato bohatá podrobnosti poskytuje přehled o tom, jak vaše aplikace logiky běžela a kde můžete začít řešit problémy, ke kterým dojde.
 
 Když přistupujete k historii spuštění aplikace logiky, Logic Apps ověří váš přístup a poskytne odkazy na vstupy a výstupy z požadavků a odpovědí v běhu vaší aplikace logiky. U akcí, které zpracovávají všechna hesla, tajné klíče, klíče nebo jiné citlivé informace, ale chcete ostatním uživatelům zabránit v prohlížení těchto dat a přístupu k nim. Například pokud vaše aplikace logiky získá tajný kód z [Azure Key Vault](../key-vault/key-vault-overview.md) , který se má použít při ověřování akce HTTP, chcete tento tajný klíč skrýt ze zobrazení.
 
@@ -272,7 +272,7 @@ Mnoho triggerů a akcí má nastavení pro skrytí vstupů, výstupů nebo oboj�
 
    ![Otevřete nastavení.](media/logic-apps-securing-a-logic-app/open-settings.png)
 
-1. Zapněte buď **zabezpečené vstupy**, **zabezpečené výstupy**, nebo obojí. Až budete hotovi, vyberte **Hotovo**.
+1. Zapněte buď **zabezpečené vstupy**, **zabezpečené výstupy**, nebo obojí. Jakmile budete hotovi, vyberte **Hotovo**.
 
    ![Zapnutí zabezpečených vstupů nebo výstupů](media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 

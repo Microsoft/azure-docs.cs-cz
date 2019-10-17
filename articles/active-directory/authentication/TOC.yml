@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Bez hesla
       items:
+        - name: Nasazování bez hesel
+          href: howto-authentication-passwordless-deployment.md
         - name: Klíče zabezpečení bez hesla
           href: howto-authentication-passwordless-security-key.md
         - name: Přihlašování telefonem bez hesla

@@ -285,6 +285,8 @@
       items:
         - name: Publikování prostředku – CLI
           href: cli-publish-asset.md
+        - name: Označení popisného zvuku
+          href: signal-descriptive-audio-howto.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)

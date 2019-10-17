@@ -14,20 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce307df954575b3204f7a4b3f46af1f4a9c3089
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ce5750a5071ee0dfc257498f83f41b6d59c99a8b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027460"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388520"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin. Forms
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center podporuje vývoj koncových a integrovaných služeb od centrálního vývoje mobilních aplikací. Vývojáři **mohou pomocí sestavování**, **testování** a **distribuce** služeb nastavit kanál průběžné integrace a doručování. Po nasazení aplikace mohou vývojáři sledovat stav a využití své aplikace pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **push** . Vývojáři můžou také využít **ověřování** k ověřování uživatelů a **datových** služeb, aby zachovaly a synchronizovaly data aplikací v cloudu.
-> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) ještě dnes.
+> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
+>
+> Pokud chcete v mobilní aplikaci integrovat cloudové služby, zaregistrujte se [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) dnes.
 
 ## <a name="overview"></a>Přehled
 
@@ -35,7 +36,7 @@ V tomto kurzu přidáte nabízená oznámení do všech projektů, které vznikl
 
 Pokud nepoužíváte stažený projekt serveru pro rychlé zahájení, budete potřebovat balíček rozšíření nabízených oznámení. Další informace najdete v tématu [práce s back-end serverem .NET SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro iOS budete potřebovat [členství v programu Apple Developer](https://developer.apple.com/programs/ios/) a fyzické zařízení s iOS. [Simulátor iOS nepodporuje nabízená oznámení](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
@@ -68,9 +69,9 @@ S back-end nakonfigurovaným pomocí FCM můžete do klienta přidat komponenty 
 1. Ve vlastnostech projektu projektu **Droid** nastavte aplikaci na kompilovat pomocí Androidu verze 7,0 nebo vyšší.
 1. Přidejte soubor **Google-Services. JSON** stažený z konzoly Firebase do kořenového adresáře projektu **Droid** a nastavte jeho akci sestavení na **GoogleServicesJson**. Další informace najdete v tématu [Přidání souboru JSON služby Google Services](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
-#### <a name="registering-with-firebase-cloud-messaging"></a>Registrace pomocí cloudového zasílání zpráv Firebase
+#### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
 
-1. Otevřete soubor **souboru AndroidManifest. XML** a vložte následující prvky `<receiver>` do prvku `<application>`:
+1. Otevřete soubor **AndroidManifest.xml** a vložte následující elementy `<receiver>` do elementu `<application>`:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -241,7 +242,7 @@ První dva kroky jsou požadovány pouze při testování emulátoru.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurace a spuštění projektu iOS (volitelné)
 
-Tato část je určena pro spuštění projektu Xamarin iOS pro zařízení s iOS. Tuto část můžete přeskočit, pokud nepracujete se zařízeními s iOS.
+Tato část se týká spuštění projektu Xamarin iOS pro zařízení s iOS. Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
@@ -335,7 +336,7 @@ Vaše aplikace se teď aktualizovala tak, aby podporovala nabízená oznámení.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurace a spuštění projektů Windows (volitelné)
 
-Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPhone81 pro zařízení s Windows. Tyto kroky také podporují projekty Univerzální platforma Windows (UWP). Pokud nepracujete se zařízeními s Windows, můžete tuto část přeskočit.
+Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPhone81 pro zařízení s Windows. Tyto kroky také podporují projekty Univerzální platforma Windows (UWP). Můžete ji přeskočit, pokud s takovými zařízeními nepracujete.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Registrace aplikace pro Windows pro nabízená oznámení pomocí služby oznamování systému Windows (WNS)
 
@@ -401,7 +402,7 @@ Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPho
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testování nabízených oznámení v aplikaci pro Windows
 
 1. V sadě Visual Studio klikněte pravým tlačítkem myši na projekt Windows a klikněte na **nastavit jako spouštěný projekt**.
-2. Stisknutím tlačítka **Spustit** Sestavte projekt a spusťte aplikaci.
+2. Stiskněte tlačítko **Spustit** a sestavte projekt a spusťte aplikaci.
 3. V aplikaci zadejte název nového TodoItem a kliknutím na ikonu Plus ( **+** ) ho přidejte.
 4. Ověřte, že je při přidání položky přijata oznámení.
 
@@ -410,7 +411,7 @@ Tato část je určena pro spouštění projektů Xamarin. Forms WinApp a WinPho
 Můžete získat další informace o nabízených oznámeních:
 
 * [Posílání nabízených oznámení z Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase cloudové zasílání zpráv](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Vzdálená oznámení pomocí zasílání zpráv Firebase do cloudu](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Diagnostikovat problémy s nabízenými oznámeními](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   Existují různé důvody, proč mohou být oznámení vyřazena nebo nekončí na zařízeních. V tomto tématu se dozvíte, jak analyzovat a zjistit hlavní příčinu selhání nabízených oznámení.
@@ -418,9 +419,9 @@ Můžete získat další informace o nabízených oznámeních:
 Můžete také pokračovat k jednomu z následujících kurzů:
 
 * [Přidání ověřování do aplikace](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Naučte se ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Povolit offline synchronizaci vaší aplikace](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Naučte se, jak pomocí back-endu Mobile Apps přidat do aplikace podporu offline režimu. Při offline synchronizaci můžou uživatelé interaktivně pracovat s mobilní aplikací @ no__t-0viewing, přidávat nebo upravovat data @ no__t-1even, když není k dispozici žádné síťové připojení.
+  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
+* [Povolení offline synchronizace u aplikace](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Zjistěte, jak pomocí back-endu Mobile Apps přidat do aplikace podporu offline režimu. Při offline synchronizaci můžou uživatelé interaktivně pracovat s mobilní aplikací @ no__t-0viewing, přidávat nebo upravovat data @ no__t-1even, když není k dispozici žádné síťové připojení.
 
 <!-- Images. -->
 

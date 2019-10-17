@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights pro webové aplikace v JavaScriptu | Microsoft Docs
-description: Získejte zobrazení stránky a počty relací, data webového klienta a sledujte vzorce používání. Zjišťovat výjimky a problémy s výkonem na webových stránkách JavaScriptu.
+title: Azure Application Insights pro webové aplikace JavaScript | Dokumentace Microsoftu
+description: Načtení zobrazení stránek a počty relací, data webového klienta a sledování vzorů využití. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,31 +12,31 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937078"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430192"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
-Přečtěte si o výkonu a využití webové stránky nebo aplikace. Pokud přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX a také počty uživatelů a relací. Všechny tyto mohou být rozdělené podle stránky, klientského operačního systému a verze prohlížeče, geografického umístění a dalších dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránek. A vložením volání trasování v kódu JavaScriptu můžete sledovat, jak se používají různé funkce aplikace webové stránky.
+Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Pokud přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
 
-Application Insights lze použít s libovolnými webovými stránkami – stačí přidat krátký kód jazyka JavaScript. Pokud je vaše webová služba [Java](java-get-started.md) nebo [ASP.NET](asp-net.md), můžete použít sady SDK na straně serveru ve spojení se sadou JavaScript SDK na straně klienta k získání uceleného porozumění výkonu vaší aplikace.
+Application Insights můžete použít s jakýmikoli webovými stránkami – stačí přidat krátký kód jazyka JavaScript. Pokud je vaše webová služba [Java](java-get-started.md) nebo [ASP.NET](asp-net.md), můžete použít sady SDK na straně serveru ve spojení se sadou JavaScript SDK na straně klienta k získání uceleného porozumění výkonu vaší aplikace.
 
 ## <a name="adding-the-javascript-sdk"></a>Přidání sady JavaScript SDK
 
 1. Nejdřív potřebujete prostředek Application Insights. Pokud ještě nemáte prostředek a klíč instrumentace, postupujte podle [pokynů pro vytvoření nového prostředku](create-new-resource.md).
 2. Zkopírujte klíč instrumentace z prostředku, kde chcete odeslat telemetrii JavaScriptu.
 3. Přidejte sadu Application Insights JavaScript SDK do své webové stránky nebo aplikace pomocí jedné z následujících dvou možností:
-    * [Nastavení NPM](#npm-based-setup)
+    * [Nastavení npm](#npm-based-setup)
     * [Fragment kódu JavaScriptu](#snippet-based-setup)
 
 > [!IMPORTANT]
-> K přidání Application Insights JavaScript SDK do aplikace stačí použít jednu z níže uvedených metod. Použijete-li instalaci založenou na NPM, nepoužívejte instalaci založenou na fragmentu. To samé platí pro reverzní scénář při použití přístupu založeného na fragmentech, nepoužívejte také instalaci založenou na NPM. 
+> K přidání Application Insights JavaScript SDK do aplikace stačí použít jednu z níže uvedených metod. Použijete-li instalaci založenou na NPM, nepoužívejte instalaci založenou na fragmentu. To samé platí pro reverzní scénář při použití přístupu založeného na fragmentech, nepoužívejte také instalaci založenou na npm. 
 
-### <a name="npm-based-setup"></a>Nastavení založené na NPM
+### <a name="npm-based-setup"></a>nastavení založené na npm
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -64,7 +64,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
-Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Zde jsou některé z nich:
+Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Mezi ně patří:
 
 - **Nezachycené výjimky** v aplikaci, včetně informací o
     - Trasování zásobníku
@@ -101,19 +101,19 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey`.
 
-| Name | Výchozí | Popis |
+| Name (Název) | Výchozí | Popis |
 |------|---------|-------------|
-| InstrumentationKey | null | **Požadovanou**<br>Klíč instrumentace, který jste získali z Azure Portal. |
-| ID | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
+| instrumentationKey | platnost | **Požadovanou**<br>Klíč instrumentace, který jste získali z Azure Portal. |
+| ID | platnost | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
 | sessionRenewalMs | 1800000 | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. Výchozí hodnota je 30 minut. |
 | sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
 | maxBatchSizeInBytes | 10000 | Maximální velikost dávky telemetrie Pokud dávka tento limit překročí, pošle se hned a spustí se nová dávka. |
-| maxBatchInterval | 15000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
+| maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
 | disableExceptionTracking | false | Je-li nastavena hodnota true, výjimky nebudou shromažďovány. Výchozí hodnota je false. |
 | disableTelemetry | false | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
 | enableDebug | false | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>***Poznámka:*** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug`. |
-| loggingLevelConsole | 0,8 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
-| loggingLevelTelemetry | první | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
+| loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
+| loggingLevelTelemetry | 1\. místo | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
 | samplingPercentage | 100 | Procento událostí, které budou odeslány. Výchozí hodnota je 100, což znamená, že jsou odesílány všechny události. Tuto hodnotu nastavte, pokud chcete zachovat svůj limit dat pro aplikace ve velkém měřítku. |
 | autoTrackPageVisitTime | false | Pokud je hodnota true, v PageView je čas zobrazení předchozí instrumentované stránky sledován a odeslán jako telemetrie a pro aktuální PageView se spustí nový časovač. Výchozí hodnota je false. |
@@ -128,14 +128,14 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | disableFlushOnBeforeUnload | false | Výchozí hodnota je false. Je-li nastavena hodnota true, metoda flush nebude volána při triggerech události onBeforeUnload |
 | enableSessionStorageBuffer | true | Výchozí hodnota je true. Pokud je nastaveno na true, uloží se do úložiště relace vyrovnávací paměť s veškerou neodeslanou telemetrie. Vyrovnávací paměť se při načtení stránky obnoví. |
 | isCookieUseDisabled | false | Výchozí hodnota je false. Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z souborů cookie.|
-| cookieDomain | null | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
+| cookieDomain | platnost | Vlastní doména souborů cookie. To je užitečné, pokud chcete sdílet Application Insights soubory cookie mezi subdoménami. |
 | isRetryDisabled | false | Výchozí hodnota je false. Pokud je hodnota false, zkuste to znovu v 206 (částečný úspěch), 408 (timeout), 429 (příliš mnoho požadavků), 500 (interní chyba serveru), 503 (služba není dostupná) a 0 (offline, jenom pokud se zjistilo). |
 | isStorageUseDisabled | false | Pokud má hodnotu true, SDK nebude ukládat ani číst žádná data z místního úložiště a úložiště relací. Výchozí hodnota je false. |
 | isBeaconApiDisabled | true | Pokud má hodnotu false, SDK pošle veškerou telemetrii pomocí [rozhraní Beacon API](https://www.w3.org/TR/beacon) . |
 | onunloadDisableBeacon | false | Výchozí hodnota je false. Když se karta zavře, SDK pošle veškerou zbývající telemetrii pomocí [rozhraní API pro maják](https://www.w3.org/TR/beacon) . |
-| sdkExtension | null | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ext_javascript: 2.0.0). Výchozí hodnota je null. |
+| sdkExtension | platnost | Nastaví název rozšíření sady SDK. Jsou povoleny pouze abecední znaky. Název rozšíření se přidá jako předpona do značky AI. Internal. sdkVersion (například ext_javascript: 2.0.0). Výchozí hodnota je null. |
 | isBrowserLinkTrackingEnabled | false | Výchozí hodnota je false. Pokud má hodnotu true, SDK bude sledovat všechny požadavky na [propojení prohlížeče](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) . |
-| Identifikátor | null | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
+| appId | platnost | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
 | enableCorsCorrelation | false | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
 | namePrefix | Nedefinované | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie.
 | enableAutoRouteTracking | false | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy hash (`example.com/foo#bar`) se zaznamenávají také jako nová zobrazení stránky.
@@ -151,9 +151,9 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](#react-exte
 
 ## <a name="react-extensions"></a>Rozšíření reakce
 
-| SND |
+| Rozšíření |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Reaguje](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Reagovat nativní](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
@@ -176,7 +176,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analytics 
+### <a name="analytics"></a>Analýzy 
 
 Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním příkazu `where` `client_Type == "Browser"` zobrazíte pouze data ze sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
@@ -229,7 +229,7 @@ Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční 
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- Scénář NPM: voláním `downloadAndSetup` stáhnete úplný ApplicationInsights skript z CDN a inicializujete ho pomocí klíče instrumentace:
+- scénář npm: voláním `downloadAndSetup` stáhnete úplný ApplicationInsights skript z CDN a inicializujete ho pomocí klíče instrumentace:
 
    ```ts
    appInsights.downloadAndSetup({
@@ -253,7 +253,7 @@ I když se skript stahuje ze sítě CDN, veškeré sledování vaší stránky j
 
 ## <a name="browser-support"></a>Podpora prohlížeče
 
-![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![DOTAZY](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 Nejnovější ✔ | Nejnovější ✔ | 9 + ✔ | Nejnovější ✔ | Nejnovější ✔ |
 
@@ -261,8 +261,8 @@ Nejnovější ✔ | Nejnovější ✔ | 9 + ✔ | Nejnovější ✔ | Nejnověj�
 
 Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový kód nebo přispívala k projektu na [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-JS).
 
-## <a name="next"></a>Další kroky
-* [Sledovat využití](usage-overview.md)
+## <a name="next"></a> Další kroky
+* [Sledování využití](usage-overview.md)
 * [Vlastní události a metriky](api-custom-events-metrics.md)
-* [Sestavení-měření – učení](usage-overview.md)
+* [Sestavení vyhodnocení poučení](usage-overview.md)
 

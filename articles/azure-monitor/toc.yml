@@ -217,7 +217,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: Monitorování bez kódu
               items:
-                - name: Virtuální počítač Azure a škálovací sada virtuálních počítačů Azure
+                - name: Škálovací sada a virtuální počítač Azure
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -231,10 +231,10 @@
                 - name: Aplikace Kubernetes
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: Monitorování stavu
+                - name: Monitorování stavu (starší verze)
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: Monitorování stavu v2
+                - name: Místní servery
                   items:
                     - name: Přehled
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'

@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Health – data služby Health service není datum upozornění | Dokumentace Microsoftu
-description: Tento dokument popisuje příčinu výstrahy "data služby Health service není aktuální." a jak řešit potíže se.
+title: Azure AD Connect Health – data služby Health Service nejsou aktuální upozornění | Microsoft Docs
+description: Tento dokument popisuje příčinu upozornění "data služby Health Service nejsou aktuální" a jejich řešení.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -14,60 +14,60 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41c1c102e88e1712d561874aef87a6f22ed250a9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702629"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430214"
 ---
-# <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health service není aktuální výstrahy
+# <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health Service nejsou aktuální. upozornění
 
 ## <a name="overview"></a>Přehled
 
-Agents na vhodnost místních počítačů, které Azure AD Connect Health monitoruje pravidelně nahrávat data do službu Azure AD Connect Health. Pokud služba nepřijímá data z agenta, bude zastaralé informace, které se zobrazí na portálu. Abyste měli na očích problém, se vyvolat službu **data služby Health service není aktuální** upozornění. Tato výstraha se vygeneruje, když služba neobdržel kompletní data za poslední dvě hodiny.  
+Agenti na místních počítačích, které Azure AD Connect Health monitoruje pravidelně nahrávají data do služby Azure AD Connect Health. Pokud služba neobdrží data od agenta, informace, které portál prezentuje, budou zastaralé. Chcete-li tento problém zvýraznit, služba vyvolá **data služby Health Service neaktuální** výstrahy. Tato výstraha se vygeneruje, když služba nedostala dokončená data za poslední dvě hodiny.  
 
-- **Upozornění** výstraha o stavu je vyvoláno, pokud služba Health Service obdržela pouze **částečné** datové typy odeslaných ze serveru za posledních dvou hodin. Stav upozornění neaktivuje e-mailová oznámení nakonfigurované příjemcům. 
-- **Chyba** stav upozornění je vyvoláno, pokud služba Health Service nedostal žádné typy dat ze serveru za poslední dvě hodiny. Chyba stavu aktivuje upozornění e-mailová oznámení nakonfigurované příjemcům.
+- Výstraha stav **Upozornění** se aktivuje, pokud Health Service v posledních dvou hodinách přijaly jenom **částečné** datové typy odeslané ze serveru. Upozornění na stav upozornění neaktivuje e-mailová oznámení pro konfigurované příjemce. 
+- Výstraha o stavu **chyby** se aktivuje, pokud Health Service nedostal žádné datové typy ze serveru za poslední dvě hodiny. Výstraha o stavu chyby aktivuje e-mailová oznámení pro konfigurované příjemce.
 
-Služba načte data z agentů, které běží na místních počítačích, v závislosti na typu služby. V následující tabulce jsou uvedeny agenty, které běží na počítači, co dělají a datové typy, které generuje služba. V některých případech se několik služeb, které využívá řada v procesu, tak některé z nich může být nadměrné spotřeby. 
+Služba získá data z agentů, kteří běží na místních počítačích v závislosti na typu služby. Následující tabulka uvádí agenty, které jsou spuštěny v počítači, co dělají a typy dat, které služba generuje. V některých případech se v procesu účastní více služeb, takže některý z nich může být příčinou. 
 
-## <a name="understanding-the-alert"></a>Principy upozornění
+## <a name="understanding-the-alert"></a>Princip upozornění
 
-**Podrobnosti výstrahy** okno při výstrahy došlo k chybě a byl naposledy zjištěno. Proces na pozadí, který spouští každé dvě hodiny generuje a znovu vyhodnotí upozornění. V následujícím příkladu, počáteční došlo k výstraze na 03/10 v 9:59:00. Výstraha se pořád byly na 03/12 v 10:00 po upozornění byla vyhodnocena jako znovu. V okně také podrobnosti o čas, služba Health Service naposled přijal konkrétní datový typ. 
+V okně **Podrobnosti výstrahy** se dozvíte, kdy došlo k upozornění a byla naposledy zjištěna. Proces na pozadí, který se spouští každé dvě hodiny, vygeneruje a znovu vyhodnotí výstrahu. V následujícím příkladu se počáteční výstraha vyskytla v 03/10.9:59. Výstraha ještě existovala v 03/12 v 10:00 až do vyhodnocení výstrahy. V okně se zobrazí také informace o čase, kdy Health Service naposledy přijal konkrétní datový typ. 
  
- ![Podrobnosti výstrahy služby Azure AD Connect Health](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
+ ![Podrobnosti výstrahy Azure AD Connect Health](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-Následující tabulka mapuje na odpovídající typy požadované datové typy služeb:
+Následující tabulka mapuje typy služby na odpovídající požadované datové typy:
 
-| Typ služby | Agent (název služby Windows) | Účel | Datový typ vygeneruje  |
+| Typ služby | Agent (název služby systému Windows) | Účel | Generovaný datový typ  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (Sync) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďovat informace specifické pro službu AAD Connect (konektory, synchronizační pravidla, atd.) | AadSyncService-SynchronizationRules <br />  AadSyncService konektory <br /> AadSyncService-GlobalConfigurations  <br />  AadSyncService-RunProfileResults <br /> AadSyncService-ServiceConfigurations <br /> AadSyncService-ServiceStatus   |
-|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromáždit čítače výkonu specifické pro službu AAD Connect, trasování ETW, soubory | Čítač výkonu |
-| AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, replikační metadata |  - Adds-TopologyInfo-Json <br /> Běžné-TestData-Json (vytvoří výsledky testů)   | 
-|  | Služba monitorování AD DS pro Azure AD Connect Health | Shromáždit čítače výkonu specifické pro AD DS, trasování ETW, soubory | – Čítač výkonu  <br /> Běžné-TestData-Json (odešle výsledky testů)  |
-| AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testů) | 
-| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | Adfs-UsageMetrics |
-| | Služba monitorování AD FS pro Azure AD Connect Health | Shromáždit čítače výkonu specifické pro služby AD FS, trasování ETW, soubory | TestResult (odešle výsledky testů) |
+| Azure AD Connect (synchronizace) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďování informací specifických pro AAD Connect (konektory, synchronizační pravidla atd.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-konektory <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromažďování čítačů výkonu pro AAD Connect, trasování ETW, soubory | Čítač výkonu |
+| služba AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, metadata replikace |  -Přidat-TopologyInfo-JSON <br /> -Common-TestData-JSON (vytvoří výsledky testu)   | 
+|  | Služba monitorování AD DS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro přidání, trasování ETW, soubory | – Čítač výkonu  <br /> -Common-TestData-JSON (odesílá výsledky testu)  |
+| AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testu) | 
+| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | ADFS – UsageMetrics |
+| | Služba monitorování AD FS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro AD FS, trasování ETW, soubory | TestResult (nahrává výsledky testu) |
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží 
 
-Kroky potřebné k diagnostice problému je uveden níže. První je sada základní kontroly, které jsou společné pro všechny typy služeb. Následující tabulka, která obsahuje seznam konkrétní kroky pro každý typ služby a datovým typem. 
+Postup potřebný k diagnostice tohoto problému je uveden níže. První je sada základních kontrol, které jsou společné pro všechny typy služeb. 
 
 > [!IMPORTANT] 
-> Toto oznámení následuje Connect Health [zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy)
+> Tato výstraha následuje po připojení [zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy) stavu.
 
-* Ujistěte se, že jsou nainstalovány nejnovější verze agentů. Zobrazení [historie vydaných verzí](reference-connect-health-version-history.md). 
-* Ujistěte se, že jsou agenti Azure AD Connect Health služby **systémem** na počítači. Connect Health pro AD FS by měl mít například tři služby.
-  ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+* Ujistěte se, že jsou nainstalované nejnovější verze agentů. Zobrazit [historii verzí](reference-connect-health-version-history.md). 
+* Ujistěte se, že na počítači **běží** služby Azure AD Connect Health agenti. Například Connect Health for AD FS by měl mít tři služby.
+  ![Verify Azure AD Connect Health @ no__t-1
 
-* Ujistěte se, že se přenášejí prostřednictvím a vyhovět [části věnované požadavkům](how-to-connect-health-agent-install.md#requirements).
-* Použití [nástroj pro testování připojení](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) ke zjišťování problémů s připojením.
-* Pokud máte proxy server HTTP, postupujte podle těchto [kroky konfigurace](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Ujistěte se, že překročíte a splňujete [část požadavky](how-to-connect-health-agent-install.md#requirements).
+* Pomocí [nástroje test Connectivity](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) můžete zjistit problémy s připojením.
+* Pokud máte proxy server HTTP, postupujte podle těchto [kroků konfigurace](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
-## <a name="next-steps"></a>Další postup
-Pokud některý z výše uvedených kroků identifikovat problém, opravte ji a počkejte výstrahu, kterou chcete vyřešit. Proces oznámení na pozadí běží každé dvě hodiny, bude trvat až 2 hodiny tuto výstrahu vyřešíte. 
+## <a name="next-steps"></a>Další kroky
+Pokud některý z výše uvedených kroků identifikoval problém, vyřešte ho a počkejte na vyřešení výstrahy. Proces na pozadí výstrahy se spouští každé 2 hodiny, takže bude trvat až 2 hodiny, než se výstraha vyřeší. 
 
-* [Zásady uchovávání dat služby Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)
+* [Azure AD Connect Health zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy)
 * [Azure AD Connect Health – nejčastější dotazy](reference-connect-health-faq.md)

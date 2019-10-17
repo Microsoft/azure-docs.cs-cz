@@ -1,5 +1,5 @@
 ---
-title: Active Learning – Přizpůsobte si
+title: Aktivní a neaktivní události – Přizpůsobte si
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663710"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429051"
 ---
-# <a name="active-learning-and-learning-policies"></a>Zásady aktivního učení a učení 
+# <a name="active-and-inactive-events"></a>Aktivní a neaktivní události
 
-Když vaše aplikace volá rozhraní API pro řazení, dostanete si rozměr obsahu. Obchodní logika může toto pořadí použít k určení, zda by měl být obsah zobrazen uživateli. Když zobrazíte seřazený obsah, jedná se o _aktivní_ událost pořadí. Když aplikace nezobrazuje daný obsah, jedná se o _neaktivní_ událost pořadí. 
+Když vaše aplikace volá rozhraní API pro řazení, dostanete akci, kterou by měla aplikace zobrazit v poli rewardActionId.  Od tohoto okamžiku bude přizpůsobovat, že bude volání bez záměna u stejného ID události. Skóre odměňování se použije ke školení modelu, který se použije pro budoucí volání pořadí. Pokud se pro ID události žádné volání bez jakýchkoli odměňování, použije se defaul. Výchozí ceny jsou zřízené na webu Azure Portal.
 
-K přizpůsobení se vrátí informace o události aktivního pořadí. Tyto informace se používají k pokračování v školení modelu prostřednictvím aktuálních zásad učení.
-
-## <a name="active-events"></a>Aktivní události
-
-Aktivní události by se měly vždy zobrazit uživateli a k uzavření výukové smyčky by mělo být vráceno volání odměny. 
-
-### <a name="inactive-events"></a>Neaktivní události 
-
-Neaktivní události by neměly měnit podkladový model, protože uživatel neměl možnost zvolit si z hodnoceného obsahu.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Nevytvářejte výuku s neaktivními událostmi Rank 
-
-U některých aplikací možná budete muset volat rozhraní API řazení, aniž byste věděli, jestli aplikace zobrazí výsledky uživateli. 
-
-K tomu dojde v těchto případech:
+V některých případech může být nutné, aby aplikace vyvolala rozsah hodnocení, i když bude výsledek použit nebo displayedn uživateli. K tomu může dojít v situacích, kdy se například stránka vykreslení propagovaného obsahu přepíše pomocí marketingové kampaně. Pokud se výsledek volání pořadí nikdy nepoužil a uživatel ho nikdy nezískal, je to nesprávný postup pro jeho vyučování bez jakýchkoli jakýchkoli odměna, nula nebo jinak.
+K tomu obvykle dochází v těchto případech:
 
 * Možná budete předem vykreslovat některé uživatelské rozhraní, které uživatel může nebo nemusí zobrazit. 
 * Vaše aplikace může provádět prediktivní přizpůsobení, ve kterém se zadávají volání pořadí s méně kontextem v reálném čase a jejich výstup může nebo nemusí být aplikací používán. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Zakázat aktivní učení pro události neaktivního pořadí během volání pořadí
+V těchto případech je vhodným způsobem použití přizpůsobování volání řazení, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost žádnou odměnu a nepoužije výchozí odměnu. Letr v obchodní logice, pokud aplikace používá informace ze volání pořadí, stačí _aktivovat_ událost. Od okamžiku, kdy je událost aktivní, přizpůsobené aplikace pro událost očekává nebo použije výchozí odměnu, pokud není k dispozici explicitní volání rozhraní API pro odměnu.
 
-Chcete-li zakázat automatické učení, zavolejte `learningEnabled = False`pořadí pomocí.
+## <a name="get-inactive-events"></a>Získat neaktivní události
 
-Pokud pro danou dobu odešlete nějakou odměnu, bude učení pro neaktivní událost implicitně aktivované.
+Chcete-li zakázat školení pro událost, zavolejte pořadí s `learningEnabled = False`.
 
-## <a name="learning-policies"></a>Zásady učení
+Výuka k neaktivní události se implicitně aktivuje, pokud odešlete nějakou odměnu pro ID události, nebo pro tento ID události zavoláte rozhraní API `activate`.
 
-Zásady učení určují konkrétní *parametry* pro školení modelů. Dva modely stejných dat, které jsou vyškolené v různých zásadách učení, se budou chovat jinak.
+## <a name="learning-settings"></a>Nastavení učení
 
-### <a name="importing-and-exporting-learning-policies"></a>Import a export zásad učení
+Nastavení učení určuje konkrétní *parametry* pro školení modelů. Dva modely stejných dat, které jsou vyškolené v různých nastaveních výuky, se budou lišit.
+
+### <a name="import-and-export-learning-policies"></a>Zásady učení pro import a export
 
 Soubory zásad učení můžete importovat a exportovat z Azure Portal. To vám umožňuje uložit existující zásady, otestovat je, nahradit je a archivovat je v rámci správy zdrojového kódu jako artefakty pro budoucí referenci a audit.
 

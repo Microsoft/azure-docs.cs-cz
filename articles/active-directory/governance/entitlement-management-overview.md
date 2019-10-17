@@ -1,5 +1,5 @@
 ---
-title: Co je Správa nároků Azure AD? (Preview) – Azure Active Directory
+title: Co je správa nároků Azure AD? (Preview) – Azure Active Directory
 description: Získejte přehled o Azure Active Directory správě nároků a o tom, jak ho můžete používat ke správě přístupu ke skupinám, aplikacím a webům SharePointu Online pro interní a externí uživatele.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,19 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827144"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430309"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa nároků Azure AD? Tisk
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je správa nároků Azure AD? (Preview)
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
-> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Zaměstnanci v organizacích potřebují k provádění svých úloh přístup k různým skupinám, aplikacím a webům. Správa tohoto přístupu je náročná. Ve většině případů není k dispozici žádný uspořádaný seznam všech prostředků, které uživatel pro projekt potřebuje. Vedoucí projektu má dobrý přehled o potřebných materiálech, zúčastněných jednotlivcůch a o tom, jak dlouho projekt bude trvat. Vedoucí projektu ale obvykle nemá oprávnění ke schválení nebo udělení přístupu jiným uživatelům. Tento scénář je složitější při pokusu o spolupráci s externími osobami nebo společnostmi.
 
@@ -46,7 +46,7 @@ Podnikové organizace často čelí problémům při správě přístupu k prost
 - Uživatelé můžou mít potíže při hledání správných jednotlivců nebo správných prostředků.
 - Jakmile uživatelé naleznou a získají přístup k prostředku, můžou mít přístup k delšímu, než je nutné pro obchodní účely.
 
-Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiného adresáře, například externích uživatelů, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Příklad:
+Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiného adresáře, například externích uživatelů, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Například:
 
 - Organizace nemusí znát všechny konkrétní uživatele v jiných adresářích, aby je mohli pozvat.
 - I v případě, že organizace byli schopni pozvat tyto uživatele, organizace si nemusí konzistentně spravovat přístup všech uživatelů.
@@ -77,7 +77,7 @@ Tady jsou typy prostředků, ke kterým můžete spravovat přístup pomocí spr
 - Podnikové aplikace Azure AD, včetně aplikací SaaS a aplikací integrovaných s vlastními, které podporují federaci nebo zřizování
 - Weby a kolekce webů SharePointu Online
 
-Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupiny Office 365.  Příklad:
+Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupiny Office 365.  Například:
 
 - Uživatelům můžete udělit licence pro systém Microsoft Office 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.
@@ -92,7 +92,7 @@ Balíčky pro přístup také obsahují jednu nebo více *zásad*. Zásady defin
 
 Pomocí balíčku pro přístup a jeho zásad definuje správce balíčků přístup:
 
-- Prostředky
+- Materiály
 - Role, které uživatelé potřebují pro prostředky
 - Interní uživatelé a partnerské organizace externích uživatelů, kteří mají nárok na přístup
 - Proces schvalování a uživatelé, kteří můžou schválit nebo odepřít přístup
@@ -105,16 +105,6 @@ Následující diagram znázorňuje příklad různých prvků ve správě náro
 
 ![Přehled správy nároků](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Externí uživatelé
-
-Pokud používáte prostředí [pro pozvání B2B (Business-to-Business) pro Azure AD](../b2b/what-is-b2b.md) , musíte už znát e-mailové adresy externích uživatelů typu Host, které chcete uvést do svého adresáře prostředků a pracovat s. To funguje skvěle, když pracujete na kratším nebo krátkodobém projektu a už znáte všechny účastníky, ale to je těžké spravovat, pokud máte spoustu uživatelů, se kterými chcete pracovat, nebo pokud se účastníci v průběhu času změnili.  Můžete například pracovat s jinou organizací a mít jeden kontaktní bod s touto organizací, ale v průběhu času budou mít přístup i další uživatelé z této organizace.
-
-Díky správě nároků můžete definovat zásadu, která umožňuje uživatelům ze zadaných organizací, které také využívají Azure AD, vyžadovat balíček přístupu. Můžete určit, jestli se vyžaduje schválení, a datum vypršení platnosti pro přístup. Pokud se vyžaduje schválení, můžete také určit jako schvalovatele jednoho nebo více uživatelů z externí organizace, kterou jste si vyžádali – protože budou mít pravděpodobně jistotu, ke kterým externím uživatelům z organizace potřebuje přístup. Po nakonfigurování přístupového balíčku můžete poslat kontaktní osobě odkaz na přístupovou osobu v externí organizaci. Tento kontakt může sdílet s ostatními uživateli v externí organizaci a může použít tento odkaz k vyžádání přístupového balíčku.  Tento odkaz můžou použít i uživatelé z této organizace, kteří už byli pozváni do vašeho adresáře.
-
-Pokud je žádost schválena, Správa oprávnění zřídí uživatele, který má nezbytný přístup, který může zahrnovat pozvání uživatele, pokud ještě nejsou ve vašem adresáři. Azure AD vytvoří pro ně automaticky účet B2B.  Všimněte si, že správce mohl dříve omezit, které organizace jsou povolené pro spolupráci, nastavením [seznamu povolených nebo zakázaných aplikací B2B](../b2b/allow-deny-list.md) povolit nebo zablokovat pozvánky jiným organizacím.  Pokud uživatel není povolený seznamem povolených nebo blokovaných uživatelů, pak nebude pozván.
-
-Vzhledem k tomu, že nechcete, aby byl externí uživatel přístupný k poslednímu typu navždy, zadejte v zásadách datum vypršení platnosti, například 180 dní. Pokud se jejich přístup neobnoví, Správa oprávnění po 180 dnů odebere veškerý přístup spojený s tímto balíčkem přístupu.  Pokud uživatel, který byl pozván prostřednictvím správy nároků, nemá žádné další přiřazení balíčků přístupu, pak když ztratí své poslední přiřazení, účet B2B se zablokuje přihlášení po dobu 30 dnů a následně se odebere.  Tím se zabrání šíření zbytečných účtů.  
-
 ## <a name="terminology"></a>Terminologie
 
 Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít následující výrazy.
@@ -124,11 +114,11 @@ Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít n�
 | Správa nároků | Služba, která přiřazuje, odvolává a spravuje balíčky přístupu. |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle projde pracovním postupem. |
-| politických | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
-| katalog | Kontejner souvisejících prostředků a přístupových balíčků. |
+| policy | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
+| zařazení | Kontejner souvisejících prostředků a přístupových balíčků. |
 | Katalog pro obecné | Integrovaný katalog, který je vždy k dispozici. Pokud chcete přidat prostředky do katalogu obecné, vyžaduje určitá oprávnění. |
-| prostředek | Prostředek nebo služba (například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online), ke kterým může uživateli být uděleno oprávnění. |
-| typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
+| Partner | Prostředek nebo služba (například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online), ke kterým může uživateli být uděleno oprávnění. |
+| Typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
 | role prostředku | Kolekce oprávnění přidružených k prostředku |
 | Adresář prostředků | Adresář, který obsahuje jeden nebo více prostředků ke sdílení. |
 | přiřazení uživatelé | Přiřazení balíčku přístupu uživateli, aby měl uživatel všechny role prostředků tohoto balíčku přístupu. |
@@ -155,4 +145,4 @@ Informace o tom, jak přiřadit licence uživatelům, najdete v tématu [přiřa
 ## <a name="next-steps"></a>Další kroky
 
 - [Kurz: vytvoření prvního balíčku pro přístup](entitlement-management-access-package-first.md)
-- [Běžné scénáře](entitlement-management-scenarios.md)
+- [Obvyklé scénáře](entitlement-management-scenarios.md)

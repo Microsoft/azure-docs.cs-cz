@@ -42,6 +42,8 @@
           items:
             - name: Delegování na autory katalogu
               href: entitlement-management-delegate-catalog.md
+            - name: Řízení přístupu pro externí uživatele
+              href: entitlement-management-external-users.md
             - name: Zobrazení sestav a protokolů
               href: entitlement-management-reports.md
             - name: Řešení potíží
@@ -56,7 +58,19 @@
           items:
             - name: Vytvoření nového přístupového balíčku
               href: entitlement-management-access-package-create.md
-            - name: Úprava přístupového balíčku
+            - name: Sdílení odkazu na přístupový balíček
+              href: entitlement-management-access-package-settings.md
+            - name: Změna rolí prostředků
+              href: entitlement-management-access-package-resources.md
+            - name: Změna nastavení žádostí a schválení
+              href: entitlement-management-access-package-request-policy.md
+            - name: Změnit nastavení životního cyklu
+              href: entitlement-management-access-package-lifecycle-policy.md
+            - name: Zobrazení a správa žádostí
+              href: entitlement-management-access-package-requests.md
+            - name: 'Zobrazení, přidání a odebrání přiřazení'
+              href: entitlement-management-access-package-assignments.md
+            - name: Skrytí nebo odstranění
               href: entitlement-management-access-package-edit.md
         - name: Schvalovatelé
           items:

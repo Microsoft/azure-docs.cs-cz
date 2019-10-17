@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b25a002cb1e2563ab97a2081c6b6a05362b66779
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338517"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388095"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
+# <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
 Moderní čtečka SDK je knihovna JavaScriptu, která umožňuje integrovat moderní čtečku do vaší webové aplikace.
 
-# <a name="functions"></a>Funkce
+# <a name="functions"></a>Functions
 
 Sada SDK zpřístupňuje funkce:
 
@@ -41,14 +41,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `token` | string | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | string | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelný parametr. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
 
-### <a name="returns"></a>Vrací
+### <a name="returns"></a>Vrátí
 
 Vrátí `Promise<HTMLDivElement>`, který se vyřeší, když se načtou moderní čtecí zařízení. @No__t-0 se přeloží na element `div`, jehož jediným podřízeným prvkem je prvek `iframe`, který obsahuje stránku s moderním čtecím modulem.
 
@@ -80,11 +80,11 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Name | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
-| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Volitelný parametr. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Volitelné. |
 
-## <a name="types"></a>Typy
+## <a name="types"></a>Druhy
 
 ### <a name="content"></a>Obsah
 
@@ -114,7 +114,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | Typ MIME | Popis |
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
-| text/html | Obsah HTML. [Víc se uč](#html-support)|
+| text/HTML | Obsah HTML. [Další informace](#html-support)|
 | Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
@@ -124,7 +124,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
 | Neuspořádané seznamy | Disk, kruh, čtverec |
 | Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
-| Hypertextové odkazy | Připravujeme |
+| Vytváření | Už brzo |
 
 Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 
@@ -171,7 +171,7 @@ Obsahuje informace o chybě.
 | Kód | Popis |
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný, podrobnosti naleznete `message`. |
-| časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 
@@ -189,7 +189,7 @@ Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tl
 
 | Atribut | Popis |
 | --------- | ----------- |
-| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text`, nebo `iconAndText`. Výchozí hodnota je `icon`. |
+| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text` nebo `iconAndText`. Výchozí hodnota je `icon`. |
 | `data-locale` | Nastaví národní prostředí. Například `en-US` nebo `fr-FR`. Výchozí hodnota je English `en`. |
 | `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
@@ -206,4 +206,4 @@ K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnověj�
 ## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
-* [Rychlé zprovoznění: Vytvoření webové aplikace, která spustí moderní čtečku (C#) ](./quickstart.md)
+* [Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstart.md)

@@ -9,20 +9,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899414"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388118"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Referenční dokumentace sady pro moderní čtečku
+# <a name="immersive-reader-sdk-reference-for-ios"></a>Referenční dokumentace sady pro moderní čtečku pro iOS
 
 Moderní čtečka SDK pro iOS je CocoaPod, která umožňuje integrovat moderní čtečku do vaší aplikace pro iOS.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
-Sada SDK zpřístupňuje jednu funkci, `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
+Sada SDK zpřístupňuje jedinou funkci `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
 ### <a name="launchimmersivereader"></a>launchImmersiveReader
 
@@ -34,17 +34,17 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Parametry
 
-| Name | Typ | Popis |
+| Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | Navigační kontroler pro aplikaci iOS, ze které se volá funkce |
 | `token` | Řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `subdomain` | Řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
-| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelný parametr. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
 | `onSuccess` | ()-> void | Uzávěr, který je vyvolán při úspěšném spuštění moderního čtecího zařízení. |
-| `onFailure` | (chyba _: [Chyba](#error)) -> void | Uzávěr, který je vyvolán, když se nepovede načíst moderní čtecí zařízení. Tento zavírací den vrátí [`Error`](#error) objekt, který představuje kód chyby a chybovou zprávu přidruženou k selhání. Další informace najdete v tématu [kódy chyb](#error-codes). |
+| `onFailure` | (chyba _: [Chyba](#error))-> void | Uzávěr, který je vyvolán, když se nepovede načíst moderní čtecí zařízení. Tento uzávěr vrátí objekt [`Error`](#error) , který představuje kód chyby a chybovou zprávu přidruženou k selhání. Další informace najdete v tématu [kódy chyb](#error-codes). |
 
-## <a name="types"></a>Typy
+## <a name="types"></a>Druhy
 
 ### <a name="content"></a>Obsah
 
@@ -90,17 +90,17 @@ struct Error {
 
 | Kód | Popis |
 | ---- | ----------- |
-| BadArgument | Zadaný argument je neplatný. Podrobnosti `message` naleznete v tématu. |
-| časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| BadArgument | Zadaný argument je neplatný, podrobnosti naleznete `message`. |
+| prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
-| InternalError | Došlo k vnitřní chybě v rámci kontroleru zobrazení moderního čtečky. Podrobnosti `message` najdete v tématu.|
+| InternalError | Došlo k vnitřní chybě v rámci kontroleru zobrazení moderního čtečky. Podrobnosti najdete v tématu `message`.|
 
 ## <a name="os-version-support"></a>Podpora verzí operačního systému
 
 Sada moderní čtečky iOS SDK je podporovaná pro iOS 9,0 nebo novější, na iPadu a na iPhonu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte [sadu iOS SDK pro moderní čtečku na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS)
-* [Rychlé zprovoznění: Vytvořte aplikaci pro iOS, která spustí moderní čtečku (SWIFT).](./ios-quickstart.md)
+* [Rychlý Start: Vytvoření aplikace pro iOS, která spustí moderní čtečku (SWIFT)](./ios-quickstart.md)

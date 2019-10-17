@@ -445,18 +445,20 @@
           items:
             - name: Přehled OpenShiftu
               href: openshift-get-started.md
-            - name: Požadavky OpenShiftu
-              href: openshift-prerequisites.md
-            - name: OpenShift Container Platform
-              href: openshift-container-platform.md
-            - name: OpenShift na Marketplace se samosprávou
-              href: openshift-marketplace-self-managed.md
+            - name: OpenShift Container Platform 4.x
+              href: openshift-container-platform-4x.md
+            - name: Požadavky pro OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x.md
+            - name: Marketplace OpenShift Container Platform 3.11 se samosprávou
+              href: openshift-container-platform-3x-marketplace-self-managed.md
             - name: Azure Stack
               href: openshift-azure-stack.md
-            - name: Úlohy OpenShiftu po nasazení
-              href: openshift-post-deployment.md
-            - name: Řešení potíží s nasazeními
-              href: openshift-troubleshooting.md
+            - name: Úlohy po nasazení OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: Řešení potíží s nasazením OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x-troubleshooting.md
         - name: SAP v Azure
           href: ../workloads/sap/get-started.md
         - name: Oracle
