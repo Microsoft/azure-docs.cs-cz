@@ -17,14 +17,14 @@ ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329871"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435515"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Pythonem
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
 
 V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
@@ -48,7 +48,7 @@ Následující příklad používá *PIP3* pro python3 k instalaci balíčku Red
     pip3 install redis
 ```
 
-![Instalace redis-py](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Nainstalujte rozhraní Redis-py Python do Azure cache pro Redis.](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
@@ -100,7 +100,7 @@ for c in result:
 
 Spusťte skript s Pythonem.
 
-![Dokončení testu Pythonu](./media/cache-python-get-started/cache-python-completed.png)
+![Spuštění skriptu Pythonu pro otestování přístupu k mezipaměti v Azure cache pro Redis](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -117,7 +117,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **
 
 Do textového pole **filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
 
-![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Odstranění skupiny prostředků pro rychlý Start pro Azure cache pro Redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
 

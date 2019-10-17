@@ -10,23 +10,24 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567540"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431292"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Odstranění podsítě po odstranění spravované instance Azure SQL Database
 
 Tento článek poskytuje pokyny k ručnímu odstranění podsítě po odstranění poslední Azure SQL Database spravované instance, která je v ní umístěná.
 
-SQL Database používá [virtuální cluster](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) k zahrnutí odstraněné spravované instance. Virtuální cluster trvá 12 hodin od odstranění instance a umožní vám rychle vytvořit spravované instance ve stejné podsíti. Za udržování prázdného virtuálního clusteru se neúčtují žádné poplatky. Během této doby není možné odstranit podsíť přidruženou k virtuálnímu clusteru.
+Spravované instance se nasazují do [virtuálních clusterů](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture). Každý virtuální cluster je přidružen k podsíti. Po uplynutí 12 hodin od posledního odstranění instance bude virtuální cluster dál používat k tomu, aby bylo možné rychleji vytvořit spravované instance ve stejné podsíti. Za udržování prázdného virtuálního clusteru se neúčtují žádné poplatky. Během této doby není možné odstranit podsíť přidruženou k virtuálnímu clusteru.
 
-Pokud nechcete čekat 12 hodin a chcete hned odstranit virtuální cluster a jeho podsíť, můžete to udělat ručně. Odstraňte virtuální cluster ručně pomocí Azure Portal nebo rozhraní API pro virtuální clustery.
+Pokud nechcete čekat 12 hodin a chcete před tím, než budete virtuální cluster a jeho podsíť odstranit dřív, můžete to udělat ručně. Odstraňte virtuální cluster ručně pomocí Azure Portal nebo rozhraní API pro virtuální clustery.
 
-> [!NOTE]
-> Virtuální cluster by neměl obsahovat žádné spravované instance, aby bylo odstranění úspěšné.
+> [!IMPORTANT]
+> - Virtuální cluster by neměl obsahovat žádné spravované instance, aby bylo odstranění úspěšné. 
+> - Odstranění virtuálního clusteru je dlouhodobě běžící operace po dobu přibližně 1,5 hodin (viz [operace správy spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) a aktuální čas odstranění virtuálního clusteru), během kterých se virtuální cluster na portálu stále zobrazuje. proces je dokončený.
 
 ## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Odstranit virtuální cluster z Azure Portal
 
@@ -38,10 +39,10 @@ Až vyhledáte virtuální cluster, který chcete odstranit, vyberte tento prost
 
 ![Snímek obrazovky řídicího panelu virtuálních clusterů Azure Portal s zvýrazněnou možností odstranit](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-V oblasti oznámení Azure Portal se zobrazí potvrzení, že se virtuální cluster odstranil. Úspěšné odstranění virtuálního clusteru okamžitě uvolní podsíť pro opakované použití.
+Oznámení o Azure Portal vám ukáže potvrzení, že žádost o odstranění virtuálního clusteru se úspěšně odeslala. Operace odstranění bude trvat přibližně 1,5 hodin, během kterých bude virtuální cluster stále viditelný na portálu. Až se proces dokončí, virtuální cluster se už nebude zobrazovat a k opakovanému použití se uvolní přidružená podsíť.
 
 > [!TIP]
-> Pokud se ve virtuálním clusteru nezobrazí žádné spravované instance a virtuální cluster nemůžete odstranit, ujistěte se, že neprobíhá nasazení probíhající instance. To zahrnuje zahájená a zrušená nasazení, která stále probíhá. Kontrola nasazení skupiny prostředků, na kterou se instance nasadila, bude označovat, že nasazení probíhá. V takovém případě můžete očekávat, že nasazení bude dokončeno, odstranit spravovanou instanci a pak virtuální cluster.
+> Pokud se ve virtuálním clusteru nezobrazí žádné spravované instance a virtuální cluster nemůžete odstranit, ujistěte se, že neprobíhá nasazení probíhající instance. To zahrnuje zahájená a zrušená nasazení, která stále probíhá. Důvodem je, že tyto operace budou stále používat virtuální cluster, protože ho zamkne před odstraněním. Kontrola nasazení skupiny prostředků, na kterou se instance nasadila, bude označovat, že nasazení probíhá. V takovém případě počkejte, než se nasazení dokončí, odstraňte spravovanou instanci a pak virtuální cluster.
 
 ## <a name="delete-virtual-cluster-by-using-the-api"></a>Odstranění virtuálního clusteru pomocí rozhraní API
 

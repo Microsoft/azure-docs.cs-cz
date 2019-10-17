@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303526"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430518"
 ---
-# <a name="what-is-passwordless"></a>Co je přístup bez hesla?
+# <a name="passwordless-authentication-options"></a>Možnosti ověřování s heslem
 
 Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé získají frustrovaní s dodatečnou vrstvou a zapamatují si jejich hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co jste vy nebo něco věděli.
 
 |   | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
-| Bez hesla | Telefonní nebo bezpečnostní klíč | Biometrika nebo PIN |
+| Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
-Každá organizace má při ověřování jiné požadavky. Microsoft v současné době nabízí Windows Hello pro naše počítače s Windows. Přidáváme aplikaci Microsoft Authenticator a bezpečnostní klíče FIDO2 k rodině, která nepoužívá hesla.
+Každá organizace má při ověřování jiné požadavky. Microsoft nabízí tři možnosti ověřování s nehesly:
+
+- Windows Hello pro firmy 
+- Aplikace Microsoft Authenticator 
+- FIDO2 klíče zabezpečení
+
+![Ověřování: zabezpečení a pohodlí](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Windows Hello pro firmy 
+
+Windows Hello pro firmy je ideální pro informační pracovníky, kteří mají vlastní určený počítač s Windows. Biometrika a kód PIN jsou přímo vázané na počítač uživatele, který brání přístupu od někoho jiného než vlastník. S integrací infrastruktury veřejných klíčů a integrovanou podporou jednotného přihlašování (SSO) nabízí Windows Hello pro firmy jednoduchou a pohodlnou metodu pro bezproblémové přístup k podnikovým prostředkům místně a v cloudu.
+
+[Průvodce plánováním](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) Windows Hello pro firmy se dá využít k rozhodování o typu nasazení Windows Hello pro firmy a možnostech, které budete muset vzít v úvahu.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
 
@@ -44,7 +56,7 @@ Ve verzi Public Preview můžou zaměstnanci použít externí bezpečnostní kl
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-I když existuje mnoho klíčů, které jsou FIDO2 certifikovány nástrojem FIDO Alliance, společnost Microsoft vyžaduje, aby dodavatel implementoval některá volitelná rozšíření FIDO2 CTAP pro zajištění maximálního zabezpečení a nejlepšího prostředí.
+I když je k dispozici mnoho klíčů, které jsou FIDO2 certifikovány nástrojem FIDO Alliance, společnost Microsoft vyžaduje některá volitelná rozšíření FIDO2 specifikace pro klienta na protokol CTAP (klient-to-Authenticator), které má dodavatel implementovat, aby bylo zajištěno maximální zabezpečení a nejlepší Využij.
 
 Bezpečnostní klíč **musí** implementovat následující funkce a rozšíření od protokolu FIDO2 CTAP, aby byl kompatibilní s Microsoftem:
 

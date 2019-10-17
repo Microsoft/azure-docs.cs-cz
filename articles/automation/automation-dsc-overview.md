@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061385"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429401"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
-Konfigurace stavu Azure Automation je služba Azure, která umožňuje zapisovat, spravovat a kompilovat konfigurace požadovaného stavu prostředí PowerShell, importovat [prostředky DSC](/powershell/dsc/resources)a [](/powershell/dsc/configurations)přiřazovat konfigurace cílovým uzlům, a to vše v nástroji. cloudu.
+Konfigurace stavu Azure Automation je služba Azure, která umožňuje zapisovat, spravovat a [kompilovat konfigurace požadovaného](/powershell/scripting/dsc/configurations/configurations)stavu prostředí PowerShell, importovat [prostředky DSC](/powershell/scripting/dsc/resources/resources)a přiřazovat konfigurace cílovým uzlům, a to vše v nástroji. cloudu.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Proč používat konfiguraci stavu Azure Automation
 
@@ -27,11 +27,11 @@ Konfigurace stavu Azure Automation poskytuje několik výhod oproti použití DS
 
 ### <a name="built-in-pull-server"></a>Integrovaný server pro vyžádání obsahu
 
-Konfigurace stavu Azure Automation poskytuje server vyžádané replikace DSC, který se podobá [funkci Windows DSC-Service](/powershell/dsc/pullserver) , aby cílové uzly automaticky přijímaly konfigurace, splňovaly požadovaný stav a nahlásili zpět na dodržování předpisů. Integrovaný server vyžádané replikace v Azure Automation eliminuje nutnost nastavit a spravovat vlastní server vyžádané replikace. Azure Automation může cílit na virtuální nebo fyzické počítače s Windows nebo Linux, v cloudu i v místním prostředí.
+Konfigurace stavu Azure Automation poskytuje server vyžádané replikace DSC, který se podobá [funkci Windows DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) , aby cílové uzly automaticky přijímaly konfigurace, splňovaly požadovaný stav a nahlásili zpět na dodržování předpisů. Integrovaný server vyžádané replikace v Azure Automation eliminuje nutnost nastavit a spravovat vlastní server vyžádané replikace. Azure Automation může cílit na virtuální nebo fyzické počítače s Windows nebo Linux, v cloudu i v místním prostředí.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Správa všech artefaktů DSC
 
-Konfigurace stavu Azure Automation přináší ke [konfiguraci požadovaného stavu prostředí PowerShell](/powershell/dsc/overview) stejnou vrstvu správy jako Azure Automation nabídky pro skriptování prostředí PowerShell.
+Konfigurace stavu Azure Automation přináší ke [konfiguraci požadovaného stavu prostředí PowerShell](/powershell/scripting/dsc/overview/overview) stejnou vrstvu správy jako Azure Automation nabídky pro skriptování prostředí PowerShell.
 
 Z Azure Portal nebo z PowerShellu můžete spravovat všechny konfigurace DSC, prostředky a cílové uzly.
 
@@ -39,9 +39,9 @@ Z Azure Portal nebo z PowerShellu můžete spravovat všechny konfigurace DSC, p
 
 ### <a name="import-reporting-data-into-azure-monitor-logs"></a>Importovat data sestavy do protokolů Azure Monitor
 
-Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Informace o tom, jak odeslat údaje o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v tématu předávat data pro sestavy o stavu [dopřed Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
+Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Informace o tom, jak odeslat údaje o stavu konfigurace stavu do pracovního prostoru Log Analytics, najdete v tématu [předávat data pro sestavy o stavu dopřed Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Při použití konfigurace stavu Azure Automation (DSC) Vezměte v úvahu následující požadavky.
 
@@ -49,12 +49,12 @@ Při použití konfigurace stavu Azure Automation (DSC) Vezměte v úvahu násle
 
 Pro uzly s Windows se podporují tyto verze:
 
-- Windows Server. 2019
+- Windows Server 2019
 - Windows Server 2016
-- Windows Server 2012R2
+- 2012R2 Windows serveru
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
-- Windows 10
+- Windows 10
 - Windows 8.1
 - Windows 7
 
@@ -74,10 +74,10 @@ Pro všechny uzly Linux běžící v Azure se během připojování nainstaluje 
 
 Pokud jsou uzly umístěny v privátní síti, pro konfiguraci stavu (DSC) pro komunikaci se službou Automation jsou vyžadovány následující porty a adresy URL:
 
-* Port: Pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
+* Port: odchozí internetový přístup vyžaduje jenom TCP 443.
 * Globální adresa URL: *. azure-automation.net
 * Globální adresa URL US Gov – Virginie: *. azure-automation.us
-* Služba agenta: https://\<ID pracovního prostoru\>. agentsvc.Azure-Automation.NET
+* Služba agenta: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
 
 To umožňuje síťové připojení pro spravovaný uzel ke komunikaci s Azure Automation.
 Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), budete také muset u těchto uzlů povolený přenos.
@@ -99,21 +99,21 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
-| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Středozápadní USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| USA – východ   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| Východ USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
+| Střední Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| USA – Virginie | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby [](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru ve službě Stažení softwaru.
+Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
 
 > [!NOTE]
 > Soubor XML IP adresy datacentra Azure obsahuje seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor zahrnuje výpočetní prostředky, SQL a rozsahy úložiště.
@@ -122,11 +122,11 @@ Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služ
 >
 > Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
 - Referenční informace k rutinám PowerShellu najdete v tématu [rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation) .
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/) .
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu průběžné [nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .
+- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí Azure Automation konfigurace stavu a čokolády](automation-dsc-cd-chocolatey.md) .

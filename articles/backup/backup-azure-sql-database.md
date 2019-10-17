@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958465"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437834"
 ---
-# <a name="about-sql-server-backup-in-azure-vms"></a>Informace o SQL Server Backup ve virtuálních počítačích Azure
+# <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
 SQL Server databáze jsou kritické úlohy, které vyžadují nízký cíl bodu obnovení (RPO) a dlouhodobé uchovávání. Můžete zálohovat SQL Server databáze běžící na virtuálních počítačích Azure pomocí [Azure Backup](backup-overview.md).
 
@@ -24,7 +24,7 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 
 * Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úloh pomocí názvu `AzureBackupWindowsWorkload`.
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
-* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup vytvoří účet `NT SERVICE\AzureWLBackupPluginSvc`. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Azure Backup využívá účet `NT AUTHORITY\SYSTEM` pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
+* Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup vytvoří účet `NT SERVICE\AzureWLBackupPluginSvc`. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Účet `NT SERVICE\AzureWLBackupPluginSvc` je [účet virtuální služby](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), a proto nevyžaduje žádnou správu hesel. Azure Backup využívá účet `NT AUTHORITY\SYSTEM` pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](#set-vm-permissions).
 * Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
@@ -42,7 +42,7 @@ Než začnete, ověřte následující:
 
 ## <a name="scenario-support"></a>Podpora scénářů
 
-**Pracovníky** | **Zobrazí**
+**Podpora** | **Podrobnosti**
 --- | ---
 **Podporovaná nasazení** | Virtuální počítače Azure Marketplace a virtuální počítače mimo Marketplace (SQL Server ručně nainstalované) jsou podporované.
 **Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE), Austrálie – střed (AC), Austrálie – střed 2 (AC) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in), Indie – západ <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ <br> Německo – sever Německo – středozápad <br> Švýcarsko – sever Švýcarsko – západ
@@ -62,65 +62,66 @@ Uživatelům se tato funkce nebude účtovat až do doby, kdy je všeobecně dos
 
 ## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
 
-- Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku nepodporujeme.
-- Řešení je podporované v obou druzích [nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
-- Virtuální počítač se spuštěným SQL Server vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
-- SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** a instance clusteru SQL Server Always On se nepodporují.
-- Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
-- Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování; upustí od tohoto postupu.
-- Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.
-- Pro databáze **jen pro čtení** podporuje Azure Backup jenom úplné typy úplné zálohy a jenom pro kopírování.
-- Databáze s velkým počtem souborů není možné chránit. Maximální podporovaný počet souborů je **~ 1000**.  
-- V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
-- Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
-- Podporujeme databáze o velikosti až **2 TB** . v případě větší velikosti se mohou vycházet problémy s výkonem.
-- Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálních počítačů, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na Server na základě prostředků virtuálních počítačů a zásad zálohování.
-- V případě skupin dostupnosti jsou zálohy odebírány z různých uzlů na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
+* Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku nepodporujeme.
+* Řešení je podporované v obou druzích [nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
+* Virtuální počítač se spuštěným SQL Server vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
+* SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** a instance clusteru SQL Server Always On se nepodporují.
+* Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
+* Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování; upustí od tohoto postupu.
+* Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.
+* Pro databáze **jen pro čtení** podporuje Azure Backup jenom úplné typy úplné zálohy a jenom pro kopírování.
+* Databáze s velkým počtem souborů není možné chránit. Maximální podporovaný počet souborů je **~ 1000**.  
+* V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
+* Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
+* Podporujeme databáze o velikosti až **2 TB** . v případě větší velikosti se mohou vycházet problémy s výkonem.
+* Abychom měli smysl o tom, kolik databází je možné chránit na jeden server, musíme vzít v úvahu faktory, jako je šířka pásma, velikost virtuálních počítačů, četnost zálohování, velikost databáze atd. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, který poskytuje přibližný počet databází, které můžete mít na Server na základě prostředků virtuálních počítačů a zásad zálohování.
+* V případě skupin dostupnosti jsou zálohy odebírány z různých uzlů na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Chování při zálohování v případě skupin dostupnosti Always On
 
 Doporučuje se, aby záloha byla nakonfigurovaná jenom v jednom uzlu ovládacího prvku AG. Zálohování by se mělo vždycky nakonfigurovat ve stejné oblasti jako primární uzel. Jinými slovy, vždy potřebujete, aby byl primární uzel přítomen v oblasti, ve které konfigurujete zálohování. Pokud jsou všechny uzly AG ve stejné oblasti, ve které je nakonfigurované zálohování, nezáleží na tom.
 
-**Pro křížovou oblast AG**
-- Bez ohledu na předvolbu zálohování nedojde k zálohování z uzlů, které nejsou ve stejné oblasti, ve které je nakonfigurované zálohování. Důvodem je to, že zálohování mezi oblastmi není podporováno. Pokud máte pouze dva uzly a sekundární uzel je v jiné oblasti; v takovém případě budou zálohy i nadále provedeny z primárního uzlu (Pokud vaše preference zálohování není "sekundární").
-- Pokud se převzetí služeb při selhání stane jinou oblastí než ta, ve které je zálohování nakonfigurované, zálohování se nepovede na uzlech v oblasti převzetí služeb při selhání.
+#### <a name="for-cross-region-ag"></a>Pro křížovou oblast AG
+
+* Bez ohledu na předvolbu zálohování nedojde k zálohování z uzlů, které nejsou ve stejné oblasti, ve které je nakonfigurované zálohování. Důvodem je to, že zálohování mezi oblastmi není podporováno. Pokud máte pouze dva uzly a sekundární uzel je v jiné oblasti; v takovém případě budou zálohy i nadále provedeny z primárního uzlu (Pokud vaše preference zálohování není "sekundární").
+* Pokud se převzetí služeb při selhání stane jinou oblastí než ta, ve které je zálohování nakonfigurované, zálohování se nepovede na uzlech v oblasti převzetí služeb při selhání.
 
 V závislosti na předvolbách zálohování a typech zálohování (úplné/rozdílové/protokolované/kopie jsou úplné) se zálohují z konkrétního uzlu (primární/sekundární).
 
-- **Předvolby zálohování: primární**
+* **Předvolby zálohování: primární**
 
-**Typ zálohování** | **Uzlu**
+**Typ zálohování** | **Node**
     --- | ---
-    Do bloku | Primární
+    Úplná | Primární
     Diferenciál | Primární
-    Protokolu |  Primární
+    Protokol |  Primární
     Pouze kopírování je úplné |  Primární
 
-- **Předvolby zálohování: jenom sekundární**
+* **Předvolby zálohování: jenom sekundární**
 
-**Typ zálohování** | **Uzlu**
+**Typ zálohování** | **Node**
 --- | ---
-Do bloku | Primární
+Úplná | Primární
 Diferenciál | Primární
-Protokolu |  Sekundární
+Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární
 
-- **Předvolby zálohování: sekundární**
+* **Předvolby zálohování: sekundární**
 
-**Typ zálohování** | **Uzlu**
+**Typ zálohování** | **Node**
 --- | ---
-Do bloku | Primární
+Úplná | Primární
 Diferenciál | Primární
-Protokolu |  Sekundární
+Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární
 
-- **Žádná předvolba zálohování**
+* **Žádná předvolba zálohování**
 
-**Typ zálohování** | **Uzlu**
+**Typ zálohování** | **Node**
 --- | ---
-Do bloku | Primární
+Úplná | Primární
 Diferenciál | Primární
-Protokolu |  Sekundární
+Protokol |  Sekundární
 Pouze kopírování je úplné |  Sekundární
 
 ## <a name="set-vm-permissions"></a>Nastavení oprávnění virtuálních počítačů
@@ -146,11 +147,11 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
       ![V dialogovém okně přihlášení – nové vyberte Hledat.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na tlačítko **OK**.
+  4. Účet virtuální služby Windows **NT SERVICE\AzureWLBackupPluginSvc** se vytvořil během registrace virtuálního počítače a fáze zjišťování SQL. Zadejte název účtu, jak je uvedeno v **poli zadejte název objektu, který chcete vybrat**. Chcete-li název vyřešit, vyberte možnost **kontrolovat názvy** . Klikněte na **OK**.
 
       ![Pokud chcete přeložit neznámý název služby, vyberte možnost kontrolovat názvy.](./media/backup-azure-sql-database/check-name.png)
 
-  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na tlačítko **OK**. Nyní by měla existovat požadovaná oprávnění.
+  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Klikněte na **OK**. Nyní by měla existovat požadovaná oprávnění.
 
       ![Ujistěte se, že je vybraná role serveru sysadmin.](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -227,7 +228,6 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 ```
-
 
 ## <a name="next-steps"></a>Další kroky
 

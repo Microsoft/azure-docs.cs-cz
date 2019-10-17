@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082500"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390534"
 ---
 # <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 
@@ -40,7 +40,7 @@ Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
 [Šablona OKD](https://github.com/Microsoft/openshift-origin) má k dispozici více větví pro různé verze nástroje OKD.  Na základě vašich potřeb můžete nasadit přímo z úložiště nebo můžete rozvětvit úložiště a před nasazením provést vlastní změny.
 
-Použijte hodnotu z instančního objektu, který jste vytvořili dříve `aadClientId` pro parametr. `appId`
+Pro parametr `aadClientId` použijte hodnotu `appId` z instančního objektu, který jste vytvořili dříve.
 
 Následuje příklad souboru parametrů s názvem azuredeploy. Parameters. JSON se všemi požadovanými vstupy.
 
@@ -124,7 +124,7 @@ Různé verze mohou mít různé parametry, proto ověřte, zda jsou potřebné 
 
 
 > [!NOTE] 
-> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní `az --version` příkazového řádku můžete ověřit pomocí příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku můžete ověřit pomocí příkazu `az --version`. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Následující příklad nasadí cluster OKD a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHub při použití souboru místních parametrů s názvem azuredeploy. Parameters. JSON.
 
@@ -143,7 +143,7 @@ Dokončení nasazení trvá nejméně 30 minut, a to na základě celkového po�
 }
 ```
 
-Pokud nechcete vytvořit vazbu na příkazový řádek, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
+Pokud nechcete provést propojení s příkazovým řádkem, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
 
 ## <a name="connect-to-the-okd-cluster"></a>Připojení ke clusteru OKD
 
@@ -161,8 +161,8 @@ Pomocí příkazu [AZ Group Delete](/cli/azure/group) odeberte skupinu prostřed
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úkoly po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazením OpenShift](./openshift-troubleshooting.md)
+- [Úkoly po nasazení](./openshift-container-platform-3x-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift](./openshift-container-platform-3x-troubleshooting.md)
 - [Začínáme s OKD](https://docs.okd.io)

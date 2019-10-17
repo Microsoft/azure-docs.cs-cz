@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure Monitorování stavu v2 | Microsoft Docs
-description: Přehled Monitorování stavu v2. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
+title: Přehled služby Azure Application Insights Agent | Microsoft Docs
+description: Přehled agenta Application Insights. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286440"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389835"
 ---
-# <a name="status-monitor-v2"></a>Monitorování stavu v2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
-Monitorování stavu v2 je modul prostředí PowerShell publikovaný do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+> [!IMPORTANT]
+> Tyto pokyny se doporučují pro nasazení Application Insights agenta v místním prostředí i mimo Azure. Tady je doporučený postup pro [nasazení virtuálních počítačů Azure a virtuálních počítačů ve službě Virtual Machine Scale set](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+
+Agent Application Insights (dřív nazvaný Monitorování stavu v2) je modul prostředí PowerShell publikovaný do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 Nahrazuje [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Modul poskytuje instrumentaci webových aplikací .NET, které jsou hostovány službou IIS, pomocí kódu.
 Telemetrii se pošle do Azure Portal, kde můžete [monitorovat](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) svoji aplikaci.
+
+> [!NOTE]
+> Modul aktuálně podporuje pouze nekódovatelné instrumentaci webových aplikací .NET, jejichž hostitelem je služba IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node. js.
 
 ## <a name="powershell-gallery"></a>Galerie prostředí PowerShell
 
-Monitorování stavu v2 se nachází zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights agenta najdete tady: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,9 +59,9 @@ Monitorování stavu v2 se nachází zde: https://www.powershellgallery.com/pack
 
 ## <a name="faq"></a>Časté otázky
 
-- Podporuje Monitorování stavu v2 instalace proxy serveru?
+- Podporuje agent Application Insights instalaci proxy serveru?
 
-  *Ano*. Existuje několik způsobů, jak stáhnout Monitorování stavu v2. Pokud má počítač přístup k Internetu, můžete k Galerie prostředí PowerShell připojit pomocí parametrů `-Proxy`.
+  *Ano*. Existuje několik způsobů, jak stáhnout agenta Application Insights. Pokud má počítač přístup k Internetu, můžete k Galerie prostředí PowerShell připojit pomocí parametrů `-Proxy`.
 Můžete také ručně stáhnout modul a buď ho nainstalovat do počítače, nebo ho použít přímo.
 Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 

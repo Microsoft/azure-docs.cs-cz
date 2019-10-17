@@ -1,5 +1,5 @@
 ---
-title: Zasílání nabízených oznámení aplikacím pro Xamarin.Android službou Azure Notification Hubs | Microsoft Docs
+title: Posílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Azure Notification Hubs | Microsoft Docs
 description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Xamarin Android.
 author: sethmanheim
 manager: femila
@@ -17,14 +17,14 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: cba84b0f07db3a69cc964e47657a3f6b64659e6a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213561"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387652"
 ---
-# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro aplikace Xamarin. Android s využitím Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -40,10 +40,10 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio for Mac] v systému OS X.
+* [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio pro Mac] v systému OS X.
 * Aktivní účet Google
 
 ## <a name="create-a-firebase-project-and-enable-firebase-cloud-messaging"></a>Vytvoříte projekt Firebase a povolíte službu Firebase Cloud Messaging
@@ -78,21 +78,21 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     4. Vyberte **umístění** projektu.
     5. Vyberte **OK**.
 
-        ![Dialogové okno nového projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
+        ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
 2. V dialogovém okně **Nová aplikace pro Android** vyberte **prázdná aplikace**a pak vyberte **OK**.
 
-    ![Dialogové okno nového projektu](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Dialogové okno Nový projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. V okně **Průzkumník řešení** rozbalte **Vlastnosti** a klikněte na **AndroidManifest.xml**. Aktualizujte název balíčku, aby odpovídal názvu balíčku, který jste v konzole Google Firebase Console zadali, když jste do projektu přidávali službu Firebase Cloud Messaging.
 
     ![Název balíčku v GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Nastavte cílovou verzi Androidu pro projekt na **android 9,0 (výseč)** pomocí následujících kroků: 
     1. Klikněte pravým tlačítkem na projekt a vyberte **vlastnosti**. 
-    1. **Pro kompilaci pomocí verze Androidu: (Cílová architektura)** Vyberte možnost **Android 9,0 (výseč).** 
+    1. V poli **kompilovat pomocí verze Androidu: (cílové rozhraní)** vyberte **Android 9,0 (výseč)** . 
     1. V okně se zprávou vyberte **Ano** , pokud chcete pokračovat se změnou cílové architektury.
 1. Pomocí následujících kroků přidejte do projektu požadované balíčky NuGet:
     1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
     1. Přepněte na kartu **Installed (instalovat** ), vyberte **Xamarin. Android. support. Design**a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
-    1. Přepněte na kartu **Procházet** . Najděte **Xamarin.GooglePlayServices.Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
+    1. Přepněte na kartu **Procházet** . Vyhledejte **Xamarin. GooglePlayServices. Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
 
         ![Balíček NuGet služeb Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
     6. V okně **Správce balíčků NuGet** najděte **Xamarin.Firebase.Messaging**. V seznamu výsledků vyberte **Xamarin.Firebase.Messaging**. Pak vyberte **Nainstalovat**.
@@ -100,9 +100,9 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 ### <a name="add-the-google-services-json-file"></a>Přidání souboru JSON služeb Google
 
-1. `google-services.json` Zkopírujte soubor, který jste stáhli z konzoly Google Firebase do složky projektu.
-2. Přidejte `google-services.json` do projektu.
-3. V `google-services.json` okně **Průzkumník řešení** vyberte.
+1. Zkopírujte soubor `google-services.json`, který jste stáhli z konzoly Google Firebase do složky projektu.
+2. Do projektu přidejte `google-services.json`.
+3. V okně **Průzkumník řešení** vyberte `google-services.json`.
 4. V podokně **Vlastnosti** nastavte akci sestavení na **GoogleServicesJson**. Pokud se **GoogleServicesJson** nezobrazuje, zavřete Visual Studio a znovu ho spusťte. Pak znovu otevřete projekt a zkuste to znovu.
 
     ![Akce sestavení GoogleServicesJson](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
@@ -111,7 +111,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
 
-1. Otevřete soubor a vložte do `<application>` prvku následující `<receiver>` prvky: `AndroidManifest.xml`
+1. Otevřete soubor `AndroidManifest.xml` a vložte následující prvky `<receiver>` do prvku `<application>`:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -135,10 +135,10 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 3. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
 
-   * **Připojovací řetězec naslouchání**: Na řídicím panelu v [Azure Portal]vyberte možnost **Zobrazit připojovací řetězce**. `DefaultListenSharedAccessSignature` Zkopírujte připojovací řetězec pro tuto hodnotu.
-   * **Název centra**: Název vašeho rozbočovače z [Azure Portal]. Například *mynotificationhub2*.
+   * **Připojovací řetězec naslouchání:** Na řídicím panelu na webu [Azure Portal] zvolte **Zobrazit připojovací řetězce**. Pro tuto hodnotu zkopírujte připojovací řetězec `DefaultListenSharedAccessSignature`.
+   * **Název centra**: Pojmenujte centrum na webu [Azure Portal]. Například *mynotificationhub2*.
 4. V okně **Průzkumník řešení** klikněte pravým tlačítkem myši na **projekt**, vyberte možnost **Přidat**a poté možnost **Třída**.
-5. `Constants.cs` Vytvořte třídu pro projekt Xamarin a ve třídě definujte následující konstantní hodnoty. Nahraďte zástupné symboly vašimi hodnotami.
+5. Vytvořte pro svůj projekt Xamarin třídu `Constants.cs` a ve třídě definujte následující konstantní hodnoty. Nahraďte zástupné symboly vašimi hodnotami.
 
     ```csharp
     public static class Constants
@@ -148,7 +148,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     }
     ```
 
-6. Přidejte následující příkazy using do `MainActivity.cs`:
+6. Do `MainActivity.cs` přidejte následující příkazy using:
 
     ```csharp
     using Android.Util;
@@ -210,7 +210,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     }
     ```
 
-10. Do `MainActivity.cs`přidejte následující `OnCreate` kód po `base.OnCreate(savedInstanceState)`:
+10. V `MainActivity.cs` přidejte následující kód do `OnCreate` po `base.OnCreate(savedInstanceState)`:
 
     ```csharp
     if (Intent.Extras != null)
@@ -229,8 +229,8 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     CreateNotificationChannel();
     ```
 
-15. Přidejte do projektu třídu `MyFirebaseMessagingService` s názvem. 
-16. Přidejte následující příkazy using do `MyFirebaseMessagingService.cs`.
+15. Do projektu přidejte třídu s názvem `MyFirebaseMessagingService`. 
+16. Do `MyFirebaseMessagingService.cs` přidejte následující příkazy using.
 
     ```csharp
     using Android.Util;
@@ -239,7 +239,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     using WindowsAzure.Messaging;
     ```
 
-17. Do deklarace třídy přidejte následující a vaše třída zdědí `FirebaseMessagingService`:
+17. Do deklarace třídy přidejte následující a vaše třída zdědí z `FirebaseMessagingService`:
 
     ```csharp
     [Service]
@@ -248,7 +248,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Přidejte následující kód pro `MyFirebaseMessagingService.cs` zpracování přijatých zpráv. 
+18. Přidejte následující kód pro `MyFirebaseMessagingService.cs` ke zpracování zpráv, které byly přijaty. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -318,7 +318,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Odeslání zkušebního oznámení z webu Azure Portal
 
-Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Testovací odeslání** na webu [Azure Portal]. Zařízení se odešle testovací nabízené oznámení.
+Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Testovací odeslání** na webu [Azure Portal]. Do zařízení se odešle testovací nabízené oznámení.
 
 ![Azure Portal – Testovací odeslání](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
@@ -360,7 +360,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio s Xamarinem]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
-[Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
+[Visual Studio pro Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure Portal]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx

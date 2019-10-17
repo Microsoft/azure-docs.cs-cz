@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202206"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438631"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
 
@@ -47,7 +47,7 @@ Security Center používá Microsoft Monitoring Agent ke shromažďování různ
 
 Vyřadíme řídicí panel události, který se zobrazil při výběru pracovního prostoru:
 
-![Řídicí panel Události][2]
+![Řídicí panel události][2]
 
 ### <a name="events-dashboard---the-new-experience"></a>Řídicí panel události – nové prostředí
 
@@ -130,7 +130,7 @@ Vytvoření vlastních výstrah pomocí služby Azure Sentinel:
 
 Pokud vás nejímá používání služby Azure Sentinel, můžete výstrahy vytvořit pomocí Azure Monitor výstrahy protokolu. Pokyny najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a [výstrah protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
-![Vlastní upozornění][13]
+![Vlastní výstrahy][13]
 
 Další informace o vlastním vyřazení výstrah najdete v tématu [vlastní pravidla výstrah v Azure Security Center (Preview)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 
@@ -169,7 +169,7 @@ Pokud máte stávající připojená řešení, doporučujeme přejít na služb
 
 Azure Security Center monitoruje konfiguraci zabezpečení tím, že pro posílení operačního systému uplatní sadu [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Tato pravidla se týkají bran firewall, auditování, zásad hesel a dalších. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Obrazovka upravit konfiguraci zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfiguraci zabezpečení operačního systému v Security Center.
 
-Tuto funkci verze Preview jsme vyřadíme. Pokud chcete obnovit konfigurace zabezpečení zpátky na výchozí hodnoty po datu vyřazení, udělejte to přes rozhraní API nebo PowerShell podle [následujících pokynů](https://aka.ms/ascresetsecurityconfigurations) .
+Tuto funkci verze Preview jsme vyřadíme. Pokud chcete obnovit konfigurace zabezpečení zpátky na výchozí hodnoty po datu vyřazení, udělejte to přes rozhraní API nebo PowerShell podle [následujících pokynů](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) .
 
 ![Upravit konfigurace zabezpečení][17]
 

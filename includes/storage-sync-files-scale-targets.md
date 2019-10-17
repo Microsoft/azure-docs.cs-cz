@@ -2,20 +2,20 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/05/2019
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e7aa2b4389fe60eed80b15aff04d6f7fcbc7b013
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: c04875f92ee58c24567fbb4d73d8d01697810f99
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68968842"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391592"
 ---
-| Resource | Target | Omezení pevné velikosti |
+| Prostředek | Výběr cílového umístění | Omezení pevné velikosti |
 |----------|--------------|------------|
 | Služby synchronizace úložiště na oblast | 20 služeb synchronizace úložiště | Ano |
 | Skupiny synchronizace na službu synchronizace úložiště | skupiny synchronizace 100 | Ano |
@@ -28,7 +28,7 @@ ms.locfileid: "68968842"
 | Maximální velikost popisovače zabezpečení objektů (adresářů a souborů) | 64 KiB | Ano |
 | Velikost souboru | 100 GiB | Ne |
 | Minimální velikost souboru, který se má převrstvený | 64 KiB | Ano |
-| Souběžné relace synchronizace | Agent verze v4 a novější: Omezení se liší v závislosti na dostupných systémových prostředcích. <BR> V3 agent: Dvě aktivní relace synchronizace na jeden procesor nebo maximálně osm aktivních relací synchronizace na jeden server. | Ano
+| Souběžné relace synchronizace | Agent v4 a novější: omezení se liší v závislosti na dostupných systémových prostředcích. <BR> V3 agent: dvě aktivní relace synchronizace na jeden procesor nebo maximálně osm aktivních relací synchronizace na jeden server. | Ano
 
 > [!Note]  
 > Koncový bod Azure File Sync může škálovat až na velikost sdílené složky Azure. Pokud je dosaženo limitu velikosti sdílené složky Azure, nebude synchronizace moct fungovat.

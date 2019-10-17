@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079644"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390500"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače z virtuálního pevného disku pomocí Azure Portal
 
@@ -28,12 +28,13 @@ Existuje několik způsobů, jak vytvořit virtuální počítač (VM) v Azure:
 
 - Můžete vytvořit nový virtuální počítač z virtuálního pevného disku, který byl odstraněn. Například pokud máte virtuální počítač Azure, který nepracuje správně, můžete virtuální počítač odstranit a použít jeho virtuální pevný disk k vytvoření nového virtuálního počítače. Můžete buď znovu použít stejný VHD nebo vytvořit kopii virtuálního pevného disku, a to vytvořením snímku a následným vytvořením nového spravovaného disku ze snímku. I když vytvoření snímku trvá několik dalších kroků, zachová původní virtuální pevný disk a poskytne vám záložní.
 
-- Posaďte klasický virtuální počítač a pomocí virtuálního pevného disku vytvořte nový virtuální počítač, který používá model nasazení Správce prostředků a spravované disky. Nejlepších výsledků dosáhnete, když před vytvořením snímku zastavíte klasický virtuální počítač v Azure Portal.
+- Posaďte klasický virtuální počítač a pomocí virtuálního pevného disku vytvořte nový virtuální počítač, který používá model nasazení Správce prostředků a spravované disky. Nejlepších výsledků dosáhnete, když před vytvořením snímku **zastavíte** klasický virtuální počítač v Azure Portal.
  
 - Virtuální počítač Azure můžete vytvořit z místního virtuálního pevného disku tak, že nahrajete místní virtuální pevný disk a připojíte ho k novému virtuálnímu počítači. Pomocí PowerShellu nebo jiného nástroje nahrajte virtuální pevný disk do účtu úložiště a pak vytvoříte spravovaný disk z virtuálního pevného disku. Další informace najdete v tématu [nahrání specializovaného virtuálního pevného disku](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
 Nepoužívejte specializovaný disk, pokud chcete vytvořit více virtuálních počítačů. Místo toho můžete pro rozsáhlejší nasazení [vytvořit image](capture-image-resource.md) a pak [pomocí této image vytvořit víc virtuálních počítačů](create-vm-generalized-managed.md).
 
+Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jednoho snímku nebo virtuálního pevného disku. 
 
 ## <a name="copy-a-disk"></a>Kopírování disku
 
@@ -64,7 +65,7 @@ Po vytvoření virtuálního pevného disku spravovaného disku, který chcete p
 1. Z [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **všechny služby**.
 2. Do vyhledávacího pole **všechny služby** zadejte **disky** a pak vyberte **disky** . zobrazí se seznam dostupných disků.
 3. Vyberte disk, který chcete použít. Otevře se stránka **disku** pro tento disk.
-4. Na stránce **Přehled** zajistěte, aby byl **stav disku** uvedenýjako nepřipojený. Pokud tomu tak není, možná budete muset buď odpojit disk od virtuálního počítače, nebo odstranit virtuální počítač, aby se disk uvolnil.
+4. Na stránce **Přehled** zajistěte, aby byl **stav disku** uvedený jako **nepřipojený**. Pokud tomu tak není, možná budete muset buď odpojit disk od virtuálního počítače, nebo odstranit virtuální počítač, aby se disk uvolnil.
 4. V nabídce v horní části stránky vyberte **vytvořit virtuální počítač**.
 5. Na stránce **základy** nového virtuálního počítače zadejte **název virtuálního počítače** a buď vyberte existující **skupinu prostředků** , nebo vytvořte novou.
 6. Pro možnost **Velikost**vyberte **změnit velikost** pro přístup na stránku **velikosti** .
@@ -75,7 +76,8 @@ Po vytvoření virtuálního pevného disku spravovaného disku, který chcete p
 11. Až budete hotovi, vyberte **zkontrolovat + vytvořit**. 
 12. Pokud konfigurace virtuálního počítače projde ověřením, vyberte **vytvořit** a spusťte nasazení.
 
-## <a name="next-steps"></a>Další postup
+
+## <a name="next-steps"></a>Další kroky
 
 PowerShell můžete také použít k [nahrání virtuálního pevného disku do Azure a vytvoření specializovaného virtuálního počítače](create-vm-specialized.md).
 

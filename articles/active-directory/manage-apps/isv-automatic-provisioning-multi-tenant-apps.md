@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373391"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429452"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -81,7 +81,7 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Služba zřizování Azure AD (SCIM)
 
-Služba zřizování Azure AD používá [SCIM] (https://aka.ms/SCIMOverview, protokol podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM.
+Služba zřizování Azure AD používá [SCIM](https://aka.ms/SCIMOverview), což je standardní obor pro zřizování podporovaný mnoha zprostředkovateli identity (zprostředkovatelů identity) a také aplikacemi (například časová rezerva, g Suite, Dropbox). Doporučujeme použít službu zřizování Azure AD, pokud chcete kromě služby Azure AD podporovat zprostředkovatelů identity, protože libovolný IdP kompatibilní s SCIM se může připojit ke svému koncovému bodu SCIM. Vytvořením jednoduchého koncového bodu/User můžete povolit zřizování bez nutnosti udržovat vlastní synchronizační modul. 
 
 Další informace o tom, jak se uživatelé služby zřizování Azure AD SCIM, najdete v těchto tématech: 
 
@@ -106,16 +106,6 @@ Další informace o použití Microsoft Graph pro zřizování:
 * [Přehled ověřování Microsoft Graph](https://docs.microsoft.com/graph/auth/)
 
 * [Začínáme s Microsoft Graph](https://developer.microsoft.com/graph/get-started)
-
-* [Použití rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api)
-
-* [Průzkumník Microsoft Graph](https://aka.ms/ge) 
-
-* [Odkaz na Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Osvědčené postupy pro práci s Microsoft Graph](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Doporučené scénáře pro Microsoft Graph](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>Používání JIT pro zřizování pomocí jazyka SAML
 

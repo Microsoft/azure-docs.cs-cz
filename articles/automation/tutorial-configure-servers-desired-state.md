@@ -1,5 +1,5 @@
 ---
-title: Konfigurace serverů do požadovaného stavu a Správa posunu pomocí Azure Automation
+title: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation
 description: Kurz – Správa konfigurací serveru s konfigurací stavu Azure Automation
 services: automation
 ms.service: automation
@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243338"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432062"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a Správa posunu
 
@@ -27,16 +27,16 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 > - Přiřazení konfigurace uzlu spravovanému uzlu
 > - Zkontroluje stav dodržování předpisů spravovaného uzlu.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu budete potřebovat:
+Pro absolvování tohoto kurzu potřebujete:
 
-- Účet Azure Automation. Pokyny k vytvoření Azure Automation účtu Spustit jako najdete v tématu [účet Spustit](automation-sec-configure-azure-runas-account.md)jako pro Azure.
-- Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
-- Azure PowerShell modul verze 3,6 nebo novější. Pokud chcete zjistit verzi, spusťte `Get-Module -ListAvailable AzureRM`. Pokud potřebujete provést upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
-- Znalost konfigurace požadovaného stavu (DSC). Informace o DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overviews) .
+- Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
+- Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Azure PowerShell modul verze 3,6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+- Znalost konfigurace požadovaného stavu (DSC). Informace o DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview) .
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
@@ -50,7 +50,7 @@ V tomto kurzu použijeme jednoduchou konfiguraci DSC, která zajistí, že se na
 
 Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations).
 
-V textovém editoru zadejte následující příkaz a uložte ho místně jako `TestConfig.ps1`.
+V textovém editoru zadejte následující a soubor místně uložte jako `TestConfig.ps1`.
 
 ```powershell
 configuration TestConfig {
@@ -170,7 +170,7 @@ Pokud se rozhodnete odebrat uzel ze služby, můžete tak učinit buď pomocí A
 > To neplatí pro konfiguraci, která je aktuálně použita pro uzel.
 > Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>Portál Azure
 
 V Azure Automation klikněte v obsahu na **Konfigurace stavu (DSC)** .
 Dalším kliknutím na **uzly** zobrazíte seznam uzlů, které jsou zaregistrované ve službě.

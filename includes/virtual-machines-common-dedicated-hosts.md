@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266853"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390548"
 ---
 ## <a name="benefits"></a>Výhody 
 
@@ -42,7 +42,7 @@ Pro zajištění vysoké dostupnosti byste měli nasadit víc virtuálních poč
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>Pro izolaci chyb použít Zóny dostupnosti
 
-Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Skupina hostitelů se vytvoří v jedné zóně dostupnosti. Po vytvoření budou všichni hostitelé umístěni v rámci této zóny. Chcete-li dosáhnout vysoké dostupnosti napříč zónami, je třeba vytvořit více skupin hostitelů (jeden pro každou zónu) a rozložit hostitele odpovídajícím způsobem.
+Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Skupina hostitelů se vytvoří v jedné zóně dostupnosti. Po vytvoření budou všichni hostitelé umístěni v rámci této zóny. Chcete-li dosáhnout vysoké dostupnosti napříč zónami, je třeba vytvořit více skupin hostitelů (jeden pro každou zónu) a rozložit hostitele odpovídajícím způsobem.
 
 Pokud skupinu hostitelů přiřadíte k zóně dostupnosti, musí se všechny virtuální počítače vytvořené v tomto hostiteli vytvořit ve stejné zóně.
 
@@ -71,7 +71,7 @@ Infrastruktura, která podporuje vaše virtuální počítače, se občas může
 > [!NOTE]
 >  Řízení údržby je aktuálně ve fázi omezené verze Preview a vyžaduje proces zprovoznění. Platí pro tuto verzi Preview tím, že odešlete [průzkum nominálních](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)hodnot.
 
-## <a name="capacity-considerations"></a>Důležité informace o kapacity
+## <a name="capacity-considerations"></a>Požadavky na kapacitu
 
 Po zřízení vyhrazeného hostitele ho Azure přiřadí k fyzickému serveru. Tím se zajistí dostupnost kapacity v případě, že potřebujete zřídit virtuální počítač. Azure používá celou kapacitu v oblasti (nebo zóně) k výběru fyzického serveru pro hostitele. Také to znamená, že zákazníci můžou očekávat, že budou moci rozšiřovat své vyhrazené hostitele, aniž by to mělo za následek nedostatku místa v clusteru.
 
@@ -82,6 +82,8 @@ Pro vyhrazené hostitele je k dispozici výchozí limit kvóty 3000 vCPU pro jed
 ![Snímek obrazovky se stránkou používání a kvót na portálu](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 Další informace najdete v tématu [kvóty VCPU virtuálních počítačů](/azure/virtual-machines/windows/quotas).
+
+Bezplatné zkušební verze a Předplatná MSDN nemají kvótu pro vyhrazené hostitele Azure.
 
 ## <a name="pricing"></a>Ceny
 
@@ -97,11 +99,11 @@ Další informace najdete v tématu [ceny za vyhrazené hostitele Azure](https:/
 
 Pro hostitele je definována SKU, která představuje řadu a typ velikosti virtuálního počítače. V rámci jednoho hostitele můžete kombinovat více virtuálních počítačů s různými velikostmi, pokud mají stejnou řadu velikostí. Typ je generování hardwaru, které je aktuálně k dispozici v oblasti.
 
-Liší `types` se u stejných řad virtuálních počítačů, od různých dodavatelů CPU a mají různé generace procesorů a počet jader.
+Různé `types` pro stejné série virtuálních počítačů budou od různých dodavatelů CPU a mají různé generace PROCESORů a počet jader.
 
 Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
-Během období Preview budeme podporovat následující SKU\types hostitele:  DSv3_Type1 a ESv3_Type1
+Během období Preview budeme podporovat následující hostitele SKU\types: DSv3_Type1 a ESv3_Type1.
 
  
 ## <a name="host-life-cycle"></a>Životní cyklus hostitele
@@ -113,6 +115,6 @@ Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrá
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |
-| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud `autoReplaceOnFailure` je povolený, vaše virtuální počítače budou *zacelené* na hardware v pořádku. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
-| Hostitel se uvolnil.  | Z hostitele se odebraly všechny virtuální počítače. Na tohoto hostitele se už neúčtují, protože hardware se vyčerpal z rotace.   |
+| Hostitel čeká na zrušení přidělení   | Azure nemůže hostitele obnovit zpátky do stavu v pořádku a požádá o opětovné nasazení virtuálních počítačů z tohoto hostitele. Pokud je povolená možnost `autoReplaceOnFailure`, jsou virtuální počítače *zacelené* na hardware v pořádku. V opačném případě je možné, že váš virtuální počítač běží na hostiteli, který selže.|
+| Přidělení hostitele  | Z hostitele se odebraly všechny virtuální počítače. Na tohoto hostitele se už neúčtují, protože hardware se vyčerpal z rotace.   |
 

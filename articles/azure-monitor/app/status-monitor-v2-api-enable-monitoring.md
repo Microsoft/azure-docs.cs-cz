@@ -1,6 +1,6 @@
 ---
-title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Povolit monitorování | Microsoft Docs'
-description: Reference k rozhraní API pro Monitorování stavu v2 Enable-ApplicationInsightsMonitoring. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
+title: 'Reference k rozhraní API služby Azure Application Insights agent: povolit monitorování | Microsoft Docs'
+description: Reference k rozhraní API agenta Application Insights. Enable-ApplicationInsightsMonitoring. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 8742316697e6d6c8178bb02c8e7288499c655b6b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 2a310a83677bffc8843fdb8979ec272f197a8a39
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033134"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389892"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>Rozhraní API pro Monitorování stavu v2: Enable – ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Rozhraní API pro Application Insights agenta: Enable-ApplicationInsightsMonitoring
 
 Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -53,11 +53,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
-- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
-- `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- `AppFilter` Nakonec taky`'.*'` používá zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
+- @no__t – 0 odpovídá aktuálnímu počítači pomocí zástupného znaku `'.*'`.
+- `AppFilter='WebAppExclude'` poskytuje klíč instrumentace `null`. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppOne'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `AppFilter='WebAppTwo'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- Nakonec `AppFilter` také používá zástupný znak `'.*'` pro porovnání všech webových aplikací, které neodpovídají předchozím pravidlům a přiřadí výchozí klíč instrumentace.
 - Jsou přidány mezery pro čitelnost.
 
 ```powershell
@@ -151,7 +151,7 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
  - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
@@ -164,7 +164,7 @@ Successfully enabled Application Insights Status Monitor
 - [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
 - [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
  
- Další informace najdete v Monitorování stavu v2:
- - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.
+ Další Application Insights agenta:
+ - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
  - [Získáním konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že vaše nastavení se správně nahrálo.
  - [Získejte stav](status-monitor-v2-api-get-status.md) pro kontrolu monitorování.

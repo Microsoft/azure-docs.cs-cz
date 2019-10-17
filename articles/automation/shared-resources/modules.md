@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cbc6932c3bbe11f0c4def17097c1791cbb1687bf
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 82f02f0ac11c80161f709b3b493306bc8aafc8bd
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515906"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435468"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů v Azure Automation
 
@@ -34,7 +34,7 @@ K importu modulu do svého účtu Automation můžete použít [New-AzureRmAutom
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 V Azure Portal přejděte do svého účtu Automation a v části **sdílené prostředky**vyberte **moduly** . Klikněte na **+ Přidat modul**. Vyberte soubor s **příponou. zip** , který obsahuje váš modul, a kliknutím na tlačítko **OK** začněte importovat proces.
 
@@ -42,7 +42,7 @@ V Azure Portal přejděte do svého účtu Automation a v části **sdílené pr
 
 Moduly z Galerie prostředí PowerShell můžete buď importovat z [Galerie prostředí PowerShell](https://www.powershellgallery.com) přímo, nebo z vašeho účtu Automation.
 
-Pokud chcete modul naimportovat z Galerie prostředí PowerShell, vyhledejte https://www.powershellgallery.com modul, který chcete importovat, a vyhledejte ho. Klikněte na **nasadit a Azure Automation** na kartě **Azure Automation** v části **Možnosti instalace**. Tato akce otevře Azure Portal. Na stránce **Import** vyberte svůj účet Automation a klikněte na **OK**.
+Pokud chcete modul naimportovat z Galerie prostředí PowerShell, pokračujte na https://www.powershellgallery.com a vyhledejte modul, který chcete importovat. Klikněte na **nasadit a Azure Automation** na kartě **Azure Automation** v části **Možnosti instalace**. Tato akce otevře Azure Portal. Na stránce **Import** vyberte svůj účet Automation a klikněte na **OK**.
 
 ![Importovat modul Galerie prostředí PowerShell](../media/modules/powershell-gallery.png)
 
@@ -54,7 +54,7 @@ Moduly můžete také importovat z Galerie prostředí PowerShell přímo z vaš
 
 Pokud máte s modulem problémy nebo potřebujete přejít zpět k předchozí verzi modulu, můžete ho odstranit z účtu Automation. Nelze odstranit původní verzi [výchozích modulů](#default-modules) , které jsou importovány při vytváření účtu Automation. Pokud je modul, který chcete odstranit, novější verze jednoho z nainstalovaných [výchozích modulů](#default-modules) , vrátí se zpět k verzi nainstalované s vaším účtem Automation. V opačném případě budou odebrány všechny moduly, které odstraníte z účtu Automation.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure
 
 V Azure Portal přejděte do svého účtu Automation a v části **sdílené prostředky**vyberte **moduly** . Vyberte modul, který chcete odebrat. Na stránce **modul** clcick **Odstranit**. Pokud je tento modul jedním z [výchozích modulů](#default-modules), vrátí se zpět na verzi, která byla přítomna při vytvoření účtu Automation.
 
@@ -68,9 +68,9 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="internal-cmdlets"></a>Interní rutiny
 
-Následuje seznam rutin v interním `Orchestrator.AssetManagement.Cmdlets` modulu, který je importován do každého účtu Automation. Tyto rutiny jsou dostupné ve vašich sadách Runbook a konfiguracích DSC a umožňují interakci s prostředky v rámci vašeho účtu Automation. Kromě toho interní rutiny umožňují načíst tajné kódy z šifrovaných hodnot **proměnných** , **přihlašovacích údajů**a šifrovaných polí **připojení** . Rutiny Azure PowerShell nemůžou tyto tajné klíče načíst. Tyto rutiny nevyžadují při jejich používání implicitní připojení k Azure, jako je například použití účtu Spustit jako k ověření v Azure.
+Následuje seznam rutin v interním modulu `Orchestrator.AssetManagement.Cmdlets`, který je importován do každého účtu Automation. Tyto rutiny jsou dostupné ve vašich sadách Runbook a konfiguracích DSC a umožňují interakci s prostředky v rámci vašeho účtu Automation. Kromě toho interní rutiny umožňují načíst tajné kódy z šifrovaných hodnot **proměnných** , **přihlašovacích údajů**a šifrovaných polí **připojení** . Rutiny Azure PowerShell nemůžou tyto tajné klíče načíst. Tyto rutiny nevyžadují při jejich používání implicitní připojení k Azure, jako je například použití účtu Spustit jako k ověření v Azure.
 
-|Name|Popis|
+|Name (Název)|Popis|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -78,7 +78,7 @@ Následuje seznam rutin v interním `Orchestrator.AssetManagement.Cmdlets` modul
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
 |Spustit – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Čekání – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 ## <a name="add-a-connection-type-to-your-module"></a>Přidání typu připojení do modulu
 
@@ -86,7 +86,7 @@ Můžete zadat vlastní [Typ připojení](../automation-connections.md) , který
 
 ![Použití vlastního připojení v Azure Portal](../media/modules/connection-create-new.png)
 
-Chcete-li přidat typ připojení Azure Automation, modul musí obsahovat soubor s názvem `<ModuleName>-Automation.json` , který určuje vlastnosti typu připojení. Soubor JSON se umístí do složky modulu komprimovaného souboru. zip. Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Konfigurace končí vytvořením typu připojení v Azure Automation. Pomocí tohoto souboru můžete pro typ připojení modulu nastavit názvy polí, typy a to, jestli mají být pole zašifrovaná nebo volitelná. Následující příklad je šablonou ve formátu JSON, který definuje uživatelské jméno a vlastnost hesla:
+Chcete-li přidat typ připojení Azure Automation, modul musí obsahovat soubor s názvem `<ModuleName>-Automation.json`, který určuje vlastnosti typu připojení. Soubor JSON se umístí do složky modulu komprimovaného souboru. zip. Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Konfigurace končí vytvořením typu připojení v Azure Automation. Pomocí tohoto souboru můžete pro typ připojení modulu nastavit názvy polí, typy a to, jestli mají být pole zašifrovaná nebo volitelná. Následující příklad je šablonou ve formátu JSON, který definuje uživatelské jméno a vlastnost hesla:
 
 ```json
 {
@@ -172,7 +172,7 @@ myModule
 
 * Pokud se modul připojuje k externí službě, měl by obsahovat [Typ připojení](#add-a-connection-type-to-your-module). Každá rutina v modulu musí být schopná přijmout objekt připojení (instanci takového typu připojení) jako parametr. Uživatelé mapují parametry assetu připojení k odpovídajícím parametrům rutiny pokaždé, když volají rutinu. Na základě výše uvedeného příkladu Runbooku používá ukázkový prostředek připojení contoso s názvem ContosoConnection pro přístup k prostředkům společnosti Contoso a vrácení dat z externí služby.
 
-  V následujícím příkladu jsou pole mapována na vlastnosti `PSCredential` uživatelského jména a hesla objektu a poté předány rutině.
+  V následujícím příkladu jsou pole mapována na vlastnosti uživatelského jména a hesla objektu @no__t 0 a poté předány rutině.
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -191,11 +191,11 @@ myModule
   }
   ```
 
-  Chování jako v předchozím příkladu pro rutiny můžete povolit tak, že jim umožníte přijmout objekt připojení přímo jako parametr místo pouze polí připojení pro parametry. Obvykle chcete nastavit sadu parametrů pro každý, aby uživatel, který nepoužívá Azure Automation, mohl volat rutiny bez vytvoření zatřiďovací tabulky, která by sloužila jako objekt připojení. Sada `UserAccount`parametrů se používá k předání vlastností pole připojení. `ConnectionObject`umožňuje předat připojení rovnou uživateli.
+  Chování jako v předchozím příkladu pro rutiny můžete povolit tak, že jim umožníte přijmout objekt připojení přímo jako parametr místo pouze polí připojení pro parametry. Obvykle chcete nastavit sadu parametrů pro každý, aby uživatel, který nepoužívá Azure Automation, mohl volat rutiny bez vytvoření zatřiďovací tabulky, která by sloužila jako objekt připojení. Sada parametrů `UserAccount` slouží k předání vlastností pole připojení. `ConnectionObject` umožňuje předat připojení rovnou uživateli.
 
 * Definujte typ výstupu pro všechny rutiny v modulu. Definování typu výstupu rutiny umožňuje technologii IntelliSense, aby vám v době návrhu pomohla zjistit výstupní vlastnosti rutiny, které použijete při vytváření obsahu. To je užitečné hlavně během grafického vytváření Runbooku služby Automation, kde znalostní báze pro čas návrhu je klíč pro snadné uživatelské prostředí s vaším modulem.
 
-Přidat `[OutputType([<MyOutputType>])]` WHERE MyOutputType je platný typ. Další informace o elementu OutputType naleznete v tématu [About Functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Následující kód je příkladem přidání `OutputType` do rutiny:
+Přidejte `[OutputType([<MyOutputType>])]`, kde MyOutputType je platný typ. Další informace o elementu OutputType naleznete v tématu [About Functions OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Následující kód je příkladem přidání `OutputType` do rutiny:
 
   ```powershell
   function Get-ContosoUser {
@@ -234,7 +234,7 @@ Přidat `[OutputType([<MyOutputType>])]` WHERE MyOutputType je platný typ. Dal�
 
 * Modul by měl být plně obsažený v balíčku s příkazem xcopy. Azure Automation moduly jsou distribuovány do izolovaných prostorů automatizace, když Runbooky musí být spuštěny. Moduly potřebují pracovat nezávisle na hostiteli, na kterém běží. Měli byste být schopni vytvořit a přesunout balíček modulu a při importu do prostředí PowerShell jiného hostitele fungovat jako normální. Aby k tomu mohlo dojít, modul by neměl záviset na žádných souborech mimo složku modulu. Tato složka je složka, která se při importu modulu do Azure Automation vrátí do režimu zip. Modul by neměl být závislý na žádném z jedinečných nastavení registru na hostiteli, jako jsou nastavení, která jsou nastavená při instalaci produktu. Všechny soubory v modulu by měly mít cestu kratší než 140 znaků. Jakékoli cesty více než 140 znaků způsobí problémy s importem sady Runbook. Pokud tento osvědčený postup nesledujete, modul nebude možné použít v Azure Automation.  
 
-* Pokud odkazujete na [prostředí Azure PowerShell AZ](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) modules in Module, ujistěte se, že `AzureRM`neodkazuje na. Modul nelze použít ve spojení `AzureRM` s moduly. `Az` `Az`je podporováno v sadách Runbook, ale ve výchozím nastavení nejsou importovány. Další informace o modulech a požadavcích, které je `Az` potřeba vzít v úvahu, najdete v tématu [AZ modul Support in Azure Automation](../az-modules.md).
+* Pokud odkazujete na [prostředí Azure PowerShell AZ](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) modules in Module, ujistěte se, že neodkazuje na `AzureRM`. Modul `Az` nelze použít ve spojení s moduly `AzureRM`. v sadách Runbook je podporováno `Az`, nejsou však importovány ve výchozím nastavení. Další informace o modulech `Az` a důležitých faktorech, které je potřeba vzít v úvahu, najdete v tématu [AZ modul Support in Azure Automation](../az-modules.md).
 
 ## <a name="default-modules"></a>Výchozí moduly
 
@@ -252,21 +252,21 @@ Následující tabulka uvádí moduly, které jsou importovány ve výchozím na
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
-| Microsoft.PowerShell.Core | 0 |
-| Microsoft.PowerShell.Diagnostics |  |
-| Microsoft.PowerShell.Management |  |
-| Microsoft.PowerShell.Security |  |
+| GPRegistryPolicyParser | 0,2 |
+| Microsoft. PowerShell. Core | 0 |
+| Microsoft. PowerShell. Diagnostics |  |
+| Microsoft. PowerShell. Management |  |
+| Microsoft. PowerShell. Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft. WSMan. Management |  |
-| Orchestrator.AssetManagement.Cmdlets | 1 |
+| Orchestrator. AssetManagement. rutiny | 1\. místo |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
-| StateConfigCompositeResources | 1 |
+| StateConfigCompositeResources | 1\. místo |
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření modulů PowerShellu najdete v článku [Psaní modulu Windows PowerShellu](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)
+* Další informace o vytváření modulů PowerShellu najdete v článku [Psaní modulu Windows PowerShellu](/powershell/scripting/developer/windows-powershell)

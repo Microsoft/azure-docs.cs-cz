@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 02196a4df71bef767f8d1921f704907ad06e77b4
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311156"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390026"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue
 
@@ -55,7 +55,7 @@ Další informace o cílech škálovatelnosti pro Služba front najdete v témat
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
-Pokud se přiblížíte k maximálnímu počtu účtů úložiště povolených pro určitou kombinaci předplatného nebo oblasti, budete k horizontálních oddílů používat víc účtů úložiště, abyste mohli zvýšit počet vstupně-výstupních operací za sekundu (IOPS) nebo kapacitu? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště úrovně Standard, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+Pokud se přiblížíte k maximálnímu počtu účtů úložiště povolených pro určitou kombinaci předplatného nebo oblasti, budete k horizontálních oddílů používat víc účtů úložiště, abyste mohli zvýšit počet vstupně-výstupních operací za sekundu (IOPS) nebo kapacitu? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Cíle kapacity a transakce
 
@@ -195,6 +195,4 @@ Pomocí front můžete nastavit škálovatelnost architektury aplikace. Následu
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-- [Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB](../blobs/storage-performance-checklist.md)
-- [Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek](../tables/storage-performance-checklist.md)
 - [Stavové a chybové kódy](/rest/api/storageservices/Status-and-Error-Codes2)

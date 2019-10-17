@@ -16,19 +16,19 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169931"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429614"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Vytvoření a správa katalogu prostředků ve správě nároků Azure AD (Preview)
 
 > [!IMPORTANT]
 > Správa opravňujících k Azure Active Directory (Azure AD) je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.
-> Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-catalog"></a>Vytvoření katalogu
 
@@ -52,7 +52,7 @@ Katalog je kontejner prostředků a přístup k balíčkům. Katalog můžete vy
 
 1. Pokud chcete povolit uživatelům ve vybraných externích adresářích, aby mohli vyžadovat přístup k balíčkům v tomto katalogu, nastavte možnost **povoleno pro externí uživatele** na **Ano**.
 
-    ![Podokno nového katalogu](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Podokno nového katalogu](./media/entitlement-management-shared/new-catalog.png)
 
 1. Kliknutím na **vytvořit** vytvořte katalog.
 
@@ -130,7 +130,9 @@ Můžete upravit název a popis katalogu. Uživatelé uvidí tyto informace v po
 
 1. Na stránce **Přehled** katalogu klikněte na **Upravit**.
 
-1. Upravte název nebo popis katalogu.
+1. Upravte název, popis nebo povolené nastavení katalogu.
+
+    ![Upravit nastavení katalogu](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Klikněte na **Uložit**.
 

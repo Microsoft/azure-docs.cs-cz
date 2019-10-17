@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877837"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430703"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>Co je řešení VMware v Azure podle CloudSimple
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Co je řešení Azure VMware podle CloudSimple
 
-**Řešení VMware v Azure pomocí CloudSimple** je plně spravovaná služba, která umožňuje spouštět platformu VMware v Azure. Toto řešení zahrnuje vSphere, vCenter, síti vSAN, NSX-T a odpovídající nástroje. Vaše prostředí VMware běží nativně na holé infrastruktuře Azure v cloudových umístěních Azure. Služba zahrnuje všechny funkce potřebné ke efektivnímu a bezpečnému využívání platforem VMware.
+**Řešení Azure VMware od CloudSimple** je plně spravovaná služba, která umožňuje spouštět platformu VMware v Azure. Toto řešení zahrnuje vSphere, vCenter, síti vSAN, NSX-T a odpovídající nástroje. Vaše prostředí VMware běží nativně na holé infrastruktuře Azure v cloudových umístěních Azure. Služba zahrnuje všechny funkce potřebné ke efektivnímu a bezpečnému využívání platforem VMware.
 
 ![Řešení VMware v Azure podle CloudSimple – přehled](media/azure-vmware-solution-by-cloudsimple.png)
 
@@ -38,14 +38,14 @@ ms.locfileid: "69877837"
 
 * **Provozní kontinuita**. CloudSimple nabízí nativní přístup k platformám VMware. Architektura CloudSimple je kompatibilní s vaším stávajícím:
     * Aplikace
-    * Operace
+    * Operations
     * Zabezpečení
-    * Zálohovat
+    * Backup
     * Zotavení po havárii
     * Auditování
     * Nástroje pro dodržování předpisů
     * Procesy
-* **Žádná**rekurze. Kompatibilita platformy VMware umožňuje využívat stávající dovednosti a znalosti.
+* **Žádná rekurze**. Kompatibilita platformy VMware umožňuje využívat stávající dovednosti a znalosti.
 * **Flexibilita infrastruktury**. Už nemusíte předpovídat všechny nároky na kapacitu a pak končit neočekávanými kapacitami nebo nedostupnými infrastrukturami. CloudSimple se doručuje jako cloudová služba a kdykoli můžete kdykoli přidat nebo snížit kapacitu.
 * **Zabezpečení.** Přístup k prostředí CloudSimple prostřednictvím Azure poskytuje integrovanou DDoS ochranu a monitorování zabezpečení.
 * **Nižší náklady**. Platforma CloudSimple je vysoce inženýrovaná a poskytuje vysoké úrovně automatizace, provozní efektivity a úspory. CloudSimple navíc zveřejňuje architektury řešení, které využívají přítomnost VMware ve veřejném cloudu a snižuje tak náklady. Mezi příklady patří Azure AD, zálohování do úložiště Azure, Application Gateway, nástroj pro vyrovnávání zatížení a další.
@@ -63,7 +63,7 @@ ms.locfileid: "69877837"
 
 ![Scénáře](media/cloudsimple-scenarios.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření služby CloudSimple](quickstart-create-cloudsimple-service.md)
 * [Vytvoření privátního cloudu](quickstart-create-private-cloud.md)

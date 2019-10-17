@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075273"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430052"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Přijetí podmíněného přístupu Azure AD
 
@@ -45,14 +45,14 @@ Další informace o zákaznících a partnerských zkušenostech s podmíněným
 
 ## <a name="announcements"></a>Oznámení
 
-Azure AD obdrží vylepšení průběžně. Pokud chcete mít přehled o nejnovějším vývoji, přečtěte si téma [co je nového v Azure Active Directory?](../fundamentals/whats-new.md)
+Služba Azure AD průběžně přijímá vylepšení. Pokud chcete mít přehled o nejnovějším vývoji, přečtěte si téma [co je nového v Azure Active Directory?](../fundamentals/whats-new.md)
 
 Poslední Blogy pro technickou komunitu a oddělení identity Microsoftu:
 
 * 24. září 2018 [Azure Active Directory podmíněný přístup v Azure Databricks](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
 * 21. září 2018 [jsou vlastní ovládací prvky podmíněného přístupu Azure AD ve verzi Public Preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/) .
 * 21. září 2018 [je teď dostupná podpora podmíněného přístupu Azure AD pro omezený přístup s Microsoft Cloud App Security](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/) .
-* 21. září 2018, [podmíněný přístup Azure AD: Podpora spravovaného prohlížeče pro platformy iOS/Android je teď ve verzi Preview.](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
+* 21. září 2018, [podmíněný přístup Azure AD: podpora spravovaného prohlížeče pro platformy iOS/Android je teď ve verzi Preview.](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
 * 21. září 2018, [podmíněný přístup Azure AD pro kódy zemí je ve verzi Public Preview](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/) .
 * 21. září 2018, [dnes k dispozici Azure AD terms-of-use](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
 
@@ -69,7 +69,6 @@ Pokud chcete získat přehled o funkcích podmíněného přístupu Azure AD, po
 
 Kromě toho si přečtěte následující odkazy, kde najdete pokyny k ochraně přístupu ke všem službám, které jsou integrované s Azure Active Directory.
 
-* [Co je základní ochrana (Preview)?](baseline-protection.md) Základní ochrana zajišťuje, že máte ve svém Azure Active Directory prostředí alespoň úroveň zabezpečení povolenou.
 * [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). V této části najdete popis postupu konfigurace zabezpečeného přístupu ke cloudovým službám prostřednictvím Enterprise Mobility + Security produktů implementací doporučeného prostředí a konfigurace, včetně předepsané sady zásad podmíněného přístupu a souvisejících možností.
 * [Odkaz na nastavení Azure Active Directory podmíněného přístupu](technical-reference.md) Seznámit
    * Jaké aplikace používají podmíněný přístup?
@@ -97,7 +96,7 @@ Přečtěte si následující kurzy podmíněného přístupu a další informac
 * Pluralsight.com: [Návrh ověřování pro Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
    * "Tento kurz vysvětluje, jak pomocí Azure AD řešit všechny požadavky na cloudové ověřování." Podmíněný přístup Azure AD je popsaný v tématu požadavky na ověřování v různých scénářích.
 
-* Pluralsight.com: [Autorizace návrhu pro Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
+* Pluralsight.com: [autorizace návrhu pro Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
    * "Tento kurz učí možnosti autorizace dostupné v Azure a Azure AD." Podmíněný přístup Azure AD je popsaný v tématu "autorizace pomocí Azure Resource Manager a Azure AD".
 
 ### <a name="books"></a>Knihy
@@ -108,7 +107,7 @@ Přečtěte si následující kurzy podmíněného přístupu a další informac
 * Wiley – [hlavní služby Microsoft Azure infrastruktury](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
    * "Tady je vše, co potřebujete, abyste pochopili, vyhodnotili, nasadili a zachovali prostředí, která využívají Microsoft Azure."
 
-## <a name="white-papers"></a>Dokumenty white paper
+## <a name="white-papers"></a>Whitepapery
 
 * Publikováno 18. prosince 2018, [vytvoření strategie správy odolného řízení přístupu pomocí Azure Active Directory](../authentication/concept-resilient-controls.md)
    * Tento dokument obsahuje pokyny o strategiích, které může organizace přijmout pro zajištění odolnosti proti riziku uzamčení během nepředvídatelných přerušení.
@@ -116,7 +115,7 @@ Přečtěte si následující kurzy podmíněného přístupu a další informac
 * Publikováno 18. září 2018, [prostředky pro migraci aplikací do Azure Active Directory](../manage-apps/migration-resources.md)
    * Tento dokument white paper obsahuje seznam prostředků, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD).
 
-* Publikováno 12. července 2018 [podrobný plán zabezpečení a dodržování předpisů Azure: PaaS hostování webových aplikací pro Velkou Británii pro oficiální úlohy](../../security/blueprints/ukofficial-paaswa-overview.md)
+* Publikováno 12. července 2018 [podrobný plán zabezpečení a dodržování předpisů Azure: PaaS pro hostování webových aplikací pro Velkou Británii pro oficiální úlohy](../../security/blueprints/ukofficial-paaswa-overview.md)
    * Plány Azure se skládají z doprovodnéch dokumentů a šablon automatizace, které nasazují cloudové architektury, a nabízejí řešení scénářů, které mají požadavky na akreditaci nebo dodržování předpisů.
 
 ## <a name="guidance-for-it-administrators"></a>Doprovodné materiály pro správce IT
@@ -129,26 +128,26 @@ Tady jsou užitečné odkazy, které vám pomůžou začít:
 
 * [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md)
 * [Pomocí kontrol přístupu Azure AD můžete spravovat uživatele, kteří byli vyloučení ze zásad podmíněného přístupu.](../governance/conditional-access-exclusion.md)
-* [Postup: Plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md)
-* [Rychlé zprovoznění: Vyžadovat MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md)
-* [Rychlé zprovoznění: Vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly požadavky na použití](require-tou.md)
-* [Rychlé zprovoznění: Blokovat přístup v případě zjištění rizika relace s Azure Active Directory podmíněný přístup](app-sign-in-risk.md)
+* [Postupy: plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md)
+* [Rychlý Start: vyžadování MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md)
+* [Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití](require-tou.md)
+* [Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup](app-sign-in-risk.md)
 * [Nejčastější dotazy týkající se podmíněného přístupu Azure AD](faqs.md)
    * Další otázky můžete zobrazit také ve [fóru MSDN](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure).
    * Pokud nemůžete najít odpověď na problém, naši týmy podpory vám budou mít k dispozici vždycky. Použijte [kontaktujte podporu Microsoftu](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
 ### <a name="tutorials"></a>Kurzy
 
-* [**Rychlý Start Vyžadovat MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup**](app-based-mfa.md)
+* [**Rychlý Start: vyžadování MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup**](app-based-mfa.md)
    * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásady podmíněného přístupu Azure AD, které pro vybranou cloudovou aplikaci ve vašem prostředí vyžadují službu Multi-Factor Authentication.
 
-* [**Rychlý Start Vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly požadavky na použití**](require-tou.md)
+* [**Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití**](require-tou.md)
    * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásadu podmíněného přístupu Azure AD, která vyžaduje přijetí podmínky použití pro vybranou cloudovou aplikaci ve vašem prostředí.
 
-* [**Rychlý Start Blokovat přístup v případě zjištění rizika relace s Azure Active Directory podmíněný přístup**](app-sign-in-risk.md)
+* [**Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup**](app-sign-in-risk.md)
    * V tomto rychlém startu se dozvíte, jak nakonfigurovat zásady podmíněného přístupu, které blokují přihlášení, když se zjistí nakonfigurovaná úroveň rizika přihlašování.
 
-* [Kurz: **Migrace klasických zásad, které vyžadují vícefaktorové ověřování v Azure Portal**](policy-migration-mfa.md)
+* [Kurz: **migrace klasických zásad, které vyžadují službu Multi-Factor Authentication v Azure Portal**](policy-migration-mfa.md)
    * V tomto kurzu se dozvíte, jak migrovat klasické zásady, které pro cloudovou aplikaci vyžadují vícefaktorové ověřování (MFA).
 
 ## <a name="end-user-readiness-and-communication"></a>Připravenost koncových uživatelů a komunikace

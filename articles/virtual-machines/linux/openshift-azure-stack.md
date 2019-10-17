@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082595"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390654"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasazení kontejnerové platformy OpenShift nebo OKD v Azure Stack
 
@@ -66,9 +66,9 @@ Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 - OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
 - Odkaz na obrázek RHEL (proměnná v azuredeploy. JSON)
 
-Postup nasazení pomocí Azure CLI najdete v příslušné části v části [OpenShift Container Platform](./openshift-container-platform.md) nebo v části [OKD](./openshift-okd.md) .
+Postup nasazení pomocí Azure CLI najdete v příslušné části v části [OpenShift Container Platform](./openshift-container-platform-3x.md) nebo v části [OKD](./openshift-okd.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úkoly po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazením OpenShift v Azure](./openshift-troubleshooting.md)
+- [Úkoly po nasazení](./openshift-container-platform-3x-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift v Azure](./openshift-container-platform-3x-troubleshooting.md)

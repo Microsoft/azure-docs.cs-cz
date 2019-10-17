@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811717"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436805"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
 
@@ -21,7 +21,7 @@ Klíče s velkými oddíly se podporují pomocí funkce Rozšířené verze funk
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Vytvoření klíče s velkým oddílem (Azure Portal)
 
-Pokud chcete vytvořit velký klíč oddílu a při vytváření nového kontejneru pomocí Azure Portal, podívejte se, jestli **je klíč oddílu můj oddíl větší než 100 bajtů** . Ve výchozím nastavení se všechny nové kontejnery přihlásily k používání velkých klíčů oddílu. Zrušte zaškrtnutí políčka, pokud nepotřebujete klíče velkých oddílů, nebo pokud máte aplikace spuštěné v sadách SDK verze starší než 1,18.
+Pokud chcete vytvořit velký klíč oddílu, když vytvoříte nový kontejner pomocí Azure Portal, podívejte se, jestli **je klíč oddílu můj oddíl větší než 100 bajtů** . Zrušte zaškrtnutí políčka, pokud nepotřebujete klíče velkých oddílů, nebo pokud máte aplikace spuštěné v sadách SDK verze starší než 1,18.
 
 ![Vytváření velkých klíčů oddílů pomocí Azure Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
 

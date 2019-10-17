@@ -1,6 +1,6 @@
 ---
 title: Používání podmínek v šablonách Azure Resource Manageru | Microsoft Docs
-description: Zjistěte, jak nasazovat prostředky Azure na základě podmínek.
+description: Zjistěte, jak nasazovat prostředky Azure na základě podmínek. Ukazuje, jak nasadit nový prostředek nebo použít existující prostředek.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258871"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390198"
 ---
-# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Použití podmínky v šablonách Azure Resource Manager
+# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Používání podmínek v šablonách Azure Resource Manageru
 
 Zjistěte, jak nasazovat prostředky Azure na základě podmínek.
 
@@ -36,16 +36,16 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Vyčištění prostředků
 
-Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématu:
+Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace:
 
-* [Struktura souboru šablony: Podmínka](conditional-resource-deployment.md).
+* [Struktura souboru šablony: podmínka](conditional-resource-deployment.md)
 * [Podmíněně nasaďte prostředek do šablony Azure Resource Manager](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
-* [Funkce šablony: If](./resource-group-template-functions-logical.md#if).
+* [Funkce šablony: if](./resource-group-template-functions-logical.md#if).
 * [Funkce porovnání pro šablony Azure Resource Manager](./resource-group-template-functions-comparison.md)
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -56,7 +56,7 @@ K dokončení tohoto článku potřebujete:
     openssl rand -base64 32
     ```
 
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v tématu [kurz: Integruje Azure Key Vault do Správce prostředků](./resource-manager-tutorial-use-key-vault.md)Template Deployment. Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -174,7 +174,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the same resource group name you u
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili šablonu, která uživatelům umožňuje vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Informace o načítání tajných klíčů ze služby Azure Key Vault a jejich použití jako hesel v nasazení šablony najdete tady:
 

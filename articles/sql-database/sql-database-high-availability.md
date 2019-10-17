@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 10/11/2019
-ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299710"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390699"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -88,6 +88,13 @@ Redundantní verze architektury s vysokou dostupností v zóně je znázorněna 
 ## <a name="accelerated-database-recovery-adr"></a>Urychlené obnovení databáze (ADR)
 
 [Accelerated Database Recovery (ADR)](sql-database-accelerated-database-recovery.md) je nová funkce stroje SQL Database, která významně vylepšuje dostupnost databáze, zejména v případě dlouhotrvajících transakcí. Pro jednotlivé databáze, elastické fondy a Azure SQL Data Warehouse jsou aktuálně k dispozici pravidla automatického nasazení.
+
+## <a name="testing-database-fault-resiliency"></a>Testování odolnosti proti chybám databáze
+
+Vysoká dostupnost je fundamenental součástí platformy Azure SQL Database a funguje transparentně pro vaši databázovou aplikaci. Nicméně víme, že možná budete chtít otestovat, jak budou operace automatického převzetí služeb při selhání iniciované během plánovaných nebo neplánovaných událostí mít vliv na aplikaci předtím, než ji nasadíte do produkčního prostředí. Můžete zavolat speciální rozhraní API pro restartování databáze nebo elastického fondu, ve kterém se zase aktivuje převzetí služeb při selhání. V případě redundantní databáze nebo elastického fondu zóny by volání rozhraní API mělo za následek přesměrování připojení klientů k nové primární části v jiném AZ. Takže kromě testování toho, jak převzetí služeb při selhání ovlivňuje stávající relace databáze, můžete také ověřit, jestli má dopad na koncový výkon. Vzhledem k tomu, že je operace restartování rušivá a velký počet jejich prostředků by mohl zdůraznit, je pro každou databázi nebo elastický fond povolené jenom jedno volání převzetí služeb při selhání každé 30 minut. Podrobnosti najdete v tématu převzetí služeb při selhání [databáze](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) a [elastického fondu](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+
+> [!IMPORTANT]
+> Příkaz pro převzetí služeb při selhání není pro databáze Hypescale a spravovaných instancses aktuálně k dispozici.  
 
 ## <a name="conclusion"></a>Závěr
 

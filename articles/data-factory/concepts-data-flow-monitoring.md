@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030239"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387977"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -22,21 +22,21 @@ Po dokončení sestavování a ladění toku dat budete chtít tok dat naplánov
 
 Po spuštění kanálu budete moct monitorovat kanál a všechny aktivity obsažené v kanálu, včetně aktivity toku dat. Klikněte na ikonu monitorování na levém panelu uživatelského rozhraní Azure Data Factory. Zobrazí se obrazovka podobná té. Zvýrazněné ikony vám umožní přejít na aktivity v kanálu, včetně aktivity toku dat.
 
-(media/data-flow/mon001.png "Monitorování toku dat") ![monitorování toku dat]
+![Sledování toku dat](media/data-flow/mon001.png "Sledování toku dat")
 
 Na této úrovni uvidíte statistiky, včetně časů běhu a stavu. ID spuštění na úrovni aktivity se liší od ID běhu na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Kliknutím na brýlí získáte podrobné informace o spuštění toku dat.
 
-(media/data-flow/mon002.png "Monitorování toku dat") ![monitorování toku dat]
+![Sledování toku dat](media/data-flow/mon002.png "Sledování toku dat")
 
 Když jste v zobrazení monitorování grafického uzlu, zobrazí se zjednodušená verze grafu toku dat, která je jen pro zobrazení.
 
-(media/data-flow/mon003.png "Monitorování toku dat") ![monitorování toku dat]
+![Sledování toku dat](media/data-flow/mon003.png "Sledování toku dat")
 
 ## <a name="view-data-flow-execution-plans"></a>Zobrazit plány spuštění toku dat
 
 Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty kódu na základě celého toku dat. V různých uzlech a datových oddílech se škálováním na více instancí můžou být taky cesty spouštění. Proto graf monitorování představuje návrh toku, přičemž vezme v úvahu cestu spuštění vašich transformací. Po kliknutí na jednotlivé uzly se zobrazí "seskupení", která představuje kód, který byl spuštěn společně v clusteru. Časování a počty, které vidíte, tyto skupiny zastupují na rozdíl od jednotlivých kroků v návrhu.
 
-(media/data-flow/mon004.png "Monitorování toku dat") ![monitorování toku dat]
+![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
 
 * Když kliknete na volné místo v okně monitorování, v dolním podokně se zobrazí počty časování a řádků pro každou jímku a transformace, které vedly k datům jímky pro transformaci.
 
@@ -52,6 +52,6 @@ Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty k�
 
 Tato ikona znamená, že data transformace již byla v clusteru uložena do mezipaměti, takže časování a cesta provádění poberou v úvahu:
 
-(media/data-flow/mon004.png "Monitorování toku dat") ![monitorování toku dat]
+![Sledování toku dat](media/data-flow/mon004.png "Sledování toku dat")
 
 V transformaci se zobrazí taky ikony zelených kroužků. Představují Počet umyvadel, do kterých data přecházejí.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 59f8035aa69f21196a2134bf6bc1b12f3e5b34c4
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815715"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437948"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaná rozšíření konfigurace stavu pomocí šablon Azure Resource Manager
 
@@ -193,7 +193,7 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript, 
 
 ## <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
-Další informace o následujících hodnotách naleznete v tématu [místní nastavení Configuration Manager Basic](/powershell/dsc/metaconfig#basic-settings).
+Další informace o následujících hodnotách naleznete v tématu [místní nastavení Configuration Manager Basic](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Můžete použít výchozí konfigurační skript rozšíření DSC ke konfiguraci pouze vlastností LCM, které jsou uvedeny v následující tabulce.
 
 | Název vlastnosti | Typ | Popis |
@@ -430,4 +430,4 @@ možnost. Konfigurace. adresa URL vyžaduje, aby byla zadána položka Settings.
 - Přečtěte si o [používání služby Virtual Machine Scale Sets s rozšířením Azure DSC](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - Přečtěte si další podrobnosti o [správě zabezpečených přihlašovacích údajů DSC](dsc-credentials.md).
 - Získejte [Úvod k obslužné rutině rozšíření Azure DSC](dsc-overview.md).
-- Další informace o prostředí PowerShell DSC najdete v [centru dokumentace PowerShellu](/powershell/dsc/overview).
+- Další informace o prostředí PowerShell DSC najdete v [centru dokumentace PowerShellu](/powershell/scripting/dsc/overview/overview).

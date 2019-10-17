@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030145"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387995"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou mapování toků dat?
 
@@ -24,7 +24,7 @@ Mapování toků dat poskytuje plně vizuální prostředí bez nutnosti kódov�
 
 Tok dat vytvoříte kliknutím na znaménko plus v části prostředky továrny. 
 
-Nový tok ![dat](media/data-flow/newdataflow2.png "Nový tok dat")
+![Nový tok dat](media/data-flow/newdataflow2.png "Nový tok dat")
 
 Tím přejdete na plátno toku dat, kde můžete vytvořit logiku transformace. Kliknutím na pole přidat zdroj můžete začít konfigurovat transformaci zdroje. Další informace najdete v tématu [transformace zdroje](data-flow-source.md).
 
@@ -32,13 +32,13 @@ Tím přejdete na plátno toku dat, kde můžete vytvořit logiku transformace. 
 
 Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-(media/data-flow/canvas1.png "Plátno") ![plátna]
+![Kreslicí](media/data-flow/canvas1.png "Kreslicí")
 
 ### <a name="graph"></a>Graf
 
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, klikněte na pole přidat zdroj. Chcete-li přidat novou transformaci, klikněte na znaménko plus v pravém dolním rohu existující transformace.
 
-(media/data-flow/canvas2.png "Plátno") ![plátna]
+![Kreslicí](media/data-flow/canvas2.png "Kreslicí")
 
 ### <a name="configuration-panel"></a>Panel konfigurace
 
@@ -50,13 +50,13 @@ Každá transformace má alespoň čtyři karty konfigurace:
 
 První karta v podokně Konfigurace každé transformace obsahuje nastavení specifická pro tuto transformaci. Další informace najdete na stránce s dokumentací k této transformaci.
 
-(media/data-flow/source1.png "Karta nastavení zdroje") na ![kartě nastavení zdroje]
+![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
 #### <a name="optimize"></a>Optimalizace
 
 Karta _optimalizace_ obsahuje nastavení pro konfiguraci schémat dělení.
 
-![Optimalizovat](media/data-flow/optimize1.png "optimalizaci")
+![Optimalizovat](media/data-flow/optimize1.png "Optimalizace")
 
 Výchozí nastavení je "použít aktuální dělení na oddíly", který dává pokyn Azure Data Factory k použití schématu dělení do toků dat běžících na Sparku. Ve většině scénářů je toto nastavení doporučený postup.
 
@@ -92,7 +92,7 @@ Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření o
 
 Karta _Kontrola_ poskytuje zobrazení metadat datového proudu, který transformuje. Můžete zobrazit počty sloupců, změněné sloupce, přidané sloupce, datové typy, řazení sloupců a odkazy na sloupce. Kontrola je zobrazení vašich metadat jen pro čtení. Není nutné mít povolen režim ladění, aby bylo možné zobrazit metadata v podokně kontrola.
 
-![Zkontrolovat](media/data-flow/inspect1.png "kontrolu")
+![Prohlížen](media/data-flow/inspect1.png "Prohlížen")
 
 Když změníte tvar dat prostřednictvím transformací, zobrazí se v podokně kontrola změny metadat. Pokud ve zdrojové transformaci není definované schéma, metadata se v podokně kontrola nezobrazí. Nedostatek metadat je běžné ve scénářích pro posun schématu.
 
@@ -104,11 +104,11 @@ Pokud je režim ladění zapnutý, karta _Náhled dat_ vám poskytne interaktivn
 
 Horní panel obsahuje akce, které ovlivňují celý tok dat, jako je například ukládání a ověřování. Můžete také přepínat mezi režimy grafu a konfigurace pomocí tlačítek **Zobrazit graf** a **Skrýt graf** .
 
-![Skrýt]graf pro(media/data-flow/hideg.png "skrytí") grafu
+![Skrýt graf](media/data-flow/hideg.png "Skrýt graf")
 
 Pokud graf skryjete, můžete později procházet uzly pro transformaci prostřednictvím **předchozích** a **dalších** tlačítek.
 
-![](media/data-flow/showhide.png "Navigace") – navigace
+![Otevře](media/data-flow/showhide.png "Otevře")
 
 ## <a name="next-steps"></a>Další kroky
 

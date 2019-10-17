@@ -10,17 +10,64 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 10/15/2019
 ms.author: raiye
-ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035178"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430165"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="october-2019-guest-os"></a>Října 2019 hostovaný operační systém
+
+>[!NOTE]
+>Hostovaný operační systém v říjnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V říjnu hostovaného operačního systému jsou zahrnuté následující opravy. Tento seznam se může změnit.
+
+| Kategorie produktů | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 19-10   |  [4520003]  |  Zabezpečení systému Windows   |  2,91  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519985]  |  Zabezpečení systému Windows   |  3,78  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519990]  |  Zabezpečení systému Windows   |  4,71  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519998]  |  Nejnovější kumulativní aktualizace   |  5,36  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519338]  |  Nejnovější kumulativní aktualizace   |  6,12  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  Říjen 8, 2019  |
+|  Rel. 19-10   |  [4516065]  |  Bez zabezpečení   |  2,91  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516655]  |  CESTOU nadřazené   |  2,91  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516055]  |  Bez zabezpečení   |  3,78  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512939]  |  CESTOU nadřazené   |  3,78  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514370]  |  .NET Framework 3,5   |  3,78  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3,78  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4516067]  |  Bez zabezpečení   |  4,71  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512938]  |  CESTOU nadřazené   |  4,71  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514371]  |  .NET Framework 3,5   |  4,71  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4,71  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512574]  |  CESTOU nadřazené   |  5,36  |  Září 10, 2019  |
+|  Rel. 19-10   |  [4512577]  |  CESTOU nadřazené   |  6,12  |  Září 10, 2019  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+
 
 ## <a name="september-2019-guest-os"></a>Hostovaný operační systém od září 2019
 

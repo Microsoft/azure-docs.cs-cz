@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Maskování dynamických dat | Dokumentace Microsoftu
-description: SQL Database dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům bez oprávnění.
+title: Dynamické maskování dat pro Azure SQL Database a datový sklad | Dokumentace Microsoftu
+description: Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům, kteří nejsou privilegovanými oprávněními, pro SQL Database a datový sklad.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,14 +11,14 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568755"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430118"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>SQL Database dynamické maskování dat
+# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamické maskování dat pro Azure SQL Database a datový sklad
 
 SQL Database dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům bez oprávnění. 
 
@@ -26,7 +26,7 @@ Dynamické maskování dat pomáhá předcházet neoprávněnému přístupu k c
 
 Například zástupce služby v centru volání může identifikovat volajících několika číslicemi čísla platební karty, ale tyto datové položky by se zástupci služby neměli plně zveřejnit. Je možné definovat pravidlo maskování, které maskuje všechny kromě posledních čtyř číslic čísla platební karty v sadě výsledků dotazu. Dalším příkladem je, že se dá definovat vhodná maska dat pro ochranu osobních údajů (PII), aby se vývojář mohl dotazovat na produkční prostředí, aniž by porušil předpisy pro dodržování předpisů.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>Základy dynamického maskování dat SQL Database
+## <a name="dynamic-data-masking-basics"></a>Základy dynamického maskování dat
 
 Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v okně konfigurace SQL Database nebo v okně nastavení vyberete operaci Maskování dynamických dat.
 
@@ -42,11 +42,11 @@ Dynamické maskování dat lze konfigurovat pomocí rolí správce Azure SQL Dat
 
 | Funkce maskování | Logika maskování |
 | --- | --- |
-| **Výchozí** |**Úplná maskování podle datových typů určených polí**<br/><br/>• Použijte XXXX nebo míň XS, pokud je velikost pole menší než 4 znaky pro řetězcové datové typy (nchar, ntext, nvarchar).<br/>• Použijte nulovou hodnotu pro číselné datové typy (bigint, bit, Decimal, int, Money, Numeric, smallint, smallmoney, tinyint, float, reálné).<br/>• Použijte 01-01-1900 pro datové typy datum/čas (datum, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Pro variantu SQL se používá výchozí hodnota aktuálního typu.<br/>• Pro XML se používá \<dokument s maskou/>.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (tabulka časového razítka, hierarchyid, GUID, binární, image, varbinary prostorového typu). |
+| **Výchozí** |**Úplná maskování podle datových typů určených polí**<br/><br/>• Použijte XXXX nebo míň XS, pokud je velikost pole menší než 4 znaky pro řetězcové datové typy (nchar, ntext, nvarchar).<br/>• Použijte nulovou hodnotu pro číselné datové typy (bigint, bit, Decimal, int, Money, Numeric, smallint, smallmoney, tinyint, float, reálné).<br/>• Použijte 01-01-1900 pro datové typy datum/čas (datum, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Pro variantu SQL se používá výchozí hodnota aktuálního typu.<br/>• Pro XML se používá dokument @no__t – 0Masked/>.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (tabulka časového razítka, hierarchyid, GUID, binární, image, varbinary prostorového typu). |
 | **Platební karta** |**Metoda maskování, která zpřístupňuje poslední čtyři číslice určených polí** a přidá konstantní řetězec jako předponu ve formě platební karty.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mailu** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
-| **Náhodné číslo** |**Metoda maskování, která generuje náhodné číslo** podle vybraných hranic a skutečných datových typů. Pokud jsou určené hranice stejné, pak funkce maskování je konstantní číslo.<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Vlastní text** |**Metoda maskování, která zpřístupňuje první a poslední znak** a přidá vlastní řetězec odsazení uprostřed. Je-li původní řetězec kratší než nezveřejněná předpona a přípona, je použit pouze řetězec odsazení. <br/>prefix[padding]suffix<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **E-mail** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
+| **Náhodné číslo** |**Metoda maskování, která generuje náhodné číslo** podle vybraných hranic a skutečných datových typů. Pokud jsou určené hranice stejné, pak funkce maskování je konstantní číslo.<br/><br/>@no__t – podokno 0Navigation @ no__t-1 |
+| **Vlastní text** |**Metoda maskování, která zpřístupňuje první a poslední znak** a přidá vlastní řetězec odsazení uprostřed. Je-li původní řetězec kratší než nezveřejněná předpona a přípona, je použit pouze řetězec odsazení. <br/>Přípona předpony [odsazení]<br/><br/>@no__t – podokno 0Navigation @ no__t-1 |
 
 <a name="Anchor1"></a>
 

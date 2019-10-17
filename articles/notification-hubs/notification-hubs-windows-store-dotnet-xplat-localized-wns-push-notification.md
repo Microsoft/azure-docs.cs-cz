@@ -17,14 +17,14 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213374"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387407"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Kurz: Doručovat lokalizovaná oznámení do aplikací pro Windows pomocí Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Kurz: posílání lokalizovaných nabízených oznámení do aplikací pro Windows pomocí Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -32,7 +32,7 @@ ms.locfileid: "71213374"
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se naučíte zasílat lokalizovaná nabízená oznámení mobilním zařízením registrovaným ve službě Notification Hubs. V tomto kurzu aktualizujete aplikace vytvořené v tomto [kurzu: Odesílat oznámení na konkrétní zařízení (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) , aby podporovala následující scénáře:
+V tomto kurzu se naučíte zasílat lokalizovaná nabízená oznámení mobilním zařízením registrovaným ve službě Notification Hubs. V tomto kurzu budete aktualizovat aplikace vytvořené v [kurzu o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md), aby podporovaly následující scénáře:
 
 - Aplikace pro Windows Store umožňuje klientským zařízením zadat jazyk a přihlásit se k odběru různých kategorií hlavních zpráv.
 - Back-endové aplikace vysílá oznámení pomocí **značek** a funkcí **šablon** služby Azure Notification Hubs.
@@ -42,15 +42,15 @@ Po dokončení kurzu si budete moct v mobilní aplikaci zaregistrovat kategorie,
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Aktualizace aplikací pro Windows, aby podporovaly informace o národním prostředí
+> * Aktualizovat aplikace pro Windows, aby podporovaly informace o národním prostředí
 > * Aktualizovat back-endovou aplikaci, aby posílala lokalizovaná oznámení
-> * Testování aplikace
+> * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Dokončete [kurz: Odesílat oznámení na konkrétní zařízení (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+Dokončete [kurz o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-V tomto [kurzu: Odesílat oznámení na konkrétní zařízení (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md), vytvořili jste aplikaci, která používá **značky** k přihlášení k odběru oznámení pro různé **kategorie**zpráv. V tomto kurzu použijete funkci **šablony** služby Notification Hubs, která umožňuje jednoduše doručovat **lokalizovaná** oznámení nejdůležitějších zpráv.
+V [kurzu o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) jste vytvořili aplikaci, která k přihlášení odběru oznámení pro různé **kategorie** novinek používala **značky**. V tomto kurzu použijete funkci **šablony** služby Notification Hubs, která umožňuje jednoduše doručovat **lokalizovaná** oznámení nejdůležitějších zpráv.
 
 Šablony nabízejí způsob, jak na vyšší úrovni zadat formát, ve kterém má určité zařízení dostávat oznámení. Šablona přesně určuje formát datové části tím, že odkazuje na vlastnosti, které jsou součástí zprávy odeslané back-endovou aplikací. V tomto kurzu back-endová aplikace pošle zprávu, která je určená pro všechna národní prostředí a obsahuje všechny podporované jazyky:
 
@@ -76,10 +76,10 @@ Zařízení si zaregistrují šablonu, která odkazuje na správnou vlastnost. N
 
 Další informace o šablonách najdete v tématu [šablony nabízených oznámení](notification-hubs-templates-cross-platform-push-messages.md).
 
-## <a name="update-windows-app-to-support-locale-information"></a>Aktualizace aplikací pro Windows, aby podporovaly informace o národním prostředí
+## <a name="update-windows-app-to-support-locale-information"></a>Aktualizovat aplikace pro Windows, aby podporovaly informace o národním prostředí
 
-1. Otevřete řešení sady Visual Studio, které jste vytvořili [pro tento kurz: Odesílat oznámení na konkrétní zařízení (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
-2. Aktualizujte `MainPage.xaml` soubor řešení tak, aby zahrnoval pole se seznamem národního prostředí:
+1. Otevřete řešení sady Visual Studio, které jste vytvořili v [kurzu o zasílání oznámení určitým zařízením (Univerzální platforma Windows)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+2. Aktualizujte soubor `MainPage.xaml` řešení tak, aby zahrnoval pole se seznamem národního prostředí:
 
     ```xml
     <Grid Margin="120, 58, 120, 80"  
@@ -111,7 +111,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. Ve třídě přidejte parametr národního prostředí `StoreCategoriesAndSubscribe` do metod a `SubscribeToCategories`. `Notifications`
+3. Ve třídě `Notifications` přidejte do metod `StoreCategoriesAndSubscribe` a `SubscribeToCategories` parametr locale.
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -138,7 +138,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
     }
     ```
 
-    Namísto volání `RegisterNativeAsync` metody zavolejte `RegisterTemplateAsync`. Zaregistrujte určitý formát oznámení, ve kterém šablona závisí na národním prostředí. Zadejte také název šablony (localizedWNSTemplateExample), protože možná budete chtít zaregistrovat více šablon (například jednu pro informační oznámení a druhou pro dlaždice). Pojmenování je také důležité, abyste mohli šablony aktualizovat nebo odstranit.
+    Namísto volání metody `RegisterNativeAsync` volejte `RegisterTemplateAsync`. Zaregistrujte určitý formát oznámení, ve kterém šablona závisí na národním prostředí. Zadejte také název šablony (localizedWNSTemplateExample), protože možná budete chtít zaregistrovat více šablon (například jednu pro informační oznámení a druhou pro dlaždice). Pojmenování je také důležité, abyste mohli šablony aktualizovat nebo odstranit.
 
     Pokud si zařízení zaregistruje více šablon se stejnou značkou, doručí se do zařízení příchozí zpráva v několika oznámeních (jedno pro každou šablonu) určených pro výslednou značku. Toto chování je užitečné, pokud se má stejná logická zpráva zobrazit v několika oznámeních, třeba jako oznámení a informační zpráva v aplikaci pro Windows Store.
 4. Pokud chcete načíst uložené národní prostředí, přidejte následující metodu:
@@ -151,7 +151,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
     }
     ```
 
-5. V souboru aktualizujte obslužnou rutinu kliknutí na tlačítko a načtěte aktuální hodnotu pole se seznamem národního prostředí a poskytněte ji volání `Notifications` třídy: `MainPage.xaml.cs`
+5. V souboru `MainPage.xaml.cs` aktualizujte obslužnou rutinu kliknutí na tlačítko, aby se načetla aktuální hodnota pole se seznamem národního prostředí a poskytovala volání ke třídě `Notifications`:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
         await dialog.ShowAsync();
     }
     ```
-6. Nakonec v `App.xaml.cs` souboru `InitNotificationsAsync` aktualizujte metodu pro načtení národního prostředí a použijte ji při přihlášení k odběru:
+6. Nakonec v souboru `App.xaml.cs` aktualizujte metodu `InitNotificationsAsync` pro načtení národního prostředí a použijte ho při přihlášení k odběru:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -199,7 +199,7 @@ Další informace o šablonách najdete v tématu [šablony nabízených oznáme
 1. Spusťte aplikaci Univerzální platforma Windows. Počkejte, až se zobrazí zpráva o **úspěšné registraci**.
 
     ![Mobilní aplikace a registrace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. Vyberte **kategorie** a **národní prostředí** a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o novou registraci zařízení.
+2. Vyberte **kategorie** a **národní prostředí** a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení.
 
     ![Mobilní aplikace](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
 3. Zobrazí se **potvrzovací** zpráva o **odběrech**.

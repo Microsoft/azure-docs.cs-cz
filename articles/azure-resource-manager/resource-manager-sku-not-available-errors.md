@@ -1,6 +1,6 @@
 ---
-title: Azure SKU není k dispozici chyby | Dokumentace Microsoftu
-description: Popisuje postup řešení potíží s SKU není k dispozici při nasazení.
+title: Chyby SKU Azure nejsou k dispozici | Microsoft Docs
+description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při nasazování prostředků pomocí Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1dd0532452c3558e53f0236998953d2055ed328c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390736"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390221"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb pro SKU není k dispozici
 
-Tento článek popisuje, jak vyřešit **zprávy typu SkuNotAvailable** chyby. Pokud nemůžete najít vhodné SKU v dané oblasti nebo alternativní oblast, která splňuje vaše obchodní potřeby, odešlete [SKU požadavek](https://aka.ms/skurestriction) podpory Azure.
+Tento článek popisuje, jak vyřešit chybu **SkuNotAvailable** . Pokud nemůžete najít vhodnou skladovou jednotku v této oblasti nebo v jiné oblasti, která vyhovuje vašim obchodním potřebám, odešlete [požadavek na SKU](https://aka.ms/skurestriction) do podpory Azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Příznak
 
-Při nasazování prostředků (obvykle virtuálního počítače), se zobrazí následující kód chyby a chybová zpráva:
+Při nasazování prostředku (obvykle se jedná o virtuální počítač) se zobrazí následující kód chyby a chybová zpráva:
 
 ```
 Code: SkuNotAvailable
@@ -38,17 +38,17 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba se zobrazí, když není k dispozici pro umístění, které jste vybrali prostředek SKU, které jste vybrali (jako je například velikost virtuálního počítače).
+Tato chyba se zobrazí, pokud pro vybrané umístění není k dispozici SKU prostředků (například velikost virtuálního počítače).
 
 ## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
 
-Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) příkazu. Filtrovat výsledky podle umístění. Musíte mít nejnovější verzi prostředí PowerShell pro tento příkaz.
+K určení, které SKU jsou k dispozici v určité oblasti, použijte příkaz [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) . Filtrovat výsledky podle umístění. Pro tento příkaz musíte mít nejnovější verzi PowerShellu.
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Výsledky obsahovat seznam skladových položek pro umístění a všechna omezení pro dané skladové jednotce. Všimněte si, že se skladová položka může být uvedena jako `NotAvailableForSubscription`.
+Výsledky obsahují seznam SKU pro umístění a veškerá omezení pro danou skladovou jednotku. Všimněte si, že SKU může být uvedeno jako `NotAvailableForSubscription`.
 
 ```powershell
 ResourceType          Name        Locations   Restriction                      Capability           Value
@@ -58,15 +58,15 @@ virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      M
 virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
+## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
 
-Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte `az vm list-skus` příkazu. Použití `--location` parametr filtrovat výstup do umístění, které používáte. Použití `--size` parametru hledání podle názvu částečné velikost.
+K určení, které SKU jsou k dispozici v oblasti, použijte příkaz `az vm list-skus`. K filtrování výstupu do umístění, které používáte, použijte parametr `--location`. Pomocí parametru `--size` můžete hledat podle názvu částečné velikosti.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table
 ```
 
-Příkaz vrátí výsledky, jako jsou:
+Příkaz vrátí výsledky jako:
 
 ```azurecli
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
@@ -78,23 +78,23 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 ```
 
 
-## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure portal
+## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure Portal
 
-Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidat prostředek prostřednictvím rozhraní. Při nastavování hodnoty, zobrazí se dostupné skladové položky pro daný prostředek. Není nutné k dokončení nasazení.
+K určení, které SKU jsou k dispozici v určité oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidejte prostředek přes rozhraní. Při nastavování hodnot se zobrazí dostupné SKU pro daný prostředek. Nemusíte dokončit nasazení.
 
-Například spusťte proces vytváření virtuálního počítače. Pokud chcete zobrazit další dostupné velikosti, vyberte **změnit velikost**.
+Zahajte například proces vytváření virtuálního počítače. Pokud chcete zobrazit další dostupnou velikost, vyberte **změnit velikost**.
 
 ![Vytvoření virtuálního počítače](./media/resource-manager-sku-not-available-errors/create-vm.png)
 
-Můžete filtrovat a posuňte se až si dostupné velikosti.
+Dostupné velikosti můžete filtrovat a procházet.
 
-![Dostupné skladové položky](./media/resource-manager-sku-not-available-errors/available-sizes.png)
+![Dostupné SKU](./media/resource-manager-sku-not-available-errors/available-sizes.png)
 
 ## <a name="solution-4---rest"></a>Řešení 4 – REST
 
-Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [skladové položky prostředků – seznam](/rest/api/compute/resourceskus/list) operace.
+Chcete-li zjistit, které skladové jednotky jsou k dispozici v určité oblasti, použijte operaci [seznam SKU prostředku](/rest/api/compute/resourceskus/list) .
 
-Vrátí dostupné skladové položky a oblastmi v následujícím formátu:
+Vrátí dostupné SKU a oblasti v následujícím formátu:
 
 ```json
 {

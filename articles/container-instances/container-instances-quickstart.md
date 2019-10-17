@@ -12,12 +12,12 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 111191aa664650fe1ffdfd8de492e13e98349b34
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327437"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429192"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -25,7 +25,7 @@ Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serve
 
 V tomto rychlém startu použijete Azure CLI k nasazení izolovaného kontejneru Docker a zpřístupníte jeho aplikaci s plně kvalifikovaným názvem domény (FQDN). Několik sekund po provedení jednoho příkazu pro nasazení můžete procházet do aplikace spuštěné v kontejneru:
 
-![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][aci-app-browser]
+![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
 
@@ -72,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 Pokud je `ProvisioningState` kontejneru **úspěšný**, v prohlížeči přejdete na jeho plně kvalifikovaný název domény. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
 
-![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure][aci-app-browser]
+![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
 
 Pokud se zpočátku aplikace nezobrazí, může být nutné několik sekund počkat, než se DNS rozšíří, a pak zkusit aktualizovat stránku v prohlížeči.
 
@@ -158,7 +158,7 @@ V tomto rychlém startu jste vytvořili službu Azure Container instance pomocí
 Pokud chcete vyzkoušet možnosti spuštění kontejnerů v systému orchestrace v Azure, přečtěte si téma rychlý Start pro [službu Azure Kubernetes (AKS)][container-service] .
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

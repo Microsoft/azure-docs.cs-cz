@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082558"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390637"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -31,7 +31,7 @@ OpenShift zahrnuje Kubernetes pro orchestraci a správu kontejnerů. Přidává 
 - Snadné nasazení a škálování.
 - Dlouhodobá údržba v životním cyklu pro týmy a aplikace.
 
-K dispozici je více verzí OpenShift.  Z těchto verzí jsou dnes k dispozici pouze dvě pro zákazníky k nasazení v Azure: OpenShift Container Platform a OKD (dřív OpenShift Origin).
+K dispozici je více verzí OpenShift.  Z těchto verzí jsou v současnosti k dispozici pouze dvě pro zákazníky, kteří chtějí nasadit v Azure: OpenShift Container Platform a OKD (dříve OpenShift původ).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -47,11 +47,11 @@ Vzhledem k tomu, že zákazníci "vlastní", můžou ho nainstalovat do místní
 
 OKD je [Open Source](https://www.okd.io/) projekt pro OpenShift, který je podporován komunitou. OKD se dá nainstalovat na CentOS nebo Red Hat Enterprise Linux (RHEL).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace běžných požadavků pro OpenShift v Azure](./openshift-prerequisites.md)
-- [Nasazení platformy kontejnerů OpenShift v Azure](./openshift-container-platform.md)
-- [Nasazení nabídky samoobslužného tržiště spravovaného kontejnerem OpenShift](./openshift-marketplace-self-managed.md)
+- [Konfigurace běžných požadavků pro OpenShift v Azure](./openshift-container-platform-3x-prerequisites.md)
+- [Nasazení platformy kontejnerů OpenShift v Azure](./openshift-container-platform-3x.md)
+- [Nasazení nabídky samoobslužného tržiště spravovaného kontejnerem OpenShift](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Nasazení OpenShift v Azure Stack](./openshift-azure-stack.md)
-- [Úkoly po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazením OpenShift](./openshift-troubleshooting.md)
+- [Úkoly po nasazení](./openshift-container-platform-3x-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift](./openshift-container-platform-3x-troubleshooting.md)

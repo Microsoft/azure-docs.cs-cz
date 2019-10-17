@@ -3,15 +3,15 @@ title: Spuštění prvního dotazu pomocí Průzkumníka Azure Resource graphu
 description: Tento článek vás provede jednotlivými kroky, jak spustit první dotaz z Azure Portal pomocí Průzkumníka Azure Resource graphu.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981252"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387604"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -27,19 +27,19 @@ Otevřete [Azure Portal](https://portal.azure.com) pro vyhledání a použití P
 
 1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
-1. V části **dotazu 1** v okně zadejte dotaz `project name, type | limit 5` a vyberte **Spustit dotaz**.
+1. V části **dotazu 1** v okně zadejte dotaz `Resources | project name, type | limit 5` a vyberte **Spustit dotaz**.
 
    > [!NOTE]
    > Jelikož tento příklad dotazu neposkytuje modifikátor řazení, jako je například `order by`, spuštění tohoto dotazu bude pravděpodobně zajišťovat jinou sadu prostředků na žádost.
 
 1. Zkontrolujte odpověď na dotaz na kartě **výsledky** . výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
 
-1. Aktualizujte dotaz tak, aby `order by` vlastnost **Name** : `project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz tak, aby `order by` vlastnost **Name** : `Resources | project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
 
    > [!NOTE]
    > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
 
-1. Aktualizujte dotaz na první @no__t hodnotu vlastnosti **Name** a pak `limit` na prvních 5 výsledků: `project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz na první @no__t hodnotu vlastnosti **Name** a pak `limit` na prvních 5 výsledků: `Resources | project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
 
 Pokud se konečný dotaz několikrát spustí, za předpokladu, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a podle očekávání – seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
@@ -54,7 +54,8 @@ Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se z
 1. V části pro **dotaz 1** v okně zadejte následující dotaz a vyberte **Spustit dotaz**.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

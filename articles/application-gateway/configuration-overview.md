@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177425"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389976"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -48,9 +48,9 @@ Doporučujeme použít velikost podsítě alespoň/28. Tato velikost poskytuje 1
 
 V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě). Existuje však několik omezení:
 
-- Je nutné zahrnout výjimky pro příchozí provoz na portech 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro SKLADOVOU položku v2. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Externí entity, včetně zákazníků těchto bran, nemůžou zahájit změny těchto koncových bodů bez příslušných certifikátů.
+- Je *nutné, aby*příchozí internetový provoz na portech TCP 65503-65534 pro SKU Application Gateway V1 a porty TCP 65200-65535 pro SKU verze v2 s cílovou podsítí. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Externí entity, včetně zákazníků těchto bran, nemůžou zahájit změny těchto koncových bodů bez příslušných certifikátů.
 
-- Odchozí připojení k Internetu nejde zablokovat. Výchozí odchozí pravidla v NSG umožňují připojení k Internetu. Doporučujeme:
+- Odchozí připojení k Internetu nejde zablokovat. Výchozí odchozí pravidla v NSG umožňují připojení k Internetu. Doporučený postup:
 
   - Neodstraňujte Výchozí odchozí pravidla.
   - Nevytvářejte jiná odchozí pravidla, která odmítají odchozí připojení k Internetu.
@@ -121,7 +121,7 @@ Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchací
 
 Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
-### <a name="protocol"></a>Protokol
+### <a name="protocol"></a>Protocol (Protokol)
 
 Vyberte HTTP nebo HTTPS:
 
@@ -153,15 +153,15 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Podpora protokolu WebSocket je ve výchozím nastavení povolená. Neexistuje žádné uživatelsky konfigurovatelné nastavení, které by bylo možné povolit nebo zakázat. Můžete použít objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
 
-### <a name="custom-error-pages"></a>Vlastní chybové stránky
+### <a name="custom-error-pages"></a>Stránky vlastních chyb
 
-Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [vytvoření Application Gateway vlastních chybových stránek](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
 ![Kódy chyb Application Gateway](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
 Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte si téma [Azure PowerShell Configuration](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
 
-### <a name="ssl-policy"></a>Zásada SSL
+### <a name="ssl-policy"></a>Zásady SSL
 
 Můžete centralizovat správu certifikátů SSL a snížit režijní náklady na dešifrování u back-endové serverové farmy. Centralizované zpracování protokolu SSL také umožňuje určit centrální zásady protokolu SSL, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované*nebo *vlastní* zásady protokolu SSL.
 
@@ -245,7 +245,7 @@ Další informace o přesměrování najdete v tématu:
 
 #### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví HTTP
 
-Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Tuto možnost můžete nakonfigurovat jenom přes PowerShell. Azure Portal a podpora rozhraní příkazového řádku ještě nejsou k dispozici. Další informace naleznete v tématu:
+Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Tuto možnost můžete nakonfigurovat jenom přes PowerShell. Azure Portal a podpora rozhraní příkazového řádku ještě nejsou k dispozici. Další informace:
 
  - [Přehled hlaviček protokolu HTTP přepisu](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [Konfigurace přepsání hlaviček HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
@@ -254,21 +254,21 @@ Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpově
 
 Služba Application Gateway směruje provoz na back-endové servery pomocí konfigurace, kterou tady zadáte. Po vytvoření nastavení HTTP je potřeba ho přidružit k jednomu nebo více pravidlům směrování požadavků.
 
-### <a name="cookie-based-affinity"></a>Spřažení na základě souborů cookie
+### <a name="cookie-based-affinity"></a>Spřažení na základě souborů cookie.
 
 Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném serveru. Soubory cookie spravované branou umožňují službě Application Gateway přímý přenos dat z uživatelské relace na stejný server ke zpracování. To je důležité, pokud je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení na základě souborů cookie, nemůžete tuto funkci použít. Pokud ho chcete použít, ujistěte se, že klienti podporují soubory cookie.
 
-### <a name="connection-draining"></a>Vyprazdňování připojení
+### <a name="connection-draining"></a>Vyprázdnění připojení
 
 Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny instance zrušení registrace fondu back-end nepřijímaly žádné nové žádosti. Mezitím se můžou existující požadavky dokončit v nakonfigurovaném časovém limitu. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z back-endového fondu pomocí volání rozhraní API. Platí také pro back-endové instance, které jsou hlášeny jako *špatné* v důsledku sond stavu.
 
-### <a name="protocol"></a>Protokol
+### <a name="protocol"></a>Protocol (Protokol)
 
 Application Gateway podporuje HTTP i HTTPS pro požadavky směrování na back-endové servery. Pokud zvolíte protokol HTTP, přenosy na back-endové servery budou nešifrované. Pokud nešifrovaná komunikace není přijatelná, vyberte HTTPS.
 
 Toto nastavení kombinované s protokolem HTTPS v naslouchací službě podporuje [koncové šifrování protokolu SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Díky tomu můžete bezpečně přenášet citlivá data zašifrovaná do back-endu. Každý back-end Server ve fondu back-end, který má zapnuté koncové šifrování SSL, musí být nakonfigurovaný s certifikátem, aby bylo možné zabezpečenou komunikaci.
 
-### <a name="port"></a>Přístavní
+### <a name="port"></a>Port
 
 Toto nastavení určuje port, ve kterém back-endové servery naslouchají provozu z aplikační brány. Můžete nakonfigurovat porty v rozsahu od 1 do 65535.
 
@@ -331,7 +331,7 @@ Tato funkce nahrazuje hlavičku *hostitele* v příchozím požadavku na aplika�
 
 Pokud je například v nastavení **název hostitele** zadána možnost *www. contoso<i></i>. com* , původní požadavek *https:/<i></i>/appgw.eastus.cloudapp.NET/path1* se změní na *https:/<i></i>/www.contoso.com/path1* , pokud požadavek se přepošle na back-end Server.
 
-## <a name="back-end-pool"></a>Fond back-end
+## <a name="back-end-pool"></a>Back-endový fond
 
 Back-end fond můžete nasměrovat na čtyři typy členů back-endu: konkrétní virtuální počítač, sada škálování virtuálního počítače, IP adresa nebo plně kvalifikovaný název domény nebo služba App Service. Každý fond back-end může ukazovat na více členů stejného typu. Přechod na členy různých typů ve stejném fondu back-end není podporován.
 

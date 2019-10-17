@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 298fd336e87d07f9e65221d5e5f539e255c94993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245328"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432306"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 
@@ -71,13 +71,13 @@ Checking all file systems.
 
 K tomuto problému může dojít v případě, že systém souborů nebyl vypnutý čistě nebo dochází k problémům souvisejícím s úložištěm. Mezi tyto problémy patří hardwarové nebo softwarové chyby, problémy s ovladači nebo programy, chyby zápisu atd. Vždy je důležité mít zálohu důležitých dat. Nástroje, které popisují tento článek, můžou pomáhat obnovit systémy souborů, ale může dojít ke ztrátě dat.
 
-Pro Linux je k dispozici několik kontrol systému souborů. Nejběžnější je distribuce v Azure: [FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)a [Xfs_repair](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+Pro Linux je k dispozici několik kontrol systému souborů. Nejběžnější je distribuce v Azure: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)a [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
-## <a name="resolution"></a>Řešení
+## <a name="resolution"></a>Rozlišení
 
 Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzového režimu pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) a pomocí tohoto nástroje opravte systém souborů. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí nebo nefunguje, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) v tomto článku.
 
-## <a name="use-the-serial-console"></a>Použití konzoly sériového portu
+## <a name="use-the-serial-console"></a>Použití sériové konzoly
 
 1. Připojte se ke konzole sériového portu.
 

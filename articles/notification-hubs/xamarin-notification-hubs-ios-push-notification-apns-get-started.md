@@ -1,5 +1,5 @@
 ---
-title: Zasílání nabízených oznámení do aplikací Xamarin.iOS pomocí služby Azure Notification Hubs | Microsoft Docs
+title: Posílání nabízených oznámení do Xamarin iOS pomocí Azure Notification Hubs | Microsoft Docs
 description: V tomto kurzu zjistíte, jak pomocí služby Azure Notification Hubs odesílat nabízená oznámení do aplikace Xamarin.iOS.
 services: notification-hubs
 keywords: nabízená oznámení ios,nabízení zpráv,nabízená oznámení,nabízená zpráva
@@ -18,14 +18,14 @@ ms.date: 05/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 38a4924cd6bee2f6e2860320d51cfb61aa6fe1bb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213575"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387691"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -35,22 +35,22 @@ V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání n
 
 Jakmile budete hotovi, budete moct používat vaše centrum oznámení k všesměrovému vysílání nabízených oznámení pro všechna zařízení používající vaši aplikaci. Dokončený kód je k dispozici v ukázce [aplikace NotificationHubs][GitHub] .
 
-V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následující úlohy:
+V tomto kurzu provedete následující úkoly, kterými vytvoříte/aktualizujete kód:
 
 > [!div class="checklist"]
-> * Generování souboru s žádostí o podepsání certifikátu
+> * Vygenerujete soubor s žádostí o podepsání certifikátu
 > * Registrace aplikace pro nabízená oznámení
 > * Vytvoření zřizovacího profilu pro aplikaci
-> * Konfigurace centra oznámení pro nabízená oznámení iOS
+> * Nakonfigurujete v centru oznámení nabízená oznámení pro iOS
 > * Odešlete nabízená oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * Poslední verze jazyka [Xcode][Install Xcode]
 * Zařízení kompatibilní s iOS 10 (nebo novější verzí)
 * Členství v [programu pro vývojáře Apple](https://developer.apple.com/programs/).
-* [Visual Studio for Mac]
+* [Visual Studio pro Mac]
   
   > [!NOTE]
   > Z důvodu požadavků na konfiguraci pro nabízená oznámení iOS musíte nasadit a otestovat vzorovou aplikaci na fyzickém zařízení iOS (iPhone nebo iPad) namísto simulátoru.
@@ -79,7 +79,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
 
 5. Přidejte balíček zasílání zpráv Azure. V zobrazení Řešení klikněte pravým tlačítkem a na projekt a vyberte **Přidat** > **Přidat balíčky NuGet**. Vyhledejte balíček **Xamarin.Azure.NotificationHubs.iOS** a přidejte ho do svého projektu.
 
-6. Přidejte do své třídy nový soubor, pojmenujte `Constants.cs` jej a přidejte následující proměnné a nahraďte zástupné symboly řetězcového `hubname` literálu `DefaultListenSharedAccessSignature` pomocí a dříve uvedeného.
+6. Přidejte do své třídy nový soubor, pojmenujte ho `Constants.cs` a přidejte následující proměnné a nahraďte zástupné symboly řetězcového literálu `hubname` a `DefaultListenSharedAccessSignature`, které jste si poznamenali dříve.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -87,20 +87,20 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. Do `AppDelegate.cs`přidejte následující příkaz using:
+7. V `AppDelegate.cs` přidejte následující příkaz using:
 
     ```csharp
     using WindowsAzure.Messaging;
     using UserNotifications
     ```
 
-8. Deklarovat instanci `SBNotificationHub`:
+8. Deklarace instance `SBNotificationHub`:
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. V `AppDelegate.cs`nástroji aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
+9. V `AppDelegate.cs` aktualizujte `FinishedLaunching()` tak, aby odpovídaly následujícímu kódu:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -129,7 +129,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-10. V `AppDelegate.cs` ,`RegisteredForRemoteNotifications()` přepište metodu:
+10. V `AppDelegate.cs` přepište metodu `RegisteredForRemoteNotifications()`:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -152,7 +152,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-11. V `AppDelegate.cs` ,`ReceivedRemoteNotification()` přepište metodu:
+11. V `AppDelegate.cs` přepište metodu `ReceivedRemoteNotification()`:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -161,7 +161,7 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     }
     ```
 
-12. V `AppDelegate.cs` nástroji`ProcessNotification()` vytvořte metodu:
+12. V `AppDelegate.cs` vytvořte metodu `ProcessNotification()`:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,13 +200,13 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby No
     ```
 
     > [!NOTE]
-    > Můžete si vybrat, že `FailedToRegisterForRemoteNotifications()` se má potlačit zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
+    > Můžete také přepsat `FailedToRegisterForRemoteNotifications()` pro zpracování situací, jako je například žádné síťové připojení. To je obzvláště důležité, když by uživatel mohl spustit aplikaci v režimu offline (například letadlo) a vy chcete zpracovávat scénáře zpráv oznámení specifické pro vaši aplikaci.
 
 13. Spusťte aplikaci v zařízení.
 
 ## <a name="send-test-push-notifications"></a>Odešlete nabízená oznámení
 
-Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Testovací odeslání* na webu [Azure Portal]. Zařízení se odešle testovací nabízené oznámení.
+Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Testovací odeslání* na webu [Azure Portal]. Do zařízení se odešle testovací nabízené oznámení.
 
 ![Azure Portal – Testovací odeslání][30]
 
@@ -214,7 +214,7 @@ Nabízená oznámení se většinou posílají ve službě back-end, jako je slu
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrovaných v back-endu. V následujícím kurzu se dozvíte, jak zasílat nabízená oznámení do konkrétních zařízení iOS:
+V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrovaných v back-endu. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem:
 
 > [!div class="nextstepaction"]
 >[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
@@ -233,7 +233,7 @@ V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrova
 <!-- URLs. -->
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: https://go.microsoft.com/fwlink/p/?LinkId=272456
-[Visual Studio for Mac]: https://visualstudio.microsoft.com/vs/mac/
+[Visual Studio pro Mac]: https://visualstudio.microsoft.com/vs/mac/
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584

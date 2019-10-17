@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 28fedf96ec178aae0615129421bdae7721a66105
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 41423f704c87f05ad3e31b253d4a80799a554849
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029941"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387748"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Transformace Unpivot Azure Data Factory
 
@@ -20,23 +20,23 @@ ms.locfileid: "72029941"
 
 Použijte Unpivot v toku dat mapování ADF jako způsob, jak změnit nenormalizovanou datovou sadu na podrobnější verzi tím, že rozbalíte hodnoty z více sloupců v jednom záznamu do několika záznamů se stejnými hodnotami v jednom sloupci.
 
-![Unpivot transformace](media/data-flow/unpivot1.png "Unpivot možnosti 1")
+![Transformace Unpivot](media/data-flow/unpivot1.png "Unpivot možnosti 1")
 
 ## <a name="ungroup-by"></a>Oddělit podle
 
-![Unpivot transformace](media/data-flow/unpivot5.png "Unpivot možnosti 2")
+![Transformace Unpivot](media/data-flow/unpivot5.png "Unpivot možnosti 2")
 
 Nejprve nastavte sloupce, které chcete seskupit podle pro agregaci pivotu. Nastavte jeden nebo více sloupců pro odseskupení pomocí znaku + vedle seznamu sloupců.
 
 ## <a name="unpivot-key"></a>Unpivot klíč
 
-![Unpivot transformace](media/data-flow/unpivot6.png "Unpivot možnosti 3")
+![Transformace Unpivot](media/data-flow/unpivot6.png "Unpivot možnosti 3")
 
 Kontingenční klíč je sloupec, který bude ADF od řádku po sloupec. Ve výchozím nastavení se všechny jedinečné hodnoty v datové sadě pro toto pole Překlopí do sloupce. Volitelně můžete zadat hodnoty z datové sady, které chcete překlopit do hodnot sloupců.
 
 ## <a name="unpivoted-columns"></a>Sloupce s nekontingenčními tabulkami
 
-![Unpivot transformace](media/data-flow//unpivot7.png "Unpivot možnosti 4")
+![Transformace Unpivot](media/data-flow//unpivot7.png "Unpivot možnosti 4")
 
 Nakonec vyberte agregaci, kterou chcete použít pro transformované hodnoty, a určete, jak chcete, aby se sloupce zobrazovaly v nové výstupní projekci z transformace.
 
@@ -48,7 +48,7 @@ Například při překlopení "prodej" podle "oblasti" jednoduše získáte nov�
 
 Když nastavíte uspořádání sloupců na "normální", budou se seskupovat všechny kontingenční sloupce s agregovanými hodnotami. Nastavení uspořádání sloupců na stranu "bočního" se bude střídat mezi sloupcem a hodnotou.
 
-![Unpivot transformace](media/data-flow//unpivot7.png "Unpivot – možnosti 5")
+![Transformace Unpivot](media/data-flow//unpivot7.png "Unpivot možnosti 5")
 
 Poslední nepivotovaná sada výsledků dat zobrazuje celkový počet sloupců, které se teď nepivotují na samostatné hodnoty řádků.
 

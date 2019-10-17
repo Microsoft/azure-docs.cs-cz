@@ -1,6 +1,6 @@
 ---
-title: Kvóta Azure chyby | Dokumentace Microsoftu
-description: Popisuje, jak vyřešit chyby kvóty prostředků.
+title: Chyby kvóty Azure | Microsoft Docs
+description: Popisuje, jak vyřešit chyby kvót prostředků při nasazování prostředků pomocí Azure Resource Manager.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390188"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390310"
 ---
-# <a name="resolve-errors-for-resource-quotas"></a>Řešení chyb u kvóty prostředků
+# <a name="resolve-errors-for-resource-quotas"></a>Řešení chyb pro kvóty prostředků
 
-Tento článek popisuje kvóty chyby, které můžete narazit při nasazování prostředků.
+Tento článek popisuje problémy s kvótou, ke kterým může dojít při nasazování prostředků.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Příznak
 
-Pokud provádíte nasazení šablony, která vytváří prostředky, které překračují Azure kvóty, získáte chyba nasazení, který bude vypadat takto:
+Pokud nasadíte šablonu, která vytvoří prostředky, které překračují vaše kvóty Azure, zobrazí se chyba nasazení, která vypadá nějak takto:
 
 ```
 Code=OperationNotAllowed
@@ -36,7 +36,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-Nebo, může se zobrazit:
+Nebo se může zobrazit:
 
 ```
 Code=ResourceQuotaExceeded
@@ -47,14 +47,14 @@ please delete some resources of this type before creating a new one.
 
 ## <a name="cause"></a>Příčina
 
-Kvóty se vztahují na skupinu prostředků, předplatná, účty a další obory. Vaše předplatné může například nakonfigurovat k omezení počtu jader pro oblast. Pokud budete chtít nasadit virtuální počítač s více jader, než je povolené, zobrazí se chybová zpráva s informacemi o tom, že došlo k překročení kvóty.
-Kompletní kvóty informace najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
+Kvóty se uplatňují u jednotlivých skupin prostředků, předplatných, účtů a dalších oborů. Například v rámci předplatného může být nakonfigurované omezení počtu jader v jedné oblasti. Pokud se pokusíte nasadit virtuální počítač s více jádry, než je povolené množství, zobrazí se chyba s informací, že došlo k překročení kvóty.
+Úplné informace o kvótě najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Používáte Azure CLI, použijte `az vm list-usage` příkazu najděte kvóty virtuálního počítače.
+V případě Azure CLI pomocí příkazu `az vm list-usage` Najděte kvóty virtuálních počítačů.
 
 ```azurecli
 az vm list-usage --location "South Central US"
@@ -78,7 +78,7 @@ Který vrátí:
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud používáte PowerShell, použijte **Get-AzVMUsage** příkazu najděte kvóty virtuálního počítače.
+Pro prostředí PowerShell použijte k nalezení kvót virtuálních počítačů příkaz **Get-AzVMUsage** .
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
@@ -96,29 +96,29 @@ Virtual Machines                             0 10000 Count
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li požádat o zvýšení kvóty, přejděte na portál a souborů problém podpory. V problém podpory požádat o zvýšení v rámci svojí kvóty pro oblast, do které chcete nasadit.
+Pokud chcete požádat o zvýšení kvóty, navštivte portál a zapište problém podpory. Ve svém problému podpory vyžádejte zvýšení kvóty pro oblast, do které chcete nasadit.
 
 > [!NOTE]
-> Mějte na paměti, že pro skupiny prostředků, kvóta se pro každé jednotlivé oblasti, ne pro celé předplatné. Pokud je potřeba nasadit 30 jader v oblasti západní USA, budete muset požádat o 30 jader Resource Manageru v oblasti západní USA. Pokud je potřeba nasadit 30 jader v některém z oblasti, ke kterému máte přístup, je třeba požádat o 30 jader Resource Manageru ve všech oblastech.
+> Pamatujte na to, že u skupin prostředků je kvóta pro každou jednotlivou oblast, ne pro celé předplatné. Pokud potřebujete nasadit 30 jader v Západní USA, musíte požádat o 30 Správce prostředků jader v Západní USA. Pokud potřebujete nasadit 30 jader v některé z oblastí, ke kterým máte přístup, měli byste požádat o 30 Správce prostředků jader ve všech oblastech.
 >
 >
 
 1. Vyberte **Předplatná**.
 
-   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
+   ![Předplatná](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. Vyberte předplatné, které potřebuje navýšit kvótu.
 
    ![Výběr předplatného](./media/resource-manager-quota-errors/select-subscription.png)
 
-3. Vyberte **využití a kvóty**
+3. Vybrat **využití a kvóty**
 
-   ![Vyberte využití a kvóty](./media/resource-manager-quota-errors/select-usage-quotas.png)
+   ![Vybrat využití a kvóty](./media/resource-manager-quota-errors/select-usage-quotas.png)
 
 4. V pravém horním rohu vyberte **požádat o zvýšení**.
 
-   ![Zvýšení počtu žádostí](./media/resource-manager-quota-errors/request-increase.png)
+   ![Zvýšení žádosti](./media/resource-manager-quota-errors/request-increase.png)
 
 5. Vyplňte formuláře pro typ kvóty, který potřebujete navýšit.
 
-   ![Vyplňte formulář](./media/resource-manager-quota-errors/forms.png)
+   ![Vyplnit formulář](./media/resource-manager-quota-errors/forms.png)

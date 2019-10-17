@@ -1,6 +1,6 @@
 ---
 title: Ovládací prvky zabezpečení pro Azure Resource Manager
-description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Azure Resource Manager
+description: Kontrolní seznam předdefinovaných ovládacích prvků zabezpečení pro vyhodnocení Azure Resource Manager služby.
 services: azure-resource-manager
 author: msmbaldwin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97fd6611d7e2a2787b865365c4c7579f89f17d01
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886792"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390468"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Ovládací prvky zabezpečení pro Azure Resource Manager
 
@@ -25,9 +25,9 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Res
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft | Ano |  |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano |  |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | HTTPS/TLS. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Není k dispozici | Azure Resource Manager neukládá žádný zákaznický obsah, řídí se jenom data. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Nevztahuje se | Azure Resource Manager neukládá žádný zákaznický obsah, řídí se jenom data. |
 | Šifrování na úrovni sloupce (Azure Data Services)| Ano | |
 | Zašifrovaná volání rozhraní API| Ano | |
 
@@ -46,14 +46,14 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Res
 |---|---|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ne | |
 | Protokolování a audit roviny řízení a správy| Ano | Protokoly aktivit zpřístupňují všechny operace zápisu (PUT, POST, DELETE) provedené na vašich prostředcích. v tématu [zobrazení protokolů aktivit můžete auditovat akce u prostředků](resource-group-audit.md). |
-| Protokolování a audit roviny dat| Není k dispozici | |
+| Protokolování a audit roviny dat| Nevztahuje se | |
 
 ## <a name="identity"></a>Identita
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Ověřování| Ano | Na základě [Azure Active Directory](/azure/active-directory) .|
-| Authorization| Ano | |
+| Ověření| Ano | Na základě [Azure Active Directory](/azure/active-directory) .|
+| Autorizace| Ano | |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
@@ -61,6 +61,6 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Res
 |---|---|--|
 | Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

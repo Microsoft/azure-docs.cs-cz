@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/11/2019
 ms.author: ramkris
-ms.openlocfilehash: 7d30b685d0debb0aeb0f79db8b078dcc165a8ca1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 9da994550609b0be44362e0f0059844b288aabbd
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286663"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388066"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -69,6 +69,10 @@ ms.locfileid: "72286663"
 ### <a name="a-name200-preview200-preview"></a>@no__t – 02.0.0 – Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
+
+### <a name="a-name184184"></a>@no__t – 01.8.4
+
+* Pevné zpracování identifikátorů při volání BulkImport se seznamem objektů POCO s číselnými hodnotami.
 
 ### <a name="a-name183183"></a>@no__t – 01.8.3
 

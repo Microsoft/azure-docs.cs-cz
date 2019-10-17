@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor pro mapování oblasti kontejnerů
-description: Tento článek popisuje mapování oblasti podporovaná mezi Azure Monitor pro kontejnery a pracovní prostor Log Analytics, vlastní metriky.
+title: Mapování oblastí Azure Monitor pro kontejnery
+description: Tento článek popisuje mapování oblastí podporované mezi Azure Monitor pro kontejnery, Log Analytics pracovním prostorem a vlastními metrikami.
 services: azure-monitor
 ms.service: azure-monitor
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.author: magoedte
 ms.date: 06/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 481a2a400be4e983e0a2337a200324061494efa1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518076"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388184"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblasti podporované službou Azure Monitor pro kontejnery
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblastí podporované Azure Monitor pro kontejnery
 
- Při povolování monitorování Azure pro kontejnery, pouze určité oblasti jsou podporovány pro propojení pracovního prostoru Log Analytics a AKS cluster a shromažďování vlastní metriky odeslali do Azure monitoru.
+ Při povolování Azure Monitor pro kontejnery jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a clusteru AKS a shromažďování vlastních metrik odeslaných do Azure Monitor.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Pracovní prostor log Analytics nepodporuje mapování
+## <a name="log-analytics-workspace-supported-mappings"></a>Mapování podporovaná v pracovním prostoru Log Analytics
 
-Prostředky clusteru AKS nebo pracovní prostor Log Analytics může být v jiných oblastech, přičemž v následující tabulce jsou uvedeny naše mapování.
+Prostředky clusteru AKS nebo pracovní prostor Log Analytics můžou být v jiných oblastech a v následující tabulce jsou uvedená naše mapování.
 
-|**Oblast clusteru AKS** | **Oblasti pracovního prostoru analýzy protokolů** |
+|**Oblast clusteru AKS** | **Oblast pracovního prostoru Log Analytics** |
 |-----------------------|------------------------------------|
-|**Afrika** | |
+|**Poskytl** | |
 |SouthAfricaNorth |WestEurope |
 |SouthAfricaWest |WestEurope |
 |**Austrálie** | |
@@ -35,11 +35,11 @@ Prostředky clusteru AKS nebo pracovní prostor Log Analytics může být v jin�
 |AustraliaCentral2 |AustraliaCentral |
 |AustraliaEast |AustraliaEast |
 |**Asie a Tichomoří** | |
-|Východní Asie |Východní Asie |
+|EastAsia |EastAsia |
 |SoutheastAsia |SoutheastAsia |
 |**Brazílie** | |
 |BrazilSouth | SouthCentralUS |
-|**Canada** ||
+|**Kanada** ||
 |CanadaCentral |CanadaCentral |
 |CanadaEast |CanadaCentral |
 |**Evropa** | |
@@ -66,13 +66,14 @@ Prostředky clusteru AKS nebo pracovní prostor Log Analytics může být v jin�
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
+|USA – Virginie |USA – Virginie |
 
-<sup>1</sup> z důvodu omezení kapacity, není k dispozici v oblasti, při vytváření nových prostředků. To zahrnuje pracovní prostor Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
+<sup>1</sup> kvůli omezením kapacity není oblast při vytváření nových prostředků dostupná. To zahrnuje Log Analytics pracovní prostor. Stávající propojené prostředky v oblasti ale budou fungovat i nadále.
 
-## <a name="custom-metrics-supported-regions"></a>Vlastní metriky podporované oblasti
+## <a name="custom-metrics-supported-regions"></a>Vlastní podporované oblasti metrik
 
-Shromažďování metrik ze služby Azure Kubernetes (AKS) uzly clusterů a podů jsou podporovány pro publikování jako vlastní metriky v následujících tématech [oblastí Azure](../platform/metrics-custom-overview.md#supported-regions).
+Shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lusky se podporují pro publikování jako vlastní metriky pouze v následujících [oblastech Azure](../platform/metrics-custom-overview.md#supported-regions).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Chcete-li zahájit monitorování clusteru AKS, zkontrolovat [povolení monitorování Azure pro kontejnery](container-insights-onboard.md) vám pomohou pochopit požadavky a dostupné metody, které chcete povolit monitorování.  
+Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  

@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350852"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390574"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShell
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShellu
 
 Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít k zavedení nasazení a zajištění konzistence napříč několika virtuálními počítači. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure pomocí PowerShellu. Získáte informace o těchto tématech:
 
@@ -35,7 +35,7 @@ Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vl
 
 Ve verzi Public Preview máme službu [Tvůrce imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) . Jednoduše popište vlastní nastavení v šabloně a zpracuje kroky vytváření imagí v tomto článku. [Vyzkoušejte Azure image Builder (Preview)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit image virtuálního počítače, je potřeba připravit z
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
 
-Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v tématu [Použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
+Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
 
 
 1. Připojte se k virtuálnímu počítači.
@@ -134,6 +134,7 @@ New-AzVm `
 ```
 
 Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jedné image. Pokud plánujete rozsáhlé souběžné nasazení více než 20 virtuálních počítačů ze stejné vlastní image, měli byste použít [sdílenou galerii imagí](shared-image-galleries.md) s více replikami imagí. 
+
 
 ## <a name="image-management"></a>Správa imagí 
 

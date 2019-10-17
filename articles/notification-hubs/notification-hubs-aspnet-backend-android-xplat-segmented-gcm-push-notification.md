@@ -1,5 +1,5 @@
 ---
-title: Zasílání nabízených oznámení určitým zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging | Microsoft Docs
+title: Posílání oznámení na konkrétní zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging | Microsoft Docs
 description: Přečtěte si, jak používat Notification Hubs k zasílání nabízených oznámení určitým zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: aa2aa7b77bf174f4a2ca89408ee037b398a32e4d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212821"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387434"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Nabízená oznámení na konkrétní zařízení s Androidem s využitím Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na konkrétní zařízení s Androidem s využitím Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
 
 > [!WARNING]
 > Od 10. dubna 2018 má Google zastaralé Google Cloud Messaging (GCM). GCM Server a klientská rozhraní API jsou zastaralá a budou se odebírat hned jako 29. května 2019. Další informace najdete v článku [Nejčastější dotazy k GCM a FCM](https://developers.google.com/cloud-messaging/faq).
@@ -43,17 +43,17 @@ V tomto kurzu provedete následující akce:
 > * Přidáte do mobilní aplikace výběr kategorií.
 > * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
-> * Testování aplikace
+> * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tento kurz sestaví na aplikaci, kterou jste [vytvořili v kurzu: Nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs][get-started]a Google Cloud Messaging. Před zahájením tohoto kurzu dokončete [tento kurz: Nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs][get-started]a Google Cloud Messaging.
+Tento kurz sestaví na aplikaci, kterou jste vytvořili v [kurzu: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging][get-started]. Před zahájením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Přidání výběru kategorií do aplikace
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
+1. Otevřete `res/layout/activity_main.xml file` a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -106,7 +106,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
             />
     </LinearLayout>
     ```
-2. `res/values/strings.xml` Otevřete soubor a přidejte následující řádky:
+2. Otevřete soubor `res/values/strings.xml` a přidejte následující řádky:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -118,10 +118,10 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     <string name="label_sports">Sports</string>
     ```
 
-    Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
+    Grafické rozložení `main_activity.xml` by mělo vypadat jako na následujícím obrázku:
 
     ![][A1]
-3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
+3. Vytvoří třídu `Notifications` ve stejném balíčku jako vaše třída `MainActivity`.
 
     ```java
     import java.util.HashSet;
@@ -196,14 +196,14 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Ve třídě odeberte soukromá pole pro `NotificationHub` a `GoogleCloudMessaging`a přidejte pole pro `Notifications`: `MainActivity`
+4. V třídě `MainActivity` odeberte soukromá pole pro `NotificationHub` a `GoogleCloudMessaging` a přidejte pole pro `Notifications`:
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Pak v `onCreate` metodě odstraňte inicializaci `hub` pole a `registerWithNotificationHubs` metody. Pak přidejte následující řádky, které inicializují instanci `Notifications` třídy.
+5. Pak v metodě `onCreate` odeberte inicializaci pole `hub` a metodu `registerWithNotificationHubs`. Pak přidejte následující řádky, které inicializují instanci třídy `Notifications`.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,7 +261,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     }
     ```
 
-    Tato metoda vytvoří seznam kategorií a pomocí `Notifications` třídy uloží seznam do místního úložiště a zaregistruje odpovídající značky do vašeho centra oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
+    Tato metoda vytvoří seznam kategorií a pomocí třídy `Notifications` uloží seznam do místního úložiště a zaregistruje odpovídající značky do centra oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
 
 Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kategorií a zaregistrovat ji v centru oznámení pokaždé, když uživatel změní vybrané kategorie.
 
@@ -270,9 +270,9 @@ Aplikace teď dokáže do místního úložiště v zařízení uložit sadu kat
 Tento postup provede při spuštění registraci v centru oznámení. Použije k tomu kategorie uložené v místním úložišti.
 
 > [!NOTE]
-> Hodnota registraionId přiřazená službou GCM (Google Cloud Messaging) se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
+> Hodnota registraionId přiřazená službou GCM (Google Cloud Messaging) se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, pokud od předchozí registrace neuplynul ani den.
 
-1. Na konec `onCreate` metody `MainActivity` ve třídě přidejte následující kód:
+1. Přidejte následující kód na konec metody `onCreate` ve třídě `MainActivity`:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -313,7 +313,7 @@ Hotová aplikace teď do místního úložiště v zařízení uloží sadu kate
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Testování aplikace
+## <a name="test-the-app"></a>Otestování aplikace
 
 1. V Android Studiu spusťte aplikaci buď na zařízení s Androidem, nebo v emulátoru. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat odebírané kategorie.
 2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí se v informační zprávě.

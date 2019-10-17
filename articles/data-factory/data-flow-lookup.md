@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249257"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387859"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
 Pomocí vyhledávání můžete přidat referenční data z jiného zdroje do toku dat. Transformace vyhledávání vyžaduje definovaný zdroj, který odkazuje na vaši referenční tabulku a odpovídá na klíčová pole.
 
-(media/data-flow/lookup1.png "Vyhledávání") ![transformace vyhledávání]
+![Transformace vyhledávání](media/data-flow/lookup1.png "Vyhledávání")
 
 Vyberte klíčová pole, která chcete porovnat mezi poli příchozích datových proudů a poli ze zdroje odkazů. Nejdřív je potřeba vytvořit nový zdroj na plátně pro návrh toku dat, který se použije jako pravá strana pro vyhledávání.
 
@@ -33,7 +33,7 @@ Po transformaci vyhledávání můžete použít následnou transformaci k zkont
 
 V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
 
-Připojení všesměrového vysílání ![připojení](media/data-flow/broadcast.png "všesměrového") vysílání
+![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
 
 ### <a name="broadcast-join"></a>Připojení všesměrového vysílání
 

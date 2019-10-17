@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 07591517211d5334b9bf055d778f00b171e7056f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263450"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432659"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Nasazení Azure Databricks ve vaší virtuální síti
 
@@ -53,7 +53,7 @@ Virtuální síť musí zahrnovat dvě podsítě vyhrazené pro Azure Databricks
 
 Blok CIDR mezi/16-/24 pro virtuální síť a blok CIDR mezi/18-/26 pro privátní a veřejné podsítě.
 
-### <a name="whitelisting"></a>Seznam povolených
+### <a name="whitelisting"></a>Uvedení na seznamu povolených
 
 Všechny odchozí a příchozí přenosy mezi podsítěmi a rovinou ovládacího prvku Azure Databricks musí být na seznamu povolených.
 
@@ -61,7 +61,7 @@ Všechny odchozí a příchozí přenosy mezi podsítěmi a rovinou ovládacího
 
 Tato část popisuje, jak vytvořit pracovní prostor Azure Databricks v Azure Portal a nasadit ho do vlastní existující virtuální sítě. Služba Azure Databricks aktualizuje virtuální síť se dvěma novými podsítěmi a skupinami zabezpečení sítě pomocí rozsahů CIDR, které poskytujete, prostřednictvím seznamu povolených přenosů příchozích a odchozích podsítí a nasadí pracovní prostor do aktualizované virtuální sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít virtuální síť, do které budete nasazovat Azure Databricks pracovní prostor. Můžete použít existující virtuální síť nebo vytvořit novou, ale virtuální síť musí být ve stejné oblasti jako Azure Databricks pracovní prostor, který chcete vytvořit. Pro virtuální síť je vyžadován rozsah CIDR mezi/16-/24.
 
@@ -101,7 +101,7 @@ Když použijete tuto šablonu, nemusíte provádět žádné Ruční přidává
 
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
-Chcete-li vytvořit skupiny zabezpečení sítě s požadovanými pravidly pro existující virtuální síť, použijte [šablonu skupiny zabezpečení sítě pro vkládání virtuální sítě pomocí datacihly](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
+Chcete-li vytvořit skupiny zabezpečení sítě s požadovanými pravidly pro existující virtuální síť, použijte [šablonu skupiny zabezpečení sítě pro vkládání virtuální sítě pomocí datacihly](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
 Když použijete tuto šablonu, nemusíte provádět žádné Ruční přidávání do seznamu povolených přenosů v podsíti.
 
@@ -121,25 +121,25 @@ Pokud tuto šablonu použijete bez použití šablony skupiny zabezpečení sít
 
 Pokud při vytváření skupin zabezpečení sítě nepoužíváte šablony [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) nebo [Azure Resource Manager](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , musíte do svých podsítí ručně zařadit do seznamu povolených následujících přenosů.
 
-|Směr|Protokol|Zdroj|Zdrojový port|Tabulka|Cílový port|
+|Směr|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
 |---------|--------|------|-----------|-----------|----------------|
-|Příjem|\*|VirtualNetwork|\*|\*|\*|
-|Příjem|\*|Řídicí rovina IP adresy NAT|\*|\*|22|
-|Příjem|\*|Řídicí rovina IP adresy NAT|\*|\*|5557|
-|Komunikace|\*|\*|\*|WebApp IP adresa|\*|
-|Komunikace|\*|\*|\*|SQL (značka služby)|\*|
-|Komunikace|\*|\*|\*|Storage (značka služby)|\*|
-|Komunikace|\*|\*|\*|VirtualNetwork|\*|
+|Příchozí|\*|VirtualNetwork|\*|\*|\*|
+|Příchozí|\*|Řídicí rovina IP adresy NAT|\*|\*|22|
+|Příchozí|\*|Řídicí rovina IP adresy NAT|\*|\*|5557|
+|Odchozí|\*|\*|\*|WebApp IP adresa|\*|
+|Odchozí|\*|\*|\*|SQL (značka služby)|\*|
+|Odchozí|\*|\*|\*|Storage (značka služby)|\*|
+|Odchozí|\*|\*|\*|VirtualNetwork|\*|
 
 Povolený provoz v podsíti pomocí následujících IP adres. Pro SQL (metastore) a úložiště (artefakty a úložiště protokolů) byste měli použít značky SQL a [služby](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)úložiště.
 
 |Oblast Azure Databricks|Služba|Veřejná IP adresa|
 |-----------------------|-------|---------|
-|Východní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Východní USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Střed USA – sever|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Střed USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Střed USA – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|USA – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Východ USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Středoseverní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Střední USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Středojižní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Kanada – střed|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
@@ -148,10 +148,10 @@ Povolený provoz v podsíti pomocí následujících IP adres. Pro SQL (metastor
 |Velká Británie – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Západní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Severní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Střed Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Střední Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Jižní Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Západní Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Jižní Východní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Jihovýchodní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Východní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Austrálie – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Austrálie – jihovýchod|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
@@ -160,7 +160,7 @@ Povolený provoz v podsíti pomocí následujících IP adres. Pro SQL (metastor
 |Japonsko – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
 |Japonsko – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="workspace-launch-errors"></a>Chyby při spuštění pracovního prostoru
 
@@ -199,4 +199,4 @@ Možná příčina: provoz od pracovníků po Azure Databricks WebApp je blokova
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Extrakce, transformace a načtení dat pomocí Azure Databricks](databricks-extract-load-sql-data-warehouse.md)
+> [Extrakce, transformace a načítání dat pomocí Azure Databricks](databricks-extract-load-sql-data-warehouse.md)

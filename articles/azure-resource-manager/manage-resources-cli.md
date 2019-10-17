@@ -1,6 +1,6 @@
 ---
 title: Správa prostředků Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Ke správě prostředků použijte Azure CLI a správu prostředků Azure.
+description: Ke správě prostředků použijte Azure CLI a Azure Resource Manager. Ukazuje, jak nasadit a odstranit prostředky.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: d3c3ca4a95cff8b9a81be8e75b011ca83799dcaa
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274256"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390387"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Správa prostředků Azure pomocí Azure CLI
 
@@ -65,7 +65,7 @@ Můžete vytvořit skupinu prostředků a nasadit prostředky do skupiny. Dalš�
 
 Obvykle se všechny prostředky v šabloně nasazují do jedné skupiny prostředků. Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Další informace najdete v tématu [nasazení prostředků Azure do několika předplatných nebo skupin prostředků](./resource-manager-cross-resource-group-deployment.md).
 
-## <a name="delete-resources"></a>Odstranit prostředky
+## <a name="delete-resources"></a>Odstranění prostředků
 
 Následující skript ukazuje, jak odstranit účet úložiště.
 
@@ -79,7 +79,7 @@ az storage account delete --resource-group $resourceGroupName --name $storageAcc
 
 Další informace o tom, jak Azure Resource Manager objednává odstranění prostředků, najdete v tématu [Azure Resource Manager odstranění skupiny prostředků](./resource-group-delete.md).
 
-## <a name="move-resources"></a>Přesunout prostředky
+## <a name="move-resources"></a>Přesunutí prostředků
 
 Následující skript ukazuje, jak odebrat účet úložiště z jedné skupiny prostředků do jiné skupiny prostředků.
 
@@ -94,7 +94,7 @@ storageAccount=$(az resource show --resource-group $srcResourceGroupName --name 
 az resource move --destination-group $destResourceGroupName --ids $storageAccount
 ```
 
-Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
+Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
 
@@ -131,7 +131,7 @@ lockId=$(az lock show --name LockSite --resource-group $resourceGroupName --reso
 az lock delete --ids $lockId
 ```
 
-Další informace najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](resource-group-lock-resources.md).
+Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 
 ## <a name="tag-resources"></a>Označení prostředků
 
@@ -139,7 +139,7 @@ Označení pomáhá organizovat skupinu prostředků a prostředky logicky. Info
 
 ## <a name="manage-access-to-resources"></a>Správa přístupu k prostředkům
 
-[Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+[Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je způsob správy přístupu k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>Další kroky
 

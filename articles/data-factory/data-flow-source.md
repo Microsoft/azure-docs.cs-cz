@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029207"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387763"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
@@ -39,7 +39,7 @@ Azure Data Factory má přístup k více než 80 nativním konektorům. Pokud ch
 
 Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . Tady můžete vybrat nebo vytvořit datovou sadu, na které se zdrojové body nacházejí. Můžete také vybrat možnosti schématu a vzorkování pro vaše data.
 
-(media/data-flow/source1.png "Karta nastavení zdroje") na ![kartě nastavení zdroje]
+![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
 **Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
 
@@ -62,7 +62,7 @@ Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte r
 
 Pokud používáte datovou sadu založenou na souborech, jako je například Azure Blob Storage nebo Azure Data Lake Storage, karta **Možnosti zdroje** vám umožní spravovat způsob čtení souborů ve zdroji.
 
-Zdrojové ![Možnosti zdrojového](media/data-flow/sourceOPtions1.png "kódu")
+![Možnosti zdroje](media/data-flow/sourceOPtions1.png "Možnosti zdroje")
 
 **Cesta zástupného znaku:** Pomocí vzoru se zástupnými znaky nastavíte ADF, aby prochází každou shodnou složku a soubor v jediné zdrojové transformaci. Toto je efektivní způsob, jak zpracovat více souborů v rámci jednoho toku. Přidejte více vzorů pro porovnávání se zástupnými znaky s symbolem +, který se zobrazí při najetí myší na stávající zástupný vzor.
 
@@ -83,11 +83,11 @@ Příklady zástupných znaků:
 
 Nejdřív nastavte zástupný znak tak, aby zahrnoval všechny cesty, které jsou rozdělené do oddílů, a soubory listů, které chcete číst.
 
-(media/data-flow/partfile2.png "Nastavení souboru oddílu") s ![nastavením zdrojového souboru oddílu]
+![Nastavení zdrojového souboru oddílu](media/data-flow/partfile2.png "Nastavení souboru oddílu")
 
 Nastavení kořenové cesty oddílu použijte k definování toho, co je nejvyšší úroveň struktury složek. Když zobrazíte obsah vašich dat prostřednictvím náhledu dat, uvidíte, že tento ADF bude přidávat vyřešené oddíly, které se nacházejí v jednotlivých úrovních vaší složky.
 
-(media/data-flow/partfile1.png "Zobrazit kořenovou cestu oddílu") ![kořenové cesty oddílu]
+![Kořenová cesta oddílu](media/data-flow/partfile1.png "Zobrazit kořenovou cestu oddílu")
 
 **Seznam souborů:** Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam relativních souborů cest ke zpracování. Najeďte na tento textový soubor.
 
@@ -120,7 +120,7 @@ V tomto případě se všechny soubory, které se nacházely v/data/Sales, přes
 
 Všechna nastavení zdroje lze zadat jako výrazy pomocí [jazyka výrazů transformace toku dat mapování](data-flow-expression-functions.md). Chcete-li přidat dynamický obsah, klikněte nebo umístěte ukazatel myši uvnitř polí na panelu nastavení. Klikněte na hypertextový odkaz **Přidat dynamický obsah**. Tím se spustí Tvůrce výrazů, kde můžete dynamicky nastavit hodnoty pomocí výrazů, hodnot statických literálů nebo parametrů.
 
-![](media/data-flow/params6.png "Parametry") parametrů
+![Parametry](media/data-flow/params6.png "Parametry")
 
 ## <a name="sql-source-options"></a>Možnosti zdroje SQL
 
@@ -139,13 +139,13 @@ Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, na kartě **Možnos
 * Serializovatelný
 * Žádné (ignorovat úroveň izolace)
 
-(media/data-flow/isolationlevel.png "Úroveň izolace") ![úrovně izolace]
+![Úroveň izolace](media/data-flow/isolationlevel.png "Úroveň izolace")
 
 ## <a name="projection"></a>Projekce
 
 Stejně jako schémata v datových sadách definuje projekce ve zdroji datové sloupce, typy a formáty ze zdrojových dat. U většiny typů datových sad, jako je SQL a Parquet, je projekce ve zdroji pevná, aby odrážela schéma definované v datové sadě. Pokud zdrojové soubory nejsou silného typu (například ploché soubory CSV namísto souborů Parquet), můžete definovat datové typy pro každé pole ve zdrojové transformaci.
 
-![Nastavení na kartě projekce](media/data-flow/source3.png "projekce")
+![Nastavení na kartě projekce](media/data-flow/source3.png "Projekce")
 
 Pokud textový soubor nemá žádné definované schéma, vyberte možnost **detekovat datový typ** , aby data Factory vzorkovat a odvodit datové typy. Pro automatické rozpoznání výchozích formátů dat vyberte možnost **definovat výchozí formát** . 
 
@@ -155,7 +155,7 @@ Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejš�
 
 Na kartě **optimalizace** pro transformaci zdroje se může zobrazit typ **zdrojového** oddílu. Tato možnost je dostupná jenom v případě, že je váš zdroj Azure SQL Database. Důvodem je to, že Data Factory se snaží vytvořit propojení paralelně, aby se spouštěly velké dotazy proti vašemu zdroji SQL Database.
 
-![Nastavení oddílů zdrojového oddílu](media/data-flow/sourcepart3.png "")
+![Nastavení zdrojového oddílu](media/data-flow/sourcepart3.png "Dělení")
 
 Nemusíte rozdělit data na zdroj SQL Database, ale oddíly jsou užitečné pro velké dotazy. Oddíl můžete založit na sloupci nebo dotazu.
 

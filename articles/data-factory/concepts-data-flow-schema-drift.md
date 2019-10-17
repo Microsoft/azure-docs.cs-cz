@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029408"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387970"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
@@ -34,7 +34,7 @@ V toku dat musíte učinit rozhodnutí o architektuře, abyste mohli přijímat 
 
 Ve zdrojové transformaci je na posunu schématu definovaná jako sloupce pro čtení, které nedefinují vaše schéma datové sady. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** ve zdrojové transformaci.
 
-Zdroj(media/data-flow/schemadrift001.png "posunu") ![zdrojového zdroje pro Fotounášené schéma]
+![Zdroj posunu schématu](media/data-flow/schemadrift001.png "Zdroj posunu schématu")
 
 Když je zapnutý posun schématu, všechna příchozí pole se během provádění načtou ze zdroje a předají se celému toku do jímky. Ve výchozím nastavení se všechny nově zjištěné sloupce, označované jako *sloupce*s datovým typem, dorazí jako datový typ String. Pokud chcete, aby tok dat automaticky odvodit datové typy sloupců se sloupci, zrušte ve svém nastavení zdroje možnost **odvodit typy** vydaných sloupců.
 
@@ -42,11 +42,11 @@ Když je zapnutý posun schématu, všechna příchozí pole se během provádě
 
 Při transformaci jímky je posun schématu při psaní dalších sloupců nad tím, co je definováno ve schématu dat jímky. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** při transformaci jímky.
 
-(media/data-flow/schemadrift002.png "Neunášená jímka schématu") pro ![odjímka]schématu
+![Nedigitalizační jímka schématu](media/data-flow/schemadrift002.png "Nedigitalizační jímka schématu")
 
 Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **automatického mapování** na kartě mapování. Pomocí tohoto posuvníku na jsou všechny příchozí sloupce zapsány do vašeho cíle. V opačném případě je nutné použít mapování na základě pravidel k zápisu vydaných sloupců.
 
-Automatické(media/data-flow/automap.png "mapování jímky") ![automatického mapování jímky]
+![Automatické mapování jímky](media/data-flow/automap.png "Automatické mapování jímky")
 
 ## <a name="transforming-drifted-columns"></a>Transformace vydaných sloupců
 
@@ -62,11 +62,11 @@ Další informace o implementaci vzorů sloupců najdete v tématu [vzory sloupc
 
 Chcete-li explicitně odkazovat na sloupce, můžete pro tyto sloupce rychle vygenerovat mapování pomocí rychlé akce Náhled dat. Jakmile je [režim ladění](concepts-data-flow-debug-mode.md) zapnutý, přejděte na kartu náhled dat a kliknutím na **aktualizovat** načtěte data Preview. Pokud objekt pro vytváření dat zjistí, že sloupce existují, můžete kliknout na tlačítko **Mapa se posunem** a vygenerovat odvozený sloupec, který vám umožní odkazovat na všechny sloupce v zobrazení schématu pro podřízené.
 
-![Mapa]s dodaným(media/data-flow/mapdrifted1.png "rozvržením")
+![Mapa s posunem](media/data-flow/mapdrifted1.png "Mapa s posunem")
 
 Ve vygenerované transformaci odvozeného sloupce je každý sloupec s rovným sloupcem namapován na jeho zjištěné názvy a datový typ. Ve výše uvedeném náhledu dat je sloupec ' movieId ' zjištěn jako celé číslo. Po kliknutí na tlačítko **Mapa** je movieId definováno v odvozeném sloupci jako `toInteger(byName('movieId'))` a zahrnuté v zobrazeních schématu v části s transformacemi na základě dat.
 
-![Mapa]s dodaným(media/data-flow/mapdrifted2.png "rozvržením")
+![Mapa s posunem](media/data-flow/mapdrifted2.png "Mapa s posunem")
 
 ## <a name="next-steps"></a>Další kroky
 V [jazyce výrazu toku dat](data-flow-expression-functions.md)najdete další informace o vzorcích sloupců a posunu schématu včetně možností "byName" a "byPosition".

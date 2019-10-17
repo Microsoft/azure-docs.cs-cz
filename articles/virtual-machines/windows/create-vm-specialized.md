@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079672"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390593"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows z specializovaného disku pomocí PowerShellu
 
@@ -36,9 +36,9 @@ Pomocí Azure Portal můžete také [vytvořit nový virtuální počítač ze s
 
 V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](sa-create-vm-specialized.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jednoho virtuálního pevného disku nebo snímku. 
 
-## <a name="option-1-use-an-existing-disk"></a>Možnost 1: Použít existující disk
+## <a name="option-1-use-an-existing-disk"></a>Možnost 1: použití existujícího disku
 
 Pokud máte virtuální počítač, který jste odstranili a chcete znovu použít disk s operačním systémem k vytvoření nového virtuálního počítače, použijte [příkaz Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
 
@@ -51,14 +51,14 @@ $osDisk = Get-AzDisk `
 ```
 Tento disk teď můžete připojit jako disk s operačním systémem k [novému virtuálnímu počítači](#create-the-new-vm).
 
-## <a name="option-2-upload-a-specialized-vhd"></a>Možnost 2: Nahrání specializovaného virtuálního pevného disku
+## <a name="option-2-upload-a-specialized-vhd"></a>Možnost 2: nahrání specializovaného virtuálního pevného disku
 
 Virtuální pevný disk můžete nahrát z specializovaného virtuálního počítače vytvořeného pomocí nástroje pro místní virtualizaci, jako je Hyper-V nebo virtuální počítač exportovaný z jiného cloudu.
 
 ### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 Použijte virtuální pevný disk tak, jak je, k vytvoření nového virtuálního počítače. 
   
-  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Neprovádějte GENERALIZACI virtuálního počítače pomocí nástroje Sysprep.
+  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Neprovádějte generalizaci** virtuálního počítače pomocí nástroje Sysprep.
   * Odeberte všechny virtualizační nástroje a agenty hosta, které jsou nainstalované na virtuálním počítači (například nástroje VMware).
   * Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby získal IP adresu a nastavení DNS z protokolu DHCP. Tím se zajistí, že při spuštění serveru získá IP adresu v rámci virtuální sítě. 
 
@@ -74,7 +74,7 @@ Get-AzStorageAccount
 
 Pokud chcete použít existující účet úložiště, přejděte k části [odeslání virtuálního pevného disku](#upload-the-vhd-to-your-storage-account) .
 
-Vytvoření účtu úložiště.
+Vytvoření účtu úložiště
 
 1. Budete potřebovat název skupiny prostředků, ve které se účet úložiště vytvoří. Použijte příkaz Get-AzResourceGroup, který uvidí všechny skupiny prostředků v rámci vašeho předplatného.
    
@@ -102,7 +102,7 @@ Vytvoření účtu úložiště.
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště 
-Pomocí rutiny [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) nahrajte VHD do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD. VHD* z "C:\Users\Public\Documents\Virtual pevných disků\" na účet úložiště s názvem *mystorageaccount* " ve skupině prostředků *myResourceGroup* . Soubor je uložený v kontejneru s názvem *myContainer* a nový název souboru bude *myUploadedVHD. VHD*.
+Pomocí rutiny [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) nahrajte VHD do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD. VHD* z "C:\Users\Public\Documents\Virtual pevných disků @ no__t-1" do účtu úložiště s názvem *mystorageaccount* ve skupině prostředků *myResourceGroup* . Soubor je uložený v kontejneru s názvem *myContainer* a nový název souboru bude *myUploadedVHD. VHD*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -131,7 +131,7 @@ Dokončení příkazu může chvíli trvat v závislosti na připojení k síti 
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Vytvoření spravovaného disku z VHD
 
-Pomocí [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)vytvořte spravovaný disk ze specializovaného virtuálního pevného disku v účtu úložiště. V tomto příkladu se pro název disku používá *myOSDisk1* , disk se převede do úložiště *Standard_LRS* a použije *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* se jako identifikátor URI pro zdrojový virtuální pevný disk.
+Pomocí [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)vytvořte spravovaný disk ze specializovaného virtuálního pevného disku v účtu úložiště. V tomto příkladu se pro název disku používá *myOSDisk1* , disk se uloží do úložiště *Standard_LRS* a jako identifikátor URI zdrojového virtuálního pevného disku používá *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* .
 
 Vytvořte novou skupinu prostředků pro nový virtuální počítač.
 
@@ -153,7 +153,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>Možnost 3: Kopírovat existující virtuální počítač Azure
+## <a name="option-3-copy-an-existing-azure-vm"></a>Možnost 3: Zkopírování existujícího virtuálního počítače Azure
 
 Pomocí snímku virtuálního počítače můžete vytvořit kopii virtuálního počítače, který používá spravované disky, a pak pomocí tohoto snímku vytvořit nový spravovaný disk a nový virtuální počítač.
 
@@ -204,7 +204,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Pokud chcete pomocí tohoto snímku vytvořit virtuální počítač, který musí být vysoký, přidejte do příkazu New- `-AccountType Premium_LRS` AzSnapshotConfig parametr. Tento parametr vytvoří snímek tak, aby byl uložen jako spravovaný disk úrovně Premium. Premium Managed Disks jsou dražší než standard, takže před použitím tohoto parametru se ujistěte, že budete potřebovat prémii.
+Pokud chcete pomocí tohoto snímku vytvořit virtuální počítač, který musí být vysokým výkonem, přidejte do příkazu New-AzSnapshotConfig parametr `-AccountType Premium_LRS`. Tento parametr vytvoří snímek tak, aby byl uložen jako spravovaný disk úrovně Premium. Premium Managed Disks jsou dražší než standard, takže před použitím tohoto parametru se ujistěte, že budete potřebovat prémii.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Vytvoření nového disku ze snímku
 
@@ -353,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
-Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**, nebo pomocí následujících příkazů PowerShellu.
+Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **procházet** **virtuální počítače** >  nebo pomocí následujících příkazů PowerShellu.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

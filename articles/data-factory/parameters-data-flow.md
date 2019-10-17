@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028226"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387541"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapování parametrů toku dat
 
@@ -32,23 +32,23 @@ Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely,
 
 Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem Parameters. Kliknutím na tlačítko Nový vygenerujete nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
 
-![Vytvoření parametrů toku dat](media/data-flow/create-params.png "vytvoření parametrů toku dat")
+![Vytvoření parametrů toku dat](media/data-flow/create-params.png "Vytvoření parametrů toku dat")
 
 Parametry lze využít v jakémkoli výrazu toku dat. Parametry začínají na $ a jsou neměnné. Seznam dostupných parametrů se nachází uvnitř Tvůrce výrazů na kartě Parameters (parametry).
 
-(media/data-flow/parameter-expression.png "Výraz parametru toku dat") ![výrazu datového toku dat]
+![Výraz parametru toku dat](media/data-flow/parameter-expression.png "Výraz parametru toku dat")
 
 ## <a name="use-parameters-in-your-data-flow"></a>Použití parametrů v toku dat
 
-* Hodnoty parametrů můžete použít ve výrazech transformace. Seznam parametrů najdete na kartě Parametry v Tvůrci výrazů. ![Použití parametrů toku dat](media/data-flow/params9.png "použití parametrů toku dat")
+* Hodnoty parametrů můžete použít ve výrazech transformace. Seznam parametrů najdete na kartě Parametry v Tvůrci výrazů. ![Použití parametrů toku dat](media/data-flow/params9.png "Use vstupními parametry toku dat)
 
-* Parametry slouží také ke konfiguraci dynamických hodnot pro nastavení transformace zdroje a jímky. Když kliknete do části konfigurovatelné pole, zobrazí se odkaz Přidat dynamický contect. Kliknutím přejdete na Tvůrce výrazů, kde můžete použít parametry k použití dynamických hodnot. (media/data-flow/params6.png "Dynamický obsah toku dat") ![dynamického obsahu toku dat]
+* Parametry slouží také ke konfiguraci dynamických hodnot pro nastavení transformace zdroje a jímky. Když kliknete do části konfigurovatelné pole, zobrazí se odkaz Přidat dynamický contect. Kliknutím přejdete na Tvůrce výrazů, kde můžete použít parametry k použití dynamických hodnot. ![Dynamický obsah toku dat](media/data-flow/params6.png "Ddynamický obsah toku ATA ")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Nastavení parametrů toku dat mapování z kanálu
 
 Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivitou spustit tok dat. Po přidání aktivity na plátno kanálu se zobrazí dostupné parametry toku dat na kartě Parametry aktivity.
 
-![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "pro parametr toku dat")
+![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
 
 Pokud je datovým typem parametru řetězec, po kliknutí na textové pole pro nastavení hodnot parametrů se můžete rozhodnout, že zadáte buď kanál, nebo výraz toku dat. Pokud zvolíte možnost výraz kanálu, zobrazí se panel výrazu kanálu. Nezapomeňte zahrnout funkce kanálu do syntaxe řetězcové interpolace pomocí `'@{<expression>}'`, například:
 
@@ -61,7 +61,7 @@ Pokud váš parametr není typu řetězec, bude vždy zobrazen Tvůrce výrazů 
 
 Každý tok dat mapování může obsahovat libovolnou kombinaci parametrů výrazu kanálu a toku dat. 
 
-Ukázka parametrů ![toku dat]ukázka(media/data-flow/parameter-example.png "datových toků")
+![Ukázka ukazatelů toku dat](media/data-flow/parameter-example.png "Ukázka ukazatelů toku dat")
 
 
 

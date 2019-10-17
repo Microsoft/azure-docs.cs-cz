@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71804052"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387393"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči pomocí aplikace Xamarin pro různé platformy pomocí sady Speech SDK
 
@@ -64,7 +64,9 @@ Nyní přidejte kód jazyka XAML, který definuje uživatelské rozhraní aplika
 
 1. V obslužné rutině `OnRecognitionButtonClicked` Najděte řetězec `YourServiceRegion` a nahraďte ho [oblastí](regions.md) přidruženou k vašemu předplatnému. (Například pro bezplatné zkušební předplatné použijte `westus`.)
 
-1. Dále potřebujete vytvořit [službu Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), která se používá k dotazování na oprávnění mikrofonu z různých projektů platforem (UWP, Android a iOS). Pokud chcete přidat novou složku `Services` pod projekt `helloworld` a vytvořit v něm nový C# zdrojový soubor (klikněte pravým tlačítkem na složku `Services` a **přidejte** **soubor s kódem** > **nové položky** > ) a přejmenujte ho na `IMicrophoneService.cs` a vložte veškerý kód z Následující fragment kódu v tomto souboru: 0 @ no__t-11
+1. Dále potřebujete vytvořit [službu Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), která se používá k dotazování na oprávnění mikrofonu z různých projektů platforem (UWP, Android a iOS). Pokud chcete přidat novou složku `Services` pod projekt `helloworld` a vytvořit v něm nový C# zdrojový soubor (klikněte pravým tlačítkem na složku `Services` a **přidejte** **soubor s kódem** > **nové položky** > ) a přejmenujte ho na `IMicrophoneService.cs` a vložte veškerý kód z Následující fragment kódu v tomto souboru:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Přidat vzorový kód pro projekt `helloworld.Android`
 

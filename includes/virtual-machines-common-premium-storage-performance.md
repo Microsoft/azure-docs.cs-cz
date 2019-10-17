@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975286"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391595"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -97,7 +97,7 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 | **Počet vstupně-výstupních operací za sekundu** |Počet vstupně-výstupních požadavků vydaných na disk úložiště za sekundu. |Čtení z disku/s <br> Zápisy na disk/s |TPS <br> r/s <br> w/s |
 | **Čtení a zápisy na disk** |% operací čtení a zápisu provedených na disku. |% Doby čtení disku <br> % Času zápisu na disk |r/s <br> w/s |
 | **Propustnost** |Množství dat čtených nebo zapsaných na disk za sekundu. |Bajty čtení z disku/s <br> Bajty zápisu na disk/s |kB_read/s <br> kB_wrtn/s |
-| **Latence** |Celková doba, po kterou se má dokončit požadavek na vstupně-výstupní operace disku |Střední doba disku/čtení <br> Střední doba disku/zápis |await <br> svctm |
+| **Latence** |Celková doba, po kterou se má dokončit požadavek na vstupně-výstupní operace disku |Střední doba disku/čtení <br> Střední doba disku/zápis |Await <br> svctm |
 | **Velikost v/v** |Velikost vstupně-výstupních požadavků vydává problémy diskům úložiště. |Průměrný počet bajtů disku/čtení <br> Průměrný počet bajtů disku/zápis |avgrq – SZ |
 | **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na disk úložiště. |Aktuální délka fronty disku |avgqu – SZ |
 | **Počet. Rezident** |Množství paměti vyžadované pro plynulé spuštění aplikace |% Používaných potvrzených bajtů |Použití vmstat |
@@ -174,7 +174,7 @@ Když začnete navrhovat aplikaci, jednou z nich, kterou je třeba udělat, je, 
 
 Virtuální počítače s vysokým rozsahem jsou k dispozici v různých velikostech s různými počty PROCESORových jader, paměti, operačním systémem a dočasné velikosti disku. Každá velikost virtuálního počítače má také maximální počet datových disků, které můžete připojit k virtuálnímu počítači. Vybraná velikost virtuálního počítače proto bude mít vliv na to, kolik je pro vaši aplikaci k dispozici zpracování, paměť a kapacita úložiště. Ovlivňuje také náklady na výpočetní prostředky a úložiště. Níže jsou uvedené například specifikace největšího počtu virtuálních počítačů v řadě DS, DSv2 Series a řady GS:
 
-| Velikost virtuálního počítače | Procesorová jádra | Paměť | Velikosti disků virtuálních počítačů | Nejvýše k datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
+| Velikost virtuálního počítače | Procesorová jádra | Paměť | Velikosti disků virtuálních počítačů | Nejvýše k Datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4 000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
@@ -286,24 +286,24 @@ U všech disků úrovně Premium SSD nebo Ultra s mezipamětí nastavenou na **R
 * U disků služby Premium Storage s mezipamětí nastavenou **na hodnotu**nepoužívat jako mezipaměť povolte překážky při zápisu.
 * Aby jmenovky svazků po restartování virtuálního počítače zůstaly zachované, je nutné aktualizovat/etc/fstab s použitím univerzálně jedinečného identifikátoru (UUID) na disky. Další informace najdete v tématu [Přidání spravovaného disku do virtuálního počítače se systémem Linux](../articles/virtual-machines/linux/add-disk.md).
 
-Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro zajištění lepšího výkonu a stability pomocí Premium SSD doporučujeme, abyste provedli upgrade virtuálních počítačů na jednu z těchto verzí nebo novější. 
+Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro zajištění lepšího výkonu a stability pomocí Premium SSD doporučujeme, abyste provedli upgrade virtuálních počítačů na některou z těchto verzí nebo novější. 
 
 Některé verze vyžadují nejnovější služby Linux Integration Services (LIS), v 4.0 pro Azure. Chcete-li stáhnout a nainstalovat distribuci, postupujte podle odkazu uvedeného v následující tabulce. Do seznamu přidáme obrázky, protože jsme dokončili ověřování. Naše ověřování ukazují, že se výkon u jednotlivých imagí liší. Výkon závisí na charakteristikách úloh a na nastaveních imagí. Různé obrázky jsou vyladěny pro různé druhy úloh.
 
 | Distribuce | Version | Podporované jádro | Podrobnosti |
 | --- | --- | --- | --- |
-| Ubuntu | 12,04 | 3.2.0 – 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
-| Ubuntu | 14,04 | 3.13.0 – 44.73 + | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
-| Debian | 7. x, 8. x | 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12| 3.12.36 – 38.1 +| SUSE-SLES-12-priority-v20150213 <br> SUSE-SLES-12 – v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101 – 0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 +| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 | &nbsp; | [Požadováno LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
-| CentOS | 7.1 + | 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
-| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + | &nbsp; | UEK4 nebo RHCK |
-| Oracle | 7.0 – 7.1 | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4 – 6.7 | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12,04 nebo novější| 3.2.0 – 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
+| Ubuntu | 14,04 nebo novější| 3.13.0 – 44.73 +  | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
+| Debian | 7. x, 8. x nebo novější| 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12 nebo novější| 3.12.36 – 38.1 + | SUSE-SLES-12-priority-v20150213 <br> SUSE-SLES-12 – v20150213 |
+| SUSE | SLES 11 SP4 nebo novější| 3.0.101 – 0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 + nebo novější| 3.18.4 + | CoreOS 584.0.0 |
+| CentOS | 6,5, 6,6, 6,7, 7,0 nebo novější| &nbsp; | [Požadováno LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
+| CentOS | 7.1 + nebo novější| 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Viz Poznámka v následující části.* |
+| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + nebo novější | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + nebo novější | &nbsp; | UEK4 nebo RHCK |
+| Oracle | 7.0-7.1 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4 – 6.7 nebo novější | &nbsp; | UEK4 nebo RHCK w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>Ovladače LIS pro OpenLogic CentOS
 

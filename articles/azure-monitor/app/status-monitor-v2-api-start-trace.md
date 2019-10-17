@@ -1,6 +1,6 @@
 ---
-title: 'Reference k rozhraní API služby Azure Monitorování stavu v2: Spustit trasování | Microsoft Docs'
-description: Reference k rozhraní API pro Monitorování stavu v2 Spustit – trasovat. Shromažďovat protokoly ETW z Monitorování stavu a Application Insights SDK
+title: 'Reference k rozhraní API služby Azure Application Insights agent: spustit trasování | Microsoft Docs'
+description: Reference k rozhraní API agenta Application Insights. Spustit – trasovat. Shromažďovat protokoly ETW z Monitorování stavu a Application Insights SDK
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200367"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389853"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Rozhraní API pro Monitorování stavu v2: Spustit – ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights rozhraní API agenta: Start-ApplicationInsightsMonitoringTrace
 
 Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -29,7 +29,7 @@ Shromažďuje [události ETW](https://docs.microsoft.com/windows/desktop/etw/eve
 
 Shromážděné události budou v reálném čase vytištěny do konzoly a uloženy do souboru ETL. Výstupní soubor ETL může otevřít [PerfView](https://github.com/microsoft/perfview) k dalšímu prošetření.
 
-Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo`Ctrl + C`se zastaví ručně ().
+Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo se zastaví ručně (`Ctrl + C`).
 
 > [!IMPORTANT] 
 > Tato rutina vyžaduje relaci PowerShellu s oprávněními správce.
@@ -43,17 +43,17 @@ Normálně bychom vás poznamenali, že shromáždíte události, abyste zjistil
 Modul runtime pro nekódování kódu bude generovat události ETW při spuštění služby IIS a při spuštění aplikace.
 
 Shromažďování těchto událostí:
-1. V konzole cmd s oprávněními správce spusťte `iisreset /stop` vypnutí služby IIS a všech webových aplikací.
+1. V konzole cmd s oprávněními správce spusťte `iisreset /stop` pro vypnutí služby IIS a všech webových aplikací.
 2. Spustit tuto rutinu
-3. V konzole cmd s oprávněními `iisreset /start` správce spusťte službu IIS.
+3. V konzole cmd s oprávněními správce spusťte `iisreset /start` a spusťte službu IIS.
 4. Zkuste přejít do aplikace.
-5. Po dokončení načítání aplikace ji můžete zastavit ručně (`Ctrl + C`) nebo počkat na časový limit.
+5. Až se vaše aplikace dokončí, můžete ji ručně zastavit (`Ctrl + C`) nebo počkat na vypršení časového limitu.
 
 ### <a name="what-events-to-collect"></a>Jaké události se mají shromáždit
 
 Při shromažďování událostí máte k dispozici tři možnosti:
 1. Pomocí přepínače `-CollectSdkEvents` Shromážděte události vydávané ze sady Application Insights SDK.
-2. Pomocí přepínače `-CollectRedfieldEvents` Shromážděte události vydávané monitorování stavu a modulu runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
+2. Pomocí přepínače `-CollectRedfieldEvents` Shromážděte události vyvolané Monitorování stavu a modulem runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
 3. Oba přepínače slouží ke shromáždění obou typů událostí.
 4. Ve výchozím nastavení, pokud není zadán žádný přepínač, budou shromažďovány oba typy událostí.
 
@@ -117,11 +117,11 @@ Další řešení potíží:
 
 - Projděte si další kroky pro řešení potíží: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
 - Podívejte se na [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) , kde najdete informace o parametrech, které jste možná vynechali
-- Pokud potřebujete další informace, můžete nás kontaktovat na GitHubu [](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Pokud potřebujete další informace, můžete nás kontaktovat na [GitHubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 
 
- Další informace najdete v Monitorování stavu v2:
- - Použijte náš průvodce k [řešení potíží s](status-monitor-v2-troubleshoot.md) monitorování stavu v2.
+ Další Application Insights agenta:
+ - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
  - [Získáním konfigurace](status-monitor-v2-api-get-config.md) potvrďte, že vaše nastavení se správně nahrálo.
  - [Získejte stav](status-monitor-v2-api-get-status.md) pro kontrolu monitorování.
