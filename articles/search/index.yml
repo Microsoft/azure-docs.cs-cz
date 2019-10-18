@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
-  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/14/2019
-  ms.locfileid: "72302729"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529450"
 landingContent:
 - title: Informace o službě Azure Search
   linkLists:
@@ -52,10 +52,10 @@ landingContent:
     links:
     - text: Použití AI k pochopení dat objektů blob
       url: search-blob-ai-integration.md
-    - text: Přidání fulltextového vyhledávání k datům objektů blob
+    - text: Hledání v obsahu objektů blob
       url: search-blob-storage-integration.md
     - text: Ukládání rozšíření AI
-      url: knowledge-store-create-portal.md
+      url: knowledge-store-concept-intro.md
   - linkListType: tutorial
     links:
     - text: Indexování částečně strukturovaných dat objektů blob

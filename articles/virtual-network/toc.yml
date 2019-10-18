@@ -35,20 +35,6 @@
       href: policy-samples.md
 - name: Koncepty
   items:
-    - name: NAT Gateway
-      items:
-        - name: Přehled
-          items:
-            - name: Informace o službě NAT Gateway
-              href: nat-service-overview.md
-        - name: Šablony Rychlý start
-          items:
-            - name: Vytvoření služby NAT Gateway – Azure CLI
-              href: quickstart-create-nat-gateway-cli.md
-        - name: Kurzy
-          items:
-            - name: Vytvoření a ověření služby NAT Gateway – Azure CLI
-              href: tutorial-create-validate-nat-gateway-cli.md
     - name: Skupiny zabezpečení
       href: security-overview.md
     - name: Směrování
@@ -75,6 +61,8 @@
       href: public-ip-address-prefix.md
     - name: Protokol IPv6 pro virtuální síť Azure
       href: ipv6-overview.md
+    - name: Předpony veřejných IPv6 adres
+      href: ipv6-public-ip-address-prefix.md
     - name: Ochrana před útoky DDoS
       href: ddos-protection-overview.md
     - name: Interoperabilita možností připojení back-endu
@@ -248,6 +236,8 @@
           items:
             - name: Podsítě
               href: virtual-network-manage-subnet.md
+            - name: Delegování podsítě
+              href: manage-subnet-delegation.md
             - name: Partnerské vztahy
               href: virtual-network-manage-peering.md
             - name: Ochrana před útoky DDoS
@@ -271,6 +261,8 @@
           href: virtual-network-public-ip-address.md
         - name: Předpona veřejné IP adresy
           href: manage-public-ip-address-prefix.md
+        - name: Předpony veřejných IPv6 adres
+          href: ipv6-reserve-public-ip-address-prefix.md
     - name: Přesun mezi oblastmi
       items:
         - name: Skupiny zabezpečení sítě – portál

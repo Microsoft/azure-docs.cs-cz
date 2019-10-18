@@ -1,5 +1,5 @@
 - name: Dokumentace k rozšíření Durable Functions
-  href: durable-functions-overview.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Informace o službě Azure Functions
@@ -34,7 +34,7 @@
 - name: Ukázky
   items:
     - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+      href: /samples/browse/?products=azure-functions&term=durable
     - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: Koncepty
@@ -81,6 +81,8 @@
       href: durable-functions-bindings.md
     - name: HTTP API
       href: durable-functions-http-api.md
+    - name: Rozhraní API rozšíření Durable
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet-preview
 - name: Návody
   items:
     - name: Vývoj

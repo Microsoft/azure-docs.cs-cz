@@ -1,80 +1,97 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Batch
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Batch
+summary: Azure Batch efektivně spouští rozsáhlé aplikace v cloudu. Využijte možnost plánovat úlohy náročné na výpočetní funkce a dynamicky upravovat prostředky pro vaše řešení bez nutnosti spravovat infrastrukturu.
 metadata:
-  title: 'Dokumentace ke službě Batch – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  description: 'Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
+  title: Dokumentace ke službě Azure Batch
+  description: Azure Batch efektivně spouští rozsáhlé aplikace v cloudu. Využijte možnost plánovat úlohy náročné na výpočetní funkce a dynamicky upravovat prostředky pro vaše řešení bez nutnosti spravovat infrastrukturu.
   services: batch
-  author: georgewallace
-  manager: gwallace
   ms.service: batch
   ms.topic: landing-page
-  ms.date: 11/30/2017
-  ms.author: gwallace
-abstract:
-  description: 'Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Dozvíte se, jak spustit vaši první úlohu služby Batch v Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: quick-create-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: quick-create-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-            text: .NET
-            href: quick-run-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
-            text: Python
-            href: quick-run-python
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Naučte se ve službě Batch spouštět úlohy náročné na výpočetní výkon.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-parallel-dotnet">Paralelní zpracování souborů s využitím .NET SDK</a>
-          - html: <a href="tutorial-parallel-python">Paralelní zpracování souborů s využitím Python SDK</a>
-          - html: <a href="tutorial-rendering-cli">Vykreslování scén s využitím Arnoldu</a>
-          - html: <a href="tutorial-r-doazureparallel">Paralelní simulace R</a>
-  - title: Ukázky
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="cli-samples">Azure CLI</a>
-  - title: Bezplatné školicí video od Pluralsightu
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 'Microsoft Azure Batch, Začínáme'
-            href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/batchservice">Rozhraní REST API služby Batch</a></p><p><a href="/rest/api/batchmanagement/">Rozhraní REST API pro správu služby Batch</a></p>
+  author: laurenhughes
+  ms.author: lahugh
+  ms.date: 09/23/2019
+  ms.openlocfilehash: d7bc942451968e4c1f87aa6ea6a64cd8ce5c03ae
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72527985"
+landingContent:
+- title: Informace o službě Azure Batch
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Batch?
+      url: batch-technical-overview.md
+  - linkListType: learn
+    links:
+    - text: Bezplatné školicí video od Pluralsightu
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Portal
+      url: quick-create-portal.md
+    - text: .NET API
+      url: quick-run-dotnet.md
+    - text: Rozhraní API pro Python
+      url: quick-run-python.md
+  - linkListType: concept
+    links:
+    - text: Funkce pro vývojáře
+      url: batch-api-basics.md
+- title: Podrobní průvodci
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Paralelní zpracování souborů – .NET
+      url: tutorial-parallel-dotnet.md
+    - text: Paralelní zpracování souborů – Python
+      url: tutorial-parallel-python.md
+    - text: OCR se službami Batch a Functions
+      url: tutorial-batch-functions.md
+    - text: Vykreslování scén s využitím Arnoldu
+      url: tutorial-rendering-cli.md
+    - text: Vykreslování scén s využitím Batch Exploreru
+      url: tutorial-rendering-batchexplorer-blender.md
+    - text: Paralelní simulace R
+      url: tutorial-r-doazureparallel.md
+- title: Nastavení a správa prostředků
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu Batch
+      url: batch-account-create-portal.md
+    - text: Vytváření a správa fondů
+      url: batch-custom-images.md
+    - text: Souběžné spouštění úloh
+      url: batch-parallel-node-tasks.md
+    - text: Použití balíčků aplikací
+      url: batch-application-packages.md
+  - linkListType: concept
+    links:
+    - text: Podporované velikosti virtuálních počítačů
+      url: batch-pool-vm-sizes.md
+    - text: Kvóty a omezení
+      url: batch-quota-limit.md
+- title: API – referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/batch?view=azure-cli-latest
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.batch/?view=azps-2.6.0
+    - text: .NET
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet
+    - text: Java
+      url: https://docs.microsoft.com/java/api/overview/azure/batch?view=azure-java-stable
+    - text: Node.js
+      url: https://docs.microsoft.com/javascript/api/overview/azure/batch?view=azure-node-latest
+    - text: Python
+      url: https://docs.microsoft.com/python/api/overview/azure/batch?view=azure-python
+    - text: REST
+      url: https://docs.microsoft.com/rest/api/batchservice/

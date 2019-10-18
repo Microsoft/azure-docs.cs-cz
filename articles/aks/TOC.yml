@@ -304,19 +304,33 @@
           href: spark-job.md
         - name: Použití GPU
           href: gpu-cluster.md
-        - name: Použití Istio
-          items:
-            - name: Instalace a konfigurace
-              href: istio-install.md
-            - name: Inteligentní směrování a testovací verze
-              href: istio-scenario-routing.md
-        - name: Použití technologie Hashicorp Consul Connect
-          items:
-            - name: Instalace a konfigurace
-              href: consul-install.md
         - name: Použití služby Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: Výběr a nasazení sítě služeb
+      items:
+        - name: Informace o sítích služeb
+          href: servicemesh-about.md
+        - name: Použití Istio
+          items:
+            - name: Informace o Istiu
+              href: servicemesh-istio-about.md
+            - name: Instalace a konfigurace
+              href: servicemesh-istio-install.md
+            - name: Scénář – inteligentní směrování a testovací verze
+              href: servicemesh-istio-scenario-routing.md
+        - name: Použití Linkerdu
+          items:
+            - name: Informace o Linkerdu
+              href: servicemesh-linkerd-about.md
+            - name: Instalace a konfigurace
+              href: servicemesh-linkerd-install.md
+        - name: Použití Consulu
+          items:
+            - name: Informace o Consulu
+              href: servicemesh-consul-about.md
+            - name: Instalace a konfigurace
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Použití Ansible k vytvoření clusteru AKS

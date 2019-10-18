@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: Povolení služby Enterprise State Roaming
       href: enterprise-state-roaming-enable.md
+    - name: Infrastruktura virtuálního klienta
+      href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Nasazení pracovních stanic spravovaných v Azure
       href: howto-azure-managed-workstation.md
     - name: Řešení problémů s identitami zařízení

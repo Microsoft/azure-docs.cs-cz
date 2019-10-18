@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Dokumentace k rozšíření Azure Durable Functions
+summary: Durable Functions je rozšíření Azure Functions, které umožňuje psát stavové funkce v bezserverovém výpočetním prostředí.
+metadata:
+  title: Dokumentace k rozšíření Azure Durable Functions
+  description: Durable Functions je rozšíření Azure Functions, které umožňuje psát stavové funkce v bezserverovém výpočetním prostředí.
+  ms.service: azure-functions
+  ms.topic: landing-page
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 10/04/2019
+  ms.openlocfilehash: f0f47c8d997a3d02ad3bae1bc4634f4c7ad2155c
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529682"
+landingContent:
+- title: Informace o rozšíření Durable Functions
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Durable Functions?
+      url: durable-functions-overview.md
+    - text: Porovnání bezserverových možností
+      url: ../functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: Typy odolných funkcí
+      url: durable-functions-types-features-overview.md
+  - linkListType: video
+    links:
+    - text: Překonání bariér bezserverového prostředí
+      url: https://azure.microsoft.com/resources/videos/break-through-the-serverless-barriers-with-durable-functions/
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření odolné funkce (C#)
+      url: durable-functions-create-first-csharp.md
+    - text: Vytvoření první funkce (JavaScript)
+      url: quickstart-js-vscode.md
+  - linkListType: learn
+    links:
+    - text: Vytvoření dlouhotrvajícího bezserverového pracovního postupu
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/
+  - linkListType: video
+    links:
+    - text: Jak začít
+      url: https://azure.microsoft.com/resources/videos/azure-friday-durable-functions-in-azure-functions/
+- title: Klíčové koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Orchestrace
+      url: durable-functions-orchestrations.md
+    - text: Stavové entity
+      url: durable-functions-entities.md
+    - text: Funkce protokolu HTTP
+      url: durable-functions-http-features.md
+    - text: Centra úloh
+      url: durable-functions-task-hubs.md
+    - text: Správa verzí
+      url: durable-functions-versioning.md
+  - linkListType: video
+    links:
+    - text: Bezserverové entity, orchestrace a stavové funkce
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B206
+- title: Vzory aplikací
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Řetězení funkcí
+      url: durable-functions-sequence.md
+    - text: Asynchronní rozhraní API HTTP
+      url: durable-functions-create-first-csharp.md
+    - text: Výstupní/vstupní větvení
+      url: durable-functions-cloud-backup.md
+    - text: Monitory
+      url: durable-functions-monitor.md
+    - text: Lidská interakce
+      url: durable-functions-phone-verification.md
+    - text: Agregátor
+      url: durable-functions-entities.md
+- title: Výkon a sledování
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Diagnostika
+      url: durable-functions-diagnostics.md
+  - linkListType: concept
+    links:
+    - text: Monitorování funkcí
+      url: ../functions-monitoring.md
+    - text: Aspekty sítí
+      url: ../functions-networking-options.md
+- title: Ukázky
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Ukázky Durable Functions
+      url: /samples/browse/?products=azure-functions&term=durable
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Šablony Azure Resource Manageru
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Ukázky Azure CLI
+      url: ../functions-cli-samples.md
