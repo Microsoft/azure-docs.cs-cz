@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146342"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517102"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Hromadné odebrání členů skupiny (Preview) v Azure Active Directory
 
 Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký počet členů ze skupiny pomocí souboru hodnot oddělených čárkami (CSV) pro hromadnou odebrání členů skupiny.
 
-> [!NOTE]
-> Hromadné operace Azure AD jsou funkcí veřejné verze Preview služby Azure AD a jsou dostupné s placeným licenčním plánem Azure AD. Další informace o tom, jak používat verzi Preview, najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
 ## <a name="to-bulk-remove-group-members"></a>Hromadné odebrání členů skupiny
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně odebírat členy skupin, které vlastní.
-1. V Azure AD vyberte **skupiny** > **všechny skupiny**.
+1. V Azure AD vyberte **skupiny**  > **všechny skupiny**.
 1. Otevřete skupinu, ze které odebíráte členy, a pak vyberte **Členové**.
 1. Na stránce **Členové** vyberte **odebrat členy**.
 1. Na stránce **hromadné odebrání členů skupiny (Preview)** vyberte **Stáhnout** a získejte šablonu souboru CSV s požadovanými vlastnostmi člena skupiny.

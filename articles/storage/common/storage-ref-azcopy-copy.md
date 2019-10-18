@@ -4,35 +4,37 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c15d188e333bea5e74fa65d2bbdf38ae7fadc246
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195734"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514769"
 ---
-# <a name="azcopy-copy"></a>AzCopy kopii
+# <a name="azcopy-copy"></a>azcopy copy
 
 Zkopíruje zdrojová data do cílového umístění.
 
 ## <a name="synopsis"></a>Stručný obsah
 
-Podporovány jsou následující pokyny:
+Zkopíruje zdrojová data do cílového umístění. Podporovány jsou následující pokyny:
 
-- místní < – > Azure Blob (ověřování SAS nebo OAuth)
-- místní < – > soubor Azure (ověřování pomocí SAS sdílené složky/adresáře)
-- místní <-> ADLS obecná 2 (ověřování SAS, OAuth nebo SharedKey)
-- Azure Blob (SAS nebo Public) <-> Azure Blob (ověřování SAS nebo OAuth)
-- Soubor Azure (SAS) – > Azure Block BLOB (ověřování SAS nebo OAuth)
-- AWS S3 (přístupový klíč) – > Azure Block BLOB (ověřování SAS nebo OAuth)
+  - místní < – > Azure Blob (ověřování SAS nebo OAuth)
+  - místní soubory Azure <-> (ověřování pomocí SAS pro sdílení/adresář)
+  - místní <-> ADLS obecná 2 (ověřování SAS, OAuth nebo SharedKey)
+  - Azure Blob (SAS nebo Public) – > Azure Blob (ověřování SAS nebo OAuth)
+  - Azure Blob (SAS nebo Public) – > soubory Azure (SAS)
+  - Soubory Azure (SAS) – > soubory Azure (SAS)
+  - Soubory Azure (SAS) – > Azure Blob (ověřování SAS nebo OAuth)
+  - AWS S3 (přístupový klíč) – > Azure Block BLOB (ověřování SAS nebo OAuth)
 
 Další informace najdete v příkladech.
 
-### <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Rozšířený
 
 AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadáno žádné rozšíření).
 
@@ -44,199 +46,194 @@ Integrovaná vyhledávací tabulka je malá, ale v systému UNIX je rozšířena
 
 V systému Windows jsou z registru extrahovány typy MIME. Tuto funkci můžete vypnout pomocí příznaku. Přečtěte si část příznak.
 
-> [!IMPORTANT]
-> Pokud nastavíte proměnnou prostředí pomocí příkazového řádku, bude tato proměnná čitelná v historii příkazového řádku. Zvažte vymazání proměnných, které obsahují pověření z historie příkazového řádku. Chcete-li zabránit zobrazování proměnných ve vaší historii, můžete použít skript, který uživateli vyzve k zadání přihlašovacích údajů a k nastavení proměnné prostředí.
+Pokud nastavíte proměnnou prostředí pomocí příkazového řádku, bude tato proměnná čitelná v historii příkazového řádku. Zvažte vymazání proměnných, které obsahují pověření z historie příkazového řádku. Chcete-li zabránit zobrazování proměnných ve vaší historii, můžete použít skript, který uživateli vyzve k zadání přihlašovacích údajů a k nastavení proměnné prostředí.
 
-```azcopy
+```
 azcopy copy [source] [destination] [flags]
 ```
 
 ## <a name="examples"></a>Příklady
 
-Nahrajte jeden soubor pomocí ověřování OAuth.
+Nahrajte jeden soubor pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte prosím příkaz AzCopy Login před spuštěním následujícího příkazu.
 
-Pokud jste se ještě přihlásili k AzCopy, `azcopy login` použijte prosím příkaz před spuštěním následujícího příkazu.
-
-```azcopy
-azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
-```
+- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"
 
 Stejné jako výše, ale tentokrát také vypočítat hodnotu hash MD5 obsahu souboru a uložit ji jako vlastnost content-MD5 objektu BLOB:
 
-```azcopy
-azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
-```
+- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]"--Put-MD5
 
-Nahrajte jeden soubor s SAS:
+Odeslat jeden soubor pomocí tokenu SAS:
 
-```azcopy
-azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
-```
+- AzCopy CP "/path/to/File.txt" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]? [SAS] "
 
-Nahrát jeden soubor s SAS pomocí potrubního (jenom objekty blob bloku):
+Odeslat jeden soubor pomocí tokenu SAS a potrubního (pouze objekty blob bloku):
+  
+- Cat "/path/to/File.txt" | AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
 
-```azcopy
-cat "/path/to/file.txt" | azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
-```
+Nahrajte celý adresář pomocí tokenu SAS:
+  
+- AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-Nahrajte celý adresář pomocí SAS:
+nebo
 
-```azcopy
-azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
-```
+- AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true--Put-MD5
 
-or
+Odeslat sadu souborů pomocí tokenu SAS a znaků zástupného znaku (*):
 
-```azcopy
-azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --put-md5
-```
+- AzCopy CP "/Path/*foo/* bar/*. PDF" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "
 
-Nahrajte sadu souborů pomocí SAS pomocí zástupných znaků:
+Nahrávání souborů a adresářů pomocí tokenu SAS a zástupných znaků (*):
 
-```azcopy
-azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]"
-```
+- AzCopy CP "/Path/*foo/* bar *" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-Nahrávání souborů a adresářů pomocí SAS pomocí zástupných znaků:
+Stažení jednoho souboru pomocí ověřování OAuth. Pokud jste ještě přihlášeni k AzCopy, spusťte prosím příkaz AzCopy Login před spuštěním následujícího příkazu.
 
-```azcopy
-azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
-```
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]" "/path/to/File.txt"
 
-Pomocí ověřování OAuth Stáhněte jeden soubor.
+Stažení jednoho souboru pomocí tokenu SAS:
 
-Pokud jste se ještě přihlásili k AzCopy, `azcopy login` použijte prosím příkaz před spuštěním následujícího příkazu.
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ""/path/to/File.txt "
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]" "/path/to/file.txt"
-```
+Stažení jednoho souboru pomocí tokenu SAS a následného zřetězení výstupu do souboru (pouze objekty blob bloku):
+  
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] ">"/path/to/File.txt "
 
-Stažení jednoho souboru s SAS:
+Stáhněte si celý adresář pomocí tokenu SAS:
+  
+- AzCopy CP "https://[účet]. blob. Core. Windows. NET/[kontejner]/[cesta/do/adresář]? [SAS] ""/path/to/dir "--rekurzivní = true
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "/path/to/file.txt"
-```
+Poznámka o použití zástupného znaku (*) v adresách URL:
 
-Stažení jednoho souboru s SAS pomocí potrubního (jenom objekty blob bloku):
+Existují dva způsoby, jak použít zástupný znak v adrese URL. 
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" > "/path/to/file.txt"
-```
+- Můžete použít jednu hned za koncovým lomítkem (/) adresy URL. Tím zkopírujete všechny soubory v adresáři přímo do cílového umístění, aniž byste je museli umístit do podadresáře.
 
-Stáhněte si celý adresář s SAS:
+- Můžete ji také použít v názvu kontejneru, pokud adresa URL odkazuje pouze na kontejner a nikoli na objekt BLOB. Tento přístup můžete použít k získání souborů z podmnožiny kontejnerů.
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive=true
-```
+Stažení obsahu adresáře bez kopírování samotného obsahujícího adresáře.
 
-Stažení sady souborů s SAS pomocí zástupných znaků:
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/do/složka]/*? [SAS] ""/path/to/dir "
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/foo*?[SAS]" "/path/to/dir"
-```
+Stáhněte si celý účet úložiště.
 
-Stažení souborů a adresářů pomocí SAS pomocí zástupných znaků:
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/" "/path/to/dir"--rekurzivní
 
-```azcopy
-azcopy cp "https://[account].blob.core.windows.net/[container]/foo*?[SAS]" "/path/to/dir" --recursive=true
-```
+Pomocí zástupného znaku (*) v názvu kontejneru Stáhněte podmnožinu kontejnerů v rámci účtu úložiště.
 
-Zkopírujte jeden objekt BLOB s SAS do jiného objektu BLOB s SAS:
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/[kontejner * název]" "/path/to/dir"--rekurzivní
 
-```azcopy
-azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
-```
+Zkopírujte jeden objekt blob do jiného objektu BLOB pomocí tokenu SAS.
 
-Zkopírujte jeden objekt BLOB s SAS do jiného objektu BLOB s tokenem OAuth.
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "" https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
 
-Pokud jste se ještě přihlásili k AzCopy, `azcopy login` použijte prosím příkaz před spuštěním následujícího příkazu. Token OAuth se používá pro přístup k cílovému účtu úložiště.
+Zkopírujte jeden objekt blob do jiného objektu BLOB pomocí tokenu SAS a tokenu OAuth. Na konci adresy URL zdrojového účtu musíte použít token SAS, ale pokud se přihlašujete k AzCopy pomocí příkazu AzCopy Login, cílový účet ho nepotřebuje. 
 
-```azcopy
-azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
-```
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "" https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB] "
 
-Zkopírujte celý adresář z virtuálního adresáře objektu BLOB s SAS do jiného virtuálního adresáře objektu BLOB s SAS:
+Zkopírování jednoho virtuálního adresáře objektu BLOB na jiný pomocí tokenu SAS:
 
-```azcopy
-azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
-```
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/do/adresář]? [SAS] "" https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-Zkopírujte celá data účtu z účtu BLOB s SAS do jiného účtu BLOB s SAS:
+Zkopírujte všechny kontejnery objektů blob, adresáře a objekty BLOB z účtu úložiště do jiného pomocí tokenu SAS:
 
-```azcopy
-azcopy cp "https://[srcaccount].blob.core.windows.net?[SAS]" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive=true
-```
+- AzCopy CP "https://[srcaccount]. blob. Core. Windows. NET? [SAS] "" https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
-Zkopírujte jeden objekt ze S3 pomocí přístupového klíče k objektu BLOB pomocí SAS:
+Zkopírování jednoho objektu do Blob Storage ze Amazon Web Services (AWS) S3 pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
+  
+- AzCopy CP "https://s3.amazonaws.com/ [kontejner]/[Object]" "https://[destaccount]. blob. Core. Windows. NET/[kontejner]/[cesta/k/BLOB]? [SAS] "
 
-Nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj S3.
+Zkopírování celého adresáře do Blob Storage z AWS S3 pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-```azcopy
-azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
-```
+- AzCopy CP "https://s3.amazonaws.com/ [kontejner]/[složka]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-Zkopírujte celý adresář ze S3 pomocí přístupového klíče do virtuálního adresáře BLOB pomocí SAS:
+Pokud chcete lépe pochopit zástupný symbol [složka], přečtěte si prosím https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html.
 
-```azcopy
-azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
-```
+Zkopírujte všechny intervaly do Blob Storage z Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-Informace https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html o tom, co [Folder] znamená pro S3, najdete v tématu. Nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj S3.
+- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
-Kopírovat všechny intervaly ve službě S3 pomocí přístupového klíče k účtu BLOB s SAS:
+Zkopírujte všechny intervaly do Blob Storage z oblasti Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejdřív nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-Nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj S3.
+- AzCopy CP "https://s3- [oblast]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
-```azcopy
-azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive=true
-```
+Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kontejneru. Stejně jako v předchozích příkladech budete potřebovat přístupový klíč a token SAS. Ujistěte se, že jste pro zdroj AWS S3 nastavili proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY.
 
-Zkopírujte všechny intervaly v oblasti S3 s přístupovým klíčem k účtu BLOB pomocí SAS:
-
-```azcopy
-azcopy cp "https://s3-[region].amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive=true
-```
-
-Nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj S3.
+- AzCopy CP "https://s3.amazonaws.com/ [interval * název]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Popis|
-|--|--|
-|--blob – řetězec typu|Definuje typ objektu BLOB v cíli. Používá se k nahrávání objektů BLOB a při kopírování mezi účty (výchozí hodnota "none").|
-|--Block-– řetězec vrstvy BLOB|Nahrajte objekt blob bloku pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí hodnota je "none").|
-|--Block-size-MB float |Při nahrávání do Azure Storage použít tuto velikost bloku (určenou v souboru MiB) a stáhnout z Azure Storage. Výchozí hodnota se automaticky vypočítá na základě velikosti souboru. Jsou povoleny desetinné zlomky (například: 0,25).|
-|--řetězec řízení mezipaměti|Nastavte hlavičku Cache-Control. Vráceno při stažení.|
-|--check-MD5 – řetězec|Určuje, jak mají být při stahování ověřovány striktní hodnoty hash MD5. K dispozici pouze při stahování. Dostupné možnosti: Nekontrolujte, přihlaste se, FailIfDifferent, FailIfDifferentOrMissing. (výchozí "FailIfDifferent")|
-|--Dispoziční řetězec obsahu|Nastavte hlavičku Content-Disposition. Vráceno při stažení.|
-|--Content-Encoding řetězec|Nastavte hlavičku kódování obsahu. Vráceno při stažení.|
-|--Content-Language-řetězec|Nastaví hlavičku Content-Language. Vráceno při stažení.|
-|--typ obsahu – řetězec |Určuje typ obsahu souboru. Implikuje typ No-odhad-MIME-Type. Vráceno při stažení.|
-|--vyloučit řetězec|Vylučte tyto soubory při kopírování. Podpora použití *.|
-|--Exclude-BLOB – řetězec typu|Volitelně určuje typ objektu BLOB (BlockBlob/PageBlob/AppendBlob), který se má vyloučit při kopírování objektů BLOB z kontejneru nebo účtu. Použití tohoto příznaku se nedá použít pro kopírování dat ze služby mimo Azure. Více než jeden objekt BLOB by měl být oddělený středníkem (;).|
-|--sledovat – symbolických odkazů|Při nahrávání z místního systému souborů Sledujte symbolické odkazy.|
-|--z-k řetězci|Volitelně určuje kombinaci zdrojového cíle. Příklad: LocalBlob, BlobLocal, LocalBlobFS.|
-|-h,--help|Zobrazí obsah nápovědu pro příkaz Kopírovat. |
-|--řetězec na úrovni protokolu|Zadejte podrobnosti protokolu pro soubor protokolu, dostupné úrovně: INFORMACE (všechny žádosti a odpovědi), upozornění (pomalé odezvy), chyba (pouze neúspěšné žádosti) a žádné (žádné výstupní protokoly). (výchozí "informace").|
-|--řetězec metadat|Nahrajte do Azure Storage s těmito páry klíč-hodnota jako metadata.|
-|--No-odhad-MIME-Type|Zabrání AzCopy zjištění typu obsahu založeného na příponě nebo obsahu souboru.|
-|--přepsat|Pokud je tento příznak nastaven na hodnotu true, přepište konfliktní soubory nebo objekty BLOB v cíli. (výchozí hodnota true).|
-|--Page-BLOB – řetězec vrstvy |Nahrajte objekt blob stránky do Azure Storage pomocí této úrovně objektu BLOB. (výchozí hodnota je "none").|
-|--Preserve – čas poslední změny|K dispozici pouze v případě, že cílem je systém souborů.|
-|--Put-MD5|Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.|
-|--rekurzivní|Při nahrávání z místního systému souborů se budou rekurzivně zobrazovat podadresáře.|
-|--S2S-Detect-source-změněno|Zkontroluje, jestli se zdroj po vyčíslení změnil. Pro kopii S2S je jako zdroj vzdáleným prostředkem ověření, jestli se zdroj změnil o náklady na další požadavky.|
-|--S2S-Handle-neplatný – řetězec metadat |Určuje způsob zpracování neplatných klíčů metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí "ExcludeIfInvalid").|
-|--S2S-Preserve-úroveň přístupu|Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si prosím [v Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu.  (výchozí hodnota true).|
-|--S2S-Preserve-Properties|Zachovat úplné vlastnosti během kopírování Service to Service. V případě nesamostatného zdroje souborů S3 a Azure File nevrátí operace se seznamem úplné vlastnosti objektů a souborů, aby se zachovaly úplné vlastnosti, AzCopy musí odeslat jednu další žádost na objekt a soubor. (výchozí hodnota true).|
+**--typ BLOB-** String definuje typ objektu BLOB v cíli. Používá se k nahrávání objektů BLOB a při kopírování mezi účty (výchozí zjišťování). Platné hodnoty zahrnují ' Detect ', ' BlockBlob ', ' PageBlob ' a ' AppendBlob '. Při kopírování mezi účty, hodnota "Detect" způsobí, že AzCopy použije typ zdrojového objektu BLOB k určení typu cílového objektu BLOB. Když nahráváte soubor, zjistí, jestli je soubor VHD nebo VHDX soubor na základě přípony souboru. Pokud je soubor etherem VHD nebo VHDX, AzCopy soubor považuje za objekt blob stránky. (výchozí "Detect")
+
+**--Block-objekt** blob bloku nahrává objekt blob pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí hodnota "none")
+
+**--Block-size-MB** float při nahrávání do Azure Storage použít tuto velikost bloku (zadanou v souboru MIB) a stahovat z Azure Storage. Výchozí hodnota se automaticky vypočítá na základě velikosti souboru. Jsou povoleny desetinné zlomky (například: 0,25).
+
+**– řetězec řízení mezipaměti** nastavuje hlavičku Cache-Control. Vráceno při stažení.
+
+**--check-Length**                         Zkontroluje délku souboru v cíli po přenosu. Pokud dojde ke neshodě mezi zdrojem a cílem, je přenos označený jako neúspěšný. (výchozí hodnota true)
+
+**--check-MD5** řetězec Určuje, jak by měly být při stahování ověřovány STRIKTNĚ hash MD5. K dispozici pouze při stahování. Dostupné možnosti: Nekontrolovat, přihlásit se, FailIfDifferent, FailIfDifferentOrMissing. (výchozí ' FailIfDifferent ') (výchozí "FailIfDifferent")
+
+**--dispoziční řetězec obsahu** nastaví hlavičku Content-Disposition. Vráceno při stažení.
+
+**--řetězec Content-Encoding** nastaví hlavičku Content-Encoding. Vráceno při stažení.
+
+**--Content-Language-** řetězec nastaví hlavičku Content-Language. Vráceno při stažení.
+
+**--typ obsahu** řetězec Určuje typ obsahu souboru. Implikuje typ No-odhad-MIME-Type. Vráceno při stažení.
+
+**--dekomprese**                           Při stahování automaticky dekomprimovat soubory, pokud jejich obsah-kódování označuje, že jsou komprimovány. Podporované hodnoty kódování obsahu jsou "gzip" a "Deflate". Přípony souborů '. gz '/'. gzip ' nebo '. zz ' nejsou nezbytné, ale budou odebrány, je-li k dispozici.
+
+**--Exclude – řetězec atributů** (pouze Windows) vyloučení souborů, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
+
+**--Exclude – řetězec typu BLOB** volitelně určuje typ objektu BLOB (BlockBlob/PageBlob/AppendBlob), který se má vyloučit při kopírování objektů BLOB z kontejneru nebo účtu. Použití tohoto příznaku se nedá použít pro kopírování dat ze služby mimo Azure. Více než jeden objekt BLOB by měl být oddělený středníkem (;).
+
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
+
+**--vyloučit-vzor** řetězec vyloučí tyto soubory při kopírování. Tato možnost podporuje zástupné znaky (*).
+
+**--sledovat – symbolických odkazů**                      Při nahrávání z místního systému souborů Sledujte symbolické odkazy.
+
+**--řetězec z-na** volitelně Určuje kombinaci zdrojového cíle. Příklad: LocalBlob, BlobLocal, LocalBlobFS.
+
+**-h,--** nápovědu pro kopírování
+
+**--include – řetězec atributů** (pouze Windows) zahrnuje soubory, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
+
+**--include-Path** řetězec zahrnuje pouze tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF).
+
+**--include – řetězec vzoru** zahrne při kopírování jenom tyto soubory. Tato možnost podporuje zástupné znaky (*). Oddělte soubory pomocí '; '.
+
+**--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny požadavky a odpovědi), upozornění (pomalé odezvy), chyby (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí informace). (výchozí "informace")
+
+**–** nahrání řetězce metadat pro Azure Storage s těmito páry klíč-hodnota jako metadata.
+
+**--No-odhad-MIME-Type**                   Zabrání AzCopy zjištění typu obsahu založeného na příponě nebo obsahu souboru.
+
+**--přepsání** řetězce přepíše konfliktní soubory a objekty BLOB v cílovém umístění, pokud je tento příznak nastaven na hodnotu true. (výchozí hodnota true) Možné hodnoty zahrnují "true", "false" a "prompt". (výchozí hodnota true)
+
+**--Page-BLOB-** Page nahrání objektu blob stránky pro Azure Storage pomocí této úrovně objektu BLOB. (výchozí možnost ' None '). (výchozí hodnota "none")
+
+**--Preserve – čas poslední změny**          K dispozici pouze v případě, že cílem je systém souborů.
+
+**--Put-MD5**                             Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
+
+**--rekurzivní**                            Při nahrávání z místního systému souborů se budou rekurzivně zobrazovat podadresáře.
+
+**--S2S-Detect-source-změněno**           Zkontroluje, jestli se zdroj po vyčíslení změnil.
+
+**--S2S-Handle-neplatný-řetězec metadat** určuje, jak se zpracovávají neplatné klíče metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí ' ExcludeIfInvalid '). (výchozí "ExcludeIfInvalid")
+
+**--S2S-Preserve-úroveň přístupu**             Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si prosím [v Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí hodnota true).  (výchozí hodnota true)
+
+**--S2S-Preserve-Properties**              Zachovat úplné vlastnosti během kopírování Service to Service. V případě nesamostatného zdroje souborů AWS S3 a Azure File nevrátí operace list úplné vlastnosti objektů a souborů. Aby bylo možné zachovat úplné vlastnosti, AzCopy potřebuje odeslat jednu další žádost na jeden objekt nebo soubor. (výchozí hodnota true)
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Popis|
-|---|---|
-|--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
-|--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+**--Cap – Mbps**      Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.
 
-## <a name="see-also"></a>Viz také:
+**--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
+
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

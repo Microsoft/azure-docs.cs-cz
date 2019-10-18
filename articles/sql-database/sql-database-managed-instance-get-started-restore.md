@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744407"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514021"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý start: Obnovení databáze do spravované instance
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý Start: obnovení databáze do spravované instance
 
 V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnovení databáze (World World Importers – Standard Backup) z úložiště objektů BLOB v Azure do [spravované Instance](sql-database-managed-instance.md)Azure SQL Database.
 
@@ -28,7 +28,7 @@ V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnoven
 > Další informace o migraci pomocí Azure Database Migration Service (DMS) najdete v tématu [migrace spravované instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
 > Další informace o různých metodách migrace najdete v tématu [migrace instance SQL Server do Azure SQL Database spravované instance](sql-database-managed-instance-migrate.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start:
 
@@ -37,10 +37,10 @@ Tento rychlý start:
 - Vyžaduje použití SSMS k připojení ke spravované instanci. V těchto rychlých startech se můžete podívat, jak se připojit:
   - [Připojení ke spravované instanci Azure SQL Database z virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md)
   - [Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md).
-- Vyžaduje účet Azure Blob Storage (například Standard_LRS v2) pro **veřejnou IP adresu** chráněnou **přihlašovacími** `rw` údaji SAS s oprávněním. [Privátní IP adresy pro úložiště objektů BLOB chráněné bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) a koncovými body služby Azure Blob Storage se v tuto chvíli nepodporují.
+- Vyžaduje účet Azure Blob Storage (například Standard_LRS v2) na **veřejné IP adrese** chráněné s **přihlašovacími údaji SAS** , které mají `rw` oprávnění. [Privátní IP adresy pro úložiště objektů BLOB chráněné bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) a koncovými body služby Azure Blob Storage se v tuto chvíli nepodporují.
 
 > [!NOTE]
-> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)najdete v tématu [SQL Server zálohování na adresu URL](sql-database-managed-instance-get-started-restore.md).
+> Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)najdete v tématu [SQL Server zálohování na adresu URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Obnovení databáze ze záložního souboru
 
@@ -88,7 +88,7 @@ V SSMS postupujte podle těchto kroků a obnovte databázi World Importers do sp
 
 7. Po dokončení obnovení zobrazte databázi v Průzkumníku objektů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Řešení potíží se zálohováním na adresu URL najdete v tématu [SQL Server služby Backup na adresu URL osvědčené postupy a řešení potíží](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Přehled možností připojení aplikace najdete v tématu [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).

@@ -4,15 +4,15 @@ description: Popisuje klientské knihovny vyžadované pro připojení klientsk�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298660"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512765"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
@@ -44,7 +44,7 @@ Analysis Services využívat tři klientské knihovny, označované také jako p
 
 Klientské aplikace Microsoftu jako Power BI Desktop a Excel instalují všechny tři klientské knihovny a aktualizují je, když jsou k dispozici nové verze. V závislosti na verzi nebo četnosti aktualizací nemusí některé klientské knihovny být nejnovější verze, které vyžaduje Azure Analysis Services. To samé platí pro vlastní aplikace a další rozhraní, jako jsou AsCmd, Tom nebo ADOMD.NET. Tyto aplikace vyžadují ruční nebo programově instalované knihovny. Klientské knihovny pro ruční instalaci jsou součástí SQL Server balíčků funkcí jako Distribuovatelný balíčky. Tyto klientské knihovny jsou ale vázané na verzi SQL Server a nemusí být nejnovější.  
 
-Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat požadovaných pro připojení ze serveru Azure Analysis Services ke zdroji dat. Další informace o připojeních DataSource najdete v tématu [připojení DataSource](analysis-services-datasource.md).
+Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat požadovaných pro připojení ze serveru Azure Analysis Services ke zdroji dat. Další informace o připojeních zdrojů dat najdete v tématu [připojení ke zdroji dat](analysis-services-datasource.md).
 
 ## <a name="client-library-types"></a>Typy klientské knihovny
 
@@ -74,7 +74,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
 1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
   
-2.  Klikněte pravým tlačítkem na **MSOLAP. dll**@no__t**vlastnosti**-1  > **Podrobnosti**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
+2.  Klikněte pravým tlačítkem na **MSOLAP. dll**  > **vlastnosti**  > **Podrobnosti**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
     
     ![Podrobnosti klientské knihovny](media/analysis-services-data-providers/aas-msolap-details.png)
     

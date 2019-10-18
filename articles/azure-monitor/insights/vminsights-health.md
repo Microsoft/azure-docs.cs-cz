@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 65ad9e1f5ef62ab2dd9f37a13d3c18871c30e603
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933125"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515500"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -36,44 +36,44 @@ Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tém
 
 Tato část popisuje výchozí kritéria stavu pro monitorování virtuálních počítačů Azure s Windows a Linux. Všechna kritéria stavu jsou předem nakonfigurovaná tak, aby odesílala výstrahu, když zjistí stav není v pořádku.
 
-| Název monitorování | Frekvence (min.) | Lookback trvání (min.) | Operator | Prahová hodnota | Výstraha ve stavu | severity | Kategorie úlohy | 
+| Název monitorování | Frekvence (min.) | Lookback trvání (min.) | Operátor | Mezí | Výstraha ve stavu | Závažnost | Kategorie úlohy | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
-| Logický disk online | 5 | 15 | <> | 1 (pravda) | Kritická | Sev1 | Linux | 
+| Logický disk online | 5 | 15 | <> | 1 (pravda) | Kritické | Sev1 | Linux | 
 | Volné místo na logickém disku | 5 | 15 | < | 200 MB (upozornění)<br> 100 MB (kritické) | Upozornění | Sev1<br> Sev2 | Linux | 
-| Logický disk% Free uzlů inode | 5 | 15 | < | 5 % | Kritická | Sev1 | Linux | 
-| % Volného místa logického disku | 5 | 15 | < | 5 % | Kritická | Sev1 | Linux | 
+| Logický disk% Free uzlů inode | 5 | 15 | < | 5 % | Kritické | Sev1 | Linux | 
+| % Volného místa logického disku | 5 | 15 | < | 5 % | Kritické | Sev1 | Linux | 
 | Stav síťového adaptéru | 5 | 15 | <> | 1 (pravda) | Upozornění | Sev2 | Linux | 
-| Dostupná paměť operačního systému v megabajtech | 5 | 10 | < | 2,5 MB | Kritická | Sev1 | Linux | 
-| Průměrná doba disku Doba disku/čtení | 5 | 25 | > | 0,05 s | Kritická | Sev1 | Linux | 
-| Průměrná doba disku Doba disku/přenos | 5 | 25 | > | 0,05 s | Kritická | Sev1 | Linux | 
-| Průměrná doba disku Doby disku/zápis | 5 | 25 | > | 0,05 s | Kritická | Sev1 | Linux | 
-| Stav disku | 5 | 25 | <> | 1 (pravda) | Kritická | Sev1 | Linux | 
-| Celkové procento procesorového času operačního systému | 5 | 10 | >= | 95% | Kritická | Sev1 | Linux | 
-| Celkové procento využití procesoru | 5 | 10 | >= | 95% | Kritická | Sev1 | Windows | 
-| Chyba nebo poškození systému souborů | 60 | 60 | <> | 4 | Kritická | Sev1 | Windows | 
-| Průměrný počet sekund na čtení na logický disk | 1 | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
-| Průměrný počet sekund na přenos za sekundu | 1 | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
-| Průměrný počet sekund na zápis na logický disk (logický disk) | 1 | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
+| Dostupná paměť operačního systému v megabajtech | 5 | 10 | < | 2,5 MB | Kritické | Sev1 | Linux | 
+| Průměrný počet sekund disku/čtení disku | 5 | 25 | > | 0,05 s | Kritické | Sev1 | Linux | 
+| Střední doba disku/přenos disku/s | 5 | 25 | > | 0,05 s | Kritické | Sev1 | Linux | 
+| Střední doba disku/zápis disku/s | 5 | 25 | > | 0,05 s | Kritické | Sev1 | Linux | 
+| Stav disku | 5 | 25 | <> | 1 (pravda) | Kritické | Sev1 | Linux | 
+| Celkové procento procesorového času operačního systému | 5 | 10 | >= | 95% | Kritické | Sev1 | Linux | 
+| Celkové procento využití procesoru | 5 | 10 | >= | 95% | Kritické | Sev1 | Windows | 
+| Chyba nebo poškození systému souborů | 60 | 60 | <> | 4 | Kritické | Sev1 | Windows | 
+| Průměrný počet sekund na čtení na logický disk | 1\. místo | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
+| Průměrný počet sekund na přenos za sekundu | 1\. místo | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
+| Průměrný počet sekund na zápis na logický disk (logický disk) | 1\. místo | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
 | Aktuální délka fronty disku (logický disk) | 5 | 60 | >= | 32 | Upozornění | Sev2 | Windows | 
-| Volné místo na logickém disku (MB) | 15 | 60 | > | Upozornění 500 MB<br> 300 MB – kritické | Kritická | Sev1<br> Sev2 | Windows | 
-| Volné místo na logickém disku (%) | 15 | 60 | > | upozornění 10%<br> 5% kritických | Kritická | Sev1<br> Sev2 | Windows |
+| Volné místo na logickém disku (MB) | 15 | 60 | > | Upozornění 500 MB<br> 300 MB – kritické | Kritické | Sev1<br> Sev2 | Windows | 
+| Volné místo na logickém disku (%) | 15 | 60 | > | upozornění 10%<br> 5% kritických | Kritické | Sev1<br> Sev2 | Windows |
 | Procento času nečinnosti logického disku | 15 | 360 | <= | 20 % | Upozornění | Sev2 | Windows | 
-| Procento využití využité šířky pásma | 5 | 60 | >= | 60% | Upozornění | Sev2 | Windows | 
+| Procento využití využité šířky pásma | 5 | 60 | >= | 60 % | Upozornění | Sev2 | Windows | 
 | Procento využité šířky pásma celkem | 5 | 60 | >= | 75% | Upozornění | Sev2 | Windows | 
-| Vypsání procenta využití šířky pásma | 5 | 60 | >= | 60% | Upozornění | Sev2 | Windows | 
-| Service Health klienta DHCP | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Service Health klienta DNS | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Service Health protokolu událostí systému Windows | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Service Health brány Windows Firewall | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Service Health RPC | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Service Health serveru | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Vzdálená správa systému Windows Service Health | 5 | 12 | <> | 4 (spuštěno) | Kritická | Sev1 | Windows | 
-| Dostupné megabajty paměti | 5 | 10 | < | 100 MB | Kritická | Sev1 | Windows | 
-| Bezplatné položky stránkovací tabulky systému | 5 | 10 | <= | 5000 | Kritická | Sev1 | Windows | 
+| Vypsání procenta využití šířky pásma | 5 | 60 | >= | 60 % | Upozornění | Sev2 | Windows | 
+| Service Health klienta DHCP | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Service Health klienta DNS | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Service Health protokolu událostí systému Windows | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Service Health brány Windows Firewall | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Service Health RPC | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Service Health serveru | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Vzdálená správa systému Windows Service Health | 5 | 12 | <> | 4 (spuštěno) | Kritické | Sev1 | Windows | 
+| Dostupné megabajty paměti | 5 | 10 | < | 100 MB | Kritické | Sev1 | Windows | 
+| Bezplatné položky stránkovací tabulky systému | 5 | 10 | <= | 5000 | Kritické | Sev1 | Windows | 
 | Paměťové stránky za sekundu | 5 | 10 | >= | 5 000/s | Upozornění | Sev1 | Windows | 
-| Procento používané potvrzené paměti | 5 | 10 | > | 80 % | Kritická | Sev1 | Windows | 
-| Průměrná doba disku v sekundách pro přenos | 1 | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
-| Průměrný počet sekund na zápis na disku | 1 | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
+| Procento používané potvrzené paměti | 5 | 10 | > | 80 % | Kritické | Sev1 | Windows | 
+| Průměrná doba disku v sekundách pro přenos | 1\. místo | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
+| Průměrný počet sekund na zápis na disku | 1\. místo | 15 | > | 0.04 s | Upozornění | Sev2 | Windows | 
 | Aktuální délka fronty disku | 5 | 60 | >= | 32 | Upozornění | Sev2 | Windows | 
 | Doba nečinnosti disku v procentech | 5 | 60 | >= | 20 % | Upozornění | Sev2 | Windows | 
 
@@ -108,16 +108,16 @@ Stav definovaný pro virtuální počítač je popsán v následující tabulce:
 |Ikona |Stav |Význam |
 |-----|-------------|---------------|
 | |V pořádku |Virtuální počítač je v rámci definovaných stavových podmínek. Tento stav indikuje, že nebyly zjištěny žádné problémy a virtuální počítač pracuje normálně. Díky nadřazenému souhrnnému monitorování se zobrazí stav a odráží nejlepší nebo nejhorší stav podřízeného případu.|
-| |Kritická |Stav není v rámci definované podmínky stavu, což značí, že byly zjištěny minimálně některé kritické problémy. Tyto problémy je potřeba řešit, aby se obnovily normální funkce. Díky nadřazenému souhrnnému monitorování se stav zobrazí a odráží nejlepší nebo nejhorší případový stav podřízeného objektu.|
+| |Kritické |Stav není v rámci definované podmínky stavu, což značí, že byly zjištěny minimálně některé kritické problémy. Tyto problémy je potřeba řešit, aby se obnovily normální funkce. Díky nadřazenému souhrnnému monitorování se stav zobrazí a odráží nejlepší nebo nejhorší případový stav podřízeného objektu.|
 | |Upozornění |Stav je mezi dvěma mezními hodnotami pro definovaný stav, kde jedna indikuje stav varování a druhá označuje kritický stav (tři prahové hodnoty stavu lze nakonfigurovat), nebo pokud Nekritická chyba může způsobit kritické problémy, pokud nevyřešené. Pokud je u jednoho nebo více podřízených objektů ve stavu varování nadřazený monitor, bude mít nadřazený stav upozornění. Pokud je jeden podřízený v kritickém stavu a další podřízenosti ve stavu varování, nadřazený souhrn zobrazí stav jako kritický.|
-| |Neznámé |Stav nelze vypočítat z několika důvodů. V následující části najdete další podrobnosti a možná řešení. |
+| |Není známo |Stav nelze vypočítat z několika důvodů. V následující části najdete další podrobnosti a možná řešení. |
 
 Příčinu neznámého stavu může být způsobeno následujícími problémy:
 
 - Agent byl překonfigurován a již nebude hlásit do pracovního prostoru zadaného, když byla povolena Azure Monitor pro virtuální počítače. Chcete-li nakonfigurovat agenta tak, aby se do pracovního prostoru nahlásil, podívejte se na téma [Přidání nebo odebrání pracovního prostoru](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - Virtuální počítač se odstranil.
 - Pracovní prostor přidružený k Azure Monitor pro virtuální počítače byl odstraněn. Pokud máte výhody podpory Premier Support, můžete pracovní prostor obnovit. Navštivte [web Premier](https://premier.microsoft.com/) a otevřete žádost o podporu.
-- Závislosti řešení se odstranily. Pokud chcete znovu povolit řešení ServiceMap a InfrastructureInsights v pracovním prostoru Log Analytics, přeinstalujte Tato řešení pomocí [šablony Azure Resource Manager](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions). Nebo použijte možnost konfigurovat pracovní prostor, která se nachází na kartě Začínáme.
+- Závislosti řešení se odstranily. Pokud chcete znovu povolit řešení ServiceMap a InfrastructureInsights v pracovním prostoru Log Analytics, přeinstalujte řešení ServiceMap pomocí [Azure Resource Manager šablony](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution). Pokud chcete znovu nainstalovat řešení InfastructureInsights, pošlete e-mail vminsights@microsoft.com. 
 - Virtuální počítač se vypnul.
 - Služba virtuálního počítače Azure není k dispozici nebo probíhá údržba.
 - Dosáhlo se [denního limitu dat nebo doby uchování](../platform/manage-cost-storage.md) pracovního prostoru.
@@ -214,11 +214,11 @@ Všechna kritéria stavu definovaná pro komponentu, jako je například logick�
 
 Kategorie kritéria se taky může zobrazit vedle sloupce **kritéria stavu** . Pokud kritéria neodpovídají vybrané kategorii, zobrazí se ve sloupci **kritéria stavu** zpráva o tom, že **pro vybranou kategorii nejsou k dispozici žádná kritéria stavu** .
 
-Stav kritérií stavu je definován jedním ze čtyř typů: **Kritická**, **varovná**, **v pořádku**a **neznámá**. První tři jsou konfigurovatelné, což znamená, že mezní hodnoty monitorů můžete upravit přímo v podokně Konfigurace **kritérií stavu** . To je možné taky pomocí operace Azure Monitor REST API [Update monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). **Neznámá** možnost není konfigurovatelná a je vyhrazena pro konkrétní scénáře.
+Stav kritérií stavu je definován jedním ze čtyř typů: **kritická**, **varovná**, **v pořádku**a **neznámá**. První tři jsou konfigurovatelné, což znamená, že mezní hodnoty monitorů můžete upravit přímo v podokně Konfigurace **kritérií stavu** . To je možné taky pomocí operace Azure Monitor REST API [Update monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). **Neznámá** možnost není konfigurovatelná a je vyhrazena pro konkrétní scénáře.
 
 Stránka **Diagnostika stavu** má tři hlavní části:
 
-* Model komponent
+* Model komponenty
 * Kritéria stavu
 * Změny stavu
 
@@ -282,9 +282,9 @@ Tři sloupce jsou vzájemně propojeny. Když vyberete instanci ve sloupci **mod
 
 Pokud například vyberete položku *disk-1 d:* ze seznamu v části **model komponenty**, **kritéria stavu** filtry na *disk-1d:* a **změny stavu** zobrazí změnu stavu na základě dostupnosti *disku-1 D:* .
 
-Pokud se chcete podívat na aktualizovaný stav, můžete stránku diagnostiky stavu aktualizovat výběrem odkazu **aktualizovat** . Pokud dojde k aktualizaci stavu kritéria stavu na základě předem definovaného intervalu cyklického dotazování, tato úloha vám umožní vyhnout se čekání a projevit nejnovější stav. **Stav kritéria** stavu je filtr, který umožňuje určit rozsah výsledků na základě vybraného stavu: V pořádku, upozornění, kritická, neznámá a veškerá. Čas **Poslední aktualizace** v pravém horním rohu představuje čas poslední aktualizace stránky diagnostiky stavu.
+Pokud se chcete podívat na aktualizovaný stav, můžete stránku diagnostiky stavu aktualizovat výběrem odkazu **aktualizovat** . Pokud dojde k aktualizaci stavu kritéria stavu na základě předem definovaného intervalu cyklického dotazování, tato úloha vám umožní vyhnout se čekání a projevit nejnovější stav. **Stav kritéria** stavu je filtr, který umožňuje určit rozsah výsledků na základě vybraného stavu: Dobrý stav, varování, kritický, neznámý a vše. Čas **Poslední aktualizace** v pravém horním rohu představuje čas poslední aktualizace stránky diagnostiky stavu.
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Stav Azure Monitor pro virtuální počítače se integruje s [výstrahami Azure](../../azure-monitor/platform/alerts-overview.md). Vyvolá výstrahu v případě, že při zjištění předdefinovaných kritérií dojde ke změně stavu v pořádku na stav není v pořádku. Výstrahy jsou rozdělené podle závažnosti, od závažnost 0 do závažnost 4, s závažnost 0 jako nejvyšší úrovní.
 
@@ -302,17 +302,17 @@ V tomto zobrazení nejsou určeny výstrahy z jiných typů prostředků nebo sl
 
 Toto zobrazení můžete filtrovat výběrem hodnot v rozevíracích nabídkách v horní části stránky.
 
-|Sloupec |Popis |
+|Column |Popis |
 |-------|------------|
-|Subscription |Vyberte předplatné služby Azure. V zobrazení jsou zahrnuté jenom výstrahy ve vybraném předplatném. |
+|Předplatné |Vyberte předplatné služby Azure. V zobrazení jsou zahrnuté jenom výstrahy ve vybraném předplatném. |
 |Skupina prostředků |Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
 |Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení jsou vybrané jenom výstrahy cílových **virtuálních počítačů** a zahrnují se v tomto zobrazení. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
-|Resource |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
-|severity |Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
-|Stav monitorování |Vyberte podmínku monitorování, pokud chcete filtrovat výstrahy, pokud byly vyvolány nebo vyřešeny systémem, pokud již podmínka není aktivní. Případně můžete vybrat možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
-|Stav upozornění |Pokud chcete zahrnout výstrahy všech stavů, vyberte stav výstrahy, **Nový**, **Potvrdit**, **Uzavřeno**nebo **vše** . |
+|Prostředek |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
+|Závažnost |Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
+|Podmínka monitorování |Vyberte podmínku monitorování, pokud chcete filtrovat výstrahy, pokud byly vyvolány nebo vyřešeny systémem, pokud již podmínka není aktivní. Případně můžete vybrat možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
+|Stav výstrahy |Pokud chcete zahrnout výstrahy všech stavů, vyberte stav výstrahy, **Nový**, **Potvrdit**, **Uzavřeno**nebo **vše** . |
 |Monitorovat službu |Vyberte službu nebo vyberte možnost **vše** , pokud chcete zahrnout všechny služby. Pro tuto funkci se podporují jenom výstrahy z virtuálního počítače Insights.|
-|Časový rozsah| V zobrazení jsou zahrnuté jenom výstrahy aktivované v rámci vybraného časového období. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
+|Časové rozmezí| V zobrazení jsou zahrnuté jenom výstrahy aktivované v rámci vybraného časového období. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
 Když vyberete výstrahu, zobrazí se stránka s **podrobnostmi výstrahy** . Tato stránka poskytuje podrobnosti o výstraze a umožňuje změnit její stav.
 
@@ -441,4 +441,5 @@ Azure Monitor pro virtuální počítače Health podporuje SMS a e-mailová ozn�
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete zjistit omezení a celkový výkon virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálního počítače Azure](vminsights-performance.md).
+
 - Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy Azure monitor pro virtuální počítače](vminsights-maps.md).

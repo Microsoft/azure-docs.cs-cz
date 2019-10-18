@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373548"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532831"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
->Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do vaší ikony čtečky informačního kanálu @no__t 1RSS @ no__t-2.
+>Přečtěte si informace o tom, kdy se tato stránka na aktualizace znovu navštíví zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do vaší ![RSS ikony čtečky informačního kanálu ](./media/whats-new/feed-icon-16x16.png) čtenář.
 
 Služba Azure AD průběžně přijímá vylepšení. V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
@@ -36,6 +36,20 @@ Služba Azure AD průběžně přijímá vylepšení. V tomto článku najdete i
 - Plánuje změny
 
 Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu navštěvovat. Pokud hledáte položky, které jsou starší než šest měsíců, najdete je v archivu, abyste mohli [novinky v Azure Active Directory](whats-new-archive.md).
+
+---
+
+## <a name="october-2019"></a>Říjen 2019
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>Vyřazení rozhraní API identityRiskEvent pro detekci rizik Azure AD Identity Protection  
+
+**Zadejte:** Plánování změn  
+**Kategorie služby:** Ochrana identity  
+**Schopnost produktu:** Zabezpečení identity & ochrana
+
+V reakci na zpětnou vazbu od vývojářů teď můžou předplatitelé Azure AD Premium P2 provádět komplexní dotazy na data o detekci rizika Azure AD Identity Protection pomocí nového rozhraní API riskDetection pro Microsoft Graph. Stávající beta verze rozhraní [identityRiskEvent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta) API přestane vracet data z **10. ledna 2020**. Pokud vaše organizace používá rozhraní identityRiskEvent API, měli byste přejít na nové rozhraní riskDetection API.
+
+Další informace o novém rozhraní riskDetection API najdete v [referenční dokumentaci k rozhraní API pro detekci rizik](https://aka.ms/RiskDetectionsAPI).
 
 ---
 
@@ -50,6 +64,8 @@ Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu n
 Power BI zastaraly balíčky obsahu od jejich Storu a od 1. **října 2019**už nepodporujeme balíček obsahu Power BI Azure AD. Zákazníci, kteří aktuálně používají balíček obsahu, ho můžou dál používat i v případě, že jsou základní rozhraní API starší verze. Jako alternativu k tomuto balíčku obsahu můžete použít sešity Azure AD (postavené na Log Analytics) a získat přehled o službách souvisejících s Azure AD.
 
 Další informace o sešitech najdete v tématu [Jak používat Azure monitor sešity pro Azure Active Directory sestavy](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Další informace o vyřazení balíčků obsahu najdete v blogovém příspěvku s [oznámením o obecných dostupnosti pro Power BI šablonových aplikací](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Můj profil se znovu pojmenovává a integruje se stránkou systém Microsoft Office účtu.
 
@@ -367,7 +383,7 @@ Další informace o nastavení Azure Monitor najdete [v tématu protokoly aktivi
 
 25. září 2019 se vypíná staré, nerozšířené informace o zabezpečení pro registraci a správu bezpečnostních údajů uživatelů a zapínání nové [Rozšířené verze](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271). To znamená, že uživatelé již nebudou moci používat staré prostředí.
 
-Další informace o prostředí rozšířené informace o zabezpečení najdete v naší [dokumentaci pro správce](https://aka.ms/securityinfodocs)@no__t – 1and naší [dokumentaci pro uživatele](https://aka.ms/securityinfoguide).
+Další informace o prostředí rozšířené informace o zabezpečení najdete v naší [dokumentaci pro správce](https://aka.ms/securityinfodocs)  and naší [dokumentaci pro uživatele](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Pokud chcete toto nové prostředí zapnout, musíte:
 
@@ -444,7 +460,7 @@ Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady
 
 26. července 2019 jsme změnili, jak poskytujeme tokeny jenom pro aplikace prostřednictvím [udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Dříve mohli aplikace získat tokeny pro volání jiných aplikací bez ohledu na to, jestli klientská aplikace byla v tenantovi. Toto chování jsme aktualizovali tak, aby se prostředky jednoho tenanta, někdy označované jako webové rozhraní API, mohly volat jenom pro klientské aplikace, které existují v tenantovi prostředků.
 
-Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s oznámením, že `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` pro vyřešení tohoto problému je nutné, abyste v tenantovi vytvořili instanční objekt klientské aplikace, a to pomocí [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [prostřednictvím PowerShellu](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). který zajišťuje, že má tenant oprávnění aplikace pro práci v rámci tenanta.
+Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s oznámením, že `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` k vyřešení tohoto problému musíte v tenantovi vytvořit instanční objekt aplikace klienta, a to pomocí [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [prostřednictvím PowerShellu](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell). který zajišťuje, že má tenant oprávnění aplikace pro práci v rámci tenanta.
 
 Další informace najdete v tématu [co je nového pro ověřování?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -657,7 +673,7 @@ Další informace o těchto aktualizacích najdete v tématech [filtrování pro
 
 ---
 
-## <a name="june-2019"></a>Červeně 2019
+## <a name="june-2019"></a>Červen 2019
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Nové rozhraní riskDetections API pro Microsoft Graph (Public Preview)
 

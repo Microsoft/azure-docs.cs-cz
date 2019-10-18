@@ -4,18 +4,18 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 15e72493190e1bc56e779c22695bc51bd05da940
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: e7ceff4df320aa1fbc3aa6e601c61f6407fd762e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195773"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514745"
 ---
-# <a name="azcopy-env"></a>AzCopy ENV
+# <a name="azcopy-env"></a>azcopy env
 
 Zobrazuje proměnné prostředí, které můžou konfigurovat chování AzCopy.
 
@@ -42,6 +42,6 @@ azcopy env [flags]
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

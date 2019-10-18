@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174197"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517061"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (Preview) na portálu Azure Active Directory
 
@@ -35,6 +35,38 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
 1. Na stránce **Stáhnout uživatele** vyberte možnost **Spustit** , pokud chcete zobrazit soubor CSV s výpisem vlastností profilu uživatele. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
 
    ![Vyberte, kde chcete seznam uživatelů, které chcete stáhnout.](./media/users-bulk-download/bulk-download.png)
+
+   Soubor ke stažení bude obsahovat filtrovaný seznam uživatelů.
+
+   Budou zahrnuty následující atributy uživatele: 
+
+   - userPrincipalName (Hlavní název uživatele)
+   - DisplayName
+   - Příjmení
+   - Modul
+   - GivenName
+   - Objektu
+   - userType
+   - JobTitle
+   - Ministerstvo
+   - Programu
+   - AccountEnabled
+   - usageLocation
+   - streetAddress
+   - state
+   - Krajin
+   - physicalDeliveryOfficeName
+   - city
+   - Ovládacím
+   - TelephoneNumber
+   - telefon
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - alternateEmailAddress
+   - ageGroup
+   - consentProvidedForMinor
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Zkontrolování stavu
 

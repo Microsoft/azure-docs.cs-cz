@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 293d0de024ad815b4755d48833b7058c29ebcd5a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326952"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513292"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště
 
@@ -39,15 +39,15 @@ Když vaše aplikace dosáhne limitu toho, co může oddíl zpracovat pro vaše 
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
-## <a name="azure-files-scale-targets"></a>Azure soubory měřítko cíle
+## <a name="azure-files-scale-targets"></a>Cíle škálování souborů Azure
 
 Další informace o škálování a výkonu pro Azure Files a Azure File Sync najdete v tématu [škálovatelnost a cíle výkonnosti souborů Azure](../files/storage-files-scale-targets.md).
 
 > [!IMPORTANT]
 > Limity účtu úložiště se vztahují na všechny sdílené složky. Horizontální navýšení kapacity účtů úložiště je možné jen tehdy, je-li k dispozici pouze jedna sdílená složka na jeden účet úložiště.
 >
-> Standardní sdílené soubory větší než 5 TiB jsou ve verzi Preview a mají určitá omezení.
-> Seznam omezení a připojení k verzi Preview těchto větších souborů ke sdílení najdete v části [standardní sdílené složky](../files/storage-files-planning.md#standard-file-shares) v příručce pro plánování souborů Azure.
+> Standardní sdílené složky větší než 5 TiB mají určitá omezení a regionální omezení.
+> Seznam omezení, regionálních informací a pokyny, jak tyto větší velikosti sdílení souborů povolit, najdete v části připojení [k větším sdíleným složkám (úroveň Standard)](../files/storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) v příručce pro plánování souborů Azure.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -55,13 +55,13 @@ Další informace o škálování a výkonu pro Azure Files a Azure File Sync na
 
 Existují tři kategorie omezení, které je třeba vzít v úvahu pro prémiové soubory: účty úložiště, sdílené složky a soubory.
 
-Příklad: Jedna sdílená složka může dosahovat 100 000 vstupně-výstupních operací a jeden soubor se může škálovat až na 5 000 IOPS. Takže pokud máte například tři soubory v jedné sdílené složce, maximální IOPs, kterou můžete z této sdílené složky získat, je 15 000.
+Například: jedna sdílená složka může dosahovat 100 000 vstupně-výstupních operací a jeden soubor se může škálovat až na 5 000 IOPS. Takže pokud máte například tři soubory v jedné sdílené složce, maximální IOPs, kterou můžete z této sdílené složky získat, je 15 000.
 
 #### <a name="premium-file-share-limits"></a>Omezení sdílení souborů úrovně Premium
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
+### <a name="azure-file-sync-scale-targets"></a>Azure File Sync cíle škálování
 
 Azure File Sync byla navržena s cílem neomezeného využití, ale neomezené využití není vždy možné. Následující tabulka uvádí hranice testování Microsoftu a také uvádí, které cíle jsou pevné meze:
 
@@ -75,7 +75,7 @@ Azure File Sync byla navržena s cílem neomezeného využití, ale neomezené v
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/)
 - [Limity, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md)

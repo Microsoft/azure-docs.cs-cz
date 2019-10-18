@@ -1,17 +1,17 @@
 ---
-title: Povolení a vyžádat přístup za běhu pro Azure Managed Applications
+title: Žádost o přístup za běhu – Azure Managed Applications
 description: Popisuje způsob, jakým vydavatelé Azure Managed Applications vyžadují přístup k spravované aplikaci za běhu.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 0d595d4c96e9f87f1c8eece5d47bf4c8cdd58d7c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fdd1dcf5ab6b58a91534a465a8c92c10de0d2097
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574979"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528948"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Povolení a vyžádat přístup za běhu pro Azure Managed Applications
 
@@ -81,7 +81,7 @@ Při definování vaší nabídky na webu Marketplace se ujistěte, že jste pov
 
 Přidali jste do svého uživatelského rozhraní krok konfigurace JIT a v nabídce Marketplace jste povolili přístup JIT. Když si uživatelé nasadí spravovanou aplikaci, můžou [zapnout přístup JIT ke své instanci](approve-just-in-time-access.md#enable-during-deployment).
 
-## <a name="request-access"></a>Vyžádat si přístup
+## <a name="request-access"></a>Vyžádání přístup
 
 Pokud potřebujete přístup ke spravovaným prostředkům uživatele, pošlete žádost o konkrétní roli, dobu a dobu trvání. Příjemce pak musí žádost schválit.
 
@@ -111,6 +111,6 @@ Odeslání požadavku na přístup JIT:
 
 ID objektu zabezpečení účtu požadujícího přístup JIT musí být explicitně zahrnuto v definici spravované aplikace. Účet nejde zahrnout jenom ze skupiny, která je určená v balíčku. Toto omezení bude opraveno v budoucí verzi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o schvalování požadavků pro přístup JIT najdete v tématu [schválení přístupu za běhu v Azure Managed Applications](approve-just-in-time-access.md).

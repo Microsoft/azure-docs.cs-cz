@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 09/14/2019
-ms.openlocfilehash: d53f422a38c21163fccb1f60eb957b014b54ad74
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273970"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514931"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
 Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projektech machine learningu. Tyto pracovní postupy mají několik výhod: 
 
-+ Administrativ
-+ Takt
++ Jednoduchost
++ Rychlost
 + Opakovatelnost
-+ Umožněn
++ Flexibilita
 + Správa verzí a sledování
 + Modularitu 
 + Zabezpečování kvality
@@ -40,10 +40,10 @@ Naučte se, jak [vytvořit první kanál](how-to-create-your-first-pipeline.md).
 
 Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný účel. V následující tabulce jsou uvedeny různé kanály a jejich použití pro:
 
-| Kanálu | Akce | Kanonický kanál |
+| Kanál | Výsledek | Kanonický kanál |
 | ---- | ---- | ---- |
 | Azure Machine Learning kanály | Definuje opakovaně použitelné pracovní postupy strojového učení, které se dají použít jako šablona pro scénáře vašeho strojového učení. | Model dat > |
-| [Azure Data Factory kanály](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Seskupuje, transformuje a řídí aktivity, které jsou potřebné k provedení úkolu.  | Data-> data |
+| [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Seskupuje, transformuje a řídí aktivity, které jsou potřebné k provedení úkolu.  | Data-> data |
 | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Průběžná integrace a doručování vaší aplikace na libovolnou platformu/libovolný Cloud  | > App/Service pro kód |
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Co můžou kanály Azure ML dělat?
@@ -85,7 +85,7 @@ Kanály tento problém vyřeší. Azure Machine Learning automaticky orchestruje
 
 Kromě toho může výstup kroku v případě, že zvolíte, být znovu použit. Pokud jako možnost zadáte možnost znovu použít a neexistují žádné nadřazené závislosti, které aktivují přepočítání, služba kanálu bude používat verzi výsledků kroku v mezipaměti. Takové opakované použití může výrazně zkrátit dobu vývoje. Pokud máte komplexní úlohu přípravy dat, pravděpodobně ji znovu spustíte častěji než je nezbytně nutné. Kanály k nim zbavují tyto obavy: v případě potřeby se krok spustí, pokud ne, nebude.
 
-Všechny tyto analýzy, Orchestrace a aktivace jsou zpracovávány Azure Machine Learning při vytváření instance objektu [kanálu](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) , předání do `Experiment` a volání `submit()`. 
+Všechny tyto analýzy, Orchestrace a aktivace jsou zpracovávány Azure Machine Learning při vytváření instance objektu [kanálu](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) , předání do `Experiment` a volání `submit()`. 
 
 ### <a name="coordinating-the-steps-involved"></a>Koordinace kroků, které jsou součástí
 
@@ -99,7 +99,7 @@ Když vytvoříte a spustíte objekt `Pipeline`, dojde k následujícím krokům
 + Služba určuje závislosti mezi kroky, což vede k dynamickému spuštění grafu.
 + Když se každý uzel v grafu provádění spustí:
     + Služba konfiguruje potřebné hardwarové a softwarové prostředí (možná znovu používá stávající prostředky).
-    + Spustí se krok, který poskytuje informace o protokolování a monitorování do objektu obsahujícího @no__t 0.
+    + Spustí se krok, který poskytuje informace o protokolování a monitorování objektu obsahujícího `Experiment`.
     + Po dokončení kroku se jeho výstupy připravují jako vstupy k dalšímu kroku a/nebo se zapsaly do úložiště.
     + Prostředky, které už nejsou potřeba, se dokončují a odpojí.
 
@@ -107,7 +107,7 @@ Když vytvoříte a spustíte objekt `Pipeline`, dojde k následujícím krokům
 
 ## <a name="how-do-i-build-azure-ml-pipelines-using-the-python-sdk"></a>Návody sestavování kanálů Azure ML pomocí sady Python SDK?
 
-V sadě [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)je kanál objektem Python definovaným v modulu `azureml.pipeline.core`. Objekt [kanálu](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) obsahuje uspořádanou sekvenci jednoho nebo více objektů [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Třída `PipelineStep` je abstraktní a vlastní kroky budou podtřídou, jako je například [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)nebo [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Třída [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) obsahuje opakovaně použitelnou sekvenci kroků, které je možné sdílet mezi kanály. @No__t-0 se spustí jako součást `Experiment`.
+V sadě [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)je kanál objektem Python definovaným v modulu `azureml.pipeline.core`. Objekt [kanálu](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)) obsahuje uspořádanou sekvenci jednoho nebo více objektů [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep) . Třída `PipelineStep` je abstraktní a vlastní kroky budou podtřídou, jako je například [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep), [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep)nebo [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep). Třída [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) obsahuje opakovaně použitelnou sekvenci kroků, které je možné sdílet mezi kanály. @No__t_0 spouští jako součást `Experiment`.
 
 Kanál Azure ML je přidružený k pracovnímu prostoru Azure Machine Learning a krok kanálu je přidružený k cílovému výpočetnímu prostředí, které je dostupné v daném pracovním prostoru. Další informace najdete v tématu [Vytvoření a Správa pracovních prostorů Azure Machine Learning v Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) nebo [Jaké jsou výpočetní cíle v Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
@@ -117,7 +117,7 @@ V Azure Machine Learning výpočetní cíl je prostředí, ve kterém nastane f�
 
 Kroky v kanálu mohou mít závislosti na jiných krocích. Služba kanálu Azure ML pracuje na analýze a orchestraci těchto závislostí. Uzly ve výsledném grafu provádění jsou kroky zpracování. Každý krok může zahrnovat vytvoření nebo opětovné použití konkrétní kombinace hardwaru a softwaru, opětovného použití uložených výsledků v mezipaměti atd. Orchestrace a optimalizace služby tohoto grafu provádění mohou významně zrychlit fázi ML a snížit náklady. 
 
-Vzhledem k tomu, že kroky jsou spouštěny nezávisle, objekty k uložení vstupních a výstupních dat, která toků mezi kroky musí být definována externě. Toto je role [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)a přidružených tříd. Tyto datové objekty jsou přidruženy k objektu [úložiště](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) dat, který zapouzdřuje konfiguraci úložiště. Základní třída `PipelineStep` je vždy vytvořena s řetězcem `name`, seznamem `inputs` a seznamem `outputs`. Obvykle má také seznam `arguments` a často se seznam `resource_inputs`. Podtřídy budou mít obvykle i další argumenty (například `PythonScriptStep` vyžaduje název souboru a cestu ke skriptu, který chcete spustit). 
+Vzhledem k tomu, že kroky jsou spouštěny nezávisle, objekty k uložení vstupních a výstupních dat, která toků mezi kroky musí být definována externě. Toto je role [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)a přidružených tříd. Tyto datové objekty jsou přidruženy k objektu [úložiště](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) dat, který zapouzdřuje konfiguraci úložiště. Základní třída `PipelineStep` je vždy vytvořena s řetězcem `name`, seznamem `inputs` a seznamem `outputs`. Většinou má také seznam `arguments` a často se seznam `resource_inputs`. Podtřídy budou mít obvykle i další argumenty (například `PythonScriptStep` vyžaduje název souboru a cestu ke skriptu, který chcete spustit). 
 
 Spuštění grafu je acyklického, ale kanály je možné spouštět podle opakovaného plánu a můžou spouštět skripty Pythonu, které můžou zapisovat stavové informace do systému souborů, což umožňuje vytvářet komplexní profily. Pokud provedete návrh kanálu tak, aby se některé kroky mohly spustit paralelně nebo asynchronně, Azure Machine Learning transparentně zpracovává analýzu závislostí a koordinaci ventilátorů a ventilátorů. Obecně se nemusíte řešit s podrobnostmi o grafu provádění, ale jsou k dispozici prostřednictvím atributu [Pipeline. Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) . 
 
@@ -157,7 +157,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Fragment kódu začíná běžnými Azure Machine Learning objekty, `Workspace`, `Datastore`, [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)a `Experiment`. Kód potom vytvoří objekty pro uložení `input_data` a `output_data`. Pole `steps` obsahuje jeden prvek, `PythonScriptStep`, který bude používat datové objekty a běží na `compute_target`. Kód potom vytvoří instanci objektu `Pipeline` samotného, který předává do pole pracovní prostor a kroky. Volání `experiment.submit(pipeline)` zahájí spuštění kanálu Azure ML. Volání `wait_for_completion()` blokuje až do dokončení kanálu. 
+Fragment kódu začíná běžnými Azure Machine Learning objekty, `Workspace`, `Datastore`, [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)a `Experiment`. Potom kód vytvoří objekty pro uchování `input_data` a `output_data`. Pole `steps` obsahuje jeden prvek, `PythonScriptStep`, která bude používat datové objekty a běží na `compute_target`. Kód potom vytvoří instanci objektu `Pipeline` samotného, který předává do pole pracovní prostor a kroky. Volání `experiment.submit(pipeline)` zahájí spuštění kanálu Azure ML. Volání `wait_for_completion()` blokuje až do dokončení kanálu. 
 
 ## <a name="best-practices-when-choosing-to-use-azure-ml-pipelines"></a>Osvědčené postupy při volbě použití kanálů Azure ML?
 
@@ -187,7 +187,7 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 |Výhoda klíče|Popis|
 |:-------:|-----------|
-|**Bezobslužná instalace @ no__t – 1runs**|Naplánujte kroky paralelně nebo v rámci spolehlivého a bezobslužného zpracování. Příprava a modelování dat může mít poslední dny nebo týdny a kanály vám umožní soustředit se na další úlohy, když je proces spuštěný. |
+|**Bezobslužná &nbsp;runs**|Naplánujte kroky paralelně nebo v rámci spolehlivého a bezobslužného zpracování. Příprava a modelování dat může mít poslední dny nebo týdny a kanály vám umožní soustředit se na další úlohy, když je proces spuštěný. |
 |**Heterogenní COMPUTE**|Používejte více kanálů, které jsou spolehlivě koordinované napříč heterogenními a škálovatelnými výpočetními prostředky a umístěními úložiště. Využijte k efektivnímu využití dostupných výpočetních prostředků spuštěním jednotlivých kroků kanálu na různých výpočetních cílech, jako je HDInsight, GPU pro datové vědy GPU a datacihly.|
 |**Možnost opakovaného využití**|Vytvořte šablony kanálu pro konkrétní scénáře, jako je například přeškolení a dávkové vyhodnocování. Triggery publikovaných kanálů z externích systémů prostřednictvím jednoduchých volání REST.|
 |**Sledování a správa verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
@@ -196,7 +196,7 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 ## <a name="next-steps"></a>Další kroky
 
-Kanály Azure ML jsou výkonné zařízení, které začíná dodávat hodnoty ve fázích předčasného vývoje. Hodnota se zvyšuje při zvětšování týmu a projektu. Tento článek vysvětluje, jak se zadává kanály s Azure Machine Learning Python SDK a orchestruje se v Azure. Viděli jste nějaký základní zdrojový kód a zavedli jste několik tříd @no__t 0, které jsou k dispozici. Měli byste mít představu o tom, kdy používat kanály Azure ML a jak je Azure spouští. 
+Kanály Azure ML jsou výkonné zařízení, které začíná dodávat hodnoty ve fázích předčasného vývoje. Hodnota se zvyšuje při zvětšování týmu a projektu. Tento článek vysvětluje, jak se zadává kanály s Azure Machine Learning Python SDK a orchestruje se v Azure. Viděli jste nějaký základní zdrojový kód a zavedli jsme několik `PipelineStep` tříd, které jsou k dispozici. Měli byste mít představu o tom, kdy používat kanály Azure ML a jak je Azure spouští. 
 
 
 + Naučte se, jak [vytvořit první kanál](how-to-create-your-first-pipeline.md).

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025483"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517081"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -77,7 +77,7 @@ K této chybě může dojít, protože jste změnili značky v uzlech agentů v 
 
 K této chybě dojde v případě, že clustery vstupují do neúspěšného stavu z více důvodů. Použijte následující postup, chcete-li vyřešit neúspěšný stav clusteru před opakováním dříve nezdařené operace:
 
-1. Dokud nebude cluster ne@no__t stavem 0, operace `upgrade` a `scale` nebudou úspěšné. Mezi běžné kořenové problémy a jejich řešení patří:
+1. Dokud nebude cluster ne`failed` stav, `upgrade` a `scale` operace nebudou úspěšné. Mezi běžné kořenové problémy a jejich řešení patří:
     * Škálování s **nedostatečnou výpočetní (CRP) kvótou**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle těchto [kroků a vyžádejte si zvýšení kvóty výpočetních](../azure-supportability/resource-manager-core-quotas-request.md) prostředků předtím, než se pokusíte o horizontální navýšení limitu kvóty.
     * Škálování clusteru pomocí pokročilých síťových a **nedostatečných podsítí (síťových) prostředků**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle [těchto kroků a vyžádejte si zvýšení kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) , než se pokusíte o horizontální navýšení kapacity nad rámec počáteční kvóty.
 2. Jakmile se podkladová příčina selhání upgradu vyřeší, cluster by měl být v úspěšném stavu. Po ověření stavu úspěšného dokončení zopakujte původní operaci.
@@ -147,3 +147,337 @@ Použijte následující alternativní řešení:
 Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, možná nebudete moci spustit určité příkazy `kubectl`. Při vytváření clusteru AKS můžete také zobrazit chyby.
 
 Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.
+
+## <a name="azure-storage-and-aks-troubleshooting"></a>Řešení potíží s Azure Storage a AKS
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Jaké jsou doporučené stabilní verze Kubernetes pro disk Azure? 
+
+| Verze Kubernetes | Doporučená verze |
+| -- | :--: |
+| 1,12 | 1.12.9 nebo novější |
+| 1,13 | 1.13.6 nebo novější |
+| 1,14 | 1.14.2 nebo novější |
+
+
+### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají v rámci svrchovaného cloudu podporu disků Azure?
+
+| Verze Kubernetes | Doporučená verze |
+| -- | :--: |
+| 1,12 | 1.12.0 nebo novější |
+| 1,13 | 1.13.0 nebo novější |
+| 1,14 | 1.14.0 nebo novější |
+
+
+### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>WaitForAttach se nezdařilo pro disk Azure: analýza "/dev/disk/Azure/scsi1/lun1": Neplatná syntaxe
+
+V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
+
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
+  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
+```
+
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
+
+```console
+Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
+1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
+```
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,10 | 1.10.2 nebo novější |
+| 1,11 | 1.11.0 nebo novější |
+| 1,12 a novější | Nevztahuje se |
+
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
+
+Disk Azure používá ve výchozím nastavení systém souborů ext4, XFS a mountOptions, jako je UID = x, GID = x, nejde nastavit v době připojení. Například pokud jste se pokusili nastavit mountOptions UID = 999, GID = 999, uvidí chybu jako:
+
+```console
+Warning  FailedMount             63s                  kubelet, aks-nodepool1-29460110-0  MountVolume.MountDevice failed for volume "pvc-d783d0e4-85a1-11e9-8a90-369885447933" : azureDisk - mountDevice:FormatAndMount failed with mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985 --scope -- mount -t xfs -o dir_mode=0777,file_mode=0777,uid=1000,gid=1000,defaults /dev/disk/azure/scsi1/lun2 /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985
+Output: Running scope as unit run-rb21966413ab449b3a242ae9b0fbc9398.scope.
+mount: wrong fs type, bad option, bad superblock on /dev/sde,
+       missing codepage or helper program, or other error
+```
+
+Problém můžete zmírnit jedním z následujících způsobů:
+
+* [Nakonfigurujte kontext zabezpečení pro objekt pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) nastavením UID v runAsUser a GID v fsGroup. Například následující nastavení se nastaví pod kořenem spustit jako a zpřístupní ho pro libovolný soubor:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+  >[!NOTE]
+  > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastavené jako jiné než kořenové, například 1000, Kubernetes použije `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
+
+* K nastavení GID a UID použijte `chown` v initContainers. Například:
+
+```yaml
+initContainers:
+- name: volume-mount
+  image: busybox
+  command: ["sh", "-c", "chown -R 100:100 /data"]
+  volumeMounts:
+  - name: <your data volume>
+    mountPath: /data
+```
+
+### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Chyba při odstraňování služby Azure disk PersistentVolumeClaim, která se používá pod
+
+Pokud se pokusíte odstranit službu Azure disk PersistentVolumeClaim, kterou používá část pod, může se zobrazit chyba. Například:
+
+```console
+$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
+...
+Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
+```
+
+V Kubernetes verze 1,10 a novější je ve výchozím nastavení povolená funkce PersistentVolumeClaim Protection, aby se zabránilo této chybě. Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete tento problém zmírnit odstraněním pod použití PersistentVolumeClaim před odstraněním PersistentVolumeClaim.
+
+
+### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>Chyba "při připojování disku k uzlu nejde najít logickou jednotku (LUN) pro disk"
+
+Při připojování disku k uzlu se může zobrazit následující chyba:
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
+```
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,10 | 1.10.10 nebo novější |
+| 1,11 | 1.11.5 nebo novější |
+| 1,12 | 1.12.3 nebo novější |
+| 1,13 | 1.13.0 nebo novější |
+| 1,14 a novější | Nevztahuje se |
+
+Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
+
+### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Chyba připojení a odpojení disku Azure, problémy s připojením nebo vstupně-výstupní chyby během několika operací připojení/odpojení
+
+Počínaje verzí 1.9.2 se při souběžném spouštění několika operací připojení a odpojení můžou v důsledku nestandardní mezipaměti virtuálních počítačů zobrazit následující problémy s diskem:
+
+* Selhání připojení a odpojení disku
+* Chyby v/v disku
+* Neočekávané odpojení disku z virtuálního počítače
+* Spuštění virtuálního počítače v neúspěšném stavu kvůli připojení neexistujícího disku
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,10 | 1.10.12 nebo novější |
+| 1,11 | 1.11.6 nebo novější |
+| 1,12 | 1.12.4 nebo novější |
+| 1,13 | 1.13.0 nebo novější |
+| 1,14 a novější | Nevztahuje se |
+
+Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
+
+* Pokud disk čeká na odpojení po dlouhou dobu, zkuste disk odpojit ručně.
+
+### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Disk Azure, který čeká na odpojení po neomezenou dobu
+
+V některých případech platí, že pokud se při prvním pokusu operace odpojení disku Azure nepovede, nebude se opakovat operace odpojení a zůstane připojená k virtuálnímu počítači s původním uzlem. K této chybě může dojít při přesunu disku z jednoho uzlu do druhého. Například:
+
+```console
+[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+```
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,11 | 1.11.9 nebo novější |
+| 1,12 | 1.12.7 nebo novější |
+| 1,13 | 1.13.4 nebo novější |
+| 1,14 a novější | Nevztahuje se |
+
+Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
+
+### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Selhání odpojení disku Azure vedlo k potenciálnímu problému s podmínkou časování a neplatnému seznamu datových disků.
+
+Když se disk s Azure nepovede odpojit, zopakuje se pokus o odpojení disku pomocí exponenciálního pozadí. Bude také obsahovat zámek na úrovni uzlu v seznamu datových disků po dobu přibližně 3 minut. Pokud se seznam disků v tomto časovém intervalu aktualizuje ručně, například ruční operace připojit nebo odpojit, způsobí to, že seznam disků uchovávaný zámkem na úrovni uzlu bude zastaralý a způsobil nestabilitu virtuálního počítače uzlu.
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,12 | 1.12.9 nebo novější |
+| 1,13 | 1.13.6 nebo novější |
+| 1,14 | 1.14.2 nebo novější |
+| 1,15 a novější | Nevztahuje se |
+
+Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
+
+
+### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Velký počet disků Azure způsobuje pomalé připojení a odpojení.
+
+Pokud je počet disků Azure připojených k virtuálnímu počítači uzlu větší než 10, můžou operace připojení a odpojení být pomalé. Tento problém je známý a v tuto chvíli neexistují žádná alternativní řešení.
+
+### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Selhání odpojení disku Azure vedlo k potenciálnímu virtuálnímu počítači uzlu ve stavu selhání
+
+V některých hraničních případech může odpojení disku Azure částečně selhat a opustit virtuální počítač uzlu ve stavu selhání.
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,12 | 1.12.10 nebo novější |
+| 1,13 | 1.13.8 nebo novější |
+| 1,14 | 1.14.4 nebo novější |
+| 1,15 a novější | Nevztahuje se |
+
+Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
+
+* Pro cluster založený na sadě dostupnosti:
+    ```console
+    az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
+    ```
+
+* Pro cluster založený na VMSS:
+    ```console
+    az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
+    ```
+
+## <a name="azure-files-and-aks-troubleshooting"></a>Řešení potíží se soubory Azure a AKS
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Jaké jsou doporučené stabilní verze Kubernetes pro soubory Azure?
+ 
+| Verze Kubernetes | Doporučená verze |
+| -- | :--: |
+| 1,12 | 1.12.6 nebo novější |
+| 1,13 | 1.13.4 nebo novější |
+| 1,14 | 1.14.0 nebo novější |
+
+### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají podporu souborů Azure ve službě svrchovaného cloudu?
+
+| Verze Kubernetes | Doporučená verze |
+| -- | :--: |
+| 1,12 | 1.12.0 nebo novější |
+| 1,13 | 1.13.0 nebo novější |
+| 1,14 | 1.14.0 nebo novější |
+
+### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Jaké jsou výchozí mountOptions při používání služby soubory Azure?
+
+Doporučené nastavení:
+
+| Verze Kubernetes | hodnota fileMode a dirMode|
+| -- | :--: |
+| 1.12.0 - 1.12.1 | 0755 |
+| 1.12.2 a novější | 0777 |
+
+Pokud používáte cluster s Kuberetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
+parameters:
+  skuName: Standard_LRS
+```
+
+Některá další užitečná nastavení *mountOptions* :
+
+* *mfsymlinks* provede podporu protokolu CIFS (Azure Files Mount), která podporuje symbolické odkazy.
+* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl*, můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
+    ```console
+    Error: SQLITE_BUSY: database is locked
+    ```
+
+### <a name="error-could-not-change-permissions-when-using-azure-files"></a>Při použití souborů Azure se stala chyba: nepovedlo se změnit oprávnění.
+
+Při spuštění PostgreSQL v modulu plug-in soubory Azure se může zobrazit chyba podobná této:
+
+```console
+initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
+fixing permissions on existing directory /var/lib/postgresql/data
+```
+
+Tato chyba je způsobená modulem plug-in soubory Azure pomocí protokolu CIFS/SMB. Při použití protokolu CIFS/SMB se oprávnění k souborům a adresářům po připojení nedala změnit.
+
+Pokud chcete tento problém vyřešit, použijte dílčí *cestu* spolu s modulem plug-in Azure disk. 
+
+> [!NOTE] 
+> Pro typ disku ext3/4 existuje po formátování disku ztracené a nalezené adresáře.
+
+### <a name="azure-files-has-high-latency-compared-to-azure-disk-when-handling-many-small-files"></a>Při zpracování mnoha malých souborů má Azure Files v porovnání s diskem Azure vysokou latenci.
+
+V některých případech, jako je zpracování mnoha malých souborů, se může při použití souborů Azure v porovnání s diskem Azure vyskytnout vysoká latence.
+
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>Chyba při povolování nastavení povolit přístup povolit přístup z vybrané sítě v účtu úložiště
+
+Pokud povolíte možnost *Povolit přístup z vybrané sítě* v účtu úložiště, který se používá pro dynamické zřizování v AKS, zobrazí se chyba, když AKS vytvoří sdílenou složku:
+
+```console
+persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
+```
+
+Tato chyba je způsobená tím, že se *kontroler Kubernetes persistentvolume* nenachází v síti zvolené při nastavení *Povolení přístupu z vybrané sítě*.
+
+Problém můžete zmírnit pomocí [statického zřizování se soubory Azure](azure-files-volume.md).
+
+### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Opětovné připojení souborů Azure v systému Windows pod se nezdařilo.
+
+Pokud se odstraní Windows s připojením služby soubory Azure a pak se naplánuje jeho opětovné vytvoření ve stejném uzlu, připojení se nezdaří. Příčinou této chyby je to, že došlo k selhání příkazu `New-SmbGlobalMapping`, protože připojení k souborům Azure je už na uzlu připojené.
+
+Například se může zobrazit chyba podobná této:
+
+```console
+E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
+```
+
+Tento problém byl opraven v následujících verzích Kubernetes:
+
+| Verze Kubernetes | Pevná verze |
+| -- | :--: |
+| 1,12 | 1.12.6 nebo novější |
+| 1,13 | 1.13.4 nebo novější |
+| 1,14 a novější | Nevztahuje se |
+
+### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
+
+Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba připojení souborů Azure.
+
+Problém můžete zmírnit ruční aktualizací pole *azurestorageaccountkey* v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
+
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64`. Například:
+
+```console
+echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
+```
+
+K aktualizaci tajného souboru Azure použijte `kubectl edit secret`. Například:
+
+```console
+kubectl edit secret azure-storage-account-{storage-account-name}-secret
+```
+
+Po několika minutách uzel agenta znovu pokusí službu Azure File Mount s aktualizovaným klíčem úložiště.

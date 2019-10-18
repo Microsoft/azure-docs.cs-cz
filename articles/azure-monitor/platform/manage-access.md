@@ -1,6 +1,6 @@
 ---
 title: Správa pracovních prostorů Log Analytics v Azure Monitor | Microsoft Docs
-description: Můžete spravovat přístup k datům uloženým v pracovním prostoru Log Analytics v Azure Monitor pomocí oprávnění k prostředkům, pracovnímu prostoru nebo úrovni tabulky. Tento článek podrobně popisuje, jak to provést.
+description: Můžete spravovat přístup k datům uloženým v pracovním prostoru Log Analytics v Azure Monitor pomocí oprávnění k prostředkům, pracovnímu prostoru nebo úrovni tabulky. Tento článek podrobně popisuje, jak dokončit.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329409"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532327"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům a pracovním prostorům protokolu v Azure Monitor
 
@@ -148,7 +148,7 @@ Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
 Členové role *Přispěvatel Log Analytics* můžou provádět:
 
-* Číst všechna data monitorování, která může Log Analytics čtenář
+* Zahrnuje všechna oprávnění *role čtecího modulu Log Analytics*, takže uživatel bude moct číst všechna data monitorování.
 * Vytvoření a konfigurace účtů služby Automation
 * Přidání a odebrání řešení pro správu
 
@@ -187,7 +187,7 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 * Skupina prostředků – Přístup ke všem pracovním prostorům v rámci skupiny prostředků
 * Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
-Pro zajištění přesného řízení přístupu byste měli provést přiřazení na úrovni prostředků (pracovní prostor).  Pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+Pro zajištění přesného řízení přístupu doporučujeme provést přiřazení na úrovni prostředků (pracovní prostor). Pomocí [vlastních rolí](../../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
 
 ### <a name="resource-permissions"></a>Oprávnění prostředků
 
@@ -198,7 +198,7 @@ Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí př�
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
 
-oprávnění `/read` obvykle uděluje role, která zahrnuje oprávnění _\*/číst nebo_ _\*_ , jako jsou například předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Všimněte si, že vlastní role, které zahrnují konkrétní akce nebo vyhrazené předdefinované role, nemusí zahrnovat toto oprávnění.
+oprávnění `/read` obvykle uděluje role, která zahrnuje oprávnění _\*/číst nebo_ _\*_ , jako jsou například předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Toto oprávnění nemusí zahrnovat vlastní role, které obsahují konkrétní akce nebo vyhrazené předdefinované role.
 
 Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečtěte si téma [Definování řízení přístupu pro jednotlivé tabulky](#table-level-rbac) .
 
@@ -234,10 +234,10 @@ Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečt
 
         * `Microsoft.OperationalInsights/workspaces/read` – povinné, aby použití mohl vytvořit výčet pracovního prostoru a otevřít okno pracovního prostoru v Azure Portal
         * `Microsoft.OperationalInsights/workspaces/query/read` – vyžadováno pro každého uživatele, který může spouštět dotazy
-        * @no__t – 0 – aby bylo možné číst protokoly přihlášení k Azure AD
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` – aby bylo možné číst protokoly přihlášení k Azure AD
         * `Microsoft.OperationalInsights/workspaces/query/Update/read` – aby bylo možné číst Update Management protokoly řešení
         * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` – aby bylo možné číst Update Management protokoly řešení
-        * @no__t – 0 – aby bylo možné číst protokoly správy aktualizací
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` – aby bylo možné číst protokoly správy aktualizací
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` – vyžaduje se, aby bylo možné používat Update Management řešení
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` – vyžaduje se, aby bylo možné používat Update Management řešení
 
@@ -293,7 +293,7 @@ Chcete-li vytvořit roli s přístupem pouze k _SecurityBaseline_ a žádným ji
 * Pokud je uživateli udělen přístup pro jednotlivé tabulky, ale žádná další oprávnění, by mohl získat přístup k datům protokolu z rozhraní API, ale nikoli z Azure Portal. K poskytnutí přístupu z Azure Portal jako základní roli použijte nástroj Log Analytics Reader.
 * Správci předplatného budou mít přístup ke všem datovým typům bez ohledu na všechna ostatní nastavení oprávnění.
 * Vlastníci pracovního prostoru se považují za každého jiného uživatele pro řízení přístupu k jednotlivým tabulkám.
-* Chcete-li snížit počet přiřazení, je třeba přiřadit role ke skupinám zabezpečení místo jednotlivých uživatelů. Pomůže vám to také při konfiguraci a ověření přístupu pomocí existujících nástrojů pro správu skupin.
+* Pro snížení počtu přiřazení doporučujeme přiřadit role ke skupinám zabezpečení místo jednotlivých uživatelů. Pomůže vám to také při konfiguraci a ověření přístupu pomocí existujících nástrojů pro správu skupin.
 
 ## <a name="next-steps"></a>Další kroky
 

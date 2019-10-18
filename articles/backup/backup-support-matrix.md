@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981090"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533143"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -59,7 +59,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 **Omezení** | **Podrobnosti**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Omezení 16
-**Velikost datového disku virtuálního počítače Azure** | Podporuje zálohování virtuálních počítačů s každou velikostí disků až do 30 TB a maximálně 256 TB pro všechny disky ve virtuálním počítači.
+**Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 
 ### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
 

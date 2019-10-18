@@ -4,18 +4,18 @@ description: Tento článek popisuje referenční informace o příkazu AzCopy l
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8c40241c49917c6db6663f346aed0ec5d3b96be7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b7348e3790166e1a1aecab422e571b8f2fc7cd5f
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195942"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513517"
 ---
-# <a name="azcopy-list"></a>seznam AzCopy
+# <a name="azcopy-list"></a>azcopy list
 
 Zobrazí seznam entit v daném prostředku.
 
@@ -49,6 +49,6 @@ azcopy list [containerURL]
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

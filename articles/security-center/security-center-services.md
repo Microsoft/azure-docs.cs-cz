@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331150"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529480"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
@@ -96,14 +96,14 @@ Azure Security Center podporuje následující prostředky PaaS:
 |MySQL|✔| ✔|
 |CosmosDB|×| ✔|
 |Úložiště blobů|✔| ✔|
-|Účet úložiště|✔| není k dispozici|
+|Účet úložiště|✔| ×|
 |App Service|✔| ✔|
 |Funkce|✔| ×|
 |Cloudová služba|✔| ×|
-|VNet|✔| není k dispozici|
-|Podsíť|✔| není k dispozici|
-|NIC|✔| není k dispozici|
-|NSG|✔| není k dispozici|
+|VNet|✔| ×|
+|Podsíť|✔| ×|
+|NIC|✔| ×|
+|NSG|✔| ×|
 |Předplatné|✔ * *| ✔|
 |Účet Batch|✔| ×|
 |Účet Service Fabric|✔| ×|
@@ -114,14 +114,14 @@ Azure Security Center podporuje následující prostředky PaaS:
 |Stream Analytics|✔| ×|
 |Obor názvů centra událostí|✔| ×|
 |Logické aplikace|✔| ×|
-|Redis|✔| není k dispozici|
+|Redis|✔| ×|
 |Analýza Data Lake|✔| ×|
 |Data Lake Store|✔| ×|
 |Key Vault|✔| ×|
 
 \* tyto funkce jsou aktuálně podporované ve verzi Public Preview.
 
-doporučení \* @ no__t-1 Azure Active Directory (Azure AD) jsou dostupná jenom pro standardní odběry.
+doporučení pro \* \* Azure Active Directory (Azure AD) jsou dostupná jenom pro standardní odběry.
 
 ## <a name="next-steps"></a>Další kroky
 

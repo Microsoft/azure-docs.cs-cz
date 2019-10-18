@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: b06fe477f551977b1357f3b1b185cb340a948052
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: MT
+ms.openlocfilehash: f4c483c36dc7a19e3e16dcaabab10af03cdfe17e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905501"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515512"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pro hybridní prostředí
 
@@ -26,47 +26,47 @@ ms.locfileid: "69905501"
 
 Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače (ve verzi Preview) pro virtuální počítače nebo fyzické počítače hostované ve vašem datovém centru nebo jiném cloudovém prostředí. Na konci tohoto procesu budete úspěšně začali monitorovat virtuální počítače ve vašem prostředí a zjistit, jestli se vyskytly problémy s výkonem nebo dostupností. 
 
-Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ověřte, že vaše předplatné a prostředky splňují požadavky. Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../log-analytics/log-analytics-agent-overview.md).
+Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ověřte, že vaše předplatné a prostředky splňují požadavky. Přečtěte si požadavky a metody nasazení pro [Log Analytics Linux a Windows Agent](../../log-analytics/log-analytics-agent-overview.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->Azure Monitor pro agenta závislostí mapování virtuálních počítačů nebude přenášet vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/platform/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
+>Agent závislostí Azure Monitor pro virtuální počítače neodesílá žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data mapy jsou vždy přenášena agentem Log Analytics do služby Azure Monitor, a to buď přímo, nebo prostřednictvím [brány Operations Management Suite](../../azure-monitor/platform/gateway.md) , pokud zásady zabezpečení IT nedovolují počítačům v síti připojení k Internetu.
 
 Kroky pro dokončení této úlohy jsou shrnuté takto:
 
 1. Nainstalujte agenta Log Analytics pro Windows nebo Linux. Než agenta nainstalujete, přečtěte si článek [Přehled agenta Log Analytics](../platform/log-analytics-agent.md) , který vám pomůže pochopit požadavky na systém a metody nasazení.
 
-2. Stáhněte a nainstalujte Azure Monitor pro virtuální počítače mapu závislostí agenta pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
+2. Stáhněte a nainstalujte agenta Azure Monitor pro virtuální počítačech závislostí mapy pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
 
 3. Povolte shromažďování čítačů výkonu.
 
-4. Nasazení pro virtuální počítače Azure Monitor.
+4. Nasazení Azure Monitor pro virtuální počítače.
 
 >[!NOTE]
 >Informace popsané v tomto článku pro nasazení agenta závislostí se vztahují také na [řešení Service map](service-map.md).  
 
-## <a name="install-the-dependency-agent-on-windows"></a>Instalace agenta závislostí na Windows
+## <a name="install-the-dependency-agent-on-windows"></a>Instalace agenta závislostí ve Windows
 
-Můžete nainstalovat agenta závislostí ručně počítačích s Windows spuštěním `InstallDependencyAgent-Windows.exe`. Pokud spustíte tento spustitelný soubor bez jakýchkoli možností, spustí Průvodce instalací, zvoleném pro instalaci agenta interaktivně.
+Agenta závislostí můžete nainstalovat ručně do počítačů se systémem Windows spuštěním `InstallDependencyAgent-Windows.exe`. Pokud tento spustitelný soubor spustíte bez jakýchkoli možností, spustí se Průvodce instalací nástroje, který můžete použít k interaktivní instalaci agenta.
 
 >[!NOTE]
->*Správce* instalace nebo odinstalace agenta jsou nutná oprávnění.
+>K instalaci nebo odinstalaci agenta jsou nutná oprávnění *správce* .
 
-Následující tabulka obsahuje parametry, které podporují instalaci agenta z příkazového řádku.
+Následující tabulka popisuje parametry, které jsou podporovány instalačním programem pro agenta z příkazového řádku.
 
 | Parametr | Popis |
 |:--|:--|
 | /? | Vrátí seznam možností příkazového řádku. |
-| /S | Provádí tichou instalaci bez zásahu uživatele. |
+| Parametr | Provede tichou instalaci bez zásahu uživatele. |
 
-Chcete-li například spustit instalační program s `/?` parametrem, zadejte **InstallDependencyAgent-Windows. exe/?** .
+Chcete-li například spustit instalační program s parametrem `/?`, zadejte **InstallDependencyAgent-Windows. exe/?** .
 
-Soubory agenta závislostí Windows jsou nainstalované v *agenta závislostí C:\Program Files\Microsoft* ve výchozím nastavení. Pokud se agent závislostí nepovede spustit po dokončení instalace, podívejte se na protokoly, kde najdete podrobné informace o chybě. Adresář protokolu je *%Programfiles%\Microsoft závislost Agent\logs*.
+Soubory pro agenta závislostí Windows se ve výchozím nastavení instalují do složky *C:\Program Files\Microsoft Dependency agent* . Pokud se agent závislostí nepovede spustit po dokončení instalace, podívejte se na protokoly, kde najdete podrobné informace o chybě. Adresář protokolu je *%ProgramFiles%\Microsoft Dependency Agent\logs*.
 
-## <a name="install-the-dependency-agent-on-linux"></a>Instalace agenta závislostí v Linuxu
+## <a name="install-the-dependency-agent-on-linux"></a>Instalace agenta závislostí na Linux
 
-Agent závislostí je nainstalovaný na servery s Linuxem z *InstallDependencyAgent Linux64.bin*, skript prostředí samorozbalovací binárním souborem. Soubor můžete spustit pomocí `sh` nebo přidejte oprávnění k souboru, samotné.
+Agent závislostí je nainstalovaný na serverech se systémem Linux z *InstallDependencyAgent-Linux64. bin*, skriptu prostředí s samorozbalovacím binárním souborem. Soubor můžete spustit pomocí `sh` nebo přidat oprávnění ke spuštění do samotného souboru.
 
 >[!NOTE]
 > K instalaci nebo konfiguraci tohoto agenta se vyžaduje přístup uživatele root.
@@ -74,15 +74,15 @@ Agent závislostí je nainstalovaný na servery s Linuxem z *InstallDependencyAg
 
 | Parametr | Popis |
 |:--|:--|
-| – Nápověda | Získá seznam parametrů příkazového řádku. |
+| -Help | Získá seznam parametrů příkazového řádku. |
 | -s | Provede tichou instalaci bez zobrazení výzev uživateli. |
-| – Zkontrolujte | Kontrola oprávnění a operačního systému, ale nechcete nainstalovat agenta. |
+| --check | Ověřte oprávnění a operační systém, ale agenta neinstalujte. |
 
-Pokud například chcete spustit instalační program s `-help` parametrem, zadejte **InstallDependencyAgent-Linux64. bin-Help**.
+Pokud například chcete spustit instalační program s parametrem `-help`, zadejte **InstallDependencyAgent-Linux64. bin-Help**.
 
-Nainstalujte agenta závislostí pro Linux jako kořen spuštěním příkazu `sh InstallDependencyAgent-Linux64.bin`.
+Nainstalujte agenta pro Linux Dependencys jako kořenový adresář spuštěním příkazu `sh InstallDependencyAgent-Linux64.bin`.
 
-Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů Linuxu adresáři protokolu není */var/opt/microsoft/dependency-agent/log*.
+Pokud se nepovede spustit agenta závislostí, podrobnější informace o chybě najdete v protokolech. V agentech Linux se adresář protokolu */var/opt/Microsoft/Dependency-agent/log*.
 
 Soubory pro agenta závislostí jsou umístěny v následujících adresářích:
 
@@ -96,7 +96,7 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 
 ## <a name="installation-script-examples"></a>Příklady instalačního skriptu
 
-Následující ukázkový skript je snadno nasazovat agenta závislosti na mnoha serverech najednou, k dispozici ke stažení a instalace agenta závislostí ve Windows nebo Linuxu.
+Chcete-li snadno nasadit agenta závislostí na mnoho serverů najednou, je k dispozici následující ukázkový skript pro stažení a instalaci agenta závislostí v systému Windows nebo Linux.
 
 ### <a name="powershell-script-for-windows"></a>Skript PowerShellu pro Windows
 
@@ -113,9 +113,9 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
+## <a name="desired-state-configuration"></a>Požadovaná konfigurace stavu
 
-Pokud chcete nasadit agenta závislostí pomocí Desired State Configuration (DSC), můžete použít modul xPSDesiredStateConfiguration pomocí následujícího ukázkového kódu:
+Chcete-li nasadit agenta závislostí pomocí konfigurace požadovaného stavu (DSC), můžete použít modul xPSDesiredStateConfiguration s následujícím příkladem kódu:
 
 ```powershell
 configuration ServiceMap {
@@ -151,21 +151,21 @@ configuration ServiceMap {
 
 ## <a name="enable-performance-counters"></a>Povolit čítače výkonu
 
-Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě nenakonfigurovala získat čítače výkonu, vyžadují řešení, musíte je povolit. Můžete to udělat jedním ze dvou způsobů:
-* Ručně, jak je popsáno v [Windows a Linuxem zdroje dat výkonu do Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+Pokud se pracovní prostor Log Analytics, na který řešení odkazuje, už není nakonfigurovaný tak, aby shromáždil čítače výkonu vyžadované řešením, musíte je povolit. Můžete to udělat jedním ze dvou způsobů:
+* Ručně, jak je popsáno v tématu [zdroje dat o výkonu Windows a Linux v Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Stažením a spuštěním skriptu PowerShellu, který je dostupný z [galerie Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
-## <a name="deploy-azure-monitor-for-vms"></a>Nasazení pro virtuální počítače Azure Monitor
+## <a name="deploy-azure-monitor-for-vms"></a>Nasazení Azure Monitor pro virtuální počítače
 
-Tato metoda zahrnuje šablony JSON, který určuje konfiguraci pro povolení součásti řešení ve vašem pracovním prostoru Log Analytics.
+Tato metoda zahrnuje šablonu JSON, která určuje konfiguraci pro povolení součástí řešení ve vašem pracovním prostoru Log Analytics.
 
 Pokud nevíte, jak nasadit prostředky pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud chcete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-### <a name="create-and-execute-a-template"></a>Vytvoření a provedení šablony
+### <a name="create-and-execute-a-template"></a>Vytvoření a spuštění šablony
 
 1. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -206,24 +206,6 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
                             "product": "[Concat('OMSGallery/', 'ServiceMap')]",
                             "promotionCode": ""
                         }
-                    },
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "dependsOn": [
-                            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        ],
-                        "properties": {
-                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        },
-                        "plan": {
-                            "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                            "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
-                            "promotionCode": ""
-                        }
                     }
                 ]
             }
@@ -231,11 +213,11 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
     }
     ```
 
-1. Uložte soubor jako *installsolutionsforvminsights.json* do místní složky.
+1. Uložte tento soubor jako *installsolutionsforvminsights. JSON* do místní složky.
 
-1. Zachyťte hodnoty pro pole *pracovní prostor*, *ResourceGroupName*a *WorkspaceLocation*. Hodnota pro název *pracovního prostoru* je název vašeho pracovního prostoru Log Analytics. Hodnota pro *WorkspaceLocation* je pracovní prostor je definována v oblasti.
+1. Zachyťte hodnoty pro pole *pracovní prostor*, *ResourceGroupName*a *WorkspaceLocation*. Hodnota pro název *pracovního prostoru* je název vašeho pracovního prostoru Log Analytics. Hodnota pro *WorkspaceLocation* je oblast, ve které je pracovní prostor definován.
 
-1. Jste připraveni nasadit tuto šablonu pomocí následujícího příkazu Powershellu:
+1. Tuto šablonu jste připraveni nasadit pomocí následujícího příkazu PowerShellu:
 
     ```powershell
     New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
@@ -246,7 +228,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
     ```powershell
     provisioningState       : Succeeded
     ```
-   Po povolení sledování, může trvat přibližně 10 minut, než můžete zobrazit stav a metriky pro počítač hybridní.
+   Po povolení monitorování může trvat asi 10 minut, než budete moct zobrazit stav a metriky pro hybridní počítač.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -254,11 +236,11 @@ Pokud chcete používat rozhraní příkazového řádku Azure, musíte nejdří
 
 Pokud se instalace agenta závislostí zdařila, ale váš počítač se na mapě nezobrazuje, Diagnostikujte problém pomocí následujících kroků.
 
-1. Agent závislostí úspěšné instalaci? Můžete si to ověřit tak, že kontroluje se, pokud je služba nainstalována a spuštěna.
+1. Je agent závislostí úspěšně nainstalován? Můžete to ověřit tak, že zkontrolujete, jestli je služba nainstalovaná a spuštěná.
 
-    **Windows:** Vyhledejte službu s názvem Microsoft Dependency agent. 
+    **Windows**: vyhledejte službu s názvem Microsoft Dependency agent. 
 
-    **Linux:** Vyhledejte běžící proces Microsoft-Dependency-agent.
+    **Linux**: vyhledejte běžící proces Microsoft-Dependency-agent.
 
 2. Jste na [cenové úrovni bezplatné Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Bezplatný plán umožňuje až pět jedinečných počítačů. Žádné následné počítače se na mapě nezobrazí, i když už předchozí pět neposílá data.
 
@@ -268,20 +250,19 @@ Pokud se instalace agenta závislostí zdařila, ale váš počítač se na map�
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Vrátil (a) jeden nebo více výsledků? Jsou data poslední? Pokud ano, Váš agent Log Analytics správně funguje a komunikuje se službou. Pokud ne, ověřte agenta na vašem serveru: [Log Analytics agenta pro řešení potíží se systémem Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
+    Vrátil (a) jeden nebo více výsledků? Jsou data nedávná? Pokud ano, Váš agent Log Analytics správně funguje a komunikuje se službou. Pokud ne, ověřte agenta na serveru: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Počítač se zobrazí na mapě, ale nemá žádné procesy.
 
 Pokud na mapě vidíte Server, ale nemá žádná data o procesu nebo připojení, která indikuje, že je agent závislostí nainstalovaný a spuštěný, ale ovladač jádra se nenačetl. 
 
-Zkontrolujte soubor C:\Program Files\Microsoft závislost Agent\logs\wrapper.log (Windows) nebo soubor /var/opt/microsoft/dependency-agent/log/service.log (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
+Ověřte soubor C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log (Windows) nebo soubor/var/opt/Microsoft/Dependency-agent/log/Service.log (Linux). Poslední řádky souboru by měly indikovat, proč se jádro nezátěže. Například pokud jste aktualizovali jádro, nemusí být jádro v systému Linux podporováno.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače.
  
-- Informace o tom, jak používat funkci Health, najdete v tématu [zobrazení stavu Azure monitor pro virtuální počítače](vminsights-health.md).
-- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).
+- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
+
 - Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).
-- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

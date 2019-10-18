@@ -1,5 +1,5 @@
 ---
-title: Přehled vyhrazených event hubs – Azure Event Hubs | Dokumentace Microsoftu
+title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 services: event-hubs
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ebc6dd672fd180e22cc1edf5c9978e0985427e50
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991860"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516741"
 ---
-# <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs Dedicated
+# <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
 *Clustery Event Hubs* nabízejí nasazení s jedním nájemcem pro zákazníky s nejnáročnějšími požadavky na streamování. Tato nabídka pro jednoho tenanta má garantovanou 99,99% smlouvu SLA a je k dispozici jenom na naší cenové úrovni Dedicated. Cluster Event Hubs může příchozí miliony událostí za sekundu se zaručenou kapacitou a latencí druhé sekundy. Obory názvů a centra událostí vytvořené v rámci vyhrazeného clusteru zahrnují všechny funkce standardní nabídky a další, ale bez omezení pro příchozí přenosy dat. Zahrnuje také oblíbenou funkci [zachycení Event Hubs](event-hubs-capture-overview.md) bez dalších poplatků, což vám umožní automaticky dávkovat a zasílat datové proudy do Azure Storage nebo Azure Data Lake. 
 
@@ -50,20 +50,20 @@ Na svazcích s vysokou úrovní příchozího přenosu dat (> 100 počet propust
 
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Funkce | Standard | Vyhrazený |
+| Funkce | Úroveň Standard | Vyhrazený |
 | --- |:---:|:---:|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Názvové prostory |  1 | 50 za CU |
+| Obory názvů |  1\. místo | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
-| Události příchozího přenosu dat | Platba za milion událostí | Zahrnuje |
+| Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuté |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |
-| Oddíly | 40 na obor názvů | 2000 za CU |
+| Oddíly | 32 na centrum událostí | 1024 na centrum událostí |
 | Skupiny příjemců | 20 na centrum událostí | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | 1 000 zahrnutý, 5 000 max | 100 K zahrnutí a maximum |
 | Uchovávání zpráv | 7 dní, 84 GB zahrnutých za TU | 90 dní, zahrnutých 10 TB za CU |
-| Zachycování | Platba za hodinu | Zahrnuje |
+| Capture | Platba za hodinu | Zahrnuté |
 
-## <a name="how-to-onboard"></a>Jak se zapojit
+## <a name="how-to-onboard"></a>Postup zprovoznění
 
 Samoobslužné prostředí pro [vytváření Event Hubsho clusteru](event-hubs-dedicated-cluster-create-portal.md) prostřednictvím webu [Azure Portal](https://aka.ms/eventhubsclusterquickstart) je teď ve verzi Preview. Pokud máte nějaké dotazy nebo potřebujete pomáhat s připojováním k Event Hubs úrovně Dedicated, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
@@ -73,23 +73,23 @@ Samoobslužné prostředí pro [vytváření Event Hubsho clusteru](event-hubs-d
 
 V případě Event Hubs clusteru závisí množství, které můžete ingestovat a streamování, na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost přijímání a zpracování a mnohem víc. 
 
-Následující tabulka ukazuje výsledky srovnávacích testů jsme dosáhli během naše testování:
+V následující tabulce jsou uvedeny výsledky srovnávacích testů, které jsme dosáhli během testování:
 
-| Datová část obrazce | Příjemci | Šířka pásma příchozího přenosu dat| Příchozí zprávy | Šířka pásma pro výchozí přenos dat | Odchozí zprávy | Celkový počet jednotek propustnosti | Jednotek propustnosti, které na kapacitní jednotku |
+| Tvar datové části | Příjemců | Šířka pásma příchozího přenosu dat| Příchozí zprávy | Šířka pásma pro výstup | Odchozí zprávy | Celkem počet propustnosti | Počet propustnosti na CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zprávy za sekundu | 800 MB/s | 800k zprávy za sekundu | 400 jednotek propustnosti | 100 jednotek propustnosti | 
-| Dávky 10x10KB | 2 | 666 MB/s | zprávy 66.6 k/s | 1.33 GB/s | 133k zprávy za sekundu | 666 jednotek propustnosti | 166 jednotek propustnosti |
-| Dávky 6x32KB | 1 | 1,05 GB/s | 34k zprávy za sekundu | 1,05 GB/s | 34k zprávy za sekundu | 1000 jednotek propustnosti | 250 jednotek propustnosti |
+| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zprávy za sekundu | 800 MB/s | 800k zprávy za sekundu | 400 počet propustnosti | 100 počet propustnosti | 
+| Dávky 10x10KB | 2 | 666 MB/s | zprávy 66.6 k/s | 1,33 GB/s | 133k zprávy za sekundu | 666 počet propustnosti | 166 počet propustnosti |
+| Dávky 6x32KB | 1\. místo | 1,05 GB/s | 34k zprávy za sekundu | 1,05 GB/s | 34k zprávy za sekundu | 1000 počet propustnosti | 250 počet propustnosti |
 
-Při testování, použil následující kritéria:
+Při testování se použila následující kritéria:
 
 - Použil se cluster Event Hubs s vyhrazenou vrstvou, který má čtyři jednotky kapacity (kapacitní jednotky). 
-- Centra událostí používá pro příjem bylo 200 oddíly. 
-- Který se ingestuje data byla přijata dvě aplikace příjemce přijímají ze všech oddílů.
+- Centrum událostí používané pro ingestování mělo 200 oddílů. 
+- Data, která byla ingestovaná, obdrží dvě aplikace přijímače, které přijímají ze všech oddílů.
 
 #### <a name="can-i-scale-updown-my-cluster"></a>Můžu svůj cluster škálovat nahoru/dolů?
 
-Po vytvoření se clustery účtují minimálně o 4 hodiny využití. Ve verzi Preview prostředí samoobslužného řízení můžete odeslat [žádost o podporu](https://ms.portal.azure.com/#create/Microsoft.Support) týmu Event Hubs v části *Technická > kvóta > žádosti o horizontální navýšení nebo* snížení kapacity vyhrazeného clusteru pro horizontální navýšení nebo snížení kapacity clusteru. Dokončení žádosti o horizontální navýšení kapacity clusteru může trvat až 7 dní. 
+Po vytvoření se clustery účtují minimálně o 4 hodiny využití. Ve verzi Preview prostředí samoobslužného řízení můžete odeslat [žádost o podporu](https://ms.portal.azure.com/#create/Microsoft.Support) týmu Event Hubs v části *Technická > kvóta > žádosti o horizontální navýšení nebo snížení kapacity vyhrazeného clusteru* pro horizontální navýšení nebo snížení kapacity clusteru. Dokončení žádosti o horizontální navýšení kapacity clusteru může trvat až 7 dní. 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak budou geografické DRy fungovat s clusterem?
 
@@ -98,10 +98,10 @@ Obor názvů můžete geograficky spárovat v rámci clusteru vyhrazené úrovn�
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Můžu migrovat standardní obory názvů tak, aby patřily do clusteru vyhrazené úrovně?
 V současné době nepodporujeme proces automatizované migrace pro migraci dat centra událostí ze standardního oboru názvů na vyhrazený. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat další podrobnosti o Event Hubs úrovně Dedicated, obraťte se na obchodního zástupce Microsoftu nebo podpora Microsoftu. Můžete také vytvořit cluster nebo získat další informace o Event Hubs cenové úrovně, a to návštěvou následujících odkazů:
 
 - [Vytvoření clusteru Event Hubs prostřednictvím webu Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
-- [Cenách služby Event hubs úrovně Dedicated](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete také kontaktovat zástupce Microsoftu nebo Microsoft Support a získejte další podrobnosti o kapacita vyhrazená Služba Event Hubs.
-- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md) obsahuje informace o cenách a odpovědi na některé nejčastější dotazy o službě Event Hubs.
+- [Event Hubs úrovně Dedicated ceny](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete se také obrátit na prodejní zástupce Microsoftu nebo podpora Microsoftu a získat další podrobnosti o Event Hubs úrovně Dedicated kapacitě.
+- [Event Hubs Nejčastější dotazy](event-hubs-faq.md) obsahují informace o cenách a odpovědi na nejčastější dotazy týkající se Event Hubs.

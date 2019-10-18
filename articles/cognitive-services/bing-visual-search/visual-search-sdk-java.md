@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/30/2019
 ms.author: aahi
 ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71695859"
 ---
 # <a name="quickstart-bing-visual-search-client-library-for-java"></a>Rychlý Start: Vizuální vyhledávání Bingu Klientská knihovna pro Java
@@ -25,7 +25,7 @@ Pomocí klientské knihovny Vizuální vyhledávání Bingu pro jazyk Java:
 * Nahrajte obrázek pro odeslání požadavku vizuálního vyhledávání.
 * Získejte tokeny Insight image a vizuální vyhledávací značky.
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  |   | [ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  | [artefaktů (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -103,7 +103,7 @@ public class BingVisualSearchSample {
 }
 ```
 
-V metodě @no__t 0 aplikace vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Pak pro obrázek, který budete nahrávat, vytvořte `byte[]`. Vytvořte blok `try` pro metody, které definujete později, a načtěte image a převeďte ji na bajty pomocí `toByteArray()`.
+V metodě `main` aplikace vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Pak vytvořte `byte[]` pro obrázek, který budete nahrávat. Vytvořte `try` blok pro metody, které definujete později, a načtěte image a převeďte ji na bajty pomocí `toByteArray()`.
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
@@ -144,7 +144,7 @@ BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKe
 
 ## <a name="send-a-visual-search-request"></a>Odeslat žádost o vizuální vyhledávání
 
-V nové metodě odešlete pole bajtů obrázku (které bylo vytvořeno v metodě `main()`) pomocí metody [bingImages (). visualSearch ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) klienta. 
+V nové metodě odešlete pole bajtů obrázku (které bylo vytvořeno v `main()` metodě) pomocí metody [bingImages (). visualSearch ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) klienta. 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 

@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 0c7d3ed7e2cbaee7d30f368efa004bbb3daaafdd
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 6ef58d1444eb0ec7b2b8891f944b428a613edf3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996870"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515606"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí REST API pro rozpoznávání rukopisuC#
 
@@ -29,14 +29,14 @@ Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V to
 
 Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089502).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Všechny edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
+- Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 - [Newtonsoft. JSON](https://www.newtonsoft.com/json)
     - Postup instalace Newtonsoft. JSON jako balíčku NuGet v aplikaci Visual Studio:
         1. Klikněte pravým tlačítkem na **správce řešení** .
         2. Klikněte na **Spravovat balíčky NuGet...**
-        3. Vyhledejte @no__t – 0 a nainstalujte balíček.
+        3. Vyhledejte `Newtonsoft.Json` a nainstalujte balíček.
 - Pokud používáte Linux/MacOS, může být tato aplikace spuštěná pomocí [mono](https://www.mono-project.com/).
 
 - Ukázková data tahu perem pro tento rychlý Start najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
@@ -49,11 +49,11 @@ Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft
 
 1. V aplikaci Visual Studio vytvořte nové řešení konzoly a přidejte následující balíčky. 
     
-    [!code-csharp[imports](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. Vytvořte proměnné pro klíč a koncový bod předplatného a ukázkový soubor JSON. Koncový bod bude později kombinován s `inkRecognitionUrl` pro přístup k rozhraní API. 
 
-    [!code-csharp[endpoint file path and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Vytvoření funkce pro odesílání požadavků
 
@@ -96,12 +96,12 @@ Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete t
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Odkaz na REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
 Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:
-* [C#a Univerzální platforma Windows (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [JavaScriptová aplikace pro web – prohlížeč](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Mobilní aplikace Java a Android](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Mobilní aplikace SWIFT a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# a Univerzální platforma Windows (UPW)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# a Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Aplikace webového prohlížeče v Javascriptu](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Mobilní aplikace v Javě a Androidu](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Mobilní aplikace ve Swiftu a iOS](https://go.microsoft.com/fwlink/?linkid=2089805)

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023594"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512358"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -203,7 +203,7 @@ Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou* příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba odinstalaci rozšíření SQL IaaS a instalaci znovu. 
+SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou* příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Tuto akci není možné downgradovat, takže budete muset prostředek poskytovatele prostředků SQL VM odstranit pomocí Azure Portal a pak znovu zaregistrovat poskytovatele prostředků SQL VM. 
 
 Postup upgradu režimu agenta na úplný: 
 
@@ -353,7 +353,7 @@ Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje pře
 
 Ne. Přechod do režimu spravovatelnosti rozšíření SQL Server IaaS se nepodporuje. Režim spravovatelnosti nejde downgradovat z režimu úplného režimu na odlehčený nebo bez agenta a nedá se downgradovat z prostého režimu na režim bez agenta. 
 
-Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, odeberte rozšíření SQL Server IaaS. Pak vyřaďte prostředek Microsoft. SqlVirtualMachine a znovu zaregistrujte SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL.
+Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, vyřaďte prostředek Microsoft. SqlVirtualMachine a znovu zaregistrujte SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL.
 
 **Můžu se zaregistrovat k poskytovateli prostředků SQL VM z Azure Portal?**
 

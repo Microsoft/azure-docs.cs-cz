@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452988"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527109"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD (Preview)
 
@@ -90,12 +90,15 @@ Můžete vybrat, co se stane, když externí uživatel, který byl pozván do va
 
 1. Když externí uživatel ztratí své poslední přiřazení ke všem balíčkům přístupu, pokud je chcete zablokovat, aby se přihlašovat k tomuto adresáři, nastavte **blokovat externímu uživateli přístup k tomuto adresáři** na **Ano**.
 
-1. Když externí uživatel ztratí své poslední přiřazení ke všem balíčkům přístupu, pokud chcete odebrat svůj uživatelský účet hosta v adresáři, nastavte **Odebrat externí uživatele** na **Ano**.
+    > [!NOTE]
+    > Pokud se uživateli zablokuje přihlášení k tomuto adresáři, uživatel nebude moct znovu požádat o přístup k balíčku nebo požádat o další přístup v tomto adresáři. Nekonfigurujte blokování v přihlašování, pokud budou následně potřebovat požádat o přístup k jiným balíčkům přístupu.
+
+1. Když externí uživatel ztratí své poslední přiřazení ke všem balíčkům přístupu, pokud chcete odebrat svůj uživatelský účet hosta v tomto adresáři, nastavte **Odebrat externí uživatele** na **Ano**.
 
     > [!NOTE]
-    > Správa nároků odebírá jenom účty, které byly pozvány prostřednictvím správy nároků. Také si všimněte, že uživatel bude zablokován přihlášení a odebrán z adresáře i v případě, že byl tento uživatel přidán do prostředků ve vašem adresáři, které nepřístupují k přiřazení balíčků. Pokud se host nachází v adresáři před přijetím přiřazení přístupových balíčků, zůstanou. Pokud ale Host byl přizván prostřednictvím přiřazení balíčku přístupu a po jeho pozvaní byl také přiřazen k webu OneDrivu pro firmy nebo SharePointu Online, bude stále odebrán.
+    > Správa nároků odebírá jenom účty, které byly pozvány prostřednictvím správy nároků. Také si všimněte, že uživatel bude zablokován přihlášení a odebrán z tohoto adresáře i v případě, že byl tento uživatel přidán do prostředků v tomto adresáři, které nepoužívaly přístup k přiřazení balíčků. Pokud se host nachází v tomto adresáři před přijetím přiřazení přístupových balíčků, zůstane. Pokud ale Host byl přizván prostřednictvím přiřazení balíčku přístupu a po jeho pozvaní byl také přiřazen k webu OneDrivu pro firmy nebo SharePointu Online, bude stále odebrán.
 
-1. Pokud chcete odebrat uživatelský účet hosta v adresáři, můžete nastavit počet dní před jeho odebráním. Pokud chcete odebrat uživatelský účet hosta, jakmile ztratí poslední přiřazení na všechny balíčky pro přístup, nastavte **počet dní před odebráním externího uživatele z tohoto adresáře** na **hodnotu 0**.
+1. Pokud chcete odebrat uživatelský účet hosta v tomto adresáři, můžete nastavit počet dní, než se odebere. Pokud chcete odebrat uživatelský účet hosta, jakmile ztratí poslední přiřazení na všechny balíčky pro přístup, nastavte **počet dní před odebráním externího uživatele z tohoto adresáře** na **hodnotu 0**.
 
 1. Klikněte na **Uložit**.
 
@@ -113,6 +116,6 @@ Toto nastavení můžete změnit i po vytvoření katalogu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pro uživatele, kteří nejsou ve vašem adresáři](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [Pro uživatele, kteří nejsou ve vašem adresáři](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Vytvoření a správa katalogu prostředků](entitlement-management-catalog-create.md)
 - [Delegování a role](entitlement-management-delegate.md)

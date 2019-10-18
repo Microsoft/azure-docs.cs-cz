@@ -4,22 +4,22 @@ description: V tomto rychlém startu najdete několik vzorových kódů Node.js,
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: 5ad6fecc3cc06d2c4e2962640201ffcd6f96d87e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fb61a976e62c3ae5e29dfcc5e28b48f2ea4214c8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672498"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529054"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý start: Použití Node. js k připojení a dotazování dat v Azure Database for MySQL
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node. js k připojení a dotazování dat v Azure Database for MySQL
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Node.js](https://nodejs.org/) z platforem Windows, Ubuntu Linux a Mac. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
-Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
+## <a name="prerequisites"></a>Předpoklady
+Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -33,7 +33,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
 ### <a name="windows"></a>**Windows**
 1. Přejděte na [stránku pro stažení Node.js](https://nodejs.org/en/download/) a vyberte požadovanou možnost Instalační služby systému Windows.
 2. Vytvořte místní složku projektu, například `nodejsmysql`. 
-3. Otevřete příkazový řádek a pak změňte adresář na složku projektu, například `cd c:\nodejsmysql\`.
+3. Otevřete příkazový řádek a poté změňte adresář na složku projektu, například `cd c:\nodejsmysql\`
 4. Spusťte nástroj NPM a nainstalujte knihovnu MySQL do složky projektu.
 
    ```cmd
@@ -42,7 +42,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. Ověřte instalaci tak, že zkontrolujete `npm list` výstupní text. Číslo verze se může lišit v závislosti na vydávání nových oprav.
+5. Ověřte instalaci kontrolou výstupního textu `npm list`. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 1. Spuštěním následujících příkazů nainstalujte **Node.js** a **npm** – správce balíčků pro Node.js.
@@ -51,7 +51,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    sudo apt-get install -y nodejs npm
    ```
 
-2. Spuštěním následujících příkazů vytvořte složku `mysqlnodejs` projektu a nainstalujte do ní balíček MySQL.
+2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček MySQL.
 
    ```bash
    mkdir nodejsmysql
@@ -68,7 +68,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Spuštěním následujících příkazů vytvořte složku `mysqlnodejs` projektu a nainstalujte do ní balíček MySQL.
+2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček MySQL.
 
    ```bash
    mkdir nodejsmysql
@@ -77,7 +77,7 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    npm list
    ```
 
-3. Ověřte instalaci tak, že zkontrolujete `npm list` výstupní text. Číslo verze se může lišit v závislosti na vydávání nových oprav.
+3. Ověřte instalaci kontrolou výstupního textu `npm list`. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
@@ -86,11 +86,11 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
- ![Název serveru Azure Database for MySQL](./media/connect-nodejs/1_server-overview-name-login.png)
+ ![Název serveru Azure Database for MySQL](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Spuštění kódu jazyka JavaScript v Node.js
 1. Vložte kód jazyka JavaScript do textového souboru a ten uložte s příponou .js do složky projektu (například C:\nodejsmysql\createtable.js nebo /home/username/nodejsmysql/createtable.js).
-2. Otevřete příkazový řádek nebo prostředí bash a potom změňte adresář na složku vašeho projektu `cd nodejsmysql`.
+2. Otevřete příkazový řádek nebo prostředí bash a pak změňte adresář na složku vašeho projektu `cd nodejsmysql`.
 3. Chcete-li spustit aplikaci, zadejte příkaz Node následovaný názvem souboru, například `node createtable.js`.
 4. Pokud v systému Windows není aplikace Node ve vaší proměnné prostředí PATH, možná bude nutné ke spuštění aplikace Node použít úplnou cestu, například `"C:\Program Files\nodejs\node.exe" createtable.js`.
 

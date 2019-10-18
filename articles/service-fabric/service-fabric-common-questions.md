@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 23479692e815b5dda010ec2035c206df15715347
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167412"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529367"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -44,7 +44,7 @@ Technologie clusteringu na základní Service Fabric se dá použít ke kombinov
 
 Pokud vás zajímá tento scénář, doporučujeme vám, abyste se dostali v kontaktu buď prostřednictvím [seznamu problémů s Service Fabric GitHubem](https://github.com/azure/service-fabric-issues) , nebo prostřednictvím zástupce podpory, abyste získali další doprovodné materiály. Tým Service Fabric pracuje na poskytnutí dodatečné jasnosti, pokynů a doporučení pro tento scénář. 
 
-Zvažte několik věcí, které je potřeba vzít v úvahu: 
+Pár věcí k uvážení: 
 
 1. Prostředek clusteru Service Fabric v Azure je dnes regionální, jako je služba Virtual Machine Scale Sets, na které je cluster integrovaný. To znamená, že v případě regionálního selhání může dojít ke ztrátě schopnosti spravovat cluster prostřednictvím Azure Resource Manager nebo Azure Portal. K tomu může dojít i v případě, že cluster zůstává spuštěný a vy budete moct s ním pracovat přímo. Kromě toho Azure ještě nenabízí možnost mít jednu virtuální síť, která je použitelná v různých oblastech. To znamená, že cluster s více oblastmi v Azure vyžaduje buď [veřejné IP adresy pro každý virtuální počítač ve VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) nebo [bráně Azure VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto možnosti sítě mají různé dopady na náklady, výkon a určitý návrh aplikace, takže je nutné provést pečlivou analýzu a plánování před tím, než takové prostředí sestaví.
 2. Údržba, Správa a monitorování těchto počítačů se můžou stát složitě, _zejména v případě_ , že jsou rozložená mezi různými poskytovateli cloudu nebo mezi místními prostředky a Azure. Před spuštěním produkčních úloh v takovém prostředí je třeba dbát na to, aby se zajistilo, že upgrady, monitorování, Správa a diagnostika jsou srozumitelné pro cluster i aplikace. Pokud již máte zkušenosti s řešením těchto problémů v Azure nebo v rámci vašich vlastních Datacenter, je pravděpodobně vhodné použít stejná řešení při sestavování nebo spouštění clusteru Service Fabric. 
@@ -74,7 +74,7 @@ Pro následující tři důvody potřebujeme, aby měl provozní cluster minimá
 2. Vždycky ukládáme jednu repliku služby na uzel, takže velikost clusteru je horním limitem počtu replik, které služba (ve skutečnosti oddíl) může mít.
 3. Vzhledem k tomu, že upgrade clusteru bude obsahovat alespoň jeden uzel, chceme mít vyrovnávací paměť aspoň jeden uzel. proto chceme, aby měl provozní cluster *kromě* minimálního minima aspoň dva uzly. Minimální hodnota je velikost kvora systémové služby, jak je vysvětleno níže.  
 
-Chceme, aby byl cluster dostupný na tváři souběžného selhání dvou uzlů. Aby byl cluster Service Fabric k dispozici, musí být systémové služby k dispozici. Služby stavového systému jako služba pojmenování služeb a správce převzetí služeb při selhání, které sledují, které služby jsou v clusteru nasazené a kde se aktuálně hostují, závisí na silné konzistenci. Tato silná konzistence pak závisí na schopnosti získat *kvorum* pro jakoukoli danou aktualizaci do stavu těchto služeb, kde kvorum představuje striktní většinu replik (N/2 + 1) pro danou službu. Takže pokud chceme být odolný proti souběžné ztrátě dvou uzlů (tedy současně současně se dvěma replikami systémové služby), musí mít ClusterSize-QuorumSize > = 2, což vynutí minimální velikost 5. Pokud to chcete vidět, zvažte, že cluster má N uzlů a v každém uzlu je N replik služby System Service--One. Velikost kvora systémové služby je (N/2 + 1). Výše uvedená nerovnost vypadá jako N-(N/2 + 1) > = 2. Je třeba vzít v úvahu dva případy, kdy je N i v případě, že N je liché. Pokud N je i, řekněme N = 2 @ no__t-0M, kde m > = 1, nerovnost vypadá jako 2 @ no__t-1m-(2 @ no__t-2 min/2 + 1) > = 2 nebo m > = 3. Minimum pro N je 6 a je dosaženo v případě m = 3. Na druhé straně Pokud N je lichá, řekněme N = 2 @ no__t-0M + 1, kde m > = 1, nerovnost by vypadala jako 2 @ no__t-1m + 1-((2 @ no__t-2 min + 1)/2 + 1) > = 2 nebo 2 @ no__t-3m + 1-(m + 1) > = 2 nebo m > = 2. Minimum pro N je 5 a je dosaženo při m = 2. Proto ze všech hodnot N, které odpovídají nerovnosti ClusterSize-QuorumSize > = 2, je minimum 5.
+Chceme, aby byl cluster dostupný na tváři souběžného selhání dvou uzlů. Aby byl cluster Service Fabric k dispozici, musí být systémové služby k dispozici. Služby stavového systému jako služba pojmenování služeb a správce převzetí služeb při selhání, které sledují, které služby jsou v clusteru nasazené a kde se aktuálně hostují, závisí na silné konzistenci. Tato silná konzistence pak závisí na schopnosti získat *kvorum* pro jakoukoli danou aktualizaci do stavu těchto služeb, kde kvorum představuje striktní většinu replik (N/2 + 1) pro danou službu. Takže pokud chceme být odolný proti souběžné ztrátě dvou uzlů (tedy současně současně se dvěma replikami systémové služby), musí mít ClusterSize-QuorumSize > = 2, což vynutí minimální velikost 5. Pokud to chcete vidět, zvažte, že cluster má N uzlů a v každém uzlu je N replik služby System Service--One. Velikost kvora systémové služby je (N/2 + 1). Výše uvedená nerovnost vypadá jako N-(N/2 + 1) > = 2. Je třeba vzít v úvahu dva případy, kdy je N i v případě, že N je liché. Pokud N je i, řekněme N = 2 \*m kde m > = 1, nerovnost vypadá jako 2 \*m-(2 \*m/2 + 1) > = 2 nebo m > = 3. Minimum pro N je 6 a je dosaženo v případě m = 3. Na druhé straně platí, že pokud N je lichá, řekněme N = 2 \*m + 1, kde m > = 1, nerovnost by vypadala 2 \*m + 1-((2 \*m + 1)/2 + 1) > = 2 nebo 2 \*m + 1-(m + 1) > = 2 nebo m > = 2. Minimum pro N je 5 a je dosaženo při m = 2. Proto ze všech hodnot N, které odpovídají nerovnosti ClusterSize-QuorumSize > = 2, je minimum 5.
 
 Všimněte si, že ve výše uvedeném argumentu jsme předpokládali, že každý uzel má repliku systémové služby, takže se velikost kvora vypočítá na základě počtu uzlů v clusteru. Změnou *TargetReplicaSetSize* však můžeme zmenšit velikost kvora menší než (N/2 + 1), což by mohlo znamenat, že by mohlo být cluster menší než 5 uzlů a stále mít 2 Navíc uzly nad velikost kvora. Například v případě clusteru se čtyřmi uzly, pokud nastavíme TargetReplicaSetSize na 3, bude velikost kvora založená na TargetReplicaSetSize (3/2 + 1) nebo 2, proto máme ClusterSize-QuorumSize = 4-2 > = 2. Nicméně nemůžeme zaručit, že systémová služba bude v kvoru nebo výše, pokud ztratíte všechny dvojice uzlů současně, může to být tím, že oba uzly ztratily dvě repliky, takže systémová služba přejde do kvora (obsahující jenom jednu repliku vlevo). ND přestane být k dispozici.
 
@@ -104,7 +104,7 @@ Pokud chcete vytvořit clustery pro testování aplikace před jejím nasazením
 V současné době pracujeme na vylepšeném prostředí, ale zodpovídáte za upgrade. Bitovou kopii operačního systému musíte upgradovat na virtuálních počítačích clusteru na jednom virtuálním počítači v daném okamžiku. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžu šifrovat připojené datové disky v typu uzlu clusteru (sada škálování virtuálního počítače)?
-Ano.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [šifrovanými disky (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)a [šifrovanými disky (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+Ano.  Další informace najdete v tématu [Vytvoření clusteru s připojenými datovými disky](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) a [Azure Disk Encryption pro Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Je možné použít virtuální počítače s nízkou prioritou v typu uzlu clusteru (sada škálování virtuálního počítače)?
 Ne. Virtuální počítače s nízkou prioritou se nepodporují. 
@@ -135,8 +135,8 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak se dá aplikace ověřovat do trezoru klíčů, aby získala tajné kódy?
 Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování do trezoru klíčů:
 
-určitého. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření do trezoru klíčů.
-b. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření do trezoru klíčů.
+B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Návrh aplikace
 

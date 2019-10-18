@@ -4,15 +4,15 @@ description: V této lekci kurzu zjistíte, jak přidat ukázkový model do slu�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a9721b05fbd478d108f06c36017ee444f721d28
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6679e8075afd2f25e4baf73c79c35907ded4e2b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298689"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512872"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -43,7 +43,7 @@ Přihlaste se k [portálu](https://portal.azure.com/).
 
     ![Vytvoření ukázkového modelu](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. V oblasti **Nový model** > **Zvolit zdroj dat** ověřte, že je vybraná možnost **Ukázková data**, a pak klikněte na **Přidat**.
+2. V **novém modelu**  > **Zvolte zdroj dat**, ověřte, že je vybraná možnost **ukázková data** , a pak klikněte na **Přidat**.
 
     ![Výběr ukázkových dat](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

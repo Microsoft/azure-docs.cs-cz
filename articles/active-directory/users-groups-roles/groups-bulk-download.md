@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76aafa978732b3f4bae82f8ad3c09e67caf297ae
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146283"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517151"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Hromadné stažení seznamu skupin (Preview) v Azure Active Directory
 
 Pomocí portálu Azure Active Directory (Azure AD) můžete hromadně stahovat seznam všech skupin ve vaší organizaci do souboru hodnot oddělených čárkami (CSV).
 
-> [!NOTE]
-> Hromadné operace Azure AD jsou funkcí veřejné verze Preview služby Azure AD a jsou dostupné s placeným licenčním plánem Azure AD. Další informace o tom, jak používat verzi Preview, najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
 ## <a name="to-download-a-list-of-groups"></a>Stažení seznamu skupin
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce v organizaci.
-1. V Azure AD vyberte **skupiny** > **Stáhnout skupiny**.
+1. V Azure AD vyberte **skupiny**  > **stažení skupin**.
 1. Na stránce **stažení skupin** vyberte možnost **Spustit** pro příjem souboru CSV se seznamem vašich skupin.
 
    ![Příkaz skupiny pro stahování se nachází na stránce všechny skupiny.](./media/groups-bulk-download/bulk-download.png)

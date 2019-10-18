@@ -1,22 +1,19 @@
 ---
 title: Referenční příručka pro vývojáře PowerShellu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
+author: eamonoreilly
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: glenga
+ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029015"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515667"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -61,7 +58,7 @@ V kořenovém adresáři projektu je k dispozici sdílený soubor [`host.json`](
 
 Některé vazby vyžadují přítomnost souboru `extensions.csproj`. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou definována v souboru `extensions.csproj` se skutečnými soubory knihovny ve složce `bin`. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
-V aplikacích funkcí PowerShell můžete volitelně mít @no__t – 0, která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít](#cold-start)* znovu pracovat. Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
+Ve funkcích aplikace PowerShell Functions můžete volitelně mít `profile.ps1`, která se spustí, když se spustí aplikace Function App (jinak se ví jako *[studené spuštění](#cold-start)* ). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definování skriptu PowerShellu jako funkce
 
@@ -275,7 +272,7 @@ Další informace naleznete v tématu [reference Host. JSON].
 
 Pokud váš Function App běží v Azure, můžete ho monitorovat pomocí Application Insights. Přečtěte si [Azure Functions monitorování](functions-monitoring.md) , kde najdete další informace o zobrazení a dotazování protokolů funkcí.
 
-Pokud používáte Function App místně pro vývoj, protokoluje výchozí systém souborů. Chcete-li zobrazit protokoly v konzole, před spuštěním Function App nastavte proměnnou prostředí `AZURE_FUNCTIONS_ENVIRONMENT` na `Development`.
+Pokud používáte Function App místně pro vývoj, protokoluje výchozí systém souborů. Chcete-li zobrazit protokoly v konzole, nastavte před spuštěním Function App proměnnou prostředí `AZURE_FUNCTIONS_ENVIRONMENT` na `Development`.
 
 ## <a name="triggers-and-bindings-types"></a>Triggery a typy vazeb
 
@@ -403,13 +400,8 @@ Aktuální verzi můžete zobrazit tiskem `$PSVersionTable` z jakékoli funkce.
 
 ## <a name="dependency-management"></a>Správa závislostí
 
-Funkce PowerShellu podporují stažení a správu modulů [Galerie prostředí PowerShell](https://www.powershellgallery.com) prostřednictvím služby. Úpravou souboru Host. JSON a nastavením vlastnosti managedDependency Enabled na hodnotu true se zpracuje soubor požadavky. psd1. Zadané moduly budou automaticky staženy a zpřístupněny této funkci. 
+Funkce umožňují využít [galerii prostředí PowerShell](https://www.powershellgallery.com) pro správu závislostí. Se zapnutou správou závislostí se k automatickému stahování požadovaných modulů používá soubor. psd1 požadavků. Toto chování povolíte nastavením vlastnosti `managedDependency` tak, aby `true` v kořenovém adresáři [souboru Host. JSON](functions-host-json.md), jak je znázorněno v následujícím příkladu:
 
-Maximální počet modulů, které jsou aktuálně podporovány, je 10. Podporovanou syntaxí je MajorNumber. * nebo přesná verze modulu, jak je znázorněno níže. Když se vytvoří nová aplikace funkce PowerShellu, ve výchozím nastavení se zahrnou modul Azure AZ.
-
-Modul Language Worker při restartování vybere všechny aktualizované moduly.
-
-Host. JSON
 ```json
 {
   "managedDependency": {
@@ -418,7 +410,7 @@ Host. JSON
 }
 ```
 
-požadavky. psd1
+Když vytvoříte nový projekt PowerShell Functions, Správa závislostí je ve výchozím nastavení povolená a zahrnuje [modul Azure `Az`](/powershell/azure/new-azureps-module-az) . Maximální počet modulů, které jsou aktuálně podporovány, je 10. Podporovaná syntaxe je _`MajorNumber`_ `.*` nebo přesná verze modulu, jak je znázorněno v následujících požadavcích. příklad psd1:
 
 ```powershell
 @{
@@ -427,32 +419,34 @@ požadavky. psd1
 }
 ```
 
-Pro změnu způsobu stažení a instalace spravovaných závislostí jsou k dispozici následující nastavení. Upgrade vaší aplikace se spustí v MDMaxBackgroundUpgradePeriod a proces upgradu se dokončí do přibližně MDNewSnapshotCheckPeriod.
+Když aktualizujete soubor. psd1 požadavků, aktualizované moduly se nainstalují po restartování.
+
+> [!NOTE]
+> Spravované závislosti vyžadují přístup k www.powershellgallery.com, aby bylo možné stahovat moduly. Pokud spouštíte místně, ujistěte se, že modul runtime má k této adrese URL přístup přidáním požadovaných pravidel brány firewall. 
+
+Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí do přibližně `MDNewSnapshotCheckPeriod`.
 
 | Nastavení Function App              | Výchozí hodnota             | Popis                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 dnů)     | Každý pracovní proces PS inicializuje kontrolu pro upgrady modulů v galerii PS v pracovním procesu Start a všech MDMaxBackgroundUpgradePeriod po ní. Pokud jsou v galerii PS dostupné nové verze modulů, nainstalují se do systému souborů dostupného pro pracovníky PS. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale zároveň zvýšila využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít ke zpoždění doručení nových verzí modulu do aplikace.      | 
-| MDNewSnapshotCheckPeriod          | "01:00:00" (1 hodina)       | Po instalaci nových verzí modulu do systému souborů musí být každý pracovní proces PS restartován. Restartování procesů PS může mít vliv na dostupnost vaší aplikace, protože může přerušit aktuální volání funkcí. Dokud nebudou všechny procesy PS restartovány, mohou vyvolání funkcí použít buď starou, nebo novou verzi modulu. Restartování všech pracovníků PS se dokončí v rámci MDNewSnapshotCheckPeriod. Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se taky prodloužit doba, po kterou vyvolání funkce využije buď starou, nebo nové verze modulu, které nejsou deterministické. |
-| MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 den)     | Aby nedocházelo k nadměrnému upgradu modulů v častých restartech pracovních procesů, neproběhne kontrola upgradu modulů, pokud některý z pracovních procesů, které už během poslední MDMinBackgroundUpgradePeriod inicioval. |
-
-> [!NOTE]
-> Spravované závislosti spoléhají na přístup k www.powershellgallery.com ke stažení modulů. Je nutné zajistit, aby modul runtime funkce měl přístup k této adrese URL přidáním požadovaných pravidel brány firewall.
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradu modulů na Galerie prostředí PowerShell spuštění procesu a každé `MDMaxBackgroundUpgradePeriod`. Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restartování všech pracovních procesů prostředí PowerShell dokončeno v rámci `MDNewSnapshotCheckPeriod`. Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 den)     | Aby nedocházelo k nadměrným inovacím modulů na častých restartech pracovních procesů, neprovádí se kontrola upgradů modulů, pokud kterýkoli pracovník již zahájil kontrolu v poslední `MDMinBackgroundUpgradePeriod`. |
 
 Využití vlastních modulů je trochu jiné, než jak byste to prostupovali normálně.
 
-Když modul nainstalujete do místního počítače, přejde do jedné z globálních dostupných složek v `$env:PSModulePath`. Vzhledem k tomu, že vaše funkce běží v Azure, nebudete mít přístup k modulům nainstalovaným na vašem počítači. To vyžaduje, aby se `$env:PSModulePath` pro aplikaci funkcí prostředí PowerShell lišilo od `$env:PSModulePath` v běžném skriptu PowerShellu.
+V místním počítači se modul nainstaluje do jedné z globálních dostupných složek v `$env:PSModulePath`. Při spuštění v Azure nemáte přístup k modulům nainstalovaným na vašem počítači. To znamená, že `$env:PSModulePath` pro aplikaci funkcí PowerShell se liší od `$env:PSModulePath` v běžném skriptu PowerShellu.
 
 Ve funkcích `PSModulePath` obsahuje dvě cesty:
 
-* Složka `Modules`, která existuje v kořenovém adresáři vašeho Function App.
-* Cesta ke složce `Modules`, která je umístěná v pracovním procesu PowerShellu jazyka.
+* Složka `Modules`, která existuje v kořenu aplikace Function App.
+* Cesta ke složce `Modules`, kterou řídí pracovní proces jazyka PowerShell.
 
 ### <a name="function-app-level-modules-folder"></a>Složka funkce `Modules` na úrovni aplikace
 
 Chcete-li použít vlastní moduly, můžete umístit moduly, na kterých jsou funkce závislé ve složce `Modules`. Z této složky jsou moduly automaticky dostupné pro modul runtime Functions. Všechny funkce ve Function App můžou tyto moduly používat. 
 
 > [!NOTE]
-> Moduly zadané v souboru požadavků. psd1 se automaticky stáhnou a zahrnou do cesty, takže je nemusíte vkládat do složky moduly. Ty jsou uložené lokálně ve složce $env: LOCALAPPDATA/AzureFunctions a ve složce/data/ManagedDependencies při spuštění v cloudu.
+> Moduly zadané v souboru požadavků. psd1 se automaticky stáhnou a zahrnou do cesty, takže je nemusíte vkládat do složky moduly. Ukládají se místně do složky `$env:LOCALAPPDATA/AzureFunctions` a do složky `/data/ManagedDependencies` při spuštění v cloudu.
 
 Pokud chcete využít funkci vlastního modulu, vytvořte složku `Modules` v kořenovém adresáři aplikace Function App. Do tohoto umístění zkopírujte moduly, které chcete použít ve svých funkcích.
 
@@ -461,7 +455,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Ve složce modulů by vaše aplikace Function App měla mít následující strukturu složek:
+Ve složce `Modules` by vaše aplikace Function App měla mít následující strukturu složek:
 
 ```
 PSFunctionApp
@@ -488,7 +482,7 @@ Aktuální seznam modulů je následující:
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modul používaný pro práci s archivy, například `.zip`, `.nupkg` a další.
 * **ThreadJob**: implementace rozhraní API úlohy PowerShellu založené na vláknech.
 
-Nejnovější verzi těchto modulů používají funkce. Pokud chcete použít konkrétní verzi těchto modulů, můžete zadat konkrétní verzi do složky `Modules` aplikace Function App.
+Ve výchozím nastavení funkce používají nejnovější verzi těchto modulů. Pokud chcete použít konkrétní verzi modulu, vložte tuto specifickou verzi do složky `Modules` aplikace Function App.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050168"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515055"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
@@ -40,7 +40,7 @@ Kód ukazuje proces iniciace datového proudu zařízení a také způsob, jak h
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete následující požadavky:
 
@@ -56,16 +56,16 @@ Potřebujete následující požadavky:
 
 Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-* Střed USA
+* Střední USA
 
-* Střední USA – EUAP
+* Střed USA EUAP
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
 V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). Připravíte vývojové prostředí, které se používá k klonování a sestavení [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) z GitHubu. Sada SDK na GitHubu obsahuje vzorový kód, který se používá v tomto rychlém startu.
 
    > [!NOTE]
-   > Než začnete s tímto postupem, ujistěte se, že je Visual Studio nainstalovaná s desktopovým vývojem, a to **s C++**  využitím úlohy.
+   > Než začnete s tímto postupem, ujistěte se, že je Visual Studio nainstalovaná s **desktopovým vývojem C++**  , a to s využitím úlohy.
 
 1. Nainstalujte [systém sestavení cmake](https://cmake.org/download/) , jak je popsáno na stránce pro stažení.
 
@@ -110,34 +110,34 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s rozšířením [IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
+Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
 1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 
    > [!NOTE]
-   > * Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
-   > * Použijte *mojezařízení*, jak je znázorněno na obrázku. Je to název zadaný pro registrované zařízení. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
+   > * Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
+   > * Pro název zařízení, které zaregistrujete, se doporučuje používat *mojezařízení* , jak je znázorněno na obrázku. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Pokud chcete získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte v Cloud Shell následující příkaz:
 
    > [!NOTE]
-   > Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
+   > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
+    Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +149,14 @@ V této části spustíte jak aplikaci na straně zařízení, tak aplikaci na s
 
 Chcete-li spustit aplikaci na straně zařízení, postupujte podle následujících kroků:
 
-1. Zadejte přihlašovací údaje pro své zařízení úpravou zdrojového souboru *iothub_client_c2d_streaming_sample. c* ve složce *iothub_client/Samples/iothub_client_c2d_streaming_sample* a zadáním připojovacího řetězce zařízení.
+1. Zadejte přihlašovací údaje pro zařízení úpravou zdrojového souboru **iothub_client_c2d_streaming_sample. c** ve složce `iothub_client/samples/iothub_client_c2d_streaming_sample` a přidáním připojovacího řetězce zařízení.
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. Zkompilujte kód následujícím způsobem:
+1. Zkompilujte kód pomocí následujících příkazů:
 
    ```bash
    # In Linux
@@ -186,7 +186,7 @@ Chcete-li spustit aplikaci na straně zařízení, postupujte podle následujíc
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace na straně služby
 
-Jak již bylo uvedeno výše, sada IoT Hub C SDK podporuje pouze datové proudy zařízení na straně zařízení. Pokud chcete sestavit a spustit aplikaci na straně služby, postupujte podle pokynů v některém z následujících rychlých startů:
+Jak již bylo uvedeno výše, sada IoT Hub C SDK podporuje pouze datové proudy zařízení na straně zařízení. Pokud chcete sestavit a spustit doprovodnou aplikaci na straně služby, postupujte podle pokynů v některém z následujících rychlých startů:
 
 * [Komunikace s aplikacemi v C# zařízení prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md)
 
@@ -196,9 +196,9 @@ Jak již bylo uvedeno výše, sada IoT Hub C SDK podporuje pouze datové proudy 
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nastavili službu IoT Hub, zaregistrovali zařízení, navázali jste datový proud zařízení mezi aplikací jazyka C na zařízení a jinou aplikací na straně služby a pomocí tohoto datového proudu odesíláte data mezi aplikacemi a zpátky mezi ně.
+V tomto rychlém startu nastavíte službu IoT Hub, zaregistrovali jste zařízení, navázali datový proud zařízení mezi aplikací jazyka C na zařízení a další aplikací na straně služby a pomocí datového proudu odesíláte data mezi aplikacemi.
 
 Další informace o datových proudech zařízení najdete v těchto tématech:
 

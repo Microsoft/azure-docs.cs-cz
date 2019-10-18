@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245250"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511461"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -23,7 +23,7 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 
 Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI, příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell nebo z [Azure Portal](https://portal.azure.com).
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location eastus
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
 *Pokud už máte Trezor klíčů, můžete přeskočit k [nastavení zásad pokročilého přístupu trezoru klíčů](#set-key-vault-advanced-access-policies).*
 
@@ -44,7 +44,7 @@ Vytvořte Trezor klíčů pomocí příkazu [AZ Key trezor Create](/cli/azure/ke
 
 Každý Key Vault musí mít jedinečný název. V následujících příkladech nahraďte < název trezoru klíčů jedinečných > s názvem vašeho trezoru klíčů.
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 Při vytváření trezoru klíčů pomocí Azure CLI přidejte příznak "--Enabled-for-Disk-Encryption".
 
@@ -59,7 +59,7 @@ Při vytváření trezoru klíčů pomocí Azure PowerShell přidejte příznak 
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
-### <a name="resource-manager-template"></a>Šablona Správce prostředků
+### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
 Trezor klíčů můžete vytvořit také pomocí [šablony Správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
@@ -73,7 +73,7 @@ Platforma Azure potřebuje přístup k šifrovacím klíčům nebo tajným klí�
 
 Pokud jste nepovolili použití trezoru klíčů pro šifrování disků, nasazení nebo nasazení šablon v době vytváření (jak je znázorněno v předchozím kroku), musíte aktualizovat své pokročilé zásady přístupu.  
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Update](/cli/azure/keyvault#az-keyvault-update) . 
 
@@ -115,12 +115,12 @@ K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Upda
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>Portál Azure
 
 1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu**a **kliknutím zobrazte zásady pokročilého přístupu**.
 2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku**.
 3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony**. 
-4. Klikněte na **Save** (Uložit).
+4. Klikněte na **Uložit**.
 
     ![Zásady rozšířeného přístupu ke službě Azure Key trezor](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 
@@ -131,7 +131,7 @@ Pokud chcete pro další vrstvu zabezpečení pro šifrovací klíče použít k
 
 Novou KEK můžete vygenerovat pomocí příkazu Azure CLI [AZ klíčů trezor Key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) Azure PowerShell, rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) nebo [Azure Portal](https://portal.azure.com/). Musíte vygenerovat typ klíče RSA; Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
 
-Místo toho můžete importovat KEK z místního modulu hardwarové správy klíčů. Další informace najdete v [dokumentaci Key Vault](/key-vault/key-vault-hsm-protected-keys). 
+Místo toho můžete importovat KEK z místního modulu hardwarové správy klíčů. Další informace najdete v [dokumentaci Key Vault](/azure/key-vault/key-vault-hsm-protected-keys).
 
 Adresy URL vašeho trezoru klíčů KEK musí být ve verzi. Azure vynutilo toto omezení správy verzí. Platné tajné a KEK adresy URL najdete v následujících příkladech:
 
@@ -143,7 +143,7 @@ Azure Disk Encryption nepodporuje zadání čísel portů jako součást tajnýc
   * Přijatelná adresa URL trezoru klíčů: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Nepřijatelná adresa URL trezoru klíčů: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a>Azure CLI
 
 Pomocí příkazu Azure CLI [AZ klíčů trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) vytvořte novou KEK a uložte ji do svého trezoru klíčů.
 

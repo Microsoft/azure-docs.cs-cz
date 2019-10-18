@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a nasazení šablony Azure Resource Manager pomocí NÁPADu IntelliJ | Microsoft Docs
+title: Nasazení šablony Azure Resource Manager – nápad IntelliJ
 description: Naučte se, jak vytvořit první šablonu Azure Resource Manager s využitím NÁPADu IntelliJ a jak ho nasadit.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169450"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533657"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Rychlý Start: vytvoření a nasazení šablon Azure Resource Manager pomocí NÁPADu IntelliJ
 
-Naučte se, jak nasadit šablonu Správce prostředků do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony Správce prostředků jsou soubory JSON definující prostředky, které pro vaše řešení potřebujete nasadit. Informace o konceptech spojených s nasazením a správou řešení Azure najdete v tématu [přehled Azure Resource Manager](resource-group-overview.md).
+Naučte se, jak nasadit šablonu Správce prostředků do Azure s využitím NÁPADu IntelliJ a procesu úpravy a aktualizace šablony přímo z integrovaného vývojového prostředí (IDE). Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
 
 ![Diagram portálu pro rychlé zprovoznění šablon Správce prostředků](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -40,7 +40,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="deploy-a-quickstart-template"></a>Nasazení šablony pro rychlý Start
 
-Místo vytvoření zcela nové šablony otevřete šablonu ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Šablona použitá v tomto rychlém startu se nazývá [vytvořit účet úložiště úrovně Standard](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Definuje prostředek účtu Azure Storage.
+Šablonu nemusíte vytvářet od začátku, ale můžete místo toho otevřít některou [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/). Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Definuje prostředek účtu Azure Storage.
 
 1. Klikněte pravým tlačítkem a uložte [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) a [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) do svého místního počítače.
 
@@ -72,7 +72,7 @@ Místo vytvoření zcela nové šablony otevřete šablonu ze [šablon Azure pro
 
     ![Nasazení úprav šablony Správce prostředků](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů, od `Standard_LRS` do `Standard_GRS`. Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
+1. Tyto dva soubory můžete upravovat na této stránce a nasazovat změny do Azure. Zde upravujeme hodnotu **storageAccountType** v souborech parametrů, od `Standard_LRS` k `Standard_GRS`. Potom v dolní části klikněte na **aktualizovat nasazení** a potvrďte aktualizaci.
 
     ![Nasazení úprav šablony Správce prostředků](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
@@ -80,7 +80,7 @@ Místo vytvoření zcela nové šablony otevřete šablonu ze [šablon Azure pro
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Pokud už prostředky Azure nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků. Můžete to provést z Azure Portal nebo pomocí Azure CLI. V Azure Exploreru na IntelliJ nápad klikněte pravým tlačítkem na vytvořenou **skupinu prostředků** a vyberte Odstranit.
+1. Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Můžete to provést z Azure Portal nebo pomocí Azure CLI. V Azure Exploreru na IntelliJ nápad klikněte pravým tlačítkem na vytvořenou **skupinu prostředků** a vyberte Odstranit.
 
     ![Odstranění skupiny prostředků v Azure Exploreru z IntelliJ NÁPADu](./media/resource-manager-quickstart-create-templates-use-intellij/delete-resource-group.png)
 
@@ -89,7 +89,7 @@ Místo vytvoření zcela nové šablony otevřete šablonu ze [šablon Azure pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Hlavním cílem tohoto rychlého startu je použít IntelliJ nápad k nasazení existující šablony ze šablon Azure pro rychlý Start. Zjistili jste také, jak zobrazit a aktualizovat existující nasazení v Azure. Šablony ze šablon Azure pro rychlý Start vám nemusí poskytnout všechno, co potřebujete. Další informace o vývoji šablon najdete v naší nové řadě kurzů pro začátečníky:
+Hlavním cílem tohoto rychlého startu je použít IntelliJ nápad k nasazení existující šablony ze šablon Azure pro rychlý Start. Zjistili jste také, jak zobrazit a aktualizovat existující nasazení v Azure. Šablony Azure pro rychlý start možná nenabízí vše, co potřebujete. Další informace o vývoji šablon najdete v naší nové řadě kurzů pro začátečníky:
 
 > [!div class="nextstepaction"]
 > [Začátečník – kurzy](./template-tutorial-create-first-template.md)

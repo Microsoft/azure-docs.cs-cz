@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286545"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533175"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -37,7 +37,7 @@ Možná budete chtít spustit experiment pouze s datovou sadou, která bude vizu
  
 Před opravou můžete datovou sadu připojit k jakémukoli modulu transformace dat (výběr sloupců v datové sadě, upravit metadata, rozdělit data atd.) a spustit experiment. Pak můžete vizualizovat datovou sadu. 
 
-Následující obrázek ukazuje, jak: ![visulize-data @ no__t-1
+Následující obrázek ukazuje, jak: ![visulize-data ](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>Problémy s instalací sady SDK
 
@@ -130,7 +130,7 @@ Pokud tyto kroky problém nevyřeší, zkuste restartovat cluster.
 
 Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSendFeather`, přečtěte si následující řešení:
 
-* Upgradujte balíček `azureml-sdk[automl_databricks]` na nejnovější verzi.
+* Upgradovat balíček `azureml-sdk[automl]` na nejnovější verzi.
 * Přidejte `azure-dataprep` verze 1.1.8 nebo vyšší.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
@@ -177,7 +177,7 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Služby WebServices ve službě Azure Kubernetes – chyby 
 
-Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. @No__t-0 pro cluster služby Azure Kubernetes můžete získat spuštěním
+Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. @No__t_0 pro cluster služby Azure Kubernetes můžete získat spuštěním
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -218,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes ukládá tajné klíče ve formátu kódování Base-64. Před tím, než jim poskytnete `attach_config.enable_ssl`, bude nutné 64 základní údaje `cert.pem` a `key.pem` dekódovat v tajných klíčích. 
+>Kubernetes ukládá tajné klíče ve formátu kódování Base-64. Před tím, než jim poskytnete `attach_config.enable_ssl`, budete muset 64 základní `cert.pem` dekódovat a `key.pem` komponenty tajných kódů. 
 
 ## <a name="recommendations-for-error-fix"></a>Doporučení pro opravu chyb
 Na základě obecného sledování najdete tady doporučení Azure ML, kde můžete opravit některé běžné chyby v Azure ML.
@@ -226,7 +226,7 @@ Na základě obecného sledování najdete tady doporučení Azure ML, kde můž
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
 Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro vaše školení. 
 
-Pokud používáte [odhady](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí parametru `pip_packages` nebo `conda_packages` v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí příkazu `conda_dependencies_file`or seznam všech požadavků PIP v souboru txt pomocí parametru `pip_requirements_file`.
+Pokud používáte [odhady](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`or vypsat všechny požadavky PIP v souboru txt pomocí parametru `pip_requirements_file`.
 
 Azure ML také poskytuje odhady specifickou architekturu pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se ujistěte, že se závislosti rozhraní instalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
  
@@ -236,7 +236,7 @@ Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušné
 >[Poznámka!] Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (název není definován), AttributeError (objekt nemá žádný atribut)
-Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` a podívat se na chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 
+Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` k zobrazení chybové zprávy. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 
 
 ### <a name="horovod-is-shutdown"></a>Horovod je vypnutý.
-Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů s příponou `_rank`, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a vyhledejte `Traceback` na konci souborů driver_log. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci souborů driver_log. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 

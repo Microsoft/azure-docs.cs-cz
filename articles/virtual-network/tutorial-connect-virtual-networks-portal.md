@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720059"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515716"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -46,21 +46,18 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
-3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
+3. Na stránce **základy** zadejte nebo vyberte následující informace a u zbývajících nastavení přijměte výchozí hodnoty:
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name (Název)|myVirtualNetwork1|
-    |Adresní prostor|10.0.0.0/16|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-    |Umístění| Vyberte **USA – východ**.|
-    |Název podsítě|Podsíť Subnet1|
-    |Rozsah adres podsítě|10.0.0.0/24|
-
-      ![Vytvoření virtuální sítě](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
-
-4. Zopakujte kroky 1 až 3 s následujícími změnami:
+    |Oblast| Vyberte **USA – východ**.|
+    |Name (Název)|myVirtualNetwork1|
+    ! [Konfigurace základního nastavení virtuální sítě] (
+4. Na stránce **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte Subnet1 pro **název podsítě** a 10.0.0.0/24.
+   
+5. Zopakujte kroky 1 až 3 s následujícími změnami:
 
     |Nastavení|Hodnota|
     |---|---|
@@ -105,22 +102,26 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
 
     |Nastavení|Hodnota|
     |---|---|
+    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
     |Name (Název)|myVm1|
+    |Umístění| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Umístění| Vyberte **USA – východ**.|
-4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
-5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
+   
+4. Vyberte velikost virtuálního počítače pro možnost **Velikost** .
+5. V části **sítě**vyberte následující hodnoty:
 
     |Nastavení|Hodnota|
     |---|---|
-    |Virtuální síť| myVirtualNetwork1 – Pokud ještě není vybraná, vyberte **Virtuální síť** a pak v části **Zvolte virtuální síť** vyberte **myVirtualNetwork1**.|
-    |Podsíť| Subnet1 – Pokud ještě není vybraná, vyberte **Podsíť** a pak v části **Zvolte podsíť** vyberte **Subnet1**.|
+    |Virtuální síť| myVirtualNetwork1 – Pokud ještě není vybraná, vyberte **virtuální síť** a pak vyberte **myVirtualNetwork1**.|
+    |Podsíť| Subnet1 – Pokud ještě není vybraná, vyberte **podsíť** a pak vyberte **Subnet1**.|
     
+
     ![Nastavení virtuálního počítače](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
- 
-6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
+   
+6. Vyberte **sítě**. Vyberte možnost **Povolit vybrané porty** pro **veřejné příchozí porty** . V následujícím seznamu zvolte možnost **RDP** pro možnost **vybrat příchozí porty** . 
+
+7. Kliknutím na tlačítko **Revize + vytvořit** v levém dolním rohu spusťte nasazení virtuálního počítače.
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 

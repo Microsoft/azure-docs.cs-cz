@@ -1,78 +1,78 @@
 ---
-title: Konfigurace a schvalovat přístup just-in-time pro spravované aplikace Azure
-description: Popisuje, jak uživatele služby Azure Managed Applications schvalovat žádosti o just-in-time přístup ke spravované aplikaci.
+title: Schválit přístup za běhu – spravovaná aplikace Azure
+description: Popisuje způsob, jakým zákazníci Azure Managed Applications schvalovat žádosti o přístup za běhu ke spravované aplikaci.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 55fbf7292ab894cad3de3de9e96ddc96fe0b79b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd5c3f21b1a4b71d129ccbebeaa7ee66274a672f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481711"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529130"
 ---
-# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurace a schvalovat přístup just-in-time pro spravované aplikace Azure
+# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurace a schválení přístupu za běhu pro Azure Managed Applications
 
-Jako příjemce spravované aplikace, nemusí být pohodlné poskytuje vydavatele permanentní přístup k spravovanou skupinu prostředků. Získáte větší kontrolu nad udělení přístupu ke spravovaným prostředkům, Azure Managed Applications poskytuje funkci s názvem přístup just-in-time (JIT), která je aktuálně ve verzi preview. Umožňuje schválit, kdy a jak dlouho vydavatel má přístup do skupiny prostředků. Požadovaná aktualizace během této doby můžete nastavit jako vydavatele, ale po za tu dobu vypršení platnosti přístupu vydavatele.
+Jako spotřebitel spravované aplikace možná nebudete mít jistotu, že vydavatel má trvalý přístup ke spravované skupině prostředků. Aby vám poskytoval větší kontrolu nad udělením přístupu ke spravovaným prostředkům, Azure Managed Applications poskytuje funkci s názvem přístup JIT (just-in-time), která je aktuálně ve verzi Preview. Umožňuje schválit, kdy a jak dlouho má Vydavatel přístup ke skupině prostředků. Vydavatel může během této doby provádět požadované aktualizace, ale po uplynutí této doby vyprší platnost přístupu vydavatele.
 
-Pracovní postup pro udělení přístupu je:
+Pracovní postup pro udělení přístupu:
 
-1. Vydavatel přidá spravované aplikace na webu Marketplace a určuje, zda je k dispozici přístup JIT.
+1. Vydavatel přidá do Marketplace spravovanou aplikaci a určí, že je k dispozici přístup JIT.
 
-1. Během nasazení povolte přístup JIT pro vaši instanci spravované aplikace.
+1. Během nasazení povolíte přístup JIT pro vaši instanci spravované aplikace.
 
-1. Po nasazení můžete změnit nastavení pro přístup JIT.
+1. Po nasazení můžete změnit nastavení přístupu JIT.
 
-1. Vydavatel odešle žádost o přístup.
+1. Vydavatel pošle žádost o přístup.
 
-1. Tuto žádost schválit.
+1. Žádost schválíte.
 
-Tento článek se zaměřuje na akce, které pokud chcete povolit přístup JIT a schvalovat žádosti o provést příjemci. Další informace o publikování spravované aplikace s přístupem JIT, naleznete v tématu [žádat o přístup za běhu v Azure Managed Applications](request-just-in-time-access.md).
+Tento článek se zaměřuje na akce, které příjemci převezmou, aby mohli povolit přístup JIT a schvalovat žádosti. Další informace o publikování spravované aplikace s přístupem JIT najdete v tématu [žádost o přístup za běhu v Azure Managed Applications](request-just-in-time-access.md).
 
 > [!NOTE]
-> Použití just-in-time přístupu, musí mít [licence Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
+> Pokud chcete použít přístup za běhu, musíte mít [licenci Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
 
 ## <a name="enable-during-deployment"></a>Povolit během nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. Vyhledejte položku marketplace pro spravované aplikace s JIT povoleno. Vyberte **Vytvořit**.
+1. Najde položku Marketplace pro spravovanou aplikaci s povoleným JIT. Vyberte **Create** (Vytvořit).
 
-1. Při zadání hodnot pro nové spravované aplikace **konfigurace JIT** krok umožňuje povolit nebo zakázat přístup JIT pro spravované aplikace. Vyberte **Ano** pro **povolit přístup JIT**. Tato možnost je vybrána ve výchozím nastavení pro spravované aplikace, které jsou definované pomocí JIT povoleno na webu Marketplace.
+1. Když poskytujete hodnoty pro novou spravovanou aplikaci, krok **Konfigurace JIT** vám umožní povolit nebo zakázat přístup JIT pro spravovanou aplikaci. Pro **Povolení přístupu JIT**vyberte **Ano** . Tato možnost je ve výchozím nastavení vybraná pro spravované aplikace, které jsou definované s povolenou podporou JIT na webu Marketplace.
 
    ![Konfigurace přístupu](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   Přístup JIT lze povolit pouze během nasazování. Pokud vyberete **ne**, vydavatel získá permanentní přístup pro spravovanou skupinu prostředků. Přístup JIT nelze povolit později.
+   Přístup JIT můžete povolit jenom během nasazování. Pokud vyberete **ne**, vydavatel získá trvalý přístup ke spravované skupině prostředků. Nemůžete povolit přístup JIT později.
 
-1. Chcete-li změnit výchozí nastavení schvalování vyberte **přizpůsobení konfigurace JIT**.
+1. Chcete-li změnit výchozí nastavení schválení, vyberte **přizpůsobit konfiguraci JIT**.
 
-   ![Přizpůsobení přístup](./media/approve-just-in-time-access/customize-jit-access.png)
+   ![Přizpůsobení přístupu](./media/approve-just-in-time-access/customize-jit-access.png)
 
-   Spravované aplikace s JIT povoleno ve výchozím nastavení, má následující nastavení:
+   Ve výchozím nastavení má spravovaná aplikace s povolenou hodnotou JIT následující nastavení:
 
    * Režim schválení – automatické
-   * Doba trvání maximální přístupu – 8 hodin
-   * Schvalovatelé – none
+   * Maximální doba trvání přístupu – 8 hodin
+   * Schvalovatelé – žádné
 
-   Když je režim schválení nastavený na **automatické**, schvalovatelů přijímat oznámení pro každý požadavek, ale jeho žádost se schválí automaticky. Pokud je nastavena na **ruční**schvalovatelů, dostanete oznámení pro každý požadavek a jeden z nich musí schválit.
+   Pokud je režim schválení nastaven na hodnotu **automaticky**, schvalovatelé obdrží oznámení pro každý požadavek, ale požadavek se automaticky schválí. Pokud je nastaveno na **Ruční**, schvalovatelé obdrží oznámení pro každý požadavek a jeden z nich musí schválit.
 
-   Maximální doba trvání aktivace určuje maximální množství času, kterou Vydavatel může požadovat pro přístup ke spravované skupině prostředků.
+   Maximální doba trvání aktivace určuje maximální dobu, po kterou může vydavatel vyžadovat přístup ke spravované skupině prostředků.
 
-   Je schvalovatelů seznam uživatelů Azure Active Directory, které můžete schválit požadavků na přístup za běhu. Chcete-li přidat approver **přidejte schvalovatele** a vyhledejte uživatele.
+   Seznam schvalovatelé je Azure Active Directory uživatelům, kteří mohou schvalovat požadavky na přístup JIT. Chcete-li přidat schvalovatele, vyberte **Přidat schvalovatele** a vyhledejte uživatele.
 
-   Po aktualizaci nastavení, vyberte **Uložit**.
+   Po aktualizaci nastavení vyberte **Uložit**.
 
 ## <a name="update-after-deployment"></a>Aktualizace po nasazení
 
-Můžete změnit hodnoty jak žádosti o schválení. Ale pokud jste nepovolili přístup JIT během nasazování, nelze povolit ji později.
+Můžete změnit hodnoty pro způsob, jakým jsou požadavky schváleny. Pokud jste ale nepovolili přístup JIT během nasazení, nemůžete ho později povolit.
 
-Chcete-li změnit nastavení pro nasazené spravované aplikace:
+Změna nastavení nasazené spravované aplikace:
 
-1. Na portálu vyberte aplikaci spravovat.
+1. Na portálu vyberte Spravovat aplikaci.
 
-1. Vyberte **konfigurace JIT** a podle potřeby změňte nastavení.
+1. Vyberte **Konfigurace JIT** a podle potřeby změňte nastavení.
 
    ![Změnit nastavení přístupu](./media/approve-just-in-time-access/change-settings.png)
 
@@ -80,34 +80,34 @@ Chcete-li změnit nastavení pro nasazené spravované aplikace:
 
 ## <a name="approve-requests"></a>Schvalování žádostí
 
-Pokud vydavatel požádá o přístup, budete upozorněni o žádosti. Můžete schvalovat žádosti o přístup JIT přímo prostřednictvím spravované aplikace nebo ve všech aplikacích spravovaných přes službu Azure AD Privileged Identity Management. Použití just-in-time přístupu, musí mít [licence Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
+Když Vydavatel požaduje přístup, budete upozorněni na žádost. Žádosti o přístup JIT můžete schvalovat buď přímo prostřednictvím spravované aplikace, nebo ve všech spravovaných aplikacích prostřednictvím služby Azure AD Privileged Identity Management. Pokud chcete použít přístup za běhu, musíte mít [licenci Azure Active Directory P2](../active-directory/privileged-identity-management/subscription-requirements.md).
 
-Schválit žádosti přes spravované aplikace:
+Postup schválení žádostí prostřednictvím spravované aplikace:
 
-1. Vyberte **přístup JIT** pro spravované aplikace a vyberte **schvalovat žádosti**.
+1. Vyberte pro spravovanou aplikaci **přístup JIT** a vyberte **schvalovat žádosti**.
 
    ![Schvalování žádostí](./media/approve-just-in-time-access/approve-requests.png)
  
-1. Vyberte žádost o schválení.
+1. Vyberte žádost ke schválení.
 
-   ![Vyberte žádost o](./media/approve-just-in-time-access/select-request.png)
+   ![Vybrat požadavek](./media/approve-just-in-time-access/select-request.png)
 
-1. Ve formuláři, zadejte důvod pro schválení a vyberte **schválit**.
+1. Ve formuláři zadejte důvod schválení a vyberte **schválit**.
 
-Schválit žádosti přes Azure AD Privileged Identity Management:
+Postup při schvalování žádostí prostřednictvím Azure AD Privileged Identity Management:
 
-1. Vyberte **všechny služby** a zahájit hledání **Azure AD Privileged Identity Management**. Vyberte ho z dostupných možností.
+1. Vyberte **všechny služby** a spusťte hledání **Azure AD Privileged Identity Management**. Vyberte ho z dostupných možností.
 
-   ![Vyhledání služby](./media/approve-just-in-time-access/search.png)
+   ![Hledání služby](./media/approve-just-in-time-access/search.png)
 
-1. Vyberte **schvalovat žádosti o**.
+1. Vyberte **schvalovat žádosti**.
 
-   ![Výběr možnosti schválit žádosti](./media/approve-just-in-time-access/select-approve-requests.png)
+   ![Vybrat schvalovat žádosti](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. Vyberte **spravované aplikace Azure**a vyberte žádost o schválení.
+1. Vyberte **spravované aplikace Azure**a vyberte žádost ke schválení.
 
-   ![Vyberte žádosti](./media/approve-just-in-time-access/view-requests.png)
+   ![Vybrat žádosti](./media/approve-just-in-time-access/view-requests.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o publikování spravované aplikace s přístupem JIT, naleznete v tématu [žádat o přístup za běhu v Azure Managed Applications](request-just-in-time-access.md).
+Další informace o publikování spravované aplikace s přístupem JIT najdete v tématu [žádost o přístup za běhu v Azure Managed Applications](request-just-in-time-access.md).

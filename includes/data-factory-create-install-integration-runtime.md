@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a2858ac73838b50c21a76db5860675171a306192
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175476"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533263"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
-V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration Runtime je komponenta, která zkopíruje data z SQL Serveru na vašem počítači do úložiště objektů blob v Azure. 
+V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration runtime je komponenta, která kopíruje data z SQL Server ve vašem počítači do služby Azure SQL Database. 
 
 1. Vytvořte proměnnou pro název prostředí Integration Runtime. Použijte jedinečný název a poznamenejte si ho. Použijete ho později v tomto kurzu. 
 
@@ -29,12 +29,12 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Tady je ukázkový výstup:
 
    ```json
-    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Name              : <Integration Runtime name>
     Type              : SelfHosted
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : onpremdf0914
-    Name              : myonpremirsp0914
-    Description       :
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
+    Description       : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DataFactory/factories/<DataFactoryName>/integrationruntimes/ADFTutorialIR
     ```
   
 3. Pokud chcete načíst stav vytvořeného prostředí Integration Runtime, spusťte následující příkaz. Potvrďte, že hodnota vlastnosti **State** je nastavena na **NeedRegistration**. 
@@ -45,21 +45,25 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
    Tady je ukázkový výstup:
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
+   ```json  
+   State                     : NeedRegistration
+   Version                   : 
+   CreateTime                : 9/24/2019 6:00:00 AM
+   AutoUpdate                : On
+   ScheduledUpdateDate       : 
+   UpdateDelayOffset         : 
+   LocalTimeZoneOffset       : 
+   InternalChannelEncryption : 
    Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ServiceUrls               : {eu.frontend.clouddatahub.net}
+   Nodes                     : {}
+   Links                     : {}
+   Name                      : ADFTutorialIR
+   Type                      : SelfHosted
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
+   Description               : 
+   Id                        : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroup name>/providers/Microsoft.DataFactory/factories/<DataFactory name>/integrationruntimes/<Integration Runtime name>
    ```
 
 4. Spuštěním následujícího příkazu načtěte ověřovací klíče pro registraci místního prostředí Integration Runtime ve službě Azure Data Factory v cloudu: 
@@ -72,8 +76,8 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
    ```json
    {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    "AuthKey1": "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+    "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
    ```    
 
@@ -92,27 +96,17 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
 6. Na stránce **Připraveno k instalaci prostředí Microsoft Integration Runtime** vyberte **Nainstalovat**.
 
-7. Pokud se zobrazí zpráva upozorňující na konfiguraci přechodu počítače do režimu spánku nebo hibernace, když se zrovna nepoužívá, vyberte **OK**.
+7. Na stránce **Dokončení instalace prostředí Microsoft Integration Runtime** vyberte **Dokončit**.
 
-8. Pokud se zobrazí stránka **Možnosti napájení**, zavřete ji a přejděte na stránku nastavení.
-
-9. Na stránce **Dokončení instalace prostředí Microsoft Integration Runtime** vyberte **Dokončit**.
-
-10. Na stránce **Registrace prostředí Integration Runtime (v místním prostředí)** vložte klíč, který jste uložili v předchozí části, a vyberte **Zaregistrovat**. 
+8. Na stránce **Registrace prostředí Integration Runtime (v místním prostředí)** vložte klíč, který jste uložili v předchozí části, a vyberte **Zaregistrovat**. 
 
     ![Registrace prostředí Integration Runtime](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-11. Po úspěšném dokončení registrace místního prostředí Integration Runtime se zobrazí následující zpráva:
+9. Na stránce **nový uzel Integration runtime (v místním prostředí)** vyberte **Dokončit**. 
+
+10. Po úspěšném dokončení registrace místního prostředí Integration Runtime se zobrazí následující zpráva:
 
     ![Úspěšně zaregistrováno](media/data-factory-create-install-integration-runtime/registered-successfully.png)
-
-12. Na stránce **Nový uzel prostředí Integration Runtime (v místním prostředí)** vyberte **Další**. 
-
-    ![Stránka Nový uzel prostředí Integration Runtime](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
-
-13. Na stránce **Komunikační kanál intranetu** vyberte **Přeskočit**. V prostředí Integration Runtime s více uzly vyberte pro zabezpečení komunikace v rámci uzlů certifikaci TLS/SSL. 
-
-    ![Stránka Komunikační kanál intranetu](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
 
 14. Na stránce **Registrace prostředí Integration Runtime (v místním prostředí)** vyberte **Spustit Správce konfigurace**.
 
@@ -136,7 +130,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
 
     f. Zadejte uživatelské jméno.
 
-    g. Zadejte heslo pro toto uživatelské jméno.
+    g. Zadejte heslo, které je přidruženo k pro uživatelské jméno.
 
     h. Pokud chcete potvrdit, že se prostředí Integration Runtime může připojit k SQL Serveru, vyberte **Test**. Pokud je připojení úspěšné, zobrazí se zelená značka zaškrtnutí. Jestliže připojení není úspěšné, zobrazí se chybová zpráva. Opravte všechny problémy a ověřte, že se prostředí Integration Runtime může připojit k SQL Serveru.    
 

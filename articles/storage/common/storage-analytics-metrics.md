@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846887"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514776"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriky Azure Storage Analytics (klasické)
 
@@ -30,7 +30,7 @@ Analýza úložiště může ukládat metriky, které zahrnují agregovanou stat
 
  Data transakcí se zaznamenávají na dvou úrovních – na úrovni služby a na úrovni provozu rozhraní API. Na úrovni služby jsou statistiky o všech požadovaných operacích rozhraní API zapisovány do entity tabulky každou hodinu, a to i v případě, že služba nevytvořila žádné požadavky. Na úrovni operace rozhraní API se Statistika zapisuje jenom na entitu, pokud se operace v této hodině vyžádala.  
 
- Například pokud provedete operaci **getblob** na svém Blob service, analýza úložiště metriky protokolují požadavek a zahrne je do agregovaných dat jak pro BLOB Service, tak i do operace getblob. Pokud se ale během hodiny nepožaduje žádná operace getblob, entita se pro tuto operaci nezapíše do *$MetricsTransactionsBlob* .  
+ Například pokud provedete operaci **getblob** na svém Blob service, analýza úložiště metriky protokolují požadavek a zahrne je do agregovaných dat jak pro BLOB Service, tak i do operace **getblob** . Pokud se ale během hodiny nepožaduje žádná operace **getblob** , entita se pro tuto operaci nezapíše do *$MetricsTransactionsBlob* .  
 
  Metriky transakcí se zaznamenávají pro žádosti uživatelů a požadavky vytvořené Analýza úložiště sám sebou. Například požadavky, které Analýza úložiště k zápisu protokolů a entit tabulek, se zaznamenávají.
 
@@ -39,11 +39,11 @@ Analýza úložiště může ukládat metriky, které zahrnují agregovanou stat
 > [!NOTE]
 >  V současné době jsou metriky kapacity k dispozici pouze pro Blob service.
 
- Data kapacity se zaznamenávají denně pro Blob service účtu úložiště a napíší se dvě entity tabulky. Jedna entita poskytuje statistiku pro uživatelská data a druhá poskytuje statistiku o `$logs` kontejneru objektů blob, který používá analýza úložiště. Tabulka *$MetricsCapacityBlob* obsahuje následující statistiky:  
+ Data kapacity se zaznamenávají denně pro Blob service účtu úložiště a napíší se dvě entity tabulky. Jedna entita poskytuje statistiku pro uživatelská data a druhá poskytuje statistiku o `$logs` kontejneru objektů blob, který používá Analýza úložiště. Tabulka *$MetricsCapacityBlob* obsahuje následující statistiky:  
 
-- **Kapacita**: Velikost úložiště využitá Blob service účtu úložiště v bajtech  
-- **ContainerCount**: Počet kontejnerů objektů BLOB v Blob service účtu úložiště.  
-- **ObjectCount**: Počet potvrzených a nepotvrzených objektů blob bloku nebo stránky v účtu úložiště Blob service.  
+- **Kapacita**: velikost úložiště využitá BLOB Service účtu úložiště v bajtech.  
+- **ContainerCount**: počet kontejnerů objektů blob v BLOB Service účtu úložiště.  
+- **ObjectCount**: počet potvrzených a nepotvrzených objektů blob bloku nebo stránky v účtu úložiště BLOB Service.  
 
   Další informace o metrikách kapacity najdete v tématu [Analýza úložiště schéma tabulky metrik](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
@@ -55,12 +55,12 @@ Analýza úložiště může ukládat metriky, které zahrnují agregovanou stat
 |-------------------|-----------------|----------------------------|  
 |Hodinové metriky, primární umístění|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|Jenom verze starší než 2013-08-15. I když jsou tyto názvy stále podporovány, doporučujeme přepnout na použití níže uvedených tabulek.|  
 |Hodinové metriky, primární umístění|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
-|Minutové metriky, primární umístění|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
-|Hodinové metriky, sekundární umístění|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
-|Minutové metriky, sekundární umístění|-   $MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
+|Minutové metriky, primární umístění|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|Všechny verze. Podpora pro metriky souborové služby je k dispozici pouze ve verzi 2015-04-05 a novější.|  
+|Hodinové metriky, sekundární umístění|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
+|Minutové metriky, sekundární umístění|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|Všechny verze. Musí být povolená geograficky redundantní replikace s přístupem pro čtení.|  
 |Kapacita (jenom Blob service)|$MetricsCapacityBlob|Všechny verze.|  
 
- Tyto tabulky se automaticky vytvoří, když je povolený Analýza úložiště pro koncový bod služby úložiště. Jsou k nim přistupované přes obor názvů účtu úložiště, například: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabulky metrik se nezobrazí v operaci výpisu a je nutné k ní získat přímý odkaz pomocí názvu tabulky.  
+ Tyto tabulky se automaticky vytvoří, když je povolený Analýza úložiště pro koncový bod služby úložiště. Jsou dostupné přes obor názvů účtu úložiště, například: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`. Tabulky metrik se nezobrazí v operaci výpisu a je nutné k ní získat přímý odkaz pomocí názvu tabulky.  
 
 ## <a name="enable-metrics-using-the-azure-portal"></a>Povolit metriky pomocí Azure Portal
 Pomocí těchto kroků povolíte metriky v [Azure Portal](https://portal.azure.com):
@@ -70,49 +70,46 @@ Pomocí těchto kroků povolíte metriky v [Azure Portal](https://portal.azure.c
 1. Zajistěte, aby byl **stav** nastaven **na zapnuto**.
 1. Vyberte metriky služeb, které chcete monitorovat.
 1. Zadejte zásady uchovávání informací, které určují, jak dlouho se mají uchovávat metriky a data protokolu.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 [Azure Portal](https://portal.azure.com) v současné době neumožňuje nakonfigurovat minuty metrik v účtu úložiště. minutové metriky je nutné povolit pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
 
-> [!NOTE]
->  Všimněte si, že Azure Portal v současné době neumožňuje nakonfigurovat na svém účtu úložiště metriky minut. Minutové metriky je nutné povolit pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
-
 ## <a name="enable-storage-metrics-using-powershell"></a>Povolení metrik úložiště pomocí prostředí PowerShell  
-Pomocí PowerShellu na místním počítači můžete nakonfigurovat metriky úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell **Get-AzureStorageServiceMetricsProperty** pro načtení aktuálních nastavení a rutiny **. Set-AzureStorageServiceMetricsProperty** pro změnu aktuálního nastavení.  
+Pomocí PowerShellu na místním počítači můžete nakonfigurovat metriky úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell **Get-AzStorageServiceMetricsProperty** pro načtení aktuálních nastavení a rutiny **. Set-AzStorageServiceMetricsProperty** pro změnu aktuálního nastavení.  
 
 Rutiny, které řídí metriky úložiště, používají následující parametry:  
 
 * **ServiceType**, možná value je **BLOB**, **Queue**, **Table**a **File**.
 * **MetricsType**, možné hodnoty jsou **Hour** a **minute**.  
 * **MetricsLevel**jsou možné hodnoty:
-* **Žádný**: Vypne monitorování.
-* **Služba**: Shromažďuje metriky, jako je příchozí/odchozí, dostupnost, latence a procento úspěšnosti, které jsou agregované pro objekty blob, front, tabulek a souborové služby.
-* **ServiceAndApi**: Kromě metriky služby shromažďuje stejnou sadu metrik pro každou operaci úložiště v rozhraní API služby Azure Storage.
+* **Žádné**: vypne monitorování.
+* **Služba**: shromažďuje metriky, jako je příchozí/odchozí, dostupnost, latence a procento úspěšnosti, které jsou agregované pro objekty blob, front, tabulek a souborové služby.
+* **ServiceAndApi**: Kromě metrik služby shromažďuje stejnou sadu metrik pro každou operaci úložiště v rozhraní API služby Azure Storage.
 
 Například následující příkaz přepne na minuty pro službu BLOB Service ve vašem účtu úložiště s dobou uchování nastavenou na pět dní: 
 
 > [!NOTE]
-> Tento příkaz předpokládá, že jste se k předplatnému Azure přihlásili pomocí `Connect-AzAccount` příkazu.
+> Tento příkaz předpokládá, že jste se k předplatnému Azure přihlásili pomocí příkazu `Connect-AzAccount`.
 
-```  
+```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* Nahraďte `<resource-group-name>` hodnotu zástupného symbolu názvem vaší skupiny prostředků.
-
-* Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
+* Nahraďte hodnotu zástupného symbolu `<resource-group-name>` názvem vaší skupiny prostředků.
+        
+* Nahraďte hodnotu zástupného znaku `<storage-account-name>` názvem vašeho účtu úložiště.
 
 
 
 Následující příkaz načte aktuální hodinovou metriku a dny uchování pro službu BLOB Service ve vašem výchozím účtu úložiště:  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Informace o tom, jak nakonfigurovat rutiny Azure PowerShell pro práci s předplatným Azure a jak vybrat výchozí účet úložiště, který se má použít, najdete v těchto tématech: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Informace o tom, jak nakonfigurovat rutiny Azure PowerShell pro práci s předplatným Azure a jak vybrat výchozí účet úložiště, který se má použít, najdete v tématu: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ## <a name="enable-storage-metrics-programmatically"></a>Povolení metrik úložiště prostřednictvím kódu programu  
 Kromě použití Azure Portal nebo rutin Azure PowerShell k řízení metrik úložiště můžete použít také jedno z rozhraní API pro Azure Storage. Pokud například používáte jazyk .NET, můžete použít knihovnu klienta úložiště.  
@@ -157,17 +154,17 @@ Všechny podrobnosti o schématech pro tyto tabulky najdete [Analýza úložišt
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**partitionKey**|**RowKey**|**Časové razítko**|**TotalRequests**|**TotalBillableRequests**|**Totalbillablerequests**|**TotalEgress**|**Dostupnost**|**Hodnotu averagee2elatency**|**AverageServerLatency**|**PercentSuccess**|  
-|20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
-|20140522T1100|uživatelský UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
+|**PartitionKey**|**RowKey**|**Časové razítko**|**TotalRequests**|**TotalBillableRequests**|**Totalbillablerequests**|**TotalEgress**|**Dostupnost**|**Hodnotu averagee2elatency**|**Hodnotu averageserverlatency**|**PercentSuccess**|  
+|20140522T1100|uživatelský Všem|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
+|20140522T1100|uživatelský QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
+|20140522T1100|uživatelský QueryEntity|2014-05-22T11:01:16.7650250 Z|1\. místo|1\. místo|538|633|100|3|3|100|  
+|20140522T1100|uživatelský UpdateEntity|2014-05-22T11:01:16.7650250 Z|1\. místo|1\. místo|771|217|100|9|6|100|  
 
 V tomto příkladu data metriky, klíč oddílu používá dobu v minutách. Klíč řádku identifikuje typ informací, které jsou uloženy na řádku a skládá se ze dvou částí informací, typu přístupu a typu požadavku:  
 
 -   Typ přístupu je buď **uživatel** , nebo **systém**, kde **uživatel** odkazuje na všechny požadavky uživatelů na službu úložiště a **systém** odkazuje na požadavky vytvořené analýza úložiště.  
 
--   Typ žádosti je buď v takovém případě se jedná o souhrnný řádek, nebo identifikuje konkrétní rozhraní API, jako je například **QueryEntity** nebo **UpdateEntity**.  
+-   Typ žádosti **je buď v** takovém případě se jedná o souhrnný řádek, nebo identifikuje konkrétní rozhraní API, jako je například **QueryEntity** nebo **UpdateEntity**.  
 
 Výše uvedená ukázková data zobrazí všechny záznamy za jednu minutu (počínaje 11.10:00), takže počet požadavků **QueryEntities** plus počet požadavků **QueryEntity** plus počet požadavků **UpdateEntity** přidaných do sedmi, což je celkem zobrazené na **uživateli: všechny** řádky Podobně můžete odvodit průměrnou koncovou latenci 104,4286 u **uživatele: všechny** řádky vypočítané ((143,8 * 5) + 3 + 9)/7.  
 
@@ -234,7 +231,7 @@ Kapacita využívaná tabulkami metriky je také fakturovatelná. K odhadu kapac
 -   V rámci každé hodiny služba využívá každé rozhraní API ve službě, a pokud jste povolili jenom souhrn na úrovni služby, jsou každou hodinu ukládána přibližně 12KB dat v tabulkách transakcí metrik.  
 -   V tabulce Capacity pro objekty BLOB se každý den přidaly dva řádky, za předpokladu, že jste se rozhodli pro protokoly. To znamená, že každý den se velikost této tabulky zvětšuje až o přibližně 300 bajtů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Jak monitorovat účet úložiště](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
 * [Schéma tabulky Analýza úložiště metriky](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
 * [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   

@@ -1,17 +1,17 @@
 ---
-title: Přesunout Azure Virtual Machines do nového předplatného nebo skupiny prostředků | Microsoft Docs
+title: Přesun virtuálních počítačů Azure do nového předplatného nebo skupiny prostředků
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286732"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528424"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -33,11 +33,11 @@ Následující scénáře se zatím nepodporují:
 Pokud chcete přesunout virtuální počítače nakonfigurované s Azure Backup, použijte následující řešení:
 
 * Najděte umístění virtuálního počítače.
-* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1`, například AzureBackupRG_westus2_1.
+* Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
 * Pokud v Azure Portal, zaškrtněte "Zobrazit skryté typy"
 * Pokud používáte prostředí PowerShell, použijte rutinu `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`.
-* Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`.
-* Vyhledejte prostředek s typem `Microsoft.Compute/restorePointCollections`, který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`.
+* Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
+* Vyhledejte prostředek typu `Microsoft.Compute/restorePointCollections` se vzorem pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
 * Po dokončení odstranění můžete trezor a virtuální počítač přesunout do cílového předplatného. Po přesunutí můžete pokračovat v zálohování bez ztráty dat.
 * Informace o přesunutí trezorů služby Recovery Services pro zálohování najdete v tématu [omezení Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).

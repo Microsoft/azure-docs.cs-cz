@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71268650"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
@@ -30,13 +30,13 @@ Aktuální pokyny Microsoftu k tomuto tématu najdete na následujícím odkazu:
 
 [Pokyny k heslu Microsoftu](https://www.microsoft.com/research/publication/password-guidance)
 
-**Otázka: Podporuje se místní ochrana heslem Azure AD v jiných než veřejných cloudech?**
+**Otázka: je místní ochrana heslem Azure AD podporovaná v jiných než veřejných cloudech?**
 
 Žádná ochrana heslem bez místní služby Azure AD je podporována pouze ve veřejném cloudu. Nebylo oznámeno žádné datum pro dostupnost neveřejného cloudu.
 
 Portál Azure AD umožňuje úpravy místní ochrany heslem pro konfiguraci služby Windows Server Active Directory i v jiných než veřejných cloudech. Tyto změny budou trvalé, ale jinak se neprojeví. Registrace místních agentů proxy nebo doménových struktur není podporovaná, když se používají přihlašovací údaje pro jiné než veřejné cloudy, a všechny takové pokusy o registraci selžou vždycky.
 
-**Otázka: Jak můžu využít výhody ochrany hesel Azure AD pro podmnožinu místních uživatelů?**
+**Otázka: Jak můžu použít výhody ochrany hesel Azure AD pro podmnožinu místních uživatelů?**
 
 Nepodporuje se. Po nasazení a povolení ochrany heslem Azure AD nezáleží na tom, že všichni uživatelé získají stejné výhody zabezpečení.
 
@@ -56,7 +56,7 @@ Modul snap-in Správa uživatelů a počítačů služby Active Directory se nej
 
 Služba Active Directory podporuje možnost testování hesla, aby bylo možné zjistit, zda splňuje aktuální požadavky na složitost hesla domény, například pomocí rozhraní [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API. Když se heslo tímto způsobem ověří, testování zahrnuje taky ověřování v produktech založených na filtrech hesel, jako je třeba ochrana heslem Azure AD. uživatelská jména předaná do dané knihovny DLL filtru hesel ale budou prázdná. V tomto scénáři ochrana heslem Azure AD stále ověří heslo pomocí zásad hesel v současné době a vydá zprávu protokolu událostí pro zachycení výsledku, ale zpráva protokolu událostí bude mít prázdná pole uživatelského jména.
 
-**Otázka: Je podporováno pro instalaci ochrany heslem Azure AD vedle sebe pomocí dalších produktů založených na filtrech hesel?**
+**Otázka: je podporována instalace ochrany heslem služby Azure AD vedle jiných produktů založených na filtrech hesel?**
 
 Ano. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
 
@@ -80,34 +80,34 @@ Další informace najdete v následujících článcích:
 
 Pokud vaše doména již nepoužívá službu DFSR, je nutné ji před instalací ochrany hesel služby Azure AD migrovat na používání služby DFSR. Další informace najdete na následujícím odkazu:
 
-[Průvodce migrací replikace SYSVOL: Služba FRS pro Replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[Průvodce migrací replikace SYSVOL: replikace do Replikace DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > Software agenta řadiče domény Azure AD pro ochranu heslem se v tuto chvíli nainstaluje na řadičích domény v doménách, které ještě používají FRS pro replikaci SYSVOL, ale software v tomto prostředí fungovat nebude správně. Mezi další negativní vedlejší účinky patří neúspěšná replikace jednotlivých souborů a procedury obnovení adresáře SYSVOL, které jsou úspěšné, ale tiché selhání při replikaci všech souborů. Vaši doménu byste měli migrovat tak, aby používala službu DFSR co nejdříve, a to jak z hlediska výhod, tak i z důvodu odblokování nasazení ochrany heslem služby Azure AD. Budoucí verze softwaru budou automaticky zakázány při spuštění v doméně, která stále používá službu replikace souborů (FRS).
 
-**Otázka: Kolik místa na disku vyžaduje funkce ve sdílené složce SYSVOL v doméně?**
+**Otázka: kolik místa na disku vyžaduje funkce ve sdílené složce SYSVOL v doméně?**
 
 Přesné využití místa se liší, protože závisí na faktorech, jako je počet a délka zakázaných tokenů v seznamu globálních zakázaných společností Microsoft a na vlastní seznam pro jednotlivé klienty, a na režii šifrování. Obsah těchto seznamů se v budoucnu může zvětšovat. V takovém případě je vhodné předpokládat, že tato funkce bude potřebovat nejméně pět (5) MB místa na sdílené složce SYSVOL v doméně.
 
-**Otázka: Proč je k instalaci nebo upgradu softwaru agenta DC nutný Restart?**
+**Otázka: Proč je k instalaci nebo upgradu softwaru agenta DC vyžadován restart?**
 
 Tento požadavek způsobuje základní chování systému Windows.
 
-**Otázka: Existuje nějaký způsob, jak nakonfigurovat agenta řadiče domény pro použití konkrétního proxy server?**
+**Otázka: existuje nějaký způsob, jak nakonfigurovat agenta řadiče domény pro použití konkrétního proxy server?**
 
 Ne. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít konkrétní proxy server.
 
-**Otázka: Je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle sebe s jinými službami, jako je například Azure AD Connect?**
+**Otázka: je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle jiných služeb, jako je například Azure AD Connect?**
 
 Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
 
 Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD a verzí služby, která je nainstalovaná službou [Azure Active. Software proxy adresářové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
 
-**Otázka: V jakém pořadí by se měly agenti a proxy servery DC instalovat a registrovat?**
+**Otázka: v jakém pořadí by se měly agenti a proxy řadiče domény instalovat a registrovat?**
 
 Podporuje se jakékoli pořadí instalace agenta proxy, instalace agenta DC, registrace doménové struktury a registrace proxy serveru.
 
-**Otázka: Mám obavy o úspěšnosti výkonu na řadičích domény z nasazení této funkce?**
+**Otázka: Mám obavy o úspěšnost výkonu na řadičích domény z nasazení této funkce?**
 
 Služba agenta řadiče domény služby Azure AD Password Protection by neměla významně ovlivnit výkon řadiče domény v existujícím nasazení služby Active Directory v pořádku.
 
@@ -121,25 +121,25 @@ Ne. Klientský operační systém Windows řídí, který řadič domény se pou
 
 Jedním ze způsobů, jak částečně dosáhnout tohoto cíle, je nasazení ochrany heslem Azure AD na všech řadičích domény v dané lokalitě služby Active Directory. Tento přístup poskytne přiměřené pokrytí pro klienty systému Windows, kteří jsou k této lokalitě přiřazeni, a proto také pro uživatele, kteří se přihlásí do těchto klientů a mění hesla.
 
-**Otázka: Pokud nainstalujete službu agenta řadiče domény služby Azure AD heslem na jenom primární řadič domény, budou se chránit taky všechny ostatní řadiče domény v doméně?**
+**Otázka: Pokud nainstalujete službu agenta řadiče domény služby Azure AD heslem na jenom primární řadič domény, budou se taky chránit všechny ostatní řadiče domény v doméně?**
 
 Ne. Když se heslo uživatele změní na daném řadiči domény, který není řadičem domény, heslo nešifrovaných textů se nikdy nepošle na primární řadič domény (Tento nápad je běžnou přívnímáním). Jakmile se v daném řadiči domény přijme nové heslo, tento řadič domény toto heslo použije k vytvoření různých hash hodnot specifických pro ověřování pro dané heslo a pak tyto hodnoty hash uchovává v adresáři. Heslo nešifrovaných textů není trvalé. Aktualizované hodnoty hash se pak replikují na primární řadič domény. Uživatelská hesla se můžou v některých případech změnit přímo na primárním řadiči domény, a to v závislosti na různých faktorech, jako je síťová topologie a návrh lokality služby Active Directory. (Podívejte se na předchozí otázku.)
 
 V souhrnu je potřeba nasazení služby agenta řadiče domény služby Azure AD Password na primárním řadiči domény dosáhnout 100% pokrytí zabezpečení funkce v rámci domény. Nasazení funkce na primární řadič domény jenom neposkytuje výhody zabezpečení ochrany heslem Azure AD pro žádné jiné řadiče domény v doméně.
 
-**Otázka: Proč vlastní inteligentní uzamčení nefunguje ani po instalaci agentů do místního prostředí Active Directory?**
+**Otázka: Proč vlastní inteligentní uzamčení nefunguje ani po instalaci agentů v místním prostředí Active Directory?**
 
 Vlastní inteligentní uzamčení se podporuje jenom v Azure AD. Změny nastavení vlastního inteligentního uzamčení na portálu Azure AD nemají žádný vliv na místní prostředí Active Directory, a to ani na nainstalovaných agentech.
 
-**Otázka: Je System Center Operations Manager k dispozici Management Pack ochrany heslem Azure AD?**
+**Otázka: je Management Pack System Center Operations Manager k dispozici pro ochranu heslem Azure AD?**
 
 Ne.
 
-**Otázka: Proč Azure AD pořád odmítá slabé heslo, i když jsem nakonfigurovali zásady tak, aby byly v režimu auditování?**
+**Otázka: Proč služba Azure AD stále odmítá slabé heslo, i když jsem nakonfigurovali zásady tak, aby byly v režimu auditování?**
 
 Režim auditování se podporuje jenom v prostředí místní služby Active Directory. Služba Azure AD je implicitně vždy v režimu vynucení, když vyhodnocuje hesla.
 
-**Otázka: V případě, že ochrana heslem Azure AD zamítla heslo, zobrazí se uživatelům v tradiční chybové zprávě Windows. Je možné přizpůsobit tuto chybovou zprávu, aby uživatelé věděli, co se skutečně stalo?**
+**Otázka: uživatelé uvidí tradiční chybovou zprávu Windows, když heslo odmítne ochrana heslem Azure AD. Je možné přizpůsobit tuto chybovou zprávu, aby uživatelé věděli, co se skutečně stalo?**
 
 Ne. Chybová zpráva zobrazená uživateli, když je heslo odmítnuto řadičem domény, řídí klientským počítačem, nikoli řadičem domény. K tomuto chování dochází, pokud je heslo odmítnuté pomocí výchozích zásad hesel služby Active Directory nebo řešení založeného na filtrech hesel, jako je třeba ochrana heslem Azure AD.
 
@@ -149,13 +149,13 @@ Následující odkazy nejsou součástí základní dokumentace k ochraně hesel
 
 [Ochrana heslem Azure AD je teď všeobecně dostupná!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Průvodce ochranou útoků phishing – část 15: Implementujte Microsoft Azure AD službu ochrany heslem (pro místní prostředí).](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Průvodce ochranou útoků phishing – část 15: implementace služby ochrany heslem Microsoft Azure AD (v místním prostředí)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Ochrana hesel Azure AD a inteligentní uzamčení jsou teď v Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
 ## <a name="microsoft-premierunified-support-training-available"></a>Dostupné školení podpory Microsoft Premier\Unified
 
-Pokud vás zajímá více o ochraně heslem Azure AD a jejich nasazení ve vašem prostředí, můžete využít výhod služby Microsoft Proactive Service dostupné zákazníkům se smlouvou Premier nebo Unified support. Služba se nazývá Azure Active Directory: Ochrana heslem. Další informace vám poskytne váš správce technického účtu.
+Pokud vás zajímá více o ochraně heslem Azure AD a jejich nasazení ve vašem prostředí, můžete využít výhod služby Microsoft Proactive Service dostupné zákazníkům se smlouvou Premier nebo Unified support. Služba se nazývá Azure Active Directory: ochrana heslem. Další informace vám poskytne váš správce technického účtu.
 
 ## <a name="next-steps"></a>Další kroky
 

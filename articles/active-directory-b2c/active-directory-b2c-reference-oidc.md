@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 12b21717bd36f5577336ebbc3a236747ae7fc1be
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 45ecfc896132eace3ca0babde509e82896c9a394
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385902"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533108"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C rozšiřuje standardní protokol OpenID Connect a provede více ne�
 
 Pokud vaše webová aplikace potřebuje ověřit uživatele a spustit tok uživatele, může uživatele nasměrovat na koncový bod `/authorize`. Uživatel provede akci v závislosti na toku uživatele.
 
-V této žádosti klient Určuje oprávnění, která musí získat od uživatele v parametru `scope` a určuje tok uživatele, který se má spustit. Pokud chcete zjistit, jak požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Nahraďte `{tenant}` názvem vašeho tenanta. Nahraďte `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` číslem aplikace aplikace, kterou jste předtím zaregistrovali ve vašem tenantovi. Změňte také název zásady (`{policy}`) na název zásady, který máte ve vašem tenantovi, například `b2c_1_sign_in`.
+V této žádosti klient Určuje oprávnění, která musí získat od uživatele v parametru `scope` a určuje tok uživatele, který se má spustit. Pokud chcete zjistit, jak požadavek funguje, zkuste vložit požadavek do prohlížeče a spustit ho. Nahraďte `{tenant}` názvem vašeho tenanta. Nahraďte `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` číslem aplikace aplikace, kterou jste předtím zaregistrovali ve vašem tenantovi. Také změňte název zásady (`{policy}`) na název zásady, který máte ve vašem tenantovi, například `b2c_1_sign_in`.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -54,13 +54,13 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_type | Ano | Musí zahrnovat token ID pro OpenID Connect. Pokud vaše webová aplikace také potřebuje tokeny pro volání webového rozhraní API, můžete použít `code+id_token`. |
 | scope | Ano | Mezerou oddělený seznam oborů. Obor `openid` označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Obor `offline_access` je pro webové aplikace volitelný. Indikuje, že vaše aplikace bude potřebovat *aktualizační token* pro rozšířený přístup k prostředkům. |
 | výzv | Ne | Typ uživatelské interakce, která je povinná. Jediná platná hodnota v tomto okamžiku je `login`, což uživateli přinutí zadat přihlašovací údaje k této žádosti. |
-| identifikátor | Ne | Parametr `redirect_uri` aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z parametrů `redirect_uri`, které jste zaregistrovali v Azure Portal, s výjimkou toho, že musí být kódovaný v adrese URL. |
-| response_mode | Ne | Metoda, která slouží k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může to být buď `query`, `form_post` nebo `fragment`.  Pro zajištění nejlepšího zabezpečení se doporučuje režim odezvy `form_post`. |
+| identifikátor | Ne | Parametr `redirect_uri` vaší aplikace, kde lze odesílat a přijímat odpovědi na ověřování vaší aplikací. Musí přesně odpovídat jednomu z parametrů `redirect_uri`, které jste zaregistrovali v Azure Portal, s výjimkou toho, že musí být kódovaný v adrese URL. |
+| response_mode | Ne | Metoda, která slouží k odeslání výsledného autorizačního kódu zpátky do vaší aplikace. Může to být buď `query`, `form_post` nebo `fragment`.  Pro nejlepší zabezpečení se doporučuje režim `form_post` Response. |
 | state | Ne | Hodnota obsažená v požadavku, která se také vrátila v odpovědi na token. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k prevenci útoků proti padělání požadavků mezi lokalitami. Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka, na které se nachází. |
 
 V tomto okamžiku se uživateli zobrazí výzva k dokončení pracovního postupu. Uživatel bude muset zadat své uživatelské jméno a heslo, přihlašovat se přes sociální identitu nebo si zaregistrovat adresář. V závislosti na tom, jakým způsobem je tok uživatele definovaný, se může jednat o libovolný jiný počet kroků.
 
-Poté, co uživatel dokončí tok uživatele, se do vaší aplikace vrátí odpověď v označeném parametru `redirect_uri` pomocí metody, která je zadána v parametru `response_mode`. Odpověď je stejná pro všechny předchozí případy, nezávisle na toku uživatele.
+Poté, co uživatel dokončí tok uživatele, se do vaší aplikace vrátí odpověď na určeném `redirect_uri` parametr pomocí metody, která je zadána v parametru `response_mode`. Odpověď je stejná pro všechny předchozí případy, nezávisle na toku uživatele.
 
 Úspěšná odpověď pomocí `response_mode=fragment` by vypadala takto:
 
@@ -77,7 +77,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | Znakovou | Autorizační kód, který aplikace požádala, pokud jste použili `response_type=code+id_token`. Aplikace může použít autorizační kód k vyžádání přístupového tokenu pro cílový prostředek. Autorizační kódy obvykle vyprší po asi 10 minutách. |
 | state | Pokud je v požadavku zahrnut parametr `state`, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty `state` v žádosti a odpovědi jsou identické. |
 
-Odpovědi na chyby lze také odeslat do parametru @no__t 0, aby je aplikace mohla správně zpracovat:
+Do parametru `redirect_uri` lze také odeslat chybové odpovědi, aby je aplikace mohla správně zpracovat:
 
 ```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -96,13 +96,13 @@ error=access_denied
 
 Pouze příjem tokenu ID nestačí k ověření uživatele. Ověří signaturu tokenu ID a ověří deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii s veřejným klíčem k podepisování tokenů a ověření, že jsou platné. Existuje mnoho Open-Source knihoven, které jsou k dispozici pro ověřování JWTs v závislosti na jazyce předvolby. Doporučujeme tyto možnosti prozkoumat místo implementace vlastní logiky ověřování.
 
-Azure AD B2C má koncový bod metadat OpenID Connect, který umožňuje aplikaci získat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Pro každého toku uživatelů v tenantovi B2C existuje dokument metadat JSON. Například dokument metadat pro tok uživatele `b2c_1_sign_in` v `fabrikamb2c.onmicrosoft.com` je umístěný v:
+Azure AD B2C má koncový bod metadat OpenID Connect, který umožňuje aplikaci získat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Pro každého toku uživatelů v tenantovi B2C existuje dokument metadat JSON. Například dokument metadat pro `b2c_1_sign_in` tok uživatele v `fabrikamb2c.onmicrosoft.com` je umístěný v:
 
 ```HTTP
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
 ```
 
-Jedna z vlastností tohoto dokumentu konfigurace je `jwks_uri`, jejíž hodnota pro stejný tok uživatele by byla:
+Jedna z vlastností tohoto dokumentu konfigurace je `jwks_uri`, jehož hodnota pro stejný tok uživatele by byla:
 
 ```HTTP
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
@@ -132,7 +132,7 @@ Po ověření tokenu ID můžete zahájit relaci s uživatelem. Deklarace identi
 
 Pokud potřebujete, aby webová aplikace spouštěla toky uživatelů, můžete přeskočit několik dalších částí. Tyto části platí jenom pro webové aplikace, které potřebují ověřená volání do webového rozhraní API a jsou taky chráněná Azure AD B2C.
 
-Můžete uplatnit autorizační kód, který jste získali (pomocí `response_type=code+id_token`) pro token k požadovanému prostředku odesláním požadavku `POST` do koncového bodu `/token`. V Azure AD B2C můžete [požadovat přístupové tokeny pro jiná rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich oboru (y) v žádosti.
+Můžete uplatnit autorizační kód, který jste získali (pomocí `response_type=code+id_token`) pro token k požadovanému prostředku odesláním `POST` žádosti do `/token`ho koncového bodu. V Azure AD B2C můžete [požadovat přístupové tokeny pro jiná rozhraní API](active-directory-b2c-access-tokens.md#request-a-token) obvyklým zadáním jejich oboru (y) v žádosti.
 
 Můžete také požádat o přístupový token pro vlastní back-endové webové rozhraní API vaší aplikace podle konvence použití ID klienta aplikace jako požadovaného oboru (což bude mít za následek přístupový token s tímto ID klienta jako "cílová"):
 
@@ -151,9 +151,9 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
 | client_secret | Ano | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tento tajný klíč aplikace je důležitým artefaktem zabezpečení. Měli byste ho bezpečně ukládat na váš server. Tento tajný klíč klienta pravidelně měňte. |
 | Znakovou | Ano | Autorizační kód, který jste získali na začátku toku uživatele. |
-| parametr grant_type | Ano | Typ grantu, který musí být pro tok autorizačního kódu `authorization_code`. |
-| identifikátor | Ano | Parametr `redirect_uri` aplikace, ve které jste dostali autorizační kód. |
-| scope | Ne | Mezerou oddělený seznam oborů. Obor `openid` označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě parametrů id_token. Dá se použít k získání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. Rozsah `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
+| parametr grant_type | Ano | Typ grantu, který musí být `authorization_code` pro tok autorizačního kódu. |
+| identifikátor | Ano | Parametr `redirect_uri` aplikace, ve které jste obdrželi autorizační kód. |
+| scope | Ne | Mezerou oddělený seznam oborů. Obor `openid` označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě parametrů id_token. Dá se použít k získání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. Obor `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:
 
@@ -175,7 +175,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | access_token | Podepsaný token JWT, který jste požádali. |
 | scope | Obory, pro které je token platný |
 | expires_in | Doba, po kterou je přístupový token platný (v sekundách). |
-| refresh_token | Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších tokenů po vypršení platnosti tokenu. Aktualizační tokeny se dají použít k uchování přístupu k prostředkům po delší dobu. Rozsah `offline_access` musí být použit v žádosti o autorizaci a tokenu, aby mohl získat obnovovací token. |
+| refresh_token | Obnovovací token OAuth 2,0. Aplikace může tento token použít k získání dalších tokenů po vypršení platnosti tokenu. Aktualizační tokeny se dají použít k uchování přístupu k prostředkům po delší dobu. Obor `offline_access` musí být použit v žádosti o autorizaci a tokenu, aby mohl získat obnovovací token. |
 
 Chybové odpovědi vypadají jako:
 
@@ -203,14 +203,14 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-token"></a>Aktualizace tokenu
 
-Tokeny ID vyprší v krátké době. Obnovte tokeny po vypršení platnosti, abyste měli dál přístup k prostředkům. Token můžete obnovit tak, že odešlete další požadavek `POST` do koncového bodu `/token`. Tentokrát zadejte parametr `refresh_token` namísto parametru `code`:
+Tokeny ID vyprší v krátké době. Obnovte tokeny po vypršení platnosti, abyste měli dál přístup k prostředkům. Token můžete obnovit tak, že odešlete další požadavek `POST` do koncového bodu `/token`. Tentokrát zadejte parametr `refresh_token` místo parametru `code`:
 
 ```HTTP
 POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
 Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | Parametr | Požaduje se | Popis |
@@ -220,9 +220,9 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
 | client_secret | Ano | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tento tajný klíč aplikace je důležitým artefaktem zabezpečení. Měli byste ho bezpečně ukládat na váš server. Tento tajný klíč klienta pravidelně měňte. |
 | parametr grant_type | Ano | Typ grantu, který musí být obnovovacím tokenem pro tuto část toku autorizačního kódu. |
-| refresh_token | Ano | Původní obnovovací token, který byl získán v druhé části toku. Pro získání obnovovacího tokenu je nutné použít obor `offline_access` v žádosti o autorizaci i token. |
-| identifikátor | Ne | Parametr `redirect_uri` aplikace, ve které jste dostali autorizační kód. |
-| scope | Ne | Mezerou oddělený seznam oborů. Obor `openid` označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Dá se použít k posílání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. Rozsah `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
+| refresh_token | Ano | Původní obnovovací token, který byl získán v druhé části toku. Aby bylo možné získat obnovovací token, je nutné použít obor `offline_access` v žádosti o autorizaci i token. |
+| identifikátor | Ne | Parametr `redirect_uri` aplikace, ve které jste obdrželi autorizační kód. |
+| scope | Ne | Mezerou oddělený seznam oborů. Obor `openid` označuje oprávnění k přihlášení uživatele a získání dat o uživateli ve formě tokenů ID. Dá se použít k posílání tokenů do vlastního webového rozhraní API back-endu vaší aplikace, které je reprezentováno stejným ID aplikace jako klient. Obor `offline_access` označuje, že vaše aplikace potřebuje aktualizační token pro rozšířený přístup k prostředkům. |
 
 Úspěšná odpověď tokenu vypadá nějak takto:
 
@@ -264,7 +264,7 @@ Chybové odpovědi vypadají jako:
 
 Pokud chcete uživatele podepsat z aplikace, nestačí vymazat soubory cookie aplikace nebo jinak ukončit relaci s uživatelem. Přesměrujte uživatele na Azure AD B2C, abyste se odhlásili. Pokud to neuděláte, uživatel může být schopný znovu ověřit vaši aplikaci, aniž by musel zadávat přihlašovací údaje znovu.
 
-Pokud se chcete odhlásit uživatele, přesměrujte uživatele na koncový bod `end_session`, který je uvedený v dokumentu metadat OpenID Connect popsaný výše:
+Pokud se chcete odhlásit uživatele, přesměrujte uživatele na koncový bod `end_session`, který je uvedený v dokumentu metadat OpenID Connect popsaného výše:
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | tenant | Ano | Název vašeho tenanta Azure AD B2C |
 | politických | Ano | Tok uživatele, který chcete použít k podepsání uživatele z vaší aplikace. |
-| id_token_hint| Ne | Dřív vydaný token ID, který se má předat koncovému bodu pro odhlášení, jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. @No__t-0 zajistí, že `post_logout_redirect_uri` je registrovaná adresa URL odpovědi v nastavení aplikace Azure AD B2C. |
-| post_logout_redirect_uri | Ne | Adresa URL, na kterou má být uživatel přesměrován po úspěšném odhlášení. Pokud není zahrnutý, Azure AD B2C zobrazuje uživatele obecnou zprávu. Pokud nezadáte `id_token_hint`, neměli byste tuto adresu URL v nastavení aplikace Azure AD B2C registrovat jako adresu URL odpovědi. |
+| id_token_hint| Ne | Dřív vydaný token ID, který se má předat koncovému bodu pro odhlášení, jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. @No__t_0 zajistí, že `post_logout_redirect_uri` je registrovaná adresa URL odpovědi v nastavení aplikace Azure AD B2C. |
+| post_logout_redirect_uri | Ne | Adresa URL, na kterou má být uživatel přesměrován po úspěšném odhlášení. Pokud není zahrnutý, Azure AD B2C zobrazuje uživatele obecnou zprávu. Pokud neposkytnete `id_token_hint`, neměli byste tuto adresu URL v nastavení aplikace Azure AD B2C registrovat jako adresu URL odpovědi. |
 | state | Ne | Pokud je v požadavku zahrnut parametr `state`, v odpovědi by se měla objevit stejná hodnota. Aplikace by měla ověřit, že hodnoty `state` v žádosti a odpovědi jsou identické. |
 
 ### <a name="secure-your-logout-redirect"></a>Zabezpečení přesměrování odhlášení
 
-Po odhlášení se uživatel přesměruje na identifikátor URI zadaný v parametru `post_logout_redirect_uri` bez ohledu na adresy URL odpovědi, které byly pro aplikaci zadány. Pokud je však předána platná `id_token_hint`, Azure AD B2C ověří, že hodnota `post_logout_redirect_uri` odpovídá jednomu z konfigurovaných identifikátorů URI pro přesměrování aplikace před provedením přesměrování. Pokud pro aplikaci nebyla nakonfigurovaná žádná odpovídající adresa URL odpovědi, zobrazí se chybová zpráva a uživatel nebude přesměrován.
+Po odhlášení se uživatel přesměruje na identifikátor URI zadaný v parametru `post_logout_redirect_uri`, a to bez ohledu na adresy URL odpovědi, které byly pro aplikaci zadány. Pokud je však předána platná `id_token_hint`, Azure AD B2C ověří, zda hodnota `post_logout_redirect_uri` odpovídá jednomu z nakonfigurovaných identifikátorů URI pro přesměrování aplikace před provedením přesměrování. Pokud pro aplikaci nebyla nakonfigurovaná žádná odpovídající adresa URL odpovědi, zobrazí se chybová zpráva a uživatel nebude přesměrován.
 
 ### <a name="external-identity-provider-sign-out"></a>Přihlášení k externímu zprostředkovateli identity
 
-Přesměrování uživatele na koncový bod `end_session` vymaže některé ze stavů jednotného přihlašování uživatele pomocí Azure AD B2C, ale nepodepisuje uživatele z relace IDP (sociální identity Provider). Pokud uživatel vybere stejný IDP během následného přihlášení, znovu se ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.
+Nasměrování uživatele na koncový bod `end_session` vymaže některé z stavů jednotného přihlašování uživatele s Azure AD B2C, ale nepodepisuje uživatele z relace IDP (sociální identity Provider). Pokud uživatel vybere stejný IDP během následného přihlášení, znovu se ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.

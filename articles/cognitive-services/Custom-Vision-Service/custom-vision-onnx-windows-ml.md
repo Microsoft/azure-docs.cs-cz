@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 025779edd1400c65d10788def17529e84349d582
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561107"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515747"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Použití modelu ONNX z Custom Vision s Windows ML (Preview)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Použití modelu ONNX ze služby Custom Vision s Windows ML (Preview)
 
 Naučte se používat model ONNX exportovaný ze služby Custom Vision s Windows ML (Preview).
 
@@ -29,11 +29,11 @@ Informace v tomto dokumentu ukazují, jak používat soubor ONNX exportovaný ze
 > * Spuštění ukázky
 > * Použití vlastního modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Sestavení Windows 10 17738 nebo novější
+* Windows 10 verze 1809 nebo vyšší
 
-* Sada Windows SDK pro sestavení 17738 nebo novější
+* Windows SDK pro Build 17763 nebo vyšší
 
 * Sadou Visual Studio 2017 verze 15.7 nebo novější s povolenou úlohou __vývoje pro Univerzální platformu Windows__
 
@@ -45,7 +45,7 @@ Aplikace je obecná aplikace Windows UWP (Univerzální platforma Windows). Umo�
 
 ## <a name="get-the-example-code"></a>Získání ukázkového kódu
 
-Ukázková aplikace je k dispozici na adrese [https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/](https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/).
+Ukázková aplikace je k dispozici na adrese [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
 
 ## <a name="run-the-example"></a>Spuštění ukázky
 
@@ -59,7 +59,7 @@ Pokud chcete použít vlastní model, postupujte následovně:
 
 1. [Vytvořte a natrénujte](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasifikátor pomocí služby Custom Vision. Pokud chcete model exportovat, vyberte __kompaktní__ doménu, jako je například doména **Obecná (kompaktní)** . Pokud chcete exportovat existující klasifikátor, vyberte ikonu ozubeného kolečka v pravém horním rohu a převeďte doménu na kompaktní. V __Nastavení__ zvolte kompaktní model a pak projekt uložte a natrénujte.  
 
-1. Přejděte na kartu Výkon a [exportujte model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model). Vyberte iteraci natrénovanou s použitím kompaktní domény a zobrazí se tlačítko Exportovat. Vyberte *Exportovat*, *ONNX*, *ONNX1.2* a pak *Exportovat*. Jakmile bude soubor připravený, vyberte tlačítko *Stáhnout*.
+1. [Exportujte model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) tak, že přejdete na kartu výkon. Vyberte iteraci vyškolenou s kompaktní doménou. zobrazí se tlačítko Export. Vyberte *exportovat*, *ONNX*a pak *exportovat*. Jakmile bude soubor připravený, vyberte tlačítko *Stáhnout*.
 
 1. Umístěte soubor ONNX do složky __Assets__ vašeho projektu. 
 
@@ -76,7 +76,7 @@ Pokud chcete použít vlastní model, postupujte následovně:
 
 1. Klikněte na tlačítko a vyberte obrázek k vyhodnocení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete objevit další způsoby, jak exportovat a používat model služby Custom Vision, podívejte se na následující dokumenty:
 

@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997822"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529396"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity. 
-
-Tento článek začíná řadou článků, které organizacím pomůžou implementovat kompletní řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení bylo poznačené jako [rozhraní pro digitální transformaci hybridní identity](https://aka.ms/aadframework). Popisuje obchodní výsledky a cíle, se kterými se organizace můžou soustředit na implementaci robustního a zabezpečeného řešení hybridní identity. 
-
-První obchodní výsledek v rámci architektury vypíše požadavky organizací na zabezpečení procesu ověřování, když uživatelé přistupují k cloudovým aplikacím. Prvním obchodním cílem při ověřování zabezpečený obchodní výsledek je možnost přihlášení uživatelů ke cloudovým aplikacím pomocí místních uživatelských jmen a hesel. Díky tomuto procesu přihlašování a ověřování je vše v cloudu možné.
 
 Výběr správné metody ověřování je první záležitost, kterou organizace chtějí přesunout své aplikace do cloudu. Toto rozhodnutí neprovádějte lehce, z následujících důvodů:
 

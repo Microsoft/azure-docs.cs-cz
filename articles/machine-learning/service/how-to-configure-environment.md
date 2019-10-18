@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
-ms.translationtype: MT
+ms.openlocfilehash: c513a7fe4df14ee21f4b26993a5eddb93bb90eac
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686967"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533312"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 
@@ -49,7 +49,7 @@ Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local
 - V systému Linux nebo macOS potřebujete prostředí bash.
 
     > [!TIP]
-    > Pokud pracujete v systému Linux nebo macOS a používáte jiné prostředí než bash (například ZSH), může dojít k chybám při spuštění některých příkazů. Pokud chcete tento problém obejít, spusťte nové prostředí bash pomocí příkazu `bash` a spusťte příkazy tam.
+    > Pokud pracujete v systému Linux nebo macOS a používáte jiné prostředí než bash (například ZSH), může dojít k chybám při spuštění některých příkazů. Pokud chcete tento problém obejít, spusťte pomocí příkazu `bash` nové prostředí bash a spusťte příkazy tam.
 
 - V systému Windows potřebujete příkazový řádek nebo Anacondaový dotaz (instalovaný Anaconda a Miniconda).
 
@@ -185,7 +185,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. K instalaci balíčků použijte následující příkazy:
 
-    Tento příkaz nainstaluje základní Azure Machine Learning SDK s poznámkovým blokem a `automl` Extras. @No__t-0 extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. @No__t-0 extra zahrnuje taky Azure Machine Learning sadu SDK pro přípravu dat, která je standardně nastavená jako závislost.
+    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK s poznámkovým blokem a `automl`mi doplňky. @No__t_0 extra je velká instalace a dá se odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. @No__t_0 navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -196,7 +196,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * Počínaje macOS Catalina, zsh (prostředí Z) je výchozí prostředí pro přihlášení a interaktivní prostředí. V ZSH použijte následující příkaz, který řídí hranaté závorky "\\" (zpětné lomítko):
+   > * Počínaje macOS Catalina, zsh (prostředí Z) je výchozí prostředí pro přihlášení a interaktivní prostředí. V ZSH použijte následující příkaz, který řídí hranaté závorky s "\\" (zpětné lomítko):
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -205,7 +205,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
-    Použijte některý z následujících příkazů a nahraďte *> balíčku \<new* balíčkem, který chcete nainstalovat. Instalace balíčků prostřednictvím `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do cloudu Anaconda).
+    Použijte některý z následujících příkazů a *> \<new balíčku* nahraďte balíčkem, který chcete nainstalovat. Instalace balíčků prostřednictvím `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do cloudu Anaconda).
 
     ```shell
     conda install <new package>
@@ -250,7 +250,7 @@ Postup povolení těchto součástí v prostředí Jupyter Notebook:
     azureml.core.VERSION
     ```
 
-1. Pokud narazíte na problémy s importem modulů a dostanete `ModuleNotFoundError`, ujistěte se, že je jádro Jupyter připojené ke správné cestě pro vaše prostředí spuštěním následujícího kódu v buňce poznámkového bloku.
+1. Pokud narazíte na problémy s importem modulů a příjem `ModuleNotFoundError`, ujistěte se, že je jádro Jupyter připojené ke správné cestě pro vaše prostředí spuštěním následujícího kódu v buňce poznámkového bloku.
 
     ```python
     import sys
@@ -304,10 +304,10 @@ Použijte tato nastavení:
 
 | Nastavení |Platí pro| Hodnota |
 |----|---|---|
-| Název clusteru |Stál| yourclustername |
-| Modul runtime Databricks |Stál| Libovolný modul runtime bez ML (ne ML 4. x, 5. x) |
-| Verze Pythonu |Stál| 3 |
-| Pracovníků |Stál| 2 nebo vyšší |
+| Název clusteru |stál| yourclustername |
+| Modul runtime Databricks |stál| Libovolný modul runtime bez ML (ne ML 4. x, 5. x) |
+| Verze Pythonu |stál| 3 |
+| Pracovníků |stál| 2 nebo vyšší |
 | Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
 | Povolení automatického škálování |Automatizované strojové učení<br>pouze| Zrušte zaškrtnutí políčka |
 
@@ -318,13 +318,13 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
 
-   |Sada SDK @ no__t-0package @ no__t-1extras|Zdroj|PyPi @ no__t-0Name @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6|
+   |@No__t_1extras &nbsp;package SDK|Zdroj|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
-   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl_databricks]|
+   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl]|
 
    > [!Warning]
-   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [datacihly] nebo [automl_databricks].
+   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [datacihly] nebo [automl].
 
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte **připojit** .
@@ -344,9 +344,9 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
-Sada SDK pro datacihly **_bez_** automatizovaného strojového učení @no__t – 2AZURE Machine Learning SDK pro datacihly @ no__t-3
+Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![Azure Machine Learning SDK pro datacihly ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Sada SDK pro datacihly **pomocí** automatizovaného strojového učení @no__t – 1SDK s nainstalovanou službou Automated Machine Learning pro datacihly @ no__t-2
+Sada SDK pro datacihly **s** automatickým ![SDK strojového učení s nainstalovanou službou Automated Machine Learning pro datacihly ](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Začít zkoumat
 

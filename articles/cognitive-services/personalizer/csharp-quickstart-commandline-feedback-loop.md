@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro přizpůsobování pro .NET | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna pro přizpůsobování pro .NET | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Začínáme s klientskou knihovnou přizpůsobování pro .NET pomocí výukové smyčky.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345238"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515596"
 ---
-# <a name="quickstart-personalize-client-library-for-net"></a>Rychlý start: Přizpůsobení klientské knihovny pro .NET
+# <a name="quickstart-personalizer-client-library-for-net"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro .NET
 
 Zobrazit přizpůsobený obsah C# v tomto rychlém startu pomocí služby pro přizpůsobení.
 
@@ -26,9 +26,9 @@ Začínáme s klientskou knihovnou pro přizpůsobování pro .NET Pomocí těch
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Ukázky dokumentace k](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | knihovny Referenční dokumentace[](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | 
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | [Ukázka  |  ukázek](https://github.com/Azure-Samples/cognitive-services-personalizer-samples) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [balíčků (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -53,8 +53,8 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 <!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_RESOURCE_KEY`pro klíč prostředku.
-* `PERSONALIZER_RESOURCE_ENDPOINT`pro koncový bod prostředku.
+* `PERSONALIZER_RESOURCE_KEY` klíče prostředku.
+* `PERSONALIZER_RESOURCE_ENDPOINT` pro koncový bod prostředku
 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
@@ -70,7 +70,7 @@ Když se poprvé vytvoří instance smyčky pro přizpůsobení, neexistuje žá
 
 Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
 
-V okně konzoly (například cmd, PowerShell nebo bash) vytvořte pomocí příkazu dotnet `new` novou konzolovou aplikaci s názvem. `personalizer-quickstart` Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
+V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz dotnet `new` k vytvoření nové konzolové aplikace s názvem `personalizer-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -122,19 +122,19 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující kód `using` následujícími direktivami `using`:
 
 [!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
 
-Ve třídě **program** vytvořte proměnné pro klíč Azure prostředku a koncový bod získaný z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a. `PERSONALIZER_RESOURCE_ENDPOINT` Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
+Ve třídě **program** vytvořte proměnné pro klíč Azure prostředku a koncový bod načtený z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a `PERSONALIZER_RESOURCE_ENDPOINT`. Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Vytvoření klienta přizpůsobeného pro přizpůsobování
 
-Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey `PERSONALIZER_RESOURCE_KEY`je.
+Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey je `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -146,7 +146,7 @@ Akce reprezentují volby obsahu, které má přizpůsobené přizpůsobovat. Př
 
 [!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
 
-Obě metody používají `GetKey` metodu ke čtení výběru uživatele z příkazového řádku. 
+Obě metody používají metodu `GetKey` ke čtení výběru uživatele z příkazového řádku. 
 
 [!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
 
@@ -154,7 +154,7 @@ Obě metody používají `GetKey` metodu ke čtení výběru uživatele z přík
 
 Výuková smyčka pro přizpůsobování je cyklem volání pořadí a odměňování. V tomto rychlém startu každé volání pořadí, pro přizpůsobení obsahu, je následováno volání odměna, které přizpůsobuje, jak dobře se služba přiřadí k obsahu. 
 
-Následující kód v `main` metodě programu se cyklicky vychází z cyklu dotazování na předvolby uživatele na příkazovém řádku, který odešle tyto informace do přizpůsobeného pořadí a prezentuje vybranému výběru zákazníkovi, aby si mohl vybrat z Seznamte se s tím, že do přizpůsobeného signálu přizpůsobíte, jak dobře služba provedla řazení výběru.
+Následující kód v metodě `main` se cyklicky cyklicky dotazuje na své předvolby na příkazovém řádku, který odešle tyto informace do přizpůsobenému zařazení a prezentuje vybraný výběr zákazníkovi, který si zvolí ze seznamu. a pak pošlete odměnu přizpůsobené signalizaci, jak dobře služba provedla řazení výběru.
 
 ```csharp
 static void Main(string[] args)
@@ -242,7 +242,7 @@ Přidejte následující metody, které [získají volby obsahu](#get-content-ch
 
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
-Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby `currentContent` vytvořil výběr obsahu. Proces může vytvořit obsah, který se má vyloučit z pořadí, zobrazené `excludeActions`jako. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
+Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil `currentContent` možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.  
 
@@ -282,5 +282,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 * [Co je přizpůsobování?](what-is-personalizer.md)
 * [Kde můžete použít přizpůsobování?](where-can-you-use-personalizer.md)
-* [Odstraňování potíží](troubleshooting.md)
+* [Řešení potíží](troubleshooting.md)
 

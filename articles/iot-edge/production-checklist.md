@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244045"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529025"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -93,7 +93,7 @@ Příklad tohoto procesu je k dispozici v části [Konfigurace zařízení IoT E
 
 Rozbočovače IoT Edge a agenti používají místní úložiště k udržení stavu a povolení zasílání zpráv mezi moduly, zařízeními a cloudem. Pro zajištění vyšší spolehlivosti a výkonu nakonfigurujte systémové moduly tak, aby v hostitelském systému souborů používaly úložiště.
 
-Další informace najdete v tématu [úložiště hostitele pro systémové moduly](offline-capabilities.md#host-storage-for-system-modules).
+Další informace najdete v tématu [úložiště hostitele pro systémové moduly](how-to-access-host-storage-from-module.md).
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Zmenšení místa v paměti, které používá centrum IoT Edge
 
@@ -176,10 +176,10 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | Přístup k DPS (volitelné) |
-   | @no__t – 0.azurecr.io | 443 | Osobní a Registry kontejnerů třetích stran |
+   | \*. azurecr.io | 443 | Osobní a Registry kontejnerů třetích stran |
    | \*.blob.core.windows.net | 443 | Stažení rozdílových rozdílů Azure Container Registry imagí ze služby Blob Storage  | 
-   | @no__t – 0.azure-devices.net | 5671, 8883, 443 | Přístup k IoT Hub |
-   | @no__t – 0.docker.io  | 443 | Přístup k Docker Hub (volitelné) |
+   | \*. azure-devices.net | 5671, 8883, 443 | Přístup k IoT Hub |
+   | \*. docker.io  | 443 | Přístup k Docker Hub (volitelné) |
 
 Některá z těchto pravidel brány firewall jsou zděděná z Azure Container Registry. Další informace najdete v tématu [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](../container-registry/container-registry-firewall-access-rules.md).
 

@@ -7,118 +7,121 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71266650"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529563"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem pro Apache HBA v Azure HDInsight
 
-Tento dokument popisuje různé pokyny k ladění výkonu Apache HBA a tipy pro získání optimálního výkonu v Azure HDInsight. Mnohé z těchto tipů závisí na konkrétním zatížení a vzoru pro čtení a zápis/skenování. Před použitím v produkčním prostředí se důkladně testují změny konfigurace.
+Tento článek popisuje různé pokyny k ladění výkonu Apache HBA a tipy pro získání optimálního výkonu v Azure HDInsight. Mnohé z těchto tipů závisí na konkrétním zatížení a vzoru pro čtení a zápis/skenování. Před použitím změn konfigurace v produkčním prostředí je důkladně otestujte.
 
-## <a name="hdinsight-hbase-performance-insights"></a>Přehledy výkonu HDInsight HBA
+## <a name="hbase-performance-insights"></a>Přehledy o výkonu HBA
 
-Nejdůležitějším kritickým bodem pro většinu úloh HBA je protokol zápisu předem (WAL). Má vážně vliv na výkon zápisu. Služba HDInsight HBA má oddělený výpočetní model úložiště – to znamená, že data se ukládají vzdáleně na Azure Storage ale oblasti servery jsou hostovány na virtuálních počítačích. Až do poslední doby byl protokol pro zápis do protokolu zapsaný i Azure Storage tím, že se tento problém bude rozšířit i v případě HDInsight. Funkce [akcelerované zápisy](./apache-hbase-accelerated-writes.md) je navržená tak, aby tento problém vyřešila zápisem protokolu pro zápis do služby Azure Premium SSD na disky. Tyto výhody zapisují obrovský výkon a pomáhají mnoha problémům, na které čelí některé úlohy náročné na zápis.
+Nejdůležitějším kritickým bodem pro většinu úloh HBA je protokol zápisu předem (WAL). Má vážně vliv na výkon zápisu. Služba HDInsight HBA má oddělený model úložiště – Compute. Data se ukládají vzdáleně na Azure Storage, a to i přesto, že virtuální počítače hostují servery oblastí. Až do poslední doby, WAL byla také zapsána do Azure Storage. V HDInsight toto chování toto kritické místo přináší. Funkce [akcelerované zápisy](./apache-hbase-accelerated-writes.md) je navržena k vyřešení tohoto problému. Zapisuje WAL na disky spravované službou Azure SSD úrovně Premium. To výrazně přináší výkon při zápisu a pomáhá mnoha problémům, na které čelí některé úlohy náročné na zápis.
 
-Jako vzdálené úložiště použijte [účet Premium Block BLOB Storage](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) , abyste získali výrazné zlepšení operací čtení. Tato možnost je dostupná jenom v případě, že je povolená funkce zápisy do protokolu předem.
+Chcete-li získat významné vylepšení operací čtení, použijte jako vzdálené úložiště [účet Premium Block BLOB Storage](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) . Tato možnost je dostupná jenom v případě, že je povolená funkce WAL.
 
 ## <a name="compaction"></a>Komprimační
 
-Komprimace je dalším možným kritickým bodem, který je v komunitě dohodnutý.  Ve výchozím nastavení je hlavní komprimace na clusterech HDInsight HBA zakázaná. Je to proto, že vzhledem k tomu, že se jedná o proces náročný na prostředky, chceme zákazníkům poskytnout plnou flexibilitu, aby ji naplánovala podle jejich charakteristik zatížení – to znamená, že v době mimo špičku. I když je naše úložiště vzdálené (zajištěné službou Azure Storage) na rozdíl od místního HDFS, což je pro většinu Prem instancí běžné, nejedná se o problém, který je jedním z primárních cílů hlavní komprimace.
+Komprimace je další možné kritické body, které se v komunitě schvalují podle zásad. Ve výchozím nastavení jsou hlavní komprimace v clusterech HDInsight HBA zakázané. Komprimace je zakázaná, protože i když se jedná o proces náročný na prostředky, zákazníci mají plnou flexibilitu při plánování podle jejich zatížení. Můžou je například naplánovat v době mimo špičku. Nezáleží taky na tom, že úložiště je vzdálené (Azure Storage) místo místního systému Hadoop systém souborů DFS (Distributed File System) (HDFS).
 
-Předpokladem je, že zákazník bude pečlivě plánovat hlavní komprimaci podle jejich pohodlí. Pokud tato údržba není hotová, bude komprimace významně ovlivňovat výkon při čtení v dlouhodobém běhu.
+Zákazníci by měli naplánovat větší komprimaci na pohodlí. Pokud tato údržba neprovede, komprimace negativně nebude mít vliv na výkon při čtení v dlouhodobém běhu.
 
-Pro konkrétní operace kontroly by se měla jednat o příčinu potíží mnohem vyšší než 100 ms. Zkontroluje, jestli se hlavní komprimace naplánovala přesně.
+V případě operací vyhledávání by měla být příčinou obava latence, které jsou mnohem vyšší než 100 milisekund. Zkontroluje, jestli se hlavní komprimace naplánovala přesně.
 
-## <a name="know-your-apache-phoenix-workload"></a>Informace o Apache Phoenix úlohách
+## <a name="apache-phoenix-workload"></a>Apache Phoenix úlohy
 
 Odpověď na následující otázky vám pomůžou lépe pochopit Apache Phoenix úlohy:
 
 * Jsou všechna "čtení" překládá se na kontroly?
     * Pokud ano, jaké jsou charakteristiky těchto kontrol?
     * Pro tyto kontroly máte optimalizované vaše schéma tabulky v Phoenixu, včetně vhodného indexování?
-* Použili jste příkaz `EXPLAIN` pro pochopení plánu dotazů, který vygeneruje "čtení".
+* Použili jste příkaz `EXPLAIN` pro pochopení plánu dotazů, který vygeneruje "čtení"?
 * Jsou vaše zápisy "Upsert-vybírá"?
-    * V takovém případě by se prováděly i kontroly. Očekávaná latence pro kontroly je v průměru 100 ms, na rozdíl od 10 MS pro bod v adaptérech HBA.  
+    * V takovém případě by se prováděly i kontroly. Očekávaná latence pro kontroly v průměru přibližně 100 milisekund, v porovnání s 10 milisekundami pro bod v adaptérech HBA.  
 
 ## <a name="test-methodology-and-metrics-monitoring"></a>Metodologie testování a monitorování metrik
 
-Pokud k testování a optimalizaci výkonu používáte srovnávací testy, jako je YCSB, JMeter nebo Pherf, zajistěte následující:
+Pokud používáte srovnávací testy, například Yahoo! Cloud obsluhující srovnávací testy, JMeter nebo Pherf k testování a ladění výkonu, ujistěte se, že:
 
-1. Klientské počítače se nestane kritickým bodem (kontrolu využití procesoru u klientských počítačů).
+- Klientské počítače se nestane kritickým bodem. Provedete to tak, že zkontrolujete využití CPU na klientských počítačích.
 
-1. Konfigurace na straně klienta – například počet vláken a tak dále, jsou vhodně vyladěny k sytosti šířky pásma klienta.
+- Konfigurace na straně klienta, jako je počet vláken, jsou vhodně vyladěny k sytosti šířky pásma klienta.
 
-1. Výsledky testů se zaznamenávají přesně a systematicky.
+- Výsledky testů se zaznamenávají přesně a systematicky.
 
-Pokud vaše dotazy náhle začaly mnohem horší než předtím – kontrolovat potenciální chyby v kódu aplikace – dojde k náhlému generování velkých objemů neplatných dat, takže přirozeně roste latence čtení?
+Pokud vaše dotazy náhle začaly mnohem horší než předtím, vyhledejte potenciální chyby v kódu aplikace. Dochází k náhlému generování velkých objemů neplatných dat? V takovém případě může zvýšit latenci čtení.
 
 ## <a name="migration-issues"></a>Problémy s migrací
 
-Pokud migrujete do Azure HDInsight, ujistěte se, že se migrace provádí systematicky a přesně, nejlépe prostřednictvím automatizace. Vyhněte se ruční migraci. Zajistěte následující:
+Pokud migrujete do Azure HDInsight, ujistěte se, že je migrace prováděna systematicky a přesně, nejlépe prostřednictvím automatizace. Vyhněte se ruční migraci. Ujistěte se, že:
 
-1. Atributy tabulky – například komprese, filtry Bloom a tak dále, by měly být migrovány přesně.
+- Atributy tabulky jsou správně migrovány. Atributy mohou být zahrnuty jako komprese, filtry Bloom a tak dále.
 
-1. Pro tabulky v Phoenixu by se nastavení odsolení mělo namapovat odpovídajícím způsobem na novou velikost clusteru. Například počet kontejnerů Salt se doporučuje používat jako násobek počtu pracovních uzlů v clusteru – konkrétní násobek množství horké hledáníy pozorovány.  
+- Nastavení odsolení v tabulkách v Phoenixu jsou vhodně namapována na novou velikost clusteru. Například počet kontejnerů Salt by měl být násobkem počtu pracovních uzlů v clusteru. A měli byste použít násobek, který je faktorem množství horké hledání.
 
-## <a name="server-side-config-tunings"></a>Optimalizace konfigurace na straně serveru
+## <a name="server-side-configuration-tunings"></a>Ladění konfigurace na straně serveru
 
-Ve službě HDInsight HBA jsou HFiles uložené ve vzdáleném úložišti, takže pokud dojde k neúspěšnému uložení v mezipaměti, budou náklady na čtení omezeny na Prem systémy, které mají data zajištěná místními HDFS, a to díky tomu, že se to týká latence sítě. Pro většinu scénářů je k obcházení tohoto problému navrženo inteligentní použití mezipamětí HBA (bloková mezipaměť a mezipaměť bloků). Existují však i občasné případy, kdy se může jednat o problém zákazníka. To trochu pomohlo pomocí účtu bloku blob bloku Premium. Avšak s WASB (ovladačem Windows Azure Storage) se spoléhá na některé vlastnosti, jako je `fs.azure.read.request.size`, aby se načetla data v blocích na základě toho, co určuje režim čtení (sekvenční vs náhodná), můžeme dál zobrazovat instance vyšších latencí s čtením. Zjistili jsme, že na základě empirických experimentů, které nastavují velikost bloku požadavků na čtení (`fs.azure.read.request.size`) až 512 KB a odpovídají velikosti bloku v tabulkách, které mají být stejné, je výsledkem nejlepší praxe.
+Ve službě HDInsight HBA jsou HFiles uložené ve vzdáleném úložišti. V případě neúspěšného ukládání do mezipaměti je cena čtení vyšší než u místních systémů, protože data v místních systémech jsou zajištěna místními HDFS. Pro většinu scénářů je k obcházení tohoto problému navrženo inteligentní použití mezipamětí HBA (bloková mezipaměť a mezipaměť bloků). V případech, kdy se problém nevyřeší, může tento problém pomoci při použití účtu typu blob bloku Premium. Ovladač Windows Azure Storage Blob spoléhá na některé vlastnosti, jako je například `fs.azure.read.request.size` k načtení dat v blocích na základě toho, co určuje, zda má být režim čtení (sekvenční oproti náhodnému), takže může i nadále existovat instancí vyšších latencí s čtením. Po empirických experimentech jsme zjistili, že nastavení velikosti bloku požadavku na čtení (`fs.azure.read.request.size`) na 512 KB a odpovídající velikosti bloku pro tabulky HBA mají stejnou velikost, což vede k dosažení nejlepšího výsledku v praxi.
 
-Služby HDInsight HBA pro většinu uzlů s velkými velikostmi uzlů poskytuje `bucketcache` jako soubor na místní disk SSD připojený k virtuálnímu počítači, který spouští `regionservers`. V době, kdy se místo toho dá použít mezipaměť haldy, může to mít nějaké vylepšení. To má omezení využití dostupné paměti a potenciálně menší velikosti než mezipaměť založené na souborech, takže to nemusí být vždy zjevně nejlepší volbou.
+U většiny clusterových uzlů HDInsight poskytuje `bucketcache` jako soubor na místní SSD úrovně Premium, která je připojená k virtuálnímu počítači, který spouští `regionservers`. Použití mezipaměti mimo haldu místo toho může poskytovat nějaké vylepšení. Toto alternativní řešení má omezení využití dostupné paměti a může být menší než mezipaměť na základě souborů, takže nemusí vždy být nejlepší volbou.
 
-Některé další konkrétní parametry, které jsme se zdáli, že se jim pomohla v různých stupních, jak je uvedeno níže:
+Níže jsou uvedené některé další konkrétní parametry, které jsme provedli a které mi pomohly při různých stupních:
 
-1. Zvětšete velikost `memstore` z výchozí 128 MB na 256 MB – toto nastavení se obvykle doporučuje pro silný scénář zápisu.
+- Zvětšete velikost `memstore` z výchozí 128 MB na 256 MB. Toto nastavení se obvykle doporučuje pro těžké scénáře zápisu.
 
-1. Zvýšení počtu vláken vyhrazených pro komprimaci – od výchozí hodnoty 1 až 4. Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
+- Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4**. Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
 
-1. Vyhněte se blokování `memstore` vyprázdnění kvůli limitu úložiště. `Hbase.hstore.blockingStoreFiles` se dá zvýšit na 100, aby se poskytla tato vyrovnávací paměť.
+- Vyhněte se blokování `memstore` vyprázdnění kvůli limitu úložiště. Chcete-li zadat tuto vyrovnávací paměť, zvyšte nastavení `Hbase.hstore.blockingStoreFiles` na **100**.
 
-1. Pro řízení vyprázdnění se výchozí hodnoty dají vyřešit následujícím způsobem:
+- K řízení vyprázdnění použijte následující nastavení:
 
-    1. `Hbase.regionserver.maxlogs` může být upped až 140 z 32 (zamezení vyprázdnění z důvodu omezení WAL).
+    - `Hbase.regionserver.maxlogs`: **140** (nejedná se o vyprázdnění z důvodu omezení Wal)
 
-    1. `Hbase.regionserver.global.memstore.lowerLimit` = 0,55.
+    - `Hbase.regionserver.global.memstore.lowerLimit`: **0,55**
 
-    1. `Hbase.regionserver.global.memstore.upperLimit` = 0,60.
+    - `Hbase.regionserver.global.memstore.upperLimit`: **0,60**
 
-1. Konfigurace specifické pro Phoenix pro optimalizaci fondu vláken:
+- Konfigurace specifické pro Phoenix pro optimalizaci fondu vláken:
 
-    1. `Phoenix.query.queuesize` se dá zvýšit na 10000.
+    - `Phoenix.query.queuesize`: **10000**
 
-    1. `Phoenix.query.threadpoolsize` se dá zvýšit na 512.
+    - `Phoenix.query.threadpoolsize`: **512**
 
-1. Další konfigurace specifické pro Phoenix:
+- Další konfigurace specifické pro Phoenix:
 
-    1. `Phoenix.rpc.index.handler.count` můžete nastavit na 50, pokud máme velké nebo mnoho vyhledávacích indexů.
+    - `Phoenix.rpc.index.handler.count`: **50** (pokud existuje velké nebo mnoho vyhledávacích indexů)
 
-    1. `Phoenix.stats.updateFrequency` – může být upped na 1 hodinu od výchozí hodnoty 15 minut.
+    - `Phoenix.stats.updateFrequency`: **1 hodina**
 
-    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems` – může být upped na 1 hodinu od 30 minut.
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 hodina**
 
-    1. `Phoenix.coprocessor.maxmetadatacachesize` – může být upped až 50 MB z 20 MB.
+    - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-1. Vypršení časových limitů RPC – časový limit vzdáleného volání procedur (HBA), časový limit klientského skeneru a časový limit dotazu v Phoenixu se dá prodloužit na 3 minuty. Je důležité si uvědomit, že parametr `hbase.client.scanner.caching` je nastaven na hodnotu odpovídající hodnotě na konci serveru a na konci klienta. Jinak toto nastavení vede k chybám souvisejícím s `OutOfOrderScannerException` na konci klienta. Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na 100.
+- Vypršení časových limitů RPC: **3 minuty**
+
+   - Vypršení časových limitů RPC zahrnuje vypršení časového limitu pro adaptéry služby HBA, časový limit pro klientský skener a časový limit dotazů v Phoenixu. 
+   - Ujistěte se, že parametr `hbase.client.scanner.caching` je nastaven na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException`. Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100**.
 
 ## <a name="other-considerations"></a>Další aspekty
 
-Některé další parametry, které se mají vzít v úvahu pro ladění:
+Níže jsou uvedené další parametry pro zvážení ladění:
 
-1. `Hbase.rs.cacheblocksonwrite` – Toto nastavení je ve výchozím nastavení nastaveno na hodnotu true v HDI.
+- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
 
-1. Nastavení, které umožňuje odložit menší komprimaci na později.
+- Nastavení, které umožňuje odložit menší komprimaci na později.
 
-1. Experimentální nastavení, jako je úprava procentuálních hodnot front rezervovaných pro požadavky na čtení a zápis.
+- Experimentální nastavení, jako je například úprava procentuálních hodnot front, které jsou rezervovány pro požadavky na čtení a zápis.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
+Pokud váš problém zůstane nevyřešený, podívejte se na jeden z následujících kanálů, kde najdete další podporu:
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) -oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport). Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -1,6 +1,6 @@
 ---
-title: Řízení zařízení z rychlého startu Azure IoT Hub (Android) | Dokumentace Microsoftu
-description: V tomto rychlém startu spustíte dvě ukázkové aplikace Java. Jedna aplikace je aplikace služby, která můžete vzdáleně ovládat zařízení připojené k vašemu centru. Jiné aplikace bude spuštěna na fyzické nebo simulované zařízení připojeném k centru dá řídit vzdáleně.
+title: Řízení zařízení v rychlém startu Azure IoT Hub (Android) | Microsoft Docs
+description: V tomto rychlém startu spustíte dvě ukázkové aplikace Java. Jedna aplikace je aplikace služby, která může vzdáleně řídit zařízení připojená k rozbočovači. Druhá aplikace běží na fyzickém nebo simulovaném zařízení připojeném k vašemu rozbočovači, který se dá řídit vzdáleně.
 author: wesmc7777
 manager: philmea
 ms.service: iot-hub
@@ -10,73 +10,73 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: d607608167e1287c7df35157ccb9870f40f22943
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330789"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516711"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý start: Řízení zařízení připojená ke službě IoT hub (Android)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu a spravovat zařízení z cloudu. V tomto rychlém startu použijete *přímou metodu* k řízení simulovaného zařízení připojeného k centru IoT. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT.
+IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. V tomto rychlém startu použijete *přímou metodu* k řízení simulovaného zařízení připojeného k centru IoT. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT.
 
 Rychlý start používá dvě předem napsané aplikace Java:
 
-* Aplikace simulovaného zařízení, která bude reagovat na přímé metody volat z aplikace back-end služby. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
+* Aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace služby. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
 
-* Aplikace služby, která volá metodu s přímým přístupem na zařízení s Androidem. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu vašeho centra IoT na straně služby.
+* Aplikace služby, která volá metodu Direct na zařízení s Androidem. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu centra IoT na straně služby.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Android studio z https://developer.android.com/studio/. Další informace týkající se instalace sady Android Studio najdete v tématu [android instalace](https://developer.android.com/studio/install).
+* Android Studio z https://developer.android.com/studio/. Další informace o instalaci Android Studio najdete v tématu [instalace Androidu](https://developer.android.com/studio/install).
 
-* 27. Android SDK se používá v rámci ukázky v tomto článku.
+* Ukázka v tomto článku se používá Android SDK 27.
 
-* Spusťte následující příkaz pro přidání rozšíření Microsoft Azure IoT pro Azure CLI do instance služby Cloud Shell. Rozšíření IOT přidá služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS) konkrétní příkazy rozhraní příkazového řádku Azure.
+* Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
 
-* Podle tohoto rychlého startu jsou nutné dvě ukázkové aplikace: [Sady SDK pro zařízení ukázkové aplikace pro Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) a [sady SDK služby ukázkové aplikace pro Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Obě tyto vzorků, které jsou součástí sady azure-iot-samples-java úložišti na Githubu. Stáhněte nebo naklonujte [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště.
+* V tomto rychlém startu jsou vyžadovány dvě ukázkové aplikace: [ukázková aplikace pro Android SDK pro zařízení](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) a [ukázková aplikace sady SDK pro sadu Service SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Oba tyto ukázky jsou součástí úložiště Azure-IoT-Samples-Java na GitHubu. Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-android.md), můžete tento krok přeskočit a pomocí služby IoT hub jste už vytvořili.
+Pokud jste dokončili předchozí [rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-android.md), můžete tento krok přeskočit a použít již vytvořeného centra IoT.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Pokud jste dokončili předchozí [rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-android.md), můžete tento krok přeskočit a použít stejné zařízení registrovaná v předchozím rychlém startu.
+Pokud jste dokončili předchozí [rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-android.md), můžete tento krok přeskočit a použít stejné zařízení, které je zaregistrované v předchozím rychlém startu.
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
+1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyAndroidDevice**: Tato hodnota je název pro registrovaná zařízení. Použijte MyAndroidDevice, jak je znázorněno. Pokud zvolíte jiný název pro vaše zařízení, budete také muset použít tento název v rámci tohoto článku a aktualizujte název zařízení v ukázkové aplikace před spuštěním je.
+   **MyAndroidDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyAndroidDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyAndroidDevice
+      --hub-name {YourIoTHubName} --device-id MyAndroidDevice
     ```
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
     ```
@@ -89,104 +89,104 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="retrieve-the-service-connection-string"></a>Načtení připojovacího řetězce služby
 
-Budete také potřebovat _připojovací řetězec služby_ umožnit aplikacím back endové služby pro připojení ke službě IoT hub, aby bylo možné spouštět metody a načítání zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+Také potřebujete _připojovací řetězec služby_ , který umožňuje, aby se aplikace back-end připojovaly ke službě IoT Hub, aby bylo možné spouštět metody a získávat zprávy. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-**YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste zvolili pro službu IoT hub.
+**YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.
+Tuto hodnotu použijete později v tomto rychlém startu. Tento připojovací řetězec služby se liší od připojovacího řetězce zařízení, který jste si poznamenali v předchozím kroku.
 
 ## <a name="listen-for-direct-method-calls"></a>Naslouchání voláním přímé metody
 
-Zařízení SDK ukázkovou aplikaci můžete spustit na fyzické zařízení s Androidem nebo emulátoru Androidu. Ukázka připojit ke koncový bod specifický pro zařízení ve službě IoT hub, odesílá Simulovaná telemetrická data a čeká na přímé metody volání rozbočovače. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení odešle po spuštění přímé metody zpět do centra potvrzení.
+Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Ukázka se připojí ke koncovému bodu specifickému pro zařízení ve službě IoT Hub, pošle simulovanou telemetrii a naslouchá volání přímých metod z vašeho centra. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
-1. Otevřete ukázkový projekt Android Githubu v nástroji Android Studio. Projekt se nachází v následujícím adresáři klonované nebo stažených kopie [azure-iot ukázka java](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště.
+1. V Android Studio otevřete projekt GitHub Sample Android. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
-2. V nástroji Android Studio, otevřete *gradle.properties* pro ukázkového projektu a nahraďte **Device_Connection_String** zástupného symbolu připojovacím řetězcem zařízení jste si předtím poznamenali.
+2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt a nahraďte zástupný symbol **Device_Connection_String** připojovacím řetězcem zařízení, který jste si poznamenali dříve.
 
     ```
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. V nástroji Android Studio, klikněte na tlačítko **souboru** > **synchronizovat projekt se soubory Gradle**. Ověřte, že dokončení sestavení.
+3. V Android Studio klikněte na **soubor** > **Synchronizace projektu se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
-   > Pokud dojde k selhání synchronizace projektu, může být pro jednu z následujících důvodů:
+   > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
    >
-   > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
-   > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
+   > * Verze modulu plug-in pro Android Gradle a Gradle, na které se odkazuje v projektu, jsou zastaralé pro vaši verzi Android Studio. Podle [těchto pokynů](https://developer.android.com/studio/releases/gradle-plugin) můžete odkazovat a instalovat správné verze modulu plug-in a Gradle pro vaši instalaci.
+   > * Licenční smlouva pro Android SDK nebyla podepsána. Podle pokynů ve výstupu sestavení podepište licenční smlouvu a Stáhněte si sadu SDK.
 
-4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"** . Konfigurace aplikace pro spuštění na fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení klikněte na **spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
-5. Jakmile aplikace načte, klikněte na tlačítko **Start** tlačítko Zahájit odesílání telemetrických dat do služby IoT Hub:
+5. Po načtení aplikace kliknutím na tlačítko **Start** spustíte odesílání telemetrie do IoT Hub:
 
-    ![Snímek obrazovky ukázkové aplikace klientské zařízení s androidem](media/quickstart-control-device-android/sample-screenshot.png)
+    ![Ukázka snímku obrazovky aplikace pro Android klientského zařízení](media/quickstart-control-device-android/sample-screenshot.png)
 
-Tato aplikace musí zůstat spuštěné na phycial zařízení nebo emulátoru při spuštění služby SDK ukázku aktualizovat interval telemetrie za běhu.
+Tato aplikace musí být při spuštění ukázky sady SDK v provozu na fyzickém zařízení nebo emulátoru, aby se interval telemetrie aktualizoval během doby běhu.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-V této části budete používat Azure Cloud Shell s [rozšíření IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k monitorování zařízení zprávy, které jsou odesílány zařízení s Androidem.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k monitorování zpráv odesílaných zařízením s Androidem.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 
-   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
-    Na následujícím snímku obrazovky se zobrazí výstup jako IoT hub přijímá telemetrická data odesílaná zařízení s Androidem:
+    Následující snímek obrazovky ukazuje výstup, ve kterém služba IoT Hub přijímá telemetrii odeslanou zařízením s Androidem:
 
       ![Čtení zpráv zařízení pomocí Azure CLI](media/quickstart-control-device-android/read-data.png)
 
-Ve výchozím nastavení telemetrie aplikace odesílá telemetrická data ze zařízení s Androidem každých 5 sekund. V další části použijete volání přímé metody aktualizovat interval telemetrie pro zařízení s Androidem IoT.
+Ve výchozím nastavení aplikace telemetrie odesílá telemetrii ze zařízení s Androidem každých pět sekund. V další části použijete přímé volání metody k aktualizaci intervalu telemetrie pro zařízení s Androidem IoT.
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
-Aplikace služby se připojí ke koncovému bodu straně služby ve službě IoT Hub. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení.
+Aplikace služby se v IoT Hub připojí ke koncovému bodu na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením.
 
-Spuštění této aplikace na samostatné fyzické zařízení s Androidem nebo emulátoru Androidu.
+Tuto aplikaci spusťte na samostatném fyzickém zařízení s Androidem nebo emulátoru Androidu.
 
-Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji zmírnit rizika spojená s citlivé připojovací řetězec, který řídí všechna zařízení ve službě IoT Hub. V tomto příkladu jsme spustili ji aplikace pro Android pouze pro demonstrační účely. Jiné jazykové verze v tomto rychlém startu poskytují další příklady, které odpovídají lépe aplikace back-end služby.
+Aplikace služby back-end IoT Hub obvykle běží v cloudu, kde je snazší zmírnit rizika spojená s citlivým připojovacím řetězcem, který řídí všechna zařízení v IoT Hub. V tomto příkladu ho používáme jako aplikaci pro Android jenom pro demonstrační účely. Jiné jazykové verze tohoto rychlého startu poskytují příklady, které úzce přizpůsobují typickou aplikaci back-end služby.
 
-1. Otevřete GitHub služby ukázkový projekt pro Android v nástroji Android Studio. Projekt se nachází v následujícím adresáři klonované nebo stažených kopie [azure-iot ukázka java](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště.
+1. V Android Studio otevřete vzorový projekt pro Android Service. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
 
         \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
 
-2. V nástroji Android Studio, otevřete *gradle.properties* pro ukázku projekt a aktualizujte hodnotu **ConnectionString** a **DeviceId** vlastnosti s vaším připojením služby řetězec, který jste si předtím poznamenali a zaregistrujete zařízení s Androidem ID.
+2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt. Aktualizujte hodnoty vlastností **ConnectionString** a **DeviceID** pomocí připojovacího řetězce služby, který jste si poznamenali dříve, a ID zařízení s Androidem, které jste si zaregistrovali.
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
-3. V nástroji Android Studio, klikněte na tlačítko **souboru** > **synchronizovat projekt se soubory Gradle**. Ověřte, že dokončení sestavení.
+3. V Android Studio klikněte na **soubor** > **Synchronizace projektu se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
-   > Pokud dojde k selhání synchronizace projektu, může být pro jednu z následujících důvodů:
+   > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
    >
-   > * Verze modulu plug-in Android Gradle a Gradle z projektu odkazováno jsou zastaralé pro vaši verzi systému Android Studio. Postupujte podle [tyto pokyny](https://developer.android.com/studio/releases/gradle-plugin) odkaz a nainstalujte správná verze modulu plug-in a Gradle pro vaši instalaci.
-   > * Licenční smlouvy pro sadu Android SDK není podepsaný. Postupujte podle pokynů ve výstupu sestavení k podepisování licenční smlouvy a stáhnout sadu SDK.
+   > * Verze modulu plug-in pro Android Gradle a Gradle, na které se odkazuje v projektu, jsou zastaralé pro vaši verzi Android Studio. Podle [těchto pokynů](https://developer.android.com/studio/releases/gradle-plugin) můžete odkazovat a instalovat správné verze modulu plug-in a Gradle pro vaši instalaci.
+   > * Licenční smlouva pro Android SDK nebyla podepsána. Podle pokynů ve výstupu sestavení podepište licenční smlouvu a Stáhněte si sadu SDK.
 
-4. Po dokončení sestavení kliknutím na **spustit** > **spuštění "aplikace"** . Konfigurace aplikace pro spuštění na samostatné fyzické zařízení s Androidem nebo emulátoru Androidu. Další informace o spouštění aplikace pro Android na fyzické zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení klikněte na **spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na samostatném fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
-5. Jakmile aplikace načte, aktualizujte **nastavit Interval pro zasílání zpráv** hodnota, která se **1000** a klikněte na tlačítko **Invoke**.
+5. Po načtení aplikace aktualizujte hodnotu **nastavit interval zasílání zpráv** na **1000** a klikněte na **vyvolat**.
 
-    Zasílání zpráv interval telemetrie TH je uvedena v milisekundách. Výchozí interval telemetrie zařízení vzorku nastaven po dobu 5 sekund. Tato změna bude aktualizovat zařízení s Androidem IoT tak, aby se odesílají telemetrická data za sekundu.
+    Interval zasílání zpráv o telemetrie je v milisekundách. Výchozí interval telemetrie pro zařízení je nastavený na 5 sekund. Tato změna bude aktualizovat zařízení s Androidem IoT, aby se tato telemetrie poslala každou sekundu.
 
-    ![Zadejte interval telemetrie](media/quickstart-control-device-android/enter-telemetry-interval.png)
+    ![Zadejte interval telemetrie.](media/quickstart-control-device-android/enter-telemetry-interval.png)
 
-6. Aplikace se zobrazí potvrzení určující, zda metoda proveden úspěšně, nebo ne.
+6. Aplikace dostane potvrzení, že se metoda úspěšně spustila, nebo ne.
 
     ![Potvrzení přímé metody](media/quickstart-control-device-android/direct-method-ack.png)
 
@@ -194,11 +194,11 @@ Aplikace back-end služby IoT Hub se obvykle běží v cloudu, kde se snadněji 
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu volat přímé metody v zařízení z aplikace back-end a přidal odpověď na volání přímé metody v aplikaci simulovaného zařízení.
+V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpověděli na přímé volání metody v aplikaci simulovaného zařízení.
 
 Informace o tom, jak směrovat zprávy typu zařízení-cloud do různých cílů v cloudu, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Telemetrická data trasy pro různé koncové body pro zpracování](tutorial-routing.md)
+> [Kurz: Směrování telemetrických dat do různých koncových bodů za účelem zpracování](tutorial-routing.md)

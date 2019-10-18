@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874926"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529115"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Šířka pásma sítě virtuálního počítače
 
@@ -39,10 +39,10 @@ Virtuální počítače Azure musí mít jednu, ale může mít několik síťov
 Očekávaná odchozí propustnost a počet síťových rozhraní podporovaných jednotlivými velikostmi virtuálních počítačů je podrobně popsán v části velikosti virtuálních počítačů Azure s [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Vyberte typ, například obecné účely, a pak na výsledné stránce vyberte řadu velikostí, například Dv2-Series. Každá řada obsahuje tabulku se specifikacemi sítě v posledním sloupci s názvem, **maximální počet síťových adaptérů/očekávaný výkon sítě (MB/s)** . 
 
 Limit propustnosti se vztahuje na virtuální počítač. Propustnost není ovlivněná následujícími faktory:
-- **Počet síťových rozhraní**: Limit šířky pásma je kumulativní ze všech odchozích přenosů z virtuálního počítače.
-- **Akcelerované síťové služby**: I když může být tato funkce užitečná při dosahování publikovaného limitu, tento limit se nemění.
-- **Cíl provozu**: Všechny cíle se počítají směrem k odchozímu limitu.
-- **Protokol**: Veškerý odchozí provoz ve všech protokolech počítá směrem k limitu.
+- **Počet síťových rozhraní**: limit šířky pásma je kumulativní ze všech odchozích přenosů z virtuálního počítače.
+- **Akcelerované síťové služby**: i když může být tato funkce užitečná při dosahování publikovaného limitu, tento limit se nemění.
+- **Cíl provozu**: celkový počet cílů směrem k odchozímu limitu.
+- **Protokol**: veškerý odchozí provoz ve všech protokolech počítá směrem k limitu.
 
 ## <a name="network-flow-limits"></a>Omezení toku sítě
 
@@ -60,15 +60,15 @@ V současné době sada Azure Networking Stack podporuje 250 tisíc celkové sí
 |---|---|---|
 |<b>Dobrý výkon</b>|Toky 100 tisíc |Toky 250 tisíc|
 |<b>Snížený výkon</b>|Nad 100 tisíc toky|Nad 250 tisíc toky|
-|<b>Limit toků</b>|1M toků|1M toků|
+|<b>Limit toků</b>|Toky 500 000|Toky 500 000|
 
 Metriky jsou k dispozici v [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) ke sledování počtu toků sítě a rychlosti vytváření toku na INSTANCÍCH virtuálních počítačů nebo VMSS.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Azure-monitor-Flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 Zatížení sítě a sazby za ukončení můžou mít vliv na výkon sítě, protože vytváření připojení a ukončení sdílí procesor s rutinami zpracování paketů. Doporučujeme, abyste provedli úlohy srovnávacích testů oproti očekávaným tokům provozu a mohli škálovat úlohy správně, aby odpovídaly vašim požadavkům na výkon. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Optimalizace propustnosti sítě pro operační systém virtuálního počítače](virtual-network-optimize-network-bandwidth.md)
 - [Test propustnosti sítě](virtual-network-bandwidth-testing.md) pro virtuální počítač.

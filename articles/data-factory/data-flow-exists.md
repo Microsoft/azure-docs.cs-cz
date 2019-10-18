@@ -1,39 +1,76 @@
 ---
-title: Transformace toku dat mapování Azure Data Factory existuje
-description: Postup kontroly existujících řádků pomocí toků dat mapování služby Data Factory s transformací Exists
+title: Existuje transformace v datovém toku mapování Azure Data Factory | Microsoft Docs
+description: Vyhledat existující řádky pomocí transformace Exists v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 6048a6d30d37b9d2b46c3105c5f8eac0a9ca41c0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/16/2019
+ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387843"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527440"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Transformace toku dat mapování existuje
+# <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování.
 
+Transformace EXISTS je transformace při filtrování řádků, která kontroluje, jestli data existují v jiném zdroji nebo streamu. Výstupní datový proud obsahuje všechny řádky v levém proudu, které buď existují, nebo neexistují ve správném datovém proudu. Transformace EXISTS je podobná ```SQL WHERE EXISTS``` a ```SQL WHERE NOT EXISTS```.
 
+## <a name="configuration"></a>Konfigurace
 
-Transformace EXISTS je transformace, která při filtrování řádků zastaví nebo umožňuje procházet řádky ve vašich datech. Transformace EXISTS je podobná ```SQL WHERE EXISTS``` a ```SQL WHERE NOT EXISTS```. Po transformaci Exists budou výsledné řádky z datového proudu zahrnovat všechny řádky, ve kterých ve zdroji 2 existují hodnoty sloupců ze zdroje 1 nebo neexistují ve zdroji 2.
+V rozevíracím seznamu **správný datový proud** vyberte datový proud, který chcete zkontrolovat.
+
+Určete, jestli chcete, aby tato data existovala nebo neexistovala v nastavení s **existujícím typem** .
+
+Vyberte klíčové sloupce, které chcete porovnat, protože existují podmínky. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Chcete-li provést porovnání prostřednictvím výpočetní hodnoty, najeďte myší na rozevírací seznam sloupce a vyberte **vypočítaný sloupec**.
 
 ![Existuje nastavení](media/data-flow/exists.png "Existuje 1")
 
-Vyberte druhý zdroj pro existující, aby tok dat mohl porovnat hodnoty z streamu 1 proti streamu 2.
+### <a name="multiple-exists-conditions"></a>Existuje několik podmínek.
 
-Vyberte sloupec ze zdroje 1 a ze zdrojového kódu 2, u kterého chcete, aby se hodnoty, které chcete kontrolovat, existuje nebo neexistují.
+Pokud chcete porovnat více sloupců z každého datového proudu, přidejte podmínku New Exists kliknutím na ikonu se symbolem plus vedle existujícího řádku. Každá další podmínka je připojena příkazem "a". Porovnání dvou sloupců je stejné jako u následujícího výrazu:
 
-## <a name="multiple-exists-conditions"></a>Existuje několik podmínek.
+`source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
-U každého řádku v podmínkách sloupce pro existuje, když najedete myší na řádek dosáhnete, najdete symbol +. To vám umožní přidat více řádků pro podmínky Exists. Každá další podmínka je "a".
+### <a name="custom-expression"></a>Vlastní výraz
 
-## <a name="custom-expression"></a>Vlastní výraz
+Chcete-li vytvořit výraz ve volném formátu, který obsahuje operátory jiné než a a Equals, vyberte pole **vlastní výraz** . Kliknutím na modrý rámeček zadejte vlastní výraz pomocí Tvůrce výrazů toku dat.
 
 ![Existuje vlastní nastavení](media/data-flow/exists1.png "existuje vlastní")
 
-Můžete kliknout na vlastní výraz a místo toho vytvořit výraz volné formy jako podmínku Exists nebo NOT EXISTS. Zaškrtnutím tohoto políčka umožníte zadat vlastní výraz jako podmínku.
+## <a name="data-flow-script"></a>Skript toku dat
+
+### <a name="syntax"></a>Syntaxe
+
+```
+<leftStream>, <rightStream>
+    exists(
+        <conditionalExpression>,
+        negate: { true | false },
+        broadcast: {'none' | 'left' | 'right' | 'both'}
+    ) ~> <existsTransformationName>
+```
+
+### <a name="example"></a>Příklad:
+
+Níže uvedený příklad je transformace s názvem `checkForChanges`, která přebírá levý Stream `NameNorm2` a `TypeConversions` pravého streamu.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`, který vrací hodnotu true, pokud se ve sloupcích `EMPID` a `Region` v každém datovém proudu shodují. Po kontrole existence `negate` je false. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má `'none'` Value.
+
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+
+![Existuje příklad](media/data-flow/exists-script.png "Existuje příklad")
+
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
+
+```
+NameNorm2, TypeConversions
+    exists(
+        NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
+        negate:false,
+        broadcast: 'none'
+    ) ~> checkForChanges
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,34 +1,34 @@
 ---
-title: Nasazujte prostředky Azure na několika předplatného a skupiny prostředků. | Dokumentace Microsoftu
-description: Ukazuje, jak cílit na více než jeden Azure předplatného a skupiny prostředků během nasazování.
+title: Nasazení prostředků Azure mezi předplatnými & skupiny prostředků
+description: Ukazuje, jak během nasazení cílit více než jedno předplatné Azure a skupinu prostředků.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205470"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528329"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazujte prostředky Azure k více než jedno předplatné nebo skupinu prostředků
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Obvykle nasadit všechny prostředky ve vaší šabloně do jediné [skupiny prostředků](resource-group-overview.md). Existují ale scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do různých skupin prostředků nebo předplatných. Chcete například nasadit zálohování virtuálního počítače pro Azure Site Recovery do samostatné skupiny prostředků a umístění. Resource Manager vám umožňuje používat vnořené šablony pro cíl různých předplatných a skupin prostředků než dané předplatné a skupinu prostředků použitou pro nadřazené šablony.
+Obvykle se všechny prostředky v šabloně nasazují do jedné [skupiny prostředků](resource-group-overview.md). Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Například můžete chtít nasadit virtuální počítač pro zálohování pro Azure Site Recovery do samostatné skupiny prostředků a umístění. Správce prostředků umožňuje používat vnořené šablony pro cílení různých předplatných a skupin prostředků, než je předplatné a skupina prostředků používané pro nadřazenou šablonu.
 
 > [!NOTE]
-> Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Toto omezení obvykle znamená, že můžete nasadit do jedné skupiny prostředků pro nadřazené šablony a až čtyř skupin prostředků v nasazeních vnořenou nebo propojenou určena. Ale pokud nadřazené šablony obsahuje pouze vnořenou nebo propojenou šablony a nemá sama nasadit všechny prostředky, pak můžete vytvořit až pět skupin prostředků v nasazeních vnořenou nebo propojenou.
+> V jednom nasazení můžete nasadit jenom pět skupin prostředků. Obvykle toto omezení znamená, že můžete nasadit do jedné skupiny prostředků zadané pro nadřazenou šablonu a až čtyř skupin prostředků ve vnořených nebo propojených nasazeních. Pokud ale vaše nadřazená šablona obsahuje jenom vnořené nebo propojené šablony a sám o sobě neimplementuje žádné prostředky, můžete ve vnořených nebo propojených nasazeních zahrnout až pět skupin prostředků.
 
-## <a name="specify-a-subscription-and-resource-group"></a>Zadejte předplatné a skupinu prostředků
+## <a name="specify-a-subscription-and-resource-group"></a>Zadejte předplatné a skupinu prostředků.
 
-Cílit na jiný prostředek, použijte vnořenou nebo propojenou šablonu. `Microsoft.Resources/deployments` Poskytuje parametry pro typ prostředku `subscriptionId` a `resourceGroup`. Tyto vlastnosti umožňují zadat jiné předplatné a skupinu prostředků pro vnořené nasazení. Všechny skupiny prostředků musí existovat před spuštěním nasazení. Pokud nezadáte předplatné ID nebo skupinu prostředků, předplatné a skupinu prostředků z nadřazené šablony se používá.
+Chcete-li cílit na jiný prostředek, použijte vnořenou nebo propojenou šablonu. @No__t_0 typ prostředku poskytuje parametry pro `subscriptionId` a `resourceGroup`. Tyto vlastnosti umožňují zadat jiné předplatné a skupinu prostředků pro vnořené nasazení. Před spuštěním nasazení musí existovat všechny skupiny prostředků. Pokud nezadáte buď ID předplatného, nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony.
 
-Účet, který použijete k nasazení šablony musí mít oprávnění k nasazení na ID předplatného. Pokud zadaný odběr existuje v jiném tenantovi Azure Active Directory, je nutné [přidat uživatele typu Host z jiného adresáře](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+Účet, který použijete k nasazení šablony, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Pokud chcete nastavit jinou skupinu prostředků a předplatném, použijte:
+Pokud chcete zadat jinou skupinu prostředků a předplatné, použijte:
 
 ```json
 "resources": [
@@ -43,9 +43,9 @@ Pokud chcete nastavit jinou skupinu prostředků a předplatném, použijte:
 ]
 ```
 
-Pokud vaše skupiny prostředků jsou ve stejném předplatném, můžete odebrat **subscriptionId** hodnotu.
+Pokud jsou vaše skupiny prostředků ve stejném předplatném, můžete hodnotu **SubscriptionId** odebrat.
 
-Tento příklad nasadí dva účty úložiště – jeden ve skupině prostředků, které se zadávají během nasazení, a jednu skupinu prostředků podle `secondResourceGroup` parametr:
+Následující příklad nasadí dva účty úložiště – jeden ve skupině prostředků zadané během nasazování a jeden ve skupině prostředků zadané v parametru `secondResourceGroup`:
 
 ```json
 {
@@ -120,13 +120,13 @@ Tento příklad nasadí dva účty úložiště – jeden ve skupině prostředk
 }
 ```
 
-Pokud nastavíte `resourceGroup` na název skupiny prostředků, která neexistuje, nasazení se nezdaří.
+Pokud jste nastavili `resourceGroup` na název skupiny prostředků, která neexistuje, nasazení se nezdařilo.
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>Funkce resourceGroup() a subscription()
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>Použití funkcí Resource () a Subscription ()
 
-Pro různé nasazeními skupin prostředků [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) a [subscription()](resource-group-template-functions-resource.md#subscription) přeložit odlišně závislosti na tom, jak zadat vnořené šablony funkce. 
+Pro nasazení mezi skupinami prostředků se funkce [Resource ()](resource-group-template-functions-resource.md#resourcegroup) a [Subscription ()](resource-group-template-functions-resource.md#subscription) vyřeší odlišně podle toho, jak zadáte vnořenou šablonu. 
 
-Je-li vložit jednu šablonu v rámci jiné šablony funkce v vnořené šablony přeložit na nadřazenou skupinu prostředků a předplatném. Vložené šablony používá následující formát:
+Pokud vložíte jednu šablonu do jiné šablony, funkce ve vnořené šabloně se přeloží na nadřazenou skupinu prostředků a předplatné. Vložená šablona používá následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -142,7 +142,7 @@ Je-li vložit jednu šablonu v rámci jiné šablony funkce v vnořené šablony
 }
 ```
 
-Pokud jste do samostatné šablony, funkce v propojené šablony řešení ke skupině vnořeného prostředku a předplatné. Propojené šablony používá následující formát:
+Pokud odkazujete na samostatnou šablonu, funkce v propojené šabloně se vyřeší do vnořené skupiny prostředků a předplatného. Odkazovaná šablona používá následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -158,18 +158,18 @@ Pokud jste do samostatné šablony, funkce v propojené šablony řešení ke sk
 }
 ```
 
-## <a name="example-templates"></a>Příklad šablony
+## <a name="example-templates"></a>Příklady šablon
 
-Následující šablony ukazují více nasazeními skupin prostředků. Skripty pro nasazení šablony se zobrazí pod tabulkou.
+Následující šablony ukazují nasazení více skupin prostředků. Skripty pro nasazení šablon se zobrazí za tabulkou.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[Různé šablony předplatného](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Jeden účet úložiště do jedné skupiny prostředků a jeden účet úložiště nasadí do druhé skupiny prostředků. Zahrnout hodnotu pro ID předplatného, když druhý skupina prostředků je v jiném předplatném. |
-|[Různé vlastnosti šablony skupiny prostředků](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Ukazuje, jak `resourceGroup()` funkce odstraňuje. Všechny prostředky není nasazena. |
+|[Šablona pro různé odběry](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Nasadí jeden účet úložiště do jedné skupiny prostředků a jednoho účtu úložiště do druhé skupiny prostředků. Pokud je druhá skupina prostředků v jiném předplatném, uveďte hodnotu ID předplatného. |
+|[Šablona vlastností více skupin prostředků](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Ukazuje, jak funkce `resourceGroup()` překládá. Neimplementuje žádné prostředky. |
 
 ### <a name="powershell"></a>PowerShell
 
-Pro nasazení dva účty úložiště do dvou skupin prostředků v prostředí PowerShell **předplatným**, použijte:
+Pokud chcete v prostředí PowerShell nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -186,7 +186,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-Pro prostředí PowerShell pro nasazení dva účty úložiště, které **dva odběry**, použijte:
+Pro PowerShell můžete pro nasazení dvou účtů úložiště do **dvou předplatných**použít:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -210,7 +210,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-Pro prostředí PowerShell, k otestování jak **objekt skupiny prostředků** řeší nadřazené šablony, šablony vložené a propojené šablony, použijte:
+Pro prostředí PowerShell pro otestování toho, jak se **objekt skupiny prostředků** vyřeší pro nadřazenou šablonu, vloženou šablonu a propojenou šablonu, použijte:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-V předchozím příkladu obě **parentRG** a **inlineRG** přeložit na **parentGroup**. **linkedRG** přeloží na **linkedGroup**. Výstup z předchozího příkladu je:
+V předchozím příkladu se obě **parentRG** a **inlineRG** překládají na **nadřazenou**. **linkedRG** se překládá na **odkazovanou**. Výstup z předchozího příkladu:
 
 ```powershell
  Name             Type                       Value
@@ -255,7 +255,7 @@ V předchozím příkladu obě **parentRG** a **inlineRG** přeložit na **paren
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pro Azure CLI k nasazení do dvou skupin prostředků v dva účty úložiště **předplatným**, použijte:
+V případě Azure CLI nasazování dvou účtů úložiště do dvou skupin prostředků ve **stejném předplatném**použijte:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -270,7 +270,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Pro Azure CLI k nasazení dva účty úložiště, které **dva odběry**, použijte:
+V případě Azure CLI nasazování dvou účtů úložiště do **dvou předplatných**použijte:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -292,7 +292,7 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-Azure CLI, k otestování jak **objekt skupiny prostředků** řeší nadřazené šablony, šablony vložené a propojené šablony, použijte:
+Pro rozhraní příkazového řádku Azure CLI můžete testovat, jak se **objekt skupiny prostředků** vyřeší pro nadřazenou šablonu, vloženou šablonu a propojenou šablonu, použijte:
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -305,7 +305,7 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-V předchozím příkladu obě **parentRG** a **inlineRG** přeložit na **parentGroup**. **linkedRG** přeloží na **linkedGroup**. Výstup z předchozího příkladu je:
+V předchozím příkladu se obě **parentRG** a **inlineRG** překládají na **nadřazenou**. **linkedRG** se překládá na **odkazovanou**. Výstup z předchozího příkladu:
 
 ```azurecli
 ...
@@ -347,8 +347,8 @@ V předchozím příkladu obě **parentRG** a **inlineRG** přeložit na **paren
 ...
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
-* Tipy pro řešení běžných chyb při nasazení, najdete v části [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
-* Informace o nasazení šablony, která se vyžaduje SAS token najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md).
+* Chcete-li pochopit, jak definovat parametry v šabloně, přečtěte si téma [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](resource-manager-powershell-sas-token.md).

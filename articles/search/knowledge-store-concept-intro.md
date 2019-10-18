@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: ec0bf6002d8e90b41c2eed3c21f53e38f0fbbe8f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
-ms.translationtype: MT
+ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265222"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533778"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní úložiště v Azure Search?
 
@@ -21,17 +21,17 @@ ms.locfileid: "71265222"
 > Znalostní databáze je ve verzi Preview a není určená pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
 
-Znalostní báze je funkce Azure Search, která ukládá obohacené dokumenty a metadata vytvořená pomocí kanálu indexování založeného na AI [(vyhledávání rozpoznávání)](cognitive-search-concept-intro.md). Obohacený dokument je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí prostředků v Cognitive Services. Ve standardním kanálu založeném na AI jsou obohacené dokumenty přechodné, používá se jenom při indexování a pak se zahodí. S úložištěm Knowledge Store se dokumenty ukládají pro následné vyhodnocení, průzkum a můžou se stát vstupy pro úlohy pro datovou vědu pro příjem dat. 
+Znalostní báze je funkce Azure Search, která uchovává výstup [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro pozdější analýzu nebo jiné zpracování dat. *Obohacený dokument* je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí prostředků v Cognitive Services. Ve standardním kanálu založeném na AI jsou obohacené dokumenty přechodné, používá se jenom při indexování a pak se zahodí. S úložištěm Knowledge Store se dokumenty ukládají pro použití v jiných aplikacích nebo úlohách pro práci v oblasti datových věd. 
 
-Pokud jste v minulosti použili vyhledávání rozpoznávání, již víte, že dovednosti slouží k přesunu dokumentu pomocí sekvence rozšíření. Výsledek může být Azure Search index nebo (novinka v této verzi Preview) projekce ve znalostní bázi Knowledge Store. Dva výstupy, vyhledávací index a znalostní obchod jsou od sebe fyzicky odlišné. Sdílejí stejný obsah, ale jsou uloženy a používány velmi různými způsoby.
+Pokud jste v minulosti používali dovednosti AI s Azure Search, již víte, že *dovednosti* slouží k přesunu dokumentu v rámci posloupnosti rozšíření. Výsledek může být Azure Search index nebo (novinka v této verzi Preview) projekce ve znalostní bázi Knowledge Store. Dva výstupy, vyhledávací index a znalostní obchod jsou od sebe fyzicky odlišné. Sdílejí stejný obsah, ale jsou uloženy a používány velmi různými způsoby.
 
-V závislosti na tom, jak nakonfigurujete kanál, je úložiště znalostí fyzicky Azure Storage účet, buď jako Azure Table Storage, BLOB Storage, nebo obojí. Libovolný nástroj nebo proces, který se může připojit k Azure Storage může využívat obsah znalostní báze Knowledge Store.
+V závislosti na tom, jak nakonfigurujete kanál, je ve znalostní bázi Microsoft Knowledge Store [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), a to buď jako úložiště tabulek Azure, Azure Blob Storage, nebo v obou. Libovolný nástroj nebo proces, který se může připojit k Azure Storagemu účtu, může využívat obsah znalostní báze Knowledge Store.
 
 Projekce jsou vaším mechanismem, který slouží ke strukturování dat ve znalostní bázi Store. Například prostřednictvím projekce můžete zvolit, zda je výstup uložen jako jeden objekt BLOB nebo kolekce souvisejících tabulek. Snadný způsob, jak zobrazit obsah v obchodě Knowledge Store, je prostřednictvím integrované [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) pro Azure Storage.
 
 ![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Znalostní úložiště v diagramu kanálu")
 
-Chcete-li použít znalostní bázi Store `knowledgeStore` , přidejte element do dovednosti, který definuje krokové operace v kanálu indexování. Během provádění Azure Search v účtu úložiště Azure vytvoří prostor a projekty obohacených dokumentů s definicí vytvořenou v rámci kanálu.
+Chcete-li použít znalostní bázi Store, přidejte `knowledgeStore` element do dovednosti, který definuje krokové operace v kanálu indexování. Během provádění Azure Search v účtu úložiště Azure vytvoří prostor a projekty obohacených dokumentů s definicí vytvořenou v rámci kanálu.
 
 ## <a name="benefits-of-knowledge-store"></a>Výhody znalostní báze Knowledge Store
 
@@ -50,19 +50,26 @@ Ve výčtu jsou výhody znalostní báze Knowledge Store následující:
 > [!Note]
 > Není známo, že indexování založené na AI používá Cognitive Services? Azure Search se integruje s funkcemi Cognitive Services Vision a Language pro extrakci a obohacení zdrojových dat pomocí optického rozpoznávání znaků (OCR) přes soubory obrázků, rozpoznávání entit a extrakce klíčových frází z textových souborů a dalších. Další informace najdete v tématu [co je rozpoznávání rozpoznávání?](cognitive-search-concept-intro.md).
 
-## <a name="create-a-knowledge-store"></a>Vytvoření úložiště znalostí
+## <a name="creating-a-knowledge-store"></a>Vytváření úložiště znalostí
 
-Znalostní databáze je součástí definice dovednosti. V této verzi Preview vytváření vyžaduje REST API, pomocí `api-version=2019-05-06-Preview` nebo průvodce **importem dat** na portálu.
+Znalostní databáze je součástí [dovednostiu](cognitive-search-working-with-skillsets.md), který je zase součástí [indexeru](search-indexer-overview.md). 
 
-Následující kód JSON Určuje `knowledgeStore`, který je součástí dovednosti, který je vyvolán indexerem (nezobrazený). Specifikace projekce v rámci `knowledgeStore` určuje, zda jsou tabulky nebo objekty vytvořeny ve službě Azure Storage.
+V této verzi Preview můžete vytvořit úložiště znalostí pomocí REST API a `api-version=2019-05-06-Preview` nebo pomocí průvodce **importem dat** na portálu.
 
-Pokud už jste obeznámeni s indexováním na bázi AI, definice dovednosti určuje vytváření, organizaci a obsah jednotlivých obohacených dokumentů.
+### <a name="json-representation-of-a-knowledge-store"></a>Reprezentace ve znalostní bázi JSON pro úložiště znalostí
+
+Následující JSON určuje `knowledgeStore`, který je součástí dovednosti, který je vyvolán indexerem (nezobrazený). Pokud jste již obeznámeni s rozšířením AI, dovednosti určuje vytváření, organizaci a obsah jednotlivých obohacených dokumentů. Dovednosti musí obsahovat alespoň jednu dovednost, pravděpodobně Shaperou dovednost, pokud pracujete se strukturou dat.
+
+@No__t_0 se skládá z připojení a projekce. 
+
++ Připojení je účet úložiště ve stejné oblasti jako Azure Search. 
+
++ Projekce jsou páry tabulky – objekty. `Tables` definují fyzický výraz obohacených dokumentů v úložišti tabulek Azure. `Objects` definovat fyzické objekty v úložišti objektů BLOB v Azure.
 
 ```json
 {
   "name": "my-new-skillset",
-  "description": 
-  "Example showing knowledgeStore placement, supported in api-version=2019-05-06-Preview. You need at least one skill, most likely a Shaper skill if you are modulating data structures.",
+  "description": "Example showing knowledgeStore placement in a skillset.",
   "skills":
   [
     {
@@ -124,15 +131,9 @@ Pokud už jste obeznámeni s indexováním na bázi AI, definice dovednosti urč
 }
 ```
 
-## <a name="components-backing-a-knowledge-store"></a>Komponenty, které zálohují znalostní bázi Store
+### <a name="sources-of-data-for-a-knowledge-store"></a>Zdroje dat pro znalostní bázi Knowledge Store
 
-K vytvoření znalostní databáze potřebujete následující služby a artefakty.
-
-### <a name="1---source-data"></a>1 – zdrojová data
-
-Data nebo dokumenty, které chcete rozšířit, musí existovat ve zdroji dat Azure podporovaném Azure Search indexery: 
-
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+Pokud je znalostní báze výstupem z kanálu obohacení AI, jaké jsou vstupy? Původní data, která chcete extrahovat, rozšířit a Uložit do úložiště Knowledge Store, můžou pocházet z libovolného zdroje dat Azure podporovaného Azure Search indexery: 
 
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
@@ -140,56 +141,24 @@ Data nebo dokumenty, které chcete rozšířit, musí existovat ve zdroji dat Az
 
 * [Azure Table storage](search-howto-indexing-azure-tables.md)
 
-### <a name="2---azure-search-service"></a>2 Azure Search služba
+* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-Pro vytváření a konfiguraci objektů používaných pro obohacení dat je také potřeba služba Azure Search a REST API. REST API pro vytvoření znalostní databáze je `api-version=2019-05-06-Preview`.
+Indexery a dovednosti vytvoříte extrahování a obohacení nebo transformaci tohoto obsahu v rámci úlohy indexování a následně výsledky uložíte do úložiště znalostí.
 
-Azure Search poskytuje funkci indexeru a indexery slouží k tomu, aby provedl celý proces celých, což vede k trvalým obohaceným dokumentům ve službě Azure Storage. Indexery používají zdroj dat, index a dovednosti, které jsou potřeba k vytvoření a naplnění znalostní databáze.
+### <a name="rest-apis-used-in-creation-of-a-knowledge-store"></a>Rozhraní REST API používaná při vytváření úložiště znalostí
 
-| Object | REST API | Popis |
+Rozšíření požadovaná pro vytvoření úložiště znalostí (Create dovednosti and CREATE indexer) mají jenom dvě rozhraní API. Jiná rozhraní API se používají tak, jak jsou.
+
+| Objekt | Rozhraní REST API | Popis |
 |--------|----------|-------------|
 | Zdroj dat | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat Azure, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
-| Dovednosti | [Create dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. |
-| index | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index Azure Search. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
-| indexer | [Create Indexer (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
+| dovednosti | [Create dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. Dovednosti má definici `knowledgeStore` jako podřízený element. |
+| indexovacím | [Vytvořit index](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma, které vyjadřuje index Azure Search. Pole v indexu jsou mapována na pole ve zdrojových datech nebo na pole vyráběná během fáze obohacení (například pole pro názvy organizací vytvořená rozpoznáváním entit). |
+| indexer | [Vytvoření indexeru (rozhraní API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definující součásti používané při indexování: včetně zdroje dat, dovednosti, přidružení polí ze zdrojových a zprostředkujících datových struktur do cílového indexu a samotného indexu. Spuštění indexeru je triggerem pro přijímání a obohacení dat. Výstupem je index hledání založený na schématu indexu, vyplněný zdrojovými daty, obohacený přes dovednosti.  |
 
-### <a name="3---cognitive-services"></a>3 – Cognitive Services
+### <a name="physical-composition-of-a-knowledge-store"></a>Fyzické složení úložiště znalostí
 
-Rozšíření určená ve dovednosti jsou vlastní nebo založená na funkcích Počítačové zpracování obrazu a jazyka v Cognitive Services. Při indexování prostřednictvím dovednosti se využívá funkce Cognitive Services. Dovednosti je složení dovedností a dovednosti jsou vázány na konkrétní Počítačové zpracování obrazu a jazykové funkce. Pokud chcete integrovat Cognitive Services, [připojíte prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md) k dovednosti.
-
-### <a name="4---storage-account"></a>4\. účet úložiště
-
-V rámci účtu Azure Storage Azure Search vytvoří kontejner objektů BLOB nebo tabulky nebo obojí v závislosti na tom, jak nakonfigurujete projekce v rámci dovednosti. Pokud vaše data pocházejí z Azure Blob nebo Table Storage, už jste nastavili a mohli znovu použít účet úložiště. V opačném případě budete muset vytvořit účet služby Azure Storage. Tabulky a objekty ve službě Azure Storage obsahují obohacené dokumenty, které vytvořil kanál indexování založený na AI.
-
-Účet úložiště je určený v dovednosti. V `api-version=2019-05-06-Preview`nástroji obsahuje definice dovednosti definici obchodu s poznatky, abyste mohli zadat informace o účtu.
-
-<a name="tools-and-apps"></a>
-
-### <a name="5---access-and-consume"></a>5 – přístup a využití
-
-Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nástroj nebo technologii, která se připojuje ke službě Azure Blob nebo Table Storage, k prozkoumávání, analýze nebo využívání obsahu. Následující seznam je začátek:
-
-+ [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) k zobrazení obohacené struktury dokumentu a obsahu. Vezměte ho jako základní nástroj pro zobrazení obsahu znalostní databáze.
-
-+ [Power BI s Power Query](https://support.office.com/article/connect-to-microsoft-azure-blob-storage-power-query-f8165faa-4589-47b1-86b6-7015b330d13e) pro dotazy v přirozeném jazyce nebo v případě, že máte číselná data, použijte nástroje pro vytváření sestav a analýzy.
-
-+ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) pro další manipulaci.
-
-+ Azure Search index pro fulltextové vyhledávání obsahu, který jste nahlásili pomocí [vyhledávání rozpoznávání](cognitive-search-concept-intro.md).
-
-## <a name="document-persistence"></a>Trvalost dokumentu
-
-V rámci účtu úložiště se rozšíření dají vyjádřit jako tabulky ve službě Azure Table Storage nebo jako objekty v úložišti objektů BLOB v Azure. Odvolání těchto rozšíření po uložení lze použít jako zdroj pro načtení dat do jiných databází a nástrojů.
-
-+ Table Storage je užitečné, pokud chcete, aby reprezentace dat v tabulkovém formátu zohledňující schéma. Chcete-li znovu tvarovat nebo znovu kombinovat prvky novými způsoby, poskytuje úložiště tabulek nezbytné členitost.
-
-+ Úložiště objektů BLOB vytvoří jedno (včetně) reprezentace JSON každého dokumentu. Můžete použít možnosti úložiště v jednom dovednosti a získat tak celou škálu výrazů.
-
-+ Azure Search uchovává obsah v indexu. Pokud se jedná o scénář, který nesouvisí s vyhledáváním, například pokud je váš cíl analýzou jiného nástroje, můžete index, který vytvoří kanál, odstranit. Ale můžete také zachovat index a použít vestavěný nástroj, jako je [Průzkumník služby Search](search-explorer.md) , jako třetí médium (za Průzkumník služby Storage a vaši analytickou aplikaci) pro interakci s obsahem.  
-
-## <a name="inside-a-knowledge-store"></a>Ve znalostní bázi Knowledge Store
-
- *Projekce* definuje schéma a strukturu obohacení, které odpovídají zamýšlenému použití. Můžete definovat více projekcí, pokud máte aplikace, které data využívají v různých formátech a tvarech. 
+ *Projekce*, která je prvkem definice `knowledgeStore`, kloubuje schéma a strukturu výstupu tak, aby odpovídala zamýšlenému použití. Můžete definovat více projekcí, pokud máte aplikace, které data využívají v různých formátech a tvarech. 
 
 Projekce můžou být nakloubované jako objekty nebo tabulky:
 
@@ -200,6 +169,19 @@ Projekce můžou být nakloubované jako objekty nebo tabulky:
 Ve znalostní bázi můžete vytvořit více výčnělků, které budou vyhovovat různým constituencies ve vaší organizaci. Vývojář může potřebovat přístup k úplnému vyjádření formátu JSON obohaceného dokumentu, zatímco odborníci na data mohou chtít, aby odborníci na data a analytiky mohli podrobit a modulární datové struktury ve tvaru dovednosti.
 
 Například pokud jeden z cílů procesu rozšíření je také vytvořit datovou sadu, která se používá pro výuku modelu, prochází data do úložiště objektů jedním ze způsobů, jak použít data v kanálech pro datové vědy. Případně, pokud chcete vytvořit rychlý Power BI řídicí panel na základě obohacených dokumentů, bude tabulková projekce dobře fungovat.
+
+<a name="tools-and-apps"></a>
+
+## <a name="connecting-with-tools-and-apps"></a>Připojení k nástrojům a aplikacím
+
+Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nástroj nebo technologii, která se připojuje ke službě Azure Blob nebo Table Storage, k prozkoumávání, analýze nebo využívání obsahu. Následující seznam je začátek:
+
++ [Průzkumník služby Storage](knowledge-store-view-storage-explorer.md) k zobrazení obohacené struktury dokumentu a obsahu. Vezměte ho jako základní nástroj pro zobrazení obsahu znalostní databáze.
+
++ [Power BI](knowledge-store-connect-power-bi.md) pro sestavy a analytické nástroje, pokud máte číselná data.
+
++ [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) pro další manipulaci.
+
 
 <!---
 ## Data lifecycle and billing
@@ -231,29 +213,28 @@ Although Azure Search creates and updates structures and content in Azure storag
 
 -->
 
-## <a name="where-do-i-start"></a>Kde mám začít?
+<!-- ## Where do I start?
 
-Pro účely učení doporučujeme bezplatnou službu, ale mějte na paměti, že počet bezplatných transakcí je omezený na 20 dokumentů za den a na předplatné.
+We recommend the Free service for learning purposes, but be aware that the number of free transactions is limited to 20 documents per day, per subscription.
 
-Pokud používáte víc služeb, vytvořte si všechny služby ve stejné oblasti, aby se co nejlépe vyzpůsobily a minimalizovaly náklady. Neúčtují se vám šířka pásma pro příchozí data nebo odchozí data, která přecházejí do jiné služby ve stejné oblasti.
+When using multiple services, create all of your services in the same region for best performance and to minimize costs. You are not charged for bandwidth for inbound data or outbound data that goes to another service in the same region.
 
-**Krok 1: [Vytvoření prostředku Azure Search](search-create-service-portal.md)** 
+**Step 1: [Create an Azure Search resource](search-create-service-portal.md)** 
 
-**Krok 2: [Vytvoření účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
+**Step 2: [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
 
-**Krok 3: [Vytvoření prostředku Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
+**Step 3: [Create a Cognitive Services resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
 
-**Krok 4: Začněte [s portálem](cognitive-search-quickstart-blob.md) nebo začněte [s ukázkovými daty pomocí Rest a předzálohovacího](knowledge-store-howto.md) programu.** 
+**Step 4: [Get started with the portal](cognitive-search-quickstart-blob.md) - or - [Get started with sample data using REST and Postman](knowledge-store-howto.md)** 
 
-Pomocí REST `api-version=2019-05-06-Preview` můžete vytvořit kanál založený na AI, který zahrnuje znalostní bázi Store. V nejnovější verzi Preview rozhraní API poskytuje `knowledgeStore` objekt dovednosti definici.
-
-## <a name="takeaways"></a>Shrnutí
-
-Znalostní báze Knowledge Store nabízí celou řadu výhod, včetně neomezeného využívání obohacených dokumentů ve scénářích jiných než hledání, řízení nákladů a Správa posunu v procesu rozšíření. Tyto funkce jsou k dispozici, stačí, když do dovednosti přidáte účet úložiště a použijete aktualizovaný jazyk výrazů, jak je popsáno v tématu [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md). 
+You can use REST `api-version=2019-05-06-Preview` to construct an AI-based pipeline that includes knowledge store. In the newest preview API, the Skillset object provides the `knowledgeStore` definition. -->
 
 ## <a name="next-steps"></a>Další kroky
 
-Nejjednodušším přístupem k vytváření obohacených dokumentů je průvodce **importem dat** .
+Znalostní báze Knowledge Store nabízí persistenci obohacených dokumentů, které jsou užitečné při navrhování dovednosti nebo vytváření nových struktur a obsahu pro použití všemi klientskými aplikacemi, které mají přístup k Azure Storagemu účtu.
+
+Nejjednodušším přístupem k vytváření obohacených dokumentů je průvodce **importem dat** , ale můžete také použít příkaz post a REST API, který je užitečnější, pokud chcete získat přehled o způsobu vytváření a odkazů na objekty.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vyzkoušet rozpoznávání rozpoznávání v průvodci na portálu](cognitive-search-quickstart-blob.md)
+> [Vytvoření úložiště znalostí pomocí portálu](knowledge-store-create-portal.md) 
+> [vytvoření znalostní báze pomocí metody post a rozhraní REST APi](knowledge-store-create-rest.md)

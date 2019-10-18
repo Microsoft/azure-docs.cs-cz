@@ -1,17 +1,17 @@
 ---
-title: Řešení chyb při přesunu prostředků Azure do nového předplatného nebo skupiny prostředků
-description: Použití Azure Resource Manageru k přesunutí prostředků do nové skupiny prostředků nebo předplatného.
+title: Řešení chyb při přesunu – Azure Resource Manager
+description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: d56f6a5ffe01540b9ce1e5a20ec628a90da594c6
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 383098ab227013119bca668b42035c93334c8464
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061775"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533351"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného
 
@@ -21,10 +21,10 @@ Tento článek popisuje návrhy, které vám pomůžou vyřešit problémy při 
 
 Pokud ve skutečnosti chcete upgradovat předplatné Azure (jako je například přepínání z bezplatného na průběžné platby), budete muset převést své předplatné.
 
-* Upgrade bezplatné zkušební verze, najdete v článku [upgradujte vaše předplatné Microsoft Imagine Azure nebo bezplatná zkušební verze na průběžné platby](../billing/billing-upgrade-azure-subscription.md).
-* Chcete-li změnit účet s průběžnými platbami, [změnit předplatné Azure s průběžnými platbami na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
+* Pokud chcete upgradovat bezplatnou zkušební verzi, přečtěte si téma [upgrade bezplatné zkušební verze nebo Microsoft Imagine předplatné Azure na průběžné platby](../billing/billing-upgrade-azure-subscription.md).
+* Pokud chcete změnit účet s průběžnými platbami, přečtěte si téma [Změna předplatného s průběžnými platbami Azure na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
 
-Pokud nelze převést předplatné [vytvoření žádosti o podporu Azure](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
+Pokud předplatné nepřevedete, [vytvořte žádost o podporu Azure](../azure-supportability/how-to-create-azure-support-request.md). Jako typ problému vyberte **Správa předplatného** .
 
 ## <a name="service-limitations"></a>Omezení služby
 
@@ -33,13 +33,13 @@ Některé služby vyžadují při přesunu prostředků další předpoklady. Po
 * [App Services](./move-limitations/app-service-move-limitations.md)
 * [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [Model nasazení Classic](./move-limitations/classic-model-move-limitations.md)
-* [Sítě](./move-limitations/networking-move-limitations.md)
+* [Networking](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Velké požadavky
 
-Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Správce prostředků okamžitě vrátí chybu, pokud je v jedné operaci více než 800 prostředků. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+Pokud je to možné, přerušit velké přesunuté operace do samostatných operací přesunutí. Správce prostředků okamžitě vrátí chybu, pokud je v jedné operaci více než 800 prostředků. Přechod na méně než 800 prostředků ale může selhat také vypršením časového limitu.
 
 ## <a name="resource-not-in-succeeded-state"></a>Prostředek není v úspěšném stavu.
 
@@ -49,6 +49,6 @@ Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, p
 
 Pokud se zobrazí tato chyba, máte dvě možnosti. Buď přesuňte prostředky do skupiny prostředků, která nemá virtuální síť, nebo se obraťte na [podporu](../azure-supportability/how-to-create-azure-support-request.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.
+Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).

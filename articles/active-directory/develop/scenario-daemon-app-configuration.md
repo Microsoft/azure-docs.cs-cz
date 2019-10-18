@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394137a1b7901a3272e36f6a6d74944b87f30082
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056492"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527063"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -34,7 +34,7 @@ Knihovny Microsoftu podporující aplikace démona jsou:
   Knihovna MSAL | Popis
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporované platformy pro sestavení aplikace démona jsou .NET Framework a platformy .NET Core (ne UWP, Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací).
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Vývoj v průběhu verze Public Preview
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Vývoj v průběhu verze Public Preview
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Kompilátor | Vývoj v průběhu verze Public Preview
 
 ## <a name="configuration-of-the-authority"></a>Konfigurace autority
@@ -43,7 +43,7 @@ Vzhledem k tom, že aplikace démona nepoužívají delegovaná oprávnění, al
 
 Proto by autorita zadaná v konfiguraci aplikace měla být přihlášená klientovi (zadáním ID tenanta nebo názvu domény přidruženého k vaší organizaci).
 
-Pokud jste nezávislý výrobce softwaru a chcete poskytnout více tenantů nástroje, můžete použít `organizations`. Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v tématu o [žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . V současné době je také omezení MSAL: `organizations` je povoleno pouze v případě, že přihlašovací údaje klienta jsou tajné jako tajný kód aplikace (nikoli certifikát).
+Pokud jste nezávislý výrobce softwaru a chcete poskytnout více tenantů nástroje, můžete použít `organizations`. Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v tématu o [žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . V současné době je také omezení MSAL: `organizations` je povoleno pouze v případě, že jsou přihlašovací údaje klienta klíčem aplikace (nikoli certifikát).
 
 ## <a name="application-configuration-and-instantiation"></a>Konfigurace a instance aplikace
 
@@ -126,14 +126,14 @@ Chcete-li vytvořit instanci aplikace MSAL, musíte:
 - Přidání, odkazování nebo Import balíčku MSAL (v závislosti na jazyku)
 - Pak se konstrukce liší v závislosti na tom, jestli používáte klientské tajné klíče nebo certifikáty (nebo jako pokročilé scénáře, podepsané kontrolní výrazy).
 
-Aplikace démona bude prezentována`IConfidentialClientApplication`
+Aplikace démona bude prezentována `IConfidentialClientApplication`
 
 #### <a name="reference-the-package"></a>Odkaz na balíček
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 Přidejte do své aplikace balíček NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) .
-V MSAL.NET je aplikace důvěrného klienta reprezentovaná `IConfidentialClientApplication` rozhraním.
+V MSAL.NET je aplikace důvěrného klienta reprezentovaná rozhraním `IConfidentialClientApplication`.
 Použití oboru názvů MSAL.NET ve zdrojovém kódu
 
 ```CSharp
@@ -243,7 +243,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         .build();
 ```
 
-or
+nebo
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -269,7 +269,7 @@ MSAL.NET má dvě metody pro poskytování podepsaných kontrolních výrazů do
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Když použijete `WithClientAssertion`, musíte poskytnout podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md) .
+Pokud používáte `WithClientAssertion`, je nutné zadat podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md) .
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -295,7 +295,7 @@ Další podrobnosti najdete v tématu [kontrolní výrazy klienta](msal-net-clie
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication`privátním klíčem.
+V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication` privátním klíčem.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -321,5 +321,19 @@ msal4j je ve verzi Public Preview. Podepsané kontrolní výrazy se zatím nepod
 
 ## <a name="next-steps"></a>Další kroky
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Aplikace démona – získávání tokenů pro aplikaci](./scenario-daemon-acquire-token.md)
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Aplikace démona – získávání tokenů pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

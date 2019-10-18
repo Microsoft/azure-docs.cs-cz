@@ -5,49 +5,61 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694947"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528021"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Práce s NSG přístupem a Azure bastionu (Preview)
+# <a name="working-with-nsg-access-and-azure-bastion"></a>Práce s NSG přístupem a Azure bastionu
 
 Při práci s Azure bastionu můžete použít skupiny zabezpečení sítě (skupin zabezpečení sítě). Další informace najdete v tématu [skupiny zabezpečení](../virtual-network/security-overview.md). 
 
-> [!IMPORTANT]
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
-![Architektura](./media/bastion-nsg/nsg_architecture.png)
+![Architektura](./media/bastion-nsg/nsg-architecture.png)
 
 V tomto diagramu:
 
 * Hostitel bastionu je nasazený ve virtuální síti.
 * Uživatel se připojí k Azure Portal pomocí libovolného prohlížeče HTML5.
-* Uživatel vybere virtuální počítač, ke kterému se má připojit.
-* Jediným kliknutím se v prohlížeči otevře relace RDP/SSH.
+* Uživatel přejde k virtuálnímu počítači Azure na RDP/SSH.
+* Propojení integrace – relace RDP/SSH v prohlížeči jediným kliknutím
 * Na virtuálním počítači Azure se nevyžaduje žádná veřejná IP adresa.
 
 ## <a name="nsg"></a>Skupiny zabezpečení sítě
 
-* **AzureBastionSubnet:** Azure bastionu je nasazený v konkrétní AzureBastionSubnet.  
-    * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
-    * **Odchozí přenos dat do cílových virtuálních počítačů:** Azure bastionu se dostane k cílovým virtuálním počítačům přes privátní IP adresu. Skupin zabezpečení sítě musí umožňovat přenos odchozího provozu do jiných cílových podsítí virtuálních počítačů.
+V této části se dozvíte, jak se síťový provoz mezi uživatelem a službou Azure bastionu a kdy do cílových virtuálních počítačů ve vaší virtuální síti:
+
+### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+
+Azure bastionu se nasazuje konkrétně pro AzureBastionSubnet.
+
+* **Příchozí přenos dat:**
+
+   * **Příchozí přenos dat z veřejného Internetu:** Azure bastionu vytvoří veřejnou IP adresu, která potřebuje port 443 povolený ve veřejné IP adrese pro přenos příchozích dat. Na AzureBastionSubnet se nevyžaduje otevřít port 3389/22.
+   * **Příchozí přenos dat z roviny ovládacího prvku Azure bastionu:** Pro připojení řídicí roviny povolte port 443 příchozí ze značky služby **GatewayManager** . To umožňuje, aby řídicí plocha, kterou správce bran, mohla komunikovat se službou Azure bastionu.
+
+* **Odchozí přenos dat:**
+
+   * **Odchozí přenos dat do cílových virtuálních počítačů:** Azure bastionu se dostane k cílovým virtuálním počítačům přes privátní IP adresu. Skupin zabezpečení sítě musí umožňovat přenos odchozího provozu do jiných cílových podsítí virtuálních počítačů pro porty 3389 a 22.
+   * **Odchozí přenos dat do jiných veřejných koncových bodů v Azure:** Azure bastionu musí být schopný se připojit k různým veřejným koncovým bodům v rámci Azure (například pro ukládání protokolů diagnostiky a měřičů měření). Z tohoto důvodu Azure bastionu potřebuje pro značku služby **AzureCloud** odchozí až 443.
+
 * **Cílová podsíť virtuálních počítačů:** Jedná se o podsíť, která obsahuje cílový virtuální počítač, ke kterému chcete protokol RDP/SSH.
-    * **Příchozí přenos dat z Azure bastionu:** Azure bastionu se bude přistihnout k cílovému virtuálnímu počítači přes privátní IP adresu. Porty RDP/SSH (porty 3389 a 22) je potřeba otevřít na cílové straně virtuálního počítače přes soukromou IP adresu.
+
+   * **Příchozí přenos dat z Azure bastionu:** Azure bastionu se bude přistihnout k cílovému virtuálnímu počítači přes privátní IP adresu. Porty RDP/SSH (porty 3389/22) se musí na cílové straně virtuálního počítače otevřít přes soukromou IP adresu. Osvědčeným postupem je v tomto pravidle přidat rozsah IP adres podsítě Azure bastionu, aby bylo možné otevřít tyto porty na cílových virtuálních počítačích v podsíti cílového virtuálního počítače jenom v bastionu.
 
 ## <a name="apply"></a>Použít skupin zabezpečení sítě na AzureBastionSubnet
 
-Pokud skupin zabezpečení sítě použijete pro **AzureBastionSubnet**, povolte následující dvě značky služeb pro řídicí plochu a infrastrukturu Azure:
+Pokud vytvoříte a použijete NSG na ***AzureBastionSubnet***, ujistěte se, že jste do svého NSG přidali následující pravidla. Pokud tato pravidla nepřidáte, vytvoření nebo aktualizace NSG se nezdaří:
 
-* **GatewayManager (pouze správce prostředků)** : Tato značka označuje předpony adresy služby Azure Gateway Manager. Pokud pro hodnotu zadáte GatewayManager, provoz se povolí nebo odepře GatewayManager.  Pokud vytváříte skupin zabezpečení sítě na AzureBastionSubnet, povolte pro příchozí provoz značku GatewayManager.
+* **Konektivita řídicí roviny:** Příchozí na 443 z GatewayManager
+* **Protokolování diagnostiky a další:** Odchozí na 443 až AzureCloud. Regionální značky v této značce služby se zatím nepodporují.
+* **Cílový virtuální počítač:** Odchozí pro 3389 a 22 až VirtualNetwork
 
-* **AzureCloud (jenom správce prostředků)** : Tato značka označuje adresní prostor IP adres pro Azure včetně všech veřejných IP adres Datacenter. Pokud pro tuto hodnotu zadáte AzureCloud, provoz se povolí nebo zamítne na veřejné IP adresy Azure. Pokud chcete povolený přístup jenom k AzureCloud v konkrétní oblasti, můžete zadat oblast. Pokud například chcete v Východní USA oblasti použít jenom přístup k Azure AzureCloud, můžete jako značku služby zadat AzureCloud. EastUS. Pokud vytváříte skupin zabezpečení sítě na AzureBastionSubnet, povolte pro odchozí přenosy značku AzureCloud. Pokud otevřete port 443 pro příchozí připojení k Internetu, nebudete muset povolit značku AzureCloud pro příchozí provoz.
+Příklad pravidla NSG je k dispozici pro referenci v této [šabloně pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure bastionu najdete v tématu [Nejčastější dotazy](bastion-faq.md) .
+Další informace o Azure bastionu najdete v [nejčastějších dotazech](bastion-faq.md).

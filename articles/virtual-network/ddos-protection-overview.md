@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5c964eaf3cae4f4f47724c59caf9ff60d9f4d2cd
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ef2319f18b6df15fd7f33e9344e8506f853f47e6
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336303"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532224"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled Azure DDoS Protection Standard
 
@@ -28,10 +28,10 @@ Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozb�
 
 Ochrana Azure DDoS v kombinaci s osvědčenými postupy návrhu aplikací zajišťuje ochranu před útoky DDoS. Azure DDoS Protection poskytuje následující úrovně služeb:
 
-- **Základní**: Automatické povolení jako součást platformy Azure. Nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase zajišťuje stejnou ochranu, jakou využívají online služby Microsoftu. Celá škála globální sítě Azure se dá použít k distribuci a zmírnění provozu útoku napříč oblastmi. Ochrana je k dispozici pro [veřejné IP adresy](virtual-network-public-ip-address.md)IPv4 a IPv6.
-- **Standardní**: Poskytuje další funkce pro zmírnění rizik oproti základní úrovni služby, které jsou vyladěné konkrétně na prostředky Azure Virtual Network. DDoS Protection Standard se snadno povoluje a nevyžaduje žádné změny aplikací. Zásady ochrany jsou vyladěny prostřednictvím vyhrazeného monitorování provozu a algoritmů strojového učení. Zásady se použijí na veřejné IP adresy přidružené k prostředkům nasazeným ve virtuálních sítích, jako jsou Azure Load Balancer, Azure Application Gateway a instance služby Azure Service Fabric, ale tato ochrana se nevztahuje na App Service prostředí. Telemetrie v reálném čase jsou k dispozici prostřednictvím Azure Monitor zobrazení během útoku a pro historii. K dispozici je rozsáhlé analýzy zmírnění útoků prostřednictvím nastavení diagnostiky. Ochranu aplikační vrstvy lze přidat prostřednictvím [brány firewall webových aplikací Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo instalací brány firewall od jiného výrobce z Azure Marketplace. Ochrana je k dispozici pro [veřejné IP adresy](virtual-network-public-ip-address.md)IPv4 a IPv6.
+- **Základní**: automaticky se povoluje jako součást platformy Azure. Nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase zajišťuje stejnou ochranu, jakou využívají online služby Microsoftu. Celá škála globální sítě Azure se dá použít k distribuci a zmírnění provozu útoku napříč oblastmi. Ochrana je k dispozici pro [veřejné IP adresy](virtual-network-public-ip-address.md)IPv4 a IPv6.
+- **Standard**: poskytuje další funkce pro zmírnění rizik oproti základní úrovni služby, které jsou vyladěné konkrétně na prostředky Azure Virtual Network. DDoS Protection Standard se snadno povoluje a nevyžaduje žádné změny aplikací. Zásady ochrany jsou vyladěny prostřednictvím vyhrazeného monitorování provozu a algoritmů strojového učení. Zásady se použijí na veřejné IP adresy přidružené k prostředkům nasazeným ve virtuálních sítích, jako jsou Azure Load Balancer, Azure Application Gateway a instance služby Azure Service Fabric, ale tato ochrana se nevztahuje na App Service prostředí. Telemetrie v reálném čase jsou k dispozici prostřednictvím Azure Monitor zobrazení během útoku a pro historii. K dispozici je rozsáhlé analýzy zmírnění útoků prostřednictvím nastavení diagnostiky. Ochranu aplikační vrstvy lze přidat prostřednictvím [brány firewall webových aplikací Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo instalací brány firewall od jiného výrobce z Azure Marketplace. Ochrana je k dispozici pro [veřejné IP adresy](virtual-network-public-ip-address.md)IPv4 a IPv6.
 
-|Funkce                                         |DDos Protection Basic                 |DDos Protection Standard                      |
+|Funkce                                         |DDoS Protection Basic                 |DDoS Protection Standard                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |Monitorování aktivního provozu & vždy při detekci |Ano                                   |Ano                                           |
 |Automatické zmírnění útoků                    |Ano                                   |Ano                                           |
@@ -40,18 +40,18 @@ Ochrana Azure DDoS v kombinaci s osvědčenými postupy návrhu aplikací zajiš
 |Metriky a výstrahy                                |Ne                                    |Metriky útoku v reálném čase & diagnostické protokoly přes Azure monitor                                 |
 |Sestavy o zmírnění rizik                              |Ne                                    |Sestavy o zmírnění útoků po útoku                |
 |Protokoly toku pro zmírnění rizik                            |Ne                                    |Datový proud protokolu NRT pro integraci SIEM           |
-|Přizpůsobení zásad migrace                 |Ne                                    |Zapojení odborníků na DDos                           |
-|Podpora                                         |Nejlepší úsilí                           |Přístup k odborníkům na DDOs během aktivního útoku|
-|SLA                                             |Oblast Azure                          |Záruka aplikace & nákladová ochrana       |
-|Ceny                                         |Zdarma                                  |Na základě měsíčních & využití                         |
+|Přizpůsobení zásad migrace                 |Ne                                    |Zapojení odborníků na DDoS                           |
+|Podpora                                         |Nejlepší úsilí                           |Přístup k odborníkům na DDoS během aktivního útoku|
+|Smlouva SLA                                             |Oblast Azure                          |Záruka aplikace & nákladová ochrana       |
+|Ceny                                         |Zadarmo                                  |Na základě měsíčních & využití                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>Typy útoků DDoS, které DDoS Protection standardní zmírňující rizika
 
 DDoS Protection Standard může zmírnit následující typy útoků:
 
-- **Objemné útoky**: Cílem útoku je zahlcení síťové vrstvy významnou velikostí zdánlivě legitimního provozu. Zahrnuje zaplavení UDP, zahlcení zesílení a další falešná zaplave paketů. DDoS Protection Standard snižuje riziko těchto potenciálních útoků s více gigabajty tím, že je absorbuje a je bude používat globální škálování v síti Azure, a to automaticky.
-- **Útoky protokolu**: Tyto útoky vykreslují cíl nepřístupný, protože využívají slabiny vrstvy 3 a protokolu vrstvy 4. Zahrnuje útoky na zaplavení SYN, útoky na reflexi a další útoky protokolu. DDoS Protection Standard tyto útoky omezuje, rozlišuje mezi škodlivým a oprávněným provozem interakci s klientem a blokuje škodlivý provoz. 
-- **Útoky na vrstvy prostředků (aplikace)** : Tyto útoky cílí na pakety webových aplikací, aby narušily přenos dat mezi hostiteli. K útokům patří narušení protokolu HTTP, vkládání SQL, skriptování mezi weby a další útoky vrstvy 7. Pro zajištění ochrany před těmito útoky použijte [bránu firewall webových aplikací Azure Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)s DDoS Protectionm standardem. K dispozici jsou také nabídky firewallu webových aplikací třetích stran dostupné v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
+- Navýšení **útoků**: cílem útoku je zahlcení síťové vrstvy významnou velikostí zdánlivě legitimního provozu. Zahrnuje zaplavení UDP, zahlcení zesílení a další falešná zaplave paketů. DDoS Protection Standard snižuje riziko těchto potenciálních útoků s více gigabajty tím, že je absorbuje a je bude používat globální škálování v síti Azure, a to automaticky.
+- **Útoky protokolu**: Tyto útoky generují cíl nepřístupný, protože využívají slabiny vrstvy 3 a protokolu vrstvy 4. Zahrnuje útoky na zaplavení SYN, útoky na reflexi a další útoky protokolu. DDoS Protection Standard tyto útoky omezuje, rozlišuje mezi škodlivým a oprávněným provozem interakci s klientem a blokuje škodlivý provoz. 
+- **Útoky na vrstvy prostředků (aplikace)** : Tyto útoky cílí na pakety webových aplikací a přerušují přenos dat mezi hostiteli. K útokům patří narušení protokolu HTTP, vkládání SQL, skriptování mezi weby a další útoky vrstvy 7. Pro zajištění ochrany před těmito útoky použijte [bránu firewall webových aplikací Azure Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)s DDoS Protectionm standardem. K dispozici jsou také nabídky firewallu webových aplikací třetích stran dostupné v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 
 DDoS Protection Standard chrání prostředky ve virtuální síti, včetně veřejných IP adres přidružených k virtuálním počítačům, nástrojům pro vyrovnávání zatížení a aplikačním branám. Při spojení s bránou firewall pro Application Gateway webových aplikací může DDoS Protection Standard poskytnout plnou vrstvu 3 schopnost omezit omezení vrstvy 7.
 
@@ -67,7 +67,7 @@ Mezi DDoS Protection standardní funkce patří:
 - **Adaptivní ladění:** Inteligentní profilace provozu zjišťuje provoz vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil se v průběhu času upraví jako změny provozu.
 - **Víceúrovňová ochrana:** Poskytuje úplnou ochranu zásobníku DDoS při použití s bránou firewall webových aplikací.
 - **Rozsáhlá škála rizik:** U více než 60 různých typů útoků se dá zmírnit s globální kapacitou, která se bude chránit před největším známými DDoS útoky.
-- **Analýza útoků:** V pětiminutových intervalech můžete během útoku získávat podrobné sestavy. Po skončení útoku obdržíte úplný souhrn. V průběhu útoku se protokoly o zmírnění rizik streamování protokolují do systému v režimu offline SIEM (Information Security and Event Management) pro téměř v reálném čase.
+- **Analýza útoků:** Získejte podrobné sestavy během útoku za 5 minut a kompletní souhrn po skončení útoku. V průběhu útoku se protokoly o zmírnění rizik streamování protokolují do systému v režimu offline SIEM (Information Security and Event Management) pro téměř v reálném čase.
 - **Metriky útoku:** Souhrnná metrika z každého útoku je přístupná prostřednictvím Azure Monitor.
 - **Výstrahy útoku:** Výstrahy se dají nakonfigurovat na začátku a na konci útoku a přes dobu trvání útoku pomocí integrované metriky útoku. Výstrahy se integrují do svého provozního softwaru, jako je Microsoft Azure monitorování protokolů, Splunk, Azure Storage, e-mailu a Azure Portal.
 - **Záruka nákladů:** Kredity služeb pro přenos dat a škálování aplikací pro dokumentované DDoS útoky.
@@ -81,7 +81,7 @@ DDoS Protection Standard monitoruje skutečné využití provozu a trvale ho por
 Během zmírnění ochrany se provoz odeslaný do chráněného prostředku přesměruje pomocí služby DDoS Protection a provede se několik kontrol, například následující kontroly:
 
 - Zajistěte, aby pakety odpovídaly specifikacím Internetu a nejsou poškozeny.
-- Můžete komunikovat s klientem a zjistit, jestli je přenos potenciálně falešným paketem (např. Ověřování SYN nebo soubor cookie SYN nebo vyřazením paketu pro zdroj, který ho má znovu přenést).
+- Interakci s klientem, aby bylo možné zjistit, zda je přenos potenciálně falešným paketem (například soubor. cookie SYN nebo souborů cookie SYN nebo vyřazením paketu pro zdroj, který ho znovu odešle).
 - Pakety s omezením četnosti, pokud není možné provést žádnou jinou metodu vynucení.
 
 DDoS Protection blokuje přenos dat a přepošle zbývající provoz do zamýšleného cíle. Během několika minut detekce útoku jste byli upozorňováni pomocí Azure Monitor metriky. Konfigurací protokolování na DDoS Protection standardní telemetrie můžete protokoly zapsat na dostupné možnosti pro budoucí analýzu. Data metriky v Azure Monitor pro DDoS Protection Standard se uchovávají po dobu 30 dnů.

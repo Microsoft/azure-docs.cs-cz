@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal | Microsoft Docs
+title: Nasazení šablony Správce prostředků – Azure Portal
 description: Přečtěte si, jak si můžete na portálu Azure Portal vytvořit první šablonu Azure Resource Manageru a jak ji nasadit.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 708656ee88f5bacaa498bcd84fde34d69228d28b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 109c838d903faee7510441a8b3d502a7e95d8bb4
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170285"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533666"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
@@ -45,7 +45,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     |Name (Název)|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte **vytvořit novou**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
-    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva oznamující, že název účtu úložiště mystorage1016 se už používá, zkuste použít **&lt;your název > úložiště @ no__t-2Today's datum v MMDD >** , například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming).|
+    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva oznamující, že název účtu úložiště mystorage1016 se už používá, zkuste použít **&lt;your název > &lt;Today datum úložiště v MMDD >** , například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming).|
 
     Pro zbývající vlastnosti můžete použít výchozí hodnoty.
 

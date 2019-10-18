@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034204"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516568"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Použití IoT Edge ve Windows ke spouštění kontejnerů Linux
 
@@ -24,11 +24,11 @@ V produkčním scénáři by měla zařízení s Windows spouštět jenom kontej
 
 V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge s využitím kontejnerů Linux v systému Windows x64 (AMD/Intel). Další informace o instalačním programu IoT Edge runtime, včetně podrobností o všech parametrech instalace, najdete v tématu [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podporuje IoT Edge, a připravit ho pro modul kontejneru před instalací. 
 
-### <a name="supported-windows-versions"></a>Podporované verze Windows
+### <a name="supported-windows-versions"></a>Podporované verze systému Windows
 
 Azure IoT Edge s kontejnery pro Linux se dají spustit na libovolné verzi Windows, která splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) .
 
@@ -47,13 +47,13 @@ Pokud IoT Edge zařízení je počítač se systémem Windows, ověřte, zda spl
 ## <a name="install-iot-edge-on-a-new-device"></a>Instalace IoT Edge na nové zařízení
 
 >[!NOTE]
->Azure IoT Edge softwarové balíčky jsou souladu s licenčními podmínkami umístěný v balíčcích (v adresáři licencí). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
+>Azure IoT Edge softwarové balíčky podléhají licenčním podmínkám, které jsou umístěny v balíčcích (v adresáři licencí). Přečtěte si licenční smlouvy před použitím tohoto balíčku. Vaše instalace a používání balíčku znamená přijetí těchto podmínek. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
 PowerShellový skript stáhne a nainstaluje démona zabezpečení Azure IoT Edge. Démon zabezpečení potom spustí první ze dvou běhových modulů a Agent IoT Edge, který umožňuje vzdálené nasazení jiných modulů. 
 
 Když na zařízení poprvé nainstalujete IoT Edge runtime, bude potřeba zřídit zařízení s identitou ze služby IoT Hub. Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení zařízení, které poskytuje vaše služba IoT Hub. Nebo můžete službu Device Provisioning použít k automatickému zřízení zařízení, což je užitečné, když máte spoustu zařízení, která se dají nastavit. 
 
-Další informace o různých možnostech instalace a parametrech najdete v článku [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md). Jakmile budete mít k dispozici Docker Desktop nainstalovaný a nakonfigurovaný pro kontejnery systému Linux, je hlavním rozdílem instalace deklarace systému Linux s parametrem **-ContainerOs** . Příklad: 
+Další informace o různých možnostech instalace a parametrech najdete v článku [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md). Jakmile budete mít k dispozici Docker Desktop nainstalovaný a nakonfigurovaný pro kontejnery systému Linux, je hlavním rozdílem instalace deklarace systému Linux s parametrem **-ContainerOs** . Například: 
 
 1. Pokud jste to ještě neudělali, zaregistrujte nové zařízení IoT Edge a načtěte připojovací řetězec zařízení. Zkopírujte připojovací řetězec pro pozdější použití v této části. Tento krok můžete provést pomocí následujících nástrojů:
 
@@ -88,32 +88,37 @@ Další informace o různých možnostech instalace a parametrech najdete v čl�
 
 6. Po zobrazení výzvy zadejte připojovací řetězec zařízení, který jste získali v kroku 1. Připojovací řetězec zařízení přidružuje fyzické zařízení k ID zařízení v IoT Hub. 
 
-   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Zkontrolujte stav služby IoT Edge. Měl by být uveden jako spuštěný.  
+Ověřte stav služby IoT Edge: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Zkontrolujte protokoly služby z posledních 5 minut. 
+Prověřte protokoly služby za posledních 5 minut: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Seznam s moduly. Jediným modulem, který by měl být spuštěný, se po nové instalaci zobrazí **edgeAgent**. Po prvním [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md) se na zařízení spustí i druhý systémový modul **edgeHub**. 
+Spusťte automatizovanou kontrolu nejběžnějších chyb konfigurace a sítě: 
 
+```powershell
+iotedge check
+```
+
+Vypíše spuštěné moduly. Jediným modulem, který by měl být spuštěný, se po nové instalaci zobrazí **edgeAgent**. Po prvním [nasazení IoT Edge moduly](how-to-deploy-modules-portal.md) se na zařízení spustí i druhý systémový modul **edgeHub**. 
 
 ```powershell
 iotedge list
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
+Teď, když máte nainstalovanou IoT Edge zařízení s nainstalovaným modulem runtime, můžete [nasadit IoT Edge moduly](how-to-deploy-modules-portal.md).
 
 Pokud máte potíže s instalací IoT Edge správně, podívejte se na stránku [Poradce při potížích](troubleshoot.md) .
 

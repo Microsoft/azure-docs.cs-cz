@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168755"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515560"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
 
@@ -47,7 +47,7 @@ Před dokončením kroků v jakékoli části tohoto článku proveďte následu
      - 169.254.0.0/16 (místní propojení)
      - 168.63.129.16/32 (interní služba DNS, DHCP a [Test stavu](../load-balancer/load-balancer-custom-probe-overview.md#probesource)Azure Load Balancer)
 
-     I když při vytváření virtuální sítě můžete definovat jenom jeden rozsah adres, můžete do adresního prostoru po vytvoření virtuální sítě přidat víc rozsahů adres. Informace o tom, jak přidat rozsah adres do existující virtuální sítě, najdete v tématu [Přidání nebo odebrání rozsahu adres](#add-or-remove-an-address-range).
+     I když při vytváření virtuální sítě na portálu můžete definovat pouze jeden rozsah adres, můžete přidat další rozsah adres do adresního prostoru po vytvoření virtuální sítě. Informace o tom, jak přidat rozsah adres do existující virtuální sítě, najdete v tématu [Přidání nebo odebrání rozsahu adres](#add-or-remove-an-address-range).
 
      >[!WARNING]
      >Pokud má virtuální síť rozsahy adres, které se překrývají s jinou virtuální sítí nebo místní sítí, nelze tyto dvě sítě připojit. Než nadefinujete rozsah adres, zvažte, jestli možná budete chtít virtuální síť připojit k jiným virtuálním sítím nebo místním sítím v budoucnu.

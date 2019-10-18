@@ -4,15 +4,15 @@ description: Popisuje zdroje dat podporované pro datové modely v Azure Analysi
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298636"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512458"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -38,7 +38,7 @@ Zdroje dat a konektory zobrazené v průvodci získat data nebo importovat v apl
 <a name="gen2">4</a> adls Gen2 v tuto chvíli není podporovaná.
 
 
-@No__t **zprostředkovatele**-1  
+@No__t_1 **zprostředkovatele**  
 Modely v paměti a DirectQuery, které se připojují ke zdrojům dat Azure, používají .NET Framework Zprostředkovatel dat SQL Server.
 
 ## <a name="other-data-sources"></a>Další zdroje dat
@@ -97,7 +97,7 @@ Při migraci místního SQL Server Analysis Services tabulkového modelu do Azur
 
 **Určení poskytovatele**
 
-1. V **SSDT > @no__t**-1**zdroje dat**-1, klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
+1. V Průzkumníku SSDT > **tabulkovém modelu**  > **zdroje dat**klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
 2. V části **Upravit připojení**kliknutím na **Upřesnit** otevřete okno Vlastnosti pro upřesnění.
 3. V části **nastavit upřesňující vlastnosti** > **poskytovatelé**vyberte příslušného poskytovatele.
 

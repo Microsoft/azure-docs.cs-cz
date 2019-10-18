@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 290fc279a7d2ff2369758c170b3fb64635ee01af
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212099"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532282"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Sady Azure NetApp Files SDK a nástroje CLI
 
@@ -42,18 +42,18 @@ V následující tabulce jsou uvedeny podporované sady SDK.  Podrobnosti o podp
 
 V následující tabulce jsou uvedené podporované nástroje CLI a jejich odkazy na příkazy.   
 
-|    Tool    |    Reference příkazu    |
+|    Nástroj    |    Reference příkazu    |
 |------------------|--------------------------------------------|
 |    Azure CLI  |    [AZ netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure PowerShell pro Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
-## <a name="code-samples"></a>Ukázky kódů
+## <a name="code-samples"></a>Ukázky kódu
 
 V následující tabulce jsou uvedeny ukázky kódu pro váš odkaz.   
 
 |    Jazyk/nástroj    |    Dokumentace k ukázce kódu    |
 |------------------|--------------------------------------------|
-|    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
+|    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/en-us/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
 |    Python    |    [Ukázka sady SDK pro Azure NetApp Files pro Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
 ## <a name="next-steps"></a>Další kroky   

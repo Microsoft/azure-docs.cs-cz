@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 300da59aa1a16bb2c4cfeaf8035cbe882ae83358
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f635360c5a6da19d60f3992878a8950b03c5f748
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300244"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513875"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -95,7 +95,7 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Zásady správy životního cyklu Azure Blob Storage** | Podporováno [přístupem k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. Úrovně přístupu studené a archivní jsou podporovány pouze ve verzi Preview. Odstranění snímků objektů BLOB ještě není podporováno. |
 | **Azure Content Delivery Network (CDN)** | Zatím nepodporováno|
 | **Hledání Azure** |Podporováno [přístupem k více protokolům ve službě Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview.|
-| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Použijte pouze @no__t verze-0 nebo vyšší. <br>Verze @no__t – 0 je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
+| **Azure Storage Explorer** | Podpora specifická pro verzi <br><br>Použijte pouze `1.6.0` verze nebo vyšší. <br>Verze `1.6.0` je k dispozici [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).|
 | **Seznamy ACL kontejneru objektů BLOB** |Zatím nepodporováno|
 | **Blobfuse** |Zatím nepodporováno|
 | **Vlastní domény** |Zatím nepodporováno|
@@ -105,7 +105,8 @@ Následující tabulka obsahuje seznam všech dalších funkcí a nástrojů, kt
 | **Vrstvy na úrovni objektů** |Úroveň studeného a archivního rozhraní podporuje [přístup prostřednictvím více protokolů v Data Lake Storage](data-lake-storage-multi-protocol-access.md) Preview. <br><br> Všechny ostatní úrovně přístupu ještě nejsou podporované.|
 | **Podpora PowerShellu a rozhraní příkazového řádku** | Omezená funkčnost <br><br>Podporují se operace správy, jako je vytváření účtu. Operace roviny dat, jako je například nahrávání a stahování souborů, jsou ve verzi Public Preview v rámci [přístupu k více protokolům na data Lake Storage](data-lake-storage-multi-protocol-access.md). Práce s adresáři a nastavování seznamů řízení přístupu (ACL) ještě není podporovaná. |
 | **Statické weby** |Zatím nepodporováno <br><br>Konkrétně možnost poskytovat soubory [statickým webům](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou nejspíš fungovat s verzí Public Preview [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md). 
-| **Funkce správy verzí** |Zatím nepodporováno <br><br>To zahrnuje [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) a [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
+| **Aplikace třetích stran** | Omezená podpora <br><br>Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2. <br>Aplikace, které volají rozhraní API objektů blob, budou nejspíš fungovat s verzí Public Preview [přístupu s více protokoly na data Lake Storage](data-lake-storage-multi-protocol-access.md). |
+|**Obnovitelné odstranění** |Zatím nepodporováno|
+| **Funkce správy verzí** |Zatím nepodporováno <br><br>Patří sem [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)a další funkce pro správu verzí, jako jsou [snímky](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

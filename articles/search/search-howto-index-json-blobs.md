@@ -10,24 +10,22 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 147a2b690139aff546d82fc89a2fbcdefed03e01
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656683"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533761"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Postup indexování objektů BLOB JSON pomocí Azure Search indexeru objektů BLOB
 V tomto článku se dozvíte, jak nakonfigurovat Azure Search [indexeru](search-indexer-overview.md) objektů BLOB pro extrakci strukturovaného obsahu z dokumentů JSON ve službě Azure Blob Storage a zpřístupnění v Azure Search. Tento pracovní postup vytvoří index Azure Search a načte ho s existujícím textem extrahovaným z objektů BLOB JSON. 
 
 K indexování obsahu JSON můžete použít [portál](#json-indexer-portal), [rozhraní REST API](#json-indexer-rest)nebo [sadu .NET SDK](#json-indexer-dotnet) . Společné pro všechny přístupy je, že dokumenty JSON se nacházejí v kontejneru objektů BLOB v Azure Storagem účtu. Pokyny k doručování dokumentů JSON z jiných platforem mimo Azure najdete v tématu [Import dat v Azure Search](search-what-is-data-import.md).
 
-Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokumentem JSON, nebo kolekcí entit JSON. V případě kolekcí JSON může objekt BLOB obsahovat **pole** prvků JSON ve správném formátu. Objekty blob mohou být také tvořeny více jednotlivými entitami JSON oddělenými novým řádkem. Indexer objektů BLOB v Azure Search může analyzovat každou takovou konstrukci v závislosti na tom, jak jste v žádosti nastavili parametr **parsingMode** .
-
-Všechny režimy analýzy JSON (`json`, `jsonArray`, `jsonLines`) jsou teď všeobecně dostupné. 
+Objekty blob JSON ve službě Azure Blob Storage jsou typicky jedním dokumentem JSON (režim analýzy je `json`) nebo kolekcí entit JSON. V případě kolekcí může objekt BLOB obsahovat **pole** prvků JSON ve správném formátu (režim analýzy je `jsonArray`). Objekty blob mohou být také tvořeny více jednotlivými entitami JSON oddělenými znakem nového řádku (režim analýzy je `jsonLines`). Parametr **parsingMode** na žádosti určuje výstupní struktury.
 
 > [!NOTE]
-> Při indexování několika dokumentů hledání z jednoho objektu blob Azure postupujte podle doporučení pro konfiguraci indexeru v indexu [1: n](search-howto-index-one-to-many-blobs.md) .
+> Další informace o indexování více dokumentů hledání z jednoho objektu BLOB naleznete v tématu [indexování 1: n](search-howto-index-one-to-many-blobs.md).
 
 <a name="json-indexer-portal"></a>
 
@@ -39,15 +37,13 @@ Doporučujeme použít stejné předplatné Azure pro Azure Search i úložišt�
 
 ### <a name="1---prepare-source-data"></a>1\. Příprava zdrojových dat
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/).
-
-1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vaše data. Úroveň veřejného přístupu může být nastavena na libovolnou z jeho platných hodnot.
+[Přihlaste se k Azure Portal](https://portal.azure.com/) a [vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vaše data. Úroveň veřejného přístupu může být nastavena na libovolnou z jeho platných hodnot.
 
 V průvodci **importem dat** budete potřebovat název účtu úložiště, název kontejneru a přístupový klíč k načtení dat.
 
 ### <a name="2---start-import-data-wizard"></a>2\. spuštění Průvodce importem dat
 
-Na stránce Přehled služby Azure Search můžete [Spustit Průvodce](search-import-data-portal.md) z panelu příkazů nebo kliknutím na **Přidat Azure Search** v části **BLOB Service** v levém navigačním podokně svého účtu úložiště.
+Na stránce Přehled služby Azure Search můžete [Spustit Průvodce](search-import-data-portal.md) z panelu příkazů.
 
    ![Příkaz Importovat data na portálu](./media/search-import-data-portal/import-data-cmd2.png "Spuštění Průvodce importem dat")
 
@@ -85,7 +81,7 @@ Z této stránky můžete přejít dopředu k přizpůsobení indexu.
 
 Na stránce **index** byste měli vidět seznam polí s datovým typem a řadu zaškrtávacích políček pro nastavení atributů indexu. Průvodce může vygenerovat seznam polí založený na metadatech a vzorkováním zdrojových dat. 
 
-Atributy můžete hromadně vybírat kliknutím na zaškrtávací políčko v horní části sloupce atributu. Vyberte možnost získatelné a prohledávatelné pro každé pole, které by se mělo vrátit do klientské aplikace a podléhá fulltextovým zpracování fulltextového vyhledávání. Všimnete si, že celá čísla nejsou fulltextová nebo přibližná prohledávání (čísla jsou vyhodnocována v doslovném znění a jsou často užitečná ve filtrech).
+Atributy můžete hromadně vybírat kliknutím na zaškrtávací políčko v horní části sloupce atributu. Vyberte možnost získatelné a **prohledávatelné** pro každé pole, které by se mělo vrátit do klientské **aplikace a podléhá** fulltextovým zpracování fulltextového vyhledávání. Všimnete si, že celá čísla nejsou fulltextová nebo přibližná prohledávání (čísla jsou vyhodnocována v doslovném znění a jsou často užitečná ve filtrech).
 
 Další informace najdete v popisu [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) a [analyzátorů jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) . 
 
@@ -120,7 +116,7 @@ Na konci této části si můžete prohlédnout [ukázkový kód REST](#rest-exa
 
 Pro indexování JSON založené na kódu použijte příkaz [post](search-get-started-postman.md) a REST API k vytvoření těchto objektů:
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [indexovacím](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [zdroj dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
 + [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
@@ -142,7 +138,7 @@ Do poznámkového bloku zkopírujte následující čtyři hodnoty, abyste je mo
 
 + Název služby Azure Search
 + Klíč správce Azure Search
-+ Název účtu úložiště Azure
++ Název účtu služby Azure Storage
 + Klíč účtu úložiště Azure
 
 Tyto hodnoty můžete najít na portálu:
@@ -155,7 +151,7 @@ Tyto hodnoty můžete najít na portálu:
 
 ### <a name="2---create-a-data-source"></a>2\. vytvoření zdroje dat
 
-Tento krok poskytuje informace o připojení ke zdroji dat používané indexerem. Zdroj dat je pojmenovaný objekt v Azure Search, který uchovává informace o připojení. Typ `azureblob`zdroje dat určuje, které chování pro extrakci dat je vyvoláno indexerem. 
+Tento krok poskytuje informace o připojení ke zdroji dat používané indexerem. Zdroj dat je pojmenovaný objekt v Azure Search, který uchovává informace o připojení. Typ zdroje dat, `azureblob`, určuje chování při extrakci dat vyvolanou indexerem. 
 
 Nahraďte platné hodnoty pro název služby, klíč správce, účet úložiště a zástupné symboly pro klíč účtu.
 
@@ -176,7 +172,7 @@ Indexery jsou spárovány se schématem indexu. Pokud používáte rozhraní API
 
 Index ukládá prohledávatelný obsah do Azure Search. Chcete-li vytvořit index, zadejte schéma, které určuje pole v dokumentu, atributy a další konstrukce, které prohledají možnosti vyhledávání. Pokud vytvoříte index, který má stejné názvy polí a datových typů jako zdroj, indexer bude odpovídat zdrojovému a cílovému poli, takže vám ušetříte práci s explicitním namapováním polí.
 
-Následující příklad ukazuje požadavek [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) . Index bude obsahovat vyhledávací `content` pole pro uložení textu extrahovaého z objektů BLOB:   
+Následující příklad ukazuje požadavek [Create index](https://docs.microsoft.com/rest/api/searchservice/create-index) . Index bude mít pole `content` pro hledání, ve kterém se bude ukládat text extrahovaný z objektů BLOB:   
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -209,7 +205,7 @@ Stejně jako u indexu a zdroje dat je indexerem také pojmenovaný objekt, kter�
 
 Konfigurace indexeru je v těle žádosti. Vyžaduje zdroj dat a prázdný cílový index, který již existuje v Azure Search. 
 
-Parametry plánu a Parameters jsou volitelné. Pokud je vynecháte, indexer se spustí hned a použije `json` se jako režim analýzy.
+Parametry plánu a Parameters jsou volitelné. Pokud je vynecháte, indexer se spustí hned a pomocí `json` jako režim analýzy.
 
 Tento konkrétní indexovací člen nezahrnuje mapování polí. V definici indexeru můžete nechat **mapování polí** , pokud se vlastnosti zdrojového dokumentu JSON shodují s poli cílového vyhledávacího indexu. 
 
@@ -281,10 +277,10 @@ Vytvoření indexeru na Azure Search spustí import dat. Spustí se okamžitě a
 
 Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="parsing-modes"></a>
 
@@ -298,12 +294,12 @@ Objekty blob JSON můžou předpokládat víc forem. Parametr **parsingMode** in
 | `jsonArray` | Tento režim vyberte, pokud se objekty blob skládají z polí JSON a potřebujete, aby se každý element pole stal samostatným dokumentem v Azure Search. |
 |`jsonLines` | Tento režim vyberte, pokud se objekty blob skládají z více entit JSON, které jsou oddělené novým řádkem a vy potřebujete, aby se jednotlivé entity staly samostatným dokumentem v Azure Search. |
 
-Dokument můžete představit jako jednu položku ve výsledcích hledání. Pokud chcete, aby se všechny prvky v poli zobrazovaly ve výsledcích hledání jako nezávislá položka, použijte `jsonArray` možnost nebo `jsonLines` podle potřeby.
+Dokument můžete představit jako jednu položku ve výsledcích hledání. Pokud chcete, aby se všechny prvky v poli zobrazovaly ve výsledcích hledání jako nezávislá položka, použijte možnost `jsonArray` nebo `jsonLines` podle potřeby.
 
-V rámci definice indexeru můžete volitelně použít [mapování polí](search-indexer-field-mappings.md) a vybrat, které vlastnosti zdrojového dokumentu JSON se použijí k naplnění cílového vyhledávacího indexu. V případě režimu analýzy, pokud pole existuje jako vlastnost nižší úrovně, můžete nastavit kořen dokumentu, který označuje, kde je pole umístěno v objektu BLOB. `jsonArray`
+V rámci definice indexeru můžete volitelně použít [mapování polí](search-indexer-field-mappings.md) a vybrat, které vlastnosti zdrojového dokumentu JSON se použijí k naplnění cílového vyhledávacího indexu. Pro `jsonArray` režim analýzy, pokud pole existuje jako vlastnost nižší úrovně, můžete nastavit kořen dokumentu, který označuje, kde se pole umístí do objektu BLOB.
 
 > [!IMPORTANT]
-> Při použití `json` `jsonArray` nebo analýzerežimuAzureSearchpředpokládá,ževšechnyobjektyblobvezdrojidatobsahujíJSON.`jsonLines` Pokud potřebujete podporovat kombinaci objektů BLOB JSON a non-JSON ve stejném zdroji dat, dejte nám na [našem webu UserVoice](https://feedback.azure.com/forums/263029-azure-search)informace.
+> Když použijete režim analýzy `json`, `jsonArray` nebo `jsonLines`, Azure Search předpokládá, že všechny objekty blob ve zdroji dat obsahují JSON. Pokud potřebujete podporovat kombinaci objektů BLOB JSON a non-JSON ve stejném zdroji dat, dejte nám na [našem webu UserVoice](https://feedback.azure.com/forums/263029-azure-search)informace.
 
 
 <a name="parsing-single-blobs"></a>
@@ -336,7 +332,7 @@ Alternativně můžete použít možnost pole JSON. Tato možnost je užitečná
         { "id" : "3", "text" : "example 3" }
     ]
 
-V případě pole JSON by definice indexeru měla vypadat podobně jako v následujícím příkladu. Všimněte si, že parametr parsingMode Určuje `jsonArray` analyzátor. Zadání správného analyzátoru a správného datového vstupu jsou jediné speciální požadavky specifické pro pole pro indexování objektů BLOB JSON.
+V případě pole JSON by definice indexeru měla vypadat podobně jako v následujícím příkladu. Všimněte si, že parametr parsingMode určuje analyzátor `jsonArray`. Zadání správného analyzátoru a správného datového vstupu jsou jediné speciální požadavky specifické pro pole pro indexování objektů BLOB JSON.
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -355,7 +351,7 @@ Znovu si všimněte, že mapování polí lze vynechat. Za předpokladu, že ind
 <a name="nested-json-arrays"></a>
 
 ## <a name="parse-nested-arrays"></a>Analyzovat vnořená pole
-Pro pole JSON obsahující vnořené prvky lze určit `documentRoot` , aby označovala strukturu s více úrovněmi. Například pokud vaše objekty blob vypadají takto:
+Pro pole JSON obsahující vnořené prvky lze zadat `documentRoot` k označení struktury víceúrovňového typu. Například pokud vaše objekty blob vypadají takto:
 
     {
         "level1" : {
@@ -367,7 +363,7 @@ Pro pole JSON obsahující vnořené prvky lze určit `documentRoot` , aby ozna�
         }
     }
 
-Použijte tuto konfiguraci k indexování pole obsaženého ve `level2` vlastnosti:
+Pomocí této konfigurace můžete indexovat pole obsažené ve vlastnosti `level2`:
 
     {
         "name" : "my-json-array-indexer",
@@ -383,7 +379,7 @@ Pokud váš objekt BLOB obsahuje více entit JSON oddělených novým řádkem a
     { "id" : "2", "text" : "example 2" }
     { "id" : "3", "text" : "example 3" }
 
-V případě řádků JSON by definice indexeru měla vypadat podobně jako v následujícím příkladu. Všimněte si, že parametr parsingMode Určuje `jsonLines` analyzátor. 
+V případě řádků JSON by definice indexeru měla vypadat podobně jako v následujícím příkladu. Všimněte si, že parametr parsingMode určuje analyzátor `jsonLines`. 
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -397,7 +393,7 @@ V případě řádků JSON by definice indexeru měla vypadat podobně jako v n�
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
 
-Znovu si všimněte, že mapování polí lze vynechat, podobně `jsonArray` jako režim analýzy.
+Znovu si všimněte, že mapování polí lze vynechat, podobně jako režim analýzy `jsonArray`.
 
 ## <a name="add-field-mappings"></a>Přidat mapování polí
 
@@ -415,7 +411,7 @@ Přečtěte si náš ukázkový dokument JSON:
         }
     }
 
-`text` Vybere index vyhledávání s následujícími poli: typu `Edm.String`, `date` typu `Edm.DateTimeOffset`a `tags` typu `Collection(Edm.String)`. Všimněte si rozdílů mezi "datePublished" ve zdroji a `date` v poli v indexu. K namapování JSON na požadovaný tvar použijte následující mapování polí:
+Předpokládejme index vyhledávání s následujícími poli: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset` a `tags` typu `Collection(Edm.String)`. Všimněte si rozdílu mezi "datePublished" v poli zdroj a `date` v indexu. K namapování JSON na požadovaný tvar použijte následující mapování polí:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -434,9 +430,9 @@ Můžete také odkazovat na jednotlivé prvky pole pomocí indexu založeného n
 >
 >
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Indexery v Azure Search](search-indexer-overview.md)
 + [Indexování služby Azure Blob Storage s využitím Azure Search](search-howto-index-json-blobs.md)
 + [Indexování objektů BLOB CSV s Azure Search indexerem objektů BLOB](search-howto-index-csv-blobs.md)
-+ [Kurz: Hledání částečně strukturovaných dat z úložiště objektů BLOB v Azure](search-semi-structured-data.md)
++ [Kurz: hledání částečně strukturovaných dat z Azure Blob Storage](search-semi-structured-data.md)

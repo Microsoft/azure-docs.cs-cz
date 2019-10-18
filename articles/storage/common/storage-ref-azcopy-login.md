@@ -4,18 +4,18 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2938d85becbea738acc21fc7b15991301eef759f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195721"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514721"
 ---
-# <a name="azcopy-login"></a>přihlášení AzCopy
+# <a name="azcopy-login"></a>azcopy login
 
 Přihlásí se k Azure Active Directory pro přístup k prostředkům Azure Storage.
 
@@ -50,25 +50,25 @@ Přihlaste se interaktivně pomocí zadaného ID tenanta:
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Přihlaste se pomocí identity přiřazené systémem daného virtuálního počítače:
+Přihlaste se pomocí identity určené systémem pro virtuální počítač (VM):
 
 ```azcopy
 azcopy login --identity
 ```
 
-Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače s ID klienta identity služby:
+Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače a ID klienta identity služby:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače s ID objektu identity služby:
+Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače a ID objektu identity služby:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače s ID prostředku identity služby:
+Přihlaste se pomocí uživatelsky přiřazené identity virtuálního počítače a ID prostředku identity služby:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
@@ -101,7 +101,7 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 |--identity-Client-ID řetězec|ID klienta identity přiřazené uživatelem.|
 |--identity-Object-ID řetězec|ID objektu identity přiřazené uživatelem.|
 |--identity-Resource-ID řetězec|ID prostředku identity přiřazené uživatelem.|
-|--Service-Principal|Přihlaste se přes hlavní název služby (SPN) pomocí certifikátu nebo tajného klíče. Tajný klíč klienta nebo heslo certifikátu musí být umístěn v příslušné proměnné prostředí. Zadáním `AzCopy env` zobrazíte názvy a popisy proměnných prostředí.|
+|--Service-Principal|Přihlaste se přes hlavní název služby (SPN) pomocí certifikátu nebo tajného klíče. Tajný klíč klienta nebo heslo certifikátu musí být umístěn v příslušné proměnné prostředí. Zadejte `AzCopy env` pro zobrazení názvů a popisů proměnných prostředí.|
 |--tenant-ID řetězec| ID tenanta Azure Active Directory, které se má použít pro interaktivní přihlášení zařízení OAuth.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
@@ -111,6 +111,6 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [AzCopy](storage-ref-azcopy.md)

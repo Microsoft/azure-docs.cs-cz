@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ab6c381e779ddc19211f183b9bc80e586f58e804
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90fb3fe732889f3ba3965210cd8a681a0487f78e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261410"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514994"
 ---
-# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý start: Povolit SSH a RDP přes IoT Hub datový proud zařízení pomocí C# proxy aplikace (Preview)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí C# proxy aplikace (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
@@ -47,14 +47,14 @@ Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace prox
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * Střed USA
-  * Střední USA – EUAP
+  * Střední USA
+  * Střed USA EUAP
 
-* Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou C#zapsány pomocí. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
+* Dvě ukázkové aplikace, které spustíte v rámci tohoto rychlého startu, jsou C#napsané v. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
 
   .NET Core SDK můžete stáhnout [pro více platforem od rozhraní .NET](https://www.microsoft.com/net/download/all).
 
@@ -74,7 +74,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
@@ -85,36 +85,36 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 
    > [!NOTE]
-   > * Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
-   > * Použijte *mojezařízení*, jak je znázorněno na obrázku. Je to název zadaný pro registrované zařízení. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
+   > * Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
+   > * Pro název zařízení, které zaregistrujete, se doporučuje používat *mojezařízení* , jak je znázorněno na obrázku. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Pokud chcete získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte v Cloud Shell následující příkazy:
 
    > [!NOTE]
-   > Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
+   > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
+    Poznamenejte si vrácený připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
 1. Pokud se chcete připojit ke službě IoT Hub a vytvořit datový proud zařízení, budete k povolení aplikace na straně služby potřebovat také *připojovací řetězec služby* z vašeho centra IoT. Následující příkaz načte tuto hodnotu služby IoT Hub:
 
    > [!NOTE]
-   > Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
+   > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Poznamenejte si vrácenou hodnotu pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
+    Všimněte si vráceného připojovacího řetězce služby pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -124,15 +124,15 @@ V této části vytvoříte ucelený Stream pro tunelování provozu SSH.
 
 ### <a name="run-the-device-local-proxy-application"></a>Spuštění aplikace místní proxy zařízení
 
-V složce projektu getzip otevřete adresář *zařízení-Streams/proxy/Device* . Mějte na ruce následující informace:
+V místním okně terminálu přejděte do adresáře `device-streams-proxy/device` ve složce projektu getzip. Mějte na ruce následující informace:
 
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
-| `deviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
+| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Adresa by byla `localhost`á, pokud byla stejná jako IP, kde je spuštěná aplikace proxy místního zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro SSH, ve výchozím nastavení je to port 22).  |
 
-Zkompilujte a spusťte kód následujícím způsobem:
+Zkompilujte a spusťte kód pomocí následujících příkazů:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device/
@@ -142,23 +142,23 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $deviceConnectionString localhost 22
+dotnet run ${DeviceConnectionString} localhost 22
 
 # In Windows
-dotnet run %deviceConnectionString% localhost 22
+dotnet run {DeviceConnectionString} localhost 22
 ```
 
 ### <a name="run-the-service-local-proxy-application"></a>Spuštění aplikace místní proxy serveru služby
 
-Přejděte do `device-streams-proxy/service` složky projektu unzip. Budete potřebovat následující informace:
+V jiném místním okně terminálu přejděte na `device-streams-proxy/service` ve složce projektu Get. Mějte na ruce následující informace:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `iotHubConnectionString` | Připojovací řetězec služby vašeho IoT Hub. |
-| `deviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
+| `ServiceConnectionString` | Připojovací řetězec služby vašeho IoT Hub. |
+| `MyDevice` | Identifikátor zařízení, které jste vytvořili dříve. |
 | `localPortNumber` | Místní port, ke kterému se bude klient SSH připojovat. V této ukázce používáme port 2222, ale můžete použít i jiná libovolná čísla. |
 
-Zkompilujte a spusťte kód následujícím způsobem:
+Zkompilujte a spusťte kód pomocí následujících příkazů:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -168,10 +168,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-the-ssh-client"></a>Spustit klienta SSH
@@ -179,7 +179,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 Teď použijte klientskou aplikaci SSH a připojte se k místnímu proxy aplikaci služby na portu 2222 (namísto démona SSH přímo).
 
 ```
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
 V tomto okamžiku se zobrazí okno přihlášení SSH s výzvou k zadání přihlašovacích údajů.
@@ -198,42 +198,42 @@ Výstup konzoly klientské aplikace SSH Klient SSH komunikuje s démonem SSH př
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>Protokol RDP na zařízení prostřednictvím datových proudů zařízení
 
-Instalace pro protokol RDP je velmi podobná nastavení pro SSH (popsané výše). Místo toho použijte cílovou IP adresu RDP a port 3389 a použijte klienta RDP (místo klienta SSH).
+Instalace pro protokol RDP je podobná nastavení pro SSH (popsané výše). Místo toho použijte cílovou IP adresu RDP a port 3389 a použijte klienta RDP (místo klienta SSH).
 
 ### <a name="run-the-device-local-proxy-application-rdp"></a>Spuštění aplikace místního proxy serveru (RDP) pro zařízení
 
-V složce projektu getzip otevřete adresář *zařízení-Streams/proxy/Device* . Mějte na ruce následující informace:
+V místním okně terminálu přejděte do adresáře `device-streams-proxy/device` ve složce projektu getzip. Mějte na ruce následující informace:
 
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
-| `DeviceConnectionString` | Připojovací řetězec zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
+| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Adresa by byla `localhost`á, pokud byla stejná jako IP, kde je spuštěná aplikace proxy místního zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro protokol RDP, ve výchozím nastavení je to port 3389).  |
 
-Zkompilujte a spusťte kód následujícím způsobem:
+Zkompilujte a spusťte kód pomocí následujících příkazů:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device
 
 # Run the application
 # In Linux or macOS
-dotnet run $DeviceConnectionString localhost 3389
+dotnet run ${DeviceConnectionString} localhost 3389
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 3389
+dotnet run {DeviceConnectionString} localhost 3389
 ```
 
 ### <a name="run-the-service-local-proxy-application-rdp"></a>Spuštění aplikace místní proxy serveru služby (RDP)
 
-Přejděte do `device-streams-proxy/service` složky projektu unzip. Budete potřebovat následující informace:
+V jiném místním okně terminálu přejděte na `device-streams-proxy/service` ve složce projektu Get. Mějte na ruce následující informace:
 
 | Název parametru | Hodnota parametru |
 |----------------|-----------------|
-| `iotHubConnectionString` | Připojovací řetězec služby vašeho IoT Hub. |
-| `deviceId` | Identifikátor zařízení, které jste vytvořili dříve. |
+| `ServiceConnectionString` | Připojovací řetězec služby vašeho IoT Hub. |
+| `MyDevice` | Identifikátor zařízení, které jste vytvořili dříve. |
 | `localPortNumber` | Místní port, ke kterému se bude klient SSH připojovat. V této ukázce používáme port 2222, ale můžete ho změnit na další libovolná čísla. |
 
-Zkompilujte a spusťte kód následujícím způsobem:
+Zkompilujte a spusťte kód pomocí následujících příkazů:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -243,10 +243,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-rdp-client"></a>Spustit klienta RDP
@@ -261,7 +261,7 @@ Teď použijte klientskou aplikaci RDP a připojte se k aplikaci místního prox
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nastavili službu IoT Hub, zaregistrovali zařízení, nasadili místní a místní proxy aplikace, aby se navázal datový proud zařízení prostřednictvím služby IoT Hub, a použili proxy aplikace pro tunelování provozu SSH nebo RDP. Stejné paradigma může vyhovovat jiným protokolům klienta a serveru, kde server běží na zařízení (například démon SSH).
+V tomto rychlém startu nastavíte službu IoT Hub, zaregistrovali zařízení, zavedli místní proxy a místní proxy služby pro zařízení, aby se navázal datový proud zařízení prostřednictvím služby IoT Hub, a používali proxy aplikace pro tunelování provozu SSH nebo RDP. Stejné paradigma může vyhovovat jiným protokolům klienta a serveru, kde server běží na zařízení (například démon SSH).
 
 Další informace o datových proudech zařízení najdete v těchto tématech:
 

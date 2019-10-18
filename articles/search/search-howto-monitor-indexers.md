@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186592"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533697"
 ---
 # <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky indexeru Azure Search
 
@@ -27,7 +27,7 @@ Monitorování indexeru je užitečné v případě, že chcete:
 * Zkontrolujte výsledky probíhajícího nebo předchozího indexerového spuštění.
 * Identifikujte chyby indexerů nejvyšší úrovně a chyby nebo varování týkající se indexovaných jednotlivých dokumentů.
 
-## <a name="find-indexer-status-and-history-details"></a>Vyhledání podrobností o stavu a historii indexeru
+## <a name="get-status-and-history"></a>Získat stav a historii
 
 Informace o monitorování indexeru můžete získat různými způsoby, včetně těchto:
 
@@ -41,27 +41,27 @@ K dispozici jsou dostupné informace o monitorování indexeru, včetně všech 
 * Informace o posledním spuštění indexeru, včetně jeho stavu, času zahájení a ukončení a podrobných chyb a upozornění.
 * Zobrazí se seznam historických indexerů a jejich stavů, výsledků, chyb a upozornění.
 
-Indexery, které zpracovávají velké objemy dat, může trvat dlouhou dobu. Například indexery, které zpracovávají miliony zdrojových dokumentů, můžou běžet po dobu 24 hodin a pak téměř okamžitě začít. Stav indexerů s vysokým objemem může na portálu vždycky vyslovit. I když je indexer spuštěný, jsou k dispozici podrobnosti o probíhajícím průběhu a předchozích spuštěních.
+Indexery, které zpracovávají velké objemy dat, může trvat dlouhou dobu. Například indexery, které zpracovávají miliony zdrojových dokumentů, můžou běžet po dobu 24 hodin a pak téměř okamžitě začít. Stav indexerů s vysokým objemem **může na portálu vždycky vyslovit** . I když je indexer spuštěný, jsou k dispozici podrobnosti o probíhajícím průběhu a předchozích spuštěních.
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Monitorování indexerů na portálu
+## <a name="monitor-using-the-portal"></a>Monitorování pomocí portálu
 
-Aktuální stav všech indexerů můžete zobrazit v seznamu indexerů na stránce s přehledem služby Search.
+Aktuální stav všech indexerů můžete zobrazit v seznamu **indexerů** na stránce s přehledem služby Search.
 
    ![Seznam indexerů](media/search-monitor-indexers/indexers-list.png "Seznam indexerů")
 
 Při provádění indexeru se **v**seznamu zobrazí stav a hodnota **úspěšné dokumentace** zobrazuje počet zpracovaných dokumentů. Může trvat několik minut, než portál aktualizuje hodnoty stavu indexeru a počty dokumentů.
 
-Indexer, jehož poslední spuštění bylo úspěšné, ukazuje **úspěch**. Spuštění indexeru může být úspěšné i v případě, že v jednotlivých dokumentech dojde k chybám, pokud je počet chyb menší, než je nastavení maximálního počtu **nezdařených položek** indexeru.
+Indexer, jehož poslední spuštění bylo úspěšné, ukazuje **úspěch**. Spuštění indexeru může být úspěšné i v případě, že v jednotlivých dokumentech dojde k chybám, pokud je počet chyb menší, než je nastavení **maximálního počtu nezdařených položek** indexeru.
 
-Pokud poslední spuštění skončilo s chybou, zobrazí se stav **nezdařilo se**. Stav resetování znamená, že došlo k resetování stavu sledování změn indexeru.
+Pokud poslední spuštění skončilo s chybou, zobrazí se stav **nezdařilo se**. Stav **resetování** znamená, že došlo k resetování stavu sledování změn indexeru.
 
 Kliknutím na indexer v seznamu zobrazíte další podrobnosti o aktuálním a nedávném běhu indexeru.
 
    ![Souhrn indexeru a historie spouštění](media/search-monitor-indexers/indexer-summary.png "Souhrn indexeru a historie spouštění")
 
-**Souhrnný** graf indexeru zobrazuje graf počtu dokumentů zpracovávaných v posledních spuštěních.
+**Souhrnný graf indexeru** zobrazuje graf počtu dokumentů zpracovávaných v posledních spuštěních.
 
 V seznamu **Podrobnosti spuštění** se zobrazí až 50 posledních výsledků spuštění.
 
@@ -79,7 +79,7 @@ Další informace o zkoumání chyb a upozornění indexeru najdete v tématu [�
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>Monitorování indexerů pomocí REST API
+## <a name="monitor-using-rest-apis"></a>Monitorování pomocí rozhraní REST API
 
 Můžete načíst stav a historii provádění indexeru pomocí [příkazu Get indexer status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
@@ -116,7 +116,7 @@ Odpověď obsahuje celkový stav indexeru, vyvolání posledního (nebo probíha
 
 Historie spouštění obsahuje až 50 nejaktuálnějších běhů, které jsou seřazené v opačném chronologickém pořadí (nejnovější první).
 
-Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je pro indexer samotný. Stav indexeru spuštěno znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale ne v současnosti je spuštěn.
+Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je pro indexer samotný. Stav indexeru **spuštěno** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale ne v současnosti je spuštěn.
 
 Každé spuštění indexeru má také svůj vlastní stav, který označuje, jestli je toto konkrétní spuštění probíhající (**spuštěné**), nebo jestli se už dokončilo se stavem **úspěch**, **transientFailure**nebo **persistentFailure** . 
 
@@ -126,7 +126,7 @@ Další podrobnosti o stavových kódech a datech monitorování indexeru najdet
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>Monitorování indexerů pomocí .NET SDK
+## <a name="monitor-using-the-net-sdk"></a>Monitorování pomocí sady .NET SDK
 
 Můžete definovat plán pro indexer pomocí sady Azure Search .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
 
@@ -175,12 +175,12 @@ Výstup v konzole bude vypadat přibližně takto:
 
 Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je stav indexeru, který je sám sebou. Stav indexeru je **spuštěný** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale není aktuálně spuštěn.
 
-Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétní spuštění probíhá (spuštěno), nebo bylo již dokončeno se stavem **úspěch** nebo **TransientError** . 
+Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétní spuštění probíhá (**spuštěno**), nebo bylo již dokončeno se stavem **úspěch** nebo **TransientError** . 
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie se stavem **resetování** .
 
 Další podrobnosti o stavových kódech a informacích o monitorování indexerů najdete v tématu [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) v REST API.
 
-Podrobnosti o chybách a upozorněních specifických pro dokument lze získat vytvořením výčtu seznamů `IndexerExecutionResult.Errors` a. `IndexerExecutionResult.Warnings`
+Podrobnosti o chybách a upozorněních specifických pro dokument lze získat vytvořením výčtu seznamů `IndexerExecutionResult.Errors` a `IndexerExecutionResult.Warnings`.
 
 Další informace o třídách .NET SDK používaných pro monitorování indexerů naleznete v tématu [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) a [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

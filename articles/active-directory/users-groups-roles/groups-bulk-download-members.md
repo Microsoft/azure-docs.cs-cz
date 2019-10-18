@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146396"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517156"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Hromadné stažení členů skupiny (Preview) v Azure Active Directory
 
 Pomocí portálu Azure Active Directory (Azure AD) můžete hromadně stahovat členy skupiny ve vaší organizaci do souboru hodnot oddělených čárkami (CSV).
 
-> [!NOTE]
-> Hromadné operace Azure AD jsou funkcí veřejné verze Preview služby Azure AD a jsou dostupné s placeným licenčním plánem Azure AD. Další informace o tom, jak používat verzi Preview, najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
 ## <a name="to-bulk-download-group-membership"></a>Postup hromadného stažení členství ve skupině
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně stahovat členy skupin, které vlastní.
-1. V Azure AD vyberte **skupiny** > **všechny skupiny**.
+1. V Azure AD vyberte **skupiny**  > **všechny skupiny**.
 1. Otevřete skupinu, jejíž členství chcete stáhnout, a pak vyberte **Členové**.
 1. Na stránce **Členové** vyberte **Stáhnout členy** a Stáhněte si soubor CSV se seznamem členů skupiny.
 

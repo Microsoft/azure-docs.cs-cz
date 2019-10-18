@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262333"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
@@ -58,8 +58,8 @@ V závislosti na [cílech](diagnostic-settings.md#destinations) pro nastavení d
 }
 ```
 
-### <a name="resources"></a>Zdroje a prostředky
-V poli prostředků prostředku, pro který chcete vytvořit nastavení diagnostiky, přidejte prostředek typu `[resource namespace]/providers/diagnosticSettings`. Oddíl Properties (vlastnosti) se řídí formátem popsaným v tématu [nastavení diagnostiky – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Přidejte vlastnost ke shromáždění metrik prostředků do stejných cílů, pokud [prostředek podporuje metriky.](metrics-supported.md) `metrics`
+### <a name="resources"></a>Materiály
+V poli prostředků prostředku, pro který chcete vytvořit nastavení diagnostiky, přidejte prostředek typu `[resource namespace]/providers/diagnosticSettings`. Oddíl Properties (vlastnosti) se řídí formátem popsaným v tématu [nastavení diagnostiky – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Pokud [prostředek podporuje metriky](metrics-supported.md), přidejte vlastnost `metrics` ke shromáždění metrik prostředků do stejných cílů.
    
 ```json
 "resources": [
@@ -103,7 +103,7 @@ V poli prostředků prostředku, pro který chcete vytvořit nastavení diagnost
 
 
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 Následuje kompletní příklad, který vytvoří aplikaci logiky a vytvoří nastavení diagnostiky, které umožňuje streamování protokolů prostředků do centra událostí a úložiště v účtu úložiště.
 
 ```json

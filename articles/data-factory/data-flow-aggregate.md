@@ -1,5 +1,5 @@
 ---
-title: Agregovaná transformace v toku dat mapování – Azure Data Factory | Microsoft Docs
+title: Agregovaná transformace v datovém toku mapování Azure Data Factory | Microsoft Docs
 description: Naučte se, jak agregovat data ve velkém měřítku v Azure Data Factory s mapováním agregované transformace toku dat.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431612"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514825"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat 
 
@@ -68,7 +68,9 @@ Agregované transformace jsou podobné dotazům na agregační výběr SQL. Slou
 
 ### <a name="example"></a>Příklad:
 
-Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle sloupce `year`. Transformace vytvoří agregovaný sloupec `avgrating`, který se vyhodnotí jako průměr sloupce `Rating`. Tato agregovaná transformace se nazývá `AvgComedyRatingsByYear`. V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle sloupce `year`. Transformace vytvoří agregovaný sloupec `avgrating`, který se vyhodnotí jako průměr sloupce `Rating`. Tato agregovaná transformace se nazývá `AvgComedyRatingsByYear`.
+
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
 ![Seskupit podle příkladu](media/data-flow/agg-script1.png "Seskupit podle příkladu")
 
