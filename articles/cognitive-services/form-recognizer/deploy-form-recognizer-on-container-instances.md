@@ -1,5 +1,5 @@
 ---
-title: Spustit Azure Container Instances
+title: Spustit kontejner pro rozpoznávání formulářů v Azure Container Instances
 titleSuffix: Azure Cognitive Services
 description: Nasaďte kontejner pro rozpoznávání formulářů do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 1fc516d309c2a51230f53e814a2dabdb774db9c2
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c45d0e316cf67d22095911fadfd3d84ef407e1b0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297713"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515634"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Nasaďte kontejner pro rozpoznávání formulářů do Azure Container Instances
 

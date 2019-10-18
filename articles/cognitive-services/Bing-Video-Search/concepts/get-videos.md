@@ -1,5 +1,5 @@
 ---
-title: Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
+title: Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
 titleSuffix: Azure Cognitive Services
 description: Přečtěte si informace o posílání vyhledávacích dotazů na rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879091"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512416"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Pokud například dotaz *čistí mezery*, rozšířené dotazy mohou být: Čisticí **nástroje**pro hřbet, čisticí mezery **z pozemního**a jednoduchéhočištění na hřbetu.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů*, rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země**, **Stroj na** čištění okapů a **snadné** čištění okapů.
 
 Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248640"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554877"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
@@ -46,9 +46,9 @@ Každá entita QnA má jedinečné a trvalé ID. Pomocí ID můžete provádět 
 Po publikování znalostní báze z [QnA Makerového portálu](https://www.qnamaker.ai)nebo pomocí [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)můžete získat podrobnosti o koncovém bodu GenerateAnswer.
 
 Jak získat podrobnosti o koncovém bodu:
-1. Přihlaste se k [https://www.qnamaker.ai](https://www.qnamaker.ai).
+1. Přihlaste se k webu [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. V **seznamu Moje znalostní**báze vyberte možnost **Zobrazit kód** pro znalostní bázi.
-    @no__t – 0Screenshot základů znalostní báze @ no__t-1
+    ![Screenshot znalostní báze ](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Získejte podrobnosti o GenerateAnswer koncového bodu.
 
     ![Snímek obrazovky s podrobnostmi koncového bodu](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -83,6 +83,7 @@ Ukázkový text JSON vypadá takto:
     "top": 6,
     "isTest": true,
     "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -91,6 +92,8 @@ Ukázkový text JSON vypadá takto:
     "userId": "sd53lsY="
 }
 ```
+
+Přečtěte si další informace o [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
 Předchozí kód JSON požádal pouze o odpovědi, které jsou na 30% nebo vyšší než prahové skóre. 
 

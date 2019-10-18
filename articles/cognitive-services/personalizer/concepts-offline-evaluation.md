@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobování offline vyhodnocení
+title: Použití metody testování offline – přizpůsobení
 titleSuffix: Azure Cognitive Services
 description: Vytvořte smyčku zpětné vazby C# v tomto rychlém startu pomocí služby pro přizpůsobování.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662850"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515586"
 ---
 # <a name="offline-evaluation"></a>Offline vyhodnocení
 
@@ -98,5 +98,5 @@ Doporučujeme, abyste provedli hodnocení funkcí a požádali:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace](how-to-settings.md)přizpůsobeného[spuštění offline hodnocení](how-to-offline-evaluation.md) – pochopení [způsobu, jakým funkce přizpůsobuje práci](how-personalizer-works.md) 
-
+[Konfigurace](how-to-settings.md) přizpůsobeného 
+[spuštění offline vyhodnocení](how-to-offline-evaluation.md) pochopení, [jak přizpůsobuje práci](how-personalizer-works.md)

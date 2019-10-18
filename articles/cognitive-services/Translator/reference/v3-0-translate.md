@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299829"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515260"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: přeložit
 
@@ -102,7 +102,7 @@ Hlavičky požadavku zahrnují:
   </tr>
   <tr>
     <td>Typ obsahu</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/>Určuje typ obsahu datové části. Možné hodnoty jsou: <code>application/json</code>.</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/>Určuje typ obsahu datové části.<br/> Přijatá hodnota je <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -234,7 +234,7 @@ Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chy
 Tento příklad ukazuje, jak přeložit jednu větu z angličtiny na zjednodušenou čínštinu.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Tělo odpovědi:
@@ -256,7 +256,7 @@ Pole `translations` obsahuje jeden prvek, který poskytuje překlad jediného te
 Tento příklad ukazuje, jak přeložit jednu větu z angličtiny na zjednodušenou čínštinu. Požadavek neurčuje vstupní jazyk. Místo toho se použije automatické zjišťování zdrojového jazyka.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Tělo odpovědi:
@@ -278,7 +278,7 @@ Odpověď je podobná odpovědi z předchozího příkladu. Vzhledem k tomu, že
 Předchozí příklad si rozšíříme tak, že přidáte předávaného litru. Následující požadavek se zeptá na čínský překlad napsaný ve skriptu latinky.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Tělo odpovědi:
@@ -298,14 +298,14 @@ Tělo odpovědi:
 ]
 ```
 
-Výsledek překladu nyní obsahuje vlastnost @no__t 0, která poskytuje přeložený text pomocí znaků latinky.
+Výsledek překladu nyní obsahuje vlastnost `transliteration`, která poskytuje přeložený text pomocí znaků latinky.
 
 ### <a name="translate-multiple-pieces-of-text"></a>Přeložit více částí textu
 
 Překlad více řetězců najednou je pouhým určením pole řetězců v textu žádosti.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 Tělo odpovědi:
@@ -330,7 +330,7 @@ Tělo odpovědi:
 Tento příklad ukazuje, jak přeložit stejný vstup do několika jazyků v jednom požadavku.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Tělo odpovědi:
@@ -374,17 +374,17 @@ Pokud se chcete vyhnout používání vulgárních výrazů v překladu bez ohle
     <td>Slova v vulgárních výrazech jsou nahrazena značkou ve výstupu. Tato značka závisí na parametru <code>ProfanityMarker</code>.<br/><br/>
 U <code>ProfanityMarker=Asterisk</code> jsou slova v vulgárních slovech nahrazena <code>***</code>:<br/>
     <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je \* @ no__t-2 @ no__t-3.<br/><br/>
-U <code>ProfanityMarker=Tag</code> jsou slova ohraničená značkami XML &lt;profanity @ no__t-2 a &lt;/vulgární znak @ no__t-4:<br/>
+    <strong>Příklad překladu (angličtina)</strong>: je \* \* \*.<br/><br/>
+V případě <code>ProfanityMarker=Tag</code> jsou slova ohraničená značkami XML &lt;profanity &gt; a &lt;/Profanity &gt;:<br/>
     <strong>Příklad zdroje (japonština)</strong>: 彼はジャッカスです Marketplace.<br/>
-    <strong>Příklad překladu (angličtina)</strong>: je &lt;profanity @ no__t-2jackass @ no__t-3/vulgární znak @ no__t-4.
+    <strong>Příklad překladu (angličtina)</strong>: je &lt;profanity &gt;jackass &lt;/Profanity &gt;.
   </tr>
 </table> 
 
 Například:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 Tato akce vrátí:
 
@@ -401,7 +401,7 @@ Tato akce vrátí:
 Porovnat s:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 Poslední požadavek vrátí:
@@ -428,7 +428,7 @@ Je běžné přeložit obsah, který obsahuje značky, jako je například obsah
 Tady je ukázkový požadavek, který se má ilustrovat.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 Odpověď:
@@ -448,7 +448,7 @@ Odpověď:
 Chcete-li získat informace o zarovnání, zadejte v řetězci dotazu `includeAlignment=true`.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 Odpověď:
@@ -484,7 +484,7 @@ Pamatujte na následující omezení:
 Chcete-li získat informace o délce věty ve zdrojovém textu a přeloženém textu, zadejte v řetězci dotazu `includeSentenceLength=true`.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 Odpověď:
@@ -516,7 +516,7 @@ Značka, která se má dodat, používá následující syntaxi.
 Například je třeba vzít v úvahu anglickou větu "slovo wordomatic je položka slovníku". Pokud chcete zachovat slovo _wordomatic_ v překladu, pošlete žádost:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Výsledek je následující:

@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobování offline vyhodnocení
+title: Jak provádět přizpůsobování offline vyhodnocení
 titleSuffix: Azure Cognitive Services
 description: Naučte se analyzovat výukovou smyčku pomocí offline vyhodnocení.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884470"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515231"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analýza výukové smyčky pomocí offline vyhodnocení
 
@@ -26,7 +26,7 @@ Vyhodnocení v režimu offline umožňuje měřit, jak efektivní přizpůsoben�
 Další informace najdete v článku o [hodnoceních offline](concepts-offline-evaluation.md) .
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nakonfigurované smyčka přizpůsobeného přizpůsobování
 * Smyčka přizpůsobování musí mít reprezentativní množství dat – jako jen ve svých protokolech doporučujeme minimálně 50 000 událostí pro smysluplné výsledky vyhodnocení. Volitelně můžete také dříve exportovat soubory _zásad učení_ , které můžete porovnat a testovat ve stejném vyhodnocení.
@@ -35,7 +35,7 @@ Další informace najdete v článku o [hodnoceních offline](concepts-offline-e
 
 1. V [Azure Portal](https://azure.microsoft.com/free/)vyhledejte prostředek přizpůsobení.
 1. V Azure Portal otevřete část **vyhodnocení** a vyberte **vytvořit vyhodnocení**.
-    ![V Azure Portal přejít na oddíl * * vyhodnocení * * a vyberte * * vytvořit vyhodnocení * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
+    ![In Azure Portal, přejít na oddíl * * vyhodnocení * * a vybrat * * vytvořit vyhodnocení * *. ](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Vyberte následující nastavení:
 
     * Název vyhodnocení
@@ -54,16 +54,16 @@ Po dokončení můžete vybrat vyhodnocení ze seznamu hodnocení.
 
 Mezi porovnávacími zásadami učení patří:
 
-* **Online zásady**: Aktuální zásady učení použité v přizpůsobeném nástroji
-* **Standardní hodnoty**: Výchozí hodnota aplikace (určená první akcí odeslanou při voláních pořadí),
-* **Náhodné zásady**: Chování imaginárního pořadí, které vždy vrátí náhodný výběr akcí ze zadaných.
-* **Vlastní zásady**: Při spuštění vyhodnocení se nahrály další zásady učení.
+* **Online zásady**: aktuální zásady učení použité v přizpůsobeném nástroji
+* **Směrný plán**: výchozí nastavení aplikace (podle první akce odeslané v rámci pořadí volání),
+* **Random Policy: náhodné**pořadí řazení, které vždy vrátí náhodný výběr akcí ze zadaných.
+* **Vlastní zásady**: další zásady učení nahrané při spuštění vyhodnocení.
 * **Optimalizované zásady**: Pokud bylo vyhodnocení spuštěno s možností zjišťování optimalizované zásady, bude porovnána a bude možné ji stáhnout, nebo ji můžete nastavit jako zásady učení online, přičemž nahradíte tu aktuální.
 
 ![Graf výsledků nastavení offline vyhodnocení](./media/offline-evaluation/evaluation-results.png)
 
 Efektivita [funkcí](concepts-features.md) pro akce a kontext.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si, [Jak funguje hodnocení offline](concepts-offline-evaluation.md).

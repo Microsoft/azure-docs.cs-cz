@@ -49,16 +49,6 @@
             - name: Informace o službě Azure Disk Encryption
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Šablony Rychlý start
-              items:
-                - name: Šifrování virtuálního počítače s Linuxem s využitím Azure CLI
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Šifrování virtuálního počítače s Linuxem s využitím Azure Powershellu
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Šifrování virtuálního počítače s Windows s využitím Azure CLI
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Šifrování virtuálního počítače s Windows s využitím Azure Powershellu
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Encryption
               items:
                 - name: Požadavky na šifrování disků
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: Zabezpečení hranic
-          href: network-best-practices.md
 - name: Aplikace
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Auditování a protokolování
       items:
-        - name: Správa zabezpečení
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Zabezpečení vzdálené správy
           href: management.md
         - name: Integrace protokolů Azure
@@ -199,9 +184,6 @@
             - name: Integrace protokolů auditu Azure AD
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Integrace výstrah služby Security Center
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Integrace protokolů ze služby Key Vault
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md
