@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028514"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595337"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -71,6 +71,28 @@ Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných p
 
 Pokud požadujete vyšší měřítko, kontaktujte [podporu řeči](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) .
 
+Pro zvýšení souběžnosti pro vlastní model potřebujeme následující informace:
+
+- Oblast, ve které je model nasazen.
+- ID koncového bodu nasazeného modelu.
+
+Pro zvýšení souběžnosti pro základní modely potřebujeme následující informace:
+
+- Oblast vaší služby,
+
+a buď
+
+- přístupový token pro vás subrscription (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+
+nebo
+
+- ID prostředku pro vaše předplatné:
+  - Přejít na https://portal.azure.com,
+  - Vyberte `Cognitive Services` do vyhledávacího pole,
+  - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
+  - Zobrazit vlastnosti této služby,
+  - Zkopírujte kompletní `Resource ID`.
+
 **Otázka: můžu stáhnout svůj model a spustit ho místně?**
 
 **A**: modely nelze stáhnout a spustit místně.
@@ -90,11 +112,11 @@ Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdet
 > [!IMPORTANT]
 > Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
 
-## <a name="importing-data"></a>Import dat
+## <a name="importing-data"></a>Importing data
 
 **Otázka: Jaký je limit velikosti datové sady a proč je limit?**
 
-**O**: aktuální limit pro datovou sadu je 2 GB. Omezení je způsobeno omezením velikosti souboru pro nahrání protokolu HTTP. 
+**O**: aktuální limit pro datovou sadu je 2 GB. Omezení je způsobeno omezením velikosti souboru pro nahrání protokolu HTTP.
 
 **Otázka: můžu odeslat textové soubory, aby mohl nahrát větší textový soubor?** 
 
@@ -156,5 +178,5 @@ Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezp�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Odstraňování potíží](troubleshooting.md)
-* [Zpráva k vydání verze](releasenotes.md)
+* [Řešení potíží](troubleshooting.md)
+* [Poznámky k verzi](releasenotes.md)

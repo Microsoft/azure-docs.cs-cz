@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972665"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595326"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -74,12 +74,19 @@ az group create \
 
 Při vytváření nového prostředku budete muset znát "druh" služby, kterou chcete použít, spolu s [cenovou úrovní](https://azure.microsoft.com/pricing/details/cognitive-services/) (nebo SKU), kterou chcete. Při vytváření prostředku budete používat tuto a další informace jako parametry.
 
+### <a name="multi-service"></a>Více služeb
+
+| Služba                    | plnění                      |
+|----------------------------|---------------------------|
+| Několik služeb. Další podrobnosti najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/) .            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> Řada poruchových služeb má bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte jako SKU pro prostředek `F0`.
+> Mnohé z Cognitive Services níže mají bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
 
 ### <a name="vision"></a>Vidění
 
-| Služba                    | Plnění                      |
+| Služba                    | plnění                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
@@ -90,7 +97,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="search"></a>Hledat
 
-| Služba            | Plnění                  |
+| Služba            | plnění                  |
 |--------------------|-----------------------|
 | Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
 | Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
@@ -100,14 +107,14 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="speech"></a>Řeč
 
-| Služba            | Plnění                 |
+| Služba            | plnění                 |
 |--------------------|----------------------|
 | Hlasové služby    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk
 
-| Služba            | Plnění                |
+| Služba            | plnění                |
 |--------------------|---------------------|
 | Porozumění formuláři | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -117,7 +124,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 ### <a name="decision"></a>Rozhodnutí
 
-| Služba           | Plnění               |
+| Služba           | plnění               |
 |-------------------|--------------------|
 | Detektor anomálií  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
@@ -133,7 +140,7 @@ az cognitiveservices account list-kinds
 
 Pokud chcete vytvořit nový prostředek Cognitive Services a přihlásit se k jeho odběru, použijte příkaz [AZ cognitiveservices Account Account Create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) . Tento příkaz přidá nový fakturovatelný prostředek do skupiny prostředků vytvořené dříve. Při vytváření nového prostředku budete potřebovat znát "druh" služby, kterou chcete použít, spolu s její cenovou úrovní (nebo SKU) a umístěním Azure:
 
-Můžete vytvořit F0 (Free) prostředek pro detektor anomálií s názvem `anomaly-detector-resource` pomocí příkazu níže.
+Můžete vytvořit F0 (Free) prostředek pro detektor anomálií s názvem `anomaly-detector-resource` s níže uvedeným příkazem.
 
 ```azurecli-interactive
 az cognitiveservices account create \
