@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentace ke službě Azure Notebooks
 metadata:
-  title: 'Dokumentace ke službě Azure Notebooks – rychlá zprovoznění, kurzy, průvodci | Microsoft Docs'
+  title: Dokumentace ke službě Azure Notebooks
   description: 'Zjistěte, jak vytvářet, spouštět a sdílet poznámkové bloky Jupyter prostřednictvím hostovanou služby Azure Notebooks.'
   services: notebooks
   author: kraigb

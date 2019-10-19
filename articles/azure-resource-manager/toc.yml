@@ -170,6 +170,7 @@
       items:
         - name: Projekt VS s kanály
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: Export šablony
       href: export-template-portal.md
     - name: Přesunout
