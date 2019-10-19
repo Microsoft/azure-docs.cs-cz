@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039025"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554369"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Průvodce odstraňováním potíží pro běžné problémy
 
@@ -147,11 +147,51 @@ Můžete také ověřit protokoly klienta _registru služby_ v _Azure Log Analyt
 
 Pokud chcete začít s _Azure Log Analytics_, navštivte [Tento článek Začínáme](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) . Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
 
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chci zkontrolovat proměnné prostředí moje aplikace
+
+Proměnné prostředí informují cloudové cloudové rozhraní Azure, které zajišťuje, kde Azure chápe, kde a jak nakonfigurovat služby, které tvoří vaši aplikaci.  Zajištění správnosti proměnných prostředí je nezbytným prvním krokem při řešení potenciálních problémů.  Ke kontrole proměnných prostředí můžete použít koncový bod pružinového spouštěcího pohánějícího.  
+
+[!WARNING]
+> Tento postup může vystavit proměnné prostředí.  Nepokračujte, pokud je váš koncový bod testu veřejně přístupný nebo pokud jste k aplikaci přiřadili název domény.
+
+1. Přejděte na tuto adresu URL: `https://<your application test endpoint>/actuator/health`.  
+    - Odpověď podobná `{"status":"UP"}` indikuje, že byl koncový bod povolen.
+    - Pokud je odpověď záporná, zahrňte do `POM.xml` následující závislost:
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. S povoleným koncovým bodem pohánějícího spouštěcího bodu je potřeba přejít na Azure Portal a najít stránku konfigurace aplikace.  Přidejte proměnnou prostředí s názvem `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` *. 
+
+1. Restartujte aplikaci.
+
+1. Přejděte na `https://<the test endpoint of your app>/actuator/env` a zkontrolujte odpověď.  Mělo by to vypadat takto:
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+Vyhledejte podřízený uzel s názvem `systemEnvironment`.  Tento uzel obsahuje proměnné prostředí vaší aplikace.
+
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nemůžu najít metriky nebo protokoly mojí aplikace
 
 Pokud chcete _zajistit, aby_byla aplikace _spuštěná_ , klikněte na _Správa aplikací_ .
 
-Pokud vidíte metriky z _JVM_ , ale žádné metriky od _Tomcat_, zkontrolujte, jestli je v balíčku aplikace povolená závislost @ no__t-2 a úspěšně se spustí.
+Pokud vidíte metriky z _JVM_ , ale žádné metriky od _Tomcat_, zkontrolujte, jestli je v balíčku aplikace povolená závislost `spring-boot-actuator` a úspěšně se spustí.
 
 ```xml
 <dependency>

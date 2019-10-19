@@ -1,24 +1,27 @@
 ---
 title: Aspekty programu Cloud Solution Provider
-description: Při použití správy delegovaných prostředků Azure je důležité vzít v úvahu zabezpečení a řízení přístupu.
+description: Pro partnery CSP pomáhá Správa delegovaných prostředků Azure zdokonalit zabezpečení a řízení tím, že umožňuje podrobná oprávnění.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286203"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550294"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
 Pokud jste partnerem [CSP (Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) , můžete již přístup k předplatným Azure vytvořeným pro vaše zákazníky prostřednictvím programu CSP použít pomocí funkce [Spravovat za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Tento přístup umožňuje přímou podporu, konfiguraci a správu předplatných vašich zákazníků.
 
 Pomocí Azure Lighthouse můžete využít správu delegovaných prostředků Azure spolu s ADMINISTRATE. To pomáhá zvýšit zabezpečení a omezuje zbytečný přístup tím, že umožňuje uživatelům přesnější oprávnění. Umožňuje taky zvýšit efektivitu a škálovatelnost, protože uživatelé můžou pracovat na několika zákaznických předplatných pomocí jediného přihlášení ve vašem tenantovi.
+
+> [!TIP]
+> Pokud chcete zajistit ochranu zákaznických prostředků, Projděte si [Doporučené postupy zabezpečení](recommended-security-practices.md) spolu s [požadavky na zabezpečení partnerů](https://docs.microsoft.com/partner-center/partner-security-requirements).
 
 ## <a name="administer-on-behalf-of-aobo"></a>Správa jménem (ADMINISTRATE)
 

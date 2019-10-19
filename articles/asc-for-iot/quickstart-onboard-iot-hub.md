@@ -13,46 +13,73 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299496"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551596"
 ---
-# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý start: Připojení Azure Security Center služby IoT v IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Security Center pro službu IoT v IoT Hub
 
 Tento článek popisuje, jak povolit Azure Security Center pro službu IoT v existujícím IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) pro začátek. 
 
 > [!NOTE]
 > Azure Security Center pro IoT v současné době podporuje pouze centra IoT úrovně Standard.
-> Azure Security Center pro IoT je jediné řešení. Pokud budete potřebovat více rozbočovačů, vyžadují se několik Azure Security Center řešení IoT. 
+
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Předpoklady pro povolení služby
 
 - Pracovní prostor Log Analytics
   - Ve výchozím nastavení se ve vašem Log Analytics pracovním prostoru ukládají dva typy informací Azure Security Center pro IoT. **výstrahy** a **doporučení**zabezpečení. 
-  - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání nezpracovaných **událostí** v Log Analytics přináší další náklady na úložiště. 
+  - Můžete zvolit, že chcete přidat úložiště pro další typ informací, **nezpracované události**. Pamatujte, že ukládání **nezpracovaných událostí** v Log Analytics přináší další náklady na úložiště. 
 - IoT Hub (úroveň Standard)
 - Splnění všech [požadavků služby](service-prerequisites.md) 
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Povolení Azure Security Center pro IoT na IoT Hub 
 
-Pokud chcete povolit zabezpečení IoT Hub, udělejte toto: 
+Postup při povolení zabezpečení na IoT Hub: 
 
 1. Otevřete **IoT Hub** v Azure Portal. 
-1. V nabídce **zabezpečení** klikněte na **zabezpečení řešení IoT** .
+1. V nabídce **zabezpečení** klikněte na **zabezpečení vašeho řešení IoT**.
 1. Jako výchozí ponechte vybranou **možnost Povolit** . 
 1. Vyberte svůj pracovní prostor Log Analytics.
 1. Zadejte podrobnosti o svém pracovním prostoru Log Analytics. 
-   - Vyberte možnost povolit **dvojí shromažďování** tím, že zachovátepřepínač s **dvojitou kolekcí** .
+   - Vyberte možnost povolit **dvojí shromažďování** tím, že zachováte **přepínač s** **dvojitou kolekcí** .
    - Výběrem možnosti **Uložit nezpracované události zabezpečení zařízení** v Log Analytics se kromě výchozích typů úložišť rozhodnete ukládat **nezpracované události** . Ponechte přepínač **Nezpracovaná událost** **zapnutý**. 
     
 1. Klikněte na **Uložit**. 
 
 Blahopřejeme! Dokončili jste povolování Azure Security Center pro IoT na IoT Hub. 
+
+### <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
+
+V rámci zabezpečení řešení IoT se shromažďují a ukládají IP adresy příchozích a odchozích připojení do a ze zařízení IoT, IoT Edge a IoT Hub, a to ve výchozím nastavení. Tyto informace jsou nezbytné ke zjištění neobvyklého připojení z podezřelých zdrojů IP adres. Například při pokusech o navázání připojení ze zdroje IP adresy známého botnetu nebo ze zdroje IP adresy mimo vaši geografickou polohu. Azure Security Center pro službu IoT nabízí flexibilitu, která umožňuje kdykoli povolit a zakázat shromažďování dat IP adres. 
+
+Povolení nebo zakázání shromažďování dat IP adres: 
+
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** . 
+2. Klikněte na obrazovku **Nastavení** a podle potřeby upravte nastavení geografického umístění nebo manipulace s IP adresami.
+
+### <a name="log-analytics-creation"></a>Vytváření Log Analytics
+
+Když je zapnutá Azure Security Center pro IoT, vytvoří se výchozí pracovní prostor Azure Log Analytics, který ukládá nezpracované události zabezpečení, výstrahy a doporučení pro vaše zařízení IoT, IoT Edge a IoT Hub. Každý měsíc je prvních pět (5) GB dat přijatých na zákazníky do služby Azure Log Analytics zdarma. Každý GB dat přijatý v pracovním prostoru Azure Log Analytics se prvních 31 dnů uchovává zdarma. Přečtěte si další informace o cenách [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) .
+
+Změna konfigurace pracovního prostoru Log Analytics:
+
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** . 
+2. Klikněte na obrazovku **Nastavení** a upravte konfiguraci pracovního prostoru Log Analytics nastavení podle vašich přání.
+
+### <a name="customize-your-iot-security-solution"></a>Přizpůsobení řešení zabezpečení IoT
+Ve výchozím nastavení zapnutí Azure Security Center pro řešení IoT automaticky zabezpečuje všechna centra IoT v rámci vašeho předplatného Azure. 
+
+Postup zapnutí nebo vypnutí Azure Security Center služby IoT na konkrétní IoT Hub: 
+
+1. Otevřete IoT Hub a v nabídce **zabezpečení** vyberte **Přehled** . 
+2. V rámci vašeho předplatného Azure klikněte na obrazovku **Nastavení** a upravte nastavení zabezpečení libovolného centra IoT.
+
 
 ## <a name="next-steps"></a>Další kroky
 

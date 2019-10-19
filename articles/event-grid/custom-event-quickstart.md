@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 30ffcd9bdb8170777c245d95b0c07198a34c5464
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429140"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72556107"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure CLI a Event Grid
 
@@ -27,7 +27,7 @@ Obvykle odesíláte události do koncového bodu, který data události zpracuje
 
 Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
 
-![Pomocí nástroje Azure Event Grid Viewer ověřte, zda byla data události odeslána.](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
+![Zobrazení výsledků v prohlížeči Azure Event Grid](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -98,7 +98,8 @@ az eventgrid event-subscription create \
 
 Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Vyberte ikonu oka a rozbalte data události. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Webová aplikace obsahuje kód pro ověření odběru.
 
-![Zobrazit kód pro ověření předplatného v Azure Event Grid Vieweru](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
+![Zobrazit událost odběru v prohlížeči Azure Event Grid](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Odeslání události do vlastního tématu
 

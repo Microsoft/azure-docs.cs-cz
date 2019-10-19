@@ -6,26 +6,26 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246120"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553449"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure Portal
 
-Virtuální počítače Azure je možné vytvořit prostřednictvím Azure Portal. Azure Portal je uživatelské rozhraní založené na prohlížeči pro vytváření virtuálních počítačů a jejich přidružených prostředků. V tomto rychlém startu použijete Azure Portal k nasazení virtuálního počítače s Windows, na kterém běží Ubuntu 18,04 LTS, vytvoříte Trezor klíčů pro ukládání šifrovacích klíčů a zašifrujete virtuální počítač.
+Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a související prostředky. V tomto rychlém startu použijete Azure Portal k nasazení virtuálního počítače s Windows, na kterém běží Ubuntu 18,04 LTS, vytvoříte Trezor klíčů pro ukládání šifrovacích klíčů a zašifrujete virtuální počítač.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlaste se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** .
+1. Vyberte možnost **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 1. Do vyhledávacího pole zadejte **Key Vault**.
 1. V seznamu výsledků vyberte možnost **Key Vault**.
 1. V části Key Vault vyberte **vytvořit**.
@@ -35,12 +35,12 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
     > Každý Key Vault musí mít jedinečný název. Následující příklad vytvoří Key Vault s názvem *myADEKV*, ale je nutné, abyste si pojmenovali něco jiného.
 
 1. Vyberte **předplatné**.
-1.  V části **Skupina prostředků**vyberte **vytvořit novou**. V automaticky otevíraném okně zadejte *myResourceGroup* pro název skupiny prostředků a pak zvolte **OK**. 
+1.  V části **Skupina prostředků**vyberte **vytvořit novou**. V automaticky otevíraném okně zadejte jako název skupiny prostředků *myResourceGroup* a potom zvolte **OK**. 
 
     ![Obrazovka pro vytvoření skupiny prostředků](../media/disk-encryption/portal-qs-keyvaultcreation.png)
 
 1. V rozevírací nabídce **umístění** vyberte možnost **východní USA**.
-1. U ostatních možností ponechte výchozí nastavení.
+1. U ostatních možností ponechte jejich výchozí hodnoty.
 1. Vyberte možnost přístup k zásadám, která vás převezme na novou obrazovku.
 1. Zaškrtněte políčko u možnosti Povolit přístup k Azure Disk Encryption šifrování svazku.
 
@@ -51,7 +51,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** .
+1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
 1. Na nové stránce v části Oblíbené vyberte **Windows Server 2016 Datacenter**.
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, že je vybrané správné předplatné.
@@ -60,12 +60,12 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V poli **oblast**vyberte stejnou oblast, kterou jste použili při vytváření trezoru klíčů (například **východní USA**).
 1. Ujistěte se, že je **Velikost** *standardní D2s V3*.
 1. V části **účet správce**vyberte **heslo**. Zadejte uživatelské jméno a heslo.
-    @no__t – obrazovka pro vytváření 0ResourceGroup @ no__t-1
-1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a pak vyberte OK. @no__t – obrazovka pro vytváření 0ResourceGroup @ no__t-1
+    obrazovka pro vytváření ![ResourceGroup ](../media/disk-encryption/portal-qs-windows-vm-creation.png)
+1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a vyberte obrazovka "OK" ![ResourceGroup vytvoření ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Klikněte na zkontrolovat + vytvořit.
-1. Na stránce **vytvořit virtuální počítač** můžete zobrazit podrobnosti o virtuálním počítači, který se chystáte vytvořit. Až budete připraveni, vyberte **vytvořit**.
+1. Na stránce **Vytvoření virtuálního počítače** se zobrazí podrobnosti o virtuálním počítači, který se chystáte vytvořit. Až budete připraveni, vyberte **Vytvořit**.
 
-Nasazení virtuálního počítače bude trvat několik minut. Až se nasazení dokončí, přejděte k další části.
+Nasazení virtuálního počítače bude několik minut trvat. Po dokončení nasazení se přesuňte k další části.
 
 ## <a name="encrypt-the-virtual-machine"></a>Zašifrovat virtuální počítač
 
@@ -77,7 +77,7 @@ Nasazení virtuálního počítače bude trvat několik minut. Až se nasazení 
 
 1. Na obrazovce šifrování v části **disky k šifrování**vyberte **operační systém a datové disky**.
 1. V části **nastavení šifrování**klikněte na vybrat Trezor klíčů a klíč pro šifrování.
-1. V pravém bočním panelu vyberte název trezoru klíčů, který jste vytvořili dříve, jako hodnotu * Trezor klíčů * *, a klikněte na **Vybrat**.
+1. V pravém bočním panelu vyberte název trezoru klíčů, který jste vytvořili dříve, jako hodnotu pro **Trezor klíčů**, a klikněte na **Vybrat**.
 
     ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. V horní části obrazovky šifrování klikněte na Uložit. Automaticky otevírané okno vás upozorní, že se virtuální počítač restartuje. Klikněte na **Ano**.

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
-ms.translationtype: HT
+ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533778"
+ms.locfileid: "72554882"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Co je znalostní úložiště v Azure Search?
 
@@ -21,17 +21,17 @@ ms.locfileid: "72533778"
 > Znalostní databáze je ve verzi Preview a není určená pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 >
 
-Znalostní báze je funkce Azure Search, která uchovává výstup [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro pozdější analýzu nebo jiné zpracování dat. *Obohacený dokument* je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí prostředků v Cognitive Services. Ve standardním kanálu založeném na AI jsou obohacené dokumenty přechodné, používá se jenom při indexování a pak se zahodí. S úložištěm Knowledge Store se dokumenty ukládají pro použití v jiných aplikacích nebo úlohách pro práci v oblasti datových věd. 
+Znalostní báze je funkce Azure Search, která uchovává výstup [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro pozdější analýzu nebo jiné zpracování dat. *Obohacený dokument* je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí procesů AI. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. 
 
-Pokud jste v minulosti používali dovednosti AI s Azure Search, již víte, že *dovednosti* slouží k přesunu dokumentu v rámci posloupnosti rozšíření. Výsledek může být Azure Search index nebo (novinka v této verzi Preview) projekce ve znalostní bázi Knowledge Store. Dva výstupy, vyhledávací index a znalostní obchod jsou od sebe fyzicky odlišné. Sdílejí stejný obsah, ale jsou uloženy a používány velmi různými způsoby.
+Pokud jste v minulosti používali dovednosti AI s Azure Search, už víte, že *dovednosti* přesouvá dokument v rámci posloupnosti rozšíření. Výsledkem může být index vyhledávání nebo (novinka v této verzi Preview) projekce ve znalostní bázi Knowledge Store. Tyto dva výstupy, vyhledávací index a úložiště ve znalostní bázi sdílejí stejný obsah, ale ukládají se a používají se velmi různými způsoby.
 
-V závislosti na tom, jak nakonfigurujete kanál, je ve znalostní bázi Microsoft Knowledge Store [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), a to buď jako úložiště tabulek Azure, Azure Blob Storage, nebo v obou. Libovolný nástroj nebo proces, který se může připojit k Azure Storagemu účtu, může využívat obsah znalostní báze Knowledge Store.
+Znalostní báze Knowledge Store je fyzicky [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), buď úložiště tabulek Azure, Azure Blob Storage, nebo obojí. Libovolný nástroj nebo proces, který se může připojit k Azure Storage může využívat obsah znalostní báze Knowledge Store.
 
-Projekce jsou vaším mechanismem, který slouží ke strukturování dat ve znalostní bázi Store. Například prostřednictvím projekce můžete zvolit, zda je výstup uložen jako jeden objekt BLOB nebo kolekce souvisejících tabulek. Snadný způsob, jak zobrazit obsah v obchodě Knowledge Store, je prostřednictvím integrované [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) pro Azure Storage.
+![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Znalostní úložiště v diagramu kanálu")
 
-![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Znalostní úložiště v diagramu kanálu")
+Projekce jsou vaším mechanismem, který slouží ke strukturování dat ve znalostní bázi Store. Například prostřednictvím projekce můžete zvolit, zda je výstup uložen jako jeden objekt BLOB nebo kolekce souvisejících tabulek. 
 
-Chcete-li použít znalostní bázi Store, přidejte `knowledgeStore` element do dovednosti, který definuje krokové operace v kanálu indexování. Během provádění Azure Search v účtu úložiště Azure vytvoří prostor a projekty obohacených dokumentů s definicí vytvořenou v rámci kanálu.
+Chcete-li použít znalostní bázi Store, přidejte `knowledgeStore` element do dovednosti, který definuje krokové operace v kanálu indexování. Během provádění Azure Search v účtu úložiště Azure vytvoří prostor a projekty obohacených dokumentů jako objekty blob nebo do tabulek v závislosti na vaší konfiguraci.
 
 ## <a name="benefits-of-knowledge-store"></a>Výhody znalostní báze Knowledge Store
 
