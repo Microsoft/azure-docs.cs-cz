@@ -1,19 +1,18 @@
 ---
 title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 19f17aff4f915f8a16ccf9d69b12a845d9493e96
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 04/25/2019
+ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299302"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555706"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 

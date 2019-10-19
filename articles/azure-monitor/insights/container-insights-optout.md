@@ -1,53 +1,47 @@
 ---
-title: Jak zastavit monitorování vašeho clusteru služby Azure Kubernetes | Dokumentace Microsoftu
-description: Tento článek popisuje, jak můžete ukončit monitorování clusteru Azure AKS pomocí Azure monitoru pro kontejnery.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Postup zastavení monitorování clusteru služby Azure Kubernetes | Microsoft Docs
+description: Tento článek popisuje, jak můžete zrušit monitorování clusteru Azure AKS pomocí Azure Monitor for Containers.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 376259686d1668d62cc79f340e2161ef11be5e12
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/19/2019
+ms.openlocfilehash: 508bfa9cf7bff0084e7f0644ee5e053e683cb9cf
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624371"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554113"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Postup zastavení monitorování služby Azure Kubernetes (AKS) s Azure Monitor pro kontejnery
 
-Když povolíte monitorování clusteru AKS, můžete zastavit monitorování clusteru, pokud se rozhodnete, že už nechcete monitorovat. Tento článek ukazuje, jak tento úkol dokončit pomocí rozhraní příkazového řádku Azure nebo s dodané šablony Azure Resource Manageru.  
+Po povolení monitorování clusteru AKS můžete zastavit monitorování clusteru, pokud se rozhodnete, že ho už nechcete monitorovat. V tomto článku se dozvíte, jak toho dosáhnout pomocí Azure CLI nebo pomocí poskytnutých šablon Azure Resource Manager.  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Použití [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) příkazu zakažte monitorování Azure pro kontejnery. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
+Pomocí příkazu [AZ AKS Disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) zakažte Azure monitor pro kontejnery. Příkaz odebere agenta z uzlů clusteru, neodebere řešení ani data, která jsou již shromážděna a uložena v prostředku Azure Monitor.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Chcete-li znovu povolte sledování pro váš cluster, přečtěte si téma [povolte monitorování pomocí Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli).
+Pokud chcete pro cluster znovu povolit monitorování, přečtěte si téma [povolení monitorování pomocí Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-Zadaná jsou dvě šablony Azure Resource Manageru pro podporu odebrání prostředků řešení ve vaší skupině prostředků konzistentně a opakovaně. Jedna je šablona JSON určující konfiguraci pro zastavení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete k určení ID prostředku clusteru AKS a skupiny prostředků, ve které je cluster nasazený. 
+K dispozici jsou dvě šablony Azure Resource Manager, které podporují odebrání prostředků řešení konzistentně a opakovaně ve vaší skupině prostředků. Jedna je šablona JSON určující konfiguraci pro zastavení monitorování a druhá obsahuje hodnoty parametrů, které nakonfigurujete k určení ID prostředku clusteru AKS a skupiny prostředků, ve které je cluster nasazený. 
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, přečtěte si téma:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
 >[!NOTE]
 >Šablona musí být nasazená ve stejné skupině prostředků clusteru. Pokud při použití této šablony vynecháte jiné vlastnosti nebo doplňky, může dojít k jejich odebrání z clusteru. Například *enableRBAC* pro zásady RBAC implementované v clusteru, nebo *aksResourceTagValues* , pokud jsou pro cluster AKS zadány značky.  
 >
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.27 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-template"></a>Vytvoření šablony
 
@@ -99,9 +93,9 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-2. Uložte soubor jako **OptOutTemplate.json** do místní složky.
+2. Uložte tento soubor jako **OptOutTemplate. JSON** do místní složky.
 
-3. Vložte následující syntaxi JSON do souboru:
+3. Do souboru vložte následující syntaxi JSON:
 
     ```json
     {
@@ -125,21 +119,21 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     }
     ```
 
-4. Upravte hodnoty **aksResourceId** a **aksResourceLocation** pomocí hodnot clusteru AKS, které můžete vyhledat na **vlastnosti** stránek pro vybraný cluster .
+4. Upravte hodnoty pro **aksResourceId** a **aksResourceLocation** pomocí hodnot clusteru AKS, který najdete na stránce **vlastností** pro vybraný cluster.
 
-    ![Stránka vlastnosti kontejneru](media/container-insights-optout/container-properties-page.png)
+    ![Stránka vlastností kontejneru](media/container-insights-optout/container-properties-page.png)
 
-    Když jste na **vlastnosti** stránky, zkopírujte také **ID prostředku pracovního prostoru**. Tato hodnota je povinná, pokud se rozhodnete, že chcete odstranit pracovní prostor Log Analytics později. Odstraňuje se pracovní prostor Log Analytics se neprovádí jako součást tohoto procesu. 
+    Na stránce **vlastnosti** také zkopírujte **ID prostředku pracovního prostoru**. Tato hodnota je povinná, pokud se rozhodnete, že chcete pracovní prostor Log Analytics odstranit později. Odstranění pracovního prostoru Log Analytics se neprovádí jako součást tohoto procesu. 
 
     Upravte hodnoty pro **aksResourceTagValues** tak, aby odpovídaly existujícím hodnotám značek zadaným pro cluster AKS.
 
-5. Uložte soubor jako **OptOutParam.json** do místní složky.
+5. Uložte tento soubor jako **OptOutParam. JSON** do místní složky.
 
 6. Jste připraveni k nasazení této šablony. 
 
-### <a name="remove-the-solution-using-azure-cli"></a>Odebrat řešení pomocí Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>Odebrání řešení pomocí Azure CLI
 
-Spusťte následující příkaz pomocí rozhraní příkazového řádku Azure v Linuxu odebrat řešení a vyčištění konfigurace ve vašem clusteru AKS.
+Spuštěním následujícího příkazu s Azure CLI v systému Linux odeberte řešení a vyčistěte konfiguraci v clusteru AKS.
 
 ```azurecli
 az login   
@@ -147,17 +141,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
+Dokončení změny konfigurace může trvat několik minut. Po dokončení se vrátí zpráva podobná následující, která obsahuje výsledek:
 
 ```azurecli
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Odebrat řešení pomocí Powershellu
+### <a name="remove-the-solution-using-powershell"></a>Odebrání řešení pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Spusťte následující příkazy prostředí PowerShell do složky obsahující šablonu, kterou chcete odebrat řešení a vyčištění konfigurace z clusteru AKS.    
+Spusťte následující příkazy PowerShellu ve složce obsahující šablonu pro odebrání řešení a vyčištění konfigurace z clusteru AKS.    
 
 ```powershell
 Connect-AzAccount
@@ -165,11 +159,11 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena zpráva podobná následující, který obsahuje výsledek:
+Dokončení změny konfigurace může trvat několik minut. Po dokončení se vrátí zpráva podobná následující, která obsahuje výsledek:
 
 ```powershell
 ProvisioningState       : Succeeded
 ```
 
-Pokud pracovní prostor byl vytvořen pouze k podpoře monitorování clusteru a už je nepotřebujete, budete muset odstranit ručně. Pokud nejste obeznámeni s postup odstranění pracovního prostoru, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal](../../log-analytics/log-analytics-manage-del-workspace.md). Nezapomeňte **ID prostředku pracovního prostoru** jsme si zkopírovali dříve v kroku 4, budete potřebovat, který. 
+Pokud byl pracovní prostor vytvořen jenom pro podporu monitorování clusteru a už ho nepotřebujete, musíte ho ručně odstranit. Pokud nejste obeznámeni s tím, jak pracovní prostor odstranit, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí Azure Portal](../../log-analytics/log-analytics-manage-del-workspace.md). Nezapomeňte na **ID prostředku pracovního prostoru** , které jste zkopírovali dříve v kroku 4, budete potřebovat. 
 

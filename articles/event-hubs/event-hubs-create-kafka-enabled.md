@@ -1,44 +1,44 @@
 ---
-title: Vytvoření centra událostí povoleno Apache Kafka – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek poskytuje návod pro vytvoření Apache Kafka povolit oboru názvů Azure Event Hubs pomocí webu Azure portal.
+title: Vytvoření centra událostí s povoleným Apache Kafka – Azure Event Hubs | Microsoft Docs
+description: Tento článek popisuje postup vytvoření Apache Kafka s povoleným oborem názvů Azure Event Hubs pomocí Azure Portal.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 9ce0f74ec6d4e536bfb3fe827ae6f8ae143b640e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822487"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555810"
 ---
-# <a name="create-apache-kafka-enabled-event-hubs"></a>Vytvoření služby event hubs pro Apache Kafka povoleno
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Vytvoření centra událostí s povoleným Apache Kafkam
 
-Azure Event Hubs je velké objemy dat, streamování platforma jako služba (PaaS), která ingestuje miliony událostí za sekundu a poskytuje nízkou latenci a vysokou propustností pro analýzu v reálném čase a vizualizace.
+Azure Event Hubs je platforma jako služba (PaaS) pro streamování velkých objemů dat, která ingestuje miliony událostí za sekundu a poskytuje nízkou latenci a vysokou propustnost pro analýzy a vizualizace v reálném čase.
 
-Azure Event Hubs poskytuje koncový bod Kafka. Umožňuje tento koncový bod vašeho oboru názvů služby Event Hubs nativně pochopit [Apache Kafka](https://kafka.apache.org/intro) zprávy protokolu a rozhraní API. Díky této funkci může komunikovat s event hubs jako při použití témat Kafka bez změny vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Služba Event Hubs [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html) a novější.
+Azure Event Hubs poskytuje koncový bod Kafka. Tento koncový bod umožňuje vašemu oboru názvů Event Hubs nativně rozumět protokolům a rozhraním API [Apache Kafka](https://kafka.apache.org/intro) zpráv. Díky této funkci můžete komunikovat s centry událostí stejně, jako byste používali témata Kafka, aniž byste museli měnit klienty protokolu nebo spouštět vlastní clustery. Event Hubs podporuje [Apache Kafka verze 1,0](https://kafka.apache.org/10/documentation.html) a novější.
 
-Tento článek popisuje, jak vytvořit obor názvů služby Event Hubs a získání připojovacího řetězce požadované pro připojení aplikace Kafka a podporou Kafka event hubs.
+Tento článek popisuje, jak vytvořit obor názvů Event Hubs a získat připojovací řetězec potřebný pro připojení aplikací Kafka k centrům událostí s povoleným Kafka.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
 
-1. Přihlaste se k [webu Azure portal][Azure portal]a klikněte na tlačítko **vytvořit prostředek** v levém horním rohu obrazovky.
+1. Přihlaste se k [Azure Portal][Azure portal]a v levém horním rohu obrazovky klikněte na **vytvořit prostředek** .
 
 2. Vyhledejte službu Event Hubs a vyberte zde uvedené možnosti:
     
     ![Vyhledání služby Event Hubs na portálu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na možnost **Vytvořit**.
+3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na **Vytvořit**.
     
     ![Vytvoření oboru názvů](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -54,9 +54,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný úče
 
 Teď můžete ze svých aplikací používajících protokol Kafka streamovat události do služby Event Hubs.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Event Hubs naleznete pod těmito odkazy:
+Další informace o Event Hubs najdete na těchto odkazech:
 
 * [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 * [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)

@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387970"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553691"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
-
-
 
 Posun schématu je případ, kdy zdroje často mění metadata. Pole, sloupce a typy lze průběžně přidávat, odebírat nebo měnit. Bez manipulace se započetím schématu se váš tok dat bude zranitelný proti změnám nadřazeného zdroje dat. Typické vzory ETL selžou, když se změní příchozí sloupce a pole, protože by měly být vázány na tyto názvy zdrojů.
 
@@ -31,6 +29,8 @@ Azure Data Factory nativně podporuje flexibilní schémata, která se mění z 
 V toku dat musíte učinit rozhodnutí o architektuře, abyste mohli přijímat v celém toku posun schématu. Když to uděláte, můžete se chránit proti změnám schématu ze zdrojů. Ztratíte ale počáteční vazbu sloupců a typů v rámci toku dat. Azure Data Factory zachází s Flowy ze schémat jako s pozdní vazbou, takže při sestavování transformací nebudete mít k dispozici v zobrazeních schématu v průběhu toku sloupce s nezpracovanými názvy.
 
 ## <a name="schema-drift-in-source"></a>Odtenatových schématu ve zdroji
+
+Sloupce přicházející do datového toku ze zdrojové definice jsou definované jako "odstraněné", pokud se ve zdrojové projekci nevyskytují. Zdroj projekce můžete zobrazit na kartě projekce ve zdrojové transformaci. Když vyberete datovou sadu pro zdroj, ADF automaticky vezme schéma z datové sady a vytvoří projekt z této definice schématu datové sady.
 
 Ve zdrojové transformaci je na posunu schématu definovaná jako sloupce pro čtení, které nedefinují vaše schéma datové sady. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** ve zdrojové transformaci.
 

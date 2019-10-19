@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598811"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553572"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
 
@@ -39,13 +39,16 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/)a nainstalujte úlohy vývoje pro **vývoj a vývoj pro Azure** a vývoj **webů** .
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
+
+> [!NOTE]
+> Bezplatný účet nemusí splňovat požadavky na vytvoření virtuálního počítače. Tím se zabrání dokončení kurzu.
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové hlasovací aplikace
 
@@ -61,7 +64,7 @@ Otevřete aplikaci v aplikaci Visual Studio, spusťte jako správce a sestavte a
 
 Teď, když je aplikace připravená, vytvoříte Cluster Service Fabric a pak nasadíte aplikaci do clusteru. [Cluster Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby.
 
-V tomto kurzu vytvoříte v integrovaném vývojovém prostředí sady Visual Studio nový cluster testovacího clusteru a pak aplikaci publikujete do tohoto clusteru. Informace o vytváření produkčního clusteru najdete v [kurzu Vytvoření a Správa clusteru](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Aplikaci můžete nasadit taky do existujícího clusteru, který jste dříve vytvořili prostřednictvím [Azure Portal](https://portal.azure.com), pomocí PowerShellu nebo skriptů [](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) [Azure CLI](./scripts/cli-create-cluster.md) nebo ze [šablony Azure Resource Manager](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+V tomto kurzu vytvoříte v integrovaném vývojovém prostředí sady Visual Studio nový cluster testovacího clusteru a pak aplikaci publikujete do tohoto clusteru. Informace o vytváření produkčního clusteru najdete v [kurzu Vytvoření a Správa clusteru](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Aplikaci můžete nasadit taky do existujícího clusteru, který jste dříve vytvořili prostřednictvím [Azure Portal](https://portal.azure.com), pomocí [PowerShellu](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) nebo skriptů [Azure CLI](./scripts/cli-create-cluster.md) nebo ze [šablony Azure Resource Manager](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 > [!NOTE]
 > Hlasovací aplikace a řada dalších aplikací, ke komunikaci mezi službami použijte Service Fabric reverzní proxy server. Clustery vytvořené ze sady Visual Studio mají ve výchozím nastavení reverzní proxy server povolený. Pokud nasazujete na existující cluster, musíte [Povolit reverzní proxy server v clusteru](service-fabric-reverseproxy-setup.md) , aby mohla hlasovací aplikace fungovat.
@@ -90,7 +93,7 @@ Na kartě **certifikát** zadejte heslo a výstupní cestu pro certifikát clust
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-Na kartě **Podrobnosti o virtuálním počítači** zadejte **uživatelské jméno** a **heslo** pro účet správce clusteru.  Vyberte **bitovou kopii virtuálního počítače** pro uzly clusteru a **Velikost virtuálního počítače** pro každý uzel clusteru.  Klikněte na tlačítko **Upřesnit** kartu.
+Na kartě **Podrobnosti o virtuálním počítači** zadejte **uživatelské jméno** a **heslo** pro účet správce clusteru.  Vyberte **bitovou kopii virtuálního počítače** pro uzly clusteru a **Velikost virtuálního počítače** pro každý uzel clusteru.  Klikněte na kartu **Upřesnit** .
 
 ![Vytvoření clusteru](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -105,7 +108,7 @@ Když je nový cluster připravený, můžete hlasovací aplikaci nasadit přím
 V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Zobrazí se dialogové okno **Publikovat**.
 
 V části **koncový bod připojení**vyberte koncový bod pro cluster, který jste vytvořili v předchozím kroku.  Například "mytestcluster.southcentral.cloudapp.azure.com:19000". Pokud vyberete **rozšířené parametry připojení**, informace o certifikátu by měly být automaticky vyplněné.  
-![Publikování aplikace Service Fabric](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+![Publish Service Fabric aplikace ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 Vyberte **Publikovat**.
 
@@ -114,7 +117,7 @@ Jakmile je aplikace nasazená, otevřete prohlížeč a zadejte adresu clusteru 
 ![Ukázková hlasovací aplikace Service Fabric](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V této části kurzu jste se naučili:
 
 > [!div class="checklist"]

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168838"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553559"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení Docker Compose ve službě Azure Service Fabric (Preview)
 
 Docker používá soubor [Docker-Compose. yml](https://docs.docker.com/compose) pro definování aplikací využívajících více kontejnerů. Abychom zákazníkům, kteří znají Docker, usnadnili orchestraci stávajících aplikací kontejneru v Azure Service Fabric, zahrnuli jsme podporu Preview pro nasazení Docker Compose nativně v této platformě. Service Fabric může přijmout verzi 3 a novější z `docker-compose.yml` souborů. 
 
-Vzhledem k tomu, že je tato podpora ve verzi Preview, je podporovaná jenom podmnožina direktiv pro vytváření. Například upgrady aplikací nejsou podporovány. Aplikace ale můžete místo upgradu kdykoli odebrat a nasadit.
+Vzhledem k tomu, že je tato podpora ve verzi Preview, je podporovaná jenom podmnožina direktiv pro vytváření.
 
 Chcete-li použít tuto verzi Preview, vytvořte cluster s verzí 5,7 nebo vyšší Service Fabric modulu runtime prostřednictvím Azure Portal spolu s odpovídající sadou SDK. 
 

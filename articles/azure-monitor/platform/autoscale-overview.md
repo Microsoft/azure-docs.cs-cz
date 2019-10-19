@@ -1,19 +1,18 @@
 ---
 title: Přehled automatického škálování v Virtual Machines, Cloud Services a Web Apps
 description: Automatické škálování v Microsoft Azure. Platí pro Virtual Machines, sady škálování virtuálních počítačů, Cloud Services a Web Apps.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959049"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552281"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování v Microsoft Azure Virtual Machines, Cloud Services a Web Apps
 Tento článek popisuje, co Microsoft Azure automatické škálování, jeho výhody a jak ho začít používat.  
@@ -43,10 +42,10 @@ Služba Virtual Machine Scale Sets používá data telemetrie z agentů Azure Di
 ## <a name="custom-metrics"></a>Vlastní metriky
 Můžete také využít vlastní metriky, které mohou vaše aplikace vysílat. Pokud jste nakonfigurovali své aplikace pro posílání metrik pro Application Insights můžete tyto metriky využít k rozhodování o tom, jestli se má škálovat nebo ne.
 
-## <a name="time"></a>Interval
+## <a name="time"></a>Time
 Pravidla založená na plánu jsou založená na standardu UTC. Při nastavování pravidel musíte nastavit časové pásmo správně.  
 
-## <a name="rules"></a>Pravidly
+## <a name="rules"></a>Pravidla
 Diagram zobrazuje pouze jedno pravidlo automatického škálování, ale může jich mít mnoho. V případě potřeby můžete vytvořit složitá překrývající se pravidla.  Typy pravidel zahrnují  
 
 * Tato akce se provádí například **na základě metriky** , když je využití procesoru nad 50%.
@@ -96,15 +95,15 @@ Naopak svislé škálování se liší. Udržuje stejný počet virtuálních po
 Automatické škálování můžete nastavit přes
 
 * [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
-* [Prostředí](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
-* [Rozhraní příkazového řádku pro různé platformy (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Rozhraní příkazového řádku (CLI) pro různé platformy](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Podporované služby pro automatické škálování
 | Služba | Schéma & docs |
 | --- | --- |
 | Web Apps |[Škálování Web Apps](../../azure-monitor/platform/autoscale-get-started.md) |
-| Cloudové služby |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Cloud Services |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klasický |[Škálování skupin dostupnosti klasických virtuálních počítačů](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows Scale Sets |[Škálování virtuálních počítačů s měřítkem ve Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux Scale Sets |[Škálování virtuálních počítačů na úrovni systému Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |

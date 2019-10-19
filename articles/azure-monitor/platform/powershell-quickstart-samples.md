@@ -1,19 +1,18 @@
 ---
 title: Ukázky Azure Monitor PowerShellu pro rychlý Start
 description: Použijte PowerShell k přístupu k funkcím Azure Monitor, jako je automatické škálování, výstrahy, Webhooky a vyhledávání protokolů aktivit.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 2/14/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 2/14/2018
+ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350243"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551853"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Ukázky Azure Monitor PowerShellu pro rychlý Start
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -98,10 +97,10 @@ Následující příkaz načte poslední 1000 události z protokolu aktivit:
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog`podporuje mnoho dalších parametrů. Další informace `Get-AzLog` najdete v referenčních informacích.
+`Get-AzLog` podporuje mnoho dalších parametrů. Další informace najdete v referenčních informacích k `Get-AzLog`.
 
 > [!NOTE]
-> `Get-AzLog`poskytuje jenom 15 dní historie. Pomocí parametru **-MaxRecords** můžete zadávat dotazy na poslední N události mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDKC# (ukázka pomocí sady SDK). Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
+> `Get-AzLog` poskytuje jenom 15 dní historie. Pomocí parametru **-MaxRecords** můžete zadávat dotazy na poslední N události mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDKC# (ukázka pomocí sady SDK). Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
 > 
 > 
 
@@ -112,13 +111,13 @@ Chcete-li zobrazit všechny události výstrah, můžete zadat dotaz na protokol
 Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
 ```
 
-Chcete-li zobrazit historii konkrétního pravidla výstrahy, můžete použít `Get-AzAlertHistory` rutinu, která předává ID prostředku pravidla výstrahy.
+Chcete-li zobrazit historii konkrétního pravidla výstrahy, můžete použít rutinu `Get-AzAlertHistory` s předáním ID prostředku pro pravidlo výstrahy.
 
 ```powershell
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory` Rutina podporuje různé parametry. Další informace najdete v tématu [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+Rutina `Get-AzAlertHistory` podporuje různé parametry. Další informace najdete v tématu [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Načíst informace o pravidlech výstrahy
 Všechny následující příkazy se chovají ve skupině prostředků s názvem "montest".
@@ -141,27 +140,27 @@ Načte všechna pravidla upozornění nastavená pro cílový prostředek. Např
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
+`Get-AzAlertRule` podporuje další parametry. Další informace najdete v tématu [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
 
 ## <a name="create-metric-alerts"></a>Vytvoření upozornění metrik
-Pomocí `Add-AlertRule` rutiny můžete vytvořit, aktualizovat nebo zakázat pravidlo výstrahy.
+Pomocí rutiny `Add-AlertRule` můžete vytvořit, aktualizovat nebo zakázat pravidlo výstrahy.
 
-Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` a `New-AzAlertRuleWebhook`v uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
+Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` a `New-AzAlertRuleWebhook` v uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
 
 Následující tabulka popisuje parametry a hodnoty používané k vytvoření výstrahy pomocí metriky.
 
-| Ukazatele | value |
+| ukazatele | hodnota |
 | --- | --- |
-| Name |simpletestdiskwrite |
-| Umístění tohoto pravidla výstrahy |East US |
+| Name (Název) |simpletestdiskwrite |
+| Umístění tohoto pravidla výstrahy |USA – východ |
 | ResourceGroup |montest |
-| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Metrika vytvořeného upozornění |\PhysicalDisk(_Total)\Disk Writes/sec. \Disk zápisů za sekundu. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| operator |GreaterThan |
-| Prahová hodnota (počet/s) pro tuto metriku |1 |
+| Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisy za sekundu Informace o tom, jak načíst přesné názvy metrik, najdete v rutině `Get-MetricDefinitions`. |
+| podnikatel |GreaterThan |
+| Prahová hodnota (počet/s) pro tuto metriku |1\. místo |
 | WindowSize (hh: mm: SS formát) |00:05:00 |
-| Agregátor (statistika metriky, která v tomto případě používá průměrný počet) |Average |
-| vlastní e-maily (pole řetězců) |'foo@example.com','bar@example.com' |
+| Agregátor (statistika metriky, která v tomto případě používá průměrný počet) |Průměr |
+| vlastní e-maily (pole řetězců) |foo@example.com, bar@example.com |
 | odesílání e-mailů vlastníkům, přispěvatelům a čtenářům |-SendToServiceOwners |
 
 Vytvoření e-mailové akce
@@ -191,7 +190,7 @@ Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 Rutina přidat výstrahu také aktualizuje pravidlo, pokud pravidlo výstrahy již pro dané vlastnosti existuje. Pravidlo výstrahy zakážete tak, že zadáte parametr **-DisableRule**.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Získat seznam dostupných metrik pro výstrahy
-Pomocí `Get-AzMetricDefinition` rutiny můžete zobrazit seznam všech metrik pro konkrétní prostředek.
+Pomocí rutiny `Get-AzMetricDefinition` můžete zobrazit seznam všech metrik pro konkrétní prostředek.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
@@ -206,7 +205,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 Úplný seznam dostupných možností pro `Get-AzMetricDefinition` je k dispozici na adrese [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Vytváření a správa výstrah protokolu aktivit
-Pomocí `Set-AzActivityLogAlert` rutiny můžete nastavit upozornění protokolu aktivit. Upozornění protokolu aktivit vyžaduje, abyste nejdřív definovali podmínky jako slovník podmínek a pak vytvořili výstrahu, která tyto podmínky používá.
+Pomocí rutiny `Set-AzActivityLogAlert` můžete nastavit upozornění protokolu aktivit. Upozornění protokolu aktivit vyžaduje, abyste nejdřív definovali podmínky jako slovník podmínek a pak vytvořili výstrahu, která tyto podmínky používá.
 
 ```powershell
 
@@ -219,7 +218,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-Další vlastnosti Webhooku jsou volitelné. Obsah upozornění protokolu aktivit můžete získat zpět pomocí `Get-AzActivityLogAlert`.
+Další vlastnosti Webhooku jsou volitelné. Obsah upozornění protokolu aktivit můžete vrátit pomocí `Get-AzActivityLogAlert`.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Vytvoření a Správa nastavení automatického škálování
 Prostředek (webová aplikace, virtuální počítač, cloudová služba nebo sada škálování virtuálního počítače) může mít nakonfigurované jenom jedno nastavení automatického škálování.
@@ -229,7 +228,7 @@ Tady je postup pro použití:
 
 1. Vytvořit pravidla.
 2. Vytvořte profily mapování pravidel, která jste předtím vytvořili v profilech.
-3. Volitelné: Vytvořte oznámení pro automatické škálování konfigurací Webhooku a vlastností e-mailu.
+3. Volitelné: vytvořte oznámení pro automatické škálování konfigurací Webhooku a vlastností e-mailu.
 4. Pomocí mapování profilů a oznámení, která jste vytvořili v předchozích krocích, vytvořte nastavení automatického škálování s názvem na cílovém prostředku.
 
 Následující příklady vám ukážou, jak můžete vytvořit nastavení automatického škálování pro sadu škálování virtuálního počítače pro operační systém Windows na základě metriky využití procesoru.
@@ -279,7 +278,7 @@ Následující příklad ukazuje, jak můžete zobrazit nedávné události auto
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-K načtení historie automatického `Get-AzAutoScaleHistory` škálování můžete použít rutinu.
+K načtení historie automatického škálování můžete použít rutinu `Get-AzAutoScaleHistory`.
 
 ```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
@@ -288,7 +287,7 @@ Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/provid
 Další informace najdete v tématu [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Zobrazit podrobnosti nastavení automatického škálování
-Pomocí `Get-Autoscalesetting` rutiny můžete získat další informace o nastavení automatického škálování.
+K získání dalších informací o nastavení automatického škálování můžete použít rutinu `Get-Autoscalesetting`.
 
 Následující příklad ukazuje podrobnosti o všech nastaveních automatického škálování ve skupině prostředků ' myrg1 '.
 
@@ -303,17 +302,17 @@ Get-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOu
 ```
 
 ### <a name="remove-an-autoscale-setting"></a>Odebrání nastavení automatického škálování
-Pomocí `Remove-Autoscalesetting` rutiny můžete odstranit nastavení automatického škálování.
+Nastavení automatického škálování můžete odstranit pomocí rutiny `Remove-Autoscalesetting`.
 
 ```powershell
 Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>Správa profilů protokolů pro protokol aktivit
-Můžete vytvořit *Profil protokolu* a exportovat data z protokolu aktivit do účtu úložiště a můžete pro něj nakonfigurovat uchovávání dat. V případě potřeby můžete data streamovat také do centra událostí. Tato funkce je aktuálně ve verzi Preview a můžete vytvořit pouze jeden profil protokolu na jedno předplatné. K vytváření a správě profilů protokolů můžete použít následující rutiny s vaším aktuálním předplatným. Můžete také zvolit konkrétní předplatné. I když je PowerShell výchozí pro aktuální předplatné, můžete ho vždycky změnit pomocí `Set-AzContext`. Protokol aktivit můžete nakonfigurovat tak, aby směroval data do libovolného účtu úložiště nebo centra událostí v rámci daného předplatného. Data jsou zapsána jako soubory objektů BLOB ve formátu JSON.
+Můžete vytvořit *Profil protokolu* a exportovat data z protokolu aktivit do účtu úložiště a můžete pro něj nakonfigurovat uchovávání dat. V případě potřeby můžete data streamovat také do centra událostí. Tato funkce je aktuálně ve verzi Preview a můžete vytvořit pouze jeden profil protokolu na jedno předplatné. K vytváření a správě profilů protokolů můžete použít následující rutiny s vaším aktuálním předplatným. Můžete také zvolit konkrétní předplatné. I když je prostředí PowerShell výchozím nastavením aktuálního předplatného, můžete se vždycky měnit pomocí `Set-AzContext`. Protokol aktivit můžete nakonfigurovat tak, aby směroval data do libovolného účtu úložiště nebo centra událostí v rámci daného předplatného. Data jsou zapsána jako soubory objektů BLOB ve formátu JSON.
 
 ### <a name="get-a-log-profile"></a>Získat profil protokolu
-K načtení stávajících profilů protokolů použijte `Get-AzLogProfile` rutinu.
+K načtení stávajících profilů protokolů použijte rutinu `Get-AzLogProfile`.
 
 ### <a name="add-a-log-profile-without-data-retention"></a>Přidání profilu protokolu bez uchovávání dat
 ```powershell
@@ -389,7 +388,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Všimněte si, že vlastnost ID pracovního prostoru přijímá *ID prostředku* pracovního prostoru. Můžete získat ID prostředku pracovního prostoru Log Analytics pomocí následujícího příkazu:
+Všimněte si, že vlastnost ID pracovního prostoru přijímá *ID prostředku* pracovního prostoru. ID prostředku pracovního prostoru Log Analytics můžete získat pomocí následujícího příkazu:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

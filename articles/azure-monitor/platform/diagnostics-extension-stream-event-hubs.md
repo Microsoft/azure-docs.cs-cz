@@ -1,20 +1,18 @@
 ---
 title: Streamování dat Azure Diagnostics do Event Hubs
 description: Konfigurace Azure Diagnostics s využitím kompletních Event Hubs, včetně pokynů pro běžné scénáře.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 07/13/2017
+ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "64922807"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555530"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování Azure Diagnostics dat v Hot Path pomocí Event Hubs
 Azure Diagnostics poskytuje flexibilní způsoby shromažďování metrik a protokolů z virtuálních počítačů cloudových služeb a výsledků přenosu do Azure Storage. Počínaje časovým rámcem, který začíná 2016. března (SDK 2,9), můžete do vlastních zdrojů dat odeslat diagnostiku a přenést data za provozu za pár sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -34,18 +32,18 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Diagnostics pomocí Event
 * Postup zobrazení dat Event Hubs streamu
 * Řešení potíží s připojením  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Event Hubs Příjem dat z Azure Diagnostics podporuje v Cloud Services, virtuálních počítačích, Virtual Machine Scale Sets a Service Fabric od Azure SDK 2,9 a odpovídajících nástrojů Azure pro Visual Studio.
 
 * Azure Diagnostics rozšíření 1,6 (ve výchozím nastavení se[Azure SDK pro .net 2,9 nebo novější](https://azure.microsoft.com/downloads/) zaměřuje)
 * [Visual Studio 2013 nebo novější](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * Existující konfigurace Azure Diagnostics v aplikaci pomocí souboru *. wadcfgx* a jedné z následujících metod:
   * Visual Studio: [Konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
-  * Windows PowerShell: [Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu](../../cloud-services/cloud-services-diagnostics-powershell.md)
+  * Windows PowerShell: [Povolení diagnostiky ve službě Azure Cloud Services pomocí prostředí PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md)
 * Event Hubs obor názvů zřízený podle článku [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení Azure Diagnostics k Event Hubs jímky
-Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky na účet Azure Storage. Aplikace může také odesílat data do Event Hubs přidáním nového oddílu **jímky** v rámci**WadCfg** elementu **PublicConfig** / souboru. *wadcfgx* . V aplikaci Visual Studio je soubor *. wadcfgx* uložený v následující cestě: > Soubor**Diagnostics. wadcfgx** **role** > projektu cloudové služby **(roleName)**  > .
+Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky na účet Azure Storage. Aplikace může také odesílat data do Event Hubs přidáním **nového  /  oddílu** **jímky** do prvku**WadCfg** v souboru *. wadcfgx* . V aplikaci Visual Studio je soubor *. wadcfgx* uložený v následující cestě: **projekt cloudové služby**  > **role**  >  **(roleName)**  > **Diagnostics. wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -68,7 +66,7 @@ Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky n
 }
 ```
 
-V tomto příkladu je adresa URL centra událostí nastavená na plně kvalifikovaný obor názvů centra událostí: Obor názvů Event Hubs + "/" + název centra událostí.  
+V tomto příkladu je adresa URL centra událostí nastavená na plně kvalifikovaný obor názvů centra událostí: Event Hubs obor názvů + "/" + název centra událostí.  
 
 Adresa URL centra událostí se zobrazí v [Azure Portal](https://go.microsoft.com/fwlink/?LinkID=213885) na řídicím panelu Event Hubs.  
 
@@ -100,7 +98,7 @@ Jímka Event Hubs musí být také deklarována a definována v oddílu **Privat
 }
 ```
 
-Hodnota `SharedAccessKeyName` se musí shodovat s klíčem sdíleného přístupového podpisu (SAS) a zásadou, které jsou definované v oboru názvů **Event Hubs** . V [Azure Portal](https://portal.azure.com)přejděte na řídicí panel Event Hubs, klikněte na kartu **Konfigurovat** a nastavte pojmenovanou zásadu (například "SendRule"), která má oprávnění *Odeslat* . **StorageAccount** je také deklarován v **PrivateConfig**. Pokud fungují, nemusíte tady měnit hodnoty. V tomto příkladu ponecháme hodnoty prázdné, což je znaménko, že se pro podřízený Asset nastavují hodnoty. Například konfigurační soubor prostředí *ServiceConfiguration. Cloud. cscfg* nastaví názvy a klíče odpovídající prostředí.  
+Hodnota `SharedAccessKeyName` musí odpovídat klíči sdíleného přístupového podpisu (SAS) a zásadě, která byla definována v oboru názvů **Event Hubs** . V [Azure Portal](https://portal.azure.com)přejděte na řídicí panel Event Hubs, klikněte na kartu **Konfigurovat** a nastavte pojmenovanou zásadu (například "SendRule"), která má oprávnění *Odeslat* . **StorageAccount** je také deklarován v **PrivateConfig**. Pokud fungují, nemusíte tady měnit hodnoty. V tomto příkladu ponecháme hodnoty prázdné, což je znaménko, že se pro podřízený Asset nastavují hodnoty. Například konfigurační soubor prostředí *ServiceConfiguration. Cloud. cscfg* nastaví názvy a klíče odpovídající prostředí.  
 
 > [!WARNING]
 > Event Hubs klíč SAS je uložený v souboru *. wadcfgx* do prostého textu. Tento klíč je často vrácen se změnami do správy zdrojového kódu nebo je k dispozici jako prostředek na serveru sestavení, takže byste ho měli chránit podle potřeby. Doporučujeme použít klíč SAS v tomto umístění s oprávněním *Odeslat jenom* , aby uživatel se zlými úmysly mohl zapisovat do centra událostí, ale neposlouchal ho ani nespravuje.
@@ -184,7 +182,7 @@ V předchozím příkladu se jímka aplikuje na nadřazený uzel **čítače vý
 }
 ```
 
-V předchozím příkladu se jímka používá jenom pro tři čítače: **Žádosti zařazené do fronty**, **Zamítnuté požadavky**a **% času procesoru**.  
+V předchozím příkladu se jímka používá jenom pro tři čítače: **žádosti ve frontě**, **Zamítnuté požadavky**a **% času procesoru**.  
 
 Následující příklad ukazuje, jak může vývojář omezit množství odeslaných dat na kritické metriky, které se používají pro stav této služby.  
 
@@ -202,7 +200,7 @@ Následující příklad ukazuje, jak může vývojář omezit množství odesla
 V tomto příkladu se jímka aplikuje na protokoly a je filtrovaná jenom na trasování úrovně chyby.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace Cloud Services aplikace a konfigurace diagnostiky
-Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta jsou > **role** > projektu > cloudové služby **(roleName)** Diagnostics. wadcfgx.  
+Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta je **projekt cloudové služby**  > **role**  >  **(roleName)**  > **Diagnostics. wadcfgx**.  
 
 V tomto okamžiku všechny akce nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají **parametr/t: publikovat** , zahrnují v procesu balení soubor *. wadcfgx* . Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
 
@@ -318,10 +316,10 @@ namespace EventHubListener
 
     Zkuste hledat v tabulce Azure Storage, která obsahuje protokoly a chyby pro Azure Diagnostics sebe sama: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít pro připojení k tomuto účtu úložiště nástroj, například [Průzkumník služby Azure Storage](https://www.storageexplorer.com) , zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Pomocí tohoto nástroje můžete exportovat soubor. csv a otevřít ho v aplikaci, jako je Microsoft Excel. Aplikace Excel usnadňuje hledání řetězců volacích karet, jako je například **EventHubs**, k zobrazení informace o tom, jaká chyba je hlášena.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 • Další [informace o Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Obsažen Úplný příklad souboru konfigurace Azure Diagnostics (. wadcfgx)
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Příloha: příklad úplného konfiguračního souboru Azure Diagnostics (. wadcfgx)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">

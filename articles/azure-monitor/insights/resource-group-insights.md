@@ -1,126 +1,123 @@
 ---
-title: Skupina prostředků Azure monitoru Insights | Dokumentace Microsoftu
-description: Pochopení stavu a výkonu vašich distribuovaných aplikací a služeb na úrovni skupiny prostředků pomocí Azure monitoru
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
+title: Azure Monitor přehledy skupiny prostředků | Microsoft Docs
+description: Pochopte stav a výkon distribuovaných aplikací a služeb na úrovni skupiny prostředků pomocí Azure Monitor
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119414"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553991"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
+# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
-Moderní aplikace jsou často složité a vysoce distribuované mnoho samostatných částí spolupracují na poskytování služby. Uvědomili si tato složitost, Azure Monitor poskytuje monitorování přehledy pro skupiny prostředků. To usnadňuje posuzujte a Diagnostikujte problémy jednotlivé prostředky dojde při nabízení kontext v souvislosti s stav a výkon skupiny prostředků&mdash;a vaše aplikace&mdash;jako celek.
+Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrétními částmi, které dohromady spolupracují za účelem poskytování služby. Při rozpoznávání této složitosti Azure Monitor poskytuje přehledy monitorování pro skupiny prostředků. Díky tomu je možné snadno posoudit a diagnostikovat všechny problémy, ke kterým dojde, a současně se zaměřením na stav a výkon skupiny prostředků &mdash;and vaší aplikace &mdash;as celou dobu.
 
-## <a name="access-insights-for-resource-groups"></a>Získat přehled pro skupiny prostředků
+## <a name="access-insights-for-resource-groups"></a>Přístup k přehledům pro skupiny prostředků
 
-1. Vyberte **skupiny prostředků** v levém navigačním panelu.
-2. Vyberte si jednu ze svých skupin prostředků, které chcete prozkoumat. (Pokud máte velký počet skupin prostředků filtrování podle předplatného může v některých případech být užitečné.)
-3. Přehledy pro skupinu prostředků, klikněte na tlačítko **Insights** v levé nabídce libovolná skupina prostředků.
+1. Na panelu navigace na levé straně vyberte **skupiny prostředků** .
+2. Vyberte jednu ze skupin prostředků, které chcete prozkoumat. (Pokud máte velký počet skupin prostředků s filtrováním podle předplatného, může být někdy užitečné.)
+3. Pokud chcete získat přístup k přehledům pro skupinu prostředků, klikněte na **přehledy** v nabídce na levé straně libovolné skupiny prostředků.
 
-![Snímek obrazovky stránky s přehledem insights skupiny prostředků](./media/resource-group-insights/0001-overview.png)
+![Snímek stránky s přehledem informací o skupině prostředků](./media/resource-group-insights/0001-overview.png)
 
-## <a name="resources-with-active-alerts-and-health-issues"></a>Prostředky s aktivní výstrahy a problémy se stavem
+## <a name="resources-with-active-alerts-and-health-issues"></a>Prostředky s aktivními výstrahami a problémy se stavem
 
-Na stránce s přehledem ukazuje, kolik upozornění mají aktivován a jsou stále aktivní, spolu s aktuálním Azure Resource Health každého prostředku. Společně tyto informace vám umožňují rychle odhalovat případné problémy všechny prostředky, ke které dochází k problémům s. Výstrahy umožňují zjistit problémy v kódu a jak jste nakonfigurovali vaší infrastruktury. Azure Resource Health povrchy problém s platformě Azure jako takové, které nejsou specifické pro jednotlivé aplikace.
+Na stránce Přehled se zobrazuje, kolik výstrah bylo aktivováno a jsou stále aktivní, spolu s aktuálními Azure Resource Health každého prostředku. Tyto informace společně vám pomůžou rychle vystavovat všechny prostředky, u kterých dochází k problémům. Výstrahy vám pomůžou detekovat problémy v kódu a způsob konfigurace infrastruktury. Azure Resource Health problémy s platformou Azure, které nejsou specifické pro vaše jednotlivé aplikace.
 
-![Snímek obrazovky s Azure Resource Health podokno](./media/resource-group-insights/0002-overview.png)
+![Snímek obrazovky s podoknem Azure Resource Health](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
-Chcete-li zobrazit stav prostředku Azure, zkontrolujte **zobrazit Azure Resource Health** pole výše v tabulce. Ve výchozím nastavení stránka rychle načíst nápovědy je tento sloupec skrytý.
+Chcete-li zobrazit Azure Resource Health, zaškrtněte políčko **zobrazit Azure Resource Health** nad tabulkou. Tento sloupec je ve výchozím nastavení skrytý a pomůže vám rychle se načíst stránky.
 
-![Snímek obrazovky s grafem stavu prostředků přidán](./media/resource-group-insights/0003-overview.png)
+![Snímek obrazovky s přidaným grafem stavu prostředku](./media/resource-group-insights/0003-overview.png)
 
-Ve výchozím nastavení prostředky jsou seskupené podle vrstvy aplikace a typ prostředku. **Vrstva aplikací** je jednoduché kategorizace typů prostředků, která existuje pouze v rámci kontextu stránka s přehledem insights skupiny prostředků. Existují typy prostředků související s kódem aplikace, výpočetní infrastruktura, sítě, úložiště a databáze. Nástroje pro správu získat své vlastní aplikace vrstvy a každý prostředek je zařazený do kategorie jako patřící do **jiných** vrstvy aplikace. Toto seskupení můžete zjistit na přehledem jaké subsystémy aplikace jsou v pořádku a není v pořádku.
+Ve výchozím nastavení se prostředky seskupují podle aplikační vrstvy a typu prostředku. **Vrstva aplikace** je jednoduchá kategorizace typů prostředků, která je k dispozici pouze v kontextu stránky přehled pro skupinu prostředků. Existují typy prostředků související s kódem aplikace, výpočetní infrastrukturou, sítí, úložištěm a databázemi. Nástroje pro správu získají vlastní vrstvy aplikací a každý další prostředek je zařazený do kategorie patřící do **jiné** vrstvy aplikace. Toto seskupení vám může pokaždé, když jsou v pořádku, i v případě, že jsou jeho podsystémy v pořádku a není v pořádku.
 
 ## <a name="diagnose-issues-in-your-resource-group"></a>Diagnostikujte problémy ve vaší skupině prostředků
 
-Poskytuje několik dalších nástrojů, které jsou při diagnostice problémů s rozsahem insights stránce skupiny prostředků
+Stránka přehledy skupiny prostředků nabízí několik dalších nástrojů s rozsahem, které vám pomůžou s diagnostikou problémů.
 
    |         |          |
    | ---------------- |:-----|
-   | [**Výstrahy**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Zobrazit, vytvořit a spravovat upozornění. |
-   | [**Metriky**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Vizualizovat a zkoumat metriky na základě data.    |
-   | [**Protokoly aktivit**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Odběr událostí na úrovni, ke kterým došlo v Azure.  |
-   | [**Mapa aplikace**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Přejděte topologie distribuované aplikace, která bude identifikovat kritické body výkonu nebo aktivních bodů selhání. |
+   | [**Generoval**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Zobrazovat, vytvářet a spravovat výstrahy. |
+   | [**Metriky**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Vizualizujte a zkoumejte data založená na metrikách.    |
+   | [**Protokoly aktivit**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Události na úrovni předplatného, ke kterým došlo v Azure  |
+   | [**Mapa aplikace**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Pokud chcete identifikovat problémová místa výkonu nebo výpadky selhání, přejděte k topologii distribuované aplikace. |
 
-## <a name="failures-and-performance"></a>Chyby a výkonu
+## <a name="failures-and-performance"></a>Selhání a výkon
 
-Co když jste si všimli vaše aplikace běží pomalu nebo uživatele informovali o chybách? Je časově prohledávat všechny vaše prostředky k izolování problémů.
+Co když jste si všimli, že aplikace běží pomalu, nebo si uživatelé nahlásili chyby? Hledáním všech vašich prostředků je časově náročné, aby bylo možné izolovat problémy.
 
-**Výkonu** a **selhání** karty tento proces zjednodušit tím, že spojuje výkonu a selhání zobrazení diagnostiky pro mnoho běžných typů prostředků.
+Karty **výkon** a **selhání** zjednodušují tento proces tím, že se pro mnoho běžných typů prostředků spojí zobrazení diagnostiky výkonu a selhání.
 
-Většina typů prostředků se otevře šablony Galerie Azure Monitor sešitu. Je možné přizpůsobit každý sešit, který vytvoříte, uložené, sdílené s týmem a znovu používané v budoucnu k diagnostice podobné problémy.
+Většina typů prostředků otevře galerii šablon sešitu Azure Monitor. Každý sešit, který vytvoříte, můžete přizpůsobit, uložit, sdílet s týmem a znovu použít v budoucnu k diagnostice podobných problémů.
 
-### <a name="investigate-failures"></a>Prověřit chyby
+### <a name="investigate-failures"></a>Prozkoumat selhání
 
-K otestování na výběr karty selhání **selhání** pod **prošetření** v levé nabídce.
+Pokud chcete otestovat kartu chyby, v nabídce na levé straně vyberte **selhání** v části **prozkoumat** .
 
-Na panelu nabídky na levé straně se změní po provedení výběru nabízí nové možnosti.
+Po provedení výběru se změní panel nabídek na levé straně a nabídne vám nové možnosti.
 
-![Snímek obrazovky selhání podokně s přehledem](./media/resource-group-insights/00004-failures.png)
+![Snímek obrazovky s podoknem s přehledem selhání](./media/resource-group-insights/00004-failures.png)
 
-Při výběru služby App Service, zobrazí se šablony Galerie Azure Monitor sešitu.
+Když vyberete App Service, zobrazí se Galerie Azure Monitor šablon sešitu.
 
-![Snímek obrazovky Galerie aplikací sešitu](./media/resource-group-insights/0005-failure-insights-workbook.png)
+![Snímek obrazovky Galerie sešitu aplikace](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
-Výběr šablony pro Insights selhání otevře sešit.
+Když zvolíte šablonu pro přehled selhání, otevře se sešit.
 
-![Snímek obrazovky se sestava selhání](./media/resource-group-insights/0006-failure-visual.png)
+![Snímek obrazovky se zprávou o selhání](./media/resource-group-insights/0006-failure-visual.png)
 
-Můžete vybrat všechny řádky. Výběr se pak zobrazí v zobrazení grafické podrobnosti.
+Můžete vybrat kterýkoli z řádků. Výběr se pak zobrazí v grafickém zobrazení podrobností.
 
-![Snímek obrazovky se podrobnosti o chybě](./media/resource-group-insights/0007-failure-details.png)
+![Snímek obrazovky s podrobnostmi o selhání](./media/resource-group-insights/0007-failure-details.png)
 
-Sešity abstrakci obtížné práci při vytváření vlastní sestavy a vizualizace do formátu snadné použití. Když někteří uživatelé mohou pouze chcete upravit předem připravených parametry, sešity jsou plně přizpůsobitelné.
+Sešity mají nepřehlednou práci při vytváření vlastních sestav a vizualizací do snadno použitelného formátu. I když někteří uživatelé můžou upravovat jenom předem sestavené parametry, sešity jsou zcela přizpůsobitelné.
 
-Chcete-li získat přehled o tom interně funkci tento sešit, vyberte **upravit** v horním panelu.
+Chcete-li získat představu o tom, jak tento sešit funguje interně, vyberte v horním panelu možnost **Upravit** .
 
-![Snímek obrazovky s možností další úpravy](./media/resource-group-insights/0008-failure-edit.png)
+![Snímek obrazovky s dalšími možnostmi úprav](./media/resource-group-insights/0008-failure-edit.png)
 
-Řadu **upravit** téměř různé prvky sešitu se zobrazí pole. Vyberte **upravit** pole pod tabulkou operací.
+V blízkosti různých prvků sešitu se zobrazí řada **textových polí.** V tabulce operace vyberte pole pro **Úpravy** .
 
 ![Snímek obrazovky textových polí](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Zobrazí se dotaz protokolu, která řídí vizualizaci s tabulkou.
+Tím se odhalí základní dotaz protokolu, který řídí vizualizaci tabulky.
 
  ![Snímek obrazovky okna dotazu protokolu](./media/resource-group-insights/0010-failure-edit-query.png)
 
-Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjčit z něj při návrhu vlastní parametry sešitu.
+Dotaz můžete změnit přímo. Nebo ho můžete použít jako referenci a při navrhování vlastního parametrizovaného sešitu ho z něho vypůjčit.
 
-### <a name="investigate-performance"></a>Vyšetřování výkonu
+### <a name="investigate-performance"></a>Prozkoumat výkon
 
-Výkon nabízí svůj vlastní galerie sešity. Pro službu App Service nabízí předem připravených sešitu výkonu aplikace následujícím způsobem:
+Výkon nabízí svou vlastní galerii sešitů. Pro App Service sešit výkonu předem sestavené aplikace nabízí následující zobrazení:
 
- ![Snímek obrazovky zobrazení výkonu](./media/resource-group-insights/0011-performance.png)
+ ![Snímek obrazovky s zobrazením výkonu](./media/resource-group-insights/0011-performance.png)
 
-V takovém případě Pokud zvolíte možnost úpravy uvidíte, že tuto sadu vizualizace používá technologii Azure monitorování metrik.
+V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sada vizualizací používá Azure Monitor metrikami.
 
- ![Snímek obrazovky zobrazení výkonu s metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
+ ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="enabling-access-to-alerts"></a>Povolení přístupu k upozornění
+### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 
-Výstrahy zobrazíte ve službě Azure Monitor pro skupiny prostředků, někdo s roli vlastníka nebo přispěvatele pro tento odběr musí otevřete Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném. Tato možnost umožní všem uživatelům s oprávněním ke čtení, aby se zobrazovaly výstrahy ve službě Azure Monitor pro skupiny prostředků pro všechny skupiny prostředků v předplatném. Pokud budete mít roli vlastníka nebo přispěvatele, aktualizujte tuto stránku za pár minut.
+Pokud chcete zobrazit výstrahy v Azure Monitor pro skupiny prostředků, musí mít někdo s rolí vlastníka nebo přispěvatele v tomto předplatném pro všechny skupiny prostředků v předplatném otevřít Azure Monitor pro skupiny prostředků. Tím umožníte ostatním uživatelům s oprávněním ke čtení zobrazit výstrahy v Azure Monitor pro skupiny prostředků pro všechny skupiny prostředků v rámci předplatného. Pokud máte roli vlastníka nebo přispěvatele, aktualizujte tuto stránku za několik minut.
 
-Azure Monitor pro skupiny prostředků závisí na systému pro správu výstrah monitorování Azure načíst stav výstrahy. Pro každou skupinu prostředků a předplatném není ve výchozím nastavení nakonfigurovaná Správa výstrah a lze povolit pouze uživatelem s rolí přispěvatele nebo vlastníka. Může to být buď povoleno:
-* Otevřete Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném.
-* Nebo tak, že přejdete do předplatného, kliknutím na **poskytovatelů prostředků**, pak levým na **zaregistrujte Alerts.Management**.
+Azure Monitor pro skupiny prostředků spoléhá na to, že systém pro správu výstrah Azure Monitor načítá stav výstrahy. Správa výstrah není ve výchozím nastavení nakonfigurována pro každou skupinu prostředků a předplatné a může ji povolit pouze osoba s rolí vlastníka nebo přispěvatele. Dá se povolit buď pomocí:
+* Otevírají se Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném.
+* Nebo kliknutím na předplatné, kliknutím na **poskytovatelé prostředků**klikněte na **zaregistrovat pro výstrahy. Management**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Azure Monitor Workbooks](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor sešity](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Výstrahy Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

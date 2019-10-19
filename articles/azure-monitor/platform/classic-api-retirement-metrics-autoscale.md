@@ -1,89 +1,89 @@
 ---
-title: Azure Monitor vyřazení z modelu nasazení classic rozhraní API pro metriky a automatické škálování
-description: Metriky a automatické škálování klasického rozhraní API, označovaný taky jako Azure Service Management (ASM) nebo model nasazení RDFE vyřazuje
-author: rboucher
-services: azure-monitor
+title: Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
+description: Vyřazení metrik a automatické škálování klasických rozhraní API, označovaných také jako Azure Service Management (ASM) nebo model nasazení RDFE
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/19/2018
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2018
+ms.openlocfilehash: 7a93419ee84e6a50ce07cefa941a8df9f85b7b6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709979"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552198"
 ---
-# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení z modelu nasazení classic rozhraní API pro metriky a automatické škálování
+# <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
 
-Azure Monitor (dříve Azure Insights při prvním vydání) v současné době nabízí možnost vytvářet a spravovat nastavení automatického škálování a využívat metriky z klasické virtuální počítače a cloudové služby classic. Původní sada bude rozhraní API založená na modelu nasazení classic **vyřazeno po 30. června 2019** ve všech veřejných a privátních cloudů Azure ve všech oblastech.   
+Azure Monitor (dřív vydaná služba Azure Insights) v současné době nabízí možnost vytvářet a spravovat nastavení automatického škálování a využívat metriky z klasických virtuálních počítačů a klasických Cloud Services. Původní sada rozhraní API založených na modelu nasazení Classic bude vycházet z **30. června 2019** ve všech veřejných a privátních cloudech Azure ve všech oblastech.   
 
-Stejné operace jsou podporovány pomocí sady Azure Resource Manageru na základě rozhraní API pro průběhu roku. Na webu Azure portal používá nové rozhraní REST API pro automatické škálování a metriky. Nové sady SDK, prostředí PowerShell a rozhraní příkazového řádku založené na těchto rozhraní API Resource Manageru jsou také k dispozici. Ke sledování služby našich partnerů využívat nové rozhraní REST API ve službě Azure Monitor využívající Resource Manager.  
+Stejné operace byly podporovány prostřednictvím sady rozhraní API založených na Azure Resource Manager po dobu v roce. Azure Portal používá nová rozhraní REST API pro automatické škálování a metriky. K dispozici jsou také nové sady SDK, PowerShell a rozhraní příkazového řádku založené na těchto Správce prostředků API. Naše partnerské služby pro monitorování využívají v Azure Monitor nová rozhraní REST API založená na Správce prostředků.  
 
-## <a name="who-is-not-affected"></a>Kdo to se týká
+## <a name="who-is-not-affected"></a>Kdo to nemá vliv
 
-Pokud spravujete automatické škálování prostřednictvím webu Azure portal, [novou sadu SDK Azure Monitor](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), šablon Resource Manageru, rozhraní příkazového řádku nebo Powershellu, není nutná žádná akce.  
+Pokud spravujete automatické škálování prostřednictvím Azure Portal, [nové šablony Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), PowerShellu, CLI nebo správce prostředků nemusíte dělat nic.  
 
-Pokud jsou využívání metriky přes Azure portal nebo prostřednictvím různých [monitorování partnerské služby](../../azure-monitor/platform/partners.md), není nutná žádná akce. Microsoft ve spolupráci s partnery, aby migrovali na nové rozhraní API pro monitorování.
+Pokud používáte metriky prostřednictvím Azure Portal nebo prostřednictvím různých [partnerských monitorovacích služeb](../../azure-monitor/platform/partners.md), není nutná žádná akce. Microsoft pracuje s monitorováním partnerů k migraci na nová rozhraní API.
 
-## <a name="who-is-affected"></a>Kdo to se týká
+## <a name="who-is-affected"></a>Kdo je ovlivněn
 
-Tento článek se týká, pokud použijete následující komponenty:
+Tento článek se týká, pokud používáte následující součásti:
 
-- **Klasický Azure Insights SDK** – Pokud používáte [classic Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), přejít k používání nové monitorování Azure SDK for [.NET](https://github.com/azure/azure-libraries-for-net#download) nebo [Java](https://github.com/azure/azure-libraries-for-java#download). Stáhněte si [balíček NuGet sady SDK služby Azure Monitor](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
+- **Klasická sada Azure Insights SDK** – Pokud používáte [klasickou sadu Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), přepněte se na použití nové sady Azure monitor SDK pro [.NET](https://github.com/azure/azure-libraries-for-net#download) nebo [Java](https://github.com/azure/azure-libraries-for-java#download). Stáhněte [balíček NuGet sady Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
 
-- **Klasické automatického škálování** – Pokud voláte [nastavení automatického škálování klasického rozhraní API](https://msdn.microsoft.com/library/azure/mt348562.aspx) ze svých nástrojů vlastními silami sestavených nebo pomocí [classic Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), byste měli přejít na použití [ Rozhraní REST API služby Správce prostředků Azure monitoru](https://docs.microsoft.com/rest/api/monitor/autoscalesettings).
+- **Klasické automatické škálování** – Pokud voláte [rozhraní API klasického nastavení automatického škálování](https://msdn.microsoft.com/library/azure/mt348562.aspx) ze svých vlastních nástrojů nebo pomocí [klasické sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), měli byste přepnout na použití [Správce prostředků Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings).
 
-- **Klasické metriky** – Pokud jste využívání pomocí metrik [klasické rozhraní REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) nebo [classic Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) z vlastními silami sestavených nástroje byste měli přejít k použití [ Rozhraní REST API služby Správce prostředků Azure monitoru](https://docs.microsoft.com/rest/api/monitor/autoscalesettings). 
+- **Klasické metriky** – Pokud pracujete s metrikami pomocí [klasických rozhraní REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) nebo [sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) od vlastních nástrojů, měli byste přepnout na použití [Správce prostředků Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings). 
 
-Pokud si nejste jisti, zda jsou klasické rozhraní API volání kódu nebo vlastních nástrojů, podívejte se na následující:
+Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhraní API Classic, podívejte se na následující:
 
-- Zkontrolujte identifikátor URI odkazovat v kódu nebo nástroj. Klasické rozhraní API použijte identifikátor URI https://management.core.windows.net. Byste měli použít novější identifikátor URI pro správce prostředků založené na rozhraní API začíná https://management.azure.com/.
+- Zkontrolujte identifikátor URI, na který se odkazuje v kódu nebo nástroji. Rozhraní API Classic používají https://management.core.windows.net identifikátoru URI. Měli byste používat novější identifikátor URI pro rozhraní API založená na Správce prostředků začíná na https://management.azure.com/.
 
-- Porovnání názvu sestavení na svém počítači. Starší classic sestavení je v https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Porovnejte název sestavení v počítači. Starší sestavení Classic je na https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
 
-- Pokud používáte ověřování pomocí certifikátu pro přístup k metriky nebo automatické škálování rozhraní API, musíte používat klasické koncového bodu a knihovny. Novější rozhraní API Resource Manageru vyžaduje ověřování Azure Active Directory prostřednictvím objektu zabezpečení uživatele nebo instanční objekt.
+- Pokud k přístupu k metrikám nebo rozhraním API automatického škálování používáte ověřování pomocí certifikátů, používáte klasický koncový bod a knihovnu. Novější rozhraní Správce prostředků API vyžadují Azure Active Directory ověřování prostřednictvím instančního objektu nebo objektu zabezpečení uživatele.
 
-- Pokud používáte volání, které jsou uvedeny v dokumentaci na libovolné z následujících odkazů, používáte starší klasické rozhraní API.
+- Pokud používáte volání odkazovaná v dokumentaci na jakémkoli z následujících odkazů, používáte starší rozhraní API Classic.
 
-  - [Knihovna tříd Windows.Azure.Management.Monitoring](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Knihovna tříd Windows. Azure. Management. Monitoring](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
 
-  - [Monitorování .NET (classic)](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [Monitorování (klasické rozhraní) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations rozhraní](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [Rozhraní IMetricOperations](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
-## <a name="why-you-should-switch"></a>Proč byste měli přejít
+## <a name="why-you-should-switch"></a>Proč byste měli přepnout
 
-Všechny stávající možnosti automatického škálování a metriky se budou nadále fungovat prostřednictvím nových rozhraní API.  
+Všechny existující funkce pro automatické škálování a metriky budou i nadále fungovat prostřednictvím nových rozhraní API.  
 
-Migrace přes na novější funkce založené na Resource Manageru, jako třeba podporu pro konzistentní vzhledem k aplikacím Role-Based Access Control (RBAC) napříč všemi službami monitorování součástí rozhraní API. Získáte také další funkce pro metriky: 
+Migrace přes do novějších rozhraní API přináší Správce prostředků možnosti založené na rolích, jako je podpora konzistentních Access Control založených na rolích (RBAC) napříč všemi vašimi monitorovacími službami. Získáte také další funkce pro metriky: 
 
-- Podpora pro dimenze
-- konzistentní členitosti metriky 1 minuty napříč všemi službami 
+- Podpora dimenzí
+- konzistentní členitost metriky o úrovni 1 minuty napříč všemi službami 
 - lepší dotazování
-- vyšší uchovávání dat (93 dní metrik vs. 30 dní) 
+- vyšší Doba uchovávání dat (93 dní metriky vs. 30 dní) 
 
-Celkové, stejně jako všechny ostatní služby v Azure Resource Manageru, na základě Azure Monitor, rozhraní API jsou součástí lepší výkon, škálovatelnost a spolehlivost. 
+Stejně jako u všech ostatních služeb v Azure přináší Správce prostředků rozhraní API pro Azure Monitor vycházející s vyšším výkonem, škálovatelností a spolehlivostí. 
 
-## <a name="what-happens-if-you-do-not-migrate"></a>Co se stane, pokud neprovedete migraci
+## <a name="what-happens-if-you-do-not-migrate"></a>Co se stane, když nemigrujete
 
-### <a name="before-retirement"></a>Před vyřazení z provozu
+### <a name="before-retirement"></a>Před vyřazením
 
-Nebude existovat žádný přímý vliv na služby Azure nebo jejich úloh.  
+Vaše služby Azure ani jejich úlohy nebudou mít přímý vliv.  
 
 ### <a name="after-retirement"></a>Po vyřazení
 
-Všechna volání do klasického rozhraní API uvedené dříve selže a vrátí chybové zprávy podobné následující dotazy:
+Všechna volání klasických rozhraní API uvedených výše selžou a vrátí chybové zprávy podobné následujícím:
 
-Pro automatické škálování: *Toto rozhraní API je zastaralá. Správa nastavení automatického škálování pomocí webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku, šablon Resource Manageru nebo*.  
+Pro automatické škálování: *Toto rozhraní API je zastaralé. Pomocí Azure Portal, Azure Monitor SDK, PowerShellu, rozhraní příkazového řádku nebo šablon Správce prostředků můžete spravovat nastavení automatického škálování*.  
 
-Pro metriky: *Toto rozhraní API je zastaralá. Použití webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku k dotazování pro metriky*.
+Pro metriky: *Toto rozhraní API je zastaralé. K dotazování na metriky použijte Azure Portal, Azure Monitor SDK, PowerShell, rozhraní příkazového řádku*.
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 
-Oznámení o vyřazení byla odeslána na e-mailové adresy pro tyto role účet: 
+Oznámení o vyřazení bylo odesláno na e-mailové adresy následujících rolí účtu: 
 
-- Správci účtu a služby
+- Správci účtů a služeb
 - Spolusprávci  
 
 Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com.  
@@ -91,4 +91,4 @@ Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@mi
 ## <a name="references"></a>Odkazy
 
 - [Novější rozhraní REST API pro Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
-- [Azure Monitor novější sada SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)
+- [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

@@ -1,19 +1,18 @@
 ---
 title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262298"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552063"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -31,7 +30,7 @@ Správce protokolů logiky výstrah shromažďuje protokoly platforem virtuáln�
 
 ## <a name="appdynamics"></a>AppDynamics
 
-![AppDynamics Logo](./media/partners/appdynamics.png)
+![Logo AppDynamics](./media/partners/appdynamics.png)
 
 AppDynamics Application Performance Management (APM) umožňuje vlastníkům aplikací rychle řešit problémy s výkonem a optimalizovat výkon aplikací běžících v prostředí Azure. Může monitorovat Azure Cloud Services (PaaS), webové & role pracovních procesů, Virtual Machines (IaaS), vzdálené zjišťování služeb (Microsoft Azure Service Bus), Microsoft Azure frontu, Microsoft Azure vzdálených služeb (Azure BLOB), frontu Azure (Microsoft Service Bus), data Blob Storage úložiště a Microsoft Azure. AppDynamics APM je k dispozici v Azure Marketplace.
 
@@ -80,7 +79,7 @@ CloudMonix nabízí služby pro monitorování, automatizaci a samočinné oprav
 
 [Přejít na dokumentaci.][cloudmonix-doc]
 
-## <a name="datadog"></a>Datadog
+## <a name="datadog"></a>Služby Datadog
 
 ![Logo služby Datadog](./media/partners/datadog.png)
 
@@ -88,7 +87,7 @@ Služby Datadog je špičková služba monitorování pro aplikace v cloudovém 
 
 [Přejít na dokumentaci.][datadog-doc]
 
-## <a name="dynatrace"></a>dynaTrace
+## <a name="dynatrace"></a>Dynatrace
 
 ![Logo DynaTrace](./media/partners/dynatrace.png)
 
@@ -154,7 +153,7 @@ Moogsoft se spouští v Azure Realu a integruje se s nástroji pro monitorován�
 
 ## <a name="opsgenie"></a>OpsGenie
 
-![OpsGenie Logo](./media/partners/opsgenie.png)
+![Logo OpsGenie](./media/partners/opsgenie.png)
 
 OpsGenie slouží jako dispečer pro výstrahy vygenerované Azure. OpsGenie určuje správné osoby, které budou upozorňovány na závislosti na plánech a eskalacích volání. Může je informovat pomocí e-mailu, textových zpráv (SMS), telefonních hovorů nebo nabízených oznámení. Azure vygeneruje výstrahy zjištěné problémy. OpsGenie zajistí, že na tomto problému pracují správné osoby.
 

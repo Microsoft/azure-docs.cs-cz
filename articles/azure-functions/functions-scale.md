@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180102"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550637"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
-Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. Pro Azure Functions jsou k dispozici tři plány hostování: [Plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [plán App Service](#app-service-plan).
+Když vytvoříte aplikaci Function App v Azure, musíte zvolit plán hostování pro vaši aplikaci. K dispozici jsou tři plány hostování pro Azure Functions: [plán spotřeby](#consumption-plan), [Plán Premium](#premium-plan)a [plán App Service](#app-service-plan).
 
 Plán hostování, který zvolíte, bude určovat následující chování:
 
@@ -78,11 +78,12 @@ Pokud používáte plán Premium, instance Azure Functions hostitele se přidaj�
 
 Informace o tom, jak můžete tyto možnosti nakonfigurovat, najdete v [dokumentu plánu Azure Functions Premium](functions-premium-plan.md).
 
-Místo fakturace za běhu a využité paměti je fakturace za plán Premium založená na počtu základních sekund, době provádění a paměti používané napříč potřebnými a rezervovanými instancemi.  Aspoň jedna instance musí být zadarmo. To znamená, že existují pevné měsíční náklady na aktivní plán, bez ohledu na počet spuštění.
+Faktura za plán Premium vychází z počtu základních sekund a paměti využitých v případě potřeby a předem zaspotřebovaných instancí, a to místo fakturace za spuštění a využití paměti. Aspoň jedna instance musí být v každém plánu zadarmo. To znamená, že je k dispozici minimální měsíční cena za aktivní plán bez ohledu na počet spuštění. Mějte na paměti, že všechny aplikace Function App v plánu Premium sdílí předem zahříváníelné a aktivní instance.
 
 Vezměte v úvahu plán Azure Functions Premium v následujících situacích:
 
 * Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.
+* Máte vysoký počet malých spuštění a máte vysoké náklady na spuštění, ale v plánu spotřeby se účtují za méně GB.
 * Budete potřebovat více možností procesoru nebo paměti, než jaké je k dispozici v plánu spotřeby.
 * Váš kód musí běžet delší dobu, než je [Maximální doba spuštění](#timeout) v plánu spotřeby.
 * Vyžadujete funkce, které jsou k dispozici pouze v plánu Premium, například připojení VNET/VPN.
@@ -112,7 +113,7 @@ Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se `functionTimeout` řídí nastavením v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
+I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se řídí nastavením `functionTimeout` v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
@@ -127,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Když je `dynamic`výstup z tohoto příkazu, vaše aplikace Function App je v plánu spotřeby. Když je `ElasticPremium`výstup z tohoto příkazu, vaše aplikace Function App je v plánu Premium. Všechny ostatní hodnoty označují různé úrovně plánu App Service.
+Když je výstup z tohoto příkazu `dynamic`, vaše aplikace Function App je v plánu spotřeby. Když je výstup z tohoto příkazu `ElasticPremium`, vaše aplikace Function App je v plánu Premium. Všechny ostatní hodnoty označují různé úrovně plánu App Service.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
@@ -176,7 +177,7 @@ Fakturace pro různé plány je podrobně popsána na [stránce s cenami Azure F
 * **Spotřeba prostředků v GB-s (GB-s)** . Vypočítáno jako kombinace velikosti paměti a doby provádění pro všechny funkce v rámci aplikace Function App. 
 * **Spuštění**. Počítá se pokaždé, když se funkce spustí v reakci na Trigger události.
 
-Užitečné dotazy a informace o tom, jak pochopit vyúčtování spotřeby, najdete [na stránce s nejčastějšími dotazy](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)k fakturaci.
+Užitečné dotazy a informace o tom, jak pochopit vyúčtování spotřeby, najdete [na stránce s nejčastějšími dotazy k fakturaci](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 

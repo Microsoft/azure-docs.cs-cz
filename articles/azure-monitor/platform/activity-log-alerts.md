@@ -1,19 +1,18 @@
 ---
 title: Výstrahy protokolu aktivit v Azure Monitor
 description: Informujte prostřednictvím SMS, Webhooku, SMS, e-mailu a dalších akcí, když dojde k určitým událostem v protokolu aktivit.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/17/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/17/2018
+ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675217"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553719"
 ---
 # <a name="alerts-on-activity-log"></a>Výstrahy na protokol aktivit 
 
@@ -51,7 +50,7 @@ Výstrahy protokolu aktivit mají několik běžných možností:
 > [!NOTE]
 > V rámci předplatného můžete vytvořit pravidla výstrah až 100, a to buď na jeden prostředek, všechny prostředky ve skupině prostředků (nebo) na celé úrovni předplatného.
 
-Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžeš:
+Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžete:
 
 * V upozornění protokolu aktivit použijte existující skupinu akcí.
 * Vytvořte novou skupinu akcí.

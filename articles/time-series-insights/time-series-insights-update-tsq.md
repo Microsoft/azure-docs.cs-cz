@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034882"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553379"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -25,7 +25,7 @@ V Time Series Insights jsou k dispozici tři primární kategorie rozhraní API:
 
 * **Rozhraní API prostředí**: povolí dotazy samotného prostředí Time Series Insights. Příklady dotazů jsou seznam prostředí, ke kterým má volající přístup k metadatům prostředí a.
 
-* **Rozhraní API Time Series model-Query (TSM-Q)** : povoluje operace vytvoření, čtení, aktualizace a odstranění v metadatech uložených v části prostředí modelu časové řady. Příklady jsou instance, typy a hierarchie.
+* **Rozhraní API Time Series model-Query (TSM-Q)** : povoluje operace vytvoření, čtení, aktualizace a odstranění (CRUD) v metadatech uložených v části prostředí modelu časové řady. Příklady jsou instance, typy a hierarchie.
 
 * **Rozhraní API pro Time Series Query (TSQ)** : umožňuje načtení dat událostí, která se zaznamenávají ze zprostředkovatele zdroje. Tato rozhraní API mohou provádět operace pro transformaci, kombinování a provádění výpočtů pro data časových řad.
 
@@ -35,7 +35,7 @@ V Time Series Insights jsou k dispozici tři primární kategorie rozhraní API:
 
 Podporují se následující základní rozhraní API.
 
-[Přehled dotazů řady @no__t 1Time](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[Přehled dotazu na ![Time Series](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Rozhraní API prostředí
 

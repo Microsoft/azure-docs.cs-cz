@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 6f787760c1224172982e0818d8592ce0d36b5e2c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: 3d4585e032d92049a4f087cd510bdef963025250
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527289"
+ms.locfileid: "72550149"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora virtuálních počítačů 2. generace (Preview) v Azure
 
@@ -52,8 +52,8 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [NVv3-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 
->[!NOTE]
->Použití imagí virtuálních počítačů 2. generace pro Mv2-Series je všeobecně dostupné, protože Mv2-Series funguje výhradně s imagemi virtuálních počítačů 2. generace. Image virtuálních počítačů 1. generace nefungují s Mv2-Series. 
+> [!NOTE]
+> Použití imagí virtuálních počítačů 2. generace pro virtuální počítače Mv2-Series je všeobecně dostupné, protože Mv2-Series funguje výhradně s imagemi virtuálních počítačů 2. generace. Image virtuálních počítačů 1. generace nejsou na virtuálních počítačích řady Mv2-Series podporované. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Image virtuálních počítačů 2. generace v Azure Marketplace
 

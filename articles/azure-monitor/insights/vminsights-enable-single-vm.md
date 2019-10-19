@@ -1,89 +1,83 @@
 ---
-title: Povolit monitorování Azure pro virtuální počítače (preview) pro vyhodnocení | Dokumentace Microsoftu
-description: Zjistěte, jak vyhodnotit monitorování Azure pro virtuální počítače na jeden virtuální počítač Azure nebo na škálovací sadu virtuálních počítačů.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Povolit Azure Monitor pro virtuální počítače (Preview) pro vyhodnocení | Microsoft Docs
+description: Přečtěte si, jak vyhodnotit Azure Monitor pro virtuální počítače na jednom virtuálním počítači Azure nebo v sadě škálování virtuálního počítače.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ec909bcd16f923bbd7036f6a69df2bbb07e561b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/09/2019
+ms.openlocfilehash: 1182f48d2d05c90cc90b1832f9305001dd2d1211
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122525"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553814"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Povolit monitorování Azure pro virtuální počítače (preview) pro vyhodnocení
+# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pro vyhodnocení
 
-Můžete vyhodnotit monitorování Azure pro virtuální počítače (preview) na malý počet virtuálních počítačů Azure (VM) nebo na jednom virtuálním počítači nebo virtuálním počítači. Je nejrychlejším a nejjednodušším způsobem povolení monitorování na webu Azure Portal. Vaším cílem je zjistit jakékoli výkonem a dostupností způsobené a monitorování virtuálních počítačů. 
+Můžete vyhodnotit Azure Monitor pro virtuální počítače (Preview) na malém počtu virtuálních počítačů Azure nebo na jednom virtuálním počítači nebo sadě škálování virtuálních počítačů. Nejjednodušší a nejbezpečnější způsob, jak povolit monitorování, je Azure Portal. Vaším cílem je monitorovat virtuální počítače a zjišťovat případné problémy s výkonem nebo dostupností. 
 
-Než začnete, projděte si [požadavky](vminsights-enable-overview.md) a ujistěte se, že vaše předplatné a splňovat požadavky na prostředky.  
+Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ujistěte se, že vaše předplatné a prostředky splňují požadavky.  
 
-## <a name="enable-monitoring-for-a-single-azure-vm"></a>Zapněte sledování pro jeden virtuální počítač Azure
-Povolení monitorování virtuálního počítače Azure:
+## <a name="enable-monitoring-for-a-single-azure-vm"></a>Povolení monitorování pro jeden virtuální počítač Azure
+Pokud chcete povolit monitorování virtuálního počítače Azure:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **virtuálních počítačů**.
+1. Vyberte **Virtual Machines**.
 
 1. V seznamu vyberte virtuální počítač.
 
-1. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
+1. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
 
-1. Na **Insights (preview)** stránce **vyzkoušet**.
+1. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
 
-    ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Povolení Azure Monitor pro virtuální počítače pro virtuální počítač](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-1. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  
+1. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
 
-    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, kde je virtuální počítač nasadit v rámci předplatného. 
+    Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování z virtuálního počítače, naleznete v tématu [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Váš pracovní prostor Log Analytics musí patřit do jedné ze [podporované oblasti](vminsights-enable-overview.md#log-analytics).
+    >Informace o vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování z virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../../azure-monitor/learn/quick-create-workspace.md). Váš pracovní prostor Log Analytics musí patřit do jedné z [podporovaných oblastí](vminsights-enable-overview.md#log-analytics).
 
-Po povolení monitorování, můžete potřebovat Počkejte asi 10 minut, než můžete zobrazit stav metriky pro virtuální počítač.
+Po povolení monitorování možná budete muset počkat asi 10 minut, než budete moct zobrazit metriky stavu virtuálního počítače.
 
-![Povolit Azure Monitor pro monitorování zpracování nasazení virtuálních počítačů](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
-## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Zapněte sledování pro jeden virtuální počítač škálovací sady
+## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Povolit monitorování pro jednu sadu škálování virtuálního počítače
 
-Povolení monitorování škálovací sady virtuálních počítačů Azure:
+Pokud chcete povolit monitorování sady škálování virtuálních počítačů Azure:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Virtual Machine Scale Sets**.
 
-3. V seznamu vyberte škálovací sadu virtuálních počítačů.
+3. V seznamu vyberte sadu škálování virtuálního počítače.
 
-4. Na virtuálním počítači škálovací sady stránce v **monitorování** vyberte **Insights (preview)** .
+4. Na stránce sada škálování virtuálního počítače v části **monitorování** vyberte **přehledy (Preview)** .
 
-5. Na **Insights (preview)** stránky, pokud chcete použít existující pracovní prostor Log Analytics, vyberte v rozevíracím seznamu.
+5. Pokud chcete použít existující Log Analytics pracovní prostor, na stránce **přehledy (Preview)** ho vyberte v rozevíracím seznamu.
 
-    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, který se nasazuje virtuální počítač v rámci předplatného. 
+    Seznam předchází výchozí pracovní prostor a umístění, do kterého se virtuální počítač nasadí v rámci předplatného. 
 
-    ![Povolit monitorování Azure pro virtuální počítače pro škálovací sadu virtuálních počítačů](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+    ![Povolení Azure Monitor pro virtuální počítače pro sadu škálování virtuálního počítače](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics k ukládání dat monitorování ze škálovací sady virtuálních počítačů, naleznete v tématu [vytvořit pracovní prostor Log Analytics](../learn/quick-create-workspace.md). Váš pracovní prostor Log Analytics musí patřit do jedné ze [podporované oblasti](vminsights-enable-overview.md#log-analytics).
+    >Postup vytvoření nového pracovního prostoru Log Analytics pro uložení dat monitorování ze sady škálování virtuálního počítače najdete v tématu [Vytvoření pracovního prostoru Log Analytics](../learn/quick-create-workspace.md). Váš pracovní prostor Log Analytics musí patřit do jedné z [podporovaných oblastí](vminsights-enable-overview.md#log-analytics).
 
-Po povolení monitorování, můžete potřebovat Počkejte asi 10 minut před zobrazením dat monitorování pro škálovací sady.
+Po povolení monitorování možná budete muset počkat asi 10 minut, než budete moct zobrazit data monitorování pro sadu škálování.
 
 >[!NOTE]
->Pokud používáte ruční upgrade modelu pro svou škálovací sadu, upgradujte instance a dokončete instalaci. Můžete začít upgrady z **instance** stránku, **nastavení** oddílu.
+>Pokud pro sadu škálování používáte ruční model upgradu, upgradujte instance, aby se dokončila instalace. Upgrady můžete zahájit na stránce **instance** v části **Nastavení** .
 
-![Povolit Azure Monitor pro monitorování zpracování nasazení virtuálních počítačů](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+![Povolení zpracování nasazení Azure Monitor pro virtuální počítače monitorování](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
 
-Teď, když jste povolili monitorování vaší škálovací sadě virtuálního počítače nebo virtuální počítač, informacím o monitorování je k dispozici pro analýzy ve službě Azure Monitor pro virtuální počítače. 
+Teď, když jste povolili monitorování pro virtuální počítač nebo sadu škálování virtuálních počítačů, jsou informace o monitorování k dispozici pro analýzu v Azure Monitor pro virtuální počítače. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o použití funkce stavu, najdete v článku [porozumět stavu vašich virtuálních počítačů Azure Monitor](vminsights-health.md). 
-* Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [použití Azure monitoru pro virtuální počítače mapu](vminsights-maps.md). 
-* Chcete-li identifikovat problémová místa, celkové využití a výkonu Virtuálních počítačů, naleznete v tématu [virtuálního počítače Azure zobrazení výkonu](vminsights-performance.md).
+* Informace o tom, jak používat funkci Health, najdete v tématu [pochopení stavu vašich Azure monitor virtuálních počítačů](vminsights-health.md). 
+* Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [použití Azure monitor pro virtuální počítače mapa](vminsights-maps.md). 
+* Pokud chcete zjistit kritické body, celkové využití a výkon vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md).

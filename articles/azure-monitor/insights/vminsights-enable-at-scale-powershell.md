@@ -1,24 +1,18 @@
 ---
 title: Povolit Azure Monitor pro virtuální počítače (Preview) pomocí šablon Azure PowerShell nebo Správce prostředků | Microsoft Docs
 description: Tento článek popisuje, jak povolíte Azure Monitor pro virtuální počítače pro jeden nebo několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů pomocí šablon Azure PowerShell nebo Azure Resource Manager.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/14/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 78fe9eec757274e4262857ac0441af61c47a992b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/14/2019
+ms.openlocfilehash: 24b40e5dfdef7bde65d326cb0d054365f730477e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515542"
+ms.locfileid: "72555281"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pomocí šablon Azure PowerShell nebo Správce prostředků
 

@@ -1,19 +1,18 @@
 ---
 title: Inteligentní skupiny
 description: Inteligentní skupiny jsou agregace výstrah, které vám pomůžou snížit šum výstrah.
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702859"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552359"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
 Běžným problémem, se kterým čelíte při práci s výstrahami, je prokládání hluku, aby bylo možné zjistit, co skutečně záleží na tom, jaké má řešení k tomuto problému.  
@@ -33,7 +32,7 @@ Podporovány jsou následující stavy inteligentních skupin.
 |:---|:---|
 | Novinka | Problém se právě zjistil a ještě není zkontrolovaný. |
 | Potvrzené | Správce zkontroloval tuto inteligentní skupinu a začal na ní pracovat. |
-| Ukončit | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
+| ukončit | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
 
 [Zjistěte, jak změnit stav vaší inteligentní skupiny.](https://aka.ms/managing-alert-smart-group-states)
 

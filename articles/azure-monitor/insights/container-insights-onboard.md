@@ -1,24 +1,18 @@
 ---
 title: Postup povolení Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 48e84517fba1caee771f6985b4c502227cae9e72
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 07/12/2019
+ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389807"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555399"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
@@ -59,7 +53,7 @@ Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontej
 Po vydání nové verze agenta se automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
 >[!NOTE]
->Pokud jste už nasadili cluster AKS, povolíte monitorování pomocí Azure CLI nebo poskytované Azure Resource Manager šablony, jak je znázorněno dále v tomto článku. @No__t-0 nemůžete použít k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
+>Pokud jste už nasadili cluster AKS, povolíte monitorování pomocí Azure CLI nebo poskytované Azure Resource Manager šablony, jak je znázorněno dále v tomto článku. @No__t_0 nemůžete použít k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
 >Šablona musí být nasazená ve stejné skupině prostředků jako cluster.
 
 Azure Monitor pro kontejnery povolíte pomocí jedné z následujících metod popsaných v následující tabulce.

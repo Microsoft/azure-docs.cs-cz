@@ -1,19 +1,18 @@
 ---
 title: Jak integrovat společné schéma výstrah s Logic Apps
 description: Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.
-author: ananthradhakrishnan
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: ananthradhakrishnan
+ms.author: robb
+ms.date: 05/27/2019
+ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702955"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555647"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
@@ -37,11 +36,11 @@ V tomto článku se předpokládá, že čtenář je známý
 
 1.  Vyberte aktivační událost: **když se přijme požadavek HTTP**.
 
-    ![Aplikace logiky aktivuje](media/action-groups-logic-app/logic-app-triggers.png "triggery aplikace logiky")
+    ![Triggery aplikace logiky](media/action-groups-logic-app/logic-app-triggers.png "Triggery aplikace logiky")
 
 1.  Výběrem **Upravit** změňte aktivační událost požadavku HTTP.
 
-    ![Požadavek HTTP aktivuje](media/action-groups-logic-app/http-request-trigger-shape.png "triggery požadavků HTTP")
+    ![Aktivační události požadavku HTTP](media/action-groups-logic-app/http-request-trigger-shape.png "Aktivační události požadavku HTTP")
 
 
 1.  Zkopírujte a vložte následující schéma:
@@ -115,15 +114,15 @@ V tomto článku se předpokládá, že čtenář je známý
 
 1. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
 
-    ![Přidat]akci(media/action-groups-logic-app/add-action.png "přidat akci")
+    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidání akce")
 
 1. V této fázi můžete přidat nejrůznější konektory (Microsoft teams, časová rezerva, Salesforce atd.) na základě konkrétních podnikových požadavků. Klíčové slovo "základní" můžete použít předem. 
 
-    ![Základní]pole(media/alerts-common-schema-integrations/logic-app-essential-fields.png "základních") polí
+    ![Základní pole](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Základní pole")
     
     Alternativně můžete vytvořit podmíněný logiku na základě typu výstrahy pomocí možnosti Expression.
 
-    (media/alerts-common-schema-integrations/logic-app-expressions.png "Výraz aplikace logiky") ![výrazu aplikace logiky]
+    ![Výraz aplikace logiky](media/alerts-common-schema-integrations/logic-app-expressions.png "Výraz aplikace logiky")
     
      [Pole ' monitoringService '](alerts-common-schema-definitions.md#alert-context) umožňuje jednoznačně identifikovat typ výstrahy na základě toho, ve kterém můžete vytvořit podmíněný Logic.
 

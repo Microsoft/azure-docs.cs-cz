@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4fd213a6550d045fe4bea280449ed228ba9eda35
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898210"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550288"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
@@ -27,7 +27,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
 2. Načtěte v sadě Azure Maps Web SDK. To lze provést pomocí jedné ze dvou možností:
 
-    a. Pomocí globálně hostované verze CDN rozhraní Azure Maps Web SDK přidejte koncové body adresy URL do šablony stylů a odkazy na skripty v `<head>` elementu souboru:
+    a. Pomocí globálně hostované verze CDN rozhraní Azure Maps Web SDK přidejte koncové body adresy URL do šablony stylů a odkazy na skripty v elementu `<head>` souboru:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
@@ -38,14 +38,14 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
     > NPM instalace Azure-Maps-Control
 
-    Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdroj skriptu k `<head>` elementu souboru:
+    Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdrojový odkaz na element `<head>` souboru:
 
     ```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
-    <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
+    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
     ```
 
-3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte `<style>` `<head>` do elementu následující element.
+3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte následující prvek `<style>` do prvku `<head>`.
 
     ```HTML
     <style>
@@ -60,7 +60,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </style>
     ```
 
-4. V těle stránky přidejte `<div>` prvek a poskytněte `id` mu **myMap**.
+4. V těle stránky přidejte prvek `<div>` a poskytněte mu `id` **myMap**.
 
     ```HTML
     <body>
@@ -68,7 +68,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </body>
     ```
 
-5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance `id` `Map` třídy předejte `<div>` v mapě `HTMLElement` nebo (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, přečtěte si téma [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md). Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
+5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance třídy `Map` předat `id` mapování `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, přečtěte si téma [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md). Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```HTML
     <script type="text/javascript">
@@ -166,12 +166,12 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
 8. Otevřete soubor ve webovém prohlížeči a zobrazte vykreslenou mapu. Měl by vypadat jako v následujícím kódu:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Podívejte se na pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Přečtěte si pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> Azure Maps (<a href='https://codepen.io/azuremaps'> @azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
 ## <a name="localizing-the-map"></a>Lokalizace mapy
 
-Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního `atlas` oboru názvů, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
+Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního oboru názvů `atlas`, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -195,7 +195,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> Díky webové sadě SDK je možné načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí `setStyle` funkce mapy. 
+> Díky webové sadě SDK je možné načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí funkce `setStyle` mapy. 
 
 Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místním zobrazení na hodnotu "auto".
 
@@ -203,7 +203,7 @@ Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místn
 
 Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se vytvořit mapu a pracovat s ní:
 

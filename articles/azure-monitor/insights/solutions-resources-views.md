@@ -1,56 +1,50 @@
 ---
-title: Zobrazení v řešení pro správu | Dokumentace Microsoftu
-description: 'Řešení pro správu obvykle zahrnují jeden nebo více zobrazení k vizualizaci dat.  Tento článek popisuje, jak exportovat zobrazení vytvořené návrhářem zobrazení a zahrnout do řešení pro správu. '
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
+title: Zobrazení v řešení pro správu | Microsoft Docs
+description: 'Řešení pro správu obvykle zahrnují jedno nebo více zobrazení k vizualizaci dat.  Tento článek popisuje, jak exportovat zobrazení vytvořené návrhářem zobrazení a zahrnout ho do řešení pro správu. '
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/16/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2018
+ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596632"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553897"
 ---
-# <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
+# <a name="views-in-management-solutions-preview"></a>Zobrazení v řešeních pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.    
+> Toto je předběžná dokumentace k vytváření řešení pro správu, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.    
 
 
-[Řešení pro správu](solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md) a zahrnout do řešení pro správu.  
+[Řešení pro správu](solutions.md) obvykle zahrnují jedno nebo více zobrazení k vizualizaci dat.  Tento článek popisuje, jak exportovat zobrazení vytvořené [návrhářem zobrazení](../../azure-monitor/platform/view-designer.md) a zahrnout ho do řešení pro správu.  
 
 > [!NOTE]
-> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](solutions-creating.md)
+> V ukázkách v tomto článku se používají parametry a proměnné, které jsou buď vyžadované, nebo běžné pro řešení pro správu, popsaná v článku [Návrh a sestavení řešení pro správu v Azure](solutions-creating.md) .
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](solutions-creating.md) a struktura souboru řešení.
+## <a name="prerequisites"></a>Předpoklady
+V tomto článku se předpokládá, že už jste obeznámeni s tím, jak [vytvořit řešení pro správu](solutions-creating.md) a strukturu souboru řešení.
 
 ## <a name="overview"></a>Přehled
-V rámci řešení pro správu zahrnují zobrazení, vytvoření **prostředků** pro něj v [soubor řešení](solutions-creating.md).  Ve formátu JSON, který popisuje podrobnou konfiguraci zobrazení je obvykle složitý ale a nemít něco, že autor typické řešení budou moct vytvořit ručně.  Nejběžnější metodou je vytvořte pomocí zobrazení [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md), exportujte ho a pak přidejte jeho podrobnou konfiguraci řešení.
+Chcete-li zahrnout zobrazení do řešení pro správu, vytvořte pro něj **prostředek** v [souboru řešení](solutions-creating.md).  KÓD JSON, který popisuje podrobnou konfiguraci zobrazení, je obvykle složitý, ale není to něco, co by bylo možné vytvořit pomocí typického autora řešení ručně.  Nejběžnější metodou je vytvořit zobrazení pomocí [návrháře zobrazení](../../azure-monitor/platform/view-designer.md), exportovat ho a pak přidat do řešení jeho podrobnou konfiguraci.
 
-Základní postup pro přidání do řešení zobrazení jsou následující.  Každý krok je podrobně popsán dále v následujících částech.
+Postup pro přidání zobrazení do řešení je základní:  Jednotlivé kroky jsou podrobněji popsané v následujících částech.
 
-1. Zobrazení exportujte do souboru.
-2. Vytvořte zobrazení prostředků v řešení.
-3. Přidáním podrobností o zobrazení.
+1. Exportujte zobrazení do souboru.
+2. Vytvořte prostředek zobrazení v řešení.
+3. Přidejte podrobnosti zobrazení.
 
-## <a name="export-the-view-to-a-file"></a>Zobrazení exportovat do souboru
-Postupujte podle pokynů na adrese [Návrhář zobrazení Log Analytics](../../azure-monitor/platform/view-designer.md) zobrazení export do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [prvky jako soubor řešení](solutions-solution-file.md).  
+## <a name="export-the-view-to-a-file"></a>Exportovat zobrazení do souboru
+Pokud chcete exportovat zobrazení do souboru, postupujte podle pokynů v tématu [Log Analytics Návrhář zobrazení](../../azure-monitor/platform/view-designer.md) .  Exportovaný soubor bude ve formátu JSON se stejnými [prvky jako soubor řešení](solutions-solution-file.md).  
 
-**Prostředky** element zobrazit soubor bude mít prostředek typu **Microsoft.OperationalInsights/workspaces** , která představuje pracovní prostor Log Analytics.  Tento element bude mít dílčí element typu **zobrazení** , který představuje zobrazení a obsahuje jeho podrobnou konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte je do vašeho řešení.
+Element **Resources** souboru zobrazení bude mít prostředek s typem **Microsoft. OperationalInsights/Workspaces** , který představuje pracovní prostor Log Analytics.  Tento prvek bude mít dílčí prvek s typem **zobrazení** , které představuje zobrazení a obsahuje jeho podrobnou konfiguraci.  Budete Kopírovat podrobnosti tohoto prvku a pak ho zkopírovat do svého řešení.
 
-## <a name="create-the-view-resource-in-the-solution"></a>Vytvořit zobrazení prostředků v řešení
-Přidejte následující zobrazení prostředku **prostředky** prvek souboru řešení.  Tady se používá proměnné, které jsou popsané níže, musíte taky přidat.  Všimněte si, že **řídicí panel** a **OverviewTile** vlastnosti jsou zástupné symboly, které se přepíšou s odpovídající vlastností ze souboru exportovaného zobrazení.
+## <a name="create-the-view-resource-in-the-solution"></a>Vytvoření prostředku zobrazení v řešení
+Přidejte následující prostředek zobrazení do elementu **Resources** souboru řešení.  Používá proměnné, které jsou popsány níže, je také nutné přidat.  Všimněte si, že vlastnosti **řídicího panelu** a **OverviewTile** jsou zástupné symboly, které budete přepsat odpovídajícími vlastnostmi z exportovaného souboru zobrazení.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -72,39 +66,39 @@ Přidejte následující zobrazení prostředku **prostředky** prvek souboru ř
         }
     }
 
-Přidejte následující proměnné na proměnné prvek souboru řešení a nahraďte hodnoty tak, aby pro vaše řešení.
+Přidejte následující proměnné do prvku proměnné souboru řešení a nahraďte hodnoty hodnotami pro vaše řešení.
 
     "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
 
-Všimněte si, že celé zobrazení prostředků lze zkopírovat ze souboru exportovaného zobrazení, ale je třeba provést následující změny, aby to fungovalo ve vašem řešení.  
+Všimněte si, že můžete zkopírovat celý prostředek zobrazení z exportovaného souboru zobrazení, ale pokud chcete, aby fungoval ve vašem řešení, je třeba provést následující změny.  
 
-* **Typ** zobrazení potřeba změnit z prostředků **zobrazení** k **Microsoft.OperationalInsights/workspaces**.
-* **Název** vlastnost pro zobrazení prostředků je potřeba změnit tak, aby obsahovaly název pracovního prostoru.
-* Závislost na pracovní prostor je potřeba odebrat, protože prostředek pracovní prostor není definovaný v řešení.
-* **DisplayName** vlastnost musí být přidán do zobrazení.  **Id**, **název**, a **DisplayName** musí všechny odpovídaly.
-* Názvy parametrů musí změnit tak, aby odpovídaly vyžaduje sadu parametrů.
-* Proměnné by měl definovaný v řešení a použít v příslušné vlastnosti.
+* **Typ** pro prostředek zobrazení musí být změněn z **zobrazení** na **Microsoft. OperationalInsights/Workspaces**.
+* Vlastnost **Name** prostředku zobrazení musí být změněna tak, aby zahrnovala název pracovního prostoru.
+* Závislost v pracovním prostoru je nutné odebrat, protože prostředek pracovního prostoru není v řešení definován.
+* Vlastnost **DisplayName** je třeba přidat do zobrazení.  **ID**, **název**a **DisplayName** musí odpovídat všem.
+* Názvy parametrů se musí změnit tak, aby odpovídaly požadované sadě parametrů.
+* Proměnné by měly být definovány v řešení a použity v příslušných vlastnostech.
 
-### <a name="log-analytics-api-version"></a>Verze rozhraní API pro analýzu protokolů
-Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../../azure-monitor/log-query/log-query-overview.md).  
+### <a name="log-analytics-api-version"></a>Verze rozhraní API pro Log Analytics
+Všechny prostředky Log Analytics definované v šabloně Správce prostředků mají vlastnost **apiVersion** , která definuje verzi rozhraní API, kterou by měl prostředek použít.  Tato verze se liší v zobrazeních s dotazy, které používají [starší verze a upgradovaný dotazovací jazyk](../../azure-monitor/log-query/log-query-overview.md).  
 
- Následující tabulka obsahuje verze rozhraní API služby Log Analytics pro zobrazení v pracovních prostorech starších verzí a upgradovat: 
+ Následující tabulka uvádí Log Analytics verze rozhraní API pro zobrazení ve starších a upgradovaných pracovních prostorech: 
 
-| Verze v pracovním prostoru | Verze API | Dotaz |
+| Verze v pracovním prostoru | Verze rozhraní API | Dotaz |
 |:---|:---|:---|
-| V1 (starší verze)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Typ = EventLevelName události = chyba  |
-| v2 (upgradovat) | 2015-11-01-preview | Starší verze formátu.  Převést na formát upgradovaný při instalaci.<br> Příklad: Typ = EventLevelName události = chyba<br>Převést na: Událost &#124; kde EventLevelName == "Chyba"  |
-| v2 (upgradovat) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Chyba"  |
+| V1 (starší verze)   | 2015-11-01 – Preview | Starší verze formátu.<br> Příklad: Type = Event EventLevelName = Error  |
+| v2 (upgradovaný) | 2015-11-01 – Preview | Starší verze formátu.  Převedeno na upgradovaný formát při instalaci.<br> Příklad: Type = Event EventLevelName = Error<br>Převedeno na: &#124; Event, kde EventLevelName = = "Error"  |
+| v2 (upgradovaný) | 2017-03-03 – Preview | Formát upgradu. <br>Příklad: událost &#124; , kde EventLevelName = = "Error"  |
 
 
-## <a name="add-the-view-details"></a>Přidáním podrobností o zobrazení
-Zobrazit prostředek v souboru exportované zobrazení bude obsahovat dva prvky v **vlastnosti** element s názvem **řídicí panel** a **OverviewTile** obsahující na podrobné Konfigurace zobrazení.  Zkopírujte tyto dva prvky a jejich obsah do **vlastnosti** element zobrazení prostředku v souboru řešení.
+## <a name="add-the-view-details"></a>Přidat podrobnosti zobrazení
+Prostředek zobrazení v souboru s vyexportovaným zobrazením bude obsahovat dva prvky v elementu **Properties** s názvem **Dashboard** a **OverviewTile** obsahující podrobnou konfiguraci zobrazení.  Zkopírujte tyto dva prvky a jejich obsah do elementu **Properties (vlastnosti** ) prostředku zobrazení v souboru řešení.
 
 ## <a name="example"></a>Příklad:
-Například následující příklad ukazuje soubor jednoduchého řešení pomocí zobrazení.  Symbol tří teček (...) jsou platné pro **řídicí panel** a **OverviewTile** obsah z důvodu místa.
+Například následující příklad ukazuje jednoduchý soubor řešení se zobrazením.  Zobrazí se tři tečky (...) pro **řídicí panel** a obsah **OverviewTile** z důvodu místa.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -186,6 +180,6 @@ Například následující příklad ukazuje soubor jednoduchého řešení pomo
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si podrobné informace o vytváření [řešení pro správu](solutions-creating.md).
-* Zahrnout [runbooků služeb automatizace ve vašem řešení správy](solutions-resources-automation.md).
+* Zahrňte [do řešení pro správu Runbooky Automation](solutions-resources-automation.md).

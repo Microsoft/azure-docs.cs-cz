@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor pro virtuální počítače integrace s System Center Operations Manager | Microsoft Docs
 description: Azure Monitor pro virtuální počítače automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek popisuje použití funkce map k automatickému vytváření diagramů distribuovaných aplikací v Operations Manager.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489725"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553974"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrace s funkcí map Azure Monitor pro virtuální počítače
 
@@ -27,7 +21,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 >[!NOTE]
 >Pokud jste již nasadili Service Map, můžete zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map Azure Monitor pro virtuální počítače je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](vminsights-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * System Center Operations Manager skupina pro správu (2012 R2 nebo novější).
 * Pracovní prostor Log Analytics nakonfigurovaný pro podporu Azure Monitor pro virtuální počítače.
@@ -60,7 +54,7 @@ Chcete-li nakonfigurovat integraci mapování Azure Monitor pro virtuální poč
 
     ![Okno Konfigurace připojení](media/service-map-scom/scom-config-spn.png)
 
-3. V okně **výběru** předplatného vyberte předplatné Azure, skupinu prostředků Azure (tu, která obsahuje Log Analytics pracovní prostor) a Log Analytics pracovní prostor a pak klikněte na **Další**.
+3. V okně **výběru předplatného** vyberte předplatné Azure, skupinu prostředků Azure (tu, která obsahuje Log Analytics pracovní prostor) a Log Analytics pracovní prostor a pak klikněte na **Další**.
 
     ![Pracovní prostor konfigurace Operations Manager](media/service-map-scom/scom-config-workspace.png)
 
@@ -94,26 +88,26 @@ Po připojení Log Analytics pracovního prostoru se v podokně **monitorování
 
 Složka Service Map má čtyři uzly:
 
-* **Aktivní výstrahy**: Zobrazuje všechny aktivní výstrahy týkající se komunikace mezi Operations Manager a Azure Monitor.  
+* **Aktivní výstrahy**: vypíše všechny aktivní výstrahy týkající se komunikace mezi Operations Manager a Azure monitor.  
 
   >[!NOTE]
   >Tyto výstrahy nejsou Log Analytics výstrahy synchronizované s Operations Manager se generují ve skupině pro správu založené na pracovních postupech definovaných v Management Pack Service Map.
 
-* **Servery**: Zobrazuje seznam monitorovaných serverů, které jsou nakonfigurované pro synchronizaci z Azure Monitor pro virtuální počítače funkce map.
+* **Servery**: vypíše monitorované servery, které jsou nakonfigurované pro synchronizaci z Azure monitor pro virtuální počítače funkce mapy.
 
     ![Podokno Operations Manager monitorovací servery](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Zobrazení závislostí skupiny počítačů**: Zobrazí seznam všech skupin počítačů synchronizovaných pomocí funkce map. Kliknutím na libovolnou skupinu můžete zobrazit její diagram distribuované aplikace.
+* **Zobrazení závislostí skupiny počítačů**: vypíše všechny skupiny počítačů, které jsou synchronizované z funkce mapa. Kliknutím na libovolnou skupinu můžete zobrazit její diagram distribuované aplikace.
 
     ![Diagram Operations Manager distribuované aplikace](media/service-map-scom/scom-group-dad.png)
 
-* **Zobrazení závislostí serveru**: Zobrazí seznam všech serverů, které jsou synchronizované z funkce mapa. Pro zobrazení diagramu distribuované aplikace můžete kliknout na libovolný server.
+* **Zobrazení závislostí serveru**: vypíše všechny servery, které jsou synchronizované z funkce mapa. Pro zobrazení diagramu distribuované aplikace můžete kliknout na libovolný server.
 
     ![Diagram Operations Manager distribuované aplikace](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 
-Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehledu Service map** (podokno**Správa** > Operations **Management Suite** > **Service map**).
+Nakonfigurovaný pracovní prostor můžete upravit nebo odstranit pomocí podokna **přehled Service map** (podokno**Správa** > **operations Management Suite**  > **Service map**).
 
 >[!NOTE]
 >[Operations Management Suite byla sada služeb](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , které jsou součástí Log Analytics, což je teď součástí [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -128,7 +122,7 @@ Pravidlo, *Microsoft. SystemCenter. ServiceMapImport. Rule*, pravidelně načít
 
 ![Okno Vlastnosti Operations Manager Overrides](media/service-map-scom/scom-overrides.png)
 
-* **Povoleno**: Povolí nebo zakáže automatické aktualizace.
+* **Povoleno**: povolí nebo zakáže automatické aktualizace.
 * **IntervalMinutes**: Určuje dobu mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete mapy synchronizovat častěji, můžete hodnotu změnit.
 * **TimeoutSeconds**: Určuje dobu, po jejímž uplynutí vyprší časový limit požadavku.
 * **TimeWindowMinutes**: Určuje časový interval pro dotazování na data. Výchozí hodnota je 60 minut, což je maximální povolený interval.
@@ -149,5 +143,5 @@ Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v t
 * [Vytvoření instančního objektu pomocí Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Vytvoření instančního objektu pomocí služby Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Zpětná vazba
+### <a name="feedback"></a>Váš názor
 Máte jakoukoli zpětnou vazbu pro nás o integraci s funkcí Azure Monitor pro virtuální počítače map nebo s touto dokumentací? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

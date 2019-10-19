@@ -1,58 +1,58 @@
 ---
-title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o tom, jak se připojit k Apache Kafka Apache Flink povolené Centrum událostí Azure
+title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak připojit Apache Flink k Apache Kafka povolenému centru událostí Azure.
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: dc4a982dde62f62eb8f2d91a61fd70ba79fa13d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 881546a97b01bef993cc24c6b868ec97ddf5ac36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821437"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555715"
 ---
-# <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink s Azure Event Hubs pro Apache Kafka
-V tomto kurzu se dozvíte, jak připojit Apache Flink Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).
+# <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink se službou Azure Event Hubs pro Apache Kafka
+V tomto kurzu se dozvíte, jak připojit Apache Flink k centrům událostí s povoleným Kafka bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)..
 
-Jednou z klíčových výhod používání Apache Kafka je v ekosystému rozhraní se může připojit k. Kafka povolená služba Event Hubs kombinuje flexibilitu Kafka s škálovatelnosti, konzistenci a podporu ekosystému Azure.
+Jednou z klíčových výhod používání Apache Kafka je ekosystém rozhraní, ke kterému se může připojit. Kafka Enabled Event Hubs kombinuje flexibilitu Kafka s škálovatelností, konzistencí a podporou ekosystému Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Naklonování ukázkového projektu
 > * Spustit Flink výrobce 
-> * Spusťte Flink příjemce
+> * Spustit Flink příjemce
 
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu, nezapomeňte, že jsou splněné následující požadavky:
+K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 * Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
-* [Stáhněte si](https://maven.apache.org/download.cgi) a [nainstalovat](https://maven.apache.org/install.html) binární archiv Maven
+* [Stažení](https://maven.apache.org/download.cgi) a [instalace](https://maven.apache.org/install.html) binárního archivu Maven
     * Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
 * [Git](https://www.git-scm.com/downloads)
     * Na Ubuntu můžete Git nainstalovat spuštěním příkazu `sudo apt-get install git`.
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Obor názvů služby Event Hubs je potřeba odeslat nebo přijmout z jakékoli služby Event Hubs. Zobrazit [vytvořit Kafka povolena Služba Event Hubs](event-hubs-create-kafka-enabled.md) informace o tom, jak koncový bod Event Hubs Kafka. Ujistěte se, že zkopírujte připojovací řetězec služby Event Hubs pro pozdější použití.
+K odeslání nebo přijetí z jakékoli služby Event Hubs se vyžaduje Event Hubs obor názvů. Informace o získání koncového bodu Event Hubs Kafka najdete v tématu věnovaném [Vytvoření Kafka s povoleným Event Hubs](event-hubs-create-kafka-enabled.md) . Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
-Teď, když máte připojovací řetězec systému Kafka s podporou služby Event Hubs, Azure Event Hubs, Kafka úložiště klonování a přejděte do `flink` podsložky:
+Teď, když máte Kafka připojovací řetězec Event Hubs, naklonujte Azure Event Hubs pro úložiště Kafka a přejděte do podsložky `flink`:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -61,13 +61,13 @@ cd azure-event-hubs-for-kafka/tutorials/flink
 
 ## <a name="run-flink-producer"></a>Spustit Flink výrobce
 
-Pomocí zadaného příklad producenta Flink, odesílání zpráv do služby Event Hubs.
+Pomocí poskytnutého příkladu Flink producenta odešle zprávy službě Event Hubs.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte koncový bod Event Hubs Kafka
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="producerconfig"></a>Producer.config
+#### <a name="producerconfig"></a>soubor. config pro výrobce
 
-Aktualizace `bootstrap.servers` a `sasl.jaas.config` hodnoty v `producer/src/main/resources/producer.config` ke směrování producent ke koncovému bodu Event Hubs Kafka s správné ověření.
+Aktualizujte hodnoty `bootstrap.servers` a `sasl.jaas.config` v `producer/src/main/resources/producer.config` a nasměrujte producenta na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -79,26 +79,26 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Spustit z příkazového řádku
+### <a name="run-producer-from-the-command-line"></a>Spustit producenta z příkazového řádku
 
-Producent spustit z příkazového řádku, vygenerujte soubor JAR a potom spustit z Mavenu (nebo generovat soubor JAR pomocí nástroje Maven, spusťte v jazyce Java tak, že přidáte nezbytné JAR(s) Kafka do cesty pro třídy):
+Pokud chcete spustit producenta z příkazového řádku, vygenerujte JAR a pak ho spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním nezbytných Kafka JAR do cesty k cestě):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Nyní zahájí producent odesílání událostí do Kafka povoleno tématu Event Hub `test` a tisk události do stdout.
+Producent nyní začne odesílat události do centra událostí s povoleným Kafka v tématu `test` a tiskne události do STDOUT.
 
-## <a name="run-flink-consumer"></a>Spusťte Flink příjemce
+## <a name="run-flink-consumer"></a>Spustit Flink příjemce
 
-Použijeme příklad zadaná příjemce přijímat zprávy z Kafka povolena Služba Event Hubs.
+Pomocí poskytnutého příkladu příjemce přijímají zprávy z Event Hubs povolené Kafka.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte koncový bod Event Hubs Kafka
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="consumerconfig"></a>Consumer.config
+#### <a name="consumerconfig"></a>příjemce. config
 
-Aktualizace `bootstrap.servers` a `sasl.jaas.config` hodnoty v `consumer/src/main/resources/consumer.config` ke směrování uživatelů do koncového bodu Event Hubs Kafka s správné ověření.
+Aktualizujte hodnoty `bootstrap.servers` a `sasl.jaas.config` v `consumer/src/main/resources/consumer.config` a nasměrujte uživatele do Event Hubs koncového bodu Kafka se správným ověřováním.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -110,27 +110,27 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Spuštěním příjemce z příkazového řádku
+### <a name="run-consumer-from-the-command-line"></a>Spustit příjemce z příkazového řádku
 
-Příjemce spustit z příkazového řádku, vygenerujte soubor JAR a potom spustit z Mavenu (nebo generovat soubor JAR pomocí nástroje Maven, spusťte v jazyce Java tak, že přidáte nezbytné JAR(s) Kafka do cesty pro třídy):
+Pokud chcete spustit příjemce z příkazového řádku, vygenerujte JAR a pak spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním potřebných Kafka JAR do cesty pro cestu):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Má-li povolena Kafka eventhub událostí (například, pokud vaše producent běží), potom příjemce nyní začne přijímat události z tématu `test`.
+Pokud má centrum událostí s povoleným Kafka události (například pokud je váš výrobce také spuštěný), pak uživatel začne přijímat události z tématu `test`.
 
-Podívejte se na [Průvodce pro konektor pro Flink Kafka](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) podrobné informace o připojení Flink Kafka.
+Podrobnější informace o připojení Flink k Kafka najdete v [příručce k Flink konektoru Kafka](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) .
 
-## <a name="next-steps"></a>Další postup
-V tomto kurzu se vaše zkušenosti jak připojit Apache Flink Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Jako součást v tomto kurzu jste provedli následující kroky: 
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste zjistili, jak připojit Apache Flink k centrům událostí s povoleným Kafka bez změny klientů protokolu nebo spuštění vlastních clusterů. V rámci tohoto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Naklonování ukázkového projektu
 > * Spustit Flink výrobce 
-> * Spusťte Flink příjemce
+> * Spustit Flink příjemce
 
 Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
 

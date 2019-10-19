@@ -1,56 +1,50 @@
 ---
-title: Postup aktualizace Azure monitoru pro kontejnery pro metriky | Dokumentace Microsoftu
-description: Tento článek popisuje, jak aktualizovat monitorování Azure pro kontejnery povolit funkci vlastních metrik, která podporuje prohlížení a upozorňování na agregovaných metrik.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Postup aktualizace Azure Monitor pro kontejnery pro metriky | Microsoft Docs
+description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejnery pro povolení funkce vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/06/2019
+ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148853"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554068"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor k zapnutí metrik pro kontejnery
-Azure Monitor pro kontejnery zavádí podporu pro shromažďování metrik z uzlů clusterů služby Kubernetes v Azure (AKS) a podů a jejich zápis do úložiště metrik Azure monitoru. Tato změna má poskytovat vylepšené včasnosti při zobrazení agregační výpočty (průměr, počet, Max, Min, součet) v grafech výkonu, podpory připínat grafy výkonu v Azure portal řídicí panely a podporují upozornění na metriku.
+# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor pro kontejnery pro povolení metrik
+Azure Monitor for Containers zavádí podporu shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lusků a jejich zápis do úložiště Azure Monitorch metrik. Tato změna má poskytovat vylepšenou časovou osu při vytváření agregačních výpočtů (střední, Count, Max, min, Sum) v grafech výkonu, podpora připnutí grafů výkonu v Azure Portal řídicích panelech a podpora upozornění na metriky.
 
-Jako součást této funkce jsou povoleny následující metriky:
+V rámci této funkce jsou povoleny následující metriky:
 
-| Metriky oboru názvů | Metrika | Popis |
+| Obor názvů metriky | Metrika | Popis |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o *uzel* metriky a zahrnují *hostitele* jako dimenze a také<br> Název uzlu jako hodnotu *hostitele* dimenze. |
-| insights.container/pods | podCount | Jedná se o *pod* metriky a patří jako dimenze - ControllerName, Kubernetes obor názvů, název, fáze. |
+| Insights. Container/Nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o metriky *uzlů* a zahrnují *hostitele* jako dimenzi a také zahrnují<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
+| přehledy. kontejner/lusky | podCount | Jsou *pod* metrikami a obsahují následující údaje jako Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
 
-Aktualizuje se cluster pro podporu těchto nových funkcí lze provést z webu Azure portal, prostředí Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure Powershellu a rozhraní příkazového řádku, můžete povolit tuto za cluster nebo pro všechny clustery ve vašem předplatném. Nová nasazení AKS automaticky zahrne tato změna konfigurace a možnosti.
+Aktualizace clusteru tak, aby podporovala tyto nové funkce, se dá provádět z Azure Portal, Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure PowerShell a rozhraní příkazového řádku můžete povolit tento cluster nebo pro všechny clustery v rámci vašeho předplatného. Nová nasazení AKS budou automaticky zahrnovat tuto změnu konfigurace a možnosti.
 
-Buď zpracování přiřadí **monitorování metrik vydavatele** roli instančnímu objektu služby clusteru tak, aby se data shromažďují pomocí agenta mohou být publikovány na váš prostředek clustery. Monitorování metrik vydavatele má oprávnění pouze pro nabízené metriky pro prostředek, ho nelze změnit jakýkoliv stav, aktualizovat prostředek ani načíst žádná data. Další informace o roli najdete v tématu [role vydavatele monitorování metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu objektu clusteru, aby data shromážděná agentem mohla být publikována do vašeho prostředku clusterů. Vydavatel monitorování metrik má oprávnění pouze k odeslání metrik do prostředku, nemůže změnit žádný stav, aktualizovat prostředek ani číst žádná data. Další informace o roli najdete v tématu [monitorování role vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Požadavky 
-Než začnete, ujistěte se, že jste členem **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** role v prostředku clusteru AKS a Povolit shromažďování uzlu pod metrik výkonu. 
+## <a name="prerequisites"></a>Předpoklady 
+Než začnete, ujistěte se, že jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu. 
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.59 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z webu Azure portal
+## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z Azure Portal
 
-K existujícímu clusteru AKS služba Azure Monitor monitorovat pro kontejnery, po výběru clusteru a zobrazit její stav ze zobrazení více clusteru ve službě Azure Monitor nebo přímo z clusteru tak, že vyberete **Insights** z levé straně podokno, měli byste vidět banner v horní části portálu.
+Pro existující clustery AKS monitorované službou Azure Monitor for Containers po výběru clusteru k zobrazení jeho stavu z zobrazení více clusterů v Azure Monitor nebo přímo z clusteru výběrem možnosti **přehledy** v levém podokně by se měla zobrazit banner v horní části portálu.
 
-![Upgrade banner clusteru AKS na webu Azure portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
+![Upgradovat banner clusteru AKS v Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
-Kliknutím na **povolit** opraví, zahájí se proces upgradu clusteru. Tento proces může trvat několik sekund a průběh oznámení můžete sledovat v nabídce.
+Kliknutím na **Povolit** zahájíte proces upgradu clusteru. Dokončení tohoto procesu může trvat několik sekund a průběh můžete sledovat v části oznámení z nabídky.
 
-## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Upgradovat všechny clustery pomocí prostředí Bash v příkazovém prostředí služby Azure
-Proveďte následující kroky a aktualizujete všech clusterů ve vašem předplatném pomocí skriptu Bash v příkazovém prostředí služby Azure.
+## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Upgrade všech clusterů pomocí bash ve službě Azure Command Shell
+Provedením následujících kroků aktualizujte všechny clustery ve vašem předplatném pomocí bash ve službě Azure Command Shell.
 
-1. Spusťte následující příkaz s použitím rozhraní příkazového řádku Azure.  Upravit její hodnotu **subscriptionId** z hodnoty **Přehled služby AKS** stránky pro AKS cluster.
+1. Spusťte následující příkaz pomocí Azure CLI.  Upravte hodnotu **SubscriptionId** pomocí hodnoty ze stránky **přehledu AKS** pro cluster AKS.
 
     ```azurecli
     az login
@@ -58,16 +52,16 @@ Proveďte následující kroky a aktualizujete všech clusterů ve vašem předp
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    Změna konfigurace může trvat několik sekund na dokončení. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-cli"></a>Upgrade na clusteru pomocí rozhraní příkazového řádku Azure
-Proveďte následující kroky a aktualizujete konkrétní cluster ve svém předplatném pomocí rozhraní příkazového řádku Azure.
+## <a name="upgrade-per-cluster-using-azure-cli"></a>Upgrade na cluster pomocí Azure CLI
+Provedením následujících kroků aktualizujete konkrétní cluster v předplatném pomocí Azure CLI.
 
-1. Spusťte následující příkaz s použitím rozhraní příkazového řádku Azure. Upravte hodnoty **subscriptionId**, **resourceGroupName**, a **clusterName** pomocí hodnot na **Přehled služby AKS** stránce Clusteru AKS.  K získání hodnoty z **clientIdOfSPN**, je vrácena, když spustíte příkaz `az aks show` jak je znázorněno v následujícím příkladu.
+1. Spusťte následující příkaz pomocí Azure CLI. Upravte hodnoty pro **SubscriptionId**, **resourceGroupName**a **název_clusteru** pomocí hodnot na stránce **Přehled AKS** pro cluster AKS.  Chcete-li získat hodnotu **clientIdOfSPN**, je vrácena při spuštění příkazu `az aks show`, jak je znázorněno v následujícím příkladu.
 
     ```azurecli
     az login
@@ -76,10 +70,10 @@ Proveďte následující kroky a aktualizujete konkrétní cluster ve svém pře
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ``` 
 
-## <a name="upgrade-all-clusters-using-azure-powershell"></a>Upgradovat všechny clustery pomocí prostředí Azure PowerShell
-Proveďte následující kroky a aktualizujete všech clusterů ve vašem předplatném pomocí Azure Powershellu.
+## <a name="upgrade-all-clusters-using-azure-powershell"></a>Upgrade všech clusterů pomocí Azure PowerShell
+Provedením následujících kroků aktualizujte všechny clustery v rámci předplatného pomocí Azure PowerShell.
 
-1. Zkopírujte a vložte následující skript do souboru:
+1. Zkopírujte následující skript a vložte ho do souboru:
 
     ```powershell
     <# 
@@ -319,22 +313,22 @@ Proveďte následující kroky a aktualizujete všech clusterů ve vašem předp
     Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
     ```
 
-2. Uložte soubor jako **onboard_metrics_atscale.ps1** do místní složky.
-3. Spusťte následující příkaz s použitím prostředí Azure PowerShell.  Upravit její hodnotu **subscriptionId** z hodnoty **Přehled služby AKS** stránky pro AKS cluster.
+2. Uložte tento soubor jako **onboard_metrics_atscale. ps1** do místní složky.
+3. Spusťte následující příkaz pomocí Azure PowerShell.  Upravte hodnotu **SubscriptionId** pomocí hodnoty ze stránky **přehledu AKS** pro cluster AKS.
 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    Změna konfigurace může trvat několik sekund na dokončení. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-powershell"></a>Upgrade na clusteru pomocí Azure Powershellu
-Proveďte následující kroky a aktualizujete konkrétní clusteru pomocí Azure Powershellu.
+## <a name="upgrade-per-cluster-using-azure-powershell"></a>Upgradovat na cluster pomocí Azure PowerShell
+Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azure PowerShell.
 
-1. Zkopírujte a vložte následující skript do souboru:
+1. Zkopírujte následující skript a vložte ho do souboru:
 
     ```powershell
     <# 
@@ -568,18 +562,18 @@ Proveďte následující kroky a aktualizujete konkrétní clusteru pomocí Azur
     }
     ```
 
-2. Uložte soubor jako **onboard_metrics.ps1** do místní složky.
-3. Spusťte následující příkaz s použitím prostředí Azure PowerShell. Upravte hodnoty **subscriptionId**, **resourceGroupName**, a **clusterName** pomocí hodnot na **Přehled služby AKS** stránce Clusteru AKS.
+2. Uložte tento soubor jako **onboard_metrics. ps1** do místní složky.
+3. Spusťte následující příkaz pomocí Azure PowerShell. Upravte hodnoty pro **SubscriptionId**, **resourceGroupName**a **název_clusteru** pomocí hodnot na stránce **Přehled AKS** pro cluster AKS.
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    Změna konfigurace může trvat několik sekund na dokončení. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Dokončení změny konfigurace může trvat několik sekund. Po dokončení se zobrazí zpráva podobná následující zprávě, která obsahuje výsledek:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>
     ```
 
-## <a name="verify-update"></a>Ověřte aktualizace 
-Po zahájení aktualizace pomocí jedné z metod popsaných výše, můžete pomocí Průzkumníka metrik Azure monitoru a ověřit z **metriky oboru názvů** , který **insights** je uvedena. Pokud se jedná, to znamená, můžete pokračovat a spustit nastavení [upozornění na metriku](../platform/alerts-metric.md) nebo Připnutí si grafy [řídicí panely](../../azure-portal/azure-portal-dashboards.md).  
+## <a name="verify-update"></a>Ověřit aktualizaci 
+Po zahájení aktualizace pomocí jedné z výše popsaných metod můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je to, znamená to, že můžete pokračovat a začít nastavovat [výstrahy metriky](../platform/alerts-metric.md) nebo připínat grafy k [řídicím panelům](../../azure-portal/azure-portal-dashboards.md).  

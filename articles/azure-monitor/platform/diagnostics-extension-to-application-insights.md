@@ -1,19 +1,18 @@
 ---
 title: Konfigurace Azure Diagnostics k odesílání dat do Application Insights
 description: Aktualizujte Azure Diagnostics veřejnou konfiguraci, aby odesílala data do Application Insights.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/19/2016
+ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60396108"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552042"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
 Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.
@@ -67,11 +66,11 @@ Příklad konfigurace jímky pro Application Insights:
 - Element **Channels** obsahuje jeden nebo více prvků **kanálu** .
     - Atribut *Name* jednoznačně odkazuje na daný kanál.
     - Atribut *LogLevel* umožňuje zadat úroveň protokolu, kterou kanál povoluje. Dostupné úrovně protokolu v pořadí od nejvíc do nejnižší informace jsou následující:
-        - Podrobnosti
-        - Information
+        - Podrobné
+        - Informace
         - Upozornění
         - Chyba
-        - Kritická
+        - Kritické
 
 Kanál funguje jako filtr a umožňuje vybrat konkrétní úrovně protokolu k odeslání do cílové jímky. Můžete například shromáždit podrobné protokoly a odeslat je do úložiště, ale zaslat do jímky pouze chyby.
 

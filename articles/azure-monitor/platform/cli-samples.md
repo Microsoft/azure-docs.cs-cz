@@ -1,81 +1,80 @@
 ---
-title: Úvodní ukázky v Azure Monitor, rozhraní příkazového řádku
-description: Ukázkové příkazy rozhraní příkazového řádku pro funkce Azure monitoru. Azure Monitor je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL na základě hodnot nakonfigurované telemetrických dat a automatické škálování cloudových služeb, virtuálních počítačů a webových aplikací.
-author: rboucher
-services: azure-monitor
+title: Ukázky pro rychlý Start pro rozhraní příkazového řádku Azure Monitor
+description: Ukázky příkazů rozhraní příkazového řádku pro funkce Azure Monitor. Azure Monitor je služba Microsoft Azure, která umožňuje odesílání oznámení o výstrahách, volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie a automatického škálování Cloud Services, Virtual Machines a Web Apps.
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 05/16/2018
+ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740879"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555587"
 ---
-# <a name="azure-monitor-cli-quick-start-samples"></a>Úvodní ukázky v Azure Monitor, rozhraní příkazového řádku
-V tomto článku se dozvíte, ukázky, že příkazy rozhraní příkazového řádku (CLI), umožňují přístup k funkcím Azure Monitor. Azure Monitor vám umožní automatické škálování cloudové služby, virtuální počítače a webové aplikace a odesílat oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurované telemetrická data.
+# <a name="azure-monitor-cli-quick-start-samples"></a>Ukázky pro rychlý Start pro rozhraní příkazového řádku Azure Monitor
+V tomto článku se dozvíte, jak vzorkovat příkazy rozhraní příkazového řádku (CLI), které vám pomůžou při přístupu k funkcím Azure Monitor. Azure Monitor umožňuje automatické škálování Cloud Services, Virtual Machines a Web Apps a odesílání oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud jste ještě nenainstalovali Azure CLI, postupujte podle pokynů pro [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) spuštění rozhraní příkazového řádku jako interaktivní prostředí v prohlížeči. Viz úplný přehled všech dostupných příkazů v [referenční informace k Azure CLI monitorování](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Pokud jste rozhraní příkazového řádku Azure ještě nenainstalovali, postupujte podle pokynů pro [instalaci rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) ke spuštění CLI jako interaktivní prostředí v prohlížeči. Podívejte se na úplný odkaz na všechny dostupné příkazy v [odkazu Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
-Prvním krokem je přihlašovací jméno ke svému účtu Azure.
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+Prvním krokem je přihlášení k vašemu účtu Azure.
 
 ```azurecli
 az login
 ```
 
-Po spuštění tohoto příkazu, budete muset přihlásit pomocí pokynů na obrazovce. Všechny příkazy fungují v rámci výchozího předplatného.
+Po spuštění tohoto příkazu se budete muset přihlásit prostřednictvím pokynů na obrazovce. Všechny příkazy fungují v kontextu výchozího předplatného.
 
-Seznam podrobností o aktuálním předplatném, použijte následující příkaz.
+Pokud chcete zobrazit seznam podrobností o aktuálním předplatném, použijte následující příkaz.
 
 ```azurecli
 az account show
 ```
 
-Chcete-li změnit pracovního kontextu do jiného předplatného, použijte následující příkaz.
+Chcete-li změnit pracovní kontext na jiné předplatné, použijte následující příkaz.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Pokud chcete zobrazit seznam všech podporovaných příkazů Azure Monitor, postupujte takto.
+Chcete-li zobrazit seznam všech podporovaných příkazů Azure Monitor, proveďte následující kroky.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Zobrazení protokolu aktivit pro odběr
+## <a name="view-activity-log-for-a-subscription"></a>Zobrazení protokolu aktivit pro předplatné
 
-Pokud chcete zobrazit seznam události protokolu aktivit, postupujte takto.
+Chcete-li zobrazit seznam událostí protokolu aktivit, proveďte následující kroky.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Vyzkoušejte následující příkaz a zobrazí všechny dostupné možnosti.
+Pokud chcete zobrazit všechny dostupné možnosti, zkuste následující postup.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Tady je příklad do seznamu protokolů podle skupiny prostředků
+Tady je příklad, jak zobrazit seznam protokolů podle zdroje.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Příklad seznamu protokolů volajícím
+Příklad pro výpis protokolů podle volajícího
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Příklad seznamu protokolů volajícím na typ prostředku v rámci rozsah dat
+Příklad výpisu protokolů podle volajícího pro typ prostředku v rámci rozsahu dat
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -86,16 +85,16 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 
 ## <a name="work-with-alerts"></a>Práce s výstrahami 
 > [!NOTE]
-> V rozhraní příkazového řádku je momentálně podporován pouze upozornění (klasická). 
+> V rozhraní příkazového řádku v tomto okamžiku je podporována pouze výstraha (Classic). 
 
-### <a name="get-alert-classic-rules-in-a-resource-group"></a>Získání pravidla upozornění (klasická) ve skupině prostředků
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Získat pravidla upozornění (Classic) ve skupině prostředků
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-classic-rule"></a>Vytvořit pravidlo metriky upozornění (klasická)
+### <a name="create-a-metric-alert-classic-rule"></a>Vytvoření pravidla výstrahy metriky (klasické)
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -105,7 +104,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-classic-rule"></a>Odstranit pravidlo upozornění (klasická)
+### <a name="delete-an-alert-classic-rule"></a>Odstraní pravidlo pro upozornění (Classic).
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -113,7 +112,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="log-profiles"></a>Profily protokolů
 
-Použijte informace v této části pro práci s profily protokolů.
+Informace v této části použijte k práci s profily protokolů.
 
 ### <a name="get-a-log-profile"></a>Získat profil protokolu
 
@@ -122,7 +121,7 @@ az monitor log-profiles list
 az monitor log-profiles show --name <profile name>
 ```
 
-### <a name="add-a-log-profile-with-retention"></a>Přidat profil protokolu s uchováváním informací.
+### <a name="add-a-log-profile-with-retention"></a>Přidání profilu protokolu se uchováváním
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -133,7 +132,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
     --storage-account-id <storage account ID to store the logs in>
 ```
 
-### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Přidat profil protokolu s uchování a centra událostí
+### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Přidání profilu protokolu se uchováváním informací a EventHub
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -153,15 +152,15 @@ az monitor log-profiles delete --name <profile name>
 
 ## <a name="diagnostics"></a>Diagnostika
 
-Použijte informace v této části Postup při nastavení diagnostiky.
+Informace v této části použijte k práci s nastavením diagnostiky.
 
-### <a name="get-a-diagnostic-setting"></a>Získá nastavení diagnostiky.
+### <a name="get-a-diagnostic-setting"></a>Získat nastavení diagnostiky
 
 ```azurecli
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Vytvořte nastavení diagnostických protokolů 
+### <a name="create-a-diagnostic-log-setting"></a>Vytvoření nastavení diagnostického protokolu 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -178,7 +177,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-### <a name="delete-a-diagnostic-setting"></a>Odstranit nastavení diagnostiky
+### <a name="delete-a-diagnostic-setting"></a>Odstraní nastavení diagnostiky.
 
 ```azurecli
 az monitor diagnostic-settings delete --name <diagnostic name> \
@@ -187,7 +186,7 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
 
 ## <a name="autoscale"></a>Automatické škálování
 
-Použijte informace v této části pro práci s nastavením automatického škálování. Budete muset upravit tyto příklady.
+Informace v této části použijte k práci s nastavením automatického škálování. Tyto příklady je potřeba upravit.
 
 ### <a name="get-autoscale-settings-for-a-resource-group"></a>Získat nastavení automatického škálování pro skupinu prostředků
 

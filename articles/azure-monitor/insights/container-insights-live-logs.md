@@ -1,24 +1,18 @@
 ---
 title: Zobrazit Azure Monitor pro protokoly kontejnerů v reálném čase | Microsoft Docs
 description: Tento článek popisuje zobrazení protokolů kontejnerů (stdout/stderr) v reálném čase a událostí bez použití kubectl s Azure Monitor pro kontejnery.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389786"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554083"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Postup zobrazení protokolů a událostí v reálném čase (Preview)
 Azure Monitor for containers obsahuje funkci, která je aktuálně ve verzi Preview, která poskytuje živé zobrazení do protokolů kontejnerů služby Azure Kubernetes (stdout/stderr) a událostí bez nutnosti spouštět příkazy kubectl. Když vyberete jednu z možností, pod tabulkou data o výkonu na **uzlech**, **řadičích**a v zobrazení **kontejnerů** se zobrazí nové podokno. Zobrazuje dynamické protokolování a události generované modulem kontejnerů, které vám pomůžou při řešení problémů v reálném čase.

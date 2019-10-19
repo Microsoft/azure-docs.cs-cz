@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 10/16/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 518847db727c9d8c527d272f9122ef9850ca9135
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981240"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553013"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -55,9 +55,9 @@ V tomto kurzu se používá také [akcelerátor řešení IoT](https://www.azure
 
 Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací data pro naplnění Time Series Insightsho prostředí.
 
-1. V samostatném okně nebo na kartě přejdete na [azureiotsolutions.com](https://www.azureiotsolutions.com). Přihlaste se pomocí stejného účtu předplatného Azure a vyberte akcelerátor **simulace zařízení** .
+1. V samostatném okně nebo na kartě přejdete na [azureiotsolutions.com](https://www.azureiotsolutions.com). Přihlaste se pomocí stejného účtu předplatného Azure a vyberte akcelerátor **simulace zařízení** . Vyberte **zkusit nyní**.
 
-   [@no__t – 1Run akcelerátor simulace zařízení](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![Run akcelerátoru simulace zařízení](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
 
 1. Na stránce **vytvoření řešení simulace zařízení** zadejte požadované parametry.
 
@@ -68,20 +68,20 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
    **Možnosti nasazení** | Pokud chcete vytvořit nový IoT Hub specifický pro tento kurz, vyberte **zřídit nový IoT Hub** .
    **Umístění Azure** | Zadejte stejnou oblast, která byla použita k vytvoření prostředí Time Series Insights v předchozí části.
 
-   Až budete hotovi, vyberte **vytvořit řešení** a zřiďte prostředky Azure řešení. Dokončení tohoto procesu může trvat až 20 minut.
+   Až budete hotovi, vyberte **vytvořit** a zřiďte prostředky Azure v řešení. Dokončení tohoto procesu může trvat až 20 minut.
 
-   [@no__t – 1Provision řešení pro simulaci zařízení](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![Provision řešení pro simulaci zařízení](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
 
 1. Po dokončení zřizování se text nad novým řešením změní ze **zřizování** na **připraveno**.
 
    >[!IMPORTANT]
    > Ještě nevybírejte možnost **Spustit** . Tuto webovou stránku nechte otevřenou, protože se k ní vrátíte později.
 
-   [dokončení zřizování řešení simulace @no__t 1Device](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [zřizování řešení simulace ![Device dokončeno](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
 
 1. Nyní zkontrolujte nově vytvořené prostředky v Azure Portal. Na stránce **skupiny prostředků** si všimněte, že se vytvořila nová skupina prostředků pomocí **názvu řešení** , který jste zadali v posledním kroku. Poznamenejte si prostředky, které byly vytvořeny pro simulaci zařízení.
 
-   [prostředky simulace @no__t 1Device](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [prostředky simulace ![Device](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 
@@ -104,17 +104,19 @@ Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
    **Vrstva** | Vyberte potřebnou propustnost. Vyberte **S1**.
    **Kapacita** | Kapacita je násobitel, který se používá pro míru příchozího přenosu dat a kapacitu úložiště přidruženou k vybrané SKU. Kapacitu můžete po vytvoření změnit. Vyberte kapacitu **1**.
 
-   Až budete hotovi, vyberte **zkontrolovat + vytvořit** a pokračujte dalším krokem.
+   Po dokončení vyberte **Další: zdroj události** , abyste mohli pokračovat k dalšímu kroku.
 
-   [@no__t – 1Create prostředku Time Series Insights prostředí](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![Create prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 
-1. Nyní připojte prostředí Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** na `Select existing`. Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
+1. Nyní připojte prostředí Time Series Insights ke službě IoT Hub vytvořené pomocí akcelerátoru řešení. Nastavte **Vyberte rozbočovač** , který chcete `Select existing`. Pak při nastavení **IoT Hubho názvu**vyberte Centrum IoT vytvořené pomocí akcelerátoru řešení.
 
-   [@no__t – 1Connect Time Series Insights prostředí do vytvořeného centra IoT Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![Connect prostředí Time Series Insights do vytvořeného centra IoT Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+
+   Nakonec vyberte **zkontrolovat + vytvořit**.
 
 1. Projděte si panel **oznámení** a sledujte dokončení nasazení. 
 
-   [nasazení prostředí 1Time Series Insights bylo úspěšné. @no__t](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [nasazení prostředí ![Time Series Insights bylo úspěšné.](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>Spustit simulaci zařízení
 
@@ -122,13 +124,13 @@ Po dokončení nasazení a počáteční konfigurace naplňte Time Series Insigh
 
 Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikace pro vytvoření a přenos telemetrie simulovaného zařízení.
 
-1. Vraťte se zpět na [Řídicí panel akcelerátorů řešení](https://www.azureiotsolutions.com/Accelerators#dashboard). V případě potřeby se znovu přihlaste pomocí stejného účtu Azure, který jste používali v tomto kurzu. Nyní můžete v řešení simulace zařízení vybrat možnost **Spustit** .
+1. Vraťte se zpět na [Řídicí panel akcelerátorů řešení](https://www.azureiotsolutions.com/Accelerators#dashboard). V případě potřeby se znovu přihlaste pomocí stejného účtu Azure, který jste používali v tomto kurzu. Vyberte své řešení zařízení a potom v **rámci akcelerátoru řešení** spusťte nasazené řešení.
 
-     [řídicí panel ![Solution-akcelerátory](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+     [řídicí panel ![Solution akcelerátory](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
 1. Webová aplikace pro simulaci zařízení začíná výzvou k udělení oprávnění "přihlášení a čtení vašeho profilu". Toto oprávnění umožňuje aplikaci načíst informace o profilu uživatele, které jsou nezbytné k podpoře fungování aplikace.
 
-     [1Device – souhlas webové aplikace s simulací @no__t](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+     [souhlasu webové aplikace simulace ![Device](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
 1. Po načtení stránky **Nastavení simulace** zadejte požadované parametry.
 
@@ -136,17 +138,17 @@ Společně se službou IoT Hub se vygenerovala Azure App Service webová aplikac
    ---|---
    **Target IoT Hub** („Cílový IoT Hub“) | Vyberte možnost **použít předem zřízené IoT Hub**.
    **Device model** („Model zařízení“) | Vyberte **chladicíer**.
-   **Number of devices** („Počet zařízení“)  | V části **množství**zadejte `1000`.
+   **Number of devices** („Počet zařízení“)  | Do pole **hodnota**zadejte `1000`.
    **Telemetry frequency** („Frekvence telemetrie“) | Zadejte `10` sekund.
    **Simulation duration** („Doba trvání simulace“) | Vyberte **Konec v:** a zadejte `5` minut.
 
    Až budete hotovi, vyberte **spustit simulaci**. Simulace se spustí celkem po dobu 5 minut. Vygeneruje data z 1 000 simulovaných zařízení každých 10 sekund. 
 
-   [nastavení simulace @no__t 1Device](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
+   [nastavení simulace ![Device](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
 1. Zatímco se simulace spouští, Všimněte si, že **Celkový počet zpráv** a **zpráv za sekundu** se aktualizuje přibližně každých 10 sekund. Simulace skončí po přibližně 5 minutách a vrátí vás k **Nastavení simulace**.
 
-   [@no__t – simulace běhu 1Device](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
+   [spuštěná simulace ![Device](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
 
 ## <a name="verify-the-telemetry-data"></a>Ověření telemetrických dat
 
@@ -154,23 +156,23 @@ V této poslední části ověříte, že se data telemetrie vygenerovala a ulo�
 
 1. Vraťte se na stránku **Přehled** skupiny prostředků Time Series Insightsho prostředí. Vyberte prostředí Time Series Insights.
 
-   [Skupina prostředků prostředí 1Time Series Insights a prostředí @no__t](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
+   [Skupina prostředků prostředí a prostředí ![Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-rg.png#lightbox)
 
 1. Na stránce **Přehled** prostředí Time Series Insights vyberte **adresu URL Time Series Insights Explorer** a otevřete tak Průzkumník Time Series Insights.
 
-   [@no__t – Průzkumník 1Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
+   [Průzkumník ![Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
 1. Průzkumník Time Series Insights načítá a ověřuje pomocí účtu Azure Portal. Při počátečním zobrazení se můžete podívat v oblasti grafu, ve které Time Series Insights prostředí naplněno pomocí simulovaných dat telemetrie. Pokud chcete filtrovat užší časový rozsah, vyberte rozevírací nabídku v levém horním rohu. Zadejte časový rozsah, který je dostatečně velký pro rozsah trvání simulace zařízení. Pak vyberte lupu hledání.
 
-   [@no__t – filtr časového rozsahu v Průzkumníkovi 1Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
+   [filtr časového rozsahu Průzkumníka ![Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
 1. Zúžení časového rozsahu umožňuje grafu přiblížit se k různým nárůstům přenosu dat do centra IoT a Time Series Insightsho prostředí. Všimněte si také **kompletního** textu v pravém horním rohu, které zobrazuje celkový počet nalezených událostí. Můžete také přetáhnout posuvník **velikost intervalu** pro řízení členitosti grafu v grafu.
 
-   [@no__t – filtrované zobrazení časového rozsahu v Průzkumníkovi 1Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
+   [filtrované zobrazení časového rozsahu v Průzkumníkovi ![Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
 1. Nakonec můžete také kliknutím levým na oblast filtrovat rozsah. Potom klikněte pravým tlačítkem a pomocí možnosti **prozkoumat události** zobrazte podrobnosti události v zobrazení tabulkových **událostí** .
 
-   [@no__t – filtrované zobrazení a události v Průzkumníkovi 1Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
+   [filtrované zobrazení a události s filtrovaným rozsahem v Průzkumníkovi ![Time Series Insights](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -1,67 +1,62 @@
 ---
-title: Co je Azure Monitor pro virtuální počítače (preview)? | Dokumenty Microsoft
-description: Azure Monitor pro virtuální počítače je funkce služby Azure Monitor, který kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi nimi. Tento článek obsahuje přehled.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+title: Co je Azure Monitor pro virtuální počítače (Preview)? | Microsoft Docs
+description: Azure Monitor pro virtuální počítače je funkce Azure Monitor, která kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a také automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci. mezi nimi. Tento článek poskytuje přehled.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7d86b3fe9aeddd603d0c40b1c760cabdee42e396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/15/2019
+ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522111"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553754"
 ---
-# <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (preview)?
+# <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (Preview)?
 
-Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. 
+Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure a škálované sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. 
 
-Azure Monitor pro virtuální počítače jako řešení, zahrnuje podporu pro monitorování výkonu a používání závislosti virtuálních počítačů, které jsou hostované v místním prostředí nebo jiného zprostředkovatele cloudu. Tři klíčové funkce poskytovat podrobnější informace:
+Zahrnuje podporu pro monitorování výkonu a závislostí aplikací pro virtuální počítače, které jsou hostované místně nebo v jiném poskytovateli cloudu. Tři klíčové funkce poskytují podrobný přehled:
 
-* **Logické součásti virtuálních počítačů Azure, který spustí Windows a Linuxem**: Se měří podle kritérií stavu předem nakonfigurované a že vás upozornit, když je splněna podmínka Vyhodnocená.  
+- **Logické součásti virtuálních počítačů Azure a sady škálování virtuálních počítačů se systémem Windows a Linux**: jsou měřeny oproti předem nakonfigurovaným kritériím stavu a při splnění vyhodnocené podmínky vás upozorní.  
 
-* **Předdefinované populárních grafy výkonu**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
+- **Předdefinované grafy výkonu trendů**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
 
-* **Mapa závislostí**: Zobrazí vzájemně propojených součástí virtuálního počítače z různých skupin prostředků a předplatných.  
+- **Mapa závislostí**: zobrazuje propojené komponenty s virtuálním počítačem z různých skupin prostředků a předplatných.  
 
-Funkce jsou uspořádané do tří perspektiv:
+Funkce jsou uspořádány do tří perspektiv:
 
-* Stav
-* Výkon
-* Mapa
+- Stav akce
+- Výkon
+- Mapa
 
 >[!NOTE]
->Funkce stavu je v současné době nabízí jenom pro virtuální počítače Azure. Výkon a funkce mapování podporují virtuální počítače Azure, škálovací sady virtuálních počítačů Azure a virtuální počítače, které jsou hostované ve vašem prostředí nebo jiný poskytovatel cloudu.
+>Nedávno jsme [oznámili](https://azure.microsoft.com/updates/upcoming-changes-for-azure-monitor-for-vms-as-we-prepare-for-ga) , že jsme provedli změny ve funkci stavu na základě zpětné vazby, kterou jsme získali od našich zákazníků ve veřejné verzi Preview. S ohledem na počet změn, které provedeme, budeme přestat nabízet funkci stavu pro nové zákazníky. Stávající zákazníci můžou dál používat funkci stavu. Další podrobnosti najdete v [nejčastějších dotazech k obecné dostupnosti](vminsights-ga-release-faq.md).  
 
-Integrace s protokoly Azure monitoru poskytuje výkonné agregace a filtrování, a to analyzovat trendy v datech v čase. Tyto úlohy komplexní monitorování není možné dosáhnout s Azure Monitor nebo Service Map samostatně.  
+Integrace s protokoly Azure Monitor zajišťuje výkonnou agregaci a filtrování a dokáže analyzovat trendy dat v čase. Takové komplexní monitorování úloh se nedá dosáhnout pomocí Azure Monitor nebo Service Map samostatně.  
 
-Tato data můžete zobrazit v jeden virtuální počítač z virtuálního počítače přímo, nebo Azure Monitor můžete použít k zajištění souhrnný náhled na vašich virtuálních počítačů. Toto zobrazení vychází z perspektivy jednotlivých funkcí:
+Tato data můžete zobrazit v jednom virtuálním počítači přímo z virtuálního počítače nebo můžete použít Azure Monitor k poskytování agregovaného zobrazení virtuálních počítačů. Toto zobrazení je založené na perspektivě jednotlivých funkcí:
 
-* **Stav**: Virtuální počítače se vztahují na skupinu prostředků.
-* **Mapa** a **výkonu**: Virtuální počítače jsou nakonfigurované k ukládání dat do konkrétního pracovního prostoru Log Analytics.
+- **Stav**: virtuální počítače souvisejí se skupinou prostředků.
+- **Mapování** a **výkon**: virtuální počítače jsou nakonfigurovány tak, aby hlásily do konkrétního pracovního prostoru Log Analytics.
 
-![Insights perspektivy virtuálního počítače na webu Azure Portal](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
+![Perspektiva analýzy virtuálních počítačů v Azure Portal](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 
-Pro virtuální počítače Azure Monitor dokáže zajistit předvídatelný výkon a dostupnost důležitých aplikací. Identifikuje událostí kritické operačního systému, kritické body výkonu a problémy se sítí. Azure Monitor pro virtuální počítače můžete taky vám pomůžou pochopit, jestli problém souvisí s další závislosti.  
+Azure Monitor pro virtuální počítače může poskytovat předvídatelný výkon a dostupnost důležitých aplikací. Identifikuje kritické události operačního systému, problémy s výkonem a problémy se sítí. Azure Monitor pro virtuální počítače vám může také porozumět tomu, jestli problém souvisí s ostatními závislostmi.  
 
-## <a name="data-usage"></a>Využití dat 
+## <a name="data-usage"></a>Využití dat
 
-Při nasazení Azure Monitor pro virtuální počítače, data, která se shromažďují ve vašich virtuálních počítačů je ingestuje a uložené ve službě Azure Monitor. Kritéria metrik stavu se ukládají ve službě Azure Monitor, databáze časových řad, shromažďovat data o výkonu a závislostí se ukládají v pracovním prostoru Log Analytics. Na ceny, který je publikovaný na základě [stránce s cenami Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/), účtuje se pro monitorování Azure pro virtuální počítače:
+Když nasadíte Azure Monitor pro virtuální počítače, data shromážděná vašimi virtuálními počítači se ingestují a ukládají v Azure Monitor. Metriky kritérií stavu jsou uložené v Azure Monitor v databázi časových řad. shromážděná data o výkonu a závislostech se ukládají v pracovním prostoru Log Analytics. Na základě cen, které jsou publikovány na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/), se Azure monitor pro virtuální počítače účtuje takto:
 
-* Data, která má ingestují a ukládají.
-* Počet metrik stavu kritéria, časových řad, která jsou monitorovaná.
-* Pravidla výstrah, které jsou vytvořeny.
-* Oznámení, které se odesílají. 
+- Data, která se ingestují a ukládají.
+- Počet monitorovaných časových řad metriky stavu.
+- Pravidla výstrah, která jsou vytvořena.
+- Oznámení, která jsou odeslána. 
 
-Velikost protokolu se liší podle délky řetězce čítačů výkonu a můžete zvýšit počet logických disků a síťových adaptérů přidělí virtuálnímu počítači. Pokud už máte pracovní prostor a tyto čítače shromažďují, jsou použity žádné duplicitní poplatky. Pokud už používáte řešení Service Map, je jediná změna, který se zobrazí data další připojení, která je odeslána do Azure monitoru.
+Velikost protokolu se liší podle délky řetězců čítačů výkonu a může se zvýšit počtem logických disků a síťových adaptérů, které jsou přiděleny virtuálnímu počítači. Pokud už máte pracovní prostor a shromažďujete tyto čítače, neuplatní se žádné duplicitní poplatky. Pokud už Service Map používáte, bude se jednat o další data o připojení, která se odesílají do Azure Monitor.
 
-## <a name="next-steps"></a>Další postup
-Informace o tom požadavky a metody, které vám pomohou monitorovat virtuální počítače, projděte si [nasazení Azure Monitor pro virtuální počítače](vminsights-enable-overview.md).
+## <a name="next-steps"></a>Další kroky
+
+Pokud chcete pochopit požadavky a metody, které vám pomůžou monitorovat virtuální počítače, přečtěte si téma [nasazení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).

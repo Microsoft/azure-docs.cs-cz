@@ -1,21 +1,18 @@
 ---
 title: Nejčastější dotazy k Azure Monitor pro virtuální počítače (GA) | Microsoft Docs
 description: Azure Monitor pro virtuální počítače je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci mezi ihned. Tento článek obsahuje odpovědi na běžné dotazy týkající se verze GA.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/07/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cb21d3bed1efc8f6ee7e16a0976ce46d03404983
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 10/07/2019
+ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275962"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553793"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 
@@ -27,7 +24,7 @@ Vydáním nové verze Azure Monitor pro virtuální počítače v listopadu. Zá
 
 V tomto upgradu jsou nyní Azure Monitor pro virtuální počítače datové sady výkonu uloženy ve stejné tabulce `InsightsMetrics` jako [Azure monitor pro kontejnery](container-insights-overview.md)a usnadňují dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nemohli Uložit do tabulky, kterou jsme dřív použili.  Naše zobrazení výkonu budou také aktualizována, aby používala tuto novou tabulku.
 
-Přesouváme nové datové typy pro naše datové sady pro připojení. Data, která jsou uložená v `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, které používají vlastní tabulky protokolu, se přesunou na vyhrazené datové typy s názvem `VMComputer` a `VMProcess`.  Když přejdete na vyhrazené datové typy, můžeme těmto prioritám poskytnout příjem dat a schéma tabulky se bude standardizované napříč všemi zákazníky.
+Přesouváme nové datové typy pro naše datové sady pro připojení. Data, která jsou uložená v `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, která používají vlastní tabulky protokolu, se přesunou na vyhrazené datové typy s názvem `VMComputer` a `VMProcess`.  Když přejdete na vyhrazené datové typy, můžeme těmto prioritám poskytnout příjem dat a schéma tabulky se bude standardizované napříč všemi zákazníky.
 
 Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich pracovní postup. to je důvod, proč jsme se rozhodli tuto možnost udělat teď v Public Preview, ale ne později, až přijdeme v GA.
 
@@ -50,7 +47,7 @@ Pokud se rozhodnete zachovat čítače výkonu, budou se vám účtovat data ing
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak bude tato změna mít vliv na pravidla upozornění?
 
-Pokud jste vytvořili [výstrahy protokolu](../platform/alerts-unified-log.md) , které se dotazují na čítače výkonu v tabulce `Perf`, které byly povolené v pracovním prostoru, měli byste tato pravidla aktualizovat tak, aby místo toho odkazovaly na tabulku `InsightsMetrics`. Tyto doprovodné materiály se vztahují také na všechna pravidla prohledávání protokolů, která používají `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, protože tyto sady dat přecházejí do tabulek `VMComputer` a `VMProcess`.
+Pokud jste vytvořili [výstrahy protokolu](../platform/alerts-unified-log.md) , které se dotazují na čítače výkonu v tabulce `Perf`, které byly povolené v pracovním prostoru, měli byste tato pravidla aktualizovat tak, aby místo toho odkazovaly na tabulku `InsightsMetrics`. Tyto pokyny se vztahují také na všechna pravidla prohledávání protokolu pomocí `ServiceMapComputer_CL` a `ServiceMapProcess_CL`, protože tyto sady dat přecházejí do `VMComputer` a `VMProcess` tabulek.
 
 Tyto nejčastější dotazy a naši dokumentaci budeme aktualizovat tak, aby obsahovaly ukázková pravidla upozornění pro prohledávání protokolů pro sady dat, které shromažďujeme.
 
@@ -66,7 +63,7 @@ To je dobré.  Při zobrazení Azure Monitor pro virtuální počítače o nadch
 
 Pokud jste se rozhodli ručně povolit čítače výkonu v pracovním prostoru, můžete zobrazit data v některých našich grafech výkonu zobrazených z Azure Monitor. Po vydání nového řešení aktualizujeme naše grafy výkonu a provedeme dotaz na data uložená v tabulce `InsightsMetrics`. Pokud chcete zobrazit data z této tabulky v těchto grafech, budete muset upgradovat na novou verzi Azure Monitor pro virtuální počítače.
 
-Změny přesunu dat z `ServiceMapComputer_CL` a `ServiceMapProcess_CL` budou mít vliv na Service Map i Azure Monitor pro virtuální počítače, takže je stále nutné pro tuto aktualizaci naplánovat.
+Změny přesunu dat z `ServiceMapComputer_CL` a `ServiceMapProcess_CL` budou mít vliv na Service Map i Azure Monitor pro virtuální počítače, takže stále budete muset tuto aktualizaci naplánovat.
 
 Pokud se rozhodnete neupgradovat na řešení **VMInsights** , budeme dál poskytovat starší verze našich sešitů výkonu, které odkazují na data v tabulce `Perf`.  
 
@@ -78,11 +75,11 @@ Tabulka `InsightsMetrics` se použije k uložení sad dat pro virtuální počí
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>Bude se mi něco účtovat, když mám Service Map a VMInsights řešení v mém pracovním prostoru?
 
-Ne, tato dvě řešení sdílí sady dat map, které ukládáme do `VMComputer` (dříve ServiceMapComputer_CL), `VMProcess` (dříve ServiceMapProcess_CL), `VMConnection` a `VMBoundPort`.  V případě, že máte obě řešení ve vašem pracovním prostoru, nebudeme vám nic účtovat.
+Ne, tato dvě řešení sdílí sady dat map, které ukládáme v `VMComputer` (dříve ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection` a `VMBoundPort`.  V případě, že máte obě řešení ve vašem pracovním prostoru, nebudeme vám nic účtovat.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>Když odeberem řešení Service Map nebo VMInsights, odeberou se moje data v Log Analytics?
 
-Ne, tato dvě řešení sdílí sady dat map, které ukládáme do `VMComputer` (dříve ServiceMapComputer_CL), `VMProcess` (dříve ServiceMapProcess_CL), `VMConnection` a `VMBoundPort`.  Pokud odeberete jedno z těchto řešení, tyto sady dat si všimněte, že je stále k dispozici řešení, které používá data a zůstává v Log Analytics.  Z pracovního prostoru musíte odebrat obě řešení, aby se data odebrala z pracovního prostoru Log Analytics.
+Ne, tato dvě řešení sdílí sady dat map, které ukládáme v `VMComputer` (dříve ServiceMapComputer_CL), `VMProcess` (dřív ServiceMapProcess_CL), `VMConnection` a `VMBoundPort`.  Pokud odeberete jedno z těchto řešení, tyto sady dat si všimněte, že je stále k dispozici řešení, které používá data a zůstává v Log Analytics.  Z pracovního prostoru musíte odebrat obě řešení, aby se data odebrala z pracovního prostoru Log Analytics.
 
 ## <a name="when-will-this-update-be-released"></a>Kdy bude tato aktualizace vydána?
 

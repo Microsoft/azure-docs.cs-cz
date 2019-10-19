@@ -1,38 +1,32 @@
 ---
-title: Azure Monitor pro virtuální počítače (preview) – známé problémy | Dokumentace Microsoftu
-description: Tento článek popisuje známé problémy s monitorováním Azure pro virtuální počítače, řešení v Azure, která sloučí, aplikace závislost zjišťování, monitorování stavu a výkonu operačního systému virtuálního počítače Azure.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
+title: Známé problémy s Azure Monitor pro virtuální počítače (Preview) | Microsoft Docs
+description: Tento článek se zabývá známými problémy s Azure Monitor pro virtuální počítače, řešením v Azure, které kombinuje stav, zjišťování závislosti aplikací a monitorování výkonu operačního systému virtuálního počítače Azure.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/02/2019
+ms.openlocfilehash: f6719a8c28571faceb6ebad0567d13a4edc60fe6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522148"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553761"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (preview)
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s Azure Monitor pro virtuální počítače (Preview)
 
-Tento článek popisuje známé problémy s monitorováním Azure pro virtuální počítače, řešení v Azure, která kombinuje stavu, zjišťování součásti aplikace a sledování výkonu operačního systému virtuálního počítače Azure. 
+Tento článek se věnuje známým problémům s Azure Monitor pro virtuální počítače, řešením v Azure, které kombinuje stav, zjišťování součástí aplikace a monitorování výkonu operačního systému virtuálního počítače Azure. 
 
-## <a name="health"></a>Stav 
-Následující seznam uvádí známé problémy v aktuální verzi funkce stavu:
+## <a name="health"></a>Stav akce 
+Níže jsou uvedené známé problémy s aktuální verzí funkce Health:
 
-- Pokud virtuální počítač Azure je odebrání nebo odstranění, zobrazí se v zobrazení seznamu virtuálních počítačů pro nějakou dobu. Kromě toho kliknutím na stav virtuálního počítače odstraněny nebo odstraněné otevře **stav diagnostiky** zobrazení a poté zahájí smyčku načítání. Výběrem názvu odstraněného virtuálního počítače se otevře podokno se zpráva, že virtuální počítač se odstranil.
-- Změny konfigurace, jako je aktualizace prahové hodnoty, trvat až 30 minut i v případě, že na portálu nebo rozhraní API sledování pracovní vytížení může je aktualizovat okamžitě. 
-- Diagnostika stavu aktualizace docházet rychleji než ostatní zobrazení. Tyto informace můžou být zpožděné při přepínání mezi nimi. 
-- Název stránku s výpisem stavu kritéria pro jedno zobrazení virtuálního počítače pro virtuální počítače s Linuxem, má celá doména název virtuálního počítače namísto uživatelem definovaný název virtuálního počítače. 
-- Poté, co zakážete monitorování virtuálního počítače pomocí jedné z podporovaných metod a zkuste ho znovu nasadíte, měli byste nasadit do stejného pracovního prostoru. Pokud zvolíte jiný pracovní prostor a pokuste se zobrazit stav pro tento virtuální počítač, může zobrazovat nekonzistentní chování.
-- Po odebrání součástí řešení z pracovního prostoru, může nadále zobrazovat stav z vašich virtuálních počítačů Azure; Konkrétně mapy data o výkonu a přejdete na některém zobrazení na portálu. Data se nakonec zastaví povolí, v zobrazení výkon a mapy za nějakou dobu; Zobrazení stavu budou ale nadále zobrazovat stav pro virtuální počítače. **Vyzkoušet** možnost je k dispozici na znovu připojit z výkon a mapy zobrazení.
+- Pokud dojde k odebrání nebo odstranění virtuálního počítače Azure, zobrazí se v zobrazení seznamu virtuálních počítačů pro nějakou dobu. Navíc kliknutím na stav odebraného nebo odstraněného virtuálního počítače otevřete zobrazení **diagnostiky stavu** a potom zahájíte smyčku načítání. Po výběru názvu odstraněného virtuálního počítače se otevře podokno s zprávou oznamující, že byl virtuální počítač odstraněn.
+- Změny konfigurace, jako je například aktualizace prahové hodnoty, zabírají až 30 minut i v případě, že rozhraní API portálu nebo monitorování zatížení může je okamžitě aktualizovat. 
+- Prostředí pro diagnostiku stavu se aktualizuje rychleji než ostatní zobrazení. Tyto informace mohou být při přepínání mezi nimi zpožděny. 
+- V případě virtuálních počítačů se systémem Linux má název stránky uvádějící kritéria stavu pro jedno zobrazení virtuálního počítače místo názvu virtuálního počítače definovaného uživatelem celý název tohoto virtuálního počítače. 
+- Když zakážete monitorování pro virtuální počítač pomocí některé z podporovaných metod a zkusíte ho nasadit znovu, měli byste ho nasadit do stejného pracovního prostoru. Pokud zvolíte jiný pracovní prostor a pokusíte se zobrazit stav tohoto virtuálního počítače, může se zobrazit nekonzistentní chování.
+- Po odebrání součástí řešení z pracovního prostoru můžete dál zobrazovat stav z vašich virtuálních počítačů Azure. Konkrétně data o výkonu a mapování dat při přechodu na libovolný pohled na portálu. Data se nakonec přestanou zobrazovat v zobrazení výkon a mapa po nějaké době; zobrazení stavu však bude i nadále zobrazovat stav virtuálních počítačů. Možnost **vyzkoušet nyní** bude k dispozici pro opětovné zprovoznění jenom z zobrazení výkon a mapa.
 
-## <a name="next-steps"></a>Další postup
-Pochopení požadavků a metody pro povolení monitorování virtuálních počítačů, najdete v tématu [povolit monitorování Azure pro virtuální počítače](vminsights-enable-overview.md).
+## <a name="next-steps"></a>Další kroky
+Pokud chcete pochopit požadavky a metody pro povolení monitorování virtuálních počítačů, přečtěte si téma [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).

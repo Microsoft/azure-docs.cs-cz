@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170658"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550856"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -33,11 +33,11 @@ Aplikace Function App můžete hostovat několika způsoby:
 
 |                |[Plán spotřeby](functions-scale.md#consumption-plan)|[Plán Premium (Preview)](functions-scale.md#premium-plan)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Omezení příchozí IP adresy & přístupu k privátnímu webu](#inbound-ip-restrictions)|✅ Ano|✅ Ano|✅ Ano|✅ Ano|
-|[Integrace virtuální sítě](#virtual-network-integration)|❌ Ne|✅ Ano (místní)|✅ Ano (místní a brána)|✅ Ano|
-|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌ Ne| ❌ Ne|✅ Ano|✅ Ano|
-|[Hybridní připojení](#hybrid-connections)|❌ Ne|❌ Ne|✅ Ano|✅ Ano|
-|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌ Ne| ❌ Ne|❌ Ne|✅ Ano|
+|[Omezení příchozí IP adresy & přístupu k privátnímu webu](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Integrace virtuální sítě](#virtual-network-integration)|❌No|✅Yes (místní)|✅Yes (místní a brána)|✅Yes|
+|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Hybridní připojení](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
 ## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
@@ -52,7 +52,7 @@ Další informace najdete v tématu [omezení statického přístupu Azure App S
 ## <a name="private-site-access"></a>Privátní přístup k webu
 
 Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, jako je například z Azure Virtual Network. 
-* Přístup k privátní lokalitě je k dispozici v [plánu](functions-scale.md#app-service-plan) [Premium](./functions-premium-plan.md), [Spotřeba](functions-scale.md#consumption-plan) a App Service, když jsou nakonfigurované **koncové body služby** . 
+* Přístup k privátní lokalitě je dostupný v úrovni [Premium](./functions-premium-plan.md), [spotřeba], (Functions-Scale. MD # spotřeba-plán) a [App Service plán](functions-scale.md#app-service-plan) , kdy jsou **koncové body služby** nakonfigurované. 
     * Koncové body služby je možné nakonfigurovat na základě jednotlivých aplikací v části funkce platformy > sítě > nakonfigurujte omezení přístupu > Přidat pravidlo. Virtuální sítě se teď dají vybrat jako typ pravidla.
     * Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) .
         * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
@@ -87,8 +87,8 @@ Bez ohledu na použitou verzi udělí integrace virtuální sítě Function App 
 Funkce integrace virtuální sítě:
 
 * Vyžaduje plán App Service Standard, Premium nebo PremiumV2.
-* Podporuje protokoly TCP a UDP
-* Funguje s aplikacemi App Service a aplikacemi Function App
+* podporuje protokoly TCP a UDP
+* funguje s aplikacemi App Service a aplikacemi Function App
 
 Integrace virtuální sítě nepodporuje zahrnutí následujících věcí:
 
@@ -102,12 +102,20 @@ Integrace virtuální sítě v rámci funkcí používá sdílenou infrastruktur
 
 Další informace o použití integrace virtuální sítě najdete v tématu [integrace aplikace Function App s virtuální sítí Azure](functions-create-vnet.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Připojování k zabezpečeným prostředkům koncového bodu služby
 
 > [!note] 
-> Jakmile v účtu úložiště nakonfigurujete omezení přístupu, může vám dočasně trvat až 12 hodin, než se Váš účet úložiště zpřístupní pro vaši aplikaci Function App. Během této doby bude vaše aplikace zcela v režimu offline.
+> Jakmile nakonfigurujete omezení přístupu k prostředkům pro příjem dat, může trvat až 12 hodin, než se nové koncové body služby stanou dostupnými pro vaši aplikaci Function App. Během této doby bude prostředek pro vaši aplikaci zcela nedostupný.
 
-Aby bylo možné zajistit vyšší úroveň zabezpečení, můžete omezit účet úložiště aplikace na virtuální síť. Pak musíte lokalitu integrovat s touto virtuální sítí a získat tak přístup k vašemu účtu úložiště. Tato konfigurace je podporovaná ve všech plánech, které podporují integraci virtuálních sítí.
+Aby bylo možné zajistit vyšší úroveň zabezpečení, můžete omezit počet služeb Azure na virtuální síť pomocí koncových bodů služby. Abyste mohli získat přístup k prostředku, musíte aplikaci Function App integrovat s touto virtuální sítí. Tato konfigurace je podporovaná ve všech plánech, které podporují integraci virtuálních sítí.
+
+[Přečtěte si další informace o koncových bodech služby virtuální sítě.](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
+Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. V tuto chvíli není možné pro tento účet použít žádná omezení virtuální sítě. Pokud nakonfigurujete koncový bod služby virtuální sítě na účtu úložiště, který používáte pro aplikaci Function App, aplikace přeruší.
+
+[Přečtěte si další informace o požadavcích na účet úložiště.](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Aktivační události virtuální sítě (jiné než HTTP)
 

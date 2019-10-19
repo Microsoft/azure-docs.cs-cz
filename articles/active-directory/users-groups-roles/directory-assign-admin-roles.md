@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: MT
+ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286798"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551660"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -49,10 +49,15 @@ K dispozici jsou následující role správce:
 
 ### <a name="application-administratorapplication-administrator-permissions"></a>[Správce aplikace](#application-administrator-permissions)
 
-Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací, kromě Microsoft Graph a Azure AD Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
+Uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Všimněte si, že uživatelé přiřazení k této roli se při vytváření nových registrací aplikací nebo podnikových aplikací nepřidali jako vlastníci.
 
 > [!IMPORTANT]
 > Tato role uděluje možnost spravovat přihlašovací údaje aplikací. Uživatelé přiřazení k této roli můžou do aplikace přidat přihlašovací údaje a pomocí těchto přihlašovacích údajů zosobnit identitu aplikace. Pokud identitě aplikace byl udělen přístup k Azure Active Directory, jako je například možnost vytvořit nebo aktualizovat uživatele nebo jiné objekty, může uživatel přiřazený k této roli provádět tyto akce při zosobnění aplikace. Tato schopnost zosobnit identitu aplikace může být zvýšením oprávnění, přes co může uživatel dělat prostřednictvím přiřazení rolí v Azure AD. Je důležité pochopit, že přiřazení uživatele k roli správce aplikace jim dává možnost zosobnit identitu aplikace.
+
+Tato role také uděluje možnost _vyjádřit souhlas_ s delegovanými oprávněními a oprávněními aplikace s výjimkou oprávnění pro Microsoft Graph a Azure AD Graph.
+
+> [!IMPORTANT]
+> Tato výjimka znamená, že stále můžete vyjádřit souhlas s oprávněními pro _jiné_ aplikace (například aplikace třetích stran nebo aplikace, které jste zaregistrovali), ale ne oprávnění k samotné službě Azure AD. Tato oprávnění si můžete přesto _vyžádat_ jako součást registrace aplikace, ale _udělení_ (tj. přijetí) vyžaduje oprávnění správce Azure AD. To znamená, že uživatel se zlými úmysly nemůže snadno zvýšit oprávnění, například vytvořením a souhlasem s aplikací, která může zapisovat do celého adresáře a prostřednictvím oprávnění této aplikace, aby se stala globálním správcem.
 
 ### <a name="application-developerapplication-developer-permissions"></a>[Vývojář aplikace](#application-developer-permissions)
 

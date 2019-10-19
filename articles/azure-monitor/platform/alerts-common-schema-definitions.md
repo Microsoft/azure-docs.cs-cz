@@ -1,19 +1,18 @@
 ---
 title: Běžné definice schématu výstrah pro Azure Monitor
 description: Principy běžných definic schémat výstrah pro Azure Monitor
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9e2c3849cca392539b96f47d8d7c32815851cf78
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702886"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552554"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -76,7 +75,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 | Pole | Popis|
 |:---|:---|
-| AlertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
+| alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
 | Závažnost | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
 | signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: metrika, protokol nebo protokol aktivit. |
@@ -152,7 +151,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 ### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> Pro výstrahy protokolu, které mají vlastní datovou část JSON, se povolením společného schématu vrátí schéma datové části na ten, který je popsaný níže. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. Můžete to zjistit tak, že zkontrolujete příznak `IncludedSearchResults`. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Pro výstrahy protokolu, které mají vlastní datovou část JSON, se povolením společného schématu vrátí schéma datové části na ten, který je popsaný níže. Výstrahy s povoleným společným schématem mají omezení horní velikosti 256 KB na jednu výstrahu. Výsledky hledání nejsou vložené v datové části výstrah protokolu, pokud velikost výstrahy způsobí překročení této prahové hodnoty. To můžete zjistit zaškrtnutím `IncludedSearchResults` příznak. Pokud výsledky hledání nejsou zahrnuté, měli byste použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

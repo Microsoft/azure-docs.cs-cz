@@ -1,19 +1,18 @@
 ---
 title: Pochopení schématu Webhooku používaného v upozorněních protokolu aktivit
 description: Přečtěte si o schématu JSON, které se pošle na adresu URL Webhooku, když se aktivuje výstraha protokolu aktivit.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/31/2017
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/31/2017
+ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675221"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552750"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -27,12 +26,12 @@ Informace o skupinách akcí najdete v tématu [Vytvoření skupin akcí](../../
 
 
 ## <a name="authenticate-the-webhook"></a>Ověření Webhooku
-Webhook může volitelně použít autorizaci založenou na tokenech pro ověřování. Identifikátor URI Webhooku je uložený s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+Webhook může volitelně použít autorizaci založenou na tokenech pro ověřování. Identifikátor URI Webhooku se uloží s ID tokenu, například `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
 
 ## <a name="payload-schema"></a>Schéma datové části
 Datová část JSON obsažená v operaci POST se liší v závislosti na poli data datové části Context. activityLog. eventSource.
 
-### <a name="common"></a>Obecný
+### <a name="common"></a>Společné
 
 ```json
 {
@@ -61,7 +60,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 }
 ```
 
-### <a name="administrative"></a>Prav
+### <a name="administrative"></a>Správa
 
 ```json
 {
@@ -132,7 +131,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 }
 ```
 
-### <a name="recommendation"></a>Základě
+### <a name="recommendation"></a>Doporučení
 
 ```json
 {
@@ -260,23 +259,23 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 
 | Název elementu | Popis |
 | --- | --- |
-| stav |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
-| kontext |Kontext události |
+| status |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
+| Souvislost |Kontext události |
 | resourceProviderName |Poskytovatel prostředků ovlivněného prostředku. |
 | conditionType |Vždy "Event" |
-| name |Název pravidla výstrahy. |
+| jméno |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
 | description |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
-| Prostředku |ID prostředku ovlivněného prostředku |
-| ResourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
-| vlastnosti |Sada dvojic `<Key, Value>` (tj. `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
-| event |Prvek, který obsahuje metadata o události. |
-| autorizace |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
+| resourceId |ID prostředku ovlivněného prostředku |
+| resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
+| properties |Sada dvojic `<Key, Value>` (tj. `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
+| událostí |Prvek, který obsahuje metadata o události. |
+| Udělován |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
 | category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
-| Volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. Pro určitá systémová volání může mít hodnotu null. |
-| ID |Obvykle identifikátor GUID ve formátu řetězce. Události s ID korelace patří stejné větší akci a obvykle sdílejí ID korelace. |
+| volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. Pro určitá systémová volání může mít hodnotu null. |
+| correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události s ID korelace patří stejné větší akci a obvykle sdílejí ID korelace. |
 | eventDescription |Statický text popis události |
 | eventDataId |Jedinečný identifikátor události |
 | EventSource |Název služby nebo infrastruktury Azure, která událost vygenerovala. |
@@ -284,8 +283,8 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | Obsah |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
 | operationId |Identifikátor GUID se obvykle sdílí mezi událostmi, které odpovídají jedné operaci. |
 | operationName |Název operace |
-| vlastnosti |Vlastnosti události |
-| stav |Řetezce. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
+| properties |Vlastnosti události |
+| status |řetezce. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
 | subStatus |Obvykle zahrnuje stavový kód HTTP odpovídajícího volání REST. Může také obsahovat další řetězce, které popisují dílčí stav. Mezi běžné hodnoty substavu patří OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu http: 400), nenalezen (Stavový kód http: 404), konflikt (kód stavu http: 409). ), Interní chyba serveru (kód stavu HTTP: 500), nedostupná služba (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504). |
 
 Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu aktivit najdete v tématu [Přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377509"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553640"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -26,15 +26,15 @@ Vzhledem k tomu, že Azure Machine Learning sleduje informace z místního úlo�
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud je ve vašem vývojovém prostředí k dispozici příkaz `git`, proces nahrávání ho použije ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Popis |
-| ----- | ----- |
-| `azureml.git.repository_uri` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
-| `mlflow.source.git.repoURL` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
-| `azureml.git.branch` | Aktivní větev při odeslání běhu. |
-| `mlflow.source.git.branch` | Aktivní větev při odeslání běhu. |
-| `azureml.git.commit` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
-| `mlflow.source.git.commit` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
-| `azureml.git.dirty` | `True`, pokud je potvrzení nečisté; v opačném případě `false`. |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Aktivní větev při odeslání běhu. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Aktivní větev při odeslání běhu. |
+| `azureml.git.commit` | `git rev-parse HEAD` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, pokud je větev/potvrzení nečistá; v opačném případě `false`. |
 
 Tyto informace se odesílají pro běhy, které používají Estimator, kanál strojového učení nebo spuštění skriptu.
 
@@ -49,7 +49,9 @@ Informace Git se ukládají do vlastností pro školicí běh. Tyto informace m�
 1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor.
 1. Vyberte __experimenty__a pak vyberte jeden z experimentů.
 1. Vyberte jedno z běhů ze sloupce __číslo běhu__ .
-1. Vyberte __protokoly__a potom rozbalte položky __protokoly__ a __AzureML__ . Vyberte odkaz, který začíná na __### @ no__t-2azure__.
+1. Vyberte __protokoly__a potom rozbalte položky __protokoly__ a __AzureML__ . Vyberte odkaz, který začíná na __### \_azure__.
+
+    ![Položka # # #_azure na portálu](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 Protokolované informace obsahují text podobný následujícímu formátu JSON:
 

@@ -1,24 +1,18 @@
 ---
 title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ae8dd4cccb6795faa02e6705404644f6ccc24864
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 07/12/2019
+ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948051"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555409"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
@@ -28,7 +22,7 @@ Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a 
 
 Příklady záznamů, které jsou shromažďovány Azure Monitor pro kontejnery a typy dat, které se zobrazují ve výsledcích prohledávání protokolu, jsou uvedeny v následující tabulce:
 
-| Datový typ | Datový typ v hledání v protokolu | Pole |
+| Data type | Datový typ v hledání v protokolu | Fields (Pole) |
 | --- | --- | --- |
 | Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání v&#41;síti, využití procesoru sec, síť, CounterValue, TimeGenerated, CounterPath, SourceSystem |
 | Inventář kontejneru | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
@@ -42,7 +36,7 @@ Příklady záznamů, které jsou shromažďovány Azure Monitor pro kontejnery 
 | Metriky výkonu pro kontejnery část clusteru Kubernetes | Výkon &#124; , kde ObjectName = = "K8SContainer" | CounterName &#40; CpuRequestNanoCores, MemoryRequestBytes, CpuLimitNanoCores, MemoryWorkingSetBytes, RestartTimeEpoch, CpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Vlastní metriky |`InsightsMetrics` | Počítač, název, obor názvů, počátek, SourceSystem, značky<sup>1</sup>, TimeGenerated, Type, VA, _ResourceId | 
 
-<sup>1</sup> vlastnost *tagss* představuje [více dimenzí](../platform/data-platform-metrics.md#multi-dimensional-metrics) pro odpovídající metriku. Další informace o metrikách shromážděných a uložených v tabulce `InsightsMetrics` a popisu vlastností záznamu naleznete v tématu [InsightsMetrics Overview](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
+<sup>1</sup> vlastnost *tagss* představuje [více dimenzí](../platform/data-platform-metrics.md#multi-dimensional-metrics) pro odpovídající metriku. Další informace o metrikách shromážděných a uložených v `InsightsMetrics` tabulce a popisu vlastností záznamu naleznete v tématu [InsightsMetrics Overview](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
 >[!NOTE]
 >Podpora pro Prometheus je ve verzi Public Preview v současnosti funkce.
@@ -54,7 +48,7 @@ Protokoly Azure Monitor vám můžou pomáhat při hledání trendů, diagnostik
 
 Můžete provést interaktivní analýzu dat v pracovním prostoru výběrem možnosti **Zobrazit protokoly událostí Kubernetes** nebo **Zobrazit protokoly kontejnerů** v podokně náhledu. Stránka pro **prohledávání protokolu** se zobrazí napravo od Azure Portal stránky, na které jste byli.
 
-![Analyzovat data v Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
+![Analýza dat v Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
 
 Výstup protokolu kontejnerů, který se předává do vašeho pracovního prostoru, je STDOUT a STDERR. Vzhledem k tomu, že Azure Monitor monitoruje Azure spravované Kubernetes (AKS), Kube – systém se dnes neshromáždí kvůli velkému objemu vygenerovaných dat. 
 
@@ -62,7 +56,7 @@ Výstup protokolu kontejnerů, který se předává do vašeho pracovního prost
 
 Často je užitečné vytvářet dotazy, které začínají s příkladem nebo dvěma, a pak je upravit tak, aby vyhovovaly vašim požadavkům. Pro lepší sestavování pokročilejších dotazů můžete experimentovat s následujícími ukázkovými dotazy:
 
-| Dotazy | Popis | 
+| Dotaz | Popis | 
 |-------|-------------|
 | ContainerInventory<br> &#124;Projektový počítač, název, obrázek, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Vypsat všechny informace o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;kde not (neprázdné (Namespace_s))<br> &#124;Seřadit podle TimeGenerated DESC<br> &#124;vykreslit tabulku | Události Kubernetes|

@@ -1,24 +1,18 @@
 ---
 title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/08/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: dfa823955cccba4ac7ec6859894a4562f0810d76
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/08/2019
+ms.openlocfilehash: 2b72252c5c85679c1c65fa2dcf9c5acc6c54003c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248756"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554202"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
@@ -45,11 +39,11 @@ Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shroma�
 |----|----------|------|------------|
 |`schema-version` |Řetězec (rozlišuje velká a malá písmena) |V1 |Toto je verze schématu používaná agentem při analýze tohoto ConfigMap. Aktuálně podporovaná verze schématu je v1. Změna této hodnoty není podporována a při vyhodnocování ConfigMap bude odmítnuta.|
 |`config-version` |Řetězec | | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti. Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
-|`[log_collection_settings.stdout] enabled =` |Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Pokud je nastavená hodnota `true` a pro kolekci protokolů stdout (nastavení `log_collection_settings.stdout.exclude_namespaces` níže nejsou žádné obory názvů), budou se protokoly stdout shromažďovat ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
+|`[log_collection_settings.stdout] enabled =` |Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Když se nastaví `true` a žádné obory názvů se nevylučují pro shromažďování protokolů stdout (nastavení `log_collection_settings.stdout.exclude_namespaces` níže), budou se shromažďovat protokoly stdout ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
 |`[log_collection_settings.stdout] exclude_namespaces =`|Řetězec | Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Pokud je nastavena hodnota `true` a žádné obory názvů nejsou vyloučeny pro shromažďování protokolů stdout (nastavení `log_collection_settings.stderr.exclude_namespaces`), budou protokoly stderr shromažďovány ze všech kontejnerů v rámci všech lusků nebo uzlů v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
+|`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Když se nastaví `true` a žádné obory názvů nejsou vyloučené pro shromažďování protokolů stdout (nastavení `log_collection_settings.stderr.exclude_namespaces`), budou se shromažďovat protokoly stderr ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Řetězec |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě, že je parametr `log_collection_settings.stdout.enabled` nastaven na hodnotu `true`. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve výchozím nastavení `enabled = true`, pokud není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner zakázat nastavením proměnné prostředí `AZMON_COLLECT_ENV` na **hodnotu false** buď pomocí nastavení souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) příkaz pod **. ENV:** oddíl Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
+| `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve výchozím nastavení `enabled = true`, pokud není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner zakázat nastavením proměnné prostředí `AZMON_COLLECT_ENV` na **hodnotu false** buď pomocí nastavení souboru Dockerfile, nebo v [konfiguračním souboru](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) uzlu pod  **ENV:** oddíl Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
 
 ### <a name="prometheus-scraping-settings"></a>Nastavení pro likvidační Prometheus
 
@@ -94,11 +88,11 @@ Provedením následujících kroků nakonfigurujete a nasadíte konfigurační s
 
 2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo.
 
-    - Pokud chcete vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
+    - Chcete-li vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
-    - Chcete-li zakázat shromažďování proměnných prostředí pro určitý kontejner, nastavte klíč/hodnotu `[log_collection_settings.env_var] enabled = true` pro globální povolení kolekce proměnných a pak postupujte podle pokynů [zde](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , a dokončete konfiguraci pro konkrétní kontejner.
+    - Chcete-li zakázat shromažďování proměnných prostředí pro určitý kontejner, nastavte `[log_collection_settings.env_var] enabled = true` klíč/hodnota, aby bylo možné kolekci proměnných povolit globálně, a pak postupujte podle pokynů [zde](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , a dokončete konfiguraci pro konkrétní kontejner.
     
-    - Pokud chcete zakázat shromažďování protokolů protokolu stderr na úrovni clusteru, nakonfigurujte klíč/hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false`.
+    - Pokud chcete zakázat shromažďování protokolů protokolu stderr v clusteru, nakonfigurujte klíč/hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false`.
     
 3. Chcete-li konfigurovat shromažďování služby Kubernetes Services v clusteru, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
 

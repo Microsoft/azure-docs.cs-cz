@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035095"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554547"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -102,7 +102,7 @@ Počet překrývajících se segmentů závisí na velikosti dat, která se maj�
 
 - Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistují žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
-- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -119,12 +119,16 @@ Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segme
 ## <a name="create-ordered-cci-on-large-tables"></a>Vytváření uspořádané konzulární instrukce pro velké tabulky
 Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, které neobsahují oddíly, data nebudou k dispozici uživatelům, dokud se nedokončí proces vytváření řazené Ski.   Pro dělené tabulky, protože modul vytváří seřazený oddíl s pokyny podle oddílu, uživatelé budou mít stále přístup k datům v oddílech, kde se vytváření řazené konzulárních instrukcí nezpracovává.   Tuto možnost můžete použít k minimalizaci výpadku během uspořádaného vytváření Ski v rozsáhlých tabulkách: 
 
-1.  Vytvořte oddíly pro cílovou rozsáhlou tabulku (nazvanou tabulka A).
-2.  Vytvoří prázdnou seřazenou tabulku Ski (s názvem tabulka B) se stejným schématem Table a partition jako tabulka a.
+1.  Vytvořte oddíly v cílové velké tabulce (označované jako Table_A).
+2.  Vytvoří prázdnou seřazenou tabulku Ski (s názvem Table_B) se stejným schématem Table a partition jako tabulka a.
 3.  Umožňuje přepnout jeden oddíl z tabulky A na tabulku B.
-4.  Spuštěním příkazu ALTER INDEX < Ordered_CCI_Index > znovu sestavte oddíl = < Partition_ID > v tabulce B pro opětovné sestavení přepnutého oddílu.  
-5.  Zopakujte kroky 3 a 4 pro každý oddíl v tabulce A.
-6.  Jakmile jsou všechny oddíly přepnuty z tabulky A na tabulku B a znovu sestaveny, odřaďte tabulku A a přejmenujte tabulku B na tabulku A. 
+4.  Spusťte příkaz ALTER INDEX < Ordered_CCI_Index > na < Table_B > znovu sestavit oddíl = < Partition_ID > v tabulce B pro opětovné sestavení přepnutého oddílu.  
+5.  Zopakujte kroky 3 a 4 pro každý oddíl v Table_A.
+6.  Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné sestavení, přetažení Table_A a přejmenování Table_B na Table_A. 
+
+>[!NOTE]
+>Během období Preview seřazeného clusterovaného indexu columnstore (Ski) v Azure SQL Data Warehouse můžou být vygenerována duplicitní data v případě, že je vytvořena nebo znovu sestavena seřazená konzulární instrukce pomocí vytvoření CLUSTEROVANÉHO indexu COLUMNSTORE pro dělenou tabulku. Nejedná se o žádnou ztrátu dat. Oprava tohoto problému bude brzy k dispozici. Pro alternativní řešení můžou uživatelé vytvořit uspořádanou INSTRUKCi pro dělenou tabulku pomocí příkazu CTAS.
+
 
 ## <a name="examples"></a>Příklady
 
@@ -144,4 +148,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj najdete v tématu [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

@@ -1,11 +1,11 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s odchylek | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a odchylek.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s posunem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a unášenou.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,184 +13,177 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656609"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554365"
 ---
-# <a name="tutorial-integrate-drift-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory odchylek
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s posunem
 
-V tomto kurzu se dozvíte, jak integrovat odchylek s Azure Active Directory (Azure AD). Když integrujete odchylek s využitím Azure AD, můžete:
+V tomto kurzu se naučíte integrovat službu Azure Active Directory (Azure AD). Když integrujete službu Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k odchylek.
-* Aby uživatelé mohli být automaticky přihlášeni k odchylek pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup ke všem.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k účtu Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Odchylek jednotné přihlašování (SSO) povolené předplatné.
+* Odhlásit předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Odchylek podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené a **JIT** zřizování uživatelů.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-## <a name="adding-drift-from-the-gallery"></a>Přidání odchylek z Galerie
+* Posun podporuje **SP a IDP** iniciované jednotné přihlašování.
+* Posun podporuje **při zřizování uživatelů jenom včas**
 
-Konfigurace integrace odchylek do služby Azure AD, budete muset přidat odchylek z Galerie na váš seznam spravovaných aplikací SaaS.
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
+## <a name="adding-drift-from-the-gallery"></a>Přidání posunu z Galerie
+
+Pokud chcete nakonfigurovat integraci do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat posun od galerie.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **odchylek** do vyhledávacího pole.
-1. Vyberte **odchylek** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **posun** .
+1. Vyberte možnost **posun** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-drift"></a>Konfigurace a testování jednotného přihlašování Azure AD pro posun
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s odchylek pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v odchylek.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím zkušebního uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a vzájemně se souvisejícím uživatelem.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s odchylek, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s posunem, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace odchylek](#configure-drift)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele odchylek](#create-drift-test-user)**  mít protějšek B. Simon odchylek, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte ODHLAŠOVÁNÍ SSO](#configure-drift-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte si uživatele](#create-drift-test-user)** se škálováním na více verzí, abyste měli protějšek B. Simon, který je propojený s reprezentací uživatele Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **odchylek** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na **stránce pro integraci aplikací,** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure. Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko a proveďte následující kroky:
+1. V **základní konfiguraci SAML**  section aplikace je předem nakonfigurovaná v režimu  initiated **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na **uložit**  button.
 
-    a. Klikněte na tlačítko **nastavit další adresy URL**.
+    a. Klikněte na **nastavit další adresy URL**.
  
-    b. V **stav přenosu** textové pole, zadejte adresu URL: `https://app.drift.com` 
+    b. Do textového pole **stav přenosu** zadejte adresu URL: `https://app.drift.com` 
 
-    c. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu postupujte následovně:
+    c. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , proveďte tento krok:
 
-    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL: `https://start.drift.com`
+    d. Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://start.drift.com`
 
-6. Vaše aplikace odchylek očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+6. Vaše aplikace posunu očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/edit-attribute.png)
 
-7. Kromě toho novější verze odchylek aplikace očekává několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele, proveďte následující kroky přidat atribut tokenu SAML, jak je znázorněno následující tabulka: 
+7. Kromě výše očekává aplikace na posunu několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků. 
 
-    | Název | Zdrojový atribut|
+    | Name (Název) | Zdrojový atribut|
     | ---------------| --------------- |    
-    | Název | user.displayname |
+    | Name (Název) | User. DisplayName |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![image](common/new-save-attribute.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
+1. V části **nastavení posunu** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    c. Nechte **Namespace** prázdné.
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    d. Vyberte zdroj jako **atribut**.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-    f. Klikněte na tlačítko **Ok**
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-    g. Klikněte na **Uložit**.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k posunu.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **kód XML metadat federace** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **posun**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Na **nastavit odchylek** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
-
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-### <a name="configure-drift"></a>Konfigurace odchylek
-
-1. K automatizaci konfigurace v rámci odchylek, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
-
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
-
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení odchylek** nasměruje na aplikaci odchylek. Odtud zadejte přihlašovací údaje správce pro přihlášení do odchylek. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 a 4.
-
-    ![Nastavení konfigurace](common/setup-sso.png)
-
-3. Pokud chcete nastavit odchylek ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti odchylek jako správce a proveďte následující kroky:
-
-4. V levé části řádku nabídek klikněte na **ikona nastavení** > **nastavení aplikace** > **ověřování** a proveďte následující kroky:
-
-    ![Správce odkazů](./media/drift-tutorial/tutorial_drift_admin.png)
-
-    a. Nahrát **kód XML metadat federace** , který jste si stáhli z portálu Azure portal do **zprostředkovatele Identity nahrát soubor metadat** textového pole.
-
-    b. Po nahrání souboru metadat, zbývající hodnoty získat automaticky vyplní automaticky na stránce.
-
-    c. Klikněte na tlačítko **povolit SAML**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
-
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
-
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu k odchylek.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **odchylek**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
-
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-drift-test-user"></a>Vytvořit testovacího uživatele odchylek
+## <a name="configure-drift-sso"></a>Konfigurace unášeného jednotného přihlašování
 
-V této části se vytvoří uživateli Britta Simon v odchylek. Odchylek podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi odchylek, vytvoří se nový po ověření.
+1. Chcete-li automatizovat konfiguraci v rámci posunu, je nutné nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na možnost **nainstalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **posun nastavení** a nasměrujte vás na aplikaci s posunem. Odtud zadejte přihlašovací údaje správce, které se přihlásí ke posunu. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-4.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit odinstalaci ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Kontaktujte svoji společnost jako správce a proveďte následující kroky:
+
+4. Na levé straně řádku nabídek klikněte na **ikonu nastavení**  > **nastavení aplikace**  > **ověřování** a proveďte následující kroky:
+
+    ![Odkaz správce](./media/drift-tutorial/tutorial_drift_admin.png)
+
+    a. Nahrajte soubor **XML metadat federace** , který jste stáhli z Azure Portal, do textového pole pro **nahrání souboru metadat zprostředkovatele identity** .
+
+    b. Po nahrání souboru metadat se zbývající hodnoty automaticky vyplní na stránce.
+
+    c. Klikněte na **Povolit SAML**.
+
+### <a name="create-drift-test-user"></a>Vytvořit uživatele se unášenými zkušebními testy
+
+V této části se při posunu vytvoří uživatel s názvem Britta Simon. Posun podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už nepoužívá, vytvoří se po ověření nový.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory odchylek](mailto:integrations@drift.com).
+>Pokud potřebujete ručně vytvořit uživatele, kontaktujte [oddělení podpory](mailto:integrations@drift.com).
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 
 
-Při výběru dlaždice odchylek na přístupovém panelu můžete by měl být automaticky přihlášeni k odchylek, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-## <a name="additional-resources"></a>Další prostředky
+Když na přístupovém panelu kliknete na dlaždici, měli byste být automaticky přihlášeni ke posunu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si službu Azure AD.](https://aad.portal.azure.com/)
+

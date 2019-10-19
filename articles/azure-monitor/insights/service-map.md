@@ -1,28 +1,22 @@
 ---
 title: Používání řešení Service Map v Azure | Microsoft Docs
-description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobnosti o nasazení řešení Service Map ve vašem prostředí a jejich použití v různých scénářích.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
+description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek poskytuje podrobné informace o nasazení Service Map ve vašem prostředí a jejich použití v nejrůznějších scénářích.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 07/24/2019
+ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905719"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554000"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 
-Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Service Map zobrazuje vaše servery tak, jak o nich přemýšlíte, tzn. jako propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení serverů, procesů, latenci příchozích a odchozích připojení a porty v libovolné architektuře propojené protokolem TCP. Kromě instalace agenta se nevyžaduje žádná konfigurace.
+Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
 
 Tento článek popisuje podrobnosti o připojování a používání Service Map. Informace o konfiguraci požadavků pro toto řešení najdete v tématu [Povolení přehledu Azure monitor pro virtuální počítače](vminsights-enable-overview.md#prerequisites). Pro Shrnutí budete potřebovat následující:
 
@@ -33,7 +27,7 @@ Tento článek popisuje podrobnosti o připojování a používání Service Map
 * Agent závislostí nainstalovaný na počítači s Windows nebo na serveru se systémem Linux.
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících nejčastějších [dotazech](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
+>Pokud jste už nasadili Service Map, můžete teď také zobrazit vaše mapy v Azure Monitor pro virtuální počítače, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Další informace najdete v tématu [přehled Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md). Další informace o rozdílech mezi funkcí Service Map řešení a mapa Azure Monitor pro virtuální počítače najdete v následujících [nejčastějších dotazech](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -44,9 +38,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 1. Povolte řešení Service Map z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
 1. [Nainstalujte agenta závislostí do systému Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
-Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> ![V pracovním prostoru](./media/service-map/select-solution-from-workspace.png)vyberte možnost řešení.<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ![Dlaždice](./media/service-map/service-map-summary-tile.png)souhrnu Service map
+Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> možnost řešení ![Select v pracovním prostoru ](./media/service-map/select-solution-from-workspace.png).<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ](./media/service-map/service-map-summary-tile.png) dlaždici ![Service mapy
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Zajistěte, aby vaše IT procesy v závislosti na závislosti
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Zajistěte, aby vaše IT procesy byly závislé na závislostech
 
 ### <a name="discovery"></a>Zjišťování
 
@@ -60,7 +54,7 @@ Service Map pomáhá eliminovat přibližnou přibližnou izolaci problémů tí
 
 Pomocí Service Map můžete efektivně plánovat, zrychlit a ověřovat migrace do Azure, což pomáhá zajistit, aby nic nezůstalo a nedocházelo k výpadkům. Můžete zjistit všechny vzájemně závislé systémy, které se musí migrovat společně, vyhodnocovat konfiguraci a kapacitu systému a určit, jestli operační systém stále obsluhuje uživatele, nebo je kandidátem na vyřazení z provozu místo migrace. Po dokončení přesunu můžete zkontrolovat zatížení a identitu klienta a ověřit tak, že se zkušební systémy a zákazníci připojují. Pokud má vaše podsíť definice plánování a brány firewall problémy, neúspěšná připojení v Service Map mapách ukazují na systémy, které vyžadují připojení.
 
-### <a name="business-continuity"></a>Kontinuita podnikových procesů
+### <a name="business-continuity"></a>Nepřetržitý chod organizace
 
 Pokud používáte Azure Site Recovery a potřebujete nápovědu definující sekvenci obnovení pro prostředí aplikace, Service Map vám může automaticky Ukázat, jak se systémy vzájemně spoléhají, aby se zajistilo, že je váš plán obnovení spolehlivý. Výběrem důležitého serveru nebo skupiny a zobrazením klientů můžete určit, které klientské systémy se mají obnovit po obnovení a zpřístupnění serveru. V opačném případě si prohlédněte kritické závislosti back-endu serverů, které vám pomůžou zjistit, které systémy se mají obnovit, než se obnoví vaše Fokusové systémy.
 
@@ -104,7 +98,7 @@ Uživatelé si můžou vybrat, které servery patří do skupiny dohromady, a zv
 
 Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače, které chcete v seznamu počítače, a klikněte na **Přidat do skupiny**.
 
-![Vytvořit skupinu](media/service-map/machine-groups-create.png)
+![Vytvoření skupiny](media/service-map/machine-groups-create.png)
 
 Zde můžete zvolit **vytvořit nové** a zadat název skupiny.
 
@@ -120,7 +114,7 @@ Po vytvoření některých skupin si je můžete zobrazit tak, že kliknete na k
 ![Karta skupiny](media/service-map/machine-groups-tab.png)
 
 Pak vyberte název skupiny, chcete-li zobrazit mapu pro tuto skupinu počítačů.
-![Skupina](media/service-map/machine-group.png) počítačů: počítače, které patří do této skupiny, jsou v mapě uvedené bíle.
+Skupina ![Machine ](media/service-map/machine-group.png) počítače, které patří do této skupiny, jsou v mapě vyznačené bíle.
 
 Rozbalením skupiny se zobrazí seznam počítačů, které tvoří skupinu počítačů.
 
@@ -280,16 +274,16 @@ V podokně **výkon počítače** se zobrazí standardní metriky výkonu pro vy
 Chcete-li zobrazit údaje o výkonu, bude pravděpodobně nutné [Povolit příslušné čítače výkonu Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Čítače, které budete chtít povolit:
 
 Windows:
-- Procesor (*)\\% času procesoru
-- Paměť\\% používaných potvrzených bajtů
-- Síťový adaptér (*)\\odeslané bajty/s
-- Síťový adaptér (*)\\přijaté bajty/s
+- Procesor (*) \\% času procesoru
+- Paměť \\% používané svěřené bajty
+- Síťový adaptér (*) \\Bytes odeslaných za sekundu
+- Síťový adaptér (*) \\Bytes přijatých za sekundu
 
 Linux:
-- Procesor (*)\\% času procesoru
-- Paměť (*)\\% využité paměti
-- Síťový adaptér (*)\\odeslané bajty/s
-- Síťový adaptér (*)\\přijaté bajty/s
+- Procesor (*) \\% času procesoru
+- Paměť (*) \\% využité paměti
+- Síťový adaptér (*) \\Bytes odeslaných za sekundu
+- Síťový adaptér (*) \\Bytes přijatých za sekundu
 
 Chcete-li získat údaje o výkonu sítě, musíte také povolit řešení Wire Data 2.0 ve vašem pracovním prostoru.
  
@@ -320,8 +314,8 @@ Jeden záznam je vygenerován za hodinu pro každý jedinečný počítač a pro
 
 K dispozici jsou interně generované vlastnosti, které můžete použít k identifikaci jedinečných procesů a počítačů:
 
-- Počítač Pomocí *ResourceID* nebo *ResourceName_s* můžete jedinečně identifikovat počítač v rámci Log Analytics pracovního prostoru.
-- Proces: Použijte *ResourceID* k jednoznačné identifikaci procesu v rámci Log Analytics pracovního prostoru. *ResourceName_s* je jedinečný v rámci kontextu počítače, na kterém je spuštěný proces (MachineResourceName_s). 
+- Počítač: pomocí *ResourceID* nebo *ResourceName_s* můžete jedinečně identifikovat počítač v rámci Log Analytics pracovního prostoru.
+- Proces: použijte *ResourceID* k jednoznačné identifikaci procesu v rámci Log Analytics pracovního prostoru. *ResourceName_s* je jedinečný v rámci kontextu počítače, na kterém je spuštěný proces (MachineResourceName_s). 
 
 Vzhledem k tomu, že pro zadaný proces a počítač v zadaném časovém rozsahu může existovat více záznamů, můžou dotazy vracet více než jeden záznam pro stejný počítač nebo proces. Pokud chcete zahrnout jenom poslední záznam, přidejte | odstranění duplicitních dat ResourceId do dotazu.
 
@@ -380,7 +374,7 @@ Tady jsou některé důležité body, které je potřeba vzít v úvahu:
 
 Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
 
-#### <a name="geolocation"></a>Zeměpisná poloha
+#### <a name="geolocation"></a>Geografická poloha
 
 *VMConnection* také obsahuje informace o geografickém umístění pro vzdálené konce každého záznamu připojení v následujících vlastnostech záznamu: 
 
@@ -492,7 +486,7 @@ ServiceMapProcess_CL | kde MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-
 
 ### <a name="list-all-computers-running-sql"></a>Vypsat všechny počítače se systémem SQL
 
-ServiceMapComputer_CL | kde ResourceName_s in (((ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s) | DISTINCT ComputerName_s
+ServiceMapComputer_CL | kde ResourceName_s in (((ServiceMapProcess_CL) "\*sql \*" | DISTINCT MachineResourceName_s) | jedinečné ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Vypíše všechny jedinečné verze produktu ve vaší datacentru.
 
@@ -500,7 +494,7 @@ ServiceMapProcess_CL | kde ExecutableName_s = = "kudrlinkou" | jedinečné Produ
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvoření skupiny počítačů na všech počítačích se systémem CentOS
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | jedinečné ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozích připojení ze skupiny počítačů
 
@@ -545,15 +539,15 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data o využití
 
-Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+Společnost Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím služby Service Map. Společnost Microsoft používá tato data k zajištění a zlepšení kvality, zabezpečení a integrity služby Service Map. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
 
-Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Další informace o shromažďování a používání dat naleznete v tématu [prohlášení o zásadách ochrany osobních údajů služby Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -561,35 +555,35 @@ Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/l
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato část vám pomoct. Pokud stále nejde problém vyřešit, obraťte se prosím Microsoft Support.
+Pokud máte nějaké problémy s instalací nebo spuštěním Service Map, může vám tato část pomohlo. Pokud stále nemůžete problém vyřešit, kontaktujte prosím podpora Microsoftu.
 
-### <a name="dependency-agent-installation-problems"></a>Problémy instalace agenta závislostí
+### <a name="dependency-agent-installation-problems"></a>Problémy s instalací agenta závislostí
 
-#### <a name="installer-prompts-for-a-reboot"></a>Instalační program zobrazí výzvu k restartování
-Agent závislostí *obvykle* nevyžaduje restart při instalaci nebo odebrání. Ale v některých výjimečných případech, Windows Server vyžaduje restartování počítače pokračujte s instalací. K tomu dojde v případě, že závislost, obvykle C++ knihovna Microsoft Visual Redistributable Library, vyžaduje restart z důvodu zamčeného souboru.
+#### <a name="installer-prompts-for-a-reboot"></a>Instalační program vyzve k restartování
+Agent závislostí *obvykle* nevyžaduje restart při instalaci nebo odebrání. V některých vzácných případech však Windows Server vyžaduje restart, aby bylo možné pokračovat v instalaci. K tomu dojde v případě, že závislost, obvykle C++ knihovna Microsoft Visual Redistributable Library, vyžaduje restart z důvodu zamčeného souboru.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Zpráva: nepovedlo se nainstalovat agenta závislostí: Nepovedlo se nainstalovat běhové knihovny Visual studia (kód = [code_number]).
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Zpráva "nepovedlo se nainstalovat agenta závislostí: nepovedlo se nainstalovat běhové knihovny Visual studia (kód = [code_number]).
 
-Agent Microsoft Dependency je založená na knihovnách modulu runtime Microsoft Visual Studio. Pokud dojde k problému při instalaci knihoven, zobrazí se zpráva. 
+Microsoft Dependency Agent je postaven na knihovench modulu runtime Microsoft Visual Studio. Pokud dojde k potížím při instalaci knihoven, zobrazí se zpráva. 
 
-Instalační programy knihovny runtime vytvářet protokoly ve složce %LOCALAPPDATA%\temp. Soubor je `dd_vcredist_arch_yyyymmddhhmmss.log`, kde *oblouk* `x86` je nebo `amd64` a *rrrrmmddhhmmss* je datum a čas (24hodinový čas), kdy byl protokol vytvořen. Protokol obsahuje podrobné informace o problému, který blokuje instalaci.
+Instalační programy knihovny runtime vytvoří protokoly ve složce%LOCALAPPDATA%\temp. Soubor je `dd_vcredist_arch_yyyymmddhhmmss.log`, kde je *oblouk* `x86` nebo `amd64` a *rrrrmmddhhmmss* je datum a čas (24hodinový čas), kdy byl protokol vytvořen. Protokol poskytuje podrobnosti o problému, který blokuje instalaci.
 
 Může být užitečné nejdřív nainstalovat [nejnovější knihovny modulu runtime](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
 
-V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
+V následující tabulce jsou uvedena čísla kódů a navrhovaná řešení.
 
-| Kód | Popis | Řešení |
+| Kód | Popis | Rozlišení |
 |:--|:--|:--|
-| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud odkaz na `Windows8.1-KB2999226-x64.msu` je následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` , nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
+| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která není nainstalovaná. | Podívejte se na nejnovější protokol instalačního programu knihovny.<br><br>Pokud je odkaz na `Windows8.1-KB2999226-x64.msu` následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Aby bylo možné nainstalovat požadavky, může být nutné spustit web Windows Update a restartovat několikrát.<br><br>Spusťte znovu instalační program agenta Microsoft Dependency agent. |
 
-### <a name="post-installation-issues"></a>Po instalaci problémy
+### <a name="post-installation-issues"></a>Problémy po instalaci
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazí v Service Map
+#### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazuje v Service Map
 
 Pokud se instalace agenta závislostí zdařila, ale nevidíte počítač v řešení Service Map:
-* Agent závislostí úspěšné instalaci? Můžete si to ověřit tak, že kontroluje se, pokud je služba nainstalována a spuštěna.<br><br>
-**Windows:** Vyhledejte službu s názvem **Microsoft Dependency agent**.
-**Linux:** Vyhledejte spuštěného procesu **Microsoft-Dependency-agent**.
+* Je agent závislostí úspěšně nainstalován? Můžete to ověřit tak, že zkontrolujete, jestli je služba nainstalovaná a spuštěná.<br><br>
+**Windows**: vyhledejte službu s názvem **Microsoft Dependency agent**.
+**Linux**: vyhledejte běžící proces **Microsoft-Dependency-agent**.
 
 * Jste na [Log Analytics úrovně Free](https://azure.microsoft.com/pricing/details/monitor/)? Bezplatný plán umožňuje až pět jedinečných Service Map počítačů. Jakékoli další počítače se v Service Map nezobrazí, i když už pět předchozích zařízení neposílá data.
 
@@ -599,14 +593,14 @@ Pokud se instalace agenta závislostí zdařila, ale nevidíte počítač v ře�
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, Váš agent Log Analytics pracuje správně a komunikuje s pracovním prostorem. Pokud ne, ověřte agenta na svém počítači: [Log Analytics agenta pro řešení potíží se systémem Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
+Dostali jste ve výsledcích nejrůznější události? Jsou data nedávná? Pokud ano, Váš agent Log Analytics pracuje správně a komunikuje s pracovním prostorem. Pokud ne, ověřte agenta v počítači: [Log Analytics agenta pro řešení potíží s Windows](../platform/agent-windows-troubleshoot.md) nebo [agenta Log Analytics pro řešení potíží](../platform/agent-linux-troubleshoot.md)se systémem Linux.
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v Service Map, ale nemá žádné procesy
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazuje v Service Map, ale nemá žádné procesy.
 
 Pokud se Váš počítač nachází v Service Map, ale nemá žádná data o procesu nebo připojení, která indikuje, že je agent závislostí nainstalovaný a spuštěný, ale ovladač jádra se nenačetl. 
 
-Podívejte se `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` na (Windows) `/var/opt/microsoft/dependency-agent/log/service.log file` nebo (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
+Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) nebo `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Poslední řádky souboru by měly indikovat, proč se jádro nezátěže. Například pokud jste aktualizovali jádro, nemusí být jádro v systému Linux podporováno.
 
-## <a name="feedback"></a>Zpětná vazba
+## <a name="feedback"></a>Váš názor
 
 Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

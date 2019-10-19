@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 437f93e35040a93fb0c3098d6ec53883c3f856a7
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981160"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553266"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
 
@@ -38,7 +38,7 @@ Azure Time Series Insights je ucelená nabídka typu platforma jako služba. Pou
 
 Detekujte anomálie a odhalujte skryté trendy ve vašich datech díky okamžitému zkoumání a analýze miliard událostí. Time Series Insights poskytuje výkon pro zpracování vašich analytických úloh IoT a DevOps téměř v reálném čase.
 
-[@no__t – Průzkumník 1Data](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
+[Průzkumník ![Data](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
 Většina zákazníků souhlasí s tím, že minimální doba potřebná k získání přehledu je jednou z největší funkcí Time Series Insights:
 
@@ -60,13 +60,13 @@ Existují tři základní způsoby, jak pracovat s daty uloženými v Time Serie
 
     * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Průzkumníkovi ve službě Azure Time Series Insights Preview](time-series-insights-update-explorer.md).
 
-- Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory jako `from`, `to`, `first` a `last`. Obsahuje agregace a transformace, například `average`, `min`, `max`, `split by`, `order by` a `DateHistogram`. Má také operátory filtrování, například `has`, `in`, `and`, `or`, `greater than` a `REGEX`. Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění barev vypěstovaných v balení, které odhalí anomálie.
+- Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory jako `from`, `to`, `first` a `last`. Obsahuje agregace a transformace, jako `average`, `min`, `max`, `split by`, `order by` a `DateHistogram`. Má také operátory filtrování, například `has`, `in`, `and`, `or`, `greater than` a `REGEX`. Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění barev vypěstovaných v balení, které odhalí anomálie.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Provozní analýzy a zvýšení efektivity procesů
 
 Pomocí Time Series Insights můžete monitorovat stav, využití a výkon zařízení ve velkém měřítku. Time Series Insights poskytuje snadný způsob, jak změřit provozní efektivitu. Time Series Insights pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
 
-[@no__t – 1Overview](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
+[![Overview](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streamování a průběžné zpracování dat přicházejících z provozních procesů může úspěšně transformovat libovolnou firmu, pokud je v kombinaci s pravou technologií nebo řešením. Tato řešení jsou často kombinací více systémů. Umožňují prozkoumání a analýzu dat, která se průběžně mění, zejména ve sféře IoT, a sdílí společný vzor.
 
@@ -86,7 +86,7 @@ Time Series Insights nabízí zkoumání dat v reálném čase a přehledy zalo�
 
 Integrujte s pokročilými analytickými službami, jako jsou Machine Learning a Azure Databricks. Time Series Insights příchozí data z milionů zařízení. Přidává kontextová data, která lze hladce spotřebovat sadou služeb Azure Analytics.
 
-[@no__t – 1Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![Analytics](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
 
 Pokročilé analýzy a strojové učení využívají a zpracovávají velké objemy dat. Tato data se používají k provádění rozhodnutí řízených daty a k provádění prediktivní analýzy. V případech použití v IoT se algoritmy pro pokročilou analýzu učí od dat shromážděných z milionů zařízení. Tato zařízení odesílají data vícekrát každou sekundu. Data shromážděná ze zařízení IoT jsou nepracovaná. Chybí kontextové informace, jako je umístění zařízení a jednotka, ve které se senzor čte. V důsledku toho je nezpracovaných dat obtížné spotřebovat přímo pro pokročilé analýzy.
 
@@ -96,7 +96,7 @@ VyTime Series Insights mosty mezi daty IoT a pokročilými analýzami ve dvou je
 
     Time Series Insights může sloužit jako zdroj pravdy pro všechna data v celé organizaci. Vytvoří centrální úložiště pro využití úloh pro podřízenou analýzu. Vzhledem k tomu, že Time Series Insights je téměř v reálném čase služba úložiště, pokročilé analytické modely se můžou průběžně učit ze příchozích dat telemetrie IoT. V důsledku toho mohou modely dosáhnout přesnější předpovědi.
 
-- Za druhé, Time Series Insights může doplňovat výstup strojového učení a předpovědí modelů, které znázorňují a ukládají jejich výsledky. Tento postup pomáhá organizacím optimalizovat a vylepšit jejich modely. Time Series Insights usnadňuje vizualizaci streamování dat telemetrie na stejné rovině, jako jsou například vyškolené výstupy modelu. Tímto způsobem pomáhají týmy pro datové vědy odhalit anomálie a identifikovat vzory.  
+- Za druhé, výstup strojového učení a modelů předpovědi lze doplňovat do Time Series Insights k vizualizaci a uložení výsledků. Tento postup pomáhá organizacím optimalizovat a vylepšit jejich modely. Time Series Insights usnadňuje vizualizaci streamování dat telemetrie na stejné rovině, jako jsou například vyškolené výstupy modelu. Tímto způsobem pomáhají týmy pro datové vědy odhalit anomálie a identifikovat vzory.  
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,57 +1,52 @@
 ---
-title: Přehled Insights ve službě Azure Monitor | Dokumentace Microsoftu
-description: Insights poskytuje přizpůsobené monitorování prostředí ve službě Azure Monitor pro konkrétní aplikace a služby. Tento článek obsahuje stručný popis přehledy, které jsou aktuálně k dispozici.
-services: azure-monitor
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
+title: Přehled přehledů v Azure Monitor | Microsoft Docs
+description: Přehledy poskytují přizpůsobené možnosti monitorování v Azure Monitor pro konkrétní aplikace a služby. Tento článek poskytuje stručný popis každého z dostupných přehledů, které jsou aktuálně k dispozici.
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 8cb39a174c570b7019e872d731f49252a9505406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/22/2019
+ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247226"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555339"
 ---
-# <a name="overview-of-insights-in-azure-monitor"></a>Přehled Insights ve službě Azure Monitor
-Insights poskytovat přizpůsobené monitorování pro konkrétní aplikace a služby. Ukládají data [datová Platforma Azure Monitor](../platform/data-platform.md) a využívat další funkce Azure monitoru pro analýzu a výstrahy, ale může shromažďovat další data a poskytovat jedinečné uživatelské prostředí na webu Azure Portal. Přístup k přehledům z **Insights** části Azure Monitor nabídky na webu Azure Portal.
+# <a name="overview-of-insights-in-azure-monitor"></a>Přehled přehledů v Azure Monitor
+Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Ukládají data na [Azure monitor datovou platformu](../platform/data-platform.md) a využívají jiné funkce Azure monitor k analýze a upozorňování, ale mohou shromažďovat další data a poskytovat jedinečné uživatelské prostředí v Azure Portal. Přístup k přehledům z části **Přehled** v nabídce Azure Monitor v Azure Portal.
 
-Následující části obsahují stručný popis přehledy, které jsou aktuálně k dispozici ve službě Azure Monitor. Na každém najdete v podrobné dokumentaci pro podrobnosti.
+V následujících částech najdete stručný popis přehledů, které jsou aktuálně k dispozici v Azure Monitor. Podrobnosti najdete v podrobné dokumentaci.
 
 ## <a name="application-insights"></a>Application Insights
-Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Funguje na nejrůznějších platformách, včetně .NET, Node.js a Java EE pro aplikace hostované v místním, hybridním nebo jakémkoli veřejném cloudu. Taky se integruje s vaším procesem DevOps a má spojovací body s celou řadu nástrojů pro vývoj.
+Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se také s vaším procesem DevOps a má spojovací body pro celou řadu vývojářských nástrojů.
 
-Zobrazit [co je Application Insights?](../app/app-insights-overview.md).
+Podívejte [se, co je Application Insights?](../app/app-insights-overview.md).
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
-Azure Monitor pro monitorování kontejnerů výkon úloh kontejneru nasadit buď Azure Container Instances nebo spravovat clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Monitorování kontejnerů je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
+## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
+Azure Monitor pro kontejnery monitoruje výkon úloh kontejneru nasazených v Azure Container Instances nebo spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Monitorování vašich kontejnerů je důležité, zejména pokud používáte produkční cluster ve velkém měřítku s více aplikacemi.
 
-Zobrazit [monitorování Azure pro kontejnery – přehled](../insights/container-insights-overview.md).
+[Přehled kontejnerů najdete v tématu Azure monitor for Containers](../insights/container-insights-overview.md).
 
-![Azure Monitor for Containers](media/insights-overview/container-insights.png)
+![Azure Monitor pro kontejnery](media/insights-overview/container-insights.png)
 
-## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor pro skupiny prostředků (preview)
-Azure Monitor pro skupiny prostředků pomáhá posuzovat a diagnostikovat všechny problémy, které jednotlivé prostředky nastat současně nabízet kontext v souvislosti s stav a výkon skupiny prostředků jako celek.
+## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor pro skupiny prostředků (Preview)
+Azure Monitor pro skupiny prostředků pomáhá roztřídit a diagnostikovat všechny problémy, ke kterým dojde, a současně nabízí kontext pro stav a výkon skupiny prostředků jako celku.
 
-Zobrazit [sledování skupiny prostředků pomocí Azure monitoru (preview)](../insights/resource-group-insights.md).
+Viz téma [monitorování skupin prostředků pomocí Azure monitor (Preview)](../insights/resource-group-insights.md).
 
 ![Azure Monitor pro skupiny prostředků](media/insights-overview/resource-group-insights.png)
 
-## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor pro virtuální počítače (preview)
-Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech.
+## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor pro virtuální počítače (Preview)
+Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure a škálované sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech.
 
-Zobrazit [co je Azure Monitor pro virtuální počítače?](vminsights-overview.md)
+Podívejte [se, co je Azure monitor pro virtuální počítače?](vminsights-overview.md)
 
 ![Azure Monitor pro virtuální počítače](media/insights-overview/vm-insights.png)
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [datová Platforma Azure Monitor](../platform/data-platform.md) využívají přehledy.
-* Další informace o různých [zdroje dat používané službou Azure Monitor](../platform/data-sources.md) a různé druhy dat shromážděných jednotlivými přehledy.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si další informace o [Azure monitor datovou platformu](../platform/data-platform.md) , kterou využívají přehledy.
+* Přečtěte si o různých [zdrojích dat používaných Azure monitor](../platform/data-sources.md) a různých druzích dat shromažďovaných jednotlivými poznatky.

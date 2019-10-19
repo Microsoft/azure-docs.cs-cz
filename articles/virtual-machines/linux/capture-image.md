@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879959"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552791"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření image virtuálního počítače nebo virtuálního pevného disku
 
@@ -31,8 +31,6 @@ Pokud chcete vytvořit víc kopií virtuálního počítače pro použití v Azu
 Pokud chcete vytvořit kopii stávajícího virtuálního počítače se systémem Linux pro zálohování nebo ladění nebo nahrát specializovaný virtuální pevný disk se systémem Linux z místního virtuálního počítače, přečtěte si téma [nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku](upload-vhd.md).  
 
 Pomocí služby **Azure VM Image Builder (Public Preview)** můžete vytvořit vlastní image, nemusíte se učit žádné nástroje ani nastavovat kanály sestavení, jednoduše poskytnout konfiguraci image a tvůrce imagí vytvoří image. Další informace najdete v tématu [Začínáme s nástrojem Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
-
-Dále použijte k vytvoření vlastní konfigurace **balíček** . Další informace najdete v tématu [použití nástroje Pack k vytváření imagí virtuálních počítačů se systémem Linux v Azure](build-image-with-packer.md).
 
 Před vytvořením image budete potřebovat tyto položky:
 
@@ -45,8 +43,8 @@ Před vytvořením image budete potřebovat tyto položky:
 Pro zjednodušenou verzi tohoto článku a pro testování, hodnocení nebo učení o virtuálních počítačích v Azure se podívejte na téma [Vytvoření vlastní image virtuálního počítače Azure pomocí rozhraní](tutorial-custom-images.md)příkazového řádku (CLI).  V opačném případě pokračujte v čtení, abyste získali úplný přehled.
 
 
-## <a name="step-1-deprovision-the-vm"></a>Krok 1: Zrušení zřízení virtuálního počítače
-Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. `waagent` Použijte příkaz `-deprovision+user` s parametrem na zdrojovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
+## <a name="step-1-deprovision-the-vm"></a>Krok 1: zrušení zřízení virtuálního počítače
+Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte příkaz `waagent` s parametrem `-deprovision+user` na zdrojovém VIRTUÁLNÍm počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
 
 1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:
@@ -55,12 +53,12 @@ Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuáln�
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Spusťte tento příkaz jenom na virtuálním počítači, který budete zachytit jako image. Tento příkaz nezaručuje, že image je smazána u všech citlivých informací, nebo je vhodná pro redistribuci. `+user` Parametr také odebere naposledy zřízený uživatelský účet. Pokud chcete zachovat přihlašovací údaje uživatelského účtu ve virtuálním počítači `-deprovision`, používejte jenom.
+   > Spusťte tento příkaz jenom na virtuálním počítači, který budete zachytit jako image. Tento příkaz nezaručuje, že image je smazána u všech citlivých informací, nebo je vhodná pro redistribuci. Parametr `+user` také odebere naposledy zřízený uživatelský účet. Chcete-li ve virtuálním počítači zachovat přihlašovací údaje uživatelského účtu, použijte pouze `-deprovision`.
  
-3. Pokračujte zadáním **y** . Chcete-li se `-force` tomuto kroku potvrzení vyhnout, můžete přidat parametr.
+3. Pokračujte zadáním **y** . Můžete přidat parametr `-force`, abyste se vyhnuli tomuto kroku potvrzení.
 4. Po dokončení příkazu zadejte **Exit** a zavřete tak klienta ssh.  Virtuální počítač bude v tuto chvíli i nadále spuštěn.
 
-## <a name="step-2-create-vm-image"></a>Krok 2: Vytvořit image virtuálního počítače
+## <a name="step-2-create-vm-image"></a>Krok 2: vytvoření image virtuálního počítače
 Pomocí rozhraní příkazového řádku Azure můžete označit virtuální počítač jako zobecněný a zachytit image. V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
 
 1. Zrušte přidělení virtuálního počítače, který jste zrušili pomocí [AZ VM disallocate](/cli/azure/vm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*.  
@@ -94,7 +92,7 @@ Pomocí rozhraní příkazového řádku Azure můžete označit virtuální po�
    > [!NOTE]
    > Image se vytvoří ve stejné skupině prostředků jako váš zdrojový virtuální počítač. Z této image můžete vytvořit virtuální počítače v libovolné skupině prostředků v rámci svého předplatného. Z perspektivy správy můžete chtít vytvořit konkrétní skupinu prostředků pro prostředky a image virtuálních počítačů.
    >
-   > Pokud chcete uložit image do odolného úložiště v zóně, je nutné ji vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) a zahrnout `--zone-resilient true` parametr.
+   > Pokud chcete uložit image do odolného úložiště pro zóny, je potřeba ji vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrnout parametr `--zone-resilient true`.
    
 Tento příkaz vrátí JSON, který popisuje image virtuálního počítače. Uložte si tento výstup pro pozdější referenci.
 
@@ -143,7 +141,7 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Z image zdrojového virtuálního počítače můžete vytvořit víc virtuálních počítačů. Chcete-li provést změny v imagi: 
 
 - Vytvořte virtuální počítač z image.

@@ -1,23 +1,18 @@
 ---
 title: Řešení pro správu Office 365 v Azure | Microsoft Docs
 description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořených v Azure Monitor.
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.date: 08/13/2019
+ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061571"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553952"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -42,7 +37,7 @@ ms.locfileid: "70061571"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací a konfigurací tohoto řešení se vyžaduje následující:
 
@@ -58,7 +53,7 @@ Toto řešení neinstaluje žádné sady Management Pack v [připojených skupin
 
 ## <a name="install-and-configure"></a>Instalace a konfigurace
 
-Začněte přidáním [řešení Office 365 do svého](solutions.md#install-a-monitoring-solution)předplatného. Po přidání musíte provést kroky konfigurace v této části, abyste měli přístup k vašemu předplatnému Office 365.
+Začněte přidáním [řešení Office 365 do svého předplatného](solutions.md#install-a-monitoring-solution). Po přidání musíte provést kroky konfigurace v této části, abyste měli přístup k vašemu předplatnému Office 365.
 
 ### <a name="required-information"></a>Požadované informace
 
@@ -66,16 +61,16 @@ Než začnete s tímto postupem, shromážděte následující informace.
 
 Z Log Analytics pracovního prostoru:
 
-- Název pracovního prostoru: Pracovní prostor, ve kterém budou shromažďována data sady Office 365.
+- Název pracovního prostoru: pracovní prostor, ve kterém se shromažďují data Office 365.
 - Název skupiny prostředků: Skupina prostředků, která obsahuje pracovní prostor.
-- ID předplatného Azure: Předplatné, které obsahuje pracovní prostor.
+- ID předplatného Azure: předplatné, které obsahuje pracovní prostor.
 
 Z vašeho předplatného Office 365:
 
-- Jmen E-mailová adresa účtu správce.
-- ID tenanta: Jedinečné ID pro předplatné Office 365
+- Username: e-mailová adresa účtu správce.
+- ID tenanta: jedinečné ID pro předplatné Office 365.
 - ID klienta: 16 znaků řetězec, který představuje klienta Office 365.
-- Tajný kód klienta: Šifrovaný řetězec nezbytný pro ověřování.
+- Tajný kód klienta: pro ověřování je nutný šifrovaný řetězec.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Vytvoření aplikace Office 365 v Azure Active Directory
 
@@ -102,14 +97,14 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, že řešení p
 1. Vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**.
 1. Klikněte na **rozhraní API pro správu sady Office 365**. 
 
-    ![Vyberte rozhraní API](media/solution-office-365/select-api.png)
+    ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
 
 1. V části **jaký typ oprávnění vaše aplikace vyžaduje?** vyberte následující možnosti pro **oprávnění aplikace** i **delegovaná oprávnění**:
    - Přečíst informace o stavu služby pro vaši organizaci
    - Čtení dat o aktivitách ve vaší organizaci
    - Čtení sestav aktivit pro vaši organizaci
 
-     ![Vyberte rozhraní API](media/solution-office-365/select-permissions-01.png)![Vyberte rozhraní API](media/solution-office-365/select-permissions-02.png)
+     ![Vybrat rozhraní API](media/solution-office-365/select-permissions-01.png)![Vybrat rozhraní API](media/solution-office-365/select-permissions-02.png)
 
 1. Klikněte na tlačítko **Přidat oprávnění**.
 1. Klikněte na **udělit souhlas správce** a po zobrazení výzvy k ověření klikněte na **Ano** .
@@ -189,7 +184,7 @@ Chcete-li povolit účet správce poprvé, je nutné pro aplikaci zadat souhlas 
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
     ```
 
-1. Zobrazí se okno podobné tomu jako na následujícím obrázku. Klikněte na tlačítko **přijmout**.
+1. Zobrazí se okno podobné tomu jako na následujícím obrázku. Klikněte na **přijmout**.
     
     ![Souhlas správce](media/solution-office-365/admin-consent.png)
 
@@ -398,7 +393,7 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Řešení pro správu Office 365 můžete odebrat pomocí procesu v části [Odebrání řešení pro správu](solutions.md#remove-a-monitoring-solution). Tím se nezastaví shromažďování dat ze sady Office 365 do Azure Monitor i když. Pomocí níže uvedeného postupu můžete zrušit odběr Office 365 a zastavit shromažďování dat.
 
@@ -503,18 +498,18 @@ At line:12 char:18
 
 ### <a name="supported-agents"></a>Podporovaní agenti
 
-Řešení Office 365 nenačítá data z žádných agentů [Log Analytics](../platform/agent-data-sources.md).  Načte data přímo z Office 365.
+Řešení Office 365 nenačítá data z žádných [agentů Log Analytics](../platform/agent-data-sources.md).  Načte data přímo z Office 365.
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Shromažďování dat na začátku může trvat několik hodin. Po zahájení shromažďování se sada Office 365 pošle [oznámení](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) Webhooku s podrobnými daty, která se Azure monitor pokaždé, když se vytvoří záznam. Tento záznam je k dispozici v Azure Monitor během několika minut po přijetí.
+Shromažďování dat na začátku může trvat několik hodin. Po zahájení shromažďování se sada Office 365 pošle [oznámení Webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobnými daty, která se Azure monitor pokaždé, když se vytvoří záznam. Tento záznam je k dispozici v Azure Monitor během několika minut po přijetí.
 
 ## <a name="using-the-solution"></a>Použití řešení
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Když do svého pracovního prostoru Log Analytics přidáte řešení Office 365, na řídicí panel se přidá dlaždice **Office 365** . Na této dlaždici se zobrazuje počet a grafické vyjádření počtu počítačů ve vašem prostředí a jejich kompatibilita s aktualizacemi.<br><br>
-![Dlaždice souhrnu Office 365](media/solution-office-365/tile.png)  
+](media/solution-office-365/tile.png) ![Office 365 dlaždice souhrnu  
 
 Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** .
 
@@ -522,9 +517,9 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 
 Řídicí panel obsahuje sloupce v následující tabulce. V každém sloupci je uveden seznam deseti výstrah podle počtu odpovídající kritériím daného sloupce pro zadaný obor a časový rozsah. Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na Zobrazit vše v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Sloupec | Popis |
+| Column | Popis |
 |:--|:--|
-| Operace | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
+| Operations | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
 | Exchange | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v dokumentech služby SharePoint. Když přejdete k podrobnostem na této dlaždici, na stránce hledání se zobrazí podrobnosti o těchto aktivitách, jako je cílový dokument a umístění této aktivity. Například pro událost otevření souboru budete moci zobrazit dokument, ke kterému se přistupovalo, jeho přidružený název účtu a IP adresu. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je resetování hesla uživatele a pokusů o přihlášení. Když přejdete k podrobnostem, budete moci zobrazit podrobnosti o těchto činnostech, jako je stav výsledku. To je hlavně užitečné, pokud chcete monitorovat podezřelé aktivity v Azure Active Directory. |
@@ -540,18 +535,18 @@ Všechny záznamy vytvořené v pracovním prostoru Log Analytics v Azure Monito
 
 Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 |:--- |:--- |
-| type | *OfficeActivity* |
-| ClientIP | IP adresa zařízení, které se použilo při zaznamenání aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
-| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Typ | *OfficeActivity* |
+| IP adresa klienta | IP adresa zařízení, které se použilo při zaznamenání aktivity. IP adresa se zobrazí ve formátu adresy IPv4 nebo IPv6. |
+| OfficeWorkload | Služba Office 365, na kterou odkazuje záznam.<br><br>Azureactivedirectory selhala<br>Exchange<br>SharePoint|
 | Operace | Název aktivity uživatele nebo správce.  |
 | OrganizationId | Identifikátor GUID klienta Office 365 vaší organizace. Tato hodnota bude pro vaši organizaci vždycky stejná, bez ohledu na službu Office 365, ve které se vyskytuje. |
 | RecordType | Typ operace byl proveden. |
 | ResultStatus | Označuje, zda akce (zadaná ve vlastnosti Operation) byla úspěšná nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
-| UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
-| UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Normální<br>Vyhrazeno<br>ServicePrincipal<br>Systém |
+| userId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
+| Vlastnosti UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
+| userType | Typ uživatele, který provedl operaci.<br><br>Správ<br>Aplikace<br>DcAdmin<br>Platné<br>Rezervováno<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory
@@ -560,10 +555,10 @@ Následující vlastnosti jsou společné pro všechny záznamy Azure Active Dir
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Azureactivedirectory selhala |
+| RecordType     | Azureactivedirectory selhala |
 | AzureActiveDirectory_EventType | Typ události služby Azure AD. |
-| ExtendedProperties | Rozšířené vlastnosti události Azure AD. |
+| extendedProperties | Rozšířené vlastnosti události Azure AD. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Přihlášení Azure Active Directory účtu
@@ -572,7 +567,7 @@ Tyto záznamy se vytvoří, když se uživatel služby Active Directory pokusí 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| `OfficeWorkload` | AzureActiveDirectory |
+| `OfficeWorkload` | Azureactivedirectory selhala |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
 | `Application` | Aplikace, která aktivuje událost přihlášení k účtu, například Office 15. |
 | `Client` | Podrobnosti o klientském zařízení, operačním systému zařízení a prohlížeči zařízení, které se použily pro událost přihlášení k účtu. |
@@ -586,10 +581,10 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují objekty Azure Activ
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| OfficeWorkload | Azureactivedirectory selhala |
+| RecordType     | Azureactivedirectory selhala |
 | AADTarget | Uživatel, na kterém se provedla akce (identifikovaná vlastností Operation) |
-| Actor | Uživatel nebo instanční objekt, který tuto akci provedl. |
+| Tříd | Uživatel nebo instanční objekt, který tuto akci provedl. |
 | ActorContextId | Identifikátor GUID organizace, do které patří objekt actor |
 | ActorIpAddress | IP adresa objektu actor ve formátu adresy IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, který sleduje akce napříč komponentami v rámci služby Office 365. |
@@ -624,7 +619,7 @@ Tyto záznamy jsou vytvořeny při změně konfigurace systému Exchange.
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Určuje, jestli rutina spustila uživatel ve vaší organizaci, pracovníkovi Datacenter společnosti Microsoft nebo účtem služby Datacenter nebo delegovaným správcem. Hodnota false znamená, že rutina spustila někdo ve vaší organizaci. Hodnota true označuje, že rutina byla spuštěna pracovníky datového centra, účtem služby Datacenter nebo delegovaným správcem. |
 | ModifiedObjectResolvedName |  Toto je uživatelsky přívětivý název objektu, který byl změněn rutinou. Toto je zaznamenáno pouze v případě, že rutina mění objekt. |
-| Název organizace | Název tenanta. |
+| Organizace | Název tenanta. |
 | OriginatingServer | Název serveru, ze kterého byla rutina spuštěna. |
 | Parametry | Název a hodnota pro všechny parametry, které byly použity s rutinou, která je identifikována vlastností Operations. |
 
@@ -682,7 +677,7 @@ Tyto záznamy se vytvoří, když se změní nebo doplňují skupiny Exchange.
 | DestMailboxOwnerSid | Nastavte pouze v případě, že má parametr CrossMailboxOperations hodnotu true. Určuje identifikátor SID cílové poštovní schránky. |
 | DestMailboxOwnerUPN | Nastavte pouze v případě, že má parametr CrossMailboxOperations hodnotu true. Určuje hlavní název uživatele (UPN) vlastníka cílové poštovní schránky. |
 | DestFolder | Cílová složka pro operace, jako je například Move. |
-| Folder | Složka, ve které se nachází skupina položek. |
+| Složka | Složka, ve které se nachází skupina položek. |
 | Složky |     Informace o zdrojových složkách, které se podílejí na operaci; Například pokud jsou vybrané složky a pak se odstraní. |
 
 
@@ -743,15 +738,15 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 | Dotaz | Popis |
 | --- | --- |
-|Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; summarize count() by Operation |
-|Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; sumarizace Count () podle SiteUrl \| řazení podle Count ASC|
+|Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; sumarizace Count () podle operace |
+|Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; sumarizace Count () podle SiteUrl \| řazení podle počtu ASC|
 |Operace přístupu k souboru podle typu uživatele|Hledat v (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory selhala" a "MyTest"|
 |Hledat pomocí konkrétního klíčového slova|Type = OfficeActivity OfficeWorkload = azureactivedirectory selhala "MyTest"|
 |Monitorování externích akcí na Exchangi|OfficeActivity &#124; WHERE OfficeWorkload = ~ "Exchange" and ExternalAccess = = true|
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * K zobrazení podrobných dat aktualizace použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .
 * [Vytvořte si vlastní řídicí panely](../learn/tutorial-logs-dashboards.md) pro zobrazení oblíbených vyhledávacích dotazů sady Office 365.

@@ -1,19 +1,18 @@
 ---
 title: Přehled upozorňování a monitorování oznámení v Azure
 description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a rozhraní výstrah.
-author: rboucher
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 01/28/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 01/28/2018
+ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091764"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555609"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -37,18 +36,18 @@ Pravidla výstrah jsou oddělená od výstrah a akce prováděné při aktivová
 
 Níže jsou uvedené klíčové atributy pravidla výstrahy:
 
-**Cílový prostředek**: Definuje rozsah a signály, které jsou k dispozici pro upozorňování. Cílem může být libovolný prostředek Azure. Příklady cílů: virtuální počítač, účet úložiště, sada škálování virtuálního počítače, Log Analytics pracovní prostor nebo prostředek Application Insights. U určitých prostředků (jako jsou virtuální počítače) můžete zadat více prostředků jako cíl pravidla výstrahy.
+**Cílový prostředek**: definuje rozsah a signály, které jsou k dispozici pro upozorňování. Cílem může být libovolný prostředek Azure. Příklady cílů: virtuální počítač, účet úložiště, sada škálování virtuálního počítače, Log Analytics pracovní prostor nebo prostředek Application Insights. U určitých prostředků (jako jsou virtuální počítače) můžete zadat více prostředků jako cíl pravidla výstrahy.
 
-**Signál**: Vygenerováno cílovým prostředkem. Signály můžou být z následujících typů: metrika, protokol aktivit, Application Insights a protokol.
+**Signál**: vysílá cílovým prostředkem. Signály můžou být z následujících typů: metrika, protokol aktivit, Application Insights a protokol.
 
-**Kritéria**: Kombinace signálu a logiky použitá u cílového prostředku. Příklady: 
+**Kritéria**: kombinace signálu a logiky použitá u cílového prostředku. Příklady: 
    - Procento využití CPU > 70%
    - Doba odezvy serveru > 4 MS 
    - Počet výsledků dotazu protokolu > 100
 
-**Název výstrahy**: Konkrétní název pravidla výstrahy nakonfigurovaného uživatelem.
+**Název výstrahy**: konkrétní název pro pravidlo výstrahy nakonfigurované uživatelem.
 
-**Popis výstrahy**: Popis pravidla výstrahy nakonfigurovaného uživatelem
+**Popis výstrahy**: Popis pravidla výstrahy nakonfigurovaného uživatelem.
 
 **Závažnost**: Závažnost výstrahy po splnění kritérií zadaných v pravidle výstrahy. Závažnost může být v rozsahu od 0 do 4.
    - Závažnost 0 = kritický
@@ -57,7 +56,7 @@ Níže jsou uvedené klíčové atributy pravidla výstrahy:
    - Závažnost 3 = informativní
    - Závažnost 4 = verbose 
 
-**Akce**: Konkrétní akce provedená při vyvolání výstrahy. Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md).
+**Action (akce**): konkrétní akce provedená při vyvolání výstrahy. Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>K čemu můžete upozornit
 
@@ -75,18 +74,18 @@ Dříve byly Azure Monitor metriky, Application Insights, Log Analytics a Servic
 | Stav služby | Protokol aktivit  | Nepodporuje se. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Testy dostupnosti webu | Nepodporuje se. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
 
-## <a name="manage-alerts"></a>Správa výstrah
+## <a name="manage-alerts"></a>Správa upozornění
 Můžete nastavit stav výstrahy, chcete-li určit, kde se nachází v procesu řešení. Když jsou splněna kritéria zadaná v pravidle výstrahy, je vytvořena nebo aktivována výstraha a stav *nového*. Stav můžete změnit, když potvrdíte výstrahu a při jejím zavření. Všechny změny stavu jsou uloženy v historii výstrahy.
 
 Podporovány jsou následující stavy upozornění.
 
-| State | Popis |
+| Stav | Popis |
 |:---|:---|
-| Nová | Problém byl právě zjištěn a ještě nebyl revidován. |
-| Potvrzení | Správce zkontroloval výstrahu a začal na ní pracovat. |
-| Zavřeno | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
+| Novinka | Problém byl právě zjištěn a ještě nebyl revidován. |
+| Potvrzené | Správce zkontroloval výstrahu a začal na ní pracovat. |
+| ukončit | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
 
-*Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*. Pokud je podkladová podmínka, která způsobila výstrahu, vyhodnocena jako nejasná, je stav monitorování nastaven na hodnotu *Vyřešeno*. Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
+*Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*. Pokud je podkladová podmínka, která způsobila výstrahu, *vyhodnocena*jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno. Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
 
 ## <a name="smart-groups"></a>Inteligentní skupiny 
 
@@ -107,15 +106,15 @@ Nezobrazuje ani nesleduje klasické výstrahy. Chcete-li aktualizovat stránku, 
 
 Toto zobrazení můžete filtrovat výběrem hodnot v rozevíracích nabídkách v horní části stránky.
 
-| Sloupec | Popis |
+| Column | Popis |
 |:---|:---|
-| Subscription | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
-| Resource group | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
-| Časový rozsah | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
+| Předplatné | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
+| Skupina prostředků | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
+| Časové rozmezí | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
 V horní části stránky výstrahy vyberte následující hodnoty a otevřete tak další stránku:
 
-| Value | Popis |
+| Hodnota | Popis |
 |:---|:---|
 | Celkový počet upozornění | Celkový počet výstrah, které odpovídají vybraným kritériím. Výběrem této hodnoty otevřete zobrazení všechny výstrahy bez filtru. |
 | Inteligentní skupiny | Celkový počet inteligentních skupin vytvořených z výstrah, které odpovídají vybraným kritériím. Výběrem této hodnoty otevřete seznam inteligentních skupin v zobrazení všechny výstrahy.
@@ -150,17 +149,17 @@ Stránku **všechny výstrahy** zobrazíte tak, že vyberete **Celkový počet v
 
 Zobrazení můžete filtrovat výběrem následujících hodnot v rozevíracích nabídkách v horní části stránky:
 
-| Sloupec | Popis |
+| Column | Popis |
 |:---|:---|
-| Subscription | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
-| Resource group | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
+| Předplatné | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
+| Skupina prostředků | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
 | Typ prostředku | Vyberte jeden nebo více typů prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli vybraného typu. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
-| Resource | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
-| severity | Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
-| Stav monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
-| Stav upozornění | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
+| Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
+| Závažnost | Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
+| Podmínka monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
+| Stav výstrahy | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
 | Monitorovat službu | Vyberte službu nebo vyberte možnost **vše** , pokud chcete zahrnout všechny služby. Součástí jsou jenom výstrahy vytvořené pravidly, která používají službu jako cíl. |
-| Časový rozsah | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
+| Časové rozmezí | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
 Vyberte **sloupce** v horní části stránky a vyberte sloupce, které chcete zobrazit. 
 
@@ -171,7 +170,7 @@ Když vyberete výstrahu, Tato stránka poskytuje podrobnosti o výstraze a umo�
 
 Stránka Podrobnosti výstrahy obsahuje následující části:
 
-| Section | Popis |
+| Sekce | Popis |
 |:---|:---|
 | Souhrn | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |
@@ -179,7 +178,7 @@ Stránka Podrobnosti výstrahy obsahuje následující části:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Řízení přístupu na základě role (RBAC) pro instance upozornění
 
-Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role RBAC buď [monitorování přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , nebo [čtečka monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Tyto role jsou podporované v jakémkoli oboru Azure Resource Manager, z úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1`, může tento uživatel využívat a spravovat pouze výstrahy vygenerované v. `ContosoVM1`
+Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefinované role RBAC buď [monitorování přispěvatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , nebo [čtečka monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Tyto role jsou podporované v jakémkoli oboru Azure Resource Manager, z úrovně předplatného až po podrobná přiřazení na úrovni prostředků. Pokud má například uživatel pouze oprávnění Přispěvatel monitorování pro virtuální počítač `ContosoVM1`, může tento uživatel využívat a spravovat pouze výstrahy vygenerované v `ContosoVM1`.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Spravujte instance výstrah programově
 

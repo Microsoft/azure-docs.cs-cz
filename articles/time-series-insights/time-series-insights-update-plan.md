@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273723"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550173"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
@@ -54,7 +54,7 @@ Začněte tím, že budete potřebovat tři další položky:
 Pokud chcete vytvořit nové prostředí Time Series Insights, vyberte ID časové řady. K tomu slouží jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že máte připravené identifikátory časových řad.
 
 > [!IMPORTANT]
-> ID časových řad jsou *neměnné* a *nelze je změnit později*. Ověřte každý z nich před konečným výběrem a prvním použitím.
+> ID časových řad *nelze později změnit*. Ověřte každý z nich před konečným výběrem a prvním použitím.
 
 Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v článku [osvědčené postupy pro výběr ID](./time-series-insights-update-how-to-id.md) a [úložiště](./time-series-insights-update-storage-ingress.md)časových řad a příchozího přenosu dat.
 

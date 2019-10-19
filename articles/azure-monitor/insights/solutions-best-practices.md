@@ -1,57 +1,51 @@
 ---
-title: Řešení pro správu v osvědčené postupy Azure | Dokumentace Microsoftu
+title: Řešení pro správu v doporučených postupech Azure | Microsoft Docs
 description: ''
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a4f982f6265d1c8cab2ae666b9d6e2e33beb5064
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.date: 04/27/2017
+ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672928"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553929"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Osvědčené postupy pro vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.  
+> Toto je předběžná dokumentace k vytváření řešení pro správu v Azure, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.  
 
-Tento článek obsahuje osvědčené postupy pro [vytváření souboru řešení správy](solutions-solution-file.md) v Azure.  Tyto informace se aktualizují jako další doporučené postupy jsou označeny.
+Tento článek poskytuje osvědčené postupy pro [Vytvoření souboru řešení pro správu](solutions-solution-file.md) v Azure.  Tyto informace se aktualizují, protože se identifikují další osvědčené postupy.
 
 ## <a name="data-sources"></a>Zdroje dat
-- Zdroje dat mohou být [nakonfigurované pomocí šablony Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), ale by neměly být obsažené v souboru řešení.  Důvodem je, že konfigurace zdroje dat není aktuálně idempotentní, což znamená, že vaše řešení může přepsat existující konfigurace v pracovním prostoru uživatele.<br><br>Vaše řešení například může vyžadovat upozornění a chybové události z protokolu událostí aplikace.  Pokud toto určíte jako zdroj dat ve vašem řešení, riskujete odebrání – informační události, pokud má uživatel nakonfigurovaný v jejich pracovním prostoru.  Pokud jste zahrnuli všechny události, pak vám může pokračovat ve shromažďování nadměrné – informační události v pracovním prostoru uživatele.
+- Zdroje dat lze [konfigurovat pomocí šablony Správce prostředků](../../azure-monitor/platform/template-workspace-configuration.md), ale neměly by být zahrnuty do souboru řešení.  Důvodem je, že konfigurace zdrojů dat není momentálně idempotentnía, což znamená, že vaše řešení by mohlo přepsat existující konfiguraci v pracovním prostoru uživatele.<br><br>Vaše řešení může například vyžadovat upozornění a chybové události z protokolu událostí aplikace.  Pokud tento údaj zadáte jako zdroj dat ve vašem řešení, riskujete odebrání událostí informací, pokud má uživatel ve svém pracovním prostoru nakonfigurovaný.  Pokud jste zahrnuli všechny události, můžete v pracovním prostoru uživatele shromažďovat nadměrné informační události.
 
-- Pokud vaše řešení vyžaduje data z jedné z standardních datových zdrojů, pak byste měli definovat to jako předpoklad.  V dokumentaci k stavu, že zákazník musí zdroj dat nakonfigurovat pro svoje vlastní.  
-- Přidat [ověření toku dat](../../azure-monitor/platform/view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.  Tato zpráva se zobrazí na dlaždici zobrazení, když nebyla nalezena požadovaná data.
+- Pokud vaše řešení vyžaduje data z jednoho ze standardních zdrojů dat, měli byste ho definovat jako předpoklad.  Stav v dokumentaci, že zákazník musí nakonfigurovat zdroj dat sami.  
+- Přidáním [ověřovací zprávy toku dat](../../azure-monitor/platform/view-designer-tiles.md) do libovolného zobrazení ve vašem řešení můžete uživateli dát pokyn ke zdrojům dat, které je potřeba nakonfigurovat pro shromažďování požadovaných dat.  Tato zpráva se zobrazí na dlaždici zobrazení, pokud se požadovaná data nenašly.
 
 
 ## <a name="runbooks"></a>Runbooky
-- Přidat [plán Automation](../../automation/automation-schedules.md) pro každou sadu runbook ve vašem řešení, které je potřeba spouštět podle plánu.
-- Zahrnout [IngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) ve vašem řešení pro zápis dat do úložiště Log Analytics sady runbook.  Nakonfigurujte řešení, aby [odkaz](solutions-solution-file.md#solution-resource) tento prostředek, takže se budou když toto řešení se odebere.  To umožňuje více řešení ke sdílení modulu.
-- Použití [proměnné služeb automatizace](../../automation/automation-schedules.md) zadejte hodnoty do řešení, které mohou uživatelé chtít později změnit.  I když toto řešení je nakonfigurovaná tak, aby obsahovala proměnné, její hodnotu změnit půjdou.
+- Přidejte [plán automatizace](../../automation/automation-schedules.md) pro jednotlivé sady Runbook ve vašem řešení, které je třeba spustit podle plánu.
+- Zahrňte do svého řešení [modul IngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) , který budou používat Runbooky pro zápis dat do úložiště Log Analytics.  Nakonfigurujte řešení tak, aby [odkazovalo](solutions-solution-file.md#solution-resource) na tento prostředek, aby zůstalo v případě odebrání řešení.  To umožňuje více řešení sdílet modul.
+- Použijte [proměnné pro automatizaci](../../automation/automation-schedules.md) k poskytnutí hodnot řešení, které uživatelé mohou chtít později změnit.  I v případě, že je řešení nakonfigurované tak, aby obsahovalo proměnnou, je možné, že je tato hodnota stále změněna.
 
 ## <a name="views"></a>Zobrazení
-- Jedno zobrazení, které se zobrazuje uživatele portálu by měl obsahovat všechna řešení.  Zobrazení může obsahovat více [části vizualizace](../../azure-monitor/platform/view-designer-parts.md) pro ilustraci různých sad dat.
-- Přidat [ověření toku dat](../../azure-monitor/platform/view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.
-- Nakonfigurujte řešení, aby [obsahovat](solutions-solution-file.md#solution-resource) zobrazení tak, že je odstranit, pokud se odebere řešení.
+- Všechna řešení by měla obsahovat jedno zobrazení, které se zobrazí na portálu uživatele.  Zobrazení může obsahovat několik [částí vizualizace](../../azure-monitor/platform/view-designer-parts.md) k ilustraci různých sad dat.
+- Přidáním [ověřovací zprávy toku dat](../../azure-monitor/platform/view-designer-tiles.md) do libovolného zobrazení ve vašem řešení můžete uživateli dát pokyn ke zdrojům dat, které je potřeba nakonfigurovat pro shromažďování požadovaných dat.
+- Nakonfigurujte řešení tak, aby [obsahovalo](solutions-solution-file.md#solution-resource) zobrazení, které se odebere, pokud se odebere řešení.
 
-## <a name="alerts"></a>Upozornění
-- Definujte seznam příjemců jako parametr v souboru řešení, takže uživatel může definovat je při instalaci řešení.
-- Nakonfigurujte řešení, aby [odkaz](solutions-solution-file.md#solution-resource) tak tento uživatel může změnit svou konfiguraci pravidla upozornění.  Mohou chtít provést změny, například kvůli úpravě seznamu příjemců, změna prahovou hodnotu upozornění nebo deaktivace pravidla upozornění. 
+## <a name="alerts"></a>Výstrahy
+- Definujte seznam příjemců jako parametr v souboru řešení, aby ho uživatel mohl při instalaci řešení definovat.
+- Nakonfigurujte řešení tak, aby [odkazovalo](solutions-solution-file.md#solution-resource) na pravidla výstrah, aby uživatel mohl změnit jejich konfiguraci.  Můžou chtít udělat změny, jako je například změna seznamu příjemců, Změna prahové hodnoty výstrahy nebo vypnutí pravidla výstrahy. 
 
 
-## <a name="next-steps"></a>Další postup
-* Provede základní proces [návrh a řešení pro správu budov](solutions-creating.md).
-* Zjistěte, jak [vytvořit soubor řešení](solutions-solution-file.md).
-* [Přidat uložené výsledky hledání a výstrahy](solutions-resources-searches-alerts.md) do řešení pro správu.
-* [Přidání zobrazení](solutions-resources-views.md) do řešení pro správu.
-* [Přidání runbooků služeb automatizace a dalším prostředkům](solutions-resources-automation.md) do řešení pro správu.
+## <a name="next-steps"></a>Další kroky
+* Projděte si základní proces [navrhování a sestavování řešení pro správu](solutions-creating.md).
+* Přečtěte si, jak [vytvořit soubor řešení](solutions-solution-file.md).
+* [Přidejte uložená hledání a výstrahy](solutions-resources-searches-alerts.md) do řešení pro správu.
+* [Přidejte zobrazení](solutions-resources-views.md) do řešení pro správu.
+* [Přidejte Runbooky Automation a další prostředky](solutions-resources-automation.md) do řešení pro správu.
 
