@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: b39482f5c753fbfe6cc6663dda4f5381300c2c21
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017255"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595285"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služby virtuální sítě pro Azure Key Vault
 
@@ -62,9 +62,9 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 
 |Důvěryhodná služba|Podporované scénáře použití|
 | --- | --- |
-|Služba nasazení Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
+|Služba pro nasazení služby Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů ze Key Vault spravovaných zákazníky](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
 |Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
-|Služba šifrování svazků Azure Disk Encryption|Povolte přístup k klíči nástroje BitLocker (Windows VM) nebo k přístupovému heslu DM (virtuální počítač Linux) a šifrovacímu klíči během nasazování virtuálního počítače. To umožňuje [Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
+|Služba šifrování svazků Azure Disk Encryption|Povolte přístup k klíči nástroje BitLocker (Windows VM) nebo k přístupovému heslu DM (virtuální počítač Linux) a šifrovacímu klíči během nasazování virtuálního počítače. To umožňuje [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).|
 |Azure Backup|Povolí zálohování a obnovení důležitých klíčů a tajných kódů během zálohování Azure Virtual Machines pomocí [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
 |Exchange Online & SharePoint Online|Povolí přístup ke klíči zákazníka pro šifrování Azure Storage služby s [klíčem zákazníka](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|Povolí přístup ke klíči tenanta pro [Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
@@ -72,7 +72,7 @@ Tady je seznam důvěryhodných služeb, které mají povolený přístup k trez
 |Azure SQL Database|[Transparentní šifrování dat s podporou Bring Your Own Key pro Azure SQL Database a datový sklad](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) s klíčem spravovaným zákazníkem.|
-|Datacihly Azure|[Služba analýzy založená na rychlé, jednoduché a Apache Spark spolupráci](../azure-databricks/what-is-azure-databricks.md)|
+|Azure Databricks|[Služba analýzy založená na rychlé, jednoduché a Apache Spark spolupráci](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[Nasazení certifikátů pro vlastní doménu z Key Vault pomocí MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 
 

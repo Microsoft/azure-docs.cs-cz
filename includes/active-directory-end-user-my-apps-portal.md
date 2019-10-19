@@ -9,13 +9,13 @@ ms.date: 03/06/2019
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: e7e993cddbf675cab67cb9fc7ea5fc9446bc449b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "67175588"
 ---
 | |
 |--|
-|Pokud vidíte na obrazovce se neshoduje se probíraná témata v tomto článku, znamená to, že váš správce aktivoval na novém **Můj profil** prostředí (ve verzi preview). Pokud chcete použít nové prostředí, je třeba provést následující pokyny a informace v [přehled portálu Můj profil (preview)](https://docs.microsoft.com/azure/active-directory/user-help/myprofile-portal-overview) oddílu.|
+|Pokud to, co vidíte na obrazovce, neodpovídá tomu, co je zahrnuté v tomto článku, znamená to, že správce zapnul nové prostředí **můj profil** (Preview). Chcete-li používat nové prostředí, je nutné postupovat podle pokynů a informací v části [Přehled portálu Můj profil (Preview)](https://docs.microsoft.com/azure/active-directory/user-help/myprofile-portal-overview) .|
 | |

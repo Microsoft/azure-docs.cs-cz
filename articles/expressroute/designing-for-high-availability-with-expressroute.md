@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: rambala
 ms.openlocfilehash: 4984b30daf6170873cad9472bfed2d879af57efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "67466653"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Návrh pro zajištění vysoké dostupnosti pomocí ExpressRoute
@@ -54,7 +54,7 @@ Další možností je spuštění primárního a sekundárního připojení okru
 
 Partnerský vztah Microsoftu je určený pro komunikaci mezi veřejnými koncovými body. To znamená, že místní privátní koncové body jsou přeložené ze sítě (NATed) s veřejnou IP adresou v síti zákazníka nebo partnera předtím, než budou komunikovat s partnerským vztahem Microsoftu. Za předpokladu, že používáte primární i sekundární připojení v režimu aktivní-aktivní, kde a jak vaše NAT má vliv na to, jak rychle obnovujete po selhání jednoho z ExpressRoute připojení. Na následujícím obrázku jsou znázorněny dvě různé možnosti překladu adres (NAT):
 
-[![3]][3]
+[![1]][3]
 
 V možnosti 1 se překlad adres (NAT) použije po rozdělení provozu mezi primárním a sekundárním připojením ExpressRoute. Aby bylo možné splnit stavové požadavky překladu adres (NAT), používají se nezávislé fondy NAT mezi primárním a sekundárním zařízením, takže návratová přenosová data přicházejí do stejného hraničního zařízení, přes které tok vzdává výstup.
 
@@ -80,15 +80,15 @@ Zóna dostupnosti v oblasti Azure je kombinací domény selhání a aktualizačn
 
 ExpressRoute podporuje BFD prostřednictvím privátního partnerského vztahu. BFD snižuje dobu detekce selhání během sítě vrstvy 2 mezi sítí Microsoft Enterprise Edge (směrovači msee) a sousedními sousedi protokolu BGP na místní straně od přibližně 3 minut (výchozí) po méně než druhé. Čas rychlého zjištění selhání pomáhá při hastening obnovení. Další informace najdete v tématu [Configuring BFD over ExpressRoute][BFD].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jsme probrali, jak navrhnout vysokou dostupnost připojení okruhu ExpressRoute. Bod partnerského vztahu okruhu ExpressRoute je připnutý k geografickému umístění, a proto by mohl být ovlivněn závažnou chybou, která ovlivňuje celé umístění. 
 
 Pokyny k návrhu pro sestavení geograficky redundantního síťového připojení k páteřní síti Microsoftu, která může odolat závažným chybám, které ovlivňují celou oblast, najdete v tématu [navrhování pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR].
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Doporučený způsob připojení pomocí ExpressRoute"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Neoptimální připojení poslední míle"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "doporučený způsob připojení pomocí ExpressRoute"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "neoptimální připojení poslední míle"
 [3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "Možnosti NAT"
 
 

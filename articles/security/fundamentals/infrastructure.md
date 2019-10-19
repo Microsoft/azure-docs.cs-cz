@@ -4,7 +4,7 @@ description: Tento článek popisuje, jak Microsoft pracuje na zabezpečení na�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: a17d98d49d2c653e2498a663829d26e8a171fd74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433511"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595411"
 ---
 # <a name="azure-infrastructure-security"></a>Zabezpečení infrastruktury Azure
 Microsoft Azure běží v datových centrech spravovaných a provozovaných společností Microsoft. Tato geograficky rozptýlená datacentra vyhovují klíčovým oborovým standardům, jako jsou ISO/IEC 27001:2013 a NIST SP 800-53, kvůli zabezpečení a spolehlivosti. Datová centra jsou spravovaná, monitorovaná a spravovaná provozními pracovníky Microsoftu. Provozní pracovníci mají po dobu let zkušeností s poskytováním největších online službyů na světě s nepřetržitou kontinuitou (24 × 7).
 
+## <a name="securing-the-azure-infrastructure"></a>Zabezpečení infrastruktury Azure
 Tato série článků poskytuje informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure. Adresa článků:
 
 - [Fyzické zabezpečení](physical-security.md)
@@ -38,32 +39,8 @@ Tato série článků poskytuje informace o tom, co Microsoft dělá k zabezpeč
 - [Způsobilost](infrastructure-integrity.md)
 - [Ochrana dat](protection-customer-data.md)
 
-## <a name="shared-responsibility-model"></a>Sdílený model odpovědnosti
-Je důležité pochopit rozdělení zodpovědnosti mezi vámi a společností Microsoft. V místním prostředí jste vlastníkem celého zásobníku, ale při přesunu do cloudu se některé zodpovědnosti přenášejí do Microsoftu. Následující obrázek znázorňuje oblasti zodpovědnosti podle typu nasazení vašeho zásobníku (software jako služba [SaaS], platforma jako služba [PaaS], infrastruktura jako služba [IaaS] a místní).
-
-![Obrázek znázorňující zodpovědnosti](./media/infrastructure/responsibility-zones.png)
-
-Vždycky zodpovídáte za následující, bez ohledu na typ nasazení:
-
-- Data
-- Koncové body
-- Účet
-- Správa přístupu
-
-Ujistěte se, že rozumíte rozdělení zodpovědnosti mezi vámi a společností Microsoft v nasazení SaaS, PaaS a IaaS. Další informace najdete v tématu [sdílené odpovědnosti pro cloud computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf).
-
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
-- [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)
-- [Dostupnost infrastruktury Azure](infrastructure-availability.md)
-- [Komponenty a hranice informačních systémů Azure](infrastructure-components.md)
-- [Architektura sítě Azure](infrastructure-network.md)
-- [Produkční síť Azure](production-network.md)
-- [Funkce zabezpečení Azure SQL Database](infrastructure-sql.md)
-- [Provozní provoz a Správa Azure](infrastructure-operations.md)
-- [Monitorování infrastruktury Azure](infrastructure-monitoring.md)
-- [Integrita infrastruktury Azure](infrastructure-integrity.md)
-- [Ochrana zákaznických dat Azure](protection-customer-data.md)
+- Pochopte svou [sdílenou odpovědnost v cloudu](shared-responsibility.md).
 
-
+- Přečtěte si, jak [Azure Security Center](https://azure.microsoft.com/services/security-center/) vám pomůžou zabránit hrozbám, detekovat je a reagovat na ně se zvýšenou viditelností a kontrolou zabezpečení vašich prostředků Azure.

@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554369"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592482"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Průvodce odstraňováním potíží pro běžné problémy
 
@@ -151,8 +151,8 @@ Pokud chcete začít s _Azure Log Analytics_, navštivte [Tento článek Začín
 
 Proměnné prostředí informují cloudové cloudové rozhraní Azure, které zajišťuje, kde Azure chápe, kde a jak nakonfigurovat služby, které tvoří vaši aplikaci.  Zajištění správnosti proměnných prostředí je nezbytným prvním krokem při řešení potenciálních problémů.  Ke kontrole proměnných prostředí můžete použít koncový bod pružinového spouštěcího pohánějícího.  
 
-[!WARNING]
-> Tento postup může vystavit proměnné prostředí.  Nepokračujte, pokud je váš koncový bod testu veřejně přístupný nebo pokud jste k aplikaci přiřadili název domény.
+> [!WARNING]
+> Tento postup zpřístupňuje proměnné prostředí pomocí testovacího koncového bodu.  Nepokračujte, pokud je váš koncový bod testu veřejně přístupný nebo pokud jste k aplikaci přiřadili název domény.
 
 1. Přejděte na tuto adresu URL: `https://<your application test endpoint>/actuator/health`.  
     - Odpověď podobná `{"status":"UP"}` indikuje, že byl koncový bod povolen.
@@ -186,6 +186,9 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
     ```
 
 Vyhledejte podřízený uzel s názvem `systemEnvironment`.  Tento uzel obsahuje proměnné prostředí vaší aplikace.
+
+> [!IMPORTANT]
+> Nezapomeňte zrušit vystavení proměnných prostředí před tím, než aplikaci zpřístupníte veřejnosti.  Přejít na Azure Portal, Najděte stránku konfigurace aplikace a odstraňte tuto proměnnou prostředí: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nemůžu najít metriky nebo protokoly mojí aplikace
 

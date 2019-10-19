@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554547"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595370"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -125,10 +125,6 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 4.  Spusťte příkaz ALTER INDEX < Ordered_CCI_Index > na < Table_B > znovu sestavit oddíl = < Partition_ID > v tabulce B pro opětovné sestavení přepnutého oddílu.  
 5.  Zopakujte kroky 3 a 4 pro každý oddíl v Table_A.
 6.  Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné sestavení, přetažení Table_A a přejmenování Table_B na Table_A. 
-
->[!NOTE]
->Během období Preview seřazeného clusterovaného indexu columnstore (Ski) v Azure SQL Data Warehouse můžou být vygenerována duplicitní data v případě, že je vytvořena nebo znovu sestavena seřazená konzulární instrukce pomocí vytvoření CLUSTEROVANÉHO indexu COLUMNSTORE pro dělenou tabulku. Nejedná se o žádnou ztrátu dat. Oprava tohoto problému bude brzy k dispozici. Pro alternativní řešení můžou uživatelé vytvořit uspořádanou INSTRUKCi pro dělenou tabulku pomocí příkazu CTAS.
-
 
 ## <a name="examples"></a>Příklady
 

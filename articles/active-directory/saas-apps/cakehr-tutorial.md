@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026436"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595024"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CakeHR
 
@@ -67,10 +67,10 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí CakeHR po
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí CakeHR, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte CAKEHR SSO](#configure-cakehr-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte CakeHR Test User](#create-cakehr-test-user)** -to, abyste měli protějšek B. Simon v CakeHR, která je propojená s reprezentací uživatele v Azure AD.
+    * **[Vytvořte CakeHR Test User](#create-cakehr-test-user)** -to, abyste měli protějšek B. Simon v CakeHR, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -135,25 +135,33 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-cakehr-sso"></a>Konfigurace jednotného přihlašování CakeHR
 
-1. Otevřete nové okno webového prohlížeče a přihlaste se k webu CakeHR společnosti jako správce.
+1. Pokud chcete automatizovat konfiguraci v rámci CakeHR, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-2. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení**.
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit CakeHR** , které vás přesměruje do aplikace CakeHR. Odtud zadejte přihlašovací údaje správce, které se přihlásí k CakeHR. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit CakeHR ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu CakeHR společnosti jako správce a proveďte následující kroky:
+
+1. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **Nastavení**.
 
     ![Konfigurace CakeHR](./media/cakehr-tutorial/config01.png)
 
-3. Na levé straně řádku nabídek klikněte na **integrace** > **jednotné přihlašování SAML** a proveďte následující kroky:
+1. Na levé straně řádku nabídek klikněte na **integrace** > **jednotné přihlašování SAML** a proveďte následující kroky:
 
-     ![Konfigurace CakeHR](./media/cakehr-tutorial/config02.png)
+    ![Konfigurace CakeHR](./media/cakehr-tutorial/config02.png)
 
-     a. Do textového pole **ID entity** zadejte `cake.hr`.
+    a. Do textového pole **ID entity** zadejte `cake.hr`.
 
-     b. Do textového pole **Adresa URL pro ověřování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL pro ověřování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-     c. V textovém poli **otisk klíče (formát SHA1)** vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal.
+    c. V textovém poli **otisk klíče (formát SHA1)** vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal.
 
-     d. Zaškrtněte políčko **Povolit jednotné přihlašování** .
+    d. Zaškrtněte políčko **Povolit jednotné přihlašování** .
 
-     e. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-cakehr-test-user"></a>Vytvořit testovacího uživatele CakeHR
 
@@ -192,4 +200,3 @@ Když na přístupovém panelu kliknete na dlaždici CakeHR, měli byste se auto
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si CakeHR s Azure AD](https://aad.portal.azure.com/)
-

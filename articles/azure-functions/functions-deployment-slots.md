@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "70085671"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
@@ -33,17 +33,17 @@ Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími 
 
 Pro použití slotů nasazení existuje několik výhod. Následující scénáře popisují běžné použití pro Sloty:
 
-- **Různá prostředí pro různé účely**: Použití různých slotů vám umožní odlišit instance aplikací před odchodem do produkčního nebo přípravného slotu.
-- **Předhřívání**: Nasazení do slotu místo přímo do produkčního prostředí umožňuje aplikaci zavěsit před tím, než budou živá. Kromě toho se pomocí slotů omezuje latence pro úlohy aktivované protokolem HTTP. Instance jsou před nasazením zavedeny, což snižuje studenou dobu spouštění nově nasazených funkcí.
-- **Snadné nouzové**akce: Po prohození s produkčním prostředím má teď přihrádka s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neshodují, můžete okamžitě vrátit swap a získat tak zpátky "Poslední známá dobrá instance".
+- **Různá prostředí pro různé účely**: pomocí různých slotů získáte možnost odlišit instance aplikací před odchodem do produkčního nebo přípravného slotu.
+- Průběžné nasazování **: nasazení**do slotu místo přímo do produkčního prostředí umožňuje, aby se aplikace před živým zprovozněním zahřívá. Kromě toho se pomocí slotů omezuje latence pro úlohy aktivované protokolem HTTP. Instance jsou před nasazením zavedeny, což snižuje studenou dobu spouštění nově nasazených funkcí.
+- **Snadné nouzové**akce: po prohození s produkčním prostředím má teď pozice s dřív připravenou aplikací předchozí produkční aplikaci. Pokud se změny vyměněné do produkčního slotu neshodují, můžete okamžitě vrátit swap a získat tak zpátky "Poslední známá dobrá instance".
 
 ## <a name="swap-operations"></a>Operace prohození
 
 Během swapu je jeden slot považován za zdroj a druhý cíl. Zdrojové sloty má instanci aplikace, která se používá pro cílový slot. Následující kroky zajišťují, že se cílovému slotu během prohození neprojeví výpadky:
 
 1. **Použít nastavení:** Nastavení z cílového slotu se aplikují na všechny instance zdrojové patice. Například nastavení produkčního prostředí se aplikuje na pracovní instanci. K použitým nastavením patří následující kategorie:
-    - [](#manage-settings) Nastavení aplikace konkrétního slotu a připojovací řetězce (Pokud je k dispozici)
-    - [](../app-service/deploy-continuous-deployment.md) Nastavení průběžného nasazování (Pokud je povolené)
+    - Nastavení aplikace [konkrétního slotu](#manage-settings) a připojovací řetězce (Pokud je k dispozici)
+    - Nastavení [průběžného nasazování](../app-service/deploy-continuous-deployment.md) (Pokud je povolené)
     - Nastavení [ověřování App Service](../app-service/overview-authentication-authorization.md) (Pokud je povolené)
 
 1. **Počkat na restartování a dostupnost:** Swap počká na všechny instance ve zdrojové patici, aby bylo možné dokončit jeho restart a bude k dispozici pro požadavky. Pokud se nepovede restartování jakékoli instance, operace přepnutí vrátí všechny změny zdrojové patice a zastaví operaci.
@@ -52,13 +52,13 @@ Během swapu je jeden slot považován za zdroj a druhý cíl. Zdrojové sloty m
 
 1. **Opakovat operaci:** Teď, když má zdrojový slot předem prohozenou aplikaci v cílové patici, proveďte stejnou operaci pomocí všech nastavení a restartováním instancí zdrojové patice.
 
-Mějte na paměti následující body:
+Mějte na paměti následující skutečnosti:
 
 - V jakémkoli bodě operace swapu se inicializace vyměněných aplikací stane ve zdrojové pozici. Cílový slot zůstane online, zatímco se připravuje zdrojová slot, bez ohledu na to, jestli je prohození úspěšné nebo neúspěšné.
 
 - Pokud chcete vyměnit pracovní slot s produkčním slotem, ujistěte se, že produkční slot je *vždycky* cílový slot. Tato operace přepnutí nijak neovlivní vaši produkční aplikaci.
 
-- Nastavení související se zdroji událostí a vazbami je potřeba nakonfigurovat jako [nastavení slotu nasazení](#manage-settings) , *než*zahájíte prohození. Pokud je označíte jako "vždy", zajistíte tím, že události a výstupy budou směrovány do správné instance.
+- Nastavení související se zdroji událostí a vazbami je potřeba nakonfigurovat jako [nastavení slotu nasazení](#manage-settings) , *než zahájíte prohození*. Pokud je označíte jako "vždy", zajistíte tím, že události a výstupy budou směrovány do správné instance.
 
 ## <a name="manage-settings"></a>Správa nastavení
 
@@ -111,8 +111,8 @@ Sloty můžete prohodit přes rozhraní příkazového [řádku](https://docs.mi
 
 1. Přechod do aplikace Function App
 1. Klikněte na název zdrojové patice, kterou chcete prohodit.
-1. Na kartě *Přehled* klikněte na tlačítko ![ **Přepnutí** Azure Functions slot pro nasazení.](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Ověřte nastavení konfigurace pro zahození a klikněte na **swap** ![swap Azure Functions slot nasazení.](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Na kartě *Přehled* klikněte na tlačítko **swap** ![Swap Azure Functions slot nasazení ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ověřte nastavení konfigurace zahození a klikněte na **swap** ![Swap Azure Functions slot nasazení ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Operace přepnutí může chvíli trvat.
 
@@ -137,7 +137,7 @@ Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/
 - [vytvoření](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [odstranění](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
 - [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [adresu](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [Automatické prohození](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>Změnit plán služby App Service
@@ -169,23 +169,23 @@ Pomocí následujícího postupu změníte plán služby App Service pro slot:
 Azure Functions sloty nasazení mají následující omezení:
 
 - Počet slotů dostupných pro aplikaci závisí na plánu. Plán spotřeby má povolený jenom jeden slot nasazení. Pro aplikace spuštěné v plánu App Service jsou k dispozici další sloty.
-- Výměna slotu resetuje klíče pro aplikace, které mají `AzureWebJobsSecretStorageType` nastavení aplikace `files`rovno.
+- Výměna slotu resetuje klíče pro aplikace, které mají nastavení aplikace `AzureWebJobsSecretStorageType` rovno `files`.
 - Pro plán spotřeby pro Linux nejsou k dispozici žádné sloty.
 
 ## <a name="support-levels"></a>Úrovně podpory
 
 Existují dvě úrovně podpory pro sloty nasazení:
 
-- **Obecná dostupnost (GA)** : Plně podporované a schválené pro použití v produkčním prostředí.
-- **Verze Preview**: Zatím se nepodporuje, ale očekává se, že bude v budoucnu dostupný stav GA.
+- **Všeobecná dostupnost (GA)** : plně podporovaná a schválená pro použití v produkčním prostředí.
+- **Verze Preview**: zatím není podporovaná, ale očekává se, že bude v budoucnu dostupný stav GA.
 
 | Operační systém/plán hostování           | Úroveň podpory     |
 | ------------------------- | -------------------- |
 | Spotřeba Windows       | Všeobecná dostupnost |
-| Windows Premium (Preview) | Náhled              |
+| Windows Premium (Preview) | Preview              |
 | Vyhrazená pro Windows         | Všeobecná dostupnost |
-| Spotřeba Linux         | Nepodporovaný          |
-| Linux Premium (Preview)   | Náhled              |
+| Spotřeba Linux         | Nepodporované          |
+| Linux Premium (Preview)   | Preview              |
 | Vyhrazený pro Linux           | Všeobecná dostupnost |
 
 ## <a name="next-steps"></a>Další kroky

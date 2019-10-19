@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551660"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592891"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -224,12 +224,14 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > [!NOTE]
 > Role globálního čtecího modulu teď má v současné době několik omezení –
 >
->* Centrum pro správu SharePointu – centrum pro správu SharePointu nepodporuje roli globálního čtecího modulu. V levém podokně v části centra pro správu v centru pro správu [Microsoft 365](https://admin.microsoft.com/Adminportal/Home#/homepage)se nezobrazuje ' SharePoint '. při pokusu o přechod na server *https://{název organizace Azure} – admin.SharePoint.com*se vám bude zamítnout přístup.
+>* Centrum pro správu SharePointu – centrum pro správu SharePointu nepodporuje roli globálního čtecího modulu. V levém podokně centra pro správu v centru pro správu [Microsoft 365](https://admin.microsoft.com/Adminportal/Home#/homepage)neuvidíte SharePoint.
+>* [Centrum pro správu OneDrivu](https://admin.onedrive.com/) – centrum pro správu OneDrive nepodporuje roli globálního čtecího modulu.
 >* [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální Čtenář nemůže přečíst režim zřizování podnikové aplikace.
 >* [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
 >* [M365 Security Center](https://security.microsoft.com/homepage) – globální Čtenář nemůže přečíst citlivost a popisky pro uchování. V levém podokně služby M365 Security Center nenajdete **popisky citlivosti**, **popisky pro uchování**a karty **Analytics** .
 >* [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
 >* [Privileged Access Management (pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nepodporuje roli globálního čtecího modulu.
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) – globální čtecí modul je podporován pouze pro [centrální vytváření sestav](https://docs.microsoft.com/azure/information-protection/reports-aip) a pokud váš tenant není na [platformě sjednoceného označování](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
 >
 > Tyto funkce jsou momentálně ve vývoji.
 >

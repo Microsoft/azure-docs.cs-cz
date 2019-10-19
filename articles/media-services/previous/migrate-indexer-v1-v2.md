@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719970"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598301"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrace z Media Indexer a Media Indexer 2 na Video Indexer
 
@@ -77,9 +77,9 @@ Mezi známé rozdíly patří:
 * Soubory objektů BLOB pro indexování zvuku (AIB) již nebudou podporovány. Tato funkce byla specifická pro technologii indexeru 1 a už se nenabízí.  
 * Služba Cognitive Services Speech Services nepodporuje extrakci klíčových slov. Video Indexer a Media Services V3 však AudioAnalyzerPreset zároveň nabízí robustnější sadu klíčových slov ve formátu JSON. 
 
-## <a name="contact-us"></a>Kontaktujte nás 
+## <a name="need-help"></a>Potřebujete pomoct?
 
-Pokud máte dotazy týkající se vyřazení Azure Media Indexer 1 a Azure Media Indexer 2 nebo při migraci na některou z dalších služeb, obraťte se na nás přes amshelp@microsoft.com. 
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-steps"></a>Další kroky
 

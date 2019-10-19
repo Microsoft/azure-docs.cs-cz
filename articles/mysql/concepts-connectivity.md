@@ -1,49 +1,115 @@
 ---
-title: Zpracování chyb přechodné připojení pro službu Azure Database for MySQL | Dokumentace Microsoftu
-description: Zjistěte, jak zpracovávat chyby přechodné připojení pro službu Azure Database for MySQL.
-keywords: připojení k MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
+title: Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL | Microsoft Docs
+description: Naučte se zpracovávat chyby s přechodným připojením a efektivně se připojit k Azure Database for MySQL.
+keywords: připojení MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení, efektivní připojení
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 8942223ce233d424e2368e90d2fbac92b1a443f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4bc5281c891a9d4cd27a48aa365e6cfcec16ad82
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525466"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598258"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mysql"></a>Řešení chyb přechodné připojení pro službu Azure Database for MySQL
+# <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Zpracování přechodných chyb a efektivní připojení k Azure Database for MySQL
 
-Tento článek popisuje způsob zpracování přechodných chyb připojení ke službě Azure Database for MySQL.
+Tento článek popisuje, jak řešit přechodné chyby a efektivně se připojovat k Azure Database for MySQL.
 
 ## <a name="transient-errors"></a>Přechodné chyby
 
-O přechodnou chybu, označované také jako přechodných chyb, se o chybu, která vyřeší se sám. Nejčastěji tyto chyby manifestu jako připojení k serveru databáze vyřazována. Také nelze otevřít nové připojení k serveru. Přechodným chybám může dojít například, když dojde k selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která se nasazuje. Většinu těchto událostí jsou automaticky omezeny systém za míň než 60 sekund. Osvědčeným postupem pro návrh a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejme, že může dojít v libovolné součásti kdykoli a mít odpovídající logiku ke zpracování těchto situacích.
+Přechodná chyba, označovaná také jako přechodná chyba, je chyba, která se vyřeší sám. Nejčastěji tyto chyby se manifestují jako připojení k databázovému serveru, který se vynechává. Nová připojení k serveru se taky nedají otevřít. K přechodným chybám může dojít například v případě, že dojde k selhání hardwaru nebo sítě. Dalším důvodem může být nová verze služby PaaS, která se zavádí. Většina těchto událostí je systémem automaticky snížena za méně než 60 sekund. Osvědčeným postupem pro navrhování a vývoj aplikací v cloudu je očekávat přechodné chyby. Předpokládejte, že se k nim může kdykoli docházet v každé komponentě a mít k dispozici odpovídající logiku pro zpracování těchto situací.
 
 ## <a name="handling-transient-errors"></a>Zpracování přechodných chyb
 
-Zpracování přechodných chyb pomocí logika opakovaných pokusů. Situace, které musíte vzít v úvahu:
+Přechodné chyby by se měly zpracovat pomocí logiky opakování. Situace, které je třeba vzít v úvahu:
 
-* Dojde k chybě při pokusu o otevření připojení
-* Nečinná připojení se ukončí na straně serveru. Při pokusu o příkaz nelze provést
-* Aktivní připojení, který aktuálně spouští příkaz je vyřazeno.
+* Při pokusu o otevření připojení dojde k chybě.
+* Nečinné připojení je na straně serveru vyřazeno. Když se pokusíte o vydání příkazu, nejde ho spustit.
+* Aktivní připojení, které aktuálně provádí příkaz, je vyřazeno.
 
-První a druhý případ jsou poměrně jasně ke zpracování. Došlo k pokusu o otevření připojení znovu. Při úspěchu, přechodná chyba má byly omezeny systému. Azure Database for MySQL můžete znovu. Doporučujeme mít čekat před opakováním připojení. Vraťte se zpět, pokud selžou i počáteční pokusy. Tímto způsobem systému můžete použít všechny prostředky, které jsou k dispozici k překonání chybového stavu. Dobrý vzorek dodržovat je:
+První a druhý případ jsou poměrně přímo předávány na popisovač. Pokuste se znovu otevřít připojení. Po úspěšném provedení přechodné chyby systém sníží. Azure Database for MySQL můžete použít znovu. Doporučujeme, abyste počkali před opakováním pokusu o připojení. Pokud nedojde k selhání počátečních pokusů, je záložní. Tímto způsobem systém může použít všechny prostředky, které jsou k dispozici k překonání chybové situace. Dobrý vzor, který je potřeba provést:
 
-* Počkejte po dobu 5 sekund před prvním opakováním.
-* Pro každé následující opakované pokusy zvýšení čekání exponenciálně, až 60 sekund.
-* Nastavte maximální počet opakování v tomto okamžiku vaše aplikace bude považovat za operace se nezdařila.
+* Počkejte 5 sekund před prvním opakováním.
+* Pro každou z následujících možností zkuste zvětšit počkat exponenciálně až 60 sekund.
+* Nastavte maximální počet opakovaných pokusů, na kterých by vaše aplikace pomohly operaci považovat za neúspěšnou.
 
-Při připojení k aktivní transakce selže, je obtížné správně zpracovat obnovení. Existují dva možné případy: Pokud byla transakce ve své podstatě jen pro čtení, je bezpečné, pokud chcete znovu otevřít připojení a spusťte transakci znovu. Pokud ale pokud transakce se taky zapisuje do databáze, musíte určit, pokud transakce byla vrácena zpět nebo uspěla před došlo k přechodné chybě. V takovém případě nestačí jste dostali potvrzení potvrzení z databázového serveru.
+V případě, že připojení k aktivní transakci dojde k chybě, je obtížné správně zpracovat obnovení. Existují dva případy: Pokud byla transakce určena jen pro čtení, je bezpečné znovu otevřít připojení a opakovat transakci. Pokud je však transakce také zapsána do databáze, je nutné určit, zda byla transakce vrácena zpět nebo zda byla úspěšná, než došlo k přechodné chybě. V takovém případě je možné, že jste neobdrželi potvrzení potvrzení z databázového serveru.
 
-Jeden způsob, jak to provést, se má generovat jedinečný Identifikátor na straně klienta, který se používá pro všechny opakované pokusy. Předejte tento jedinečný Identifikátor transakce v rámci k serveru a jeho uložení do sloupce s jedinečné omezení. Tímto způsobem můžete bez obav opakovat transakce. Pokud předchozí transakce se zrušila a klient vygeneruje jedinečné ID v systému ještě neexistuje, proběhne úspěšně. Dojde k selhání označující narušení duplicitní klíče, jestli jedinečné ID byly dříve uloženy, protože předchozí transakce byla úspěšně dokončena.
+Jedním ze způsobů, jak to provést, je vygenerovat v klientovi jedinečné ID, které se používá pro všechny opakované pokusy. Toto jedinečné ID předáte jako součást transakce serveru a uložíte ji do sloupce s jedinečným omezením. Tímto způsobem lze transakci bezpečně opakovat. V případě, že předchozí transakce byla vrácena zpět a jedinečné ID generované klientem v systému ještě neexistuje, bude úspěšné. V případě, že se jedinečné ID dříve uložilo z důvodu úspěšného dokončení předchozí transakce, selže oznámení, že dojde k porušení duplicitního klíče.
 
-Když váš program komunikuje s využitím Azure Database for MySQL prostřednictvím třetích stran middleware, požádejte dodavatele určuje, zda middleware obsahuje logiku opakování pro přechodné chyby.
+Když váš program komunikuje s Azure Database for MySQL prostřednictvím middlewaru třetí strany, požádejte dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
 
-Ujistěte se, že můžete testovat Logika opakování. Zkuste například ke spuštění kódu při škálování směrem nahoru nebo dolů výpočetní prostředky, z vás Azure Database for MySQL server. Aplikace by měl zpracovávat krátký výpadek, který je zjištěn během této operace bez problémů.
+Nezapomeňte otestovat logiku opakování. Například zkuste spustit kód při vertikálním navýšení nebo snížení kapacity výpočetních prostředků serveru Azure Database for MySQL. Vaše aplikace by měla zpracovávat krátké výpadky zjištěné během této operace bez jakýchkoli problémů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="connect-efficiently-to-azure-database-for-mysql"></a>Efektivně se připojte k Azure Database for MySQL
+
+Databázová připojení jsou omezeným prostředkem, takže efektivní využití sdružování připojení pro přístup k Azure Database for MySQL optimalizuje výkon. Následující část vysvětluje, jak používat sdružování připojení nebo trvalá připojení k efektivnějšímu přístupu Azure Database for MySQL.
+
+## <a name="access-databases-by-using-connection-pooling-recommended"></a>Přístup k databázím pomocí sdružování připojení (doporučeno)
+
+Správa připojení k databázi může mít významný dopad na výkon aplikace jako celek. Pro optimalizaci výkonu aplikace by měl být cílem snížit počet navázání připojení a čas pro vytvoření připojení v cestách kódu klíče. Pro připojení k Azure Database for MySQL důrazně doporučujeme použít sdružování připojení databáze nebo trvalá připojení. Sdružování připojení databáze zajišťuje vytváření, správu a přidělování databázových připojení. Když program požádá o připojení k databázi, upřednostní přidělení stávajících nečinných připojení databáze místo vytvoření nového připojení. Po dokončení programu pomocí databázového připojení se připojení obnoví v příprava pro další použití, místo abyste ho jednoduše zavřeli.
+
+Pro lepší ilustraci Tento článek obsahuje [ukázku kódu](./sample-scripts-java-connection-pooling.md) , který jako příklad používá Java. Další informace najdete v tématu [Apache Common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+
+> [!NOTE]
+> Server po nějakou dobu nakonfiguruje mechanismus časového limitu, aby uzavřel připojení, které bylo v nečinném stavu, aby bylo možné prostředky uvolnit. Nezapomeňte nastavit ověřovací systém, aby se zajistila efektivita trvalých připojení při jejich používání. Další informace najdete v tématu [Konfigurace ověřovacích systémů na straně klienta, aby se zajistila efektivita trvalých připojení](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).
+
+## <a name="access-databases-by-using-persistent-connections-recommended"></a>Přístup k databázím pomocí trvalých připojení (doporučeno)
+
+Koncept trvalých připojení je podobný jako sdružování připojení. Nahrazení krátkých připojení pomocí trvalých připojení vyžaduje pouze drobné změny kódu, ale má zásadní vliv na zlepšení výkonu v řadě typických aplikačních scénářů.
+
+## <a name="access-databases-by-using-wait-and-retry-mechanism-with-short-connections"></a>Přístup k databázím pomocí mechanismu čekání a opakování s krátkými připojeními
+
+Pokud máte omezení prostředků, důrazně doporučujeme, abyste pro přístup k databázím použili fondy databází nebo trvalá připojení. Pokud vaše aplikace používá krátká připojení a dochází k selhání připojení při přístupu k hornímu limitu počtu souběžných připojení, můžete zkusit počkat a znovu použít mechanismus. Můžete nastavit vhodný čekací čas s kratší čekací dobou po prvním pokusu. Potom můžete zkusit počkat na události víckrát.
+
+## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>Konfigurace ověřovacích mechanismů v klientech pro ověření efektivity trvalých připojení
+
+Server po nějakou dobu nakonfiguruje mechanismus časového limitu, aby uzavřel připojení, které je ve stavu nečinnosti, aby bylo možné prostředky uvolnit. Když klient znovu přistupuje k databázi, je stejný jako vytvoření nové žádosti o připojení mezi klientem a serverem. Aby se zajistila efektivita připojení během procesu jejich použití, nakonfigurujte ověřovací mechanismus na klientovi. Jak je znázorněno v následujícím příkladu, můžete ke konfiguraci tohoto mechanismu ověřování použít sdružování připojení Tomcat JDBC.
+
+Po nastavení parametru TestOnBorrow, když je k dispozici nový požadavek, fond připojení automaticky ověří efektivitu všech dostupných nečinných připojení. Pokud je takové připojení účinné, přímo vráceno jinak fond připojení odvolá připojení. Fond připojení potom vytvoří nové efektivní připojení a vrátí jej. Tento proces zajišťuje efektivní použití databáze. 
+
+Informace o konkrétních nastaveních najdete v článku [Úvod do fondu připojení JDBC oficiálního dokumentu](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes). Většinou je potřeba nastavit následující tři parametry: TestOnBorrow (nastavte na true), ValidationQuery (nastavte na vybrat 1) a ValidationQueryTimeout (nastavte na 1). Konkrétní vzorový kód je uveden níže:
+
+```java
+public class SimpleTestOnBorrowExample {
+      public static void main(String[] args) throws Exception {
+          PoolProperties p = new PoolProperties();
+          p.setUrl("jdbc:mysql://localhost:3306/mysql");
+          p.setDriverClassName("com.mysql.jdbc.Driver");
+          p.setUsername("root");
+          p.setPassword("password");
+            // The indication of whether objects will be validated by the idle object evictor (if any). 
+            // If an object fails to validate, it will be dropped from the pool. 
+            // NOTE - for a true value to have any effect, the validationQuery or validatorClassName parameter must be set to a non-null string. 
+          p.setTestOnBorrow(true); 
+
+            // The SQL query that will be used to validate connections from this pool before returning them to the caller.
+            // If specified, this query does not have to return any data, it just can't throw a SQLException.
+          p.setValidationQuery("SELECT 1");
+
+            // The timeout in seconds before a connection validation queries fail. 
+            // This works by calling java.sql.Statement.setQueryTimeout(seconds) on the statement that executes the validationQuery. 
+            // The pool itself doesn't timeout the query, it is still up to the JDBC driver to enforce query timeouts. 
+            // A value less than or equal to zero will disable this feature.
+          p.setValidationQueryTimeout(1);
+            // set other usefull pool properties.
+          DataSource datasource = new DataSource();
+          datasource.setPoolProperties(p);
+
+          Connection con = null;
+          try {
+            con = datasource.getConnection();
+            // execute your query here
+          } finally {
+            if (con!=null) try {con.close();}catch (Exception ignore) {}
+          }
+      }
+  }
+```
+
+## <a name="next-steps"></a>Další kroky
 
 * [Řešení potíží s připojením ke službě Azure Database for MySQL](howto-troubleshoot-common-connection-issues.md)

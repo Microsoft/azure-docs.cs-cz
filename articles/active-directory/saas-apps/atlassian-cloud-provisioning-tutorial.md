@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68561587"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Atlassian cloudu pro Automatické zřizování uživatelů
@@ -30,7 +30,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Atlassian c
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -53,11 +53,11 @@ Před konfigurací Atlassian cloudu pro Automatické zřizování uživatelů se
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **Atlassian Cloud**, na panelu výsledků vyberte **Cloud Atlassian** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
@@ -110,7 +110,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 6. Přejděte na [Atlassian Organization Manager](https://admin.atlassian.com) **> zřizování uživatelů** a klikněte na **vytvořit token**. Zkopírujte **základní adresu URL adresáře** a **nosný token** do polí **Adresa URL tenanta** a **tajného tokenu** v uvedeném pořadí.
 
-    ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) Cloud ![Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![Atlassian zřizování cloudu ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian zřizování cloudu ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
@@ -118,7 +118,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
 
-8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+8. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![Zřizování cloudu Atlassian](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
@@ -156,15 +156,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v cloudu Atlassian.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* Atlassian Cloud umožňuje zřizování uživatelů jenom z ověřených [domén](https://confluence.atlassian.com/cloud/organization-administration-938859734.html).
+* Atlassian Cloud umožňuje zřizování uživatelů jenom z [ověřených domén](https://confluence.atlassian.com/cloud/organization-administration-938859734.html).
 * Atlassian Cloud nepodporuje přejmenování skupin ještě dnes. To znamená, že jakékoli změny DisplayName ve skupině ve službě Azure AD nebudou aktualizovány a projeví se v Atlassian cloudu.
 * Hodnota atributu uživatel **pošty** ve službě Azure AD se naplní jenom v případě, že má uživatel poštovní schránku Microsoft Exchange. Pokud uživatel ho nemá, doporučuje se namapovat jiný požadovaný atribut na atribut **Emails** v Atlassian cloudu.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

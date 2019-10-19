@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 514248446798e8c806252707cc5b332a7d1a4f87
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518535"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597959"
 ---
-# <a name="reserved-public-ipv6-address-prefix"></a>Vyhrazená předpona veřejných adres IPv6
+# <a name="reserved-public-ipv6-address-prefix-preview"></a>Vyhrazená předpona veřejných adres IPv6 (Preview)
 
 Ve výchozím nastavení jsou virtuální sítě (VNet) a virtuální počítače v Azure standardně zabezpečené, protože nemají žádné připojení k Internetu. Můžete snadno přidat připojení k Internetu s protokolem IPv6 k vašim nástrojům pro vyrovnávání zatížení Azure a virtuálním počítačům pomocí veřejných adres IPv6, které získáte z Azure.
 
@@ -29,6 +29,9 @@ Všechny veřejné IP adresy, které rezervujete, jsou přidružené k oblasti A
 > Nechtěně neodstraňujte veřejné IP adresy pomocí opatrnosti. Odstraněním veřejné IP adresy se odebere z vašeho předplatného a nebudete je moct obnovit (ani s podporou Azure Support).
 
 Kromě rezervace individuálních adres IPv6 můžete pro své použití rezervovat souvislé rozsahy adres IPv6 pro Azure (označované jako předpona IP adresy).  Podobně jako jednotlivé IP adresy jsou rezervované předpony přidružené k oblasti Azure podle vašeho výběru a s vaším předplatným Azure. Vyhrazení předvídatelného souvislého rozsahu adres má mnoho využití. Například můžete významně zjednodušit seznam *povolených* IP adres vašich aplikací hostovaných v Azure vaší společností a vašimi zákazníky, protože statické rozsahy IP adres je možné snadno doložit do místních bran firewall.  Podle potřeby můžete vytvořit jednotlivé veřejné IP adresy z předpony IP adres a při odstranění těchto jednotlivých veřejných IP adres, které se *vrátí* do rezervovaného rozsahu, abyste je mohli znovu použít později. Všechny IP adresy v rámci vaší předpony IP adres jsou vyhrazené pro vaše výhradní použití až do doby, kdy jste tuto předponu odstranili.
+
+> [!Important]
+> Protokol IPv6 pro Azure Virtual Network je momentálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="ipv6-prefix-sizes"></a>Velikosti předpon IPv6
 K dispozici jsou následující velikosti předpony veřejných IP adres:

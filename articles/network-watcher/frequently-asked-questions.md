@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333310"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598227"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -54,16 +54,26 @@ Na [stránce s cenami](https://azure.microsoft.com/pricing/details/network-watch
 ### <a name="which-regions-is-network-watcher-available-in"></a>Které oblasti jsou Network Watcher k dispozici v?
 Nejnovější regionální dostupnost najdete na [stránce dostupnosti služby Azure](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) .
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Co jsou omezení prostředků u Network Watcher?
+Všechna omezení najdete na stránce [omezení služby](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) .  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Proč je pro jednotlivé oblasti povolena pouze jedna instance Network Watcher?
+Network Watcher pro předplatné, který funguje, je třeba povolit jenom jednou, nejedná se o limit služby.
+
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Co dělají protokoly toku NSG?
 Síťové prostředky Azure je možné kombinovat a spravovat prostřednictvím [skupin zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview). Protokoly toku NSG umožňují protokolovat informace o toku 5-řazené kolekce členů o všech přenosech prostřednictvím služby skupin zabezpečení sítě. Protokoly nezpracovaných toků se zapisují na účet Azure Storage, ze kterého se dají dál zpracovávat, analyzovat, dotazovat nebo exportovat podle potřeby.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>Jsou k dispozici upozornění pro používání protokolů toku NSG?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Existují nějaká upozornění k používání protokolů toku NSG?
 Pro používání protokolů toku NSG nejsou žádné požadavky. Existují však dvě omezení.
 - **Ve vaší virtuální síti nesmí být k dispozici koncové body služby**: protokoly toku NSG se generují z agentů ve vašich virtuálních počítačích do účtů úložiště. V současné době ale můžete protokoly generovat jenom přímo do účtů úložiště a nemůžete do vaší virtuální sítě přidat koncový bod služby.
 
-Tento problém můžete vyřešit dvěma způsoby:
+- **Účet úložiště nesmí být branou firewall**: z důvodu interních omezení musí být účty úložiště přístupné prostřednictvím veřejného Internetu, aby mohly s nimi pracovat protokoly NSG Flow. Provoz se pořád směruje přes Azure interně a nebudete mít za sebou poplatky za další výstup.
+
+Pokyny, jak tyto problémy obejít, najdete v dalších dvou otázkách. Obě tato omezení by se měla vyřešit pomocí ledna 2020.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Návody používat protokoly toku NSG s koncovými body služby?
 
 *Možnost 1: překonfigurujte protokoly toku NSG k vygenerování pro účet Azure Storage bez koncových bodů virtuální sítě.*
 
@@ -88,8 +98,7 @@ Po několika minutách můžete zkontrolovat protokoly úložiště, ve kterých
 
 Pokud koncové body služby Microsoft.Storage nezbytně potřebujete, budete muset zakázat protokoly toku NSG.
 
-
-- **Účty úložiště nesmí být brány firewall**: z důvodu interních omezení musí být účty úložiště přístupné prostřednictvím veřejného Internetu, aby mohly s nimi pracovat protokoly NSG Flow. Provoz se pořád směruje přes Azure interně a nebudete mít za sebou poplatky za další výstup.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Návody zakázat bránu firewall v mém účtu úložiště?
 
 Tento problém se vyřeší tím, že pro přístup k účtu úložiště povolíte všechny sítě:
 
@@ -97,8 +106,6 @@ Tento problém se vyřeší tím, že pro přístup k účtu úložiště povol�
 * Zadejte název účtu úložiště do globálního vyhledávání na portálu a přejděte do účtu úložiště.
 * V části **NASTAVENÍ** vyberte **Brány firewall a virtuální sítě**.
 * Vyberte **Všechny sítě** a uložte nastavení. Pokud je tato možnost již vybraná, není potřeba provádět žádné změny.  
-
-Obě tato omezení by se měla vyřešit pomocí ledna 2020.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Jaký je rozdíl mezi protokoly toku verze 1 & 2?
 Protokoly Flow verze 2 zavádí koncept *stavu toku* , & ukládá informace o odeslaných bajtech a paketech. [Přečtěte si další informace](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

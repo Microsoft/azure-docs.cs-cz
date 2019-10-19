@@ -4,14 +4,14 @@ description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pom
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982447"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597516"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrace šablon Správce prostředků s Azure Pipelines
 
@@ -71,25 +71,25 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
-Když nastavíte úlohu na `AzurePowerShell@3`, kanál použije k ověření připojení příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4`.
+Když nastavíte úlohu na `AzurePowerShell@3`, kanál k ověření připojení použije příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4`.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-V poli zadejte název připojení služby ,kteréjstevytvořili.`azureSubscription`
+Pro `azureSubscription` zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Pro `scriptPath`zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
+Pro `scriptPath` zadejte relativní cestu ze souboru kanálu ke skriptu. Můžete si prohlédnout své úložiště a zobrazit cestu.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -125,7 +125,7 @@ Teď, když jste se seznámili s vytvářením úlohy, provedeme kroky pro úpra
        azurePowerShellVersion: LatestVersion
    ```
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
    ![Uložení kanálu](./media/vs-resource-groups-project-devops-pipelines/save-pipeline.png)
 
@@ -139,7 +139,7 @@ Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto ú
 
 ## <a name="copy-and-deploy-tasks"></a>Kopírování a nasazení úloh
 
-V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí dvou úloh pro přípravu artefaktů a nasazení šablony. 
+V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí dvou úloh pro přípravu artefaktů a nasazení šablony.
 
 Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
 
@@ -157,13 +157,13 @@ Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/
     sasTokenTimeOutInMinutes: '240'
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath` Určuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1` , což byl název projektu.
+K revizi vašeho prostředí se používá několik částí této úlohy. @No__t_0 označuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1`, což byl název projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-V poli zadejte název připojení služby ,kteréjstevytvořili.`azureSubscription`
+Pro `azureSubscription` zadejte název připojení služby, které jste vytvořili.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -176,33 +176,43 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Následující YAML ukazuje [úlohu nasazení skupiny prostředků Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
+Následující YAML ukazuje [úlohu nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy. V poli zadejte název připojení služby ,kteréjstevytvořili.`azureSubscription`
+K revizi vašeho prostředí se používá několik částí této úlohy.
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`: vyberte rozsah nasazení z možností: `Management Group`, `Subscription` a `Resource Group`. V tomto návodu použijte **skupinu prostředků** . Další informace o oborech najdete v tématu [obory nasazení](./resource-group-template-deploy-rest.md#deployment-scope).
 
-V `resourceGroupName` případě `location`a zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
+- `ConnectedServiceName`: zadejte název připojení služby, které jste vytvořili.
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
+
+- `subscriptionName`: Zadejte ID cílového předplatného. Tato vlastnost se vztahuje pouze na rozsah nasazení skupiny prostředků a Scoop nasazení předplatného.
+
+- `resourceGroupName` a `location`: zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
 
 Úloha nasazení odkazuje na šablonu s názvem `WebSite.json` a soubor parametrů s názvem Web. Parameters. JSON. Použijte názvy šablon a souborů parametrů.
 
@@ -226,19 +236,23 @@ Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro ú
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
 
@@ -248,6 +262,6 @@ Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro ú
 
 Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto úlohách. Až se dokončí, zobrazí se výsledky pro každý krok.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Podrobný postup při použití Azure Pipelines se šablonami správce prostředků najdete v tématu [kurz: Průběžná integrace šablon Azure Resource Manager s Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md)
+Podrobný postup při použití Azure Pipelines se šablonami Správce prostředků najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md).

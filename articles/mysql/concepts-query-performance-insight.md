@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 10/17/2019
+ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950362"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595453"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight v Azure Database for MySQL
 
@@ -38,7 +38,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 
@@ -59,7 +59,7 @@ Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové 
 ### <a name="wait-statistics"></a>Statistiky čekání
 
 > [!NOTE]
-> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží.
+> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží. <br>Pokud se zobrazí chybová zpráva v Azure Portal "*problém byl zjištěn pro ' Microsoft. DBforMySQL '; požadavek nelze splnit. Pokud tento problém přetrvává nebo je neočekávaný, obraťte se prosím na podporu s těmito informacemi.* " Při prohlížení statistik čekání použijte kratší časové období.
 
 Statistika čekání poskytuje zobrazení událostí čekání, ke kterým dojde během provádění konkrétního dotazu. Přečtěte si další informace o typech událostí čekání v [dokumentaci k modulu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 

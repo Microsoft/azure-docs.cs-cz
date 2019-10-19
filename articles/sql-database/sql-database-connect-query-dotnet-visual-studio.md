@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 4472ff10c42cd9163693e7316b6bdaef50258db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569230"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597927"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý start: Použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze SQL Azure
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý Start: použití .NET C# a v aplikaci Visual Studio pro připojení k databázi SQL Azure a dotazování na ně
 
 V tomto rychlém startu se dozvíte, jak C# používat [rozhraní .NET Framework](https://www.microsoft.com/net/) a kód v aplikaci Visual Studio k dotazování databáze SQL Azure pomocí příkazů jazyka Transact-SQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu je potřeba:
 
@@ -30,7 +30,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -48,7 +48,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -56,13 +56,13 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="create-code-to-query-the-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL
 
-1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**. 
+1. V aplikaci Visual Studio vyberte **soubor**  > **Nový**  > **projekt**. 
    
-1. V dialogovém okně **Nový projekt** vyberte **Visual C#** a pak vyberte konzolová **aplikace (.NET Framework)** .
+1. V dialogovém okně **Nový projekt** vyberte **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)** .
    
 1. Jako název projektu zadejte *sqltest* a pak vyberte **OK**. Vytvoří se nový projekt. 
    
-1. Vyberte **projekt** > **Spravovat balíčky NuGet**. 
+1. Vyberte **projekt**  > **Spravovat balíčky NuGet**. 
    
 1. Ve **Správci balíčků NuGet**vyberte kartu **Procházet** a pak vyhledejte a vyberte **System. data. SqlClient**.
    
@@ -72,7 +72,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    
 1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet**. 
    
-1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty `<server>`pro `<username>`, `<password>`, `<database>`a.
+1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty pro `<server>`, `<username>`, `<password>` a `<database>`.
    
    >[!IMPORTANT]
    >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
@@ -133,19 +133,19 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Pokud chcete aplikaci spustit, vyberte **ladění** > **Spustit ladění**nebo na panelu nástrojů vyberte **Spustit** nebo stiskněte klávesu **F5**.
+1. Chcete-li spustit aplikaci, vyberte možnost **ladění**  > **Spustit ladění**nebo vyberte možnost **Spustit** na panelu nástrojů nebo stiskněte klávesu **F5**.
 1. Ověřte, že se vrátí prvních 20 řádků/produktů z vaší databáze, a pak okno aplikace zavřete.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se, jak se [připojit k databázi SQL Azure a dotazovat se na ni pomocí .NET Core](sql-database-connect-query-dotnet-core.md) v systému Windows, Linux nebo MacOS.  
 - Informace o tom, [jak začít s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 - Informace o [návrhu první databáze Azure SQL pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [návrhu první databáze Azure SQL pomocí .NET](sql-database-design-first-database-csharp.md)
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).
-- Příklad logiky opakování: [Připojte se odolně k SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Příklad logiky opakování: [odolné připojení k SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330769"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592802"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -67,7 +67,7 @@ Efekt připojení má pouze pole **Details** , které je povinné. Vzhledem k to
 
 ### <a name="append-examples"></a>Připojit příklady
 
-Příklad 1: dvojice **pole/hodnota** pomocí [aliasu](definition-structure.md#aliases) bez **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Když je alias mimo **[\*]** pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
+Příklad 1: dvojice **pole/hodnota** pomocí [aliasu](definition-structure.md#aliases) bez **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Když je alias bez **[\*]** pole, efekt připojí **hodnotu** jako celé pole. Pokud pole již existuje, dojde ke konfliktu události odepřít.
 
 ```json
 "then": {
@@ -82,7 +82,7 @@ Příklad 1: dvojice **pole/hodnota** pomocí [aliasu](definition-structure.md#a
 }
 ```
 
-Příklad 2: dvojice s jedním **polem/hodnotou** pomocí [aliasu](definition-structure.md#aliases) **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Pomocí aliasu **[\*]** tento efekt připojí **hodnotu** k potenciálně existujícímu poli. Pokud pole ještě neexistuje, vytvoří se.
+Příklad 2: dvojice s jedním **polem/hodnotou** pomocí [aliasu](definition-structure.md#aliases) **[\*]** s **hodnotou** pole pro nastavení pravidel protokolu IP v účtu úložiště. Pomocí aliasu **[\*]** , efekt připojí **hodnotu** k potenciálně existujícímu poli. Pokud pole ještě neexistuje, vytvoří se.
 
 ```json
 "then": {
@@ -152,7 +152,7 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
         {
             "operation": "addOrReplace",
             "field": "tags['Dept']",
-            "field": "[parameters('DeptName')]"
+            "value": "[parameters('DeptName')]"
         }
     ]
 }

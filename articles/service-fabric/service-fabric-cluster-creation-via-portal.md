@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/06/2018
 ms.author: atsenthi
 ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68600014"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
@@ -53,7 +53,7 @@ Aby mohl certifikát plnit tyto účely, musí splňovat následující požadav
 
 * Certifikát musí obsahovat privátní klíč.
 * Certifikát musí být vytvořen pro výměnu klíčů, který lze exportovat do souboru. pfx (Personal Information Exchange).
-* **Název subjektu certifikátu se musí shodovat s doménou** používanou pro přístup ke clusteru Service Fabric. Tato funkce je nutná k tomu, aby poskytovala SSL pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Certifikát SSL nelze pro `.cloudapp.azure.com` doménu získat od certifikační autority (CA). Získejte vlastní název domény pro svůj cluster. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro váš cluster.
+* **Název subjektu certifikátu se musí shodovat s doménou** používanou pro přístup ke clusteru Service Fabric. Tato funkce je nutná k tomu, aby poskytovala SSL pro koncové body správy HTTPS clusteru a Service Fabric Explorer. Nemůžete získat certifikát SSL od certifikační autority (CA) pro doménu `.cloudapp.azure.com`. Získejte vlastní název domény pro svůj cluster. Když vyžádáte certifikát od certifikační autority, název subjektu certifikátu se musí shodovat s názvem vlastní domény použitým pro váš cluster.
 
 #### <a name="client-authentication-certificates"></a>Certifikáty pro ověřování klientů
 Další certifikáty klientů ověřují správci pro úlohy správy clusteru. Service Fabric má dvě úrovně přístupu: **správce** a **uživatel s oprávněním jen pro čtení**. Je třeba použít minimálně jeden certifikát pro přístup pro správu. Pro další přístup na úrovni uživatele je třeba zadat samostatný certifikát. Další informace o přístupových rolích najdete v tématu [řízení přístupu na základě rolí pro klienty Service Fabric][service-fabric-cluster-security-roles].
@@ -79,7 +79,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se k webu [Azure Portal][azure-portal].
+Přihlaste se na web [Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 
@@ -89,7 +89,7 @@ Přejděte do okna **Cluster Service Fabric** a klikněte na **vytvořit**.
 
 Okno **vytvořit Service Fabric clusteru** má následující čtyři kroky:
 
-### <a name="1-basics"></a>1. Základní informace
+### <a name="1-basics"></a>1. základní informace
 ![Snímek obrazovky s vytvořením nové skupiny prostředků][CreateRG]
 
 V okně základy musíte zadat základní podrobnosti pro svůj cluster.
@@ -105,7 +105,7 @@ V okně základy musíte zadat základní podrobnosti pro svůj cluster.
    > 
 5. Vyberte **umístění** , ve kterém chcete cluster vytvořit. Pokud plánujete použít existující certifikát, který jste už nahráli do trezoru klíčů, musíte použít stejnou oblast, ve které je váš Trezor klíčů. 
 
-### <a name="2-cluster-configuration"></a>2. Konfigurace clusteru
+### <a name="2-cluster-configuration"></a>2. konfigurace clusteru
 ![Vytvoření typu uzlu][CreateNodeType]
 
 Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních počítačů, počet virtuálních počítačů a jejich vlastnosti. Cluster může mít více než jeden typ uzlu, ale typ primárního uzlu (první uzel, který definujete na portálu) musí mít aspoň pět virtuálních počítačů, protože se jedná o typ uzlu, kde jsou umístěné systémové služby Service Fabric. Nekonfigurujte **vlastnosti umístění** , protože je automaticky přidána výchozí vlastnost umístění pro "NodeType".
@@ -121,7 +121,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 5. Pro typ uzlu vyberte **počáteční kapacitu sady škálování virtuálního počítače** . Můžete navýšit nebo snížit počet virtuálních počítačů v typu uzlu později, ale na primárním typu uzlu je minimum pět pro produkční úlohy. Jiné typy uzlů můžou mít minimálně jeden virtuální počítač. Minimální **počet** virtuálních počítačů pro typ primárního uzlu zařídí **spolehlivost** clusteru.  
 6. Nakonfigurujte **vlastní koncové body**. Toto pole umožňuje zadat čárkami oddělený seznam portů, které chcete zpřístupnit prostřednictvím Azure Load Balancer k veřejnému Internetu pro vaše aplikace. Pokud například plánujete nasadit webovou aplikaci do clusteru, zadejte sem "80", čímž povolíte provoz na portu 80 do clusteru. Další informace o koncových bodech najdete v tématu [komunikace s aplikacemi][service-fabric-connect-and-communicate-with-services] .
 7. **Povolte reverzní proxy**.  [Service Fabric reverzní proxy](service-fabric-reverseproxy.md) pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
-8. Zpátky v okně **Konfigurace clusteru** v části **+ Zobrazit volitelná nastavení**nakonfigurujte diagnostikuclusteru. Ve výchozím nastavení jsou diagnostika ve vašem clusteru zapnutá, aby pomohla řešit problémy. Pokud chcete zakázat diagnostiku, změňte **stav** přepínač na **vypnuto**. Vypnutí diagnostiky se **nedoporučuje.** Pokud již máte vytvořený projekt Application Insights, přiřaďte jeho klíč, aby se do něj směrovalo trasování aplikace.
+8. Zpátky v okně **Konfigurace clusteru** v části **+ Zobrazit volitelná nastavení**nakonfigurujte **diagnostiku**clusteru. Ve výchozím nastavení jsou diagnostika ve vašem clusteru zapnutá, aby pomohla řešit problémy. Pokud chcete zakázat diagnostiku, změňte **stav** přepínač na **vypnuto**. Vypnutí diagnostiky se **nedoporučuje.** Pokud již máte vytvořený projekt Application Insights, přiřaďte jeho klíč, aby se do něj směrovalo trasování aplikace.
 9. **Zahrnout službu DNS**.  [Služba DNS](service-fabric-dnsservice.md) nabízí volitelnou službu, která vám umožní najít další služby pomocí protokolu DNS.
 10. Vyberte **režim upgradu prostředků infrastruktury** , pro který chcete nastavit cluster. Vyberte možnost **automaticky**, pokud chcete, aby systém automaticky vybral nejnovější dostupnou verzi a pokusil se upgradovat cluster na něj. Nastavte režim na **Ruční**, pokud chcete zvolit podporovanou verzi. Další podrobnosti o režimu upgradu prostředků infrastruktury najdete v [dokumentu Service Fabric upgrade clusteru.][service-fabric-cluster-upgrade]
 
@@ -129,7 +129,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 > Podporujeme jenom clustery, na kterých běží podporované verze Service Fabric. Když vyberete **Ruční** režim, převezmete zodpovědnost za upgrade clusteru na podporovanou verzi.
 > 
 
-### <a name="3-security"></a>3. Zabezpečení
+### <a name="3-security"></a>3. zabezpečení
 ![Snímek obrazovky s konfiguracemi zabezpečení na Azure Portal.][BasicSecurityConfigs]
 
 Aby bylo možné nastavit zabezpečený testovací cluster snadno pro vás, nabízíme **základní** možnost. Pokud už máte certifikát a nahráli jste ho do [trezoru klíčů](/azure/key-vault/) (a povolili jste Trezor klíčů pro nasazení), použijte **vlastní** možnost.
@@ -178,7 +178,7 @@ K dokončení stránky zabezpečení potřebujete trezor zdrojového klíče, ad
 
 Zaškrtněte pole **Konfigurovat upřesňující nastavení** a zadejte klientské certifikáty pro klienta **správce** a **klienta jen pro čtení**. V těchto polích zadejte kryptografický otisk certifikátu klienta správce a kryptografický otisk certifikátu uživatele, který je jen pro čtení, pokud je k dispozici. Když se správci pokusí připojit ke clusteru, udělí se jim přístup jenom v případě, že mají certifikát s kryptografickým otiskem, který odpovídá hodnotám kryptografického otisku, které tady zadáte.  
 
-### <a name="4-summary"></a>4. Souhrn
+### <a name="4-summary"></a>4. souhrn
 
 Teď jste připraveni nasadit cluster. Před tím, než to provedete, Stáhněte certifikát, vyhledejte ho v rámci velkého modrého informačního pole pro daný odkaz. Nezapomeňte certifikát uchovávat na bezpečném místě. potřebujete ho připojit k vašemu clusteru. Vzhledem k tomu, že certifikát, který jste stáhli, nemá heslo, doporučujeme, abyste ho přidali.
 
@@ -186,7 +186,7 @@ Vytvoření clusteru dokončíte kliknutím na **vytvořit**. Volitelně můžet
 
 ![Souhrn]
 
-Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvonku u stavového řádku v pravém horním rohu obrazovky.) Pokud jste při vytváření clusteru klikli na **Připnout na Úvodní panel**, na tabuli **Start** bude připnuté **Nasazování clusteru Service Fabric**. Tento proces bude nějakou dobu trvat. 
+Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvonku u stavového řádku v pravém horním rohu obrazovky.) Pokud jste při vytváření clusteru klikli **na Připnout na úvodní panel** , uvidíte, že se na **úvodní** desce připnulo **nasazení Service Fabric clusteru** . Tento proces bude nějakou dobu trvat. 
 
 Aby bylo možné provádět operace správy v clusteru pomocí PowerShellu nebo rozhraní příkazového řádku, musíte se připojit ke clusteru. Další informace o tom, jak se připojit [ke clusteru](service-fabric-connect-to-secure-cluster.md), najdete v tématu.
 
@@ -209,7 +209,7 @@ Oddíl **monitorování uzlu** v okně řídicího panelu clusteru indikuje poč
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci sady škálování virtuálního počítače nebo uzlu clusteru
 Každé z NodeType zadaných v clusteru má za následek nastavování sady škálování virtuálního počítače. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto okamžiku máte zabezpečený cluster s použitím certifikátů pro ověřování správy. Pak se [připojte ke svému clusteru](service-fabric-connect-to-secure-cluster.md) a Naučte se [spravovat tajné klíče aplikace](service-fabric-application-secret-management.md).  Přečtěte si také informace o [možnostech podpory Service Fabric](service-fabric-support.md).
 
 <!-- Links -->
@@ -242,7 +242,7 @@ V tomto okamžiku máte zabezpečený cluster s použitím certifikátů pro ov�
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Shrnutí]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Souhrn]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

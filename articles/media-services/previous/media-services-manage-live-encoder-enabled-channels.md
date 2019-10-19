@@ -1,6 +1,6 @@
 ---
 title: Živé streamování pomocí Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi | Microsoft Docs
-description: 'Toto téma popisuje, jak nastavit kanál, který obdrží živý datový proud s jednou přenosovou rychlostí z místního kodéru a pak provede živé kódování pro datový proud s adaptivní přenosovou rychlostí pomocí Media Services. Datový proud je pak možné doručit do aplikací pro přehrávání klienta prostřednictvím jednoho nebo více koncových bodů streamování pomocí jednoho z následujících protokolů adaptivního streamování: HLS, hladký proud, MPEG POMLČKa.'
+description: 'Toto téma popisuje, jak nastavit kanál, který obdrží živý datový proud s jednou přenosovou rychlostí z místního kodéru a pak provede živé kódování pro datový proud s adaptivní přenosovou rychlostí pomocí Media Services. Datový proud je pak možné doručit do aplikací pro přehrávání klienta prostřednictvím jednoho nebo více koncových bodů streamování pomocí jednoho z následujících protokolů adaptivního streamování: HLS, plynule Stream, MPEG POMLČKa.'
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016495"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598307"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -30,8 +30,8 @@ ms.locfileid: "69016495"
 ## <a name="overview"></a>Přehled
 V Azure Media Services (AMS) **kanál** představuje kanál pro zpracování obsahu živého streamování. **Kanál** přijímá živé vstupní proudy jedním ze dvou způsobů:
 
-* On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
-* On-premises Live Encoder pošle do kanálu **RTMP** s více přenosovými rychlostmi nebo **Smooth Streaming** (fragmentovaný MP4) do kanálu, který není povolený pro provádění živého kódování v AMS. Ingestované datové proudyprocházejí kanálem s bez dalšího zpracování. Tato metoda se nazývá **předávací**. Můžete použít následující živé kodéry s výstupem Smooth Streaming s více přenosovými rychlostmi: MediaExcel, Ateme, Představte si Communications, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Kodéry Adobe Flash Media Live Encoder (FMLE), Wirecast, Haivision, Teradek a transkodéry.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase, pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder pošle do kanálu **RTMP** s více přenosovými rychlostmi nebo **Smooth Streaming** (fragmentovaný MP4) do kanálu, který není povolený pro provádění živého kódování v AMS. Ingestované datové proudy procházejí **kanálem**s bez dalšího zpracování. Tato metoda se nazývá **předávací**. Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup si vychází z provozu: Adobe Flash Media Live Encoder (FMLE), Wirecast, Haivision, Teradek a transkodéry.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
   > [!NOTE]
   > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
@@ -61,17 +61,17 @@ Zodpovídáte za zastavování kanálů, když jste hotovi s kanálem kódován�
 Aktuální stav kanálu. Možné hodnoty:
 
 * **Zastaveno**. Toto je počáteční stav kanálu po jeho vytvoření (Pokud jste na portálu nevybrali Automatické spuštění). V tomto stavu nedochází k žádnému fakturaci. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
-* **Spouští**se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
+* **Spouští**se. Kanál se spouští. V tomto stavu nedochází k žádnému fakturaci. V tomto stavu nejsou povoleny žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
 * **Spuštěno**. Kanál dokáže zpracovávat živé streamy. Nyní je využití fakturace. Aby se zabránilo dalšímu fakturaci, je nutné kanál zastavit. 
-* Zastavuje se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Zastavuje**se. Kanál se zastavuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
+* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto přechodném stavu nedochází k žádnému účtování. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
 
 Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace. 
 
 | Stav kanálu | Indikátory v uživatelském rozhraní portálu | Účtuje se fakturace? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |ANO |
+| Spuštěno |Připraveno (žádný běžící program)<br/>nebo<br/>Streamování (nejméně jeden běžící program) |Ano |
 | Zastavování |Zastavování |Ne (přechodný stav) |
 | Zastaveno |Zastaveno |Ne |
 
@@ -89,9 +89,11 @@ Následující diagram představuje pracovní postup živého streamování, kde
 Následující část představuje obecné kroky, které jsou součástí procesu vytváření běžných aplikací pro živé streamování.
 
 > [!NOTE]
-> V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com. Pro živé kódování se účtuje váš dopad na fakturaci a nezapomeňte si uvědomit, že při zanechání kanálu živého kódování ve stavu spuštěno budou účtovány poplatky za hodinové účtování.  Doporučuje se, abyste ihned zastavili spuštěné kanály po dokončení události živého streamování, abyste se vyhnuli dodatečným hodinovým poplatkům. 
+> V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin.
+>
+> Pro živé kódování se účtuje váš dopad na fakturaci a nezapomeňte si uvědomit, že při zanechání kanálu živého kódování ve stavu spuštěno budou účtovány poplatky za hodinové účtování. Doporučuje se, abyste ihned zastavili spuštěné kanály po dokončení události živého streamování, abyste se vyhnuli dodatečným hodinovým poplatkům. 
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte on-premises Live Encoder, který může nastavovat jeden datový proud s **jednou** přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. 
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte on-premises Live Encoder, který může vystavovat jeden datový proud s **jednou** přenosovou rychlostí v jednom z následujících protokolů: RTMP nebo Smooth Streaming. 
 
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořte a spusťte kanál. 
@@ -126,7 +128,7 @@ Následující část představuje obecné kroky, které jsou součástí proces
 Pokud je **typ kodéru** nastavený na **standardní**, platné možnosti jsou:
 
 * **RTMP** s jednou přenosovou rychlostí
-* Fragmentovaná s jednou přenosovou rychlostí: **MP4** (Smooth Streaming)
+* **Fragmentovaná** s jednou přenosovou rychlostí: MP4 (Smooth Streaming)
 
 #### <a id="single_bitrate_RTMP"></a>RTMP s jednou přenosovou rychlostí
 Požadavky:
@@ -139,7 +141,7 @@ Požadavky:
 * Směrný plán, hlavní, vysoký profil (8 bitů 4:2:0)
 * Vysoký 10 profil (10 bitů 4:2:0)
 * Profil High 422 (10 bitů 4:2:2)
-* MPEG-2 AAC-LC Audio
+* Zvuk MPEG-2 AAC-LC
 * Mono, stereo, Surround (5,1, 7,1)
 * vzorkovací frekvence 44,1 kHz
 * ADTS balení stylu MPEG-2
@@ -156,14 +158,14 @@ Požadavky:
 
 Stejné jako pro [RTMP s jednou přenosovou rychlostí](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
-#### <a name="other-considerations"></a>Další důležité informace
+#### <a name="other-considerations"></a>Další aspekty
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Maximální rozlišení příchozího streamu videa je 1080 a maximálně 60 polí za sekundu, pokud je prokládaný, nebo 30 snímků za sekundu, pokud je progresivní.
 
 ### <a name="ingest-urls-endpoints"></a>Adresy URL ingestování (koncové body)
 Kanál poskytuje vstupní koncový bod (adresa URL pro příjem), který zadáte v živém kodéru, takže kodér může do kanálů vložit streamy.
 
-Po vytvoření kanálu můžete získat adresy URL pro přijímání. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu spuštěno. Až budete připraveni začít s vložením dat do kanálu, musí být ve stavu spuštěno . Jakmile kanál začne přijímat data, můžete zobrazit náhled datového proudu prostřednictvím adresy URL náhledu.
+Po vytvoření kanálu můžete získat adresy URL pro přijímání. Aby se tyto adresy URL dostaly, kanál se nemusí nacházet ve stavu **spuštěno** . Až budete připraveni začít s vložením dat do kanálu, musí být ve stavu **spuštěno** . Jakmile kanál začne přijímat data, můžete zobrazit náhled datového proudu prostřednictvím adresy URL náhledu.
 
 Máte možnost ingestovat fragmenty živého datového proudu MP4 (Smooth Streaming) přes připojení SSL. Pokud chcete ingestovat přes SSL, nezapomeňte aktualizovat adresu URL ingestování na HTTPS. AMS v současné době nepodporuje protokol SSL s vlastními doménami.  
 
@@ -176,7 +178,7 @@ Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povo
 ### <a name="preview-urls"></a>Adresy URL náhledu
 Kanály poskytují koncový bod verze Preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením.
 
-Adresu URL náhledu můžete získat při vytváření kanálu. Aby se adresa URL získala, kanál nemusí být ve stavu spuštěno .
+Adresu URL náhledu můžete získat při vytváření kanálu. Aby se adresa URL získala, kanál nemusí být ve stavu **spuštěno** .
 
 Jakmile kanál začne přijímat data, můžete zobrazit náhled streamu.
 
@@ -211,20 +213,18 @@ Identifikátor jazyka zvukového datového proudu, který je v souladu s ISO 639
 ### <a id="preset"></a>Předvolby systému
 Určuje předvolby, které má živý kodér používat v rámci tohoto kanálu. V současné době je jediná povolená hodnota **Default720p** (výchozí).
 
-Všimněte si, že pokud potřebujete vlastní přednastavení, měli byste amshelp@microsoft.comse obrátit na.
-
 **Default720p** bude kódovat video do následujících 6 vrstev.
 
 #### <a name="output-video-stream"></a>Výstupní video stream
 
-| Rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupního datového proudu |
+| Rychlostí | Délk | Výška | MaxFPS | Profil | Název výstupního datového proudu |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Vysoká |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Vysoká |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Vysoká |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Vysoká |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Vysoká |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Vysoká |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Vysoký |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Vysoký |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Vysoký |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Vysoký |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Vysoký |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstupní zvukový stream
 
@@ -240,7 +240,7 @@ Když je váš kanál Live Encoding povolený, budete mít ve svém kanálu sou�
 
 Níže jsou uvedeny vlastnosti, které můžete nastavit při signalizaci inzerce. 
 
-### <a name="duration"></a>Trvání
+### <a name="duration"></a>Délka
 Doba trvání komerčního přerušení v sekundách. Aby bylo možné zahájit komerční přerušení, musí být to nenulová kladná hodnota. V případě, že probíhá komerční přerušení a doba trvání je nastavena na hodnotu nula s CueId odpovídajícím probíhajícímu komerčnímu přerušení, pak toto přerušení bylo zrušeno.
 
 ### <a name="cueid"></a>CueId
@@ -256,11 +256,11 @@ Kodér Live Encoder v kanálu se dá signalizovat, aby se mohl přepnout na obr�
 
 Live Encoder se dá nakonfigurovat tak, aby se v určitých situacích přepnul na obrázek s příchodem, a když se v některých případech skryje signál příchozího videa, například během přerušení reklamy. Pokud takové SLAT není nakonfigurované, vstupní video se během tohoto přerušení reklamy nemaskuje.
 
-### <a name="duration"></a>Trvání
+### <a name="duration"></a>Délka
 Doba trvání SLAT v sekundách. Aby bylo možné začít SLAT, musí to být nenulová kladná hodnota. Pokud je k dispozici síla k dispozici a je zadána doba trvání nula, bude ukončeno.
 
-### <a name="insert-slate-on-ad-marker"></a>Vložit slate nebo reklamní značku
-Když se nastaví na true, toto nastavení nakonfiguruje živý kodér tak, aby při přerušení reklamy vložil obrázek SLAT. Výchozí hodnota je true. 
+### <a name="insert-slate-on-ad-marker"></a>Vložit SLAT do značky reklamy
+Když se nastaví na true, toto nastavení nakonfiguruje živý kodér tak, aby při přerušení reklamy vložil obrázek SLAT. Výchozí hodnota je true (pravda). 
 
 ### <a id="default_slate"></a>Výchozí ID prostředku SLAT
 
@@ -269,7 +269,6 @@ Volitelné. Určuje ID Assetu Media Services prostředku, který obsahuje obráz
 
 > [!NOTE] 
 > Před vytvořením kanálu by se image SLAT s následujícími omezeními měla nahrát jako vyhrazený prostředek (žádné další soubory by se měly v tomto prostředku používat). Tento obrázek se používá pouze v případě, že živý kodér vkládá hodnotu SLAT z důvodu přerušení reklamy nebo byl explicitně signalizována k vložení položky SLAT. V tuto chvíli není k dispozici možnost použít vlastní image, když Live Encoder vstoupí do stavu "vstupní signál ztracen". Tuto funkci můžete hlasovat [tady](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
-
 
 * Maximálně 1080 v rozlišení.
 * Velikost je nejvýše 3 MB.
@@ -306,8 +305,8 @@ Aktuální stav kanálu. Možné hodnoty:
 * **Zastaveno**. Toto je počáteční stav kanálu po jeho vytvoření. V tomto stavu je možné aktualizovat vlastnosti kanálu, ale streamování není povoleno.
 * **Spouští**se. Kanál se spouští. V tomto stavu nejsou povoleny žádné aktualizace ani streamování. Pokud dojde k chybě, kanál se vrátí do stavu Zastaveno.
 * **Spuštěno**. Kanál dokáže zpracovávat živé streamy.
-* Zastavuje se. Kanál se zastavuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
-* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto stavu nejsou povolené žádné aktualizace ani streamování.
+* **Zastavuje**se. Kanál se zastavuje. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
+* **Probíhá odstraňování**. Kanál se odstraňuje. V tomto stavu nejsou povoleny žádné aktualizace ani streamování.
 
 Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace. 
 
@@ -326,13 +325,13 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 ## <a id="Considerations"></a>Odůvodněn
 * Když se v kanálu **standardního** typu kódování vyskytne ztráta vstupního kanálu zdroje nebo příspěvků, nahradí se zdrojem videa nebo zvukem chyba SLAT a netichá. Kanál bude dál generovat SLAT, dokud se neobnoví informační kanál vstupů a příspěvků. Doporučujeme, aby živý kanál nebyl ponechán v takovém stavu déle než 2 hodiny. Po tomto okamžiku není zaručeno chování kanálu na vstupním připojení, ani v reakci na příkaz k obnovení není ani jeho chování. Budete muset kanál zastavit, odstranit ho a vytvořit nový.
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
-* Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu resetování. Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.
+* Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu **resetování** . Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.
 * Kanál lze zastavit pouze v případě, že je ve stavu spuštěno a všechny programy v kanálu byly zastaveny.
 * Ve výchozím nastavení můžete k účtu Media Services přidat pouze 5 kanálů. Jedná se o softwarovou kvótu pro všechny nové účty. Další informace najdete v tématu [kvóty a omezení](media-services-quotas-and-limitations.md).
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
-* Fakturuje se vám jenom v případě, že je kanál ve spuštěném stavu. Další informace najdete v [této](media-services-manage-live-encoder-enabled-channels.md#states) části.
-* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
-* Ujistěte se, že máte koncový bod streamování, ze kterého chcete streamovat obsah ve stavu spuštěno.
+* Fakturuje se vám jenom v případě, že je kanál ve **spuštěném** stavu. Další informace najdete v [této](media-services-manage-live-encoder-enabled-channels.md#states) části.
+* V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. 
+* Ujistěte se, že máte koncový bod streamování, ze kterého chcete streamovat obsah ve stavu **spuštěno** .
 * Přednastavení kódování používá pojem "Maximální Snímková frekvence" z 30 snímků. Takže pokud je vstupem 60fps/displeji i, vstupní snímky jsou vyřazeny/de prokládané do 30/29.97 fps. Pokud je vstupem 50fps/50i, vstupní snímky jsou vyřazeny/de-prokládané až 25 fps. Pokud má vstup 25 snímků/s, zůstane výstup 25 fps.
 * Po dokončení nezapomeňte kanály zastavit. Pokud to neuděláte, bude fakturace pokračovat.
 
@@ -341,12 +340,17 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 * Obrázky SLAT by měly odpovídat omezením uvedeným [zde](media-services-manage-live-encoder-enabled-channels.md#default_slate). Pokud se pokusíte vytvořit kanál s výchozí hodnotou SLAT, která je větší než 1080, požadavek bude nakonec vydávat chybu.
 * Znovu.... po skončení streamování nezapomeňte kanály zastavit. Pokud to neuděláte, bude fakturace pokračovat.
 
+## <a name="need-help"></a>Potřebujete pomoct?
+
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+
 ## <a name="next-step"></a>Další krok
+
 Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata

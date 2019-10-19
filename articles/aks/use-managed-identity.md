@@ -8,80 +8,91 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: a5717d8ee44e4d2e086a6e7bc1b7c3d0deb614c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827546"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592869"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Verze Preview – použití spravovaných identit ve službě Azure Kubernetes
 
-V současné době musí uživatel pro cluster AKS (konkrétně poskytovatel cloudu Kubernetes) vytvořit instanční objekt, který má za účelem vytvoření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure, AKS. Instanční objekty se obvykle vytvářejí s datem vypršení platnosti. Clustery nakonec dosáhnou stavu, ve kterém bude potřeba obnovit instanční objekt, jinak cluster nebude fungovat. Správa objektů služby přináší složitost. Spravované identity jsou v podstatě obálkou objektů služby a zjednodušují správu. Další informace o [spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) najdete v článku.
+Cluster služby Azure Kubernetes (konkrétně poskytovatel cloudu Kubernetes) ale v současnosti vyžaduje *instanční objekt* k vytváření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure. Buď musíte zadat instanční objekt, nebo AKS ho vytvoří vaším jménem. Instanční objekty mají obvykle datum vypršení platnosti. Clustery nakonec dosáhnou stavu, ve kterém je nutné obnovit instanční objekt, aby byl cluster funkční. Správa objektů služby přináší složitost.
 
-AKS vytvoří dvě spravované identity pomocí jedné spravované identity přiřazené systémem a druhé identity přiřazené uživatelem. Spravovaná identita přiřazená systémem se používá poskytovatelem cloudu Kubernetes k vytváření prostředků Azure jménem uživatele. Životní cyklus této spravované identity přiřazené systémem se váže k tomu, že se cluster odstraní a že se odstraní. AKS také vytvoří spravovanou identitu přiřazenou uživatelem, která se používá v clusteru pro autorizaci AKS přístupu k záznamů ACR, kubelet pro získání metadat z Azure atd.
+*Spravované identity* jsou v podstatě obálkou objektů služby a zjednoduší se jejich správa. Pokud se chcete dozvědět víc, přečtěte si o [spravovaných identitách prostředků Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-V této verzi Preview se stále vyžaduje instanční objekt. Bude se používat pro autorizaci doplňků, jako je monitorování, virtuální uzel, zásady Azure a směrování aplikace HTTP. V průběhu odebrání závislosti doplňků na hlavní název služby (SPN) a nakonec bude požadavek na hlavní název služby (SPN) v AKS zcela odebrán.
+AKS vytvoří dvě spravované identity:
+
+- **Spravovaná identita přiřazená systémem**: identita, kterou poskytovatel cloudových služeb Kubernetes používá k vytvoření prostředků Azure jménem uživatele. Životní cyklus identity přiřazené systémem je svázán s clusterem. Identita se odstraní, když se cluster odstraní.
+- **Spravovaná identita přiřazená uživatelem**: identita, která se používá k autorizaci v clusteru. Identita přiřazená uživatelem se například používá k autorizaci AKS k použití záznamů řízení přístupu (záznamů ACR) nebo k autorizaci kubelet k získání metadat z Azure.
+
+V této verzi Preview se stále vyžaduje instanční objekt. Slouží k autorizaci doplňků, jako je monitorování, virtuální uzly, Azure Policy a směrování aplikace HTTP. Pracujeme na odebrání závislosti doplňků u hlavního názvu služby (SPN). Požadavek hlavního názvu služby (SPN) v AKS bude nakonec odebrán úplně.
 
 > [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace o tom, jak se zaregistrují, najdete v následujících článcích podpory:
+> Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
 >
-> * [Zásady podpory AKS](support-policies.md)
-> * [Nejčastější dotazy k podpoře Azure](faq.md)
+> - [Zásady podpory AKS](support-policies.md)
+> - [Nejčastější dotazy k podpoře Azure](faq.md)
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Musíte mít následující:
+Musíte mít nainstalované následující zdroje:
 
-* Budete také potřebovat Azure CLI verze 2.0.70 nebo novější a rozšíření 0.4.14 AKS-Preview.
+- Rozhraní příkazového řádku Azure, verze 2.0.70 nebo novější
+- Rozšíření AKS-Preview 0.4.14
 
-## <a name="install-latest-aks-cli-preview-extension"></a>Nainstalovat nejnovější rozšíření AKS CLI Preview
-
-Potřebujete rozšíření **AKS-Preview 0.4.14** nebo novější.
+Pokud chcete nainstalovat rozšíření AKS-Preview 0.4.14 nebo novější, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
 
 ```azurecli
-az extension update --name aks-preview 
+az extension update --name aks-preview
 az extension list
 ```
 
 > [!CAUTION]
-> Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
+> Po registraci funkce v předplatném nemůžete tuto funkci v tuto chvíli zrušit. Pokud povolíte některé funkce verze Preview, můžete použít výchozí nastavení pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Místo toho použijte k testování funkcí ve verzi Preview samostatné předplatné a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-Zobrazení stavu *registrace*může trvat několik minut. Stav registrace můžete zjistit pomocí příkazu [az Feature list] [az-Feature-list]:
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Když je stav zaregistrován, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [az Provider Register] [az-Provider-Register].
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci poskytovatele prostředků `Microsoft.ContainerService` pomocí příkazu [AZ Provider Register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identity"></a>Vytvoření clusteru AKS se spravovanou identitou
+## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami
 
-Cluster AKS se spravovanými identitami teď můžete vytvořit pomocí následujícího příkazu CLI.
+Pomocí následujících příkazů rozhraní příkazového řádku teď můžete vytvořit cluster AKS se spravovanými identitami.
+
+Nejdřív vytvořte skupinu prostředků Azure:
+
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
+Pak vytvořte cluster AKS:
+
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-## <a name="get-credentials-to-access-the-cluster"></a>Získat přihlašovací údaje pro přístup ke clusteru
+Nakonec Získejte přihlašovací údaje pro přístup ke clusteru:
+
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Po vytvoření clusteru v několika minutách můžete nasadit úlohy aplikace a s ní pracovat stejně jako s clustery AKS s využitím instančních služeb. 
+
+Cluster se vytvoří během několika minut. Pak můžete nasadit úlohy aplikace do nového clusteru a s nimi pracovat stejně jako s clustery AKS založenými na instančních službách.
 
 > [!IMPORTANT]
-> * Clustery AKS se spravovanými identitami se můžou povolit jenom při vytváření clusteru.
-> * Stávající clustery AKS se nedají aktualizovat nebo upgradovat, aby se povolily spravované identity.
+>
+> - Clustery AKS se spravovanými identitami se dají povolit jenom během vytváření clusteru.
+> - Existující clustery AKS se nedají aktualizovat ani upgradovat, aby se povolily spravované identity.

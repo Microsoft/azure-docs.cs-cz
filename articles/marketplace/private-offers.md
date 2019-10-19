@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885872"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598378"
 ---
 # <a name="private-offers"></a>Soukromé nabídky
 
@@ -50,6 +50,9 @@ Soukromé nabídky jsou pouze zjistitelné prostřednictvím [Azure Portal](http
 
 Ve výsledcích hledání se zobrazí také soukromé nabídky. Stačí vyhledat "soukromou" BADGE.
 
-## <a name="next-steps"></a>Další postup
+>[!Note]
+>Soukromé nabídky nejsou podporovány u předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP).
+
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li začít používat soukromé nabídky, postupujte podle kroků v průvodci [soukromými SKU a plány](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) .

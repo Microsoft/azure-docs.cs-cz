@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037268"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597940"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBA v HDInsight pomocí Balíček zabezpečení podniku
 
@@ -26,17 +26,17 @@ V tomto kurzu se naučíte:
 > * Vytváření tabulek v clusteru HBA
 > * Testování zásad Ranger
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Vytvořte [cluster HDInsight HBA pomocí balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
 
-1. Z prohlížeče se připojte k uživatelskému rozhraní Ranger Admin pomocí adresy URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Nezapomeňte změnit `<ClusterName>` název clusteru HBA.
+1. Z prohlížeče se připojte k uživatelskému rozhraní Ranger Admin pomocí adresy URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Nezapomeňte změnit `<ClusterName>` na název vašeho clusteru HBA.
 
     > [!NOTE]  
     > Přihlašovací údaje k Rangeru nejsou stejné jako údaje ke clusteru Hadoop. Abyste zabránili prohlížeči v použití přihlašovacích údajů clusteru Hadoop uložených v mezipaměti, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
@@ -59,7 +59,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
     hbase shell
     ```
 
-2. Vytvořte tabulku `Customers` HBA se dvěma skupinami sloupců: `Name` a `Contact`.
+2. Vytvoření tabulky HBA `Customers` se dvěma skupinami sloupců: `Name` a `Contact`.
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -86,7 +86,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 4. Zobrazit obsah tabulky:
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![Výstup prostředí HDInsight Hadoop HBA](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
@@ -95,7 +95,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 
 Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
-1. Otevřete **Uživatelské rozhraní správce Ranger**. V části **HBA**  **\<> _hbase** klikněte na název_clusteru.
+1. Otevřete **Uživatelské rozhraní správce Ranger**. V části **adaptéry HBA**klikněte na **\<ClusterName > _hbase** .
 
    ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
@@ -107,7 +107,7 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásad  |  sales_customers_name_contact   |
+   |Název zásady  |  sales_customers_name_contact   |
    |Tabulka HBA   |  Zákazníci |
    |Řady sloupců HBA   |  Jméno, kontakt |
    |Sloupce HBA   |  * |
@@ -117,8 +117,8 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
    Následující zástupné znaky mohou být součástí názvu tématu:
 
-   * `*`označuje nula nebo více výskytů znaků.
-   * `?`označuje jeden znak.
+   * `*` značí nula nebo více výskytů znaků.
+   * `?` označuje jeden znak.
 
    ![Zásady Apache Ranger vytvořit prodej](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
@@ -131,9 +131,9 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Název zásad  |  marketing_customers_contact   |
+   |Název zásady  |  marketing_customers_contact   |
    |Tabulka HBA   |  Zákazníci |
-   |Řady sloupců HBA   |  Kontakt |
+   |Řady sloupců HBA   |  Kontaktovat |
    |Sloupce HBA   |  * |
    |Vybrat skupinu  | |
    |Vybrat uživatele  | marketing_user1 |
@@ -145,7 +145,7 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zobrazit všechna data pro sloupce ve `Name` rodinách sloupců a. `Contact` **Marketing_user1** může zobrazit pouze data ve `Contact` skupině sloupců.
+V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zobrazit všechna data pro sloupce v řadách sloupců `Name` i `Contact`. **Marketing_user1** může zobrazit pouze data ve skupině sloupců `Contact`.
 
 ### <a name="access-data-as-sales_user1"></a>Přístup k datům jako sales_user1
 
@@ -161,14 +161,14 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
    kinit sales_user1
    ```
 
-2. Otevřete prostředí HBA a naskenujte tabulku `Customers`.
+2. Otevřete prostředí HBA a naskenujte `Customers` tabulky.
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Všimněte si, že uživatel Sales může zobrazit všechny sloupce `Customers` tabulky včetně dvou sloupců `Name` v řadě sloupců a také pět sloupců v `Contact` řadě sloupců.
+3. Všimněte si, že uživatel Sales může zobrazit všechny sloupce `Customers` tabulky, včetně dvou sloupců v řadě sloupců `Name` a také pět sloupců v `Contact` řadě sloupců.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -203,7 +203,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
    kinit marketing_user1
    ```
 
-1. Otevřete prostředí HBA a naskenujte tabulku `Customers`:
+1. Otevřete prostředí HBA a naskenujte `Customers` tabulky:
 
     ```hbaseshell
     hbase shell
@@ -235,13 +235,13 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Do **vyhledávacího** pole v horní části zadejte **HDInsight**. 
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Začínáme s adaptéry Apache HBA](../hbase/apache-hbase-tutorial-get-started-linux.md)

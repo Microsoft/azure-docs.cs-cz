@@ -4,14 +4,14 @@ description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků A
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 10/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170242"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597669"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -23,7 +23,8 @@ Tento článek ukazuje, jak používat [Visual Studio 2019 nebo novější s nai
 
 V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony **webové aplikace** .
 
-1. V aplikaci Visual Studio klikněte na položku **soubor**, **Nový**a **projekt**. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
+1. V aplikaci Visual Studio vyberte **soubor** >**Nový** >**projekt**.
+1. Vyberte šablonu projektu **skupiny prostředků Azure** a **Další**.
 
     ![Vytvoření projektu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 
@@ -247,7 +248,7 @@ Měl by vypadat takto:
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Všimněte si, že v předchozím příkladu není žádná `'/',` mezi **parametry (' _artifactsLocation ')** a **parametry (' ExampleAppPackageFolder ')** .
+Všimněte si, že v předchozím příkladu není `'/',` mezi **parametry (' _artifactsLocation ')** a **parametry (' ExampleAppPackageFolder ')** .
 
 Znovu sestavte projekt. Při sestavování projektu se zajišťují, že soubory, které potřebujete nasadit, se přidají do pracovní složky.
 
@@ -283,7 +284,7 @@ Pro skript modulu AzureRM použijte Visual Studio:
 
 Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady Visual Studio. Nasazení můžete přizpůsobit tak, že přidáte do šablony vlastní prostředek. Pokud chcete zobrazit přidávání prostředku, přidáte provozní řídicí panel pro správu prostředku, který jste nasadili.
 
-1. Otevřete soubor Web. JSON a přidejte následující JSON za prostředek účtu úložiště, ale před uzavíracím @no__tm 0 oddílu prostředků.
+1. Otevřete soubor Web. JSON a přidejte následující JSON za prostředek účtu úložiště, ale před zavřením `]` části prostředků.
 
    ```json
     ,{

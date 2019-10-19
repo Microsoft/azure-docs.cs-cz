@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433320"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592315"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -30,12 +30,10 @@ Služba Azure jaře Cloud vylepšuje prostředí diagnostiky aplikací pro vývo
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Jaké plány služeb nabízí Azure jaře Cloud?
 
-Azure jaře Cloud nabízí v období Preview jeden plán služeb.
+Azure jaře Cloud nabízí v období Preview jeden plán služeb.  Nasazení jarního cloudu obsahuje 16 vCPU jader a 32 GB paměti.  Horní mez pro každou instanci mikroslužeb v rámci nasazení je 4 vCPU jádra s 8 GB paměti.
 
 Prostředek | Částka
 ------- | -------
-vCPU | 4
-Paměť | 8 GBytes
 Instance aplikace na jarní aplikaci | 20
 Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na jaře | 50 *
 Instance služby Azure jaře Cloud Service na oblast na předplatné | odst

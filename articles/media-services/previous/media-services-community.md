@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016637"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598326"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
@@ -36,11 +36,11 @@ Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby,
 ## <a name="provide-feedback-and-make-suggestions"></a>Poskytněte zpětnou vazbu a udělejte návrhy.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Diskuze
+## <a name="discussion"></a>Účely
 
 ### <a name="twitter"></a>Twitter
 
-Pomocí popisovače [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitteru kontaktujte nás nebo sledujte aktualizace na Twitteru. Pomocí [@AzureSupport](https://twitter.com/azuresupport) popisovače Twitteru můžete požádat o podporu na Twitteru.  
+Pomocí [@MSFTAzureMediaového](https://twitter.com/MSFTAzureMedia) popisovače Twitter kontaktujte nás nebo sledujte aktualizace na Twitteru. Pomocí [@AzureSupportového](https://twitter.com/azuresupport) popisovače Twitteru můžete požádat o podporu na Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
 
@@ -54,10 +54,10 @@ Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Service
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Kontaktovat tým
+## <a name="need-help"></a>Potřebujete pomoct?
 
-Azure Media Services primární e-mail podpory je: **amshelp@microsoft.com** .
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled](media-services-overview.md)

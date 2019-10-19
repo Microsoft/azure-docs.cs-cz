@@ -14,24 +14,24 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b204c3c30d935bc47adf76c3f0f50ccd7172393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 1ae9429920a4d3a6bac8830d6add2782276850d7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554949"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595345"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služba, která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. To zahrnuje přístup k prostředkům v Azure AD, prostředkům Azure a dalším online službám Microsoftu jako Office 365 nebo Microsoft Intune.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služba, která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. Tyto prostředky zahrnují prostředky v Azure AD, Azure a další online služby Microsoftu, jako je Office 365 nebo Microsoft Intune.
 
 ## <a name="reasons-to-use"></a>Důvody k použití
 
-Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům, kteří mají privilegovaný přístup k prostředkům Azure a službě Azure AD, poskytovat privilegovaný přístup za běhu (just-in-time). Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce. Privileged Identity Management pomáhá zmírnit riziko nadměrných, zbytečných nebo nepoužívaných přístupových práv.
+Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům, kteří mají privilegovaný přístup k prostředkům Azure a službě Azure AD, poskytovat privilegovaný přístup za běhu (just-in-time). Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce.
 
 ## <a name="what-does-it-do"></a>Co dělá?
 
-Privileged Identity Management v podstatě pomáhá spravovat uživatele, co, kdy, kde a proč o prostředcích, které vás zajímají. Tady jsou některé klíčové funkce Privileged Identity Management:
+Privileged Identity Management poskytuje aktivaci rolí na základě času a schválení, která vám umožní zmírnit rizika nadměrných, zbytečných nebo nepoužívaných přístupových oprávnění k prostředkům, o kterých se zajímáte. Tady jsou některé klíčové funkce Privileged Identity Management:
 
 - Poskytnutí privilegovaného přístupu **za běhu** do prostředků Azure AD a Azure
 - Přiřazení **časově náročného** přístupu k prostředkům pomocí počátečního a koncového data

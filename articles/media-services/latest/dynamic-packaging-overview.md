@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383535"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595519"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -26,7 +26,7 @@ Microsoft Azure Media Services lze použít ke kódování mnoha mediálních fo
 
 V Media Services [koncový bod streamování](streaming-endpoint-concept.md) představuje dynamický (za běhu) balení a službu původu, která může doručovat obsah živě a na vyžádání přímo do klientské aplikace přehrávače pomocí jednoho z běžných protokolů mediálního streamování. uvedené v následující části. Dynamické balení je funkce, která je standardem u všech koncových bodů streamování (Standard i Premium). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>@no__t – 0To připravit zdrojové soubory pro doručení
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>To připravit zdrojové soubory pro doručení
 
 Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s kódovanými soubory MP4 a konfigurační soubory pro streamování, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím následujících protokolů multimediálního datového proudu:
 
@@ -98,7 +98,7 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje soubory MP4, které obsahují video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkové frekvence až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2. Pokud máte v tomto tématu nějaké dotazy, kontaktujte prosím amshelp@microsoft.com. 
+> Rozlišení až 4K a snímkové frekvence až 60 snímků za sekundu byly testovány s dynamickým balením. [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>kodeky <a id="audio-codecs"/>Audio podporované dynamickým balením
 
@@ -124,7 +124,7 @@ Dynamické balení podporuje více zvukových stop s POMLČKou nebo HLS (verze 4
 Dynamické balení nepodporuje soubory, které obsahují zvuk [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (Jedná se o zastaralý kodek).
 
 > [!NOTE]
-> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2. Pokud máte v tomto tématu nějaké dotazy, kontaktujte prosím amshelp@microsoft.com. 
+> [Kodér úrovně Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) podporuje kódování na Dolby Digital Plus prostřednictvím starších rozhraní API v2. 
 
 ## <a name="manifests"></a>Manifesty 
  
@@ -272,6 +272,10 @@ Chcete-li řídit počet běhů, formátů, přenosové rychlosti a časová obd
 ## <a name="more-information"></a>Další informace
 
 Podívejte se na [Azure Media Services komunita](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
+
+## <a name="need-help"></a>Potřebujete pomoct?
+
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-steps"></a>Další kroky
 

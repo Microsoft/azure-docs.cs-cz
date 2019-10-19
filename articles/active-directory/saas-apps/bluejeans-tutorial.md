@@ -1,10 +1,10 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s BlueJeans | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BlueJeans.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s BlueJeans pro Azure AD | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BlueJeans pro Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
@@ -13,263 +13,219 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0308fbb103fb06bd2dffe0a442346a3fc4f7db62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106159"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595052"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Integrace Azure Active Directory s BlueJeans
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s BlueJeans pro Azure AD
 
-V tomto kurzu se dozvíte, jak integrovat BlueJeans s Azure Active Directory (Azure AD).
-BlueJeans integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat BlueJeans pro Azure AD s Azure Active Directory (Azure AD). Při integraci BlueJeans pro Azure AD se službou Azure AD můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k BlueJeans.
-* Můžete povolit uživatelům být automaticky přihlášeni k BlueJeans (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k BlueJeans pro Azure AD.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k BlueJeans pro Azure AD pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s BlueJeans, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* BlueJeans jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* BlueJeans pro odběr Azure AD s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje blueJeans **SP** jednotné přihlašování zahájené pomocí
+* BlueJeans pro Azure AD podporuje jednotné přihlašování (SSO) spouštěné v **SP**
 
-* Podporuje blueJeans [ **automatizovaná** zřizování uživatelů](bluejeans-provisioning-tutorial.md)
-
-## <a name="adding-bluejeans-from-the-gallery"></a>Přidání BlueJeans z Galerie
-
-Konfigurace integrace BlueJeans do služby Azure AD, budete muset přidat BlueJeans z Galerie na váš seznam spravovaných aplikací SaaS.
-
-**Chcete-li přidat BlueJeans z galerie, postupujte následovně:**
-
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
-
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **BlueJeans**vyberte **BlueJeans** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![BlueJeans v seznamu výsledků](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
-
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí BlueJeans podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v BlueJeans.
-
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s BlueJeans, které potřebujete k dokončení následujících stavebních bloků:
-
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace BlueJeans Single Sign-On](#configure-bluejeans-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele BlueJeans](#create-bluejeans-test-user)**  – Pokud chcete mít protějšek Britta Simon v BlueJeans, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s BlueJeans, proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **BlueJeans** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](media/bluejeans-tutorial/edit-urls-bluejeans.png)
-
-4. V **základní konfiguraci SAML** dialogové okno, zadejte následující hodnoty:
-
-    ![BlueJeans domény a adresy URL jednotného přihlašování – informace](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
-
-   - V **identifikátor** textové pole, zadejte následující příkaz: `http://samlsp.bluejeans.com`
-    
-   - V **přihlašovací adresa URL** textového pole zadejte URL cílové stránky, které jste získali od BlueJeans (k získání této hodnoty, můžete kontaktovat [tým podpory BlueJeans klienta](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`
-    
-   - Klikněte na **Uložit**.
-
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
-
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
-
-6. Na **nastavení BlueJeans** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
-
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Adresa URL – odhlášení
-
-### <a name="configure-bluejeans-single-sign-on"></a>Konfigurace BlueJeans jednotného přihlašování
-
-1. V okně jiné webové prohlížeče, přihlaste se k vaší **BlueJeans** společnosti serveru jako správce.
-
-2. Přejděte na **správce \> nastavení skupiny \> zabezpečení**.
-
-    ![Správce](./media/bluejeans-tutorial/ic785868.png "správce")
-
-3. V **zabezpečení** části, proveďte následující kroky:
-
-    ![Jednotné přihlašování SAML na](./media/bluejeans-tutorial/ic785869.png "SAML jednotného přihlašování")
-
-    a. Vyberte **jednotného přihlašování SAML**.
-
-    b. Vyberte **povolit automatické zřizování**.
-
-4. Přesunout pomocí následujících kroků:
-
-    ![Cesta k certifikátu](./media/bluejeans-tutorial/ic785870.png "cesta certifikátu")
-
-    a. Klikněte na tlačítko **zvolit soubor**a nahrajte base-64 kódovaných certifikát, který jste si stáhli z portálu Azure portal.
-
-    b. V **přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanou z webu Azure portal.
-
-    c. V **heslo změnit adresu URL** textového pole vložte hodnotu **heslo změnit adresu URL** zkopírovanou z webu Azure portal.
-
-    d. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL** zkopírovanou z webu Azure portal.
-
-5. Přesunout pomocí následujících kroků:
-
-    ![Uložit změny](./media/bluejeans-tutorial/ic785874.png "uložit změny")
-
-    a. V **Id uživatele** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
-
-    b. V **e-mailu** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
-
-    c. Klikněte na tlačítko **ULOŽTE změny**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
-
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
-
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části je povolit Britta Simon k udělení přístupu k BlueJeans použití Azure jednotného přihlašování.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **BlueJeans**.
-
-    ![Okno aplikace organizace](common/enterprise-applications.png)
-
-2. V seznamu aplikací vyberte **BlueJeans**.
-
-    ![Odkaz BlueJeans v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-bluejeans-test-user"></a>Create BlueJeans test user
-
-Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans podporuje automatické zřizování uživatelů, což je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](bluejeans-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
-
-**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
-
-1. Přihlaste se k vaší **BlueJeans** společnosti serveru jako správce.
-
-2. Přejděte na **správce \> MANAGE USERS \> přidat uživatele**.
-
-    ![Správce](./media/bluejeans-tutorial/ic785877.png "správce")
-
-    > [!IMPORTANT]
-    > **Přidat uživatele** karta je dostupná pouze if, v **POLOŽENÍM kartu**, **povolit automatické zřizování** není zaškrtnuta.
-
-3. V **přidat uživatele** části, proveďte následující kroky:
-
-    ![Přidání uživatele](./media/bluejeans-tutorial/ic785886.png "přidat uživatele")
-
-    a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
-
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
-
-    c. V **vyberte uživatelské jméno BlueJeans** textové pole, zadejte uživatelské jméno uživatele, jako je **Brittasimon**
-
-    d. V **vytvořit heslo** textové pole, zadejte své heslo.
-
-    e. V **společnosti** textové pole, zadejte vaší společnosti.
-
-    f. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je `brittasimon\@contoso.com`.
-
-    g. V **vytvořit i d BlueJeans schůzky** textové pole, zadejte své ID schůzky.
-
-    h. V **vybrat heslo moderátor** textové pole, zadejte své heslo.
-
-    i. Klikněte na tlačítko **pokračovat**.
-
-    ![Přidání uživatele](./media/bluejeans-tutorial/ic785887.png "přidat uživatele")
-
-    J. Klikněte na tlačítko **přidat uživatele**.
+* BlueJeans pro Azure AD podporuje [ **automatizované** zřizování uživatelů.](bluejeans-provisioning-tutorial.md)
 
 > [!NOTE]
-> Můžete použít jakékoli jiné BlueJeans uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných BlueJeans zřízení uživatelských účtů služby Azure AD.
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="adding-bluejeans-for-azure-ad-from-the-gallery"></a>Přidání BlueJeans pro Azure AD z Galerie
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Pokud chcete nakonfigurovat integraci BlueJeans pro Azure AD do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat BlueJeans pro Azure AD z galerie.
 
-Po kliknutí na dlaždici BlueJeans na přístupovém panelu, můžete by měl být automaticky přihlášeni k BlueJeans, pro které můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **BLUEJEANS pro Azure AD** .
+1. Z panelu výsledků vyberte **BlueJeans pro Azure AD** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="additional-resources"></a>Další prostředky
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Konfigurace a testování jednotného přihlašování Azure AD pro BlueJeans pro Azure AD
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí BlueJeans pro Azure AD pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v BlueJeans pro Azure AD.
+
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí BlueJeans pro Azure AD, dokončete následující stavební bloky:
+
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte BlueJeans pro jednotné přihlašování Azure AD](#configure-bluejeans-for-azure-ad-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte BlueJeans pro testovacího uživatele Azure AD](#create-bluejeans-for-azure-ad-test-user)** – abyste měli protějšek B. Simon v BlueJeans pro Azure AD, který se odkazuje na reprezentaci uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **BLUEJEANS pro Azure AD** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
+
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.bluejeans.com`
+
+    > [!NOTE]
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, kontaktujte [BlueJeans pro tým podpory klienta Azure AD](https://support.bluejeans.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+
+1. V části **Nastavení BlueJeans pro Azure AD** zkopírujte na základě vašeho požadavku příslušné adresy URL (y).
+
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k BlueJeans pro Azure AD.
+
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **BlueJeans pro Azure AD**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-bluejeans-for-azure-ad-sso"></a>Konfigurace BlueJeans pro jednotné přihlašování Azure AD
+
+1. V jiném okně webového prohlížeče se přihlaste k **BlueJeans pro web společnosti Azure AD** jako správce.
+
+2. @No__t_2 zabezpečení přejdete na **správce \> nastavení skupiny**.
+
+    ![Správ](./media/bluejeans-tutorial/ic785868.png "Správ")
+
+3. V části **zabezpečení** proveďte následující kroky:
+
+    ![Jednotné přihlašování SAML](./media/bluejeans-tutorial/ic785869.png "Jednotné přihlašování SAML")
+
+    a. Vyberte **jednotné přihlašování SAML**.
+
+    b. Vyberte **Povolit automatické zřizování**.
+
+4. Přejděte k následujícímu postupu:
+
+    ![Cesta k certifikátu](./media/bluejeans-tutorial/ic785870.png "Cesta k certifikátu")
+
+    a. Klikněte na **zvolit soubor**a nahrajte certifikát s kódováním base-64, který jste stáhli z Azure Portal.
+
+    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+
+    c. Do textového pole **Adresa URL změny hesla** vložte hodnotu **Adresa URL pro změnu hesla** , kterou jste zkopírovali z Azure Portal.
+
+    d. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+
+5. Přejděte k následujícímu postupu:
+
+    ![Uložit změny](./media/bluejeans-tutorial/ic785874.png "Uložit změny")
+
+    a. Do textového pole **ID uživatele** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+
+    b. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+
+    c. Klikněte na **Uložit změny**.
+
+### <a name="create-bluejeans-for-azure-ad-test-user"></a>Vytvořit BlueJeans pro testovacího uživatele Azure AD
+
+Cílem této části je vytvořit uživatele s názvem B. Simon v BlueJeans pro Azure AD. BlueJeans pro Azure AD podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](bluejeans-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
+
+**Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:**
+
+1. Přihlaste se k **BlueJeans pro web společnosti Azure AD** jako správce.
+
+2. Přejít na **správce \> spravovat uživatele \> přidat uživatele**
+
+    ![Správ](./media/bluejeans-tutorial/ic785877.png "Správ")
+
+    > [!IMPORTANT]
+    > Karta **Přidat uživatele** je k dispozici pouze v případě, že na **kartě SECUTIRY**není zaškrtnuto zaškrtávací políčka **Povolit automatické zřizování** .
+
+3. V části **Přidat uživatele** proveďte následující kroky:
+
+    ![Přidat uživatele](./media/bluejeans-tutorial/ic785886.png "Přidání uživatele")
+
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
+
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
+
+    c. Do textového pole **Vybrat BlueJeans pro uživatelské jméno Azure AD** zadejte uživatelské jméno uživatele, jako je **Brittasimon** .
+
+    d. Do textového pole **vytvořit heslo** zadejte své heslo.
+
+    e. Do textového pole **Společnost** zadejte svou společnost.
+
+    f. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je `b.simon\@contoso.com`.
+
+    g. V textovém poli **vytvořit BlueJeans pro schůzku služby Azure AD** zadejte ID schůzky.
+
+    h. Do textového pole **Vybrat heslo moderátora** zadejte heslo.
+
+    i. Klikněte na **pokračovat**.
+
+    ![Přidat uživatele](./media/bluejeans-tutorial/ic785887.png "Přidání uživatele")
+
+    J. Klikněte na **Přidat uživatele**.
+
+> [!NOTE]
+> K zřizování uživatelských účtů Azure AD můžete použít jiné BlueJeans pro nástroje pro vytváření uživatelských účtů Azure AD nebo rozhraní API poskytovaná BlueJeans pro Azure AD.
+
+## <a name="test-sso"></a>Test SSO 
+
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+
+Když kliknete na dlaždici BlueJeans for Azure AD na přístupovém panelu, měli byste se automaticky přihlásit ke službě BlueJeans pro Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="additional-resources"></a>Další zdroje informací:
+
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si BlueJeans pro Azure AD s Azure AD](https://aad.portal.azure.com/)
+

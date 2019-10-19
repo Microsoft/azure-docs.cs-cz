@@ -14,10 +14,10 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68383134"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>Přístup k aplikacím a jejich používání na portálu moje aplikace
@@ -65,14 +65,14 @@ Stáhněte a nainstalujte rozšíření na základě prohlížeče, který použ
 
 - **Microsoft Edge** V Microsoft Store přejdete na funkci [rozšíření pro zabezpečené přihlašování k aplikacím](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) a pak vyberte **získat**.
 
-Do pravé části adresního řádku se přidá ikona  , která vám umožní přihlášení a přizpůsobení rozšíření.
+Do pravé části **adresního** řádku se přidá ikona, která vám umožní přihlášení a přizpůsobení rozšíření.
 
 #### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Změna portálu moje aplikace pomocí rozšíření
 V části **naposledy použité** můžete zvolit, kolik aplikací se má zobrazit, a rozhodnout se, jestli chcete, aby se mohly přesměrovat interní adresy URL vaší organizace.
 
-1. Vyberte ikonu ![   rozšířenípříponanovépřihlašovacíhopřihlašováníkaplikacímnapravoodpaneluAdresaapotomvybertepřihlásit](media/my-apps-portal/my-apps-portal-extension-icon.png) **se a**začněte.
+1. Vyberte ikonu rozšíření pro nové **přihlášení zabezpečených aplikací** ![Extension ikonu ](media/my-apps-portal/my-apps-portal-extension-icon.png) napravo od panelu **adresa** a potom vyberte **Přihlásit se**a začněte.
 
-2. Klikněte pravým tlačítkem na ikonu ![](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) **Nastavení ikona nastavení** a pak vyberte **Nastavení**.
+2. Klikněte pravým tlačítkem myši na ikonu **nastavení** ![Settings ikonu ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) a pak vyberte **Nastavení**.
 
 3. V poli **Nastavení** vyberte počet nedávných aplikací, které chcete zobrazit na portálu, a určete, jestli se mají u interních adres URL vaší organizace umožnit přesměrování, abyste je mohli používat vzdáleně.
 
@@ -88,7 +88,7 @@ Pokud máte oprávnění pro přístup k cloudovým aplikacím vaší organizace
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
+2. Otevřete webový prohlížeč a přejdete na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -102,7 +102,7 @@ Umožňuje zobrazit a používat aplikace vaší organizace z Intune Managed Bro
 
 1. Na mobilním zařízení Stáhněte a nainstalujte aplikaci Intune Managed Browser z [Apple App Storu](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [obchod Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otevřete aplikaci Intune Managed Browser, pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
+2. Otevřete aplikaci Intune Managed Browser, navštivte https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -116,7 +116,7 @@ Zobrazení a použití portálu **Moje aplikace** ze zařízení iPhone nebo iPa
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Safari.
 
-2. Přejít na https://myapps.microsoft.com nebo použít odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
+2. Přejít na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -130,7 +130,7 @@ Zobrazení a použití portálu **Moje aplikace** na zařízení s Androidem
 
 1. Na mobilním zařízení spusťte aplikaci webového prohlížeče, například Google Chrome.
 
-2. Přejít na https://myapps.microsoft.com nebo použít odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, https://myapps.microsoft.com/contoso.com jako je například.
+2. Přejít na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Můžete být například přesměrováni na přizpůsobenou stránku vaší organizace, například https://myapps.microsoft.com/contoso.com.
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -154,7 +154,7 @@ Pokud vám správce udělil oprávnění, můžete na stránku **aplikace** při
 
     Některé aplikace můžou před přidáním vyžadovat schválení správcem. V takové situaci se aplikace nepřidá na stránku **aplikace** , dokud ji správce neschválí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po zobrazení stránky **aplikace** můžete:
 

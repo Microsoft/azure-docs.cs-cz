@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69016112"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598349"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
@@ -28,11 +28,11 @@ Tato Azure Media Servicesová stránka komunity popisuje různé způsoby, jak m
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="discussion"></a>Diskuze
+## <a name="discussion"></a>Účely
 
 ### <a name="twitter"></a>Twitter
 
-Můžete použít [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) popisovač Twitteru a kontaktovat nás nebo sledovat aktualizace na Twitteru. Použijte popisovač [@AzureSupport](https://twitter.com/azuresupport) Twitteru k vyžádání podpory na Twitteru.  
+Pomocí [@MSFTAzureMediaho](https://twitter.com/MSFTAzureMedia) popisovače Twitteru můžete nás kontaktovat nebo na Twitteru sledovat aktualizace. K vyžádání podpory na Twitteru použijte [@AzureSupport](https://twitter.com/azuresupport) popisovač Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
 
@@ -46,10 +46,6 @@ Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Service
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Kontaktovat tým
-
-E-mailová adresa pro Azure Media Services primární podpory je: **amshelp\@Microsoft.com**.
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled Azure Media Services](media-services-overview.md)

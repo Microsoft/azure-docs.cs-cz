@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268837"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595293"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault příručka pro vývojáře
 
@@ -28,7 +28,7 @@ Obecnější informace o Azure Key Vault najdete v tématu [co je Key Vault](key
 
 ## <a name="public-previews"></a>Veřejné náhledy
 
-Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkoušejte si tyto informace a sdělte nám, co si myslíte prostřednictvím azurekeyvault@microsoft.comnaší e-mailové adresy pro zpětnou vazbu.
+Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkoušejte si tyto informace a sdělte nám, co si myslíte prostřednictvím azurekeyvault@microsoft.com, e-mailové adresy pro zpětnou vazbu.
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a Správa trezorů klíčů
 
@@ -60,7 +60,7 @@ Všechny prostředky Key Vault jsou přístupné prostřednictvím rozhraní RES
 
 [Reference k rozhraní .NET API pro Key Vault](/dotnet/api/microsoft.azure.keyvault).
 
-Další informace o verzi sady .NET SDK 2. x najdete v poznámkách k [verzi](key-vault-dotnet2api-release-notes.md).
+Další informace o verzi sady .NET SDK 2. x najdete v [poznámkách k verzi](key-vault-dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
@@ -76,7 +76,7 @@ V Node. js rozhraní API pro správu Key Vault a rozhraní API pro Key Vault obj
 
 [Knihovny Azure Key Vault pro Python](/python/api/overview/azure/key-vault)
 
-#### <a name="azure-cli-2"></a>Azure CLI 2
+#### <a name="azure-cli-2"></a>Rozhraní příkazového řádku Azure CLI 2
 
 [Rozhraní příkazového řádku Azure pro Key Vault](/cli/azure/keyvault)
 
@@ -84,7 +84,7 @@ V Node. js rozhraní API pro správu Key Vault a rozhraní API pro Key Vault obj
 
 [Azure PowerShell pro Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Úvodní příručky
+### <a name="quickstart-guides"></a>Průvodci rychlým startem
 
 - [Vytvořit Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Začínáme s Key Vault v Node. js](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -100,7 +100,7 @@ Kompletní příklady použití Key Vault s vašimi aplikacemi najdete v těchto
 
 Následující články a scénáře poskytují pokyny pro práci s Azure Key Vault pro konkrétní úkoly:
 
-- [Změna ID tenanta trezoru klíčů po přesunu](key-vault-subscription-move-fix.md) předplatného – když přesunete předplatné Azure z tenanta A na tenanta b, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantovi b nepřístupné. Opravte to pomocí této příručky.
+- [Změna ID tenanta trezoru klíčů po přesunu předplatného](key-vault-subscription-move-fix.md) – když přesunete předplatné Azure z tenanta A na tenanta b, stávající trezory klíčů budou pro objekty zabezpečení (uživatelé a aplikace) v tenantovi b nepřístupné. Opravte to pomocí této příručky.
 - Přístup k trezoru klíčů v [Key Vault za bránou firewall](key-vault-access-behind-firewall.md) – klientská aplikace trezoru klíčů musí mít přístup k několika koncovým bodům pro různé funkce.
 - [Postup generování a přenosu klíčů chráněných modulem HSM pro Azure Key Vault](key-vault-hsm-protected-keys.md) – pomůže vám naplánovat, vygenerovat a následně přenést vlastní klíče chráněné HSM, které se budou používat s Azure Key Vault.
 - [Jak během nasazení předat zabezpečené hodnoty (třeba hesla)](../azure-resource-manager/resource-manager-keyvault-parameter.md) – Pokud potřebujete před nasazením předat zabezpečenou hodnotu (třeba heslo), můžete tuto hodnotu Uložit jako tajný klíč v Azure Key Vault a odkazovat na hodnotu v jiných správce prostředků šablony.
@@ -117,7 +117,7 @@ Následující články a scénáře poskytují pokyny pro práci s Azure Key Va
 
 Tyto články se týkají dalších scénářů a služeb, které používají nebo integrují s Key Vault.
 
-- [Azure Disk Encryption](../security/azure-security-disk-encryption.md) využívá standardní funkci [nástroje BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytnutí šifrování svazku pro operační systém a datové disky. Řešení je integrované s Azure Key Vault, které vám pomůžou řídit a spravovat klíče a tajné kódy disku v předplatném trezoru klíčů, a přitom zajistit, aby všechna data v discích virtuálních počítačů byla v klidovém úložišti Azure šifrovaná.
+- [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) využívá standardní funkci [nástroje BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytnutí šifrování svazku pro operační systém a datové disky. Řešení je integrované s Azure Key Vault, které vám pomůžou řídit a spravovat klíče a tajné kódy disku v předplatném trezoru klíčů, a přitom zajistit, aby všechna data v discích virtuálních počítačů byla v klidovém úložišti Azure šifrovaná.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) poskytuje možnost šifrování dat uložených v účtu. Pro správu klíčů poskytuje Data Lake Store dva režimy pro správu hlavních šifrovacích klíčů (hlavních šifrovacích klíčů), které jsou potřeba k dešifrování všech dat uložených v Data Lake Store. Můžete buď nechat Data Lake Store spravovat hlavních šifrovacích klíčů za vás, nebo se rozhodnout zachovat vlastnictví hlavních šifrovacích klíčů pomocí účtu Azure Key Vault. Při vytváření Data Lake Store účtu zadáte režim správy klíčů.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umožňuje správce vlastního klíče tenanta. Místo toho, aby váš klíč tenanta spravovala společnost Microsoft (výchozí možnost), můžete spravovat vlastní klíč tenanta, abyste vyhověli určitým předpisům, které se vztahují na vaši organizaci. Správa vlastního klíče tenanta se také označuje jako Přineste si vlastní klíč nebo BYOK.
 

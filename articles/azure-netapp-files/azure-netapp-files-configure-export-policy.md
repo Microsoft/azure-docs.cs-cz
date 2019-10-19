@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zásad export pro svazek systému souborů NFS pomocí souborů NetApp Azure | Dokumentace Microsoftu
-description: Popisuje postup konfigurace export zásad pro řízení přístupu na použití služby soubory Azure NetApp svazek systému souborů NFS
+title: Konfigurace zásad exportu pro svazek NFS pomocí Azure NetApp Files | Microsoft Docs
+description: Popisuje postup konfigurace zásad exportu pro řízení přístupu ke svazku systému souborů NFS pomocí Azure NetApp Files
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086153"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597561"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
 
-Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Export zásad je podpora pouze pro svazky systému souborů NFS. 
+Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure NetApp Files. Zásada exportu Azure NetApp Files podporuje pouze svazky systému souborů NFS.  Podporují se NFSv3 i názvů NFSv4. 
 
 ## <a name="steps"></a>Kroky 
 
@@ -45,14 +45,10 @@ Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke s
         * Čtení a zápis
         * Jen pro čtení
 
-    * **Protokoly**   
-        Zadejte protokol, který se použije pro zásadu exportu.   
-        Export zásad souborů NetApp Azure v současné době podporuje pouze NFSv3.
-
     ![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 * [Správa svazků](azure-netapp-files-manage-volumes.md)
 * [Připojování nebo odpojování svazku pro virtuální počítače](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Správa snímků](azure-netapp-files-manage-snapshots.md)

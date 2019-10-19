@@ -1,5 +1,5 @@
 ---
-title: Co je virtuální počítač s Windows?  – Azure
+title: Co je Windows Virtual Desktop?  – Azure
 description: Přehled virtuálního klienta Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676552"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597906"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Co je virtuální počítač s Windows? 
+# <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
 Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v cloudu.
 
@@ -64,7 +64,7 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|JINÉHO|Požadovaná licence|
+|OS|Požadovaná licence|
 |---|---|
 |Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
@@ -75,9 +75,9 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
 * [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Dá se povolit prostřednictvím:
   * Azure AD Connect
-  * Azure AD Domain Services
-  >[!NOTE]
-  >Virtuální desktop Windows podporuje jenom Azure AD Domain Services uživatele, kteří jsou zdroji ze Azure Active Directory. Uživatelé, kteří jsou zdrojem služby Windows Server AD, se v tuto chvíli nepodporují.
+  * Služba Azure AD Domain Services
+     >[!NOTE]
+     >Pokud používáte Azure AD Domain Services, musí být uživatelé zdrojem Azure Active Directory. Použití Azure AD Domain Services s uživateli, kteří používají Windows Server AD, se v tuto chvíli nepodporuje.
 * Předplatné Azure, které obsahuje virtuální síť, která buď obsahuje, nebo je připojená k Windows serveru Active Directory.
   
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
@@ -91,9 +91,9 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít odchozí přístup TCP 443 k následujícím adresám URL:
 
 * *. wvd.microsoft.com
-* *. blob.core.windows.net
+* *.blob.core.windows.net
 * *. core.windows.net
-* *. servicebus.windows.net
+* *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
 
@@ -130,18 +130,18 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|Aktualizace agenta virtuálního počítače s Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|Automatické|
-|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automatické|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automatické|
-|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automatické|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Zásah|
-|Windows Server 2019|Ano|Ano|Ne|Ne|Automatické|
-|Windows Server 2016|Ano|Ano|Ano|Ano|Automatické|
-|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automatické|
+|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
+|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
+|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
+|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Manual|
+|Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
+|Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
+|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|
 
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
 
 > [!div class="nextstepaction"]
-> [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md)
+> [Vytvoření klienta v Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

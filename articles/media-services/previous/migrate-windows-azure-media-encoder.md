@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2e9008d039f014c95d473f3197b48651bdaa5a45
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 1f4760713eccd612014f6b75a1623dd9ad0c8c0f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019365"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595505"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrace z Windows Azure Media Encoder na Media Encoder Standard
 
@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Pokročilé scénáře 
 
-Pokud jste vytvořili vlastní předvolby kódování pro WAME pomocí svého schématu, existuje [stejné schéma pro Media Encoder Standard](media-services-mes-schema.md). Pokud máte dotazy k namapování staršího nastavení na nový kodér, obraťte se na nás přesmailto:amshelp@microsoft.com  
+Pokud jste vytvořili vlastní předvolby kódování pro WAME pomocí svého schématu, existuje [stejné schéma pro Media Encoder Standard](media-services-mes-schema.md).
 
 ## <a name="known-differences"></a>Známé rozdíly 
 
@@ -74,7 +74,11 @@ Media Encoder Standard je robustnější, spolehlivější, má lepší výkon a
 * Media Encoder Standard vytváří artefakty, jako jsou soubory obsahující [metadata vstupních souborů](media-services-input-metadata-schema.md) a [metadata výstupních souborů](media-services-output-metadata-schema.md).
 * Jak je popsáno na [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding) (zejména v části Nejčastější dotazy), při kódování videí pomocí Media Encoder Standard se vám bude účtovat na základě doby trvání souborů vytvořených jako výstup. Pomocí WAME se bude účtovat podle velikosti vstupních videosouborů a souborů výstupních videí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="need-help"></a>Potřebujete pomoct?
+
+Lístek podpory můžete otevřít tak, že přejdete na [novou žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+
+## <a name="next-steps"></a>Další kroky
 
 * [Starší verze součástí](legacy-components.md)
 * [Stránka s cenami](https://azure.microsoft.com/pricing/details/media-services/#encoding)

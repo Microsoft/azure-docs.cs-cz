@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1453821561ab7bb361fbb3e5d57634cf23a7be2c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310063"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596735"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, která přihlásí uživatele – konfigurace kódu
 
@@ -39,7 +39,7 @@ Knihovny používané k ochraně webové aplikace (a webového rozhraní API) js
 
 Vyberte kartu odpovídající platformě, které vás zajímá:
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 Fragmenty kódu v tomto článku a následující jsou extrahovány z [přírůstkového kurzu ASP.NET Core webové aplikace, kapitola 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg).
 
@@ -69,13 +69,13 @@ Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné p
 
 Webové aplikace, které se přihlašují uživatelům pomocí platformy Microsoft Identity Platform, se obvykle konfigurují prostřednictvím konfiguračních souborů. Nastavení, která je třeba vyplnit, jsou následující:
 
-- Cloud `Instance` , pokud chcete, aby se vaše aplikace spouštěla (například v národních cloudech)
-- Cílová skupina v`tenantId`
-- `clientId` pro aplikaci, jak je zkopírováno z Azure Portal.
+- Cloud `Instance`, pokud chcete, aby se vaše aplikace spouštěla (např. v národních cloudech)
+- Cílová skupina v `tenantId`
+- `clientId` pro aplikaci, jak je zkopírované z Azure Portal.
 
-V některých případech mohou být aplikace parametry `authority`typu, což je zřetězení a `instance``tenantId`
+V některých případech mohou být aplikace parametry podle `authority`, což je zřetězení `instance` a `tenantId`
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 V ASP.NET Core se tato nastavení nacházejí v souboru [appSettings. JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) v části "AzureAD".
 
@@ -136,9 +136,9 @@ V ASP.NET Core existuje další [properties\launchSettings.JSON](https://github.
 }
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To znamená, že pro dva konfigurační soubory `https://localhost:44321/signin-oidc` výše by to bylo, že ApplicationUrl nebyla je `http://localhost:3110` , `sslPort` ale `CallbackPath` je zadána (44321) a je `/signin-oidc` definován v `appsettings.json`.
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To znamená, že pro dva konfigurační soubory výše by se `https://localhost:44321/signin-oidc`, že je ApplicationUrl nebyla `http://localhost:3110`, ale je zadaný `sslPort` (44321), a `CallbackPath` je `/signin-oidc` podle definice v `appsettings.json`.
   
-Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https://localhost:44321/signout-callback-oidc`hodnotu.
+Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https://localhost:44321/signout-callback-oidc`.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -164,11 +164,11 @@ V ASP.NET je aplikace nakonfigurována pomocí řádků souboru [Web. Config](ht
   </appSettings>
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To znamená `https://localhost:44326/`.
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL; To je `https://localhost:44326/`.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-V jazyce Java se konfigurace nachází v souboru [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) , který se nachází v části`src/main/resources`
+V jazyce Java je konfigurace umístěna v souboru [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) , který je umístěn v části `src/main/resources`
 
 ```Java
 aad.clientId=Enter_the_Application_Id_here
@@ -178,7 +178,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
 ```
 
-V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na stránce **ověřování** pro vaši aplikaci, stejné jako redirectUris definované aplikací, tj `http://localhost:8080/msal4jsample/secure/aad` .`http://localhost:8080/msal4jsample/graph/users`
+V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat redirectUris definované aplikaci, která je `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/users`
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -208,13 +208,13 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 
 Inicializační kód se liší v závislosti na platformě. Pro ASP.NET Core a ASP.NET se podepisování uživatelů přidělí na middleware OpenIDConnect. V současné době šablona ASP.NET/ASP.NET Core vygeneruje webové aplikace pro koncový bod Azure AD v 1.0. Proto je třeba nakonfigurovat bitovou kopii, aby byla přizpůsobena na koncový bod Microsoft Identity Platform (v 2.0). V případě jazyka Java se v případě, že se jedná o spolupráci aplikace, zpracovává na jaře.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
-V ASP.NET Core Web Apps (a webových rozhraních API) je aplikace chráněná, protože máte `[Authorize]` atribut na řadičích nebo na akcích kontrol. Tento atribut kontroluje, jestli je uživatel ověřený. Kód, který provádí inicializaci aplikace, je umístěn v `Startup.cs` souboru, a pokud chcete přidat ověřování s platformou Microsoft identity (dříve Azure AD v 2.0), budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
+V ASP.NET Core Web Apps (a webových rozhraních API) je aplikace chráněná, protože máte atribut `[Authorize]` na řadičích nebo na akcích kontrol. Tento atribut kontroluje, jestli je uživatel ověřený. Kód, který provádí inicializaci aplikace, je umístěn v souboru `Startup.cs` a pokud chcete přidat ověřování s platformou Microsoft identity (dříve Azure AD v 2.0), budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
 
   > [!NOTE]
-  > Pokud spustíte projekt s výchozím webovým projektem ASP.NET Core v sadě Visual Studio nebo pokud `dotnet new mvc` použijete `AddAzureAD` metodu, je ve výchozím nastavení dostupná, protože související balíčky jsou automaticky načteny.
-  > Pokud však sestavíte projekt od začátku a pokoušíte se použít níže uvedený kód, doporučujeme vám přidat balíček NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do svého projektu, aby byla `AddAzureAD` metoda k dispozici.
+  > Pokud spustíte projekt pomocí výchozího webového projektu ASP.NET Core v sadě Visual Studio nebo pomocí `dotnet new mvc` `AddAzureAD` metoda je ve výchozím nastavení k dispozici, protože související balíčky jsou automaticky načteny.
+  > Pokud však sestavíte projekt od začátku a pokoušíte se použít níže uvedený kód, doporučujeme vám přidat balíček NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do svého projektu, aby byla k dispozici metoda `AddAzureAD`.
   
 Následující kód je k dispozici z [Startup. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
 
@@ -241,7 +241,7 @@ public class Startup
     }
 ```
 
-Je metoda rozšíření definovaná v [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L23.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23) `AddMicrosoftIdentityPlatformAuthentication` Její
+@No__t_0 je rozšiřující metoda definovaná v [Microsoft. identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23). Její
 
 - Přidá ověřovací službu.
 - konfigurovat možnosti pro čtení konfiguračního souboru
@@ -252,7 +252,7 @@ Je metoda rozšíření definovaná v [Microsoft. identity. Web/WebAppServiceCol
 Kromě konfigurace můžete zadat při volání `AddMicrosoftIdentityPlatformAuthentication`:
 
 - název konfiguračního oddílu (ve výchozím nastavení AzureAD)
-- Pokud chcete trasovat události middlewaru OpenIdConnect, což vám může pomáhat při řešení potíží s webovou aplikací, pokud ověřování nefunguje: `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` nastavení `true` na vám ukáže, jak budou informace vypracované sadou ASP.NET Core middleware během zpracování z odpovědi HTTP na identitu uživatele v `HttpContext.User`.
+- Pokud chcete trasovat události middlewaru OpenIdConnect, které vám pomůžou při řešení potíží s webovou aplikací, pokud ověřování nefunguje: nastavení `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` pro `true` vám ukáže, jak budou informace vypracované sadou ASP.NET Core middlewaru. pokračuje z odpovědi HTTP na identitu uživatele v `HttpContext.User`.
 
 ```CSharp
 /// <summary>
@@ -313,7 +313,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
   ...
 ```
 
-`AadIssuerValidator` Třída umožňuje Vystavitel tokenu se ověří v mnoha případech (v tokenech v 1.0 nebo v 2.0, v jediném tenantovi nebo v aplikaci víceklientské aplikace nebo aplikaci, která přihlašuje uživatele se svými osobními účty Microsoft, ve veřejném cloudu Azure nebo Národní cloudy). Je k dispozici z [Microsoft. identity. Web/Resource/AadIssuerValidator. cs.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)
+Třída `AadIssuerValidator` umožňuje, aby Vystavitel tokenu byl ověřen v mnoha případech (v tokenech v 1.0 nebo v 2.0, v rámci aplikace nebo aplikaci pro více tenantů nebo v aplikacích s více klienty, které přihlásí uživatele s jejich osobními účty Microsoft, ve veřejném cloudu Azure nebo národním cloudy). Je k dispozici z [Microsoft. identity. Web/Resource/AadIssuerValidator. cs.](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -343,17 +343,17 @@ Kód, který se vztahuje k ověřování ve webové aplikaci ASP.NET nebo webov�
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ukázka Java používá architekturu pružiny. Aplikace je chráněna `Filter`, protože implementujete, který zachycuje každou odpověď HTTP. V rychlém startu webové aplikace Java je `AuthFilter` tento filtr v. `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` Filtr zpracuje tok autorizačního kódu OAuth 2,0 a proto:
+Ukázka Java používá architekturu pružiny. Aplikace je chráněna, protože implementujete `Filter`, která zachycuje každou odpověď HTTP. V rychlém startu webové aplikace Java se tento filtr `AuthFilter` v `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`. Filtr zpracuje tok autorizačního kódu OAuth 2,0 a proto:
 
 - ověří, jestli je uživatel ověřený (`isAuthenticated()` metoda).
 - Pokud uživatel není ověřený, vypočítá adresu URL koncových bodů autorizace Azure AD a přesměruje prohlížeč na tento identifikátor URI.
 - když odpověď dorazí, která obsahuje tok kódu ověřování, umožňuje msal4j získat token.
 - Pokud nakonec obdrží token z koncového bodu tokenu (na identifikátoru URI přesměrování), je uživatel přihlášený.
 
-Podrobnosti najdete v tématu `doFilter()` metoda v [AuthFilter. Java.](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)
+Podrobnosti najdete v tématu metoda `doFilter()` v [AuthFilter. Java.](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)
 
 > [!NOTE]
-> Kód `doFilter()` je napsán v mírně jiném pořadí, ale tok je popsán.
+> Kód `doFilter()` je napsán v trochu jiném pořadí, ale tok je popsán.
 
 Podrobnosti o toku autorizačního kódu, který aktivovala Tato metoda, najdete v tématu [Microsoft Identity Platform a flow 2,0 – tok autorizačního kódu OAuth](v2-oauth2-auth-code-flow.md) .
 
@@ -381,5 +381,24 @@ Session(app)
 
 V dalším článku se dozvíte, jak aktivovat přihlášení a odhlášení.
 
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Přihlášení a odhlášení](scenario-web-app-sign-user-sign-in.md)
+> [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)
+
+---

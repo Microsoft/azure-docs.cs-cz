@@ -18,19 +18,19 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68989273"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý start: Konfigurace aplikace k vystavení webových rozhraní API
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API
 
 Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci pro zveřejnění nového oboru a tím ji zpřístupnit klientským aplikacím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -52,7 +52,7 @@ Než budete moct nakonfigurovat aplikaci, postupujte podle těchto kroků:
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Zveřejnění nového oboru prostřednictvím uživatelského rozhraní
 
-[![Ukazuje, jak vystavit rozhraní API pomocí uživatelského rozhraní.](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![Shows, jak vystavit rozhraní API pomocí uživatelského rozhraní](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 
@@ -129,7 +129,7 @@ Manifest aplikace slouží jako mechanismus pro aktualizaci aplikační entity, 
 
 Další informace o obecných konceptech manifestu aplikace najdete v tématu [Vysvětlení manifestu aplikace Azure Active Directory](reference-app-manifest.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
 

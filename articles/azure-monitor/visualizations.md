@@ -1,23 +1,18 @@
 ---
 title: Vizualizace dat z Azure Monitor | Microsoft Docs
 description: Poskytuje souhrn dostupných metod pro vizualizaci dat metrik a protokolů uložených v Azure Monitor.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 11/24/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/24/2018
+ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984186"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597836"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat z Azure Monitor
 Tento článek poskytuje souhrn dostupných metod pro vizualizaci dat protokolů a metrik uložených v Azure Monitor.
@@ -53,7 +48,7 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 ## <a name="azure-monitor-views"></a>Zobrazení Azure Monitor
 [Zobrazení v Azure monitor](platform/view-designer.md) umožňují vytvářet vlastní vizualizace s daty protokolu. Používají se pro [monitorování řešení](insights/solutions.md) k prezentaci shromažďovaných dat.
 
-![Zobrazení](media/visualizations/view.png)
+![Zobrazit](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Výhody
 - Bohatá vizualizace pro data protokolu.
@@ -71,10 +66,10 @@ Vizualizace, jako jsou grafy a grafy, vám pomohou analyzovat data monitorován�
 - Dotazy jsou omezené na velikost odpovědi na 8MB a čas provedení dotazu 110 sekund.
 
 
-## <a name="workbooks"></a>Sešity
+## <a name="workbooks"></a>Workbooks
 [Sešity](../azure-monitor/app/usage-workbooks.md) jsou interaktivní dokumenty, které poskytují podrobné přehledy o vašich datech, vyšetřování a spolupráci v rámci týmu. Konkrétní příklady, kde jsou sešity užitečné, jsou průvodci odstraňováním potíží a Postmortem incidentů.
 
-![Sešit](media/visualizations/workbook.png)
+![Pracovní](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>Výhody
 - Podporuje obě metriky a protokoly.
@@ -136,11 +131,11 @@ K datům v protokolech a datech metrik v Azure Monitor prostřednictvím rozhran
 - Vyžaduje se významné technické úsilí.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Seznamte se s [daty shromažďovanými nástrojem Azure monitor](platform/data-platform.md).
 - Přečtěte si o [řídicích panelech Azure](../azure-portal/azure-portal-dashboards.md).
 - Přečtěte si o [zobrazeních v Azure monitor](platform/view-designer.md).
-- Seznamte [](../azure-monitor/app/usage-workbooks.md)se se sešity.
+- Seznamte se se [sešity](../azure-monitor/app/usage-workbooks.md).
 - Přečtěte si informace o [importu dat protokolu do Power BI](../azure-monitor/platform/powerbi.md).
 - Seznamte se s [modulem plug-in zdroje dat Grafana Azure monitor](../azure-monitor/platform/grafana-plugin.md).
 

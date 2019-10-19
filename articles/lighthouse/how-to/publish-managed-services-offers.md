@@ -4,15 +4,15 @@ description: Naučte se publikovat nabídku spravované služby, která zákazn�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300303"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595264"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
@@ -132,7 +132,7 @@ Až budete spokojeni se všemi informacemi, které jste zadali, je dalším krok
 
 ## <a name="the-customer-onboarding-process"></a>Proces zprovoznění zákazníků
 
-Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
+Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku. Pokud uživatel v tenantovi zákazníka nemůže toto delegování provést, je to pravděpodobně proto, že nemá roli vlastníka pro předplatné. Pokud chcete najít uživatele, kteří můžou delegovat předplatné, může uživatel vybrat předplatné v Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Předtím, než bude možné připojit předplatné (nebo skupiny prostředků v rámci předplatného), musí být odběr autorizovaný k registraci tím, že ručně zaregistruje poskytovatele prostředků **Microsoft. ManagedServices** . Uživatel v tenantovi zákazníka s rolí přispěvatel nebo vlastník může postupovat podle kroků uvedených v části [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
 

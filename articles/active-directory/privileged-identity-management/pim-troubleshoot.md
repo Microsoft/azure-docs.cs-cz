@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7fc3508f7f672e277577f92218ff1860b676cb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559473"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596694"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Řešení potíží s Privileged Identity Management
 
@@ -28,7 +28,7 @@ Máte potíže s Privileged Identity Management (PIM) v Azure Active Directory (
 
 ### <a name="problem"></a>Problém
 
-Při pokusu o vytvoření uživatele s nárokem na roli správce Azure AD se zobrazí chyba autorizace a v rámci Privileged Identity Management nebudete moci získat přístup k prostředkům Azure. Nemůžete získat přístup k prostředkům Azure pod Privileged Identity Management ani v případě, že jste globálním správcem a vlastníkem předplatného.
+Jako aktivní vlastník nebo správce přístupu uživatelů pro prostředek Azure můžete prostředek zobrazit v rámci Privileged Identity Management ale nemůžete provádět žádné akce, jako je třeba vytvoření oprávněného přiřazení nebo zobrazení seznamu přiřazení rolí z prostředku. Stránka s přehledem Každá z těchto akcí má za následek chybu autorizace.
 
 ### <a name="cause"></a>Příčina
 

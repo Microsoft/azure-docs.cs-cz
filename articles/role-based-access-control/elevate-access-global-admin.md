@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 10/17/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 984284fa185d4d8454b1689a62ca9e08c342e33b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2fec017f80758dbcf2a155c3535b9a3e028e4bd9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195117"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592696"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu
 
@@ -47,7 +47,7 @@ Tento přístup se zvýšeným oprávněním byste měli odebrat, jakmile proved
 
 ![Zvýšení přístupu](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Portál Azure
 
 Pomocí těchto kroků můžete zvýšit přístup pro globálního správce pomocí Azure Portal.
 
@@ -65,6 +65,9 @@ Pomocí těchto kroků můžete zvýšit přístup pro globálního správce pom
 
    Když nastavíte přepínač na **ne**, role správce přístupu uživatele v Azure RBAC se odebere z vašeho uživatelského účtu. Ve všech předplatných Azure a skupinách pro správu, které jsou přidružené k tomuto adresáři služby Azure AD, už nemůžete přiřazovat role. Můžete zobrazit a spravovat pouze předplatná Azure a skupiny pro správu, kterým jste udělili přístup.
 
+    > [!NOTE]
+    > Pokud používáte [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md), deaktivace přiřazení role nezmění tento přepínač na **ne**. Pokud chcete zachovat nejméně privilegovaný přístup, doporučujeme nastavit tento přepínač na **ne** , než deaktivujete přiřazení role.
+    
 1. Uložte nastavení kliknutím na **Uložit** .
 
    Toto nastavení není globálních vlastností a platí pouze pro aktuálně přihlášeného uživatele. Přístup pro všechny členy role globálního správce nelze zvýšit.
@@ -120,13 +123,13 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele pro uživatel
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 
 Pomocí následujících základních kroků můžete zvýšit přístup pro globálního správce pomocí REST API.
 
-1. Pomocí REST volejte volání `elevateAccess`, které uděluje roli správce přístupu uživatele v kořenovém oboru (`/`).
+1. Pomocí REST volejte `elevateAccess`, které vám umožní roli správce přístupu uživatele v kořenovém oboru (`/`).
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
@@ -155,7 +158,7 @@ Pomocí následujících základních kroků můžete zvýšit přístup pro glo
 
 Můžete vypsat všechna přiřazení rolí pro uživatele v kořenovém oboru (`/`).
 
-- Zavolejte [Get roleAssignments](/rest/api/authorization/roleassignments/listforscope) , `{objectIdOfUser}` kde je ID objektu uživatele, jehož přiřazení role chcete načíst.
+- Zavolejte [Get roleAssignments](/rest/api/authorization/roleassignments/listforscope) , kde `{objectIdOfUser}` je ID objektu uživatele, jehož přiřazení role chcete načíst.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
@@ -165,7 +168,7 @@ Můžete vypsat všechna přiřazení rolí pro uživatele v kořenovém oboru (
 
 Můžete vypsat všechna přiřazení zamítnutí pro uživatele v kořenovém oboru (`/`).
 
-- Zavolejte Get denyAssignments, `{objectIdOfUser}` kde je ID objektu uživatele, jehož přiřazení zamítnout chcete načíst.
+- Zavolejte GET denyAssignments, kde `{objectIdOfUser}` je ID objektu uživatele, jehož přiřazení zamítnout chcete načíst.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
@@ -175,7 +178,7 @@ Můžete vypsat všechna přiřazení zamítnutí pro uživatele v kořenovém o
 
 Když zavoláte `elevateAccess`, vytvoříte přiřazení role sami, takže odvoláte tato oprávnění, která potřebujete k odebrání přiřazení.
 
-1. Pokud chcete zjistit ID `roleName` názvu role správce přístupu uživatele, zavolejte funkci [Get roleDefinitions](/rest/api/authorization/roledefinitions/get) , kde se rovná správce přístupu uživatele.
+1. Zavolejte [Get roleDefinitions](/rest/api/authorization/roledefinitions/get) , kde `roleName` se rovná správci přístupu uživatele, aby určila ID názvu role správce přístupu uživatele.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
@@ -216,18 +219,18 @@ Když zavoláte `elevateAccess`, vytvoříte přiřazení role sami, takže odvo
     }
     ```
 
-    V tomto případě `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`uložte ID `name` z parametru.
+    Uložte ID z parametru `name` v tomto případě `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
 
-2. Musíte také uvést přiřazení role pro správce adresáře v oboru adresáře. Vypíše všechna přiřazení v oboru adresáře pro `principalId` Správce adresáře, který provedl volání přístupu ke zvýšení oprávnění. Zobrazí se seznam všech přiřazení v adresáři pro identifikátor objectID.
+2. Musíte také uvést přiřazení role pro správce adresáře v oboru adresáře. Vypíše všechna přiřazení v oboru adresáře pro `principalId` Správce adresáře, který provedl přístupové volání zvýšení oprávnění. Zobrazí se seznam všech přiřazení v adresáři pro identifikátor objectID.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >Správce adresáře by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, můžete také zadat dotaz na všechna přiřazení pouze v úrovni oboru adresáře a následně vyfiltrovat výsledky:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Správce adresáře by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, můžete také zadat dotaz na všechna přiřazení pouze v úrovni oboru adresáře a následně vyfiltrovat výsledky: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-   1. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde je `"/"` rozsah `roleDefinitionId` a končí s ID názvu role, které jste našli v kroku 1 a `principalId` odpovídá objectID Správce adresáře. 
+   1. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde je obor `"/"` a `roleDefinitionId` končí identifikátorem ID role, který jste našli v kroku 1, a `principalId` se shoduje s identifikátorem objectId Správce adresáře. 
     
       Přiřazení ukázkové role:
 
@@ -253,9 +256,9 @@ Když zavoláte `elevateAccess`, vytvoříte přiřazení role sami, takže odvo
        }
        ```
         
-      Znovu uložte ID z `name` parametru, v tomto případě e7dd75bc-06f6-4e71-9014-ee96a929d099.
+      Znovu uložte ID z parametru `name` v tomto případě e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-   1. Nakonec pomocí ID přiřazení role odeberte přiřazení, které `elevateAccess`Přidal:
+   1. Nakonec pomocí ID přiřazení role odeberte přiřazení přidaná `elevateAccess`:
 
       ```http
       DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01

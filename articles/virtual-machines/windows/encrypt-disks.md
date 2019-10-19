@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: bee4b108d2747e8c386abe41dc61b5b19aecf4f5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828686"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597859"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Šifrování virtuálních disků na virtuálním počítači s Windows
-Pro rozšířené zabezpečení virtuálních počítačů a dodržování předpisů můžete virtuální disky v Azure šifrovat. Disky se šifrují pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Můžete řídit tyto kryptografické klíče a auditovat jejich použití. Tento článek popisuje, jak pomocí Azure PowerShell šifrovat virtuální disky na virtuálním počítači s Windows. [Virtuální počítač se systémem Linux můžete také zašifrovat pomocí Azure CLI](../linux/disk-encryption-overview.md).
+Pro rozšířené zabezpečení virtuálních počítačů a dodržování předpisů můžete virtuální disky v Azure šifrovat. Disky se šifrují pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Můžete řídit tyto kryptografické klíče a auditovat jejich použití. Tento článek popisuje, jak pomocí Azure PowerShell šifrovat virtuální disky na virtuálním počítači s Windows. Můžete také [Šifrovat virtuální počítače se systémem Linux](../linux/disk-encryption-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -146,4 +146,4 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o správě Azure Key Vault najdete v tématu [nastavení Key Vault pro virtuální počítače](key-vault-setup.md).
-* Další informace o šifrování disku, jako je například příprava šifrovaného vlastního virtuálního počítače pro nahrání do Azure, najdete v tématu [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+* Další informace o šifrování disku, jako je například příprava šifrovaného vlastního virtuálního počítače pro nahrání do Azure, najdete v tématu [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).

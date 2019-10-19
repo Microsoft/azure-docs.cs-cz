@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166218"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598400"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
 
@@ -70,6 +70,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 ```
 
 ## <a name="finding-wait-queries"></a>Hledání dotazů čekání
+
+> [!NOTE]
+> V hodinách úlohy špičky by se nemělo povolit statistiku čekání nebo je u citlivých úloh zapnutá možnost neomezeně. <br>Pro úlohy, které běží s vysokým využitím procesoru nebo na serverech konfigurovaných s nižším virtuální jádra, buďte při povolování statistik čekání opatrní. Neměl by být zapnutý po neomezenou dobu. 
 
 Typy událostí čekání spojují různé události čekání do sad podle podobnosti. Úložiště dotazů poskytuje typ události čekání, název konkrétní události čekání a dotaz na něj. Možnost korelovat tyto informace o čekání pomocí statistiky za běhu dotazů znamená, že můžete získat hlubší přehled o tom, co přispívá k charakteristikám výkonu dotazů.
 
@@ -171,10 +174,10 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
-- Pokud má server MariaDB parametr `default_transaction_read_only` na, úložiště dotazů nemůže zachytit data.
+- Pokud má server MariaDB parametr `default_transaction_read_only` na, nemůže úložiště dotazů zachytit data.
 - Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\> = 6000 bajtů).
 - Doba uchování pro statistiku čekání je 24 hodin.
-- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Frekvence se dá upravit pomocí parametru `query_store_wait_sampling_frequency`.
+- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency` parametru.
 
 ## <a name="next-steps"></a>Další kroky
 
