@@ -1,77 +1,127 @@
 ---
-title: Transformace datového toku Azure Data Factory
-description: Transformace datového toku Azure Data Factory
+title: Transformace spojení v datovém toku mapování Azure Data Factory | Microsoft Docs
+description: Kombinování dat ze dvou zdrojů dat pomocí transformace spojení v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/17/2019
+ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387229"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597036"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Mapování transformace toku dat
+# <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
-
-
-Ke kombinování dat ze dvou tabulek v toku dat použijte JOIN. Klikněte na transformaci, která bude levou relací a přidejte transformaci spojení ze sady nástrojů. V transformaci spojení vyberete jiný datový proud z datového toku, který má být pravý.
-
-![Transformace spojení](media/data-flow/join.png "Spojit")
+Použijte transformaci JOIN ke kombinování dat ze dvou zdrojů nebo datových proudů v toku dat mapování. Výstupní datový proud bude obsahovat všechny sloupce z obou zdrojů odpovídajících v závislosti na podmínce spojení. 
 
 ## <a name="join-types"></a>Typy spojení
 
-Pro transformaci JOIN je vyžadován výběr typu spojení.
+Mapování toků dat aktuálně podporuje pět různých typů spojení.
 
 ### <a name="inner-join"></a>Vnitřní spojení
 
-Vnitřní spojení projde pouze řádky, které odpovídají podmínkám sloupce z obou tabulek.
+Vnitřní spojení pouze zapisuje pouze řádky, které mají odpovídající hodnoty v obou tabulkách.
 
 ### <a name="left-outer"></a>Levé vnější
 
-Všechny řádky z levého proudu, který nesplňuje podmínky spojení, jsou předány a výstupní sloupce z druhé tabulky jsou kromě všech řádků vrácených vnitřním spojením nastaveny na hodnotu NULL.
+Levé vnější spojení vrátí všechny řádky z levého proudu a odpovídající záznamy z pravého datového proudu. Pokud řádek z levého datového proudu neodpovídá, výstupní sloupce z pravého datového proudu jsou nastaveny na hodnotu NULL. Výstupem budou řádky vrácené vnitřním spojením a nespárované řádky z levého streamu.
 
 ### <a name="right-outer"></a>Pravé vnější
 
-Všechny řádky ze pravého proudu, který nesplňuje podmínky spojení, jsou předány a výstupní sloupce, které odpovídají druhé tabulce, jsou nastaveny na hodnotu NULL a navíc na všechny řádky vrácené vnitřním spojením.
+Levé vnější spojení vrátí všechny řádky z pravého proudu a odpovídající záznamy z levého streamu. Pokud řádek ze pravého datového proudu neodpovídá, výstupní sloupce z pravého datového proudu jsou nastaveny na hodnotu NULL. Výstupem budou řádky vrácené vnitřním spojením a nespárované řádky z pravého datového proudu.
 
 ### <a name="full-outer"></a>Úplné vnější
 
-Úplné vnější vytvoří všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které nejsou k dispozici v druhé tabulce.
+Plné vnější spojení vyprodukuje výstup všech sloupců a řádků z obou stran s hodnotami NULL pro sloupce se neshodují.
 
 ### <a name="cross-join"></a>Vzájemné spojení
 
-Určete různé produkty dvou datových proudů pomocí výrazu. Tuto možnost můžete použít k vytvoření vlastních podmínek spojení.
+V případě vzájemného spojení se v závislosti na podmínce vytvoří výstup z obou datových proudů mezi různými produkty. Pokud používáte podmínku, která není rovnost, zadejte jako podmínku vzájemného spojení vlastní výraz. Výstupní datový proud bude obsahovat všechny řádky, které splňují podmínku spojení. Pokud chcete vytvořit kartézském produkt, který vypíše všechny kombinace řádků, zadejte jako podmínku JOIN `true()`.
 
-## <a name="specify-join-conditions"></a>Zadat podmínky připojení
+## <a name="configuration"></a>Konfigurace
 
-Zbývající podmínka spojení je z datového proudu připojeného nalevo od vaší služby JOIN. Pravá podmínka spojení je druhý datový proud připojený k vašemu spojení v dolní části, který bude buď přímým konektorem na jiný datový proud, nebo odkaz na jiný datový proud.
+1. Vyberte datový proud, se kterým se připojujete, v rozevíracím seznamu **správný datový proud** .
+1. Vyberte **typ spojení**
+1. Vyberte, na které klíčové sloupce se má shoda při spojování podmínky připojit. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
 
-Je nutné zadat alespoň 1 (1.. n) podmínky spojení. Můžou to být pole, na která se odkazuje přímo, vybraná z rozevírací nabídky nebo výrazy.
+![Transformace spojení](media/data-flow/join.png "Spojit")
 
-## <a name="join-performance-optimizations"></a>Sloučit optimalizace výkonu
+## <a name="optimizing-join-performance"></a>Optimalizace výkonu připojení
 
-Na rozdíl od spojení sloučení v nástrojích, jako je SSIS, se spojení v toku dat ADF nejedná o povinnou operaci sloučení slučovacího spojení. Proto se klíče JOIN nemusejí seřadit jako první. Operace join proběhne na základě optimální operace join ve Sparku: všesměrové vysílání/spojení na straně mapy:
+Na rozdíl od sloučení slučovacích nástrojů v nástrojích, jako je SSIS, transformace spojení není povinná operace sloučení spojení. Klávesy JOIN nevyžadují řazení. Operace join probíhá na základě optimální operace join ve Sparku, ať už při vysílání, nebo při připojení na straně mapy.
 
 ![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 
-Pokud se vaše datová sada vejde do paměti pracovního uzlu, můžeme optimalizovat výkon připojení. Můžete také určit rozdělení dat v rámci operace JOIN a vytvořit tak sady dat, které mohou být pro jednotlivé pracovní procesy lépe přizpůsobeny paměti.
+Pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, Optimalizujte svůj výkon tím, že na kartě optimalizace povolíte **všesměrové vysílání** . Můžete také přerozdělit data na operaci JOIN tak, aby vyhovovala lepší paměti na pracovní proces.
 
 ## <a name="self-join"></a>Připojovat se k sobě
 
-Podmínky pro samoobslužné spojení v toku dat ADF můžete dosáhnout pomocí transformace SELECT pro vytvoření aliasu existujícího datového proudu. Nejdřív vytvořte z datového proudu "novou větev" a pak přidejte výběr pro vytvoření aliasu pro celý původní datový proud.
+Pokud chcete datový proud sám propojit se sebou samým, vytvořte alias pro existující datový proud s transformací SELECT. Kliknutím na ikonu plus vedle transformace a výběrem možnosti **Nová větev**vytvořte novou větev. Přidejte transformaci SELECT, která bude aliasovat původní datový proud. Přidejte transformaci JOIN a jako **levý datový** proud zvolte původní datový proud a jako **správný datový proud**vyberte transformaci.
 
 ![Připojovat se k sobě](media/data-flow/selfjoin.png "Připojovat se k sobě")
 
-Ve výše uvedeném diagramu je transformace SELECT v horní části. Všechny IT jsou aliasy původního datového proudu na "OrigSourceBatting". V zvýrazněné transformaci spojení níže vidíte, že používáme tento datový proud s aliasem jako připojení na pravé straně, což nám umožňuje odkázat na stejný klíč v levém & pravé straně vnitřního spojení.
+## <a name="testing-join-conditions"></a>Testování podmínek připojení
 
-## <a name="composite-and-custom-keys"></a>Složené a vlastní klíče
+Při testování transformací spojení s náhledem dat v režimu ladění použijte malou sadu známých dat. Při vzorkování řádků z velké datové sady nelze předpovědět, které řádky a klíče budou načteny pro testování. Výsledek je Nedeterministický, což znamená, že podmínky spojení nemusí vracet žádné shody.
 
-V transformaci spojení můžete vytvořit vlastní a složené klíče průběžně. Přidejte řádky pro další sloupce spojení se znaménkem plus (+) vedle každého řádku relace. Nebo vypočítá novou hodnotu klíče v Tvůrci výrazů pro hodnotu průběžného spojení.
+## <a name="data-flow-script"></a>Skript toku dat
+
+### <a name="syntax"></a>Syntaxe
+
+```
+<leftStream>, <rightStream>
+    join(
+        <conditionalExpression>,
+        joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <joinTransformationName>
+```
+
+### <a name="inner-join-example"></a>Příklad vnitřního spojení
+
+Níže uvedený příklad je transformační transformace s názvem `JoinMatchedData`, která přebírá levý Stream `TripData` a `TripFare` pravého streamu.  Podmínka spojení je výraz `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, který vrací hodnotu true, pokud se sloupce `hack_license`, `medallion`, `vendor_id` a `pickup_datetime` v každém datovém proudu shodují. @No__t_0 je `'inner'`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'` hodnoty.
+
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+
+![Příklad spojení](media/data-flow/join-script1.png "Příklad spojení")
+
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
+
+```
+TripData, TripFare
+    join(
+        hack_license == { hack_license}
+        && TripData@medallion == TripFare@medallion
+        && vendor_id == { vendor_id}
+        && pickup_datetime == { pickup_datetime},
+        joinType:'inner',
+        broadcast: 'left'
+    )~> JoinMatchedData
+```
+
+### <a name="cross-join-example"></a>Příklad vzájemného spojení
+
+Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare` pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. @No__t_0 v `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'` hodnoty.
+
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
+
+![Příklad spojení](media/data-flow/join-script2.png "Příklad spojení")
+
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
+
+```
+TripData, TripFare
+    join(
+        true(),
+        joinType:'cross',
+        broadcast: 'left'
+    )~> CartesianProduct
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-Po připojení dat můžete [vytvořit nové sloupce](data-flow-derived-column.md) a [ukládat data do cílového úložiště dat](data-flow-sink.md).
+Po připojení dat vytvořte [odvozený sloupec](data-flow-derived-column.md) a [zajímka](data-flow-sink.md) dat do cílového úložiště dat.

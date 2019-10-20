@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803386"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598126"
 ---
 # <a name="list-blob-containers-with-net"></a>Výpis kontejnerů objektů BLOB pomocí .NET
 
@@ -40,9 +40,9 @@ V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu nu
 
 Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro parametr `prefix`. Řetězec předpony může obsahovat jeden nebo více znaků. Azure Storage pak vrátí pouze kontejnery, jejichž názvy začínají předponou.
 
-### <a name="return-container-metadata"></a>Vrátit metadata kontejneru
+### <a name="return-metadata"></a>Návratová metadata
 
-Chcete-li vrátit metadata kontejneru s výsledky, zadejte hodnotu **metadat** pro výčet [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Azure Storage zahrnuje metadata s každým vráceným kontejnerem, takže nemusíte také volat jednu z metod **FetchAttributes** k načtení metadat kontejneru.
+Chcete-li vrátit metadata kontejneru s výsledky, zadejte hodnotu **metadat** pro výčet [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Azure Storage zahrnuje metadata s každým vráceným kontejnerem, takže nemusíte také volat jednu z metod **FetchAttributes** k načtení metadat kontejneru.
 
 ## <a name="example-list-containers"></a>Příklad: Seznam kontejnerů
 
@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Vypsat kontejnery](/rest/api/storageservices/list-containers2)
+[Vypsat kontejnery](/rest/api/storageservices/list-containers2) 
 [vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

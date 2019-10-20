@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f30174f6271a3aa85ecf277531b34ff932644e3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518392"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596361"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -87,4 +87,4 @@ Při nasazování netrvalé infrastruktury virtuálních počítačů by správc
  
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace hybridního připojení ke službě Azure AD pro zařízení s Windows připojená k doméně, která jsou federované pomocí služby ADFS](manage-stale-devices.md)
+[Konfigurace služby Hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)

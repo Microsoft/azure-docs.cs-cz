@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 703b8b5732109faed1523c678af612e7fc8dab6d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82a0d98b7a9bb29a69830f1d8bd9b1e7db977273
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244085"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598409"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nové nabídky Dynamics 365 for Customer Engagement & PowerApps
 
@@ -289,7 +289,7 @@ K dispozici jsou následující typy testovacích jednotek, z nichž každá má
 
 - **Šablona testovacích jednotek Azure Resource Manager**: Nahrajte soubor. zip obsahující šablonu Azure Resource Manager.  Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Toto trvání může být pouze nastaveno na celé číslo hodiny (např. "2" hodiny, "1,5" je neplatné).
+- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Tato doba může být nastavena pouze na celé číslo hodiny (například 2 hodiny, "1,5" není platný).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technická konfigurace pro testovací jednotku Dynamics 365
 
@@ -297,11 +297,11 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Maximální počet souběžných testovacích jednotek** (povinné): Nastavte maximální počet zákazníků, kteří můžou testovací jednotku používat najednou. Každý souběžný uživatel bude spotřebovat licenci Dynamics 365, zatímco je testovací jednotka aktivní, takže budete muset zajistit, aby bylo k dispozici dostatek licencí pro podporu maximálního limitu. Doporučená hodnota 3-5.
 
-- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, definováním počtu hodin. Po uplynutí této doby bude relace končit a už nebude využívat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Toto trvání může být pouze nastaveno na celé číslo hodiny (např. "2" hodiny, "1,5" je neplatné).  Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
+- **Doba trvání testovacích jednotek** (povinné): zadejte dobu, po kterou bude testovací jednotka aktivní, definováním počtu hodin. Po uplynutí této doby bude relace končit a už nebude využívat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé číslo hodiny (například 2 hodiny, "1,5" není platný).  Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
 
 - **Adresa URL instance** (povinné): adresa URL, na které zákazník zahájí svoji testovací jednotku. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například https://testdrive.crm.dynamics.com).
 
-- **Instance URL webového rozhraní API** (povinné): načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \&GT; **Přizpůsobení** @no__t – 4GT; **Materiály pro vývojáře** @no__t – 6gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL (např. https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Instance URL webového rozhraní API** (povinné): načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \&gt; **Přizpůsobení** \&gt; **Materiály pro vývojáře** \&gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL (např.  https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Název role** (povinné): zadejte název role zabezpečení, který jste definovali ve vlastní testovací jednotce Dynamics 365. Tato funkce se uživateli přiřadí během testovacích jednotek (např. Test-Drive-role).
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387859"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596589"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
@@ -29,6 +29,20 @@ Transformace vyhledávání provádí ekvivalent levého vnějšího spojení. Z
 
 Po transformaci vyhledávání můžete použít následnou transformaci k zkontrolování výsledků každého řádku shody pomocí funkce Expression `isMatch()` pro další volby v logice na základě toho, zda hledání vedlo ke shodě mezi řádky nebo nikoli.
 
+![Vzor vyhledávání](media/data-flow/lookup111.png "Vzor vyhledávání")
+
+Po použití transformace vyhledávání můžete přidat transformaci s podmíněným rozdělením na funkci ```isMatch()```. V předchozím příkladu procházejí porovnávací řádky přes horní datový proud a nevyhovující tok řádků prostřednictvím ```NoMatch```ho datového proudu.
+
+## <a name="first-or-last-value"></a>První nebo poslední hodnota
+
+Pokud máte více odpovídajících hodnot vyhledávání, můžete chtít snížit více odpovídajících řádků, a to výběrem první nebo poslední shody. Můžete to provést pomocí agregované transformace po vyhledání.
+
+V tomto případě se pro výběr první hodnoty ze shod vyhledávání používá agregovaná transformace s názvem ```PickFirst```.
+
+![Vyhledávací agregace](media/data-flow/lookup333.png "Vyhledávací agregace")
+
+![Nejdříve vyhledávání](media/data-flow/lookup444.png "Nejdříve vyhledávání")
+
 ## <a name="optimizations"></a>Optimalizace
 
 V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
@@ -45,4 +59,5 @@ Rozdělení dat můžete zadat také tak, že na kartě optimalizace v transform
 
 ## <a name="next-steps"></a>Další kroky
 
-[](data-flow-join.md) Transformace a [Exists existují](data-flow-exists.md) podobné úkoly v toku dat mapování ADF. Podívejte se na následující transformace.
+* [](data-flow-join.md) Transformace a [Exists existují](data-flow-exists.md) podobné úkoly v toku dat mapování ADF. Podívejte se na následující transformace.
+* Rozdělení řádků na párové a neshodné hodnoty pomocí [podmíněného rozdělení](data-flow-conditional-split.md) s ```isMatch()```

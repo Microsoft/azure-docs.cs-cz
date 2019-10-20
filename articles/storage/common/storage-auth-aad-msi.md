@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bed661873b195694c2fd9b30b1d98a3ecf1fc8a4
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 833aa7dcce5c429b3005a378e93e2177df1eb0d4
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671103"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595182"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure
 
 Azure Blob a Queue Storage podporují ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k objektům blob a Queue pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikací Functions, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.  
 
-Tento článek popisuje, jak autorizovat přístup k datům objektů BLOB nebo front pomocí spravované identity z virtuálního počítače Azure.
+Tento článek popisuje, jak autorizovat přístup k datům objektů BLOB nebo front z virtuálního počítače Azure pomocí spravovaných identit pro prostředky Azure. Také popisuje, jak testovat kód ve vývojovém prostředí.
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
 
@@ -29,102 +29,92 @@ Než budete moct pomocí spravovaných identit pro prostředky Azure autorizovat
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Klientské knihovny Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>Udělení oprávnění spravované identitě Azure AD
+Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Pokud chcete autorizovat požadavek na objekt BLOB nebo Služba front ze spravované identity ve vaší aplikaci Azure Storage, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro tuto spravovanou identitu. Azure Storage definuje role RBAC, které zahrnují oprávnění pro data objektů BLOB a front. Když je role RBAC přiřazená ke spravované identitě, spravovaná identita jim udělí tato oprávnění k datům BLOB nebo Queue v příslušném oboru.
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Ověřování pomocí knihovny identit Azure (Preview)
 
-Další informace o přiřazování rolí RBAC najdete v jednom z následujících článků:
+Klientská knihovna Azure identity pro .NET (Preview) ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure.
 
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí Azure CLI](storage-auth-aad-rbac-cli.md)
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí PowerShellu](storage-auth-aad-rbac-powershell.md)
+Když váš kód běží ve vývojovém prostředí, ověřování může být zpracováno automaticky nebo může vyžadovat přihlášení prohlížeče v závislosti na tom, které nástroje používáte. Microsoft Visual Studio podporuje jednotné přihlašování (SSO), aby se aktivní uživatelský účet Azure AD automaticky používal pro ověřování. Další informace o JEDNOTNÉm přihlašování najdete v tématu [jednotné přihlašování k aplikacím](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
-## <a name="azure-storage-resource-id"></a>ID prostředku Azure Storage
+Jiné vývojové nástroje vás můžou vyzvat k přihlášení přes webový prohlížeč. K ověření z vývojového prostředí můžete také použít instanční objekt. Další informace najdete v tématu věnovaném [vytvoření identity pro aplikaci Azure na portálu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
+Po ověření získá Klientská knihovna identity Azure přihlašovací údaje tokenu. Tyto přihlašovací údaje tokenu se pak zapouzdřují v objektu klienta služby, který vytvoříte k provádění operací s Azure Storage. Knihovna to zvládne bezproblémově tím, že získá příslušné přihlašovací údaje tokenu.
 
-## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: Vytvoření objektu blob bloku
+Další informace o klientské knihovně identit Azure najdete v tématu [Klientská knihovna Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
 
-Příklad kódu ukazuje, jak získat token OAuth 2,0 z Azure AD a použít ho k autorizaci žádosti o vytvoření objektu blob bloku. Chcete-li získat tento příklad práce, postupujte podle kroků popsaných v předchozích částech.
+## <a name="assign-rbac-roles-for-access-to-data"></a>Přiřazení rolí RBAC pro přístup k datům
 
-[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
+Když se objekt zabezpečení služby Azure AD pokusí získat přístup k datům objektu BLOB nebo fronty, musí mít tento objekt zabezpečení oprávnění k prostředku. Bez ohledu na to, jestli je objekt zabezpečení spravovanou identitou v Azure nebo uživatelským účtem Azure AD, který spouští kód ve vývojovém prostředí, musí být objektu zabezpečení přiřazená role RBAC, která uděluje přístup k objektům blob nebo frontě v Azure Storage. Informace o přiřazování oprávnění přes RBAC najdete v části s názvem **přiřazení rolí RBAC pro přístupová práva** v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
 
-### <a name="add-the-callback-method"></a>Přidat metodu zpětného volání
+## <a name="install-the-preview-packages"></a>Instalace balíčků verze Preview
 
-Metoda zpětného volání kontroluje čas vypršení platnosti tokenu a obnoví ho podle potřeby:
+Příklady v tomto článku využívají nejnovější verzi Preview klientské knihovny Azure Storage pro úložiště objektů BLOB. Chcete-li nainstalovat balíček verze Preview, spusťte následující příkaz z konzoly Správce balíčků NuGet:
+
+```powershell
+Install-Package Azure.Storage.Blobs -IncludePrerelease
+```
+
+Příklady v tomto článku také využívají nejnovější verzi Preview [klientské knihovny Azure identity pro .NET](https://www.nuget.org/packages/Azure.Identity/) k ověřování pomocí přihlašovacích údajů Azure AD. Chcete-li nainstalovat balíček verze Preview, spusťte následující příkaz z konzoly Správce balíčků NuGet:
+
+```powershell
+Install-Package Azure.Identity -IncludePrerelease
+```
+
+## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
+
+Do kódu přidejte následující direktivy `using`, abyste mohli používat verze Preview klientských knihoven identit Azure a Azure Storage.
 
 ```csharp
-private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, CancellationToken cancellationToken)
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Storage;
+using Azure.Storage.Sas;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+```
+
+Chcete-li získat přihlašovací údaje tokenu, které může váš kód použít k autorizaci požadavků na Azure Storage, vytvořte instanci třídy [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) . Následující příklad kódu ukazuje, jak získat pověření ověřeného tokenu a použít ho k vytvoření objektu klienta služby. potom pomocí klienta služby Nahrajte nový objekt BLOB:
+
+```csharp
+async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
 {
-    // Specify the resource ID for requesting Azure AD tokens for Azure Storage.
-    // Note that you can also specify the root URI for your storage account as the resource ID.
-    const string StorageResource = "https://storage.azure.com/";  
+    // Construct the blob container endpoint from the arguments.
+    string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+                                                accountName,
+                                                containerName);
 
-    // Use the same token provider to request a new token.
-    var authResult = await ((AzureServiceTokenProvider)state).GetAuthenticationResultAsync(StorageResource);
+    // Get a credential and create a client object for the blob container.
+    BlobContainerClient containerClient = new BlobContainerClient(new Uri(containerEndpoint),
+                                                                    new DefaultAzureCredential());
 
-    // Renew the token 5 minutes before it expires.
-    var next = (authResult.ExpiresOn - DateTimeOffset.UtcNow) - TimeSpan.FromMinutes(5);
-    if (next.Ticks < 0)
+    try
     {
-        next = default(TimeSpan);
-        Console.WriteLine("Renewing token...");
-    }
+        // Create the container if it does not exist.
+        await containerClient.CreateIfNotExistsAsync();
 
-    // Return the new token and the next refresh time.
-    return new NewTokenAndFrequency(authResult.AccessToken, next);
+        // Upload text to a new block blob.
+        string blobContents = "This is a block blob.";
+        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+        using (MemoryStream stream = new MemoryStream(byteArray))
+        {
+            await containerClient.UploadBlobAsync(blobName, stream);
+        }
+    }
+    catch (StorageRequestFailedException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
 }
 ```
-
-### <a name="get-a-token-and-create-a-block-blob"></a>Získání tokenu a vytvoření objektu blob bloku
-
-Knihovna ověřování aplikací poskytuje třídu **AzureServiceTokenProvider** . Instance této třídy může být předána zpětnému volání, které získá token, a poté token obnoví před jeho vypršením.
-
-Následující příklad načte token a použije ho k vytvoření nového objektu BLOB a pak použije stejný token pro čtení objektu BLOB.
-
-```csharp
-const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
-
-// Get the initial access token and the interval at which to refresh it.
-AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = await TokenRenewerAsync(azureServiceTokenProvider,CancellationToken.None);
-
-// Create storage credentials using the initial token, and connect the callback function
-// to renew the token just before it expires
-TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token,
-                                                        TokenRenewerAsync,
-                                                        azureServiceTokenProvider,
-                                                        tokenAndFrequency.Frequency.Value);
-
-StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
-
-// Create a blob using the storage credentials.
-CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName),
-                                            storageCredentials);
-
-// Upload text to the blob.
-await blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
-
-// Continue to make requests against Azure Storage.
-// The token is automatically refreshed as needed in the background.
-do
-{
-    // Read blob contents
-    Console.WriteLine("Time accessed: {0} Blob Content: {1}",
-                        DateTimeOffset.UtcNow,
-                        await blob.DownloadTextAsync());
-
-    // Sleep for ten seconds, then read the contents of the blob again.
-    Thread.Sleep(TimeSpan.FromSeconds(10));
-} while (true);
-```
-
-Další informace o knihovně ověřování aplikací najdete v tématu [ověřování služby-služba pro Azure Key Vault pomocí rozhraní .NET](../../key-vault/service-to-service-authentication.md).
-
-Další informace o tom, jak získat přístupový token, najdete v tématu [Jak používat spravované identity pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 > [!NOTE]
 > Pokud chcete autorizovat požadavky na data objektů BLOB nebo front pomocí Azure AD, musíte pro tyto požadavky použít protokol HTTPS.

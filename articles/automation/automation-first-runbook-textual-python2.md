@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265106"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596929"
 ---
 # <a name="my-first-python-runbook"></a>Můj první Runbook sady Python
 
@@ -24,12 +24,12 @@ ms.locfileid: "71265106"
 > - [Pracovní postup PowerShellu](automation-first-runbook-textual.md)
 > - [Python](automation-first-runbook-textual-python2.md)
 
-Tento kurz vás provede vytvořením [Runbooku](automation-runbook-types.md#python-runbooks) v Pythonu v Azure Automation. Začnete s jednoduchým runbookm, který otestujete a publikujete. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec uděláte robustnější sadu Runbook přidáním parametrů Runbooku.
+Tento kurz vás provede vytvořením [Runbooku v Pythonu](automation-runbook-types.md#python-runbooks) v Azure Automation. Začnete s jednoduchým runbookm, který otestujete a publikujete. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec uděláte robustnější sadu Runbook přidáním parametrů Runbooku.
 
 > [!NOTE]
 > Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -68,7 +68,7 @@ Před publikováním runbooku, které ho zpřístupní v produkčním prostřed�
 1. Kliknutím na **Testovací podokno** otevřete testovací podokno.
 1. Kliknutím na **Spustit** spustíte test. Měla by to být jediná povolená možnost.
 1. Vytvoří se [úloha runbooku](automation-runbook-execution.md) a její stav se zobrazí.
-   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přesune se ke *spuštění* , když pracovní proces tuto úlohu vyvolá a pak se spustí, když se Runbook skutečně spustí.
+   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přesune se ke *spuštění* , když pracovní proces tuto úlohu vyvolá a *pak se spustí,* když se Runbook skutečně spustí.
 1. Po dokončení úlohy runbooku se zobrazí jeho výstup. V takovém případě byste měli vidět *Hello World*.
 1. Zavřete testovací podokno a vraťte se na plátno.
 
@@ -173,8 +173,8 @@ Otestujte a znovu spusťte Runbook, abyste viděli, že virtuální počítač s
 Sada Runbook aktuálně používá pevně zakódované hodnoty pro názvy skupiny prostředků a virtuálního počítače.
 Nyní přidáme kód, který získá tyto hodnoty ze vstupních parametrů.
 
-`sys.argv` Proměnnou použijete k získání hodnot parametrů.
-Do sady Runbook přidejte následující kód hned po ostatních `import` příkazech:
+K získání hodnot parametrů použijete proměnnou `sys.argv`.
+Do sady Runbook přidejte následující kód hned po ostatních příkazech `import`:
 
 ```python
 import sys
@@ -183,7 +183,7 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Tím se `sys` modul naimportuje a vytvoří dvě proměnné pro uchování skupiny prostředků a názvů virtuálních počítačů.
+Tím se naimportuje modul `sys` a vytvoří dvě proměnné pro uchování skupiny prostředků a názvů virtuálních počítačů.
 Všimněte si, že element seznamu argumentů, `sys.argv[0]`, je název skriptu a uživatel ho nezadá.
 
 Nyní můžete upravit poslední dva řádky sady Runbook tak, aby místo použití pevně zakódovaných hodnot používaly hodnoty vstupního parametru:
@@ -198,7 +198,7 @@ Po spuštění sady Python Runbook (na stránce **test** nebo jako publikovanéh
 
 Po zahájení zadání hodnoty v prvním poli se zobrazí druhý a tak dále, takže můžete zadat tolik hodnot parametrů, kolik je potřeba.
 
-Hodnoty jsou k dispozici pro skript jako `sys.argv` pole jako v kódu, který jste právě přidali.
+Hodnoty jsou k dispozici pro skript jako pole `sys.argv` jako v kódu, který jste právě přidali.
 
 Jako hodnotu prvního parametru zadejte název vaší skupiny prostředků a název virtuálního počítače, který se má spustit jako hodnota druhého parametru.
 
@@ -206,11 +206,35 @@ Jako hodnotu prvního parametru zadejte název vaší skupiny prostředků a ná
 
 Spusťte sadu Runbook kliknutím na tlačítko **OK** . Sada Runbook se spustí a spustí vybraný virtuální počítač.
 
+## <a name="error-handling-in-python"></a>Zpracování chyb v Pythonu
+
+Následující konvence můžete použít také k načtení různých datových proudů z runbooků v Pythonu, včetně **Upozornění**, **chyby**a **ladění** datových proudů.
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+Následující příklad ukazuje tuto konvenci použitou v `try...except`ovém bloku.
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> **Sys. stderr** není v Azure Automation podporován.
+
 ## <a name="next-steps"></a>Další kroky
 
 - První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
 - První kroky s grafickými runbooky najdete v článku [Můj první grafický runbook](automation-first-runbook-graphical.md).
 - První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
 - Další informace o typech runbooků, jejich výhodách a omezeních najdete v článku [Typy runbooků ve službě Azure Automation](automation-runbook-types.md).
-- Další informace o vývoji pro Azure pomocí Pythonu najdete v tématu [Azure pro vývojáře](/azure/python/) v Pythonu.
+- Další informace o vývoji pro Azure pomocí Pythonu najdete v tématu [Azure pro vývojáře v Pythonu](/azure/python/) .
 - Pokud chcete zobrazit ukázkové sady Runbook Python 2, přečtěte si téma [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) .

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130228"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596785"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -25,7 +25,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Stavová brána firewall jako služba
 * Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
 * Filtrování FQDN
-* Značky plně kvalifikovaného názvu domény
+* Značky plně kvalifikovaných názvů domén
 * Pravidla filtrování síťového provozu
 * Podpora pro odchozí SNAT
 * Podpora DNAT u příchozích přenosů
@@ -40,7 +40,7 @@ Výhodou tohoto modelu je schopnost centrálně ovládat více paprskových virt
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Jak můžu nainstalovat Azure Firewall?
 
-Azure Firewall můžete nastavit pomocí Azure Portal, PowerShellu, REST API nebo pomocí šablon. Viz [kurz: Podrobné pokyny najdete v tématu nasazení a](tutorial-firewall-deploy-portal.md) konfigurace Azure firewall pomocí Azure Portal.
+Azure Firewall můžete nastavit pomocí Azure Portal, PowerShellu, REST API nebo pomocí šablon. Podrobné pokyny najdete v tématu [kurz: nasazení a konfigurace Azure firewall pomocí Azure Portal](tutorial-firewall-deploy-portal.md) .
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Co jsou některé Azure Firewall koncepty?
 
@@ -48,9 +48,9 @@ Azure Firewall podporuje kolekce pravidel a pravidel. Kolekce pravidel je sada p
 
 Existují tři typy kolekcí pravidel:
 
-* *Pravidla aplikace*: Nakonfigurujte plně kvalifikované názvy domén (FQDN), ke kterým se dá dostat z podsítě.
+* *Pravidla aplikací*: Nakonfigurujte plně kvalifikované názvy domén (FQDN), ke kterým se dá dostat z podsítě.
 * *Síťová pravidla*: Nakonfigurujte pravidla, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
-* *Pravidla překladu adres (NAT)* : Nakonfigurujte pravidla DNAT, která povolí příchozí připojení.
+* *Pravidla překladu adres (NAT)* : NAKONFIGURUJTE pravidla DNAT tak, aby povolovala příchozí připojení.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Podporuje Azure Firewall filtrování příchozích přenosů?
 
@@ -58,7 +58,7 @@ Azure Firewall podporuje filtrování příchozího a odchozího přenosu. Pří
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Které služby protokolování a analýzy podporuje Azure Firewall?
 
-Azure Firewall je integrována s Azure Monitor pro zobrazení a analýzu protokolů brány firewall. Protokoly lze odeslat do Log Analytics, Azure Storage nebo Event Hubs. Je možné je analyzovat v Log Analytics nebo různými nástroji, jako je Excel a Power BI. Další informace najdete v tématu [kurz: Monitorujte protokoly](tutorial-diagnostics.md)Azure firewall.
+Azure Firewall je integrována s Azure Monitor pro zobrazení a analýzu protokolů brány firewall. Protokoly lze odeslat do Log Analytics, Azure Storage nebo Event Hubs. Je možné je analyzovat v Log Analytics nebo různými nástroji, jako je Excel a Power BI. Další informace najdete v tématu [kurz: monitorování protokolů Azure firewall](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak Azure Firewall funguje jinak než u stávajících služeb, jako je síťová virtuální zařízení na webu Marketplace?
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Příklad:
+Například:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -145,7 +145,7 @@ Ne. Pravidla překladu adres (NAT) implicitně přidávají odpovídající sí�
 
 Pokud nakonfigurujete * **. contoso.com**, povolí *anyvalue*. contoso.com, ale ne contoso.com (vrchol domény). Pokud chcete povolený vrchol domény, musíte ho explicitně nakonfigurovat jako cílový plně kvalifikovaný název domény.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Co stav *zřizování: Neúspěšný* význam?
+## <a name="what-does-provisioning-state-failed-mean"></a>Co znamená *stav zřizování: neúspěšné* ?
 
 Pokaždé, když se použije Změna konfigurace, Azure Firewall se pokusí aktualizovat všechny své základní back-end instance. Ve výjimečných případech se může stát, že jedna z těchto back-end instancí selže při aktualizaci s novou konfigurací a proces aktualizace se zastaví se stavem zřizování. Vaše Azure Firewall je stále v provozu, ale použitá konfigurace může být v nekonzistentním stavu, kde některé instance mají předchozí konfiguraci, kde ostatní mají aktualizovanou sadu pravidel. Pokud k tomu dojde, zkuste aktualizovat konfiguraci ještě jednou, dokud se operace nezdaří a vaše brána firewall je v *úspěšném* stavu zřizování.
 
@@ -163,6 +163,14 @@ Azure Firewall musí zřídit při škálování víc instancí virtuálních po
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Je potřeba změnit velikost podsítě brány firewall při škálování služby?
 
 Ne. Azure Firewall nepotřebuje podsíť větší než/26.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak můžu zvýšit propustnost brány firewall?
+
+Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s. V současné době je horizontální navýšení kapacity založené jenom na využití procesoru. V některých případech brána firewall se síťovými pravidly neumožňuje škálovat až do zvýšení propustnosti, protože Síťová pravidla nemají výrazný vliv na využití procesoru. Pokud potřebujete vyšší propustnost pro bránu firewall, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá Azure Firewall k horizontálnímu navýšení kapacity?
+
+V současné době trvá Azure Firewall horizontálního navýšení kapacity od pěti do sedmi minut. Pokud máte shluky, které vyžadují rychlejší automatické škálování, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Má Azure Firewall ve výchozím nastavení povolený přístup ke službě Active Directory?
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527440"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596516"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování.
 
@@ -20,11 +20,10 @@ Transformace EXISTS je transformace při filtrování řádků, která kontroluj
 
 ## <a name="configuration"></a>Konfigurace
 
-V rozevíracím seznamu **správný datový proud** vyberte datový proud, který chcete zkontrolovat.
-
-Určete, jestli chcete, aby tato data existovala nebo neexistovala v nastavení s **existujícím typem** .
-
-Vyberte klíčové sloupce, které chcete porovnat, protože existují podmínky. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Chcete-li provést porovnání prostřednictvím výpočetní hodnoty, najeďte myší na rozevírací seznam sloupce a vyberte **vypočítaný sloupec**.
+1. V rozevíracím seznamu **správný datový proud** vyberte datový proud, který chcete zkontrolovat.
+1. Určete, jestli chcete, aby tato data existovala nebo neexistovala v nastavení s **existujícím typem** .
+1. Vyberte, jestli chcete **vlastní výraz**.
+1. Vyberte klíčové sloupce, které chcete porovnat, protože existují podmínky. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
 
 ![Existuje nastavení](media/data-flow/exists.png "Existuje 1")
 

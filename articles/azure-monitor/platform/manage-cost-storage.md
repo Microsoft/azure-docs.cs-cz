@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329432"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597305"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -191,7 +191,7 @@ Pokud má váš Log Analytics pracovní prostor přístup ke starším cenovým 
 2. V podokně pracovního prostoru v části **Obecné**vyberte **cenová úroveň**.  
 
 3. V části **cenová úroveň**vyberte cenovou úroveň a pak klikněte na **Vybrat**.  
-    Cenový tarif @no__t 0Selected @ no__t-1
+    ![Selected cenového plánu ](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 [Cenovou úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) můžete také nastavit pomocí Azure Resource Manager parametrem `sku` (`pricingTier` v šabloně ARM). 
 
@@ -229,7 +229,7 @@ Heartbeat | where TimeGenerated > startofday(ago(31d))
 | render timechart
 ```
 
-Pokud chcete získat seznam počítačů, které se budou fakturovat jako uzly, pokud je pracovní prostor ve starší verzi na cenové úrovni uzlů, hledejte uzly, které odesílají **účtované datové typy** (některé datové typy jsou zdarma). K tomu použijte [vlastnost](log-standard-properties.md#_isbillable) `_IsBillable` a použijte pole plně kvalifikovaného názvu domény v levém poli. Vrátí se seznam počítačů s fakturovanými daty:
+Pokud chcete získat seznam počítačů, které se budou fakturovat jako uzly, pokud je pracovní prostor ve starší verzi na cenové úrovni uzlů, hledejte uzly, které odesílají **účtované datové typy** (některé datové typy jsou zdarma). K tomu použijte [vlastnost](log-standard-properties.md#_isbillable) `_IsBillable` a použijte pole plně kvalifikovaného názvu domény v levém krajním poli. Vrátí se seznam počítačů s fakturovanými daty:
 
 ```kusto
 union withsource = tt * 
@@ -268,7 +268,7 @@ Na stránce **využití a odhadované náklady** zobrazuje ingestování *dat na
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 Všimněte si, že klauzule "kde Fakturovatelné = true" filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování. 
@@ -278,7 +278,7 @@ Další podrobnosti můžete zobrazit tak, abyste viděli trendy dat pro konkré
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>Objem dat podle počítače
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Pro data z uzlů hostovaných v Azure můžete získat **Velikost** fakturovaných událostí pro __každé předplatné Azure__, analyzovat vlastnost `_ResourceId` jako:
+Pro data z uzlů hostovaných v Azure můžete získat **Velikost** fakturovaných událostí pro __každé předplatné Azure__, analyzovat `_ResourceId` vlastnost jako:
 
 ```kusto
 union withsource = tt * 
@@ -428,7 +428,7 @@ Následující dotaz vrátí výsledek, pokud se za posledních 24 hodin shromá
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ Následující dotaz pomocí jednoduchého vzorce předvídá, jestli dojde k od
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`.
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`.
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *1440* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
@@ -465,7 +465,7 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`.
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`.
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** na *180* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
 - **Definujte podrobnosti upozornění** – Zadejte následující:

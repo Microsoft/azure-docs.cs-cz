@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263342"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596861"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -69,7 +69,7 @@ Následující ukázkové soubory *Host. JSON* mají uvedené všechny možné m
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |isEnabled|true|Povolí nebo zakáže vzorkování.| 
-|maxTelemetryItemsPerSecond|5|Prahová hodnota, při které začíná vzorkování.| 
+|maxTelemetryItemsPerSecond|20|Prahová hodnota, při které začíná vzorkování.| 
 |EnableLiveMetrics |true|Povoluje shromažďování živých metrik.|
 |EnableDependencyTracking|true|Povolí sledování závislostí.|
 |EnablePerformanceCountersCollection|true|Povolí shromažďování čítačů výkonu Kudu.|
@@ -133,11 +133,11 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>přípony
+## <a name="extensions"></a>SND
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
-## <a name="functions"></a>– funkce
+## <a name="functions"></a>functions
 
 Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
@@ -204,7 +204,7 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolu
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -227,9 +227,9 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always` `debugOnly`. |
-|logLevel|není k dispozici|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|není k dispozici| Nastavení protokolování [konzoly](#console) . |
-|ApplicationInsights|není k dispozici| Nastavení [applicationInsights](#applicationinsights) |
+|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|–| Nastavení protokolování [konzoly](#console) . |
+|ApplicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>konzola
 
@@ -251,7 +251,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 |---------|---------|---------| 
 |isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
 
-## <a name="queues"></a>fronty
+## <a name="queues"></a>vytvořil
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
@@ -285,9 +285,9 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|není k dispozici|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
 
-## <a name="version"></a>verze
+## <a name="version"></a>version
 
 Pro aplikaci Function App, která cílí na modul runtime v2, se vyžaduje řetězec verze `"version": "2.0"`.
 

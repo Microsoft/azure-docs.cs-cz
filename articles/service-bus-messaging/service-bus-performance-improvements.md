@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus | Dokumentace Microsoftu
-description: Popisuje, jak můžete optimalizovat výkon při výměně zprostředkovaných zpráv Service Bus.
+title: Osvědčené postupy pro zlepšení výkonu pomocí Azure Service Bus | Microsoft Docs
+description: Popisuje, jak použít Service Bus k optimalizaci výkonu při výměně zprostředkovaných zpráv.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -10,40 +10,40 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589650"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596462"
 ---
-# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
+# <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí Service Bus zasílání zpráv
 
-Tento článek popisuje, jak používat Azure Service Bus optimalizovat výkon při výměně zprostředkovaných zpráv. První část tohoto článku popsané různé mechanizmy, které nabízí za účelem zvýšení výkonu. Druhá část obsahuje pokyny, jak Service Bus používat způsobem, který může nabídnout nejlepší výkon v daném scénáři.
+Tento článek popisuje, jak použít Azure Service Bus k optimalizaci výkonu při výměně zprostředkovaných zpráv. První část tohoto článku popisuje různé mechanismy, které vám pomůžou zvýšit výkon. Druhá část poskytuje pokyny pro použití Service Bus způsobem, který může nabízet nejlepší výkon v daném scénáři.
 
-Výraz "client" v celém tomto článku označuje Každá entita, která má přístup k Service Bus. Klienta můžete převést roli odesílatele a příjemce. Termín "sender" se používá pro služby Service Bus fronty nebo tématu klienta, která odesílá zprávy do odběru fronty nebo tématu služby Service Bus. Termín "příjemce" odkazuje na Service Bus fronty nebo odběru klienta, která přijímá zprávy z fronty služby Service Bus nebo odběru.
+V rámci tohoto článku pojem "klient" odkazuje na libovolnou entitu, která přistupuje k Service Bus. Klient může převzít roli odesilatele nebo příjemce. Termín "odesilatel" se používá pro Service Bus frontu nebo klienta tématu, který odesílá zprávy do fronty Service Bus nebo z předplatného tématu. Pojem "příjemce" odkazuje na klienta Service Bus front nebo odběrů, který přijímá zprávy z fronty nebo předplatného Service Bus.
 
-Tyto části přinášejí několik konceptů, které používá služby Service Bus ke zvýšení výkonu.
+Tyto části představují několik konceptů, které Service Bus používá ke zvýšení výkonu.
 
 ## <a name="protocols"></a>Protokoly
 
-Service Bus umožní klientům posílat a přijímat zprávy přes jeden ze tří protokolů:
+Service Bus umožňuje klientům odesílat a přijímat zprávy prostřednictvím jednoho ze tří protokolů:
 
-1. Pokročilé řízení front zpráv (AMQP) protokolu
-2. Service Bus Messaging Protocol (SBMP)
+1. Rozšířený protokol řízení front zpráv (AMQP) (AMQP)
+2. Protokol SBMP (Service Bus Messaging Protocol)
 3. HTTP
 
-AMQP a SBMP jsou efektivnější, protože udržují připojení k Service Bus, dokud existuje objekt pro vytváření zpráv. Implementuje navíc dávkové zpracování a předběžné načítání. Pokud není výslovně uvedeno, veškerý obsah v tomto článku se předpokládá použití připojení přes AMQP nebo SBMP.
+AMQP a SBMP jsou efektivnější, protože udržují připojení Service Bus, dokud objekt pro vytváření zpráv existuje. Implementuje také dávkování a předběžné načítání. Pokud není výslovně uvedeno jinak, veškerý obsah v tomto článku předpokládá použití AMQP nebo SBMP.
 
-## <a name="reusing-factories-and-clients"></a>Opětovné použití objekty pro vytváření a klientů
+## <a name="reusing-factories-and-clients"></a>Používání továrn a klientů
 
-Klient služby Service Bus objekty, jako například [QueueClient] [ QueueClient] nebo [MessageSender][MessageSender], jsou vytvořené prostřednictvím [ MessagingFactory] [ MessagingFactory] objektu, který také obsahuje interní správu připojení. Doporučuje se, že neukončíte zasílání zpráv objekty pro vytváření nebo fronty, témata a odběru klientům po odeslání zprávy a pak odeslat další zprávy znovu vytvořit. Připojení ke službě Service Bus messaging factory zavření odstraní a nové připojení se naváže při opětovném vytváření objekt pro vytváření. Navazování připojení je náročná operace, které můžete se vyhnout opětovné použití stejný objekt pro vytváření a objekty klientů pro více operací. Tyto objekty klienta může bezpečně použít pro souběžné asynchronní operace a z více vláken. 
+Service Bus objekty klienta, například [QueueClient][QueueClient] nebo [MessageSender][MessageSender], se vytvářejí prostřednictvím objektu [MessagingFactory][MessagingFactory] , který poskytuje také interní správu připojení. Po odeslání zprávy doporučujeme, abyste nezavřeli továrny zasílání zpráv nebo fronty, témata a předplatná, a pak je znovu vytvoříte při odeslání další zprávy. Při zavírání továrny zasílání zpráv se odstraní připojení ke službě Service Bus a při opětovném vytváření továrny se vytvoří nové připojení. Navázání připojení je náročná operace, kterou se můžete vyhnout opakovanému použití stejného objektu factory a klienta pro více operací. Tyto objekty klienta můžete bezpečně použít pro souběžné asynchronní operace a z více vláken. 
 
 ## <a name="concurrent-operations"></a>Souběžné operace
 
-Provádí operaci (odesílání, příjem, odstranit, atd.) chvíli trvá. Tento čas zahrnuje zpracování operace ve službě Service Bus kromě latenci požadavku a odpovědi. Pokud chcete zvýšit počet operací za čas, musí současně provést operace. 
+Provádění operace (odeslání, přijetí, odstranění atd.) nějakou dobu trvá. Tato doba zahrnuje zpracování operace službou Service Bus kromě latence žádosti a odpovědi. Chcete-li zvýšit počet operací v čase, operace musí být spuštěny souběžně. 
 
-Klient naplánuje souběžných operací pomocí provádí asynchronní operace. Další požadavek je spuštěn před dokončením předchozí žádosti. Následující fragment kódu je příklad asynchronní odeslání operace:
+Klient plánuje souběžné operace provedením asynchronních operací. Další požadavek se spustí před dokončením předchozí žádosti. Následující fragment kódu je příkladem asynchronní operace odeslání:
   
  ```csharp
   Message m1 = new BrokeredMessage(body);
@@ -61,7 +61,7 @@ Klient naplánuje souběžných operací pomocí provádí asynchronní operace.
   Console.WriteLine("All messages sent");
   ```
   
-  Následující kód představuje příklad asynchronní operace příjmu. Zobrazit úplné program [tady](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
+  Následující kód je příkladem asynchronní operace Receive. Úplný program najdete [tady](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
   var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
@@ -70,21 +70,21 @@ Klient naplánuje souběžných operací pomocí provádí asynchronní operace.
   receiver.RegisterMessageHandler(...);
   ```
 
-## <a name="receive-mode"></a>Zobrazí režim
+## <a name="receive-mode"></a>Režim příjmu
 
-Při vytváření fronty nebo odběru klienta, když zadáte režim příjmu: *Neboli Peek-lock* nebo *přijme a odstraní*. Zobrazí výchozí režim je [PeekLock][PeekLock]. Při fungování v tomto režimu, klient odešle žádost o přijetí zprávy ze služby Service Bus. Po přijetí zprávy klient odešle žádost dokončit zprávu.
+Když vytváříte klienta front nebo odběrů, můžete zadat režim přijímání: *prohlížet a uzamknout* nebo *přijmout a odstranit*. Výchozím režimem příjmu je [PeekLock][PeekLock]. Při provozu v tomto režimu pošle klient žádost o přijetí zprávy od Service Bus. Jakmile klient obdrží zprávu, pošle požadavek na dokončení zprávy.
 
-Při nastavování režimu příjmu na [ReceiveAndDelete][ReceiveAndDelete], oba kroky jsou zkombinované v jedné žádosti. Tyto kroky snížit celkový počet operací a zkvalitnit celkovou propustnost zpráv. Toto zvýšení výkonu se dodává nese došlo ke ztrátě zpráv.
+Při nastavení režimu příjmu na [ReceiveAndDelete][ReceiveAndDelete]se oba kroky zkombinují v jednom požadavku. Tyto kroky omezují celkový počet operací a můžou zlepšit celkovou propustnost zpráv. Tento zvýšení výkonu přináší riziko ztráty zpráv.
 
-Service Bus nepodporuje transakce pro operace přijímat a odstranění. Kromě toho jsou požadovány pro všechny scénáře, ve kterých chce odložit klienta neboli peek-lock sémantiku nebo [dead-letter](service-bus-dead-letter-queues.md) zprávu.
+Service Bus nepodporuje transakce pro operace Receive a DELETE. Kromě toho se vyžaduje sémantika prohlížení zámku pro všechny scénáře, ve kterých bude klient chtít zprávu odložit nebo [nedoručeně](service-bus-dead-letter-queues.md) .
 
 ## <a name="client-side-batching"></a>Dávkování na straně klienta
 
-Dávkování na straně klienta umožňuje klientovi fronty nebo tématu ke zpoždění odesílání zprávy pro určitou dobu. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. Dávkování na straně klienta rovněž způsobí, že fronta nebo odběr klienta dávce více **Complete** požadavky do jednoho požadavku. Dávkování je dostupná jenom pro asynchronní **odeslat** a **Complete** operace. Synchronní operace okamžitě odešlou do služby Service Bus. Dávkové zpracování dojít pro náhled nebo operace příjmu ani dávkování dochází mezi klienty.
+Dávkování na straně klienta umožňuje klientovi nebo tématu klienta zpozdit odeslání zprávy po určitou dobu. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. Dávkování na straně klienta také způsobí, že klient fronty nebo předplatného vygeneruje více **úplných** požadavků do jediného požadavku. Dávkování je k dispozici pouze pro operace asynchronního **odeslání** a **dokončení** . Synchronní operace se okamžitě odesílají do služby Service Bus. Dávkování se nevyskytuje pro operace prohlížení a příjmu ani dávkování neproběhne napříč klienty.
 
-Ve výchozím nastavení používá klienta batch interval 20 MS. Batch interval můžete změnit tak, že nastavíte [BatchFlushInterval] [ BatchFlushInterval] vlastnost před vytvořením messaging factory. Toto nastavení má vliv na všechny klienty, kteří vytvářejí tento objekt pro vytváření.
+Ve výchozím nastavení klient používá interval dávky 20 MS. Interval dávky můžete změnit nastavením vlastnosti [BatchFlushInterval][BatchFlushInterval] před vytvořením objektu pro vytváření zpráv. Toto nastavení má vliv na všechny klienty vytvořené touto továrnou.
 
-Chcete-li zakázat dávkování, nastavte [BatchFlushInterval] [ BatchFlushInterval] vlastnost **TimeSpan.Zero**. Příklad:
+Chcete-li zakázat dávkování, nastavte vlastnost [BatchFlushInterval][BatchFlushInterval] na **hodnotu TimeSpan. Zero**. Například:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -93,27 +93,27 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Dávkování nemá vliv na počet účtovaných operací zasílání zpráv a je k dispozici pouze pro použití protokolu klienta služby Service Bus [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. Protokol HTTP nepodporuje dávkování.
+Dávkování nemá vliv na počet fakturovatelných operací zasílání zpráv a je k dispozici pouze pro Service Bus klientský protokol pomocí knihovny [Microsoft. ServiceBus. Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Protokol HTTP nepodporuje dávkování.
 
 > [!NOTE]
-> Nastavení BatchFlushInterval zajišťuje, že dávkování implicitní z pohledu aplikace. To znamená aplikace provádí SendAsync() a CompleteAsync() volá a neprovede konkrétnímu volání služby Batch.
+> Nastavení BatchFlushInterval zajistí, že dávkování bude z pohledu aplikace implicitní. To znamená, že aplikace provádí volání SendAsync () a CompleteAsync () a neprovádí specifická volání Batch.
 >
-> Dávkování na straně klienta explicitní můžete implementovat s využitím pod volání metody - 
+> Explicitní dávkování na straně klienta lze implementovat pomocí níže uvedeného volání metody – 
 > ```csharp
 > Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
 > ```
-> Tady celková velikost zpráv musí být menší než maximální velikost podporovaná cenovou úroveň.
+> Souhrnná velikost zpráv musí být menší než maximální velikost podporovaná cenovou úrovní.
 
-## <a name="batching-store-access"></a>Dávkování přístupu ke službě store
+## <a name="batching-store-access"></a>Batch – přístup k úložišti
 
-Pokud chcete zvýšit propustnost fronty, tématu nebo předplatného, Service Bus dávek více zpráv při zapisuje do svého interního úložiště. Pokud je povoleno ve frontě nebo tématu, zápis zpráv do úložiště se mají přidat do dávky. Pokud je povoleno ve frontě nebo odběru, odstraňování zpráv z úložiště se mají přidat do dávky. Pokud je povolen přístup dávkové úložiště pro entitu, Service Bus zpoždění operace zápisu úložiště o dané entitě podle až 20 ms. 
+Pokud chcete zvýšit propustnost fronty, tématu nebo předplatného, Service Bus se při zápisu do svého interního úložiště dávky vyřadí několik zpráv. Pokud je tato možnost povolená ve frontě nebo tématu, zapisuje se do tohoto úložiště zprávy zapsané do dávky. Pokud je ve frontě nebo předplatném povolené, odstraní se zprávy ze Storu. Pokud je pro entitu povolený přístup k dávkovému ukládání, Service Bus zpozdí operaci zápisu úložiště týkající se této entity až o 20 MS. 
 
 > [!NOTE]
-> Neexistuje žádné riziko ztráty zprávy s dávkování, i v případě, že dojde k chybě služby Service Bus na konci dávkování interval 20ms. 
+> Nehrozí riziko ztráty zpráv s dávkou, a to ani v případě, že dojde k selhání Service Bus na konci intervalu dávkování 20ms. 
 
-Operace další úložiště, které během tohoto intervalu dojde k jsou přidány do služby batch. Dávce ovlivní pouze přístup k úložišti **odeslat** a **Complete** operace přijímat operace nebude mít vliv. Dávkové úložiště přístup je vlastnost entity. Dávkování dochází mezi všechny entity, které umožňují přístup dávkové úložiště.
+Další operace úložiště, ke kterým dojde během tohoto intervalu, se přidají do dávky. Přístup k dávkovému úložišti má vliv jenom na operace **Send** a **Complete** . operace Receive nejsou ovlivněny. Přístup k Batch Storu je vlastnost v entitě. Dávkování probíhá napříč všemi entitami, které umožňují přístup k dávce v dávkovém úložišti.
 
-Při vytváření nové fronty, tématu nebo předplatného, je ve výchozím nastavení povolen přístup dávkové úložiště. Chcete-li zakázat přístup dávkové úložiště, nastavte [EnableBatchedOperations] [ EnableBatchedOperations] vlastnost **false** před vytvořením entity. Příklad:
+Při vytváření nové fronty, tématu nebo předplatného je ve výchozím nastavení povolený přístup k Batch Storu. Chcete-li zakázat přístup k dávce, nastavte před vytvořením entity vlastnost [EnableBatchedOperations][EnableBatchedOperations] na **hodnotu false** . Například:
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -121,137 +121,127 @@ qd.EnableBatchedOperations = false;
 Queue q = namespaceManager.CreateQueue(qd);
 ```
 
-Přístup dávkové úložiště nemá vliv na počet účtovaných operací zasílání zpráv a je vlastností fronty, tématu nebo odběru. Je nezávislá režimu příjmu a protokol, který se používá mezi klientem a službou Service Bus.
+Přístup k Batch Storu nemá vliv na počet fakturovaných operací zasílání zpráv a jedná se o vlastnost fronty, tématu nebo předplatného. Nezávisí na režimu příjmu a protokolu, který se používá mezi klientem a službou Service Bus.
 
 ## <a name="prefetching"></a>Předběžné načítání
 
-[Předběžné načítání](service-bus-prefetch.md) umožňuje klientovi fronty nebo odběru se při provádění operace obdržení načíst další zprávy ze služby. Klient ukládá tyto zprávy v místní mezipaměti. Velikost mezipaměti je určená [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] nebo [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] vlastnosti. Každý klient, který umožňuje předběžné načítání udržuje svůj vlastní mezipaměti. Mezipaměť není sdílet mezi klienty. Pokud klient zahájí operaci příjmu a uloženou v mezipaměti je prázdný, službu přenáší dávku zpráv. Velikost dávky se rovná velikosti mezipaměti nebo 256 KB, podle toho, co je menší. Pokud klient zahájí operaci příjmu a mezipaměti obsahuje zprávy, zprávu je převzat z mezipaměti.
+[Předběžné načítání](service-bus-prefetch.md) umožňuje klientovi fronty nebo předplatného načítat další zprávy ze služby při provádění operace Receive. Klient ukládá tyto zprávy do místní mezipaměti. Velikost mezipaměti je určena vlastnostmi [QueueClient. PrefetchCount][QueueClient.PrefetchCount] nebo [SubscriptionClient. PrefetchCount][SubscriptionClient.PrefetchCount] . Každý klient, který umožňuje předběžné navýšení, zachovává svou vlastní mezipaměť. Mezipaměť není sdílená mezi klienty. Pokud klient inicializuje operaci Receive a jeho mezipaměť je prázdná, služba přenáší dávku zpráv. Velikost dávky se rovná velikosti mezipaměti nebo 256 KB, podle toho, která hodnota je menší. Pokud klient zahájí operaci přijetí a mezipaměť obsahuje zprávu, zpráva je pořízena z mezipaměti.
 
-Pokud zpráva je předem načteného, služba zpráva jen uzamkne předem načteného. S uzamčením předem načteného zprávu nelze přijmout jiný příjemce. Pokud příjemce nelze dokončit zprávu, než vyprší platnost zámku, stane se dostupným pro ostatní příjemce zprávy. Předem načteného kopie zprávy zůstává v mezipaměti. Příjemce, který využívá kopie v mezipaměti vypršela platnost, obdrží výjimku při pokusu o dokončení této zprávy. Ve výchozím nastavení zámek zprávy vyprší za 60 sekund. Tuto hodnotu je možné rozšířit na 5 minut. Pokud chcete zabránit spotřeby zprávy s vypršenou platností, musí být velikost mezipaměti vždy menší než počet zpráv, které mohou být využívány službou klienta během intervalu časového limitu zámku.
+Při předběžném načtení zprávy služba uzamkne přednačtenou zprávu. V případě zámku nemůže být přednačtená zpráva přijata jiným přijímačem. Pokud příjemce nemůže dokončit zprávu před vypršením platnosti zámku, bude zpráva k dispozici ostatním příjemcům. Přednačtená kopie zprávy zůstane v mezipaměti. Přijímač, který využívá kopii v mezipaměti s vypršenou platností, obdrží při pokusu o dokončení této zprávy výjimku. Ve výchozím nastavení vyprší platnost zámku zprávy po 60 sekundách. Tato hodnota se dá prodloužit na 5 minut. Aby nedocházelo k vyčerpání neplatných zpráv, velikost mezipaměti by měla být vždy menší než počet zpráv, které může klient spotřebovat v intervalu časového limitu zámku.
 
-Při použití výchozí platnost zámku 60 sekund, hodnota vhodná pro [PrefetchCount] [ SubscriptionClient.PrefetchCount] je 20krát maximální počet zpracovaných položek všech přijímačů objektu pro vytváření. Například objekt pro vytváření vytvoří tři příjemců a každý příjemce může zpracovat až 10 zpráv za sekundu. Předběžné načtení počet může být maximálně 20 × 3 × 10 = 600. Ve výchozím nastavení [PrefetchCount] [ QueueClient.PrefetchCount] je nastavena na hodnotu 0, což znamená, že žádné další zprávy načtené ze služby.
+Při použití výchozího zámku vypršení 60 sekund je platná hodnota pro [PrefetchCount][SubscriptionClient.PrefetchCount] 20 časů maximálního počtu zpracování všech přijímačů továrny. Například továrna vytvoří tři přijímače a každý příjemce může zpracovat až 10 zpráv za sekundu. Počet předběžných hodnot by neměl být vyšší než 20 × 3 × 10 = 600. Ve výchozím nastavení je [PrefetchCount][QueueClient.PrefetchCount] nastaveno na hodnotu 0, což znamená, že ze služby nejsou načteny žádné další zprávy.
 
-Předběžné načítání zpráv zvyšuje celkovou propustnost pro fronty nebo odběru, protože snižuje celkový počet zpráv operace nebo výměny zpráv. Načítá se první zprávou, ale bude trvat déle (z důvodu velikosti zvýšenou zprávy). Příjem zpráv s předem načteného bude rychlejší, protože tyto zprávy již byly staženy klienta.
+Předběžné načítání zpráv zvyšuje celkovou propustnost pro frontu nebo odběr, protože snižuje celkový počet operací se zprávami nebo se na ně zaznamená výměna zpráv. Načítají se první zpráva, ale bude trvat déle (kvůli zvýšené velikosti zprávy). Přijímání předem načtených zpráv bude rychlejší, protože klient již tyto zprávy stáhl.
 
-Vlastnost time to live (TTL) zprávy je kontroluje server v době, kdy server odešle zprávu do klienta. Klient nekontroluje vlastnosti TTL zprávy při doručení zprávy. Místo toho můžete zprávu přijmout i v případě, že hodnota TTL zprávy prošel při zpráva byla uložena do mezipaměti klienta.
+Hodnota vlastnosti TTL (Time-to-Live) zprávy je serverem zkontrolována v době, kdy server odesílá klientovi zprávu. Klient při přijetí zprávy nekontroluje vlastnost TTL zprávy. Místo toho lze zprávu přijmout i v případě, že hodnota TTL zprávy byla předána, zatímco byla zpráva uložena do mezipaměti klienta.
 
-Předběžné načítání nemá vliv na počet účtovaných operací zasílání zpráv a je dostupná jenom pro protokol klienta služby Service Bus. Protokol HTTP nepodporuje předběžné načítání. Předběžné načítání je k dispozici pro synchronní a asynchronní operace příjmu.
+Předběžné načtení nemá vliv na počet fakturovatelných operací zasílání zpráv a je k dispozici pouze pro Service Bus klientský protokol. Protokol HTTP nepodporuje předběžné načtení. Předběžné načtení je k dispozici pro synchronní i asynchronní operace Receive.
 
-## <a name="prefetching-and-receivebatch"></a>Předběžné načítání a ReceiveBatch
+## <a name="prefetching-and-receivebatch"></a>Přednačtení a ReceiveBatch
 
-I když koncepty předběžné načítání více zpráv najednou má podobnou sémantiku jako zpracování zpráv v dávce (ReceiveBatch), existují nějaké drobné rozdíly, které musí být udržovány v paměti, při využití takových úloh.
+I když koncepce předběžného načítání více zpráv má podobnou sémantiku zpracování zpráv v dávce (ReceiveBatch), existují drobné rozdíly, které je potřeba při jejich vzájemném využívání zachovat.
 
-Předběžné načítání je konfigurace (nebo režimu) na straně klienta (QueueClient a SubscriptionClient) a ReceiveBatch je operace (která má sémantiku typu žádost odpověď).
+Předběžné načtení je konfigurace (nebo režim) na straně klienta (QueueClient a SubscriptionClient) a ReceiveBatch je operace (která má sémantiku požadavku-odpověď).
 
-Při použití takových úloh, vezměte v úvahu následující případy-
+Při současném použití těchto případů Vezměte v úvahu následující případy:
 
-* Předběžné načítání by měla být větší než nebo rovna počtu zpráv, které očekáváte od ReceiveBatch.
-* Předběžné načtení může být až n/3 krát počet zpráv zpracovaných za sekundu, kde n je výchozí doba trvání uzamčení.
+* Předběžné načtení by mělo být větší než nebo rovno počtu zpráv, které očekáváte od ReceiveBatch.
+* Předběžného načtení může být až n/3 krát počet zpracovaných zpráv za sekundu, kde n je výchozí doba trvání zámku.
 
-Zde jsou některé běžné problémy s s metodou greedy přístup (to znamená udržování předběžné načítání počtu velmi vysoké), protože předpokládá, že zprávy je pevně nastavené na konkrétní příjemce. Doporučujeme vyzkoušet si předběžné načtení hodnoty mezi prahovými hodnotami uvedených výše a empirických identifikovat vejde.
+Existují některé problémy s hladkou metodou (tj. udržování příliš vysokého počtu předběžného načítání), protože to znamená, že je zpráva pevně nastavená na konkrétního příjemce. Doporučujeme, abyste si vyzkoušeli hodnoty předběžného načítání mezi výše uvedenými mezními hodnotami a empirickě Identifikujte, co se vejde.
 
 ## <a name="multiple-queues"></a>Více front
 
-Pokud nelze zpracovat očekávané zatížení jednoho dělené fronty nebo tématu, je nutné použít více entit pro zasílání zpráv. Při použití více entit, vytvořte vyhrazený klienta pro každou entitu, namísto použití stejného klienta pro všechny entity.
+Pokud očekávaná zátěž nemůže být zpracována jednou frontou nebo tématem, je nutné použít více entit zasílání zpráv. Při použití více entit vytvořte vyhrazeného klienta pro každou entitu namísto použití stejného klienta pro všechny entity.
 
-## <a name="development-and-testing-features"></a>Vývoj a testování funkcí
+## <a name="development-and-testing-features"></a>Funkce pro vývoj a testování
 
-Service Bus má jednu funkci, která slouží speciálně pro vývoj, která **byste nikdy neměli používat v produkčním prostředí konfigurace**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+Service Bus má jednu funkci, která se používá specificky pro vývoj, která **by se nikdy neměla používat v produkčních konfiguracích**: [TopicDescription.EnableFilteringMessagesBeforePublishing][].
 
-Pokud nová pravidla nebo filtry jsou přidány do tématu, můžete použít [TopicDescription.EnableFilteringMessagesBeforePublishing][] k ověření, že nový výraz filtr funguje podle očekávání.
+Když jsou do tématu přidána nová pravidla nebo filtry, můžete použít [TopicDescription.EnableFilteringMessagesBeforePublishing][] a ověřit tak, že nový výraz filtru pracuje podle očekávání.
 
 ## <a name="scenarios"></a>Scénáře
 
-Následující části popisují některé typické scénáře zasílání zpráv a popisují nastavení služby Service Bus. Propustnosti jsou klasifikovány jako malé (méně než 1 zpráv za sekundu), středním (1 zpráv za sekundu nebo větší, ale menší než 100 zpráv za sekundu) a vysokou (100 zpráv/druhý nebo vyšší). Počet klientů, které jsou klasifikovány jako malé (5 nebo méně), střední (více než 5, ale menší než nebo rovna 20) a velké (více než 20).
+Následující části popisují typické scénáře zasílání zpráv a popisují upřednostňovaná nastavení Service Bus. Míry propustnosti jsou klasifikovány jako malé (méně než jedna zpráva za sekundu), střední (1 zpráva/sekunda nebo větší, ale méně než 100 zpráv za sekundu) a vysoká (100 zpráv za sekundu nebo vyšší). Počet klientů je klasifikován jako malý (5 nebo méně), střední (více než 5, ale menší nebo rovno 20) a velký (více než 20).
 
-### <a name="high-throughput-queue"></a>Fronty s vysokou propustností
+### <a name="high-throughput-queue"></a>Fronta s vysokou propustností
 
-Cíl: Maximalizujte propustnost jediné fronty. Je malý počet odesílateli a příjemci.
+Cíl: maximalizuje propustnost jedné fronty. Počet odesílatelů a přijímačů je malý.
 
-* Pokud chcete zvýšit celkovou rychlost odesílání do fronty, použijte k vytvoření odesílatelů více. Pro každý odesílatele použijte asynchronní operace nebo více vláken.
-* Ke zvýšení celková míra přijímání z fronty, použijte více vytvořte příjemce.
-* Využijte výhod dávkování na straně klienta pomocí asynchronních operací.
-* Nastavte interval dávkování na 50 ms a snížit počet přenosů pomocí protokolu klienta služby Service Bus. Pokud jsou používány více uživatelů, zvyšte interval dávkování na 100 ms.
-* Ponechte dávkové úložiště přístup povolen. Tento přístup zvyšuje celkovou rychlost, jakou můžou být zprávy zapisovány do fronty.
-* Nastaví počet předběžné načtení 20krát maximální zpracování plateb všichni příjemci objekt pro vytváření. Tento počet snižuje počet přenosy protokolu klienta služby Service Bus.
-* Použití dělené fronty pro vylepšení výkonu a dostupnosti.
+* Pro zvýšení celkové míry odesílání do fronty použijte k vytvoření odesílatelů více tovární zpráv. Pro každého odesilatele použijte asynchronní operace nebo více vláken.
+* Pro zvýšení celkové míry příjmu z fronty použijte k vytvoření přijímačů více tovární zpráv.
+* Pomocí asynchronních operací můžete využít dávkování na straně klienta.
+* Nastavte interval dávkování na 50 ms, abyste snížili počet Service Busch přenosů klientských protokolů. Pokud se používá víc odesílatelů, zvyšte interval dávkování na 100 ms.
+* Nechte povolený přístup k Batch Storu. Tento přístup zvyšuje celkovou rychlost, kterou lze do fronty zapsat zprávy.
+* Nastavte počet předběžných hodnot na 20 časů, který bude mít maximální počet zpracování všech přijímačů továrny. Tento počet snižuje počet Service Busch přenosů klientských protokolů.
 
-### <a name="multiple-high-throughput-queues"></a>Více front s vysokou propustností
+### <a name="multiple-high-throughput-queues"></a>Několik front s vysokou propustností
 
-Cíl: Maximalizujte celkovou propustnost více front. Propustnost samostatnou frontu se střední nebo vysoká.
+Cíl: maximalizuje celkovou propustnost více front. Propustnost jednotlivých front je střední nebo vysoká.
 
-Získat maximální propustnost napříč více front, použijte nastavení uvedené maximalizuje propustnost jediné fronty. Kromě toho můžete použijte různé objekty pro vytváření vytvořit klienty, kteří odeslat nebo přijmout z různých front.
+Pokud chcete dosáhnout maximální propustnosti napříč několika frontami, použijte nastavení s popisem pro maximalizaci propustnosti jedné fronty. Kromě toho můžete použít různé továrny k vytváření klientů, kteří odesílají nebo dostanou z různých front.
 
-### <a name="low-latency-queue"></a>Fronty s nízkou latencí
+### <a name="low-latency-queue"></a>Fronta s nízkou latencí
 
-Cíl: Minimalizujte latenci začátku do konce fronty nebo tématu. Je malý počet odesílateli a příjemci. Propustnost fronty je malé nebo střední.
+Cíl: minimalizuje koncovou latenci fronty nebo tématu. Počet odesílatelů a přijímačů je malý. Propustnost fronty je malá nebo střední.
 
-* Zakážete dávkování na straně klienta. Klient odešle okamžitě zprávu.
-* Zakážete přístup dávkové úložiště. Služba okamžitě zapisuje zprávu do úložiště.
-* Při použití jednoho klienta, nastavte počet předběžné načtení na 20 opakováních počet zpracovávaných příjemce. Pokud ve stejnou dobu doručování více zpráv do fronty, odesílá je protokol klienta služby Service Bus všechny najednou. Když klient obdrží další zprávu, tato zpráva je již v místní mezipaměti. Mezipaměti by měla být malá.
-* Pokud používáte více klienty, nastavte počet předběžné načtení na hodnotu 0. Nastavením počet druhého klienta může přijímat druhé zprávy, zatímco první klient stále zpracovává první zprávu.
-* Použití dělené fronty pro vylepšení výkonu a dostupnosti.
+* Zakažte dávkování na straně klienta. Klient okamžitě pošle zprávu.
+* Zakažte přístup k dávkovému ukládání. Služba okamžitě zapíše zprávu do úložiště.
+* Pokud používáte jednoho klienta, nastavte počet předběžných hodnot na 20 časů zpracování přijímače. Pokud fronta současně dorazí do fronty více zpráv, protokol klienta Service Bus odesílá všechna data ve stejnou dobu. Když klient obdrží další zprávu, tato zpráva je již v místní mezipaměti. Mezipaměť by měla být malá.
+* Pokud používáte více klientů, nastavte počet předběžných hodnot na 0. Když nastavíte počet, druhý klient může obdržet druhou zprávu, zatímco první klient stále zpracovává první zprávu.
 
-### <a name="queue-with-a-large-number-of-senders"></a>Fronty s velkým počtem uživatelů
+### <a name="queue-with-a-large-number-of-senders"></a>Zařadit do fronty s velkým počtem odesílatelů
 
-Cíl: Maximalizuje propustnost fronty nebo tématu s velkým počtem uživatelů. Každý odesílatel odešle zprávy se střední sazbou. Počet příjemců je malý.
+Cíl: maximalizuje propustnost fronty nebo tématu s velkým počtem odesílatelů. Každý odesilatel odesílá zprávy se střední sazbou. Počet přijímačů je malý.
 
-Umožňuje až 1 000 souběžných připojení k entity pro zasílání zpráv služby Service Bus (nebo 5000 pomocí protokolu AMQP). Toto omezení se vynucují na úrovni oboru názvů a fronty a témata nebo předplatná jsou uzavřeny limitu souběžných připojení na obor názvů. Pro fronty je toto číslo sdílena mezi odesílateli a příjemci. Pokud všechna 1 000 připojení pro odesílatelů, nahraďte fronty tématu a v rámci jednoho předplatného. Téma přijme až 1 000 souběžných připojení z odesílatelů, že odběr přijímá další 1 000 souběžných připojení z příjemců. Pokud potřebujete více než 1 000 souběžných uživatelů, by měl odesílatelé odesílají zprávy službě protokolu služby Service Bus přes protokol HTTP.
+Service Bus umožňuje až 1000 souběžných připojení k entitě zasílání zpráv (nebo 5000 pomocí AMQP). Toto omezení se vynutilo na úrovni oboru názvů a fronty/témata/předplatná se omezené omezením počtu souběžných připojení na obor názvů. U front se toto číslo sdílí mezi odesílateli a přijímači. Pokud se pro odesílatele vyžadují všechna připojení 1000, nahraďte frontu tématem a jedním předplatným. Téma přijímá až 1000 souběžných připojení od odesílatelů, zatímco předplatné přijímá další 1000 souběžných připojení od příjemců. Pokud potřebujete více než 1000 současných odesílatelů, odesílají odesílatelé zprávy do protokolu Service Bus přes HTTP.
 
-Maximalizuje propustnost, proveďte následující kroky:
+K maximalizaci propustnosti proveďte následující kroky:
 
-* Pokud každý odesílatele se nachází v jiném procesu, použijte pouze jeden objekt jeden proces.
-* Využijte výhod dávkování na straně klienta pomocí asynchronních operací.
-* Použijte výchozí dávkování interval 20 ms a snížit počet přenosů pomocí protokolu klienta služby Service Bus.
-* Ponechte dávkové úložiště přístup povolen. Tento přístup zvyšuje celkovou rychlost, jakou můžou být zprávy zapisovány do fronty nebo tématu.
-* Nastaví počet předběžné načtení 20krát maximální zpracování plateb všichni příjemci objekt pro vytváření. Tento počet snižuje počet přenosy protokolu klienta služby Service Bus.
-* Použití dělené fronty pro vylepšení výkonu a dostupnosti.
+* Pokud se každý odesilatel nachází v jiném procesu, použijte pro každý proces jenom jeden objekt factory.
+* Pomocí asynchronních operací můžete využít dávkování na straně klienta.
+* Snižte počet Service Busch přenosů klientských protokolů pomocí výchozího intervalu dávkování 20 MS.
+* Nechte povolený přístup k Batch Storu. Tento přístup zvyšuje celkovou rychlost, kterou lze zprávy zapsat do fronty nebo tématu.
+* Nastavte počet předběžných hodnot na 20 časů, který bude mít maximální počet zpracování všech přijímačů továrny. Tento počet snižuje počet Service Busch přenosů klientských protokolů.
 
-### <a name="queue-with-a-large-number-of-receivers"></a>Fronty s velkým počtem příjemců
+### <a name="queue-with-a-large-number-of-receivers"></a>Zařazení do fronty s velkým počtem přijímačů
 
-Cíl: Maximalizujte rychlost příjmu z fronty nebo odběru s velkým počtem příjemců. Každý příjemce přijímá zprávy střední rychlostí. Počet uživatelů je malý.
+Cíl: Maximalizujte míru přijetí fronty nebo předplatného s velkým počtem přijímačů. Každý příjemce obdrží zprávy se střední sazbou. Počet odesílatelů je malý.
 
-Service Bus umožňuje až 1 000 souběžných připojení k entitě. Pokud fronta vyžaduje více než 1 000 příjemců, nahraďte fronty téma a několik předplatných. Každé předplatné může podporovat až 1 000 souběžných připojení. Příjemci také mají přístup k frontě pomocí protokolu HTTP.
+Service Bus povoluje až 1000 souběžných připojení k entitě. Pokud fronta vyžaduje více než 1000 přijímačů, nahraďte frontu tématem a několika odběry. Každé předplatné může podporovat až 1000 souběžných připojení. Přijímačé taky můžou ke frontě přistupovat přes protokol HTTP.
 
-Maximalizuje propustnost, postupujte takto:
+K maximalizaci propustnosti udělejte toto:
 
-* Pokud každý příjemce se nachází v jiném procesu, použijte pouze jeden objekt jeden proces.
-* Příjemci můžete použít synchronní nebo asynchronní operace. Zadaný počet střední receive jednotlivé příjemce, dokončení žádosti o dávkové zpracování na straně klienta nemá vliv na propustnost příjemce.
-* Ponechte dávkové úložiště přístup povolen. Tento přístup snižuje celkové zatížení entity. Také snižuje celkovou rychlost, jakou můžou být zprávy zapisovány do fronty nebo tématu.
-* Nastavení předběžného načítání počtu na malou hodnotu (například PrefetchCount = 10). Tento počet přijímačů brání ze stavu nečinnosti, zatímco ostatní příjemce velkého počtu zpráv, které jsou uložené v mezipaměti.
-* Použití dělené fronty pro vylepšení výkonu a dostupnosti.
+* Pokud se každý přijímač nachází v jiném procesu, použijte pro každý proces jenom jeden objekt factory.
+* Přijímačé můžou používat synchronní nebo asynchronní operace. Vzhledem k střední míře příjmu jednotlivého přijímače dávka na straně klienta s kompletní žádostí nijak neovlivní propustnost přijímače.
+* Nechte povolený přístup k Batch Storu. Tento přístup omezuje celkové zatížení entity. Zároveň se tím snižuje celková rychlost, kterou lze zprávy zapsat do fronty nebo tématu.
+* Nastavte počet předběžných hodnot na malou hodnotu (například PrefetchCount = 10). Tento počet brání přijímačům v nečinnosti, zatímco ostatní příjemci mají velký počet zpráv uložených v mezipaměti.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Téma s malý počet předplatných
+### <a name="topic-with-a-small-number-of-subscriptions"></a>Téma s malým počtem předplatných
 
-Cíl: Maximalizujte propustnost téma s malý počet předplatných. Zprávu přijme mnoha předplatnými, což znamená, že je větší než frekvence odesílání míra kombinované receive nad Všechna předplatná. Počet uživatelů je malý. Je malý počet přijímačů na jedno předplatné.
+Cíl: maximalizace propustnosti tématu s malým počtem předplatných. Celá řada předplatných obdrží zprávu, což znamená, že celková míra příjmu u všech předplatných je větší než rychlost odesílání. Počet odesílatelů je malý. Počet přijímačů na předplatné je malý.
 
-Maximalizuje propustnost, postupujte takto:
+K maximalizaci propustnosti udělejte toto:
 
-* Pokud chcete zvýšit celková míra odeslání do tématu, použijte k vytvoření odesílatelů více. Pro každý odesílatele použijte asynchronní operace nebo více vláken.
-* Ke zvýšení celkové míry příjem z odběru použijte více vytvořte příjemce. Pro každý příjemce použijte asynchronní operace nebo více vláken.
-* Využijte výhod dávkování na straně klienta pomocí asynchronních operací.
-* Použijte výchozí dávkování interval 20 ms a snížit počet přenosů pomocí protokolu klienta služby Service Bus.
-* Ponechte dávkové úložiště přístup povolen. Tento přístup zvyšuje celkovou rychlost, jakou můžou být zprávy zapisovány do tématu.
-* Nastaví počet předběžné načtení 20krát maximální zpracování plateb všichni příjemci objekt pro vytváření. Tento počet snižuje počet přenosy protokolu klienta služby Service Bus.
-* Použijte téma oddílů pro vylepšení výkonu a dostupnosti.
+* Pro zvýšení celkové míry odeslání do tématu použijte k vytvoření odesílatelů více tovární zpráv. Pro každého odesilatele použijte asynchronní operace nebo více vláken.
+* Pro zvýšení celkové míry příjmu z předplatného použijte k vytvoření přijímačů více zpráv. Pro každého příjemce použijte asynchronní operace nebo více vláken.
+* Pomocí asynchronních operací můžete využít dávkování na straně klienta.
+* Snižte počet Service Busch přenosů klientských protokolů pomocí výchozího intervalu dávkování 20 MS.
+* Nechte povolený přístup k Batch Storu. Tento přístup zvyšuje celkovou rychlost, kterou lze do tématu zapsat zprávy.
+* Nastavte počet předběžných hodnot na 20 časů, který bude mít maximální počet zpracování všech přijímačů továrny. Tento počet snižuje počet Service Busch přenosů klientských protokolů.
 
-### <a name="topic-with-a-large-number-of-subscriptions"></a>Téma s velký počet předplatných
+### <a name="topic-with-a-large-number-of-subscriptions"></a>Téma s velkým počtem předplatných
 
-Cíl: Maximalizuje propustnost tématu s velkým množstvím předplatných. Zpráva přijata mnoha předplatnými, což znamená, že je mnohem větší než míra odesílání míra kombinované receive nad Všechna předplatná. Počet uživatelů je malý. Je malý počet přijímačů na jedno předplatné.
+Cíl: maximalizace propustnosti tématu s velkým počtem předplatných. Celá řada předplatných obdrží zprávu, což znamená, že celková míra příjmu u všech předplatných je mnohem větší než rychlost odesílání. Počet odesílatelů je malý. Počet přijímačů na předplatné je malý.
 
-Témata s velkým množstvím předplatných obvykle vystavují nízkou celkovou propustnost, pokud všechny zprávy jsou směrovány na všechna předplatná. Nízká propustnost je způsobeno skutečnost, že každou zprávu přijme v mnoha případech, a všechny zprávy, které jsou obsaženy v tématu a všechny její odběry jsou uložené ve stejném úložišti. Předpokládá se, že je malý počet uživatelů a počet přijímačů na jedno předplatné. Service Bus podporuje až 2 000 odběrů na téma.
+Témata s velkým počtem předplatných obvykle zveřejňují nízkou celkovou propustnost, pokud jsou všechny zprávy směrovány do všech předplatných. Tato nízká propustnost je způsobena tím, že každá zpráva je přijata mnohokrát a všechny zprávy, které jsou obsaženy v tématu a všechny její odběry, jsou uloženy ve stejném úložišti. Předpokládá se, že počet odesílatelů a počet příjemců na předplatné je malý. Service Bus podporuje až 2 000 předplatných na jedno téma.
 
-Maximalizuje propustnost, vyzkoušejte následující kroky:
+Pokud chcete maximalizovat propustnost, zkuste provést následující kroky:
 
-* Využijte výhod dávkování na straně klienta pomocí asynchronních operací.
-* Použijte výchozí dávkování interval 20 ms a snížit počet přenosů pomocí protokolu klienta služby Service Bus.
-* Ponechte dávkové úložiště přístup povolen. Tento přístup zvyšuje celkovou rychlost, jakou můžou být zprávy zapisovány do tématu.
-* Nastaví počet předběžné načtení 20krát očekávané receive sazbou během několika sekund. Tento počet snižuje počet přenosy protokolu klienta služby Service Bus.
-* Použijte téma oddílů pro vylepšení výkonu a dostupnosti.
-
-## <a name="next-steps"></a>Další postup
-
-Další informace o optimalizaci výkonu služby Service Bus, najdete v článku [segmentované entity zasílání zpráv][Partitioned messaging entities].
+* Pomocí asynchronních operací můžete využít dávkování na straně klienta.
+* Snižte počet Service Busch přenosů klientských protokolů pomocí výchozího intervalu dávkování 20 MS.
+* Nechte povolený přístup k Batch Storu. Tento přístup zvyšuje celkovou rychlost, kterou lze do tématu zapsat zprávy.
+* Nastavte počet předplatných na hodnotu 20 časů očekávané míry příjmu v sekundách. Tento počet snižuje počet Service Busch přenosů klientských protokolů.
 
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender

@@ -1,23 +1,18 @@
 ---
 title: Nepřetržité monitorování pomocí Azure Monitor | Microsoft Docs
 description: Popisuje konkrétní kroky pro použití Azure Monitor k povolení průběžného monitorování v rámci vašich pracovních postupů.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/12/2018
+ms.openlocfilehash: 88934d469ddcca50d7dfc3f35b18ab332d4bd172
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744499"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596804"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -89,7 +84,7 @@ Zajistěte, aby měl váš vývoj a operace přístup ke stejné telemetrie a n�
 - Použijte [analýzu dopadů](../azure-monitor/app/usage-impact.md) , která vám umožní určit prioritu oblastí, na které se chcete zaměřit, na důležité klíčové ukazatele výkonu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o rozdílných součástech [Azure monitor](overview.md).
 - [Přidejte nepřetržité monitorování](../azure-monitor/app/continuous-monitoring.md) do vašeho kanálu pro vydávání verzí.

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387774"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596521"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
@@ -61,6 +61,10 @@ Při vypnutí automatického mapování budete mít možnost Přidat mapování 
 Když zvolíte mapování na základě pravidel, budete mít k stránce ADF možnost vyhodnotit odpovídající výraz tak, aby odpovídala pravidlům příchozího vzoru, a definovat názvy odchozích polí. Můžete přidat libovolnou kombinaci polí i mapování na základě pravidel. Názvy polí se pak generují za běhu pomocí ADF na základě příchozích metadat ze zdroje. Můžete zobrazit názvy generovaných polí během ladění a pomocí podokna náhledu dat.
 
 Podrobnosti o porovnávání vzorů jsou v [dokumentaci ke vzorci sloupců](concepts-data-flow-column-pattern.md).
+
+Můžete také zadat vzory regulárních výrazů při použití shody založené na pravidlech rozbalením řádku a zadáním regulárního výrazu vedle položky "shoda názvů:".
+
+![Mapování regulárního výrazu](media/data-flow/scdt1g4.png "Mapování regulárního výrazu")
 
 ## <a name="file-name-options"></a>Možnosti názvu souboru
 

@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720199"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596366"
 ---
 # <a name="web-app-that-calls-web-apis---sign-in"></a>Webová aplikace, která volá webová rozhraní API – přihlášení
 
@@ -30,13 +30,13 @@ To se liší v tom, že když se uživatel odhlásí z této aplikace nebo z jak
 
 ## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Zachycení zpětného volání po odhlášení – jednotné odhlášení
 
-Vaše aplikace může zachytit po `logout` události, například pro vymazání záznamu mezipaměti tokenů přidružené k účtu, který se odhlásil. Webová aplikace bude ukládat tokeny přístupu pro uživatele v mezipaměti. Zachycení po `logout` zpětného volání umožňuje webové aplikaci odebrat uživatele z mezipaměti tokenů.
+Vaše aplikace může zachytit událost po `logout`, například, aby vymazala záznam mezipaměti tokenů přidružený k účtu, který se odhlásil. Webová aplikace bude ukládat tokeny přístupu pro uživatele v mezipaměti. Zachycení po `logout` zpětného volání umožňuje webové aplikaci odebrat uživatele z mezipaměti tokenů.
 
 # <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 Tento mechanismus je znázorněn v metodě `AddMsal()` [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
 
-**Adresa URL pro odhlášení** , kterou jste zaregistrovali pro vaši aplikaci, vám umožní implementovat jednotné odhlašování. Koncový bod Microsoft Identity Platform `logout` zavolá **adresu URL pro odhlášení** registrovanou ve vaší aplikaci. K tomuto volání dochází, pokud se odhlášení iniciovalo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace najdete v tématu [jednotné odhlašování](v2-protocols-oidc.md#single-sign-out).
+**Adresa URL pro odhlášení** , kterou jste zaregistrovali pro vaši aplikaci, vám umožní implementovat jednotné odhlašování. Microsoft Identity Platform `logout` Endpoint zavolá **adresu URL pro odhlášení** registrovanou ve vaší aplikaci. K tomuto volání dochází, pokud se odhlášení iniciovalo z vaší webové aplikace nebo z jiné webové aplikace nebo prohlížeče. Další informace najdete v tématu [jednotné odhlašování](v2-protocols-oidc.md#single-sign-out).
 
 ```CSharp
 public static class WebAppServiceCollectionExtensions
@@ -80,5 +80,24 @@ Ukázka Pythonu neodebírá účty z mezipaměti při globálním odhlašování
 
 ## <a name="next-steps"></a>Další kroky
 
+# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Získání tokenu pro webovou aplikaci](scenario-web-app-call-api-acquire-token.md)
+> [Získání tokenu pro webovou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Získání tokenu pro webovou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Získání tokenu pro webovou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Získání tokenu pro webovou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+
+---

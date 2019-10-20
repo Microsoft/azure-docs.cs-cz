@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 03fb21197b2e71603b8078945e16ccd69f151577
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555777"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595642"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 
@@ -263,11 +263,18 @@ Následující YAML je příkladem souboru závislostí conda pro odvození:
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> Pokud je vaše závislost k dispozici prostřednictvím conda i PIP (z PyPi), společnost Microsoft doporučuje používat verzi Conda, protože balíčky conda obvykle obsahují předem připravené binární soubory, které zajistí spolehlivější instalaci.
+>
+> Další informace najdete v tématu [Principy conda a PIP](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím Conda, použijte příkaz `conda search <package-name>`, nebo použijte indexy balíčků v [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) a [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
 
 Pokud chcete použít automatické generování schématu, váš vstupní skript musí importovat balíčky `inference-schema`.
 

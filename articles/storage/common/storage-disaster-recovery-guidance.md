@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671083"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595206"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
@@ -47,16 +47,16 @@ Mezi další Azure Storage možnosti redundance patří úložiště redundantn�
 
 Je důležité navrhnout aplikaci pro zajištění vysoké dostupnosti od začátku. Pokyny pro návrh aplikace a plánování zotavení po havárii najdete v těchto prostředcích Azure:
 
-* [Navrhování odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Přehled klíčových konceptů pro navrhování vysoce dostupných aplikací v Azure.
-* [Kontrolní seznam dostupnosti](https://docs.microsoft.com/azure/architecture/checklist/availability): Kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy návrhu pro vysokou dostupnost.
-* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md): Pokyny k návrhu pro vytváření aplikací, které využívají výhod RA-GRS.
-* [Kurz: Vytvoření vysoce dostupné aplikace s úložištěm](../blobs/storage-create-geo-redundant-storage.md)objektů BLOB: Kurz, ve kterém se dozvíte, jak vytvořit vysoce dostupnou aplikaci, která automaticky přepíná mezi koncovými body v podobě selhání a jsou simulovaná obnovení. 
+* [Návrh odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Přehled klíčových konceptů pro navrhování vysoce dostupných aplikací v Azure.
+* [Kontrolní seznam dostupnosti](https://docs.microsoft.com/azure/architecture/checklist/availability): kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy návrhu pro vysokou dostupnost.
+* [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md): pokyny k návrhu pro vytváření aplikací, které využívají výhod RA-GRS.
+* [Kurz: vytvoření vysoce dostupné aplikace s využitím úložiště objektů BLOB](../blobs/storage-create-geo-redundant-storage.md): kurz, který ukazuje, jak vytvořit vysoce dostupnou aplikaci, která automaticky přepíná mezi koncovými body jako se selháním a obnovením se simulují. 
 
 Kromě toho mějte na paměti tyto osvědčené postupy pro udržení vysoké dostupnosti dat Azure Storage:
 
-* **Disků** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
+* **Disky:** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
 * **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/storage-blob-soft-delete.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)nebo [knihovny pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
-* **Spis** Pomocí [AzCopy](storage-use-azcopy.md) nebo [Azure PowerShell](storage-powershell-guide-full.md) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
+* **Soubory:** Pomocí [AzCopy](storage-use-azcopy.md) nebo [Azure PowerShell](storage-powershell-guide-full.md) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
 * **Tabulky:** pomocí [AzCopy](storage-use-azcopy.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
 
 ## <a name="track-outages"></a>Sledovat výpadky
@@ -113,14 +113,20 @@ Chcete-li se vyhnout zásadní ztrátě dat, před navrácením služeb po obnov
 
 ## <a name="initiate-an-account-failover"></a>Zahájení převzetí služeb při selhání účtu
 
-Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o inicializaci převzetí služeb při [selhání (Preview)](storage-initiate-account-failover.md).
+Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o [inicializaci převzetí služeb při selhání (Preview)](storage-initiate-account-failover.md).
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
-převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
+Převzetí služeb při selhání účtu je dostupné ve verzi Preview pro všechny zákazníky, kteří používají GRS nebo RA-GRS s nasazeními Azure Resource Manager. Podporují se typy účtů pro obecné účely V1, obecné účely v2 a BLOB Storage. převzetí služeb při selhání účtu je aktuálně dostupné v těchto oblastech:
 
-- USA – západ 2
+- Východní Asie
+- Jihovýchodní Asie
+- Austrálie – východ
+- Austrálie – jihovýchod
+- USA – střed
+- USA – východ 2
 - USA – středozápad
+- USA – západ 2
 
 Verze Preview je určena pouze pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
@@ -143,7 +149,7 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 Další informace popsané v této části vám pomohou pochopit, jak můžou být vaše aplikace a služby ovlivněné při vynucení převzetí služeb při selhání během období Preview.
 
-#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+#### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
 Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. 
 
@@ -170,7 +176,7 @@ Pro převzetí služeb při selhání účtu verze Preview nejsou podporované t
 - Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. Účty úložiště obsahující sdílené složky Azure, které se používají jako koncové body cloudu v Azure File Sync by neměly přenášet služby při selhání. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů.  
 - Účet úložiště obsahující archivované objekty blob nejde převzít služby při selhání. Udržujte archivované objekty BLOB v samostatném účtu úložiště, u kterých neplánujete převzít služby při selhání.
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
-- Po dokončení převzetí služeb při selhání přestane následující funkce fungovat, pokud jsou původně povolené: [Odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)a [protokolování analýza úložiště](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Po dokončení převzetí služeb při selhání přestane následující funkce fungovat, pokud jsou původně povolené: [odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)a [Analýza úložiště protokolování](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
 
@@ -180,8 +186,8 @@ Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům p
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 * [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-* [Kurz: Vytvoření vysoce dostupné aplikace s úložištěm objektů BLOB](../blobs/storage-create-geo-redundant-storage.md) 
+* [Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB](../blobs/storage-create-geo-redundant-storage.md) 

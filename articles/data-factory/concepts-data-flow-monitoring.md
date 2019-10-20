@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387977"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597121"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -24,7 +24,7 @@ Po spuštění kanálu budete moct monitorovat kanál a všechny aktivity obsaž
 
 ![Sledování toku dat](media/data-flow/mon001.png "Sledování toku dat")
 
-Na této úrovni uvidíte statistiky, včetně časů běhu a stavu. ID spuštění na úrovni aktivity se liší od ID běhu na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Kliknutím na brýlí získáte podrobné informace o spuštění toku dat.
+Na této úrovni uvidíte statistiku, včetně časů běhu a stavu. ID spuštění na úrovni aktivity se liší od ID běhu na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Kliknutím na brýlí získáte podrobné informace o spuštění toku dat.
 
 ![Sledování toku dat](media/data-flow/mon002.png "Sledování toku dat")
 
@@ -47,6 +47,11 @@ Po spuštění toku dat ve Sparku Azure Data Factory určí optimální cesty k�
   * Vypočítáno: použijete sloupec pro podmíněné zpracování nebo v rámci výrazu v toku dat, ale nebudete ho do jímky nakládat.
   * Derived: sloupec je nový sloupec, který jste vygenerovali ve vašem toku, to znamená, že se ve zdroji nenachází.
   * Namapováno: sloupec pochází ze zdroje a vaše mapování je na pole jímky.
+  * Stav toku dat: aktuální stav provádění
+  * Čas spuštění clusteru: doba, po kterou se získá výpočetní prostředí JIT ve službě JIT pro spuštění toku dat
+  * Počet transformací: kolik kroků transformace se provádí v toku
+  
+![Monitorování toku dat ACiT](media/data-flow/monitornew.png "Nové monitorování toku dat")  
   
 ## <a name="monitor-icons"></a>Monitorovat ikony
 

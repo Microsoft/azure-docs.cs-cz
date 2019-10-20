@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294357"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596889"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
-Tento článek poskytuje pokyny pro zlepšení výkonu a spolehlivosti aplikací pracujících s bez [serveru](https://azure.microsoft.com/solutions/serverless/) . 
+Tento článek poskytuje pokyny pro zlepšení výkonu a spolehlivosti aplikací pracujících s bez [serveru](https://azure.microsoft.com/solutions/serverless/) .  
 
 ## <a name="general-best-practices"></a>Obecné osvědčené postupy
 
@@ -100,7 +100,7 @@ Asynchronní programování je doporučeným osvědčeným postupem. Vždy se v�
 
 Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v souboru `host.json` můžete nakonfigurovat podle podrobných [informací v dokumentaci Host. JSON.](functions-host-json.md)
 
-U C# funkcí lze typ změnit na pole silného typu.  Například místo `EventData sensorEvent` by signatura metody mohla `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v `function.json` na `many`, aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+U C# funkcí lze typ změnit na pole silného typu.  Například namísto `EventData sensorEvent` může být podpis metody `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v `function.json` na `many`, aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitelů pro lepší zpracování souběžnosti
 
@@ -116,7 +116,7 @@ Další možnosti konfigurace hostitele najdete [v dokumentu konfigurace hostite
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v následujících materiálech:
+Další informace najdete v následujících materiálech:
 
 * [Správa připojení v Azure Functions](manage-connections.md)
 * [Azure App Service osvědčené postupy](../app-service/app-service-best-practices.md)

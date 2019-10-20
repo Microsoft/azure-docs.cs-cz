@@ -4,15 +4,15 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: d26535d18233533d1d72c02ad997008cba536fce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274643"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595169"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -97,7 +97,7 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 - Kontejner (systém souborů)
 - Účet úložiště
 - Skupina prostředků
-- Formě
+- Předplatné
 
 Informace o tom, jak ověřit a přiřadit role, najdete [v tématu udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -293,7 +293,7 @@ Adresa URL se zobrazí ve výstupu tohoto příkazu. Skript pak může stáhnout
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Sekvence speciálních znaků v tokenech SAS
 
-V dávkových souborech, které mají rozšíření `.cmd`, je nutné řídicí znaky `%`, které se zobrazí v tokenech SAS. To lze provést přidáním znaku `%` vedle existujících znaků `%` v řetězci tokenu SAS.
+V dávkových souborech, které mají rozšíření `.cmd`, bude nutné řídicí znaky `%`, které se zobrazí v tokenech SAS. To lze provést přidáním znaku `%` vedle existujících `%` znaků v řetězci tokenu SAS.
 
 ## <a name="use-azcopy-in-storage-explorer"></a>Použití AzCopy v Průzkumník služby Storage
 

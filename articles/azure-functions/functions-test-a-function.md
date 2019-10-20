@@ -1,5 +1,5 @@
 ---
-title: Azure Functions testování
+title: Testování funkcí Azure Functions
 description: Vytváření automatizovaných testů pro C# funkci v aplikaci Visual Studio a funkce javascriptu v vs Code
 services: functions
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709344"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596842"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu v Azure Functions
 
@@ -30,12 +30,12 @@ Následující obsah je rozdělen do dvou různých sekcí určených pro cílen
 
 Ukázkové úložiště je k dispozici na [GitHubu](https://github.com/Azure-Samples/azure-functions-tests).
 
-## <a name="c-in-visual-studio"></a>C# v sadě Visual Studio
+## <a name="c-in-visual-studio"></a>C#v aplikaci Visual Studio
 Následující příklad popisuje, jak vytvořit aplikaci C# funkcí v aplikaci Visual Studio a spustit a testy pomocí [xUnit](https://xunit.github.io).
 
 ![Testování Azure Functions C# v aplikaci Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
 Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Následující kroky vám pomůžou vytvořit aplikace a funkce, které jsou potřeba pro podporu testů:
 
@@ -52,7 +52,7 @@ Nyní, když jsou vytvořeny aplikace, můžete vytvořit třídy používané k
 
 Každá funkce převezme instanci [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) , která zpracovává protokolování zpráv. Některé testy buď neprotokolují zprávy, nebo nemají žádné obavy o implementaci protokolování. Jiné testy potřebují k vyhodnocení zpráv protokolovaných za účelem určení, zda test projde.
 
-Třída `ListLogger` je určena k implementaci rozhraní `ILogger` a při testování podrží interní seznam zpráv pro vyhodnocení.
+Třída `ListLogger` je určena k implementaci rozhraní `ILogger` a v interním seznamu zpráv pro vyhodnocení při testování.
 
 **Klikněte pravým tlačítkem** na aplikaci *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **NullScope.cs** a zadejte následující kód:
 
@@ -110,13 +110,13 @@ namespace Functions.Tests
 
 Třída `ListLogger` implementuje následující členy, které jsou vynásobené rozhraním `ILogger`:
 
-- **BeginScope**: obory přidávají kontext do svého protokolování. V tomto případě test pouze odkazuje na statickou instanci na třídě `NullScope`, aby test mohl fungovat.
+- **BeginScope**: obory přidávají kontext do svého protokolování. V tomto případě test pouze odkazuje na statickou instanci třídy `NullScope`, aby test mohl fungovat.
 
 - **Povoleno**: je k dispozici výchozí hodnota `false`.
 
 - **Log**: Tato metoda používá k formátování zprávy poskytnutou funkci `formatter` a následně do kolekce `Logs` přidá výsledný text.
 
-Kolekce `Logs` je instancí `List<string>` a inicializuje se v konstruktoru.
+Kolekce `Logs` je instancí `List<string>` a je inicializována v konstruktoru.
 
 Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **LoggerTypes.cs** a zadejte následující kód:
 
@@ -201,7 +201,7 @@ Třída `TestFactory` implementuje následující členy:
 
 - **CreateHttpRequest**: Tato metoda vytvoří požadavek HTTP inicializovaný pomocí daných parametrů řetězce dotazu.
 
-- **CreateLogger**: v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. @No__t-0 uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
+- **CreateLogger**: v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. @No__t_0 uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
 
 Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **FunctionsTests.cs** a zadejte následující kód:
 
@@ -246,7 +246,7 @@ namespace Functions.Tests
 ```
 Členy implementované v této třídě jsou:
 
-- **Http_trigger_should_return_known_string**: Tento test vytváří požadavek s hodnotami řetězce dotazu `name=Bill` na funkci http a kontroluje, zda je vrácena očekávaná odpověď.
+- **Http_trigger_should_return_known_string**: Tento test vytváří požadavek s hodnotami řetězce dotazu `name=Bill` do funkce HTTP a kontroluje, zda je vrácena očekávaná odpověď.
 
 - **Http_trigger_should_return_string_from_member_data**: Tento test pomocí atributů xUnit poskytuje ukázková data funkce http.
 
@@ -254,7 +254,7 @@ namespace Functions.Tests
 
 Chcete-li získat přístup k nastavení aplikace v testech, můžete použít [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
-### <a name="run-tests"></a>Spouštění testů
+### <a name="run-tests"></a>Spustit testy
 
 Chcete-li spustit testy, přejděte do **Průzkumníka testů** a klikněte na možnost **Spustit vše**.
 
@@ -270,7 +270,7 @@ Následující příklad popisuje, jak vytvořit aplikaci funkcí JavaScriptu v 
 
 ![Testování Azure Functions pomocí JavaScriptu v VS Code](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
 Chcete-li nastavit prostředí, inicializujte novou aplikaci Node. js v prázdné složce spuštěním `npm init`.
 
@@ -345,7 +345,7 @@ test('Timer trigger should log message', () => {
 ```
 Funkce časovače v šabloně protokoluje zprávu na konci těla funkce. Tento test zajišťuje, aby funkce *protokolu* byla volána jednou.
 
-### <a name="run-tests"></a>Spouštění testů
+### <a name="run-tests"></a>Spustit testy
 Chcete-li spustit testy, otevřete okno příkazového řádku stisknutím **kombinace kláves CTRL + ~** a spusťte `npm test`:
 
 ```bash
@@ -363,7 +363,8 @@ Chcete-li ladit testy, přidejte do souboru *Launch. JSON* následující konfig
   "type": "node",
   "request": "launch",
   "name": "Jest Tests",
-  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "disableOptimisticBPs": true,
+  "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
   "args": [
       "-i"
   ],

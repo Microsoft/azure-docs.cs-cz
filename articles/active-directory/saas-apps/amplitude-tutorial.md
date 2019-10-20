@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s amplitudě | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a amplitudě.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování (SSO) s amplitudou | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a amplitudou.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,221 +8,179 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 496c9ffa-c833-41fa-8d17-2dc3044954d1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eba2aad0c758aeff189ba8638d92c46ed0902c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d077da34a6e82ced957c4da1e6abf7a5e294e78
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107102"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596259"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>Kurz: Integrace Azure Active Directory s amplitudě
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s amplitudou
 
-V tomto kurzu se dozvíte, jak integrovat amplitudě s Azure Active Directory (Azure AD).
-Amplitudě integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat amplitudu pomocí Azure Active Directory (Azure AD). Když Integrujte amplitudu s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k amplitudě.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k amplitudě (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Amplitudám
+* Umožněte uživatelům, aby se automaticky přihlásili k amplitudě pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Konfigurace integrace Azure AD s amplitudě, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Amplitudě jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Odběr amplitudy povolených jednotného přihlašování (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje amplitudě **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
-* Podporuje amplitudě **JIT** zřizování uživatelů
+* Amplituda podporuje **IDP** jednotné přihlašování.
+* Amplituda podporuje zřizování uživatelů **jenom v čase**
 
-## <a name="adding-amplitude-from-the-gallery"></a>Přidání amplitudě z Galerie
+## <a name="adding-amplitude-from-the-gallery"></a>Přidání amplitud z Galerie
 
-Konfigurace integrace nástroje amplitudě do služby Azure AD, budete muset přidat amplitudě z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci amplitudy do Azure AD, musíte přidat amplitudu z Galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat amplitudě z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **amplitudu** .
+1. Vyberte možnost **amplituda** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-amplitude"></a>Konfigurace a testování jednotného přihlašování Azure AD pro amplitudu
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s amplitudou pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v amplitudě.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD s amplitudou, dokončete následující stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Konfigurace jednotného přihlašování k amplitudám](#configure-amplitude-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+    * **[Vytvořte testovacího uživatele pro amplitudu](#create-amplitude-test-user)** , abyste měli protějšek B. Simon ve amplitudě, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **amplitudě**vyberte **amplitudě** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **amplituda** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Amplitudě v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí amplitudě podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v amplitudě.
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://amplitude.com/saml/sso/metadata`
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s amplitudě, které potřebujete k dokončení následujících stavebních bloků:
-
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace amplitudě Single Sign-On](#configure-amplitude-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele amplitudě](#create-amplitude-test-user)**  – Pokud chcete mít protějšek Britta Simon amplitudě, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s amplitudě, proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **amplitudě** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
-
-    ![Amplitudě domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
-
-    a. V **identifikátor** textové pole, zadejte adresu URL: `https://amplitude.com/saml/sso/metadata`
-
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://analytics.amplitude.com/saml/sso/<uniqueid>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://analytics.amplitude.com/saml/sso/<uniqueid>`
 
     > [!NOTE]
-    > Hodnota adresy URL odpovědi není skutečný. Později v tomto kurzu se získat hodnotu adresy URL odpovědi.
+    > Hodnota adresy URL odpovědi není reálné číslo. Hodnota adresy URL odpovědi se zobrazí později v tomto kurzu.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Amplitudě domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    Do textového pole **přihlašovací adresa URL** zadejte adresu url: `https://analytics.amplitude.com/sso`
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://analytics.amplitude.com/sso`
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+1. V části **nastavení amplitudy** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-7. Na **nastavení amplitudě** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-    a. Přihlašovací adresa URL
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    b. Identifikátor služby Azure Ad
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-    c. Adresa URL – odhlášení
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-### <a name="configure-amplitude-single-sign-on"></a>Konfigurace amplitudě jednotného přihlašování
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k amplitudě.
 
-1. Přihlašování k webu společnosti amplitudě jako správce.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **amplituda**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-2. Klikněte na **naplánovat správu** v levém navigačním panelu.
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+## <a name="configure-amplitude-sso"></a>Konfigurace jednotného přihlašování k Amplitudám
+
+1. Pokud chcete automatizovat konfiguraci v rámci amplitudy, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na tlačítko **nastavit amplitudu** , které vás přesměruje do aplikace amplitudy. Odtud zadejte přihlašovací údaje správce pro přihlášení do amplitudy. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit amplitudu ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu amplitudové společnosti jako správce a proveďte následující kroky:
+
+1. Klikněte na tlačítko **plán správce** z levého navigačního panelu.
 
     ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure1.png)
 
-3. Vyberte **Microsoft Azure Active Directory Metadata** z **integraci jednotného přihlašování**.
+1. V **integraci jednotného přihlašování**vyberte **Microsoft Azure Active Directory metadata** .
 
     ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure2.png)
 
-4. Na **nastavit až Single Sign-On** části, proveďte následující kroky:
+1. V části **nastavení jednotného přihlašování** proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/amplitude-tutorial/configure3.png)
 
-    a. Otevřete na stažený **soubor Xml s metadaty** z webu Azure portal v programu Poznámkový blok, vložte obsah **Microsoft Azure Active Directory Metadata** textového pole.
+    a. Otevřete stažená **metadata XML** z Azure Portal v programu Poznámkový blok, vložte obsah do textového pole **Microsoft Azure Active Directory metadat** .
 
-    b. Kopírovat **adresy URL odpovědi (ACS)** hodnotu a vložte ho do **adresy URL odpovědi** textové pole z **základní konfiguraci SAML** na webu Azure Portal.
+    b. Zkopírujte hodnotu **URL odpovědi (ACS)** a vložte ji do textového pole **Adresa URL odpovědi** **základní konfigurace SAML** v Azure Portal.
 
     c. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-amplitude-test-user"></a>Vytvořit testovacího uživatele pro amplitudu
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
-
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k amplitudě.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **amplitudě**.
-
-    ![Okno aplikace organizace](common/enterprise-applications.png)
-
-2. V seznamu aplikací vyberte **amplitudě**.
-
-    ![Odkaz amplitudě v seznamu aplikací](common/all-applications.png)
-
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-amplitude-test-user"></a>Vytvoření amplitudě testovacího uživatele
-
-V této části se vytvoří uživateli Britta Simon v amplitudě. Amplitudě podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi amplitudě, vytvoří se nový po ověření.
+V této části se v amplitudě vytvoří uživatel s názvem B. Simon. Amplituda podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povoleno. V této části není žádná položka akce. Pokud uživatel ještě ve amplitudě neexistuje, vytvoří se po ověření nový.
 
 > [!Note]
-> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory amplitudě](https://amplitude.zendesk.com).
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory pro amplitudu](https://amplitude.zendesk.com).
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici amplitudě na přístupovém panelu, vám by měl být automaticky přihlášeni k amplitudě, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici amplitud na přístupovém panelu byste měli být automaticky přihlášení do amplitudy, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte amplitudu pomocí Azure AD](https://aad.portal.azure.com/)

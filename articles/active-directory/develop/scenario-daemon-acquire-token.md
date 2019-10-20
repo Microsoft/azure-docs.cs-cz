@@ -16,16 +16,16 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056447"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596386"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
-Jakmile bude důvěrná klientská aplikace vytvořená, můžete získat token pro aplikaci voláním ``AcquireTokenForClient``, předáním oboru a vynucením nebo neobnovením tokenu.
+Jakmile je důvěrná klientská aplikace vytvořená, můžete získat token pro aplikaci voláním ``AcquireTokenForClient``, předáním oboru a vynucením nebo neobnovením tokenu.
 
 ## <a name="scopes-to-request"></a>Rozsahy k vyžádání
 
@@ -62,7 +62,7 @@ Obor používaný pro přihlašovací údaje klienta by měl vždycky být resou
 
 > [!IMPORTANT]
 > V případě, že MSAL žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0, Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku.
-> Proto pokud by jako Azure SQL ( **https://database.windows.net** ) prostředek očekává cílovou skupinu končící lomítkem (pro Azure SQL: `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` (Všimněte si dvojitého lomítka). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL.
+> Proto pokud by jako Azure SQL ( **https://database.windows.net** ) prostředek očekává cílovou skupinu končící lomítkem (pro Azure SQL: `https://database.windows.net/` ), budete muset požádat o obor `https://database.windows.net//.default` (Poznamenejte si dvojité lomítko). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL.
 
 ## <a name="acquiretokenforclient-api"></a>Rozhraní API pro AcquireTokenForClient
 
@@ -148,11 +148,11 @@ future.join();
 
 ---
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protocol (Protokol)
 
 Pokud ještě nemáte knihovnu pro svůj jazyk podle vlastního výběru, můžete použít protokol přímo:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: Žádost o přístupový token se sdíleným tajným klíčem
+#### <a name="first-case-access-token-request-with-a-shared-secret"></a>První případ: žádost přístupového tokenu se sdíleným tajným klíčem
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -165,7 +165,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: Žádost o přístupový token s certifikátem
+#### <a name="second-case-access-token-request-with-a-certificate"></a>Druhý případ: žádost o přístupový token s certifikátem
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -183,13 +183,13 @@ Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platfor
 
 ## <a name="application-token-cache"></a>Mezipaměť tokenů aplikace
 
-`AcquireTokenForClient` V MSAL.NET používá **mezipaměť tokenu aplikace** (všechny ostatní metody AcquireTokenXX používají mezipaměť tokenu uživatele) `AcquireTokenSilent` nevolají před voláním `AcquireTokenForClient` jako `AcquireTokenSilent` používá mezipaměť tokenu **uživatele** . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu **aplikace** a aktualizuje ji.
+V MSAL.NET používá `AcquireTokenForClient` **mezipaměť tokenu aplikace** (všechny ostatní metody AcquireTokenXX používají mezipaměť tokenu uživatele) nevolají `AcquireTokenSilent` před voláním `AcquireTokenForClient`, protože `AcquireTokenSilent` používá mezipaměť tokenu **uživatele** . `AcquireTokenForClient` kontroluje samotnou mezipaměť tokenu **aplikace** a aktualizuje ji.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
-Pokud se zobrazí chybová zpráva s oznámením, že jste použili neplatný rozsah, pravděpodobně jste `resource/.default` obor nepoužívali.
+Pokud se zobrazí chybová zpráva s oznámením, že jste použili neplatný rozsah, pravděpodobně jste nepoužívali obor `resource/.default`.
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Nezapomněli jste zadat souhlas správce? Aplikace démona vyžaduje!
 
@@ -210,7 +210,21 @@ Content: {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](scenario-daemon-call-api.md)
+> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e61b804c20063e87c19df4484291f81fdbb03a7b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67175388"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72600882"
 ---
 >[!NOTE]
 >U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
 
-| Resource | Výchozí omezení | 
+| Prostředek | Výchozí omezení | 
 | --- | --- | 
 | Účty Azure Media Services v jednom předplatném | 25 (pevné) |
 | Rezervované jednotky médií na účet Media Services |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -52,7 +52,7 @@ Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem ú
 
 <sup>7</sup> Maximální velikost podporovaná pro jeden objekt BLOB je v Azure Blob Storage v současnosti až o 5 TB. V Media Services na základě velikostí virtuálních počítačů, které služba používá, platí další omezení. Omezení velikosti se vztahuje na soubory, které nahráváte, a také soubory, které se generují v důsledku zpracování Media Services (kódování nebo analýza). Pokud je zdrojový soubor větší než 260 GB, bude pravděpodobně selhání úlohy. 
 
-V následující tabulce jsou uvedena omezení pro rezervované jednotky médií S1, S2 a S3. Pokud je zdrojový soubor větší než omezení definovaná v tabulce, vaše úloha kódování se nezdařila. Pokud kódujete zdroje 4K rozlišení dlouhé doby trvání, budete muset použít jednotky rezervované pro médium S3 k dosažení potřebného výkonu. Pokud jste 4k obsah, který je větší než limit 260 GB na rezervované jednotky médií S3, kontaktujte nás na amshelp@microsoft.com základě potenciálních rizik pro podporu vašeho scénáře.
+V následující tabulce jsou uvedena omezení pro rezervované jednotky médií S1, S2 a S3. Pokud je zdrojový soubor větší než omezení definovaná v tabulce, vaše úloha kódování se nezdařila. Pokud kódujete zdroje 4K rozlišení dlouhé doby trvání, budete muset použít jednotky rezervované pro médium S3 k dosažení potřebného výkonu. Pokud jste 4K obsah, který je větší než limit 260 GB na rezervované jednotky médií S3, otevřete lístek podpory.
 
 |Typ rezervované jednotky médií   |Maximální velikost vstupu (GB)|
 |---|---|

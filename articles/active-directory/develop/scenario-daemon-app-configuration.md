@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3a9b1a54725dff8fd7b8a6c5023bc7eb0ba84fc8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527063"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596758"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -315,7 +315,7 @@ Podrobnosti najdete v tématu MSAL. Referenční dokumentace Pythonu pro [Confid
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j je ve verzi Public Preview. Podepsané kontrolní výrazy se zatím nepodporují.
+msal4j je ve verzi Public Preview. Podepsanou kontrolní výrazy se zatím nepodporují.
 
 ---
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717177"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595103"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Nahrání virtuálního pevného disku do Azure pomocí Azure CLI
 
@@ -41,9 +41,9 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 - ReadToUpload, což znamená, že disk je připravený k přijetí nahrávání, ale nevytvořil se žádný [podpis zabezpečeného přístupu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
 - ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
-V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit, dokud na spravovaném disku nevoláte `revoke-access`, což je potřeba k připojení disku k virtuálnímu počítači.
+V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit, dokud `revoke-access` nebudete volat na spravovaném disku, který je potřeba k připojení disku k virtuálnímu počítači.
 
-Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete muset mít velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). To můžete provést buď pomocí `wc -c <yourFileName>.vhd`, nebo `ls -al <yourFileName>.vhd`. Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
+Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete muset mít velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). K získání toho můžete použít buď `wc -c <yourFileName>.vhd`, nebo `ls -al <yourFileName>.vhd`. Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
 
 Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru **--for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az-disk-create) :
 
@@ -81,7 +81,7 @@ Toto nahrávání má stejnou propustnost jako ekvivalentní [standardní pevný
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Pokud vaše SAS vyprší během nahrávání a ještě jste nevolali `revoke-access`, můžete získat nové SAS, abyste mohli pokračovat v nahrávání pomocí `grant-access`.
+Pokud vaše SAS vyprší během nahrávání a zatím jste se nevolali `revoke-access`, můžete získat nové SAS, abyste mohli pokračovat v nahrávání pomocí `grant-access`.
 
 Po dokončení nahrávání a už nebudete muset na disk zapisovat další data, Odvolejte SAS. Odvoláním SAS dojde ke změně stavu spravovaného disku a budete moci připojit disk k virtuálnímu počítači.
 
@@ -98,7 +98,7 @@ Následující skript to provede za vás, což je postup podobný dříve popsan
 > [!IMPORTANT]
 > Pokud zadáváte velikost disku v bajtech spravovaného disku z Azure, musíte přidat posun 512. Je to proto, že Azure při vracení velikosti disku vynechá zápatí. Pokud to neuděláte, kopie se nezdaří. Následující skript to pro vás už dělá.
 
-Nahraďte `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` a `<yourTargetLocationHere>` (jako příklad hodnoty Location by se uswest2) hodnotami, a potom spuštěním následujícího skriptu zkopírujte spravovaný disk.
+Nahraďte `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` a `<yourTargetLocationHere>` (příkladem hodnoty Location by uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -109,11 +109,11 @@ targetLocale = <yourTargetLocationHere>
 
 sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
 
-az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
-sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
 .\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 

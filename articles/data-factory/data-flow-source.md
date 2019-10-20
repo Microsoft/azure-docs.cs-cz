@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387763"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596483"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
@@ -53,6 +53,8 @@ Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . T
 
 **Vzorkování:** Povolte vzorkování, abyste omezili počet řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
+**Víceřádkové řádky:** Vyberte víceřádkové řádky, pokud zdrojový textový soubor obsahuje řetězcové hodnoty, které jsou rozloženy do více řádků, tj. newlines uvnitř hodnoty.
+
 Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte režim ladění a načtěte data ve verzi Preview. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
@@ -73,11 +75,11 @@ Příklady zástupných znaků:
 * ```*``` představuje libovolnou sadu znaků.
 * ```**``` představuje rekurzivní vnořování adresářů.
 * ```?``` nahrazuje jeden znak.
-* ```[]``` odpovídá jednomu z více znakům v závorkách
+* ```[]``` odpovídá jednomu nebo více znakům v závorkách.
 
 * ```/data/sales/**/*.csv``` načte všechny soubory CSV pod/data/Sales
 * ```/data/sales/20??/**``` načte všechny soubory ve dvacátém století.
-* ```/data/sales/2004/*/12/[XY]1?.csv``` načte všechny soubory CSV v 2004 v prosinci počínaje písmenem X nebo Y a číslem se dvěma číslicemi.
+* ```/data/sales/2004/*/12/[XY]1?.csv``` získá všechny soubory CSV v 2004 v prosinci začínající znakem X nebo Y a číslem se dvěma číslicemi.
 
 **Kořenová cesta oddílu:** Pokud máte ve zdroji souborů dělené složky s formátem ```key=value``` (například Year = 2019), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
 

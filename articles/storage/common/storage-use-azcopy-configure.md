@@ -4,16 +4,16 @@ description: Konfigurace, optimalizace a řešení potíží s AzCopy.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273938"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595127"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -84,7 +84,7 @@ Před nastavením této proměnné doporučujeme spustit test testu výkonnosti.
 
 ### <a name="optimize-memory-use"></a>Optimalizace využití paměti
 
-Nastavte proměnnou prostředí `AZCOPY_BUFFER_GB` a určete tak maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
+Nastavením proměnné prostředí `AZCOPY_BUFFER_GB` určete maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
 Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 | Operační systém | Příkaz  |
@@ -99,14 +99,14 @@ AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly mů�
 
 Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED` a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systému Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
+Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE$\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systémech Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.
 
 ### <a name="review-the-logs-for-errors"></a>Zkontrolujte chyby v protokolech.
 
-Následující příkaz zobrazí všechny chyby se stavem @no__t 0 z protokolu `04dc9ca9-158f-7945-5933-564021086c79`:
+Následující příkaz zobrazí všechny chyby se stavem `UPLOADFAILED` z protokolu `04dc9ca9-158f-7945-5933-564021086c79`:
 
 **Windows (PowerShell)**
 

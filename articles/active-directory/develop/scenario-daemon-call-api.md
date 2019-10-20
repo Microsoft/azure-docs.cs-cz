@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056350"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596740"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
@@ -70,7 +70,21 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem schválená. Nedojde k žádnému přírůstkového souhlasu s aplikacemi démona (žádná interakce s uživatelem). Správce tenanta musí aplikace a všechna oprávnění API předem odsouhlasit. Pokud chcete volat několik rozhraní API, budete muset získat token pro každý prostředek při každém volání `AcquireTokenForClient`. MSAL použije mezipaměť tokenu aplikace, aby nedocházelo k zbytečným voláním služby.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md)
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+
+---

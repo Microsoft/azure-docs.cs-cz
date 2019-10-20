@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: f417d83a67f2f3afa33a83a56a72d0d82c64ab0d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850007"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597212"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files 
 
@@ -30,12 +30,12 @@ Tento článek popisuje běžné Azure NetApp Files chyby poskytovatele prostře
 
 ***BareMetalTenantId nelze změnit.***  
 
-K této chybě dochází, když se pokusíte aktualizovat nebo opravit svazek a `BaremetalTenantId` vlastnost má změněnou hodnotu.
+K této chybě dochází, když se pokusíte aktualizovat nebo opravit svazek a vlastnost `BaremetalTenantId` má změněnou hodnotu.
 
 * Příčina:   
-Pokoušíte se aktualizovat svazek a `BaremetalTenantId` vlastnost má jinou hodnotu než hodnota uložená v Azure.
+Pokoušíte se aktualizovat svazek a vlastnost `BaremetalTenantId` má jinou hodnotu než hodnota uložená v Azure.
 * Řešení   
-Nezahrnovat `BaremetalTenantId` do žádosti o opravu a aktualizaci (Put). Případně se ujistěte, `BaremetalTenantId` že je to v žádosti stejné.
+Nezahrnovat `BaremetalTenantId` do žádosti o opravu a aktualizaci (Put). Případně se ujistěte, že je `BaremetalTenantId` v žádosti stejný.
 
 ***ServiceLevel nelze změnit.***  
 
@@ -45,37 +45,37 @@ K této chybě dochází, když se pokusíte aktualizovat nebo opravit fond kapa
 Pokoušíte se aktualizovat úroveň služby fondu kapacity, když fond obsahuje svazky.
 * Řešení   
 Odstraňte všechny svazky z fondu kapacit a pak změňte úroveň služby.
-* Alternativní řešení:   
+* Odstraníte   
 Vytvořte další fond kapacit a pak znovu vytvořte svazky v novém fondu kapacity.
 
 ***PoolId se nedá změnit.***  
 
-K této chybě dochází, když se pokusíte aktualizovat nebo opravit fond kapacit se změněnou `PoolId` vlastností.
+K této chybě dochází, když se pokusíte aktualizovat nebo opravit fond kapacity se změněnou vlastností `PoolId`.
 
 * Příčina:   
-Pokoušíte se aktualizovat vlastnost fondu `PoolId` kapacity. `PoolId` Vlastnost je vlastnost jen pro čtení a nelze ji změnit.
+Pokoušíte se aktualizovat vlastnost fond kapacit `PoolId`. Vlastnost `PoolId` je vlastnost jen pro čtení a nelze ji změnit.
 * Řešení   
-Nezahrnovat `PoolId` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, `PoolId` že je to v žádosti stejné.
+Nezahrnovat `PoolId` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, že je `PoolId` v žádosti stejný.
 
 ***CreationToken nelze změnit.***
 
-K této chybě dojde, když se pokusíte změnit cestu k`CreationToken`souboru () Po vytvoření svazku. Cesta k souboru`CreationToken`() musí být nastavena při vytvoření svazku a nelze ji později změnit.
+K této chybě dojde, když se pokusíte změnit cestu k souboru (`CreationToken`) Po vytvoření svazku. Cesta k souboru (`CreationToken`) musí být nastavena při vytvoření svazku a nelze ji později změnit.
 
 * Příčina:   
 Pokoušíte se změnit cestu k souboru (`CreationToken`) Po vytvoření svazku, což není podporovaná operace. 
 * Řešení   
 Pokud není potřeba měnit cestu k souboru, zvažte odebrání parametru z požadavku na zavření chybové zprávy.
-* Alternativní řešení:   
+* Odstraníte   
 Pokud potřebujete změnit cestu k souboru (`CreationToken`), můžete vytvořit nový svazek s novou cestou k souboru a potom migrovat data na nový svazek.
 
 ***CreationToken musí mít délku alespoň 16 znaků.***
 
-K této chybě dochází, pokud cesta k`CreationToken`souboru () nesplňuje požadavek na délku. Délka cesty k souboru musí být alespoň jeden znak.
+K této chybě dochází, pokud cesta k souboru (`CreationToken`) nesplňuje požadavek na délku. Délka cesty k souboru musí být alespoň jeden znak.
 
 * Příčina:   
 Cesta k souboru je prázdná.  Když vytvoříte svazek pomocí rozhraní API, je vyžadován token pro vytváření. Pokud používáte Azure Portal, cesta k souboru se vygeneruje automaticky.
 * Řešení   
-Zadejte alespoň jeden znak jako cestu k souboru (`CreationToken`).
+Jako cestu k souboru zadejte aspoň jeden znak (`CreationToken`).
 
 ***Název domény se nedá změnit.***
 
@@ -85,7 +85,7 @@ K této chybě dojde, když se pokusíte změnit název domény ve službě Acti
 Pokoušíte se aktualizovat vlastnost název domény.
 * Řešení    
 Žádné. Název domény se nedá změnit.
-* Alternativní řešení:   
+* Odstraníte   
 Pomocí konfigurace služby Active Directory odstraňte všechny svazky. Pak odstraňte konfiguraci služby Active Directory a znovu vytvořte svazky.
 
 ***Chyba duplicitní hodnoty pro Object ExportPolicy. rules [RuleIndex].***
@@ -96,18 +96,18 @@ K této chybě dochází, pokud není definována zásada exportu s jedinečným
 Definované zásady exportu nesplňují požadavek pro export pravidel zásad. Musíte mít jedno pravidlo pro export zásad, které platí pro pravidla zásad exportu minimálně a pět.
 * Řešení   
 Ujistěte se, že se index ještě nepoužívá a že je v rozsahu od 1 do 5.
-* Alternativní řešení:   
+* Odstraníte   
 Pro pravidlo, které se pokoušíte nastavit, použijte jiný index.
 
 ***Chyba {Action} {ResourceType}***
 
-Tato chyba se zobrazí, pokud jiné zpracování chyb nedokázalo zpracovat chybu při provádění akce u prostředku.   Obsahuje text Error (chyba). `creating` `updating` `deleting`Může to být libovolný z (`getting`,,, nebo). `{action}`  `{resourceTypeName}` Je`resourceTypeName` (například`netAppAccount`, ,,atakdále).`volume` `capacityPool`
+Tato chyba se zobrazí, pokud jiné zpracování chyb nedokázalo zpracovat chybu při provádění akce u prostředku.   Obsahuje text Error (chyba). @No__t_0 může být libovolná z (`getting`, `creating`, `updating` nebo `deleting`).  @No__t_0 je `resourceTypeName` (například `netAppAccount`, `capacityPool`, `volume` atd.).
 
 * Příčina:   
 Tato chyba je Neošetřená výjimka, kde není známa příčina.
 * Řešení   
 Kontaktujte podporu Azure Support Center a ohlaste podrobný důvod v protokolech.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné.
 
 ***Název cesty k souboru může obsahovat jenom písmena, číslice a spojovníky ("" – ").***
@@ -118,48 +118,48 @@ K této chybě dochází, pokud cesta k souboru obsahuje nepodporované znaky, n
 Cesta k souboru obsahuje nepodporované znaky, například tečka ("."), čárku (","), podtržítko ("_"), nebo znak dolaru ("$").
 * Řešení   
 Z zadané cesty k souboru odeberte znaky, které nejsou abecední písmena, číslice ani spojovníky ("-").
-* Alternativní řešení:   
+* Odstraníte   
 Podtržítko můžete nahradit pomlčkou nebo použít místo mezer k označení začátku nových slov.  Použijte například "NewVolume" místo "New Volume".
 
 ***FileSystemId nelze změnit.***
 
-K této chybě dojde, když se pokusíte změnit `FileSystemId`.  Změna `FileSystemdId` není podporovaná operace. 
+K této chybě dochází při pokusu o změnu `FileSystemId`.  Změna `FileSystemdId` není podporovaná operace. 
 
 * Příčina:   
-ID systému souborů je nastaveno při vytvoření svazku. `FileSystemId`nelze následně změnit.
+ID systému souborů je nastaveno při vytvoření svazku. `FileSystemId` nelze následně změnit.
 * Řešení   
-Nezahrnovat `FileSystemId` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, `FileSystemId` že je to v žádosti stejné.
+Nezahrnovat `FileSystemId` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, že je `FileSystemId` v žádosti stejný.
 
 ***Active Directory s ID: {String} neexistuje.***
 
-Část je hodnota, kterou jste zadali `ActiveDirectoryId` ve vlastnosti pro připojení služby Active Directory. `{string}`
+@No__t_0 část je hodnota, kterou jste zadali ve vlastnosti `ActiveDirectoryId` pro připojení ke službě Active Directory.
 
 * Příčina:   
-Když jste vytvořili účet s konfigurací služby Active Directory, zadali jste hodnotu `ActiveDirectoryId` , která by měla být prázdná.
+Když jste vytvořili účet s konfigurací služby Active Directory, zadali jste hodnotu pro `ActiveDirectoryId`, která by měla být prázdná.
 * Řešení   
-Nezahrnovat `ActiveDirectoryId` do žádosti o vytvoření (vložení).
+Nezahrnovat `ActiveDirectoryId` do žádosti o vytvoření (Put).
 
 ***Neplatná verze API-Version.***
 
 Verze rozhraní API se buď neodeslala, nebo obsahuje neplatnou hodnotu.
 
 * Příčina:   
-Hodnota v parametru `api-version` dotazu obsahuje neplatnou hodnotu.
+Hodnota v parametru dotazu `api-version` obsahuje neplatnou hodnotu.
 * Řešení   
 Použijte správnou hodnotu verze rozhraní API.  Poskytovatel prostředků podporuje mnoho verzí rozhraní API. Hodnota je ve formátu rrrr-mm-dd.
 
-***Byla přijata neplatná hodnota {Value} pro {1}.***
+***Pro {1} byla přijata neplatná hodnota {Value}.***
 
-Tato zpráva označuje chybu v polích pro `RuleIndex`, `UnixReadWrite` `Nfsv3` `UnixReadOnly` `AllowedClients`,,, a. `Nfsv4`
+Tato zpráva označuje chybu v polích `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv3` a `Nfsv4`.
 
 * Příčina:   
 Vstupní žádost o ověření se nezdařila minimálně u jednoho z následujících polí: `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 a `Nfsv4`.
 * Řešení   
-Ujistěte se, že jste na příkazovém řádku nastavili všechny parametry povinného a nekonfliktu. Například nelze současně nastavit `UnixReadOnly` parametry i. `UnixReadWrite`
-* Alternativní řešení:   
+Ujistěte se, že jste na příkazovém řádku nastavili všechny parametry povinného a nekonfliktu. Například nelze nastavit současně parametry `UnixReadOnly` i `UnixReadWrite`.
+* Odstraníte   
 Podívejte se na výše uvedené řešení.
 
-***Rozsah {0} {2} IP adres pro síť VLAN se už používá. {1}***
+***Rozsah IP adres {0} do {1} pro {2} sítě VLAN se už používá.***
 
 K této chybě dochází, protože interní záznamy použitých rozsahů IP adres jsou v konfliktu s nově přiřazenou IP adresou.
 
@@ -183,9 +183,9 @@ Ujistěte se, že jste v žádosti nastavili všechny vlastnosti povinné a neko
 K této chybě dojde, když se uživatel pokusí aktualizovat nebo opravit vlastnost Volume MountTargets.
 
 * Příčina:   
-Pokoušíte se aktualizovat vlastnost volume `MountTargets` . Změna této vlastnosti není podporována.
+Pokoušíte se aktualizovat vlastnost Volume `MountTargets`. Změna této vlastnosti není podporována.
 * Řešení   
-Nezahrnovat `MountTargets` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, že `MountTargets` je to v žádosti stejné.
+Nezahrnovat `MountTargets` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, že je `MountTargets` v žádosti stejný.
 
 ***Název se už používá.***
 
@@ -249,10 +249,10 @@ Rozhraní API Azure využívá ke správě svazků rozhraní Azure NetApp Files 
 Základní rozhraní API neodpovídá, takže došlo k vnitřní chybě. Tato chyba je pravděpodobně dočasná.
 * Řešení   
 Problém je pravděpodobně dočasný. Požadavek by měl být po nějaké době úspěšný.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné. Základní rozhraní API je nezbytné pro správu svazků.
 
-***Pro{0}' ' se nenašlo žádné ID výsledku operace.***
+***Pro ' {0} ' se nenašlo žádné ID výsledku operace.***
 
 Tato chyba označuje, že vnitřní chyba brání v dokončení operace.
 
@@ -260,7 +260,7 @@ Tato chyba označuje, že vnitřní chyba brání v dokončení operace.
 Došlo k vnitřní chybě a zabránilo se dokončení operace.
 * Řešení   
 Tato chyba je pravděpodobně dočasná. Počkejte pár minut a zkuste to znovu. Pokud potíže potrvají, vytvořte lístek, který bude mít technickou podporu k tomuto problému.
-* Alternativní řešení:   
+* Odstraníte   
 Počkejte pár minut a ověřte, jestli problém přetrvává.
 
 ***Nepovoluje se kombinovat typy protokolů CIFS a NFS.***
@@ -271,7 +271,7 @@ K této chybě dochází, když se pokoušíte vytvořit svazek a ve vlastnostec
 Ve vlastnostech svazku se používají typy protokolu CIFS (SMB) i NFS.
 * Řešení   
 Odeberte jeden z typů protokolů.
-* Alternativní řešení:   
+* Odstraníte   
 Vlastnost typu protokolu nechejte prázdná nebo má hodnotu null.
 
 ***Počet položek: {value} pro objekt: ExportPolicy. rules [RuleIndex] je mimo rozsah min-max.***
@@ -282,7 +282,7 @@ K této chybě dochází, pokud pravidla zásad exportu nesplňují požadavek n
 Vámi definovaná zásada exportu nesplňuje požadovaný rozsah.
 * Řešení   
 Ujistěte se, že index ještě není použitý a je v rozsahu od 1 do 5.
-* Alternativní řešení:   
+* Odstraníte   
 Pro svazky není nutné používat zásady exportu. Zásadu exportu můžete vynechat úplně, pokud nepotřebujete exportovat pravidla zásad.
 
 ***Je povolená jenom jedna služba Active Directory.***
@@ -293,7 +293,7 @@ K této chybě dochází při pokusu o vytvoření konfigurace služby Active Di
 Pokoušíte se vytvořit (ne aktualizovat) službu Active Directory, ale jedna z nich již existuje.
 * Řešení   
 Pokud se konfigurace služby Active Directory nepoužívá, můžete nejdřív odstranit existující konfiguraci a potom operaci vytvoření zopakovat.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné. Je povolená jenom jedna služba Active Directory.
 
 ***Operace {Operation} není podporovaná.***
@@ -310,9 +310,9 @@ Přesvědčte se, zda je operace zadána správně a zda je k dispozici pro pros
 K této chybě dojde, když se pokusíte změnit vlastnost OwnerId svazku. Změna OwnerId není podporovaná operace. 
 
 * Příčina:   
-`OwnerId` Vlastnost je nastavena při vytvoření svazku. Vlastnost nelze následně změnit.
+Vlastnost `OwnerId` je nastavena při vytvoření svazku. Vlastnost nelze následně změnit.
 * Řešení   
-Nezahrnovat `OwnerId` do žádosti o opravu a aktualizaci (Put). Případně se ujistěte, že `OwnerId` je to v žádosti stejné.
+Nezahrnovat `OwnerId` do žádosti o opravu a aktualizaci (Put). Případně se ujistěte, že je `OwnerId` v žádosti stejný.
 
 ***Nenašel se nadřazený fond.***
 
@@ -335,16 +335,16 @@ Snímky neobsahují žádné vlastnosti, které by bylo možné změnit.
 
 ***Velikost fondu je pro celkovou velikost svazku příliš malá.***
 
-K této chybě dochází, když aktualizujete velikost fondu kapacity a velikost je menší než celková `usedBytes` hodnota všech svazků v tomto fondu kapacit.  K této chybě může dojít také při vytváření nového svazku nebo změně velikosti existujícího svazku a velikost nového svazku překračuje volné místo ve fondu kapacit.
+K této chybě dochází, když aktualizujete velikost fondu kapacity a velikost je menší než celková hodnota `usedBytes` všech svazků v tomto fondu kapacit.  K této chybě může dojít také při vytváření nového svazku nebo změně velikosti existujícího svazku a velikost nového svazku překračuje volné místo ve fondu kapacit.
 
 * Příčina:   
 Pokoušíte se aktualizovat fond kapacit na menší velikost než usedBytes ve všech svazcích fondu kapacity.  Nebo se pokoušíte vytvořit svazek, který je větší než volné místo ve fondu kapacit.  Případně se pokoušíte změnit velikost svazku a nová velikost přesahuje volné místo ve fondu kapacit.
 * Řešení   
 Nastavte velikost fondu kapacity na větší hodnotu nebo pro svazek vytvořte menší svazek.
-* Alternativní řešení:   
+* Odstraníte   
 Odstraňte dostatek svazků, aby se velikost fondu kapacity mohla aktualizovat na tuto velikost.
 
-***Vlastnost: Umístění snímku musí být stejné jako svazek.***
+***Vlastnost: umístění snímku musí být stejné jako svazek.***
 
 K této chybě dochází při vytváření snímku s jiným umístěním, než je svazek, který je vlastníkem snímku.
 
@@ -355,7 +355,7 @@ Ve vlastnosti umístění nastavte platný řetězec.
 
 ***Název {ResourceType} musí být stejný jako název identifikátoru prostředku.***
 
-K této chybě dojde při vytváření prostředku a zadáním vlastnosti Name s jinou hodnotou než vlastnost `resourceId`Name.
+K této chybě dojde při vytváření prostředku a zadáním vlastnosti Name s jinou hodnotou než název vlastnosti `resourceId`.
 
 * Příčina:   
 Při vytváření prostředku je neplatná hodnota vlastnosti Name.
@@ -364,35 +364,35 @@ Ponechte vlastnost Name prázdnou nebo ji umožněte, aby používala stejnou ho
 
 ***Typ protokolu {value} není známý.***
 
-K této chybě dochází, když vytváříte svazek s neznámým typem protokolu.  Platné hodnoty jsou "NFSv3" a "CIFS".
+K této chybě dochází, když vytváříte svazek s neznámým typem protokolu.  Platné hodnoty jsou "NFSv3", "názvů NFSv4" a "CIFS".
 
 * Příčina:   
-Pokoušíte se nastavit ve vlastnosti volume `protocolType` neplatnou hodnotu.
+Pokoušíte se nastavit neplatnou hodnotu ve vlastnosti Volume `protocolType`.
 * Řešení   
-Nastavte platný řetězec v `protocolType`.
-* Alternativní řešení:   
-Nastavit `protocolType` jako null.
+V `protocolType` nastavte platný řetězec.
+* Odstraníte   
+Nastavte `protocolType` jako null.
 
 ***Typy protokolů se nedají změnit.***
 
-K této chybě dojde, když se pokusíte aktualizovat `ProtocolType` nebo opravit svazek.  Změna Typprotokolu není podporovaná operace.
+K této chybě dochází, když se pokusíte aktualizovat nebo opravit `ProtocolType` svazku.  Změna Typprotokolu není podporovaná operace.
 
 * Příčina:   
-`ProtocolType` Vlastnost je nastavena při vytvoření svazku.  Nedá se aktualizovat.
+Vlastnost `ProtocolType` je nastavena při vytvoření svazku.  Nedá se aktualizovat.
 * Řešení   
 Žádné.
-* Alternativní řešení:   
+* Odstraníte   
 Vytvořte další svazek s novými typy protokolů.
 
 ***Vytvoření prostředku typu {ResourceType} by překročilo kvótu prostředků {quot} typu {ResourceType} na {parentResourceType}. Aktuální počet prostředků je {currentCount}. před vytvořením nového prostředku prosím odstraňte některé prostředky tohoto typu.***
 
-K této chybě dochází`NetAppAccount`při pokusu o vytvoření prostředku (, `CapacityPool`, `Volume`nebo `Snapshot`), ale kvóta dosáhla svého limitu.
+K této chybě dochází při pokusu o vytvoření prostředku (`NetAppAccount`, `CapacityPool`, `Volume` nebo `Snapshot`), ale kvóta dosáhla svého limitu.
 
 * Příčina:   
-Pokoušíte se vytvořit prostředek, ale dosáhlo se limitu kvóty (například: `NetAppAccounts` podle předplatného nebo `NetAppAccount` `CapacityPools` podle).
+Pokoušíte se vytvořit prostředek, ale dosáhlo se limitu kvóty (například: `NetAppAccounts` na předplatné nebo `CapacityPools` na `NetAppAccount`).
 * Řešení   
 Zvyšte limit kvóty.
-* Alternativní řešení:   
+* Odstraníte   
 Odstraňte nepoužívané prostředky stejného typu a znovu je vytvořte.
 
 ***Byla přijata hodnota pro vlastnost {propertyName}, která je jen pro čtení.***
@@ -412,7 +412,7 @@ K této chybě dochází při pokusu o odkazování na neexistující prostřede
 Pokoušíte se vytvořit odkaz na neexistující prostředek (například svazek nebo snímek), který již byl odstraněn nebo má chybný název prostředku.
 * Řešení   
 Zkontrolujte, jestli se v žádosti o pravopisné chyby správně odkazuje.
-* Alternativní řešení:   
+* Odstraníte   
 Přečtěte si část řešení výše.
 
 ***Úroveň služby {volumeServiceLevel} je vyšší než nadřazená hodnota {poolServiceLevel}.***
@@ -423,7 +423,7 @@ K této chybě dochází při vytváření nebo aktualizaci svazku a úroveň sl
 Pokoušíte se vytvořit nebo aktualizovat svazek s vyšší úrovní úrovně služby, než je nadřazený fond kapacity.
 * Řešení   
 Nastavte úroveň služby na stejný nebo nižší, než je nadřazený fond kapacit.
-* Alternativní řešení:   
+* Odstraníte   
 Vytvořte svazek v jiném fondu kapacity se správnou úrovní služeb. Případně odstraňte všechny svazky z fondu kapacit a nastavte úroveň služby pro fond kapacity na vyšší rozměr.
 
 ***Název serveru SMB nesmí být delší než 10 znaků.***
@@ -434,29 +434,29 @@ K této chybě dochází při vytváření nebo aktualizaci konfigurace služby 
 Délka názvu serveru SMB překračuje 10 znaků.
 * Řešení   
 Použijte kratší název serveru. Maximální délka je 10 znaků.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné.  Podívejte se na výše uvedené řešení. 
 
 ***SubnetId nelze změnit.***
 
-K této chybě dojde, když se pokusíte `subnetId` změnit po vytvoření svazku.  `SubnetId`musí být nastavené, když se svazek vytvoří a nedá se později změnit.
+K této chybě dojde, když se po vytvoření svazku pokusíte změnit `subnetId`.  `SubnetId` musí být nastavené, když se svazek vytvoří a nedá se později změnit.
 
 * Příčina:   
 Pokoušíte se změnit `subnetId` po vytvoření svazku, což není podporovaná operace. 
 * Řešení   
-Pokud `subnetId` se změna nevyžaduje, zvažte odebrání parametru z požadavku k zavření chybové zprávy.
-* Alternativní řešení:   
-Pokud potřebujete změnit `subnetId`, můžete vytvořit nový svazek s novým `subnetId`a potom migrovat data na nový svazek.
+Pokud se změna `subnetId` nepotřebuje, zvažte odebrání parametru z požadavku na zavření chybové zprávy.
+* Odstraníte   
+Pokud potřebujete změnit `subnetId`, můžete nový svazek vytvořit pomocí nového `subnetId` a pak migrovat data na nový svazek.
 
 ***SubnetId má neplatný formát.***
 
-K této chybě dojde, když se pokusíte vytvořit nový svazek, `subnetId` ale není to `resourceId` pro podsíť.
+K této chybě dojde, když se pokusíte vytvořit nový svazek, ale `subnetId` není `resourceId` pro podsíť.
 
 * Příčina:   
-K této chybě dojde, když se pokusíte vytvořit nový svazek, ale `subnetId` není to `resourceId` pro podsíť. 
+K této chybě dojde, když se pokusíte vytvořit nový svazek, ale `subnetId` není `resourceId` pro podsíť. 
 * Řešení   
-Zkontrolujte hodnotu pro `subnetId` a ujistěte se, že obsahuje a `resourceId` pro použitou podsíť.
-* Alternativní řešení:   
+Zkontrolujte hodnotu `subnetId` a ujistěte se, že obsahuje `resourceId` pro použitou podsíť.
+* Odstraníte   
 Žádné. Podívejte se na výše uvedené řešení. 
 
 ***Podsíť musí mít delegování Microsoft. NetApp/svazky.***
@@ -464,10 +464,10 @@ Zkontrolujte hodnotu pro `subnetId` a ujistěte se, že obsahuje a `resourceId` 
 K této chybě dochází, když vytváříte svazek a vybraná podsíť není delegovaná na `Microsoft.NetApp/volumes`.
 
 * Příčina:   
-Pokusili jste se vytvořit svazek a vybrali jste podsíť, která není delegována na `Microsoft.NetApp/volumes`.
+Pokusili jste se vytvořit svazek a vybrali jste podsíť, která není delegovaná na `Microsoft.NetApp/volumes`.
 * Řešení   
-Vyberte jinou podsíť, která je delegována `Microsoft.NetApp/volumes`na.
-* Alternativní řešení:   
+Vyberte jinou podsíť, která je delegována na `Microsoft.NetApp/volumes`.
+* Odstraníte   
 Přidejte do podsítě správné delegování.
 
 ***Zadaný typ prostředku je neznámý/nelze použít.***
@@ -478,7 +478,7 @@ K této chybě dojde, pokud se požaduje ověření názvu buď na nepoužiteln�
 Kontrole názvů bylo vyžádáno pro neznámý nebo nepodporovaný typ prostředku.
 * Řešení   
 Zkontrolujte, zda prostředek, pro který provádíte požadavek, je podporován nebo neobsahuje žádné pravopisné chyby.
-* Alternativní řešení:   
+* Odstraníte   
 Podívejte se na výše uvedené řešení.
 
 ***Neznámá chyba Azure NetApp Files.***
@@ -489,7 +489,7 @@ Rozhraní API Azure využívá ke správě svazků rozhraní Azure NetApp Files 
 Základní rozhraní API odesílá neznámou chybu. Tato chyba je pravděpodobně dočasná.
 * Řešení   
 Problém se pravděpodobně dočasná a žádost by se měla za chvíli zdařit. Pokud potíže potrvají, vytvořte lístek podpory, abyste mohli problém prozkoumat.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné. Základní rozhraní API je nezbytné pro správu svazků.
 
 ***Byla přijata hodnota pro neznámou vlastnost {propertyName}.***
@@ -500,7 +500,7 @@ K této chybě dochází, pokud jsou k dispozici neexistující vlastnosti pro p
 Požadavek obsahuje sadu vlastností, které lze použít s každým prostředkem. V požadavku nemůžete zahrnout žádné neexistující vlastnosti.
 * Řešení   
 Přesvědčte se, zda jsou všechny názvy vlastností zadány správně a zda jsou k dispozici vlastnosti pro předplatné a prostředek.
-* Alternativní řešení:   
+* Odstraníte   
 Snižte počet vlastností definovaných v žádosti, aby se vyloučila vlastnost, která způsobuje chybu.
 
 ***Operace aktualizace není pro tento typ prostředku podporována.***
@@ -511,7 +511,7 @@ Aktualizovat lze pouze svazky. K této chybě dochází při pokusu o provedení
 Prostředek, který se pokoušíte aktualizovat, nepodporuje operaci aktualizace. Změny vlastností mohou mít pouze svazky.
 * Řešení   
 Žádné. Prostředek, který se pokoušíte aktualizovat, nepodporuje operaci aktualizace. Proto jej nelze změnit.
-* Alternativní řešení:   
+* Odstraníte   
 V případě svazku vytvořte nový prostředek s aktualizací na místě a migrujte data.
 
 ***Svazek nelze vytvořit ve fondu, který není ve stavu úspěšné.***
@@ -522,7 +522,7 @@ K této chybě dochází při pokusu o vytvoření svazku ve fondu, který není
 Fond kapacit obsahující nový svazek je ve stavu selhání.
 * Řešení   
 Ověřte, že se fond kapacit úspěšně vytvořil a že není ve stavu selhání.
-* Alternativní řešení:   
+* Odstraníte   
 Vytvořte nový fond kapacity a vytvořte svazek v novém fondu.
 
 ***Svazek se vytváří a momentálně se nedá odstranit.***
@@ -533,7 +533,7 @@ K této chybě dochází, když se pokusíte odstranit svazek, který se pořád
 Při pokusu o odstranění svazku se stále vytváří svazek.
 * Řešení   
 Počkejte, než se dokončí vytváření svazku, a pak zkuste odstranění zopakovat.
-* Alternativní řešení:   
+* Odstraníte   
 Podívejte se na výše uvedené řešení.
 
 ***Svazek se odstraňuje a momentálně se nedá odstranit.***
@@ -544,7 +544,7 @@ K této chybě dojde, když se pokusíte odstranit svazek, když už je odstran�
 Svazek se už odstraňuje při pokusu o odstranění svazku.
 * Řešení   
 Počkejte na dokončení aktuální operace odstranění.
-* Alternativní řešení:   
+* Odstraníte   
 Podívejte se na výše uvedené řešení.
 
 ***Svazek se aktualizuje a momentálně se nedá odstranit.***
@@ -555,7 +555,7 @@ K této chybě dochází při pokusu o odstranění aktualizovaného svazku.
 Svazek se aktualizuje při pokusu o odstranění svazku.
 * Řešení   
 Počkejte, než se dokončí operace aktualizace, a pak zkuste odstranění zopakovat.
-* Alternativní řešení:   
+* Odstraníte   
 Podívejte se na výše uvedené řešení.
 
 ***Svazek se nenašel nebo se nepovedlo úspěšně vytvořit.***
@@ -566,7 +566,7 @@ K této chybě dojde, pokud se nepovedlo vytvořit svazek a pokoušíte se změn
 Svazek neexistuje nebo se nepovedlo vytvořit.
 * Řešení   
 Ověřte, že měníte správný svazek a že vytvoření svazku bylo úspěšné. Nebo ověřte, že existuje svazek, pro který vytváříte snímek.
-* Alternativní řešení:   
+* Odstraníte   
 Žádné.  Podívejte se na výše uvedené řešení. 
 
 ***Zadaný token pro vytváření již existuje.***

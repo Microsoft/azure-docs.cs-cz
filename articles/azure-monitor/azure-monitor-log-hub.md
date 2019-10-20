@@ -1,27 +1,26 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Dokumentace ke službě Azure Monitor protokolu Data | Dokumentace Microsoftu
-description: Azure Monitor může shromažďovat různé zdroje jako data protokolů a uloží jej pro korelaci a analýzy pomocí jeho dotazovací jazyk.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
+title: Dokumentace k datům protokolu Azure Monitor | Microsoft Docs
+description: Azure Monitor mohou shromažďovat různé zdroje jako data protokolů a ukládat je do korelace a analýzy pomocí dotazovacího jazyka.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: hub-page
-ms.date: 01/29/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/29/2019
+ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640102"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597327"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Dokumentace k data protokolu Azure Monitor</h1>
-        <p>Azure Monitor může shromažďovat různé zdroje jako data protokolů a uloží jej pro korelaci a analýzy pomocí jeho dotazovací jazyk.</p>
-        <p>Prozkoumejte naše nejoblíbenější obsah o tom, jak naplánovat, shromažďovat a analyzovat data protokolů.</p>
+        <h1>Dokumentace k datům protokolu Azure Monitor</h1>
+        <p>Azure Monitor mohou shromažďovat různé zdroje jako data protokolů a ukládat je do korelace a analýzy pomocí dotazovacího jazyka.</p>
+        <p>Prozkoumejte náš nejoblíbenější obsah o tom, jak plánovat, shromažďovat a analyzovat data protokolu.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -50,8 +49,8 @@ ms.locfileid: "60640102"
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Co je Azure Monitor?</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">Změny brandingu</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/data-sources">Monitorování zdroje dat</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/service-providers">Aspekty návrhu pro poskytovatele služeb</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">Monitorování zdrojů dat</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">Faktory návrhu pro poskytovatele služeb</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -70,18 +69,18 @@ ms.locfileid: "60640102"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Vysvětlení zabezpečení</h3> 
+                                                                    <h3>Pochopení zabezpečení</h3> 
                                                                     <p>
                                                                         <a href="/azure/azure-monitor/platform/data-security">Data protokolu</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">Zpracování dat osobní protokolu</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/roles-permissions-security">Role oprávnění a zabezpečení</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">Zpracování dat osobního protokolu</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/roles-permissions-security">Oprávnění a zabezpečení rolí</a><br/>
                                                                     </p>
                                                                     <br>
-                                                                     <h3>Správa pracovního prostoru</h3>
+                                                                     <h3>Spravovat pracovní prostor</h3>
                                                                     <p>
-                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Vytvoření pracovního prostoru na webu Azure Portal</a><br/>
+                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Vytvořit pracovní prostor v Azure Portal</a><br/>
                                                                     <a href="/azure/azure-monitor/learn/quick-create-workspace-cli">Vytvoření pracovního prostoru pomocí Azure CLI</a><br/>
-                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Vytvoření pracovního prostoru pomocí Azure Powershellu</a><br/>
+                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Vytvořit pracovní prostor s Azure PowerShell</a><br/>
                                                                   <a href="/azure/azure-monitor/platform/delete-workspace">Odstranit pracovní prostor</a><br/>
                                                                  </p>
                                                                 </div>
@@ -97,17 +96,17 @@ ms.locfileid: "60640102"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                    <h3>Monitorování</h3>
+                                                    <h3>Sledování</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">Metriky a protokoly</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Čas příjem dat protokolu</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Doba přijímání dat protokolu</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Zdroje dat</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/data-sources">Přehled<br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources">Overview<br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-windows-events">Události systému Windows</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Čítače výkonu Windows a Linux</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Čítače výkonu pro Windows a Linux</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-linux-applications">Výkon aplikací Linux</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-json">Vlastní data JSON</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-collectd">Shromážděná výkonnostní data</a><br/>
@@ -133,21 +132,21 @@ ms.locfileid: "60640102"
                                                                     </div>
                                                                 </div>
                                                     <div class="cardText">
-                                                        <h3>Analýza dat</h3>
+                                                        <h3>Analyzujte data</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/log-query/get-started-queries">Začínáme s dotazy</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/search-queries">Principy protokolu dotazy</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/portals">Portály dotaz protokolu</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/query-language">Referenční informace k jazyku protokolu dotazu</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/cross-workspace-query">Dotaz napříč prostředky</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/search-queries">Pochopení dotazů protokolu</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/portals">Portály dotazů protokolu</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/query-language">Referenční dokumentace jazyka pro dotaz na protokol</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/cross-workspace-query">Dotaz na více prostředků</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Reakce na incidenty</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/alerts-overview">Přehled výstrah</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Automatické škálování</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Upozornění protokolů</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Upozornění protokolu aktivit</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Výstrahy protokolu</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Výstrahy protokolu aktivit</a><br/>
                                                             <a href="/azure/azure-monitor/platform/action-groups">Skupiny akcí</a><br/>
                                                         </p>
                                                     </div>

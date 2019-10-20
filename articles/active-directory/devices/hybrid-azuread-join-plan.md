@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389565"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596344"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -75,7 +75,7 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 
 Služba připojení k hybridní službě Azure AD se v současné době nepodporuje, pokud vaše prostředí obsahuje jednu doménovou strukturu služby AD synchronizující data identity do více než jednoho tenanta Azure AD.
 
-Připojení k hybridní službě Azure AD se v současné době nepodporuje při použití infrastruktury virtuálních klientských počítačů (VDI).
+Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze WIndows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
 

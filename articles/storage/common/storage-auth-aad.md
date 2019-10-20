@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673153"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598114"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory
 
@@ -34,7 +34,7 @@ Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna n
 
 Nativní aplikace a webové aplikace, které vytvářejí požadavky na Azure Blob nebo Služba front, můžou taky autorizovat přístup pomocí Azure AD. Informace o tom, jak požádat o přístupový token a použít ho k autorizaci žádostí o data objektů BLOB nebo front, najdete v tématu [autorizace přístupu k Azure Storage pomocí Azure AD z aplikace Azure Storage](storage-auth-aad-app.md).
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
+## <a name="assign-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
 
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB a front. Můžete také definovat vlastní role pro přístup k datům objektů BLOB a front.
 

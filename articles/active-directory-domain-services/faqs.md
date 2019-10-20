@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 64e1095466f9494ccd8aa052a739729542920784
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305035"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596419"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services.
 
-## <a name="configuration"></a>Konfiguraci
+## <a name="configuration"></a>Konfigurace
 
 * [Můžu vytvořit více spravovaných domén pro jeden adresář služby Azure AD?](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [Můžu povolit Azure AD Domain Services v klasické virtuální síti?](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)
@@ -47,7 +47,7 @@ Klasické virtuální sítě nejsou pro nová nasazení podporovaná. Existujíc
 Ano. Azure AD Domain Services lze povolit ve virtuální síti Azure Resource Manager. Klasické virtuální sítě Azure už nejsou podporované, když vytváříte novou spravovanou doménu.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Můžu migrovat existující spravovanou doménu z klasické virtuální sítě do Správce prostředků virtuální sítě?
-V tuto chvíli to není možné. K migraci stávajících spravovaných domén z klasické virtuální sítě do virtuální sítě Správce prostředků je k dispozici právě propracovaná práce.
+Ano, tato funkce je ve verzi Preview. Další informace najdete v tématu [migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků (Preview)] [migrace z-Classic-vnet.md].
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Můžu Azure AD Domain Services povolit v předplatném Azure CSP (Cloud Solution Provider)?
 Ano. Další informace najdete v tématu [povolení Azure AD Domain Services v předplatných služby Azure CSP](csp.md).
@@ -143,7 +143,7 @@ Seznam oblastí Azure, kde je Azure AD Domain Services k dispozici, najdete na s
 
 Řešení běžných potíží s konfigurací nebo správou Azure AD Domain Services najdete v [Průvodci odstraňováním potíží](troubleshoot.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure AD Domain Services najdete v tématu [co je Azure Active Directory Domain Services?](overview.md).
 

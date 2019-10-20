@@ -1,6 +1,6 @@
 ---
 title: Profil a ID uživatele pro použití s Azure Notebooks
-description: Jak vytvořit a spravovat profil uživatele a ID uživatele pomocí Azure Notebooks.
+description: Jak vytvořit a spravovat profil uživatele a ID uživatele pomocí Azure Notebooks, které se stávají součástí adresy URL sdílených poznámkových bloků.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 1fddefeb2a54ae775a9016799ffff1963eab247e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3985e3d5fbe6e24014694665557f13bcc9a35a25
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970151"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598214"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Váš profil a ID uživatele pro Azure Notebooks
 
 V rámci výkonného prostoru Azure Notebooks spolupráce váš uživatelský profil prezentuje vaši veřejnou image ostatním:
 
-[Stránka profilu @no__t Azure Notebooks 1An](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[Stránka profilu ![An Azure Notebooks](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Vaše ID uživatele je součástí adres URL, které používáte ke sdílení projektů a poznámkových bloků. Následující seznam popisuje různé vzory adres URL:
 
 - `https://notebooks.azure.com/<user_id>`: stránka profilu.
 - `https://notebooks.azure.com/<user_id>/projects`: vaše projekty. Zobrazí se všechny projekty. jiní uživatelé uvidí pouze vaše veřejné projekty.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: soubory projektu.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: klonování konkrétních projektů.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: klony konkrétních projektů.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Náhled konkrétního poznámkového bloku nebo souboru ve formátu HTML.
 
 ## <a name="your-user-id"></a>Vaše ID uživatele

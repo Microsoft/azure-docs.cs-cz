@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299614"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598094"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage Průvodce zabezpečením
 
@@ -25,7 +25,7 @@ Azure Storage poskytuje komplexní sadu funkcí zabezpečení, které vývojář
     - Role RBAC můžete přiřadit oboru úložiště k objektům zabezpečení a pomocí Azure AD autorizovat operace správy prostředků, jako je Správa klíčů.
     - Integrace Azure AD je podporovaná pro operace s daty BLOB a Queue. K objektu zabezpečení nebo spravované identitě prostředků Azure můžete přiřadit role RBAC v oboru pro předplatné, skupinu prostředků, účet úložiště nebo jednotlivý kontejner nebo frontu. Další informace najdete v tématu [ověření přístupu k Azure Storage pomocí Azure Active Directory](storage-auth-aad.md).   
 - Data je možné zabezpečit při přenosu mezi aplikací a Azure pomocí šifrování na [straně klienta](../storage-client-side-encryption.md), HTTPS nebo SMB 3,0.  
-- Operační systémy a datové disky používané virtuálními počítači Azure je možné šifrovat pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+- Operační systémy a datové disky používané virtuálními počítači Azure je možné šifrovat pomocí [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).
 - Delegovaný přístup k datovým objektům v Azure Storage lze udělit pomocí sdíleného přístupového podpisu. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
 
 Tento článek obsahuje přehled každé z těchto funkcí zabezpečení, které lze použít s Azure Storage. Odkazy jsou uvedeny v článcích, které poskytují podrobné informace o jednotlivých funkcích, abyste mohli snadno provádět další šetření v každém tématu.
@@ -38,10 +38,10 @@ Tady jsou témata, která se týkají tohoto článku:
 * [Zabezpečení roviny dat](#data-plane-security) – zabezpečení přístupu k datům
 
   V této části se podíváme na povolení přístupu k skutečným datovým objektům ve vašem účtu úložiště, jako jsou objekty blob, soubory, fronty a tabulky, pomocí sdílených přístupových podpisů a zásad uloženého přístupu. Zaměříme SAS na úrovni služby i SAS na úrovni účtu. Také se dozvíte, jak omezit přístup k konkrétní IP adrese (nebo rozsahu IP adres), jak omezit protokol používaný na HTTPS a jak odvolat sdílený přístupový podpis bez čekání na vypršení platnosti.
-* [Šifrování při přenosu](#encryption-in-transit)
+* [Šifrování během přenosu](#encryption-in-transit)
 
   Tato část popisuje, jak zabezpečit data při jejich přenosu do Azure Storage nebo z ní. Budeme mluvit o doporučeném použití HTTPS a šifrování, které používá SMB 3,0 pro sdílené složky Azure. Také se podíváme na šifrování na straně klienta, které vám umožní šifrovat data před jejich přenosem do úložiště v klientské aplikaci a dešifrovat data po přenosu z úložiště.
-* [Šifrování v klidovém umístění](#encryption-at-rest)
+* [Šifrování v klidovém stavu](#encryption-at-rest)
 
   Budeme hovořit o Šifrování služby Storage (SSE), která je teď automaticky povolená pro nové a existující účty úložiště. Také se podíváme na to, jak můžete Azure Disk Encryption použít a prozkoumat základní rozdíly a případy šifrování disku proti SSE a šifrování na straně klienta. Krátce se podíváme na dodržování standardu FIPS u počítačů státní správy USA.
 * Auditování přístupu Azure Storage pomocí [Analýza úložiště](#storage-analytics)
@@ -59,7 +59,7 @@ Když vytváříte nový účet úložiště, vyberete model nasazení Classic n
 Tato příručka se zaměřuje na model Správce prostředků, který je doporučeným prostředkem pro vytváření účtů úložiště. Pomocí Správce prostředků účtů úložiště místo poskytnutí přístupu k celému předplatnému můžete řídit přístup k úrovni správy na více omezenou úroveň pomocí Access Control na základě rolí (RBAC).
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>Jak zabezpečit svůj účet úložiště pomocí Access Control na základě rolí (RBAC)
-Pojďme se obrátit na to, co je RBAC, a jak se dá používat. Každé předplatné Azure má Azure Active Directory. Uživatelům, skupinám a aplikacím z tohoto adresáře se dá udělit přístup ke správě prostředků v předplatném Azure, které používají model nasazení Správce prostředků. Tento typ zabezpečení se označuje jako Access Control na základě rolí (RBAC). Ke správě tohoto přístupu můžete použít [Azure Portal](https://portal.azure.com/), [nástroje Azure CLI](../../cli-install-nodejs.md), [POWERSHELL](/powershell/azureps-cmdlets-docs)nebo [poskytovatele prostředků Azure Storage REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx).
+Pojďme se obrátit na to, co je RBAC, a jak se dá používat. Každé předplatné Azure zahrnuje službu (adresář) Azure Active Directory. Uživatelům, skupinám a aplikacím z tohoto adresáře se dá udělit přístup ke správě prostředků v předplatném Azure, které používají model nasazení Správce prostředků. Tento typ zabezpečení se označuje jako Access Control na základě rolí (RBAC). Ke správě tohoto přístupu můžete použít [Azure Portal](https://portal.azure.com/), [nástroje Azure CLI](../../cli-install-nodejs.md), [POWERSHELL](/powershell/azureps-cmdlets-docs)nebo [poskytovatele prostředků Azure Storage REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx).
 
 Pomocí modelu Správce prostředků umístíte účet úložiště do skupiny prostředků a řídíte přístup k rovině správy tohoto konkrétního účtu úložiště pomocí Azure Active Directory. Můžete například udělit konkrétním uživatelům přístup k klíčům účtu úložiště, zatímco jiní uživatelé mohou zobrazit informace o účtu úložiště, ale nemají přístup k klíčům účtu úložiště.
 
@@ -86,26 +86,26 @@ Tady jsou hlavní body, které potřebujete znát o použití RBAC pro přístup
 * Aby bylo možné přiřadit roli, musí být uživatel nastaven v Azure Active Directory.
 * Můžete vytvořit sestavu, která udělila nebo odvolala druh přístupu a v jakém rozsahu pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-#### <a name="resources"></a>Prostředky
-* [Azure Active Directory Access Control na základě rolí](../../role-based-access-control/role-assignments-portal.md)
+#### <a name="resources"></a>Materiály
+* [Řízení přístupu na základě role v Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
-  Tento článek vysvětluje Azure Active Directory Access Control založených na rolích a o tom, jak to funguje.
-* [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)
+  Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
+* [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md)
 
   Tento článek podrobně popisuje všechny předdefinované role, které jsou k dispozici v RBAC.
-* [Principy nasazení Správce prostředků a nasazení Classic](../../azure-resource-manager/resource-manager-deployment-model.md)
+* [Principy nasazení podle modelu Resource Manager a klasického nasazení](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   Tento článek vysvětluje Správce prostředků nasazení a klasický model nasazení a vysvětluje výhody použití Správce prostředků a skupin prostředků. Vysvětluje, jak fungují poskytovatelé výpočtů, sítě a úložiště Azure v rámci modelu Správce prostředků.
-* [Správa Access Control na základě rolí pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
+* [Správa řízení přístupu na základě role pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
 
-  V tomto článku se dozvíte, jak pomocí REST API spravovat RBAC.
-* [Referenční informace o REST API Azure Storage poskytovatele prostředků](https://msdn.microsoft.com/library/azure/mt163683.aspx)
+  Tento článek popisuje, jak používat rozhraní REST API ke správě RBAC.
+* [Referenční informace o rozhraní REST API pro poskytovatele prostředků Azure Storage](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Tato reference k rozhraní API popisují rozhraní API, která můžete použít ke správě svého účtu úložiště prostřednictvím kódu programu.
 
-* [Access Control na základě rolí pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
+* [Řízení přístupu na základě role pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
-  Toto je odkaz na video na kanálu 9 z konference 2015 MS Ignite. V této relaci se dozvíte o funkcích správy přístupu a vytváření sestav v Azure a prozkoumejte osvědčené postupy týkající se zabezpečení přístupu k předplatným Azure pomocí Azure Active Directory.
+  Odkaz na video na Channel 9 z konference MS Ignite 2015. Na tomto sezení se hovoří o možnostech správy přístupu a generování sestav v Azure a probírají se osvědčené postupy pro zabezpečení přístupu k předplatným Azure pomocí Azure Active Directory.
 
 ### <a name="managing-your-storage-account-keys"></a>Správa klíčů účtu úložiště
 Klíče účtu úložiště jsou 512 – bitové řetězce vytvořené Azure, které spolu s názvem účtu úložiště můžete použít pro přístup k datovým objektům uloženým v účtu úložiště, například blobům, entitám v tabulce, zprávám fronty a souborům ve sdílené složce Azure. Řízení přístupu k klíčům účtu úložiště řídí přístup k rovině dat pro tento účet úložiště.
@@ -144,10 +144,10 @@ Další výhodou použití Azure Key Vault je přístup k vašim klíčům pomoc
 > [!NOTE]
 > Microsoft doporučuje používat ve všech aplikacích současně jenom jeden z klíčů. Pokud na některých místech a v dalších klíčích 2 použijete klíč 1, nebudete moct tyto klíče otočit, aniž by aplikace ztratila přístup.
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Materiály
 
-* [Správa nastavení účtu úložiště v Azure Portal](storage-account-manage.md)
-* [Referenční informace o REST API Azure Storage poskytovatele prostředků](https://msdn.microsoft.com/library/mt163683.aspx)
+* [Správa nastavení účtu úložiště na webu Azure Portal](storage-account-manage.md)
+* [Referenční informace o rozhraní REST API pro poskytovatele prostředků Azure Storage](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="data-plane-security"></a>Zabezpečení roviny dat
 Zabezpečení roviny dat odkazuje na metody používané k zabezpečení datových objektů uložených v Azure Storage – objekty blob, fronty, tabulky a soubory. Zjistili jsme metody, jak šifrovat data a zabezpečení během přenosu dat, ale jak se dostanete k řízení přístupu k objektům?
@@ -226,7 +226,7 @@ Pokud používáte SAS odvozený od uložených zásad přístupu, můžete odeb
 
 Vzhledem k tomu, že použití SAS odvozeného z uložených zásad přístupu umožňuje okamžitě odvolat toto SAS, je doporučený osvědčený postup, pokud je to možné, vždy používejte uložené zásady přístupu.
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Materiály
 Podrobnější informace o použití sdílených přístupových podpisů a uložených zásad přístupu najdete v tématu s příklady najdete v následujících článcích:
 
 * Toto jsou referenční články.
@@ -237,7 +237,7 @@ Podrobnější informace o použití sdílených přístupových podpisů a ulo�
   * [Sestavování SAS služby](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Sestavování SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Ověřování
+* Ověření
 
   * [Ověřování pro služby Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Začínáme kurz pro sdílené přístupové podpisy
@@ -273,7 +273,7 @@ SSE je povolená pro všechny účty úložiště a nedá se zakázat. SSE autom
 
 Můžete použít buď klíče spravované společností Microsoft, nebo vlastní klíče. Společnost Microsoft generuje spravované klíče a zpracuje jejich zabezpečené úložiště i jejich běžné otočení, jak je definováno interními zásadami Microsoftu. Další informace o používání vlastních klíčů najdete v tématu [šifrování služby Storage používání klíčů spravovaných zákazníkem v Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
-SSE automaticky šifruje data ve všech úrovních výkonu (Standard a Premium), všechny modely nasazení (Azure Resource Manager a Classic) a všechny Azure Storage služby (objekty blob, Queue, Table a File). 
+SSE automaticky šifruje data na všech úrovních výkonu (Standard a Premium), ve všech modelech nasazení (Azure Resource Manager a Classic) a ve všech službách Azure Storage (Blob, Queue, Table a File). 
 
 ### <a name="client-side-encryption"></a>Šifrování na straně klienta
 Při projednávání šifrování dat při přenosu jsme uvedli šifrování na straně klienta. Tato funkce umožňuje programově šifrovat data v klientské aplikaci předtím, než je pošle do sítě, aby se mohla zapisovat do Azure Storage a programově dešifrovat data po jejich načtení z Azure Storage.
@@ -286,7 +286,7 @@ Příkladem toho, kde můžete použít, je, pokud máte webovou aplikaci, kter�
 
 Pro vlastní šifrování můžete vygenerovat a spravovat vlastní šifrovací klíče. Můžete také použít klíče vygenerované knihovnou klienta Azure Storage, nebo můžete nechat Azure Key Vault vygenerovat klíče. Šifrovací klíče můžete ukládat do místního úložiště klíčů nebo je můžete uložit do Azure Key Vault. Azure Key Vault umožňuje udělit přístup k tajným klíčům v Azure Key Vault konkrétním uživatelům pomocí Azure Active Directory. To znamená, že nejenom kdokoli může přečíst Azure Key Vault a načíst klíče, které používáte pro šifrování na straně klienta.
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Materiály
 * [Šifrování a dešifrování objektů BLOB v Microsoft Azure Storage pomocí Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   V tomto článku se dozvíte, jak používat šifrování na straně klienta s Azure Key Vault, včetně toho, jak vytvořit KEK a jak ho uložit do trezoru pomocí PowerShellu.
@@ -327,8 +327,8 @@ Azure Disk Encryption slouží k šifrování disků s operačním systémem a d
 
 Tato funkce zajišťuje, že všechna data na discích virtuálních počítačů jsou v klidovém stavu zašifrovaná v Azure Storage.
 
-#### <a name="resources"></a>Prostředky
-* [Azure Disk Encryption pro virtuální počítače s Windows a Linux IaaS](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+#### <a name="resources"></a>Materiály
+* [Azure Disk Encryption pro virtuální počítače s Windows a Linux IaaS](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Porovnání Azure Disk Encryption, SSE a šifrování na straně klienta
 
@@ -353,7 +353,7 @@ Při šifrování na straně klienta můžete šifrovat entity tabulek, zprávy 
 
 #### <a name="storage-service-encryption-sse"></a>Šifrování služby Storage (SSE)
 
-SSE je spravován pomocí Azure Storage. SSE neposkytuje zabezpečení dat při přenosu, ale šifruje data při jejich zápisu do Azure Storage. SSE nemá vliv na Azure Storage výkon.
+SSE je spravován pomocí Azure Storage. SSE neposkytuje zabezpečení dat při přenosu, ale šifruje data při jejich zápisu do Azure Storage. SSE nemá vliv na výkon služby Azure Storage.
 
 Libovolný typ dat účtu úložiště můžete šifrovat pomocí SSE (objekty blob bloku, doplňovací objekty blob, objekty blob stránky, data tabulky, data front a soubory).
 
@@ -361,7 +361,7 @@ Pokud máte archiv nebo knihovnu souborů VHD, které používáte jako základ 
 
 Pokud jste pro disky ve virtuálním počítači povolili Azure Disk Encryption, všechna nově zapsaná data jsou šifrována pomocí SSE a pomocí Azure Disk Encryption.
 
-## <a name="storage-analytics"></a>Analýza úložiště
+## <a name="storage-analytics"></a>Storage Analytics
 ### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Monitorování typu autorizace pomocí Analýza úložiště
 U každého účtu úložiště můžete povolit Analýza úložiště Azure provádět protokolování a ukládat data metrik. Toto je skvělý nástroj, který se použije, když chcete kontrolovat metriky výkonu účtu úložiště, nebo potřebujete řešit problémy s výkonem, protože máte problémy s výkonem.
 
@@ -389,7 +389,7 @@ V níže uvedených zdrojích je uvedený článek, který obsahuje seznam mnoha
 
 ![Snímek polí v souboru protokolu](./media/storage-security-guide/image3.png)
 
-Zajímáme se o položky pro getblob a o tom, jak mají oprávnění, takže musíme vyhledat položky s typem operace Get-BLOB a zkontrolovat stav požadavku (čtvrtý sloupec @ no__t-0) a typ autorizačního typu (osmého @ no__t-1).
+Zajímáme se o položky pro getblob a o tom, jak mají oprávnění, takže musíme vyhledat položky s typem operace Get-BLOB a zkontrolovat stav žádosti (čtvrtý </sup> sloupec) a typ autorizace (osmého </sup> sloupec).
 
 Například v prvních několika řádcích v seznamu výše je požadavek-stav "úspěch" a typ autorizace je "ověřeno". To znamená, že žádost byla autorizována pomocí klíče účtu úložiště.
 
@@ -408,8 +408,8 @@ Máme tři případy, které vás zajímají.
 
 Pomocí nástroje Microsoft Message Analyzer můžete zobrazit a analyzovat tyto protokoly. Obsahuje možnosti hledání a filtrování. Například můžete chtít vyhledat instance getblob, abyste viděli, jestli využití očekáváte, to znamená, abyste se ujistili, že někdo nemá přístup k vašemu účtu úložiště nevhodným způsobem.
 
-#### <a name="resources"></a>Prostředky
-* [Analýza úložiště](../storage-analytics.md)
+#### <a name="resources"></a>Materiály
+* [Storage Analytics](../storage-analytics.md)
 
   Tento článek popisuje přehled služby Storage Analytics a jejich povolení.
 * [Formát protokolu Analýza úložiště](https://msdn.microsoft.com/library/azure/hh343259.aspx)
@@ -463,7 +463,7 @@ Jednotlivé řádky znamenají:
 * **ExposedHeaders** Tím se dozvíte, která záhlaví odpovědi by měla být v prohlížeči zpřístupněna vystaviteli žádosti. V tomto příkladu budou zpřístupněna všechna záhlaví začínající řetězcem "x-MS-meta-".
 * **MaxAgeInSeconds** Toto je maximální doba, po kterou bude prohlížeč ukládat do mezipaměti žádost o možnosti kontroly před výstupem. (Další informace o žádosti o kontrolu před výstupem najdete v prvním článku níže.)
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Materiály
 Další informace o CORS a o tom, jak ji povolit, najdete v těchto zdrojích.
 
 * [Podpora sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage v Azure.com](../storage-cors-support.md)
@@ -490,7 +490,7 @@ Další informace o CORS a o tom, jak ji povolit, najdete v těchto zdrojích.
 
    Microsoft je ponechá pro každého zákazníka a rozhodne se, jestli má být povolený režim FIPS. Věříme, že neexistují žádné přesvědčivé důvody pro zákazníky, kteří nepodléhají předpisům z oblasti státní správy, aby ve výchozím nastavení povolily režim FIPS.
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Materiály
 * [Proč už nedoporučujeme "režim FIPS".](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Tento článek na blogu poskytuje přehled standardu FIPS a vysvětluje, proč ve výchozím nastavení nepovolí režim FIPS.

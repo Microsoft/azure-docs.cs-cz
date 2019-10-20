@@ -1,29 +1,24 @@
 ---
 title: Omezení služby Azure Monitor | Microsoft Docs
 description: Vypisuje omezení v různých oblastech Azure Monitor.
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/10/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/10/2019
+ms.openlocfilehash: 37401a8eb2a8da82cef4854ab41e40b81ba429fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405667"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597270"
 ---
 # <a name="azure-monitor-service-limits"></a>Omezení služby Azure Monitor
 
 V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-alerts.md)]
 
@@ -35,7 +30,7 @@ V tomto článku jsou uvedena omezení v různých oblastech Azure Monitor.
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
-## <a name="log-analytics-workspaces"></a>Pracovní prostory Log Analytics
+## <a name="log-analytics-workspaces"></a>Pracovní prostory služby Log Analytics
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-workspaces.md)]
 

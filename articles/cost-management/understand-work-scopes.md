@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374482"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597082"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -132,6 +132,7 @@ Fakturační účty Microsoft Customer Agreement mají tyto rozsahy:
 
 Na rozdíl od fakturačních oborů EA _jsou_ fakturační účty zákaznických smluv vázány na jeden adresář a nemohou mít odběry v rámci více adresářů služby Azure AD.
 
+Obory fakturace zákaznických smluv se nevztahují na partnery. Role a oprávnění partnerského serveru jsou zdokumentovány při [přiřazování rolí uživatelů a oprávnění](/partner-center/permissions-overview).
 
 Obory fakturace zákaznických smluv podporují tyto role:
 
@@ -159,11 +160,25 @@ Po dokončení integrace AWS se podívejte na téma [instalace a konfigurace int
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Obory pro Cloud Solution Provider (CSP)
 
-Partneři poskytovatele Cloud Solution Provider (CSP) se v Cost Management ještě nepodporují. Místo toho můžete použít [Partnerské centrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Pro zprostředkovatele CSP se zákazníky, kteří používají smlouvu o zákaznících Microsoftu, se podporují následující obory:
+
+- **Fakturační účet** – představuje zákaznickou smlouvu o několika produktech a službách společnosti Microsoft. Fakturační účty zákaznických smluv nejsou funkčně stejné jako registrace EA. Registrace EA jsou podrobněji zarovnané na profily fakturace.
+
+    Typ prostředku: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Fakturační profil** – definuje předplatná, která jsou zahrnutá na faktuře. Fakturační profily jsou funkční ekvivalentem registrace EA, protože se jedná o obor, ve kterém se faktury generují. Podobně nákupy, které nejsou založené na využití (například Marketplace a rezervace), jsou k dispozici pouze v tomto oboru.
+
+    Typ prostředku: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Zákazník** – představuje skupinu předplatných, která je přidružená k určitému zákazníkovi, který je spojený s zákaznickou smlouvou Microsoftu od partnera.
+
+Jenom uživatelé s rolemi *globální správce* a *Agent pro správu* můžou spravovat a zobrazovat náklady na fakturační účty, profily fakturace a zákazníky přímo v tenantovi Azure partnera. Další informace o rolích partnerského centra najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview).
+
+Pokud mají zákazníci zákaznickou smlouvu Microsoft, Azure Cost Management podporuje pouze zákazníky partnera CSP. Pro zákazníky s podporou CSP, kteří ještě nejsou ve smlouvě o zákaznících Microsoftu, najdete informace v [partnerském centru](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Přepínání mezi obory v Cost Management
 
-Všechna zobrazení Cost Management v Azure Portal zahrnují výběr **oboru** v levém horním rohu zobrazení. Použijte ho k rychlé změně oboru. Kliknutím na ikonu **Rozsah** otevřete okno Výběr oboru. Zobrazuje fakturační účty, kořenovou skupinu pro správu a všechna předplatná, která nejsou vnořená do kořenové skupiny pro správu. Pokud chcete vybrat rozsah, zvýrazněte ho kliknutím na pozadí a potom v dolní části klikněte na **Vybrat** . Pokud chcete přejít na vnořené obory, jako jsou skupiny prostředků v rámci předplatného, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na jakékoli vnořené úrovni, klikněte v horní části výběru oboru na **vybrat tuto &lt;scope @ no__t-2** .
+Všechna zobrazení Cost Management v Azure Portal zahrnují výběr **oboru** v levém horním rohu zobrazení. Použijte ho k rychlé změně oboru. Kliknutím na ikonu **Rozsah** otevřete okno Výběr oboru. Zobrazuje fakturační účty, kořenovou skupinu pro správu a všechna předplatná, která nejsou vnořená do kořenové skupiny pro správu. Pokud chcete vybrat rozsah, zvýrazněte ho kliknutím na pozadí a potom v dolní části klikněte na **Vybrat** . Pokud chcete přejít na vnořené obory, jako jsou skupiny prostředků v rámci předplatného, klikněte na odkaz název oboru. Pokud chcete vybrat nadřazený obor na jakékoli vnořené úrovni, klikněte v horní části výběru oboru na **vybrat tuto &lt;scope &gt;** .
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Identifikace ID prostředku pro obor
 

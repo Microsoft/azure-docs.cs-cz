@@ -1,138 +1,144 @@
 ---
-title: Přehled verze modulu runtime Azure Functions
-description: Služba Azure Functions podporuje více verzí modulu runtime. Poznejte rozdíly mezi nimi a jak zvolit ten, který je pro vás nejvhodnější.
-services: functions
-documentationcenter: ''
+title: Azure Functions – přehled verzí modulu runtime
+description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036220"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597383"
 ---
-# <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
+# <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
- Existují dvě hlavní verze modulu runtime Azure Functions: 1.x a 2.x. Aktuální verze, ve kterém jsou prováděny nový práce funkce a vylepšení je 2.x, i když jsou podporované pro produkční scénáře.  Následující podrobnosti některé rozdíly mezi těmito dvěma, jak můžete vytvořit jednotlivé verze a upgradovat z verze 1.x na 2.x.
+Hlavní verze modulu runtime Azure Functions souvisejí s verzí rozhraní .NET, na které je modul runtime založen. V následující tabulce je uvedeno aktuální verze modulu runtime, úroveň verze a související verze rozhraní .NET. 
 
-> [!NOTE]
-> Tento článek se týká ke cloudové službě Azure Functions. Informace o produkt ve verzi preview, která umožňuje spouštění Azure Functions na místním prostředí, najdete v článku [přehled modulu Runtime Azure Functions](functions-runtime-overview.md).
+| Verze modulu runtime | Úroveň verze<sup>1</sup> | Verze .NET | 
+| --------------- | ------------- | ------------ |
+| 3.x  | preview | .NET Core 3. x | 
+| 2.x | GA | .NET Core 2.2 |
+| verze | GA<sup>2</sup> | .NET Framework 4,6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>Vývoj pro různé platformy
+<sup>1</sup> Verze GA se podporují pro produkční scénáře.   
+<sup>2</sup> . Verze 1. x je v režimu údržby. Vylepšení jsou k dispozici pouze v novějších verzích.   
+<sup>3</sup> . Podporuje pouze vývoj v Azure Portal nebo lokálně na počítačích se systémem Windows.
 
-Modul runtime verze 2.x běží na .NET Core 2, která umožňuje spustit na všech platformách podporovaných aplikací .NET Core, včetně systému macOS a Linux. Spouštění v .NET Core umožňují vývoj pro různé platformy a scénáře hostování.
+>[!NOTE]  
+> Verze 3. x modulu runtime Functions je ve verzi Preview a není podporovaná v produkčních prostředích. Další informace o vyzkoušení verze 3. x najdete v [tomto oznámení](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
 
-Naproti tomu modul runtime verze 1.x podporuje jenom vývoj a hostování na webu Azure Portal nebo počítačích s Windows.
+Tento článek podrobně popisuje některé rozdíly mezi různými verzemi, způsob, jakými můžete vytvořit jednotlivé verze, a postup změny verzí.
 
 ## <a name="languages"></a>Jazyky
 
-Modul runtime verze 2.x používá nový model rozšiřitelnosti jazyka. Ve verzi 2.x, všechny funkce v aplikaci function app musí sdílet stejný jazyk. Jazykové funkce v aplikaci function app se volí při vytváření aplikace.
+Počínaje verzí 2. x používá modul runtime model rozšiřitelnosti jazyka a všechny funkce ve Function App musí sdílet stejný jazyk. Jazyk funkcí ve Function App se volí při vytváření aplikace a udržuje se v nastavení [funkce \_WORKER \_RUNTIME](functions-app-settings.md#functions_worker_runtime) . 
 
-Azure Functions 1.x experimentálních jazyků, neaktualizuje se použít nový model, takže nejsou podporovány v 2.x. Následující tabulka uvádí, jaké programovací jazyky, které jsou aktuálně podporované ve verzi každého modulu runtime.
+Azure Functions 1. x experimentální jazyky nemůžou používat nový model, takže se v 2. x nepodporují. Následující tabulka uvádí, které programovací jazyky jsou aktuálně podporovány v každé verzi modulu runtime.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 Další informace najdete v tématu [Podporované jazyky](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Spustit ve verzi 1.x
+## <a name="creating-1x-apps"></a>Spustit na konkrétní verzi
 
-Ve výchozím nastavení, aplikace function App na webu Azure Portal vytvořili nastavené na verzi 2.x. Pokud je to možné, používejte tuto verzi modulu runtime, ve kterém uskutečněných investic do nové funkce. Pokud potřebujete, můžete stále spuštěn aplikaci function app na modul runtime verze 1.x. Verze modulu runtime lze změnit pouze po vytvoření aplikace function app, ale předtím, než přidáte všechny funkce. Zjistěte, jak připnout verze modulu runtime pro 1.x, najdete v článku [zobrazit a aktualizovat aktuální verze modulu runtime](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Ve výchozím nastavení jsou aplikace Function App vytvořené v Azure Portal a Azure CLI nastavené na verzi 2. x. Pokud je to možné, měli byste použít tuto verzi modulu runtime. Pokud potřebujete, můžete pořád spustit aplikaci Function App v modulu runtime verze 1. x. Verzi modulu runtime můžete změnit pouze po vytvoření aplikace Function App, ale před přidáním jakékoli funkce. Informace o tom, jak připnout verzi modulu runtime na 1. x, najdete v tématu [zobrazení a aktualizace aktuální verze modulu runtime](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-## <a name="migrating-from-1x-to-2x"></a>Migrace z 1.x na 2.x
+Můžete také upgradovat na verzi 3. x modulu runtime, který je ve verzi Preview. Tuto možnost použijte, pokud potřebujete být schopni spustit vaše funkce na .NET Core 3. x. Informace o tom, jak upgradovat na 3. x, najdete v tématu [zobrazení a aktualizace aktuální verze modulu runtime](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-Můžete se rozhodnout migrovat stávající aplikace napsané pomocí modulu runtime verze 1.x místo toho použít verzi 2.x. Většina změn, které potřebujete, aby se vztahují na změny v modulu runtime jazyka, jako jsou například změny rozhraní API jazyka C# mezi .NET Framework 4.7 a .NET Core 2. Budete také muset Ujistěte se, že váš kód a knihoven musí být kompatibilní s CLR, kterou zvolíte. A konečně nezapomeňte si poznamenat všechny změny v aktivační události, vazby a funkce, jejichž přehled najdete níže. Nejlepších výsledků migrace, měli byste vytvořit novou aplikaci function app pro verzi 2.x a port existující funkce verzi 1.x kód do nové aplikace.  
+## <a name="migrating-from-1x-to-later-versions"></a>Migrace z 1. x na novější verze
 
-### <a name="changes-in-triggers-and-bindings"></a>Změny v aktivačními událostmi a vazbami
+Můžete se rozhodnout migrovat existující aplikaci vytvořenou tak, aby používala modul runtime verze 1. x místo toho, aby používala verzi 2. x. Většina změn, které je třeba provést, souvisí se změnami v jazykovém modulu runtime, jako je C# například změna rozhraní API mezi .NET Framework 4,7 a .NET Core 2. Budete také muset zajistit, aby byl kód a knihovny kompatibilní s vámi zvoleným jazykovým modulem runtime. Nakonec si nezapomeňte všimnout všech změn v aktivační události, vazbách a funkcích, které jsou zvýrazněny níže. Pro dosažení nejlepších výsledků migrace byste měli vytvořit novou aplikaci Function App pro verzi 2. x a přenést existující kód funkce verze 1. x do nové aplikace.  
 
-Verze 2.x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používá funkce ve vaší aplikaci. Jedinou výjimkou tohoto protokolu HTTP a časovač aktivačních událostí, které nevyžadují rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-register.md).
+### <a name="changes-in-triggers-and-bindings"></a>Změny v aktivačních událostech a vazbách
 
-Také došlo k několika změnám v `function.json` nebo atributy funkce mezi verzemi. Například centra událostí `path` vlastnost je nyní `eventHubName`. Zobrazit [existující vazby tabulky](#bindings) odkazy na dokumentaci pro každou vazbu.
+Verze 2. x vyžaduje, abyste nainstalovali rozšíření pro konkrétní triggery a vazby používané funkcemi ve vaší aplikaci. Jediná výjimka pro tuto aktivační událost HTTP a časovač, která nevyžaduje rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-register.md).
 
-### <a name="changes-in-features-and-functionality"></a>Změny ve funkcích
+Došlo také k několika změnám v `function.json` nebo atributů funkce mezi verzemi. Například vlastnost centra událostí `path` je nyní `eventHubName`. V [existující tabulce vazeb](#bindings) najdete odkazy na dokumentaci pro každou vazbu.
 
-Několik funkcí, které se taky odstranila, aktualizovat nebo nahradit v nové verzi. Tato část podrobně popisuje změny, které se zobrazí ve verzi 2.x použili verzi 1.x.
+### <a name="changes-in-features-and-functionality"></a>Změny funkcí a funkcí
 
-Ve verzi 2.x, byly provedeny následující změny:
+Několik funkcí, které byly také odebrány, aktualizovány nebo nahrazeny v nové verzi. Tato část podrobně popisuje změny, které vidíte ve verzi 2. x po použití verze 1. x.
 
-* Klíče pro volání koncových bodů HTTP jsou vždy uloženy v zašifrované podobě v úložišti objektů Blob v Azure. Ve verzi 1.x, klíče byly uložené v Azure File storage jako výchozí. Při upgradu z verze aplikace 1.x na verzi 2.x, existující tajné kódy, které jsou ve službě file storage se obnoví.
+Ve verzi 2. x byly provedeny následující změny:
 
-* Modul runtime verze 2.x neobsahuje integrovanou podporu pro poskytovatele webhooku. Tato změna byla provedena ke zlepšení výkonu. Stále můžete triggerů HTTP jako koncové body pro webhooky.
+* Klíče pro volání koncových bodů HTTP se vždycky ukládají šifrovaným v úložišti objektů BLOB v Azure. Ve verzi 1. x jsou klíče uložené ve službě Azure File Storage jako výchozí. Při upgradu aplikace z verze 1. x na verzi 2. x jsou obnoveny stávající tajné klíče v úložišti souborů.
 
-* Konfigurační soubor hostitele (host.json) by měl být prázdný nebo obsahovat řetězec `"version": "2.0"`.
+* Modul runtime verze 2. x neobsahuje integrovanou podporu pro poskytovatele webhooků. Tato změna byla provedena za účelem zvýšení výkonu. Pro Webhooky můžete pořád používat triggery HTTP jako koncové body.
 
-* Ke zlepšení monitorování na řídicím panelu webjobs nechat na portálu, který používá [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) nastavení se nahradí pomocí Azure Application Insights, který používá [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) nastavení. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+* Konfigurační soubor hostitele (host. JSON) by měl být prázdný nebo obsahovat řetězec `"version": "2.0"`.
 
-* Všechny funkce v aplikaci function app musí sdílet stejný jazyk. Když vytvoříte aplikaci function app, musíte zvolit zásobník modulu runtime pro aplikace. Zásobník modulu runtime je určená [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) hodnota v nastavení aplikace. Tento požadavek byl přidán do zrychlit uvádění nároky na místo a spuštění. Při vývoji místně, musíte taky zahrnout toto nastavení [souboru local.settings.json](functions-run-local.md#local-settings-file).
+* Pro zlepšení monitorování se řídicí panel WebJobs na portálu, který použil [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) nastavení, nahradí pomocí Azure Application Insights, který používá nastavení [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) . Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-* Výchozí hodnota časového limitu pro funkce v plánu služby App Service se změní na 30 minut. Časový limit můžete ručně změnit zpět na neomezený počet pomocí [functionTimeout](functions-host-json.md#functiontimeout) nastavení v host.json.
+* Všechny funkce ve Function App musí sdílet stejný jazyk. Při vytváření aplikace Function App musíte zvolit zásobník modulu runtime pro aplikaci. Zásobník modulu runtime je určen hodnotou [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) v nastavení aplikace. Tento požadavek byl přidaný, aby se zlepšila nároky a čas spuštění. Při vývoji místně musíte také zahrnout toto nastavení do [souboru Local. Settings. JSON](functions-run-local.md#local-settings-file).
 
-* Omezení souběžnosti HTTP jsou implementovány ve výchozím nastavení pro funkce plánu consumption, výchozí hodnota je 100 souběžných požadavků na jednu instanci. Můžete to změnit [ `maxConcurrentRequests` ](functions-host-json.md#http) nastavení v souboru host.json.
+* Výchozí časový limit pro funkce v plánu App Service se změnil na 30 minut. Můžete ručně změnit časový limit zpět na neomezený pomocí nastavení [functionTimeout](functions-host-json.md#functiontimeout) v Host. JSON.
 
-* Z důvodu [.NET core omezení](https://github.com/Azure/azure-functions-host/issues/3414), podporu F# skript (.fsx) funkce se odebrala. Zkompilovat F# funkcí (.fs) jsou stále podporovány.
+* Omezení Concurrency protokolu HTTP jsou ve výchozím nastavení implementovaná pro funkce plánu spotřeby s výchozí 100 souběžných požadavků na instanci. To můžete změnit v nastavení [`maxConcurrentRequests`](functions-host-json.md#http) v souboru Host. JSON.
 
-* Formát adresy URL služby Event Grid trigger webhooky se změnil na `https://{app}/runtime/webhooks/{triggerName}`.
+* Z důvodu [omezení rozhraní .NET Core](https://github.com/Azure/azure-functions-host/issues/3414)byla odebrána F# Podpora funkcí skriptu (. FSX). Zkompilované F# funkce (. FS) jsou stále podporovány.
 
-### <a name="migrating-a-locally-developed-application"></a>Migrace místní vyvinuté aplikace
+* Formát adresy URL webhooků triggeru Event Grid se změnil na `https://{app}/runtime/webhooks/{triggerName}`.
 
-Můžete mít existující projekty aplikací vyvinutých místně pomocí modulu runtime verze 1.x fungovat. Upgradovat na verzi 2.x, by měl vytvořit projekt lokální funkce aplikace proti verzi 2.x a port, vaše existující kód do nové aplikace. Může ručně aktualizovat existující projekt a kód, druh "místní" upgrade. Ale existuje mnoho dalších vylepšení mezi verzi 1.x a verze 2.x, stále je nutné provést. V jazyce C#, třeba ladění objektu se změnil z `TraceWriter` k `ILogger`. Tím vytvoříte nový projekt verze 2.x, můžete začít aktualizované funkce založené na nejnovější verzi 2.x šablony.
+### <a name="migrating-a-locally-developed-application"></a>Migrace místně vyvinuté aplikace
 
-#### <a name="visual-studio-runtime-versions"></a>Verze modulu runtime Visual Studio
+Můžete mít existující projekty Function App, které jste vyvinuli místně pomocí modulu runtime verze 1. x. Chcete-li upgradovat na verzi 2. x, měli byste vytvořit projekt místní aplikace Functions na verzi 2. x a přenést svůj existující kód do nové aplikace. Můžete ručně aktualizovat existující projekt a kód, a to tak, aby byl proveden upgrade na místě. Existuje však několik dalších vylepšení mezi verzemi 1. x a verze 2. x, kterou je stále nutné provést. Například v C# objektu ladění se změnil z `TraceWriter` na `ILogger`. Vytvořením nového projektu verze 2. x se spustí aktualizované funkce založené na nejnovějších šablonách verze 2. x.
 
-V sadě Visual Studio vyberte verzi modulu runtime při vytváření projektu. Azure Functions tools for Visual Studio podporuje obě verze hlavní modulu runtime. Správná verze se používá při ladění a publikování podle nastavení projektu. Nastavení verze jsou definovány v `.csproj` soubor v následující vlastnosti:
+#### <a name="visual-studio-runtime-versions"></a>Verze Visual Studio runtime
 
-##### <a name="version-1x"></a>Verzi 1.x
+V aplikaci Visual Studio vyberete verzi modulu runtime při vytváření projektu. Nástroje Azure Functions pro Visual Studio podporují hlavní verze modulu runtime. Správná verze se používá při ladění a publikování na základě nastavení projektu. Nastavení verze jsou definována v souboru `.csproj` v následujících vlastnostech:
+
+##### <a name="version-1x"></a>Verze 1. x
 
 ```xml
 <TargetFramework>net461</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
-##### <a name="version-2x"></a>Verze 2.x
+##### <a name="version-2x"></a>Verze 2. x
 
 ```xml
 <TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-Při ladění nebo projekt publikovat, je použít správnou verzi modulu runtime.
+Při ladění nebo publikování projektu se používá správná verze modulu runtime.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code a Azure Functions Core Tools
 
-[Nástroje Azure Functions Core](functions-run-local.md) se používá pro vývoj pro příkazový řádek a také podle [rozšíření Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code. Vývoj proti verzi 2.x, instalace verze 2.x základní nástroje. Vývoj pro verzi 1.x vyžaduje verzi 1.x základní nástroje. Další informace najdete v tématu [instalace nástrojů Azure Functions Core](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure Functions Core Tools](functions-run-local.md) se používá pro vývoj na příkazovém řádku a také [rozšířením Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code. Pro vývoj v rámci verze 2. x nainstalujte základní nástroje verze 2. x. Vývoj verze 1. x vyžaduje verzi 1. x základních nástrojů. Další informace najdete v tématu [instalace Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
 
-Pro vývoj pro Visual Studio Code, budete také muset aktualizovat nastavení hlavního názvu uživatele pro `azureFunctions.projectRuntime` tak, aby odpovídala verzi nainstalované nástroje.  Toto nastavení rovněž aktualizuje šablony a jazyky používané během vytváření aplikace funkcí.
+V případě vývoje Visual Studio Code možná budete muset také aktualizovat uživatelské nastavení `azureFunctions.projectRuntime` tak, aby odpovídalo verzi nainstalovaných nástrojů.  Toto nastavení také aktualizuje šablony a jazyky používané při vytváření aplikace Function App.
 
-### <a name="changing-version-of-apps-in-azure"></a>Změna verze aplikace v Azure
+### <a name="changing-version-of-apps-in-azure"></a>Změna verze aplikací v Azure
 
-Verze modulu runtime Functions používá publikované aplikace v Azure závisí [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) nastavení aplikace. Hodnota `~2` zaměřuje na modul runtime verze 2.x a `~1` zaměřuje na modul runtime verze 1.x. Není libovolně toto nastavení změnit, protože jsou pravděpodobně vyžaduje další změny nastavení aplikace a změny kódu ve vašich funkcí. Další informace o doporučeným způsobem, jak migrovat aplikace function app na různé verze, najdete v článku [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
+Verze modulu runtime Functions používaná publikovanými aplikacemi v Azure je využívána nastavením [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) aplikace. Hodnota `~2` cílí na modul runtime verze 2. x a `~1` cílí na modul runtime verze 1. x. Toto nastavení neměňte, protože další změny nastavení aplikace a změny kódu ve vašich funkcích jsou pravděpodobně požadovány. Další informace o doporučeném způsobu migrace aplikace Function App do jiné verze modulu runtime najdete v tématu [jak cílit na Azure Functions verze modulu runtime](set-runtime-version.md).
 
 ## <a name="bindings"></a>Vazby
 
-Používá nový modul runtime verze 2.x [model rozšiřitelnosti vazby](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , který nabízí tyto výhody:
+Počínaje verzí 2. x používá modul runtime nový [model rozšiřitelnosti vazby](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , který nabízí tyto výhody:
 
-* Podpora pro rozšíření vazby třetích stran.
+* Podpora rozšíření vazby třetích stran.
 
-* Oddělení modulu runtime a vazby. Tato změna umožňuje rozšíření vazby se systémovou správou verzí a vydávají se nezávisle na sobě. Můžete například pokud se rozhodnete k upgradu na verzi rozšíření, které spoléhá na novější verzi základní sadu SDK.
+* Oddělení runtime a vazeb. Tato změna umožňuje, aby rozšíření vazby byla vydaná verzí a uvolněna nezávisle. Můžete například chtít upgradovat na verzi rozšíření, která spoléhá na novější verzi základní sady SDK.
 
-* Světlejší spuštění prostředí, kde jsou pouze vazby používá známé a načten modulem runtime.
+* Jednodušší prostředí pro spuštění, kde pouze používané vazby jsou známy a načteny modulem runtime.
 
-S výjimkou aktivační události HTTP a časovač všechny vazby musí být explicitně přidány do projektu aplikace funkcí, nebo registrované na portálu. Další informace najdete v tématu [registraci rozšíření vazby](./functions-bindings-expressions-patterns.md).
+S výjimkou aktivačních událostí protokolu HTTP a časovače musí být všechny vazby explicitně přidány do projektu Function App nebo registrovány na portálu. Další informace najdete v tématu [Registrace rozšíření vazby](./functions-bindings-expressions-patterns.md).
 
-V následující tabulce jsou uvedeny vazby, které jsou podporovány v každé verzi modulu runtime.
+Následující tabulka ukazuje, které vazby jsou podporovány v každé verzi modulu runtime.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících materiálech:
 
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
-* [Jak se zaměřit na verze modulu runtime Azure Functions](set-runtime-version.md)
+* [Jak cílit na verze modulu runtime Azure Functions](set-runtime-version.md)
 * [Poznámky k verzi](https://github.com/Azure/azure-functions-host/releases)
