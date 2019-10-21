@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 09/01/2019
-ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.date: 10/18/2019
+ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309860"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675693"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -29,19 +29,23 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-  * Abyste mohli nainstalovat a spravovat bránu, musíte použít stejný účet Azure. Během instalace použijete tento účet Azure k přidružení brány k vašemu počítači k předplatnému Azure. Později použijete stejný účet Azure při vytváření prostředku Azure v Azure Portal pro instalaci brány. 
+  * K instalaci a správě brány v místním počítači je potřeba použít stejný účet Azure.
 
-  * Musíte se přihlásit pomocí pracovního nebo školního účtu, který je známý taky jako účet *organizace* , který vypadá nějak `username@contoso.com`takto. Nemůžete použít účty Azure B2B (Guest) ani osobní účty Microsoft, například @hotmail.com nebo @outlook.com.
+    Během instalace brány se přihlásíte pomocí účtu Azure, který propojí instalaci brány s vaším účtem Azure a jenom s tímto účtem. Později musíte v Azure Portal použít stejný účet Azure pro vytvoření prostředku brány Azure, který registruje a deklaruje instalaci brány. V Azure Logic Apps místní triggery a akce pak pomocí prostředku brány připojte k místním zdrojům dat.
+
+    > [!NOTE]
+    > Můžete propojit jenom jednu instalaci brány a jeden prostředek brány Azure. Nemůžete propojit stejnou instalaci brány s více účty Azure nebo prostředky služby Azure Gateway. Účet Azure se ale může připojit k několika instalacím brány a prostředkům služby Azure Gateway. V místním triggeru nebo akci můžete vybrat z různých předplatných Azure a pak vybrat přidružený prostředek brány.
+
+  * Musíte se přihlásit pomocí pracovního nebo školního účtu, kterému se říká účet *organizace* , který vypadá `username@contoso.com`. Nemůžete použít účty Azure B2B ani osobní účty Microsoft, například @hotmail.com nebo @outlook.com.
 
     > [!TIP]
-    > Pokud jste si zaregistrovali nabídku Office 365 a nezadali jste svoji pracovní e-mailovou adresu, může vaše `username@domain.onmicrosoft.com`adresa vypadat jako. Váš účet je uložený v rámci tenanta v Azure Active Directory (Azure AD). Ve většině případů je hlavní název uživatele (UPN) pro váš účet Azure AD stejný jako vaše e-mailová adresa.
+    > Pokud jste si zaregistrovali nabídku Office 365 a nezadali jste svoji pracovní e-mailovou adresu, může vaše adresa vypadat jako `username@domain.onmicrosoft.com`. Váš účet je uložený v rámci tenanta v Azure Active Directory (Azure AD). Ve většině případů je hlavní název uživatele (UPN) pro váš účet Azure AD stejný jako vaše e-mailová adresa.
     >
-    > Pokud chcete použít [standardní předplatné sady Visual Studio](https://visualstudio.microsoft.com/vs/pricing/) , které je přidružené k účet Microsoft, [vytvořte nejprve tenanta ve službě Azure AD](../active-directory/develop/quickstart-create-new-tenant.md)nebo použijte výchozí adresář. Přidejte do adresáře uživatele s heslem a pak tomuto uživateli udělte přístup k vašemu předplatnému. 
-    > Pak se můžete přihlásit při instalaci brány pomocí tohoto uživatelského jména a hesla.
+    > Pokud chcete použít [standardní předplatné sady Visual Studio](https://visualstudio.microsoft.com/vs/pricing/) , které je propojené s účet Microsoft, nejdřív [vytvořte tenanta ve službě Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) nebo použijte výchozí adresář. Přidejte do adresáře uživatele s heslem a pak mu poskytněte přístup k vašemu předplatnému Azure. Pak se můžete přihlásit při instalaci brány pomocí tohoto uživatelského jména a hesla.
 
 * Tady jsou požadavky na váš místní počítač:
 
@@ -75,7 +79,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
   * Brána má dva režimy: standardní režim a osobní režim, které platí jenom pro Power BI. Na stejném počítači nemůžete mít spuštěnou více než jednu bránu ve stejném režimu.
 
-  * Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a aktualizace. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps podporuje operace čtení a zápisu prostřednictvím brány. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -95,15 +99,15 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    ![Kontrola požadavků a přijetí podmínek použití](./media/logic-apps-gateway-install/accept-terms.png)
 
-1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu vaší organizace a pak vyberte **Přihlásit**se, například:
+1. Po úspěšné instalaci brány zadejte e-mailovou adresu účtu Azure a pak vyberte **Přihlásit**se, například:
 
    ![Přihlaste se pomocí pracovního nebo školního účtu.](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   Nyní jste přihlášeni ke svému účtu.
+   Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. **V tomto počítači** > vyberte zaregistrovat novou bránu. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
+1. Vyberte možnost **zaregistrovat novou bránu na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
-   ![Registrace brány](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Registrovat bránu](./media/logic-apps-gateway-install/register-gateway.png)
 
 1. Zadejte tyto informace pro instalaci brány:
 
@@ -155,7 +159,7 @@ Místní brána dat závisí na [Azure Service Bus](../service-bus-messaging/ser
 
 Aby nedocházelo k jednomu bodu selhání pro místní přístup k datům, můžete mít k dispozici několik instalací brány (jenom standardní režim) s každou v jiném počítači a nastavit je jako cluster nebo skupina. Tímto způsobem, pokud je primární brána nedostupná, požadavky na data se směrují do druhé brány atd. Vzhledem k tomu, že na počítač můžete nainstalovat jenom jednu standardní bránu, musíte nainstalovat každou další bránu, která je v clusteru v jiném počítači. Všechny konektory, které pracují s místní bránou dat, podporují vysokou dostupnost.
 
-* V rámci stejného předplatného Azure už musíte mít jako primární bránu a obnovovací klíč pro tuto instalaci alespoň jednu instalaci brány.
+* Musíte už mít aspoň jednu instalaci brány se stejným účtem Azure jako primární bránu a obnovovací klíč pro tuto instalaci.
 
 * V primární bráně musí být spuštěná aktualizace brány ze listopadu 2017 nebo novější.
 
@@ -175,7 +179,7 @@ Pokud musíte změnit umístění brány, přesunout instalaci brány do nového
 
 1. Po otevření instalačního programu se přihlaste pomocí stejného účtu Azure, který jste použili k instalaci brány.
 
-1. Vyberte možnost **migrovat, obnovit nebo převzetí existující brány** >  **, například**:
+1. Vyberte možnost **migrace, obnovení nebo převzetí existující brány**  > **například**:
 
    ![Vyberte možnost migrace, obnovení nebo převzetí existující brány.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -195,7 +199,7 @@ Aby bylo možné získat přehled o všech místních branách dat v tenantovi A
 
 ## <a name="restart-gateway"></a>Restartovat bránu
 
-Ve výchozím nastavení se instalace brány na místním počítači spouští jako účet služby systému Windows s názvem "místní služba brány dat". Instalace brány ale používá `NT SERVICE\PBIEgwService` název pro přihlašovací údaje účtu "přihlásit se jako" a má oprávnění "přihlásit jako službu".
+Ve výchozím nastavení se instalace brány na místním počítači spouští jako účet služby systému Windows s názvem "místní služba brány dat". Instalace brány však používá `NT SERVICE\PBIEgwService` název přihlašovacích údajů k účtu "přihlásit se jako" a má oprávnění "přihlásit jako službu".
 
 > [!NOTE]
 > Váš účet služby Windows se liší od účtu používaného pro připojení k místním zdrojům dat a z účtu Azure, který používáte při přihlašování ke cloudovým službám.
@@ -235,19 +239,19 @@ Tyto kroky popisují, co se stane, když budete pracovat s prvkem, který je př
 
 Uložené přihlašovací údaje se používají pro připojení z brány k místním zdrojům dat. Bez ohledu na uživatele brána použije k připojení uložené přihlašovací údaje. Existují výjimky ověřování pro konkrétní služby, jako je například DirectQuery a LiveConnect pro Analysis Services v Power BI.
 
-### <a name="azure-active-directory"></a>Azure Active Directory
+### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Cloudové služby Microsoftu používají [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) k ověřování uživatelů. Tenant Azure AD obsahuje uživatelská jména a skupiny zabezpečení. E-mailová adresa, kterou používáte pro přihlášení, je obvykle stejná jako hlavní název uživatele (UPN) pro váš účet.
+Cloudové služby Microsoftu používají k ověřování uživatelů [službu Azure AD](../active-directory/fundamentals/active-directory-whatis.md) . Tenant Azure AD obsahuje uživatelská jména a skupiny zabezpečení. E-mailová adresa, kterou používáte pro přihlášení, je obvykle stejná jako hlavní název uživatele (UPN) pro váš účet.
 
 ### <a name="what-is-my-upn"></a>Co je můj hlavní název uživatele?
 
-Pokud nejste správcem domény, možná neznáte hlavní název uživatele (UPN). Hlavní název uživatele pro svůj účet zjistíte spuštěním `whoami /upn` příkazu z pracovní stanice. I když výsledný výsledek vypadá jako e-mailová adresa, je výsledkem hlavní název uživatele (UPN) pro místní doménový účet.
+Pokud nejste správcem domény, možná neznáte hlavní název uživatele (UPN). Pokud chcete najít hlavní název uživatele pro svůj účet, spusťte z pracovní stanice příkaz `whoami /upn`. I když výsledný výsledek vypadá jako e-mailová adresa, je výsledkem hlavní název uživatele (UPN) pro místní doménový účet.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-active-directory"></a>Synchronizace místní služby Active Directory s Azure Active Directory
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizace místní služby Active Directory s Azure AD
 
-Hlavní název uživatele pro místní účty služby Active Directory a účty Azure AD musí být stejné. Ujistěte se, že každý místní účet Active Directory odpovídá vašemu účtu služby Azure AD. Cloudové služby znají jenom účty v rámci služby Azure AD. Nemusíte tedy přidávat účet do místní služby Active Directory. Pokud účet ve službě Azure AD neexistuje, nemůžete tento účet použít. 
+Hlavní název uživatele pro místní účty služby Active Directory a účty Azure AD musí být stejné. Ujistěte se, že každý místní účet Active Directory odpovídá vašemu účtu služby Azure AD. Cloudové služby znají jenom účty v rámci služby Azure AD. Nemusíte tedy přidávat účet do místní služby Active Directory. Pokud účet ve službě Azure AD neexistuje, nemůžete tento účet použít.
 
-Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se službou Azure AD. 
+Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se službou Azure AD.
 
 * Přidejte účty do Azure AD ručně.
 

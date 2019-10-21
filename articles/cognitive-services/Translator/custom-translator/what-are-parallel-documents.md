@@ -1,5 +1,5 @@
 ---
-title: Co jsou paralelní dokumenty? – Vlastní Translator
+title: Co jsou paralelní dokumenty? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
 description: Paralelní dokumenty jsou páry dokumentů, kde jeden je převod druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
 author: swmachan
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595440"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675471"
 ---
 # <a name="what-are-parallel-documents"></a>Co jsou paralelní dokumenty?
 
@@ -23,7 +23,7 @@ Nezáleží na tom, který jazyk je označený jako "zdroj" a který jazyk je oz
 
 ## <a name="requirements"></a>Požadavky
 
-Abyste mohli naučit systém, budete potřebovat minimálně 10 000 jedinečných paralelních vět. Osvědčeným postupem je průběžné přidávání více paralelních obsahu a revýuky, aby se zlepšila kvalita vašeho systému překladu.
+Abyste mohli naučit systém, budete potřebovat minimálně 10 000 jedinečných zarovnaných a paralelních vět. Toto omezení je bezpečnostní síť, aby bylo zajištěno, že vaše paralelní věty obsahují dostatek jedinečného slovníku, aby bylo možné přeškolit model překladu. Osvědčeným postupem je průběžně přidávat více paralelních obsahu a přeškolovat se, aby se zlepšila kvalita vašeho systému překladu. Přečtěte si prosím [Zarovnání vět](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
 
 Microsoft vyžaduje, aby dokumenty odeslané do vlastního překladatele nenarušily autorské právo nebo duševní vlastnictví třetí strany. Další informace najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Nahrání dokumentu pomocí portálu nemění vlastnictví duševního vlastnictví v samotném dokumentu.
@@ -44,6 +44,6 @@ Nahrané dokumenty jsou pro každý pracovní prostor privátní a dají se pou�
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se používat [slovník](what-is-dictionary.md) ve vlastním překladateli.

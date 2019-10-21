@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243279"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674949"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -50,7 +50,7 @@ Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictv�
 }
 ```
 
-Soubor `__init__.py` obsahuje následující kód funkce:
+@No__t_0 soubor obsahuje následující kód funkce:
 
 ```python
 def main(req):
@@ -238,7 +238,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Description                                |
+| Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -250,7 +250,7 @@ Další informace o protokolování najdete v tématu [monitorování Azure Func
 
 ## <a name="http-trigger-and-bindings"></a>Aktivační procedura HTTP a vazby
 
-Aktivační událost HTTP je definována v souboru Function. Jan. @No__t-0 vazby musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název vazby `req`. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
+Aktivační událost HTTP je definována v souboru Function. Jan. @No__t_0 vazby musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název vazby `req`. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
 
 Z objektu [HttpRequest] můžete získat hlavičky žádosti, parametry dotazu, parametry směrování a tělo zprávy. 
 
@@ -280,9 +280,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 V této funkci se hodnota parametru dotazu `name` získá z parametru `params` objektu [HttpRequest] . Tělo zprávy s kódováním JSON je čteno pomocí metody `get_json`. 
 
-Podobně můžete nastavit `status_code` a `headers` pro zprávu odpovědi v vráceném objektu [HttpResponse] .
+Podobně můžete nastavit `status_code` a `headers` zprávy odpovědi v vráceném objektu [HttpResponse] .
 
-## <a name="concurrency"></a>Concurrency
+## <a name="concurrency"></a>Souběžnost
 
 Ve výchozím nastavení funkce modulu runtime jazyka Python mohou současně zpracovat pouze jedno vyvolání funkce. Tato úroveň souběžnosti nemusí být dostatečná pro jednu nebo více následujících podmínek:
 
@@ -316,7 +316,7 @@ def main():
 
 Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Nicméně podpora pro více jazykových pracovních procesů na instanci hostitele. Volání funkcí je pak možné rovnoměrně rozdělit mezi tyto jazykové pracovní procesy. Tuto hodnotu můžete změnit pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . 
 
-## <a name="context"></a>Souvislost
+## <a name="context"></a>Kontext
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte do podpisu argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
@@ -360,7 +360,7 @@ def main(req):
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat pomocí deklarace `import os` a pak pomocí nástroje, `setting = os.environ["setting-name"]`.
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat tím, že deklarujete `import os` a potom použijete `setting = os.environ["setting-name"]`.
 
 Následující příklad získá [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)s klíčem s názvem `myAppSetting`:
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Až budete připraveni k publikování, ujistěte se, že všechny vaše závislosti jsou uvedeny v souboru *. txt požadavků* , který je umístěn v kořenovém adresáři adresáře projektu. Azure Functions můžou tyto závislosti [vzdáleně sestavit](functions-deployment-technologies.md#remote-build) .
 
-Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore.  
+Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore. 
 
-K nasazení do Azure a provedení vzdáleného sestavení použijte následující příkaz:
+Jak [Azure Functions Core Tools](functions-run-local.md#v2) , tak [rozšíření Azure Functions pro vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) provede vzdálené sestavení ve výchozím nastavení. Použijte například následující příkaz:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Pokud nepoužíváte vzdálené sestavení a použijete balíček, který vyžaduje kompilátor a nepodporuje instalaci řady nekompatibilních kol se systémem Linux z PyPI, publikování do Azure bez automatického sestavení selže s následující chybou:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Chcete-li vytvořit místně a nakonfigurovat požadované binární soubory, [nainstalujte Docker](https://docs.docker.com/install/) do místního počítače a spusťte následující příkaz pro publikování pomocí [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Nezapomeňte nahradit `<app name>` názvem vaší aplikace Function App v Azure. 
+Pokud chcete aplikaci místně sestavit místo v Azure, nainstalujte do svého místního počítače [Docker](https://docs.docker.com/install/) a spusťte následující příkaz pro publikování pomocí [Azure Functions Core Tools](functions-run-local.md#v2) (Func). Nezapomeňte nahradit `<app name>` názvem vaší aplikace Function App v Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -545,9 +538,9 @@ class TestFunction(unittest.TestCase):
 
 Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu [problémů na GitHubu](https://github.com/Azure/azure-functions-python-worker/issues) . Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém a zahrňte podrobný popis problému.
 
-### <a name="cross-origin-resource-sharing"></a>Sdílení prostředků mezi zdroji
+### <a name="cross-origin-resource-sharing"></a>Sdílení prostředků různého původu
 
-Azure Functions podporuje sdílení prostředků mezi zdroji (CORS). CORS se konfiguruje na [portálu](functions-how-to-use-azure-function-app-settings.md#cors) a prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/functionapp/cors). Seznam povolených zdrojů CORS se vztahuje na úrovni aplikace Function App. Pokud je povolená CORS, odpovědi zahrnují hlavičku `Access-Control-Allow-Origin`. Další informace najdete v tématu [sdílení prostředků mezi zdroji](functions-how-to-use-azure-function-app-settings.md#cors).
+Azure Functions podporuje sdílení prostředků mezi zdroji (CORS). CORS se konfiguruje na [portálu](functions-how-to-use-azure-function-app-settings.md#cors) a prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/functionapp/cors). Seznam povolených zdrojů CORS se vztahuje na úrovni aplikace Function App. Pokud je povolená CORS, odpovědi zahrnují hlavičku `Access-Control-Allow-Origin`. Další informace naleznete v tématu [Sdílení prostředků různého původu](functions-how-to-use-azure-function-app-settings.md#cors).
 
 Seznam povolených zdrojů [není aktuálně podporován](https://github.com/Azure/azure-functions-python-worker/issues/444) pro aplikace funkcí Pythonu. Z důvodu tohoto omezení musíte výslovně nastavit hlavičku `Access-Control-Allow-Origin` ve funkcích HTTP, jak je znázorněno v následujícím příkladu:
 
@@ -580,15 +573,15 @@ Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících materiálech:
 
 * [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
-* [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
+* [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Vazby úložiště objektů BLOB](functions-bindings-storage-blob.md)
 * [Vazby HTTP a Webhooku](functions-bindings-http-webhook.md)
 * [Vazby úložiště front](functions-bindings-storage-queue.md)
-* [Aktivační událost časovače](functions-bindings-timer.md)
+* [Trigger časovače](functions-bindings-timer.md)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python

@@ -6,21 +6,21 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263898"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675148"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
 [Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-latest-release]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku budete potřebovat následující.
 
@@ -43,10 +43,16 @@ Vytvořte skupinu prostředků pro cluster.
 az group create --name mySparkCluster --location eastus
 ```
 
-Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2`.
+Vytvořte instanční objekt pro cluster. Po vytvoření budete pro další příkaz potřebovat instanční objekt appId a heslo.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2` a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 Připojte se ke clusteru AKS.
@@ -64,7 +70,7 @@ Před spuštěním úloh Sparku v clusteru AKS je potřeba vytvořit zdrojový k
 Naklonujte úložiště Sparku do vašeho vývojového systému.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Přejděte do adresáře klonovaného úložiště a uložte cestu ke zdroji Spark do proměnné.
@@ -74,7 +80,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Pokud máte nainstalováno více verzí JDK, nastavte `JAVA_HOME` na použití verze 8 pro aktuální relaci.
+Pokud máte nainstalované více verzí JDK, nastavte `JAVA_HOME` pro použití verze 8 pro aktuální relaci.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -136,7 +142,7 @@ Spuštěním následujících příkazů přidejte modul plug-in SBT, který umo
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Spusťte tyto příkazy pro zkopírování ukázkového kódu do nově vytvořeného projektu a přidejte všechny nezbytné závislosti.
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -214,6 +220,13 @@ Přejděte zpátky do kořene úložiště Spark.
 cd $sparkdir
 ```
 
+Vytvořte účet služby, který má dostatečná oprávnění ke spuštění úlohy.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 Odešlete úlohu pomocí `spark-submit`.
 
 ```bash
@@ -223,6 +236,7 @@ Odešlete úlohu pomocí `spark-submit`.
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```

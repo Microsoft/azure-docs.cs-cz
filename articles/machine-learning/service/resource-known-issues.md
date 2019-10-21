@@ -11,16 +11,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533175"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675634"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
 Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým došlo při použití Azure Machine Learning.
+
+## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Nadcházející upgrade SR-IOV na počítače NCv3 v AmlCompute
+
+Azure COMPUTE bude aktualizovat skladové položky NCv3 od začátku listopadu až po podporu všech MPIch implementací a verzí a akcí RDMA pro virtuální počítače vybavené InfiniBand. To bude vyžadovat krátké výpadky. [Další informace o upgradu SR-IOV najdete v tématu](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+
+Jako zákazník z nabídky spravované COMPUTE (AmlCompute) Azure Machine Learning nemusíte v tuto chvíli provádět žádné změny. Na základě [plánu aktualizací](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) byste museli naplánovat krátké přerušení školení. Služba bude mít za úkol, aby na uzlech clusteru aktualizovala image virtuálních počítačů a automaticky nastavila horizontální navýšení kapacity clusteru. Po dokončení upgradu může být možné použít všechny ostatní MPI discibutions (například OpenMP s Pytorch), kromě toho, že se zvyšuje šířka pásma InfiniBand, nižší latence a lepší výkon distribuovaných aplikací.
 
 ## <a name="visual-interface-issues"></a>Problémy s vizuálním rozhraním
 

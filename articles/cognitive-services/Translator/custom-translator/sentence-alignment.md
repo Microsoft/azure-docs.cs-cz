@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: adbc21c3e963a98a8482de0c26bf5e257f43013e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595469"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675455"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování a zarovnání vět v paralelních dokumentech
 
@@ -26,21 +26,26 @@ Vlastní Překladatel se učí překlady vět v jednom okamžiku. Čte ze zdroje
 
 ## <a name="pre-aligned-documents"></a>Předem zarovnané dokumenty
 
-Pokud víte, že máte paralelní dokumenty, můžete zarovnání věty přepsat zadáním předem zarovnaných textových souborů. Můžete extrahovat všechny věty z obou dokumentů do textového souboru, uspořádat jednu větu na řádek a nahrát s `.align` příponou. `.align` Rozšíření signalizuje vlastní překladateli, že by měl přeskočit zarovnání věty.
+Pokud víte, že máte paralelní dokumenty, můžete zarovnání věty přepsat zadáním předem zarovnaných textových souborů. Můžete extrahovat všechny věty z obou dokumentů do textového souboru, uspořádat jednu větu na řádek a nahrajte je pomocí rozšíření `.align`. Rozšíření `.align` signalizuje vlastní překladatel, který by měl přeskočit zarovnání věty.
 
 Pro dosažení co nejlepších výsledků se ujistěte, že máte v souborech jednu větu na řádek. Ve větě nemusíte mít znaky nového řádku, protože by to způsobilo špatné zarovnání.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>Navrhovaný minimální počet vět, které byly extrahovány a zarovnány
+## <a name="suggested-minimum-number-of-sentences"></a>Navrhovaný minimální počet vět
 
-Pro úspěšné školení zobrazuje tabulka níže minimální počet extrahovaných vět a zarovnané věty vyžadované v každé sadě dat. Navrhovaný minimální počet vět je mnohem vyšší než navrhovaný minimální počet vět zarovnaných, aby se zohlednila skutečnost, že zarovnání věty nemusí být schopné úspěšně zarovnat všechny extrahované věty.
+Aby bylo školení úspěšné, zobrazí následující tabulka minimální počet vět požadovaných v každém typu dokumentu. Toto omezení je bezpečnostní síť, aby bylo zajištěno, že vaše paralelní věty obsahují dostatek jedinečného slovníku, aby bylo možné přeškolit model překladu. Obecný návod má více v doméně – paralelní věty kvality lidského překladu by měly vydávat vyšší kvality modelů.
 
-| Sada dat   | Navrhovaný minimální počet extrahovaných vět | Navrhovaný minimální počet vět pro zarovnání | Maximální počet vět zarovnaných |
-|------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Školení   | 10,000                                     | 2 000                                    | Bez horní meze                 |
-| Ladění     | 2 000                                      | 500                                      | 2,500                          |
-| Testování    | 2 000                                      | 500                                      | 2,500                          |
-| Slovník | 0                                          | 0                                        | Bez horní meze                 |
+| Typ dokumentu   | Navrhovaný minimální počet vět | Maximální počet vět |
+|------------|--------------------------------------------|--------------------------------|
+| Školení   | 10 000                                     | Bez horní meze                 |
+| Ladění     | 5 000                                      | 2 500                          |
+| Testování    | 5 000                                      | 2 500                          |
+| Slovník | 0                                          | Bez horní meze                 |
 
-## <a name="next-steps"></a>Další postup
+> [!NOTE]
+> - Školení nebude zahájeno a nebude úspěšné, pokud není splněna minimální počet vět 10 000 pro školení. 
+> - Ladění a testování jsou volitelné. Pokud je nezadáte, systém odebere příslušné procento z školení pro použití pro ověřování a testování. 
+> - Model můžete vytvořit pouze pomocí dat ze slovníku. Přečtěte si prosím, [co je slovník](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary).
+
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se používat [slovník](what-is-dictionary.md) ve vlastním překladateli.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597561"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674931"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
 
@@ -27,7 +27,7 @@ Můžete volitelně nakonfigurovat zásady exportu pro řízení přístupu ke s
 
 ## <a name="steps"></a>Kroky 
 
-1.  Klikněte na okno **Vytvořit zásady exportu** z okna Správa svazku. 
+1.  V navigačním podokně Azure NetApp Files klikněte na **Exportovat zásadu** . 
 
 2.  Zadejte do následujících polí informace pro vytvoření pravidla zásad exportu:   
     *  **Index**   

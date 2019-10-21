@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: c0744335dd13a0e8c35826c9b7da6fa71094e01e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600030"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674906"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Preview – migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
@@ -40,7 +40,7 @@ Ve fázi *migrace* se zkopírují základní virtuální disky pro řadiče dom�
 
 Při přesunutí spravované domény Azure služba AD DS pomocí tohoto procesu migrace se vyhnete nutnosti znovu připojit počítače ke spravované doméně nebo odstranit instanci Azure služba AD DS a vytvořit ji úplně od začátku. Virtuální počítače jsou i nadále připojené k spravované doméně Azure služba AD DS na konci procesu migrace.
 
-Po migraci poskytuje Azure služba AD DS mnoho funkcí, které jsou k dispozici pouze pro domény, které používají v Správce prostředků virtuálních sítích, například:
+Po migraci poskytuje Azure služba AD DS mnoho funkcí, které jsou k dispozici pouze pro domény využívající Správce prostředků virtuální sítě, jako například:
 
 * Podpora jemně odstupňovaných zásad hesel.
 * Ochrana při uzamčení účtu AD.
@@ -55,7 +55,8 @@ Azure služba AD DS spravované domény, které používají Správce prostředk
 
 Mezi běžné scénáře migrace spravované domény Azure služba AD DS patří následující příklady.
 
-[!NOTE] Neprovádějte převod klasické virtuální sítě, dokud nepotvrdíte úspěšnou migraci. Pokud během fází migrace a ověření dojde k nějakým potížím, převod virtuální sítě odebere zpět nebo obnoví spravovanou doménu Azure služba AD DS.
+> [!NOTE]
+> Neprovádějte převod klasické virtuální sítě, dokud nepotvrdíte úspěšnou migraci. Pokud během fází migrace a ověření dojde k problémům, převod virtuální sítě odebere zpět nebo obnoví spravovanou doménu Azure služba AD DS.
 
 ### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>Migrace Azure služba AD DS do existující Správce prostředků virtuální sítě (doporučeno)
 
@@ -133,7 +134,7 @@ Pokud se domníváte, že některé účty můžou být po migraci uzamčené, p
 
 ### <a name="roll-back-and-restore"></a>Vrácení zpět a obnovení
 
-Pokud migrace není úspěšná, bude proces vrácení nebo obnovení spravované domény Azure služba AD DS. Vrácení zpět představuje možnost samoobslužné služby, která okamžitě vrátí stav spravované domény do doby před pokusem o migraci. Technici podpory Azure můžou také obnovit spravovanou doménu ze zálohy jako poslední. Další informace najdete v tématu [Jak vrátit zpět nebo obnovit z neúspěšné migrace](#roll-back-and-restore).
+Pokud migrace není úspěšná, bude proces vrácení nebo obnovení spravované domény Azure služba AD DS. Vrácení zpět představuje možnost samoobslužné služby, která okamžitě vrátí stav spravované domény do doby před pokusem o migraci. Technici podpory Azure můžou také obnovit spravovanou doménu ze zálohy jako poslední. Další informace najdete v tématu [Jak vrátit zpět nebo obnovit z neúspěšné migrace](#roll-back-and-restore-from-migration).
 
 ### <a name="restrictions-on-available-virtual-networks"></a>Omezení pro dostupné virtuální sítě
 
@@ -153,9 +154,9 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
 | [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | Portál Azure | 15 minut | Nepožaduje se žádný výpadek | Nevztahuje se |
-| [Krok 2 – Příprava Azure služba AD DS spravované domény pro migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici |
-| [Krok 3 – přesunutí spravované domény Azure služba AD DS do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Pouze obnovit |
-| [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Pouze obnovit |
+| [Krok 2 – Příprava Azure služba AD DS spravované domény pro migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
+| [Krok 3 – přesunutí spravované domény Azure služba AD DS do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
+| [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
 | [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | Nevztahuje se | Nepožaduje se žádný výpadek | Nevztahuje se |
 
 > [!IMPORTANT]
@@ -171,7 +172,7 @@ Než začnete s migrací, dokončete následující počáteční kontroly a akt
 
 1. Vytvořte nebo vyberte existující Správce prostředků virtuální síť.
 
-    Ujistěte se, že nastavení sítě neblokují potřebné porty vyžadované pro Azure služba AD DS. Porty musí být otevřené v klasické virtuální síti i ve virtuální síti Správce prostředků. Mezi tato nastavení patří směrovací tabulky a skupiny zabezpečení sítě.
+    Ujistěte se, že nastavení sítě neblokují potřebné porty vyžadované pro Azure služba AD DS. Porty musí být otevřené v klasické virtuální síti i ve virtuální síti Správce prostředků. Mezi tato nastavení patří směrovací tabulky (i když se nedoporučuje používat směrovací tabulky) a skupiny zabezpečení sítě.
 
     Chcete-li zobrazit požadované porty, přečtěte si téma [skupiny zabezpečení sítě a požadované porty][network-ports]. Aby se minimalizovaly problémy s komunikací v síti, doporučuje se po úspěšném dokončení migrace na Správce prostředků virtuální síti počkat a použít skupinu zabezpečení sítě nebo směrovací tabulku.
 
@@ -181,7 +182,7 @@ Než začnete s migrací, dokončete následující počáteční kontroly a akt
 1. Případně, pokud plánujete přesunout další prostředky do modelu nasazení Správce prostředků a virtuální síť, potvrďte, že je možné tyto prostředky migrovat. Další informace najdete v tématu [migrace prostředků IaaS podporovaných platformou z klasický na správce prostředků][migrate-iaas].
 
     > [!NOTE]
-    > Neprovádějte převod klasické virtuální sítě na virtuální síť Správce prostředků. Pokud nemáte možnost vrátit zpět nebo obnovit spravovanou doménu služba AD DS Azure.
+    > Neprovádějte převod klasické virtuální sítě na virtuální síť Správce prostředků. Pokud to uděláte, nebudete mít možnost vrátit zpět nebo obnovit spravovanou doménu služba AD DS Azure.
 
 ## <a name="prepare-the-managed-domain-for-migration"></a>Příprava spravované domény na migraci
 
@@ -189,7 +190,7 @@ Azure PowerShell slouží k přípravě Azure služba AD DS spravované domény 
 
 K přípravě Azure služba AD DS spravované domény pro migraci, proveďte následující kroky:
 
-1. Nainstalujte modul `Migrate-Aaads` z [Galerie prostředí PowerShell][powershell-script]. Tento skript migrace prostředí PowerShell je digitálně podepsaný technickým týmem Azure AD.
+1. Nainstalujte skript `Migrate-Aaads` z [Galerie prostředí PowerShell][powershell-script]. Tento skript migrace prostředí PowerShell je digitálně podepsaný technickým týmem Azure AD.
 
     ```powershell
     Install-Script -Name Migrate-Aadds
@@ -266,7 +267,7 @@ Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuáln
 1. Ověřte překlad názvů spravované domény, například `nslookup contoso.com`
     * Zadejte název DNS vlastní spravované domény Azure služba AD DS, abyste ověřili, že jsou nastavení DNS správná a vyřešená.
 
-Druhý řadič domény by měl mít po dokončení rutiny migrace k dispozici 1-2 hodin. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény Azure služba AD DS v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
+Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény Azure služba AD DS v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
 
 ## <a name="optional-post-migration-configuration-steps"></a>Volitelné kroky konfigurace po migraci
 
@@ -294,16 +295,16 @@ V případě potřeby můžete jemně odstupňované zásady hesel aktualizovat 
 
 #### <a name="creating-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-Azure služba AD DS vytvoří skupinu zabezpečení sítě, která otevře porty potřebné pro spravovanou doménu a zablokuje všechny ostatní příchozí přenosy. Tato skupina zabezpečení sítě funguje jako dodatečná vrstva ochrany pro uzamknutí přístupu ke spravované doméně. Tato skupina zabezpečení sítě by se měla automaticky vytvořit. Pokud ne, nebo potřebujete otevřít další porty, přečtěte si následující postup:
+Azure služba AD DS potřebuje skupinu zabezpečení sítě k zabezpečení portů potřebných pro spravovanou doménu a blokování všech ostatních příchozích přenosů. Tato skupina zabezpečení sítě funguje jako dodatečná vrstva ochrany pro uzamknutí přístupu ke spravované doméně a není automaticky vytvořena. Pokud chcete vytvořit skupinu zabezpečení sítě a otevřít požadované porty, Projděte si následující postup:
 
-1. V Azure Portal vyberte prostředek Azure služba AD DS. Na stránce Přehled se zobrazí tlačítko pro vytvoření skupiny zabezpečení sítě, pokud není k dispozici žádný přidružený Azure AD Domain Services
+1. V Azure Portal vyberte prostředek Azure služba AD DS. Na stránce Přehled se zobrazí tlačítko pro vytvoření skupiny zabezpečení sítě, pokud není k dispozici žádná přidružená Azure AD Domain Services.
 1. Pokud používáte zabezpečený protokol LDAP, přidejte do skupiny zabezpečení sítě pravidlo, které povolí příchozí provoz pro port TCP *636*. Další informace najdete v tématu [Konfigurace protokolu Secure LDAP][secure-ldap].
 
-## <a name="roll-back-and-restore"></a>Vrácení zpět a obnovení
+## <a name="roll-back-and-restore-from-migration"></a>Vrácení zpět a obnovení z migrace
 
 ### <a name="roll-back"></a>Vrátit zpět
 
-Pokud se rutina PowerShellu pro přípravu migrace v kroku 2 nepovede, může se spravovaná doména Azure služba AD DS vrátit zpátky k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
+Pokud dojde k chybě při spuštění rutiny PowerShellu pro přípravu migrace v kroku 2 nebo pro migraci sebe sama v kroku 3, spravovaná doména Azure služba AD DS se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
 
 Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *contoso.com*:
 

@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066861"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675176"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky Azure App Service
 
@@ -37,7 +37,7 @@ Pro Azure Functions přejděte do aplikace Function App a v horním navigačním
 
 Na domovské stránce diagnostiky App Service můžete zvolit kategorii, která nejlépe popisuje problém s vaší aplikací pomocí klíčových slov na každé dlaždici domovské stránky. Na této stránce můžete také najít **diagnostické nástroje** pro aplikace pro Windows. Viz [diagnostické nástroje (jenom pro aplikaci pro Windows)](#diagnostic-tools-only-for-windows-app).
 
-![Domovská stránka](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+![Domovské stránky](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>Interaktivní rozhraní
 
@@ -78,7 +78,7 @@ Vzhledem k tomu, že mnoho problémů s aplikacemi souvisí s problémy v kódu 
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 
-Pokud chcete zobrazit Application Insights výjimky a závislosti, vyberte možnost **Webová aplikace** v podobě pomalých klávesových zkratek aplikace nebo **webové aplikace** .
+Pokud chcete zobrazit Application Insights výjimky a závislosti, vyberte možnost **Webová aplikace** v podobě **pomalých** klávesových zkratek aplikace nebo webové aplikace.
 
 ### <a name="troubleshooting-steps-only-for-windows-app"></a>Postup řešení potíží (jenom pro aplikaci pro Windows)
 
@@ -92,17 +92,17 @@ Diagnostické nástroje obsahují pokročilejší diagnostické nástroje, kter�
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktivní monitorování CPU
 
-Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému.
+Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému. Další informace najdete v tématu [zmírnění problémů s procesorem před tím, než k nim dojde](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). Proaktivní monitorování procesoru poskytuje snadný a aktivní způsob, jak provést akci, když vaše aplikace nebo podřízený proces vaší aplikace spotřebovává vysoké prostředky procesoru. Můžete nastavit vlastní mezní hodnoty CPU, abyste dočasně zmírnili vysoký problém s PROCESORem, dokud nezjistíte skutečnou příčinu neočekávaného problému.
 
 ![Proaktivní monitorování CPU](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Automatické opravy a proaktivní automatické opravy
 
-Automatické opravy je zmírňující opatření, které můžete provést v případě neočekávaného chování vaší aplikace. Můžete nastavit vlastní pravidla na základě počtu požadavků, pomalých požadavků, limitů paměti a stavového kódu HTTP a aktivovat tak zmírňující akce. Pomocí tohoto nástroje můžete dočasně zmírnit neočekávané chování, dokud nenajdete hlavní příčinu.
+Automatické opravy je zmírňující opatření, které můžete provést v případě neočekávaného chování vaší aplikace. Můžete nastavit vlastní pravidla na základě počtu požadavků, pomalých požadavků, limitů paměti a stavového kódu HTTP a aktivovat tak zmírňující akce. Pomocí tohoto nástroje můžete dočasně zmírnit neočekávané chování, dokud nenajdete hlavní příčinu. Další informace najdete v tématu představení [nového možnosti automatického retušování v tématu Diagnostika služby App Service](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
 
 ![Automatické opravení](./media/app-service-diagnostics/auto-healing-10.png)
 
-Stejně jako proaktivní monitorování procesoru je proaktivní automatické opravy pro zmírnění neočekávaného chování vaší aplikace. Proaktivní automatické retušování aplikace restartuje, když App Service zjistí, že je vaše aplikace v neobnovitelné stavu. Další informace najdete v tématu představení [nového možnosti automatického retušování v tématu Diagnostika služby App Service](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
+Stejně jako proaktivní monitorování procesoru je proaktivní automatické opravy pro zmírnění neočekávaného chování vaší aplikace. Proaktivní automatické retušování aplikace restartuje, když App Service zjistí, že je vaše aplikace v neobnovitelné stavu. Další informace najdete v tématu [představení proaktivní automatických](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)oprav.
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigátor a změna analýz (jenom pro aplikace pro Windows)
 

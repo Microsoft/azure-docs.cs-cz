@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201629"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675815"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -41,15 +41,15 @@ V následujících oddílech jsou uvedeny podporované serverové operační sys
 
 ### Operační systémy Windows Server<a name="os-windows"></a>
 
-* Windows Server. 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> Integrace s Microsoft Defender ATP podporuje jenom Windows Server 2012 R2 a Windows Server 2016.
+[!div class="mx-tableFixed"]
+|OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
+|---|---|---|
+|Windows Server 2019|✔|×|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008|✔|✔|
 
 Další informace o podporovaných funkcích pro operační systémy Windows, které jsou uvedené výše, najdete v tématu [funkce podporované virtuálním počítačem/serverem](security-center-services.md##vm-server-features).
 
@@ -58,7 +58,7 @@ Další informace o podporovaných funkcích pro operační systémy Windows, kt
 64 – bit
 
 * CentOS 6 a 7
-* Amazon Linux 2017.09
+* Amazon Linux 2017,09
 * Oracle Linux 6 a 7
 * Red Hat Enterprise Linux Server 6 a 7
 * Debian GNU/Linux 8 a 9
@@ -97,23 +97,23 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * App Service
 * Funkce
 * Cloudová služba
-* Virtuální síť
-* Subnet
+* VNet
+* Podsíť
 * NIC
 * NSG
 * Účet Batch
 * Účet Service Fabric
-* Účet služby Automation
+* Účet Automation
 * Nástroj pro vyrovnávání zatížení
-* Search
-* Názvový prostor služby Service Bus
+* Hledat
+* Obor názvů služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí
-* Aplikace logiky
+* Logické aplikace
 * Redis
-* Data Lake Analytics
+* Analýza Data Lake
 * Data Lake Store
-* Trezor klíčů
+* Key Vault
 
 Další informace o podporovaných funkcích pro výše uvedený seznam prostředků PaaS najdete v tématu [funkce podporované službami PaaS](security-center-services.md#paas-services).
 
