@@ -32,6 +32,8 @@
       items:
         - name: Přiřazení přístupu k datům
           href: assign-access-acm-data.md
+        - name: Použití analýzy nákladů pro běžné úlohy
+          href: cost-analysis-common-uses.md
         - name: Použití upozornění na náklady
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: Nastavení a konfigurace integrace AWS

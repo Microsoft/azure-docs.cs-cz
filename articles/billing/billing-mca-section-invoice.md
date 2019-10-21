@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709570"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375466"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Uspořádání nákladů na faktuře pomocí oddílů
 
@@ -55,5 +55,5 @@ Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#bl
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření dalšího předplatného Azure pro smlouvu se zákazníkem Microsoftu](billing-mca-create-subscription.md)
-- [Udělení oprávnění k vytváření předplatných Azure dalším uživatelům](billing-mca-create-subscription.md#give-others-permission)
+- [Správa fakturačních rolí na webu Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [Získání role vlastníka fakturace pro předplatná Azure od uživatelů v jiných fakturačních účtech](billing-mca-request-billing-ownership.md)

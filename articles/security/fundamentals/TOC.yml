@@ -44,39 +44,8 @@
           href: data-encryption-best-practices.md
         - name: Šifrování neaktivních dat
           href: encryption-atrest.md
-        - name: Šifrování disků pro virtuální počítače IaaS
-          items:
-            - name: Informace o službě Azure Disk Encryption
-              displayName: 'BitLocker, bek'
-              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Azure Disk Encryption
-              items:
-                - name: Požadavky na šifrování disků
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
-                - name: Šifrování disků pro virtuální počítače s Windows
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
-                - name: Šifrování disků pro virtuální počítače s Linuxem
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
-                - name: Šifrování disku s nastavením pořadí rozšíření pro škálované sady virtuálních počítačů
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
-                - name: Dodatek k šifrování disků
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
-                - name: Šifrování disků – nejčastější dotazy
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
-                - name: Řešení potíží
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
-                - name: Azure Disk Encryption s využitím aplikace Azure AD (předchozí vydaná verze)
-                  displayName: active directory
-                  items:
-                    - name: Šifrování disků s využitím aplikace Azure AD – požadavky
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
-                    - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Windows
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
-                    - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+        - name: Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
+          href: azure-disk-encryption-vms-vmss.md
     - name: Příručka zabezpečení úložiště
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Customer Lockbox
@@ -154,13 +123,6 @@
           href: paas-applications-using-sql.md
     - name: IoT
       href: iot-overview.md
-      items:
-        - name: Osvědčené postupy zabezpečení IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-        - name: Zabezpečení IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: Zabezpečení nasazení IoT
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Zabezpečení služby Azure Service Fabric
       href: service-fabric-overview.md
       items:
@@ -273,8 +235,8 @@
           href: ../blueprints/ukofficial-iaaswa-overview.md
         - name: Webová aplikace PaaS
           href: ../blueprints/ukofficial-paaswa-overview.md
-- name: Dokumenty white paper
-  href: white-papers.md
+- name: Dokumenty white paper k zabezpečení
+  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Služby zabezpečení Azure
   href: services-technologies.md
 - name: Technické přehledy

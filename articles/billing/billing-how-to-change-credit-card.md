@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300312"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375596"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Přidání, aktualizace nebo odebrání platební karty v Azure
 
@@ -131,7 +131,7 @@ Pokud chcete změnit výchozí způsob platby na šek / bezhotovostní převod, 
 1. Vyberte stávající kartu nebo přidejte novou.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud při přidávání nebo aktualizaci platební karty dochází k chybám, zkuste otevřít prohlížeč v privátním režimu.
+Virtuální ani předplacené karty nepodporujeme. Pokud při přidávání nebo aktualizaci platné platební karty dochází k chybám, zkuste otevřít prohlížeč v privátním režimu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 V následujících částech najdete odpovědi na nejčastější dotazy týkající se změny údajů platebních karet.

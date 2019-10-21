@@ -4,16 +4,16 @@ description: Tento článek popisuje rozhraní REST API, která se používají 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 70e1e988ad3abdb90ecb60d33830f03f8dffb127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105445"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329330"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
 
@@ -95,7 +95,11 @@ Data o využití a fakturační data se pro aktuální fakturační měsíc aktu
 
 ### <a name="test-enrollment-for-development"></a>Testovací registrace pro vývojáře
 
-Pokud jste partnerem nebo vývojářem bez registrace Azure Enterprise a chcete získat přístup k rozhraní API, můžete použít testovací registraci. Název registrace je _EnrollmentNumber 100_. Potom můžete [provádět testování s použitím přístupového klíče této registrace](https://automaticbillingspec.blob.core.windows.net/spec/TestEnrollmentUsageApiKey.txt), který umožňuje vyvolání rozhraní API a zobrazení ukázkových dat.
+Pokud jste partnerem nebo vývojářem bez registrace Azure Enterprise a chcete získat přístup k rozhraní API, můžete použít testovací registraci. Název registrace je _EnrollmentNumber 100_. Vyhledat a otestovat můžete informace o využití až do června 2018. Pak můžete pomocí následujícího klíče zavolat rozhraní API a zobrazit ukázková data.
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
+```
 
 ### <a name="azure-service-catalog"></a>Katalog služeb Azure
 

@@ -3,8 +3,8 @@ title: Vytvoření dalšího předplatného Azure | Microsoft Docs
 description: Naučte se, jak na webu Azure Portal přidat nové předplatné Azure.
 services: billing
 documentationcenter: ''
-author: jrosson
-manager: jrosson
+author: amberb
+manager: amberb
 editor: ''
 ms.service: billing
 ms.workload: na
@@ -13,22 +13,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: f907ebcfc1efc2e6eb9b458f83ab11d868871946
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: acb41de8344d1467e86c38c7c99e8ad4ab517ead
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615818"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375830"
 ---
-# <a name="create-an-additional-subscription-in-the-azure-portal"></a>Vytvoření dalšího předplatného na webu Azure Portal
+# <a name="create-an-additional-azure-subscription"></a>Vytvoření dalšího předplatného Azure
 
-Můžete vytvořit další předplatná pro váš účet v Azure. Můžete chtít další předplatné, abyste se vyhnuli omezením předplatného, vytvořili samostatná prostředí pro účely fakturace a zabezpečení nebo izolovali data z důvodů dodržování předpisů.
+Na webu Azure Portal můžete vytvořit další předplatné pro svůj fakturační účet pro [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [smlouvu se zákazníkem Microsoftu](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) nebo [smlouvu s partnerem Microsoftu](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement). Můžete chtít další předplatné, abyste se vyhnuli omezením předplatného, vytvořili samostatná prostředí pro účely zabezpečení nebo izolovali data z důvodů dodržování předpisů.
 
-Pokud chcete vytvořit předplatná Azure v rámci smlouva Enterprise vaší organizace, musíte mít pro vaši organizaci roli vlastníka účtu.
+Pokud máte fakturační účet programu Microsoft Online Service (MOSP), můžete vytvářet další předplatná na [registračním portálu Azure](https://account.azure.com/signup?offer=ms-azr-0003p).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free).
+Další informace o fakturačních účtech a určení typu fakturačního účtu najdete v tématu [Zobrazení fakturačních účtů na webu Azure Portal](billing-view-all-accounts.md).
 
-## <a name="create-an-additional-azure-subscription"></a>Vytvoření dalšího předplatného Azure
+## <a name="permission-required-to-create-azure-subscriptions"></a>Oprávnění požadovaná k vytváření předplatných Azure
+
+K vytváření předplatných potřebujete následující oprávnění:
+
+|Fakturační účet  |Oprávnění  |
+|---------|---------|
+|Smlouva Enterprise (EA) |  Role Vlastník účtu pro registraci smlouvy Enterprise Další informace najdete v tématu [Principy rolí pro správu smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md).    |
+|Smlouva se zákazníkem Microsoftu (MCA) |  Role vlastníka nebo přispěvatele oddílu faktury, fakturačního profilu nebo fakturačního účtu Případně role Tvůrce předplatného Azure u oddílu faktury  Další informace najdete v tématu [Role a úlohy související s fakturací předplatného](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
+|Smlouva s partnerem Microsoftu |   Role Globální správce nebo Agent správy v partnerské organizaci Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).  |
+
+## <a name="create-a-subscription-in-the-azure-portal"></a>Vytvoření předplatného na webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Předplatná**.
@@ -39,7 +49,37 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
    ![Snímek obrazovky, který zobrazuje tlačítko Přidat v zobrazení Předplatná](./media/billing-create-subscription/subscription-add.png)
 
-Můžete také vytvořit další předplatná programově. Další informace najdete v tématu popisujícím [programové vytvoření předplatných Azure Enterprise](../azure-resource-manager/programmatically-create-subscription.md).
+1. Pokud máte přístup k více fakturačním účtům, vyberte fakturační účet, pro který chcete předplatné vytvořit.
+
+1. Vyplňte formulář a klikněte na **Vytvořit**. V následujících tabulkách jsou uvedená pole formuláře pro jednotlivé typy fakturačních účtů.
+
+**Smlouva Enterprise**
+
+|Pole  |Definice  |
+|---------|---------|
+|Název     | Zobrazovaný název umožňující snadnou identifikaci předplatného na webu Azure Portal  |
+|Nabídka     | Pokud chcete toto předplatné používat pro účely vývoje a testování úloh, vyberte nabídku EA pro vývoj a testování, jinak použijte nabídku Microsoft Azure Enterprise. Aby registrační účet mohl vytvářet předplatná EA pro vývoj a testování, je potřeba povolit nabídku Vývoj/testování.|
+
+**Smlouva se zákazníkem Microsoftu**
+
+|Pole  |Definice  |
+|---------|---------|
+|Fakturační profil     | Na vybraný fakturační profil se budou účtovat poplatky za vaše předplatné. Pokud máte přístup pouze k jednomu fakturačnímu profilu, možnost výběru bude neaktivní.     |
+|Oddíl faktury     | V tomto oddílu faktury pro fakturační profil se zobrazí poplatky za vaše předplatné. Pokud máte přístup pouze k jednomu oddílu faktury, možnost výběru bude neaktivní.  |
+|Plánování     | Pokud chcete toto předplatné používat pro účely vývoje a testování úloh, vyberte Plán Azure pro vývoj a testování, jinak použijte Plán Microsoft Azure. Pokud je pro fakturační profil povolený pouze jeden plán, možnost výběru bude neaktivní.  |
+|Název     | Zobrazovaný název umožňující snadnou identifikaci předplatného na webu Azure Portal  |
+
+**Smlouva s partnerem Microsoftu**
+
+|Pole  |Definice  |
+|---------|---------|
+|Zákazník    | Předplatné se vytvoří pro vybraného zákazníka. Pokud máte pouze jednoho zákazníka, možnost výběru bude neaktivní.  |
+|Prodejce    | Prodejce, který bude poskytovat služby zákazníkovi. Toto pole je volitelné a vztahuje se pouze na nepřímé prodejce ve dvouúrovňovém modelu CSP. |
+|Název     | Zobrazovaný název umožňující snadnou identifikaci předplatného na webu Azure Portal  |
+
+## <a name="create-an-additional-azure-subscription-programmatically"></a>Programové vytvoření dalšího předplatného Azure
+
+Můžete také vytvořit další předplatná programově. Další informace najdete v tématu [Programové vytváření předplatných Azure](../azure-resource-manager/programmatically-create-subscription.md).
 
 ## <a name="next-steps"></a>Další kroky
 

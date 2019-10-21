@@ -75,9 +75,9 @@
       href: functions-cli-samples.md
 - name: Koncepty
   items:
-    - name: Porovnání verze 1.x a 2.x
+    - name: Porovnání modulů runtime
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: Plán Premium
       href: functions-premium-plan.md
     - name: Nasazení

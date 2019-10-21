@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: Osvědčené postupy architektury Azure pro ukládání do mezipaměti
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: Vysvětlení převzetí služeb při selhání a oprav
+      href: cache-failover.md
 - name: Návody
   items:
     - name: Plánování

@@ -4,16 +4,16 @@ description: V tomto článku jsou vysvětlené nejčastější úkoly, které p
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035219"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329340"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -62,7 +62,7 @@ Při převodu podnikového účtu do nové registrace mějte na paměti následu
 
 Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu registrace, do které chcete provést převod. Registrace, do které účet převádíte, se nazývá _cílová registrace_. Po převodu účtu zůstanou všechny informace o použití, které byly v účtu před platným datem převodu, v registraci, ze které provádíte převod. Registrace, ze které provádíte převod, je _zdrojová registrace_.  Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
 
-Převod účtu je možné provést k dřívějšímu datu, ale nejpozději k počátečnímu datu cílové registrace. Nebo nejpozději k platnému počátečnímu datu zdrojové registrace.
+Převod registrace je možné provést k dřívějšímu datu, ale nejpozději k počátečnímu datu cílové registrace. Nebo nejpozději k platnému počátečnímu datu zdrojové registrace.
 
 ### <a name="monetary-commitment"></a>Peněžní závazek
 
@@ -212,12 +212,11 @@ Pokud uživatel nedostává oznámení, zkontrolujte, jestli jsou správně nast
 ![Příklad ukazující pole pro přidání kontaktu ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Nabídka Azure Sponsorship
+
 Nabídka Azure Sponsorship se týká omezeného sponzorovaného účtu Microsoft Azure. Nabídka je k dispozici jenom na základě e-mailové pozvánky určené omezenému počtu zákazníků, které vybral Microsoft. Pokud máte na nabídku Microsoft Azure Sponsorship nárok, přijde vám e-mailem pozvánka určená pro vaše ID účtu.
+
 Další informace naleznete v tématu:
 
-- Přehled nabídky sponzoringu – https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Portál se zůstatkem sponzoringu – https://www.microsoftazuresponsorships.com/balance  
-- Nejčastější externí dotazy ke sponzoringu – https://azuresponsorships-staging.azurewebsites.net/faq
 - Žádost o podporu při aktivaci sponzoringu – http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>Další kroky

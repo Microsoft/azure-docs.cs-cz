@@ -248,6 +248,16 @@
               href: storage-blob-containers-list.md
             - name: Správa vlastností a metadat (.NET)
               href: storage-blob-container-properties-metadata.md
+        - name: Vytváření a správa objektů blob
+          items:
+            - name: Výpis objektů blob (.NET)
+              href: storage-blobs-list.md
+            - name: Správa metadat a vlastností objektů blob (.NET)
+              href: storage-blob-properties-metadata.md
+            - name: Kopírování objektu blob (.NET)
+              href: storage-blob-copy.md
+            - name: Vytváření a správa snímků objektů blob
+              href: storage-blob-snapshots.md
         - name: Zabezpečení dat objektů blob
           items:
             - name: Autorizace přístupu k datům objektu blob

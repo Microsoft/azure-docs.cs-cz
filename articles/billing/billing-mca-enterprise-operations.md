@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709544"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375500"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Provádění úkolů ze smlouvy Enterprise ve fakturačním účtu pro smlouvu se zákazníkem Microsoftu
 
@@ -27,7 +27,7 @@ Pokud vaše organizace podepsala smlouvu se zákazníkem Microsoftu za účelem 
 
 Následující diagram popisuje uspořádání fakturace v novém fakturačním účtu.
 
-![Obrázek změn v hierarchii po přechodu](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Obrázek změn v hierarchii po přechodu](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Smlouva Enterprise   | Smlouva se zákazníkem Microsoftu    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Pokud chcete zobrazit souhrnné náklady pro předplatná, která patří do ú�
 
 Pro každý fakturační profil se ve vašem fakturačním účtu vygeneruje měsíční faktura. Pro každou fakturu si můžete stáhnout soubor CSV s informacemi o využití a poplatcích za Azure, ceník a daňový doklad (pokud je k dispozici). Soubor CSV s informacemi o využití a poplatcích za Azure si můžete také stáhnout pro poplatky aktuálního měsíce.
 
-Další informace o stažení souboru CSV s informacemi o využití a poplatcích za Azure najdete v tématu o [stažení informací o využití pro smlouvu se zákazníkem Microsoftu](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
+Další informace o stažení souboru CSV s informacemi o využití a poplatcích za Azure najdete v tématu o [stažení informací o využití pro smlouvu se zákazníkem Microsoftu](billing-download-azure-daily-usage.md).
 
-Další informace o stažení ceníku najdete v tématu o [stažení informací o cenách pro smlouvu se zákazníkem Microsoftu](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
+Další informace o stažení ceníku najdete v tématu o [stažení informací o cenách pro smlouvu se zákazníkem Microsoftu](billing-ea-pricing.md).
 
 Další informace o stažení daňových dokladů najdete v tématu o [zobrazení daňových dokladů pro smlouvu se zákazníkem Microsoftu](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
@@ -90,7 +90,7 @@ K uspořádání nákladů podle svých potřeb vytvoříte oddíl faktury, podo
 
 ### <a name="create-a-new-account"></a>Vytvoření nového účtu
 
-Přiřaďte uživatelům roli Tvůrce předplatného Azure v oddílech faktury a dejte jim tak oprávnění k vytvoření předplatného Azure stejně jako u účtů vytvořených v registraci smlouvy Enterprise. Další informace najdete v tématu o [udělení oprávnění k vytváření předplatných Azure](billing-mca-create-subscription.md#give-others-permission).
+Přiřaďte uživatelům roli Tvůrce předplatného Azure v oddílech faktury a dejte jim tak oprávnění k vytvoření předplatného Azure stejně jako u účtů vytvořených v registraci smlouvy Enterprise. Další informace o přiřazování rolí najdete v tématu [Správa fakturačních rolí na webu Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ## <a name="changes-for-department-administrators"></a>Změny pro správce oddělení
 
@@ -116,7 +116,7 @@ Další informace o poskytování přístupu k oddílu faktury najdete v tématu
 
 ### <a name="create-a-new-account-in-your-department"></a>Vytvoření nového účtu v oddělení
 
-Přiřaďte uživatelům roli tvůrce předplatného Azure u oddílu faktury, který byl vytvořen pro vaše oddělení. Další informace najdete v tématu o [udělení oprávnění k vytváření předplatných Azure](billing-mca-create-subscription.md#give-others-permission).
+Přiřaďte uživatelům roli tvůrce předplatného Azure u oddílu faktury, který byl vytvořen pro vaše oddělení. Další informace o přiřazování rolí najdete v tématu [Správa fakturačních rolí na webu Azure Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Zobrazení poplatků pro účty ve vašem oddělení
 

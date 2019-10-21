@@ -11,22 +11,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4eae7299ab696b01c57a27fd46cbf903c9395152
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177539"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375543"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
-Zůstatek kreditu Azure u smlouvy se zákazníkem Microsoftu můžete zobrazit na webu Azure Portal. Pomocí kreditů můžete platit poplatky, na které se tyto kredity vztahují.
+Zůstatek kreditu Azure u fakturačního účtu pro smlouvu se zákazníkem Microsoftu můžete zobrazit na webu Azure Portal. 
 
-Pokud používáte produkty, na které se kredity nevztahují, nebo při využívání překročíte zůstatek kreditu, začnou se vám účtovat poplatky. Další informace najdete v seznamu [produktů, na které se nevztahují kredity Azure](#products-that-arent-covered-by-azure-credits).
+Pomocí kreditů můžete platit poplatky, na které se tyto kredity vztahují. Pokud používáte produkty, na které se kredity nevztahují, nebo při využívání překročíte zůstatek kreditu, začnou se vám účtovat poplatky. Další informace najdete v seznamu [produktů, na které se nevztahují kredity Azure](#products-that-arent-covered-by-azure-credits).
+
+V rámci fakturačního účtu pro smlouvu se zákazníkem Microsoftu se kredity přiřazují k fakturačnímu profilu. Každý fakturační profil má vlastní kredity. K zobrazení zůstatku kreditu Azure u fakturačního profilu musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře u fakturačního účtu. Další informace o rolích najdete v tématu [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](billing-understand-mca-roles.md).
 
 Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance"></a>Kontrola zůstatku kreditu
+## <a name="check-your-credit-balance-in-the-azure-portal"></a>Kontrola zůstatku kreditu na webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
 
@@ -44,7 +46,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
    |--------------------|--------------------------------------------------------|
    | Odhadovaný zůstatek  | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
    | Aktuální zůstatek    | Množství kreditů podle vaší poslední faktury. Nezahrnuje žádné nevyřízené transakce |
-   | Transakce       | Všechny fakturační transakce, které ovlivnily zůstatek kreditu Azure |
+   | Transakce       | Fakturační transakce, které ovlivnily zůstatek kreditu Azure |
 
    Když odhadovaný zůstatek klesne na 0, začne se vám účtovat veškeré využití, a to i produktů, na které se jinak vztahují kredity.
 
@@ -54,20 +56,280 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
    | Označení | Definice |
    |---|---|
-   | Odhadovaný zůstatek | Množství vašich kreditů Azure po odečtení nezaúčtovaných poplatků s nárokem na uplatnění kreditů od aktuálního zůstatku|
-   | Aktuální zůstatek | Množství vašich kreditů Azure před zvážením nezaúčtovaných poplatků s nárokem na uplatnění kreditů. Počítá se přičtením počtu získaných kreditů Azure k zůstatku kreditů na základě poslední faktury|
    | Zdroj | Zdroj pořízení kreditu |
    | Počáteční datum | Datum získání kreditu |
    | Datum vypršení platnosti | Datum, kdy vyprší platnost kreditu |
-   | Zůstatek | Zůstatek na základě poslední faktury |
+   | Aktuální zůstatek | Zůstatek na základě poslední faktury |
    | Původní množství | Původní množství kreditů |
    | Status | Aktuální stav kreditů. Možné stavy: Aktivní, Použito, Platnost vypršela nebo Platnost vyprší |
+
+## <a name="check-your-credit-balance-programmatically"></a>Programová kontrola zůstatku kreditu
+
+K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/consumption/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/billing/).
+
+V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
+
+### <a name="find-billing-profiles-you-have-access-to"></a>Vyhledání fakturačních profilů, ke kterým máte přístup
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?$expand=billingProfiles&api-version=2019-10-01-preview
+```
+V odpovědi rozhraní API se vrátí seznam fakturačních účtů a příslušných fakturačních profilů.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx",
+      "name": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx",
+      "properties": {
+        "accountId": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "accountStatus": "Active",
+        "accountType": "Enterprise",
+        "agreementType": "MicrosoftCustomerAgreement",
+        "billingProfiles": [
+          {
+            "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx",
+            "name": "PBFV-xxxx-xxx-xxx",
+            "properties": {
+              "address": {
+                "addressLine1": "AddressLine1",
+                "city": "City",
+                "companyName": "CompanyName",
+                "country": "Country",
+                "postalCode": "xxxxx",
+                "region": "Region"
+              },
+              "currency": "USD",
+              "displayName": "Development",
+              "hasReadAccess": true,
+              "invoiceDay": 5,
+              "invoiceEmailOptIn": true
+            },
+            "type": "Microsoft.Billing/billingAccounts/billingProfiles"
+          }
+        ],
+        "displayName": "Contoso",
+        "hasReadAccess": true,
+      },
+      "type": "Microsoft.Billing/billingAccounts"
+    }
+  ]
+}
+```
+
+Pomocí vlastnosti `displayName` fakturačního profilu můžete identifikovat fakturační profil, u kterého chcete zkontrolovat zůstatek kreditu. Zkopírujte vlastnost `id` fakturačního profilu. Pokud například chcete zkontrolovat zůstatek kreditu u fakturačního profilu **Vývoj**, zkopírujte hodnotu ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+### <a name="get-azure-credit-balance"></a>Získání zůstatku kreditu Azure 
+
+Proveďte následující požadavek, ve kterém nahraďte `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/credits/balanceSummary?api-version=2019-10-01
+```
+
+V odpovědi rozhraní API se vrátí odhadovaný a aktuální zůstatek u fakturačního profilu.
+
+```json
+{
+  "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/credits/balanceSummary/57c2e8df-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "57c2e8df-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "Microsoft.Consumption/credits/balanceSummary",
+  "eTag": null,
+  "properties": {
+    "balanceSummary": {
+      "estimatedBalance": {
+        "currency": "USD",
+        "value": 996.13
+      },
+      "currentBalance": {
+        "currency": "USD",
+        "value": 997.87
+      }
+    },
+    "pendingCreditAdjustments": {
+      "currency": "USD",
+      "value": 0.0
+    },
+    "expiredCredit": {
+      "currency": "USD",
+      "value": 0.0
+    },
+    "pendingEligibleCharges": {
+      "currency": "USD",
+      "value": -1.74
+    }
+  }
+}
+```
+
+| Název elementu  | Popis                                                                           |
+|---------------|---------------------------------------------------------------------------------------|
+| `estimatedBalance` | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
+| `currentBalance`   | Množství kreditů na základě poslední faktury. Nezahrnuje žádné nevyřízené transakce.    |
+| `pendingCreditAdjustments`      | Úpravy, jako jsou refundace, které se ještě nefakturovaly  |
+| `expiredCredit`      |  Kredit, jehož platnost od poslední faktury vypršela  |
+| `pendingEligibleCharges`  | Poplatky, na které se vztahují kredity, ale které se ještě nefakturovaly   |
+
+### <a name="get-list-of-credits"></a>Získání seznamu kreditů
+
+Proveďte následující požadavek, ve kterém nahraďte `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). 
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/lots?api-version=2019-10-01
+```
+V odpovědi rozhraní API se vrátí seznam kreditů Azure pro fakturační profil.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/lots/f2ecfd94-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "f2ecfd94-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/lots",
+      "eTag": null,
+      "properties": {
+        "originalAmount": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "source": "Azure Promotional Credit",
+        "startDate": "09/18/2019 21:47:31",
+        "expirationDate": "09/18/2020 21:47:30",
+        "poNumber": ""
+      }
+    },
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/xxxx-xxxx-xxx-xxx/providers/Microsoft.Consumption/lots/4ea40eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4ea40eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/lots",
+      "eTag": null,
+      "properties": {
+        "originalAmount": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 497.87
+        },
+        "source": "Azure Promotional Credit",
+        "startDate": "09/18/2019 21:47:31",
+        "expirationDate": "09/18/2020 21:47:30",
+        "poNumber": ""
+      }
+    }
+  ]
+}
+```
+| Název elementu  | Popis                                                                                               |
+|---------------|-----------------------------------------------------------------------------------------------------------|
+| `originalAmount` | Původní množství kreditů |
+| `closedBalance`   | Zůstatek na základě poslední faktury    |
+| `source`      | Zdroj definující způsob získání kreditu |
+| `startDate`      |  Datum aktivace kreditu  |
+| `expirationDate`  | Datum vypršení platnosti kreditu   |
+| `poNumber`  | Číslo nákupní objednávky faktury, na kterou se kredit účtoval   |
+
+### <a name="get-transactions-that-affected-credit-balance"></a>Získání transakcí, které ovlivnily zůstatek kreditu
+
+Proveďte následující požadavek, ve kterém nahraďte `<billingProfileId>` hodnotou `id`, kterou jste zkopírovali v prvním kroku (```providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```). Pokud chcete získat transakce za určité období, musíte předat hodnoty **startDate** a **endDate**.
+
+```json
+GET https://management.azure.com<billingProfileId>/providers/Microsoft.Consumption/events?api-version=2019-10-01&startDate=2018-10-01T00:00:00.000Z&endDate=2019-10-11T12:00:00.000Z?api-version=2019-10-01
+```
+V odpovědi rozhraní API se vrátí všechny transakce, které ovlivnily zůstatek kreditu u vašeho fakturačního profilu.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx`/providers/Microsoft.Consumption/events/e2032eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "e2032eb5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/events",
+      "eTag": null,
+      "properties": {
+        "transactionDate": "10/11/2019",
+        "description": "Credit eligible charges as of 10/11/2019",
+        "newCredit": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "adjustments": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "creditExpired": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "charges": {
+          "currency": "USD",
+          "value": -1.74
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 998.26
+        },
+        "eventType": "PendingCharges",
+        "invoiceNumber": ""
+      }
+    },
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/providers/Microsoft.Consumption/events/381efd80-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "381efd80-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "Microsoft.Consumption/events",
+      "eTag": null,
+      "properties": {
+        "transactionDate": "09/18/2019",
+        "description": "New credit added on 09/18/2019",
+        "newCredit": {
+          "currency": "USD",
+          "value": 500.0
+        },
+        "adjustments": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "creditExpired": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "charges": {
+          "currency": "USD",
+          "value": 0.0
+        },
+        "closedBalance": {
+          "currency": "USD",
+          "value": 1000.0
+        },
+        "eventType": "PendingNewCredit",
+        "invoiceNumber": ""
+      }
+    }
+  ]
+}
+```
+| Název elementu  | Popis                                                                                               |
+|---------------|-----------------------------------------------------------------------------------------------------------|
+| `transactionDate` | Datum uskutečnění transakce |
+| `description` | Popis transakce |
+| `adjustments`   | Úpravy kreditu v rámci transakce    |
+| `creditExpired`      | Množství kreditu, jehož platnost vypršela |
+| `charges`      |  Poplatky za transakci  |
+| `closedBalance`  | Zůstatek po transakci   |
+| `eventType`  | Typ transakce   |
+| `invoiceNumber`  | Číslo faktury, na kterou se transakce fakturovala. V případě nevyřízené transakce bude tato hodnota prázdná.   |
 
 ## <a name="how-credits-are-used"></a>Způsob uplatňování kreditů
 
 Na fakturačním účtu pro smlouvu se zákazníkem Microsoftu spravujete své faktury a způsoby platby pomocí fakturačních profilů. Pro každý fakturační profil se jednou za měsíc generuje faktura a k úhradě této faktury používáte zvolené způsoby platby.
 
-Kredity Azure představují jeden ze způsobů platby. Kredity získáváte od Microsoftu, třeba v podobě propagačních kreditů nebo kreditů na úrovni služeb. Tyto kredity se přiřadí k určitému fakturačnímu profilu. Ve chvíli vytváření faktury pro tento fakturační profil se kredity automaticky uplatní na celkovou fakturovanou částku a vypočítá se částka, kterou máte zaplatit. Zbývající částku uhradíte pomocí jiného způsobu platby, například šekem nebo bezhotovostním převodem.
+Kredity, které získáte, přiřadíte k fakturačnímu profilu. Ve chvíli vytváření faktury pro tento fakturační profil se kredity automaticky uplatní na celkové poplatky a vypočítá se částka, kterou máte zaplatit. Zbývající částku uhradíte pomocí nastavených způsobů platby, například šekem, bezhotovostním převodem nebo platební kartou.
 
 ## <a name="products-that-arent-covered-by-azure-credits"></a>Produkty, na které se nevztahují kredity Azure
 

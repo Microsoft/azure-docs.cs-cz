@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718729"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375419"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Vysvětlení poplatků za externí služby v Azure
 Externí služby zveřejňují externí dodavatelé softwaru na webu Azure Marketplace. Takovou externí službou, kterou si můžete zakoupit v Azure, přestože ji nevydal Microsoft, je například SendGrid. Prostřednictvím Azure Marketplace se prodávají i některé produkty Microsoftu.
 
 ## <a name="how-external-services-are-billed"></a>Způsob účtování externích služeb
 
-- Pokud máte [smlouvu se zákazníkem Microsoftu](#check-access), služby třetích stran se vám fakturují spolu s ostatními službami Azure.
-- Pokud smlouvu se zákazníkem Microsoftu nemáte, služby třetích stran se vám fakturují odděleně od ostatních služeb Azure.
+- Pokud máte smlouvu se zákazníkem Microsoftu (MCA) nebo smlouvu s partnerem Microsoftu (MPA), služby třetích stran se vám fakturují spolu s ostatními službami Azure. Pokud chcete zjistit, jestli máte přístup ke smlouvě MCA nebo MPA, [zkontrolujte typ svého fakturačního účtu](#check-billing-account-type).
+- Pokud smlouvu MCA ani MPA nemáte, externí služby se vám fakturují odděleně od ostatních služeb Azure.
 - Každá externí služba má jiný model fakturace. Některé služby se účtují pomocí průběžných plateb, za jiné platíte pevné měsíční poplatky.
 - Pro externí služby nemůžete využívat měsíční bezplatné kredity. Pokud používáte předplatné Azure, které zahrnuje [bezplatné kredity](https://azure.microsoft.com/pricing/spending-limits/), nedají se uplatnit na poplatky za externí služby. Při zřizování nové externí služby nebo prostředku se vám zobrazí upozornění:
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Zobrazení a stažení faktur
+## <a name="view-and-download-invoices-for-external-services"></a>Zobrazení a stažení faktur za externí služby
 
-Pokud máte [smlouvu se zákazníkem Microsoftu](#check-access), poplatky třetím stranám najdete na stejné faktuře jako poplatky za Azure. Zjistěte, jak na webu Azure Portal [zobrazit a stáhnout fakturu za Azure](billing-download-azure-invoice.md), na které uvidíte poplatky třetím stranám.
+Pokud máte smlouvu se zákazníkem Microsoftu (MCA) nebo smlouvu s partnerem Microsoftu (MPA), služby třetích stran se vám fakturují spolu s ostatními službami Azure. Pokud chcete zjistit, jestli máte přístup ke smlouvě MCA nebo MPA, [zkontrolujte typ svého fakturačního účtu](#check-billing-account-type). Pokud k nim máte přístup a chcete zobrazit poplatky za služby třetích stran, přečtěte si téma [Zobrazení a stažení faktur na webu Azure Portal](billing-download-azure-invoice.md).
 
-Pokud nemáte smlouvu se zákazníkem Microsoftu, najdete poplatky třetím stranám na samostatné faktuře. Faktury za Azure Marketplace si můžete na webu Azure Portal zobrazit a stáhnout pomocí následujícího postupu:
+Pokud nemáte smlouvu MCA ani MPA, poplatky za služby třetích stran najdete na samostatné faktuře. Faktury za Azure Marketplace si můžete na webu Azure Portal zobrazit a stáhnout pomocí následujícího postupu:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
@@ -108,8 +108,8 @@ Pokud chcete objednávku externí služby zrušit, na webu [Azure Portal](https:
     ![Odstranění prostředku](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Klikněte na **Odstranit**.
 
-## <a name="check-access"></a>Ověření přístupu
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Kontrola typu fakturačního účtu
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
