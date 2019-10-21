@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 2fa3da028e6e897921786889579c6de9a048c3e8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392641"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513980"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím mezipaměti sady výsledků  
 Pokud je povoleno ukládání sady výsledků do mezipaměti, Azure SQL Data Warehouse automaticky ukládá do mezipaměti výsledky dotazu v uživatelské databázi pro opakované použití.  To umožňuje následným provedením dotazů získat výsledky přímo z trvalé mezipaměti, aby se ještě nevyžadovalo jejich recompute.   Ukládání sady výsledků do mezipaměti vylepšuje výkon dotazů a snižuje využití prostředků v výpočetním prostředí.  Dotazy, které používají sadu výsledků uložených v mezipaměti, nepoužívají žádné přihrádky souběžnosti, a proto se nepočítají proti stávajícím limitům souběžnosti. Z důvodu zabezpečení mají uživatelé přístup k výsledkům uloženým v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům, jako uživatelé, kteří vytvářejí výsledky v mezipaměti.  
@@ -37,6 +37,8 @@ Když je pro databázi zapnuté ukládání výsledků do mezipaměti, výsledky
 - Dotazy vracející data s velikostí řádku větší než 64 KB
 
 Dotazy s velkými sadami výsledků dotazu (například > 1 000 000 řádků) můžou při prvním spuštění při vytváření mezipaměti výsledků docházet k nižšímu výkonu.
+
+Ukládání sady výsledků do mezipaměti nepodporuje zabezpečení na úrovni řádků.  
 
 ## <a name="when-cached-results-are-used"></a>Když se použijí výsledky uložené v mezipaměti
 

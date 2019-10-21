@@ -1,5 +1,5 @@
 ---
-title: Vytváření šablon Azure Resource Manageru se závislými prostředky | Microsoft Docs
+title: Šablona Azure Resource Manager se závislými prostředky
 description: Zjistěte, jak vytvořit šablonu Azure Resource Manageru s více prostředky a jak ji nasadit pomocí webu Azure Portal
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 486a13db9cf18cb44a063d37dde4a657f6dc625c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103662"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533503"
 ---
-# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru s závislé prostředky
+# <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
-Zjistěte, jak vytvořit šablonu Azure Resource Manageru pro nasazení více zdrojů a nakonfigurovat pořadí nasazení. Po vytvoření šablonu nasadíte pomocí Cloud Shellu z webu Azure Portal.
+Naučte se vytvořit šablonu Azure Resource Manager pro nasazení několika prostředků a konfiguraci pořadí nasazení. Po vytvoření šablonu nasadíte pomocí Cloud Shellu z webu Azure Portal.
 
 V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuální síť a několik dalších závislých prostředků. Některé prostředky se nedají nasadit, dokud bude existovat jiný prostředek. Nemůžete třeba vytvořit virtuální počítač, dokud bude existovat jeho účet úložiště a síťové rozhraní. Tento vztah se definuje tím, že jeden prostředek označíte jako závislý na jiných prostředcích. Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Další informace najdete v článku [Určení pořadí pro nasazení prostředků v šablonách Azure Resource Manageru](./resource-group-define-dependencies.md).
 
-![pořadí diagramu závislé prostředky nasazení Resource Manageru šablony](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![Diagram pořadí nasazení závislých prostředků v šabloně Resource Manageru](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -37,7 +37,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -47,7 +47,7 @@ K dokončení tohoto článku potřebujete:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v tématu [kurzu: Integrace Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
+    Služba Azure Key Vault je určená k ochraně kryptografických klíčů a dalších tajných klíčů. Další informace najdete v [kurzu integrace služby Azure Key Vault v nasazení šablony Resource Manageru](./resource-manager-tutorial-use-key-vault.md). Zároveň doporučujeme heslo každé tři měsíce aktualizovat.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -125,7 +125,7 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. Vyberte šablonu, kterou jste si v rámci tohoto kurzu uložili. Výchozí název je **azuredeploy.json**.  Pokud máte soubor se stejným názvem, starý soubor se bez upozornění přepíše.
 
-    Volitelně můžete **ls $HOME** příkaz a **cat $HOME/azuredeploy.json** příkazu ověřte areis soubory se úspěšně nahrál. 
+    Volitelně můžete použít příkaz **ls $Home** a příkaz **Cat $Home/azuredeploy.JSON** k ověření úspěšného nahrání souborů areis. 
 
 5. Ve službě Cloud Shell spusťte následující příkazy PowerShellu. Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
 
@@ -165,7 +165,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu vyvinete a nasadíte šablonu pro vytvoření virtuálního počítače, virtuální sítě a závislých prostředků. Informace o tom, jak nasazovat prostředky Azure na základě podmínek, najdete v tomto tématu:
 

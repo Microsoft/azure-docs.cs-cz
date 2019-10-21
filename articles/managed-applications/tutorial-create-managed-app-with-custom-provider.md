@@ -1,5 +1,5 @@
 ---
-title: Vytvoření spravované aplikace Azure pomocí vlastních akcí a prostředků
+title: Spravovaná aplikace Azure s vlastními akcemi & prostředky
 description: V tomto kurzu se dozvíte, jak vytvořit spravovanou aplikaci Azure pomocí vlastního poskytovatele Azure.
 services: managed-applications
 ms.service: managed-applications
@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335996"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529219"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: Vytvoření spravované aplikace s vlastními akcemi a prostředky
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky
 
-V tomto kurzu vytvoříte vlastní spravovanou aplikaci s vlastními akcemi a prostředky. Spravovaná aplikace bude na `Overview` stránce obsahovat vlastní akci, vlastní typ prostředku zobrazený jako samostatná položka nabídky v aplikaci `Table of Content` a vlastní kontextovou akci na stránce vlastní prostředek.
+V tomto kurzu vytvoříte vlastní spravovanou aplikaci s vlastními akcemi a prostředky. Spravovaná aplikace bude obsahovat vlastní akci na stránce `Overview`, vlastní typ prostředku zobrazený jako samostatná položka nabídky v `Table of Content` a vlastní kontextovou akci na stránce vlastní prostředek.
 
 Tento kurz obsahuje následující kroky:
 
@@ -28,7 +28,7 @@ Tento kurz obsahuje následující kroky:
 > * Nasazení instance spravované aplikace
 > * Provádění vlastních akcí a vytváření vlastních prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete znát tyto informace:
 
@@ -83,13 +83,13 @@ a výstup v *createUIDefinition. JSON*:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Kompletní ukázku *createUIDefinition. JSON* najdete v [části Reference: Artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
+Kompletní ukázku *createUIDefinition. JSON* najdete na adrese [: artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Šablona s vlastním zprostředkovatelem
 
-Pokud chcete vytvořit instanci spravované aplikace s vlastním poskytovatelem, je potřeba definovat prostředek vlastního zprostředkovatele s názvem **Public** a do svého **mainTemplate. JSON**zadat **Microsoft. CustomProviders/resourceProviders** . V tomto prostředku definujete typy prostředků a akce pro vaši službu. Pro nasazení funkce Azure functions a Azure Storage instance účtů definují prostředky `Microsoft.Web/sites` typu `Microsoft.Storage/storageAccounts` a v uvedeném pořadí.
+Pokud chcete vytvořit instanci spravované aplikace s vlastním poskytovatelem, je potřeba definovat prostředek vlastního zprostředkovatele s názvem **Public** a do svého **mainTemplate. JSON**zadat **Microsoft. CustomProviders/resourceProviders** . V tomto prostředku definujete typy prostředků a akce pro vaši službu. Pokud chcete nasadit službu Azure functions a Azure Storage instance účtů, definujte prostředky typu `Microsoft.Web/sites` a `Microsoft.Storage/storageAccounts`.
 
-V `users` tomto kurzu vytvoříte jeden typ prostředku, `ping` vlastní akci a `users/contextAction` vlastní akci, která `users` se provede v kontextu vlastního prostředku. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem zadaným v [createUIDefinition. JSON](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
+V tomto kurzu vytvoříte jeden `users` typ prostředku, `ping` vlastní akce a `users/contextAction` vlastní akci, která se provede v kontextu vlastního prostředku `users`. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem zadaným v [createUIDefinition. JSON](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
 
 ```json
 {
@@ -124,16 +124,16 @@ V `users` tomto kurzu vytvoříte jeden typ prostředku, `ping` vlastní akci a 
 }
 ```
 
-Kompletní ukázku *mainTemplate. JSON* najdete v [části Reference: Artefakt](reference-main-template-artifact.md)šablony nasazení
+Kompletní ukázku *mainTemplate. JSON* najdete v části [Reference: artefakt šablony nasazení](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Zobrazení definičních artefaktů
 
 Chcete-li definovat uživatelské rozhraní, které zahrnuje vlastní akce a vlastní prostředky ve spravované aplikaci, je nutné vytvořit artefakt **položku galerie. JSON** . Další informace o artefaktu definice zobrazení naleznete [v tématu artefakt definice zobrazení v Azure Managed Applications](concepts-view-definition.md).
 
 V tomto kurzu nadefinujete:
-* Stránka  s přehledem s tlačítkem panelu nástrojů, která představuje `TestAction` vlastní akci se základním zadáním textu.
-* Stránka *uživatele* , která představuje vlastní typ `users`prostředku.
-* Vlastní akce `users/contextAction` prostředku na stránce *Uživatelé* , která bude provedena v kontextu vlastního prostředku typu `users`.
+* Stránka s *přehledem* s tlačítkem panelu nástrojů, která představuje vlastní akci `TestAction` se základním textovým vstupem
+* Stránka *uživatele* , která představuje vlastní typ prostředku `users`.
+* Vlastní akce prostředku `users/contextAction` na stránce *Uživatelé* , která bude provedena v kontextu vlastního prostředku typu `users`.
 
 Následující příklad ukazuje zobrazení konfigurace pro stránku Přehled:
 
@@ -176,13 +176,13 @@ Níže uvedený příklad obsahuje "uživatelé" – konfigurace stránky prost�
   }
 ```
 
-Kompletní ukázku *položku galerie. JSON* najdete v [části Reference: Artefakt](reference-view-definition-artifact.md)definice zobrazení
+Kompletní ukázku *položku galerie. JSON* najdete v části [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Definice spravované aplikace
 
 Zabalit následující artefakty spravovaných aplikací do archivu zip a nahrát je do úložiště:
 
-* createUiDefinition.json
+* createUiDefinition. JSON
 * mainTemplate. JSON
 * Položku galerie. JSON
 
@@ -328,7 +328,7 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Vlastní akce a prostředky
 
-Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina `applicationGroup` prostředků obsahuje instanci spravované aplikace, druhá skupina `managedResourceGroup` prostředků obsahuje prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele**.
+Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina prostředků `applicationGroup` obsahuje instanci spravované aplikace, druhá skupina prostředků `managedResourceGroup` obsahuje prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele**.
 
 ![Skupiny prostředků aplikace](./media/managed-application-with-custom-providers/application-resource-groups.png)
 
@@ -350,8 +350,8 @@ Můžete přejít na instanci spravované aplikace a provést **vlastní akci** 
 
 ## <a name="looking-for-help"></a>Hledáte nápovědu
 
-Pokud máte dotazy týkající se Azure Managed Applications, zkuste požádat o [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Podobná otázka již mohla být požádána o zodpovězení a byla zodpovězena, proto nejprve před odesláním zaregistrujte. Přidejte značku `azure-managedapps` , abyste získali rychlou odpověď.
+Pokud máte dotazy týkající se Azure Managed Applications, zkuste požádat o [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Podobná otázka již mohla být požádána o zodpovězení a byla zodpovězena, proto nejprve před odesláním zaregistrujte. Přidejte `azure-managedapps` značek, abyste získali rychlou odezvu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o publikování spravované aplikace na webu Azure Marketplace najdete v tématu [Spravované aplikace Azure v Marketplace](publish-marketplace-app.md).

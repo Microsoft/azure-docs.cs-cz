@@ -1,6 +1,6 @@
 ---
 title: Automatizace Azure Application Insights s využitím PowerShellu | Microsoft Docs
-description: Automatizujte vytváření testů prostředků, výstrah a dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
+description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,22 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 10/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: b4f3d2eba70be39b23e86ebde3c71dfc7c19a374
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: MT
+ms.openlocfilehash: 7ac5d933406af10307ba3312a8f609bfde2413fc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936708"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514387"
 ---
-#  <a name="create-application-insights-resources-using-powershell"></a>Vytvoření prostředků Application Insights pomocí PowerShellu
+#  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](../../azure-monitor/app/app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
 
-Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). V kostce je postup: Stáhněte si definice JSON existujících prostředků; parametrizovat určité hodnoty, jako jsou názvy; a pak šablonu spusťte vždy, když chcete vytvořit nový prostředek. Můžete zabalit několik prostředků dohromady a vytvořit je vše v jednom z nich – například monitorování aplikací s testy dostupnosti, výstrahy a úložiště pro průběžný export. Existují některé odlišností k některým z parameterizations, které tady vysvětlíme.
+Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Základní postup: Stáhněte si definice JSON existujících prostředků; parametrizovat určité hodnoty, jako jsou názvy; a pak šablonu spusťte vždy, když chcete vytvořit nový prostředek. Můžete zabalit několik prostředků dohromady a vytvořit je vše v jednom z nich – například monitorování aplikací s testy dostupnosti, výstrahy a úložiště pro průběžný export. Existují některé odlišností k některým z parameterizations, které tady vysvětlíme.
 
 ## <a name="one-time-setup"></a>Nastavení jednorázového času
 Pokud jste ještě nepoužili prostředí PowerShell s předplatným Azure, postupujte takto:
@@ -35,8 +35,31 @@ Na počítač, na který chcete spouštět skripty, nainstalujte modul Azure Pow
 1. Nainstalujte [Instalace webové platformy Microsoft (verze 5 nebo novější)](https://www.microsoft.com/web/downloads/platform.aspx).
 2. Použijte ji k instalaci Microsoft Azure PowerShellu.
 
-## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
-Vytvoření nového souboru. JSON – Pojďme ho volat `template1.json` v tomto příkladu. Kopírovat tento obsah do tohoto obsahu:
+Kromě používání šablon Správce prostředků existuje bohatá sada [Application Insights rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights), která usnadňuje konfiguraci Application Insights prostředků programově. Mezi možnosti povolené rutinami patří:
+
+* Vytváření a odstraňování Application Insightsch prostředků
+* Získá seznam Application Insightsch prostředků a jejich vlastností.
+* Vytvoření a Správa průběžného exportu
+* Vytváření a Správa klíčů aplikací
+* Nastavení denního limitu
+* Nastavení cenového plánu
+
+## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>Vytvoření prostředků Application Insights pomocí rutiny prostředí PowerShell
+
+Tady je postup vytvoření nového prostředku Application Insights v datovém centru Azure Východní USA pomocí rutiny [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) :
+
+```PS
+New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
+```
+
+
+## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>Vytvoření prostředků Application Insights pomocí šablony Správce prostředků
+
+Tady je postup vytvoření nového prostředku Application Insights pomocí šablony Správce prostředků.
+
+### <a name="create-the-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
+
+Vytvoření nového souboru. JSON – Pojďme ho v tomto příkladu volat `template1.json`. Kopírovat tento obsah do tohoto obsahu:
 
 ```JSON
     {
@@ -160,7 +183,7 @@ Vytvoření nového souboru. JSON – Pojďme ho volat `template1.json` v tomto 
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[variables('retentionInDays')]",
+                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -172,16 +195,13 @@ Vytvoření nového souboru. JSON – Pojďme ho volat `template1.json` v tomto 
     }
 ```
 
+### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Vytvoření nového prostředku Application Insights pomocí šablony Správce prostředků
 
-
-## <a name="create-application-insights-resources"></a>Vytvoření prostředků Application Insights
-1. V PowerShellu se přihlaste k Azure:
-   
-    `Connect-AzAccount`
-2. Spusťte příkaz podobný tomuto:
+1. V PowerShellu se přihlaste k Azure pomocí `$Connect-AzAccount`
+2. Nastavte svůj kontext na předplatné s `Set-AzContext "<subscription ID>"`
+2. Pokud chcete vytvořit nový prostředek Application Insights, spusťte nové nasazení:
    
     ```PS
-   
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
@@ -189,46 +209,100 @@ Vytvoření nového souboru. JSON – Pojďme ho volat `template1.json` v tomto 
     ``` 
    
    * `-ResourceGroupName` je skupina, ve které chcete vytvořit nové prostředky.
-   * `-TemplateFile` se musí vyskytovat před vlastními parametry.
-   * `-appName` název prostředku, který chcete vytvořit.
+   * `-TemplateFile` musí být před vlastními parametry.
+   * `-appName` název prostředku, který se má vytvořit.
 
 Můžete přidat další parametry – jejich popisy najdete v části Parameters (parametry) v šabloně.
 
-## <a name="to-get-the-instrumentation-key"></a>Získání klíče instrumentace
+## <a name="get-the-instrumentation-key"></a>Získat klíč instrumentace
+
 Po vytvoření prostředku aplikace budete chtít klíč instrumentace: 
 
+1. `$Connect-AzAccount`
+2. `Set-AzContext "<subscription ID>"`
+3. `$resource = Get-AzResource -Name "<resource name>" -ResourceType "Microsoft.Insights/components"`
+4. `$details = Get-AzResource -ResourceId $resource.ResourceId`
+5. `$details.Properties.InstrumentationKey`
+
+Pokud chcete zobrazit seznam mnoha dalších vlastností prostředku Application Insights, použijte:
+
 ```PS
-    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzResource -ResourceId $resource.ResourceId
-    $ikey = $details.Properties.InstrumentationKey
+Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Format-List
 ```
 
+Další vlastnosti jsou k dispozici prostřednictvím rutin:
+* `Set-AzApplicationInsightsDailyCap`
+* `Set-AzApplicationInsightsPricingPlan`
+* `Get-AzApplicationInsightsApiKey`
+* `Get-AzApplicationInsightsContinuousExport`
+
+Informace o parametrech těchto rutin najdete v [podrobné dokumentaci](https://docs.microsoft.com/powershell/module/az.applicationinsights) .  
+
+## <a name="set-the-data-retention"></a>Nastavení uchovávání dat 
+
+Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient` k získání aktuálního uchování:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
+```
+
+Chcete-li nastavit uchování, je příkaz podobným VLOŽENÍm:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview "{location: 'eastus', properties: {'retentionInDays': 365}}"
+```
+
+Chcete-li nastavit uchovávání dat na 365 dní pomocí výše uvedené šablony, spusťte příkaz:
+
+```PS
+        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+               -TemplateFile .\template1.json `
+               -retentionInDays 365 `
+               -appName myApp
+```
+
+## <a name="set-the-daily-cap"></a>Nastavení denního limitu
+
+Chcete-li získat vlastnosti denního limitu, použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
+```
+
+Chcete-li nastavit vlastnosti denního limitu, použijte stejnou rutinu. Chcete-li například nastavit limit na 300 GB za den, 
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
+```
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>Nastavení cenového plánu
+## <a name="set-the-pricing-plan"></a>Nastavení cenového plánu 
 
-Můžete nastavit [cenový plán](pricing.md).
-
-Pokud chcete vytvořit prostředek aplikace s plánem ceny Enterprise, použijte šablonu výše:
+K získání aktuálního cenového plánu použijte rutinu [set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) : 
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
-               -TemplateFile .\template1.json `
-               -priceCode 2 `
-               -appName myNewApp
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-|priceCode|Rozhraní|
+K nastavení cenového plánu použijte stejnou rutinu se zadaným `-PricingPlan`:  
+
+```PS
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
+```
+
+Cenové tarify pro existující Application Insights prostředek můžete také nastavit pomocí Správce prostředků šablony výše, vynechání prostředku Microsoft. Insights/Components a `dependsOn` uzlu z fakturačního prostředku. Chcete-li například nastavit plán na GB (dříve označovaný jako základní plán), spusťte příkaz:
+
+```PS
+        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+               -TemplateFile .\template1.json `
+               -priceCode 1 `
+               -appName myApp
+```
+
+|priceCode|rozhraní|
 |---|---|
-|první|Základní|
-|odst|Enterprise|
-
-* Pokud chcete použít výchozí cenový plán Basic, můžete prostředek CurrentBillingFeatures vynechat ze šablony.
-* Pokud chcete změnit plán cen po vytvoření prostředku komponenty, můžete použít šablonu, která vynechá prostředek "Microsoft. Insights/Components". Vynechejte také uzel `dependsOn` z fakturačního prostředku. 
-
-Aktualizovaný cenový plán ověříte tak, že se v prohlížeči zobrazí okno **Stránka využití a odhadované náklady** . **Aktualizujte zobrazení prohlížeče** a ujistěte se, že vidíte nejnovější stav.
-
-
+|1\. místo|Za GB (dříve označované jako základní plán)|
+|2|Za uzel (dříve název plánu v podniku)|
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky
 
@@ -412,7 +486,7 @@ Chcete-li zjistit kódy pro jiná testovací umístění nebo automatizovat vytv
 
 Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhokoliv druhu, vytvořte příklad ručně a potom zkopírujte a parametrizovat svůj kód z [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Otevřete [Azure Resource Manager](https://resources.azure.com/). Přejděte dolů do prostředku aplikace pomocí `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`. 
+1. Otevřete [Azure Resource Manager](https://resources.azure.com/). Přejděte dolů do prostředku aplikace v `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`. 
    
     ![Navigace v Azure Resource Explorer](./media/powershell/01.png)
    
@@ -424,7 +498,7 @@ Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhok
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Otevřete oddíly webtests a alertrules a zkopírujte kód JSON pro jednotlivé položky do šablony. (Nekopírovat z webtests nebo uzlů alertrules: přejít do položek pod nimi.)
+4. Otevřete `webtests` a `alertrules` části a zkopírujte kód JSON pro jednotlivé položky do šablony. (Nekopírovat z `webtests` nebo `alertrules` uzlů: přejít do položek v nich.)
    
     Každý webový test má přidružené pravidlo výstrahy, takže je nutné oba zkopírovat.
    
@@ -448,8 +522,8 @@ Tady jsou příklady náhrad, které chcete udělat. Existuje několik výskytů
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"` (malý případ) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Odstraňte identifikátor GUID a ID. |
+| `"myappname"` (malá písmena) |`"[toLower(parameters('appName'))]"` |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Nastavení závislostí mezi prostředky
 Azure by měl nastavit prostředky v přísném pořadí. Chcete-li zajistit, aby bylo jedno nastavení dokončeno před dalším začátkem, přidejte řádky závislosti:
@@ -469,6 +543,6 @@ Další články o automatizaci:
 * [Vytvořte rychlou metodu Application Insights prostředků](powershell-script-create-resource.md) bez použití šablony.
 * [Nastavení výstrah](powershell-alerts.md)
 * [Vytváření webových testů](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Odeslat Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)
+* [Odesílání Diagnostiky Azure do Application Insights](powershell-azure-diagnostics.md)
 * [Nasazení do Azure z GitHubu](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Vytvořit poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

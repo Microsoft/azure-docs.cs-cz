@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro přizpůsobování pro Node. js | Microsoft Docs'
+title: 'Rychlý Start: Klientská knihovna pro přizpůsobování pro Node. js | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Začínáme s klientskou knihovnou přizpůsobování pro Node. js s využitím výukové smyčky.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345242"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515209"
 ---
-# <a name="quickstart-personalize-client-library-for-nodejs"></a>Rychlý start: Přizpůsobení klientské knihovny pro Node. js
+# <a name="quickstart-personalizer-client-library-for-nodejs"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro Node. js
 
 Zobrazit přizpůsobený obsah v tomto rychlém startu Node. js pomocí služby pro přizpůsobování
 
@@ -26,9 +26,9 @@ Začínáme s klientskou knihovnou pro přizpůsobování pro Node. js. Pomocí 
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js) balíčku zdrojového kódu knihovny[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | 
+@No__t_3[ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)  |  balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) [(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Node. js](https://nodejs.org) a npm.
@@ -54,8 +54,8 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY`pro klíč prostředku.
-* `PERSONALIZER_ENDPOINT`pro koncový bod prostředku.
+* `PERSONALIZER_KEY` klíče prostředku.
+* `PERSONALIZER_ENDPOINT` pro koncový bod prostředku
 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
@@ -68,7 +68,7 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-`npm init -y` Spuštěním příkazu`package.json` vytvořte soubor. 
+Spusťte příkaz `npm init -y` a vytvořte soubor `package.json`. 
 
 ```console
 npm init -y
@@ -120,19 +120,19 @@ Vytvořte novou aplikaci Node. js v preferovaném editoru nebo integrovaném vý
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-Otevřete soubor **Sample. js** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `requires` pro přidání balíčků npm:
+Otevřete soubor **Sample. js** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `requires` pro přidání balíčků NPM:
 
 [!code-javascript[Add module dependencies](~/samples-personalizer/quickstarts/node/sample.js?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
 
-Vytvořte proměnné pro klíč a koncový bod prostředku Azure z proměnných prostředí s názvem `PERSONALIZER_KEY` a. `PERSONALIZER_ENDPOINT` Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
+Vytvořte proměnné pro klíč Azure prostředku a koncový bod z proměnných prostředí s názvem `PERSONALIZER_KEY` a `PERSONALIZER_ENDPOINT`. Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
 
 [!code-javascript[Add Personalizer resource information](~/samples-personalizer/quickstarts/node/sample.js?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Vytvoření klienta přizpůsobeného pro přizpůsobování
 
-Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey `PERSONALIZER_RESOURCE_KEY`je.
+Dále vytvořte metodu, která vrátí klienta přizpůsobeného pro personalizaci. Parametr metody je `PERSONALIZER_RESOURCE_ENDPOINT` a ApiKey je `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-javascript[Create a Personalizer client](~/samples-personalizer/quickstarts/node/sample.js?name=Client)]
 
@@ -161,7 +161,7 @@ Přidejte následující metody, které [získají volby obsahu](#get-content-ch
 
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
-Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil výběr obsahu. Proces může vytvořit obsah, který se má vyloučit z pořadí, zobrazené `excludeActions`jako. Požadavek na řazení potřebuje [Akce](concepts-features.md#actions-represent-a-list-of-options), CurrentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
+Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil výběr obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje [Akce](concepts-features.md#actions-represent-a-list-of-options), CurrentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.  
 
@@ -199,5 +199,5 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 * [Co je přizpůsobování?](what-is-personalizer.md)
 * [Kde můžete použít přizpůsobování?](where-can-you-use-personalizer.md)
-* [Odstraňování potíží](troubleshooting.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+* [Řešení potíží](troubleshooting.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js).

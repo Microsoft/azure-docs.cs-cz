@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: b724e54eb2d9e61bd576ab8a094489bbed6db20d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975405"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515172"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -97,7 +97,7 @@ Tyto hodnoty mají velmi krátkou dobu trvání, aby bylo možné zobrazit změn
 
 ## <a name="run-notebook-cells"></a>Spustit buňky poznámkového bloku
 
-Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že je to hotové, když se v závorkách vedle buňky místo `*` zobrazuje číslo. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup. 
+Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že se nachází v závorkách vedle buňky místo `*` zobrazuje číslo. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup. 
 
 ### <a name="include-the-python-modules"></a>Zahrnutí modulů Pythonu
 
@@ -114,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Nastavení klíče a názvu prostředku pro přizpůsobení
 
-V Azure Portal Najděte svůj klíč a koncový bod na stránce **rychlý Start** vašeho prostředku pro přizpůsobení. Změňte hodnotu `<your-resource-name>` na název prostředku přizpůsobeného pro přizpůsobení. Změňte hodnotu `<your-resource-key>` na klíč vlastního nastavení. 
+V Azure Portal Najděte svůj klíč a koncový bod na stránce **rychlý Start** vašeho prostředku pro přizpůsobení. Změňte hodnotu `<your-resource-name>` na název prostředku pro přizpůsobení. Změňte hodnotu `<your-resource-key>` na klíč pro přizpůsobení. 
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -122,7 +122,7 @@ personalization_base_url = "https://<your-resource-name>.cognitiveservices.azure
 resource_key = "<your-resource-key>"
 ```
 
-### <a name="print-current-data-and-time"></a>Vytisknout aktuální data a čas
+### <a name="print-current-date-and-time"></a>Tisk aktuálního data a času
 Pomocí této funkce si můžete všimnout počátečního a koncového času iterační funkce, iterací.
 
 Tyto buňky nemají žádný výstup. Funkce provede výstup aktuálního data a času při volání.
@@ -198,8 +198,8 @@ Tato buňka
 * Nastaví hlavičku zabezpečení pomocí klíče prostředku pro přizpůsobování. 
 * nastaví náhodné osazení pro ID události klasifikace.
 * čtení v datových souborech JSON
-* volá v příkladu Output zásady pro metodu učení `get_last_updated`.
-* volá metodu `get_service_settings`.
+* v příkladu výstupu se odebraly tyto výzvy `get_last_updated` zásady učení metod –.
+* volá metodu `get_service_settings`
 
 Buňka obsahuje výstup volání funkce `get_last_updated` a `get_service_settings`.
 
@@ -245,7 +245,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Ověřte, že je výstup `rewardWaitTime` a `modelExportFrequency` nastavený na 15 sekund. 
+Ověřte, že `rewardWaitTime` a `modelExportFrequency` výstupu jsou obě nastavené na 15 sekund. 
     
 ```console
 -----checking model
@@ -349,7 +349,7 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 Tato funkce přidá celý seznam kávy do objektu JSON, který se odešle do požadavku na řazení. 
 
-Buňka nemá žádný výstup. Funkce změní `rankjsonobj` při volání metody.
+Buňka nemá žádný výstup. Funkce změní `rankjsonobj` při volání.
 
 
 Příkladem jedné kávové funkce je: 
@@ -390,7 +390,7 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 Další buňkou je _Hlavní_ práce poznámkového bloku, která získá náhodného uživatele, získá seznam kávy a odešle je do rozhraní API pro řazení. Porovnání předpovědi se známými preferencemi uživatele a odeslání odměnu zpět do služby pro přizpůsobení. 
 
-Smyčka běží `num_requests` krát. Přizpůsobování vyžaduje několik tisíc volání, která umožňují seřadit a odměnu vytvořit model. 
+Cyklus se spustí `num_requests` časy. Přizpůsobování vyžaduje několik tisíc volání, která umožňují seřadit a odměnu vytvořit model. 
 
 Následuje příklad formátu JSON odeslaného rozhraním API pro řazení. Seznam kávy není úplný pro zkrácení. Celý formát JSON pro káva můžete zobrazit v `coffee.json`.
 
@@ -608,7 +608,7 @@ Přečtěte si další informace o [době čekání na odměnu](concept-rewards.
 get_service_settings()
 ```
 
-Ověřte, že výstupní `rewardWaitTime` a `modelExportFrequency` jsou nastaveny na 5 minut. 
+Ověřte, že `rewardWaitTime` a `modelExportFrequency` výstupu jsou nastaveny na 5 minut. 
 ```console
 -----checking model
 <Response [200]>

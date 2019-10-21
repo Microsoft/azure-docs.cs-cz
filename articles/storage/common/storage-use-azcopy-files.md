@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 361b16ff074baaf0118ccfe6d3c2a20f0e66c623
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
-ms.translationtype: MT
+ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273906"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528688"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat pomocí AzCopy a úložiště souborů 
 
@@ -31,7 +31,7 @@ K vytvoření sdílené složky můžete použít příkaz [AzCopy vytvořit](st
 
 Podrobné referenční dokumentaci najdete v tématu [AzCopy](storage-ref-azcopy-make.md).
 
-## <a name="upload-files"></a>Nahrání souborů
+## <a name="upload-files"></a>Nahrávání souborů
 
 Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) můžete použít k nahrání souborů a adresářů z místního počítače.
 
@@ -44,7 +44,7 @@ Tato část obsahuje následující příklady:
 > * Nahrání konkrétního souboru
 
 > [!NOTE]
-> AzCopy automaticky nepočítá a neukládá kód hash MD5 souboru. Pokud to chcete provést v AzCopy, přidejte k jednotlivým příkazům kopírování příznak `--put-md5`. Tímto způsobem AzCopy při stažení souboru vypočítá hodnotu hash MD5 pro stažená data a ověří, že hodnota hash MD5 uložená ve vlastnosti-0 souboru @no__t je shodná s vypočtenou hodnotou hash.
+> AzCopy automaticky nepočítá a neukládá kód hash MD5 souboru. Pokud to chcete provést v AzCopy, přidejte k jednotlivým příkazům kopírování příznak `--put-md5`. Tímto způsobem AzCopy při stažení souboru vypočítá hodnotu hash MD5 pro stažená data a ověří, že hodnota hash MD5 uložená ve vlastnosti `Content-md5` souboru odpovídá počítané hodnotě hash.
 
 Podrobné referenční dokumentace najdete v tématu [AzCopy Copy](storage-ref-azcopy-copy.md).
 
@@ -237,7 +237,7 @@ Podrobné referenční dokumentaci najdete v tématu [AzCopy Copy](storage-ref-a
 
 ## <a name="synchronize-files"></a>Synchronizovat soubory
 
-Můžete synchronizovat obsah místního systému souborů se sdílenou složkou. Synchronizace je jednosměrná. Jinými slovy, jste si zvolili, který z těchto dvou koncových bodů je zdroj a který je cílový. Synchronizace používá také server k rozhraní API serveru.
+Obsah sdílené složky můžete synchronizovat s jinou sdílenou složkou souborů. Můžete také synchronizovat obsah adresáře ve sdílené složce s obsahem adresáře, který je umístěn v jiné sdílené složce. Synchronizace je jednosměrná. Jinými slovy, jste si zvolili, který z těchto dvou koncových bodů je zdroj a který je cílový. Synchronizace používá také server k rozhraní API serveru.
 
 > [!NOTE]
 > V současné době je tento scénář podporován pouze pro účty, které nemají hierarchický obor názvů. Aktuální verze AzCopy se nesynchronizuje mezi soubory Azure a Blob Storage.
@@ -248,23 +248,23 @@ Pokud nastavíte příznak `--delete-destination` na hodnotu `true` AzCopy odstr
 
 Podrobné referenční dokumentaci najdete v tématu [AzCopy Sync](storage-ref-azcopy-sync.md).
 
-### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>Aktualizace sdílené složky se změnami v místním systému souborů
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Aktualizace sdílené složky se změnami jiné sdílené složky
 
-V tomto případě je sdílená složka cílovou složkou a místním systémem souborů je zdroj.
-
-|    |     |
-|--------|-----------|
-| **Syntaktick** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
-| **Příklad** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/mycontainer' --recursive` |
-
-### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>Aktualizace místního systému souborů se změnami ve sdílené složce
-
-V tomto případě je místní systém souborů cílový a sdílená složka je zdroj.
+První sdílená složka, která se zobrazí v tomto příkazu, je zdroj. Druhá je cílová.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy sync 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' 'C:\myDirectory' --recursive` |
-| **Příklad** | `azcopy sync 'https://mystorageaccount.file.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **Syntaktick** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
+| **Příklad** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Aktualizace adresáře se změnami v adresáři v jiné sdílené složce
+
+Prvním adresářem, který se zobrazí v tomto příkazu, je zdroj. Druhá je cílová.
+
+|    |     |
+|--------|-----------|
+| **Syntaktick** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>' --recursive` |
+| **Příklad** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Další kroky
 

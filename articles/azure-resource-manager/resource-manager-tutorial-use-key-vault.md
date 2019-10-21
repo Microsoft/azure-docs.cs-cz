@@ -1,5 +1,5 @@
 ---
-title: Integrace služby Azure Key Vault v nasazení šablony Resource Manageru | Microsoft Docs
+title: Použití Azure Key Vault v šabloně Správce prostředků
 description: Zjistěte, jak pomocí služby Azure Key Vault předávat hodnoty zabezpečených parametrů během nasazení šablony Resource Manageru.
 services: azure-resource-manager
 documentationcenter: ''
@@ -14,25 +14,25 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b91a3488750795e8ee9df6602bb2b3df8a9b08ec
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436578"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533611"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Kurz: Integrace Azure Key Vault ve vašem nasazení šablony Resource Manageru
+# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Kurz: Integrace Azure Key Vault v nasazení šablon Správce prostředků
 
-Zjistěte, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení Azure Resource Manageru. Hodnota tohoto parametru je nikdy přístupný, protože odkazovat jenom jeho ID služby key vault Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](./resource-manager-keyvault-parameter.md).
+Naučte se, jak načíst tajné kódy z trezoru klíčů Azure a předat tajné klíče jako parametry při nasazení Azure Resource Manager. Hodnota parametru se nikdy nezveřejňuje, protože odkazuje jenom na jeho ID trezoru klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./resource-manager-keyvault-parameter.md).
 
-V [nastavení pořadí nasazení prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md) kurzu, vytvořte virtuální počítač (VM). Budete muset zadat uživatelské jméno správce virtuálního počítače a heslo. Místo zadání hesla, můžete předem uložení hesla v Azure key vault a pak upravit šablonu, kterou chcete načíst heslo ze služby key vault během nasazení.
+V kurzu [Nastavení pořadí nasazení prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md) můžete vytvořit virtuální počítač (VM). Musíte zadat uživatelské jméno a heslo správce virtuálního počítače. Místo zadání hesla můžete heslo ukládat do trezoru klíčů Azure a pak šablonu přizpůsobit, aby se během nasazování načetlo heslo z trezoru klíčů.
 
-![Diagram zobrazující integrace šablonu Resource Manageru pomocí služby key vault](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
+![Diagram znázorňující integraci šablony Správce prostředků s trezorem klíčů](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Příprava služby key vault
+> * Příprava trezoru klíčů
 > * Otevření šablony rychlého startu
 > * Úprava souboru parametrů
 > * Nasazení šablony
@@ -43,29 +43,29 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/) s [rozšíření nástroje Správce prostředků](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Pro zvýšení zabezpečení, použijte generované heslo pro účet správce virtuálního počítače. Tady je ukázka pro generování hesla:
+* [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením nástroje Správce prostředků Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce virtuálního počítače. Tady je ukázka pro vygenerování hesla:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Ověřte, že vygenerované heslo splňuje požadavky na heslo virtuálního počítače. Každá služba Azure má specifické požadavky na hesla. Požadavky na heslo virtuálního počítače, naleznete v tématu [jaké jsou požadavky na heslo, když vytváříte virtuální počítač?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    Ověřte, že vygenerovaná hesla splňují požadavky na heslo k virtuálnímu počítači. Každá služba Azure má specifické požadavky na hesla. Požadavky na heslo k virtuálnímu počítači najdete v tématu [Jaké jsou požadavky na heslo při vytváření virtuálního počítače](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-## <a name="prepare-a-key-vault"></a>Příprava služby key vault
+## <a name="prepare-a-key-vault"></a>Příprava trezoru klíčů
 
-V této části vytvoříte trezor klíčů a tajného kódu do něj přidat tak, aby při nasazování šablony můžete získat tajný kód. Existuje mnoho způsobů, jak vytvořit trezor klíčů. V tomto kurzu použijete Azure PowerShell k nasazení [šablony Resource Manageru](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Tato šablona provede následující akce:
+V této části vytvoříte Trezor klíčů a do něj přidáte tajný klíč, abyste mohli načíst tajný klíč při nasazení šablony. Existuje mnoho způsobů, jak vytvořit Trezor klíčů. V tomto kurzu použijete Azure PowerShell k nasazení [Správce prostředků šablony](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Tato šablona provede následující:
 
-* Vytvoří trezor klíčů s `enabledForTemplateDeployment` vlastnost povolena. Tato vlastnost musí mít *true* před nasazením šablony procesu můžete přístup k tajné kódy, které jsou definovány ve službě key vault.
-* Přidá tajného kódu trezoru klíčů. Tajný kód uloží heslo správce virtuálního počítače.
+* Vytvoří Trezor klíčů s povolenou vlastností `enabledForTemplateDeployment`. Tato vlastnost musí mít *hodnotu true* , aby mohl proces nasazení šablony přistupovat ke tajným klíčům, které jsou definovány v trezoru klíčů.
+* Přidá tajný klíč do trezoru klíčů. Tajný kód uchovává heslo správce virtuálního počítače.
 
 > [!NOTE]
-> Jako uživatel, který je nasazení šablony virtuálního počítače, pokud si nejste vlastník nebo Přispěvatel trezoru klíčů, musí vlastník nebo Přispěvatel udělit přístup k *Microsoft.KeyVault/vaults/deploy/action* oprávnění pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnotu zabezpečené parametru během nasazení](./resource-manager-keyvault-parameter.md).
+> Jako uživatel, který nasazuje šablonu virtuálního počítače, pokud nejste vlastníkem nebo přispěvatelem trezoru klíčů, vlastník nebo přispěvatel vám musí udělit přístup ke službě *Microsoft. webkey trezor/trezory/* k oprávněním k nasazení/akci pro Trezor klíčů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](./resource-manager-keyvault-parameter.md).
 
-Chcete-li spustit následující skript prostředí Azure PowerShell, vyberte **vyzkoušet** otevřete Azure Cloud Shell. Vložte skript, klikněte pravým tlačítkem na podokno prostředí a pak vyberte **vložte**.
+Chcete-li spustit následující skript Azure PowerShell, vyberte možnost **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -83,40 +83,40 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 ```
 
 > [!IMPORTANT]
-> * Název skupiny prostředků je název projektu, ale s **rg** připojí k němu. Aby bylo snazší [vyčistila prostředky, které jste vytvořili v tomto kurzu](#clean-up-resources), stejném projektu a skupinou prostředků pojmenujte při použití můžete [nasadit další šablony](#deploy-the-template).
-> * Výchozí název tajného kódu je **vmAdminPassword**. To je pevně zakódované v šabloně.
-> * Chcete-li šablonu, kterou chcete získat tajný kód, je nutné povolit zásadu přístupu s názvem "Povolit přístup k Azure Resource Manageru pro nasazení šablony" pro trezor klíčů. V šabloně se povolí tyto zásady. Další informace o zásadách přístupu najdete v tématu [nasazení trezorů klíčů a tajných kódů](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets).
+> * Název skupiny prostředků je název projektu, ale s připojeným **rgem** . Aby bylo snazší [vyčistit prostředky, které jste vytvořili v tomto kurzu](#clean-up-resources), při [nasazení další šablony](#deploy-the-template)použijte stejný název projektu a název skupiny prostředků.
+> * Výchozí název tajného klíče je **vmAdminPassword**. Je pevně zakódované v šabloně.
+> * Pokud chcete šabloně povolit načtení tajného kódu, musíte povolit zásadu přístupu nazvanou povolit přístup k Azure Resource Manager nasazení šablony pro Trezor klíčů. Tato zásada je v šabloně povolená. Další informace o zásadách přístupu najdete v tématu [nasazení trezorů klíčů a tajných](./resource-manager-keyvault-parameter.md#deploy-key-vaults-and-secrets)kódů.
 
-Šablona má jednu hodnotu výstup, volá *keyVaultId*. Poznamenejte si hodnotu ID pro pozdější použití při nasazení virtuálního počítače. Formát ID prostředků je:
+Šablona obsahuje jednu výstupní hodnotu s názvem *keyVaultId*. Pokud nasadíte virtuální počítač, zapište hodnotu ID pro pozdější použití. Formát ID prostředku je:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
 ```
 
-Když zkopírujete a vložíte Identifikátor, může být rozdělené více řádků. Sloučí řádky a zkrátit nadbytečné mezery.
+Když zkopírujete a vložíte ID, může být rozděleno na více řádků. Sloučí řádky a ořízne nadbytečné mezery.
 
-Pro ověření nasazení, spusťte následující příkaz Powershellu v podokně prostředí k načtení tajný klíč ve formátu prostého textu. Příkaz lze použít pouze ve stejné relaci prostředí, protože používá proměnnou *$keyVaultName*, který je definován v předchozím skript prostředí PowerShell.
+Chcete-li nasazení ověřit, spusťte následující příkaz prostředí PowerShell ve stejném podokně prostředí pro načtení tajného kódu jako nešifrovaný text. Příkaz funguje pouze ve stejné relaci prostředí, protože používá proměnnou *$keyVaultName*, která je definována v předchozím skriptu prostředí PowerShell.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
 ```
 
-Nyní jste připravili služby key vault a tajný klíč. Následující části ukazují, jak přizpůsobit existující šablonu k načtení tajný kód během nasazování.
+Teď jste připravili Trezor klíčů a tajný klíč. V následujících částech se dozvíte, jak přizpůsobit existující šablonu pro načtení tajného klíče během nasazení.
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony rychlého startu
 
-Šablony rychlý start Azure je úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, která se používá v tomto kurzu se nazývá [jednoduchý virtuální počítač s Windows nasadit](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Šablony pro rychlý Start Azure jsou úložiště pro šablony Správce prostředků. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona použitá v tomto kurzu se nazývá [nasazení jednoduchého virtuálního počítače s Windows](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. Ve Visual Studio Code, vyberte **souboru** > **otevřít soubor**.
+1. V Visual Studio Code vyberte **soubor** > **otevřít soubor**.
 
-1. V **název_souboru** vložte následující adresu URL:
+1. Do pole **název souboru** vložte následující adresu URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Výběrem **Open** (Otevřít) soubor otevřete. Tento scénář je stejný jako ten, který se používá v [kurzu: Vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
-   Šablona definuje pět zdrojů:
+1. Výběrem **Open** (Otevřít) soubor otevřete. Scénář je stejný jako ten, který se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+   Šablona definuje pět prostředků:
 
    * `Microsoft.Storage/storageAccounts`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
    * `Microsoft.Network/publicIPAddresses`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
@@ -124,11 +124,11 @@ Nyní jste připravili služby key vault a tajný klíč. Následující části
    * `Microsoft.Network/networkInterfaces`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
    * `Microsoft.Compute/virtualMachines`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-   To je užitečné mít seznámení se základními principy šablony dříve, než ji přizpůsobit.
+   Před přizpůsobením šablony je užitečné, abyste měli základní znalosti šablony.
 
-1. Vyberte **souboru** > **uložit jako**a poté uložte kopii souboru do místního počítače s názvem *azuredeploy.json*.
+1. Vyberte **soubor**  > **Uložit jako**a pak uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
 
-1. Opakujte kroky 1 až 3 otevřít následující adresu URL a pak soubor uložte jako *azuredeploy.parameters.json*.
+1. Opakujte kroky 1-3 pro otevření následující adresy URL a pak soubor uložte jako *azuredeploy. Parameters. JSON*.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -138,8 +138,8 @@ Nyní jste připravili služby key vault a tajný klíč. Následující části
 
 V souboru šablony není nutné provádět žádné změny.
 
-1. V sadě Visual Studio Code otevřete *azuredeploy.parameters.json* Pokud ještě není otevřený.
-1. Aktualizace `adminPassword` parametr:
+1. V Visual Studio Code otevřete *azuredeploy. Parameters. JSON* , pokud ještě není otevřený.
+1. Aktualizujte parametr `adminPassword` na:
 
     ```json
     "adminPassword": {
@@ -153,22 +153,22 @@ V souboru šablony není nutné provádět žádné změny.
     ```
 
     > [!IMPORTANT]
-    > Nahraďte hodnotu pro **id** s ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu.
+    > Nahraďte hodnotu pro **ID** ID prostředku trezoru klíčů, který jste vytvořili v předchozím postupu.
 
-    ![Integrace služby key vault a soubor parametrů nasazení virtuálních počítačů šablony Resource Manageru](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+    ![Integrace trezoru klíčů a Správce prostředků šablonou souborů parametrů nasazení virtuálního počítače](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
-1. Aktualizací následujících hodnot:
+1. Aktualizujte následující hodnoty:
 
-    * **adminUsername**: Název účtu správce virtuálního počítače.
-    * **dnsLabelPrefix**: Název hodnoty dnsLabelPrefix.
+    * **adminUsername**: název účtu správce virtuálního počítače.
+    * **dnsLabelPrefix**: pojmenujte hodnotu dnsLabelPrefix.
 
-    Příklady názvy najdete v článku na předchozím obrázku.
+    Příklady názvů naleznete na předchozím obrázku.
 
 1. Uložte změny.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Postupujte podle pokynů v [nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Jak nahrát *azuredeploy.json* a *azuredeploy.parameters.json* Cloud Shell, a pak použijte následující příkaz powershellu k nasazení šablony:
+Postupujte podle pokynů v části [nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Nahrajte *azuredeploy. JSON* a *azuredeploy. Parameters. Cloud Shell JSON* a pomocí následujícího skriptu PowerShellu nasaďte šablonu:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -181,21 +181,21 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
 ```
 
-Při nasazení šablony použijte stejnou skupinu prostředků, který jste použili v trezoru klíčů. Tento přístup usnadňuje chcete vyčistit prostředky, protože je potřeba odstranit pouze jednu skupinu prostředků místo dvou.
+Když šablonu nasadíte, použijte stejnou skupinu prostředků, kterou jste použili v trezoru klíčů. Tento přístup usnadňuje vyčištění prostředků, protože potřebujete odstranit jenom jednu skupinu prostředků namísto dvou.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-Po úspěšném nasazení virtuálního počítače, otestujte přihlašovací údaje pomocí hesla, která je uložená ve službě key vault.
+Po úspěšném nasazení virtuálního počítače testujte přihlašovací údaje pomocí hesla uloženého v trezoru klíčů.
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **skupiny prostředků** >  **\<*YourResourceGroupName*>**  > **simpleWinVM** .
-1. Vyberte **připojení** v horní části.
-1. Vyberte **stáhnout soubor RDP**a pak postupujte podle pokynů k přihlášení k virtuálnímu počítači pomocí hesla, která je uložená ve službě key vault.
+1. Vyberte **skupiny prostředků**  >  **\<*YourResourceGroupName* >**  > **simpleWinVM**.
+1. V horní části vyberte **připojit** .
+1. Vyberte **Stáhnout soubor RDP**a pak podle pokynů se přihlaste k virtuálnímu počítači pomocí hesla uloženého v trezoru klíčů.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky Azure, vyčistěte prostředky, které jste nasadili tak, že odstraníte skupinu prostředků.
+Pokud už prostředky Azure nepotřebujete, vyčistěte prostředky, které jste nasadili, odstraněním skupiny prostředků.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -204,9 +204,9 @@ $resourceGroupName = "${projectName}rg"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu, který jste získali tajného klíče z trezoru klíčů Azure. Tajný kód se pak používá v nasazení šablony. Informace o vytváření propojených šablon najdete tady:
+V tomto kurzu jste načetli tajný klíč z trezoru klíčů Azure. Pak jste tajný klíč použili v nasazení šablony. Informace o vytváření propojených šablon najdete tady:
 
 > [!div class="nextstepaction"]
 > [Vytvoření propojených šablon](./resource-manager-tutorial-create-linked-templates.md)

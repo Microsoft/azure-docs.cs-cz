@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186576"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533619"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Postup plánování indexerů pro Azure Search
 Indexer se normálně spouští jednou ihned po jeho vytvoření. Můžete ji znovu spustit na vyžádání pomocí portálu, REST API nebo sady .NET SDK. Můžete také nakonfigurovat indexer, aby pravidelně běžel podle plánu.
@@ -37,7 +37,7 @@ Při prvním vytváření indexeru můžete zadat plán nebo aktualizovat vlastn
 
 V jednom okamžiku může být spuštěno pouze jedno spuštění indexeru. Pokud je indexer již spuštěn, když je naplánováno jeho další spuštění, je spuštění odloženo až do dalšího naplánovaného času.
 
-Pojďme tento příklad využít k tomu, aby to bylo konkrétnější. Předpokládejme, že nakonfigurujeme plán indexeru s intervalem hodin a **časem zahájení** od 1. června 2019 v 8:00:00 UTC. K tomu může dojít, když indexer trvá déle než hodinu:
+Pojďme tento příklad využít k tomu, aby to bylo konkrétnější. Předpokládejme, že nakonfigurujeme plán indexeru s **intervalem** hodin a **časem zahájení** od 1. června 2019 v 8:00:00 UTC. K tomu může dojít, když indexer trvá déle než hodinu:
 
 * První spuštění indexeru začíná od 1. června 2019 v 8:00 UTC. Předpokládat, že provedení trvá 20 minut (nebo kdykoli méně než 1 hodinu).
 * Druhé spuštění začíná od 1. června 2019 9:00 UTC. Předpokládejme, že toto spuštění trvá 70 minut – více než hodinu – a nebude dokončeno až do 10:10 UTC.
@@ -48,11 +48,11 @@ Pojďme tento příklad využít k tomu, aby to bylo konkrétnější. Předpokl
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Definování plánu na portálu
+## <a name="schedule-in-the-portal"></a>Plán na portálu
 
 Průvodce importem dat na portálu umožňuje definovat plán pro indexer v okamžiku vytvoření. Výchozí nastavení plánu je **každou hodinu**, což znamená, že indexer se po vytvoření spustí znovu a spustí se znovu každou hodinu.
 
-Nastavení plánu můžete změnit na **jednou** , pokud nechcete, aby indexer znovu běžel automaticky nebo aby běžel jednou denně. Nastavte ji na **vlastní** , pokud chcete zadat jiný interval nebo určitý čas spuštění v budoucnosti.
+Nastavení plánu můžete změnit na **jednou** , pokud nechcete, aby indexer znovu běžel automaticky **nebo aby běžel jednou denně.** Nastavte ji na **vlastní** , pokud chcete zadat jiný interval nebo určitý čas spuštění v budoucnosti.
 
 Když nastavíte plán na **vlastní**, zobrazí se pole, která umožňují zadat **interval** a **čas spuštění (UTC)** . Nejkratší časový interval povolený v intervalu 5 minut a nejdelší je 1440 minut (24 hodin).
 
@@ -64,7 +64,7 @@ Po vytvoření indexeru můžete změnit nastavení plánu pomocí panelu úprav
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Definování plánu pomocí REST API
+## <a name="schedule-using-rest-apis"></a>Plánování pomocí rozhraní REST API
 
 Plán pro indexer můžete definovat pomocí REST API. Uděláte to tak, že při vytváření nebo aktualizaci indexeru zadáte vlastnost **Schedule** . Následující příklad ukazuje požadavek PUT k aktualizaci stávajícího indexeru:
 
@@ -78,7 +78,7 @@ Plán pro indexer můžete definovat pomocí REST API. Uděláte to tak, že př
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` každých 15 `PT2H` minut každé 2 hodiny.
+Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` každých 15 minut `PT2H` každé 2 hodiny.
 
 Nepovinná položka **StartTime** indikuje, kdy by mělo začít naplánované provádění. Je-li tento parametr vynechán, bude použit aktuální čas UTC. Tato doba může být v minulosti. v takovém případě je první spuštění naplánováno, jako kdyby indexer běžel nepřetržitě od původního **StartTime**.
 
@@ -86,7 +86,7 @@ Indexer můžete na vyžádání spustit kdykoli pomocí volání metody Run ind
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Definice plánu pomocí sady .NET SDK
+## <a name="schedule-using-the-net-sdk"></a>Plánování pomocí .NET SDK
 
 Můžete definovat plán pro indexer pomocí sady Azure Search .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
 

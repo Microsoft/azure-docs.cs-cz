@@ -4,15 +4,15 @@ description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazen�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
-ms.translationtype: MT
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249350"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514656"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "72249350"
 
 * **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonosti](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-* **Sdílená složka:** Sdílená složka služby File Storage představuje sdílenou složku protokolu SMB v Azure. Všechny adresáře a soubory musí být vytvořeny v nadřazené sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka může ukládat neomezený počet souborů až do celkové kapacity sdílené složky. U standardních sdílených složek je celková kapacita až 5 TiB (GA) nebo 100 TiB (ve verzi Preview) pro sdílené složky Premium, ale celková kapacita je až 100 TiB.
+* **Sdílená složka:** Sdílená složka služby File Storage představuje sdílenou složku protokolu SMB v Azure. Všechny adresáře a soubory musí být vytvořeny v nadřazené sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka může ukládat neomezený počet souborů až do celkové kapacity sdílené složky. Celková kapacita pro sdílené složky úrovně Premium a Standard je 100 TiB.
 
 * **Adresář:** Volitelná hierarchie adresářů.
 
@@ -79,10 +79,8 @@ Soubory Azure nabízí dvě úrovně výkonu: Standard a Premium.
 
 Standardní sdílené složky se zálohují na jednotky pevného disku (HDD). Standardní sdílené složky poskytují spolehlivý výkon pro vstupně-výstupní úlohy, které jsou méně citlivé na variabilitu výkonu, jako jsou například sdílené složky pro obecné účely a vývoj a testovací prostředí. Standardní sdílené složky jsou dostupné jenom v modelu fakturace s průběžnými platbami.
 
-Standardní sdílené složky až do velikosti 5 TiB jsou dostupné jako nabídka GA. I když jsou větší sdílené složky, které jsou všechny sdílené složky větší než 5 TiB 100, jsou v současnosti k dispozici v rámci nabídky Preview.
-
 > [!IMPORTANT]
-> V části připojení [k větším sdíleným složkám (standardní úroveň)](#onboard-to-larger-file-shares-standard-tier) najdete postup a také rozsah a omezení verze Preview.
+> Pokud chcete používat sdílené složky větší než 5 TiB, Projděte si část připojení [k větším sdíleným složkám (úroveň Standard)](#onboard-to-larger-file-shares-standard-tier) , kde najdete kroky pro připojení a také regionální dostupnost a omezení.
 
 ### <a name="premium-file-shares"></a>Soubory ke sdílení souborů úrovně Premium
 
@@ -195,75 +193,43 @@ Při rozhodování o tom, kterou možnost replikace použít, pamatujte na tyto 
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Připojování k větším sdíleným složkám (úroveň Standard)
 
-Tato část se vztahuje pouze na standardní sdílené složky. Všechny soubory úrovně Premium jsou k dispozici s 100 TiB jako s nabídkou GA.
+Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílené složky Premium jsou dostupné s kapacitou 100 TiB.
 
 ### <a name="restrictions"></a>Omezení
 
-- [Podmínky](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Azure Preview platí pro velké sdílené složky ve verzi Preview, včetně při použití s nasazeními Azure File Sync.
-- Vyžaduje vytvoření nového účtu úložiště pro obecné účely (nemůže rozbalit existující účty úložiště).
-- Převod účtu LRS/ZRS na GRS/GZRS nebude možné na žádném novém účtu úložiště vytvořeném po přijetí předplatného ve větším počtu sdílených složek ve verzi Preview.
-
+- Převod účtu LRS/ZRS na GRS/GZRS nebude možné použít pro žádný účet úložiště s povolenými velkými sdílenými složkami.
 
 ### <a name="regional-availability"></a>Dostupnost podle oblastí
 
-Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech je k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
+Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech jsou k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
-|Oblast |Podporovaná redundance |Podporuje existující účty úložiště. |Podpora portálu * |
-|-------|---------|---------|---------|
-|Austrálie – východ |LRS     |Ne    |Ano|
-|Austrálie – jihovýchod|LRS |Ne    |Ano|
-|Indie – střed  |LRS     |Ne    |Ano|
-|Východní Asie      |LRS     |Ne    |Ano|
-|USA – východ        |LRS     |Ne    |Ano|
-|Francie – střed |LRS, ZRS|Ne    |Ano|
-|Francie – jih   |LRS     |Ne    |Ano|
-|Severní Evropa   |LRS     |Ne    |Zatím ne|
-|Indie – jih    |LRS     |Ne    |Ano|
-|Jihovýchodní Asie |LRS, ZRS|Ne    |Ano|
-|Středozápadní USA|LRS     |Ne    |Ano|
-|Západní Evropa    |LRS, ZRS|Ne    |Ano|
-|Západ USA        |LRS     |Ne    |Ano|
-|Západ USA 2      |LRS, ZRS|Ne    |Ano|
+|Oblast |Podporovaná redundance |
+|-------|---------|
+|Austrálie – východ |LRS     |
+|Austrálie – jihovýchod|LRS |
+|Střední Indie  |LRS     |
+|Východní Asie      |LRS     |
+|Východní USA *        |LRS     |
+|Francie – střed |LRS, ZRS|
+|Francie – jih   |LRS     |
+|Jižní Indie    |LRS     |
+|Jihovýchodní Asie |LRS, ZRS|
+|Středozápadní USA|LRS     |
+|Západní Evropa *    |LRS, ZRS|
+|Západní USA *        |LRS     |
+|Západní USA 2      |LRS, ZRS|
 
-
-\* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Případně můžete vytvořit novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+\* pro nové účty podporované, ne všechny stávající účty dokončily proces upgradu.
 
 Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
 
-### <a name="steps-to-onboard"></a>Postup zprovoznění
+### <a name="enable-and-create-larger-file-shares"></a>Povolit a vytvořit větší sdílené složky
 
-Pokud chcete zaregistrovat své předplatné ve verzi Preview pro větší sdílené složky, musíte použít Azure PowerShell. Můžete buď použít [Azure Cloud Shell](https://shell.azure.com/) nebo nainstalovat [modul Azure PowerShell místně](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) a spustit následující příkazy PowerShellu:
-
-Nejdřív ověřte, že je vybrané předplatné, které chcete zaregistrovat ve verzi Preview:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Pak se pomocí následujících příkazů zaregistrujte ve verzi Preview:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Vaše předplatné se automaticky schválí, jakmile se spustí oba příkazy.
-
-Pokud chcete ověřit stav registrace, můžete spustit následující příkaz:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Aktualizace stavu na **registrovanou**může trvat až 15 minut. Jakmile je váš stav **zaregistrován**, měli byste být schopni funkci použít.
-
-### <a name="use-larger-file-shares"></a>Použít větší sdílené složky
-
-Pokud chcete začít používat větší sdílené složky, vytvořte nový účet úložiště pro obecné účely v2 a novou sdílenou složku.
+Pokud chcete začít používat větší sdílené složky, přečtěte si článek [Povolení velkých sdílených složek](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>Model růstu dat
 
-V současné době je maximální velikost sdílené složky Azure 5 TiB (100 TiB ve verzi Preview). Z důvodu tohoto současného omezení musíte při nasazování sdílené složky Azure vzít v úvahu očekávaný nárůst dat.
+V současné době je maximální velikost sdílené složky Azure 100 TiB. Z důvodu tohoto současného omezení musíte při nasazování sdílené složky Azure vzít v úvahu očekávaný nárůst dat.
 
 Je možné synchronizovat více sdílených složek Azure na jeden souborový server s Windows pomocí Azure File Sync. Díky tomu můžete zajistit, aby se starší, velké sdílené složky, které máte v místním prostředí, přenesly do Azure File Sync. Další informace najdete v tématu [Plánování nasazení Azure File Sync](storage-files-planning.md).
 

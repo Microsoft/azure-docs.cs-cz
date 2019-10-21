@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802536"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515183"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Rychlý Start: přizpůsobení klientské knihovny pro Python
+# <a name="quickstart-personalizer-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro Python
 
 Zobrazit přizpůsobený obsah v tomto rychlém startu Pythonu pomocí služby pro přizpůsobování
 
@@ -26,7 +26,7 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -54,8 +54,8 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* pro klíč prostředku `PERSONALIZER_KEY`.
-* pro koncový bod prostředku `PERSONALIZER_ENDPOINT`.
+* `PERSONALIZER_KEY` klíče prostředku.
+* `PERSONALIZER_ENDPOINT` pro koncový bod prostředku
 
 V Azure Portal jsou hodnoty klíč a koncový bod k dispozici na stránce **rychlý Start** .
 
@@ -96,7 +96,7 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvořte novou aplikaci v Pythonu v preferovaném editoru nebo integrovaném vývojovém prostředí s názvem `sample.py`. 
+Vytvořte novou aplikaci v Pythonu v upřednostňovaném editoru nebo integrovaném vývojovém prostředí s názvem `sample.py`. 
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
@@ -106,7 +106,7 @@ V adresáři projektu otevřete soubor **Sample.py** v preferovaném editoru neb
 
 ## <a name="add-personalizer-resource-information"></a>Přidat informace o prostředku pro přizpůsobení
 
-Vytvořte proměnné pro klíč Azure prostředku a koncový bod, který se načte z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a `PERSONALIZER_RESOURCE_ENDPOINT`. Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
+Vytvořte proměnné pro klíč Azure prostředku a koncový bod z proměnných prostředí s názvem `PERSONALIZER_RESOURCE_KEY` a `PERSONALIZER_RESOURCE_ENDPOINT`. Pokud jste po spuštění aplikace vytvořili proměnné prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později v tomto rychlém startu.
 
 Název prostředku je součástí adresy URL koncového bodu: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
@@ -146,7 +146,7 @@ Přidejte následující metody, které [získají volby obsahu](#get-content-ch
 
 ## <a name="request-a-rank"></a>Vyžádat pořadí
 
-Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil @no__t 0 možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
+Chcete-li dokončit požadavek na řazení, program požádá o předvolby uživatele, aby vytvořil `currentContent` možností obsahu. Proces může vytvořit obsah, který se má vyloučit z rozsahu, který je zobrazený jako `excludeActions`. Požadavek na řazení potřebuje akce, currentContext, excludeActions a jedinečné ID události klasifikace (jako identifikátor GUID), aby mohl přijímat seřazené odpovědi. 
 
 Tento rychlý Start má jednoduché kontextové funkce pro denní prioritu a uživatelské preference. V produkčních systémech může být určení a [vyhodnocení](concept-feature-evaluation.md) [akcí a funkcí](concepts-features.md) netriviální.  
 
