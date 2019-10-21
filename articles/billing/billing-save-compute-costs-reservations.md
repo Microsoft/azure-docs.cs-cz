@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806339"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390163"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -40,11 +40,11 @@ U virtuálních počítačů s Windows a služby SQL Database můžete náklady 
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kdo má nárok na zakoupení rezervace?
 
-Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v předplatném se smlouvou Enterprise (MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatném s průběžnými platbami (MS-AZR-0003P nebo MS-AZR-0023P). Poskytovatelé cloudových řešení můžou nakupovat rezervace Azure prostřednictvím webu Azure Portal nebo  [Partnerského centra](/partner-center/azure-reservations) .
+Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v předplatném se smlouvou Enterprise (MS-AZR-0017P nebo MS-AZR-0148P), předplatném s průběžnými platbami (MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatném se smlouvou se zákazníkem Microsoftu. Poskytovatelé cloudových řešení můžou nakupovat rezervace Azure prostřednictvím webu Azure Portal nebo  [Partnerského centra](/partner-center/azure-reservations) .
 
 Zákazníci se smlouvou Enterprise (EA) můžou omezit nákupy na správce EA tak, že na portálu EA Portal zakážou možnost **Přidat rezervované instance**. Aby správce EA mohl zakoupit rezervaci, musí být vlastníkem alespoň jednoho předplatného EA. Tato možnost je užitečná pro podniky, které chtějí, aby rezervace pro různá nákladová centra pořizoval centralizovaný tým. Po zakoupení můžou centralizované týmy přidat k rezervacím vlastníky nákladových center. Vlastníci potom vymezí rozsah rezervace na svoje předplatná. Centrální tým nemusí umožnit přístup vlastníka předplatného tam, kde se rezervace pořizuje.
 
-Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným zakoupeným prostřednictvím plánů Enterprise, Cloud Solution Provider (CSP) a individuálních plánů s průběžnými platbami.
+Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným zakoupeným prostřednictvím plánů Enterprise, Cloud Solution Provider (CSP), plánů se smlouvou se zákazníkem Microsoftu a individuálních plánů s průběžnými platbami.
 
 ## <a name="scope-reservations"></a>Vymezení rozsahů rezervací
 
@@ -55,8 +55,8 @@ Rozsah rezervace můžete vymezit na předplatné nebo na skupiny prostředků. 
 Při vymezování rozsahu rezervace na skupinu prostředků máte v závislosti na vašich potřebách k dispozici tři možnosti:
 
 - **Rozsah na jednu skupinu prostředků** – Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
-- **Rozsah na jedno předplatné** – Sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
-- **Sdílený rozsah** – Sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v daném kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace prováděcí smlouva. U jednotlivých předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
+- Rozsah **Jedno předplatné** – sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
+- Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace příslušná registrace. U zákazníků se smlouvou se zákazníkem Microsoftu je rozsahem fakturace příslušný fakturační profil. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 
 Při uplatňování slev za používání Azure zpracovává rezervace v tomto pořadí:
 
@@ -84,7 +84,7 @@ Po zakoupení rezervace máte možnost rozsah aktualizovat. Provedete to tak, ž
 
 Využití rezervace můžete monitorovat různými způsoby – prostřednictvím webu Azure Portal, prostřednictvím rozhraní API nebo prostřednictvím dat o využití. Pokud chcete zobrazit všechny rezervace, ke kterým máte přístup, přejděte na webu Azure Portal na **Rezervace**. Mřížka rezervací zobrazuje poslední zaznamenané procento využití rezervací. Kliknutím na rezervaci zobrazíte dlouhodobé využití příslušné rezervace.
 
-Využití rezervace můžete získat také pomocí [rozhraní API](billing-reservation-apis.md#see-reservation-usage) a z [dat o využití](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks), pokud jste zákazník se smlouvou Enterprise.
+Pokud jste zákazníkem se smlouvou Enterprise nebo smlouvou se zákazníkem Microsoftu, můžete informace o využití rezervace získat také pomocí [rozhraní API](billing-reservation-apis.md#see-reservation-usage) a z [dat o využití](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks).
 
 Pokud zjistíte, že využití rezervace s rozsahem na skupinu prostředků je nízké, můžete rozsah rezervace aktualizovat na jedno předplatné nebo ho sdílet v rámci kontextu fakturace. Rezervaci můžete také rozdělit a výsledné rezervace použít na jiné skupiny prostředků.
 
@@ -99,6 +99,7 @@ Pokud přesunete skupinu prostředků z jednoho předplatného do jiného, rozsa
 Slevy za rezervace platí pro následující oprávněné typy předplatných a nabídek.
 
 - Smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P)
+- Předplatná se smlouvou se zákazníkem Microsoftu
 - Individuální plány s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P)
 - Předplatná CSP
 
@@ -106,13 +107,13 @@ Prostředky, které se spouští v rámci předplatného s jinými typy nabídek
 
 ## <a name="how-is-a-reservation-billed"></a>Jak se rezervace fakturuje?
 
-Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. Pokud máte předplatné Enterprise, náklady na rezervaci se odečtou ze zůstatku peněžního závazku. Pokud zůstatek peněžního závazku nepokryje náklady na rezervaci, bude se vám účtovat nadlimitní využití. Pokud máte předplatné z individuálního plánu s průběžnými platbami, z platební karty přidružené k vašemu účtu se ihned strhne částka za nákup placený předem. Měsíční platby se objeví na vaší faktuře a částka se bude každý měsíc strhávat z vaší platební karty. Při fakturaci na základě faktury uvidíte poplatky na vaší další faktuře.
+Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. Náklady na rezervaci se odečtou ze zůstatku peněžního závazku, pokud je k dispozici. Pokud zůstatek peněžního závazku nepokryje náklady na rezervaci, bude se vám účtovat nadlimitní využití. Pokud máte předplatné z individuálního plánu s průběžnými platbami, z platební karty přidružené k vašemu účtu se ihned strhne částka za nákup placený předem. Měsíční platby se objeví na vaší faktuře a částka se bude každý měsíc strhávat z vaší platební karty. Při fakturaci na základě faktury uvidíte poplatky na vaší další faktuře.
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
 Sleva za rezervaci se uplatňuje na využití prostředků odpovídající atributům, které vyberete při zakoupení rezervace. Mezi atributy patří rozsah, ve kterém se odpovídající virtuální počítače, databáze SQL, služba Azure Cosmos DB nebo jiné prostředky používají. Pokud například chcete slevu za rezervaci čtyř virtuálních počítačů Standard D2 v oblasti Západní USA, vyberte předplatné, ve kterém se tyto virtuální počítače používají.
 
-Nevyužitá sleva za rezervaci se nenahrazuje. Pokud nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
+Nevyužitá sleva za rezervaci se *nenahrazuje*. Pokud nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
@@ -120,7 +121,7 @@ Můžete například později vytvořit prostředek a mít odpovídající rezer
 
 Pokud se virtuální počítače používají v různých předplatných v rámci prováděcí smlouvy nebo účtu, nastavte rozsah jako sdílený. Sdílený rozsah umožňuje uplatnění slevy za rezervaci napříč předplatnými. Po zakoupení rezervace můžete rozsah změnit. Další informace najdete v tématu [Správa rezervací Azure](billing-manage-reserved-vm-instance.md).
 
-Sleva za rezervace se vztahuje jenom na prostředky přidružené k předplatným Enterprise, CSP nebo předplatným s průběžnými platbami. Prostředky, které se spouští v rámci předplatného s jinými typy nabídek, neobdrží slevu za rezervace.
+Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným Enterprise, CSP, předplatným se smlouvou se zákazníkem Microsoftu nebo předplatným s průběžnými platbami. Prostředky, které se spouští v rámci předplatného s jinými typy nabídek, neobdrží slevu za rezervace.
 
 ## <a name="when-the-reservation-term-expires"></a>Po skončení období rezervace
 
