@@ -1,41 +1,37 @@
 ---
-title: Azure Application Insights Telemetrie datový Model - Telemetrie výjimek | Dokumentace Microsoftu
-description: Application Insights datový model pro telemetrie výjimek
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Datový model Azure Telemetrie Application Insights – telemetrie výjimek | Microsoft Docs
+description: Application Insights datový model pro telemetrii výjimek
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: efd7ad43ee9a2206f474621612eca7dfe5079f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ba1c94ee8dc78b937d650cff32e1518a7ca5a12
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908061"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677422"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: Datový model Application Insights
+# <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: datový model Application Insights
 
-V [Application Insights](../../azure-monitor/app/app-insights-overview.md), představuje instanci výjimky zpracované nebo neošetřené výjimky, ke které došlo během provádění monitorovanou aplikaci.
+V [Application Insights](../../azure-monitor/app/app-insights-overview.md)instance výjimky představuje ošetřenou nebo neošetřenou výjimku, ke které došlo během provádění monitorované aplikace.
 
-## <a name="problem-id"></a>Id problému
+## <a name="problem-id"></a>ID problému
 
-Identifikátor, kde byla výjimka vyvolána v kódu. Používá se pro výjimky seskupení. Obvykle kombinace typu výjimky a funkci ze zásobníku volání.
+Identifikátor, kde byla výjimka vyvolána v kódu. Používá se pro seskupování výjimek. Obvykle se jedná o kombinaci typu výjimky a funkce ze zásobníku volání.
 
-Maximální délka: 1024 znaků.
+Maximální délka: 1024 znaků
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 
-Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="exception-details"></a>Podrobnosti výjimky
 
-(Chcete-li rozšířit)
+(Bude rozšířeno)
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
@@ -45,8 +41,8 @@ Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `W
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
-- Zjistěte, jak [Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- Viz [datový model](data-model.md) pro typy Application Insights a datový model.
+- Naučte se, jak [diagnostikovat výjimky ve vašich webových aplikacích pomocí Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.

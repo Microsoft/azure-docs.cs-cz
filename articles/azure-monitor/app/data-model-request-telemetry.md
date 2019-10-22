@@ -1,75 +1,71 @@
 ---
-title: Azure Application Insights Telemetrických dat Model - Telemetrie žádostí | Dokumentace Microsoftu
-description: Application Insights datový model pro telemetrie žádostí
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Datový model Azure Telemetrie Application Insights – telemetrie požadavků | Microsoft Docs
+description: Application Insights datový model pro telemetrii žádostí
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900517"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677330"
 ---
-# <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: Datový model Application Insights
+# <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
-Položky telemetrie požadavku (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje Logická posloupnost spuštění aktivuje externí žádostí do vaší aplikace. Každé provedení požadavku je identifikován jedinečný `ID` a `url` obsahující všechny parametry spuštění. Požadavky můžete seskupovat podle logického `name` a definovat `source` této žádosti. Spuštění kódu může vést k `success` nebo `fail` a má určitou `duration`. Auditování úspěšných a neúspěšných spuštění může být seskupené podle `resultCode`. Počáteční čas pro telemetrie žádostí, které jsou definované na úrovni obálky.
+Položka telemetrie žádosti (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje logickou sekvenci spuštění spuštěnou externím požadavkem ve vaší aplikaci. Každé spuštění žádosti je identifikováno jedinečnými `ID` a `url` obsahující všechny parametry spuštění. Požadavky můžete seskupovat podle logických `name` a definovat `source` této žádosti. Spuštění kódu může mít za následek `success` nebo `fail` a má určité `duration`. Úspěšné i neúspěšné spuštění může seskupit `resultCode`. Počáteční čas pro telemetrii požadavků definovanou na úrovni obálky.
 
-Žádost o telemetrii podporuje standardní rozšiřitelném modelu používání vlastní `properties` a `measurements`.
+Telemetrie žádostí podporuje standardní rozšiřitelný model s využitím vlastních `properties` a `measurements`.
 
-## <a name="name"></a>Name
+## <a name="name"></a>Name (Název)
 
-Název žádosti představuje cestu kódu potřebný ke zpracování požadavku. Kardinalita s nízkou hodnotu umožňující lepší seskupení požadavků. Pro požadavky HTTP, to představuje metodu HTTP a šablonu cesty URL jako `GET /values/{id}` bez skutečného `id` hodnotu.
+Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, jako `GET /values/{id}` bez skutečné `id` hodnoty.
 
-Application Insights web SDK odešle žádost o název "tak jak jsou" s ohledem na písmen. Seskupení podle uživatelského rozhraní je velká a malá písmena, `GET /Home/Index` se počítá samostatně z `GET /home/INDEX` i v případě, že jsou často výsledkem stejné provádění kontroleru a akce. Důvod, která je obecně jsou adresy URL [malá a velká písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zobrazit, když všechny `404` se naplnilo pro adresy URL zadané na velká písmena. Můžete si přečíst další na žádost o název kolekce pomocí sady SDK webové technologie ASP.NET v [blogový příspěvek](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights webová sada SDK pošle název žádosti "tak, jak je", s ohledem na velikost písmen. Seskupení v uživatelském rozhraní rozlišuje velká a malá písmena, takže `GET /Home/Index` se počítá odděleně od `GET /home/INDEX`, i když to často vede ke stejnému spuštění kontroleru a akcí. Důvodem je, že adresy URL obecně [rozlišují velká a malá písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zjistit, jestli u adres URL zadaných velkými `404` došlo k ostatním. Další informace o shromažďování názvů žádostí najdete v tématu ASP.NET Web SDK v [blogovém příspěvku](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
-Maximální délka: 1024 znaků.
+Maximální délka: 1024 znaků
 
 ## <a name="id"></a>ID
 
-Identifikátor instance volání žádosti. Slouží pro korelaci mezi žádostí a další položky telemetrie. ID by měl být globálně jedinečný. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
+Identifikátor instance volání požadavku. Používá se pro korelaci mezi požadavkem a dalšími položkami telemetrie. ID by mělo být globálně jedinečné. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
 
 Maximální délka: 128 znaků
 
-## <a name="url"></a>Adresa URL
+## <a name="url"></a>URL
 
-Adresa URL požadavku se všemi parametry řetězce dotazu.
+Žádost o adresu URL se všemi parametry řetězce dotazu
 
-Maximální délka: 2 048 znaků
+Maximální délka: 2048 znaků
 
-## <a name="source"></a>source
+## <a name="source"></a>Zdroj
 
-Zdroj žádosti. Příklady jsou Instrumentační klíč volajícího nebo ip adresy volajícího. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
+Zdroj požadavku Příkladem je klíč instrumentace volajícího nebo IP adresy volajícího. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
 
-Maximální délka: 1024 znaků.
+Maximální délka: 1024 znaků
 
-## <a name="duration"></a>Doba trvání
+## <a name="duration"></a>Délka
 
-Doba trvání ve formátu žádosti: `DD.HH:MM:SS.MMMMMM`. Musí být kladný a menší než `1000` dnů. Toto pole je povinné, protože telemetrie žádostí představuje operaci se na začátek a konec.
+Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM`. Musí být kladný a menší než `1000`é dny. Toto pole je povinné, protože telemetrie požadavků představuje operaci začínající na začátku a na konci.
 
 ## <a name="response-code"></a>Kód odpovědi
 
-Výsledek provádění požadavku. Stavový kód HTTP pro požadavky HTTP. To může být `HRESULT` typ hodnoty nebo výjimky pro ostatní typy požadavků.
+Výsledek provedení žádosti Stavový kód HTTP pro požadavky HTTP. Pro jiné typy požadavků může být `HRESULT` typ hodnoty nebo výjimky.
 
-Maximální délka: 1024 znaků.
+Maximální délka: 1024 znaků
 
 ## <a name="success"></a>Úspěch
 
-Údaj o volání úspěšné nebo neúspěšné. Toto pole je povinné. Pokud není nastavený explicitně na `false` -požadavek je považován za úspěšné. Nastavte tuto hodnotu na `false` Pokud operace se přerušila výjimka nebo vrátilo kód chyby výsledek.
+Označení úspěšného nebo neúspěšného volání. Toto pole je povinné. Pokud není explicitně nastavené na `false` – požadavek se považuje za úspěšný. Nastavte tuto hodnotu na `false`, pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
 
-Pro webové aplikace Application Insights definovat žádost jako úspěšný při kód odezvy je méně než `400` nebo rovna hodnotě `401`. Ale existují případy, když toto výchozí mapování se neshoduje s sémantické aplikace. Kód odpovědi `404` může znamenat "žádné záznamy", které mohou být součástí regulární toku. Také může to znamenat poškozený odkaz. Nefunkční odkazy můžete dokonce implementovat složitější logiku. Nefunkční odkazy můžete označit jako selhání pouze v případě, že tyto odkazy jsou umístěné ve stejné lokalitě díky analýze odkaz poskytuje adresu url. Nebo označit je jako selhání při přístupu z mobilní aplikace vaší společnosti. Podobně `301` a `302` indikuje selhání při přístupu z klienta, který nepodporuje přesměrování.
+Pro webové aplikace Application Insights definovat požadavek jako úspěšný, pokud je kód odpovědi menší než `400` nebo se rovná `401`. Existují však případy, kdy toto výchozí mapování neodpovídá sémantikě aplikace. Kód odpovědi `404` může indikovat "žádné záznamy", které mohou být součástí pravidelného toku. Může také označovat přerušený odkaz. Pro přerušené odkazy můžete dokonce implementovat pokročilejší logiku. Můžete označit poškozené odkazy jako chyby pouze v případě, že jsou tyto odkazy umístěny ve stejné lokalitě pomocí analýzy odkazující adresy URL. Nebo je při použití z mobilní aplikace společnosti označit jako neúspěšná. Podobně `301` a `302` signalizují selhání při přistupování z klienta, který nepodporuje přesměrování.
 
-Částečně přijmout obsah `206` může znamenat selhání celkový požadavek. Koncový bod služby Application Insights pro instanci přijímá dávky položky telemetrie jako jeden požadavek. Vrátí `206` kdy některé položky v dávce nebyly úspěšně zpracována. Rostoucí počet `206` indikuje problém, který je nutné prozkoumat. Podobná logika platí pro `207` více stav, kdy úspěch může být nejhorší ze samostatných kódů odpovědí.
+Částečně přijatý obsah `206` může indikovat selhání celkového požadavku. Application Insights koncový bod například obdrží dávku položek telemetrie jako jeden požadavek. Vrátí `206`, když některé položky v dávce nebyly úspěšně zpracovány. Zvýšená míra `206` označuje problém, který je třeba prozkoumat. Podobná logika se vztahuje na `207` více stavů, kde úspěch může být nejhorší z různých kódů odpovědi.
 
-Si můžete přečíst další výsledek na žádost kód a stavovým kódem [blogový příspěvek](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+V [příspěvku na blogu](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)si můžete přečíst další informace o kódu výsledku žádosti a stavový kód.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
@@ -79,9 +75,9 @@ Si můžete přečíst další výsledek na žádost kód a stavovým kódem [bl
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Napište vlastní požadavek telemetrii](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
-- Zjistěte, jak [konfigurace ASP.NET Core](../../azure-monitor/app/asp-net.md) aplikace pomocí Application Insights.
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- [Zápis vlastní telemetrie žádostí](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- Viz [datový model](data-model.md) pro typy Application Insights a datový model.
+- Naučte se, jak [nakonfigurovat ASP.NET Core](../../azure-monitor/app/asp-net.md) aplikaci pomocí Application Insights.
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.

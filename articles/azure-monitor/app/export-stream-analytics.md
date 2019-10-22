@@ -1,88 +1,83 @@
 ---
-title: Export prostřednictvím Stream Analytics z Azure Application Insights | Dokumentace Microsoftu
-description: Stream Analytics můžete průběžně transformace, filtrování a směrování dat, které exportujete z Application Insights.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft Docs
+description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 01/08/2019
+ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625063"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677940"
 ---
-# <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Pomocí Stream Analytics zpracovávat data exportovaná z Application Insights
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovat ze služby Application Insights](export-telemetry.md). Stream Analytics můžete vyžádat data z různých zdrojů. Můžete transformovat a filtrovat data a pak směrovat na různé jímky.
+# <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
 
-V tomto příkladu vytvoříme adaptér, který přijímá data ze služby Application Insights, přejmenování a zpracovává některá pole a přesměrují do Power BI.
+V tomto příkladu vytvoříme adaptér, který převezme data z Application Insights, přejmenuje a zpracuje některá pole a pošle je do Power BI.
 
 > [!WARNING]
-> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
+> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
 > 
 > 
 
-![Blokový diagram pro export prostřednictvím SA PBI](./media/export-stream-analytics/020.png)
+![Blokový diagram pro export prostřednictvím SA do PBI](./media/export-stream-analytics/020.png)
 
 ## <a name="create-storage-in-azure"></a>Vytvoření úložiště v Azure
-Průběžný export vždy výstupů dat do účtu služby Azure Storage, musíte nejprve vytvořit úložiště.
+Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejdřív musíte úložiště vytvořit.
 
-1. Vytvoření účtu úložiště v "klasickém" ve vašem předplatném v [webu Azure portal](https://portal.azure.com).
+1. Vytvořte ve svém předplatném "klasický" účet úložiště v [Azure Portal](https://portal.azure.com).
    
-   ![Na webu Azure portal zvolte nový, dat, úložiště](./media/export-stream-analytics/030.png)
+   ![V Azure Portal vyberte nový, data, úložiště.](./media/export-stream-analytics/030.png)
 2. Vytvoření kontejneru
    
     ![V novém úložišti vyberte kontejnery, klikněte na dlaždici kontejnery a pak přidat](./media/export-stream-analytics/040.png)
-3. Zkopírovat přístupový klíč úložiště
+3. Zkopírování přístupového klíče úložiště
    
-    Musíte ji nejdříve k nastavení vstupu do služby stream analytics.
+    Budete ji potřebovat brzy pro nastavení vstupu ke službě Stream Analytics.
    
-    ![V úložišti otevřete nastavení, klíče a zkopírujte primární přístupový klíč](./media/export-stream-analytics/045.png)
+    ![V úložišti otevřete nastavení, klíče a proveďte kopii primárního přístupového klíče.](./media/export-stream-analytics/045.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžný export do služby Azure storage
-[Průběžný export](export-telemetry.md) přesouvá data z Application Insights do služby Azure storage.
+## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžný export do služby Azure Storage
+[Průběžný export](export-telemetry.md) přesouvá data z Application Insights do služby Azure Storage.
 
-1. Na webu Azure Portal přejděte do prostředku Application Insights, který jste vytvořili pro vaši aplikaci.
+1. V Azure Portal vyhledejte prostředek Application Insights, který jste vytvořili pro vaši aplikaci.
    
-    ![Klikněte na tlačítko Procházet, Application Insights, vaše aplikace](./media/export-stream-analytics/050.png)
-2. Vytvoření průběžný export.
+    ![Vyberte možnost Procházet, Application Insights a aplikace.](./media/export-stream-analytics/050.png)
+2. Vytvořte průběžný export.
    
-    ![Zvolte možnost přidat nastavení průběžný Export](./media/export-stream-analytics/060.png)
+    ![Zvolit nastavení, průběžný export, přidat](./media/export-stream-analytics/060.png)
 
     Vyberte účet úložiště, který jste vytvořili dříve:
 
-    ![Nastavte cíl exportu](./media/export-stream-analytics/070.png)
+    ![Nastavit cíl exportu](./media/export-stream-analytics/070.png)
 
     Nastavte typy událostí, které chcete zobrazit:
 
-    ![Vyberte typy událostí](./media/export-stream-analytics/080.png)
+    ![Výběr typů událostí](./media/export-stream-analytics/080.png)
 
-1. Umožnit shromažďování některá dat. Opřete se a umožnit lidem nějakou dobu používat vaši aplikaci. Telemetrická data budou přicházet a zobrazí statistické grafy v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události. 
    
-    A také se exportovat data do úložiště. 
-2. Kontrola exportovaná data. V sadě Visual Studio, zvolte **zobrazení / Cloud Explorer**a otevřete Azure / Storage. (Pokud nemáte k dispozici tato možnost nabídky, je potřeba nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete vizuál C# / cloudu / získat Microsoft Azure SDK pro .NET.)
+    Data budou také exportována do vašeho úložiště. 
+2. Zkontrolujte exportovaná data. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C# /Cloud/získat Microsoft Azure SDK pro .NET.)
    
     ![](./media/export-stream-analytics/04-data.png)
    
-    Poznamenejte si běžné část názvu cesty, které je odvozeno z názvu a Instrumentační klíče aplikace. 
+    Poznamenejte si běžnou část názvu cesty, která je odvozena z názvu aplikace a klíče instrumentace. 
 
-Události se zapisují do objektu blob soubory ve formátu JSON. Každý soubor může obsahovat jeden nebo více událostí. Tak rádi bychom číst data události a filtrování pole, která chceme. Existují všechny druhy věcí, které můžeme udělat s daty, ale náš plán ještě dnes je předat data do Power BI pomocí Stream Analytics.
+Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes používá Stream Analytics k přesměrování dat do Power BI.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
-Z [webu Azure portal](https://portal.azure.com/), vyberte službu Azure Stream Analytics a vytvoření nové úlohy Stream Analytics:
+Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
 
 ![](./media/export-stream-analytics/SA001.png)
 
 ![](./media/export-stream-analytics/SA002.png)
 
-Když se vytvoří novou úlohu, vyberte **přejít k prostředku**.
+Po vytvoření nové úlohy vyberte **Přejít k prostředku**.
 
 ![](./media/export-stream-analytics/SA003.png)
 
@@ -90,48 +85,48 @@ Když se vytvoří novou úlohu, vyberte **přejít k prostředku**.
 
 ![](./media/export-stream-analytics/SA004.png)
 
-K provedení vstup z objektu blob služby průběžného exportu nastavení:
+Nastavte ho tak, aby převzal výstup z objektu BLOB průběžného exportu:
 
 ![](./media/export-stream-analytics/SA0005.png)
 
-Teď budete potřebovat primární přístupový klíč z vašeho účtu úložiště, který jste si předtím poznamenali. Nastavíte jako klíč účtu úložiště.
+Teď budete potřebovat primární přístupový klíč z účtu úložiště, který jste si poznamenali dříve. Nastavte tuto hodnotu jako klíč účtu úložiště.
 
-### <a name="set-path-prefix-pattern"></a>Vzor předpony cesty sady
+### <a name="set-path-prefix-pattern"></a>Nastavit vzor předpony cesty
 
-**Ujistěte se, že nastavení formát data rrrr-MM-DD (s pomlčkami).**
+**Nezapomeňte nastavit formát data na RRRR-MM-DD (s pomlčkami).**
 
-Vzor předpony cesty určuje, kde najde Stream Analytics vstupních souborů v úložišti. Je nutné nastavit ji tak, aby odpovídaly průběžný Export způsobu, jakým ukládá data. Nastavte ho následujícím způsobem:
+Vzor předpony cesty určuje, kde Stream Analytics najde vstupní soubory v úložišti. Musíte ho nastavit tak, aby odpovídal způsobu průběžného exportu uložených dat. Nastavte to takto:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 V tomto příkladu:
 
-* `webapplication27` název prostředku Application Insights je **malými písmeny**.
-* `1234...` je Instrumentační klíč tohoto prostředku Application Insights **vynechání pomlčky**. 
-* `PageViews` je typ dat, který chcete analyzovat. Dostupné typy závisí na filtru, který jste nastavili v průběžný Export. Prozkoumejte exportovaná data zobrazíte dostupné typy a podívejte se [export datového modelu](export-data-model.md).
-* `/{date}/{time}` je vzorek doslova zapsán.
+* `webapplication27` je název Application Insights prostředku **malými písmeny**.
+* `1234...` je klíč instrumentace prostředku Application Insights a **vynechává se pomlčky**. 
+* `PageViews` je typ dat, která chcete analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](export-data-model.md).
+* `/{date}/{time}` je vzor psaný doslova.
 
 > [!NOTE]
-> Zkontrolujte úložiště, abyste měli jistotu, že získáte cesty ke správné.
+> Zkontrolujte úložiště, abyste se ujistili, že jste získali správnou cestu.
 > 
 
 ## <a name="add-new-output"></a>Přidat nový výstup
-Teď vyberte úlohu > **výstupy** > **přidat**.
+Nyní vyberte > **výstupy** úlohy  > **Přidat**.
 
 ![](./media/export-stream-analytics/SA006.png)
 
 
-![Vyberte nový kanál, klikněte na výstupy, přidat, Power BI](./media/export-stream-analytics/SA010.png)
+![Vyberte nový kanál, klikněte na výstupy, přidat Power BI](./media/export-stream-analytics/SA010.png)
 
-Zadejte vaše **pracovního nebo školního účtu** k autorizaci Stream Analytics pro přístup k prostředku Power BI. Potom vytvořte název pro výstup a pro cílový dataset Power BI a tabulku.
+Zadejte svůj **pracovní nebo školní účet** pro autorizaci Stream Analytics k přístupu k prostředkům Power BI. Potom dozásobí název výstupu a pro cílovou Power BI datovou sadu a tabulku.
 
-## <a name="set-the-query"></a>Nastavit dotaz
-Dotaz se řídí překlad ze vstupu do výstupu.
+## <a name="set-the-query"></a>Nastavení dotazu
+Dotaz řídí převod ze vstupu na výstup.
 
-Použijte funkci testu ke kontrole, že dostanete správné výstup. Pojmenujte ji ukázková data, který je předáván ze stránky vstupy. 
+Pomocí funkce test zkontrolujte, zda se zobrazí správný výstup. Poskytněte IT ukázková data, která jste trvali na stránce vstupy. 
 
-### <a name="query-to-display-counts-of-events"></a>Chcete-li zobrazit počty událostí dotazu
-Vložte tento dotaz:
+### <a name="query-to-display-counts-of-events"></a>Dotaz na zobrazení počtu událostí
+Vložit tento dotaz:
 
 ```SQL
 
@@ -146,11 +141,11 @@ Vložte tento dotaz:
     GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
-* Export vstup je alias, který jsme zadali pro vstupní datový proud
-* pbi výstup je alias pro výstup, který jsme definovali
-* Používáme [vnější metody GetElements použít](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) vzhledem k tomu, že je název události v vnořeného pole JSON. Potom vyberte vybere název události, společně se počet instancí s tímto názvem v časovém období. [Group](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) klauzule seskupuje prvky do časových období délce jedné minuty.
+* Export-vstup je alias, který jsme přiřadili vstupu datového proudu.
+* PBI-Output je výstupní alias, který jsme definovali.
+* Použijeme [vnější prvky Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) , protože název události je ve vnořeném poli JSON. Pak příkaz SELECT vybere název události spolu s počtem instancí s tímto názvem v daném časovém období. Klauzule [Group by](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) seskupuje prvky do časových období jedné minuty.
 
-### <a name="query-to-display-metric-values"></a>Dotaz, který zobrazí hodnoty metrik
+### <a name="query-to-display-metric-values"></a>Dotaz pro zobrazení hodnot metriky
 ```SQL
 
     SELECT
@@ -165,9 +160,9 @@ Vložte tento dotaz:
 
 ``` 
 
-* Tento dotaz operací do telemetrie metrik zobrazíte času události a metriky hodnotu. Hodnoty metrik jsou uvnitř pole, takže použijeme vzor vnější metody GetElements použít k extrahování řádky. "myMetric" v tomto případě je název metriky. 
+* Tento dotaz přejde do telemetrie metrik a získá čas události a hodnotu metriky. Hodnoty metriky jsou uvnitř pole, takže pro extrakci řádků používáme vzor VNĚJŠÍho prvku APPLy. "myMetric" je název metriky v tomto případě. 
 
-### <a name="query-to-include-values-of-dimension-properties"></a>Dotaz pro přidání hodnoty vlastnosti dimenze
+### <a name="query-to-include-values-of-dimension-properties"></a>Dotaz na zahrnutí hodnot vlastností dimenze
 ```SQL
 
     WITH flat AS (
@@ -187,41 +182,41 @@ Vložte tento dotaz:
 
 ```
 
-* Tento dotaz obsahuje hodnoty z vlastnosti dimenze bez v závislosti na konkrétní dimenzi se oprava indexem dimenze pole.
+* Tento dotaz zahrnuje hodnoty vlastností dimenze bez závislosti na konkrétní dimenzi v pevně daném indexu v poli dimenzí.
 
 ## <a name="run-the-job"></a>Spuštění úlohy
-Vyberte datum v minulosti, spustit úlohu. 
+Můžete vybrat datum v minulosti, od kterého se má úloha spustit. 
 
-![Vyberte úlohu a klikněte na dotaz. Vložte následující ukázce.](./media/export-stream-analytics/SA008.png)
+![Vyberte úlohu a klikněte na dotaz. Níže uvedený příklad vložte.](./media/export-stream-analytics/SA008.png)
 
-Počkejte, dokud je úloha spuštěná.
+Počkejte, dokud nebude úloha spuštěna.
 
-## <a name="see-results-in-power-bi"></a>Zobrazení výsledků v Power BI
+## <a name="see-results-in-power-bi"></a>Zobrazit výsledky v Power BI
 > [!WARNING]
-> Jsou mnohem lepšímu a snazšímu [doporučené způsoby, jak zobrazit data Application Insights v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněno zde je uvedené jenom jako příklad si ukážeme, jak zpracovat exportovaná data.
+> K dispozici je mnohem lepší a jednodušší [způsob zobrazení Application Insights dat v Power BI](../../azure-monitor/app/export-power-bi.md ). Cesta znázorněná tady je pouze příklad, který ilustruje zpracování exportovaných dat.
 > 
 > 
 
-Otevřete Power BI přes svůj pracovní nebo školní účet a vyberte datovou sadu a tabulku, která jste definovali jako výstup úlohy Stream Analytics.
+Otevřete Power BI u svého pracovního nebo školního účtu a vyberte datovou sadu a tabulku, kterou jste definovali jako výstup úlohy Stream Analytics.
 
 ![V Power BI vyberte datovou sadu a pole.](./media/export-stream-analytics/200.png)
 
-Teď můžete tuto datovou sadu v sestavách a řídicích panelů v [Power BI](https://powerbi.microsoft.com).
+Nyní můžete tuto datovou sadu použít v sestavách a řídicích panelech v [Power BI](https://powerbi.microsoft.com).
 
 ![V Power BI vyberte datovou sadu a pole.](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>Žádná data?
-* Zkontrolujte, které jste [nastavit formát data](#set-path-prefix-pattern) správně na rrrr-MM-DD (s pomlčkami).
+* Ověřte, že jste správně [nastavili formát data](#set-path-prefix-pattern) na rrrr-mm-dd (s pomlčkami).
 
 ## <a name="video"></a>Video
-Noam Robert Zeev ukazuje, jak zpracovat exportovaná data pomocí Stream Analytics.
+Noam Robert Zeev ukazuje, jak zpracovávat exportovaná data pomocí Stream Analytics.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Průběžný export](export-telemetry.md)
-* [Podrobný datový model referenční informace pro typy vlastností a hodnot.](export-data-model.md)
+* [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 

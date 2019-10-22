@@ -1,26 +1,21 @@
 ---
 title: Mapa aplikace v Azure Application Insights | Microsoft Docs
 description: Monitorování složitých topologií aplikace s mapou aplikace
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983766"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678388"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
+# <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
 Mapa aplikace vám pomůže odhalit slabá místa výkonu nebo neúspěšné oblasti selhání napříč všemi komponentami distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo její závislosti; a má stav klíčových ukazatelů výkonu a výstrah. Můžete kliknout na libovolnou komponentu a podrobnou diagnostiku, například Application Insights události. Pokud vaše aplikace používá služby Azure, můžete také kliknout na Azure Diagnostics, jako je SQL Database Advisor doporučení.
 
@@ -50,7 +45,7 @@ Kliknutím na libovolnou komponentu zobrazíte související přehledy a přejde
 
 ![Ukotven](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Prověřit chyby
+### <a name="investigate-failures"></a>Prozkoumat selhání
 
 Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
@@ -58,7 +53,7 @@ Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
 ![Snímek obrazovky s problémy s chybami](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Prověřit výkon
+### <a name="investigate-performance"></a>Prozkoumat výkon
 
 Pokud chcete řešit problémy s výkonem, vyberte **prozkoumat výkon**.
 
@@ -74,7 +69,7 @@ Vyberte **Přejít k podrobnostem** a prozkoumejte koncové prostředí transakc
 
 ![Snímek obrazovky s podrobnostmi o transakci od začátku do konce](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Zobrazit v Analytics
+### <a name="view-in-analytics"></a>Zobrazit v analýzách
 
 Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zobrazit v analýze**.
 
@@ -82,7 +77,7 @@ Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zob
 
 ![Snímek obrazovky s možností analýzy](media/app-map/analytics.png)
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 Chcete-li zobrazit aktivní výstrahy a podkladová pravidla, která způsobují aktivované výstrahy, vyberte možnost **výstrahy**.
 
@@ -119,9 +114,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET aplikace: Zátěžový inicializátor pro aktivní TelemetryConfiguration**
+**Aplikace ASP.NET: inicializátor zatížení pro aktivní TelemetryConfiguration**
 
-In ApplicationInsights.config :
+V souboru ApplicationInsights. config:
 
 ```xml
     <ApplicationInsights>
@@ -147,11 +142,11 @@ Alternativním způsobem pro webové aplikace ASP.NET je vytvoření instance in
 ```
 
 > [!NOTE]
-> Přidání inicializátoru `ApplicationInsights.config` pomocí nebo `TelemetryConfiguration.Active` použití není pro ASP.NET Core aplikace platné. 
+> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není pro ASP.NET Core aplikace platné. 
 
-**ASP.NET Core aplikace: Zátěžový inicializátor pro TelemetryConfiguration**
+**ASP.NET Core aplikace: inicializátor zátěže na TelemetryConfiguration**
 
-U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodě vaší `Startup.cs` třídy.
+U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metoda vaší `Startup.cs` třídy.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -210,7 +205,7 @@ Vzhledem k tomu, jak si představit **název cloudové role**, může být užit
 
 ![Snímek obrazovky s mapou aplikace](media/app-map/cloud-rolename.png)
 
-V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z: `Authentication`, `acmefrontend`, `Inventory Management` a `Payment Processing Worker Role`. 
 
 V případě této aplikace všechny názvy cloudových rolí také představují jiný jedinečný Application Insights prostředek s vlastními klíči instrumentace. Vzhledem k tomu, že vlastník této aplikace má přístup ke každému z těchto čtyř různorodých Application Insightsch prostředků, může mapa aplikace spojovat mapu základních vztahů.
 
@@ -230,7 +225,7 @@ Alternativně může být **instance cloudové** role užitečná ve scénáří
 
 Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, může být, pokud vaše aplikace běží v prostředí s kontejnerem, kde stačí jenom vědět, že jednotlivý server nemusí být k dispozici dostatek informací, aby mohl najít daný problém.
 
-Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete [v tématu Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -244,7 +239,7 @@ Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkus
 
 2. Upgradujte všechny součásti na nejnovější verzi sady SDK.
 
-3. Pokud používáte Azure Functions s C#, upgradujte na functions [v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Pokud používáte Azure Functions s C#, upgradujte na [Functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Ověřte, že je [název cloudové role](#set-cloud-role-name) správně nakonfigurovaný.
 
@@ -270,7 +265,7 @@ Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
 
 ![Obrázek MapLink-1](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o tom, jak korelace funguje v Application Insights, najdete v [článku korelace telemetrie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
 * [Koncové prostředí pro diagnostiku transakcí](transaction-diagnostics.md) koreluje telemetrie na straně serveru ze všech vašich Application Insights monitorovaných komponent do jednoho zobrazení.

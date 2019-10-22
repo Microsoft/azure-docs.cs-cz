@@ -1,33 +1,29 @@
 ---
-title: Azure Application Insights Telemetrie datový Model - Telemetrie událostí | Dokumentace Microsoftu
-description: Application Insights datový model pro telemetrie událostí
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Datový model Azure Telemetrie Application Insights – telemetrie událostí | Microsoft Docs
+description: Application Insights datový model pro telemetrii událostí
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900846"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678153"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie událostí: Datový model Application Insights
+# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie událostí: datový model Application Insights
 
-Můžete vytvořit událost položky telemetrie (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představující události, ke které došlo ve vaší aplikaci. Obvykle je interakce s uživatelem, například klikněte na tlačítko nebo objednávka rezervace. Může být událost životního cyklu aplikace jako aktualizace inicializace nebo konfigurace. 
+Můžete vytvořit položky telemetrie událostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)), které reprezentují událost, ke které došlo ve vaší aplikaci. Obvykle jde o interakci uživatele, jako je například kliknutí na tlačítko nebo rezervace objednávky. Může to být také událost životního cyklu aplikace, jako je například inicializace nebo aktualizace konfigurace. 
 
-Události sémanticky, může nebo nemusí být korelována požadavky. Pokud však správně použít telemetrie událostí je důležitější než požadavky nebo trasování. Události představují obchodní telemetrická data a mělo by být předmětu k oddělení, méně agresivní [vzorkování](../../azure-monitor/app/api-filtering-sampling.md).
+Sémantika, události mohou nebo nemusí být v souvislosti s požadavky korelační. Je-li však tento příkaz použit správně, telemetrie událostí je důležitější než požadavky nebo trasování. Události reprezentují obchodní telemetrii a měly by být předmětem samostatného a méně agresivního [vzorkování](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="name"></a>Name
+## <a name="name"></a>Name (Název)
 
-Název události. Povolit správné seskupování a užitečné metriky, zakažte svou aplikaci tak, aby generuje malý počet názvů samostatná událost. Nepoužívejte například odlišný název pro každou instanci vygenerované události.
+Název události Chcete-li povolit správné seskupení a užitečnou metriku, omezte aplikaci tak, aby vygenerovala malý počet samostatných názvů událostí. Nepoužívejte například samostatný název pro každou vygenerovanou instanci události.
 
 Maximální délka: 512 znaků
 
@@ -39,8 +35,8 @@ Maximální délka: 512 znaků
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
-- [Psát vlastní telemetrii událostí](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- Viz [datový model](data-model.md) pro typy Application Insights a datový model.
+- [Zápis vlastní telemetrie událostí](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.

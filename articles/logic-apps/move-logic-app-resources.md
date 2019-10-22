@@ -1,5 +1,5 @@
 ---
-title: Přesunutí prostředků aplikace logiky mezi předplatnými, skupinami prostředků nebo oblastmi – Azure Logic Apps
+title: Přesuňte aplikace logiky napříč předplatnými, skupinami prostředků nebo oblastmi – Azure Logic Apps
 description: Migrace aplikací logiky nebo integračních účtů do jiných předplatných Azure, skupin prostředků nebo umístění (oblastí)
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737495"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679110"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Migrace prostředků aplikace logiky do jiných předplatných Azure, skupin prostředků nebo oblastí
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Přesunutí prostředků aplikace logiky do jiných předplatných Azure, skupin prostředků nebo oblastí
 
 Pokud chcete přesunout aplikaci logiky nebo související prostředky do jiného předplatného Azure, skupiny prostředků nebo oblasti, budete mít k dispozici různé způsoby, jak tyto úlohy dokončit, například Azure Portal, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků si prostudujte tyto informace: 
 
@@ -26,7 +26,7 @@ Pokud chcete přesunout aplikaci logiky nebo související prostředky do jinéh
 
 * Když přesunete prostředky, Azure vytvoří nová ID prostředků. Nezapomeňte místo toho použít nová ID a aktualizovat skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům. Po přesunutí Logic Apps mezi předplatnými, skupinami prostředků nebo oblastmi musíte znovu vytvořit nebo znovu autorizovat všechna připojení založená na protokolu OAuth.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
@@ -36,7 +36,7 @@ Pokud chcete přesunout aplikaci logiky nebo související prostředky do jinéh
 
 ## <a name="move-resources-between-subscriptions"></a>Přesunutí prostředků mezi předplatnými
 
-Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro integraci, do jiného předplatného Azure, můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují Azure Portal, které můžete použít, když je oblast prostředku stejná. Další kroky a obecnou přípravu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md)předplatného.
+Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro integraci, do jiného předplatného Azure, můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují Azure Portal, které můžete použít, když je oblast prostředku stejná. Další kroky a obecnou přípravu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte prostředek aplikace logiky, který chcete přesunout.
 
@@ -54,7 +54,7 @@ Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro int
 
 ## <a name="move-resources-between-resource-groups"></a>Přesunutí prostředků mezi skupinami prostředků
 
-Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro integraci, do jiné skupiny prostředků Azure, můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují Azure Portal, které můžete použít, když je oblast prostředku stejná. Další kroky a obecnou přípravu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](../azure-resource-manager/resource-group-move-resources.md)předplatného.
+Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro integraci, do jiné skupiny prostředků Azure, můžete použít Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Tyto kroky zahrnují Azure Portal, které můžete použít, když je oblast prostředku stejná. Další kroky a obecnou přípravu najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
 Před skutečným přesunutím prostředků mezi skupinami můžete otestovat, jestli můžete prostředek úspěšně přesunout do jiné skupiny. Další informace najdete v tématu [ověření vašeho přesunu](../azure-resource-manager/resource-group-move-resources.md#validate-move).
 
@@ -82,12 +82,12 @@ Pokud chcete aplikaci logiky přesunout do jiné oblasti, závisí vaše možnos
 
 Další informace o šablonách nasazení pro Logic Apps najdete v těchto tématech:
 
-* [Přehled Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Hledání, otevření a stažení aplikace logiky z Azure Portal do sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Vytvoření šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Nasazení šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Související prostředky
+### <a name="related-resources"></a>Související materiály
 
 Některé prostředky Azure, například prostředky místní brány dat v Azure, můžou existovat v oblasti, která se liší od aplikací logiky, které tyto prostředky využívají. Nicméně jiné prostředky Azure, jako jsou propojené integrační účty, musí existovat ve stejné oblasti jako aplikace logiky. V závislosti na vašem scénáři se ujistěte, že vaše aplikace logiky mají přístup k prostředkům, které vaše aplikace očekávají ve stejné oblasti.
 
@@ -107,6 +107,6 @@ Vlastní konektory v Azure Logic Apps jsou viditelné pro autory konektorů a u�
 
 1. Otevřením a úpravou šablony můžete parametrizovat nezbytné hodnoty pro nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přesunutí prostředků Azure do nových skupin prostředků nebo předplatných](../azure-resource-manager/resource-group-move-resources.md)

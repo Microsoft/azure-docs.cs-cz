@@ -7,12 +7,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244467"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678460"
 ---
 # <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Vytvoření Azure Search Knowledge Store pomocí REST
 
@@ -30,7 +30,7 @@ Vytvořte následující služby:
 
 - Vytvořte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat a úložiště znalostí. Váš účet úložiště musí pro službu Azure Search používat stejné umístění (například USA – západ). Hodnota pro **druh účtu** musí být **StorageV2 (pro obecné účely v2)** (výchozí) nebo **Storage (pro obecné účely V1)** .
 
-- Doporučené: Získejte [aplikaci po ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem, který dokáže pracovat s požadavky a odpověďmi HTTP. Jako dodatečná volba pro zkoumání rozhraní REST API je vhodná. V tomto článku používáme post. [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) pro tento článek také obsahuje kolekci požadavků post. 
+- Doporučené: Získejte [aplikaci po ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure Search. REST API můžete použít s jakýmkoli nástrojem, který dokáže pracovat s požadavky a odpověďmi HTTP. Jako dodatečná volba pro zkoumání rozhraní REST API je vhodná. V tomto článku používáme post. [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) pro tento článek také obsahuje kolekci požadavků post. 
 
 ## <a name="store-the-data"></a>Uložení dat
 
@@ -46,13 +46,13 @@ Načtěte soubor. CSV pro kontrolu hotelu do úložiště objektů BLOB v Azure,
 1. Vyberte **OK** a vytvořte kontejner objektů BLOB.
 1. Otevřete nový **seznam hotelů – kontrola** kontejneru, vyberte **nahrát**a potom vyberte soubor HotelReviews-Free. csv, který jste stáhli v prvním kroku.
 
-    ![Nahrání dat]nahrání(media/knowledge-store-create-portal/upload-command-bar.png "pro posuzujecí Hotel")
+    ![Nahrajte data](media/knowledge-store-create-portal/upload-command-bar.png "Nahrajte recenze hotelu.")
 
 1. Vyberte **nahrát** a IMPORTUJTE soubor CSV do úložiště objektů BLOB v Azure. Zobrazí se nový kontejner:
 
-    ![Vytvoření kontejneru objektů BLOB](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "vytvoření kontejneru objektů BLOB")
+    ![Vytvoření kontejneru objektů BLOB](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Vytvoření kontejneru objektů BLOB")
 
-## <a name="configure-postman"></a>Konfigurovat metodu post
+## <a name="configure-postman"></a>Konfigurace nástroje Postman
 
 Nainstalujte a nastavte post.
 
@@ -63,14 +63,14 @@ Nainstalujte a nastavte post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
 1. Vyberte **Upravit**. 
    
-   ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "Přejít do nabídky upravit v příspěvku")
+   ![Pozálohovací aplikace ukazující navigaci](media/knowledge-store-create-rest/postman-edit-menu.png "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
 
 Na kartě **proměnné** můžete přidat hodnoty, které účtují swapy při každém výskytu konkrétní proměnné uvnitř dvojitých složených závorek. Například metoda post nahradí symbol `{{admin-key}}` aktuální hodnotou, kterou jste nastavili pro `admin-key`. Po nahrazení se provede náhrada v adresách URL, hlavičkách, textu žádosti atd. 
 
 Pokud chcete získat hodnotu pro `admin-key`, přejděte do služby Azure Search a vyberte kartu **klíče** . Změňte `search-service-name` a `storage-account-name` na hodnoty, které jste zvolili v části [vytvořit služby](#create-services). Nastavte `storage-connection-string` pomocí hodnoty na kartě **přístupové klíče** účtu úložiště. Pro ostatní hodnoty můžete ponechat výchozí hodnoty.
 
-(media/knowledge-store-create-rest/postman-variables-window.png "Okno proměnné pro") vystavení ![záložky pro vystavení aplikace]
+![Karta proměnné aplikace po odeslání](media/knowledge-store-create-rest/postman-variables-window.png "Okno pro proměnné post")
 
 
 | Proměnná    | Kde ho získat |
@@ -107,7 +107,7 @@ Při vytváření znalostní báze musíte vydat čtyři požadavky HTTP:
 
 Vytvořte index Azure Search, který bude reprezentovat data, která vás zajímají při hledání, filtrování a používání vylepšení. Vytvořte index tím, že vydáte požadavek PUT `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Metoda post nahradí symboly, které jsou uzavřeny ve složených závorkách (například `{{search-service-name}}`, `{{index-name}}` a `{{api-version}}`) hodnotami, které jste nastavili v části [Konfigurace post](#configure-postman). Pokud používáte jiný nástroj k vystavení příkazů REST, je nutné tyto proměnné nahradit sami.
 
-Nastavte strukturu Azure Search indexu v těle žádosti. V poli po nastavení hlaviček `api-key` a `Content-type` přejdete do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **Nezpracovaná**@no__t**JSON (Application/JSON)** a vložte následující kód jako text:
+Nastavte strukturu Azure Search indexu v těle žádosti. V poli po nastavení hlaviček `api-key` a `Content-type` přejdete do podokna **tělo** žádosti. Měl by se zobrazit následující kód JSON. Pokud to neuděláte, vyberte **nezpracované**  > **JSON (Application/JSON)** a vložte následující kód jako text:
 
 ```JSON
 {
@@ -168,9 +168,9 @@ Vyberte **Odeslat** pro vydání žádosti post.
 
 Dalším krokem je zadání dovednosti, které určuje jak vylepšení použít, tak úložiště znalostí, kde se výsledky uloží. V poli pro odeslání vyberte kartu **vytvořit dovednosti** . Tento požadavek pošle `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Nastavte hlavičky `api-key` a `Content-type` jako dříve. 
 
-Existují dva velké objekty nejvyšší úrovně: `skills` a `knowledgeStore`. Každý objekt uvnitř objektu `skills` je služba rozšíření. Každá služba pro rozšíření má `inputs` a `outputs`. @No__t-0 má výstupní `targetName` `Language`. Hodnota tohoto uzlu je používána většinou dalších dovedností jako vstup. Zdroj je `document/Language`. Schopnost používat výstup jednoho uzlu jako vstup do druhého je ještě více zjevné v `ShaperSkill`, což určuje, jak se data budou natékat do tabulek ve znalostní bázi Knowledge Store.
+Existují dva velké objekty nejvyšší úrovně: `skills` a `knowledgeStore`. Každý objekt uvnitř objektu `skills` je služba rozšíření. Každá služba pro rozšíření má `inputs` a `outputs`. @No__t_0 má výstupní `targetName` `Language`. Hodnota tohoto uzlu je používána většinou dalších dovedností jako vstup. Zdroj je `document/Language`. Schopnost používat výstup jednoho uzlu jako vstup do druhého je ještě více zjevné v `ShaperSkill`, což určuje, jak se data budou natékat do tabulek ve znalostní bázi Knowledge Store.
 
-Objekt `knowledge_store` se připojí k účtu úložiště přes proměnnou post `{{storage-connection-string}}`. `knowledge_store` obsahuje sadu mapování mezi vylepšeným dokumentem a tabulkami a sloupci ve znalostní bázi Knowledge Store. 
+Objekt `knowledge_store` se připojuje k účtu úložiště prostřednictvím proměnné post `{{storage-connection-string}}`. `knowledge_store` obsahuje sadu mapování mezi vylepšeným dokumentem a tabulkami a sloupci ve znalostní bázi Knowledge Store. 
 
 Pokud chcete vygenerovat dovednosti, vyberte tlačítko Odeslat v poli pro **odeslání** žádosti:
 
@@ -337,7 +337,7 @@ Po nastavení hlaviček `api-key` a `Content-type` a potvrzení, že text žádo
 }
 ```
 
-## <a name="run-the-indexer"></a>Spustit indexer 
+## <a name="run-the-indexer"></a>Spuštění indexeru 
 
 V Azure Portal přejdete na stránku **Přehled** služby Azure Search. Vyberte kartu **indexery** a pak vyberte **hotely-recenze – IXR**. Pokud indexer ještě není spuštěný, vyberte **Spustit**. Úloha indexování může vyvolávat některá upozornění související s rozpoznáváním jazyka. Data obsahují některé recenze, které jsou napsané v jazycích, které ještě nejsou podporované znalostmi rozpoznávání. 
 
@@ -353,6 +353,6 @@ Další informace o tom, jak prozkoumat toto úložiště znalostí pomocí Prů
 Další informace o tom, jak se připojit k tomuto znalostnímu obchodu pro Power BI, najdete v tomto návodu:
 
 > [!div class="nextstepaction"]
-> [Připojení pomocí Power BI](knowledge-store-connect-power-bi.md)
+> [Propojení s Power BI](knowledge-store-connect-power-bi.md)
 
 Pokud chcete tento cvičení opakovat nebo si vyzkoušet jiný návod k rozšíření AI, odstraňte indexer **idxr hotelového přezkoumání** . Odstranění indexeru obnoví čítač bezplatných denních transakcí na nulu.

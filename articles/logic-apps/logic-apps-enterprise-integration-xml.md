@@ -1,6 +1,6 @@
 ---
-title: Zprávy XML pro podnikovou integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Zpracování, ověřování, transformaci a obohacovat zprávy XML pro řešení B2B v Azure Logic Apps sadou Enterprise Integration Pack
+title: Zprávy XML a ploché soubory – Azure Logic Apps
+description: Zpracování, ověřování a transformace zpráv XML v Azure Logic Apps pomocí Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,30 +8,34 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 730adf3e6ef3ddab5a8b0e927f94ffe3725358f4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996560"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679905"
 ---
-# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy XML a plochých souborů v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy XML a ploché soubory v Azure Logic Apps s Enterprise Integration Pack
 
-Pomocí logic apps, máte možnost zpracování zpráv XML, které můžete odesílat a přijímat. Tato funkce je součástí sady Enterprise Integration Pack. Pro tyto uživatele s pozadí BizTalk Server Enterprise Integration Pack poskytuje podobné možnosti transformace a ověření zprávy, pracovat s plochých souborů a dokonce i pomocí jazyka XPath rozšiřovat ani je nemohl extrahovat specifické vlastnosti ze zprávy. 
+V [Azure Logic Apps](logic-apps-overview.md)můžete zpracovávat zprávy XML, které odesíláte a přijímáte pomocí Enterprise Integration Pack. Pokud jste použili BizTalk Server, Enterprise Integration Pack poskytuje podobné možnosti pro transformaci a ověření zpráv, práci s plochými soubory a dokonce i k rozšíření nebo extrakci specifických vlastností ze zprávy pomocí XPath. Pokud s tímto místem začínáte, tyto funkce rozšiřují způsob zpracování zpráv v pracovním postupu vaší aplikace logiky. Například pokud máte scénář B2B (Business-to-Business) a pracujete s konkrétními schématy XML, můžete použít Enterprise Integration Pack k vylepšení způsobu, jakým vaše společnost zpracovává tyto zprávy.
 
-Pro uživatele, kteří se do tohoto prostoru tyto funkce Rozbalit, jak zpracovávat zprávy v rámci pracovního postupu. Například pokud máte ve scénáři business-to-business a pracovat s konkrétní schémat XML, Enterprise Integration Pack můžete použít ke zvýšení jak vaše společnost zpracovává tyto zprávy. 
+Enterprise Integration Pack například zahrnuje tyto možnosti:
 
-Enterprise Integration Pack zahrnuje: 
+* [Ověření XML](logic-apps-enterprise-integration-xml-validation.md): ověří příchozí nebo odchozí zprávu XML proti konkrétnímu schématu.
 
-* [Ověření XML](logic-apps-enterprise-integration-xml-validation.md "přečtěte si víc o ověření XML zprávy") – ověření příchozích nebo odchozích XML zprávy pro konkrétní schéma.
-* [Transformace XML](../logic-apps/logic-apps-enterprise-integration-transform.md "Další informace o mapování a transformace XML zprávy") – převést nebo úprava zprávy XML na základě vašich požadavků nebo objemu partnera.
-* [Plochého souboru kódování a dekódování plochého souboru](logic-apps-enterprise-integration-flatfile.md "přečtěte si víc o dekódování plochého souborukódování/") – kódování nebo dekódování plochého souboru. Například SAP přijímá a odesílá IDOC soubory ve formátu plochých souborů. Řada platforem integrace vytvářet zprávy XML, včetně Logic Apps. Ano můžete vytvořit aplikaci logiky, která používá kodér plochého souboru "převést" soubory XML do plochých souborů. 
-* [Výraz XPath](https://msdn.microsoft.com/library/mt643789.aspx) – obohacení zprávu a extrahovat určité vlastnosti ze zprávy. Extrahované vlastnosti můžete poté zprávy směruje do cíle nebo zprostředkující koncový bod.
+* [Transformace XML](logic-apps-enterprise-integration-transform.md): převod nebo přizpůsobení zprávy XML na základě vašich požadavků nebo požadavků partnera pomocí map.
 
-## <a name="try-it-out"></a>Vyzkoušet
-[Nasazení aplikace logiky plně funkční](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (ukázka na Githubu) pomocí funkce XML v Azure Logic Apps.
+* [Kódování plochého souboru a dekódování plochého](logic-apps-enterprise-integration-flatfile.md)souboru: kódování nebo dekódování plochého souboru.
 
-## <a name="learn-more"></a>Víc se uč
-[Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")
+  Například SAP akceptuje a odesílá soubory IDOC ve formátu plochého souboru. Řada integračních platforem vytváří zprávy XML, včetně Logic Apps. Proto můžete vytvořit aplikaci logiky, která používá k převodu souborů XML do plochých souborů kodér plochý soubor.
+
+* [XPath](workflow-definition-language-functions-reference.md#xpath): obohacení zprávy a extrakce specifických vlastností ze zprávy. Pak můžete pomocí extrahovaných vlastností směrovat zprávu do cílového nebo zprostředkujícího koncového bodu.
+
+## <a name="sample"></a>Ukázka
+
+[Nasazení plně operační aplikace logiky](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (ukázka GitHubu) pomocí funkcí XML v Azure Logic Apps.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

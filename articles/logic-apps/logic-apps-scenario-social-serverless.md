@@ -1,5 +1,5 @@
 ---
-title: Scénář bez serveru – vytvoření řídicího panelu zákaznických přehledů pomocí služeb Azure | Microsoft Docs
+title: Vytvoření řídicího panelu Customer Insights – Azure Logic Apps
 description: Spravujte názory zákazníků, data sociálních médií a další informace vytvořením řídicího panelu zákazníka pomocí Azure Logic Apps a Azure Functions
 services: logic-apps
 ms.service: logic-apps
@@ -7,17 +7,16 @@ ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c9c5cf9c56f2e22faa973c983c6fd81733119daa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164869"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680112"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
 
 Azure nabízí nástroje bez [serveru](https://azure.microsoft.com/solutions/serverless/) , které vám pomůžou rychle vytvářet a hostovat aplikace v cloudu, aniž byste se museli zabývat infrastrukturou. V tomto kurzu můžete vytvořit řídicí panel, který se aktivuje na základě zpětné vazby od zákazníků, analyzuje zpětnou vazbu pomocí machine learningu a zveřejňuje přehledy na zdroj, jako je Power BI nebo Azure Data Lake.
 
@@ -34,7 +33,7 @@ Můžete [sestavit celé řešení v aplikaci Visual Studio](../logic-apps/quick
 
    Pokud s Logic Apps začínáte, přečtěte si [rychlý Start pro Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) nebo [rychlý Start pro Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-2. V návrháři aplikace logiky vyhledejte a přidejte Trigger Twitteru, který má tuto akci: **Když se publikuje nový disk**
+2. V návrháři aplikace logiky vyhledejte a přidejte Trigger Twitteru, který má tuto akci: **při zveřejnění nového** přístavu
 
 3. Nastavte Trigger tak, aby naslouchal tweety na základě klíčového slova nebo hashtagu.
 
@@ -60,10 +59,10 @@ K detekci mínění za nějakým textem můžete použít [Azure Cognitive Servi
 
 Po získání dat v poli se základními informacemi o promoci teď můžete použít několik dalších relevantních konektorů a jejich akce:
 
-* **Power BI – přidání řádků do datové sady streamování**: Zobrazení příchozích tweety na řídicím panelu Power BI.
-* **Azure Data Lake – připojit soubor**: Přidejte zákaznická data do Azure Data Lake datové sady, která se mají zahrnout do úloh analýzy.
-* **SQL – přidat řádky**: Uložení dat v databázi pro pozdější načtení.
-* **Časová rezerva – poslat zprávu**: Upozorněte kanál časové rezervy na negativní zpětnou vazbu, která může vyžadovat akci.
+* **Power BI – přidání řádků do datové sady streamování**: zobrazení příchozích tweety na řídicím panelu Power BI.
+* **Azure Data Lake – připojit soubor**: přidejte zákaznická Data do Azure Data Lake datové sady, která se mají zahrnout do úloh analýzy.
+* **SQL – přidání řádků**: uložení dat v databázi pro pozdější načtení.
+* **Časová rezerva – odeslání zprávy**: oznámení kanálu časové rezervy o negativní zpětné vazbě, která může vyžadovat akci.
 
 Můžete také vytvořit a funkci Azure Function, abyste mohli provádět vlastní zpracování dat. 
 
@@ -72,7 +71,7 @@ Můžete také vytvořit a funkci Azure Function, abyste mohli provádět vlastn
 Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-create-first-azure-function-azure-portal.md).
 
 V tomto scénáři jako text žádosti pro funkci Azure použijte text. V kódu funkce definujte logiku, která určuje, zda text příznaku obsahuje klíčové slovo nebo frázi. Tuto funkci nechte v případě potřeby ve scénáři jednoduché nebo složitější.
-Na konci funkce vrátí odpověď do aplikace logiky s některými daty, například jednoduchou logickou hodnotu `containsKeyword` , jako je například nebo složitý objekt.
+Na konci funkce vrátí odpověď do aplikace logiky s některými daty, například jednoduchou logickou hodnotu, například `containsKeyword` nebo složitý objekt.
 
 > [!TIP]
 > Pro přístup ke složitou odezvě z funkce v aplikaci logiky použijte akci **analyzovat JSON** .

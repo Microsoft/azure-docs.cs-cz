@@ -1,20 +1,18 @@
 ---
 title: Nepřetržité monitorování kanálu pro vydávání verzí DevOps pomocí Azure Pipelines a Azure Application Insights | Microsoft Docs
 description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorování pomocí Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/16/2019
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277721"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677518"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
 
@@ -26,7 +24,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 1. V [Azure DevOps](https://dev.azure.com)vyberte organizaci a projekt.
    
-1. V levé nabídce stránky projektu vyberte možnost**vydané verze** **kanálů** > . 
+1. V levé nabídce stránky projektu vyberte **kanály**  > **vydání**. 
    
 1. Přetáhněte šipku vedle tlačítka **Nový** a vyberte **Nový kanál vydání**. Nebo, pokud ještě nemáte kanál, vyberte na zobrazené stránce **Nový kanál** .
    
@@ -40,7 +38,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 1. V podokně Konfigurace **fáze 1** vyplňte následující pole: 
 
-    | Parametr        | Value |
+    | Parametr        | Hodnota |
    | ------------- |:-----|
    | **Název fáze**      | Zadejte název fáze nebo ho ponechte ve **fázi 1**. |
    | **Předplatné Azure** | Rozevírací seznam a vyberte propojené předplatné Azure, které chcete použít.|
@@ -53,7 +51,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 ## <a name="modify-alert-rules"></a>Upravit pravidla upozornění
 
-Dopředné: **nasazení Azure App Service se** šablonou nepřetržitého monitorování má čtyři pravidla výstrahy: **Dostupnost**, **neúspěšné požadavky**, **Doba odezvy serveru**a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidla tak, aby splňovalo potřeby úrovně služeb. 
+Dopředné: **nasazení Azure App Service se šablonou nepřetržitého monitorování** má čtyři pravidla výstrahy **: dostupnost**, **neúspěšné požadavky**, **Doba odezvy serveru**a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidla tak, aby splňovalo potřeby úrovně služeb. 
 
 Úprava nastavení pravidla výstrahy:
 
@@ -87,22 +85,22 @@ Přidání bran nasazení:
    
    ![Výstrahy Azure Monitor dotazů](media/continuous-monitoring/005.png)
    
-1. V části **Možnosti vyhodnocení**zadejte hodnoty, jako je **čas mezi opakovaným vyhodnocením bran** a časovým limitem, **po kterém selžou**. 
+1. V části **Možnosti vyhodnocení**zadejte hodnoty, jako je **čas mezi opakovaným vyhodnocením bran** a **časovým limitem, po kterém selžou**. 
 
 ## <a name="view-release-logs"></a>Zobrazit protokoly verzí
 
 V protokolech vydaných verzí uvidíte chování brány nasazení a další kroky vydání. Otevření protokolů:
 
-1. V levé nabídce stránky kanálu vyberte releases ( **vydané verze** ). 
+1. V levé nabídce stránky kanálu vyberte **releases (vydané verze** ). 
    
 1. Vyberte libovolnou verzi. 
    
 1. V části **fáze**výběrem libovolné fáze zobrazíte souhrn vydaných verzí. 
    
-1. Pokud chcete zobrazit protokoly, vyberte v souhrnu verzí možnost **Zobrazit protokoly** , v libovolné fázi vyberte hypertextový odkaz **úspěšný** nebo neúspěšný, nebo najeďte myší na libovolnou fázi a vyberte **protokoly**. 
+1. Pokud chcete zobrazit protokoly, vyberte v souhrnu verzí možnost **Zobrazit protokoly** , v libovolné fázi vyberte hypertextový odkaz **úspěšný** nebo **neúspěšný** , nebo najeďte myší na libovolnou fázi a vyberte **protokoly**. 
    
    ![Zobrazit protokoly verzí](media/continuous-monitoring/006.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Pipelines najdete v dokumentaci k [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines).

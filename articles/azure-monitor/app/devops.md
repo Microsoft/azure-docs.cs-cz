@@ -1,172 +1,167 @@
 ---
-title: Web application performance monitoring - Azure Application Insights | Dokumentace Microsoftu
+title: Sledování výkonu webových aplikací – Azure Application Insights | Microsoft Docs
 description: Jak Application Insights zapadá do cyklu devOps
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/21/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/21/2018
+ms.openlocfilehash: bf7c0b4db2b7eb662f55b917dbe318d0ad8023ce
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899638"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677297"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
-Application Insights monitoruje webové aplikace spuštěné. Vás informuje o selhání a problémy s výkonem a pomáhá analyzovat, jak zákazníci využívají vaše aplikace. Funguje pro aplikace běžící na spoustě platforem (ASP.NET, Java EE, Node.js,...) a je hostovaná v cloudu nebo místně. 
+Application Insights monitoruje spuštěnou webovou aplikaci. Dozvíte se o chybách a problémech s výkonem a pomůže vám analyzovat, jak zákazníci používají vaši aplikaci. Funguje pro aplikace běžící na mnoha platformách (ASP.NET, Java EE, Node. js,...) a hostuje se v cloudu i v místním prostředí. 
 
-![Aspekty složitost doručování webových aplikací](./media/devops/010.png)
+![Aspekty složitosti doručování webových aplikací](./media/devops/010.png)
 
-Je nezbytné pro monitorování moderní aplikace během jejího běhu. Nejdůležitější ale je který chcete detekovat selhání před většina vašich zákazníků. Také chcete vyhledat a opravit problémy s výkonem, zatímco není katastrofickými, možná zpomalit zpracování nebo způsobit nějaké potíže vašim uživatelům. A když systém provádí vašich potřeb, budete chtít vědět, co uživatelé dělají s ní: Používají se nejnovější funkce? Jsou úspěšná s ním?
+Je důležité monitorovat moderní aplikace, když je spuštěná. Nejdůležitější je, že chcete detekovat chyby před většinou svých zákazníků. Také budete chtít zjistit a opravit problémy s výkonem, které sice nejsou závažné, možná zpomalit nebo způsobit určité obtíže uživatelům. A když systém provádí Vaše spokojenost, budete chtít zjistit, co s tím uživatelé dělají, když používají nejnovější funkci? Je s ní Tato operace úspěšná?
 
-Moderní webové aplikace, které jsou vyvíjeny v cyklu průběžného doručování: vydání nové funkce nebo vylepšení; Sledujte, jak dobře funguje pro uživatele; Naplánujte další přírůstek podle dané znalosti vývoje. Klíčovou součástí tohoto cyklu je fázi zjišťování. Application Insights poskytuje nástroje pro monitorování výkonu a využití webové aplikace.
+Moderní webové aplikace se vyvíjí v cyklu průběžného doručování: vydání nové funkce nebo zlepšení; Sledujte, jak dobře funguje pro uživatele. Naplánujte další přírůstek vývoje na základě tohoto vědomí. Klíčovou součástí tohoto cyklu je pozorovací fáze. Application Insights poskytuje nástroje pro monitorování výkonu a využití webové aplikace.
 
-Nejdůležitější aspekty tohoto procesu je diagnostiky a Diagnostika. Pokud aplikace selže, je právě ztráty firmy. Primární role monitorování framework je proto spolehlivé zjišťování chyb, můžete okamžitě informovat a znamenat informace potřebné k diagnostice problému. To je přesně čemu Application Insights.
+Nejdůležitější aspekt tohoto procesu je diagnostika a diagnostika. Pokud dojde k chybě aplikace, bude společnost sledována. Hlavní rolí rozhraní pro monitorování je proto, aby bylo možné spolehlivě detekovat chyby, upozorňovat okamžitě a prezentovat informace potřebné k diagnostice problému. To je přesně to, co Application Insights.
 
-### <a name="where-do-bugs-come-from"></a>Odkud pocházejí chyb?
-Chyby ve webových systémů obvykle vzniknout problémy s konfigurací nebo chybný interakce mezi jejich řada komponent. Proto je první úkol při použití na incident živého webu místo problém identifikovat: které komponenta nebo vztah je příčinou?
+### <a name="where-do-bugs-come-from"></a>Odkud přicházejí nějaké chyby?
+Selhání webových systémů obvykle vznikají při potížích s konfigurací nebo špatné interakce mezi jejich mnoha komponentami. První úkol při řešení incidentu živého webu je proto identifikovat Locus problému: kterou součást nebo vztah způsobují?
 
-Některé z nás, těmi, které mají šedou vlasů zapamatujete jednodušší období, ve kterém byl počítačový program spuštěn v jednom počítači. Vývojáři by se důkladně otestujte před dodáním. a s dodán, by zřídka najdete v článku nebo Představte si to znovu. Uživatelé by musel vyvěste s zbývající chyby po mnoho let. 
+Některé z nich s šedým vlasy si můžou pamatovat na jednodušší období, kdy počítačový program běžel v jednom počítači. Vývojáři ji před expedicí důkladně otestovali. a když ho dostanou, bude se ho na něj znovu zobrazovat nebo se na něj považovat. Uživatelé by museli v mnoha letech vydávat zbývající chyby. 
 
-Co jsou nyní tak velmi liší. Vaše aplikace obsahuje množství spouštět na různých zařízeních a může být obtížné zajistit přesně stejné chování na každé z nich. Hostování aplikací v cloudu znamená, že můžete rychle opravit chyby, ale také to znamená průběžné soutěž a že budou nové funkce v pravidelných intervalech. 
+Věci se teď velmi liší. Vaše aplikace má spoustu různých zařízení, na kterých běží, a může být obtížné zaručit pro každé z nich přesné stejné chování. Hostování aplikací v cloudu znamená, že chyby je možné rychle opravit, ale také to znamená nepřetržitou soutěž a očekáváme nové funkce v častých intervalech. 
 
-Za těchto podmínek je jediný způsob, jak zachovat pevnou ovládací prvek na počet chyb automatizované testování částí. Bylo by možné ručně znovu testovat vše, co každý doručení. Testování částí je teď běžnou součástí procesu sestavení. Nástroje, jako je Xamarin Test Cloud pomoct tím, že poskytuje automatizovaných testů ve více verzích prohlížeče UI. Tyto režimy testování umožňují nám Doufáme, počet chyb v aplikaci, můžete omezit na minimum.
+V těchto podmínkách je jediným způsobem, jak udržet pevně řídící počet chyb, automatizované testování částí. Pro každé doručení by nebylo možné ručně znovu otestovat vše. Test jednotek je nyní maloobchodech součástí procesu sestavení. Nástroje, jako je například Xamarin Test Cloud nápovědě, poskytují automatizované testování uživatelského rozhraní ve více verzích prohlížeče. Tyto testovací režimy umožňují, aby se doufáme, že četnost chyb nalezených v aplikaci může být zachována minimálně.
 
-Běžné webové aplikace mají mnoho součástí za provozu. Kromě klienta (v aplikaci prohlížeč nebo zařízení) a webový server je pravděpodobné, že se zpracování podstatné back-endem. Možná je back-endu kanálu komponent nebo volnější kolekcí spolupracujících údaje. A mnoho z nich nebudou existovat v rámci ovládacího prvku – jsou externími službami, na kterých závisí.
+Typické webové aplikace mají spoustu živých komponent. Kromě klienta (v prohlížeči nebo v aplikaci zařízení) a na webovém serveru je pravděpodobně zásadní zpracování back-endu. Je možné, že back-end je kanálem součástí nebo volně se sbírka spolupracujících částí. A mnohé z nich nebudou v ovládacím prvku – jedná se o externí služby, na kterých závisíte.
 
-V konfiguracích obdobné může být obtížné a uneconomical test pro a předvídat, všech možných režimů selhání, jiné než v systému za provozu, samotného. 
+V těchto konfiguracích může být obtížné a neekonomicky testovat nebo předpokládat všechny možné režimy selhání, jiné než v samotném živém systému. 
 
 ### <a name="questions-"></a>Dotazy...
-Některé dotazy požádáme při vyvíjíme webový systém:
+Některé otázky vyžádáme, když vyvíjíme webový systém:
 
-* Dochází k chybám aplikace? 
-* Co přesně se stalo? – Pokud došlo k selhání požadavku, chci vědět, jak máte existuje. Potřebujeme trasování událostí...
-* Je Moje aplikace dostatečně rychle? Jak dlouho trvá reagovat na typické požadavky?
-* Server může zpracovat zatížení? Když se zvyšuje počet požadavků, doba odezvy podržte konstantní?
-* Jak responzivní jsou moje závislosti – rozhraní REST API, databáze a další součásti, které Moje aplikace volá operaci. Zejména při pomalém systému je Moje komponenty, nebo se zobrazuje pomalé odezvy od někoho jiného?
-* Navýšení nebo snížení kapacity je Moje aplikace? Lze ji zobrazit z po celém světě? Dejte nám vědět, pokud se zastaví...
-* Co je hlavní příčinou? Chyba v mé součásti nebo závislosti? Je to problém komunikaci?
-* Kolik uživatelů se to týká? Pokud mám více než jeden problém řešit, což je nejdůležitější?
+* Je moje chyba aplikace? 
+* Co se přesně stalo? – Pokud se žádost nezdařila, chci vědět, jak tam byla. Potřebujeme trasovat události...
+* Je moje aplikace dostatečně rychlá? Jak dlouho trvá reakce na typické požadavky?
+* Může server zpracovat zatížení? V případě zvýšení rychlosti požadavků se doba odezvy drží konstantní?
+* Jak reagují jsou moje závislosti – rozhraní REST API, databáze a další komponenty, které moje aplikace volá. Zejména v případě, že je systém pomalý, je moje součást nebo když Získávám pomalé odpovědi od někoho jiného?
+* Je moje aplikace nahoru nebo dolů? Můžu se z celého světa zobrazit? Dejte mi informace, pokud se zastaví...
+* Jakou hlavní příčinu máte? Došlo k chybě v mé součásti nebo závislosti? Jedná se o problém s komunikací?
+* Kolik uživatelů má vliv? Pokud mám k boji více než jeden problém, který je nejdůležitější?
 
 ## <a name="what-is-application-insights"></a>Co je Application Insights?
-![Základní pracovní postup služby Application Insights](./media/devops/020.png)
+![Základní pracovní postup pro Application Insights](./media/devops/020.png)
 
-1. Application Insights využívá vaši aplikaci a odesílá telemetrická data o tom, když aplikace běží. Můžete vytvořit Application Insights SDK do aplikace, nebo můžete provádět instrumentaci za běhu. První metoda je flexibilnější, při přidávání vlastní telemetrii do modulů, které pravidelně.
-2. Na portálu služby Application Insights, kde je uložena a zpracována přijde telemetrická data. (I když Application Insights je hostován v Microsoft Azure, může monitorovat všechny webové aplikace – aplikace právě Azure.)
-3. Telemetrická data se zobrazí ve formě grafů a tabulek událostí.
+1. Application Insights instrumentuje vaši aplikaci a při spuštění aplikace pošle telemetrie. Můžete buď sestavit sadu Application Insights SDK do aplikace, nebo můžete použít instrumentaci za běhu. Předchozí metoda je flexibilnější, protože můžete přidat vlastní telemetrii k běžným modulům.
+2. Telemetrii se pošle na portál Application Insights, kde se ukládá a zpracovává. (I když je Application Insights hostovaná v Microsoft Azure, může monitorovat všechny webové aplikace – nejen aplikace Azure.)
+3. Telemetrii se zobrazí ve formě grafů a tabulek událostí.
 
-Existují dva hlavní typy telemetrických dat: agregovaná a raw instancí. 
+Existují dva hlavní typy telemetrie: agregované a nezpracované instance. 
 
-* Instance data zahrnují například zprávu žádosti, která byla přijata ve vaší webové aplikace. Můžete vyhledat a prozkoumejte podrobnosti o žádosti o pomocí nástroje hledání na portálu Application Insights. Instance bude zahrnovat data, třeba jak dlouho trvalo aplikace reagovat na žádosti, stejně jako požadovanou adresu URL, jak umístění klienta a další data.
-* Agregovaná data obsahuje počet událostí za jednotku času, takže můžete porovnat míra požadavků s dobou odezvy. Zahrnuje také průměry metriky, například zaznamenávání doby odezvy požadavku.
+* Data instance obsahují například sestavu žádosti, kterou přijala vaše webová aplikace. Podrobnosti o žádosti můžete najít a zkontrolovat na portálu Application Insights pomocí nástroje pro hledání. Instance by obsahovala data, například jak dlouho aplikace trvala na žádost reagovat, a také požadovanou adresu URL, přibližné umístění klienta a další data.
+* Agregovaná data zahrnují počty událostí na čas jednotky, abyste mohli porovnat rychlost požadavků s dobami odezvy. Obsahuje také průměrnou metriku, jako je například doba odezvy na žádosti.
 
-Hlavní kategorie dat jsou:
+Hlavní kategorie dat:
 
-* Požadavky na aplikace (obvykle požadavků protokolu HTTP), s daty na adresu URL, doby odezvy a úspěchu nebo selhání.
-* Závislosti – volání REST a SQL provedené při vaší aplikace, také s identifikátorem URI, doby odezvy a úspěch
+* Požadavky na vaši aplikaci (obvykle požadavky HTTP), s daty na adrese URL, dobou odezvy a úspěchem nebo selháním.
+* Závislosti a volání SQL provedené vaší aplikací, a to i s identifikátorem URI, dobou odezvy a úspěchem
 * Výjimky, včetně trasování zásobníku.
-* Data o zobrazení stránek, které pocházejí z prohlížečů uživatelů.
-* Metriky, jako jsou čítače výkonu, jakož i metriky, které si sami napíšete. 
+* Data zobrazení stránky, která pocházejí z prohlížečů uživatelů.
+* Metriky, jako jsou čítače výkonu, a také metriky, které zapisujete sami. 
 * Vlastní události, které můžete použít ke sledování obchodních událostí
-* Trasování protokolů použít pro ladění.
+* Trasování protokolu používané pro ladění.
 
 ## <a name="case-study-real-madrid-fc"></a>Případová studie: Real Madrid F.C.
-Webové služby, kterou [Real Madrid Football Club](https://www.realmadrid.com/) slouží asi 450 milionům fanoušků z celého světa. K němu přes webových prohlížečů a mobilních aplikací Club fanoušky přístup. Fanoušky nelze jenom knihy lístky, ale také přístup k klipy informace a video na výsledky, hráče a nadcházející hry. Vyhledávání můžete s filtry, jako je počet cílů skóre. Existují také odkazy na sociálních sítích. Činnost koncového uživatele je vysoce přizpůsobené a je navržena jako obousměrná komunikace provozovat fanoušků.
+Webová služba [skutečného madridského fotbalového klubu](https://www.realmadrid.com/) zajišťuje přibližně 450 000 000 ventilátorů po celém světě. Ventilátory mají přístup přes webové prohlížeče i mobilní aplikace pro klub. Ventilátory nemůžou mít jenom lístky, ale také mají přístup k informacím a videoklipům na výsledcích, přehrávačích a nadcházejících hrách. Můžou hledat pomocí filtrů, jako je počet skóre výsledků. K dispozici jsou také odkazy na sociální média. Činnost koncového uživatele je vysoce přizpůsobená a je navržena jako obousměrná komunikace pro zapojení ventilátorů.
 
-Řešení [je systém služeb a aplikací v Microsoft Azure](https://www.microsoft.com/inculture/sports/real-madrid/). Škálovatelnost je klíčovým požadavkem: provoz je proměnná a mohou dosáhnout velmi velké objemy během a po shody.
+Řešení [je systém služeb a aplikací na Microsoft Azure](https://www.microsoft.com/inculture/sports/real-madrid/). Škálovatelnost je klíčovým požadavkem: provoz je proměnlivý a může dosáhnout velmi velkých svazků během a kolem shody.
 
-Pro Real Madrid, je důležité monitorovat výkon systému. Azure Application Insights nabízí komplexní pohled na systém, zajištění spolehlivého a vysokou úroveň služeb. 
+Pro reálný Madrid je důležité monitorovat výkon systému. Azure Application Insights poskytuje komplexní zobrazení v celém systému a zajišťuje spolehlivou a vysokou úroveň služby. 
 
-Klub také získá hlouběji porozuměli jeho fanoušky: tam, kde jsou (pouze % 3 jsou ve Španělsku), které vás zajímají mají v přehrávačů, historické výsledky a nadcházející hry a jak reagují tak, aby odpovídaly výsledků.
+Klub taky získá podrobné porozumění jeho ventilátorům: kde jsou (jenom 3% jsou ve Španělsku), jaký je jejich zájem v přehrávačích, historických výsledcích a nadcházejících hrách a jak reagují na výsledek.
 
-Většina těchto dat telemetrie se automaticky shromažďují bez přidání kód, který zjednodušené řešení a snížit provozní složitost.  Pro Real Madrid, Application Insights se zabývá bodům telemetrie 3.8 miliard každý měsíc.
+Většina těchto dat telemetrie se automaticky shromáždí bez přidávaného kódu, což zjednodušuje řešení a snižuje provozní složitost.  Pro reálný Madrid Application Insights se každý měsíc zabývá 3 800 000 000 bodů telemetrie.
 
-Real Madrid používá modulu Power BI k zobrazení jejich telemetrická data.
+Real Madrid používá modul Power BI k zobrazení telemetrie.
 
 ![Power BI zobrazení telemetrie Application Insights](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>Inteligentní zjišťování
-[Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) je nejnovější funkce. Bez žádnou zvláštní konfiguraci vámi Application Insights automaticky zjistí a upozorní vás neobvyklé nárůsty chybovost ve vaší aplikaci. Je dostatečně inteligentní, aby Ignorovat pozadí občasnému selhání, a také složitost, které jsou jednoduše úměrné nárůst požadavků. Tak například pokud dojde k selhání v jednom ze služeb, které závisí na, nebo pokud nové sestavení do fronty jste právě nasadili nepracuje tak dobře, pak budete vědět o něm poté, co lze najít v e-mailu. (A webhooky, takže můžete aktivovat další aplikace.)
+[Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) je nedávná funkce. Bez jakékoli speciální konfigurace Application Insights automaticky detekuje a upozorňuje na neobvyklé zvýšení sazeb za selhání vaší aplikace. Je dostatečně inteligentní, aby bylo možné ignorovat obtíže s příležitostnými chybami, a také hry, které jsou v rámci požadavků jednoduše přiměřené. Pokud například dojde k selhání v jedné ze služeb, na které jste zapracovali, nebo pokud nové sestavení, které jste právě nasadili, nefunguje dobře, budete o tom informovat, jakmile se podíváte na e-mail. (A k dispozici jsou Webhooky, abyste mohli aktivovat jiné aplikace.)
 
-Dalším aspektem tato funkce provádí denní potřebují podrobně analyzovat telemetrii, hledá neobvyklé vzory výkonu, které se těžko zjistit. Například najdete nízký výkon, které jsou spojené s konkrétní zeměpisné oblasti nebo s verzí určitého prohlížeče.
+Další aspekt této funkce provádí každodenní analýzu telemetrie a hledá neobvyklé vzorce výkonu, které je obtížné zjistit. Například může najít pomalý výkon přidružený k určité geografické oblasti nebo konkrétní verzi prohlížeče.
 
-V obou případech výstraha nejen zjistíte příznaků je zjištěna, ale také poskytuje data, která potřebujete pomoc s diagnostikou problému, například sestavy příslušná výjimka.
+V obou případech výstraha nejen upozorní na to, co se zjistilo, ale také poskytuje data, která potřebujete k tomu, abyste mohli nastavovat problémy, jako jsou třeba relevantní sestavy výjimek.
 
-![E-mailu ze proaktivní Diagnostika](./media/devops/030.png)
+![E-mail z proaktivní diagnostiky](./media/devops/030.png)
 
-Říká, že zákazník Samtec: "Během nedávné funkce přímou migraci, zjistili databázi v rámci škálování, který jste narazili jeho omezení prostředků a způsobí vypršení časového limitu. Proaktivní detekce upozornění pochází z doslova jako ohlášené jsme byly třídění problém, velmi téměř reálném čase. Tato výstraha s výstrahami platformy Azure s velkou provázaností rozjezd téměř okamžité vyřešení problému. Total downtime < 10 minut."
+Zákazník Samtec: "během nedávné přímou migraci funkce jsme zjistili, že databáze byla v horizontálním měřítku, která byla v souladu s omezeními prostředků a způsobila vypršení časových limitů. Výstrahy proaktivní detekce byly dodány doslova, protože jsme tento problém rozložili, a to téměř v reálném čase jako inzerované. Tato výstraha se společně s výstrahami platformy Azure pomohla téměř okamžitě vyřešit problém. Celkový výpadek < 10 minut. "
 
 ## <a name="live-metrics-stream"></a>Live Metrics Stream
-Nasazení nejnovější sestavení může být nervózním prostředí. Pokud máte potíže, budete chtít informovat o hned, tak, aby můžete zálohovat v případě potřeby. Live Metrics Stream poskytuje klíčové metriky s latencí přibližně jedné sekundy.
+Nasazení nejnovějšího sestavení může být prostředí nervózním. Pokud dojde k nějakým potížím, měli byste o nich mít informace hned, abyste mohli v případě potřeby zálohovat. Live Metrics Stream poskytuje klíčové metriky s latencí přibližně jedna sekunda.
 
 ![Živé metriky](./media/devops/0040.png)
 
-A umožňuje okamžitě zkontrolujte vzorek případné chyby nebo výjimky.
+A umožňuje okamžitě zkontrolovat ukázku všech selhání nebo výjimek.
 
-![Selhání živé události](./media/devops/002-live-stream-failures.png)
+![Události živého selhání](./media/devops/002-live-stream-failures.png)
 
 ## <a name="application-map"></a>Mapa aplikace
-Mapa aplikace automaticky zjistí topologii vaší aplikace, kterým se na informace o výkonu na to, abyste mohli snadno identifikovat kritické body výkonu a problematické toky v distribuovaném prostředí. Umožňuje zjistit závislosti aplikací na služby Azure. Problém můžete posoudit podle principy, je-li týkající se kód nebo závislosti související a z jednotné místo, kde přejít na související diagnostiky prostředí. Například vaše aplikace se ji nedaří kvůli snížení výkonu ve vrstvě SQL. Pomocí mapy aplikace můžete podívat, jak to hned a přejít k podrobnostem SQL Index Advisor nebo prostředí přehledy dotazů.
+Mapa aplikace automaticky zjišťuje topologii vaší aplikace, vyhledává informace o výkonu a umožňuje snadno identifikovat problémová místa výkonu a problematické toky napříč distribuovaným prostředím. Umožňuje zjistit závislosti aplikací ve službách Azure. Můžete určit jejich třídění tím, že se seznámíte s tím, že se jedná o související s kódem nebo závislosti a z jednoho místa k zobrazení související diagnostické prostředí. Například vaše aplikace může selhat z důvodu snížení výkonu v úrovni SQL. S mapou aplikace ji můžete okamžitě zobrazit a přejít k podrobnostem o prostředí SQL Index Advisor nebo dotazům na přehled.
 
 ![Mapa aplikace](./media/devops/0050.png)
 
-## <a name="application-insights-analytics"></a>Application Insights Analytics
-S [Analytics](../../azure-monitor/app/analytics.md), můžete napsat libovolné dotazy v jazyce podobném SQL výkonné.  Diagnostika napříč celým zásobníkem celé aplikace budete moct snadno spojit různých perspektiv a můžete pokládat správné otázky ke korelaci výkon služby s obchodní metriky a vylepšit uživatelské prostředí. 
+## <a name="application-insights-analytics"></a>Analýzy Application Insights
+Pomocí [analýzy](../../azure-monitor/app/analytics.md)můžete psát libovolné dotazy v výkonném jazyce podobném jazyku SQL.  Diagnostikování celého zásobníku aplikací je jednoduché, protože se připojí různé perspektivy a můžete klást správné otázky ke korelaci výkonu služby s obchodními metrikami a zákaznickým prostředím. 
 
-Všechny instance telemetrie a metriky nezpracovaných dat uložených na portálu se můžete dotazovat. Jazyk zahrnuje filtr, spojení, agregace a další operace. Můžete vypočítat polí a provádění statistických analýz. Existují tabulkovým i grafických vizualizací.
+Můžete zadat dotaz na veškerou instanci telemetrie a nezpracovaná data metrik uložená na portálu. Tento jazyk zahrnuje filtry, spojení, agregace a další operace. Můžete vypočítat pole a provádět statistickou analýzu. K dispozici jsou tabulkové i grafické vizualizace.
 
-![Graf dotazu a výsledky analýzy](./media/devops/0025.png)
+![Graf analytického dotazu a výsledků](./media/devops/0025.png)
 
-Například velmi snadno:
+Například je snadné:
 
-* Údaje o výkonu vaší aplikace požadavek segmentovat podle úrovně zákazníků o své zkušenosti.
-* Hledání konkrétních kódech chyb nebo názvy vlastních událostí během šetření živého webu.
-* K podrobnostem o využití aplikace z konkrétní zákazníky umožnila porozumět, jak se funkce získat a přijmout.
-* Sledování relací a doby odezvy pro konkrétního uživatele pro povolení podpory a provozní týmy k zajištění podpory rychlých zákazníka.
-* Určení často používaných aplikací funkcí odpovědi na otázky stanovení priorit funkce.
+* Segmentujte údaje o výkonu své aplikace na úrovni zákazníka, abyste porozuměli jejich zkušenostem.
+* Při vyšetřování živých lokalit můžete hledat konkrétní kódy chyb nebo názvy vlastních událostí.
+* Procházejte k podrobnostem o využití aplikace konkrétními zákazníky, abyste pochopili, jak se funkce získávají a přijímají.
+* Sledujte relace a doby odezvy pro konkrétní uživatele a umožněte tak podpoře a provozním týmům poskytovat okamžitou zákaznickou podporu.
+* Určete často používané funkce aplikací pro zodpovězení otázek stanovení priorit funkcí.
 
-Říká, že zákazník DNN: "Application Insights poskytuje nám s chybějící součást rovnice se možnost kombinovat, řazení, dotazu a filtrování dat podle potřeby. Náš tým používat vlastní vynalézavosti a prostředí a zjistit, že nám umožňuje získat přehledy a řešit problémy má povoleno data s výkonný dotazovací jazyk umožňující neměli i víme, že jsme měli. Spoustu zajímavých odpovědi pocházejí z dotazy počínaje *"můžu wonder if...".* "
+Zákazník DNN říká: "Application Insights nám poskytla chybějící část rovnice pro možnost kombinovat, řadit, dotazovat a filtrovat data podle potřeby. Umožnění našeho týmu používat vlastní ingenuity a prostředí k hledání dat s výkonným dotazovacím jazykem nám umožnilo najít přehledy a řešit problémy, které jsme ještě nevěděli. Spousta zajímavých odpovědí přichází z otázek, které začínají na *"I Wonder", pokud...*
 
-## <a name="development-tools-integration"></a>Integrace nástroje pro vývoj
+## <a name="development-tools-integration"></a>Integrace nástrojů pro vývoj
 ### <a name="configuring-application-insights"></a>Konfigurace Application Insights
-Visual Studio a Eclipse mají nástroje pro konfiguraci správné sady SDK balíčky pro projekt, který vyvíjíte. Existuje příkaz pro přidání Application Insights.
+Sada Visual Studio a zatmění mají nástroje pro konfiguraci správných balíčků sady SDK pro projekt, který vyvíjíte. K přidání Application Insights je k dispozici příkaz nabídky.
 
-Pokud chcete používat rozhraní protokolování trasování například Log4N, NLog nebo System.Diagnostics.Trace, získáte možnost odeslat protokoly do služby Application Insights společně s další telemetrická data, tak, aby mohli snadno porovnat trasování s požadavky, závislosti volání a výjimky.
+Pokud se rozhodnete použít protokolovací rozhraní trasování, jako je Log4N, NLog nebo System. Diagnostics. Trace, získáte možnost odesílat protokoly Application Insights společně s další telemetrie, abyste mohli snadno sladit trasování s požadavky, závislosti volání a výjimky.
 
-### <a name="search-telemetry-in-visual-studio"></a>Hledat telemetrii v sadě Visual Studio
-Při vývoji a ladění funkcí, může zobrazit a prohledávat telemetrická data přímo ve Visual Studiu, pomocí stejných prostředků vyhledávání jako webový portál.
+### <a name="search-telemetry-in-visual-studio"></a>Hledání telemetrie v aplikaci Visual Studio
+Při vývoji a ladění funkce můžete telemetrie zobrazit a vyhledat přímo v aplikaci Visual Studio pomocí stejných vyhledávacích funkcí jako na webovém portálu.
 
-A když Application Insights protokoluje výjimku, můžete zobrazit datový bod v sadě Visual Studio a přejít přímo na příslušný kód.
+A když Application Insights zaznamená výjimku, můžete zobrazit datový bod v aplikaci Visual Studio a přejít přímo na příslušný kód.
 
-![Hledání Visual Studio](./media/devops/060.png)
+![Hledání v aplikaci Visual Studio](./media/devops/060.png)
 
-Během ladění, máte možnost zachovat telemetrická data ve vývojovém počítači, jeho zobrazení v sadě Visual Studio, ale bez odeslání na portál. Tato možnost místní se vyhnete kombinování ladění pomocí telemetrie produkčního prostředí.
+Během ladění máte možnost zachovat telemetrii ve vývojovém počítači, zobrazit ji v aplikaci Visual Studio, ale bez odeslání na portál. Tato místní možnost zabraňuje smíchání ladění s produkční telemetrie.
 
 ### <a name="work-items"></a>Pracovní položky
-Když je vyvolána výstraha, Application Insights automaticky vytvořit pracovní položku v systému pro sledování práce.
+Když je vyvolána výstraha, Application Insights může automaticky vytvořit pracovní položku v systému pro sledování práce.
 
 ## <a name="but-what-about"></a>Ale co...?
-* [Ochrana osobních údajů a úložiště](../../azure-monitor/app/data-retention-privacy.md) – vaše telemetrická data se ukládají na Azure zabezpečení serverů.
-* Výkon – dopad je velmi nízký. Telemetrie v dávce.
-* [Ceny](../../azure-monitor/app/pricing.md) – můžete začít zdarma, a to platí i když jste v malé množství.
+* [Ochrana osobních údajů a úložiště](../../azure-monitor/app/data-retention-privacy.md) – vaše telemetrie se uchovávají na zabezpečených serverech Azure.
+* Výkon – dopad je velmi nízký. Telemetrii je dávkovaná.
+* [Ceny](../../azure-monitor/app/pricing.md) – můžete začít zdarma a pokračovat, i když jste v nedostatku objemu.
 
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Další postup
-Začínáme s Application Insights je snadné. Jsou hlavní možnosti:
+## <a name="next-steps"></a>Další kroky
+Začínáme s Application Insights je snadné. Hlavní možnosti jsou:
 
-* [Servery služby IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [služby Azure App Service](../../azure-monitor/app/app-insights-overview.md).
-* Instrumentujte projektu během vývoje. Můžete to provést [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) aplikace, stejně jako [Node.js](../../azure-monitor/app/nodejs.md) a celou řadu [jiné typy](../../azure-monitor/app/platforms.md). 
-* Nástroj [libovolná webová stránka](../../azure-monitor/app/javascript.md) přidáním krátkého kódu.
+* [Servery služby IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [Azure App Service](../../azure-monitor/app/app-insights-overview.md).
+* Instrumentujte svůj projekt během vývoje. To lze provést pro aplikace [ASP.NET](../../azure-monitor/app/asp-net.md) nebo [Java](../../azure-monitor/app/java-get-started.md) a také pro [Node. js](../../azure-monitor/app/nodejs.md) a hostitele [jiných typů](../../azure-monitor/app/platforms.md). 
+* Vyinstrumentujte [jakoukoli webovou stránku](../../azure-monitor/app/javascript.md) přidáním krátkého fragmentu kódu.
 

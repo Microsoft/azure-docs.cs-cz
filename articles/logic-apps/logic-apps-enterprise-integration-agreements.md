@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a Správa smluv s obchodními partnery – Azure Logic Apps
-description: Vytvoření a Správa smluv mezi obchodními partnery s využitím Azure Logic Apps a Enterprise Integration Pack
+title: Smlouvy s obchodním partnerem – Azure Logic Apps
+description: Vytváření a Správa smluv mezi obchodními partnery pomocí Azure Logic Apps a Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,101 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330307"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680424"
 ---
-# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a Správa smluv s obchodními partnery v Azure Logic Apps
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytváření a Správa smluv o obchodních partnerech v Azure Logic Apps
 
-A [obchodní partner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*smlouvy* pomáhá organizacím a podnikům bez problémů komunikovat mezi sebou definováním konkrétní standardní průmyslový protokol, pro použití při výměně zpráv Business-to-business (B2B). Smlouvy o poskytují běžné výhody, třeba:
+[Obchodní partner](../logic-apps/logic-apps-enterprise-integration-partners.md)  
+*smlouva* pomáhá organizacím a firmám vzájemně komunikovat tím, že definují konkrétní standardní protokol, který se použije při výměně zpráv B2B (Business-to-Business). Smlouvy poskytují běžné výhody, například:
 
-* Umožňují organizacím k výměně informací s využitím dobře známý formát.
-* Zlepšení efektivity při provádění B2B transakce.
-* Je snadné vytvořit, spravovat a používat pro sestavování integračních řešení enterprise.
+* Umožněte organizacím vyměňovat si informace pomocí známého formátu.
+* Zvyšte efektivitu při provádění transakcí B2B.
+* Je snadné vytvořit, spravovat a používat k vytváření podnikových integračních řešení.
 
-Tento článek popisuje, jak vytvořit AS2, EDIFACT nebo X12 smlouvy, který vám pomůže při vytváření integrovaných řešení pro scénáře B2B enterprise s použitím [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Když vytvoříte smlouvu, potom můžete použít AS2, EDIFACT nebo X12 konektory pro výměnu zpráv B2B.
+V tomto článku se dozvíte, jak vytvořit smlouvu AS2, EDIFACT nebo X12, kterou můžete použít při vytváření podnikových integračních řešení pro scénáře B2B pomocí [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Po vytvoření smlouvy můžete pro výměnu zpráv B2B použít konektory AS2, EDIFACT nebo X12.
 
-Vytvoření smlouvy pro výměnu zpráv RosettaNet najdete v tématu [zpráv Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
+Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si téma [zprávy Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) k vaší smlouvě a jiných artefaktů B2B. Tato integrační účet musí být přidružený k vašemu předplatnému Azure.
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro ukládání vaší smlouvy a dalších artefaktů B2B. Tento účet integrace musí být přidružený k vašemu předplatnému Azure.
 
-* Alespoň dva [obchodními partnery](../logic-apps/logic-apps-enterprise-integration-partners.md) , který jste vytvořili v účtu integrace. Smlouva vyžaduje partnera hostitele i hosta partnera. Oba partneři musí používat stejný kvalifikátor "obchodní identity" jako smlouvou, kterou chcete vytvořit, jako je například AS2, X 12 nebo EDIFACT.
+* Aspoň dva [obchodní partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , které jste už vytvořili v účtu pro integraci. Smlouva vyžaduje hostitele partnera i partnera typu Host. Oba partneři musí používat stejnou "obchodní identitu" jako smlouvu, kterou chcete vytvořit, jako je například AS2, X12 nebo EDIFACT.
 
-* Volitelné: Aplikace logiky, ve které chcete použít vaši smlouvu a aktivační události, která spustí pracovní postup aplikace logiky. Jenom vytvořit integrační účet a artefaktů B2B, není nutné aplikaci logiky. Ale předtím, než aplikace logiky můžete použít artefaktů B2B v účtu integrace, třeba propojit účet integrace do aplikace logiky. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Volitelné: aplikace logiky, ve které chcete použít vaši smlouvu, a Trigger, který spouští pracovní postup vaší aplikace logiky. Pokud chcete jenom vytvořit účet pro integraci a artefakty B2B, nepotřebujete aplikaci logiky. Předtím, než aplikace logiky může použít artefakty B2B v účtu integrace, je třeba propojit účet pro integraci s vaší aplikací logiky. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-agreements"></a>Vytvoření smlouvy
+## <a name="create-agreements"></a>Vytvoření smluv
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte jako filtr "integrace". Ve výsledcích vyberte tento prostředek: **Účty pro integraci**
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
-   ![Vyhledejte svůj účet integrace](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
+   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. V části **účty pro integraci**, vyberte účet integrace, ve kterém chcete vytvořit smlouvu.
+1. V části **účty pro integraci**vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.
 
-   ![Vyberte místo pro vytvoření smlouvu účtu integrace](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
+   ![Vyberte účet pro integraci, ve kterém chcete vytvořit smlouvu.](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. V pravém podokně v části **součásti**, zvolte **smlouvy** dlaždici.
+1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
 
-   ![Zvolte možnost "Smlouvy"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+   ![Zvolit "smlouvy"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. V části **smlouvy**, zvolte **přidat**. V **přidat** podokně zadejte informace o smlouvě, například:
+1. V části **smlouvy**klikněte na možnost **Přidat**. V podokně **Přidat** zadejte informace o vaší smlouvě, například:
 
-   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+   ![Zvolit přidat](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Vlastnost | Požaduje se | Value | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*agreement-name*> | Název smlouvy |
-   | **Typ smlouvy** | Ano | **AS2**, **X12**, nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy obsah v tomto souboru musí odpovídat typ smlouvy. | |  
-   | **Host Partner** | Ano | <*název hostitele partnera*> | Představuje hostitele partnera organizace, která určuje smlouvu |
-   | **Identita hostitele** | Ano | <*host-partner-identifier*> | Identifikátor hostitele partnera |
-   | **Partner s identitou hosta** | Ano | <*jméno partnera hosta*> | Představuje organizace, která je podnikající s partnerem hostitele partner s identitou hosta |
-   | **Identita hosta** | Ano | <*guest-partner-identifier*> | Identifikátor partner hosta |
-   | **Zobrazit nastavení** | Různé | Různé | Tyto vlastnosti určují, jak partner s identitou hostitele obdrží všechny příchozí zprávy od partnera hostovaného ve smlouvě. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
-   | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak partner s identitou hostitele odešle všechny odchozí zprávy partnerovi hostovaného ve smlouvě. Další informace najdete v tématu Typ příslušné smlouvy: <p>- [Nastavení zpráv AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12 zprávy nastavení](logic-apps-enterprise-integration-x12.md) |
+   | **Název** | Ano | <*smlouva – název* > | Název vaší smlouvy |
+   | **Typ smlouvy** | Ano | **AS2**, **X12**nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
+   | **Partner hostitele** | Ano | <*Host-partner – název* > | Partner hostitele představuje organizaci, která určuje smlouvu. |
+   | **Hostitelská identita** | Ano | <*Host-partner – identifikátor* > | Identifikátor hostitelského partnera |
+   | **Partner hosta** | Ano | <*Host-partner – název* > | Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
+   | **Identita hosta** | Ano | <*Host-partner – identifikátor* > | Identifikátor hostovaného partnera |
+   | **Nastavení příjmu** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner obdrží všechny příchozí zprávy od hostovaného partnera v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>[Nastavení zprávy -  AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>[Nastavení zprávy -  EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>[Nastavení zprávy -  X12](logic-apps-enterprise-integration-x12.md) |
+   | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner odesílá všechny odchozí zprávy partnerovi hosta v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>[Nastavení zprávy -  AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>[Nastavení zprávy -  EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>[Nastavení zprávy -  X12](logic-apps-enterprise-integration-x12.md) |
    |||||
 
-1. Po dokončení vytváření vaší smlouvě na **přidat** zvolte **OK**a vraťte se ke svému účtu integrace.
+1. Až budete s vytvářením smlouvy hotovi, klikněte na stránce **Přidat** na **tlačítko OK**a vraťte se k účtu pro integraci.
 
-   **Smlouvy** seznam nyní zobrazuje nové smlouvy.
+   V seznamu **smlouvy** se teď zobrazí vaše nová smlouva.
 
-## <a name="edit-agreements"></a>Úprava smluv
+## <a name="edit-agreements"></a>Upravit smlouvy
 
-1. V [webu Azure portal](https://portal.azure.com), v hlavní nabídce Azure zvolte **všechny služby**.
+1. V [Azure Portal](https://portal.azure.com)v hlavní nabídce Azure vyberte **všechny služby**.
 
-1. Do vyhledávacího pole zadejte jako filtr "integrace". Ve výsledcích vyberte tento prostředek: **Účty pro integraci**
+1. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
-1. V části **účty pro integraci**, vyberte účet integrace, který má smlouvu, kterou chcete upravit.
+1. V části **účty pro integraci**vyberte účet pro integraci s smlouvou, kterou chcete upravit.
 
-1. V pravém podokně v části **součásti**, zvolte **smlouvy** dlaždici.
+1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
 
-1. V části **smlouvy**, vyberte smlouvy a zvolte **upravit**.
+1. V části **smlouvy**vyberte smlouvu a zvolte **Upravit**.
 
-1. Ujistěte se a pak uložte provedené změny.
+1. Zajistěte a uložte provedené změny.
 
-## <a name="delete-agreements"></a>Odstranění smluv
+## <a name="delete-agreements"></a>Odstranit smlouvy
 
-1. V [webu Azure portal](https://portal.azure.com), v hlavní nabídce Azure zvolte **všechny služby**.
+1. V [Azure Portal](https://portal.azure.com)v hlavní nabídce Azure vyberte **všechny služby**.
 
-1. Do vyhledávacího pole zadejte jako filtr "integrace". Ve výsledcích vyberte tento prostředek: **Účty pro integraci**
+1. Do vyhledávacího pole zadejte jako filtr "integr". Z výsledků vyberte tento prostředek: účty pro **integraci** .
 
-1. V části **účty pro integraci**, vyberte účet integrace, který má smlouvu, kterou chcete odstranit.
+1. V části **účty pro integraci**vyberte účet pro integraci s smlouvou, kterou chcete odstranit.
 
-1. V pravém podokně v části **součásti**, zvolte **smlouvy** dlaždici.
+1. V pravém podokně v části **komponenty**vyberte dlaždici **smlouvy** .
 
-1. V části **smlouvy**, vyberte smlouvy a zvolte **odstranit**.
+1. V části **smlouvy**vyberte smlouvu a zvolte **Odstranit**.
 
-1. Potvrďte, že chcete odstranit vybrané smlouvy.
+1. Potvrďte, že chcete odstranit vybranou smlouvu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Výměna zpráv AS2](logic-apps-enterprise-integration-as2.md)
-* [Výměna zpráv EDIFACT](logic-apps-enterprise-integration-edifact.md)
-* [Výměna X12 zpráv](logic-apps-enterprise-integration-x12.md)
+* [Zprávy Exchange AS2](logic-apps-enterprise-integration-as2.md)
+* [Zprávy Exchange EDIFACT](logic-apps-enterprise-integration-edifact.md)
+* [Zprávy Exchange X12](logic-apps-enterprise-integration-x12.md)

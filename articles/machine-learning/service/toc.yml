@@ -297,7 +297,15 @@
         - name: Vstup a výstup dat
           items:
             - name: Import dat
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: Import dat
+                  href: ../algorithm-module-reference/import-data.md
+                - name: Import z webové adresy URL přes HTTP
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: Import z modulu Azure Blob Storage
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: Import z Azure SQL Database
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Export dat
               href: ../algorithm-module-reference/export-data.md
             - name: Ruční zadávání dat
@@ -330,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: Rozdělení a ukázky
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: Oříznutí hodnot
+              href: ../algorithm-module-reference/clip-values.md
+            - name: Použití transformace SQL
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: Strojové učení
           items:
             - name: Určení skóre modelu
@@ -382,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: Spouštění skriptů R
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: Statistické funkce
+          items:
+            - name: Použití matematických operací
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: Sumarizace dat
+              href: ../algorithm-module-reference/summarize-data.md
         - name: Chybové zprávy a kódy
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Zdroje a prostředky

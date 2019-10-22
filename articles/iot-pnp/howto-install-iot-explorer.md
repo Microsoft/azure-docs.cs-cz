@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960577"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679855"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -24,12 +24,12 @@ V tomto článku se dozvíte, jak:
 - Nainstalujte a nakonfigurujte nástroj Azure IoT Explorer.
 - Použijte nástroj k interakci a testování zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K použití nástroje Azure IoT Explorer potřebujete:
 
 - Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure CLI. Nezapomeňte nahradit zástupné symboly `{YourIoTHubName}` a `{YourDeviceID}` hodnotami:
+- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure CLI. Nezapomeňte nahradit `{YourIoTHubName}` a zástupné symboly `{YourDeviceID}` pomocí vašich hodnot:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -65,7 +65,7 @@ Změnit zdrojové priority:
 
 Jeden ze zdrojů definice modelu můžete přetáhnout do jiného hodnocení v seznamu. Pokud dojde ke konfliktu, potlačí zdroje definic s vyšším pořadím zdroje s nižším hodnocením.
 
-### <a name="view-devices"></a>Zobrazit zařízení
+### <a name="view-devices"></a>Zobrazení zařízení
 
 Po připojení nástroje k centru IoT se zobrazí stránka seznam **zařízení** se seznamem identit zařízení zaregistrovaných ve službě IoT Hub. Pokud chcete zobrazit další informace, můžete rozbalit libovolnou položku v seznamu.
 
@@ -73,27 +73,33 @@ Na stránce seznam **zařízení** můžete:
 
 - Vyberte **Přidat** a zaregistrujte nové zařízení v centru. Pak zadejte ID zařízení. Pomocí výchozího nastavení můžete automaticky generovat ověřovací klíče a povolit připojení k rozbočovači.
 - Vyberte zařízení a pak vyberte **Odstranit** a odstraňte identitu zařízení. Před dokončením této akce zkontrolujte podrobnosti o zařízení, abyste měli jistotu, že odstraňujete správnou identitu zařízení.
-- Dotaz na `capabilityID` a `interfaceID`. Přidejte buď `capabilityID`, nebo `interfaceID` jako parametr pro dotazování zařízení.
+- Dotaz podle `capabilityID` a `interfaceID` Přidejte `capabilityID` nebo `interfaceID` jako parametr pro dotazování zařízení.
 
 ## <a name="interact-with-a-device"></a>Interakce se zařízením
 
-Na stránce seznam **zařízení** výběrem hodnoty ve sloupci **ID zařízení** zobrazíte stránku podrobností registrovaného zařízení. Pro zařízení jsou dvě části: **zařízení** a **digitální dvojitá**dvojice.
+Na stránce seznam **zařízení** výběrem hodnoty ve sloupci **ID zařízení** zobrazíte stránku podrobností registrovaného zařízení. Pro každé zařízení jsou k dispozici dvě části: **zařízení** a **digitální dvojitá**dvojice.
 
 ### <a name="device"></a>Zařízení
 
-Tato část obsahuje karty **Identita zařízení**, **vyzdvojené zařízení**a **telemetrie** .
+Tato část obsahuje karty pro **identitu zařízení**, **vyzdvojení zařízení**, **telemetrie**, **přímou metodu** a **zprávy z cloudu na zařízení** .
 
 - Informace o [identitě zařízení](../iot-hub/iot-hub-devguide-identity-registry.md) můžete zobrazit a aktualizovat na kartě **Identita zařízení** .
 - Na kartě **zařízení** , na které se nachází, můžete získat přístup k [dvojitým](../iot-hub/iot-hub-devguide-device-twins.md) informacím o zařízení.
 - Pokud je zařízení připojené a aktivně odesílá data, můžete zobrazit [telemetrii](../iot-hub/iot-hub-devguide-messages-read-builtin.md) na kartě **telemetrie** .
+- Na zařízení na kartě **Přímá metoda** můžete zavolat [přímo metodu](../iot-hub/iot-hub-devguide-direct-methods.md) .
+- Můžete odeslat zprávu typu [Cloud-zařízení](../iot-hub/iot-hub-devguide-messages-c2d.md) na kartě **zprávy typu cloud-zařízení** .
 
 ### <a name="digital-twin"></a>Digitální vlákna
 
-Nástroj můžete použít k zobrazení digitálního vlákna instance zařízení. V případě zařízení IoT technologie Plug and Play se v tomto článku zobrazují všechna rozhraní přidružená k modelu schopností zařízení. Vyberte rozhraní a rozbalte odpovídající [technologie Plug and Play primitivních elementů IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+Nástroj můžete použít k zobrazení digitálního vlákna instance zařízení. V případě zařízení IoT technologie Plug and Play se v této části tohoto nástroje zobrazí všechna rozhraní přidružená k modelu schopností zařízení. Vyberte rozhraní a rozbalte odpovídající [technologie Plug and Play primitivních elementů IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
+
+### <a name="interface"></a>Prostředí
+
+Na stránce **rozhraní** si můžete zobrazit definici JSON rozhraní.
 
 #### <a name="properties"></a>Vlastnosti
 
-Vlastnosti určené jen pro čtení můžete zobrazit na stránce **vlastností** na rozhraní. Můžete aktualizovat zapisovatelné vlastnosti definované v rozhraní na stránce **vlastností s možností zápisu** .
+Vlastnosti určené jen pro čtení, které jsou definovány v rozhraní, můžete zobrazit na stránce **vlastností, které nelze zapsat** . Můžete aktualizovat zapisovatelné vlastnosti definované v rozhraní na stránce **vlastností s možností zápisu** :
 
 1. Přejít na stránku **vlastností s možností zápisu** .
 1. Klikněte na vlastnost, kterou chcete aktualizovat.

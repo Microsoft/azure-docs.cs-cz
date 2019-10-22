@@ -1,27 +1,25 @@
 ---
 title: Monitorování výkonu Azure App Services | Microsoft Docs
 description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286172"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677660"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
 Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
 > [!NOTE]
-> Ruční přidání rozšíření Application Insights webu prostřednictvím **nástrojů pro vývoj**@no__t **-1 je** zastaralé. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a automaticky se aktualizují s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
+> Ruční přidání rozšíření Application Insights webu prostřednictvím **vývojových nástrojů**  > **rozšíření** se už nepoužívá. Tato metoda instalace rozšíření byla závislá na ruční aktualizaci pro každou novou verzi. Nejnovější stabilní verze rozšíření je teď [předinstalována](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) jako součást image App Service. Soubory jsou umístěny v `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` a automaticky se aktualizují s každou stabilní verzí. Pokud budete postupovat podle pokynů na základě agentů a zapnout monitorování níže, automaticky se odebere zastaralé rozšíření za vás.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -302,7 +300,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 Upgrade z verze 2.8.9 proběhne automaticky bez dalších akcí. Nové bity monitorování se doručí na pozadí cílové službě App Service a při restartování aplikace se budou vyzvednout.
 
-Pokud chcete zjistit, kterou verzi rozšíření používáte, navštivte @no__t – 0.
+Pokud chcete zjistit, kterou verzi rozšíření používáte, navštivte `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
 ![Snímek obrazovky s cestou URL http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
 
@@ -330,9 +328,9 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 > Aplikace ASP.NET Core 3,0 nejsou podporovány. Použijte prosím [Ruční instrumentaci](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) prostřednictvím kódu pro aplikace ASP.NET Core 3,0.
 
 1. Ověřte, že je aplikace monitorována prostřednictvím `ApplicationInsightsAgent`.
-    * Ověřte, že nastavení aplikace `ApplicationInsightsAgent_EXTENSION_VERSION` je nastavené na hodnotu ~ 2.
+    * Ověřte, že nastavení `ApplicationInsightsAgent_EXTENSION_VERSION` aplikace je nastavené na hodnotu ~ 2.
 2. Ujistěte se, že aplikace splňuje požadavky, které se mají monitorovat.
-    * Přejít na @no__t – 0
+    * Přejít na `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
     ![Snímek obrazovky se stránkou výsledků https://yoursitename.scm.azurewebsites/applicationinsights](./media/azure-web-apps/app-insights-sdk-status.png)
 

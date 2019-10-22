@@ -1,6 +1,6 @@
 ---
-title: Získat další data, položky nebo záznamy se stránkování – Azure Logic Apps
-description: Nastavit stránkování překročit výchozí limit velikosti stránky pro akce konektorů v Azure Logic Apps
+title: Získání dalších položek nebo záznamů pomocí stránkování – Azure Logic Apps
+description: Nastavte přestránkování tak, aby překročila výchozí limit velikosti stránky pro akce konektoru v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,26 +9,26 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e86600312490c77ed492cb28a359add0fed90596
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64476538"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679896"
 ---
-# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Získat další data, položky nebo záznamů pomocí stránkování v Azure Logic Apps
+# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Získání dalších dat, položek nebo záznamů pomocí stránkování v Azure Logic Apps
 
-Při načítání dat, položky nebo záznamů pomocí konektor akce v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), může se zobrazit sad výsledků dotazu tak velká, že akce nemá všechny výsledky jsou vráceny ve stejnou dobu. Pomocí některé akce může překročit počet výsledků, které tento konektor výchozí velikost stránky. Akce v tomto případě vrátí jenom první stránka výsledků. Například výchozí velikost stránky pro konektor systému SQL Server **získat řádky** akce je 2048, ale může lišit v závislosti na dalších nastavení.
+Když načtete data, položky nebo záznamy pomocí akce konektoru v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), můžete získat sady výsledků tak velké, že akce nevrátí všechny výsledky ve stejnou dobu. U některých akcí může počet výsledků přesáhnout výchozí velikost stránky konektoru. V takovém případě akce vrátí pouze první stránku výsledků. Například výchozí velikost stránky pro akci **získat řádky** SQL serverového konektoru je 2048, ale může se lišit v závislosti na dalších nastaveních.
 
-Některé akce umožňují zapnout *stránkování* nastavení tak, aby vaše aplikace logiky můžete načíst více výsledků až do limitu stránkování, ale vrátí výsledky jako jedna zpráva, po dokončení akce. Při použití stránkování, musí zadat *prahová hodnota* hodnotu, která je cílový počet výsledků, které chcete, aby akce, která vrátí. Tato akce načte výsledky dokud se nedosáhne určenou prahovou hodnotou. Když váš celkový počet položek, které je menší než zadaná prahová hodnota, tato akce načte všechny výsledky.
+Některé akce umožňují zapnout nastavení *stránkování* , aby vaše aplikace logiky mohla získat více výsledků až po limit stránkování, ale po dokončení akce vrátí tyto výsledky jako jednu zprávu. Při použití stránkování je nutné zadat *prahovou* hodnotu, což je cílový počet výsledků, který má akce vrátit. Akce načte výsledky, dokud nedosáhne zadané prahové hodnoty. Pokud je celkový počet položek menší, než je zadaná prahová hodnota, akce načte všechny výsledky.
 
-Zapnutí stránky načte nastavení stránkování výsledků na základě velikosti stránky konektor. Toto chování znamená, že v některých případech můžete získat další výsledky než zadaná prahová hodnota. Například při použití SQL serveru **získat řádky** akce, která podporuje stránkování nastavení:
+Zapnutí nastavení stránkování načítá stránky výsledků na základě velikosti stránky spojnice. Toto chování znamená, že v některých případech můžete získat více výsledků, než je zadaná prahová hodnota. Například při použití akce SQL Server **získat řádky** , která podporuje nastavení stránkování:
 
 * Výchozí velikost stránky akce je 2048 záznamů na stránku.
-* Předpokládejme, že máte 10 000 záznamů a jako minimální zadat 5000 záznamů.
-* Stránkování získá stránky záznamů, chci dostat alespoň zadané minimum, tato akce vrátí 6144 záznamů (3 stránky x 2048 záznamů), ne 5000 záznamů.
+* Předpokládejme, že máte 10 000 záznamů a jako minimum zadáte 5000 záznamů.
+* Stránkování získá stránky záznamů, takže pokud chcete získat alespoň stanovenou hodnotu, vrátí tato akce 6144 záznamů (3 stránky x 2048 záznamů), 5000 nikoli záznamy.
 
-Tady je seznam s jen některé z konektorů, kde může přesáhnout výchozí velikost stránky pro určité akce:
+Tady je seznam s pouze některými konektory, kde můžete překročit výchozí velikost stránky pro konkrétní akce:
 
 * [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
@@ -41,31 +41,31 @@ Tady je seznam s jen některé z konektorů, kde může přesáhnout výchozí v
 * [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
 * [SQL Server](https://docs.microsoft.com/connectors/sql/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Aplikace logiky a akce, ve které chcete zapnout stránkování. Pokud nemáte aplikace logiky, přečtěte si téma [rychlý start: Vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikace logiky a akce, u kterých chcete zapnout stránkování. Pokud nemáte aplikaci logiky, přečtěte si [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="turn-on-pagination"></a>Zapnout stránkování
 
-Pokud chcete zjistit, zda akce podporuje stránkování v návrháři aplikace logiky, zkontrolujte nastavení na akci pro **stránkování** nastavení. Tento příklad ukazuje, jak zapnout stránkování v systému SQL Server **získat řádky** akce.
+Pokud chcete zjistit, jestli akce podporuje stránkování v návrháři aplikace logiky, Projděte si nastavení akce pro nastavení **stránkování** . Tento příklad ukazuje, jak zapnout stránkování v akci SQL Server **načíst řádky** .
 
-1. V pravém horním rohu akce, klikněte na trojtečku ( **...** ) tlačítko a vyberte **nastavení**.
+1. V pravém horním rohu akce zvolte tlačítko se třemi tečkami ( **...** ) a vyberte **Nastavení**.
 
-   ![Otevřete nastavení akce](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
+   ![Otevřete nastavení akce.](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
-   Pokud tato akce podporuje stránkování, se zobrazí akce **stránkování** nastavení.
+   Pokud akce podporuje stránkování, akce zobrazí nastavení **stránkování** .
 
-1. Změnit **stránkování** nastavení z **vypnout** k **na**. V **prahová hodnota** vlastnost, zadejte celočíselnou hodnotu pro cílový počet výsledků, které chcete, aby akce, která vrátí.
+1. Změňte nastavení **stránkování** z **vypnuto** na **zapnuto**. Do vlastnosti **prahová** hodnota zadejte celočíselnou hodnotu pro cílový počet výsledků, který má akce vrátit.
 
-   ![Zadejte minimální počet s vrácenými výsledky](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
+   ![Zadejte minimální počet výsledků, které se mají vrátit.](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
-1. Jakmile budete připraveni, zvolte **provádí**.
+1. Až budete připraveni, vyberte **Hotovo**.
 
-## <a name="workflow-definition---pagination"></a>Definice pracovního postupu - stránkování
+## <a name="workflow-definition---pagination"></a>Definice pracovního postupu – stránkování
 
-Když zapnete stránkování pro akci, která podporuje tuto funkci, obsahuje definice pracovního postupu aplikace logiky `"paginationPolicy"` vlastnost spolu s `"minimumItemCount"` vlastnost v této akci `"runtimeConfiguration"` vlastnosti, například:
+Když zapnete stránkování pro akci, která podporuje tuto funkci, definice pracovního postupu vaší aplikace logiky zahrne vlastnost `"paginationPolicy"` společně s vlastností `"minimumItemCount"` v této vlastnosti `"runtimeConfiguration"`. Příklad:
 
 ```json
 "actions": {

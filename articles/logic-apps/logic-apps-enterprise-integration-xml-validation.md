@@ -1,6 +1,6 @@
 ---
-title: Ověření XML pro podnikovou integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Ověření XML se schématy pro řešení B2B v Azure Logic Apps sadou Enterprise Integration Pack
+title: Ověření XML pro B2B Enterprise Integration-Azure Logic Apps
+description: Ověří XML pomocí schémat v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,53 +8,62 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
-ms.date: 07/08/2016
-ms.openlocfilehash: 8db0dbadd944007ff953f9ea69695bf988ffebb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/21/2019
+ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995904"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680249"
 ---
-# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověření XML pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověření XML pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
-Často v scénáře B2B, partneři v smlouvu musí ujistěte, že zprávy, které si vyměňují jsou platné před zahájením zpracování dat. Pomocí konektoru ověřování XML v Enterprise Integration Pack můžete ověřit dokumenty proti předdefinovaným schématem.
+Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujistit, že jsou zprávy, které vyměňují, platné předtím, než může začít jakékoli zpracování dat. Dokumenty můžete v předdefinovaném schématu ověřit pomocí akce ověřování XML, která je k dispozici ve Enterprise Integration Pack.
 
-## <a name="validate-a-document-with-the-xml-validation-connector"></a>Ověřit dokument s konektorem ověření XML
+## <a name="prerequisites"></a>Předpoklady
 
-1. Vytvoření aplikace logiky a [propojit účet integrace aplikace](../logic-apps/logic-apps-enterprise-integration-accounts.md "se naučíte, jak propojit účet integrace aplikace logiky") , který má schéma, které chcete použít pro ověřování dat XML.
+* Předplatné Azure. Pokud ještě nemáte předplatné, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-2. Přidat **požadavek – přijetí požadavku HTTP při** trigger aplikace logiky.
+* Prázdná nebo existující aplikace logiky, ve které chcete použít akci ověření XML. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který je přidružený k vašemu předplatnému Azure, je propojený s aplikací logiky, kde plánujete použít akci ověření XML, a obsahuje schéma, které chcete použít k ověření obsahu XML. Vaše aplikace logiky i účet pro integraci musí existovat ve stejném umístění nebo oblasti Azure.
 
-3. Chcete-li přidat **ověření XML** akce, zvolte **přidat akci**.
+## <a name="add-xml-validation-action"></a>Přidat akci ověřování XML
 
-4. Chcete-li filtrovat všechny akce, které ten, který chcete, zadejte *xml* do vyhledávacího pole. Zvolte **ověření XML**.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
+1. Pokud máte prázdnou aplikaci logiky, v návrháři aplikace logiky zadejte do vyhledávacího pole `HTTP request` jako filtr a vyberte, **když se přijme požadavek HTTP** . V opačném případě pokračujte k dalšímu kroku.
 
-5. Chcete-li určit obsah XML, který chcete ověřit, vyberte **obsah**.
+1. V posledním kroku pracovního postupu vyberte **Nový krok**.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
+   Chcete-li přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku, která spojuje tyto kroky, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-6. Vyberte značky body jako obsah, který chcete ověřit.
+1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `xml validation` jako filtr. V seznamu akce vyberte **ověřování XML**.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-3.png)
+   ![Najde a vybere akci ověřování XML.](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 
-7. Chcete-li určit schématu, kterou chcete použít pro ověření předchozí *obsah* vstup, zvolte **název schématu**.
+1. Chcete-li určit obsah XML, který chcete ověřit, klikněte do pole **obsahu** , aby se zobrazil seznam dynamického obsahu.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-4.png)
+   ![Otevřít seznam dynamického obsahu](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
 
-8. Uložte si práci  
+   Seznam dynamického obsahu zobrazuje tokeny vlastností, které reprezentují výstupy z předchozích kroků v pracovním postupu. Pokud se v seznamu nezobrazuje očekávaná vlastnost, zkontrolujte, jestli je v záhlaví triggeru nebo akce vybraná možnost **Zobrazit další**.
 
-    ![](./media/logic-apps-enterprise-integration-xml-validation/xml-5.png)
+1. V seznamu dynamický obsah vyberte vlastnost, která má obsah, který chcete ověřit.
 
-Teď budete hotovi s nastavením vašeho konektoru ověření. V reálné aplikaci může být vhodné ukládat ověřenými daty v aplikaci – obchodní (LOB) jako je SalesForce. Chcete-li ověřené posílat do služby Salesforce, přidáte akci.
+   V tomto příkladu se vybere výstup **těla** z triggeru.
 
-Otestovat ověření akci, vytvořte žádost na koncový bod HTTP.
+   ![Vyberte obsah, který se má ověřit.](./media/logic-apps-enterprise-integration-xml-validation/select-content-to-validate.png)
 
-## <a name="next-steps"></a>Další postup
-[Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")   
+1. Chcete-li určit schéma, které chcete použít pro ověřování, otevřete seznam **název schématu** a vyberte schéma ověření, které jste přidali do propojeného účtu integrace.
 
+   ![Vyberte schéma, které se má použít k ověření.](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
+
+1. Uložte svou aplikaci logiky.
+
+   Nyní jste dokončili nastavení ověřování. V reálné aplikaci můžete ukládat ověřená data do obchodní aplikace (LOB), jako je třeba SalesForce. Pokud chcete odeslat ověřený výstup do Salesforce, přidejte akci.
+
+1. K otestování akce ověřování můžete odeslat žádost o aktivaci pracovního postupu vaší aplikace logiky.
+
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)

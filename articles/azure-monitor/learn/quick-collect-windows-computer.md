@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992097"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677225"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -29,7 +29,7 @@ Další informace o podporované konfiguraci najdete v tématu [podporované ope
  
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
@@ -37,17 +37,17 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![portál Azure](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
-   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*.  
+   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * Jako **skupinu prostředků** vyberte existující skupinu prostředků, která obsahuje jeden nebo několik virtuálních počítačů Azure.  
    * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).
    * Pokud vytváříte pracovní prostor v novém předplatném vytvořeném po 2. dubnu 2018, automaticky se použije cenový plán *podle počtu GB* a možnost vybrat cenovou úroveň nebude dostupná.  Pokud vytváříte pracovní prostor pro existující předplatné vytvořené před 2. dubnem nebo pro předplatné, které se vázalo na existující registraci smlouvy Enterprise, vyberte si cenovou úroveň, které dáváte přednost.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Po zadání požadovaných informací v podokně **log Analyticsho pracovního prostoru** vyberte **OK**.  
 
@@ -64,7 +64,7 @@ Než nainstalujete agenta Log Analytics pro Windows (také označovaný jako Mic
 
 3. Vybrat **upřesňující nastavení**:
 
-    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.
 
@@ -99,7 +99,7 @@ Následující postup nainstaluje a nakonfiguruje agenta pro Log Analytics v Azu
 
 10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
 
-Po dokončení instalace a nastavení se Microsoft Monitoring Agent zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k pracovnímu prostoru Log Analytics. Když se připojí, na kartě **Azure Log Analytics** se Agent zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Log Analytics.**<br><br> ![Stav připojení MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Po dokončení instalace a nastavení se Microsoft Monitoring Agent zobrazí v Ovládacích panelech. Můžete zkontrolovat svou konfiguraci a ověřit, zda je agent připojen k pracovnímu prostoru Log Analytics. Po připojení se na kartě **Azure Log Analytics** Agent zobrazí tato zpráva: **Microsoft Monitoring Agent se úspěšně připojil ke službě Microsoft Log Analytics.**<br><br> ![MMA stav připojení ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Shromažďování dat o událostech a výkonu
 
@@ -109,7 +109,7 @@ Azure Monitor mohou shromažďovat události, které zadáte z protokolu událos
 
 2. Vybrat **upřesňující nastavení**:
 
-    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Log Analytics Upřesnit nastavení](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.  
 
@@ -135,7 +135,7 @@ Teď, když jste povolili shromažďování dat, můžeme spustit jednoduché pr
 
 1. Ve vybraném pracovním prostoru v levém podokně vyberte **protokoly**.
 
-2. Na stránce dotaz na protokoly zadejte `Perf` do editoru dotazů a vyberte **Spustit**.
+2. Na stránce dotaz na protokoly zadejte do editoru dotazů `Perf` a vyberte **Spustit**.
  
     ![Log Analytics prohledávání protokolu](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -157,7 +157,7 @@ Chcete-li odebrat agenta, proveďte následující kroky:
 
 Pokud chcete odstranit pracovní prostor Log Analytics, který jste vytvořili dříve, vyberte ho a na stránce prostředek vyberte **Odstranit**:
 
-![Odstranit pracovní prostor Analýzy protokolů](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+![Odstranit Log Analytics pracovní prostor](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Další kroky
 

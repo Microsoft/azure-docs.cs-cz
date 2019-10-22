@@ -1,101 +1,96 @@
 ---
-title: Export do SQL ze služby Azure Application Insights | Dokumentace Microsoftu
-description: Průběžně exportujte data Application Insights do SQL s použitím Stream Analytics.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Export do SQL z Azure Application Insights | Microsoft Docs
+description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/11/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eecd2a50607fa42562a9ae6a7fb950a253655a45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/11/2017
+ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872710"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678274"
 ---
-# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Průvodce: Export do SQL z Application Insights s použitím Stream Analytics
-Tento článek popisuje, jak přesunout vaše telemetrická data z [Azure Application Insights] [ start] do služby Azure SQL database s použitím [průběžný Export] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
+Tento článek popisuje, jak přesunout data telemetrie z [azure Application Insights][start] do databáze SQL Azure pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
-Průběžný export posune vaše telemetrická data do služby Azure Storage ve formátu JSON. Vytvoříme parsovat JSON objektů pomocí Azure Stream Analytics a vytvářet řádky v tabulce databáze.
+Průběžný export přesune data telemetrie do Azure Storage ve formátu JSON. Objekty JSON analyzujeme pomocí Azure Stream Analytics a vytvoří řádky v tabulce databáze.
 
-(Více obecně průběžný Export je způsob, jak provádět analýzu telemetrie aplikace posílat do Application Insights. Vám může přizpůsobit tento vzorový kód k provádění jiných operací s exportované telemetrická data, jako jsou agregace dat.)
+(Obecně platí, že průběžný export je způsob, jak provádět vlastní analýzu telemetrie, které vaše aplikace odesílá Application Insights. Tuto ukázku kódu můžete přizpůsobit, abyste mohli provádět jiné akce s exportovanou telemetrie, jako je například agregace dat.)
 
-Začneme za předpokladu, že již máte aplikaci, kterou chcete monitorovat.
+Začneme s předpokladem, že už máte aplikaci, kterou chcete monitorovat.
 
-V tomto příkladu budeme používat data o zobrazení stránek, ale stejný vzor lze snadno rozšířit na jiné datové typy, jako jsou vlastní události a výjimky. 
+V tomto příkladu budeme používat data zobrazení stránky, ale stejný vzor se dá snadno rozšířit na jiné datové typy, jako jsou třeba vlastní události a výjimky. 
 
-## <a name="add-application-insights-to-your-application"></a>Přidejte Application Insights do vaší aplikace
+## <a name="add-application-insights-to-your-application"></a>Přidání Application Insights do aplikace
 Jak začít:
 
-1. [Nastavení Application Insights pro webové stránky](../../azure-monitor/app/javascript.md). 
+1. [Nastavte Application Insights pro své webové stránky](../../azure-monitor/app/javascript.md). 
    
-    (V tomto příkladu se zaměříme na zpracování dat zobrazení stránky v prohlížečích klienta, ale můžete také nastavit Application Insights pro na straně serveru vaší [Java](../../azure-monitor/app/java-get-started.md) nebo [ASP.NET](../../azure-monitor/app/asp-net.md) aplikace a proces žádosti závislosti a jiné telemetrie serveru.)
-2. Publikování aplikace a podívejte se na telemetrická data v prostředku Application Insights.
+    (V tomto příkladu se zaměříme na zpracování dat zobrazení stránky z prohlížečů klienta, ale můžete také nastavit Application Insights na straně serveru aplikace [Java](../../azure-monitor/app/java-get-started.md) nebo [ASP.NET](../../azure-monitor/app/asp-net.md) a zpracovávat požadavky, závislosti a další telemetrie serveru.)
+2. Publikujte aplikaci a sledujte data telemetrie v prostředku Application Insights.
 
 ## <a name="create-storage-in-azure"></a>Vytvoření úložiště v Azure
-Průběžný export vždy výstupů dat do účtu služby Azure Storage, musíte nejprve vytvořit úložiště.
+Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejdřív musíte úložiště vytvořit.
 
-1. Vytvoření účtu úložiště ve vašem předplatném v [webu Azure portal][portal].
+1. Vytvořte ve svém předplatném účet úložiště ve [Azure Portal][portal].
    
-    ![Na webu Azure portal zvolte nový, dat, úložiště. Vyberte Classic, zvolte možnost vytvořit. Zadejte název úložiště.](./media/code-sample-export-sql-stream-analytics/040-store.png)
+    ![V Azure Portal vyberte nový, data a úložiště. Vyberte klasický a zvolte vytvořit. Zadejte název úložiště.](./media/code-sample-export-sql-stream-analytics/040-store.png)
 2. Vytvoření kontejneru
    
     ![V novém úložišti vyberte kontejnery, klikněte na dlaždici kontejnery a pak přidat](./media/code-sample-export-sql-stream-analytics/050-container.png)
-3. Zkopírovat přístupový klíč úložiště
+3. Zkopírování přístupového klíče úložiště
    
-    Musíte ji nejdříve k nastavení vstupu do služby stream analytics.
+    Budete ji potřebovat brzy pro nastavení vstupu ke službě Stream Analytics.
    
-    ![V úložišti otevřete nastavení, klíče a zkopírujte primární přístupový klíč](./media/code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![V úložišti otevřete nastavení, klíče a proveďte kopii primárního přístupového klíče.](./media/code-sample-export-sql-stream-analytics/21-storage-key.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžný export do služby Azure storage
-1. Na webu Azure Portal přejděte do prostředku Application Insights, který jste vytvořili pro vaši aplikaci.
+## <a name="start-continuous-export-to-azure-storage"></a>Spustit průběžný export do služby Azure Storage
+1. V Azure Portal vyhledejte prostředek Application Insights, který jste vytvořili pro vaši aplikaci.
    
-    ![Klikněte na tlačítko Procházet, Application Insights, vaše aplikace](./media/code-sample-export-sql-stream-analytics/060-browse.png)
-2. Vytvoření průběžný export.
+    ![Vyberte možnost Procházet, Application Insights a aplikace.](./media/code-sample-export-sql-stream-analytics/060-browse.png)
+2. Vytvořte průběžný export.
    
-    ![Zvolte možnost přidat nastavení průběžný Export](./media/code-sample-export-sql-stream-analytics/070-export.png)
+    ![Zvolit nastavení, průběžný export, přidat](./media/code-sample-export-sql-stream-analytics/070-export.png)
 
     Vyberte účet úložiště, který jste vytvořili dříve:
 
-    ![Nastavte cíl exportu](./media/code-sample-export-sql-stream-analytics/080-add.png)
+    ![Nastavit cíl exportu](./media/code-sample-export-sql-stream-analytics/080-add.png)
 
     Nastavte typy událostí, které chcete zobrazit:
 
-    ![Vyberte typy událostí](./media/code-sample-export-sql-stream-analytics/085-types.png)
+    ![Výběr typů událostí](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Umožnit shromažďování některá dat. Opřete se a umožnit lidem nějakou dobu používat vaši aplikaci. Telemetrická data budou přicházet a zobrazí statistické grafy v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). 
+1. Nechte si shromažďovat data. Nasaďte se zpátky a umožněte lidem, aby na chvíli používali vaši aplikaci. Telemetrie se objeví v a v [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md)uvidíte statistické grafy v [Průzkumníkovi metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události. 
    
-    A také se exportovat data do úložiště. 
-2. Kontrola exportovaná data, buď na portálu – volba **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** - nebo v sadě Visual Studio. V sadě Visual Studio, zvolte **zobrazení / Cloud Explorer**a otevřete Azure / Storage. (Pokud nemáte k dispozici tato možnost nabídky, je potřeba nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete vizuál C# / cloudu / získat Microsoft Azure SDK pro .NET.)
+    Data budou také exportována do vašeho úložiště. 
+2. Zkontrolujte exportovaná data, a to buď na portálu – zvolte **Procházet**, vyberte svůj účet úložiště a pak **kontejnery** – nebo v aplikaci Visual Studio. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C# /Cloud/získat Microsoft Azure SDK pro .NET.)
    
-    ![V sadě Visual Studio otevřete prohlížeč serveru, Azure, úložiště](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
+    ![V aplikaci Visual Studio otevřete Prohlížeč serveru, Azure, úložiště](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
-    Poznamenejte si běžné část názvu cesty, které je odvozeno z názvu a Instrumentační klíče aplikace. 
+    Poznamenejte si běžnou část názvu cesty, která je odvozena z názvu aplikace a klíče instrumentace. 
 
-Události se zapisují do objektu blob soubory ve formátu JSON. Každý soubor může obsahovat jeden nebo více událostí. Tak rádi bychom číst data události a filtrování pole, která chceme. Existují všechny druhy věcí, které můžeme udělat s daty, ale náš plán ještě dnes je použití Stream Analytics pro přesun dat do služby SQL database. To se usnadní ke spuštění hodně zajímavé dotazy.
+Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes je použít Stream Analytics k přesunu dat do SQL Database. Díky tomu bude snadné spouštět spoustu zajímavých dotazů.
 
 ## <a name="create-an-azure-sql-database"></a>Vytvoření Azure SQL Database
-Znovu spouští ze svého předplatného v [webu Azure portal][portal], vytvořit databázi (a nový server, pokud již máte jeden) která bude zapisovat data.
+Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte databázi (a nový server, pokud jste ho ještě nezískali), na který budete data zapisovat.
 
-![New, Data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
+![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
 Ujistěte se, že databázový server umožňuje přístup ke službám Azure:
 
-![Procházet, servery, serveru, nastavení brány Firewall, povolit přístup k Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
+![Procházení, servery, server, nastavení, brána firewall, povolení přístupu k Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-db"></a>Vytvoření tabulky ve službě Azure SQL DB
-Připojení k databázi vytvořené v předchozí části s nástrojem pro vaše preferované management. V tomto návodu použijeme [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
+Připojte se k databázi vytvořené v předchozí části pomocí preferovaného nástroje pro správu. V tomto návodu použijeme [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
 
 ![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
-Vytvořit nový dotaz a spusťte následující příkaz T-SQL:
+Vytvořte nový dotaz a spusťte následující příkaz T-SQL:
 
 ```SQL
 
@@ -137,54 +132,54 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-V této ukázce používáme data z zobrazení stránek. Pokud chcete zobrazit další data k dispozici, kontrola výstupu JSON a naleznete v tématu [export datového modelu](../../azure-monitor/app/export-data-model.md).
+V této ukázce používáme data z zobrazení stránky. Pokud chcete zobrazit další dostupná data, zkontrolujte výstup JSON a podívejte se na [model exportu dat](../../azure-monitor/app/export-data-model.md).
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
-Z [webu Azure portal](https://portal.azure.com/), vyberte službu Azure Stream Analytics a vytvoření nové úlohy Stream Analytics:
+Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
 
-![Nastavení Stream analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
+![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
 ![](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-Když se vytvoří novou úlohu, vyberte **přejít k prostředku**.
+Po vytvoření nové úlohy vyberte **Přejít k prostředku**.
 
-![Nastavení Stream analytics](./media/code-sample-export-sql-stream-analytics/SA003.png)
+![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Přidat nový vstup
 
-![Nastavení Stream analytics](./media/code-sample-export-sql-stream-analytics/SA004.png)
+![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA004.png)
 
-K provedení vstup z objektu blob služby průběžného exportu nastavení:
+Nastavte ho tak, aby převzal výstup z objektu BLOB průběžného exportu:
 
-![Nastavení Stream analytics](./media/code-sample-export-sql-stream-analytics/SA0005.png)
+![Nastavení Stream Analytics](./media/code-sample-export-sql-stream-analytics/SA0005.png)
 
-Teď budete potřebovat primární přístupový klíč z vašeho účtu úložiště, který jste si předtím poznamenali. Nastavíte jako klíč účtu úložiště.
+Teď budete potřebovat primární přístupový klíč z účtu úložiště, který jste si poznamenali dříve. Nastavte tuto hodnotu jako klíč účtu úložiště.
 
-#### <a name="set-path-prefix-pattern"></a>Vzor předpony cesty sady
+#### <a name="set-path-prefix-pattern"></a>Nastavit vzor předpony cesty
 
-**Ujistěte se, že nastavení formát data rrrr-MM-DD (s pomlčkami).**
+**Nezapomeňte nastavit formát data na RRRR-MM-DD (s pomlčkami).**
 
-Vzor předpony cesty určuje, jak Stream Analytics najde vstupních souborů v úložišti. Je nutné nastavit ji tak, aby odpovídaly průběžný Export způsobu, jakým ukládá data. Nastavte ho následujícím způsobem:
+Vzor předpony cesty určuje, jak Stream Analytics najde vstupní soubory v úložišti. Musíte ho nastavit tak, aby odpovídal způsobu průběžného exportu uložených dat. Nastavte to takto:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 V tomto příkladu:
 
-* `webapplication27` název prostředku Application Insights je **vše na malá písmena**. 
-* `1234...` je Instrumentační klíč tohoto prostředku Application Insights **s pomlčkami odebrat**. 
-* `PageViews` je typ dat, které chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili v průběžný Export. Prozkoumejte exportovaná data zobrazíte dostupné typy a podívejte se [export datového modelu](../../azure-monitor/app/export-data-model.md).
-* `/{date}/{time}` je vzorek doslova zapsán.
+* `webapplication27` je název prostředku Application Insights, **v malých případech**. 
+* `1234...` je klíč instrumentace prostředku Application Insights **s odebranými pomlčkami**. 
+* `PageViews` je typ dat, která chceme analyzovat. Dostupné typy závisí na filtru, který jste nastavili při průběžném exportu. Prohlédněte si exportovaná data a podívejte se na další dostupné typy a podívejte se na [model exportu dat](../../azure-monitor/app/export-data-model.md).
+* `/{date}/{time}` je vzor psaný doslova.
 
-Pokud chcete získat název a iKey prostředku Application Insights, otevřete Essentials na stránce Přehled nebo otevřete nastavení.
+Pokud chcete získat název a iKey prostředku Application Insights, otevřete na své stránce Přehled základní informace nebo otevřete nastavení.
 
 > [!TIP]
-> Použijte ukázkové funkce pro kontrolu vstupní cesta jste správně nastavili. Pokud selže: Zkontrolujte, jestli data v úložišti pro ukázkové časový rozsah, který jste zvolili. Upravte definici vstupní a zkontrolujte nastavení účtu úložiště, předpona cesty a datum formátu správně.
+> Pomocí ukázkové funkce ověřte, zda jste správně nastavili vstupní cestu. Pokud se chyba nezdařila: Ověřte, zda je v úložišti k dispozici data pro vybraný rozsah ukázkových časů. Upravte definici vstupu a ověřte, že jste správně nastavili účet úložiště, předponu cesty a formát data.
 
  
-## <a name="set-query"></a>Sady dotazů
-Otevřete část dotazu:
+## <a name="set-query"></a>Nastavit dotaz
+Otevřete oddíl dotazu:
 
-Nahraďte výchozí dotaz pomocí:
+Nahraďte výchozí dotaz:
 
 ```SQL
 
@@ -222,36 +217,36 @@ Nahraďte výchozí dotaz pomocí:
 
 ```
 
-Všimněte si, že několik prvních vlastností jsou specifické pro data o zobrazeních stránek. Exporty ostatních typů telemetrie, budou mít různé vlastnosti. Zobrazit [podrobné referenční informace k modelu dat pro typy vlastností a hodnot.](../../azure-monitor/app/export-data-model.md)
+Všimněte si, že první pár vlastností je specifických pro data zobrazení stránky. Export dalších typů telemetrie bude mít různé vlastnosti. Informace o [typech a hodnotách vlastností najdete v referenčních informacích k datovému modelu.](../../azure-monitor/app/export-data-model.md)
 
-## <a name="set-up-output-to-database"></a>Nastavte si výstup do databáze
-Vyberte SQL jako výstup.
+## <a name="set-up-output-to-database"></a>Nastavit výstup do databáze
+Jako výstup vyberte SQL.
 
-![Ve službě stream analytics vyberte výstupy](./media/code-sample-export-sql-stream-analytics/SA006.png)
+![Ve službě Stream Analytics vyberte výstupy.](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
 Zadejte databázi SQL.
 
-![Zadejte podrobnosti databáze](./media/code-sample-export-sql-stream-analytics/SA007.png)
+![Vyplňte podrobnosti vaší databáze.](./media/code-sample-export-sql-stream-analytics/SA007.png)
 
-Zavřete průvodce a počkejte, oznámení, že je nastavený výstup.
+Zavřete průvodce a počkejte na oznámení, že byl vytvořen výstup.
 
-## <a name="start-processing"></a>Spuštění zpracování
-Spuštění úlohy na panelu akcí:
+## <a name="start-processing"></a>Spustit zpracování
+Spusťte úlohu z panelu akcí:
 
-![Ve službě stream analytics klikněte na tlačítko Start](./media/code-sample-export-sql-stream-analytics/SA008.png)
+![V Stream Analytics klikněte na Start.](./media/code-sample-export-sql-stream-analytics/SA008.png)
 
-Můžete zvolit, jestli se má začít zpracovávat data od nyní nebo začínat starší data. Druhá možnost je užitečná, pokud jste už nějakou dobu spuštění průběžný Export.
+Můžete zvolit, zda chcete začít zpracovávat data od verze Now nebo začít s předchozími daty. Druhá je užitečná v případě, že už nějaký průběžný export už běží.
 
-Za pár minut vraťte se do nástroje pro správu SQL serveru a podívejte se na data v. Například použijte dotaz následujícím způsobem:
+Po několika minutách se vraťte na SQL Server Management Tools a sledujte tok dat v. Například použijte dotaz podobný tomuto:
 
     SELECT TOP 100 *
     FROM [dbo].[PageViewsTable]
 
 
 ## <a name="related-articles"></a>Související články
-* [Export do Power BI pomocí Stream Analytics](../../azure-monitor/app/export-power-bi.md )
-* [Podrobný datový model referenční informace pro typy vlastností a hodnot.](../../azure-monitor/app/export-data-model.md)
-* [Průběžný Export v Application Insights](../../azure-monitor/app/export-telemetry.md)
+* [Export do PowerBI pomocí Stream Analytics](../../azure-monitor/app/export-power-bi.md )
+* [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](../../azure-monitor/app/export-data-model.md)
+* [Průběžný export v Application Insights](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->

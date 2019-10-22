@@ -1,77 +1,73 @@
 ---
-title: Automatizace Azure Application Insights procesů pomocí Logic Apps.
-description: Zjistěte, jak rychle procesy můžete automatizovat opakovatelné přidáním konektoru Application Insights do vaší aplikace logiky.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Automatizujte Application Insights procesy Azure pomocí Logic Apps.
+description: Přečtěte si, jak můžete rychle automatizovat opakované procesy tím, že do aplikace logiky přidáte konektor Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/11/2019
+ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60904289"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677597"
 ---
-# <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace procesů Application Insights s využitím Logic Apps
+# <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace Application Insights procesů pomocí Logic Apps
 
-Připadá vám sami opakovaného spouštění stejné dotazů na vaše telemetrická data ke kontrole, jestli je vaše služba funguje správně? Pokud chcete automatizovat tyto dotazy pro vyhledání trendy a anomálie a následně vytvořit vlastní pracovní postupy kolem sebe? Azure Application Insights connector pro Logic Apps je nejvhodnější nástroj pro tento účel.
+Najdete v datech telemetrie opakované spouštění stejných dotazů, abyste zkontrolovali, jestli služba funguje správně? Chcete tyto dotazy automatizovat pro hledání trendů a anomálií a pak pro ně sestavovat vlastní pracovní postupy? Konektor služby Azure Application Insights pro Logic Apps je pravý Nástroj pro tento účel.
 
-Pomocí této integrace můžete automatizovat řadu procesů aniž byste museli napsat jediný řádek kódu. Vytvoření aplikace logiky s konektorem služby Application Insights rychle automatizovat jakýkoli proces Application Insights. 
+Pomocí této integrace můžete automatizovat mnoho procesů bez nutnosti psát jediný řádek kódu. Pomocí konektoru Application Insights můžete vytvořit aplikaci logiky a rychle tak automatizovat všechny Application Insights procesy. 
 
-Můžete přidat i další akce. Funkce Logic Apps služby Azure App Service umožňuje stovky akce k dispozici. Například pomocí aplikace logiky můžete automaticky odesílat oznámení e-mailem nebo vytvořit chybu ve službě Azure DevOps. Můžete také použít jeden z mnoha dostupných [šablony](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) chcete urychlit proces tvorby aplikace logiky. 
+Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpřístupňuje stovky akcí. Například pomocí aplikace logiky můžete automaticky odeslat e-mailové oznámení nebo vytvořit chybu v Azure DevOps. Můžete také použít jednu z mnoha dostupných [šablon](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) , které vám pomůžou urychlit proces vytváření aplikace logiky. 
 
-## <a name="create-a-logic-app-for-application-insights"></a>Vytvoření aplikace logiky pro službu Application Insights
+## <a name="create-a-logic-app-for-application-insights"></a>Vytvoření aplikace logiky pro Application Insights
 
-V tomto kurzu se dozvíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics skupiny atributů v datech pro webovou aplikaci. Tento tok automaticky odesílá výsledky e-mailem, pouze jeden příklad použití Application Insights Analytics a Logic Apps společně. 
+V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete Application Insights Analytics a Logic Apps společně používat. 
 
 ### <a name="step-1-create-a-logic-app"></a>Krok 1: Vytvoření aplikace logiky
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Klikněte na tlačítko **vytvořit prostředek**vyberte **Web + mobilní zařízení**a pak vyberte **aplikace logiky**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení**a pak vyberte **Aplikace logiky**.
 
     ![Nové okno aplikace logiky](./media/automate-with-logic-apps/1createlogicapp.png)
 
-### <a name="step-2-create-a-trigger-for-your-logic-app"></a>Krok 2: Vytvoření aktivační události pro vaši aplikaci logiky
-1. V **návrhář aplikace logiky** okně v části **začněte běžně používaným triggerem**vyberte **opakování**.
+### <a name="step-2-create-a-trigger-for-your-logic-app"></a>Krok 2: vytvoření triggeru pro vaši aplikaci logiky
+1. V okně **návrháře aplikace logiky** v části **začít se společným triggerem**vyberte **opakování**.
 
     ![Okno návrháře aplikace logiky](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. V **Interval** zadejte **1** a poté**frekvence** vyberte **den**.
+1. Do pole **interval** zadejte **1** a pak,**počet_plateb** , vyberte **den**.
 
-    ![Návrhář aplikace logiky "Recurrence" okna](./media/automate-with-logic-apps/3recurrence.png)
+    ![Okno opakování návrháře aplikace logiky](./media/automate-with-logic-apps/3recurrence.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Přidání akce Application Insights
-1. Klikněte na tlačítko **nový krok**.
+1. Klikněte na **Nový krok**.
 
-1. V **zvolte akci** vyhledávacího pole, typ **Azure Application Insights**.
+1. Do vyhledávacího pole **zvolit akci** zadejte **Azure Application Insights**.
 
-1. V části **akce**, klikněte na tlačítko **Azure Application Insights – vizualizace analytický dotaz**.
+1. V části **Akce**klikněte na **analytické dotazy Azure Application Insights – vizualizace**.
 
-    !["Zvolte akci" okna návrháře aplikací logiky](./media/automate-with-logic-apps/4visualize.png)
+    ![Návrhář aplikace logiky "Výběr akce"](./media/automate-with-logic-apps/4visualize.png)
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: Připojení k prostředku služby Application Insights
+### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: připojení k prostředku Application Insights
 
-K dokončení tohoto kroku potřebujete ID aplikace a klíč rozhraní API pro váš prostředek. Můžete je znovu načíst z portálu Azure portal, jak je znázorněno v následujícím diagramu:
+K dokončení tohoto kroku potřebujete ID aplikace a klíč rozhraní API pro váš prostředek. Můžete je načíst z Azure Portal, jak je znázorněno v následujícím diagramu:
 
-![ID aplikace na webu Azure Portal](./media/automate-with-logic-apps/5apiaccess.png)
+![ID aplikace v Azure Portal](./media/automate-with-logic-apps/5apiaccess.png)
 
-![ID aplikace na webu Azure Portal](./media/automate-with-logic-apps/6apikey.png)
+![ID aplikace v Azure Portal](./media/automate-with-logic-apps/6apikey.png)
 
 Zadejte název připojení, ID aplikace a klíč rozhraní API.
 
-![Okno připojení toku návrhář aplikace logiky](./media/automate-with-logic-apps/7connection.png)
+![Okno připojení toku návrháře aplikace logiky](./media/automate-with-logic-apps/7connection.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5: Zadejte typ dotazu a graf Analytics
-V následujícím příkladu dotaz vybere neúspěšných žádostí za poslední den a koreluje s výjimky, ke kterým došlo v rámci operace. Analytics koreluje neúspěšné požadavky na základě identifikátoru operation_Id. Výsledky dotazu pak segmenty pomocí algoritmu autocluster. 
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5: zadejte dotaz Analytics a typ grafu
+V následujícím příkladu dotaz vybírá neúspěšné žádosti za poslední den a koreluje s výjimkami, k nimž došlo v rámci operace. Analýza koreluje neúspěšné požadavky na základě identifikátoru operation_Id. Dotaz pak segmentuje výsledky pomocí algoritmu autocluster. 
 
-Když vytvoříte vlastní dotazy, ověřte, že fungují správně v Analytics předtím, než ho přidáte do vašeho toku.
+Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytických prostředí, než je přidáte do vašeho toku.
 
-1. V **dotazu** přidejte následující dotaz Analytics:
+1. Do pole **dotaz** přidejte následující analytický dotaz:
 
     ```
     requests
@@ -84,58 +80,58 @@ Když vytvoříte vlastní dotazy, ověřte, že fungují správně v Analytics 
     | evaluate autocluster()
     ```
 
-1. V **typ grafu** vyberte **tabulku Html**.
+1. V poli **typ grafu** vyberte **tabulka HTML**.
 
     ![Okno Konfigurace dotazu Analytics](./media/automate-with-logic-apps/8query.png)
 
-### <a name="step-6-configure-the-logic-app-to-send-email"></a>Krok 6: Konfigurace aplikace logiky k odesílání e-mailu
+### <a name="step-6-configure-the-logic-app-to-send-email"></a>Krok 6: Konfigurace aplikace logiky pro odesílání e-mailů
 
-1. Klikněte na tlačítko **nový krok**.
+1. Klikněte na **Nový krok**.
 
 1. Do vyhledávacího pole zadejte **Office 365 Outlook**.
 
-1. Klikněte na tlačítko **Office 365 Outlook – odeslat e-mail**.
+1. Klikněte na **Office 365 Outlook – odeslat e-mail**.
 
-    ![Výběr Office 365 Outlooku](./media/automate-with-logic-apps/9sendemail.png)
+    ![Výběr aplikace Office 365 Outlook](./media/automate-with-logic-apps/9sendemail.png)
 
-1. V **odeslat e-mailu** okno, postupujte takto:
+1. V okně **Odeslat e-mail** udělejte toto:
 
    a. Zadejte e-mailovou adresu příjemce.
 
    b. Zadejte předmět e-mailu.
 
-   c. Klikněte kamkoli do **tělo** pole a pak v nabídce dynamického obsahu, které se otevře na pravé straně vyberte **tělo**.
+   c. Klikněte kamkoli do pole **text** a potom v nabídce dynamického obsahu, který se otevře vpravo, vyberte **text**.
     
-   d. Klikněte na tlačítko **přidat nový parametr** rozevírací seznam a vyberte přílohy a je ve formátu HTML.
+   d. Klikněte na rozevírací seznam **Přidat nový parametr** a vyberte přílohy a je HTML.
 
       ![Konfigurace Office 365 Outlooku](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Konfigurace Office 365 Outlooku](./media/automate-with-logic-apps/11emailparameter.png)
 
-1. V nabídce dynamického obsahu postupujte takto:
+1. V nabídce dynamický obsah udělejte toto:
 
     a. Vyberte **název přílohy**.
 
     b. Vyberte **obsah přílohy**.
     
-    c. V **je HTML** vyberte **Ano**.
+    c. V poli **je HTML** vyberte **Ano**.
 
-      ![Obrazovka Konfigurace e-mailu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
+      ![Obrazovka konfigurace e-mailu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
 
-### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7: Uložit a otestujte aplikaci logiky
-* Klikněte na tlačítko **Uložit** uložte provedené změny.
+### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7: uložení a otestování aplikace logiky
+* Kliknutím na **Uložit** uložte změny.
 
-Můžete počkat, aktivační událost pro spuštění aplikace logiky nebo aplikace logiky můžete spustit okamžitě tak, že vyberete **spustit**.
+Můžete počkat, až aktivační událost spustí aplikaci logiky, nebo můžete spustit aplikaci logiky hned po výběru možnosti **Spustit**.
 
-![Vytvoření obrazovky v aplikaci logiky](./media/automate-with-logic-apps/13save.png)
+![Obrazovka pro vytvoření aplikace logiky](./media/automate-with-logic-apps/13save.png)
 
-Při spuštění aplikace logiky, příjemce, které jste zadali v seznamu e-mailu obdrží e-mailu, který vypadá takto:
+Po spuštění aplikace logiky obdrží příjemci, které jste zadali v seznamu e-mailů, e-mail, který bude vypadat nějak takto:
 
-![E-mailové zprávy aplikace logiky](./media/automate-with-logic-apps/flow9.png)
+![E-mailová zpráva aplikace logiky](./media/automate-with-logic-apps/flow9.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
+- Přečtěte si další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
 - Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

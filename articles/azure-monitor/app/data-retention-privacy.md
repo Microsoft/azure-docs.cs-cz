@@ -1,23 +1,18 @@
 ---
 title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft Docs
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 08/22/2019
+ms.openlocfilehash: 62758ef82b074e093e837b2095dd9f27ab31657b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207291"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678101"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -58,13 +53,13 @@ Existují tři zdroje dat:
 Hlavní kategorie jsou:
 
 * [Telemetrie webového serveru](../../azure-monitor/app/asp-net.md) – požadavky HTTP.  Identifikátor URI, čas potřebný ke zpracování žádosti, kód odpovědi, IP adresa klienta. ID relace
-* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimky. Volání AJAX.
+* [Webové stránky](../../azure-monitor/app/javascript.md) – počty stránek, uživatelů a relací. Doba načítání stránky Výjimek. Volání AJAX.
 * Čítače výkonu – paměť, procesor, vstup/výstup, obsazenost sítě.
 * Kontext klienta a serveru – operační systém, národní prostředí, typ zařízení, prohlížeč a rozlišení obrazovky.
 * [Výjimky](../../azure-monitor/app/asp-net-exceptions.md) a zhroucení – **výpisy zásobníku**, ID buildu, typ procesoru. 
 * [Závislosti](../../azure-monitor/app/asp-net-dependencies.md) – volání externích služeb, jako jsou REST, SQL a AJAX. Identifikátor URI nebo připojovací řetězec, doba trvání, úspěch, příkaz
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) – doba trvání testu a kroky, odpovědi.
-* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **cokoli, co kódujete do svých protokolů nebo telemetrie**.
+* [Protokoly trasování](../../azure-monitor/app/asp-net-trace-logs.md) a [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  - **vše, co kódujete do protokolů nebo telemetrie**.
 
 [Další podrobnosti](#data-sent-by-application-insights).
 
@@ -89,7 +84,7 @@ Data uchovávaná déle než 90 dnů se účtují za přidání poplatků. Pře�
 
 Agregovaná data (tj. počty, průměry a další statistická data, která vidíte v Průzkumníkovi metrik) se uchovávají po dobu 1 minuty po 90 dnech.
 
-[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají na 15 dní. Tyto zásady uchování je nastavena na základě jednotlivých aplikací. Pokud je potřeba tuto hodnotu zvýšit, můžete požádat o zvýšení tak, že otevřete případ podpory na webu Azure Portal.
+[Snímky ladění](../../azure-monitor/app/snapshot-debugger.md) se ukládají na 15 dní. Tyto zásady uchovávání informací se nastavují na základě jednotlivých aplikací. Pokud potřebujete tuto hodnotu zvýšit, můžete požádat o zvýšení otevřením případu podpory v Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 Data jsou viditelná pro vás a v případě, že máte účet organizace, členové týmu. 
@@ -137,11 +132,11 @@ Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními poža
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`slouží k uchování dat. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) tady.)
+`C:\Users\username\AppData\Local\Temp` se používá pro trvalá data. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) tady.)
 
-###  <a name="net"></a>.Net
+###  <a name="net"></a>.NET
 
-Ve výchozím `ServerTelemetryChannel` nastavení používá místní složku `%localAppData%\Microsoft\ApplicationInsights` dat aplikace nebo složku `%TMP%`TEMP aktuálního uživatele. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.)
+Ve výchozím nastavení `ServerTelemetryChannel` používá složku dat místních aplikací aktuálního uživatele `%localAppData%\Microsoft\ApplicationInsights` nebo dočasné složky `%TMP%`. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.)
 
 
 Prostřednictvím konfiguračního souboru:
@@ -164,9 +159,9 @@ Prostřednictvím kódu:
 
 ### <a name="netcore"></a>NetCore
 
-Ve výchozím `ServerTelemetryChannel` nastavení používá místní složku `%localAppData%\Microsoft\ApplicationInsights` dat aplikace nebo složku `%TMP%`TEMP aktuálního uživatele. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.) V prostředí Linux bude místní úložiště zakázané, pokud není Zadaná složka úložiště.
+Ve výchozím nastavení `ServerTelemetryChannel` používá složku dat místních aplikací aktuálního uživatele `%localAppData%\Microsoft\ApplicationInsights` nebo dočasné složky `%TMP%`. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tady.) V prostředí Linux bude místní úložiště zakázané, pokud není Zadaná složka úložiště.
 
-Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` v metodě vaší `Startup.cs` třídy:
+Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v metodě `ConfigureServices()` třídy `Startup.cs`:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -176,36 +171,36 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="nodejs"></a>Node.js
 
-Ve výchozím `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` nastavení se používá pro trvalá data. Oprávnění pro přístup k této složce jsou omezená na aktuálního uživatele a správce. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tady.)
+Ve výchozím nastavení se `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` používá pro trvalá data. Oprávnění pro přístup k této složce jsou omezená na aktuálního uživatele a správce. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tady.)
 
-Předponu `appInsights-node` složky lze přepsat změnou hodnoty za běhu statické proměnné `Sender.TEMPDIR_PREFIX` nalezené v [sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
+@No__t_0 předpony složky lze přepsat změnou hodnoty za běhu statické proměnné `Sender.TEMPDIR_PREFIX` nalezené v [sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
 
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Návody posílat data Application Insights pomocí TLS 1,2?
 
-Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**, a oboru je rychle se měnící spustit metodu Abandon podpory pro tyto starší protokoly. 
+Aby se zajistilo zabezpečení dat při přenosu do koncových bodů Application Insights, důrazně doporučujeme zákazníkům nakonfigurovat, aby používali aspoň protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučují**se a odvětví se rychle přesouvá na zrušení podpory těchto starších verzí. protokolů. 
 
-[PCI Security Standards Council](https://www.pcisecuritystandards.org/) nastavil [termínu 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) zakázat starší verze protokolu TLS/SSL a upgrade bezpečnější protokoly. Až Azure sníží podporu starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes aspoň protokol TLS 1,2, nebudete moct odesílat data Application Insights. Přístup, který jste probrali k otestování a ověření podpory protokolu TLS vaší aplikace, se liší v závislosti na operačním systému nebo platformě a na jazyku nebo architektuře, které vaše aplikace používá.
+[Rada standardů zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavila [konečný termín od 30. června 2018,](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) aby se zakázaly starší verze TLS/SSL a upgradoval na bezpečnější protokoly. Až Azure sníží podporu starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes aspoň protokol TLS 1,2, nebudete moct odesílat data Application Insights. Přístup, který jste probrali k otestování a ověření podpory protokolu TLS vaší aplikace, se liší v závislosti na operačním systému nebo platformě a na jazyku nebo architektuře, které vaše aplikace používá.
 
 Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 1,2, pokud to není nezbytně nutné, protože to může narušit funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjišťovat a využívat novější bezpečnější protokoly, jak se stanou. k dispozici jako TLS 1,3. Doporučujeme, abyste provedli důkladné auditování kódu vaší aplikace a zkontrolovali zakódujeme konkrétní verze TLS/SSL.
 
 ### <a name="platformlanguage-specific-guidance"></a>Doprovodné materiály pro konkrétní platformu nebo jazyk
 
-|Platformu nebo jazyk | Podpora | Další informace |
+|Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
 | Azure App Services  | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení.  |
 | Aplikace Function Azure | Podporuje se může vyžadovat konfigurace. | Podpora byla oznámena v dubnu 2018. [Podrobnosti o konfiguraci](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)najdete v oznámení. |
 |.NET | Podporováno, konfigurace se liší podle verze. | Podrobné informace o konfiguraci pro .NET 4,7 a starší verze najdete v [těchto pokynech](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na[konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)  +  [Konfigurace operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)pro podporu TLS 1,2.
+|Monitorování stavu | Podporováno, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfiguraci operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [konfiguraci rozhraní .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu TLS 1,2.
 |Node.js |  V 10.5.0 může být vyžadována konfigurace, která je podporována. | Použijte [oficiální dokumentaci k Node. js TLS/SSL](https://nodejs.org/api/tls.html) pro jakoukoli konfiguraci konkrétní aplikace. |
 |Java | Podpora JDK pro TLS 1,2 byla přidána do [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 používá standardně [TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
-| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
-| Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Zobrazit [aktualizace přidává funkce pro protokol TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
-|Windows Vista | Nepodporuje se. | Není k dispozici
+|Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
+| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
+|Windows Vista | Nepodporuje se. | Nevztahuje se
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -239,15 +234,15 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 
 | Vaše akce | Shromážděné datové třídy (viz další tabulka) |
 | --- | --- |
-| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelů |
+| [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Session<br/>uživatelů |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
-| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelů |
+| [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Session<br/>uživatelů |
 | [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Jazyka |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 
@@ -258,11 +253,11 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 | **Vlastnosti** |**Všechna data – určená vaším kódem** |
 | DeviceContext |ID, IP adresa, národní prostředí, model zařízení, síť, typ sítě, název výrobce OEM, rozlišení obrazovky, instance role, název role, typ zařízení |
 | Instance třídy ClientContext |Rozlišení operačního systému, národního prostředí, jazyka, sítě a oken |
-| Relace |ID relace |
+| Session |ID relace |
 | ServerContext |Název počítače, národní prostředí, operační systém, zařízení, uživatelská relace, kontext uživatele, operace |
 | Odvodit |geografické umístění z IP adresy, časového razítka, operačního systému, prohlížeče |
 | Metriky |Název a hodnota metriky |
-| Duration |Název a hodnota události |
+| Akce |Název a hodnota události |
 | PageViews |Adresa URL a název stránky nebo název obrazovky |
 | Výkon klienta |Adresa URL/název stránky, čas načtení prohlížeče |
 | Jazyka |Volání HTTP z webové stránky na server |
@@ -280,8 +275,8 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 > [!NOTE]
 > IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) .
 
-## <a name="credits"></a>Závěrečné titulky
-Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která [https://www.maxmind.com](https://www.maxmind.com)jsou dostupná z.
+## <a name="credits"></a>Kredity
+Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com).
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Použití AI k pochopení dat objektů BLOB
+title: Použití AI k pochopení dat služby Blob Storage
 titleSuffix: Azure Search
 description: Pomocí kanálu obohacení AI v Azure Search přidejte do objektů blob Azure sémantické zpracování v přirozeném jazyce a analýzu obrázků.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529373"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678422"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>Použití AI k pochopení dat objektů BLOB
+# <a name="use-ai-to-understand-blob-storage-data"></a>Použití AI k pochopení dat služby Blob Storage
 
 Data v úložišti objektů BLOB v Azure jsou často řadou nestrukturovaných obsahu, jako jsou obrázky, dlouhé texty, soubory PDF a dokumenty Office. Pomocí funkcí AI v Azure Search můžete v různých způsobech pochopit a extrahovat cenné informace z objektů BLOB. Mezi příklady použití AI na obsah objektu BLOB patří:
 
@@ -112,7 +112,8 @@ Obohacený dokument na konci kanálu se od původní vstupní verze liší pří
 
 Díky obohacení AI se můžete dostat na maximum, abyste mohli co nejvíc využít data v Azure Storage, včetně kombinování Cognitive Services různých způsobů a vytváření vlastních dovedností pro případy, kdy pro daný scénář neexistuje žádná stávající služba pro rozpoznávání. Další informace najdete na následujících odkazech.
 
-> [!div class="nextstepaction"]
-> [Přehled rozšíření AI](cognitive-search-concept-intro.md) 
-> [vytvoření](cognitive-search-defining-skillset.md)uzlů map 
-> [ve stromu poznámek](cognitive-search-output-field-mapping.md)
++ [Nahrávání, stahování a výpis objektů BLOB pomocí Azure Portal (úložiště objektů BLOB v Azure)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Nastavení indexeru objektů BLOB (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [Přehled rozšíření AI (Azure Search)](cognitive-search-concept-intro.md) 
++ [Vytvoření dovednosti (Azure Search)](cognitive-search-defining-skillset.md)
++ [Mapování uzlů ve stromu poznámek (Azure Search)](cognitive-search-output-field-mapping.md)

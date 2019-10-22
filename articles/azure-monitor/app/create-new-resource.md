@@ -1,23 +1,18 @@
 ---
 title: Vytvořit nový prostředek služby Azure Application Insights | Microsoft Docs
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ae9c885b342664baf90f9c2b5702a092c9d838df
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.date: 08/16/2019
+ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562842"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677505"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -25,7 +20,7 @@ Azure Application Insights zobrazuje data o vaší aplikaci v *prostředku*Micro
 
 ## <a name="sign-in-to-microsoft-azure"></a>Přihlášení k Microsoft Azure
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -33,11 +28,11 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
 
 ![Klikněte na symbol + v levém horním rohu. Vyberte Vývojářské nástroje následované Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | Nastavení        |  Value           | Popis  |
+   | Nastavení        |  Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje monitorovanou aplikaci. |
    | **Skupina prostředků**     | myResourceGroup      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
-   | **Location** | East US | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Umístění** | USA – východ | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
 
 Zadejte příslušné hodnoty do požadovaných polí a potom vyberte **zkontrolovat + vytvořit**.
 
@@ -70,7 +65,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
@@ -108,7 +103,7 @@ Pro přístup k verzi Preview Application Insights příkazy rozhraní příkazo
  az extension add -n application-insights
 ```
 
-Pokud tento `az extension add` příkaz nespustíte, zobrazí se chybová zpráva s oznámením:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Pokud nespustíte příkaz `az extension add`, zobrazí se chybová zpráva s oznámením: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Nyní můžete spustit následující a vytvořit prostředek Application Insights:
 
@@ -121,7 +116,7 @@ az monitor app-insights component create --app
                                          [--tags]
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web

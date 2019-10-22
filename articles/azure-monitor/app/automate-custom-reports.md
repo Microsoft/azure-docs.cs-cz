@@ -1,23 +1,19 @@
 ---
 title: Automatizace vlastních sestav pomocí Azure Application Insights dat
 description: Automatizace vlastních denních, týdenních nebo měsíčních sestav pomocí Azure Application Insights dat
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146751"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677630"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastních sestav pomocí Azure Application Insights dat
 
@@ -78,7 +74,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Sestava naplánovaných Digest Application Insights
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **Function App** **COMPUTE** > .
+1. Z Azure Portal vyberte **vytvořit prostředek**  > **COMPUTE**  > **Function App**.
 
    ![Vytvoření prostředku Azure Function App snímku obrazovky](./media/automate-custom-reports/function-app-01.png)
 
@@ -95,7 +91,7 @@ availabilityResults
 5. Vyberte **_Application Insights naplánovanou šablonu Digest_** .
 
      > [!NOTE]
-     > Ve výchozím nastavení se aplikace Function App vytvoří s modulem runtime verze 2. x. Aby bylo možné použít šablonu Application Insights naplánovaného algoritmu Digest, je třeba [cílit na Azure Functions runtime verze](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** .  ![snímek obrazovky za běhu](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Ve výchozím nastavení se aplikace Function App vytvoří s modulem runtime verze 2. x. Aby bylo možné použít šablonu Application Insights naplánovaného algoritmu Digest, je třeba [cílit na Azure Functions runtime verze](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** .  ![runtime snímku obrazovky ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -105,11 +101,11 @@ availabilityResults
 
    ![Snímek obrazovky s nastavením funkce](./media/automate-custom-reports/function-app-05.png)
 
-7. Vyberte **Function App** > **platforem funkce** > **nastavení aplikace**.
+7. Vyberte  > **funkce platformy** **Function App**  > **nastavení aplikace**.
 
     ![Snímek obrazovky nastavení aplikace Azure Functions](./media/automate-custom-reports/function-app-07.png)
 
-8. Vytvořte tři nová nastavení aplikace s odpovídajícími odpovídajícími ``AI_APP_KEY``hodnotami ``AI_APP_ID``, ``SendGridAPI``a. Vyberte **Uložit**.
+8. Vytvořte tři nová nastavení aplikace s příslušnými odpovídajícími hodnotami ``AI_APP_ID``, ``AI_APP_KEY`` a ``SendGridAPI``. Vyberte **Save** (Uložit).
 
      ![Snímek rozhraní pro integraci funkce](./media/automate-custom-reports/function-app-08.png)
     
@@ -142,7 +138,7 @@ availabilityResults
 
 Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný účet SendGrid.
 
-1. V Azure Portal vyberte **vytvořit prostředek** vyhledávání pro doručování **e-mailů** , > klikněte na **vytvořit** > a vyplňte pokyny pro vytvoření specifické pro SendGrid. 
+1. V Azure Portal vyberte **vytvořit prostředek** vyhledávání pro **doručování e-mailů** , > klikněte na **vytvořit** > a vyplňte pokyny pro vytvoření specifické pro SendGrid. 
 
      ![Vytvoření snímku SendGrid prostředku](./media/automate-custom-reports/function-app-13.png)
 
@@ -150,7 +146,7 @@ Tyto kroky platí pouze v případě, že ještě nemáte nakonfigurovaný úče
 
      ![Snímek obrazovky s nastavením klíče rozhraní API](./media/automate-custom-reports/function-app-14.png)
 
-3. Tím se spustí web SendGrid. Vyberte **Nastavení** > **klíče rozhraní API**.
+3. Tím se spustí web SendGrid. Vyberte **nastavení**  > **klíče rozhraní API**.
 
      ![Snímek obrazovky pro vytvoření a zobrazení aplikace klíč rozhraní API](./media/automate-custom-reports/function-app-15.png)
 

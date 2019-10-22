@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights – podporované funkce Azure Functions | Microsoft Docs
 description: Application Insights podporované funkce pro Azure Functions
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: TimothyMothra
+ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.author: tilee
-ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372443"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677560"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights pro podporované funkce Azure Functions
 
@@ -30,27 +26,27 @@ Azure Functions nabízí [integrovanou integraci](../../azure-functions/function
 | **Sada Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatická kolekce**        |                 |                   |               
-| @no__t – 0 požadavků                     | Ano             | Ano               | 
+| &bull; žádosti                     | Ano             | Ano               | 
 | Výjimky &bull;                   | Ano             | Ano               | 
 | Čítače výkonu &bull;         | Ano             | Ano               |
-| @no__t – 0 závislostí                   |                   |                   |               
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Ano               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Ano               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Ano               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Ano               | 
+| &bull; závislosti                   |                   |                   |               
+| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Ano               | 
+| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Ano               | 
+| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Ano               | 
+| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Ano               | 
 | | | | 
 | **Podporované funkce**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Ano             | Ano               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 zabezpečený řídicí kanál|                 | Ano               | 
+| &nbsp; &nbsp; &nbsp; &mdash; kanál zabezpečeného řízení|                 | Ano               | 
 | Vzorkování &bull;                     | Ano             | Ano               | 
-| @no__t – 0 prezenčních signálů                   |                 | Ano               | 
+| &bull; prezenční signály                   |                 | Ano               | 
 | | | | 
 | **Korelace**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Ano               | 
-| @no__t – 0 EventHub                       |                   | Ano               | 
+| &bull; EventHub                       |                   | Ano               | 
 | | | | 
 | **Konfigurovatelné**                      |                   |                   |           
-| @no__t – 0Fully konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v části [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Ano                   | 
+| &bull;Fully konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v části [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Ano                   | 
 
 
 ## <a name="performance-counters"></a>Čítače výkonu

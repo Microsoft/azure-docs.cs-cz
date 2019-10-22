@@ -1,23 +1,18 @@
 ---
 title: Používání služby Search v Azure Application Insights | Microsoft Docs
 description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/30/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.date: 07/30/2019
+ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705422"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678060"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
@@ -65,12 +60,12 @@ Otevřete rozevírací nabídku typy událostí a vyberte typy událostí, kter�
 
 Typy událostí:
 
-* Sledujte - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně TrackTrace, log4Net, nLOG a System. Diagnostics. Trace.
+* **Trasování**  - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
 * Žádosti **o** požadavky HTTP přijaté serverovou aplikací, včetně stránek, skriptů, obrázků, souborů stylu a dat. Tyto události se používají k vytvoření grafů s přehledem požadavků a odpovědí.
-* **Telemetrie zobrazení** - stránky[odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky
+* **Zobrazení stránky**  - [telemetrie odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky.
 * **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), můžete je vyhledat tady.
 * **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
-* **Volání závislosti** - [z vaší serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
+* **Závislost**  - [volání z serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
 * **Dostupnost** – výsledky [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrovat hodnoty vlastností
@@ -101,7 +96,7 @@ Možná budete chtít nastavit časový rozsah, protože hledání v kratším r
 
 Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření speciálních znaků.
 
-| Řetězec | *Nenalezeno* | Nalezeno |
+| Řetězec | *Nenalezeno* | Nenachází |
 | --- | --- | --- |
 | HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Spojené státy|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -140,9 +135,9 @@ Kromě předem připravené telemetrie, kterou odesílá Application Insights SD
 * Zachyťte trasování protokolu z oblíbeného protokolovacího rozhraní v [rozhraní .NET](../../azure-monitor/app/asp-net-trace-logs.md) nebo [Java](../../azure-monitor/app/java-trace-logs.md). To znamená, že můžete procházet trasování protokolu a korelovat je s zobrazeními stránky, výjimkami a dalšími událostmi.
 * [Napíšete kód](../../azure-monitor/app/api-custom-events-metrics.md) pro odesílání vlastních událostí, zobrazení stránky a výjimek.
 
-Naučte se, [Jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+[Naučte se, jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
 
-## <a name="questions"></a>OTÁZKA & A
+## <a name="questions"></a>Otázka & A
 
 ### <a name="limits"></a>Kolik dat se zachová?
 
@@ -157,4 +152,4 @@ Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log
 * [Zápis složitých dotazů do analýz](../../azure-monitor/log-query/get-started-portal.md)
 * [Odeslání protokolů a vlastní telemetrie do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Nastavení testů dostupnosti a odezvy](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Odstraňování potíží](../../azure-monitor/app/troubleshoot-faq.md)
+* [Řešení potíží](../../azure-monitor/app/troubleshoot-faq.md)

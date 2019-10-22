@@ -1,5 +1,5 @@
 ---
-title: Kontrolovat stav, nastavit protokolování a získat výstrahy – Azure Logic Apps | Microsoft Docs
+title: Kontrolovat stav, nastavit protokolování a získat výstrahy – Azure Logic Apps
 description: Monitorování stavu, protokolování dat diagnostiky a nastavení výstrah pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261367"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680303"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Stav monitorování, nastavení protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -35,7 +34,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
 2. Vyberte svou aplikaci logiky a pak zvolte **Přehled**.
 
-   Azure Portal zobrazuje historii spuštění a historii triggerů pro vaši aplikaci logiky. Příklad:
+   Azure Portal zobrazuje historii spuštění a historii triggerů pro vaši aplikaci logiky. Například:
 
    ![Historie spuštění aplikace logiky a historie aktivačních událostí](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -49,7 +48,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
 3. Chcete-li zobrazit kroky z konkrétního spuštění, vyberte v části **historie spuštění**možnost spustit. 
 
-   Zobrazení monitorování ukazuje každý krok v tomto spuštění. Příklad:
+   Zobrazení monitorování ukazuje každý krok v tomto spuštění. Například:
 
    ![Akce pro konkrétní spuštění](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -59,7 +58,7 @@ Pokud chcete dostávat oznámení o selháních nebo jiných možných probléme
 
    Můžete například získat **ID korelace**spuštění, které může být nutné při použití [REST API pro Logic Apps](https://docs.microsoft.com/rest/api/logic).
 
-5. Pokud chcete získat podrobnosti o konkrétním kroku, vyberte tento krok. Teď si můžete prohlédnout podrobnosti, jako jsou vstupy, výstupy a případné chyby, ke kterým došlo v tomto kroku. Příklad:
+5. Pokud chcete získat podrobnosti o konkrétním kroku, vyberte tento krok. Teď si můžete prohlédnout podrobnosti, jako jsou vstupy, výstupy a případné chyby, ke kterým došlo v tomto kroku. Například:
 
    ![Podrobnosti o kroku](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -80,13 +79,13 @@ Než začnete, musíte mít Log Analytics pracovní prostor. Naučte [se, jak vy
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky. 
 
-2. V nabídce okna aplikace logiky v části **sledování**vyberte > **nastavení diagnostické diagnostiky**.
+2. V nabídce okna aplikace logiky v části **monitorování** **Vyberte diagnostická** > **nastavení diagnostiky**.
 
    ![Přejít na monitorování, diagnostiku, nastavení diagnostiky](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
 3. V části **nastavení diagnostiky**vyberte **zapnuto**.
 
-   ![Zapnout diagnostické protokoly](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![zapnout diagnostické protokoly](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Nyní vyberte pracovní prostor Log Analytics a kategorii událostí pro protokolování, jak je znázorněno níže:
 
@@ -139,7 +138,7 @@ Pokud chcete dotaz upřesnit přidáním filtru, vyberte **+ Přidat**.
    Tento příklad používá slovo status (stav) k vyhledání neúspěšných událostí v **AzureDiagnostics**.
    Zde je již vybrán filtr pro **status_s** .
 
-   ![Vyberte filtr.](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Výběr filtru](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. Na levém panelu vyberte hodnotu filtru, kterou chcete použít, a zvolte **použít**.
 
@@ -160,7 +159,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace Azure Diagnostics protokolů v Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamování protokolů Azure Diagnostics do Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -180,7 +179,7 @@ Pokud chcete monitorovat konkrétní metriky nebo přesáhli prahové hodnoty pr
 
 Pokud chcete nastavit výstrahy bez [Azure monitor protokolů](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků. K pokročilejším kritériím a akcím výstrah [nastavte Azure monitor protokoly](#azure-diagnostics) .
 
-1. V nabídce okna aplikace logiky v části **monitorování**vyberte**pravidla** >  **diagnostické** > výstrahy**Přidat výstrahu** , jak je znázorněno zde:
+1. V nabídce okno aplikace logiky v části **monitorování**vyberte**pravidla výstrahy**  >  **Diagnostika**  > **Přidat výstrahu** , jak je znázorněno zde:
 
    ![Přidání upozornění pro aplikaci logiky](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 
@@ -189,7 +188,7 @@ Pokud chcete nastavit výstrahy bez [Azure monitor protokolů](../log-analytics/
    1. V části **prostředek**vyberte svou aplikaci logiky, pokud ještě není vybraná. 
    2. Zadejte název a popis výstrahy.
    3. Vyberte **metriku** nebo událost, kterou chcete sledovat.
-   4. Vyberte **podmínku**, zadejte prahovou **hodnotu** pro metriku a vyberte **období** monitorování této metriky.
+   4. Vyberte **podmínku**, zadejte **prahovou hodnotu** pro metriku a vyberte **období** monitorování této metriky.
    5. Vyberte, jestli se má pro výstraha odeslat e-mail. 
    6. Zadejte všechny další e-mailové adresy pro odeslání výstrahy. 
    Můžete také zadat adresu URL Webhooku, kam chcete odeslat výstrahu.
@@ -211,7 +210,7 @@ Pokud chcete nastavit výstrahy bez [Azure monitor protokolů](../log-analytics/
 
 Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o tom, že událost je například stav, čas spuštění, čas ukončení a tak dále. Chcete-li programově nastavit monitorování, sledování a protokolování, můžete použít tyto podrobnosti s [REST API Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [REST API pro Azure Diagnostics](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows).
 
-`ActionCompleted` Událost `trackedProperties` má například vlastnosti a,kterémůžetepoužít`clientTrackingId` ke sledování a monitorování:
+Například událost `ActionCompleted` má `clientTrackingId` a vlastnosti `trackedProperties`, které můžete použít ke sledování a monitorování:
 
 ``` json
 {
@@ -247,11 +246,11 @@ Každá událost diagnostiky obsahuje podrobnosti o vaší aplikaci logiky a o t
 }
 ```
 
-* `clientTrackingId`: Pokud není zadaný, Azure automaticky vygeneruje toto ID a koreluje události v rámci spuštění aplikace logiky, včetně všech vnořených pracovních postupů, které se volají z aplikace logiky. Toto ID můžete zadat ručně z triggeru tak, že v `x-ms-client-tracking-id` žádosti triggeru předáte hlavičku s hodnotou vlastního ID. Můžete použít Trigger žádosti, Trigger HTTP nebo Trigger Webhooku.
+* `clientTrackingId`: Pokud není k dispozici, Azure automaticky vygeneruje toto ID a koreluje události napříč spuštěním aplikace logiky, včetně všech vnořených pracovních postupů, které jsou volány z aplikace logiky. Toto ID můžete zadat ručně z triggeru tak, že v žádosti triggeru předáte hlavičku `x-ms-client-tracking-id` s vaší hodnotou vlastního ID. Můžete použít Trigger žádosti, Trigger HTTP nebo Trigger Webhooku.
 
-* `trackedProperties`: Chcete-li sledovat vstupy nebo výstupy v diagnostických datech, můžete přidat sledované vlastnosti do akcí v definici JSON vaší aplikace logiky. Sledované vlastnosti mohou sledovat pouze vstupy a výstupy jedné akce, ale můžete použít `correlation` vlastnosti událostí ke korelaci mezi akcemi v běhu.
+* `trackedProperties`: Chcete-li sledovat vstupy nebo výstupy v diagnostických datech, můžete přidat sledované vlastnosti do akcí v definici JSON vaší aplikace logiky. Sledované vlastnosti mohou sledovat pouze vstupy a výstupy jedné akce, ale můžete použít `correlation` vlastností událostí pro korelaci mezi akcemi v běhu.
 
-  Chcete-li sledovat jednu nebo více vlastností, `trackedProperties` přidejte část a vlastnosti, které chcete do definice akce. Předpokládejme například, že chcete sledovat data jako "ID objednávky" v telemetrii:
+  Chcete-li sledovat jednu nebo více vlastností, přidejte část `trackedProperties` a vlastnosti, které chcete do definice akce. Předpokládejme například, že chcete sledovat data jako "ID objednávky" v telemetrii:
 
   ``` json
   "myAction": {

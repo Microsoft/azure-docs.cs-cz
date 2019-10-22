@@ -1,6 +1,6 @@
 ---
-title: Přístup k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
-description: Tento přehled popisuje, jak prostředí ISEs (Integration Service Environment) pomůžou přístup k Logic Apps přístup k virtuálním sítím Azure (virtuální sítě).
+title: Přístup k virtuálním sítím Azure – Azure Logic Apps
+description: Přehled o tom, jak prostředí ISEs (Integration Service Environment) pomůžou přístup k Logic Apps přístup k virtuálním sítím Azure (virtuální sítě)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516604"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680509"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -30,7 +30,7 @@ Vaše aplikace logiky teď může přímo přistupovat k systémům, které jsou
 
 * Konektor **ISE**s popiskem pro tento systém, například SQL Server
 * Integrovaná aktivační událost nebo akce s označením **Core**, jako je například Trigger nebo akce http
-* Vlastní konektor
+* vlastní konektor
 
 Tento přehled popisuje další podrobnosti o tom, jak ISE poskytuje vašim aplikacím logiky a integračním účtům přímý přístup k vaší virtuální síti Azure a porovnává rozdíly mezi ISE a službou Global Logic Apps.
 
@@ -91,8 +91,8 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 
 Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. Tyto koncové body mají také vliv na přístup k vstupům a výstupům v historii spuštění aplikace logiky.
 
-* **Interní**: Soukromé koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění jenom *z vaší virtuální sítě*
-* **Externí**: Veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění *mimo vaši virtuální síť*
+* **Interní**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění jenom *z vaší virtuální sítě* .
+* **External**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění *mimo vaši virtuální síť* .
 
 > [!IMPORTANT]
 > Možnost přístupový bod přístupu je dostupná jenom při vytváření ISE a nedá se změnit později.
@@ -119,7 +119,7 @@ U místních systémů, které nejsou připojené k virtuální síti nebo kter�
 
 Účty pro integraci s Logic Apps můžete používat v prostředí ISE (Integration Service Environment). Tyto účty pro integraci ale musí používat *stejné ISE* jako propojené aplikace logiky. Logic Apps ve ISE můžou odkazovat jenom na účty pro integraci, které jsou ve stejném ISE. Při vytváření účtu pro integraci můžete jako umístění účtu pro integraci vybrat ISE. Informace o tom, jak ceny a fakturace pro účty pro integraci s ISE najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojení k virtuálním sítím Azure z izolovaných aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * [Přidání artefaktů do prostředí integračních služeb](../logic-apps/add-artifacts-integration-service-environment-ise.md)

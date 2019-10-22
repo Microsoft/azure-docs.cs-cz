@@ -1,6 +1,6 @@
 ---
-title: X12 zprávy pro podnikovou integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Výměna X12 zpráv EDI formát pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
+title: X12 zprávy pro integraci B2B – Azure Logic Apps
+description: Zprávy Exchange X12 ve formátu EDI pro integraci B2B Enterprise v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,101 +8,100 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728760"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680001"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna X12 zpráv pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
-Před výměnou X12 zprávy pro Azure Logic Apps, je nutné vytvořit x X12 smlouvy a uložení této smlouvy v účtu integrace. Tady jsou kroky pro vytvoření x X12 smlouvy.
+Než budete moct X12 zprávy pro Azure Logic Apps, musíte si vytvořit X12 smlouvu a uložit ji do svého účtu integrace. Tady je postup, jak vytvořit smlouvu X12.
 
 > [!NOTE]
-> Tato funkce se vztahuje X12 stránky pro Azure Logic Apps. Další informace najdete v tématu [EDIFACT](logic-apps-enterprise-integration-edifact.md).
+> Tato stránka obsahuje funkce X12 pro Azure Logic Apps. Další informace najdete v tématu [EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
-Tady je položky, které budete potřebovat:
+Tady jsou položky, které potřebujete:
 
-* [Účtu pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který již má definovaný a spojené s předplatným Azure
-* Alespoň dva [partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , které jsou definovány v účtu integrace a nakonfigurovanou X12 identifikátor v části **obchodní identity**    
-* Požadovaný [schématu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , který nahrajete do účtu pro integraci
+* [Účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md) , který je už definovaný a přidružený k vašemu předplatnému Azure
+* Aspoň dva [partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , kteří jsou definováni v účtu integrace a nakonfigurovali pomocí identifikátoru X12 v rámci **obchodních identit**    
+* Požadované [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , které můžete nahrát na účet pro integraci
 
-Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [přidání partnerů](logic-apps-enterprise-integration-partners.md)a mít [schématu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , kterou chcete použít, můžete vytvořit x X12 smlouvu pomocí následujících kroků.
+Až [vytvoříte účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [přidáte partnery](logic-apps-enterprise-integration-partners.md)a máte [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , které chcete použít, můžete vytvořit X12 smlouvu pomocí následujících kroků.
 
-## <a name="create-an-x12-agreement"></a>Vytvoření x X12 smlouvy
+## <a name="create-an-x12-agreement"></a>Vytvoření smlouvy X12
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Portál Azure"). 
 
-2. V hlavní nabídce Azure zvolte **všechny služby**. 
-   Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.  
+2. V hlavní nabídce Azure vyberte **všechny služby**. 
+   Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.  
 
-   ![Vyhledejte svůj účet integrace](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![Najít účet pro integraci](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
    > [!TIP]
-   > Pokud **všechny služby** nezobrazí, možná budete muset nejprve rozbalte nabídku. V horní nabídce sbalený vyberte **nabídky Zobrazit**.
+   > Pokud se nezobrazí **všechny služby** , může být nutné nejprve rozbalit nabídku. V horní části sbalené nabídky vyberte možnost **Zobrazit nabídku**.
 
-3. V části **účty pro integraci**, vyberte účet integrace, ve které chcete přidat smlouvu.
+3. V části **účty pro integraci**vyberte účet pro integraci, na který chcete přidat smlouvu.
 
-   ![Vyberte místo pro vytvoření smlouvu účtu integrace](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![Vyberte účet pro integraci, kde se má smlouva vytvořit.](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Vyberte **přehled**a pak **smlouvy** dlaždici. 
-   Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici. 
+4. Vyberte **Přehled**a potom vyberte dlaždici **smlouvy** . 
+   Pokud nemáte dlaždici smlouvy, nejdřív přidejte dlaždici. 
 
-   ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
-5. V části **smlouvy**, zvolte **přidat**.
+5. V části **smlouvy**klikněte na možnost **Přidat**.
 
-   ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+   ![Zvolit přidat](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
-6. V části **přidat**, zadejte **název** pro vaši smlouvu. 
-   Typ smlouvy, vyberte **X12**. 
-   Vyberte **partner s identitou hostitele**, **identita hostitele**, **partner s identitou hosta**, a **identita hosta** pro vaši smlouvu. 
-   Vlastnost podrobnosti najdete v tabulce v tomto kroku.
+6. V části **Přidat**zadejte **název** vaší smlouvy. 
+   Jako typ smlouvy vyberte **X12**. 
+   Vyberte **hostitele hostitele**, **identitu hostitele**, **partnera hosta**a **identitu hosta** pro vaši smlouvu. 
+   Další podrobnosti o vlastnostech najdete v tabulce v tomto kroku.
 
-    ![Zadejte podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
+    ![Zadání podrobností o smlouvě](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
     | Vlastnost | Popis |
     | --- | --- |
-    | Name |Název smlouvy |
+    | Name (Název) |Název smlouvy |
     | Typ smlouvy | By měl být X12 |
-    | Partner s identitou hostitele |Smlouvu musí hostitelské i hostující partnera. Partner hostitele představuje organizace, který konfiguruje smlouvy. |
-    | Identita hostitele |Identifikátor pro hostitele partnera |
-    | Partner s identitou hosta |Smlouvu musí hostitelské i hostující partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
-    | Identita hosta |Identifikátor partner s identitou hosta |
-    | Zobrazit nastavení |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
-    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |  
+    | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
+    | Hostitelská identita |Identifikátor hostitelského partnera |
+    | Partner hosta |Smlouva potřebuje hostitele i partnera hosta. Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
+    | Identita hosta |Identifikátor hostovaného partnera |
+    | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté smlouvou. |
+    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odesílané smlouvou. |  
 
    > [!NOTE]
-   > Rozlišení X12 smlouvy závisí na odpovídající kvalifikátor odesílatele a identifikátor a kvalifikátoru pro příjemce a identifikátor definovaný v partnera a příchozí zprávy. Pokud tyto hodnoty změnit svého partnera, aktualizujte příliš smlouvy.
+   > Řešení smlouvy X12 závisí na porovnání kvalifikátoru a identifikátoru odesílatele a kvalifikátoru a identifikátoru přijímače definovaného v partnerské a příchozí zprávě. Pokud se tyto hodnoty pro vašeho partnera změní, aktualizujte také smlouvu.
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Nakonfigurujte, jak vaše smlouvy popisovače přijatých zpráv
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurace způsobu, jakým vaše smlouva zpracovává přijaté zprávy
 
-Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od svého partnera prostřednictvím této smlouvy.
+Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od vašeho partnera prostřednictvím této smlouvy.
 
-1.  V části **přidat**vyberte **přijímat nastavení**.
-Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
+1.  V části **Přidat**vyberte **Nastavení příjmu**.
+Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s partnerem, který s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
-    **Získat nastavení** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, obálky, kontrolních čísel, ověření a interní nastavení.
+    **Nastavení příjmu** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, obálky, čísla ovládacích prvků, ověřování a interní nastavení.
 
-2. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
+2. Až to budete mít, nezapomeňte nastavení uložit tak, že kliknete na **OK**.
 
-Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v souladu s vámi vybrané nastavení.
+Vaše smlouva je teď připravená na zpracování příchozích zpráv, které odpovídají vybraným nastavením.
 
-### <a name="identifiers"></a>Identifikátory
+### <a name="identifiers"></a>Identifikace
 
 ![Nastavit vlastnosti identifikátoru](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
 | Vlastnost | Popis |
 | --- | --- |
-| ISA1 (kvalifikátor autorizace) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor autorizace. |
-| ISA2 |Volitelné. Zadejte informace o autorizaci. Pokud je hodnota, kterou jste zadali pro ISA1 než 00, zadejte alespoň jeden alfanumerický znak a maximálně 10. |
-| ISA3 (kvalifikátor zabezpečení) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor zabezpečení. |
-| ISA4 |Volitelné. Zadejte hodnotu informace o zabezpečení. Pokud je hodnota, kterou jste zadali pro ISA3 než 00, zadejte alespoň jeden alfanumerický znak a maximálně 10. |
+| ISA1 (kvalifikátor autorizace) |V rozevíracím seznamu vyberte hodnotu kvalifikátor autorizace. |
+| ISA2 |Volitelné. Zadejte hodnotu informace o autorizaci. Pokud je hodnota, kterou jste zadali pro ISA1, jiná než 00, zadejte minimálně jeden alfanumerický znak a maximálně 10. |
+| ISA3 (kvalifikátor zabezpečení) |V rozevíracím seznamu vyberte hodnotu kvalifikátoru zabezpečení. |
+| ISA4 |Volitelné. Zadejte hodnotu informace o zabezpečení. Pokud je hodnota, kterou jste zadali pro ISA3, jiná než 00, zadejte minimálně jeden alfanumerický znak a maximálně 10. |
 
 ### <a name="acknowledgment"></a>Potvrzení
 
@@ -110,58 +109,58 @@ Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v so
 
 | Vlastnost | Popis |
 | --- | --- |
-| Očekává se TA1 |Vrátí technické potvrzení odesílatele výměny |
-| Očekává se FA |Vrátí funkční potvrzení odesílatele výměny. Potom vyberte, jestli chcete potvrzování 997 nebo 999 založené na verzi schématu |
-| Zahrnout smyčku AK2/IK2 smyčky |Umožňuje generování smyčku AK2 smyček v funkční potvrzení pro přijaté sady transakcí |
+| Očekáván TA1 |Vrátí technické potvrzení odesílateli výměny dat. |
+| Očekává se FA. |Vrátí funkční potvrzení odesílateli výměny. Pak vyberte, jestli chcete potvrzení 997 nebo 999, podle verze schématu. |
+| Zahrnout smyčku AK2/IK2 |Povoluje generování smyček AK2 ve funkčních potvrzeních pro přijaté sady transakcí. |
 
 ### <a name="schemas"></a>Schémata
 
-Vyberte schéma pro každý typ transakce (ST1) a u aplikace odesílatele (GS2). Kanál receive zpětně přeloží příchozí zpráva porovnáním hodnot pro ST1 a GS2 v příchozí zprávě pomocí hodnoty, které tady nastavíte a schéma příchozí zprávy se schématem, že se že tady nastavíte.
+Vyberte schéma pro každý typ transakce (ST1) a aplikace odesílatele (GS2 úrovně). Kanál pro příjem rozloží příchozí zprávy porovnáním hodnot pro ST1 a GS2 úrovně v příchozí zprávě s hodnotami, které jste zde nastavili, a schématem příchozí zprávy se schématem, které jste nastavili.
 
-![Vyberte schéma](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
+![Vybrat schéma](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
 
 | Vlastnost | Popis |
 | --- | --- |
-| Version |Vyberte X12 verze |
-| Typ transakce (ST01) |Vyberte typ transakce |
-| U aplikace odesílatele (GS02) |Vyberte aplikace odesílatele |
-| Schéma |Vyberte soubor schématu, které chcete použít. Schémata jsou přidány do účtu pro integraci. |
+| Version |Vybrat verzi X12 |
+| Typ transakce (ST01) |Vyberte typ transakce. |
+| Aplikace odesílatele (GS02) |Výběr aplikace odesílatele |
+| Schéma |Vyberte soubor schématu, který chcete použít. Do účtu pro integraci se přidají schémata. |
 
 > [!NOTE]
-> Nakonfigurujte požadované [schématu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , který se nahraje do vaší [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Nakonfigurujte požadované [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , které se nahraje na [účet pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Obálky
+### <a name="envelopes"></a>Obálek
 
-![Zadejte oddělovač sady transakcí: Zvolte Standardní identifikátor nebo oddělovač opakování](./media/logic-apps-enterprise-integration-x12/x12-34.png)
-
-| Vlastnost | Popis |
-| --- | --- |
-| Využití ISA11 |Určuje oddělovač, který chcete použít v sadě transakcí: <p>Vyberte **standardní identifikátor** pro účely desítkovém zápisu tečkou (.), namísto desítkový zápis příchozí dokumentu v EDI přijímat kanálu. <p>Vyberte **oddělovač opakování** zadat oddělovač pro opakované výskyty jednoduchý datový prvek nebo opakované datovou strukturu. Obvykle se například stříšky (^) používá jako oddělovač opakování. HIPAA schémat můžete použít pouze ikonu kosočtverce. |
-
-### <a name="control-numbers"></a>Kontrolní čísla
-
-![Vyberte způsob zpracování duplicity kontrolních čísel](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+![Určete oddělovač v sadě transakcí: zvolte standardní identifikátor nebo oddělovač opakování.](./media/logic-apps-enterprise-integration-x12/x12-34.png)
 
 | Vlastnost | Popis |
 | --- | --- |
-| Zakázat duplicity kontrolní číslo výměny. |Zablokovat duplicitní výměn. Kontrolní číslo výměny (ISA13) vyhledá kontrolní číslo výměny přijaté. Pokud se zjistí shoda, nebude zpracování příjmu kanálu výměna. Můžete zadat počet dní pro provedení kontroly tím, že hodnota pro *zkontrolovat duplicity ISA13 každých (dny)* . |
-| Zakázat duplicity kontrolních čísel skupiny |Blok výměn s duplicitní skupiny kontrolních čísel. |
-| Zakázat duplicity kontrolních čísel sad transakcí |Blok výměn se duplicitní transakce sada kontrolních čísel. |
+| Využití ISA11 |Určuje oddělovač, který se má použít v sadě transakcí: <p>Vyberte **standardní identifikátor** pro použití tečky (.) pro Desítkový zápis místo desítkového zápisu příchozího dokumentu v kanálu pro příjem EDI. <p>Vyberte **oddělovač opakování** , chcete-li určit oddělovač pro opakované výskyty jednoduchého datového elementu nebo opakované datové struktury. Například obvykle se jako oddělovač opakování používá kosočtverce (^). Pro schémata HIPAA můžete použít jenom kosočtverce. |
+
+### <a name="control-numbers"></a>Řídicí čísla
+
+![Vyberte, jak se mají zpracovat duplicity kontrolních čísel.](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+
+| Vlastnost | Popis |
+| --- | --- |
+| Zakázat duplicity kontrolního čísla výměny |Zablokuje duplicitní změny. Kontroluje číslo řízení výměny (ISA13) pro přijaté číslo řízení výměny. Pokud se zjistí shoda, kanál pro příjem nezpracovává výměnu. Můžete zadat počet dní, po které se má provést kontrolu, a to zadáním hodnoty pro *kontrolu duplicitních ISA13 každých (dnů)* . |
+| Zakázat duplicity kontrolních čísel skupin |Blokové změny s duplicitními čísly řízení skupiny. |
+| Zakázat duplicity kontrolního čísla sady transakcí |Blokové změny s duplicitními čísly řízení sady transakcí. |
 
 ### <a name="validations"></a>Ověření
 
-![Nastavení vlastností ověřování pro přijaté zprávy](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+![Nastavení vlastností ověření pro přijaté zprávy](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
-Po dokončení každého řádku ověření druhého je automaticky přidán. Pokud nezadáte žádná pravidla, ověřování pomocí "Výchozího" řádku.
+Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověřování EDI |Ověřování EDI na typy dat definované schéma na EDI vlastnosti, omezení délky, prázdné datové prvky a koncové oddělovače. |
-| Rozšíření ověřování |Pokud datový typ není EDI, ověřit je na požadavek na prvek dat, povolené opakování, výčty a datový element délka ověření (min/max). |
-| Povolit úvodní a koncové nuly |Zachovat všechny další úvodní a koncové nuly a mezer. Neodebírat tyto znaky. |
-| Oříznout úvodní a koncové nuly |Odebere úvodní a koncové nuly a znaky. |
-| Zásady pro koncový oddělovač |Generovat koncové oddělovače. <p>Vyberte **nepovoluje** zakázat koncové oddělovače a oddělovače ve výměně přijaté. Pokud výměna má koncové oddělovače a oddělovače, výměna je deklarován není platný. <p>Vyberte **volitelné** tak, aby přijímal výměn s nebo bez něj koncové oddělovače a oddělovače. <p>Vyberte **povinné** při výměna musí mít koncové oddělovače a oddělovače. |
+| Ověřování EDI |Proveďte ověření EDI u datových typů, které jsou definovány vlastnostmi EDI schématu, omezením délky, prázdnými datovými prvky a koncovými oddělovači. |
+| Rozšířené ověřování |Pokud datový typ není EDI, ověřování je na základě požadavku datového prvku a povoleného opakování, výčtů a ověřování délky datových prvků (min/max). |
+| Povolení počátečních a koncových nul |Zachovejte jakékoli další úvodní nebo koncové znaky nula a mezer. Tyto znaky neodstraňujte. |
+| Oříznout úvodní a koncové nuly |Odstraní úvodní nebo koncové znaky nula a mezer. |
+| Zásady koncového oddělovače |Vygeneruje oddělovače na konci. <p>Pokud chcete zakázat koncové oddělovače a oddělovače v přijatém přenosu, vyberte **Nepovoleno** . V případě, že výměna obsahuje koncové oddělovače a oddělovače, je výměna deklarována jako neplatná. <p>Vyberte možnost **volitelné** , pokud chcete přijmout změny s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte možnost **povinná** , pokud musí mít výměna koncové oddělovače a oddělovače. |
 
 ### <a name="internal-settings"></a>Interní nastavení
 
@@ -169,36 +168,36 @@ Po dokončení každého řádku ověření druhého je automaticky přidán. Po
 
 | Vlastnost | Popis |
 | --- | --- |
-| Převést implicitní desítkový formát "Nn" základní 10 číselnou hodnotu |Převede číslo EDI, který je zadaný ve formátu "Nn" na číselnou hodnotu základu 10 |
-| Vytvořit prázdné značky XML, pokud jsou povolené koncové oddělovače |Zaškrtněte toto políčko, aby odesílatele výměny zahrnout prázdné značky XML pro koncové oddělovače. |
-| Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálku do sady transakcí. Pozastaví jenom transakce, pokud ověření selže. |
-| Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálky. Pozastaví celé výměně, když jeden nebo více sady transakcí v výměna neúspěšné ověření. | 
-| Zachovat výměnu – pozastavit sady transakcí při chybě |Výměna ponechá beze změn, vytvoří dokument XML pro celé dávkové výměnu. Pozastaví jenom sady transakcí, které nesplní ověřování současně zpracovávat všechny ostatní sady transakcí. |
-| Zachovat výměnu – pozastavit výměnu při chybě |Výměna ponechá beze změn, vytvoří dokument XML pro celé dávkové výměnu. Celé výměně pozastaví, když jeden nebo více sady transakcí v výměna dojde k selhání ověřování. |
+| Převést implicitní desítkový formát "NN" na základní 10 číselnou hodnotu |Převede číslo EDI zadané ve formátu "NN" na číselnou hodnotu o základu 10. |
+| Pokud jsou povolené koncové oddělovače, vytvoří se prázdné značky XML. |Zaškrtněte toto políčko, pokud chcete, aby odesílatel výměny zahrnoval prázdné značky XML pro koncové oddělovače. |
+| Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavenou při výměně do samostatného dokumentu XML použitím příslušné obálky pro sadu transakcí. Pozastavuje jenom transakce, kde se ověření nepovede. |
+| Rozdělit výměnu jako sady transakcí – při chybě pozastavit výměnu|Analyzuje každou transakci nastavenou při výměně do samostatného dokumentu XML použitím příslušné obálky. Pozastaví celý výměnu, pokud jedna nebo více transakcí v rámci výměny selže. | 
+| Zachovat výměnu – pozastavit sady transakcí při chybě |Ponechá výměnu beze změn, vytvoří dokument XML pro celý vydaný hromadnou výměnu. Pozastavuje pouze sady transakcí, které selžou při ověřování, a přitom pokračuje ve zpracování všech ostatních sad transakcí. |
+| Zachovat výměnu – pozastavit výměnu při chybě |Ponechá výměnu beze změn, vytvoří dokument XML pro celý vydaný hromadnou výměnu. Pozastaví celý výměnu, pokud jedna nebo více transakcí v rámci výměny selže. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Nakonfigurujte, jak vaši smlouvu odesílá zprávy
+## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurace způsobu, jakým vaše smlouva posílá zprávy
 
-Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy, které odešlete váš partner prostřednictvím této smlouvy.
+Pomocí této smlouvy můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy odeslané vašemu partnerovi.
 
-1.  V části **přidat**vyberte **odeslat nastavení**.
-Konfigurovat tyto vlastnosti závislosti na vaší smlouvě se vašeho partnera, který vyměňuje zprávy s vámi. Popisy vlastností naleznete v tématu tabulky v této části.
+1.  V části **Přidat**vyberte **Odeslat nastavení**.
+Tyto vlastnosti můžete nakonfigurovat na základě vaší smlouvy s vaším partnerem, který vám s vámi vyměňuje zprávy. Popis vlastností najdete v tabulkách v této části.
 
-    **Nastavení odesílání** uspořádány do těchto částí: Identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, kontrolních čísel a ověření.
+    **Nastavení odesílání** je uspořádáno do těchto částí: identifikátory, potvrzení, schémata, obálky, znakové sady a oddělovače, řídicí čísla a ověřování.
 
-2. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
+2. Až to budete mít, nezapomeňte nastavení uložit tak, že kliknete na **OK**.
 
-Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vámi vybrané nastavení smlouvy.
+Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odpovídají vybraným nastavením.
 
-### <a name="identifiers"></a>Identifikátory
+### <a name="identifiers"></a>Identifikace
 
 ![Nastavit vlastnosti identifikátoru](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
 | Vlastnost | Popis |
 | --- | --- |
-| Kvalifikátor autorizace (ISA1) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor autorizace. |
-| ISA2 |Zadejte informace o autorizaci. Pokud je tato hodnota než 00, pak zadejte minimálně jeden alfanumerický znak a maximálně 10. |
-| Kvalifikátor zabezpečení (ISA3) |Z rozevíracího seznamu vyberte hodnotu kvalifikátor zabezpečení. |
-| ISA4 |Zadejte hodnotu informace o zabezpečení. Pokud je tato hodnota než 00 pro hodnotu (ISA4) textového pole pak zadejte minimálně jednu hodnotu alfanumerické znaky a maximálně 10. |
+| Kvalifikátor autorizace (ISA1) |V rozevíracím seznamu vyberte hodnotu kvalifikátor autorizace. |
+| ISA2 |Zadejte hodnotu informace o autorizaci. Pokud je tato hodnota jiná než 00, zadejte minimálně jeden alfanumerický znak a maximálně 10 znaků. |
+| Kvalifikátor zabezpečení (ISA3) |V rozevíracím seznamu vyberte hodnotu kvalifikátoru zabezpečení. |
+| ISA4 |Zadejte hodnotu informace o zabezpečení. Pokud je tato hodnota jiná než 00, pro textové pole hodnota (ISA4) zadejte minimálně jednu alfanumerickou hodnotu a maximálně 10. |
 
 ### <a name="acknowledgment"></a>Potvrzení
 
@@ -206,101 +205,101 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 
 | Vlastnost | Popis |
 | --- | --- |
-| Očekává se TA1 |Technické potvrzení (TA1) vrátíte odesílatele výměny. Toto nastavení určuje, že požadavky hostitele partnera, který odesílá zprávy potvrzení od partnera hostovaného ve smlouvě. Tato potvrzení se očekává partner hostitele na základě nastavení přijímat smlouvy. |
-| Očekává se FA |Funkční potvrzení (IM) vrátíte odesílatele výměny. Vyberte, jestli chcete 997 nebo 999 potvrzení, na základě verze schématu, které pracujete. Tato potvrzení se očekává partner hostitele na základě nastavení přijímat smlouvy. |
-| Verze DM |Vyberte verzi DM |
+| Očekáván TA1 |Vrátí technické potvrzení (TA1) odesílateli výměny. Toto nastavení určuje, že hostitel hostující partner, který posílá zprávu, požádá o potvrzení od hostovaného partnera v rámci smlouvy. Tato potvrzení jsou očekávána hostitelským partnerem na základě nastavení příjmu smlouvy. |
+| Očekává se FA. |Vrátí funkční potvrzení (IM) odesílateli výměny. V závislosti na verzích schématu, se kterými pracujete, vyberte, jestli chcete potvrdit 997 nebo 999. Tato potvrzení jsou očekávána hostitelským partnerem na základě nastavení příjmu smlouvy. |
+| Verze im |Vyberte verzi im. |
 
 ### <a name="schemas"></a>Schémata
 
-![Výběr schématu se má použít](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Vyberte schéma, které se má použít.](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Vlastnost | Popis |
 | --- | --- |
-| Version |Vyberte X12 verze |
-| Typ transakce (ST01) |Vyberte typ transakce |
-| SCHEMA |Vyberte schéma používat. Schémata se nacházejí v účtu integrace. Pokud nejprve vyberte schéma automaticky konfiguruje verze a transakce typu  |
+| Version |Vybrat verzi X12 |
+| Typ transakce (ST01) |Vyberte typ transakce. |
+| XSD |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud nejprve vyberete schéma, bude automaticky nakonfiguruje typ verze a transakce.  |
 
 > [!NOTE]
-> Nakonfigurujte požadované [schématu](../logic-apps/logic-apps-enterprise-integration-schemas.md) , který se nahraje do vaší [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Nakonfigurujte požadované [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , které se nahraje na [účet pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).
 
-### <a name="envelopes"></a>Obálky
+### <a name="envelopes"></a>Obálek
 
-![Zadejte oddělovač sady transakcí: Zvolte Standardní identifikátor nebo oddělovač opakování](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
-
-| Vlastnost | Popis |
-| --- | --- |
-| Využití ISA11 |Určuje oddělovač, který chcete použít v sadě transakcí: <p>Vyberte **standardní identifikátor** pro účely desítkovém zápisu tečkou (.), namísto desítkový zápis příchozí dokumentu v EDI přijímat kanálu. <p>Vyberte **oddělovač opakování** zadat oddělovač pro opakované výskyty jednoduchý datový prvek nebo opakované datovou strukturu. Obvykle se například stříšky (^) používá jako oddělovač opakování. HIPAA schémat můžete použít pouze ikonu kosočtverce. |
-
-### <a name="control-numbers"></a>Kontrolní čísla
-
-![Zadejte vlastnosti pro kontrolní číslo](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![Určete oddělovač v sadě transakcí: zvolte standardní identifikátor nebo oddělovač opakování.](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
 | Vlastnost | Popis |
 | --- | --- |
-| Kontrolní číslo verze (ISA12) |Vyberte verzi X12 standard |
-| Indikátor využití (ISA15) |Vyberte místní výměny.  Hodnoty jsou informace, produkčních dat nebo testovací data |
-| Schéma |Generuje GS a ST segmenty pro výměnu X12 kódování, která odesílá do kanálu odeslat |
-| GS1 |Volitelný parametr, vyberte hodnotu pro funkční kód z rozevíracího seznamu |
-| GS2 |Volitelné, aplikace odesílatele |
-| GS3 |Volitelné, aplikace příjemce |
-| GS4 |Volitelné, vyberte CCYYMMDD nebo RRMMDD |
+| Využití ISA11 |Určuje oddělovač, který se má použít v sadě transakcí: <p>Vyberte **standardní identifikátor** pro použití tečky (.) pro Desítkový zápis místo desítkového zápisu příchozího dokumentu v kanálu pro příjem EDI. <p>Vyberte **oddělovač opakování** , chcete-li určit oddělovač pro opakované výskyty jednoduchého datového elementu nebo opakované datové struktury. Například obvykle se jako oddělovač opakování používá kosočtverce (^). Pro schémata HIPAA můžete použít jenom kosočtverce. |
+
+### <a name="control-numbers"></a>Řídicí čísla
+
+![Určení vlastností řídicího čísla](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+
+| Vlastnost | Popis |
+| --- | --- |
+| Číslo verze ovládacího prvku (ISA12) |Vyberte verzi X12 Standard. |
+| Indikátor využití (ISA15) |Vyberte kontext výměny.  Hodnoty jsou informace, produkční data nebo testovací data. |
+| Schéma |Vygeneruje segmenty GS a ST pro X12 kódovaný pro kódování, které posílá do kanálu pro odeslání. |
+| GS1 |Volitelné, v rozevíracím seznamu vyberte hodnotu pro funkční kód. |
+| GS2 úrovně |Volitelné, odesílatel aplikace |
+| GS3 úrovně |Volitelné, příjemce aplikace |
+| GS4 úrovně |Volitelné, vyberte CCYYMMDD nebo rrmmdd. |
 | GS5 |Volitelné, vyberte HHMM, HHMMSS nebo HHMMSSdd |
-| GS7 |Volitelný parametr, vyberte hodnotu pro příslušné agentury z rozevíracího seznamu |
-| GS8 |Volitelné, verzi dokumentu |
-| (ISA13) kontrolní číslo výměny |Vyžaduje, zadejte rozsah hodnot pro kontrolní číslo výměny. Zadejte číselnou hodnotu s minimálně 1 a maximálně 999999999 |
-| Kontrolní číslo skupiny (GS06) |Vyžaduje, zadejte rozsah čísel pro kontrolní číslo skupiny. Zadejte číselnou hodnotu s minimálně 1 a maximálně 999999999 |
-| Kontrolní číslo sady transakcí (ST02) |Vyžaduje, zadejte rozsah čísel pro transakce nastavit kontrolní číslo. Zadejte rozsah číselných hodnot s minimálně 1 a maximálně 999999999 |
-| Předvolba |Volitelné, určené pro rozsah čísla ovládací prvek sady transakcí používaných pro potvrzení. Zadejte číselnou hodnotu pro střední dvě pole a alfanumerická hodnota (v případě potřeby) pro pole předpon a přípon. Střední pole jsou povinné a obsahovat minimální a maximální hodnoty pro kontrolní číslo |
-| Přípona |Volitelné, určené pro rozsah čísla ovládací prvek sady transakcí používaných pro potvrzení. Zadejte číselnou hodnotu pro střední dvě pole a alfanumerická hodnota (v případě potřeby) pro pole předpon a přípon. Střední pole jsou povinné a obsahovat minimální a maximální hodnoty pro kontrolní číslo |
+| GS7 |Volitelné, v rozevíracím seznamu vyberte hodnotu zodpovědného subjektu. |
+| GS8 |Volitelná verze dokumentu |
+| Kontrolní číslo výměny (ISA13) |Požadováno, zadejte rozsah hodnot pro kontrolní číslo výměny. Zadejte číselnou hodnotu s minimální hodnotou 1 a maximálně 999999999. |
+| Řídicí číslo skupiny (GS06) |Požadováno, zadejte rozsah čísel pro kontrolní číslo skupiny. Zadejte číselnou hodnotu s minimální hodnotou 1 a maximálně 999999999. |
+| Kontrolní číslo sady transakcí (ST02) |Požadováno, zadejte rozsah čísel pro kontrolní číslo sady transakcí. Zadejte rozsah číselných hodnot s minimální hodnotou 1 a maximálně 999999999. |
+| Předvolba |Volitelné, určené pro rozsah řídicích čísel sady transakcí použitých v potvrzení. Do polí předpona a přípona zadejte číselnou hodnotu pro střední dvě pole a alfanumerický údaj (Pokud je to potřeba). Prostřední pole jsou povinná a obsahují minimální a maximální hodnoty pro kontrolní číslo. |
+| Auditování |Volitelné, určené pro rozsah řídicích čísel sady transakcí použitých v potvrzení. Do polí předpona a přípona zadejte číselnou hodnotu pro střední dvě pole a alfanumerický údaj (Pokud je to potřeba). Prostřední pole jsou povinná a obsahují minimální a maximální hodnoty pro kontrolní číslo. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
 
-Jiné než znakové sady, můžete zadat jinou sadu oddělovačů pro každý typ zprávy. Pokud pro danou zprávu schématu není zadána znaková sada, použije se výchozí znakovou sadu.
+Kromě znakové sady můžete pro každý typ zprávy zadat jinou sadu oddělovačů. Pokud není pro dané schéma zprávy zadána znaková sada, je použita výchozí znaková sada.
 
-![Zadejte oddělovače pro typy zpráv](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+![Zadat oddělovače pro typy zpráv](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
 
 | Vlastnost | Popis |
 | --- | --- |
-| Znakové sady, který se má použít |Ověření vlastnosti, vyberte X12 znakovou sadu. Možnosti jsou Basic, Extended a UTF8. |
-| Schéma |Vyberte schéma z rozevíracího seznamu. Po dokončení každého řádku, se automaticky přidá nový řádek. Pro vybrané schéma vyberte sadu oddělovače, který chcete použít, podle oddělovače níže. |
-| Typ vstupu |Z rozevíracího seznamu vyberte typem vstupu. |
-| Oddělovač komponent |K oddělení složených datových prvků, zadejte jeden znak. |
-| Oddělovač datových prvků |K oddělení jednoduché datové prvky v rámci složených datových prvků, zadejte jeden znak. |
-| Náhradní znak |Zadejte náhradní znak použitý k nahrazení všechny znaky oddělovačů v datové části při generování X12 odchozí zprávy. |
-| Ukončovací znak segmentu |Označuje konec segmentu EDI, zadejte jeden znak. |
-| Přípona |Vyberte znak, který se používá s identifikátorem segmentu. Pokud určíte příponu, může být prázdný datový element ukončovací znak segmentu. Pokud ukončovací znak segmentu je prázdné, je třeba určit příponu. |
+| Znaková sada, která se má použít |Chcete-li ověřit vlastnosti, vyberte znakovou sadu X12. Možnosti jsou základní, rozšířené a UTF8. |
+| Schéma |V rozevíracím seznamu vyberte schéma. Po dokončení každého řádku se automaticky přidá nový řádek. Pro vybrané schéma vyberte v závislosti na níže uvedeném oddělovači sadu oddělovačů, kterou chcete použít. |
+| Typ vstupu |V rozevíracím seznamu vyberte typ vstupu. |
+| Oddělovač komponent |Chcete-li oddělit složené datové prvky, zadejte jeden znak. |
+| Oddělovač datových prvků |Chcete-li oddělit jednoduché datové prvky v rámci složených datových elementů, zadejte jeden znak. |
+| Znak nahrazení |Zadejte náhradní znak, který se používá k nahrazení všech znaků oddělovače v datech datové části při generování odchozí zprávy X12. |
+| Ukončovací znak segmentu |Pro indikaci konce segmentu EDI zadejte jeden znak. |
+| Auditování |Vyberte znak, který se používá s identifikátorem segmentu. Pokud určíte příponu, pak může být datový prvek koncového znaku segmentu prázdný. Pokud je ukončovací znak segmentu prázdný, je nutné určit příponu. |
 
 > [!TIP]
-> Zadejte hodnoty speciální znak, upravit smlouvu jako dokumenty JSON a zadejte hodnotu ASCII speciální znak.
+> Chcete-li zadat speciální hodnoty znaků, upravte smlouvu jako JSON a zadejte hodnotu ASCII pro speciální znak.
 
 ### <a name="validation"></a>Ověření
 
 ![Nastavení vlastností ověřování pro odesílání zpráv](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
-Po dokončení každého řádku ověření druhého je automaticky přidán. Pokud nezadáte žádná pravidla, ověřování pomocí "Výchozího" řádku.
+Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
 
 | Vlastnost | Popis |
 | --- | --- |
 | Typ zprávy |Vyberte typ zprávy EDI. |
-| Ověřování EDI |Ověřování EDI na typy dat definované schéma na EDI vlastnosti, omezení délky, prázdné datové prvky a koncové oddělovače. |
-| Rozšíření ověřování |Pokud datový typ není EDI, ověřit je na požadavek na prvek dat, povolené opakování, výčty a datový element délka ověření (min/max). |
-| Povolit úvodní a koncové nuly |Zachovat všechny další úvodní a koncové nuly a mezer. Neodebírat tyto znaky. |
-| Oříznout úvodní a koncové nuly |Odeberte úvodní a koncové nulové znaky. |
-| Zásady pro koncový oddělovač |Generovat koncové oddělovače. <p>Vyberte **nepovoluje** zakázat koncové oddělovače a oddělovače v odeslané výměny. Pokud výměna má koncové oddělovače a oddělovače, výměna je deklarován není platný. <p>Vyberte **volitelné** odesílat výměn s nebo bez něj koncové oddělovače a oddělovače. <p>Vyberte **povinné** Pokud odeslané výměna musí mít koncové oddělovače a oddělovače. |
+| Ověřování EDI |Proveďte ověření EDI u datových typů, které jsou definovány vlastnostmi EDI schématu, omezením délky, prázdnými datovými prvky a koncovými oddělovači. |
+| Rozšířené ověřování |Pokud datový typ není EDI, ověřování je na základě požadavku datového prvku a povoleného opakování, výčtů a ověřování délky datových prvků (min/max). |
+| Povolení počátečních a koncových nul |Zachovejte jakékoli další úvodní nebo koncové znaky nula a mezer. Tyto znaky neodstraňujte. |
+| Oříznout úvodní a koncové nuly |Odstraní úvodní nebo koncové znaky nula. |
+| Zásady koncového oddělovače |Vygeneruje oddělovače na konci. <p>Pokud chcete zakázat koncové oddělovače a oddělovače v odeslaném přenosu, vyberte **Nepovoleno** . V případě, že výměna obsahuje koncové oddělovače a oddělovače, je výměna deklarována jako neplatná. <p>Vyberte možnost **volitelné** , pokud chcete odesílat změny s koncovými oddělovači a oddělovači nebo bez nich. <p>Vyberte možnost **povinná** , pokud je nutné zasílat odesílateli koncové oddělovače a oddělovače. |
 
-## <a name="find-your-created-agreement"></a>Najít vytvořený smlouvy
+## <a name="find-your-created-agreement"></a>Najít vytvořenou smlouvu
 
-1.  Po dokončení nastavení na všechny vlastnosti vaší smlouvy **přidat** zvolte **OK** dokončit vytváření vaší smlouvě a vrátit ke svému účtu integrace.
+1.  Po dokončení nastavení všech vlastností smlouvy na stránce **Přidat** kliknutím na **tlačítko OK** dokončete vytváření smlouvy a vraťte se k účtu pro integraci.
 
-    Smlouvy nově přidané se zobrazí ve vašich **smlouvy** seznamu.
+    Nově přidaná smlouva se teď zobrazí v seznamu **smluv** .
 
-2.  Můžete také zobrazit vaše smlouvy v přehled vašeho účtu integrace. V nabídce účtu integrace, zvolte **přehled**a pak **smlouvy** dlaždici.
+2.  Vaše smlouvy si můžete prohlédnout také v přehledu účtu pro integraci. V nabídce účtu pro integraci zvolte **Přehled**a pak vyberte dlaždici **smlouvy** .
 
-    ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Zobrazení swaggeru
-Zobrazit [swagger podrobnosti](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Zobrazit Swagger
+Podívejte se na [Podrobnosti Swagger](/connectors/x12/). 
 
-## <a name="learn-more"></a>Víc se uč
-* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
+## <a name="learn-more"></a>Další informace
+* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
 

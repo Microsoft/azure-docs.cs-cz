@@ -1,21 +1,18 @@
 ---
 title: Použití analýzy změn aplikace v Azure Monitor k nalezení problémů s webovými aplikacemi | Microsoft Docs
 description: Pomocí analýzy změn aplikace v Azure Monitor můžete řešit problémy s aplikacemi na živých webech na Azure App Service.
-services: application-insights
-author: cawams
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+author: cawams
 ms.author: cawa
-ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/07/2019
+ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033386"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678250"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -38,7 +35,7 @@ V současné době se analýza změn integruje do **diagnostiky a řešení prob
 
 ### <a name="azure-resource-manager-deployment-changes"></a>Změny nasazení Azure Resource Manager
 
-Pomocí [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview)vám analýza změn poskytuje historický záznam o tom, jak se prostředky Azure, které hostují vaši aplikaci, v průběhu času změnily. Změna analýz může například rozpoznat změny v pravidlech konfigurace protokolu IP, spravovaných identit a nastavení SSL. Takže pokud je do webové aplikace přidána značka, změny se projeví v analýze. Tyto informace jsou k dispozici, pokud `Microsoft.ChangeAnalysis` je poskytovatel prostředků povolený v předplatném Azure.
+Pomocí [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview)vám analýza změn poskytuje historický záznam o tom, jak se prostředky Azure, které hostují vaši aplikaci, v průběhu času změnily. Změna analýz může například rozpoznat změny v pravidlech konfigurace protokolu IP, spravovaných identit a nastavení SSL. Takže pokud je do webové aplikace přidána značka, změny se projeví v analýze. Tyto informace jsou k dispozici, pokud je poskytovatel prostředků `Microsoft.ChangeAnalysis` v předplatném Azure povolený.
 
 ### <a name="changes-in-web-app-deployment-and-configuration"></a>Změny v nasazení a konfiguraci webové aplikace
 
@@ -80,7 +77,7 @@ V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslu
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
 
-1. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s** > **dostupností a výkonem** > **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách:
+1. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů**  > **dostupnosti a výkonu**  > **selhání aplikace**. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách:
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 
@@ -90,7 +87,7 @@ V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslu
 Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. Spuštěním následujícího skriptu povolte všechny webové aplikace v rámci vašeho předplatného.
 
 Požadavky:
-* PowerShell AZ Module. Postupujte podle pokynů v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) .
+* PowerShell AZ Module. Postupujte podle pokynů v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0) .
 
 Spusťte tento skript:
 
@@ -121,7 +118,7 @@ foreach ($webapp in $webapp_list)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Povolí Application Insights pro [aplikace Azure App Services](azure-web-apps.md).
 - Povolte Application Insights pro virtuální počítače [Azure a Azure Virtual Machine Scale set pro aplikace hostované službou IIS](azure-vm-vmss-apps.md).

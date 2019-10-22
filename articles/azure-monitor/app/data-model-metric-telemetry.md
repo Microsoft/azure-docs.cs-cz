@@ -1,25 +1,21 @@
 ---
 title: Datový model Azure Telemetrie Application Insights – telemetrie metrik | Microsoft Docs
 description: Application Insights datový model pro telemetrii metrik
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60900456"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678129"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: Datový model Application Insights
+# <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md)podporují dva typy telemetrie metrik: jedno měření a předem agregovaná metrika. Jedno měření je pouze název a hodnota. Předem agregovaná metrika určuje minimální a maximální hodnotu metriky v intervalu agregace a směrodatnou odchylku.
 
@@ -41,7 +37,7 @@ Metrika představující systémové a procesní čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhá práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Průměrná doba provádění požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhá práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Name
+## <a name="name"></a>Name (Název)
 
 Název metriky, kterou byste chtěli vidět na portálu Application Insights a uživatelském rozhraní. 
 
@@ -49,7 +45,7 @@ Název metriky, kterou byste chtěli vidět na portálu Application Insights a u
 
 Jedna hodnota pro měření. Součet jednotlivých měření pro agregaci.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Počet
 
 Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 
@@ -57,21 +53,21 @@ Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 
 Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="max"></a>Maximum
+## <a name="max"></a>Max.
 
 Maximální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="standard-deviation"></a>Standardní odchylka
+## <a name="standard-deviation"></a>Směrodatná odchylka
 
 Směrodatná odchylka agregované metriky. Neměl by být nastaven pro měření.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
-Metrika s `true` nastavenou `CustomPerfCounter` vlastní vlastností, která označuje, že metrika představuje čítač výkonu systému Windows. Tyto metriky jsou umístěné v tabulce čítače výkonu. Není v customMetrics. Název této metriky se také analyzuje za účelem extrakce názvů kategorií, čítačů a instancí.
+Metrika s vlastností Custom `CustomPerfCounter` nastavenou na `true` označuje, že metrika představuje čítač výkonu systému Windows. Tyto metriky jsou umístěné v tabulce čítače výkonu. Není v customMetrics. Název této metriky se také analyzuje za účelem extrakce názvů kategorií, čítačů a instancí.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Naučte se používat [rozhraní Application Insights API pro vlastní události a metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
 - Viz [datový model](data-model.md) pro typy Application Insights a datový model.

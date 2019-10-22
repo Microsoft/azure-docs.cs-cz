@@ -1,31 +1,25 @@
 ---
 title: Application Insights pro Azure Cloud Services | Microsoft Docs
 description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, diagnostika Azure
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.workload: tbd
-ms.date: 09/05/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/05/2018
+ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933011"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677566"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -58,7 +52,7 @@ V další části se dozvíte, jak přizpůsobit vlastní projekt cloudové slu�
 ## <a name="plan-resources-and-resource-groups"></a>Plánování prostředků a skupin prostředků
 Telemetrie z vaší aplikace se ukládají, analyzují a zobrazují v prostředku Azure typu Application Insights. 
 
-Každý prostředek patří do skupiny prostředků. Skupiny prostředků se používají ke správě nákladů, k udělení přístupu členům týmu a k nasazení aktualizací v jedné koordinované transakci. Můžete například [napsat skript,](../../azure-resource-manager/resource-group-template-deploy.md) který nasadí cloudovou službu Azure a její Application Insights monitorování prostředků v jedné operaci.
+Každý prostředek patří do skupiny prostředků. Skupiny prostředků se používají ke správě nákladů, k udělení přístupu členům týmu a k nasazení aktualizací v jedné koordinované transakci. Můžete například [napsat skript, který nasadí](../../azure-resource-manager/resource-group-template-deploy.md) cloudovou službu Azure a její Application Insights monitorování prostředků v jedné operaci.
 
 ### <a name="resources-for-components"></a>Prostředky pro komponenty
 Pro každou komponentu aplikace doporučujeme vytvořit samostatný prostředek. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](../../azure-monitor/app/overview-dashboard.md) , který spojuje klíčové grafy ze všech komponent, abyste je mohli porovnat a monitorovat společně v jednom zobrazení. 
@@ -80,7 +74,7 @@ Chcete-li odeslat telemetrii do příslušných prostředků, můžete nastavit 
 
 Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a případně pro každou konfiguraci sestavení samostatnou sadu, je nejjednodušší je vytvořit na portálu Application Insights. Pokud vytvoříte velké množství prostředků, můžete [proces automatizovat](../../azure-monitor/app/powershell.md).
 
-1. V [Azure Portal][portal]vyberte možnost **nové** > **služby** > pro vývojáře**Application Insights**.  
+1. V [Azure Portal][portal]vyberte možnost **nové** služby  > **Developer Services**  > **Application Insights**.  
 
     ![Application Insights podokno](./media/cloudservices/01-new.png)
 
@@ -92,7 +86,7 @@ Jednotlivé prostředky identifikuje klíč instrumentace. Tento klíč možná 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
 Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. U webových rolí Tato možnost poskytuje monitorování výkonu, výstrahy, diagnostiku a analýzu využití. U ostatních rolí můžete vyhledávat a monitorovat Azure Diagnostics, jako je například restart, čítače výkonu a volání System. Diagnostics. Trace. 
 
-1. V aplikaci Visual Studio Průzkumník řešení v části >   **\<role > YourCloudService**otevřete vlastnosti jednotlivých rolí.
+1. V aplikaci Visual Studio Průzkumník řešení v části **\<YourCloudService >** **role** >  otevřete vlastnosti jednotlivých rolí.
 
 1. V okně **Konfigurace**zaškrtněte políčko **Odeslat diagnostická data do Application Insights** a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
 
@@ -100,7 +94,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 ![Konfigurace Application Insights](./media/cloudservices/configure-azure-diagnostics.png)
 
-To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *\*ServiceConfiguration. cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \*. cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
@@ -117,7 +111,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 
     b. Přidejte balíček [Application Insights pro servery Windows](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
 
-    ![Vyhledání Application Insights](./media/cloudservices/04-ai-nuget.png)
+    ![Vyhledejte „Application Insights“](./media/cloudservices/04-ai-nuget.png)
 
 1. Konfigurace sady SDK pro posílání dat do prostředku Application Insights:
 
@@ -142,7 +136,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 
 Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL na .NET Framework. 
 
-1. V `\*.csdef` úloze přidat [spouštěcí úlohu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) pro každou roli jako 
+1. V `\*.csdef` soubor přidat [úlohu po spuštění](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) pro každou roli, která je podobná 
 
     ```xml
     <Startup>
@@ -157,7 +151,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
     </Startup>
     ```
     
-2. Stáhněte si [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), umístěte `AppInsightsAgent` je do složky v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
+2. Stáhněte si [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), vložte je do složky `AppInsightsAgent` v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
 
 3. Na všech rolích pracovního procesu přidejte proměnné prostředí: 
 
@@ -175,7 +169,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
 
 1. Otevřete Application Insights prostředky, které jste vytvořili.
 
-   V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)se zobrazí jednotlivé [][diagnostic]datové body a agregovaná data se zobrazí.
+   V [Průzkumníku metrik](../../azure-monitor/app/metrics-explorer.md)se zobrazí jednotlivé datové [body a][diagnostic]agregovaná data se zobrazí.
 
 1. Přidejte další telemetrii (podívejte se na další části) a pak publikujte aplikaci, abyste získali živou diagnostiku a používání zpětné vazby. 
 
@@ -230,7 +224,7 @@ Pro role pracovního procesu můžete výjimky sledovat dvěma způsoby:
 ## <a name="performance-counters"></a>Čítače výkonu
 Ve výchozím nastavení se shromažďují následující čítače:
 
-* \Process(??APP_WIN32_PROC??)\% Processor Time
+* \Process(?? APP_WIN32_PROC??) Čas procesoru \%
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -271,7 +265,7 @@ Pokud váš systém používá jiné služby Azure, například Stream Analytics
 
 Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../../azure-monitor/app/analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Výjimka "metoda nebyla nalezena" při spuštění v Azure Cloud Services
@@ -281,7 +275,7 @@ Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure C
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Konfigurace odesílání diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatické vytváření Application Insightsch prostředků](../../azure-monitor/app/powershell.md)
 * [Automatizace Azure Diagnostics](../../azure-monitor/app/powershell-azure-diagnostics.md)

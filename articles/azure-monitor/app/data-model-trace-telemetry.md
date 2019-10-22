@@ -1,46 +1,42 @@
 ---
-title: Azure Application Insights Telemetrie datový Model - telemetrická data trasování | Dokumentace Microsoftu
-description: Application Insights datový model pro trasovacího telemetrii
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Datový model Azure Telemetrie Application Insights – sledovací telemetrie | Microsoft Docs
+description: Application Insights datový model pro telemetrii trasování
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899281"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678121"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie trasování: Datový model Application Insights
+# <a name="trace-telemetry-application-insights-data-model"></a>Sledovací telemetrie: datový model Application Insights
 
-Telemetrie trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` stylu příkazy trasování, které jsou prohledávány text. `Log4Net`, `NLog`, a další položky založený na textu protokolu jsou přeloženy do instance tohoto typu. Trasování nemá měření jako rozšiřitelnosti.
+Telemetrie trasování (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje `printf` příkazy pro trasování stylu, které jsou prohledávány při hledání textu. `Log4Net`, `NLog` a další textové položky souborů protokolu jsou přeloženy do instancí tohoto typu. Trasování nemá měření jako rozšiřitelnost.
 
-## <a name="message"></a>Message
+## <a name="message"></a>Zpráva
 
-Trasovací zprávy.
+Trasovat zprávu.
 
 Maximální délka: 32768 znaků
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 
-Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Prozkoumejte protokoly trasování .NET ve službě Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Prozkoumejte protokoly trasování v Application Insights Java](../../azure-monitor/app/java-trace-logs.md).
-- Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
-- [Napište vlastní trasovací telemetrii](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.
+- [Prozkoumejte protokoly trasování .NET v Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+- [Prozkoumejte protokoly trasování Java v Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- Viz [datový model](data-model.md) pro typy Application Insights a datový model.
+- [Zápis vlastní telemetrie trasování](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované nástrojem Application Insights.

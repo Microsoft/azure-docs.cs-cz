@@ -1,6 +1,6 @@
 ---
-title: Vytváření automatizovaných pracovních postupů pomocí sady Visual Studio – Azure Logic Apps
-description: Automatizace úloh, obchodních procesů a pracovních postupů pro podnikovou integraci pomocí Azure Logic Apps a sady Visual Studio
+title: Automatizace pracovních postupů pomocí sady Visual Studio – Azure Logic Apps
+description: Vytváření, plánování a spouštění opakovaných pracovních postupů pro podnikovou integraci pomocí Azure Logic Apps a sady Visual Studio
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165918"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680570"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý Start: vytvoření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>Rychlý Start: automatizace úloh, procesů a pracovních postupů pomocí Azure Logic Apps a sady Visual Studio
 
 Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a sady Visual Studio můžete vytvářet pracovní postupy automatizující úlohy a procesy pro integraci aplikací, dat, systémů a služeb napříč podniky a organizacemi. V tomto rychlém startu se dozvíte, jak můžete navrhovat a sestavovat tyto pracovní postupy vytvořením Logic Apps v aplikaci Visual Studio a nasazením těchto aplikací do Azure. I když můžete provádět tyto úlohy v Azure Portal, Visual Studio umožňuje přidat vaše aplikace logiky do správy zdrojových kódů, publikovat různé verze a vytvářet Azure Resource Manager šablony pro různá prostředí nasazení.
 
@@ -189,7 +188,7 @@ Pokud máte existující projekt skupiny prostředků Azure, můžete do tohoto 
 
 1. V Průzkumník řešení otevřete soubor `<logic-app-name>.json`.
 
-1. V nabídce **zobrazení** vyberte jiné @no__t **Windows**-2 –**Osnova JSON**.
+1. V nabídce **zobrazení** vyberte další  >  pro **Windows** **osnovu JSON**.
 
 1. Chcete-li přidat prostředek do souboru šablony, vyberte možnost **Přidat prostředek** v horní části okna osnovy JSON. V okně Osnova JSON klikněte pravým tlačítkem na **prostředky**a vyberte **Přidat nový prostředek**.
 

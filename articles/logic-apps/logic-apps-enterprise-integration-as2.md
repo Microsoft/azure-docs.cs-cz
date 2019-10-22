@@ -1,6 +1,6 @@
 ---
-title: AS2 zprávy pro B2B Enterprise Integration-Azure Logic Apps
-description: Výměna zpráv AS2 v Azure Logic Apps s Enterprise Integration Pack
+title: Odesílání a příjem zpráv AS2 pro B2B-Azure Logic Apps
+description: Zprávy Exchange AS2 pro scénáře integrace B2B Enterprise pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656380"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680385"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange AS2 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -50,11 +50,11 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 > [!IMPORTANT]
 > Původní konektor AS2 bude zastaralý, takže se místo toho použije konektor **AS2 (v2)** . Tato verze poskytuje stejné možnosti jako původní verze, je nativní pro modul runtime Logic Apps a přináší významná vylepšení výkonu z hlediska propustnosti a velikosti zpráv. Nativní konektor v2 také nevyžaduje, abyste vytvořili připojení k účtu pro integraci. Místo toho, jak je popsáno v části požadavky, nezapomeňte propojit účet pro integraci do aplikace logiky, ve které plánujete konektor používat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, zaregistrujte [si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Aplikace logiky, ze které chcete použít konektor AS2, a Trigger, který spouští pracovní postup vaší aplikace logiky. Konektor AS2 poskytuje pouze akce, nikoli triggery. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky.
+* Aplikace logiky, ze které chcete použít konektor AS2, a Trigger, který spouští pracovní postup vaší aplikace logiky. Konektor AS2 poskytuje pouze akce, nikoli triggery. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , který je přidružený k vašemu předplatnému Azure a propojený s aplikací logiky, ve které plánujete použít konektor AS2. Vaše aplikace logiky i účet pro integraci musí existovat ve stejném umístění nebo oblasti Azure.
 
@@ -76,7 +76,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
 1. V Návrháři přidejte novou akci do aplikace logiky.
 
-1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**. Do vyhledávacího pole zadejte "AS2 encode" a ujistěte se, že jste vybrali akci AS2 (v2): **Kódování AS2**
+1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**. Do vyhledávacího pole zadejte "AS2 encode" a ujistěte se, že jste vybrali akci AS2 (v2): **kódování AS2**
 
    ![Vyberte AS2 kódování.](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -89,7 +89,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
    | **AS2 na** | Identifikátor příjemce zprávy, jak Určuje smlouva AS2 |
    |||
 
-   Příklad:
+   Například:
 
    ![Vlastnosti kódování zprávy](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -101,7 +101,7 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
 1. V Návrháři přidejte novou akci do aplikace logiky.
 
-1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**. Do vyhledávacího pole zadejte "AS2 Decode" a ujistěte se, že jste vybrali akci AS2 (v2): **Dekódování AS2**
+1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**. Do vyhledávacího pole zadejte "AS2 Decode" a ujistěte se, že jste vybrali akci AS2 (v2): **AS2 Decode**
 
    ![Vyberte AS2 dekódování.](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
@@ -119,6 +119,6 @@ Pokud se chcete pokusit nasadit plně funkční aplikaci logiky a ukázkový sc�
 
 Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/as2/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

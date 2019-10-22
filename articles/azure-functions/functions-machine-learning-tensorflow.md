@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití Pythonu a TensorFlow v Azure Functions k vytvoření odvození strojového učení | Microsoft Docs'
+title: 'Kurz: použití Pythonu a TensorFlow v Azure Functions k vytvoření odvození strojového učení | Microsoft Docs'
 description: Tento kurz ukazuje, jak použít modely strojového učení TensorFlow v Azure Functions
 services: functions
 author: anthonychu
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729173"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677894"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: Použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
 Tento článek ukazuje, jak Azure Functions umožňuje používat Python a TensorFlow s modelem strojového učení ke klasifikaci image na základě jejího obsahu.
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Pokud chcete vytvořit Azure Functions v Pythonu, musíte nainstalovat několik nástrojů.
 
@@ -52,10 +52,10 @@ cd functions-python-tensorflow-tutorial
 
 Úložiště obsahuje několik složek.
 
-- *začátek*:  Toto je pracovní složka pro kurz.
+- *Začínáme*: Toto je pracovní složka pro kurz.
 - *konec*: Toto je konečný výsledek a plná implementace pro váš odkaz.
-- *prostředky*: Obsahuje model strojového učení a pomocné knihovny.
-- *front-end*: Web, který volá aplikaci Function App
+- *prostředky*: obsahuje model strojového učení a pomocné knihovny.
+- *front-end*: web, který volá aplikaci Function App
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Vytvoření a aktivace virtuálního prostředí Pythonu
 
@@ -79,7 +79,7 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-Výzva k zadání terminálu je nyní předpona `(.venv)` , která indikuje, že jste úspěšně aktivovali virtuální prostředí. Potvrďte `python` , že ve virtuálním prostředí je ve skutečnosti Python 3.6. x.
+Výzva k zadání terminálu je nyní předpona `(.venv)`, která indikuje, že jste úspěšně aktivovali virtuální prostředí. Potvrďte, že `python` ve virtuálním prostředí jsou ve skutečnosti Python 3.6. x.
 
 ```console
 python --version
@@ -98,9 +98,9 @@ func init --worker-runtime python
 
 Aplikace Function App může obsahovat jeden nebo více Azure Functions. Otevřete složku *Start* v editoru a prověřte obsah.
 
-- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): Obsahuje nastavení aplikace používané pro místní vývoj.
-- [*Host. JSON*](functions-host-json.md): Obsahuje nastavení pro Azure Functions hostitele a rozšíření.
-- [*požadavky. txt*](functions-reference-python.md#python-version-and-package-management): Obsahuje balíčky Pythonu, které vyžaduje tato aplikace.
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): obsahuje nastavení aplikace používané pro místní vývoj.
+- [*Host. JSON*](functions-host-json.md): obsahuje nastavení pro hostitele Azure functions a rozšíření.
+- [*požadavky. txt*](functions-reference-python.md#python-version-and-package-management): obsahuje balíčky Pythonu, které vyžaduje tato aplikace.
 
 ## <a name="create-an-http-function"></a>Vytvoření funkce HTTP
 
@@ -114,8 +114,8 @@ func new --language python --template HttpTrigger --name classify
 
 Vytvoří se nová složka s názvem *klasifikovat* , která obsahuje dva soubory.
 
-- *init.py\_: \_ \_\_* Soubor pro hlavní funkci
-- *Function. JSON*:  Soubor popisující aktivační událost funkce a její vstupní a výstupní vazby
+- *\_ \_init \_ \_. py*: soubor pro funkci main
+- *Function. JSON*: soubor popisující aktivační událost funkce a její vstupní a výstupní vazby
 
 ### <a name="run-the-function"></a>Spuštění funkce
 
@@ -131,7 +131,7 @@ Otevřete prohlížeč a přejděte na následující adresu URL. Funkce by měl
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Použijte `Ctrl-C` k zastavení aplikace Function App.
+K zastavení aplikace Function App použijte `Ctrl-C`.
 
 ## <a name="import-the-tensorflow-model"></a>Import modelu TensorFlow
 
@@ -140,7 +140,7 @@ Použijete předem sestavený TensorFlow model, který byl vyškolen a exportov�
 > [!NOTE]
 > Pokud chcete sestavit vlastní s využitím bezplatné úrovně Custom Vision Service, můžete postupovat podle [pokynů v tématu úložiště projektu Ukázka](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-Model se skládá ze dvou souborů ve složce *< REPOSITORY_ROOT >/Resources/model* : *model. DB* a *labels. txt*. Zkopírujte je do složky *klasifikovat* funkci.
+Model se skládá ze dvou souborů ve složce *< REPOSITORY_ROOT >/Resources/model* : *model. pb* a *labels. txt*. Zkopírujte je do složky *klasifikovat* funkci.
 
 #### <a name="linux-and-macos"></a>Linux a macOS:
 
@@ -158,7 +158,7 @@ Nezapomeňte zahrnout \* do výše uvedeného příkazu. Potvrďte, že *klasifi
 
 ## <a name="add-the-helper-functions-and-dependencies"></a>Přidání pomocných funkcí a závislostí
 
-Některé pomocné funkce pro přípravu vstupní image a předpovědi s použitím TensorFlow jsou v souboru s názvem *PREDICT.py* ve složce Resources. Zkopírujte tento soubor do složky *klasifikovat* funkci.
+Některé pomocné funkce pro přípravu vstupní image a předpovědi s použitím TensorFlow jsou v souboru s názvem *PREDICT.py* ve složce *Resources* . Zkopírujte tento soubor do složky *klasifikovat* funkci.
 
 #### <a name="linux-and-macos"></a>Linux a macOS:
 
@@ -179,7 +179,7 @@ Potvrďte, že *klasifikace* nyní obsahuje soubor s názvem *PREDICT.py*.
 Pomocná knihovna obsahuje některé závislosti, které je potřeba nainstalovat. V editoru otevřete soubor *Start/požadavky. txt* a přidejte do něj následující závislosti.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
@@ -194,13 +194,13 @@ pip install --no-cache-dir -r requirements.txt
 
 ### <a name="caching-the-model-in-global-variables"></a>Ukládání modelu do mezipaměti v globálních proměnných
 
-V editoru otevřete *PREDICT.py* a podívejte se `_initialize` na funkci v horní části souboru. Všimněte si, že model TensorFlow je načten z disku při prvním spuštění funkce a uložení do globálních proměnných. Načítání z disku se při dalších spuštěních `_initialize` funkce přeskočí. Ukládání modelu do mezipaměti pomocí této techniky zrychlí pozdější předpovědi.
+V editoru otevřete *PREDICT.py* a podívejte se na funkci `_initialize` v horní části souboru. Všimněte si, že model TensorFlow je načten z disku při prvním spuštění funkce a uložení do globálních proměnných. Načítání z disku se při dalších spuštěních funkce `_initialize` přeskočí. Ukládání modelu do mezipaměti pomocí této techniky zrychlí pozdější předpovědi.
 
 Další informace o globálních proměnných najdete v [příručce pro vývojáře Azure Functions Pythonu](functions-reference-python.md#global-variables).
 
 ## <a name="update-function-to-run-predictions"></a>Funkce Update pro spuštění předpovědi
 
-V editoru otevřete *klasifikovat\_/\_\_init.py.\_* Importujte knihovnu *předpověď* , kterou jste přidali do stejné složky dříve. Přidejte následující `import` příkazy pod ostatní importy, které jsou již v souboru.
+V editoru otevřete *\_ \_init \_ \_. py* . Importujte knihovnu *předpověď* , kterou jste přidali do stejné složky dříve. Následující příkazy `import` přidejte pod ostatní importy, které jsou již v souboru.
 
 ```python
 import json
@@ -221,14 +221,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Ujistěte se, že změny uložte.
+Ujistěte se, že jste změny uložili.
 
 Tato funkce obdrží adresu URL obrázku v parametru řetězce dotazu s názvem `img`. Volá `predict_image_from_url` z pomocné knihovny, která stáhne image a vrátí předpověď pomocí modelu TensorFlow. Funkce pak vrátí odpověď HTTP s výsledky.
 
-Vzhledem k tomu, že je koncový bod HTTP volán webovou stránkou hostovanou na jiné doméně, odpověď `Access-Control-Allow-Origin` protokolu HTTP obsahuje hlavičku pro splnění požadavků na sdílení prostředků mezi zdroji (CORS) v prohlížeči.
+Vzhledem k tomu, že je koncový bod HTTP volán webovou stránkou, která je hostována v jiné doméně, odpověď protokolu HTTP zahrnuje hlavičku `Access-Control-Allow-Origin` pro splnění požadavků na sdílení prostředků mezi zdroji (CORS) v prohlížeči.
 
 > [!NOTE]
-> V produkční aplikaci přejděte `*` na konkrétní zdroj webové stránky pro zvýšení zabezpečení.
+> V produkční aplikaci změňte `*` na specifický zdroj webové stránky pro zvýšení zabezpečení.
 
 ### <a name="run-the-function-app"></a>Spuštění aplikace Function App
 

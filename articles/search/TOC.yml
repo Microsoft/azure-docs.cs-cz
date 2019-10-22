@@ -237,6 +237,8 @@
               href: cognitive-search-custom-skill-interface.md
             - name: Příklad – Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: Příklady – Power Skills
+              href: 'https://aka.ms/powerskills'
             - name: Příklad – kontejnery
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Rady pro řešení potíží

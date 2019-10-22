@@ -1,6 +1,6 @@
 ---
-title: Dávkové zpracování zpráv EDI jako skupiny nebo kolekce-Azure Logic Apps | Microsoft Docs
-description: Posílání zpráv EDI pro dávkové zpracování v Logic Apps
+title: Dávkové zpracování zpráv EDI jako Azure Logic Apps skupiny
+description: Posílání a přijímání zpráv EDI jako dávek, skupin nebo kolekcí v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -8,22 +8,22 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827430"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680186"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Posílání zpráv EDI v dávkách obchodním partnerům pomocí Azure Logic Apps
 
-Ve scénářích B2B (Business to Business) partneři často vyměňují zprávy ve skupináchnebo dávkách. Při sestavování řešení Batch pomocí Logic Apps můžete posílat zprávy obchodním partnerům a zpracovávat tyto zprávy v dávkách. V tomto článku se dozvíte, jak můžete dávkové zpracování zpráv EDI pomocí X12 vytvořit jako příklad vytvořením aplikace logiky "Batch Sender" a aplikace logiky Batch Receiver. 
+Ve scénářích B2B (Business to Business) partneři často vyměňují zprávy ve skupinách nebo *dávkách*. Při sestavování řešení Batch pomocí Logic Apps můžete posílat zprávy obchodním partnerům a zpracovávat tyto zprávy v dávkách. V tomto článku se dozvíte, jak můžete dávkové zpracování zpráv EDI pomocí X12 vytvořit jako příklad vytvořením aplikace logiky "Batch Sender" a aplikace logiky Batch Receiver. 
 
 Dávkování zpráv X12 funguje jako dávkování jiných zpráv; použijete Trigger dávky, který shromáždí zprávy do dávky a akci dávky, která odesílá zprávy do dávky. X12 Batch zahrnuje také krok kódování X12 předtím, než zprávy přejdou na obchodního partnera nebo na jiný cíl. Další informace o triggeru a akci dávky najdete v tématu [dávkové zpracování zpráv](../logic-apps/logic-apps-batch-process-send-receive-messages.md).
 
 V tomto článku sestavíte řešení pro dávkování tak, že vytvoříte dvě aplikace logiky v rámci stejného předplatného Azure, oblasti Azure a použijete toto konkrétní pořadí:
 
-* Aplikace logiky pro přijímače " [Batch"](#receiver) , která přijímá a shromažďuje zprávy do dávky, dokud nebudou zadaná kritéria splněna pro uvolnění a zpracování těchto zpráv. V tomto scénáři příjemce dávky také zakóduje zprávy v dávce pomocí zadaných smluv X12 nebo identit partnerů.
+* Aplikace logiky pro [přijímače "Batch"](#receiver) , která přijímá a shromažďuje zprávy do dávky, dokud nebudou zadaná kritéria splněna pro uvolnění a zpracování těchto zpráv. V tomto scénáři příjemce dávky také zakóduje zprávy v dávce pomocí zadaných smluv X12 nebo identit partnerů.
 
   Ujistěte se, že jste nejdřív vytvořili přijímače Batch, abyste později mohli při vytváření odesílatele Batch vybrat cíl dávky.
 
@@ -31,11 +31,11 @@ V tomto článku sestavíte řešení pro dávkování tak, že vytvoříte dvě
 
 Ujistěte se, že přijímač Batch a odesilatel dávky sdílejí stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li postupovat podle tohoto příkladu, budete potřebovat tyto položky:
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s](https://azure.microsoft.com/pricing/purchase-options/)průběžnými platbami.
+* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -45,7 +45,7 @@ Chcete-li postupovat podle tohoto příkladu, budete potřebovat tyto položky:
 
 * Existující [smlouva X12](../logic-apps/logic-apps-enterprise-integration-x12.md) v účtu integrace
 
-* Chcete-li použít sadu Visual Studio místo Azure Portal, ujistěte se, že jste nastavili [sadu Visual Studio pro práci s Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+* Chcete-li použít sadu Visual Studio místo Azure Portal, ujistěte se, že jste [nastavili sadu Visual Studio pro práci s Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="receiver"></a>
 
@@ -59,20 +59,20 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
 
 2. [Propojte svou aplikaci logiky s vaším účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. V Návrháři Logic Apps přidejte Trigger **dávky** , který spustí pracovní postup vaší aplikace logiky. Do vyhledávacího pole zadejte jako filtr "Batch". Vyberte tuto aktivační událost: **Zprávy Batch**
+3. V Návrháři Logic Apps přidejte Trigger **dávky** , který spustí pracovní postup vaší aplikace logiky. Do vyhledávacího pole zadejte jako filtr "Batch". Vyberte tuto aktivační událost: **zprávy Batch**
 
    ![Přidat aktivační událost dávky](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Nastavte vlastnosti přijímače Batch: 
 
-   | Vlastnost | Value | Poznámky | 
+   | Vlastnost | Hodnota | Poznámky | 
    |----------|-------|-------|
-   | **Dávkový režim** | vložené |  |  
-   | **Název dávky** | TestBatch | K dispozici pouze s vloženým režimem dávky | 
-   | **Kritéria uvolnění** | Založené na počtu zpráv, podle plánu | K dispozici pouze s vloženým režimem dávky | 
+   | **Dávkový režim** | Řádkové |  |  
+   | **Název dávky** | TestBatch | K dispozici pouze s **vloženým** režimem dávky | 
+   | **Kritéria uvolnění** | Založené na počtu zpráv, podle plánu | K dispozici pouze s **vloženým** režimem dávky | 
    | **Počet zpráv** | 10 | Dostupné jenom pro kritéria uvolnění **na základě počtu zpráv** | 
    | **Interval** | 10 | K dispozici pouze s kritérii vydání **podle plánu** | 
-   | **Frekvence** | minuta | K dispozici pouze s kritérii vydání **podle plánu** | 
+   | **Frekvence** | za | K dispozici pouze s kritérii vydání **podle plánu** | 
    ||| 
 
    ![Zadat podrobnosti triggeru dávky](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -84,7 +84,7 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
 
    1. V aktivační události dávky vyberte **Nový krok**.
 
-   2. Do vyhledávacího pole zadejte jako filtr "X12 Batch" a vyberte tuto akci (libovolná verze): **Batch encode <*verze*> – X12** 
+   2. Do vyhledávacího pole zadejte jako filtr "X12 Batch" a vyberte tuto akci (jakoukoli verzi): **Batch encode <*verze*>-X12** 
 
       ![Vybrat akci dávkového kódování X12](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -97,7 +97,7 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
       | Vlastnost | Popis |
       |----------|-------------|
       | **Název smlouvy X12** | Otevřete seznam a vyberte svou stávající smlouvu. <p>Pokud je seznam prázdný, ujistěte se, že jste provedli [propojení aplikace logiky s účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) s požadovanou smlouvou. | 
-      | **BatchName** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte token pro **název dávky** . | 
+      | **Batch** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte token pro **název dávky** . | 
       | **PartitionName** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte možnost token **názvu oddílu** . | 
       | **Položek** | Zavřete pole podrobnosti položky a potom klikněte do tohoto pole. Až se zobrazí seznam dynamického obsahu, vyberte token **dávkových položek** . | 
       ||| 
@@ -118,7 +118,7 @@ Chcete-li se ujistit, že přijímač Batch funguje podle očekávání, můžet
 
 1. V akci kódování X12 vyberte **Nový krok**. 
 
-2. Do vyhledávacího pole zadejte "http" jako filtr. Vyberte tuto akci: **HTTP-HTTP**
+2. Do vyhledávacího pole zadejte "http" jako filtr. Vyberte tuto akci: **http-http**
     
    ![Vybrat akci HTTP](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -126,7 +126,7 @@ Chcete-li se ujistit, že přijímač Batch funguje podle očekávání, můžet
 
    | Vlastnost | Popis | 
    |----------|-------------|
-   | **– Metoda** | Z tohoto seznamu vyberte **post**. | 
+   | **Metoda** | Z tohoto seznamu vyberte **post**. | 
    | **Identifikátor URI** | Vygenerujte identifikátor URI pro vaši žádost a potom do tohoto pole zadejte tento identifikátor URI. | 
    | **Text** | Klikněte do tohoto pole a po otevření seznamu dynamický obsah vyberte token **textu** , který se zobrazí v části. **Služba Batch zakóduje podle názvu smlouvy**. <p>Pokud se token **textu** nezobrazuje vedle **dávkového kódování podle názvu smlouvy**, vyberte **Zobrazit další**. | 
    ||| 
@@ -151,7 +151,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
 1. Vytvořte další aplikaci logiky s tímto názvem: "SendX12MessagesToBatch" 
 
-2. Do vyhledávacího pole zadejte "při požadavku HTTP" jako filtr. Vyberte tuto aktivační událost: **Při přijetí požadavku HTTP** 
+2. Do vyhledávacího pole zadejte "při požadavku HTTP" jako filtr. Vyberte tuto aktivační událost **, když se přijme požadavek HTTP** . 
    
    ![Přidat aktivační událost žádosti](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
    1. V části akce žádosti HTTP vyberte **Nový krok**.
 
    2. Do vyhledávacího pole zadejte jako filtr "Batch". 
-   Vyberte seznam **Akce** a potom vyberte tuto akci: **Výběr pracovního postupu Logic Apps pomocí triggeru Batch – odesílání zpráv do dávky**
+   Vyberte seznam **Akce** a potom vyberte tuto akci: **zvolte pracovní postup Logic Apps s triggerem Batch – odesílání zpráv do dávky**
 
       ![Vyberte "zvolit pracovní postup Logic Apps s triggerem dávky"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,7 +168,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
       ![Výběr aplikace logiky pro přijímače v dávce](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Vyberte tuto akci: **Batch_messages – <*vašeho-Batch – přijímače*>**
+   4. Vyberte tuto akci: **Batch_messages-<*vašeho-Batch-pøijímaèe* >**
 
       ![Vybrat akci "Batch_messages"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -176,7 +176,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
    | Vlastnost | Popis | 
    |----------|-------------| 
-   | **Název dávky** | Název dávky definovaný aplikací přijímač Logic, který je v tomto příkladu "TestBatch". <p>**Důležité**informace: Název dávky se ověří za běhu a musí odpovídat názvu určenému aplikací příjemce Logic. Změnou názvu dávky dojde k selhání dávkového odesilatele. | 
+   | **Název dávky** | Název dávky definovaný aplikací přijímač Logic, který je v tomto příkladu "TestBatch". <p>**Důležité**: název dávky se ověří za běhu a musí odpovídat názvu určenému aplikací příjemce Logic. Změnou názvu dávky dojde k selhání dávkového odesilatele. | 
    | **Obsah zprávy** | Obsah zprávy, kterou chcete odeslat, což je v tomto příkladu token **textu** | 
    ||| 
    
@@ -190,7 +190,7 @@ Nyní vytvořte jednu nebo více aplikací logiky, které odesílají zprávy do
 
 ## <a name="test-your-logic-apps"></a>Testování aplikací logiky
 
-K otestování řešení pro dávkování odešlete zprávy X12 do aplikace logiky služby Batch [](https://www.getpostman.com/postman) pro aplikaci logicer z odesílací nebo podobného nástroje. Brzy začnete získávat zprávy X12 ve své přihrádce požadavků, a to buď každých 10 minut, nebo v dávkách po 10, a to pomocí stejného klíče oddílu.
+K otestování řešení pro dávkování odešlete zprávy X12 do aplikace logiky služby Batch pro aplikaci logicer [z odesílací](https://www.getpostman.com/postman) nebo podobného nástroje. Brzy začnete získávat zprávy X12 ve své přihrádce požadavků, a to buď každých 10 minut, nebo v dávkách po 10, a to pomocí stejného klíče oddílu.
 
 ## <a name="next-steps"></a>Další kroky
 

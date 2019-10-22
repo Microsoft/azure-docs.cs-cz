@@ -1,6 +1,6 @@
 ---
-title: Zpracování výjimek & scénář protokolování chyb – Azure Logic Apps | Microsoft Docs
-description: Zde je skutečný případ použití týkající se pokročilého zpracování výjimek a přihlašování k chybám v Azure Logic Apps
+title: Zpracování výjimek & scénář protokolování chyb – Azure Logic Apps
+description: Reálný případ a scénář použití pro pokročilé zpracování výjimek a protokolování chyb v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,16 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385459"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680164"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb pro Logic Apps
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: zpracování výjimek a protokolování chyb pro Logic Apps
 
-Tento scénář popisuje, jak můžete rozšířit aplikaci logiky pro lepší podporu zpracování výjimek. Pro zodpovězení otázky jsme použili případ použití v reálném čase: "Podporuje Azure Logic Apps výjimku a zpracování chyb?"
+Tento scénář popisuje, jak můžete rozšířit aplikaci logiky pro lepší podporu zpracování výjimek. Pro zodpovězení otázky jsme použili případ použití v reálném čase: "podporuje Azure Logic Apps výjimku a zpracování chyb?"
 
 > [!NOTE]
 > Aktuální schéma Azure Logic Apps poskytuje standardní šablonu pro reakce na akce. Tato šablona zahrnuje interní ověřování i chybové odpovědi vrácené z aplikace API.
@@ -36,13 +36,13 @@ Projekt má dva hlavní požadavky:
 * Způsob zobrazení všech chyb, ke kterým došlo v rámci pracovního postupu
 
 > [!TIP]
-> Informace o tomto projektu na vysoké úrovni najdete v tématu(http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Skupina uživatelů")integrace [skupiny uživatelů integrace].
+> Informace o tomto projektu na vysoké úrovni najdete v tématu [Skupina uživatelů integrace](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Skupina uživatelů integrace").
 
 ## <a name="how-we-solved-the-problem"></a>Jak jsme vyřešili problém
 
 Zvolili jsme [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") jako úložiště pro záznamy protokolů a chyb (Cosmos DB odkazuje na záznamy jako dokumenty). Vzhledem k tomu, že Azure Logic Apps má standardní šablonu pro všechny odpovědi, nemusíme vytvářet vlastní schéma. Mohli jsme vytvořit aplikaci API pro **vložení** a **dotazování** na záznamy chyb a protokolů. V rámci aplikace API jsme také mohli definovat schéma pro každou z nich.  
 
-Dalším požadavkem bylo vyprázdnění záznamů po určitém datu. Cosmos DB má vlastnost s názvem [Time to](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Live") (TTL), která nám umožnila nastavit hodnotu **Time to Live** pro každý záznam nebo kolekci. Tato funkce eliminuje nutnost ručního odstranění záznamů v Cosmos DB.
+Dalším požadavkem bylo vyprázdnění záznamů po určitém datu. Cosmos DB má vlastnost s názvem [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Doba do provozu") (TTL), která nám umožnila nastavit hodnotu **Time to Live** pro každý záznam nebo kolekci. Tato funkce eliminuje nutnost ručního odstranění záznamů v Cosmos DB.
 
 > [!IMPORTANT]
 > K dokončení tohoto kurzu potřebujete vytvořit databázi Cosmos DB a dvě kolekce (protokolování a chyby).
@@ -102,7 +102,7 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
    Aktivační událost přicházející z CRM poskytuje US **PatentId**, **typ záznamu**, **Nový nebo aktualizovaný záznam** (novou nebo aktualizovat logickou hodnotu) a **SalesforceId**. **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
    Záznam CRM získáme pomocí **PATIENTID** CRM a **typu záznamu**.
 
-2. Dál je potřeba přidat naši Azure Cosmos DB operaci InsertLogEntry API App  , jak je znázorněno v návrháři aplikace logiky.
+2. Dál je potřeba přidat naši Azure Cosmos DB operaci InsertLogEntry API App , jak je znázorněno v návrháři aplikace logiky.
 
    **Vložit položku protokolu**
 
@@ -410,7 +410,7 @@ Tady jsou příklady našich podrobností aplikace MVC vytvořených pomocí dř
 ![Seznam chyb](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
 
 #### <a name="error-management-detail-view"></a>Podrobné zobrazení správy chyb
-![Podrobnosti chyby](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
+![Podrobnosti o chybě](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
 
 ### <a name="log-management-portal"></a>Portál pro správu protokolů
 
@@ -429,7 +429,7 @@ Naše open source aplikace API Management Azure Logic Apps poskytuje funkce pops
 * **LogController** Vloží záznam protokolu (dokument) do kolekce Azure Cosmos DB.
 
 > [!TIP]
-> Oba řadiče využívají `async Task<dynamic>` operace, což umožňuje operacím vyřešit za běhu, takže můžeme v těle operace vytvořit Azure Cosmos DB schéma. 
+> Oba řadiče používají operace `async Task<dynamic>`, což umožňuje operacím vyřešit za běhu, takže můžeme vytvořit Azure Cosmos DB schéma v těle operace. 
 > 
 
 Každý dokument v Azure Cosmos DB musí mít jedinečné ID. Používáme `PatientId` a přidáváme časové razítko, které se převede na hodnotu časového razítka systému UNIX (Double). Zkrátí hodnotu, aby se odstranila desetinná hodnota.
@@ -479,9 +479,9 @@ Výraz v předchozí ukázce kódu kontroluje stav *Create_NewPatientRecord* sta
 
 ### <a name="source-code"></a>Zdrojový kód
 
-Zdrojový kód pro aplikaci rozhraní API pro správu výjimek Logic Apps je k dispozici v tomto [úložišti](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "rozhraní API pro správu výjimek aplikace logiky").
+Zdrojový kód pro aplikaci rozhraní API pro správu výjimek Logic Apps je k dispozici v tomto [úložišti GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Rozhraní API pro správu výjimek aplikace logiky").
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zobrazit další příklady a scénáře aplikace logiky](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Další informace o monitorování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)

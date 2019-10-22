@@ -1,117 +1,112 @@
 ---
-title: Nastavení upozornění ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Oznámení o pomalé odezvy, výjimky a další výkonu nebo použití změn ve vaší webové aplikaci.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.reviewer: lagayhar
-ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Nastavení upozornění v Azure Application Insights | Microsoft Docs
+description: Získejte oznámení o pomalých časech odezvy, výjimkách a dalších změnách výkonu nebo využití ve vaší webové aplikaci.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/23/2019
+ms.reviewer: lagayhar
+ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60693148"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678412"
 ---
-# <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
-[Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
+# <a name="set-alerts-in-application-insights"></a>Nastavení výstrah v Application Insights
+[Azure Application Insights][start] vás může upozorňovat na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
 
-Application Insights monitoruje vaše živé aplikace na [široké škály platforem] [ platforms] můžete diagnostikovat problémy s výkonem a porozumět různým způsobům využití.
+Application Insights monitoruje svou živou aplikaci na nejrůznějších [platformách][platforms] , které vám pomůžou diagnostikovat problémy s výkonem a pochopit vzorce používání.
 
-Existuje více typů výstrah:
+Existuje několik typů výstrah:
 
-* [**Upozornění na metriku** ](../../azure-monitor/platform/alerts-metric-overview.md) říct, pokud metrika překročí prahovou hodnotu určitou dobu – například dobu odezvy, počet výjimek, využití procesoru nebo zobrazení stránek.
-* [**Upozornění protokolů** ](../../azure-monitor/platform/alerts-unified-log.md) se používá k popisu výstrahy, kde je signál upozornění podle vlastní dotaz Kusto.
-* [**Webové testy** ] [ availability] zjistíte, když váš web není k dispozici na Internetu, nebo odpovídá pomalu. [Další informace][availability].
-* [**Proaktivní Diagnostika** ](../../azure-monitor/app/proactive-diagnostics.md) umožňují automaticky informovat o výkonu neobvyklé vzory.
+* [**Výstrahy metriky upozorňují**](../../azure-monitor/platform/alerts-metric-overview.md) na to, že metrika překročí prahovou hodnotu pro určitou dobu – například doba odezvy, počty výjimek, využití procesoru nebo zobrazení stránek.
+* [**Výstrahy protokolu**](../../azure-monitor/platform/alerts-unified-log.md) se používají k popisu výstrah, ve kterých je signál výstrahy založen na vlastním dotazu Kusto.
+* [**Webové testy**][availability] vás informují, že váš web není dostupný na internetu, nebo reaguje pomalu. [Další informace][availability].
+* [**Proaktivní Diagnostika**](../../azure-monitor/app/proactive-diagnostics.md) jsou nakonfigurovány automaticky, aby vás upozornily na neobvyklé vzorce výkonu.
 
 ## <a name="set-a-metric-alert"></a>Nastavení upozornění na metriku
-Otevřete kartu pravidla upozornění a potom použijte tlačítko Přidat.
+Otevřete kartu pravidla upozornění a pak použijte tlačítko Přidat.
 
-![Na kartě pravidla upozornění zvolte možnost přidat oznámení. Nastavte aplikaci jako prostředek, který chcete měřit, zadejte název pro výstrahu a zvolte metriku.](./media/alerts/01-set-metric.png)
+![Na kartě pravidla výstrah vyberte Přidat výstrahu. Nastavte svoji aplikaci jako prostředek k měření, zadejte název výstrahy a vyberte metriku.](./media/alerts/01-set-metric.png)
 
-* Nastavení prostředku před dalšími vlastnostmi. **Zvolte prostředek "(součásti)"** Pokud budete chtít nastavit upozornění na metriky výkonu a využití.
-* Název, který poskytnete k upozornění musí být jedinečný v rámci skupiny prostředků (ne jenom vaše aplikace).
-* Věnujte jednotky, ve kterých budete vyzváni k zadání prahovou hodnotu.
-* Pokud zaškrtnete políčko "E-mailu vlastníky...", oznámení odesílají e-mailem do každého, kdo má přístup k této skupině prostředků. Chcete-li rozbalit tuto skupinu lidí, přidejte je do [skupiny prostředků nebo předplatného](../../azure-monitor/app/resources-roles-access-control.md) (ne prostředků).
-* Pokud zadáte "Další e-mailů", oznámení se odešlou do těchto jednotlivců nebo skupin (Určuje, jestli je zaškrtnuté políčko "e-mailová vlastníky..."). 
-* Nastavte [webhooku adresu](../../azure-monitor/platform/alerts-webhooks.md) Pokud nastavíte webovou aplikaci, která bude reagovat na výstrahy. Je volána při aktivaci upozornění a po jeho vyřešení. (Všimněte si, že v současné době parametry dotazu neprocházejí jako vlastnosti webhooku.)
-* Můžete zakázat nebo povolit upozornění: zobrazení tlačítek v horní části.
+* Nastavte prostředek před ostatními vlastnostmi. **Vyberte prostředek "(komponenty)"** , chcete-li nastavit výstrahy na metriky výkonu nebo využití.
+* Název, který poskytnete výstraze, musí být jedinečný v rámci skupiny prostředků (ne jenom vaší aplikace).
+* Nezapomeňte si uvědomit jednotky, ve kterých jste vyzváni k zadání prahové hodnoty.
+* Pokud zaškrtnete políčko vlastníci e-mailu..., výstrahy se odesílají e-mailem všem, kdo mají přístup k této skupině prostředků. Pokud chcete tuto skupinu osob rozšířit, přidejte je do [skupiny prostředků nebo předplatného](../../azure-monitor/app/resources-roles-access-control.md) (ne prostředku).
+* Pokud zadáte "další e-maily", odesílají se těmto jednotlivcům nebo skupinám výstrahy (bez ohledu na to, jestli jste kontrolovali "vlastníky e-mailu"... " Box). 
+* Pokud jste nastavili webovou aplikaci, která bude reagovat na výstrahy, nastavte [adresu Webhooku](../../azure-monitor/platform/alerts-webhooks.md) . Je volána při aktivaci výstrahy a při jejím vyřešení. (Ale Všimněte si, že parametry dotazu nejsou v současné době předávány jako vlastnosti Webhooku.)
+* Výstrahu můžete zakázat nebo povolit: Podívejte se na tlačítka v horní části.
 
-*Nevidím tlačítko Přidat oznámení.*
+*Nevidím tlačítko Přidat výstrahu.*
 
-* Používáte účet organizace? Výstrahy můžete nastavit, pokud jste vlastníkem nebo přispěvatelem přístup k tomuto prostředku aplikace. Podívejte se na kartě pro řízení přístupu. [Další informace o řízení přístupu][roles].
+* Používáte účet organizace? Pokud máte oprávnění vlastníka nebo přispěvatele k tomuto prostředku aplikace, můžete nastavit výstrahy. Podívejte se na kartu Access Control. [Přečtěte si o řízení přístupu][roles].
 
 > [!NOTE]
-> V okně výstrahy uvidíte, že již sadu výstrah: [Proaktivní Diagnostika](../../azure-monitor/app/proactive-failure-diagnostics.md). Automatické výstrahy monitoruje jednu konkrétní metriky, požadavek chybovost. Pokud budete chtít zakázat proaktivní výstrahu, není nutné nastavit vlastní oznámení na míru selhání požadavku.
+> V okně výstrahy vidíte, že už je nastavená výstraha: [Proactive Diagnostics](../../azure-monitor/app/proactive-failure-diagnostics.md). Automatická výstraha sleduje jednu konkrétní metriku, četnost neúspěšných požadavků. Pokud se nerozhodnete zakázat proaktivní výstrahu, nemusíte nastavit vlastní výstrahu na základě míry selhání žádosti.
 > 
 > 
 
-## <a name="see-your-alerts"></a>Zobrazit upozornění
-Dostanete e-mail, když dostane do stavu oznámení změny mezi aktivní a neaktivní. 
+## <a name="see-your-alerts"></a>Zobrazit vaše výstrahy
+Když se změní stav výstrahy mezi neaktivní a aktivní, dostanete e-mail. 
 
-Aktuální stav jednotlivých výstrah se zobrazí na kartě pravidla upozornění.
+Aktuální stav každé výstrahy je zobrazen na kartě pravidla výstrah.
 
-Zde je uveden seznam poslední aktivita u výstrah rozevíracího seznamu:
+V rozevíracím seznamu výstrahy se zobrazí souhrn nedávné aktivity:
 
-![Rozevírací seznam upozornění](./media/alerts/010-alert-drop.png)
+![Rozevírací seznam výstrah](./media/alerts/010-alert-drop.png)
 
-Historii změn stavu je v protokolu aktivit:
+Historie změn stavu je v protokolu aktivit:
 
-![Na kartě Přehled klikněte na nastavení, protokoly auditu](./media/alerts/09-alerts.png)
+![Na kartě Přehled klikněte na nastavení, protokoly auditu.](./media/alerts/09-alerts.png)
 
-## <a name="how-alerts-work"></a>Jak výstrahy fungují
-* Upozornění má tři stavy: "Nikdy neaktivoval", "Aktivní" a "Vyřešeno". Aktivovaná znamená, že podmínku, kterou jste zadali dřív platilo, pokud bylo naposled vyhodnoceno.
-* Oznámení se vygeneruje, když se výstraha změní stav. (Pokud se vyskytl výstražný stav dřív platilo již při vytvoření výstrahy, můžete nemusí oznámení, dokud podmínka přestane false.)
-* Jednotlivým oznámením generuje e-mailu, pokud je zaškrtnuté políčko e-mailů, nebo zadaná e-mailové adresy. Můžete se také podívat na rozevírací seznam oznámení.
-* Výstraha se vyhodnocuje pokaždé, když dorazí metriky, ale není jinak.
-* Vyhodnocení agreguje metriku předchozím období a porovná ho s prahovou hodnotu k určení nového stavu.
-* Doba, kterou zvolíte, určuje interval, po kterou metriky se agregují. Nemá vliv, jak často se vyhodnotí upozornění:, který závisí na četnosti přijetí metrik.
-* Dorazí žádná data pro konkrétní metrika po určitou dobu, mezery se různé účinky na výstrahy hodnocení a u grafů v Průzkumníku metrik. V Průzkumníku metrik Pokud je zobrazena žádná data po dobu delší než interval vzorkování na graf, tento graf zobrazuje hodnotu 0. Ale výstrahy na základě stejné metriky se znovu vyhodnotit, a stav výstrahy zůstane beze změny. 
+## <a name="how-alerts-work"></a>Jak fungují výstrahy
+* Výstraha má tři stavy: "nikdy aktivované", "aktivované" a "Vyřešeno". Aktivováno znamená, že zadaná podmínka byla pravdivá, kdy byla naposledy vyhodnocena.
+* Oznámení se vygeneruje při změně stavu výstrahy. (Pokud je podmínka upozornění již pravdivá při vytváření výstrahy, nemůžete obdržet oznámení, dokud podmínka nevrátí hodnotu false.)
+* Každé oznámení vygeneruje e-mail, pokud jste zaškrtli políčko e-maily, nebo zadané e-mailové adresy. Můžete se také podívat na rozevírací seznam oznámení.
+* Výstraha se vyhodnocuje pokaždé, když přijde metrika, ale ne jinak.
+* Vyhodnocení agreguje metriku v předchozím období a pak ji porovná s prahovou hodnotou pro určení nového stavu.
+* Zvolené období určuje interval, za který se budou metriky agregovat. Neovlivňuje, jak často se výstraha vyhodnocuje: závisí na četnosti příchodu metrik.
+* Pokud žádná data pro určitou metriku nějakou dobu nepřijde, má mezera jiné účinky na vyhodnocení výstrahy a grafy v Průzkumníkovi metrik. Pokud se v Průzkumníkovi metrik nezobrazí žádná data déle než interval vzorkování grafu, zobrazí se v grafu hodnota 0. Výstraha založená na stejné metrikě ale nebude znovu vyhodnocena a stav výstrahy zůstane beze změny. 
   
-    Po přijetí nakonec dat, graf přejde zpět na nenulovou hodnotu. Upozornění vyhodnotí na základě dat, které jsou k dispozici pro období, které jste zadali. Pokud nový datový bod je k dispozici v období pouze jeden, agregace je založená jenom na datových bodů.
-* Výstrahu můžete často blikat mezi stavy výstrah a v pořádku, i když nastavíte dlouhou dobu. To může nastat, když hodnota metriky pohybuje okolo prahovou hodnotu. Neexistuje žádné hystereze v prahové hodnotě: přechod na výstrahy se odehrává na stejnou hodnotu jako přechodu na v pořádku.
+    Když data nakonec dorazí, graf přejde zpět na nenulovou hodnotu. Výstraha se vyhodnocuje na základě dat dostupných v zadaném období. Je-li nový datový bod jediným dostupným v období, agregace je založena pouze na tomto datovém bodě.
+* Výstraha může blikat často mezi výstrahami a dobrými stavy, i když nastavíte dlouhou dobu. K tomu může dojít, pokud se hodnota metriky pohybuje kolem prahové hodnoty. V prahové hodnotě neexistuje Hysteresis: přechod na výstrahu probíhá na stejné hodnotě jako přechod do stavu v pořádku.
 
-## <a name="what-are-good-alerts-to-set"></a>Co jsou dobré upozornění pro nastavení?
-To závisí na vaší aplikace. Začněte tím doporučujeme nenastavovat příliš mnoho metriky. Věnujte nějaký čas pohledu na vaše grafy metrik, když vaše aplikace běží, jak se normálně chová získat představu. Tento postup vám pomůže najít způsoby, jak vylepšit výkon. Potom můžete nastavit výstrahy a zjistíte, když metriky výlet za hranice normální zóny. 
+## <a name="what-are-good-alerts-to-set"></a>Co jsou dobré výstrahy k nastavení?
+Záleží na vaší aplikaci. Aby bylo možné začít používat, je vhodné nastavit příliš mnoho metrik. Věnujte nějaký čas prohlížení grafů metriky, když je vaše aplikace spuštěná, a získáte tak dojem, jak se normálně chová. Tento postup vám pomůže najít způsoby, jak vylepšit jeho výkon. Pak nastavte výstrahy a sdělte vám, že metriky přecházejí mimo normální zónu. 
 
-Oblíbené výstrahy obsahují:
+Mezi oblíbené výstrahy patří:
 
-* [Prohlížeč metriky][client], zejména prohlížeče **stránce dobu načítání**, jsou vhodné pro webové aplikace. Pokud vaše stránka obsahuje mnoho skriptů, je vhodné vyhledat **výjimky prohlížeče**. Pokud chcete získat tyto metriky a výstrahy, budete muset nastavit [webové stránky monitorování][client].
-* **Doba odezvy serveru** pro webové aplikace na straně serveru. A také nastavení výstrah, sledovat tuto metriku, pokud chcete zobrazit, pokud se mění nepřiměřeně s vysokou požadavků: změna může znamenat, že vaše aplikace běží nemá dostatek prostředků. 
-* **Serverové výjimky** – Pokud chcete zobrazit, budete muset provést některé [další nastavení](../../azure-monitor/app/asp-net-exceptions.md).
+* [Metriky prohlížeče][client], zejména **časy načítání stránek**prohlížeče, jsou vhodné pro webové aplikace. Pokud vaše stránka obsahuje mnoho skriptů, měli byste hledat **výjimky prohlížeče**. Aby bylo možné získat tyto metriky a výstrahy, je nutné nastavit [monitorování webové stránky][client].
+* **Doba odezvy serveru** pro webové aplikace na straně serveru. Stejně jako při nastavování výstrah Sledujte tuto metriku, abyste zjistili, jestli se neúměrně mění vysoké rychlosti požadavků: variace může znamenat, že vaše aplikace nemá dostatek prostředků. 
+* **Výjimky serveru** – Chcete-li je zobrazit, je nutné provést [Další nastavení](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../azure-monitor/app/proactive-failure-diagnostics.md) automaticky sledovat rychlost, jakou aplikace reaguje na požadavky s kódy selhání.
+Nezapomeňte, že [Diagnostika proaktivní frekvence chyb](../../azure-monitor/app/proactive-failure-diagnostics.md) automaticky monitoruje rychlost, s jakou vaše aplikace reaguje na požadavky s kódy chyb.
 
-## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Jak nastavit výstrahy výjimek pomocí hledání vlastních protokolů
+## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Nastavení upozornění na výjimku pomocí vlastního prohledávání protokolu
 
-V této části provedeme nastavení upozornění výjimka na základě dotazu. Například Řekněme, že chceme výstrahu, jestliže je míra selhání větší než 10 % za posledních 24 hodin.
+V této části se naučíme, jak nastavit výstrahu pro výjimku založenou na dotazech. V tomto příkladu řekněme, že chceme, aby byla výstraha, když je neúspěšná míra větší než 10% za posledních 24 hodin.
 
-1. Přejděte do prostředku Application Insights na webu Azure Portal.
-2. Na levé straně v části konfigurace klikněte na **výstrah**.
+1. V Azure Portal přejdete do svého prostředku Application Insight.
+2. Vlevo v části konfigurovat klikněte na **výstrahu**.
 
-    ![Na levé straně v části konfigurace klikněte na výstrahu](./media/alerts/1appinsightalert.png)
+    ![Vlevo v části konfigurace výstrahy kliknutí](./media/alerts/1appinsightalert.png)
 
-3. V horní části na kartu výstraha vyberte **nové pravidlo upozornění**.
+3. V horní části karty výstraha vyberte **nové pravidlo výstrahy**.
 
-     ![V horní části na kartu výstraha klikněte na nové pravidlo upozornění](./media/alerts/2createalert.png)
+     ![V horní části karty výstraha klikněte na nové pravidlo výstrahy.](./media/alerts/2createalert.png)
 
-4. Prostředek by měl být automaticky vybraná. Pokud chcete nastavit podmínky, klikněte na tlačítko **přidat podmínku**.
+4. Váš prostředek by měl být vybraný automaticky. Pokud chcete nastavit podmínku, klikněte na **Přidat podmínku**.
 
-    ![Klikněte na tlačítko Přidat podmínku](./media/alerts/3addcondition.png)
+    ![Klikněte na Přidat podmínku.](./media/alerts/3addcondition.png)
 
-5. Na kartě Konfigurace signál logiky vyberte **vlastní prohledávání protokolů**
+5. Na kartě Konfigurace logiky signálu vyberte **vlastní prohledávání protokolu** .
 
-    ![Klikněte na tlačítko Hledat vlastní protokol](./media/alerts/4customlogsearch.png)
+    ![Kliknout na vlastní prohledávání protokolu](./media/alerts/4customlogsearch.png)
 
-6. Na kartě vlastní protokol hledání zadejte dotaz do pole "Vyhledávací dotaz". V tomto příkladu budeme používat pod dotaz Kusto.
+6. Na kartě vlastní hledání protokolu zadejte dotaz do pole vyhledávací dotaz. V tomto příkladu použijeme následující dotaz Kusto.
     ```kusto
     let percentthreshold = 10;
     let period = 24h;
@@ -124,65 +119,65 @@ V této části provedeme nastavení upozornění výjimka na základě dotazu. 
 
     ```
 
-    ![Zadejte dotaz do vyhledávacího pole dotazu](./media/alerts/5searchquery.png)
+    ![Zadejte dotaz do pole vyhledávací dotaz](./media/alerts/5searchquery.png)
     
     > [!NOTE]
-    > Tyto kroky můžete provést také u jiných typů výstrah založených na dotazech. Další informace o jazyce dotaz Kusto z tohoto [Kusto Začínáme doc](https://docs.microsoft.com/azure/kusto/concepts/) nebo to [SQL pro Kusto tahák](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet)
+    > Tyto kroky můžete použít i na jiné typy výstrah založených na dotazech. Další informace o dotazovacím jazyku Kusto najdete v [dokumentu Začínáme s Kusto](https://docs.microsoft.com/azure/kusto/concepts/) nebo tento dokument [SQL pro Kusto tahák](https://docs.microsoft.com/azure/kusto/query/sqlcheatsheet) .
 
-7. V části "Alert logic" zvolte, zda je založena na počtu výsledků nebo metriky měření. Potom si vyberte podmínku (větší než, rovna, méně) a prahovou hodnotu. Když chcete změnit tyto hodnoty, můžete si všimnout změny věty podmínky ve verzi preview. V tomto příkladu používáme "rovno".
+7. V části logika výstrahy vyberte, jestli je založená na počtu výsledků, nebo měření metriky. Pak vyberte podmínku (větší než, rovná se, je menší než) a prahovou hodnotu. Když měníte tyto hodnoty, můžete si všimnout změny podmínky verze Preview. V tomto příkladu používáme "EQUAL to".
 
-    ![V části Alert logic vybírat možnosti, které jsou k dispozici na základě a podmínky a pak zadejte prahové hodnoty](./media/alerts/6alertlogic.png)
+    ![V části logika výstrahy zvolte jednu z možností na základě podmínky a a pak zadejte prahovou hodnotu.](./media/alerts/6alertlogic.png)
 
-8. V části "Evaluated podle" nastavte období a četnost. Období zde musí odpovídat hodnotě, máme pro období ve výše uvedený dotaz. Pak klikněte na tlačítko **provádí**.
+8. V části "vyhodnocené na základě" nastavte období a četnost. Toto období se musí shodovat s hodnotou, kterou zadáte pro období výše v dotazu. Pak klikněte na **Hotovo**.
 
-    ![Nastavte období a frekvenci v dolní části a pak klikněte na tlačítko Hotovo](./media/alerts/7evaluate.png)
+    ![Nastavte tečku a četnost v dolní části a potom klikněte na Hotovo.](./media/alerts/7evaluate.png)
 
-9. Teď vidíme podmínku, kterou jsme vytvořili s odhadované měsíční náklady. Níže v části ["Skupiny akcí"](../platform/action-groups.md) můžete vytvořit novou skupinu nebo vyberte existující. Pokud chcete, můžete přizpůsobit akce.
+9. Nyní se zobrazí podmínka, kterou jsme vytvořili, a Odhadované měsíční náklady. Pod položkou ["skupiny akcí"](../platform/action-groups.md) můžete vytvořit novou skupinu nebo vybrat některou z existujících. Pokud chcete, můžete akce přizpůsobit.
 
-    ![Klikněte na Vybrat nebo vytvořit tlačítka v části skupiny akcí](./media/alerts/8actiongroup.png)
+    ![v části Skupina akcí klikněte na tlačítka Vybrat nebo vytvořit.](./media/alerts/8actiongroup.png)
 
-10. Nakonec přidejte podrobnosti o vašem výstrah (výstrahy název pravidla, popis, závažnosti). Jakmile budete hotovi, klikněte na tlačítko **vytvořit pravidlo upozornění** v dolní části.
+10. Nakonec přidejte podrobnosti výstrahy (název pravidla výstrahy, popis, závažnost). Až skončíte, klikněte dole na **vytvořit pravidlo výstrahy** .
 
-    ![V části podrobností výstrahy zadejte název pravidla upozornění, napište popis a vybrat závažnost](./media/alerts/9alertdetails.png)
+    ![V části Podrobnosti výstrahy zadejte název pravidla upozornění, napište popis a vyberte závažnost.](./media/alerts/9alertdetails.png)
 
-## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Jak zrušit odběr klasického upozornění e-mailová oznámení
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Zrušení odběru oznámení z klasického e-mailového upozornění
 
-Tato část se týká **upozornění na dostupnost klasické**, **klasického upozornění metrik Application Insights**a získat **upozornění na anomálie selhání classic**.
+Tato část se vztahuje na **klasické výstrahy dostupnosti**, **výstrahy klasického Application Insights metriky**a na klasické výstrahy týkající se **anomálií selhání**.
 
-Vám posíláme e-mailová oznámení pro tyto klasických upozornění, pokud platí některý z následujících akcí:
+Pokud platí některá z následujících možností, dostanete e-mailová oznámení pro tyto klasické výstrahy:
 
-* E-mailová adresa je uveden v poli příjemci e-mailová oznámení v nastavení pravidla upozornění.
+* Vaše e-mailová adresa je uvedená v poli příjemci e-mailu s oznámením v nastavení pravidla výstrahy.
 
-* Je aktivovaná možnost odeslat e-mailová oznámení pro uživatele, která uchovává určité role pro předplatné a podržte příslušné role pro toto konkrétní předplatné Azure.
+* Aktivuje se možnost odesílání e-mailových oznámení uživatelům, kteří mají určité role pro předplatné, a u tohoto konkrétního předplatného Azure udržujete příslušnou roli.
 
-![Snímek obrazovky oznámení výstrah](./media/alerts/alert-notification.png)
+![Snímek obrazovky s oznámením o výstrahách](./media/alerts/alert-notification.png)
 
-Pro lepší kontrolu nad zabezpečení a ochrany osobních údajů obecně doporučujeme explicitně zadat příjemce oznámení pro upozornění classic ve **příjemců e-mailová oznámení** pole. Umožňuje všem uživatelům, která uchovává určité role je k dispozici z důvodu zpětné kompatibility.
+Pro lepší kontrolu zabezpečení a ochrany osobních údajů obecně doporučujeme, abyste příjemcům oznámení pro klasické výstrahy explicitně zadali v poli **příjemci e-mailových oznámení** . Možnost upozorňování všech uživatelů, kteří drží určité role, je poskytována z důvodu zpětné kompatibility.
 
-Pokud chcete zrušit odběr vygenerována pravidlem určitých výstrah e-mailová oznámení, odeberte e-mailovou adresu z **příjemců e-mailová oznámení** pole.
+Pokud chcete odhlásit odběr e-mailových oznámení vytvořených pomocí určitého pravidla výstrahy, odeberte e-mailovou adresu z pole **příjemci e-mailu s oznámením** .
 
-Pokud vaše e-mailová adresa není uvedená explicitně, doporučujeme zakázat možnost automaticky upozornění všechny členy určité role a místo toho seznamu všechny e-maily uživatele, kteří se chtějí dostávat oznámení pro dané pravidlo upozornění v e-mailové oznámení pole příjemců.
+Pokud vaše e-mailová adresa není uvedená explicitně, doporučujeme vám zakázat možnost oznamovat všem členům určitých rolí automaticky a místo toho uvést všechny e-maily uživatelů, kteří potřebují dostávat oznámení pro toto pravidlo výstrahy v e-mailu s oznámením. pole příjemci.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Kdo přijímá oznámení výstrah (klasické)?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží oznámení o výstrahách (Classic)?
 
-V této části pouze platí pro upozornění classic a pomůže vám optimalizovat vaše oznámení o výstrahách Ujistěte se, že pouze požadované příjemci dostávat oznámení. Bližší informace o rozdílech mezi [klasických upozornění](../platform/alerts-classic.overview.md) a nové výstrahy prostředí, přečtěte si [výstrahy přehledovém článku](../platform/alerts-overview.md). Pokud chcete nastavit oznámení upozornění v nové prostředí upozornění, použijte [skupiny akcí](../platform/action-groups.md).
+Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../platform/alerts-classic.overview.md) a novými výstrahami, přečtěte si [článek Přehled výstrah](../platform/alerts-overview.md). Chcete-li řídit oznamování výstrah v nové možnosti upozornění, použijte [skupiny akcí](../platform/action-groups.md).
 
-* Doporučujeme vám používat konkrétním příjemcům classic oznámení výstrah.
+* Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
 
-* Pro výstrahy týkající se všech metrik Application Insights (včetně metrik dostupnosti) **hromadné/skupiny** zaškrtávací políčko, pokud je povoleno, odešle uživatelům s rolí vlastník, Přispěvatel nebo Čtenář v rámci předplatného. V důsledku toho _všechny_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v rozsahu a budou dostávat oznámení.
+* Pro výstrahy týkající se jakékoli metriky Application Insights (včetně metrik dostupnosti), pokud **je tato možnost** povolena, odesílá uživatelům v rámci předplatného role vlastník, přispěvatel nebo čtenář. V důsledku toho budou mít _Všichni_ uživatelé s přístupem k předplatnému Application Insights prostředek v oboru a budou dostávat oznámení.
 
 > [!NOTE]
-> Pokud aktuálně používáte službu **hromadné/skupiny** zaškrtávací políčko a zakázat, nebude možné vrátit zpět změny.
+> Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
 
-Pomocí nové výstrahy prostředí/v – v reálném čase výstrahy, pokud je potřeba upozornit uživatele na základě jejich rolí. S [skupiny akcí](../platform/action-groups.md), můžete nakonfigurovat e-mailová oznámení pro uživatele s libovolnou z role přispěvatele nebo vlastníka/reader (ne zkopírovat dohromady jako jednu možnost).
+Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 
 ## <a name="automation"></a>Automation
-* [Použití Powershellu k automatizaci nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
-* [Automatizace reagování na výstrahy pomocí webhooků](../../azure-monitor/platform/alerts-webhooks.md)
+* [Použití PowerShellu k automatizaci nastavení výstrah](../../azure-monitor/app/powershell-alerts.md)
+* [Použití webhooků k automatizaci reakce na výstrahy](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Automatizace nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
+* [Webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Automatizace nastavení výstrah](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 
 
 <!--Link references-->

@@ -1,6 +1,6 @@
 ---
-title: RosettaNet zprávy pro podnikovou integraci B2B – Azure Logic Apps
-description: Výměna zpráv RosettaNet v Azure Logic Apps sadou Enterprise Integration Pack
+title: RosettaNet zprávy pro integraci B2B – Azure Logic Apps
+description: Výměna zpráv RosettaNet v Azure Logic Apps s Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,105 +9,105 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 88e02f3fbbca8007fdf479bb973f50c42a878d6e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 570c7907f320b881e2db0bd45cdce311490f4f45
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332682"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680339"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Výměna zpráv RosettaNet pro podnikovou integraci B2B v Azure Logic Apps 
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Zprávy Exchange RosettaNet pro integraci B2B Enterprise v Azure Logic Apps
 
-[RosettaNet](https://resources.gs1us.org) je nezisková consortium, který byl vytvořen standardních procesů pro sdílení obchodních informací. Tyto normy se obvykle používají pro procesy dodavatelského řetězce a se plánuje v oborech semiconductor electronics a logistiky. RosettaNet consortium vytváří a udržuje partnera rozhraní procesy (jadérka), která mají společné definice obchodní proces pro všechny výměny zpráv RosettaNet. RosettaNet je založené na XML a definuje zprávy, pokyny pro rozhraní pro obchodní procesy a implementaci architektur pro komunikaci mezi společnostmi.
+[RosettaNet](https://resources.gs1us.org) je nezisková konsorcium, která zřídila standardní procesy pro sdílení firemních informací. Tyto standardy se běžně používají pro procesy dodavatelských řetězců a jsou rozšířeny do polovodičového, elektronikého a logistického průmyslu. RosettaNet Consortium vytvoří a zachovává procesy partnerských rozhraní (PIPs), které poskytují běžné definice obchodních procesů pro všechny výměny zpráv RosettaNet. RosettaNet je založen na XML a definuje pokyny pro zprávy, rozhraní pro obchodní procesy a implementační architektury pro komunikaci mezi společnostmi.
 
-V [Azure Logic Apps](../logic-apps/logic-apps-overview.md), konektor RosettaNet vám pomůže vytvořit integrační řešení, které podporují RosettaNet standardy. Konektor je založena na RosettaNet implementace rozhraní (RNIF) verze 2.0.01. RNIF je aplikační rozhraní open sítě, která umožňuje obchodním partnerům umožní spolupracovat spustit RosettaNet jadérka. Toto rozhraní definuje strukturu zprávy, potřeba potvrzování, kódování Multipurpose Internet Mail Extensions (MIME) a digitální podpis.
+Konektor RosettaNet vám v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)pomůže vytvořit integrační řešení, která podporují standardy RosettaNet. Konektor je založen na RosettaNet Implementation Framework (RNIF) verze 2.0.01. RNIF je otevřená síťová aplikační architektura, která umožňuje obchodním partnerům spolupracovat s RosettaNet PIPs. Toto rozhraní definuje strukturu zpráv, nutnost potvrzení, kódování MIME (Multipurpose Internet Mail Extensions) a digitální podpis.
 
-Konkrétně tento konektor poskytuje tyto možnosti:
+Konkrétně konektor poskytuje tyto možnosti:
 
-* Zakódujte nebo přijímat zprávy RosettaNet.
-* Dekódování nebo odesílání zpráv RosettaNet.
-* Čekat na odpověď a generování oznámení o selhání.
+* Kódování nebo příjem zpráv RosettaNet
+* Dekódování nebo posílání zpráv RosettaNet
+* Počkejte na odpověď a generování oznámení o selhání.
 
-Konektor pro tyto funkce podporuje všechny jadérka, které jsou definovány RNIF 2.0.01. Komunikace s partnerem, může být synchronní nebo asynchronní.
+Pro tyto funkce konektor podporuje všechny PIPs, které jsou definovány pomocí RNIF 2.0.01. Komunikace s partnerem může být synchronní nebo asynchronní.
 
 ## <a name="rosettanet-concepts"></a>Koncepty RosettaNet
 
-Tady jsou některé koncepce a termíny, které jsou jedinečné pro specifikaci RosettaNet a jsou důležité při vytváření na základě RosettaNet integrace:
+Tady je několik konceptů a pojmů, které jsou jedinečné pro specifikaci RosettaNet a jsou důležité při vytváření integrace založené na RosettaNet:
 
 * **PIP**
 
-  RosettaNet organizace vytváří a udržuje partnera rozhraní procesy (jadérka), která mají společné definice obchodní proces pro všechny výměny zpráv RosettaNet. Každá specifikace PIP poskytuje soubor dokumentu typ definice (DTD) a obecných zásad dokumentu zprávy. Souboru DTD definuje strukturu zpráva obsahu služby. Zpráva pravidlo dokument, který je čitelný soubor HTML, určuje element úrovni omezení. Tyto soubory společně poskytují kompletní definici obchodních procesů.
+  RosettaNet organizace vytváří a udržuje procesy partnerských rozhraní (PIPs), které poskytují běžné definice obchodních procesů pro všechny výměny zpráv RosettaNet. Každá specifikace PIP poskytuje soubor definice typu dokumentu (DTD) a dokument s pokyny pro zprávu. Soubor DTD definuje strukturu zpráv obsahu služby. Dokument s pokyny pro zprávy, který je uživatelsky čitelný soubor HTML, určuje omezení na úrovni elementu. Společně tyto soubory poskytují úplnou definici obchodního procesu.
 
-   Jadérka jsou rozdělené podle vysoké úrovně obchodní funkce, nebo clusteru a podfunkce je nebo segmentu. Například "3A4" je PIP pro nákupní objednávky, zatímco "3" je funkce Správa objednávek a "3A" je nabídka & objednávky položku podfunkce je. Další informace najdete v tématu [RosettaNet lokality](https://resources.gs1us.org).
+   PIPs jsou zařazené do kategorií podle funkce nebo clusteru vysoké úrovně, a podfunkce nebo segmentu. Například "3A4" je PIP pro nákupní objednávku, zatímco "3" je funkce pro správu objednávek a "3A" je nabídka pro zadání objednávky & objednávka. Další informace najdete na [webu RosettaNet](https://resources.gs1us.org).
 
 * **Akce**
 
-  Část programu PIP, akce zprávy jsou obchodní zprávy, které se vyměňují mezi partnery.
+  Součástí PIP jsou zprávy o akcích, které se vyměňují mezi partnery.
 
-* **Signál**
+* **Nyní**
 
-   Část programu PIP, signál zprávy se potvrzení, které se odesílají v reakci na akce zprávy.
+   Součástí PIP jsou potvrzovací zprávy, které se odesílají jako odpověď na zprávy akce.
 
-* **Jednu akci a double akce**
+* **Jedna akce a Dvojitá akce**
 
-  Pro akce jedním PIP je pouze odpověď signál zprávu o potvrzení. Pro akce double PIP iniciátor obdrží zprávu odpovědi a zašle odpověď s potvrzení vedle zprávy jedné akce.
+  V případě PIP s jednou akcí je jedinou odpovědí zpráva potvrzujícího signálu. V případě, že se jedná o akci PIP s dvojitou odezvou, iniciátor obdrží zprávu odpovědi a kromě toku zpráv s jednou akcí odpoví spolu s potvrzením.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte ještě předplatné Azure [zaregistrovat si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) k vaší smlouvě a jiných artefaktů B2B. Tato integrační účet musí být přidružený k vašemu předplatnému Azure.
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro ukládání vaší smlouvy a dalších artefaktů B2B. Tento účet integrace musí být přidružený k vašemu předplatnému Azure.
 
-* Alespoň dva [partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , které jsou definovány v účtu integrace a nakonfigurovanou kvalifikátor "DUNS" v části **obchodní identity**
+* Aspoň dva [partneři](../logic-apps/logic-apps-enterprise-integration-partners.md) , kteří jsou definováni v účtu integrace a nakonfigurovali s kvalifikátorem "Duns" v rámci **obchodních identit**
 
-* Konfigurace procesu PIP, který je nutný k odeslání nebo přijetí zprávy RosettaNet v účtu integrace. Konfigurace procesu ukládá všechny vlastnosti konfigurace PIP. Tato konfigurace může odkazovat potom při vytvořili smlouvu s partnerem. Vytvoření konfigurace procesu PIP v účtu integrace najdete v tématu [konfigurace procesu přidat PIP](#add-pip).
+* Konfigurace procesu PIP, která je nutná k posílání nebo přijímání zpráv RosettaNet, ve vašem účtu integrace. Konfigurace procesu ukládá všechny charakteristiky konfigurace PIP. Tuto konfiguraci pak můžete odkázat při vytváření smlouvy s partnerem. Pokud chcete vytvořit konfiguraci procesu PIP v účtu integrace, přečtěte si téma [Přidání konfigurace procesu PIP](#add-pip).
 
-* Volitelné [certifikáty](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro šifrování, dešifrování a podepisování zpráv, které můžete odeslat do účtu pro integraci. Certifikáty jsou vyžadovány pouze v případě použití podepisování nebo šifrování.
+* Volitelné [certifikáty](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro šifrování, dešifrování nebo podepsání zpráv, které nahráváte do účtu pro integraci. Certifikáty se vyžadují jenom v případě, že používáte podepisování nebo šifrování.
 
 <a name="add-pip"></a>
 
 ## <a name="add-pip-process-configuration"></a>Přidat konfiguraci procesu PIP
 
-Pokud chcete přidat PIP procesu konfigurace účtu pro integraci, postupujte takto:
+Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte takto:
 
-1. V [webu Azure portal](https://portal.azure.com), vyhledání a otevření účtu pro integraci.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete účet pro integraci.
 
-1. Na **přehled** podokně, vyberte **RosettaNet PIP** dlaždici.
+1. V podokně **Přehled** vyberte dlaždici **RosettaNet PIP** .
 
-   ![Zvolte dlaždici RosettaNet](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
+   ![Zvolit dlaždici RosettaNet](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. V části **RosettaNet PIP**, zvolte **přidat**. Zadejte podrobnosti o vašem PIP.
+1. V části **ROSETTANET PIP**vyberte **Přidat**. Zadejte podrobnosti PIP.
 
-   ![Přidáním podrobností o RosettaNet PIP](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
+   ![Přidat podrobnosti PIP RosettaNet](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název vašeho PIP |
-   | **Kód PIP** | Ano | Tři 6místným číselným kódem PIP. Další informace najdete v tématu [RosettaNet jadérka](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **Verzi PIP** | Ano | Číslo verze PIP, který je k dispozici na základě vaší vybrané PIP kódu |
+   | **Název** | Ano | Název PIP |
+   | **Kód PIP** | Ano | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **Verze PIP** | Ano | Číslo verze PIP, které je k dispozici na základě vybraného kódu PIP |
    ||||
 
-   Další informace o těchto vlastnostech PIP, najdete [RosettaNet webu](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
+   Další informace o těchto vlastnostech PIP najdete na [webu RosettaNet](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
 
-1. Jakmile budete hotovi, zvolte **OK**, který se vytvoří konfigurace PIP.
+1. Až budete hotovi, klikněte na **tlačítko OK**, čímž se vytvoří konfigurace PIP.
 
-1. Chcete-li zobrazit nebo upravit konfiguraci procesu, vyberte PIP a zvolte **upravit jako JSON**.
+1. Chcete-li zobrazit nebo upravit konfiguraci procesu, vyberte PIP a zvolte **Upravit jako JSON**.
 
-   Všechna procesu konfigurace, které pochází ze specifikací PIP nastavení. Logic Apps naplní většinu nastavení s výchozími hodnotami, které jsou nejčastěji používané hodnoty těchto vlastností.
+   Všechna nastavení konfigurace procesu pocházejí ze specifikací PIP. Logic Apps naplní většinu nastavení výchozími hodnotami, které jsou nejčastěji používanými hodnotami pro tyto vlastnosti.
 
    ![Upravit konfiguraci RosettaNet PIP](media/logic-apps-enterprise-integration-rosettanet/edit-rosettanet-pip.png)
 
-1. Zkontrolujte, jestli nastavení odpovídají hodnotám v příslušné specifikaci PIP a svých obchodních potřeb. V případě potřeby aktualizujte hodnoty ve formátu JSON a tyto změny uložit.
+1. Potvrďte, že nastavení odpovídají hodnotám ve vhodné specifikaci PIP a vyhovují vašim obchodním potřebám. V případě potřeby aktualizujte hodnoty ve formátu JSON a uložte tyto změny.
 
 ## <a name="create-rosettanet-agreement"></a>Vytvoření smlouvy RosettaNet
 
-1. V [webu Azure portal](https://portal.azure.com), najít a otevřete svůj účet integrace, pokud není otevřen.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete účet pro integraci, pokud ještě není otevřený.
 
-1. Na **přehled** podokně, vyberte **smlouvy** dlaždici.
+1. V podokně **Přehled** vyberte dlaždici **smlouvy** .
 
-   ![Zvolte dlaždici smlouvy](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
+   ![Vybrat dlaždici smlouvy](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. V části **smlouvy**, zvolte **přidat**. Zadejte podrobnosti o vaší smlouvě.
+1. V části **smlouvy**klikněte na možnost **Přidat**. Zadejte podrobnosti smlouvy.
 
    ![Přidat podrobnosti smlouvy](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
@@ -115,149 +115,149 @@ Pokud chcete přidat PIP procesu konfigurace účtu pro integraci, postupujte ta
    |----------|----------|-------------|
    | **Název** | Ano | Název smlouvy |
    | **Typ smlouvy** | Ano | Vyberte **RosettaNet**. |
-   | **Host Partner** | Ano | Smlouva vyžaduje hostitele i hosta partnera. Partner hostitele představuje organizace, který konfiguruje smlouvy. |
-   | **Identita hostitele** | Ano | Identifikátor pro hostitele partnera |
-   | **Partner s identitou hosta** | Ano | Smlouva vyžaduje hostitele i hosta partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
-   | **Identita hosta** | Ano | Identifikátor partner s identitou hosta |
-   | **Zobrazit nastavení** | Různé | Tyto vlastnosti se vztahují na všechny zprávy přijaté službou hostitele partnera |
-   | **Nastavení odesílání** | Různé | Tyto vlastnosti se vztahují na všechny zprávy odeslané partner hostitele |  
-   | **Odkazy RosettaNet PIP** | Ano | Odkazy PIP smlouvy. Všechny zprávy RosettaNet musí být nakonfigurovaná PIP. |
+   | **Partner hostitele** | Ano | Smlouva vyžaduje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
+   | **Hostitelská identita** | Ano | Identifikátor hostitelského partnera |
+   | **Partner hosta** | Ano | Smlouva vyžaduje hostitele i partnera hosta. Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
+   | **Identita hosta** | Ano | Identifikátor hostovaného partnera |
+   | **Nastavení příjmu** | Různé | Tyto vlastnosti se vztahují na všechny zprávy přijaté hostitelským partnerem. |
+   | **Nastavení odesílání** | Různé | Tyto vlastnosti se vztahují na všechny zprávy odesílané hostitelským partnerem. |  
+   | **Odkazy na RosettaNet PIP** | Ano | Odkazy na PIP smlouvy. Všechny zprávy RosettaNet vyžadují konfigurace PIP. |
    ||||
 
-1. Chcete-li nastavit vaši smlouvu pro příjem příchozích zpráv od partnera hosta, vyberte **přijímat nastavení**.
+1. Pokud chcete nastavit smlouvu pro příjem příchozích zpráv od partnera hosta, vyberte **přijmout nastavení**.
 
-   ![Zobrazit nastavení](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
+   ![Nastavení příjmu](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
 
-   1. V části povolit podepisování nebo šifrování pro příchozí zprávy **zprávy**vyberte **zprávu je nutné podepsat** nebo **zprávu je nutné zašifrovat** v uvedeném pořadí.
+   1. Chcete-li povolit podepisování nebo šifrování pro příchozí zprávy, vyberte v části **zprávy**možnost **zpráva by měla být podepsána** nebo **zpráva by měla být zašifrována** .
 
       | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Zprávu je nutné podepsat** | Ne | Podepište příchozí zprávy ve vybraném certifikátu. |
-      | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který chcete použít pro podepisování |
-      | **Povolit šifrování zpráv** | Ne | Šifrování příchozích zpráv ve vybraném certifikátu. |
-      | **Certifikát** | Ano, pokud je povolené šifrování | Certifikát, který chcete použít pro šifrování |
+      | **Zpráva by měla být podepsaná.** | Ne | Podepsat příchozí zprávy s vybraným certifikátem. |
+      | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který se má použít pro podepisování |
+      | **Povolit šifrování zpráv** | Ne | Zašifruje příchozí zprávy s vybraným certifikátem. |
+      | **Certifikát** | Ano, pokud je povoleno šifrování | Certifikát, který se má použít pro šifrování |
       ||||
 
-   1. V části každý výběr, vyberte příslušné [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do účtu pro integraci, použít pro podepisování nebo šifrování.
+   1. Pod každým výběrem vyberte příslušný [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do účtu pro integraci, abyste ho mohli použít k podepisování nebo šifrování.
 
-1. Chcete-li nastavit vaši smlouvu pro odesílání zpráv partner s identitou hosta, vyberte **odeslat nastavení**.
+1. Pokud chcete nastavit smlouvu o posílání zpráv partnerovi hosta, vyberte **Odeslat nastavení**.
 
    ![Nastavení odesílání](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. V části povolit podepisování nebo šifrování pro odchozí zprávy **zprávy**vyberte **povolit podepisování zpráv** nebo **povolit šifrování zpráv** v uvedeném pořadí. V části každý výběr, vyberte příslušné algoritmus a [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do účtu pro integraci, použít pro podepisování nebo šifrování.
+   1. Chcete-li povolit podepisování nebo šifrování odchozích zpráv, v části **zprávy**vyberte možnost **povolit podepisování zpráv** nebo **Povolit šifrování zpráv** v uvedeném pořadí. Pod každým výběrem vyberte příslušný algoritmus a [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do svého účtu pro integraci, abyste se mohli použít k podepisování nebo šifrování.
 
       | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Povolit podepisování zpráv** | Ne | Podepsání odchozích zpráv s vybranou podpisový algoritmus a certifikátem. |
-      | **Podpisový algoritmus** | Ano, pokud je povoleno podepisování | Podpisový algoritmus, který chcete použít, na základě vybraného certifikátu |
-      | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který chcete použít pro podepisování |
-      | **Povolit šifrování zpráv** | Ne | Šifrování, odchozí s vybranou šifrovací algoritmus a certifikátem. |
-      | **Šifrovací algoritmus** | Ano, pokud je povolené šifrování | Šifrovací algoritmus, který chcete použít, na základě vybraného certifikátu |
-      | **Certifikát** | Ano, pokud je povolené šifrování | Certifikát, který chcete použít pro šifrování |
+      | **Povolit podepisování zpráv** | Ne | Podepisujte odchozí zprávy s vybraným podpisovým algoritmem a certifikátem. |
+      | **Podpisový algoritmus** | Ano, pokud je povoleno podepisování | Podpisový algoritmus, který se má použít, na základě vybraného certifikátu |
+      | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který se má použít pro podepisování |
+      | **Povolit šifrování zpráv** | Ne | Zašifrujte odchozí zprávy s vybraným šifrovacím algoritmem a certifikátem. |
+      | **Šifrovací algoritmus** | Ano, pokud je povoleno šifrování | Šifrovací algoritmus, který se má použít, na základě vybraného certifikátu |
+      | **Certifikát** | Ano, pokud je povoleno šifrování | Certifikát, který se má použít pro šifrování |
       ||||
 
-   1. V části **koncové body**, zadejte požadované adresy URL pro odeslání zprávy akce a potvrzování.
+   1. V části **koncové body**určete požadované adresy URL, které se mají použít pro posílání zpráv akce a potvrzení.
 
       | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Adresa URL akce** |  Ano | Adresa URL pro použití pro odesílání zpráv akce. Adresa URL je povinné pole pro synchronní a asynchronní zprávy. |
-      | **Adresa URL potvrzení** | Ano | Adresa URL pro použití pro odesílání zpráv potvrzení. Adresa URL je povinné pole pro asynchronní zprávy. |
+      | **Adresa URL akce** |  Ano | Adresa URL, která se má použít pro posílání zpráv akce Adresa URL je povinné pole pro synchronní i asynchronní zprávy. |
+      | **Potvrzovací adresa URL** | Ano | Adresa URL, která se má použít pro odesílání potvrzovacích zpráv. Adresa URL je povinné pole pro asynchronní zprávy. |
       ||||
 
-1. Chcete-li nastavit smlouvu pro partnery s odkazy na RosettaNet PIP, vyberte **odkazuje RosettaNet PIP**. V části **název PIP**, vyberte název vytvořeného PIP.
+1. Pokud chcete nastavit smlouvu s odkazy na RosettaNet PIP pro partnery, vyberte **odkazy ROSETTANET PIP**. V části **název PIP**vyberte název dříve vytvořeného PIP.
 
-   ![Odkazy na PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
+   ![Odkazy PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
-   Váš výběr naplní zbývající vlastnosti, které jsou založeny na PIP, který jste vytvořili v účtu integrace. Pokud třeba, můžete změnit **PIP Role**.
+   Váš výběr naplní zbývající vlastnosti, které jsou založené na PIP, kterou jste nastavili ve vašem účtu pro integraci. V případě potřeby můžete změnit **roli PIP**.
 
-   ![Vybrané PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
+   ![Vybraný PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
 
-Po dokončení těchto kroků budete připraveni k odesílání nebo příjmu zpráv RosettaNet.
+Po dokončení těchto kroků jste připraveni odesílat nebo přijímat zprávy RosettaNet.
 
-## <a name="rosettanet-templates"></a>RosettaNet šablony
+## <a name="rosettanet-templates"></a>Šablony RosettaNet
 
-K urychlení vývoje a vzorů integrace doporučení, můžete použít šablony aplikace logiky pro zprávy RosettaNet kódování a dekódování. Když vytvoříte aplikaci logiky, můžete vybrat z Galerie šablon v návrháři aplikace logiky. Můžete také vyhledat všechny šablony [úložiště GitHub pro Azure Logic Apps](https://github.com/Azure/logicapps).
+Chcete-li zrychlit vývoj a doporučit způsoby integrace, můžete použít šablony aplikace logiky pro dekódování a kódování zpráv RosettaNet. Když vytvoříte aplikaci logiky, můžete v návrháři aplikace logiky vybrat z galerie šablon. Tyto šablony můžete také najít v [úložišti GitHub pro Azure Logic Apps](https://github.com/Azure/logicapps).
 
-![RosettaNet šablony](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
+![Šablony RosettaNet](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
 
-## <a name="receive-or-decode-rosettanet-messages"></a>Zobrazí nebo dekódování RosettaNet zprávy
+## <a name="receive-or-decode-rosettanet-messages"></a>Přijímání a dekódování zpráv RosettaNet
 
-1. [Vytvoření prázdné aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+1. [Vytvořte prázdnou aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-1. [Propojte si svůj účet integrace](logic-apps-enterprise-integration-create-integration-account.md#link-account) do aplikace logiky.
+1. [Propojte účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md#link-account) s vaší aplikací logiky.
 
-1. Než přidáte akci, která dekódovat zprávu RosettaNet, je nutné přidat aktivační událost pro spuštění aplikace logiky, jako je například aktivační událost požadavek.
+1. Než budete moct přidat akci dekódovat zprávu RosettaNet, musíte přidat Trigger pro spuštění aplikace logiky, jako je například Trigger žádosti.
 
-1. Po přidání triggeru, zvolte **nový krok**.
+1. Po přidání triggeru vyberte **Nový krok**.
 
-   ![Přidání triggeru požadavku](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Přidat aktivační událost žádosti](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. Do vyhledávacího pole zadejte "rosettanet" a vyberte tuto akci: **Dekódování RosettaNet**
+1. Do vyhledávacího pole zadejte "RosettaNet" a vyberte tuto akci: **RosettaNet dekódování**
 
-   ![Vyhledejte a vyberte akci "RosettaNet dekódovat"](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
+   ![Najít a vybrat akci "RosettaNet dekódování"](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
 
-1. Zadejte informace pro vlastnosti akce:
+1. Zadejte informace o vlastnostech akce:
 
-   ![Zadejte podrobnosti akce](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Zpráva** | Ano | Dekódovat zprávu RosettaNet  |
-   | **Hlavičky** | Ano | Hlavičky protokolu HTTP, které obsahují hodnoty pro verzi, což je verze RNIF, a typ odpovědi, který určuje typ komunikace mezi partnery a může být synchronní nebo asynchronní |
-   | **Role** | Ano | Roli partnera poskytujícího hostitele v PIP |
+   | **Zpráva** | Ano | Zpráva RosettaNet k dekódování  |
+   | **Hlavičky** | Ano | Hlavičky protokolu HTTP, které poskytují hodnoty pro verzi, což je verze RNIF, a typ odpovědi, který označuje typ komunikace mezi partnery a může být synchronní nebo asynchronní |
+   | **Role** | Ano | Role hostitelského partnera v PIP |
    ||||
 
-   Akce RosettaNet dekódování výstup, společně s další vlastnosti obsahuje **odchozí signál**, které je možné kódovat a vraťte se zpět do partnera nebo provádět jiné akce na výstupu.
+   Z akce dekódovat RosettaNet (výstup) spolu s dalšími vlastnostmi zahrnuje **odchozí signál**, který můžete vybrat ke kódování a návrat k partnerovi nebo provést jakoukoli jinou akci s tímto výstupem.
 
-## <a name="send-or-encode-rosettanet-messages"></a>Odeslání nebo kódování RosettaNet zprávy
+## <a name="send-or-encode-rosettanet-messages"></a>Posílání nebo kódování zpráv RosettaNet
 
-1. [Vytvoření prázdné aplikace logiky](quickstart-create-first-logic-app-workflow.md).
+1. [Vytvořte prázdnou aplikaci logiky](quickstart-create-first-logic-app-workflow.md).
 
-1. [Propojte si svůj účet integrace](logic-apps-enterprise-integration-create-integration-account.md#link-account) do aplikace logiky.
+1. [Propojte účet pro integraci](logic-apps-enterprise-integration-create-integration-account.md#link-account) s vaší aplikací logiky.
 
-1. Než přidáte akci k zakódování zprávy RosettaNet, je nutné přidat aktivační událost pro spuštění aplikace logiky, jako je například aktivační událost požadavek.
+1. Než budete moct přidat akci ke kódování zprávy RosettaNet, musíte přidat Trigger pro spuštění aplikace logiky, jako je například Trigger žádosti.
 
-1. Po přidání triggeru, zvolte **nový krok**.
+1. Po přidání triggeru vyberte **Nový krok**.
 
-   ![Přidání triggeru požadavku](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Přidat aktivační událost žádosti](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. Do vyhledávacího pole zadejte "rosettanet" a vyberte tuto akci: **RosettaNet Encode**
+1. Do vyhledávacího pole zadejte "RosettaNet" a vyberte tuto akci: **RosettaNet kódování**
 
-   ![Vyhledejte a vyberte akci "RosettaNet kódování"](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
+   ![Najít a vybrat akci "RosettaNet encode"](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
 
-1. Zadejte informace pro vlastnosti akce:
+1. Zadejte informace o vlastnostech akce:
 
-   ![Zadejte podrobnosti akce](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
+   ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
    | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Zpráva** | Ano | Zpráva RosettaNet ke kódování  |
-   | **Partner s identitou hostitele** | Ano | Název hostitele partnera |
-   | **Partner s identitou hosta** | Ano | Jméno partnera hosta |
+   | **Partner hostitele** | Ano | Název hostitelského partnera |
+   | **Partner hosta** | Ano | Název partnerského serveru hosta |
    | **Kód PIP** | Ano | Kód PIP |
-   | **Verzi PIP** | Ano | Verzi PIP |  
+   | **Verze PIP** | Ano | Verze PIP |  
    | **Identita instance PIP** | Ano | Jedinečný identifikátor pro tuto zprávu PIP |  
-   | **Typ zprávy** | Ano | Typ zprávy ke kódování |  
-   | **Role** | Ano | Role partner s identitou hostitele |
+   | **Typ zprávy** | Ano | Typ zprávy, která se má zakódovat |  
+   | **Role** | Ano | Role hostitelského partnera |
    ||||
 
-   Zakódovaná zpráva je nyní připraven k odeslání partnera.
+   Zakódovaná zpráva je nyní připravena k odeslání partnerovi.
 
-1. K odeslání kódovaného zprávy, v tomto příkladu **HTTP** akce, která je přejmenován "HTTP - kódování odešle zprávu partner".
+1. K odeslání kódované zprávy v tomto příkladu se používá akce **http** , která je přejmenována na partnerských zprávách odesílaných pomocí protokolu HTTP.
 
    ![Akce HTTP pro odeslání zprávy RosettaNet](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
 
-   Podle standardů RosettaNet obchodních transakcí se považuje za dokončené pouze v případě, že se splnily všechny kroky, které jsou definované pomocí PIP.
+   Za RosettaNet standardy se obchodní transakce považují za kompletní, jenom když jsou dokončené všechny kroky, které jsou definovány v PIP.
 
-1. Poté, co hostitel odešle kódované zprávy na partnera, hostitele čeká na signál a potvrzení. Chcete-li provést tuto úlohu, přidejte **RosettaNet čekat na odpověď** akce.
+1. Poté, co hostitel pošle zakódovanou zprávu partnerovi, počká na signál a potvrzení. K provedení této úlohy přidejte akci **RosettaNet čekání na odpověď** .
 
-   ![Přidání akce "RosettaNet čekat na odpověď"](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
+   ![Přidat akci "RosettaNet čekání na odpověď"](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
 
-   Doba trvání pro čekání a počet opakování jsou založené na konfiguraci PIP v účtu integrace. Pokud odpověď přijata nebude, tato akce vytvoří selhání oznámení. Zpracování opakovaných pokusů, vždy umístěte **kódovat** a **čeká na odpověď** akce v **dokud** smyčky.
+   Doba, která se má použít pro čekání a počet opakovaných pokusů vychází z konfigurace PIP v účtu integrace. Pokud odpověď neobdrží, tato akce vygeneruje oznámení o selhání. Chcete-li zpracovat opakované pokusy, vždy vložte akce **kódování** a **čekání na odpověď** v rámci smyčky **do** .
 
-   ![Až do smyčky s akcemi RosettaNet](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
+   ![Do smyčky with RosettaNet Actions](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak ověřit, transformaci a další operace zprávu s [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Zjistěte, jak ověřit, transformovat a další operace se zprávami pomocí [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

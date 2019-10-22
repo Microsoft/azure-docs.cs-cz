@@ -1,6 +1,6 @@
 ---
-title: Zotavení po havárii pro účty pro integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Připravte se na zotavení po havárii mezi oblastmi v Azure Logic Apps
+title: Zotavení po havárii pro účty pro integraci – Azure Logic Apps
+description: Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,239 +8,238 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967748"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680399"
 ---
-# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Zotavení po havárii mezi oblastmi pro účty pro integraci B2B v Azure Logic Apps
+# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 
-Pracovní postupy B2B zahrnují peněžní transakce jako objednávky a faktury. Během události po havárii, je velmi důležité pro firmu k rychlé obnovení dodržet podmínky smluv SLA úrovni organizační dohodnutých s jejich partneři. Tento článek ukazuje, jak sestavit plán obchodní kontinuity podnikových procesů pro úlohy s B2B. 
+Úlohy B2B zahrnují peněžní transakce, jako jsou objednávky a faktury. Během události po havárii je velmi důležité, aby firma rychle obnovila požadavky na SLA na úrovni firmy dohodnuté se svými partnery. Tento článek ukazuje, jak vytvořit plán provozní kontinuity pro úlohy B2B. 
 
-* Připravenost pro zotavení po havárii 
-* Převzetí služeb při selhání do sekundární oblasti během události po havárii 
-* Vrátit zpět do primární oblasti po havárii
+* Připravenost na zotavení po havárii 
+* Převzetí služeb při selhání sekundární oblastí během události havárie 
+* Přejít zpět k primární oblasti po havárii události
 
-## <a name="disaster-recovery-readiness"></a>Připravenost pro zotavení po havárii  
+## <a name="disaster-recovery-readiness"></a>Připravenost na zotavení po havárii  
 
-1. Identifikujte sekundární oblasti a vytvoření [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) v sekundární oblasti.
+1. Identifikujte sekundární oblast a vytvořte [účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) v sekundární oblasti.
 
-2. Přidání partnerů, schémat a smlouvy pro požadovaná zpráva toky, kdy stav spuštění musí replikovat do sekundární oblasti účtu integrace.
+2. Přidejte partnery, schémata a smlouvy pro požadované toky zpráv, kde je potřeba replikovat stav spuštění do účtu integrace sekundární oblasti.
 
    > [!TIP]
-   > Ujistěte se, že je konzistence napříč oblastmi v zásady vytváření názvů artefaktu účtu integrace. 
+   > Ujistěte se, že existuje konzistence v konvenci pojmenování artefaktů integračního účtu napříč oblastmi. 
 
-3. Stav spuštění načítat z primární oblasti, vytvoření aplikace logiky v sekundární oblasti. 
+3. Pokud chcete stáhnout stav spuštění z primární oblasti, vytvořte v sekundární oblasti aplikaci logiky. 
 
-   Tato aplikace logiky by měl mít *aktivační událost* a *akce*. 
-   Aktivační událost se má připojit k účtu pro integraci primární oblasti a akce se má připojit k účtu pro integraci sekundární oblasti. 
-   Podle časového intervalu, trigger dotazuje spustit tabulka stav primární oblasti a získává nové záznamy, pokud existuje. Tato akce aktualizuje je sekundární oblasti účtu pro integraci. 
-   To pomáhá získat stav přírůstkové runtime z primární oblasti do sekundární oblasti.
+   Tato aplikace logiky by měla mít *Trigger* a *akci*. 
+   Aktivační událost by se měla připojit k účtu pro integraci primární oblasti a akce by se měla připojit k účtu pro integraci sekundární oblasti. 
+   V závislosti na časovém intervalu se aktivační událost dotazuje tabulky stavu spuštění primární oblasti a vyžádá si nové záznamy (pokud nějaké jsou). Tato akce aktualizuje účet pro integraci sekundární oblasti. 
+   To pomáhá získat přírůstkový běhový stav z primární oblasti do sekundární oblasti.
 
-4. Kontinuita podnikových procesů v účtu integrace Logic Apps je navržena pro podporu založené na protokolech B2B - X12, AS2 a EDIFACT. Podrobný postup najdete vyberte příslušné odkazy.
+4. Provozní kontinuita v Logic Apps účet integrace je navržená tak, aby podporovala v závislosti na protokolech B2B – X12, AS2 a EDIFACT. Chcete-li najít podrobné kroky, vyberte příslušné odkazy.
 
-5. Doporučení je příliš nasadit všechny prostředky primární oblasti do sekundární oblasti. 
+5. Doporučení je také k nasazení všech prostředků primární oblasti v sekundární oblasti. 
 
-   Primární oblast prostředky zahrnují Azure SQL Database nebo Azure Cosmos DB, Azure Service Bus a Azure Event Hubs použít pro zasílání zpráv Azure API Management a funkce Azure Logic Apps ve službě Azure App Service.   
+   Mezi prostředky primární oblasti patří Azure SQL Database nebo Azure Cosmos DB, Azure Service Bus a Event Hubs Azure, které se používají pro zasílání zpráv, Azure API Management a funkci Azure Logic Apps v Azure App Service.   
 
-6. Připojení z primární oblasti do sekundární oblasti. Stav spuštění načítat z primární oblasti, vytvoření aplikace logiky v sekundární oblasti. 
+6. Navažte spojení z primární oblasti do sekundární oblasti. Pokud chcete stáhnout stav spuštění z primární oblasti, vytvořte v sekundární oblasti aplikaci logiky. 
 
-   Aplikace logiky by měla mít aktivační události a akce. 
-   Aktivační událost se má připojit k účtu pro integraci primární oblasti. 
-   Akce se má připojit k účtu pro integraci sekundární oblasti. 
-   Podle časového intervalu, trigger dotazuje spustit tabulka stav primární oblasti a získává nové záznamy, pokud existuje. 
-   Tato akce aktualizuje je do sekundární oblasti účtu integrace. 
-   Tento proces pomáhá získat stav přírůstkové runtime z primární oblasti do sekundární oblasti.
+   Aplikace logiky by měla mít aktivační událost a akci. 
+   Aktivační událost by se měla připojit k účtu pro integraci primární oblasti. 
+   Akce by se měla připojit k účtu pro integraci sekundární oblasti. 
+   V závislosti na časovém intervalu se aktivační událost dotazuje tabulky stavu spuštění primární oblasti a vyžádá si nové záznamy (pokud nějaké jsou). 
+   Akce je aktualizuje na účet pro integraci sekundární oblasti. 
+   Tento proces pomáhá získat přírůstkový běhový stav z primární oblasti do sekundární oblasti.
 
-Kontinuita podnikových procesů v účtu integrace Logic Apps poskytuje podporu na základě protokolů B2B X12, AS2 a EDIFACT. Podrobné pokyny k používání X12 a AS2 najdete v tématu [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) a [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) v tomto článku.
+Provozní kontinuita v účtu Logic Apps Integration účet poskytuje podporu založenou na protokolech B2B X12, AS2 a EDIFACT. Podrobné pokyny týkající se použití X12 a AS2 najdete v části [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) a [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) v tomto článku.
 
-## <a name="fail-over-to-a-secondary-region-during-a-disaster-event"></a>Převzetí služeb při selhání do sekundární oblasti během události po havárii
+## <a name="fail-over-to-a-secondary-region-during-a-disaster-event"></a>Převzetí služeb při selhání v sekundární oblasti během události havárie
 
-Během události po havárii, pokud primární oblast není k dispozici zajišťuje nepřetržitý chod podniků, směrovat přenos dat do sekundární oblasti. Pomáhá sekundární oblasti a obchodní k obnovení funkce rychle dosáhnout RPO/RTO dohodnutých jejich partnery. Také minimalizuje úsilí při převzetí služeb při selhání z jedné oblasti do jiné oblasti. 
+Když v případě havárie není dostupná primární oblast pro provozní kontinuitu, přímý provoz do sekundární oblasti. Sekundární oblast pomáhá podnikům rychle obnovit funkce, aby splnily požadavky na RPO a RTO, na základě kterých jejich partneři souhlasí. Také minimalizuje úsilí při převzetí služeb při selhání z jedné oblasti do jiné oblasti. 
 
-Neexistuje očekávaná latence při kopírování kontrolních čísel od primární oblasti do sekundární oblasti. Vyhněte se odesílání duplicitní vygenerovanému ovládacímu prvku čísla partnerům během události po havárii, doporučujeme zvýšit kontrolních čísel v sekundární oblasti smluv s použitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
+Při kopírování řídicích čísel z primární oblasti do sekundární oblasti je očekávaná latence. Abyste se vyhnuli odesílání duplicitních řídicích čísel partnerům během události havárie, doporučujeme zvýšit počet kontrolních čísel v rámci smluv o sekundárních oblastech pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
-## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Vrátit zpět na primární oblast událost po havárii
+## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Přejít zpět na událost po havárii primární oblasti
 
-Chcete-li vrátit do primární oblasti až bude k dispozici, postupujte takto:
+Pokud se chcete vrátit k primární oblasti, když je k dispozici, postupujte podle následujících kroků:
 
-1. Zastavte příjem zpráv od partnerů v sekundární oblasti.  
+1. Přestanou přijímat zprávy od partnerů v sekundární oblasti.  
 
-2. Zvýšit číslo vygenerovaný ovládací prvek pro všechny primární oblasti smlouvy s použitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
+2. Zvyšte čísla vygenerovaných ovládacích prvků pro všechny smlouvy primární oblasti pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
-3. Směrovat přenos dat ze sekundární oblasti do primární oblasti.
+3. Přímý provoz ze sekundární oblasti do primární oblasti.
 
-4. Zkontrolujte, zda je povoleno vytvořit v sekundární oblasti pro přijímání změn z primární oblasti stav spuštění aplikace logiky.
+4. Ověřte, že je povolená aplikace logiky vytvořené v sekundární oblasti pro přijímání stavu spuštění z primární oblasti.
 
 ## <a name="x12"></a>X12 
 
-Kontinuita podnikových procesů pro EDI X 12 dokumentů jsou založené na kontrolních čísel:
+Provozní kontinuita pro dokumenty EDI X12 je založena na řídicích číslech:
 
 > [!TIP]
-> Můžete také použít [X12 rychlý start šablony](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) k vytváření aplikací logiky. Vytváření účtů integrace primární a sekundární jsou požadavky na použití šablony. Šablona pomůže vytvořit dvě logic apps, jeden pro přijaté kontrolních čísel a druhý k vygenerovanému ovládacímu prvku čísla. Příslušných triggerů a akcí se vytvoří ve službě logic apps, aktivační událost při připojování k primární integrační účet a akce, která má sekundární integrační účet.
+> K vytváření aplikací logiky můžete použít také [šablonu rychlý Start X12](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) . Vytváření primárních a sekundárních integračních účtů je předpokladem pro použití šablony. Šablona pomáhá vytvořit dvě aplikace logiky, jednu pro přijatá řídicí čísla a druhou pro vygenerovaná řídicí čísla. Příslušné triggery a akce se vytvoří v Logic Apps, připojí Trigger k primárnímu účtu pro integraci a akci sekundárního účtu pro integraci.
 
 **Požadavky**
 
-Pokud chcete povolit zotavení po havárii pro příchozí zprávy, vyberte v X12 duplicitní zkontrolujte nastavení přijímat nastavení smlouvy.
+Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nastavení pro příjem duplicitních dat v X12 smlouvě.
 
-![Vyberte nastavení duplicitní kontroly](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
+![Vyberte duplicitní nastavení kontroly.](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. Vytvoření [aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
+1. Vytvoření [Aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
 
-2. Hledat na **X12**a vyberte **X12 – když se upraví nějaké kontrolní číslo**.   
+2. Vyhledejte **X12**a vyberte **X12 – když se změní číslo ovládacího prvku**.   
 
    ![Hledat X12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
    Aktivační událost vás vyzve k navázání připojení k účtu pro integraci. 
-   Aktivační událost musí být připojené k účtu pro integraci primární oblasti.
+   Aktivační událost by měla být připojená k účtu pro integraci primární oblasti.
 
-3. Zadejte název připojení, vyberte vaše *účtu pro integraci primární oblasti* ze seznamu a zvolte **vytvořit**.   
+3. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci primární oblasti* a zvolte **vytvořit**.   
 
-   ![Název integračního účtu primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. **Datum a čas spuštění synchronizace kontrolního čísla** nastavení je volitelné. **Frekvence** může být nastaven na **den**, **hodinu**, **minutu**, nebo **druhý** s intervalem.   
+4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
 
-   ![Datum a čas a četnost](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. Vyberte **nový krok** > **přidat akci**.
+5. Vyberte **Nový krok** > **Přidat akci**.
 
-   ![Nový krok, přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. Hledat na **X12**a vyberte **X12-přidat nebo aktualizovat kontrolní čísla**.   
+6. Vyhledejte **X12**a vyberte **X12 – přidat nebo aktualizovat řídicí čísla**.   
 
-   ![Přidat nebo aktualizovat kontrolní čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Pro připojení k účtu pro integraci sekundární oblasti akci, vyberte **změnit připojení** > **přidat nové připojení** seznam dostupných integračních účtů. Zadejte název připojení, vyberte vaše *účtu pro integraci sekundární oblasti* ze seznamu a zvolte **vytvořit**. 
+7. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**. 
 
-   ![Název integračního účtu sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-8. Nezpracované vstupy přepnout kliknutím na ikonu v pravém horním rohu.
+8. Kliknutím na ikonu v pravém horním rohu přepněte na nezpracované vstupy.
 
    ![Přepnout na nezpracované vstupy](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
-9. Výběr textu z dynamického obsahu pro výběr a uložte aplikaci logiky.
+9. Z dialogového okna pro výběr dynamického obsahu vyberte tělo a uložte aplikaci logiky.
 
    ![Pole dynamického obsahu](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
 
-   Aktivační událost podle časového intervalu, dotazuje primární oblast přijatá ovládací prvek čísla v tabulce a získává nové záznamy. 
-   Tato akce aktualizuje záznamy v sekundární oblasti účtu integrace. 
-   Pokud nejsou žádné aktualizace, stav aktivační události se zobrazí jako **vynecháno**.   
+   V závislosti na časovém intervalu se aktivační událost dotazuje tabulky kontrolního čísla přijaté primární oblastí a vyžádá si nové záznamy. 
+   Akce aktualizuje záznamy v účtu pro integraci sekundární oblasti. 
+   Pokud nejsou k dispozici žádné aktualizace, zobrazí se stav triggeru jako **přeskočeno**.   
 
-   ![Ovládací prvek tabulka čísel](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+   ![Tabulka čísel ovládacích prvků](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-Podle časového intervalu, stav přírůstkové runtime replikuje z primární oblasti do sekundární oblasti. Během události po havárii, pokud primární oblast není k dispozici, s přímým přístupem provoz do sekundární oblasti, která zajišťuje nepřetržitý chod podniků. 
+V závislosti na časovém intervalu je přírůstkový běhový stav replikován z primární oblasti do sekundární oblasti. V případě události po havárii není primární oblast dostupná, přímý provoz do sekundární oblasti pro provozní kontinuitu. 
 
 ## <a name="edifact"></a>EDIFACT 
 
-Kontinuita podnikových dokumentů EDI EDIFACT je založená na kontrolních čísel.
+Provozní kontinuita pro EDIFACT dokumenty EDI je založena na řídicích číslech.
 
 **Požadavky**
 
-Pokud chcete povolit zotavení po havárii pro příchozí zprávy, vyberte v nastavení přijímat smlouvy EDIFACT duplicitní zkontrolujte nastavení.
+Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nastavení pro příjem duplicitních dat v EDIFACT smlouvě.
 
-![Vyberte nastavení duplicitní kontroly](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![Vyberte duplicitní nastavení kontroly.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. Vytvoření [aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
+1. Vytvoření [Aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
 
-2. Hledat na **EDIFACT**a vyberte **EDIFACT – když se upraví nějaké kontrolní číslo**.
+2. Vyhledejte **EDIFACT**a vyberte **EDIFACT – když se změní číslo ovládacího prvku**.
 
    ![Hledat EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
    Aktivační událost vás vyzve k navázání připojení k účtu pro integraci. 
-   Aktivační událost musí být připojené k účtu pro integraci primární oblasti. 
+   Aktivační událost by měla být připojená k účtu pro integraci primární oblasti. 
 
-3. Zadejte název připojení, vyberte vaše *účtu pro integraci primární oblasti* ze seznamu a zvolte **vytvořit**.    
+3. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci primární oblasti* a zvolte **vytvořit**.    
 
-   ![Název integračního účtu primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
+   ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. **Datum a čas spuštění synchronizace kontrolního čísla** nastavení je volitelné. **Frekvence** může být nastaven na **den**, **hodinu**, **minutu**, nebo **druhý** s intervalem.    
+4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.    
 
-   ![Datum a čas a četnost](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-6. Vyberte **nový krok** > **přidat akci**.    
+6. Vyberte **Nový krok** > **Přidat akci**.    
 
-   ![Nový krok, přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. Hledat na **EDIFACT**a vyberte **EDIFACT - přidat nebo aktualizovat kontrolní čísla**.   
+7. Vyhledejte **EDIFACT**a vyberte **EDIFACT – přidat nebo aktualizovat řídicí čísla**.   
 
-   ![Přidat nebo aktualizovat kontrolní čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Pro připojení k účtu pro integraci sekundární oblasti akci, vyberte **změnit připojení** > **přidat nové připojení** seznam dostupných integračních účtů. Zadejte název připojení, vyberte vaše *účtu pro integraci sekundární oblasti* ze seznamu a zvolte **vytvořit**.
+8. Pokud chcete připojit akci k účtu pro integraci sekundární oblasti, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
 
-   ![Název integračního účtu sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-9. Nezpracované vstupy přepnout kliknutím na ikonu v pravém horním rohu.
+9. Kliknutím na ikonu v pravém horním rohu přepněte na nezpracované vstupy.
 
    ![Přepnout na nezpracované vstupy](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
-10. Výběr textu z dynamického obsahu pro výběr a uložte aplikaci logiky.   
+10. Z dialogového okna pro výběr dynamického obsahu vyberte tělo a uložte aplikaci logiky.   
 
    ![Pole dynamického obsahu](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
-   Aktivační událost podle časového intervalu, dotazuje primární oblast přijatá ovládací prvek čísla v tabulce a získává nové záznamy.
-   Tato akce aktualizuje záznamy do sekundární oblasti účtu pro integraci. 
-   Pokud nejsou žádné aktualizace, stav aktivační události se zobrazí jako **vynecháno**.
+   V závislosti na časovém intervalu se aktivační událost dotazuje tabulky kontrolního čísla přijaté primární oblastí a vyžádá si nové záznamy.
+   Akce aktualizuje záznamy na účet pro integraci sekundární oblasti. 
+   Pokud nejsou k dispozici žádné aktualizace, zobrazí se stav triggeru jako **přeskočeno**.
 
-   ![Ovládací prvek tabulka čísel](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+   ![Tabulka čísel ovládacích prvků](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-Podle časového intervalu, stav přírůstkové runtime replikuje z primární oblasti do sekundární oblasti. Během události po havárii, pokud primární oblast není k dispozici, s přímým přístupem provoz do sekundární oblasti, která zajišťuje nepřetržitý chod podniků. 
+V závislosti na časovém intervalu je přírůstkový běhový stav replikován z primární oblasti do sekundární oblasti. V případě události po havárii není primární oblast dostupná, přímý provoz do sekundární oblasti pro provozní kontinuitu. 
 
 ## <a name="as2"></a>AS2 
 
-Kontinuita podnikových procesů pro dokumenty, které používají protokol AS2 podle ID zprávy a hodnoty MIC.
+Provozní kontinuita pro dokumenty, které používají protokol AS2, je založena na ID zprávy a hodnotě MIKROFONu.
 
 > [!TIP]
-> Můžete také použít [šablony rychlý start AS2](https://github.com/Azure/azure-quickstart-templates/pull/3302) k vytváření aplikací logiky. Vytváření účtů integrace primární a sekundární jsou požadavky na použití šablony. Šablony vám pomůže vytvořit aplikaci logiky, který má aktivační událost a akce. Aplikace logiky vytvoří připojení z aktivační události na primární integrační účet a akce pro sekundární integrační účet.
+> K vytváření aplikací logiky můžete použít také [šablonu rychlý Start AS2](https://github.com/Azure/azure-quickstart-templates/pull/3302) . Vytváření primárních a sekundárních integračních účtů je předpokladem pro použití šablony. Šablona pomáhá vytvořit aplikaci logiky, která má aktivační událost a akci. Aplikace logiky vytvoří připojení z triggeru k primárnímu účtu pro integraci a akci sekundárního účtu pro integraci.
 
-1. Vytvoření [aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.  
+1. Vytvořte [aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.  
 
-2. Hledat na **AS2**a vyberte **AS2 - hodnoty MIC když se vytvoří**.   
+2. Vyhledejte **AS2**a vyberte **AS2 – když se vytvoří hodnota mikrofonu**.   
 
    ![Hledat AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
    Aktivační událost vás vyzve k navázání připojení k účtu pro integraci. 
-   Aktivační událost musí být připojené k účtu pro integraci primární oblasti. 
+   Aktivační událost by měla být připojená k účtu pro integraci primární oblasti. 
    
-3. Zadejte název připojení, vyberte vaše *účtu pro integraci primární oblasti* ze seznamu a zvolte **vytvořit**.
+3. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci primární oblasti* a zvolte **vytvořit**.
 
-   ![Název integračního účtu primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. **Datum a čas spuštění synchronizace hodnoty MIC** nastavení je volitelné. **Frekvence** může být nastaven na **den**, **hodinu**, **minutu**, nebo **druhý** s intervalem.   
+4. Nastavení **hodnoty data a času pro spuštění synchronizace hodnot typu MIC** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
 
-   ![Datum a čas a četnost](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
+   ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
-5. Vyberte **nový krok** > **přidat akci**.  
+5. Vyberte **Nový krok** > **Přidat akci**.  
 
-   ![Nový krok, přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
+   ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. Hledat na **AS2**a vyberte **AS2 - přidat nebo aktualizovat obsah MIC**.  
+6. Vyhledejte **AS2**a vyberte **AS2-přidat nebo aktualizovat obsah MIC**.  
 
-   ![Povinná kontrola úrovně Důvěryhodnosti přidání nebo aktualizace](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
+   ![Přidání nebo aktualizace MIC](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Chcete-li připojit k sekundární integrační účet akce, vyberte **změnit připojení** > **přidat nové připojení** seznam dostupných integračních účtů. Zadejte název připojení, vyberte vaše *účtu pro integraci sekundární oblasti* ze seznamu a zvolte **vytvořit**.
+7. Pokud chcete připojit akci k sekundárnímu účtu pro integraci, vyberte **změnit připojení**  > **Přidat nové připojení** a seznam dostupných účtů pro integraci. Zadejte název připojení, v seznamu vyberte svůj *účet pro integraci sekundární oblasti* a zvolte **vytvořit**.
 
-   ![Název integračního účtu sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
+   ![Název účtu pro integraci sekundární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
-8. Nezpracované vstupy přepnout kliknutím na ikonu v pravém horním rohu.
+8. Kliknutím na ikonu v pravém horním rohu přepněte na nezpracované vstupy.
 
    ![Přepnout na nezpracované vstupy](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2rawinputs.png)
 
-9. Výběr textu z dynamického obsahu pro výběr a uložte aplikaci logiky.   
+9. Z dialogového okna pro výběr dynamického obsahu vyberte tělo a uložte aplikaci logiky.   
 
    ![Dynamický obsah](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
-   Aktivační událost podle časového intervalu, dotazuje tabulku primární oblasti a získává nové záznamy. Tato akce aktualizuje je do sekundární oblasti účtu pro integraci. 
-   Pokud nejsou žádné aktualizace, stav aktivační události se zobrazí jako **vynecháno**.  
+   V závislosti na časovém intervalu se aktivační událost dotazuje tabulky primární oblasti a vyžádá si nové záznamy. Akce je aktualizuje na účet pro integraci sekundární oblasti. 
+   Pokud nejsou k dispozici žádné aktualizace, zobrazí se stav triggeru jako **přeskočeno**.  
 
    ![Tabulka primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 
-Podle časového intervalu, stav přírůstkové runtime replikuje z primární oblasti do sekundární oblasti. Během události po havárii, pokud primární oblast není k dispozici, s přímým přístupem provoz do sekundární oblasti, která zajišťuje nepřetržitý chod podniků. 
+V závislosti na časovém intervalu je přírůstkový běhový stav replikován z primární oblasti do sekundární oblasti. V případě události po havárii není primární oblast dostupná, přímý provoz do sekundární oblasti pro provozní kontinuitu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Monitorování zpráv B2B](logic-apps-monitor-b2b-message.md)
 

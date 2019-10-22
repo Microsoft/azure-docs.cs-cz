@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, sec-javascript-october2019
+ms.openlocfilehash: f400fb7f177301e2b8c21cde9be334635025b4b3
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992156"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677709"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -27,7 +27,7 @@ ms.locfileid: "69992156"
  
 Tento rychlý start předpokládá, že máte existující virtuální počítač Azure. Pokud ne, můžete [vytvořit virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) nebo [vytvořit virtuální počítač s Linuxem](../../virtual-machines/linux/quick-create-cli.md) podle našich rychlých startů pro virtuální počítače.
 
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
@@ -35,17 +35,17 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![portál Azure](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
-   * Zadejte název nového **pracovního prostoru Log Analytics**, například *DefaultLAWorkspace*.  
+   * Zadejte název nového **pracovního prostoru služby Log Analytics**, například *DefaultLAWorkspace*.  
    * Vyberte **předplatné**, které má být cílem propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané předplatné není vhodné.
    * Jako **skupinu prostředků** vyberte existující skupinu prostředků, která obsahuje jeden nebo několik virtuálních počítačů Azure.  
    * Vyberte **Umístění**, do kterého jsou vaše virtuální počítače nasazené.  Další informace najdete na stránce uvádějící [oblasti, ve kterých je dostupná služba Log Analytics](https://azure.microsoft.com/regions/services/).
    * Pokud vytváříte pracovní prostor v novém předplatném vytvořeném po 2. dubnu 2018, automaticky se použije cenový plán *podle počtu GB* a možnost vybrat cenovou úroveň nebude dostupná.  Pokud vytváříte pracovní prostor pro existující předplatné vytvořené před 2. dubnem nebo pro předplatné, které se vázalo na existující registraci smlouvy Enterprise, vyberte si cenovou úroveň, které dáváte přednost.  Další informace o jednotlivých úrovních najdete v [podrobnostech o cenách Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Okno pro vytvoření Log Analytics prostředku](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Po zadání požadovaných informací v podokně **log Analyticsho pracovního prostoru** vyberte **OK**.  
 
@@ -55,10 +55,10 @@ Během ověřování informací a vytváření pracovního prostoru můžete pr�
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru Log Analytics, který zadáte. Agent je také automaticky upgradován při vydání novější verze, čímž se zajistí, že budete mít nejnovější funkce a opravy. Než budete pokračovat, ověřte, že virtuální počítač běží v opačném případě se nezdaří se nepodaří.  
+Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azure, můžete agenta Log Analytics nainstalovat pomocí rozšíření Log Analytics pro virtuální počítače. Použití rozšíření zjednodušuje proces instalace a automaticky agenta nakonfiguruje pro odesílání dat do pracovního prostoru služby Log Analytics, který zadáte. Agent je také automaticky upgradován při vydání novější verze, čímž se zajistí, že budete mít nejnovější funkce a opravy. Než budete pokračovat, ověřte, že je virtuální počítač spuštěný, jinak se proces nepodaří úspěšně dokončit.  
 
 >[!NOTE]
->Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru Log Analytics. 
+>Agenta Log Analytics pro Linux není možné nakonfigurovat tak, aby se hlásil více než jednomu pracovnímu prostoru služby Log Analytics. 
 
 1. V Azure Portal vyberte **všechny služby** , které najdete v levém horním rohu. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
@@ -68,7 +68,7 @@ Pro virtuální počítače s Windows a Linuxem, které už jsou nasazené v Azu
 
 4. V seznamu **virtuálních počítačů** vyberte virtuální počítač, na který chcete nainstalovat agenta. Všimněte si, že **Stav připojení Log Analytics** pro tento virtuální počítač uvádí **Nepřipojeno**.
 
-5. V podrobnostech pro váš virtuální počítač vyberte **Připojit**. Automaticky se nainstaluje a nakonfiguruje agent pro váš pracovní prostor Log Analytics. Tento proces trvá několik minut, během kterých se zobrazuje **stav** **připojení**.
+5. V podrobnostech pro váš virtuální počítač vyberte **Připojit**. Automaticky se nainstaluje a nakonfiguruje agent pro váš pracovní prostor služby Log Analytics. Tento proces trvá několik minut, během kterých se zobrazuje **stav** **připojení**.
 
 6. Po instalaci a připojení agenta se **Stav připojení Log Analytics** aktualizuje na **Tento pracovní prostor**.
 
@@ -80,11 +80,11 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 1. Vyberte **Upřesňující nastavení**.
 
-    ![Upřesňující nastavení Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Upřesňující nastavení Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
 2. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.
 
-3. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko **+** Plus.
+3. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko plus **+** .
 
 4. V tabulce zaškrtněte závažnosti **Chyby** a **Upozornění**.
 
@@ -92,7 +92,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 6. Výběrem **Data o výkonu systému Windows** povolte shromažďování čítačů výkonu na počítači s Windows.
 
-7. Při první konfiguraci čítačů výkonu Windows pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
+7. Při první konfiguraci čítačů výkonu Windows pro nový pracovní prostor služby Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
     ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
@@ -104,7 +104,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 1. Vyberte **Syslog**.  
 
-2. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
+2. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **SYSLOG** a pak vyberte znaménko plus **+** .  
 
 3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
 
@@ -112,9 +112,9 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 5. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 
 
-6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
+6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor služby Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
-    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Vyberte **použít níže konfiguraci na moje počítače** a pak vyberte **Přidat vybrané čítače výkonu**.  Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.  
 
@@ -126,7 +126,7 @@ Teď, když jste povolili shromažďování dat, můžete spustit příklad jedn
 
 1. Ve vybraném pracovním prostoru v levém podokně vyberte **protokoly**.
 
-2. Na stránce dotaz na protokoly zadejte `Perf` do editoru dotazů a vyberte **Spustit**.
+2. Na stránce dotaz na protokoly zadejte do editoru dotazů `Perf` a vyberte **Spustit**.
 
     ![Příklad dotazu prohledávání protokolu v Log Analytics](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
@@ -136,12 +136,12 @@ Teď, když jste povolili shromažďování dat, můžete spustit příklad jedn
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až už pracovní prostor Log Analytics nebudete potřebovat, odstraňte ho. Provedete to tak, že vyberete pracovní prostor Log Analytics, který jste vytvořili dříve, a na stránce prostředek vyberete **Odstranit**.
+Až už pracovní prostor služby Log Analytics nebudete potřebovat, odstraňte ho. Provedete to tak, že vyberete pracovní prostor Log Analytics, který jste vytvořili dříve, a na stránce prostředek vyberete **Odstranit**.
 
 
 ![Odstranění prostředku Log Analytics](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když shromažďujete data o provozu a výkonu z virtuálních počítačů s Windows nebo Linuxem, můžete jednoduše a *zdarma* začít zkoumat a analyzovat shromážděná data a provádět na jejich základě akce.  
 

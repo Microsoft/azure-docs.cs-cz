@@ -1,6 +1,6 @@
 ---
-title: Vytváření a Správa pracovních postupů v Visual Studio Code Azure Logic Apps
-description: Rychlý Start – vytvoření a Správa definic JSON aplikace logiky v Visual Studio Code (VS Code)
+title: Automatizace pracovních postupů pomocí Visual Studio Code-Azure Logic Apps
+description: Vytvoří nebo upraví základní definice JSON aplikace logiky pomocí Visual Studio Code (VS Code).
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035432"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679157"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>Rychlý Start: vytvoření a Správa definic aplikace logiky pomocí Visual Studio Code
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>Rychlý Start: vytváření a Správa definic pracovních postupů aplikací logiky pomocí Visual Studio Code
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a Visual Studio Code můžete vytvářet a spravovat aplikace logiky, které vám pomůžou automatizovat úlohy, pracovní postupy a procesy pro integraci aplikací, dat, systémů a služeb v organizacích a podnicích. V tomto rychlém startu se dozvíte, jak můžete vytvářet a upravovat definice pracovních postupů aplikací logiky pomocí schématu definice pracovního postupu v JavaScript Object Notation (JSON) prostřednictvím prostředí založeného na kódu. Můžete také pracovat na stávajících Logic Apps, které už jsou nasazené v Azure.
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a Visual Studio Code můžete vytvářet a spravovat aplikace logiky, které vám pomůžou automatizovat úlohy, pracovní postupy a procesy pro integraci aplikací, dat, systémů a služeb v organizacích a podnicích. V tomto rychlém startu se dozvíte, jak můžete vytvořit a upravit základní definice pracovních postupů, které používají JavaScript Object Notation (JSON) pro Logic Apps prostřednictvím prostředí založeného na kódu. Můžete také pracovat na stávajících Logic Apps, které už jsou nasazené v Azure.
 
 I když tyto stejné úlohy můžete provádět v [Azure Portal](https://portal.azure.com) a v aplikaci Visual Studio, můžete začít rychleji v Visual Studio Code, když už jste obeznámeni s definicemi aplikace logiky a chcete pracovat přímo v kódu. Můžete například zakázat, povolit, odstranit a aktualizovat již vytvořené aplikace logiky. Můžete také pracovat na Logic Apps a účtech pro integraci z libovolné vývojové platformy, kde Visual Studio Code běžet, jako je Linux, Windows nebo Mac.
 
@@ -33,7 +33,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 * Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Základní znalost [definicí pracovních postupů aplikací logiky](../logic-apps/logic-apps-workflow-definition-language.md) a jejich struktury, které používají JavaScript Object Notation (JSON)
+* Základní znalost [definicí pracovních postupů aplikací logiky](../logic-apps/logic-apps-workflow-definition-language.md) a jejich struktury, jak je popsáno ve formátu JSON
 
   Pokud s Logic Apps začínáte, vyzkoušejte si tento [rychlý Start](../logic-apps/quickstart-create-first-logic-app-workflow.md), který vytvoří vaše první aplikace logiky v Azure Portal a zaměřuje se na základní koncepty.
 

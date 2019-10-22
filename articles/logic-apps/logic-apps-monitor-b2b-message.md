@@ -1,6 +1,6 @@
 ---
-title: Monitorování zpráv B2B pomocí protokolů Azure Monitor – Azure Logic Apps | Microsoft Docs
-description: Sledujte AS2, X12 a EDIFACT zprávy pro účty pro integraci a Azure Logic Apps a nastavte protokolování diagnostiky pomocí protokolů Azure Monitor
+title: Monitorování zpráv B2B pomocí Azure Monitor-Azure Logic Apps
+description: Nastavení protokolování diagnostiky pro zprávy AS2, X12 a EDIFACT v Azure Logic Apps pomocí Azure Monitor
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261207"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680189"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Monitorování zpráv B2B pomocí protokolu Azure Monitor v Azure Logic Apps
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Nastavení protokolování diagnostiky pro zprávy B2B v Azure Logic Apps pomocí Azure Monitor
 
 Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace můžou tyto partneři vzájemně vyměňovat zprávy. Chcete-li ověřit, že tato komunikace funguje očekávaným způsobem, můžete monitorovat zprávy AS2, X12 a EDIFACT a nastavit protokolování diagnostiky pro účet pro integraci pomocí [protokolů Azure monitor](../log-analytics/log-analytics-overview.md). Tato služba monitoruje vaše cloudové a místní prostředí, umožňuje udržovat jejich dostupnost a výkon a shromažďuje podrobnosti a události modulu runtime pro rozsáhlejší ladění. Tato data můžete také použít u jiných služeb, jako je Azure Storage a Azure Event Hubs.
 
@@ -25,7 +25,7 @@ Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace můžo
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aplikace logiky, která je nastavená pomocí diagnostického protokolování. Naučte [se, jak vytvořit aplikaci logiky](quickstart-create-first-logic-app-workflow.md) a [jak nastavit protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -46,15 +46,15 @@ Protokolování můžete zapnout přímo z účtu pro integraci nebo [prostředn
 1. Nyní vyhledejte a vyberte účet pro integraci. V seznamu filtrovat seznamy vyberte hodnoty, které platí pro váš účet integrace.
 Až budete hotovi, vyberte **Přidat nastavení diagnostiky**.
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Předplatné** | <*název_předplatného_Azure*> | Předplatné Azure přidružené k vašemu účtu integrace | 
-   | **Skupina prostředků** | <*Azure-resource-group-name*> | Skupina prostředků Azure pro váš účet pro integraci | 
+   | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Skupina prostředků Azure pro váš účet pro integraci | 
    | **Typ prostředku** | **Účty pro integraci** | Typ prostředku Azure, pro který chcete zapnout protokolování. | 
-   | **Prostředek** | <*integration-account-name*> | Název vašeho prostředku Azure, ve kterém chcete zapnout protokolování. | 
+   | **Prostředek** | <*Integration-Account-name* > | Název vašeho prostředku Azure, ve kterém chcete zapnout protokolování. | 
    ||||  
 
-   Příklad:
+   Například:
 
    ![Nastavení diagnostiky pro účet pro integraci](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -71,7 +71,7 @@ Až budete hotovi, vyberte **Přidat nastavení diagnostiky**.
 
    1. V části **protokol**vyberte kategorii **IntegrationAccountTrackingEvents** a klikněte na **Uložit**.
 
-   Příklad: 
+   Například: 
 
    ![Nastavte protokoly Azure Monitor, abyste mohli odesílat diagnostická data do protokolu.](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -88,15 +88,15 @@ Až budete hotovi, vyberte **Přidat nastavení diagnostiky**.
 1. Nyní vyhledejte a vyberte účet pro integraci. V seznamu filtrovat seznamy vyberte hodnoty, které platí pro váš účet integrace.
 Až budete hotovi, vyberte **Přidat nastavení diagnostiky**.
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------|
    | **Předplatné** | <*název_předplatného_Azure*> | Předplatné Azure přidružené k vašemu účtu integrace | 
-   | **Skupina prostředků** | <*Azure-resource-group-name*> | Skupina prostředků Azure pro váš účet pro integraci | 
+   | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Skupina prostředků Azure pro váš účet pro integraci | 
    | **Typ prostředku** | **Účty pro integraci** | Typ prostředku Azure, pro který chcete zapnout protokolování. | 
-   | **Prostředek** | <*integration-account-name*> | Název vašeho prostředku Azure, ve kterém chcete zapnout protokolování. | 
+   | **Prostředek** | <*Integration-Account-name* > | Název vašeho prostředku Azure, ve kterém chcete zapnout protokolování. | 
    ||||  
 
-   Příklad:
+   Například:
 
    ![Nastavení diagnostiky pro účet pro integraci](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -113,7 +113,7 @@ Až budete hotovi, vyberte **Přidat nastavení diagnostiky**.
 
    1. V části **protokol**vyberte kategorii **IntegrationAccountTrackingEvents** a klikněte na **Uložit**.
 
-   Příklad: 
+   Například: 
 
    ![Nastavte protokoly Azure Monitor, abyste mohli odesílat diagnostická data do protokolu.](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -126,7 +126,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace Azure Diagnostics protokolů v Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Streamování protokolů Azure Diagnostics do Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

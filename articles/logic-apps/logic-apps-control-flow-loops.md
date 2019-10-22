@@ -1,91 +1,90 @@
 ---
-title: Přidání smyček, které opakování akce nebo proces pole – Azure Logic Apps | Dokumentace Microsoftu
-description: Postup vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
+title: Přidat smyčky pro opakování akcí – Azure Logic Apps
+description: Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-manager: jeconnoc
-ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/05/2019
+ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683866"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680450"
 ---
-# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvořte cykly, které opakují akce pracovního postupu nebo zpracuje pole v Azure Logic Apps
 
-Ke zpracování pole v aplikaci logiky, můžete vytvořit [smyčka "Foreach"](#foreach-loop). Tato smyčka se opakuje, jednu nebo více akcí pro každou položku v poli. Omezení počtu položek pole, které "Foreach" smyčky může zpracovat, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li zpracovat pole ve vaší aplikaci logiky, můžete vytvořit [smyčku "foreach"](#foreach-loop). Tato smyčka opakuje jednu nebo více akcí u každé položky v poli. Omezení počtu položek pole, které můžou smyčky "foreach" zpracovat, najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
-Akce opakování, dokud získá některá podmínka splněná nebo změny stavu, můžete vytvořit ["Do" smyčka](#until-loop). Aplikace logiky nejprve spustí všechny akce uvnitř smyčky a zkontroluje podmínku nebo stavu. Pokud je splněna podmínka, cyklus se ukončí. V opačném případě smyčka se opakuje. Omezení počtu "Do" smyčky v aplikaci logiky spustit, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můžete vytvořit [smyčku "do"](#until-loop). Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje. Pro omezení počtu "až" smyček v běhu aplikace logiky si přečtěte část [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
-> Pokud máte trigger, který přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete si *debatch* toto pole se [ **vlastnost SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
+> Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="foreach-loop"></a>
 
-## <a name="foreach-loop"></a>Smyčka "Foreach"
+## <a name="foreach-loop"></a>Smyčka foreach
 
-"Smyčka Foreach" se opakuje, jednu nebo více akcí pro každou položku pole a funguje pouze na pole. Iterací ve smyčce "Foreach" běžet paralelně. Však můžete spustit iterací jeden po druhém nastavením [sekvenční smyčka "Foreach"](#sequential-foreach-loop). 
+"Foreach Loop" opakuje jednu nebo více akcí u každé položky pole a funguje pouze pro pole. Iterace v rámci smyčky foreach běží paralelně. Můžete však spustit iterace po jednom nastavením [sekvenční smyčky "foreach"](#sequential-foreach-loop). 
 
-Tady jsou některé aspekty při použití smyčky "Foreach":
+Zde jsou některé okolnosti použití smyček "foreach":
 
-* Ve smyčkách vnořené iterací vždy postupně, ne při paralelním spuštění. Pro spouštění operací pro položky ve smyčce vnořené paralelně, vytvořit a [volat aplikaci logiky podřízené](../logic-apps/logic-apps-http-endpoint.md).
+* Ve vnořených smyčkách jsou iterace vždy spouštěny sekvenčně, nikoli paralelně. K paralelnímu spuštění operací pro položky ve vnořené smyčce vytvořte a [zavolejte podřízenou aplikaci logiky](../logic-apps/logic-apps-http-endpoint.md).
 
-* Předvídatelné výsledky z operací pro proměnné při každé iteraci smyčky získáte spuštěním těchto smyčky postupně. Například při souběžně běžících smyčky skončí, přírůstek, snížení a připojí k proměnné operace vrátíte předvídatelné výsledky. Ale při každé iteraci ve smyčce současně spuštěné tyto operace může vrátit neočekávané výsledky. 
+* Chcete-li získat předvídatelné výsledky z operací na proměnné během každé iterace smyčky, spusťte cykly postupně. Například když cyklus končí souběžně, operace zvýšení, snížení a připojení k proměnným operaci vrátí předvídatelné výsledky. Během každé iterace v souběžně běžící smyčce ale můžou tyto operace vracet nepředvídatelné výsledky. 
 
-* Použití opakování akce v "Foreach" [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
-výraz, který se odkazuje a zpracovat každou položku v poli. Pokud chcete zadat data, která není v poli, pracovní postup aplikace logiky se nezdaří. 
+* Akce ve smyčce foreach používají [`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) 
+výraz pro odkazování a zpracování každé položky v poli. Pokud zadáte data, která nejsou v poli, pracovní postup aplikace logiky se nezdařil. 
 
-Tento příklad aplikace logiky odešle denní souhrn pro informační kanál RSS webu. Aplikace používá "Foreach" smyčku, která odešle e-mail za každou novou položku.
+Tato ukázková aplikace logiky pošle denní souhrn informačního kanálu RSS webu. Aplikace používá smyčku foreach, která pro každou novou položku pošle e-mail.
 
-1. [Vytvořte Tato ukázková aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) pomocí účtu Outlook.com nebo Office 365 Outlook.
+1. [Vytvořte tuto ukázkovou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) s účtem Outlook.com nebo Office 365 Outlook.
 
-2. Mezi RSS aktivovat a odeslat e-mailové akce, přidání smyčky "Foreach". 
+2. Mezi akcí aktivace a odeslání e-mailu RSS přidejte smyčku foreach. 
 
-   1. Přidání smyčky mezi kroky, přesuňte ukazatel nad šipku mezi tyto kroky. 
-   Zvolte **znaménko plus** ( **+** ), který se zobrazí, vyberte **přidat akci**.
+   1. Chcete-li přidat smyčku mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. 
+   Zvolte znaménko **plus** ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
 
-      ![Vyberte "Přidat akci"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+      ![Vyberte přidat akci.](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. Pod vyhledávacím polem vyberte **všechny**. Do vyhledávacího pole zadejte jako filtr "for each". Ze seznamu akcí vyberte tuto akci: **Pro každý – ovládací prvek**
+   1. V poli Hledat vyberte možnost **vše**. Do vyhledávacího pole zadejte jako filtr "for each". V seznamu akce vyberte tuto akci: **pro každý ovládací prvek** .
 
-      ![Přidání smyčky "pro každý"](media/logic-apps-control-flow-loops/select-for-each.png)
+      ![Přidat smyčku For Each](media/logic-apps-control-flow-loops/select-for-each.png)
 
-3. Nyní vytvořte smyčky. V části **vybrat výstup z předchozího postupu** po **Přidat dynamický obsah** seznamu se zobrazí, vyberte **odkazy na informační kanály** pole, které je výstup z RSS trigger. 
+3. Nyní vytvořte smyčku. V části **vybrat výstup z předchozích kroků** po zobrazení seznamu **Přidat dynamický obsah** vyberte pole odkazy na **informační kanály** , které je výstupem z triggeru RSS. 
 
-   ![Vyberte ze seznamu dynamického obsahu](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
+   ![Vybrat ze seznamu dynamického obsahu](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
    > [!NOTE] 
-   > Můžete vybrat *pouze* pole výstup z předchozího kroku.
+   > Z předchozího kroku můžete vybrat *jenom* výstupy polí.
 
    Vybrané pole se teď zobrazí tady:
 
-   ![Vyberte pole](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
+   ![Vybrat pole](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. Chcete-li spustit akci pro každou položku pole, přetáhněte **odeslat e-mailu** akce do smyčky. 
+4. Chcete-li spustit akci pro každou položku pole, přetáhněte akci **Odeslat e-mail** do smyčky. 
 
-   Aplikace logiky může vypadat přibližně jako v tomto příkladu:
+   Vaše aplikace logiky může vypadat přibližně jako v tomto příkladu:
 
-   ![Přidání kroků do smyčky "Foreach"](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
+   ![Přidání kroků do smyčky foreach](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. Uložte svou aplikaci logiky. Chcete-li ručním testováním aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.
+5. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
 
 <a name="for-each-json"></a>
 
-## <a name="foreach-loop-definition-json"></a>Definici smyčky "Foreach" (JSON)
+## <a name="foreach-loop-definition-json"></a>Foreach – definice smyčky (JSON)
 
-Pokud pracujete v zobrazení kódu pro vaši aplikaci logiky, můžete definovat `Foreach` smyčky v definici JSON vaší aplikace logiky místo, například:
+Pokud pracujete v zobrazení kódu aplikace logiky, můžete místo toho definovat smyčku `Foreach` v definici JSON vaší aplikace logiky, například:
 
 ``` json
 "actions": {
@@ -122,19 +121,19 @@ Pokud pracujete v zobrazení kódu pro vaši aplikaci logiky, můžete definovat
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>"Foreach" smyčka: Sekvenční
+## <a name="foreach-loop-sequential"></a>Smyčka foreach: sekvenční
 
-Ve výchozím nastavení cykly ve smyčce "Foreach" běžet paralelně. Každý cyklus spouští sekvenčně, nastavte smyčky **sekvenční** možnost. "Foreach" smyčky musí jsou spouštěny postupně po mít člověk vnořené smyčky nebo proměnných uvnitř smyčky kde očekáváte, že předvídatelné výsledky. 
+Ve výchozím nastavení se cyklická smyčka "foreach" spouští paralelně. Chcete-li každý cyklus spustit postupně, nastavte možnost **sekvenční** smyčky. Smyčky "foreach" musí běžet sekvenčně, pokud máte vnořené smyčky nebo proměnné uvnitř smyček, kde očekáváte předvídatelné výsledky. 
 
-1. V horním pravém rohu smyčky, zvolte **symbol tří teček** ( **...** ) > **Nastavení**.
+1. V pravém horním rohu smyčky vyberte **tři tečky** ( **...** ) > **Nastavení**.
 
-   ![Smyčka "Foreach" tlačítko "..." > "Nastavení"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
+   ![Na smyčce "foreach" vyberte "..." > "Nastavení"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. V části **řízení souběžnosti**, zapnout **řízení souběžnosti** nastavení **na**. Přesunout **stupeň paralelismu** posuvníku **1**a zvolte **provádí**.
+1. V části **řízení souběžnosti**přepněte nastavení **řízení souběžnosti** na **zapnuto**. Přesuňte posuvník **stupeň paralelismus** na **1**a potom vyberte **Hotovo**.
 
-   ![Zapněte řízení souběžnosti](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Zapnout řízení souběžnosti](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-Pokud pracujete s definice JSON vaší aplikace logiky, můžete použít `Sequential` možnost tak, že přidáte `operationOptions` parametru, například:
+Pokud pracujete s definicí JSON vaší aplikace logiky, můžete použít možnost `Sequential` přidáním parametru `operationOptions`, například:
 
 ``` json
 "actions": {
@@ -152,118 +151,118 @@ Pokud pracujete s definice JSON vaší aplikace logiky, můžete použít `Seque
 
 <a name="until-loop"></a>
 
-## <a name="until-loop"></a>"Do" smyčka
+## <a name="until-loop"></a>Smyčka "do"
   
-Pro spuštění a opakovat akce získá některá podmínka splněná nebo změny stavu, vložte tyto akce do smyčky "Až". Aplikace logiky nejprve spustí všechny akce uvnitř smyčky a zkontroluje podmínku nebo stavu. Pokud je splněna podmínka, cyklus se ukončí. V opačném případě smyčka se opakuje.
+Chcete-li spustit a opakovat akce, dokud není splněna podmínka, nebo dojde ke změně stavu, vložte tyto akce do smyčky "do". Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje.
 
-Zde jsou uvedeny některé obvyklé scénáře, ve kterém můžete použít "Až" smyčka:
+Tady je několik běžných scénářů, kde můžete použít smyčku "do":
 
-* Volání koncového bodu, dokud se nedostanete odpověď, kterou chcete.
+* Zavolejte koncový bod, dokud nezískáte odpověď, kterou požadujete.
 
-* Vytvořte záznam v databázi. Počkejte, dokud konkrétní pole v tom, že záznam schválení. Pokračujte ve zpracování. 
+* Vytvoří záznam v databázi. Počkejte na schválení konkrétního pole v záznamu. Pokračovat ve zpracování. 
 
-Spouští v 8:00 hodin každý den, tato aplikace logiky příklad zvýší hodnotu proměnné dokud hodnota proměnné je rovno 10. Aplikace logiky pak odešle e-mailu s potvrzením aktuální hodnotu. 
+Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší proměnnou, dokud hodnota proměnné není rovna 10. Aplikace logiky pak pošle e-mail s potvrzením aktuální hodnoty. 
 
 > [!NOTE]
-> Tyto kroky používají Office 365 Outlook, ale mohou využívat kteréhokoli zprostředkovatele e-mailu, který podporuje Logic Apps. 
-> [Zkontrolujte na seznam konektorů zde](https://docs.microsoft.com/connectors/). Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak. 
+> Tyto kroky používají Office 365 Outlook, ale můžete použít libovolného poskytovatele e-mailu, který Logic Apps podporuje. 
+> [Tady se můžete podívat na seznam konektorů](https://docs.microsoft.com/connectors/). Pokud použijete jiný e-mailový účet, obecné kroky zůstanou stejné, ale vaše uživatelské rozhraní může vypadat trochu jinak. 
 
-1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky zvolte pod vyhledávacím polem **všechny**. Vyhledejte "opakování". 
-   Ze seznamu triggerů vyberte tento trigger: **Opakování – plán**
+1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky pod vyhledávacím polem vyberte **vše**. Vyhledejte "opakování". 
+   V seznamu triggery vyberte tuto aktivační událost: **opakování – plán**
 
-   ![Přidání triggeru "Plán – opakování"](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+   ![Přidat aktivační událost opakování – plán](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
-1. Zadejte, když se trigger spustí nastavením interval, četnost a hodina dne. Chcete-li nastavit hodiny, zvolte **zobrazit pokročilé možnosti**.
+1. Určete, kdy se Trigger aktivuje nastavením intervalu, frekvence a hodiny dne. Chcete-li nastavit hodinu, vyberte možnost **Zobrazit upřesňující možnosti**.
 
    ![Nastavit plán opakování](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
    | Vlastnost | Hodnota |
    | -------- | ----- |
-   | **Interval** | 1 | 
+   | **Interval** | 1\. místo | 
    | **Frekvence** | Den |
    | **V těchto hodinách** | 8 |
    ||| 
 
-1. Pod triggerem zvolte **nový krok**. 
-   Vyhledejte "proměnné" a vyberte tuto akci: **Inicializace proměnné – proměnné**
+1. V části Trigger vyberte **Nový krok**. 
+   Vyhledejte "proměnné" a vyberte tuto akci: **inicializovat proměnné** proměnné
 
-   ![Přidání akce "Inicializace proměnné - proměnné"](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
+   ![Přidat akci inicializovat proměnné proměnné](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
-1. Nastavte vaši proměnnou s těmito hodnotami:
+1. Nastavte proměnnou pomocí těchto hodnot:
 
-   ![Nastavení vlastností proměnné](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
+   ![Nastavit vlastnosti proměnné](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
-   | **Název** | Omezení | Název proměnné. | 
-   | **Typ** | Integer | Vaše proměnná datový typ | 
-   | **Hodnota** | 0 | Počáteční hodnota proměnné | 
+   | **Název** | škálování | Název vaší proměnné | 
+   | **Typ** | Integer | Datový typ proměnné | 
+   | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
 
-1. V části **inicializovat proměnnou** akce, zvolte **nový krok**. 
+1. V akci **inicializovat proměnnou** klikněte na možnost **Nový krok**. 
 
-1. Pod vyhledávacím polem vyberte **všechny**. Vyhledejte "do" a vyberte tuto akci: **Dokud – ovládací prvek**
+1. V poli Hledat vyberte možnost **vše**. Vyhledejte "do" a vyberte tuto akci: **do-řízení**
 
-   ![Přidání "smyčky do"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+   ![Přidat smyčku "do"](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. Vytvoření smyčky ukončovací podmínky tak, že vyberete **Limit** proměnné a **rovná** operátor. 
-   Zadejte **10** jako hodnotu porovnání.
+1. Vytvořte podmínku ukončení smyčky výběrem proměnné **limit** a operátoru **is EQUAL** . 
+   Jako hodnotu porovnání zadejte **10** .
 
-   ![Sestavení ukončovací podmínky pro ukončení smyčky](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
+   ![Podmínka ukončení sestavení pro zastavování smyčky](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-1. Uvnitř smyčka, zvolte **přidat akci**. 
+1. Uvnitř smyčky vyberte **přidat akci**. 
 
-1. Pod vyhledávacím polem vyberte **všechny**. Vyhledejte "proměnné" a vyberte tuto akci: **Zvýšení hodnoty proměnné – proměnné**
+1. V poli Hledat vyberte možnost **vše**. Vyhledejte "proměnné" a vyberte tuto akci: **zvýšit proměnnou proměnné**
 
-   ![Přidání akce pro zvyšování hodnoty proměnné](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
+   ![Přidat akci pro přírůstkovou proměnnou](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-1. Pro **název**, vyberte **Limit** proměnné. Pro **hodnota**, zadejte hodnotu "1". 
+1. Jako **název**vyberte proměnnou **omezení** . Jako **hodnotu**zadejte "1". 
 
-     !["Limit" přírůstkem 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     ![Přírůstek "limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-1. Mimo a v rámci smyčky, zvolte **nový krok**. 
+1. Mimo a pod smyčkou klikněte na možnost **Nový krok**. 
 
-1. Pod vyhledávacím polem vyberte **všechny**. 
-     Najděte a přidejte akci, která se odešle e-mailu, například: 
+1. V poli Hledat vyberte možnost **vše**. 
+     Vyhledejte a přidejte akci, která odešle e-mail, například: 
 
-     ![Přidejte akci, která odešle e-mailu](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![Přidat akci, která odešle e-mail](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. Pokud budete vyzváni, přihlaste se k e-mailovému účtu.
 
-1. Nastavení e-mailu vlastností akce. Přidat **Limit** proměnné subjektu. Tímto způsobem můžete ověřit, že se že aktuální hodnota proměnné splňuje zadanou podmínku, třeba:
+1. Nastavte vlastnosti akce e-mailu. Přidejte do předmětu **mezní** proměnnou. Tímto způsobem můžete potvrdit, že aktuální hodnota proměnné splňuje zadanou podmínku, například:
 
-      ![Nastavit vlastnosti e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![Nastavení vlastností e-mailu](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Komu** | *\<email-address\@domain>* | příjemce e-mailovou adresu. Pro účely testování použijte svou vlastní e-mailovou adresu. | 
-      | **Předmět** | Aktuální hodnota pro "Limit" **Limit** | Zadejte předmět e-mailu. V tomto příkladu Ujistěte se, že složku zahrnujete **Limit** proměnné. | 
-      | **Text** | <*email-content*> | Zadejte obsah e-mailové zprávy, které chcete odeslat. V tomto příkladu zadejte jakýkoli text, který vám vyhovuje. | 
+      | **Komu** | *\@domain \<email-Address >* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
+      | **Text** | <*e-mailu-obsah* > | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
 
-1. Uložte svou aplikaci logiky. Chcete-li ručním testováním aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.
+1. Uložte svou aplikaci logiky. Pokud chcete aplikaci logiky otestovat ručně, na panelu nástrojů návrháře klikněte na **Spustit**.
 
-      Po svoji logiku spustí, dostanete e-mail s obsahem, který jste zadali:
+      Po spuštění logiky dostanete e-mail s obsahem, který jste zadali:
 
-      ![Přijatých e-mailů](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![Přijatý e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
-## <a name="prevent-endless-loops"></a>Zabránit nekonečná smyčka
+## <a name="prevent-endless-loops"></a>Zabránit nekonečné smyčce
 
-"Až" smyčka má výchozí omezení, které zastavit provádění, pokud některá z těchto podmínek dojít:
+Smyčka "do" má výchozí omezení, která zastaví provádění, pokud nastane kterákoli z těchto podmínek:
 
 | Vlastnost | Výchozí hodnota | Popis | 
 | -------- | ------------- | ----------- | 
-| **Počet** | 60 | Nejvyšší počet cyklů, které běžet, než opakování ve smyčce ukončeno. Výchozí hodnota je 60 cykly. | 
-| **časový limit** | PT1H | Většina množství času spuštění smyčky před smyčku ukončí. Výchozí hodnota je jedna hodina a je zadaný ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud žádnou akci ve smyčce trvá déle než časový limit, aktuální cyklu nezastaví. Do dalšího cyklu však nespustí, protože limit podmínka splněna není. | 
+| **Výpočtu** | 60 | Nejvyšší počet cyklů, které jsou spuštěny před ukončením smyčky. Výchozí hodnota je 60 cyklů. | 
+| **Prodlev** | PT1H | Maximální doba, po kterou se má spustit smyčka před ukončením smyčky. Výchozí hodnota je jedna hodina a je zadána ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud akce ve smyčce trvá déle, než je časový limit, aktuální cyklus se nezastaví. Další cyklus se ale nespustí, protože podmínka limitu není splněná. | 
 |||| 
 
-Chcete-li změnit tato výchozí omezení, zvolte **zobrazit pokročilé možnosti** ve tvaru akci opakovat.
+Chcete-li změnit tato výchozí omezení, vyberte možnost **Zobrazit upřesňující možnosti** v obrazci akce smyčky.
 
 <a name="until-json"></a>
 
 ## <a name="until-definition-json"></a>"Do" definice (JSON)
 
-Pokud pracujete v zobrazení kódu pro vaši aplikaci logiky, můžete definovat `Until` smyčky v definici JSON vaší aplikace logiky místo, například:
+Pokud pracujete v zobrazení kódu aplikace logiky, můžete místo toho definovat smyčku `Until` v definici JSON vaší aplikace logiky, například:
 
 ``` json
 "actions": {
@@ -301,11 +300,11 @@ Pokud pracujete v zobrazení kódu pro vaši aplikaci logiky, můžete definovat
 }
 ```
 
-V tomto příkladu "Až" zavolá koncový bod HTTP, který se vytvoří prostředek smyčky. Cyklus se ukončí po návratu textu odpovědi HTTP s `Completed` stav. Pokud chcete zabránit nekonečné smyčky, smyčky také zastaví, pokud některá z těchto podmínek stát:
+V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří prostředek. Smyčka se zastaví, když tělo odpovědi HTTP vrátí stav `Completed`. Aby nedocházelo k nekonečné smyčce, smyčka se také zastaví, pokud nastane kterákoli z těchto podmínek:
 
-* Smyčky spustila 10krát podle `count` atribut. Výchozí hodnota je 60 x. 
+* Smyčka proběhla desetkrát, jak je určeno atributem `count`. Výchozí hodnota je 60 časů. 
 
-* Smyčky běželo dvě hodiny, jak jsou určené `timeout` atribut ve formátu ISO 8601. Výchozí hodnota je jedna hodina.
+* Smyčka běžela po dobu dvou hodin, jak je určeno atributem `timeout` ve formátu ISO 8601. Výchozí hodnota je jedna hodina.
   
 ``` json
 "actions": {
@@ -340,11 +339,11 @@ V tomto příkladu "Až" zavolá koncový bod HTTP, který se vytvoří prostře
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* K odeslání návrhu nebo hlasování o funkcích a návrhy, [webu zpětné vazby uživatelů Azure Logic Apps](https://aka.ms/logicapps-wish).
+* Chcete-li odesílat nebo hlasovat o funkcích a návrzích, [Azure Logic Apps Web zpětné vazby uživatelů](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Spustit kroky na základě různých hodnot (příkazů přepínače)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Spuštění nebo sloučit paralelními kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Spustit kroky na základě stavu seskupené akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Spuštění kroků na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Spuštění kroků na základě různých hodnot (příkazy Switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spustit nebo sloučit paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spuštění kroků na základě seskupeného stavu akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

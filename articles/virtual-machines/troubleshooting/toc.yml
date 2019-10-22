@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Chyby při odstraňování klasických prostředků úložiště
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
-  href: unexpected-reboots-attached-vhds.md
-- name: Problémy s aktivací Windows
-  href: troubleshoot-activation-problems.md
-- name: Problém s aktivací vynuceného tunelování
-  href: custom-routes-enable-kms-activation.md
+- name: Řešení potíží s restartováním virtuálního počítače
+  items:
+    - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+      href: unexpected-reboots-attached-vhds.md
+    - name: Vysvětlení restartování systému
+      href: understand-vm-reboot.md
+- name: Aktivace Windows
+  items:
+    - name: Problémy s aktivací Windows
+      href: troubleshoot-activation-problems.md
+    - name: Problém s aktivací vynuceného tunelování
+      href: custom-routes-enable-kms-activation.md
 - name: Potíže s přístupem k aplikacím
   href: troubleshoot-app-connection.md
 - name: Nová nasazení virtuálních počítačů
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: Použití vnořené virtualizace
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Vysvětlení restartování systému
-  href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Oprava virtuálního počítače

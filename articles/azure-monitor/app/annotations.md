@@ -1,99 +1,94 @@
 ---
-title: Poznámky pro službu Application Insights k verzi | Dokumentace Microsoftu
-description: Přidat nasazení nebo vytvořit značky do grafy Průzkumníka metrik ve službě Application Insights.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Poznámky k verzi pro Application Insights | Microsoft Docs
+description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/01/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/01/2019
+ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604549"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677856"
 ---
-# <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafy metrik ve službě Application Insights
+# <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
-Poznámky na [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) grafy zobrazují, kam jste nasadili nového sestavení nebo jiné významné události. Zkontrolujte poznámky snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří podle [kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/tasks/) sestavovací systém. Můžete také vytvořit poznámky označit, že všechny události, kterou chcete, můžete vytvořit z prostředí PowerShell.
+Poznámky v [Průzkumník metrikch](../../azure-monitor/app/metrics-explorer.md) grafech ukazují, kde jste nasadili nové sestavení, nebo jiné významné události. Poznámky usnadňují zjištění, zda vaše změny měly vliv na výkon vaší aplikace. Mohou být automaticky vytvořeny [Azure Pipelinesm](https://docs.microsoft.com/azure/devops/pipelines/tasks/) systémem sestavení. Můžete také vytvořit poznámky k označení libovolné události, kterou chcete, vytvořením z PowerShellu.
 
 > [!NOTE]
-> Tento článek odráží zastaralá **prostředí klasické metriky**. Poznámky jsou aktuálně dostupné v klasickém prostředí a  **[sešity](../../azure-monitor/app/usage-workbooks.md)** . Další informace o aktuálním prostředí metrik najdete v tématu [pokročilé funkce Průzkumníka metrik Azure](../../azure-monitor/platform/metrics-charts.md).
+> Tento článek odráží nepoužívané **klasické prostředí metrik**. Poznámky jsou aktuálně k dispozici pouze v klasickém prostředí a v **[sešitech](../../azure-monitor/app/usage-workbooks.md)** . Další informace o aktuálním prostředí metrik najdete v tématu [Pokročilé funkce služby Azure Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md).
 
-![Příklad poznámky](./media/annotations/0-example.png)
+![Příklad poznámek](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-pipelines-build"></a>Poznámky k sestavení kanály Azure verzi
+## <a name="release-annotations-with-azure-pipelines-build"></a>Poznámky k verzi s Azure Pipelines Build
 
-Poznámky k verzi jsou funkce založené na cloudu Azure kanálů služby Azure DevOps.
+Poznámky k verzi jsou součástí cloudové Azure Pipelines služby Azure DevOps.
 
-### <a name="install-the-annotations-extension-one-time"></a>Instalace rozšíření poznámky (jednou)
-Aby bylo možné vytvořit anotace k vydání verze, bude nutné nainstalovat některou z mnoha dostupných rozšíření Azure DevOps ve Visual Studio Marketplace.
+### <a name="install-the-annotations-extension-one-time"></a>Instalace rozšíření pro poznámky (jednorázově)
+Aby bylo možné vytvářet poznámky k verzi, budete muset nainstalovat jednu z mnoha rozšíření Azure DevOps, která jsou k dispozici v Visual Studio Marketplace.
 
-1. Přihlaste se k vaší [Azure DevOps](https://azure.microsoft.com/services/devops/) projektu.
+1. Přihlaste se ke svému projektu [Azure DevOps](https://azure.microsoft.com/services/devops/) .
    
-1. Na webu Visual Studio Marketplace [poznámek rozšíření](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) stránky, vyberte svoji organizaci Azure DevOps a pak vyberte **nainstalovat** přidání rozšíření pro vaši organizaci Azure DevOps.
+1. Na stránce [rozšíření pro poznámky k verzi](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) Visual Studio Marketplace vyberte vaši organizaci Azure DevOps a pak výběrem **nainstalovat** přidejte rozšíření do vaší organizace Azure DevOps.
    
-   ![Vyberte organizaci Azure DevOps a pak vyberte instalace.](./media/annotations/1-install.png)
+   ![Vyberte organizaci Azure DevOps a pak vyberte nainstalovat.](./media/annotations/1-install.png)
    
-Stačí nainstalovat rozšíření jednou pro vaši organizaci Azure DevOps. Teď můžete nakonfigurovat poznámek pro libovolný projekt ve vaší organizaci.
+Pro vaši organizaci Azure DevOps stačí rozšíření nainstalovat jenom jednou. Nyní můžete nakonfigurovat poznámky k verzi pro libovolný projekt ve vaší organizaci.
 
-### <a name="configure-release-annotations"></a>Konfigurace poznámek
+### <a name="configure-release-annotations"></a>Konfigurovat poznámky k verzi
 
-Vytvořte samostatný klíč rozhraní API pro každou z vaší šablony vydané verze kanály Azure.
+Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pipelines.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaše aplikace. Nebo pokud ho nemáte, [vytvořit nový prostředek Application Insights](../../azure-monitor/app/app-insights-overview.md).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete prostředek Application Insights, který monitoruje vaši aplikaci. Pokud ho ještě nemáte, [vytvořte nový prostředek Application Insights](../../azure-monitor/app/app-insights-overview.md).
    
-1. Otevřít **přístup přes rozhraní API** karty a kopii **ID aplikace Insights**.
+1. Otevřete kartu **přístup přes rozhraní API** a zkopírujte **ID Application Insights**.
    
-   ![V části přístup přes rozhraní API zkopírujte ID aplikace.](./media/annotations/2-app-id.png)
+   ![V části přístup k rozhraní API zkopírujte ID aplikace.](./media/annotations/2-app-id.png)
 
-1. V samostatném okně prohlížeče otevřete nebo vytvořte šablony vydané verze, která spravuje vaše kanály Azure nasazení.
+1. V samostatném okně prohlížeče otevřete nebo vytvořte šablonu vydané verze, která spravuje nasazení Azure Pipelines.
    
-1. Vyberte **přidat úkol**a pak vyberte **poznámky Application Insights verze** úloh v nabídce.
+1. Vyberte **Přidat úlohu**a potom z nabídky vyberte úlohu **poznámky k verzi Application Insights** .
    
-   ![Vyberte Přidat úkol a vyberte Application Insights verze poznámky.](./media/annotations/3-add-task.png)
+   ![Vyberte přidat úlohu a vyberte Application Insights poznámky k verzi.](./media/annotations/3-add-task.png)
    
-1. V části **ID aplikace**, vložte ID aplikace Insights jste zkopírovali ze **přístup přes rozhraní API** kartu.
+1. V části **ID aplikace**vložte Application Insights ID, které jste zkopírovali z karty **přístup k rozhraní API** .
    
-   ![Vložte ID aplikace Insights](./media/annotations/4-paste-app-id.png)
+   ![Vložit ID Application Insights](./media/annotations/4-paste-app-id.png)
    
-1. Zpět v Application Insights **přístup přes rozhraní API** okně **vytvořit klíč rozhraní API**. 
+1. Zpátky v okně Application Insights **přístup k rozhraní API** vyberte **vytvořit klíč rozhraní API**. 
    
-   ![Na kartě přístup přes rozhraní API vyberte vytvořit klíč rozhraní API.](./media/annotations/5-create-api-key.png)
+   ![Na kartě přístup k rozhraní API vyberte vytvořit klíč rozhraní API.](./media/annotations/5-create-api-key.png)
    
-1. V **vytvořit klíč rozhraní API** okno, zadejte popis, vyberte **psaní poznámek**a pak vyberte **vygenerovat klíč**. Zkopírujte nový klíč.
+1. V okně **vytvořit klíč rozhraní API** zadejte popis, vyberte **zápis poznámek**a pak vyberte **vygenerovat klíč**. Zkopírujte nový klíč.
    
-   ![V okně klíče vytvořit rozhraní API zadejte popis, vyberte zápis poznámky a vyberte vygenerovat klíč.](./media/annotations/6-create-api-key.png)
+   ![V okně vytvořit klíč rozhraní API zadejte popis, vyberte zápis poznámek a pak vyberte vygenerovat klíč.](./media/annotations/6-create-api-key.png)
    
-1. V okně verze šablony na **proměnné** kartu, vyberte možnost **přidat** vytvořit definici proměnné pro nový klíč rozhraní API.
+1. V okně Šablona verze vyberte na kartě **proměnné** možnost **Přidat** a vytvořte definici proměnné pro nový klíč rozhraní API.
 
-1. V části **název**, zadejte `ApiKey`a v části **hodnotu**, vložte klíč rozhraní API, který jste zkopírovali ze **přístup přes rozhraní API** kartu.
+1. Do pole **název**zadejte `ApiKey` a pod položkou **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup k rozhraní API** .
    
-   ![Na kartě proměnné Azure DevOps vyberte možnost přidat, název proměnné ApiKey a vložte klíč rozhraní API podle hodnoty.](./media/annotations/7-paste-api-key.png)
+   ![Na kartě proměnné DevOps Azure vyberte Přidat, pojmenujte proměnnou ApiKey a vložte klíč rozhraní API pod hodnotu.](./media/annotations/7-paste-api-key.png)
    
-1. Vyberte **Uložit** v okně hlavní verze šablony tím uložíte šablonu.
+1. Vyberte **Uložit** v hlavním okně šablony vydané verze a uložte šablonu.
 
 ## <a name="view-annotations"></a>Zobrazit poznámky
-Teď se pokaždé, když použijete šablonu vydané verze pro nasazení nové verze, anotaci odesílaných do Application Insights. Poznámky se zobrazí v grafech v **Průzkumníka metrik**.
+Když teď k nasazení nové verze použijete šablonu verze, pošle se Application Insights Poznámka. Poznámky se zobrazí v grafech v **Průzkumník metrik**.
 
-Vyberte všechny značky poznámek (světle šedá šipka) zobrazíte podrobnosti o verzi, včetně žadatele, zdrojová větev ovládacího prvku, kanál pro vydávání verzí a prostředí.
+Vyberte libovolnou značku poznámky (slabě šedá šipka) a otevřete tak podrobnosti o vydané verzi, včetně žadatele, větve správy zdrojového kódu, kanálu vydání a prostředí.
 
-![Vyberte značku poznámek vydání.](./media/annotations/8-release.png)
+![Vyberte značku poznámky k verzi.](./media/annotations/8-release.png)
 
-## <a name="create-custom-annotations-from-powershell"></a>Vytvoření vlastní poznámky z prostředí PowerShell
-Můžete použít [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) Powershellový skript z Githubu k vytváření poznámek ze nějaký proces, který rádi používáte, bez použití Azure DevOps. 
+## <a name="create-custom-annotations-from-powershell"></a>Vytváření vlastních poznámek z PowerShellu
+Pomocí skriptu prostředí PowerShell pro [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) z GitHubu můžete vytvářet poznámky z libovolného procesu, který chcete, bez použití Azure DevOps. 
 
-1. Vytvořit místní kopii [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Vytvořte místní kopii [CreateReleaseAnnotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
-1. Postupujte podle kroků v předchozím postupu k získání ID aplikace Insights a vytvořte klíč rozhraní API z Application Insights **přístup přes rozhraní API** kartu.
+1. Pomocí kroků v předchozím postupu můžete získat ID Application Insights a na kartě **přístup k rozhraní api** Application Insights vytvořit klíč rozhraní API.
    
-1. Volání Powershellový skript s následující kód a nahraďte zástupné symboly uváděn úhel s vašimi hodnotami. `-releaseProperties` Jsou volitelné. 
+1. Zavolejte skript prostředí PowerShell s následujícím kódem a nahraďte zástupné symboly v závorkách hodnotami. @No__t_0 jsou volitelné. 
    
    ```powershell
    
@@ -106,9 +101,9 @@ Můžete použít [CreateReleaseAnnotation](https://github.com/Microsoft/Applica
              "TriggerBy"="<Your name>" }
    ```
 
-Můžete upravit skript, například k vytváření poznámek za poslední.
+Skript můžete upravit například tak, aby bylo možné vytvořit poznámky za minulosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytváření pracovních položek](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [Automatizace pomocí Powershellu](../../azure-monitor/app/powershell.md)
+* [Automatizace pomocí PowerShellu](../../azure-monitor/app/powershell.md)
