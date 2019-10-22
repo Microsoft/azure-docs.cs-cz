@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ab2f9e8859fba0c906e181727aab923254e9b620
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266331"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692204"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
 V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
 
@@ -33,9 +33,9 @@ I když tento příklad používá funkci Azure k hostování webového rozhran�
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
-1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **Nový** > **projekt** .
+1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **nový**  > **projekt** .
 
-1. V dialogovém okně Nový projekt vyberte  >  **instalovat**, rozbalte **Visual C#**  **Cloud**, vyberte **Azure Functions**, zadejte název projektu a vyberte **OK**. Název aplikace funkcí musí být platný jako C# obor názvů, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
+1. V dialogovém okně Nový projekt vyberte možnost **nainstalováno**, rozbalte položku **Visual C#**   > **Cloud**, vyberte možnost **Azure Functions**, zadejte název projektu a vyberte možnost **OK**. Název aplikace funkcí musí být platný jako C# obor názvů, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
 
 1. Vyberte **Azure Functions v2 (.NET Core)** . Můžete to také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
 
@@ -311,11 +311,11 @@ namespace SampleSkills
 }
 ```
 
-Nezapomeňte zadat hodnotu vlastního *klíče* v `key` konstantě na základě klíče, který jste získali při registraci rozhraní API Bingu pro vyhledávání entit.
+Nezapomeňte zadat vlastní hodnotu *klíče* v `key` konstantu podle klíče, který jste získali při registraci rozhraní API Bingu pro vyhledávání entit.
 
-Tato ukázka zahrnuje veškerý potřebný kód v jednom souboru pro usnadnění práce. V [úložišti dovedností pro napájení](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)najdete poněkud více strukturované verze stejné dovednosti.
+Tato ukázka zahrnuje veškerý potřebný kód v jednom souboru pro usnadnění práce. V [úložišti dovedností](https://aka.ms/entity-search-power-skill)můžete najít poněkud více strukturované verze stejné dovednosti a také další příklady vlastních dovedností.
 
-Tento soubor samozřejmě můžete přejmenovat z `Function1.cs` na. `BingEntitySearch.cs`
+Je samozřejmě možné, že soubor přejmenujete z `Function1.cs` na `BingEntitySearch.cs`.
 
 ## <a name="test-the-function-from-visual-studio"></a>Testování funkce ze sady Visual Studio
 
@@ -375,7 +375,7 @@ Měla by se zobrazit odpověď podobná následujícímu příkladu:
 
 Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Vyberte **vytvořit nové** > **publikování**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Vyberte **vytvořit novou**  > **publikovat**.
 
 1. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet....**
 
@@ -383,7 +383,7 @@ Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
 1. Po dokončení nasazení si všimněte adresy URL webu. Je to adresa vaší aplikace Function App v Azure. 
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyhledejte `EntitySearch` funkci, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitele. Vyberte ikonu **kopírování** pro *výchozí* klíč hostitele.  
+1. V [Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyhledejte funkci `EntitySearch`, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitele. Vyberte ikonu **kopírování** pro *výchozí* klíč hostitele.  
 
 ## <a name="test-the-function-in-azure"></a>Testování funkce v Azure
 
@@ -478,6 +478,7 @@ Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit]
 ## <a name="next-steps"></a>Další kroky
 Blahopřejeme! Vytvořili jste první vlastní obohacení. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. 
 
++ [Dovednosti v Power: úložiště vlastních dovedností](https://aka.ms/powerskills)
 + [Přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání](cognitive-search-custom-skill-interface.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

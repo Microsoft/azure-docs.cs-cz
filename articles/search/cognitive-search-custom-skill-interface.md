@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265827"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692191"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Postup přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání
 
-[Kanál indexování vyhledávání rozpoznávání](cognitive-search-concept-intro.md) v Azure Search lze sestavovat z předdefinovaných [dovedností](cognitive-search-predefined-skills.md) a také [vlastními dovednostmi](cognitive-search-custom-skill-web-api.md) , které vytvoříte a přidáte do kanálu. V tomto článku se dozvíte, jak vytvořit vlastní dovednost, která zveřejňuje rozhraní, což umožňuje zahrnutí do kanálu vyhledávání rozpoznávání. 
+[Kanál indexování vyhledávání rozpoznávání](cognitive-search-concept-intro.md) v Azure Search lze sestavovat z [předdefinovaných dovedností](cognitive-search-predefined-skills.md) a také [vlastními dovednostmi](cognitive-search-custom-skill-web-api.md) , které vytvoříte a přidáte do kanálu. V tomto článku se dozvíte, jak vytvořit vlastní dovednost, která zveřejňuje rozhraní, což umožňuje zahrnutí do kanálu vyhledávání rozpoznávání. 
 
-Vytváření vlastních dovedností vám dává možnost vkládat transformace, které jsou pro váš obsah jedinečné. Vlastní dovednosti se spouští nezávisle, přičemž se aplikuje libovolný krok obohacení, který požadujete. Můžete například definovat vlastní entity specifické pro pole, vytvořit vlastní modely klasifikace pro odlišení obchodních a finančních smluv a dokumentů nebo přidat dovednost rozpoznávání řeči, abyste dosáhli hlubšího přístupu do zvukových souborů pro relevantní obsah. Podrobný příklad naleznete v tématu [příklad: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md)vnímání.
+Vytváření vlastních dovedností vám dává možnost vkládat transformace, které jsou pro váš obsah jedinečné. Vlastní dovednosti se spouští nezávisle, přičemž se aplikuje libovolný krok obohacení, který požadujete. Můžete například definovat vlastní entity specifické pro pole, vytvořit vlastní modely klasifikace pro odlišení obchodních a finančních smluv a dokumentů nebo přidat dovednost rozpoznávání řeči, abyste dosáhli hlubšího přístupu do zvukových souborů pro relevantní obsah. Podrobný příklad najdete v tématu [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md).
 
  Libovolná vlastní funkce, kterou požadujete, je jednoduché a jasné rozhraní pro připojení vlastní dovednosti ke zbytku kanálu rozšíření. Jediným požadavkem pro zařazení do [dovednosti](cognitive-search-defining-skillset.md) je schopnost přijímat vstupy a generovat výstupy způsobem, který je spotřební v dovednosti jako celek. Tento článek je zaměřený na vstupní a výstupní formáty, které kanál pro obohacení vyžaduje.
 
@@ -36,7 +36,7 @@ Vlastní koncové body dovedností WebAPI ve výchozím časový limit, pokud ne
 
 V současné době je jediným mechanismem pro interakci s vlastní dovedností prostřednictvím rozhraní Web API. Potřebné webové rozhraní API musí splňovat požadavky popsané v této části.
 
-### <a name="1--web-api-input-format"></a>1.  Vstupní formát webového rozhraní API
+### <a name="1--web-api-input-format"></a>1. vstupní formát webového rozhraní API
 
 Webové rozhraní API musí přijmout pole záznamů, které se mají zpracovat. Každý záznam musí obsahovat "kontejner objektů a dat", který je vstupem poskytovaným pro vaše webové rozhraní API. 
 
@@ -81,7 +81,7 @@ Chcete-li být konkrétnější, vaše webové rozhraní API by mělo očekávat
 ```
 Ve skutečnosti může být služba volána se stovkami nebo tisíci záznamů místo pouze ze tří zobrazených.
 
-### <a name="2-web-api-output-format"></a>2. Výstupní formát webového rozhraní API
+### <a name="2-web-api-output-format"></a>2. výstupní formát webového rozhraní API
 
 Formát výstupu je sada záznamů obsahující *recordId*a kontejner objektů a dat. 
 
@@ -154,6 +154,7 @@ Když vytvoříte obohacení webového rozhraní API, můžete v rámci žádost
 
 ## <a name="next-steps"></a>Další kroky
 
++ [Dovednosti v Power: úložiště vlastních dovedností](https://aka.ms/powerskills)
 + [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

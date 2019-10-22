@@ -10,10 +10,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69649896"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
@@ -27,7 +27,7 @@ Implementace omezujících navigačních funkcí se liší napříč technologie
 
 -   V dotazech, které vaše aplikace sestaví, musí dotaz odeslat *parametry dotazu omezující* vlastnosti, aby se získaly dostupné hodnoty filtru omezující vlastnosti pro tuto sadu výsledků dokumentů.
 
--   Aby bylo možné výslednou sadu dokumentů skutečně oříznout, aplikace musí také použít `$filter` výraz.
+-   Aby bylo možné výslednou sadu dokumentů skutečně oříznout, aplikace musí také použít výraz `$filter`.
 
 Při vývoji aplikací psaní kódu, který vytváří dotazy, představuje hromadnou práci. Mnohé z chování aplikace, které byste očekávali od vymezené navigace, poskytuje služba, včetně integrované podpory pro definování rozsahů a získání počtu výsledků omezujících vlastností. Služba také zahrnuje výchozí hodnoty rozumné, které vám pomůžou se vyhnout navigačním strukturám nepraktický. 
 
@@ -38,7 +38,7 @@ Tento článek používá jako příklad portál pro hledání úloh. Příklad 
 
 -   Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začít
 Pokud začínáte s vývojem pro hledání, nejlepším způsobem, jak si představit možnost navigace, je, že se zobrazí možnosti samoobslužného vyhledávání. Je to typ možností vyhledávání v podrobnostech na základě předdefinovaných filtrů, které se používají pro rychlé zúžení výsledků hledání prostřednictvím akcí typu Point-to-Click. 
 
 ### <a name="interaction-model"></a>Model interakce
@@ -47,10 +47,10 @@ Vyhledávací prostředí pro navýšení navigace je iterativní, takže začne
 
 Výchozím bodem je stránka aplikace, která poskytuje omezující navigaci, obvykle umístěnou na obvodu. Naomezující navigace je často stromovou strukturou se zaškrtávacími políčky pro každou hodnotu nebo kliknutím na text. 
 
-1. Dotaz odeslaný do Azure Search určuje omezující navigační strukturu prostřednictvím jednoho nebo více parametrů dotazu omezující vlastnosti. Dotaz může například zahrnovat `facet=Rating` `:values` možnost nebo `:sort` k dalšímu upřesnění prezentace.
+1. Dotaz odeslaný do Azure Search určuje omezující navigační strukturu prostřednictvím jednoho nebo více parametrů dotazu omezující vlastnosti. Dotaz může například zahrnovat `facet=Rating`, například s možností `:values` nebo `:sort` k dalšímu upřesnění prezentace.
 2. Prezentační vrstva vykreslí stránku hledání, která poskytuje omezující navigaci, pomocí omezujících vlastností zadaných v žádosti.
 3. Vzhledem k omezující navigační struktuře, která obsahuje hodnocení, klikněte na 4 a určete, že se mají zobrazit jenom produkty se hodnocením 4 nebo vyšším. 
-4. V reakci aplikace pošle dotaz, který obsahuje`$filter=Rating ge 4` 
+4. V reakci aplikace pošle dotaz, který obsahuje `$filter=Rating ge 4` 
 5. Prezentační vrstva aktualizuje stránku a zobrazí omezenou sadu výsledků, která obsahuje pouze ty položky, které odpovídají novým kritériím (v tomto případě produkty ohodnocené 4 a v tomto případě).
 
 Omezující vlastnost je parametr dotazu, ale Nepleťe se s vstupem dotazu. Nikdy se nepoužívá jako kritéria výběru v dotazu. Místo toho si popřemýšlejte parametry dotazu omezující vlastnosti jako vstupy do navigační struktury, která se vrátí v odpovědi. Pro každý parametr dotazu omezující podmínky, který zadáte, Azure Search vyhodnotí, kolik dokumentů je v částečných výsledcích pro každou hodnotu omezující vlastnosti.
@@ -59,7 +59,7 @@ Všimněte si `$filter` v kroku 4. Filtr je důležitým aspektem omezující na
 
 ### <a name="app-design-pattern"></a>Vzor návrhu aplikace
 
-V kódu aplikace je vzorem použití parametrů dotazu na omezující vlastnost k vrácení omezující navigační struktury spolu s výsledky omezující vlastnosti a výrazem $filter.  Výraz filtru zpracovává událost Click u hodnoty omezující vlastnosti. `$filter` Výraz můžete představit jako kód za skutečným oříznutím výsledků hledání vrácených do prezentační vrstvy. Vzhledem k omezující vlastnosti barev je po kliknutí na červenou barvu implementováno pomocí `$filter` výrazu, který vybere pouze ty položky, které mají červenou barvu. 
+V kódu aplikace je vzorem použití parametrů dotazu na omezující vlastnost k vrácení omezující navigační struktury spolu s výsledky omezující vlastnosti a výrazem $filter.  Výraz filtru zpracovává událost Click u hodnoty omezující vlastnosti. Výraz `$filter` můžete představit jako kód za skutečným oříznutím výsledků hledání vrácených do prezentační vrstvy. V případě omezující vlastnosti barev je po kliknutí na červenou barvu implementována prostřednictvím výrazu `$filter`, který vybere pouze ty položky, které mají červenou barvu. 
 
 ### <a name="query-basics"></a>Základy dotazů
 
@@ -67,11 +67,11 @@ V Azure Search je požadavek zadán prostřednictvím jednoho nebo více paramet
 
 Přesnost, která se považuje za schopnost vyfiltrovat nepodstatné přístupy, se dosahuje prostřednictvím jednoho nebo obou těchto výrazů:
 
--   **search=**  
-    Hodnota tohoto parametru představuje hledaný výraz. Může se jednat o jednotlivý text nebo složitý vyhledávací výraz, který obsahuje více podmínek a operátorů. Na serveru se vyhledávací výraz používá pro fulltextové vyhledávání, dotazování na hledaná pole v indexu pro vyhovující výrazy a vrácení výsledků v pořadí řazení. Pokud nastavíte `search` hodnotu null, provádění dotazu bude přes celý index (tj `search=*`.). V takovém případě jsou jiné prvky dotazu, jako je `$filter` například nebo profil vyhodnocování, primární faktory, které mají vliv na to, které dokumenty jsou vraceny `($filter`) a `$orderby`v jakém pořadí (`scoringProfile` nebo).
+-   **Hledat =**  
+    Hodnota tohoto parametru představuje hledaný výraz. Může se jednat o jednotlivý text nebo složitý vyhledávací výraz, který obsahuje více podmínek a operátorů. Na serveru se vyhledávací výraz používá pro fulltextové vyhledávání, dotazování na hledaná pole v indexu pro vyhovující výrazy a vrácení výsledků v pořadí řazení. Nastavíte-li `search` na hodnotu null, provádění dotazu bude po celém indexu (tj. `search=*`). V tomto případě jsou další prvky dotazu, jako je `$filter` nebo profil vyhodnocování, primární faktory, které mají vliv na to, které dokumenty se vrátí `($filter`) a v jakém pořadí (`scoringProfile` nebo `$orderby`).
 
 -   **$filter =**  
-    Filtr je účinný mechanismus pro omezení velikosti výsledků hledání na základě hodnot konkrétních atributů dokumentu. Je `$filter` vyhodnocen jako první, následovaný logikou pro vytváření vlastností, která generuje dostupné hodnoty a odpovídající počty pro každou hodnotu.
+    Filtr je účinný mechanismus pro omezení velikosti výsledků hledání na základě hodnot konkrétních atributů dokumentu. Nejprve se vyhodnotí `$filter`, následované logikou pro vytváření vlastností, která generuje dostupné hodnoty a odpovídající počty pro každou hodnotu.
 
 Složité výrazy hledání snižují výkon dotazu. Pokud je to možné, využijte dobře konstruované výrazy filtru ke zvýšení přesnosti a zlepšení výkonu dotazů.
 
@@ -91,13 +91,13 @@ V aplikacích, které zahrnují nahodnocenou navigaci, se ujistěte, že každá
 ## <a name="build-a-faceted-navigation-app"></a>Vytvoření omezující navigační aplikace
 V kódu aplikace, který sestaví požadavek hledání, implementujete omezující navigaci s Azure Search. Omezující navigace se spoléhá na prvky ve schématu, které jste definovali dříve.
 
-Předdefinovaný v indexu vyhledávání je atribut `Facetable [true|false]` indexu, který je nastaven u vybraných polí na povolení nebo zakázání jejich použití v omezující navigační struktuře. Bez `"Facetable" = true`použití pole nelze v navigaci omezující vlastnosti použít.
+Předdefinovaný v indexu vyhledávání je atribut `Facetable [true|false]` index, který je nastaven u vybraných polí na povolení nebo zakázání jejich použití v omezující navigační struktuře. Bez `"Facetable" = true` nemůže být pole použito v navigaci omezující vlastnosti.
 
 Prezentační vrstva v kódu poskytuje uživatelské prostředí. Měl by zobrazovat seznam částí naomezujících navigačních prvků, jako je popisek, hodnoty, zaškrtávací políčka a počet. Azure Search REST API je platforma nezávislá, takže použijte libovolný jazyk a platformu, kterou požadujete. Důležité je, abyste zahrnuli prvky uživatelského rozhraní, které podporují přírůstkovou aktualizaci s aktualizovaným stavem uživatelského rozhraní, když je vybraná každá další omezující vlastnost. 
 
-V době dotazu vytvoří kód aplikace požadavek, který obsahuje `facet=[string]`parametr požadavku, který poskytuje pole omezující vlastnosti. Dotaz může mít několik omezujících vlastností, například `&facet=color&facet=category&facet=rating`každý z nich oddělený znakem ampersand (&).
+V době dotazu vytvoří kód aplikace požadavek, který obsahuje `facet=[string]`, parametr žádosti, který poskytuje pole omezující vlastnosti. Dotaz může mít několik omezujících vlastností, například `&facet=color&facet=category&facet=rating`, každý z nich oddělený znakem ampersand (&).
 
-Kód aplikace musí také vytvořit `$filter` výraz pro zpracování událostí kliknutí v části s omezujícími možnostmi navigace. A `$filter` zkracuje výsledky hledání pomocí hodnoty omezující vlastnosti jako kritérií filtru.
+Kód aplikace musí také vytvořit výraz `$filter` pro zpracování událostí kliknutí v omezující navigaci. @No__t_0 redukuje výsledky hledání pomocí hodnoty omezující vlastnosti jako kritérií filtru.
 
 Azure Search vrátí výsledky hledání na základě jednoho nebo více podmínek, které zadáte, spolu s aktualizacemi omezující navigační struktury. V Azure Search je omezující navigace v rámci jedné úrovně konstrukce s hodnotami omezujícími vlastnostmi a počty výsledků pro každý z nich.
 
@@ -106,10 +106,10 @@ V následujících částech se podrobněji podíváme na to, jak sestavovat jed
 <a name="buildindex"></a>
 
 ## <a name="build-the-index"></a>Sestavení indexu
-Omezující vlastnost je povolena pro pole podle pole v indexu prostřednictvím tohoto indexového atributu: `"Facetable": true`.  
-Ve výchozím nastavení jsou `Facetable` všechny typy polí, které by mohly být použity v omezující navigaci. Takové typy polí zahrnují `Edm.String`, `Edm.DateTimeOffset`a všechny typy číselného pole (v podstatě všechny typy polí jsou plošky s výjimkou `Edm.GeographyPoint`, která se nedá použít v omezující navigaci). 
+Omezující vlastnost je povolena pro pole podle pole v indexu prostřednictvím tohoto atributu index: `"Facetable": true`.  
+Ve výchozím nastavení jsou `Facetable` všechny typy polí, které by mohly být použity v omezující navigaci. Mezi takové typy polí patří `Edm.String`, `Edm.DateTimeOffset` a všechny typy číselného pole (v podstatě všechny typy polí jsou plošky kromě `Edm.GeographyPoint`, které se nedají použít v omezující navigaci). 
 
-Při sestavování indexu je osvědčeným postupem pro navázání navigace explicitně zapnout omezující vlastnost pro pole, která by nikdy neměla být použita jako omezující vlastnost.  Konkrétně pole řetězců pro hodnoty singleton, jako je ID nebo název produktu, by měla být nastavena na `"Facetable": false` hodnotu, aby se zabránilo nechtěnému (a neúčinnému) použití v omezující navigaci. Vypnutí omezujících vlastností tam, kde je nepotřebujete, pomáhá udržet velikost indexu malou a obvykle zvyšuje výkon.
+Při sestavování indexu je osvědčeným postupem pro navázání navigace explicitně zapnout omezující vlastnost pro pole, která by nikdy neměla být použita jako omezující vlastnost.  Konkrétně pole řetězců pro hodnoty singleton, jako je ID nebo název produktu, by měla být nastavená na `"Facetable": false`, aby se předešlo jejich nechtěnému (a neúčinnému) použití v omezující navigaci. Vypnutí omezujících vlastností tam, kde je nepotřebujete, pomáhá udržet velikost indexu malou a obvykle zvyšuje výkon.
 
 Následuje část schématu pro ukázkovou ukázkovou aplikaci portálu úloh. Tyto atributy se oříznou, aby se snížila velikost:
 
@@ -139,10 +139,10 @@ Následuje část schématu pro ukázkovou ukázkovou aplikaci portálu úloh. T
 }
 ```
 
-Jak vidíte ve vzorovém schématu, `Facetable` je vypnutý u polí řetězců, která by se neměla používat jako omezující vlastnosti, jako jsou například hodnoty ID. Vypnutí omezujících vlastností tam, kde je nepotřebujete, pomáhá udržet velikost indexu malou a obvykle zvyšuje výkon.
+Jak vidíte ve vzorovém schématu, `Facetable` je vypnuté pro pole řetězců, která by se neměla používat jako omezující vlastnosti, jako jsou například hodnoty ID. Vypnutí omezujících vlastností tam, kde je nepotřebujete, pomáhá udržet velikost indexu malou a obvykle zvyšuje výkon.
 
 > [!TIP]
-> Jako osvědčený postup zahrňte úplnou sadu atributů indexu pro každé pole. Přestože `Facetable` je ve výchozím nastavení zapnuté pro téměř všechna pole, pro účel nastavení každého atributu vám může považovat dopad na rozhodování o schématu. 
+> Jako osvědčený postup zahrňte úplnou sadu atributů indexu pro každé pole. I když je ve výchozím nastavení pro téměř všechna pole funkce `Facetable` zapnutá, může vám každý atribut při rozhodování považovat za důsledky pro každé rozhodnutí o schématu. 
 
 <a name="checkdata"></a>
 
@@ -169,7 +169,7 @@ V případě vymezené navigace zobrazí stránka web nebo aplikace naomezujíc�
 
 V případě webových aplikací se AJAX obvykle používá v prezentační vrstvě, protože umožňuje aktualizovat přírůstkové změny. Můžete také použít ASP.NET MVC nebo jinou platformu pro vizualizaci, která se může připojit k Azure Search službě přes protokol HTTP. Ukázková aplikace, na kterou se odkazuje v celém tomto článku – **ukázka Azure Search úlohový portál** – se stane aplikací ASP.NET MVC.
 
-V ukázce je do stránky výsledků hledání integrována omezující navigace. Následující příklad pořízený ze `index.cshtml` souboru ukázkové aplikace zobrazuje statickou strukturu HTML pro zobrazení omezující navigace na stránce s výsledky hledání. Seznam omezujících vlastností se sestaví nebo znovu vytvoří dynamicky při odeslání hledaného termínu nebo zaškrtnutí nebo zrušení omezující vlastnosti.
+V ukázce je do stránky výsledků hledání integrována omezující navigace. Následující příklad pořízený z `index.cshtml` souboru ukázkové aplikace zobrazuje statickou strukturu HTML pro zobrazení omezující navigace na stránce s výsledky hledání. Seznam omezujících vlastností se sestaví nebo znovu vytvoří dynamicky při odeslání hledaného termínu nebo zaškrtnutí nebo zrušení omezující vlastnosti.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -196,7 +196,7 @@ V ukázce je do stránky výsledků hledání integrována omezující navigace.
 </div>
 ```
 
-Následující fragment kódu ze `index.cshtml` stránky dynamicky sestaví kód HTML pro zobrazení první omezující vlastnosti, obchodní titul. Podobné funkce dynamicky sestavují kód HTML pro ostatní omezující vlastnosti. Každá omezující vlastnost má popisek a počet, který zobrazuje počet nalezených položek pro daný výsledek omezující vlastnosti.
+Následující fragment kódu ze stránky `index.cshtml` dynamicky sestaví kód HTML pro zobrazení první omezující vlastnosti, obchodní titul. Podobné funkce dynamicky sestavují kód HTML pro ostatní omezující vlastnosti. Každá omezující vlastnost má popisek a počet, který zobrazuje počet nalezených položek pro daný výsledek omezující vlastnosti.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -210,7 +210,7 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> Při návrhu stránky výsledků hledání nezapomeňte přidat mechanismus pro mazání omezujících vlastností. Pokud přidáte zaškrtávací políčka, můžete snadno zjistit, jak filtry vymazat. Pro jiná rozložení budete možná potřebovat vzor navigace s popisem cesty nebo jiný tvůrčí přístup. Například na ukázkové aplikaci portálu pro vyhledávání úloh můžete kliknutím `[X]` na vybranou omezující vlastnost tuto omezující vlastnost vymazat.
+> Při návrhu stránky výsledků hledání nezapomeňte přidat mechanismus pro mazání omezujících vlastností. Pokud přidáte zaškrtávací políčka, můžete snadno zjistit, jak filtry vymazat. Pro jiná rozložení budete možná potřebovat vzor navigace s popisem cesty nebo jiný tvůrčí přístup. Například na ukázkové aplikaci portálu pro vyhledávání úloh můžete kliknout na `[X]` po vybrané omezující vlastnosti, aby se tato omezující vlastnost vymazala.
 
 <a name="buildquery"></a>
 
@@ -219,7 +219,7 @@ Kód, který napíšete pro vytváření dotazů, by měl určovat všechny čá
 
 Všimněte si, že jsou v této ukázkové aplikaci integrální charakteristiky. Vyhledávání na portálu úloh ukázka je navrženo kolem s omezujícími možnostmi navigace a filtry. Výrazným umístěním naomezujícího navigace na stránce je demonstrace důležitosti. 
 
-Příkladem je často dobrým místem, kde začít. Následující příklad, který je povedený ze `JobsSearch.cs` souboru, vytvoří požadavek, který vytvoří navigaci omezující vlastnosti na základě obchodního titulu, umístění, typu zaúčtování a minimálního platu. 
+Příkladem je často dobrým místem, kde začít. Následující příklad pořízený z `JobsSearch.cs` souboru vytvoří požadavek, který vytvoří navigaci omezující vlastnosti na základě obchodních titulů, umístění, typu zaúčtování a minimálního platu. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -230,11 +230,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem `count:<integer>`odděleným čárkami, který obsahuje, `sort:<>`, `interval:<integer>`a `values:<list>`. Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [hledání dokumentů (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Parametr dotazu omezující vlastnosti je nastaven na pole a v závislosti na datovém typu může být dále parametrizovaný seznamem odděleným čárkami, který obsahuje `count:<integer>`, `sort:<>`, `interval:<integer>` a `values:<list>`. Seznam hodnot se při nastavování rozsahů podporuje pro číselná data. Podrobnosti o využití najdete v tématu [hledání dokumentů (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
-Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?* . Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko Red (červená) a označíte, že by se měly zobrazit jenom červené produkty, zahrnuje `$filter=Color eq ‘Red’`další dotaz, který aplikace posílá.
+Společně s omezujícími vlastnostmi by požadavek, který aplikace formuluje, měl také vytvořit filtry pro zúžení sady kandidátských dokumentů na základě výběru hodnoty omezující vlastnosti. V případě úložiště kol napodobná navigace nabízí otázky *, jako jsou jaké barvy, výrobci a typy kol k dispozici?* . Dotazy na odpovědi *, jako je například přesná kola, jsou v tomto cenovém rozsahu červené, horská kola?* Když kliknete na tlačítko "červená" a označíte, že by se měly zobrazit jenom červené produkty, další dotaz, který aplikace odešle, zahrnuje `$filter=Color eq ‘Red’`.
 
-Následující fragment kódu z této `JobsSearch.cs` stránky přidá vybraný obchodní titul do filtru, pokud vyberete hodnotu z omezující vlastnosti obchodního titulu.
+Následující fragment kódu ze stránky `JobsSearch.cs` přidá vybraný obchodní titul do filtru, pokud vyberete hodnotu z omezující vlastnosti obchodního titulu.
 
 ```cs
 if (businessTitleFacet != "")
@@ -248,7 +248,7 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Tipy pro indexování
 **Vylepšit efektivitu indexu, pokud nepoužíváte vyhledávací pole**
 
-Pokud vaše aplikace používá omezující navigační informace (tj. bez vyhledávacího pole), můžete pole označit jako `searchable=false`, `facetable=true` a vytvořit tak kompaktnější index. Kromě toho indexování probíhá pouze u úplných hodnot omezujících vlastností bez dělení na slova nebo při indexování částí hodnoty více slov.
+Pokud vaše aplikace používá nastavované navigace výhradně (tj. bez vyhledávacího pole), můžete pole označit jako `searchable=false`, `facetable=true` vytvořit kompaktnější index. Kromě toho indexování probíhá pouze u úplných hodnot omezujících vlastností bez dělení na slova nebo při indexování částí hodnoty více slov.
 
 **Určete, která pole se dají použít jako omezující vlastnosti.**
 
@@ -260,12 +260,12 @@ Pouze pro číselné hodnoty a hodnoty DateTime můžete explicitně nastavit ho
 
 **Ve výchozím nastavení můžete mít jenom jednu úroveň s vlastností navigace.** 
 
-Jak je uvedeno, neexistuje žádná přímá podpora pro vnořování omezujících vlastností v hierarchii. Ve výchozím nastavení je v Azure Search omezující navigace v podporovaná jenom jedna úroveň filtrů. Existují však alternativní řešení. Hierarchickou strukturu omezující vlastnosti můžete kódovat v `Collection(Edm.String)` jednom vstupním bodě na hierarchii. Implementace tohoto alternativního řešení je nad rámec tohoto článku. 
+Jak je uvedeno, neexistuje žádná přímá podpora pro vnořování omezujících vlastností v hierarchii. Ve výchozím nastavení je v Azure Search omezující navigace v podporovaná jenom jedna úroveň filtrů. Existují však alternativní řešení. Hierarchickou strukturu omezující vlastnosti můžete kódovat v `Collection(Edm.String)` s jedním vstupním bodem na hierarchii. Implementace tohoto alternativního řešení je nad rámec tohoto článku. 
 
 ### <a name="querying-tips"></a>Tipy pro dotazování
 **Ověřit pole**
 
-Pokud vytvoříte seznam omezujících vlastností dynamicky založených na nedůvěryhodném uživatelském vstupu, ověřte, zda jsou názvy omezujících polí platné. Případně můžete při sestavování adres URL `Uri.EscapeDataString()` v rozhraní .NET nebo při použití ekvivalentu ve vaší platformě zvolit, aby se názvy vyhnuly.
+Pokud vytvoříte seznam omezujících vlastností dynamicky založených na nedůvěryhodném uživatelském vstupu, ověřte, zda jsou názvy omezujících polí platné. Případně můžete při sestavování adres URL pomocí `Uri.EscapeDataString()` v rozhraní .NET nebo ekvivalentu na vaší platformě zvolit, aby se názvy vyhnuly.
 
 ### <a name="filtering-tips"></a>Tipy pro filtrování
 **Zvýšit přesnost vyhledávání pomocí filtrů**
@@ -282,7 +282,7 @@ V podrobném procházení podrobností obvykle chcete zahrnout pouze dokumenty, 
 
 **Oříznout výsledky omezujících vlastností s dalšími filtry**
 
-Výsledky omezující vlastnosti jsou dokumenty nalezené ve výsledcích hledání, které odpovídají termínům omezující podmínky. V následujícím příkladu jsou ve výsledcích hledání pro *cloud computingu*254 položek *interní specifikace* jako typ obsahu. Položky nejsou nutně vzájemně exkluzivní. Pokud položka splňuje kritéria obou filtrů, počítá se v každé z nich. Tato duplicita je možná při vytváření omezujících `Collection(Edm.String)` podmínek pro pole, která se často používají k implementaci označování dokumentu.
+Výsledky omezující vlastnosti jsou dokumenty nalezené ve výsledcích hledání, které odpovídají termínům omezující podmínky. V následujícím příkladu jsou ve výsledcích hledání pro *cloud computingu*254 položek *interní specifikace* jako typ obsahu. Položky nejsou nutně vzájemně exkluzivní. Pokud položka splňuje kritéria obou filtrů, počítá se v každé z nich. Tato duplicita je možná při vytváření omezujících podmínek v `Collection(Edm.String)`ch polích, které se často používají k implementaci označování dokumentu.
 
         Search term: "cloud computing"
         Content type
@@ -297,18 +297,18 @@ Obecně platí, že pokud zjistíte, že výsledky omezující vlastnosti jsou k
 
 Pro každé naomezující pole v navigační větvi je výchozí limit 10 hodnot. Toto výchozí nastavení dává smysl pro navigační struktury, protože udržuje seznam hodnot pro spravovatelnou velikost. Výchozí hodnotu můžete přepsat přiřazením hodnoty k počtu.
 
-* `&facet=city,count:5`Určuje, že jako výsledek omezující vlastnosti se vrátí jenom prvních pět měst nalezených v horních seřazených výsledcích. Vezměte v úvahu vzorový dotaz s hledaným termínem "letiště" a 32 shody. Pokud dotaz určíte `&facet=city,count:5`, do výsledků omezujících vlastností se zahrnou jenom prvních pět jedinečných měst s největším dokumentem ve výsledcích hledání.
+* `&facet=city,count:5` určuje, že jako výsledek omezující vlastnosti se vrátí jenom prvních pět měst nalezených v horních seřazených výsledcích. Vezměte v úvahu vzorový dotaz s hledaným termínem "letiště" a 32 shody. Pokud dotaz určuje `&facet=city,count:5`, jsou do výsledků těchto vlastností zahrnuty pouze prvních pět jedinečných měst s největším dokumentem ve výsledcích hledání.
 
 Všimněte si rozdílu mezi výsledky omezujících vlastností a výsledky hledání. Výsledky hledání jsou všechny dokumenty, které odpovídají dotazu. Výsledky omezující vlastnosti jsou odpovídajícími hodnotami každé hodnoty omezující vlastnosti. V příkladu výsledky hledání zahrnují názvy měst, které nejsou v seznamu klasifikace omezujících vlastností (5 v našem příkladu). Výsledky, které jsou vyfiltrované prostřednictvím navýšení v rámci navýšení navigace, se budou zobrazovat při vymazání omezujících vlastností, nebo kromě měst. 
 
 > [!NOTE]
-> `count` Diskuze o tom, že existuje více než jeden typ, může být matoucí. Následující tabulka nabízí stručný souhrn toho, jak se pojem používá v rozhraní Azure Search API, vzorový kód a dokumentace. 
+> Diskuze o `count`, pokud existuje více než jeden typ, může být matoucí. Následující tabulka nabízí stručný souhrn toho, jak se pojem používá v rozhraní Azure Search API, vzorový kód a dokumentace. 
 
 * `@colorFacet.count`<br/>
   V kódu prezentace byste měli vidět parametr Count pro omezující vlastnost, která se používá k zobrazení počtu výsledků omezující vlastnosti. Ve výsledcích omezující vlastnosti Count označuje počet dokumentů, které odpovídají podmínky nebo rozsahu omezující vlastnosti.
 * `&facet=City,count:12`<br/>
   V dotazu na omezující vlastnost můžete nastavit počet na hodnotu.  Výchozí hodnota je 10, ale je možné ji nastavit na vyšší nebo nižší. Nastavení `count:12` získá prvních 12 shod v rámci výsledků omezujících vlastností podle počtu dokumentů.
-* "`@odata.count`"<br/>
+* `@odata.count`<br/>
   V odpovědi na dotaz tato hodnota označuje počet vyhovujících položek ve výsledcích hledání. V průměru je větší než součet všech výsledků omezujících vlastností z důvodu přítomnosti položek, které odpovídají hledanému termínu, ale nemají shodné hodnoty omezující vlastnosti.
 
 **Výsledky získání omezujících vlastností**
@@ -321,7 +321,7 @@ Za určitých okolností možná zjistíte, že počty omezujících vlastností
 
 Počty omezujících podmínek můžou být kvůli architektuře horizontálního dělení nepřesné. Každý index hledání má několik horizontálních oddílů a každá horizontálních oddílů oznamuje hlavní N omezující vlastnosti podle počtu dokumentů, který se pak sloučí do jednoho výsledku. Pokud některé horizontálních oddílů obsahují mnoho hodnot, zatímco jiné mají méně, může se stát, že některé hodnoty omezující vlastnosti ve výsledcích chybí nebo jsou ve výsledku zjištěny.
 
-I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v dnešní době, můžete ho obejít uměle vynásobením počtu:\<číslo > na velké číslo, abyste vynutili úplné generování sestav každého horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
+I když se toto chování může kdykoli změnit, pokud k tomuto chování dojde v dnešní době, můžete ho obejít uměle tím, že vyřadíte počet: \<number > na velké číslo, abyste vynutili úplné generování sestav každého horizontálních oddílů. Pokud hodnota Count: je větší nebo rovna počtu jedinečných hodnot v poli, jsou zaručeny přesné výsledky. Pokud jsou ale počty dokumentů vysoké, dochází ke snížení výkonu, takže tuto možnost používejte uvážlivě.
 
 ### <a name="user-interface-tips"></a>Tipy pro uživatelské rozhraní
 **Přidat popisky pro každé pole v navigaci omezujícími vlastnostmi**
@@ -335,11 +335,11 @@ Omezující vlastnosti přes rozsahy hodnot jsou běžným požadavkem na aplika
 
 Azure Search zjednodušuje vytváření rozsahu zadáním dvou přístupů k výpočtu rozsahu. U obou přístupů Azure Search vytvoří odpovídající rozsahy pro dané vstupy. Pokud například zadáte hodnoty rozsahu 10 | 20 | 30, automaticky se vytvoří rozsahy 0-10, 10-20, 20-30. Aplikace může volitelně odebrat všechny intervaly, které jsou prázdné. 
 
-**Přístup 1: Použít parametr intervalu**  
-Chcete-li nastavit cenové charakteristiky v $10 přírůstcích, zadejte:`&facet=price,interval:10`
+**Přístup 1: použití parametru intervalu**  
+Chcete-li nastavit cenové charakteristiky v $10 přírůstcích, zadejte: `&facet=price,interval:10`
 
-**Přístup 2: Použití seznamu hodnot**  
-Pro číselná data můžete použít seznam hodnot.  Vezměte v úvahu rozsah omezujících `listPrice` vlastností pro pole vykreslený takto:
+**Přístup 2: použití seznamu hodnot**  
+Pro číselná data můžete použít seznam hodnot.  Zvažte rozsah omezujících podmínek pro `listPrice` pole vykreslený takto:
 
   ![Seznam ukázkových hodnot](media/search-faceted-navigation/Facet-5-Prices.PNG "Seznam ukázkových hodnot")
 
@@ -350,7 +350,7 @@ Chcete-li určit rozsah omezujících vlastností, jako je například na předc
 Každý rozsah je sestaven jako výchozí bod hodnotou 0, což je hodnota ze seznamu jako koncový bod a pak se ořízne předchozí rozsah, aby bylo možné vytvořit diskrétní intervaly. Azure Search provádí tyto akce jako součást omezující navigace. Nemusíte psát kód pro strukturování každého intervalu.
 
 ### <a name="build-a-filter-for-a-range"></a>Vytvoření filtru pro rozsah
-Chcete-li filtrovat dokumenty na základě zvoleného rozsahu, můžete použít `"ge"` operátory filtru and `"lt"` ve výrazu se dvěma částmi, který definuje koncové body rozsahu. Například pokud zvolíte rozsah 10-25 pro `listPrice` pole, filtr `$filter=listPrice ge 10 and listPrice lt 25`by byl. Ve vzorovém kódu výraz filtru používá parametry **priceFrom** a **priceTo** pro nastavení koncových bodů. 
+Chcete-li filtrovat dokumenty na základě zvoleného rozsahu, můžete použít operátory filtru `"ge"` a `"lt"` ve výrazu se dvěma částmi, který definuje koncové body rozsahu. Pokud například vyberete rozsah 10-25 pro pole `listPrice`, filtr bude `$filter=listPrice ge 10 and listPrice lt 25`. Ve vzorovém kódu výraz filtru používá parametry **priceFrom** a **priceTo** pro nastavení koncových bodů. 
 
   ![Dotaz na rozsah hodnot](media/search-faceted-navigation/Facet-6-buildfilter.PNG "Dotaz na rozsah hodnot")
 
@@ -368,7 +368,7 @@ Příklady filtrů můžete najít v [syntaxi výrazu OData (Azure Search)](quer
 
 <a name="tryitout"></a>
 
-## <a name="try-the-demo"></a>Vyzkoušet ukázkovou verzi
+## <a name="try-the-demo"></a>Vyzkoušejte si ukázku
 Ukázka na portálu úloh Azure Search obsahuje příklady, na které se odkazuje v tomto článku.
 
 -   Přečtěte si a otestujte pracovní ukázku online na stránce [Azure Search ukázka pracovního portálu](https://azjobsdemo.azurewebsites.net/).
@@ -377,7 +377,7 @@ Ukázka na portálu úloh Azure Search obsahuje příklady, na které se odkazuj
 
 Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření dotazů. Tato aplikace se k identifikátoru URI připojí, když je vyberete.
 
-1. Pokud chcete používat funkce mapování ukázkové aplikace, Získejte klíč mapy Bing z centra pro vývojáře pro [mapy Bing](https://www.bingmapsportal.com/). Vložte ho přes existující klíč na `index.cshtml` stránku. `BingApiKey` Nastavení`Web.config` v souboru se nepoužívá. 
+1. Pokud chcete používat funkce mapování ukázkové aplikace, Získejte klíč mapy Bing z centra pro vývojáře pro [mapy Bing](https://www.bingmapsportal.com/). Vložte ho přes existující klíč na stránku `index.cshtml`. Nastavení `BingApiKey` v souboru `Web.config` se nepoužívá. 
 
 2. Spusťte aplikaci. Pořídit volitelnou prohlídku nebo zrušit dialog.
    
@@ -391,15 +391,15 @@ Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření 
    
    ![Výsledky hledání po výběru omezujících vlastností](media/search-faceted-navigation/faceted-search-after-facets.png "Výsledky hledání po výběru omezujících vlastností")
 
-5. Pokud chcete vymazat omezující dotaz, abyste mohli vyzkoušet jiné chování dotazů, klikněte `[X]` po vybraných omezujících aspektech na Vymazat omezující vlastnosti.
+5. Pokud chcete vymazat omezující dotaz, abyste mohli vyzkoušet jiné chování dotazů, klikněte na `[X]` za vybranými omezujícími vlastnostmi, aby se vymazaly omezující vlastnosti.
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 Sledujte [Azure Search podrobně hloubkovou](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). V 45:25 je k dispozici ukázka implementace omezujících vlastností.
 
 Další informace o principech návrhu pro návrhovou navigaci vám doporučujeme tyto odkazy:
 
-* [Vzory návrhu: Naomezující navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
+* [Vzory návrhu: omezující navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Obavy z front-endu při implementaci hledání podle vlastností – část 1](https://articles.uie.com/faceted_search2/)
 

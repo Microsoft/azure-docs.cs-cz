@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1189689566da84df6d6b8845bf7c81bd8aa5f1ab
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072229"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Šablony stránek v Azure API Management
@@ -100,9 +100,9 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [basic-signin](api-management-page-controls.md#basic-signin)  
+-   [základní – přihlášení](api-management-page-controls.md#basic-signin)  
   
--   [Zprostředkovatelé](api-management-page-controls.md#providers)  
+-   [dodavateli](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>Datový model  
  [Přihlašovací entita uživatele](api-management-template-data-model-reference.md#UseSignIn)  
@@ -186,7 +186,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ##  <a name="PageNotFound"></a>Stránka nenalezena  
  Šablona **nenalezené stránky** vám umožní přizpůsobit stránku nenalezené stránky na portálu pro vývojáře.  
   
- ![Stránka] nenalezena (./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře stránky APIM se nenašly") .  
+ ![Stránka nenalezena](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Šablony portálu pro vývojáře stránky APIM se nenašly.")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -227,11 +227,11 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|referenceCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|errorCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|emailBody|řetězec|Tělo e-mailu vygenerovalo, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
-|requestedUrl|řetězec|Adresa URL požadovaná při nalezení stránky|  
-|referrerUrl|řetězec|Adresa URL odkazující na požadovanou adresu URL|  
+|referenceCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|ErrorCode|string|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|emailBody|string|Tělo e-mailu vygenerovalo, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
+|requestedUrl|string|Adresa URL požadovaná při nalezení stránky|  
+|referrerUrl|string|Adresa URL odkazující na požadovanou adresu URL|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

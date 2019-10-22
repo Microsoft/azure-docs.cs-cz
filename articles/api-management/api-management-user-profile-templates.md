@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70073311"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů v Azure API Management
@@ -105,17 +105,17 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
-|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
-|`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
-|`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
-|`subscriptions`|Kolekce entit [](api-management-template-data-model-reference.md#Subscription) předplatného.|Odběry pro aktuálního uživatele.|  
+|`firstName`|string|Křestní jméno aktuálního uživatele|  
+|`lastName`|string|Poslední jméno aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
-|`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -184,7 +184,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ##  <a name="Subscriptions"></a>Odběru  
- Šablona předplatných vám umožňuje přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
+ Šablona **předplatných** vám umožňuje přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
   
  ![Stránka předplatného uživatele](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Stránka předplatného uživatele APIM")  
   
@@ -326,17 +326,17 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
-|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
-|`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
-|`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
-|`subscriptions`|Kolekce entit [](api-management-template-data-model-reference.md#Subscription) předplatného.|Odběry pro aktuálního uživatele.|  
+|`firstName`|string|Křestní jméno aktuálního uživatele|  
+|`lastName`|string|Poslední jméno aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
-|`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -480,7 +480,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ### <a name="controls"></a>Ovládací prvky  
  Tato šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
--   [app-actions](api-management-page-controls.md#app-actions)  
+-   [aplikace – akce](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Datový model  
   
@@ -489,17 +489,17 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`firstName`|řetězec|Křestní jméno aktuálního uživatele|  
-|`lastName`|řetězec|Poslední jméno aktuálního uživatele.|  
-|`companyName`|řetězec|Název společnosti aktuálního uživatele.|  
-|`addresserEmail`|řetězec|E-mailová adresa aktuálního uživatele|  
-|`developersUsageStatisticsLink`|řetězec|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
-|`subscriptions`|Kolekce entit [](api-management-template-data-model-reference.md#Subscription) předplatného.|Odběry pro aktuálního uživatele.|  
+|`firstName`|string|Křestní jméno aktuálního uživatele|  
+|`lastName`|string|Poslední jméno aktuálního uživatele.|  
+|`companyName`|string|Název společnosti aktuálního uživatele.|  
+|`addresserEmail`|string|E-mailová adresa aktuálního uživatele|  
+|`developersUsageStatisticsLink`|string|Relativní adresa URL pro zobrazení analýz pro aktuálního uživatele|  
+|`subscriptions`|Kolekce entit [předplatného](api-management-template-data-model-reference.md#Subscription) .|Odběry pro aktuálního uživatele.|  
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
-|`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
-|`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`changePasswordUrl`|string|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
+|`changeNameOrEmailUrl`|string|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
+|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   

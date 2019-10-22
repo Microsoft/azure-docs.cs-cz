@@ -9,26 +9,26 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e88622ede6437086b86a33081d6ec9b9ea50ef65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d4e20b2924504b714dff9f5ba650f9b25c1c26c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377717"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690868"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Zobrazit posouzení aktualizací pro Azure Update Management
 
-V účtu Automation vyberte **Update Management** a zobrazte stav vašich počítačů.
+V Azure Automation účtu vyberte **Update Management** a zobrazte stav vašich počítačů.
 
-Toto zobrazení poskytuje informace o vašich počítačích, chybějících aktualizacích, nasazeních aktualizací a plánovaných nasazeních aktualizací. Ve **sloupci dodržování předpisů**si můžete prohlédnout čas, kdy byl počítač naposledy vyhodnocen. Ve sloupci **připravenosti agenta aktualizace** můžete zjistit, zda stav agenta aktualizace. Pokud dojde k nějakému problému, vyberte odkaz pro řešení potíží, které vám pomůžou zjistit, jaké kroky je potřeba k vyřešení tohoto problému.
+Toto zobrazení poskytuje informace o vašich počítačích, chybějících aktualizacích, nasazeních aktualizací a plánovaných nasazeních aktualizací. Ve sloupci **dodržování předpisů** si můžete prohlédnout čas, kdy byl počítač naposledy vyhodnocen. Ve sloupci **připravenosti agenta aktualizace** můžete zobrazit stav agenta aktualizace. Pokud se vyskytne problém, vyberte odkaz pro řešení potíží, které vám pomůžou problém vyřešit.
 
-Pokud chcete spustit prohledávání protokolů, které vrátí informace o počítači, aktualizaci nebo nasazení, vyberte položku v seznamu. Otevře se podokno **prohledávání protokolu** s dotazem na vybranou položku:
+Pokud chcete spustit prohledávání protokolů, které vrátí informace o počítači, aktualizaci nebo nasazení, vyberte odpovídající položku v seznamu. Otevře se podokno **prohledávání protokolu** s dotazem na vybranou položku:
 
 ![Update Management výchozí zobrazení](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Zobrazit chybějící aktualizace
 
-Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které na vašich počítačích chybí. Každá aktualizace je uvedena a je možné ji vybrat. Zobrazí se informace o počtu počítačů, které vyžadují aktualizaci, o operačním systému a o odkazech. V podokně **prohledávání protokolu** se zobrazí další podrobnosti o aktualizacích.
+Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které na vašich počítačích chybí. Každá aktualizace je uvedena a je možné ji vybrat. Zobrazí se všechny informace o počtu počítačů, které vyžadují aktualizaci, podrobnosti o operačním systému a odkazu. V podokně **prohledávání protokolu** se zobrazí také další podrobnosti o aktualizacích.
 
 ![Chybějící aktualizace](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -54,15 +54,15 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 |Classification  |Popis  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
-|Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo nejsou aktualizace zabezpečení.        |
+|Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |
 
-V případě systému Linux může Update Management rozlišovat mezi kritickými a bezpečnostními aktualizacemi v cloudu a současně zobrazovat data posouzení z důvodu obohacení dat v cloudu. Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemá CentOS k dispozici tyto informace v poli. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management bude možné provést opravy na základě klasifikací.
+Pro Linux může Update Management rozlišovat mezi důležitými aktualizacemi a aktualizacemi zabezpečení v cloudu a současně zobrazuje data posouzení. (Tato členitost je možná kvůli obohacení dat v cloudu.) Pro opravy Update Management spoléhá na data klasifikace, která jsou k dispozici v počítači. Na rozdíl od jiných distribucí nemají CentOS tyto informace dostupné ve verzích RTM produktu. Pokud máte počítače CentOS nakonfigurované tak, aby vracely data zabezpečení pro následující příkaz, Update Management se může opravit na základě klasifikací:
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-V tuto chvíli není podporovaná metoda, která umožňuje povolit nativní klasifikaci – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří si ji sami povolili, poskytne jenom osvědčená podpora.
+V současné době není podporována žádná podporovaná metoda pro povolení nativní klasifikace – dostupnost dat v CentOS. V tuto chvíli se zákazníkům, kteří tuto funkci povolili, poskytne jenom nejlepší podpora.
 
 ## <a name="next-steps"></a>Další kroky
 

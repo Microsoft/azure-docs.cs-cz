@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983507"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
@@ -30,7 +30,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 - **Aktivita** 
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu protokoly**auditu poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.[](concept-audit-logs.md)  - 
+    - **Protokoly auditu**  - [protokoly auditu](concept-audit-logs.md) poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
     - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
 
 - **Zabezpečení** 
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
@@ -60,7 +60,7 @@ Protokoly zřizování poskytují odpovědi na následující otázky:
 
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Zřizování protokolů")
+![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
 Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -93,14 +93,14 @@ Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznam
 Chcete-li zúžit uvedená data na úroveň, která vám vyhovuje, můžete data zřizování filtrovat pomocí následujících výchozích polí. Všimněte si, že hodnoty v filtrech se dynamicky naplní na základě vašeho tenanta. Pokud například ve vašem tenantovi nemáte žádné události vytvoření, nebude pro vytvoření k dispozici možnost filtrování.
 
 - Identita
-- Action
+- Akce
 - Zdrojový systém
 - Cílový systém
 - Stav
-- Date
+- Datum
 
 
-![Filtr](./media/concept-provisioning-logs/filter.png "Filtr")
+![Filtrovací](./media/concept-provisioning-logs/filter.png "Filtrovat")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -110,21 +110,21 @@ Filtr **cílový systém** vám umožní určit, kam se identita získává. Nap
 
 Filtr **stavu** umožňuje vybrat:
 
-- Vše
+- Všechno
 - Úspěch
-- Chyba
+- Selhání
 - Přeskočeno
 
 Filtr **akcí** umožňuje filtrovat:
 
-- Create 
-- Aktualizace
-- Odstranění
-- Zakázat
-- Ostatní
+- Vytváření 
+- Aktualizovat
+- Odstranit
+- Zákaz
+- Jiné
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty jsou:
+Možné hodnoty:
 
 - 1 měsíc
 - 7 dní
@@ -161,7 +161,7 @@ Podrobnosti jsou seskupené podle následujících kategorií:
 - Souhrn
 
 
-![Filtr](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
+![Filtrovací](./media/concept-provisioning-logs/provisioning-tabs.png "Listy")
 
 
 
@@ -176,7 +176,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Filtr](./media/concept-provisioning-logs/steps.png "Filtr")
+![Filtrovací](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -206,7 +206,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 - Když přistupujete k protokolům zřizování z kontextu aplikace, nefiltrují automaticky události na konkrétní aplikaci podle způsobu, jakým protokoly auditují.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Ověřit stav zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
 * [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)

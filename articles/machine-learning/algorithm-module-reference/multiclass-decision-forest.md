@@ -1,5 +1,5 @@
 ---
-title: 'Doménová struktura s více třídami: Odkaz na modul'
+title: 'Více tříd – rozhodovací doménová struktura: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul více tříd pro rozhodovací doménovou strukturu ve službě Azure Machine Learning k vytvoření modelu Machine Learning na základě algoritmu *doménové struktury rozhodnutí* .
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128620"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692767"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul více tříd pro rozhodovací doménovou strukturu
 
@@ -41,32 +41,32 @@ Klasifikátor rozhodovací doménové struktury v Azure Machine Learning se skl�
 
 
 
-1. Přidejte modul více **tříd pro rozhodovací doménovou strukturu** do experimentu v rozhraní. Tento modul najdete v části **Machine Learning**, **Inicializace modelu**a **klasifikace**.
+1. Přidejte modul pro více **tříd pro rozhodovací doménovou strukturu** do kanálu v rozhraní. Tento modul najdete v části **Machine Learning**, **Inicializace modelu**a **klasifikace**.
 
 2. Dvojitým kliknutím na modul otevřete podokno **vlastnosti** .
 
 3. V případě **metody převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z zavazadla nebo replikace.
 
-    + Zazavazadlí: Pro zaznamenání je také označováno jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní. Výstupy modelů jsou kombinovány hlasováním, což je forma agregace. Další informace najdete v tématu Wikipedii pro agregaci Bootstrap.
+    + Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní. Výstupy modelů jsou kombinovány *hlasováním*, což je forma agregace. Další informace najdete v tématu Wikipedii pro agregaci Bootstrap.
 
-    + **Replikovat**: V případě replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a vytvoří různé stromy.
+    + **Replikace: v**rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a vytvoří různé stromy.
 
    
 
 4. Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
 
-    + **Jeden parametr**: Tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a jako argumenty zadejte sadu hodnot.
+    + **Jeden parametr**: tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a jako argumenty zadejte sadu hodnot.
 
 
-5. **Počet rozhodovacích stromů**: Zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se může zvýšit.
+5. **Počet rozhodovacích stromů**: zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se může zvýšit.
 
     Tato hodnota také určuje počet stromů zobrazených ve výsledcích při vizualizaci vyučeného modelu. Chcete-li zobrazit nebo vytisknout jeden strom, můžete nastavit hodnotu na 1. to však znamená, že lze vytvořit pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
 
-6. **Maximální hloubka rozhodovacích stromů**: Zadejte číslo pro omezení maximální hloubky jakéhokoli rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
+6. **Maximální hloubka rozhodovacích stromů**: zadejte číslo pro omezení maximální hloubky jakéhokoli rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
 
-7. **Počet náhodných rozdělení na uzel**: Zadejte počet rozdělení, které se mají použít při vytváření jednotlivých uzlů stromu. *Rozdělení* znamená, že funkce v každé úrovni stromu (uzlu) jsou náhodně děleny.
+7. **Počet náhodných rozdělení na uzel**: zadejte počet rozdělení, který se použije při sestavování jednotlivých uzlů stromu. *Rozdělení* znamená, že funkce v každé úrovni stromu (uzlu) jsou náhodně děleny.
 
-8. **Minimální počet vzorků na uzel typu list**: Určuje minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu. Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel.
+8. **Minimální počet vzorků na uzel na list**: Určuje minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu. Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel.
 
     Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
 
@@ -76,7 +76,7 @@ Klasifikátor rozhodovací doménové struktury v Azure Machine Learning se skl�
 
     + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .
 
-11. Spusťte experiment.
+11. Spuštění kanálu
 
 ## <a name="results"></a>Výsledky
 
@@ -86,6 +86,6 @@ Po dokončení školení:
 + Chcete-li zobrazit pravidla pro každý uzel, klikněte na jednotlivé stromové struktury a přejděte k podrobnostem o rozdělení.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265188"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Práce s projekcemi v úložišti znalostí v Azure Search
@@ -29,9 +29,9 @@ Projekce můžou být tabulkové, s daty uloženými v řádcích a sloupcích v
 
 Znalostní databáze podporuje dva typy projekce:
 
-+ **Tabulky**: Pro data, která jsou nejlépe reprezentovaná jako řádky a sloupce, vám umožňují definovat schematized tvar nebo projekci v úložišti tabulek. 
++ **Tabulky**: u dat, která jsou nejlépe reprezentovaná jako řádky a sloupce, vám umožňují definovat schematized tvar nebo projekci v úložišti tabulek. 
 
-+ **Objekty**: Když budete potřebovat reprezentaci dat a rozšíření JSON, jsou objekty projekce uloženy jako objekty blob.
++ **Objekty**: Pokud potřebujete reprezentace JSON vašich dat a rozšíření, jsou projekce objektů uloženy jako objekty blob.
 
 Pokud chcete zobrazit projekce definované v kontextu, Projděte si téma [jak začít s úložištěm Knowledge Store](knowledge-store-howto.md).
 
@@ -64,18 +64,18 @@ Jeden dokument v indexu můžete promítnout do několika tabulek a zachovat vzt
 
 ### <a name="defining-a-table-projection"></a>Definování projekce tabulky
 
-Při definování projekce tabulky v rámci `knowledgeStore` prvku dovednosti začněte mapováním uzlu ve stromu rozšíření na zdroj tabulky. Obvykle je tento uzel výstupem **Shaper** dovednosti, kterou jste přidali do seznamu dovedností k vytvoření konkrétního tvaru, který potřebujete k Projectu v tabulkách. Uzel, který se rozhodnete pro projekt, lze rozdělit na více tabulek. Definice tabulek je seznam tabulek, které chcete projektovat. 
+Při definování projekce tabulky v prvku `knowledgeStore` dovednosti, začněte mapováním uzlu ve stromu rozšíření na zdroj tabulky. Obvykle je tento uzel výstupem **Shaper** dovednosti, kterou jste přidali do seznamu dovedností k vytvoření konkrétního tvaru, který potřebujete k Projectu v tabulkách. Uzel, který se rozhodnete pro projekt, lze rozdělit na více tabulek. Definice tabulek je seznam tabulek, které chcete projektovat. 
 
 #### <a name="projection-slicing"></a>Průřez projekce
 Při definování skupiny projekce tabulky lze jeden uzel ve stromu rozšíření rozřezat na více souvisejících tabulek. Přidání tabulky se zdrojovou cestou, která je podřízenou položkou existující projekce tabulky, způsobí, že bude podřízený uzel rozložen mimo nadřazený uzel a bude promítnut do nové tabulky, která je ještě v relaci. Díky tomu můžete v Shaper dovednosti definovat jeden uzel, který může být zdrojem pro všechny vaše projekce tabulek.
 
 Každá tabulka vyžaduje tři vlastnosti:
 
-+ Tabulky Název tabulky v Azure Storage.
++ tableName: název tabulky v Azure Storage.
 
-+ generatedKeyName: Název sloupce pro klíč, který jednoznačně identifikuje tento řádek
++ generatedKeyName: název sloupce pro klíč, který jednoznačně identifikuje tento řádek.
 
-+ Zdrojová Uzel ze stromu obohacení, ze kterého provádíte rozšíření, z. Většinou se jedná o výstup Shaper, ale může to být výstup kterékoli dovednosti.
++ Zdroj: uzel ze stromu obohacení, ze kterého spravujete vaše rozšíření. Většinou se jedná o výstup Shaper, ale může to být výstup kterékoli dovednosti.
 
 Tady je příklad projekce tabulek.
 
@@ -154,9 +154,9 @@ Projekce objektů jsou reprezentace JSON stromu obohacení, kterou lze naformát
 
 Generování projekce objektu vyžaduje několik atributů specifických pro objekt:
 
-+ storageContainer: Kontejner, do kterého budou objekty uloženy
-+ Zdrojová Cesta k uzlu stromu obohacení, který je kořenem projekce
-+ Zkrat Cesta, která představuje jedinečný klíč pro objekt, který má být uložen. Použije se k vytvoření názvu objektu BLOB v kontejneru.
++ storageContainer: kontejner, do kterého se budou ukládat objekty
++ Zdroj: cesta k uzlu stromu obohacení, který je kořenem projekce.
++ Key: cesta, která představuje jedinečný klíč pro objekt, který má být uložen. Použije se k vytvoření názvu objektu BLOB v kontejneru.
 
 ## <a name="projection-lifecycle"></a>Životní cyklus projekce
 

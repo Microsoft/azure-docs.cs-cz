@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
 ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68976505"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
@@ -28,7 +28,7 @@ Na konci tohoto kurzu budete umět streamovat tweety z Twitteru (které obsahuj�
 
 Následující obrázek ukazuje běh aplikace:
 
-![Azure Databricks se službou Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Azure Databricks se službou Event Hubs")
+![Azure Databricks s Event Hubs](./media/databricks-stream-from-eventhubs/databricks-eventhubs-tutorial.png "Azure Databricks s Event Hubs")
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -44,10 +44,10 @@ Tento kurz se zabývá následujícími úkony:
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!Note]
-> Tento kurz se nedá provést pomocí předplatného **Azure free zkušební verze**.
+> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
 > Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 - Obor názvů služby Azure Event Hubs.
@@ -59,7 +59,7 @@ Tyto požadavky můžete splnit dokončením kroků v článku [Vytvoření obor
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -67,11 +67,11 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
-    ![Databricks na webu Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
+    ![Datacihly na Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
 3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
-    ![Vytvoření pracovního prostoru služby Azure Databricks](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Vytvoření pracovního prostoru služby Azure Databricks")
+    ![Vytvoření pracovního prostoru Azure Databricks](./media/databricks-stream-from-eventhubs/create-databricks-workspace.png "Vytvoření pracovního prostoru Azure Databricks")
 
     Zadejte následující hodnoty:
 
@@ -87,7 +87,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 4. Vytvoření účtu trvá několik minut. Během vytváření účtu se na pravé straně portálu zobrazí dlaždice **Odesílání nasazení pro Azure Databricks**. Možná se budete muset posunout do pravé části řídicího panelu, aby se dlaždice zobrazila. V horní části obrazovky se také zobrazí indikátor průběhu. Průběh můžete sledovat v obou oblastech.
 
-    ![Dlaždice nasazení Databricks](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Dlaždice nasazení Databricks")
+    ![Dlaždice nasazení datacihly](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Dlaždice nasazení datacihly")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
@@ -95,17 +95,17 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
-    ![Databricks v Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Databricks v Azure")
+    ![Datacihly v Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Datacihly v Azure")
 
 3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
-    ![Vytvoření clusteru Databricks Spark v Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
+    ![Vytvoření clusteru datacihly Spark v Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
 
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
    * V tomto článku vytvořte cluster s modulem runtime **5,2** .
-   * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po \_\_ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+   * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
    Vyberte pracovní proces clusteru a velikost uzlu ovladače vhodné pro vaše technická kritéria a [rozpočet](https://azure.microsoft.com/en-us/pricing/details/databricks/).
 
@@ -146,7 +146,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Zadání souřadnic Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Zadání souřadnic Maven")
+     ![Zadat souřadnice Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Zadat souřadnice Maven")
 
      ![Zadat souřadnice Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Hledat souřadnice Maven")
 
@@ -167,13 +167,13 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 1. V levém podokně vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Vytvoření poznámkového bloku v Databricks")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
 2. V dialogovém okně **Vytvořit poznámkový blok** zadejte název **SendTweetsToEventHub**, vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Vytvoření poznámkového bloku v Databricks")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
 3. Zopakováním těchto kroků vytvořte i poznámkový blok **ReadTweetsFromEventHub**.
 
@@ -182,7 +182,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
 > [!NOTE]
-> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, nastavte proměnnou `test` DataSource na `twitter` místo a naplňte seznam **testSource** s preferovaným vstupem testu.
+> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, nastavte proměnnou **DataSource** na `test` namísto `twitter` a naplňte seznam **testSource** s preferovaným vstupem testu.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -411,9 +411,9 @@ A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do slu�
 
 Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
-![Zastavení clusteru Databricks](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+![Zastavení clusteru datacihly](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ \_ minut při nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:

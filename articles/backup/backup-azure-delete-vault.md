@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
 ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72028279"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
@@ -68,7 +68,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
          ![Podokno odstranit zálohovaná data.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. Podívejte se na ikonu **oznámení** : ![The – ikona oznámení. ](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí následující zpráva: *zastavte zálohování a odstraňte zálohovaná data pro "* zálohovanou položku *"* . *Operace se úspěšně dokončila*.
+5. Podívejte se na ikonu **oznámení** : ikona oznámení ![The. ](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí následující zpráva: *zastavte zálohování a odstraňte zálohovaná data pro "* zálohovanou položku *"* . *Operace se úspěšně dokončila*.
 6. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
 
       ![Stránka Odstranit zálohované položky](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -102,7 +102,7 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 4. Zaškrtněte políčko souhlasu a pak vyberte **Odstranit**.
 
 
-5. Ověřte **oznamovací** ikonu ![delete data zálohování @ no__t-2. Po dokončení operace se ve službě zobrazí zpráva: *zastavení zálohování a odstranění zálohovaných dat pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
+5. Ověřte **oznamovací** ikonu ![delete ](./media/backup-azure-delete-vault/messages.png) zálohovaných dat. Po dokončení operace se ve službě zobrazí zpráva: *zastavení zálohování a odstranění zálohovaných dat pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
 6. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
 
 Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly pro správu:
@@ -212,7 +212,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
        [-Confirm] 
        [<CommonParameters>] 
     ```
-    Další [informace](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)@no__t – 1about zakáže ochranu pro položku chráněnou zálohováním. 
+    Další [informace](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  about zakáže ochranu pro položku chráněnou zálohováním. 
 
 - Pro místní soubory a složky chráněné pomocí agenta Azure Backup, který se zálohuje do Azure, pomocí následujícího příkazu PowerShellu odstraňte zálohovaná data z každého modulu MARS PowerShellu:
 
@@ -222,7 +222,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, který se zobrazí na následující příkazovém řádku:
      
-    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] bez [L] No do všech [S] pozastavit [?] Help (výchozí je "Y"):*
+    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní.  <br/> [Y] Ano [A] Ano všem [N] bez [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
 
 
 - U místních počítačů chráněných pomocí MABS (Microsoft Azure Backup serveru) nebo DPM do Azure (System Center Data Protection Manager) pomocí následujícího příkazu odstraňte zálohovaná data v Azure.
@@ -233,7 +233,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, který se zobrazí na následující příkazovém řádku: 
          
-   *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] bez [L] No do všech [S] pozastavit [?] Help (výchozí je "Y"):*
+   *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní.  <br/> [Y] Ano [A] Ano všem [N] bez [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
 
 Po odstranění zálohovaných dat zrušte registraci místních kontejnerů a serverů pro správu. 
 

@@ -1,5 +1,5 @@
 ---
-title: C#Návodu Index více zdrojů dat – Azure Search
+title: 'C#Kurz: indexování více zdrojů dat – Azure Search'
 description: Naučte se importovat data z více zdrojů dat do jednoho Azure Search indexu.
 author: RobDixon22
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
 ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70241839"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Návodu Kombinování dat z více zdrojů dat v jednom Azure Search indexu
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Kurz: kombinování dat z více zdrojů dat v jednom Azure Search indexu
 
 Azure Search mohou importovat, analyzovat a indexovat data z více zdrojů dat do jednoho kombinovaného indexu vyhledávání. To podporuje situace, kdy jsou strukturovaná data agregována s méně strukturovanými nebo i prostými textovými daty z jiných zdrojů, jako jsou text, HTML nebo dokumenty JSON.
 
@@ -30,7 +30,7 @@ V tomto kurzu C#se používá sada .NET SDK pro Azure Search a Azure Portal k pr
 > * Indexovat data hotelu z Azure Cosmos DB
 > * Sloučení dat z hotelových místností z úložiště objektů BLOB
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se používají následující služby, nástroje a data. 
 
@@ -58,9 +58,9 @@ Abyste mohli komunikovat se službou Azure Search, budete potřebovat adresu URL
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -80,7 +80,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Na panelu nahrání klikněte na tlačítko Složka a pak ve složce projektu přejděte do souboru **cosmosdb/HotelsDataSubset_CosmosDb. JSON** . Kliknutím na **OK** zahajte nahrávání.
 
-   ![Vyberte soubor, který se má nahrát] . (media/tutorial-multiple-data-sources/cosmos-upload2.png "Vyberte soubor, který se má nahrát") .
+   ![Vyberte soubor, který se má nahrát.](media/tutorial-multiple-data-sources/cosmos-upload2.png "Vyberte soubor, který se má nahrát.")
 
 1. Pomocí tlačítka Aktualizovat aktualizujte zobrazení položek v kolekci hotelů. Měli byste vidět sedm nových databázových dokumentů uvedených v seznamu.
 
@@ -90,7 +90,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
-   ![Vytvoření kontejneru objektů BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů BLOB")
+   ![Vytvoření kontejneru objektů BLOB](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů blob")
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** .
 
@@ -98,7 +98,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrání souborů")
+   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrávání souborů")
 
 Až se nahrávání dokončí, soubory by se měly zobrazit v seznamu datového kontejneru.
 
@@ -121,13 +121,13 @@ Informace o připojení pro vyhledávací službu a zdroje dat jsou zadány v so
 }
 ```
 
-První dvě položky používají adresu URL a klíče správce pro vaši službu Azure Search. Byl zadán koncový bod `https://mydemo.search.windows.net`, například název služby, který má být `mydemo`poskytnut.
+První dvě položky používají adresu URL a klíče správce pro vaši službu Azure Search. Byl zadán koncový bod `https://mydemo.search.windows.net`, například název služby, který se má poskytnout `mydemo`.
 
 Další položky určují názvy účtů a připojovací řetězec pro Azure Blob Storage a zdroje dat Azure Cosmos DB.
 
 ### <a name="identify-the-document-key"></a>Identifikujte klíč dokumentu
 
-V Azure Search pole Key jednoznačně identifikuje každý dokument v indexu. Každý index vyhledávání musí mít přesně jedno pole klíče typu `Edm.String`. Toto pole klíče musí být k dispozici pro každý dokument ve zdroji dat, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
+V Azure Search pole Key jednoznačně identifikuje každý dokument v indexu. Každý index vyhledávání musí mít přesně jedno pole Key typu `Edm.String`. Toto pole klíče musí být k dispozici pro každý dokument ve zdroji dat, který je přidán do indexu. (Ve skutečnosti je to jediné povinné pole.)
 
 Při indexování dat z více zdrojů dat musí být každá hodnota klíče zdroje dat namapována na stejné klíčové pole v kombinovaném indexu. Často vyžaduje některé předem plánované plánování, které identifikují smysluplný klíč dokumentu pro váš index, a ujistěte se, že existuje v každém zdroji dat.
 
@@ -171,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných `FieldBuilder.BuildForType<Hotel>()` metodou a pak vytvořen takto:
+V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných metodou `FieldBuilder.BuildForType<Hotel>()` a pak vytvořen takto:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -300,9 +300,9 @@ Po vytvoření zdroje dat program nastaví indexer objektů BLOB s názvem **hot
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-Objekty blob JSON obsahují klíčové pole s názvem **ID** , nikoli **HotelId**. Kód používá `FieldMapping` třídu k oznámení indexeru, aby nasměroval hodnotu pole **ID** na klíč dokumentu **HotelId** v indexu.
+Objekty blob JSON obsahují klíčové pole s názvem **ID** , nikoli **HotelId**. Kód používá třídu `FieldMapping` k oznámení indexeru k nasměrování hodnoty pole **ID** na klíč dokumentu **HotelId** v indexu.
 
-Indexery BLOB Storage můžou používat parametry, které identifikují režim analýzy, který se má použít. Režim analýzy se liší u objektů blob, které reprezentují jediný dokument, nebo více dokumentů v rámci stejného objektu BLOB. V tomto příkladu každý objekt BLOB představuje jeden indexový dokument, takže kód používá `IndexingParameters.ParseJson()` parametr.
+Indexery BLOB Storage můžou používat parametry, které identifikují režim analýzy, který se má použít. Režim analýzy se liší u objektů blob, které reprezentují jediný dokument, nebo více dokumentů v rámci stejného objektu BLOB. V tomto příkladu každý objekt BLOB představuje jeden indexový dokument, takže kód používá parametr `IndexingParameters.ParseJson()`.
 
 Další informace o parametrech analýzy indexeru pro objekty blob JSON najdete v tématu [indexování objektů BLOB JSON](search-howto-index-json-blobs.md). Další informace o zadání těchto parametrů pomocí sady .NET SDK naleznete v tématu Třída [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) .
 
@@ -344,12 +344,12 @@ V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí
 
 Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Existuje několik přístupů a několik možností indexování objektů BLOB JSON. Pokud zdrojová data obsahují obsah JSON, můžete si projít tyto možnosti, abyste viděli, co nejlépe vyhovuje vašemu scénáři.
 
 > [!div class="nextstepaction"]
-> [Postup indexování objektů BLOB JSON pomocí Azure Search indexeru objektů BLOB](search-howto-index-json-blobs.md)
+> [Indexování objektů blob JSON pomocí indexeru Azure Search Blob](search-howto-index-json-blobs.md)
 
 Je možné, že budete chtít rozšířit strukturovaná data indexu z jednoho zdroje dat s obohacenými daty z nestrukturovaných objektů BLOB nebo fulltextového obsahu. V následujícím kurzu se dozvíte, jak používat Cognitive Services společně s Azure Search pomocí sady .NET SDK.
 

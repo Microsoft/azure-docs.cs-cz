@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001789"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight 
@@ -64,7 +64,7 @@ Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které 
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optimalizace clusterů pro aplikace Spark
 
-Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace jsou `spark.executor.instances`, `spark.executor.cores`a `spark.executor.memory`. Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` uzlech hlavní uzly clusteru.
+Tři klíčové parametry, které lze použít pro konfiguraci Sparku v závislosti na požadavcích aplikace, jsou `spark.executor.instances`, `spark.executor.cores` a `spark.executor.memory`. Vykonavatel je proces, který se spustil pro aplikaci Spark. Běží na pracovním uzlu a zodpovídá za provádění úkolů aplikace. Výchozí počet prováděcích modulů a velikosti prováděcího modulu pro jednotlivé clustery se vypočítávají na základě počtu pracovních uzlů a velikosti pracovního uzlu. Tyto informace jsou uloženy v `spark-defaults.conf` v hlavních uzlech clusteru.
 
 Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru), nebo je lze zadat také pro každou jednotlivou aplikaci.
 
@@ -81,7 +81,7 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
     ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter poznámkovém bloku
-Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete provést změny `%%configure` konfigurace pomocí Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít `-f` parametr. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
+Pro aplikace spuštěné v poznámkovém bloku Jupyter můžete provádět změny konfigurace pomocí `%%configure` Magic. V ideálním případě je nutné provést tyto změny na začátku aplikace před spuštěním první buňky kódu. Tím se zajistí, že se konfigurace použije pro relaci Livy při jejím vytvoření. Pokud chcete změnit konfiguraci v pozdější fázi aplikace, musíte použít parametr `-f`. Nicméně tím dojde ke ztrátě veškerého postupu v aplikaci.
 
 Následující fragment kódu ukazuje, jak změnit konfiguraci aplikace běžící v Jupyter.
 
@@ -103,12 +103,12 @@ Následující příkaz je příkladem, jak změnit parametry konfigurace pro ap
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Změna těchto parametrů na serveru Spark Thrift
 Spark Thrift Server poskytuje přístup JDBC/ODBC ke clusteru Spark a používá se k provozování dotazů Spark SQL. Nástroje, jako je Power BI, Tableau atd. použijte protokol ODBC ke komunikaci se serverem Spark Thrift ke spouštění dotazů Spark SQL jako aplikace Spark. Po vytvoření clusteru Spark se spustí dvě instance serveru Spark Thrift, jednu na každý hlavní uzel. Každý server Spark Thrift je v uživatelském rozhraní PŘÍZe viditelný jako aplikace Spark.
 
-Spark Thrift Server používá přidělování dynamického prováděcího modulu Spark `spark.executor.instances` , a proto se nepoužívá. Místo toho používá `spark.dynamicAllocation.minExecutors` Spark Thrift Server a `spark.dynamicAllocation.maxExecutors` k určení počtu prováděcích modulů. Parametry `spark.executor.cores` konfigurace a `spark.executor.memory` slouží k úpravě velikosti prováděcího modulu. Tyto parametry můžete změnit, jak je znázorněno v následujícím postupu:
+Spark Thrift Server používá přidělování dynamického prováděcího modulu Spark, takže se `spark.executor.instances` nepoužívá. Místo toho Spark Thrift Server používá `spark.dynamicAllocation.minExecutors` a `spark.dynamicAllocation.maxExecutors` k určení počtu prováděcích modulů. Parametry konfigurace `spark.executor.cores` a `spark.executor.memory` slouží k úpravě velikosti prováděcího modulu. Tyto parametry můžete změnit, jak je znázorněno v následujícím postupu:
 
-* Rozbalením kategorie **Advanced Spark-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors`a `spark.executor.memory`.
+* Rozbalením kategorie **Advanced Spark-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors` a `spark.executor.memory`.
 
     ![Konfigurace serveru Spark Thrift](./media/apache-spark-resource-manager/spark-thrift-server-1.png "Konfigurace serveru Spark Thrift")
-* Chcete-li aktualizovat parametr `spark.executor.cores`, rozbalte kategorii **Custom Spark-Thrift-sparkconf** .
+* Rozbalením **vlastní kategorie Spark-Thrift-sparkconf** aktualizujte parametr `spark.executor.cores`.
 
     ![Konfigurace parametru serveru Spark Thrift](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Konfigurace parametru serveru Spark Thrift")
 
@@ -137,7 +137,7 @@ Z důvodu dynamického přidělování Spark jsou jediné prostředky, které js
 ## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
 Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně klikněte na **Jupyter**, klikněte na **Akce služby**a pak klikněte na **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
 
-![Restartovat Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartovat Jupyter")
+![Restartovat Jupyter](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
 
 ## <a name="monitor-resources"></a>Sledování prostředků
 Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku článku. V tabulce metriky clusteru v horní části obrazovky ověřte hodnoty **využité paměti** a **Celkový počet sloupců paměti** . Pokud jsou tyto dvě hodnoty blízko, nemusí být k dispozici dostatek prostředků ke spuštění další aplikace. Totéž platí pro sloupce **virtuální jádra použité** a **virtuální jádra celkem** . Pokud je v hlavním zobrazení aplikace nechali v **přijatém** stavu a nepřechází do stavu **spuštěno** nebo **selhání** , může to také znamenat, že není dostatek prostředků ke spuštění.
@@ -153,13 +153,13 @@ Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku člá
 
     ![Kill app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kill app2")
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 
 ### <a name="for-data-analysts"></a>Pro analytiky dat
 
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Analýza dat telemetrie Application Insight pomocí Apache Spark ve službě HDInsight](apache-spark-analyze-application-insight-logs.md)
 * [Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové učení](apache-spark-deep-learning-caffe.md)

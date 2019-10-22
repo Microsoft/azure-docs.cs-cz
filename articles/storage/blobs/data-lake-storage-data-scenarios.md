@@ -9,10 +9,10 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72300328"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
@@ -89,7 +89,7 @@ Další informace o nastavení dalších aspektů zabezpečení najdete v témat
 
 V této části se vysvětlují různé zdroje dat a různé způsoby, kterými je možné data do účtu Data Lake Storage Gen2 ingestovat.
 
-Ingestování ![dat do data Lake Storage Gen2]ingestování(./media/data-lake-storage-data-scenarios/ingest-data.png "dat do data Lake Storage Gen2")
+![Ingestování dat do Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Ingestování dat do Data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Ad hoc data
 
@@ -165,7 +165,7 @@ Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datov�
 
 Jakmile jsou data dostupná v Data Lake Storage Gen2 můžete pro tato data spustit analýzu pomocí podporovaných aplikací pro velké objemy dat. 
 
-![Analyzovat data v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "analyzovat data v Data Lake Storage Gen2")
+![Analyzovat data v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/analyze-data.png "Analyzovat data v Data Lake Storage Gen2")
 
 Tady je seznam nástrojů, pomocí kterých můžete spouštět úlohy analýzy dat pro data uložená v Data Lake Storage Gen2.
 
@@ -178,7 +178,7 @@ Tady je seznam nástrojů, pomocí kterých můžete spouštět úlohy analýzy 
 
 Pomocí kombinace služeb můžete vytvářet vizuální reprezentace dat uložených v Data Lake Storage Gen2.
 
-![Vizualizovat data v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "vizualizovat data v Data Lake Storage Gen2")
+![Vizualizovat data v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Vizualizovat data v Data Lake Storage Gen2")
 
 * [K přesunu dat z Data Lake Storage Gen2 na Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
 * Potom můžete [integrovat Power BI s Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) a vytvořit tak vizuální reprezentaci dat.
@@ -191,7 +191,7 @@ Můžete také chtít stáhnout nebo přesunout data z Azure Data Lake Storage G
 
 * Při sestavování prototypů aplikací Stáhněte data do místního počítače pro zpracování v prostředích IDE.
 
-![Výstupní data z Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "výstupní data z Data Lake Storage Gen2")
+![Výstupní data z Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Výstupní data z Data Lake Storage Gen2")
 
 Tady je seznam nástrojů, pomocí kterých můžete stahovat data z Data Lake Storage Gen2.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace s Azure Active Directory Zscaler Beta | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace s Zscaler Beta | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler Beta.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943296"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Integrace Azure Active Directory s Zscaler Beta verzí
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Azure Active Directory integrace s Zscaler Beta
 
 V tomto kurzu se dozvíte, jak integrovat Zscaler Beta s Azure Active Directory (Azure AD).
 Když integrujete Zscaler Beta s Azure AD, můžete:
@@ -35,7 +35,7 @@ Když integrujete Zscaler Beta s Azure AD, můžete:
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Zscaler Beta budete potřebovat následující položky:
 
@@ -71,7 +71,7 @@ Chcete-li přidat Zscaler Beta z Azure Marketplace, postupujte podle následují
 
      ![Zscaler Beta v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Zscaler Beta na základě testovacího uživatele Britta Simon.
 Pokud chcete jednotné přihlašování pracovat, vytvořte vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Zscaler Beta.
@@ -85,7 +85,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 - [Vytvořte uživatele Zscaler Beta test](#create-a-zscaler-beta-test-user) , který bude mít protějšek Britta Simon v Zscaler Beta, který je propojený s Předprezentací Azure AD.
 - [Otestujte jednotné přihlašování](#test-single-sign-on) a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
@@ -118,9 +118,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
 6. Aplikace Zscaler Beta očekává, že se v odpovědi SAML vrátí několik atributů zpátky. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** pomocí následujících kroků přidejte atribut tokenu SAML, jak je znázorněno v následující tabulce.
     
-    | Name | Zdrojový atribut | 
+    | Name (Název) | Zdrojový atribut | 
     | ---------------| --------------- |
-    | memberOf  | user.assignedroles |
+    | memberOf  | User. assignedroles |
 
     a. Výběrem možnosti **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -138,7 +138,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
     f. Vyberte **OK**.
 
-    g. Vyberte **Uložit**.
+    g. Vyberte **Save** (Uložit).
 
     > [!NOTE]
     > Informace o tom, jak nakonfigurovat role v Azure AD, najdete v tématu [konfigurace deklarace identity role](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
@@ -153,7 +153,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
     - Přihlašovací adresa URL
     - Identifikátor Azure AD
-    - Adresa URL – odhlášení
+    - Odhlašovací adresa URL
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>Konfigurace jednotného přihlašování v Zscaler Beta verzi
 
@@ -167,9 +167,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
 3. Pokud chcete nastavit Zscaler Beta ručně, otevřete nové okno webového prohlížeče. Přihlaste se k webu Zscaler Beta společnosti jako správce a postupujte podle těchto kroků.
 
-4. Přejděte na **Správa** > nastavení > **ověřování**ověřování a postupujte podle těchto kroků.
+4. Přejděte na **správa**  > **ověřování**  > **nastavení ověřování**a postupujte podle těchto kroků.
    
-    ![Správa](./media/zscaler-beta-tutorial/ic800206.png "Správa")
+    ![Řízení](./media/zscaler-beta-tutorial/ic800206.png "Správa")
 
     a. V části **typ ověřování**vyberte **SAML**.
 
@@ -193,7 +193,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
     g. Do pole **atribut název oddělení** zadejte **oddělení** , pokud chcete povolit autozřizování SAML pro atributy oddělení.
 
-    h. Vyberte **Uložit**.
+    h. Vyberte **Save** (Uložit).
 
 6. Na stránce **Konfigurovat ověřování uživatele** proveďte následující kroky:
 
@@ -234,15 +234,15 @@ Pokud chcete nakonfigurovat nastavení proxy serveru v Internet Exploreru, postu
 
 6. Kliknutím na **tlačítko OK** zavřete dialogové okno **Možnosti Internetu** .
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Vytvořte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  > **uživatelů**  > **všech uživatelích**.
 
     ![Odkazy uživatelů a všech uživatelů](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
     ![Tlačítko pro nového uživatele](common/new-user.png)
 
@@ -256,13 +256,13 @@ Vytvořte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
     c. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
-    d. Vyberte **Vytvořit**.
+    d. Vyberte **Create** (Vytvořit).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 Povolit Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu k Zscaler Beta verzi.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Zscaler Beta verzi**.
+1. V Azure Portal vyberte **podnikové aplikace**  > **všechny aplikace**  > **Zscaler Beta**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -303,7 +303,7 @@ Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupov�
 
 Když na přístupovém panelu kliknete na dlaždici Zscaler Beta, měli byste být automaticky přihlášeni ke službě Zscaler Beta, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

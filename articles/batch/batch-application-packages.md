@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70095680"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
@@ -109,9 +109,9 @@ Po výběru této možnosti nabídky se otevře okno **aplikace** :
 
 V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
-* **Balíčky**: Počet verzí přidružených k této aplikaci.
-* **Výchozí verze**: Verze aplikace je nainstalována, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
-* **Povolení aktualizací**: Hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
+* **Balíčky**: počet verzí přidružených k této aplikaci.
+* **Výchozí verze**: verze aplikace je nainstalovaná, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
+* **Povolit aktualizace**: hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 Pokud chcete zobrazit strukturu souborů balíčku aplikace na výpočetním uzlu, přejděte na portál na účet Batch. Z účtu Batch přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzel (y), na které vás zajímáte.
 
@@ -128,9 +128,9 @@ Chcete-li zobrazit podrobnosti o aplikaci, vyberte aplikaci v okně **aplikace**
 
 V podrobnostech o aplikaci můžete pro svou aplikaci nakonfigurovat následující nastavení.
 
-* **Povolení aktualizací**: Určete, jestli se mají balíčky aplikací aktualizovat nebo odstranit. Viz část "aktualizace nebo odstranění balíčku aplikace" dále v tomto článku.
-* **Výchozí verze**: Zadejte výchozí balíček aplikace pro nasazení do výpočetních uzlů.
-* **Zobrazovaný název**: Zadejte popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci, například v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
+* **Povolení aktualizací**: Určete, jestli se mají jeho balíčky aplikací aktualizovat nebo odstranit. Viz část "aktualizace nebo odstranění balíčku aplikace" dále v tomto článku.
+* **Výchozí verze**: zadejte výchozí balíček aplikace, který se nasadí do výpočetních uzlů.
+* **Zobrazovaný název**: zadejte popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci, například v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
 
 ### <a name="add-a-new-application"></a>Přidat novou aplikaci
 Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte nové jedinečné ID aplikace. První balíček aplikace, který přidáte s novým ID aplikace, vytvoří také novou aplikaci.
@@ -171,7 +171,7 @@ Po výběru souboru kliknutím na tlačítko **OK** zahajte nahrávání na Azur
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky** > **Přidat**.
+Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky**  > **Přidat**.
 
 ![Okno Přidat balíček aplikace v Azure Portal][8]
 
@@ -184,7 +184,7 @@ Chcete-li aktualizovat nebo odstranit existující balíček aplikace, otevřete
 
 **Aktualizace**
 
-Po kliknutí na tlačítko **aktualizovat**se zobrazí okna **aktualizace balíčku** . Toto okno je podobné novému oknu **balíčku aplikace** , ale je povolené jenom pole pro výběr balíčku, které umožňuje zadat nový soubor zip, který se má nahrát.
+Po kliknutí na tlačítko **aktualizovat**se zobrazí okna **aktualizace balíčku** . Toto okno je podobné **novému oknu balíčku aplikace** , ale je povolené jenom pole pro výběr balíčku, které umožňuje zadat nový soubor zip, který se má nahrát.
 
 ![Okno aktualizace balíčku v Azure Portal][11]
 
@@ -225,7 +225,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Pokud se nasazení balíčku aplikace z nějakého důvodu nepovede, služba Batch označí uzel [][net_nodestate]jako nepoužitelný a žádné úlohy se naplánují pro provádění na tomto uzlu. V takovém případě byste měli **restartovat** uzel a znovu zahájit nasazení balíčku. Restartování uzlu také umožňuje znovu naplánovat úlohu na uzlu.
+> Pokud se nasazení balíčku aplikace z nějakého důvodu nepovede, služba Batch označí uzel jako [nepoužitelný][net_nodestate]a žádné úlohy se naplánují pro provádění na tomto uzlu. V takovém případě byste měli **restartovat** uzel a znovu zahájit nasazení balíčku. Restartování uzlu také umožňuje znovu naplánovat úlohu na uzlu.
 > 
 > 
 
@@ -260,14 +260,14 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`a `version` jsou hodnoty, které odpovídají verzi aplikace a balíčku, který jste zadali pro nasazení. Pokud jste například zadali, že by měla být na uzlech systému Windows nainstalována verze 2,7 nástroje *Blend* pro aplikace, budou příkazové řádky úlohy používat pro přístup ke svým souborům tuto proměnnou prostředí:
+`APPLICATIONID` a `version` jsou hodnoty, které odpovídají verzi aplikace a balíčku, kterou jste zadali pro nasazení. Pokud jste například zadali, že by měla být na uzlech systému Windows nainstalována verze 2,7 nástroje *Blend* pro aplikace, budou příkazové řádky úlohy používat pro přístup ke svým souborům tuto proměnnou prostředí:
 
 ```
 Windows:
@@ -281,7 +281,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Při nahrávání balíčku aplikace můžete zadat výchozí verzi, která se má nasadit do výpočetních uzlů. Pokud jste pro aplikaci zadali výchozí verzi, můžete při odkazování na aplikaci vynechat příponu verze. Výchozí verzi aplikace můžete zadat v Azure Portal v okně **aplikace** , jak je znázorněno v části nahrání [a Správa aplikací](#upload-and-manage-applications).
+Při nahrávání balíčku aplikace můžete zadat výchozí verzi, která se má nasadit do výpočetních uzlů. Pokud jste pro aplikaci zadali výchozí verzi, můžete při odkazování na aplikaci vynechat příponu verze. Výchozí verzi aplikace můžete zadat v Azure Portal v okně **aplikace** , jak je znázorněno v části [nahrání a Správa aplikací](#upload-and-manage-applications).
 
 Například pokud nastavíte "2,7" jako výchozí verzi pro *Blend*aplikace a vaše úkoly odkazují na následující proměnnou prostředí, budou vaše uzly Windows spouštět verzi 2,7:
 

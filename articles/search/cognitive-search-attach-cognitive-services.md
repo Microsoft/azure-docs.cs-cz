@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265932"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Search 
@@ -28,7 +28,7 @@ Omezený počet dokumentů můžete rozšířit zdarma. Případně můžete k *
 
 ## <a name="same-region-requirement"></a>Požadavek stejné oblasti
 
-Vyžadujeme, Azure Search a Azure Cognitive Services existují v rámci stejné oblasti. V opačném případě se tato zpráva zobrazí v době běhu:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Vyžadujeme, Azure Search a Azure Cognitive Services existují v rámci stejné oblasti. V opačném případě se tato zpráva zobrazí v době běhu: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobrazí tato chyba, měli byste vytvořit nový prostředek Cognitive Services ve stejné oblasti jako Azure Search.
 
@@ -51,7 +51,7 @@ Prostředky Free (omezená rozšíření) jsou omezené na 20 dokumentů za den 
 
    ![Rozbalená Cognitive Services oddíl připojení](./media/cognitive-search-attach-cognitive-services/attach1.png "Rozbalená Cognitive Services oddíl připojení")
 
-1. Pokračujte k dalšímu kroku a **přidejte obohacení**. Popis dovedností dostupných na portálu najdete v části [krok 2: Přidejte dovednosti](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) rozpoznávání v rychlém startu hledání rozpoznávání.
+1. Pokračujte k dalšímu kroku a **přidejte obohacení**. Popis dovedností dostupných na portálu najdete v části [Krok 2: Přidání dovedností rozpoznávání](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) v rychlém startu hledání rozpoznávání.
 
 ## <a name="use-billable-resources"></a>Použití fakturovatelných prostředků
 
@@ -63,7 +63,7 @@ Pro úlohy, které vytvářejí více než 20 obohacení za den, nezapomeňte p�
 
 1. Rozbalte položku **připojit Cognitive Services** a pak vyberte **vytvořit nový prostředek Cognitive Services**. Otevře se nová karta, abyste mohli vytvořit prostředek:
 
-   ![Vytvoření prostředku Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Vytvoření prostředku Cognitive Services")
+   ![Vytvoření prostředku Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Vytvoření prostředku služeb Cognitive Services")
 
 1. V seznamu **umístění** vyberte oblast, ve které se nachází vaše služba Azure Search. Nezapomeňte tuto oblast používat z důvodů výkonu. Použití této oblasti také nevrací poplatky za odchozí šířku pásma napříč oblastmi.
 
@@ -81,7 +81,7 @@ Pro úlohy, které vytvářejí více než 20 obohacení za den, nezapomeňte p�
 
    ![Vyberte prostředek Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach2.png "Vyberte prostředek Cognitive Services")
 
-1. Rozbalením části **Přidat obohacení** můžete vybrat konkrétní dovednosti v oblasti rozpoznávání, které chcete spustit na vašich datech. Dokončete zbývající část průvodce. Popis dovedností dostupných na portálu najdete v části [krok 2: Přidejte dovednosti](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) rozpoznávání v rychlém startu hledání rozpoznávání.
+1. Rozbalením části **Přidat obohacení** můžete vybrat konkrétní dovednosti v oblasti rozpoznávání, které chcete spustit na vašich datech. Dokončete zbývající část průvodce. Popis dovedností dostupných na portálu najdete v části [Krok 2: Přidání dovedností rozpoznávání](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) v rychlém startu hledání rozpoznávání.
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Připojit existující dovednosti k prostředku Cognitive Services
 
@@ -99,9 +99,9 @@ Pokud máte existující dovednosti, můžete ho připojit k novému nebo jiném
 
 ## <a name="attach-cognitive-services-programmatically"></a>Připojit Cognitive Services programově
 
-Při programovém definování dovednosti přidejte `cognitiveServices` do dovednosti oddíl. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek Azure Search. Také zahrňte `@odata.type`a nastavte na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
+Pokud dovednosti definujete programově, přidejte do dovednosti oddíl `cognitiveServices`. V této části zahrňte klíč Cognitive Services prostředku, který chcete přidružit k dovednosti. Pamatujte, že prostředek musí být ve stejné oblasti jako prostředek Azure Search. Také zahrňte `@odata.type` a nastavte ji na `#Microsoft.Azure.Search.CognitiveServicesByKey`.
 
-Následující příklad ukazuje tento model. Všimněte si `cognitiveServices` oddílu na konci definice.
+Následující příklad ukazuje tento model. Všimněte si `cognitiveServices` části na konci definice.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>Příklad: Odhad nákladů
+## <a name="example-estimate-costs"></a>Příklad: odhad nákladů
 
 Chcete-li odhadnout náklady spojené s indexováním vyhledávání v rozpoznávání, začněte s nápadem, jak průměrný dokument vypadá, takže můžete spustit některá čísla. Můžete například přibližně:
 

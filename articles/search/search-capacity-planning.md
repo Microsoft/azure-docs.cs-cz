@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650068"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálujte oddíly a repliky pro úlohy dotazů a indexování v Azure Search
@@ -29,7 +29,7 @@ Použití menšího počtu výsledků služby SUs v poměrné nižší faktuře.
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
 Repliky a oddíly jsou primárními prostředky, které zálohují vyhledávací službu.
 
-| Resource | Definice |
+| Prostředek | Definice |
 |----------|------------|
 |*Oddíly* | Poskytuje úložiště indexu a vstupně-výstupní operace pro operace čtení/zápisu (například při opakovaném sestavování nebo obnovování indexu).|
 |*Repliky* | Instance vyhledávací služby, které se primárně používají k vyrovnávání zatížení operací dotazů. Každá replika vždy hostuje jednu kopii indexu. Pokud máte 12 replik, budete mít 12 kopií každého indexu načteného ve službě.|
@@ -86,13 +86,13 @@ Všechny služby a služby optimalizované pro úložiště Standard a Storage m
 
 |   | **1 oddíl** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddílů** | **12 oddílů** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1 replika** |1\. SU |2\. SU |3 SU |4\. SU |6\. SU |12. SU |
+| **1 replika** |1\. SU |2\. SU |3\. SU |4\. SU |6\. SU |12. SU |
 | **2 repliky** |2\. SU |4\. SU |6\. SU |8\. SU |12. SU |24 SU |
-| **3 repliky** |3 SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
-| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |Není k dispozici |
-| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Není k dispozici |
-| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |Není k dispozici |
-| **12 replik** |12. SU |24 SU |36 SU |Není k dispozici |Není k dispozici |Není k dispozici |
+| **3 repliky** |3\. SU |6\. SU |9\. SU |12. SU |18 SU |36 SU |
+| **4 repliky** |4\. SU |8\. SU |12. SU |16. SU |24 SU |Nevztahuje se |
+| **5 replik** |5 SU |10. SU |15 SU |20 SU |30 SU |Nevztahuje se |
+| **6 replik** |6\. SU |12. SU |18 SU |24 SU |36 SU |Nevztahuje se |
+| **12 replik** |12. SU |24 SU |36 SU |Nevztahuje se |Nevztahuje se |Nevztahuje se |
 
 Služba SUs, ceny a kapacita jsou podrobně vysvětleny na webu Azure. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/search/).
 
@@ -141,6 +141,6 @@ Prohledat aplikace, které vyžadují aktualizaci dat téměř v reálném čase
 Větším indexům trvá dotaz déle. V takovém případě se může stát, že při každém přírůstkovém navýšení oddílů se v replikách vyžaduje menší, ale úměrný nárůst. Složitost vašich dotazů a svazků dotazů se projeví v tom, jak se rychle vykoná provádění dotazů.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vyberte cenovou úroveň pro Azure Search](search-sku-tier.md)

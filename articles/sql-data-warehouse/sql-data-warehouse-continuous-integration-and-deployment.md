@@ -11,21 +11,21 @@ ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70143146"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Průběžná integrace a nasazování pro Azure SQL Data Warehouse
 
 V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pomocí SQL Data Warehouse. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 - Projděte si [kurz integrace správy zdrojového kódu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- Vytvoření [agenta](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) s místním hostováním, který má nainstalované služby SSDT preview (16,3 Preview 2 a novější) pro SQL Data Warehouse (Preview)
+- Vytvoření agenta s místním [hostováním](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install) , který má nainstalované služby SSDT preview (16,3 Preview 2 a novější) pro SQL Data Warehouse (Preview)
 
 - Nastavení a připojení k Azure DevOps
 
@@ -63,7 +63,7 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
    Spusťte a ověřte svůj kanál. Můžete provést změny místně a vrátit se změnami do správy zdrojového kódu, který by měl generovat automatické sestavení a nasazení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Prozkoumat [architekturu Azure SQL Data Warehouse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
 - Rychlé [vytvoření SQL Data Warehouse][create a SQL Data Warehouse]

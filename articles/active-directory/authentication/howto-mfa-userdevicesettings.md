@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70162403"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
@@ -32,8 +32,8 @@ Jako správce, který má přiřazenou roli Správce ověřování, můžete vy�
 
 ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**.
    - Při **resetování hesla** dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
    - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
@@ -45,17 +45,17 @@ Toto nastavení vynutí, aby uživatel znovu dokončil proces registrace. Neproh
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Jak vyžadovat, aby uživatelé mohli znovu zadat metody kontaktu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
 3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.
-6. Zaškrtněte políčko, pokud chcete, aby vybraní **uživatelé znovu poskytovali metody kontaktu**.
-   ![Vyžadovat od uživatelů opětovné poskytnutí metod kontaktu](./media/howto-mfa-userdevicesettings/reproofup.png)
+6. Zaškrtněte políčko, pokud **chcete, aby vybraní uživatelé znovu poskytovali metody kontaktu**.
+   ![Require uživatelům poskytnout metody kontaktu znovu ](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 
-Organizace mohou tento postup provést pomocí prostředí PowerShell následujícím způsobem jako vodítko pro vymazání `StrongAuthenticationMethods` atributu:
+Organizace mohou tento postup provést pomocí prostředí PowerShell následujícím způsobem jako vodítko pro vymazání atributu `StrongAuthenticationMethods`:
 
 ```PowerShell
 $Upn = "theuser@domain.com"
@@ -69,13 +69,13 @@ Toto nastavení odstraní všechna hesla aplikací, která uživatel vytvořil. 
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak odstranit existující hesla aplikací pro uživatele
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
 3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.
 6. Zaškrtněte políčko pro **odstranění všech existujících hesel aplikací generovaných vybranými uživateli**.
-   ![Odstranit všechna existující hesla aplikací](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+   ![Delete všechna existující hesla aplikací ](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 
@@ -89,13 +89,13 @@ Při zaškrtnutí políčka **obnovit vícefaktorové ověřování u všech zap
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Postup obnovení MFA na všech pozastavených zařízeních pro uživatele
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+2. Na levé straně vyberte **Azure Active Directory**  > **Uživatelé**  > **všech uživatelích**.
 3. Na pravé straně vyberte **Multi-Factor Authentication** na panelu nástrojů. Otevře se stránka Multi-Factor Authentication.
 4. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
 5. Vyberte **Spravovat uživatelská nastavení**.
-6. Zaškrtněte políčko pro **obnovení Multi-Factor Authentication u všech zapamatovaných zařízení**
-   ![obnovit vícefaktorové ověřování na všech zapamatovaných zařízeních.](./media/howto-mfa-userdevicesettings/rememberdevices.png)
+6. Zaškrtněte políčko pro **obnovení Multi-Factor Authentication na všech zapamatovaných zařízeních** 
+    ![Restore vícefaktorové ověřování na všech zapamatovaných zařízeních ](./media/howto-mfa-userdevicesettings/rememberdevices.png)
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 

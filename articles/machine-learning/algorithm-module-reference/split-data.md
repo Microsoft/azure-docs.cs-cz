@@ -1,5 +1,5 @@
 ---
-title: 'Rozdělit data: Odkaz na modul'
+title: 'Rozdělit data: odkaz na modul'
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat modul rozdělit data ve službě Azure Machine Learning k rozdělení datové sady do dvou různých sad.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128464"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692652"
 ---
 # <a name="split-data-module"></a>Modul rozdělení dat
 
@@ -30,11 +30,11 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 > Než zvolíte režim rozdělování, přečtěte si všechny možnosti a určete typ rozdělení, který potřebujete.
 > Pokud změníte rozdělovací režim, můžete obnovit všechny ostatní možnosti.
 
-1. Přidejte modul **rozdělit data** do experimentu v rozhraní. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
+1. Přidejte modul **rozdělit data** do kanálu v rozhraní. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
 
-2. **Režim rozdělení**: V závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti. Podrobné pokyny a příklady získáte kliknutím na následující témata. 
+2. **Režim rozdělení**: v závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti. Podrobné pokyny a příklady získáte kliknutím na následující témata. 
 
-    - **Rozdělit řádky**: Tuto možnost použijte, pokud chcete pouze rozdělit data do dvou částí. Můžete určit procento dat, která mají být vložena do každého rozdělení, ale ve výchozím nastavení jsou data rozdělena 50-50.
+    - **Rozdělit řádky**: tuto možnost použijte, pokud chcete pouze rozdělit data do dvou částí. Můžete určit procento dat, která mají být vložena do každého rozdělení, ale ve výchozím nastavení jsou data rozdělena 50-50.
 
         Můžete také náhodně vybrat řádky v každé skupině a použít vzorkování stratified. V stratified vzorkování musíte vybrat jeden sloupec dat, pro který chcete hodnoty rozdělit rovnoměrně mezi dvě datové sady výsledků.  
 
@@ -42,10 +42,10 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 
         Pokud například analyzujete mínění, mohli byste vyhledat přítomnost konkrétního názvu produktu v textovém poli a potom datovou sadu rozdělit do řádků s cílovým názvem produktu a bez.
 
-    - **Rozdělení relativního výrazu**:  Tuto možnost použijte vždy, když chcete podmínku použít pro sloupec s čísly. Toto číslo může být pole Datum a čas, sloupec obsahující věkové nebo dolarové částky nebo dokonce i procento. Například můžete chtít rozdělit datovou sadu podle nákladů na položky, seskupit lidi podle věkových rozsahů nebo jednotlivé údaje podle kalendářního data.
+    - **Rozdělení relativního výrazu**: tuto možnost použijte vždy, když chcete použít podmínku pro sloupec s čísly. Toto číslo může být pole Datum a čas, sloupec obsahující věkové nebo dolarové částky nebo dokonce i procento. Například můžete chtít rozdělit datovou sadu podle nákladů na položky, seskupit lidi podle věkových rozsahů nebo jednotlivé údaje podle kalendářního data.
 
 ### <a name="split-rows"></a>Rozdělit řádky
-1.  Přidejte modul [rozdělit data](./split-data.md) do experimentu v rozhraní a připojte datovou sadu, kterou chcete rozdělit.
+1.  Přidejte modul [rozdělit data](./split-data.md) do kanálu v rozhraní a připojte datovou sadu, kterou chcete rozdělit.
   
 2.  V **režimu rozdělení**vyberte **rozdělit řádky**. 
 
@@ -57,20 +57,20 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
   
 4. Vyberte možnost **náhodného rozdělení** , pokud chcete náhodně vybrat data do dvou skupin. Toto je upřednostňovaná možnost při vytváření školicích a testovacích datových sad.
 
-5.  **Náhodné osazení**: Zadejte nezápornou celočíselnou hodnotu pro inicializaci pseudonáhodných sekvence instancí, která se má použít. Toto výchozí osivo se používá ve všech modulech, které generují náhodná čísla. 
+5.  **Random seed**: zadejte nezápornou celočíselnou hodnotu pro inicializaci pseudonáhodných sekvence instancí, které mají být použity. Toto výchozí osivo se používá ve všech modulech, které generují náhodná čísla. 
 
      Určením počáteční hodnoty se výsledky obvykle rereprodukovatelní. Pokud potřebujete výsledky operace rozdělení zopakovat, měli byste pro generátor náhodných čísel zadat počáteční hodnotu. V opačném případě je náhodné osazení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin. V důsledku toho může být distribuce dat mírně odlišná pokaždé, když provedete rozdělení. 
 
-6. **Stratified rozdělení**: Nastavte tuto možnost na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč*rozvrstvení. 
+6. **Stratified Split**: tuto možnost nastavte na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč rozdělení*na více úrovní. 
 
     V případě vzorkování stratified jsou data rozdělena tak, že každá výstupní datová sada získá zhruba stejné procento každé cílové hodnoty. Například můžete chtít zajistit, aby vaše školicí a testovací sady byly zhruba vyvážené s ohledem na výsledek nebo s ohledem na jiný sloupec, například pohlaví.
 
-7. Spusťte experiment.
+7. Spuštění kanálu
 
 
 ## <a name="regular-expression-split"></a>Rozdělení regulárního výrazu
 
-1.  Přidejte modul [rozdělit data](./split-data.md) do experimentu a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.  
+1.  Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.  
   
 2.  V případě **rozdělení režimu**vyberte možnost **rozdělení regulárního výrazu**.
 
@@ -79,13 +79,13 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
    Regulární výraz by měl následovat po syntaxi regulárního výrazu jazyka Python.
 
 
-4. Spusťte experiment.
+4. Spuštění kanálu
 
     Na základě regulárního výrazu, který zadáte, je datová sada rozdělena do dvou sad řádků: řádků s hodnotami, které odpovídají výrazu a všem zbývajícím řádkům. 
 
 ## <a name="relative-expression-split"></a>Rozdělení relativního výrazu
 
-1. Přidejte modul [rozdělit data](./split-data.md) do experimentu a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
+1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
   
 2. V případě **rozdělení režimu**vyberte **relativní rozdělení výrazu**.
   
@@ -99,16 +99,16 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit da
 
     - Použijte znak ampersand (&) pro operaci AND a použijte pro operaci nebo znak svislé čáry (|).
 
-    - Podporovány jsou následující operátory: `<`, `>`, `<=`, `>=`, `==`,`!=`
+    - Podporovány jsou následující operátory: `<`, `>`, `<=`, `>=`, `==`, `!=`
 
-    - Operace nelze seskupit pomocí `(` a. `)`
+    - Operace nelze seskupit pomocí `(` a `)`.
 
  - Sloupec řetězce: 
-    - Podporovány jsou následující operátory: `==`,`!=`
+    - Podporovány jsou následující operátory: `==`, `!=`
 
 
 
-4. Spusťte experiment.
+4. Spuštění kanálu
 
     Výraz rozdělí datovou sadu do dvou sad řádků: řádky s hodnotami, které splňují podmínku, a všechny zbývající řádky.
 
